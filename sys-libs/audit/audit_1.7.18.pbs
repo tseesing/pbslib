@@ -1,0 +1,34 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="Userspace utilities for storing and processing auditing records"
+HOMEPAGE="http://people.redhat.com/sgrubb/audit/"
+REPO=""
+LICENSE="GPL"
+PRIORITY=""
+PACKAGER="Zhongxin Huang, hzx@115.com"
+
+SRC_URI="http://people.redhat.com/sgrubb/"$N"/"$N-$V$R".tar.gz"
+
+RDEPEND=""
+BDEPEND="${RDEPEND} swig"
+RECOMMENDED=""
+CONFLICT=""
+
+pbs_unpack() {
+        ypkg_unpack
+}
+
+pbs_config() {
+	YPB_CONFIG+=""
+	ypkg_config
+}
+
+pbs_build() {
+	ypkg_make
+}
+
+pbs_install() {
+	ypkg_mkinstall
+}

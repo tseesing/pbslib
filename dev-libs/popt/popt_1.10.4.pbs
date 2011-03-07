@@ -1,0 +1,38 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="Parse Options - Command line parser"
+HOMEPAGE="http://rpm5.org/"
+LICENSE="GPL-2"
+PACKAGER="hzx@115.com"
+
+SRC_URI="ftp://anduin.linuxfromscratch.org/BLFS/6.3/p/"$N-$V$R".tar.gz"
+
+RDEPEND=""
+BDEPEND="${RDEPEND}"
+
+NOTES="sed ...: This fix taken backported from the development version of popt fixes a problem identified by the included testsuite."
+
+pbs_unpack() {
+        ypkg_unpack
+}
+
+pbs_config() {
+	
+	sed -i -e "/*origOptString ==/c 0)" popt.c
+	YPB_CONFIG+="--prefix=/usr --infodir=/usr/share/info --mandir=/usr/share/man "
+	ypkg_config
+}
+
+pbs_build(){
+	ypkg_make
+}
+
+pbs_check() {
+	make check
+}
+
+pbs_install() {
+	ypkg_mkinstall
+}

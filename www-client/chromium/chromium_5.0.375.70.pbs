@@ -1,0 +1,105 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="The open-source project behind Google Chrome, an attempt at creating a safer, faster, and more stable browser."
+HOMEPAGE="http://www.chromium.org/"
+LICENSE="BSD"
+SRC_URI="ftp://lug.mtu.edu/gentoo/distfiles/"$N-$V$R".tar.bz2"
+
+RDEPEND="libX11 libXrender libXScrnSaver libXext gtk+ atk pango cairo fontconfig libjpeg-turbo libpng gconf
+bzip2 alsa-lib expat dbus-glib dbus cups libgcrypt libxcb libXau libXdmcp libXi libXrandr libXcursor
+libXcomposite libXdamage libXfixes pixman libxml2 directfb libxcb orbit krb5 e2fsprogs gnutls libgpg-error
+libX11 libXau libxcb libComposite libXcursor libXdamage libXdmcp libXfixes libXi libXrandr libXrender"
+BDEPEND="${RDEPEND} dev-lang/perl dev-util/gperf dev-util/pkgconfig sys-devel/flex"
+
+pbs_unpack() {
+        ypkg_unpack
+	cd "$YPPATH_UNPACK/"$N-$V$R""
+	### Patch
+	#patch -p1 -i $YPPATH_SOURCE/libpng-1.4.patch
+	patch -p0 -i "${FILES_PATH}"/files/${N}-drop_sse2-r0.patch
+	# Allow supporting more media types.
+	patch -p1 -i "${FILES_PATH}"/files/${N}-20100122-ubuntu-html5-video-mimetypes.patch
+	
+	# Fix build failure with libpng-1.4, bug 310959.
+	patch -p0 -i "${FILES_PATH}"/files/${N}-libpng-1.4.patch
+	
+	# Allow supporting embedded bitmap for zh_CN fonts.
+	patch -p0 -i"${FILES_PATH}"/files/skia-zh_CN-embedded-font-r341.patch
+	
+	patch -p0 -i "${FILES_PATH}"/files/chrome-zh_CN-embedded-font.patch
+} 
+
+pbs_config() {
+	### Configure
+	# we need to disable system_ssl until "next protocol negotiation" support
+	# is available in our nss package
+	# see https://bugzilla.mozilla.org/show_bug.cgi?id=547312
+	#
+	cd "$YPPATH_UNPACK/"$N-$V$R""
+	# Configuration options (system libraries)
+	local myconf="-Duse_system_zlib=1 -Duse_system_bzip2=1 -Duse_system_ffmpeg=1 -Duse_system_libevent=1 -Duse_system_jpeg=1 -Duse_system_libpng=1 -Duse_system_libxml=1 -Duse_system_libxslt=1"
+	# -Duse_system_sqlite=1 : http://crbug.com/22208
+        # Others still bundled: icu (not possible?), hunspell (changes required for sandbox support)
+	# Disable the V8 snapshot. It breaks the build on hardened (bug #301880),
+	# and the performance gain isn't worth it.
+	myconf="${myconf} -Dv8_use_snapshot=0"
+	# Disable tcmalloc memory allocator. It causes problems,
+	# for example bug #320419.
+	myconf="${myconf} -Dlinux_use_tcmalloc=0"
+        
+	# Use target arch detection logic from bug #296917.
+	local myarch="$(uname -m)"
+	if [[ $myarch = amd64 ]] ; then
+		myconf="${myconf} -Dtarget_arch=x64"
+	elif [[ $myarch = i686 ]] ; then
+		myconf="${myconf} -Dtarget_arch=ia32"
+	elif [[ $myarch = arm ]] ; then
+		myconf="${myconf} -Dtarget_arch=arm -Ddisable_nacl=1 -Dlinux_use_tcmalloc=0"
+	else
+		die "Failed to determine target arch, got '$myarch'."
+	fi
+	#
+ 	if [[ "$(gcc-major-version)$(gcc-minor-version)" == "44" ]]; then
+		myconf="${myconf} -Dno_strict_aliasing=1 -Dgcc_version=44"
+	fi
+	# Make sure that -Werror doesn't get added to CFLAGS by the build system.
+        # Depending on GCC version the warnings are different and we don't want
+        # the build to fail because of that.
+        myconf="${myconf} -Dwerror="
+	YPB_CONFIG="${myconf}"
+        build/gyp_chromium -f make build/all.gyp $YPB_CONFIG --depth=.
+}
+
+pbs_build() {
+	#ypkg_make
+	make $MAKEOPTS chrome chrome_sandbox BUILDTYPE=Release
+}
+
+pbs_install() {
+	install -m 0755 -D out/Release/chrome "$YPPATH_DEST"/usr/lib/chromium/chromium
+	install -m 4555 -o root -g root -D out/Release/chrome_sandbox "$YPPATH_DEST"/usr/lib/chromium/chromium-sandbox
+	install -m 0644 -D out/Release/chrome.pak "$YPPATH_DEST"/usr/lib/chromium/chrome.pak
+        install -m 0755 -D out/Release/libffmpegsumo.so "$YPPATH_DEST"/usr/lib/chromium/libffmpegsumo.so
+	# these links are only needed when building with system ffmpeg
+	#  ln -s /usr/lib/libavcodec.so.52 ${pkgdir}/usr/lib/chromium/
+	#  ln -s /usr/lib/libavformat.so.52 ${pkgdir}/usr/lib/chromium/
+	#  ln -s /usr/lib/libavutil.so.50 ${pkgdir}/usr/lib/chromium/
+ 
+ 	cp -a out/Release/locales out/Release/resources "$YPPATH_DEST"/usr/lib/chromium/
+	find "$YPPATH_DEST"/usr/lib/chromium/ -name '*.d' -type f -delete
+	install -m 0644 -D out/Release/chrome.1 "$YPPATH_DEST"/usr/share/man/man1/chromium.1
+	#install -m 0644 -D chromium.desktop "$YPPATH_DEST"/usr/share/applications/chromium.desktop
+	for size in 16 22 24 32 48 64 128 256; do
+		install -m 0644 -D  chrome/app/theme/chromium/product_logo_${size}.png \
+		"$YPPATH_DEST"/usr/share/icons/hicolor/${size}x${size}/apps/chromium.png
+	done
+	#install -m 0755 -D chromium.sh "$YPPATH_DEST"/usr/bin/
+	install -m 0644 -D LICENSE "$YPPATH_DEST"/usr/share/licenses/chromium/LICENSE
+	##
+	mkdir -p  "$YPPATH_DEST"/usr/share/applications "$YPPATH_DEST"/usr/share/pixmaps "$YPPATH_DEST"/usr/bin/
+	install -m 0755 -D $FILES_PATH/files/chromium-chromium.desktop "$YPPATH_DEST"/usr/share/applications
+	install -m 0755 -D $FILES_PATH/files/chromium-browser.png "$YPPATH_DEST"/usr/share/pixmaps 
+	install -m 0755 -D $FILES_PATH/files/chromium "$YPPATH_DEST"/usr/bin/
+}

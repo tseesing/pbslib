@@ -1,0 +1,49 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="GTK Instant Messenger client"
+HOMEPAGE="http://pidgin.im/"
+REPO=""
+LICENSE=""
+PACKAGER="Zhongxin Huang, hzx@115.com"
+
+SRC_URI="http://downloads.sourceforge.net/project/pidgin/Pidgin/"$V"/"$N-$V$R".tar.gz"
+
+RDEPEND="dbus-glib dbus libX11 libXext libXScrnSaver libSM libICE startup-notification
+	 libxml2 gtk+ atk pango cairo freetype fontconfig glib2 glibc libxml2 ncurses purple zlib 
+	 farsight2 gstreamer libXi libXrandr libXcursor libXcomposite libXdamage libXfixes pixman expat farsight2 "
+BDEPEND="${RDEPEND} x11-libs/startup-notification net-libs/gnutls"
+
+pbs_unpack() {
+        ypkg_unpack
+}
+
+pbs_config() {
+	YPB_CONFIG+="--disable-gtkspell 
+		     --disable-gstreamer 
+		     --disable-vv 
+         	     --disable-idn 
+		     --disable-meanwhile 
+		     --disable-avahi 
+		     --disable-nm 
+		     --disable-tcl
+		     --disable-schemas-install"
+	ypkg_config
+}
+
+pbs_build() {
+	ypkg_make
+}
+
+pbs_install() {
+	ypkg_mkinstall
+}
+
+pbs_postinst() {
+	gnome2_install_schema "/etc/gconf/schemas/purple.schemas"
+	gnome2_rarian_sk_update
+	gnome2_desktop_database_update
+	gnome2_icon_cache_update
+	gnome2_gconfd_reload
+}

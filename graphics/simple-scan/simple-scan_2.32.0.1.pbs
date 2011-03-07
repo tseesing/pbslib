@@ -1,0 +1,40 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="Simple document scanning utility"
+HOMEPAGE="https://launchpad.net/simple-scan"
+REPO=""
+LICENSE="GNU GPL v3"
+PACKAGER="Zhongxin Huang, hzx@115.com"
+
+SRC_URI="http://launchpad.net/"$N"/trunk/"$V$R"/+download/"$N-$V$R".tar.gz"
+
+RDEPEND="gtk+"
+BDEPEND="${RDEPEND} "
+RECOMMENDED=""
+
+NOTES=""
+
+pbs_unpack() {
+        ypkg_unpack
+}
+
+pbs_config() {
+	ypkg_config
+}
+
+pbs_build() {
+	ypkg_make
+}
+
+pbs_install() {
+	ypkg_mkinstall
+}
+
+pbs_postinst() {
+	gnome2_install_schema "/etc/gconf/schemas/simple-scan.schemas"
+	gnome2_rarian_sk_update
+	gnome2_desktop_database_update
+	gnome2_icon_cache_update
+}

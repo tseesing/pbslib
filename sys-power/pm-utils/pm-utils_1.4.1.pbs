@@ -1,0 +1,30 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="Suspend and hibernation utilities"
+HOMEPAGE="http://pm-utils.freedesktop.org/"
+LICENSE="GPL-2"
+PACKAGER="hzx@115.com"
+
+SRC_URI="http://pm-utils.freedesktop.org/releases/"$N-$V$R".tar.gz"
+
+RDEPEND="sys-apps/hal"
+BDEPEND="${RDEPEND}"
+RECOMMENDED=""
+
+pbs_unpack() {
+        ypkg_unpack
+}
+
+pbs_config() {
+	ypkg_config
+}
+
+pbs_build() {
+	ypkg_make
+}
+
+pbs_install() {
+	ypkg_mkinstall
+}

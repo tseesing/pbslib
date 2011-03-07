@@ -1,0 +1,80 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="The libart_lgpl package contains the libart libraries. These are useful for high-performance 2D graphics."
+HOMEPAGE="http://www.levien.com/libart"
+REPO="testing"
+LICENSE=""
+PACKAGER="hzx@115.com"
+BIN_URI=""
+BDEPEND=""
+RECOMMENDED=""
+
+pbs_init()
+{
+	echo "init "$N-$V$R" build script..."
+}
+
+pbs_unpack()
+{
+	#unpard file from $YPPATH_SOURCE to current directory.
+	echo "Unpacking to `pwd`"
+	OLDDIR=$(pwd)
+	cd $YPPATH_SOURCE
+	if [ -d $N/.git ];then
+		cd $N
+		git pull --rebase
+	else
+		git clone git://git.gnome.org/$N
+		cd $N
+		git pull --rebase
+	fi
+	cd ../ 
+	cp -a $N $OLDDIR
+	cd $OLDDIR
+	mv $N "$N-$V$R"
+}
+
+pbs_config()
+{
+	echo "config "$N-$V$R"..."
+	
+	./autogen.sh --prefix /usr --disable-gtk-doc --disable-static 
+}
+
+pbs_build()
+{
+	echo "make "$N-$V$R"..."
+	#run make in current directory
+	ypkg_make
+}
+
+pbs_check()
+{
+	echo "checking "$N-$V$R".."
+	#make check
+	#err_check "[Error] $N-$V:: make check falied."
+}
+
+pbs_install()
+{
+	echo "install to $YPPATH_DEST"
+	#install everything to $YPPATH_DEST
+	ypkg_mkinstall
+}
+
+pbs_postinst()
+{
+	echo "running after package installed..."
+}
+
+pbs_prerm()
+{
+	echo "running before package delete..."
+}
+
+pbs_postrm()
+{
+	echo "running after package delete..."
+}

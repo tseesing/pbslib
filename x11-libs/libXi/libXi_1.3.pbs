@@ -1,0 +1,32 @@
+#
+# YLmf_OS package build script
+#
+HOMEPAGE="http://www.x.org/wiki/"
+ 
+SRCURL="http://www.x.org/releases/X11R7.5/src/lib"
+SRC_URI="$SRCURL/libXi-1.3.tar.bz2"
+
+RDEPEND="libXext libX11 libxcb libXau libXdmcp"
+BDEPEND="${RDEPEND}"
+
+pbs_unpack()
+{
+        ypkg_unpack
+}
+
+pbs_config()
+{
+	
+	YPB_CONFIG+=" --sysconfdir=/etc --mandir=/usr/share/man --localstatedir=/var "
+	ypkg_config
+}
+
+pbs_build()
+{
+	ypkg_make
+}
+
+pbs_install()
+{
+	ypkg_mkinstall
+}

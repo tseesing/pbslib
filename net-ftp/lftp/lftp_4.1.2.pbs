@@ -1,0 +1,31 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="Small but powerful ftp client"
+HOMEPAGE="http://lftp.yar.ru/"
+LICENSE="GPL-2"
+PACKAGER="hzx@115.com"
+SRC_URI="http://ftp.yars.free.net/pub/source/"$N"/"$N-$V$R".tar.xz"
+
+RDEPEND="expat gnutls zlib libgcrypt libgpg-error glibc gcc readline ncurses gcc"
+BDEPEND="${RDEPEND} readline expat"
+RECOMMENDED=""
+
+NOTES=""
+
+pbs_unpack() {
+        ypkg_unpack
+}
+
+pbs_config() {
+	ypkg_config
+}
+
+pbs_build() {
+	ypkg_make
+}
+
+pbs_install() {
+	ypkg_mkinstall
+}

@@ -1,0 +1,46 @@
+Author: Matthew Garrett <mjg59@srcf.ucam.org>
+Description: Disable clipping of child windows 
+ * This patch was modified to apply cleanly in 0.8.4-1
+Last-Modified: Thu, 11 Feb 2010 20:06:12 +0100
+Origin: vendor, ubuntu (1:0.3.6-1ubuntu10)
+Index: compiz-0.8.6/src/display.c
+===================================================================
+--- compiz-0.8.6.orig/src/display.c	2010-03-28 14:15:35.000000000 +0200
++++ compiz-0.8.6/src/display.c	2010-07-27 17:28:04.793643002 +0200
+@@ -2234,6 +2234,23 @@
+ 	lastScreen  = ScreenCount (dpy) - 1;
+     }
+ 
++    {
++	XSetWindowAttributes attr;
++	Atom atom;
++
++	attr.override_redirect = TRUE;
++	d->glIncludeInferiorsOwner =
++	    XCreateWindow (dpy, XRootWindow (dpy, 0),
++			   -100, -100, 1, 1, 0,
++			   CopyFromParent, CopyFromParent,
++			   CopyFromParent,
++			   CWOverrideRedirect,
++			   &attr);
++
++	atom = XInternAtom (dpy, "_COMPIZ_GL_INCLUDE_INFERIORS", False);
++	XSetSelectionOwner(dpy, atom, d->glIncludeInferiorsOwner, CurrentTime);
++    }
++
+     for (i = firstScreen; i <= lastScreen; i++)
+     {
+ 	Window		     newWmSnOwner = None, newCmSnOwner = None;
+Index: compiz-0.8.6/include/compiz-core.h
+===================================================================
+--- compiz-0.8.6.orig/include/compiz-core.h	2010-07-27 17:28:03.553643001 +0200
++++ compiz-0.8.6/include/compiz-core.h	2010-07-27 17:28:04.793643002 +0200
+@@ -1028,6 +1028,8 @@
+ 
+     GLenum textureFilter;
+ 
++    Window glIncludeInferiorsOwner;
++
+     Window activeWindow;
+     Window nextActiveWindow;
+ 

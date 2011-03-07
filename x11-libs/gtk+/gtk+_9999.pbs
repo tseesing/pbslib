@@ -1,0 +1,77 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="A multi-platform toolkit for creating graphical user interfaces. It is the GUI toolkit that Gnome uses."
+HOMEPAGE="http://www.gtk.org/"
+REPO="testing"
+BIN_URI=""
+
+RDEPEND="cairo pango atk jasper"
+BDEPEND=" ${RDEPEND} glib2 libpng jpeg libtiff libXrender  libX11 libXau libXdmcp libxcb libpthread-stubs 
+          libXext cups libXi libXinerama libXrandr gobject-introspection gtk-doc "
+RECOMMENDED=" libtiff jpeg libtiff jasper hicolor-icon-theme "
+OPIONAL=" cups jasper docbook-utils libbeagle gtk-doc tracker "
+
+pbs_unpack()
+{
+	#unpard file from $YPPATH_SOURCE to current directory.
+	echo "update git source and copy to `pwd`"
+	#cd /var/ypkg/sources/
+	OLDDIR=$(pwd)
+	cd $YPPATH_SOURCE
+	if [ -d gtk+/.git ];then
+		cd $N
+		git pull --rebase
+	else
+	        git clone git://git.gnome.org/$N
+	        cd $N
+		git checkout --track -b gtk-2-20 origin/gtk-2-20
+	        git pull --rebase
+	fi
+	cd ../
+	cp -a $N $OLDDIR
+	cd $OLDDIR
+	mv $N "$N-$V$R"
+}
+
+pbs_config()
+{
+	echo "config "$N-$V$R"..."
+	#fist, cd build directory
+	cd "$N"-$V$R
+	./autogen.sh --prefix "/usr" --sysconfdir "/etc" --mandir "/usr/share/man"  --disable-gtk-doc --disable-static --with-xinput=yes
+}
+
+pbs_build()
+{
+	echo "make "$N-$V$R"..."
+	#run make in current directory
+	make #"$MAKEOPTS"
+}
+
+pbs_install()
+{
+	echo "install to $YPPATH_DEST"
+	#install everything to $YPPATH_DEST
+	ypkg_mkinstall  RUN_QUERY_IMMODULES_TEST=false RUN_QUERY_LOADER_TEST=false
+	# Install wrappers for the binaries:
+	mkdir -p "$YPPATH_DEST"/usr/bin
+	install -m755 -v $FILES_PATH/files/{update-gdk-pixbuf-loaders,update-gtk-immodules}  "$YPPATH_DEST"/usr/bin
+	# I'm almost inclined to think this stuff is obsolete but I don't know for sure.
+	# I do know that leaving it in doesn't hurt (aside from a few wasted bytes, but
+	# probably less than the comments here waste ;-)
+	mkdir -p "$YPPATH_DEST"/etc/profile.d
+	install -m755 -v  $FILES_PATH/files/profile.d/*  "$YPPATH_DEST"/etc/profile.d
+	return 0
+}
+
+pbs_postinst()
+{
+        echo "running after package installed..."
+	echo "config gtk..."
+	if [ -d /etc/gtk-2.0 ];then
+		update-gdk-pixbuf-loaders
+		update-gtk-immodules
+	fi	
+}

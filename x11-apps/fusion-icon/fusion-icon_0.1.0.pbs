@@ -1,0 +1,36 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="Compiz Fusion Tray Icon and Manager"
+HOMEPAGE="http://compiz-fusion.org"
+LICENSE="GPL-2"
+PACKAGER="hzx@115.com"
+SRC_URI="http://ftp.osuosl.org/pub/gsb/gsb-2.30_slackware-13.1/source/c/$N/"$N-$V$R".tar.bz2"
+
+RDEPEND=""
+BDEPEND="${RDEPEND} python"
+RECOMMENDED=""
+
+NOTES=""
+
+pbs_unpack() {
+        ypkg_unpack
+}
+
+pbs_build() {
+	
+	python setup.py build
+}
+
+pbs_install() {
+	#set autostart at starting session
+	install -d -m755  "$YPPATH_DEST"/etc/xdg/autostart        "$YPPATH_DEST"/usr/share/doc/"$N-$V$R" 
+	install -m755     $FILES_PATH/files/fusion-icon.desktop "$YPPATH_DEST"/etc/xdg/autostart
+	cp -a COPYING "$YPPATH_DEST"/usr/share/doc/"$N-$V$R"
+}
+
+pbs_postinst() {
+	gnome2_desktop_database_update
+	gnome2_icon_cache_update
+}

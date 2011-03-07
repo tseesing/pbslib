@@ -1,0 +1,33 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="A free, cross-platform, hardware independent AdLib sound player library"
+HOMEPAGE="http://adplug.sourceforge.net"
+LICENSE="GPL-2"
+PACKAGER="hzx@115.com"
+
+SRC_URI="http://downloads.sourceforge.net/project/"$N"/AdPlug%20core%20library/"$V$R"/"$N-$V$R".tar.bz2"
+
+RDEPEND="libbinio gcc glibc"
+BDEPEND="${RDEPEND} "
+RECOMMENDED=""
+
+NOTES=""
+
+pbs_unpack() {
+        ypkg_unpack
+}
+
+pbs_config() {
+	ypkg_config
+}
+
+pbs_build() {
+	ypkg_make
+}
+
+pbs_install() {
+	ypkg_mkinstall
+	ypkg_dodoc AUTHORS ChangeLog COPYING INSTALL NEWS README
+}

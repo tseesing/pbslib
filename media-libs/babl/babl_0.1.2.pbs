@@ -1,0 +1,27 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="A dynamic, any to any, pixel format conversion library"
+HOMEPAGE="http://www.gegl.org/babl/"
+ 
+SRC_URI="ftp://ftp.gtk.org/pub/"$N"/0.1/"$N-$V$R".tar.bz2"
+
+RDEPEND=""
+BDEPEND="${RDEPEND}"
+
+pbs_unpack() {
+        ypkg_unpack
+}
+
+pbs_config() {
+	ypkg_config
+}
+
+pbs_build() {
+	ypkg_make
+}
+
+pbs_install() {
+	ypkg_mkinstall
+}

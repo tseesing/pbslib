@@ -1,0 +1,92 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="The GNOME Panel package contains hooks to the menu sub-system and the applet sub-system."
+HOMEPAGE="http://www.gnome.org/"
+REPO="testing"
+LICENSE=""
+PACKAGER="hzx@115.com"
+BIN_URI=""
+
+RDEPEND=""
+BDEPEND="gnome-desktop gnome-vfs startup-notification libwnck libcanberra gstreamer \
+                   evolution-data-server polkit polkit-gnome consolekit gnome-python gnome-base/gnome-menus media-libs/librsvg"
+RECOMMENDED=""
+
+NOTES="http://wiki.linuxfromscratch.org/blfs/wiki/gnome-panel
+       The libxml2 Python module must have been built during the installation of libxml2 else the GNOME Panel build will fail."
+
+pbs_init()
+{
+	echo "init "$N-$V$R" build script..."
+}
+
+pbs_unpack()
+{
+	echo "Unpacking to `pwd`"
+	OLDDIR=$(pwd)
+	cd $YPPATH_SOURCE
+	if [ -d $N/.git ];then
+		cd $N
+		git pull --rebase
+	else
+		git clone git://git.gnome.org/$N
+		cd $N
+		git checkout --track -b gnome-2-30 origin/gnome-2-30
+		git pull --rebase
+	fi
+	cd ../ 
+	cp -a $N $OLDDIR
+	cd $OLDDIR
+	mv $N "$N-$V$R"
+}
+
+pbs_config()
+{
+	echo "config "$N-$V$R"..."
+	
+	#disable help,fix me!
+	#sed -i '/help/d' configure.in Makefile.in
+	./autogen.sh --prefix /usr --sysconfdir=/etc --localstatedir=/var --mandir=/usr/share/man --enable-shared --disable-schemas-install \
+		     --disable-network-manager --enable-polkit --disable-scrollkeeper --with-in-process-applets=clock,notification-area,wncklet  --disable-gtk-doc --disable-static 
+}
+
+pbs_build()
+{
+	echo "make "$N-$V$R"..."
+	#run make in current directory
+	ypkg_make
+	##
+	## make helps failed! ignored, please fix me!
+	#return 0 
+}
+
+pbs_check()
+{
+	echo "checking "$N-$V$R".."
+	#make check
+	#err_check "[Error] $N-$V:: make check falied."
+}
+
+pbs_install()
+{
+	echo "install to $YPPATH_DEST"
+	#install everything to $YPPATH_DEST
+	ypkg_mkinstall
+	cd "$YPPATH_DEST"/etc/gconf/schemas/ && SCHEMAS=$(ls *.schemas|xargs)
+}
+
+pbs_postinst()
+{
+	echo "running after package installed..."
+	default_entries="/etc/gconf/schemas/panel-default-setup.entries"
+	if [ -f "$default_entries" ];then
+		GCONF_CONFIG_SOURCE="$(/usr/bin/gconftool-2 --get-default-source)"
+		/usr/bin/gconftool-2 --direct --config-source "${GCONF_CONFIG_SOURCE}" --load="$default_entries"
+	fi
+	gnome2_rarian_sk_update
+	gnome2_desktop_database_update
+	gnome2_icon_cache_update
+	gnome2_gconfd_reload
+}

@@ -1,0 +1,27 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="A free implementation of the unicode bidirectional algorithm"
+HOMEPAGE="http://fribidi.org/"
+ 
+SRC_URI="http://fribidi.org/download/"$N-$V$R".tar.gz"
+
+RDEPEND="glibc inetutils krb5"
+BDEPEND="${RDEPEND}"
+
+pbs_unpack() {
+        ypkg_unpack
+}
+
+pbs_config() {
+	ypkg_config
+}
+
+pbs_build() {
+	ypkg_make
+}
+
+pbs_install() {
+	ypkg_mkinstall
+}

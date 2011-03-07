@@ -1,0 +1,59 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="The GNOME Panel package contains hooks to the menu sub-system and the applet sub-system."
+HOMEPAGE="http://www.gnome.org/"
+LICENSE="GPL-2"
+PACKAGER="hzx@115.com"
+SRC_URI="http://ftp.gnome.org/pub/GNOME/sources/$N/2.30/"$N-$V$R".tar.bz2"
+
+RDEPEND=""
+BDEPEND="gnome-desktop gnome-vfs startup-notification libwnck libcanberra gstreamer
+         evolution-data-server polkit polkit-gnome consolekit gnome-python gnome-base/gnome-menus media-libs/librsvg"
+RECOMMENDED=""
+
+NOTES="
+http://wiki.linuxfromscratch.org/blfs/wiki/gnome-panel
+The libxml2 Python module must have been built during the installation of libxml2 else the GNOME Panel build will fail.
+"
+
+pbs_unpack() {
+        ypkg_unpack
+}
+
+pbs_config() {
+	
+	YPB_CONFIG+=" --prefix=/usr --sysconfdir=/etc --localstatedir=/var \
+		      --infodir=/usr/share/info \
+	              --mandir=/usr/share/man  \
+		      --disable-static \
+		      --enable-shared \
+		      --disable-schemas-install \
+		      --disable-network-manager \
+		      --enable-polkit 
+		      --disable-scrollkeeper \
+		      --with-in-process-applets=clock,notification-area,wncklet "
+	ypkg_config
+}
+
+pbs_build() {
+	ypkg_make
+}
+
+pbs_install() {
+	ypkg_mkinstall
+	cd "$YPPATH_DEST"/etc/gconf/schemas/ && SCHEMAS=$(ls *.schemas|xargs)
+}
+
+pbs_postinst() {
+	default_entries="/etc/gconf/schemas/panel-default-setup.entries"
+	if [ -f "$default_entries" ];then
+		GCONF_CONFIG_SOURCE="$(/usr/bin/gconftool-2 --get-default-source)"
+		/usr/bin/gconftool-2 --direct --config-source "${GCONF_CONFIG_SOURCE}" --load="$default_entries" >/dev/null 2>&1
+	fi
+	gnome2_rarian_sk_update
+	gnome2_desktop_database_update
+	gnome2_icon_cache_update
+	gnome2_gconfd_reload
+}

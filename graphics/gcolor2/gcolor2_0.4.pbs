@@ -1,0 +1,33 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="a GTK+ color selector"
+HOMEPAGE="http://gcolor2.sourceforge.net"
+REPO=""
+LICENSE=""
+PACKAGER="Zhongxin Huang, hzx@115.com"
+
+SRC_URI="http://sourceforge.net/projects/"$N"/files/"$N"/"$V$R"/"$N-$V$R".tar.bz2"
+
+RDEPEND=""
+BDEPEND="${RDEPEND} "
+RECOMMENDED=""
+
+pbs_unpack() {
+        ypkg_unpack
+}
+
+pbs_config() {
+	./configure --prefix=/usr
+}
+
+pbs_build() {
+	ypkg_make 
+}
+
+pbs_install() {
+	ypkg_mkinstall
+	ypkg_docp_rename "$YPPATH_DEST"/usr/share/pixmaps/gcolor2/icon.png "$YPPATH_DEST"/usr/share/pixmaps/"$N".png
+	ypkg_docp        "$FILES_PATH"/files/"$N".desktop  "$YPPATH_DEST"/usr/share/applications
+}

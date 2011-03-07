@@ -1,0 +1,36 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="Software for generating and retrieving SNMP data"
+HOMEPAGE="http://net-snmp.sourceforge.net/"
+LICENSE="GPL-2"
+PACKAGER="hzx@115.com"
+SRC_URI="http://downloads.sourceforge.net/project/$N/$N/$V/"$N-$V$R".tar.gz"
+
+RDEPEND=""
+BDEPEND="${RDEPEND} "
+RECOMMENDED=""
+
+NOTES=""
+
+pbs_unpack() {
+        ypkg_unpack
+}
+
+pbs_config() {
+	
+	YPB_CONFIG+=" --prefix=/usr "
+	ypkg_config
+}
+
+pbs_build() {
+	ypkg_make
+}
+
+pbs_install() {
+	ypkg_mkinstall
+	install -m755 -d "$YPPATH_DEST"/usr/share/{doc,man}/"$N-$V$R"
+	cp -a *.txt  "$YPPATH_DEST"/usr/share/doc/"$N-$V$R"
+	cp -av *.1  "$YPPATH_DEST"/usr/share/man/"$N-$V$R" 
+}

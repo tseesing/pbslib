@@ -1,0 +1,43 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="a collection of documentation utilities for the Gnome project. "
+HOMEPAGE="http://live.gnome.org/GnomeDocUtils/"
+LICENSE="GPL-2"
+PACKAGER="hzx@115.com"
+SRC_URI="http://ftp.gnome.org/pub/GNOME/sources/$N/0.20/"$N-$V$R".tar.bz2"
+
+RDEPEND=""
+BDEPEND="${RDEPEND} libxslt rarian intltool"
+RECOMMENDED="python "
+
+NOTES=""
+
+pbs_unpack() {
+        ypkg_unpack
+}
+
+pbs_config() {
+	
+	YPB_CONFIG+=" --prefix=/usr --sysconfdir=/etc --localstatedir=/var \
+	              --mandir=/usr/share/man  \
+	              --disable-scrollkeeper \
+	              --enable-build-utils "
+	ypkg_config
+}
+
+pbs_build() {
+	make
+}
+
+pbs_install() {
+	ypkg_mkinstall
+}
+
+pbs_postinst() {
+	# update rarian database
+	if [ -x usr/bin/rarian-sk-update ]; then
+		usr/bin/rarian-sk-update >/dev/null 2>&1
+	fi
+}

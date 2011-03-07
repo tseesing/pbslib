@@ -1,0 +1,40 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="Internationalization Tool Collection"
+HOMEPAGE=" http://edge.launchpad.net/intltool/ "
+ 
+SRC_URI="http://ftp.gnome.org/pub/gnome/sources/$N/0.40/$N-$V.tar.bz2"
+
+RDEPEND="xml-parser"
+BDEPEND="${RDEPEND}"
+
+pbs_unpack()
+{
+        ypkg_unpack
+}
+
+pbs_config()
+{
+	
+	ypkg_config
+}
+
+pbs_build()
+{
+	ypkg_make
+}
+
+pbs_check()
+{
+	make check
+}
+
+pbs_install()
+{
+	ypkg_mkinstall
+	mkdir -p "$YPPATH_DEST"/usr/share/doc/$N-$V
+	install -m644 -D doc/I18N-HOWTO \
+	    "$YPPATH_DEST"/usr/share/doc/$N-$V/I18N-HOWTO
+}

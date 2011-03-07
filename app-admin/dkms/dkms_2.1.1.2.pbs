@@ -1,0 +1,33 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="Dynamic Kernel Module Support Framework"
+HOMEPAGE="http://linux.dell.com/dkms"
+REPO=""
+LICENSE="GPL"
+PACKAGER="Zhongxin Huang, hzx@115.com"
+
+SRC_URI="http://linux.dell.com/"$N"/permalink/"$N-$V$R".tar.gz"
+
+RDEPEND=""
+BDEPEND="${RDEPEND} "
+RECOMMENDED=""
+
+NOTES=""
+
+pbs_unpack() {
+        ypkg_unpack
+}
+
+pbs_config() {
+	ypkg_config
+}
+
+pbs_build() {
+	ypkg_make
+}
+
+pbs_install() {
+	ypkg_mkinstall
+}

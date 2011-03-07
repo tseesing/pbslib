@@ -1,0 +1,28 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="This is a sample skeleton xiange build script file"
+HOMEPAGE="http://foo.bar.com/"
+LICENSE=""
+PACKAGER="hzx@115.com"
+
+SRC_URI="http://www.hpl.hp.com/personal/Jean_Tourrilhes/Linux/wireless_tools."$V$R".tar.gz"
+
+RDEPEND=""
+BDEPEND="${RDEPEND}"
+
+pbs_unpack() {
+        ypkg_unpack
+}
+
+pbs_build() {
+	ypkg_make
+}
+
+pbs_install() {
+	mkdir -p "$YPPATH_DEST"/usr
+	make PREFIX="$YPPATH_DEST"/usr install
+	cd "$YPPATH_DEST"
+	ypkg_domv usr/man usr/share
+}

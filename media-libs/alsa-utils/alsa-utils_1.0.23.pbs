@@ -1,0 +1,35 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="Advanced Linux Sound Architecture Library"
+HOMEPAGE=" http://www.alsa-project.org/"
+ 
+SRC_URI="ftp://ftp.alsa-project.org/pub/utils/"$N-$V$R".tar.bz2"
+
+RDEPEND="alsa-lib glibc ncurses"
+BDEPEND="${RDEPEND}"
+
+pbs_unpack() {
+        ypkg_unpack
+}
+
+pbs_config() {
+	YPB_CONFIG+="--disable-xmlto"
+	ypkg_config
+}
+
+pbs_build() {
+	ypkg_make
+}
+
+pbs_install() {
+	ypkg_mkinstall
+	ypkg_dodoc ChangeLog COPYING INSTALL README
+	#ypkg_doinit "$FILES_PATH"/files/alsa-utils
+	#cd "$YPPATH_DEST"
+	#ypkg_doln /etc/init.d/"$N"  etc/rc3.d/S43"$N"
+	#ypkg_doln /etc/init.d/"$N"  etc/rc3.d/K43"$N"
+	cd "$YPPATH_DEST"
+	ypkg_docp "$FILES_PATH"/files/systemd/*  lib/systemd/system
+}

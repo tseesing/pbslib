@@ -1,0 +1,36 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="The libunique package contains a library for writing single instance applications."
+HOMEPAGE="http://live.gnome.org/LibUnique"
+LICENSE="GPL-2"
+PACKAGER="hzx@115.com"
+
+SRC_URI="http://ftp.gnome.org/pub/GNOME/sources/"$N"/1.1/"$N-$V$R".tar.bz2"
+
+RDEPEND="gtk+ atk pango cairo pixman directfb libpng libxcb libXrender fontconfig freetype 
+	 libxml2 zlib libX11 libxcb libXau libXdmcp dbus-glib dbus libXi libXrandr libXcursor libXcomposite
+	 libXext libXdamage libXfixes expat"
+BDEPEND="${RDEPEND} glib2 gtk+ " #"
+RECOMMENDED="" 
+
+pbs_unpack() {
+        ypkg_unpack
+}
+
+pbs_config() {
+	YPB_CONFIG+="--enable-introspection=no 
+	             --enable-silent-rules"
+	ypkg_config
+}
+
+pbs_build() {
+	ypkg_make
+}
+
+pbs_install() {
+	ypkg_mkinstall
+	cd "$YPPATH_DEST"/usr/include
+	ln -sf  /usr/include/unique-1.0/unique unique
+}

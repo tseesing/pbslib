@@ -1,0 +1,79 @@
+#!/bin/bash
+#
+#exit code must be 0 OR installation will be abort
+#this will be called before /target thing umounted done
+
+# Don't ask password for default user
+#echo "$TARGETDIR $(date)" >>/tmp/post_install.log
+#mkdir -p "$TARGETDIR"/etc/PolicyKit
+#cat <<EOF > "$TARGETDIR"/etc/PolicyKit/PolicyKit.conf
+#<?xml version="1.0" encoding="UTF-8"?> <!-- -*- XML -*- -->
+#
+#<!DOCTYPE pkconfig PUBLIC "-//freedesktop//DTD PolicyKit Configuration 1.0//EN"
+#"http://hal.freedesktop.org/releases/PolicyKit/1.0/config.dtd">
+#
+#<!-- See the manual page PolicyKit.conf(5) for file format -->
+#
+#<config version="0.1">
+#    <match user="root">
+#        <return result="yes"/>
+#    </match>
+#    <!-- don't ask password for default user -->
+#    <match user="$INS_USERNAME">
+#        <return result="yes"/>
+#    </match>
+#    <define_admin_auth group="wheel"/>
+#</config>
+#EOF
+
+#Policy to allow the default user to bypass policykit
+#mkdir -p "$TARGETDIR"/var/lib/polkit-1/localauthority/10-vendor.d
+#cat << EOF > "$TARGETDIR"/var/lib/polkit-1/localauthority/10-vendor.d/10-desktop_user.pkla
+# Policy to allow the default user to bypass policykit
+#
+#[default user permissions]
+#Identity=unix-user:$INS_USERNAME
+#Action=*
+#ResultAny=no
+#ResultInactive=no
+#ResultActive=yes
+#EOF
+
+#record locale
+cat "$TARGETDIR"/etc/default/locale  >>"$TARGETDIR"/etc/environment
+
+#creat "well know" user dirs
+chroot "$TARGETDIR" su $INS_USERNAME -c "/usr/bin/xdg-user-dirs-update"
+
+#Remove unuseful apps
+#FILES="casper lupin-casper lupin-casper osinstaller"
+FILES="osinstaller"
+for file in $FILES;do
+    chroot "$TARGETDIR" ypkg -C ${file}
+done
+
+#Disable autologin at install-automatic mode
+if grep "install-automatic" /proc/cmdline >/dev/null;then
+	cp "$TARGETDIR"/etc/gdm/custom.conf.ori  "$TARGETDIR"/etc/gdm/custom.conf
+fi	
+
+#Update initrd.img
+#chroot "$TARGETDIR" update-initramfs -d -u
+
+#Update grub.cfg
+#chroot "$TARGETDIR" /usr/sbin/update-grub
+
+#Copy apps to favorites
+chroot "$TARGETDIR" su "$INS_USERNAME" -c "mkdir -p /home/"$INS_USERNAME"/.gnomenu/favorites/"
+apps="115udown.desktop 115u.desktop webqq.desktop 1g1g.desktop chromium-browser.desktop leafpad.desktop gcalctool.desktop 
+      gnome-panel.desktop gnome-volume-control.desktop display-properties.desktop gnome-system-monitor.desktop"
+for app in $apps; do
+	cp -L "$TARGETDIR"/usr/share/applications/"$app" "$TARGETDIR"/home/"$INS_USERNAME"/.gnomenu/favorites/
+done
+chroot "$TARGETDIR" chown "$INS_USERNAME":"$INS_USERNAME" /home/"$INS_USERNAME"/.gnomenu/favorites/*.desktop
+
+#rmmove isodevice
+umount "$TARGETDIR/isodevice"
+rmdir "$TARGETDIR/isodevice"
+
+exit 0

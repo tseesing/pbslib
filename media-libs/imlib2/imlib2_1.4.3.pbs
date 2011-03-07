@@ -1,0 +1,27 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="Version 2 of an advanced replacement library for libraries like libXpm"
+HOMEPAGE="http://docs.enlightenment.org/api/imlib2/html/"
+ 
+SRC_URI="http://downloads.sourceforge.net/enlightenment/"$N-$V$R".tar.gz"
+
+RDEPEND="freetype zlib libXext libX11 libxcb libXau libXdmcp glibc "
+BDEPEND="${RDEPEND}"
+
+pbs_unpack() {
+        ypkg_unpack
+}
+
+pbs_config() {
+	ypkg_config
+}
+
+pbs_build() {
+	ypkg_make
+}
+
+pbs_install() {
+	ypkg_mkinstall
+}

@@ -1,0 +1,33 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="X11 Apps"
+HOMEPAGE="http://www.x.org/wiki/"
+ 
+SRCURL="http://www.x.org/releases/X11R7.5/src/app"
+SRC_URI="$SRCURL/xrdb-1.0.6.tar.bz2"
+
+RDEPEND="libXmu libX11 libxcb libXau libXdmcp"
+BDEPEND="${RDEPEND} x11-libs/libXmu"
+
+pbs_unpack()
+{
+        ypkg_unpack
+}
+
+pbs_config()
+{
+	
+	ypkg_config
+}
+
+pbs_build()
+{
+	ypkg_make
+}
+
+pbs_install()
+{
+	ypkg_mkinstall
+}

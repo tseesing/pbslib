@@ -1,0 +1,47 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="Device-mapper RAID tool and library"
+HOMEPAGE="http://people.redhat.com/~heinzm/sw/dmraid/"
+LICENSE="GPL-2"
+PACKAGER="hzx@115.com"
+
+SRC_URI="http://people.redhat.com/~heinzm/sw/"$N"/src/"$N-$V".rc16.tar.bz2"
+
+RDEPEND="device-mapper "
+BDEPEND="${RDEPEND} device-mapper"
+RECOMMENDED=""
+
+pbs_unpack() {
+        ypkg_unpack
+}
+
+pbs_config() {
+	cd "$V".rc16
+	ypkg_patch dmraid-destdir-fix.patch
+	ypkg_config
+}
+
+pbs_build() {
+	ypkg_make
+}
+
+pbs_install() {
+	ypkg_mkinstall
+	ypkg_dodoc README 
+	ypkg_doln  /usr/lib/libdmraid.so "$YPPATH_DEST"/usr/lib/libdmraid.so."$V$R"
+	#for initramfs
+	cd "$YPPATH_DEST"
+	ypkg_docp_rename "$FILES_PATH"/files/hook_dmraid       usr/share/initramfs-tools/hooks/dmraid
+	ypkg_docp_rename "$FILES_PATH"/files/local-top_dmraid  usr/share/initramfs-tools/scripts/local-top/dmraid
+	ypkg_docp  "$FILES_PATH"/files/85-dmraid.rules         lib/udev/rules.d
+	ypkg_docp  "$FILES_PATH"/files/dmraid-activate         sbin
+}
+pbs_postinst() {
+	update-initramfs -d -u
+}
+
+pbs_postrm() {
+	update-initramfs -d -u
+}

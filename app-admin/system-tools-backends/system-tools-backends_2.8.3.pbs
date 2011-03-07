@@ -1,0 +1,48 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="Tools aimed to make easy the administration of UNIX systems"
+HOMEPAGE="http://www.gnome.org/projects/gst/"
+LICENSE="GPL-2"
+PACKAGER="hzx@115.com"
+ 
+SRC_URI=" http://ftp.gnome.org/pub/GNOME/sources/system-tools-backends/2.8/$N-$V.tar.bz2"
+
+RDEPEND=""
+BDEPEND="${RDEPEND} dbus-glib intltool net-dbus"
+RECOMMENDED=""
+
+NOTES="
+http://wiki.linuxfromscratch.org/blfs/wiki/system-tools-backends
+add your user to group stb-admin manually"
+
+pbs_init() {
+	ypkg_groupadd "stb-admin"
+}
+
+pbs_unpack() {
+        ypkg_unpack
+}
+
+pbs_config() {
+	
+	patch -p1 -i $FILES_PATH/files/system-tools-backends-2.8.2-automagic-polkit.patch
+        patch -p1 -i $FILES_PATH/files/system-tools-backends-2.8.2-default-permissions.patch
+	patch -p1 -i $FILES_PATH/files/system-tools-backends-2.8.2-cve-2008-4311.patch
+	patch -p1 -i $FILES_PATH/files/system-tools-backends-2.8.2-1ubuntu1.1.patch 
+	
+	YPB_CONFIG+=" --prefix=/usr --sysconfdir=/etc --localstatedir=/var \
+	              --infodir=/usr/share/info \
+		      --mandir=/usr/share/man  "
+		      #--disable-polkit   "
+	ypkg_config
+}
+
+pbs_build() {
+	ypkg_make
+}
+
+pbs_install() {
+	ypkg_mkinstall
+}

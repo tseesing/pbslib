@@ -1,0 +1,35 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="Compizconfig Settings Manager"
+HOMEPAGE="http://www.compiz.org/"
+LICENSE="GPL-2"
+PACKAGER="hzx@115.com"
+
+SRC_URI="http://ftp.osuosl.org/pub/gsb/gsb-2.30_slackware-13.1/source/c/"$N"/"$N-$V$R".tar.bz2"
+
+RDEPEND="python pygtk libsexy sexy-python compizconfig-python pyrex compizconfig-backend-gconf libcompizconfig"
+BDEPEND="${RDEPEND} "
+RECOMMENDED=""
+
+NOTES=""
+
+pbs_unpack() {
+        ypkg_unpack
+}
+
+pbs_build() {
+	ypkg_make
+}
+
+pbs_install() {
+	ypkg_mkinstall
+	ypkg_dodoc AUTHORS ChangeLog COPYING INSTALL NEWS README
+}
+
+pbs_postinst() {
+	gnome2_desktop_database_update
+	gnome2_icon_cache_update  "hicolor"
+	gnome2_gconfd_reload
+}

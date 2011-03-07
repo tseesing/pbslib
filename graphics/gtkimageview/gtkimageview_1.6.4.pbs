@@ -1,0 +1,34 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="GtkImageView is a simple image viewer widget for GTK."
+HOMEPAGE="http://trac.bjourne.webfactional.com/wiki"
+LICENSE="GPL-2"
+PACKAGER="hzx@115.com"
+
+SRC_URI="http://trac.bjourne.webfactional.com/chrome/common/releases/"$N-$V$R".tar.gz"
+
+RDEPEND="gtk+ atk pango cairo freetype fontconfig libXi libXrandr libXcursor libXcomposite libXext
+	 libXdamage libXfixes pixman libxml2 directfb libpng libxcb libXau libXdmcp zlib expat "
+BDEPEND="${RDEPEND} gtk+"
+RECOMMENDED=""
+
+NOTES=""
+
+pbs_unpack() {
+        ypkg_unpack
+}
+
+pbs_config() {
+	ypkg_config
+}
+
+pbs_build() {
+	ypkg_make
+}
+
+pbs_install() {
+	ypkg_mkinstall
+	ypkg_dodoc COPYING README
+}

@@ -1,0 +1,30 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="Bitstream Vera font family"
+HOMEPAGE="http://www.gnome.org/fonts/"
+LICENSE="Copyright (c) 2003 by Bitstream, Inc."
+PACKAGER="hzx@115.com"
+
+SRC_URI="http://ftp.osuosl.org/pub/gsb/gsb-2.30_slackware-13.1/source/t/$N/"$N-$V$R".tar.bz2"
+
+RDEPEND="mkfontdir fontconfig"
+BDEPEND="${RDEPEND} "
+RECOMMENDED=""
+
+NOTES=""
+
+pbs_unpack() {
+        ypkg_unpack
+}
+
+pbs_install() {
+	ypkg_docp *ttf "$YPPATH_DEST"/usr/share/fonts/ttf-bitstream-vera
+	ypkg_docp_rename local.conf "$YPPATH_DEST"/etc/fonts/bitstream-vera.conf
+	ypkg_dodoc COPYRIGHT* README* RELEASE* 
+}
+
+pbs_postinst() {
+	ypkg_dofont /usr/share/fonts/ttf-bitstream-vera
+}

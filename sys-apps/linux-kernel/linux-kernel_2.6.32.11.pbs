@@ -1,0 +1,37 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="Linux Kernel"
+HOMEPAGE="http://www.kernel.org"
+LICENSE=""
+PACKAGER="hzx@115.com"
+SRC_URI="http://www.kernel.org/pub/linux/kernel/v2.6/linux-$V$R.tar.bz2"
+
+RDEPEND=""
+BDEPEND="${RDEPEND}"
+
+pbs_unpack(){
+        ypkg_unpack
+	mv linux-$V$R "$N-$V$R"
+}
+
+pbs_build(){
+	
+	#copy configure file
+        cp $FILES_PATH/files/config-ylmfos-2.6.32.11 .config
+	ypkg_make
+	make modules
+}
+
+pbs_install(){
+	#copy image
+	mkdir -p "$YPPATH_DEST"/boot
+	cp arch/i386/boot/bzImage "$YPPATH_DEST"/boot/vmlinuz-$V$R
+	cp .config "$YPPATH_DEST"/boot/config-$V$R
+	#install modules
+	mkdir -p "$YPPATH_DEST"/lib/modules
+	make INSTALL_MOD_PATH=$YPPATH_DEST modules_install
+	#install firmware
+	make INSTALL_MOD_PATH=$YPPATH_DEST firmware_install
+}

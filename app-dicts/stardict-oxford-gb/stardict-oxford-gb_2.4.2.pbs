@@ -1,0 +1,19 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="Oxford dictionary for stardict"
+HOMEPAGE="http://sourceforge.net/projects/stardict"
+ 
+SRC_URI="http://mirrors.tds.net/gentoo/distfiles/"$N-$V$R".tar.bz2"
+
+RDEPEND=""
+BDEPEND="${RDEPEND}"
+
+pbs_unpack() {
+        ypkg_unpack
+}
+
+pbs_install() {
+	ypkg_docp * "$YPPATH_DEST"/usr/share/stardict/dic
+}

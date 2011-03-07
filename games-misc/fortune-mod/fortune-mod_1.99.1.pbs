@@ -1,0 +1,38 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="The notorious fortune program"
+HOMEPAGE="http://www.redellipse.net/code/fortune"
+REPO=""
+LICENSE=""
+PACKAGER="Zhongxin Huang, hzx@115.com"
+
+SRC_URI="ftp://lug.mtu.edu/gentoo/distfiles/"$N-$V$R".tar.gz"
+
+RDEPEND="recode"
+BDEPEND="${RDEPEND} "
+RECOMMENDED=""
+
+NOTES=""
+
+pbs_unpack() {
+        ypkg_unpack
+}
+
+pbs_build() {
+	 sed -i \
+ 	        -e 's:/games::' \
+	        -e 's:/fortunes:/fortune:' \
+	        -e '/^FORTDIR=/s:=.*:=$(prefix)/usr/bin:' \
+	        -e '/^all:/s:$: fortune/fortune.man:' \
+	        -e "/^OFFENSIVE=/s:=.*:=`use offensive && echo 1 || echo 0`:" \
+	 Makefile 
+	 ypkg_make
+}
+
+pbs_install() {
+	make prefix="$YPPATH_DEST" install
+	ypkg_dodoc ChangeLog INDEX Notes Offensive README TODO cookie-files
+}
+

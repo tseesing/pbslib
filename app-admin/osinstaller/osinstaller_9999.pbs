@@ -1,0 +1,36 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="livecd installer for Ylmf_OS Linux"
+HOMEPAGE="http://www.ylmf.net"
+LICENSE=""
+PACKAGER="hzx@115.com"
+
+SRC_URI="git://192.168.1.58/"$N".git"
+
+RDEPEND="pyparted" 
+BDEPEND="${RDEPEND}"
+RECOMMENDED="pywebkitgtk dosfstools jfsutils ntfsprogs e2fsprogs reiserfsprogs xfsprogs"
+
+pbs_unpack() {
+        ypkg_unpack
+}
+
+pbs_config() {
+	#git checkout new_arch
+	ypkg_config
+}
+
+pbs_build() {
+	ypkg_make
+}
+
+pbs_install() {
+	ypkg_mkinstall
+	cd "$YPPATH_DEST"
+	ypkg_docp "$FILES_PATH"/files/installbg.png  usr/share/"$N"
+	ypkg_docp "$FILES_PATH"/files/"$N" etc/init.d
+	ypkg_dounit "$N".service
+	ypkg_docp "$FILES_PATH"/files/{pre_install,post_install} usr/share/"$N"
+}

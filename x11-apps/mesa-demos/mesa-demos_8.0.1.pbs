@@ -1,0 +1,34 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="Mesa's OpenGL utility and demo programs (glxgears and glxinfo)"
+HOMEPAGE="http://mesa3d.sourceforge.net/"
+REPO=""
+LICENSE="GPL"
+PACKAGER="Zhongxin Huang, hzx@115.com"
+
+SRC_URI="ftp://ftp.freedesktop.org/pub/mesa/demos/8.0.1/"$N-$V$R".tar.bz2"
+
+RDEPEND="mesa glew"
+BDEPEND="${RDEPEND}"
+RECOMMENDED=""
+
+NOTES=""
+
+pbs_unpack() {
+        ypkg_unpack
+}
+
+pbs_config() {
+	ypkg_config
+}
+
+pbs_build() {
+	cd src/xdemos
+	ypkg_make
+}
+
+pbs_install() {
+	ypkg_mkinstall
+}

@@ -1,0 +1,39 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="OpenGL-like graphic library for Linux"
+HOMEPAGE="http://mesa3d.sourceforge.net/"
+LICENSE=""
+PACKAGER="hzx@115.com"
+SRC_URI="ftp://ftp.freedesktop.org/pub/mesa/"$V"/MesaLib-"$V$R".tar.bz2  
+	 ftp://ftp.freedesktop.org/pub/mesa/"$V"/MesaDemos-"$V$R".tar.bz2 
+	 ftp://ftp.freedesktop.org/pub/mesa/"$V"/MesaGLUT-"$V$R".tar.bz2"
+
+RDEPEND="glibc libX11 libXext libXxf86vm libXdamage libXfixes libdrm libxcb libXau libXdmcp "
+BDEPEND="${RDEPEND} x11-libs/libX11 x11-libs/libXext x11-libs/libXxf86vm x11-libs/libXdamage 
+	 x11-libs/libXfixes x11-libs/libXi dri2proto libdrm xorg-server"
+
+pbs_unpack() {
+	tar xf "$YPPATH_SOURCE"/MesaLib-"$V$R".tar.bz2
+	tar xf "$YPPATH_SOURCE"/MesaDemos-"$V$R".tar.bz2
+	tar xf "$YPPATH_SOURCE"/MesaGLUT-"$V$R".tar.bz2
+	mv Mesa-"$V$R"  "$N-$V$R"
+}
+
+pbs_config() {
+	YPB_CONFIG+="--enable-gallium-intel 
+	             --enable-gallium-radeon 
+		     --enable-gallium-swrast "
+		     #--enable-gallium-nouveau "
+	ypkg_config
+}
+
+pbs_build() {
+	ypkg_make
+}
+
+pbs_install() {
+	ypkg_mkinstall
+	ypkg_docp progs/xdemos/glx{info,gears} "$YPPATH_DEST"/usr/bin
+}

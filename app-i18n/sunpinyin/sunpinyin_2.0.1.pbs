@@ -1,0 +1,32 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="Chinese input method for X"
+HOMEPAGE="http://code.google.com/p/sunpinyin/"
+LICENSE="LGPLv2 and CDDL dual-licenses"
+PACKAGER="hzx@115.com"
+
+SRC_URI="http://sunpinyin.googlecode.com/files/"$N-$V$R".tar.gz"
+
+RDEPEND="gtk+ ibus"
+BDEPEND="${RDEPEND}"
+
+pbs_unpack() {
+        ypkg_unpack
+}
+
+pbs_config(){
+	ypkg_patch "$N-$V$R"-mkdir.patch
+	YPB_CONFIG+="--enable-ibus"
+	ypkg_config
+}
+
+pbs_build(){
+	ypkg_make
+}
+
+pbs_install() {
+	ypkg_mkinstall
+	ypkg_dodoc AUTHORS ChangeLog NEWS README TODO
+}

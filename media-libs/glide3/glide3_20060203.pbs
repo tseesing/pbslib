@@ -1,0 +1,37 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="Hardware support for 3dfx Voodoo cards"
+HOMEPAGE="http://glide.sourceforge.net/"
+REPO=""
+LICENSE="GPL"
+PACKAGER="Zhongxin Huang, hzx@115.com"
+
+SRC_URI="ftp://lug.mtu.edu/gentoo/distfiles/Glide3-20060203.tar.bz2"
+
+RDEPEND="libX11"
+BDEPEND="${RDEPEND} "
+RECOMMENDED=""
+
+pbs_unpack() {
+        ypkg_unpack
+}
+
+pbs_build() {
+	ypkg_make
+}
+
+pbs_install() {
+	ypkg_docp  h5/lib/libglide3.so h5/lib/libglide3.a  "$YPPATH_DEST"/usr/lib/
+        ypkg_docp swlibs/fxmisc/3dfx.h \
+		   h5/glide3/src/g3ext.h \
+		   h5/glide3/src/glide.h \
+		   h5/glide3/src/glidesys.h \
+		   h5/glide3/src/glideutl.h \
+		   swlibs/fxmisc/linutil.h \
+		   h5/incsrc/sst1vid.h \
+		   swlibs/texus2/lib/texus.h \
+	 "$YPPATH_DEST"/usr/include/glide3
+}
+

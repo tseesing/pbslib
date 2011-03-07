@@ -1,0 +1,66 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION=" GNOME file manager."
+HOMEPAGE="http://www.gnome.org/projects/nautilus/"
+REPO=""
+LICENSE="GPL-2"
+PACKAGER="hzx@115.com"
+
+SRC_URI="http://ftp.gnome.org/pub/gnome/desktop/2.30/2.30.2/sources/"$N-$V$R".tar.bz2"
+
+RDEPEND="gnome-desktop startup-notification libSM util-linux-ng libICE libunique gtk+ gail libXi libXrandr
+	 libXcursor libXcomposite libXext libXdamage libXfixes atk glib2 glibc pango gcc cairo pixman directfb
+	 libpng libxcb libXrender fontconfig freetype expat gconf orbit glib2 dbus-glib dbus libxml2 zlib libX11
+	 libxcb libXau libXdmcp libexif"
+BDEPEND="${RDEPEND} bzip2 ntfs-3g gamin gnome-desktop libbonoboui libgnome orbit gconf util-linux-ng libunique "
+RECOMMENDED=""
+
+NOTES="http://wiki.linuxfromscratch.org/blfs/wiki/nautilus"
+
+pbs_unpack() {
+        ypkg_unpack
+}
+
+pbs_config() {
+	ypkg_patch ylmfos-translate.patch 99_add_menuitem.patch nautilus_automount.patch 
+	YPB_CONFIG+=" --disable-schemas-install 
+		      --disable-update-mimedb 
+		      --disable-packagekit "
+	ypkg_config
+}
+
+pbs_build() {
+	ypkg_make
+}
+
+pbs_install() {
+	ypkg_mkinstall
+	ypkg_dodoc docs/*.{txt,dia,pdf,sxw,faq,html}
+	# Clean up empty mime files
+	find "$YPPATH_DEST"/usr/share/mime -size 0 -type f -exec rm {} \;
+}
+
+pbs_postinst() {
+	gnome2_install_schema "/etc/gconf/schemas/apps_nautilus_preferences.schemas"
+	# Make sure xfce thunar doesn't steal our job
+	if [ -f /usr/share/applications/Thunar-folder-handler.desktop ]; then
+	        ypkg_domv_rename -f /usr/share/applications/Thunar-folder-handler.desktop{,.disabled}
+	fi
+	gnome2_rarian_sk_update
+	gnome2_desktop_database_update
+	gnome2_mime_database_update
+	gnome2_icon_cache_update  "hicolor"
+	# For nautilus to control ftp (otherwise annoying error box arises)
+	gnome2_install_defaut_gconf "string" "/desktop/gnome/url-handlers/ftp/command" "nautilus \"%s\""
+	# Ensure that Nautilus is used for GNOME desktop, but Thunar or Dolphin
+	gnome2_install_defaut_gconf "string" "/desktop/gnome/url-handlers/file/command" "nautilus \"%s\""
+	gnome2_install_defaut_gconf "bool"   "/desktop/gnome/url-handlers/file/enabled" "True"
+	gnome2_install_defaut_gconf "bool"   "/desktop/gnome/url-handlers/file/need-terminal" "false"
+	gnome2_install_defaut_gconf "bool"   "/apps/nautilus/preferences/always_use_location_entry" "True"
+	gnome2_install_defaut_gconf "bool"   "/apps/nautilus/desktop/volumes_visible" "false"
+	#
+	gnome2_install_defaut_gconf "string" "/apps/nautilus/preferences/desktop_font"  "Ubuntu 10"
+	gnome2_gconfd_reload 
+}

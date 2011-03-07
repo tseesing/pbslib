@@ -1,0 +1,14 @@
+--- data/gdm	2010-03-18 05:27:16.000000000 +0800
++++ data/gdm.new	2011-03-01 17:20:54.336117003 +0800
+@@ -1,5 +1,6 @@
+ #%PAM-1.0
+ auth       required    pam_env.so
++auth       optional    pam_gnome_keyring.so try_first_pass
+ auth       required    pam_succeed_if.so user != root quiet
+ auth       sufficient  pam_succeed_if.so user ingroup nopasswdlogin
+ auth       include     system-auth
+@@ -10,3 +11,4 @@
+ session    include     system-auth
+ session    required    pam_loginuid.so
+ session    optional    pam_console.so
++session    optional    pam_gnome_keyring.so

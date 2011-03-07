@@ -1,0 +1,70 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="The GNOME menu system, implementing the F.D.O cross-desktop spec"
+HOMEPAGE="http://www.gnome.org"
+LICENSE="GPL-2"
+PACKAGER="hzx@115.com"
+ 
+SRC_URI=""ftp://ftp.gnome.org/pub/gnome/sources/gnome-menus/2.28/$N-$V.tar.bz2
+BDEPEND="glib2 intltool python"
+RECOMMENDED=""
+
+NOTES="http://wiki.linuxfromscratch.org/blfs/wiki/gnome-menus"
+
+pbs_init()
+{
+	echo "init "$N-$V$R" build script..."
+}
+
+pbs_unpack()
+{
+	echo "Unpacking to `pwd`"
+        ypkg_unpack
+}
+
+pbs_config()
+{
+	echo "config "$N-$V$R"..."
+	
+	YPB_CONFIG+=" --prefix=$(pkg-config --variable=prefix ORBit-2.0) --sysconfdir=/etc/gnome/2.28.2 "
+	ypkg_config
+}
+
+pbs_build()
+{
+	echo "make "$N-$V$R"..."
+	ypkg_make
+}
+
+pbs_check()
+{
+	echo "checking "$N-$V$R".."
+}
+
+pbs_install()
+{
+	echo "install to $YPPATH_DEST"
+	ypkg_mkinstall
+	mkdir -p "$YPPATH_DEST"/etc/profile.d/
+	echo "export XDG_CONFIG_DIRS=/etc/gnome/2.28.2/xdg"  >"$YPPATH_DEST"/etc/profile.d/gnome.sh
+	echo "export XDG_DATA_DIRS=/usr/share:/usr/share:/usr/local/share" >> "$YPPATH_DEST"/etc/profile.d/gnome.sh
+	echo "export PYTHONPATH=\$PYTHONPATH:$(pkg-config --variable=prefix ORBit-2.0)/lib/python2.6/site-packages:$(pkg-config \
+	--variable=prefix ORBit-2.0)/lib/python2.6/site-packages/GMenuSimpleEditor" >> "$YPPATH_DEST"/etc/profile.d/gnome.sh
+}
+
+pbs_postinst()
+{
+	echo "running after package installed..."
+}
+
+pbs_prerm()
+{
+	echo "running before package delete..."
+}
+
+pbs_postrm()
+{
+	echo "running after package delete..."
+}

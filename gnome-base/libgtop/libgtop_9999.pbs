@@ -1,0 +1,87 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="A library that provides top functionality to applications"
+HOMEPAGE="http://www.gnome.org/"
+REPO="testing"
+LICENSE=""
+PACKAGER="hzx@115.com"
+BIN_URI=""
+
+RDEPEND=""
+BDEPEND="${RDEPEND} glib2"
+RECOMMENDED=""
+
+NOTES="http://wiki.linuxfromscratch.org/blfs/wiki/libgtop"
+
+pbs_init()
+{
+	echo "init "$N-$V$R" build script..."
+}
+
+pbs_unpack()
+{
+	#unpard file from $YPPATH_SOURCE to current directory.
+	echo "Unpacking to `pwd`"
+	OLDDIR=$(pwd)
+	cd $YPPATH_SOURCE
+	if [ -d $N/.git ];then
+		cd $N
+		git pull --rebase
+	else
+		git clone git://git.gnome.org/$N
+		cd $N
+		git pull --rebase
+	fi
+	cd ../ 
+	cp -a $N $OLDDIR
+	cd $OLDDIR
+	mv $N "$N-$V$R"
+}
+
+pbs_config()
+{
+	echo "config "$N-$V$R"..."
+	
+	./autogen.sh --prefix /usr --sysconfdir /etc --localstatedir /var/lib --mandir /usr/share/man --disable-static --enable-shared
+}
+
+pbs_build()
+{
+	echo "make "$N-$V$R"..."
+	#run make in current directory
+	ypkg_make
+}
+
+pbs_check()
+{
+	echo "checking "$N-$V$R".."
+	#make check
+}
+
+pbs_install()
+{
+	echo "install to $YPPATH_DEST"
+	#install everything to $YPPATH_DEST
+	ypkg_mkinstall
+}
+
+pbs_postinst()
+{
+	echo "running after package installed..."
+	# Install new info files
+	if [ -x /usr/bin/install-info ]; then
+		/usr/bin/install-info /usr/share/info/libgtop2.info.gz /usr/info/dir #>/dev/null 2>&1
+	fi
+}
+
+pbs_prerm()
+{
+	echo "running before package delete..."
+}
+
+pbs_postrm()
+{
+	echo "running after package delete..."
+}

@@ -1,0 +1,33 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="Daemon providing interfaces to work with storage devices"
+HOMEPAGE="http://www.freedesktop.org/wiki/Software/devicekit"
+LICENSE="GPL-2"
+PACKAGER="hzx@115.com"
+
+SRC_URI="http://hal.freedesktop.org/releases/DeviceKit-disks-"$V$R".tar.gz"
+
+RDEPEND="libatasmart dbus-glib glib2 glibc udev dbus"
+BDEPEND="${RDEPEND} dbus-glib libatasmart parted polkit sg3_utils udev"
+RECOMMENDED=""
+
+NOTES="http://wiki.linuxfromscratch.org/blfs/wiki/devicekit-disks"
+
+pbs_unpack() {
+        ypkg_unpack
+}
+
+pbs_config() {
+	YPB_CONFIG+="--disable-gtk-doc"
+	ypkg_config
+}
+
+pbs_build() {
+	ypkg_make
+}
+
+pbs_install() {
+	ypkg_mkinstall
+}

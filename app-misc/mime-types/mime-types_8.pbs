@@ -1,0 +1,20 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="Provides /etc/mime.types file"
+HOMEPAGE="www.ylmf.net"
+LICENSE="GPL-2"
+PACKAGER="hzx@115.com"
+ 
+SRC_URI=""
+
+RDEPEND=""
+BDEPEND="${RDEPEND} "
+RECOMMENDED=""
+
+NOTES=""
+
+pbs_install() {
+	ypkg_docp "$FILES_PATH"/files/mime.types  "$YPPATH_DEST"/etc
+}

@@ -1,0 +1,32 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="utils for managing LZMA compressed files"
+HOMEPAGE="http://tukaani.org/xz/"
+REPO=""
+LICENSE=""
+PACKAGER="Zhongxin Huang, hzx@115.com"
+
+SRC_URI="http://tukaani.org/xz/xz-4.999.9beta.tar.bz2"
+
+RDEPEND="glibc "
+BDEPEND="${RDEPEND}"
+
+pbs_unpack() {
+        ypkg_unpack
+}
+
+pbs_config() {
+	cd  "$N-$V$R"
+	YPB_CONFIG+=" --prefix=/usr "
+	ypkg_config
+}
+
+pbs_build() {
+	ypkg_make
+}
+
+pbs_install() {
+	ypkg_mkinstall
+}

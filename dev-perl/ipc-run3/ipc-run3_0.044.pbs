@@ -1,0 +1,30 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="Perl module IPC-Run3"
+HOMEPAGE="http://search.cpan.org/~adamk/File-Which-1.09/"
+REPO=""
+LICENSE="GPL-2"
+PACKAGER="hzx@115.com"
+
+SRC_URI="http://search.cpan.org/CPAN/authors/id/R/RJ/RJBS/IPC-Run3-"$V$R".tar.gz"
+
+RDEPEND=""
+BDEPEND="${RDEPEND} test-script"
+
+pbs_unpack() {
+        ypkg_unpack
+}
+
+pbs_config() {
+	ypkg_config
+}
+
+pbs_build() {
+	ypkg_make
+}
+
+pbs_install() {
+	ypkg_mkinstall
+}

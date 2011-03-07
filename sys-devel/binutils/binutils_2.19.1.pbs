@@ -1,0 +1,28 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="Tools necessary to build programs"
+HOMEPAGE="http://www.gnu.org/software/binutils/"
+ 
+SRC_URI="http://ftp.gnu.org/gnu/"$N"/"$N-$V$R".tar.bz2"
+
+RDEPEND="zlib glibc"
+BDEPEND="${RDEPEND}"
+
+pbs_unpack() {
+        ypkg_unpack
+}
+
+pbs_config() {
+	ypkg_config
+}
+
+pbs_build() {
+	make tooldir=/usr
+}
+
+pbs_install() {
+	ypkg_mkinstall tooldir=/usr
+	ypkg_docp include/libiberty.h "$YPPATH_DEST"/usr/include
+}

@@ -1,0 +1,23 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="Data files for poppler to support uncommon encodings without xpdfrc"
+HOMEPAGE="http://poppler.freedesktop.org/"
+ 
+SRC_URI="http://poppler.freedesktop.org/"$N-$V$R".tar.gz"
+
+RDEPEND=""
+BDEPEND="${RDEPEND} media-libs/fontconfig"
+
+pbs_unpack() {
+        ypkg_unpack
+}
+
+pbs_config() {
+	ypkg_config
+}
+
+pbs_install() {
+	make prefix=/usr DESTDIR="$YPPATH_DEST" install
+}

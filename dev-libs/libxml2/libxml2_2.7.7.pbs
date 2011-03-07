@@ -1,0 +1,27 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="Version 2 of the library to manipulate XML files"
+HOMEPAGE="http://www.xmlsoft.org/"
+
+SRC_URI="ftp://xmlsoft.org/"$N"/"$N-$V$R".tar.gz"
+
+RDEPEND="zlib"
+BDEPEND="${RDEPEND}"
+
+pbs_unpack() {
+        ypkg_unpack
+}
+
+pbs_config() {
+	ypkg_config
+}
+
+pbs_build() {
+	ypkg_make
+}
+
+pbs_install() {
+	ypkg_mkinstall
+}

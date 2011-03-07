@@ -1,0 +1,29 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="analog / digital clock for X"
+HOMEPAGE="http://xorg.freedesktop.org/"
+ 
+SRC_URI="http://xorg.freedesktop.org/releases/individual/app/"$N-$V$R".tar.bz2"
+
+RDEPEND="libX11 libXaw libXmu libXt libSM libICE libXft libXrender fontconfig freetype
+         libxkbfile libxcb libXext libXpm util-linux-ng zlib expat libXau libXdmcp"
+BDEPEND="${RDEPEND}"
+
+pbs_unpack() {
+        ypkg_unpack
+}
+
+pbs_config() {
+	ypkg_config
+}
+
+pbs_build() {
+	ypkg_make
+}
+
+pbs_install() {
+	ypkg_mkinstall
+	ypkg_dodoc AUTHORS ChangeLog COPYING INSTALL NEWS README
+}

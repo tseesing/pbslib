@@ -1,0 +1,49 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="Jade is an implementation of DSSSL - an ISO standard for formatting SGML and XML documents"
+HOMEPAGE="http://openjade.sourceforge.net"
+LICENSE="GPL-2"
+PACKAGER="hzx@115.com"
+ 
+SRC_URI="http://downloads.sourceforge.net/project/"$N"/"$N"/"$V$R"/"$N-$V$R".tar.gz"
+
+RDEPEND="opensp glibc gcc"
+BDEPEND="${RDEPEND} opensp"
+RECOMMENDED=""
+
+NOTES=""
+
+pbs_unpack() {
+        ypkg_unpack
+}
+
+pbs_config() {
+	YPB_CONFIG+=" --enable-default-catalog=/etc/sgml/catalog 
+	              --enable-default-search-path=/usr/share/sgml 
+		      --datadir=/usr/share/sgml/"$N-$V$R" "
+	ypkg_config
+}
+
+pbs_build() {
+	ypkg_make
+}
+
+pbs_install() {
+	ypkg_mkinstall
+	make DESTDIR="$YPPATH_DEST" install-man
+	ypkg_docp dsssl/catalog dsssl/*.{dtd,dsl,sgm} "$YPPATH_DEST"/usr/share/sgml/"$N-$V$R"
+	cd "$YPPATH_DEST"
+	ypkg_doln openjade       usr/bin/jade
+	ypkg_doln libogrove.so   usr/lib/libgrove.so
+	ypkg_doln libospgrove.so usr/lib/libspgrove.so
+	ypkg_doln libostyle.so   usr/lib/libstyle.so
+	echo "SYSTEM \"http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd\" \"/usr/share/xml/docbook/xml-dtd-4.5/docbookx.dtd\"" \
+	      >> "$YPPATH_DEST"/usr/share/sgml/"$N-$V$R"/catalog
+}
+
+pbs_postinst() {
+	install-catalog --add /etc/sgml/"$N-$V$R".cat    /usr/share/sgml/"$N-$V$R"/catalog
+	install-catalog --add /etc/sgml/sgml-docbook.cat /etc/sgml/"$N-$V$R".cat
+}

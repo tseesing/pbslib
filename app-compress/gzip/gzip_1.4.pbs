@@ -1,0 +1,32 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="Standard GNU compressor"
+HOMEPAGE="http://www.gnu.org/software/gzip/"
+ 
+SRC_URI="ftp://ftp.gnu.org/gnu/"$N"/"$N-$V$R".tar.gz"
+
+RDEPEND=""
+BDEPEND="${RDEPEND}"
+
+pbs_unpack() {
+        ypkg_unpack
+}
+
+pbs_config() {
+	YPB_CONFIG+=" --bindir=/bin "
+	ypkg_config
+}
+
+pbs_build() {
+	ypkg_make
+}
+
+pbs_install() {
+	ypkg_mkinstall
+	#Move some programs that do not need to be on the root filesystem
+	cd "$YPPATH_DEST"
+	ypkg_domv bin/{gzexe,uncompress,zcmp,zdiff,zegrep} usr/bin
+	ypkg_domv bin/{zfgrep,zforce,zgrep,zless,zmore,znew} usr/bin
+}

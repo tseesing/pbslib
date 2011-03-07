@@ -1,0 +1,34 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="User Interface part of libbonobo."
+HOMEPAGE="http://developer.gnome.org/arch/gnome/componentmodel/bonobo.html"
+LICENSE="GPL-2"
+PACKAGER="hzx@115.com"
+SRC_URI="ftp://ftp.gnome.org/pub/gnome/sources/$N/2.24/"$N-$V$R".tar.bz2"
+BDEPEND="libgnome libgnomecanvas"
+RECOMMENDED=""
+
+NOTES="http://wiki.linuxfromscratch.org/blfs/wiki/libbonoboui"
+
+pbs_unpack() {
+        ypkg_unpack
+}
+
+pbs_config() {
+	
+	YPB_CONFIG+=" --prefix=$(pkg-config --variable=prefix ORBit-2.0) "
+	ypkg_config
+}
+
+pbs_build() {
+	ypkg_make
+}
+
+pbs_install() {
+	ypkg_mkinstall
+	#
+	install -m755 -d "$YPPATH_DEST"/$(pkg-config --variable=prefix ORBit-2.0)/share/doc/"$N-$V$R"
+	install -m644 doc/*.{dtd,txt,xml,html} "$YPPATH_DEST"/$(pkg-config --variable=prefix ORBit-2.0)/share/doc/"$N-$V$R"
+}

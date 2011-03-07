@@ -1,0 +1,31 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="Standard (de)compression library"
+HOMEPAGE="http://www.zlib.net/"
+ 
+SRC_URI="http://zlib.net/"$N-$V$R".tar.bz2"
+
+RDEPEND=""
+BDEPEND="${RDEPEND}"
+
+pbs_unpack() {
+        ypkg_unpack
+}
+
+pbs_config() {
+	YPB_CONFIG="--prefix=/usr"
+	ypkg_config
+}
+
+pbs_build() {
+	ypkg_make
+}
+
+pbs_install() {
+	ypkg_mkinstall
+	#for FHS compliant
+	ypkg_domv "$YPPATH_DEST"/usr/lib/libz.so.* "$YPPATH_DEST"/lib
+	ypkg_doln ../../lib/libz.so."$V$R" "$YPPATH_DEST"/usr/lib/libz.so
+}

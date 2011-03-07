@@ -1,0 +1,35 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="aMule, the all-platform eMule p2p client"
+HOMEPAGE="http://www.amule.org/"
+ 
+SRC_URI="http://downloads.sourceforge.net/project/amule/aMule/$V/aMule-$V.tar.bz2"
+
+RDEPEND="wxGTK crypto++ zlib gd geoip libupnp libpng"
+BDEPEND="${RDEPEND}"
+
+pbs_unpack()
+{
+        ypkg_unpack
+}
+
+pbs_config()
+{
+	cd aMule-$V
+	YPB_CONFIG+=" --sysconfdir=/etc --enable-amulecmd \
+		--enable-cas --enable-wxcas --enable-alc --enable-geoip 
+		--enable-optimize " 
+	ypkg_config
+}
+
+pbs_build()
+{
+	ypkg_make
+}
+
+pbs_install()
+{
+	ypkg_mkinstall
+}

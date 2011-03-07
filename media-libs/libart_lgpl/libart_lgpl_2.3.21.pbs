@@ -1,0 +1,30 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="The libart_lgpl package contains the libart libraries. These are useful for high-performance 2D graphics."
+HOMEPAGE="http://www.levien.com/libart"
+REPO=""
+LICENSE="GPL-2"
+PACKAGER="hzx@115.com"
+
+SRC_URI=" http://ftp.gnome.org/pub/gnome/platform/2.30/2.30.2/sources/"$N-$V$R".tar.bz2 "
+
+BDEPEND=""
+RECOMMENDED=""
+
+pbs_unpack() {
+        ypkg_unpack
+}
+
+pbs_config() {
+	ypkg_config
+}
+
+pbs_build() {
+	ypkg_make
+}
+
+pbs_install() {
+	ypkg_mkinstall
+}

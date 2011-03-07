@@ -1,0 +1,52 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="The Apache Web Server."
+HOMEPAGE="http://httpd.apache.org/"
+LICENSE="GPL-2"
+PACKAGER="hzx@115.com"
+
+SRC_URI="http://labs.renren.com/apache-mirror/httpd/httpd-"$V$R".tar.bz2"
+
+RDEPEND="apr-util expat apr util-linux-ng openssl"
+BDEPEND="${RDEPEND} openssl"
+RECOMMENDED=""
+
+NOTES="apache user/group should be created automatic."
+
+pbs_init() {
+	ypkg_groupadd -r "apache"
+	ypkg_useradd -c "Apache Server" -d "/dev/null" -s "/bin/false" -r -N "apache"
+}
+
+pbs_unpack() {
+        ypkg_unpack
+}
+
+pbs_config() {
+	#The following patch modifies the layout of destination directories and among them 
+	#the build directory at /usr/lib/apache/build. This will allow the modules added to Apache to be configured without errors
+	ypkg_patch httpd-2.2.15-config-1.patch
+	YPB_CONFIG+=" --sysconfdir=/etc/apache 
+		      --enable-ssl    
+		      --enable-layout=FHS 
+		      --enable-mods-shared=all "
+	ypkg_config
+}
+
+pbs_build() {
+	ypkg_make
+}
+
+pbs_install() {
+	ypkg_mkinstall
+	cd "$YPPATH_DEST"
+	chown root:root usr/lib/apache/httpd.exp usr/sbin/{apxs,apachectl,dbmmanage,envvars{,-std}} \
+	                usr/share/man/man1/{dbmmanage,ht{dbm,digest,passwd}}.1 \
+		        usr/share/man/man8/{ab,apachectl,apxs,htcacheclean,httpd}.8 \
+		        usr/share/man/man8/{logresolve,rotatelogs,suexec}.8
+	chown -R apache:apache srv/www
+	sed -i -e "s/User daemon/User apache/" -e "s/Group daemon/Group apache/" etc/apache/httpd.conf
+	ypkg_doinit "$FILES_PATH"/files/"$N"
+}

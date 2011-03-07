@@ -1,0 +1,10 @@
+[Unit]
+Description=Ylmf_OS LiveCD installer
+After=dbus.service
+Conflicts=gdm.service NetworkManager.service
+
+[Service]
+ExecStart=/etc/init.d/osinstaller start
+
+[Install]
+WantedBy=multi-user.target

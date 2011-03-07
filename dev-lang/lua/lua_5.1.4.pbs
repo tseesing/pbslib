@@ -1,0 +1,27 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="A powerful light-weight programming language designed for extending applications"
+HOMEPAGE="http://www.lua.org/docs.html"
+LICENSE="GPL-2"
+PACKAGER="hzx@115.com"
+ 
+SRC_URI="http://www.lua.org/ftp/"$N-$V$R".tar.gz"
+
+RDEPEND="glibc readline ncurses"
+BDEPEND="${RDEPEND}"
+
+pbs_unpack() {
+        ypkg_unpack
+}
+
+pbs_build() {
+	ypkg_make linux
+}
+
+pbs_install() {
+	make INSTALL_TOP="$YPPATH_DEST"/usr install
+	ypkg_domv "$YPPATH_DEST"/usr/man  "$YPPATH_DEST"/usr/share
+	ypkg_docp etc/*.pc "$YPPATH_DEST"/usr/lib/pkgconfig
+}

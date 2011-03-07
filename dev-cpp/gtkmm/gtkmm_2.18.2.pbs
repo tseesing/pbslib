@@ -1,0 +1,34 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="C++ interface for GTK+2"
+HOMEPAGE="http://www.gtkmm.org"
+LICENSE="GPL-2"
+PACKAGER="hzx@115.com"
+ 
+SRC_URI="http://ftp.gnome.org/pub/gnome/sources/gtkmm/2.18/$N-$V.tar.bz2"
+
+RDEPEND=""
+BDEPEND="${RDEPEND} gtk+ pangomm"
+RECOMMENDED=""
+
+NOTES="http://wiki.linuxfromscratch.org/blfs/wiki/gtkmm"
+
+pbs_unpack() {
+        ypkg_unpack
+}
+
+pbs_config() {
+	
+	YPB_CONFIG+=" --prefix=/usr "
+	ypkg_config
+}
+
+pbs_build() {
+	ypkg_make
+}
+
+pbs_install() {
+	ypkg_mkinstall
+}

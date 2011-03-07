@@ -1,0 +1,74 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="System which facilitates service discovery on a local network"
+HOMEPAGE="http://avahi.org/"
+LICENSE="GPL-2"
+PACKAGER="hzx@115.com"
+
+SRC_URI="http://avahi.org/download/"$N-$V$R".tar.gz"
+
+RDEPEND="gdbm libglade libdaemon dbus glibc gtk+ atk glibc glib2 pango cairo pixman libxml2
+         directfb libpng libxcb libXrender libX11 libxcb libXau libXdmcp fontconfig freetype zlib expat
+	 libXi libXrandr libXcursor libXcomposite libXext libXfixes"
+BDEPEND="${RDEPEND} expat intltool desktop-file-utils dbus-python pygtk"
+RECOMMENDED="dbus dbus dbus-glib "
+
+NOTES=""
+
+pbs_init() {
+	ypkg_groupadd -r "avahi"
+	ypkg_useradd -c "avahi users" -d "/dev/null" -s "/bin/false" -r -N "avahi"
+	ypkg_useradd -c "avahi-autoipd users" -d "/dev/null" -s "/bin/false" -r "avahi-autoipd" 
+}
+
+pbs_unpack() {
+        ypkg_unpack
+}
+
+pbs_config() {
+	YPB_CONFIG+="--disable-qt4  
+		     --disable-qt3  
+		     --disable-static
+		     --disable-monodoc 
+		     --disable-mono
+		     --enable-shared 
+		     --enable-python-dbus
+		     --enable-pygtk 
+		     --enable-glib
+		     --enable-dbus  
+		     --enable-gtk  
+		     --enable-core-docs
+		     --enable-compat-howl
+		     --enable-compat-libdns_sd
+		     --with-avahi-user=avahi
+		     --with-avahi-group=avahi
+		     --with-autoipd-user=avahi-autoipd
+		     --with-autoipd-group=avahi-autoipd
+		     --with-distro=slackware 
+		     --program-prefix= 
+		     --program-suffix= "
+	ypkg_config
+}
+
+pbs_build() {
+	ypkg_make
+}
+
+pbs_install() {
+	ypkg_mkinstall
+	cd "$YPPATH_DEST"
+	#ypkg_domv_rename etc/rc.d/rc.avahidnsconfd  etc/init.d/avahidnsconfd
+	#ypkg_domv_rename etc/rc.d/rc.avahidaemon    etc/init.d/avahidaemon
+	rm -rf etc/rc.d
+	rm -fr usr/share/applications/bssh.desktop
+	rm -fr usr/share/applications/bvnc.desktop
+	mkdir -p var/run/avahi-daemon var/run/avahi-autoipd 
+	#
+	ypkg_dounit avahi-dnsconfd.service avahi-daemon.service
+}
+
+pbs_postinst() {
+	gnome2_desktop_database_update
+}

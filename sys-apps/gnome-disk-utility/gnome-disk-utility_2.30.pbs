@@ -1,0 +1,45 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="Disk Utility for GNOME using devicekit-disks"
+HOMEPAGE="http://git.gnome.org/cgit/gnome-disk-utility/"
+LICENSE="GPL-2"
+PACKAGER="hzx@115.com"
+
+RDEPEND=""
+BDEPEND="${RDEPEND} udisks gnome-doc-utils gnome-keyring libnotify libunique rarian which net-dns/avahi"
+RECOMMENDED=""
+
+NOTES="http://wiki.linuxfromscratch.org/blfs/wiki/gnome-disk-utility"
+
+pbs_unpack() {
+	OLDDIR=$(pwd)
+	cd $YPPATH_SOURCE
+	if [ -d gnome-disk-utility/.git ];then
+		cd gnome-disk-utility
+		git pull --rebase
+	else
+		git clone git://git.gnome.org/gnome-disk-utility
+		cd gnome-disk-utility
+		git checkout --track -b gnome-2-30 origin/gnome-2-30
+		git pull --rebase
+	fi
+	cd ../
+	cp -a gnome-disk-utility  $OLDDIR
+	cd $OLDDIR
+	mv gnome-disk-utility "$N-$V$R"
+}
+
+pbs_config() {
+	
+	./autogen.sh --prefix /usr --disable-gtk-doc --disable-static
+}
+
+pbs_build() {
+	make #"$MAKEOPTS"
+}
+
+pbs_install() {
+	ypkg_mkinstall
+}

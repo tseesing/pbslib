@@ -1,0 +1,30 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="PDF rendering library based on the xpdf-3.0 code base"
+HOMEPAGE="http://poppler.freedesktop.org/"
+ 
+SRC_URI="http://poppler.freedesktop.org/"$N-$V$R".tar.gz"
+
+RDEPEND="gtk+ pango cairo poppler-data fontconfig lcms libjpeg-turbo libpng libxml2 freetype zlib expat
+	 libXi libXrandr libXcursor libXcomposite libXext libXdamage libXfixes libX11 libXau libXdmcp zlib
+	 directfb"
+BDEPEND="${RDEPEND} libpng"
+
+pbs_unpack() {
+        ypkg_unpack
+}
+
+pbs_config() {
+	YPB_CONFIG+="--disable-poppler-qt --disable-poppler-qt4 --enable-xpdf-headers --enable-gtk-doc-pdf"
+	ypkg_config
+}
+
+pbs_build() {
+	ypkg_make
+}
+
+pbs_install() {
+	ypkg_mkinstall
+}

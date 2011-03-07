@@ -1,0 +1,37 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="Tool Command Language"
+HOMEPAGE="http://www.tcl.tk/"
+LICENSE="GPL-2"
+PACKAGER="hzx@115.com"
+ 
+SRC_URI="http://downloads.sourceforge.net/"tcl"/"$N$V$R"-src.tar.gz"
+
+RDEPEND=""
+BDEPEND="${RDEPEND}"
+
+pbs_unpack() {
+        ypkg_unpack
+}
+
+pbs_config() {
+	cd unix
+	YPB_CONFIG+="--enable-threads" 
+	ypkg_config
+}
+
+pbs_build() {
+	ypkg_make
+}
+
+pbs_install() {
+	sed -i -e "s@^\(TCL_SRC_DIR='\).*@\1/usr/include'@" \
+	       -e "/TCL_B/s@='\(-L\)\?.*unix@='\1/usr/lib@" \
+	       tclConfig.sh
+	ypkg_mkinstall 
+	make DESTDIR="$YPPATH_DEST" install-private-headers
+	cd "$YPPATH_DEST"
+	ypkg_doln tclsh8.5 usr/bin/tclsh 
+}

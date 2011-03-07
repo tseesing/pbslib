@@ -1,0 +1,28 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="Firefox Web Browser"
+HOMEPAGE="http://www.mozilla.com/firefox"
+REPO="testing"
+
+SRC_URI="http://pv-mirror01.mozilla.org/pub/mozilla.org/firefox/releases/4.0b7/linux-i686/zh-CN/firefox-$V$R.tar.bz2"
+
+RDEPEND=""
+BDEPEND="${RDEPEND}"
+
+pbs_unpack() {
+        ypkg_unpack
+	mv firefox  "$N-$V$R"
+}
+
+pbs_install() {
+	install -d -m755 "$YPPATH_DEST"/opt  "$YPPATH_DEST"/usr/share/applications  "$YPPATH_DEST"/usr/bin
+	mv "$N-$V$R"  "$YPPATH_DEST"/opt
+	cp $FILES_PATH/files/firefox-bin.desktop  "$YPPATH_DEST"/usr/share/applications
+	cat >> "$YPPATH_DEST"/usr/bin/firefox-bin.sh <<EOF
+cd /opt/"$N-$V$R"
+exec ./firefox 
+EOF
+	chmod +x "$YPPATH_DEST"/usr/bin/firefox-bin.sh
+}

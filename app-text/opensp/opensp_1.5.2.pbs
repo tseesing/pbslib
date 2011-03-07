@@ -1,0 +1,39 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="A free, object-oriented toolkit for SGML parsing and entity management"
+HOMEPAGE="http://openjade.sourceforge.net/"
+LICENSE="GPL-2"
+PACKAGER="hzx@115.com"
+ 
+SRC_URI="http://downloads.sourceforge.net/"$N"/OpenSP-"$V$R".tar.gz"
+
+RDEPEND=""
+BDEPEND="${RDEPEND} sgml-common"
+RECOMMENDED=""
+
+NOTES=""
+
+pbs_unpack() {
+        ypkg_unpack
+}
+
+pbs_config() {
+	#These seds prevent some annoying messages that may otherwise appear while running openjade
+	sed -i 's:32,:253,:' lib/Syntax.cxx 
+	sed -i 's:LITLEN          240 :LITLEN          8092:' unicode/{gensyntax.pl,unicode.syn} 
+	YPB_CONFIG+=" --disable-doc-build  
+	              --enable-default-catalog=/etc/sgml/catalog 
+		      --enable-http 
+	              --enable-default-search-path=/usr/share/sgml "
+	ypkg_config
+}
+
+pbs_build() {
+	ypkg_make
+}
+
+pbs_install() {
+	ypkg_mkinstall
+}

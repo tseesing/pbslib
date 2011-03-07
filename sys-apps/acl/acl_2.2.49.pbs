@@ -1,0 +1,39 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="utilities to administer Access Control Lists, which are used to define more fine-grained discretionary access rights for files and directories."
+HOMEPAGE="http://savannah.nongnu.org/projects/acl"
+LICENSE="GPL-2"
+PACKAGER="hzx@115.com"
+
+SRC_URI="http://mirrors.zerg.biz/nongnu/"$N"/"$N-$V$R".src.tar.gz"
+
+RDEPEND="attr glibc"
+BDEPEND="${RDEPEND} attr"
+
+pbs_unpack() {
+        ypkg_unpack
+}
+
+pbs_config() {
+        sed -i s%"@bindir@"%"\$\(DESTDIR\)@bindir@"% include/builddefs.in
+	sed -i s%"@sbindir@"%"\$\(DESTDIR\)@sbindir@"% include/builddefs.in
+	sed -i s%"@libdir@@libdirsuffix@"%"\$\(DESTDIR\)@libdir@@libdirsuffix@"% include/builddefs.in
+	sed -i s%"@libexecdir@@libdirsuffix@"%"\$\(DESTDIR\)@libexecdir@@libdirsuffix@"% include/builddefs.in
+	sed -i s%"@includedir@/attr"%"\$\(DESTDIR\)@includedir@/attr"% include/builddefs.in
+	sed -i s%"@mandir@"%"\$\(DESTDIR\)@mandir@"% include/builddefs.in
+	ypkg_config
+}
+
+pbs_build() {
+	ypkg_make
+}
+
+pbs_install() {
+	ypkg_mkinstall install-dev install-lib
+	ypkg_docp include/libacl.h       "$YPPATH_DEST"/usr/include/acl 
+	ypkg_docp include/acl.h          "$YPPATH_DEST"/usr/include/sys
+	ypkg_doln /usr/libexec/libacl.a  "$YPPATH_DEST"/usr/lib/libacl.a
+	ypkg_doln /usr/libexec/libacl.la "$YPPATH_DEST"/usr/lib/libacl.la
+}

@@ -1,0 +1,33 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="An image viewer that uses OpenGL"
+HOMEPAGE="http://guichaz.free.fr/gliv/"
+ 
+SRC_URI="http://guichaz.free.fr/gliv/files/gliv-$V.tar.bz2"
+
+RDEPEND=""
+BDEPEND="${RDEPEND} x11-libs/gtkglext"
+
+pbs_unpack()
+{
+        ypkg_unpack
+}
+
+pbs_config()
+{
+	
+	YPB_CONFIG+=" --prefix=/usr "
+	ypkg_config
+}
+
+pbs_build()
+{
+	ypkg_make
+}
+
+pbs_install()
+{
+	ypkg_mkinstall
+}

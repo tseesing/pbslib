@@ -1,0 +1,38 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="Serial Communication Program"
+HOMEPAGE="http://alioth.debian.org/projects/minicom"
+ 
+SRC_URI="https://alioth.debian.org/frs/download.php/3195/minicom-$V.tar.gz"
+
+RDEPEND=""
+BDEPEND="${RDEPEND}"
+
+pbs_unpack()
+{
+        ypkg_unpack
+}
+
+pbs_config()
+{
+	
+	YPB_CONFIG+=" --sysconfdir=/etc "
+	ypkg_config
+}
+
+pbs_build()
+{
+	ypkg_make
+}
+
+pbs_check()
+{
+	make check
+}
+
+pbs_install()
+{
+	ypkg_mkinstall
+}

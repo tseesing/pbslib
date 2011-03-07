@@ -1,0 +1,10 @@
+[Unit]
+Description=Ylmfos app center daemon
+After=gdm.service
+
+[Service]
+Type=forking
+ExecStart=/usr/share/ylmfcenter/PkgDbusDaemon
+
+[Install]
+WantedBy=multi-user.target

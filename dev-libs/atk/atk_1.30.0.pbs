@@ -1,0 +1,30 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="GTK+ & GNOME Accessibility Toolkit"
+HOMEPAGE="http://library.gnome.org/devel/atk/stable/"
+LICENSE=""
+PACKAGER="hzx@115.com"
+
+SRC_URI="http://ftp.gnome.org/pub/gnome/mobile/2.30/2.30.2/sources/"$N-$V$R".tar.bz2"
+
+RDEPEND="glib2"
+BDEPEND="${RDEPEND}"
+
+pbs_unpack() {
+        ypkg_unpack
+}
+
+pbs_config() {
+	YPB_CONFIG+="--disable-gtk-doc"
+	ypkg_config
+}
+
+pbs_build() {
+	ypkg_make
+}
+
+pbs_install() {
+	ypkg_mkinstall
+}

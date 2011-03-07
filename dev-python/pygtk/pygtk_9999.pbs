@@ -1,0 +1,83 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="GTK+2 bindings for Python"
+HOMEPAGE="http://www.pygtk.org/"
+REPO="testing"
+LICENSE=""
+PACKAGER="hzx@115.com"
+BIN_URI=""
+
+RDEPEND=""
+BDEPEND="${RDEPEND} pygobject atk pango pycairo gtk+ libglade"
+RECOMMENDED=""
+
+NOTES="http://wiki.linuxfromscratch.org/blfs/wiki/pygtk"
+
+pbs_init()
+{
+	echo "init "$N-$V$R" build script..."
+}
+
+pbs_unpack()
+{
+	#unpard file from $YPPATH_SOURCE to current directory.
+	echo "Unpacking to `pwd`"
+	OLDDIR=$(pwd)
+	cd $YPPATH_SOURCE
+	if [ -d $N/.git ];then
+		cd $N
+		git pull --rebase
+	else
+		git clone git://git.gnome.org/$N
+		cd $N
+	        git pull --rebase
+	fi
+	cd ../ 
+	cp -a $N $OLDDIR
+	cd $OLDDIR
+	mv $N "$N-$V$R"
+}
+
+pbs_config()
+{
+	echo "config "$N-$V$R"..."
+	
+	./autogen.sh --prefix /usr --disable-gtk-doc --disable-static
+}
+
+pbs_build()
+{
+	echo "make "$N-$V$R"..."
+	#run make in current directory
+	ypkg_make
+}
+
+pbs_check()
+{
+	echo "checking "$N-$V$R".."
+	#make check
+}
+
+pbs_install()
+{
+	echo "install to $YPPATH_DEST"
+	#install everything to $YPPATH_DEST
+	ypkg_mkinstall
+}
+
+pbs_postinst()
+{
+	echo "running after package installed..."
+}
+
+pbs_prerm()
+{
+	echo "running before package delete..."
+}
+
+pbs_postrm()
+{
+	echo "running after package delete..."
+}

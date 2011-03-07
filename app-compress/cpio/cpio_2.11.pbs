@@ -1,0 +1,30 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="A file archival tool which can also read and write tar files"
+HOMEPAGE="http://www.gnu.org/software/cpio/cpio.html"
+ 
+SRC_URI="http://ftp.gnu.org/gnu/"$N"/"$N-$V$R".tar.bz2"
+
+RDEPEND=""
+BDEPEND="${RDEPEND}"
+
+pbs_unpack() {
+        ypkg_unpack
+}
+
+pbs_config() {
+	YPB_CONFIG+=" --bindir=/bin 
+	              --with-rmt=/usr/sbin/rmt
+		      --libexecdir=/lib/cpio "
+	ypkg_config
+}
+
+pbs_build() {
+	ypkg_make
+}
+
+pbs_install() {
+	ypkg_mkinstall
+}

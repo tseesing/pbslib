@@ -1,0 +1,30 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="Fast lightweight tabbed filemanager"
+HOMEPAGE="http://pcmanfm.sourceforge.net/"
+LICENSE=""
+PACKAGER="hzx@115.com"
+SRC_URI="http://downloads.sourceforge.net/project/$N/pcmanfm-legacy/PCManFM%20$V/$N-$V.tar.bz2 "
+
+RDEPEND=""
+BDEPEND="${RDEPEND}"
+
+pbs_unpack() {
+        ypkg_unpack
+}
+
+pbs_config() {
+	
+	patch -p1 -i $FILES_PATH/files/"$N-$V$R"-fix-ca-translation.patch
+	ypkg_config
+}
+
+pbs_build() {
+	ypkg_make
+}
+
+pbs_install() {
+	ypkg_mkinstall
+}

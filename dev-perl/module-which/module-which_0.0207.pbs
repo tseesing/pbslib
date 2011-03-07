@@ -1,0 +1,30 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="perl module"
+HOMEPAGE="http://search.cpan.org/~ferreira/Module-Which-0.0207/"
+REPO=""
+LICENSE="GPL-2"
+PACKAGER="hzx@115.com"
+
+SRC_URI="http://search.cpan.org/CPAN/authors/id/F/FE/FERREIRA/Module-Which-"$V$R".tar.gz"
+
+RDEPEND=""
+BDEPEND="${RDEPEND} string-truncate"
+
+pbs_unpack() {
+        ypkg_unpack
+}
+
+pbs_config() {
+	ypkg_config
+}
+
+pbs_build() {
+	ypkg_make
+}
+
+pbs_install() {
+	ypkg_mkinstall
+}

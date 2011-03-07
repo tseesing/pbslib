@@ -1,0 +1,32 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="libisofs is an open-source library for reading, mastering and writing optical discs."
+HOMEPAGE="http://libburnia-project.org/"
+LICENSE="GPL-2"
+PACKAGER="hzx@115.com"
+
+SRC_URI="http://files.libburnia-project.org/releases/"$N-$V$R".tar.gz"
+
+RDEPEND="acl attr"
+BDEPEND="${RDEPEND} libburn"
+RECOMMENDED=""
+
+NOTES=""
+
+pbs_unpack() {
+        ypkg_unpack
+}
+
+pbs_config() {
+	ypkg_config
+}
+
+pbs_build() {
+	ypkg_make
+}
+
+pbs_install() {
+	ypkg_mkinstall
+}

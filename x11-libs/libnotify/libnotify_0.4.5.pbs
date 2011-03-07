@@ -1,0 +1,29 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="Notifications library"
+HOMEPAGE="http://www.galago-project.org/"
+ 
+SRC_URI="http://www.galago-project.org/files/releases/source/"$N"/"$N-$V$R".tar.bz2"
+
+RDEPEND="gtk+ atk glib2 glibc pango cairo gcc pixman directfb libpng libxcb libXrender libX11 libxcb libXau libXdmcp 
+	 pango fontconfig freetype libxml2 zlib dbus libXi libXrandr libXcursor libXcomposite libXext dbus-glib libXdamage
+	 libXfixes expat"
+BDEPEND="${RDEPEND}"
+
+pbs_unpack() {
+        ypkg_unpack
+}
+
+pbs_config() {
+	ypkg_config
+}
+
+pbs_build() {
+	ypkg_make
+}
+
+pbs_install() {
+	ypkg_mkinstall
+}

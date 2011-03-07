@@ -1,0 +1,21 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="Sun's Java SE Development Kit"
+HOMEPAGE="http://java.sun.com/javase/6/"
+LICENSE="GPL-2"
+PACKAGER="hzx@115.com"
+ 
+SRC_URI="$N-$V$R.tar.bz2"
+
+RDEPEND=""
+BDEPEND="${RDEPEND}"
+
+pbs_unpack() {
+	ypkg_unpack
+}
+
+pbs_install() {
+	ypkg_docp * "$YPPATH_DEST"/
+}

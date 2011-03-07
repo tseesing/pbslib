@@ -1,0 +1,35 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="Farsight2 is an audio/video conferencing framework specifically designed for Instant Messengers."
+HOMEPAGE="http://farsight.freedesktop.org/"
+LICENSE="GPL-2"
+PACKAGER="hzx@115.com"
+
+SRC_URI="http://farsight.freedesktop.org/releases/"$N"/"$N-$V$R".tar.gz"
+
+RDEPEND="gstreamer libxml2 zlib"
+BDEPEND="${RDEPEND} gstreamer libnice gst-plugins-base"
+RECOMMENDED=""
+
+NOTES=""
+
+pbs_unpack() {
+        ypkg_unpack
+}
+
+pbs_config() {
+	YPB_CONFIG+=" --disable-python 
+		      --with-package-origin="http://farsight.freedesktop.org" 
+		      --with-gnu-ld  "
+	ypkg_config
+}
+
+pbs_build() {
+	ypkg_make
+}
+
+pbs_install() {
+	ypkg_mkinstall
+}

@@ -1,0 +1,30 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="Perl module Test-Script"
+HOMEPAGE="http://search.cpan.org/~adamk/Test-Script-1.07/"
+REPO=""
+LICENSE="GPL-2"
+PACKAGER="hzx@115.com"
+
+SRC_URI="http://search.cpan.org/CPAN/authors/id/A/AD/ADAMK/Test-Script-"$V$R".tar.gz"
+
+RDEPEND=""
+BDEPEND="${RDEPEND} ipc-run3 probe-perl"
+
+pbs_unpack() {
+        ypkg_unpack
+}
+
+pbs_config() {
+	ypkg_config
+}
+
+pbs_build() {
+	ypkg_make
+}
+
+pbs_install() {
+	ypkg_mkinstall
+}

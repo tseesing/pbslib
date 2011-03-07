@@ -1,0 +1,34 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="D-Bus abstraction for enumerating devices and listening for device events using udev"
+HOMEPAGE="http://www.freedesktop.org/wiki/Software/devicekit"
+LICENSE="GPL-2"
+PACKAGER="hzx@115.com"
+
+SRC_URI="http://hal.freedesktop.org/releases/DeviceKit-"$V$R".tar.gz"
+
+RDEPEND="glib2 glibc dbus-glib dbus"
+BDEPEND="${RDEPEND} udev dbus"
+RECOMMENDED=""
+
+pbs_unpack() {
+        ypkg_unpack
+}
+
+pbs_config() {
+	YPB_CONFIG+=" --enable-man-pages 
+		      --disable-gtk-doc	"
+	ypkg_config
+}
+
+pbs_build() {
+	ypkg_make
+}
+
+pbs_install() {
+	ypkg_mkinstall
+	cd "$YPPATH_DEST"
+	ypkg_domv etc/udev/rules.d/98-devkit.rules lib/udev/rules.d
+}

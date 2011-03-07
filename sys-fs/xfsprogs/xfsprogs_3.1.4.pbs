@@ -1,0 +1,31 @@
+#
+# YLmf_OS package build script
+#
+DaESCRIPTION="xfs filesystem utilities"
+HOMEPAGE="http://oss.sgi.com/projects/xfs/"
+LICENSE=""
+PACKAGER="hzx@115.com"
+
+SRC_URI="git://oss.sgi.com/xfs/cmds/"$N""
+
+RDEPEND=""
+BDEPEND="${RDEPEND} "
+RECOMMENDED=""
+
+pbs_unpack() {
+        ypkg_unpack
+}
+
+pbs_config() {
+	export DEBUG=-DNDEBUG
+	YPB_CONFIG+="--enable-gettext"
+	ypkg_config
+}
+
+pbs_build() {
+	ypkg_make
+}
+
+pbs_install() {
+	make DIST_ROOT="$YPPATH_DEST" install install-dev
+}

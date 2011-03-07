@@ -1,0 +1,28 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="Screenlets are small owner-drawn applications"
+HOMEPAGE="http://www.screenlets.org"
+LICENSE=""
+PACKAGER="hzx@115.com"
+
+SRC_URI="https://code.launchpad.net/screenlets/trunk/0.1.2/+download/"$N-$V$R".tar.bz2"
+
+RDEPEND=""
+BDEPEND="${RDEPEND} gnome-keyring "
+RECOMMENDED=""
+
+NOTES=""
+
+pbs_unpack() {
+        ypkg_unpack
+}
+
+pbs_build() {
+	ypkg_make
+}
+
+pbs_install() {
+	ypkg_mkinstall
+}

@@ -1,0 +1,29 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="Info ZIP (encryption support)"
+HOMEPAGE="http://www.info-zip.org/Zip.html"
+REPO=""
+LICENSE=""
+PACKAGER="Zhongxin Huang, hzx@115.com"
+
+SRC_URI="http://downloads.sourceforge.net/infozip/"$N"30.tar.gz"
+
+RDEPEND="bzip2"
+BDEPEND="${RDEPEND}"
+
+pbs_unpack() {
+        ypkg_unpack
+}
+
+pbs_build() {
+	make -f unix/Makefile generic_gcc
+}
+
+pbs_install() {
+	mkdir -p DESTDIR="$YPPATH_DEST"/usr
+	make prefix="$YPPATH_DEST"/usr -f unix/Makefile install
+	cd "$YPPATH_DEST"
+	ypkg_domv usr/man usr/share
+}

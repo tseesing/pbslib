@@ -1,0 +1,30 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="wav2mp3 wav2ogg utils"
+HOMEPAGE="http://wav2mp3.sourceforge.net/"
+REPO=""
+LICENSE="GPL-2"
+PACKAGER="hzx@115.com"
+
+SRC_URI="http://downloads.sourceforge.net/project/wav2mp3/wav2mp3_wav2ogg/"$V"/WAV2-"$V$R".tar.gz"
+
+RDEPEND="file-which vorbis-tools"
+BDEPEND="${RDEPEND}"
+
+pbs_unpack() {
+        ypkg_unpack
+}
+
+pbs_config() {
+	ypkg_config
+}
+
+pbs_build() {
+	ypkg_make
+}
+
+pbs_install() {
+	ypkg_mkinstall
+}

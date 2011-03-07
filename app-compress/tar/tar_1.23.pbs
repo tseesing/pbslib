@@ -1,0 +1,30 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="tarball tools"
+HOMEPAGE="http://www.gnu.org/software/tar/"
+ 
+SRC_URI="http://ftp.gnu.org/gnu/tar/"$N-$V$R".tar.bz2"
+
+RDEPEND=""
+BDEPEND="${RDEPEND}"
+
+pbs_unpack() {
+        ypkg_unpack
+}
+
+pbs_config() {
+	#fix a bug that was inserted into the latest code release
+	sed -i /SIGPIPE/d src/tar.c
+	YPB_CONFIG+=" --bindir=/bin --libexecdir=/usr/sbin "
+	ypkg_config
+}
+
+pbs_build() {
+	ypkg_make
+}
+
+pbs_install() {
+	ypkg_mkinstall
+}

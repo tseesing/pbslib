@@ -1,0 +1,48 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="Sun's Java SE Development Kit"
+HOMEPAGE="http://java.sun.com/javase/6/"
+LICENSE="GPL-2"
+PACKAGER="hzx@115.com"
+ 
+SRC_URI="http://download.java.net/dlj/binaries/jdk-6u20-dlj-linux-i586.bin"
+
+RDEPEND=""
+BDEPEND="${RDEPEND}"
+
+pbs_unpack() {
+	sh "$YPPATH_SOURCE"/`basename $SRC_URI` --accept-license
+}
+
+pbs_install() {
+	local name
+	cd jdk1.6.0_20 
+	ypkg_domv * "$YPPATH_DEST"/opt/jdk-6u20
+	chown -R root:root "$YPPATH_DEST"/opt/jdk-6u20 
+	ypkg_doln xawt/libmawt.so "$YPPATH_DEST"/opt/jdk-6u20/jre/lib/i386/ 
+	ypkg_doln jdk-6u20 "$YPPATH_DEST"/opt/jdk
+	ypkg_doln /opt/jdk-6u20  "$YPPATH_DEST"/usr/lib/jdk
+	#unpack all pack files
+	packfiles=$(find "$YPPATH_DEST"/opt/jdk/ -iname "*.pack")
+	for i in $packfiles; do
+		name=${i%.pack}
+		name+=".jar"
+		mmsg ">>> unpack200 $i $name"
+		"$YPPATH_DEST"/opt/jdk/bin/unpack200 $i $name
+	done
+	#environment
+	cat >"$YPPATH_DEST"/opt/jdk/jdkpath.sh << "EOF"
+JAVA_HOME=/opt/jdk
+export PATH=$PATH:$JAVA_HOME/bin
+AUTO_CLASSPATH_DIR=/usr/lib/classpath
+CLASSPATH=$CLASSPATH:./
+for dir in `find ${AUTO_CLASSPATH_DIR} -type d 2>/dev/null`; do
+	CLASSPATH=$CLASSPATH:$dir
+done
+export JAVA_HOME CLASSPATH
+unset AUTO_CLASSPATH_DIR
+unset dir
+EOF
+}

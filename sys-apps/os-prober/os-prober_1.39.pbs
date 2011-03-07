@@ -1,0 +1,50 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="Utility to detect other OSs on a set of drives"
+HOMEPAGE="http://packages.debian.org/source/sid/os-prober"
+LICENSE="GPL-2"
+PACKAGER="hzx@115.com"
+
+SRC_URI="http://ftp.de.debian.org/debian/pool/main/o/"$N"/"${N}_$V$R".tar.gz"
+
+RDEPEND=""
+BDEPEND="${RDEPEND} "
+RECOMMENDED=""
+
+NOTES="
+* If you intend for os-prober to detect versions of Windows installed on
+* NTFS-formatted partitions, your system must be capable of reading the
+* NTFS filesystem. One way to do this is by installing sys-fs/ntfs3g
+"
+
+pbs_unpack() {
+	ypkg_unpack
+}
+
+pbs_build() {
+	ypkg_make
+}
+
+pbs_install() {
+	ypkg_docp os-prober linux-boot-prober 	"$YPPATH_DEST"/usr/bin
+	ypkg_docp newns  			"$YPPATH_DEST"/usr/lib/os-prober
+	ypkg_docp common.sh		 	"$YPPATH_DEST"/usr/share/os-prober
+	ypkg_docp os-probes/* 			"$YPPATH_DEST"/usr/lib/os-probes
+	ypkg_docp linux-boot-probes/*           "$YPPATH_DEST"/usr/lib/linux-boot-probes
+	ypkg_dodoc README TODO 		
+	cd "$YPPATH_DEST"
+	ypkg_docp usr/lib/os-probes/mounted/powerpc/20macosx   usr/lib/os-probes/mounted
+	ypkg_domv usr/lib/os-probes/mounted/common/* 	       usr/lib/os-probes/mounted
+	ypkg_domv usr/lib/os-probes/common/* 		        usr/lib/os-probes/
+	ypkg_domv usr/lib/linux-boot-probes/common/*  	        usr/lib/linux-boot-probes
+	ypkg_domv usr/lib/linux-boot-probes/mounted/common/* 	usr/lib/linux-boot-probes/mounted
+	ypkg_domv usr/lib/os-probes/mounted/x86/*              usr/lib/os-probes/mounted
+	ypkg_domv usr/lib/linux-boot-probes/mounted/x86/*      usr/lib/linux-boot-probes/mounted
+	ypkg_domv usr/lib/os-probes/init/common/*		usr/lib/os-probes/init
+	#
+	rm -r usr/lib/linux-boot-probes/common usr/lib/linux-boot-probes/mounted/common \
+	      usr/lib/os-probes/init/common usr/lib/os-probes/mounted/common usr/lib/os-probes/common \
+	      usr/lib/os-probes/mounted/x86 usr/lib/linux-boot-probes/mounted/x86
+}

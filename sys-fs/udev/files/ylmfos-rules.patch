@@ -1,0 +1,19 @@
+--- rules/rules.d/50-udev-default.rules	2010-01-21 21:21:42.000000000 +0800
++++ rules/rules.d/50-udev-default.rules.new	2010-11-15 11:29:15.343999990 +0800
+@@ -41,6 +41,7 @@
+ KERNEL=="nvidia*|nvidiactl*",	GROUP="video"
+ SUBSYSTEM=="graphics",		GROUP="video"
+ SUBSYSTEM=="drm",		GROUP="video"
++SUBSYSTEM=="lbm-drm",           GROUP="video"
+ 
+ # sound
+ SUBSYSTEM=="sound",		GROUP="audio"
+--- rules/rules.d/80-drivers.rules	2009-12-03 20:45:03.000000000 +0800
++++ rules/rules.d/80-drivers.rules.new	2010-11-15 11:18:42.574999992 +0800
+@@ -9,5 +9,6 @@
+ SUBSYSTEM=="i2o", RUN+="/sbin/modprobe -b i2o_block"
+ SUBSYSTEM=="scsi", ENV{DEVTYPE}=="scsi_device", TEST!="[module/sg]", RUN+="/sbin/modprobe -b sg"
+ SUBSYSTEM=="module", KERNEL=="parport_pc", RUN+="/sbin/modprobe -b ppdev"
++SUBSYSTEM=="graphics", RUN+="/sbin/modprobe -q fbcon"
+ 
+ LABEL="drivers_end"

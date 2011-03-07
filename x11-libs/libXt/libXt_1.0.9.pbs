@@ -1,0 +1,25 @@
+#
+# YLmf_OS package build script
+#
+HOMEPAGE="http://www.x.org/wiki/"
+ 
+SRC_URI="http://www.x.org/releases/X11R7.6/src/lib/"$N-$V$R".tar.bz2"
+
+RDEPEND="libSM libICE libX11 util-linux-ng libxcb libXau libXdmcp"
+BDEPEND="${RDEPEND} x11-libs/libSM"
+
+pbs_unpack() {
+        ypkg_unpack
+}
+
+pbs_config() {
+	ypkg_config
+}
+
+pbs_build() {
+	ypkg_make
+}
+
+pbs_install() {
+	ypkg_mkinstall
+}

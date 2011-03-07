@@ -1,0 +1,55 @@
+#!/bin/sh
+#
+
+[ -r /etc/environment ] && . /etc/environment
+[ -r /etc/default/locale ] && . /etc/default/locale
+
+is_runinvm () {
+	local i
+	for i in kvm-clock VirtualBox VMware; do
+		if dmesg |grep ${i} >/dev/null 2>&1; then
+			return 0
+		fi
+	done
+	return 1
+}
+
+#case $LANG in
+#	zh_CN.UTF-8|zh)
+#		TEXT_START="正 在 启 动 Ylmf OS"
+#		TEXT_STOP="正 在 关 机"
+#				;;
+#		*)
+#		TEXT_START="Ylmf OS starting"
+#		TEXT_STOP="Ylmf OS halting"
+#esac
+
+
+#if is_runinvm; then
+#	TEXT_START="Ylmf OS starting"
+#	TEXT_STOP="Ylmf OS halting"
+#fi
+
+case "$1" in
+        #start)	
+	#	#/bin/plymouth message --text=" $TEXT_START "
+        #       ;;
+
+        stop)
+		# Check kernel command-line for inhibitors
+		for ARG in $(cat /proc/cmdline); do
+			case "${ARG}" in
+				text|single)
+					plymouth quit || :
+					exit 0 ;;
+			esac
+		done
+		plymouth --ping || plymouthd --mode=shutdown
+		plymouth show-splash
+		#plymouth message --text=" $TEXT_STOP "
+                ;;
+        *)
+                echo "Usage: $0 stop"
+                exit 1
+                ;;
+esac

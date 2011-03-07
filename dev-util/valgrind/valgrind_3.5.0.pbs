@@ -1,0 +1,38 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="An open-source memory debugger for GNU/Linux"
+HOMEPAGE="http://www.valgrind.org"
+LICENSE="GPL-2"
+PACKAGER="hzx@115.com"
+
+SRC_URI="http://www.valgrind.org/downloads/"$N-$V$R".tar.bz2"
+
+RDEPEND=""
+BDEPEND="${RDEPEND} gdb"
+RECOMMENDED=""
+
+NOTES=""
+
+pbs_unpack() {
+        ypkg_unpack
+}
+
+pbs_config() {
+	ypkg_patch valgrind-3.4.1-glibc-2.10.1.patch
+	ypkg_patch valgrind-3.5.0-glibc-2.11.patch 
+	ypkg_patch valgrind-3.5.0-non-exec-stack.patch 
+	ypkg_patch valgrind-3.5.0-respect-LDFLAGS.patch 
+	ypkg_patch valgrind-3.5.0-local-labels.patch
+	autoconf
+	ypkg_config
+}
+
+pbs_build() {
+	ypkg_make
+}
+
+pbs_install() {
+	ypkg_mkinstall
+}

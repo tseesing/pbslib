@@ -1,0 +1,29 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="Fast array and numerical python library"
+HOMEPAGE="http://cairographics.org/pycairo/"
+LICENSE="GPL-2"
+PACKAGER="hzx@115.com"
+
+SRC_URI="http://downloads.sourceforge.net/project/numpy/NumPy/"$V"/"$N-$V$R".tar.gz"
+
+RDEPEND=""
+BDEPEND="${RDEPEND} python"
+RECOMMENDED=""
+
+NOTES=""
+
+pbs_unpack() {
+        ypkg_unpack
+}
+
+pbs_build() {
+	ypkg_make
+}
+
+pbs_install() {
+	ypkg_mkinstall
+	ypkg_dodoc COMPATIBILITY LICENSE.txt  README.txt DEV_README.txt THANKS.txt INSTALL.txt
+}

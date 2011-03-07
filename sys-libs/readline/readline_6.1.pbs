@@ -1,0 +1,35 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="Another cute console display library"
+HOMEPAGE="http://tiswww.case.edu/php/chet/readline/rltop.html"
+LICENSE=""
+PACKAGER="hzx@115.com"
+
+SRC_URI="ftp://ftp.gnu.org/gnu/"$N"/"$N-$V$R".tar.gz "
+
+RDEPEND="ncurses"
+BDEPEND="${RDEPEND}"
+
+pbs_unpack() {
+        ypkg_unpack
+}
+
+pbs_config() {
+	ypkg_patch readline61-001
+	ypkg_patch readline61-002
+	ypkg_config
+}
+
+pbs_build() {
+	make SHLIB_LIBS=-lncurses
+}
+
+pbs_install() {
+	ypkg_mkinstall
+	ypkg_dodoc doc/*.{ps,pdf,html,dvi}
+	cd "$YPPATH_DEST"
+	ypkg_doln libreadline.so.6  usr/lib/libreadline.so
+	ypkg_doln libhistory.so.6   usr/lib/libhistory.so
+}

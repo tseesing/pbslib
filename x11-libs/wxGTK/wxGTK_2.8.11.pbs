@@ -1,0 +1,28 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="GTK+ version of wxWidgets, a cross-platform C++ GUI toolkit."
+HOMEPAGE="http://wxwidgets.org/"
+ 
+SRC_URI="http://downloads.sourceforge.net/project/wxwindows/"$V$R"/"$N-$V$R".tar.gz"
+
+RDEPEND="gtk+"
+BDEPEND="${RDEPEND} libjpeg-turbo"
+
+pbs_unpack() {
+        ypkg_unpack
+}
+
+pbs_config() {
+	YPB_CONFIG+=" --enable-unicode "
+	ypkg_config
+}
+
+pbs_build() {
+	ypkg_make
+}
+
+pbs_install() {
+	ypkg_mkinstall
+}

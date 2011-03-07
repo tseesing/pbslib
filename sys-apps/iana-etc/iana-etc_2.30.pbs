@@ -1,0 +1,23 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="Unix/Linux /etc/services and /etc/protocols files"
+HOMEPAGE="http://sethwklein.net/iana-etc"
+ 
+SRC_URI="http://lfs.vlsm.org/lfs/conglomeration/"$N"/"$N-$V$R".tar.bz2"
+
+RDEPEND=""
+BDEPEND="${RDEPEND}"
+
+pbs_unpack() {
+        ypkg_unpack
+}
+
+pbs_build() {
+	ypkg_make
+}
+
+pbs_install() {
+	ypkg_mkinstall
+}

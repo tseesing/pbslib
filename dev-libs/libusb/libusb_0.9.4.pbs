@@ -1,0 +1,33 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="Userspace access to USB devices"
+HOMEPAGE="http://libusb.org/"
+ 
+SRC_URI="http://downloads.sourceforge.net/libusb/$N-$V.tar.bz2"
+
+RDEPEND=""
+BDEPEND="${RDEPEND}"
+
+pbs_unpack()
+{
+        ypkg_unpack
+}
+
+pbs_config()
+{
+	
+	YPB_CONFIG+=" --prefix=/usr "
+	ypkg_config
+}
+
+pbs_build()
+{
+	ypkg_make
+}
+
+pbs_install()
+{
+	ypkg_mkinstall
+}

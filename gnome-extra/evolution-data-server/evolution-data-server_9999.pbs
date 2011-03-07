@@ -1,0 +1,84 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="Evolution groupware backend"
+HOMEPAGE="http://www.gnome.org/projects/evolution/"
+REPO="testing"
+LICENSE=""
+PACKAGER="hzx@115.com"
+BIN_URI=""
+
+RDEPEND=""
+BDEPEND="${RDEPEND} libsoup gnome-keyring libgweather dev-libs/libical app-crypt/krb5 net-nds/openldap-client dev-libs/nspr dev-libs/nss"
+RECOMMENDED=""
+
+NOTES=""
+
+pbs_init()
+{
+	echo "init "$N-$V$R" build script..."
+}
+
+pbs_unpack()
+{
+	#unpard file from $YPPATH_SOURCE to current directory.
+	echo "Unpacking to `pwd`"
+	OLDDIR=$(pwd)
+	cd $YPPATH_SOURCE
+	if [ -d $N/.git ];then
+		cd $N
+		git pull --rebase
+	else
+		git clone git://git.gnome.org/$N
+		cd $N
+		git checkout --track -b gnome-2-30 origin/gnome-2-30
+		git pull --rebase
+	fi
+	cd ../ 
+	cp -a $N $OLDDIR
+	cd $OLDDIR
+	mv $N "$N-$V$R"
+}
+
+pbs_config()
+{
+	echo "config "$N-$V$R"..."
+	
+	./autogen.sh --disable-gtk-doc --disable-static --prefix /usr --sysconfdir /etc --localstatedir /var/lib --mandir /usr/share/man --disable-schemas-install 
+}
+
+pbs_build()
+{
+	echo "make "$N-$V$R"..."
+	#run make in current directory
+	ypkg_make
+}
+
+pbs_check()
+{
+	echo "checking "$N-$V$R".."
+	#make check
+}
+
+pbs_install()
+{
+	echo "install to $YPPATH_DEST"
+	#install everything to $YPPATH_DEST
+	ypkg_mkinstall
+}
+
+pbs_postinst()
+{
+	echo "running after package installed..."
+}
+
+pbs_prerm()
+{
+	echo "running before package delete..."
+}
+
+pbs_postrm()
+{
+	echo "running after package delete..."
+}

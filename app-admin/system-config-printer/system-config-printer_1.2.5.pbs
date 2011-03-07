@@ -1,0 +1,39 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="Common modules of Red Hat's printer administration tool"
+HOMEPAGE="http://cyberelk.net/tim/software/system-config-printer/"
+LICENSE="GPL-2"
+PACKAGER="hzx@115.com"
+
+SRC_URI="http://cyberelk.net/tim/data/"$N"/1.2/"$N-$V$R".tar.xz"
+
+RDEPEND="pycups pygobject libffi dev-python/pygtk pycairo dbus-python cups notify-python libnotify"
+BDEPEND="${RDEPEND} xmlto"
+RECOMMENDED=""
+
+NOTES=""
+
+pbs_unpack() {
+        ypkg_unpack
+}
+
+pbs_config() {
+	#fix me! do use setup.py to build
+	mv setup.py{,y}
+	sed -i 's/setup.py/setup.pyy/g' Makefile.*
+	YPB_CONFIG+="--with-udev-rules 
+		     --program-prefix= 
+		     --program-suffix= "
+	ypkg_config
+}
+
+pbs_build() {
+	ypkg_make
+}
+
+pbs_install() {
+	ypkg_mkinstall
+	ypkg_dodoc AUTHORS ChangeLog COPYING INSTALL NEWS README
+}

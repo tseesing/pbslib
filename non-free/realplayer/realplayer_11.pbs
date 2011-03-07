@@ -1,0 +1,60 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="real player"
+HOMEPAGE="http://real.com/"
+REPO=""
+LICENSE=""
+PACKAGER="Zhongxin Huang, hzx@115.com"
+
+SRC_URI="http://forms.real.com/real/player/download.html?f=unix/RealPlayer"$V$R"GOLD.deb"
+
+RDEPEND=""
+BDEPEND="${RDEPEND} "
+RECOMMENDED=""
+
+pbs_unpack() {
+	ypkg_unpack
+}
+
+pbs_install() {
+	ypkg_docp data/*  "$YPPATH_DEST"
+	cd "$YPPATH_DEST"
+	#xdg-desktop-menu install --novendor "$FILES_PATH"/files/realplay.desktop
+	ypkg_dodesktop "$FILES_PATH"/files/realplay.desktop opt/real/RealPlayer/share/realplay.png
+	#
+	ypkg_docp_rename opt/real/RealPlayer/share/locale/zh_CN/player.mo usr/share/locale/zh_CN/LC_MESSAGES/realplay.mo
+	ypkg_docp_rename opt/real/RealPlayer/share/locale/zh_CN/widget.mo usr/share/locale/zh_CN/LC_MESSAGES/libgtkhx.mo
+	ypkg_docp_rename opt/real/RealPlayer/share/locale/zh_TW/player.mo usr/share/locale/zh_TW/LC_MESSAGES/realplay.mo
+	ypkg_docp_rename opt/real/RealPlayer/share/locale/zh_TW/widget.mo usr/share/locale/zh_TW/LC_MESSAGES/libgtkhx.mo
+	#
+	ypkg_doln /opt/real/RealPlayer/share    usr/share/realplay
+	ypkg_doln /opt/real/RealPlayer/realplay usr/bin/realplay
+	#
+	ypkg_doln /opt/real/RealPlayer/mozilla/nphelix.so  usr/lib/mozilla/plugins/nphelix.so
+	ypkg_doln /opt/real/RealPlayer/mozilla/nphelix.xpt usr/lib/mozilla/plugins/nphelix.xpt
+}
+
+pbs_postinst() {
+	#/opt/real/RealPlayer/postinst/postinst.sh
+	/usr/bin/gconftool-2 --direct --config-source="$(/usr/bin/gconftool-2 --get-default-source)" --type string \
+	                --set /desktop/gnome/url-handlers/rtsp/command \"realplay %s\" >/dev/null 2>&1
+	/usr/bin/gconftool-2 --direct --config-source="$(/usr/bin/gconftool-2 --get-default-source)" --type boolean \
+	                --set /desktop/gnome/url-handlers/rtsp/need-terminal false >/dev/null 2>&1
+	/usr/bin/gconftool-2 --direct --config-source="$(/usr/bin/gconftool-2 --get-default-source)" --type boolean \
+	                --set /desktop/gnome/url-handlers/rtsp/enabled true >/dev/null 2>&1
+}
+
+
+pbs_prerm() {
+	:
+        #/opt/real/RealPlayer/postinst/postuninst.sh
+}
+
+pbs_postrm() {
+	:
+	#rm -r /opt/real/
+	#unlink /usr/share/realplay
+	#unlink /usr/bin/realplay
+}

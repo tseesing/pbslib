@@ -1,0 +1,24 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="windows 7 theme for plymouth"
+HOMEPAGE="www.ylmf.net"
+LICENSE="GPL-2"
+PACKAGER="hzx@115.com"
+
+SRC_URI=""
+
+RDEPEND=""
+BDEPEND="${RDEPEND} plymouth"
+RECOMMENDED=""
+
+NOTES=""
+
+pbs_unpack() {
+        ypkg_unpack
+}
+
+pbs_install() {
+	ypkg_docp * "$YPPATH_DEST"
+}

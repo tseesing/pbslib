@@ -1,0 +1,27 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="An extremely powerful ICCCM-compliant multiple virtual desktop window manager"
+HOMEPAGE="http://www.fvwm.org/"
+ 
+SRC_URI="ftp://ftp.fvwm.org/pub/"$N"/version-2/"$N-$V$R".tar.bz2"
+
+RDEPEND="librsvg"
+BDEPEND="${RDEPEND}"
+
+pbs_unpack() {
+        ypkg_unpack
+}
+
+pbs_config() {
+	ypkg_config
+}
+
+pbs_build() {
+	ypkg_make
+}
+
+pbs_install() {
+	ypkg_mkinstall
+}

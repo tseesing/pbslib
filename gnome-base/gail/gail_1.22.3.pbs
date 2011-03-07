@@ -1,0 +1,35 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="Gail libraries for GNOME"
+HOMEPAGE="http://developer.gnome.org/projects/gap/"
+LICENSE="GPL-2"
+PACKAGER="hzx@115.com"
+
+SRC_URI="http://ftp.gnome.org/pub/GNOME/sources/"$N"/1.22/"$N-$V$R".tar.bz2"
+
+RDEPEND=""
+BDEPEND="${RDEPEND} atk gtk+ cairo "
+RECOMMENDED=""
+
+NOTES="
+Gtk2 will look for GAIL modules in /usr/lib even if $GNOME_PREFIX is not /usr. If $GNOME_PREFIX is anything other then /usr, create a symlink to $GNOME_PREFIX to satisfy this requirement:
+ln -v -s ${GNOME_PREFIX}/lib/gtk-2.0/modules /usr/lib/gtk-2.0
+"
+
+pbs_unpack() {
+        ypkg_unpack
+}
+
+pbs_config() {
+	ypkg_config
+}
+
+pbs_build() {
+	ypkg_make
+}
+
+pbs_install() {
+	ypkg_mkinstall
+}

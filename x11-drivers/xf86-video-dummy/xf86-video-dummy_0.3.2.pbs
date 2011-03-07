@@ -1,0 +1,30 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="X.Org driver for dummy cards"
+HOMEPAGE="http://xorg.freedesktop.org/"
+LICENSE="GPL-2"
+PACKAGER="hzx@115.com"
+SRC_URI="http://www.x.org/releases/X11R7.5/src/driver/"$N-$V$R".tar.bz2"
+
+RDEPEND="libdrm libXvMC libXv libXext libXfixes libX11 libxcb libXau libXdmcp pixman libpciaccess libXtst"
+BDEPEND="${RDEPEND} x11-base/xorg-server"
+
+pbs_unpack() {
+        ypkg_unpack
+}
+
+pbs_config() {
+	
+	ypkg_config
+}
+
+pbs_build() {
+	ypkg_make
+}
+
+pbs_install() {
+	ypkg_mkinstall
+	#
+}

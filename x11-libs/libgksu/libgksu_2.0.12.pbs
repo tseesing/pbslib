@@ -1,0 +1,35 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="A library for integration of su into applications"
+HOMEPAGE="http://www.nongnu.org/gksu/"
+LICENSE="GPL-2"
+PACKAGER="hzx@115.com"
+
+SRC_URI="ftp://lug.mtu.edu/gentoo/distfiles/"$N-$V$R".tar.gz"
+
+RDEPEND="gtk+ atk glib2 pango cairo freetype fontconfig glibc gconf libXi libXrandr libXcursor libXcomposite libXext
+	 libXdamage libXfixes pixman libxml2 directfb libpng libxcb libXrender libX11 libXau libXdmcp zlib expat orbit dbus-glib dbus
+	 startup-notification libgnome-keyring libgtop libSM libICE eggdbus libgcrypt libgpg-error"
+BDEPEND="${RDEPEND} "
+RECOMMENDED=""
+
+NOTES=""
+
+pbs_unpack() {
+        ypkg_unpack
+}
+
+pbs_config() {
+	ypkg_docp "$FILES_PATH"/files/gksu.png  .
+	ypkg_config
+}
+
+pbs_build() {
+	ypkg_make
+}
+
+pbs_install() {
+	ypkg_mkinstall
+}

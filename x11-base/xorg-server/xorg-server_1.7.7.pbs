@@ -1,0 +1,80 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="X.Org X servers"
+HOMEPAGE="http://xorg.freedesktop.org/"
+LICENSE=""
+PACKAGER="hzx@115.com"
+SRC_URI="http://www.x.org/releases/individual/xserver/"$N-$V$R".tar.bz2"
+
+RDEPEND="glibc openssl pixman xkeyboard-config libpciaccess libXfont freetype libfontenc libXau hal dbus libXdmcp 
+	 mesa libICE libsdl libSM libX11 libXaw libXext libXfixes libXi libXmu libXpm libXrender libXt libXv directfb libdmx libdrm
+	 libxcb util-linux-ng libXxf86vm libXdamage"
+BDEPEND="${RDEPEND}  xtrans libxkbfile x11-libs/libXfont libXau hal dbus libXdmcp openssl x11-libs/libpciaccess 
+	 x11-libs/libXaw x11-libs/libdmx x11-libs/libXres x11-libs/libXext media-libs/libsdl x11-libs/libXv mesa"
+
+NOTES="
+You must rebuild all drivers if upgrading from xorg-server 1.6
+or earlier, because the ABI changed. If you cannot start X because
+of module version mismatch errors, this is your problem.
+"
+
+pbs_unpack() {
+        ypkg_unpack
+}
+
+pbs_config() {
+	
+	#patchs
+	grep -v ^# "$FILES_PATH"/files/patches/series |while read i; do
+		ypkg_patch "$FILES_PATH"/files/patches/"${i}"
+	done
+	YPB_CONFIG+=" --prefix=/usr 
+	              --sysconfdir=/etc/X11
+		      --mandir=/usr/share/man
+		      --localstatedir=/var 
+		      --with-xkb-output=/var/lib/xkb 
+		      --with-fontdir=/usr/share/fonts 
+		      --enable-install-setuid 
+		      --enable-xcsecurity  
+		      --enable-xorg   
+		      --enable-xvfb  
+		      --enable-xnest  
+	              --enable-kdrive 
+		      --enable-xephyr   
+		      --enable-xsdl  
+		      --enable-xfbdev 
+		      --enable-xnest 
+		      --enable-record 
+		      --enable-xfree86-utils 
+		      --enable-install-libxf86config 
+		      --enable-dri 
+		      --enable-dri2 
+		      --enable-glx 
+		      --enable-glx-tls 
+		      --enable-config-hal 
+		      --enable-ipv6
+		      --disable-dmx 
+		      --enable-kdrive 
+		      --disable-tslib 
+		      --disable-xcalibrate 
+		      --enable-install-setuid 
+		      --without-dtrace
+		      --with-pic
+		      --disable-static "
+		      #--with-module-dir=/usr/lib/X11/modules
+	ypkg_config
+}
+
+pbs_build() {
+	ypkg_make
+}
+
+pbs_install() {
+	ypkg_mkinstall
+}
+
+pbs_postinst() {
+	libtool --finish /usr/lib/xorg/modules/extensions
+}

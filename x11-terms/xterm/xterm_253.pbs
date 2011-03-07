@@ -1,0 +1,33 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="Terminal Emulator for X Windows"
+HOMEPAGE="http://invisible-island.net/xterm/xterm.html"
+ 
+SRC_URI="ftp://invisible-island.net/"$N"/"$N-$V$R".tgz"
+
+RDEPEND="libXft libXaw ncurses fontconfig libX11 libXmu libXt libICE freetype libXrender
+	 libXext libSM libXpm zlib expat libxcb util-linux-ng libXau libXdmcp "
+BDEPEND="${RDEPEND}"
+
+pbs_unpack() {
+        ypkg_unpack
+}
+
+pbs_config() {
+	sed -i '/v0/,+1s/new:/new:kb=^?:/' termcap 
+	echo -e '\tkbs=\\177,' >>terminfo 
+	YPB_CONFIG+="--enable-luit 
+	             --enable-wide-chars"
+	TERMINFO=/usr/lib/terminfo ypkg_config
+}
+
+pbs_build() {
+	ypkg_make
+}
+
+pbs_install() {
+	ypkg_mkinstall
+	ypkg_mkinstall install-ti
+}

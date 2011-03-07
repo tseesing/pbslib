@@ -1,0 +1,38 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION=" PolicyKit policies and configurations for the GNOME desktop"
+HOMEPAGE="http://hal.freedesktop.org/docs/PolicyKit"
+LICENSE="GPL-2"
+PACKAGER="hzx@115.com"
+
+SRC_URI="http://hal.freedesktop.org/releases/PolicyKit-gnome-$V$R.tar.bz2"
+
+RDEPEND=""
+BDEPEND="${RDEPEND} "
+RECOMMENDED=""
+
+NOTES=""
+
+pbs_unpack() {
+        ypkg_unpack
+}
+
+pbs_config() {
+	
+	YPB_CONFIG+=" --prefix=/usr 
+	              --sysconfdir=/etc 
+		      --localstatedir=/var 
+	              --disable-gtk-doc
+		      --disable-static"
+	ypkg_config
+}
+
+pbs_build() {
+	ypkg_make
+}
+
+pbs_install() {
+	ypkg_mkinstall
+}

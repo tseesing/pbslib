@@ -1,0 +1,53 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="a LGPL-ed pc emulator"
+HOMEPAGE="http://bochs.sourceforge.net/"
+REPO=""
+LICENSE=""
+PACKAGER="Zhongxin Huang, hzx@115.com"
+
+SRC_URI="http://downloads.sourceforge.net/project/"$N"/"$N"/"$V"/"$N-$V$R".tar.gz"
+
+RDEPEND=""
+BDEPEND="${RDEPEND}"
+
+pbs_unpack() {
+        ypkg_unpack
+}
+
+pbs_config() {
+	YPB_CONFIG+=" --with-x11
+		      --enable-repeat-speedups
+		      --enable-trace-cache
+   		      --enable-fast-function-calls
+		      --enable-debugger 
+		      --enable-disasm 
+		      --enable-logging 
+		      --enable-raw-serial 
+		      --enable-vbe 
+		      --enable-clgd54xx 
+		      --enable-fpu
+		      --enable-alignment-check 
+		      --enable-monitor-mwait 
+		      --enable-gameport 
+		      --enable-iodebug 
+		      --enable-ne2000 
+		      --enable-sb16=linux 
+		      --enable-plugins 
+		      --enable-cdrom 
+		      --enable-pci 
+		      --enable-pcidev 
+		      --enable-pnic 
+		      --with-nogui "
+	ypkg_config
+}
+
+pbs_build() {
+	ypkg_make
+}
+
+pbs_install() {
+	ypkg_mkinstall
+}

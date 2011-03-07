@@ -1,0 +1,30 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="Lightweight GTK+ based systray for UNIX desktop"
+HOMEPAGE="http://gna.org/projects/fvwm-crystal/"
+REPO="testing"
+
+SRC_URI="http://download.gna.org/fvwm-crystal/"$N"/"$V$R"/"$N-$V$R".tar.gz"
+
+RDEPEND=""
+BDEPEND="${RDEPEND}"
+
+pbs_unpack() {
+        ypkg_unpack
+}
+
+pbs_config() {
+	sed -i "s/-DGTK_DISABLE_DEPRECATED//g" Makefile.common
+	ypkg_config
+}
+
+pbs_build() {
+	ypkg_make PREFIX=/usr
+}
+
+pbs_install() {
+	mkdir -p "$YPPATH_DEST"/usr
+	make PREFIX="$YPPATH_DEST"/usr install
+}

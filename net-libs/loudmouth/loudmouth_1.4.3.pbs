@@ -1,0 +1,38 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="a lightweight and easy-to-use C library for programming with the XMPP protocol."
+HOMEPAGE="http://www.loudmouth-project.org/"
+LICENSE="GPL-2"
+PACKAGER="hzx@115.com"
+
+SRC_URI="ftp://lug.mtu.edu/gentoo/distfiles/"$N-$V$R".tar.bz2"
+
+RDEPEND="openssl"
+BDEPEND="${RDEPEND} openssl gnutls"
+RECOMMENDED=""
+
+NOTES=""
+
+pbs_unpack() {
+        ypkg_unpack
+}
+
+pbs_config() {
+	YPB_CONFIG+="--disable-debug 
+	             --without-asyncns 
+		     --disable-gtk-doc
+		     --with-ssl=gnutls 
+		     --without-asyncns 
+		     --with-ssl=openssl"
+	ypkg_config
+}
+
+pbs_build() {
+	ypkg_make
+}
+
+pbs_install() {
+	ypkg_mkinstall
+}

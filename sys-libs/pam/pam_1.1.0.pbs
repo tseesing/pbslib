@@ -1,0 +1,133 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="Linux-PAM (Pluggable Authentication Modules)"
+HOMEPAGE="http://www.kernel.org/pub/linux/libs/pam/"
+LICENSE="GPL-2"
+PACKAGER="hzx@115.com"
+
+SRC_URI="http://www.kernel.org/pub/linux/libs/"$N"/library/Linux-PAM-"$V$R".tar.bz2"
+
+RDEPEND=""
+BDEPEND="${RDEPEND} "
+
+pbs_unpack() {
+        ypkg_unpack
+}
+
+pbs_config() {
+	ypkg_patch  Linux-PAM-1.1.0-pam_console-1.patch
+	YPB_CONFIG+="--sbindir=/lib/security
+	             --enable-securedir=/lib/security 
+		     --docdir=/usr/share/doc/"$N"/"$V$R"
+		     --enable-read-both-confs "
+	ypkg_config
+}
+
+pbs_build() {
+	ypkg_make
+}
+
+pbs_install() {
+	ypkg_mkinstall
+	cd "$YPPATH_DEST"
+	chmod 4755 lib/security/unix_chkpwd
+	ypkg_domv  lib/security/pam_tally  sbin
+	ypkg_domv  usr/lib/libpam*.so.0*   lib
+	ypkg_doln  /lib/libpam.so.0 	   usr/lib/libpam.so
+	ypkg_doln  /lib/libpamc.so.0	   usr/lib/libpamc.so
+	ypkg_doln  /lib/libpam_misc.so.0   usr/lib/libpam_misc.so
+	[ -f "/etc/environment" ] && rm etc/environment
+	# The altering of device permissions is unnecessary. In this case, only the console locking actions are needed. Replace one of the pam_console configuration files to achieve this
+	cat > etc/security/console.handlers << "EOF"
+console consoledevs tty[0-9][0-9]* vc/[0-9][0-9]* :[0-9]\.[0-9] :[0-9]
+EOF
+	cat > etc/securetty << "EOF"
+console
+tty0
+tty1
+tty2
+tty3
+tty4
+tty5
+tty6
+tty7
+tty8
+tty9
+tty10
+tty11
+tty12
+ttyp0
+ttyp1
+ttyp2
+ttyp3
+ttyp4
+ttyp5
+ttyp6
+ttyp7
+ttyp8
+ttyp9
+ttyp10
+ttyp11
+ttyp12
+ttyS0
+EOF
+	#Pam will only let users login if their shell appears in /etc/shells. Now would be a good time to create this file
+	cat > etc/shells << "EOF"
+/bin/sh
+/bin/bash
+EOF
+	#
+	install -d etc/pam.d
+	#	For systems with Cracklib
+	#cat > /etc/pam.d/system-auth << "EOF"
+	#%PAM-1.0
+	#
+	# The PAM configuration file for system authentication
+	#
+	#auth       required     pam_env.so
+	#auth       sufficient   pam_unix.so try_first_pass nullok
+	#auth       required     pam_deny.so
+	#account    required     pam_unix.so
+	#password   required     pam_cracklib.so difok=2 minlen=8 dcredit=2 ocredit=2 retry=3
+	#password   sufficient   pam_unix.so try_first_pass use_authtok nullok md5 shadow
+	#password   required     pam_deny.so
+	#session    required     pam_limits.so
+	#session    required     pam_unix.so
+	#EOF
+	# For systems without Cracklib
+	cat > etc/pam.d/system-auth << "EOF"
+auth       required     pam_env.so
+auth       sufficient   pam_unix.so try_first_pass nullok
+auth       required     pam_deny.so
+account    required     pam_unix.so
+password   sufficient   pam_unix.so try_first_pass nullok md5 shadow
+password   required     pam_deny.so
+session    required     pam_limits.so
+session    required     pam_unix.so
+EOF
+	#If you built the pam_console module append system-auth with the following line:
+	cat >> etc/pam.d/system-auth << "EOF"
+session    optional     pam_console.so
+EOF
+	# This is file explicitiy denies access to a program that is PAM aware.
+	cat > etc/pam.d/other << "EOF"
+auth       required     pam_deny.so
+auth       required     pam_warn.so
+account    required     pam_deny.so
+account    required     pam_warn.so
+password   required     pam_deny.so
+password   required     pam_warn.so
+session    required     pam_deny.so
+session    required     pam_warn.so
+EOF
+	#These are the files that control the system shutdown
+	for file in halt poweroff reboot; do
+	       cat > etc/pam.d/$file << "EOF"
+auth       sufficient   pam_rootok.so
+auth       required     pam_console.so
+account    required     pam_permit.so
+EOF
+	       done
+}

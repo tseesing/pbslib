@@ -1,0 +1,27 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="The OpenAL Utility Toolkit"
+HOMEPAGE="http://www.openal.org"
+ 
+SRC_URI="http://connect.creativelabs.com/openal/Downloads/ALUT/"$N-$V$R".tar.gz"
+
+RDEPEND="openal"
+BDEPEND="${RDEPEND} media-libs/openal"
+
+pbs_unpack() {
+        ypkg_unpack
+}
+
+pbs_config() {
+	ypkg_config
+}
+
+pbs_build() {
+	ypkg_make
+}
+
+pbs_install() {
+	ypkg_mkinstall
+}

@@ -1,0 +1,32 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="Library for manipulation of TIFF (Tag Image File Format) images"
+HOMEPAGE="http://www.remotesensing.org/libtiff/"
+REPO=""
+LICENSE=""
+PACKAGER="Zhongxin Huang, hzx@115.com"
+
+SRC_URI="http://download.osgeo.org/"$N"/tiff-"$V$R".tar.gz"
+
+RDEPEND="freeglut mesa libXxf86vm libXmu libXt libSM util-linux-ng libICE libXi libXext libX11 libxcb 
+	 libXau libXdmcp libjpeg-turbo zlib libXdamage libXfixes libdrm"
+BDEPEND="${RDEPEND}"
+
+pbs_unpack() {
+        ypkg_unpack
+}
+
+pbs_config() {
+	ypkg_config
+}
+
+pbs_build() {
+	ypkg_make
+}
+
+pbs_install() {
+	ypkg_mkinstall
+	ypkg_dodoc HOWTO-RELEASE README RELEASE-DATE ChangeLog COPYRIGHT README.vms TODO VERSION
+}

@@ -1,0 +1,38 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="Great Qt4 GUI front-end for mplayer"
+HOMEPAGE="http://smplayer.berlios.de/"
+LICENSE="GPL-2"
+PACKAGER="hzx@115.com"
+
+SRC_URI="http://downloads.sourceforge.net/sourceforge/"$N"/"$N-$V$R".tar.bz2"
+
+RDEPEND="mplayer qt-core libpng freetype libSM libICE libXrender fontconfig libXext libX11 zlib util-linux-ng expat
+	 libxcb libXau libXdmcp"
+BDEPEND="${REQIRED} "
+RECOMMENDED="faac"
+
+NOTES=""
+
+pbs_unpack() {
+        ypkg_unpack
+}
+
+pbs_build() {
+	ypkg_patch ylmfos_subcp_cp936.patch
+	ypkg_make PREFIX=/usr
+}
+
+pbs_install() {
+	ypkg_mkinstall PREFIX=/usr
+	ypkg_dodesktop "$FILES_PATH"/files/smplayer.desktop
+	rm "$YPPATH_DEST"/usr/share/applications/smplayer_enqueue.desktop
+}
+
+pbs_postinst() {
+	gnome2_desktop_database_update
+	gnome2_icon_cache_update "hicolor"
+	gnome2_mime_database_update
+}

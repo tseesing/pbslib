@@ -1,0 +1,37 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="Libpcap provides a system-independent interface for user-level packet capture. It includes a portable framework for low-level network monitoring. Applications include network statistics collection, security monitoring, network debugging, etc."
+HOMEPAGE="http://www.tcpdump.org/"
+LICENSE="GPL-2"
+PACKAGER="hzx@115.com"
+
+SRC_URI="http://www.tcpdump.org/release/"$N-$V$R".tar.gz"
+
+RDEPEND=""
+BDEPEND="${RDEPEND} "
+RECOMMENDED=""
+
+NOTES="Currently, Libpcap does not compile with Flex 2.5.34. With 2.5.33 and 2.5.35 there are no problem"
+
+pbs_unpack() {
+        ypkg_unpack
+}
+
+pbs_config() {
+	ypkg_config
+}
+
+pbs_build() {
+	ypkg_make
+	make shared
+}
+
+pbs_install() {
+	mkdir -p "$YPPATH_DEST"/usr/bin
+	ypkg_mkinstall
+	ypkg_docp libpcap.so."$V$R"  "$YPPATH_DEST"/usr/lib 
+	ypkg_doln libpcap.so."$V$R"  "$YPPATH_DEST"/usr/lib/libpcap.so.1
+	ypkg_doln libpcap.so.1       "$YPPATH_DEST"/usr/lib/libpcap.so
+}

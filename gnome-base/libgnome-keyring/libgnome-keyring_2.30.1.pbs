@@ -1,0 +1,35 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="Compatibility library for accessing secrets"
+HOMEPAGE="http://live.gnome.org/GnomeKeyring"
+REPO=""
+LICENSE="GPL-2"
+PACKAGER="hzx@115.com"
+
+SRC_URI="http://ftp.gnome.org/pub/gnome/desktop/2.30/2.30.2/sources/"$N-$V$R".tar.bz2"
+
+RDEPEND="dbus eggdbus libgcrypt libgpg-error zlib dbus-glib"
+BDEPEND="${RDEPEND}"
+RECOMMENDED=""
+
+NOTES=""
+
+pbs_unpack() {
+        ypkg_unpack
+}
+
+pbs_config() {
+	ypkg_patch "default-keyring-name-must-en.patch"
+	YPB_CONFIG+="--disable-gtk-doc"
+	ypkg_config
+}
+
+pbs_build() {
+	ypkg_make
+}
+
+pbs_install() {
+	ypkg_mkinstall
+}

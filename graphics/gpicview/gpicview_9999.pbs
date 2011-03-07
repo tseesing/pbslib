@@ -1,0 +1,33 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="Light pictures viewer."
+HOMEPAGE="www.lxde.org"
+LICENSE="GPL-2"
+PACKAGER="hzx@115.com"
+
+SRC_URI="git://lxde.git.sourceforge.net/gitroot/lxde/"$N""
+
+RDEPEND="glibc expat glib2 zlib fontconfig freetype gtk+ atk cairo 
+	 pango pixman libjpeg-turbo libpng libxcb xcb-util libX11 libXau libXcomposite 
+	 libXcursor libXdamage libXdmcp libXext libXfixes libXinerama libXrender"
+BDEPEND="${RDEPEND} gtk+ "
+
+pbs_unpack() {
+	ypkg_unpack
+}
+
+pbs_config() {
+	ypkg_config
+}
+
+pbs_build() {
+	ypkg_make
+}
+
+pbs_install() {
+	ypkg_mkinstall
+	#fixme!
+	sed -i 's/Utility;//g' "$YPPATH_DEST"/usr/share/applications/gpicview.desktop
+}

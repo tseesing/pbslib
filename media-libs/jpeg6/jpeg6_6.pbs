@@ -1,0 +1,31 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="Library to load, handle and manipulate images in the JPEG format"
+HOMEPAGE="http://www.ijg.org/"
+REPO=""
+LICENSE="GPL-2"
+PACKAGER="hzx@115.com"
+
+SRC_URI="ftp://lug.mtu.edu/gentoo/distfiles/jpegsrc.v6b.tar.gz"
+
+RDEPEND=""
+BDEPEND="${RDEPEND}"
+
+pbs_unpack() {
+        ypkg_unpack
+}
+
+pbs_config() {
+	YPB_CONFIG+="--enable-shared --disable-static --enable-maxmem=64"
+	ypkg_config
+}
+
+pbs_build() {
+	ypkg_make
+}
+
+pbs_install() {
+	ypkg_docp .libs/{libjpeg.so.62,libjpeg.so.62.0.0}  "$YPPATH_DEST"/usr/lib
+}

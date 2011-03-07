@@ -1,0 +1,32 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="Streaming media framework"
+HOMEPAGE="http://gstreamer.sourceforge.net"
+LICENSE="GPL-2"
+PACKAGER="hzx@115.com"
+
+SRC_URI="http://gstreamer.freedesktop.org/src/"$N"/"$N-$V$R".tar.bz2"
+
+RDEPEND="glib2 glibc libxml2 zlib"
+BDEPEND="${RDEPEND}"
+RECOMMENDED=""
+
+pbs_unpack() {
+        ypkg_unpack
+}
+
+pbs_config() {
+	YPB_CONFIG+="--disable-gtk-doc --disable-docbook --disable-tests"
+	ypkg_config
+}
+
+pbs_build() {
+	ypkg_make
+}
+
+pbs_install() {
+	ypkg_mkinstall
+	ypkg_dodoc docs/design/*.txt
+}

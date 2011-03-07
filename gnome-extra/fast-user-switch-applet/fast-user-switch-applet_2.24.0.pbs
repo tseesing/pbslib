@@ -1,0 +1,50 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="Fast User Switching Applet for Gnome Desktop"
+HOMEPAGE="http://www.gnome.org"
+REPO="Testing"
+LICENSE="GPL-2"
+PACKAGER="hzx@115.com"
+
+SRC_URI="http://mirrors.cn99.com/ubuntu/pool/main/f/fast-user-switch-applet/"${N}_$V$R".orig.tar.gz"
+
+RDEPEND="gtk+ "
+BDEPEND="${RDEPEND} " #imagemagick"
+RECOMMENDED=""
+
+NOTES=""
+
+pbs_unpack() {
+        ypkg_unpack
+}
+
+pbs_config() {
+	
+	#
+	grep -v ^# "$FILES_PATH"/files/patches/series |while read i; do
+		patch -p1 -i "$FILES_PATH"/files/patches/"${i}"
+	done
+	#
+	YPB_CONFIG+=" --prefix=/usr --sysconfdir=/etc --localstatedir=/var \
+	              --mandir=/usr/share/man  --disable-schemas-install --disable-scrollkeeper"
+	ypkg_config
+}
+
+pbs_build() {
+	ypkg_make
+}
+
+pbs_install() {
+	ypkg_mkinstall
+	install -m755 -d "$YPPATH_DEST"/usr/share/doc/"$N-$V$R"
+	cp -a AUTHORS COPYING NEWS README "$YPPATH_DEST"/usr/share/doc/"$N-$V$R"
+}
+
+pbs_postinst() {
+	gnome2_rarian_sk_update
+	gnome2_desktop_database_update
+	gnome2_icon_cache_update
+	gnome2_gconfd_reload
+}

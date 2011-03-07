@@ -1,0 +1,37 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="A set of programs to assemble and manipulate binary and object files (mingw)"
+HOMEPAGE="http://www.mingw.org/"
+LICENSE="GPL"
+PACKAGER="hzx@115.com"
+SRC_URI="http://downloads.sourceforge.net/project/mingw/MinGW/BaseSystem/GNU-Binutils/binutils-$V$R/binutils-$V$R-1-mingw32-src.tar.lzma"
+
+RDEPEND=""
+BDEPEND="${RDEPEND} "
+RECOMMENDED=""
+
+NOTES=""
+
+pbs_unpack() {
+	tar --lzma -xf $YPPATH_SOURCE/"$(basename $SRC_URI)"
+	mv binutils-$V$R  "$N-$V$R"
+}
+
+pbs_config() {
+	target="i586-mingw32msvc"
+	
+	./configure --prefix=/usr --target=$target --disable-nls --enable-shared 
+}
+
+pbs_build() {
+	ypkg_make
+}
+
+pbs_install() {
+	ypkg_mkinstall
+        # remove some non-cross stuff that will clash with other packages
+        rm -rf "$YPPATH_DEST"/usr/lib
+        rm -rf "$YPPATH_DEST"/usr/share/{info,man}
+}

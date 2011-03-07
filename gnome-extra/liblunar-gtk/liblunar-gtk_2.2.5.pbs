@@ -1,0 +1,37 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION=""
+HOMEPAGE="http://code.google.com/p/liblunar/"
+REPO=""
+LICENSE="GPL"
+PRIORITY=""
+PACKAGER="Zhongxin Huang, hzx@115.com"
+
+SRC_URI="http://liblunar.googlecode.com/files/"$N-$V$R".tar.gz"
+
+RDEPEND="liblunar"
+BDEPEND="${RDEPEND} "
+RECOMMENDED=""
+CONFLICT=""
+
+NOTES=""
+
+pbs_unpack() {
+        ypkg_unpack
+}
+
+pbs_config() {
+	YPB_CONFIG+="--enable-python --enable-gtk-doc"
+	ypkg_config
+}
+
+pbs_build() {
+	ypkg_make
+}
+
+pbs_install() {
+	ypkg_mkinstall
+	ypkg_docp "$FILES_PATH/files/99-liblunar-preload" "$YPPATH_DEST"/etc/X11/Xsession.d
+}

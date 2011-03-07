@@ -1,0 +1,33 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="Command line utilities to work with desktop menu entries"
+HOMEPAGE="http://freedesktop.org/wiki/Software/desktop-file-utils"
+LICENSE="GPL-2"
+PACKAGER="hzx@115.com"
+SRC_URI="http://freedesktop.org/software/desktop-file-utils/releases/$N-$V.tar.gz"
+
+RDEPEND=""
+BDEPEND="${RDEPEND} glib2"
+RECOMMENDED=""
+
+NOTES="http://wiki.linuxfromscratch.org/blfs/wiki/desktop-file-utils"
+
+pbs_unpack() {
+        ypkg_unpack
+}
+
+pbs_config() {
+	
+	YPB_CONFIG+=" --prefix=/usr "
+	ypkg_config
+}
+
+pbs_build() {
+	ypkg_make
+}
+
+pbs_install() {
+	ypkg_mkinstall
+}

@@ -1,0 +1,46 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION=" a high-quality MPEG audio decoder capable of 24-bit output."
+HOMEPAGE="http://www.underbit.com/products/mad/"
+LICENSE="GPL-2"
+PACKAGER="hzx@115.com"
+
+SRC_URI="http://prdownloads.sourceforge.net/mad/"$N-$V$R".tar.gz"
+
+RDEPEND=""
+BDEPEND="${RDEPEND} "
+RECOMMENDED=""
+
+NOTES=""
+
+pbs_unpack() {
+        ypkg_unpack
+}
+
+pbs_config() {
+	ypkg_patch "$N-$V$R"-fforce-2.patch
+	ypkg_config
+}
+
+pbs_build() {
+	ypkg_make
+}
+
+pbs_install() {
+	cat > mad.pc << "EOF"
+prefix=/usr
+exec_prefix=${prefix}
+libdir=${exec_prefix}/lib
+includedir=${prefix}/include
+Name: mad
+Description: MPEG audio decoder
+Version: 0.15.1b
+Libs: -L${libdir} -lmad
+Cflags: -I${includedir}
+EOF
+	ypkg_mkinstall
+	ypkg_docp mad.pc "$YPPATH_DEST"/usr/lib/pkgconfig
+	ypkg_dodoc COPYING INSTALL README 
+}

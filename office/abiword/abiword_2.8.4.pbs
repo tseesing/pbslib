@@ -1,0 +1,29 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="Fully featured yet light and fast cross platform word processor"
+HOMEPAGE="http://www.abisource.com/"
+ 
+SRC_URI="http://www.abisource.com/downloads/"$N"/"$V"/source/"$N-$V$R".tar.gz"
+
+RDEPEND="libgsf fribidi"
+BDEPEND="${RDEPEND}"
+
+pbs_unpack() {
+        ypkg_unpack
+}
+
+pbs_config() {
+	ypkg_config
+}
+
+pbs_build() {
+	ypkg_make
+}
+
+pbs_install() {
+	ypkg_mkinstall
+	mkdir -p "$YPPATH_DEST"/etc/xg_launch/others
+	echo '+ abiword%/usr/share/icons/abiword_48.png%      Exec abiword' >"$YPPATH_DEST"/etc/xg_launch/others/C10abiword 
+}

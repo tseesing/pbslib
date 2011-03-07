@@ -1,0 +1,24 @@
+#
+# YLmf_OS package build script
+#
+DESCRIPTION="ghostscript-fonts-std"
+HOMEPAGE=""
+REPO=""
+LICENSE=""
+PACKAGER="Zhongxin Huang, hzx@115.com"
+
+SRC_URI="http://mirror.cs.wisc.edu/pub/mirrors/ghost/fonts/"$N-$V$R".tar.gz"
+
+RDEPEND="gnu-ghostscript"
+BDEPEND="${RDEPEND} "
+RECOMMENDED=""
+
+NOTES=""
+
+pbs_unpack() {
+        ypkg_unpack
+}
+
+pbs_install() {
+	ypkg_docp * "$YPPATH_DEST"/usr/share/fonts/ghostscript
+}

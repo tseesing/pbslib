@@ -1,0 +1,36 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="a Gtk+-2 based audio player. "
+HOMEPAGE="http://audacious-media-player.org/"
+LICENSE="GPL-2"
+PACKAGER="hzx@115.com"
+
+SRC_URI="http://distfiles.atheme.org/"$N-$V$R".tgz"
+
+RDEPEND="libSM libICE glib2 gtk+ atk pango cairo freetype fontconfig dbus-glib dbus libmowgli libmcs
+         libX11 util-linux-ng libXi libXrandr libXcursor libXcomposite libXext libXdamage libXfixes 
+	 pixman libxml2 directfb libpng libxcb libXrender libXau libXdmcp glibc zlib expat"
+BDEPEND="${RDEPEND} libglade"
+
+pbs_unpack() {
+        ypkg_unpack
+}
+
+pbs_config() {
+	ypkg_config
+}
+
+pbs_build() {
+	ypkg_make
+}
+
+pbs_install() {
+	ypkg_mkinstall
+	ypkg_dodoc README
+}
+
+pbs_postinst() {
+	gnome2_icon_cache_update "hicolor"
+}

@@ -1,0 +1,27 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="Stellarium renders 3D photo-realistic skies in real time."
+HOMEPAGE="http://www.stellarium.org/"
+ 
+SRC_URI="http://downloads.sourceforge.net/project/"$N"/Stellarium-sources/"$V"/"$N-$V".tar.gz"
+
+RDEPEND=""
+BDEPEND="${RDEPEND}"
+
+pbs_unpack() {
+        ypkg_unpack
+}
+
+pbs_config() {
+	ypkg_config
+}
+
+pbs_build() {
+	ypkg_make
+}
+
+pbs_install() {
+	ypkg_mkinstall
+}

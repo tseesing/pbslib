@@ -1,0 +1,37 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="an open source web browser engine."
+HOMEPAGE="http://www.webkitgtk.org/"
+LICENSE="GPL-2"
+PACKAGER="hzx@115.com"
+
+SRC_URI="http://webkitgtk.org/"$N-$V$R".tar.gz"
+
+RDEPEND="enchant gtk+ gail libXi libXrandr libXcursor libXcomposite libXext libXdamage libXfixes gst-plugins-base
+	 gstreamer atk pango cairo pixman directfb libxcb libXrender libjpeg-turbo libsoup gnutls libgcrypt libgpg-error libxslt libxml2
+	 fontconfig freetype expat libpng zlib sqlite icu libXt libX11 libxcb libXdmcp libXau libICE libSM util-linux-ng"
+BDEPEND="${RDEPEND} app-text/enchant libsoup icu"
+RECOMMENDED=""
+
+NOTES=""
+
+pbs_unpack() {
+        ypkg_unpack
+}
+
+pbs_config() {
+	ypkg_patch 02-pool-fixup-and-sparc-support.patch
+	ypkg_patch 04-spoof-user-agent-to-google.patch
+	ypkg_patch ubuntu-gir-version.patch
+	ypkg_config
+}
+
+pbs_build() {
+	ypkg_make
+}
+
+pbs_install() {
+	ypkg_mkinstall
+}

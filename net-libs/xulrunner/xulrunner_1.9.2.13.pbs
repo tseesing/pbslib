@@ -1,0 +1,34 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="Mozilla runtime package that can be used to bootstrap XUL+XPCOM applications"
+HOMEPAGE="http://developer.mozilla.org/en/docs/XULRunner"
+REPO=""
+LICENSE=""
+PACKAGER="Zhongxin Huang, hzx@115.com"
+
+SRC_URI="http://releases.mozilla.org/pub/mozilla.org/"$N"/releases/"$V"/source/"$N-$V$R".source.tar.bz2"
+
+RDEPEND=""
+BDEPEND="${RDEPEND} "
+RECOMMENDED=""
+
+NOTES=""
+
+pbs_unpack() {
+        ypkg_unpack
+}
+
+pbs_config() {
+	YPB_CONFIG+="--enable-application=xulrunner --disable-javaxpcom"
+	ypkg_config
+}
+
+pbs_build() {
+	ypkg_make
+}
+
+pbs_install() {
+	ypkg_mkinstall
+}

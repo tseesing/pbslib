@@ -1,0 +1,32 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="A vector graphics library with cross-device output support"
+HOMEPAGE="http://cairographics.org/"
+LICENSE="GPL-2"
+PACKAGER="hzx@115.com"
+
+SRC_URI="http://cairographics.org/releases/"$N-$V$R".tar.gz"
+
+RDEPEND="libpng pixman fontconfig"
+BDEPEND="${RDEPEND} x11-libs/xcb-util directfb"
+
+pbs_unpack() {
+        ypkg_unpack
+}
+
+pbs_config() {
+	ypkg_patch cairo-1.8.8-interix.patch
+	ypkg_patch cairo-1.10.0-buggy_gradients.patch
+	YPB_CONFIG+="--enable-xcb --enable-directfb"
+	ypkg_config
+}
+
+pbs_build() {
+	ypkg_make
+}
+
+pbs_install() {
+	ypkg_mkinstall
+}

@@ -1,0 +1,40 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="Chinese PinYin IMEngine for IBus Framework"
+HOMEPAGE="http://code.google.com/p/ibus/"
+LICENSE="GPL-2"
+PACKAGER="hzx@115.com"
+ 
+SRC_URI="ftp://lug.mtu.edu/gentoo/distfiles/$N-$V.tar.gz 
+	 ftp://lug.mtu.edu/gentoo/distfiles/pinyin-database-1.2.99.tar.bz2 "
+
+RDEPEND="app-i18n/ibus dev-libs/boost " #sys-apps/util-linux"
+BDEPEND="${RDEPEND} "
+RECOMMENDED=""
+
+NOTES=""
+
+pbs_unpack() {
+        ypkg_unpack
+        ypkg_unpack
+}
+
+pbs_config() {
+	
+	YPB_CONFIG+=" --prefix=/usr --sysconfdir=/etc --localstatedir=/var \
+	              --infodir=/usr/share/info --mandir=/usr/share/man  \
+		      --enable-nls --enable-db-open-phrase --disable-db-android"
+	ypkg_config
+}
+
+pbs_build() {
+	ypkg_make
+}
+
+pbs_install() {
+	ypkg_mkinstall
+	install -m755 -d "$YPPATH_DEST"/usr/share/{doc,man}/"$N-$V$R"
+	cp -a AUTHORS ChangeLog NEWS README  "$YPPATH_DEST"/usr/share/doc/"$N-$V$R"
+}

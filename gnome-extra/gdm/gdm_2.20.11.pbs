@@ -1,0 +1,98 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="GNOME Display Manager"
+HOMEPAGE="http://www.gnome.org/projects/gdm/"
+LICENSE="GPL-2"
+PACKAGER="hzx@115.com"
+
+SRC_URI="http://ftp.acc.umu.se/pub/gnome/sources/"$N"/2.20/"$N-$V$R".tar.bz2"
+
+RDEPEND="glib2 libcanberra libvorbis libogg libtool gtk+ atk pango cairo pixman libxml2 directfb libpng libxcb libXrender libX11 libxcb libXau libXdmcp pango glibc fontconfig 
+	 freetype expat dbus-glib dbus zlib libXi libXrandr libXcursor libXcomposite libXext libXdamage libXfixes"
+BDEPEND="${RDEPEND} consolekit zenity openssh dbus libglade gnome-session"
+RECOMMENDED=""
+
+NOTES="
+gdm user/group should be created automatically.\n
+GDM will start at runlevel 3.  If you would like to have GDM run
+when the computer boots, please change your /etc/inittab to default to
+runlevel 3 at boot time. For example
+id:3:initdefault:
+"
+
+pbs_init() {
+	ypkg_useradd -c "gdm user" -d "/var/lib/gdm" -s "/bin/false" "gdm"
+}
+
+pbs_unpack() {
+        ypkg_unpack
+}
+
+pbs_config() {
+	
+	YPB_CONFIG+=" --prefix=/usr --sysconfdir=/etc --localstatedir=/var  \
+	              --mandir=/usr/share/man  \
+		      --disable-static  \
+		      --enable-shared  \
+		      --disable-scrollkeeper  \
+		      --enable-ipv6  \
+		      --enable-console-helper=no  \
+		      --with-xdmcp=yes  \
+		      --with-sysconfsubdir=gdm  \
+		      --with-dmconfdir=/usr/share/xsessions \
+		      --with-log-dir=/var/log/gdm  \
+		      --with-pid-file=/var/run/gdm.pid  \
+		      --disable-schemas-install "
+	ypkg_config
+}
+
+pbs_build() {
+	ypkg_make
+}
+
+pbs_install() {
+	ypkg_mkinstall
+	# Make some handy softlinks
+	cd "$YPPATH_DEST"/usr/bin; ln -s ../sbin/gdm . ; ln -s ../sbin/gdmsetup .
+	# Copy over session entries for gdm menu
+	install -m755 -d  "$YPPATH_DEST"/usr/share/xsessions
+	install -m644  $FILES_PATH/files/sessions/*  "$YPPATH_DEST"/usr/share/xsessions
+	chown -R root:root  "$YPPATH_DEST"/usr/share/xsessions/*
+	# preserve settings
+	install -m755 -d  "$YPPATH_DEST"/etc/gdm
+	cp $FILES_PATH/files/custom.conf  "$YPPATH_DEST"/etc/gdm 
+	cp $FILES_PATH/files/custom.conf  "$YPPATH_DEST"/etc/gdm/custom.conf.ori
+	mv "$YPPATH_DEST"/etc/gdm/PostLogin/Default.sample  "$YPPATH_DEST"/etc/gdm/PostLogin/Default
+	chown -R root:root  "$YPPATH_DEST"/etc/gdm
+	#Copy gdm init script
+	install -m755 -d "$YPPATH_DEST"/etc/init.d  "$YPPATH_DEST"/etc/rc3.d
+	install -m755 $FILES_PATH/files/gdm  "$YPPATH_DEST"/etc/init.d
+	#
+	ln -sf /etc/init.d/gdm  "$YPPATH_DEST"/etc/rc3.d/S99gdm
+	ln -sf /etc/init.d/gdm  "$YPPATH_DEST"/etc/rc3.d/K01gdm
+	#
+	mkdir -p "$YPPATH_DEST"/var/lib/gdm
+	chown gdm:gdm  "$YPPATH_DEST"/var/lib/gdm 
+	#
+	rm -rf "$YPPATH_DEST"/var/gdm
+}
+
+pbs_postinst() {
+	gnome2_install_schema "/etc/gconf/schemas/gdm-simple-greeter.schemas"
+	gnome2_rarian_sk_update
+	gnome2_desktop_database_update
+	# These GTK+ files need to be kept up to date for
+	# proper input method with additional gdm modules
+	gnome2_gtk_immodules_update
+	# update hicolor icons
+	gnome2_icon_cache_update
+	#
+	chown gdm:gdm /var/lib/gdm
+}
+
+pbs_postrm() {
+	:
+	#sed -i '/^gdm/d' /etc/group /etc/gshadow /etc/passwd /etc/shadow
+}

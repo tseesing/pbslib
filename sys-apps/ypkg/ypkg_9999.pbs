@@ -1,0 +1,31 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="Package management system for Ylmf_OS Linux"
+HOMEPAGE="www.ylmf.net"
+REPO="stable"
+LICENSE="GPL-2"
+PACKAGER="hzx@115.com"
+PRIORITY="required"
+
+SRC_URI="git://192.168.1.58/"$N".git"
+
+RDEPEND="gawk cpio xz-utils sed coreutils git findutils procps psmisc bash"
+BDEPEND="${RDEPEND}"
+
+pbs_unpack() {
+	ypkg_unpack
+}
+
+pbs_build() {
+	ypkg_make
+}
+
+pbs_install() {
+	ypkg_mkinstall
+	cd "$YPPATH_DEST"
+	for i in ypkg yget; do
+		ypkg_doln  /usr/bin/"${i}"  bin/"${i}"
+	done
+}

@@ -1,0 +1,27 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="A software implementation of the OpenAL 3D audio API"
+HOMEPAGE="http://kcat.strangesoft.net/openal.html"
+
+SRC_URI="http://kcat.strangesoft.net/openal-releases/openal-soft-"$V$R".tar.bz2"
+
+RDEPEND=""
+BDEPEND="${RDEPEND}"
+
+pbs_unpack() {
+        ypkg_unpack
+}
+
+pbs_config() {
+	ypkg_config
+}
+
+pbs_build() {
+	ypkg_make
+}
+
+pbs_install() {
+	ypkg_mkinstall
+}

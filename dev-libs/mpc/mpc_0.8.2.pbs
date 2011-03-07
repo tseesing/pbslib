@@ -1,0 +1,31 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="A C library for the arithmetic of complex numbers with arbitrarily high precision and correct rounding of the result."
+HOMEPAGE="http://www.multiprecision.org/"
+REPO=""
+LICENSE="GPL"
+PACKAGER="Zhongxin Huang, hzx@115.com"
+
+SRC_URI="http://www.multiprecision.org/"$N"/download/"$N-$V$R".tar.gz"
+
+RDEPEND=""
+BDEPEND="${RDEPEND} gmp mpfr"
+RECOMMENDED=""
+
+pbs_unpack() {
+        ypkg_unpack
+}
+
+pbs_config() {
+	ypkg_config
+}
+
+pbs_build() {
+	ypkg_make
+}
+
+pbs_install() {
+	ypkg_mkinstall
+}

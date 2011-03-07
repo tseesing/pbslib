@@ -1,0 +1,37 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION=" International Components for Unicode"
+HOMEPAGE="http://www.icu-project.org/"
+LICENSE="GPL-2"
+PACKAGER="hzx@115.com"
+ 
+SRC_URI="http://download.icu-project.org/files/"$N"4c/"$V$R"/"$N"4c-4_2_1-src.tgz"
+
+RDEPEND="glibc"
+BDEPEND="${RDEPEND} "
+RECOMMENDED=""
+
+NOTES=""
+
+pbs_unpack() {
+        ypkg_unpack
+}
+
+pbs_config() {
+	cd source 
+	for x in CFLAGS CXXFLAGS CPPFLAGS LDFLAGS; do
+		sed -i -e "/^${x} =.*/s:@${x}@::" config/Makefile.inc.in
+        done
+	YPB_CONFIG+="--disable-debug --disable-samples"
+	ypkg_config
+}
+
+pbs_build() {
+	ypkg_make
+}
+
+pbs_install() {
+	ypkg_mkinstall
+}

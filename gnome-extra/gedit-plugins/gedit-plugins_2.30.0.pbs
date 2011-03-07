@@ -1,0 +1,42 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="Offical plugins for gedit."
+HOMEPAGE="http://live.gnome.org/GeditPlugins"
+LICENSE="GPL-2"
+PACKAGER="hzx@115.com"
+ 
+SRC_URI="ftp://ftp.gnome.org/pub/gnome/sources/"$N"/2.30/"$N-$V$R".tar.bz2"
+
+RDEPEND=""
+BDEPEND="${RDEPEND} gedit"
+RECOMMENDED=""
+
+NOTES=""
+
+pbs_unpack() {
+        ypkg_unpack
+}
+
+pbs_config() {
+	YPB_CONFIG+="--disable-schemas-install"
+	ypkg_config
+}
+
+pbs_build() {
+	ypkg_make
+}
+
+pbs_install() {
+	ypkg_mkinstall
+	ypkg_dodoc AUTHORS COPYING NEWS README
+	rm -fr "$YPPATH_DEST"/var/lib/scrollkeeper
+	rm -fr "$YPPATH_DEST"/var/lib/log
+}
+
+pbs_postinst() {
+	gnome2_install_schema "/etc/gconf/schemas/gedit-show-tabbar-plugin.schemas"
+	gnome2_install_schema "/etc/gconf/schemas/gedit-drawspaces.schemas"
+	gnome2_gconfd_reload
+}

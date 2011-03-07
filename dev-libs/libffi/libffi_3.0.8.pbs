@@ -1,0 +1,29 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="a portable, high level programming interface to various calling conventions."
+HOMEPAGE="http://sourceware.org/libffi/"
+LICENSE="GPL-2"
+PACKAGER="hzx@115.com"
+ 
+SRC_URI=" http://sources-redhat.mirrors.airband.net/"$N"/"$N-$V$R".tar.gz "
+
+RDEPEND=""
+BDEPEND="${RDEPEND} "
+
+pbs_unpack() {
+        ypkg_unpack
+}
+
+pbs_config() {
+	ypkg_config
+}
+
+pbs_build(){
+	ypkg_make
+}
+
+pbs_install() {
+	ypkg_mkinstall
+}

@@ -1,0 +1,41 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="an open source web browser engine."
+HOMEPAGE="http://webkit.org/"
+REPO="testing"
+LICENSE="GPL-2"
+PACKAGER="hzx@115.com"
+SRC_URI="http://builds.nightly.webkit.org/files/trunk/src/WebKit-r69221.tar.bz2"
+
+RDEPEND="enchant gtk+ gail libXi libXrandr libXcursor libXcomposite libXext libXdamage libXfixes gst-plugins-base
+gstreamer atk pango cairo pixman directfb libxcb libXrender jpeg libsoup gnutls libgcrypt libgpg-error libxslt libxml2
+fontconfig freetype expat libpng zlib sqlite icu libXt libX11 libxcb libXdmcp libXau libICE libSM util-linux-ng"
+BDEPEND="${RDEPEND} app-text/enchant libsoup icu"
+RECOMMENDED=""
+
+NOTES=""
+
+pbs_unpack() {
+        ypkg_unpack
+	mv WebKit-r69221 "$N-$V$R"
+}
+
+pbs_config() {
+	
+	YPB_CONFIG+=" --prefix=/usr \
+	              --sysconfdir=/etc \
+		      --localstatedir=/var \
+	              --infodir=/usr/share/info \
+		      --mandir=/usr/share/man "
+	./autogen.sh $YPB_CONFIG
+}
+
+pbs_build() {
+	ypkg_make
+}
+
+pbs_install() {
+	ypkg_mkinstall
+}

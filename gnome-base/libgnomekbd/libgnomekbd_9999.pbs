@@ -1,0 +1,102 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="Gnome keyboard configuration library"
+HOMEPAGE="http://www.gnome.org"
+REPO="testing"
+LICENSE=""
+PACKAGER="hzx@115.com"
+BIN_URI=""
+
+RDEPEND="gconf libxklavier"
+BDEPEND="${RDEPEND} dbus gconf libbonoboui gnome-keyring libxklavier libglade iso-codes"
+RECOMMENDED=""
+
+NOTES="http://wiki.linuxfromscratch.org/blfs/wiki/libgnomekbd"
+
+pbs_init()
+{
+	echo "init "$N-$V$R" build script..."
+}
+
+pbs_unpack()
+{
+	#unpard file from $YPPATH_SOURCE to current directory.
+	echo "Unpacking to `pwd`"
+	OLDDIR=$(pwd)
+	cd $YPPATH_SOURCE
+	if [ -d $N/.git ];then
+		cd $N
+		git pull --rebase
+	else
+		git clone git://git.gnome.org/$N
+		cd $N
+		git checkout --track -b gnome-2-30 origin/gnome-2-30
+		git pull --rebase
+	fi
+	cd ../ 
+	cp -a $N $OLDDIR
+	cd $OLDDIR
+	mv $N "$N-$V$R"
+}
+
+pbs_config()
+{
+	echo "config "$N-$V$R"..."
+	
+	./autogen.sh --prefix /usr --sysconfdir /etc --localstatedir /var/lib --mandir /usr/share/man --disable-static --enable-shared --disable-schemas-install
+}
+
+pbs_build()
+{
+	echo "make "$N-$V$R"..."
+	#run make in current directory
+	ypkg_make
+}
+
+pbs_check()
+{
+	echo "checking "$N-$V$R".."
+	#make check
+}
+
+pbs_install()
+{
+	echo "install to $YPPATH_DEST"
+	#install everything to $YPPATH_DEST
+	ypkg_mkinstall
+	cd "$YPPATH_DEST"/etc/gconf/schemas/ && SCHEMAS=$(ls *.schemas|xargs)
+}
+
+pbs_postinst()
+{
+	echo "running after package installed..."
+        # Add schemas install to the doinst.sh if schemas are found.
+	if [ "x$SCHEMAS" != "x" ] && [ -x /usr/bin/gconftool-2 ]; then
+		cd /etc/gconf/schemas
+		for schema in $SCHEMAS; do
+			# Install schemas
+			GCONF_CONFIG_SOURCE="$(/usr/bin/gconftool-2 --get-default-source)" \
+			 /usr/bin/gconftool-2 --makefile-install-rule /etc/gconf/schemas/${schema} #>/dev/null 2>&1
+		done
+	fi
+	# update desktop entries
+	if [ -x /usr/bin/update-desktop-database ]; then
+		/usr/bin/update-desktop-database #1> /dev/null 2> /dev/null
+	fi
+	# Restart gconfd-2 if running to reload new gconf settings
+	if ps acx | grep -q gconfd-2; then
+		killall -HUP gconfd-2
+        fi
+}
+
+pbs_prerm()
+{
+	echo "running before package delete..."
+}
+
+pbs_postrm()
+{
+	echo "running after package delete..."
+}

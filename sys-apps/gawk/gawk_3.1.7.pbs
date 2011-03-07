@@ -1,0 +1,29 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="GNU awk pattern-matching language"
+HOMEPAGE="http://www.gnu.org/software/gawk/gawk.html"
+ 
+SRC_URI="http://mirror.anl.gov/pub/gnu/"$N"/"$N-$V$R".tar.gz"
+
+RDEPEND="glibc"
+BDEPEND="${RDEPEND}"
+
+PRIORITY="required"
+
+pbs_unpack() {
+        ypkg_unpack
+}
+
+pbs_config() {
+	ypkg_config
+}
+
+pbs_build() {
+	ypkg_make
+}
+
+pbs_install() {
+	ypkg_mkinstall
+}

@@ -1,0 +1,34 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="GNU debugger"
+HOMEPAGE="http://sources.redhat.com/gdb/"
+LICENSE="GPL-2"
+PACKAGER="hzx@115.com"
+
+SRC_URI="ftp://lug.mtu.edu/gentoo/distfiles/"$N-$V$R".tar.bz2 "
+
+RDEPEND="ncurses zlib glibc python expat "
+BDEPEND="${RDEPEND}"
+RECOMMENDED=""
+
+pbs_unpack() {
+        ypkg_unpack
+}
+
+pbs_config() {
+	ypkg_patch 05_all_readline-headers.patch
+	ypkg_patch 20_all_gdb-tdep-opcode-include-workaround.patch
+	ypkg_patch 35_all_gdb-6.3-security-errata-20050610.patch
+	ypkg_patch 80_all_gdb-6.5-dwarf-stack-overflow.patch
+	ypkg_config
+}
+
+pbs_build() {
+	ypkg_make
+}
+
+pbs_install() {
+	ypkg_mkinstall
+}

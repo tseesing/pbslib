@@ -1,0 +1,35 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="GTK Instant Messenger client"
+HOMEPAGE="http://pidgin.im/"
+ 
+SRC_URI="http://downloads.sourceforge.net/project/$N/Pidgin/$V/$N-$V.tar.bz2"
+
+RDEPEND=""
+BDEPEND="${RDEPEND} x11-libs/startup-notification net-libs/gnutls"
+
+pbs_unpack()
+{
+        ypkg_unpack
+}
+
+pbs_config()
+{
+	
+	YPB_CONFIG+=" --disable-gtkspell --disable-gstreamer --disable-vv \
+		--disable-idn --disable-meanwhile --disable-avahi --disable-nm \
+		--disable-tcl"
+	ypkg_config
+}
+
+pbs_build()
+{
+	ypkg_make
+}
+
+pbs_install()
+{
+	ypkg_mkinstall
+}

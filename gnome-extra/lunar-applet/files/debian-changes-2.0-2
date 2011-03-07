@@ -1,0 +1,42 @@
+Description: Upstream changes introduced in version 2.0-2
+ This patch has been created by dpkg-source during the package build.
+ Here's the last changelog entry, hopefully it gives details on why
+ those changes were made:
+ .
+ lunar-applet (2.0-2) unstable; urgency=low
+ .
+   * debian/watch: recognize 2.0-r2 as 2.0~r2.
+   * debian/copyright: replace (C) with Copyright
+   * debian/source/format: 3.0.
+   * debian/control:
+     - build depends on libgnomeui-dev (closes: #581324)
+     - update maintainer's email.
+     - bump standards version to 3.8.4.
+     - remove DMUA field.
+ .
+ The person named in the Author field signed this changelog entry.
+Author: LI Daobing <lidaobing@debian.org>
+Bug-Debian: http://bugs.debian.org/581324
+
+---
+The information above should follow the Patch Tagging Guidelines, please
+checkout http://dep.debian.net/deps/dep3/ to learn about the format. Here
+are templates for supplementary fields that you might want to add:
+
+Origin: <vendor|upstream|other>, <url of original patch>
+Bug: <url in upstream bugtracker>
+Bug-Debian: http://bugs.debian.org/<bugnumber>
+Forwarded: <no|not-needed|url proving that it has been forwarded>
+Reviewed-By: <name and email of someone who approved the patch>
+Last-Update: <YYYY-MM-DD>
+
+--- lunar-applet-2.0.orig/src/lunar.c
++++ lunar-applet-2.0/src/lunar.c
+@@ -45,6 +45,7 @@
+ #include <libgnomeui/gnome-help.h>
+ #include <libgnomeui/gnome-url.h>
+ #include <lunar/lunar.h>
++#include <lunar/lunar-calendar.h>
+ 
+ #ifdef HAVE_LIBECAL
+ #include "calendar-client.h"

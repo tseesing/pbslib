@@ -1,0 +1,38 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="GNOME CORBA framework."
+HOMEPAGE="http://www.gnome.org/"
+LICENSE="GPL-2"
+PACKAGER="hzx@115.com"
+SRC_URI="ftp://ftp.gnome.org/pub/gnome/sources/$N/2.24/"$N-$V$R".tar.bz2"
+BDEPEND="dbus-glib intltool libxml2 orbit popt dev-perl/xml-parser"
+RECOMMENDED=""
+
+NOTES=""
+
+pbs_unpack() {
+        ypkg_unpack
+}
+
+pbs_config() {
+	
+	YPB_CONFIG+=" --prefix=$(pkg-config --variable=prefix ORBit-2.0) 
+	              --sysconfdir=/etc/gnome/2.28.2 
+		      --libexecdir=$(pkg-config --variable=prefix ORBit-2.0)/lib/bonobo 
+		      --mandir=$(pkg-config --variable=prefix ORBit-2.0)/share/man"
+	ypkg_config
+}
+
+pbs_build() {
+	ypkg_make
+}
+
+pbs_check() {
+	make check
+}
+
+pbs_install() {
+	ypkg_mkinstall
+}

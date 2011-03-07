@@ -1,0 +1,33 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="a Python library for working with RDF, a simple yet powerful language for representing information."
+HOMEPAGE="http://rdflib.net/"
+REPO=""
+LICENSE="New BSD License"
+PACKAGER="Zhongxin Huang, hzx@115.com"
+
+SRC_URI="" #rdflib-3.0.0.tar.gz"
+
+RDEPEND=""
+BDEPEND="${RDEPEND} "
+RECOMMENDED=""
+
+NOTES=""
+
+pbs_unpack() {
+        ypkg_unpack
+}
+
+pbs_config() {
+	ypkg_config
+}
+
+pbs_build() {
+	ypkg_make
+}
+
+pbs_install() {
+	ypkg_mkinstall
+}

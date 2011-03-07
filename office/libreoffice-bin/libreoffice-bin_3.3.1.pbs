@@ -1,0 +1,50 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="the free power-packed Open Source personal productivity suite for Windows, Macintosh and Linux"
+HOMEPAGE="http://www.libreoffice.org/"
+REPO=""
+LICENSE="LGPL"
+PACKAGER="Zhongxin Huang, hzx@115.com"
+
+SRC_URI=" http://mirror.lupaworld.com/tdf/libreoffice/stable/"$V$R"/deb/x86/LibO_"$V$R"_Linux_x86_install-deb_en-US.tar.gz
+	  http://mirror.lupaworld.com/tdf/libreoffice/stable/"$V$R"/deb/x86/LibO_"$V$R"_Linux_x86_helppack-deb_zh-CN.tar.gz
+	  http://mirror.lupaworld.com/tdf/libreoffice/stable/"$V$R"/deb/x86/LibO_"$V$R"_Linux_x86_langpack-deb_zh-CN.tar.gz "
+
+RDEPEND="zlib freetype libXau libxcb libXdmcp libXext"
+BDEPEND="${RDEPEND} binutils"
+
+pbs_install() {
+	mkdir -p "$N-$V$R"
+	cd "$N-$V$R"
+	packages=" LibO_"$V$R"_Linux_x86_install-deb_en-US.tar.gz   
+	           LibO_"$V$R"_Linux_x86_langpack-deb_zh-CN.tar.gz   
+		   LibO_"$V$R"_Linux_x86_helppack-deb_zh-CN.tar.gz "
+	for i in $packages; do
+		 tar xf "$YPPATH_SOURCE"/"${i}"
+	done
+	find . -name "*.deb" |while read i; do
+		echo ">>> Unpack $(basename $i)"
+		ar x "${i}"; tar xf data.tar.gz
+	done	
+	for i in etc opt usr; do
+		ypkg_docp "${i}"/*   "$YPPATH_DEST"/"${i}"
+	done
+	icons=" libreoffice-base.png
+		libreoffice-calc.png
+		libreoffice-draw.png 
+		libreoffice-impress.png
+		libreoffice-math.png 
+		libreoffice-printeradmin.png
+		libreoffice-startcenter.png
+		libreoffice-writer.png "
+	for i in $icons; do
+		ypkg_docp usr/share/icons/hicolor/48x48/apps/"${i}" "$YPPATH_DEST"/usr/share/pixmaps/
+	done
+}
+
+pbs_postinst() {
+	gnome2_desktop_database_update
+	gnome2_icon_cache_update
+}

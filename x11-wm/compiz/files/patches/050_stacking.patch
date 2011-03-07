@@ -1,0 +1,18 @@
+Author: Michael Vogt <michael.vogt@ubuntu.com>
+Description: map windows with focus_on_map=FALSE in the background 
+ map windows with focus_on_map=FALSE in the background (just like metacity)
+Origin: vendor, ubuntu (1:0.8.2-0ubuntu6)
+Bug-Ubuntu: https://bugs.launchpad.net/ubuntu/+source/compiz/+bug/333284
+Index: compiz-0.8.6/src/event.c
+===================================================================
+--- compiz-0.8.6.orig/src/event.c	2010-07-27 17:37:02.653643001 +0200
++++ compiz-0.8.6/src/event.c	2010-07-27 17:37:09.843643001 +0200
+@@ -2073,7 +2073,7 @@
+ 		focus = allowWindowFocus (w, NO_FOCUS_MASK,
+ 					  w->screen->x, w->screen->y, 0);
+ 
+-		if (focus == CompFocusDenied)
++		if ((focus == CompFocusDenied || focus == CompFocusPrevent) && (w->type & ~NO_FOCUS_MASK))
+ 		    stackingMode = CompStackingUpdateModeInitialMapDeniedFocus;
+ 		else
+ 		    stackingMode = CompStackingUpdateModeInitialMap;

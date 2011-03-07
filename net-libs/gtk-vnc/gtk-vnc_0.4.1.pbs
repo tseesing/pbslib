@@ -1,0 +1,42 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="VNC viewer widget for GTK."
+HOMEPAGE="http://live.gnome.org/gtk-vnc"
+LICENSE="GPL-2"
+PACKAGER="hzx@115.com"
+SRC_URI="http://ftp.acc.umu.se/pub/GNOME/sources/$N/0.4/$N-$V.tar.bz2"
+
+RDEPEND="gtk+ atk pango cairo pixman libxml2 directfb libpng libxcb gnutls libgcrypt libgcrypt libgpg-error cyrus-sasl gtk+ glib2 
+         libXrender fontconfig freetype expat libX11 libxcb libXau libXdmcp gnutls libgcrypt libgpg-error cyrus-sasl zlib libXi libXrandr 
+	 libXcursor libXcomposite libXext libXdamage libXfixes "
+BDEPEND="${RDEPEND} gtk+ gnutls cyrus-sasl"
+RECOMMENDED=""
+
+NOTES=""
+
+pbs_unpack() {
+        ypkg_unpack
+}
+
+pbs_config() {
+	
+	YPB_CONFIG+=" --prefix=/usr --sysconfdir=/etc --localstatedir=/var \
+	              --infodir=/usr/share/info --mandir=/usr/share/man \
+	              --disable-static --enable-shared \
+		      --without-examples \
+		      --without-python "
+	ypkg_config
+}
+
+pbs_build()
+{
+	ypkg_make
+}
+
+pbs_install() {
+	ypkg_mkinstall
+	install -m755 -d "$YPPATH_DEST"/usr/share/doc/"$N-$V$R"
+	cp -a AUTHORS ChangeLog INSTALL NEWS README "$YPPATH_DEST"/usr/share/doc/"$N-$V$R"
+}

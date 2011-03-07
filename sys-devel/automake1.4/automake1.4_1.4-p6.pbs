@@ -1,0 +1,32 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="Used to generate Makefile.in from Makefile.am"
+HOMEPAGE="http://www.gnu.org/software/automake/"
+LICENSE="GPL-2"
+PACKAGER="hzx@115.com"
+
+SRC_URI="http://ftp.gnu.org/gnu/automake/automake-"$V$R".tar.gz"
+
+RDEPEND="autoconf"
+BDEPEND="${RDEPEND}"
+
+pbs_unpack() {
+        ypkg_unpack
+}
+
+pbs_config() {
+	ypkg_config
+}
+
+pbs_build() {
+	ypkg_make
+}
+
+pbs_install() {
+	ypkg_mkinstall
+	#confict with new version
+	mv "$YPPATH_DEST"/usr/bin/aclocal{,1.4}
+	mv "$YPPATH_DEST"/usr/bin/automake{,1.4}
+}

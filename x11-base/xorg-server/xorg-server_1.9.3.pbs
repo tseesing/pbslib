@@ -1,0 +1,77 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="X.Org X servers"
+HOMEPAGE="http://xorg.freedesktop.org/"
+LICENSE=""
+PACKAGER="hzx@115.com"
+
+SRC_URI="http://www.x.org/releases/individual/xserver/"$N-$V$R".tar.bz2"
+
+RDEPEND="glibc openssl pixman xkeyboard-config libpciaccess libXfont freetype libfontenc libXau udev dbus libXdmcp 
+	 mesa libICE libsdl libSM libX11 libXaw libXext libXfixes libXi libXmu libXpm libXrender libXt libXv directfb
+	 libdmx libdrm libxcb util-linux-ng libXxf86vm libXdamage"
+BDEPEND="${RDEPEND}  xproto dri2proto libsdl libXv mesa"
+
+NOTES="
+You must rebuild all drivers if upgrading from xorg-server 1.6
+or earlier, because the ABI changed. If you cannot start X because
+of module version mismatch errors, this is your problem.
+"
+
+pbs_unpack() {
+        ypkg_unpack
+}
+
+pbs_config() {
+	ypkg_patch  "$N"-1.9-xinerama-crash-fix.patch
+	ypkg_patch  "$N"-1.9-nouveau-default.patch
+	YPB_CONFIG+=" --sysconfdir=/etc/X11
+		      --with-xkb-output=/var/lib/xkb 
+		      --enable-install-setuid 
+		      --enable-xcsecurity  
+		      --enable-xorg   
+		      --enable-xvfb  
+		      --enable-xnest  
+	              --enable-kdrive 
+		      --enable-xephyr   
+		      --enable-xfbdev 
+		      --enable-xnest 
+		      --enable-record 
+		      --enable-xfree86-utils 
+		      --enable-install-libxf86config 
+		      --enable-dri 
+		      --enable-dri2 
+		      --enable-glx 
+		      --enable-glx-tls 
+		      --enable-config-hal 
+		      --enable-ipv6
+		      --disable-dmx 
+		      --enable-kdrive 
+		      --disable-tslib 
+		      --disable-xcalibrate 
+		      --enable-install-setuid 
+		      --without-dtrace
+		      --with-pic
+		      --disable-static 
+		      --with-os-vendor=Ylmf_OS "
+		      #--with-module-dir=/usr/lib/X11/modules
+	ypkg_config
+}
+
+pbs_build() {
+	ypkg_make
+}
+
+pbs_install() {
+	ypkg_mkinstall
+	cd "$YPPATH_DEST"
+	ypkg_docp "$FILES_PATH"/files/{10-evdev.conf,10-quirks.conf}  etc/X11/xorg.conf.d
+	#
+	ypkg_doln /usr/share/fonts usr/lib/X11/fonts
+}
+
+pbs_postinst() {
+	libtool --finish /usr/lib/xorg/modules/extensions
+}

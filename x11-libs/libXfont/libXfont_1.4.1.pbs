@@ -1,0 +1,33 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION=="X.Org Xfont library"
+HOMEPAGE="http://www.x.org/wiki/"
+ 
+SRCURL="http://www.x.org/releases/X11R7.5/src/lib/libXfont-1.4.1.tar.bz2"
+
+RDEPEND="freetype zlib libfontenc"
+BDEPEND="${RDEPEND}"
+
+pbs_unpack()
+{
+        ypkg_unpack
+}
+
+pbs_config()
+{
+	
+	YPB_CONFIG+=" --sysconfdir=/etc --mandir=/usr/share/man --localstatedir=/var "
+	ypkg_config
+}
+
+pbs_build()
+{
+	ypkg_make
+}
+
+pbs_install()
+{
+	ypkg_mkinstall
+}

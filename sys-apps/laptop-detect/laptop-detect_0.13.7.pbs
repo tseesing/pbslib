@@ -1,0 +1,31 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="laptop detect tool"
+HOMEPAGE=""
+LICENSE="GPL-2"
+PACKAGER="hzx@115.com"
+
+SRC_URI="http://ftp.debian.org/debian/pool/main/l/"$N"/"${N}_$V$R".tar.gz"
+
+RDEPEND=""
+BDEPEND="${RDEPEND} "
+RECOMMENDED=""
+
+NOTES=""
+
+pbs_unpack() {
+        ypkg_unpack
+}
+
+pbs_build() {
+	sed -e "s/@VERSION@/${V}$R/g" < laptop-detect.in > laptop-detect
+	chmod 755 laptop-detect
+}
+
+pbs_install() {
+	ypkg_docp laptop-detect "$YPPATH_DEST"/usr/sbin
+	ypkg_dodoc README
+	ypkg_docp laptop-detect.8 "$YPPATH_DEST"/usr/share/man/man8
+}

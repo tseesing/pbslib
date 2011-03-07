@@ -1,0 +1,33 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="Contains error handling functions used by GnuPG software"
+HOMEPAGE="http://www.gnupg.org/related_software/libgpg-error"
+ 
+SRC_URI="ftp://ftp.gnupg.org/gcrypt/libgpg-error/$N-$V.tar.bz2"
+
+RDEPEND=""
+BDEPEND="${RDEPEND}"
+
+pbs_unpack()
+{
+        ypkg_unpack
+}
+
+pbs_config()
+{
+	
+	YPB_CONFIG+=" --prefix=/usr --disable-gtk-doc --disable-static"
+	ypkg_config
+}
+
+pbs_build()
+{
+	ypkg_make
+}
+
+pbs_install()
+{
+	ypkg_mkinstall
+}

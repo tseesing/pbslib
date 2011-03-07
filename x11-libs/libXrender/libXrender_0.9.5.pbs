@@ -1,0 +1,34 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="X.Org Xrender library"
+HOMEPAGE="http://xorg.freedesktop.org"
+ 
+SRCURL="http://www.x.org/releases/X11R7.5/src/lib"
+SRC_URI="$SRCURL/libXrender-0.9.5.tar.bz2"
+
+RDEPEND="libX11 libxcb libXau libXdmcp"
+BDEPEND="${RDEPEND} x11-libs/libX11 "
+
+pbs_unpack()
+{
+        ypkg_unpack
+}
+
+pbs_config()
+{
+	
+	YPB_CONFIG+=" --sysconfdir=/etc --mandir=/usr/share/man --localstatedir=/var "
+	ypkg_config
+}
+
+pbs_build()
+{
+	ypkg_make
+}
+
+pbs_install()
+{
+	ypkg_mkinstall
+}

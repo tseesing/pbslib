@@ -1,0 +1,35 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="a collection of common network programs"
+HOMEPAGE="http://www.gnu.org/software/inetutils/"
+ 
+SRC_URI="http://ftp.gnu.org/gnu/"$N"/"$N-$V$R".tar.gz"
+
+RDEPEND="ncurses"
+BDEPEND="${RDEPEND}"
+
+pbs_unpack() {
+        ypkg_unpack
+}
+
+pbs_config() {
+	YPB_CONFIG+="--disable-ifconfig 
+	             --disable-logger 
+		     --disable-syslogd 
+		     --disable-whois 
+		     --disable-servers"
+	ypkg_config
+}
+
+pbs_build() {
+	ypkg_make
+}
+
+pbs_install() {
+	ypkg_mkinstall
+	cd "$YPPATH_DEST"
+	ypkg_domv usr/bin/{hostname,ping,ping6} bin
+	ypkg_domv usr/bin/traceroute            sbin
+}

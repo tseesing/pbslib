@@ -1,0 +1,36 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="Perl-compatible regular expression library"
+HOMEPAGE="http://www.pcre.org/"
+LICENSE="GPL-2"
+PACKAGER="hzx@115.com"
+
+SRC_URI="ftp://ftp.csx.cam.ac.uk/pub/software/programming/pcre/pcre-"$V$R".tar.bz2"
+
+RDEPEND="app-compress/bzip2"
+BDEPEND="${RDEPEND} sys-libs/zlib"
+RECOMMENDED="app-compress/bzip2"
+
+NOTES="http://wiki.linuxfromscratch.org/blfs/wiki/pcre"
+
+pbs_unpack() {
+        ypkg_unpack
+}
+
+pbs_config() {
+	YPB_CONFIG+=" --enable-utf8 
+		      --enable-unicode-properties
+		      --enable-pcregrep-libz
+		      --enable-pcregrep-libbz2 "
+	ypkg_config
+}
+
+pbs_build() {
+	ypkg_make
+}
+
+pbs_install() {
+	ypkg_mkinstall
+}

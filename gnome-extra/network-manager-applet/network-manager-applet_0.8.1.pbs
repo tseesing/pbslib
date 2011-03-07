@@ -1,0 +1,44 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="Panel Applet for NetworkManager"
+HOMEPAGE="http://projects.gnome.org/NetworkManager/"
+LICENSE="GPL-2"
+PACKAGER="hzx@115.com"
+
+SRC_URI="http://ftp.gnome.org/pub/gnome/sources/"$N"/0.8/"$N-$V$R".tar.bz2"
+
+RDEPEND="networkmanager udev util-linux-ng nss nspr libglade gconf orbit libgnome-keyring eggdbus libgcrypt libgpg-error
+	 libnotify gtk+ dbus-glib atk glib2 glibc pango gcc cairo pixman libxml2 directfb libpng libxcb libXrender libX11 libXau 
+	 libXdmcp fontconfig freetype zlib expat dbus sqlite libXi libXrandr libXcursor libXcomposite libXext libXdamage libXfixes"
+BDEPEND="${RDEPEND} networkmanager"
+RECOMMENDED=""
+
+NOTES=""
+
+pbs_unpack() {
+        ypkg_unpack
+}
+
+pbs_config() {
+	# Users now can add themselves to the "netdev" group to use networkmanager.
+	ypkg_patch ylmf_nm-applet.conf.patch
+	for i in nm-secure-lock.png nm-signal-50.png nm-signal-75.png nm-signal-00.png nm-signal-100.png nm-signal-25.png;do
+		convert -resize 22x22  "$FILES_PATH"/files/"${i}" icons/22/"${i}"
+	done
+	ypkg_config
+}
+
+pbs_build() {
+	ypkg_make
+}
+
+pbs_install() {
+	ypkg_mkinstall
+}
+
+pbs_postinst() {
+	gnome2_desktop_database_update
+	gnome2_icon_cache_update
+}

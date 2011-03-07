@@ -1,0 +1,27 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="groovy little assembler"
+HOMEPAGE="http://nasm.sourceforge.net/"
+ 
+SRC_URI="http://www.nasm.us/pub/"$N"/releasebuilds/"$V$R"/"$N-$V$R".tar.bz2"
+
+RDEPEND=""
+BDEPEND="${RDEPEND}"
+
+pbs_unpack() {
+        ypkg_unpack
+}
+
+pbs_config() {
+	ypkg_config
+}
+
+pbs_build() {
+	ypkg_make
+}
+
+pbs_install() {
+	make INSTALLROOT=$YPPATH_DEST install
+}

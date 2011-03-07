@@ -1,0 +1,32 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION=""
+HOMEPAGE="www.lxde.org"
+LICENSE="GPL-2"
+PACKAGER="hzx@115.com"
+SRC_URI=""
+
+RDEPEND=""
+BDEPEND="${RDEPEND} uriparser"
+
+pbs_unpack() {
+	git clone git://pcmanfm.git.sourceforge.net/gitroot/pcmanfm/$N
+	mv $N "$N-$V$R"
+}
+
+pbs_config() {
+	
+	./autogen.sh
+	YPB_CONFIG+="--prefix=/usr --sysconfdir=/etc"
+	ypkg_config
+}
+
+pbs_build() {
+	ypkg_make
+}
+
+pbs_install() {
+	ypkg_mkinstall
+}

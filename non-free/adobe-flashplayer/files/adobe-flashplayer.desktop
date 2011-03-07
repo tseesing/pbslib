@@ -1,0 +1,26 @@
+[Desktop Entry]
+Categories=Qt;AudioVideo;Player;Video;
+Comment=adobe flashplayer
+Comment[es]=A great MPlayer front-end
+Comment[hu]=Egy grafikus MPlayer kiegészítés
+Comment[it]=Un grande front-end per MPlayer
+Comment[ja]=MPlayer フロントエンド
+Comment[nl]=Een uitstekend frontend voor MPlayer
+Comment[pl]=Świetna nakładka na Mplayer
+Comment[ru_RU]=Мощный интерфейс для MPlayer
+Comment[uk]=Потужний інтерфейс до MPlayer
+Exec=flashplayer %f
+GenericName=adobe flashplayer
+GenericName[es]=A great MPlayer front-end
+GenericName[hu]=Grafikus felületű MediaPlayer
+GenericName[it]=Un grande front-end per MPlayer
+GenericName[ja]=MPlayer フロントエンド
+GenericName[nl]=Een uitstekend frontend voor MPlayer
+GenericName[pl]=Świetna nakładka na Mplayer
+GenericName[ru_RU]=Мощный интерфейс для MPlayer
+GenericName[uk]=Потужний інтерфейс до MPlayer
+Icon=adobe-flashplayer
+MimeType=application/x-shockwave-flash
+Name=adobe-flashplayer
+Type=Application
+X-KDE-StartupNotify=false

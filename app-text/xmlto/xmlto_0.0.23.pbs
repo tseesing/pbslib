@@ -1,0 +1,29 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION=" A bash script for converting XML and DocBook formatted documents to a variety of output formats"
+HOMEPAGE="https://fedorahosted.org/xmlto/browser"
+ 
+SRC_URI="https://fedorahosted.org/releases/x/m/"$N"/"$N-$V$R".tar.bz2"
+
+RDEPEND=""
+BDEPEND="${RDEPEND} docbook-xml docbook-xsl libxslt"
+
+NOTES="http://wiki.linuxfromscratch.org/blfs/wiki/xmlto"
+
+pbs_unpack() {
+        ypkg_unpack
+}
+
+pbs_config() {
+	ypkg_config
+}
+
+pbs_build() {
+	ypkg_make
+}
+
+pbs_install() {
+	ypkg_mkinstall
+}

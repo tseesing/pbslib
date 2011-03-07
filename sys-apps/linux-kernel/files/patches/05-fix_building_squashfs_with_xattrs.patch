@@ -1,0 +1,26 @@
+From 8437f55f35a9f4573dba94bb84d42f3a61aa9503 Mon Sep 17 00:00:00 2001
+From: Jan Steffens <jan.steffens@gmail.com>
+Date: Sat, 4 Dec 2010 04:45:31 +0100
+Subject: [PATCH 1/2] Fix building squashfs with xattrs
+
+ERROR: "squashfs_listxattr" [fs/squashfs/squashfs.ko] undefined!
+ERROR: "squashfs_read_xattr_id_table" [fs/squashfs/squashfs.ko] undefined!
+ERROR: "squashfs_xattr_lookup" [fs/squashfs/squashfs.ko] undefined!
+ERROR: "squashfs_xattr_handlers" [fs/squashfs/squashfs.ko] undefined!
+---
+ fs/squashfs/Makefile |    1 +
+ 1 files changed, 1 insertions(+), 0 deletions(-)
+
+diff --git a/fs/squashfs/Makefile b/fs/squashfs/Makefile
+index 15daba7..6def533 100644
+--- a/fs/squashfs/Makefile
++++ b/fs/squashfs/Makefile
+@@ -6,4 +6,5 @@ obj-$(CONFIG_SQUASHFS) += squashfs.o
+ squashfs-y += block.o cache.o dir.o export.o file.o fragment.o id.o inode.o
+ squashfs-y += namei.o super.o symlink.o zlib_wrapper.o decompressor.o
+ squashfs-$(CONFIG_SQUASHFS_LZMA) += lzma_wrapper.o
++squashfs-$(CONFIG_SQUASHFS_XATTRS) += xattr.o xattr_id.o
+ 
+-- 
+1.7.3.2
+

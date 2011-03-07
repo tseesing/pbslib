@@ -1,0 +1,26 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="DejaVu True Type Font (minimum)."
+HOMEPAGE="http://dejavu.sourceforge.net/"
+LICENSE="GPL-2"
+PACKAGER="hzx@115.com"
+
+SRC_URI="http://downloads.sourceforge.net/project/dejavu/dejavu/2.32/"$N-$V$R".tar.bz2"
+
+RDEPEND=""
+BDEPEND="${RDEPEND} "
+
+pbs_unpack() {
+        ypkg_unpack
+}
+
+pbs_install() {
+	ypkg_docp ttf/*.ttf "$YPPATH_DEST"/usr/share/fonts/truetype/ttf-dejavu	
+	ypkg_dodoc AUTHORS BUGS langcover.txt LICENSE NEWS README status.txt unicover.txt
+}
+
+pbs_postinst(){
+	ypkg_dofont /usr/share/fonts/truetype/ttf-dejavu 
+}

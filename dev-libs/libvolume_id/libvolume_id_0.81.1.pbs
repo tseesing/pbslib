@@ -1,0 +1,31 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="Library to provide file system information"
+HOMEPAGE="http://www.marcuscom.com"
+LICENSE="GPL-2"
+PACKAGER="hzx@115.com"
+ 
+SRC_URI="ftp://lug.mtu.edu/gentoo/distfiles/"$N-$V$R".tar.bz2"
+
+RDEPEND=""
+BDEPEND="${RDEPEND} "
+RECOMMENDED=""
+
+NOTES=""
+
+pbs_unpack() {
+        ypkg_unpack
+}
+
+pbs_build() {
+	make E="@echo" RANLIB=ranlib AR=ar Q=@
+}
+
+pbs_install() {
+	ypkg_docp libvolume_id.pc    "$YPPATH_DEST"/usr/share/pkgconfig
+	ypkg_docp libvolume_id.h     "$YPPATH_DEST"/usr/include
+	ypkg_docp libvolume_id.so.0  "$YPPATH_DEST"/usr/lib
+	ypkg_doln /usr/lib/libvolume_id.so.0  "$YPPATH_DEST"/usr/lib/libvolume_id.so
+}

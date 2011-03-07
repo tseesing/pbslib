@@ -1,0 +1,43 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="A set of GNOME themes, with sets for users with limited or low vision"
+HOMEPAGE="http://www.gnome.org/"
+LICENSE="GPL-2"
+PACKAGER="hzx@115.com"
+SRC_URI="http://ftp.gnome.org/pub/GNOME/sources/$N/2.30/"$N-$V$R".tar.bz2"
+
+RDEPEND="gtk-engines"
+BDEPEND="${RDEPEND} gtk+ gtk-engines icon-naming-utils gnome-icon-theme hicolor-icon-theme"
+RECOMMENDED=""
+
+NOTES="http://wiki.linuxfromscratch.org/blfs/wiki/gnome-themes"
+
+pbs_unpack() {
+        ypkg_unpack
+}
+
+pbs_config() {
+	
+	YPB_CONFIG+=" --prefix=/usr --sysconfdir=/etc --localstatedir=/var \
+	              --mandir=/usr/share/man --enable-all-themes "
+	ypkg_config
+}
+
+pbs_build() {
+	ypkg_make
+}
+
+pbs_install() {
+	ypkg_mkinstall
+}
+
+pbs_postinst() {
+	# clean up old icon caches
+	for i in HighContrast-SVG Crux Mist HighContrast LargePrint HighContrastLargePrint ;do
+	    if [ -e /usr/share/icons/$i/icon-theme.cache ]; then
+	    	rm -f /usr/share/icons/$i/icon-theme.cache
+            fi
+	done			
+}

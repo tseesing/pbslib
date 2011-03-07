@@ -1,0 +1,28 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="A net IM with voice, not free-ware"
+HOMEPAGE="http://www.skype.com/"
+ 
+SRC_URI="http://download.skype.com/linux/"${N}"_static-"$V$R".tar.bz2"
+
+RDEPEND=""
+BDEPEND="${RDEPEND}"
+
+pbs_install() {
+	mkdir -p "$YPPATH_DEST"/opt
+	cd "$YPPATH_DEST"/opt
+	ypkg_unpack
+	ypkg_doln "$N-$V$R" skype
+	ypkg_docp skype/skype.desktop  "$YPPATH_DEST"/usr/share/applications
+	ypkg_docp_rename  skype/icons/SkypeBlue_48x48.png  "$YPPATH_DEST"/usr/share/pixmaps/skype.png
+	ypkg_doln /opt/skype/skype "$YPPATH_DEST"/usr/bin/skype
+	mkdir -p "$YPPATH_DEST"/etc/xg_launch/net 
+	echo "+ skype%/opt/skype/icons/SkypeBlue_32x32.png%   Exec /opt/skype/skype" > "$YPPATH_DEST"/etc/xg_launch/net/C15skype
+}
+
+pbs_postinst() {
+	gnome2_desktop_database_update
+	gnome2_gconfd_reload
+}

@@ -1,0 +1,33 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="An Portable Open Source UPnP Development Kit"
+HOMEPAGE="http://pupnp.sourceforge.net/"
+LICENSE=""
+PACKAGER="hzx@115.com"
+SRC_URI="http://downloads.sourceforge.net/project/pupnp/pupnp/LibUPnP%20$V/$N-$V.tar.bz2 "
+
+RDEPEND=""
+BDEPEND="${RDEPEND}"
+
+NOTES=""
+
+pbs_unpack() {
+        ypkg_unpack
+}
+
+pbs_config() {
+	
+	patch -p1 -i $FILES_PATH/files/"$N-$V$R"-patch-statevar-query.patch
+	AT_M4DIR="m4" autoreconf
+	ypkg_config
+}
+
+pbs_build() {
+	ypkg_make
+}
+
+pbs_install() {
+	ypkg_mkinstall
+}

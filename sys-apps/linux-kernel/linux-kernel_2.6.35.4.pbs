@@ -1,0 +1,42 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="Linux Kernel with ylmfos patches"
+HOMEPAGE="http://www.kernel.org"
+LICENSE=""
+PACKAGER="hzx@115.com"
+
+SRC_URI=""
+
+RDEPEND=""
+BDEPEND="${RDEPEND}"
+
+pbs_unpack() {
+        ypkg_unpack
+}
+
+pbs_build() {
+	ypkg_docp_rename "$FILES_PATH"/files/config-ylmfos-"$V$R" .config
+	ypkg_make
+	ypkg_make modules
+}
+
+pbs_install() {
+	make INSTALL_MOD_PATH="$YPPATH_DEST" modules_install
+	make INSTALL_MOD_PATH="$YPPATH_DEST" firmware_install
+
+	version="$(basename $(ls -d "$YPPATH_DEST"/lib/modules/*))"
+	ypkg_docp_rename "$(readlink -f arch/i386/boot/bzImage)"   "$YPPATH_DEST"/boot/vmlinuz-"$version"
+	ypkg_docp_rename .config 			           "$YPPATH_DEST"/boot/config-"$version"
+	ypkg_docp_rename System.map 				   "$YPPATH_DEST"/boot/System.map-"$version"
+	
+	for i in build source;do
+		rm "$YPPATH_DEST"/lib/modules/"$version"/"${i}"
+		ln -sf /usr/src/linux				    "$YPPATH_DEST"/lib/modules/"$version"/"${i}"
+	done
+}
+
+pbs_postinst() {
+	update-initramfs -c -k all
+}

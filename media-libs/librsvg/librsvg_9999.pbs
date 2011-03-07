@@ -1,0 +1,59 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="Scalable Vector Graphics (SVG) rendering library"
+HOMEPAGE="http://librsvg.sourceforge.net/"
+REPO="testing"
+BIN_URI=""
+
+RDEPEND="gtk+ libxml2"
+BDEPEND="${RDEPEND}"
+
+pbs_unpack()
+{
+	#unpard file from $YPPATH_SOURCE to current directory.
+	echo "Unpacking to `pwd`"
+	OLDDIR=$(pwd)
+	cd $YPPATH_SOURCE
+	if [ -d $N/.git ];then
+		cd $N
+		git pull --rebase
+	else
+		git clone git://git.gnome.org/$N
+		cd $N
+		git checkout --track -b gnome-2-30 origin/gnome-2-30
+		git pull --rebase
+	fi
+	cd ../ 
+	cp -a $N $OLDDIR
+	cd $OLDDIR
+	mv $N "$N-$V$R"
+}
+
+pbs_config()
+{
+	echo "config "$N-$V$R"..."
+	
+	./autogen.sh --prefix /usr --sysconfdir /etc --with-svgz --with-croco --disable-gtk-doc --disable-static
+}
+
+pbs_build()
+{
+	echo "make "$N-$V$R"..."
+	#run make in current directory
+	ypkg_make
+}
+
+pbs_check()
+{
+	echo "checking "$N-$V$R".."
+	make check
+}
+
+pbs_install()
+{
+	echo "install to $YPPATH_DEST"
+	#install everything to $YPPATH_DEST
+	ypkg_mkinstall
+}

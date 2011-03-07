@@ -1,0 +1,54 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="The libgweather package is a library to access weather information from online services for numerous locations."
+HOMEPAGE="http://www.gnome.org/"
+LICENSE="GPL-2"
+PACKAGER="hzx@115.com"
+ 
+SRC_URI="http://ftp.gnome.org/pub/GNOME/sources/libgweather/2.30/$N-$V.tar.bz2"
+BDEPEND="libsoup"
+RECOMMENDED=""
+
+NOTES="http://wiki.linuxfromscratch.org/blfs/wiki/libgweather"
+
+pbs_unpack() {
+        ypkg_unpack
+}
+
+pbs_config() {
+	
+	YPB_CONFIG+=" --prefix=/usr --sysconfdir=/etc --localstatedir=/var \
+		      --mandir=/usr/share/man  \
+		      --disable-schemas-install \
+		      --disable-static \
+		      --enable-shared \
+		      --enable-locations-compression "
+	ypkg_config
+}
+
+pbs_build() {
+	ypkg_make
+}
+
+pbs_install() {
+	ypkg_mkinstall
+	cd "$YPPATH_DEST"/etc/gconf/schemas/ && SCHEMAS=$(ls *.schemas|xargs)
+}
+
+pbs_postinst() {
+        # Add schemas install to the doinst.sh if schemas are found.
+        if [ "x$SCHEMAS" != "x" ] && [ -x /usr/bin/gconftool-2 ]; then
+                cd /etc/gconf/schemas
+                for schema in $SCHEMAS; do
+                        # Install schemas
+                        GCONF_CONFIG_SOURCE="$(/usr/bin/gconftool-2 --get-default-source)" \
+                        /usr/bin/gconftool-2 --makefile-install-rule /etc/gconf/schemas/${schema} #>/dev/null 2>&1
+                done
+         fi
+	# Restart gconfd-2 if running to reload new gconf settings
+	if ps acx | grep -q gconfd-2 ; then
+	        killall -HUP gconfd-2 ;
+	fi
+}

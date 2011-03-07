@@ -1,0 +1,14 @@
+#!/bin/bash
+#
+# wrapper of systemctl start
+#
+echo " This is a wrapper of systemctl, e.g:"
+echo " \"start gdm\" to start gdm"
+
+if [ "x$1" != "x" ]; then
+	systemctl start "$(basename $1)".service
+	systemctl status "$(basename $1)".service
+fi
+
+exit 0
+

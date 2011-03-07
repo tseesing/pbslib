@@ -1,0 +1,33 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="eCryptfs userspace utilities"
+HOMEPAGE="http://launchpad.net/ecryptfs"
+LICENSE="GPL-2"
+PACKAGER="hzx@115.com"
+
+SRC_URI="http://launchpad.net/ecryptfs/trunk/83/+download/"${N}_$V$R".orig.tar.gz"
+
+RDEPEND="glibc nss keyutils nss nspr zlib sqlite"
+BDEPEND="${RDEPEND} keyutils"
+RECOMMENDED=""
+
+NOTES=""
+
+pbs_unpack() {
+        ypkg_unpack
+}
+
+pbs_config() {
+	ypkg_config
+}
+
+pbs_build() {
+	ypkg_make
+}
+
+pbs_install() {
+	ypkg_mkinstall
+	ypkg_dodoc AUTHORS ChangeLog COPYING INSTALL NEWS README
+}

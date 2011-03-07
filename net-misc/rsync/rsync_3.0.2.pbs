@@ -1,0 +1,47 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="File transfer program to keep remote files into sync"
+HOMEPAGE="http://rsync.samba.org/"
+LICENSE="GPL-2"
+PACKAGER="hzx@115.com"
+
+SRC_URI="http://anduin.linuxfromscratch.org/sources/BLFS/6.3/r/"$N-$V$R".tar.gz"
+
+RDEPEND="acl popt attr"
+BDEPEND="${RDEPEND} popt attr acl"
+
+NOTES="
+\"/etc/rsyncd.conf\" - rsyncd rc file!
+motd file = /home/rsync/welcome.msg
+use chroot = yes
+[localhost]
+path = /home/rsync
+comment = Default rsync module
+read only = yes
+list = yes
+uid = rsyncd
+gid = rsyncd
+"
+
+pbs_init() {
+	ypkg_groupadd "rsyncd"
+	ypkg_ypkg_useradd "rsyncd" "rsyncd Daemon" "/home/rsync" "/bin/false" "rsyncd"
+}
+
+pbs_unpack() {
+        ypkg_unpack
+}
+
+pbs_config() {
+	ypkg_config
+}
+
+pbs_build() {
+	ypkg_make
+}
+
+pbs_install() {
+	ypkg_mkinstall
+}

@@ -1,0 +1,28 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="An OpenGL png image library"
+HOMEPAGE="http://www.fifi.org/doc/libglpng-dev/glpng.html"
+ 
+SRC_URI=" http://www.lahtermaher.org/pub/Linux/gentoo/distfiles/glpng-$V.tar.bz2"
+
+RDEPEND="zlib libpng mesa libSM libICE libX11 libXext libXxf86vm libXdamage libXfixes libdrm
+         util-linux-ng libxcb libXau libXdmcp"
+BDEPEND="${RDEPEND} cmake"
+
+pbs_unpack() {
+        ypkg_unpack
+}
+
+pbs_config() {
+	ypkg_config
+}
+
+pbs_build() {
+	ypkg_make
+}
+
+pbs_install() {
+	ypkg_mkinstall
+}

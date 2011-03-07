@@ -1,0 +1,87 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="The gnome-keyring package contains a daemon that keeps passwords and other secrets for users."
+HOMEPAGE="http://www.gnome.org"
+LICENSE="GPL-2"
+PACKAGER="hzx@115.com"
+ 
+SRC_URI="http://ftp.gnome.org/pub/GNOME/sources/gnome-keyring/2.30/$N-$V.tar.bz2"
+
+RDEPEND=""
+BDEPEND="${RDEPEND} gconf gtk+ intltool libgcrypt libtasn1 libgnome-keyring"
+RECOMMENDED="pam"
+
+pbs_init()
+{
+	echo "init "$N-$V$R" build script..."
+}
+
+pbs_unpack()
+{
+	echo "Unpacking to `pwd`"
+        ypkg_unpack
+}
+
+pbs_config()
+{
+	echo "config "$N-$V$R"..."
+	
+	YPB_CONFIG+=" --prefix=/usr --sysconfdir=/etc --localstatedir=/var \
+	              --mandir=/usr/share/man \
+		      --disable-schemas-install \
+		      --disable-static \
+		      --enable-shared \
+		      --disable-pam \
+		      --enable-ssh-agent \
+		      --disable-tests	"
+	ypkg_config
+}
+
+pbs_build()
+{
+	echo "make "$N-$V$R"..."
+	ypkg_make
+}
+
+pbs_check()
+{
+	echo "checking "$N-$V$R".."
+}
+
+pbs_install()
+{
+	echo "install to $YPPATH_DEST"
+	ypkg_mkinstall
+	cd "$YPPATH_DEST"/etc/gconf/schemas/ && SCHEMAS=$(ls *.schemas|xargs)
+}
+
+pbs_postinst()
+{
+	echo "running after package installed..."
+	# Add schemas install to the doinst.sh if schemas are found.
+	if [ x$SCHEMAS != x ] && [ -x /usr/bin/gconftool-2 ]; then
+		cd /etc/gconf/schemas
+		for schema in $SCHEMAS; do
+	 		# Install schemas
+			echo "GCONF_CONFIG_SOURCE="$(/usr/bin/gconftool-2 --get-default-source)" \
+			/usr/bin/gconftool-2 --makefile-install-rule /etc/gconf/schemas/${schema} #>/dev/null 2>&1 "
+			GCONF_CONFIG_SOURCE="$(/usr/bin/gconftool-2 --get-default-source)" \
+			/usr/bin/gconftool-2 --makefile-install-rule /etc/gconf/schemas/${schema} #>/dev/null 2>&1
+		done
+		fi
+	if ps acx | grep -q gconfd-2 ; then
+		killall -HUP gconfd-2 ;
+	fi
+}
+
+pbs_prerm()
+{
+	echo "running before package delete..."
+}
+
+pbs_postrm()
+{
+	echo "running after package delete..."
+}

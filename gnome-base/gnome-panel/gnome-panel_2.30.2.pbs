@@ -1,0 +1,66 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="The GNOME Panel package contains hooks to the menu sub-system and the applet sub-system."
+HOMEPAGE="http://www.gnome.org/"
+REPO=""
+LICENSE="GPL-2"
+PACKAGER="hzx@115.com"
+
+SRC_URI="http://ftp.gnome.org/pub/gnome/desktop/2.30/2.30.2/sources/"$N-$V$R".tar.bz2 "
+
+RDEPEND="gconf gtk+ pango libbonoboui libgnomecanvas libgnome avahi esound alsa-lib audiofile popt 
+         libart_lgpl libbonobo gnome-desktop gnome-menus startup-notification gail libXi libXcursor 
+	 libXcomposite libXdamage libXfixes libgnome gnome-vfs openssl avahi esound alsa-lib libXrandr 
+	 libXext startup-notification libSM util-linux-ng libICE gconf orbit dbus libcanberra libvorbis 
+	 libogg libtool cairo pixman pango libxml2 directfb libpng libxcb libXrender libXdmcp libXau 
+	 zlib freetype fontconfig dev-libs/libgweather"
+BDEPEND="${RDEPEND} gnome-vfs libwnck libcanberra gstreamer evolution-data-server polkit polkit-gnome consolekit gnome-python media-libs/librsvg"
+RECOMMENDED=""
+
+NOTES="The libxml2 Python module must have been built during the installation of libxml2 else the GNOME Panel build will fail"
+
+pbs_unpack() {
+        ypkg_unpack
+}
+
+pbs_config() {
+	YPB_CONFIG+=" --disable-schemas-install  
+		      --disable-scrollkeeper  
+		      --enable-network-manager 
+		      --enable-polkit  
+		      --enable-shared  
+		      --with-in-process-applets=clock,notification-area,wncklet "
+	ypkg_config
+}
+
+pbs_build() {
+	ypkg_make
+}
+
+pbs_install() {
+	ypkg_mkinstall
+	#replace our gnome-panel default configure
+	ypkg_docp_rename "$FILES_PATH"/files/ylmfos-default-setup.entries   "$YPPATH_DEST"/etc/gconf/schemas/panel-default-setup.entries
+}
+
+pbs_postinst() {
+	gnome2_install_schema /etc/gconf/schemas/window-list.schemas
+	gnome2_install_schema /etc/gconf/schemas/workspace-switcher.schemas
+	gnome2_install_schema /etc/gconf/schemas/fish.schemas
+	gnome2_install_schema /etc/gconf/schemas/clock.schemas
+	gnome2_install_schema /etc/gconf/schemas/panel-object.schemas
+	gnome2_install_schema /etc/gconf/schemas/panel-toplevel.schemas
+	gnome2_install_schema /etc/gconf/schemas/panel-general.schemas
+	gnome2_install_schema /etc/gconf/schemas/panel-global.schemas
+	gnome2_install_schema /etc/gconf/schemas/panel-compatibility.schemas
+	#default gnome-panel entries
+	gconftool-2 --direct --config-source xml:readwrite:/etc/gconf/gconf.xml.defaults --load /etc/gconf/schemas/panel-default-setup.entries
+	#
+	gnome2_install_defaut_gconf "string" "/apps/panel/applets/clock_screen0/prefs/format"  "24-hour"
+	gnome2_rarian_sk_update
+	gnome2_desktop_database_update
+	gnome2_icon_cache_update "hicolor"
+	gnome2_gconfd_reload
+}

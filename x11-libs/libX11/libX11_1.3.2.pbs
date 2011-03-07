@@ -1,0 +1,38 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="X.Org X11 library"
+HOMEPAGE="http://www.x.org/wiki/"
+ 
+SRCURL="http://www.x.org/releases/X11R7.5/src/lib"
+SRC_URI="$SRCURL/libX11-1.3.2.tar.bz2"
+
+RDEPEND="libxcb libXau libXdmcp"
+BDEPEND="${RDEPEND} x11-libs/xtrans"
+
+pbs_unpack()
+{
+        ypkg_unpack
+}
+
+pbs_config()
+{
+	
+	YPB_CONFIG+=" --sysconfdir=/etc 
+		      --mandir=/usr/share/man 
+		      --localstatedir=/var
+		      --disable-static
+		      --with-xcb=yes "
+	ypkg_config
+}
+
+pbs_build()
+{
+	ypkg_make
+}
+
+pbs_install()
+{
+	ypkg_mkinstall
+}

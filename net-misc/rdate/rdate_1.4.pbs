@@ -1,0 +1,27 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="use TCP or UDP to retrieve the current time of another machine"
+HOMEPAGE="http://www.apps.ietf.org/rfc/rfc868.html"
+LICENSE="GPL-2"
+PACKAGER="hzx@115.com"
+
+SRC_URI="ftp://lug.mtu.edu/gentoo/distfiles/"$N-$V$R".tar.gz"
+
+RDEPEND=""
+BDEPEND="${RDEPEND} "
+RECOMMENDED=""
+
+pbs_unpack() {
+        ypkg_unpack
+}
+
+pbs_build() {
+	ypkg_patch ylmfos-makefile.patch
+	ypkg_make
+}
+
+pbs_install() {
+	ypkg_mkinstall
+}

@@ -1,0 +1,33 @@
+#
+# YLmf_OS package build script
+#
+DaESCRIPTION="xfs filesystem utilities"
+HOMEPAGE="http://oss.sgi.com/projects/xfs/"
+LICENSE=""
+PACKAGER="hzx@115.com"
+REPO="testing"
+
+SRC_URI="ftp://oss.sgi.com/projects/xfs/previous/"$N-$V$R".tar.gz"
+
+RDEPEND=""
+BDEPEND="${RDEPEND} "
+RECOMMENDED=""
+
+pbs_unpack() {
+        ypkg_unpack
+}
+
+pbs_config() {
+	ypkg_patch xfsprogs-3.0.1-sharedlibs.patch 
+	export DEBUG=-DNDEBUG
+	YPB_CONFIG+="--enable-gettext"
+	ypkg_config
+}
+
+pbs_build() {
+	ypkg_make
+}
+
+pbs_install() {
+	make DIST_ROOT="$YPPATH_DEST" install install-dev
+}

@@ -1,0 +1,38 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="GNOME default window manager"
+HOMEPAGE="http://blogs.gnome.org/metacity/"
+LICENSE="GPL-2"
+PACKAGER="hzx@115.com"
+SRC_URI="ftp://ftp.gnome.org/pub/gnome/sources/$N/2.28/"$N-$V$R".tar.bz2"
+
+RDEPEND=""
+BDEPEND="${RDEPEND} gconf gtk+ xml-parser zenity libcanberra"
+RECOMMENDED=""
+
+NOTES="http://wiki.linuxfromscratch.org/blfs/wiki/metacity"
+
+pbs_unpack() {
+        ypkg_unpack
+}
+
+pbs_config() {
+	
+	YPB_CONFIG+=" --prefix=/usr
+	              --libexecdir=/usr/lib/metacity
+	              --sysconfdir=/etc 
+		      --with-gconf-schema-file-dir=/etc/gnome/2.28.2/gconf/schemas"
+	ypkg_config
+}
+
+pbs_build() {
+	ypkg_make
+}
+
+pbs_install() {
+	ypkg_mkinstall
+	install -m755 -d "$YPPATH_DEST"/usr/share/doc/"$N-$V$R"
+	install -m644 README rationales.txt doc/*.txt  "$YPPATH_DEST"/usr/share/doc/"$N-$V$R"
+}

@@ -1,0 +1,88 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="A set of GNOME themes, with sets for users with limited or low vision"
+HOMEPAGE="http://www.gnome.org/"
+REPO="testing"
+LICENSE=""
+PACKAGER="hzx@115.com"
+BIN_URI=""
+
+RDEPEND="gtk-engines"
+BDEPEND="${RDEPEND} gtk+ gtk-engines icon-naming-utils gnome-icon-theme hicolor-icon-theme"
+RECOMMENDED=""
+
+pbs_init()
+{
+	echo "init "$N-$V$R" build script..."
+}
+
+pbs_unpack()
+{
+	#unpard file from $YPPATH_SOURCE to current directory.
+	echo "Unpacking to `pwd`"
+	OLDDIR=$(pwd)
+	cd $YPPATH_SOURCE
+	if [ -d $N/.git ];then
+		cd $N
+		git pull --rebase
+	else
+		git clone git://git.gnome.org/$N
+		cd $N
+		git checkout --track -b gnome-2-30 origin/gnome-2-30
+		git pull --rebase
+	fi
+	cd ../ 
+	cp -a $N $OLDDIR
+	cd $OLDDIR
+	mv $N "$N-$V$R"
+}
+
+pbs_config()
+{
+	echo "config "$N-$V$R"..."
+	
+	./autogen.sh --prefix /usr --sysconfdir /etc --localstatedir /var/lib --mandir /usr/share/man --enable-all-themes --disable-gtk-doc --disable-static
+}
+
+pbs_build()
+{
+	echo "make "$N-$V$R"..."
+	#run make in current directory
+	ypkg_make
+}
+
+pbs_check()
+{
+	echo "checking "$N-$V$R".."
+	#make check
+}
+
+pbs_install()
+{
+	echo "install to $YPPATH_DEST"
+	#install everything to $YPPATH_DEST
+	ypkg_mkinstall
+}
+
+pbs_postinst()
+{
+	echo "running after package installed..."
+	# clean up old icon caches
+	for i in HighContrast-SVG Crux Mist HighContrast LargePrint HighContrastLargePrint ;do
+	    if [ -e /usr/share/icons/$i/icon-theme.cache ]; then
+	    	rm -f /usr/share/icons/$i/icon-theme.cache
+            fi
+	done			
+}
+
+pbs_prerm()
+{
+	echo "running before package delete..."
+}
+
+pbs_postrm()
+{
+	echo "running after package delete..."
+}

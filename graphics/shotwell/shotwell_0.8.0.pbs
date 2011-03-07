@@ -1,0 +1,54 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="Open source photo manager for GNOME"
+HOMEPAGE="http://www.yorba.org/shotwell/"
+REPO=""
+LICENSE="GNU Lesser General Public License 2.1"
+PACKAGER="Zhongxin Huang, hzx@115.com"
+
+SRC_URI="http://www.yorba.org/download/shotwell/0.8/"$N-$V$R".tar.bz2"
+
+RDEPEND="libgexiv2 libgee json-glib libraw"
+BDEPEND="${RDEPEND} vala"
+RECOMMENDED=""
+
+NOTES=""
+
+pbs_unpack() {
+        ypkg_unpack
+}
+
+pbs_config() {
+	
+	YPB_CONFIG+=" --prefix=/usr
+		      --sysconfdir=/etc
+		      --localstatedir=/var
+	              --infodir=/usr/share/info
+		      --mandir=/usr/share/man
+	              --disable-static
+		      --enable-shared "
+	ypkg_config
+}
+
+pbs_build() {
+	ypkg_make
+}
+
+pbs_install() {
+	ypkg_mkinstall
+}
+
+#post install
+pbs_postinst() {
+	:
+	#gnome2_install_schema "$1"
+	#gnome2_install_defaut_gconf "$1 $2 $3
+	#gnome2_rarian_sk_update
+	#gnome2_desktop_database_update
+	#gnome2_icon_cache_update
+	#gnome2_gconfd_reload
+	#gnome2_gtk_immodules_update
+	#gnome2_mime_database_update
+}

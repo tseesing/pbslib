@@ -1,0 +1,35 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="User interface libraries for gnome print"
+HOMEPAGE="http://www.gnome.org/"
+REPO=""
+LICENSE="GPL-2"
+PACKAGER="hzx@115.com"
+
+SRC_URI="http://ftp.gnome.org/pub/GNOME/sources/"$N"/2.18/"$N-$V$R".tar.bz2"
+
+RDEPEND="libgnomeprint libgnomecanvas gtk+ gail libart_lgpl gtk+ atk pango gcc cairo pixman directfb libpng 
+	 libxcb libXrender libX11 libxcb libXau libXdmcp fontconfig freetype libxml2 zlib libXi libXrandr libXcursor
+	 libXcomposite libXext libXdamage libXfixes expat"
+BDEPEND="${RDEPEND} libgnomecanvas gnome-icon-theme libgnomeprint"
+RECOMMENDED=""
+
+NOTES=""
+
+pbs_unpack() {
+        ypkg_unpack
+}
+
+pbs_config() {
+	ypkg_config
+}
+
+pbs_build() {
+	ypkg_make
+}
+
+pbs_install() {
+	ypkg_mkinstall
+}

@@ -1,0 +1,85 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION=" GNOME file manager."
+HOMEPAGE="http://www.gnome.org/projects/nautilus/"
+LICENSE="GPL-2"
+PACKAGER="hzx@115.com"
+ 
+SRC_URI="http://ftp.gnome.org/pub/GNOME/sources/nautilus/2.30/$N-$V.tar.bz2"
+
+RDEPEND=""
+BDEPEND="${RDEPEND} bzip2 ntfs-3g gamin gnome-desktop libbonoboui libgnome orbit gconf util-linux-ng libunique "
+RECOMMENDED=""
+
+pbs_init()
+{
+	echo "init "$N-$V$R" build script..."
+}
+
+pbs_unpack()
+{
+	echo "Unpacking to `pwd`"
+        ypkg_unpack
+}
+
+pbs_config()
+{
+	echo "config "$N-$V$R"..."
+	
+	YPB_CONFIG+=" --prefix=/usr --sysconfdir=/etc --localstatedir=/var \
+	              --mandir=/usr/share/man  \
+		      --disable-static \
+		      --enable-shared \
+		      --disable-schemas-install \
+		      --disable-update-mimedb \
+		      --disable-packagekit "
+	ypkg_config
+}
+
+pbs_build()
+{
+	echo "make "$N-$V$R"..."
+	ypkg_make
+}
+
+pbs_check()
+{
+	echo "checking "$N-$V$R".."
+}
+
+pbs_install()
+{
+	echo "install to $YPPATH_DEST"
+	ypkg_mkinstall
+	install -m755 -d "$YPPATH_DEST"/usr/share/doc/nautilus-2.30.0 &&
+	install -m644 docs/*.{txt,dia,pdf,sxw,faq,html} "$YPPATH_DEST"/usr/share/doc/nautilus-2.30.0
+	#
+	# Clean up empty mime files
+	find "$YPPATH_DEST"/usr/share/mime -size 0 -type f -exec rm {} \;
+	cd "$YPPATH_DEST"/etc/gconf/schemas/ && SCHEMAS=$(ls *.schemas|xargs)
+}
+
+pbs_postinst()
+{
+	# Make sure xfce thunar doesn't steal our job
+	if [ -f /usr/share/applications/Thunar-folder-handler.desktop ]; then
+		echo "Disabling Thunar GNOME folder handling."
+	        mv -f /usr/share/applications/Thunar-folder-handler.desktop  /usr/share/applications/Thunar-folder-handler.desktop.disabled
+	fi
+	#
+	gnome2_rarian_sk_update
+	gnome2_desktop_database_update
+	gnome2_mime_database_update
+	gnome2_icon_cache_update
+	# Set up nautilus as default ftp desktop handler
+	# For nautilus to control ftp (otherwise annoying error box arises)
+	gnome2_install_defaut_gconf "string" "/desktop/gnome/url-handlers/ftp/command" "nautilus \"%s\""
+	# Ensure that Nautilus is used for GNOME desktop, but Thunar or Dolphin
+	gnome2_install_defaut_gconf "string" "/desktop/gnome/url-handlers/file/command" "nautilus \"%s\""
+	gnome2_install_defaut_gconf "bool" "/desktop/gnome/url-handlers/file/enabled" "true"
+	gnome2_install_defaut_gconf "bool" "/desktop/gnome/url-handlers/file/need-terminal" "false"
+	#
+	gnome2_gconfd_reload
+}

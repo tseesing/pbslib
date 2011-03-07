@@ -1,0 +1,27 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="A set of programs for extracting and converting images in Microsoft Windows icon and cursor files (.ico, .cur)."
+HOMEPAGE="http://www.nongnu.org/icoutils/"
+ 
+SRC_URI="http://savannah.nongnu.org/download/"$N"/"$N-$V$R".tar.bz2"
+
+RDEPEND="libpng zlib glibc"
+BDEPEND="${RDEPEND}"
+
+pbs_unpack() {
+        ypkg_unpack
+}
+
+pbs_config() {
+	ypkg_config
+}
+
+pbs_build() {
+	ypkg_make
+}
+
+pbs_install() {
+	ypkg_mkinstall
+}

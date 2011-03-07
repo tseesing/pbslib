@@ -1,0 +1,35 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="Convert files between various character sets"
+HOMEPAGE="http://recode.progiciels-bpi.ca/"
+REPO="GPLv2"
+LICENSE=""
+PACKAGER="Zhongxin Huang, hzx@115.com"
+
+SRC_URI="$N-$V$R.tar.bz2"
+
+RDEPEND=""
+BDEPEND="${RDEPEND} automake1.4"
+RECOMMENDED=""
+
+NOTES=""
+
+pbs_unpack() {
+        ypkg_unpack
+}
+
+pbs_config() {
+	YPB_CONFIG+="--without-included-gettext --enable-nls"
+	ypkg_config
+}
+
+pbs_build() {
+	ypkg_make
+}
+
+pbs_install() {
+	ypkg_mkinstall
+	ypkg_dodoc AUTHORS BACKLOG ChangeLog NEWS README THANKS TODO
+}

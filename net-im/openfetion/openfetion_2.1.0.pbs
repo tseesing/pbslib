@@ -1,0 +1,37 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="openfetion client (Gtk+ UI without libofetion)"
+HOMEPAGE="http://code.google.com/p/ofetion/"
+REPO=""
+LICENSE="GPLv2"
+PACKAGER="Zhongxin Huang, hzx@115.com"
+
+SRC_URI="http://ofetion.googlecode.com/files/"$N-$V$R".tar.gz"
+
+RDEPEND="libofetion"
+BDEPEND="${RDEPEND} "
+RECOMMENDED=""
+
+pbs_unpack() {
+        ypkg_unpack
+}
+
+pbs_config() {
+	ypkg_config
+}
+
+pbs_build() {
+	ypkg_make
+}
+
+pbs_install() {
+	ypkg_mkinstall
+}
+
+pbs_postinst() {
+	gnome2_desktop_database_update
+	gnome2_icon_cache_update
+}
+

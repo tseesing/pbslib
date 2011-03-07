@@ -1,0 +1,31 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="misuland im app"
+HOMEPAGE="http://www.misuland.com/"
+REPO=""
+LICENSE=""
+PRIORITY=""
+PACKAGER="Zhongxin Huang, hzx@115.com"
+
+SRC_URI="http://download.misuland.com/"$N-$V$R".tar.gz"
+
+RDEPEND=""
+BDEPEND="${RDEPEND} "
+RECOMMENDED=""
+CONFLICT=""
+
+pbs_unpack() {
+        ypkg_unpack
+}
+
+pbs_install() {
+	ypkg_docp * "$YPPATH_DEST"/opt/"$N-$V$R"
+	ypkg_dodesktop "msc.desktop" "msc.png"
+	ypkg_doln /opt/"$N-$V$R"/msc "$YPPATH_DEST"/usr/bin/msc
+}
+
+pbs_postinst() {
+	gnome2_desktop_database_update
+}

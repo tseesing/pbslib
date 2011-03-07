@@ -1,0 +1,42 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="The GLib library of C routines"
+HOMEPAGE="http://www.gtk.org/"
+ 
+SRC_URI="http://ftp.gnome.org/pub/gnome/sources/glib/2.22/glib-$V.tar.bz2"
+
+RDEPEND=""
+BDEPEND="${RDEPEND} pkgconfig sys-libs/zlib"
+RECOMMEDNED="libpcre"
+OPIONAL="attr gamin gtk-doc python"
+
+NOTES="Gamin requires GLib in order to compile; therefore, you must first install GLib, then compile Gamin, and recompile GLib against it.
+      --with-pcre=system: This parameter causes the build to use a system-provided version of the PCRE library instead of an internal version."
+
+pbs_unpack()
+{
+        ypkg_unpack
+}
+
+pbs_config()
+{
+	cd glib-$V
+	ypkg_config
+}
+
+pbs_build()
+{
+	ypkg_make
+}
+
+pbs_check()
+{
+	make check
+}
+
+pbs_install()
+{
+	ypkg_mkinstall
+}

@@ -1,0 +1,27 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="Package config system that manages compile/link flags"
+HOMEPAGE="http://pkgconfig.freedesktop.org/wiki/"
+ 
+SRC_URI="http://pkgconfig.freedesktop.org/releases/pkg-config-"$V$R".tar.gz"
+
+RDEPEND=""
+BDEPEND="${RDEPEND}"
+
+pbs_unpack() {
+        ypkg_unpack
+}
+
+pbs_config() {
+	ypkg_config
+}
+
+pbs_build() {
+	ypkg_make
+}
+
+pbs_install() {
+	ypkg_mkinstall
+}

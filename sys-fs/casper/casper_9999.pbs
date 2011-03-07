@@ -1,0 +1,26 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="Run a "live" preinstalled system from read-only media"
+HOMEPAGE=""
+LICENSE="GPL-2"
+PACKAGER="hzx@115.com"
+
+SRC_URI="git://192.168.1.58/"$N".git"
+
+RDEPEND="initramfs-tools busybox-initramfs sudo eject util-linux-ng plymouth ntfs-3g"
+BDEPEND="${RDEPEND} "
+OPINION="dmsetup user-setup localechooser-data"
+
+pbs_unpack() {
+	ypkg_unpack
+}
+
+pbs_install() {
+	ypkg_docp * "$YPPATH_DEST"
+}
+
+pbs_postinst() {
+	update-initramfs -d -u
+}

@@ -1,0 +1,37 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="point and click selection of X11 font names"
+HOMEPAGE="http://xorg.freedesktop.org/"
+REPO=""
+LICENSE=""
+PACKAGER="Zhongxin Huang, hzx@115.com"
+
+SRC_URI="http://xorg.freedesktop.org/releases/individual/app/$N-$V$R.tar.bz2"
+
+RDEPEND="libXaw libXmu libXt libX11 libSM libICE libXext libXpm libxcb util-linux-ng libXau libXdmcp"
+BDEPEND="${RDEPEND}"
+
+pbs_unpack(){
+        ypkg_unpack
+}
+
+pbs_config() {
+	
+	ypkg_config
+}
+
+pbs_build() {
+	ypkg_make
+}
+
+pbs_install() {
+	ypkg_mkinstall
+	#change config
+	mkdir -p "$YPPATH_DEST"/etc/X11
+	mv "$YPPATH_DEST"/usr/share/X11/app-defaults "$YPPATH_DEST"/etc/
+	ln -sf "$YPPATH_DEST"/etc/X11/app-defaults "$YPPATH_DEST"/usr/share/X11
+	install -m755 -d "$YPPATH_DEST"/usr/share/doc/"$N-$V$R"
+	cp -a AUTHORS ChangeLog COPYING INSTALL NEWS README "$YPPATH_DEST"/usr/share/doc/"$N-$V$R"
+}

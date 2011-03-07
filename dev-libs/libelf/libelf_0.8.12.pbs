@@ -1,0 +1,35 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="A ELF object file access library"
+HOMEPAGE="http://www.mr511.de/software/"
+LICENSE="GPL-2"
+PACKAGER="hzx@115.com"
+ 
+SRC_URI="http://www.mr511.de/software/"$N-$V$R".tar.gz"
+
+RDEPEND=""
+BDEPEND="${RDEPEND} "
+RECOMMENDED=""
+
+NOTES=""
+
+pbs_unpack() {
+        ypkg_unpack
+}
+
+pbs_config() {
+	ypkg_config
+}
+
+pbs_build() {
+	ypkg_make
+}
+
+pbs_install() {
+	make prefix="$YPPATH_DEST"/usr libdir="$YPPATH_DEST"/usr/lib  \
+             includedir="$YPPATH_DEST"/usr/include \
+	     install  install-compat 
+	ypkg_dodoc ChangeLog VERSION README
+}

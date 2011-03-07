@@ -1,0 +1,30 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="Adobe Flash Player"
+HOMEPAGE="http://www.adobe.com/"
+REPO=""
+LICENSE=""
+PACKAGER="Zhongxin Huang, hzx@115.com"
+
+SRC_URI="http://download.macromedia.com/pub/flashplayer/updaters/10/flashplayer_10_sa.tar.gz"
+
+RDEPEND=""
+BDEPEND="${RDEPEND} "
+RECOMMENDED=""
+
+NOTES=""
+
+pbs_unpack() {
+        ypkg_unpack
+}
+
+pbs_install() {
+	ypkg_docp flashplayer "$YPPATH_DEST"/usr/bin
+	ypkg_dodesktop "$FILES_PATH"/files/adobe-flashplayer.desktop "$FILES_PATH"/files/adobe-flashplayer.png
+}
+
+pbs_postinst() {
+	gnome2_desktop_database_update
+}

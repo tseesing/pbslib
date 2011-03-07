@@ -1,0 +1,31 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="Lists directories recursively, and produces an indented listing of files."
+HOMEPAGE="http://mama.indstate.edu/users/ice/tree/"
+REPO=""
+LICENSE=""
+PACKAGER="Zhongxin Huang, hzx@115.com"
+
+SRC_URI="ftp://mama.indstate.edu/linux/"$N"/"$N-$V$R".tgz"
+
+RDEPEND=""
+BDEPEND="${RDEPEND} "
+RECOMMENDED=""
+
+NOTES=""
+
+pbs_unpack() {
+        ypkg_unpack
+}
+
+pbs_build() {
+	ypkg_make
+}
+
+pbs_install() {
+	ypkg_docp "$N" "$YPPATH_DEST"/usr/bin
+	ypkg_docp man/"$N".1  "$YPPATH_DEST"/usr/share/man/man1
+	ypkg_dodoc CHANGES README* 
+}

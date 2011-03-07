@@ -1,0 +1,30 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="Perl module Probe-Perl"
+HOMEPAGE="http://search.cpan.org/~kwilliams/Probe-Perl-0.01/"
+REPO=""
+LICENSE="GPL-2"
+PACKAGER="hzx@115.com"
+
+SRC_URI="http://search.cpan.org/CPAN/authors/id/K/KW/KWILLIAMS/Probe-Perl-"$V$R".tar.gz"
+
+RDEPEND=""
+BDEPEND="${RDEPEND} test-script"
+
+pbs_unpack() {
+        ypkg_unpack
+}
+
+pbs_config() {
+	ypkg_config
+}
+
+pbs_build() {
+	ypkg_make
+}
+
+pbs_install() {
+	ypkg_mkinstall
+}

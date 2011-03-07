@@ -1,0 +1,61 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="Vim, an improved vi-style text editor"
+HOMEPAGE="http://www.vim.org/"
+REPO=""
+LICENSE=""
+PACKAGER="Zhongxin Huang, hzx@115.com"
+
+SRC_URI="ftp://ftp.vim.org/pub/vim/unix/"$N-$V$R".tar.bz2" 
+
+RDEPEND="acl atk attr cairo directfb expat fontconfig freetype gtk+ libICE pango 
+	 pixman libpng libSM libX11 libXau libxcb libXcomposite libXcursor libXdamage 
+	 libXdmcp libXext libXfixes libXi libxml2 libXrandr libXrender libXt"
+BDEPEND="${RDEPEND}"
+
+pbs_unpack() {
+        ypkg_unpack
+}
+
+pbs_config() {
+	echo '#define SYS_VIMRC_FILE "/etc/vimrc"' >> src/feature.h
+	YPB_CONFIG+="--enable-multibyte"
+	ypkg_config
+}
+
+pbs_build() {
+	ypkg_make
+}
+
+pbs_install(){
+	ypkg_mkinstall
+	cd "$YPPATH_DEST"
+	#create vi
+	ypkg_doln /usr/bin/vim usr/bin/vi
+	ypkg_doln ../vim/vim72/doc usr/share/doc/vim-7.2
+	#write vimrc
+	mkdir -p etc
+	cat > etc/vimrc << "EOF"
+" Begin /etc/vimrc
+set nocompatible
+set backspace=2
+set ruler
+set tags=tags
+set ai
+autocmd FileType python set omnifunc=pythoncomplete#Complete
+autocmd FileType javascript set omnifunc=javascriptcomplete#CompleteJS
+autocmd FileType html set omnifunc=htmlcomplete#CompleteTags
+autocmd FileType css set omnifunc=csscomplete#CompleteCSS
+autocmd FileType xml set omnifunc=xmlcomplete#CompleteTags
+autocmd FileType php set omnifunc=phpcomplete#CompletePHP
+autocmd FileType c set omnifunc=ccomplete#Complete
+set t_Co=256
+syntax on
+"if (&term == "iterm") || (&term == "putty")
+set background=dark
+"endif
+" End /etc/vimrc
+EOF
+}

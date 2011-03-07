@@ -1,0 +1,62 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="A message bus system, a simple way for applications to talk to each other"
+HOMEPAGE="http://dbus.freedesktop.org/"
+LICENSE=""
+PACKAGER="hzx@115.com"
+
+SRC_URI="http://dbus.freedesktop.org/releases/"$N"/"$N-$V$R".tar.gz"
+
+RDEPEND="shadow libSM util-linux-ng libICE libX11 libxcb libXau libXdmcp glibc"
+BDEPEND="${RDEPEND} expat libxml2"
+
+pbs_unpack(){
+        ypkg_unpack
+}
+
+pbs_config() {
+	grep -v ^# "$FILES_PATH"/files/patches/series |while read i; do
+		ypkg_patch "$FILES_PATH"/files/patches/"${i}"
+	done
+	YPB_CONFIG+=" --prefix=/usr 
+	              --sysconfdir=/etc
+		      --localstatedir=/var
+	              --with-xml=expat  
+		      --with-dbus-user=messagebus 
+		      --disable-xml-docs 
+		      --with-x 
+		      --enable-inotify 
+		      --disable-kqueue 
+		      --disable-selinux 
+		      --disable-libaudit 
+		      --disable-verbose-mode 
+		      --disable-tests 
+		      --disable-asserts "
+	              #--with-system-pid-file=/var/run/dbus.pid  \
+		      #--with-system-socket=/var/run/dbus/system_bus_socket \
+		      #--with-session-socket-dir=/tmp \
+	ypkg_config
+}
+
+pbs_build() {
+	ypkg_make
+}
+
+pbs_install() {
+	ypkg_mkinstall
+	#
+	ypkg_doinit "$FILES_PATH"/files/"$N"
+	#
+	cd "$YPPATH_DEST"
+	mkdir -p etc/rc3.d
+	ln -sf  /etc/init.d/"$N" etc/rc3.d/S32"$N"
+	ln -sf  /etc/init.d/"$N" etc/rc3.d/K40"$N"
+}
+
+pbs_postinst() {
+	ypkg_groupadd -r "messagebus"
+	ypkg_useradd -c "D-BUS Message Daemon User" -d "/dev/null" -s "/bin/false" -r -N "messagebus"
+	dbus-uuidgen --ensure
+}

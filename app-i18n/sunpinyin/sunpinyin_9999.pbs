@@ -1,0 +1,29 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="a statistical language model based Chinese input method, input method engine backend"
+HOMEPAGE="http://code.google.com/p/sunpinyin/"
+LICENSE="LGPLv2 and CDDL dual-licenses"
+PACKAGER="hzx@115.com"
+
+SRC_URI="git://github.com/"$N"/"$N".git"
+
+RDEPEND=""
+BDEPEND="${RDEPEND} scons sqlite"
+
+NOTES="http://code.google.com/p/sunpinyin/wiki/FAQ"
+
+pbs_unpack() {
+        ypkg_unpack
+}
+
+pbs_config(){
+	cp "$YPPATH_SOURCE"/{lm_sc.t3g.arpa.tar.bz2,dict.utf8.tar.bz2} raw
+	ypkg_config
+}
+
+pbs_install() {
+	ypkg_mkinstall
+	ypkg_dodoc AUTHORS ChangeLog NEWS README TODO
+}

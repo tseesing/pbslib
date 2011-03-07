@@ -1,0 +1,31 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="A ASCII-Graphics Library"
+HOMEPAGE="http://aa-project.sourceforge.net/aalib/"
+REPO=""
+LICENSE=""
+MAINTAINER="Zhongxin Huang, hzx@115.com"
+
+SRC_URI="http://downloads.sourceforge.net/aa-project/"$N-$V"rc5.tar.gz"
+
+RDEPEND="ncurses glibc libX11 glibc libxcb libXau libXdmcp"
+BDEPEND="${RDEPEND}"
+
+pbs_unpack(){
+        ypkg_unpack
+}
+
+pbs_config() {
+	ypkg_config
+}
+
+pbs_build() {
+	ypkg_make
+}
+
+pbs_install() {
+	ypkg_mkinstall
+	ypkg_dodoc AUTHORS ChangeLog COPYING INSTALL NEWS README 
+}

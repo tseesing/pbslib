@@ -1,0 +1,34 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="A vector graphics library with cross-device output support"
+HOMEPAGE="http://cairographics.org/"
+LICENSE="GPL-2"
+PACKAGER="hzx@115.com"
+SRC_URI=" http://cairographics.org/snapshots/"$N-$V$R".tar.gz "
+
+RDEPEND="libpng pixman fontconfig"
+BDEPEND="${RDEPEND} x11-libs/xcb-util directfb"
+
+pbs_unpack() {
+        ypkg_unpack
+}
+
+pbs_config() {
+	
+	YPB_CONFIG+=" --prefix=/usr
+		      --enable-xcb
+		      --enable-directfb	"
+	ypkg_config
+}
+
+pbs_build() {
+	ypkg_make
+}
+
+pbs_install() {
+	ypkg_mkinstall
+	#
+	find "$YPPATH_DEST" -name "*.la" -delete
+}

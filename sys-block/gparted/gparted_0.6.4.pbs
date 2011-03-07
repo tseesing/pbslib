@@ -1,0 +1,39 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="Gnome Partition Editor"
+HOMEPAGE="http://gparted.sourceforge.net/"
+LICENSE="GPL-2"
+PACKAGER="hzx@115.com"
+
+SRC_URI="http://downloads.sourceforge.net/project/"$N"/"$N"/"$N-$V$R"/"$N-$V$R".tar.bz2"
+
+RDEPEND="gksu gtk+ parted"
+BDEPEND="${RDEPEND} "
+RECOMMENDED="dosfstools jfsutils ntfsprogs e2fsprogs reiserfsprogs xfsprogs"
+
+pbs_unpack() {
+        ypkg_unpack
+}
+
+pbs_config() {
+	YPB_CONFIG+=" --disable-schemas-install  
+		      --disable-scrollkeeper "
+	ypkg_config
+}
+
+pbs_build() {
+	ypkg_make
+}
+
+pbs_install() {
+	ypkg_mkinstall
+}
+
+pbs_postinst() {
+	gnome2_rarian_sk_update
+	gnome2_desktop_database_update
+	gnome2_icon_cache_update
+	gnome2_gconfd_reload
+}

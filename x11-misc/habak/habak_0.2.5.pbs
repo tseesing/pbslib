@@ -1,0 +1,28 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="A simple but powerful tool to set desktop wallpaper"
+HOMEPAGE="http://gna.org/projects/fvwm-crystal/"
+ 
+SRC_URI="http://download.gna.org/fvwm-crystal/"$N"/"$V$R"/"$N-$V$R".tar.gz"
+
+RDEPEND="imlib2 glibc libX11 freetype zlib libXext libxcb libXau libXdmcp"
+BDEPEND="${RDEPEND}"
+
+pbs_unpack() {
+        ypkg_unpack
+}
+
+pbs_config() {
+	ypkg_config
+}
+
+pbs_build() {
+	ypkg_make
+}
+
+pbs_install() {
+	ypkg_docp ./habak "$YPPATH_DEST"/usr/bin
+	ypkg_dodoc README
+}

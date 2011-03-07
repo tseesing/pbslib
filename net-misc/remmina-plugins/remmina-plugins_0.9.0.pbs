@@ -1,0 +1,33 @@
+#
+# YLmf_OS package build script
+#
+DESCRIPTION="remmina plugins"
+HOMEPAGE="http://remmina.sourceforge.net/"
+REPO=""
+LICENSE=""
+PACKAGER="Zhongxin Huang, hzx@115.com"
+
+SRC_URI="http://downloads.sourceforge.net/project/remmina/0.9/"$N-$V$R".tar.gz "
+
+RDEPEND="remmina libssh freerdp libXdmcp"
+BDEPEND="${RDEPEND} "
+RECOMMENDED=""
+
+NOTES=""
+
+pbs_unpack() {
+        ypkg_unpack
+}
+
+pbs_config() {
+	ypkg_config
+}
+
+pbs_build() {
+	ypkg_make
+}
+
+pbs_install() {
+	ypkg_mkinstall
+}
+

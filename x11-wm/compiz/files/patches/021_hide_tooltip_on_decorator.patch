@@ -1,0 +1,76 @@
+# Description: add a gconf key (/desktop/gnome/interface/hide_decorator_tooltip)
+# to disable tooltip in decorator bar. If key not present, show the tooltip.
+# Origin: Ubuntu
+# Bug: http://bugs.opencompositing.org/show_bug.cgi?id=1264
+# Bug-Ubuntu: https://bugs.launchpad.net/ubuntu/+source/compiz/+bug/519856
+
+Index: compiz-0.8.4/gtk/window-decorator/gtk-window-decorator.c
+===================================================================
+--- compiz-0.8.4.orig/gtk/window-decorator/gtk-window-decorator.c	2010-06-17 10:41:51.696367850 +1000
++++ compiz-0.8.4/gtk/window-decorator/gtk-window-decorator.c	2010-06-17 10:41:56.673866458 +1000
+@@ -154,6 +154,9 @@
+ #define COMPIZ_CURSOR_SIZE_KEY           \
+     COMPIZ_GCONF_DIR2 "/cursor_size"
+ 
++#define INTERFACE_GCONF_DIR		"/desktop/gnome/interface"
++#define HIDE_DECORATOR_TOOLTIP_KEY	INTERFACE_GCONF_DIR "/hide_decorator_tooltip"
++
+ #define DBUS_DEST       "org.freedesktop.compiz"
+ #define DBUS_PATH       "/org/freedesktop/compiz/decoration/allscreens"
+ #define DBUS_INTERFACE  "org.freedesktop.compiz"
+@@ -464,6 +467,8 @@
+ static gboolean		    use_system_font = FALSE;
+ static gint		    text_height;
+ 
++static gboolean		    hide_decorator_tooltip = FALSE;
++
+ #define BLUR_TYPE_NONE     0
+ #define BLUR_TYPE_TITLEBAR 1
+ #define BLUR_TYPE_ALL      2
+@@ -4348,6 +4353,9 @@
+ 		      guint	 state,
+ 		      const char *tip)
+ {
++    if (hide_decorator_tooltip)
++        return;
++
+     switch (xevent->type) {
+     case ButtonPress:
+ 	hide_tooltip ();
+@@ -6619,6 +6627,12 @@
+     {
+ 	cursor_theme_changed (client);
+     }
++    else if (strcmp (key, HIDE_DECORATOR_TOOLTIP_KEY) == 0)
++    {
++        hide_decorator_tooltip = gconf_client_get_bool (client,
++							HIDE_DECORATOR_TOOLTIP_KEY,
++ 							NULL);
++    }
+ 
+     if (changed)
+ 	decorations_changed (data);
+@@ -6791,6 +6805,11 @@
+ 			  GCONF_CLIENT_PRELOAD_ONELEVEL,
+ 			  NULL);
+ 
++    gconf_client_add_dir (gconf,
++			  INTERFACE_GCONF_DIR,
++			  GCONF_CLIENT_PRELOAD_NONE,
++			  NULL);
++
+     g_signal_connect (G_OBJECT (gconf),
+ 		      "value_changed",
+ 		      G_CALLBACK (value_changed),
+@@ -6951,6 +6970,11 @@
+     wheel_action_changed (gconf);
+     shadow_settings_changed (gconf);
+     blur_settings_changed (gconf);
++
++    hide_decorator_tooltip = gconf_client_get_bool (gconf,
++						    HIDE_DECORATOR_TOOLTIP_KEY,
++						    NULL);
++
+ #endif
+ 
+     (*theme_update_border_extents) (text_height);

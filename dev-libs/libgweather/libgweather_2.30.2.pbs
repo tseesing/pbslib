@@ -1,0 +1,42 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="The libgweather package is a library to access weather information from online services for numerous locations."
+HOMEPAGE="http://www.gnome.org/"
+LICENSE="GPL-2"
+PACKAGER="hzx@115.com"
+ 
+SRC_URI="http://ftp.gnome.org/pub/gnome/desktop/2.30/2.30.2/sources/"$N-$V$R".tar.bz2"
+
+RDEPEND="gtk+ atk pango cairo pixman directfb libpng libxcb libXrender libX11 libXau libXdmcp 
+	 fontconfig freetype libsoup libproxy sqlite libgnome-keyring eggdbus libxml2 gnutls libgcrypt
+	 libgpg-error zlib gconf orbit dbus-glib dbus libXi libXrandr libXcursor libxcomposite libXtst 
+	 libXdamage libXfixes expat"
+BDEPEND="libsoup"
+RECOMMENDED=""
+
+NOTES="http://wiki.linuxfromscratch.org/blfs/wiki/libgweather"
+
+pbs_unpack() {
+        ypkg_unpack
+}
+
+pbs_config() {
+	YPB_CONFIG+="--disable-gtk-doc --disable-schemas-install --enable-locations-compression"
+	ypkg_config
+}
+
+pbs_build() {
+	ypkg_make
+}
+
+pbs_install() {
+	ypkg_mkinstall
+}
+
+pbs_postinst() {
+	gnome2_install_schema "/etc/gconf/schemas/gweather.schemas"
+	gnome2_gconfd_reload
+	gnome2_icon_cache_update "gnome"
+}

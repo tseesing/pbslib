@@ -1,0 +1,30 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="ubuntu gont family"
+HOMEPAGE="http://font.ubuntu.com/"
+REPO=""
+LICENSE="GPL"
+PRIORITY=""
+PACKAGER="Zhongxin Huang, hzx@115.com"
+
+SRC_URI="http://font.ubuntu.com/download/"$N"-sources_"$V$R".orig.tar.gz"
+
+RDEPEND=""
+BDEPEND="${RDEPEND} "
+RECOMMENDED=""
+CONFLICT=""
+
+pbs_unpack() {
+        ypkg_unpack
+}
+
+pbs_install() {
+	ypkg_docp *.ttf "$YPPATH_DEST"/usr/share/fonts/truetype/"$N"
+	ypkg_dodoc *.txt 
+}
+
+pbs_postinst() {
+	ypkg_dofont /usr/share/fonts/truetype/"$N"
+}

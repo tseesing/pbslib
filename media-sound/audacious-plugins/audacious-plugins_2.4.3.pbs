@@ -1,0 +1,31 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="Audacious Player - Your music, your way, no exceptions"
+HOMEPAGE="http://audacious-media-player.org/"
+LICENSE="GPL-2"
+PACKAGER="hzx@115.com"
+
+SRC_URI="http://distfiles.atheme.org/"$N-$V$R".tgz"
+
+RDEPEND=""
+BDEPEND="${RDEPEND} audacious"
+RECOMMENDED="adplug alsa-lib libcdio curl esound jack-audio-connection-kit 
+  	     lame libmad libmms libsndfile libvorbis lirc libsdl taglib wavpack "
+
+pbs_unpack() {
+        ypkg_unpack
+}
+
+pbs_config() {
+	ypkg_config
+}
+
+pbs_build() {
+	ypkg_make
+}
+
+pbs_install() {
+	ypkg_mkinstall
+}

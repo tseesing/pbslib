@@ -1,0 +1,32 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="an engine for structured graphics based on the Tk canvas widget and is an essential GNOME library.."
+HOMEPAGE="http://developer.gnome.org/doc/API/2.0/libgnomecanvas/"
+REPO=""
+LICENSE="GPL-2"
+PACKAGER="hzx@115.com"
+
+SRC_URI=" http://ftp.gnome.org/pub/gnome/platform/2.30/2.30.2/sources/"$N-$V$R".tar.bz2 "
+
+BDEPEND="gtk+ gail pango cairo pixman directfb libpng libXrender libX11 libxcb libXau libXdmcp
+	 fontconfig freetype libxml2 zlib libart_lgpl libglade libgnome libXi libXrandr libXcursor libXcomposite 
+	 libXext libXdamage libXfixes expat"
+RECOMMENDED=""
+
+pbs_unpack() {
+        ypkg_unpack
+}
+
+pbs_config() {
+	ypkg_config
+}
+
+pbs_build() {
+	ypkg_make
+}
+
+pbs_install() {
+	ypkg_mkinstall
+}

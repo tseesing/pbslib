@@ -1,0 +1,39 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="Nautilus Plugin for Opening Terminals"
+HOMEPAGE=" http://www.gnome.org "
+LICENSE="GPL-2"
+PACKAGER="hzx@115.com"
+
+SRC_URI="http://ftp.gnome.org/pub/GNOME/sources/"$N"/"$V$R"/"$N-$V$R".tar.bz2"
+
+RDEPEND="nautilus"
+BDEPEND="${RDEPEND} "
+RECOMMENDEd=""
+
+NOTES=""
+
+pbs_unpack() {
+        ypkg_unpack
+}
+
+pbs_config() {
+	YPB_CONFIG+="--disable-schemas-install"
+	ypkg_config
+}
+
+pbs_build() {
+	ypkg_make
+}
+
+pbs_install() {
+	ypkg_mkinstall
+	ypkg_dodoc AUTHORS COPYING NEWS README
+}
+
+pbs_postinst() {
+	gnome2_install_schema "/etc/gconf/schemas/nautilus-open-terminal.schemas"
+	gnome2_gconfd_reload
+}

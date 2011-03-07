@@ -1,0 +1,57 @@
+From 5154dede3d53151f4bed43b0e1626abf64b91fc5 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?=C3=89ric=20Piel?= <E.A.B.Piel@tudelft.nl>
+Date: Fri, 11 Jun 2010 09:16:32 -0700
+Subject: [PATCH 7/7] exa: fix ExaCheckCopyNtoN for exa_classic when source = dest
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+In case you want to copy a region with source = dest, you have the same pixmap
+as source and dest.
+
+At the end of exaPixmapIsOffscreen_classic() the devPrivate.ptr is reset to
+NULL (look at the sources).
+
+Now this is what happens in ExaCheckCopyNtoN:
+
+exaPrepareAccess( pDst );
+   Calls IsOffscreen()
+      sets devPrivate.ptr to NULL
+   sets up devPrivate.ptr to real pointer
+   Everything OK
+exaPrepareAccess( pSrc );
+   Calls IsOffscreen()
+      sets devPrivate.ptr to NULL
+   BAILS OUT CAUSE OF NESTED OPERATION SINCE DST EQUALS SRC
+
+We end up with devPrivate.ptr as NULL, and that is clearly wrong.
+
+In particular this fixes a segfault when using the psb driver (bug 28077)
+
+Signed-off-by: Éric Piel <eric.piel@tremplin-utc.net>
+Reviewed-by: Michel Dänzer <michel@daenzer.net>
+Signed-off-by: Keith Packard <keithp@keithp.com>
+(cherry picked from commit 7e8f1001217326cc451974bacf25275420c4bb4e)
+---
+ exa/exa_classic.c |    3 ++-
+ 1 files changed, 2 insertions(+), 1 deletions(-)
+
+diff --git a/exa/exa_classic.c b/exa/exa_classic.c
+index 12f3987..28cc421 100644
+--- a/exa/exa_classic.c
++++ b/exa/exa_classic.c
+@@ -256,9 +256,10 @@ exaPixmapIsOffscreen_classic(PixmapPtr pPixmap)
+     Bool ret;
+ 
+     if (pExaScr->info->PixmapIsOffscreen) {
++	void* old_ptr = pPixmap->devPrivate.ptr;
+ 	pPixmap->devPrivate.ptr = ExaGetPixmapAddress(pPixmap);
+ 	ret = pExaScr->info->PixmapIsOffscreen(pPixmap);
+-	pPixmap->devPrivate.ptr = NULL;
++	pPixmap->devPrivate.ptr = old_ptr;
+     } else
+ 	ret = (pExaPixmap->offscreen && pExaPixmap->fb_ptr);
+ 
+-- 
+1.7.2
+

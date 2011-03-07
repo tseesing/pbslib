@@ -1,0 +1,27 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="Fallback theme for the freedesktop icon theme specification"
+HOMEPAGE="http://icon-theme.freedesktop.org/wiki/HicolorTheme"
+ 
+SRC_URI="http://icon-theme.freedesktop.org/releases/"$N-$V$R".tar.gz"
+
+RDEPEND=""
+BDEPEND="${RDEPEND}"
+
+pbs_unpack() {
+        ypkg_unpack
+}
+
+pbs_config() {
+	ypkg_config
+}
+
+pbs_install() {
+	ypkg_mkinstall
+}
+
+pbs_postinst() {
+	gnome2_icon_cache_update "hicolor"
+}

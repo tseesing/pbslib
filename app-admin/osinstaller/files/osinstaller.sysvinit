@@ -1,0 +1,59 @@
+#!/bin/sh
+# Begin $rc_base/init.d/osinstaller
+#$LastChangedBy: hzx hzx@115.com $
+
+. /etc/sysconfig/rc
+. $rc_functions
+
+export HOME=/root
+
+#
+case "$1" in
+	start)
+		boot_mesg "* Starting Ylmf_OS installer..."
+		for x in $(cat /proc/cmdline); do
+			case $x in 
+				install-automatic)
+				cat >$HOME/.xinitrc <<"OOO"
+[ -f /etc/environment ] && . /etc/environment
+[ -f /etc/default/locale ] && . /etc/default/locale
+export LANGUAGE LANG
+#xclock &
+fvwm-root --retain-pixmap /usr/share/pixmaps/backgrounds/simple_blue_widescreen.svg &
+fvwm &
+osinstaller --wubi-dir=/isodevice/ylmfos	
+OOO
+				STARTX="y" &&  break	;;
+				install-nodesktop)
+				cat >$HOME/.xinitrc <<"EOF"
+[ -f /etc/environment ] && . /etc/environment
+[ -f /etc/default/locale ] && . /etc/default/locale
+export LANGUAGE LANG
+#xclock &
+fvwm-root --retain-pixmap /usr/share/pixmaps/backgrounds/simple_blue_widescreen.svg &
+fvwm &
+osinstaller 
+EOF
+				STARTX="y" &&  break
+			esac
+		done
+		if [ "x$STARTX" = "xy" ]; then
+			#creat fvwm default config, we use fvwm for dm now.
+			configdir="$HOME/.fvwm"	
+			mkdir -p $configdir
+			echo "EdgeScroll 0 0"       >$configdir/config
+			echo "Mouse 1 R  a  null"  >>$configdir/config
+			echo 'Style * Font "xft:sans-serif:Medium;-*-times-medium-r-*-*-16-*-*-*-*-*-*-*"'  >>$configdir/config
+			rm -rf /etc/rc?.d/[SK]??gdm
+			#stop plymouth
+			plymouth quit || :
+			startx 
+		fi
+		;;
+	*)
+		echo "Usage: $0 start"
+		exit 1
+esac
+
+# End of file
+

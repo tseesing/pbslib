@@ -1,0 +1,32 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="Netscape Portable Runtime"
+HOMEPAGE="http://www.mozilla.org/projects/nspr/"
+LICENSE="GPL-2"
+
+SRC_URI="http://ftp.mozilla.org/pub/mozilla.org/"$N"/releases/v"$V"/src/"$N-$V$R".tar.gz"
+
+RDEPEND=""
+BDEPEND="${RDEPEND}"
+
+pbs_unpack() {
+        ypkg_unpack
+}
+
+pbs_config() {
+	ypkg_patch nspr-4.8.3-pkgconfig-1.patch
+ 	cd mozilla/nsprpub
+	YPB_CONFIG+="--with-mozilla --with-pthreads"
+	ypkg_config
+}
+
+pbs_build() {
+	ypkg_make
+}
+
+pbs_install() {
+	ypkg_mkinstall
+	ypkg_docp pr/include/* "$YPPATH_DEST"/usr/include/nspr
+}

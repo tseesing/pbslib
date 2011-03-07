@@ -1,0 +1,43 @@
+--- a/po/zh_CN.po	2009-12-15 18:22:12.000000000 +0800
++++ b/po/zh_CN.po	2011-02-28 17:58:25.414501004 +0800
+@@ -723,6 +723,10 @@
+ msgid "Home icon visible on desktop"
+ msgstr "在桌面上显示主文件夹图标"
+ 
++#: ../src/file-manager/fm-directory-view.c:7342
++msgid "Make Link on desktop"
++msgstr "在桌面上创建链接"
++
+ #: ../libnautilus-private/apps_nautilus_preferences.schemas.in.h:47
+ msgid ""
+ "If set to \"after_current_tab\", then new tabs are inserted after the "
+@@ -3951,6 +3955,16 @@
+ msgid "_Paste Into Folder"
+ msgstr "粘贴到文件夹(_P)"
+ 
++#. name, stock id, label
++#: ../src/file-manager/fm-directory-view.c:7225
++msgid "Copy to"
++msgstr "复制到"
++
++#. name, stock id, label
++#: ../src/file-manager/fm-directory-view.c:7226
++msgid "Move to"
++msgstr "移动到"
++
+ #. tooltip
+ #: ../src/file-manager/fm-directory-view.c:7002
+ msgid ""
+@@ -4312,6 +4326,12 @@
+ msgid "View or modify the properties of this folder"
+ msgstr "查看或修改此文件夹的属性"
+ 
++#. name, stock id, label
++#: ../src/file-manager/fm-directory-view.c:7424
++#: ../src/file-manager/fm-directory-view.c:7427
++msgid "_Other pane"
++msgstr "其他窗格(_O)"
++
+ #. Translators: %s is a directory
+ #: ../src/file-manager/fm-directory-view.c:7292
+ #, c-format

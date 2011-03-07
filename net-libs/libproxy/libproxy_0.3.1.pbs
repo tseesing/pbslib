@@ -1,0 +1,39 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="Proxy configuration library"
+HOMEPAGE="http://code.google.com/p/libproxy/"
+LICENSE="GPL-2"
+PACKAGER="hzx@115.com"
+
+SRC_URI="http://libproxy.googlecode.com/files/"$N-$V$R".tar.bz2"
+
+BDEPEND="gconf python cmake"
+RECOMMENDED=""
+
+pbs_unpack() {
+        ypkg_unpack
+}
+
+pbs_config() {
+	YPB_CONFIG+=" --without-dotnet 
+		      --without-networkmanager 
+		      --with-python 
+		      --without-mozjs 
+		      --with-gnome 
+		      --with-file 
+		      --with-gnu-ld 
+		      --with-direct 
+		      --with-envvar "
+	ypkg_config
+}
+
+pbs_build() {
+	ypkg_make
+}
+
+pbs_install() {
+	ypkg_mkinstall
+	ypkg_dodoc AUTHORS COPYING README
+}

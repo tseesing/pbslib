@@ -1,0 +1,31 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="Text formatter used for man pages"
+HOMEPAGE="http://www.gnu.org/software/groff/groff.html"
+ 
+SRC_URI="ftp://ftp.gnu.org/gnu/"$N"/"$N-$V$R".tar.gz"
+
+RDEPEND="glibc gcc"
+BDEPEND="${RDEPEND}"
+
+pbs_unpack() {
+        ypkg_unpack
+}
+
+pbs_config() {
+	PAGE=A4 ypkg_config
+}
+
+pbs_build() {
+	ypkg_make
+}
+
+pbs_install() {
+	ypkg_mkinstall 
+	#Some documentation programs, such as xman, will not work 
+	#properly without the following symlinks: 
+	ypkg_doln eqn "$YPPATH_DEST"/usr/bin/geqn
+	ypkg_doln tbl "$YPPATH_DEST"/usr/bin/gtbl
+}

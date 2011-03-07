@@ -1,0 +1,11 @@
+--- src/preferences.cpp	2009-07-07 05:51:36.000000000 +0800
++++ src/preferences.new	2010-10-29 16:41:11.883000304 +0800
+@@ -179,7 +179,7 @@
+ 	font_file = "";
+ 	font_name = "";
+ 	use_fontconfig = false;
+-	subcp = "ISO-8859-1";
++	subcp = "CP936";
+ 	use_enca = false;
+ 	enca_lang = QString(QLocale::system().name()).section("_",0,0);
+ 	font_autoscale = 1;

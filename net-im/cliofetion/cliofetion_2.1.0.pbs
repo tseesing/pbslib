@@ -1,0 +1,30 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="command line libofetion client implemention (CLI without libofetion)"
+HOMEPAGE="http://code.google.com/p/ofetion/"
+REPO=""
+LICENSE="GPLv2"
+PACKAGER="Zhongxin Huang, hzx@115.com"
+
+SRC_URI="http://ofetion.googlecode.com/files/"$N-$V$R".tar.gz"
+
+RDEPEND="libofetion"
+BDEPEND="${RDEPEND} "
+RECOMMENDED=""
+
+NOTES=""
+
+pbs_unpack() {
+        ypkg_unpack
+}
+
+pbs_config() {
+	ypkg_config
+}
+
+pbs_install() {
+	ypkg_mkinstall
+}
+

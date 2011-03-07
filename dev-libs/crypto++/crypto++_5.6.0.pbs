@@ -1,0 +1,26 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="Crypto++ is a C++ class library of cryptographic schemes"
+HOMEPAGE="http://cryptopp.com"
+LICENSE=""
+PACKAGER="hzx@115.com"
+
+SRC_URI="http://cryptopp.com/cryptopp560.zip"
+
+RDEPEND=""
+BDEPEND="${RDEPEND} unzip"
+
+pbs_unpack() {
+	ypkg_unpack
+}
+
+pbs_build() {
+	ypkg_patch "$N-$V$R"-fix_build_system.patch
+	ypkg_make 
+}
+
+pbs_install() {
+	make DESTDIR="$YPPATH_DEST"  install
+}

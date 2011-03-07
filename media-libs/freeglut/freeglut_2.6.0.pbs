@@ -1,0 +1,27 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="A completely OpenSourced alternative to the OpenGL Utility Toolkit (GLUT) library"
+HOMEPAGE="ttp://freeglut.sourceforge.net/"
+ 
+SRC_URI="http://downloads.sourceforge.net/project/"$N"/"$N"/"$N-$V$R".tar.gz"
+
+RDEPEND="mesa libXext libX11 libXxf86vm libXi libXdamage libXfixes libdrm libxcb libXau libXdmcp"
+BDEPEND="${RDEPEND} mesa"
+
+pbs_unpack() {
+        ypkg_unpack
+}
+
+pbs_config() {
+	ypkg_config
+}
+
+pbs_build() {
+	ypkg_make
+}
+
+pbs_install() {
+	ypkg_mkinstall
+}

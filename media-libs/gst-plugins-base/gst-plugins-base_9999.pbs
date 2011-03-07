@@ -1,0 +1,91 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="Basepack of plugins for gstreamer"
+HOMEPAGE="http://gstreamer.sourceforge.net"
+REPO="testing"
+LICENSE=""
+PACKAGER="hzx@115.com"
+BIN_URI=""
+
+RDEPEND=""
+BDEPEND="${RDEPEND} gstreamer liboil pango"
+RECOMMENDED=""
+
+NOTES=""
+
+pbs_init()
+{
+	echo "init "$N-$V$R" build script..."
+}
+
+pbs_unpack()
+{
+	#unpard file from $YPPATH_SOURCE to current directory.
+	echo "Unpacking to `pwd`"
+	OLDDIR=$(pwd)
+	cd $YPPATH_SOURCE
+	if [ -d $N/.git ];then
+		cd $N
+		git pull --rebase
+		git submodule init
+		git submodule update
+	else
+		git clone git://anongit.freedesktop.org/gstreamer/$N
+		cd $N
+		git pull --rebase
+		git submodule init
+		git submodule update
+	fi
+	cd ../ 
+	cp -a $N $OLDDIR
+	cd $OLDDIR
+	mv $N "$N-$V$R"
+}
+
+pbs_config()
+{
+	echo "config "$N-$V$R"..."
+	#fist, cd build directory
+	
+	#
+	#sed -i 's/\(.*gtkdoc-rebase --relative.* \)\(;.*\)/\1|| true\2/' docs/libs/Makefile.in
+	#YPB_CONFIG+=" --prefix=/usr --disable-gtk-doc "
+	./autogen.sh --prefix /usr --disable-tests --disable-gtk-doc --disable-static
+}
+
+pbs_build()
+{
+	echo "make "$N-$V$R"..."
+	#run make in current directory
+	ypkg_make
+}
+
+pbs_check()
+{
+	echo "checking "$N-$V$R".."
+	#make check
+}
+
+pbs_install()
+{
+	echo "install to $YPPATH_DEST"
+	#install everything to $YPPATH_DEST
+	ypkg_mkinstall
+}
+
+pbs_postinst()
+{
+	echo "running after package installed..."
+}
+
+pbs_prerm()
+{
+	echo "running before package delete..."
+}
+
+pbs_postrm()
+{
+	echo "running after package delete..."
+}

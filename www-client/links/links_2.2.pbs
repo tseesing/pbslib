@@ -1,0 +1,29 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="links is a fast lightweight text and graphic web-browser"
+HOMEPAGE="http://links.twibright.com/"
+ 
+SRC_URI="http://links.twibright.com/download/"$N-$V$R".tar.bz2"
+
+RDEPEND="libtiff libjpeg-turbo libpng zlib libX11 directfb glibc bzip2 openssl glibc libxcb libXau libXdmcp"
+BDEPEND="${RDEPEND}"
+
+pbs_unpack() {
+        ypkg_unpack
+}
+
+pbs_config() {
+	YPB_CONFIG+="--enable-graphics --without-gpm --without-svgalib"
+	ypkg_config
+}
+
+pbs_build() {
+	ypkg_make
+}
+
+pbs_install() {
+	ypkg_mkinstall
+	ypkg_docp_rename links_32x32.xpm "$YPPATH_DEST"/usr/share/icons/hicolor/32x32/apps/links.xpm
+}

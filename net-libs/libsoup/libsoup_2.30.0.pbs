@@ -1,0 +1,44 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="The libsoup package contains an HTTP library implementation in C. This is useful for accessing HTTP servers in a completely asynchronous mode."
+HOMEPAGE="http://live.gnome.org/LibSoup/"
+LICENSE="GPL-2"
+PACKAGER="hzx@115.com"
+SRC_URI="http://ftp.gnome.org/pub/GNOME/sources/$N/2.30/"$N-$V$R".tar.bz2"
+BDEPEND="glib2 gnome-keyring libxml2 net-libs/libproxy net-libs/gnutls sqlite "
+RECOMMENDED="gnutls gnome-keyring libproxy "
+
+NOTES="http://wiki.linuxfromscratch.org/blfs/wiki/libsoup
+Apache-2.2.15 (required to run the test suite), and PHP-5.3.2 compiled with XMLRPC-EPI support (only used for the XMLRPC regression tests)
+libproxy required for GNOME proxy support
+Pass \"--without-gnome\" to configure if you want to build libsoup without GNOME support.
+"
+
+pbs_unpack() {
+        ypkg_unpack
+}
+
+pbs_config() {
+	
+	YPB_CONFIG+=" --prefix=/usr             \
+	              --sysconfdir=/etc          \
+		      --localstatedir=/var  \
+	              --mandir=/usr/share/man   \
+		      --disable-static         \
+		      --enable-shared          \
+		      --enable-ssl             \
+		      --with-gnome "
+	ypkg_config
+}
+
+pbs_build() {
+	ypkg_make
+}
+
+pbs_install() {
+	ypkg_mkinstall
+	install -m755 -d "$YPPATH_DEST"/usr/share/doc/"$N-$V$R"
+	install -m644 AUTHORS COPYING NEWS README  "$YPPATH_DEST"/usr/share/doc/"$N-$V$R"
+}

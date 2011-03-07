@@ -1,0 +1,27 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="Userspace access to USB devices (libusb-0.1 compat wrapper)"
+HOMEPAGE="http://libusb.sourceforge.net/"
+ 
+SRC_URI="http://downloads.sourceforge.net/libusb/"$N-$V$R".tar.bz2"
+
+RDEPEND=""
+BDEPEND="${RDEPEND} pkgconfig libusb"
+
+pbs_unpack() {
+        ypkg_unpack
+}
+
+pbs_config() {
+	ypkg_config
+}
+
+pbs_build() {
+	ypkg_make
+}
+
+pbs_install() {
+	ypkg_mkinstall
+}

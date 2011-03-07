@@ -1,0 +1,34 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="Sexy GTK+ Widgets"
+HOMEPAGE="http://www.chipx86.com/wiki/Libsexy"
+LICENSE="GPL-2"
+PACKAGER="hzx@115.com"
+
+SRC_URI="http://releases.chipx86.com/"$N"/"$N"/"$N-$V$R".tar.gz"
+
+RDEPEND="gtk+ atk pango cairo freetype fontconfig libxml2 libXi libXrandr libXcursor libXcomposite
+	 libXext libXdamage libXfixes pixman directfb libpng libxcb libXrender libX11 libxcb libXau libXdmcp 
+	 zlib expat"
+BDEPEND="${RDEPEND} pango glib2 gtk+ libxml2 iso-codes perl"
+RECOMMENDED=""
+
+NOTES=""
+
+pbs_unpack() {
+        ypkg_unpack
+}
+
+pbs_config() {
+	ypkg_config
+}
+
+pbs_build() {
+	ypkg_make
+}
+
+pbs_install() {
+	ypkg_mkinstall
+}

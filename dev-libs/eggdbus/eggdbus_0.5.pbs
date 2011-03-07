@@ -1,0 +1,30 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="D-Bus bindings for GObject"
+HOMEPAGE="http://cgit.freedesktop.org/~david/eggdbus"
+LICENSE="GPL-2"
+PACKAGER="hzx@115.com"
+SRC_URI="http://hal.freedesktop.org/releases/$N-$V.tar.gz"
+
+RDEPEND=""
+BDEPEND="${RDEPEND} dbus-glib"
+
+pbs_unpack() {
+        ypkg_unpack
+}
+
+pbs_config() {
+	
+	YPB_CONFIG+=" --prefix=/usr --enable-man-pages=no"
+	ypkg_config
+}
+
+pbs_build() {
+	ypkg_make
+}
+
+pbs_install() {
+	ypkg_mkinstall
+}

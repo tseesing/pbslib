@@ -1,0 +1,27 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="In-circuit programming (ISP) tool for the NXP (Philips) ARM microcontrollers"
+HOMEPAGE="http://sourceforge.net/projects/lpc21isp/"
+REPO=""
+LICENSE=""
+PACKAGER="Zhongxin Huang, hzx@115.com"
+
+SRC_URI="http://downloads.sourceforge.net/project/"$N"/"$N"/"$V"/"$N-$V$R".tar.gz"
+
+RDEPEND=""
+BDEPEND="${RDEPEND}"
+
+pbs_unpack() {
+        ypkg_unpack
+}
+
+pbs_build() {
+	ypkg_make
+}
+
+pbs_install() {
+	ypkg_docp lpc21isp "$YPPATH_DEST"/usr/bin/
+	chmod 755 "$YPPATH_DEST"/usr/bin/lpc21isp
+}

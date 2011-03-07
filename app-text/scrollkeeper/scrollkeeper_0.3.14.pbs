@@ -1,0 +1,33 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="A cataloging system for documentation. This is useful for managing documentation metadata and providing an API to help browsers find, sort and search the document catalog."
+HOMEPAGE="http://scrollkeeper.sourceforge.net/"
+LICENSE="GPL-2"
+PACKAGER="hzx@115.com"
+ 
+SRC_URI="ftp://ftp.gnome.org/pub/gnome/sources/"$N"/0.3/"$N-$V$R".tar.bz2"
+
+RDEPEND=""
+BDEPEND="${RDEPEND} libxslt xml-parser docbook-xml"
+RECOMMENDED=""
+
+NOTES=""
+
+pbs_unpack() {
+        ypkg_unpack
+}
+
+pbs_config() {
+	YPB_CONFIG+="--with-omfdirs=/usr/share/omf:/opt/gnome-1.4/share/omf:/opt/kde/share/omf:/opt/gnome/share/omf"
+	ypkg_config
+}
+
+pbs_build() {
+	ypkg_make
+}
+
+pbs_install() {
+	ypkg_mkinstall
+}

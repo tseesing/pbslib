@@ -1,0 +1,32 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="Compiz Configuration System"
+HOMEPAGE="http://www.compiz.org/"
+LICENSE="GPL-2"
+PACKAGER="hzx@115.com"
+REPO="testing"
+
+SRC_URI="http://releases.compiz.org/"$V$R"/"$N-$V$R".tar.bz2"
+
+RDEPEND="libxml2 libX11 libxcb libXau libXdmcp protobuf zlib gcc"
+BDEPEND="${RDEPEND} libxml2 libnotify compiz protobuf"
+RECOMMENDED="protobuf"
+
+pbs_unpack() {
+        ypkg_unpack
+}
+
+pbs_config() {
+	ypkg_config
+}
+
+pbs_build() {
+	ypkg_make
+}
+
+pbs_install() {
+	ypkg_mkinstall
+	make findcompizconfig_install
+}

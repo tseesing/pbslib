@@ -1,0 +1,36 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION=" a set of default configurations for LXDE"
+HOMEPAGE="www.lxde.org"
+LICENSE="GPL-2"
+PACKAGER="hzx@115.com"
+
+SRC_URI="git://lxde.git.sourceforge.net/gitroot/lxde/"$N""
+
+RDEPEND=""
+BDEPEND="${RDEPEND} "
+
+pbs_unpack() {
+	ypkg_unpack
+}
+
+pbs_config() {
+	sed -i 's/pcmanfm\/lxde.conf/pcmanfm\/LXDE.conf/g' Makefile.am
+	#my default config
+	cp "$FILES_PATH"/files/LXDE.conf.in  pcmanfm
+	cp "$FILES_PATH"/files/panel.in  lxpanel
+	cp "$FILES_PATH"/files/autostart  .
+	cp "$FILES_PATH"/files/desktop.conf .
+	YPB_CONFIG+="--sysconfdir=/etc --enable-man"
+	ypkg_config
+}
+
+pbs_build() {
+	ypkg_make
+}
+
+pbs_install() {
+	ypkg_mkinstall
+}

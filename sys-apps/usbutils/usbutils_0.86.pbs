@@ -1,0 +1,34 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="USB enumeration utilities"
+HOMEPAGE="http://linux-usb.sourceforge.net/"
+ 
+SRC_URI="http://downloads.sourceforge.net/linux-usb/"$N-$V$R".tar.gz"
+
+RDEPEND="libusb-compat libusb"
+BDEPEND="${RDEPEND}"
+
+pbs_unpack() {
+        ypkg_unpack
+}
+
+pbs_config() {
+	YPB_CONFIG+="--disable-zlib"
+	ypkg_config
+}
+
+pbs_build() {
+	ypkg_make
+}
+
+pbs_install() {
+	ypkg_mkinstall
+	#rename tools
+	ypkg_domv_rename "$YPPATH_DEST"/usr/sbin/update-usbids.sh "$YPPATH_DEST"/usr/sbin/update-usbids
+}
+
+pbs_postinst() {
+	/usr/sbin/update-usbids
+}

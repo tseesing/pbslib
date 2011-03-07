@@ -1,0 +1,27 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="This is a sample skeleton xiange build script file"
+HOMEPAGE="http://foo.bar.com/"
+
+SRC_URI="http://search.cpan.org/CPAN/authors/id/G/GR/GRANTM/XML-Simple-"$V$R".tar.gz"
+
+RDEPEND=""
+BDEPEND="${RDEPEND}"
+
+pbs_unpack() {
+        ypkg_unpack
+}
+
+pbs_config() {
+	ypkg_config
+}
+
+pbs_build() {
+	ypkg_make
+}
+
+pbs_install() {
+	ypkg_mkinstall
+}

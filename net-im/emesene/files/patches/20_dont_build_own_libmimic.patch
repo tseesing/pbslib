@@ -1,0 +1,34 @@
+Description: Don't build libmimic python bindings from emesene
+ We use those provided by libmimic in python-libmimic to avoid
+ code duplication
+Author: Emilio Pozuelo Monfort <pochu@debian.org>
+
+--- a/setup.py
++++ b/setup.py
+@@ -6,18 +6,6 @@
+ import sys
+ 
+ if os.name == 'posix':
+-    for arg in sys.argv:
+-        if arg == 'install': 
+-            print 'Hello.\nYou are trying to do a system-wide install of emesene '\
+-                  'using this script, which is a very bad thing to do.\n'\
+-                  'Seriously, you do NOT want to do this, since it can break '\
+-                  'other python apps, and emesene too!\n'\
+-                  'Follow my advice: just run the \"emesene\" script that is '\
+-                  'in this very same directory and you\'re done. emesene is running '\
+-                  'and your system is safe. It\'s a win-win, don\'t you think?\n'\
+-                  'Thanks for trying emesene.'
+-            quit()
+-
+     # From apport's setup.py
+     mo_files = []
+     for filepath in glob("po/*/LC_MESSAGES/*.mo"):
+@@ -50,7 +38,6 @@
+                           ('share/icons/hicolor/scalable/apps', ['misc/emesene.svg']),
+                           ('share/man/man1', ['misc/emesene.1']),
+                           ('share/applications', ['misc/emesene.desktop'])] + mo_files,
+-          ext_modules = [libmimic_module]
+           )
+ elif os.name == 'nt':
+     import pygst  

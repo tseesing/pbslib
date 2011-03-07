@@ -1,0 +1,28 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="Internationalization Tool Collection"
+HOMEPAGE=" http://edge.launchpad.net/intltool/ "
+ 
+SRC_URI="http://edge.launchpad.net/intltool/trunk/0.41.1/+download/"$N-$V$R".tar.gz"
+
+RDEPEND="xml-parser"
+BDEPEND="${RDEPEND}"
+
+pbs_unpack() {
+        ypkg_unpack
+}
+
+pbs_config() {
+	ypkg_config
+}
+
+pbs_build() {
+	ypkg_make
+}
+
+pbs_install() {
+	ypkg_mkinstall
+	ypkg_dodoc doc/I18N-HOWTO
+}

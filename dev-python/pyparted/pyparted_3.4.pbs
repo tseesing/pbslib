@@ -1,0 +1,34 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="Python bindings for sys-apps/parted"
+HOMEPAGE="https://fedorahosted.org/pyparted/"
+LICENSE="GPL-2"
+PACKAGER="hzx@115.com"
+
+SRC_URI="https://fedorahosted.org/releases/p/y/"$N"/"$N-$V$R".tar.gz"
+
+RDEPEND="python"
+BDEPEND="${RDEPEND} dev-python/decorator parted"
+RECOMMENDED=""
+
+NOTES=""
+
+pbs_unpack() {
+        ypkg_unpack
+}
+
+pbs_config() {
+	sed -i -e 's/-avoid-version/& -shared /' src/Makefile.am 
+	ypkg_config
+}
+
+pbs_build() {
+	ypkg_make
+}
+
+pbs_install() {
+	ypkg_mkinstall
+	ypkg_dodoc ChangeLog NEWS README TODO
+}

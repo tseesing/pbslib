@@ -1,0 +1,115 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="Open-source version of Google Chrome web browser (binary version)"
+HOMEPAGE="http://code.google.com/chromium/"
+LICENSE="GPL-2"
+PACKAGER="hzx@115.com"
+ 
+
+RDEPEND="bzip2
+         dev-libs/nspr
+         dev-libs/nss
+	 gnome-base/gconf
+	 media-libs/alsa-lib
+	 media-libs/libjpeg-turbo
+         media-libs/libpng
+         net-print/cups
+	 sys-devel/gcc
+	 zlib
+	 x11-libs/gtk+"
+	 #x11-misc/xdg-utils
+BDEPEND="${RDEPEND} "
+RECOMMENDED=""
+
+NOTES=""
+
+pbs_init()
+{
+	echo "init "$N-$V$R" build script..."
+}
+
+pbs_unpack()
+{
+	echo "download source ..."
+	echo "Unpacking to `pwd`"
+	unzip $YPPATH_SOURCE/chrome-linux-6.0.487.0.zip
+	mv "chrome-linux" "$N-$V$R"
+}
+
+pbs_config()
+{
+	echo "config "$N-$V$R"..."
+	
+}
+
+pbs_build()
+{
+	echo "make "$N-$V$R"..."
+}
+
+pbs_check()
+{
+	echo "checking "$N-$V$R".."
+}
+
+pbs_install()
+{
+	echo "install to $YPPATH_DEST"
+	mkdir -p "$YPPATH_DEST"/opt/chromium.org/chrome-linux/  "$YPPATH_DEST"/opt/chromium.org/nss-nspr  \
+	         "$YPPATH_DEST"/usr/bin  "$YPPATH_DEST"/usr/share/applications  "$YPPATH_DEST"/usr/share/pixmaps  \
+		 "$YPPATH_DEST"/usr/share/man/chromium-bin/
+	cp -a * "$YPPATH_DEST"/opt/chromium.org/chrome-linux/
+	cp $FILES_PATH/files/chromium-bin       "$YPPATH_DEST"/usr/bin
+	cp $FILES_PATH/files/chromium-bin.png   "$YPPATH_DEST"/usr/share/pixmaps/chromium-bin.png
+	cp $FILES_PATH/files/chromium-bin-chromium-bin.desktop  "$YPPATH_DEST"/usr/share/applications
+	cp chrome.1 "$YPPATH_DEST"/usr/share/man/chromium-bin/
+	#
+	cd "$YPPATH_DEST"/opt/chromium.org/nss-nspr
+	ln -sv /usr/lib/libnspr4.so     libnspr4.so.0d
+	ln -sv /usr/lib/libnss3.so      libnss3.so.1d 
+	ln -sv /usr/lib/libnssutil3.so  libnssutil3.so.1d
+	ln -sv /usr/lib/libplc4.so      libplc4.so.0d
+	ln -sv /usr/lib/libplds4.so     libplds4.so.0d
+	ln -sv /usr/lib/libsmime3.so    libsmime3.so.1d
+	ln -sv /usr/lib/libssl3.so      libssl3.so.1d
+ 
+	# Plugins symlink, optional wrt bug #301911
+	#ln -sv /usr/lib/nsbrowser/plugins "$YPPATH_DEST"/opt/chromium.org/chrome-linux/plugins
+	#
+	chmod 755 "$YPPATH_DEST"/* -R
+}
+
+pbs_postinst()
+{
+	echo "running after package installed..."
+	# Built with SSE2 enabled, so will fail on older processors
+	if ! grep -q sse2 /proc/cpuinfo; then
+		echo "This binary requires SSE2 support, it will not work on older processors"
+	fi
+	# Prevent user problems like bug 299777.
+	if ! grep -q /dev/shm <<< $(mount); then
+		echo "You don't have tmpfs mounted at /dev/shm."
+		echo "${N} isn't going to work in that configuration."
+		echo "Please uncomment the /dev/shm entry in /etc/fstab,"
+		echo "run 'mount /dev/shm' and try again."
+		echo "/dev/shm is not mounted"
+	fi
+	if [ `stat -c %a /dev/shm` -ne 1777 ]; then
+	 	echo "/dev/shm does not have correct permissions."
+		echo "${N} isn't going to work in that configuration."
+		echo "Please run chmod 1777 /dev/shm and try again."
+		echo "/dev/shm has incorrect permissions"
+	fi
+}
+
+pbs_prerm()
+{
+	echo "running before package delete..."
+}
+
+pbs_postrm()
+{
+	echo "running after package delete..."
+}

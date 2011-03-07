@@ -1,0 +1,13 @@
+--- dbus-wpa_supplicant.conf	2010-01-12 22:55:02.000000000 +0800
++++ dbus-wpa_supplicant.conf.new	2010-10-27 14:43:59.184000046 +0800
+@@ -8,6 +8,10 @@
+                 <allow send_destination="fi.epitest.hostap.WPASupplicant"/>
+                 <allow send_interface="fi.epitest.hostap.WPASupplicant"/>
+         </policy>
++        <policy group="netdev">
++                <allow send_destination="fi.epitest.hostap.WPASupplicant"/>
++                <allow send_interface="fi.epitest.hostap.WPASupplicant"/>
++        </policy>
+         <policy context="default">
+                 <deny own="fi.epitest.hostap.WPASupplicant"/>
+                 <deny send_destination="fi.epitest.hostap.WPASupplicant"/>

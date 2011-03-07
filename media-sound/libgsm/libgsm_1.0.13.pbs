@@ -1,0 +1,33 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="Lossy speech compression library and tool."
+HOMEPAGE="http://packages.qa.debian.org/libg/libgsm.html"
+REPO=""
+LICENSE=""
+PACKAGER="Zhongxin Huang, hzx@115.com"
+
+SRC_URI="http://ftp.de.debian.org/debian/pool/main/libg/libgsm/"${N}"_"$V$R".orig.tar.gz"
+
+RDEPEND=""
+BDEPEND="${RDEPEND} "
+RECOMMENDED=""
+
+pbs_unpack() {
+        ypkg_unpack
+}
+
+pbs_build() {
+	ypkg_patch gsm-1.0.13-shared.patch 
+	ypkg_patch gsm-1.0.12-memcpy.patch
+	ypkg_patch gsm-1.0.12-64bit.patch
+	ypkg_make
+}
+
+pbs_install() {
+	make INSTALL_ROOT="$YPPATH_DEST"/usr install
+	ypkg_docp lib/libgsm.so*  "$YPPATH_DEST"/usr/lib
+	ypkg_doln /usr/include/gsm/gsm.h  "$YPPATH_DEST"/usr/include/libgsm/gsm.h
+	ypkg_dodoc ChangeLog* MACHINES MANIFEST README 
+}

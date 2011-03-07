@@ -1,0 +1,99 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="GNOME Display Manager"
+HOMEPAGE="http://www.gnome.org/projects/gdm/"
+LICENSE="GPL-2"
+PACKAGER="hzx@115.com"
+
+SRC_URI="http://ftp.gnome.org/pub/gnome/desktop/2.30/2.30.2/sources/"$N-$V$R".tar.bz2"
+
+RDEPEND="glib2 libcanberra libvorbis libogg libtool gtk+ atk pango cairo pixman libxml2 directfb libpng libxcb libXrender 
+	 libX11 libxcb libXau libXdmcp pango glibc fontconfig freetype expat dbus-glib dbus zlib libXi libXrandr libXcursor
+	 libXcomposite libXext libXdamage libXfixes libcanberra"
+BDEPEND="${RDEPEND} consolekit zenity openssh dbus libglade gnome-session"
+RECOMMENDED=""
+
+NOTES="gdm user/group should be created automatically."
+
+pbs_init() {
+	ypkg_useradd -c "gdm user" -d "/var/lib/gdm" -s "/bin/false" -r "gdm"
+}
+
+pbs_unpack() {
+        ypkg_unpack
+}
+
+pbs_config() {	
+	patches=" ylmfos-gdm-2.30.2-locale.patch
+	          pam-gnome_keyring.patch
+		  32-hide-mouse-cursor.patch
+		  27_save_root_window.patch
+		  28_plymouth_transition.patch"
+	ypkg_patch $patches
+	YPB_CONFIG+=" --disable-scrollkeeper
+		      --enable-ipv6
+		      --enable-console-helper=no
+		      --with-xdmcp=yes
+		      --with-sysconfsubdir=gdm
+		      --with-dmconfdir=/usr/share/xsessions
+		      --with-log-dir=/var/log/gdm
+		      --with-pid-file=/var/run/gdm.pid
+		      --disable-schemas-install 
+		      --enable-console-helper
+		      --with-console-kit "
+	ypkg_config
+}
+
+pbs_build() {
+	ypkg_make
+}
+
+pbs_install() {
+	ypkg_mkinstall
+	# Make some handy softlinks
+	cd "$YPPATH_DEST"/usr/bin; ln -s ../sbin/gdm . ; ln -s ../sbin/gdmsetup .
+	#
+	cd "$YPPATH_DEST"/
+	ypkg_docp "$FILES_PATH"/files/sessions/ssh.desktop usr/share/xsessions
+	chown -R root:root usr/share/xsessions/*
+	# preserve settings
+	install -m755 -d  etc/gdm
+	ypkg_docp 	 "$FILES_PATH"/files/custom.conf  etc/gdm 
+	ypkg_docp_rename "$FILES_PATH"/files/custom.conf  etc/gdm/custom.conf.ori
+	ypkg_domv        "$YPPATH_DEST"/etc/gdm/PostLogin/Default.sample  etc/gdm/PostLogin/Default
+	#fixme! 
+	#gnome-session forgot to run /usr/share/gnome/shutdown/libcanberra-logout-sound.sh
+	#add libcanberra-logout-sound.sh to gdm logout script
+	ypkg_docp "$FILES_PATH"/files/Default  etc/gdm/PostSession
+	chown -R root:root  etc/gdm
+	#Copy gdm init script
+	#ypkg_doinit "$FILES_PATH"/files/"$N"
+	#install -m755 -d etc/rc3.d
+	#ln -sf /etc/init.d/"$N"  etc/rc3.d/S99"$N"
+	#ln -sf /etc/init.d/"$N"  etc/rc3.d/K01"$N"
+	ypkg_docp "$FILES_PATH"/files/systemd/*  lib/systemd/system/
+	#
+	[ -d var/lib/gdm ] && rm -r var/lib/gdm
+	mkdir -p      var/lib/gdm
+	chown gdm:gdm var/lib/gdm 
+	rm -rf var/gdm
+	#for gdm screenshot
+	install -d -m755 var/run/"$N"/greeter/
+	#fix me!
+	sed -i 's/${exec_prefix}/\/usr/g' usr/share/gdm/autostart/LoginWindow/at-spi-registryd-wrapper.desktop
+}
+
+pbs_postinst() {
+	gnome2_install_schema "/etc/gconf/schemas/gdm-simple-greeter.schemas"
+	gnome2_install_defaut_gconf "boolean" "/apps/gdm/simple-greeter/accessibility/screen_reader_enabled" "true"
+	gnome2_rarian_sk_update
+	gnome2_desktop_database_update
+	# These GTK+ files need to be kept up to date for
+	# proper input method with additional gdm modules
+	gnome2_gtk_immodules_update
+	# update hicolor icons
+	gnome2_icon_cache_update
+	chown gdm:gdm /var/lib/gdm
+}

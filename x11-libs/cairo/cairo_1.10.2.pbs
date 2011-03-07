@@ -1,0 +1,40 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="A vector graphics library with cross-device output support"
+HOMEPAGE="http://cairographics.org/"
+LICENSE="GPL-2"
+PACKAGER="hzx@115.com"
+
+SRC_URI="http://cairographics.org/releases/"$N-$V$R".tar.gz"
+
+RDEPEND="libpng pixman fontconfig"
+BDEPEND="${RDEPEND} x11-libs/xcb-util"
+
+pbs_unpack() {
+        ypkg_unpack
+}
+
+pbs_config() {
+	# ypkg_patch cairo-1.8.8-interix.patch
+	# ypkg_patch cairo-1.10.0-buggy_gradients.patch
+	ypkg_patch 01_build_perf_utils.patch
+	ypkg_patch 02_am-maintainer-mode.patch
+	ypkg_patch 03_export-symbols.patch
+	ypkg_patch cairo-lp-680628.patch
+	ypkg_patch server_side_gradients.patch
+	ypkg_patch cairo-respect-fontconfig.patch
+	YPB_CONFIG+="--enable-xcb=yes
+		     --enable-svg=yes
+		     --enable-tee=yes"
+	ypkg_config
+}
+
+pbs_build() {
+	ypkg_make
+}
+
+pbs_install() {
+	ypkg_mkinstall
+}

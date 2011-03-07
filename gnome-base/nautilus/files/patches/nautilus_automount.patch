@@ -1,0 +1,128 @@
+diff -Nur nautilus-2.32.0.org/src/nautilus-application.c nautilus-2.32.0/src/nautilus-application.c
+--- nautilus-2.32.0.org/src/nautilus-application.c	2010-09-27 21:46:35.000000000 +0800
++++ nautilus-2.32.0/src/nautilus-application.c	2011-03-04 12:01:24.641705818 +0800
+@@ -233,7 +233,7 @@
+ 		for (l = volumes; l != NULL; l = l->next) {
+ 			volume = l->data;
+ 			
+-			if (!g_volume_should_automount (volume) ||
++			if (///!g_volume_should_automount (volume) ||
+ 			    !g_volume_can_mount (volume)) {
+ 				continue;
+ 			}
+@@ -1525,7 +1525,7 @@
+ 		       NautilusApplication *application)
+ {
+ 	if (eel_preferences_get_boolean (NAUTILUS_PREFERENCES_MEDIA_AUTOMOUNT) &&
+-	    g_volume_should_automount (volume) &&
++	    ///g_volume_should_automount (volume) &&
+ 	    g_volume_can_mount (volume)) {
+ 		nautilus_file_operations_mount_volume (NULL, volume, TRUE);
+ 	} else {
+diff -Nur nautilus-2.32.0.org/src/nautilus-file-management-properties.c nautilus-2.32.0/src/nautilus-file-management-properties.c
+--- nautilus-2.32.0.org/src/nautilus-file-management-properties.c	2010-09-11 00:44:21.000000000 +0800
++++ nautilus-2.32.0/src/nautilus-file-management-properties.c	2011-03-04 11:20:00.628723850 +0800
+@@ -69,6 +69,7 @@
+ #define NAUTILUS_FILE_MANAGEMENT_PROPERTIES_SHOW_HIDDEN_WIDGET "hidden_files_checkbutton"
+ #define NAUTILUS_FILE_MANAGEMENT_PROPERTIES_TREE_VIEW_FOLDERS_WIDGET "treeview_folders_checkbutton"
+ #define NAUTILUS_FILE_MANAGEMENT_PROPERTIES_MEDIA_AUTOMOUNT_OPEN "media_automount_open_checkbutton"
++#define NAUTILUS_FILE_MANAGEMENT_PROPERTIES_MEDIA_AUTOMOUNT "media_automount_checkbutton"
+ #define NAUTILUS_FILE_MANAGEMENT_PROPERTIES_MEDIA_AUTORUN_NEVER "media_autorun_never_checkbutton"
+ 
+ /* int enums */
+@@ -714,6 +715,10 @@
+ 	eel_preferences_builder_connect_bool (builder,
+ 					      NAUTILUS_FILE_MANAGEMENT_PROPERTIES_MEDIA_AUTORUN_NEVER,
+ 					      NAUTILUS_PREFERENCES_MEDIA_AUTORUN_NEVER);
++	eel_preferences_builder_connect_bool (builder,
++					      NAUTILUS_FILE_MANAGEMENT_PROPERTIES_MEDIA_AUTOMOUNT,
++					      NAUTILUS_PREFERENCES_MEDIA_AUTOMOUNT);
++
+ 
+ 	eel_preferences_builder_connect_bool (builder,
+ 					      NAUTILUS_FILE_MANAGEMENT_PROPERTIES_TRASH_CONFIRM_WIDGET,
+diff -Nur nautilus-2.32.0.org/libnautilus-private/nautilus-autorun.c nautilus-2.32.0/libnautilus-private/nautilus-autorun.c
+--- nautilus-2.32.0.org/libnautilus-private/nautilus-autorun.c	2010-09-11 01:09:28.000000000 +0800
++++ nautilus-2.32.0/libnautilus-private/nautilus-autorun.c	2011-03-04 11:55:58.580186900 +0800
+@@ -1102,10 +1102,10 @@
+ 				}
+ 			}
+ 			g_strfreev (guessed_content_type);
+-		} else {
+-			if (eel_preferences_get_boolean (NAUTILUS_PREFERENCES_MEDIA_AUTOMOUNT_OPEN))
+-				open_folder = TRUE;
+ 		}
++		///No matter what state it is,open_folder when NAUTILUS_PREFERENCES_MEDIA_AUTOMOUNT_OPEN == TRUE
++		if (eel_preferences_get_boolean (NAUTILUS_PREFERENCES_MEDIA_AUTOMOUNT_OPEN))
++			open_folder = TRUE;
+ 	}
+ 
+ 	/* only open the folder once.. */
+
+--- nautilus-2.32.0.org/src/nautilus-file-management-properties.ui	2010-09-11 01:09:29.000000000 +0800
++++ nautilus-2.32.0/src/nautilus-file-management-properties.ui	2011-03-04 13:53:37.653600267 +0800
+@@ -3031,20 +3031,38 @@
+                     <property name="active">False</property>
+                     <property name="inconsistent">False</property>
+                     <property name="draw_indicator">True</property>
+                   </object>
+                   <packing>
+                     <property name="padding">0</property>
+                     <property name="expand">False</property>
+                     <property name="fill">False</property>
+                   </packing>
+                 </child>
++                <child>
++                  <object class="GtkCheckButton" id="media_automount_checkbutton">
++                    <property name="visible">True</property>
++                    <property name="can_focus">True</property>
++                    <property name="label" translatable="yes">_Automatic mount volumes</property>
++                    <property name="use_underline">True</property>
++                    <property name="relief">GTK_RELIEF_NORMAL</property>
++                    <property name="focus_on_click">True</property>
++                    <property name="active">False</property>
++                    <property name="inconsistent">False</property>
++                    <property name="draw_indicator">True</property>
++                  </object>
++                  <packing>
++                    <property name="padding">0</property>
++                    <property name="expand">False</property>
++                    <property name="fill" >False</property>
++                  </packing>
++                </child>
+               </object>
+               <packing>
+                 <property name="tab_expand">False</property>
+                 <property name="tab_fill">True</property>
+               </packing>
+             </child>
+             <child type="tab">
+               <object class="GtkLabel" id="label38">
+                 <property name="visible">True</property>
+                 <property name="label" translatable="yes">Media</property>
+--- nautilus-2.32.0.org/po/zh_CN.po	2010-09-27 21:46:35.000000000 +0800
++++ nautilus-2.32.0/po/zh_CN.po	2011-03-04 14:18:31.236165860 +0800
+@@ -7343,20 +7343,23 @@
+ msgstr "缩放到默认值"
+ 
+ #: ../src/nautilus-zoom-control.c:890
+ msgid "Zoom"
+ msgstr "缩放"
+ 
+ #: ../src/nautilus-zoom-control.c:896
+ msgid "Set the zoom level of the current view"
+ msgstr "设置当前视图的缩放级别"
+ 
++msgid "_Automatic mount volumes"
++msgstr "自动加载磁盘(_A)"
++
+ #~ msgid "An older"
+ #~ msgstr "较老的"
+ 
+ #~ msgid "A newer"
+ #~ msgstr "较新的"
+ 
+ #~ msgid "Another"
+ #~ msgstr "另一个"
+ 
+ #~ msgid ""

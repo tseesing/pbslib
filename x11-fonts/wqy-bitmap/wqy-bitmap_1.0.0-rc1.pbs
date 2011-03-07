@@ -1,0 +1,29 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="Wenquanyi Chinese bitmap font"
+HOMEPAGE="http://wenq.org/"
+LICENSE=""
+PACKAGER="hzx@115.com"
+
+SRC_URI="http://downloads.sourceforge.net/project/wqy/wqy-bitmapfont/1.0.0-RC1/wqy-bitmapsong-pcf-"$V"-RC1.tar.gz"
+
+RDEPEND=""
+BDEPEND="${RDEPEND}"
+
+pbs_unpack() {
+        ypkg_unpack
+}
+
+pbs_install() {
+	ypkg_docp *.pcf "$YPPATH_DEST"/usr/share/fonts/wenquanyi/wqy-bitmap
+	ypkg_docp *.conf "$YPPATH_DEST"/etc/fonts/conf.avail
+	cd "$YPPATH_DEST"
+	ypkg_doln /etc/fonts/conf.avail/85-wqy-bitmapsong.conf etc/fonts/conf.d/85-wqy-bitmapsong.conf
+}
+
+pbs_postinst() {
+	ypkg_dofont usr/share/fonts/wenquanyi/wqy-bitmap
+}
+

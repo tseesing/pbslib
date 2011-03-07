@@ -1,0 +1,44 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="EXIF and IPTC metadata C++ library and command line utility"
+HOMEPAGE="http://trac.yorba.org/wiki/gexiv2"
+REPO=""
+LICENSE=""
+PACKAGER="Zhongxin Huang, hzx@115.com"
+
+SRC_URI="http://www.exiv2.org/"$N-$V$R".tar.gz"
+
+RDEPEND=""
+BDEPEND="${RDEPEND} "
+RECOMMENDED=""
+
+NOTES=""
+
+pbs_unpack() {
+        ypkg_unpack
+}
+
+pbs_config() {
+	
+	ypkg_patch "$FILES_PATH"/files/exiv2-0.21-xmp-fix.patch
+	YPB_CONFIG+=" --prefix=/usr
+		      --sysconfdir=/etc
+		      --localstatedir=/var
+	              --infodir=/usr/share/info
+		      --mandir=/usr/share/man
+	              --disable-static
+		      --enable-shared
+		      --enable-nls 
+		      --disable-xmp "
+	ypkg_config
+}
+
+pbs_build() {
+	ypkg_make
+}
+
+pbs_install() {
+	ypkg_mkinstall
+}

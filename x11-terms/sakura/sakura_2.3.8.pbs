@@ -1,0 +1,27 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="sakura is a terminal emulator based on GTK and VTE"
+HOMEPAGE="http://www.pleyades.net/david/sakura.php"
+ 
+SRC_URI="http://www.pleyades.net/david/projects/"$N"/"$N-$V$R".tar.bz2"
+
+RDEPEND="gtk+ vte"
+BDEPEND="${RDEPEND} cmake"
+
+pbs_unpack() {
+        ypkg_unpack
+}
+
+pbs_config() {
+	ypkg_config
+}
+
+pbs_build() {
+	ypkg_make
+}
+
+pbs_install() {
+	ypkg_mkinstall
+}

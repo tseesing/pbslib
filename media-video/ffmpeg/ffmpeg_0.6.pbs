@@ -1,0 +1,37 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="Complete solution to record, convert and stream audio and video. Includes libavcodec."
+HOMEPAGE="http://ffmpeg.org/"
+LICENSE="GPL-2"
+PACKAGER="hzx@115.com"
+
+SRC_URI="http://anduin.linuxfromscratch.org/files/BLFS/svn/sources/"$N-$V$R".tar.bz2"
+
+RDEPEND=""
+BDEPEND="${RDEPEND} x264 app-text/texi2html"
+RECOMMENDED=""
+
+NOTES="http://wiki.linuxfromscratch.org/blfs/wiki/ffmpeg"
+
+pbs_unpack() {
+        ypkg_unpack
+}
+
+pbs_config() {
+	YPB_CONFIG="--prefix=/usr --mandir=/usr/share/man --enable-pthreads"
+	ypkg_config
+}
+
+pbs_build() {
+	sed -i 's|/man|/share/man|' config.mak
+	ypkg_make
+	texi2html --version >/dev/null 2>&1 || make doc/ff{mpeg,play,server}.1
+}
+
+pbs_install() {
+	ypkg_mkinstall
+	ypkg_dodoc doc/*.txt
+	texi2html --version >/dev/null 2>&1 || make install-man
+}

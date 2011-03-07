@@ -1,0 +1,43 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="AAC audio decoding library"
+HOMEPAGE="http://www.audiocoding.com/faad2.html"
+REPO=""
+LICENSE=""
+PACKAGER="Zhongxin Huang, hzx@115.com"
+
+SRC_URI="http://downloads.sourceforge.net/project/faac/faad2-src/"$N-$V$R"/"$N-$V$R".tar.bz2"
+
+RDEPEND="mp4v2"
+BDEPEND="${RDEPEND} "
+RECOMMENDED=""
+
+NOTES=""
+
+pbs_unpack() {
+        ypkg_unpack
+}
+
+pbs_config() {
+	
+	YPB_CONFIG+=" --prefix=/usr
+		      --sysconfdir=/etc
+		      --localstatedir=/var
+	              --infodir=/usr/share/info
+		      --mandir=/usr/share/man
+	              --disable-static
+		      --enable-shared 
+		      --disable-dependency-tracking "
+	ypkg_config
+}
+
+pbs_build() {
+	ypkg_make
+}
+
+pbs_install() {
+	ypkg_mkinstall
+	ypkg_dodoc AUTHORS ChangeLog NEWS README TODO
+}

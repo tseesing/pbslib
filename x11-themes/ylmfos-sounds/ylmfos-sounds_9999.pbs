@@ -1,0 +1,29 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="Ylmfos sound theme"
+HOMEPAGE="www.ylmf.com"
+REPO=""
+LICENSE=""
+PACKAGER="Zhongxin Huang, hzx@115.com"
+
+SRC_URI="git://192.168.1.58/"$N".git"
+
+RDEPEND=""
+BDEPEND="${RDEPEND} "
+RECOMMENDED=""
+
+NOTES=""
+
+pbs_unpack() {
+	ypkg_unpack
+}
+
+pbs_install() {
+	ypkg_docp src/* "$YPPATH_DEST"
+}
+
+pbs_postinst() {
+	gnome2_install_defaut_gconf "string" "/desktop/gnome/sound/theme_name" "ylmfos"
+}

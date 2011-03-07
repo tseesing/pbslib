@@ -1,0 +1,33 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="VDPAU wrapper and trace libraries"
+HOMEPAGE="http://www.freedesktop.org/wiki/Software/VDPAU"
+REPO=""
+LICENSE="GPL"
+PACKAGER="Zhongxin Huang, hzx@115.com"
+
+SRC_URI="git://anongit.freedesktop.org/~aplattner/libvdpau"
+
+RDEPEND=""
+BDEPEND="${RDEPEND} "
+RECOMMENDED=""
+
+NOTES=""
+
+pbs_unpack() {
+        ypkg_unpack
+}
+
+pbs_config() {
+	ypkg_config
+}
+
+pbs_build() {
+	ypkg_make
+}
+
+pbs_install() {
+	ypkg_mkinstall
+}

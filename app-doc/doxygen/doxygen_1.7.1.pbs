@@ -1,0 +1,33 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="documentation system for C++, C, Java, Objective-C, Python, IDL, and other languages"
+HOMEPAGE="http://www.doxygen.org/"
+LICENSE=""
+PACKAGER="hzx@115.com"
+
+SRC_URI="http://ftp.stack.nl/pub/users/dimitri/"$N-$V$R".src.tar.gz"
+
+RDEPEND=""
+BDEPEND="${RDEPEND} "
+RECOMMENDED=""
+
+NOTES="a\nb\n"
+
+pbs_unpack() {
+        ypkg_unpack
+}
+
+pbs_config() {
+	./configure --prefix /usr --shared
+}
+
+pbs_build() {
+	ypkg_make
+}
+
+pbs_install() {
+	ypkg_mkinstall
+	ypkg_dodoc INSTALL README VERSION
+}

@@ -1,0 +1,36 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="Bruce's C compiler - Simple C compiler to generate 8086 code"
+HOMEPAGE="http://www.debath.co.uk/"
+LICENSE="GPL-2"
+PACKAGER="hzx@115.com"
+
+SRC_URI="http://homepage.ntlworld.com/robert.debath/"$N"/Dev86src-"$V$R".tar.gz"
+
+RDEPEND="bin86 glibc"
+BDEPEND="${RDEPEND} dev-util/gperf"
+RECOMMENDED=""
+
+pbs_unpack() {
+        ypkg_unpack
+}
+
+pbs_config() {
+	ypkg_patch "$N"-pic.patch
+	ypkg_patch "$N-$V$R"-fortify.patch
+	sed -i -e "s:-O2 -g:${CFLAGS} ${CPPFLAGS}:" -e '/INEXE=/s:-s::' makefile.in
+	sed -i -e '/INSTALL_OPTS=/s:-s::' bin86/Makefile
+	sed -i -e '/install -m 755 -s/s:-s::' dis88/Makefile
+}
+
+pbs_build() {
+	make -j1 DIST="$YPPATH_DEST"
+}
+
+pbs_install() {
+	make -j1 install-all DIST="$YPPATH_DEST"
+	ypkg_dodoc COPYING README
+	ypkg_domv "$YPPATH_DEST"/usr/man "$YPPATH_DEST"/usr/share
+}

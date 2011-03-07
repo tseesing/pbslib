@@ -1,0 +1,55 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="OpenOffice productivity suite"
+HOMEPAGE="http://www.openoffice.org/"
+ 
+SRC_URI="http://download.services.openoffice.org/files/localized/zh-CN/$V/OOo_${V}_LinuxIntel_install_zh-CN.tar.gz"
+
+RDEPEND=""
+BDEPEND="${RDEPEND} rpm2targz"
+
+pbs_unpack()
+{
+        ypkg_unpack
+}
+
+pbs_config()
+{
+	cd OOO320_m12_native_packed-1_zh-CN.9483/RPMS
+	#remove gnome
+	rm ooobasis3.2-gnome-integration-3.2.0-9483.i586.rpm
+	rm ooobasis3.2-kde-integration-3.2.0-9483.i586.rpm
+	for i in *.rpm
+	do
+		rpm2tar "$i"
+		rm "$i"
+	done
+}
+
+pbs_install()
+{
+	for i in *.tar
+	do
+		tar xf $i -C $YPPATH_DEST
+	done
+	#move to right place.
+	mkdir -p "$YPPATH_DEST"/opt/openoffice
+	mv "$YPPATH_DEST"/opt/{openoffice.org/*,openoffice}
+	mv "$YPPATH_DEST"/opt/{openoffice.org3/*,openoffice}
+	rm -r "$YPPATH_DEST"/opt/openoffice.org &&\
+		rm -r "$YPPATH_DEST"/opt/openoffice.org3 
+	#symbol link
+	rm "$YPPATH_DEST"/opt/openoffice/basis-link
+	ln -sv basis3.2 "$YPPATH_DEST"/opt/openoffice/basis-link
+	# Component symlinks 
+	mkdir -p "$YPPATH_DEST"/usr/bin
+	for app in base calc draw impress math writer; 
+	do
+		ln -sv /opt/openoffice/program/s${app} "$YPPATH_DEST"/usr/bin/oo${app}
+        done
+	ln -sv /opt/openoffice/program/soffice "$YPPATH_DEST"/usr/bin
+	# Change user install dir
+        sed -i -e "s/.openoffice.org\/3/.ooo3/g" ""$YPPATH_DEST"/opt/openoffice/program/bootstraprc" 
+}

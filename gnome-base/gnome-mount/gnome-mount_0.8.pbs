@@ -1,0 +1,39 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="The gnome-mount package contains programs for mounting, unmounting and ejecting storage devices."
+HOMEPAGE="http://www.gnome.org"
+REPO="stable"
+LICENSE="GPL-2"
+PACKAGER="hzx@115.com"
+
+SRC_URI="http://hal.freedesktop.org/releases/"$N-$V$R".tar.gz"
+
+RDEPEND="gconf orbit libgnome-keyring eggdbus libgcrypt libgpg-error hal libnotify gtk+ dbus-glib atk
+	 pango glib2 glibc cairo pixman libxml2 directfb libpng libxcb libXrender libX11 libXau libXdmcp fontconfig
+	 freetype zlib expat dbus libXi libXrandr libXcursor libXcomposite libXext libXdamage libXfixes"
+BDEPEND="${RDEPEND} gnome-keyring hal libgnomeui"
+RECOMMENDED="libnotify nautilus"
+
+pbs_unpack() {
+        ypkg_unpack
+}
+
+pbs_config() {
+	YPB_CONFIG+="--disable-schemas-install"
+	ypkg_config
+}
+
+pbs_build() {
+	ypkg_make
+}
+
+pbs_install() {
+	ypkg_mkinstall
+}
+
+pbs_postinst() {
+	gnome2_install_schema "/etc/gconf/schemas/gnome-mount.schemas"
+	gnome2_rarian_sk_update
+}

@@ -1,0 +1,35 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="GNU Image Manipulation Program"
+HOMEPAGE="http://www.gimp.org/"
+REPO=""
+LICENSE=""
+PACKAGER="Zhongxin Huang, hzx@115.com"
+
+SRC_URI="ftp://ftp.gimp.org/pub/"$N"/v2.6/"$N-$V$R".tar.bz2"
+
+RDEPEND="poppler libjpeg-turbo libpng lcms libexif gegl"
+BDEPEND="${RDEPEND}"
+
+pbs_unpack() {
+        ypkg_unpack
+}
+
+pbs_config() {
+	YPB_CONFIG+="--disable-python"
+	ypkg_config
+}
+
+pbs_install() {
+	ypkg_mkinstall
+	cd "$YPPATH_DEST"
+	ypkg_domv_rename usr/share/pixmaps/{gnome-gimp.png,gimp.png}
+	mkdir -p etc/xg_launch/image
+	echo "+ Gimp%/usr/share/icons/hicolor/32x32/apps/gimp.png% Exec gimp" >etc/xg_launch/image/C10gimp 
+}
+
+pbs_postinst() {
+	gnome2_icon_cache_update "hicolor"
+}

@@ -1,0 +1,31 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="Exuberant Ctags creates tags files for code browsing in editors"
+HOMEPAGE="http://ctags.sourceforge.net"
+ 
+SRC_URI="http://prdownloads.sourceforge.net/"$N"/"$N-$V$R".tar.gz"
+
+RDEPEND="glibc"
+BDEPEND="${RDEPEND}"
+
+pbs_unpack() {
+        ypkg_unpack
+}
+
+pbs_config() {
+	YPB_CONFIG+="--with-posix-regex 
+	             --without-readlib 
+		     --disable-etags 
+		     --enable-tmpdir=/tmp "
+	ypkg_config
+}
+
+pbs_build() {
+	ypkg_make
+}
+
+pbs_install() {
+	make prefix="$YPPATH_DEST"/usr install
+}

@@ -1,0 +1,37 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="Library for arithmetic on arbitrary precision integers, rational numbers, and floating-point numbers"
+HOMEPAGE="http://gmplib.org/"
+ 
+SRC_URI="ftp://ftp.gnu.org/gnu/gmp/"$N-$V$R".tar.bz2"
+
+RDEPEND=""
+BDEPEND="${RDEPEND}"
+
+pbs_unpack()
+{
+        ypkg_unpack
+}
+
+pbs_config()
+{
+	#cd build directory.
+	
+	#run configure
+	# bug	
+	export ABI=32
+	YPB_CONFIG+=" --enable-cxx --enable-mpbsd "
+	ypkg_config
+}
+
+pbs_build()
+{
+	make 
+}
+
+pbs_install()
+{
+	ypkg_mkinstall
+}

@@ -1,0 +1,58 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="the free power-packed Open Source personal productivity suite for Windows, Macintosh and Linux"
+HOMEPAGE="http://www.libreoffice.org/"
+REPO=""
+LICENSE="LGPL"
+PACKAGER="Zhongxin Huang, hzx@115.com"
+
+SRC_URI="http://download.documentfoundation.org/libreoffice/testing/3.3.1-rc1/rpm/x86/LibO_3.3.1rc1_Linux_x86_install-rpm_en-US.tar.gz
+	 http://download.documentfoundation.org/libreoffice/testing/3.3.1-rc1/rpm/x86/LibO_3.3.1rc1_Linux_x86_langpack-rpm_zh-CN.tar.gz
+	 http://download.documentfoundation.org/libreoffice/testing/3.3.1-rc1/rpm/x86/LibO_3.3.1rc1_Linux_x86_helppack-rpm_zh-CN.tar.gz"
+
+RDEPEND="zlib freetype libXau libxcb libXdmcp libXext"
+BDEPEND="${RDEPEND} rpm2targz"
+
+pbs_install() {
+	mkdir -p "$N-$V$R"
+	cd "$N-$V$R"
+	packages=" LibO_3.3.1rc1_Linux_x86_install-rpm_en-US.tar.gz
+	           LibO_3.3.1rc1_Linux_x86_langpack-rpm_zh-CN.tar.gz
+		   LibO_3.3.1rc1_Linux_x86_helppack-rpm_zh-CN.tar.gz "
+	for i in $packages; do
+		 tar xf "$YPPATH_SOURCE"/"${i}"
+	done
+	find . -name "*.rpm" |while read i; do
+		echo ">>> Convert $(basename $i)"
+		rpm2tar "${i}"
+	done	
+	find . -name "*.tar" |while read i; do
+		echo ">>> Unpack $(basename $i)"
+		tar xf "${i}"
+	done
+	for i in opt usr; do
+		ypkg_docp "${i}"/*   "$YPPATH_DEST"/"${i}"
+	done
+	icons=" libreoffice-base.png
+		libreoffice-calc.png
+		libreoffice-draw.png 
+		libreoffice-impress.png
+		libreoffice-math.png 
+		libreoffice-printeradmin.png
+		libreoffice-startcenter.png
+		libreoffice-writer.png "
+	for i in $icons; do
+		ypkg_docp usr/share/icons/hicolor/48x48/apps/"${i}" "$YPPATH_DEST"/usr/share/pixmaps/
+	done
+	#
+	for i in base draw javafilter printeradmin writer calc impress math startcenter; do
+		ypkg_doln /opt/libreoffice/share/xdg/"$i".desktop "$YPPATH_DEST"/usr/share/applications/libreoffice-"$i".desktop
+	done
+}
+
+pbs_postinst() {
+	gnome2_desktop_database_update
+	gnome2_icon_cache_update "hicolor" "gnome" "locolor"
+}

@@ -1,0 +1,39 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="The Common Unix Printing System."
+HOMEPAGE="http://www.cups.org/"
+LICENSE="GPL-2"
+PACKAGER="hzx@115.com"
+
+SRC_URI="http://ftp.easysw.com/pub/"$N"/"$V"/"$N-$V$R"-source.tar.bz2"
+
+RDEPEND="gnutls krb5 libgcrypt libgpg-error glibc e2fsprogs libjpeg-turbo"
+BDEPEND="${RDEPEND}"
+RECOMMENDED="libpng libtiff"
+
+NOTES="http://wiki.linuxfromscratch.org/blfs/wiki/cups
+lp group/user should be created automatically
+"
+
+pbs_unpack() {
+        ypkg_unpack
+}
+
+pbs_config() {
+	ypkg_config
+}
+
+pbs_build() {
+	ypkg_make
+}
+
+pbs_install() {
+	make BUILDROOT="$YPPATH_DEST" install
+}
+
+pbs_postinst() {
+	ypkg_groupadd -r "lp"
+	ypkg_useradd -c "Print Service User" -d "/dev/null" -s "/bin/false" -r -N "lp" "lp"
+}

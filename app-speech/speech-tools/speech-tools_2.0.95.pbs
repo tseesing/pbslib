@@ -1,0 +1,60 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="Speech tools for Festival Text to Speech engine"
+HOMEPAGE="http://www.cstr.ed.ac.uk/projects/speech_tools/"
+ 
+SRC_URI="http://festvox.org/packed/festival/"$V"/speech_tools-"$V$R"-beta.tar.gz"
+
+RDEPEND=""
+BDEPEND="${RDEPEND}"
+
+pbs_unpack() {
+        ypkg_unpack
+}
+
+pbs_config() {
+	sed -i -e "s:-O3:\$(OPTIMISE_CXXFLAGS):" base_class/Makefile
+	sed -i -e "s/#.*\(SHARED=2\)/\1/" config/config.in
+	ypkg_config
+}
+
+pbs_build() {
+	make OPTIMISE_CXXFLAGS="${CXXFLAGS}" OPTIMISE_CCFLAGS="${CFLAGS}" \
+		CC=${CC} CXX=${CXX}
+}
+
+pbs_install() {
+	local destfile
+	local S
+	local file
+	S="$(pwd)"
+	#lib
+	ypkg_docp lib/*.so* lib/*.a "$YPPATH_DEST"/usr/lib
+	#binarys
+	cd bin
+	for file in *; do
+		[ "${file}" = "Makefile" ] && continue
+		ypkg_docp -a ${file} "$YPPATH_DEST"/usr/bin
+		dstfile="/usr/bin/${file}"
+		sed -i \
+		"s:${S}/testsuite/data:/usr/share/speech-tools/testsuite:g" \
+			${YPPATH_DEST}$dstfile
+		sed -i "s:${S}/main:/usr/lib/speech-tools:g"\
+			${YPPATH_DEST}$dstfile
+		sed -i "s:${S}/lib:/usr/lib:g" \
+			${YPPATH_DEST}$dstfile
+	done
+	cd ..
+	for file in `find main -perm +100 -type f`; do
+		ypkg_docp -a $file "$YPPATH_DEST"/usr/lib/speech-tools
+	done
+	#share files.
+	ypkg_docp config "$YPPATH_DEST"/usr/share/speech-tools
+	ypkg_docp lib/siod "$YPPATH_DEST"/usr/share/speech-tools/lib
+	#include
+	ypkg_docp include/* "$YPPATH_DEST"/usr/include/speech-tools
+	ypkg_doln /usr/include/speech-tools "$YPPATH_DEST"/usr/share/speech-tools/include
+	mv "$YPPATH_DEST"/usr/bin/{dp,speech-dp}
+}

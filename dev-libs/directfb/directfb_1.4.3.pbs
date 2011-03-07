@@ -1,0 +1,33 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="Thin library on top of the Linux framebuffer devices"
+HOMEPAGE="http://www.directfb.org/"
+LICENSE="GPL-2"
+PACKAGER="hzx@115.com"
+ 
+SRC_URI="http://www.directfb.org/downloads/Core/DirectFB-1.4/DirectFB-"$V$R".tar.gz"
+
+RDEPEND="libpng glibc zlib freetype"
+BDEPEND="${RDEPEND} freetype libjpeg-turbo libpng"
+RECOMMENDED="libsdl libX11"
+
+NOTES=""
+
+pbs_unpack() {
+        ypkg_unpack
+}
+
+pbs_config() {
+	YPB_CONFIG+="--disable-mmx --disable-sse"
+	ypkg_config
+}
+
+pbs_build() {
+	ypkg_make
+}
+
+pbs_install() {
+	ypkg_mkinstall
+}

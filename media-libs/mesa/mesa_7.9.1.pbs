@@ -1,0 +1,54 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="an open-source implementation of the OpenGL specification - a system for rendering interactive 3D graphics."
+HOMEPAGE="http://mesa3d.sourceforge.net/"
+LICENSE=""
+PACKAGER="hzx@115.com"
+SRC_URI="ftp://ftp.freedesktop.org/pub/mesa/"$V"/MesaLib-"$V$R".tar.bz2  
+	 ftp://ftp.freedesktop.org/pub/mesa/"$V"/MesaGLUT-"$V$R".tar.bz2"
+
+RDEPEND="glibc libX11 libXext libXxf86vm libXdamage libXfixes libdrm libxcb libXau libXdmcp talloc"
+BDEPEND="${RDEPEND} x11-libs/libX11 x11-libs/libXext x11-libs/libXxf86vm x11-libs/libXdamage 
+	 x11-libs/libXfixes x11-libs/libXi dri2proto libdrm xorg-server"
+
+NOTES="
+ You have enabled gallium infrastructure.
+ This infrastructure currently support these drivers:
+ Intel: works only i915 and i965 somehow.
+ LLVMpipe: Software renderer.
+ Nouveau: Support for nVidia NV30 and later cards.
+ Radeon: Newest implementation of r300-r700 driver.
+ Svga: VMWare Virtual GPU driver.
+"
+
+pbs_unpack() {
+	tar xf "$YPPATH_SOURCE"/MesaLib-"$V$R".tar.bz2
+	tar xf "$YPPATH_SOURCE"/MesaGLUT-"$V$R".tar.bz2
+	mv Mesa-"$V$R"  "$N-$V$R"
+}
+
+pbs_config() {
+	ypkg_patch mesa-7.9-libdrm-2.4.23-nouveau-api.patch
+	YPB_CONFIG+="--enable-gallium-llvm
+		     --enable-gallium-svga
+		     --enable-gallium-i915
+		     --enable-gallium-i965
+	             --enable-gallium-radeon 
+		     --enable-gallium-r600
+		     --enable-gallium-swrast 
+		     --enable-gallium-nouveau "
+	ypkg_config
+}
+
+pbs_build() {
+	ypkg_make
+}
+
+pbs_install() {
+	ypkg_mkinstall
+	#radeon_drv.so from mesa is very experimental (and only concern r3xx,r4xx,r5xx
+	#aka radeon 9600 to radeon HD1950)
+	rm "$YPPATH_DEST"/usr/lib/xorg/modules/drivers/radeon_drv.so
+}

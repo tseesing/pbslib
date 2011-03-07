@@ -1,0 +1,37 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="Just another screensaver application for X"
+HOMEPAGE="http://www.tux.org/~bagleyd/xlockmore.html"
+ 
+SRC_URI="http://www.tux.org/~bagleyd/xlock/$N-$V/$N-$V.tar.bz2"
+
+RDEPEND=""
+BDEPEND="${RDEPEND}"
+
+pbs_unpack() {
+        ypkg_unpack
+}
+
+pbs_config() {
+	ypkg_config
+}
+
+pbs_build() {
+	ypkg_make
+}
+
+pbs_install() {
+	mkdir -p "$YPPATH_DEST"/usr
+	make prefix="$YPPATH_DEST"/usr install
+	#copy resource
+	ypkg_docp pixmaps/s-lock.xpm "$YPPATH_DEST"/usr/share/icons/hicolor/32x32/apps/xlock.xpm
+	ypkg_docp pixmaps/m-lock.xpm "$YPPATH_DEST"/usr/share/icons/hicolor/48x48/apps/xlock.xpm
+	mkdir -p "$YPPATH_DEST"/etc/xg_launch/sys/
+	echo "+ Lock%/usr/share/icons/hicolor/32x32/apps/xlock.xpm%  Exec xlock -mode matrix" > "$YPPATH_DEST"/etc/xg_launch/sys/C05xlock
+}
+
+pbs_postinst() {
+	gnome2_icon_cache_update "hicolor"
+}

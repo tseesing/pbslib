@@ -1,0 +1,41 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="Python interface to SGML software in a DocBook/OpenJade env"
+HOMEPAGE="http://sgmltools-lite.sourceforge.net/"
+LICENSE="GPL-2"
+PACKAGER="hzx@115.com"
+ 
+SRC_URI="http://downloads.sourceforge.net/project/"$N"/"$N"/"$V$R"/"$N-$V$R".tar.gz"
+
+RDEPEND=""
+BDEPEND="${RDEPEND} openjade"
+RECOMMENDED=""
+
+NOTES=""
+
+pbs_unpack() {
+        ypkg_unpack
+}
+
+pbs_config() {
+	find . -name CVS | xargs rm -rf
+	ypkg_config
+}
+
+pbs_build() {
+	ypkg_make
+}
+
+pbs_install() {
+	make install
+        ypkg_docp bin/sgmltools bin/buildcat bin/gensgmlenv bin/sgmlwhich "$YPPATH_DEST"/usr/bin
+	ypkg_docp dsssl/*.dsl dsssl/*.cat "$YPPATH_DEST"/usr/share/sgml/stylesheets/sgmltools
+	ypkg_docp dtd/[a-z]*  "$YPPATH_DEST"/usr/share/sgml/dtd/sgmltools
+	ypkg_docp man/sgmltools-lite.1 "$YPPATH_DEST"/usr/share/man/man1
+	ypkg_docp python/*.py "$YPPATH_DEST"/usr/share/sgml/misc/sgmltools/python
+	ypkg_docp python/backends/*.py "$YPPATH_DEST"/usr/share/sgml/misc/sgmltools/python/backends
+	ypkg_docp catalog.rh62 catalog.suse aliases "$YPPATH_DEST"/etc/sgml
+	ypkg_docp VERSION "$YPPATH_DEST"/usr/share/sgml/misc/sgmltools
+}

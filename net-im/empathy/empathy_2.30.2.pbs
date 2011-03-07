@@ -1,0 +1,48 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION=" Telepathy client and library using GTK+ "
+HOMEPAGE=" http://live.gnome.org/Empathy "
+LICENSE="GPL-2"
+PACKAGER="hzx@115.com"
+
+SRC_URI="http://ftp.gnome.org/pub/gnome/desktop/2.30/2.30.2/sources/"$N-$V$R".tar.bz2 "
+
+RDEPEND="evolution-data-server krb5 e2fsprogs eggdbus orbit libcanberra libvorbis libogg libtool gst-plugins-base enchant 
+         gtk+ gail libXi libXrandr libXcursor libXcomposite libXext libXdamage libXfixes gst-plugins-base libjpeg-turbo libxslt sqlite
+	 icu libXt libSM libICE gnutls libgcrypt libgpg-error pixman directfb libpng libxcb libXrender libX11 libXau libXdmcp
+	 expat glibc zlib networkmanager util-linux-ng nss nspr udev libnotify gconf dbus-glib dbus telepathy-glib telepathy-farsight 
+	 farsight2 gstreamer libxml2 libunique libgnome-keyring webkit gtk+ libsoup atk pango cairo freetype fontconfig krb5"
+BDEPEND="${RDEPEND} telepathy-glib telepathy-farsight gstreamer webkit nautilus-sendto notification-daemon telepathy-mission-control"
+RECOMMENDED=" telepathy-gabble telepathy-salut telepathy-haze telepathy-butterfly nautilus-sendto"
+
+NOTES=""
+
+pbs_unpack() {
+        ypkg_unpack
+}
+
+pbs_config() {
+	YPB_CONFIG+="--disable-schemas-install"
+	ypkg_config
+}
+
+pbs_build() {
+	ypkg_make
+}
+
+pbs_install() {
+	ypkg_mkinstall
+	ypkg_dodoc AUTHORS COPYING NEWS README
+}
+
+pbs_postinst() {
+	gnome2_install_schema "/etc/gconf/schemas/empathy.schemas"
+	gnome2_install_defaut_gconf "bool" "/apps/empathy/notifications/notifications_focus" "True"
+	gnome2_install_defaut_gconf "bool" "/apps/empathy/ui/show_offline" "True"
+	gnome2_rarian_sk_update
+	gnome2_desktop_database_update
+	gnome2_icon_cache_update "hicolor"
+	gnome2_gconfd_reload
+}

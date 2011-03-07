@@ -1,0 +1,32 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="Exempi is a port of the Adobe XMP SDK to work on UNIX"
+HOMEPAGE="http://libopenraw.freedesktop.org/wiki/Exempi"
+LICENSE="GPL-2"
+PACKAGER="hzx@115.com"
+
+SRC_URI="http://libopenraw.freedesktop.org/download/"$N-$V$R".tar.gz"
+
+RDEPEND="expat zlib gcc"
+BDEPEND="${RDEPEND} boost"
+RECOMMENDED=""
+
+NOTES=""
+
+pbs_unpack() {
+        ypkg_unpack
+}
+
+pbs_config() {
+	ypkg_config
+}
+
+pbs_build() {
+	ypkg_make
+}
+
+pbs_install() {
+	ypkg_mkinstall
+}

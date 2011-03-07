@@ -1,0 +1,55 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="Gnome Power Manager"
+HOMEPAGE="http://www.gnome.org/projects/gnome-power-manager/"
+LICENSE="GPL-2"
+PACKAGER="hzx@115.com"
+
+SRC_URI="http://ftp.gnome.org/pub/gnome/desktop/2.30/2.30.2/sources/"$N-$V$R".tar.bz2"
+
+RDEPEND="libwnck startup-notification libSM util-linux-ng libICE libXres gconf orbit libgnome-keyring
+	 eggdbus libgcrypt libgpg-error libXrandr libXext libcanberra libvorbis libogg libtool libnotify gtk+
+	 atk glib2 glibc pango gcc cairo pixman libxml2 directfb libpng libxcb libXrender libX11 libXau libXdmcp
+	 pango fontconfig freetype zlib expat devicekit-power libusb-compat libusb dbus-glib dbus libXi libXcursor
+	 libXcomposite libXdamage libXfixes"
+BDEPEND="${RDEPEND} libnotify devicekit-power libunique libxcb libcanberra pm-utils imagemagick"
+RECOMMENDED=""
+
+NOTES=""
+
+pbs_unpack() {
+        ypkg_unpack
+}
+
+pbs_config() {
+	YPB_CONFIG+=" --disable-schemas-install 
+                      --disable-scrollkeeper 
+		      --disable-docbook-docs 
+		      --disable-static 
+		      --enable-applets 
+		      --enable-hal "
+	ypkg_config
+}
+
+pbs_build() {
+	ypkg_make
+}
+
+pbs_install() {
+	ypkg_mkinstall
+	ypkg_dodoc AUTHORS COPYING NEWS README
+}
+
+pbs_postinst() {
+	gnome2_install_schema "/etc/gconf/schemas/gnome-power-manager.schemas"
+	#set default backlight
+	gnome2_install_defaut_gconf "int" "/apps/gnome-power-manager/backlight/brightness_ac" "85"
+	gnome2_install_defaut_gconf "int" "/apps/gnome-power-manager/backlight/brightness_dim_battery" "60"
+	#
+	gnome2_rarian_sk_update
+	gnome2_desktop_database_update
+	gnome2_icon_cache_update "hicolor"
+	gnome2_gconfd_reload
+}

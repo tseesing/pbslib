@@ -1,0 +1,51 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION=" Tools aimed to make easy the administration of UNIX systems "
+HOMEPAGE="http://www.gnome.org/projects/gst/"
+LICENSE="GPL-2"
+PACKAGER="hzx@115.com"
+
+SRC_URI=" http://ftp.gnome.org/pub/gnome/desktop/2.30/2.30.2/sources/"$N-$V$R".tar.bz2 "
+
+RDEPEND="gtk+ atk pango cairo freetype fontconfig wireless-tools dbus liboobs polkit polkit-gnome eggdbus
+         libXi libXrandr libXcursor gcc libXcomposite libXext libXdamage libXfixes pixman libxml2 directfb
+         libpng libxcb libXrender libX11 libxcb libXau libXdmcp glibc zlib expat orbit dbus-glib hal eggdbus"
+BDEPEND="${RDEPEND} gconf libglade libart_lgpl dbus system-tools-backends dev-perl/xml-twig imagemagick" #policykit-gnome
+RECOMMENDED="libgnomeui nautilus"
+
+NOTES=""
+
+pbs_init() {
+	ypkg_groupadd "dialout"
+}
+
+pbs_unpack() {
+        ypkg_unpack
+}
+
+pbs_config() {
+	ypkg_patch "user-settings-username.patch"
+	YPB_CONFIG+="--disable-schemas-install"
+	ypkg_config
+}
+
+pbs_build() {
+	ypkg_make
+}
+
+pbs_install() {
+	ypkg_mkinstall
+	# keep clean for rarian
+	rm -fr "$YPPATH_DEST"/var/lib/scrollkeeper
+	rm -fr "$YPPATH_DEST"/var/lib/log
+}
+
+pbs_postinst() {
+	gnome2_install_schema "/etc/gconf/schemas/gnome-system-tools.schemas"
+	gnome2_rarian_sk_update
+	gnome2_desktop_database_update
+	gnome2_icon_cache_update  "hicolor"
+	gnome2_gconfd_reload
+}

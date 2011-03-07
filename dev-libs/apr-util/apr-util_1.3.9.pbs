@@ -1,0 +1,39 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION=" Apache Portable Runtime Utility Library "
+HOMEPAGE="http://apr.apache.org/"
+LICENSE="GPL-2"
+PACKAGER="hzx@115.com"
+
+SRC_URI="ftp://ftp.oregonstate.edu/pub/apache/apr/"$N-$V$R".tar.bz2"
+
+RDEPEND=""
+BDEPEND="${RDEPEND} apr"
+RECOMMENDED=""
+
+NOTES="
+OpenLDAP -- Add --with-ldap to configure
+Berkeley DB -- Add --with-berkeley-db=/usr to configure
+SQLite3
+SQLite
+Expat
+"
+
+pbs_unpack() {
+        ypkg_unpack
+}
+
+pbs_config() {
+	YPB_CONFIG+="--with-apr=/usr/bin/apr-1-config "
+	ypkg_config
+}
+
+pbs_build() {
+	ypkg_make
+}
+
+pbs_install() {
+	ypkg_mkinstall
+}

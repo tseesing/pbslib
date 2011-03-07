@@ -1,0 +1,29 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="linuxqq"
+HOMEPAGE="http://im.qq.com/qq/linux/download.shtml"
+LICENSE="GPL-2"
+PACKAGER="hzx@115.com"
+
+SRC_URI="http://dl_dir.qq.com/linuxqq/"${N}"_v"$V${R}"_i386.tar.gz"
+
+RDEPEND=""
+BDEPEND="${RDEPEND} gtk+"
+RECOMMENDED=""
+
+NOTES=""
+
+pbs_unpack() {
+        ypkg_unpack
+}
+
+pbs_install() {
+	ypkg_docp qq res.db      	  "$YPPATH_DEST"/usr/share/tencent/qq
+	ypkg_docp "$FILES_PATH"/files/qq  "$YPPATH_DEST"/usr/bin
+	cd "$YPPATH_DEST"
+	ypkg_docp "$FILES_PATH"/files/qq.png     usr/share/tencent/qq
+	ypkg_docp "$FILES_PATH"/files/qq.desktop usr/share/applications
+	ypkg_docp "$FILES_PATH"/files/qq_doc	  usr/share/doc/"$N-$V$R"/qq
+}

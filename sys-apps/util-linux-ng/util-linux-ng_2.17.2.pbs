@@ -1,0 +1,31 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="util-linux is a random collection of Linux utilities"
+HOMEPAGE="http://git.kernel.org/?p=utils/util-linux-ng/util-linux-ng.git"
+ 
+SRC_URI="http://www.kernel.org/pub/linux/utils/"$N"/v2.17/"$N-$V$R".tar.bz2"
+
+RDEPEND="ncurses glibc"
+BDEPEND="${RDEPEND}"
+
+pbs_unpack() {
+        ypkg_unpack
+}
+
+pbs_config() {
+	#fallocate will cause compile error.
+	YPB_CONFIG+="--enable-arch --enable-partx --enable-write
+	             --disable-static --disable-fallocate "
+	ypkg_config
+}
+
+pbs_build() {
+	ypkg_make
+}
+
+pbs_install() {
+	ypkg_mkinstall
+	ypkg_dodoc AUTHORS NEWS README* TODO 
+}

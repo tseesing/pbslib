@@ -1,0 +1,31 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="Lists open files for running Unix processes"
+HOMEPAGE="http://people.freebsd.org/~abe/"
+LICENSE="GPL-2"
+PACKAGER="hzx@115.com"
+
+SRC_URI="ftp://lug.mtu.edu/gentoo/distfiles/"${N}_$V$R".tar.bz2"
+
+RDEPEND=""
+BDEPEND="${RDEPEND}"
+
+pbs_unpack() {
+        ypkg_unpack
+}
+
+pbs_config() {
+	tar xf "${N}_$V${R}"_src.tar
+	cd "${N}_$V${R}"_src
+	yes '' | ./Configure linux
+}
+
+pbs_build() {
+	ypkg_make
+}
+
+pbs_install() {
+	ypkg_docp "$N" "$YPPATH_DEST"/usr/bin
+}

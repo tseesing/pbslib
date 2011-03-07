@@ -1,0 +1,58 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="graphical boot animation and logger"
+HOMEPAGE="http://cgit.freedesktop.org/plymouth/"
+LICENSE="GPL-2"
+PACKAGER="hzx@115.com"
+
+SRC_URI="https://launchpad.net/ubuntu/lucid/+source/"$N"/0.8.2-2ubuntu2/+files/"${N}_$V$R".orig.tar.bz2"
+
+RDEPEND="gtk+ atk pango cairo pixman libxml2 directfb libpng libxcb libXrender libX11 libxcb
+	 libXau libXdmcp pango fontconfig freetype libXi libXrandr libXdamage libXfixes libXcursor dejavu-fonts-ttf"
+BDEPEND="${RDEPEND} libdrm"
+RECOMMENDED="plymouth-theme-ylmf-logo"
+
+NOTES=""
+
+pbs_unpack() {
+        ypkg_unpack
+}
+
+pbs_config() {
+	ypkg_patch debian-changes.patch
+	ypkg_docp "$FILES_PATH"/files/ubuntu_logo/*.png themes/ubuntu-logo
+	YPB_CONFIG+="--libdir=/lib 
+	             --enable-libkms
+		     --enable-gdm-transition
+		     --datarootdir=/lib"
+	ypkg_config
+}
+
+pbs_build() {
+	ypkg_make
+}
+
+pbs_install() {
+	ypkg_mkinstall
+	ypkg_dodoc AUTHORS ChangeLog COPYING INSTALL NEWS README
+	#for initramfs-tools
+	cd "$YPPATH_DEST" 
+	ypkg_docp_rename "$FILES_PATH"/files/hook_plymouth	    usr/share/initramfs-tools/hooks/plymouth
+	ypkg_docp_rename "$FILES_PATH"/files/init-top_plymouth      usr/share/initramfs-tools/scripts/init-top/plymouth
+	ypkg_docp_rename "$FILES_PATH"/files/init-bottom_plymouth   usr/share/initramfs-tools/scripts/init-bottom/plymouth
+	ypkg_docp_rename "$FILES_PATH"/files/panic_plymouth         usr/share/initramfs-tools/scripts/panic/plymouth
+	ypkg_docp        "$FILES_PATH"/files/ylmfos-logo.png        lib/plymouth
+	#
+	#install -d -m755 etc/rc3.d
+	#ln -sf /etc/init.d/"$N"  etc/rc3.d/K02"$N"
+	#ln -sf /etc/init.d/"$N"  etc/rc3.d/S01"$N"
+	ypkg_doinit "$FILES_PATH"/files/plymouth
+	#ypkg_dounit  "$N"-start.service "$N"-halt.service
+	#ypkg_dounit  "$N"-halt.service
+	ypkg_docp "$FILES_PATH"/files/systemd/*  lib/systemd/system/
+	#ypkg_doln   ../"$N"-start.service lib/systemd/system/basic.target.wants/"$N"-start.service
+	ypkg_doln   ../"$N"-halt.service  lib/systemd/system/shutdown.target.wants/"$N"-halt.service
+	rm  lib/plymouth/plymouthd.defaults
+}

@@ -1,0 +1,32 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="User Interface routines for Gnome"
+HOMEPAGE="http://www.gnome.org"
+LICENSE="GPL-2"
+PACKAGER="hzx@115.com"
+SRC_URI="ftp://ftp.gnome.org/pub/gnome/sources/libgnomeui/2.24/$N-$V.tar.bz2"
+BDEPEND="libbonoboui gnome-keyring"
+RECOMMENDED=""
+
+NOTES="http://wiki.linuxfromscratch.org/blfs/wiki/libgnomeui"
+
+pbs_unpack() {
+        ypkg_unpack
+}
+
+pbs_config() {
+	
+	YPB_CONFIG+="--prefix=$(pkg-config --variable=prefix ORBit-2.0) 
+	             --libexecdir=$(pkg-config --variable=prefix ORBit-2.0)/lib/libgnomeui "
+	ypkg_config
+}
+
+pbs_build() {
+	ypkg_make
+}
+
+pbs_install() {
+	ypkg_mkinstall
+}

@@ -1,0 +1,33 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="X11 Apps"
+HOMEPAGE="http://www.x.org/wiki/"
+LICENSE="GPL"
+PACKAGER="hzx@115.com"
+SRC_URI="http://xorg.freedesktop.org/releases/individual/app/$N-$V.tar.bz2"
+
+RDEPEND="libXext libXmu libXt libX11 libSM libICE libxcb util-linux-ng libXau libXdmcp"
+BDEPEND="${RDEPEND}"
+
+pbs_unpack() {
+        ypkg_unpack
+}
+
+pbs_config() {
+	
+	ypkg_config
+}
+
+pbs_build() {
+	ypkg_make
+}
+
+pbs_install() {
+	ypkg_mkinstall
+	#change config
+	mkdir -p "$YPPATH_DEST"/etc/X11 
+	mv "$YPPATH_DEST"/usr/share/X11/twm "$YPPATH_DEST"/etc/X11
+	ln -sf /etc/X11/twm "$YPPATH_DEST"/usr/share/X11
+}

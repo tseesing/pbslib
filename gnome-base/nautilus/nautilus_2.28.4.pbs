@@ -1,0 +1,37 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="The Nautilus package contains the GNOME shell and file manager."
+HOMEPAGE=""
+LICENSE="GPL-2"
+PACKAGER="hzx@115.com"
+SRC_URI="ftp://ftp.gnome.org/pub/gnome/sources/$N/2.28/"$N-$V$R".tar.bz2"
+
+RDEPEND=""
+BDEPEND="${RDEPEND} gnome-desktop libunique shared-mime-info"
+RECOMMENDED=""
+
+NOTES="http://wiki.linuxfromscratch.org/blfs/wiki/nautilus"
+
+pbs_unpack() {
+        ypkg_unpack
+}
+
+pbs_config() {
+	
+	YPB_CONFIG+=" --prefix=$(pkg-config --variable=prefix ORBit-2.0)
+	              --sysconfdir=/etc/gnome/2.28.2
+		      --libexecdir=$(pkg-config  --variable=prefix ORBit-2.0)/lib/nautilus"
+	ypkg_config
+}
+
+pbs_build() {
+	ypkg_make
+}
+
+pbs_install() {
+	ypkg_mkinstall
+	install -m755 -d "$YPPATH_DEST"/$(pkg-config  --variable=prefix ORBit-2.0)/share/doc/nautilus-2.28.4
+	install -m644 docs/*.{txt,dia,pdf,sxw,faq,html} "$YPPATH_DEST"/$(pkg-config --variable=prefix ORBit-2.0)/share/doc/nautilus-2.28.4
+}

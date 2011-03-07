@@ -1,0 +1,24 @@
+#!/bin/sh
+
+OPTION=FRAMEBUFFER
+PREREQ="udev"
+[ -f /scripts/functions ] && . /scripts/functions
+
+prereqs()
+{
+        echo "$PREREQ"
+}
+
+case $1 in
+prereqs)
+        prereqs
+        exit 0
+        ;;
+esac
+
+#
+is_runinvm && ln -sf /lib/plymouth/themes/*ramfs/*ramfs.plymouth ${rootmnt}/lib/plymouth/themes/default.plymouth
+
+if [ -f ${rootmnt}/dev/.initramfs/plymouth.pid ]; then
+	/bin/plymouth update-root-fs --new-root-dir=${rootmnt}
+fi

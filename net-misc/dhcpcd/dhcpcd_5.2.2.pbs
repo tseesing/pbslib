@@ -1,0 +1,32 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="A RFC 2131 compliant DHCP client"
+HOMEPAGE="http://roy.marples.name/projects/dhcpcd/"
+LICENSE=""
+PACKAGER="hzx@115.com"
+
+SRC_URI="http://roy.marples.name/downloads/"$N"/"$N-$V$R".tar.bz2"
+
+RDEPEND=""
+BDEPEND="${RDEPEND}"
+
+pbs_unpack() {
+        ypkg_unpack
+}
+
+pbs_config() {
+	YPB_CONFIG+="--dbdir=/var/lib/dhcpcd"
+	ypkg_config
+}
+
+pbs_build() {
+	ypkg_make
+}
+
+pbs_install() {
+	ypkg_mkinstall
+	ypkg_domv "$YPPATH_DEST"/usr/sbin "$YPPATH_DEST"/
+	ypkg_dounit "dhcpcd.service"
+}

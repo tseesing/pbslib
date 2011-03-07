@@ -1,0 +1,24 @@
+--- src/audacious/audconfig.c	2008-05-24 06:00:34.000000000 +0800
++++ src/audacious/audconfig.c.new	2010-10-29 16:57:40.131000100 +0800
+@@ -557,7 +557,7 @@
+         cfg.mainwin_font = g_strdup(PLAYLISTWIN_DEFAULT_FONT);
+ 
+     if (!cfg.gentitle_format)
+-        cfg.gentitle_format = g_strdup("${?artist:${artist} - }${?album:${album} - }${title}");
++        cfg.gentitle_format = g_strdup("$f");
+ 
+     if (!cfg.outputplugin) {
+     gint iter;
+@@ -578,10 +578,10 @@
+         cfg.eqpreset_extension = g_strdup(EQUALIZER_DEFAULT_PRESET_EXT);
+ 
+     if (!cfg.chardet_detector)
+-        cfg.chardet_detector = g_strdup("");
++        cfg.chardet_detector = g_strdup("Chinese");
+ 
+     if (!cfg.chardet_fallback)
+-        cfg.chardet_fallback = g_strdup("");
++        cfg.chardet_fallback = g_strdup("GBK");
+ 
+     if (!cfg.cover_name_include)
+         cfg.cover_name_include = g_strdup("");

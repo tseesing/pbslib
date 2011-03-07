@@ -1,0 +1,27 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="Library to handle, display and manipulate GIF images"
+HOMEPAGE="http://sourceforge.net/projects/giflib/"
+ 
+SRC_URI="http://downloads.sourceforge.net/"$N"/"$N-$V$R".tar.bz2"
+
+RDEPEND="libSM util-linux-ng libICE libX11 libxcb libXau libXdmcp glibc"
+BDEPEND="${RDEPEND}"
+
+pbs_unpack() {
+        ypkg_unpack
+}
+
+pbs_config() {
+	ypkg_config
+}
+
+pbs_build() {
+	ypkg_make
+}
+
+pbs_install() {
+	ypkg_mkinstall
+}

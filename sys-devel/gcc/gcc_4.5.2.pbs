@@ -1,0 +1,55 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="The GNU Compiler Collection"
+HOMEPAGE="http://gcc.gnu.org/"
+LICENSE=""
+PACKAGER="Zhongxin Huang, hzx@115.com"
+
+REPO="testing"
+SRC_URI="http://ftp.gnu.org/gnu/"$N"/"$N-$V$R"/"$N-$V$R".tar.bz2"
+
+RDEPEND="mpc"
+BDEPEND="${RDEPEND} gmp mpfr"
+
+pbs_unpack() {
+        ypkg_unpack
+}
+
+pbs_config() {
+	mkdir -p gcc-build
+	cd gcc-build
+	YPB_CONFIG+=" --enable-threads=posix
+		      --enable-__cxa_atexit 
+		      --enable-clocale=gnu  
+		      --enable-languages=c,c++ 
+		      --enable-lto
+	              --disable-bootstrap "
+	../configure $YPB_CONFIG
+}
+
+pbs_build() {
+	ypkg_make
+}
+
+pbs_install() {
+	ypkg_mkinstall
+	cd "$YPPATH_DEST"
+	ypkg_doln /usr/bin/gcc usr/bin/cc
+	mkdir -p lib
+	ypkg_doln /usr/bin/cpp lib/cpp
+	#fixme
+	rm usr/lib/libstdc++.so.6.0.14-gdb.py
+}
+
+pbs_postinst() {
+	if [ -d /tools ];then
+		echo 'main(){}' > dummy.c
+		cc dummy.c -v -Wl,--verbose &> dummy.log
+		readelf -l a.out | grep ': /lib'
+		grep -o '/usr/lib.*/crt[1in].*succeeded' dummy.log
+		grep -B1 '^ /usr/include' dummy.log
+		rm dummy.c dummy.log a.out
+	fi
+}

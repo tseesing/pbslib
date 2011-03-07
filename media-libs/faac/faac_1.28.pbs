@@ -1,0 +1,47 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="Free MPEG-4 audio codecs by AudioCoding.com"
+HOMEPAGE="http://www.audiocoding.com"
+REPO=""
+LICENSE=""
+PACKAGER="Zhongxin Huang, hzx@115.com"
+
+SRC_URI="http://downloads.sourceforge.net/project/"$N"/faac-src/"$N-$V$R"/"$N-$V$R".tar.bz2 "
+
+RDEPEND="mp4v2"
+BDEPEND="${RDEPEND} "
+RECOMMENDED=""
+
+NOTES=""
+
+pbs_unpack() {
+        ypkg_unpack
+}
+
+pbs_config() {
+	
+	#ypkg_patch "$FILES_PATH"/files/faac-1.28-external-libmp4v2.patch
+	ypkg_patch "$FILES_PATH"/files/faac-1.28-glibc_fixes-1.patch
+	#
+	sed -i -e '/obj-type/d' -e '/Long Term/d' frontend/main.c
+	YPB_CONFIG+=" --prefix=/usr
+		      --sysconfdir=/etc
+		      --localstatedir=/var
+	              --infodir=/usr/share/info
+		      --mandir=/usr/share/man
+	              --disable-static
+		      --enable-shared 
+		      --disable-dependency-tracking "
+	ypkg_config
+}
+
+pbs_build() {
+	ypkg_make
+}
+
+pbs_install() {
+	ypkg_mkinstall
+	ypkg_dodoc AUTHORS ChangeLog NEWS README TODO
+}

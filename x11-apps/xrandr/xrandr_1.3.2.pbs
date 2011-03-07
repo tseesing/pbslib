@@ -1,0 +1,33 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="X11 Apps"
+HOMEPAGE="http://www.x.org/wiki/"
+ 
+SRCURL="http://www.x.org/releases/X11R7.5/src/app"
+SRC_URI="$SRCURL/xrandr-1.3.2.tar.bz2"
+
+RDEPEND="libXrandr libXrender libX11 libXext libxcb libXau libXdmcp"
+BDEPEND="${RDEPEND}"
+
+pbs_unpack()
+{
+        ypkg_unpack
+}
+
+pbs_config()
+{
+	
+	ypkg_config
+}
+
+pbs_build()
+{
+	ypkg_make
+}
+
+pbs_install()
+{
+	ypkg_mkinstall
+}

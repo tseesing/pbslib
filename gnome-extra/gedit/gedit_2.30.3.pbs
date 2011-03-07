@@ -1,0 +1,54 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="A text editor for the GNOME desktop"
+HOMEPAGE="http://www.gnome.org/"
+LICENSE="GPL-2"
+PACKAGER="hzx@115.com"
+ 
+SRC_URI="http://ftp.gnome.org/pub/gnome/desktop/2.30/2.30.2/sources/$N-$V.tar.bz2"
+
+RDEPEND="gtksourceview gtk+ atk glib2 glibc pango cairo pixman libxml2 directfb libpng libxcb libXrender fontconfig 
+	 freetype zlib expat gconf orbit dbus-glib dbus libX11 libxcb libXau libXdmcp libSM util-linux-ng libICE libXi 
+	 libXrandr libXcursor libXcomposite libXext libXdamage libXfixes aspell"
+BDEPEND="${RDEPEND} gtksourceview libsoup enchant pygtksourceview python"
+RECOMMENDED=""
+
+NOTES=""
+
+pbs_unpack() {
+        ypkg_unpack
+}
+
+pbs_config() {
+	
+	YPB_CONFIG+=" --prefix=/usr --sysconfdir=/etc --localstatedir=/var \
+	              --mandir=/usr/share/man  \
+		      --disable-static  \
+		      --enable-shared  \
+		      --disable-schemas-install "
+	
+	ypkg_config
+}
+
+pbs_build() {
+	ypkg_make
+}
+
+pbs_install() {
+	ypkg_mkinstall
+	install -m755 -d "$YPPATH_DEST"/usr/share/doc/"$N-$V$R"
+	cp -a AUTHORS COPYING NEWS README "$YPPATH_DEST"/usr/share/doc/"$N-$V$R"
+	# keep clean for rarian
+	rm -fr "$YPPATH_DEST"/var/lib/scrollkeeper
+	rm -fr "$YPPATH_DEST"/var/lib/log
+}
+
+pbs_postinst() {
+	gnome2_install_schema "/etc/gconf/schemas/gedit-file-browser.schemas" "/etc/gconf/schemas/gedit.schemas"
+	gnome2_rarian_sk_update
+	gnome2_desktop_database_update
+	gnome2_icon_cache_update
+	gnome2_gconfd_reload
+}

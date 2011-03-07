@@ -1,0 +1,47 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="console display library"
+HOMEPAGE="http://www.gnu.org/software/ncurses/"
+REPO=""
+LICENSE=""
+PACKAGER="Zhongxin Huang, hzx@115.com"
+
+SRC_URI="http://ftp.gnu.org/pub/gnu/"$N"/"$N-$V$R".tar.gz"
+
+RDEPEND=""
+BDEPEND="${RDEPEND}"
+
+pbs_unpack() {
+        ypkg_unpack
+}
+
+pbs_config() {
+	YPB_CONFIG+="--without-debug --enable-widec"
+	ypkg_config
+}
+
+pbs_build() {
+	ypkg_make
+}
+
+pbs_install() {
+	ypkg_mkinstall
+	ypkg_dodoc doc/*
+	cd "$YPPATH_DEST"
+	ypkg_domv usr/lib/libncurses*  lib
+	ypkg_doln ../../lib/libncursesw.so.5                usr/lib/libncursesw.so
+	for lib in curses ncurses form panel menu; do
+		rm -f usr/lib/lib${lib}.so
+		echo "INPUT(-l${lib}w)" >usr/lib/lib"${lib}".so
+		ypkg_doln lib"${lib}"w.a      usr/lib/lib"${lib}".a
+	done
+	ypkg_doln libncurses++w.a usr/lib/libncurses++.a
+	#Finally, make sure look for - lcurses  are still buildable:
+	rm -f usr/lib/libcursesw.so
+	echo "INPUT(-lncursesw)" >usr/lib/libcursesw.so
+	ypkg_doln libncurses.so usr/lib/libcurses.so
+	ypkg_doln libncursesw.a usr/lib/libcursesw.a
+	ypkg_doln libncurses.a  usr/lib/libcurses.a
+}

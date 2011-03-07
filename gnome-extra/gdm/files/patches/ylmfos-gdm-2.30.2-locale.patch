@@ -1,0 +1,21 @@
+--- daemon/gdm.in	2010-03-26 21:28:03.000000000 +0800
++++ daemon/gdm.in.new	2011-01-29 01:44:38.795403997 +0800
+@@ -17,5 +17,18 @@
+   fi
+ fi
+ 
++# Check kernel command-line for inhibitors
++for ARG in $(cat /proc/cmdline); do
++	case "${ARG}" in
++	       text|single)
++	       plymouth quit || :  # We have the ball here
++               exit 0 ;;
++        esac
++done
++plymouth quit || :
++[ -r /etc/environment ] && . /etc/environment
++[ -r /etc/default/locale ] && . /etc/default/locale
++export PATH LANG LANGUAGE
++
+ exec @sbindir@/gdm-binary "$@"
+ 

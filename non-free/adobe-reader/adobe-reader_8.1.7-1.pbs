@@ -1,0 +1,31 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="Adobe Pdf Reader"
+HOMEPAGE="www.adobe.com"
+REPO=""
+LICENSE=""
+PACKAGER="Zhongxin Huang, hzx@115.com"
+
+SRC_URI="http://ardownload.adobe.com/pub/adobe/reader/unix/8.x/8.1.7/chs/AdobeReader_chs-"$V$R".i486.tar.bz2"
+
+RDEPEND=""
+BDEPEND="${RDEPEND} "
+RECOMMENDED=""
+
+NOTES=""
+
+pbs_unpack() {
+        ypkg_unpack
+}
+
+pbs_install() {
+	./INSTALL --install_path="$YPPATH_DEST"/opt
+	cd "$YPPATH_DEST"
+	ypkg_dodesktop "adobe-reader.desktop" "adobe-reader.png"
+}
+
+pbs_postinst() {
+	gnome2_desktop_database_update
+}

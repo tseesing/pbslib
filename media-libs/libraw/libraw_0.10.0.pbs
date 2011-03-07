@@ -1,0 +1,33 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="LibRaw is a library for reading RAW files obtained from digital photo cameras"
+HOMEPAGE="http://www.libraw.org/"
+REPO=""
+LICENSE=""
+PACKAGER="Zhongxin Huang, hzx@115.com"
+
+SRC_URI="http://www.libraw.org/data/LibRaw-"$V$R".tar.gz"
+
+RDEPEND=""
+BDEPEND="${RDEPEND} "
+RECOMMENDED=""
+
+NOTES=""
+
+pbs_unpack() {
+        ypkg_unpack
+}
+
+pbs_build() {
+	ypkg_patch libraw-0.10.0-autoconf.patch
+	ypkg_make
+}
+
+pbs_install() {
+	ypkg_docp libraw "$YPPATH_DEST"/usr/include
+	ypkg_docp lib/libraw.a lib/libraw_r.a "$YPPATH_DEST"/usr/lib
+	ypkg_docp bin/[a-z]* "$YPPATH_DEST"/usr/bin/ 
+}
+

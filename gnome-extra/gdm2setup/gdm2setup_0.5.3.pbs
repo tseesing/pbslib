@@ -1,0 +1,39 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="A login interface management utility for the new GDM. Allows for wallpaper setting, autologin option, prompted or userlist login, etc."
+HOMEPAGE="https://launchpad.net/gdm2setup"
+REPO=""
+LICENSE="GPLv3"
+PRIORITY=""
+PACKAGER="Zhongxin Huang, hzx@115.com"
+
+SRC_URI="http://pypi.python.org/packages/source/g/"$N"/"$N-$V$R"-karmic.tar.gz"
+
+RDEPEND="dev-python/imaging"
+BDEPEND="${RDEPEND} "
+RECOMMENDED=""
+CONFLICT=""
+
+NOTES=""
+
+pbs_unpack() {
+        ypkg_unpack
+}
+
+pbs_config() {
+	ypkg_config
+}
+
+pbs_build() {
+	ypkg_make
+}
+
+pbs_install() {
+	ypkg_mkinstall
+}
+
+pbs_postinst() {
+	gnome2_desktop_database_update
+}

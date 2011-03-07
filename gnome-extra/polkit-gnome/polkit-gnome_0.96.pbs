@@ -1,0 +1,37 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="PolicyKit policies and configurations for the GNOME desktop"
+HOMEPAGE="http://hal.freedesktop.org/docs/PolicyKit"
+LICENSE="GPL-2"
+PACKAGER="hzx@115.com"
+
+SRC_URI="http://hal.freedesktop.org/releases/"$N-$V$R".tar.bz2"
+
+RDEPEND="polkit eggdbus dbus-glib dbus gtk+ atk pango cairo pixman libxml2 directfb libpng libxcb
+         libXrender libX11 libxcb libXau libXdmcp expat libXi libXrandr libXcursor libXcomposite 
+	 libXext libXdamage libXfixes"
+BDEPEND="${RDEPEND} gtk+ polkit"
+RECOMMENDED=""
+
+NOTES="http://wiki.linuxfromscratch.org/blfs/wiki/polkit-gnome"
+
+pbs_unpack() {
+        ypkg_unpack
+}
+
+pbs_config() {
+	ypkg_patch polkit-gnome-0.95-fix-make-check.patch
+	ypkg_patch polkit-gnome-0.95-parallel-build-failure.patch
+	YPB_CONFIG+="--disable-gtk-doc --disable-introspection"
+	ypkg_config
+}
+
+pbs_build() {
+	ypkg_make
+}
+
+pbs_install() {
+	ypkg_mkinstall
+}

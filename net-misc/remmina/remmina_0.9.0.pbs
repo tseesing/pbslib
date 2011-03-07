@@ -1,0 +1,37 @@
+#
+# YLmf_OS package build script
+#
+DESCRIPTION="a remote desktop client written in GTK+"
+HOMEPAGE="http://remmina.sourceforge.net/"
+REPO=""
+LICENSE=""
+PACKAGER="Zhongxin Huang, hzx@115.com"
+
+SRC_URI="http://downloads.sourceforge.net/project/"$N"/0.9/"$N-$V".tar.gz"
+
+RDEPEND="gtk+ libunique vte libgcrypt  libunique"
+BDEPEND="${RDEPEND} "
+RECOMMENDED=""
+
+NOTES=""
+
+pbs_unpack() {
+        ypkg_unpack
+}
+
+pbs_config() {
+	ypkg_config
+}
+
+pbs_build() {
+	ypkg_make
+}
+
+pbs_install() {
+	ypkg_mkinstall
+}
+
+pbs_postinst() {
+	gnome2_icon_cache_update "hicolor"
+	gnome2_desktop_database_update
+}

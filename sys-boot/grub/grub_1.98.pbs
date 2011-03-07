@@ -1,0 +1,34 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="GNU GRUB 2 boot loader"
+HOMEPAGE="http://www.gnu.org/software/grub/"
+LICENSE=""
+PACKAGER="hzx@115.com"
+
+SRC_URI="ftp://alpha.gnu.org/gnu/grub/"$N-$V$R".tar.gz"
+
+RDEPEND=""
+BDEPEND="${RDEPEND}"
+
+pbs_unpack() {
+        ypkg_unpack
+}
+
+pbs_config() {
+	YPB_CONFIG+="--prefix=/usr
+	             --sysconfdir=/etc 
+		     --disable-grub-emu-usb  
+		     --disable-grub-fstest
+	 	     --disable-efiemu"
+	ypkg_config
+}
+
+pbs_build() {
+	ypkg_make
+}
+
+pbs_install() {
+	ypkg_mkinstall
+}

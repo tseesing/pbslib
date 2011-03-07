@@ -1,0 +1,43 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="A calculator application for GNOME"
+HOMEPAGE="http://calctool.sourceforge.net/"
+LICENSE="GPL-2"
+PACKAGER="hzx@115.com"
+
+SRC_URI="http://ftp.gnome.org/pub/gnome/desktop/2.30/2.30.2/sources/"$N-$V$R".tar.bz2"
+
+RDEPEND="gtk+ atk pango cairo freetype fontconfig gconf glib2 libxml2 glibc libXi 
+	 libXrandr libXcursor libXcomposite libXext libXdamage libXfixes pixman directfb libpng
+	 libxcb libXrender libX11 libXau libXdmcp zlib expat orbit dbus-glib dbus"
+BDEPEND="${RDEPEND} "
+RECOMMENDED=""
+
+NOTES=""
+
+pbs_unpack() {
+        ypkg_unpack
+}
+
+pbs_config() {
+	YPB_CONFIG+="--disable-schemas-install"
+	ypkg_config
+}
+
+pbs_build() {
+	ypkg_make
+}
+
+pbs_install() {
+	ypkg_mkinstall
+	ypkg_dodoc AUTHORS COPYING NEWS README
+}
+
+pbs_postinst() {
+	gnome2_install_schema "/etc/gconf/schemas/gcalctool.schemas"
+	gnome2_rarian_sk_update
+	gnome2_desktop_database_update
+	gnome2_gconfd_reload
+}

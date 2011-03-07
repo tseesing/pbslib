@@ -1,0 +1,30 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="Introspection infrastructure for gobject library bindings"
+HOMEPAGE="http://live.gnome.org/GObjectIntrospection/"
+LICENSE="GPL-2"
+PACKAGER="hzx@115.com"
+ 
+SRC_URI=" http://ftp.acc.umu.se/pub/GNOME/sources/gobject-introspection/0.9/$N-$V.tar.bz2 "
+
+RDEPEND="glib2 glibc zlib libffi"
+BDEPEND="${RDEPEND} glib2 libffi python"
+
+pbs_unpack() {
+        ypkg_unpack
+}
+
+pbs_config() {
+	YPB_CONFIG+=" --disable-gtk-doc  --disable-tests "
+	ypkg_config
+}
+
+pbs_build() {
+	ypkg_make
+}
+
+pbs_install() {
+	ypkg_mkinstall
+}

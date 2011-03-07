@@ -1,0 +1,32 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="GTK+ frontend to the libexif library (parsing, editing, and saving EXIF data)"
+HOMEPAGE="http://libexif.sf.net"
+
+SRC_URI="http://downloads.sourceforge.net/project/libexif/"$N"/"$V"/"$N-$V$R".tar.bz2 "
+
+RDEPEND="gtk+ atk pango cairo pixman directfb libpng libxcb libXrender libX11 libXau
+	 libXdmcp fontconfig freetype libxml2 libexif libXi libXrandr libXcursor libXcomposite
+	 libXext libXdamage libXfixes expat"
+BDEPEND="${RDEPEND}"
+
+pbs_unpack() {
+        ypkg_unpack
+}
+
+pbs_config() {
+	ypkg_patch libexif-0.6.13.patch
+	ypkg_patch gtk212-fix.patch
+	autoreconf -f -i
+	ypkg_config
+}
+
+pbs_build() {
+	ypkg_make
+}
+
+pbs_install() {
+	ypkg_mkinstall
+}

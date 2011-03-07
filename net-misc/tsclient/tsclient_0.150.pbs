@@ -1,0 +1,55 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="GTK2 frontend for rdesktop"
+HOMEPAGE="http://sourceforge.net/projects/tsclient"
+LICENSE="GPL-2"
+PACKAGER="hzx@115.com"
+SRC_URI="http://nchc.dl.sourceforge.net/project/$N/$N/$V/"$N-$V$R".tar.gz"
+
+RDEPEND="gnome-panel gconf libbonoboui libgnomecanvas libgnome popt libart_lgpl gtk+ atk
+	 pango cairo freetype fontconfig libbonobo orbit libSM util-linux-ng libICE gail gnome-vfs
+	 openssl avahi esound alsa-lib audifile pixman libxml2 directfb libpng libxcb libXrender zlib
+	 expat libX11 libXdmcp libXau libXi libXrander libXcursor libXcomposite libXext libXdamage 
+	 libXfixes"
+BDEPEND="${RDEPEND} libnotify networkmanager gnome-desktop"
+RECOMMENDED="libgnomeui gnome-panel"
+
+NOTES=""
+
+pbs_unpack() {
+        ypkg_unpack
+}
+
+pbs_config() {
+	
+	YPB_CONFIG+=" --prefix=/usr --sysconfdir=/etc --localstatedir=/var \
+	              --infodir=/usr/share/info --mandir=/usr/share/man \
+	              --disable-static --enable-shared "
+	ypkg_config
+}
+
+pbs_build() {
+	ypkg_make
+}
+
+pbs_install() {
+	ypkg_mkinstall
+	install -m755 -d "$YPPATH_DEST"/usr/share/doc/"$N-$V$R"
+	cp -a AUTHORS ChangeLog COPYING INSTALL NEWS README  "$YPPATH_DEST"/usr/share/doc/"$N-$V$R"
+	sed -i "/^Exec=/s/=.*$/=tsclient/" "$YPPATH_DEST"/usr/share/applications/tsclient.desktop
+}
+
+pbs_postinst() {
+	# update desktop entries
+        if [ -x /usr/bin/update-desktop-database ]; then
+		/usr/bin/update-desktop-database >/dev/null 2>&1
+	fi
+	
+	# Restart gconfd-2 if running to reload new gconf settings
+	if ps acx | grep -q gconfd-2 ; then
+		killall -HUP gconfd-2 ;
+	fi
+	return 0
+}

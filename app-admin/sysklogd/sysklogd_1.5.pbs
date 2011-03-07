@@ -1,0 +1,34 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="Kernel and system logging daemons"
+HOMEPAGE="http://www.infodrom.org/projects/sysklogd/index.php"
+ 
+SRC_URI="http://www.infodrom.org/projects/"$N"/download/"$N-$V$R".tar.gz"
+
+RDEPEND=""
+BDEPEND="${RDEPEND}"
+
+pbs_unpack() {
+        ypkg_unpack
+}
+
+pbs_build() {
+	ypkg_make
+}
+
+pbs_install() {
+	mkdir -p "$YPPATH_DEST"/usr/share/man/man8 "$YPPATH_DEST"/usr/share/man/man5 "$YPPATH_DEST"/{sbin,etc}
+	make prefix="$YPPATH_DEST" BINDIR="$YPPATH_DEST"/sbin install
+	cd "$YPPATH_DEST"
+	cat > etc/syslog.conf << "EOF"
+auth,authpriv.* -/var/log/auth.log
+*.*;auth,authpriv.none -/var/log/sys.log
+daemon.* -/var/log/daemon.log
+kern.* -/var/log/kern.log
+mail.* -/var/log/mail.log
+user.* -/var/log/user.log
+*.emerg *
+EOF
+}

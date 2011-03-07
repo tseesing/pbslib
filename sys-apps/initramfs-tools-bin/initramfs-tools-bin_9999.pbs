@@ -1,0 +1,26 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION=" binaries used by initramfs-tools "
+HOMEPAGE=""
+LICENSE="GPL-2"
+PACKAGER="hzx@115.com"
+
+SRC_URI="git://192.168.1.58/"$N".git"
+
+RDEPEND="initramfs-tools"
+BDEPEND="${RDEPEND} "
+RECOMMENDED=""
+
+pbs_unpack() {
+        ypkg_unpack
+}
+
+pbs_build() {
+	ypkg_make
+}
+
+pbs_install() {
+	ypkg_docp wait-for-root  "$YPPATH_DEST"/usr/lib/initramfs-tools/bin
+}

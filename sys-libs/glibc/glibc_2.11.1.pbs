@@ -1,0 +1,155 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="GNU libc6 (also called glibc2) C library"
+HOMEPAGE="http://www.gnu.org/software/libc/libc.html"
+REPO=""
+LICENSE=""
+PACKAGER="Zhongxin Huang, hzx@115.com"
+PRIORITY="required"
+
+SRC_URI="http://ftp.gnu.org/gnu/"$N"/"$N-$V$R".tar.bz2"
+
+RDEPEND=""
+BDEPEND="${RDEPEND} sys-apps/linux-headers " #sys-devel/binutils sys-devel/gcc"
+
+pbs_unpack() {
+        ypkg_unpack
+}
+
+pbs_config() {
+	#fix a potential issue : bash infinite loop. 
+	sed -i '/vi_VN.TCVN/d' localedata/SUPPORTED
+	#fix sh problem if other shell installed.
+	sed -i 's|@BASH@|/bin/bash|' elf/ldd.bash.in
+	mkdir -p glibc-build
+	cd glibc-build
+	YPB_CONFIG+="--disable-profile 
+	             --enable-add-ons 
+		     --enable-kernel=2.6.18 
+		     --libexecdir=/usr/lib/glibc 
+		     --with-tls"
+	../configure $YPB_CONFIG
+}
+
+pbs_build() {
+	ypkg_make
+}
+
+glibc_nsswitch_conf() {
+	cat > "$YPPATH_DEST"/etc/nsswitch.conf << "EOF"
+passwd: files
+group: files
+shadow: files
+hosts: files dns
+networks: files
+protocols: files
+services: files
+ethers: files
+rpc: files
+EOF
+}
+
+glibc_ld_so_conf() {
+	cat > "$YPPATH_DEST"/etc/ld.so.conf << "EOF"
+/usr/local/lib
+/opt/lib
+EOF
+}
+
+pbs_install() {
+	make install_root="$YPPATH_DEST" install
+	#add nsswitch.conf / glibc.ld.so
+	glibc_nsswitch_conf
+	glibc_ld_so_conf
+	cd "$YPPATH_DEST"
+	ypkg_docp usr/share/zoneinfo/Asia/Shanghai etc/localtime
+	ypkg_docp "$FILES_PATH"/files/locale-gen   usr/sbin
+	ypkg_docp "$FILES_PATH"/files/SUPPORTED    usr/share/i18n
+}
+
+glib_adjust_toolchain() {
+	local file
+	#adjust tool chain.
+	if [ -d /tools ];then
+		echo "Begin adjust tool chain..."
+		if [ -f /tools/bin/ld-new ];then
+			cp  /tools/bin/{ld-new,ld}
+			cp /tools/$(gcc -dumpmachine)/bin/{ld,ld-old} 
+			rm -f /tools/$(gcc -dumpmachine)/bin/ld
+		fi
+		if [ -f /tools/bin/ld ];then
+			ln -s /tools/bin/ld /tools/$(gcc -dumpmachine)/bin/ld
+		fi
+		#gcc libs.
+		for i in $(ls /tools/lib/libgcc_s.so* 2>/dev/null); do
+			file=${i##*/}
+			[ -f $file ] || ln -s $i /usr/lib 
+		done
+		for i in $(ls /tools/lib/libstdc++.* 2>/dev/null); do
+			file=${i##*/}
+			[ -f $file ] || ln -s $i /usr/lib 
+		done
+		#adjust gcc.
+		echo 'main(){}' > dummy.c
+		cc dummy.c -v -Wl,--verbose &> dummy.log
+		if [ $? != 0 ]; then
+			echo "[Error] compile dummy.c failed."
+			exit 1
+		fi
+		readelf -l a.out | grep ': /lib'
+		if [ "$?" != "0" ]; then
+			echo "change specs.."
+			gcc -dumpspecs | sed \
+				-e 's@/tools/lib/ld-linux.so.2@/lib/ld-linux.so.2@g' \
+				-e '/\*startfile_prefix_spec:/{n;s@.*@/usr/lib/ @}' \
+				-e '/\*cpp:/{n;s@$@ -isystem /usr/include@}' > \
+				`dirname $(gcc --print-libgcc-file-name)`/specs
+		fi
+		#check agian
+		echo 'main(){}' > dummy.c
+		cc dummy.c -v -Wl,--verbose &> dummy.log
+		if [ $? != 0 ]; then
+			echo "[Error] compile dummy.c failed."
+			exit 1
+		fi	
+		readelf -l a.out | grep ': /lib'
+		if [ $? != 0 ]; then
+			echo "[Error] gcc: not link to /lib."
+			exit 1
+		fi
+		grep -o '/usr/lib.*/crt[1in].*succeeded' dummy.log
+		if [ $? != 0 ]; then
+			echo "[Error] glib: start .o file check failed."
+			exit 1
+		fi
+		grep -B1 '^ /usr/include' dummy.log
+		if [ $? != 0 ]; then
+			echo "[Error] glib: include dir check failed."
+			exit 1
+		fi
+		rm dummy.c dummy.log a.out
+	fi
+}
+
+pbs_postinst() {
+	#install locale
+	mkdir -p /usr/lib/locale
+	localedef -i en_US -f ISO-8859-1 en_US
+	localedef -i en_US -f UTF-8 en_US.UTF-8
+	localedef -i zh_CN -f GB2312 zh_CN.GB2312
+	localedef -i zh_CN -f UTF-8 zh_CN.UTF-8
+	glib_adjust_toolchain
+}
+
+pbs_prerm() {
+	#remove links
+	for i in $(ls /usr/lib/libgcc_s.so* 2>/dev/null); do
+		[ -L $i ] && unlink $i
+	done
+	for i in $(ls /usr/lib/libstdc++.* 2>/dev/null); do
+		[ -L $i ] && unlink $i
+	done
+	return 0
+}

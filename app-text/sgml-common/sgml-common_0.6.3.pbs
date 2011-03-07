@@ -1,0 +1,42 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="Base ISO character entities and utilities for SGML"
+HOMEPAGE="http://www.iso.ch/cate/3524030.html"
+LICENSE="GPL-2"
+PACKAGER="hzx@115.com"
+
+SRC_URI="http://gd.tuwien.ac.at/hci/kde/devel/docbook/SOURCES/"$N-$V$R".tgz"
+
+RDEPEND=""
+BDEPEND="${RDEPEND}"
+RECOMMENDED=""
+
+NOTES="http://wiki.linuxfromscratch.org/blfs/wiki/sgml-common"
+
+pbs_unpack() {
+        ypkg_unpack
+}
+
+pbs_config() {
+	ypkg_patch "$N-$V$R"-manpage-1.patch
+	autoreconf -f -i
+	ypkg_config
+}
+
+pbs_build() {
+	ypkg_make
+}
+
+pbs_install() {
+	ypkg_mkinstall
+	cd "$YPPATH_DEST"
+	ypkg_domv usr/doc usr/share
+}
+
+pbs_postinst() {
+	install-catalog --add /etc/sgml/sgml-ent.cat /usr/share/sgml/sgml-iso-entities-8879.1986/catalog
+	install-catalog --add /etc/sgml/sgml-docbook.cat /etc/sgml/sgml-ent.cat
+	return 0
+}

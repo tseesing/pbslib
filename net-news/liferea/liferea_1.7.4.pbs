@@ -1,0 +1,49 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="News Aggregator for RDF/RSS/CDF/Atom/Echo/etc feeds"
+HOMEPAGE="http://liferea.sourceforge.net/"
+LICENSE="GPL-2"
+PACKAGER="hzx@115.com"
+
+SRC_URI=" http://downloads.sourceforge.net/project/"$N"/Liferea%20Unstable/"$V$R"/"$N-$V$R".tar.gz "
+
+RDEPEND="gconf libxslt zlib glibc libxml2 sqlite libunique webkit libsoup libSM libICE
+	 libnotify gtk+ dbus-glib atk glib2 pango cairo freetype fontconfig dbus orbit gcc pixman 
+	 directfb libpng libXrender libX11 libxcb libXau libXdmcp enchant gail libXi libXrandr libXcursor
+	 libXcomposite libXext libXdamage libXfixes gst-plugins-base gstreamer libjpeg-turbo gnutls libgcrypt libgpg-error
+	 expat icu libXt util-linux-ng gcc"
+BDEPEND="${RDEPEND} glib2 gtk+ gconf gnutls libnotify dbus webkit"
+RECOMMENDED=""
+
+NOTES=""
+
+pbs_unpack() {
+        ypkg_unpack
+}
+
+pbs_config() {
+	YPB_CONFIG+=" --disable-schemas-install
+		      --enable-libnotify 
+		      --disable-nm 
+		      --program-prefix= "
+	ypkg_config
+}
+
+pbs_build() {
+	ypkg_make
+}
+
+pbs_install() {
+	ypkg_mkinstall
+	ypkg_dodoc AUTHORS COPYING README 
+}
+
+pbs_postinst() {
+	gnome2_install_schema "/etc/gconf/schemas/liferea.schemas"
+	gnome2_rarian_sk_update
+	gnome2_desktop_database_update
+	gnome2_icon_cache_update  "hicolor"
+	gnome2_gconfd_reload
+}

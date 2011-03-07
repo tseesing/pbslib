@@ -1,0 +1,27 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="Free Chinese Input Toy for X"
+HOMEPAGE="http://www.fcitx.org/"
+ 
+SRC_URI="http://fcitx.googlecode.com/files/"$N-$V$R".tar.gz"
+
+RDEPEND="libXft libXrender fontconfig freetype libX11 glibc zlib expat libxcb glibc libXau libXdmcp"
+BDEPEND="${RDEPEND}"
+
+pbs_unpack() {
+        ypkg_unpack
+}
+
+pbs_config() {
+	ypkg_config
+}
+
+pbs_build() {
+	ypkg_make
+}
+
+pbs_install() {
+	ypkg_mkinstall
+}

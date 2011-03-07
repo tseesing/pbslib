@@ -1,0 +1,231 @@
+--- a/scripts/xdg-open	2007-06-25 03:58:01.000000000 +0800
++++ b/scripts/xdg-open	2010-12-23 11:11:00.037000390 +0800
+@@ -200,7 +200,7 @@
+ }
+ 
+ #------------------------------------------------------------
+-# Exit script on insufficient permission to read a specified file
++# Exit script on insufficient permission to write a specified file
+ 
+ exit_failure_file_permission_write()
+ {
+@@ -277,7 +277,7 @@
+             ;;
+ 
+             --version)
+-            echo "xdg-open 1.0.1"
++            echo "xdg-open 1.0.2"
+             exit_success
+             ;;
+         esac
+@@ -303,7 +303,8 @@
+ {
+     if [ x"$KDE_FULL_SESSION" = x"true" ]; then DE=kde;
+     elif [ x"$GNOME_DESKTOP_SESSION_ID" != x"" ]; then DE=gnome;
+-    elif xprop -root _DT_SAVE_MODE | grep ' = \"xfce4\"$' >/dev/null 2>&1; then DE=xfce;
++    elif `dbus-send --print-reply --dest=org.freedesktop.DBus /org/freedesktop/DBus org.freedesktop.DBus.GetNameOwner string:org.gnome.SessionManager > /dev/null 2>&1` ; then DE=gnome;
++    elif xprop -root _DT_SAVE_MODE 2> /dev/null | grep ' = \"xfce4\"$' >/dev/null 2>&1; then DE=xfce;
+     fi
+ }
+ 
+@@ -314,7 +315,7 @@
+ 
+ kfmclient_fix_exit_code()
+ {
+-    version=`kde-config --version 2>/dev/null | grep KDE`
++    version=`kde${KDE_SESSION_VERSION}-config --version 2>/dev/null | grep KDE`
+     major=`echo $version | sed 's/KDE: \([0-9]\).*/\1/'`
+     minor=`echo $version | sed 's/KDE: [0-9]*\.\([0-9]\).*/\1/'`
+     release=`echo $version | sed 's/KDE: [0-9]*\.[0-9]*\.\([0-9]\).*/\1/'`
+@@ -324,10 +325,25 @@
+     return 0
+ }
+ 
++# This handles backslashes but not quote marks.
++first_word()
++{
++    read first rest
++    echo "$first"
++}
++
+ open_kde()
+ {
+-    kfmclient exec "$1"
+-    kfmclient_fix_exit_code $?
++    if kde-open -v 2>/dev/null 1>&2; then
++        kde-open "$1"
++    else
++        if [ x"$KDE_SESSION_VERSION" = x"4" ]; then
++            kfmclient openURL "$1"
++        else
++            kfmclient exec "$1"
++            kfmclient_fix_exit_code $?
++        fi
++    fi
+ 
+     if [ $? -eq 0 ]; then
+         exit_success
+@@ -338,7 +354,11 @@
+ 
+ open_gnome()
+ {
+-    gnome-open "$1"
++    if gvfs-open --help 2>/dev/null 1>&2; then
++        gvfs-open "$1"
++    else
++    	gnome-open "$1"
++    fi
+ 
+     if [ $? -eq 0 ]; then
+         exit_success
+@@ -358,22 +378,108 @@
+     fi
+ }
+ 
+-open_generic()
++open_generic_xdg_mime()
+ {
+-    IFS=":"
+-    for browser in $BROWSER; do
+-        if [ x"$browser" != x"" ]; then
+-
+-            browser_with_arg=`echo "$browser" | sed s#%s#"$1"#`
++    filetype=`xdg-mime query filetype "$1" | sed "s/;.*//"`
++    default=`xdg-mime query default "$filetype"`
++    xdg_user_dir="$XDG_DATA_HOME"
++    [ -n "$xdg_user_dir" ] || xdg_user_dir="$HOME/.local/share"
++
++    xdg_system_dirs="$XDG_DATA_DIRS"
++    [ -n "$xdg_system_dirs" ] || xdg_system_dirs=/usr/local/share/:/usr/share/
++
++    for x in `echo "$xdg_user_dir:$xdg_system_dirs" | sed 's/:/ /g'`; do
++    	[ -n "$default" ] && file="$x/applications/$default" || file=""
++       	if [ ! -r "$file" ] ; then
++		file=$(grep -Hl "$filetype" $x/applications/*.desktop 2>/dev/null |head -n1)
++		if [ -r "$file" ];then
++			file=$file
++			break
++		fi
++	else
++	       break 
++	fi
++   done	
++   if [ "x$file" != "x" ];then
++       	command="`grep -E "^Exec(\[[^]=]*])?=" "$file" | cut -d= -f 2- | first_word`"
++   	command_exec=`which $command 2>/dev/null`
++    	if [ -x "$command_exec" ] ; then
++    		$command_exec "$1" &
++             	if [ $? -eq 0 ]; then
++               		exit_success
++                	fi
++       		fi
++   fi
++}
+ 
+-            if [ x"$browser_with_arg" = x"$browser" ]; then "$browser" "$1";
+-            else $browser_with_arg;
++open_generic()
++{
++   # ylmfos deal with network:/// computer:///  trash:///
++   file=$(echo $1 | echo -e $(sed 's/%/\\x/g'))
++   case ${file%%:*} in
++   	network|computer|trash)
++		nautilus "$file" 
++		if [ $? -eq 0 ]; then
++	                exit_success;
++                fi 	;;
++   esac	
++
++	
++    # Paths or file:// URLs
++    if (echo "$1" | grep -q '^file://' ||
++        ! echo "$1" | egrep -q '^[a-zA-Z+\.\-]+:'); then
++
++        local file=$(echo "$1" | sed 's%^file://%%')
++
++        # Decode URLs
++        # TODO
++
++	# decode
++	file=$(echo $file | echo -e $(sed 's/%/\\x/g'))
++
++        check_input_file "$file"
++
++        open_generic_xdg_mime "$file"
++
++        if [ -f /etc/debian_version ] &&
++            which run-mailcap 2>/dev/null 1>&2; then
++            run-mailcap --action=view "$file"
++            if [ $? -eq 0 ]; then
++                exit_success
+             fi
++        fi
+ 
+-            if [ $? -eq 0 ]; then exit_success;
++        if mimeopen -v 2>/dev/null 1>&2; then
++            mimeopen -n "$file"
++            if [ $? -eq 0 ]; then
++                exit_success
+             fi
+         fi
+-    done
++    fi
++
++    #
++    my_browser="$(gconftool-2 -g /desktop/gnome/url-handlers/http/command |awk '{print $1}')"
++    if which $my_browser >/dev/null;then
++     	"$my_browser" "$1" &
++    else
++        IFS=":"
++        for browser in $BROWSER; do
++           if [ x"$browser" != x"" ]; then
++             browser_with_arg=`printf "$browser" "$1" 2>/dev/null`
++             if [ $? -ne 0 ]; then
++                 browser_with_arg=$browser;
++             fi
++             if [ x"$browser_with_arg" = x"$browser" ]; then
++                "$browser" "$1";
++             else 
++	       eval '$browser_with_arg'$xdg_redirect_output &
++	     fi
++	   fi
++        done	
++    fi
++    if [ $? -eq 0 ]; then
++    	exit_success;
++    fi
+ 
+     exit_failure_operation_impossible "no method available for opening '$1'"
+ }
+@@ -406,20 +512,26 @@
+ detectDE
+ 
+ if [ x"$DE" = x"" ]; then
+-    # if BROWSER variable is not set, check some well known browsers instead
+-    if [ x"$BROWSER" = x"" ]; then
+-        BROWSER=firefox:mozilla:netscape
+-    fi
+     DE=generic
+ fi
+ 
++# if BROWSER variable is not set, check some well known browsers instead
++if [ x"$BROWSER" = x"" ]; then
++    BROWSER=links2:links:lynx:w3m
++    if [ -n "$DISPLAY" ]; then
++        BROWSER=firefox:mozilla:epiphany:konqueror:chromium-browser:google-chrome:$BROWSER
++    fi
++fi
++
+ case "$DE" in
+     kde)
+     open_kde "$url"
+     ;;
+ 
+     gnome)
+-    open_gnome "$url"
++    #fix me! gnome-open or gvfs-open open file failed, use open_generic instead.
++    #open_gnome "$url"
++    open_generic "$url"
+     ;;
+ 
+     xfce)

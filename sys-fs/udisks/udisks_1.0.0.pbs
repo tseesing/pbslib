@@ -1,0 +1,31 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="Daemon providing interfaces to work with storage devices"
+HOMEPAGE="http://www.freedesktop.org/wiki/Software/udisks"
+LICENSE="GPL-2"
+PACKAGER="hzx@115.com"
+
+SRC_URI="http://hal.freedesktop.org/releases/"$N-$V$R".tar.gz"
+
+RDEPEND="libatasmart dbus-glib udev dbus"
+BDEPEND="${RDEPEND} sg3_utils udev parted libatasmart"
+RECOMMENDED=""
+
+pbs_unpack() {
+        ypkg_unpack
+}
+
+pbs_config() {
+	ypkg_config
+}
+
+pbs_build() {
+	ypkg_make
+}
+
+pbs_install() {
+	ypkg_mkinstall
+	ypkg_dodoc  AUTHORS ChangeLog COPYING HACKING INSTALL NEWS README 
+}

@@ -1,0 +1,32 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="Chinese fortune shell script"
+HOMEPAGE="http://code.google.com/p/chinese-fortune"
+REPO=""
+LICENSE=""
+PACKAGER="Zhongxin Huang, hzx@115.com"
+
+SRC_URI="http://chinese-fortune.googlecode.com/files/"$N-$V$R".tar.bz2"
+
+RDEPEND="fortune-mod"
+BDEPEND="${RDEPEND} "
+RECOMMENDED=""
+
+NOTES=""
+
+pbs_unpack() {
+        ypkg_unpack
+}
+
+pbs_build() {
+	
+	ypkg_make
+}
+
+pbs_install() {
+	ypkg_mkinstall
+	install -m755 -d "$YPPATH_DEST"/usr/share/doc/"$N-$V$R"
+	cp ChangeLog TODO INSTALL "$YPPATH_DEST"/usr/share/doc/"$N-$V$R"
+}

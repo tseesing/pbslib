@@ -1,0 +1,28 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="X keyboard configuration databas"
+HOMEPAGE="http://www.freedesktop.org/wiki/Software/XKeyboardConfig"
+ 
+SRC_URI="http://xlibs.freedesktop.org/xkbdesc/$N-$V.tar.bz2"
+
+RDEPEND="intltool"
+BDEPEND="${RDEPEND} x11-apps/xkbcomp"
+
+pbs_unpack() {
+        ypkg_unpack
+}
+
+pbs_config() {
+	YPB_CONFIG+="--with-xkb-rules-symlink=xorg"
+	ypkg_config
+}
+
+pbs_build() {
+	ypkg_make
+}
+
+pbs_install() {
+	ypkg_mkinstall
+}

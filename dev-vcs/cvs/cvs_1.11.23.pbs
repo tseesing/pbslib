@@ -1,0 +1,35 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="Concurrent Versions System - source code revision control tools"
+HOMEPAGE="http://www.nongnu.org/cvs/"
+LICENSE="GPL-2"
+PACKAGER="hzx@115.com"
+
+SRC_URI="ftp://ftp.gnu.org/non-gnu/"$N"/source/stable/"$V$R"/"$N-$V$R".tar.bz2 "
+
+RDEPEND="zlib glibc"
+BDEPEND="${RDEPEND} "
+RECOMMENDED=""
+
+NOTES="
+If you want any CVS server functionality, you MUST parse server to congfigure.
+"
+
+pbs_unpack() {
+        ypkg_unpack
+}
+
+pbs_config() {
+	ypkg_config
+}
+
+pbs_build() {
+	ypkg_make
+}
+
+pbs_install() {
+	ypkg_mkinstall
+	ypkg_dodoc FAQ README doc/*.pdf
+}

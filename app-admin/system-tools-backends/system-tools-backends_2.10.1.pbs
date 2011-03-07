@@ -1,0 +1,40 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="Tools aimed to make easy the administration of UNIX systems"
+HOMEPAGE="http://www.gnome.org/projects/gst/"
+REPO=""
+LICENSE="GPL-2"
+PACKAGER="hzx@115.com"
+
+SRC_URI=" http://ftp.gnome.org/pub/GNOME/sources/"$N"/2.10/"$N-$V$R".tar.bz2"
+
+RDEPEND=""
+BDEPEND="${RDEPEND} dbus-glib intltool net-dbus polkit"
+RECOMMENDED=""
+
+NOTES="Group for system-tools-backends is wheel"
+
+pbs_init() {
+	ypkg_groupadd "wheel"
+}
+
+pbs_unpack() {
+        ypkg_unpack
+}
+
+pbs_config() {
+        ypkg_patch "$N"-2.8.2-default-permissions.patch
+        ypkg_patch "$N"-2.10.0-add-ylmfos-platform.patch
+	YPB_CONFIG+="--with-stb-group=wheel"
+	ypkg_config
+}
+
+pbs_build() {
+	ypkg_make
+}
+
+pbs_install() {
+	ypkg_mkinstall
+}

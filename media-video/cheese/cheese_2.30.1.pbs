@@ -1,0 +1,48 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="A cheesy program to take pictures and videos from your webcam"
+HOMEPAGE="http://www.gnome.org/projects/cheese/"
+LICENSE="GPL-2"
+PACKAGER="hzx@115.com"
+
+SRC_URI="http://ftp.gnome.org/pub/gnome/desktop/2.30/2.30.2/sources/"$N-$V$R".tar.bz2"
+
+RDEPEND="gnome-desktop libXrandr libXext startup-notification libSM util-linux-ng libICE gconf orbit dbus-glib
+         dbus librsvg libgsf bzip2 libcroco libcanberra libvorbis libogg libtool gtk+ atk glib2 glibc cairo 
+	 pixman directfb libpng libxcb libXrender libX11 libXau libXdmcp pango fontconfig freetype udev gst-plugins-base
+	 gstreamer glib2 libxml2 glibc zlib expat libXi libXcursor libXcomposite libXdamage libXfixes"
+BDEPEND="${RDEPEND} gconf gstreamer gst-plugins-good gst-plugins-base libcanberra gnome-desktop"
+RECOMMENDED=""
+
+NOTES=""
+
+pbs_unpack() {
+        ypkg_unpack
+}
+
+pbs_config() {
+	YPB_CONFIG+="--disable-schemas-install"
+	ypkg_config
+}
+
+pbs_build() {
+	ypkg_make
+}
+
+pbs_install() {
+	ypkg_mkinstall
+	ypkg_dodoc AUTHORS COPYING NEWS README
+	# keep clean for rarian
+	rm -fr "$YPPATH_DEST"/var/lib/scrollkeeper
+	rm -fr "$YPPATH_DEST"/var/lib/log
+}
+
+pbs_postinst() {
+	gnome2_install_schema "/etc/gconf/schemas/cheese.schemas"
+	gnome2_rarian_sk_update
+	gnome2_desktop_database_update
+	gnome2_icon_cache_update "hicolor"
+	gnome2_gconfd_reload
+}

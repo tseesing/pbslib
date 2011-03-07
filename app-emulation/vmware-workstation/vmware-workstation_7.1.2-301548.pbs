@@ -1,0 +1,34 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="Emulate a complete PC on your PC without the usual performance overhead of most emulators"
+HOMEPAGE="http://www.vmware.com/"
+REPO=""
+LICENSE=""
+PACKAGER="Zhongxin Huang, hzx@115.com"
+
+SRC_URI="http://unix.opp.homeunix.net/vmware/unix/VMware-Workstation-"$V$R".i386.bundle"
+
+RDEPEND=""
+BDEPEND="${RDEPEND} "
+RECOMMENDED=""
+
+NOTES=""
+
+pbs_install() {
+	chmod +x "$YPPATH_SOURCE"/`basename $SRC_URI`
+	bash "$YPPATH_SOURCE"/`basename $SRC_URI`
+	#
+	cd "$YPPATH_DEST"
+	ypkg_domv /etc/{vmware,vmware-installer,vmware-vix}	 etc
+	ypkg_domv /usr/lib/{vmware,vmware-installer,vmware-vix}  usr/lib
+	ypkg_domv /usr/bin/vm*					 usr/bin
+	ypkg_domv /etc/init.d/vmware          		         etc/init.d
+	ypkg_doln   /etc/init.d/vmware 			         etc/rc3.d/S19vmware
+	ypkg_doln   /etc/init.d/vmware  			         etc/rc3.d/K08vmware
+	ypkg_domv /usr/share/applications/{vmware-netcfg.desktop,vmware-player.desktop,vmware-workstation.desktop} usr/share/applications
+	ypkg_domv /etc/xdg/menus/applications-merged/vmware-ace-vms.menu etc/xdg/menus/applications-merged
+	#
+	rm -rf /etc/rc.d
+}

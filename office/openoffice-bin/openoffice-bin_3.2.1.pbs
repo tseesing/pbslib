@@ -1,0 +1,41 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="OpenOffice productivity suite (binary version)"
+HOMEPAGE="http://www.openoffice.org/"
+REPO=""
+LICENSE=""
+PACKAGER="Zhongxin Huang, hzx@115.com"
+
+SRC_URI="http://download.services.openoffice.org/files/localized/zh-CN/3.2.1/OOo_3.2.1_Linux_x86_install-deb_zh-CN.tar.gz"
+
+RDEPEND="zlib freetype libXau libxcb libXdmcp libXext"
+BDEPEND="${RDEPEND} rpm2targz"
+
+pbs_unpack() {
+        ypkg_unpack
+}
+
+pbs_install() {
+	mkdir -p build
+	cd build
+	for i in $(ls ../DEBS/*.deb);do
+		echo ">>> Unpack $(basename $i)"
+		ar x "${i}"; tar xf data.tar.gz
+	done	
+	ypkg_docp opt/openoffice.org*   "$YPPATH_DEST"/opt
+	for app in base calc draw impress math writer; do
+		ypkg_doln /opt/openoffice.org3/program/s"${app}" "$YPPATH_DEST"/usr/bin/oo"${app}"
+        done
+	ypkg_doln /opt/openoffice.org3/program/soffice "$YPPATH_DEST"/usr/bin/soffice
+	ypkg_doln /opt/openoffice.org3/program/soffice "$YPPATH_DEST"/usr/bin/openoffice.org3
+	ypkg_docp_rename "$YPPATH_DEST"/opt/openoffice.org3/program/soffice.bin  "$YPPATH_DEST"/opt/openoffice.org3/program/openoffice.org3.bin
+	ypkg_docp "$FILES_PATH"/files/*.desktop  "$YPPATH_DEST"/usr/share/applications
+	ypkg_docp "$FILES_PATH"/files/*.png  "$YPPATH_DEST"/usr/share/pixmaps
+}
+
+pbs_postinst() {
+	gnome2_desktop_database_update
+	gnome2_icon_cache_update
+}

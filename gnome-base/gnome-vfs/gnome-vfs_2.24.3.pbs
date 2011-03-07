@@ -1,0 +1,57 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="the virtual filesystem abstraction library used as the foundations for GNOME."
+HOMEPAGE=" http://developer.gnome.org/doc/API/gnome-vfs/"
+REPO=""
+LICENSE="GPL-2"
+PACKAGER="hzx@115.com"
+
+SRC_URI="http://ftp.gnome.org/pub/gnome/platform/2.30/2.30.2/sources/"$N-$V$R".tar.bz2 "
+
+RDEPEND="libxml2 zlib glibc openssl avahi gcc gconf orbit glib2 dbus-glib dbus"
+BDEPEND="${RDEPEND} dbus-glib gconf libbonobo gnome-mime-data shared-mime-info libxml2 bzip2 gamin avahi openssl orbit hal dbus samba neon"
+RECOMMENDED=""
+
+NOTES="http://wiki.linuxfromscratch.org/blfs/wiki/gnome-vfs
+While several packages still depend on GNOME VFS, it is deprecated for new development. GVFS is the replacement package.
+"
+
+pbs_unpack() {
+        ypkg_unpack
+}
+
+pbs_config() {
+	ypkg_patch gnome-vfs.ftphandler.diff
+	YPB_CONFIG+="--disable-schemas-install 
+		      --enable-hal 
+		      --enable-openssl 
+		      --enable-samba 
+		      --disable-cdda 
+		      --enable-avahi 
+		      --enable-daemon 
+		      --enable-ipv6 
+	              --enable-fam 
+		      --disable-gtk-doc 
+		      --disable-gtk-doc-html "
+	ypkg_config
+}
+
+pbs_build() {
+	ypkg_make
+}
+
+pbs_install() {
+	ypkg_mkinstall
+}
+
+pbs_postinst() {
+	gnome2_install_schema /etc/gconf/schemas/desktop_gnome_url_handlers.schemas
+	gnome2_install_schema /etc/gconf/schemas/desktop_default_applications.schemas
+	gnome2_install_schema /etc/gconf/schemas/system_dns_sd.schemas
+	gnome2_install_schema /etc/gconf/schemas/system_smb.schemas
+	gnome2_install_schema /etc/gconf/schemas/system_http_proxy.schemas
+	gnome2_mime_database_update
+	gnome2_gconfd_reload
+}		

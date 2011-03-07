@@ -1,0 +1,49 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="a library for font customization and configuration"
+HOMEPAGE="http://fontconfig.org/wiki/"
+REPO=""
+LICENSE=""
+PACKAGER="Zhongxin Huang, hzx@115.com"
+SRC_URI="http://fontconfig.org/release/$N-$V$R.tar.gz"
+
+RDEPEND="freetype zlib expat glibc"
+BDEPEND="${RDEPEND} media-libs/freetype dev-libs/libxml2"
+
+pbs_unpack() {
+        ypkg_unpack
+}
+
+pbs_config() {
+	
+	#disables the automatic search for X Window System fonts 
+	# which, if found, may confuse some applications
+	# avoids building the documentation (the release tarball \
+	# includes pre-generated documentation)
+	#patching
+	patch -p1 -i "$FILES_PATH"/files/fontconfig-2.8.0-urw-aliases.patch 
+	patch -p1 -i "$FILES_PATH"/files/fontconfig-2.8.0-ubuntu.patch 
+	YPB_CONFIG+=" -sysconfdir=/etc \
+	 	      --localstatedir=/var \
+		      --without-add-fonts \
+		      --docdir=/usr/share/doc/$N-$V$R"
+	ypkg_config
+}
+
+pbs_build() {
+	ypkg_make
+}
+
+pbs_install() {
+	ypkg_mkinstall
+
+	install -m755 -d $YPPATH_DEST/usr/share/doc/$N-$V$R
+	cp AUTHORS ChangeLog README $YPPATH_DEST/usr/share/doc/$N-$V$R 
+}
+
+pbs_postinst() {
+	# Creating global font cache"
+	fc-cache -srf
+}

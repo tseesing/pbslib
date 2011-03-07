@@ -1,0 +1,31 @@
+#!/bin/sh
+
+. /etc/sysconfig/rc
+. $rc_functions
+
+pidfile=/var/run/ConsoleKit/pid
+
+case "$1" in
+        start)
+		boot_mesg "* Starting Consolekit Daemon..."
+		loadproc /usr/sbin/console-kit-daemon 
+		;;
+
+	stop)   
+	        boot_mesg "* Stoping Consolekit Daemon..."
+		killproc /usr/bin/console-kit-daemon	
+		;;
+	restart)
+		$0 stop
+		sleep 1
+		$0 start
+		;;
+        status)
+	        statusproc /usr/bin/dbus-daemon
+	        ;;
+             *)
+                echo "Usage: $0 {start|stop|restart|status}"
+                exit 1
+                ;;
+esac
+

@@ -1,0 +1,41 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="An implementation of the XDG Sound Theme and Name Specifications, for generating event sounds on free desktops, such as GNOME."
+HOMEPAGE="http://0pointer.de/lennart/projects/libcanberra/"
+LICENSE="GPL-2"
+PACKAGER="hzx@115.com"
+
+SRC_URI="http://0pointer.de/lennart/projects/"$N"/"$N-$V$R".tar.gz"
+
+RDEPEND="gtk+ atk glib2 glibc pango cairo pixman directfb libpng libxcb libXrender libX11 
+         libXau libXdmcp fontconfig freetype libxml2 zlib glib2 libvorbis libogg libtool libXi
+	 libXrandr libXcursor libXcomposite libXext libXdamage libXfixes expat"
+BDEPEND="${RDEPEND} sound-theme-freedesktop alsa-lib gstreamer gtk+ libvorbis"
+RECOMMENDED=""
+
+pbs_unpack() {
+        ypkg_unpack
+}
+
+pbs_config() {
+	YPB_CONFIG+="--enable-alsa 
+		     --enable-null 
+		     --enable-gtk 
+		     --disable-oss 
+		     --enable-gtk-doc-html=no"
+	ypkg_config
+}
+
+pbs_build() {
+	ypkg_make
+}
+
+pbs_install() {
+	ypkg_mkinstall
+}
+
+pbs_postinst() {
+	gnome2_install_schema "/etc/gconf/schemas/libcanberra.schemas"
+}

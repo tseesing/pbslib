@@ -1,0 +1,30 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="Low-level pixel manipulation routines"
+HOMEPAGE="http://xorg.freedesktop.org/"
+LICENSE=""
+PACKAGER="hzx@115.com"
+
+SRC_URI="http://cairographics.org/releases/"$N-$V$R".tar.gz"
+
+RDEPEND=""
+BDEPEND="${RDEPEND}"
+
+pbs_unpack() {
+        ypkg_unpack
+}
+
+pbs_config() {
+	YPB_CONFIG+="--disable-vmx --disable-gtk --disable-mmx --disable-sse2"
+	ypkg_config
+}
+
+pbs_build() {
+	ypkg_make
+}
+
+pbs_install() {
+	ypkg_mkinstall
+}

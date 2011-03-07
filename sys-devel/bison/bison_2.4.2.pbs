@@ -1,0 +1,31 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="A yacc-compatible parser generator"
+HOMEPAGE="http://www.gnu.org/software/bison/bison.html"
+ 
+SRC_URI="http://ftp.gnu.org/gnu/"$N"/"$N-$V$R".tar.bz2"
+
+RDEPEND="glibc"
+BDEPEND="${RDEPEND}"
+
+pbs_unpack() {
+        ypkg_unpack
+}
+
+pbs_config() {
+	ypkg_config
+}
+
+pbs_build() {
+	#The configure system causes Bison to be built without 
+	#support for internationalization of error messages if a 
+	#bison program is not already in $PATH
+	echo '#define YYENABLE_NLS 1' >> lib/config.h
+	ypkg_make
+}
+
+pbs_install() {
+	ypkg_mkinstall
+}

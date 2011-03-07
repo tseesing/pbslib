@@ -1,0 +1,11 @@
+--- a/Xext/panoramiXprocs.c	2010-11-24 03:07:26.000000000 +0800
++++ b/Xext/panoramiXprocs.c.new	2010-12-29 10:25:04.989000090 +0800
+@@ -597,7 +597,7 @@
+     rep.child = None;
+ 
+     if((pWin == screenInfo.screens[0]->root) ||
+-       (pWin->drawable.id == screenInfo.screens[0]->screensaver.wid))
++       (pDst->drawable.id == screenInfo.screens[0]->screensaver.wid))
+     { 
+ 	x = stuff->srcX - screenInfo.screens[0]->x;
+ 	y = stuff->srcY - screenInfo.screens[0]->y;

@@ -1,0 +1,62 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="Network configuration and management in an easy way. Desktop environment independent"
+HOMEPAGE="http://www.gnome.org/projects/NetworkManager/"
+LICENSE="GPL-2"
+PACKAGER="hzx@115.com"
+
+SRC_URI="http://ftp.gnome.org/pub/gnome/sources/NetworkManager/0.8/NetworkManager-"$V$R".tar.bz2"
+
+RDEPEND="util-linux-ng nss nspr dbus-glib dbus udev glib2 glibc zlib sqlite"
+BDEPEND="${RDEPEND} gconf libnl libgcrypt wpa_supplicant gnutls dhcpcd polkit" # iptables" 
+RECOMMENDED=""
+
+NOTES="
+netdev group should be created automatically.
+To allow users to connect to the NetworkManager daemon, they have to be
+in the group \"netdev\". Use command \"usermod\"
+"
+
+pbs_init() {
+	ypkg_groupadd -r "netdev"
+}
+
+pbs_unpack() {
+        ypkg_unpack
+}
+
+pbs_config() {
+	# add netdev group D-BUS Bus Configuration
+	ypkg_patch ylmf_NetworkManager.conf.patch
+	YPB_CONFIG+=" --disable-more-warnings --with-distro=gentoo 
+	              --with-dbus-sys-dir=/etc/dbus-1/system.d 
+	              --with-udev-dir=/etc/udev 
+		      --disable-gtk-doc 
+		      --without-docs 
+		      --without-resolvconf 
+		      --with-crypto=nss "
+		      #--with-iptables=/sbin/iptables 
+	ypkg_config
+}
+
+pbs_build() {
+	ypkg_make
+}
+
+pbs_install() {
+	ypkg_mkinstall
+	cd "$YPPATH_DEST"
+	rm -rf etc/init.d/
+	mkdir -p etc/NetworkManager/system-connections
+	#ypkg_doinit "$FILES_PATH"/files/"$N"
+	ypkg_docp "$FILES_PATH"/files/nm-system-settings.conf etc/NetworkManager
+	# Add wpa_supplicant dbus support. provided by wpa_supplicant now!!
+	#mkdir -p "$YPPATH_DEST"/usr/share/dbus-1/system-services 
+	#cp $FILES_PATH/files/fi.epitest.hostap.WPASupplicant.service "$YPPATH_DEST"/usr/share/dbus-1/system-services
+	#
+	#ypkg_doln /etc/init.d/"$N" etc/rc3.d/S60"$N"
+	#ypkg_doln /etc/init.d/"$N" etc/rc3.d/K60"$N"
+	ypkg_docp "$FILES_PATH"/files/systemd/*  lib/systemd/system
+}

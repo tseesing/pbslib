@@ -1,0 +1,43 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="Ylmfos defaut icon theme"
+HOMEPAGE="www.ylmf.com"
+REPO="stable"
+LICENSE="GPL-2"
+PACKAGER="hzx@115.com"
+
+name="yicon"
+SRC_URI="git://192.168.1.58/"$name".git"
+
+RDEPEND=""
+BDEPEND="${RDEPEND} imagemagick"
+
+pbs_unpack() {
+	ypkg_unpack
+}
+
+pbs_config() {
+	ypkg_config
+}
+
+pbs_build() {
+	ypkg_make
+}
+
+pbs_install() {
+	ypkg_mkinstall
+	#fix me!
+	source=""$YPPATH_DEST"/usr/share/icons/titans/48x48/emblems/emblem-desktop.png"
+	for i in 16 22 24 32 48 8;do
+		convert -resize "$i"x"$i" "$source" ""$YPPATH_DEST"/usr/share/icons/titans/"$i"x"$i"/emblems/emblem-desktop.png"
+	done
+	convert -resize 24x24 "$YPPATH_DEST"/usr/share/icons/titans/48x48/emblems/emblem-synchronizing.png \
+		"$YPPATH_DEST"/usr/share/icons/titans/24x24/emblems/emblem-synchronizing.png
+}
+
+pbs_postinst() {
+	gnome2_install_defaut_gconf "string" "/desktop/gnome/interface/icon_theme" "titans"
+	gnome2_icon_cache_update "titans"
+}

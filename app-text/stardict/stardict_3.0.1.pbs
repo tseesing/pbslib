@@ -1,0 +1,51 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="A GNOME2 international dictionary supporting fuzzy and glob style matching"
+HOMEPAGE="http://stardict.sourceforge.net/"
+REPO="testing"
+LICENSE="GPL-2"
+SRC_URI="http://downloads.sourceforge.net/$N/"$N-$V$R".tar.bz2"
+
+RDEPEND=""
+BDEPEND="${RDEPEND}"
+
+NOTES="
+You will now need to install stardict dictionary files. If
+you have not, execute the below to get a list of dictionaries:
+Or download from http://reciteword.cosoft.org.cn/stardict-iso/stardict-dic, then:
+"
+
+pbs_unpack() {
+        ypkg_unpack
+}
+
+pbs_config() {
+	
+	patch -p0 -i $FILES_PATH/files/"$N-$V$R"-configure.in-EST.diff
+	patch -p0 -i $FILES_PATH/files/"$N-$V$R"-gconf-m4.diff
+	patch -p0 -i $FILES_PATH/files/"$N-$V$R"-gcc43.patch
+	patch -p1 -i $FILES_PATH/files/"$N-$V$R"-transparent_trayicon.patch
+	patch -p1 -i $FILES_PATH/files/"$N-$V$R"-changelog-minor-typo-fixes.patch
+	patch -p0 -i $FILES_PATH/files/"$N-$V$R"-gcc44.patch
+	patch -p0 -i $FILES_PATH/files/"$N-$V$R"-gucharmap2.patch
+	AT_M4DIR="m4" ./autogen.sh
+	export PKG_CONFIG=/usr/bin/pkg-config
+	YPB_CONFIG+="--prefix=/usr --mandir=/usr/share/man --infodir=/usr/share/info 
+	             --datadir=/usr/share --sysconfdir=/etc --localstatedir=/var
+	             --disable-gnome-support --enable-spell --disable-gucharmap --disable-espeak 
+		     --disable-qqwry --disable-festival --disable-advertisement --disable-updateinfo"
+	ypkg_config
+}
+
+pbs_build() {
+	ypkg_make
+}
+
+pbs_install() {
+	ypkg_mkinstall
+	#
+	install -m755 -d "$YPPATH_DEST"/usr/share/doc/"$N-$V$R"
+	cp -a doc/{FAQ,HowToCreateDictionary,StarDictFileFormat,Translation,HACKING} "$YPPATH_DEST"/usr/share/doc/"$N-$V$R"
+}

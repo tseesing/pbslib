@@ -1,0 +1,43 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="Super Nintendo Entertainment System (SNES) emulator"
+HOMEPAGE="http://code.google.com/p/snes9x-gtk/"
+LICENSE=""
+PACKAGER="hzx@115.com"
+SRC_URI="http://snes9x-gtk.googlecode.com/files/$N-$V-src.tar.bz2 "
+
+RDEPEND=""
+BDEPEND="${RDEPEND}"
+
+NOTES=""
+
+pbs_unpack() {
+        ypkg_unpack
+}
+
+pbs_config() {
+	ypkg_patch snes9x-1.52-build.patch
+	cd unix
+	autoreconf
+	ypkg_config
+	cd ../gtk
+	ypkg_config 
+}
+
+pbs_build() {
+	cd ../unix
+	ypkg_make
+	make -C ../gtk
+}
+
+pbs_install() {
+	ypkg_docp snes9x "$YPPATH_DEST"/usr/bin
+	cd ../gtk
+	ypkg_mkinstall
+}
+
+pbs_postinst() {
+	gnome2_icon_cache_update "hicolor"
+}

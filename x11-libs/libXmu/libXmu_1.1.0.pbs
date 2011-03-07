@@ -1,0 +1,27 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="X.Org Xmu library"
+HOMEPAGE="http://www.x.org/wiki/"
+ 
+SRC_URI="http://www.x.org/releases/X11R7.6/src/lib/"$N-$VR".tar.bz2"
+
+RDEPEND="libXt libSM libICE libXext libX11 util-linux-ng libxcb libXau libXdmcp"
+BDEPEND="${RDEPEND} x11-libs/libXt"
+
+pbs_unpack() {
+        ypkg_unpack
+}
+
+pbs_config() {
+	ypkg_config
+}
+
+pbs_build() {
+	ypkg_make
+}
+
+pbs_install() {
+	ypkg_mkinstall
+}

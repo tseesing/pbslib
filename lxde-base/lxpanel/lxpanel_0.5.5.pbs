@@ -1,0 +1,31 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="Standard compliant desktop panel."
+HOMEPAGE="http://www.lxde.org/"
+LICENSE="GPL-2"
+PACKAGER="hzx@115.com"
+SRC_URI="http://downloads.sourceforge.net/project/lxde/LXPanel%20%28desktop%20panel%29/LXPanel%200.5.5/lxpanel-0.5.5.tar.gz"
+
+RDEPEND="x11-libs/gtk+ x11-libs/libXmu x11-libs/libXpm lxde-base/lxmenu-data lxde-base/menu-cache media-libs/alsa-lib"
+BDEPEND="${RDEPEND} dev-libs/glib2 dev-util/pkgconfig sys-devel/gettext"
+
+pbs_unpack() {
+        ypkg_unpack
+}
+
+pbs_config() {
+	
+	./autogen.sh
+	YPB_CONFIG+="--prefix=/usr --sysconfdir=/etc --with-plugins=all"
+	ypkg_config
+}
+
+pbs_build() {
+	ypkg_make
+}
+
+pbs_install() {
+	ypkg_mkinstall
+}

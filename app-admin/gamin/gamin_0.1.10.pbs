@@ -1,0 +1,30 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="Meta package providing the File Alteration Monitor API & Server"
+HOMEPAGE="http://www.gnome.org/~veillard/gamin/"
+LICENSE=""
+PACKAGER="hzx@115.com"
+
+SRC_URI="http://download.gnome.org/sources/"$N"/0.1/"$N-$V$R".tar.bz2"
+
+RDEPEND=""
+BDEPEND="${RDEPEND}"
+
+pbs_unpack() {
+        ypkg_unpack
+}
+
+pbs_config() {
+	YPB_CONFIG+="--disable-gtk-doc"
+	ypkg_config
+}
+
+pbs_build() {
+	ypkg_make
+}
+
+pbs_install() {
+	ypkg_mkinstall
+}

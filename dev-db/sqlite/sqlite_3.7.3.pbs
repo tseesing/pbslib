@@ -1,0 +1,42 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="A in-process library that implements SQL database engine"
+HOMEPAGE="http://www.sqlite.org"
+
+SRC_URI="http://www.sqlite.org/"$N-$V$R".tar.gz"
+
+RDEPEND="readline ncurses"
+BDEPEND="${RDEPEND} dev-lang/tcl"
+OPIONAL="dev-lang/tcl"
+
+pbs_unpack() {
+        ypkg_unpack
+}
+
+pbs_config() {
+	ypkg_patch sqlite-3.6.22-build_fix-1.patch
+	#for firefox 
+	export CFLAGS+=" -DSQLITE_SECURE_DELETE -DSQLITE_ENABLE_FTS3 
+	                 -DSQLITE_ENABLE_FTS3_PARENTHESIS 
+			 -DSQLITE_ENABLE_UNLOCK_NOTIFY 
+			 -DSQLITE_CHECK_PAGES 
+			 -DSQLITE_CORE"
+	YPB_CONFIG+=" --enable-threadsafe       
+		      --enable-cross-thread-connections 
+		      --enable-tempstore=yes   
+		      --enable-load-extension  
+		      --enable-static=no "
+	ypkg_config
+}
+
+pbs_build() {
+	ypkg_make
+}
+
+pbs_install() {
+	ypkg_mkinstall
+	ypkg_docp sqlite3.1        "$YPPATH_DEST"/usr/share/man/"$N-$V$R"
+	ypkg_docp README* VERSION  "$YPPATH_DEST"/usr/share/doc/"$N-$V$R"
+}

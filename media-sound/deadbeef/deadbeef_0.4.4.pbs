@@ -1,0 +1,40 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="Ultimate Music Player For GNU/Linux"
+HOMEPAGE="http://deadbeef.sourceforge.net/"
+REPO=""
+LICENSE=""
+PACKAGER="Zhongxin Huang, hzx@115.com"
+
+SRC_URI="http://downloads.sourceforge.net/project/"$N"/"$N-$V$R".tar.bz2"
+
+RDEPEND="libsamplerate faad2 ffmpeg"
+BDEPEND="${RDEPEND} "
+RECOMMENDED=""
+
+NOTES=""
+
+pbs_unpack() {
+        ypkg_unpack
+}
+
+pbs_config() {
+	ypkg_patch ylmfos-support-gbk.patch
+	ypkg_config
+}
+
+pbs_build() {
+	ypkg_make
+}
+ 
+pbs_install() {
+	ypkg_mkinstall
+	cd "$YPPATH_DEST"
+	sed -i 's/audio\/mp3;/audio\/mp3;audio\/x-ape;audio\/x-ms-wma;/g' usr/share/applications/deadbeef.desktop
+}
+
+pbs_postinst(){
+	gnome2_mime_database_update
+}

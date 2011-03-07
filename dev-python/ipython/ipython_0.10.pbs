@@ -1,0 +1,28 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="An advanced interactive shell for Python."
+HOMEPAGE="http://ipython.scipy.org/ http://pypi.python.org/pypi/ipython"
+LICENSE="BSD"
+PACKAGER="hzx@115.com"
+
+SRC_URI="http://ipython.scipy.org/dist/"$V"/"$N-$V$R".tar.gz"
+
+RDEPEND=""
+BDEPEND="${RDEPEND} cups"
+RECOMMENDED=""
+
+NOTES=""
+
+pbs_unpack() {
+        ypkg_unpack
+}
+
+pbs_build() {
+	ypkg_make
+}
+
+pbs_install() {
+	ypkg_mkinstall
+}

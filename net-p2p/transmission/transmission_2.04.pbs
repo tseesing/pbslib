@@ -1,0 +1,42 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="A Fast, Easy and Free BitTorrent client"
+HOMEPAGE="http://www.transmissionbt.com/"
+LICENSE="GPL-2"
+PACKAGER="hzx@115.com"
+
+SRC_URI="http://mirrors.m0k.org/"$N"/files/"$N-$V$R".tar.bz2"
+
+RDEPEND="libcanberra libvorbis libogg libtool gconf orbit libnotify gtk+ atk pango cairo
+	 pixman libxml2 directfb libpng libxcb libXrender libX11 libxcb libXau libXdmcp fontconfig
+	 freetype expat dbus-glib dbus curl openssl zlib libevent libXi libXrandr libXcursor libXcomposite
+	 libXext libXdamage libXfixes"
+BDEPEND="${RDEPEND} gtk+ curl libnotify openssl libcanberra dev-libs/libevent"
+RECOMMENDED=""
+
+NOTES=""
+
+pbs_unpack() {
+        ypkg_unpack
+}
+
+pbs_config() {
+	ypkg_config
+}
+
+pbs_build() {
+	ypkg_make
+}
+
+pbs_install() {
+	ypkg_mkinstall
+	ypkg_dodoc AUTHORS COPYING NEWS README 
+}
+
+pbs_postinst() {
+	gnome2_rarian_sk_update
+	gnome2_desktop_database_update
+	gnome2_gconfd_reload
+}

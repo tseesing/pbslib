@@ -1,0 +1,28 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="a statically linked simple stand alone shell that provides only the basic utilities needed for the initramfs."
+HOMEPAGE="http://www.busybox.net/"
+LICENSE="GPL-2"
+PACKAGER="hzx@115.com"
+
+SRC_URI="http://busybox.net/downloads/busybox-"$V$R".tar.bz2"
+
+RDEPEND=""
+BDEPEND="${RDEPEND} "
+RECOMMENDED=""
+
+pbs_unpack() {
+        ypkg_unpack
+}
+
+pbs_build() {
+	ypkg_docp_rename "$FILES_PATH"/files/config-initramfs .config
+	ypkg_make
+}
+
+pbs_install() {
+	ypkg_docp busybox "$YPPATH_DEST"/usr/lib/initramfs-tools/bin
+	ypkg_dodoc AUTHORS INSTALL README
+}

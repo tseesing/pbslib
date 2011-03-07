@@ -1,0 +1,33 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="Network utility to retrieve files from the WWW"
+HOMEPAGE="http://www.gnu.org/software/wget/"
+ 
+SRC_URI="http://ftp.gnu.org/gnu/"$N"/"$N-$V$R".tar.bz2"
+
+RDEPEND="openssl"
+BDEPEND="${RDEPEND}"
+
+pbs_unpack() {
+        ypkg_unpack
+}
+
+pbs_config() {
+	ypkg_config
+}
+
+pbs_build()
+{
+	ypkg_make
+}
+
+pbs_install() {
+	ypkg_mkinstall
+	#fix Chinese translation error
+	msgunfmt "$YPPATH_DEST"/usr/share/locale/zh_CN/LC_MESSAGES/wget.mo | \
+		sed "s/eta(.*)/ETA/" | \
+		msgfmt - -o /tmp/wget.mo
+	ypkg_domv /tmp/wget.mo "$YPPATH_DEST"/usr/share/locale/zh_CN/LC_MESSAGES/
+}

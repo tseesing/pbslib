@@ -1,0 +1,33 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="broadcom firmware for b43 LP PHY and >=linux-2.6.32"
+HOMEPAGE="http://linuxwireless.org/en/users/Drivers/b43"
+REPO=""
+LICENSE="GPL"
+PRIORITY=""
+PACKAGER="Zhongxin Huang, hzx@115.com"
+
+SRC_URI="http://mirror2.openwrt.org/sources/broadcom-wl-"$V$R".tar.bz2"
+
+RDEPEND=""
+BDEPEND="${RDEPEND} b43-fwcutter"
+RECOMMENDED=""
+CONFLICT=""
+
+NOTES=""
+
+pbs_unpack() {
+        ypkg_unpack
+}
+
+pbs_build() {
+	: ${B43_FIRMWARE_SRC_OBJ:=wl_apsta_mimo.o}
+	mkdir build
+	b43-fwcutter -w build $(find -name ${B43_FIRMWARE_SRC_OBJ})
+}
+
+pbs_install() {
+	ypkg_docp build/* "$YPPATH_DEST"/lib/firmware
+}

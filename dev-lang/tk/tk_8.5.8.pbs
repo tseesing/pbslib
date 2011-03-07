@@ -1,0 +1,35 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="Tk Widget Set"
+HOMEPAGE="http://www.tcl.tk/"
+
+SRC_URI="http://downloads.sourceforge.net/tcl/tk"$V$R"-src.tar.gz"
+
+RDEPEND="tcl libX11 libXScrnSaver libXext libXft freetype fontconfig libXrender 
+	 libxcb libXau libXdmcp zlib expat"
+BDEPEND="${RDEPEND} "
+
+pbs_unpack(){
+        ypkg_unpack
+}
+
+pbs_config(){
+	cd unix
+	YPB_CONFIG+="--enable-threads"
+	ypkg_config
+}
+
+pbs_build() {
+	ypkg_make
+}
+
+pbs_install() {
+	sed -i 	-e "s@^\(TK_SRC_DIR='\).*@\1/usr/include'@" \
+		-e "/TK_B/s@='\(-L\)\?.*unix@='\1/usr/lib@" \
+		tkConfig.sh
+	ypkg_mkinstall 
+	make DESTDIR="$YPPATH_DEST" install-private-headers
+	ypkg_doln wish8.5 "$YPPATH_DEST"/usr/bin/wish 
+}

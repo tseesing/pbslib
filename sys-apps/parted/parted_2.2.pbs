@@ -1,0 +1,33 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="Create, destroy, resize, check, copy partitions and file systems"
+HOMEPAGE="http://www.gnu.org/software/parted"
+LICENSE="GPL-2"
+PACKAGER="hzx@115.com"
+SRC_URI="http://ftp.gnu.org/gnu/$N/"$N-$V$R".tar.gz"
+
+RDEPEND="readline ncurses device-mapper"
+BDEPEND="${RDEPEND} device-mapper"
+RECOMMENDED=""
+
+NOTES=""
+
+pbs_unpack() {
+        ypkg_unpack
+}
+
+pbs_config() {
+	
+	YPB_CONFIG+=" --prefix=/usr --enable-device-mapper=yes"
+	ypkg_config
+}
+
+pbs_build() {
+	ypkg_make
+}
+
+pbs_install() {
+	ypkg_mkinstall
+}

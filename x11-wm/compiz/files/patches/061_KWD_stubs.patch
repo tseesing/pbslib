@@ -1,0 +1,19 @@
+Author: Martin Pitt <martin.pitt@ubuntu.com>
+Description: Hack to fix KDE related FTBFS 
+ Horrible hack to define empty stubs for some new pure virtual functions
+ in KWD::Window, to fix FTBFS (later updated to be less horrible, thanks
+ to Danny Baumann).
+Origin: vendor, ubuntu
+Index: compiz-0.8.6/kde/window-decorator-kde4/window.h
+===================================================================
+--- compiz-0.8.6.orig/kde/window-decorator-kde4/window.h	2010-07-27 17:36:53.273643002 +0200
++++ compiz-0.8.6/kde/window-decorator-kde4/window.h	2010-07-27 17:37:12.753643000 +0200
+@@ -51,7 +51,7 @@
+ 
+ namespace KWD
+ {
+-class Window: public QObject, public KDecorationBridgeUnstable {
++class Window: public QObject, public KDecorationBridge {
+     Q_OBJECT public:
+ 
+ 	enum Type

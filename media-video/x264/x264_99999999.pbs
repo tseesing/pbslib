@@ -1,0 +1,30 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="A free library for encoding X264/AVC streams"
+HOMEPAGE="http://www.videolan.org/developers/x264.html"
+LICENSE=""
+PACKAGER="hzx@115.com"
+
+SRC_URI="git://git.videolan.org/"$N".git"
+
+BDEPEND="dev-lang/yasm"
+RDEPEND="${BDEPEND}"
+RECOMMENDED="dev-lang/yasm"
+
+pbs_unpack() {
+        ypkg_unpack
+}
+
+pbs_config() {
+	ypkg_config
+}
+
+pbs_build() {
+	ypkg_make
+}
+
+pbs_install() {
+	ypkg_mkinstall
+}

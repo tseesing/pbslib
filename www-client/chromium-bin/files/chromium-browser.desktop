@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=Chromium (bin)
+Name[zh_CN]=Chromium 浏览器
+Type=Application
+Comment=Open-source version of Google Chrome web browser (binary version)
+Exec=chromium-browser %U
+TryExec=chromium-browser
+Icon=chromium-browser
+Categories=Network;WebBrowser;

@@ -1,0 +1,13 @@
+--- ./capplets/display/display-properties.desktop.in.in	2010-04-26 22:10:41.000000000 +0800
++++ ./capplets/display/display-properties.desktop.in.in.new	2011-03-03 17:44:22.728000049 +0800
+@@ -1,6 +1,10 @@
+ [Desktop Entry]
+ _Name=Monitors
++_Name[zh_CN]=显示器
++_Name[zh_TW]=顯示器
+ _Comment=Change resolution and position of monitors
++_Comment[zh_CN]=调节显示器分辨率
++_Comment[zh_TW]=調節熒屏分辨率
+ Exec=gnome-display-properties
+ Icon=gnome-display-properties
+ Terminal=false

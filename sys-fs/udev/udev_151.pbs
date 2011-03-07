@@ -1,0 +1,53 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="Linux dynamic and persistent device naming support (aka userspace devfs)"
+HOMEPAGE="http://www.kernel.org/pub/linux/utils/kernel/hotplug/udev.html"
+LICENSE=""
+PACKAGER="hzx@115.com"
+
+SRC_URI="http://www.kernel.org/pub/linux/utils/kernel/hotplug/"$N-$V$R".tar.bz2"
+
+RDEPEND=""
+BDEPEND="${RDEPEND} acl sys-libs/glibc gperf pciutils usbutils "
+
+pbs_unpack() {
+        ypkg_unpack
+}
+
+pbs_config() {
+	ypkg_patch ylmfos-rules.patch
+	YPB_CONFIG+=" --disable-gtk-doc 
+		      --sbindir=/sbin  
+	              --with-rootlibdir=/lib 
+		      --libexecdir=/lib/udev 
+		      --disable-introspection "
+	ypkg_config
+}
+
+pbs_build() {
+	ypkg_make
+}
+
+pbs_install() {
+	ypkg_mkinstall
+	cd "$YPPATH_DEST"
+	#install devices dirs
+	install -d   lib/{firmware,udev/devices/{pts,shm}}
+	mknod -m0666 lib/udev/devices/null c 1 3
+	ypkg_doln /proc/self/fd    lib/udev/devices/fd
+	ypkg_doln /proc/self/fd/0  lib/udev/devices/stdin
+	ypkg_doln /proc/self/fd/1  lib/udev/devices/stdout
+	ypkg_doln /proc/self/fd/2  lib/udev/devices/stderr
+	ypkg_doln /proc/kcore      lib/udev/devices/core
+	# rc
+	ypkg_doinit "$FILES_PATH"/files/"$N"
+	# for initramfs-tools
+	ypkg_docp_rename "$FILES_PATH"/files/hook_udev         usr/share/initramfs-tools/hooks/udev
+	ypkg_docp_rename "$FILES_PATH"/files/init-top_udev     usr/share/initramfs-tools/scripts/init-top/udev
+	ypkg_docp_rename "$FILES_PATH"/files/nfs-top_udev      usr/share/initramfs-tools/scripts/nfs-top/udev
+	ypkg_docp_rename "$FILES_PATH"/files/init-bottom_udev  usr/share/initramfs-tools/scripts/init-bottom/udev
+	# 
+	ypkg_docp "$FILES_PATH"/files/{64-device-mapper.rules,78-graphics-card.rules} lib/udev/rules.d
+}

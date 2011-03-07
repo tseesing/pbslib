@@ -1,0 +1,28 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="Terminal Emulator for X Windows"
+HOMEPAGE="http://invisible-island.net/xterm/xterm.html"
+ 
+SRC_URI="http://invisible-island.net/datafiles/release/"$N".tar.gz"
+
+RDEPEND="libXft libXaw ncurses fontconfig libX11 libXmu libXt libICE freetype libXrender
+	 libXext libSM libXpm zlib expat libxcb util-linux-ng libXau libXdmcp "
+BDEPEND="${RDEPEND}"
+
+pbs_unpack() {
+        ypkg_unpack
+}
+
+pbs_config() {
+	ypkg_config
+}
+
+pbs_build() {
+	ypkg_make
+}
+
+pbs_install() {
+	ypkg_mkinstall
+}

@@ -1,0 +1,55 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="XSL Stylesheets for Docbook"
+HOMEPAGE="http://wiki.docbook.org/topic/DocBookXslStylesheets"
+REPO=""
+LICENSE="GPL-2"
+PACKAGER="hzx@115.com"
+SRC_URI="http://downloads.sourceforge.net/docbook/"$N-$V$R".tar.bz2 http://downloads.sourceforge.net/docbook/"$N"-doc-"$V$R".tar.bz2"
+
+RDEPEND=""
+BDEPEND="${RDEPEND} libxml2"
+RECOMMENDED=""
+
+NOTES=""
+
+pbs_unpack() {
+        ypkg_unpack
+}
+
+pbs_install() {
+	mmsg ">>> tar xf "$YPPATH_SOURCE"/"$N"-doc-"$V$R".tar.bz2"
+	tar xf "$YPPATH_SOURCE"/"$N"-doc-"$V$R".tar.bz2 --strip-components=1
+	ypkg_docp VERSION common eclipse extensions fo highlighting html  \
+	         htmlhelp images javahelp lib manpages params profiling  \
+		 roundtrip slides template tools website xhtml xhtml-1_1 \
+	"$YPPATH_DEST"/usr/share/xml/docbook/xsl-stylesheets-1.75.2
+	ypkg_dodoc RELEASE-NOTES* NEWS* doc/* 
+	install -m644 -D README  "$YPPATH_DEST"/usr/share/doc/docbook-xsl-1.75.2/README.XSL 
+}
+
+pbs_postinst() {
+	#Create (or append) and populate the XML catalog file using the following commands as the root user:
+	mkdir -p /etc/xml
+	if [ ! -f /etc/xml/catalog ]; then
+	    xmlcatalog --noout --create /etc/xml/catalog
+	fi 
+	xmlcatalog --noout --add "rewriteSystem" \
+  		"http://docbook.sourceforge.net/release/xsl/1.75.2" \
+		"/usr/share/xml/docbook/xsl-stylesheets-1.75.2" \
+	        /etc/xml/catalog &&
+        xmlcatalog --noout --add "rewriteURI" \
+        	"http://docbook.sourceforge.net/release/xsl/1.75.2" \
+		"/usr/share/xml/docbook/xsl-stylesheets-1.75.2" \
+		/etc/xml/catalog &&
+	xmlcatalog --noout --add "rewriteSystem" \
+	        "http://docbook.sourceforge.net/release/xsl/current" \
+	        "/usr/share/xml/docbook/xsl-stylesheets-1.75.2" \
+	        /etc/xml/catalog &&
+        xmlcatalog --noout --add "rewriteURI" \
+                "http://docbook.sourceforge.net/release/xsl/current" \
+                "/usr/share/xml/docbook/xsl-stylesheets-1.75.2" \
+                /etc/xml/catalog
+}

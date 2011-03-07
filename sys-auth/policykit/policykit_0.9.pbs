@@ -1,0 +1,53 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="Policy framework for controlling privileges for system-wide services"
+HOMEPAGE="http://hal.freedesktop.org/docs/PolicyKit"
+LICENSE="GPL-2"
+PACKAGER="hzx@115.com"
+
+SRC_URI="http://hal.freedesktop.org/releases/PolicyKit-"$V$R".tar.gz"
+
+RDEPEND=""
+BDEPEND="${RDEPEND} dbus-glib pam intltool docbook-xsl"
+RECOMMENDED=""
+
+pbs_unpack() {
+        ypkg_unpack
+}
+
+pbs_config() {
+	ypkg_patch  policykit-0.7-completions.patch
+	ypkg_patch  policykit-0.9-pk-debug.patch
+	ypkg_patch  policykit-0.9-pam-headers.patch
+	ypkg_patch  policykit-0.9-consolekit03.patch
+	ypkg_patch  policykit-0.9-dbus-auth.patch
+	YPB_CONFIG+=" --datadir=/usr/share 
+		      --with-authdb=default 
+		      --with-authfw=pam 
+		      --with-pam-module-dir=/lib/security 
+		      --enable-man-pages  
+		      --with-polkit-user=polkituser 
+		      --with-polkit-group=polkituser 
+		      --disable-gtk-doc 
+		      --disable-selinux "
+		      #--with-os-type=gentoo \
+	ypkg_config	      
+}
+
+pbs_build() {
+	ypkg_make
+}
+
+pbs_install() {
+	ypkg_mkinstall
+	ypkg_dodoc doc/html
+	ypkg_docp "$FILES_PATH"/files/PolicyKit.conf "$YPPATH_DEST"/etc/PolicyKit
+	ypkg_dounit policykit-daemon.service
+}
+
+pbs_postinst() {
+	ypkg_groupadd -r "polkituser"
+	ypkg_useradd -c "Policy Kit Daemon User" -d "/dev/null" -s "/bin/false" -r -N "polkituser"
+}

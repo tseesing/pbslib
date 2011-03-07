@@ -1,0 +1,29 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="Lightweight PDF viewer using Poppler and GTK+ libraries."
+HOMEPAGE="http://trac.emma-soft.com/epdfview/"
+ 
+SRC_URI="http://trac.emma-soft.com/epdfview/chrome/site/releases/"$N-$V$R".tar.bz2"
+
+RDEPEND="poppler gtk+"
+BDEPEND="${RDEPEND}"
+
+pbs_unpack() {
+        ypkg_unpack
+}
+
+pbs_config() {
+	ypkg_config
+}
+
+pbs_build() {
+	ypkg_make
+}
+
+pbs_install() {
+	ypkg_mkinstall
+	cd "$YPPATH_DEST"
+	ypkg_docp usr/share/epdfview/pixmaps/icon_epdfview-48.png usr/share/pixmaps
+}

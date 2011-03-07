@@ -1,0 +1,49 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="http://www.openssh.org/"
+HOMEPAGE="Port of OpenBSD's free SSH release"
+LICENSE="GPL-2"
+PACKAGER="hzx@115.com"
+
+SRC_URI="http://ftp.openbsd.org/pub/OpenBSD/OpenSSH/portable/"$N-$V$R".tar.gz"
+
+RDEPEND="openssl glibc zlib"
+BDEPEND="${RDEPEND}"
+
+pbs_unpack() {
+        ypkg_unpack
+}
+
+pbs_config() {
+	YPB_CONFIG+=" --sysconfdir=/etc/ssh  
+		      --datadir=/usr/share/sshd  
+		      --libexecdir=/usr/lib/openssh  
+		      --with-md5-passwords  
+		      --with-privsep-path=/var/lib/sshd "
+	ypkg_config
+}
+
+pbs_build() {
+	ypkg_make
+}
+
+pbs_install() {
+	ypkg_mkinstall
+	#ypkg_doinit "$FILES_PATH"/files/sshd
+	cd "$YPPATH_DEST"
+	install -m700 -d var/lib/sshd
+	chown root:sys   var/lib/sshd
+	mkdir -p etc/ssh/
+	#
+	ypkg_docp "$FILES_PATH"/files/systemd/*  lib/systemd/system/
+}
+
+pbs_postinst() {
+	ypkg_groupadd -r "sshd"
+	ypkg_useradd -c "sshd PrivSep" -d "/var/lib/sshd" -s "/bin/false" -r -N -G "sshd" "sshd"
+	yes y |ssh-keygen -t dsa -f /etc/ssh/ssh_host_dsa_key
+	yes y |ssh-keygen -t rsa -f /etc/ssh/ssh_host_rsa_key
+	return 0
+}

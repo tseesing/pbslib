@@ -1,0 +1,54 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="GTK+2 standard engines and themes"
+HOMEPAGE="http://www.gtk.org/"
+LICENSE="GPL-2"
+PACKAGER="hzx@115.com"
+
+RDEPEND=""
+BDEPEND="${RDEPEND} gtk+" 
+RECOMMENDED=""
+
+NOTES=""
+
+pbs_unpack() {
+	OLDDIR=$(pwd)
+	cd $YPPATH_SOURCE
+	if [ -d $N/.git ];then
+		cd $N
+		git pull --rebase
+	else
+		git clone git://git.gnome.org/$N
+		cd $N
+		git checkout --track -b gtk-engines-2-18 origin/gtk-engines-2-18
+		git pull --rebase
+	fi
+	cd ../ 
+	cp -a $N $OLDDIR
+	cd $OLDDIR
+	mv $N "$N-$V$R"
+}
+
+pbs_config() {
+	
+	./autogen.sh --prefix /usr --sysconfdir /etc --localstatedir /var/lib --mandir /usr/share/man --enable-shared --enable-animation --disable-static
+}
+
+pbs_build() {
+	ypkg_make
+}
+
+pbs_install() {
+	ypkg_mkinstall
+}
+
+pbs_postinst() {
+	# libtoolize the installation
+	for dir in engines filesystems loaders; do
+		libtool --finish --silent /usr/lib*/gtk*/*/$dir
+	done
+	# Update new libraries
+	ldconfig -r /
+}

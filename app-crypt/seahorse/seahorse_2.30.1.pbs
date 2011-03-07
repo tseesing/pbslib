@@ -1,0 +1,57 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="A GNOME application for managing encryption keys"
+HOMEPAGE="http://www.gnome.org/projects/seahorse/index.html"
+LICENSE="GPL-2"
+PACKAGER="hzx@115.com"
+
+SRC_URI="http://ftp.gnome.org/pub/gnome/desktop/2.30/2.30.2/sources/"$N-$V$R".tar.bz2 "
+
+RDEPEND="orbit avahi pixman libxml2 directfb libpng libxcb libXrender libX11 libxcb libXau libXdmcp
+	 expat zlib gpgme libassuan libgpg-error openldap-client libsoup libgnome-keyring libnotify dbus dbus-glib 
+	 libtasn1 atk gtk+ pango cairo freetype fontconfig openssl gnutls libgcrypt eggdbus libXi libXrandr libXcursor
+	 libXcomposite libXext libXdamage libXfixes"
+BDEPEND="${RDEPEND} openssh gpgme gnome-keyring libnotify libgcrypt openldap-client libsoup"
+RECOMMENDED="seahorse-plugins"
+
+NOTES="
+seahose is depend on avahi-daemon
+run avahidaemon before
+"
+
+pbs_unpack() {
+        ypkg_unpack
+}
+
+pbs_config() {
+	YPB_CONFIG+=" --disable-schemas-install 
+		      --disable-tests 
+		      --enable-introspection=no 
+        	      --enable-ssh 
+		      --enable-pkcs11 
+		      --enable-libnotify 
+		      --enable-sharing 
+		      --enable-ldap 
+		      --enable-hkp 
+		      --enable-pgp  "
+	ypkg_config
+}
+
+pbs_build() {
+	ypkg_make
+}
+
+pbs_install() {
+	ypkg_mkinstall
+	ypkg_dodoc AUTHORS COPYING NEWS README 
+}
+
+pbs_postinst() {
+	gnome2_install_schema "/etc/gconf/schemas/seahorse.schemas"
+	gnome2_rarian_sk_update
+	gnome2_desktop_database_update
+	gnome2_icon_cache_update "hicolor"
+	gnome2_gconfd_reload
+}
