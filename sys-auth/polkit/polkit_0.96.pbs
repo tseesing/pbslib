@@ -58,5 +58,5 @@ pbs_install() {
 
 pbs_postinst() {
 	ypkg_groupadd -r "polkituser"
-	ypkg_useradd -c "Policy Kit Daemon User" -d "/dev/null" -s "/bin/false" -r -N "polkituser"
+	ypkg_useradd -c "Policy Kit Daemon User" -d "/dev/null" -s "/bin/false" -r "polkituser"
 }

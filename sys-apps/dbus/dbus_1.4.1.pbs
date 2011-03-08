@@ -47,7 +47,7 @@ pbs_install() {
 }
 
 pbs_postinst() {
-	ypkg_useradd -r "messagebus"
-	ypkg_useradd -c "D-BUS Message Daemon User" -d "/dev/null" -s "/bin/false" -r -N "messagebus"
+	ypkg_groupadd -r "messagebus"
+	ypkg_useradd -c "D-BUS Message Daemon User" -d "/dev/null" -s "/bin/false" -r "messagebus"
 	dbus-uuidgen --ensure
 }

@@ -19,7 +19,7 @@ NOTES=""
 
 pbs_init() {
 	ypkg_groupadd -r "avahi"
-	ypkg_useradd -c "avahi users" -d "/dev/null" -s "/bin/false" -r -N "avahi"
+	ypkg_useradd -c "avahi users" -d "/dev/null" -s "/bin/false" -r "avahi"
 	ypkg_useradd -c "avahi-autoipd users" -d "/dev/null" -s "/bin/false" -r "avahi-autoipd" 
 }
 

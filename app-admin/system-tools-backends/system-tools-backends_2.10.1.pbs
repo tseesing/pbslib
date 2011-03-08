@@ -17,7 +17,7 @@ RECOMMENDED=""
 NOTES="Group for system-tools-backends is wheel"
 
 pbs_init() {
-	ypkg_groupadd "wheel"
+	ypkg_groupadd -r "wheel"
 }
 
 pbs_unpack() {

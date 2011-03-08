@@ -18,7 +18,7 @@ RECOMMENDED="libgnomeui nautilus"
 NOTES=""
 
 pbs_init() {
-	ypkg_groupadd "dialout"
+	ypkg_groupadd -r "dialout"
 }
 
 pbs_unpack() {

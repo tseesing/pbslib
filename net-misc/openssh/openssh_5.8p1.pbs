@@ -36,7 +36,6 @@ pbs_install() {
 	install -m700 -d var/lib/sshd
 	chown root:sys   var/lib/sshd
 	mkdir -p etc/ssh/
-	#
 	ypkg_docp "$FILES_PATH"/files/systemd/*  lib/systemd/system/
 }
 

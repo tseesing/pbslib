@@ -32,7 +32,7 @@ pbs_install() {
 	ypkg_mkinstall
 	cd "$YPPATH_DEST"
 	ypkg_domv usr/bin/passwd  bin
-	ypkg_docp "$FILES_PATH"/files/ypkg_useradd	 etc/default
+	ypkg_docp "$FILES_PATH"/files/useradd	 etc/default
 	ypkg_docp "$FILES_PATH"/files/{su,login} etc/pam.d
 	ypkg_docp "$FILES_PATH"/files/login.defs etc	
 }
