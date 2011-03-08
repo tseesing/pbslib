@@ -1,0 +1,32 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="Linux header files for glibc/eglibc"
+HOMEPAGE="http://www.kernel.org"
+LICENSE=""
+PACKAGER="hzx@115.com"
+
+SRC_URI="http://www.kernel.org/pub/linux/kernel/v2.6/linux-"$V$R".tar.bz2"
+
+RDEPEND=""
+BDEPEND="${RDEPEND}"
+
+pbs_unpack() {
+        ypkg_unpack
+}
+
+pbs_build() {
+	make mrproper
+	make headers_check
+}
+
+pbs_install() {
+	mkdir -p "$YPPATH_DEST"/usr
+	make INSTALL_HDR_PATH="$YPPATH_DEST"/usr headers_install
+	# hrm, build system sucks
+	find "${YPPATH_DEST}" \( -name '.install' -o -name '*.cmd' \) -print0 | xargs -0 rm -f
+        # provided by libdrm and glibc
+        rm -rf "$YPPATH_DEST"/usr/include/drm
+        rm -rf "$YPPATH_DEST"/usr/include/scsi
+}

@@ -4,20 +4,18 @@
 
 DESCRIPTION="The GLib library of C routines"
 HOMEPAGE="http://www.gtk.org/"
-REPO="testing"
-SRC_URI="http://ftp.gnome.org/pub/gnome/mobile/2.32/2.32.0/sources/glib-2.26.0.tar.bz2"
+REPO=""
+
+SRC_URI="http://ftp.gnome.org/pub/gnome/sources/glib/2.26/glib-"$V$R".tar.bz2"
 
 RDEPEND="glibc zlib"
 BDEPEND="${RDEPEND} pkgconfig sys-libs/zlib"
-RECOMMEDNED="libpcre"
-OPIONAL="attr gamin gtk-doc python"
 
 NOTES="Gamin requires GLib in order to compile; therefore, you must first install GLib, then compile Gamin, and recompile GLib against it.
 --with-pcre=system: This parameter causes the build to use a system-provided version of the PCRE library instead of an internal version."
 
 pbs_unpack() {
         ypkg_unpack
-	mv glib-$V   "$N-$V$R"
 }
 
 pbs_config() {

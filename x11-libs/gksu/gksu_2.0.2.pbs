@@ -21,7 +21,7 @@ pbs_unpack() {
 
 pbs_config() {
 	ypkg_docp "$FILES_PATH"/files/gksu-icon.png .
-	ypkg_patch 01_always_ask.patch 21_strip_blank_space.patch 07_desktop_in_ship.patch
+	ypkg_patch 01_always_ask.patch 07_desktop_in_ship.patch 14_set_http_proxy_env.patch 21_strip_blank_space.patch
 	YPB_CONFIG+="--disable-gtk-doc"
 	ypkg_config
 }

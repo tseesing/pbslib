@@ -1,6 +1,5 @@
-diff -Nur gksu-2.0.0/gksu/gksu.c gksu-2.0.0.new/gksu/gksu.c
---- gksu-2.0.0/gksu/gksu.c	2006-09-15 04:45:04.000000000 +0200
-+++ gksu-2.0.0.new/gksu/gksu.c	2007-03-05 09:09:47.000000000 +0100
+--- gksu/gksu.c	2009-03-05 02:25:32.000000000 +0800
++++ gksu/gksu.c.new	2011-03-08 15:47:07.311238981 +0800
 @@ -55,6 +55,7 @@
      {"prompt", optional_argument, NULL, 'P'},
      {"desktop", required_argument, NULL, 'D'},
@@ -27,7 +26,7 @@ diff -Nur gksu-2.0.0/gksu/gksu.c gksu-2.0.0.new/gksu/gksu.c
  			   NULL);
    g_print (_(help_trans), PACKAGE_VERSION, cmdname);
    g_free (help_trans);
-@@ -501,7 +506,7 @@
+@@ -502,7 +507,7 @@
    gtk_init (&newargc, &newargv);
  
    context = gksu_context_new ();
@@ -36,7 +35,7 @@ diff -Nur gksu-2.0.0/gksu/gksu.c gksu-2.0.0.new/gksu/gksu.c
  	 != EOF)
      {
        switch (c)
-@@ -564,6 +569,9 @@
+@@ -565,6 +570,9 @@
  	case 'w':
  	  run_mode = SU_MODE;
  	  break;
