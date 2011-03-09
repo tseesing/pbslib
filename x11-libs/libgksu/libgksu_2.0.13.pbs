@@ -1,0 +1,33 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="A library for integration of su into applications"
+HOMEPAGE="http://www.nongnu.org/gksu/"
+LICENSE="GPL-2"
+PACKAGER="hzx@115.com"
+
+SRC_URI=""$N-$V$R".tar.bz2"
+
+RDEPEND="glibc"
+BDEPEND="${RDEPEND} "
+RECOMMENDED=""
+
+NOTES=""
+
+pbs_unpack() {
+        ypkg_unpack
+}
+
+pbs_config() {
+	ypkg_docp "$FILES_PATH"/files/gksu.png  .
+	ypkg_config
+}
+
+pbs_build() {
+	ypkg_make
+}
+
+pbs_install() {
+	ypkg_mkinstall
+}

@@ -2,14 +2,14 @@
 # YLmf_OS package build script
 #
 
-DESCRIPTION="An interface compiler that connects programs written in C and C++ with scripting languages such as Perl, Python, Ruby, and Tcl."
-HOMEPAGE="http://www.swig.org"
+DESCRIPTION="A canvas widget for GTK+ that uses the cairo 2D library for drawing."
+HOMEPAGE="http://live.gnome.org/GooCanvas"
 REPO=""
 LICENSE="GPL"
 PRIORITY=""
 PACKAGER="Zhongxin Huang, hzx@115.com"
 
-SRC_URI="http://prdownloads.sourceforge.net/"$N"/"$N-$V$R".tar.gz"
+SRC_URI="http://ftp.gnome.org/pub/GNOME/sources/"$N"/"$V$R"/"$N-$V$R".tar.bz2"
 
 RDEPEND=""
 BDEPEND="${RDEPEND} "

@@ -2,21 +2,21 @@
 # YLmf_OS package build script
 #
 
-DESCRIPTION="An interface compiler that connects programs written in C and C++ with scripting languages such as Perl, Python, Ruby, and Tcl."
-HOMEPAGE="http://www.swig.org"
+DESCRIPTION="gnome time tracking for individuals"
+HOMEPAGE="http://projecthamster.wordpress.com/"
 REPO=""
 LICENSE="GPL"
 PRIORITY=""
 PACKAGER="Zhongxin Huang, hzx@115.com"
 
-SRC_URI="http://prdownloads.sourceforge.net/"$N"/"$N-$V$R".tar.gz"
+SRC_URI="git://git.gnome.org/"$N""
 
-RDEPEND=""
+RDEPEND="gnome-panel"
 BDEPEND="${RDEPEND} "
 RECOMMENDED=""
 CONFLICT=""
 
-NOTES=""
+NOTES="Restart gnome-panel and add hamster-applet "
 
 pbs_unpack() {
         ypkg_unpack

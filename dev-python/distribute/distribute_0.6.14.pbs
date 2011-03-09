@@ -2,14 +2,14 @@
 # YLmf_OS package build script
 #
 
-DESCRIPTION="An interface compiler that connects programs written in C and C++ with scripting languages such as Perl, Python, Ruby, and Tcl."
-HOMEPAGE="http://www.swig.org"
+DESCRIPTION="The pkg_resources module provides an API for Python libraries to access their resource files"
+HOMEPAGE="http://packages.python.org/distribute"
 REPO=""
-LICENSE="GPL"
+LICENSE="PSF or ZPL"
 PRIORITY=""
 PACKAGER="Zhongxin Huang, hzx@115.com"
 
-SRC_URI="http://prdownloads.sourceforge.net/"$N"/"$N-$V$R".tar.gz"
+SRC_URI="http://pypi.python.org/packages/source/d/"$N"/"$N-$V$R".tar.gz"
 
 RDEPEND=""
 BDEPEND="${RDEPEND} "
@@ -23,7 +23,6 @@ pbs_unpack() {
 }
 
 pbs_config() {
-	YPB_CONFIG+=""
 	ypkg_config
 }
 

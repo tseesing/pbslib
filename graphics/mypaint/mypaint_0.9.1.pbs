@@ -1,0 +1,41 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="A fast and easy open-source graphics application for digital painters. "
+HOMEPAGE="http://mypaint.intilinux.com/"
+REPO=""
+LICENSE="GPL"
+PRIORITY=""
+PACKAGER="Zhongxin Huang, hzx@115.com"
+
+SRC_URI="http://download.gna.org/"$N"/"$N-$V$R".tar.bz2"
+
+RDEPEND=""
+BDEPEND="${RDEPEND} swig scons"
+RECOMMENDED=""
+CONFLICT=""
+
+NOTES=""
+
+pbs_unpack() {
+        ypkg_unpack
+}
+
+pbs_config() {
+	YPB_CONFIG="prefix=/usr"
+	ypkg_config
+}
+
+pbs_build() {
+	ypkg_make
+}
+
+pbs_install() {
+	ypkg_mkinstall prefix="$YPPATH_DEST"/usr
+}
+
+pbs_postinst() {
+	gnome2_desktop_database_update
+	gnome2_icon_cache_update
+}

@@ -2,14 +2,14 @@
 # YLmf_OS package build script
 #
 
-DESCRIPTION="An interface compiler that connects programs written in C and C++ with scripting languages such as Perl, Python, Ruby, and Tcl."
-HOMEPAGE="http://www.swig.org"
+DESCRIPTION="C++ bindings for GConf"
+HOMEPAGE="http://www.gtkmm.org"
 REPO=""
 LICENSE="GPL"
 PRIORITY=""
 PACKAGER="Zhongxin Huang, hzx@115.com"
 
-SRC_URI="http://prdownloads.sourceforge.net/"$N"/"$N-$V$R".tar.gz"
+SRC_URI="http://ftp.acc.umu.se/pub/GNOME/sources/"$N"/2.28/"$N-$V$R".tar.bz2"
 
 RDEPEND=""
 BDEPEND="${RDEPEND} "

@@ -13,14 +13,12 @@ RDEPEND="zlib libsigc++ "
 BDEPEND="${RDEPEND} glib2 libsigc++"
 RECOMMENDED=""
 
-NOTES="http://wiki.linuxfromscratch.org/blfs/wiki/glib2mm"
-
 pbs_unpack() {
         ypkg_unpack
 }
 
 pbs_config() {
-	YPB_CONFIG+="--disable-documentation"
+	#YPB_CONFIG+="--disable-documentation"
 	ypkg_config
 }
 

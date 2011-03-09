@@ -1,0 +1,33 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION=" GStreamer plugin for muxing of MPEG2 TS streams"
+HOMEPAGE="http://core.fluendo.com/gstreamer/src/gst-fluendo-mpegmux/"
+REPO=""
+LICENSE="GPL-2"
+PACKAGER="hzx@115.com"
+
+SRC_URI="http://core.fluendo.com/gstreamer/src/"$N"/"$N-$V$R".tar.bz2"
+
+RDEPEND="gstreamer libtsmux"
+BDEPEND="${RDEPEND} "
+RECOMMENDED=""
+
+NOTES=""
+
+pbs_unpack() {
+        ypkg_unpack
+}
+
+pbs_config() {
+	ypkg_config
+}
+
+pbs_build() {
+	ypkg_make
+}
+
+pbs_install() {
+	ypkg_mkinstall
+}

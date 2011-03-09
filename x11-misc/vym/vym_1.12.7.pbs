@@ -1,0 +1,41 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="View Your Mind, a mindmap tool"
+HOMEPAGE="http://www.insilmaril.de/vym/"
+REPO=""
+LICENSE="GPL"
+PRIORITY=""
+PACKAGER="Zhongxin Huang, hzx@115.com"
+
+SRC_URI="http://downloads.sourceforge.net/project/"$N"/"$N"/"$V$R"/"$N-$V$R".tar.bz2"
+
+RDEPEND="libX11 libXext"
+BDEPEND="${RDEPEND} qt-core"
+RECOMMENDED=""
+CONFLICT=""
+
+NOTES=""
+
+pbs_unpack() {
+        ypkg_unpack
+}
+
+pbs_config() {
+	ypkg_patch pro-file.patch
+	ypkg_config PREFIX="$YPPATH_DEST/${N}_$V$R"/usr
+}
+
+pbs_build() {
+	ypkg_make 
+}
+
+pbs_install() {
+	ypkg_mkinstall
+}
+
+pbs_postinst() {
+	gnome2_desktop_database_update
+	gnome2_icon_cache_update /usr/share/vym/icons
+}

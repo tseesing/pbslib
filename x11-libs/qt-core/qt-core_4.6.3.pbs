@@ -6,7 +6,7 @@ DESCRIPTION="The Qt toolkit is a comprehensive C++ application development frame
 HOMEPAGE="http://qt.nokia.com/"
 LICENSE="GPL-2"
 PACKAGER="hzx@115.com"
-REPO="testing"
+REPO=""
 
 SRC_URI="ftp://ftp.trolltech.com/qt/source/qt-everywhere-opensource-src-"$V$R".tar.gz"
 

@@ -2,14 +2,14 @@
 # YLmf_OS package build script
 #
 
-DESCRIPTION="An interface compiler that connects programs written in C and C++ with scripting languages such as Perl, Python, Ruby, and Tcl."
-HOMEPAGE="http://www.swig.org"
+DESCRIPTION="Interfaces for Python"
+HOMEPAGE="http://pypi.python.org/pypi/zope.interface"
 REPO=""
-LICENSE="GPL"
+LICENSE="ZPL 2.1"
 PRIORITY=""
 PACKAGER="Zhongxin Huang, hzx@115.com"
 
-SRC_URI="http://prdownloads.sourceforge.net/"$N"/"$N-$V$R".tar.gz"
+SRC_URI="http://pypi.python.org/packages/source/z/zope.interface/"zope.interface-$V$R".tar.gz"
 
 RDEPEND=""
 BDEPEND="${RDEPEND} "
