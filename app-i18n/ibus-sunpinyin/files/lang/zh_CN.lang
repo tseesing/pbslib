@@ -1,3 +1,0 @@
-NAME="ibus-pinyin"
-BRIEF="输入法内核和输入法平台交互的界面 (wrapper)"
-SPECIFICATION="把后端包装起来，让 ibus, xim, macos 等平台能使用 SunPinyin 输入法。它一般提供一些快捷键，用户界面，和配置的功能"

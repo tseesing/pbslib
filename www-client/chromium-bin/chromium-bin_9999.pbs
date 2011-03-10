@@ -17,8 +17,7 @@ RECOMMENDED=""
 NOTES=""
 
 pbs_unpack() {
-	wget http://build.chromium.org/buildbot/snapshots/chromium-rel-linux/LATEST -O LATEST
-	version="$(cat LATEST)"
+	version="$(wget -q -O - http://build.chromium.org/buildbot/snapshots/chromium-rel-linux/LATEST)"
 	echo "---Newest verions is $version----------"
 	echo
 	wget http://build.chromium.org/buildbot/snapshots/chromium-rel-linux/"$version"/chrome-linux.zip -O "$YPPATH_SOURCE"/chrome-linux.zip
