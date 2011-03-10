@@ -21,37 +21,38 @@ pbs_unpack() {
 }
 
 pbs_config() {
-	ypkg_patch 01_uuids_and_lvm_dont_play_along_nicely.diff
-	ypkg_patch 03_ubuntu_grub_standards.diff
-	ypkg_patch 10_crashkernel.patch
-	ypkg_patch 06_olpc_prefix_hack.diff   
-	ypkg_patch 07_core_in_fs.diff
-	ypkg_patch 901_dpkg_version_comparison.diff
-	ypkg_patch 902_boot_blocklist_hack.diff
-	ypkg_patch 907_grub.cfg_400.diff
-	ypkg_patch 908_gfxpayload_keep_default.diff
-	ypkg_patch 950_quick_boot.diff
-	ypkg_patch 951_sleep_shift.diff
-	ypkg_patch 952_normal_quiet.diff
-	ypkg_patch 953_really_quiet.diff
-	ypkg_patch 954_linux_quiet.diff
-	ypkg_patch 956_loopback_root.diff
-	ypkg_patch 957_handle_loopback.diff
-	ypkg_patch 958_linux_no_loopmount.diff
-	ypkg_patch 959_failed_boot_menu.diff
-	ypkg_patch 960_raid_virtio.diff
-	ypkg_patch 962_no_device_map.diff
-	ypkg_patch 965_reduce_boot_img.diff
-	ypkg_patch 967_quiet_grub_loading.diff
-	ypkg_patch 970_fix_locale_installation.diff
-	ypkg_patch 971_langpacks.diff
-	ypkg_patch 972_ignore_grub.d_README.diff
-	ypkg_patch 973_grub_distributor_spaces.diff
-	ypkg_patch 974_drive_probe.diff
-	ypkg_patch 975_hostdisk_hd.diff
-	ypkg_patch 976_escape_translations.diff
-	ypkg_patch 977_ylmf_mkdevicemap.diff
-	#
+	patches=" 01_uuids_and_lvm_dont_play_along_nicely.diff
+		 03_ubuntu_grub_standards.diff
+		 10_crashkernel.patch
+		 06_olpc_prefix_hack.diff   
+		 07_core_in_fs.diff
+		 901_dpkg_version_comparison.diff
+		 902_boot_blocklist_hack.diff
+		 907_grub.cfg_400.diff
+		 908_gfxpayload_keep_default.diff
+		 950_quick_boot.diff
+		 951_sleep_shift.diff
+		 952_normal_quiet.diff
+		 953_really_quiet.diff
+		 954_linux_quiet.diff
+		 956_loopback_root.diff
+		 957_handle_loopback.diff
+		 958_linux_no_loopmount.diff
+		 959_failed_boot_menu.diff
+		 960_raid_virtio.diff
+		 962_no_device_map.diff
+		 965_reduce_boot_img.diff
+		 967_quiet_grub_loading.diff
+		 970_fix_locale_installation.diff
+		 971_langpacks.diff
+		 972_ignore_grub.d_README.diff
+		 973_grub_distributor_spaces.diff
+		 974_drive_probe.diff
+		 975_hostdisk_hd.diff
+		 976_escape_translations.diff
+		 977_ylmf_mkdevicemap.diff
+		 1000_ylmfos_grub-probe-skip-fd.patch "
+	ypkg_patch $patches
 	ypkg_config
 }
 

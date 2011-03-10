@@ -19,18 +19,18 @@ NOTES=""
 pbs_unpack() {
 	version="$(wget -q -O - http://build.chromium.org/buildbot/snapshots/chromium-rel-linux/LATEST)"
 	echo "---Newest verions is $version----------"
-	echo
 	wget http://build.chromium.org/buildbot/snapshots/chromium-rel-linux/"$version"/chrome-linux.zip -O "$YPPATH_SOURCE"/chrome-linux.zip
 	# amd64? ( http://build.chromium.org/buildbot/snapshots/chromium-rel-linux-64
-	unzip $YPPATH_SOURCE/chrome-linux.zip
+	unzip "$YPPATH_SOURCE"/chrome-linux.zip
 	mv "chrome-linux" "$N-$V$R"
 }
 
 pbs_install() {
 	ypkg_docp * "$YPPATH_DEST"/opt/chromium.org/chrome-linux
-	ypkg_docp "$FILES_PATH"/files/chromium-browser   "$YPPATH_DEST"/usr/bin
 	ypkg_docp chrome.1 "$YPPATH_DEST"/usr/share/man/chromium-bin/
-	ypkg_dodesktop "$FILES_PATH"/files/chromium-browser.desktop  "$FILES_PATH"/files/chromium-browser.png 
+	ypkg_docp "$FILES_PATH"/files/chromium-browser   "$YPPATH_DEST"/usr/bin
+	ypkg_dodesktop "$FILES_PATH"/files/chromium-browser.desktop  
+	ypkg_docp_rename product_logo_48.png  "$YPPATH_DEST"/usr/share/pixmaps/chromium-browser.png 
 	mkdir -p "$YPPATH_DEST"/opt/chromium.org/nss-nspr
 	cd "$YPPATH_DEST"/opt/chromium.org/nss-nspr
 	ypkg_doln /usr/lib/libnspr4.so     libnspr4.so.0d
