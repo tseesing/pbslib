@@ -54,10 +54,9 @@ pbs_postinst() {
 	gnome2_icon_cache_update  "hicolor"
 	# For nautilus to control ftp (otherwise annoying error box arises)
 	gnome2_install_defaut_gconf "string" "/desktop/gnome/url-handlers/ftp/command" "nautilus \"%s\""
-	# Ensure that Nautilus is used for GNOME desktop, but Thunar or Dolphin
-	gnome2_install_defaut_gconf "string" "/desktop/gnome/url-handlers/file/command" "nautilus \"%s\""
-	gnome2_install_defaut_gconf "bool"   "/desktop/gnome/url-handlers/file/enabled" "True"
-	gnome2_install_defaut_gconf "bool"   "/desktop/gnome/url-handlers/file/need-terminal" "false"
+	#gnome2_install_defaut_gconf "string" "/desktop/gnome/url-handlers/file/command" "nautilus \"%s\""
+	#gnome2_install_defaut_gconf "bool"   "/desktop/gnome/url-handlers/file/enabled" "True"
+	#gnome2_install_defaut_gconf "bool"   "/desktop/gnome/url-handlers/file/need-terminal" "false"
 	gnome2_install_defaut_gconf "bool"   "/apps/nautilus/preferences/always_use_location_entry" "True"
 	gnome2_install_defaut_gconf "bool"   "/apps/nautilus/desktop/volumes_visible" "false"
 	#

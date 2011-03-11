@@ -1,11 +1,3 @@
-diff -u -r ibus-1.3.9/bus/ibus.desktop.in ibus-1.3.9.new//bus/ibus.desktop.in
---- ibus-1.3.9/bus/ibus.desktop.in	2010-10-20 19:27:43.000000000 +0800
-+++ ibus-1.3.9.new//bus/ibus.desktop.in	2011-03-11 11:47:07.888996002 +0800
-@@ -12,3 +12,4 @@
- X-GNOME-AutoRestart=false
- X-GNOME-Autostart-Notify=true
- X-KDE-autostart-after=panel
-+NotShowIn=KDE;GNOME;XFCE;
 diff -u -r ibus-1.3.9/po/zh_CN.po ibus-1.3.9.new//po/zh_CN.po
 --- ibus-1.3.9/po/zh_CN.po	2010-11-21 18:27:22.000000000 +0800
 +++ ibus-1.3.9.new//po/zh_CN.po	2011-03-11 11:49:47.586996002 +0800
