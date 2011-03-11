@@ -22,6 +22,7 @@ pbs_unpack() {
 }
 
 pbs_config() {
+	ypkg_patch desktop-i18n.patch
 	YPB_CONFIG+="--disable-schemas-install
 		     --disable-packagekit "
 	ypkg_config

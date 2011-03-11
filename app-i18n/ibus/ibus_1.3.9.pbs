@@ -36,7 +36,7 @@ pbs_config() {
 		convert -resize "${i}"x"${i}" "$FILES_PATH"/files/ibus-keyboard.png data/icons/"${i}"/ibus-keyboard.png
 	done
 	#
-	ypkg_patch "ibus_ui.patch"
+	ypkg_patch "ibus_ui.patch" ibus-i18n.patch
 	YPB_CONFIG+="--enable-maintainer-mode --disable-schemas-install"
 	ypkg_config
 }

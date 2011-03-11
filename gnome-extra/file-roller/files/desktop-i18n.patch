@@ -1,0 +1,12 @@
+diff -u -r file-roller-2.30.2/data/file-roller.desktop file-roller-2.30.2.new/data/file-roller.desktop
+--- file-roller-2.30.2/data/file-roller.desktop	2010-06-22 03:20:31.000000000 +0800
++++ file-roller-2.30.2.new/data/file-roller.desktop	2011-03-11 11:05:18.246996014 +0800
+@@ -89,7 +89,7 @@
+ Name[ur_PK]=محفوظہ منیجر
+ Name[vi]=Bộ quản lý kho
+ Name[xh]=Umphathi Kavimba
+-Name[zh_CN]=归档管理器
++Name[zh_CN]=File-roller 压缩工具
+ Name[zh_HK]=壓縮檔管理員
+ Name[zh_TW]=壓縮檔管理員
+ Comment=Create and modify an archive

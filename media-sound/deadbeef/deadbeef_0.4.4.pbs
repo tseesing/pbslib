@@ -21,7 +21,7 @@ pbs_unpack() {
 }
 
 pbs_config() {
-	ypkg_patch ylmfos-support-gbk.patch
+	ypkg_patch ylmfos-support-gbk.patch deskktop-i18n.patch
 	ypkg_config
 }
 

@@ -23,7 +23,7 @@ pbs_unpack() {
 }
 
 pbs_config() {
-	ypkg_patch 01_gnome-about-me.patch 100_ylmfos-translate.patch
+	ypkg_patch 01_gnome-about-me.patch  100-desktop-i18n.patch
 	YPB_CONFIG+="--enable-aboutme --disable-schemas-install --disable-update-mimedb "
 	ypkg_config
 }

@@ -1,0 +1,24 @@
+diff -u deadbeef-0.4.4/deadbeef.desktop deadbeef-0.4.4.new/deadbeef.desktop
+--- deadbeef-0.4.4/deadbeef.desktop	2010-11-15 01:56:30.000000000 +0800
++++ deadbeef-0.4.4.new/deadbeef.desktop	2011-03-11 11:01:58.083996000 +0800
+@@ -1,6 +1,8 @@
+ [Desktop Entry]
+ Encoding=UTF-8
+ Name=DeaDBeeF
++Name[zh_CN]=DeaDBeeF 音乐播放器
++Name[zh_TW]=DeaDBeeF 音樂播放器
+ GenericName=Audio Player
+ GenericName[pt_BR]=Reprodutor de áudio
+ GenericName[ru]=Аудио плеер
+diff -u deadbeef-0.4.4/deadbeef.desktop.in deadbeef-0.4.4.new/deadbeef.desktop.in
+--- deadbeef-0.4.4/deadbeef.desktop.in	2010-10-17 16:16:55.000000000 +0800
++++ deadbeef-0.4.4.new/deadbeef.desktop.in	2011-03-11 11:02:12.291996002 +0800
+@@ -1,6 +1,8 @@
+ [Desktop Entry]
+ Encoding=UTF-8
+ Name=DeaDBeeF
++Name[zh_CN]=DeaDBeeF 音乐播放器
++Name[zh_TW]=DeaDBeeF 音樂播放器
+ GenericName=Audio Player
+ GenericName[pt_BR]=Reprodutor de áudio
+ GenericName[ru]=Аудио плеер

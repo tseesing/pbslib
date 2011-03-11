@@ -20,6 +20,7 @@ pbs_unpack() {
 }
 
 pbs_config() {
+	ypkg_patch desktop-i18n.patch
 	YPB_CONFIG+="--disable-print"
 	ypkg_config
 }

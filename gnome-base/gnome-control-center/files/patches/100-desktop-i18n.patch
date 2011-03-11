@@ -1,0 +1,14 @@
+diff -u -r gnome-control-center-2.30.1/po/zh_CN.po gnome-control-center-2.30.1.new//po/zh_CN.po
+--- gnome-control-center-2.30.1/po/zh_CN.po	2010-04-26 22:10:41.000000000 +0800
++++ gnome-control-center-2.30.1.new//po/zh_CN.po	2011-03-11 11:19:04.644996000 +0800
+@@ -2065,6 +2065,10 @@
+ msgid "_Detect Monitors"
+ msgstr "检测显示器(_D)"
+ 
++#: ../capplets/display/display-properties.desktop.in.in.h:2
++msgid "Monitors"
++msgstr "显示器"
++
+ #: ../capplets/display/display-capplet.ui.h:15
+ msgid "_Mirror screens"
+ msgstr "镜像屏幕(_M)"

@@ -28,6 +28,7 @@ pbs_install() {
 		echo ">>> Unpack $(basename $i)"
 		ar x "${i}"; tar xf data.tar.gz
 	done	
+	ypkg_patch desktop-i18n.patch
 	for i in etc opt usr; do
 		ypkg_docp "${i}"/*   "$YPPATH_DEST"/"${i}"
 	done
