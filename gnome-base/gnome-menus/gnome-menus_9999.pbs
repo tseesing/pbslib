@@ -40,7 +40,7 @@ pbs_config()
 {
 	echo "config "$N-$V$R"..."
 	
-	./autogen.sh --prefix /usr --sysconfdir /etc --localstatedir /var/lib --mandir /usr/share/man --enable-shared --enable-introspection=no --enable-python --disable-gtk-doc --disable-static 
+	./autogen.sh --prefix /usr --sysconfdir /etc --localstatedir /var/lib --mandir /usr/share/man --enable-shared --enable-introspection=no --enable-python  --disable-static 
 }
 
 pbs_build()

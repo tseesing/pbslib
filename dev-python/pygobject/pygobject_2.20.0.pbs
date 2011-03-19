@@ -20,7 +20,7 @@ pbs_unpack() {
 
 pbs_config() {
 	
-	YPB_CONFIG+=" --prefix=/usr --disable-docs "
+	YPB_CONFIG+=" --prefix=/usr  "
 	ypkg_config
 }
 

@@ -22,7 +22,7 @@ pbs_config() {
 	
 	YPB_CONFIG+=" --prefix=/usr --sysconfdir=/etc --localstatedir=/var \
 	              --mandir=/usr/share/man  \
-		      --disable-gtk-doc \
+		       \
 		      --disable-schemas-install \
 		      --enable-ipv6 \
 		      --enable-smime=yes \

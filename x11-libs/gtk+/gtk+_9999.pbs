@@ -40,7 +40,7 @@ pbs_config()
 	echo "config "$N-$V$R"..."
 	#fist, cd build directory
 	cd "$N"-$V$R
-	./autogen.sh --prefix "/usr" --sysconfdir "/etc" --mandir "/usr/share/man"  --disable-gtk-doc --disable-static --with-xinput=yes
+	./autogen.sh --prefix "/usr" --sysconfdir "/etc" --mandir "/usr/share/man"   --disable-static --with-xinput=yes
 }
 
 pbs_build()

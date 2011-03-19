@@ -27,7 +27,6 @@ pbs_build() {
 
 pbs_install() {
 	ypkg_mkinstall PREFIX=/usr
-	ypkg_dodesktop "$FILES_PATH"/files/smplayer.desktop
 	rm "$YPPATH_DEST"/usr/share/applications/smplayer_enqueue.desktop
 }
 

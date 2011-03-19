@@ -33,7 +33,7 @@ pbs_unpack() {
 
 pbs_config() {
 	
-	./autogen.sh --prefix /usr --disable-gtk-doc --disable-static
+	./autogen.sh --prefix /usr  --disable-static
 }
 
 pbs_build() {

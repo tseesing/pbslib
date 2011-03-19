@@ -18,7 +18,7 @@ pbs_unpack() {
 
 pbs_config() {
 	
-	YPB_CONFIG+=" --prefix=/usr --disable-gtk-doc --disable-static --disable-tests"
+	YPB_CONFIG+=" --prefix=/usr  --disable-static --disable-tests"
 	ypkg_config
 }
 

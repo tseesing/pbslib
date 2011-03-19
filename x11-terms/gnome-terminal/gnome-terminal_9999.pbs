@@ -35,7 +35,7 @@ pbs_unpack() {
 
 pbs_config() {
 	
-	./autogen.sh --prefix /usr --sysconfdir /etc --localstatedir /var/lib --mandir /usr/share/man --enable-shared --disable-schemas-install --disable-gtk-doc --disable-static
+	./autogen.sh --prefix /usr --sysconfdir /etc --localstatedir /var/lib --mandir /usr/share/man --enable-shared --disable-schemas-install  --disable-static
 }
 
 pbs_build() {

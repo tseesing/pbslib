@@ -19,7 +19,7 @@ pbs_unpack()
 pbs_config()
 {
 	
-	YPB_CONFIG+=" --prefix=/usr --disable-gtk-doc --disable-static "
+	YPB_CONFIG+=" --prefix=/usr  --disable-static "
 	ypkg_config
 }
 

@@ -20,14 +20,14 @@ pbs_unpack() {
 }
 
 pbs_config() {
-	YPB_CONFIG+="--disable-static --disable-docs"
+	YPB_CONFIG+="--disable-static"
 	ypkg_config
 }
 
 pbs_build() {
-	make "$MAKEOPTS"
+	ypkg_make make
 }
 
 pbs_install() {
-	ypkg_mkinstall
+	ypkg_mkinstall make
 }

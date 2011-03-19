@@ -49,7 +49,7 @@ pbs_config()
 	#sed -i 's/docs//g' geyes/Makefile.in stickynotes/Makefile.in trashapplet/Makefile.in gweather/Makefile.in \
 	#		   battstat/Makefile.in accessx-status/Makefile.in multiload/Makefile.in mixer/Makefile.in
 	./autogen.sh --prefix /usr --sysconfdir /etc --localstatedir /var/lib --mandir /usr/share/man --enable-shared  \
-	             --disable-schemas-install --enable-mixer-applet --disable-gtk-doc --disable-static
+	             --disable-schemas-install --enable-mixer-applet  --disable-static
 }
 
 pbs_build()

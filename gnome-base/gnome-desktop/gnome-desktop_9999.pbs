@@ -49,7 +49,7 @@ pbs_config()
 	#sed -i 's/gpl//g' desktop-docs/Makefile.in
 	#sed -i 's/lgpl//g' desktop-docs/Makefile.in
 	#
-	./autogen.sh --prefix /usr --sysconfdir /etc --localstatedir /var/lib --mandir /usr/share/man --enable-shared --with-gnome-distributor="GNOME YlmfOS" --disable-gtk-doc --disable-static
+	./autogen.sh --prefix /usr --sysconfdir /etc --localstatedir /var/lib --mandir /usr/share/man --enable-shared --with-gnome-distributor="GNOME YlmfOS"  --disable-static
 }
 
 pbs_build()

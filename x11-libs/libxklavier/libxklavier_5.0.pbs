@@ -21,7 +21,7 @@ pbs_unpack() {
 }
 
 pbs_config() {
-	YPB_CONFIG+="--disable-gtk-doc --with-xkb-base=/usr/share/X11/xkb"
+	YPB_CONFIG+=" --with-xkb-base=/usr/share/X11/xkb"
 	ypkg_config
 }
 

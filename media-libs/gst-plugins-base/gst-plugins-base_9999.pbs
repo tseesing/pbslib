@@ -51,8 +51,8 @@ pbs_config()
 	
 	#
 	#sed -i 's/\(.*gtkdoc-rebase --relative.* \)\(;.*\)/\1|| true\2/' docs/libs/Makefile.in
-	#YPB_CONFIG+=" --prefix=/usr --disable-gtk-doc "
-	./autogen.sh --prefix /usr --disable-tests --disable-gtk-doc --disable-static
+	#YPB_CONFIG+=" --prefix=/usr  "
+	./autogen.sh --prefix /usr --disable-tests  --disable-static
 }
 
 pbs_build()

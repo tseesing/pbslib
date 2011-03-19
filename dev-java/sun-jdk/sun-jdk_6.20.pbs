@@ -46,3 +46,7 @@ unset AUTO_CLASSPATH_DIR
 unset dir
 EOF
 }
+
+pbs_postinst () {
+	sh /opt/jdk/jdkpath.sh
+}

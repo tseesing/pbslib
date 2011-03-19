@@ -36,7 +36,7 @@ pbs_config()
 	cd $N-$V
 	#fixed The Home and End keys broken problem in the xterm termcap file
 	sed -i 's%\\177:%&kh=\\EOH:@7=\\EOF:%' termcaps/xterm 
-	./autogen.sh --prefix /usr --disable-gtk-doc --disable-static
+	./autogen.sh --prefix /usr  --disable-static
 }
 
 pbs_build()

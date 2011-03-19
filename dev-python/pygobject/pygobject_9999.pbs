@@ -41,7 +41,7 @@ pbs_config()
 	#bug, fix me!
 	ln -sv /usr/share/aclocal-1.8  /usr/share/aclocal-
 	
-	./autogen.sh --prefix /usr --disable-static --disable-docs
+	./autogen.sh --prefix /usr --disable-static 
 }
 
 pbs_build()

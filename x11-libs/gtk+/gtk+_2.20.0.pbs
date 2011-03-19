@@ -21,7 +21,7 @@ pbs_config() {
 	YPB_CONFIG+="  --prefix=/usr \
 		       --sysconfdir=/etc \
 		       --mandir=/usr/share/man \
-		       --disable-gtk-doc \
+		        \
 		       --with-xinput=yes "
 	ypkg_config
 }

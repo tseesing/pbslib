@@ -19,7 +19,7 @@ pbs_unpack() {
 
 pbs_config() {
 	ypkg_patch devicekit-power.automake.diff
-	YPB_CONFIG+="--enable-man-pages --disable-gtk-doc"
+	YPB_CONFIG+="--enable-man-pages "
 	ypkg_config
 }
 

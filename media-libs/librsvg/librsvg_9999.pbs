@@ -35,7 +35,7 @@ pbs_config()
 {
 	echo "config "$N-$V$R"..."
 	
-	./autogen.sh --prefix /usr --sysconfdir /etc --with-svgz --with-croco --disable-gtk-doc --disable-static
+	./autogen.sh --prefix /usr --sysconfdir /etc --with-svgz --with-croco  --disable-static
 }
 
 pbs_build()

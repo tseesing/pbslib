@@ -20,14 +20,14 @@ pbs_unpack() {
 }
 
 pbs_config() {
-	YPB_CONFIG+="--disable-gtk-doc --disable-static"
+	YPB_CONFIG+="--disable-static"
 	ypkg_config
 }
 
 pbs_build() {
-	ypkg_make
+	ypkg_make make
 }
 
 pbs_install() {
-	ypkg_mkinstall
+	ypkg_mkinstall make
 }

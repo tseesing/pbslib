@@ -22,7 +22,7 @@ pbs_unpack() {
 pbs_config() {
 	YPB_CONFIG+="--disable-debug 
 	             --without-asyncns 
-		     --disable-gtk-doc
+		     
 		     --with-ssl=gnutls 
 		     --without-asyncns 
 		     --with-ssl=openssl"

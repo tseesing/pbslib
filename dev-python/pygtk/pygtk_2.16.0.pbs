@@ -19,8 +19,7 @@ pbs_unpack() {
 }
 
 pbs_config() {
-	
-	YPB_CONFIG+=" --prefix=/usr --enable-docs=no "
+	YPB_CONFIG+=" --prefix=/usr "
 	ypkg_config
 }
 

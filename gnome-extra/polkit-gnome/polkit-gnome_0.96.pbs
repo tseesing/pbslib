@@ -24,7 +24,7 @@ pbs_unpack() {
 pbs_config() {
 	ypkg_patch polkit-gnome-0.95-fix-make-check.patch
 	ypkg_patch polkit-gnome-0.95-parallel-build-failure.patch
-	YPB_CONFIG+="--disable-gtk-doc --disable-introspection"
+	YPB_CONFIG+=" --disable-introspection"
 	ypkg_config
 }
 

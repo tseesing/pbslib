@@ -32,3 +32,7 @@ pbs_install() {
 	ypkg_mkinstall
 	ypkg_dodoc AUTHORS ChangeLog NEWS README TODO
 }
+
+pbs_postinst () {
+	ypkg_libtool_finish /usr/lib/python2.6/site-packages
+}

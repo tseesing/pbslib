@@ -42,7 +42,7 @@ pbs_config()
 {
 	echo "config "$N-$V$R"..."
 	
-	./autogen.sh --prefix /usr --disable-gtk-doc --disable-static --sysconfdir /etc --localstatedir /var/lib --mandir /usr/share/man --enable-shared  \
+	./autogen.sh --prefix /usr  --disable-static --sysconfdir /etc --localstatedir /var/lib --mandir /usr/share/man --enable-shared  \
 	             --enable-hal --enable-gphoto2 --enable-archive --enable-samba --enable-keyring --enable-obexftp --enable-gconf --enable-fuse --enable-cdda \
 		     --enable-avahi --enable-http
 }

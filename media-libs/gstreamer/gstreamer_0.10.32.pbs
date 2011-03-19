@@ -18,7 +18,7 @@ pbs_unpack() {
 }
 
 pbs_config() {
-	YPB_CONFIG+="--disable-gtk-doc --disable-docbook --disable-tests"
+	YPB_CONFIG+=" --disable-docbook --disable-tests"
 	ypkg_config
 }
 

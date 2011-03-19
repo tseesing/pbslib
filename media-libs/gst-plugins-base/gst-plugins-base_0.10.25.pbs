@@ -21,7 +21,7 @@ pbs_unpack() {
 pbs_config() {
 	
 	sed -i 's/\(.*gtkdoc-rebase --relative.* \)\(;.*\)/\1|| true\2/' docs/libs/Makefile.in
-	YPB_CONFIG+=" --prefix=/usr --disable-gtk-doc "
+	YPB_CONFIG+=" --prefix=/usr  "
 	ypkg_config
 }
 

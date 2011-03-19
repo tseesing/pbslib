@@ -23,7 +23,7 @@ pbs_unpack() {
 }
 
 pbs_config() {
-	YPB_CONFIG+="--disable-gtk-doc --disable-schemas-install --enable-locations-compression"
+	YPB_CONFIG+=" --disable-schemas-install --enable-locations-compression"
 	ypkg_config
 }
 

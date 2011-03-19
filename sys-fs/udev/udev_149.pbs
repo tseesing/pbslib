@@ -18,7 +18,7 @@ pbs_unpack() {
 pbs_config() {
 	
 	YPB_CONFIG+=" --prefix=/usr \
-	 	      --disable-gtk-doc \
+	 	       \
 	              --sysconfdir=/etc  \
 		      --sbindir=/sbin  \
 	              --with-rootlibdir=/lib \

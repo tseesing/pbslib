@@ -35,7 +35,7 @@ pbs_config()
 	echo "config "$N-$V$R"..."
 	#fist, cd build directory
 	
-	./autogen.sh --prefix /usr --sysconfdir /etc --disable-gtk-doc --disable-static 
+	./autogen.sh --prefix /usr --sysconfdir /etc  --disable-static 
 }
 
 pbs_build()

@@ -33,7 +33,7 @@ pbs_config() {
 	libtoolize --force
 	autoreconf -vif
 	YPB_CONFIG+=" --libdir=/usr/lib 
-		      --disable-gtk-doc 
+		       
 		      --with-libjpeg 
 		      --without-libjasper 
 		      --with-libtiff 

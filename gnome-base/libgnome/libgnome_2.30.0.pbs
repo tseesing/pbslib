@@ -21,7 +21,7 @@ pbs_unpack() {
 
 pbs_config() {
 	YPB_CONFIG+="--disable-schemas-install 
-		     --disable-gtk-doc "
+		      "
 	ypkg_config
 }
 

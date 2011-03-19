@@ -33,7 +33,7 @@ pbs_config() {
 		      --enable-man-pages 
 		      --disable-dependency-tracking 	
 		      --disable-verbose-mode 
-		      --disable-gtk-doc 
+		       
 		      --enable-nls "
 	ypkg_config
 }

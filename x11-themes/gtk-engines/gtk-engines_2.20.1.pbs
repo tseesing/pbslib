@@ -33,6 +33,6 @@ pbs_install() {
 pbs_postinst() {
 	# libtoolize the installation
 	for dir in engines filesystems loaders; do
-		libtool --finish --silent /usr/lib*/gtk*/*/$dir
+		ypkg_libtool_finish /usr/lib*/gtk*/*/$dir
 	done
 }

@@ -73,5 +73,5 @@ pbs_install() {
 }
 
 pbs_postinst() {
-	libtool --finish /usr/lib/xorg/modules/extensions
+	ypkg_libtool_finish /usr/lib/xorg/modules/extensions
 }

@@ -1,0 +1,40 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="Chromium B.S.U. is a fast paced, arcade-style, top-scrolling shooter. It uses OpenGL for graphics, and OpenAL for sound effects."
+HOMEPAGE="http://chromium-bsu.sourceforge.net/"
+REPO="testing"
+LICENSE="Artistic License, MIT License"
+PRIORITY=""
+PACKAGER="Zhongxin Huang, hzx@115.com"
+
+SRC_URI="http://downloads.sourceforge.net/project/"$N"/Chromium%20B.S.U.%20source%20code/"$V$R"/"$N-$V$R".tar.gz"
+
+RDEPEND=""
+BDEPEND="${RDEPEND} "
+RECOMMENDED=""
+CONFLICT=""
+
+NOTES=""
+
+pbs_unpack() {
+        ypkg_unpack
+}
+
+pbs_config() {
+	YPB_CONFIG+=""
+	ypkg_config
+}
+
+pbs_build() {
+	ypkg_make
+}
+
+pbs_install() {
+	ypkg_mkinstall
+}
+
+pbs_postinst() {
+	gnome2_desktop_database_update
+}

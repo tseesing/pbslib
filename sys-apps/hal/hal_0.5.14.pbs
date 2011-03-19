@@ -35,7 +35,7 @@ pbs_config() {
 		      --disable-acpi-toshiba
 		      --disable-parted  
 		      --disable-docbook-docs
-		      --disable-gtk-doc
+		      
 		      --disable-policy-kit  
 		      --enable-umount-helper
 		      --enable-man-pages

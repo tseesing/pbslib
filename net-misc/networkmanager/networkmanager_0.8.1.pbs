@@ -35,8 +35,6 @@ pbs_config() {
 	              --with-dbus-sys-dir=/etc/dbus-1/system.d 
 	              --with-udev-dir=/etc/udev 
 		      --with-iptables=/sbin/iptables 
-		      --disable-gtk-doc 
-		      --without-docs 
 		      --without-resolvconf 
 		      --with-crypto=nss "
 	ypkg_config

@@ -24,7 +24,7 @@ pbs_unpack() {
 pbs_config() {
 	YPB_CONFIG+=" --disable-schemas-install 
 		      --enable-nautilus 
-		      --disable-gtk-doc 
+		       
 		      --disable-scrollkeeper "
 	ypkg_config
 }

@@ -47,7 +47,7 @@ pbs_config()
 	echo "config "$N-$V$R"..."
 	#fist, cd build directory
 	
-	./autogen.sh --prefix /usr --sysconfdir /etc --localstatedir /var/lib --mandir /usr/share/man --enable-shared --disable-schemas-install --disable-gtk-doc --disable-static
+	./autogen.sh --prefix /usr --sysconfdir /etc --localstatedir /var/lib --mandir /usr/share/man --enable-shared --disable-schemas-install  --disable-static
 }
 
 pbs_build()

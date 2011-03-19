@@ -46,7 +46,7 @@ pbs_config()
 	echo "config "$N-$V$R"..."
 	
 	./autogen.sh --prefix /usr --sysconfdir /etc --localstatedir /var/lib --libexecdir /usr/lib/bonobo --mandir /usr/share/man --enable-shared --enable-threads  \
-	             --disable-gtk-doc --disable-static
+	              --disable-static
 }
 
 pbs_build()

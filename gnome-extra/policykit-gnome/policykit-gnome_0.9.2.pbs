@@ -24,7 +24,7 @@ pbs_config() {
 	YPB_CONFIG+=" --prefix=/usr 
 	              --sysconfdir=/etc 
 		      --localstatedir=/var 
-	              --disable-gtk-doc
+	              
 		      --disable-static"
 	ypkg_config
 }

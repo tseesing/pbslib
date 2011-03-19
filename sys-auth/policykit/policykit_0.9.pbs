@@ -30,7 +30,7 @@ pbs_config() {
 		      --enable-man-pages  
 		      --with-polkit-user=polkituser 
 		      --with-polkit-group=polkituser 
-		      --disable-gtk-doc 
+		       
 		      --disable-selinux "
 		      #--with-os-type=gentoo \
 	ypkg_config	      

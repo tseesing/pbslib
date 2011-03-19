@@ -40,7 +40,7 @@ pbs_config()
 {
 	echo "config "$N-$V$R"..."
 	
-	./autogen.sh --prefix /usr --disable-gtk-doc --disable-static 
+	./autogen.sh --prefix /usr  --disable-static 
 }
 
 pbs_build()

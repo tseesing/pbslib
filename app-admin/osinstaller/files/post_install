@@ -61,7 +61,7 @@ fi
 #chroot "$TARGETDIR" update-initramfs -d -u
 
 #Update grub.cfg
-#chroot "$TARGETDIR" /usr/sbin/update-grub
+chroot "$TARGETDIR" /usr/sbin/update-grub
 
 #Copy apps to favorites
 chroot "$TARGETDIR" su "$INS_USERNAME" -c "mkdir -p /home/"$INS_USERNAME"/.gnomenu/favorites/"

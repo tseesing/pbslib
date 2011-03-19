@@ -33,8 +33,6 @@ pbs_config() {
 	YPB_CONFIG+=" --disable-more-warnings --with-distro=gentoo 
 	              --with-dbus-sys-dir=/etc/dbus-1/system.d 
 	              --with-udev-dir=/etc/udev 
-		      --disable-gtk-doc 
-		      --without-docs 
 		      --without-resolvconf 
 		      --with-crypto=nss "
 		      #--with-iptables=/sbin/iptables 

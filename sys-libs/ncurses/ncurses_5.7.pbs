@@ -18,7 +18,7 @@ pbs_unpack() {
 }
 
 pbs_config() {
-	YPB_CONFIG+="--without-debug --enable-widec"
+	YPB_CONFIG+="--without-debug --enable-widec --includedir=/usr/include/ncursesw"
 	ypkg_config
 }
 
@@ -28,7 +28,6 @@ pbs_build() {
 
 pbs_install() {
 	ypkg_mkinstall
-	ypkg_dodoc doc/*
 	cd "$YPPATH_DEST"
 	ypkg_domv usr/lib/libncurses*  lib
 	ypkg_doln ../../lib/libncursesw.so.5                usr/lib/libncursesw.so
@@ -44,4 +43,8 @@ pbs_install() {
 	ypkg_doln libncurses.so usr/lib/libcurses.so
 	ypkg_doln libncursesw.a usr/lib/libcursesw.a
 	ypkg_doln libncurses.a  usr/lib/libcurses.a
+	#
+	ls -1 usr/include/ncursesw/*.h |while read line; do
+		ypkg_doln "/$line"  usr/include/"$(basename $line)"
+	done
 }

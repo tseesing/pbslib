@@ -26,8 +26,18 @@ pbs_config() {
 
 pbs_build() {
 	ypkg_make
+	#fix me, creat mo
+	cd po
+	for i in *.po; do
+		msgfmt $i -o ${i%*.po}.mo
+	done
+	cd ..
 }
 
 pbs_install() {
 	ypkg_mkinstall
+	cd po
+	for i in *.mo; do
+		ypkg_docp_rename $i "$YPPATH_DEST"/usr/share/locale/${i%*.mo}/LC_MESSAGES/libgksu.mo
+	done
 }

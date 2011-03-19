@@ -47,7 +47,7 @@ pbs_config()
 	
 	#disable doc ,fix me!
 	#sed -i 's/doc$//g' Makefile.in
-	./autogen.sh --prefix /usr --sysconfdir /etc --localstatedir /var/lib --mandir /usr/share/man --disable-gtk-doc --disable-static
+	./autogen.sh --prefix /usr --sysconfdir /etc --localstatedir /var/lib --mandir /usr/share/man  --disable-static
 	
 }
 

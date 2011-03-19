@@ -19,7 +19,7 @@ pbs_unpack() {
 
 pbs_config() {
 	YPB_CONFIG+=" --enable-man-pages 
-		      --disable-gtk-doc	"
+		      	"
 	ypkg_config
 }
 

@@ -22,7 +22,7 @@ pbs_unpack() {
 
 pbs_config() {
 	ypkg_patch "default-keyring-name-must-en.patch"
-	YPB_CONFIG+="--disable-gtk-doc"
+	YPB_CONFIG+=""
 	ypkg_config
 }
 

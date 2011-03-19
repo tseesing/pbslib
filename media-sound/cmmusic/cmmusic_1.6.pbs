@@ -11,7 +11,7 @@ PACKAGER="Zhongxin Huang, hzx@115.com"
 
 SRC_URI="http://downloads.sourceforge.net/project/cmmusic/CMMusic_src/cmmusic-1.6/cmmusic-1.6.tar.gz"
 
-RDEPEND="mplayer"
+RDEPEND="mplayer ncurses"
 BDEPEND="${RDEPEND} "
 RECOMMENDED=""
 CONFLICT=""
@@ -31,4 +31,5 @@ pbs_build() {
 
 pbs_install() {
 	ypkg_mkinstall
+	gnome2_desktop_database_update
 }

@@ -18,7 +18,7 @@ pbs_unpack() {
 
 pbs_config() {
 	ypkg_patch ylmfos-rules.patch
-	YPB_CONFIG+=" --disable-gtk-doc 
+	YPB_CONFIG+="  
 		      --sbindir=/sbin  
 	              --with-rootlibdir=/lib 
 		      --libexecdir=/lib/udev 

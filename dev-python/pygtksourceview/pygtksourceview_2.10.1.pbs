@@ -20,7 +20,7 @@ pbs_unpack() {
 }
 
 pbs_config() {
-	YPB_CONFIG+="--disable-docs --disable-gtk-doc"
+	YPB_CONFIG+=" "
 	ypkg_config
 }
 

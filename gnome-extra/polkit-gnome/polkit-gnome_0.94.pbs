@@ -24,7 +24,7 @@ pbs_config() {
 		      --sysconfdir=/etc \
 		      --docdir=/usr/share/doc  \
 		      --mandir=/usr/share/man \
-		      --disable-gtk-doc \
+		       \
 		      --disable-static \
 		      --disable-introspection "
 	ypkg_config

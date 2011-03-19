@@ -20,10 +20,10 @@ pbs_unpack() {
 
 pbs_config(){
 	cp "$YPPATH_SOURCE"/{lm_sc.t3g.arpa.tar.bz2,dict.utf8.tar.bz2} raw
+	YPB_CONFIG="--prefix=/usr"
 	ypkg_config
 }
 
 pbs_install() {
 	ypkg_mkinstall
-	ypkg_dodoc AUTHORS ChangeLog NEWS README TODO
 }

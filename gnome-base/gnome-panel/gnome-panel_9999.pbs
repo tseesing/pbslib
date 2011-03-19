@@ -49,7 +49,7 @@ pbs_config()
 	#disable help,fix me!
 	#sed -i '/help/d' configure.in Makefile.in
 	./autogen.sh --prefix /usr --sysconfdir=/etc --localstatedir=/var --mandir=/usr/share/man --enable-shared --disable-schemas-install \
-		     --disable-network-manager --enable-polkit --disable-scrollkeeper --with-in-process-applets=clock,notification-area,wncklet  --disable-gtk-doc --disable-static 
+		     --disable-network-manager --enable-polkit --disable-scrollkeeper --with-in-process-applets=clock,notification-area,wncklet   --disable-static 
 }
 
 pbs_build()

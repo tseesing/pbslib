@@ -45,7 +45,7 @@ pbs_config()
 {
 	echo "config "$N-$V$R"..."
 	
-	./autogen.sh --disable-gtk-doc --disable-static --prefix /usr --sysconfdir /etc --localstatedir /var/lib --mandir /usr/share/man --disable-schemas-install 
+	./autogen.sh  --disable-static --prefix /usr --sysconfdir /etc --localstatedir /var/lib --mandir /usr/share/man --disable-schemas-install 
 }
 
 pbs_build()

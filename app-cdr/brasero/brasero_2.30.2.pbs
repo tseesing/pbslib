@@ -21,7 +21,7 @@ pbs_unpack() {
 }
 
 pbs_config() {
-	YPB_CONFIG+="--disable-gtk-doc --enable-introspection=no"
+	YPB_CONFIG+=" --enable-introspection=no"
 	ypkg_config
 }
 

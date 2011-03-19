@@ -22,7 +22,7 @@ pbs_unpack() {
 pbs_config() {
 	
 	YPB_CONFIG+=" --prefix=$(pkg-config --variable=prefix ORBit-2.0)
-		      --disable-gtk-doc "
+		       "
 	ypkg_config
 }
 

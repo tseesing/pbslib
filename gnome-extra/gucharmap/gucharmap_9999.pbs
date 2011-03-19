@@ -48,7 +48,7 @@ pbs_config()
 	
 	#disable help, fix me!
 	#sed -i '/help/d' Makefile.in
-	./autogen.sh --prefix /usr --localstatedir /var/lib --disable-gtk-doc --disable-static
+	./autogen.sh --prefix /usr --localstatedir /var/lib  --disable-static
 }
 
 pbs_build()
