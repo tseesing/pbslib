@@ -49,7 +49,6 @@ pbs_config() {
 	ypkg_config
 }
 
-#build
 pbs_build() {
 	#make "$MAKEOPTS"
 	ypkg_make
