@@ -28,7 +28,6 @@ pbs_unpack() {
         ypkg_unpack
 }
 
-#config
 pbs_config() {
 	#fist, cd build directory
 	#cd "$N-$V$R"
