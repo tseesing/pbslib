@@ -10,7 +10,7 @@ PACKAGER="Zhongxin Huang, hzx@115.com"
 
 SRC_URI="http://www.x.org/releases/X11R7.6/src/app/"$N-$V$R".tar.bz2"
 
-RDEPEND="libXext libXft libXrender fontconfig freetype libX11 libXmu zlib expat libxcb libXau libxdmcp"
+RDEPEND="libXext libXft libXrender fontconfig freetype libX11 libXmu zlib expat libxcb libXau libXdmcp"
 BDEPEND="${RDEPEND} x11-libs/libXrender x11-libs/libXft"
 
 pbs_unpack() {
@@ -18,7 +18,6 @@ pbs_unpack() {
 }
 
 pbs_config() {
-	
 	ypkg_config
 }
 
