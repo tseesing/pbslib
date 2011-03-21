@@ -20,7 +20,7 @@ NOTES=""
 
 pbs_init() {
 	:
-	#ypkg_useradd -c "$C" -d "$D" -s "$S" -g "$G" "$N"
+	#ypkg_useradd -c "$C" -d "$D" -s "$S" -g "$G" "$N"  
 }
 
 pbs_unpack() {
