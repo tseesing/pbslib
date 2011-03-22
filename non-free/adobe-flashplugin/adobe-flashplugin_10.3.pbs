@@ -1,0 +1,27 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="Adobe Flash Player plugin"
+HOMEPAGE="http://www.adobe.com/"
+LICENSE="http://www.adobe.com/cn/products/eulas/"
+PACKAGER="hzx@115.com"
+
+SRC_URI="http://download.macromedia.com/pub/labs/flashplatformruntimes/flashplayer10-3/flashplayer10-3_b1_lin_030811.tar.gz"
+
+RDEPEND=""
+BDEPEND="${RDEPEND} "
+RECOMMENDED=""
+
+NOTES=""
+
+pbs_unpack() {
+	ypkg_unpack
+}
+
+pbs_install() {
+	ypkg_docp libflashplayer.so  "$YPPATH_DEST"/usr/lib/adobe-flashplugin
+        for i in xulrunner mozilla iceape iceweasel firefox midbrowser xulrunner-addons; do
+	      ypkg_doln /usr/lib/adobe-flashplugin/libflashplayer.so "$YPPATH_DEST"/usr/lib/"${i}"/plugins/libflashplayer.so
+	done
+}
