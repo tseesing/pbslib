@@ -20,6 +20,7 @@ pbs_unpack() {
 
 pbs_config(){
 	cp "$YPPATH_SOURCE"/{lm_sc.t3g.arpa.tar.bz2,dict.utf8.tar.bz2} raw
+	ypkg_patch sunpinyin_default_pageUpDown.patch
 	YPB_CONFIG="--prefix=/usr"
 	ypkg_config
 }

@@ -9,7 +9,7 @@ PACKAGER="hzx@115.com"
 
 SRC_URI="http://download.macromedia.com/pub/labs/flashplatformruntimes/flashplayer10-3/flashplayer10-3_b1_lin_030811.tar.gz"
 
-RDEPEND=""
+RDEPEND="curl"
 BDEPEND="${RDEPEND} "
 RECOMMENDED=""
 

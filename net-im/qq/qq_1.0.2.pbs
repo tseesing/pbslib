@@ -7,7 +7,7 @@ HOMEPAGE="http://im.qq.com/qq/linux/download.shtml"
 LICENSE="GPL-2"
 PACKAGER="hzx@115.com"
 
-SRC_URI="http://dl_dir.qq.com/linuxqq/"${N}"_v"$V${R}"_i386.tar.gz"
+SRC_URI="http://dl_dir.qq.com/linuxqq/linuxqq_v"$V${R}"_i386.tar.gz"
 
 RDEPEND=""
 BDEPEND="${RDEPEND} gtk+"

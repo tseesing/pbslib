@@ -9,7 +9,7 @@ PACKAGER="hzx@115.com"
 
 SRC_URI="http://curl.haxx.se/download/"$N-$V$R".tar.bz2"
 
-RDEPEND="zlib glibc"
+RDEPEND="zlib glibc openldap-client"
 BDEPEND="${RDEPEND}"
 
 pbs_unpack() {

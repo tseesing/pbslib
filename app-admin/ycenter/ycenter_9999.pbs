@@ -7,7 +7,7 @@ HOMEPAGE="http://www.ylmf.net"
 LICENSE=""
 PACKAGER="hzx@115.com"
 
-SRC_URI="git://192.168.1.58/"$N".git"
+SRC_URI="git://192.168.1.58/ylmfcenter.git"
 
 RDEPEND="python"
 BDEPEND="${RDEPEND}"
