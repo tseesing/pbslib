@@ -1,0 +1,29 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="pidof command, part of sysvinit"
+HOMEPAGE="http://freshmeat.net/projects/sysvinit/"
+ 
+SRC_URI="ftp://ftp.cistron.nl/pub/people/miquels/sysvinit/sysvinit-"$V$R".tar.gz"
+
+RDEPEND="glibc"
+BDEPEND="${RDEPEND}"
+
+pbs_unpack() {
+        ypkg_unpack
+}
+
+pbs_build() {
+	#all program was installed earlier by Util-linux-ng
+	sed -i -e 's/utmpdump wall/utmpdump/' \
+	       -e 's/mountpoint.1 wall.1/mountpoint.1/' src/Makefile
+	make -C src
+}
+
+pbs_install() {
+	cd src
+	ypkg_docp killall5 mountpoint bootlogd last mesg utmpdump \
+		  "$YPPATH_DEST"/usr/bin/
+	ypkg_doln  /usr/bin/killall5 "$YPPATH_DEST"/usr/bin/pidof
+}
