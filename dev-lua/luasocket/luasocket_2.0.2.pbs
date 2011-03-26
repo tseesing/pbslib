@@ -1,0 +1,37 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="Networking support library for the Lua language."
+HOMEPAGE="http://www.tecgraf.puc-rio.br/~diego/professional/luasocket/"
+REPO=""
+LICENSE="GPL"
+PRIORITY=""
+PACKAGER="Zhongxin Huang, hzx@115.com"
+
+SRC_URI="http://luaforge.net/frs/download.php/2664/"$N-$V$R".tar.gz"
+
+RDEPEND=""
+BDEPEND="${RDEPEND} lua"
+RECOMMENDED=""
+CONFLICT=""
+
+NOTES=""
+
+pbs_unpack() {
+        ypkg_unpack
+}
+
+pbs_config() {
+	ypkg_patch luasocket-2.0.2-unixsocket.patch
+	YPB_CONFIG+=""
+	ypkg_config
+}
+
+pbs_build() {
+	ypkg_make
+}
+
+pbs_install() {
+	ypkg_mkinstall INSTALL_TOP_SHARE="$YPPATH_DEST"/usr/share/lua/5.1 INSTALL_TOP_LIB="$YPPATH_DEST"/usr/lib/lua/5.1
+}

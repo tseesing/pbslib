@@ -60,6 +60,7 @@ pbs_postinst() {
 	gnome2_install_defaut_gconf "bool"   "/apps/nautilus/preferences/always_use_location_entry" "True"
 	gnome2_install_defaut_gconf "bool"   "/apps/nautilus/desktop/volumes_visible" "false"
 	#
-	gnome2_install_defaut_gconf "string" "/apps/nautilus/preferences/desktop_font"  "Ubuntu 10"
+	#gnome2_install_defaut_gconf "string" "/apps/nautilus/preferences/desktop_font"  "Ubuntu 10"
+	gnome2_install_defaut_gconf "string" "/apps/nautilus/preferences/desktop_font"  "WenQuanYi Micro Hei 10"
 	gnome2_gconfd_reload 
 }

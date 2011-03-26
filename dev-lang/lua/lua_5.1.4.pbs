@@ -4,7 +4,7 @@
 
 DESCRIPTION="A powerful light-weight programming language designed for extending applications"
 HOMEPAGE="http://www.lua.org/docs.html"
-LICENSE="GPL-2"
+LICENSE="MIT license"
 PACKAGER="hzx@115.com"
  
 SRC_URI="http://www.lua.org/ftp/"$N-$V$R".tar.gz"

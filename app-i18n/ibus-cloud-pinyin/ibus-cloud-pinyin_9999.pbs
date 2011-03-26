@@ -1,0 +1,63 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="Pinyin input method based on web pinyin services and ibus"
+HOMEPAGE="http://code.google.com/p/ibus-cloud-pinyin/"
+REPO=""
+LICENSE="Code license: GNU GPL v3; Content license: Creative Commons 3.0 BY-SA"
+PRIORITY=""
+PACKAGER="Zhongxin Huang, hzx@115.com"
+
+SRC_URI=""
+
+RDEPEND="ibus luasocket"
+BDEPEND="${RDEPEND} lua libnotify libgee atk sqlite"
+RECOMMENDED=""
+CONFLICT=""
+
+NOTES=""
+
+pbs_unpack() {
+	svn checkout http://ibus-cloud-pinyin.googlecode.com/svn/trunk/ ibus-cloud-pinyin-read-only
+	cd ibus-cloud-pinyin-read-only
+}
+
+pbs_config() {
+	YPB_CONFIG+=""
+	ypkg_config
+}
+
+pbs_build() {
+	ypkg_make
+}
+
+pbs_install() {
+	#make DESTDIR="$YPPATH_DEST" install
+	ypkg_mkinstall
+}
+
+#post install
+pbs_postinst() {
+	:
+	#gnome2_install_schema "$1"
+	#gnome2_install_defaut_gconf "$1 $2 $3
+	#gnome2_rarian_sk_update
+	#gnome2_desktop_database_update
+	#gnome2_icon_cache_update
+	#gnome2_gconfd_reload
+	#gnome2_gtk_immodules_update
+	#gnome2_mime_database_update
+	#gnome2_gdk_pixbuf_loaders_update
+	#ypkg_dofont /usr/share/fonts/truetype/ttf-dejavu
+}
+
+#pre remove
+pbs_prerm() {
+	:
+}
+
+#post remove
+pbs_postrm() {
+	:
+}

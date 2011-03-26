@@ -9,7 +9,7 @@ PACKAGER="hzx@115.com"
 
 SRC_URI="git://192.168.1.58/"$N".git"
 
-RDEPEND="pyparted" 
+RDEPEND="pyparted squashfs-tools" 
 BDEPEND="${RDEPEND}"
 RECOMMENDED="pywebkitgtk dosfstools jfsutils ntfsprogs e2fsprogs reiserfsprogs xfsprogs"
 
