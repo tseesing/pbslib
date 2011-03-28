@@ -47,6 +47,10 @@ CONFLICT=""
 # User notes, some important tips.
 NOTES=""
 
+#
+#MYSPLIT="usr/src $N-headers"
+
+
 #init 
 pbs_init() {
 	:
