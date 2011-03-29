@@ -1,0 +1,58 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="Firefox Web Browser"
+HOMEPAGE="http://www.mozilla.com/firefox"
+REPO=""
+LICENSE="multi license"
+PRIORITY=""
+PACKAGER="Zhongxin Huang, hzx@115.com"
+
+SRC_URI="ftp://ftp.mozilla.org/pub/mozilla.org/"$N"/releases/"$V$R"/source/"$N-$V$R".source.tar.bz2"
+
+RDEPEND=""
+BDEPEND="${RDEPEND} mercurial"
+RECOMMENDED=""
+CONFLICT=""
+
+NOTES="Do not distribute builds with
+--enable-official-branding unless you have
+permission to use trademarks per
+http://www.mozilla.org/foundation/trademarks/"
+
+pbs_unpack() {
+        ypkg_unpack
+}
+
+pbs_config() {
+	mkdir -p l10n
+	cd l10n
+	echo "* ui locale zh-CN downloading ..."
+	hg clone http://hg.mozilla.org/l10n-central/zh-CN/
+	cd ..
+	YPB_CONFIG+="--enable-application=browser
+		     --with-l10n-base=l10n
+		     --enable-ui-locale=zh-CN
+		     --enable-official-branding
+		     --with-distribution-id=ylmfos
+		     --disable-debug 
+		     --disable-tests"
+	ypkg_config
+}
+
+pbs_build() {
+	ypkg_make
+}
+
+pbs_install() {
+	ypkg_mkinstall
+	cd "$YPPATH_DEST"
+	ypkg_dodesktop "firefox.desktop"
+	ypkg_docp_rename usr/lib/firefox-4.0/icons/mozicon128.png usr/share/pixmaps/firefox.png
+
+}
+
+pbs_postinst() {
+	gnome2_desktop_database_update
+}
