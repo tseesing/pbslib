@@ -1,0 +1,57 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="Thunderbird Mail Client"
+HOMEPAGE="http://www.mozilla.com/en-US/thunderbird/"
+REPO=""
+LICENSE="GPL, MPL"
+PRIORITY=""
+PACKAGER="Zhongxin Huang, hzx@115.com"
+
+SRC_URI="http://releases.mozilla.org/pub/mozilla.org/"$N"/releases/"$V$R"/source/"$N-$V$R".source.tar.bz2"
+
+RDEPEND=""
+BDEPEND="${RDEPEND} "
+RECOMMENDED=""
+CONFLICT=""
+
+NOTES=""
+
+pbs_unpack() {
+        ypkg_unpack
+}
+
+pbs_config() {
+	#mkdir -p l10n
+	#cd l10n
+	#echo "* ui locale zh-CN downloading ..."
+	#hg clone http://hg.mozilla.org/l10n-central/zh-CN/
+	#cd ..
+	YPB_CONFIG+="--enable-application=mail
+		     --enable-official-branding
+		     --with-distribution-id=ylmfos
+		     --disable-debug 
+		     --disable-tests
+		     --enable-static
+		     --enable-startup-notification 
+		     --enable-optimize=-O2"
+		     #--with-l10n-base=l10n
+		     #--enable-ui-locale=zh-CN
+	ypkg_config
+}
+
+pbs_build() {
+	ypkg_make
+}
+
+pbs_install() {
+	ypkg_mkinstall
+	cd "$YPPATH_DEST"
+	ypkg_dodesktop "thunderbird.desktop"
+	ypkg_docp_rename usr/lib/thunderbird-3.1.9/chrome/icons/default/default48.png usr/share/pixmaps/thunderbird.png
+}
+
+pbs_postinst() {
+	gnome2_desktop_database_update
+}

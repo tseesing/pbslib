@@ -35,6 +35,8 @@ pbs_config() {
 		     --with-l10n-base=l10n
 		     --enable-ui-locale=zh-CN
 		     --enable-official-branding
+		     --enable-optimize=-O2
+		     --enable-startup-notification 
 		     --with-distribution-id=ylmfos
 		     --disable-debug 
 		     --disable-tests"

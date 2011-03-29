@@ -1,15 +1,15 @@
 [Desktop Entry]
 Version=1.0
 Name=Thunderbird (bin)
-Name[zh_CN]=Thunderbird (bin) 邮件客户端
-Comment=
-Comment[zh_CN]=邮件客户端
+Name[zh_CN]=Thunderbird 邮件客户端
+Comment=Thunderbird mail client
+Comment[zh_CN]=雷鸟邮件客户端
 GenericName=Thunderbird
 Exec=thunderbird-bin
 Terminal=false
 X-MultipleArgs=false
 Type=Application
-Icon=thunderbird-bin
+Icon=thunderbird
 Categories=Application;Internet;Network;
 MimeType=
 StartupNotify=true
