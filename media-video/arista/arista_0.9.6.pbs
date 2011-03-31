@@ -1,0 +1,36 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="An easy to use multimedia transcoder for the GNOME Desktop"
+HOMEPAGE="http://www.transcoder.org/"
+REPO="testing"
+LICENSE="GPL"
+PRIORITY=""
+PACKAGER="Zhongxin Huang, hzx@115.com"
+
+SRC_URI="http://programmer-art.org/media/releases/arista-transcoder/"$N-$V$R".tar.gz"
+
+RDEPEND=""
+BDEPEND="${RDEPEND} "
+RECOMMENDED=""
+CONFLICT=""
+
+NOTES=""
+
+pbs_unpack() {
+        ypkg_unpack
+}
+
+pbs_config() {
+	YPB_CONFIG+=""
+	ypkg_config
+}
+
+pbs_build() {
+	ypkg_make
+}
+
+pbs_install() {
+	ypkg_mkinstall
+}

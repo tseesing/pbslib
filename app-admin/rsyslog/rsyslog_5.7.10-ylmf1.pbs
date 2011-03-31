@@ -1,0 +1,45 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="An enhanced multi-threaded syslogd with database support and more."
+HOMEPAGE="http://www.rsyslog.com/"
+REPO=""
+LICENSE="GPL"
+PRIORITY=""
+PACKAGER="Zhongxin Huang, hzx@115.com"
+
+SRC_URI="http://rsyslog.com/files/download/"$N"/"$N-$V".tar.gz"
+
+RDEPEND=""
+BDEPEND="${RDEPEND} "
+RECOMMENDED=""
+CONFLICT=""
+
+NOTES="It should be noted that 5.8.0 will be the first stable version with full support for systemd. "
+
+pbs_unpack() {
+        ypkg_unpack
+}
+
+pbs_config() {
+	ypkg_patch "ylmfos-systemd-para.patch"
+	YPB_CONFIG+="--with-systemdsystemunitdir=/lib/systemd/system"
+	ypkg_config
+}
+
+pbs_build() {
+	ypkg_make
+}
+
+pbs_install() {
+	ypkg_mkinstall
+	cd "$YPPATH_DEST"
+	ypkg_docp "$FILES_PATH"/files/rsyslog.conf     etc
+	ypkg_docp "$FILES_PATH"/files/50-default.conf  etc/rsyslog.d
+	ypkg_doln  /lib/systemd/system/"$N".service  lib/systemd/system/multi-user.target.wants/"$N".service
+}
+
+pbs_postinst() {
+	ypkg_useradd -c "syslog user" -d "/dev/null" -s "/bin/false" -r "syslog"
+}

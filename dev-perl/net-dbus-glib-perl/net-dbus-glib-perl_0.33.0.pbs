@@ -1,0 +1,36 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="Perl extension for the DBus GLib bindings "
+HOMEPAGE="http://search.cpan.org/~danberr/Net-DBus-GLib-0.33.0/lib/Net/DBus/GLib.pm"
+REPO=""
+LICENSE="GPL"
+PRIORITY=""
+PACKAGER="Zhongxin Huang, hzx@115.com"
+
+SRC_URI="http://search.cpan.org/CPAN/authors/id/D/DA/DANBERR/Net-DBus-GLib-"$V$R".tar.gz"
+
+RDEPEND=""
+BDEPEND="${RDEPEND} "
+RECOMMENDED=""
+CONFLICT=""
+
+NOTES=""
+
+pbs_unpack() {
+        ypkg_unpack
+}
+
+pbs_config() {
+	YPB_CONFIG+=""
+	ypkg_config
+}
+
+pbs_build() {
+	ypkg_make
+}
+
+pbs_install() {
+	ypkg_mkinstall
+}

@@ -1,0 +1,32 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="A set of backgrounds packaged with the ylmfos"
+HOMEPAGE=" http://www.ylmf.com"
+LICENSE="GPL-2"
+PACKAGER="hzx@115.com"
+
+SRC_URI="git://192.168.1.58/"$N".git"
+
+RDEPEND=""
+BDEPEND="${RDEPEND} desktop-file-utils gnome-desktop"
+RECOMMENDED=""
+
+NOTES=""
+
+pbs_unpack() {
+        ypkg_unpack
+}
+
+pbs_config() {
+	ypkg_config
+}
+
+pbs_build() {
+	ypkg_make
+}
+
+pbs_install() {
+	ypkg_mkinstall
+}

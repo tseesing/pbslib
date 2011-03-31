@@ -1,0 +1,54 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="The Qt toolkit is a comprehensive C++ application development framework"
+HOMEPAGE="http://qt.nokia.com/"
+LICENSE="GPL-2"
+PACKAGER="hzx@115.com"
+REPO=""
+
+SRC_URI="ftp://ftp.trolltech.com/qt/source/qt-everywhere-opensource-src-"$V".tar.gz"
+
+RDEPEND="libpng freetype glib2 libSM libICE libXrender fontconfig libXext libX11 zlib gcc 
+	 util-linux-ng expat libxcb libXau libXdmcp glibc gcc"
+BDEPEND="${RDEPEND}"
+RECOMMENDED=""
+
+NOTES=""
+
+pbs_unpack() {
+        ypkg_unpack
+}
+
+pbs_config() {
+	YPB_CONFIG=" -prefix         /usr 
+	             -bindir         /usr/bin 
+		     -libdir         /usr/lib
+		     -datadir        /usr/share/qt4 
+		     -docdir         /usr/share/doc/qt-"$V" 
+	             -headerdir      /usr/include/qt4 
+		     -plugindir      /usr/lib/qt4/plugins 
+		     -sysconfdir     /etc/qt4 
+		     -translationdir /usr/share/qt4/translations 
+	             -examplesdir    /usr/share/qt4/examples 
+		     -demosdir       /usr/share/qt4/demos 
+		     -nomake         examples 
+		     -nomake         demos 
+		     -qt3support 
+		     -confirm-license 
+		     -largefile"
+	#yes yes |ypkg_config
+	#choose o for opensource license
+	yes o |ypkg_config
+}
+
+pbs_build() {
+	ypkg_make
+}
+
+pbs_install () {
+	make INSTALL_ROOT="$YPPATH_DEST" install
+	#Sorry, doc is too large
+	rm -rf "$YPPATH_DEST"//usr/share/doc/qt-"$V"
+}

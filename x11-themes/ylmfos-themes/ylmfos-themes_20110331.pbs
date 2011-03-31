@@ -1,0 +1,30 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="ylmfos default desktop theme"
+HOMEPAGE="www.ylmf.com"
+REPO=""
+LICENSE=""
+PACKAGER="Zhongxin Huang, hzx@115.com"
+
+SRC_URI="git://192.168.1.58/"$N".git"
+
+RDEPEND="murrine"
+BDEPEND="${RDEPEND} "
+RECOMMENDED=""
+
+NOTES=""
+
+pbs_unpack() {
+	ypkg_unpack
+}
+
+pbs_install() {
+	ypkg_docp ylmfos "$YPPATH_DEST"/usr/share/themes
+}
+
+pbs_postinst() {
+	gnome2_install_defaut_gconf "string" "/desktop/gnome/interface/gtk_theme" "ylmfos"
+	gnome2_install_defaut_gconf "string" "/apps/metacity/general/theme" "ylmfos"
+}
