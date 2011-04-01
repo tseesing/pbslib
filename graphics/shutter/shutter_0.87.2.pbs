@@ -11,10 +11,12 @@ PACKAGER="Zhongxin Huang, hzx@115.com"
 
 SRC_URI="http://shutter-project.org/wp-content/uploads/releases/tars/"$N-$V$R".tar.gz"
 
-RDEPEND="gnome2-perl gnome2-gconf-perl gnome2-wnck-perl gtk2-imageview-perl gtk2-unique-perl http-message-perl gettext-perl proc-processtable
-	 www-mechanize-perl uri-perl libwww-perl http-date-perl html-form-perl html-parser-perl html-tagset-perl http-cookies-perl"
+RDEPEND="gnome2-perl gnome2-gconf-perl gnome2-wnck-perl gtk2-imageview-perl gtk2-unique-perl 
+         http-message-perl gettext-perl proc-processtable www-mechanize-perl uri-perl libwww-perl 
+	 http-date-perl html-form-perl html-parser-perl html-tagset-perl http-cookies-perl 
+	 gtk2-perl glib-perl pango-perl gnome2-canvas-perl gnome2-vfs-perl"
 BDEPEND="${RDEPEND} "
-RECOMMENDED="perlmagick goo-canvas-perl net-dbus-glib-perl image-exiftool-perl"
+RECOMMENDED="perlmagick goo-canvas-perl net-dbus-glib-perl image-exiftool-perl x11-protocol-perl cairo-perl"
 CONFLICT=""
 
 NOTES=""
@@ -24,6 +26,7 @@ pbs_unpack() {
 }
 
 pbs_install() {
+	ypkg_patch ylmfos-desktop-i18n.patch
 	ypkg_docp bin share "$YPPATH_DEST"/usr
 }
 

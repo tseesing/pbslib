@@ -1,0 +1,43 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="Framework for defining and tracking users, login sessions and seats."
+HOMEPAGE="http://www.freedesktop.org/wiki/Software/ConsoleKit"
+LICENSE="GPL-2"
+PACKAGER="hzx@115.com"
+ 
+SRC_URI="http://www.freedesktop.org/software/ConsoleKit/dist/ConsoleKit-"$V".tar.bz2"
+
+RDEPEND="glib2 zlib glibc dbus-glib dbus polkit eggdbus"
+BDEPEND="${RDEPEND} dbus-glib pam"
+RECOMMENDED="polkit"
+
+pbs_unpack() {
+        ypkg_unpack
+}
+
+pbs_config() {
+	ypkg_patch  consolekit-0.2.10-cleanup_console_tags.patch 
+	ypkg_patch  consolekit-0.4.0-polkit-automagic.patch 
+	ypkg_patch  consolekit-0.4.0-multilib.patch 	
+	ypkg_patch  consolekit-0.4.1-shutdown-reboot-without-policies.patch
+	YPB_CONFIG+=" --enable-pam-module 
+		      XMLTO_FLAGS=--skip-validation 
+		      --disable-debug 
+		      --disable-docbook-docs 
+		      --enable-polkit 
+		      --with-pam-module-dir=/lib/security 
+		      --with-dbus-services=/usr/share/dbus-1/services/ "
+	ypkg_config
+}
+
+pbs_build() {
+	ypkg_make
+}
+
+pbs_install() {
+	ypkg_mkinstall
+	ypkg_docp "$FILES_PATH"/files/90-consolekit "$YPPATH_DEST"/etc/X11/Xsession.d
+	#ypkg_doinit "$FILES_PATH"/files/consolekit
+}
