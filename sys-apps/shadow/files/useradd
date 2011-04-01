@@ -14,7 +14,7 @@ SHELL=/bin/bash
 # The default behavior (when -n and -g are not specified) is to create a
 # primary user group with the same name as the user being added to the
 # system.
-GROUP=1000
+#GROUP=1000
 #
 # The default home directory. Same as DHOME for adduser
 HOME=/home
@@ -33,4 +33,4 @@ SKEL=/etc/skel
 #
 # Defines whether the mail spool should be created while
 # creating the account
-CREATE_MAIL_SPOOL=yes
+CREATE_MAIL_SPOOL=no
