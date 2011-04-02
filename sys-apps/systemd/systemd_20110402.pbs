@@ -1,0 +1,51 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="a system and service manager for Linux, compatible with SysV and LSB init scripts."
+HOMEPAGE="http://freedesktop.org/wiki/Software/systemd"
+REPO=""
+LICENSE="GPL"
+PACKAGER="Zhongxin Huang, hzx@115.com"
+
+SRC_URI="git://anongit.freedesktop.org/systemd"
+
+RDEPEND="baselayout"
+BDEPEND="${RDEPEND} udev"  #vala: Don't require vala if gtk is disabled
+RECOMMENDED=""
+
+NOTES="/etc/mtab must be a symlink to /proc/self/mounts
+To correct that, execute
+ln -sf /proc/self/mounts /etc/mtab"
+
+pbs_init() {
+	ypkg_groupadd -r "lock"  #used by var-lock.mount
+}
+
+pbs_unpack() {
+        ypkg_unpack
+}
+
+pbs_config() {
+	YPB_CONFIG+="--with-distro=gentoo 
+		     --disable-gtk
+		     --with-rootdir=/
+		     --with-udevrulesdir=/lib/udev/rules.d"
+	ypkg_config
+}
+
+pbs_build() {
+	ypkg_make
+}
+
+pbs_install() {
+	ypkg_mkinstall
+	ypkg_docp "$FILES_PATH"/files/services/*           "$YPPATH_DEST"/lib/systemd/system/
+	ypkg_docp "$FILES_PATH"/files/{start,stop,status}  "$YPPATH_DEST"/usr/bin
+	cd "$YPPATH_DEST"
+	ypkg_doln /bin/systemd sbin/init
+	for i in halt poweroff reboot runlevel shutdown telinit; do
+		ypkg_doln  /bin/systemctl  sbin/"${i}" 	
+	done
+	ln -sf /proc/self/mounts etc/mtab
+}
