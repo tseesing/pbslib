@@ -1,0 +1,10 @@
+[Unit]
+Description=nmbd daemon
+
+[Service]
+ExecStart=/usr/sbin/nmbd -D
+PIDFile=/var/run/nmbd.pid
+
+[Install]
+WantedBy=multi-user.target
+
