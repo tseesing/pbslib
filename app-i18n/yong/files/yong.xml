@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- filename: yong.xml -->
+<component>
+  <name>org.freedesktop.IBus.Yong</name>
+  <description>Yong Component</description>
+  <exec>/usr/bin/yong --ibus --ibus-menu</exec>
+  <version>1.6.0</version>
+  <author>dgod</author>
+  <homepage>http://yong.uueasy.com</homepage>
+  <textdomain>yong</textdomain>
+  <observed-paths>
+    <path>~/.yong/yong.ini</path>
+  </observed-paths>
+  <engines exec="/usr/bin/yong --ibus-menu --xml"/>
+</component>
+

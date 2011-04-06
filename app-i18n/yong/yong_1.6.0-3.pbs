@@ -1,0 +1,37 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="yong input method"
+HOMEPAGE="http://yong.uueasy.com/thread-htm-fid-2.html"
+REPO=""
+LICENSE=""
+PRIORITY=""
+PACKAGER="Zhongxin Huang, hzx@115.com"
+
+SRC_URI="yong-lin-1.6.0-3.7z"
+
+RDEPEND=""
+BDEPEND="${RDEPEND} "
+RECOMMENDED=""
+CONFLICT=""
+
+NOTES=""
+
+pbs_unpack() {
+        ypkg_unpack
+}
+
+pbs_install() {
+	ypkg_docp * "$YPPATH_DEST"/usr/share/"$N"
+	cd "$YPPATH_DEST"
+	ypkg_dodesktop "$N.desktop" 
+	ypkg_docp_rename usr/share/"$N"/skin/logo.png  usr/share/pixmaps/"$N".png
+	ypkg_docp "$FILES_PATH"/files/mb/*     usr/share/"$N"/mb
+	ypkg_docp "$FILES_PATH"/files/skin/*   usr/share/"$N"/skin
+	ypkg_docp "$FILES_PATH"/files/{yong.ini,yong.xml} usr/share/"$N"
+	ypkg_docp usr/share/"$N"/yong.xml      usr/share/ibus/component
+	ypkg_doln /usr/share/"$N"/yong         usr/bin/yong
+	ypkg_doln /usr/share/"$N"/yong-config  usr/bin/yong-config
+	ypkg_doln /usr/share/"$N"/libl.so      usr/lib/libl.so
+}
