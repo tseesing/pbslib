@@ -65,8 +65,7 @@ chroot "$TARGETDIR" /usr/sbin/update-grub
 
 #Copy apps to favorites
 chroot "$TARGETDIR" su "$INS_USERNAME" -c "mkdir -p /home/"$INS_USERNAME"/.gnomenu/favorites/"
-apps="115udown.desktop 115u.desktop webqq.desktop 1g1g.desktop chromium-browser.desktop leafpad.desktop gcalctool.desktop 
-      gnome-panel.desktop gnome-volume-control.desktop display-properties.desktop gnome-system-monitor.desktop"
+apps="leafpad.desktop gcalctool.desktop gnome-terminal.desktop gnome-system-monitor.desktop smplayer.desktop gpicview.desktop deadbeef.desktop shotwell.desktop"
 for app in $apps; do
 	cp -L "$TARGETDIR"/usr/share/applications/"$app" "$TARGETDIR"/home/"$INS_USERNAME"/.gnomenu/favorites/
 done

@@ -1,0 +1,32 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="eio office suit"
+HOMEPAGE="http://www.yozosoft.com/indexch.jsp"
+REPO=""
+LICENSE="GPL"
+PRIORITY=""
+PACKAGER="Zhongxin Huang, hzx@115.com"
+
+SRC_URI="http://pkg.ylmf.com/sources/"$N-$V$R".tar.bz2"
+
+RDEPEND=""
+BDEPEND="${RDEPEND} "
+RECOMMENDED=""
+CONFLICT=""
+
+NOTES=""
+
+pbs_unpack() {
+        ypkg_unpack
+}
+
+pbs_install() {
+	ypkg_docp * "$YPPATH_DEST"
+}
+
+pbs_postinst() {
+	gnome2_desktop_database_update
+	fc-cache -f
+}
