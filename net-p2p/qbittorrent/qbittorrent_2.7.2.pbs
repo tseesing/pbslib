@@ -45,7 +45,7 @@ pbs_install() {
 	ypkg_docp  src/menuicons/128x128/apps/qbittorrent.png "$YPPATH_DEST"/usr/share/icons/hicolor/128x128/apps/
 	ypkg_docp  src/menuicons/192x192/apps/qbittorrent.png "$YPPATH_DEST"/usr/share/icons/hicolor/192x192/apps/
 	ypkg_docp  src/menuicons/128x128/apps/qbittorrent.png "$YPPATH_DEST"/usr/share/pixmaps/
-	ypkg_docp  qbittorrent                                "$YPPATH_DEST"/usr/bin/
+	ypkg_docp  src/qbittorrent        	              "$YPPATH_DEST"/usr/bin/
 	ypkg_docp_rename  src/Icons/qBittorrent.desktop       "$YPPATH_DEST"/usr/share/applications/"$N".desktop
 	chmod 755 "$YPPATH_DEST"/usr/bin/qbittorrent
 }
