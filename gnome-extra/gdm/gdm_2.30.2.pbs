@@ -12,7 +12,7 @@ SRC_URI="http://ftp.gnome.org/pub/gnome/desktop/2.30/2.30.2/sources/"$N-$V$R".ta
 RDEPEND="glib2 libcanberra libvorbis libogg libtool gtk+ atk pango cairo pixman libxml2 directfb libpng libxcb libXrender 
 	 libX11 libxcb libXau libXdmcp pango glibc fontconfig freetype expat dbus-glib dbus zlib libXi libXrandr libXcursor
 	 libXcomposite libXext libXdamage libXfixes libcanberra"
-BDEPEND="${RDEPEND} consolekit zenity openssh dbus libglade gnome-session"
+BDEPEND="${RDEPEND} consolekit zenity openssh dbus libglade gnome-session libxklavier pam libxkbfile kbproto devicekit-power libusb-compat libusb"
 RECOMMENDED=""
 
 NOTES="gdm user/group should be created automatically."

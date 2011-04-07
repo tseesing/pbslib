@@ -47,7 +47,7 @@ chroot "$TARGETDIR" su $INS_USERNAME -c "/usr/bin/xdg-user-dirs-update"
 
 #Remove unuseful apps
 #FILES="casper lupin-casper lupin-casper osinstaller"
-FILES="osinstaller"
+FILES="osinstaller osinstaller-i18n-zh_CN osinstaller-i18n-zh_HK osinstaller-i18n-zh_TW"
 for file in $FILES;do
     chroot "$TARGETDIR" ypkg -C ${file}
 done

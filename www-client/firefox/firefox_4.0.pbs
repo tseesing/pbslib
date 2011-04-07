@@ -12,7 +12,7 @@ PACKAGER="Zhongxin Huang, hzx@115.com"
 SRC_URI="ftp://ftp.mozilla.org/pub/mozilla.org/"$N"/releases/"$V$R"/source/"$N-$V$R".source.tar.bz2"
 
 RDEPEND=""
-BDEPEND="${RDEPEND} mercurial"
+BDEPEND="${RDEPEND} mercurial curl wireless-tools mesa libIDL"
 RECOMMENDED=""
 CONFLICT=""
 

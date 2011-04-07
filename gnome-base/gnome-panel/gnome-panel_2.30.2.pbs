@@ -15,7 +15,7 @@ RDEPEND="gconf gtk+ pango libbonoboui libgnomecanvas libgnome avahi esound alsa-
 	 libXcomposite libXdamage libXfixes libgnome gnome-vfs openssl avahi esound alsa-lib libXrandr 
 	 libXext startup-notification libSM util-linux-ng libICE gconf orbit dbus libcanberra libvorbis 
 	 libogg libtool cairo pixman pango libxml2 directfb libpng libxcb libXrender libXdmcp libXau 
-	 zlib freetype fontconfig dev-libs/libgweather"
+	 zlib freetype fontconfig dev-libs/libgweather vte"
 BDEPEND="${RDEPEND} gnome-vfs libwnck libcanberra gstreamer evolution-data-server polkit polkit-gnome consolekit gnome-python media-libs/librsvg"
 RECOMMENDED=""
 

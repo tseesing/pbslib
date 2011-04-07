@@ -12,7 +12,9 @@ SRC_URI="http://www.x.org/releases/individual/xserver/"$N-$V$R".tar.bz2"
 RDEPEND="glibc openssl pixman xkeyboard-config libpciaccess libXfont freetype libfontenc libXau udev dbus libXdmcp 
 	 mesa libICE libsdl libSM libX11 libXaw libXext libXfixes libXi libXmu libXpm libXrender libXt libXv directfb
 	 libdmx libdrm libxcb util-linux-ng libXxf86vm libXdamage"
-BDEPEND="${RDEPEND}  xproto dri2proto libsdl libXv mesa"
+BDEPEND="${RDEPEND}  xproto dri2proto libsdl libXv mesa xtrans xextproto  inputproto fontsproto bigreqsproto 
+         scrnsaverproto xf86vidmodeproto xf86dgaproto videoproto resourceproto xcmiscproto  recordproto fixesproto 
+	 damageproto compositeproto glproto libdrm xf86driproto libpciaccess xf86driproto dri2proto libXv"
 
 NOTES="
 You must rebuild all drivers if upgrading from xorg-server 1.6

@@ -12,7 +12,7 @@ SRC_URI="git://lxde.git.sourceforge.net/gitroot/lxde/"$N""
 RDEPEND="glibc expat glib2 zlib fontconfig freetype gtk+ atk cairo 
 	 pango pixman libjpeg-turbo libpng libxcb xcb-util libX11 libXau libXcomposite 
 	 libXcursor libXdamage libXdmcp libXext libXfixes libXinerama libXrender"
-BDEPEND="${RDEPEND} gtk+ "
+BDEPEND="${RDEPEND} gtk+ m4 libjpeg-turbo"
 
 pbs_unpack() {
 	ypkg_unpack

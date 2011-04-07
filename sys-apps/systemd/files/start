@@ -4,10 +4,12 @@
 #
 echo " This is a wrapper of systemctl, e.g:"
 echo " \"start gdm\" to start gdm"
+echo
 
 if [ "x$1" != "x" ]; then
-	systemctl start "$(basename $1)".service
-	systemctl status "$(basename $1)".service
+	dm=${1%%.service}
+	systemctl start "$(basename $dm)".service
+	systemctl status "$(basename $dm)".service
 fi
 
 exit 0

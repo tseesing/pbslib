@@ -1,0 +1,31 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="An online music client from chinamobile"
+HOMEPAGE="http://music.10086.cn/"
+REPO="testing"
+LICENSE=""
+PRIORITY=""
+PACKAGER="Zhongxin Huang, hzx@115.com"
+
+SRC_URI="migumusic-2011-beta1.tar.bz2"
+
+RDEPEND="qt-core"
+BDEPEND="${RDEPEND} "
+RECOMMENDED=""
+CONFLICT=""
+
+NOTES=""
+
+pbs_unpack() {
+        ypkg_unpack
+}
+
+pbs_install() {
+	ypkg_docp * "$YPPATH_DEST"
+}
+
+pbs_postinst() {
+	gnome2_desktop_database_update
+}
