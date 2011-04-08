@@ -22,7 +22,8 @@ pbs_config() {
 	YPB_CONFIG="--prefix=/usr 
 	            --mandir=/usr/share/man
 		    --enable-gpl
-		    --enable-postproc "
+		    --enable-postproc 
+		    --enable-shared "
 	ypkg_config
 }
 

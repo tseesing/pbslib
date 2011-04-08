@@ -7,8 +7,8 @@ HOMEPAGE="http://www.gnu.org/software/binutils/"
  
 SRC_URI="http://ftp.gnu.org/gnu/"$N"/"$N-$V$R".tar.bz2"
 
-RDEPEND="zlib glibc"
-BDEPEND="${RDEPEND}"
+RDEPEND="zlib"
+BDEPEND="glibc gcc"
 
 pbs_unpack() {
         ypkg_unpack

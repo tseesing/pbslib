@@ -18,6 +18,7 @@ pbs_unpack() {
 }
 
 pbs_config(){
+	#YPB_CONFIG+="--enable-shared"
 	ypkg_config
 }
 

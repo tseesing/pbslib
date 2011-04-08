@@ -19,7 +19,7 @@ pbs_unpack() {
 }
 
 pbs_config() {
-	ypkg_patch configure-autoget-ffmpeg.patch
+	ypkg_patch configure-downlaod-ffmpeg.patch
 	#It is important to unset CFLAGS. Otherwise build will fail! If it doesn't fail, it will most likely error when run.
 	unset CFLAGS
 	YPB_CONFIG="--prefix=/usr --mandir=/usr/share/man --confdir=/etc/mplayer"
