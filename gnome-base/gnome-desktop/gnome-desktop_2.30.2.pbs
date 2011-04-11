@@ -48,4 +48,7 @@ pbs_postinst() {
 	gnome2_install_defaut_gconf "string" "/desktop/gnome/interface/document_font_name"      "Sans 10"
 	#gnome2_install_defaut_gconf "string" "/desktop/gnome/interface/monospace_font_name"     "Monospace 10" 
 	gnome2_install_defaut_gconf "string" "/desktop/gnome/interface/monospace_font_name"     "WenQuanYi Micro Hei Mono 10" 
+
+	#
+	gnome2_install_defaut_gconf "bool" "/desktop/gnome/peripherals/keyboard/remember_numlock_state"  "True"
 }
