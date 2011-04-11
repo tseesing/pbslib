@@ -9,9 +9,8 @@ PACKAGER="hzx@115.com"
 
 SRC_URI="git://anongit.freedesktop.org/git/nouveau/"$N"/"
 
-RDEPEND="libdrm xorg-server"
-BDEPEND="${RDEPEND} x11-proto/dri2proto x11-proto/fontsproto x11-proto/randrproto x11-proto/renderproto x11-proto/videoproto \
-         x11-proto/xextproto x11-proto/xf86driproto x11-proto/xproto libdrm"
+RDEPEND="glibc libdrm udev"
+BDEPEND="dri2proto-dev fontsproto-dev randrproto-dev renderproto-dev videoproto-dev xextproto-dev xf86driproto-dev xproto-dev glibc-dev libdrm-dev udev-dev"
 RECOMMENDED=""
 	
 pbs_unpack() {

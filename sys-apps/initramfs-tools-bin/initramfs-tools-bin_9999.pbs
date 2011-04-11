@@ -9,8 +9,8 @@ PACKAGER="hzx@115.com"
 
 SRC_URI="git://192.168.1.58/"$N".git"
 
-RDEPEND="initramfs-tools"
-BDEPEND="${RDEPEND} "
+RDEPEND="initramfs-tools glibc udev"
+BDEPEND="glibc-dev udev-dev"
 RECOMMENDED=""
 
 pbs_unpack() {

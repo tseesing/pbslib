@@ -10,8 +10,8 @@ PACKAGER="Zhongxin Huang, hzx@115.com"
 
 SRC_URI="http://downloads.sourceforge.net/project/"$N"/"$N-$V$R".tar.bz2"
 
-RDEPEND="libsamplerate faad2 ffmpeg"
-BDEPEND="${RDEPEND} "
+RDEPEND="alsa-lib atk cairo curl cyrus-sasl dbus expat faad2 ffmpeg flac fontconfig freetype gcc glib2 glibc gtk+ jack-audio-connection-kit libcddb libcdio libmad libogg libpng libsamplerate libsndfile libva libvorbis libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libXrandr libXrender openldap-client openssl pango pixman wavpack zlib"
+BDEPEND="alsa-lib-dev atk-dev cairo-dev curl-dev cyrus-sasl-dev dbus-dev expat-dev faad2-dev ffmpeg-dev flac-dev fontconfig-dev freetype-dev gcc-dev glib2-dev glibc-dev gtk+-dev jack-audio-connection-kit-dev libcddb-dev libcdio-dev libmad-dev libogg-dev libpng-dev libsamplerate-dev libsndfile-dev libva-dev libvorbis-dev libX11-dev libXau-dev libxcb-dev libXcomposite-dev libXcursor-dev libXdamage-dev libXdmcp-dev libXext-dev libXfixes-dev libXi-dev libXrandr-dev libXrender-dev openldap-client-dev openssl-dev pango-dev pixman-dev wavpack-dev zlib-dev"
 RECOMMENDED=""
 
 NOTES=""

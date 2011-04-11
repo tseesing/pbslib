@@ -9,10 +9,8 @@ PACKAGER="hzx@115.com"
 
 SRC_URI="http://ftp.gnome.org/pub/gnome/desktop/2.30/2.30.2/sources/"$N-$V$R".tar.bz2"
 
-RDEPEND="enchant gconf orbit dbus-glib dbus gtk+ gail libXi libXrandr libXcursor libXcomposite libXext
-	 libXdamage libXfixes gtk+ atk glib2 glibc pango gcc cairo pixman libxml2 directfb libpng libxcb libXrender
-	 libX11 libXau libXdmcp fontconfig freetype zlib expat"
-BDEPEND="${RDEPEND} gtk+ libsoup"
+RDEPEND="atk cairo dbus dbus-glib enchant expat fontconfig freetype gail gcc gconf glib2 glibc gtk+ libpng libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libXrandr libXrender orbit pango pixman zlib"
+BDEPEND="atk-dev cairo-dev dbus-dev dbus-glib-dev enchant-dev expat-dev fontconfig-dev freetype-dev gail-dev gcc-dev gconf-dev glib2-dev glibc-dev gtk+-dev libpng-dev libX11-dev libXau-dev libxcb-dev libXcomposite-dev libXcursor-dev libXdamage-dev libXdmcp-dev libXext-dev libXfixes-dev libXi-dev libXrandr-dev libXrender-dev orbit-dev pango-dev pixman-dev zlib-dev"
 RECOMMENDED=""
 
 NOTES=""

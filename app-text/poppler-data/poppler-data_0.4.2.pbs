@@ -8,7 +8,7 @@ HOMEPAGE="http://poppler.freedesktop.org/"
 SRC_URI="http://poppler.freedesktop.org/"$N-$V$R".tar.gz"
 
 RDEPEND=""
-BDEPEND="${RDEPEND} media-libs/fontconfig"
+BDEPEND="fontconfig"
 
 pbs_unpack() {
         ypkg_unpack

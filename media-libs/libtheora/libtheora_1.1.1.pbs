@@ -10,9 +10,9 @@ PACKAGER="Zhongxin Huang, hzx@115.com"
 
 SRC_URI="http://downloads.xiph.org/releases/theora/"$N-$V$R".tar.bz2"
 
-RDEPEND="libvorbis libogg libsdl"
-BDEPEND="${RDEPEND} "
-RECOMMENDED=""
+RDEPEND="glibc libogg"
+BDEPEND="glibc-dev libogg-dev libvorbis-dev libsdl-dev"
+RECOMMENDED="libvorbis libsdl"
 
 NOTES=""
 

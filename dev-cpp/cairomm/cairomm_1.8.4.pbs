@@ -9,9 +9,8 @@ PACKAGER="hzx@115.com"
 
 SRC_URI="http://cairographics.org/releases/"$N-$V$R".tar.gz"
 
-RDEPEND="libsigc++ freetype libpng zlib cairo libX11 gcc pixman fontconfig directfb libxcb libXrender expat 
-	 libXau libXdmcp "
-BDEPEND="${RDEPEND} cairo"
+RDEPEND="cairo expat fontconfig freetype gcc glibc libpng libsigc++ libX11 libXau libxcb libXdmcp libXrender pixman zlib"
+BDEPEND="cairo-dev expat-dev fontconfig-dev freetype-dev gcc-dev glibc-dev libpng-dev libsigc++-dev libX11-dev libXau-dev libxcb-dev libXdmcp-dev libXrender-dev pixman-dev zlib-dev"
 RECOMMENDED=""
 
 NOTES="http://wiki.linuxfromscratch.org/blfs/wiki/cairomm"

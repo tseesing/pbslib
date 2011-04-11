@@ -10,8 +10,8 @@ PACKAGER="Zhongxin Huang, hzx@115.com"
 
 SRC_URI="http://downloads.sourceforge.net/project/gphoto/libgphoto/"$V"/"$N-$V$R".tar.bz2"
 
-RDEPEND="libtool libexif"
-BDEPEND="${RDEPEND} media-libs/libexif libexif-gtk"
+RDEPEND="dbus expat fontconfig freetype gd glibc hal libexif libjpeg-turbo libpng libtool libusb libusb-compat libX11 libXau libxcb libXdmcp libXpm zlib"
+BDEPEND="libexif-gtk-dev dbus-dev expat-dev fontconfig-dev freetype-dev gd-dev glibc-dev hal-dev libexif-dev libjpeg-turbo-dev libpng-dev libtool-dev libusb-dev libusb-compat-dev libX11-dev libXau-dev libxcb-dev libXdmcp-dev libXpm-dev zlib-dev"
 
 pbs_unpack(){
         ypkg_unpack

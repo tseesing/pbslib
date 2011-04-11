@@ -9,8 +9,8 @@ PACKAGER="hzx@115.com"
 
 SRC_URI="http://dl_dir.qq.com/linuxqq/linuxqq_v"$V${R}"_i386.tar.gz"
 
-RDEPEND=""
-BDEPEND="${RDEPEND} gtk+"
+RDEPEND="atk cairo expat fontconfig freetype gcc glib2 glibc gtk+ libpng libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libXrandr libXrender pango pixman zlib"
+BDEPEND=""
 RECOMMENDED=""
 
 NOTES=""

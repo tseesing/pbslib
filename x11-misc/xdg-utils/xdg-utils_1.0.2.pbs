@@ -9,8 +9,8 @@ PACKAGER="hzx@115.com"
 
 SRC_URI="http://portland.freedesktop.org/download/"$N-$V$R".tgz"
 
-RDEPEND="x11-apps/xprop x11-apps/xset x11-misc/shared-mime-info"
-BDEPEND="${RDEPEND} desktop-file-utils"
+RDEPEND="xprop xset shared-mime-info"
+BDEPEND="desktop-file-utils"
 RECOMMENDED=""
 
 NOTES=""

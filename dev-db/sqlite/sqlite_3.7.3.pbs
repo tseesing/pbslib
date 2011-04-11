@@ -7,9 +7,8 @@ HOMEPAGE="http://www.sqlite.org"
 
 SRC_URI="http://www.sqlite.org/"$N-$V$R".tar.gz"
 
-RDEPEND="readline ncurses"
-BDEPEND="${RDEPEND} dev-lang/tcl"
-OPIONAL="dev-lang/tcl"
+RDEPEND="glibc ncurses readline"
+BDEPEND="tcl glibc-dev ncurses-dev readline-dev"
 
 pbs_unpack() {
         ypkg_unpack

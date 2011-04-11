@@ -9,8 +9,8 @@ PACKAGER="hzx@115.com"
 
 SRC_URI="ftp://ftp.oregonstate.edu/pub/apache/apr/"$N-$V$R".tar.bz2"
 
-RDEPEND=""
-BDEPEND="${RDEPEND} apr"
+RDEPEND="apr expat glibc sqlite util-linux-ng"
+BDEPEND="apr-dev expat-dev glibc-dev sqlite-dev util-linux-ng-dev"
 RECOMMENDED=""
 
 NOTES="

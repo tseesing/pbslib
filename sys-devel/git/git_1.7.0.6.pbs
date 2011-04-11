@@ -9,14 +9,12 @@ PACKAGER="hzx@115.com"
 
 SRC_URI="http://kernel.org/pub/software/scm/"$N"/"$N-$V$R".tar.bz2"
 
-RDEPEND="openssh zlib openssl "
-BDEPEND="${RDEPEND} perl python"
+RDEPEND="curl cyrus-sasl expat glibc openldap-client openssl zlib perl python"
+BDEPEND="curl-dev cyrus-sasl-dev expat-dev glibc-dev openldap-client-dev openssl-dev zlib-dev"
 
-NOTES="
-add some info:
+NOTES="add some info:
 git config --system --add user.name ylmfos_user
-git config --system --add user.email ylmfos_user@115.com
-"
+git config --system --add user.email ylmfos_user@115.com"
 
 pbs_unpack() {
         ypkg_unpack

@@ -9,8 +9,8 @@ PACKAGER="hzx@115.com"
 
 SRC_URI="http://www.monkey.org/~provos/"$N-$V$R"-stable.tar.gz"
 
-RDEPEND=""
-BDEPEND="${RDEPEND} "
+RDEPEND="glibc openssl"
+BDEPEND="glibc-dev openssl-dev"
 RECOMMENDED=""
 
 NOTES=""

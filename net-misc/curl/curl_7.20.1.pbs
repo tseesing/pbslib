@@ -9,8 +9,8 @@ PACKAGER="hzx@115.com"
 
 SRC_URI="http://curl.haxx.se/download/"$N-$V$R".tar.bz2"
 
-RDEPEND="zlib glibc openldap-client"
-BDEPEND="${RDEPEND}"
+RDEPEND="cyrus-sasl glibc openldap-client openssl zlib"
+BDEPEND="cyrus-sasl-dev glibc-dev openldap-client-dev openssl-dev zlib-dev"
 
 pbs_unpack() {
         ypkg_unpack

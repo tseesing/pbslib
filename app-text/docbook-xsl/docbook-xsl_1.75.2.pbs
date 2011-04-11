@@ -10,7 +10,7 @@ PACKAGER="hzx@115.com"
 SRC_URI="http://downloads.sourceforge.net/docbook/"$N-$V$R".tar.bz2 http://downloads.sourceforge.net/docbook/"$N"-doc-"$V$R".tar.bz2"
 
 RDEPEND=""
-BDEPEND="${RDEPEND} libxml2"
+BDEPEND="libxml2-dev"
 RECOMMENDED=""
 
 NOTES=""

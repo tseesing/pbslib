@@ -10,8 +10,8 @@ PACKAGER="hzx@115.com"
 
 SRC_URI="http://cpan.org/authors/id/M/MS/MSERGEANT/XML-Parser-"$V$R".tar.gz"
 
-RDEPEND="expat"
-BDEPEND="${RDEPEND}"
+RDEPEND="expat glibc"
+BDEPEND="expat-dev glibc-dev"
 
 pbs_unpack() {
         ypkg_unpack

@@ -9,8 +9,8 @@ PACKAGER="hzx@115.com"
 
 SRC_URI="http://cryptopp.com/cryptopp560.zip"
 
-RDEPEND=""
-BDEPEND="${RDEPEND} unzip"
+RDEPEND="gcc glibc"
+BDEPEND="gcc-dev glibc-dev unzip"
 
 pbs_unpack() {
 	ypkg_unpack

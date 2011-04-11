@@ -10,8 +10,8 @@ PACKAGER="Zhongxin Huang, hzx@115.com"
 
 SRC_URI="http://ftp.de.debian.org/debian/pool/main/libg/libgsm/"${N}"_"$V$R".orig.tar.gz"
 
-RDEPEND=""
-BDEPEND="${RDEPEND} "
+RDEPEND="glibc"
+BDEPEND="glibc-dev"
 RECOMMENDED=""
 
 pbs_unpack() {

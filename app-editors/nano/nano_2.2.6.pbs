@@ -11,8 +11,8 @@ PACKAGER="Zhongxin Huang, hzx@115.com"
 
 SRC_URI="http://www.nano-editor.org/dist/v2.2/"$N-$V$R".tar.gz"
 
-RDEPEND=""
-BDEPEND="${RDEPEND} "
+RDEPEND="glibc ncurses"
+BDEPEND="glibc-dev ncurses-dev"
 RECOMMENDED=""
 CONFLICT=""
 

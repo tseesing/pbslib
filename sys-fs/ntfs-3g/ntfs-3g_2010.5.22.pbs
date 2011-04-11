@@ -9,8 +9,8 @@ PACKAGER="hzx@115.com"
 
 SRC_URI="http://tuxera.com/opensource/"$N-$V$R".tgz"
 
-RDEPEND="sys-fs/fuse glibc"
-BDEPEND="${RDEPEND} attr"
+RDEPEND="fuse glibc"
+BDEPEND="attr-dev fuse-dev glibc-dev"
 
 NOTES=""
 

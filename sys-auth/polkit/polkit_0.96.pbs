@@ -14,8 +14,8 @@ NOTES="1. User and group polkituser should be created automatically.
 2. GDM requried complied witch consolekit, otherwise If you login using GDM, polkit authorizations will not work.
 3. member of wheel group has privilege of policykt"
 
-RDEPEND="eggdbus dbus zlib expat"
-BDEPEND="${RDEPEND} eggdbus pam dbus-glib" 
+RDEPEND="dbus dbus-glib eggdbus expat glib2 glibc pam policykit zlib"
+BDEPEND="dbus-dev dbus-glib-dev eggdbus-dev expat-dev glib2-dev glibc-dev pam-dev policykit-dev zlib-dev" 
 
 pbs_unpack() {
         ypkg_unpack

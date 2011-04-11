@@ -9,8 +9,8 @@ PACKAGER="hzx@115.com"
 
 SRC_URI="http://distfiles.atheme.org/"$N-$V$R".tgz"
 
-RDEPEND=""
-BDEPEND="${RDEPEND} "
+RDEPEND="glibc"
+BDEPEND="glibc-dev"
 
 pbs_unpack() {
         ypkg_unpack

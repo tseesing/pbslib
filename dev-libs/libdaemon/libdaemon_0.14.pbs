@@ -9,8 +9,8 @@ PACKAGER="hzx@115.com"
 
 SRC_URI="http://0pointer.de/lennart/projects/"$N"/"$N-$V$R".tar.gz"
 
-RDEPEND=""
-BDEPEND="${RDEPEND} "
+RDEPEND="glibc"
+BDEPEND="glibc-dev"
 RECOMMENDED=""
 
 NOTES=""

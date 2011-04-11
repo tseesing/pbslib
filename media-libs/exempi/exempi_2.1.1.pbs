@@ -9,8 +9,8 @@ PACKAGER="hzx@115.com"
 
 SRC_URI="http://libopenraw.freedesktop.org/download/"$N-$V$R".tar.gz"
 
-RDEPEND="expat zlib gcc"
-BDEPEND="${RDEPEND} boost"
+RDEPEND="expat gcc glibc zlib"
+BDEPEND="boost-dev expat-dev gcc-dev glibc-dev zlib-dev"
 RECOMMENDED=""
 
 NOTES=""

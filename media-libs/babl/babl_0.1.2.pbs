@@ -7,8 +7,8 @@ HOMEPAGE="http://www.gegl.org/babl/"
  
 SRC_URI="ftp://ftp.gtk.org/pub/"$N"/0.1/"$N-$V$R".tar.bz2"
 
-RDEPEND=""
-BDEPEND="${RDEPEND}"
+RDEPEND="glibc"
+BDEPEND="glibc-dev"
 
 pbs_unpack() {
         ypkg_unpack

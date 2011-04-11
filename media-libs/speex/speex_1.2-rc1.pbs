@@ -11,8 +11,8 @@ PACKAGER="Zhongxin Huang, hzx@115.com"
 
 SRC_URI="http://downloads.xiph.org/releases/"$N"/"$N"-1.2rc1.tar.gz"
 
-RDEPEND=""
-BDEPEND="${RDEPEND} "
+RDEPEND="glibc libogg"
+BDEPEND="glibc-dev libogg-dev"
 RECOMMENDED=""
 CONFLICT=""
 

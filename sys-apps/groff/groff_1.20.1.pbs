@@ -7,8 +7,8 @@ HOMEPAGE="http://www.gnu.org/software/groff/groff.html"
  
 SRC_URI="ftp://ftp.gnu.org/gnu/"$N"/"$N-$V$R".tar.gz"
 
-RDEPEND="glibc gcc"
-BDEPEND="${RDEPEND}"
+RDEPEND="gcc glibc libICE libSM libX11 libXau libXaw libxcb libXdmcp libXext libXmu libXpm libXt util-linux-ng"
+BDEPEND="gcc-dev glibc-dev libICE-dev libSM-dev libX11-dev libXau-dev libXaw-dev libxcb-dev libXdmcp-dev libXext-dev libXmu-dev libXpm-dev libXt-dev util-linux-ng-dev"
 
 pbs_unpack() {
         ypkg_unpack

@@ -9,8 +9,8 @@ PACKAGER="hzx@115.com"
 
 SRC_URI="http://ftp.musicbrainz.org/pub/musicbrainz/"$N-$V$R".tar.gz "
 
-RDEPEND=""
-BDEPEND="${RDEPEND} expat python"
+RDEPEND="expat gcc glibc"
+BDEPEND="python-dev expat-dev gcc-dev glibc-dev"
 RECOMMENDED=""
 
 pbs_unpack() {

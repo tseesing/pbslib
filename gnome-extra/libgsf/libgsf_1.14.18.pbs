@@ -10,8 +10,8 @@ PACKAGER="Zhongxin Huang, hzx@115.com"
 
 SRC_URI=" http://ftp.gnome.org/pub/GNOME/sources/"$N"/1.14/"$N-$V$R".tar.bz2 "
 
-RDEPEND="libxml2 bzip2 zlib gtk+ libbonobo orbit "
-BDEPEND="${RDEPEND} dev-util/intltool"
+RDEPEND="glib2 glibc gtk+ libbonobo libxml2 orbit zlib"
+BDEPEND="intltool glib2-dev glibc-dev gtk+-dev libbonobo-dev libxml2-dev orbit-dev zlib-dev"
 
 pbs_unpack() {
         ypkg_unpack

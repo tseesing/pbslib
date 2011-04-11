@@ -9,8 +9,8 @@ PACKAGER="hzx@115.com"
 
 SRC_URI="git://anongit.freedesktop.org/xorg/driver/"$N""
 
-RDEPEND="libdrm libXvMC libXv libXext libXfixes libX11 libxcb libXau libXdmcp pixman libpciaccess libXtst"
-BDEPEND="${RDEPEND} x11-base/xorg-server"
+RDEPEND="glibc libdrm libpciaccess pixman udev"
+BDEPEND="xorg-server-dev glibc-dev libdrm-dev libpciaccess-dev pixman-dev udev-dev"
 
 pbs_unpack() {
         ypkg_unpack

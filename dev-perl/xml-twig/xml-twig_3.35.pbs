@@ -9,8 +9,8 @@ PACKAGER="hzx@115.com"
 
 SRC_URI="ftp://lug.mtu.edu/gentoo/distfiles/XML-Twig-"$V$R".tar.gz"
 
-RDEPEND="expat"
-BDEPEND="${RDEPEND}"
+RDEPEND=""
+BDEPEND="expat-dev"
 
 pbs_unpack() {
         ypkg_unpack

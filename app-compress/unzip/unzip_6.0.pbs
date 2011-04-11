@@ -10,14 +10,13 @@ PACKAGER="Zhongxin Huang, hzx@115.com"
 SRC_URI="http://downloads.sourceforge.net/infozip/unzip60.tar.gz"
 
 RDEPEND="glibc"
-BDEPEND="${RDEPEND}"
+BDEPEND="glibc-dev"
 
 pbs_unpack() {
         ypkg_unpack
 }
 
 pbs_build() {
-	
 	make -f unix/Makefile linux
 }
 

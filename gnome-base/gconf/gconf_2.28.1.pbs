@@ -9,17 +9,15 @@ PACKAGER="hzx@115.com"
 
 SRC_URI="http://ftp.gnome.org/pub/gnome/sources/GConf/2.28/GConf-"$V$R".tar.bz2"
 
-RDEPEND="orbit glib2 glibc dbus-glib dbus libxml2 zlib orbit"
-BDEPEND="${RDEPEND} glib2 libxml2 orbit popt zlib gtk+ openldap-client polkit"
-OPTIOANL="gtk+ gtk-doc docbook-utils"
+RDEPEND="atk cairo cyrus-sasl dbus dbus-glib eggdbus expat fontconfig freetype gcc glib2 glibc gtk+ libpng libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libxml2 libXrandr libXrender openldap-client openssl orbit pango pixman polkit zlib"
+BDEPEND="atk-dev cairo-dev cyrus-sasl-dev dbus-dev dbus-glib-dev eggdbus-dev expat-dev fontconfig-dev freetype-dev gcc-dev glib2-dev glibc-dev gtk+-dev libpng-dev libX11-dev libXau-dev libxcb-dev libXcomposite-dev libXcursor-dev libXdamage-dev libXdmcp-dev libXext-dev libXfixes-dev libXi-dev libxml2-dev libXrandr-dev libXrender-dev openldap-client-dev openssl-dev orbit-dev pango-dev pixman-dev polkit-dev zlib-dev"
 
 pbs_unpack() {
         ypkg_unpack
 }
 
 pbs_config() {
-	YPB_CONFIG+=" 		
-		      --enable-gtk		
+	YPB_CONFIG+=" --enable-gtk		
 		      --with-openldap		
 		      --enable-defaults-service "
 	ypkg_config

@@ -9,8 +9,8 @@ PACKAGER="hzx@115.com"
 
 SRC_URI="http://people.redhat.com/~heinzm/sw/"$N"/src/"$N-$V".rc16.tar.bz2"
 
-RDEPEND="device-mapper "
-BDEPEND="${RDEPEND} device-mapper"
+RDEPEND="device-mapper glibc"
+BDEPEND="device-mapper-dev glibc-dev"
 RECOMMENDED=""
 
 pbs_unpack() {

@@ -11,8 +11,8 @@ PRIORITY="required"
 
 SRC_URI="http://ftp.gnu.org/gnu/"$N"/"$N-$V$R".tar.bz2"
 
-RDEPEND=""
-BDEPEND="${RDEPEND} sys-apps/linux-headers " #sys-devel/binutils sys-devel/gcc"
+RDEPEND="expat fontconfig freetype gd libjpeg-turbo libpng libX11 libXau libxcb libXdmcp libXpm zlib"
+BDEPEND="expat-dev fontconfig-dev freetype-dev gd-dev libjpeg-turbo-dev libpng-dev libX11-dev libXau-dev libxcb-dev libXdmcp-dev libXpm-dev zlib-dev"
 
 pbs_unpack() {
         ypkg_unpack

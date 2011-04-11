@@ -9,10 +9,8 @@ PACKAGER="hzx@115.com"
 
 SRC_URI="http://releases.chipx86.com/"$N"/"$N"/"$N-$V$R".tar.gz"
 
-RDEPEND="gtk+ atk pango cairo freetype fontconfig libxml2 libXi libXrandr libXcursor libXcomposite
-	 libXext libXdamage libXfixes pixman directfb libpng libxcb libXrender libX11 libxcb libXau libXdmcp 
-	 zlib expat"
-BDEPEND="${RDEPEND} pango glib2 gtk+ libxml2 iso-codes perl"
+RDEPEND="atk cairo expat fontconfig freetype gcc glib2 glibc gtk+ libpng libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libxml2 libXrandr libXrender pango pixman zlib"
+BDEPEND="iso-codes perl atk-dev cairo-dev expat-dev fontconfig-dev freetype-dev gcc-dev glib2-dev glibc-dev gtk+-dev libpng-dev libX11-dev libXau-dev libxcb-dev libXcomposite-dev libXcursor-dev libXdamage-dev libXdmcp-dev libXext-dev libXfixes-dev libXi-dev libxml2-dev libXrandr-dev libXrender-dev pango-dev pixman-dev zlib-dev"
 RECOMMENDED=""
 
 NOTES=""

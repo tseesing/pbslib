@@ -9,8 +9,8 @@ PACKAGER="hzx@115.com"
 
 SRC_URI="ftp://lug.mtu.edu/gentoo/distfiles/"$N-$V$R".tar.bz2"
 
-RDEPEND="openssl"
-BDEPEND="${RDEPEND} openssl gnutls"
+RDEPEND="glib2 glibc openssl"
+BDEPEND="gnutls-dev glib2-dev glibc-dev openssl-dev"
 RECOMMENDED=""
 
 NOTES=""

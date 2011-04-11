@@ -9,8 +9,8 @@ PACKAGER="hzx@115.com"
 
 SRC_URI="http://ftp.stack.nl/pub/users/dimitri/"$N-$V$R".src.tar.gz"
 
-RDEPEND=""
-BDEPEND="${RDEPEND} "
+RDEPEND="gcc glibc"
+BDEPEND="gcc-dev glibc-dev"
 RECOMMENDED=""
 
 NOTES="a\nb\n"

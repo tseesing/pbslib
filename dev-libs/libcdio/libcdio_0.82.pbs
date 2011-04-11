@@ -9,9 +9,9 @@ PACKAGER="hzx@115.com"
  
 SRC_URI="http://ftp.gnu.org/gnu/"$N"/"$N-$V$R".tar.gz"
 
-RDEPEND="libcddb ncurses glibc"
-BDEPEND="${RDEPEND} media-libs/libcddb"
-RECOMMENDED="media-libs/libcddb"
+RDEPEND="gcc glibc libcddb ncurses"
+BDEPEND="gcc-dev glibc-dev libcddb-dev ncurses-dev"
+RECOMMENDED=""
 
 NOTES=""
 

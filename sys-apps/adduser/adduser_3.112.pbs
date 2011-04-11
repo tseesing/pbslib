@@ -8,8 +8,8 @@ LICENSE="GPL-2"
 PACKAGER="hzx@115.com"
 SRC_URI=""
 
-RDEPEND=""
-BDEPEND="${RDEPEND} shadow perl"
+RDEPEND="shadow perl"
+BDEPEND=""
 RECOMMENDED=""
 
 NOTES=""

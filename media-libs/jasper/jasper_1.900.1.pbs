@@ -9,10 +9,9 @@ PACKAGER="hzx@115.com"
 
 SRC_URI="http://www.ece.uvic.ca/~mdadams/"$N"/software/"$N-$V$R".zip"
 
-RDEPEND="freeglut mesa libXxf86vm libXmu libXi libXext libXt libSM util-linux-ng libICE libX11 libxcb libXau
-	 libXdmcp glibc libjpeg-turbo libXdamage libXfixes libdrm gcc"
-BDEPEND="${RDEPEND} unzip"
-RECOMMENDED="libjpeg-turbo libX11 freeglut"
+RDEPEND="freeglut gcc glibc libdrm libICE libjpeg-turbo libSM libX11 libXau libxcb libXdamage libXdmcp libXext libXfixes libXi libXmu libXt libXxf86vm mesa util-linux-ng"
+BDEPEND="unzip freeglut-dev gcc-dev glibc-dev libdrm-dev libICE-dev libjpeg-turbo-dev libSM-dev libX11-dev libXau-dev libxcb-dev libXdamage-dev libXdmcp-dev libXext-dev libXfixes-dev libXi-dev libXmu-dev libXt-dev libXxf86vm-dev mesa-dev util-linux-ng-dev"
+RECOMMENDED=""
 
 pbs_unpack() {
 	ypkg_unpack

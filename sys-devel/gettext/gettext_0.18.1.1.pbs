@@ -9,8 +9,8 @@ PACKAGER="hzx@115.com"
 
 SRC_URI="http://ftp.gnu.org/pub/gnu/"$N"/"$N-$V$R".tar.gz"
 
-RDEPEND="glibc ncurses"
-BDEPEND="${RDEPEND}"
+RDEPEND="acl attr gcc glib2 glibc libcroco libxml2 ncurses zlib"
+BDEPEND="acl-dev attr-dev gcc-dev glib2-dev glibc-dev libcroco-dev libxml2-dev ncurses-dev zlib-dev"
 
 pbs_unpack() {
         ypkg_unpack

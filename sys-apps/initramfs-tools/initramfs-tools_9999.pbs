@@ -7,8 +7,8 @@ HOMEPAGE=""
 
 SRC_URI="git://192.168.1.58/"$N".git"
 
-RDEPEND="busybox-initramfs cpio sys-apps/module-init-tools udev findutils sys-apps/util-linux-ng "
-BDEPEND="${RDEPEND} "
+RDEPEND="busybox-initramfs cpio module-init-tools udev findutils util-linux-ng "
+BDEPEND=""
 RECOMMENDED="fuse ntfs-3g plymouth kbd dejavu-fonts-ttf"
 
 pbs_unpack() {

@@ -9,9 +9,9 @@ PACKAGER="hzx@115.com"
  
 SRC_URI="http://www.mega-nerd.com/"$N"/files/"$N-$V$R".tar.gz"
 
-RDEPEND="glibc flac libvorbis libogg alsa-lib sqlite"
-BDEPEND="${RDEPEND} sqlite flac alsa-lib"
-RECOMMENDED="flac"
+RDEPEND="alsa-lib flac glibc libogg libvorbis sqlite"
+BDEPEND="alsa-lib-dev flac-dev glibc-dev libogg-dev libvorbis-dev sqlite-dev"
+RECOMMENDED=""
 
 NOTES=""
 

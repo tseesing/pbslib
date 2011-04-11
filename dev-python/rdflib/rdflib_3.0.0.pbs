@@ -8,10 +8,10 @@ REPO=""
 LICENSE="New BSD License"
 PACKAGER="Zhongxin Huang, hzx@115.com"
 
-SRC_URI="" #rdflib-3.0.0.tar.gz"
+SRC_URI="rdflib-3.0.0.tar.gz"
 
 RDEPEND=""
-BDEPEND="${RDEPEND} "
+BDEPEND=""
 RECOMMENDED=""
 
 NOTES=""

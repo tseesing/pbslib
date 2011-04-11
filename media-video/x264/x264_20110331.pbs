@@ -9,9 +9,9 @@ PACKAGER="hzx@115.com"
 
 SRC_URI="git://git.videolan.org/"$N".git"
 
-BDEPEND="dev-lang/yasm"
-RDEPEND="${BDEPEND}"
-RECOMMENDED="dev-lang/yasm"
+RDEPEND="alsa-lib ffmpeg glibc jack-audio-connection-kit libva zlib"
+BDEPEND="yasm alsa-lib-dev ffmpeg-dev glibc-dev jack-audio-connection-kit-dev libva-dev zlib-dev"
+RECOMMENDED=""
 
 pbs_unpack() {
         ypkg_unpack

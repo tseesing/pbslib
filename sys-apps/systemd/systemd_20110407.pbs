@@ -10,8 +10,9 @@ PACKAGER="Zhongxin Huang, hzx@115.com"
 
 SRC_URI="git://anongit.freedesktop.org/systemd"
 
-RDEPEND="baselayout"
-BDEPEND="${RDEPEND} udev"  #vala: Don't require vala if gtk is disabled
+RDEPEND="baselayout attr cryptsetup dbus device-mapper glibc libcap libgcrypt libgpg-error pam udev util-linux-ng"
+BDEPEND="attr-dev cryptsetup-dev dbus-dev device-mapper-dev glibc-dev libcap-dev libgcrypt-dev libgpg-error-dev pam-dev udev-dev util-linux-ng-dev"
+         #vala: Don't require vala if gtk is disabled
 RECOMMENDED=""
 
 NOTES="/etc/mtab must be a symlink to /proc/self/mounts

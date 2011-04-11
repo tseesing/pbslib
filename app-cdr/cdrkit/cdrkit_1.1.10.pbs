@@ -9,8 +9,8 @@ PACKAGER="hzx@115.com"
  
 SRC_URI="http://cdrkit.org/releases/"$N-$V$R".tar.gz"
 
-RDEPEND="file glibc zlib bzip2"
-BDEPEND="${RDEPEND} cmake libcap"
+RDEPEND="attr file glibc libcap zlib"
+BDEPEND="attr-dev file-dev glibc-dev libcap-dev zlib-dev cmake"
 RECOMMENDED=""
 
 NOTES=""

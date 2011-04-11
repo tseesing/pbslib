@@ -10,8 +10,8 @@ PACKAGER="hzx@115.com"
 SRC_URI="http://ftp.gnome.org/pub/gnome/desktop/2.30/2.30.2/sources/"$N-$V$R".tar.bz2"
 
 RDEPEND=""
-BDEPEND="${RDEPEND} libxslt rarian intltool"
-RECOMMENDED="python "
+BDEPEND="libxslt-dev rarian-dev intltool"
+RECOMMENDED="python"
 
 NOTES=""
 

@@ -9,8 +9,8 @@ PACKAGER="hzx@115.com"
 
 SRC_URI="http://downloads.sourceforge.net/"$N"/"$N-$V$R".tar.gz"
 
-RDEPEND=""
-BDEPEND="${RDEPEND} gnome-applets gnome-panel lm_sensors libnotify"
+RDEPEND="alsa-lib atk audiofile avahi cairo dbus dbus-glib eggdbus esound expat fontconfig freetype gail gcc gconf glib2 glibc gnome-panel gnome-vfs gtk+ libart_lgpl libatasmart libbonobo libbonoboui libgcrypt libgnome libgnomecanvas libgnome-keyring libgnomeui libgpg-error libICE libnotify libpng libSM libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libxml2 libXrandr libXrender lm_sensors openssl orbit pango pixman popt udev util-linux-ng zlib"
+BDEPEND="alsa-lib-dev atk-dev audiofile-dev avahi-dev cairo-dev dbus-dev dbus-glib-dev eggdbus-dev esound-dev expat-dev fontconfig-dev freetype-dev gail-dev gcc-dev gconf-dev glib2-dev glibc-dev gnome-panel-dev gnome-vfs-dev gtk+-dev libart_lgpl-dev libatasmart-dev libbonobo-dev libbonoboui-dev libgcrypt-dev libgnome-dev libgnomecanvas-dev libgnome-keyring-dev libgnomeui-dev libgpg-error-dev libICE-dev libnotify-dev libpng-dev libSM-dev libX11-dev libXau-dev libxcb-dev libXcomposite-dev libXcursor-dev libXdamage-dev libXdmcp-dev libXext-dev libXfixes-dev libXi-dev libxml2-dev libXrandr-dev libXrender-dev lm_sensors-dev openssl-dev orbit-dev pango-dev pixman-dev popt-dev udev-dev util-linux-ng-dev zlib-dev"
 RECOMMENDED=""
 
 NOTES=""

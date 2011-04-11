@@ -10,7 +10,7 @@ PACKAGER="hzx@115.com"
 SRC_URI="http://downloads.sourceforge.net/project/"$N"/"$N"/"$V$R"/"$N-$V$R".tar.gz"
 
 RDEPEND=""
-BDEPEND="${RDEPEND} openjade"
+BDEPEND="openjade"
 RECOMMENDED=""
 
 NOTES=""

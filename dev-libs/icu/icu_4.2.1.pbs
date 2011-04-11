@@ -9,8 +9,8 @@ PACKAGER="hzx@115.com"
  
 SRC_URI="http://download.icu-project.org/files/"$N"4c/"$V$R"/"$N"4c-4_2_1-src.tgz"
 
-RDEPEND="glibc"
-BDEPEND="${RDEPEND} "
+RDEPEND="glibc gcc"
+BDEPEND="glibc-dev gcc-dev"
 RECOMMENDED=""
 
 NOTES=""

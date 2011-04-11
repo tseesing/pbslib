@@ -9,8 +9,8 @@ PACKAGER="hzx@115.com"
 
 SRC_URI="http://www.x.org/releases/X11R7.6/src/driver/"$N-$V$R".tar.bz2"
 
-RDEPEND="libdrm libXvMC libXv libXext libXfixes libX11 libxcb libXau libXdmcp pixman libpciaccess libXtst"
-BDEPEND="${RDEPEND} x11-base/xorg-server"
+RDEPEND="glibc libdrm"
+BDEPEND="glibc-dev xorg-server-dev libdrm-dev"
 
 pbs_unpack() {
         ypkg_unpack

@@ -10,8 +10,8 @@ PACKAGER="Zhongxin Huang, hzx@115.com"
 
 SRC_URI="http://www.mpg123.org/download/"$N-$V$R".tar.bz2"
 
-RDEPEND="libtool glibc"
-BDEPEND="${RDEPEND}"
+RDEPEND="alsa-lib audiofile directfb esound glibc jack-audio-connection-kit libao libid3tag libmad libsdl libtool openal zlib"
+BDEPEND="alsa-lib-dev audiofile-dev directfb-dev esound-dev glibc-dev jack-audio-connection-kit-dev libao-dev libid3tag-dev libmad-dev libsdl-dev libtool-dev openal-dev zlib-dev"
 
 pbs_unpack() {
         ypkg_unpack

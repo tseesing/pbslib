@@ -1,0 +1,27 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="free implementation of Windows(tm) on Unix"
+HOMEPAGE="http://www.winehq.org/"
+ 
+SRC_URI="http://ibiblio.org/pub/linux/system/emulators/"$N"/"$N-$V$R".tar.bz2"
+
+RDEPEND="libgphoto2 mpg123"
+BDEPEND="${RDEPEND} libgsm sane-backends v4l-utils prelink"
+
+pbs_unpack() {
+        ypkg_unpack
+}
+
+pbs_config() {
+	ypkg_config
+}
+
+pbs_build() {
+	ypkg_make
+}
+
+pbs_install() {
+	ypkg_mkinstall
+}

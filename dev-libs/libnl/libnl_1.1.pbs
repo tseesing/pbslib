@@ -9,8 +9,8 @@ PACKAGER="hzx@115.com"
 
 SRC_URI="http://people.suug.ch/~tgr/"$N"/files/"$N-$V$R".tar.gz"
 
-RDEPEND=""
-BDEPEND="${RDEPEND} "
+RDEPEND="glibc"
+BDEPEND="glibc-dev"
 RECOMMENDED=""
 
 NOTES=""

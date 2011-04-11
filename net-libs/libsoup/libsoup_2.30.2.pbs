@@ -9,10 +9,9 @@ PACKAGER="hzx@115.com"
 
 SRC_URI=" http://ftp.gnome.org/pub/gnome/desktop/2.30/2.30.2/sources/"$N-$V$R".tar.bz2"
 
-RDEPEND="libxml2 gnutls zlib libgcrypt libgpg-error gconf orbit libproxy sqlite libgnome-keyring eggdbus dbus-glib
-dbus zlib"
-BDEPEND="glib2 gnome-keyring libxml2 net-libs/libproxy net-libs/gnutls sqlite "
-RECOMMENDED="gnutls gnome-keyring libproxy "
+RDEPEND="dbus dbus-glib eggdbus gconf glib2 glibc gnutls libgcrypt libgnome-keyring libgpg-error libproxy libtasn1 libxml2 orbit sqlite zlib"
+BDEPEND="gnome-keyring-dev dbus-dev dbus-glib-dev eggdbus-dev gconf-dev glib2-dev glibc-dev gnutls-dev libgcrypt-dev libgnome-keyring-dev libgpg-error-dev libproxy-dev libtasn1-dev libxml2-dev orbit-dev sqlite-dev zlib-dev"
+RECOMMENDED=""
 
 NOTES="http://wiki.linuxfromscratch.org/blfs/wiki/libsoup
 Apache-2.2.15 (required to run the test suite), and PHP-5.3.2 compiled with XMLRPC-EPI support (only used for the XMLRPC regression tests)

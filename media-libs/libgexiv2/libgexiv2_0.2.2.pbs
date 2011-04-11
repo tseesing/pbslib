@@ -10,8 +10,8 @@ PACKAGER="Zhongxin Huang, hzx@115.com"
 
 SRC_URI="http://yorba.org/download/gexiv2/0.2/"$N-$V$R".tar.bz2"
 
-RDEPEND="exiv2"
-BDEPEND="${RDEPEND} "
+RDEPEND="exiv2 gcc glib2 glibc zlib"
+BDEPEND="exiv2-dev gcc-dev glib2-dev glibc-dev zlib-dev"
 RECOMMENDED=""
 
 NOTES=""

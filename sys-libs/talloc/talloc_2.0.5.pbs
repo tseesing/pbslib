@@ -10,8 +10,8 @@ PACKAGER="Zhongxin Huang, hzx@115.com"
 
 SRC_URI="http://samba.org/ftp/"$N"/"$N-$V$R".tar.gz"
 
-RDEPEND=""
-BDEPEND="${RDEPEND} "
+RDEPEND="glibc python"
+BDEPEND="glibc-dev python-dev"
 RECOMMENDED=""
 
 NOTES=""

@@ -7,8 +7,8 @@ HOMEPAGE="http://xorg.freedesktop.org/"
  
 SRC_URI="http://www.x.org/releases/X11R7.6/src/app/"$N-$V$R".tar.bz2"
 
-RDEPEND="libX11 libXcursor libpng libxcb libXrender libXfixes libXau libXdmcp zlib"
-BDEPEND="${RDEPEND} x11-libs/libXcursor media-libs/libpng x11-libs/libXcursor"
+RDEPEND="glibc libpng libX11 libXau libxcb libXcursor libXdmcp libXfixes libXrender zlib"
+BDEPEND="glibc-dev libpng-dev libX11-dev libXau-dev libxcb-dev libXcursor-dev libXdmcp-dev libXfixes-dev libXrender-dev zlib-dev"
 
 pbs_unpack() {
         ypkg_unpack

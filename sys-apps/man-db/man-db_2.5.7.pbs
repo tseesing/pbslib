@@ -8,7 +8,7 @@ HOMEPAGE="http://savannah.nongnu.org/projects/man-db"
 SRC_URI="http://ftp.twaren.net/Unix/NonGNU/"$N"/"$N-$V$R".tar.gz"
 
 RDEPEND="gdbm zlib glibc"
-BDEPEND="${RDEPEND}"
+BDEPEND="gdbm-dev zlib-dev glibc-dev"
 
 pbs_unpack() {
         ypkg_unpack

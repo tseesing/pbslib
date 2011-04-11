@@ -10,8 +10,8 @@ PACKAGER="Zhongxin Huang, hzx@115.com"
 
 SRC_URI="http://mp4v2.googlecode.com/files/"$N-$V$R".tar.bz2"
 
-RDEPEND=""
-BDEPEND="${RDEPEND} "
+RDEPEND="gcc glibc"
+BDEPEND="gcc-dev glibc-dev"
 RECOMMENDED=""
 
 pbs_unpack() {

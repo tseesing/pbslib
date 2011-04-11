@@ -9,8 +9,8 @@ PACKAGER="hzx@115.com"
 
 SRC_URI="http://farsight.freedesktop.org/releases/"$N"/"$N-$V$R".tar.gz"
 
-RDEPEND="gstreamer libxml2 zlib"
-BDEPEND="${RDEPEND} gstreamer libnice gst-plugins-base"
+RDEPEND="glib2 glibc gst-plugins-base gstreamer libnice libxml2 zlib"
+BDEPEND="glib2-dev glibc-dev gst-plugins-base-dev gstreamer-dev libnice-dev libxml2-dev zlib-dev"
 RECOMMENDED=""
 
 NOTES=""

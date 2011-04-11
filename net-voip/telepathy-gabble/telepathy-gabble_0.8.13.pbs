@@ -9,8 +9,8 @@ PACKAGER="hzx@115.com"
 
 SRC_URI="http://telepathy.freedesktop.org/releases/"$N"/"$N-$V$R".tar.gz"
 
-RDEPEND=""
-BDEPEND="${RDEPEND} libsoup python loudmouth"
+RDEPEND="dbus dbus-glib glib2 glibc gnutls libgcrypt libgpg-error libsoup libtasn1 libxml2 loudmouth openssl sqlite telepathy-glib util-linux-ng zlib"
+BDEPEND="libsoup-dev python-dev dbus-dev dbus-glib-dev glib2-dev glibc-dev gnutls-dev libgcrypt-dev libgpg-error-dev libsoup-dev libtasn1-dev libxml2-dev loudmouth-dev openssl-dev sqlite-dev telepathy-glib-dev util-linux-ng-dev zlib-dev "
 RECOMMENDED=""
 
 NOTES=""

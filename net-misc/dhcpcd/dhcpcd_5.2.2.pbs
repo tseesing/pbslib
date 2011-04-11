@@ -9,8 +9,8 @@ PACKAGER="hzx@115.com"
 
 SRC_URI="http://roy.marples.name/downloads/"$N"/"$N-$V$R".tar.bz2"
 
-RDEPEND=""
-BDEPEND="${RDEPEND}"
+RDEPEND="glibc"
+BDEPEND="glibc-dev"
 
 pbs_unpack() {
         ypkg_unpack

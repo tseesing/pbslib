@@ -9,8 +9,8 @@ PACKAGER="hzx@115.com"
 
 SRC_URI="http://sg.danny.cz/sg/p/"$N-$V$R".tgz"
 
-RDEPEND=""
-BDEPEND="${RDEPEND} "
+RDEPEND="glibc"
+BDEPEND="glibc-dev"
 RECOMMENDED=""
 
 pbs_unpack() {

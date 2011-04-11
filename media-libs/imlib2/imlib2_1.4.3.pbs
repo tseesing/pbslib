@@ -7,8 +7,8 @@ HOMEPAGE="http://docs.enlightenment.org/api/imlib2/html/"
  
 SRC_URI="http://downloads.sourceforge.net/enlightenment/"$N-$V$R".tar.gz"
 
-RDEPEND="freetype zlib libXext libX11 libxcb libXau libXdmcp glibc "
-BDEPEND="${RDEPEND}"
+RDEPEND="freetype giflib glibc libICE libid3tag libjpeg-turbo libpng libSM libtiff libX11 libXau libxcb libXdmcp libXext util-linux-ng zlib"
+BDEPEND="freetype-dev giflib-dev glibc-dev libICE-dev libid3tag-dev libjpeg-turbo-dev libpng-dev libSM-dev libtiff-dev libX11-dev libXau-dev libxcb-dev libXdmcp-dev libXext-dev util-linux-ng-dev zlib-dev"
 
 pbs_unpack() {
         ypkg_unpack

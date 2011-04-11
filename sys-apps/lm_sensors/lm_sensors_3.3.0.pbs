@@ -9,8 +9,8 @@ PACKAGER="hzx@115.com"
 
 SRC_URI="http://dl.lm-sensors.org/lm-sensors/releases/"$N-$V$R".tar.bz2"
 
-RDEPEND=""
-BDEPEND="${RDEPEND} sysfsutils"
+RDEPEND="glibc"
+BDEPEND="sysfsutils-dev glibc-dev"
 RECOMMENDED=""
 
 pbs_unpack() {

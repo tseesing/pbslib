@@ -10,11 +10,8 @@ PACKAGER="hzx@115.com"
 
 SRC_URI="http://ftp.gnome.org/pub/gnome/mobile/2.30/2.30.2/sources/"$N-$V$R".tar.bz2 "
 
-RDEPEND="libXi libXrandr libXcursor pango gcc libXcomposite libXext libXdamage libXfixes atk cairo
-	 pixman libxml2 directfb libpng libxcb libXrender libX11 libXau libXdmcp glib2 glibc fontconfig freetype
-	 zlib expat libtiff libjpeg-turbo"
-BDEPEND="${RDEPEND} glib2 libpng libXrender  libX11 libXau libXdmcp libxcb libpthread-stubs 
-	 libXext cups libXi libXinerama gtk-doc"
+RDEPEND="atk cairo cups e2fsprogs expat fontconfig freetype gail gcc glib2 glibc gnutls keyutils krb5 libgcrypt libgpg-error libjpeg-turbo libpng libtasn1 libtiff libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libXrandr libXrender pango pixman zlib"
+BDEPEND="gtk-doc atk-dev cairo-dev cups-dev e2fsprogs-dev expat-dev fontconfig-dev freetype-dev gail-dev gcc-dev glib2-dev glibc-dev gnutls-dev keyutils-dev krb5-dev libgcrypt-dev libgpg-error-dev libjpeg-turbo-dev libpng-dev libtasn1-dev libtiff-dev libX11-dev libXau-dev libxcb-dev libXcomposite-dev libXcursor-dev libXdamage-dev libXdmcp-dev libXext-dev libXfixes-dev libXi-dev libXrandr-dev libXrender-dev pango-dev pixman-dev zlib-dev"
 RECOMMENDED=""
 
 pbs_unpack() {

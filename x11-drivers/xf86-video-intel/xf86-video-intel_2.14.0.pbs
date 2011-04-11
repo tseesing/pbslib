@@ -9,8 +9,8 @@ PACKAGER="hzx@115.com"
 
 SRC_URI="http://xorg.freedesktop.org/archive/individual/driver/"$N-$V$R".tar.bz2"
 
-RDEPEND="libdrm libXvMC libXv libXext libXfixes libX11 libxcb libXau libXdmcp pixman libpciaccess libXtst"
-BDEPEND="${RDEPEND} util-macros x11-base/xorg-server"
+RDEPEND="glibc libdrm libpciaccess libX11 libXau libxcb libXdmcp libXext libXfixes libXv libXvMC udev xcb-util"
+BDEPEND="util-macros-dev x11-base/xorg-server-dev glibc-dev libdrm-dev libpciaccess-dev libX11-dev libXau-dev libxcb-dev libXdmcp-dev libXext-dev libXfixes-dev libXv-dev libXvMC-dev udev-dev xcb-util-dev"
 
 pbs_unpack() {
         ypkg_unpack

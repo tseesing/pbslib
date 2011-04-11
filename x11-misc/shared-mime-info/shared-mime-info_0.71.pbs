@@ -7,9 +7,9 @@ HOMEPAGE="http://freedesktop.org/wiki/Software/shared-mime-info"
  
 SRC_URI=" http://people.freedesktop.org/~hadess/"$N-$V$R".tar.bz2 "
 
-RDEPEND="libxml2 zlib"
-BDEPEND="${RDEPEND} glib2 libxml2 dev-perl/xml-parser"
-OPIONAL="intltool"
+RDEPEND="glib2 glibc libxml2 zlib"
+BDEPEND="intltool xml-parser glib2-dev glibc-dev libxml2-dev zlib-dev"
+OPIONAL=""
 
 pbs_unpack() {
         ypkg_unpack

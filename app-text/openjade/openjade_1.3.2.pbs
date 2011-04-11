@@ -9,8 +9,8 @@ PACKAGER="hzx@115.com"
  
 SRC_URI="http://downloads.sourceforge.net/project/"$N"/"$N"/"$V$R"/"$N-$V$R".tar.gz"
 
-RDEPEND="opensp glibc gcc"
-BDEPEND="${RDEPEND} opensp"
+RDEPEND="gcc glibc opensp"
+BDEPEND="gcc-dev glibc-dev opensp-dev"
 RECOMMENDED=""
 
 NOTES=""

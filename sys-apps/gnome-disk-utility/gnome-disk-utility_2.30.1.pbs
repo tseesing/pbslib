@@ -9,11 +9,8 @@ PACKAGER="hzx@115.com"
 
 SRC_URI="http://ftp.gnome.org/pub/gnome/desktop/2.30/2.30.2/sources/"$N-$V$R".tar.bz2"
 
-RDEPEND="libunique libgnome-keyring eggdbus dbus-glib libgcrypt libgpg-error libatasmart udev avahi
- 	 gdbm gtk+ avahi dbus gcc atk pango cairo pixman libxml2 directfb libpng libxcb libXrender libX11 libxcb
-	 libXau libXdmcp fontconfig freetype zlib expat libXi libXrandr libXcursor libXcomposite libXext
-	 libXdamage libXfixes gcc"
-BDEPEND="${RDEPEND} udisks gnome-doc-utils gnome-keyring libnotify libunique rarian which net-dns/avahi"
+RDEPEND="atk avahi cairo dbus dbus-glib eggdbus expat fontconfig freetype gcc gdbm glib2 glibc gtk+ libatasmart libgcrypt libgnome-keyring libgpg-error libnotify libpng libunique libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libXrandr libXrender nautilus pango pixman udev zlib"
+BDEPEND="udisks-dev gnome-keyring-dev which avahi atk-dev avahi-dev cairo-dev dbus-dev dbus-glib-dev eggdbus-dev expat-dev fontconfig-dev freetype-dev gcc-dev gdbm-dev glib2-dev glibc-dev gtk+-dev libatasmart-dev libgcrypt-dev libgnome-keyring-dev libgpg-error-dev libnotify-dev libpng-dev libunique-dev libX11-dev libXau-dev libxcb-dev libXcomposite-dev libXcursor-dev libXdamage-dev libXdmcp-dev libXext-dev libXfixes-dev libXi-dev libXrandr-dev libXrender-dev nautilus-dev pango-dev pixman-dev udev-dev zlib-dev"
 RECOMMENDED=""
 
 pbs_unpack() {

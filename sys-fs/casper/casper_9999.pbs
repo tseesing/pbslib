@@ -9,9 +9,8 @@ PACKAGER="hzx@115.com"
 
 SRC_URI="git://192.168.1.58/"$N".git"
 
-RDEPEND="initramfs-tools busybox-initramfs sudo eject util-linux-ng plymouth ntfs-3g"
-BDEPEND="${RDEPEND} "
-OPINION="dmsetup user-setup localechooser-data"
+RDEPEND="glibc plymouth initramfs-tools busybox-initramfs sudo eject util-linux-ng ntfs-3g"
+BDEPEND=""
 
 pbs_unpack() {
 	ypkg_unpack

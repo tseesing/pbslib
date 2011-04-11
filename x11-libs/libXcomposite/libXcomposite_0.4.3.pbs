@@ -10,8 +10,8 @@ PACKAGER="Zhongxin Huang, hzx@115.com"
 
 SRC_URI="http://www.x.org/releases/X11R7.6/src/lib/"$N-$V$R".tar.bz2"
 
-RDEPEND="libX11 libXfixes libXext libxcb libXau libXdmcp"
-BDEPEND="${RDEPEND} libXfixes x11-libs/libX11 libXext"
+RDEPEND="glibc libX11 libXau libxcb libXdmcp"
+BDEPEND="glibc-dev libX11-dev libXau-dev libxcb-dev libXdmcp-dev"
 
 pbs_unpack() {
         ypkg_unpack

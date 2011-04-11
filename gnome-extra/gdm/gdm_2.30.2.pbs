@@ -9,10 +9,8 @@ PACKAGER="hzx@115.com"
 
 SRC_URI="http://ftp.gnome.org/pub/gnome/desktop/2.30/2.30.2/sources/"$N-$V$R".tar.bz2"
 
-RDEPEND="glib2 libcanberra libvorbis libogg libtool gtk+ atk pango cairo pixman libxml2 directfb libpng libxcb libXrender 
-	 libX11 libxcb libXau libXdmcp pango glibc fontconfig freetype expat dbus-glib dbus zlib libXi libXrandr libXcursor
-	 libXcomposite libXext libXdamage libXfixes libcanberra"
-BDEPEND="${RDEPEND} consolekit zenity openssh dbus libglade gnome-session libxklavier pam libxkbfile kbproto devicekit-power libusb-compat libusb"
+RDEPEND="zenity openssh alsa-lib atk audiofile avahi cairo dbus dbus-glib devicekit-power esound expat fontconfig freetype gail gcc gconf glib2 glibc gnome-panel gnome-vfs gtk+ libart_lgpl libbonobo libbonoboui libcanberra libgnome libgnomecanvas libICE libogg libpng libSM libtool libusb libusb-compat libvorbis libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libxkbfile libxklavier libxml2 libXrandr libXrender openssl orbit pam pango pixman popt util-linux-ng zlib"
+BDEPEND="consolekit-dev libglade-dev gnome-session kbproto-dev alsa-lib-dev atk-dev audiofile-dev avahi-dev cairo-dev dbus-dev dbus-glib-dev devicekit-power-dev esound-dev expat-dev fontconfig-dev freetype-dev gail-dev gcc-dev gconf-dev glib2-dev glibc-dev gnome-panel-dev gnome-vfs-dev gtk+-dev libart_lgpl-dev libbonobo-dev libbonoboui-dev libcanberra-dev libgnome-dev libgnomecanvas-dev libICE-dev libogg-dev libpng-dev libSM-dev libtool-dev libusb-dev libusb-compat-dev libvorbis-dev libX11-dev libXau-dev libxcb-dev libXcomposite-dev libXcursor-dev libXdamage-dev libXdmcp-dev libXext-dev libXfixes-dev libXi-dev libxkbfile-dev libxklavier-dev libxml2-dev libXrandr-dev libXrender-dev openssl-dev orbit-dev pam-dev pango-dev pixman-dev popt-dev util-linux-ng-dev zlib-dev"
 RECOMMENDED=""
 
 NOTES="gdm user/group should be created automatically."

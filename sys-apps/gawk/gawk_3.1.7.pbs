@@ -8,7 +8,7 @@ HOMEPAGE="http://www.gnu.org/software/gawk/gawk.html"
 SRC_URI="http://mirror.anl.gov/pub/gnu/"$N"/"$N-$V$R".tar.gz"
 
 RDEPEND="glibc"
-BDEPEND="${RDEPEND}"
+BDEPEND="glibc-dev"
 
 PRIORITY="required"
 

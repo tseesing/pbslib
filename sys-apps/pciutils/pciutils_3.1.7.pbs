@@ -7,8 +7,8 @@ HOMEPAGE="http://atrey.karlin.mff.cuni.cz/~mj/pciutils.html"
  
 SRC_URI="http://www.kernel.org/pub/software/utils/pciutils/$N-$V.tar.bz2"
 
-RDEPEND="which curl"
-BDEPEND="${RDEPEND}"
+RDEPEND="which curl glibc"
+BDEPEND="glibc-dev"
 
 pbs_unpack() {
         ypkg_unpack

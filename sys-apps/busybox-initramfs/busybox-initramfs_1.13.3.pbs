@@ -9,8 +9,8 @@ PACKAGER="hzx@115.com"
 
 SRC_URI="http://busybox.net/downloads/busybox-"$V$R".tar.bz2"
 
-RDEPEND=""
-BDEPEND="${RDEPEND} "
+RDEPEND="glibc"
+BDEPEND="glibc-dev"
 RECOMMENDED=""
 
 pbs_unpack() {

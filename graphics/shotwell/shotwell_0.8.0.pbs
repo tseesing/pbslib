@@ -10,9 +10,9 @@ PACKAGER="Zhongxin Huang, hzx@115.com"
 
 SRC_URI="http://www.yorba.org/download/shotwell/0.8/"$N-$V$R".tar.bz2"
 
-RDEPEND="libgexiv2 libgee json-glib libraw"
-BDEPEND="${RDEPEND} vala"
-RECOMMENDED=""
+RDEPEND="atk cairo dbus dbus-glib enchant exiv2 expat fontconfig freetype gail gcc gconf glib2 glibc gnutls gst-plugins-base gstreamer gtk+ icu json-glib libexif libgcrypt libgee libgexiv2 libgpg-error libgphoto2 libICE libjpeg-turbo libpng libSM libsoup libtasn1 libtool libunique libusb libusb-compat libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libxml2 libXrandr libXrender libxslt libXt orbit pango pixman sqlite udev util-linux-ng webkit zlib" 
+BDEPEND="vala libraw-dev atk-dev cairo-dev dbus-dev dbus-glib-dev enchant-dev exiv2-dev expat-dev fontconfig-dev freetype-dev gail-dev gcc-dev gconf-dev glib2-dev glibc-dev gnutls-dev gst-plugins-base-dev gstreamer-dev gtk+-dev icu-dev json-glib-dev libexif-dev libgcrypt-dev libgee-dev libgexiv2-dev libgpg-error-dev libgphoto2-dev libICE-dev libjpeg-turbo-dev libpng-dev libSM-dev libsoup-dev libtasn1-dev libtool-dev libunique-dev libusb-dev libusb-compat-dev libX11-dev libXau-dev libxcb-dev libXcomposite-dev libXcursor-dev libXdamage-dev libXdmcp-dev libXext-dev libXfixes-dev libXi-dev libxml2-dev libXrandr-dev libXrender-dev libxslt-dev libXt-dev orbit-dev pango-dev pixman-dev sqlite-dev udev-dev util-linux-ng-dev webkit-dev zlib-dev"
+RECOMMENDED="libraw"
 
 NOTES=""
 

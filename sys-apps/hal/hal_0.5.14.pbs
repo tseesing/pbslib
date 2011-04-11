@@ -9,9 +9,9 @@ PACKAGER="hzx@115.com"
 
 SRC_URI="http://hal.freedesktop.org/releases/"$N-$V$R".tar.gz"
 
-RDEPEND="dbus-glib dbus glibc" #pciutils usbutils"
-BDEPEND="${RDEPEND} consolekit"
-RECOMMEND="consolekit"
+RDEPEND="dbus dbus-glib expat glib2 glibc util-linux-ng"
+BDEPEND="consolekit-dev dbus-dev dbus-glib-dev expat-dev glib2-dev glibc-dev util-linux-ng-dev"
+RECOMMEND=""
 
 pbs_init(){
 	ypkg_groupadd -r "haldaemon"

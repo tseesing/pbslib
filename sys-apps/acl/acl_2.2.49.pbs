@@ -10,7 +10,7 @@ PACKAGER="hzx@115.com"
 SRC_URI="http://mirrors.zerg.biz/nongnu/"$N"/"$N-$V$R".src.tar.gz"
 
 RDEPEND="attr glibc"
-BDEPEND="${RDEPEND} attr"
+BDEPEND="attr-dev glibc-dev"
 
 pbs_unpack() {
         ypkg_unpack

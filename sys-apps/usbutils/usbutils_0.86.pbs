@@ -7,8 +7,8 @@ HOMEPAGE="http://linux-usb.sourceforge.net/"
  
 SRC_URI="http://downloads.sourceforge.net/linux-usb/"$N-$V$R".tar.gz"
 
-RDEPEND="libusb-compat libusb"
-BDEPEND="${RDEPEND}"
+RDEPEND="glibc libusb libusb-compat"
+BDEPEND="glibc-dev libusb-dev libusb-compat-dev"
 
 pbs_unpack() {
         ypkg_unpack

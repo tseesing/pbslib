@@ -10,8 +10,8 @@ MAINTAINER="Zhongxin Huang, hzx@115.com"
 
 SRC_URI="http://downloads.sourceforge.net/aa-project/"$N-$V"rc5.tar.gz"
 
-RDEPEND="ncurses glibc libX11 glibc libxcb libXau libXdmcp"
-BDEPEND="${RDEPEND}"
+RDEPEND="glibc libX11 libXau libxcb libXdmcp ncurses"
+BDEPEND="glibc-dev libX11-dev libXau-dev libxcb-dev libXdmcp-dev ncurses-dev"
 
 pbs_unpack(){
         ypkg_unpack

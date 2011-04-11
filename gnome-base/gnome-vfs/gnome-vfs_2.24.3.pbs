@@ -10,13 +10,12 @@ PACKAGER="hzx@115.com"
 
 SRC_URI="http://ftp.gnome.org/pub/gnome/platform/2.30/2.30.2/sources/"$N-$V$R".tar.bz2 "
 
-RDEPEND="libxml2 zlib glibc openssl avahi gcc gconf orbit glib2 dbus-glib dbus"
-BDEPEND="${RDEPEND} dbus-glib gconf libbonobo gnome-mime-data shared-mime-info libxml2 bzip2 gamin avahi openssl orbit hal dbus samba neon"
+RDEPEND="acl attr avahi cyrus-sasl dbus dbus-glib gamin gcc gconf glib2 glibc hal keyutils krb5 libcap libxml2 openldap-client openssl orbit samba talloc zlib"
+BDEPEND="libbonobo-dev neon-dev acl-dev attr-dev avahi-dev cyrus-sasl-dev dbus-dev dbus-glib-dev gamin-dev gcc-dev gconf-dev glib2-dev glibc-dev hal-dev keyutils-dev krb5-dev libcap-dev libxml2-dev openldap-client-dev openssl-dev orbit-dev samba-dev talloc-dev zlib-dev"
 RECOMMENDED=""
 
 NOTES="http://wiki.linuxfromscratch.org/blfs/wiki/gnome-vfs
-While several packages still depend on GNOME VFS, it is deprecated for new development. GVFS is the replacement package.
-"
+While several packages still depend on GNOME VFS, it is deprecated for new development. GVFS is the replacement package."
 
 pbs_unpack() {
         ypkg_unpack
@@ -32,9 +31,7 @@ pbs_config() {
 		      --enable-avahi 
 		      --enable-daemon 
 		      --enable-ipv6 
-	              --enable-fam 
-		       
-		       "
+	              --enable-fam"
 	ypkg_config
 }
 

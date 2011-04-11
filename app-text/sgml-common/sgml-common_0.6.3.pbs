@@ -10,7 +10,7 @@ PACKAGER="hzx@115.com"
 SRC_URI="http://gd.tuwien.ac.at/hci/kde/devel/docbook/SOURCES/"$N-$V$R".tgz"
 
 RDEPEND=""
-BDEPEND="${RDEPEND}"
+BDEPEND=""
 RECOMMENDED=""
 
 NOTES="http://wiki.linuxfromscratch.org/blfs/wiki/sgml-common"

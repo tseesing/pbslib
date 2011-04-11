@@ -10,8 +10,8 @@ PACKAGER="Zhongxin Huang, hzx@115.com"
 
 SRC_URI="http://download.gnome.org/sources/"$N"/0.6/"$N-$V$R".tar.bz2"
 
-RDEPEND=""
-BDEPEND="${RDEPEND} "
+RDEPEND="glib2 glibc"
+BDEPEND="glib2-dev glibc-dev"
 RECOMMENDED=""
 
 NOTES=""

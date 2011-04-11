@@ -7,10 +7,8 @@ HOMEPAGE="http://www.galago-project.org/"
  
 SRC_URI="http://www.galago-project.org/files/releases/source/"$N"/"$N-$V$R".tar.bz2"
 
-RDEPEND="gtk+ atk glib2 glibc pango cairo gcc pixman directfb libpng libxcb libXrender libX11 libxcb libXau libXdmcp 
-	 pango fontconfig freetype libxml2 zlib dbus libXi libXrandr libXcursor libXcomposite libXext dbus-glib libXdamage
-	 libXfixes expat"
-BDEPEND="${RDEPEND}"
+RDEPEND="atk cairo dbus dbus-glib expat fontconfig freetype gcc glib2 glibc gtk+ libpng libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libXrandr libXrender pango pixman zlib"
+BDEPEND="atk-dev cairo-dev dbus-dev dbus-glib-dev expat-dev fontconfig-dev freetype-dev gcc-dev glib2-dev glibc-dev gtk+-dev libpng-dev libX11-dev libXau-dev libxcb-dev libXcomposite-dev libXcursor-dev libXdamage-dev libXdmcp-dev libXext-dev libXfixes-dev libXi-dev libXrandr-dev libXrender-dev pango-dev pixman-dev zlib-dev"
 
 pbs_unpack() {
         ypkg_unpack

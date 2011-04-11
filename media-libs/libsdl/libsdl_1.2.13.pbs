@@ -9,8 +9,8 @@ PACKAGER="hzx@115.com"
 
 SRC_URI="http://www.libsdl.org/release/SDL-"$V$R".tar.gz"
 
-RDEPEND="directfb zlib"
-BDEPEND="${RDEPEND} "
+RDEPEND="alsa-lib audiofile directfb esound glibc zlib"
+BDEPEND="alsa-lib-dev audiofile-dev directfb-dev esound-dev glibc-dev zlib-dev"
 RECOMMENDED=""
 
 pbs_unpack() {

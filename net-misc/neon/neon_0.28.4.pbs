@@ -10,7 +10,7 @@ PACKAGER="hzx@115.com"
 SRC_URI="http://www.webdav.org/"$N"/"$N-$V$R".tar.gz"
 
 RDEPEND="zlib openssl expat"
-BDEPEND="${RDEPEND} expat|libxml2 "
+BDEPEND="expat-dev libxml2-dev zlib-dev openssl-dev"
 RECOMMENDED=""
 
 NOTES=""

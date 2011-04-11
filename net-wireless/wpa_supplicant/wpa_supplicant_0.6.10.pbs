@@ -9,8 +9,8 @@ PACKAGER="hzx@115.com"
 
 SRC_URI="http://hostap.epitest.fi/releases/"$N-$V$R".tar.gz"
 
-RDEPEND=""
-BDEPEND="${RDEPEND} dbus sys-apps/pcsc-lite"
+RDEPEND="dbus glibc libnl ncurses openssl pcsc-lite readline"
+BDEPEND="dbus-dev glibc-dev libnl-dev ncurses-dev openssl-dev pcsc-lite-dev readline-dev"
 RECOMMENDED=""
 
 NOTES="

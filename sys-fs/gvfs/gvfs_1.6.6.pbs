@@ -9,8 +9,8 @@ PACKAGER="hzx@115.com"
 
 SRC_URI="http://ftp.gnome.org/pub/gnome/sources/"$N"/1.6/"$N-$V$R".tar.bz2"
 
-RDEPEND="expat avahi dbus zlib"
-BDEPEND="${RDEPEND} gconf samba fuse libgphoto2 libarchive avahi gnome-keyring bluez"
+RDEPEND="acl attr avahi bluez cyrus-sasl dbus dbus-glib eggdbus expat fuse gcc gconf glib2 glibc gnome-disk-utility gnutls keyutils krb5 libarchive libcap libcdio libexif libgcrypt libgnome-keyring libgpg-error libgphoto2 libproxy libsoup libtasn1 libtool libusb libusb-compat libxml2 openldap-client openssl orbit samba sqlite talloc udev zlib"
+BDEPEND="gnome-keyring-dev acl-dev attr-dev avahi-dev bluez-dev cyrus-sasl-dev dbus-dev dbus-glib-dev eggdbus-dev expat-dev fuse-dev gcc-dev gconf-dev glib2-dev glibc-dev gnome-disk-utility-dev gnutls-dev keyutils-dev krb5-dev libarchive-dev libcap-dev libcdio-dev libexif-dev libgcrypt-dev libgnome-keyring-dev libgpg-error-dev libgphoto2-dev libproxy-dev libsoup-dev libtasn1-dev libtool-dev libusb-dev libusb-compat-dev libxml2-dev openldap-client-dev openssl-dev orbit-dev samba-dev sqlite-dev talloc-dev udev-dev zlib-dev"
 
 pbs_unpack() {
         ypkg_unpack

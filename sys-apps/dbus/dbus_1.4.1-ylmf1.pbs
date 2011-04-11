@@ -9,8 +9,8 @@ PACKAGER="hzx@115.com"
 
 SRC_URI="http://dbus.freedesktop.org/releases/"$N"/"$N-$V".tar.gz"
 
-RDEPEND="shadow libSM util-linux-ng libICE libX11 libxcb libXau libXdmcp glibc"
-BDEPEND="${RDEPEND} expat libxml2"
+RDEPEND="expat glibc libICE libSM libX11 libXau libxcb libXdmcp util-linux-ng"
+BDEPEND="libxml2-dev expat-dev glibc-dev libICE-dev libSM-dev libX11-dev libXau-dev libxcb-dev libXdmcp-dev util-linux-ng-dev"
 
 pbs_unpack(){
         ypkg_unpack

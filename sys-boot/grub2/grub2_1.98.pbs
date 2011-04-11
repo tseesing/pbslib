@@ -9,10 +9,10 @@ PACKAGER="hzx@115.com"
 
 SRC_URI="ftp://alpha.gnu.org/gnu/grub/grub-"$V$R".tar.gz"
 
-RDEPEND=""
-BDEPEND="${RDEPEND} "
+RDEPEND="freetype glibc zlib"
+BDEPEND="freetype-dev glibc-dev zlib-dev"
 RECOMMENDED=""
-CONFLICT="sys-boot/grub"
+CONFLICT="grub"
 
 NOTES=""
 

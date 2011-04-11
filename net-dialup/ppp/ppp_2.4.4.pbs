@@ -9,8 +9,8 @@ PACKAGER="hzx@115.com"
 
 SRC_URI="http://samba.org/ftp/"$N"/"$N-$V$R".tar.gz"
 
-RDEPEND=""
-BDEPEND="${RDEPEND} libpcap "
+RDEPEND="glibc libpcap"
+BDEPEND="libpcap-dev glibc-dev"
 RECOMMENDED=""
 
 NOTES=""

@@ -9,8 +9,8 @@ PACKAGER="hzx@115.com"
 
 SRC_URI="http://developer.kde.org/~wheeler/files/src/"$N-$V$R".tar.gz"
 
-RDEPEND=""
-BDEPEND="${RDEPEND} "
+RDEPEND="gcc glibc zlib"
+BDEPEND="gcc-dev glibc-dev zlib-dev"
 RECOMMENDED=""
 
 pbs_unpack() {

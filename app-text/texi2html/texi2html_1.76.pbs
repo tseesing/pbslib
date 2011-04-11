@@ -10,10 +10,10 @@ PACKAGER="hzx@115.com"
 SRC_URI="ftp://lug.mtu.edu/gentoo/distfiles/"$N-$V$R".tar.gz"
 
 RDEPEND="perl getopt-simple"
-BDEPEND="${RDEPEND} perl"
+BDEPEND=""
 RECOMMENDED=""
 
-NOTES="a\nb\n"
+NOTES=""
 
 pbs_unpack() {
         ypkg_unpack

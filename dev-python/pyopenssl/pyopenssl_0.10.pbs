@@ -9,8 +9,8 @@ PACKAGER="hzx@115.com"
 
 SRC_URI="http://pypi.python.org/packages/source/p/pyOpenSSL/pyOpenSSL-"$V$R".tar.gz"
 
-RDEPEND=""
-BDEPEND="${RDEPEND} python openssl"
+RDEPEND="glibc openssl python"
+BDEPEND="glibc-dev openssl-dev python-dev"
 RECOMMENDED=""
 
 pbs_unpack() {

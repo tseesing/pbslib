@@ -2,15 +2,15 @@
 # YLmf_OS package build script
 #
 
-DESCRIPTION="ACPI is the ACPI Component Architecture tool suite from Intel. It provides provides a reference implementation of software components that enable OS support for interfaces defined in the ACPI 1.0b specification. This includes: AML interpreter and debugger, Namespace Management, ACPI hardware support, and basic OSPM, including a device power management framework."
+DESCRIPTION="ACPI is the ACPI Component Architecture tool suite from Intel. It provides provides a reference implementation of software components that enable OS support for interfaces defined in the ACPI 1.0b specification."
 HOMEPAGE="http://www.intel.com/technology/iapc/acpi/downloads.htm"
 LICENSE="GPL-2"
 PACKAGER="hzx@115.com"
 
 SRC_URI="http://www.acpica.org/download/acpica-unix-"$V$R".tar.gz"
 
-RDEPEND="udev glibc "
-BDEPEND="${RDEPEND} "
+RDEPEND="glibc"
+BDEPEND="udev-dev glibc-dev"
 RECOMMENDED=""
 
 pbs_unpack() {

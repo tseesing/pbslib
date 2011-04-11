@@ -7,8 +7,8 @@ HOMEPAGE="http://expat.sourceforge.net/"
  
 SRC_URI="http://downloads.sourceforge.net/"$N"/"$N-$V$R".tar.gz"
 
-RDEPEND=""
-BDEPEND="${RDEPEND}"
+RDEPEND="glibc"
+BDEPEND="glibc-dev"
 
 pbs_unpack() {
         ypkg_unpack

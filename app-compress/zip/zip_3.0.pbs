@@ -10,8 +10,8 @@ PACKAGER="Zhongxin Huang, hzx@115.com"
 
 SRC_URI="http://downloads.sourceforge.net/infozip/"$N"30.tar.gz"
 
-RDEPEND="bzip2"
-BDEPEND="${RDEPEND}"
+RDEPEND="bzip2 glibc"
+BDEPEND="bzip2-dev glibc-dev"
 
 pbs_unpack() {
         ypkg_unpack

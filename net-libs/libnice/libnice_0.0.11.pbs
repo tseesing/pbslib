@@ -9,8 +9,8 @@ PACKAGER="hzx@115.com"
 
 SRC_URI="http://nice.freedesktop.org/releases/"$N-$V$R".tar.gz"
 
-RDEPEND=""
-BDEPEND="${RDEPEND} glib2 gstreamer"
+RDEPEND="glib2 glibc gstreamer libxml2 zlib"
+BDEPEND="glib2-dev glibc-dev gstreamer-dev libxml2-dev zlib-dev"
 RECOMMENDED=""
 
 NOTES=""

@@ -9,8 +9,8 @@ PACKAGER="hzx@115.com"
 
 SRC_URI="ftp://lug.mtu.edu/gentoo/distfiles/"${N}_$V$R".tar.bz2"
 
-RDEPEND=""
-BDEPEND="${RDEPEND}"
+RDEPEND="glibc"
+BDEPEND="glibc-dev"
 
 pbs_unpack() {
         ypkg_unpack

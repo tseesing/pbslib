@@ -9,8 +9,8 @@ PACKAGER="hzx@115.com"
  
 SRC_URI="http://ibus.googlecode.com/files/"$N-$V$R".tar.gz"
 
-RDEPEND="pyxdg glib2 dbus glibc libX11 libxcb zlib libXau libXdmcp"
-BDEPEND="${RDEPEND} notify-python imagemagick"
+RDEPEND="atk cairo dbus dbus-glib expat fontconfig freetype gcc gconf glib2 glibc gtk+ libpng libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libXrandr libXrender orbit pango pixman zlib"
+BDEPEND="notify-python-dev imagemagick atk-dev cairo-dev dbus-dev dbus-glib-dev expat-dev fontconfig-dev freetype-dev gcc-dev gconf-dev glib2-dev glibc-dev gtk+-dev libpng-dev libX11-dev libXau-dev libxcb-dev libXcomposite-dev libXcursor-dev libXdamage-dev libXdmcp-dev libXext-dev libXfixes-dev libXi-dev libXrandr-dev libXrender-dev orbit-dev pango-dev pixman-dev zlib-dev"
 RECOMMENDED="notify-python"
 
 NOTES="

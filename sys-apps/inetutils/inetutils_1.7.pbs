@@ -7,8 +7,8 @@ HOMEPAGE="http://www.gnu.org/software/inetutils/"
  
 SRC_URI="http://ftp.gnu.org/gnu/"$N"/"$N-$V$R".tar.gz"
 
-RDEPEND="ncurses"
-BDEPEND="${RDEPEND}"
+RDEPEND="glibc keyutils krb5 ncurses"
+BDEPEND="glibc-dev keyutils-dev krb5-dev ncurses-dev"
 
 pbs_unpack() {
         ypkg_unpack

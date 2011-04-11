@@ -9,8 +9,8 @@ SRC_URI="http://dbus.freedesktop.org/releases/"$N"/"$N-$V$R".tar.gz"
 
 RDEPEND=""
 
-RDEPEND="dbus glib2 glibc expat"
-BDEPEND="${RDEPEND} sys-apps/dbus"
+RDEPEND="dbus expat glib2 glibc"
+BDEPEND="dbus-dev"
 
 pbs_unpack() {
         ypkg_unpack

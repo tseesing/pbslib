@@ -7,8 +7,8 @@ HOMEPAGE="http://www.infodrom.org/projects/sysklogd/index.php"
  
 SRC_URI="http://www.infodrom.org/projects/"$N"/download/"$N-$V$R".tar.gz"
 
-RDEPEND=""
-BDEPEND="${RDEPEND}"
+RDEPEND="glibc"
+BDEPEND="glibc-dev"
 
 pbs_unpack() {
         ypkg_unpack

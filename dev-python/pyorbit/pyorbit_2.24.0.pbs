@@ -10,8 +10,8 @@ PACKAGER="hzx@115.com"
 
 SRC_URI="http://ftp.gnome.org/pub/gnome/sources/"$N"/2.24/"$N-$V$R".tar.bz2"
 
-RDEPEND=""
-BDEPEND="${RDEPEND} orbit"
+RDEPEND="glib2 glibc libIDL orbit python"
+BDEPEND="glib2-dev glibc-dev libIDL-dev orbit-dev python-dev"
 RECOMMENDED=""
 
 NOTES=""

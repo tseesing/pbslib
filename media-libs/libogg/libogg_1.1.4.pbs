@@ -9,7 +9,8 @@ PACKAGER="hzx@115.com"
 
 SRC_URI="http://downloads.xiph.org/releases/ogg/"$N-$V$R".tar.gz"
 
-BDEPEND=""
+RDEPEND="glibc"
+BDEPEND="glibc-dev"
 RECOMMENDED=""
 
 NOTES="http://wiki.linuxfromscratch.org/blfs/wiki/libogg"

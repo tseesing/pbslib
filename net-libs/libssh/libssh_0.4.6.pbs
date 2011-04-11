@@ -10,8 +10,8 @@ PACKAGER="Zhongxin Huang, hzx@115.com"
 
 SRC_URI="http://www.libssh.org/files/"$N-$V$R".tar.gz"
 
-RDEPEND=""
-BDEPEND="${RDEPEND} "
+RDEPEND="glibc openssl zlib"
+BDEPEND="glibc-dev openssl-dev zlib-dev"
 RECOMMENDED=""
 
 pbs_unpack() {

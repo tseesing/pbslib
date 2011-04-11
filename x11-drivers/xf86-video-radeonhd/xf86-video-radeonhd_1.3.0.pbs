@@ -9,8 +9,8 @@ PACKAGER="hzx@115.com"
 
 SRC_URI="http://cgit.freedesktop.org/xorg/driver/xf86-video-radeonhd/snapshot/"$N-$V$R".tar.bz2"
 
-RDEPEND="xorg-server pciutils"
-BDEPEND="${RDEPEND} x11-proto/xextproto x11-proto/xproto"
+RDEPEND="glibc libdrm libpciaccess pciutils"
+BDEPEND="xextproto-dev xproto-dev glibc-dev libdrm-dev libpciaccess-dev pciutils-dev"
 RECOMMENDED=""
 
 NOTES="Status 09/2010: Linux distributions, including Novell's openSUSE, have now abandoned radeonhd as the default driver, instead using the radeon driver. radeon has more features, including Kernel Mode-Setting support and more 3D support, and it supports all Radeon generation from original R100 Radeons to R800 Radeons (HD 5000 series). Radeonhd can be continued to be updated as long as there are people find it useful."

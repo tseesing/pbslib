@@ -9,8 +9,8 @@ PACKAGER="hzx@115.com"
  
 SRC_URI="http://people.freebsd.org/~kientzle/"libarchive"/src/"$N-$V$R".tar.gz"
 
-RDEPEND="acl attr zlib bzip2 glibc"
-BDEPEND="${RDEPEND} sharutils"
+RDEPEND="acl attr glibc zlib"
+BDEPEND="sharutils acl-dev attr-dev glibc-dev zlib-dev"
 RECOMMENDED=""
 
 NOTES=""

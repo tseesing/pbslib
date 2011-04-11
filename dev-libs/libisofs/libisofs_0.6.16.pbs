@@ -9,8 +9,8 @@ PACKAGER="hzx@115.com"
 
 SRC_URI="http://files.libburnia-project.org/releases/"$N-$V$R".tar.gz"
 
-RDEPEND="acl attr"
-BDEPEND="${RDEPEND} libburn"
+RDEPEND="acl attr glibc"
+BDEPEND="libburn-dev acl-dev attr-dev glibc-dev"
 RECOMMENDED=""
 
 NOTES=""

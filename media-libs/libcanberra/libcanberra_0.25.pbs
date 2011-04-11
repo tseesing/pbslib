@@ -9,10 +9,8 @@ PACKAGER="hzx@115.com"
 
 SRC_URI="http://0pointer.de/lennart/projects/"$N"/"$N-$V$R".tar.gz"
 
-RDEPEND="gtk+ atk glib2 glibc pango cairo pixman directfb libpng libxcb libXrender libX11 
-         libXau libXdmcp fontconfig freetype libxml2 zlib glib2 libvorbis libogg libtool libXi
-	 libXrandr libXcursor libXcomposite libXext libXdamage libXfixes expat"
-BDEPEND="${RDEPEND} sound-theme-freedesktop alsa-lib gstreamer gtk+ libvorbis"
+RDEPEND="alsa-lib atk cairo expat fontconfig freetype gcc glib2 glibc gstreamer gtk+ libogg libpng libtool libvorbis libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libxml2 libXrandr libXrender pango pixman zlib"
+BDEPEND="sound-theme-freedesktop alsa-lib-dev atk-dev cairo-dev expat-dev fontconfig-dev freetype-dev gcc-dev glib2-dev glibc-dev gstreamer-dev gtk+-dev libogg-dev libpng-dev libtool-dev libvorbis-dev libX11-dev libXau-dev libxcb-dev libXcomposite-dev libXcursor-dev libXdamage-dev libXdmcp-dev libXext-dev libXfixes-dev libXi-dev libxml2-dev libXrandr-dev libXrender-dev pango-dev pixman-dev zlib-dev"
 RECOMMENDED=""
 
 pbs_unpack() {

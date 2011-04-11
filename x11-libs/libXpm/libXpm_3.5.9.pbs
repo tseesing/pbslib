@@ -7,8 +7,8 @@ HOMEPAGE="http://www.x.org/wiki/"
  
 SRC_URI="http://www.x.org/releases/X11R7.6/src/lib/"$N-$V$R".tar.bz2"
 
-RDEPEND="libXt libSM util-linux-ng libICE libXext libXpm libX11 libxcb libXau libXdmcp"
-BDEPEND="${RDEPEND}"
+RDEPEND="glibc libICE libSM libX11 libXau libxcb libXdmcp libXext libXt util-linux-ng"
+BDEPEND="glibc-dev libICE-dev libSM-dev libX11-dev libXau-dev libxcb-dev libXdmcp-dev libXext-dev libXt-dev util-linux-ng-dev"
 
 pbs_unpack() {
         ypkg_unpack

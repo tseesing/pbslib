@@ -10,7 +10,8 @@ PACKAGER="hzx@115.com"
 
 SRC_URI="http://www.docbook.org/xml/4.5/"$N-$V$R".zip"
 
-BDEPEND="libxml2 unzip"
+RDEPEND=""
+BDEPEND="libxml2-dev unzip"
 RECOMMENDED=""
 
 pbs_unpack() {

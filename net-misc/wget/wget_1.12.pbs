@@ -7,8 +7,8 @@ HOMEPAGE="http://www.gnu.org/software/wget/"
  
 SRC_URI="http://ftp.gnu.org/gnu/"$N"/"$N-$V$R".tar.bz2"
 
-RDEPEND="openssl"
-BDEPEND="${RDEPEND}"
+RDEPEND="glibc openssl"
+BDEPEND="glibc-dev openssl-dev"
 
 pbs_unpack() {
         ypkg_unpack

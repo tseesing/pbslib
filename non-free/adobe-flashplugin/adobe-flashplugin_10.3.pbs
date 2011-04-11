@@ -9,8 +9,8 @@ PACKAGER="hzx@115.com"
 
 SRC_URI="http://download.macromedia.com/pub/labs/flashplatformruntimes/flashplayer10-3/flashplayer10-3_b1_lin_030811.tar.gz"
 
-RDEPEND="curl"
-BDEPEND="${RDEPEND} "
+RDEPEND="curl atk cairo expat fontconfig freetype gcc glib2 glibc gtk+ libICE libpng libSM libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libXrandr libXrender libXt nspr nss pango pixman util-linux-ng zlib"
+BDEPEND=""
 RECOMMENDED=""
 
 NOTES=""

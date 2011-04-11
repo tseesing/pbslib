@@ -10,7 +10,7 @@ PACKAGER="hzx@115.com"
 SRC_URI="http://telepathy.freedesktop.org/releases/"$N"/"$N-$V$R".tar.gz"
 
 RDEPEND=""
-BDEPEND="${RDEPEND} python telepathy-glib"
+BDEPEND="python-dev telepathy-glib-dev"
 RECOMMENDED=""
 
 NOTES=""

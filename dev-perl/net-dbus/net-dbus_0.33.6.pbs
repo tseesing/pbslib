@@ -9,8 +9,8 @@ PACKAGER="hzx@115.com"
 
 SRC_URI="http://search.cpan.org/CPAN/authors/id/D/DA/DANBERR/Net-DBus-"$V$R".tar.gz"
 
-RDEPEND=""
-BDEPEND="${RDEPEND} "
+RDEPEND="dbus glibc"
+BDEPEND="dbus-dev glibc-dev"
 RECOMMENDED=""
 
 NOTES=""

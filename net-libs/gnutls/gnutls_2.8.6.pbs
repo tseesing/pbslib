@@ -10,8 +10,8 @@ PACKAGER="Zhongxin Huang, hzx@115.com"
 
 SRC_URI="http://ftp.gnu.org/pub/gnu/"$N"/"$N-$V$R".tar.bz2"
 
-RDEPEND="readline zlib libgcrypt libgpg-error glibc ncurses"
-BDEPEND="${RDEPEND}"
+RDEPEND="gcc glibc gmp guile libgcrypt libgpg-error libtasn1 libtool ncurses readline zlib"
+BDEPEND="gcc-dev glibc-dev gmp-dev guile-dev libgcrypt-dev libgpg-error-dev libtasn1-dev libtool-dev ncurses-dev readline-dev zlib-dev"
 
 pbs_unpack() {
         ypkg_unpack

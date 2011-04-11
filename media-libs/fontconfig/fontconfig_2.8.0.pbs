@@ -9,8 +9,8 @@ LICENSE=""
 PACKAGER="Zhongxin Huang, hzx@115.com"
 SRC_URI="http://fontconfig.org/release/$N-$V$R.tar.gz"
 
-RDEPEND="freetype zlib expat glibc"
-BDEPEND="${RDEPEND} media-libs/freetype dev-libs/libxml2"
+RDEPEND="expat freetype glibc zlib"
+BDEPEN="libxml2-dev expat-dev freetype-dev glibc-dev zlib-dev"
 
 pbs_unpack() {
         ypkg_unpack

@@ -10,7 +10,7 @@ PACKAGER="hzx@115.com"
 SRC_URI="http://ftp.osuosl.org/pub/gsb/gsb-2.30_slackware-13.1/source/t/$N/"$N-$V$R".tar.bz2"
 
 RDEPEND="mkfontdir fontconfig"
-BDEPEND="${RDEPEND} "
+BDEPEND=""
 RECOMMENDED=""
 
 NOTES=""

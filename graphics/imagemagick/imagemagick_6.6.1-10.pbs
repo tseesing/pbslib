@@ -10,8 +10,8 @@ PACKAGER="hzx@115.com"
 
 SRC_URI="ftp://ftp.imagemagick.org/pub/ImageMagick/ImageMagick-"$V$R".tar.xz"
 
-RDEPEND="xz-utils"
-BDEPEND="${RDEPEND}"
+RDEPEND="cairo expat fontconfig freetype gcc glib2 glibc gtk+ lcms libcroco libgsf libICE libjpeg-turbo libpng librsvg libSM libtiff libtool libwmf libX11 libXau libxcb libXdmcp libXext libxml2 libXrender libXt pango pixman util-linux-ng zlib"
+BDEPEND="cairo-dev expat-dev fontconfig-dev freetype-dev gcc-dev glib2-dev glibc-dev gtk+-dev lcms-dev libcroco-dev libgsf-dev libICE-dev libjpeg-turbo-dev libpng-dev librsvg-dev libSM-dev libtiff-dev libtool-dev libwmf-dev libX11-dev libXau-dev libxcb-dev libXdmcp-dev libXext-dev libxml2-dev libXrender-dev libXt-dev pango-dev pixman-dev util-linux-ng-dev zlib-dev"
 
 pbs_unpack() {
         ypkg_unpack

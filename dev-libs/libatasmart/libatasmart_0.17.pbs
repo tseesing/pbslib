@@ -9,8 +9,8 @@ PACKAGER="hzx@115.com"
  
 SRC_URI="http://0pointer.de/public/"$N-$V$R".tar.gz"
 
-RDEPEND="udev"
-BDEPEND="${RDEPEND} "
+RDEPEND="udev glibc"
+BDEPEND="udev-dev glibc-dev"
 RECOMMENDED=""
 
 NOTES="http://wiki.linuxfromscratch.org/blfs/wiki/libatasmart"

@@ -10,8 +10,8 @@ PACKAGER="hzx@115.com"
 
 SRC_URI="http://gstreamer.freedesktop.org/src/"$N"/"$N-$V$R".tar.bz2"
 
-RDEPEND="libxml2 zlib gstreamer libtheora"  # cdparanoia"
-BDEPEND="${RDEPEND} gstreamer liboil pango"
+RDEPEND="alsa-lib avahi cairo dbus dbus-glib expat fontconfig freetype gcc gconf glib2 glibc gnome-vfs gstreamer libICE libogg libpng libSM libtheora libvorbis libX11 libXau libxcb libXdmcp libXext libxml2 libXrender libXv openssl orbit pango pixman udev util-linux-ng zlib"
+BDEPEND="liboil-dev alsa-lib-dev avahi-dev cairo-dev dbus-dev dbus-glib-dev expat-dev fontconfig-dev freetype-dev gcc-dev gconf-dev glib2-dev glibc-dev gnome-vfs-dev gstreamer-dev libICE-dev libogg-dev libpng-dev libSM-dev libtheora-dev libvorbis-dev libX11-dev libXau-dev libxcb-dev libXdmcp-dev libXext-dev libxml2-dev libXrender-dev libXv-dev openssl-dev orbit-dev pango-dev pixman-dev udev-dev util-linux-ng-dev zlib-dev"
 RECOMMENDED=""
 
 NOTES=""

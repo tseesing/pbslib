@@ -9,8 +9,8 @@ PACKAGER="hzx@115.com"
  
 SRC_URI="http://downloads.sourceforge.net/project/"$N"/Sources/"$V$R"/"$N-$V$R".tar.gz"
 
-RDEPEND=""
-BDEPEND="${RDEPEND} cpptest"
+RDEPEND="glibc"
+BDEPEND="cpptest glibc-dev"
 
 pbs_unpack() {
         ypkg_unpack

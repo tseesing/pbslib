@@ -8,8 +8,8 @@ LICENSE="GPL-2"
 PACKAGER="hzx@115.com"
 SRC_URI="http://downloads.xiph.org/releases/$N/"$N-$V$R".tar.gz"
 
-RDEPEND="libogg glibc"
-BDEPEND="${RDEPEND} "
+RDEPEND="gcc glibc libogg"
+BDEPEND="gcc-dev glibc-dev libogg-dev"
 RECOMMENDED=""
 
 NOTES=""

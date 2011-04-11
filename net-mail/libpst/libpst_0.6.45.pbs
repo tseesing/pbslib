@@ -9,8 +9,8 @@ PACKAGER="hzx@115.com"
 
 SRC_URI="http://www.five-ten-sg.com/"$N"/packages/"$N-$V$R".tar.gz"
 
-RDEPEND="glibc"
-BDEPEND="${RDEPEND} boost"
+RDEPEND="expat fontconfig freetype gcc gd glibc libjpeg-turbo libpng libX11 libXau libxcb libXdmcp libXpm zlib"
+BDEPEND="boost-dev expat-dev fontconfig-dev freetype-dev gcc-dev gd-dev glibc-dev libjpeg-turbo-dev libpng-dev libX11-dev libXau-dev libxcb-dev libXdmcp-dev libXpm-dev zlib-dev"
 RECOMMENDED=""
 
 NOTES=""

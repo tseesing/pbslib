@@ -9,10 +9,8 @@ PACKAGER="hzx@115.com"
 
 SRC_URI="git://lxde.git.sourceforge.net/gitroot/lxde/"$N""
 
-RDEPEND="glibc expat glib2 zlib fontconfig freetype gtk+ atk cairo 
-	 pango pixman libjpeg-turbo libpng libxcb xcb-util libX11 libXau libXcomposite 
-	 libXcursor libXdamage libXdmcp libXext libXfixes libXinerama libXrender"
-BDEPEND="${RDEPEND} gtk+ m4 libjpeg-turbo"
+RDEPEND="atk cairo expat fontconfig freetype gcc glib2 glibc gtk+ libjpeg-turbo libpng libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libXrandr libXrender pango pixman zlib"
+BDEPEND="m4 atk-dev cairo-dev expat-dev fontconfig-dev freetype-dev gcc-dev glib2-dev glibc-dev gtk+-dev libjpeg-turbo-dev libpng-dev libX11-dev libXau-dev libxcb-dev libXcomposite-dev libXcursor-dev libXdamage-dev libXdmcp-dev libXext-dev libXfixes-dev libXi-dev libXrandr-dev libXrender-dev pango-dev pixman-dev zlib-dev"
 
 pbs_unpack() {
 	ypkg_unpack

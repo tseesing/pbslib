@@ -9,8 +9,8 @@ PACKAGER="hzx@115.com"
  
 SRC_URI="ftp://ftp.gnupg.org/gcrypt/"$N"/"$N-$V$R".tar.bz2"
 
-RDEPEND="libgpg-error"
-BDEPEND="${RDEPEND} libgpg-error"
+RDEPEND="glibc libgpg-error"
+BDEPEND="libgpg-error-dev glibc-dev"
 RECOMMENDED=""
 
 NOTES=""

@@ -10,8 +10,8 @@ PACKAGER="Zhongxin Huang, hzx@115.com"
 
 SRC_URI="http://downloads.sourceforge.net/project/freetype/freetype2/"$V$R"/"$N-$V$R".tar.bz2"
 
-RDEPEND=""
-BDEPEND="${RDEPEND}"
+RDEPEND="glibc zlib"
+BDEPEND="glibc-dev zlib-dev"
 
 pbs_unpack(){
         ypkg_unpack

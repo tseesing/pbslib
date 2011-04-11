@@ -8,7 +8,7 @@ HOMEPAGE="http://icon-theme.freedesktop.org/wiki/HicolorTheme"
 SRC_URI="http://icon-theme.freedesktop.org/releases/"$N-$V$R".tar.gz"
 
 RDEPEND=""
-BDEPEND="${RDEPEND}"
+BDEPEND=""
 
 pbs_unpack() {
         ypkg_unpack

@@ -7,8 +7,8 @@ HOMEPAGE="http://www.x.org/wiki/"
  
 SRC_URI="http://www.x.org/releases/X11R7.6/src/lib/"$N-$V$R".tar.bz2"
 
-RDEPEND="zlib"
-BDEPEND="${RDEPEND} "
+RDEPEND="zlib glibc"
+BDEPEND="zlib-dev glibc-dev"
 
 pbs_unpack() {
         ypkg_unpack

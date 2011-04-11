@@ -9,8 +9,8 @@ PACKAGER="hzx@115.com"
  
 SRC_URI="ftp://ftp.oregonstate.edu/pub/apache/apr/"$N-$V$R".tar.bz2"
 
-RDEPEND=""
-BDEPEND="${RDEPEND} "
+RDEPEND="glibc util-linux-ng"
+BDEPEND="glibc-dev util-linux-ng-dev"
 RECOMMENDED=""
 
 NOTES=""

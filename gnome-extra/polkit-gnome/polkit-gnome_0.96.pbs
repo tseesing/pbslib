@@ -9,10 +9,8 @@ PACKAGER="hzx@115.com"
 
 SRC_URI="http://hal.freedesktop.org/releases/"$N-$V$R".tar.bz2"
 
-RDEPEND="polkit eggdbus dbus-glib dbus gtk+ atk pango cairo pixman libxml2 directfb libpng libxcb
-         libXrender libX11 libxcb libXau libXdmcp expat libXi libXrandr libXcursor libXcomposite 
-	 libXext libXdamage libXfixes"
-BDEPEND="${RDEPEND} gtk+ polkit"
+RDEPEND="atk cairo dbus dbus-glib eggdbus expat fontconfig freetype gcc glib2 glibc gtk+ libpng libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libXrandr libXrender pango pixman polkit zlib"
+BDEPEND="atk-dev cairo-dev dbus-dev dbus-glib-dev eggdbus-dev expat-dev fontconfig-dev freetype-dev gcc-dev glib2-dev glibc-dev gtk+-dev libpng-dev libX11-dev libXau-dev libxcb-dev libXcomposite-dev libXcursor-dev libXdamage-dev libXdmcp-dev libXext-dev libXfixes-dev libXi-dev libXrandr-dev libXrender-dev pango-dev pixman-dev polkit-dev zlib-dev"
 RECOMMENDED=""
 
 NOTES="http://wiki.linuxfromscratch.org/blfs/wiki/polkit-gnome"

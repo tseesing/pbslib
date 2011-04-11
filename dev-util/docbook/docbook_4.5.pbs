@@ -10,7 +10,7 @@ PACKAGER="hzx@115.com"
 SRC_URI="http://www.docbook.org/sgml/"$V$R"/"$N-$V$R".zip"
 
 RDEPEND=""
-BDEPEND="${RDEPEND} unzip sgml-common"
+BDEPEND="unzip sgml-common"
 RECOMMENDED=""
 
 pbs_unpack() {

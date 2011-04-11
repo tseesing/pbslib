@@ -9,8 +9,8 @@ PACKAGER="hzx@115.com"
 
 SRC_URI="http://cyberelk.net/tim/data/"$N"/"$N-$V$R".tar.bz2"
 
-RDEPEND=""
-BDEPEND="${RDEPEND} cups"
+RDEPEND="cups e2fsprogs glibc gnutls keyutils krb5 libgcrypt libgpg-error libtasn1 python zlib"
+BDEPEND="cups-dev e2fsprogs-dev glibc-dev gnutls-dev keyutils-dev krb5-dev libgcrypt-dev libgpg-error-dev libtasn1-dev python-dev zlib-dev"
 RECOMMENDED=""
 
 NOTES=""

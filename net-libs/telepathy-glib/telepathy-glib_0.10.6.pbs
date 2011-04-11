@@ -9,8 +9,8 @@ PACKAGER="hzx@115.com"
 
 SRC_URI="http://telepathy.freedesktop.org/releases/"$N"/"$N-$V$R".tar.gz"
 
-RDEPEND="dbus-glib dbus zlib"
-BDEPEND="${RDEPEND} glib2"
+RDEPEND="dbus dbus-glib glib2 glibc zlib"
+BDEPEND="dbus-dev dbus-glib-dev glib2-dev glibc-dev zlib-dev"
 RECOMMENDED=""
 
 NOTES=""

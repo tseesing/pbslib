@@ -10,8 +10,8 @@ PACKAGER="hzx@115.com"
 
 SRC_URI="http://web.mit.edu/kerberos/www/dist/"$N"/"$V"/"$N-$V$R"-signed.tar"
 
-RDEPEND="glibc"
-BDEPEND="${RDEPEND} "
+RDEPEND="glibc keyutils ncurses"
+BDEPEND="glibc-dev keyutils-dev ncurses-dev"
 RECOMMENDED=""
 
 NOTES=""

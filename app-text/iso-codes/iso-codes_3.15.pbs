@@ -11,10 +11,8 @@ PACKAGER="hzx@115.com"
 SRC_URI="ftp://pkg-isocodes.alioth.debian.org/pub/pkg-isocodes/"$N-$V$R".tar.bz2"
 
 RDEPEND=""
-BDEPEND="${RDEPEND} python"
+BDEPEND="python"
 RECOMMENDED=""
-
-NOTES="http://wiki.linuxfromscratch.org/blfs/wiki/iso-codes"
 
 pbs_unpack() {
         ypkg_unpack

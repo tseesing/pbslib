@@ -7,8 +7,8 @@ HOMEPAGE="http://www.gnu.org/software/coreutils"
  
 SRC_URI="http://ftp.gnu.org/gnu/"$N"/"$N-$V$R".tar.gz"
 
-RDEPEND="attr gmp acl libcap glibc" 
-BDEPEND="${RDEPEND} "
+RDEPEND="acl attr glibc gmp libcap"
+BDEPEND="acl-dev attr-dev glibc-dev gmp-dev libcap-dev"
 RECOMMENDED=""
 
 pbs_unpack() {

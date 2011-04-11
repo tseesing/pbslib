@@ -10,7 +10,7 @@ PACKAGER="hzx@115.com"
 SRC_URI="ftp://oss.sgi.com/projects/xfs/cmd_tars-oct_09/"$N-$V$R".src.tar.gz"
 
 RDEPEND="glibc"
-BDEPEND="${RDEPEND} sys-devel/make sys-devel/gettext" 
+BDEPEND="glibc-dev gettext" 
 
 pbs_unpack() {
         ypkg_unpack

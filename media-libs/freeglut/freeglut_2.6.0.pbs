@@ -7,8 +7,8 @@ HOMEPAGE="ttp://freeglut.sourceforge.net/"
  
 SRC_URI="http://downloads.sourceforge.net/project/"$N"/"$N"/"$N-$V$R".tar.gz"
 
-RDEPEND="mesa libXext libX11 libXxf86vm libXi libXdamage libXfixes libdrm libxcb libXau libXdmcp"
-BDEPEND="${RDEPEND} mesa"
+RDEPEND="gcc glibc libdrm libX11 libXau libxcb libXdamage libXdmcp libXext libXfixes libXi libXxf86vm mesa"
+BDEPEND="gcc-dev glibc-dev libdrm-dev libX11-dev libXau-dev libxcb-dev libXdamage-dev libXdmcp-dev libXext-dev libXfixes-dev libXi-dev libXxf86vm-dev mesa-dev"
 
 pbs_unpack() {
         ypkg_unpack

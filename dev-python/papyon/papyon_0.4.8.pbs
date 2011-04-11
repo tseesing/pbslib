@@ -9,8 +9,8 @@ PACKAGER="hzx@115.com"
 
 SRC_URI="http://telepathy.freedesktop.org/releases/"$N"/"$N-$V$R".tar.gz"
 
-RDEPEND=""
-BDEPEND="${RDEPEND} python pyopenssL pycrypto"
+RDEPEND="python pyopenssL pycrypto"
+BDEPEND=""
 RECOMMENDED=""
 
 NOTES=""

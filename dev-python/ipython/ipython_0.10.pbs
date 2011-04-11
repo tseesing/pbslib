@@ -10,7 +10,7 @@ PACKAGER="hzx@115.com"
 SRC_URI="http://ipython.scipy.org/dist/"$V"/"$N-$V$R".tar.gz"
 
 RDEPEND=""
-BDEPEND="${RDEPEND} cups"
+BDEPEND="cups-dev"
 RECOMMENDED=""
 
 NOTES=""

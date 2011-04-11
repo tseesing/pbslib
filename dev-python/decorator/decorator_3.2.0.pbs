@@ -10,7 +10,7 @@ PACKAGER="hzx@115.com"
 SRC_URI="http://pypi.python.org/packages/source/d/"$N"/"$N-$V$R".tar.gz"
 
 RDEPEND="python"
-BDEPEND="${RDEPEND} "
+BDEPEND=""
 RECOMMENDED=""
 
 NOTES=""

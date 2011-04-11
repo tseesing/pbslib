@@ -7,8 +7,8 @@ HOMEPAGE="http://foo.bar.com/"
  
 SRC_URI="http://downloads.sourceforge.net/project/wvware/"$N"/"$V"/"$N-$V$R".tar.gz"
 
-RDEPEND="freetype libX11 libxcb libXau libXdmcp expat libjpeg-turbo libpng zlib"
-BDEPEND="${RDEPEND}"
+RDEPEND="expat freetype glib2 glibc gtk+ libjpeg-turbo libpng libX11 libXau libxcb libXdmcp zlib"
+BDEPEND="expat-dev freetype-dev glib2-dev glibc-dev gtk+-dev libjpeg-turbo-dev libpng-dev libX11-dev libXau-dev libxcb-dev libXdmcp-dev zlib-dev"
 
 pbs_unpack() {
         ypkg_unpack

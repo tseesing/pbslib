@@ -9,8 +9,8 @@ PACKAGER="hzx@115.com"
 
 SRC_URI="http://www.kernel.org/pub/linux/utils/fs/reiserfs/"$N-$V$R".tar.bz2"
 
-RDEPEND=""
-BDEPEND="${RDEPEND} "
+RDEPEND="glibc util-linux-ng"
+BDEPEND="glibc-dev util-linux-ng-dev"
 
 pbs_unpack() {
         ypkg_unpack

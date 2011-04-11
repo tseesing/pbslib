@@ -10,8 +10,8 @@ PACKAGER="Zhongxin Huang, hzx@115.com"
 
 SRC_URI="http://www.multiprecision.org/"$N"/download/"$N-$V$R".tar.gz"
 
-RDEPEND=""
-BDEPEND="${RDEPEND} gmp mpfr"
+RDEPEND="glibc gmp mpfr"
+BDEPEND="glibc-dev gmp-dev mpfr-dev"
 RECOMMENDED=""
 
 pbs_unpack() {

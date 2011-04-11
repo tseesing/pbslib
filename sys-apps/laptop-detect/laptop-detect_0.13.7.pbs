@@ -10,7 +10,7 @@ PACKAGER="hzx@115.com"
 SRC_URI="http://ftp.debian.org/debian/pool/main/l/"$N"/"${N}_$V$R".tar.gz"
 
 RDEPEND=""
-BDEPEND="${RDEPEND} "
+BDEPEND=""
 RECOMMENDED=""
 
 NOTES=""

@@ -10,15 +10,15 @@ PACKAGER="Zhongxin Huang, hzx@115.com"
 
 SRC_URI="http://www.x.org/releases/X11R7.6/src/lib/"$N-$V$R".tar.bz2"
 
-RDEPEND="fontconfig freetype libXrender libX11 expat libxcb libXau libXdmcp"
-BDEPEND="${RDEPEND} media-libs/fontconfig"
+RDEPEND="expat fontconfig freetype glibc libX11 libXau libxcb libXdmcp libXrender zlib"
+BDEPEND="expat-dev fontconfig-dev freetype-dev glibc-dev libX11-dev libXau-dev libxcb-dev libXdmcp-dev libXrender-dev zlib-dev"
 
 pbs_unpack() {
         ypkg_unpack
 }
 
 pbs_config() {
-	ypkg_patch  "xft_2.1.14-2ubuntu1.patch"
+	ypkg_patch "xft_2.1.14-2ubuntu1.patch"
 	ypkg_config
 }
 

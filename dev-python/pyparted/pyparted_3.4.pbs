@@ -9,8 +9,8 @@ PACKAGER="hzx@115.com"
 
 SRC_URI="https://fedorahosted.org/releases/p/y/"$N"/"$N-$V$R".tar.gz"
 
-RDEPEND="python"
-BDEPEND="${RDEPEND} dev-python/decorator parted"
+RDEPEND="device-mapper glibc parted python util-linux-ng"
+BDEPEND="decorator device-mapper-dev glibc-dev parted-dev python-dev util-linux-ng-dev"
 RECOMMENDED=""
 
 NOTES=""

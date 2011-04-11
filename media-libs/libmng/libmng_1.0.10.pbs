@@ -7,8 +7,8 @@ HOMEPAGE="http://foo.bar.com/"
  
 SRC_URI="http://downloads.sourceforge.net/"$N"/"$N-$V$R".tar.bz2"
 
-RDEPEND="libjpeg-turbo lcms zlib"
-BDEPEND="${RDEPEND}"
+RDEPEND="glibc lcms libjpeg-turbo zlib"
+BDEPEND="glibc-dev lcms-dev libjpeg-turbo-dev zlib-dev"
 
 pbs_unpack() {
         ypkg_unpack

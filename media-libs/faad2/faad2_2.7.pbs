@@ -10,8 +10,8 @@ PACKAGER="Zhongxin Huang, hzx@115.com"
 
 SRC_URI="http://downloads.sourceforge.net/project/faac/faad2-src/"$N-$V$R"/"$N-$V$R".tar.bz2"
 
-RDEPEND="mp4v2"
-BDEPEND="${RDEPEND} "
+RDEPEND="glibc"
+BDEPEND="glibc-dev mp4v2-dev"
 RECOMMENDED=""
 
 NOTES=""

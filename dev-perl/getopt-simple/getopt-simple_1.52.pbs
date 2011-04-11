@@ -11,7 +11,7 @@ PACKAGER="hzx@115.com"
 SRC_URI="http://search.cpan.org/CPAN/authors/id/R/RS/RSAVAGE/Getopt-Simple-"$V$R".tgz"
 
 RDEPEND="perl"
-BDEPEND="${RDEPEND} "
+BDEPEND=""
 
 pbs_unpack() {
         ypkg_unpack

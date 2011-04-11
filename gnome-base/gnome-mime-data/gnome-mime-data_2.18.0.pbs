@@ -9,10 +9,9 @@ PACKAGER="hzx@115.com"
 
 SRC_URI="http://ftp.gnome.org/pub/gnome/platform/2.30/2.30.2/sources/"$N-$V$R".tar.bz2"
 
-BDEPEND="shared-mime-info desktop-file-utils intltool "
+RDEPEND=""
+BDEPEND="shared-mime-info desktop-file-utils intltool"
 RECOMMENDED=""
-
-NOTES="http://wiki.linuxfromscratch.org/blfs/wiki/gnome-mime-data"
 
 pbs_unpack() {
         ypkg_unpack

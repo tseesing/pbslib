@@ -9,11 +9,8 @@ PACKAGER="hzx@115.com"
 
 SRC_URI="http://ftp.gnome.org/pub/gnome/desktop/2.30/2.30.2/sources/"$N-$V$R".tar.bz2"
 
-RDEPEND="gconf orbit libgtop libwnck startup-notification libSM util-linux-ng libICE libXres libXext
-gtkmm pangomm gtk+ cairomm atk librsvg libgsf bzip2 libcroco pango cairo pixman fontconfig expat
-libxml2 freetype directfb libpng libxcb libXrender libX11 libxcb libXau libXdmcp glibmm glib2 glibc
-zlib glibmm libsigc++ dbus-glib dbus libXi libXrandr libXcursor libXcomposite libXdamage libXfixes "
-BDEPEND="${RDEPEND} libwnck libgtop gtkmm glibmm"
+RDEPEND="atk cairo cairomm dbus dbus-glib expat fontconfig freetype gcc gconf glib2 glibc glibmm gtk+ gtkmm libcroco libgsf libgtop libICE libpng librsvg libsigc++ libSM libwnck libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libxml2 libXrandr libXrender libXres orbit pango pangomm pixman startup-notification util-linux-ng zlib"
+BDEPEND="libwnck-dev atk-dev cairo-dev cairomm-dev dbus-dev dbus-glib-dev expat-dev fontconfig-dev freetype-dev gcc-dev gconf-dev glib2-dev glibc-dev glibmm-dev gtk+-dev gtkmm-dev libcroco-dev libgsf-dev libgtop-dev libICE-dev libpng-dev librsvg-dev libsigc++-dev libSM-dev libwnck-dev libX11-dev libXau-dev libxcb-dev libXcomposite-dev libXcursor-dev libXdamage-dev libXdmcp-dev libXext-dev libXfixes-dev libXi-dev libxml2-dev libXrandr-dev libXrender-dev libXres-dev orbit-dev pango-dev pangomm-dev pixman-dev startup-notification-dev util-linux-ng-dev zlib-dev"
 RECOMMENDED=""
 
 NOTES=""

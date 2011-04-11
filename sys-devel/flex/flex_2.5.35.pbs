@@ -6,12 +6,12 @@ DESCRIPTION="GNU lexical analyser generator"
 HOMEPAGE="http://flex.sourceforge.net/"
 REPO=""
 LICENSE=""
-PACKAGER="Zhongxin Huang, hzx@115.com"
+PACKAGER="hzx@115.com"
 
 SRC_URI="http://prdownloads.sourceforge.net/"$N"/"$N-$V$R".tar.bz2"
 
 RDEPEND="glibc"
-BDEPEND="${RDEPEND}"
+BDEPEND="glibc-dev"
 
 pbs_unpack() {
         ypkg_unpack

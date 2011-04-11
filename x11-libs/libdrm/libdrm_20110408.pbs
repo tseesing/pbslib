@@ -9,8 +9,8 @@ PACKAGER="hzx@115.com"
 
 SRC_URI="git://anongit.freedesktop.org/git/mesa/drm/"
 
-RDEPEND=""
-BDEPEND="${RDEPEND} libpthread-stubs"
+RDEPEND="glibc"
+BDEPEND="glibc-dev libpthread-stubs-dev"
 
 NOTES="
 libdrm's ABI may have changed without change in library name

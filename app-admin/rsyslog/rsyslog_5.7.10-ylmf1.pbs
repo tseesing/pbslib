@@ -11,8 +11,8 @@ PACKAGER="Zhongxin Huang, hzx@115.com"
 
 SRC_URI="http://rsyslog.com/files/download/"$N"/"$N-$V".tar.gz"
 
-RDEPEND=""
-BDEPEND="${RDEPEND} "
+RDEPEND="glibc zlib"
+BDEPEND="glibc-dev zlib-dev"
 RECOMMENDED=""
 CONFLICT=""
 

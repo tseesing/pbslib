@@ -9,8 +9,8 @@ PACKAGER="hzx@115.com"
 
 SRC_URI="http://ftp.gnome.org/pub/GNOME/sources/"$N"/0.2/"$N-$V$R".tar.bz2"
 
-RDEPEND="cups gnutls zlib krb5 e2fsprogs libgcrypt libgpg-error"
-BDEPEND="${RDEPEND} cups glib2 xml-parser"
+RDEPEND="cups e2fsprogs glib2 glibc gnutls keyutils krb5 libgcrypt libgpg-error libtasn1 zlib"
+BDEPEND="xml-parser cups-dev e2fsprogs-dev glib2-dev glibc-dev gnutls-dev keyutils-dev krb5-dev libgcrypt-dev libgpg-error-dev libtasn1-dev zlib-dev"
 RECOMMENDED=""
 
 NOTES=""

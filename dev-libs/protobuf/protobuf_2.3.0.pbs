@@ -9,8 +9,8 @@ PACKAGER="hzx@115.com"
 
 SRC_URI="http://protobuf.googlecode.com/files/"$N-$V$R".tar.bz2"
 
-RDEPEND="zlib "
-BDEPEND="${RDEPEND} "
+RDEPEND="gcc glibc zlib"
+BDEPEND="gcc-dev glibc-dev zlib-dev"
 RECOMMENDED=""
 
 NOTES=""

@@ -9,8 +9,8 @@ PACKAGER="hzx@115.com"
  
 SRC_URI=" http://ftp.gnome.org/pub/gnome/sources/"$N"/2.24/"$N-$V$R".tar.bz2 "
 
-RDEPEND="zlib libsigc++ "
-BDEPEND="${RDEPEND} glib2 libsigc++"
+RDEPEND="gcc glib2 glibc libsigc++ zlib"
+BDEPEND="gcc-dev glib2-dev glibc-dev libsigc++-dev zlib-dev"
 RECOMMENDED=""
 
 pbs_unpack() {
@@ -18,7 +18,6 @@ pbs_unpack() {
 }
 
 pbs_config() {
-	#YPB_CONFIG+="--disable-documentation"
 	ypkg_config
 }
 

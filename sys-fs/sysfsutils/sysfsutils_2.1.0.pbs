@@ -10,7 +10,7 @@ PACKAGER="hzx@115.com"
 SRC_URI="http://downloads.sourceforge.net/linux-diag/"$N-$V$R".tar.gz"
 
 RDEPEND="glibc"
-BDEPEND="${RDEPEND} "
+BDEPEND="glibc-dev"
 RECOMMENDED=""
 
 pbs_unpack() {

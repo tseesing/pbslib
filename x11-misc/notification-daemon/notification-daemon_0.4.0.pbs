@@ -9,10 +9,8 @@ PACKAGER="hzx@115.com"
 
 SRC_URI="ftp://lug.mtu.edu/gentoo/distfiles/"$N-$V$R".tar.gz"
 
-RDEPEND="libglade gconf orbit libnotify gtk+ atk glib2 glibc pango gcc cairo pixman
-	 libxml2 directfb libpng libxcb libXrender libX11 libxcb libXau libXdmcp fontconfig freetype
-	 zlib expat dbus-glib dbus libXi libXrandr libXcursor libXcomposite libXext libXdamage libXfixes gcc libsexy"
-BDEPEND="${RDEPEND} libnotify dbus dbus-glib" #
+RDEPEND="atk cairo dbus dbus-glib expat fontconfig freetype gcc gconf glib2 glibc gstreamer gtk+ libglade libICE libnotify libpng libsexy libSM libwnck libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libxml2 libXrandr libXrender libXres orbit pango pixman startup-notification util-linux-ng zlib"
+BDEPEND="atk-dev cairo-dev dbus-dev dbus-glib-dev expat-dev fontconfig-dev freetype-dev gcc-dev gconf-dev glib2-dev glibc-dev gstreamer-dev gtk+-dev libglade-dev libICE-dev libnotify-dev libpng-dev libsexy-dev libSM-dev libwnck-dev libX11-dev libXau-dev libxcb-dev libXcomposite-dev libXcursor-dev libXdamage-dev libXdmcp-dev libXext-dev libXfixes-dev libXi-dev libxml2-dev libXrandr-dev libXrender-dev libXres-dev orbit-dev pango-dev pixman-dev startup-notification-dev util-linux-ng-dev zlib-dev"
 RECOMMENDED=""
 
 NOTES=""

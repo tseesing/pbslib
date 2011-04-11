@@ -9,8 +9,8 @@ PACKAGER="hzx@115.com"
 
 SRC_URI="ftp://pkg-shadow.alioth.debian.org/pub/pkg-shadow/"$N-$V".tar.bz2"
 
-RDEPEND="pam glibc"
-BDEPEND="${RDEPEND}"
+RDEPEND="glibc pam"
+BDEPEND="glibc-dev pam-dev"
 
 NOTES="Use usermod to user to group wheel for su"
 

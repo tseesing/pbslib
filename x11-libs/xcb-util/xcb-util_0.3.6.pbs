@@ -9,8 +9,8 @@ PACKAGER="hzx@115.com"
 
 SRC_URI="http://xcb.freedesktop.org/dist/"$N-$V$R".tar.bz2"
 
-RDEPEND="libxcb libXau libXdmcp"
-BDEPEND="${RDEPEND} libxcb gperf"
+RDEPEND="glibc libXau libxcb libXdmcp"
+BDEPEND="gperf glibc-dev libXau-dev libxcb-dev libXdmcp-dev"
 RECOMMENDED=""
 
 NOTES="http://wiki.linuxfromscratch.org/blfs/wiki/xcb-util"

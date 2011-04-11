@@ -9,8 +9,8 @@ PACKAGER="hzx@115.com"
 
 SRC_URI="http://downloads.sourceforge.net/project/"$N"/"$N"/"$V"/"$N-$V$R".tar.gz"
 
-RDEPEND="glibc"
-BDEPEND="${RDEPEND} ncurses"
+RDEPEND="glibc ncurses"
+BDEPEND="glibc-dev ncurses-dev"
 RECOMMENDED=""
 
 pbs_unpack() {

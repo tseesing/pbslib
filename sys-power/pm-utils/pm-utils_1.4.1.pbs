@@ -9,8 +9,8 @@ PACKAGER="hzx@115.com"
 
 SRC_URI="http://pm-utils.freedesktop.org/releases/"$N-$V$R".tar.gz"
 
-RDEPEND="sys-apps/hal"
-BDEPEND="${RDEPEND}"
+RDEPEND="hal glibc"
+BDEPEND="hal-dev glibc-dev"
 RECOMMENDED=""
 
 pbs_unpack() {

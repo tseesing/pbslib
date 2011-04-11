@@ -10,8 +10,8 @@ PACKAGER="hzx@115.com"
 
 SRC_URI="http://ftp.gnome.org/pub/gnome/sources/"$N"/"$V"/"$N-$V$R".tar.bz2"
 
-RDEPEND="libxml2 libXi libxkbfile libX11 zlib libXext libxcb libXau libXdmcp"
-BDEPEND="${RDEPEND} x11-libs/libX11 libxml2 iso-codes pkgconfig "
+RDEPEND="glib2 glibc libX11 libXau libxcb libXdmcp libXext libXi libxkbfile libxml2 zlib"
+BDEPEND="libxml2-dev iso-codes pkgconfig glib2-dev glibc-dev libX11-dev libXau-dev libxcb-dev libXdmcp-dev libXext-dev libXi-dev libxkbfile-dev libxml2-dev zlib-dev"
 RECOMMENDED=""
 
 NOTES="http://wiki.linuxfromscratch.org/blfs/wiki/libxklavier"

@@ -9,9 +9,9 @@ PACKAGER="hzx@115.com"
 
 SRC_URI="ftp://ftp.openldap.org/pub/OpenLDAP/openldap-release/openldap-"$V$R".tgz"
 
-RDEPEND="openssl glibc"
-BDEPEND="${RDEPEND} "
-RECOMMENDED="cyrus-sasl openssl"
+RDEPEND="cyrus-sasl glibc openssl"
+BDEPEND="cyrus-sasl-dev glibc-dev openssl-dev"
+RECOMMENDED=""
 
 NOTES=""
 

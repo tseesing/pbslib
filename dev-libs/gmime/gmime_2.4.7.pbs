@@ -9,13 +9,11 @@ PACKAGER="hzx@115.com"
 
 SRC_URI="http://ftp.gnome.org/pub/gnome/sources/"$N"/2.4/"$N-$V$R".tar.bz2"
 
-RDEPEND="zlib"
-BDEPEND="${RDEPEND} glib2 "
+RDEPEND="glib2 glibc zlib"
+BDEPEND="glib2-dev glibc-dev zlib-dev"
 RECOMMENDED=""
 
-NOTES="
-http://wiki.linuxfromscratch.org/blfs/wiki/gmime
-"
+NOTES="http://wiki.linuxfromscratch.org/blfs/wiki/gmime"
 
 pbs_unpack() {
         ypkg_unpack

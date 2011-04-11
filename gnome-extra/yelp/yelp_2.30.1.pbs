@@ -9,12 +9,8 @@ PACKAGER="hzx@115.com"
 
 SRC_URI=" http://ftp.gnome.org/pub/gnome/desktop/2.30/2.30.2/sources/"$N-$V$R".tar.bz2"
 
-RDEPEND="gconf orbit libxslt startup-notification dbus-glib dbus rarian bzip2 webkit enchant gtk+
-	 gail libXi libXrandr libXcursor libXcomposite libXext libXdamage libXfixes gst-plugins-base gstreamer
-	 libjpeg-turbo libxslt sqlite icu libXt libsoup gnutls libgcrypt libgpg-error gtk+ atk pango cairo pixman libxml2
-	 directfb libpng libxcb libXrender fontconfig freetype expat glib2 glibc zlib libX11 libxcb libXau libXdmcp 
-	 libSM util-linux-ng libICE gcc"
-BDEPEND="${RDEPEND} webkit gnome-doc-utils " #webkit
+RDEPEND="atk cairo dbus dbus-glib enchant expat fontconfig freetype gail gcc gconf glib2 glibc gnutls gst-plugins-base gstreamer gtk+ icu libgcrypt libgpg-error libICE libjpeg-turbo libpng libSM libsoup libtasn1 libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libxml2 libXrandr libXrender libxslt libXt orbit pango pixman rarian sqlite startup-notification util-linux-ng webkit zlib"
+BDEPEND="gnome-doc-utils-dev atk-dev cairo-dev dbus-dev dbus-glib-dev enchant-dev expat-dev fontconfig-dev freetype-dev gail-dev gcc-dev gconf-dev glib2-dev glibc-dev gnutls-dev gst-plugins-base-dev gstreamer-dev gtk+-dev icu-dev libgcrypt-dev libgpg-error-dev libICE-dev libjpeg-turbo-dev libpng-dev libSM-dev libsoup-dev libtasn1-dev libX11-dev libXau-dev libxcb-dev libXcomposite-dev libXcursor-dev libXdamage-dev libXdmcp-dev libXext-dev libXfixes-dev libXi-dev libxml2-dev libXrandr-dev libXrender-dev libxslt-dev libXt-dev orbit-dev pango-dev pixman-dev rarian-dev sqlite-dev startup-notification-dev util-linux-ng-dev webkit-dev zlib-dev "
 RECOMMENDED=""
 
 NOTES=""

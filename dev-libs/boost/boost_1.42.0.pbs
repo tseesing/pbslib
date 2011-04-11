@@ -9,14 +9,12 @@ PACKAGER="hzx@115.com"
 
 SRC_URI=" http://nchc.dl.sourceforge.net/project/"$N"/"$N"/"$V$R"/"${N}"_1_42_0.tar.bz2 "
 
-RDEPEND="bzip2 zlib gcc"
-BDEPEND="${RDEPEND} " #boost-build
+RDEPEND="gcc glibc zlib"
+BDEPEND="gcc-dev glibc-dev zlib-dev"
 RECOMMENDED=""
 
-NOTES="
-Apply Hotfixes from:
-http://svn.boost.org/trac/boost/wiki/ReleasePractices/HotFixes
-"
+NOTES="Apply Hotfixes from:
+http://svn.boost.org/trac/boost/wiki/ReleasePractices/HotFixes"
 
 pbs_unpack() {
         ypkg_unpack

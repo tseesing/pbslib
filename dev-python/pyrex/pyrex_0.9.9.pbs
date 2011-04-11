@@ -9,8 +9,8 @@ PACKAGER="hzx@115.com"
 
 SRC_URI="http://www.cosc.canterbury.ac.nz/greg.ewing/python/Pyrex/Pyrex-"$V$R".tar.gz"
 
-RDEPEND=""
-BDEPEND="${RDEPEND} python"
+RDEPEND="python"
+BDEPEND=""
 RECOMMENDED=""
 
 NOTES=""

@@ -10,8 +10,8 @@ PACKAGER="Zhongxin Huang, hzx@115.com"
 
 SRC_URI="http://www.exiv2.org/"$N-$V$R".tar.gz"
 
-RDEPEND=""
-BDEPEND="${RDEPEND} "
+RDEPEND="gcc glibc zlib"
+BDEPEND="gcc-dev glibc-dev zlib-dev"
 RECOMMENDED=""
 
 NOTES=""
@@ -21,7 +21,6 @@ pbs_unpack() {
 }
 
 pbs_config() {
-	
 	ypkg_patch "$FILES_PATH"/files/exiv2-0.21-xmp-fix.patch
 	YPB_CONFIG+=" --prefix=/usr
 		      --sysconfdir=/etc

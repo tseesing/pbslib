@@ -9,8 +9,8 @@ PACKAGER="hzx@115.com"
 
 SRC_URI="http://downloads.sourceforge.net/project/numpy/NumPy/"$V"/"$N-$V$R".tar.gz"
 
-RDEPEND=""
-BDEPEND="${RDEPEND} python"
+RDEPEND="glibc python"
+BDEPEND="glibc-dev python-dev"
 RECOMMENDED=""
 
 NOTES=""

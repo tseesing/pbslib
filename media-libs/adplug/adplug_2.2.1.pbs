@@ -10,7 +10,7 @@ PACKAGER="hzx@115.com"
 SRC_URI="http://downloads.sourceforge.net/project/"$N"/AdPlug%20core%20library/"$V$R"/"$N-$V$R".tar.bz2"
 
 RDEPEND="libbinio gcc glibc"
-BDEPEND="${RDEPEND} "
+BDEPEND="gcc-dev glibc-dev libbinio-dev"
 RECOMMENDED=""
 
 NOTES=""
