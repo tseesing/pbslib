@@ -8,7 +8,7 @@ HOMEPAGE="http://www.skype.com/"
 SRC_URI="http://download.skype.com/linux/"${N}"_static-"$V$R".tar.bz2"
 
 RDEPEND=""
-BDEPEND="${RDEPEND}"
+BDEPEND=""
 
 pbs_install() {
 	mkdir -p "$YPPATH_DEST"/opt

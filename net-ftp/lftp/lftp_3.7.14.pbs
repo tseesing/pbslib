@@ -9,7 +9,7 @@ PACKAGER="hzx@115.com"
 SRC_URI="http://www.ibiblio.org/pub/Linux/system/network/file-transfer/"$N-$V$R".tar.gz"
 
 RDEPEND="expat gnutls zlib libgcrypt libgpg-error glibc gcc readline ncurses gcc"
-BDEPEND="${RDEPEND} readline expat"
+BDEPEND=" readline expat"
 RECOMMENDED=""
 
 NOTES=""

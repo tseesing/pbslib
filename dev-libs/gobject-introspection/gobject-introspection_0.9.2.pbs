@@ -10,7 +10,7 @@ PACKAGER="hzx@115.com"
 SRC_URI=" http://ftp.acc.umu.se/pub/GNOME/sources/gobject-introspection/0.9/$N-$V.tar.bz2 "
 
 RDEPEND="glib2 glibc zlib libffi"
-BDEPEND="${RDEPEND} glib2 libffi python"
+BDEPEND=" glib2 libffi python"
 
 pbs_unpack() {
         ypkg_unpack

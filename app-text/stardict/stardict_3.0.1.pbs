@@ -9,7 +9,7 @@ LICENSE="GPL-2"
 SRC_URI="http://downloads.sourceforge.net/$N/"$N-$V$R".tar.bz2"
 
 RDEPEND=""
-BDEPEND="${RDEPEND}"
+BDEPEND=""
 
 NOTES="
 You will now need to install stardict dictionary files. If

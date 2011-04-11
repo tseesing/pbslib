@@ -11,7 +11,7 @@ PACKAGER="Zhongxin Huang, hzx@115.com"
 SRC_URI="http://unix.opp.homeunix.net/vmware/unix/VMware-Workstation-"$V$R".i386.bundle"
 
 RDEPEND=""
-BDEPEND="${RDEPEND} "
+BDEPEND=" "
 RECOMMENDED=""
 
 NOTES=""

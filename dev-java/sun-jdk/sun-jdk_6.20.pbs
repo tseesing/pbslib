@@ -10,7 +10,7 @@ PACKAGER="hzx@115.com"
 SRC_URI="http://download.java.net/dlj/binaries/jdk-6u20-dlj-linux-i586.bin"
 
 RDEPEND=""
-BDEPEND="${RDEPEND}"
+BDEPEND=""
 
 pbs_unpack() {
 	sh "$YPPATH_SOURCE"/`basename $SRC_URI` --accept-license

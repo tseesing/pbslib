@@ -9,7 +9,7 @@ PACKAGER="hzx@115.com"
 SRC_URI="http://downloads.sourceforge.net/project/mingw/MinGW/BaseSystem/GNU-Binutils/binutils-$V$R/binutils-$V$R-1-mingw32-src.tar.lzma"
 
 RDEPEND=""
-BDEPEND="${RDEPEND} "
+BDEPEND=" "
 RECOMMENDED=""
 
 NOTES=""

@@ -12,7 +12,7 @@ PACKAGER="Zhongxin Huang, hzx@115.com"
 SRC_URI="http://people.redhat.com/sgrubb/"$N"/"$N-$V$R".tar.gz"
 
 RDEPEND=""
-BDEPEND="${RDEPEND} swig"
+BDEPEND=" swig"
 RECOMMENDED=""
 CONFLICT=""
 

@@ -11,7 +11,7 @@ PACKAGER="hzx@115.com"
 SRC_URI="http://www.ijg.org/files/jpegsrc.v8a.tar.gz"
 
 RDEPEND="glibc"
-BDEPEND="${RDEPEND}"
+BDEPEND=""
 CONFLICT="libjpeg-turbo"
 
 pbs_unpack() {

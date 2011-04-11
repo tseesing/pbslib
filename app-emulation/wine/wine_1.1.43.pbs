@@ -8,7 +8,7 @@ HOMEPAGE="http://www.winehq.org/"
 SRC_URI="http://prdownloads.sourceforge.net/wine/wine-$V$R.tar.bz2"
 
 RDEPEND="libgphoto2 mpg123"
-BDEPEND="${RDEPEND}"
+BDEPEND=""
 
 pbs_unpack() {
         ypkg_unpack

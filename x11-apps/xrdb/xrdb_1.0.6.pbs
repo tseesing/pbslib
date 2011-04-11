@@ -9,7 +9,7 @@ SRCURL="http://www.x.org/releases/X11R7.5/src/app"
 SRC_URI="$SRCURL/xrdb-1.0.6.tar.bz2"
 
 RDEPEND="libXmu libX11 libxcb libXau libXdmcp"
-BDEPEND="${RDEPEND} x11-libs/libXmu"
+BDEPEND=" x11-libs/libXmu"
 
 pbs_unpack()
 {

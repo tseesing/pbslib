@@ -10,7 +10,7 @@ PACKAGER="hzx@115.com"
 SRC_URI="ftp://lug.mtu.edu/gentoo/distfiles/"$N-$V$R".tar.bz2"
 
 RDEPEND="libdrm xorg-server"
-BDEPEND="${RDEPEND} x11-proto/dri2proto x11-proto/fontsproto x11-proto/randrproto x11-proto/renderproto x11-proto/videoproto \
+BDEPEND=" x11-proto/dri2proto x11-proto/fontsproto x11-proto/randrproto x11-proto/renderproto x11-proto/videoproto \
 	 x11-proto/xextproto x11-proto/xf86driproto x11-proto/xproto"
 RECOMMENDED=""
 

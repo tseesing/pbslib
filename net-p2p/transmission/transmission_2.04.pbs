@@ -13,7 +13,7 @@ RDEPEND="libcanberra libvorbis libogg libtool gconf orbit libnotify gtk+ atk pan
 	 pixman libxml2 directfb libpng libxcb libXrender libX11 libxcb libXau libXdmcp fontconfig
 	 freetype expat dbus-glib dbus curl openssl zlib libevent libXi libXrandr libXcursor libXcomposite
 	 libXext libXdamage libXfixes"
-BDEPEND="${RDEPEND} gtk+ curl libnotify openssl libcanberra dev-libs/libevent"
+BDEPEND=" gtk+ curl libnotify openssl libcanberra dev-libs/libevent"
 RECOMMENDED=""
 
 NOTES=""

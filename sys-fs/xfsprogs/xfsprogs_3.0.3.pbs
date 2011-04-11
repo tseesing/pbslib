@@ -10,7 +10,7 @@ REPO="testing"
 SRC_URI="ftp://oss.sgi.com/projects/xfs/previous/"$N-$V$R".tar.gz"
 
 RDEPEND=""
-BDEPEND="${RDEPEND} "
+BDEPEND=" "
 RECOMMENDED=""
 
 pbs_unpack() {

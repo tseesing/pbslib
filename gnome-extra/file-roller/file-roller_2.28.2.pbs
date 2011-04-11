@@ -10,7 +10,7 @@ PACKAGER="hzx@115.com"
 SRC_URI="ftp://ftp.gnome.org/pub/gnome/sources/file-roller/2.28/$N-$V.tar.bz2"
 
 RDEPEND=""
-BDEPEND="${RDEPEND} gconf gnome-doc-utils gtk+"
+BDEPEND=" gconf gnome-doc-utils gtk+"
 RECOMMENDED=""
 
 NOTES="http://wiki.linuxfromscratch.org/blfs/wiki/file-roller"

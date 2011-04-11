@@ -12,7 +12,7 @@ PACKAGER="Zhongxin Huang, hzx@115.com"
 SRC_URI="http://www.clockworkcoders.com/oglsl/"$N-$V$R".zip"
 
 RDEPEND=""
-BDEPEND="${RDEPEND} "
+BDEPEND=" "
 RECOMMENDED=""
 CONFLICT=""
 

@@ -12,7 +12,7 @@ PACKAGER="Zhongxin Huang, hzx@115.com"
 SRC_URI="http://snapshot.opera.com/unix/betaplus_11.10-2053/opera_11.10.2053_i386.deb"
 
 RDEPEND=""
-BDEPEND="${RDEPEND} "
+BDEPEND=" "
 RECOMMENDED=""
 CONFLICT=""
 

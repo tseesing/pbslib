@@ -10,7 +10,7 @@ PACKAGER="hzx@115.com"
 SRC_URI="http://dri.freedesktop.org/"$N"/"$N-$V$R".tar.bz2"
 
 RDEPEND=""
-BDEPEND="${RDEPEND} libpthread-stubs"
+BDEPEND=" libpthread-stubs"
 
 NOTES="
 libdrm's ABI may have changed without change in library name

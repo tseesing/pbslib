@@ -12,7 +12,7 @@ PACKAGER="Zhongxin Huang, hzx@115.com"
 SRC_URI="http://downloads.sourceforge.net/project/recordmydesktop/gtk-recordMyDesktop/"$V$R"/"$N-$V$R".tar.gz"
 
 RDEPEND="recordmydesktop"
-BDEPEND="${RDEPEND} "
+BDEPEND=" "
 RECOMMENDED=""
 
 NOTES=""

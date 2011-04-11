@@ -11,7 +11,7 @@ SRC_URI="ftp://lug.mtu.edu/gentoo/distfiles/$N-$V.tar.gz
 	 ftp://lug.mtu.edu/gentoo/distfiles/pinyin-database-1.2.99.tar.bz2 "
 
 RDEPEND="app-i18n/ibus dev-libs/boost " #sys-apps/util-linux"
-BDEPEND="${RDEPEND} "
+BDEPEND=" "
 RECOMMENDED=""
 
 NOTES=""

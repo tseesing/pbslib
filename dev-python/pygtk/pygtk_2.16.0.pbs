@@ -9,7 +9,7 @@ PACKAGER="hzx@115.com"
 SRC_URI="ftp://ftp.gnome.org/pub/gnome/sources/pygtk/2.16/$N-$V.tar.bz2"
 
 RDEPEND=""
-BDEPEND="${RDEPEND} pygobject atk pango pycairo gtk+ libglade"
+BDEPEND=" pygobject atk pango pycairo gtk+ libglade"
 RECOMMENDED=""
 
 NOTES="http://wiki.linuxfromscratch.org/blfs/wiki/pygtk"

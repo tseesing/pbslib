@@ -9,7 +9,7 @@ PACKAGER="hzx@115.com"
 SRC_URI="http://xorg.freedesktop.org/releases/individual/app/$N-$V.tar.bz2"
 
 RDEPEND="libXext libXmu libXt libX11 libSM libICE libxcb util-linux-ng libXau libXdmcp"
-BDEPEND="${RDEPEND}"
+BDEPEND=""
 
 pbs_unpack() {
         ypkg_unpack

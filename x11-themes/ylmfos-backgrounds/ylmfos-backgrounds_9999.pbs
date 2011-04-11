@@ -10,7 +10,7 @@ PACKAGER="hzx@115.com"
 SRC_URI="git://192.168.1.58/"$N".git"
 
 RDEPEND=""
-BDEPEND="${RDEPEND} desktop-file-utils gnome-desktop"
+BDEPEND=" desktop-file-utils gnome-desktop"
 RECOMMENDED=""
 
 NOTES=""

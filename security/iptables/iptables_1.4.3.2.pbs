@@ -10,7 +10,7 @@ PACKAGER="hzx@115.com"
 SRC_URI="http://iptables.org/projects/"$N"/files/"$N-$V$R".tar.bz2"
 
 RDEPEND=""
-BDEPEND="${RDEPEND} "
+BDEPEND=" "
 RECOMMENDED=""
 
 pbs_unpack() {

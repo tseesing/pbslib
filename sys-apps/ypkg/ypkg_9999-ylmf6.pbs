@@ -12,7 +12,7 @@ PRIORITY="required"
 SRC_URI="git://192.168.1.58/"$N".git"
 
 RDEPEND="gawk cpio xz-utils sed coreutils git findutils procps psmisc bash bc"
-BDEPEND="${RDEPEND}"
+BDEPEND=""
 
 pbs_unpack() {
 	ypkg_unpack

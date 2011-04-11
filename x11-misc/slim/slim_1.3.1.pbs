@@ -10,7 +10,7 @@ PACKAGER="hzx@115.com"
 SRC_URI="http://download.berlios.de/"$N"/"$N-$V$R".tar.gz"
 
 RDEPEND="libpng"
-BDEPEND="${RDEPEND}"
+BDEPEND=""
 
 NOTES="
 For make slim start at boot, please use:

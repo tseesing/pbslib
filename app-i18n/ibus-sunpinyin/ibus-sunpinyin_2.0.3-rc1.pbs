@@ -11,7 +11,7 @@ PACKAGER="Zhongxin Huang, hzx@115.com"
 SRC_URI="http://sunpinyin.googlecode.com/files/"$N-$V$R".tar.gz"
 
 RDEPEND="sunpinyin"
-BDEPEND="${RDEPEND} "
+BDEPEND=" "
 RECOMMENDED=""
 
 pbs_unpack() {

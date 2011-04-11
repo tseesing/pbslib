@@ -12,7 +12,7 @@ PACKAGER="Zhongxin Huang, hzx@115.com"
 SRC_URI="git://git.debian.org/git/chinese/lunar-applet.git"
 
 RDEPEND="gnome-panel"
-BDEPEND="${RDEPEND} "
+BDEPEND=" "
 RECOMMENDED=""
 CONFLICT=""
 

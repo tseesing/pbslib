@@ -9,7 +9,7 @@ PACKAGER="hzx@115.com"
 SRC_URI="http://pm-utils.freedesktop.org/releases/"$N-$V$R".tar.gz"
 
 RDEPEND="sys-apps/hal"
-BDEPEND="${RDEPEND}"
+BDEPEND=""
 RECOMMENDED=""
 
 NOTES=""

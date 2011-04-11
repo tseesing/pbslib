@@ -10,7 +10,7 @@ PACKAGER="hzx@115.com"
 SRC_URI="http://distfiles.atheme.org/"$N-$V$R".tgz"
 
 RDEPEND=""
-BDEPEND="${RDEPEND} audacious"
+BDEPEND=" audacious"
 RECOMMENDED="adplug alsa-lib libcdio curl esound jack-audio-connection-kit 
   	     lame libmad libmms libsndfile libvorbis lirc libsdl taglib wavpack "
 

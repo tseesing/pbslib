@@ -11,7 +11,7 @@ PACKAGER="Zhongxin Huang, hzx@115.com"
 SRC_URI="http://www.x.org/releases/X11R7.5/src/lib/$N-$V$R.tar.bz2"
 
 RDEPEND="fontconfig freetype libXrender libX11 expat libxcb libXau libXdmcp"
-BDEPEND="${RDEPEND} media-libs/fontconfig"
+BDEPEND=" media-libs/fontconfig"
 
 pbs_unpack() {
         ypkg_unpack

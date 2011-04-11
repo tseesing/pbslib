@@ -16,7 +16,7 @@ RDEPEND="glibc gcc pixman directfb libpng libxcb libXrender libX11 libXau libXdm
 	 gtk+ dbus-glib gtk+ atk pango cairo freetype fontconfig dbus libsoup glib2 gcc orbit eggdbus
 	 libgcrypt libgpg-error libcanberra libvorbis libogg libtool libXi libXrandr libXcursor libXcomposite
 	 libXext libXdamage libXfixes gnutls libproxy sqlite"
-BDEPEND="${RDEPEND} gconf libgphoto2 libunique libtiff libgnomeui"
+BDEPEND=" gconf libgphoto2 libunique libtiff libgnomeui"
 RECOMMENDED=""
 
 NOTES=""

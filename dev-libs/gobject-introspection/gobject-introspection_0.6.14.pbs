@@ -10,7 +10,7 @@ PACKAGER="hzx@115.com"
 SRC_URI=" http://download.gnome.org/sources/gobject-introspection/0.6/$N-$V.tar.bz2 "
 
 RDEPEND=""
-BDEPEND="${RDEPEND} glib2 libffi python"
+BDEPEND=" glib2 libffi python"
 
 pbs_unpack() {
         ypkg_unpack

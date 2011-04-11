@@ -10,7 +10,7 @@ PACKAGER="hzx@115.com"
 SRC_URI="http://ftp.acc.umu.se/pub/GNOME/sources/gnome-session/2.30/"$N-$V$R".tar.bz2"
 
 RDEPEND=""
-BDEPEND="${RDEPEND} gconf metacity esound gnome-control-center devicekit-power "
+BDEPEND=" gconf metacity esound gnome-control-center devicekit-power "
 RECOMMENDED="polkit-gnome"
 
 NOTES="http://wiki.linuxfromscratch.org/blfs/wiki/gnome-session"

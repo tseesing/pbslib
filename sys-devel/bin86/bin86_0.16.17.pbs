@@ -10,7 +10,7 @@ PACKAGER="hzx@115.com"
 SRC_URI="http://homepage.ntlworld.com/robert.debath/dev86/"$N-$V$R".tar.gz"
 
 RDEPEND=""
-BDEPEND="${RDEPEND} "
+BDEPEND=" "
 RECOMMENDED=""
 
 pbs_unpack() {

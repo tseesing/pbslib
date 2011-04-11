@@ -8,7 +8,7 @@ HOMEPAGE="http://www.openoffice.org/"
 SRC_URI="http://download.services.openoffice.org/files/localized/zh-CN/$V/OOo_${V}_LinuxIntel_install_zh-CN.tar.gz"
 
 RDEPEND=""
-BDEPEND="${RDEPEND} rpm2targz"
+BDEPEND=" rpm2targz"
 
 pbs_unpack()
 {

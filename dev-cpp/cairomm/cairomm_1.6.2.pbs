@@ -10,7 +10,7 @@ PACKAGER="hzx@115.com"
 SRC_URI="http://cairographics.org/releases/$N-$V.tar.gz"
 
 RDEPEND=""
-BDEPEND="${RDEPEND} cairo"
+BDEPEND=" cairo"
 RECOMMENDED=""
 
 NOTES="http://wiki.linuxfromscratch.org/blfs/wiki/cairomm"

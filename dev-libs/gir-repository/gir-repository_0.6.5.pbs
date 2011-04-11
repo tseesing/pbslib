@@ -9,7 +9,7 @@ PACKAGER="hzx@115.com"
 SRC_URI=" http://ftp.gnome.org/pub/gnome/sources/$N/0.6/"$N-$V$R".tar.bz2"
 
 RDEPEND=""
-BDEPEND="${RDEPEND} gobject-introspection babl"
+BDEPEND=" gobject-introspection babl"
 RECOMMENDED="gtk+"
 
 NOTES="http://wiki.linuxfromscratch.org/blfs/wiki/gir-repository"

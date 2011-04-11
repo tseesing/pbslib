@@ -9,7 +9,7 @@ SRC_URI="ftp://invisible-island.net/"$N"/"$N-$V$R".tgz"
 
 RDEPEND="libXft libXaw ncurses fontconfig libX11 libXmu libXt libICE freetype libXrender
 	 libXext libSM libXpm zlib expat libxcb util-linux-ng libXau libXdmcp "
-BDEPEND="${RDEPEND}"
+BDEPEND=""
 
 pbs_unpack() {
         ypkg_unpack

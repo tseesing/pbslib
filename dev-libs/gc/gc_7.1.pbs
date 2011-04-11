@@ -11,7 +11,7 @@ PACKAGER="Zhongxin Huang, hzx@115.com"
 SRC_URI="http://www.hpl.hp.com/personal/Hans_Boehm/"$N"/"${N}"_source/"$N-$V$R".tar.gz"
 
 RDEPEND=""
-BDEPEND="${RDEPEND} "
+BDEPEND=" "
 RECOMMENDED=""
 
 NOTES=""

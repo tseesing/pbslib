@@ -11,7 +11,7 @@ PACKAGER="hzx@115.com"
 SRC_URI="http://search.cpan.org/CPAN/authors/id/R/RJ/RJBS/String-Truncate-"$V$R".tar.gz"
 
 RDEPEND=""
-BDEPEND="${RDEPEND} sub-exporter"
+BDEPEND=" sub-exporter"
 
 pbs_unpack() {
         ypkg_unpack

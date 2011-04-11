@@ -12,7 +12,7 @@ PACKAGER="Zhongxin Huang, hzx@115.com"
 SRC_URI="http://recorder.googlecode.com/files/"$N-$V$R".tar.bz2"
 
 RDEPEND="pygtk cdrkit dvd+rw-tools coreutils mpg123 vorbis-tools cdrdao vcdimager"
-BDEPEND="${RDEPEND} "
+BDEPEND=" "
 RECOMMENDED=""
 CONFLICT=""
 

@@ -10,7 +10,7 @@ PACKAGER="hzx@115.com"
 SRC_URI="http://ibus.googlecode.com/files/ibus-table-chinese-"$V$R".tar.gz"
 
 RDEPEND="app-i18n/ibus dev-libs/boost app-i18n/ibus-table"
-BDEPEND="${RDEPEND} "
+BDEPEND=" "
 RECOMMENDED=""
 
 NOTES=""

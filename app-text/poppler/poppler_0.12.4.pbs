@@ -8,7 +8,7 @@ HOMEPAGE="http://poppler.freedesktop.org/"
 SRC_URI="http://poppler.freedesktop.org/poppler-$V.tar.gz"
 
 RDEPEND="poppler-data"
-BDEPEND="${RDEPEND}"
+BDEPEND=""
 
 pbs_unpack()
 {

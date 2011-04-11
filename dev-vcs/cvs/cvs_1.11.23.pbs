@@ -10,7 +10,7 @@ PACKAGER="hzx@115.com"
 SRC_URI="ftp://ftp.gnu.org/non-gnu/"$N"/source/stable/"$V$R"/"$N-$V$R".tar.bz2 "
 
 RDEPEND="zlib glibc"
-BDEPEND="${RDEPEND} "
+BDEPEND=" "
 RECOMMENDED=""
 
 NOTES="

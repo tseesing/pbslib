@@ -8,7 +8,7 @@ HOMEPAGE="http://www.winehq.org/"
 SRC_URI="http://ibiblio.org/pub/linux/system/emulators/"$N"/"$N-$V$R".tar.bz2"
 
 RDEPEND="libgphoto2 mpg123"
-BDEPEND="${RDEPEND} libgsm sane-backends v4l-utils prelink"
+BDEPEND=" libgsm sane-backends v4l-utils prelink"
 
 pbs_unpack() {
         ypkg_unpack

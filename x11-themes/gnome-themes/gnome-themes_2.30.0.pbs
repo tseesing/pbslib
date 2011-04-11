@@ -9,7 +9,7 @@ PACKAGER="hzx@115.com"
 SRC_URI="http://ftp.gnome.org/pub/GNOME/sources/$N/2.30/"$N-$V$R".tar.bz2"
 
 RDEPEND="gtk-engines"
-BDEPEND="${RDEPEND} gtk+ gtk-engines icon-naming-utils gnome-icon-theme hicolor-icon-theme"
+BDEPEND=" gtk+ gtk-engines icon-naming-utils gnome-icon-theme hicolor-icon-theme"
 RECOMMENDED=""
 
 NOTES="http://wiki.linuxfromscratch.org/blfs/wiki/gnome-themes"

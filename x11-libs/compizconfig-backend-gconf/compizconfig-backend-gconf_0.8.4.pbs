@@ -10,7 +10,7 @@ PACKAGER="hzx@115.com"
 SRC_URI="http://releases.compiz-fusion.org/0.8.4/"$N-$V$R".tar.bz2"
 
 RDEPEND=""
-BDEPEND="${RDEPEND} gconf libcompizconfig"
+BDEPEND=" gconf libcompizconfig"
 RECOMMENDED=""
 
 pbs_unpack() {

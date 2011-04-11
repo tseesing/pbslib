@@ -13,7 +13,7 @@ RDEPEND="orbit avahi pixman libxml2 directfb libpng libxcb libXrender libX11 lib
 	 expat zlib gpgme libassuan libgpg-error openldap-client libsoup libgnome-keyring libnotify dbus dbus-glib 
 	 libtasn1 atk gtk+ pango cairo freetype fontconfig openssl gnutls libgcrypt eggdbus libXi libXrandr libXcursor
 	 libXcomposite libXext libXdamage libXfixes"
-BDEPEND="${RDEPEND} openssh gpgme gnome-keyring libnotify libgcrypt openldap-client libsoup"
+BDEPEND=" openssh gpgme gnome-keyring libnotify libgcrypt openldap-client libsoup"
 RECOMMENDED="seahorse-plugins"
 
 NOTES="

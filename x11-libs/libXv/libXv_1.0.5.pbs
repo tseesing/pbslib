@@ -7,7 +7,7 @@ SRCURL="http://www.x.org/releases/X11R7.5/src/lib"
 SRC_URI="$SRCURL/libXv-1.0.5.tar.bz2"
 
 RDEPEND="libX11 libXext libxcb libXau libXdmcp"
-BDEPEND="${RDEPEND}"
+BDEPEND=""
 
 pbs_unpack()
 {

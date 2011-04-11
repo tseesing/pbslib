@@ -11,7 +11,7 @@ PACKAGER="Zhongxin Huang, hzx@115.com"
 SRC_URI="http://www.balabit.com/downloads/files?path=/syslog-ng/sources/"$V$R"/source/"${N}_$V$R".tar.gz"
 
 RDEPEND="eventlog"
-BDEPEND="${RDEPEND} "
+BDEPEND=" "
 RECOMMENDED=""
 
 NOTES=""

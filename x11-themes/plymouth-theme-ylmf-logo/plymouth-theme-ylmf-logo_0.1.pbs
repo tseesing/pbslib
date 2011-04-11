@@ -9,7 +9,7 @@ PACKAGER="hzx@115.com"
 SRC_URI=""
 
 RDEPEND=""
-BDEPEND="${RDEPEND} plymouth"
+BDEPEND=" plymouth"
 RECOMMENDED=""
 
 NOTES=""

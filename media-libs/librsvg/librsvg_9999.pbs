@@ -8,7 +8,7 @@ REPO="testing"
 BIN_URI=""
 
 RDEPEND="gtk+ libxml2"
-BDEPEND="${RDEPEND}"
+BDEPEND=""
 
 pbs_unpack()
 {

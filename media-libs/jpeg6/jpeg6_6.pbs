@@ -11,7 +11,7 @@ PACKAGER="hzx@115.com"
 SRC_URI="ftp://lug.mtu.edu/gentoo/distfiles/jpegsrc.v6b.tar.gz"
 
 RDEPEND=""
-BDEPEND="${RDEPEND}"
+BDEPEND=""
 
 pbs_unpack() {
         ypkg_unpack

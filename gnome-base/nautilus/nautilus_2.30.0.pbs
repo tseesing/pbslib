@@ -10,7 +10,7 @@ PACKAGER="hzx@115.com"
 SRC_URI="http://ftp.gnome.org/pub/GNOME/sources/nautilus/2.30/$N-$V.tar.bz2"
 
 RDEPEND=""
-BDEPEND="${RDEPEND} bzip2 ntfs-3g gamin gnome-desktop libbonoboui libgnome orbit gconf util-linux-ng libunique "
+BDEPEND=" bzip2 ntfs-3g gamin gnome-desktop libbonoboui libgnome orbit gconf util-linux-ng libunique "
 RECOMMENDED=""
 
 pbs_init()

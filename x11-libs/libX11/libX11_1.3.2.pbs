@@ -9,7 +9,7 @@ SRCURL="http://www.x.org/releases/X11R7.5/src/lib"
 SRC_URI="$SRCURL/libX11-1.3.2.tar.bz2"
 
 RDEPEND="libxcb libXau libXdmcp"
-BDEPEND="${RDEPEND} x11-libs/xtrans"
+BDEPEND=" x11-libs/xtrans"
 
 pbs_unpack()
 {

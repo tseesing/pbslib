@@ -10,7 +10,7 @@ PACKAGER="hzx@115.com"
 SRC_URI="ftp://lug.mtu.edu/gentoo/distfiles/"$N-$V$R".tar.bz2 "
 
 RDEPEND="ncurses zlib glibc python expat "
-BDEPEND="${RDEPEND}"
+BDEPEND=""
 RECOMMENDED=""
 
 pbs_unpack() {

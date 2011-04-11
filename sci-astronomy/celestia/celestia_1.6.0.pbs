@@ -9,7 +9,7 @@ PACKAGER="hzx@115.com"
 SRC_URI="http://downloads.sourceforge.net/project/$N/Celestia-source/$V/$N-$V.tar.gz "
 
 RDEPEND=""
-BDEPEND="${RDEPEND}"
+BDEPEND=""
 
 NOTES=""
 

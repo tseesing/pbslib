@@ -10,7 +10,7 @@ PACKAGER="hzx@115.com"
 SRC_URI="ftp://ftp.gnupg.org/gcrypt/libksba/$N-$V.tar.bz2"
 
 RDEPEND=""
-BDEPEND="${RDEPEND} libgpg-error"
+BDEPEND=" libgpg-error"
 RECOMMENDED=""
 
 NOTES=""

@@ -13,7 +13,7 @@ RDEPEND="libcanberra libvorbis libogg libtool gtk+ gst-plugins-base gstreamer li
          dbus-glib gtk+ atk pango cairo pixman directfb libpng libxcb libXrender libX11 
 	 libxcb libXau libXdmcp fontconfig freetype libxml2 zlib libSM util-linux-ng 
 	 libICE libXi libXrandr libXcursor libXcomposite libXext libXdamage libXfixes expat"
-BDEPEND="${RDEPEND} gconf gnome-doc-utils gst-plugins-base libunique"
+BDEPEND=" gconf gnome-doc-utils gst-plugins-base libunique"
 RECOMMENDED=""
 
 pbs_unpack() {

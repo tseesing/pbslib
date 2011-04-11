@@ -9,7 +9,7 @@ PACKAGER="hzx@115.com"
 SRC_URI="http://ftp.gnome.org/pub/GNOME/sources/libgnomekbd/2.30/"$N-$V$R".tar.bz2"
 
 RDEPEND="gconf libxklavier"
-BDEPEND="${RDEPEND} dbus gconf libbonoboui gnome-keyring libxklavier libglade iso-codes"
+BDEPEND=" dbus gconf libbonoboui gnome-keyring libxklavier libglade iso-codes"
 RECOMMENDED=""
 
 NOTES="http://wiki.linuxfromscratch.org/blfs/wiki/libgnomekbd"

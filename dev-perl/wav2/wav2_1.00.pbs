@@ -11,7 +11,7 @@ PACKAGER="hzx@115.com"
 SRC_URI="http://downloads.sourceforge.net/project/wav2mp3/wav2mp3_wav2ogg/"$V"/WAV2-"$V$R".tar.gz"
 
 RDEPEND="file-which vorbis-tools"
-BDEPEND="${RDEPEND}"
+BDEPEND=""
 
 pbs_unpack() {
         ypkg_unpack

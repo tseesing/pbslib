@@ -9,7 +9,7 @@ SRCURL="http://www.x.org/releases/X11R7.5/src/app"
 SRC_URI="$SRCURL/xwininfo-1.0.5.tar.bz2"
 
 RDEPEND="libXext libX11 libxcb libXau libXdmcp"
-BDEPEND="${RDEPEND}"
+BDEPEND=""
 
 pbs_unpack()
 {

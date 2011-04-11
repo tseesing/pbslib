@@ -12,7 +12,7 @@ SRC_URI="http://builds.nightly.webkit.org/files/trunk/src/WebKit-r69221.tar.bz2"
 RDEPEND="enchant gtk+ gail libXi libXrandr libXcursor libXcomposite libXext libXdamage libXfixes gst-plugins-base
 gstreamer atk pango cairo pixman directfb libxcb libXrender jpeg libsoup gnutls libgcrypt libgpg-error libxslt libxml2
 fontconfig freetype expat libpng zlib sqlite icu libXt libX11 libxcb libXdmcp libXau libICE libSM util-linux-ng"
-BDEPEND="${RDEPEND} app-text/enchant libsoup icu"
+BDEPEND=" app-text/enchant libsoup icu"
 RECOMMENDED=""
 
 NOTES=""

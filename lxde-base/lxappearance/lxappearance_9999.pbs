@@ -10,7 +10,7 @@ PACKAGER="hzx@115.com"
 SRC_URI="git://lxde.git.sourceforge.net/gitroot/lxde/"$N""
 
 RDEPEND="gtk+ x11-libs/libXdamage"
-BDEPEND="${RDEPEND} pkgconfig gtk+ gettext"
+BDEPEND=" pkgconfig gtk+ gettext"
 
 pbs_unpack() {
 	ypkg_unpack

@@ -10,7 +10,7 @@ PACKAGER="hzx@115.com"
 SRC_URI="ftp://ftp.gnome.org/pub/gnome/sources/system-tools-backends/2.8/$N-$V.tar.bz2"
 
 RDEPEND=""
-BDEPEND="${RDEPEND} dbus-glib intltool Net-DBus"
+BDEPEND=" dbus-glib intltool Net-DBus"
 RECOMMENDED=""
 
 NOTES="http://wiki.linuxfromscratch.org/blfs/wiki/system-tools-backends"

@@ -12,7 +12,7 @@ PRIORITY="required"
 SRC_URI="http://ftp.gnu.org/gnu/"$N"/"$N-$V$R".tar.bz2"
 
 RDEPEND=""
-BDEPEND="${RDEPEND} sys-apps/linux-headers " #sys-devel/binutils sys-devel/gcc"
+BDEPEND=" sys-apps/linux-headers " #sys-devel/binutils sys-devel/gcc"
 
 pbs_unpack() {
         ypkg_unpack

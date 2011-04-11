@@ -11,7 +11,7 @@ PACKAGER="Zhongxin Huang, hzx@115.com"
 SRC_URI="http://pv-mirror01.mozilla.org/pub/mozilla.org/thunderbird/releases/3.1.7/linux-i686/zh-CN/thunderbird-"$V$R".tar.bz2"
 
 RDEPEND=""
-BDEPEND="${RDEPEND} "
+BDEPEND=" "
 RECOMMENDED=""
 
 NOTES=""

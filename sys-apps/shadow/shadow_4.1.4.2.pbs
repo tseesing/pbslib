@@ -10,7 +10,7 @@ PACKAGER="hzx@115.com"
 SRC_URI="ftp://pkg-shadow.alioth.debian.org/pub/pkg-shadow/"$N-$V$R".tar.bz2"
 
 RDEPEND="pam glibc"
-BDEPEND="${RDEPEND}"
+BDEPEND=""
 
 NOTES="Use usermod to user to group wheel for su"
 

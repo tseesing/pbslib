@@ -9,7 +9,7 @@ PACKAGER="hzx@115.com"
 SRC_URI="http://www.kernel.org/pub/linux/utils/kernel/hotplug/"$N-$V$R".tar.bz2"
 
 RDEPEND=""
-BDEPEND="${RDEPEND} acl sys-libs/glibc gperf pciutils usbutils"
+BDEPEND=" acl sys-libs/glibc gperf pciutils usbutils"
 
 pbs_unpack() {
         ypkg_unpack

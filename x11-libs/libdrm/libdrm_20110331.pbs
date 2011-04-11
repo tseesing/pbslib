@@ -10,7 +10,7 @@ PACKAGER="hzx@115.com"
 SRC_URI="git://anongit.freedesktop.org/git/mesa/drm/"
 
 RDEPEND=""
-BDEPEND="${RDEPEND} libpthread-stubs"
+BDEPEND=" libpthread-stubs"
 
 NOTES="
 libdrm's ABI may have changed without change in library name

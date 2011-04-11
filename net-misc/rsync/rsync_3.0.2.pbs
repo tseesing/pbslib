@@ -10,7 +10,7 @@ PACKAGER="hzx@115.com"
 SRC_URI="http://anduin.linuxfromscratch.org/sources/BLFS/6.3/r/"$N-$V$R".tar.gz"
 
 RDEPEND="acl popt attr"
-BDEPEND="${RDEPEND} popt attr acl"
+BDEPEND=" popt attr acl"
 
 NOTES="
 \"/etc/rsyncd.conf\" - rsyncd rc file!

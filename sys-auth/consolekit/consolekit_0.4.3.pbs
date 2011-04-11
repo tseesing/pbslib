@@ -10,7 +10,7 @@ PACKAGER="hzx@115.com"
 SRC_URI="http://www.freedesktop.org/software/ConsoleKit/dist/ConsoleKit-"$V$R".tar.bz2"
 
 RDEPEND="glib2 zlib glibc dbus-glib dbus polkit eggdbus"
-BDEPEND="${RDEPEND} dbus-glib pam"
+BDEPEND=" dbus-glib pam"
 RECOMMENDED="polkit"
 
 pbs_unpack() {

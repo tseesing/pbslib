@@ -11,7 +11,7 @@ PACKAGER="hzx@115.com"
 SRC_URI="http://search.cpan.org/CPAN/authors/id/K/KW/KWILLIAMS/Probe-Perl-"$V$R".tar.gz"
 
 RDEPEND=""
-BDEPEND="${RDEPEND} test-script"
+BDEPEND=" test-script"
 
 pbs_unpack() {
         ypkg_unpack

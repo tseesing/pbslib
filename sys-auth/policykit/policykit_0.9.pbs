@@ -10,7 +10,7 @@ PACKAGER="hzx@115.com"
 SRC_URI="http://hal.freedesktop.org/releases/PolicyKit-"$V$R".tar.gz"
 
 RDEPEND=""
-BDEPEND="${RDEPEND} dbus-glib pam intltool docbook-xsl"
+BDEPEND=" dbus-glib pam intltool docbook-xsl"
 RECOMMENDED=""
 
 pbs_unpack() {

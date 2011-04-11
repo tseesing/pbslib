@@ -8,7 +8,7 @@ HOMEPAGE="http://www.gnu.org/software/libc/libc.html"
 SRC_URI="http://ftp.gnu.org/gnu/glibc/"$N-$V$R".tar.bz2"
 
 RDEPEND=""
-BDEPEND="${RDEPEND}"
+BDEPEND=""
 
 pbs_unpack() {
         ypkg_unpack

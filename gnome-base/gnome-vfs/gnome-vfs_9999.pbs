@@ -10,7 +10,7 @@ PACKAGER="hzx@115.com"
 BIN_URI=""
 
 RDEPEND=""
-BDEPEND="${RDEPEND} dbus-glib gconf libbonobo gnome-mime-data shared-mime-info libxml2 bzip2 gamin avahi openssl orbit hal dbus samba neon"
+BDEPEND=" dbus-glib gconf libbonobo gnome-mime-data shared-mime-info libxml2 bzip2 gamin avahi openssl orbit hal dbus samba neon"
 RECOMMENDED=""
 
 NOTES="http://wiki.linuxfromscratch.org/blfs/wiki/gnome-vfs

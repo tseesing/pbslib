@@ -10,7 +10,7 @@ PACKAGER="hzx@115.com"
 SRC_URI="http://upower.freedesktop.org/releases/UPower-"$V$R".tar.gz"
 
 RDEPEND=""
-BDEPEND="${RDEPEND} "
+BDEPEND=" "
 RECOMMENDED=""
 
 pbs_unpack() {

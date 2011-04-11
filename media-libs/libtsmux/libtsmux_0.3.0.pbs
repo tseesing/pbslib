@@ -11,7 +11,7 @@ PACKAGER="hzx@115.com"
 SRC_URI="http://core.fluendo.com/gstreamer/src/gst-fluendo-mpegmux/"$N-$V$R".tar.bz2"
 
 RDEPEND=""
-BDEPEND="${RDEPEND} "
+BDEPEND=" "
 RECOMMENDED=""
 
 NOTES=""

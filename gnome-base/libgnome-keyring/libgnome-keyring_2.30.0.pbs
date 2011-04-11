@@ -9,7 +9,7 @@ PACKAGER="hzx@115.com"
 SRC_URI="http://ftp.gnome.org/pub/GNOME/sources/$N/"$N-$V$R".tar.bz2"
 
 RDEPEND=""
-BDEPEND="${RDEPEND}"
+BDEPEND=""
 RECOMMENDED=""
 
 NOTES=""

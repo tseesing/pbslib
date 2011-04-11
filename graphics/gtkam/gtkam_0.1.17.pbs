@@ -8,7 +8,7 @@ HOMEPAGE="http://gphoto.org/proj/gtkam/"
 SRC_URI="http://downloads.sourceforge.net/project/gphoto/"$N"/"$V"/"$N-$V$R".tar.bz2"
 
 RDEPEND=""
-BDEPEND="${RDEPEND} media-libs/libgphoto2"
+BDEPEND=" media-libs/libgphoto2"
 
 pbs_unpack() {
         ypkg_unpack

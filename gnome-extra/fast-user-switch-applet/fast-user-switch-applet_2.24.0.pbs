@@ -11,7 +11,7 @@ PACKAGER="hzx@115.com"
 SRC_URI="http://mirrors.cn99.com/ubuntu/pool/main/f/fast-user-switch-applet/"${N}_$V$R".orig.tar.gz"
 
 RDEPEND="gtk+ "
-BDEPEND="${RDEPEND} " #imagemagick"
+BDEPEND=" " #imagemagick"
 RECOMMENDED=""
 
 NOTES=""

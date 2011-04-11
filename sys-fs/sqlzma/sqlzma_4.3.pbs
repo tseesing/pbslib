@@ -9,7 +9,7 @@ PACKAGER="hzx@115.com"
 SRC_URI=""
 
 RDEPEND="zlib glibc gcc"
-BDEPEND="${RDEPEND} sys-apps/linux-kernel-ubuntu-source"
+BDEPEND=" sys-apps/linux-kernel-ubuntu-source"
 RECOMMENDED=""
 
 pbs_unpack() {

@@ -10,7 +10,7 @@ PACKAGER="hzx@115.com"
 BIN_URI=""
 
 RDEPEND="glib2 orbit libxml2 dbus dbus-glib popt"
-BDEPEND="${RDEPEND} flex xrdb pkgconfig intltool "
+BDEPEND=" flex xrdb pkgconfig intltool "
 RECOMMENDED=""
 
 NOTES=""

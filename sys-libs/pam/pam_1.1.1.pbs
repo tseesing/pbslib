@@ -11,7 +11,7 @@ SRC_URI="http://www.kernel.org/pub/linux/libs/pam/library/Linux-PAM-$V.tar.bz2"
 BIN_URI=""
 
 RDEPEND=""
-BDEPEND="${RDEPEND} "
+BDEPEND=" "
 
 pbs_init()
 {

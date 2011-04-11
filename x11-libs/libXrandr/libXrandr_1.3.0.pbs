@@ -9,7 +9,7 @@ SRCURL="http://www.x.org/releases/X11R7.5/src/lib"
 SRC_URI="$SRCURL/libXrandr-1.3.0.tar.bz2"
 
 RDEPEND="libXext libXrender libX11 libxcb libXau libXdmcp "
-BDEPEND="${RDEPEND}"
+BDEPEND=""
 
 pbs_unpack()
 {

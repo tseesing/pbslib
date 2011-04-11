@@ -10,7 +10,7 @@ PACKAGER="hzx@115.com"
 SRC_URI="http://downloads.xiph.org/releases/"$N"/"$N"-III-10.2.src.tgz"
 
 RDEPEND=""
-BDEPEND="${RDEPEND} "
+BDEPEND=" "
 RECOMMENDED=""
 
 NOTES=""

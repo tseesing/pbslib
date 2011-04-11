@@ -10,7 +10,7 @@ PACKAGER="hzx@115.com"
 BIN_URI=""
 
 RDEPEND=""
-BDEPEND="${RDEPEND} pygobject atk pango pycairo gtk+ libglade"
+BDEPEND=" pygobject atk pango pycairo gtk+ libglade"
 RECOMMENDED=""
 
 NOTES="http://wiki.linuxfromscratch.org/blfs/wiki/pygtk"

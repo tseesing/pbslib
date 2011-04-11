@@ -9,7 +9,7 @@ SRCURL="http://www.x.org/releases/X11R7.5/src/lib"
 SRC_URI="$SRCURL/libXcursor-1.1.10.tar.bz2"
 
 RDEPEND="libXrender libXfixes libX11 libxcb libXau libXdmcp "
-BDEPEND="${RDEPEND}"
+BDEPEND=""
 
 pbs_unpack()
 {

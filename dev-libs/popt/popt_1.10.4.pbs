@@ -10,7 +10,7 @@ PACKAGER="hzx@115.com"
 SRC_URI="ftp://anduin.linuxfromscratch.org/BLFS/6.3/p/"$N-$V$R".tar.gz"
 
 RDEPEND=""
-BDEPEND="${RDEPEND}"
+BDEPEND=""
 
 NOTES="sed ...: This fix taken backported from the development version of popt fixes a problem identified by the included testsuite."
 

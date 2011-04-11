@@ -10,7 +10,7 @@ PACKAGER="hzx@115.com"
 SRC_URI="git://github.com/"$N"/"$N".git"
 
 RDEPEND=""
-BDEPEND="${RDEPEND} scons sqlite"
+BDEPEND=" scons sqlite"
 
 NOTES="http://code.google.com/p/sunpinyin/wiki/FAQ"
 

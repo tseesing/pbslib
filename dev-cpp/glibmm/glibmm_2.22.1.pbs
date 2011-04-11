@@ -10,7 +10,7 @@ PACKAGER="hzx@115.com"
 SRC_URI="http://ftp.gnome.org/pub/gnome/sources/glib2mm/2.22/$N-$V.tar.bz2"
 
 RDEPEND=""
-BDEPEND="${RDEPEND} glib2 libsigc++"
+BDEPEND=" glib2 libsigc++"
 RECOMMENDED=""
 
 NOTES="http://wiki.linuxfromscratch.org/blfs/wiki/glib2mm"

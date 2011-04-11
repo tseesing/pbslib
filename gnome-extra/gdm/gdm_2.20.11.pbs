@@ -11,7 +11,7 @@ SRC_URI="http://ftp.acc.umu.se/pub/gnome/sources/"$N"/2.20/"$N-$V$R".tar.bz2"
 
 RDEPEND="glib2 libcanberra libvorbis libogg libtool gtk+ atk pango cairo pixman libxml2 directfb libpng libxcb libXrender libX11 libxcb libXau libXdmcp pango glibc fontconfig 
 	 freetype expat dbus-glib dbus zlib libXi libXrandr libXcursor libXcomposite libXext libXdamage libXfixes"
-BDEPEND="${RDEPEND} consolekit zenity openssh dbus libglade gnome-session"
+BDEPEND=" consolekit zenity openssh dbus libglade gnome-session"
 RECOMMENDED=""
 
 NOTES="

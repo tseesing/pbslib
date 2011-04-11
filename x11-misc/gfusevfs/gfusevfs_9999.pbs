@@ -10,7 +10,7 @@ PACKAGER="hzx@115.com"
 SRC_URI="git://pcmanfm.git.sourceforge.net/gitroot/pcmanfm/"$N""
 
 RDEPEND=""
-BDEPEND="${RDEPEND} uriparser"
+BDEPEND=" uriparser"
 
 pbs_unpack() {
 	ypkg_unpack

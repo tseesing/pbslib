@@ -10,7 +10,7 @@ PACKAGER="hzx@115.com"
 SRC_URI="http://ftp.acc.umu.se/pub/GNOME/sources/totem/2.30/"$N-$V$R".tar.bz2"
 
 RDEPEND="libdvdcss"
-BDEPEND="${RDEPEND} gconf gnome-doc-utils gst-plugins-good libunique shared-mime-info totem-pl-parser"
+BDEPEND=" gconf gnome-doc-utils gst-plugins-good libunique shared-mime-info totem-pl-parser"
 RECOMMENDED="pygtk"
 
 NOTES="

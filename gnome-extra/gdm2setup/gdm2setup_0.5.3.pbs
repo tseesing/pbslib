@@ -12,7 +12,7 @@ PACKAGER="Zhongxin Huang, hzx@115.com"
 SRC_URI="http://pypi.python.org/packages/source/g/"$N"/"$N-$V$R"-karmic.tar.gz"
 
 RDEPEND="dev-python/imaging"
-BDEPEND="${RDEPEND} "
+BDEPEND=" "
 RECOMMENDED=""
 CONFLICT=""
 

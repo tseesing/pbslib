@@ -8,7 +8,7 @@ HOMEPAGE="http://www.fcitx.org/"
 SRC_URI="http://fcitx.googlecode.com/files/"$N-$V$R".tar.gz"
 
 RDEPEND="libXft libXrender fontconfig freetype libX11 glibc zlib expat libxcb glibc libXau libXdmcp"
-BDEPEND="${RDEPEND}"
+BDEPEND=""
 
 pbs_unpack() {
         ypkg_unpack

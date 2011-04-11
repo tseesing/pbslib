@@ -10,7 +10,7 @@ PACKAGER="hzx@115.com"
 SRC_URI="http://downloads.sourceforge.net/mingw/mingwrt-$V$R-mingw32-src.tar.gz"
 
 RDEPEND=""
-BDEPEND="${RDEPEND} mingw32-w32api"
+BDEPEND=" mingw32-w32api"
 RECOMMENDED=""
 
 NOTES=""

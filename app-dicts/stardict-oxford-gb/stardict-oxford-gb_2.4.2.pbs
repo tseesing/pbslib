@@ -8,7 +8,7 @@ HOMEPAGE="http://sourceforge.net/projects/stardict"
 SRC_URI="http://mirrors.tds.net/gentoo/distfiles/"$N-$V$R".tar.bz2"
 
 RDEPEND=""
-BDEPEND="${RDEPEND}"
+BDEPEND=""
 
 pbs_unpack() {
         ypkg_unpack

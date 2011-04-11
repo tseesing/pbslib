@@ -13,7 +13,7 @@ RDEPEND="glibc gnome-desktop libXrandr libXext startup-notification libSM util-l
          libICE gconf orbit gtk+ atk glib2 pango cairo pixman directfb libpng libxcb 
 	  libXrender fontconfig freetype libexif lcms dbus-glib dbus libjpeg-turbo libxml2 libX11
 	  libxcb libXau libXdmcp zlib expat libXi libXcursor libXcomposite libXdamage libXfixes"
-BDEPEND="${RDEPEND} gtk+ " #exempi"
+BDEPEND=" gtk+ " #exempi"
 RECOMMENDED=""
 
 NOTES=""

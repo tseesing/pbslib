@@ -8,7 +8,7 @@ SRC_URI="http://hammurabi.acc.umu.se/pub/gnome/sources/gtk+/2.90/gtk+-2.90.5.tar
 REPO="Testing"
 
 RDEPEND="cairo pango atk jasper"
-BDEPEND=" ${RDEPEND} glib2 libpng libjpeg-turbo libtiff libXrender  libX11 libXau libXdmcp libxcb libpthread-stubs 
+BDEPEND="  glib2 libpng libjpeg-turbo libtiff libXrender  libX11 libXau libXdmcp libxcb libpthread-stubs 
           libXext cups libXi libXinerama libXrandr gobject-introspection gtk-doc gdk-pixbuf_2.21.5"
 RECOMMENDED=""
 

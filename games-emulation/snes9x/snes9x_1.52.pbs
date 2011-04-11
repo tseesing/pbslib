@@ -9,7 +9,7 @@ PACKAGER="hzx@115.com"
 SRC_URI="http://snes9x-gtk.googlecode.com/files/$N-$V-src.tar.bz2 "
 
 RDEPEND=""
-BDEPEND="${RDEPEND}"
+BDEPEND=""
 
 NOTES=""
 

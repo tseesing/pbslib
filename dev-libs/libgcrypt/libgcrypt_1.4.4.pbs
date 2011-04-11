@@ -8,7 +8,7 @@ HOMEPAGE="http://www.gnupg.org/"
 SRC_URI="ftp://ftp.gnupg.org/gcrypt/libgcrypt/$N-$V.tar.bz2"
 
 RDEPEND=""
-BDEPEND="${RDEPEND} dev-libs/libgpg-error"
+BDEPEND=" dev-libs/libgpg-error"
 OPIONAL="pth libcap2"
 
 pbs_unpack()

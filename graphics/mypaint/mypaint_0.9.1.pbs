@@ -12,7 +12,7 @@ PACKAGER="Zhongxin Huang, hzx@115.com"
 SRC_URI="http://download.gna.org/"$N"/"$N-$V$R".tar.bz2"
 
 RDEPEND=""
-BDEPEND="${RDEPEND} swig scons"
+BDEPEND=" swig scons"
 RECOMMENDED=""
 CONFLICT=""
 

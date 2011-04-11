@@ -9,7 +9,7 @@ PACKAGER="hzx@115.com"
 SRC_URI=""
 
 RDEPEND=""
-BDEPEND="${RDEPEND} uriparser"
+BDEPEND=" uriparser"
 
 pbs_unpack() {
 	git clone git://pcmanfm.git.sourceforge.net/gitroot/pcmanfm/$N

@@ -9,7 +9,7 @@ PACKAGER="hzx@115.com"
 SRC_URI="ftp://ftp.gnome.org/pub/gnome/sources/gnome-vfs/2.24/"$N-$V$R".tar.bz2"
 
 RDEPEND=""
-BDEPEND="${RDEPEND} dbus-glib gconf gnome-mime-data"
+BDEPEND=" dbus-glib gconf gnome-mime-data"
 RECOMMENDED=""
 
 NOTES="http://wiki.linuxfromscratch.org/blfs/wiki/gnome-vfs"

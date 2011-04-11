@@ -11,7 +11,7 @@ RDEPEND="libX11 libXrender libXScrnSaver libXext gtk+ atk pango cairo fontconfig
 bzip2 alsa-lib expat dbus-glib dbus cups libgcrypt libxcb libXau libXdmcp libXi libXrandr libXcursor
 libXcomposite libXdamage libXfixes pixman libxml2 directfb libxcb orbit krb5 e2fsprogs gnutls libgpg-error
 libX11 libXau libxcb libComposite libXcursor libXdamage libXdmcp libXfixes libXi libXrandr libXrender"
-BDEPEND="${RDEPEND} dev-lang/perl dev-util/gperf dev-util/pkgconfig sys-devel/flex"
+BDEPEND=" dev-lang/perl dev-util/gperf dev-util/pkgconfig sys-devel/flex"
 
 pbs_unpack() {
         ypkg_unpack

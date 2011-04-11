@@ -10,7 +10,7 @@ PACKAGER="hzx@115.com"
 SRC_URI="http://ibus.googlecode.com/files/"$N-$V$R".tar.gz"
 
 RDEPEND="app-i18n/ibus dev-libs/boost " #sys-apps/util-linux"
-BDEPEND="${RDEPEND} "
+BDEPEND=" "
 RECOMMENDED=""
 
 NOTES=""

@@ -8,7 +8,7 @@ HOMEPAGE=" http://www.alsa-project.org/"
 SRC_URI="ftp://ftp.alsa-project.org/pub/plugins/"$N-$V$R".tar.bz2"
 
 RDEPEND="alsa-lib"
-BDEPEND="${RDEPEND}"
+BDEPEND=""
 
 pbs_unpack() {
         ypkg_unpack

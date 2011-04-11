@@ -8,7 +8,7 @@ HOMEPAGE="http://www.gtk.org/"
 SRC_URI="http://ftp.gnome.org/pub/gnome/sources/gtk+/2.18/"$N"-$V.tar.bz2"
 
 RDEPEND="cairo pango atk jasper"
-BDEPEND="${RDEPEND} media-libs/libtiff media-libs/jpeg"
+BDEPEND=" media-libs/libtiff media-libs/jpeg"
 RECOMMENDED="libtiff hicolor-icon-theme"
 OPIONAL="cups jasper docbook-utils libbeagle gtk-doc tracker"
 

@@ -8,7 +8,7 @@ HOMEPAGE="http://lilyterm.luna.com.tw/index_cht.html"
 SRC_URI="http://lilyterm.luna.com.tw/file/lilyterm-$V.tar.gz"
 
 RDEPEND=""
-BDEPEND="${RDEPEND}"
+BDEPEND=""
 
 pbs_unpack() {
         ypkg_unpack

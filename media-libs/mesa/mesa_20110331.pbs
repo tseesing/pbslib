@@ -10,7 +10,7 @@ PACKAGER="hzx@115.com"
 SRC_URI="git://anongit.freedesktop.org/mesa/mesa"
 
 RDEPEND="glibc libX11 libXext libXxf86vm libXdamage libXfixes libdrm libxcb libXau libXdmcp talloc"
-BDEPEND="${RDEPEND} libXi dri2proto libdrm xorg-server"
+BDEPEND=" libXi dri2proto libdrm xorg-server"
 
 NOTES="
  You have enabled gallium infrastructure.

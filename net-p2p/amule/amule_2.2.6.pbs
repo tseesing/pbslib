@@ -8,7 +8,7 @@ HOMEPAGE="http://www.amule.org/"
 SRC_URI="http://downloads.sourceforge.net/project/"$N"/aMule/"$V$R"/aMule-"$V$R".tar.bz2"
 
 RDEPEND="wxGTK crypto++ zlib gd geoip libupnp libpng"
-BDEPEND="${RDEPEND}"
+BDEPEND=""
 
 pbs_unpack() {
         ypkg_unpack

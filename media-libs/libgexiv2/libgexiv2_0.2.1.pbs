@@ -11,7 +11,7 @@ PACKAGER="Zhongxin Huang, hzx@115.com"
 SRC_URI="http://yorba.org/download/gexiv2/0.2/"$N-$V$R".tar.bz2"
 
 RDEPEND="exiv2"
-BDEPEND="${RDEPEND} "
+BDEPEND=" "
 RECOMMENDED=""
 
 NOTES=""

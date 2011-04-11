@@ -11,7 +11,7 @@ PACKAGER="hzx@115.com"
 SRC_URI="http://search.cpan.org/CPAN/authors/id/R/RJ/RJBS/IPC-Run3-"$V$R".tar.gz"
 
 RDEPEND=""
-BDEPEND="${RDEPEND} test-script"
+BDEPEND=" test-script"
 
 pbs_unpack() {
         ypkg_unpack

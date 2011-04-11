@@ -12,7 +12,7 @@ SRC_URI="ftp://ftp.trolltech.com/qt/source/qt-everywhere-opensource-src-"$V$R".t
 
 RDEPEND="libpng freetype glib2 libSM libICE libXrender fontconfig libXext libX11 zlib gcc 
 	 util-linux-ng expat libxcb libXau libXdmcp glibc gcc"
-BDEPEND="${RDEPEND}"
+BDEPEND=""
 RECOMMENDED=""
 
 NOTES=""

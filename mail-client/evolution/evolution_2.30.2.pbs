@@ -13,7 +13,7 @@ RDEPEND="evolution-data-server berkeley-db libnotify gtkhtml nss libical enchant
   	 libgcrypt libgpg-error libgnomecanvas gtk+ gail libXi libXcursor libXcomposite libXdamage libXfixes libart_lgpl gnome-desktop gconf
 	 orbit libXrandr libXext startup-notification libSM util-linux-ng libICE libunique dbus-glib dbus gtk+ atk glib2 glibc pango cairo pixman 
 	 libxml2 directfb libpng libxcb libXrender libX11 libxcb libXau libXdmcp fontconfig freetype zlib expat glib2 krb5"
-BDEPEND="${RDEPEND} gconf evolution-data-server gtkhtml gnome-keyring libsoup libgnome libnotify gstreamer libunique openldap-client 
+BDEPEND=" gconf evolution-data-server gtkhtml gnome-keyring libsoup libgnome libnotify gstreamer libunique openldap-client 
 	 libcanberra libgweather gtkimageview libpst imagemagick" #seamonkey-solibs
 RECOMMENDED=""
 

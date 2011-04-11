@@ -11,7 +11,7 @@ PACKAGER="Zhongxin Huang, hzx@115.com"
 SRC_URI="http://releases.mozilla.org/pub/mozilla.org/thunderbird/releases/3.1.9/linux-i686/zh-CN/thunderbird-3.1.9.tar.bz2"
 
 RDEPEND=""
-BDEPEND="${RDEPEND} "
+BDEPEND=" "
 RECOMMENDED=""
 
 NOTES=""

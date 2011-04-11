@@ -10,7 +10,7 @@ PACKAGER="hzx@115.com"
 SRC_URI="http://www.openprinting.org/download/foomatic/foomatic-db-current.tar.gz"
 
 RDEPEND=""
-BDEPEND="${RDEPEND} "
+BDEPEND=" "
 RECOMMENDED=""
 
 NOTES=""

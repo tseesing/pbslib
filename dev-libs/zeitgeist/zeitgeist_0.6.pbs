@@ -11,7 +11,7 @@ PACKAGER="Zhongxin Huang, hzx@115.com"
 SRC_URI="http://edge.launchpad.net/"$N"/"$V$R"/"$V$R"/+download/"$N-$V$R".tar.gz"
 
 RDEPEND="python raptor2 rdflib"
-BDEPEND="${RDEPEND} "
+BDEPEND=" "
 RECOMMENDED=""
 
 NOTES=""

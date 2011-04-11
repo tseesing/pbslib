@@ -10,7 +10,7 @@ PACKAGER="hzx@115.com"
 SRC_URI="http://rsync.samba.org/ftp/"$N"/"$N-$V$R".tar.gz"
 
 RDEPEND="acl popt attr"
-BDEPEND="${RDEPEND} popt attr acl"
+BDEPEND=" popt attr acl"
 
 NOTES="
 \"/etc/rsyncd.conf\" - rsyncd rc file!

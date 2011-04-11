@@ -9,7 +9,7 @@ PACKAGER="hzx@115.com"
 SRC_URI=" http://downloads.sourceforge.net/project/pidgin/Pidgin/$V/pidgin-$V$R.tar.gz " #
 
 RDEPEND="dbus-glib dbus farsight2 gstreamer libxml2 zlib"
-BDEPEND="${RDEPEND} x11-libs/startup-notification net-libs/gnutls"
+BDEPEND=" x11-libs/startup-notification net-libs/gnutls"
 
 pbs_unpack() {
         ypkg_unpack

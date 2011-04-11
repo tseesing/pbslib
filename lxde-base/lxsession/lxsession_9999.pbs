@@ -10,7 +10,7 @@ PACKAGER="hzx@115.com"
 SRC_URI="git://lxde.git.sourceforge.net/gitroot/lxde/"$N""
 
 RDEPEND=""
-BDEPEND="${RDEPEND}"
+BDEPEND=""
 
 pbs_unpack() {
 	ypkg_unpack

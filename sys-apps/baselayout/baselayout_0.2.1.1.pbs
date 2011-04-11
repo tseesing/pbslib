@@ -8,7 +8,7 @@ HOMEPAGE="http://code.google.com/p/xiangelinux"
 SRC_URI="http://xiangelinux.googlecode.com/files/$N-$V.tar.bz2"
 
 RDEPEND=""
-BDEPEND="${RDEPEND}"
+BDEPEND=""
 
 pbs_unpack()
 {

@@ -12,7 +12,7 @@ SRC_URI="http://downloads.sourceforge.net/project/pidgin/Pidgin/2.7.3/"$N-$V$R".
 RDEPEND="dbus-glib dbus libX11 libXext libXScrnSaver libSM libICE startup-notification
 	 libxml2 gtk+ atk pango cairo freetype fontconfig glib2 glibc libxml2 ncurses purple zlib 
 	 farsight2 gstreamer libXi libXrandr libXcursor libXcomposite libXdamage libXfixes pixman expat farsight2 "
-BDEPEND="${RDEPEND} x11-libs/startup-notification net-libs/gnutls"
+BDEPEND=" x11-libs/startup-notification net-libs/gnutls"
 
 pbs_unpack() {
         ypkg_unpack

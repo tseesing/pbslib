@@ -14,7 +14,7 @@ RDEPEND="libwnck libXres metacity libcanberra libvorbis libogg libtool gconf orb
 	 startup-notification libXcomposite libXdamage libXcursor libXfixes libgtop libXrandr libSM 
 	 util-linux-ng libICE libXinerama libXext gtk+ atk glib2 glibc pango gcc cairo pixman libxml2
 	 directfb libpng libxcb libXrender libX11 libxcb libXau libXdmcp fontconfig freetype zlib expat libXi gcc"
-BDEPEND="${RDEPEND} dbus libnotify gconf libpng glib2 gtk+ librsvg libxslt mesa metacity libgnomeui libwnck fuse"
+BDEPEND=" dbus libnotify gconf libpng glib2 gtk+ librsvg libxslt mesa metacity libgnomeui libwnck fuse"
 RECOMMENDED=""
 
 pbs_unpack() {

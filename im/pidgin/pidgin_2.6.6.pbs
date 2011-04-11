@@ -8,7 +8,7 @@ HOMEPAGE="http://pidgin.im/"
 SRC_URI="http://downloads.sourceforge.net/project/$N/Pidgin/$V/$N-$V.tar.bz2"
 
 RDEPEND=""
-BDEPEND="${RDEPEND} x11-libs/startup-notification net-libs/gnutls"
+BDEPEND=" x11-libs/startup-notification net-libs/gnutls"
 
 pbs_unpack()
 {

@@ -13,7 +13,7 @@ RDEPEND="gtk+ atk glib2 pango cairo freetype fontconfig glibc libXi
 	 libXrandr libXcursor gcc libXcomposite  libXext libXdamage 
 	 libXfixes pixman libxml2 directfb libpng libxcb libXrender 
 	 libX11 libXau libXdmcp zlib expat"
-BDEPEND="${RDEPEND}"
+BDEPEND=""
 
 pbs_unpack() {
 	ypkg_unpack

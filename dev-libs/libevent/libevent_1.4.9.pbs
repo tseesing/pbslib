@@ -10,7 +10,7 @@ PACKAGER="hzx@115.com"
 SRC_URI="http://www.monkey.org/~provos/"$N-$V$R"-stable.tar.gz"
 
 RDEPEND=""
-BDEPEND="${RDEPEND} "
+BDEPEND=" "
 RECOMMENDED=""
 
 NOTES=""

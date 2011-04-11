@@ -13,7 +13,7 @@ RDEPEND="gnome-panel gconf libbonoboui libgnomecanvas libgnome popt libart_lgpl 
 	 openssl avahi esound alsa-lib audifile pixman libxml2 directfb libpng libxcb libXrender zlib
 	 expat libX11 libXdmcp libXau libXi libXrander libXcursor libXcomposite libXext libXdamage 
 	 libXfixes"
-BDEPEND="${RDEPEND} libnotify networkmanager gnome-desktop"
+BDEPEND=" libnotify networkmanager gnome-desktop"
 RECOMMENDED="libgnomeui gnome-panel"
 
 NOTES=""

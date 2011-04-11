@@ -11,7 +11,7 @@ PACKAGER="Zhongxin Huang, hzx@115.com"
 SRC_URI="http://chinese-fortune.googlecode.com/files/"$N-$V$R".tar.bz2"
 
 RDEPEND="fortune-mod"
-BDEPEND="${RDEPEND} "
+BDEPEND=" "
 RECOMMENDED=""
 
 NOTES=""

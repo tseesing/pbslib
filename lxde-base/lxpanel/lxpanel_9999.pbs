@@ -10,7 +10,7 @@ PACKAGER="hzx@115.com"
 SRC_URI="git://lxde.git.sourceforge.net/gitroot/lxde/"$N""
 
 RDEPEND="x11-libs/gtk+ x11-libs/libXmu x11-libs/libXpm lxde-base/lxmenu-data lxde-base/menu-cache media-libs/alsa-lib"
-BDEPEND="${RDEPEND} dev-libs/glib2 dev-util/pkgconfig sys-devel/gettext"
+BDEPEND=" dev-libs/glib2 dev-util/pkgconfig sys-devel/gettext"
 
 pbs_unpack() {
 	ypkg_unpack

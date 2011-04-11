@@ -9,7 +9,7 @@ SRC_URI="http://downloads.sourceforge.net/tcl/tk"$V$R"-src.tar.gz"
 
 RDEPEND="tcl libX11 libXScrnSaver libXext libXft freetype fontconfig libXrender 
 	 libxcb libXau libXdmcp zlib expat"
-BDEPEND="${RDEPEND} "
+BDEPEND=" "
 
 pbs_unpack(){
         ypkg_unpack

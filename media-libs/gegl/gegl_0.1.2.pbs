@@ -8,7 +8,7 @@ HOMEPAGE="http://www.gegl.org/"
 SRC_URI="ftp://ftp.gimp.org/pub/"$N"/0.1/"$N-$V$R".tar.bz2"
 
 RDEPEND="babl glib2 gtk+ pango cairo libjpeg-turbo "
-BDEPEND="${RDEPEND}"
+BDEPEND=""
 
 pbs_unpack() {
         ypkg_unpack

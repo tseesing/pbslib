@@ -15,7 +15,7 @@ SRC_URI=" http://downloads.sourceforge.net/project/mingw/MinGW/BaseSystem/GCC/Ve
 	#  http://ftp.gnu.org/gnu/gcc/gcc-$V$R/gcc-$V$R.tar.bz2 "
 
 RDEPEND=""
-BDEPEND="${RDEPEND} "
+BDEPEND=" "
 RECOMMENDED=""
 
 NOTES="

@@ -9,7 +9,7 @@ PACKAGER="hzx@115.com"
 SRC_URI="http://ftp.osuosl.org/pub/gsb/gsb-2.30_slackware-13.1/source/a/$N/"$N-$V$R".tar.bz2"
 
 RDEPEND=""
-BDEPEND="${RDEPEND} libsoup gnome-keyring libgweather dev-libs/libical app-crypt/krb5 net-nds/openldap-client dev-libs/nspr dev-libs/nss"
+BDEPEND=" libsoup gnome-keyring libgweather dev-libs/libical app-crypt/krb5 net-nds/openldap-client dev-libs/nspr dev-libs/nss"
 RECOMMENDED=""
 
 NOTES=""

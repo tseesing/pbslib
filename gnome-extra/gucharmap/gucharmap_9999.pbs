@@ -10,7 +10,7 @@ PACKAGER="hzx@115.com"
 BIN_URI=""
 
 RDEPEND=""
-BDEPEND="${RDEPEND} gtk+ xml-parser"
+BDEPEND=" gtk+ xml-parser"
 RECOMMENDED=""
 
 NOTES="http://wiki.linuxfromscratch.org/blfs/wiki/gucharmap"

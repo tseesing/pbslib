@@ -11,7 +11,7 @@ PACKAGER="Zhongxin Huang, hzx@115.com"
 SRC_URI="http://download.services.openoffice.org/files/extended/"$V$R"/OOo_"$V$R"_20110110_Linux_x86_install-deb_zh-CN.tar.gz"
 
 RDEPEND="zlib freetype libXau libxcb libXdmcp libXext"
-BDEPEND="${RDEPEND} rpm2targz"
+BDEPEND=" rpm2targz"
 
 pbs_unpack() {
         ypkg_unpack

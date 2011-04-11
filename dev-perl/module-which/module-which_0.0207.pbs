@@ -11,7 +11,7 @@ PACKAGER="hzx@115.com"
 SRC_URI="http://search.cpan.org/CPAN/authors/id/F/FE/FERREIRA/Module-Which-"$V$R".tar.gz"
 
 RDEPEND=""
-BDEPEND="${RDEPEND} string-truncate"
+BDEPEND=" string-truncate"
 
 pbs_unpack() {
         ypkg_unpack

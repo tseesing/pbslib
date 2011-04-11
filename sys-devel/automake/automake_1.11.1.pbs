@@ -10,7 +10,7 @@ PACKAGER="hzx@115.com"
 SRC_URI="http://ftp.gnu.org/gnu/automake/"$N-$V$R".tar.bz2"
 
 RDEPEND="autoconf"
-BDEPEND="${RDEPEND}"
+BDEPEND=""
 
 pbs_unpack() {
         ypkg_unpack

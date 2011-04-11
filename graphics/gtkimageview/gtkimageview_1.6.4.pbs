@@ -11,7 +11,7 @@ SRC_URI="http://trac.bjourne.webfactional.com/chrome/common/releases/"$N-$V$R".t
 
 RDEPEND="gtk+ atk pango cairo freetype fontconfig libXi libXrandr libXcursor libXcomposite libXext
 	 libXdamage libXfixes pixman libxml2 directfb libpng libxcb libXau libXdmcp zlib expat "
-BDEPEND="${RDEPEND} gtk+"
+BDEPEND=" gtk+"
 RECOMMENDED=""
 
 NOTES=""

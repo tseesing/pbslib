@@ -9,7 +9,7 @@ PACKAGER="hzx@115.com"
 SRC_URI="http://freedesktop.org/software/desktop-file-utils/releases/$N-$V.tar.gz"
 
 RDEPEND=""
-BDEPEND="${RDEPEND} glib2"
+BDEPEND=" glib2"
 RECOMMENDED=""
 
 NOTES="http://wiki.linuxfromscratch.org/blfs/wiki/desktop-file-utils"

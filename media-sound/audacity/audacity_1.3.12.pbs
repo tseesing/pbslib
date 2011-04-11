@@ -12,7 +12,7 @@ PACKAGER="Zhongxin Huang, hzx@115.com"
 SRC_URI="http://audacity.googlecode.com/files/"$N"-fullsrc-"$V$R"-beta.tar.bz2"
 
 RDEPEND="wxWidgets"
-BDEPEND="${RDEPEND} "
+BDEPEND=" "
 RECOMMENDED=""
 CONFLICT=""
 

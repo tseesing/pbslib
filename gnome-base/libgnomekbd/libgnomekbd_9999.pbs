@@ -10,7 +10,7 @@ PACKAGER="hzx@115.com"
 BIN_URI=""
 
 RDEPEND="gconf libxklavier"
-BDEPEND="${RDEPEND} dbus gconf libbonoboui gnome-keyring libxklavier libglade iso-codes"
+BDEPEND=" dbus gconf libbonoboui gnome-keyring libxklavier libglade iso-codes"
 RECOMMENDED=""
 
 NOTES="http://wiki.linuxfromscratch.org/blfs/wiki/libgnomekbd"

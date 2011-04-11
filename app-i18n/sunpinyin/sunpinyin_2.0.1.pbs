@@ -10,7 +10,7 @@ PACKAGER="hzx@115.com"
 SRC_URI="http://sunpinyin.googlecode.com/files/"$N-$V$R".tar.gz"
 
 RDEPEND="gtk+ ibus"
-BDEPEND="${RDEPEND}"
+BDEPEND=""
 
 pbs_unpack() {
         ypkg_unpack

@@ -13,7 +13,7 @@ SRC_URI=" http://mirror.lupaworld.com/tdf/libreoffice/stable/"$V$R"/deb/x86/LibO
 	  http://mirror.lupaworld.com/tdf/libreoffice/stable/"$V$R"/deb/x86/LibO_"$V$R"_Linux_x86_langpack-deb_zh-CN.tar.gz "
 
 RDEPEND="zlib freetype libXau libxcb libXdmcp libXext"
-BDEPEND="${RDEPEND} binutils"
+BDEPEND=" binutils"
 
 pbs_install() {
 	mkdir -p "$N-$V$R"

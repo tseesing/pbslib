@@ -11,7 +11,7 @@ REPO="testing"
 SRC_URI="http://ibus.googlecode.com/files/"$N-$V$R"-Source.tar.gz"
 
 RDEPEND="app-i18n/ibus dev-libs/boost app-i18n/ibus-table"
-BDEPEND="${RDEPEND} "
+BDEPEND=" "
 RECOMMENDED=""
 
 NOTES=""

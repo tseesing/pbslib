@@ -14,7 +14,7 @@ RDEPEND="gconf libxslt zlib glibc libxml2 sqlite libunique webkit libsoup libSM 
 	 directfb libpng libXrender libX11 libxcb libXau libXdmcp enchant gail libXi libXrandr libXcursor
 	 libXcomposite libXext libXdamage libXfixes gst-plugins-base gstreamer libjpeg-turbo gnutls libgcrypt libgpg-error
 	 expat icu libXt util-linux-ng gcc"
-BDEPEND="${RDEPEND} glib2 gtk+ gconf gnutls libnotify dbus webkit"
+BDEPEND=" glib2 gtk+ gconf gnutls libnotify dbus webkit"
 RECOMMENDED=""
 
 NOTES=""

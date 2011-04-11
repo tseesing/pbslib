@@ -11,7 +11,7 @@ PACKAGER="Zhongxin Huang, hzx@115.com"
 SRC_URI="$N-$V$R.tar.bz2"
 
 RDEPEND=""
-BDEPEND="${RDEPEND} automake1.4"
+BDEPEND=" automake1.4"
 RECOMMENDED=""
 
 NOTES=""

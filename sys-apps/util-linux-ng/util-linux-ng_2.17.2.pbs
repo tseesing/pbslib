@@ -8,7 +8,7 @@ HOMEPAGE="http://git.kernel.org/?p=utils/util-linux-ng/util-linux-ng.git"
 SRC_URI="http://www.kernel.org/pub/linux/utils/"$N"/v2.17/"$N-$V$R".tar.bz2"
 
 RDEPEND="ncurses glibc"
-BDEPEND="${RDEPEND}"
+BDEPEND=""
 
 pbs_unpack() {
         ypkg_unpack

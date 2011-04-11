@@ -10,7 +10,7 @@ PACKAGER="hzx@115.com"
 BIN_URI=""
 
 RDEPEND=""
-BDEPEND="${RDEPEND} libxslt rarian intltool"
+BDEPEND=" libxslt rarian intltool"
 RECOMMENDED="python "
 
 NOTES=""

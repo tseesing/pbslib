@@ -9,7 +9,7 @@ PACKAGER="hzx@115.com"
 SRC_URI="http://hal.freedesktop.org/releases/$N-$V.tar.gz"
 
 RDEPEND=""
-BDEPEND="${RDEPEND} dbus-glib"
+BDEPEND=" dbus-glib"
 
 pbs_unpack() {
         ypkg_unpack

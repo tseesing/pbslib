@@ -12,7 +12,7 @@ PACKAGER="Zhongxin Huang, hzx@115.com"
 SRC_URI="http://downloads.sourceforge.net/project/bluefish/bluefish/2.0.2/bluefish-2.0.2.tar.bz2"
 
 RDEPEND="gtk+"
-BDEPEND="${RDEPEND} "
+BDEPEND=" "
 RECOMMENDED=""
 CONFLICT=""
 

@@ -12,7 +12,7 @@ PACKAGER="Zhongxin Huang, hzx@115.com"
 SRC_URI="http://search.cpan.org/CPAN/authors/id/T/TS/TSCH/Gnome2-"$V$R".tar.gz"
 
 RDEPEND=""
-BDEPEND="${RDEPEND} extutils-depends extutils-pkgconfig glib-perl gtk2-perl pango-perl cairo-perl gnome2-canvas-perl gnome2-vfs-perl"
+BDEPEND=" extutils-depends extutils-pkgconfig glib-perl gtk2-perl pango-perl cairo-perl gnome2-canvas-perl gnome2-vfs-perl"
 RECOMMENDED=""
 CONFLICT=""
 

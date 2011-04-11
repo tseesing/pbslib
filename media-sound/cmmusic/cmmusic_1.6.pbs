@@ -12,7 +12,7 @@ PACKAGER="Zhongxin Huang, hzx@115.com"
 SRC_URI="http://downloads.sourceforge.net/project/cmmusic/CMMusic_src/cmmusic-1.6/cmmusic-1.6.tar.gz"
 
 RDEPEND="mplayer ncurses"
-BDEPEND="${RDEPEND} "
+BDEPEND=" "
 RECOMMENDED=""
 CONFLICT=""
 

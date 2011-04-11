@@ -10,7 +10,7 @@ PACKAGER="Zhongxin Huang, hzx@115.com"
 SRC_URI="http://www.x.org/releases/X11R7.5/src/lib/"$N-$V$R".tar.bz2"
 
 RDEPEND="libX11 libXfixes libXext libxcb libXau libXdmcp"
-BDEPEND="${RDEPEND} libXfixes x11-libs/libX11 libXext"
+BDEPEND=" libXfixes x11-libs/libX11 libXext"
 
 pbs_unpack() {
         ypkg_unpack

@@ -10,7 +10,7 @@ PACKAGER="hzx@115.com"
 SRC_URI="http://ftp.gnome.org/pub/gnome/sources/gtkmm/2.18/$N-$V.tar.bz2"
 
 RDEPEND=""
-BDEPEND="${RDEPEND} gtk+ pangomm"
+BDEPEND=" gtk+ pangomm"
 RECOMMENDED=""
 
 NOTES="http://wiki.linuxfromscratch.org/blfs/wiki/gtkmm"

@@ -8,7 +8,7 @@ HOMEPAGE="http://www.mozilla.com/firefox"
 SRC_URI="http://pv-mirror01.mozilla.org/pub/mozilla.org/firefox/releases/latest-3.6/linux-i686/zh-CN/firefox-"$V$R".tar.bz2"
 
 RDEPEND=""
-BDEPEND="${RDEPEND}"
+BDEPEND=""
 
 pbs_unpack() {
         ypkg_unpack

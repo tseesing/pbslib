@@ -10,7 +10,7 @@ PACKAGER="hzx@115.com"
 SRC_URI="ftp://ftp.gnupg.org/gcrypt/gnupg/$N-$V.tar.bz2"
 
 RDEPEND=""
-BDEPEND="${RDEPEND} pth libgcrypt libksba libgpg-error curl bzip2 libassuan gettext" #pinentry
+BDEPEND=" pth libgcrypt libksba libgpg-error curl bzip2 libassuan gettext" #pinentry
 
 NOTES=""
 

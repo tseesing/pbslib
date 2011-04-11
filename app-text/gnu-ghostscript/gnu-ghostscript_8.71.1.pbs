@@ -13,7 +13,7 @@ RDEPEND="libXt libSM libICE libXext libX11 libjpeg-turbo cups krb5 e2fsprogs gli
          fontconfig util-linux-ng libxcb libtiff libgcrypt libgpg-error freetype expat libXau libXdmcp gtk+ 
          atk glib2 pango cairo freetype fontconfig libXt libSM libICE libXext libxml2 pixman libXi libXrandr libXcursor
          libXcomposite libXdamage libXfixes directfb libXrender util-linux-ng"
-BDEPEND="${RDEPEND} "
+BDEPEND=" "
 RECOMMENDED="ghostscript-fonts-std gnu-gs-fonts-other"
 
 NOTES=""

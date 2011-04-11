@@ -11,7 +11,7 @@ PACKAGER="Zhongxin Huang, hzx@115.com"
 SRC_URI="http://downloads.xiph.org/releases/vorbis/"$N-$V$R".tar.gz"
 
 RDEPEND=""
-BDEPEND="${RDEPEND} libvorbis"
+BDEPEND=" libvorbis"
 RECOMMENDED=""
 
 NOTES=""

@@ -9,7 +9,7 @@ PACKAGER="hzx@115.com"
 SRC_URI="ftp://ftp.gnome.org/pub/gnome/sources/$N/$V/"$N-$V$R".tar.bz2"
 
 RDEPEND=""
-BDEPEND="${RDEPEND} glib2 x11-libs/libX11 libxml2 iso-codes"
+BDEPEND=" glib2 x11-libs/libX11 libxml2 iso-codes"
 RECOMMENDED=""
 
 NOTES="http://wiki.linuxfromscratch.org/blfs/wiki/libxklavier"

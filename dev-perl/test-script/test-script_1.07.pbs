@@ -11,7 +11,7 @@ PACKAGER="hzx@115.com"
 SRC_URI="http://search.cpan.org/CPAN/authors/id/A/AD/ADAMK/Test-Script-"$V$R".tar.gz"
 
 RDEPEND=""
-BDEPEND="${RDEPEND} ipc-run3 probe-perl"
+BDEPEND=" ipc-run3 probe-perl"
 
 pbs_unpack() {
         ypkg_unpack

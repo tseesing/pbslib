@@ -8,7 +8,7 @@ HOMEPAGE="http://gna.org/projects/fvwm-crystal/"
 SRC_URI="http://download.gna.org/fvwm-crystal/"$N"/"$V$R"/"$N-$V$R".tar.gz"
 
 RDEPEND="imlib2 glibc libX11 freetype zlib libXext libxcb libXau libXdmcp"
-BDEPEND="${RDEPEND}"
+BDEPEND=""
 
 pbs_unpack() {
         ypkg_unpack

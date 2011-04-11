@@ -9,7 +9,7 @@ SRCURL="http://www.x.org/releases/X11R7.5/src/lib"
 SRC_URI="$SRCURL/libXinerama-1.1.tar.bz2"
 
 RDEPEND="libXext libX11 libxcb libXau libXdmcp"
-BDEPEND="${RDEPEND}"
+BDEPEND=""
 
 pbs_unpack()
 {

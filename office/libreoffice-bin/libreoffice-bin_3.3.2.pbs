@@ -13,7 +13,7 @@ SRC_URI=" http://download.documentfoundation.org/libreoffice/stable/3.3.2/deb/x8
 	  http://download.documentfoundation.org/libreoffice/stable/3.3.2/deb/x86/LibO_3.3.2_Linux_x86_helppack-deb_zh-CN.tar.gz"
 
 RDEPEND="zlib freetype libXau libxcb libXdmcp libXext"
-BDEPEND="${RDEPEND} binutils"
+BDEPEND=" binutils"
 
 pbs_install() {
 	mkdir -p "$N-$V$R"

@@ -10,7 +10,7 @@ PACKAGER="hzx@115.com"
 SRC_URI="http://download.virtualbox.org/virtualbox/"$V$R"/VirtualBox-"$V$R"-68302-Linux_x86.run"
 
 RDEPEND=""
-BDEPEND="${RDEPEND} bin86 dev86 acpica"
+BDEPEND=" bin86 dev86 acpica"
 RECOMMENDED=""
 
 NOTES=""

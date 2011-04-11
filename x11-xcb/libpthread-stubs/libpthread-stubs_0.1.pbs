@@ -8,7 +8,7 @@ HOMEPAGE="http://xorg.freedesktop.org/"
 SRC_URI="http://xcb.freedesktop.org/dist/$N-$V.tar.bz2"
 
 RDEPEND=""
-BDEPEND="${RDEPEND}"
+BDEPEND=""
 
 pbs_unpack()
 {

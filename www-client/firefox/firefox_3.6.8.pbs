@@ -8,7 +8,7 @@ HOMEPAGE="http://www.mozilla.com/firefox"
 SRC_URI="http://releases.mozilla.org/pub/mozilla.org/$N/releases/$V/source/$N-$V.source.tar.bz2"
 
 RDEPEND="zip unzip libIDL sqlite"
-BDEPEND="${RDEPEND}"
+BDEPEND=""
 
 pbs_unpack()
 {

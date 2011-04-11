@@ -12,7 +12,7 @@ PACKAGER="Zhongxin Huang, hzx@115.com"
 SRC_URI="http://ftp.gnome.org/pub/GNOME/sources/glade3/3.6/"$N"3-"$V$R".tar.bz2"
 
 RDEPEND="gtk+"
-BDEPEND="${RDEPEND} "
+BDEPEND=" "
 RECOMMENDED=""
 CONFLICT=""
 

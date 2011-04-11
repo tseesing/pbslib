@@ -10,7 +10,7 @@ PACKAGER="hzx@115.com"
 SRC_URI="http://www.valgrind.org/downloads/"$N-$V$R".tar.bz2"
 
 RDEPEND=""
-BDEPEND="${RDEPEND} gdb"
+BDEPEND=" gdb"
 RECOMMENDED=""
 
 NOTES=""

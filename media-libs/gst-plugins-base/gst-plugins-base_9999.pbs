@@ -10,7 +10,7 @@ PACKAGER="hzx@115.com"
 BIN_URI=""
 
 RDEPEND=""
-BDEPEND="${RDEPEND} gstreamer liboil pango"
+BDEPEND=" gstreamer liboil pango"
 RECOMMENDED=""
 
 NOTES=""

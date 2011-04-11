@@ -10,7 +10,7 @@ SRC_URI="http://www.x.org/releases/X11R7.5/src/xserver/$N-$V.tar.bz2"
 RDEPEND="glibc openssl pixman xkeyboard-config libpciaccess libXfont freetype libfontenc libXau hal dbus libXdmcp 
 mesa libICE libsdl libSM libX11 libXaw libXext libXfixes libXi libXmu libXpm libXrender libXt libXv directfb libdmx libdrm
 libxcb util-linux-ng libXxf86vm libXdamage"
-BDEPEND=" ${RDEPEND}  xtrans libxkbfile x11-libs/libXfont libXau hal dbus libXdmcp openssl x11-libs/libpciaccess 
+BDEPEND="   xtrans libxkbfile x11-libs/libXfont libXau hal dbus libXdmcp openssl x11-libs/libpciaccess 
 x11-libs/libXaw x11-libs/libdmx x11-libs/libXres x11-libs/libXext media-libs/libsdl x11-libs/libXv mesa"
 
 pbs_unpack()

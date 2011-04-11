@@ -9,7 +9,7 @@ PACKAGER="hzx@115.com"
 SRC_URI="http://archive.canonical.com/pool/partner/a/"$N"/"${N}_$V$R".orig.tar.gz"
 
 RDEPEND=""
-BDEPEND="${RDEPEND} "
+BDEPEND=" "
 RECOMMENDED=""
 
 NOTES=""

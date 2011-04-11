@@ -10,7 +10,7 @@ PACKAGER="hzx@115.com"
 BIN_URI=""
 
 RDEPEND=""
-BDEPEND="${RDEPEND} gconf metacity esound gnome-control-center devicekit-power "
+BDEPEND=" gconf metacity esound gnome-control-center devicekit-power "
 RECOMMENDED="polkit-gnome"
 
 pbs_unpack()

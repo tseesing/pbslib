@@ -10,7 +10,7 @@ PACKAGER="hzx@115.com"
 SRC_URI="http://ftp.gnu.org/pub/gnu/"$N"/"$N-$V$R".tar.gz"
 
 RDEPEND="gmp glibc libtool readline ncurses"
-BDEPEND="${RDEPEND} gmp"
+BDEPEND=" gmp"
 RECOMMENDED=""
 
 NOTES=""

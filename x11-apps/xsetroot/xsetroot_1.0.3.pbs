@@ -9,7 +9,7 @@ SRCURL="http://www.x.org/releases/X11R7.5/src/app"
 SRC_URI="$SRCURL/xsetroot-1.0.3.tar.bz2"
 
 RDEPEND="libXmu libX11 libxcb libXau libXdmcp"
-BDEPEND="${RDEPEND}"
+BDEPEND=""
 
 pbs_unpack()
 {

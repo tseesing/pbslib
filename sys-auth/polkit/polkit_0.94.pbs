@@ -9,7 +9,7 @@ PACKAGER="hzx@115.com"
 SRC_URI="http://hal.freedesktop.org/releases/"$N-$V$R".tar.gz"
 
 RDEPEND=""
-BDEPEND="${RDEPEND} eggdbus pam"
+BDEPEND=" eggdbus pam"
 
 NOTES="polkituser user/group should be created automatically."
 

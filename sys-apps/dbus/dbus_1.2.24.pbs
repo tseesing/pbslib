@@ -10,7 +10,7 @@ PACKAGER="hzx@115.com"
 SRC_URI="http://dbus.freedesktop.org/releases/"$N"/"$N-$V$R".tar.gz"
 
 RDEPEND="shadow libSM util-linux-ng libICE libX11 libxcb libXau libXdmcp glibc"
-BDEPEND="${RDEPEND} expat libxml2"
+BDEPEND=" expat libxml2"
 
 pbs_unpack(){
         ypkg_unpack

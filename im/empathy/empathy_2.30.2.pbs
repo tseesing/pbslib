@@ -14,7 +14,7 @@ RDEPEND="evolution-data-server krb5 e2fsprogs eggdbus orbit libcanberra libvorbi
 	 icu libXt libSM libICE gnutls libgcrypt libgpg-error pixman directfb libpng libxcb libXrender libX11 libXau libXdmcp
 	 expat glibc zlib networkmanager util-linux-ng nss nspr udev libnotify gconf dbus-glib dbus telepathy-glib telepathy-farsight 
 	 farsight2 gstreamer libxml2 libunique libgnome-keyring webkit gtk+ libsoup atk pango cairo freetype fontconfig krb5"
-BDEPEND="${RDEPEND} telepathy-glib telepathy-farsight gstreamer webkit nautilus-sendto notification-daemon telepathy-mission-control"
+BDEPEND=" telepathy-glib telepathy-farsight gstreamer webkit nautilus-sendto notification-daemon telepathy-mission-control"
 RECOMMENDED=" telepathy-gabble telepathy-salut telepathy-haze telepathy-butterfly nautilus-sendto"
 
 NOTES=""

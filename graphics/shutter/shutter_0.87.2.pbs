@@ -15,7 +15,7 @@ RDEPEND="gnome2-perl gnome2-gconf-perl gnome2-wnck-perl gtk2-imageview-perl gtk2
          http-message-perl gettext-perl proc-processtable www-mechanize-perl uri-perl libwww-perl 
 	 http-date-perl html-form-perl html-parser-perl html-tagset-perl http-cookies-perl 
 	 gtk2-perl glib-perl pango-perl gnome2-canvas-perl gnome2-vfs-perl"
-BDEPEND="${RDEPEND} "
+BDEPEND=" "
 RECOMMENDED="perlmagick goo-canvas-perl net-dbus-glib-perl image-exiftool-perl x11-protocol-perl cairo-perl"
 CONFLICT=""
 

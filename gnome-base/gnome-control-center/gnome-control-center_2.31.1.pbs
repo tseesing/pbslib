@@ -16,7 +16,7 @@ RDEPEND="gnome-menus metacity libcanberra libvorbis libogg libtool libXcomposite
 	atk pango cairo freetype fontconfig libSM libICE libX11 libXcursor libXi evolution-data-server 
 	dbus-glib libxml2 gconf libsoup dbus expat evolution-data-server sqlite krb5 nss nspr gnutls libgcrypt
 	libgpg-error"
-BDEPEND="${RDEPEND} gnome-desktop metacity gnome-settings-daemon evolution-data-server imagemagick"
+BDEPEND=" gnome-desktop metacity gnome-settings-daemon evolution-data-server imagemagick"
 RECOMMENDED="polkit-gnome gnome-screensaver xscreensaver"
 
 NOTES="http://wiki.linuxfromscratch.org/blfs/wiki/gnome-control-center"

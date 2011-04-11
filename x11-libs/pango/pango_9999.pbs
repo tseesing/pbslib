@@ -8,7 +8,7 @@ REPO="testing"
 BIN_URI="glib2"
 
 RDEPEND=""
-BDEPEND="${RDEPEND} x11-libs/cairo x11-libs/libXft media-libs/freetype libX11"
+BDEPEND=" x11-libs/cairo x11-libs/libXft media-libs/freetype libX11"
 
 pbs_unpack()
 {

@@ -8,7 +8,7 @@ HOMEPAGE="http://alioth.debian.org/projects/minicom"
 SRC_URI="https://alioth.debian.org/frs/download.php/3195/minicom-$V.tar.gz"
 
 RDEPEND=""
-BDEPEND="${RDEPEND}"
+BDEPEND=""
 
 pbs_unpack()
 {

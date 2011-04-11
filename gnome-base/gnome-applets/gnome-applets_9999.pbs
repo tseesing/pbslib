@@ -10,7 +10,7 @@ PACKAGER="hzx@115.com"
 BIN_URI=""
 
 RDEPEND=""
-BDEPEND="${RDEPEND} gail gnome-panel libxklavier pygtk gst-plugins-base libwnck libnotify libgtop libgweather gnome-desktop gnome-settings-daemon gnome-icon-theme"
+BDEPEND=" gail gnome-panel libxklavier pygtk gst-plugins-base libwnck libnotify libgtop libgweather gnome-desktop gnome-settings-daemon gnome-icon-theme"
 RECOMMENDED="pygtk gnome-python-desktop"
 
 pbs_init()

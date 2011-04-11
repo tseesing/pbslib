@@ -8,7 +8,7 @@ LICENSE="GPL-2"
 PACKAGER="hzx@115.com"
 
 RDEPEND=""
-BDEPEND="${RDEPEND} udisks gnome-doc-utils gnome-keyring libnotify libunique rarian which net-dns/avahi"
+BDEPEND=" udisks gnome-doc-utils gnome-keyring libnotify libunique rarian which net-dns/avahi"
 RECOMMENDED=""
 
 NOTES="http://wiki.linuxfromscratch.org/blfs/wiki/gnome-disk-utility"

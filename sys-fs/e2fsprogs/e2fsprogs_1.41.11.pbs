@@ -8,7 +8,7 @@ HOMEPAGE="http://e2fsprogs.sourceforge.net/"
 SRC_URI="http://prdownloads.sourceforge.net/e2fsprogs/"$N-$V$R".tar.gz"
 
 RDEPEND="util-linux-ng glibc"
-BDEPEND="${RDEPEND} pkgconfig"
+BDEPEND=" pkgconfig"
 
 pbs_unpack()
 {

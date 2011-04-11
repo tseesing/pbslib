@@ -9,7 +9,7 @@ LICENSE="GPL-2"
 SRC_URI="http://ftp.mozilla.org/pub/mozilla.org/security/"$N"/releases/NSS_3_12_5_RTM/src/"$N-$V$R".tar.gz"
 
 RDEPEND="nspr zlib sqlite"
-BDEPEND="${RDEPEND} dev-db/sqlite"
+BDEPEND=" dev-db/sqlite"
 
 pbs_unpack() {
         ypkg_unpack

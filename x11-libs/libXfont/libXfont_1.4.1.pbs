@@ -8,7 +8,7 @@ HOMEPAGE="http://www.x.org/wiki/"
 SRCURL="http://www.x.org/releases/X11R7.5/src/lib/libXfont-1.4.1.tar.bz2"
 
 RDEPEND="freetype zlib libfontenc"
-BDEPEND="${RDEPEND}"
+BDEPEND=""
 
 pbs_unpack()
 {

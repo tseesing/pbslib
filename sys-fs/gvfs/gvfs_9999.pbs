@@ -10,7 +10,7 @@ PACKAGER="hzx@115.com"
 BIN_URI=""
 
 RDEPEND=""
-BDEPEND="${RDEPEND} gconf samba fuse libgphoto2 libarchive avahi gnome-keyring bluez"
+BDEPEND=" gconf samba fuse libgphoto2 libarchive avahi gnome-keyring bluez"
 
 pbs_init()
 {

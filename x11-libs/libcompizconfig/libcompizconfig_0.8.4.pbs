@@ -10,7 +10,7 @@ PACKAGER="hzx@115.com"
 SRC_URI="http://releases.compiz-fusion.org/"$V$R"/"$N-$V$R".tar.bz2"
 
 RDEPEND="libxml2 libX11 libxcb libXau libXdmcp protobuf zlib gcc"
-BDEPEND="${RDEPEND} libxml2 libnotify compiz protobuf"
+BDEPEND=" libxml2 libnotify compiz protobuf"
 RECOMMENDED="protobuf"
 
 pbs_unpack() {

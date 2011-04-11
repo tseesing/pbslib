@@ -12,7 +12,7 @@ SRC_URI="ftp://ftp.mplayerhq.hu/MPlayer/releases/mplayer-export-snapshot.tar.bz2
 RDEPEND="ncurses samba libpng zlib libmng libjpeg-turbo giflib alsa-lib glibc freetype fontconfig fribidi 
 	 bzip2 glibc x264 krb5 openldap-client lcms libSM libICE libX11 expat krb5 openssl libxcb 
 	 libXau libXdmcp win32codecs"
-BDEPEND="${RDEPEND} libgsm"
+BDEPEND=" libgsm"
 
 pbs_unpack() {
 	ypkg_unpack

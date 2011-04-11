@@ -9,7 +9,7 @@ PACKAGER="hzx@115.com"
 SRC_URI=" http://cairographics.org/snapshots/"$N-$V$R".tar.gz "
 
 RDEPEND="libpng pixman fontconfig"
-BDEPEND="${RDEPEND} x11-libs/xcb-util directfb"
+BDEPEND=" x11-libs/xcb-util directfb"
 
 pbs_unpack() {
         ypkg_unpack

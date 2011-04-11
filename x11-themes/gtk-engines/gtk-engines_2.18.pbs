@@ -8,7 +8,7 @@ LICENSE="GPL-2"
 PACKAGER="hzx@115.com"
 
 RDEPEND=""
-BDEPEND="${RDEPEND} gtk+" 
+BDEPEND=" gtk+" 
 RECOMMENDED=""
 
 NOTES=""

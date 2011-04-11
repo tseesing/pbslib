@@ -11,7 +11,7 @@ SRC_URI="http://ftp.acc.umu.se/pub/GNOME/sources/$N/0.4/$N-$V.tar.bz2"
 RDEPEND="gtk+ atk pango cairo pixman libxml2 directfb libpng libxcb gnutls libgcrypt libgcrypt libgpg-error cyrus-sasl gtk+ glib2 
          libXrender fontconfig freetype expat libX11 libxcb libXau libXdmcp gnutls libgcrypt libgpg-error cyrus-sasl zlib libXi libXrandr 
 	 libXcursor libXcomposite libXext libXdamage libXfixes "
-BDEPEND="${RDEPEND} gtk+ gnutls cyrus-sasl"
+BDEPEND=" gtk+ gnutls cyrus-sasl"
 RECOMMENDED=""
 
 NOTES=""

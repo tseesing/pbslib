@@ -10,7 +10,7 @@ PACKAGER="hzx@115.com"
 SRC_URI="http://downloads.sourceforge.net/project/pupnp/pupnp/LibUPnP%20$V/"$N-$V$R".tar.bz2 "
 
 RDEPEND=""
-BDEPEND="${RDEPEND}"
+BDEPEND=""
 
 NOTES=""
 

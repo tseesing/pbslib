@@ -11,7 +11,7 @@ PACKAGER="Zhongxin Huang, hzx@115.com"
 SRC_URI="http://downloads.sourceforge.net/project/"$N"/"$N"/0.2.12/"$N-$V$R".tar.gz?"
 
 RDEPEND="libid3tag libao"
-BDEPEND="${RDEPEND} libid3tag libao"
+BDEPEND=" libid3tag libao"
 RECOMMENDED=""
 
 NOTES=""

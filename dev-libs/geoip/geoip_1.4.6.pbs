@@ -8,7 +8,7 @@ HOMEPAGE="http://www.maxmind.com/geoip/api/c.shtml"
 SRC_URI="http://geolite.maxmind.com/download/"$N"/api/c/GeoIP-"$V$R".tar.gz"
 
 RDEPEND=""
-BDEPEND="${RDEPEND}"
+BDEPEND=""
 
 pbs_unpack() {
         ypkg_unpack

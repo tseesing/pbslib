@@ -10,7 +10,7 @@ PACKAGER="hzx@115.com"
 SRC_URI="http://cyberelk.net/tim/data/"$N"/1.2/"$N-$V$R".tar.xz"
 
 RDEPEND="pycups pygobject libffi dev-python/pygtk pycairo dbus-python cups notify-python libnotify"
-BDEPEND="${RDEPEND} xmlto"
+BDEPEND=" xmlto"
 RECOMMENDED=""
 
 NOTES=""

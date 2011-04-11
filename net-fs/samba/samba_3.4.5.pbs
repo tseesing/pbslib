@@ -11,7 +11,7 @@ PACKAGER="hzx@115.com"
 SRC_URI="http://us1.samba.org/"$N"/ftp/stable/"$N-$V$R".tar.gz"
 
 RDEPEND="glibc openldap-client popt glibc openssl openldap-client popt krb5 zlib"
-BDEPEND="${RDEPEND} "
+BDEPEND=" "
 RECOMMENDED=""
 
 NOTES="

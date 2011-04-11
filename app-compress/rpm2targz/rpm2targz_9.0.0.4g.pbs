@@ -11,7 +11,7 @@ PACKAGER="Zhongxin Huang, hzx@115.com"
 SRC_URI="http://gentoo.osuosl.org/distfiles/"$N-$V$R".tar.lzma"
 
 RDEPEND="cpio"
-BDEPEND="${RDEPEND} xz-utils"
+BDEPEND=" xz-utils"
 
 pbs_unpack() {
         ypkg_unpack

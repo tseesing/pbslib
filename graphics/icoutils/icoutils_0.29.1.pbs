@@ -8,7 +8,7 @@ HOMEPAGE="http://www.nongnu.org/icoutils/"
 SRC_URI="http://savannah.nongnu.org/download/"$N"/"$N-$V$R".tar.bz2"
 
 RDEPEND="libpng zlib glibc"
-BDEPEND="${RDEPEND}"
+BDEPEND=""
 
 pbs_unpack() {
         ypkg_unpack

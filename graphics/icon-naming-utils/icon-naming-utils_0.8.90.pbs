@@ -10,7 +10,7 @@ PACKAGER="hzx@115.com"
 SRC_URI=" http://tango.freedesktop.org/releases/"$N-$V$R".tar.gz "
 
 RDEPEND="xml-simple"
-BDEPEND="${RDEPEND}"
+BDEPEND=""
 
 pbs_unpack() {
         ypkg_unpack

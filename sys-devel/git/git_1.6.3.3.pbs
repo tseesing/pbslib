@@ -8,7 +8,7 @@ HOMEPAGE="http://www.git-scm.com/"
 SRC_URI="http://kernel.org/pub/software/scm/git/$N-$V.tar.bz2"
 
 RDEPEND=""
-BDEPEND="${RDEPEND}"
+BDEPEND=""
 
 pbs_unpack()
 {

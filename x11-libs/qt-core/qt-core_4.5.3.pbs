@@ -11,7 +11,7 @@ SRC_URI="ftp://ftp.trolltech.com/qt/source/qt-x11-opensource-src-"$V$R".tar.gz"
 
 RDEPEND="libpng freetype glib2 libSM libICE libXrender fontconfig libXext libX11 zlib gcc 
 	 util-linux-ng expat libxcb libXau libXdmcp glibc gcc"
-BDEPEND="${RDEPEND}"
+BDEPEND=""
 RECOMMENDED=""
 
 NOTES=""

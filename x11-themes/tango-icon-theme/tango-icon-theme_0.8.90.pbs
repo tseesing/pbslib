@@ -8,7 +8,7 @@ HOMEPAGE="http://tango.freedesktop.org"
 SRC_URI="http://tango.freedesktop.org/releases/"$N-$V$R".tar.gz"
 
 RDEPEND=""
-BDEPEND="${RDEPEND} imagemagick"
+BDEPEND=" imagemagick"
 
 pbs_unpack() {
         ypkg_unpack

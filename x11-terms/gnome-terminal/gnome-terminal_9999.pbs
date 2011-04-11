@@ -10,7 +10,7 @@ PACKAGER="hzx@115.com"
 BIN_URI=""
 
 RDEPEND="gnome-vfs"
-BDEPEND="${RDEPEND} gtk+ libgnome vte startup-notification"
+BDEPEND=" gtk+ libgnome vte startup-notification"
 RECOMMENDED=""
 
 NOTES="http://wiki.linuxfromscratch.org/blfs/wiki/gnome-terminal"

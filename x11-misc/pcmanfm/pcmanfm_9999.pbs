@@ -10,7 +10,7 @@ PACKAGER="hzx@115.com"
 SRC_URI="git://pcmanfm.git.sourceforge.net/gitroot/"$N"/"$N""
 
 RDEPEND=""
-BDEPEND="${RDEPEND} libfm"
+BDEPEND=" libfm"
 
 pbs_unpack() {
 	ypkg_unpack

@@ -10,7 +10,7 @@ PACKAGER="Zhongxin Huang, hzx@115.com"
 SRC_URI="http://mirror.cs.wisc.edu/pub/mirrors/ghost/fonts/"$N-$V$R".tar.gz"
 
 RDEPEND="gnu-ghostscript"
-BDEPEND="${RDEPEND} "
+BDEPEND=" "
 RECOMMENDED=""
 
 NOTES=""

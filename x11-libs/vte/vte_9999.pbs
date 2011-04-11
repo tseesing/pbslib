@@ -8,7 +8,7 @@ REPO="testing"
 BIN_URI=""
 
 RDEPEND=""
-BDEPEND="${RDEPEND}"
+BDEPEND=""
 
 pbs_unpack()
 {

@@ -11,7 +11,7 @@ SRC_URI="http://ftp.gnome.org/pub/GNOME/sources/nautilus/2.31/$N-$V.tar.bz2"
 BIN_URI=""
 
 RDEPEND=""
-BDEPEND="${RDEPEND} bzip2 ntfs-3g gamin gnome-desktop libbonoboui libgnome orbit gconf util-linux-ng libunique gnome-desktop_2.90.4"
+BDEPEND=" bzip2 ntfs-3g gamin gnome-desktop libbonoboui libgnome orbit gconf util-linux-ng libunique gnome-desktop_2.90.4"
 RECOMMENDED="eel"
 
 NOTES="http://wiki.linuxfromscratch.org/blfs/wiki/nautilus"

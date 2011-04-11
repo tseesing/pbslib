@@ -9,7 +9,7 @@ PACKAGER="hzx@115.com"
 SRC_URI="http://ftp.gnu.org/gnu/$N/"$N-$V$R".tar.gz"
 
 RDEPEND="readline ncurses device-mapper"
-BDEPEND="${RDEPEND} device-mapper"
+BDEPEND=" device-mapper"
 RECOMMENDED=""
 
 NOTES=""

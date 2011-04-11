@@ -10,7 +10,7 @@ PACKAGER="hzx@115.com"
 BIN_URI=""
 
 RDEPEND=""
-BDEPEND="${RDEPEND} libsoup gnome-keyring libgweather dev-libs/libical app-crypt/krb5 net-nds/openldap-client dev-libs/nspr dev-libs/nss"
+BDEPEND=" libsoup gnome-keyring libgweather dev-libs/libical app-crypt/krb5 net-nds/openldap-client dev-libs/nspr dev-libs/nss"
 RECOMMENDED=""
 
 NOTES=""

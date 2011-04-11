@@ -9,7 +9,7 @@ PACKAGER="hzx@115.com"
 SRC_URI="http://hal.freedesktop.org/releases/"$N-$V$R".tar.bz2"
 
 RDEPEND=""
-BDEPEND="${RDEPEND} gtk+ polkit"
+BDEPEND=" gtk+ polkit"
 RECOMMENDED=""
 
 NOTES="http://wiki.linuxfromscratch.org/blfs/wiki/polkit-gnome"

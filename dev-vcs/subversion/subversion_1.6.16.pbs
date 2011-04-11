@@ -10,7 +10,7 @@ PACKAGER="hzx@115.com"
 SRC_URI="http://subversion.tigris.org/downloads/"$N-$V$R".tar.bz2"
 
 RDEPEND="zlib sqlite apr-util expat apr util-linux-ng"
-BDEPEND="${RDEPEND} apr apr-util sqlite"
+BDEPEND=" apr apr-util sqlite"
 RECOMMENDED=""
 
 NOTES=""

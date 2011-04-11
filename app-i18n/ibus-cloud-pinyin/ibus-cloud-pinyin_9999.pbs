@@ -12,7 +12,7 @@ PACKAGER="Zhongxin Huang, hzx@115.com"
 SRC_URI=""
 
 RDEPEND="ibus luasocket"
-BDEPEND="${RDEPEND} lua libnotify libgee atk sqlite"
+BDEPEND=" lua libnotify libgee atk sqlite"
 RECOMMENDED=""
 CONFLICT=""
 

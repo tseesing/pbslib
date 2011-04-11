@@ -10,7 +10,7 @@ PACKAGER="hzx@115.com"
 BIN_URI=""
 
 RDEPEND="gtk-engines"
-BDEPEND="${RDEPEND} gtk+ gtk-engines icon-naming-utils gnome-icon-theme hicolor-icon-theme"
+BDEPEND=" gtk+ gtk-engines icon-naming-utils gnome-icon-theme hicolor-icon-theme"
 RECOMMENDED=""
 
 pbs_init()

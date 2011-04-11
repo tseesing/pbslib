@@ -10,7 +10,7 @@ PACKAGER="hzx@115.com"
 SRC_URI="http://anduin.linuxfromscratch.org/files/BLFS/svn/sources/"$N-$V$R".tar.bz2"
 
 RDEPEND=""
-BDEPEND="${RDEPEND} x264 app-text/texi2html"
+BDEPEND=" x264 app-text/texi2html"
 RECOMMENDED=""
 
 NOTES="http://wiki.linuxfromscratch.org/blfs/wiki/ffmpeg"

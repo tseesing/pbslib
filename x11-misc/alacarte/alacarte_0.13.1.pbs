@@ -10,7 +10,7 @@ PACKAGER="hzx@115.com"
 SRC_URI="http://ftp.gnome.org/pub/GNOME/desktop/2.30/2.30.2/sources/"$N-$V$R".tar.bz2"
 
 RDEPEND=""
-BDEPEND="${RDEPEND} pygtk gnome-menus"
+BDEPEND=" pygtk gnome-menus"
 RECOMMENDED=""
 
 NOTES=""

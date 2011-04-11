@@ -10,7 +10,7 @@ PACKAGER="hzx@115.com"
 SRC_URI="http://hal.freedesktop.org/releases/PolicyKit-gnome-$V$R.tar.bz2"
 
 RDEPEND=""
-BDEPEND="${RDEPEND} "
+BDEPEND=" "
 RECOMMENDED=""
 
 NOTES=""

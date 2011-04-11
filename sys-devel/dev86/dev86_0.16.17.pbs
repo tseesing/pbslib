@@ -10,7 +10,7 @@ PACKAGER="hzx@115.com"
 SRC_URI="http://homepage.ntlworld.com/robert.debath/"$N"/Dev86src-"$V$R".tar.gz"
 
 RDEPEND="bin86 glibc"
-BDEPEND="${RDEPEND} dev-util/gperf"
+BDEPEND=" dev-util/gperf"
 RECOMMENDED=""
 
 pbs_unpack() {

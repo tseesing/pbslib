@@ -9,7 +9,7 @@ PACKAGER="hzx@115.com"
 SRC_URI="http://cgit.freedesktop.org/xorg/driver/xf86-video-vmware/snapshot/"$N-$V$R".tar.bz2"
 
 RDEPEND="libdrm libXvMC libXv libXext libXfixes libX11 libxcb libXau libXdmcp pixman libpciaccess libXtst"
-BDEPEND="${RDEPEND} x11-base/xorg-server"
+BDEPEND=" x11-base/xorg-server"
 
 pbs_unpack() {
         ypkg_unpack

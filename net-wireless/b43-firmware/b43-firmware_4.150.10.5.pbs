@@ -12,7 +12,7 @@ PACKAGER="Zhongxin Huang, hzx@115.com"
 SRC_URI="http://mirror2.openwrt.org/sources/broadcom-wl-"$V$R".tar.bz2"
 
 RDEPEND=""
-BDEPEND="${RDEPEND} b43-fwcutter"
+BDEPEND=" b43-fwcutter"
 RECOMMENDED=""
 CONFLICT=""
 

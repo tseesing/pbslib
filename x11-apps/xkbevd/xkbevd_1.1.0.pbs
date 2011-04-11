@@ -11,7 +11,7 @@ PACKAGER="Zhongxin Huang, hzx@115.com"
 SRC_URI="http://www.x.org/releases/X11R7.5/src/app/$N-$V$R.tar.bz2"
 
 RDEPEND="libxkbfile libX11 libxcb libXau libXdmcp"
-BDEPEND="${RDEPEND}"
+BDEPEND=""
 
 pbs_unpack() {
         ypkg_unpack

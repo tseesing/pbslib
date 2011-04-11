@@ -10,7 +10,7 @@ PACKAGER="hzx@115.com"
 SRC_URI="http://download.pureftpd.org/pub/"$N"/releases/"$N-$V$R".tar.bz2"
 
 RDEPEND="openssl openldap-client glibc pam"
-BDEPEND="${RDEPEND} "
+BDEPEND=" "
 RECOMMENDED=""
 
 NOTES="You should creat a users name \"ftp\" and a group name \"ftpgroup\""

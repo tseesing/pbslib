@@ -11,7 +11,7 @@ REPO="Testing"
 SRC_URI="http://downloads.sourceforge.net/project/"$N"/"$N"/"$V$R"/"$N-$V$R".tar.bz2 "
 
 RDEPEND=""
-BDEPEND="${RDEPEND} python"
+BDEPEND=" python"
 RECOMMENDED=""
 
 NOTES=""

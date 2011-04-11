@@ -10,7 +10,7 @@ LICENSE=""
 PACKAGER="Zhongxin Huang, hzx@115.com"
 
 RDEPEND="mpg321 vorbis-tools"
-BDEPEND="${RDEPEND} "
+BDEPEND=" "
 RECOMMENDED=""
 
 pbs_install() {

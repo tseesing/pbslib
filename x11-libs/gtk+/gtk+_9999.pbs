@@ -8,7 +8,7 @@ REPO="testing"
 BIN_URI=""
 
 RDEPEND="cairo pango atk jasper"
-BDEPEND=" ${RDEPEND} glib2 libpng jpeg libtiff libXrender  libX11 libXau libXdmcp libxcb libpthread-stubs 
+BDEPEND="  glib2 libpng jpeg libtiff libXrender  libX11 libXau libXdmcp libxcb libpthread-stubs 
           libXext cups libXi libXinerama libXrandr gobject-introspection gtk-doc "
 RECOMMENDED=" libtiff jpeg libtiff jasper hicolor-icon-theme "
 OPIONAL=" cups jasper docbook-utils libbeagle gtk-doc tracker "

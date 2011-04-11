@@ -10,7 +10,7 @@ PACKAGER="hzx@115.com"
 SRC_URI="http://offload2.icculus.org:9090/"$N"/releases/"$N-$V$R".tar.gz"
 
 RDEPEND=""
-BDEPEND="${RDEPEND} fuse"
+BDEPEND=" fuse"
 
 pbs_unpack() {
         ypkg_unpack

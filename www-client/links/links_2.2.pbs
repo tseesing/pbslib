@@ -8,7 +8,7 @@ HOMEPAGE="http://links.twibright.com/"
 SRC_URI="http://links.twibright.com/download/"$N-$V$R".tar.bz2"
 
 RDEPEND="libtiff libjpeg-turbo libpng zlib libX11 directfb glibc bzip2 openssl glibc libxcb libXau libXdmcp"
-BDEPEND="${RDEPEND}"
+BDEPEND=""
 
 pbs_unpack() {
         ypkg_unpack

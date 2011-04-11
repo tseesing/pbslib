@@ -11,7 +11,7 @@ REPO="testing"
 SRC_URI="http://releases.compiz.org/"$V$R"/"$N-$V$R".tar.bz2"
 
 RDEPEND=""
-BDEPEND="${RDEPEND} gconf libcompizconfig"
+BDEPEND=" gconf libcompizconfig"
 RECOMMENDED=""
 
 pbs_unpack() {

@@ -9,7 +9,7 @@ SRC_URI="http://ftp.acc.umu.se/pub/gnome/sources/$N/2.30/$N-$V.tar.bz2"
 BIN_URI=""
 
 RDEPEND="hicolor-icon-theme"
-BDEPEND="${RDEPEND} icon-naming-utils"
+BDEPEND=" icon-naming-utils"
 
 pbs_unpack() {
 	#unpard file from $YPPATH_SOURCE to current directory.
