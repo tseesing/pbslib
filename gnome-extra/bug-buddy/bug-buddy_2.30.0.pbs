@@ -6,10 +6,11 @@ DESCRIPTION="A graphical bug reporting tool"
 HOMEPAGE="http://www.gnome.org/"
 LICENSE="GPL-2"
 PACKAGER="hzx@115.com"
+
 SRC_URI=" http://ftp.gnome.org/pub/gnome/desktop/2.30/2.30.2/sources/"$N-$V$R".tar.bz2 "
 
 RDEPEND=""
-BDEPEND=" gnome-desktop libelf"
+BDEPEND="gnome-desktop-dev libelf-dev"
 RECOMMENDED=""
 
 NOTES=""
@@ -19,13 +20,8 @@ pbs_unpack() {
 }
 
 pbs_config() {
-	
-	YPB_CONFIG+=" --prefix=/usr --sysconfdir=/etc --localstatedir=/var \
-	              --mandir=/usr/share/man  \
-		      --disable-static  \
-		      --enable-shared  \
-		      --disable-schemas-install  \
-		      --program-prefix=""  "
+	YPB_CONFIG+="--disable-schemas-install
+		     --program-prefix=""  "
 	ypkg_config
 }
 
@@ -44,8 +40,14 @@ pbs_install() {
 
 pbs_postinst() {
 	gnome2_install_schema "/etc/gconf/schemas/bug-buddy.schemas"
+	gnome2_install_defaut_gconf "bool" "/apps/gnome_settings_daemon/gtk-modules/gnomebreakpad" "true"
 	gnome2_rarian_sk_update
 	gnome2_desktop_database_update
 	gnome2_icon_cache_update
 	gnome2_gconfd_reload
 }
+
+pbs_postrm() {
+	gnome2_install_defaut_gconf "bool" "/apps/gnome_settings_daemon/gtk-modules/gnomebreakpad" "false"
+}
+

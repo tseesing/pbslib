@@ -73,7 +73,8 @@ pbs_postinst() {
 	gnome2_desktop_database_update
  	gnome2_gconfd_reload
 	depmod -a
-	start virtualbox
+	systemctl --system daemon-reload
+	start virtualbox.service
 }
 
 pbs_prerm() {
