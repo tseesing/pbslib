@@ -1,0 +1,43 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="A gtk+ frontend for libgksu"
+HOMEPAGE="http://www.nongnu.org/gksu/"
+LICENSE="GPL-2"
+PACKAGER="hzx@115.com"
+
+SRC_URI="http://people.debian.org/~kov/gksu/"$N-$V".tar.gz"
+
+RDEPEND="atk cairo dbus dbus-glib eggdbus expat fontconfig freetype gcc gconf glib2 glibc gtk+ libgcrypt libgksu libgnome-keyring libgpg-error libgtop libICE libpng libSM libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libXrandr libXrender nautilus orbit pango pixman startup-notification util-linux-ng zlib"
+BDEPEND="atk-dev cairo-dev dbus-dev dbus-glib-dev eggdbus-dev expat-dev fontconfig-dev freetype-dev gcc-dev gconf-dev glib2-dev glibc-dev gtk+-dev libgcrypt-dev libgksu-dev libgnome-keyring-dev libgpg-error-dev libgtop-dev libICE-dev libpng-dev libSM-dev libX11-dev libXau-dev libxcb-dev libXcomposite-dev libXcursor-dev libXdamage-dev libXdmcp-dev libXext-dev libXfixes-dev libXi-dev libXrandr-dev libXrender-dev nautilus-dev orbit-dev pango-dev pixman-dev startup-notification-dev util-linux-ng-dev zlib-dev"
+RECOMMENDED=""
+
+pbs_unpack() {
+        ypkg_unpack
+}
+
+pbs_config() {
+	ypkg_docp "$FILES_PATH"/files/gksu-icon.png .
+	ypkg_patch 01_always_ask.patch 07_desktop_in_ship.patch 14_set_http_proxy_env.patch 21_strip_blank_space.patch gksu.sudo_mode.patch 99_ylmfos.patch
+	ypkg_config
+}
+
+pbs_build() {
+	ypkg_make
+	#fix me, creat mo
+	cd po
+	for i in *.po; do
+		msgfmt $i -o ${i%*.po}.mo
+	done
+	cd ..
+}
+
+pbs_install() {
+	ypkg_mkinstall
+	cd po
+	for i in *.mo; do
+		ypkg_docp_rename $i "$YPPATH_DEST"/usr/share/locale/${i%*.mo}/LC_MESSAGES/gksu.mo
+	done
+	ypkg_doln /usr/bin/gnome-terminal.wrapper "$YPPATH_DEST"/usr/bin/x-terminal-emulator
+}
