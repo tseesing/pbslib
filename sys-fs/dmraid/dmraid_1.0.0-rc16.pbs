@@ -39,9 +39,9 @@ pbs_install() {
 	ypkg_docp  "$FILES_PATH"/files/dmraid-activate         sbin
 }
 pbs_postinst() {
-	update-initramfs -d -u
+	update-initramfs -k "$(uname -r)" -c
 }
 
 pbs_postrm() {
-	update-initramfs -d -u
+	update-initramfs -k "$(uname -r)" -c
 }
