@@ -7,7 +7,7 @@ HOMEPAGE="http://www.gnu.org/software/libtool/"
 LICENSE=""
 PACKAGER="hzx@115.com"
 
-SRC_URI="http://ftp.gnu.org/gnu/"$N"/"$N-$V$R".tar.gz"
+SRC_URI="http://ftp.gnu.org/gnu/"$N"/"$N-$V"b.tar.gz"
 
 RDEPEND="glibc"
 BDEPEND="glibc-dev"

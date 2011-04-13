@@ -1,0 +1,37 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="QEMU + Kernel-based Virtual Machine userland tools"
+HOMEPAGE="http://www.linux-kvm.org"
+REPO=""
+LICENSE=""
+PACKAGER="Zhongxin Huang, hzx@115.com"
+
+SRC_URI="http://downloads.sourceforge.net/project/kvm/"$N"/"$V"/"$N-$V".tar.gz"
+
+RDEPEND=""
+BDEPEND=" "
+RECOMMENDED=""
+
+NOTES=""
+
+pbs_unpack() {
+        ypkg_unpack
+}
+
+pbs_config() {
+	./configure --prefix=/usr --sysconfdir=/etc --mandir=/usr/share/man
+}
+
+pbs_build() {
+	ypkg_patch ylmfos-config-host.patch
+	ypkg_make
+	ypkg_make
+}
+
+pbs_install() {
+	ypkg_mkinstall 
+	ypkg_docp "$FILES_PATH"/files/qemu-kvm  "$YPPATH_DEST"/usr/bin
+	ypkg_doln /usr/bin/qemu-kvm "$YPPATH_DEST"/usr/bin/kvm
+}

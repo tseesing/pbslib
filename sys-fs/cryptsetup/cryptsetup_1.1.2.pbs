@@ -41,9 +41,9 @@ pbs_install() {
 }
 
 pbs_postinst() {
-	update-initramfs -d -u
+	update-initramfs -k "$(uname -r)" -c
 }
 
 pbs_postrm() {
-	update-initramfs -d -u
+	update-initramfs -k "$(uname -r)" -c
 }

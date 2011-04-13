@@ -7,7 +7,7 @@ HOMEPAGE="http://www.underbit.com/products/mad/"
 LICENSE="GPL-2"
 PACKAGER="hzx@115.com"
 
-SRC_URI="http://prdownloads.sourceforge.net/mad/"$N-$V$R".tar.gz"
+SRC_URI="http://prdownloads.sourceforge.net/mad/"$N-$V"b.tar.gz"
 
 RDEPEND="glibc"
 BDEPEND="glibc-dev"

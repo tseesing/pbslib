@@ -28,6 +28,7 @@ pbs_build() {
 	#aufs
 	ypkg_docp "$FILES_PATH"/files/aufs2.1-38/fs/aufs                   fs/
 	ypkg_docp "$FILES_PATH"/files/aufs2.1-38/include/linux/aufs_type.h include/linux/
+	#
 	ypkg_docp_rename "$FILES_PATH"/files/config-ylmfos-"$V" .config
 	ypkg_make
 	ypkg_make modules
