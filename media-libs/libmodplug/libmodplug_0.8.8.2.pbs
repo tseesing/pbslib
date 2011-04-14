@@ -1,0 +1,36 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="Library for playing MOD-like music files"
+HOMEPAGE="http://modplug-xmms.sourceforge.net/"
+REPO=""
+LICENSE="GPL"
+PRIORITY=""
+PACKAGER="Zhongxin Huang, hzx@115.com"
+
+SRC_URI="http://downloads.sourceforge.net/project/modplug-xmms/libmodplug/0.8.8.2/libmodplug-0.8.8.2.tar.gz"
+
+RDEPEND="gcc glibc"
+BDEPEND="gcc-dev glibc-dev"
+RECOMMENDED=""
+CONFLICT=""
+
+NOTES=""
+
+pbs_unpack() {
+        ypkg_unpack
+}
+
+pbs_config() {
+	YPB_CONFIG+=""
+	ypkg_config
+}
+
+pbs_build() {
+	ypkg_make
+}
+
+pbs_install() {
+	ypkg_mkinstall
+}

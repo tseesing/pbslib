@@ -1,0 +1,41 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="A fast, multi-threaded, multi-user SQL database server."
+HOMEPAGE="http://www.mysql.com/"
+REPO=""
+LICENSE="GPL"
+PRIORITY=""
+PACKAGER="Zhongxin Huang, hzx@115.com"
+
+SRC_URI="http://download.softagency.net/MySQL/Downloads/MySQL-5.1/"$N-$V$R".tar.gz"
+
+RDEPEND="gcc glibc ncurses zlib"
+BDEPEND="gcc-dev glibc-dev ncurses-dev zlib-dev"
+RECOMMENDED=""
+CONFLICT=""
+
+NOTES=""
+
+pbs_unpack() {
+        ypkg_unpack
+}
+
+pbs_config() {
+	YPB_CONFIG+=""
+	ypkg_config
+}
+
+pbs_build() {
+	ypkg_make
+}
+
+pbs_install() {
+	ypkg_mkinstall
+	cd "$YPPATH_DEST"
+	ypkg_doln /usr/lib/mysql/libmysqlclient.so      usr/lib/libmysqlclient.so
+	ypkg_doln /usr/lib/mysql/libmysqlclient_r.so    usr/lib/libmysqlclient_r.so
+	ypkg_doln /usr/lib/mysql/libmysqlclient.so.16   usr/lib/libmysqlclient.so.16
+	ypkg_doln /usr/lib/mysql/libmysqlclient_r.so.16 usr/lib/libmysqlclient_r.so.16 
+}

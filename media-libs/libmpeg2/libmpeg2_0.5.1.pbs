@@ -1,0 +1,36 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="library for decoding mpeg-2 and mpeg-1 video"
+HOMEPAGE="http://libmpeg2.sourceforge.net/"
+REPO=""
+LICENSE="GPL"
+PRIORITY=""
+PACKAGER="Zhongxin Huang, hzx@115.com"
+
+SRC_URI="http://libmpeg2.sourceforge.net/files/"$N-$V$R".tar.gz"
+
+RDEPEND="alsa-lib audiofile directfb esound glibc libICE libsdl libSM libX11 libXau libxcb libXdmcp libXext libXv util-linux-ng zlib"
+BDEPEND="alsa-lib-dev audiofile-dev directfb-dev esound-dev glibc-dev libICE-dev libsdl-dev libSM-dev libX11-dev libXau-dev libxcb-dev libXdmcp-dev libXext-dev libXv-dev util-linux-ng-dev zlib-dev"
+RECOMMENDED=""
+CONFLICT=""
+
+NOTES=""
+
+pbs_unpack() {
+        ypkg_unpack
+}
+
+pbs_config() {
+	YPB_CONFIG+=""
+	ypkg_config
+}
+
+pbs_build() {
+	ypkg_make
+}
+
+pbs_install() {
+	ypkg_mkinstall
+}

@@ -1,0 +1,36 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="OSS compatibility library"
+HOMEPAGE="http://www.alsa-project.org/"
+REPO=""
+LICENSE="GPL"
+PRIORITY=""
+PACKAGER="Zhongxin Huang, hzx@115.com"
+
+SRC_URI="ftp://ftp.alsa-project.org/pub/oss-lib/alsa-oss-1.0.17.tar.bz2"
+
+RDEPEND="alsa-lib glibc"
+BDEPEND="alsa-lib-dev glibc-dev"
+RECOMMENDED=""
+CONFLICT=""
+
+NOTES=""
+
+pbs_unpack() {
+        ypkg_unpack
+}
+
+pbs_config() {
+	YPB_CONFIG+=""
+	ypkg_config
+}
+
+pbs_build() {
+	ypkg_make
+}
+
+pbs_install() {
+	ypkg_mkinstall
+}

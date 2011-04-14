@@ -1,0 +1,36 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="Standard GNU utilities (chmod, cp, dd, dir, ls, who)"
+HOMEPAGE="http://www.gnu.org/software/coreutils"
+ 
+SRC_URI="http://ftp.gnu.org/gnu/"$N"/"$N-$V$R".tar.gz"
+
+RDEPEND="acl attr glibc gmp libcap"
+BDEPEND="acl-dev attr-dev glibc-dev gmp-dev libcap-dev"
+RECOMMENDED=""
+
+pbs_unpack() {
+        ypkg_unpack
+}
+
+pbs_config() {
+	YPB_CONFIG+=" --enable-no-install-program=kill,uptime "
+	ypkg_config
+}
+
+pbs_build() {
+	ypkg_make
+}
+
+pbs_install() {
+	ypkg_mkinstall
+	#for FHS..
+	cd "$YPPATH_DEST"
+	ypkg_domv usr/bin/{cat,chgrp,chmod,chown,cp,date,dd,df,echo} bin
+	ypkg_domv usr/bin/{false,ln,ls,mkdir,mknod,mv,pwd,rm}        bin
+	ypkg_domv usr/bin/{rmdir,stty,sync,true,uname}  	     bin
+	ypkg_domv usr/bin/chroot 				     usr/sbin
+	ypkg_domv usr/bin/{head,sleep,nice} 	                     bin
+}
