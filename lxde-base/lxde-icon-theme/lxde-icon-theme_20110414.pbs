@@ -1,0 +1,33 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION=" a set of default icons for LXDE theme"
+HOMEPAGE="www.lxde.org"
+LICENSE="GPL-2"
+PACKAGER="hzx@115.com"
+
+SRC_URI="git://lxde.git.sourceforge.net/gitroot/lxde/"$N""
+
+RDEPEND=""
+BDEPEND=" "
+
+pbs_unpack() {
+	ypkg_unpack
+}
+
+pbs_config() {
+	ypkg_config
+}
+
+pbs_build() {
+	ypkg_make
+}
+
+pbs_install() {
+	ypkg_mkinstall
+}
+
+pbs_postinst() {
+	gnome2_icon_cache_update "nuoveXT2"
+}
