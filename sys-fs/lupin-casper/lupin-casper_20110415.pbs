@@ -1,0 +1,30 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="Add support for loop-mount installations to casper"
+HOMEPAGE=""
+LICENSE="GPL-2"
+PACKAGER="hzx@115.com"
+
+SRC_URI="git://192.168.1.58/"$N".git"
+
+RDEPEND="casper"
+BDEPEND=""
+RECOMMENDED=""
+
+pbs_unpack() {
+        ypkg_unpack
+}
+
+pbs_install() {
+	ypkg_docp * "$YPPATH_DEST"
+}
+
+pbs_postinst() {
+        update-initramfs -k "$(uname -r)" -c
+}
+
+pbs_postrm() {
+        update-initramfs -k "$(uname -r)" -c
+}

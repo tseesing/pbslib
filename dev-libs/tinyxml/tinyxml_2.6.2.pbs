@@ -1,0 +1,42 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="a simple, small, C++ XML parser that can be easily integrating into other programs"
+HOMEPAGE="http://www.grinninglizard.com/tinyxml/index.html"
+REPO=""
+LICENSE="GPL"
+PRIORITY=""
+PACKAGER="Zhongxin Huang, hzx@115.com"
+
+SRC_URI="http://downloads.sourceforge.net/project/"$N"/"$N"/"$V$R"/${N}_2_6_1.zip"
+
+RDEPEND=""
+BDEPEND=" "
+RECOMMENDED=""
+CONFLICT=""
+
+NOTES=""
+
+pbs_unpack() {
+        ypkg_unpack
+}
+
+pbs_config() {
+	ypkg_config
+}
+
+pbs_build() {
+	sed -i.orig -e 's/\(^TINYXML_USE_STL := \)NO/\1YES/' -e 's/^RELEASE_CFLAGS.*/& -fPIC/' Makefile
+	ypkg_make
+	g++ -fPIC -shared -o libtinyxml.so.0."$V$R" -Wl,-soname,libtinyxml.so.0 *.o
+}
+
+pbs_install() {
+	ypkg_docp *.so* "$YPPATH_DEST"/usr/lib/
+        ypkg_docp *.h "$YPPATH_DEST"/usr/include
+        ypkg_dodoc {changes,readme}.txt docs/*
+	cd "$YPPATH_DEST"/usr/lib/
+	ypkg_doln libtinyxml.so.0."$V$R" libtinyxml.so.0
+	ypkg_doln libtinyxml.so.0."$V$R" libtinyxml.so
+}
