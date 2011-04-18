@@ -23,7 +23,7 @@ pbs_unpack() {
 }
 
 pbs_config() {
-	ypkg_patch "gftp-2.0.19-gftp-expand-path-sigsegv.patch"
+	ypkg_patch desktop.patch gftp-2.0.19-gftp-expand-path-sigsegv.patch
 	YPB_CONFIG+=""
 	ypkg_config
 }

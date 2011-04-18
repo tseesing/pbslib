@@ -11,7 +11,7 @@ PACKAGER="Zhongxin Huang, hzx@115.com"
 
 SRC_URI="http://pkg.ylmf.com/sources/"$N-$V$R".tar.bz2"
 
-RDEPEND=""
+RDEPEND="alsa-lib glibc libX11 libXau libxcb libXdmcp libXext libXi libXtst"
 BDEPEND=" "
 RECOMMENDED=""
 CONFLICT=""
@@ -23,6 +23,7 @@ pbs_unpack() {
 }
 
 pbs_install() {
+	ypkg_patch eio.desktop.patch
 	ypkg_docp * "$YPPATH_DEST"
 }
 

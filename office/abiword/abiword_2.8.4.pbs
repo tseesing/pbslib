@@ -15,6 +15,7 @@ pbs_unpack() {
 }
 
 pbs_config() {
+	ypkg_patch desktop.patch
 	ypkg_config
 }
 

@@ -1,0 +1,16 @@
+diff -u -r eio-5.0.1791.101/usr/share/applications/eio.desktop eio-5.0.1791.101.new/usr/share/applications/eio.desktop
+--- eio-5.0.1791.101/usr/share/applications/eio.desktop	2010-05-19 15:39:52.000000000 +0800
++++ eio-5.0.1791.101.new/usr/share/applications/eio.desktop	2011-04-18 19:33:21.930284553 +0800
+@@ -11,9 +11,9 @@
+ InitialPreference=8
+ MimeType=application/x-eio;application/x-eit;application/x-eiw;application/uof;application/msexcel;application/vnd.ms-excel;application/mspowerpoint;application/vnd.ms-powerpoint;application/msword;application/vnd.ms-word;application/rtf;text/rtf
+ Name=Start Yozo Office 2010
+-Name[zh_CN]=启动永中Office 2010
+-Name[zh_TW]=啟動 Yozo Office 2010
++Name[zh_CN]=永中办公软件
++Name[zh_TW]=Yozo Office 2010
+ Name[ja]=Yozo Office 2010 を起動する
+-Comment[zh_CN]=永中Office 2010
++Comment[zh_CN]=永中 Office 2010 个人般
+ Comment[zh_TW]=啟動 Yozo Office 2010
+ Comment[ja]=Yozo Office 2010 を起動する

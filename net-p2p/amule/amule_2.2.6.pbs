@@ -7,14 +7,15 @@ HOMEPAGE="http://www.amule.org/"
  
 SRC_URI="http://downloads.sourceforge.net/project/"$N"/aMule/"$V$R"/aMule-"$V$R".tar.bz2"
 
-RDEPEND="wxGTK crypto++ zlib gd geoip libupnp libpng"
-BDEPEND=""
+RDEPEND="crypto++ geoip atk binutils cairo crypto++ expat fontconfig freetype gcc gd geoip glib2 glibc gtk+ libICE libjpeg-turbo libpng libSM libtiff libupnp libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libXinerama libXpm libXrandr libXrender libXxf86vm ncurses pango pixman readline util-linux-ng wxGTK wxWidgets zlib"
+BDEPEND="crypto++-dev geoip-dev atk-dev binutils-dev cairo-dev crypto++-dev expat-dev fontconfig-dev freetype-dev gcc-dev gd-dev geoip-dev glib2-dev glibc-dev gtk+-dev libICE-dev libjpeg-turbo-dev libpng-dev libSM-dev libtiff-dev libupnp-dev libX11-dev libXau-dev libxcb-dev libXcomposite-dev libXcursor-dev libXdamage-dev libXdmcp-dev libXext-dev libXfixes-dev libXi-dev libXinerama-dev libXpm-dev libXrandr-dev libXrender-dev libXxf86vm-dev ncurses-dev pango-dev pixman-dev readline-dev util-linux-ng-dev wxGTK-dev wxWidgets-dev zlib-dev"
 
 pbs_unpack() {
         ypkg_unpack
 }
 
 pbs_config() {
+	ypkg_patch desktop.patch
 	YPB_CONFIG+=" --enable-amulecmd 
 		      --enable-cas 
 		      --enable-wxcas
