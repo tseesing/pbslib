@@ -10,8 +10,8 @@ PACKAGER="Zhongxin Huang, hzx@115.com"
 
 SRC_URI="ftp://ftp.gimp.org/pub/"$N"/v2.6/"$N-$V$R".tar.bz2"
 
-RDEPEND="poppler libjpeg-turbo libpng lcms libexif gegl"
-BDEPEND=""
+RDEPEND="poppler libjpeg-turbo libpng lcms aalib alsa-lib atk babl cairo dbus dbus-glib enchant expat fontconfig freetype gail gcc gegl glib2 glibc gnutls gst-plugins-base gstreamer gtk+ hal icu libcroco libexif libgcrypt libgpg-error libgsf libICE libmng librsvg libSM libsoup libtasn1 libtiff libwmf libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libxml2 libXmu libXpm libXrandr libXrender libxslt libXt ncurses pango pixman poppler sqlite util-linux-ng webkit zlib"
+BDEPEND="poppler-dev libjpeg-turbo-dev libpng-dev lcms-dev aalib-dev alsa-lib-dev atk-dev babl-dev cairo-dev dbus-dev dbus-glib-dev enchant-dev expat-dev fontconfig-dev freetype-dev gail-dev gcc-dev gegl-dev glib2-dev glibc-dev gnutls-dev gst-plugins-base-dev gstreamer-dev gtk+-dev hal-dev icu-dev libcroco-dev libexif-dev libgcrypt-dev libgpg-error-dev libgsf-dev libICE-dev libmng-dev librsvg-dev libSM-dev libsoup-dev libtasn1-dev libtiff-dev libwmf-dev libX11-dev libXau-dev libxcb-dev libXcomposite-dev libXcursor-dev libXdamage-dev libXdmcp-dev libXext-dev libXfixes-dev libXi-dev libxml2-dev libXmu-dev libXpm-dev libXrandr-dev libXrender-dev libxslt-dev libXt-dev ncurses-dev pango-dev pixman-dev poppler-dev sqlite-dev util-linux-ng-dev webkit-dev zlib-dev"
 
 pbs_unpack() {
         ypkg_unpack

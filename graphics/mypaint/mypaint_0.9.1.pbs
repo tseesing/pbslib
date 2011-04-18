@@ -11,8 +11,8 @@ PACKAGER="Zhongxin Huang, hzx@115.com"
 
 SRC_URI="http://download.gna.org/"$N"/"$N-$V$R".tar.bz2"
 
-RDEPEND=""
-BDEPEND=" swig scons"
+RDEPEND="gcc glib2 glibc libpng python zlib"
+BDEPEND="swig scons gcc-dev glib2-dev glibc-dev libpng-dev python-dev zlib-dev"
 RECOMMENDED=""
 CONFLICT=""
 

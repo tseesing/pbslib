@@ -11,8 +11,8 @@ PACKAGER="Zhongxin Huang, hzx@115.com"
 
 SRC_URI="http://downloads.sourceforge.net/project/bluefish/bluefish/2.0.2/bluefish-2.0.2.tar.bz2"
 
-RDEPEND="gtk+"
-BDEPEND=" "
+RDEPEND="atk cairo enchant expat fontconfig freetype gcc glib2 glibc gtk+ gucharmap libpng libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libxml2 libXrandr libXrender pango pixman zlib"
+BDEPEND="atk-dev cairo-dev enchant-dev expat-dev fontconfig-dev freetype-dev gcc-dev glib2-dev glibc-dev gtk+-dev gucharmap-dev libpng-dev libX11-dev libXau-dev libxcb-dev libXcomposite-dev libXcursor-dev libXdamage-dev libXdmcp-dev libXext-dev libXfixes-dev libXi-dev libxml2-dev libXrandr-dev libXrender-dev pango-dev pixman-dev zlib-dev"
 RECOMMENDED=""
 CONFLICT=""
 
