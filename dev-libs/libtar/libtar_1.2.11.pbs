@@ -2,17 +2,17 @@
 # YLmf_OS package build script
 #
 
-DESCRIPTION="Dock any application into the system tray/notification area"
-HOMEPAGE="http://alltray.sourceforge.net/"
+DESCRIPTION="C library for manipulating tar archives"
+HOMEPAGE="http://www.feep.net/libtar/"
 REPO=""
 LICENSE="GPL"
 PRIORITY=""
 PACKAGER="Zhongxin Huang, hzx@115.com"
 
-SRC_URI="http://launchpad.net/alltray/historic-releases/0.69/+download/alltray-0.69.tar.gz"
+SRC_URI="ftp://ftp.feep.net/pub/software/"$N"/"$N-$V$R".tar.gz"
 
-RDEPEND=""
-BDEPEND=" "
+RDEPEND="glibc zlib"
+BDEPEND="glibc-dev zlib-dev"
 RECOMMENDED=""
 CONFLICT=""
 
@@ -23,6 +23,7 @@ pbs_unpack() {
 }
 
 pbs_config() {
+	YPB_CONFIG+=""
 	ypkg_config
 }
 
@@ -33,3 +34,4 @@ pbs_build() {
 pbs_install() {
 	ypkg_mkinstall
 }
+
