@@ -1,0 +1,50 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="A lightweight web browser based on WebKitGTK+"
+HOMEPAGE="http://www.twotoasts.de/index.php?/pages/midori_summary.html"
+REPO=""
+LICENSE="GPL"
+PRIORITY=""
+PACKAGER="Zhongxin Huang, hzx@115.com"
+
+SRC_URI="git://git.xfce.org/apps/midori"
+
+RDEPEND="atk cairo dbus dbus-glib enchant expat fontconfig freetype gail gcc glib2 glibc gnutls gst-plugins-base gstreamer gtk+ icu libgcrypt libgpg-error libICE libjpeg-turbo libnotify libpng libSM libsoup libtasn1 libunique libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libxml2 libXrandr libXrender libXScrnSaver libxslt libXt pango pixman sqlite util-linux-ng webkit zlib"
+BDEPEND="atk-dev cairo-dev dbus-dev dbus-glib-dev enchant-dev expat-dev fontconfig-dev freetype-dev gail-dev gcc-dev glib2-dev glibc-dev gnutls-dev gst-plugins-base-dev gstreamer-dev gtk+-dev icu-dev libgcrypt-dev libgpg-error-dev libICE-dev libjpeg-turbo-dev libnotify-dev libpng-dev libSM-dev libsoup-dev libtasn1-dev libunique-dev libX11-dev libXau-dev libxcb-dev libXcomposite-dev libXcursor-dev libXdamage-dev libXdmcp-dev libXext-dev libXfixes-dev libXi-dev libxml2-dev libXrandr-dev libXrender-dev libXScrnSaver-dev libxslt-dev libXt-dev pango-dev pixman-dev sqlite-dev util-linux-ng-dev webkit-dev zlib-dev"
+RECOMMENDED=""
+CONFLICT=""
+
+NOTES=""
+
+pbs_unpack() {
+        ypkg_unpack
+}
+
+pbs_config() {
+	YPB_CONFIG=" --prefix=/usr
+	              --sysconfdir=/etc
+	              --localstatedir=/var
+	              --infodir=/usr/share/info
+		      --mandir=/usr/share/man"
+	ypkg_config
+}
+
+pbs_build() {
+	ypkg_make
+}
+
+pbs_install() {
+	ypkg_mkinstall
+	#usage of MIME type "x-scheme-handler/http" is discouraged
+	sed -i 's/x-scheme-handler\/http;x-scheme-handler\/https;//g' "$YPPATH_DEST"/usr/share/applications/midori.desktop
+}
+
+pbs_postinst() {
+	gnome2_rarian_sk_update
+	gnome2_desktop_database_update
+	gnome2_gconfd_reload
+	gnome2_icon_cache_update "hicolor"
+}
+

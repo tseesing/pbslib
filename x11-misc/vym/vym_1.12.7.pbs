@@ -11,8 +11,8 @@ PACKAGER="Zhongxin Huang, hzx@115.com"
 
 SRC_URI="http://downloads.sourceforge.net/project/"$N"/"$N"/"$V$R"/"$N-$V$R".tar.bz2"
 
-RDEPEND="libX11 libXext"
-BDEPEND=" qt-core"
+RDEPEND="libX11 libXext qt-core"
+BDEPEND="qt-core-dev"
 RECOMMENDED=""
 CONFLICT=""
 
@@ -24,15 +24,17 @@ pbs_unpack() {
 
 pbs_config() {
 	ypkg_patch pro-file.patch
-	ypkg_config PREFIX="$YPPATH_DEST/${N}_$V$R"/usr
+	#ypkg_config PREFIX="$YPPATH_DEST/${N}_$V$R"/usr
 }
 
 pbs_build() {
+	qmake PREFIX=/usr
 	ypkg_make 
 }
 
 pbs_install() {
-	ypkg_mkinstall
+	make INSTALL_ROOT="$YPPATH_DEST" install
+	ypkg_dodesktop "vym.desktop"  "vym.png"
 }
 
 pbs_postinst() {

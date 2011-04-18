@@ -6,5 +6,5 @@ Comment=Open-source version of Google Chrome web browser
 Comment[zh_CN]=谷歌浏览器的开源版本
 Exec=chromium-browser %U
 TryExec=chromium-browser
-Icon=chromium-browser
+Icon=chromium-bin
 Categories=Network;WebBrowser;
