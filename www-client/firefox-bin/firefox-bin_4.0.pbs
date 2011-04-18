@@ -1,0 +1,29 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="Firefox Web Browser"
+HOMEPAGE="http://www.mozilla.com/firefox"
+REPO=""
+
+SRC_URI="ftp://ftp.mozilla.org/pub/mozilla.org/firefox/releases/"$V$R"/linux-i686/zh-CN/firefox-"$V$R".tar.bz2"
+
+RDEPEND=""
+BDEPEND=""
+
+pbs_unpack() {
+        ypkg_unpack
+}
+
+pbs_install() {
+	ypkg_docp *  "$YPPATH_DEST"/opt/"$N-$V$R"
+	ypkg_dodesktop "$FILES_PATH"/files/firefox-bin.desktop  
+	ypkg_docp_rename "$YPPATH_DEST"/opt/"$N-$V$R"/icons/mozicon128.png "$YPPATH_DEST"/usr/share/pixmaps/"$N".png
+	mkdir -p "$YPPATH_DEST"/usr/bin
+	cat >> "$YPPATH_DEST"/usr/bin/firefox-bin.sh <<EOF
+#!/bin/sh
+cd /opt/"$N-$V$R"
+exec ./firefox 
+EOF
+	chmod +x "$YPPATH_DEST"/usr/bin/firefox-bin.sh
+}
