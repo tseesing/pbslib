@@ -1,0 +1,36 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="Turns on numlock in X"
+HOMEPAGE="http://ktown.kde.org/~seli/numlockx/"
+REPO=""
+LICENSE="GPL"
+PRIORITY=""
+PACKAGER="Zhongxin Huang, hzx@115.com"
+
+SRC_URI="http://ktown.kde.org/~seli/numlockx/numlockx-1.2.tar.gz"
+
+RDEPEND="glibc libX11 libXau libxcb libXdmcp libXext libXi libXtst"
+BDEPEND="glibc-dev libX11-dev libXau-dev libxcb-dev libXdmcp-dev libXext-dev libXi-dev libXtst-dev"
+RECOMMENDED=""
+CONFLICT=""
+
+NOTES=""
+
+pbs_unpack() {
+        ypkg_unpack
+}
+
+pbs_config() {
+	YPB_CONFIG+=""
+	ypkg_config
+}
+
+pbs_build() {
+	ypkg_make
+}
+
+pbs_install() {
+	ypkg_mkinstall
+}

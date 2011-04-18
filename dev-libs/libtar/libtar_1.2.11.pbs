@@ -23,7 +23,9 @@ pbs_unpack() {
 }
 
 pbs_config() {
-	YPB_CONFIG+=""
+	ypkg_patch libtar-1.2.11-6-debian.patch
+	cp /usr/share/automake-1.11/config.* autoconf
+	autoreconf -f -v -i
 	ypkg_config
 }
 
