@@ -1,0 +1,30 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="LXDE session manager"
+HOMEPAGE="www.lxde.org"
+LICENSE="GPL-2"
+PACKAGER="hzx@115.com"
+
+SRC_URI="git://lxde.git.sourceforge.net/gitroot/lxde/"$N""
+
+RDEPEND="atk cairo dbus expat fontconfig freetype gcc glib2 glibc gtk+ libpng libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libXrandr libXrender pango pixman zlib"
+BDEPEND="atk-dev cairo-dev dbus-dev expat-dev fontconfig-dev freetype-dev gcc-dev glib2-dev glibc-dev gtk+-dev libpng-dev libX11-dev libXau-dev libxcb-dev libXcomposite-dev libXcursor-dev libXdamage-dev libXdmcp-dev libXext-dev libXfixes-dev libXi-dev libXrandr-dev libXrender-dev pango-dev pixman-dev zlib-dev"
+
+pbs_unpack() {
+	ypkg_unpack
+}
+
+pbs_config() {
+	YPB_CONFIG+="--enable-man"
+	ypkg_config
+}
+
+pbs_build() {
+	ypkg_make
+}
+
+pbs_install() {
+	ypkg_mkinstall
+}
