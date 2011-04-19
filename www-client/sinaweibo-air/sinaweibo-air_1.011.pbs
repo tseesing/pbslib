@@ -1,0 +1,28 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="sina weibo client (AIR)"
+HOMEPAGE="http://airweibo.sinaapp.com/"
+REPO=""
+LICENSE=""
+PRIORITY=""
+PACKAGER="Zhongxin Huang, hzx@115.com"
+
+SRC_URI="http://airweibo.sinaapp.com/download/airweibo.air"
+
+RDEPEND="adobe-air-sdk"
+BDEPEND=""
+RECOMMENDED=""
+CONFLICT=""
+
+NOTES=""
+
+pbs_install() {
+	ypkg_docp      "$YPPATH_SOURCE"/airweibo.air  "$YPPATH_DEST"/usr/lib/"$N"
+	ypkg_dodesktop "sinaweibo-air.desktop"         "sinaweibo-air.png"
+}
+
+pbs_postinst() {
+	gnome2_desktop_database_update
+}

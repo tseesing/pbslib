@@ -1,0 +1,28 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="1g1g online music (AIR)"
+HOMEPAGE="http://www.ruochi.com/main/1g1g-air/"
+REPO=""
+LICENSE=""
+PRIORITY=""
+PACKAGER="Zhongxin Huang, hzx@115.com"
+
+SRC_URI="http://1g1g.ruochi.com/updates/1g1g.air"
+
+RDEPEND="adobe-air-sdk"
+BDEPEND=""
+RECOMMENDED=""
+CONFLICT=""
+
+NOTES=""
+
+pbs_install() {
+	ypkg_docp "$YPPATH_SOURCE"/1g1g.air  "$YPPATH_DEST"/usr/lib/1g1g-air/
+	ypkg_dodesktop "1g1g-air.desktop" "1g1g-air.png"
+}
+
+pbs_postinst() {
+	gnome2_desktop_database_update
+}
