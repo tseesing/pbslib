@@ -1,0 +1,13 @@
+diff -u -r emesene-1.6.3/misc/emesene.desktop emesene-1.6.3.new/misc/emesene.desktop
+--- emesene-1.6.3/misc/emesene.desktop	2010-07-13 06:13:14.000000000 +0800
++++ emesene-1.6.3.new/misc/emesene.desktop	2011-04-19 09:08:58.643262329 +0800
+@@ -1,7 +1,9 @@
+ [Desktop Entry]
+ Name=Emesene
++Name[zh_CN]=Emesene
+ GenericName=Emesene
+ Comment=MSN Messenger client
++Comment[zh_CN]=MSN Messenger 客户端
+ Exec=emesene
+ Icon=emesene
+ Terminal=false

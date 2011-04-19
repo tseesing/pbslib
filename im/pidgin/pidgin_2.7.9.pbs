@@ -10,10 +10,8 @@ PACKAGER="Zhongxin Huang, hzx@115.com"
 
 SRC_URI="http://downloads.sourceforge.net/project/pidgin/Pidgin/"$V"/"$N-$V$R".tar.gz"
 
-RDEPEND="dbus-glib dbus libX11 libXext libXScrnSaver libSM libICE startup-notification
-	 libxml2 gtk+ atk pango cairo freetype fontconfig glib2 glibc libxml2 ncurses purple zlib 
-	 farsight2 gstreamer libXi libXrandr libXcursor libXcomposite libXdamage libXfixes pixman expat farsight2 "
-BDEPEND=" x11-libs/startup-notification net-libs/gnutls"
+RDEPEND="atk cairo dbus dbus-glib expat farsight2 fontconfig freetype gcc glib2 glibc gnutls gstreamer gtk+ libgcrypt libgpg-error libICE libpng libSM libtasn1 libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libxml2 libXrandr libXrender libXScrnSaver ncurses nspr nss pango pixman purple startup-notification util-linux-ng zlib"
+BDEPEND="atk-dev cairo-dev dbus-dev dbus-glib-dev expat-dev farsight2-dev fontconfig-dev freetype-dev gcc-dev glib2-dev glibc-dev gnutls-dev gstreamer-dev gtk+-dev libgcrypt-dev libgpg-error-dev libICE-dev libpng-dev libSM-dev libtasn1-dev libX11-dev libXau-dev libxcb-dev libXcomposite-dev libXcursor-dev libXdamage-dev libXdmcp-dev libXext-dev libXfixes-dev libXi-dev libxml2-dev libXrandr-dev libXrender-dev libXScrnSaver-dev ncurses-dev nspr-dev nss-dev pango-dev pixman-dev purple-dev startup-notification-dev util-linux-ng-dev zlib-dev"
 
 pbs_unpack() {
         ypkg_unpack

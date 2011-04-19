@@ -11,8 +11,8 @@ PACKAGER="Zhongxin Huang, hzx@115.com"
 
 SRC_URI="http://downloads.sourceforge.net/project/"$N"/"$N-$V$R"/"$N-$V$R".tar.gz"
 
-RDEPEND=""
-BDEPEND=" python"
+RDEPEND="python"
+BDEPEND=""
 RECOMMENDED=""
 CONFLICT=""
 
@@ -21,7 +21,7 @@ pbs_unpack() {
 }
 
 pbs_config() {
-	ypkg_patch 20_dont_build_own_libmimic.patch 21_svn2451_fix_avatar.patch
+	ypkg_patch desktop.patch 20_dont_build_own_libmimic.patch 21_svn2451_fix_avatar.patch
 	YPB_CONFIG+=""
 	ypkg_config
 }

@@ -7,19 +7,21 @@ HOMEPAGE="http://www.skype.com/"
  
 SRC_URI="http://download.skype.com/linux/"${N}"_static-"$V$R".tar.bz2"
 
-RDEPEND=""
+RDEPEND="alsa-lib expat fontconfig freetype gcc glib2 glibc libICE libSM libX11 libXau libxcb libXdmcp libXext libXi libXrandr libXrender libXScrnSaver libXv util-linux-ng zlib"
 BDEPEND=""
 
-pbs_install() {
-	mkdir -p "$YPPATH_DEST"/opt
-	cd "$YPPATH_DEST"/opt
+pbs_unpack() {
 	ypkg_unpack
-	ypkg_doln "$N-$V$R" skype
-	ypkg_docp skype/skype.desktop  "$YPPATH_DEST"/usr/share/applications
-	ypkg_docp_rename  skype/icons/SkypeBlue_48x48.png  "$YPPATH_DEST"/usr/share/pixmaps/skype.png
-	ypkg_doln /opt/skype/skype "$YPPATH_DEST"/usr/bin/skype
-	mkdir -p "$YPPATH_DEST"/etc/xg_launch/net 
-	echo "+ skype%/opt/skype/icons/SkypeBlue_32x32.png%   Exec /opt/skype/skype" > "$YPPATH_DEST"/etc/xg_launch/net/C15skype
+}
+
+pbs_install() {
+	ypkg_docp * "$YPPATH_DEST"/opt/skype
+	cd "$YPPATH_DEST"
+	ypkg_docp         opt/skype/skype.desktop             usr/share/applications
+	ypkg_docp_rename  opt/skype/icons/SkypeBlue_48x48.png usr/share/pixmaps/skype.png
+	ypkg_doln         /opt/skype/skype                    usr/bin/skype
+	mkdir -p          etc/xg_launch/net 
+	echo "+ skype%/opt/skype/icons/SkypeBlue_32x32.png%   Exec /opt/skype/skype" >etc/xg_launch/net/C15skype
 }
 
 pbs_postinst() {
