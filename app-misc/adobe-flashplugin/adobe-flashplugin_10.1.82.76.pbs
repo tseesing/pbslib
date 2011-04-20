@@ -4,8 +4,9 @@
 
 DESCRIPTION="Adobe Flash Player plugin installer"
 HOMEPAGE="http://www.adobe.com/"
-LICENSE="GPL-2"
+LICENSE=""
 PACKAGER="hzx@115.com"
+
 SRC_URI="http://archive.canonical.com/pool/partner/a/"$N"/"${N}_$V$R".orig.tar.gz"
 
 RDEPEND=""
@@ -16,21 +17,11 @@ NOTES=""
 
 pbs_unpack() {
         ypkg_unpack
-	mv "$N-$V$R".orig	 "$N-$V$R"
 }
 
 pbs_install() {
-	
-	install -d -m755 "$YPPATH_DEST"/usr/lib/xulrunner/plugins \
-	                 "$YPPATH_DEST"/usr/lib/mozilla/plugins   \
-			 "$YPPATH_DEST"/usr/lib/iceape/plugins    \
-			 "$YPPATH_DEST"/usr/lib/iceweasel/plugins \
-			 "$YPPATH_DEST"/usr/lib/firefox/plugins    \
-			 "$YPPATH_DEST"/usr/lib/midbrowser/plugins  \
-			 "$YPPATH_DEST"/usr/lib/xulrunner-addons/plugins \
-		         "$YPPATH_DEST"/usr/lib/adobe-flashplugin
-	install -m644 libflashplayer.so  "$YPPATH_DEST"/usr/lib/adobe-flashplugin
+	ypkg_docp libflashplayer.so  "$YPPATH_DEST"/usr/lib/adobe-flashplugin
         for i in xulrunner mozilla iceape iceweasel firefox midbrowser xulrunner-addons; do
-	      ln -sf /usr/lib/adobe-flashplugin/libflashplayer.so "$YPPATH_DEST"/usr/lib/"${i}"/plugins
+	      ypkg_doln /usr/lib/adobe-flashplugin/libflashplayer.so "$YPPATH_DEST"/usr/lib/"${i}"/plugins/libflashplayer.so
 	done
 }

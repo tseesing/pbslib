@@ -7,10 +7,10 @@ HOMEPAGE="http://www.adobe.com/"
 LICENSE="http://www.adobe.com/cn/products/eulas/"
 PACKAGER="hzx@115.com"
 
-SRC_URI="http://download.macromedia.com/pub/labs/flashplatformruntimes/flashplayer10-3/flashplayer10-3_b1_lin_030811.tar.gz"
+SRC_URI="http://fpdownload.macromedia.com/get/flashplayer/current/install_flash_player_10_linux.tar.gz"
 
-RDEPEND="curl atk cairo expat fontconfig freetype gcc glib2 glibc gtk+ libICE libpng libSM libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libXrandr libXrender libXt nspr nss pango pixman util-linux-ng zlib"
-BDEPEND=""
+RDEPEND=""
+BDEPEND=" "
 RECOMMENDED=""
 
 NOTES=""

@@ -4,28 +4,38 @@
 
 DESCRIPTION="The GNU Compiler Collection"
 HOMEPAGE="http://gcc.gnu.org/"
+REPO="testing"
 LICENSE=""
 PACKAGER="Zhongxin Huang, hzx@115.com"
 
-REPO="testing"
 SRC_URI="http://ftp.gnu.org/gnu/"$N"/"$N-$V$R"/"$N-$V$R".tar.bz2"
 
-RDEPEND="mpc"
-BDEPEND=" gmp mpfr"
+RDEPEND="glibc gmp mpfr"
+BDEPEND="linux-headers-dev glibc-dev gmp-dev mpfr-dev"
 
 pbs_unpack() {
         ypkg_unpack
 }
 
 pbs_config() {
+	#libiberty: user the one from binutils
+	sed -i 's/install_to_$(INSTALL_DEST) //' libiberty/Makefile.in
+	#use the -fomit-frame-pointer compiler flag in order to ensure consistent compiler builds
+	sed -i 's/^T_CFLAGS =$/& -fomit-frame-pointer/'  gcc/Makefile.in 
+	#disable hearder fix.
+	sed -i 's@\./fixinc\.sh@-c true@' gcc/Makefile.in
+	#mkdir build
 	mkdir -p gcc-build
 	cd gcc-build
-	YPB_CONFIG+=" --enable-threads=posix
-		      --enable-__cxa_atexit 
-		      --enable-clocale=gnu  
-		      --enable-languages=c,c++ 
-		      --enable-lto
-	              --disable-bootstrap "
+	YPB_CONFIG+="  --libexecdir=/usr/lib
+	               --enable-shared
+		       --enable-threads=posix 
+		       --enable-__cxa_atexit 
+		       --enable-clocale=gnu 
+		       --enable-languages=c,c++
+		       --disable-multilib 
+		       --disable-bootstrap 
+		       --with-system-zlib "
 	../configure $YPB_CONFIG
 }
 
@@ -39,8 +49,6 @@ pbs_install() {
 	ypkg_doln /usr/bin/gcc usr/bin/cc
 	mkdir -p lib
 	ypkg_doln /usr/bin/cpp lib/cpp
-	#fixme
-	rm usr/lib/libstdc++.so.6.0.14-gdb.py
 }
 
 pbs_postinst() {
