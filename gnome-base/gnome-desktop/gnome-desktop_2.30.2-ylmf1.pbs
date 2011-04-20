@@ -1,0 +1,54 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="The GNOME Desktop package contains the gnome-about program, the libgnome-desktop-2 library and GNOME's core graphics files and icons."
+HOMEPAGE="http://www.gnome.org"
+LICENSE="GPL-2"
+PACKAGER="hzx@115.com"
+
+SRC_URI="http://ftp.gnome.org/pub/gnome/desktop/2.30/2.30.2/sources/"$N-$V".tar.bz2"
+
+RDEPEND="atk cairo dbus dbus-glib expat fontconfig freetype gcc gconf glib2 glibc gtk+ libICE libpng libSM libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libXrandr libXrender orbit pango pixman startup-notification util-linux-ng zlib"
+BDEPEND="gnome-vfs-dev rarian-dev atk-dev cairo-dev dbus-dev dbus-glib-dev expat-dev fontconfig-dev freetype-dev gcc-dev gconf-dev glib2-dev glibc-dev gtk+-dev libICE-dev libpng-dev libSM-dev libX11-dev libXau-dev libxcb-dev libXcomposite-dev libXcursor-dev libXdamage-dev libXdmcp-dev libXext-dev libXfixes-dev libXi-dev libXrandr-dev libXrender-dev orbit-dev pango-dev pixman-dev startup-notification-dev util-linux-ng-dev zlib-dev"
+RECOMMENDED="" 
+
+pbs_unpack() {
+        ypkg_unpack
+}
+
+pbs_config() {
+	YPB_CONFIG+="--with-gnome-distributor=YlmfOS"
+	ypkg_config
+}
+
+pbs_build() {
+	ypkg_make
+}
+
+pbs_install() {
+	ypkg_mkinstall
+	cd "$YPPATH_DEST"
+	ypkg_docp "$FILES_PATH"/files/ylmfos4-background.jpg usr/share/backgrounds
+	rm -fr var/lib/scrollkeeper var/lib/log
+}
+
+pbs_postinst() {
+	gnome2_rarian_sk_update
+	gnome2_desktop_database_update
+	gnome2_install_defaut_gconf "string" "/desktop/gnome/background/picture_filename"  	"/usr/share/backgrounds/ylmfos4-background.jpg"
+	gnome2_install_defaut_gconf "string" "/desktop/gnome/background/picture_options" 	"zoom"
+	gnome2_install_defaut_gconf "string" "/desktop/gnome/peripherals/keyboard/bell_mode" 	"off"
+	gnome2_install_defaut_gconf "bool"   "/desktop/gnome/sound/enable_esd" 			"True"	
+	gnome2_install_defaut_gconf "bool"   "/desktop/gnome/sound/event_sounds"		"True"	
+	gnome2_install_defaut_gconf "float"  "/desktop/gnome/font_rendering/dpi"		"96.0" 	
+	#
+	#gnome2_install_defaut_gconf "string" "/desktop/gnome/interface/font_name"               "Ubuntu 10"
+	gnome2_install_defaut_gconf "string" "/desktop/gnome/interface/font_name"               "WenQuanYi Micro Hei 10"
+	gnome2_install_defaut_gconf "string" "/desktop/gnome/interface/document_font_name"      "Sans 10"
+	#gnome2_install_defaut_gconf "string" "/desktop/gnome/interface/monospace_font_name"     "Monospace 10" 
+	gnome2_install_defaut_gconf "string" "/desktop/gnome/interface/monospace_font_name"     "WenQuanYi Micro Hei Mono 10" 
+
+	#
+	gnome2_install_defaut_gconf "bool" "/desktop/gnome/peripherals/keyboard/remember_numlock_state"  "True"
+}

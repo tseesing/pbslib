@@ -1,0 +1,37 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="GtkSharp's gconf module of the gnome-sharp tarball"
+HOMEPAGE="http://www.mono-project.com/GtkSharp"
+REPO=""
+LICENSE="GPL"
+PRIORITY=""
+PACKAGER="Zhongxin Huang, hzx@115.com"
+
+SRC_URI="http://ftp.novell.com/pub/mono/sources/gnome-sharp2/"$N-$V$R".tar.bz2"
+
+RDEPEND=""
+BDEPEND=""
+RECOMMENDED=""
+CONFLICT=""
+
+NOTES=""
+
+pbs_unpack() {
+        ypkg_unpack
+}
+
+pbs_config() {
+	ypkg_patch "donot-build-sample.patch"
+	YPB_CONFIG+=""
+	ypkg_config
+}
+
+pbs_build() {
+	ypkg_make
+}
+
+pbs_install() {
+	ypkg_mkinstall
+}

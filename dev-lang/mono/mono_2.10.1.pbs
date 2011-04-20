@@ -1,0 +1,45 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="Mono runtime and class libraries, a C# compiler/interpreter"
+HOMEPAGE="http://www.go-mono.com http://ftp.novell.com/pub/mono/sources-stable/"
+REPO=""
+LICENSE="LGPL v2, MIT X11 license"
+PRIORITY=""
+PACKAGER="Zhongxin Huang, hzx@115.com"
+
+SRC_URI="http://ftp.novell.com/pub/mono/sources/mono/mono-2.10.1.tar.bz2"
+
+RDEPEND="gcc glibc zlib"
+BDEPEND=""
+RECOMMENDED=""
+CONFLICT=""
+
+NOTES=""
+
+pbs_unpack() {
+        ypkg_unpack
+}
+
+pbs_config() {
+	#./autogen.sh --prefix=/usr --sysconfdir=/etc --with-libgdiplus=installed --with-tls=pthread
+	YPB_CONFIG+="--with-libgdiplus=installed"
+	ypkg_config
+}
+
+pbs_build() {
+	ypkg_make
+	# build jay
+	cd mcs/jay
+	ypkg_make
+	cd -
+}
+
+pbs_install() {
+	ypkg_mkinstall
+	#install jay
+	cd mcs/jay
+	#make DESTDIR= prefix=/usr install=../../install-sh install
+	ypkg_mkinstall prefix=/usr install=../../install-sh install
+}

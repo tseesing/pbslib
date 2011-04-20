@@ -1,0 +1,36 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="GtkSharp's gtk module of the gtk-sharp-beans tarball"
+HOMEPAGE="http://www.mono-project.com/GtkSharp"
+REPO=""
+LICENSE="GPL"
+PRIORITY=""
+PACKAGER="Zhongxin Huang, hzx@115.com"
+
+SRC_URI="git://github.com/mono/gtk-sharp-beans.git"
+
+RDEPEND=""
+BDEPEND="gio-sharp"
+RECOMMENDED=""
+CONFLICT=""
+
+NOTES=""
+
+pbs_unpack() {
+        ypkg_unpack
+}
+
+pbs_config() {
+	YPB_CONFIG+=""
+	ypkg_config
+}
+
+pbs_build() {
+	make
+}
+
+pbs_install() {
+	ypkg_mkinstall
+}

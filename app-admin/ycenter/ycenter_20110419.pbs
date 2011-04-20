@@ -1,0 +1,38 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="ylmfos app store"
+HOMEPAGE="http://www.ylmf.net"
+LICENSE=""
+PACKAGER="hzx@115.com"
+
+SRC_URI="git://192.168.1.58/ylmfcenter.git"
+
+RDEPEND="python atk cairo dbus dbus-glib expat fontconfig freetype gcc glib2 glibc gtk+ libpng libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libxml2 libXrandr libXrender pango pixman zlib"
+BDEPEND="atk-dev cairo-dev dbus-dev dbus-glib-dev expat-dev fontconfig-dev freetype-dev gcc-dev glib2-dev glibc-dev gtk+-dev libpng-dev libX11-dev libXau-dev libxcb-dev libXcomposite-dev libXcursor-dev libXdamage-dev libXdmcp-dev libXext-dev libXfixes-dev libXi-dev libxml2-dev libXrandr-dev libXrender-dev pango-dev pixman-dev zlib-dev"
+RECOMMENDED="ypkg"
+
+pbs_unpack() {
+	ypkg_unpack
+}
+
+pbs_config() {
+	ypkg_config
+}
+
+pbs_build() {
+	ypkg_make
+}
+
+pbs_install() {
+	ypkg_mkinstall
+	cd "$YPPATH_DEST"
+	rm -r etc/init.d/
+	#ypkg_docp "$FILES_PATH"/files/systemd/*  lib/systemd/system
+}
+
+pbs_postinst() {
+	gnome2_desktop_database_update
+	gnome2_icon_cache_update "hicolor"
+}

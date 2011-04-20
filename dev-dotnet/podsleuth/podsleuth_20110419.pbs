@@ -1,0 +1,36 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="A tool to discover detailed model information about an Apple (TM) iPod (TM)."
+HOMEPAGE="http://download.banshee.fm/podsleuth/"
+REPO=""
+LICENSE="GPL"
+PRIORITY=""
+PACKAGER="Zhongxin Huang, hzx@115.com"
+
+SRC_URI="git://git.gnome.org/podsleuth"
+
+RDEPEND=""
+BDEPEND=""
+RECOMMENDED=""
+CONFLICT=""
+
+NOTES=""
+
+pbs_unpack() {
+        ypkg_unpack
+}
+
+pbs_config() {
+	YPB_CONFIG+=""
+	ypkg_config
+}
+
+pbs_build() {
+	make
+}
+
+pbs_install() {
+	ypkg_mkinstall
+}

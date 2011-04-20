@@ -1,0 +1,37 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="gio sharp tarball"
+HOMEPAGE="http://banshee.fm/download/development/"
+REPO=""
+LICENSE="GPL"
+PRIORITY=""
+PACKAGER="Zhongxin Huang, hzx@115.com"
+
+SRC_URI="git://github.com/mono/gio-sharp.git"
+
+RDEPEND=""
+BDEPEND=""
+RECOMMENDED=""
+CONFLICT=""
+
+NOTES=""
+
+pbs_unpack() {
+        ypkg_unpack
+}
+
+pbs_config() {
+	./autogen-2.22.sh
+	YPB_CONFIG+=""
+	ypkg_config
+}
+
+pbs_build() {
+	make
+}
+
+pbs_install() {
+	ypkg_mkinstall
+}

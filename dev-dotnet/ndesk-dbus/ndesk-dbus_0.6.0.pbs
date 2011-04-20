@@ -1,0 +1,36 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="C# implementation of D-Bus."
+HOMEPAGE="http://www.ndesk.org/DBusSharp"
+REPO=""
+LICENSE=""
+PRIORITY=""
+PACKAGER="Zhongxin Huang, hzx@115.com"
+
+SRC_URI="http://www.ndesk.org/archive/dbus-sharp/"$N-$V$R".tar.gz"
+
+RDEPEND=""
+BDEPEND=""
+RECOMMENDED=""
+CONFLICT=""
+
+NOTES=""
+
+pbs_unpack() {
+        ypkg_unpack
+}
+
+pbs_config() {
+	YPB_CONFIG+=""
+	ypkg_config
+}
+
+pbs_build() {
+	ypkg_make
+}
+
+pbs_install() {
+	ypkg_mkinstall
+}
