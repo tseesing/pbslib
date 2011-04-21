@@ -12,7 +12,7 @@ SRC_URI="ftp://ftp.kernel.org/pub/linux/kernel/v2.6/linux-"$V".tar.bz2"
 RDEPEND=""
 BDEPEND="ncurses-dev"
 
-MYSPLIT="usr/src $N-headers"
+MYSPLIT="usr/src "$N"-headers"
 
 pbs_unpack() {
         ypkg_unpack
@@ -136,5 +136,11 @@ pbs_install() {
 
 pbs_postinst() {
 	update-initramfs -c -k "$V"-ylmfos
+	update-grub
+}
+
+pbs_postrm() {
+	[ -f /boot/initrd.img-"$V"-ylmfos ]         && rm /boot/initrd.img-"$V"-ylmfos
+	[ -f /var/lib/initramfs-tools/"$V"-ylmfos ] && rm /var/lib/initramfs-tools/"$V"-ylmfos
 	update-grub
 }
