@@ -4,13 +4,13 @@
 
 DESCRIPTION="an open-source implementation of the OpenGL specification - a system for rendering interactive 3D graphics."
 HOMEPAGE="http://mesa3d.sourceforge.net/"
-LICENSE="http://www.mesa3d.org/license.html"
+LICENSE=""
 PACKAGER="hzx@115.com"
+SRC_URI="ftp://ftp.freedesktop.org/pub/mesa/"$V"/MesaLib-"$V$R".tar.bz2  
+	 ftp://ftp.freedesktop.org/pub/mesa/"$V"/MesaGLUT-"$V$R".tar.bz2"
 
-SRC_URI="git://anongit.freedesktop.org/mesa/mesa"
-
-RDEPEND="talloc expat gcc glibc libdrm libICE libSM libX11 libXau libxcb libXdamage libXdmcp libXext libXfixes libXi libXmu libXt libXxf86vm udev util-linux-ng"
-BDEPEND="dri2proto-dev xorg-server-dev talloc-dev expat-dev gcc-dev glibc-dev libdrm-dev libICE-dev libSM-dev libX11-dev libXau-dev libxcb-dev libXdamage-dev libXdmcp-dev libXext-dev libXfixes-dev libXi-dev libXmu-dev libXt-dev libXxf86vm-dev udev-dev util-linux-ng-dev"
+RDEPEND="glibc libX11 libXext libXxf86vm libXdamage libXfixes libdrm libxcb libXau libXdmcp talloc"
+BDEPEND="libX11-dev libXext-dev libXxf86vm-dev libXdamage-dev libXfixes-dev libXi-dev dri2proto-dev libdrm-dev xorg-server-dev"
 
 NOTES="
  You have enabled gallium infrastructure.
@@ -23,32 +23,31 @@ NOTES="
 "
 
 pbs_unpack() {
-	ypkg_unpack
+	tar xf "$YPPATH_SOURCE"/MesaLib-"$V$R".tar.bz2
+	tar xf "$YPPATH_SOURCE"/MesaGLUT-"$V$R".tar.bz2
+	mv Mesa-"$V$R"  "$N-$V$R"
 }
 
 pbs_config() {
-	YPB_CONFIG+="--disable-gallium-i965
-		     --disable-gallium-i915
-	             --enable-gallium-llvm
-		     --enable-gallium-egl   
+	ypkg_patch mesa-7.9-libdrm-2.4.23-nouveau-api.patch
+	YPB_CONFIG+="--enable-gallium-llvm
 		     --enable-gallium-svga
+		     --enable-gallium-i915
+		     --enable-gallium-i965
 	             --enable-gallium-radeon 
 		     --enable-gallium-r600
 		     --enable-gallium-swrast 
-		     --enable-gallium-nouveau 
-		     --enable-xcb"
+		     --enable-gallium-nouveau "
 	ypkg_config
 }
 
 pbs_build() {
-	#ypkg_make
-	make -j1
+	ypkg_make
 }
 
 pbs_install() {
 	ypkg_mkinstall
 	#radeon_drv.so from mesa is very experimental (and only concern r3xx,r4xx,r5xx
 	#aka radeon 9600 to radeon HD1950)
-	cd "$YPPATH_DEST"
-	[ -f usr/lib/xorg/modules/drivers/radeon_drv.so ] && rm usr/lib/xorg/modules/drivers/radeon_drv.so || return 0
+	rm "$YPPATH_DEST"/usr/lib/xorg/modules/drivers/radeon_drv.so
 }
