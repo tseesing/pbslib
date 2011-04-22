@@ -1,0 +1,18 @@
+diff -u -r broadcom-sta-5.60.48.36-3/i386/Makefile broadcom-sta-5.60.48.36-3.new/i386/Makefile
+--- broadcom-sta-5.60.48.36-3/i386/Makefile	2010-02-06 09:59:15.000000000 +0800
++++ broadcom-sta-5.60.48.36-3.new/i386/Makefile	2011-04-22 10:33:19.005998138 +0800
+@@ -13,6 +13,8 @@
+ #
+ # $Id: Makefile_kbuild_portsrc,v 1.5.4.1 2009/08/13 21:37:18 Exp $
+ 
++DESTDIR=
++
+ obj-m              += wl.o
+ 
+ wl-objs            := 
+@@ -33,4 +35,4 @@
+ 	KBUILD_NOPEDANTIC=1 make -C /lib/modules/`uname -r`/build M=`pwd` clean
+ 
+ install:
+-	install -D -m 755 wl.ko /lib/modules/`uname -r`/kernel/drivers/net/wireless/wl.ko
++	install -D -m 755 wl.ko $(DESTDIR)/lib/modules/`uname -r`/kernel/drivers/net/wireless/wl.ko

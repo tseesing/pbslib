@@ -11,7 +11,7 @@ PACKAGER="Zhongxin Huang, hzx@115.com"
 
 SRC_URI="http://bu3sch.de/b43/fwcutter/"$N-$V$R".tar.bz2"
 
-RDEPEND=""
+RDEPEND="glibc"
 BDEPEND=" "
 RECOMMENDED=""
 CONFLICT=""

@@ -1,0 +1,40 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="Broadcom STA is a binary-only device driver to support the following IEEE 802.11a/b/g/n wireless network cards: BCM4311-, BCM4312-, BCM4313-, BCM4321-, and BCM4322-based hardware."
+HOMEPAGE="http://www.broadcom.com/support/802.11/linux_sta.php"
+REPO=""
+LICENSE=""
+PRIORITY=""
+PACKAGER="Zhongxin Huang, hzx@115.com"
+
+SRC_URI="broadcom-sta-5.60.48.36-3.tar.bz2"
+
+RDEPEND=""
+BDEPEND=""
+RECOMMENDED=""
+CONFLICT=""
+
+NOTES=""
+
+pbs_unpack() {
+        ypkg_unpack
+}
+
+pbs_build() {
+	ypkg_patch ylmfos-makeinstall.patch
+	cd i386
+	ypkg_make
+}
+
+pbs_install() {
+	ypkg_mkinstall
+	cd ../
+	ypkg_dodoc copyright README.Debian README.txt
+}
+
+pbs_postinst() {	
+	depmod -a
+}
+
