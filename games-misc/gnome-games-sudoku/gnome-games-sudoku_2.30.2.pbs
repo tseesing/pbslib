@@ -1,0 +1,42 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="a collection of sixteen small "five-minute" games in a variety of styles and genres for the GNOME desktop"
+HOMEPAGE="http://live.gnome.org/GnomeGames/"
+REPO=""
+LICENSE="GPL"
+PRIORITY=""
+PACKAGER="Zhongxin Huang, hzx@115.com"
+
+SRC_URI="http://ftp.gnome.org/pub/GNOME/sources/gnome-games/2.30/gnome-games-"$V$R".tar.bz2"
+
+RDEPEND="atk cairo clutter clutter-gtk dbus dbus-glib expat fontconfig freetype gcc gconf glib2 glibc gmp gtk+ guile json-glib libcanberra libcroco libdrm libgsf libICE libogg libpng librsvg libSM libtool libvorbis libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libxml2 libXrandr libXrender libXxf86vm mesa orbit pango pixman util-linux-ng zlib"
+BDEPEND="atk-dev cairo-dev clutter-dev clutter-gtk-dev dbus-dev dbus-glib-dev expat-dev fontconfig-dev freetype-dev gcc-dev gconf-dev glib2-dev glibc-dev gmp-dev gtk+-dev guile-dev json-glib-dev libcanberra-dev libcroco-dev libdrm-dev libgsf-dev libICE-dev libogg-dev libpng-dev librsvg-dev libSM-dev libtool-dev libvorbis-dev libX11-dev libXau-dev libxcb-dev libXcomposite-dev libXcursor-dev libXdamage-dev libXdmcp-dev libXext-dev libXfixes-dev libXi-dev libxml2-dev libXrandr-dev libXrender-dev libXxf86vm-dev mesa-dev orbit-dev pango-dev pixman-dev util-linux-ng-dev zlib-dev"
+RECOMMENDED=""
+CONFLICT=""
+
+DESKTOPFILE="gnome-sudoku.desktop"
+
+pbs_unpack() {
+        ypkg_unpack
+}
+
+pbs_config() {
+	YPB_CONFIG+="--enable-games=gnome-sudoku
+	             --disable-schemas-install"
+	ypkg_config
+}
+
+pbs_build() {
+	ypkg_make
+}
+
+pbs_install() {
+	ypkg_mkinstall
+}
+
+pbs_postinst() {
+	gnome2_desktop_database_update
+	gnome2_icon_cache_update
+}

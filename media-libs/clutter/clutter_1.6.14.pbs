@@ -1,0 +1,36 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="Clutter is an open source (LGPL 2.1) software library for creating fast, compelling, portable, and dynamic graphical user interfaces."
+HOMEPAGE="http://www.clutter-project.org/"
+REPO=""
+LICENSE="GPL_v2"
+PRIORITY=""
+PACKAGER="Zhongxin Huang, hzx@115.com"
+
+SRC_URI="http://source.clutter-project.org/sources/"$N"/1.6/"$N-$V$R".tar.bz2"
+
+RDEPEND="atk cairo expat fontconfig freetype gcc glib2 glibc gtk+ json-glib libdrm libpng libX11 libXau libxcb libXcomposite libXdamage libXdmcp libXext libXfixes libXi libXrender libXxf86vm mesa pango pixman zlib"
+BDEPEND="atk-dev cairo-dev expat-dev fontconfig-dev freetype-dev gcc-dev glib2-dev glibc-dev gtk+-dev json-glib-dev libdrm-dev libpng-dev libX11-dev libXau-dev libxcb-dev libXcomposite-dev libXdamage-dev libXdmcp-dev libXext-dev libXfixes-dev libXi-dev libXrender-dev libXxf86vm-dev mesa-dev pango-dev pixman-dev zlib-dev"
+RECOMMENDED=""
+CONFLICT=""
+
+NOTES=""
+
+pbs_unpack() {
+        ypkg_unpack
+}
+
+pbs_config() {
+	YPB_CONFIG+=""
+	ypkg_config
+}
+
+pbs_build() {
+	ypkg_make
+}
+
+pbs_install() {
+	ypkg_mkinstall
+}

@@ -1,0 +1,36 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="Clutter-GTK - GTK+ Integration library for Clutter"
+HOMEPAGE="http://www.clutter-project.org/"
+REPO=""
+LICENSE="GPL"
+PRIORITY=""
+PACKAGER="Zhongxin Huang, hzx@115.com"
+
+SRC_URI="http://source.clutter-project.org/sources/"$N"/0.10/"$N-$V$R".tar.bz2"
+
+RDEPEND="atk cairo clutter expat fontconfig freetype gcc glib2 glibc gtk+ json-glib libdrm libpng libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libXrandr libXrender libXxf86vm mesa pango pixman zlib"
+BDEPEND="atk-dev cairo-dev clutter-dev expat-dev fontconfig-dev freetype-dev gcc-dev glib2-dev glibc-dev gtk+-dev json-glib-dev libdrm-dev libpng-dev libX11-dev libXau-dev libxcb-dev libXcomposite-dev libXcursor-dev libXdamage-dev libXdmcp-dev libXext-dev libXfixes-dev libXi-dev libXrandr-dev libXrender-dev libXxf86vm-dev mesa-dev pango-dev pixman-dev zlib-dev"
+RECOMMENDED=""
+CONFLICT=""
+
+NOTES=""
+
+pbs_unpack() {
+        ypkg_unpack
+}
+
+pbs_config() {
+	YPB_CONFIG+=""
+	ypkg_config
+}
+
+pbs_build() {
+	ypkg_make
+}
+
+pbs_install() {
+	ypkg_mkinstall
+}
