@@ -2,23 +2,29 @@
 # YLmf_OS package build script
 #
 
-DESCRIPTION="Javascript bindings for Webkit-GTK and GNOME libraries"
-HOMEPAGE="http://live.gnome.org/Seed"
+DESCRIPTION=""
+HOMEPAGE=""
 REPO=""
-LICENSE="LGPL"
+LICENSE="GPL"
 PRIORITY=""
 PACKAGER="Zhongxin Huang, hzx@115.com"
 
-SRC_URI="http://ftp.gnome.org/pub/gnome/sources/seed/2.30/seed-2.30.0.tar.bz2"
+SRC_URI="http://ftp.gnome.org/pub/gnome/sources/gnome-js-common/0.1/gnome-js-common-0.1.2.tar.bz2"
 
 RDEPEND=""
-BDEPEND="gobject-introspection gnome-js-common"
+BDEPEND=""
 RECOMMENDED=""
 CONFLICT=""
 
 NOTES=""
 
+pbs_init() {
+	:
+	#ypkg_useradd -c "$C" -d "$D" -s "$S" -g "$G" "$N""  
+}
+
 pbs_unpack() {
+	#unpard file from $YPPATH_SOURCE to current directory.
         ypkg_unpack
 }
 

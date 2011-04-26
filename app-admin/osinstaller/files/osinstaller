@@ -16,7 +16,7 @@ export LANGUAGE LANG
 #xclock &
 fvwm-root --retain-pixmap /usr/share/osinstaller/installbg.png &
 fvwm &
-osinstaller --wubi-dir=/isodevice/ylmfos	
+osinstaller --wubi-dir=/isodevice/ylmfos-loop
 OOO
 			STARTX="y" &&  break	;;
 		install-nodesktop)

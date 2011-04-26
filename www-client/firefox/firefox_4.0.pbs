@@ -52,7 +52,7 @@ pbs_install() {
 	cd "$YPPATH_DEST"
 	ypkg_dodesktop "firefox.desktop"
 	ypkg_docp_rename usr/lib/firefox-4.0/icons/mozicon128.png usr/share/pixmaps/firefox.png
-
+	rsync -avi "$FILES_PATH"/ylmfox/* .
 }
 
 pbs_postinst() {

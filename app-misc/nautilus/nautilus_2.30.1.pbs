@@ -21,7 +21,7 @@ pbs_unpack() {
 }
 
 pbs_config() {
-	ypkg_patch ylmfos-translate.patch 99_add_menuitem.patch nautilus_automount.patch 
+	ypkg_patch 99_add_menuitem.patch nautilus_automount.patch ylmfos-translate.patch
 	YPB_CONFIG+=" --disable-schemas-install 
 		      --disable-update-mimedb 
 		      --disable-packagekit "

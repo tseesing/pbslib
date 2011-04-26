@@ -5,16 +5,18 @@
 DESCRIPTION="eio office suit"
 HOMEPAGE="http://www.yozosoft.com/indexch.jsp"
 REPO=""
-LICENSE="GPL"
+LICENSE=""
 PRIORITY=""
 PACKAGER="Zhongxin Huang, hzx@115.com"
 
 SRC_URI="http://pkg.ylmf.com/sources/"$N-$V$R".tar.bz2"
 
 RDEPEND="alsa-lib glibc libX11 libXau libxcb libXdmcp libXext libXi libXtst"
-BDEPEND=" "
+BDEPEND=""
 RECOMMENDED=""
 CONFLICT=""
+
+DESKTOPFILE="eio.desktop"
 
 NOTES=""
 
@@ -25,9 +27,12 @@ pbs_unpack() {
 pbs_install() {
 	ypkg_patch eio.desktop.patch
 	ypkg_docp * "$YPPATH_DEST"
+	#
+	cd "$YPPATH_DEST"
+	ypkg_docp "$FILES_PATH"/files/eioicon.png  usr/share/eiofileicon/
+	rm usr/share/applications/eiouninstall.desktop
 }
 
 pbs_postinst() {
 	gnome2_desktop_database_update
-	fc-cache -f
 }
