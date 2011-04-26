@@ -1,0 +1,39 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="A high-quality data compressor"
+HOMEPAGE="http://www.bzip.org/"
+
+SRC_URI="http://www.bzip.org/$V/"$N-$V".tar.gz "
+
+RDEPEND="glibc"
+BDEPEND="glibc-dev"
+
+pbs_unpack() {
+        ypkg_unpack
+}
+
+pbs_config() {
+	ypkg_patch bzip2-1.0.5-install_docs-1.patch
+	#The following command ensures installation of symbolic links are relative
+	sed -i 's@\(ln -s -f \)$(PREFIX)/bin/@\1@' Makefile
+}
+
+pbs_build() {
+	#creates a dynamic libbz2.so  library and links the Bzip2 
+	#utilities against it
+	make -f Makefile-libbz2_so
+	make clean
+	ypkg_make
+}
+
+pbs_install() {
+	mkdir -p "$YPPATH_DEST"/usr
+	make PREFIX="$YPPATH_DEST"/usr install
+	ypkg_domv "$YPPATH_DEST"/usr/man  "$YPPATH_DEST"/usr/share
+	ypkg_docp libbz2.so* "$YPPATH_DEST"/lib
+	cd "$YPPATH_DEST"
+	ypkg_doln /lib/libbz2.so.1.0 lib/libbz2.so
+	ypkg_doln /lib/libbz2.so.1.0 usr/lib/libbz2.so 
+}

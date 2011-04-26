@@ -16,6 +16,8 @@ RDEPEND="zlib freetype libXau libxcb libXdmcp libXext"
 BDEPEND=""
 RECOMMENDED="sun-jre"
 
+DESKTOPFILE="libreoffice-startcenter.desktop"
+
 pbs_install() {
 	mkdir -p "$N-$V$R"
 	cd "$N-$V$R"
