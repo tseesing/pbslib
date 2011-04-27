@@ -28,7 +28,8 @@ pbs_install() {
 pbs_postinst() {
 	datadir="/usr/share/"$N""
 	gnome2_install_schema "$datadir"/ypk-thumbnailer.schemas
-	gnome2_install_mine   "$datadir"/ylmf-package.mime
+	gnome2_install_mine   "$datadir"/ylmf-package.xml
+	xdg-mime default ypki.desktop application/ylmf-package
 	gnome2_desktop_database_update
 	gnome2_gconfd_reload
 }
@@ -36,7 +37,7 @@ pbs_postinst() {
 pbs_prerm() {
 	datadir="/usr/share/"$N""
 	gnome2_unistall_schema "$datadir"/ypk-thumbnailer.schemas
-	gnome2_uninstall_mine  "$datadir"/ylmf-package.mime
+	gnome2_uninstall_mine  "$datadir"/ylmf-package.xml
 	gnome2_desktop_database_update
 	gnome2_gconfd_reload
 }
