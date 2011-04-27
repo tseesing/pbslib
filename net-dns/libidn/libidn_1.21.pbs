@@ -2,17 +2,19 @@
 # YLmf_OS package build script
 #
 
-DESCRIPTION="Extracts files from Microsoft .cab files"
-HOMEPAGE="http://www.cabextract.org.uk/"
+DESCRIPTION="Internationalized Domain Names (IDN) implementation"
+HOMEPAGE="http://www.gnu.org/software/libidn/"
 REPO=""
-LICENSE=""
+LICENSE="GPL"
+PRIORITY=""
 PACKAGER="Zhongxin Huang, hzx@115.com"
 
-SRC_URI="http://www.cabextract.org.uk/"$N-$V$R".tar.gz"
+SRC_URI="ftp://ftp.gnu.org/gnu/"$N"/"$N-$V$R".tar.gz"
 
 RDEPEND="glibc"
 BDEPEND="glibc-dev"
 RECOMMENDED=""
+CONFLICT=""
 
 NOTES=""
 
@@ -21,6 +23,7 @@ pbs_unpack() {
 }
 
 pbs_config() {
+	YPB_CONFIG+=""
 	ypkg_config
 }
 

@@ -1,0 +1,37 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="Redhat's Newt windowing toolkit development files"
+HOMEPAGE="https://fedorahosted.org/newt/"
+REPO=""
+LICENSE="GPL"
+PRIORITY=""
+PACKAGER="Zhongxin Huang, hzx@115.com"
+
+SRC_URI="https://fedorahosted.org/releases/n/e/"$N"/"$N-$V$R".tar.gz"
+
+RDEPEND=""
+BDEPEND="slang"
+RECOMMENDED=""
+CONFLICT=""
+
+NOTES=""
+
+pbs_unpack() {
+        ypkg_unpack
+}
+
+pbs_config() {
+	YPB_CONFIG+="--without-tcl"
+	ypkg_config
+}
+
+pbs_build() {
+	ypkg_make
+}
+
+pbs_install() {
+	#make DESTDIR="$YPPATH_DEST" install
+	ypkg_mkinstall instroot="$YPPATH_DEST" install
+}

@@ -1,0 +1,33 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="A standards-compliant graphical Web browser"
+HOMEPAGE="http://www.opera.com/"
+REPO=""
+LICENSE=""
+PRIORITY=""
+PACKAGER="Zhongxin Huang, hzx@115.com"
+
+SRC_URI="http://get.opera.com/pub/opera/linux/1110/"$N"_"$V$R"_i386.deb"
+
+RDEPEND=""
+BDEPEND=" "
+RECOMMENDED=""
+CONFLICT=""
+
+DESKTOPFILE="opera-browser.desktop"
+
+NOTES=""
+
+pbs_unpack() {
+        ypkg_unpack
+}
+
+pbs_install() {
+	ypkg_docp data/*  "$YPPATH_DEST"/
+}
+
+pbs_postinst() {
+	gnome2_desktop_database_update
+}

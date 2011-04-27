@@ -1,0 +1,36 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="BitTorrent Client using libtorrent"
+HOMEPAGE="http://libtorrent.rakshasa.no/"
+REPO=""
+LICENSE="GPL"
+PRIORITY=""
+PACKAGER="Zhongxin Huang, hzx@115.com"
+
+SRC_URI="http://libtorrent.rakshasa.no/downloads/"$N-$V$R".tar.gz"
+
+RDEPEND="curl cyrus-sasl gcc glibc libsigc++ libtorrent ncurses openldap-client openssl zlib"
+BDEPEND="curl-dev cyrus-sasl-dev gcc-dev glibc-dev libsigc++-dev libtorrent-dev ncurses-dev openldap-client-dev openssl-dev zlib-dev"
+RECOMMENDED=""
+CONFLICT=""
+
+NOTES=""
+
+pbs_unpack() {
+        ypkg_unpack
+}
+
+pbs_config() {
+	YPB_CONFIG+=""
+	ypkg_config
+}
+
+pbs_build() {
+	ypkg_make
+}
+
+pbs_install() {
+	ypkg_mkinstall
+}

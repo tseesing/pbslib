@@ -1,0 +1,36 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="TestDisk is powerful free data recovery software. It was primarily designed to help recover lost partitions and/or make non-booting disks bootable."
+HOMEPAGE="http://www.cgsecurity.org/wiki/TestDisk"
+REPO=""
+LICENSE="GPL"
+PRIORITY=""
+PACKAGER="Zhongxin Huang, hzx@115.com"
+
+SRC_URI="http://www.cgsecurity.org/"$N-$V$R"-WIP.tar.bz2"
+
+RDEPEND="e2fsprogs glibc keyutils krb5 libjpeg-turbo ncurses ntfs-3g openssl util-linux-ng zlib"
+BDEPEND="e2fsprogs-dev glibc-dev keyutils-dev krb5-dev libjpeg-turbo-dev ncurses-dev ntfs-3g-dev openssl-dev util-linux-ng-dev zlib-dev"
+RECOMMENDED=""
+CONFLICT=""
+
+NOTES=""
+
+pbs_unpack() {
+        ypkg_unpack
+}
+
+pbs_config() {
+	YPB_CONFIG+=""
+	ypkg_config
+}
+
+pbs_build() {
+	ypkg_make
+}
+
+pbs_install() {
+	ypkg_mkinstall
+}

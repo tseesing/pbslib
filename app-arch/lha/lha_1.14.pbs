@@ -2,17 +2,19 @@
 # YLmf_OS package build script
 #
 
-DESCRIPTION="Extracts files from Microsoft .cab files"
-HOMEPAGE="http://www.cabextract.org.uk/"
+DESCRIPTION="Utility for creating and opening lzh archives"
+HOMEPAGE="http://lha.sourceforge.jp"
 REPO=""
-LICENSE=""
+LICENSE="GPL"
+PRIORITY=""
 PACKAGER="Zhongxin Huang, hzx@115.com"
 
-SRC_URI="http://www.cabextract.org.uk/"$N-$V$R".tar.gz"
+SRC_URI="http://jaist.dl.sourceforge.jp/lha/22231/"$N-$V$R"i-ac20050924p1.tar.gz"
 
 RDEPEND="glibc"
 BDEPEND="glibc-dev"
 RECOMMENDED=""
+CONFLICT=""
 
 NOTES=""
 
@@ -21,6 +23,7 @@ pbs_unpack() {
 }
 
 pbs_config() {
+	YPB_CONFIG+=""
 	ypkg_config
 }
 

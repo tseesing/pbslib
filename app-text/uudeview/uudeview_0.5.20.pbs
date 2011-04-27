@@ -1,0 +1,43 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="uu, xx, base64, binhex decoder"
+HOMEPAGE="http://www.fpx.de/fp/Software/UUDeview/"
+REPO=""
+LICENSE="GPL"
+PRIORITY=""
+PACKAGER="Zhongxin Huang, hzx@115.com"
+
+SRC_URI="http://www.fpx.de/fp/Software/UUDeview/download/uudeview-0.5.20.tar.gz"
+
+RDEPEND="expat fontconfig freetype glibc libX11 libXau libxcb libXdmcp libXext libXft libXrender libXScrnSaver tcl tk zlib"
+BDEPEND="expat-dev fontconfig-dev freetype-dev glibc-dev libX11-dev libXau-dev libxcb-dev libXdmcp-dev libXext-dev libXft-dev libXrender-dev libXScrnSaver-dev tcl-dev tk-dev zlib-dev"
+RECOMMENDED=""
+CONFLICT=""
+
+NOTES=""
+
+pbs_unpack() {
+        ypkg_unpack
+}
+
+pbs_config() {
+	patches="uudeview-0.5.20-bugfixes.patch
+	        uudeview-0.5.20-CVE-2004-2265.patch
+		uudeview-0.5.20-CVE-2008-2266.patch
+		uudeview-0.5.20-man.patch
+		uudeview-0.5.20-rename.patch"
+	ypkg_patch $patches
+	YPB_CONFIG+=""
+	ypkg_config
+}
+
+pbs_build() {
+	ypkg_make
+}
+
+pbs_install() {
+	ypkg_mkinstall MANDIR="$YPPATH_DEST/usr/share/man/" BINDIR="$YPPATH_DEST/usr/bin/"
+	ypkg_dodoc  HISTORY INSTALL README
+}

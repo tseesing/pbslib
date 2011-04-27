@@ -1,0 +1,36 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="VLC is a free and open source cross-platform multimedia player and framework that plays most multimedia files"
+HOMEPAGE="http://www.videolan.org/"
+REPO=""
+LICENSE="GPL"
+PRIORITY=""
+PACKAGER="Zhongxin Huang, hzx@115.com"
+
+SRC_URI="http://downloads.sourceforge.net/project/"$N"/"$V"/"$N-$V$R".tar.bz2"
+
+RDEPEND="a52dec alsa-lib atk attr audiofile avahi cairo cyrus-sasl dbus dbus-glib directfb esound expat ffmpeg flac fontconfig freetype fribidi gcc gconf glib2 glibc gnome-vfs gnutls gtk+ jack-audio-connection-kit keyutils krb5 libcap libcddb libcroco libdrm libgcrypt libgpg-error libgsf libICE libmad libmodplug libmpeg2 libmtp libnotify libogg libpng libproxy librsvg libsdl libSM libtar libtasn1 libtheora libupnp libusb libusb-compat libva libvorbis libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libxml2 libXpm libXrandr libXrender libXxf86vm mesa openldap-client openssl orbit pango pixman qt-core samba sdl-image speex sqlite taglib talloc udev util-linux-ng v4l-utils x264 xcb-util zlib"
+BDEPEND="a52dec-dev alsa-lib-dev atk-dev attr-dev audiofile-dev avahi-dev cairo-dev cyrus-sasl-dev dbus-dev dbus-glib-dev directfb-dev esound-dev expat-dev ffmpeg-dev flac-dev fontconfig-dev freetype-dev fribidi-dev gcc-dev gconf-dev glib2-dev glibc-dev gnome-vfs-dev gnutls-dev gtk+-dev jack-audio-connection-kit-dev keyutils-dev krb5-dev libcap-dev libcddb-dev libcroco-dev libdrm-dev libgcrypt-dev libgpg-error-dev libgsf-dev libICE-dev libmad-dev libmodplug-dev libmpeg2-dev libmtp-dev libnotify-dev libogg-dev libpng-dev libproxy-dev librsvg-dev libsdl-dev libSM-dev libtar-dev libtasn1-dev libtheora-dev libupnp-dev libusb-dev libusb-compat-dev libva-dev libvorbis-dev libX11-dev libXau-dev libxcb-dev libXcomposite-dev libXcursor-dev libXdamage-dev libXdmcp-dev libXext-dev libXfixes-dev libXi-dev libxml2-dev libXpm-dev libXrandr-dev libXrender-dev libXxf86vm-dev mesa-dev openldap-client-dev openssl-dev orbit-dev pango-dev pixman-dev qt-core-dev samba-dev sdl-image-dev speex-dev sqlite-dev taglib-dev talloc-dev udev-dev util-linux-ng-dev v4l-utils-dev x264-dev xcb-util-dev zlib-dev"
+RECOMMENDED=""
+CONFLICT=""
+
+NOTES=""
+
+pbs_unpack() {
+        ypkg_unpack
+}
+
+pbs_config() {
+	YPB_CONFIG+=""
+	ypkg_config
+}
+
+pbs_build() {
+	ypkg_make
+}
+
+pbs_install() {
+	ypkg_mkinstall
+}

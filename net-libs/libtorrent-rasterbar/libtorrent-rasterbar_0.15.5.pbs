@@ -11,8 +11,8 @@ PACKAGER="Zhongxin Huang, hzx@115.com"
 
 SRC_URI="http://libtorrent.googlecode.com/files/"$N-$V$R".tar.gz"
 
-RDEPEND=""
-BDEPEND=" "
+RDEPEND="boost gcc glibc openssl zlib"
+BDEPEND="boost-dev gcc-dev glibc-dev openssl-dev zlib-dev"
 RECOMMENDED=""
 CONFLICT=""
 
@@ -23,7 +23,7 @@ pbs_unpack() {
 }
 
 pbs_config() {
-	YPB_CONFIG+=""
+	YPB_CONFIG+="--enable-python-binding"
 	ypkg_config
 }
 

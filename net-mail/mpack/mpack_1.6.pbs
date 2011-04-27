@@ -1,0 +1,38 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="Command-line MIME encoding and decoding utilities"
+HOMEPAGE="ftp://ftp.andrew.cmu.edu/pub/mpack/"
+REPO=""
+LICENSE="GPL"
+PRIORITY=""
+PACKAGER="Zhongxin Huang, hzx@115.com"
+
+SRC_URI="ftp://ftp.andrew.cmu.edu/pub/"$N"/"$N-$V$R".tar.gz"
+
+RDEPEND="glibc"
+BDEPEND="glibc-dev"
+RECOMMENDED=""
+CONFLICT=""
+
+NOTES=""
+
+pbs_unpack() {
+        ypkg_unpack
+}
+
+pbs_config() {
+	ypkg_patch mpack-1.6-gentoo.patch
+	YPB_CONFIG+=""
+	ypkg_config
+}
+
+pbs_build() {
+	ypkg_make
+}
+
+pbs_install() {
+	ypkg_mkinstall
+	ypkg_dodoc README.* Changes
+}

@@ -1,0 +1,36 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="Partimage is opensource disk backup software."
+HOMEPAGE="www.partimage.org"
+REPO=""
+LICENSE="GPLv2"
+PRIORITY=""
+PACKAGER="Zhongxin Huang, hzx@115.com"
+
+SRC_URI="ftp://lug.mtu.edu/gentoo/distfiles/"$N-$V$R".tar.bz2"
+
+RDEPEND="bzip2 gcc glibc newt openssl slang zlib"
+BDEPEND="bzip2-dev gcc-dev glibc-dev newt-dev openssl-dev slang-dev zlib-dev"
+RECOMMENDED=""
+CONFLICT=""
+
+NOTES=""
+
+pbs_unpack() {
+        ypkg_unpack
+}
+
+pbs_config() {
+	YPB_CONFIG+=""
+	ypkg_config
+}
+
+pbs_build() {
+	ypkg_make
+}
+
+pbs_install() {
+	ypkg_mkinstall
+}
