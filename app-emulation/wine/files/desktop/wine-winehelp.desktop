@@ -1,0 +1,15 @@
+[Desktop Entry]
+Name=Wine Help Browser
+Name[fi]=Wine-ohjeselain
+Name[ca]=Ajuda del Wine
+Name[zh_CN]=Wine 帮助查看器
+Comment=Windows Help Browser
+Comment[fi]=Winen Windows-ohjeselain
+Comment[ca]=Visualitzeu l'ajuda dels programes del Windows
+Comment[zh_CN]=Windows 帮助查看器
+NoDisplay=true
+Exec=winhelp
+Terminal=false
+Type=Application
+Icon=wine
+Categories=Wine;Utility;Emulator;

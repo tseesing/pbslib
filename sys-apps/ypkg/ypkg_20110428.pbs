@@ -25,3 +25,30 @@ pbs_build() {
 pbs_install() {
 	ypkg_mkinstall
 }
+
+pbs_postinst() {
+	if [ ! -f /etc/yget.conf  ];then
+		cat >/etc/yget.conf <<"EOF"
+ACCEPT_REPO="stable"
+YPPATH_URI="http://pkg.ylmf.com/packages"
+YPPATH_PKGDEST="/home/Apps"
+EOF
+	fi
+	if [ ! -f /etc/ybs.conf  ];then
+		cat >/etc/ybs.conf <<"EOF"
+CC=gcc
+CXX=g++
+#CFLAGS="-march=native -mtune=native -O2 -fomit-frame-pointer -pipe"
+CFLAGS="-march=i686 -mtune=i686 -O2 -pipe"
+CXXFLAGS="$CFLAGS"
+MAKEOPTS="-j6"
+#YPINST_PREFIX="--prefix=/usr"
+YPINST_PREFIX=
+ACCEPT_REPO="stable"
+#YP_I18N="en zh_CN"
+#YPPATH_DIST_URI="http://pkg.ylmf.com/sources"
+AUTO_INSTALL="yes"
+YPPATH_PACKAGE="/var/ypkg/packages"
+EOF
+	fi
+}

@@ -1,0 +1,15 @@
+[Desktop Entry]
+Name=Wine File
+Name[fi]=Wine File
+Name[ca]=Explorador d'arxius del Wine
+Name[zh_CN]=Wine 文件管理器
+Comment=Wine File Browser
+Comment[fi]=Winen tiedostoselain
+Comment[ca]=Exploreu les vostres unitats
+Comment[zh_CN]=虚拟 Windows 运行环境的文件管理器
+NoDisplay=true
+Exec=winefile
+Terminal=false
+Type=Application
+Icon=wine
+Categories=Wine;Utility;Emulator;

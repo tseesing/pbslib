@@ -3,7 +3,7 @@
 #
 
 DESCRIPTION="Icecream was created by SUSE based on distcc. Like distcc, Icecream takes compile jobs from a (KDE) build and distributes it among remote machines allowing a parallel build"
-HOMEPAGE=""
+HOMEPAGE="http://en.opensuse.org/Icecream"
 REPO=""
 LICENSE="GPL"
 PRIORITY=""
@@ -16,7 +16,11 @@ BDEPEND=" "
 RECOMMENDED=""
 CONFLICT=""
 
-NOTES="http://en.opensuse.org/Icecream"
+NOTES="To use the symlinks method, do something like this:
+ln -s icecc /usr/bin/gcc
+ln -s icecc /usr/bin/g++
+ln -s icecc /usr/bin/cc
+ln -s icecc /usr/bin/c++"
 
 pbs_unpack() {
         ypkg_unpack
@@ -33,4 +37,6 @@ pbs_build() {
 
 pbs_install() {
 	ypkg_mkinstall
+	cd "$YPPATH_DEST"/usr/bin
+	rm c++ cc g++ gcc
 }

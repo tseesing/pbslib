@@ -1,0 +1,40 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION=" a music player which can be running under Linux. "
+HOMEPAGE="http://code.google.com/p/rhythmcat/"
+REPO=""
+LICENSE="GPLv3"
+PRIORITY=""
+PACKAGER="Zhongxin Huang, hzx@115.com"
+
+SRC_URI="http://rhythmcat.googlecode.com/files/RhythmCat-1.0.0-alpha1~110402.tar.bz2"
+
+RDEPEND="atk cairo dbus dbus-glib expat fontconfig freetype gcc glib2 glibc gst-plugins-base gstreamer gtk+ libpng libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libxml2 libXrandr libXrender pango pixman zlib"
+BDEPEND=""
+RECOMMENDED=""
+CONFLICT=""
+
+NOTES=""
+
+pbs_unpack() {
+        ypkg_unpack
+}
+
+pbs_config() {
+	YPB_CONFIG+=""
+	ypkg_config
+}
+
+pbs_build() {
+	ypkg_make
+}
+
+pbs_install() {
+	ypkg_mkinstall
+}
+
+pbs_postinst() {
+	gnome2_desktop_database_update
+}
