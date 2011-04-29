@@ -1,0 +1,35 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="Free CAD software * for your DWG files"
+HOMEPAGE="http://www.3ds.com/products/draftsight/free-cad-software/"
+REPO=""
+LICENSE=""
+PRIORITY=""
+PACKAGER="Zhongxin Huang, hzx@115.com"
+
+SRC_URI="http://dl-ak.solidworks.com/nonsecure/"$N-$V$R"/beta1/DraftSight.deb"
+
+RDEPEND="cups expat fontconfig freetype gcc glib2 glibc gnutls keyutils krb5 libdrm libgcrypt libgpg-error libICE libpng libSM libtasn1 libX11 libXau libxcb libXdamage libXdmcp libXext libXfixes libXrender libXt libXxf86vm mesa nas qt-core udev util-linux-ng zlib"
+BDEPEND=""
+RECOMMENDED=""
+CONFLICT=""
+
+NOTES=""
+
+DESKTOPFILE="dassault-systemes_draftsight.desktop"
+
+pbs_unpack() {
+        ypkg_unpack
+}
+
+pbs_install() {
+	ypkg_docp data/*  "$YPPATH_DEST"
+	cd "$YPPATH_DEST"
+	ypkg_dodesktop opt/dassault-systemes/draftsight/mime/dassault-systemes_draftsight.desktop
+}
+
+pbs_postinst() {
+	gnome2_desktop_database_update
+}

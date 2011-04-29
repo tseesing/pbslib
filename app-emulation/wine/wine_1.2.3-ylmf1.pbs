@@ -26,8 +26,8 @@ pbs_install() {
 	ypkg_mkinstall
 	#
 	cd "$YPPATH_DEST"
-	ypkg_docp "$FILES_PATH"/files/menu/wine.menu                 etc/xdg/menus/applications-merged/
-	ypkg_docp "$FILES_PATH"/files/desktop/*.desktop              usr/share/applications/
-	ypkg_docp "$FILES_PATH"/files/desktop-directories/*.desktop  usr/share/desktop-directories/
-	ypkg_docp "$FILES_PATH"/files/icon/*                         usr/share/icons/hicolor/  
+	ypkg_docp "$FILES_PATH"/files/menu/wine.menu          etc/xdg/menus/applications-merged/
+	ypkg_docp "$FILES_PATH"/files/desktop/*.desktop       usr/share/applications/
+	ypkg_docp "$FILES_PATH"/files/desktop-directories/*   usr/share/desktop-directories/
+	ypkg_docp "$FILES_PATH"/files/icon/*                  usr/share/icons/hicolor/  
 }
