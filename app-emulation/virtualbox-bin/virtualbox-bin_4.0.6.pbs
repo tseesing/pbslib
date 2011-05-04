@@ -45,7 +45,7 @@ pbs_install() {
 	mv vboxnetadp.ko vboxdrv.ko vboxnetflt.ko "$YPPATH_DEST"/lib/modules/"$(uname -r)"/kernel/misc
 	#
 	install -d -m755 "$YPPATH_DEST"/usr/share/pixmaps
-	mv /usr/share/pixmaps/VBox.png  "$YPPATH_DEST"/usr/share/pixmaps
+	ypkg_docp /opt/VirtualBox/icons/32x32/virtualbox.png  "$YPPATH_DEST"/usr/share/pixmaps/
 	#
 	install -d -m755 "$YPPATH_DEST"/usr/share/applications
 	mv /usr/share/applications/virtualbox.desktop "$YPPATH_DEST"/usr/share/applications

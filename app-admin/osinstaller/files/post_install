@@ -71,11 +71,6 @@ for app in $apps; do
 done
 chroot "$TARGETDIR" chown "$INS_USERNAME":"$INS_USERNAME" /home/"$INS_USERNAME"/.gnomenu/favorites/*.desktop
 
-#Update ypkg configfile
-chroot "$TARGETDIR" sed -i '/YPPATH_PKGDEST=/d' /etc/yget.conf
-chroot "$TARGETDIR" su "$INS_USERNAME" -c "mkdir -p /home/"$INS_USERNAME"/Apps"
-echo "YPPATH_PKGDEST=\"/home/"$INS_USERNAME"/Apps\""  >>"$TARGETDIR"/etc/yget.conf
-
 #rmmove isodevice
 umount "$TARGETDIR/isodevice"
 rmdir "$TARGETDIR/isodevice"

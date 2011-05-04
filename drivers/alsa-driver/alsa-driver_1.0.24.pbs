@@ -32,7 +32,32 @@ pbs_build() {
 }
 
 pbs_install() {
-	ypkg_mkinstall
+	#ypkg_mkinstall
+	#most koes were provided by linux-kernel 
+	ypkg_docp usb/6fire/snd-usb-6fire.ko          "$YPPATH_DEST"/lib/modules/"$(uname -r)"/kernel/sound/usb/6fire/
+	ypkg_docp pci/pdplus/snd-pdplus.ko            "$YPPATH_DEST"/lib/modules/"$(uname -r)"/kernel/sound/pci/pdplus/
+	ypkg_docp pci/hda/snd-hda-codec-nvhdmi.ko     "$YPPATH_DEST"/lib/modules/"$(uname -r)"/kernel/sound/pci/hda/
+	ypkg_docp pci/hda/snd-hda-codec-intelhdmi.ko  "$YPPATH_DEST"/lib/modules/"$(uname -r)"/kernel/sound/pci/hda/
+	ypkg_docp pci/hda/snd-hda-codec-atihdmi.ko    "$YPPATH_DEST"/lib/modules/"$(uname -r)"/kernel/sound/pci/hda/
+	ypkg_docp misc/ac97_bus.ko                    "$YPPATH_DEST"/lib/modules/"$(uname -r)"/kernel/sound/misc/
+	ypkg_docp acore/snd-timer.ko                  "$YPPATH_DEST"/lib/modules/"$(uname -r)"/kernel/sound/acore/
+	ypkg_docp acore/snd-rawmidi.ko                "$YPPATH_DEST"/lib/modules/"$(uname -r)"/kernel/sound/acore/
+	ypkg_docp acore/snd-pcm.ko                    "$YPPATH_DEST"/lib/modules/"$(uname -r)"/kernel/sound/acore/
+	ypkg_docp acore/snd-page-alloc.ko             "$YPPATH_DEST"/lib/modules/"$(uname -r)"/kernel/sound/acore/
+	ypkg_docp acore/snd.ko                        "$YPPATH_DEST"/lib/modules/"$(uname -r)"/kernel/sound/acore/
+	ypkg_docp acore/snd-hwdep.ko                  "$YPPATH_DEST"/lib/modules/"$(uname -r)"/kernel/sound/acore/
+	ypkg_docp acore/snd-hrtimer.ko                "$YPPATH_DEST"/lib/modules/"$(uname -r)"/kernel/sound/acore/
+	ypkg_docp acore/seq/snd-seq-virmidi.ko        "$YPPATH_DEST"/lib/modules/"$(uname -r)"/kernel/sound/acore/seq/
+	ypkg_docp acore/seq/snd-seq-midi.ko           "$YPPATH_DEST"/lib/modules/"$(uname -r)"/kernel/sound/acore/seq/
+	ypkg_docp acore/seq/snd-seq-midi-event.ko     "$YPPATH_DEST"/lib/modules/"$(uname -r)"/kernel/sound/acore/seq/
+	ypkg_docp acore/seq/snd-seq-midi-emul.ko      "$YPPATH_DEST"/lib/modules/"$(uname -r)"/kernel/sound/acore/seq/
+	ypkg_docp acore/seq/snd-seq.ko                "$YPPATH_DEST"/lib/modules/"$(uname -r)"/kernel/sound/acore/seq/
+	ypkg_docp acore/seq/snd-seq-dummy.ko          "$YPPATH_DEST"/lib/modules/"$(uname -r)"/kernel/sound/acore/seq/
+	ypkg_docp acore/seq/snd-seq-device.ko         "$YPPATH_DEST"/lib/modules/"$(uname -r)"/kernel/sound/acore/seq/
+	ypkg_docp acore/seq/oss/snd-seq-oss.ko        "$YPPATH_DEST"/lib/modules/"$(uname -r)"/kernel/sound/acore/seq/oss/
+	ypkg_docp acore/oss/snd-pcm-oss.ko            "$YPPATH_DEST"/lib/modules/"$(uname -r)"/kernel/sound/acore/oss/
+	ypkg_docp acore/oss/snd-mixer-oss.ko          "$YPPATH_DEST"/lib/modules/"$(uname -r)"/kernel/sound/acore/oss/
+	ypkg_dodoc doc/*
 }
 
 pbs_postinst() {

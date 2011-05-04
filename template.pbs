@@ -48,7 +48,8 @@ CONFLICT=""
 NOTES=""
 
 # specify desktop file
-#DESKTOPFILE="glchess.desktop"
+#DESKTOPFILE="glchess.desktop" or "/opt/test/test.desktop"
+#ICONFILE="test.png"   or "/opt/test/test.png"
 
 #
 #MYSPLIT="usr/src $N-headers"
