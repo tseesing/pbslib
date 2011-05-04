@@ -4,7 +4,7 @@
 
 DESCRIPTION="Emulate a complete PC on your PC without the usual performance overhead of most emulators"
 HOMEPAGE="http://www.vmware.com/"
-REPO=""
+REPO="testing"
 LICENSE=""
 PACKAGER="Zhongxin Huang, hzx@115.com"
 
@@ -25,8 +25,8 @@ pbs_install() {
 	ypkg_domv /usr/lib/{vmware,vmware-installer,vmware-vix}  usr/lib
 	ypkg_domv /usr/bin/vm*					 usr/bin
 	ypkg_domv /etc/init.d/vmware          		         etc/init.d
-	ypkg_doln   /etc/init.d/vmware 			         etc/rc3.d/S19vmware
-	ypkg_doln   /etc/init.d/vmware  			         etc/rc3.d/K08vmware
+	ypkg_doln /etc/init.d/vmware 			         etc/rc3.d/S19vmware
+	ypkg_doln /etc/init.d/vmware  			         etc/rc3.d/K08vmware
 	ypkg_domv /usr/share/applications/{vmware-netcfg.desktop,vmware-player.desktop,vmware-workstation.desktop} usr/share/applications
 	ypkg_domv /etc/xdg/menus/applications-merged/vmware-ace-vms.menu etc/xdg/menus/applications-merged
 	#

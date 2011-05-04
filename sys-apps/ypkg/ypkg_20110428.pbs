@@ -31,7 +31,7 @@ pbs_postinst() {
 		cat >/etc/yget.conf <<"EOF"
 ACCEPT_REPO="stable"
 YPPATH_URI="http://pkg.ylmf.com/packages"
-YPPATH_PKGDEST="/home/Apps"
+YPPATH_PKGDEST="/var/ypkg/packages"
 EOF
 	fi
 	if [ ! -f /etc/ybs.conf  ];then

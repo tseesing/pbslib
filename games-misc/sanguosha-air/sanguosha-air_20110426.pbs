@@ -1,0 +1,28 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="san guo sha (AIR)"
+HOMEPAGE="http://www.sanguosha.com/web2/downloads.asp"
+REPO=""
+LICENSE=""
+PRIORITY=""
+PACKAGER="Zhongxin Huang, hzx@115.com"
+
+SRC_URI="http://web.sanguosha.com/2/air/SanGuoSha.air"
+
+RDEPEND="adobe-air-sdk"
+BDEPEND=""
+RECOMMENDED=""
+CONFLICT=""
+
+NOTES=""
+
+pbs_install() {
+	ypkg_docp      "$YPPATH_SOURCE"/SanGuoSha.air  "$YPPATH_DEST"/usr/lib/"$N"
+	ypkg_dodesktop "$N.desktop" "$N.png"
+}
+
+pbs_postinst() {
+	gnome2_desktop_database_update
+}

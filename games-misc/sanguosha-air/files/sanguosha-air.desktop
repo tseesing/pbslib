@@ -1,0 +1,12 @@
+[Desktop Entry]
+Name=sanguosha
+Name[zh_CN]=三国杀(AIR)
+Comment=sanguosha online game
+Comment[zh_CN]=三国杀在线游戏
+Exec=adobe-air /usr/lib/sanguosha-air/SanGuoSha.air
+Icon=sanguosha-air
+Terminal=false
+Type=Application
+Categories=GNOME;GTK;Game;
+StartupNotify=true
+Version=1.0

@@ -1,0 +1,93 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="Softwarefamily of powerful x86 virtualizatio (binary version)"
+HOMEPAGE="http://www.virtualbox.org/"
+LICENSE="GPL-2"
+PACKAGER="hzx@115.com"
+
+SRC_URI="http://download.virtualbox.org/virtualbox/"$V"/VirtualBox-"$V"-71344-Linux_x86.run"
+
+RDEPEND=""
+BDEPEND="bin86 dev86 acpica"
+RECOMMENDED=""
+
+DESKTOPFILE="virtualbox.desktop"
+
+NOTES=""
+
+pbs_unpack() {
+	runfile=""$(basename $SRC_URI)""
+}
+
+pbs_config() {
+	mkdir -p "$N-$V"
+	cp "$YPPATH_SOURCE"/"$runfile" .
+	chmod +x "$runfile"
+}
+
+pbs_check() {
+	./"$runfile" --check
+}
+
+pbs_install() {
+	./"$runfile" install
+	install -d -m755 "$YPPATH_DEST"/opt
+	cp -a /opt/VirtualBox  "$YPPATH_DEST"/opt
+	install -d -m755 "$YPPATH_DEST"/usr/bin
+	rm /usr/bin/VirtualBox /usr/bin/VBoxHeadless /usr/bin/VBoxManage /usr/bin/VBoxSDL /usr/bin/VBoxVRDP
+	for i in VirtualBox VBoxHeadless VBoxManage VBoxSDL VBoxVRDP;do
+		ln -sf /opt/VirtualBox/VBox.sh "$YPPATH_DEST"/usr/bin/$i 2>/dev/null
+	done
+	install -d -m755 "$YPPATH_DEST"/lib/modules/"$(uname -r)"/kernel/misc
+	cd /lib/modules/"$(uname -r)"/kernel/misc 
+	mv vboxnetadp.ko vboxdrv.ko vboxnetflt.ko "$YPPATH_DEST"/lib/modules/"$(uname -r)"/kernel/misc
+	#
+	install -d -m755 "$YPPATH_DEST"/usr/share/pixmaps
+	ypkg_docp /opt/VirtualBox/icons/32x32/virtualbox.png  "$YPPATH_DEST"/usr/share/pixmaps/
+	#
+	install -d -m755 "$YPPATH_DEST"/usr/share/applications
+	mv /usr/share/applications/virtualbox.desktop "$YPPATH_DEST"/usr/share/applications
+	#
+	install -d -m755 "$YPPATH_DEST"/etc/init.d  "$YPPATH_DEST"/etc/udev/rules.d
+	[ -f /etc/init.d/vboxdrv ] && mv /etc/init.d/vboxdrv  "$YPPATH_DEST"/etc/init.d
+	mv /etc/vbox  "$YPPATH_DEST"/etc
+	mv /etc/udev/rules.d/10-vboxdrv.rules "$YPPATH_DEST"/etc/udev/rules.d
+	if ! ls /etc/init.d/* >/dev/null 2>/dev/null;then rm -r /etc/init.d;fi
+	#
+	install -d -m755  "$YPPATH_DEST"/usr/lib/python2.6/site-packages
+	mv /usr/lib/python2.6/site-packages/vboxapi*  "$YPPATH_DEST"/usr/lib/python2.6/site-packages
+	#
+	install -d -m755 "$YPPATH_DEST"/usr/src
+	mv /usr/src/vboxhost-"$V" "$YPPATH_DEST"/usr/src
+	#
+	install -d -m755 "$YPPATH_DEST"/var/log
+	[ -f /var/log/vbox-install.log ]   && mv /var/log/vbox-install.log   "$YPPATH_DEST"/var/log  ||true
+	[ -f /var/log/vbox-uninstall.log ] && mv /var/log/vbox-uninstall.log  "$YPPATH_DEST"/var/log ||true  
+	#for systemd
+	ypkg_dounit virtualbox.service
+	ypkg_doln /lib/systemd/system/virtualbox.service "$YPPATH_DEST"/lib/systemd/system/multi-user.target.wants/virtualbox.service
+}
+
+pbs_postinst() {
+	ypkg_groupadd  "vboxusers"
+	gnome2_desktop_database_update
+ 	gnome2_gconfd_reload
+	depmod -a
+	rmmod vboxnetadp
+	rmmod vboxnetflt
+	rmmod vboxdrv
+	modprobe vboxdrv
+	modprobe vboxnetflt
+	modprobe vboxnetadp
+	return 0
+	#systemctl --system daemon-reload
+	#start virtualbox.service
+}
+
+pbs_prerm() {
+	for i in vboxnetflt vboxnetadp vboxdrv;do
+		grep vboxnetflt /proc/modules  >/dev/null 2>/dev/null && rmmod ${i} ||true
+	done
+}

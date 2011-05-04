@@ -1,0 +1,52 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="Emulate a complete PC on your PC without the usual performance overhead of most emulators"
+HOMEPAGE="http://www.vmware.com/"
+REPO="testing"
+LICENSE=""
+PACKAGER="Zhongxin Huang, hzx@115.com"
+
+SRC_URI="https://download2.vmware.com/software/wkst/VMware-Workstation-Full-"$V$R".i386.bundle"
+
+RDEPEND=""
+BDEPEND=" "
+RECOMMENDED=""
+
+NOTES=""
+
+pbs_unpack() {
+        runfile="$(basename "$SRC_URI")"
+}
+
+pbs_build() {
+        mkdir -p "$N-$V"
+        bash  "$YPPATH_SOURCE"/"$runfile"
+}
+
+pbs_install() {
+	mkdir -p "$YPPATH_DEST"
+	ypkg_docp "$FILES_PATH"/files/vmware                                   /etc/init.d/
+	/etc/init.d/vmware start
+	cd "$YPPATH_DEST"
+	ypkg_docp /lib/modules/"$(uname -r)"/misc/{vmmon.ko,vmnet.ko,vmblock.ko,vmci.ko,vsock.ko}  lib/modules/"$(uname -r)"/misc/
+	ypkg_domv /etc/{vmware,vmware-installer,vmware-vix}	               etc/
+	ypkg_domv /usr/lib/{vmware,vmware-installer,vmware-vix}                usr/lib/
+	ypkg_domv /usr/bin/vm*					               usr/bin/
+	ypkg_domv /usr/share/applications/{vmware-netcfg.desktop,vmware-player.desktop,vmware-workstation.desktop}  usr/share/applications/
+	ypkg_domv /etc/xdg/menus/applications-merged/vmware-ace-vms.menu       etc/xdg/menus/applications-merged/
+	ypkg_docp "$FILES_PATH"/files/vmware                                   etc/init.d/
+	ypkg_docp usr/lib/vmware/share/icons/hicolor/22x22/apps/{vmware-netcfg.png,vmware-player.png,vmware-workstation.png} usr/share/pixmaps/
+	#for systemd
+	ypkg_dounit vmware.service
+	ypkg_doln /lib/systemd/system/vmware.service                          lib/systemd/system/multi-user.target.wants/vmware.service
+}
+
+pbs_postinst() {
+	depmod -a
+	for i in vsock vmci vmblock vmnet vmmon; do 
+		modprobe "$i"
+	done
+	return 0
+}

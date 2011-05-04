@@ -1,0 +1,8 @@
+[Unit]
+Description=VMare Workstation Linux kernel module
+
+[Service]
+ExecStart=/etc/init.d/vmware start
+
+[Install]
+WantedBy=multi-user.target
