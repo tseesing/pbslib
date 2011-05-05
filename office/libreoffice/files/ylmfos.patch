@@ -1,0 +1,11 @@
+--- apply	2011-03-15 18:05:04.000000000 +0800
++++ apply.new	2011-05-05 12:03:36.817277808 +0800
+@@ -95,6 +95,8 @@
+ Frugalware: LinuxCommon, GnomeVFS, GlobalDesktopFiles, NonArkCommon, NoRpath, NovellOnly, NotDebian, FrugalwareOnly
+ # openmamba
+ openmamba: LinuxCommon, GlobalDesktopFiles
++#YlmfOS
++YlmfOS: LinuxCommon, NotDebian, CairoFonts, Shrink
+ #Gentoo
+ GentooBase : LinuxCommon, GentooOnly, NotDebian, BerkeleyDB43
+ GentooUnstable: GentooBase, GentooExperimental
