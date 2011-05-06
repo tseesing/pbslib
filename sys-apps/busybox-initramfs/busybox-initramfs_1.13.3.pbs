@@ -5,7 +5,7 @@
 DESCRIPTION="a statically linked simple stand alone shell that provides only the basic utilities needed for the initramfs."
 HOMEPAGE="http://www.busybox.net/"
 LICENSE="GPL-2"
-PACKAGER="hzx@115.com"
+PACKAGER="<ylmfos@115.com>"
 
 SRC_URI="http://busybox.net/downloads/busybox-"$V$R".tar.bz2"
 

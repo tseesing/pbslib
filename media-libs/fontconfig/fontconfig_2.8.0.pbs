@@ -6,7 +6,7 @@ DESCRIPTION="a library for font customization and configuration"
 HOMEPAGE="http://fontconfig.org/wiki/"
 REPO=""
 LICENSE=""
-PACKAGER="Zhongxin Huang, hzx@115.com"
+PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 SRC_URI="http://fontconfig.org/release/$N-$V$R.tar.gz"
 
 RDEPEND="expat freetype glibc zlib"

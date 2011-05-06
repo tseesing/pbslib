@@ -77,6 +77,13 @@ if [ $want_debug -eq 1 ] ; then
   $GDB "$LIBDIR/$APPNAME" -x $tmpfile
   exit $?
 else
+  #cp default Preferences to HOME
+  #	
+  if [ ! -d $HOME/.config/chromium ]; then
+  	mkdir -p $HOME/.config
+	tar xf /usr/lib/chromium/chromium.tar.bz2 -C $HOME/.config/
+	chown -R $USER:$USER $HOME/.config/chromium
+  fi
   exec $LIBDIR/$APPNAME $CHROMIUM_FLAGS "$@"
 fi
 

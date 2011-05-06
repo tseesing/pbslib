@@ -6,7 +6,7 @@ DESCRIPTION="In-circuit programming (ISP) tool for the NXP (Philips) ARM microco
 HOMEPAGE="http://sourceforge.net/projects/lpc21isp/"
 REPO=""
 LICENSE=""
-PACKAGER="Zhongxin Huang, hzx@115.com"
+PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 
 SRC_URI="http://downloads.sourceforge.net/project/"$N"/"$N"/"$V"/"$N-$V$R".tar.gz"
 

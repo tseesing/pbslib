@@ -6,7 +6,7 @@ DESCRIPTION="The GNU Scientific Library"
 HOMEPAGE="http://www.gnu.org/software/gsl/"
 REPO=""
 LICENSE=""
-PACKAGER="Zhongxin Huang, hzx@115.com"
+PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 
 SRC_URI="ftp://ftp.gnu.org/gnu/"$N"/"$N-$V$R".tar.gz"
 

@@ -6,13 +6,13 @@ DESCRIPTION="ylmfos start menu"
 HOMEPAGE="www.ylmf.com"
 REPO="stable"
 LICENSE=""
-PACKAGER="Zhongxin Huang, hzx@115.com"
+PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 
 SRC_URI="git://192.168.1.58/"$N".git"
 
-RDEPEND="python numpy gst-python python-xlib"
-BDEPEND=" "
-RECOMMENDED="zeitgeist configobj"
+RDEPEND="python numpy gst-python python-xlib zeitgeist configobj"
+BDEPEND=""
+RECOMMENDED=""
 
 NOTES=""
 

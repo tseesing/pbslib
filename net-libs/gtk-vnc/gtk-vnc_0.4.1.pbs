@@ -5,7 +5,7 @@
 DESCRIPTION="VNC viewer widget for GTK."
 HOMEPAGE="http://live.gnome.org/gtk-vnc"
 LICENSE="GPL-2"
-PACKAGER="hzx@115.com"
+PACKAGER="<ylmfos@115.com>"
 SRC_URI="http://ftp.acc.umu.se/pub/GNOME/sources/$N/0.4/$N-$V.tar.bz2"
 
 RDEPEND="gtk+ atk pango cairo pixman libxml2 directfb libpng libxcb gnutls libgcrypt libgcrypt libgpg-error cyrus-sasl gtk+ glib2 

@@ -5,7 +5,7 @@
 DESCRIPTION="a general purpose audio and music encoding format. This is useful for creating (encoding) and playing (decoding) sound in an open (patent free) format."
 HOMEPAGE="http://xiph.org/vorbis"
 LICENSE="GPL-2"
-PACKAGER="hzx@115.com"
+PACKAGER="<ylmfos@115.com>"
 
 SRC_URI="http://downloads.xiph.org/releases/vorbis/"$N-$V$R".tar.bz2"
 

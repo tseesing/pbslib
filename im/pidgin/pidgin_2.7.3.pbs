@@ -6,7 +6,7 @@ DESCRIPTION="GTK Instant Messenger client"
 HOMEPAGE="http://pidgin.im/"
 REPO=""
 LICENSE=""
-PACKAGER="Zhongxin Huang, hzx@115.com"
+PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 SRC_URI="http://downloads.sourceforge.net/project/pidgin/Pidgin/2.7.3/"$N-$V$R".tar.gz"
 
 RDEPEND="dbus-glib dbus libX11 libXext libXScrnSaver libSM libICE startup-notification

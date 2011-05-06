@@ -5,7 +5,7 @@
 DESCRIPTION="Python interface to the OpenSSL library"
 HOMEPAGE="http://pyopenssl.sourceforge.net/ http://pypi.python.org/pypi/pyOpenSSL"
 LICENSE="GPL-2"
-PACKAGER="hzx@115.com"
+PACKAGER="<ylmfos@115.com>"
 
 SRC_URI="http://pypi.python.org/packages/source/p/pyOpenSSL/pyOpenSSL-"$V$R".tar.gz"
 

@@ -5,7 +5,7 @@
 DESCRIPTION="Common library for accessing Microsoft Media Server (MMS) media streaming protocol"
 HOMEPAGE="http://sourceforge.net/projects/libmms/ http://launchpad.net/libmms/"
 LICENSE="GPL-2"
-PACKAGER="hzx@115.com"
+PACKAGER="<ylmfos@115.com>"
 
 SRC_URI="http://downloads.sourceforge.net/project/"$N"/"$N"/"$V$R"/"$N-$V$R".tar.gz"
 

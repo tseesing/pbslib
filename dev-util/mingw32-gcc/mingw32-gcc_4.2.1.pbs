@@ -5,7 +5,7 @@
 DESCRIPTION="A C and C++ cross-compilers for building Windows executables on Linux"
 HOMEPAGE="http://mingw.sf.net"
 LICENSE="LGPL"
-PACKAGER="hzx@115.com"
+PACKAGER="<ylmfos@115.com>"
 SRC_URI="http://sourceforge.net/projects/mingw/files/MinGW/BaseSystem/GCC/Version4/Previous%20Testing_%20gcc-$V$R-mingw-src-2/gcc-$V$R-2-src.tar.gz"
 
 RDEPEND=""

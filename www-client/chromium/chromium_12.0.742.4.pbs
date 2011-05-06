@@ -74,13 +74,15 @@ pbs_install() {
 	#     install -m 0755 -D \
 	#        out/Release/libffmpegsumo.so 
 	#        "${YPPATH_DEST}"/usr/lib/chromium/libffmpegsumo.so
-   	install -m 0644 -D   	           out/Release/chrome.1         "${YPPATH_DEST}"/usr/share/man/man1/chromium.1
+   	install -m 0644 -D   	           out/Release/chrome.1         "${YPPATH_DEST}"/usr/share/man/man1/chromium-browser.1
         install -m 0644 -D                 LICENSE    	                "${YPPATH_DEST}"/usr/share/licenses/chromium/LICENSE
 	ypkg_dodesktop  chromium.desktop 
-        install -m 0755 -D   	          "$FILES_PATH/files"/chromium-browser.sh "${YPPATH_DEST}"/usr/bin/chromium
 	for size in 16 22 24 32 48 64 128 256; do
 		ypkg_docp_rename chrome/app/theme/chromium/product_logo_"${size}".png "${YPPATH_DEST}"/usr/share/icons/hicolor/"${size}"x"${size}"/apps/chromium.png
 	done
+        install -m 0755 -D   	          "$FILES_PATH/files"/chromium-browser.sh "${YPPATH_DEST}"/usr/bin/chromium
 	#
         find "${YPPATH_DEST}"/usr/lib/chromium/ -name "*.d" -type f -delete
+	#
+	ypkg_docp "$FILES_PATH"/files/default-preferences/"$N".tar.bz2  "${YPPATH_DEST}"/usr/lib/chromium/
 }

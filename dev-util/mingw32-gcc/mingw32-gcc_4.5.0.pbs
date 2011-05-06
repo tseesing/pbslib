@@ -6,7 +6,7 @@ DESCRIPTION="A C and C++ cross-compilers for building Windows executables on Lin
 HOMEPAGE="http://mingw.sf.net"
 REPO="testing"
 LICENSE="LGPL"
-PACKAGER="hzx@115.com"
+PACKAGER="<ylmfos@115.com>"
 SRC_URI=" http://downloads.sourceforge.net/project/mingw/MinGW/BaseSystem/GCC/Version4/gcc-$V$R-1/gcc-$V$R-1-mingw32-src.tar.lzma 
           http://sourceforge.net/projects/mingw/files/MinGW/mpc/mpc-0.8.1-1/mpc-0.8.1-1-mingw32-src.tar.lzma
 	  http://sourceforge.net/projects/mingw/files/MinGW/mpfr/mpfr-2.4.1-1/mpfr-2.4.1-1-mingw32-src.tar.lzma

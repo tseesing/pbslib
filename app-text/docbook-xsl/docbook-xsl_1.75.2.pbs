@@ -6,7 +6,7 @@ DESCRIPTION="XSL Stylesheets for Docbook"
 HOMEPAGE="http://wiki.docbook.org/topic/DocBookXslStylesheets"
 REPO=""
 LICENSE="GPL-2"
-PACKAGER="hzx@115.com"
+PACKAGER="<ylmfos@115.com>"
 SRC_URI="http://downloads.sourceforge.net/docbook/"$N-$V$R".tar.bz2 http://downloads.sourceforge.net/docbook/"$N"-doc-"$V$R".tar.bz2"
 
 RDEPEND=""

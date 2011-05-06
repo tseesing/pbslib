@@ -5,7 +5,7 @@
 DESCRIPTION="Small but powerful ftp client"
 HOMEPAGE="http://lftp.yar.ru/"
 LICENSE="GPL-2"
-PACKAGER="hzx@115.com"
+PACKAGER="<ylmfos@115.com>"
 SRC_URI="http://www.ibiblio.org/pub/Linux/system/network/file-transfer/"$N-$V$R".tar.gz"
 
 RDEPEND="expat gnutls zlib libgcrypt libgpg-error glibc gcc readline ncurses gcc"

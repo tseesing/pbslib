@@ -6,7 +6,7 @@ DESCRIPTION="Fluendo mp3 decoder GStreamer plugin"
 HOMEPAGE="http://www.fluendo.com/resources/fluendo_mp3.php"
 REPO=""
 LICENSE="GPL-2"
-PACKAGER="hzx@115.com"
+PACKAGER="<ylmfos@115.com>"
 
 SRC_URI="http://core.fluendo.com/gstreamer/src/"$N"/"$N-$V$R".tar.bz2"
 

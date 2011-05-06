@@ -5,7 +5,7 @@
 DESCRIPTION="a strictly RFC 3986 compliant URI parsing library written in C"
 HOMEPAGE="http://uriparser.sourceforge.net/"
 LICENSE="GPL-2"
-PACKAGER="hzx@115.com"
+PACKAGER="<ylmfos@115.com>"
  
 SRC_URI="http://downloads.sourceforge.net/project/"$N"/Sources/"$V$R"/"$N-$V$R".tar.gz"
 

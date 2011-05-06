@@ -5,7 +5,7 @@
 DESCRIPTION="libtasn1 is a highly portable C library that encodes and decodes DER/BER data following an ASN.1 schema."
 HOMEPAGE="http://www.gnu.org/software/libtasn1/"
 LICENSE="GPL-2"
-PACKAGER="hzx@115.com"
+PACKAGER="<ylmfos@115.com>"
 
 SRC_URI="http://mirrors.kernel.org/gnu/"$N"/"$N-$V$R".tar.gz"
 

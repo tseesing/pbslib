@@ -5,7 +5,7 @@
 DESCRIPTION="X.Org GL protocol headers"
 HOMEPAGE="http://xorg.freedesktop.org/"
 LICENSE="GPL-2"
-PACKAGER="hzx@115.com"
+PACKAGER="<ylmfos@115.com>"
 SRC_URI="http://xorg.freedesktop.org/archive/individual/proto/"$N-$V$R".tar.bz2"
 
 RDEPEND=""

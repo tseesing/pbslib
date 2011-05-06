@@ -7,7 +7,7 @@ HOMEPAGE="http://linuxwireless.org/en/users/Drivers/b43"
 REPO=""
 LICENSE="GPL"
 PRIORITY=""
-PACKAGER="Zhongxin Huang, hzx@115.com"
+PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 
 SRC_URI="http://mirror2.openwrt.org/sources/broadcom-wl-"$V$R".tar.bz2"
 

@@ -5,7 +5,7 @@
 DESCRIPTION="An advanced interactive shell for Python."
 HOMEPAGE="http://ipython.scipy.org/ http://pypi.python.org/pypi/ipython"
 LICENSE="BSD"
-PACKAGER="hzx@115.com"
+PACKAGER="<ylmfos@115.com>"
 
 SRC_URI="http://ipython.scipy.org/dist/"$V"/"$N-$V$R".tar.gz"
 

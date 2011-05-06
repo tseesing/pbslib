@@ -1,0 +1,53 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="A GTK+ interface to MPlayer"
+HOMEPAGE="http://code.google.com/p/gnome-mplayer/"
+REPO=""
+LICENSE="GPL"
+PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
+
+SRC_URI="http://gnome-mplayer.googlecode.com/files/"$N-$V$R".tar.gz"
+
+RDEPEND="alsa-lib atk cairo dbus dbus-glib expat fontconfig freetype gcc glib2 glibc gtk+ libgpod liblunar liblunar-gtk libnotify libplist libpng libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libxml2 libXrandr libXrender libXScrnSaver nautilus pango pixman sqlite zlib"
+BDEPEND=""
+RECOMMENDED=""
+CONFLICT=""
+
+NOTES=""
+
+pbs_unpack() {
+        ypkg_unpack
+}
+
+pbs_config() {
+	YPB_CONFIG+="--disable-schemas-install --enable-nautilus --enable-panscan "
+	ypkg_config
+}
+
+pbs_build() {
+	ypkg_make
+}
+
+pbs_install() {
+	ypkg_mkinstall
+}
+
+pbs_postinst() {
+	gnome2_install_schema /usr/share/glib-2.0/schemas/apps.gnome-mplayer.preferences.gschema.xml
+	gnome2_install_schema /usr/share/glib-2.0/schemas/apps.gnome-mplayer.preferences.enums.xml
+	gnome2_install_schema /usr/share/glib-2.0/schemas/apps.gecko-mediaplayer.preferences.gschema.xml
+	gnome2_desktop_database_update
+	gnome2_icon_cache_update
+	gnome2_gconfd_reload
+	gnome2_mime_database_update
+}
+
+pbs_postrm() {
+	gnome2_desktop_database_update
+	gnome2_icon_cache_update
+	gnome2_gconfd_reload
+	gnome2_mime_database_update
+
+}

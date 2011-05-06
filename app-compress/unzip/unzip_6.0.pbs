@@ -6,7 +6,7 @@ DESCRIPTION="unzipper for pkzip-compressed files"
 HOMEPAGE="http://www.info-zip.org/UnZip.html"
 REPO=""
 LICENSE=""
-PACKAGER="Zhongxin Huang, hzx@115.com"
+PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 SRC_URI="http://downloads.sourceforge.net/infozip/unzip60.tar.gz"
 
 RDEPEND="glibc"

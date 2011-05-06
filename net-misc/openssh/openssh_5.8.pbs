@@ -5,7 +5,7 @@
 DESCRIPTION="http://www.openssh.org/"
 HOMEPAGE="Port of OpenBSD's free SSH release"
 LICENSE="GPL-2"
-PACKAGER="hzx@115.com"
+PACKAGER="<ylmfos@115.com>"
 
 SRC_URI="http://ftp.openbsd.org/pub/OpenBSD/OpenSSH/portable/"$N-$V"p1.tar.gz"
 

@@ -5,7 +5,7 @@
 DESCRIPTION="The GNOME Desktop package contains the gnome-about program, the libgnome-desktop-2 library and GNOME's core graphics files and icons."
 HOMEPAGE="http://www.gnome.org"
 LICENSE="GPL-2"
-PACKAGER="hzx@115.com"
+PACKAGER="<ylmfos@115.com>"
 SRC_URI="ftp://ftp.gnome.org/pub/gnome/sources/gnome-desktop/2.28/"$N-$V$R".tar.bz2"
 BDEPEND="gconf gnome-doc-utils gtk+ app-text/rarian"
 RECOMMENDED="startup-notification"

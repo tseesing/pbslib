@@ -5,7 +5,7 @@
 DESCRIPTION="an open source implementation of the Lightweight Directory Access Protocol, this is client package"
 HOMEPAGE="http://www.OpenLDAP.org/"
 LICENSE="GPL-2"
-PACKAGER="hzx@115.com"
+PACKAGER="<ylmfos@115.com>"
 
 SRC_URI="ftp://ftp.openldap.org/pub/OpenLDAP/openldap-release/openldap-"$V$R".tgz"
 

@@ -5,7 +5,7 @@
 DESCRIPTION="Common modules of Red Hat's printer administration tool"
 HOMEPAGE="http://cyberelk.net/tim/software/system-config-printer/"
 LICENSE="GPL-2"
-PACKAGER="hzx@115.com"
+PACKAGER="<ylmfos@115.com>"
 
 SRC_URI="http://cyberelk.net/tim/data/"$N"/1.2/"$N-$V$R".tar.xz"
 

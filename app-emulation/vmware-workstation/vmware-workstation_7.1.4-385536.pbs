@@ -6,7 +6,7 @@ DESCRIPTION="Emulate a complete PC on your PC without the usual performance over
 HOMEPAGE="http://www.vmware.com/"
 REPO="testing"
 LICENSE=""
-PACKAGER="Zhongxin Huang, hzx@115.com"
+PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 
 SRC_URI="https://download2.vmware.com/software/wkst/VMware-Workstation-Full-"$V$R".i386.bundle"
 

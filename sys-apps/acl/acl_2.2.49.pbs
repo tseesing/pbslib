@@ -5,7 +5,7 @@
 DESCRIPTION="utilities to administer Access Control Lists, which are used to define more fine-grained discretionary access rights for files and directories."
 HOMEPAGE="http://savannah.nongnu.org/projects/acl"
 LICENSE="GPL-2"
-PACKAGER="hzx@115.com"
+PACKAGER="<ylmfos@115.com>"
 
 SRC_URI="http://mirrors.zerg.biz/nongnu/"$N"/"$N-$V$R".src.tar.gz"
 

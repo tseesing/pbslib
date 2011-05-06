@@ -5,7 +5,7 @@
 DESCRIPTION="Default freedesktop.org sound theme following the XDG theming specification"
 HOMEPAGE="http://www.freedesktop.org/wiki/Specifications/sound-theme-spec"
 LICENSE="GPL-2"
-PACKAGER="hzx@115.com"
+PACKAGER="<ylmfos@115.com>"
 
 SRC_URI="http://cgit.freedesktop.org/"$N"/snapshot/"$N-$V$R".tar.bz2"
 

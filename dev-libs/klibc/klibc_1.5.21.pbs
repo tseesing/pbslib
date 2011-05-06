@@ -5,7 +5,7 @@
 DESCRIPTION="A minimal libc subset for use with initramfs."
 HOMEPAGE="http://www.zytor.com/mailman/listinfo/klibc"
 LICENSE="GPL-2"
-PACKAGER="hzx@115.com"
+PACKAGER="<ylmfos@115.com>"
 
 SRC_URI="http://www.kernel.org/pub/linux/libs/"$N"/1.5/"$N-$V$R".tar.bz2"
 

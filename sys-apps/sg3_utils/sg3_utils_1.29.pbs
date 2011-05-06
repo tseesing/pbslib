@@ -5,7 +5,7 @@
 DESCRIPTION="Apps for querying the sg SCSI interface"
 HOMEPAGE="http://sg.danny.cz/sg/"
 LICENSE="GPL-2"
-PACKAGER="hzx@115.com"
+PACKAGER="<ylmfos@115.com>"
 
 SRC_URI="http://sg.danny.cz/sg/p/"$N-$V$R".tgz"
 

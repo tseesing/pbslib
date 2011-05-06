@@ -5,7 +5,7 @@
 DESCRIPTION="An X.org video driver for codenamed R500-R700 graphics devices. It is being developed by the X11 community, currently centered around Novell and AMD, with the free documentation provided by AMD."
 HOMEPAGE="http://wiki.x.org/wiki/radeonhd"
 LICENSE="GPL-2"
-PACKAGER="hzx@115.com"
+PACKAGER="<ylmfos@115.com>"
 
 SRC_URI="http://cgit.freedesktop.org/xorg/driver/xf86-video-radeonhd/snapshot/"$N-$V$R".tar.bz2"
 

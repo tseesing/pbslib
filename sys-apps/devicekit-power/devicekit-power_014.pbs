@@ -5,7 +5,7 @@
 DESCRIPTION="The devicekit-power provides an interface to enumerate power sources on the system and control system-wide power management."
 HOMEPAGE="http://www.freedesktop.org/wiki/Software/devicekit"
 LICENSE="GPL-2 LGPL-2"
-PACKAGER="hzx@115.com"
+PACKAGER="<ylmfos@115.com>"
 
 SRC_URI="http://cgit.freedesktop.org/DeviceKit/DeviceKit-power/snapshot/DeviceKit-power-"$V$R".tar.bz2"
 

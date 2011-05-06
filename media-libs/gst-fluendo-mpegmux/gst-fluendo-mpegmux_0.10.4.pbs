@@ -6,7 +6,7 @@ DESCRIPTION=" GStreamer plugin for muxing of MPEG2 TS streams"
 HOMEPAGE="http://core.fluendo.com/gstreamer/src/gst-fluendo-mpegmux/"
 REPO=""
 LICENSE="GPL-2"
-PACKAGER="hzx@115.com"
+PACKAGER="<ylmfos@115.com>"
 
 SRC_URI="http://core.fluendo.com/gstreamer/src/"$N"/"$N-$V$R".tar.bz2"
 

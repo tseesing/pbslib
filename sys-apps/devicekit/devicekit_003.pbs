@@ -5,7 +5,7 @@
 DESCRIPTION="D-Bus abstraction for enumerating devices and listening for device events using udev"
 HOMEPAGE="http://www.freedesktop.org/wiki/Software/devicekit"
 LICENSE="GPL-2"
-PACKAGER="hzx@115.com"
+PACKAGER="<ylmfos@115.com>"
 
 SRC_URI="http://hal.freedesktop.org/releases/DeviceKit-"$V$R".tar.gz"
 

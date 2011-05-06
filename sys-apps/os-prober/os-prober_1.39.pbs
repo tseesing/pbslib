@@ -5,7 +5,7 @@
 DESCRIPTION="Utility to detect other OSs on a set of drives"
 HOMEPAGE="http://packages.debian.org/source/sid/os-prober"
 LICENSE="GPL-2"
-PACKAGER="hzx@115.com"
+PACKAGER="<ylmfos@115.com>"
 
 SRC_URI="http://ftp.de.debian.org/debian/pool/main/o/"$N"/"${N}_$V$R".tar.gz"
 

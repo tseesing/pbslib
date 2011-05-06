@@ -6,7 +6,7 @@ DESCRIPTION="Library for manipulation of TIFF (Tag Image File Format) images"
 HOMEPAGE="http://www.remotesensing.org/libtiff/"
 REPO=""
 LICENSE=""
-PACKAGER="Zhongxin Huang, hzx@115.com"
+PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 
 SRC_URI="http://download.osgeo.org/"$N"/tiff-"$V$R".tar.gz"
 

@@ -5,7 +5,7 @@
 DESCRIPTION="OpenGL-like graphic library for Linux"
 HOMEPAGE="http://mesa3d.sourceforge.net/"
 LICENSE=""
-PACKAGER="hzx@115.com"
+PACKAGER="<ylmfos@115.com>"
 SRC_URI="ftp://ftp.freedesktop.org/pub/mesa/$V/MesaLib-$V.tar.bz2  \
 	 ftp://ftp.freedesktop.org/pub/mesa/$V/MesaDemos-$V.tar.bz2  \
 	 ftp://ftp.freedesktop.org/pub/mesa/$V/MesaGLUT-$V.tar.bz2"

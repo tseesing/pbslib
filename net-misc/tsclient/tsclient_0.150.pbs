@@ -5,7 +5,7 @@
 DESCRIPTION="GTK2 frontend for rdesktop"
 HOMEPAGE="http://sourceforge.net/projects/tsclient"
 LICENSE="GPL-2"
-PACKAGER="hzx@115.com"
+PACKAGER="<ylmfos@115.com>"
 SRC_URI="http://nchc.dl.sourceforge.net/project/$N/$N/$V/"$N-$V$R".tar.gz"
 
 RDEPEND="gnome-panel gconf libbonoboui libgnomecanvas libgnome popt libart_lgpl gtk+ atk

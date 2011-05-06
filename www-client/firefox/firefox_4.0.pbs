@@ -7,13 +7,13 @@ HOMEPAGE="http://www.mozilla.com/firefox"
 REPO=""
 LICENSE="multi license"
 PRIORITY=""
-PACKAGER="Zhongxin Huang, hzx@115.com"
+PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 
 SRC_URI="ftp://ftp.mozilla.org/pub/mozilla.org/"$N"/releases/"$V$R"/source/"$N-$V$R".source.tar.bz2"
 
 RDEPEND=""
 BDEPEND=" mercurial curl wireless-tools mesa libIDL"
-RECOMMENDED=""
+RECOMMENDED="ylmfox"
 CONFLICT=""
 
 NOTES="Do not distribute builds with
@@ -52,7 +52,6 @@ pbs_install() {
 	cd "$YPPATH_DEST"
 	ypkg_dodesktop "firefox.desktop"
 	ypkg_docp_rename usr/lib/firefox-4.0/icons/mozicon128.png usr/share/pixmaps/firefox.png
-	rsync -avi "$FILES_PATH"/ylmfox/* .
 }
 
 pbs_postinst() {

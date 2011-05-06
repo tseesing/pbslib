@@ -5,7 +5,7 @@
 DESCRIPTION="an open-source implementation of the OpenGL specification - a system for rendering interactive 3D graphics."
 HOMEPAGE="http://mesa3d.sourceforge.net/"
 LICENSE=""
-PACKAGER="hzx@115.com"
+PACKAGER="<ylmfos@115.com>"
 SRC_URI="ftp://ftp.freedesktop.org/pub/mesa/"$V"/MesaLib-"$V$R".tar.bz2  
 	 ftp://ftp.freedesktop.org/pub/mesa/"$V"/MesaGLUT-"$V$R".tar.bz2"
 

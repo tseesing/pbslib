@@ -6,7 +6,7 @@ DESCRIPTION="OpenOffice productivity suite (binary version)"
 HOMEPAGE="http://www.openoffice.org/"
 REPO=""
 LICENSE="LGPLv3"
-PACKAGER="Zhongxin Huang, hzx@115.com"
+PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 
 SRC_URI="http://download.services.openoffice.org/files/extended/"$V$R"/OOo_"$V$R"_20110110_Linux_x86_install-deb_zh-CN.tar.gz"
 

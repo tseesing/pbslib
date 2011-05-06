@@ -6,7 +6,7 @@ DESCRIPTION="an open source web browser engine."
 HOMEPAGE="http://webkit.org/"
 REPO="testing"
 LICENSE="GPL-2"
-PACKAGER="hzx@115.com"
+PACKAGER="<ylmfos@115.com>"
 SRC_URI="http://builds.nightly.webkit.org/files/trunk/src/WebKit-r69221.tar.bz2"
 
 RDEPEND="enchant gtk+ gail libXi libXrandr libXcursor libXcomposite libXext libXdamage libXfixes gst-plugins-base

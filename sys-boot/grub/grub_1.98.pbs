@@ -5,7 +5,7 @@
 DESCRIPTION="GNU GRUB 2 boot loader"
 HOMEPAGE="http://www.gnu.org/software/grub/"
 LICENSE=""
-PACKAGER="hzx@115.com"
+PACKAGER="<ylmfos@115.com>"
 
 SRC_URI="ftp://alpha.gnu.org/gnu/grub/"$N-$V$R".tar.gz"
 

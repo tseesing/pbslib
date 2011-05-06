@@ -5,7 +5,7 @@
 DESCRIPTION="Tool to setup encrypted devices with dm-crypt"
 HOMEPAGE="http://code.google.com/p/cryptsetup/"
 LICENSE="GPL-2"
-PACKAGER="hzx@115.com"
+PACKAGER="<ylmfos@115.com>"
 
 SRC_URI="http://cryptsetup.googlecode.com/files/"$N-$V$R".tar.bz2"
 

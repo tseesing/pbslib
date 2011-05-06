@@ -5,7 +5,7 @@
 DESCRIPTION="X.Org KB protocol headers"
 HOMEPAGE="http://xorg.freedesktop.org/"
 LICENSE="GPL-2"
-PACKAGER="hzx@115.com"
+PACKAGER="<ylmfos@115.com>"
 SRC_URI="http://www.x.org/releases/X11R7.5/src/proto/"$N-$V$R".tar.bz2"
 
 RDEPEND=""

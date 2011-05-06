@@ -5,7 +5,7 @@
 DESCRIPTION="A set of programs to assemble and manipulate binary and object files (mingw)"
 HOMEPAGE="http://www.mingw.org/"
 LICENSE="GPL"
-PACKAGER="hzx@115.com"
+PACKAGER="<ylmfos@115.com>"
 SRC_URI="http://downloads.sourceforge.net/project/mingw/MinGW/BaseSystem/GNU-Binutils/binutils-$V$R/binutils-$V$R-1-mingw32-src.tar.lzma"
 
 RDEPEND=""

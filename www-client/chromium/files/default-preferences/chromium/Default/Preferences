@@ -1,0 +1,66 @@
+{
+   "browser": {
+      "window_placement": {
+         "bottom": 850,
+         "left": 50,
+         "maximized": false,
+         "right": 1100,
+         "top": 0,
+         "work_area_bottom": 870,
+         "work_area_left": 0,
+         "work_area_right": 1600,
+         "work_area_top": 0
+      }
+   },
+   "countryid_at_install": 17230,
+   "default_search_provider": {
+      "enabled": true,
+      "encodings": "GB2312",
+      "icon_url": "http://www.baidu.com/favicon.ico",
+      "id": "3",
+      "instant_url": "",
+      "keyword": "baidu.com",
+      "name": "\u767E\u5EA6",
+      "prepopulate_id": "21",
+      "search_url": "http://www.baidu.com/s?wd={searchTerms}",
+      "suggest_url": ""
+   },
+   "dns_prefetching": {
+      "host_referral_list": [ 2, [ "http://www.114la.com/", [ "http://api.115.com/", 2.2733802, "http://img.tongji.linezing.com/", 2.2733802, "http://weather.api.115.com/", 2.2733802, "http://www.114la.com/", 9.210104399999997 ] ] ],
+      "startup_list": [ 1, "http://api.115.com/", "http://img.tongji.linezing.com/", "http://weather.api.115.com/", "http://www.114la.com/" ]
+   },
+   "download": {
+      "directory_upgrade": true,
+      "extensions_to_open": ""
+   },
+   "extensions": {
+      "autoupdate": {
+         "next_check": "12949126105359816"
+      },
+      "chrome_url_overrides": {
+         "bookmarks": [ "chrome-extension://eemcgdkfndhakfknompkggombfjjjeno/main.html" ]
+      }
+   },
+   "google": {
+      "services": {
+         "username": ""
+      }
+   },
+   "homepage": "http://www.114la.com/?linux",
+   "homepage_is_newtabpage": false,
+   "ntp": {
+      "pref_version": 3
+   },
+   "plugins": {
+      "enabled_internal_pdf3": true
+   },
+   "profile": {
+      "content_settings": {
+         "pref_version": 1
+      },
+      "exited_cleanly": true
+   },
+   "tabs": {
+      "use_vertical_tabs": false
+   }
+}

@@ -5,7 +5,7 @@
 DESCRIPTION="Python bindings for sys-apps/parted"
 HOMEPAGE="https://fedorahosted.org/pyparted/"
 LICENSE="GPL-2"
-PACKAGER="hzx@115.com"
+PACKAGER="<ylmfos@115.com>"
 
 SRC_URI="https://fedorahosted.org/releases/p/y/"$N"/"$N-$V$R".tar.gz"
 

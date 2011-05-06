@@ -5,7 +5,7 @@
 DESCRIPTION="The polkit package is an application-level toolkit for defining and handling the policy that allows unprivileged processes to speak to privileged processes."
 HOMEPAGE="http://hal.freedesktop.org/docs/PolicyKit"
 LICENSE="GPL-2"
-PACKAGER="hzx@115.com"
+PACKAGER="<ylmfos@115.com>"
 SRC_URI="http://hal.freedesktop.org/releases/"$N-$V$R".tar.gz"
 
 RDEPEND=""

@@ -5,7 +5,7 @@
 DESCRIPTION="Softwarefamily of powerful x86 virtualizatio (binary version)"
 HOMEPAGE="http://www.virtualbox.org/"
 LICENSE="GPL-2"
-PACKAGER="hzx@115.com"
+PACKAGER="<ylmfos@115.com>"
 
 SRC_URI="http://download.virtualbox.org/virtualbox/"$V"/VirtualBox-"$V"-71344-Linux_x86.run"
 

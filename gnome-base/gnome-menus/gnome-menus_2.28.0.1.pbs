@@ -5,7 +5,7 @@
 DESCRIPTION="The GNOME menu system, implementing the F.D.O cross-desktop spec"
 HOMEPAGE="http://www.gnome.org"
 LICENSE="GPL-2"
-PACKAGER="hzx@115.com"
+PACKAGER="<ylmfos@115.com>"
  
 SRC_URI=""ftp://ftp.gnome.org/pub/gnome/sources/gnome-menus/2.28/$N-$V.tar.bz2
 BDEPEND="glib2 intltool python"

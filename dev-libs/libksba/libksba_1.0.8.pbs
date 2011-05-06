@@ -5,7 +5,7 @@
 DESCRIPTION=" makes X.509 certificates and CMS easily accessible to applications"
 HOMEPAGE="http://www.gnupg.org/related_software/libksba"
 LICENSE="GPL-2"
-PACKAGER="hzx@115.com"
+PACKAGER="<ylmfos@115.com>"
  
 SRC_URI="ftp://ftp.gnupg.org/gcrypt/"$N"/"$N-$V$R".tar.bz2"
 

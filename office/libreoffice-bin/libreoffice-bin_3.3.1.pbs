@@ -6,7 +6,7 @@ DESCRIPTION="the free power-packed Open Source personal productivity suite for W
 HOMEPAGE="http://www.libreoffice.org/"
 REPO=""
 LICENSE="LGPL"
-PACKAGER="Zhongxin Huang, hzx@115.com"
+PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 
 SRC_URI=" http://mirror.lupaworld.com/tdf/libreoffice/stable/"$V$R"/deb/x86/LibO_"$V$R"_Linux_x86_install-deb_en-US.tar.gz
 	  http://mirror.lupaworld.com/tdf/libreoffice/stable/"$V$R"/deb/x86/LibO_"$V$R"_Linux_x86_helppack-deb_zh-CN.tar.gz

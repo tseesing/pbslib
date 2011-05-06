@@ -5,7 +5,7 @@
 DESCRIPTION="Driver for ATI/AMD Radeon based video chips, everything from Radeon 7000 to Radeon HD 5890 series."
 HOMEPAGE="http://xorg.freedesktop.org/"
 LICENSE="MIT"
-PACKAGER="hzx@115.com"
+PACKAGER="<ylmfos@115.com>"
 
 SRC_URI="git://anongit.freedesktop.org/xorg/driver/"$N""
 

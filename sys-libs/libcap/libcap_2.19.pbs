@@ -5,7 +5,7 @@
 DESCRIPTION="a library for getting and setting POSIX.1e"
 HOMEPAGE="http://www.kernel.org/"
 LICENSE="GPL-2"
-PACKAGER="hzx@115.com"
+PACKAGER="<ylmfos@115.com>"
 
 SRC_URI="http://www.kernel.org/pub/linux/libs/security/linux-privs/libcap2/"$N-$V$R".tar.bz2"
 

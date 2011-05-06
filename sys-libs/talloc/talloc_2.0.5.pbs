@@ -6,7 +6,7 @@ DESCRIPTION="a hierarchical, reference counted memory pool system with destructo
 HOMEPAGE="http://talloc.samba.org/talloc/doc/html/index.html"
 REPO=""
 LICENSE="GPL"
-PACKAGER="Zhongxin Huang, hzx@115.com"
+PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 
 SRC_URI="http://samba.org/ftp/"$N"/"$N-$V$R".tar.gz"
 
