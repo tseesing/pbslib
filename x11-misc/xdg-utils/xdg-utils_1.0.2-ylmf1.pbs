@@ -1,0 +1,33 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="Portland utils for cross-platform/cross-toolkit/cross-desktop interoperability"
+HOMEPAGE="http://portland.freedesktop.org/"
+LICENSE="GPL-2"
+PACKAGER="hzx@115.com"
+
+SRC_URI="http://portland.freedesktop.org/download/"$N-$V".tgz"
+
+RDEPEND="xprop xset shared-mime-info"
+BDEPEND="desktop-file-utils"
+RECOMMENDED=""
+
+NOTES=""
+
+pbs_unpack() {
+        ypkg_unpack
+}
+
+pbs_config() {
+	ypkg_patch ylmfos-xdg-open.patch
+	ypkg_config
+}
+
+pbs_build() {
+	ypkg_make
+}
+
+pbs_install() {
+	ypkg_mkinstall
+}

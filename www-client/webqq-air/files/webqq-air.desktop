@@ -1,0 +1,10 @@
+#!/usr/bin/env xdg-open
+
+[Desktop Entry]
+Name=webqq (AIR)
+Name[zh_CN]=WebQQ 增强版
+Type=Application
+Exec=adobe-air /usr/lib/webqq-air/WebQQ.air
+Icon=webqq-air
+Comment[zh_CN]=腾讯WebQQ AIR版本
+Categories=Network;WebBrowser;
