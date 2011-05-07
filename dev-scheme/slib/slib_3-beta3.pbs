@@ -2,14 +2,14 @@
 # YLmf_OS package build script
 #
 
-DESCRIPTION=""
-HOMEPAGE=""
+DESCRIPTION="SLIB is a portable library for the programming language Scheme."
+HOMEPAGE="http://people.csail.mit.edu/jaffer/SLIB"
 REPO=""
-LICENSE="GPL"
+LICENSE="http://people.csail.mit.edu/jaffer/SLIB_COPYING.txt"
 #PRIORITY="required"
 PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 
-SRC_URI=""
+SRC_URI="http://groups.csail.mit.edu/mac/ftpdir/scm/slib-3b3.zip"
 
 RDEPEND=""
 BDEPEND=""
@@ -35,14 +35,11 @@ pbs_config() {
 	#XX.patch should be found under $FILES_PATH/files or $FILES_PATH/files/patches/
 	#second, add package specified config params to YPB_CONFIG
 	#default is :
-	#YPB_CONFIG+=" --prefix=/usr
-	#	      --sysconfdir=/etc
-	#	      --localstatedir=/var
-	#             --infodir=/usr/share/info
-	#	      --mandir=/usr/share/man
-	#              --disable-static
-	#	      --enable-shared "
-	YPB_CONFIG+=""
+	YPB_CONFIG=" --prefix=/usr
+		      --sysconfdir=/etc
+		      --localstatedir=/var
+	              --infodir=/usr/share/info
+		      --mandir=/usr/share/man"
 	#Third, call configure with $YPB_CONFIG
 	#./configure $YPB_CONFIG
 	ypkg_config
@@ -51,10 +48,6 @@ pbs_config() {
 pbs_build() {
 	#make "$MAKEOPTS"
 	ypkg_make
-}
-
-pbs_check() {
-	make check
 }
 
 pbs_install() {

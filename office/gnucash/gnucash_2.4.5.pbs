@@ -2,14 +2,14 @@
 # YLmf_OS package build script
 #
 
-DESCRIPTION=""
-HOMEPAGE=""
+DESCRIPTION="GnuCash is personal and small-business financial-accounting software"
+HOMEPAGE="http://www.gnucash.org/"
 REPO=""
 LICENSE="GPL"
 #PRIORITY="required"
 PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 
-SRC_URI=""
+SRC_URI="http://nchc.dl.sourceforge.net/project/gnucash/gnucash%20%28stable%29/2.4.5/gnucash-2.4.5.tar.bz2"
 
 RDEPEND=""
 BDEPEND=""
