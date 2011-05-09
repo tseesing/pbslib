@@ -69,5 +69,7 @@ pbs_install() {
 	ypkg_docp "$FILES_PATH"/files/systemd/*  lib/systemd/system/
 	#ypkg_doln   ../"$N"-start.service lib/systemd/system/basic.target.wants/"$N"-start.service
 	ypkg_doln   ../"$N"-halt.service  lib/systemd/system/shutdown.target.wants/"$N"-halt.service
-	rm  lib/plymouth/plymouthd.defaults
+	rm -rf lib/plymouth/plymouthd.defaults lib/plymouth/themes/ubuntu-text \
+	       lib/plymouth/themes/ubuntu-logo lib/plymouth/themes/kubuntu-text lib/plymouth/ubuntu-text.so
+	ypkg_doln /lib/plymouth/themes/text/text.plymouth  lib/plymouth/themes/text.plymouth
 }

@@ -16,8 +16,6 @@ prereqs)
         ;;
 esac
 
-is_runinvm && ln -sf /lib/plymouth/themes/*ramfs/*ramfs.plymouth /lib/plymouth/themes/default.plymouth
-
 # ylmf, vga16fb lost?
 modprobe -q vga16fb
 

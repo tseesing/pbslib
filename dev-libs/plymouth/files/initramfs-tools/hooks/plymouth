@@ -42,8 +42,6 @@ THEME=$(readlink -f /lib/plymouth/themes/default.plymouth)
 if [ -e "$THEME" ]; then
 	ln -s $THEME ${DESTDIR}/lib/plymouth/themes/default.plymouth
 	cp -a $(dirname $THEME) ${DESTDIR}/lib/plymouth/themes/
-	#plymouth for ramfs 
-	cp -a $(dirname $(dirname $THEME))/*ramfs ${DESTDIR}/lib/plymouth/themes/
 
 	MODULE=$(grep "ModuleName *= *" ${THEME} | sed 's/ModuleName *= *//')
 	copy_exec /lib/plymouth/$MODULE.so /lib/plymouth/

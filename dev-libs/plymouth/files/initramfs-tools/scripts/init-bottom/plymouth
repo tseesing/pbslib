@@ -16,9 +16,6 @@ prereqs)
         ;;
 esac
 
-#
-is_runinvm && ln -sf /lib/plymouth/themes/*ramfs/*ramfs.plymouth ${rootmnt}/lib/plymouth/themes/default.plymouth
-
 if [ -f ${rootmnt}/dev/.initramfs/plymouth.pid ]; then
 	/bin/plymouth update-root-fs --new-root-dir=${rootmnt}
 fi
