@@ -1,0 +1,75 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="A GTK+ interface to MPlayer"
+HOMEPAGE="http://code.google.com/p/gnome-mplayer/"
+REPO=""
+LICENSE="GPLv2"
+PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
+
+SRC_URI="http://gnome-mplayer.googlecode.com/files/"$N-$V$R".tar.gz"
+
+RDEPEND="alsa-lib atk cairo dbus dbus-glib expat fontconfig freetype gcc glib2 glibc gtk+ libgpod liblunar liblunar-gtk libnotify libplist libpng libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libxml2 libXrandr libXrender libXScrnSaver nautilus pango pixman sqlite zlib libgpod libplist"
+BDEPEND=""
+RECOMMENDED=""
+CONFLICT=""
+
+NOTES=""
+
+pbs_unpack() {
+        ypkg_unpack
+}
+
+pbs_config() {
+	ypkg_patch gnome-mplayer-1.0.2-implicit_declaration.patch
+	YPB_CONFIG+="--enable-panscan
+	             --disable-gseal
+		     --with-gio
+		     --without-gpm-new-method
+		     --without-gpm-old-method "
+		     #--without-gconf
+	ypkg_config
+}
+
+pbs_build() {
+	ypkg_make
+}
+
+pbs_install() {
+	ypkg_mkinstall
+}
+
+pbs_postinst() {
+	#glib-compile-schemas /usr/share/glib-2.0/schemas/
+	gnome2_desktop_database_update
+	gnome2_icon_cache_update
+	gnome2_gconfd_reload
+	gnome2_mime_database_update
+	#The command to handle ZCAST scheme URLs
+	gnome2_install_defaut_gconf "string" "/desktop/gnome/url-handlers/zcast/command" "gnome-mplayer %s"
+	gnome2_install_defaut_gconf "bool"  "/desktop/gnome/url-handlers/zcast/enabled"  "True"
+	#The command to handle ZUNE scheme URLs
+	gnome2_install_defaut_gconf "string" "/desktop/gnome/url-handlers/zune/command" "gnome-mplayer %s"
+	gnome2_install_defaut_gconf "bool"  "/desktop/gnome/url-handlers/zune/enabled"  "True"
+	#The command to handle LASTFM scheme URLs
+	gnome2_install_defaut_gconf "string" "/desktop/gnome/url-handlers/lastfm/command" "gnome-mplayer %s"
+	gnome2_install_defaut_gconf "bool"  "/desktop/gnome/url-handlers/lastfm/enabled"  "True"
+	#The command to handle ITPC scheme URLs
+	gnome2_install_defaut_gconf "string" "/desktop/gnome/url-handlers/itpc/command" "gnome-mplayer %s"
+	gnome2_install_defaut_gconf "bool"  "/desktop/gnome/url-handlers/itpc/enabled"  "True"
+	#The command to handle FEED scheme URLs
+	gnome2_install_defaut_gconf "string" "/desktop/gnome/url-handlers/feed/command" "gnome-mplayer %s"
+	gnome2_install_defaut_gconf "bool"  "/desktop/gnome/url-handlers/feed/enabled"  "True"
+	#The command to handle ITMS scheme URLs
+	gnome2_install_defaut_gconf "string" "/desktop/gnome/url-handlers/itms/command" "gnome-mplayer %s"
+	gnome2_install_defaut_gconf "bool"  "/desktop/gnome/url-handlers/itms/enabled"  "True"
+}
+
+pbs_postrm() {
+	#glib-compile-schemas /usr/share/glib-2.0/schemas/
+	gnome2_desktop_database_update
+	gnome2_icon_cache_update
+	gnome2_gconfd_reload
+	gnome2_mime_database_update
+}
