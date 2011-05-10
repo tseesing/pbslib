@@ -88,6 +88,6 @@ pbs_postinst() {
 
 pbs_prerm() {
 	for i in vboxnetflt vboxnetadp vboxdrv;do
-		grep vboxnetflt /proc/modules  >/dev/null 2>/dev/null && rmmod ${i} ||true
+		grep "${i}" /proc/modules  >/dev/null 2>/dev/null && rmmod ${i} ||true
 	done
 }

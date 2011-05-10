@@ -4,7 +4,7 @@
 
 DESCRIPTION="A GTK+ interface to MPlayer"
 HOMEPAGE="http://code.google.com/p/gnome-mplayer/"
-REPO=""
+REPO="testing"
 LICENSE="GPLv2"
 PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 
@@ -23,12 +23,7 @@ pbs_unpack() {
 
 pbs_config() {
 	ypkg_patch gnome-mplayer-1.0.2-implicit_declaration.patch
-	YPB_CONFIG+="--enable-panscan
-	             --disable-gseal
-		     --with-gio
-		     --without-gpm-new-method
-		     --without-gpm-old-method "
-		     #--without-gconf
+	YPB_CONFIG+=""
 	ypkg_config
 }
 
