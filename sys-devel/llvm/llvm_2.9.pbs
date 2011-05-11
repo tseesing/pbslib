@@ -1,0 +1,37 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="The LLVM Project is a collection of modular and reusable compiler and toolchain technologies."
+HOMEPAGE="http://llvm.org/"
+REPO=""
+LICENSE="University of Illinois Open Source License, an OSI-approved license"
+PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
+
+SRC_URI="http://llvm.org/releases/"$V$R"/"$N-$V$R".tgz"
+
+RDEPEND="gcc glibc"
+BDEPEND=""
+RECOMMENDED=""
+CONFLICT=""
+
+NOTES=""
+
+pbs_unpack() {
+        ypkg_unpack
+}
+
+pbs_config() {
+	YPB_CONFIG+=""
+	ypkg_config
+}
+
+pbs_build() {
+	ypkg_make
+}
+
+pbs_install() {
+	ypkg_mkinstall
+	cd "$YPPATH_DEST"
+	ypkg_domv_rename usr/docs usr/share/doc
+}

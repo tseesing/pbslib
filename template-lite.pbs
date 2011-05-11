@@ -53,9 +53,9 @@ pbs_build() {
 	ypkg_make
 }
 
-pbs_check() {
-	make check
-}
+#pbs_check() {
+#	make check
+#}
 
 pbs_install() {
 	#install everything to $YPPATH_DEST
