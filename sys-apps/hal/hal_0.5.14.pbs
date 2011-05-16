@@ -35,7 +35,6 @@ pbs_config() {
 		      --disable-acpi-toshiba
 		      --disable-parted  
 		      --disable-docbook-docs
-		      
 		      --disable-policy-kit  
 		      --enable-umount-helper
 		      --enable-man-pages
@@ -64,4 +63,10 @@ pbs_install() {
 	#ypkg_doinit "$FILES_PATH"/files/haldaemon
 	ypkg_docp "$FILES_PATH"/files/11-mousewheel.fdi usr/share/hal/fdi/policy/10osvendor
 	ypkg_dounit "hald.service"
+	#ypkg_doln  /lib/systemd/system/hald.service lib/systemd/system/graphical.target.wants/"hald.service"
+}
+
+pbs_postinst() {
+	systemctl --system daemon-reload
+	start hald || return 0
 }

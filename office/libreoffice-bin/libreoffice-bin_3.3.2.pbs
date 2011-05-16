@@ -27,8 +27,6 @@ pbs_install() {
 	for i in $packages; do
 		 tar xf "$YPPATH_SOURCE"/"${i}"
 	done
-	pwd
-	exit
 	find . -name "*.deb" |while read i; do
 		echo ">>> Unpack $(basename $i)"
 		ar x "${i}"; tar xf data.tar.gz

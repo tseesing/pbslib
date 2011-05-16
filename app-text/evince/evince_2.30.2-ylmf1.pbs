@@ -1,0 +1,50 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="Simple document viewer for GNOME"
+HOMEPAGE="http://www.gnome.org/projects/evince/"
+LICENSE="GPL-2"
+PACKAGER="<ylmfos@115.com>"
+
+SRC_URI="http://ftp.gnome.org/pub/gnome/desktop/2.30/2.30.2/sources/"$N-$V".tar.bz2"
+
+RDEPEND="atk cairo dbus dbus-glib eggdbus expat fontconfig freetype gcc gconf glib2 glibc gtk+ lcms libgcrypt libgnome-keyring libgpg-error libICE libjpeg-turbo libpng libSM libtiff libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libxml2 libXrandr libXrender nautilus orbit pango pixman poppler util-linux-ng zlib"
+BDEPEND="atk-dev cairo-dev dbus-dev dbus-glib-dev eggdbus-dev expat-dev fontconfig-dev freetype-dev gcc-dev gconf-dev glib2-dev glibc-dev gtk+-dev lcms-dev libgcrypt-dev libgnome-keyring-dev libgpg-error-dev libICE-dev libjpeg-turbo-dev libpng-dev libSM-dev libtiff-dev libX11-dev libXau-dev libxcb-dev libXcomposite-dev libXcursor-dev libXdamage-dev libXdmcp-dev libXext-dev libXfixes-dev libXi-dev libxml2-dev libXrandr-dev libXrender-dev nautilus-dev orbit-dev pango-dev pixman-dev poppler-dev util-linux-ng-dev zlib-dev"
+RECOMMENDED=""
+
+NOTES=""
+
+pbs_unpack() {
+        ypkg_unpack
+}
+
+pbs_config() {
+	YPB_CONFIG+=" --disable-schemas-install 
+		      --enable-nautilus 
+		      --disable-scrollkeeper "
+	ypkg_config
+}
+
+pbs_build() {
+	ypkg_make
+}
+
+pbs_install() {
+	ypkg_mkinstall
+	ypkg_dodoc AUTHORS COPYING NEWS README
+	cd "$YPPATH_DEST"
+	# keep clean for rarian
+	rm -fr var/lib/scrollkeeper var/lib/log
+	sed -i 's/NoDisplay=true/NoDisplay=false/g' usr/share/applications/"${N}".desktop
+	sed -i 's/Categories=GNOME;GTK;Graphics;VectorGraphics;Viewer;/Categories=Viewer;Office;GTK;/g' usr/share/applications/"${N}".desktop
+}
+
+pbs_postinst() {
+	gnome2_install_schema "/etc/gconf/schemas/evince-thumbnailer-comics.schemas" \
+	                      "/etc/gconf/schemas/evince-thumbnailer.schemas" \
+			      "/etc/gconf/schemas/evince.schemas"
+ 	gnome2_rarian_sk_update
+	gnome2_desktop_database_update
+	gnome2_icon_cache_update "hicolor"
+}

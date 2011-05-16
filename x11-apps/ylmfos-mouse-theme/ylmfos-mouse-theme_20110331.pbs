@@ -3,9 +3,9 @@
 #
 
 DESCRIPTION="ylmfos default mouse theme"
-HOMEPAGE="www.ylmf.com"
+HOMEPAGE="www.gnome-look.org"
 REPO=""
-LICENSE=""
+LICENSE="Artistic 2.0"
 PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 
 SRC_URI="git://192.168.1.58/"$N".git"
@@ -13,6 +13,8 @@ SRC_URI="git://192.168.1.58/"$N".git"
 RDEPEND=""
 BDEPEND="xcursorgen"
 RECOMMENDED=""
+
+NOTE="http://gnome-look.org/content/show.php/Shere+Khan+X?content=57588"
 
 pbs_unpack() {
 	ypkg_unpack

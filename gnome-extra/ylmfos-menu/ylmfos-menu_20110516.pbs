@@ -12,7 +12,7 @@ SRC_URI="git://192.168.1.58/"$N".git"
 
 RDEPEND="python numpy gst-python python-xlib zeitgeist configobj"
 BDEPEND=""
-RECOMMENDED=""
+RECOMMENDED="psyco"
 
 NOTES=""
 
