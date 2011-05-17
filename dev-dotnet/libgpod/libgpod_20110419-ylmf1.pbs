@@ -2,17 +2,17 @@
 # YLmf_OS package build script
 #
 
-DESCRIPTION="Taglib# 2.0 - Managed tag reader/writer"
-HOMEPAGE="http://developer.novell.com/wiki/index.php/TagLib_Sharp"
+DESCRIPTION="Shared library to access the contents of an iPod"
+HOMEPAGE="http://www.gtkpod.org/libgpod/"
 REPO=""
 LICENSE="GPL"
 PRIORITY=""
 PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 
-SRC_URI="git://github.com/mono/"$N".git"
+SRC_URI="git://gtkpod.git.sourceforge.net/gitroot/gtkpod/libgpod"
 
 RDEPEND=""
-BDEPEND=""
+BDEPEND="libplist"
 RECOMMENDED=""
 CONFLICT=""
 
@@ -28,11 +28,10 @@ pbs_config() {
 }
 
 pbs_build() {
-	ypkg_make
+	make -j1
 }
 
 pbs_install() {
-	#make DESTDIR="$YPPATH_DEST" install
 	ypkg_mkinstall
-	rm -rf "$YPPATH_DEST"/tmp  || return 0
+	[ -d "$YPPATH_DEST"/tmp ] && rm -rf "$YPPATH_DEST"/tmp
 }

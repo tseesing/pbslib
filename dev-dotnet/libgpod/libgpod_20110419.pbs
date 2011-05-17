@@ -28,9 +28,10 @@ pbs_config() {
 }
 
 pbs_build() {
-	make
+	make -j1
 }
 
 pbs_install() {
 	ypkg_mkinstall
+
 }

@@ -1,6 +1,6 @@
 [Unit]
 Description=Hardware Abstraction Layer Daemon
-After=syslog.target
+After=gdm.service
 
 [Service]
 Type=dbus
