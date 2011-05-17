@@ -8,7 +8,7 @@ REPO="stable"
 LICENSE=""
 PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 
-SRC_URI="git://192.168.1.58/ymenu.git"
+SRC_URI="git://192.168.1.58/"$N".git"
 
 RDEPEND="python numpy gst-python python-xlib zeitgeist configobj"
 BDEPEND=""
