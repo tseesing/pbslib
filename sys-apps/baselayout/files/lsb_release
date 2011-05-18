@@ -1,0 +1,10 @@
+#!/bin/bash
+#
+if [ -f /etc/lsb-release ]; then 
+	. /etc/lsb-release
+cat <<EOF
+ID:$DISTRIB_ID
+Release:$DISTRIB_RELEASE
+Codename:$DISTRIB_CODENAME
+EOF
+fi

@@ -1,0 +1,36 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="vmware tools kernel modules and init script for kernel 2.6.38.3-ylmfos"
+HOMEPAGE="www.vmware.com"
+REPO=""
+LICENSE=""
+PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
+
+SRC_URI="vmware-tools-8.4.6-385536.tar.bz2"
+
+RDEPEND=""
+BDEPEND=""
+RECOMMENDED=""
+CONFLICT=""
+
+NOTES=""
+
+pbs_unpack() {
+        ypkg_unpack
+}
+
+pbs_install() {	
+	ypkg_docp * "$YPPATH_DEST"
+}
+
+pbs_postinst() {
+	depmod -a
+	update-initramfs -d -u
+}
+
+pbs_postrm() {
+	depmod -a
+	update-initramfs -d -u
+}

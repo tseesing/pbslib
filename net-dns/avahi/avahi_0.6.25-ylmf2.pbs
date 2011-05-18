@@ -1,0 +1,73 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="System which facilitates service discovery on a local network"
+HOMEPAGE="http://avahi.org/"
+LICENSE="GPL-2"
+PACKAGER="<ylmfos@115.com>"
+
+SRC_URI="http://avahi.org/download/"$N-$V".tar.gz"
+
+RDEPEND="atk attr cairo dbus expat fontconfig freetype gcc gdbm glib2 glibc gtk+ libcap libdaemon libglade libpng libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libxml2 libXrandr libXrender pango pixman zlib"
+BDEPEND="desktop-file-utils dbus-python-dev pygtk-dev atk-dev attr-dev cairo-dev dbus-dev expat-dev fontconfig-dev freetype-dev gcc-dev gdbm-dev glib2-dev glibc-dev gtk+-dev libcap-dev libdaemon-dev libglade-dev libpng-dev libX11-dev libXau-dev libxcb-dev libXcomposite-dev libXcursor-dev libXdamage-dev libXdmcp-dev libXext-dev libXfixes-dev libXi-dev libxml2-dev libXrandr-dev libXrender-dev pango-dev pixman-dev zlib-dev dbus-glib-dev"
+RECOMMENDED=""
+
+NOTES=""
+
+pbs_init() {
+	ypkg_groupadd -r "avahi"
+	ypkg_useradd -c "avahi users" -d "/dev/null" -s "/bin/false" -r "avahi"
+	ypkg_useradd -c "avahi-autoipd users" -d "/dev/null" -s "/bin/false" -r "avahi-autoipd" 
+}
+
+pbs_unpack() {
+        ypkg_unpack
+}
+
+pbs_config() {
+	ypkg_patch desktop-not-show.patch
+	YPB_CONFIG+="--disable-qt3  
+		     --disable-static
+		     --disable-monodoc 
+		     --enable-qt4  
+		     --enable-mono
+		     --enable-shared 
+		     --enable-python-dbus
+		     --enable-pygtk 
+		     --enable-glib
+		     --enable-dbus  
+		     --enable-gtk  
+		     --enable-core-docs
+		     --enable-compat-howl
+		     --enable-compat-libdns_sd
+		     --with-avahi-user=avahi
+		     --with-avahi-group=avahi
+		     --with-autoipd-user=avahi-autoipd
+		     --with-autoipd-group=avahi-autoipd
+		     --with-distro=slackware 
+		     --program-prefix= 
+		     --program-suffix= "
+	ypkg_config
+}
+
+pbs_build() {
+	ypkg_make
+}
+
+pbs_install() {
+	ypkg_mkinstall
+	cd "$YPPATH_DEST"
+	#ypkg_domv_rename etc/rc.d/rc.avahidnsconfd  etc/init.d/avahidnsconfd
+	#ypkg_domv_rename etc/rc.d/rc.avahidaemon    etc/init.d/avahidaemon
+	rm -rf etc/rc.d
+	rm -fr usr/share/applications/bssh.desktop
+	rm -fr usr/share/applications/bvnc.desktop
+	mkdir -p var/run/avahi-daemon var/run/avahi-autoipd 
+	#
+	ypkg_dounit avahi-dnsconfd.service avahi-daemon.service
+}
+
+pbs_postinst() {
+	gnome2_desktop_database_update
+}
