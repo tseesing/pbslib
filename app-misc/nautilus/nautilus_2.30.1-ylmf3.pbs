@@ -19,7 +19,7 @@ pbs_unpack() {
 }
 
 pbs_config() {
-	ypkg_patch  01_disable_move-to-home-desktop.patch 02_donot-show-menuitem.patch nautilus_automount.patch ylmfos-translate.patch
+	ypkg_patch  01_disable_move-to-home-desktop.patch nautilus_automount.patch ylmfos-translate.patch 02_donot-show-menuitem.patch
 	YPB_CONFIG+=" --disable-schemas-install 
 		      --disable-update-mimedb 
 		      --enable-packagekit "
