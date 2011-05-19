@@ -1,0 +1,12 @@
+--- usr/share/applications/libreoffice-draw.desktop	 	2011-02-16 12:58:41.000000000 +0800
++++ usr/share/applications/libreoffice-draw.desktop	2011-03-11 10:34:47.398996001 +0800
+@@ -7,6 +7,9 @@
+ Exec=libreoffice -draw %U
+ MimeType=application/vnd.oasis.opendocument.graphics;application/vnd.oasis.opendocument.graphics-template;application/vnd.sun.xml.draw;application/vnd.sun.xml.draw.template;application/vnd.stardivision.draw;
+ Name=LibreOffice 3.3 Draw
++Name[zh_CN]=LibreOffice 3.3 绘图
++Name[zh_TW]=LibreOffice 3.3 繪圖程式
++Name=LibreOffice 3.3 Draw
+ Name[pt_BR]=BrOffice 3.3 Draw
+ GenericName=Drawing Program
+ GenericName[en]=Drawing Program

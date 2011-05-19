@@ -619,7 +619,7 @@
       <key>applets/applet_5/position</key>
       <schema_key>/schemas/apps/panel/objects/position</schema_key>
       <value>
-        <int>33</int>
+        <int>43</int>
       </value>
     </entry>
     <entry>
@@ -1826,6 +1826,42 @@
       <schema_key>/schemas/apps/workspace_switcher_applet/prefs/num_rows</schema_key>
       <value>
         <int>1</int>
+      </value>
+    </entry>
+    <entry>
+      <key>applets/ymenu_screen0/action_type</key>
+      <value>
+        <string>lock</string>
+      </value>
+    </entry>
+    <entry>
+      <key>applets/ymenu_screen0/bonobo_iid</key>
+      <value>
+        <string>OAFIID:GNOME_YMenu</string>
+      </value>
+    </entry>
+    <entry>
+      <key>applets/ymenu_screen0/locked</key>
+      <value>
+        <bool>true</bool>
+      </value>
+    </entry>
+    <entry>
+      <key>applets/ymenu_screen0/object_type</key>
+      <value>
+        <string>bonobo-applet</string>
+      </value>
+    </entry>
+    <entry>
+      <key>applets/ymenu_screen0/position</key>
+      <value>
+        <int>0</int>
+      </value>
+    </entry>
+    <entry>
+      <key>applets/ymenu_screen0/toplevel_id</key>
+      <value>
+        <string>top_panel_screen0</string>
       </value>
     </entry>
     <entry>
@@ -3551,7 +3587,7 @@
               <string>applet_7</string>
             </value>
             <value>
-              <string>gnomenu_screen0</string>
+              <string>ymenu_screen0</string>
             </value>
         </list>
       </value>

@@ -29,7 +29,8 @@ pbs_install() {
 	ypkg_docp * "$YPPATH_DEST"
 	#
 	cd "$YPPATH_DEST"
-	ypkg_docp "$FILES_PATH"/files/eioicon.png  usr/share/eiofileicon/
+	ypkg_docp        "$FILES_PATH"/files/eioicon.png  usr/share/eiofileicon/
+	ypkg_docp_rename "$FILES_PATH"/files/eioicon.png  usr/share/eiofileicon/FileConvert.png
 	rm usr/share/applications/eiouninstall.desktop
 }
 

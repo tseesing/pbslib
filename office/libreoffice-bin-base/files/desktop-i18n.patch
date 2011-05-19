@@ -1,0 +1,11 @@
+--- usr/share/applications/libreoffice-base.desktop	2011-02-16 12:58:41.000000000 +0800
++++ usr/share/applications/libreoffice-base.desktop.new	2011-03-11 10:32:29.747996002 +0800
+@@ -8,6 +8,8 @@
+ MimeType=application/vnd.oasis.opendocument.database;application/vnd.sun.xml.base;
+ Name=LibreOffice 3.3 Base
+ Name[pt_BR]=BrOffice 3.3 Base
++Name[zh_CN]=LibreOffice 3.3 数据库
++Name[zh_TW]=LibreOffice 3.3 資料庫
+ GenericName=Database Development
+ GenericName[en]=Database Development
+ GenericName[te]=డాటాబేస్ డెవలప్‌మెంట్

@@ -1,0 +1,12 @@
+diff -ur libreoffice-bin-calc_3.3.2/usr/share/applications/libreoffice-calc.desktop libreoffice-bin-calc_3.3.2.new/usr/share/applications/libreoffice-calc.desktop
+--- libreoffice-bin-calc_3.3.2/usr/share/applications/libreoffice-calc.desktop	2011-05-19 15:13:19.466998590 +0800
++++ libreoffice-bin-calc_3.3.2.new/usr/share/applications/libreoffice-calc.desktop	2011-05-19 15:14:15.926997842 +0800
+@@ -8,6 +8,8 @@
+ MimeType=application/vnd.oasis.opendocument.spreadsheet;application/vnd.oasis.opendocument.spreadsheet-template;application/vnd.sun.xml.calc;application/vnd.sun.xml.calc.template;application/vnd.stardivision.calc;application/vnd.stardivision.chart;application/msexcel;application/vnd.ms-excel;application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;application/vnd.ms-excel.sheet.macroenabled.12;application/vnd.openxmlformats-officedocument.spreadsheetml.template;application/vnd.ms-excel.template.macroenabled.12;application/vnd.ms-excel.sheet.binary.macroenabled.12;text/csv;application/x-dbf;
+ Name=LibreOffice 3.3 Calc
+ Name[pt_BR]=BrOffice 3.3 Calc
++Name[zh_TW]=LibreOffice 3.3 試算表
++Name[zh_CN]=LibreOffice 3.3 电子表格
+ GenericName=Spreadsheet
+ GenericName[en]=Spreadsheet
+ GenericName[te]=స్ర్పెడ్ షీట్
