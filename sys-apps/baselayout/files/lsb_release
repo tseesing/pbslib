@@ -2,9 +2,15 @@
 #
 if [ -f /etc/lsb-release ]; then 
 	. /etc/lsb-release
-cat <<EOF
+fi
+
+case "$1" in 
+	-i)	echo $DISTRIB_ID ;;
+	-r)	echo $DISTRIB_RELEASE ;;
+	-c)	echo $DISTRIB_CODENAME ;;
+	*)	cat <<OOO
 ID:$DISTRIB_ID
 Release:$DISTRIB_RELEASE
 Codename:$DISTRIB_CODENAME
-EOF
-fi
+OOO
+esac

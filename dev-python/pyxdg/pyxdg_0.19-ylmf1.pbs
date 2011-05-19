@@ -1,0 +1,28 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="A Python module to deal with freedesktop.org specifications"
+HOMEPAGE="http://pyxdg.freedesktop.org/ http://people.freedesktop.org/~lanius/"
+LICENSE="GPL-2"
+PACKAGER="<ylmfos@115.com>"
+
+SRC_URI="http://www.freedesktop.org/~lanius/"$N-$V".tar.gz "
+
+RDEPEND="python"
+BDEPEND=""
+RECOMMENDED=""
+
+pbs_unpack() {
+        ypkg_unpack
+}
+
+pbs_build() {
+	ypkg_patch ylmfos-skip-parse-kdelegacydirs.patch
+	ypkg_make
+}
+
+pbs_install() {
+	ypkg_mkinstall
+	ypkg_dodoc AUTHORS ChangeLog COPYING INSTALL PKG-INFO README TODO
+}

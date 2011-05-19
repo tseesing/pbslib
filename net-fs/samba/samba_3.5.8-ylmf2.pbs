@@ -39,7 +39,7 @@ pbs_install() {
 	ypkg_dounit nmbd.service smbd.service winbind.service
 	ypkg_docp "$FILES_PATH"/files/smb.conf "$YPPATH_DEST"/etc/samba
 	install -d -m 1770 -g sambashare "$YPPATH_DEST"/var/lib/samba/usershares 
-	mkdir -p "$YPPATH_DEST"/lib/systemd/system/multi-user.target.wants
+	mkdir -p "$YPPATH_DEST"/lib/systemd/system/multi-user.target.wants "$YPPATH_DEST"/var/log/samba
 	cd "$YPPATH_DEST"/lib/systemd/system/multi-user.target.wants
 	ypkg_doln /lib/systemd/system/winbind.service  winbind.service
 	ypkg_doln /lib/systemd/system/smbd.service     smbd.service  

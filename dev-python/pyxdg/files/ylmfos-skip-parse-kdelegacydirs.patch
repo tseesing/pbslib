@@ -1,0 +1,13 @@
+diff -ur pyxdg-0.19/xdg/Menu.py pyxdg-0.19.new/xdg/Menu.py
+--- pyxdg-0.19/xdg/Menu.py	2009-10-29 01:20:44.000000000 +0800
++++ pyxdg-0.19.new/xdg/Menu.py	2011-05-18 20:58:00.067869377 +0800
+@@ -606,7 +606,8 @@
+                 except IndexError:
+                     raise ValidationError('LegacyDir cannot be empty', filename)
+             elif child.tagName == 'KDELegacyDirs':
+-                __parseKDELegacyDirs(filename, parent)
++                #__parseKDELegacyDirs(filename, parent)
++		pass
+ 
+ def __parsemove(menu):
+     for submenu in menu.Submenus:
