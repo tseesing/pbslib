@@ -30,7 +30,8 @@ pbs_build() {
 pbs_install() {
 	ypkg_mkinstall
 	ypkg_dodoc README 
-	ypkg_doln  /usr/lib/libdmraid.so "$YPPATH_DEST"/usr/lib/libdmraid.so."$V$R"
+	ypkg_doln  /usr/lib/libdmraid.so            "$YPPATH_DEST"/usr/lib/libdmraid.so."$V$R"
+	ypkg_doln  /usr/lib/libdmraid-events-isw.so "$YPPATH_DEST"/usr/lib/libdmraid-events-isw.so.1.0.0.rc16
 	#for initramfs
 	cd "$YPPATH_DEST"
 	ypkg_docp_rename "$FILES_PATH"/files/hook_dmraid       usr/share/initramfs-tools/hooks/dmraid

@@ -21,14 +21,21 @@ pbs_unpack() {
 }
 
 pbs_config() {
-	ypkg_config
+	./waf configure
+	YPB_CONFIG=" --prefix=/usr
+	             --sysconfdir=/etc
+	             --localstatedir=/var
+	             --infodir=/usr/share/info
+	             --mandir=/usr/share/man
+		     --disable-static
+		     --enable-shared "
+	./configure $YPB_CONFIG
 }
 
 pbs_build() {
-	ypkg_make
+	make "$MAKEOPTS"
 }
 
 pbs_install() {
-	ypkg_mkinstall
-	ypkg_dodoc COPYING README
+	make DESTDIR="$YPPATH_DEST" install
 }

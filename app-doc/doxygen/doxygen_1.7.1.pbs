@@ -13,14 +13,14 @@ RDEPEND="gcc glibc"
 BDEPEND="gcc-dev glibc-dev"
 RECOMMENDED=""
 
-NOTES="a\nb\n"
+NOTES=""
 
 pbs_unpack() {
         ypkg_unpack
 }
 
 pbs_config() {
-	./configure --prefix /usr --shared
+	./configure --prefix /usr --shared --docdir /usr/share/doc 
 }
 
 pbs_build() {
@@ -30,4 +30,6 @@ pbs_build() {
 pbs_install() {
 	ypkg_mkinstall
 	ypkg_dodoc INSTALL README VERSION
+	cd "$YPPATH_DEST"
+	ypkg_domv usr/man usr/share
 }

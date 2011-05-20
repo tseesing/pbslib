@@ -1,0 +1,32 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="Database-driven manual pager suite"
+HOMEPAGE="http://savannah.nongnu.org/projects/man-db"
+ 
+SRC_URI="http://ftp.twaren.net/Unix/NonGNU/"$N"/"$N-$V".tar.gz"
+
+RDEPEND="gdbm zlib glibc"
+BDEPEND="gdbm-dev zlib-dev glibc-dev"
+RECOMMENDED="groff"
+
+pbs_unpack() {
+        ypkg_unpack
+}
+
+pbs_config() {
+	YPB_CONFIG+="--disable-setuid 
+		     --with-browser=/usr/bin/links 
+		     --with-vgrind=/usr/bin/vgrind 
+		     --with-grap=/usr/bin/grap"
+	ypkg_config
+}
+
+pbs_build() {
+	ypkg_make
+}
+
+pbs_install() {
+	ypkg_mkinstall
+}

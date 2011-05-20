@@ -1,0 +1,37 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="Device mapper ioctl library for use with LVM2 utilities"
+HOMEPAGE="http://sources.redhat.com/dm/"
+LICENSE="GPL-2"
+PACKAGER="<ylmfos@115.com>"
+
+SRC_URI="ftp://sources.redhat.com/pub/lvm2/LVM2.2.02.62.tgz"
+
+RDEPEND="glibc ncurses readline"
+BDEPEND="glibc-dev ncurses-dev readline-dev"
+RECOMMENDED=""
+
+pbs_unpack() {
+        ypkg_unpack
+}
+
+pbs_config() {
+	YPB_CONFIG+=" --enable-dmeventd 
+		      --enable-cmdlib 
+	    	      --enable-pkgconfig 
+		      --disable-selinux "
+	ypkg_config
+}
+
+pbs_build() {
+	ypkg_make device-mapper
+}
+
+pbs_install() {
+	ypkg_mkinstall device-mapper
+	cd "$YPPATH_DEST"
+	ypkg_doln /usr/lib/libdevmapper-event-lvm2snapshot.so  usr/lib/libdevmapper-event-lvm2snapshot.so.2.02
+	ypkg_doln /usr/lib/libdevmapper-event-lvm2mirror.so    usr/lib/libdevmapper-event-lvm2mirror.so.2.02		
+}
