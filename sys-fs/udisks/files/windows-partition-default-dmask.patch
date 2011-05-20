@@ -1,0 +1,21 @@
+diff -ur udisks-1.0.0-ylmf1/src/device.c udisks-1.0.0-ylmf1.new/src/device.c
+--- udisks-1.0.0-ylmf1/src/device.c	2010-03-16 06:27:21.000000000 +0800
++++ udisks-1.0.0-ylmf1.new/src/device.c	2011-05-19 21:48:02.566684786 +0800
+@@ -5846,7 +5846,7 @@
+ 
+ /* ---------------------- vfat -------------------- */
+ 
+-static const char *vfat_defaults[] = { "uid=", "gid=", "shortname=mixed", "dmask=0077", "utf8=1", NULL };
++static const char *vfat_defaults[] = { "uid=", "gid=", "shortname=mixed", "dmask=0022", "utf8=1", NULL };
+ static const char *vfat_allow[] = { "flush", "utf8=", "shortname=", "umask=", "dmask=", "fmask=", "codepage=", "iocharset=", "usefree", NULL };
+ static const char *vfat_allow_uid_self[] = { "uid=", NULL };
+ static const char *vfat_allow_gid_self[] = { "gid=", NULL };
+@@ -5854,7 +5854,7 @@
+ /* ---------------------- ntfs -------------------- */
+ /* this is assuming that ntfs-3g is used */
+ 
+-static const char *ntfs_defaults[] = { "uid=", "gid=", "dmask=0077", NULL };
++static const char *ntfs_defaults[] = { "uid=", "gid=", "dmask=0022", NULL };
+ static const char *ntfs_allow[] = { "umask=", "dmask=", "fmask=", NULL };
+ static const char *ntfs_allow_uid_self[] = { "uid=", NULL };
+ static const char *ntfs_allow_gid_self[] = { "gid=", NULL };
