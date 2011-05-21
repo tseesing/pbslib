@@ -1,0 +1,11 @@
+#!/usr/bin/env xdg-open
+
+[Desktop Entry]
+Name=doubanfm
+Name[zh_CN]=豆瓣电台
+Type=Application
+Exec=chromium --app="http://douban.fm/"
+TryExec=chromium
+Icon=doubanfm-web
+Comment[zh_CN]=豆瓣FM - 失败者的飞翔
+Categories=Webapps;

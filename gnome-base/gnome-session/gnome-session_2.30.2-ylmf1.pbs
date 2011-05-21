@@ -1,0 +1,71 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="The GNOME Session package contains the GNOME session manager."
+HOMEPAGE="http://www.gnome.org/"
+LICENSE="GPL-2"
+PACKAGER="<ylmfos@115.com>"
+
+SRC_URI="http://ftp.gnome.org/pub/gnome/desktop/2.30/2.30.2/sources/"$N-$V".tar.bz2"
+
+RDEPEND="atk cairo dbus dbus-glib devicekit-power expat fontconfig freetype gcc gconf glib2 glibc gtk+ libICE libpng libSM libusb libusb-compat libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libXrandr libXrender libXtst orbit pango pixman startup-notification util-linux-ng zlib"
+BDEPEND="metacity-dev esound-dev gnome-control-center-dev imagemagick polkit-gnome-dev atk-dev cairo-dev dbus-dev dbus-glib-dev devicekit-power-dev expat-dev fontconfig-dev freetype-dev gcc-dev gconf-dev glib2-dev glibc-dev gtk+-dev libICE-dev libpng-dev libSM-dev libusb-dev libusb-compat-dev libX11-dev libXau-dev libxcb-dev libXcomposite-dev libXcursor-dev libXdamage-dev libXdmcp-dev libXext-dev libXfixes-dev libXi-dev libXrandr-dev libXrender-dev libXtst-dev orbit-dev pango-dev pixman-dev startup-notification-dev util-linux-ng-dev zlib-dev"
+RECOMMENDED="polkit-gnome"
+
+pbs_unpack() {
+        ypkg_unpack
+}
+
+pbs_config() {
+	for i in 24 48 22 16 32;do
+		convert -resize "${i}"x"${i}" "$FILES_PATH"/files/session-properties.png  data/icons/"${i}"x"${i}"/session-properties.png
+	done
+	ypkg_docp "$FILES_PATH"/files/session-properties.svg data/icons/scalable
+	YPB_CONFIG+=" --disable-schemas-install 
+		      --with-default-wm=gnome-wm 
+		      --enable-splash	
+		      --enable-debug "
+	ypkg_config
+}
+
+pbs_build() {
+	ypkg_make
+}
+
+pbs_install() {
+	ypkg_mkinstall
+	cd "$YPPATH_DEST"
+	#Change gnome-wm to use compiz ccp if compiz selected
+	#ypkg_domv_rename usr/bin/gnome-wm usr/bin/gnome-wm.orig
+	#ypkg_docp_rename "$FILES_PATH"/files/gnome-wm.gsb  usr/bin/gnome-wm
+	#chmod +x usr/bin/gnome-wm
+	ypkg_docp "$FILES_PATH"/files/gnome-wm.desktop usr/share/applications
+	# Add xinitrc script for gnome
+	mkdir -p etc/X11/xinit
+	cat "$FILES_PATH"/files/xinitrc.gnome | sed -e "s,@LIBDIR@,lib,g"   > etc/X11/xinit/xinitrc.gnome
+	chmod 755 etc/X11/xinit/xinitrc.gnome
+	# Install splash screen
+	ypkg_docp "$FILES_PATH"/files/gnome-splash.png  usr/share/pixmaps/splash
+	# Add default `gnome` for gnome-session
+	( cd usr/bin ; ln -s gnome-session gnome ); 
+	# Fix gdm session file (in case it's replaced)
+	ypkg_docp "$FILES_PATH"/files/gnome.desktop  usr/share/xsessions
+	chmod +x usr/share/xsessions/gnome.desktop
+	#
+	mkdir -p etc/X11/Xsession.d/
+	# ylmfos misc
+	ypkg_docp "$FILES_PATH"/files/ylmfos-misc.desktop etc/xdg/autostart/
+	ypkg_docp "$FILES_PATH"/files/ylmfos-misc.sh      usr/bin/
+	chmod +x usr/bin/ylmfos-misc.sh
+}
+
+pbs_postinst() {
+	gnome2_install_schema "/etc/gconf/schemas/gnome-session.schemas"
+	gnome2_desktop_database_update
+	gnome2_install_defaut_gconf "string" "/desktop/gnome/session/required_components/windowmanager" "gnome-wm"
+	gnome2_install_defaut_gconf "string" "/apps/gnome-session/options/splash_image" "splash/gnome-splash.png"
+	gnome2_install_defaut_gconf "boolean" "/apps/gnome-session/options/show_splash_screen" "false"
+	gnome2_icon_cache_update
+	gnome2_gconfd_reload
+}

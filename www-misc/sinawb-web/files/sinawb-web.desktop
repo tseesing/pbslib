@@ -1,0 +1,11 @@
+#!/usr/bin/env xdg-open
+
+[Desktop Entry]
+Name=sinawb
+Name[zh_CN]=新浪微博
+Type=Application
+Exec=chromium --app="http://t.sina.com.cn"
+TryExec=chromium
+Icon=sinawb-web
+Comment[zh_CN]=新浪微博-随时随地分享身边的新鲜事儿
+Categories=Webapps;

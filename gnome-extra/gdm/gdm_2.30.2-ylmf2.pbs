@@ -74,10 +74,11 @@ pbs_install() {
 	#ln -sf /etc/init.d/"$N"  etc/rc3.d/K01"$N"
 	ypkg_docp "$FILES_PATH"/files/systemd/*  lib/systemd/system/
 	#
-	[ -d var/lib/gdm ] && rm -r var/lib/gdm
-	mkdir -p      var/lib/gdm
-	chown gdm:gdm var/lib/gdm 
-	rm -rf var/gdm
+	#[ -d var/lib/gdm ] && rm -r var/lib/gdm
+	#mkdir -p      var/lib/gdm
+	#chown gdm:gdm var/lib/gdm 
+	#rm -rf var/gdm
+	chown -R gdm:gdm var/lib/gdm
 	#for gdm screenshot
 	install -d -m755 var/run/"$N"/greeter/
 	#fix me!
@@ -94,5 +95,5 @@ pbs_postinst() {
 	gnome2_gtk_immodules_update
 	# update hicolor icons
 	gnome2_icon_cache_update
-	chown gdm:gdm /var/lib/gdm
+	chown -R gdm:gdm /var/lib/gdm
 }

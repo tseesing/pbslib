@@ -9,10 +9,10 @@ LICENSE="GPLv3"
 PRIORITY=""
 PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 
-SRC_URI="http://iceplayer.googlecode.com/files/"$N"%20src%20%20"$V$R".tar.gz"
+SRC_URI="http://iceplayer.googlecode.com/files/"$N"-src-"$V$R".tar.gz"
 
-RDEPEND=""
-BDEPEND=" "
+RDEPEND="gst-ffmpeg gst-plugins-ugly wget"
+BDEPEND="gstreamer-dev gtk+-dev libnotify-dev"
 RECOMMENDED=""
 CONFLICT=""
 

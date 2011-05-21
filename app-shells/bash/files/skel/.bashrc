@@ -97,9 +97,3 @@ fi
 if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
     . /etc/bash_completion
 fi
-
-#make a link to YPPATH_PKGDEST at /etc/yget.conf 
-if [ -f /etc/yget.conf ]; then
-	. /etc/yget.conf	
-	[ ! -h $HOME/Apps ] && ln -sf $YPPATH_PKGDEST $HOME/Apps
-fi
