@@ -1,0 +1,31 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="A google music client"
+HOMEPAGE="http://code.google.com/p/gmbox/"
+REPO=""
+LICENSE="GPL"
+PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
+
+SRC_URI="http://gmbox.googlecode.com/files/gmbox-0.4-alpha.zip"
+
+RDEPEND=""
+BDEPEND=""
+RECOMMENDED=""
+CONFLICT=""
+
+NOTES=""
+
+pbs_unpack() {
+        ypkg_unpack
+}
+
+pbs_install() {
+	ypkg_docp gmbox "$YPPATH_DEST"/usr/lib/
+	ypkg_dodesktop "debian/gmbox.desktop" "gmbox/pixbufs/gmbox.png"
+}
+
+pbs_postinst() {
+	gnome2_desktop_database_update
+}

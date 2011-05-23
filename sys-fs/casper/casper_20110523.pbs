@@ -1,0 +1,28 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="Run a "live" preinstalled system from read-only media"
+HOMEPAGE=""
+LICENSE="GPL-2"
+PACKAGER="<ylmfos@115.com>"
+
+SRC_URI="git://192.168.1.58/"$N".git"
+
+RDEPEND="glibc plymouth initramfs-tools busybox-initramfs sudo eject util-linux-ng ntfs-3g"
+BDEPEND="plymouth-dev"
+
+pbs_unpack() {
+	ypkg_unpack
+}
+
+pbs_install() {
+	export PKG_CONFIG_PATH+=/lib/pkgconfig/
+	make -C casper-md5check/ 
+	ypkg_docp casper-md5check/casper-md5check usr/lib/casper/
+	ypkg_docp etc sbin usr "$YPPATH_DEST"
+}
+
+pbs_postinst() {
+	update-initramfs -k "$(uname -r)" -c
+}
