@@ -4,7 +4,7 @@
 #
 if [ -f /etc/yget.conf ]; then
 	. /etc/yget.conf
-	if [ ! -h $HOME/Apps ] && [ -d $YPPATH_PKGDEST ]; 
+	if [ ! -h $HOME/Apps ] && [ -d $YPPATH_PKGDEST ]; then
 		ln -sf $YPPATH_PKGDEST $HOME/Apps
 	fi
 fi
