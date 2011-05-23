@@ -2,13 +2,12 @@
 # YLmf_OS package build script
 #
 
-DESCRIPTION="web apps collection"
-HOMEPAGE="www.ylmf.net"
-REPO="stable"
+DESCRIPTION="Sun's Java Runtime Environment"
+HOMEPAGE="http://java.sun.com/javase/6/"
 LICENSE="GPL-2"
 PACKAGER="<ylmfos@115.com>"
-
-SRC_URI="git://192.168.1.58/"$N".git"
+ 
+SRC_URI="$N-$V.tar.bz2"
 
 RDEPEND=""
 BDEPEND=""
@@ -18,5 +17,5 @@ pbs_unpack() {
 }
 
 pbs_install() {
-	ypkg_docp * "$YPPATH_DEST"
+	ypkg_docp * "$YPPATH_DEST"/
 }

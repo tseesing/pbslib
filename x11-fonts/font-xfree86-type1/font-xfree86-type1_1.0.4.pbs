@@ -15,13 +15,7 @@ pbs_unpack() {
 }
 
 pbs_config() {
-	
-	YPB_CONFIG+="  
-	               
-		       
-	               
-		       
-		      --with-fontrootdir=/usr/share/fonts "
+	YPB_CONFIG+="--with-fontrootdir=/usr/share/fonts "
 	ypkg_config
 }
 
