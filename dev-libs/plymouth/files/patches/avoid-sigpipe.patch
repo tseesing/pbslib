@@ -1,7 +1,18 @@
-Index: plymouth/src/libply/ply-utils.c
-===================================================================
---- plymouth.orig/src/libply/ply-utils.c	2011-02-14 13:02:57.386349076 +0100
-+++ plymouth/src/libply/ply-utils.c	2011-02-14 13:04:58.816527177 +0100
+diff -ur plymouth-0.8.2-ylmf2/configure.ac plymouth-0.8.2-ylmf2.new/configure.ac
+--- plymouth-0.8.2-ylmf2/configure.ac	2011-05-24 10:36:38.963965341 +0800
++++ plymouth-0.8.2-ylmf2.new/configure.ac	2011-05-24 10:39:53.227296101 +0800
+@@ -163,6 +163,8 @@
+ AC_CHECK_HEADERS([sys/io.h])
+ AM_CONDITIONAL([BUILD_VGA16FB], [test "x$ac_cv_header_sys_io_h" = xyes])
+ 
++AC_CHECK_DECLS([MSG_NOSIGNAL], [], [], [[ #include <sys/socket.h> ]])
++
+ # Turn on the additional warnings last, so -Werror doesn't affect other tests.
+ 
+ AC_DEFUN([PLYMOUTH_CC_TRY_FLAG], [
+diff -ur plymouth-0.8.2-ylmf2/src/libply/ply-utils.c plymouth-0.8.2-ylmf2.new/src/libply/ply-utils.c
+--- plymouth-0.8.2-ylmf2/src/libply/ply-utils.c	2010-03-03 04:52:39.000000000 +0800
++++ plymouth-0.8.2-ylmf2.new/src/libply/ply-utils.c	2011-05-24 10:39:09.040630020 +0800
 @@ -294,6 +294,7 @@
  {
    size_t bytes_left_to_write;
@@ -10,7 +21,7 @@ Index: plymouth/src/libply/ply-utils.c
  
    assert (fd >= 0);
  
-@@ -303,15 +304,27 @@
+@@ -303,15 +304,28 @@
      {
        ssize_t bytes_written = 0;
  
@@ -30,6 +41,7 @@ Index: plymouth/src/libply/ply-utils.c
 +        bytes_written = write (fd,
 +                               ((uint8_t *) buffer) + total_bytes_written,
 +                               bytes_left_to_write);
++
  
        if (bytes_written > 0)
          {
@@ -41,16 +53,3 @@ Index: plymouth/src/libply/ply-utils.c
        else if ((errno != EINTR))
          break;
      }
-Index: plymouth/configure.ac
-===================================================================
---- plymouth.orig/configure.ac	2011-02-14 13:02:57.406349098 +0100
-+++ plymouth/configure.ac	2011-02-14 13:03:48.456423969 +0100
-@@ -180,6 +180,8 @@
- AC_CHECK_HEADERS([sys/io.h])
- AM_CONDITIONAL([BUILD_VGA16FB], [test "x$ac_cv_header_sys_io_h" = xyes])
- 
-+AC_CHECK_DECLS([MSG_NOSIGNAL], [], [], [[ #include <sys/socket.h> ]])
-+
- # Turn on the additional warnings last, so -Werror doesn't affect other tests.
- 
- AC_DEFUN([PLYMOUTH_CC_TRY_FLAG], [

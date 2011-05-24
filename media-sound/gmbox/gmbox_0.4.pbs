@@ -24,6 +24,7 @@ pbs_unpack() {
 pbs_install() {
 	ypkg_docp gmbox "$YPPATH_DEST"/usr/lib/
 	ypkg_dodesktop "debian/gmbox.desktop" "gmbox/pixbufs/gmbox.png"
+	ypkg_doln  /usr/lib/gmbox/gmbox.py  "$YPPATH_DEST"/usr/bin/gmbox
 }
 
 pbs_postinst() {

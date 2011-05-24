@@ -42,7 +42,6 @@ pbs_config() {
 		  autoreconf.patch "
 	ypkg_patch $patches
 	YPB_CONFIG+="--libdir=/lib 
-	             --enable-libkms
 		     --enable-gdm-transition
 		     --datarootdir=/lib"
 	ypkg_config

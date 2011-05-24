@@ -22,7 +22,7 @@ pbs_unpack() {
 }
 
 pbs_config() {
-	ypkg_patch gnome-mplayer-1.0.2-implicit_declaration.patch ylmfos-argv.patch
+	ypkg_patch gnome-mplayer-1.0.2-implicit_declaration.patch ylmfos-argv.patch strip-audio-mime.patch
 	YPB_CONFIG+=""
 	ypkg_config
 }
