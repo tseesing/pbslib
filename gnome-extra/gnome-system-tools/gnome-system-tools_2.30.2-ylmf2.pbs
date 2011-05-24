@@ -24,7 +24,7 @@ pbs_unpack() {
 }
 
 pbs_config() {
-	ypkg_patch "user-settings-username.patch"
+	ypkg_patch "user-settings-username.patch" "ylmfos-translate.patch"
 	YPB_CONFIG+="--disable-schemas-install"
 	ypkg_config
 }

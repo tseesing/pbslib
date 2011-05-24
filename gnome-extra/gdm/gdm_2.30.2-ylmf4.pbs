@@ -1,0 +1,98 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="GNOME Display Manager"
+HOMEPAGE="http://www.gnome.org/projects/gdm/"
+LICENSE="GPL-2"
+PACKAGER="<ylmfos@115.com>"
+
+SRC_URI="http://ftp.gnome.org/pub/gnome/desktop/2.30/2.30.2/sources/"$N-$V".tar.bz2"
+
+RDEPEND="zenity openssh alsa-lib atk audiofile avahi cairo dbus dbus-glib devicekit-power esound expat fontconfig freetype gail gcc gconf glib2 glibc gnome-panel gnome-vfs gtk+ libart_lgpl libbonobo libbonoboui libcanberra libgnome libgnomecanvas libICE libogg libpng libSM libtool libusb libusb-compat libvorbis libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libxkbfile libxklavier libxml2 libXrandr libXrender openssl orbit pam pango pixman popt util-linux-ng zlib"
+BDEPEND="consolekit-dev libglade-dev gnome-session kbproto-dev alsa-lib-dev atk-dev audiofile-dev avahi-dev cairo-dev dbus-dev dbus-glib-dev devicekit-power-dev esound-dev expat-dev fontconfig-dev freetype-dev gail-dev gcc-dev gconf-dev glib2-dev glibc-dev gnome-panel-dev gnome-vfs-dev gtk+-dev libart_lgpl-dev libbonobo-dev libbonoboui-dev libcanberra-dev libgnome-dev libgnomecanvas-dev libICE-dev libogg-dev libpng-dev libSM-dev libtool-dev libusb-dev libusb-compat-dev libvorbis-dev libX11-dev libXau-dev libxcb-dev libXcomposite-dev libXcursor-dev libXdamage-dev libXdmcp-dev libXext-dev libXfixes-dev libXi-dev libxkbfile-dev libxklavier-dev libxml2-dev libXrandr-dev libXrender-dev openssl-dev orbit-dev pam-dev pango-dev pixman-dev popt-dev util-linux-ng-dev zlib-dev"
+RECOMMENDED=""
+
+NOTES="gdm user/group should be created automatically."
+
+pbs_init() {
+	ypkg_useradd -c "gdm user" -d "/var/lib/gdm" -s "/bin/false" -r "gdm"
+}
+
+pbs_unpack() {
+        ypkg_unpack
+}
+
+pbs_config() {	
+	patches=" 27_save_root_window.patch
+		  28_plymouth_transition.patch
+		  ylmfos-gdm-2.30.2-locale.patch
+		  pam-gnome_keyring.patch 
+		  ylmfos-missing-panel.patch "
+	ypkg_patch $patches
+	YPB_CONFIG+=" --disable-scrollkeeper
+		      --enable-ipv6
+		      --enable-console-helper=no
+		      --with-xdmcp=yes
+		      --with-sysconfsubdir=gdm
+		      --with-dmconfdir=/usr/share/xsessions
+		      --with-log-dir=/var/log/gdm
+		      --with-pid-file=/var/run/gdm.pid
+		      --disable-schemas-install 
+		      --enable-console-helper
+		      --with-console-kit "
+	ypkg_config
+}
+
+pbs_build() {
+	ypkg_make
+}
+
+pbs_install() {
+	ypkg_mkinstall
+	# Make some handy softlinks
+	cd "$YPPATH_DEST"/usr/bin; ln -s ../sbin/gdm . ; ln -s ../sbin/gdmsetup .
+	#
+	cd "$YPPATH_DEST"/
+	ypkg_docp "$FILES_PATH"/files/sessions/ssh.desktop usr/share/xsessions
+	chown -R root:root usr/share/xsessions/*
+	# preserve settings
+	install -m755 -d  etc/gdm
+	ypkg_docp 	 "$FILES_PATH"/files/custom.conf  etc/gdm 
+	ypkg_docp_rename "$FILES_PATH"/files/custom.conf  etc/gdm/custom.conf.ori
+	ypkg_domv        "$YPPATH_DEST"/etc/gdm/PostLogin/Default.sample  etc/gdm/PostLogin/Default
+	#fixme! 
+	#gnome-session forgot to run /usr/share/gnome/shutdown/libcanberra-logout-sound.sh
+	#add libcanberra-logout-sound.sh to gdm logout script
+	ypkg_docp "$FILES_PATH"/files/Default  etc/gdm/PostSession
+	chown -R root:root  etc/gdm
+	#Copy gdm init script
+	#ypkg_doinit "$FILES_PATH"/files/"$N"
+	#install -m755 -d etc/rc3.d
+	#ln -sf /etc/init.d/"$N"  etc/rc3.d/S99"$N"
+	#ln -sf /etc/init.d/"$N"  etc/rc3.d/K01"$N"
+	ypkg_docp "$FILES_PATH"/files/systemd/*  lib/systemd/system/
+	#
+	#[ -d var/lib/gdm ] && rm -r var/lib/gdm
+	#mkdir -p      var/lib/gdm
+	#chown gdm:gdm var/lib/gdm 
+	#rm -rf var/gdm
+	chown -R gdm:gdm var/lib/gdm
+	#for gdm screenshot
+	install -d -m755 var/run/"$N"/greeter/
+	#fix me!
+	sed -i 's/${exec_prefix}/\/usr/g' usr/share/gdm/autostart/LoginWindow/at-spi-registryd-wrapper.desktop
+}
+
+pbs_postinst() {
+	gnome2_install_schema "/etc/gconf/schemas/gdm-simple-greeter.schemas"
+	gnome2_install_defaut_gconf "boolean" "/apps/gdm/simple-greeter/accessibility/screen_reader_enabled" "true"
+	gnome2_rarian_sk_update
+	gnome2_desktop_database_update
+	# These GTK+ files need to be kept up to date for
+	# proper input method with additional gdm modules
+	gnome2_gtk_immodules_update
+	# update hicolor icons
+	gnome2_icon_cache_update
+	chown -R gdm:gdm /var/lib/gdm
+}
