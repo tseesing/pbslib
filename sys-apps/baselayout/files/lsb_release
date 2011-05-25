@@ -1,7 +1,7 @@
 #!/bin/bash
 #
-if [ -f /etc/lsb-release ]; then 
-	. /etc/lsb-release
+if [ -f /etc/os-release ]; then 
+	. /etc/os-release
 fi
 
 case "$1" in 

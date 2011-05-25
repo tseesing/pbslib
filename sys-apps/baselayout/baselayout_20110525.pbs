@@ -8,7 +8,7 @@ HOMEPAGE="http://ylmf.net"
 SRC_URI=""
 
 RDEPEND="bash coreutils procps grep findutils"
-BDEPEND=" "
+BDEPEND=""
 
 pbs_init() {
 	local file
@@ -24,6 +24,8 @@ pbs_init() {
 	mkdir -p /usr/{,local/}share/man/man{1..8}
 	mkdir -p /var/{lock,log,mail,run,spool}
 	mkdir -p /var/{opt,cache,lib/{misc,locate},local}
+	#sysvinit compatibility
+	mkdir -p /etc/rc0.d /etc/rc1.d /etc/rc2.d /etc/rc3.d /etc/rc4.d /etc/rc5.d /etc/rc6.d
 	
 	mkdir -p /dev /proc /sys
 	[ -c /dev/null ] || mknod -m 666 /dev/null c 1 3
@@ -92,7 +94,7 @@ EOF
 
 	if [ ! -f /etc/fstab ];then
 		cat >/etc/fstab <<"EOF"
-/dev/sda5       /               ext4    defaults        1       1
+#/dev/sda5       /               ext4    defaults        1       1
 proc            /proc           proc    defaults        0       0
 sysfs           /sys            sysfs   defaults        0       0
 devpts          /dev/pts        devpts  gid=4,mode=620  0       0
@@ -100,28 +102,6 @@ tmpfs           /dev/shm        tmpfs   defaults,size=10G       0       0
 EOF
 	fi
 	
-	if [ ! -f /etc/inittab ];then
-		cat >/etc/inittab <<"EOF"
-id:3:initdefault:
-si::sysinit:/etc/init.d/rc sysinit
-l0:0:wait:/etc/init.d/rc 0
-l1:S1:wait:/etc/init.d/rc 1
-l2:2:wait:/etc/init.d/rc 2
-l3:3:wait:/etc/init.d/rc 3
-l4:4:wait:/etc/init.d/rc 4
-l5:5:wait:/etc/init.d/rc 5
-l6:6:wait:/etc/init.d/rc 6
-ca:12345:ctrlaltdel:/sbin/shutdown -t1 -a -r now
-su:S016:once:/sbin/sulogin
-1:2345:respawn:/sbin/agetty tty1 38400
-2:2345:respawn:/sbin/agetty tty2 38400
-3:2345:respawn:/sbin/agetty tty3 38400
-4:2345:respawn:/sbin/agetty tty4 38400
-5:2345:respawn:/sbin/agetty tty5 38400
-6:2345:respawn:/sbin/agetty tty6 38400
-EOF
-	fi
-
 	if [ ! -f /etc/passwd ];then
 		cat >/etc/passwd <<"EOF"
 root:x:0:0:root:/root:/bin/bash
@@ -189,13 +169,10 @@ done
 unset sh
 EOF
 	fi
-	
-	if [ ! -f /etc/lsb-release ];then
-		cat >/etc/lsb-release <<"OOO"
-DISTRIB_ID=YlmfOS
-DISTRIB_RELEASE=4
-DISTRIB_CODENAME=muse
-DISTRIB_DESCRIPTION="Neutron Star Collision (Love Is Forever)"
-OOO
-	fi
+}
+
+pbs_install() {
+	ypkg_docp "$FILES_PATH"/files/os-release  "$YPPATH_DEST"/etc
+	ypkg_docp "$FILES_PATH"/files/lsb_release  "$YPPATH_DEST"/usr/bin/
+	chmod +x  "$YPPATH_DEST"/usr/bin/lsb_release
 }

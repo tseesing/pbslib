@@ -1,0 +1,40 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="The gnome-keyring package contains a daemon that keeps passwords and other secrets for users."
+HOMEPAGE="http://www.gnome.org"
+LICENSE="GPL-2"
+PACKAGER="<ylmfos@115.com>"
+
+SRC_URI="git://git.gnome.org/gnome-keyring"
+
+RDEPEND="atk cairo dbus expat fontconfig freetype gcc glib2 glibc gtk+ libgcrypt libgpg-error libpng libtasn1 libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libXrandr libXrender pam pango pixman zlib"
+BDEPEND="atk-dev cairo-dev dbus-dev expat-dev fontconfig-dev freetype-dev gcc-dev glib2-dev glibc-dev gtk+-dev libgcrypt-dev libgpg-error-dev libpng-dev libtasn1-dev libX11-dev libXau-dev libxcb-dev libXcomposite-dev libXcursor-dev libXdamage-dev libXdmcp-dev libXext-dev libXfixes-dev libXi-dev libXrandr-dev libXrender-dev pam-dev pango-dev pixman-dev zlib-dev"
+RECOMMENDED=""
+
+pbs_unpack() {
+        ypkg_unpack
+}
+
+pbs_config() {
+	git checkout gnome-2-30
+	ypkg_patch 90_git_keyring_encoding.patch ylmfos-i18n-zh.patch
+	YPB_CONFIG+=" --disable-schemas-install 
+		      --enable-pam 
+		      --with-pam-dir=/lib/security"
+	ypkg_config
+}
+
+pbs_build() {
+	ypkg_make
+}
+
+pbs_install() {
+	ypkg_mkinstall
+}
+
+pbs_postinst() {
+	gnome2_install_schema "/etc/gconf/schemas/gnome-keyring.schemas"
+	gnome2_gconfd_reload
+}
