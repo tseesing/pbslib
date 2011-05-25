@@ -6,10 +6,10 @@ Description: Remove some verbose messages printed before reading the
 UbuntuSpecific: Removes status messages that are arguably useful for
  debugging; we think it looks tidier, but upstream isn't interested.
 
-diff -Nur -x '*.orig' -x '*~' grub2/kern/main.c grub2.new/kern/main.c
---- grub2/kern/main.c	2010-01-20 01:20:49.000000000 +0000
-+++ grub2.new/kern/main.c	2010-01-26 15:24:32.000000000 +0000
-@@ -152,11 +152,6 @@
+diff -ur grub2-1.98-ylmf2/kern/main.c grub2-1.98-ylmf2.new/kern/main.c
+--- grub2-1.98-ylmf2/kern/main.c	2010-03-07 04:51:37.000000000 +0800
++++ grub2-1.98-ylmf2.new/kern/main.c	2011-05-25 16:34:54.176204964 +0800
+@@ -154,11 +154,6 @@
    /* First of all, initialize the machine.  */
    grub_machine_init ();
  
@@ -20,10 +20,10 @@ diff -Nur -x '*.orig' -x '*~' grub2/kern/main.c grub2.new/kern/main.c
 -
    /* Load pre-loaded modules and free the space.  */
    grub_register_exported_symbols ();
-   grub_load_modules ();
-diff -Nur -x '*.orig' -x '*~' grub2/kern/rescue_reader.c grub2.new/kern/rescue_reader.c
---- grub2/kern/rescue_reader.c	2010-01-20 01:20:48.000000000 +0000
-+++ grub2.new/kern/rescue_reader.c	2010-01-26 15:25:25.000000000 +0000
+ #ifdef GRUB_LINKER_HAVE_INIT
+diff -ur grub2-1.98-ylmf2/kern/rescue_reader.c grub2-1.98-ylmf2.new/kern/rescue_reader.c
+--- grub2-1.98-ylmf2/kern/rescue_reader.c	2010-03-07 04:51:37.000000000 +0800
++++ grub2-1.98-ylmf2.new/kern/rescue_reader.c	2011-05-25 16:35:18.586204641 +0800
 @@ -72,8 +72,6 @@
  void
  grub_rescue_run (void)
@@ -33,10 +33,10 @@ diff -Nur -x '*.orig' -x '*~' grub2/kern/rescue_reader.c grub2.new/kern/rescue_r
    while (1)
      {
        char *line;
-diff -Nur -x '*.orig' -x '*~' grub2/normal/menu.c grub2.new/normal/menu.c
---- grub2/normal/menu.c	2010-01-26 15:24:30.000000000 +0000
-+++ grub2.new/normal/menu.c	2010-01-26 15:26:01.000000000 +0000
-@@ -487,12 +487,9 @@
+diff -ur grub2-1.98-ylmf2/normal/menu.c grub2-1.98-ylmf2.new/normal/menu.c
+--- grub2-1.98-ylmf2/normal/menu.c	2011-05-25 16:34:08.819538899 +0800
++++ grub2-1.98-ylmf2.new/normal/menu.c	2011-05-25 16:36:44.529536835 +0800
+@@ -489,12 +489,9 @@
  
  /* Callback invoked immediately before a menu entry is executed.  */
  static void
@@ -50,3 +50,6 @@ diff -Nur -x '*.orig' -x '*~' grub2/normal/menu.c grub2.new/normal/menu.c
  }
  
  /* Callback invoked when a default menu entry executed because of a timeout
+
+
+

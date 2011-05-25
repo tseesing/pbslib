@@ -1,13 +1,7 @@
-Description: Add crashkernel= options if kdump and makedumpfile are
- available. See
- https://blueprints.launchpad.net/ubuntu/+spec/foundations-karmic-linux-kernel-crash-dump.
-UbuntuSpecific: Ubuntu kernel crash handling; requires several other fairly
- distribution-specific pieces to work properly.
-
-diff -Nur -x '*.orig' -x '*~' grub2-1.96+20090725-1ubuntu1/util/grub.d/10_linux.in grub2-1.96+20090725-1ubuntu1.new/util/grub.d/10_linux.in
---- grub2-1.96+20090725-1ubuntu1/util/grub.d/10_linux.in	2009-07-30 12:29:50.000000000 -0500
-+++ grub2-1.96+20090725-1ubuntu1.new/util/grub.d/10_linux.in	2009-07-30 12:30:44.000000000 -0500
-@@ -42,6 +42,11 @@
+diff -ur grub2-1.98-ylmf2/util/grub.d/10_linux.in grub2-1.98-ylmf2.new/util/grub.d/10_linux.in
+--- grub2-1.98-ylmf2/util/grub.d/10_linux.in	2011-05-25 16:06:06.456227857 +0800
++++ grub2-1.98-ylmf2.new/util/grub.d/10_linux.in	2011-05-25 16:08:11.286226202 +0800
+@@ -50,6 +50,11 @@
    LINUX_ROOT_DEVICE=UUID=${GRUB_DEVICE_UUID}
  fi
  
@@ -19,12 +13,12 @@ diff -Nur -x '*.orig' -x '*~' grub2-1.96+20090725-1ubuntu1/util/grub.d/10_linux.
  linux_entry ()
  {
    os="$1"
-@@ -92,7 +97,7 @@
+@@ -130,7 +135,7 @@
    fi
  
    linux_entry "${OS}" "${version}" false \
 -      "${GRUB_CMDLINE_LINUX} ${GRUB_CMDLINE_LINUX_DEFAULT}"
-+      "${GRUB_CMDLINE_LINUX} ${GRUB_CMDLINE_EXTRA} ${GRUB_CMDLINE_LINUX_DEFAULT}"
++  	"${GRUB_CMDLINE_LINUX} ${GRUB_CMDLINE_EXTRA} ${GRUB_CMDLINE_LINUX_DEFAULT}"
    if [ "x${GRUB_DISABLE_LINUX_RECOVERY}" != "xtrue" ]; then
      linux_entry "${OS}" "${version}" true \
  	"single ${GRUB_CMDLINE_LINUX}"

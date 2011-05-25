@@ -1,19 +1,18 @@
-Index: util/i386/pc/grub-setup.c
-===================================================================
---- util/i386/pc/grub-setup.c	(revision 1836)
-+++ util/i386/pc/grub-setup.c	(working copy)
-@@ -383,6 +383,15 @@
+diff -ur grub2-1.98-ylmf2/util/i386/pc/grub-setup.c grub2-1.98-ylmf2.new/util/i386/pc/grub-setup.c
+--- grub2-1.98-ylmf2/util/i386/pc/grub-setup.c	2011-05-25 16:20:47.219549520 +0800
++++ grub2-1.98-ylmf2.new/util/i386/pc/grub-setup.c	2011-05-25 16:21:53.729548639 +0800
+@@ -449,6 +449,15 @@
        grub_disk_cache_invalidate_all ();
-
+ 
        file = grub_file_open (core_path_dev);
 +
 +      if (grub_errno == GRUB_ERR_FILE_NOT_FOUND)
-+	{
-+	  /* Clean the previous grub_errno */
-+	  grub_errno = GRUB_ERR_NONE;
-+	  strcpy (core_path_dev, "/grub/core.img");
-+	  file = grub_file_open (core_path_dev);
-+	}
++       {
++         /* Clean the previous grub_errno */
++         grub_errno = GRUB_ERR_NONE;
++         strcpy (core_path_dev, "/grub/core.img");
++         file = grub_file_open (core_path_dev);
++       }
 +
        if (file)
  	{

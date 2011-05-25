@@ -4,10 +4,10 @@ Description: Change prepare_grub_to_access_device to handle filesystems
 UbuntuSpecific: Not inherently. losetup and /proc/mounts are Linux-specific,
  though, so we might need to refine this before sending it upstream.
 
-diff -Nur -x '*.orig' -x '*~' grub2-1.97~beta3/util/grub-mkconfig_lib.in grub2-1.97~beta3.new/util/grub-mkconfig_lib.in
---- grub2-1.97~beta3/util/grub-mkconfig_lib.in	2009-09-15 00:23:50.000000000 +0100
-+++ grub2-1.97~beta3.new/util/grub-mkconfig_lib.in	2009-09-15 00:31:31.000000000 +0100
-@@ -142,6 +142,20 @@
+diff -ur grub2-1.98-ylmf2/util/grub-mkconfig_lib.in grub2-1.98-ylmf2.new/util/grub-mkconfig_lib.in
+--- grub2-1.98-ylmf2/util/grub-mkconfig_lib.in	2010-03-07 04:51:37.000000000 +0800
++++ grub2-1.98-ylmf2.new/util/grub-mkconfig_lib.in	2011-05-25 16:56:48.022854224 +0800
+@@ -107,6 +107,20 @@
  {
    device=$1
  
@@ -27,8 +27,8 @@ diff -Nur -x '*.orig' -x '*~' grub2-1.97~beta3/util/grub-mkconfig_lib.in grub2-1
 +
    # Abstraction modules aren't auto-loaded.
    abstraction="`${grub_probe} --device ${device} --target=abstraction`"
-   for module in ${abstraction} ; do 
-@@ -159,6 +173,14 @@
+   for module in ${abstraction} ; do
+@@ -124,6 +138,14 @@
    if fs_uuid="`${grub_probe} --device ${device} --target=fs_uuid 2> /dev/null`" ; then
      echo "search --no-floppy --fs-uuid --set ${fs_uuid}"
    fi

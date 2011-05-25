@@ -6,10 +6,10 @@ Description: If you set root after running loopback, any attempts to open
  it's fairly clear that only the root that was in place when you ran
  loopback should be relevant to the loopback file name.
 
-diff -Nur -x '*.orig' -x '*~' grub2-1.97~beta2/disk/loopback.c grub2-1.97~beta2.new/disk/loopback.c
---- grub2-1.97~beta2/disk/loopback.c	2009-06-10 22:04:23.000000000 +0100
-+++ grub2-1.97~beta2.new/disk/loopback.c	2009-09-10 21:42:56.000000000 +0100
-@@ -28,6 +28,7 @@
+diff -ur grub2-1.98-ylmf2/disk/loopback.c grub2-1.98-ylmf2.new/disk/loopback.c
+--- grub2-1.98-ylmf2/disk/loopback.c	2010-03-07 04:51:37.000000000 +0800
++++ grub2-1.98-ylmf2.new/disk/loopback.c	2011-05-25 16:51:38.569524990 +0800
+@@ -29,6 +29,7 @@
  {
    char *devname;
    char *filename;
@@ -17,7 +17,7 @@ diff -Nur -x '*.orig' -x '*~' grub2-1.97~beta2/disk/loopback.c grub2-1.97~beta2.
    int has_partitions;
    struct grub_loopback *next;
  };
-@@ -61,6 +62,7 @@
+@@ -62,6 +63,7 @@
    /* Remove the device from the list.  */
    *prev = dev->next;
  
@@ -25,7 +25,7 @@ diff -Nur -x '*.orig' -x '*~' grub2-1.97~beta2/disk/loopback.c grub2-1.97~beta2.
    grub_free (dev->devname);
    grub_free (dev->filename);
    grub_free (dev);
-@@ -90,9 +92,6 @@
+@@ -91,9 +93,6 @@
    if (! file)
      return grub_errno;
  
@@ -35,7 +35,7 @@ diff -Nur -x '*.orig' -x '*~' grub2-1.97~beta2/disk/loopback.c grub2-1.97~beta2.
    /* First try to replace the old device.  */
    for (newdev = loopback_list; newdev; newdev = newdev->next)
      if (grub_strcmp (newdev->devname, args[0]) == 0)
-@@ -102,10 +101,12 @@
+@@ -103,11 +102,14 @@
      {
        char *newname = grub_strdup (args[1]);
        if (! newname)
@@ -44,33 +44,35 @@ diff -Nur -x '*.orig' -x '*~' grub2-1.97~beta2/disk/loopback.c grub2-1.97~beta2.
  
        grub_free (newdev->filename);
        newdev->filename = newname;
+ 
 +      grub_file_close (newdev->file);
 +      newdev->file = file;
- 
++
        /* Set has_partitions when `--partitions' was used.  */
        newdev->has_partitions = state[1].set;
-@@ -116,13 +117,13 @@
+ 
+@@ -117,13 +119,13 @@
    /* Unable to replace it, make a new entry.  */
    newdev = grub_malloc (sizeof (struct grub_loopback));
    if (! newdev)
 -    return grub_errno;
-+    goto fail;
++  	goto fail;
  
    newdev->devname = grub_strdup (args[0]);
    if (! newdev->devname)
      {
        grub_free (newdev);
 -      return grub_errno;
-+      goto fail;
++        goto fail;
      }
  
    newdev->filename = grub_strdup (args[1]);
-@@ -130,9 +131,11 @@
+@@ -131,9 +133,11 @@
      {
        grub_free (newdev->devname);
        grub_free (newdev);
 -      return grub_errno;
-+      goto fail;
++         goto fail;
      }
  
 +  newdev->file = file;
@@ -78,18 +80,20 @@ diff -Nur -x '*.orig' -x '*~' grub2-1.97~beta2/disk/loopback.c grub2-1.97~beta2.
    /* Set has_partitions when `--partitions' was used.  */
    newdev->has_partitions = state[1].set;
  
-@@ -141,6 +144,10 @@
+@@ -142,6 +146,12 @@
    loopback_list = newdev;
  
    return 0;
 +
++
 +fail:
 +  grub_file_close (file);
 +  return grub_errno;
++
  }
  
  
-@@ -159,7 +166,6 @@
+@@ -160,7 +170,6 @@
  static grub_err_t
  grub_loopback_open (const char *name, grub_disk_t disk)
  {
@@ -97,9 +101,9 @@ diff -Nur -x '*.orig' -x '*~' grub2-1.97~beta2/disk/loopback.c grub2-1.97~beta2.
    struct grub_loopback *dev;
  
    for (dev = loopback_list; dev; dev = dev->next)
-@@ -169,29 +175,17 @@
+@@ -170,29 +179,17 @@
    if (! dev)
-     return grub_error (GRUB_ERR_UNKNOWN_DEVICE, "Can't open device");
+     return grub_error (GRUB_ERR_UNKNOWN_DEVICE, "can't open device");
  
 -  file = grub_file_open (dev->filename);
 -  if (! file)
@@ -129,7 +133,7 @@ diff -Nur -x '*.orig' -x '*~' grub2-1.97~beta2/disk/loopback.c grub2-1.97~beta2.
  static grub_err_t
  grub_loopback_read (grub_disk_t disk, grub_disk_addr_t sector,
  		    grub_size_t size, char *buf)
-@@ -233,7 +227,6 @@
+@@ -234,7 +231,6 @@
      .id = GRUB_DISK_DEVICE_LOOPBACK_ID,
      .iterate = grub_loopback_iterate,
      .open = grub_loopback_open,

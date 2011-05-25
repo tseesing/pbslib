@@ -5,10 +5,10 @@ UbuntuSpecific: Upstream would like to consider this at more length. See
  http://lists.gnu.org/archive/html/grub-devel/2009-08/msg00718.html, and the
  rest of the thread for context.
 
-diff -Nur -x '*.orig' -x '*~' grub2-1.96+20090826/commands/sleep.c grub2-1.96+20090826.new/commands/sleep.c
---- grub2-1.96+20090826/commands/sleep.c	2009-08-26 10:01:15.000000000 +0100
-+++ grub2-1.96+20090826.new/commands/sleep.c	2009-08-27 10:02:35.000000000 +0100
-@@ -43,6 +43,20 @@
+diff -ur grub2-1.98-ylmf2/commands/sleep.c grub2-1.98-ylmf2.new/commands/sleep.c
+--- grub2-1.98-ylmf2/commands/sleep.c	2010-03-07 04:51:37.000000000 +0800
++++ grub2-1.98-ylmf2.new/commands/sleep.c	2011-05-25 16:29:04.019542937 +0800
+@@ -44,6 +44,20 @@
    grub_printf ("%d    ", n);
  }
  
@@ -29,7 +29,7 @@ diff -Nur -x '*.orig' -x '*~' grub2-1.96+20090826/commands/sleep.c grub2-1.96+20
  /* Based on grub_millisleep() from kern/generic/millisleep.c.  */
  static int
  grub_interruptible_millisleep (grub_uint32_t ms)
-@@ -52,8 +66,7 @@
+@@ -53,8 +67,7 @@
    start = grub_get_time_ms ();
  
    while (grub_get_time_ms () - start < ms)

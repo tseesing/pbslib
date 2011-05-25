@@ -1,14 +1,13 @@
-diff --git a/util/grub.d/10_linux.in b/util/grub.d/10_linux.in
-index c2da413..cbd9d6b 100644
---- a/util/grub.d/10_linux.in
-+++ b/util/grub.d/10_linux.in
-@@ -36,7 +36,8 @@ case ${GRUB_DEVICE} in
+diff -ur grub2-1.98-ylmf2/util/grub.d/10_linux.in grub2-1.98-ylmf2.new/util/grub.d/10_linux.in
+--- grub2-1.98-ylmf2/util/grub.d/10_linux.in	2010-03-07 04:51:37.000000000 +0800
++++ grub2-1.98-ylmf2.new/util/grub.d/10_linux.in	2011-05-25 16:04:25.646229192 +0800
+@@ -43,7 +43,8 @@
  esac
-
+ 
  if [ "x${GRUB_DEVICE_UUID}" = "x" ] || [ "x${GRUB_DISABLE_LINUX_UUID}" = "xtrue" ] \
 -    || ! test -e "/dev/disk/by-uuid/${GRUB_DEVICE_UUID}" ; then
-+    || ! test -e "/dev/disk/by-uuid/${GRUB_DEVICE_UUID}" \
-+    || [ "`grub-probe -t abstraction --device ${GRUB_DEVICE} | sed -e 's,.*\(lvm\).*,\1,'`" = "lvm"  ] ; then
++     || ! test -e "/dev/disk/by-uuid/${GRUB_DEVICE_UUID}" \
++     || [ "`grub-probe -t abstraction --device ${GRUB_DEVICE} | sed -e 's,.*\(lvm\).*,\1,'`" = "lvm"  ] ; then
    LINUX_ROOT_DEVICE=${GRUB_DEVICE}
  else
    LINUX_ROOT_DEVICE=UUID=${GRUB_DEVICE_UUID}
