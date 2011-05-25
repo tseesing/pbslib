@@ -8,9 +8,11 @@ case "$1" in
 	-i)	echo $DISTRIB_ID ;;
 	-r)	echo $DISTRIB_RELEASE ;;
 	-c)	echo $DISTRIB_CODENAME ;;
+	-d)     echo $DISTRIB_DESCRIPTION ;;
 	*)	cat <<OOO
 ID:$DISTRIB_ID
 Release:$DISTRIB_RELEASE
 Codename:$DISTRIB_CODENAME
+Description:$DISTRIB_DESCRIPTION
 OOO
 esac
