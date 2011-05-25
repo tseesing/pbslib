@@ -6,13 +6,12 @@ DESCRIPTION="Chinese Lunar Library"
 HOMEPAGE="http://code.google.com/p/liblunar/"
 REPO=""
 LICENSE="GPL"
-PRIORITY=""
 PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 
 SRC_URI="http://liblunar.googlecode.com/files/"$N-$V$R".tar.gz"
 
-RDEPEND="glib2 glibc python"
-BDEPEND="glib2-dev glibc-dev python-dev"
+RDEPEND=""
+BDEPEND=""
 RECOMMENDED=""
 CONFLICT=""
 
@@ -23,7 +22,7 @@ pbs_unpack() {
 }
 
 pbs_config() {
-	YPB_CONFIG+=""
+	YPB_CONFIG+="--enable-introspection=no"
 	ypkg_config
 }
 

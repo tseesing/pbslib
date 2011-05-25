@@ -10,7 +10,7 @@ PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 
 SRC_URI="http://gnome-mplayer.googlecode.com/files/"$N-$V".tar.gz"
 
-RDEPEND="alsa-lib atk cairo dbus dbus-glib expat fontconfig freetype gcc glib2 glibc gtk+ libgpod liblunar liblunar-gtk libnotify libplist libpng libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libxml2 libXrandr libXrender libXScrnSaver nautilus pango pixman sqlite zlib libgpod libplist"
+RDEPEND="alsa-lib atk cairo dbus dbus-glib expat fontconfig freetype gtk+ libgpod libnotify libplist libpng libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libxml2 libXrandr libXrender libXScrnSaver nautilus pango pixman sqlite zlib libgpod libplist"
 BDEPEND=""
 RECOMMENDED=""
 CONFLICT=""
