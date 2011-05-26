@@ -8,6 +8,7 @@ REPO=""
 LICENSE="GPL,MPL"
 PRIORITY=""
 PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
+REPO="testing"
 
 SRC_URI="http://releases.mozilla.org/pub/mozilla.org/"$N"/releases/"$V$R"/source/"$N-$V$R".source.tar.bz2"
 

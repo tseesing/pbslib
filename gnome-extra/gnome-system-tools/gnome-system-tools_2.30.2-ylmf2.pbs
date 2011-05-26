@@ -24,7 +24,7 @@ pbs_unpack() {
 }
 
 pbs_config() {
-	ypkg_patch "user-settings-username.patch" "ylmfos-translate.patch"
+	ypkg_patch user-settings-username.patch ylmfos-translate.patch change_network_png.patch
 	YPB_CONFIG+="--disable-schemas-install"
 	ypkg_config
 }
@@ -36,6 +36,7 @@ pbs_build() {
 pbs_install() {
 	ypkg_mkinstall
 	cd "$YPPATH_DEST"
+	ypkg_docp "$FILES_PATH"/files/network-setting.png  usr/share/pixmaps/
 	# keep clean for rarian
 	rm -fr var/lib/scrollkeeper
 	rm -fr var/lib/log
