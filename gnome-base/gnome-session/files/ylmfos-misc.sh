@@ -11,7 +11,7 @@ fi
 #
 if [ -f $HOME/.config/user-dirs.dirs ] && [ ! -f $HOME/.flag ]; then
 	. $HOME/.config/user-dirs.dirs
-	for i in 115u-web.desktop chromium.desktop; do
+	for i in 115u-web.desktop chromium.desktop webqq-web.desktop; do
 		cp /usr/share/applications/${i}	$XDG_DESKTOP_DIR
 	done
 	touch $HOME/.flag

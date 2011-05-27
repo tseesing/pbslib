@@ -12,7 +12,7 @@
 +               exit 0 ;;
 +        esac
 +done
-+#plymouth quit || :
++plymouth quit || :
 +[ -r /etc/environment ] && . /etc/environment
 +[ -r /etc/default/locale ] && . /etc/default/locale
 +export PATH LANG LANGUAGE
