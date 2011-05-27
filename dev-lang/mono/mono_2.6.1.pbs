@@ -9,7 +9,7 @@ LICENSE="LGPL v2, MIT X11 license"
 PRIORITY=""
 PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 
-SRC_URI="http://ftp.novell.com/pub/mono/sources/mono/mono-2.10.1.tar.bz2"
+SRC_URI="ftp://ftp.novell.com/pub/mono/sources/moon/2.4.1/mono-2.6.1.tar.bz2"
 
 RDEPEND="gcc glibc zlib"
 BDEPEND=""

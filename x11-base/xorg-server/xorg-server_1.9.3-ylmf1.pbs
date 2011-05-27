@@ -27,7 +27,7 @@ pbs_unpack() {
 pbs_config() {
 	ypkg_patch  "$N"-1.9-xinerama-crash-fix.patch
 	ypkg_patch  "$N"-1.9-nouveau-default.patch
-	ypkg_patch   ylmfos-xserver_1.5.0_bg_none_root.patch
+	#ypkg_patch   ylmfos-xserver_1.5.0_bg_none_root.patch
 	YPB_CONFIG+=" --sysconfdir=/etc/X11
 		      --with-xkb-output=/var/lib/xkb 
 		      --enable-install-setuid 

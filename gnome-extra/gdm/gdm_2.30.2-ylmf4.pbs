@@ -25,10 +25,10 @@ pbs_unpack() {
 
 pbs_config() {	
 	patches=" 27_save_root_window.patch
-		  28_plymouth_transition.patch
 		  ylmfos-gdm-2.30.2-locale.patch
 		  pam-gnome_keyring.patch 
 		  ylmfos-missing-panel.patch "
+		  #28_plymouth_transition.patch
 	ypkg_patch $patches
 	YPB_CONFIG+=" --disable-scrollkeeper
 		      --enable-ipv6

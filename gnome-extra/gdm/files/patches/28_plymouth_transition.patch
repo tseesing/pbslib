@@ -76,7 +76,7 @@ diff -Nur -x '*.orig' -x '*~' gdm/daemon/gdm-server.c gdm.new/daemon/gdm-server.
 +        char *vt;
 +
 +        g_free (server->priv->command);
-+        server->priv->command = g_strdup (X_SERVER " -nr -verbose");
++        server->priv->command = g_strdup (X_SERVER " -br -verbose ");
 +        vt = get_active_vt_as_string ();
 +        res = gdm_server_spawn (server, vt);
 +        g_free (vt);

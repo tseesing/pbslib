@@ -1,0 +1,38 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="webvbox video online"
+HOMEPAGE="http://hi.baidu.com/webvbox/home"
+REPO=""
+LICENSE=""
+PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
+
+SRC_URI="webvbox1.0-beta.tar.gz"
+
+RDEPEND="xulrunner"
+BDEPEND=""
+RECOMMENDED=""
+CONFLICT=""
+
+NOTES=""
+
+pbs_unpack() {
+        ypkg_unpack
+}
+
+pbs_install() {
+	ypkg_docp webvbox/webvbox/   "$YPPATH_DEST"/usr/lib/
+	ypkg_dodesktop  "webvbox/webvbox.desktop"  "webvbox/webvbox/webvbox.png"
+	mkdir "$YPPATH_DEST"/usr/bin/
+	cat > "$YPPATH_DEST"/usr/bin/webvbox << "EOF"
+#!/bin/sh
+cd /usr/lib/webvbox
+./webvbox $@
+EOF
+	chmod +x "$YPPATH_DEST"/usr/bin/webvbox
+}
+
+pbs_postinst() {
+	gnome2_desktop_database_update
+}
