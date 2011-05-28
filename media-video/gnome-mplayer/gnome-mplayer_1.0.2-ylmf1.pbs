@@ -59,6 +59,8 @@ pbs_postinst() {
 	#The command to handle ITMS scheme URLs
 	gnome2_install_defaut_gconf "string" "/desktop/gnome/url-handlers/itms/command" "gnome-mplayer %s"
 	gnome2_install_defaut_gconf "bool"  "/desktop/gnome/url-handlers/itms/enabled"  "True"
+	#
+	gnome2_install_defaut_gconf "string" "/apps/gnome-mplayer/preferences/subtitlecodepage" "CP936"
 }
 
 pbs_postrm() {

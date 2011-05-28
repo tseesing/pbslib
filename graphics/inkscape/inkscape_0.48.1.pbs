@@ -10,7 +10,7 @@ PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 
 SRC_URI="http://downloads.sourceforge.net/project/"$N"/"$N"/"$V$R"/"$N-$V$R".tar.bz2"
 
-RDEPEND="glibmm gc gsl poppler"
+RDEPEND="glibmm gc gsl poppler imagemagick"
 BDEPEND=""
 RECOMMENDED=""
 

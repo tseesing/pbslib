@@ -24,9 +24,9 @@ pbs_unpack() {
 }
 
 pbs_config() {
-	for i in 24 48 22 16 32;do
-		convert -resize "${i}"x"${i}" "$FILES_PATH"/files/evolution.png  data/icons/hicolor_apps_"${i}"x"${i}"_evolution.png
-	done
+	#for i in 24 48 22 16 32;do
+	#	convert -resize "${i}"x"${i}" "$FILES_PATH"/files/evolution.png  data/icons/hicolor_apps_"${i}"x"${i}"_evolution.png
+	#done
 	ypkg_docp_rename "$FILES_PATH"/files/evolution.svg  data/icons/hicolor_apps_scalable_evolution.svg
 	YPB_CONFIG+=" --disable-schemas-install  
 		      --disable-nm 

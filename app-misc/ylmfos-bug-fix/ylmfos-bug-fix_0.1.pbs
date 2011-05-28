@@ -1,0 +1,40 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="a collection of ylmfos bug fixed scripts"
+HOMEPAGE=""
+REPO=""
+LICENSE="GPL"
+PRIORITY="required"
+PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
+
+SRC_URI=""
+
+RDEPEND=""
+BDEPEND=""
+RECOMMENDED=""
+CONFLICT=""
+
+NOTES=""
+
+pbs_init() {
+	:
+}
+
+pbs_install() {
+	mkdir -p "$YPPATH_DEST"/usr/share/"$N"
+	touch "$YPPATH_DEST"/usr/share/"$N"/Readme
+}
+
+pbs_postinst() {
+	echo AAAAAAAAAAAAAAAAAAAAA
+}
+
+pbs_prerm() {
+	:
+}
+
+pbs_postrm() {
+	:
+}

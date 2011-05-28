@@ -13,7 +13,7 @@ SRC_URI="http://get.opera.com/pub/opera/linux/1110/"$N"_"$V$R"_i386.deb"
 
 RDEPEND=""
 BDEPEND=" "
-RECOMMENDED=""
+RECOMMENDED="opera-doc"
 CONFLICT=""
 
 DESKTOPFILE="opera-browser.desktop"
