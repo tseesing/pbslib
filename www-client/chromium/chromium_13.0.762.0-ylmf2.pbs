@@ -88,4 +88,5 @@ pbs_install() {
         find "${YPPATH_DEST}"/usr/lib/chromium/ -name "*.d" -type f -delete
 	#
 	ypkg_docp "$FILES_PATH"/files/default-preferences/"$N".tar.bz2  "${YPPATH_DEST}"/usr/lib/chromium/
+	ypkg_docp "$FILES_PATH"/files/default-preferences/settings.sol  "${YPPATH_DEST}"/usr/lib/chromium/
 }

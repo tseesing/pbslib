@@ -76,7 +76,7 @@ pbs_install() {
 	#[ -d var/lib/gdm ] && rm -r var/lib/gdm
 	#mkdir -p      var/lib/gdm
 	#chown gdm:gdm var/lib/gdm 
-	#rm -rf var/gdm
+	rm -rf var/gdm
 	chown -R gdm:gdm var/lib/gdm
 	#for gdm screenshot
 	install -d -m755 var/run/"$N"/greeter/

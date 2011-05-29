@@ -11,7 +11,7 @@ PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 
 SRC_URI="http://download.deluge-torrent.org/source/"$N-$V$R".tar.bz2"
 
-RDEPEND="distribute chardet twisted zope-interface libtorrent"
+RDEPEND="distribute chardet twisted zope-interface libtorrent libtorrent-rasterbar"
 BDEPEND=""
 RECOMMENDED=""
 CONFLICT=""

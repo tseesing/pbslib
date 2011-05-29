@@ -67,5 +67,10 @@ diff -ur chromium-13.0.762.0/chrome/tools/build/linux/chrome-wrapper chromium-13
 +	tar xf /usr/lib/chromium/chromium.tar.bz2 -C $HOME/.config/
 +	chown -R $USER:$USER $HOME/.config/chromium 
 +fi
-+
++flash_setting_dir="$HOME/.macromedia/Flash_Player/macromedia.com/support/flashplayer/sys"
++if [ ! -d $flash_setting_dir ]; then
++	mkdir -p $flash_setting_dir
++	cp -a /usr/lib/chromium/settings.sol $flash_setting_dir
++	chown -R $USER:$USER $flash_setting_dir/settings.sol
++fi
 +exec $CMD_PREFIX "$BIN" "$@"
