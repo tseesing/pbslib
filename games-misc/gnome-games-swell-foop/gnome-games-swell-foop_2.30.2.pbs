@@ -24,7 +24,8 @@ pbs_unpack() {
 
 pbs_config() {
 	YPB_CONFIG+="--enable-games=swell-foop
-	             --disable-schemas-install"
+	             --disable-schemas-install "
+		     #--enable-introspection=no "
 	ypkg_config
 }
 

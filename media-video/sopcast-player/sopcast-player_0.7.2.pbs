@@ -1,0 +1,40 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="an easy to use Linux GUI front-end for the p2p streaming technology developed by SopCast. "
+HOMEPAGE="http://code.google.com/p/sopcast-player/"
+REPO=""
+LICENSE="GPL"
+PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
+
+SRC_URI="http://sopcast-player.googlecode.com/files/"$N-$V$R".tar.gz"
+
+RDEPEND=""
+BDEPEND=""
+RECOMMENDED=""
+CONFLICT=""
+
+NOTES=""
+
+pbs_unpack() {
+        ypkg_unpack
+}
+
+pbs_config() {
+	YPB_CONFIG+=""
+	ypkg_config
+}
+
+pbs_build() {
+	ypkg_make
+}
+
+pbs_install() {
+	ypkg_mkinstall
+}
+
+pbs_postinst() {
+	gnome2_desktop_database_update
+	gnome2_icon_cache_update
+}

@@ -1,0 +1,33 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="Scheme interpreter"
+HOMEPAGE="http://www.gnu.org/software/guile/"
+LICENSE="GPL-2"
+PACKAGER="<ylmfos@115.com>"
+
+SRC_URI="http://ftp.gnu.org/pub/gnu/"$N"/"$N-$V$R".tar.gz"
+
+RDEPEND="glibc gmp libtool ncurses readline"
+BDEPEND="glibc-dev gmp-dev libtool-dev ncurses-dev readline-dev"
+RECOMMENDED=""
+
+NOTES=""
+
+pbs_unpack() {
+        ypkg_unpack
+}
+
+pbs_config() {
+	YPB_CONFIG+="--with-threads"
+	ypkg_config
+}
+
+pbs_build() {
+	ypkg_make
+}
+
+pbs_install() {
+	ypkg_mkinstall
+}

@@ -2,8 +2,8 @@
 # YLmf_OS package build script
 #
 
-DESCRIPTION="This is a sample skeleton xiange build script file"
-HOMEPAGE="http://foo.bar.com/"
+DESCRIPTION="XML::Simple - Easy API to read/write XML (esp config files)"
+HOMEPAGE="http://search.cpan.org/dist/XML-Simple/"
 
 SRC_URI="http://search.cpan.org/CPAN/authors/id/G/GR/GRANTM/XML-Simple-"$V$R".tar.gz"
 

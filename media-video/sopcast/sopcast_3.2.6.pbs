@@ -1,0 +1,28 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="A simple, free way to broadcast video and audio over the Internet"
+HOMEPAGE="http://linux.softpedia.com/get/Multimedia/Video/SopCast-21690.shtml"
+REPO=""
+LICENSE="Freeware / FREE"
+PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
+
+SRC_URI="http://download.sopcast.cn/download/sp-auth.tgz"
+
+RDEPEND=""
+BDEPEND=""
+RECOMMENDED=""
+CONFLICT=""
+
+NOTES=""
+
+pbs_unpack() {
+        ypkg_unpack
+}
+
+pbs_install() {
+	ypkg_docp sp-sc-auth "$YPPATH_DEST"/usr/bin/
+	chmod +x "$YPPATH_DEST"/usr/bin/sp-sc-auth
+	ypkg_dodoc Readme
+}

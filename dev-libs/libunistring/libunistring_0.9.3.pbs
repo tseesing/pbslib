@@ -2,19 +2,20 @@
 # YLmf_OS package build script
 #
 
-DESCRIPTION="Common modules for GNOME JavaScript interpreters"
+DESCRIPTION="Library for manipulating Unicode strings and C strings according to the Unicode standard"
 HOMEPAGE=""
 REPO=""
 LICENSE="GPL"
-PRIORITY=""
 PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 
-SRC_URI="http://ftp.gnome.org/pub/gnome/sources/gnome-js-common/0.1/gnome-js-common-0.1.2.tar.bz2"
+SRC_URI="http://ftp.gnu.org/gnu/"$N"/"$N-$V$R".tar.gz"
 
 RDEPEND=""
 BDEPEND=""
 RECOMMENDED=""
 CONFLICT=""
+
+NOTES=""
 
 pbs_unpack() {
         ypkg_unpack
@@ -31,3 +32,4 @@ pbs_build() {
 pbs_install() {
 	ypkg_mkinstall
 }
+

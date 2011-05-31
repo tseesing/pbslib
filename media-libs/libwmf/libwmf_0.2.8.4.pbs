@@ -2,8 +2,8 @@
 # YLmf_OS package build script
 #
 
-DESCRIPTION="This is a sample skeleton xiange build script file"
-HOMEPAGE="http://foo.bar.com/"
+DESCRIPTION=" library for converting WMF files"
+HOMEPAGE="http://wvware.sourceforge.net/"
  
 SRC_URI="http://downloads.sourceforge.net/project/wvware/"$N"/"$V"/"$N-$V$R".tar.gz"
 

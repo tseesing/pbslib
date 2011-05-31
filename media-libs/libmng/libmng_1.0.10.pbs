@@ -2,8 +2,8 @@
 # YLmf_OS package build script
 #
 
-DESCRIPTION="This is a sample skeleton xiange build script file"
-HOMEPAGE="http://foo.bar.com/"
+DESCRIPTION="Multiple Image Networkgraphics lib (animated png's)"
+HOMEPAGE="http://www.libmng.com/"
  
 SRC_URI="http://downloads.sourceforge.net/"$N"/"$N-$V$R".tar.bz2"
 

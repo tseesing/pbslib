@@ -10,30 +10,24 @@ SRC_URI="http://kernel.org/pub/software/scm/git/$N-$V.tar.bz2"
 RDEPEND=""
 BDEPEND=""
 
-pbs_unpack()
-{
+pbs_unpack() {
         ypkg_unpack
 }
 
-pbs_config()
-{
-	
+pbs_config() {
 	YPB_CONFIG+=" --sysconfdir=/etc --libexecdir=/usr/lib/git "
 	ypkg_config
 }
 
-pbs_build()
-{
+pbs_build() {
 	ypkg_make
 }
 
-pbs_install()
-{
+pbs_install() {
 	ypkg_mkinstall
 }
 
-pbs_postinst()
-{
-	git config --system --add user.name xguser
-	git config --system --add user.email xguser@xiangelinux.com
+pbs_postinst() {
+	git config --system --add user.name ylmfosuser
+	git config --system --add user.email ylmfosuser@ylmfos.com
 }

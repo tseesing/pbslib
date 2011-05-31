@@ -9,10 +9,10 @@ LICENSE="LGPL"
 PRIORITY=""
 PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 
-SRC_URI="http://ftp.gnome.org/pub/gnome/sources/seed/2.30/seed-2.30.0.tar.bz2"
+SRC_URI="http://ftp.gnome.org/pub/gnome/sources/seed/2.30/"$N-$V$R".tar.bz2"
 
 RDEPEND=""
-BDEPEND="gnome-js-common"
+BDEPEND="gnome-js-common gobject-introspection-dev"
 RECOMMENDED=""
 CONFLICT=""
 
@@ -23,76 +23,14 @@ pbs_unpack() {
 }
 
 pbs_config() {
-	#fist, cd build directory
-	#cd "$N-$V$R"
-	#ypkg_patch $FILES_PATH/files/patches/*.patch 
-	#XX.patch should be found under $FILES_PATH/files or $FILES_PATH/files/patches/
-	#ypkg_patch XX.patch
-	#second, add package specified config params to YPB_CONFIG
-	#default is :
-	#YPB_CONFIG+=" --prefix=/usr
-	#	      --sysconfdir=/etc
-	#	      --localstatedir=/var
-	#             --infodir=/usr/share/info
-	#	      --mandir=/usr/share/man
-	#              --disable-static
-	#	      --enable-shared "
 	YPB_CONFIG+=""
-	#Third, call configure with $YPB_CONFIG
-	#./configure $YPB_CONFIG
 	ypkg_config
 }
 
 pbs_build() {
-	#make "$MAKEOPTS"
 	ypkg_make
 }
 
-#check
-pbs_check() {
-	:
-	#make check
-}
-
-#install
 pbs_install() {
-	#install everything to $YPPATH_DEST
-	#make DESTDIR="$YPPATH_DEST" install
 	ypkg_mkinstall
-	#ypkg_doinit "$FILES_PATH/files/slim"
-	#ypkg_dodesktop "*.desktop" "*.png"
-	#ypkg_dodoc AUTHORS ChangeLog COPYING INSTALL NEWS README 
-	#ypkg_docp "$FILES_PATH/files/XXXX" "dirname"
-	#ypkg_domv "$FILES_PATH/files/XXXX" "dirname"
-	#ypkg_docp_rename "$1" "$2"
-	#ypkg_domv_rename "$1" "$2"
-	#ypkg_doln "$1 "$2"
-	#*****************
-	#when SRC_URI is deb or rpm package
-	#ypkg_docp data/*  "$YPPATH_DEST"
-}
-
-#post install
-pbs_postinst() {
-	:
-	#gnome2_install_schema "$1"
-	#gnome2_install_defaut_gconf "$1 $2 $3
-	#gnome2_rarian_sk_update
-	#gnome2_desktop_database_update
-	#gnome2_icon_cache_update
-	#gnome2_gconfd_reload
-	#gnome2_gtk_immodules_update
-	#gnome2_mime_database_update
-	#gnome2_gdk_pixbuf_loaders_update
-	#ypkg_dofont /usr/share/fonts/truetype/ttf-dejavu
-}
-
-#pre remove
-pbs_prerm() {
-	:
-}
-
-#post remove
-pbs_postrm() {
-	:
 }
