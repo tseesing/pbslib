@@ -21,7 +21,6 @@ pbs_unpack() {
 
 pbs_config() {
 	target="i586-mingw32msvc"
-	
 	./configure --prefix=/usr --target=$target --disable-nls --enable-shared 
 }
 

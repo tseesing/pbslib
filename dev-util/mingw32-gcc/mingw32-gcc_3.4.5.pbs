@@ -3,39 +3,21 @@
 #
 
 DESCRIPTION="A C and C++ cross-compilers for building Windows executables on Linux"
-HOMEPAGE="http://mingw.sf.net"
-REPO="testing"
+HOMEPAGE="http://mingw.sf.net http://sourceforge.net/projects/mingw/"
 LICENSE="LGPL"
 PACKAGER="<ylmfos@115.com>"
-SRC_URI=" http://downloads.sourceforge.net/project/mingw/MinGW/BaseSystem/GCC/Version4/gcc-$V$R-1/gcc-$V$R-1-mingw32-src.tar.lzma 
-          http://sourceforge.net/projects/mingw/files/MinGW/mpc/mpc-0.8.1-1/mpc-0.8.1-1-mingw32-src.tar.lzma
-	  http://sourceforge.net/projects/mingw/files/MinGW/mpfr/mpfr-2.4.1-1/mpfr-2.4.1-1-mingw32-src.tar.lzma
-	  http://sourceforge.net/projects/mingw/files/MinGW/gmp/gmp-5.0.1-1/gmp-5.0.1-1-mingw32-src.tar.lzma
-          "
-	#  http://ftp.gnu.org/gnu/gcc/gcc-$V$R/gcc-$V$R.tar.bz2 "
+
+SRC_URI="http://sourceforge.net/projects/mingw/files/MinGW/BaseSystem/GCC/Version4/Previous%20Testing_%20gcc-$V$R-mingw-src-2/gcc-$V$R-2-src.tar.gz"
 
 RDEPEND=""
 BDEPEND=" "
 RECOMMENDED=""
 
-NOTES="
-$V$R is gcc core's version
-"
+NOTES="$V$R is gcc core's version"
 
 pbs_unpack() {
-	mkdir "$N-$V$R"
-	
-	tar --lzma -xf $YPPATH_SOURCE/gcc-$V$R-1-mingw32-src.tar.lzma
-	tar xjf gcc-$V$R.tar.bz2
-	for i in mpc-0.8.1-1 mpfr-2.4.1-1 gmp-5.0.1-1;do
-		tar --lzma -xf $YPPATH_SOURCE/${i}-mingw32-src.tar.lzma
-	done
-	
-	cd gcc-$V$R
-	tar xf ../mpc-0.8.1.tar.gz   && mv mpc-0.8.1  mpc
-	tar xf ../mpfr-2.4.1.tar.bz2 && mv mpfr-2.4.1 mpfr
-	tar xf ../gmp-5.0.1.tar.bz2  && mv gmp-5.0.1  gmp
-	cd ../
+        ypkg_unpack
+	ln -sf mingw32-gcc-"$V$R" gcc
 }
 
 pbs_config() {
@@ -43,12 +25,11 @@ pbs_config() {
 	mkdir build
 	cd build
 	unset CFLAGS CXXFLAGS
-	chmod ugo+x ../gcc-$V$R/configure
-	chmod ugo+x ../gcc-$V$R/move-if-change
-	
+	[ -f ../gcc/configure ] && chmod ugo+x ../gcc/configure
+	[ -f ../gcc/move-if-change ] && chmod ugo+x ../gcc/move-if-change
 	#
 	YPB_CONFIG+=" --prefix=/usr
-		      --target=$target
+		      --target="$target"
 		      --enable-languages=c,c++
 		      --enable-threads
 		      --enable-sjlj-exceptions
@@ -57,8 +38,8 @@ pbs_config() {
 		      --disable-libssp
 		      --disable-multilib
 		      --enable-version-specific-runtime-libs	
-		      --mandir=/usr/share/man	"
-	../gcc-$V$R/configure -v $YPB_CONFIG
+		      --mandir=/usr/share/man "
+	../gcc/configure -v $YPB_CONFIG
 }
 
 pbs_build() {
@@ -67,15 +48,15 @@ pbs_build() {
 
 pbs_install() {
 	ypkg_mkinstall
-	make -j1 -C $target/libgcc DESTDIR="$YPPATH_DEST" libgcc_eh.a install
-	make -j1 -C $target/libstdc++-v3 DESTDIR="$YPPATH_DEST" install 
+	make -j1 -C "$target"/libgcc DESTDIR="$YPPATH_DEST" libgcc_eh.a install
+	make -j1 -C "$target"/libstdc++-v3 DESTDIR="$YPPATH_DEST" install 
 	
-	mv "$YPPATH_DEST"/usr/bin/*.dll "$YPPATH_DEST"/*.dll "$YPPATH_DEST"/usr/$target/lib/
-	cd $target
-	rm -rf usr/bin/$target-{gcov,gccbug,gcc-*} usr/{include,lib/libiberty.a} usr/share/{info,man} usr/share/gcc-$V$R/python
+	mv "$YPPATH_DEST"/usr/bin/*.dll "$YPPATH_DEST"/*.dll "$YPPATH_DEST"/usr/"$target"/lib/
+	cd "$target"
+	rm -rf usr/bin/$target-{gcov,gccbug,gcc-*} usr/{include,lib/libiberty.a} usr/share/{info,man} usr/share/gcc-"$V$R"/python
         strip usr/bin/*
-        strip usr/libexec/gcc/$target/$pkgver/{cc1*,collect2} 
-	$target-strip -g usr/lib/gcc/$target/$pkgver/*.a
+        strip usr/libexec/gcc/"$target"/"$V$R"/{cc1*,collect2} 
+	"$target-strip" -g usr/lib/gcc/"$target"/"$V$R"/*.a
 	# remove some non-cross stuff that will clash with other packages
 	# and shuffle things about as required.
 	#rm -rf "$YPPATH_DEST"/usr/include "$YPPATH_DEST"/usr/info "$YPPATH_DEST"/usr/share/locale "$YPPATH_DEST"/usr/lib/*a "$YPPATH_DEST"/usr/share/man/man7
