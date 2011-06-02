@@ -22,7 +22,7 @@ pbs_unpack() {
 pbs_config() {
 	 sed -i "s%\r%%g" `find . -type f`
 	 sed -i -e "s%^W32API_INCLUDE=.*%W32API_INCLUDE=-I/usr/i486-mingw32/include%" `find -type f -name 'configure'`
-	 unset CFLAGS CXXFLAGS CC CXX
+	 #unset CFLAGS CXXFLAGS CC CXX
 	 export CFLAGS="-mms-bitfields"
 	 ./configure \
 	 	 --prefix=/usr/i486-mingw32 \
