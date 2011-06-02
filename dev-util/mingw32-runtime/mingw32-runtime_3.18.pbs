@@ -20,22 +20,25 @@ pbs_unpack() {
 }
 
 pbs_config() {
-	target="i586-mingw32msvc"
-        sed -i "s%\r%%g" `find . -type f`
-        sed -i -e "s%^W32API_INCLUDE=.*%W32API_INCLUDE=-I/usr/i586-mingw32msvc/include%" `find -type f -name 'configure'`
-	export CFLAGS="-mms-bitfields"
-	./configure --prefix=/usr/$target --target=$target  #--host=$target #--build=$CHOST
+	 sed -i "s%\r%%g" `find . -type f`
+	 sed -i -e "s%^W32API_INCLUDE=.*%W32API_INCLUDE=-I/usr/i486-mingw32/include%" `find -type f -name 'configure'`
+	 unset CFLAGS CXXFLAGS CC CXX
+	 export CFLAGS="-mms-bitfields"
+	 ./configure \
+	 	 --prefix=/usr/i486-mingw32 \
+	 	 --target=i486-mingw32 \
+		 --host=i486-mingw32 \
+		 --build=$CHOST
 }
 
 pbs_build() {
-	ypkg_make
+	make
 }
 
 pbs_install() {
-        #ypkg_mkinstall
-	mkdir -p "$YPPATH_DEST"/usr/$target/bin
-	make install prefix="$YPPATH_DEST"/usr/$target
-        mv "$YPPATH_DEST"/usr/$target/bin/*.dll "$YPPATH_DEST"/usr/$target/lib/
-	#rm -rf "$YPPATH_DEST"/usr/$target/{doc,man}
-	#find $YPPATH_DEST -name '*.a' | xargs -rtl1 $target-strip -g
+	mkdir -p "$YPPATH_DEST"/usr/i486-mingw32/bin
+	make install prefix="$YPPATH_DEST"/usr/i486-mingw32
+	cd "$YPPATH_DEST"
+	rm -rf usr/i486-mingw32/{doc,man}
+	find . -name '*.a' | xargs -rtl1 i486-mingw32-strip -g
 }

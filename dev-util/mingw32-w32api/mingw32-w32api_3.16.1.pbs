@@ -1,0 +1,42 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="Windows header files fro mingw32 C cross-compile"
+HOMEPAGE="http://www.mingw.org/"
+LICENSE="LGPL"
+PACKAGER="<ylmfos@115.com>"
+
+SRC_URI="http://nchc.dl.sourceforge.net/project/mingw/MinGW/BaseSystem/RuntimeLibrary/Win32-API/w32api-3.16/w32api-3.16-1-mingw32-src.tar.lzma 
+http://nchc.dl.sourceforge.net/project/mingw/MinGW/BaseSystem/RuntimeLibrary/MinGW-RT/mingwrt-3.18/mingwrt-3.18-mingw32-src.tar.gz"
+
+RDEPEND=""
+BDEPEND="mingw32-binutils"
+RECOMMENDED=""
+
+NOTES=""
+
+pbs_unpack() {
+	ypkg_unpack
+}
+
+pbs_config() {
+	tar xf "$YPPATH_SOURCE"/mingwrt-3.18-mingw32-src.tar.gz
+	cp -a mingwrt-3.18-mingw32/include/*  include/
+	export PATH="$PATH:/usr/$target/bin/"
+	export CFLAGS="-mms-bitfields -I$PWD/include -I$PWD/mingwrt-3.18-mingw32/include"
+	./configure --prefix=/usr/i486-mingw32 \
+	            --target=i486-mingw32 \
+		    --host=i486-mingw32 \
+		    --build=$CHOST
+}
+
+pbs_build() {
+	ypkg_make
+}
+
+pbs_install() {
+	make install prefix="$YPPATH_DEST"/usr/i486-mingw32
+	cd "$YPPATH_DEST"
+	find . -name '*.a' | xargs -rtl1 i486-mingw32-strip -g
+}

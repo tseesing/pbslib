@@ -1,0 +1,72 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="A C and C++ cross-compilers for building Windows executables on Linux"
+HOMEPAGE="http://mingw.sf.net http://sourceforge.net/projects/mingw/"
+LICENSE="LGPL"
+PACKAGER="<ylmfos@115.com>"
+
+SRC_URI="http://nchc.dl.sourceforge.net/project/mingw/MinGW/BaseSystem/GCC/Version4/gcc-4.5.2-1/gcc-4.5.2-1-mingw32-src.tar.lzma"
+
+RDEPEND=""
+BDEPEND="mingw32-binutils mingw32-w32api"
+RECOMMENDED=""
+CONFLICTS="mingw32-gcc-base"
+
+NOTES=""
+
+pbs_unpack() {
+        ypkg_unpack
+	cd mingw32-gcc-4.5.2-1
+	tar xf gcc-4.5.2.tar.bz2
+	ln -sf gcc-4.5.2 gcc
+}
+
+pbs_config() {
+	mkdir -p build 
+	cd build
+	unset CFLAGS CXXFLAGS 
+	chmod ugo+x ../gcc/configure
+	chmod ugo+x ../gcc/move-if-change
+	#
+	YPB_CONFIG=" --target=i486-mingw32 \
+	             --host=$CHOST \
+	             --build=$CHOST \
+		     --prefix=/usr \
+		     --enable-languages=c,c++ \
+		     --enable-shared \
+		     --enable-sjlj-exceptions \
+		     --enable-hash-synchronization \
+		     --disable-nls \
+		     --disable-libssp "
+	../gcc/configure $YPB_CONFIG
+}
+
+pbs_build() {
+	ypkg_make
+}
+
+pbs_install() {
+	ypkg_mkinstall
+
+	echo "libgcc"
+	make -j1 -C i486-mingw32/libgcc DESTDIR="$YPPATH_DEST" libgcc_eh.a install
+	
+	echo "libstdc++"
+	make -j1 -C i486-mingw32/libstdc++-v3 DESTDIR="$YPPATH_DEST" install 
+	
+	echo "fixes"
+	ypkg_domv "$YPPATH_DEST"/usr/bin/*.dll "$YPPATH_DEST"/usr/i486-mingw32/bin/
+	ypkg_domv "$YPPATH_DEST"/*.dll         "$YPPATH_DEST"/usr/i486-mingw32/bin/
+
+	cd "$YPPATH_DEST"
+	rm -rf usr/bin/i486-mingw32-{gcov,gccbug,gcc-*} \
+	       usr/{include,lib/libiberty.a} \
+	       usr/share/{info,man} \
+	       usr/share/gcc-"$V$R"/python
+        
+	strip usr/bin/*
+        strip usr/libexec/gcc/i486-mingw32/"$V$R"/{cc1*,collect2} 
+	i486-mingw32-strip -g usr/lib/gcc/i486-mingw32/"$V$R"/*.a
+}
