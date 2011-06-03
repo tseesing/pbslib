@@ -25,9 +25,9 @@ pbs_config() {
 	cp -a mingwrt-3.18-mingw32/include/*  include/
 	export PATH="$PATH:/usr/$target/bin/"
 	export CFLAGS="-mms-bitfields -I$PWD/include -I$PWD/mingwrt-3.18-mingw32/include"
-	./configure --prefix=/usr/i486-mingw32 \
-	            --target=i486-mingw32 \
-		    --host=i486-mingw32 \
+	./configure --prefix=/usr/i586-mingw32msvc \
+	            --target=i586-mingw32msvc \
+		    --host=i586-mingw32msvc \
 		    --build=$CHOST
 }
 
@@ -36,7 +36,7 @@ pbs_build() {
 }
 
 pbs_install() {
-	make install prefix="$YPPATH_DEST"/usr/i486-mingw32
+	make install prefix="$YPPATH_DEST"/usr/i586-mingw32msvc
 	cd "$YPPATH_DEST"
-	find . -name '*.a' | xargs -rtl1 i486-mingw32-strip -g
+	find . -name '*.a' | xargs -rtl1 i586-mingw32msvc-strip -g
 }

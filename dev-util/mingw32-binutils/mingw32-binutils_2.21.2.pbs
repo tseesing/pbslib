@@ -22,7 +22,7 @@ pbs_unpack() {
 }
 
 pbs_config() {
-	YPB_CONFIG=" --target=i486-mingw32
+	YPB_CONFIG=" --target=i586-mingw32msvc
 	             --host=$CHOST
 		     --build=$CHOST
 		     --prefix=/usr

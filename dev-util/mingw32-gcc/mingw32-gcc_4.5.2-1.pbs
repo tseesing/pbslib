@@ -30,7 +30,7 @@ pbs_config() {
 	chmod ugo+x ../gcc/configure
 	chmod ugo+x ../gcc/move-if-change
 	#
-	YPB_CONFIG=" --target=i486-mingw32 \
+	YPB_CONFIG=" --target=i586-mingw32msvc \
 	             --host=$CHOST \
 	             --build=$CHOST \
 		     --prefix=/usr \
@@ -51,22 +51,22 @@ pbs_install() {
 	ypkg_mkinstall
 
 	echo "libgcc"
-	make -j1 -C i486-mingw32/libgcc DESTDIR="$YPPATH_DEST" libgcc_eh.a install
+	make -j1 -C i586-mingw32msvc/libgcc DESTDIR="$YPPATH_DEST" libgcc_eh.a install
 	
 	echo "libstdc++"
-	make -j1 -C i486-mingw32/libstdc++-v3 DESTDIR="$YPPATH_DEST" install 
+	make -j1 -C i586-mingw32msvc/libstdc++-v3 DESTDIR="$YPPATH_DEST" install 
 	
 	echo "fixes"
-	ypkg_domv "$YPPATH_DEST"/usr/bin/*.dll "$YPPATH_DEST"/usr/i486-mingw32/bin/
-	ypkg_domv "$YPPATH_DEST"/*.dll         "$YPPATH_DEST"/usr/i486-mingw32/bin/
+	ypkg_domv "$YPPATH_DEST"/usr/bin/*.dll "$YPPATH_DEST"/usr/i586-mingw32msvc/bin/
+	ypkg_domv "$YPPATH_DEST"/*.dll         "$YPPATH_DEST"/usr/i586-mingw32msvc/bin/
 
 	cd "$YPPATH_DEST"
-	rm -rf usr/bin/i486-mingw32-{gcov,gccbug,gcc-*} \
+	rm -rf usr/bin/i586-mingw32msvc-{gcov,gccbug,gcc-*} \
 	       usr/{include,lib/libiberty.a} \
 	       usr/share/{info,man} \
 	       usr/share/gcc-"$V$R"/python
         
 	strip usr/bin/*
-        strip usr/libexec/gcc/i486-mingw32/"$V$R"/{cc1*,collect2} 
-	i486-mingw32-strip -g usr/lib/gcc/i486-mingw32/"$V$R"/*.a
+        strip usr/libexec/gcc/i586-mingw32msvc/"$V$R"/{cc1*,collect2} 
+	i586-mingw32msvc-strip -g usr/lib/gcc/i586-mingw32msvc/"$V$R"/*.a
 }

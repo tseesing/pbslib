@@ -114,6 +114,7 @@ pbs_install() {
 	#ypkg_docp_rename "$1" "$2"
 	#ypkg_domv_rename "$1" "$2"
 	#ypkg_doln "$1 "$2"
+	#ypkg_doman a.1 b.2 c.3
 	#*****************
 	#when SRC_URI is deb or rpm package
 	#ypkg_docp data/*  "$YPPATH_DEST"

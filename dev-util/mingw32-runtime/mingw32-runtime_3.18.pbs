@@ -21,14 +21,14 @@ pbs_unpack() {
 
 pbs_config() {
 	 sed -i "s%\r%%g" `find . -type f`
-	 sed -i -e "s%^W32API_INCLUDE=.*%W32API_INCLUDE=-I/usr/i486-mingw32/include%" `find -type f -name 'configure'`
+	 sed -i -e "s%^W32API_INCLUDE=.*%W32API_INCLUDE=-I/usr/i586-mingw32msvc/include%" `find -type f -name 'configure'`
 	 #unset CFLAGS CXXFLAGS CC CXX
 	 export CFLAGS="-mms-bitfields"
 	 ./configure \
-	 	 --prefix=/usr/i486-mingw32 \
-	 	 --target=i486-mingw32 \
-		 --host=i486-mingw32 \
-		 --build=$CHOST
+	 	 --prefix=/usr/i586-mingw32msvc \
+	 	 --target=i586-mingw32msvc \
+		 --host=i586-mingw32msvc 
+		 #--build=$CHOST
 }
 
 pbs_build() {
@@ -36,9 +36,9 @@ pbs_build() {
 }
 
 pbs_install() {
-	mkdir -p "$YPPATH_DEST"/usr/i486-mingw32/bin
-	make install prefix="$YPPATH_DEST"/usr/i486-mingw32
+	mkdir -p "$YPPATH_DEST"/usr/i586-mingw32msvc/bin
+	make install prefix="$YPPATH_DEST"/usr/i586-mingw32msvc
 	cd "$YPPATH_DEST"
-	rm -rf usr/i486-mingw32/{doc,man}
-	find . -name '*.a' | xargs -rtl1 i486-mingw32-strip -g
+	rm -rf usr/i586-mingw32msvc/{doc,man}
+	find . -name '*.a' | xargs -rtl1 i586-mingw32msvc-strip -g
 }

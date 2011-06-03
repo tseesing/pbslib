@@ -1,0 +1,37 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="A simple dynamic window manager for X, with features nicked from ratpoison and dwm"
+HOMEPAGE="http://aerosuidae.net/musca/"
+REPO=""
+LICENSE="GPL"
+PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
+
+SRC_URI="http://aerosuidae.net/musca-0.9.24.tgz"
+
+RDEPEND="glibc libX11 libXau libxcb libXdmcp"
+BDEPEND="libX11-dev libXau-dev libxcb-dev libXdmcp-dev"
+RECOMMENDED=""
+CONFLICT=""
+
+NOTES=""
+
+pbs_unpack() {
+        ypkg_unpack
+}
+
+pbs_config() {
+	ypkg_patch musca-0.9.24-make.patch
+	YPB_CONFIG+=""
+	ypkg_config
+}
+
+pbs_build() {
+	ypkg_make
+}
+
+pbs_install() {
+	ypkg_docp apis musca xlisten "$YPPATH_DEST"/usr/bin/
+	ypkg_doman musca.1  
+}

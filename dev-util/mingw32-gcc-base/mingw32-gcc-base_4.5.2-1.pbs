@@ -42,7 +42,7 @@ pbs_config() {
 	chmod ugo+x ../gcc/configure
 	chmod ugo+x ../gcc/move-if-change
 	#
-	YPB_CONFIG="--target=i486-mingw32 \
+	YPB_CONFIG="--target=i586-mingw32msvc \
 	            --host=$CHOST \
 	            --build=$CHOST \
 		    --prefix=/usr \
@@ -66,12 +66,12 @@ pbs_build() {
 pbs_install() {
 	ypkg_mkinstall
 	cd "$YPPATH_DEST"
-	rm -rf usr/bin/i486-mingw32-{gcov,gccbug,gcc-*} \
+	rm -rf usr/bin/i586-mingw32msvc-{gcov,gccbug,gcc-*} \
 	       usr/{include,lib/libiberty.a} \
 	       usr/share/{info,man} \
 	       usr/share/gcc-4.5.2/python
         
 	strip usr/bin/*
-        strip usr/libexec/gcc/i486-mingw32/4.5.2/{cc1*,collect2} 
-	i486-mingw32-strip -g usr/lib/gcc/i486-mingw32/4.5.2/*.a
+        strip usr/libexec/gcc/i586-mingw32msvc/4.5.2/{cc1*,collect2} 
+	i586-mingw32msvc-strip -g usr/lib/gcc/i586-mingw32msvc/4.5.2/*.a
 }
