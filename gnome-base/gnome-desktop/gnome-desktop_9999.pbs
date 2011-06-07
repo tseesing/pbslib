@@ -43,7 +43,7 @@ pbs_config()
 {
 	echo "config "$N-$V$R"..."
 	
-	#disable docs, fix me !!!
+	#disable docs, FIXME !!!
 	#sed -i '/desktop-docs/d' Makefile.in configure.in
 	#sed -i 's/fdl//g' desktop-docs/Makefile.in
 	#sed -i 's/gpl//g' desktop-docs/Makefile.in
@@ -56,7 +56,7 @@ pbs_build()
 {
 	echo "make "$N-$V$R"..."
 	ypkg_make
-	#make docs failed ignored!  fix me !!!
+	#make docs failed ignored!  FIXME !!!
 	#return 0
 }
 
@@ -80,7 +80,7 @@ pbs_install()
 	# Keep clean for scrollkeeper
 	rm -fr "$YPPATH_DEST"/var/lib/scrollkeeper
 	rm -fr "$YPPATH_DEST"/var/lib/log
-	#make docs failed ignored!  fix me !!!
+	#make docs failed ignored!  FIXME !!!
 	#return 0
 }
 

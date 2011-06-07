@@ -31,7 +31,7 @@ pbs_config()
 	echo "config "$N-$V$R"..."
 	#fist, cd build directory
 	
-	#don't cp environment, fix me!
+	#don't cp environment, FIXME!
 	sed -i 's/environment//g' modules/pam_env/Makefile.in
 	#second, add package specified config params to YPB_CONFIG
 	YPB_CONFIG+="--prefix=/usr --infodir=/usr/share/info --sysconfdir=/etc --mandir=/usr/share/man"

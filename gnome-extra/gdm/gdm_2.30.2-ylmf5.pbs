@@ -26,9 +26,10 @@ pbs_unpack() {
 pbs_config() {	
 	patches=" 27_save_root_window.patch
 		  28_plymouth_transition.patch
-		  32-hide-mouse-cursor.patch
 		  ylmfos-gdm-2.30.2-locale.patch
-		  pam-gnome_keyring.patch "
+		  pam-gnome_keyring.patch 
+		  ylmfos-missing-panel.patch 
+		  ylmfos-spawn-x-at-vt1.patch"
 	ypkg_patch $patches
 	YPB_CONFIG+=" --disable-scrollkeeper
 		      --enable-ipv6
@@ -42,6 +43,7 @@ pbs_config() {
 		      --enable-console-helper
 		      --with-console-kit "
 	ypkg_config
+	exit
 }
 
 pbs_build() {
@@ -73,10 +75,11 @@ pbs_install() {
 	#ln -sf /etc/init.d/"$N"  etc/rc3.d/K01"$N"
 	ypkg_docp "$FILES_PATH"/files/systemd/*  lib/systemd/system/
 	#
-	[ -d var/lib/gdm ] && rm -r var/lib/gdm
-	mkdir -p      var/lib/gdm
-	chown gdm:gdm var/lib/gdm 
+	#[ -d var/lib/gdm ] && rm -r var/lib/gdm
+	#mkdir -p      var/lib/gdm
+	#chown gdm:gdm var/lib/gdm 
 	rm -rf var/gdm
+	chown -R gdm:gdm var/lib/gdm
 	#for gdm screenshot
 	install -d -m755 var/run/"$N"/greeter/
 	#FIXME!
@@ -93,5 +96,5 @@ pbs_postinst() {
 	gnome2_gtk_immodules_update
 	# update hicolor icons
 	gnome2_icon_cache_update
-	chown gdm:gdm /var/lib/gdm
+	chown -R gdm:gdm /var/lib/gdm
 }

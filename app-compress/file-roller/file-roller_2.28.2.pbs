@@ -21,7 +21,7 @@ pbs_unpack() {
 
 pbs_config() {
 	
-	#disable help, fix me!
+	#disable help, FIXME!
 	sed -i 's/help//g' Makefile.in
 	YPB_CONFIG+=" --prefix=$(pkg-config --variable=prefix ORBit-2.0) 
 	              --libexecdir=$(pkg-config --variable=prefix ORBit-2.0)/lib

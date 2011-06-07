@@ -1,0 +1,14 @@
+diff -ur madwifi-0.9.4.4144-20110602/tools/Makefile madwifi-0.9.4.4144-20110602.new/tools/Makefile
+--- madwifi-0.9.4.4144-20110602/tools/Makefile	2008-08-01 11:20:46.000000000 +0800
++++ madwifi-0.9.4.4144-20110602.new/tools/Makefile	2011-06-07 11:08:21.426639374 +0800
+@@ -34,8 +34,8 @@
+ STRIP ?= $(USER_CROSS_COMPILE)strip
+ CC = $(USER_CROSS_COMPILE)gcc
+ 
+-BINDIR ?= /usr/local/bin
+-MANDIR ?= /usr/local/man
++BINDIR ?= /usr/bin
++MANDIR ?= /usr/share/man
+ 
+ #
+ # Path to the HAL source code.

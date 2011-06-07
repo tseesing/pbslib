@@ -30,7 +30,7 @@ pbs_config()
 {
 	echo "config "$N-$V$R"..."
 	
-	#disable docs, fix me !!!
+	#disable docs, FIXME !!!
 	#sed -i '/desktop-docs/d' Makefile.in configure.in
 	#sed -i 's/fdl//g' desktop-docs/Makefile.in
 	#sed -i 's/gpl//g' desktop-docs/Makefile.in

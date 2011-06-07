@@ -54,7 +54,7 @@ pbs_config() {
 }
 
 pbs_build() {
-	#fixme! 
+	## FIXME! 
 	#videodev.h was droped at linux_2.6.38, but hal needs. 
 	#copy from linux_2.6.32
 	ypkg_docp "$FILES_PATH"/files/videodev.h  /usr/include/linux/

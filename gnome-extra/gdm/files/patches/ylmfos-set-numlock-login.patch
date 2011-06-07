@@ -1,0 +1,14 @@
+diff -ur gdm-2.30.2-ylmf6/data/Init.in gdm-2.30.2-ylmf6.new/data/Init.in
+--- gdm-2.30.2-ylmf6/data/Init.in	2010-03-26 21:28:03.000000000 +0800
++++ gdm-2.30.2-ylmf6.new/data/Init.in	2011-06-07 15:42:43.886646841 +0800
+@@ -86,4 +86,10 @@
+   fi
+ fi
+ 
++# FIXME: This should be done in code.  Or there must be an easier way ...
++numlock_state=$(/usr/bin/gconftool-2 -g /desktop/gnome/peripherals/keyboard/numlock_default_state)
++if [ -x /usr/bin/numlockx ]; then
++	/usr/bin/numlockx $numlock_state
++fi
++
+ exit 0

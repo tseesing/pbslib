@@ -25,7 +25,7 @@ pbs_config() {
 
 pbs_build() {
 	ypkg_make
-	#fix me, creat mo
+	#FIXME, creat mo
 	cd po
 	for i in *.po; do
 		msgfmt $i -o ${i%*.po}.mo

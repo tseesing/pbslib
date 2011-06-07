@@ -59,7 +59,7 @@ pbs_install() {
 	ypkg_docp 	 "$FILES_PATH"/files/custom.conf  etc/gdm 
 	ypkg_docp_rename "$FILES_PATH"/files/custom.conf  etc/gdm/custom.conf.ori
 	ypkg_domv        "$YPPATH_DEST"/etc/gdm/PostLogin/Default.sample  etc/gdm/PostLogin/Default
-	#fixme! 
+	## FIXME! 
 	#gnome-session forgot to run /usr/share/gnome/shutdown/libcanberra-logout-sound.sh
 	#add libcanberra-logout-sound.sh to gdm logout script
 	ypkg_docp "$FILES_PATH"/files/Default  etc/gdm/PostSession
@@ -78,7 +78,7 @@ pbs_install() {
 	chown -R gdm:gdm var/lib/gdm
 	#for gdm screenshot
 	install -d -m755 var/run/"$N"/greeter/
-	#fix me!
+	#FIXME!
 	sed -i 's/${exec_prefix}/\/usr/g' usr/share/gdm/autostart/LoginWindow/at-spi-registryd-wrapper.desktop
 }
 

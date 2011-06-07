@@ -46,7 +46,7 @@ pbs_config()
 	echo "config "$N-$V$R"..."
 	#fist, cd build directory
 	
-	#disable help, fix me!
+	#disable help, FIXME!
 	#sed -i '/help/d' Makefile.in
 	./autogen.sh --prefix /usr --localstatedir /var/lib  --disable-static
 }
@@ -56,7 +56,7 @@ pbs_build()
 	echo "make "$N-$V$R"..."
 	#run make in current directory
 	ypkg_make
-	#igore failure in making helps. fix me!
+	#igore failure in making helps. FIXME!
 	#return 0
 }
 
@@ -71,7 +71,7 @@ pbs_install()
 	echo "install to $YPPATH_DEST"
 	#install everything to $YPPATH_DEST
 	ypkg_mkinstall
-	#igore failure in making helps. fix me!
+	#igore failure in making helps. FIXME!
 	#return 0
 }
 

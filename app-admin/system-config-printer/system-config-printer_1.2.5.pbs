@@ -20,7 +20,7 @@ pbs_unpack() {
 }
 
 pbs_config() {
-	#fix me! do use setup.py to build
+	#FIXME! do use setup.py to build
 	mv setup.py{,y}
 	sed -i 's/setup.py/setup.pyy/g' Makefile.*
 	YPB_CONFIG+="--with-udev-rules 

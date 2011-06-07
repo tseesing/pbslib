@@ -223,7 +223,7 @@
  
      gnome)
 -    open_gnome "$url"
-+    #fix me! gnome-open or gvfs-open open file failed, use open_generic instead.
++    #FIXME! gnome-open or gvfs-open open file failed, use open_generic instead.
 +    #open_gnome "$url"
 +    open_generic "$url"
      ;;

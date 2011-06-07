@@ -19,7 +19,7 @@ pbs_unpack() {
 pbs_config() {
 	chmod +x install-sh
 	ypkg_config
-	#fix me!
+	#FIXME!
 	sed -i 's/^mkdir_p = .*/mkdir_p = mkdir -p/' po/Makefile
 }
 

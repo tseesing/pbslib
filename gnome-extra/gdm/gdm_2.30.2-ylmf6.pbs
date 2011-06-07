@@ -6,12 +6,13 @@ DESCRIPTION="GNOME Display Manager"
 HOMEPAGE="http://www.gnome.org/projects/gdm/"
 LICENSE="GPL-2"
 PACKAGER="<ylmfos@115.com>"
+REPO="testing"
 
 SRC_URI="http://ftp.gnome.org/pub/gnome/desktop/2.30/2.30.2/sources/"$N-$V".tar.bz2"
 
 RDEPEND="zenity openssh alsa-lib atk audiofile avahi cairo dbus dbus-glib devicekit-power esound expat fontconfig freetype gail gcc gconf glib2 glibc gnome-panel gnome-vfs gtk+ libart_lgpl libbonobo libbonoboui libcanberra libgnome libgnomecanvas libICE libogg libpng libSM libtool libusb libusb-compat libvorbis libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libxkbfile libxklavier libxml2 libXrandr libXrender openssl orbit pam pango pixman popt util-linux-ng zlib"
 BDEPEND="consolekit-dev libglade-dev gnome-session kbproto-dev alsa-lib-dev atk-dev audiofile-dev avahi-dev cairo-dev dbus-dev dbus-glib-dev devicekit-power-dev esound-dev expat-dev fontconfig-dev freetype-dev gail-dev gcc-dev gconf-dev glib2-dev glibc-dev gnome-panel-dev gnome-vfs-dev gtk+-dev libart_lgpl-dev libbonobo-dev libbonoboui-dev libcanberra-dev libgnome-dev libgnomecanvas-dev libICE-dev libogg-dev libpng-dev libSM-dev libtool-dev libusb-dev libusb-compat-dev libvorbis-dev libX11-dev libXau-dev libxcb-dev libXcomposite-dev libXcursor-dev libXdamage-dev libXdmcp-dev libXext-dev libXfixes-dev libXi-dev libxkbfile-dev libxklavier-dev libxml2-dev libXrandr-dev libXrender-dev openssl-dev orbit-dev pam-dev pango-dev pixman-dev popt-dev util-linux-ng-dev zlib-dev"
-RECOMMENDED=""
+RECOMMENDED="numlockx"
 
 NOTES="gdm user/group should be created automatically."
 
@@ -26,9 +27,13 @@ pbs_unpack() {
 pbs_config() {	
 	patches=" 27_save_root_window.patch
 		  28_plymouth_transition.patch
-		  32-hide-mouse-cursor.patch
 		  ylmfos-gdm-2.30.2-locale.patch
-		  pam-gnome_keyring.patch "
+		  pam-gnome_keyring.patch 
+		  ylmfos-missing-panel.patch 
+		  ylmfos-spawn-x-at-vt1.patch
+		  ylmfos-set-numlock-login.patch
+		  09_gdmsetup.patch 
+		  ylmfos_autoreconf.patch  "
 	ypkg_patch $patches
 	YPB_CONFIG+=" --disable-scrollkeeper
 		      --enable-ipv6
@@ -46,6 +51,8 @@ pbs_config() {
 
 pbs_build() {
 	ypkg_make
+	pwd
+	exit
 }
 
 pbs_install() {
@@ -73,13 +80,14 @@ pbs_install() {
 	#ln -sf /etc/init.d/"$N"  etc/rc3.d/K01"$N"
 	ypkg_docp "$FILES_PATH"/files/systemd/*  lib/systemd/system/
 	#
-	[ -d var/lib/gdm ] && rm -r var/lib/gdm
-	mkdir -p      var/lib/gdm
-	chown gdm:gdm var/lib/gdm 
+	#[ -d var/lib/gdm ] && rm -r var/lib/gdm
+	#mkdir -p      var/lib/gdm
+	#chown gdm:gdm var/lib/gdm 
 	rm -rf var/gdm
+	chown -R gdm:gdm var/lib/gdm
 	#for gdm screenshot
 	install -d -m755 var/run/"$N"/greeter/
-	#FIXME!
+	#FIXME
 	sed -i 's/${exec_prefix}/\/usr/g' usr/share/gdm/autostart/LoginWindow/at-spi-registryd-wrapper.desktop
 }
 
@@ -93,5 +101,5 @@ pbs_postinst() {
 	gnome2_gtk_immodules_update
 	# update hicolor icons
 	gnome2_icon_cache_update
-	chown gdm:gdm /var/lib/gdm
+	chown -R gdm:gdm /var/lib/gdm
 }

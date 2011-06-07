@@ -43,7 +43,7 @@ pbs_config()
 {
 	echo "config "$N-$V$R"..."
 	
-	#disable help, fix me!
+	#disable help, FIXME!
 	#sed -i 's/help//g' charpick/Makefile.in drivemount/Makefile.in gswitchit/Makefile.in cpufreq/Makefile.in \
 			   
 	#sed -i 's/docs//g' geyes/Makefile.in stickynotes/Makefile.in trashapplet/Makefile.in gweather/Makefile.in \
@@ -57,7 +57,7 @@ pbs_build()
 	echo "make "$N-$V$R"..."
 	#run make in current directory
 	ypkg_make
-	#ignore failure in making helps, fixme!
+	#ignore failure in making helps, # FIXME!
 	#return 0
 }
 
@@ -74,7 +74,7 @@ pbs_install()
 	ypkg_mkinstall
 	make -C man install-man
 	cd "$YPPATH_DEST"/etc/gconf/schemas/ && SCHEMAS=$(ls *.schemas|xargs)
-	#ignore failure in making helps, fixme!
+	#ignore failure in making helps, # FIXME!
 	#return 0
 }
 
