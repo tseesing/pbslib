@@ -1,0 +1,40 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="FocusWriter is a simple, distraction-free writing environment."
+HOMEPAGE="http://gottcode.org/focuswriter/"
+REPO=""
+LICENSE="GPL"
+PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
+
+SRC_URI="http://gottcode.org/"$N"/"$N-$V$R"-src.tar.bz2"
+
+RDEPEND="libao hunspell libzip qt-core"
+BDEPEND=""
+RECOMMENDED=""
+CONFLICT=""
+
+NOTES=""
+
+pbs_unpack() {
+        ypkg_unpack
+}
+
+pbs_config() {
+	qmake PREFIX=/usr
+}
+
+pbs_build() {
+	ypkg_make
+}
+
+pbs_install() {
+	make INSTALL_ROOT="$YPPATH_DEST/" install
+}
+
+pbs_postinst() {
+	gnome2_desktop_database_update
+	gnome2_icon_cache_update 
+	gnome2_gconfd_reload
+}
