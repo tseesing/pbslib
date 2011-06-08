@@ -11,7 +11,7 @@ PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 
 SRC_URI="migumusic-2011-beta1.tar.bz2"
 
-RDEPEND="qt-core"
+RDEPEND="qt-core gst-ffmpeg gst-fluendo-mp3 gst-plugins-ugly gst-plugins-bad"
 BDEPEND=" "
 RECOMMENDED=""
 CONFLICT=""
