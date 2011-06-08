@@ -34,11 +34,13 @@ PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 #SRC_URI="/tmp/$N-$V.tar.bz2"
 SRC_URI=""
 
-# Dependencies support a|b .
+# Dependencies 
 RDEPEND=""
-BDEPEND=""
 RECOMMENDED=""
-#OPTIONAL=
+
+BDEPEND=""
+OPTIONAL="a: support a 
+          b: support b"
 
 #
 CONFLICT=""
