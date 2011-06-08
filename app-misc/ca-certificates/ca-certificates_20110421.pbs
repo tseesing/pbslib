@@ -2,16 +2,15 @@
 # YLmf_OS package build script
 #
 
-DESCRIPTION="Perl interface to the 2.x series of the Gimp Toolkit library"
-HOMEPAGE="http://search.cpan.org/~flora/Gtk2-1.223/Gtk2.pm"
+DESCRIPTION="Common CA certificates"
+HOMEPAGE="http://packages.debian.org/sid/ca-certificates"
 REPO=""
 LICENSE="GPL"
-PRIORITY=""
 PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 
-SRC_URI="http://search.cpan.org/CPAN/authors/id/F/FL/FLORA/Gtk2-"$V$R".tar.gz"
+SRC_URI="http://ftp.de.debian.org/debian/pool/main/c/ca-certificates/"${N}_$VR$".tar.gz"
 
-RDEPEND="pango-perl"
+RDEPEND=""
 BDEPEND=""
 RECOMMENDED=""
 CONFLICT=""
@@ -23,6 +22,7 @@ pbs_unpack() {
 }
 
 pbs_config() {
+	ypkg_patch ylmfos-makefile.patch
 	YPB_CONFIG+=""
 	ypkg_config
 }

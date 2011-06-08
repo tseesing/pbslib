@@ -17,8 +17,11 @@ pbs_unpack() {
 }
 
 pbs_config() {
-	YPB_CONFIG=" --prefix=/usr --openssldir=/etc/ssl shared zlib-dynamic "
-	./config $YPB_CONFIG
+	YPB_CONFIG="--prefix=/usr 
+	            --openssldir=/etc/ssl 
+		    shared 
+		    zlib-dynamic "
+	ypkg_config $YPB_CONFIG
 }
 
 pbs_build() {
@@ -27,10 +30,6 @@ pbs_build() {
 
 pbs_install() {
 	make INSTALL_PREFIX="$YPPATH_DEST" MANDIR=/usr/share/man install
-	ypkg_docp certs "$YPPATH_DEST"/etc/ssl
+	ypkg_docp certs "$YPPATH_DEST"/etc/ssl/
 	ypkg_dodoc doc/{HOWTO,README,*.{txt,html,gif}}
-}
-
-pbs_postinst() {
-	ldconfig
 }

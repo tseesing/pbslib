@@ -11,7 +11,7 @@ PACKAGER="<ylmfos@115.com>"
 SRC_URI="http://ftp.gnome.org/pub/gnome/mobile/2.30/2.30.2/sources/"$N-$V$R".tar.bz2 "
 
 RDEPEND="atk cairo cups e2fsprogs expat fontconfig freetype gail gcc glib2 glibc gnutls keyutils krb5 libgcrypt libgpg-error libjpeg-turbo libpng libtasn1 libtiff libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libXrandr libXrender pango pixman zlib"
-BDEPEND="gtk-doc                                   "
+BDEPEND="gtk-doc"
 RECOMMENDED=""
 
 pbs_unpack() {
@@ -30,7 +30,6 @@ pbs_config() {
 	libtoolize --force
 	autoreconf -vif
 	YPB_CONFIG+=" --libdir=/usr/lib 
-		       
 		      --with-libjpeg 
 		      --without-libjasper 
 		      --with-libtiff 
@@ -51,7 +50,7 @@ pbs_build() {
 pbs_install() {
 	ypkg_mkinstall RUN_QUERY_IMMODULES_TEST=false RUN_QUERY_LOADER_TEST=false
 	# Install wrappers for the binaries:
-	ypkg_docp "$FILES_PATH"/files/{update-gdk-pixbuf-loaders,update-gtk-immodules}  "$YPPATH_DEST"/usr/bin
+	ypkg_docp "$FILES_PATH"/files/{update-gdk-pixbuf-loaders,update-gtk-immodules}  "$YPPATH_DEST"/usr/bin/
 	chmod 0755 "$YPPATH_DEST"/usr/bin/update-*
 	# I'm almost inclined to think this stuff is obsolete but I don't know for sure.
 	# I do know that leaving it in doesn't hurt (aside from a few wasted bytes, but

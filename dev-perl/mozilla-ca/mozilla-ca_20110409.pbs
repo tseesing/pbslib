@@ -2,16 +2,15 @@
 # YLmf_OS package build script
 #
 
-DESCRIPTION="Perl interface to the 2.x series of the Gimp Toolkit library"
-HOMEPAGE="http://search.cpan.org/~flora/Gtk2-1.223/Gtk2.pm"
+DESCRIPTION="Mozilla's CA cert bundle in PEM format"
+HOMEPAGE="http://search.cpan.org/"
 REPO=""
 LICENSE="GPL"
-PRIORITY=""
 PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 
-SRC_URI="http://search.cpan.org/CPAN/authors/id/F/FL/FLORA/Gtk2-"$V$R".tar.gz"
+SRC_URI="http://mirrors.sohu.com/CPAN/authors/id/A/AB/ABH/Mozilla-CA-"$V$R".tar.gz"
 
-RDEPEND="pango-perl"
+RDEPEND=""
 BDEPEND=""
 RECOMMENDED=""
 CONFLICT=""
@@ -34,3 +33,4 @@ pbs_build() {
 pbs_install() {
 	ypkg_mkinstall
 }
+
