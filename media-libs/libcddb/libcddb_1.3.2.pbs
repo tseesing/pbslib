@@ -10,7 +10,7 @@ PACKAGER="<ylmfos@115.com>"
 SRC_URI="http://downloads.sourceforge.net/project/"$N"/"$N"/"$V"/"$N-$V$R".tar.bz2"
 
 RDEPEND="glibc libcdio"
-BDEPEND="glibc-dev libcdio-dev"
+BDEPEND=" "
 RECOMMENDED=""
 
 NOTES=""

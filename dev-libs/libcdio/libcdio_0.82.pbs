@@ -10,7 +10,7 @@ PACKAGER="<ylmfos@115.com>"
 SRC_URI="http://ftp.gnu.org/gnu/"$N"/"$N-$V$R".tar.gz"
 
 RDEPEND="gcc glibc libcddb ncurses"
-BDEPEND="gcc-dev glibc-dev libcddb-dev ncurses-dev"
+BDEPEND="   "
 RECOMMENDED=""
 
 NOTES=""

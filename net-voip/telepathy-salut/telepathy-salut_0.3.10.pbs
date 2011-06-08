@@ -10,7 +10,7 @@ PACKAGER="<ylmfos@115.com>"
 SRC_URI="http://telepathy.freedesktop.org/releases/"$N"/"$N-$V$R".tar.gz"
 
 RDEPEND="avahi dbus dbus-glib gcc glib2 glibc gnutls libgcrypt libgpg-error libsoup libtasn1 libxml2 openssl telepathy-glib zlib"
-BDEPEND="avahi-dev dbus-dev dbus-glib-dev gcc-dev glib2-dev glibc-dev gnutls-dev libgcrypt-dev libgpg-error-dev libsoup-dev libtasn1-dev libxml2-dev openssl-dev telepathy-glib-dev zlib-dev"
+BDEPEND="              "
 RECOMMENDED=""
 
 NOTES=""

@@ -10,7 +10,7 @@ PACKAGER="<ylmfos@115.com>"
 SRC_URI="ftp://ftp.gnu.org/gnu/"$N"/REL-4.7/"$N-$V$R".tar.bz2"
 
 RDEPEND="glibc"
-BDEPEND="glibc-dev"
+BDEPEND=""
 RECOMMENDED=""
 
 NOTES=""

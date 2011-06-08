@@ -15,7 +15,7 @@ NOTES="1. User and group polkituser should be created automatically.
 3. member of wheel group has privilege of policykt"
 
 RDEPEND="dbus dbus-glib eggdbus expat glib2 glibc pam policykit zlib"
-BDEPEND="dbus-dev dbus-glib-dev eggdbus-dev expat-dev glib2-dev glibc-dev pam-dev policykit-dev zlib-dev" 
+BDEPEND="  egg      " 
 
 pbs_unpack() {
         ypkg_unpack

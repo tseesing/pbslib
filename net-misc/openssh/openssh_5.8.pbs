@@ -10,7 +10,7 @@ PACKAGER="<ylmfos@115.com>"
 SRC_URI="http://ftp.openbsd.org/pub/OpenBSD/OpenSSH/portable/"$N-$V"p1.tar.gz"
 
 RDEPEND="openssl glibc zlib"
-BDEPEND="glibc-dev openssl-dev zlib-dev"
+BDEPEND="  "
 
 pbs_unpack() {
         ypkg_unpack

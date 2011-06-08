@@ -10,7 +10,7 @@ PACKAGER="<ylmfos@115.com>"
 SRC_URI="http://roy.marples.name/downloads/"$N"/"$N-$V$R".tar.bz2"
 
 RDEPEND="glibc"
-BDEPEND="glibc-dev"
+BDEPEND=""
 
 pbs_unpack() {
         ypkg_unpack

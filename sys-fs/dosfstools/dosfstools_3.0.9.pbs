@@ -9,7 +9,7 @@ PACKAGER="<ylmfos@115.com>"
 SRC_URI="http://www.daniel-baumann.ch/software/"$N"/"$N-$V$R".tar.bz2"
 
 RDEPEND="glibc"
-BDEPEND="glibc-dev"
+BDEPEND=""
 RECOMMENDED=""
 
 pbs_unpack() {

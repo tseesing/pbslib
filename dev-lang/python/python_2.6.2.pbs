@@ -11,7 +11,7 @@ PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 SRC_URI="http://www.python.org/ftp/"$N"/"$V"/Python-"$V$R".tar.bz2"
 
 RDEPEND="berkeley-db expat fontconfig freetype gdbm glibc libX11 libXau libxcb libXdmcp libXext libXft libXrender libXScrnSaver ncurses openssl readline sqlite tcl tk zlib"
-BDEPEND="berkeley-db-dev expat-dev fontconfig-dev freetype-dev gdbm-dev glibc-dev libX11-dev libXau-dev libxcb-dev libXdmcp-dev libXext-dev libXft-dev libXrender-dev libXScrnSaver-dev ncurses-dev openssl-dev readline-dev sqlite-dev tcl-dev tk-dev zlib-dev"
+BDEPEND="                    "
 
 pbs_unpack() {
         ypkg_unpack

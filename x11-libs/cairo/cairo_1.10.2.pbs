@@ -10,7 +10,7 @@ PACKAGER="<ylmfos@115.com>"
 SRC_URI="http://cairographics.org/releases/"$N-$V$R".tar.gz"
 
 RDEPEND="expat fontconfig freetype glib2 glibc libpng libX11 libXau libxcb libXdmcp libXrender pixman zlib"
-BDEPEND="xcb-util-dev expat-dev fontconfig-dev freetype-dev glib2-dev glibc-dev libpng-dev libX11-dev libXau-dev libxcb-dev libXdmcp-dev libXrender-dev pixman-dev zlib-dev"
+BDEPEND="xcb-util-dev             "
 
 pbs_unpack() {
         ypkg_unpack

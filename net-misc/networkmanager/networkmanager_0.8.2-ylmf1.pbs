@@ -10,7 +10,7 @@ PACKAGER="<ylmfos@115.com>"
 SRC_URI="http://ftp.gnome.org/pub/gnome/sources/NetworkManager/0.8/NetworkManager-"$V".tar.bz2"
 
 RDEPEND="wpa_supplicant dhcpcd dbus dbus-glib eggdbus glib2 glibc libnl nspr nss polkit sqlite udev util-linux-ng zlib"
-BDEPEND="libgcrypt-dev gnutls dbus-dev dbus-glib-dev eggdbus-dev glib2-dev glibc-dev libnl-dev nspr-dev nss-dev polkit-dev sqlite-dev udev-dev util-linux-ng-dev zlib-dev" 
+BDEPEND="libgcrypt-dev gnutls   egg          " 
 RECOMMENDED=""
 
 NOTES="

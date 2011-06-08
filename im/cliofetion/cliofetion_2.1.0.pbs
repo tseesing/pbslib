@@ -11,7 +11,7 @@ PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 SRC_URI="http://ofetion.googlecode.com/files/"$N-$V$R".tar.gz"
 
 RDEPEND="glibc libofetion libxml2 openssl sqlite zlib"
-BDEPEND="glibc-dev libofetion-dev libxml2-dev openssl-dev sqlite-dev zlib-dev"
+BDEPEND="     "
 RECOMMENDED=""
 
 NOTES=""

@@ -10,7 +10,7 @@ PACKAGER="<ylmfos@115.com>"
 SRC_URI=""$N-$V$R".tar.bz2"
 
 RDEPEND="atk cairo dbus dbus-glib eggdbus expat fontconfig freetype gcc gconf glib2 glibc gtk+ libgcrypt libgnome-keyring libgpg-error libgtop libICE libpng libSM libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libXrandr libXrender orbit pango pixman startup-notification util-linux-ng zlib"
-BDEPEND="atk-dev cairo-dev dbus-dev dbus-glib-dev eggdbus-dev expat-dev fontconfig-dev freetype-dev gcc-dev gconf-dev glib2-dev glibc-dev gtk+-dev libgcrypt-dev libgnome-keyring-dev libgpg-error-dev libgtop-dev libICE-dev libpng-dev libSM-dev libX11-dev libXau-dev libxcb-dev libXcomposite-dev libXcursor-dev libXdamage-dev libXdmcp-dev libXext-dev libXfixes-dev libXi-dev libXrandr-dev libXrender-dev orbit-dev pango-dev pixman-dev startup-notification-dev util-linux-ng-dev zlib-dev"
+BDEPEND="    egg                                 "
 RECOMMENDED=""
 
 NOTES=""

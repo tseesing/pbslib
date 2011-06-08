@@ -10,7 +10,7 @@ PACKAGER="<ylmfos@115.com>"
 SRC_URI="http://cryptopp.com/cryptopp560.zip"
 
 RDEPEND="gcc glibc"
-BDEPEND="gcc-dev glibc-dev unzip"
+BDEPEND="  unzip"
 
 pbs_unpack() {
 	ypkg_unpack

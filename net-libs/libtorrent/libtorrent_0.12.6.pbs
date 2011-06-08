@@ -12,7 +12,7 @@ PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 SRC_URI="http://libtorrent.rakshasa.no/downloads/"$N-$V$R".tar.gz"
 
 RDEPEND="gcc glibc libsigc++ openssl"
-BDEPEND="gcc-dev glibc-dev libsigc++-dev openssl-dev"
+BDEPEND="   "
 RECOMMENDED=""
 CONFLICT=""
 

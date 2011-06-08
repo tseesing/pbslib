@@ -11,7 +11,7 @@ PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 SRC_URI="http://ftp.gnu.org/pub/gnu/"$N"/"$N-$V".tar.gz"
 
 RDEPEND="gcc glibc"
-BDEPEND="gcc-dev glibc-dev"
+BDEPEND=" "
 
 pbs_unpack() {
         ypkg_unpack

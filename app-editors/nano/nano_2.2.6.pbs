@@ -12,7 +12,7 @@ PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 SRC_URI="http://www.nano-editor.org/dist/v2.2/"$N-$V$R".tar.gz"
 
 RDEPEND="glibc ncurses"
-BDEPEND="glibc-dev ncurses-dev"
+BDEPEND=" "
 RECOMMENDED=""
 CONFLICT=""
 

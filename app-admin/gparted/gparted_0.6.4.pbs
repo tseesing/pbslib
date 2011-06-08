@@ -10,7 +10,7 @@ PACKAGER="<ylmfos@115.com>"
 SRC_URI="http://downloads.sourceforge.net/project/"$N"/"$N"/"$N-$V$R"/"$N-$V$R".tar.bz2"
 
 RDEPEND="atk cairo cairomm device-mapper expat fontconfig freetype gcc glib2 glibc glibmm gtk+ gtkmm libpng libsigc++ libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libXrandr libXrender pango pangomm parted pixman util-linux-ng zlib"
-BDEPEND="atk-dev cairo-dev cairomm-dev device-mapper-dev expat-dev fontconfig-dev freetype-dev gcc-dev glib2-dev glibc-dev glibmm-dev gtk+-dev gtkmm-dev libpng-dev libsigc++-dev libX11-dev libXau-dev libxcb-dev libXcomposite-dev libXcursor-dev libXdamage-dev libXdmcp-dev libXext-dev libXfixes-dev libXi-dev libXrandr-dev libXrender-dev pango-dev pangomm-dev parted-dev pixman-dev util-linux-ng-dev zlib-dev"
+BDEPEND="                                "
 RECOMMENDED="dosfstools jfsutils ntfsprogs e2fsprogs reiserfsprogs xfsprogs"
 
 pbs_unpack() {

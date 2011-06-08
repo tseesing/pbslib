@@ -10,7 +10,7 @@ PACKAGER="<ylmfos@115.com>"
 SRC_URI="git://git.ylmf.com/"$N".git"
 
 RDEPEND="glibc plymouth initramfs-tools busybox-initramfs sudo eject util-linux-ng ntfs-3g"
-BDEPEND="plymouth-dev"
+BDEPEND=""
 
 pbs_unpack() {
 	ypkg_unpack

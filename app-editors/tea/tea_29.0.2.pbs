@@ -11,7 +11,7 @@ PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 SRC_URI="http://nchc.dl.sourceforge.net/project/tea-editor/tea-editor/"$V$R"/"$N-$V$R".tar.bz2"
 
 RDEPEND="aspell expat fontconfig freetype gcc glib2 glibc libdrm libICE libpng libSM libX11 libXau libxcb libXdmcp libXext libXrender mesa qt-core udev util-linux-ng zlib"
-BDEPEND="aspell-dev expat-dev fontconfig-dev freetype-dev gcc-dev glib2-dev glibc-dev libdrm-dev libICE-dev libpng-dev libSM-dev libX11-dev libXau-dev libxcb-dev libXdmcp-dev libXext-dev libXrender-dev mesa-dev qt-core-dev udev-dev util-linux-ng-dev zlib-dev"
+BDEPEND="                     "
 RECOMMENDED=""
 CONFLICT=""
 

@@ -10,7 +10,7 @@ PACKAGER="<ylmfos@115.com>"
 SRC_URI="http://ftp.gnome.org/pub/gnome/sources/NetworkManager-openconnect/0.8/NetworkManager-openconnect-"$V$R".tar.bz2"
 
 RDEPEND="ppp atk cairo dbus dbus-glib expat fontconfig freetype gcc gconf glib2 glibc gtk+ libglade libpng libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libxml2 libXrandr libXrender networkmanager nspr nss orbit pango pixman sqlite udev util-linux-ng zlib"
-BDEPEND="ppp-dev atk-dev cairo-dev dbus-dev dbus-glib-dev expat-dev fontconfig-dev freetype-dev gcc-dev gconf-dev glib2-dev glibc-dev gtk+-dev libglade-dev libpng-dev libX11-dev libXau-dev libxcb-dev libXcomposite-dev libXcursor-dev libXdamage-dev libXdmcp-dev libXext-dev libXfixes-dev libXi-dev libxml2-dev libXrandr-dev libXrender-dev networkmanager-dev nspr-dev nss-dev orbit-dev pango-dev pixman-dev sqlite-dev udev-dev util-linux-ng-dev zlib-dev"
+BDEPEND="                                     "
 RECOMMENDED=""
 
 NOTES=""

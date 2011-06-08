@@ -8,7 +8,7 @@ HOMEPAGE="http://www.openal.org"
 SRC_URI="http://connect.creativelabs.com/openal/Downloads/ALUT/"$N-$V$R".tar.gz"
 
 RDEPEND="glibc openal"
-BDEPEND="glibc-dev openal-dev"
+BDEPEND=" "
 
 pbs_unpack() {
         ypkg_unpack

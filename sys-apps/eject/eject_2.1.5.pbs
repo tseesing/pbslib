@@ -10,7 +10,7 @@ PACKAGER="<ylmfos@115.com>"
 SRC_URI="http://tx-us.lunar-linux.org/lunar/mirrors/"$N-$V$R".tar.gz"
 
 RDEPEND="glibc"
-BDEPEND="glibc-dev"
+BDEPEND=""
 RECOMMENDED=""
 
 pbs_unpack() {

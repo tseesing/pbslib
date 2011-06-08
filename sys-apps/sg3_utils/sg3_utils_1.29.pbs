@@ -10,7 +10,7 @@ PACKAGER="<ylmfos@115.com>"
 SRC_URI="http://sg.danny.cz/sg/p/"$N-$V$R".tgz"
 
 RDEPEND="glibc"
-BDEPEND="glibc-dev"
+BDEPEND=""
 RECOMMENDED=""
 
 pbs_unpack() {

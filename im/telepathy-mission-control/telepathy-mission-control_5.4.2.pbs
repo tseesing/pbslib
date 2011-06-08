@@ -10,7 +10,7 @@ PACKAGER="<ylmfos@115.com>"
 SRC_URI="http://telepathy.freedesktop.org/releases/"$N"/"$N-$V$R".tar.gz"
 
 RDEPEND="dbus dbus-glib gconf glib2 glibc orbit telepathy-glib zlib"
-BDEPEND="dbus-dev dbus-glib-dev gconf-dev glib2-dev glibc-dev orbit-dev telepathy-glib-dev zlib-dev"
+BDEPEND="       "
 RECOMMENDED=""
 
 NOTES=""

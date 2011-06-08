@@ -11,7 +11,7 @@ PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 SRC_URI="http://samba.org/ftp/"$N"/"$N-$V$R".tar.gz"
 
 RDEPEND="glibc python"
-BDEPEND="glibc-dev python-dev"
+BDEPEND=" "
 RECOMMENDED=""
 
 NOTES=""

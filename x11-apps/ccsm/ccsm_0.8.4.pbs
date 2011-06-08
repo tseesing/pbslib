@@ -10,7 +10,7 @@ PACKAGER="<ylmfos@115.com>"
 SRC_URI="http://ftp.osuosl.org/pub/gsb/gsb-2.30_slackware-13.1/source/c/"$N"/"$N-$V$R".tar.bz2"
 
 RDEPEND="python pygtk libsexy sexy-python compizconfig-python pyrex compizconfig-backend-gconf libcompizconfig"
-BDEPEND="python-dev pygtk-dev libsexy-dev sexy-python-dev compizconfig-python-dev compizconfig-backend-gconf-dev libcompizconfig-dev"
+BDEPEND="   sexy- compizconfig-  "
 RECOMMENDED=""
 
 NOTES=""

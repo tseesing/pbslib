@@ -12,7 +12,7 @@ PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 SRC_URI="ftp://ftp.fu-berlin.de/pub/unix/misc/slang/v2.2/"$N-$V$R".tar.bz2"
 
 RDEPEND="glibc libpcre libpng zlib"
-BDEPEND="glibc-dev libpcre-dev libpng-dev zlib-dev"
+BDEPEND="   "
 RECOMMENDED=""
 CONFLICT=""
 

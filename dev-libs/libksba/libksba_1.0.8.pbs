@@ -10,7 +10,7 @@ PACKAGER="<ylmfos@115.com>"
 SRC_URI="ftp://ftp.gnupg.org/gcrypt/"$N"/"$N-$V$R".tar.bz2"
 
 RDEPEND="glibc libgpg-error"
-BDEPEND="libgpg-error-dev glibc-dev"
+BDEPEND=" "
 RECOMMENDED=""
 
 NOTES=""

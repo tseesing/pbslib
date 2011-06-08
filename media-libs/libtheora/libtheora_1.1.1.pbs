@@ -11,7 +11,7 @@ PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 SRC_URI="http://downloads.xiph.org/releases/theora/"$N-$V$R".tar.bz2"
 
 RDEPEND="glibc libogg"
-BDEPEND="glibc-dev libogg-dev libvorbis-dev libsdl-dev"
+BDEPEND="  libvorbis-dev libsdl-dev"
 RECOMMENDED="libvorbis libsdl"
 
 NOTES=""

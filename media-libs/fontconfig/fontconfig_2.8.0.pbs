@@ -10,7 +10,7 @@ PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 SRC_URI="http://fontconfig.org/release/$N-$V$R.tar.gz"
 
 RDEPEND="expat freetype glibc zlib"
-BDEPEN="libxml2-dev expat-dev freetype-dev glibc-dev zlib-dev"
+BDEPEN="libxml2-dev    "
 
 pbs_unpack() {
         ypkg_unpack

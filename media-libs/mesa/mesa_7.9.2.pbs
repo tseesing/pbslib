@@ -10,7 +10,7 @@ SRC_URI="ftp://ftp.freedesktop.org/pub/mesa/"$V"/MesaLib-"$V$R".tar.bz2
 	 ftp://ftp.freedesktop.org/pub/mesa/"$V"/MesaGLUT-"$V$R".tar.bz2"
 
 RDEPEND="glibc libX11 libXext libXxf86vm libXdamage libXfixes libdrm libxcb libXau libXdmcp talloc"
-BDEPEND="libX11-dev libXext-dev libXxf86vm-dev libXdamage-dev libXfixes-dev libXi-dev dri2proto-dev libdrm-dev xorg-server-dev"
+BDEPEND="     libXi-dev dri2proto-dev  xorg-server-dev"
 
 NOTES="
  You have enabled gallium infrastructure.

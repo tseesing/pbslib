@@ -17,7 +17,7 @@ SRC_URI="$URL/"$N-$V$R".tar.gz
 	 "$URL"/"$N"/"$N-$V$R"-patches/bash42-008"
 
 RDEPEND="glibc"
-BDEPEND="readline-dev ncurses-dev glibc-dev"
+BDEPEND="readline-dev ncurses-dev "
 
 pbs_unpack() {
         ypkg_unpack

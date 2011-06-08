@@ -10,7 +10,7 @@ PACKAGER="<ylmfos@115.com>"
 SRC_URI="http://download.gnome.org/sources/"$N"/0.6/"$N-$V$R".tar.bz2"
 
 RDEPEND="glib2 glibc libxml2 zlib"
-BDEPEND="glib2-dev glibc-dev libxml2-dev zlib-dev"
+BDEPEND="   "
 RECOMMENDED=""
 
 NOTES=""

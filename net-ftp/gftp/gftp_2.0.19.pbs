@@ -12,7 +12,7 @@ PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 SRC_URI="http://www.gftp.org/"$N-$V$R".tar.bz2"
 
 RDEPEND="atk cairo expat fontconfig freetype gcc glib2 glibc gtk+ libpng libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libXrandr libXrender ncurses openssl pango pixman readline zlib"
-BDEPEND="atk-dev cairo-dev expat-dev fontconfig-dev freetype-dev gcc-dev glib2-dev glibc-dev gtk+-dev libpng-dev libX11-dev libXau-dev libxcb-dev libXcomposite-dev libXcursor-dev libXdamage-dev libXdmcp-dev libXext-dev libXfixes-dev libXi-dev libXrandr-dev libXrender-dev ncurses-dev openssl-dev pango-dev pixman-dev readline-dev zlib-dev"
+BDEPEND="                           "
 RECOMMENDED=""
 CONFLICT=""
 

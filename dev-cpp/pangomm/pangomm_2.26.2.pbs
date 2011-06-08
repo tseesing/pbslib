@@ -10,7 +10,7 @@ PACKAGER="<ylmfos@115.com>"
 SRC_URI=" http://ftp.gnome.org/pub/gnome/sources/"$N"/2.26/"$N-$V$R".tar.bz2"
 
 RDEPEND="cairo cairomm expat fontconfig freetype gcc glib2 glibc glibmm libpng libsigc++ libX11 libXau libxcb libXdmcp libXrender pango pixman zlib"
-BDEPEND="cairo-dev cairomm-dev expat-dev fontconfig-dev freetype-dev gcc-dev glib2-dev glibc-dev glibmm-dev libpng-dev libsigc++-dev libX11-dev libXau-dev libxcb-dev libXdmcp-dev libXrender-dev pango-dev pixman-dev zlib-dev"
+BDEPEND="                  "
 RECOMMENDED=""
 
 NOTES=" http://wiki.linuxfromscratch.org/blfs/wiki/pangomm"

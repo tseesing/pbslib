@@ -8,7 +8,7 @@ HOMEPAGE="http://xorg.freedesktop.org/"
 SRC_URI="http://xorg.freedesktop.org/releases/individual/app/$N-$V$R.tar.bz2"
 
 RDEPEND="glibc libICE libSM libX11 libXau libXaw libxcb libXdmcp libXext libXmu libXpm libXScrnSaver libXt util-linux-ng"
-BDEPEND="glibc-dev libICE-dev libSM-dev libX11-dev libXau-dev libXaw-dev libxcb-dev libXdmcp-dev libXext-dev libXmu-dev libXpm-dev libXScrnSaver-dev libXt-dev util-linux-ng-dev"
+BDEPEND="             "
 
 pbs_unpack() {
         ypkg_unpack

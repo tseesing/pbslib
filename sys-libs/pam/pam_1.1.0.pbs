@@ -10,7 +10,7 @@ PACKAGER="<ylmfos@115.com>"
 SRC_URI="http://www.kernel.org/pub/linux/libs/"$N"/library/Linux-PAM-"$V$R".tar.bz2"
 
 RDEPEND="berkeley-db glibc"
-BDEPEND="berkeley-db-dev glibc-dev"
+BDEPEND=" "
 
 pbs_unpack() {
         ypkg_unpack

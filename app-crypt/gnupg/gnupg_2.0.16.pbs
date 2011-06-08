@@ -10,7 +10,7 @@ PACKAGER="<ylmfos@115.com>"
 SRC_URI="ftp://ftp.gnupg.org/gcrypt/"$N"/"$N-$V$R".tar.bz2"
 
 RDEPEND="curl cyrus-sasl glibc libassuan libgcrypt libgpg-error libksba libusb libusb-compat ncurses openldap-client openssl pth readline zlib"
-BDEPEND="bzip2-dev curl-dev cyrus-sasl-dev glibc-dev libassuan-dev libgcrypt-dev libgpg-error-dev libksba-dev libusb-dev libusb-compat-dev ncurses-dev openldap-client-dev openssl-dev pth-dev readline-dev zlib-dev"
+BDEPEND="bzip2-dev               "
 
 pbs_unpack() {
         ypkg_unpack

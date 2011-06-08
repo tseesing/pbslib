@@ -10,7 +10,7 @@ PACKAGER="<ylmfos@115.com>"
 SRC_URI="http://downloads.sourceforge.net/project/pidgin/Pidgin/"$V"/pidgin-"$V$R".tar.gz"
 
 RDEPEND="dbus dbus-glib farsight2 glib2 glibc gnutls gstreamer libgcrypt libgpg-error libtasn1 libxml2 nspr nss zlib"
-BDEPEND="dbus-dev dbus-glib-dev farsight2-dev glib2-dev glibc-dev gnutls-dev gstreamer-dev libgcrypt-dev libgpg-error-dev libtasn1-dev libxml2-dev nspr-dev nss-dev zlib-dev"
+BDEPEND="             "
 
 pbs_unpack() {
         ypkg_unpack

@@ -10,7 +10,7 @@ PACKAGER="<ylmfos@115.com>"
 SRC_URI="git://git.ylmf.com/"$N".git"
 
 RDEPEND="initramfs-tools glibc udev"
-BDEPEND="glibc-dev udev-dev"
+BDEPEND=" "
 RECOMMENDED=""
 
 pbs_unpack() {

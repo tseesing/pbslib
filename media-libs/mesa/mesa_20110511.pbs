@@ -11,7 +11,7 @@ PACKAGER="<ylmfos@115.com>"
 SRC_URI="git://anongit.freedesktop.org/mesa/mesa"
 
 RDEPEND="talloc expat gcc glibc libdrm libICE libSM libX11 libXau libxcb libXdamage libXdmcp libXext libXfixes libXi libXmu libXt libXxf86vm udev util-linux-ng"
-BDEPEND="dri2proto-dev xorg-server-dev talloc-dev expat-dev gcc-dev glibc-dev libdrm-dev libICE-dev libSM-dev libX11-dev libXau-dev libxcb-dev libXdamage-dev libXdmcp-dev libXext-dev libXfixes-dev libXi-dev libXmu-dev libXt-dev libXxf86vm-dev udev-dev util-linux-ng-dev llvm-dev"
+BDEPEND="dri2proto-dev xorg-server-dev                     llvm-dev"
 
 NOTES="
  You have enabled gallium infrastructure.

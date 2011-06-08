@@ -10,7 +10,7 @@ PACKAGER="<ylmfos@115.com>"
 SRC_URI="git://anongit.freedesktop.org/xorg/driver/"$N""
 
 RDEPEND="glibc libdrm libpciaccess pixman udev"
-BDEPEND="xorg-server-dev glibc-dev libdrm-dev libpciaccess-dev pixman-dev udev-dev"
+BDEPEND="xorg-server-dev     "
 
 pbs_unpack() {
         ypkg_unpack

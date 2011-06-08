@@ -8,7 +8,7 @@ HOMEPAGE="http://www.zlib.net/"
 SRC_URI="http://zlib.net/"$N-$V$R".tar.bz2"
 
 RDEPEND="glibc"
-BDEPEND="glibc-dev"
+BDEPEND=""
 
 pbs_unpack() {
         ypkg_unpack

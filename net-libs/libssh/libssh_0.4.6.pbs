@@ -11,7 +11,7 @@ PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 SRC_URI="http://www.libssh.org/files/"$N-$V$R".tar.gz"
 
 RDEPEND="glibc openssl zlib"
-BDEPEND="glibc-dev openssl-dev zlib-dev"
+BDEPEND="  "
 RECOMMENDED=""
 
 pbs_unpack() {

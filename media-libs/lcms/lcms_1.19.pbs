@@ -8,7 +8,7 @@ HOMEPAGE="http://www.littlecms.com/"
 SRC_URI="http://downloads.sourceforge.net/project/"$N"/"$N"/"$V"/"$N-$V$R".tar.gz"
 
 RDEPEND="glibc libjpeg-turbo libtiff zlib"
-BDEPEND="glibc-dev libjpeg-turbo-dev libtiff-dev zlib-dev"
+BDEPEND="   "
 
 pbs_unpack() {
         ypkg_unpack

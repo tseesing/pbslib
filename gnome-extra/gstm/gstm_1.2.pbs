@@ -12,7 +12,7 @@ PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 SRC_URI="http://downloads.sourceforge.net/project/gstm/gSTM/gSTM-1.2/"$N-$V$R".tar.gz"
 
 RDEPEND="alsa-lib atk audiofile avahi cairo dbus dbus-glib eggdbus esound expat fontconfig freetype gail gcc gconf glib2 glibc gnome-vfs gtk+ libart_lgpl libbonobo libbonoboui libgcrypt libgnome libgnomecanvas libgnome-keyring libgnomeui libgpg-error libICE libpng libSM libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libxml2 libXrandr libXrender openssl orbit pango pixman popt util-linux-ng zlib"
-BDEPEND="alsa-lib-dev atk-dev audiofile-dev avahi-dev cairo-dev dbus-dev dbus-glib-dev eggdbus-dev esound-dev expat-dev fontconfig-dev freetype-dev gail-dev gcc-dev gconf-dev glib2-dev glibc-dev gnome-vfs-dev gtk+-dev libart_lgpl-dev libbonobo-dev libbonoboui-dev libgcrypt-dev libgnome-dev libgnomecanvas-dev libgnome-keyring-dev libgnomeui-dev libgpg-error-dev libICE-dev libpng-dev libSM-dev libX11-dev libXau-dev libxcb-dev libXcomposite-dev libXcursor-dev libXdamage-dev libXdmcp-dev libXext-dev libXfixes-dev libXi-dev libxml2-dev libXrandr-dev libXrender-dev openssl-dev orbit-dev pango-dev pixman-dev popt-dev util-linux-ng-dev zlib-dev"
+BDEPEND="       egg                                           "
 RECOMMENDED=""
 CONFLICT=""
 

@@ -10,7 +10,7 @@ PACKAGER="<ylmfos@115.com>"
 SRC_URI="http://ftp.acc.umu.se/pub/GNOME/sources/totem/2.30/"$N-$V$R".tar.bz2"
 
 RDEPEND="libdvdcss atk bluez cairo dbus dbus-glib expat fontconfig freetype gcc gconf glib2 glibc gmime gst-plugins-base gstreamer gtk+ libICE libpng libSM libunique libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libxml2 libXrandr libXrender libXtst libXxf86vm lirc nautilus orbit pango pixman python totem-pl-parser util-linux-ng zlib"
-BDEPEND="gnome-doc-utils-dev gst-plugins-good-dev shared-mime-info-dev totem-pl-parser-dev pygtk-dev libdvdcss-dev atk-dev bluez-dev cairo-dev dbus-dev dbus-glib-dev expat-dev fontconfig-dev freetype-dev gcc-dev gconf-dev glib2-dev glibc-dev gmime-dev gst-plugins-base-dev gstreamer-dev gtk+-dev libICE-dev libpng-dev libSM-dev libunique-dev libX11-dev libXau-dev libxcb-dev libXcomposite-dev libXcursor-dev libXdamage-dev libXdmcp-dev libXext-dev libXfixes-dev libXi-dev libxml2-dev libXrandr-dev libXrender-dev libXtst-dev libXxf86vm-dev lirc-dev nautilus-dev orbit-dev pango-dev pixman-dev python-dev totem-pl-parser-dev util-linux-ng-dev zlib-dev"
+BDEPEND="gnome-doc-utils-dev gst-plugins-good-dev shared-mime-info-dev  pygtk-dev                                             "
 RECOMMENDED="pygtk "
 
 NOTES="

@@ -10,7 +10,7 @@ PACKAGER="<ylmfos@115.com>"
 SRC_URI="http://ftp.gnu.org/pub/gnu/"$N"/"$N-$V$R".tar.gz"
 
 RDEPEND="glibc gmp libtool ncurses readline"
-BDEPEND="glibc-dev gmp-dev libtool-dev ncurses-dev readline-dev"
+BDEPEND="    "
 RECOMMENDED=""
 
 NOTES=""

@@ -11,7 +11,7 @@ PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 SRC_URI="http://aerosuidae.net/musca-0.9.24.tgz"
 
 RDEPEND="glibc libX11 libXau libxcb libXdmcp"
-BDEPEND="libX11-dev libXau-dev libxcb-dev libXdmcp-dev"
+BDEPEND="   "
 RECOMMENDED=""
 CONFLICT=""
 

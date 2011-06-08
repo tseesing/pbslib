@@ -8,7 +8,7 @@ HOMEPAGE="http://pkgconfig.freedesktop.org/wiki/"
 SRC_URI="http://pkgconfig.freedesktop.org/releases/pkg-config-"$V$R".tar.gz"
 
 RDEPEND="glibc"
-BDEPEND="glibc-dev"
+BDEPEND=""
 
 pbs_unpack() {
         ypkg_unpack

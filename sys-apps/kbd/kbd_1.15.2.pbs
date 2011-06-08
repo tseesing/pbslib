@@ -8,7 +8,7 @@ HOMEPAGE="http://freshmeat.net/projects/kbd"
 SRC_URI="ftp://ftp.kernel.org/pub/linux/utils/"$N"/"$N-$V$R".tar.bz2 "
 
 RDEPEND="glibc"
-BDEPEND="glibc-dev"
+BDEPEND=""
 
 pbs_unpack() {
         ypkg_unpack

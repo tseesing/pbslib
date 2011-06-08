@@ -10,7 +10,7 @@ PACKAGER="<ylmfos@115.com>"
 SRC_URI="ftp://ftp.gnome.org/pub/gnome/sources/"$N"/0.3/"$N-$V$R".tar.bz2"
 
 RDEPEND="glibc libxml2 libxslt zlib"
-BDEPEND="xml-parser docbook-xml glibc-dev libxml2-dev libxslt-dev zlib-dev"
+BDEPEND="xml-parser docbook-xml    "
 RECOMMENDED=""
 
 NOTES=""

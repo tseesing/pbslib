@@ -10,7 +10,7 @@ PACKAGER="<ylmfos@115.com>"
 SRC_URI="http://ftp.gnu.org/gnu/"$N"/"$N-$V$R".tar.xz"
 
 RDEPEND="device-mapper glibc ncurses readline util-linux-ng"
-BDEPEND="device-mapper-dev glibc-dev ncurses-dev readline-dev util-linux-ng-dev"
+BDEPEND="    "
 RECOMMENDED=""
 
 pbs_unpack() {

@@ -13,7 +13,7 @@ REPO="testing"
 SRC_URI="http://releases.mozilla.org/pub/mozilla.org/"$N"/releases/"$V$R"/source/"$N-$V$R".source.tar.bz2"
 
 RDEPEND="alsa-lib atk avahi cairo dbus dbus-glib expat fontconfig freetype gcc gconf glib2 glibc gnome-vfs gtk+ libICE libnotify libpng libSM libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libxml2 libXrandr libXrender libXt nspr nss openssl orbit pango pixman sqlite startup-notification util-linux-ng zlib"
-BDEPEND="alsa-lib-dev atk-dev avahi-dev cairo-dev dbus-dev dbus-glib-dev expat-dev fontconfig-dev freetype-dev gcc-dev gconf-dev glib2-dev glibc-dev gnome-vfs-dev gtk+-dev libICE-dev libnotify-dev libpng-dev libSM-dev libX11-dev libXau-dev libxcb-dev libXcomposite-dev libXcursor-dev libXdamage-dev libXdmcp-dev libXext-dev libXfixes-dev libXi-dev libxml2-dev libXrandr-dev libXrender-dev libXt-dev nspr-dev nss-dev openssl-dev orbit-dev pango-dev pixman-dev sqlite-dev startup-notification-dev util-linux-ng-dev zlib-dev"
+BDEPEND="                                          "
 RECOMMENDED=""
 CONFLICT=""
 

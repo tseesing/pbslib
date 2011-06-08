@@ -8,7 +8,7 @@ HOMEPAGE="http://www.winehq.org/"
 SRC_URI="http://ibiblio.org/pub/linux/system/emulators/"$N"/"$N-$V$R".tar.bz2"
 
 RDEPEND="alsa-lib audiofile cyrus-sasl esound gcc gettext glib2 glibc gst-plugins-base gstreamer lcms libdrm libexif libgphoto2 libICE libSM libtool libX11 libXau libxcb libXdamage libXdmcp libXext libXfixes libxml2 libXxf86vm mesa mpg123 openal openldap-client openssl util-linux-ng zlib"
-BDEPEND="libgsm-dev sane-backends-dev v4l-utils-dev prelink alsa-lib-dev audiofile-dev cyrus-sasl-dev esound-dev gcc-dev gettext-dev glib2-dev glibc-dev gst-plugins-base-dev gstreamer-dev lcms-dev libdrm-dev libexif-dev libgphoto2-dev libICE-dev libSM-dev libtool-dev libX11-dev libXau-dev libxcb-dev libXdamage-dev libXdmcp-dev libXext-dev libXfixes-dev libxml2-dev libXxf86vm-dev mesa-dev mpg123-dev openal-dev openldap-client-dev openssl-dev util-linux-ng-dev zlib-dev"
+BDEPEND="libgsm-dev sane-backends-dev v4l-utils-dev prelink                                 "
 
 pbs_unpack() {
         ypkg_unpack

@@ -10,7 +10,7 @@ PACKAGER="<ylmfos@115.com>"
 SRC_URI="http://downloads.xiph.org/releases/vorbis/"$N-$V$R".tar.bz2"
 
 RDEPEND="glibc libogg"
-BDEPEND="libogg-dev glibc-dev"
+BDEPEND=""
 RECOMMENDED=""
 
 pbs_unpack() {

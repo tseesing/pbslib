@@ -8,7 +8,7 @@ HOMEPAGE="https://fedorahosted.org/xmlto/browser"
 SRC_URI="https://fedorahosted.org/releases/x/m/"$N"/"$N-$V$R".tar.bz2"
 
 RDEPEND="glibc"
-BDEPEND="docbook-xml docbook-xsl libxslt-dev glibc-dev"
+BDEPEND="docbook-xml docbook-xsl libxslt-dev "
 
 NOTES="http://wiki.linuxfromscratch.org/blfs/wiki/xmlto"
 

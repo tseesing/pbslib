@@ -8,7 +8,7 @@ HOMEPAGE=" http://www.alsa-project.org/"
 SRC_URI="ftp://ftp.alsa-project.org/pub/utils/"$N-$V".tar.bz2"
 
 RDEPEND="alsa-lib glibc libsamplerate ncurses"
-BDEPEND="alsa-lib-dev glibc-dev libsamplerate-dev ncurses-dev"
+BDEPEND="   "
 
 pbs_unpack() {
         ypkg_unpack

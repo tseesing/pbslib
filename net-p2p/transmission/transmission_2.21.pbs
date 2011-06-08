@@ -10,7 +10,7 @@ PACKAGER="<ylmfos@115.com>"
 SRC_URI="http://download.transmissionbt.com/files/"$N-$V$R".tar.bz2"
 
 RDEPEND="atk cairo curl cyrus-sasl dbus dbus-glib expat fontconfig freetype gcc gconf glib2 glibc gtk+ libcanberra libevent libnotify libogg libpng libtool libvorbis libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libXrandr libXrender openldap-client openssl orbit pango pixman zlib"
-BDEPEND="atk-dev cairo-dev curl-dev cyrus-sasl-dev dbus-dev dbus-glib-dev expat-dev fontconfig-dev freetype-dev gcc-dev gconf-dev glib2-dev glibc-dev gtk+-dev libcanberra-dev libevent-dev libnotify-dev libogg-dev libpng-dev libtool-dev libvorbis-dev libX11-dev libXau-dev libxcb-dev libXcomposite-dev libXcursor-dev libXdamage-dev libXdmcp-dev libXext-dev libXfixes-dev libXi-dev libXrandr-dev libXrender-dev openldap-client-dev openssl-dev orbit-dev pango-dev pixman-dev zlib-dev"
+BDEPEND="                                      "
 RECOMMENDED=""
 
 NOTES=""

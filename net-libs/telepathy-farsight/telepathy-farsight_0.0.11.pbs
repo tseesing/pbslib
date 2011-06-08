@@ -10,7 +10,7 @@ PACKAGER="<ylmfos@115.com>"
 SRC_URI="http://telepathy.freedesktop.org/releases/"$N"/"$N-$V$R".tar.gz"
 
 RDEPEND="dbus dbus-glib farsight2 glib2 glibc gstreamer libxml2 telepathy-glib zlib"
-BDEPEND="dbus-dev dbus-glib-dev farsight2-dev glib2-dev glibc-dev gstreamer-dev libxml2-dev telepathy-glib-dev zlib-dev"
+BDEPEND="        "
 RECOMMENDED=""
 
 pbs_unpack() {

@@ -10,7 +10,7 @@ PACKAGER="<ylmfos@115.com>"
 SRC_URI="https://alioth.debian.org/frs/download.php/3082/"$N-$V$R".tar.bz2"
 
 RDEPEND="dbus glibc hal"
-BDEPEND="dbus-dev glibc-dev hal-dev"
+BDEPEND="  "
 RECOMMENDED=""
 
 pbs_unpack() {

@@ -12,7 +12,7 @@ PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 SRC_URI="http://downloads.sourceforge.net/project/sylpheed-claws/Claws%20Mail/"$V$R"/"$N-$V$R".tar.gz"
 
 RDEPEND="atk berkeley-db cairo curl cyrus-sasl dbus dbus-glib enchant expat fontconfig freetype gcc glib2 glibc gnutls gpgme gtk+ libassuan libetpan libgcrypt libgpg-error libICE libpng libSM libtasn1 libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libXrandr libXrender openldap-client openssl pango pixman startup-notification util-linux-ng zlib"
-BDEPEND="atk-dev berkeley-db-dev cairo-dev curl-dev cyrus-sasl-dev dbus-dev dbus-glib-dev enchant-dev expat-dev fontconfig-dev freetype-dev gcc-dev glib2-dev glibc-dev gnutls-dev gpgme-dev gtk+-dev libassuan-dev libetpan-dev libgcrypt-dev libgpg-error-dev libICE-dev libpng-dev libSM-dev libtasn1-dev libX11-dev libXau-dev libxcb-dev libXcomposite-dev libXcursor-dev libXdamage-dev libXdmcp-dev libXext-dev libXfixes-dev libXi-dev libXrandr-dev libXrender-dev openldap-client-dev openssl-dev pango-dev pixman-dev startup-notification-dev util-linux-ng-dev zlib-dev"
+BDEPEND="                                           "
 RECOMMENDED=""
 CONFLICT=""
 

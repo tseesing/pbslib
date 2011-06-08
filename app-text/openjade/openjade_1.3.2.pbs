@@ -10,7 +10,7 @@ PACKAGER="<ylmfos@115.com>"
 SRC_URI="http://downloads.sourceforge.net/project/"$N"/"$N"/"$V$R"/"$N-$V$R".tar.gz"
 
 RDEPEND="gcc glibc opensp"
-BDEPEND="gcc-dev glibc-dev opensp-dev"
+BDEPEND="  "
 RECOMMENDED=""
 
 NOTES=""

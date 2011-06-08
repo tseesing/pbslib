@@ -11,7 +11,7 @@ PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 SRC_URI="git://anongit.freedesktop.org/~aplattner/libvdpau"
 
 RDEPEND="gcc glibc libX11 libXau libxcb libXdmcp libXext"
-BDEPEND="gcc-dev glibc-dev libX11-dev libXau-dev libxcb-dev libXdmcp-dev libXext-dev"
+BDEPEND="      "
 RECOMMENDED=""
 
 NOTES=""

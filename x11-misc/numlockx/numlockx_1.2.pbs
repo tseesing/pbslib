@@ -12,7 +12,7 @@ PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 SRC_URI="http://ktown.kde.org/~seli/numlockx/numlockx-1.2.tar.gz"
 
 RDEPEND="glibc libX11 libXau libxcb libXdmcp libXext libXi libXtst"
-BDEPEND="glibc-dev libX11-dev libXau-dev libxcb-dev libXdmcp-dev libXext-dev libXi-dev libXtst-dev"
+BDEPEND="       "
 RECOMMENDED=""
 CONFLICT=""
 

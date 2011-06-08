@@ -10,7 +10,7 @@ PACKAGER="<ylmfos@115.com>"
 SRC_URI=" http://nchc.dl.sourceforge.net/project/"$N"/"$N"/"$V$R"/"${N}"_1_42_0.tar.bz2 "
 
 RDEPEND="gcc glibc zlib"
-BDEPEND="gcc-dev glibc-dev zlib-dev"
+BDEPEND="  "
 RECOMMENDED=""
 
 NOTES="Apply Hotfixes from:

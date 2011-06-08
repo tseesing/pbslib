@@ -11,7 +11,7 @@ PACKAGER="<ylmfos@115.com>"
 SRC_URI="http://ftp.gnome.org/pub/gnome/platform/2.30/2.30.2/sources/"$N-$V$R".tar.bz2 "
 
 RDEPEND="acl attr avahi cyrus-sasl dbus dbus-glib gamin gcc gconf glib2 glibc hal keyutils krb5 libcap libxml2 openldap-client openssl orbit samba talloc zlib"
-BDEPEND="libbonobo-dev neon-dev acl-dev attr-dev avahi-dev cyrus-sasl-dev dbus-dev dbus-glib-dev gamin-dev gcc-dev gconf-dev glib2-dev glibc-dev hal-dev keyutils-dev krb5-dev libcap-dev libxml2-dev openldap-client-dev openssl-dev orbit-dev samba-dev talloc-dev zlib-dev"
+BDEPEND="libbonobo-dev neon-dev                      "
 RECOMMENDED=""
 
 NOTES="http://wiki.linuxfromscratch.org/blfs/wiki/gnome-vfs

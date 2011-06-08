@@ -10,7 +10,7 @@ PACKAGER="<ylmfos@115.com>"
 SRC_URI=" http://ftp.gnome.org/pub/gnome/desktop/2.30/2.30.2/sources/"$N-$V$R".tar.bz2 "
 
 RDEPEND="alsa-lib audiofile cairo dbus dbus-glib eggdbus esound expat flac fontconfig freetype gcc gconf glib2 glibc gnutls gst-plugins-base gstreamer gtk+ hal libgcrypt libgnome-keyring libgpg-error libICE libjpeg-turbo libogg liboil libpng libproxy libSM libsoup libtasn1 libX11 libXau libxcb libXdamage libXdmcp libXext libXfixes libxml2 libXrender orbit pixman speex sqlite taglib udev util-linux-ng v4l-utils wavpack zlib"
-BDEPEND="libcddb-dev alsa-lib-dev audiofile-dev cairo-dev dbus-dev dbus-glib-dev eggdbus-dev esound-dev expat-dev flac-dev fontconfig-dev freetype-dev gcc-dev gconf-dev glib2-dev glibc-dev gnutls-dev gst-plugins-base-dev gstreamer-dev gtk+-dev hal-dev libgcrypt-dev libgnome-keyring-dev libgpg-error-dev libICE-dev libjpeg-turbo-dev libogg-dev liboil-dev libpng-dev libproxy-dev libSM-dev libsoup-dev libtasn1-dev libX11-dev libXau-dev libxcb-dev libXdamage-dev libXdmcp-dev libXext-dev libXfixes-dev libxml2-dev libXrender-dev orbit-dev pixman-dev speex-dev sqlite-dev taglib-dev udev-dev util-linux-ng-dev v4l-utils-dev wavpack-dev zlib-dev"
+BDEPEND="libcddb-dev      egg                                             "
 RECOMMENDED=""
 
 pbs_unpack() {

@@ -8,7 +8,7 @@ HOMEPAGE="http://www.x.org/wiki/"
 SRC_URI="http://xorg.freedesktop.org/releases/individual/app/$N-$V$R.tar.bz2"
 
 RDEPEND="glibc libX11 libXau libxcb libXdmcp"
-BDEPEND="glibc-dev libX11-dev libXau-dev libxcb-dev libXdmcp-dev"
+BDEPEND="gcc"
 
 pbs_unpack() {
         ypkg_unpack
@@ -24,6 +24,5 @@ pbs_build() {
 
 pbs_install() {
 	ypkg_mkinstall
-	install -m755 -d "$YPPATH_DEST"/usr/share/doc/"$N-$V$R"
-	cp -a AUTHORS ChangeLog COPYING INSTALL NEWS README   "$YPPATH_DEST"/usr/share/doc/"$N-$V$R"
+	ypkg_dodoc AUTHORS ChangeLog COPYING INSTALL NEWS README
 }

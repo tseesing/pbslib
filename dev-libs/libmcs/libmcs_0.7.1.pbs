@@ -10,7 +10,7 @@ PACKAGER="<ylmfos@115.com>"
 SRC_URI="http://distfiles.atheme.org/"$N-$V$R".tgz"
 
 RDEPEND="dbus dbus-glib gconf glib2 glibc libmowgli orbit"
-BDEPEND="dbus-dev dbus-glib-dev gconf-dev glib2-dev glibc-dev libmowgli-dev orbit-dev"
+BDEPEND="      "
 
 pbs_unpack() {
         ypkg_unpack

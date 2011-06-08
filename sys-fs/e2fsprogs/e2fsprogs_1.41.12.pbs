@@ -8,7 +8,7 @@ HOMEPAGE="http://e2fsprogs.sourceforge.net/"
 SRC_URI="http://downloads.sourceforge.net/project/"$N"/"$N"/"$V$R"/"$N-$V$R".tar.gz"
 
 RDEPEND="glibc keyutils krb5 util-linux-ng"
-BDEPEND="pkgconfig glibc-dev keyutils-dev krb5-dev util-linux-ng-dev"
+BDEPEND="pkgconfig    "
 
 pbs_unpack() {
         ypkg_unpack

@@ -12,7 +12,7 @@ PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 SRC_URI="ftp://ftp.alsa-project.org/pub/oss-lib/alsa-oss-1.0.17.tar.bz2"
 
 RDEPEND="alsa-lib glibc"
-BDEPEND="alsa-lib-dev glibc-dev"
+BDEPEND=" "
 RECOMMENDED=""
 CONFLICT=""
 

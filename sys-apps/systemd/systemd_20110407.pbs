@@ -11,7 +11,7 @@ PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 SRC_URI="git://anongit.freedesktop.org/systemd"
 
 RDEPEND="baselayout attr cryptsetup dbus device-mapper glibc libcap libgcrypt libgpg-error pam udev util-linux-ng"
-BDEPEND="attr-dev cryptsetup-dev dbus-dev device-mapper-dev glibc-dev libcap-dev libgcrypt-dev libgpg-error-dev pam-dev udev-dev util-linux-ng-dev"
+BDEPEND="          "
          #vala: Don't require vala if gtk is disabled
 RECOMMENDED=""
 

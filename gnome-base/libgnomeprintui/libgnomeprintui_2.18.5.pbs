@@ -11,7 +11,7 @@ PACKAGER="<ylmfos@115.com>"
 SRC_URI="http://ftp.gnome.org/pub/GNOME/sources/"$N"/2.18/"$N-$V$R".tar.bz2"
 
 RDEPEND="atk cairo expat fontconfig freetype gail gcc glib2 glibc gtk+ libart_lgpl libgnomecanvas libgnomeprint libpng libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libxml2 libXrandr libXrender pango pixman zlib"
-BDEPEND="gnome-icon-theme atk-dev cairo-dev expat-dev fontconfig-dev freetype-dev gail-dev gcc-dev glib2-dev glibc-dev gtk+-dev libart_lgpl-dev libgnomecanvas-dev libgnomeprint-dev libpng-dev libX11-dev libXau-dev libxcb-dev libXcomposite-dev libXcursor-dev libXdamage-dev libXdmcp-dev libXext-dev libXfixes-dev libXi-dev libxml2-dev libXrandr-dev libXrender-dev pango-dev pixman-dev zlib-dev"
+BDEPEND="gnome-icon-theme                              "
 RECOMMENDED=""
 
 NOTES=""

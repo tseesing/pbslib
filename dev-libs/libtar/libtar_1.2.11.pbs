@@ -12,7 +12,7 @@ PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 SRC_URI="ftp://ftp.feep.net/pub/software/"$N"/"$N-$V$R".tar.gz"
 
 RDEPEND="glibc zlib"
-BDEPEND="glibc-dev zlib-dev"
+BDEPEND=" "
 RECOMMENDED=""
 CONFLICT=""
 

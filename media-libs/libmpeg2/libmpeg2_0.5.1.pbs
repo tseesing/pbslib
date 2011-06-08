@@ -12,7 +12,7 @@ PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 SRC_URI="http://libmpeg2.sourceforge.net/files/"$N-$V$R".tar.gz"
 
 RDEPEND="alsa-lib audiofile directfb esound glibc libICE libsdl libSM libX11 libXau libxcb libXdmcp libXext libXv util-linux-ng zlib"
-BDEPEND="alsa-lib-dev audiofile-dev directfb-dev esound-dev glibc-dev libICE-dev libsdl-dev libSM-dev libX11-dev libXau-dev libxcb-dev libXdmcp-dev libXext-dev libXv-dev util-linux-ng-dev zlib-dev"
+BDEPEND="               "
 RECOMMENDED=""
 CONFLICT=""
 

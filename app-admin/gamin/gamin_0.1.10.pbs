@@ -10,7 +10,7 @@ PACKAGER="<ylmfos@115.com>"
 SRC_URI="http://download.gnome.org/sources/"$N"/0.1/"$N-$V$R".tar.bz2"
 
 RDEPEND="glib2 glibc"
-BDEPEND="glib2-dev glibc-dev"
+BDEPEND=" "
 
 pbs_unpack() {
         ypkg_unpack

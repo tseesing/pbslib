@@ -10,7 +10,7 @@ PACKAGER="<ylmfos@115.com>"
 SRC_URI="ftp://sources.redhat.com/pub/lvm2/LVM2.2.02.62.tgz"
 
 RDEPEND="glibc ncurses readline"
-BDEPEND="glibc-dev ncurses-dev readline-dev"
+BDEPEND="  "
 RECOMMENDED=""
 
 pbs_unpack() {

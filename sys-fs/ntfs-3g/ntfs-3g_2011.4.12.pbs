@@ -10,7 +10,7 @@ PACKAGER="<ylmfos@115.com>"
 SRC_URI="http://tuxera.com/opensource/ntfs-3g_ntfsprogs-"$V$R".tgz"
 
 RDEPEND="fuse glibc"
-BDEPEND="attr-dev fuse-dev glibc-dev"
+BDEPEND="attr-dev  "
 
 NOTES=""
 

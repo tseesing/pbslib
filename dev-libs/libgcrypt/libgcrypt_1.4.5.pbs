@@ -8,7 +8,7 @@ HOMEPAGE="http://www.gnupg.org/"
 SRC_URI="ftp://ftp.gnupg.org/gcrypt/"$N"/"$N-$V$R".tar.bz2"
 
 RDEPEND="glibc libgpg-error"
-BDEPEND="pth-dev libcap glibc-dev libgpg-error-dev"
+BDEPEND="pth-dev libcap  "
 OPIONAL=""
 
 pbs_unpack() {

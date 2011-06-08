@@ -12,7 +12,7 @@ PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 SRC_URI="http://ftp.novell.com/pub/mono/sources/"$N"/"$N-$V$R".tar.bz2"
 
 RDEPEND="cairo expat fontconfig freetype giflib glib2 glibc libexif libICE libjpeg-turbo libpng libSM libtiff libX11 libXau libxcb libXdmcp libXrender pixman util-linux-ng zlib"
-BDEPEND="cairo-dev expat-dev fontconfig-dev freetype-dev giflib-dev glib2-dev glibc-dev libexif-dev libICE-dev libjpeg-turbo-dev libpng-dev libSM-dev libtiff-dev libX11-dev libXau-dev libxcb-dev libXdmcp-dev libXrender-dev pixman-dev util-linux-ng-dev zlib-dev"
+BDEPEND="                    "
 RECOMMENDED=""
 CONFLICT=""
 

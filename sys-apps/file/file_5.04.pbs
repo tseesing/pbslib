@@ -8,7 +8,7 @@ HOMEPAGE="ftp://ftp.astron.com/pub/file/"
 SRC_URI="ftp://ftp.astron.com/pub/"$N"/"$N-$V$R".tar.gz"
 
 RDEPEND="glibc zlib"
-BDEPEND="glibc-dev zlib-dev"
+BDEPEND=" "
 
 pbs_unpack() {
         ypkg_unpack

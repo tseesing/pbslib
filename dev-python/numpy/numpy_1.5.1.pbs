@@ -10,7 +10,7 @@ PACKAGER="<ylmfos@115.com>"
 SRC_URI="http://downloads.sourceforge.net/project/numpy/NumPy/"$V"/"$N-$V$R".tar.gz"
 
 RDEPEND="glibc python"
-BDEPEND="glibc-dev python-dev"
+BDEPEND=" "
 RECOMMENDED=""
 
 NOTES=""

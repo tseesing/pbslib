@@ -8,7 +8,7 @@ HOMEPAGE="http://www.libmng.com/"
 SRC_URI="http://downloads.sourceforge.net/"$N"/"$N-$V$R".tar.bz2"
 
 RDEPEND="glibc lcms libjpeg-turbo zlib"
-BDEPEND="glibc-dev lcms-dev libjpeg-turbo-dev zlib-dev"
+BDEPEND="   "
 
 pbs_unpack() {
         ypkg_unpack

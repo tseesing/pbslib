@@ -17,7 +17,7 @@ SRC_URI="http://ftp.gnu.org/gnu/"$N"bash/"$N-$V$R".tar.gz
 	 http://ftp.gnu.org/gnu/"$N"/"$N-$V$R"-patches/bash41-009"
 
 RDEPEND="glibc"
-BDEPEND="readline-dev ncurses-dev glibc-dev"
+BDEPEND="readline-dev ncurses-dev "
 
 pbs_unpack() {
         ypkg_unpack

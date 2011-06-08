@@ -10,7 +10,7 @@ PACKAGER="<ylmfos@115.com>"
 SRC_URI="http://cryptsetup.googlecode.com/files/"$N-$V$R".tar.bz2"
 
 RDEPEND="device-mapper glibc libgcrypt libgpg-error popt util-linux-ng"
-BDEPEND="device-mapper-dev glibc-dev libgcrypt-dev libgpg-error-dev popt-dev util-linux-ng-dev"
+BDEPEND="     "
 RECOMMENDED=""
 
 NOTES=""

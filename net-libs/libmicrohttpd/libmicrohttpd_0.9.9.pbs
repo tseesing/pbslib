@@ -12,7 +12,7 @@ PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 SRC_URI="http://ftp.twaren.net/Unix/GNU/gnu/libmicrohttpd/libmicrohttpd-0.9.9.tar.gz"
 
 RDEPEND="glibc gnutls libgcrypt libgpg-error libtasn1 zlib"
-BDEPEND="glibc-dev gnutls-dev libgcrypt-dev libgpg-error-dev libtasn1-dev zlib-dev"
+BDEPEND="     "
 RECOMMENDED=""
 CONFLICT=""
 

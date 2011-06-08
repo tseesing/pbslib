@@ -8,7 +8,7 @@ HOMEPAGE="http://sourceforge.net/projects/giflib/"
 SRC_URI="http://downloads.sourceforge.net/"$N"/"$N-$V$R".tar.bz2"
 
 RDEPEND="glibc libICE libSM libX11 libXau libxcb libXdmcp util-linux-ng"
-BDEPEND="glibc-dev libICE-dev libSM-dev libX11-dev libXau-dev libxcb-dev libXdmcp-dev util-linux-ng-dev"
+BDEPEND="       "
 
 pbs_unpack() {
         ypkg_unpack

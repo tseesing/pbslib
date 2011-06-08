@@ -10,7 +10,7 @@ PACKAGER="<ylmfos@115.com>"
 SRC_URI="http://downloads.sourceforge.net/project/squashfs/squashfs/squashfs"$V$R"/squashfs"$V$R".tar.gz"
 
 RDEPEND="glibc zlib"
-BDEPEND="glibc-dev zlib-dev"
+BDEPEND=" "
 RECOMMENDED=""
 
 pbs_unpack() {

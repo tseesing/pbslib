@@ -10,7 +10,7 @@ PACKAGER="<ylmfos@115.com>"
 SRC_URI="http://www.mplayerhq.hu/MPlayer/releases/MPlayer-1.0rc4.tar.gz"
 
 RDEPEND="aalib alsa-lib attr audiofile cyrus-sasl directfb esound expat faac faad2 fontconfig freetype fribidi gcc giflib glibc jack-audio-connection-kit keyutils krb5 lame lcms libcap libcdio libdrm libICE libjpeg-turbo libmad libmng libogg libpng libsdl libSM libtheora libtool libvdpau libX11 libXau libxcb libXdamage libXdmcp libXext libXfixes libXinerama libXScrnSaver libXv libXxf86dga libXxf86vm lirc mesa mpg123 ncurses openal openldap-client openssl samba speex talloc util-linux-ng zlib"
-BDEPEND="libgsm-dev aalib-dev alsa-lib-dev attr-dev audiofile-dev cyrus-sasl-dev directfb-dev esound-dev expat-dev faac-dev faad2-dev fontconfig-dev freetype-dev fribidi-dev gcc-dev giflib-dev glibc-dev jack-audio-connection-kit-dev keyutils-dev krb5-dev lame-dev lcms-dev libcap-dev libcdio-dev libdrm-dev libICE-dev libjpeg-turbo-dev libmad-dev libmng-dev libogg-dev libpng-dev libsdl-dev libSM-dev libtheora-dev libtool-dev libvdpau-dev libX11-dev libXau-dev libxcb-dev libXdamage-dev libXdmcp-dev libXext-dev libXfixes-dev libXinerama-dev libXScrnSaver-dev libXv-dev libXxf86dga-dev libXxf86vm-dev lirc-dev mesa-dev mpg123-dev ncurses-dev openal-dev openldap-client-dev openssl-dev samba-dev speex-dev talloc-dev util-linux-ng-dev zlib-dev"
+BDEPEND="libgsm-dev                                                           "
 
 pbs_unpack() {
 	ypkg_unpack

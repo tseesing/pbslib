@@ -10,7 +10,7 @@ PACKAGER="<ylmfos@115.com>"
 SRC_URI="http://switch.dl.sourceforge.net/sourceforge/freeassociation/"$N-$V$R".tar.gz"
 
 RDEPEND="gcc glibc"
-BDEPEND="gcc-dev glibc-dev"
+BDEPEND=" "
 RECOMMENDED=""
 
 NOTES=""

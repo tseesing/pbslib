@@ -8,7 +8,7 @@ HOMEPAGE="http://xorg.freedesktop.org/"
 SRC_URI="http://www.x.org/releases/X11R7.6/src/app/"$N-$V$R".tar.bz2"
 
 RDEPEND="glibc libdmx libX11 libXau libxcb libXcomposite libXdmcp libXext libXi libXinerama libXrender libXtst libXxf86dga libXxf86vm"
-BDEPEND="glibc-dev libdmx-dev libX11-dev libXau-dev libxcb-dev libXcomposite-dev libXdmcp-dev libXext-dev libXi-dev libXinerama-dev libXrender-dev libXtst-dev libXxf86dga-dev libXxf86vm-dev"
+BDEPEND="             "
 
 pbs_unpack() {
         ypkg_unpack

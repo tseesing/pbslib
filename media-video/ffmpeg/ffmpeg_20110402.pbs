@@ -10,7 +10,7 @@ PACKAGER="<ylmfos@115.com>"
 SRC_URI="git://git.videolan.org/ffmpeg.git"
 
 RDEPEND="alsa-lib audiofile directfb esound glibc jack-audio-connection-kit libsdl libva zlib"
-BDEPEND="x264-dev alsa-lib-dev audiofile-dev directfb-dev esound-dev glibc-dev jack-audio-connection-kit-dev libsdl-dev libva-dev zlib-dev" 
+BDEPEND="x264-dev         " 
 RECOMMENDED=""
 
 

@@ -8,7 +8,7 @@ HOMEPAGE="http://fribidi.org/"
 SRC_URI="http://fribidi.org/download/"$N-$V$R".tar.gz"
 
 RDEPEND="glibc inetutils krb5"
-BDEPEND="glibc-dev krb5-dev"
+BDEPEND=" "
 
 pbs_unpack() {
         ypkg_unpack

@@ -11,7 +11,7 @@ PACKAGER="<ylmfos@115.com>"
 SRC_URI="http://hal.freedesktop.org/releases/"$N-$V$R".tar.gz"
 
 RDEPEND="dbus dbus-glib glib2 glibc zlib"
-BDEPEND="dbus-dev dbus-glib-dev glib2-dev glibc-dev zlib-dev"
+BDEPEND="    "
 
 pbs_unpack() {
         ypkg_unpack

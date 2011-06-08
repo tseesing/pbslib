@@ -11,7 +11,7 @@ PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 SRC_URI="http://www.multiprecision.org/"$N"/download/"$N-$V$R".tar.gz"
 
 RDEPEND="glibc gmp mpfr"
-BDEPEND="glibc-dev gmp-dev mpfr-dev"
+BDEPEND="  "
 RECOMMENDED=""
 
 pbs_unpack() {

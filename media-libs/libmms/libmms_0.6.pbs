@@ -10,7 +10,7 @@ PACKAGER="<ylmfos@115.com>"
 SRC_URI="http://downloads.sourceforge.net/project/"$N"/"$N"/"$V$R"/"$N-$V$R".tar.gz"
 
 RDEPEND="glib2 glibc"
-BDEPEND="glib2-dev glibc-dev"
+BDEPEND=" "
 RECOMMENDED=""
 
 pbs_unpack() {

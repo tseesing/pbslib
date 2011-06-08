@@ -8,7 +8,7 @@ HOMEPAGE="http://www.gnu.org/software/grep/"
 SRC_URI="ftp://ftp.gnu.org/gnu/"$N"/"$N-$V$R".tar.gz"
 
 RDEPEND="glibc libpcre"
-BDEPEND="glibc-dev libpcre-dev"
+BDEPEND=" "
 RECOMMENDED=""
 
 pbs_unpack() {

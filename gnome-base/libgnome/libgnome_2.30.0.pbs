@@ -11,7 +11,7 @@ PACKAGER="<ylmfos@115.com>"
 SRC_URI=" http://ftp.gnome.org/pub/gnome/platform/2.30/2.30.2/sources/"$N-$V$R".tar.bz2"
 
 RDEPEND="alsa-lib audiofile avahi dbus dbus-glib esound gcc gconf glib2 glibc gnome-vfs libbonobo libxml2 openssl orbit popt zlib"
-BDEPEND="libxslt-dev intltool alsa-lib-dev audiofile-dev avahi-dev dbus-dev dbus-glib-dev esound-dev gcc-dev gconf-dev glib2-dev glibc-dev gnome-vfs-dev libbonobo-dev libxml2-dev openssl-dev orbit-dev popt-dev zlib-dev"
+BDEPEND="libxslt-dev intltool                 "
 RECOMMENDED=""
 
 pbs_unpack() {

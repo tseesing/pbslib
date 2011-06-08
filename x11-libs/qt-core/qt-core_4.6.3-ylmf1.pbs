@@ -11,7 +11,7 @@ REPO=""
 SRC_URI="ftp://ftp.trolltech.com/qt/source/qt-everywhere-opensource-src-"$V".tar.gz"
 
 RDEPEND="alsa-lib expat fontconfig freetype gcc glib2 glibc gst-plugins-base gstreamer lcms libdrm libICE libjpeg-turbo libmng libpng libSM libtiff libX11 libXau libxcb libXdamage libXdmcp libXext libXfixes libxml2 libXrender libXxf86vm mesa udev util-linux-ng zlib"
-BDEPEND="alsa-lib-dev expat-dev fontconfig-dev freetype-dev gcc-dev glib2-dev glibc-dev gst-plugins-base-dev gstreamer-dev lcms-dev libdrm-dev libICE-dev libjpeg-turbo-dev libmng-dev libpng-dev libSM-dev libtiff-dev libX11-dev libXau-dev libxcb-dev libXdamage-dev libXdmcp-dev libXext-dev libXfixes-dev libxml2-dev libXrender-dev libXxf86vm-dev mesa-dev udev-dev util-linux-ng-dev zlib-dev"
+BDEPEND="                              "
 RECOMMENDED=""
 
 NOTES=""

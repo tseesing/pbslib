@@ -10,7 +10,7 @@ PACKAGER="<ylmfos@115.com>"
 SRC_URI="http://downloads.sourceforge.net/project/linux-ntfs/NTFS%20Tools%20and%20Library/"$V$R"/"$N-$V$R".tar.bz2"
 
 RDEPEND="fuse glibc util-linux-ng"
-BDEPEND="fuse-dev glibc-dev util-linux-ng-dev"
+BDEPEND="  "
 RECOMMENDED=""
 
 pbs_unpack() {

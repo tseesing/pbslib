@@ -7,7 +7,7 @@ HOMEPAGE="http://www.bzip.org/"
 SRC_URI="http://www.bzip.org/$V/"$N-$V$R".tar.gz "
 
 RDEPEND="glibc"
-BDEPEND="glibc-dev"
+BDEPEND=""
 
 pbs_unpack() {
         ypkg_unpack

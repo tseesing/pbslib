@@ -10,7 +10,7 @@ PACKAGER="<ylmfos@115.com>"
 SRC_URI="http://files.libburnia-project.org/releases/"$N-$V$R".tar.gz"
 
 RDEPEND="acl attr glibc"
-BDEPEND="libburn-dev acl-dev attr-dev glibc-dev"
+BDEPEND="libburn-dev   "
 RECOMMENDED=""
 
 NOTES=""

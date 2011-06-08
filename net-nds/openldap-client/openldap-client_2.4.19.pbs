@@ -10,7 +10,7 @@ PACKAGER="<ylmfos@115.com>"
 SRC_URI="ftp://ftp.openldap.org/pub/OpenLDAP/openldap-release/openldap-"$V$R".tgz"
 
 RDEPEND="cyrus-sasl glibc openssl"
-BDEPEND="cyrus-sasl-dev glibc-dev openssl-dev"
+BDEPEND=""
 RECOMMENDED=""
 
 NOTES=""
@@ -31,7 +31,5 @@ pbs_build() {
 
 pbs_install() {
 	ypkg_mkinstall
-	ypkg_docp doc/drafts/*  "$YPPATH_DEST"/usr/share/doc/"$N-$V$R"/drafts
-	ypkg_docp doc/rfc/*     "$YPPATH_DEST"/usr/share/doc/"$N-$V$R"/rfc
-	ypkg_docp doc/guide/*   "$YPPATH_DEST"/usr/share/doc/"$N-$V$R"/guide
+	ypkg_dodoc doc/{drafts,rfc,guide} 
 }

@@ -10,7 +10,7 @@ PACKAGER="<ylmfos@115.com>"
 SRC_URI="http://downloads.sourceforge.net/"$N"/OpenSP-"$V$R".tar.gz"
 
 RDEPEND="gcc glibc"
-BDEPEND="sgml-common gcc-dev glibc-dev"
+BDEPEND="sgml-common  "
 RECOMMENDED=""
 
 NOTES=""

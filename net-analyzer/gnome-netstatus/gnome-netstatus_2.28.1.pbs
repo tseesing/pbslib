@@ -10,7 +10,7 @@ PACKAGER="<ylmfos@115.com>"
 SRC_URI="http://ftp.gnome.org/pub/gnome/sources/"$N"/2.28/"$N-$V$R".tar.bz2"
 
 RDEPEND="alsa-lib atk audiofile avahi cairo dbus dbus-glib esound expat fontconfig freetype gail gcc gconf glib2 glibc gnome-panel gnome-vfs gtk+ libart_lgpl libbonobo libbonoboui libgnome libgnomecanvas libICE libpng libSM libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libxml2 libXrandr libXrender openssl orbit pango pixman popt util-linux-ng zlib"
-BDEPEND="gnome-panel-dev gnome-applets-dev"
+BDEPEND=" gnome-applets-dev"
 RECOMMENDED=""
 
 NOTES=""

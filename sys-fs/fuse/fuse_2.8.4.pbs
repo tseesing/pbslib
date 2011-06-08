@@ -10,7 +10,7 @@ PACKAGER="<ylmfos@115.com>"
 SRC_URI=" http://downloads.sourceforge.net/project/"$N"/"$N"-2.X/2.8.4/"$N-$V$R".tar.gz "
 
 RDEPEND="glibc"
-BDEPEND="glibc-dev"
+BDEPEND=""
 
 pbs_unpack() {
         ypkg_unpack

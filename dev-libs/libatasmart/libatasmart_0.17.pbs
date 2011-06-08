@@ -10,7 +10,7 @@ PACKAGER="<ylmfos@115.com>"
 SRC_URI="http://0pointer.de/public/"$N-$V$R".tar.gz"
 
 RDEPEND="udev glibc"
-BDEPEND="udev-dev glibc-dev"
+BDEPEND=" "
 RECOMMENDED=""
 
 NOTES="http://wiki.linuxfromscratch.org/blfs/wiki/libatasmart"

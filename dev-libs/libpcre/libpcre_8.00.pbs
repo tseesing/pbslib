@@ -10,7 +10,7 @@ PACKAGER="<ylmfos@115.com>"
 SRC_URI="ftp://ftp.csx.cam.ac.uk/pub/software/programming/pcre/pcre-"$V$R".tar.bz2"
 
 RDEPEND="gcc glibc zlib"
-BDEPEND="bzip2-dev gcc-dev glibc-dev zlib-dev"
+BDEPEND="bzip2-dev   "
 RECOMMENDED="bzip2"
 
 NOTES="http://wiki.linuxfromscratch.org/blfs/wiki/pcre"

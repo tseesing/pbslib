@@ -10,7 +10,7 @@ PACKAGER="<ylmfos@115.com>"
 SRC_URI="http://hal.freedesktop.org/releases/DeviceKit-"$V$R".tar.gz"
 
 RDEPEND="dbus dbus-glib glib2 glibc udev"
-BDEPEND="dbus-dev dbus-glib-dev glib2-dev glibc-dev udev-dev"
+BDEPEND="    "
 RECOMMENDED=""
 
 pbs_unpack() {

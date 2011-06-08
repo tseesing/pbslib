@@ -10,7 +10,7 @@ PACKAGER="<ylmfos@115.com>"
 SRC_URI="http://jackaudio.org/downloads/"$N-$V$R".tar.gz"
 
 RDEPEND="alsa-lib flac glibc libogg libsamplerate libsndfile libvorbis ncurses readline"
-BDEPEND="alsa-lib-dev flac-dev glibc-dev libogg-dev libsamplerate-dev libsndfile-dev libvorbis-dev ncurses-dev readline-dev"
+BDEPEND="        "
 RECOMMENDED=""
 
 pbs_unpack() {

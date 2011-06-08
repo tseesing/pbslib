@@ -10,14 +10,14 @@ PACKAGER="<ylmfos@115.com>"
 SRC_URI="http://ftp.gnu.org/gnu/"$N"/"$N-$V$R".tar.gz"
 
 RDEPEND="gcc glibc"
-BDEPEND="gcc-dev glibc-dev"
+BDEPEND=""
 
 pbs_unpack() {
         ypkg_unpack
 }
 
 pbs_config() {
-	YPB_CONFIG+="--docdir=/usr/share/doc/"$N-$V$R""
+	YPB_CONFIG+="--docdir=/usr/share/doc/"$N""
 	ypkg_config
 }
 

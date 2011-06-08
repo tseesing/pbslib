@@ -11,7 +11,7 @@ PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 SRC_URI="http://downloads.sourceforge.net/project/freetype/freetype2/"$V$R"/"$N-$V$R".tar.bz2"
 
 RDEPEND="glibc zlib"
-BDEPEND="glibc-dev zlib-dev"
+BDEPEND=" "
 
 pbs_unpack(){
         ypkg_unpack

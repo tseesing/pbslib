@@ -11,7 +11,7 @@ PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 SRC_URI="http://downloads.sourceforge.net/project/faac/faad2-src/"$N-$V$R"/"$N-$V$R".tar.bz2"
 
 RDEPEND="glibc"
-BDEPEND="glibc-dev mp4v2-dev"
+BDEPEND=" mp4v2-dev"
 RECOMMENDED=""
 
 NOTES=""

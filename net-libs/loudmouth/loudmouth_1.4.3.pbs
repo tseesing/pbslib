@@ -10,7 +10,7 @@ PACKAGER="<ylmfos@115.com>"
 SRC_URI="ftp://lug.mtu.edu/gentoo/distfiles/"$N-$V$R".tar.bz2"
 
 RDEPEND="glib2 glibc openssl"
-BDEPEND="gnutls-dev glib2-dev glibc-dev openssl-dev"
+BDEPEND="gnutls-dev   "
 RECOMMENDED=""
 
 NOTES=""

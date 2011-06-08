@@ -10,7 +10,7 @@ PACKAGER="<ylmfos@115.com>"
 SRC_URI="http://www.kernel.org/pub/linux/utils/kernel/hotplug/"$N-$V".tar.bz2"
 
 RDEPEND="acl attr glib2 glibc libusb libusb-compat"
-BDEPEND="gperf pciutils-dev usbutils-dev acl-dev attr-dev glib2-dev glibc-dev libusb-dev libusb-compat-dev"
+BDEPEND="gperf pciutils-dev usbutils-dev      "
 
 pbs_unpack() {
         ypkg_unpack

@@ -10,7 +10,7 @@ PACKAGER="<ylmfos@115.com>"
 SRC_URI="http://dbus.freedesktop.org/releases/"$N"/"$N-$V$R".tar.gz"
 
 RDEPEND="dbus dbus-glib glib2 glibc"
-BDEPEND="dbus-glib-dev dbus-dev glib2-dev glibc-dev python-dev"
+BDEPEND="    python-dev"
 RECOMMENDED=""
 
 NOTES="docutils epydoc is required to Build Documentation"

@@ -10,7 +10,7 @@ PACKAGER="<ylmfos@115.com>"
 SRC_URI="http://icculus.org/burn/releases/"$N-$V$R".tar.gz"
 
 RDEPEND="acl attr glibc"
-BDEPEND="acl-dev attr-dev glibc-dev"
+BDEPEND="  "
 RECOMMENDED=""
 
 NOTES=""

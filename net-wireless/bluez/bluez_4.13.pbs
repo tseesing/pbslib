@@ -10,7 +10,7 @@ PACKAGER="<ylmfos@115.com>"
 SRC_URI="http://www.kernel.org/pub/linux/bluetooth/"$N-$V$R".tar.gz"
 
 RDEPEND="alsa-lib dbus glib2 glibc gst-plugins-base gstreamer libxml2 zlib"
-BDEPEND="alsa-lib-dev dbus-dev glib2-dev glibc-dev gst-plugins-base-dev gstreamer-dev libxml2-dev zlib-dev"
+BDEPEND="       "
 RECOMMENDED=""
 
 NOTES=""

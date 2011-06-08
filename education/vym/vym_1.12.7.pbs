@@ -12,7 +12,7 @@ PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 SRC_URI="http://downloads.sourceforge.net/project/"$N"/"$N"/"$V$R"/"$N-$V$R".tar.bz2"
 
 RDEPEND="libX11 libXext qt-core"
-BDEPEND="qt-core-dev"
+BDEPEND=""
 RECOMMENDED=""
 CONFLICT=""
 

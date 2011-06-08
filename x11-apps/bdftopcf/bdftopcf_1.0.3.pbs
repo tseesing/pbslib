@@ -8,7 +8,7 @@ HOMEPAGE="http://xorg.freedesktop.org/"
 SRC_URI="http://www.x.org/releases/X11R7.6/src/app/"$N-$V$R".tar.bz2"
 
 RDEPEND="freetype glibc libfontenc libXfont zlib"
-BDEPEND="freetype-dev glibc-dev libfontenc-dev libXfont-dev zlib-dev"
+BDEPEND="    "
 
 pbs_unpack() {
         ypkg_unpack

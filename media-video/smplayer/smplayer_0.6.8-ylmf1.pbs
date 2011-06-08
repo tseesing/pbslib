@@ -10,7 +10,7 @@ PACKAGER="<ylmfos@115.com>"
 SRC_URI="http://downloads.sourceforge.net/sourceforge/"$N"/"$N-$V".tar.bz2"
 
 RDEPEND="mplayer expat fontconfig freetype gcc glib2 glibc libdrm libICE libpng libSM libX11 libXau libxcb libXdmcp libXext libXrender mesa qt-core udev util-linux-ng zlib"
-BDEPEND="expat-dev fontconfig-dev freetype-dev gcc-dev glib2-dev glibc-dev libdrm-dev libICE-dev libpng-dev libSM-dev libX11-dev libXau-dev libxcb-dev libXdmcp-dev libXext-dev libXrender-dev mesa-dev qt-core-dev udev-dev util-linux-ng-dev zlib-dev faac-dev"
+BDEPEND="                     faac-dev"
 RECOMMENDED="faac"
 
 NOTES=""

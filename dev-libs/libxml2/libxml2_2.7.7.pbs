@@ -10,7 +10,7 @@ LICENSE="MIT License."
 SRC_URI="ftp://xmlsoft.org/"$N"/"$N-$V$R".tar.gz"
 
 RDEPEND="glibc python zlib"
-BDEPEND="glibc-dev python-dev zlib-dev"
+BDEPEND="  "
 
 pbs_unpack() {
         ypkg_unpack

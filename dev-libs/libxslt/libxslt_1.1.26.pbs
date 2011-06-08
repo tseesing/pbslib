@@ -11,7 +11,7 @@ PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 SRC_URI="ftp://xmlsoft.org/libxml2/"$N-$V$R".tar.gz"
 
 RDEPEND="glibc libgcrypt libgpg-error libxml2 zlib"
-BDEPEND="glibc-dev libgcrypt-dev libgpg-error-dev libxml2-dev zlib-dev"
+BDEPEND="    "
 
 pbs_unpack() {
         ypkg_unpack

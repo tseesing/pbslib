@@ -10,7 +10,7 @@ PACKAGER="<ylmfos@115.com>"
 SRC_URI="ftp://alpha.gnu.org/gnu/grub/grub-"$V$R".tar.gz"
 
 RDEPEND="freetype glibc zlib"
-BDEPEND="freetype-dev glibc-dev zlib-dev"
+BDEPEND="  "
 RECOMMENDED=""
 CONFLICT="grub"
 

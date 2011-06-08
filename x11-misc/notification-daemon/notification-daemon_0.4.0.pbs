@@ -10,7 +10,7 @@ PACKAGER="<ylmfos@115.com>"
 SRC_URI="ftp://lug.mtu.edu/gentoo/distfiles/"$N-$V$R".tar.gz"
 
 RDEPEND="atk cairo dbus dbus-glib expat fontconfig freetype gcc gconf glib2 glibc gstreamer gtk+ libglade libICE libnotify libpng libsexy libSM libwnck libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libxml2 libXrandr libXrender libXres orbit pango pixman startup-notification util-linux-ng zlib"
-BDEPEND="atk-dev cairo-dev dbus-dev dbus-glib-dev expat-dev fontconfig-dev freetype-dev gcc-dev gconf-dev glib2-dev glibc-dev gstreamer-dev gtk+-dev libglade-dev libICE-dev libnotify-dev libpng-dev libsexy-dev libSM-dev libwnck-dev libX11-dev libXau-dev libxcb-dev libXcomposite-dev libXcursor-dev libXdamage-dev libXdmcp-dev libXext-dev libXfixes-dev libXi-dev libxml2-dev libXrandr-dev libXrender-dev libXres-dev orbit-dev pango-dev pixman-dev startup-notification-dev util-linux-ng-dev zlib-dev"
+BDEPEND="                                       "
 RECOMMENDED=""
 
 NOTES=""

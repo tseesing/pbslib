@@ -12,7 +12,7 @@ PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 SRC_URI="git://gitorious.org/enca/enca.git"
 
 RDEPEND="glibc recode"
-BDEPEND="glibc-dev recode-dev"
+BDEPEND=" "
 RECOMMENDED=""
 CONFLICT=""
 

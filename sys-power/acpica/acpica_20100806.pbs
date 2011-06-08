@@ -10,7 +10,7 @@ PACKAGER="<ylmfos@115.com>"
 SRC_URI="http://www.acpica.org/download/acpica-unix-"$V$R".tar.gz"
 
 RDEPEND="glibc"
-BDEPEND="udev-dev glibc-dev"
+BDEPEND="udev-dev "
 RECOMMENDED=""
 
 pbs_unpack() {

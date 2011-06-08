@@ -10,7 +10,7 @@ PACKAGER="<ylmfos@115.com>"
 SRC_URI="ftp://ftp.andrew.cmu.edu/pub/cyrus-mail/"$N-$V$R".tar.gz"
 
 RDEPEND="berkeley-db glibc keyutils krb5 openssl pam"
-BDEPEND="berkeley-db-dev glibc-dev keyutils-dev krb5-dev openssl-dev pam-dev"
+BDEPEND="     "
 RECOMMENDED=""
 
 NOTES=""

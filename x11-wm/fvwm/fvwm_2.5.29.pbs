@@ -8,7 +8,7 @@ HOMEPAGE="http://www.fvwm.org/"
 SRC_URI="ftp://ftp.fvwm.org/pub/"$N"/version-2/"$N-$V$R".tar.bz2"
 
 RDEPEND="cairo expat fontconfig freetype fribidi gcc glib2 glibc gtk+ libcroco libgsf libICE libpng librsvg libSM libX11 libXau libxcb libXcursor libXdmcp libXext libXfixes libXft libXinerama libxml2 libXpm libXrender ncurses pango pixman readline util-linux-ng zlib"
-BDEPEND="cairo-dev expat-dev fontconfig-dev freetype-dev fribidi-dev gcc-dev glib2-dev glibc-dev gtk+-dev libcroco-dev libgsf-dev libICE-dev libpng-dev librsvg-dev libSM-dev libX11-dev libXau-dev libxcb-dev libXcursor-dev libXdmcp-dev libXext-dev libXfixes-dev libXft-dev libXinerama-dev libxml2-dev libXpm-dev libXrender-dev ncurses-dev pango-dev pixman-dev readline-dev util-linux-ng-dev zlib-dev"
+BDEPEND=""
 
 pbs_unpack() {
         ypkg_unpack

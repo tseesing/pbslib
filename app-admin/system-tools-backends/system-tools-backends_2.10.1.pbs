@@ -11,7 +11,7 @@ PACKAGER="<ylmfos@115.com>"
 SRC_URI=" http://ftp.gnome.org/pub/GNOME/sources/"$N"/2.10/"$N-$V$R".tar.bz2"
 
 RDEPEND="dbus dbus-glib eggdbus glib2 glibc polkit zlib"
-BDEPEND="dbus-dev dbus-glib-dev eggdbus-dev glib2-dev glibc-dev polkit-dev zlib-dev"
+BDEPEND="  egg    "
 RECOMMENDED=""
 
 NOTES="Group for system-tools-backends is wheel"

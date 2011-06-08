@@ -10,7 +10,7 @@ PACKAGER="<ylmfos@115.com>"
 SRC_URI="http://mirrors.kernel.org/gnu/"$N"/"$N-$V$R".tar.gz"
 
 RDEPEND="glibc"
-BDEPEND="gtk-doc glibc-dev"
+BDEPEND="gtk-doc "
 
 NOTES="
 If you did not pass the --enable-gtk-doc parameter to the configure script, install the API documentation using the following command as the root user:

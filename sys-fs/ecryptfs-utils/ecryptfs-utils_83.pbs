@@ -10,7 +10,7 @@ PACKAGER="<ylmfos@115.com>"
 SRC_URI="http://launchpad.net/ecryptfs/trunk/83/+download/"${N}_$V$R".orig.tar.gz"
 
 RDEPEND="glibc keyutils nspr nss openssl pam sqlite zlib"
-BDEPEND="glibc-dev keyutils-dev nspr-dev nss-dev openssl-dev pam-dev sqlite-dev zlib-dev"
+BDEPEND="       "
 RECOMMENDED=""
 
 NOTES=""

@@ -8,7 +8,7 @@ HOMEPAGE="http://www.freedesktop.org/wiki/Software/startup-notification"
 SRC_URI="http://www.freedesktop.org/software/"$N"/releases/"$N-$V$R".tar.gz"
 
 RDEPEND="glibc libICE libSM libX11 libXau libxcb libXdmcp util-linux-ng"
-BDEPEND="glibc-dev libICE-dev libSM-dev libX11-dev libXau-dev libxcb-dev libXdmcp-dev util-linux-ng-dev"
+BDEPEND="       "
 
 pbs_unpack() {
         ypkg_unpack

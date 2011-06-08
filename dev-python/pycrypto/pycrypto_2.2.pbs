@@ -10,7 +10,7 @@ PACKAGER="<ylmfos@115.com>"
 SRC_URI="http://ftp.dlitz.net/pub/dlitz/crypto/"$N"/"$N-$V$R".tar.gz"
 
 RDEPEND="glibc gmp python"
-BDEPEND="glibc-dev gmp-dev python-dev"
+BDEPEND="  "
 RECOMMENDED=""
 
 pbs_unpack() {

@@ -8,7 +8,7 @@ HOMEPAGE="http://www.x.org/wiki/"
 SRC_URI="http://www.x.org/releases/X11R7.6/src/app/"$N-$V$R".tar.bz2"
 
 RDEPEND="glibc libX11 libXau libxcb libXdmcp libxkbfile"
-BDEPEND="glibc-dev libX11-dev libXau-dev libxcb-dev libXdmcp-dev libxkbfile-dev"
+BDEPEND="     "
 
 pbs_unpack() {
         ypkg_unpack

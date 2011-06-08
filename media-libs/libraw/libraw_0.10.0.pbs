@@ -11,7 +11,7 @@ PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 SRC_URI="http://www.libraw.org/data/LibRaw-"$V$R".tar.gz"
 
 RDEPEND="gcc glibc"
-BDEPEND="gcc-dev glibc-dev"
+BDEPEND=" "
 RECOMMENDED=""
 
 NOTES=""

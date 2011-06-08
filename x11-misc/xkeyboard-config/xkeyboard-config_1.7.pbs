@@ -8,7 +8,7 @@ HOMEPAGE="http://www.freedesktop.org/wiki/Software/XKeyboardConfig"
 SRC_URI="http://xlibs.freedesktop.org/xkbdesc/$N-$V.tar.bz2"
 
 RDEPEND="xkbcomp glibc libX11 libXau libxcb libXdmcp libxkbfile"
-BDEPEND="intltool glibc-dev libX11-dev libXau-dev libxcb-dev libXdmcp-dev libxkbfile-dev"
+BDEPEND="intltool      "
 
 pbs_unpack() {
         ypkg_unpack

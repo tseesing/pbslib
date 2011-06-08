@@ -10,7 +10,7 @@ PACKAGER="<ylmfos@115.com>"
 SRC_URI="http://downloads.sourceforge.net/project/"$N"/LIRC/0.8.6/"$N-$V$R".tar.bz2"
 
 RDEPEND="glibc libICE libSM libX11 libXau libxcb libXdmcp util-linux-ng"
-BDEPEND="glibc-dev libICE-dev libSM-dev libX11-dev libXau-dev libxcb-dev libXdmcp-dev util-linux-ng-dev"
+BDEPEND="       "
 RECOMMENDED=""
 
 NOTES=""

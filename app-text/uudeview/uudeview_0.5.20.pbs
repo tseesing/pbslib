@@ -12,7 +12,7 @@ PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 SRC_URI="http://www.fpx.de/fp/Software/UUDeview/download/uudeview-0.5.20.tar.gz"
 
 RDEPEND="expat fontconfig freetype glibc libX11 libXau libxcb libXdmcp libXext libXft libXrender libXScrnSaver tcl tk zlib"
-BDEPEND="expat-dev fontconfig-dev freetype-dev glibc-dev libX11-dev libXau-dev libxcb-dev libXdmcp-dev libXext-dev libXft-dev libXrender-dev libXScrnSaver-dev tcl-dev tk-dev zlib-dev"
+BDEPEND="              "
 RECOMMENDED=""
 CONFLICT=""
 

@@ -12,7 +12,7 @@ PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 SRC_URI="http://downloads.sourceforge.net/project/modplug-xmms/libmodplug/0.8.8.2/libmodplug-0.8.8.2.tar.gz"
 
 RDEPEND="gcc glibc"
-BDEPEND="gcc-dev glibc-dev"
+BDEPEND=" "
 RECOMMENDED=""
 CONFLICT=""
 

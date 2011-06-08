@@ -10,7 +10,7 @@ PACKAGER="<ylmfos@115.com>"
 SRC_URI="http://www.freedesktop.org/software/ConsoleKit/dist/ConsoleKit-"$V".tar.bz2"
 
 RDEPEND="dbus dbus-glib eggdbus glib2 glibc libX11 libXau libxcb libXdmcp pam polkit zlib"
-BDEPEND="dbus-dev dbus-glib-dev eggdbus-dev glib2-dev glibc-dev libX11-dev libXau-dev libxcb-dev libXdmcp-dev pam-dev polkit-dev zlib-dev"
+BDEPEND="  egg         "
 RECOMMENDED=""
 
 pbs_unpack() {

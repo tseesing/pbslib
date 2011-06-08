@@ -11,7 +11,7 @@ PACKAGER="<ylmfos@115.com>"
 SRC_URI="http://ftp.acc.umu.se/pub/GNOME/sources/"$N"/0.1/"$N-$V$R".tar.bz2"
 
 RDEPEND="gcc glib2 glibc libdrm libX11 libXau libxcb libXcomposite libXdamage libXdmcp libXext libXfixes libXi libXtst libXxf86vm mesa"
-BDEPEND="gcc-dev glib2-dev glibc-dev libdrm-dev libX11-dev libXau-dev libxcb-dev libXcomposite-dev libXdamage-dev libXdmcp-dev libXext-dev libXfixes-dev libXi-dev libXtst-dev libXxf86vm-dev mesa-dev"
+BDEPEND="               "
 RECOMMENDED=""
 
 NOTES=""

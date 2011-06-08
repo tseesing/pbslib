@@ -10,7 +10,7 @@ PACKAGER="<ylmfos@115.com>"
 SRC_URI="http://www.webdav.org/"$N"/"$N-$V$R".tar.gz"
 
 RDEPEND="zlib openssl expat"
-BDEPEND="expat-dev libxml2-dev zlib-dev openssl-dev"
+BDEPEND=" libxml2-dev  "
 RECOMMENDED=""
 
 NOTES=""

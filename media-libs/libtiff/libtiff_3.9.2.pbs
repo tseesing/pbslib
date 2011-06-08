@@ -11,7 +11,7 @@ PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 SRC_URI="http://download.osgeo.org/"$N"/tiff-"$V$R".tar.gz"
 
 RDEPEND="freeglut gcc glibc libdrm libICE libjpeg-turbo libSM libX11 libXau libxcb libXdamage libXdmcp libXext libXfixes libXi libXmu libXt libXxf86vm mesa util-linux-ng zlib"
-BDEPEND="freeglut-dev gcc-dev glibc-dev libdrm-dev libICE-dev libjpeg-turbo-dev libSM-dev libX11-dev libXau-dev libxcb-dev libXdamage-dev libXdmcp-dev libXext-dev libXfixes-dev libXi-dev libXmu-dev libXt-dev libXxf86vm-dev mesa-dev util-linux-ng-dev zlib-dev"
+BDEPEND="                    "
 
 pbs_unpack() {
         ypkg_unpack

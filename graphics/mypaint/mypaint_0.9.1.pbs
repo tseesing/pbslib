@@ -12,7 +12,7 @@ PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 SRC_URI="http://download.gna.org/"$N"/"$N-$V$R".tar.bz2"
 
 RDEPEND="gcc glib2 glibc libpng python zlib"
-BDEPEND="swig scons gcc-dev glib2-dev glibc-dev libpng-dev python-dev zlib-dev"
+BDEPEND="swig scons      "
 RECOMMENDED=""
 CONFLICT=""
 

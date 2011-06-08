@@ -11,7 +11,7 @@ PACKAGER="<ylmfos@115.com>"
 SRC_URI="http://"$N".org/"$N"/ftp/stable/"$N-$V".tar.gz"
 
 RDEPEND="acl attr avahi cups cyrus-sasl dbus e2fsprogs gamin gcc glibc gnutls keyutils krb5 libcap libgcrypt libgpg-error libtasn1 ncurses openldap-client openssl pam popt readline talloc zlib"
-BDEPEND="acl-dev attr-dev avahi-dev cups-dev cyrus-sasl-dev dbus-dev e2fsprogs-dev gamin-dev gcc-dev glibc-dev gnutls-dev keyutils-dev krb5-dev libcap-dev libgcrypt-dev libgpg-error-dev libtasn1-dev ncurses-dev openldap-client-dev openssl-dev pam-dev popt-dev readline-dev talloc-dev zlib-dev"
+BDEPEND="                        "
 RECOMMENDED=""
 
 NOTES="nobody/sambashare/users group created automatically."

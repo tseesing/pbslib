@@ -11,7 +11,7 @@ PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 SRC_URI="http://downloads.xiph.org/releases/vorbis/"$N-$V$R".tar.gz"
 
 RDEPEND=""
-BDEPEND=" libvorbis"
+BDEPEND="libvorbis"
 RECOMMENDED=""
 
 NOTES=""

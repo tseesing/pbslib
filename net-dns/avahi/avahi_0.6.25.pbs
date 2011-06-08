@@ -10,7 +10,7 @@ PACKAGER="<ylmfos@115.com>"
 SRC_URI="http://avahi.org/download/"$N-$V$R".tar.gz"
 
 RDEPEND="atk attr cairo dbus expat fontconfig freetype gcc gdbm glib2 glibc gtk+ libcap libdaemon libglade libpng libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libxml2 libXrandr libXrender pango pixman zlib"
-BDEPEND="desktop-file-utils dbus-python-dev pygtk-dev atk-dev attr-dev cairo-dev dbus-dev expat-dev fontconfig-dev freetype-dev gcc-dev gdbm-dev glib2-dev glibc-dev gtk+-dev libcap-dev libdaemon-dev libglade-dev libpng-dev libX11-dev libXau-dev libxcb-dev libXcomposite-dev libXcursor-dev libXdamage-dev libXdmcp-dev libXext-dev libXfixes-dev libXi-dev libxml2-dev libXrandr-dev libXrender-dev pango-dev pixman-dev zlib-dev dbus-glib-dev"
+BDEPEND="desktop-file-utils dbus-python-dev pygtk-dev                                 dbus-glib-dev"
 RECOMMENDED=""
 
 NOTES=""

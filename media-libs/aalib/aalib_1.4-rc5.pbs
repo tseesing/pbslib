@@ -11,7 +11,7 @@ MAINTAINER="Ylmf OS Developers <ylmfos@115.com>"
 SRC_URI="http://downloads.sourceforge.net/aa-project/"$N-$V"rc5.tar.gz"
 
 RDEPEND="glibc libX11 libXau libxcb libXdmcp ncurses"
-BDEPEND="glibc-dev libX11-dev libXau-dev libxcb-dev libXdmcp-dev ncurses-dev"
+BDEPEND="     "
 
 pbs_unpack(){
         ypkg_unpack

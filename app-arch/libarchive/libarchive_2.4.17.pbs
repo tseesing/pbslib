@@ -10,7 +10,7 @@ PACKAGER="<ylmfos@115.com>"
 SRC_URI="http://people.freebsd.org/~kientzle/"libarchive"/src/"$N-$V$R".tar.gz"
 
 RDEPEND="acl attr glibc zlib"
-BDEPEND="sharutils acl-dev attr-dev glibc-dev zlib-dev"
+BDEPEND="sharutils    "
 RECOMMENDED=""
 
 NOTES=""

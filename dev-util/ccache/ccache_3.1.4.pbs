@@ -12,7 +12,7 @@ PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 SRC_URI="http://samba.org/ftp/"$N"/"$N-$V$R".tar.bz2"
 
 RDEPEND="glibc zlib"
-BDEPEND="glibc-dev zlib-dev"
+BDEPEND=" "
 RECOMMENDED=""
 CONFLICT=""
 

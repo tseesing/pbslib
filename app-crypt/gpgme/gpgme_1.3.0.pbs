@@ -10,7 +10,7 @@ PACKAGER="<ylmfos@115.com>"
 SRC_URI="ftp://ftp.gnupg.org/gcrypt/"$N"/"$N-$V$R".tar.bz2"
 
 RDEPEND="glibc libassuan libgpg-error pth"
-BDEPEND="glibc-dev libassuan-dev libgpg-error-dev pth-dev"
+BDEPEND="   "
 RECOMMENDED=""
 
 NOTES=""

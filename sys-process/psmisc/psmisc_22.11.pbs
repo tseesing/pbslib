@@ -8,7 +8,7 @@ HOMEPAGE="http://psmisc.sourceforge.net/"
 SRC_URI="http://downloads.sourceforge.net/project/"$N"/"$N"/"$N-$V$R".tar.gz"
 
 RDEPEND="glibc ncurses"
-BDEPEND="glibc-dev ncurses-dev"
+BDEPEND=" "
 
 pbs_unpack() {
         ypkg_unpack

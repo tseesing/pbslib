@@ -10,7 +10,7 @@ PACKAGER="<ylmfos@115.com>"
 SRC_URI="http://labs.renren.com/apache-mirror/httpd/httpd-"$V$R".tar.bz2"
 
 RDEPEND="apr apr-util expat glibc openssl util-linux-ng zlib"
-BDEPEND="apr-dev apr-util-dev expat-dev glibc-dev openssl-dev util-linux-ng-dev zlib-dev"
+BDEPEND="      "
 RECOMMENDED=""
 
 NOTES="apache user/group should be created automatic."

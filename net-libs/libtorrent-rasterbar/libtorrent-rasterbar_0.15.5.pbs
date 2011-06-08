@@ -12,7 +12,7 @@ PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 SRC_URI="http://libtorrent.googlecode.com/files/"$N-$V$R".tar.gz"
 
 RDEPEND="boost gcc glibc openssl zlib"
-BDEPEND="boost-dev gcc-dev glibc-dev openssl-dev zlib-dev"
+BDEPEND="    "
 RECOMMENDED=""
 CONFLICT=""
 
