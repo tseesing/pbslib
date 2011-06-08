@@ -12,7 +12,7 @@ SRC_URI="http://download.documentfoundation.org/libreoffice/stable/3.3.2/deb/x86
 
 RDEPEND="zlib freetype libXau libxcb libXdmcp libXext libreoffice-bin-main libreoffice-bin-core"
 BDEPEND=""
-RECOMMENDED="sun-jre libreoffice-bin-langpack-zh-CN"
+RECOMMENDED="jre libreoffice-bin-langpack-zh-CN"
 
 DESKTOPFILE="libreoffice-base.desktop"
 ICONFILE="libreoffice-base.png"

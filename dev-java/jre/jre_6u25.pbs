@@ -1,0 +1,62 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="Sun's java runtime environment"
+HOMEPAGE="http://java.sun.com"
+REPO=""
+LICENSE=""
+PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
+
+SRC_URI="http://download.java.net/dlj/binaries/jdk-6u25-dlj-linux-i586.bin"
+
+RDEPEND="glibc libXtst"
+BDEPEND=""
+RECOMMENDED=""
+CONFLICT=""
+
+NOTES=""
+
+pbs_unpack() {
+	mkdir -p "$N-$V$R"
+	cd "$N-$V$R"
+	mkdir -p unbundle-jdk
+	cd unbundle-jdk
+	sh "$YPPATH_SOURCE"/jdk-6u25-dlj-linux-i586.bin --accept-license
+	cd ../
+	sh "$FILES_PATH"/files/construct.sh unbundle-jdk linux-jdk linux-jre
+
+}
+
+pbs_install() {
+	ypkg_docp linux-jdk/jre "$YPPATH_DEST"/opt/java/
+	install -Dm755 "$FILES_PATH"/files/jre.profile "$YPPATH_DEST"/etc/profile.d/jre.sh
+
+	cd "$YPPATH_DEST"
+	#if [ "$CARCH" = "i686" ]; then
+	ypkg_doln /opt/java/jre/lib/i386/libnpjp2.so usr/lib/mozilla/plugins/libnpjp2.so
+	#else ln -s /opt/java/jre/lib/amd64/libnpjp2.so ${pkgdir}/usr/lib/mozilla/plugins
+	#fi
+	ypkg_docp opt/java/jre/{COPYRIGHT,LICENSE,THIRDPARTYLICENSEREADME.txt}  usr/share/licenses/jre/
+	# Fix system prefs folder (FS#18872)
+	install -dm755 etc/.java/.systemPrefs
+}
+
+pbs_postinst() {
+	echo "The jre package is licensed software."
+	echo "You MUST read and agree to the license stored in"
+	echo "/opt/java/jre/LICENSE before using it."
+	if [ -f /etc/mailcap ] ; then
+		sed -e '/application\/x-java-jnlp-file/d' -i /etc/mailcap
+	fi
+	echo 'application/x-java-jnlp-file;/opt/java/jre/bin/javaws %s' >>/etc/mailcap
+}
+
+pbs_postrm() {
+	mailcap=$(grep -v 'application/x-java-jnlp-file' /etc/mailcap)
+	if [ "$mailcap" != "" ] ; then
+		sed -e '/application\/x-java-jnlp-file/d' -i /etc/mailcap
+	else
+		rm /etc/mailcap
+	fi
+}
