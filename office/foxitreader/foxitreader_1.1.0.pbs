@@ -1,0 +1,33 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="foxi pdf reader"
+HOMEPAGE="http://www.fuxinsoftware.com.cn/"
+REPO=""
+LICENSE=""
+PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
+
+SRC_URI="http://cdn02.foxitsoftware.com/pub/foxit/reader/desktop/linux/1.x/1.1/enu/FoxitReader_1.1.0_i386.deb"
+
+RDEPEND=""
+BDEPEND=""
+RECOMMENDED=""
+CONFLICT=""
+
+NOTES=""
+
+DESKTOPFILE="Foxit-Reader.desktop"
+ICONFILE="fx-icon.png"
+
+pbs_unpack() {
+        ypkg_unpack
+}
+
+pbs_install() {
+	ypkg_docp data/*  "$YPPATH_DEST"
+}
+
+pbs_postinst() {
+	gnome2_desktop_database_update
+}
