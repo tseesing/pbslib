@@ -1,0 +1,30 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION=" A Perl extension interface to James Clark's XML parser, expat"
+HOMEPAGE="http://search.cpan.org/~msergeant/"
+REPO=""
+LICENSE="GPL-2"
+PACKAGER="<ylmfos@115.com>"
+
+SRC_URI="http://mirror.osqdu.org/CPAN/authors/id/T/TO/TODDR/XML-Parser-2.41.tar.gz"
+
+RDEPEND="expat glibc"
+BDEPEND=" "
+
+pbs_unpack() {
+        ypkg_unpack
+}
+
+pbs_config() {
+	ypkg_config
+}
+
+pbs_build() {
+	ypkg_make
+}
+
+pbs_install() {
+	ypkg_mkinstall
+}
