@@ -54,8 +54,7 @@ NOTES=""
 #ICONFILE="test.png"   or "/opt/test/test.png"
 
 #
-#MYSPLIT="usr/src $N-headers"
-
+#PROVIDE="foo"
 
 #init 
 pbs_init() {
@@ -108,7 +107,7 @@ pbs_install() {
 	#make DESTDIR="$YPPATH_DEST" install
 	ypkg_mkinstall
 	#ypkg_doinit "$N"
-	#ypkg_doinit "N".service
+	#ypkg_dounit "N".service
 	#ypkg_dodesktop "*.desktop" "*.png"
 	#ypkg_dodoc AUTHORS ChangeLog COPYING INSTALL NEWS README 
 	#ypkg_docp "$FILES_PATH/files/XXXX" "dirname"
@@ -120,6 +119,11 @@ pbs_install() {
 	#*****************
 	#when SRC_URI is deb or rpm package
 	#ypkg_docp data/*  "$YPPATH_DEST"
+}
+
+#split package
+foo_install () {
+	:
 }
 
 #post install

@@ -2,17 +2,31 @@
 # YLmf_OS package build script
 #
 
-DESCRIPTION="GTK Instant Messenger client"
+DESCRIPTION="GTK Instant Messenger client, split into finch and libpurple"
 HOMEPAGE="http://pidgin.im/"
 REPO=""
-LICENSE=""
+LICENSE="GPL"
 PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 
 SRC_URI="http://nchc.dl.sourceforge.net/project/pidgin/Pidgin/"$V$R"/"$N-$V$R".tar.bz2"
 
-RDEPEND="atk cairo dbus dbus-glib expat farsight2 fontconfig freetype gcc glib2 glibc gnutls gstreamer gtk+ libgcrypt libgpg-error libICE libpng libSM libtasn1 libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libxml2 libXrandr libXrender libXScrnSaver ncurses nspr nss pango pixman purple startup-notification util-linux-ng zlib gtkspell meanwhile"
+PROVIDE="libpurple finch"
+
+RDEPEND="atk cairo dbus dbus-glib expat farsight2 fontconfig freetype gcc 
+	 glib2 glibc gnutls gstreamer gtk+ libgcrypt libgpg-error libICE 
+	 libpng libSM libtasn1 libX11 libXau libxcb libXcomposite libXcursor 
+	 libXdamage libXdmcp libXext libXfixes libXi libxml2 libXrandr libXrender 
+	 libXScrnSaver ncurses nspr nss pango pixman purple startup-notification 
+	 util-linux-ng zlib gtkspell meanwhile"
+RECOMMENDED="libpurple finch"
 BDEPEND=""
-RECOMMENDED="purple finch"
+
+OPTIONAL="aspell: for spelling correction;
+          avahi: Bonjour protocol support;
+          ca-certificates: SSL CA certificates;
+          gstreamer0.10-good-plugins: video and voice support;
+          tk: Tcl/Tk scripting support;
+	  dbus-python: for purple-remote and purple-url-handler"
 
 pbs_unpack() {
         ypkg_unpack
@@ -28,10 +42,35 @@ pbs_build() {
 }
 
 pbs_install() {
-	cd "$N"
-	ypkg_mkinstall
-	cd ../
+	#for linking
+	make -C libpurple DESTDIR="$YPPATH_DEST" install-libLTLIBRARIES
+	ypkg_mkinstall -C pidgin 
+	ypkg_mkinstall -C doc 
+        #clean up libpurple
+        make -C libpurple DESTDIR="$YPPATH_DEST" uninstall-libLTLIBRARIES
 	ypkg_dodesktop "$N.desktop"
+	rm -f "$YPPATH_DEST"/usr/share/man/man1/finch.1
+}
+
+libpurple_install() {
+	DESCRIPTION="IM library extracted from Pidgin"
+	RDEPEND="farsight2 libsasl dbus-glib gnutls"
+        for dir in libpurple share/sounds share/ca-certs m4macros po; do
+		ypkg_mkinstall -C "${dir}"
+	done
+}
+
+
+finch_install() {
+	DESCRIPTION="A ncurses-based messaging client"
+	RDEPEND="libpurple python gstreamer"
+	#for linking
+	make -C libpurple DESTDIR="$YPPATH_DEST" install-libLTLIBRARIES
+	ypkg_mkinstall -C finch
+	ypkg_mkinstall -C doc 
+        #clean up libpurple
+        make -C libpurple DESTDIR="$YPPATH_DEST" uninstall-libLTLIBRARIES
+	rm -f "$YPPATH_DEST"/usr/share/man/man1/pidgin.1
 }
 
 pbs_postinst() {
