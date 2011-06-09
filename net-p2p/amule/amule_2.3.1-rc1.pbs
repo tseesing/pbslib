@@ -1,0 +1,42 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="aMule, the all-platform eMule p2p client"
+HOMEPAGE="http://www.amule.org/"
+REPO=""
+
+SRC_URI="http://nchc.dl.sourceforge.net/project/amule/aMule/2.3.1rc1/aMule-2.3.1rc1.tar.bz2"
+
+RDEPEND="crypto++ geoip atk binutils cairo expat fontconfig freetype gd geoip glib2 glibc gtk+ libICE libjpeg-turbo libpng libSM libtiff libupnp libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libXinerama libXpm libXrandr libXrender libXxf86vm ncurses pango pixman readline util-linux-ng wxGTK wxWidgets zlib"
+BDEPEND="crypto++-dev"
+
+pbs_unpack() {
+        ypkg_unpack
+}
+
+pbs_config() {
+	ypkg_patch desktop.patch
+	YPB_CONFIG+=" --enable-cas
+	              --enable-wxcas 
+		      --enable-amule-daemon
+		      --enable-amulecmd
+		      --enable-amule-gui
+                      --enable-alc
+                      --enable-alcc 
+		      --enable-webserver 
+		      --disable-debug
+		      --enable-optimize 
+		      --enable-ccache 
+		      --enable-geoip 
+		      --enable-upnp "
+	ypkg_config
+}
+
+pbs_build() {
+	ypkg_make
+}
+
+pbs_install() {
+	ypkg_mkinstall
+}
