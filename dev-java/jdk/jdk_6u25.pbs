@@ -13,7 +13,7 @@ SRC_URI="http://download.oracle.com/auth/otn-pub/java/jdk/6u25-b06/jdk-6u25-linu
 RDEPEND="glibc jre"
 BDEPEND=""
 RECOMMENDED=""
-CONFLICT=""
+CONFLICT="sun-jdk"
 
 NOTES=""
 

@@ -11,7 +11,7 @@ PACKAGER="<ylmfos@115.com>"
 SRC_URI=" http://ftp.gnome.org/pub/gnome/platform/2.30/2.30.2/sources/"$N-$V$R".tar.bz2 "
 
 RDEPEND="alsa-lib atk audiofile avahi cairo dbus dbus-glib eggdbus esound expat fontconfig freetype gail gcc gconf glib2 glibc gnome-vfs gtk+ libart_lgpl libbonobo libbonoboui libgcrypt libglade libgnome libgnomecanvas libgnome-keyring libgpg-error libICE libpng libSM libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libxml2 libXrandr libXrender openssl orbit pango pixman popt util-linux-ng zlib"
-BDEPEND="gnome-keyring-dev lsa-lib-dev       egg                                           "
+BDEPEND="gnome-keyring-dev lsa-lib-dev       eggdbus                                           "
 RECOMMENDED=""
 
 pbs_unpack() {

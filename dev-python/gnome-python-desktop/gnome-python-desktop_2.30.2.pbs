@@ -11,7 +11,7 @@ PACKAGER="<ylmfos@115.com>"
 SRC_URI="http://ftp.gnome.org/pub/gnome/desktop/2.30/2.30.2/sources/"$N-$V$R".tar.bz2"
 
 RDEPEND="alsa-lib atk audiofile avahi cairo dbus dbus-glib e2fsprogs eggdbus esound evince evolution-data-server expat fontconfig freetype gail gcc gconf glib2 glibc gmime gnome-desktop gnome-media gnome-panel gnome-vfs gnutls gst-plugins-base gstreamer gtk+ keyutils krb5 libart_lgpl libbonobo libbonoboui libcanberra libcroco libgcrypt libgnome libgnomecanvas libgnome-keyring libgnomeprint libgnomeprintui libgnomeui libgpg-error libgsf libgtop libical libICE libogg libpng librsvg libSM libsoup libtasn1 libtool libvorbis libwnck libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libxml2 libXrandr libXrender libXres nspr nss openssl orbit pango pixman popt python sqlite startup-notification totem-pl-parser util-linux-ng zlib"
-BDEPEND="gnome- gtksourceview-dev gnome-keyring-dev     brasero-dev     egg                                                                           "
+BDEPEND="gnome- gtksourceview-dev gnome-keyring-dev     brasero-dev     eggdbus                                                                           "
 RECOMMENDED=""
 
 NOTES=""

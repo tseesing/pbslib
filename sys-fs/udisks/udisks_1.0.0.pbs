@@ -10,7 +10,7 @@ PACKAGER="<ylmfos@115.com>"
 SRC_URI="http://hal.freedesktop.org/releases/"$N-$V$R".tar.gz"
 
 RDEPEND="dbus dbus-glib device-mapper eggdbus expat glib2 glibc libatasmart parted polkit sg3_utils udev util-linux-ng zlib"
-BDEPEND="    egg          "
+BDEPEND="    eggdbus          "
 RECOMMENDED=""
 
 pbs_unpack() {

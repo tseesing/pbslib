@@ -6,9 +6,9 @@ diff -ur gdm-2.30.2-ylmf6/data/Init.in gdm-2.30.2-ylmf6.new/data/Init.in
  fi
  
 +# FIXME: This should be done in code.  Or there must be an easier way ...
-+numlock_state=$(/usr/bin/gconftool-2 -g /desktop/gnome/peripherals/keyboard/numlock_default_state)
-+if [ -x /usr/bin/numlockx ]; then
-+	/usr/bin/numlockx $numlock_state
++if [ -x /usr/bin/numlockx ] && [ -x /usr/sbin/laptop-detect ]; then
++       /usr/sbin/laptop-detect && status_value="off" || status_value="on" 
++	/usr/bin/numlockx $status_value
 +fi
 +
  exit 0

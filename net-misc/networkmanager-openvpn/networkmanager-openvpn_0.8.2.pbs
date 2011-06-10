@@ -10,7 +10,7 @@ PACKAGER="<ylmfos@115.com>"
 SRC_URI="http://ftp.gnome.org/pub/gnome/sources/NetworkManager-openvpn/0.8/NetworkManager-openvpn-"$V$R".tar.bz2"
 
 RDEPEND="ppp atk cairo dbus dbus-glib eggdbus expat fontconfig freetype gcc gconf glib2 glibc gtk+ libgcrypt libglade libgnome-keyring libgpg-error libpng libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libxml2 libXrandr libXrender networkmanager nspr nss orbit pango pixman sqlite udev util-linux-ng zlib"
-BDEPEND="     egg                                    "
+BDEPEND="     eggdbus                                    "
 RECOMMENDED=""
 
 NOTES=""

@@ -10,7 +10,7 @@ PACKAGER="<ylmfos@115.com>"
 SRC_URI="http://downloads.sourceforge.net/"$N"/"$N-$V$R".tar.gz"
 
 RDEPEND="alsa-lib atk audiofile avahi cairo dbus dbus-glib eggdbus esound expat fontconfig freetype gail gcc gconf glib2 glibc gnome-panel gnome-vfs gtk+ libart_lgpl libatasmart libbonobo libbonoboui libgcrypt libgnome libgnomecanvas libgnome-keyring libgnomeui libgpg-error libICE libnotify libpng libSM libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libxml2 libXrandr libXrender lm_sensors openssl orbit pango pixman popt udev util-linux-ng zlib"
-BDEPEND="       egg                                                "
+BDEPEND="       eggdbus                                                "
 RECOMMENDED=""
 
 NOTES=""

@@ -10,7 +10,7 @@ PACKAGER="<ylmfos@115.com>"
 SRC_URI="http://ftp.gnome.org/pub/gnome/sources/"$N"/1.6/"$N-$V$R".tar.bz2"
 
 RDEPEND="acl attr avahi bluez cyrus-sasl dbus dbus-glib eggdbus expat fuse gcc gconf glib2 glibc gnome-disk-utility gnutls keyutils krb5 libarchive libcap libcdio libexif libgcrypt libgnome-keyring libgpg-error libgphoto2 libproxy libsoup libtasn1 libtool libusb libusb-compat libxml2 openldap-client openssl orbit samba sqlite talloc udev zlib"
-BDEPEND="gnome-keyring-dev        egg                                 "
+BDEPEND="gnome-keyring-dev        eggdbus                                 "
 
 pbs_unpack() {
         ypkg_unpack

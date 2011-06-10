@@ -6,7 +6,7 @@ DESCRIPTION="GNOME Display Manager"
 HOMEPAGE="http://www.gnome.org/projects/gdm/"
 LICENSE="GPL-2"
 PACKAGER="<ylmfos@115.com>"
-REPO="testing"
+REPO=""
 
 SRC_URI="http://ftp.gnome.org/pub/gnome/desktop/2.30/2.30.2/sources/"$N-$V".tar.bz2"
 
@@ -32,8 +32,8 @@ pbs_config() {
 		  ylmfos-missing-panel.patch 
 		  ylmfos-spawn-x-at-vt1.patch
 		  ylmfos-set-numlock-login.patch
-		  09_gdmsetup.patch 
-		  ylmfos_autoreconf.patch  "
+		  09_gdmsetup.patch "
+		  #ylmfos_autoreconf.patch  "
 	ypkg_patch $patches
 	YPB_CONFIG+=" --disable-scrollkeeper
 		      --enable-ipv6
@@ -51,8 +51,6 @@ pbs_config() {
 
 pbs_build() {
 	ypkg_make
-	pwd
-	exit
 }
 
 pbs_install() {

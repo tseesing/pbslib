@@ -1,0 +1,30 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="A 3D interface to the planet"
+HOMEPAGE="http://earth.google.com/"
+REPO="testing"
+LICENSE=""
+PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
+
+SRC_URI="https://dl-ssl.google.com/linux/direct/"$N"-stable_current_i386.deb"
+
+RDEPEND=""
+BDEPEND=""
+RECOMMENDED=""
+CONFLICT=""
+
+NOTES=""
+
+pbs_unpack() {
+        ypkg_unpack
+}
+
+pbs_install() {
+	ypkg_docp data/*  "$YPPATH_DEST"
+}
+
+pbs_postinst() {
+	gnome2_desktop_database_update
+}

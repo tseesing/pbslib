@@ -11,7 +11,7 @@ PACKAGER="<ylmfos@115.com>"
 SRC_URI="git://git.ylmf.com/"$N".git"
 
 RDEPEND="atk bzip2 cairo dbus dbus-glib eggdbus expat fontconfig freetype gcc gconf glib2 glibc gtk+ libgcrypt libgksu libgnome-keyring libgpg-error libgtop libICE libpng libSM libtar libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libxml2 libXrandr libXrender orbit pango pixman startup-notification util-linux-ng zlib ypkg"
-BDEPEND="bzip2      egg                                    "
+BDEPEND="bzip2      eggdbus                                    "
 
 pbs_unpack() {
 	ypkg_unpack

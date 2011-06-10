@@ -13,7 +13,7 @@ SRC_URI="http://download.java.net/dlj/binaries/jdk-6u25-dlj-linux-i586.bin"
 RDEPEND="glibc libXtst"
 BDEPEND=""
 RECOMMENDED=""
-CONFLICT=""
+CONFLICT="sun-jre"
 
 NOTES=""
 

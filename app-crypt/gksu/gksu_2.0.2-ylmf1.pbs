@@ -10,7 +10,7 @@ PACKAGER="<ylmfos@115.com>"
 SRC_URI="http://people.debian.org/~kov/gksu/"$N-$V".tar.gz"
 
 RDEPEND="atk cairo dbus dbus-glib eggdbus expat fontconfig freetype gcc gconf glib2 glibc gtk+ libgcrypt libgksu libgnome-keyring libgpg-error libgtop libICE libpng libSM libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libXrandr libXrender nautilus orbit pango pixman startup-notification util-linux-ng zlib"
-BDEPEND="    egg                                   "
+BDEPEND="    eggdbus                                   "
 RECOMMENDED=""
 
 pbs_unpack() {

@@ -10,7 +10,7 @@ PACKAGER="<ylmfos@115.com>"
 SRC_URI="http://cgit.freedesktop.org/DeviceKit/DeviceKit-power/snapshot/DeviceKit-power-"$V$R".tar.bz2"
 
 RDEPEND="dbus dbus-glib eggdbus glib2 glibc libusb libusb-compat polkit udev zlib"
-BDEPEND="  egg       "
+BDEPEND="  eggdbus       "
 RECOMMENDED=""
 
 pbs_unpack() {

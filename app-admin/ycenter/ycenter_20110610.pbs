@@ -28,7 +28,6 @@ pbs_build() {
 pbs_install() {
 	ypkg_mkinstall
 	cd "$YPPATH_DEST"
-	rm -r etc/init.d/
 	#ypkg_docp "$FILES_PATH"/files/systemd/*  lib/systemd/system
 	#for ymenu
 	ypkg_docp usr/share/icons/hicolor/24x24/apps/ycenter.png  usr/share/icons/titans/24x24/categories/

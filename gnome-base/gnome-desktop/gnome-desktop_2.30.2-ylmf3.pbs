@@ -50,5 +50,4 @@ pbs_postinst() {
 
 	#
 	gnome2_install_defaut_gconf "bool" "/desktop/gnome/peripherals/keyboard/remember_numlock_state"  "True"
-	gnome2_install_defaut_gconf "string" "/desktop/gnome/peripherals/keyboard/numlock_default_state"  "on"
 }

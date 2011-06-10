@@ -39,12 +39,6 @@
 #ResultActive=yes
 #EOF
 
-#set numlock according laptop-detect
-laptop-detect && status_value="off" || status_value="on"
-configfile=$(/usr/bin/gconftool-2 --get-default-source)
-chroot "$TARGETDIR" /usr/bin/gconftool-2 --direct --config-source="$configfile"  \
-   --type "string" --set "/desktop/gnome/peripherals/keyboard/numlock_default_state" "$status_value"
-
 #record locale
 cat "$TARGETDIR"/etc/default/locale  >>"$TARGETDIR"/etc/environment
 

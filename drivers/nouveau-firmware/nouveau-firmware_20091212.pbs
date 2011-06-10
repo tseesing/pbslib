@@ -1,0 +1,26 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="nvidia opensource X driver - firmware needed for NV40 and above"
+HOMEPAGE=""
+REPO=""
+LICENSE="custom"
+PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
+
+SRC_URI="http://people.freedesktop.org/~pq/nouveau-drm/nouveau-firmware-20091212.tar.gz"
+
+RDEPEND=""
+BDEPEND=""
+RECOMMENDED=""
+CONFLICT=""
+
+NOTES=""
+
+pbs_unpack() {
+        ypkg_unpack
+}
+
+pbs_install() {
+	ypkg_docp * "$YPPATH_DEST"/lib/firmware/nouveau/
+}
