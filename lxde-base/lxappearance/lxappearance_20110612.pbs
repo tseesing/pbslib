@@ -1,0 +1,30 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="Desktop setting configuration utility from LXDE."
+HOMEPAGE="www.lxde.org"
+LICENSE="GPL-2"
+PACKAGER="<ylmfos@115.com>"
+
+SRC_URI="git://lxde.git.sourceforge.net/gitroot/lxde/"$N""
+
+RDEPEND="atk cairo expat fontconfig freetype gcc glib2 glibc gtk+ libpng libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libXrandr libXrender pango pixman zlib"
+BDEPEND="pkgconfig gettext"
+
+pbs_unpack() {
+	ypkg_unpack
+}
+
+pbs_config() {
+	YPB_CONFIG+="--enable-man"
+	ypkg_config
+}
+
+pbs_build() {
+	ypkg_make
+}
+
+pbs_install() {
+	ypkg_mkinstall
+}

@@ -40,6 +40,9 @@ pbs_install() {
 	ypkg_docp opt/java/jre/{COPYRIGHT,LICENSE,THIRDPARTYLICENSEREADME.txt}  usr/share/licenses/jre/
 	# Fix system prefs folder (FS#18872)
 	install -dm755 etc/.java/.systemPrefs
+	#
+	ypkg_dodesktop "opt/java/jre/lib/desktop/applications/sun-java.desktop" \
+	               "opt/java/jre/lib/images/icons/sun-java.png"
 }
 
 pbs_postinst() {

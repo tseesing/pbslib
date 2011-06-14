@@ -11,13 +11,15 @@ PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 SRC_URI="http://downloads.sourceforge.net/project/"$N"/"$N"/"$V"/"$N-$V$R".tar.gz"
 
 RDEPEND=""
-BDEPEND=" media-libs/mesa"
+BDEPEND="mesa"
 
 pbs_unpack() {
         ypkg_unpack
 }
 
 pbs_config() {
+	ypkg_patch 01_fix_fontcache_nullderef.dpatch gtk2.20.patch 
+	YPB_CONFIG+="--with-x"
 	ypkg_config
 }
 

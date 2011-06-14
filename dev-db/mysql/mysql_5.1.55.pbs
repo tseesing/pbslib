@@ -39,3 +39,15 @@ pbs_install() {
 	ypkg_doln /usr/lib/mysql/libmysqlclient.so.16   usr/lib/libmysqlclient.so.16
 	ypkg_doln /usr/lib/mysql/libmysqlclient_r.so.16 usr/lib/libmysqlclient_r.so.16 
 }
+
+pbs_postinst() {
+	[ -x /usr/bin/install-info ] || return 0
+	infodir=/usr/share/info
+	install-info $infodir/mysql.info.gz $infodir/dir 2>/dev/null
+}
+
+pbs_postrm() {
+	[ -x /usr/bin/install-info ] || return 0
+	infodir=/usr/share/info
+	install-info --delete $infodir/mysql.info.gz $infodir/dir 2>/dev/null
+}

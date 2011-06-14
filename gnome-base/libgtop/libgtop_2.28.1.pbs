@@ -31,8 +31,13 @@ pbs_install() {
 }
 
 pbs_postinst() {
-	# Install new info files
-	if [ -x /usr/bin/install-info ]; then
-		/usr/bin/install-info /usr/share/info/libgtop2.info.gz /usr/share/info/dir
-	fi
+	[ -x /usr/bin/install-info ] || return 0
+	infodir=/usr/share/info
+	install-info $infodir/libgtop2.info.gz $infodir/dir 2>/dev/null
+}
+
+pbs_postrm() {
+	[ -x /usr/bin/install-info ] || return 0
+	infodir=/usr/share/info
+	install-info --delete $infodir/libgtop2.info.gz $infodir/dir 2>/dev/null
 }

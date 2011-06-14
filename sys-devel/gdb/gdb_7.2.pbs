@@ -28,3 +28,21 @@ pbs_build() {
 pbs_install() {
 	ypkg_mkinstall
 }
+
+pbs_postinst() {
+	[ -x /usr/bin/install-info ] || return 0
+	infodir=/usr/share/info
+	files="standards.info stabs.info gdbint.info-2 gdbint.info-1 gdbint.info gdb.info-6 gdb.info-5 gdb.info-4 gdb.info-3 gdb.info-2 gdb.info-1 gdb.info configure.info bfd.info annotate.info"
+	for file in $files; do
+		install-info $infodir/$file.gz $infodir/dir 2>/dev/null
+	done
+}
+
+pbs_postrm() {
+	[ -x /usr/bin/install-info ] || return 0
+	infodir=/usr/share/info
+	files="standards.info stabs.info gdbint.info-2 gdbint.info-1 gdbint.info gdb.info-6 gdb.info-5 gdb.info-4 gdb.info-3 gdb.info-2 gdb.info-1 gdb.info configure.info bfd.info annotate.info"
+	for file in $files; do
+		install-info --delete $infodir/$file.gz $infodir/dir 2>/dev/null
+	done
+}

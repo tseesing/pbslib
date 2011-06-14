@@ -33,3 +33,15 @@ pbs_install() {
 	ypkg_mkinstall
 	ypkg_dodoc doc/libtasn1.{html,pdf,ps}
 }
+
+pbs_postinst() {
+	[ -x /usr/bin/install-info ] || return 0
+	infodir=/usr/share/info
+	install-info $infodir/libtasn1.info.gz $infodir/dir 2>/dev/null
+}
+
+pbs_postrm() {
+	[ -x /usr/bin/install-info ] || return 0
+	infodir=/usr/share/info
+	install-info --delete $infodir/libtasn1.info.gz $infodir/dir 2>/dev/null
+}

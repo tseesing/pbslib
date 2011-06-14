@@ -31,3 +31,21 @@ pbs_build() {
 pbs_install() {
 	ypkg_mkinstall
 }
+
+pbs_postinst() {
+	[ -x /usr/bin/install-info ] || return 0
+	infodir=/usr/share/info
+	files="screen.info-5 screen.info-4 screen.info-3 screen.info-2 screen.info-1 screen.info"
+	for file in $files; do
+		install-info $infodir/$file.gz $infodir/dir 2>/dev/null
+	done
+}
+
+pbs_postrm() {
+	[ -x /usr/bin/install-info ] || return 0
+	infodir=/usr/share/info
+	files="screen.info-5 screen.info-4 screen.info-3 screen.info-2 screen.info-1 screen.info"
+	for file in $files; do
+		install-info --delete $infodir/$file.gz $infodir/dir 2>/dev/null
+	done
+}

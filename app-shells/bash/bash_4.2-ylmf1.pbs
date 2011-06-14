@@ -42,3 +42,15 @@ pbs_install() {
 	ypkg_mkinstall
 	ypkg_docp "$FILES_PATH"/files/skel "$YPPATH_DEST"/etc
 }
+
+pbs_postinst() {
+	[ -x /usr/bin/install-info ] || return 0
+	infodir=/usr/share/info
+	install-info $infodir/bash.info.gz $infodir/dir 2>/dev/null
+}
+
+pbs_postrm() {
+	[ -x /usr/bin/install-info ] || return 0
+	infodir=/usr/share/info
+	install-info --delete $infodir/bash.info.gz $infodir/dir 2>/dev/null
+}

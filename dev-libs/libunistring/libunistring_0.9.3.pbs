@@ -33,3 +33,14 @@ pbs_install() {
 	ypkg_mkinstall
 }
 
+pbs_postinst() {
+	[ -x /usr/bin/install-info ] || return 0
+	infodir=/usr/share/info
+	install-info $infodir/libunistring.info.gz $infodir/dir 2>/dev/null
+}
+
+pbs_postrm() {
+	[ -x /usr/bin/install-info ] || return 0
+	infodir=/usr/share/info
+	install-info --delete $infodir/libunistring.info.gz $infodir/dir 2>/dev/null
+}

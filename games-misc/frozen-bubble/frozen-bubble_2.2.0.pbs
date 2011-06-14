@@ -1,0 +1,38 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="A game in which you throw colorful bubbles and build groups to destroy the bubbles"
+HOMEPAGE=""
+REPO=""
+LICENSE="GPLv2"
+PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
+
+SRC_URI="http://www.frozen-bubble.org/data/"$N-$V$R".tar.bz2"
+
+RDEPEND="sdl-perl sdl-pango"
+BDEPEND=""
+RECOMMENDED=""
+CONFLICT=""
+
+NOTES=""
+
+pbs_unpack() {
+        ypkg_unpack
+}
+
+pbs_build() {
+	make OPTIMIZE="${CFLAGS}" \
+		CFLAGS="$(pkg-config glib-2.0 --cflags)" INSTALLDIRS=vendor \
+		PREFIX=/usr 
+}
+
+pbs_install() {
+	ypkg_mkinstall PREFIX=/usr install 
+	ypkg_dodesktop "$N.desktop"  "icons/frozen-bubble-icon-64x64.png"
+}
+
+pbs_postinst() {
+	gnome2_desktop_database_update
+}
+

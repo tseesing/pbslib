@@ -1,0 +1,33 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="A Three Dimensional Galactic Atlas"
+HOMEPAGE="http://www.thinkastronomy.com/M13/index.html"
+REPO=""
+LICENSE=""
+PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
+
+SRC_URI="http://www.thinkastronomy.com/M13/downloads/WhereIsM13_2.3.zip"
+
+RDEPEND="jre jdk"
+BDEPEND=""
+RECOMMENDED=""
+CONFLICT=""
+
+NOTES=""
+
+pbs_unpack() {
+        ypkg_unpack
+}
+
+pbs_install() {
+	cd "Where is M13"
+	ypkg_docp WhereIsM13.jar "$YPPATH_DEST"/opt/"$N"/
+	ypkg_dodoc Distribution.txt License.txt README.html ReleaseNotes.txt
+	ypkg_dodesktop "$N.desktop"  "$N.png"
+} 
+
+pbs_postinst() {
+	gnome2_desktop_database_update
+}

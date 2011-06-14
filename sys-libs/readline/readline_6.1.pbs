@@ -33,3 +33,21 @@ pbs_install() {
 	ypkg_doln libreadline.so.6  usr/lib/libreadline.so
 	ypkg_doln libhistory.so.6   usr/lib/libhistory.so
 }
+
+pbs_postinst() {
+	[ -x /usr/bin/install-info ] || return 0
+	infodir=/usr/share/info
+	files="rluserman.info readline.info history.info"
+	for file in $files; do
+		install-info $infodir/$file.gz $infodir/dir 2>/dev/null
+	done
+}
+
+pbs_postrm() {
+	[ -x /usr/bin/install-info ] || return 0
+	infodir=/usr/share/info
+	files="rluserman.info readline.info history.info"
+	for file in $files; do
+		install-info --delete $infodir/$file.gz $infodir/dir 2>/dev/null
+	done
+}

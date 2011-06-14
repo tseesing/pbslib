@@ -10,7 +10,7 @@ PACKAGER="<ylmfos@115.com>"
 SRC_URI="ftp://alpha.gnu.org/gnu/grub/grub-"$V".tar.gz"
 
 RDEPEND="freetype glibc zlib"
-BDEPEND="  "
+BDEPEND=""
 RECOMMENDED=""
 CONFLICT="grub"
 
@@ -21,7 +21,7 @@ pbs_unpack() {
 }
 
 pbs_config() {
-	patches="   01_uuids_and_lvm_dont_play_along_nicely.diff
+	patches="  01_uuids_and_lvm_dont_play_along_nicely.diff
 		   03_ubuntu_grub_standards.diff
 		   10_crashkernel.patch
 		   06_olpc_prefix_hack.diff   
@@ -68,6 +68,16 @@ pbs_install() {
 }
 
 pbs_postinst() {
+	if [ -x /usr/bin/install-info ]; then
+		infodir=/usr/share/info
+		install-info $infodir/grub.info.gz $infodir/dir 2>/dev/null
+	fi
 	/usr/sbin/grub-mkdevicemap
 	update-grub2
+}
+
+pbs_postrm() {
+	[ -x /usr/bin/install-info ] || return 0
+	infodir=/usr/share/info
+	install-info --delete $infodir/grub.info.gz $infodir/dir 2>/dev/null
 }

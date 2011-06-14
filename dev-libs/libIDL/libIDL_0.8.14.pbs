@@ -36,3 +36,16 @@ pbs_install() {
 	#install -m644 libIDL2.{pdf,dvi,ps,txt} README /usr/share/doc/libIDL-0.8.14 &&
 	#install -m644 libIDL2.html/* /usr/share/doc/libIDL-0.8.14/html
 }
+
+pbs_postinst() {
+	[ -x /usr/bin/install-info ] || return 0
+	infodir=/usr/share/info
+	install-info $infodir/libIDL2.info.gz $infodir/dir 2>/dev/null
+}
+
+pbs_postrm() {
+	[ -x /usr/bin/install-info ] || return 0
+	infodir=/usr/share/info
+	install-info --delete $infodir/libIDL2.info.gz $infodir/dir 2>/dev/null
+}
+ 

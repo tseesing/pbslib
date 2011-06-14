@@ -8,17 +8,14 @@ HOMEPAGE="http://gmplib.org/"
 SRC_URI="ftp://ftp.gnu.org/gnu/gmp/"$N-$V$R".tar.bz2"
 
 RDEPEND="gcc glibc"
-BDEPEND=" glib-dev"
+BDEPEND=""
 
-pbs_unpack()
-{
+pbs_unpack() {
         ypkg_unpack
 }
 
-pbs_config()
-{
+pbs_config() {
 	#cd build directory.
-	
 	#run configure
 	# bug	
 	export ABI=32
@@ -26,12 +23,28 @@ pbs_config()
 	ypkg_config
 }
 
-pbs_build()
-{
+pbs_build() {
 	make 
 }
 
-pbs_install()
-{
+pbs_install() {
 	ypkg_mkinstall
+}
+
+pbs_postinst() {
+	[ -x /usr/bin/install-info ] || return 0
+	infodir=/usr/share/info
+	files="gmp.info-2 gmp.info-1 gmp.info"
+	for file in $files; do
+		install-info $infodir/$file.gz $infodir/dir 2>/dev/null
+	done
+}
+
+pbs_postrm() {
+	[ -x /usr/bin/install-info ] || return 0
+	infodir=/usr/share/info
+	files="gmp.info-2 gmp.info-1 gmp.info"
+	for file in $files; do
+		install-info --delete $infodir/$file.gz $infodir/dir 2>/dev/null
+	done
 }
