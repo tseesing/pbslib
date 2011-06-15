@@ -15,13 +15,11 @@ BDEPEND=""
 RECOMMENDED=""
 OPIONAL="vala: Don't require vala if gtk is disabled"
 
+INSTALL="$N.install"
+
 NOTES="/etc/mtab must be a symlink to /proc/self/mounts
 To correct that, execute
 ln -sf /proc/self/mounts /etc/mtab"
-
-pbs_init() {
-	ypkg_groupadd -r "lock"  #used by var-lock.mount
-}
 
 pbs_unpack() {
         ypkg_unpack

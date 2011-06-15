@@ -1,0 +1,30 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="Google Chrome is a browser that combines a minimal design with sophisticated technology to make the web faster, safer, and easier."
+HOMEPAGE="http://www.google.com/chrome/"
+REPO=""
+LICENSE="GPL"
+PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
+
+SRC_URI="https://dl-ssl.google.com/linux/direct/"$N"-stable_current_i386.deb"
+
+RDEPEND="nss nspr"
+BDEPEND=""
+RECOMMENDED=""
+CONFLICT=""
+
+INSTALL="$N.install"
+
+NOTES=""
+
+pbs_unpack() {
+        ypkg_unpack
+}
+
+pbs_install() {
+	ypkg_docp data/*  "$YPPATH_DEST"
+	cd "$YPPATH_DEST"
+	ypkg_dodesktop "opt/google/chrome/google-chrome.desktop" "opt/google/chrome/product_logo_48.png"
+}

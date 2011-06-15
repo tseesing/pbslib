@@ -1,0 +1,9 @@
+. /usr/lib/ybs/funcs
+
+post_install() {
+	ypkg_groupadd -r "lock"  #used by var-lock.mount
+}
+
+post_remove() {
+	ypkg_userdel "lock"
+}

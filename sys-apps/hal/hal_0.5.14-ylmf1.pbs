@@ -13,10 +13,7 @@ RDEPEND="dbus dbus-glib expat glib2 glibc util-linux-ng"
 BDEPEND="consolekit-dev      "
 RECOMMEND=""
 
-pbs_init(){
-	ypkg_groupadd -r "haldaemon"
-	ypkg_useradd -c "HAL Daemon User" -d "/dev/null" -s "/bin/false" -r -N "haldaemon"
-}
+INSTALL="$N.install"
 
 pbs_unpack(){
         ypkg_unpack
@@ -64,13 +61,7 @@ pbs_build() {
 pbs_install() {
 	ypkg_mkinstall
 	cd "$YPPATH_DEST"
-	#ypkg_doinit "$FILES_PATH"/files/haldaemon
 	ypkg_docp "$FILES_PATH"/files/11-mousewheel.fdi usr/share/hal/fdi/policy/10osvendor
 	ypkg_dounit "hald.service"
 	ypkg_doln  /lib/systemd/system/hald.service lib/systemd/system/graphical.target.wants/"hald.service"
-}
-
-pbs_postinst() {
-	systemctl --system daemon-reload
-	start hald || return 0
 }

@@ -1,0 +1,5 @@
+. /usr/lib/ybs/funcs
+
+post_install() {
+	ypkg_groupadd -r "wheel"
+}

@@ -21,11 +21,6 @@ NOTES=""
 #DESKTOPFILE="glchess.desktop" or "/opt/test/test.desktop"
 #ICONFILE="test.png"   or "/opt/test/test.png"
 
-pbs_init() {
-	:
-	#ypkg_useradd -c "$C" -d "$D" -s "$S" -g "$G" "$N"
-}
-
 pbs_unpack() {
         ypkg_unpack
 }

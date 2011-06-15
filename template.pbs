@@ -45,6 +45,8 @@ OPTIONAL="a: support a
 #
 CONFLICT=""
 
+#
+INSTALL="$N.install"
 
 # User notes, some important tips.
 NOTES=""
@@ -55,12 +57,6 @@ NOTES=""
 
 #
 #PROVIDE="foo"
-
-#init 
-pbs_init() {
-	:
-	#ypkg_useradd -c "$C" -d "$D" -s "$S" -g "$G" "$N"
-}
 
 #unpack
 pbs_unpack() {
@@ -124,43 +120,4 @@ pbs_install() {
 #split package
 foo_install () {
 	:
-}
-
-#post install
-pbs_postinst() {
-	:
-	#gnome2_install_schema "$1"
-	#gnome2_install_defaut_gconf "$1 $2 $3
-	#gnome2_rarian_sk_update
-	#gnome2_desktop_database_update
-	#gnome2_icon_cache_update /usr/share/icons/titans|titans  $default is /usr/share/icons/hicolor
-	#gnome2_gconfd_reload
-	#gnome2_gtk_immodules_update
-	#gnome2_mime_database_update
-	#gnome2_gdk_pixbuf_loaders_update
-	#ypkg_dofont /usr/share/fonts/truetype/ttf-dejavu
-	#
-	#[ -x /usr/bin/install-info ] || return 0
-	#infodir=/usr/share/info
-	#files="aspell.info aspell-dev.info"
-	#for file in $files; do
-	#	install-info $infodir/$file.gz $infodir/dir 2>/dev/null
-	#done
-}
-
-#pre remove
-pbs_prerm() {
-	:
-}
-
-#post remove
-pbs_postrm() {
-	:
-	#
-	#[ -x /usr/bin/install-info ] || return 0
-	#infodir=/usr/share/info
-	#files="aspell.info aspell-dev.info"
-	#for file in $files; do
-	#	install-info --delete $infodir/$file.gz $infodir/dir 2>/dev/null
-	#done
 }

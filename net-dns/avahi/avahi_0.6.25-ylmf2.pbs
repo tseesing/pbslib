@@ -10,22 +10,21 @@ PACKAGER="<ylmfos@115.com>"
 SRC_URI="http://avahi.org/download/"$N-$V".tar.gz"
 
 RDEPEND="atk attr cairo dbus expat fontconfig freetype gcc gdbm glib2 glibc gtk+ libcap libdaemon libglade libpng libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libxml2 libXrandr libXrender pango pixman zlib"
-BDEPEND="desktop-file-utils dbus-python-dev pygtk-dev                                 dbus-glib-dev"
+BDEPEND="desktop-file-utils dbus-python-dev pygtk-dev dbus-glib-dev"
 RECOMMENDED=""
 
 NOTES=""
-
-pbs_init() {
-	ypkg_groupadd -r "avahi"
-	ypkg_useradd -c "avahi users" -d "/dev/null" -s "/bin/false" -r "avahi"
-	ypkg_useradd -c "avahi-autoipd users" -d "/dev/null" -s "/bin/false" -r "avahi-autoipd" 
-}
 
 pbs_unpack() {
         ypkg_unpack
 }
 
 pbs_config() {
+	#
+	ypkg_groupadd -r "avahi"
+	ypkg_useradd -c "avahi users" -d "/dev/null" -s "/bin/false" -r "avahi"
+	ypkg_useradd -c "avahi-autoipd users" -d "/dev/null" -s "/bin/false" -r "avahi-autoipd"
+	#
 	ypkg_patch desktop-not-show.patch
 	YPB_CONFIG+="--disable-qt3  
 		     --disable-static
@@ -66,8 +65,4 @@ pbs_install() {
 	mkdir -p var/run/avahi-daemon var/run/avahi-autoipd 
 	#
 	ypkg_dounit avahi-dnsconfd.service avahi-daemon.service
-}
-
-pbs_postinst() {
-	gnome2_desktop_database_update
 }

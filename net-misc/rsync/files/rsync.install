@@ -1,0 +1,11 @@
+. /usr/lib/ybs/funcs
+
+post_install() {
+	ypkg_groupadd -r "rsyncd"
+	ypkg_useradd -c "rsyncd Daemon" -d "/home/rsync" -s "/bin/false" -r -N -G "rsyncd" "rsyncd"
+}
+
+post_remove() {
+	ypkg_userdel -r "rsyncd"
+	ypkg_groupdel "rsyncd"
+}

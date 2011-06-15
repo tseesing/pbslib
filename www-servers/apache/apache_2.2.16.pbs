@@ -10,21 +10,22 @@ PACKAGER="<ylmfos@115.com>"
 SRC_URI="http://labs.renren.com/apache-mirror/httpd/httpd-"$V$R".tar.bz2"
 
 RDEPEND="apr apr-util expat glibc openssl util-linux-ng zlib"
-BDEPEND="      "
+BDEPEND=""
 RECOMMENDED=""
 
-NOTES="apache user/group should be created automatic."
+INSTALL="apache.install"
 
-pbs_init() {
-	ypkg_groupadd -r "apache"
-	ypkg_useradd -c "Apache Server" -d "/dev/null" -s "/bin/false" -r -N "apache"
-}
+NOTES="apache user/group should be created automatic."
 
 pbs_unpack() {
         ypkg_unpack
 }
 
 pbs_config() {
+	#Creat user and group 	
+	ypkg_groupadd -r "apache"
+	ypkg_useradd -c "Apache Server" -d "/dev/null" -s "/bin/false" -r -N "apache"
+
 	#The following patch modifies the layout of destination directories and among them 
 	#the build directory at /usr/lib/apache/build. This will allow the modules added to Apache to be configured without errors
 	ypkg_patch httpd-2.2.15-config-1.patch

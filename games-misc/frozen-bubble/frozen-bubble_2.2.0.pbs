@@ -29,7 +29,7 @@ pbs_build() {
 
 pbs_install() {
 	ypkg_mkinstall PREFIX=/usr install 
-	ypkg_dodesktop "$N.desktop"  "icons/frozen-bubble-icon-64x64.png"
+	ypkg_dodesktop "$N.desktop"  "$N.png"
 }
 
 pbs_postinst() {

@@ -1,0 +1,15 @@
+. /usr/lib/ybs/funcs
+
+post_install() {
+	ypkg_groupadd -r "avahi"
+	ypkg_useradd -c "avahi users" -d "/dev/null" -s "/bin/false" -r "avahi"
+	ypkg_useradd -c "avahi-autoipd users" -d "/dev/null" -s "/bin/false" -r "avahi-autoipd"
+	gnome2_desktop_database_update
+}
+
+post_remove() {
+	ypkg_userdel "avahi"
+	ypkg_userdel "avahi-autoipd"
+	ypkg_groupdel "avahi"
+	gnome2_desktop_database_update
+}

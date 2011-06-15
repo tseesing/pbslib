@@ -1,0 +1,18 @@
+. /usr/lib/ybs/funcs
+
+post_install() {
+	ypkg_groupadd -r "haldaemon"
+	ypkg_useradd -c "HAL Daemon User" -d "/dev/null" -s "/bin/false" -r -N "haldaemon"
+	systemctl --system daemon-reload
+	start hald || return 0
+}
+
+pre_remove() {
+	stop hald
+}
+
+post_remove() {
+	ypkg_userdel  "haldaemon"
+	ypkg_groupdel "haldaemon"
+	return 0
+}

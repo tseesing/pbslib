@@ -32,6 +32,8 @@ pbs_build() {
 
 pbs_install() {
 	ypkg_mkinstall
+	cd "$YPPATH_DEST"
+	ypkg_docp_rename "usr/share/icons/hicolor/32x32/apps/agave.png" "usr/share/pixmaps/agave-icon.png"
 }
 
 pbs_postinst() {

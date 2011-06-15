@@ -12,6 +12,8 @@ SRC_URI="http://rsync.samba.org/ftp/"$N"/"$N-$V$R".tar.gz"
 RDEPEND="acl popt attr"
 BDEPEND=" popt attr acl"
 
+INSTALL="$N.install"
+
 NOTES="
 \"/etc/rsyncd.conf\" - rsyncd rc file!
 motd file = /home/rsync/welcome.msg
@@ -24,11 +26,6 @@ list = yes
 uid = rsyncd
 gid = rsyncd
 "
-
-pbs_init() {
-	ypkg_groupadd -r "rsyncd"
-	ypkg_useradd -c "rsyncd Daemon" -d "/home/rsync" -s "/bin/false" -r -N -G "rsyncd" "rsyncd"
-}
 
 pbs_unpack() {
         ypkg_unpack

@@ -13,6 +13,8 @@ RDEPEND="python atk cairo dbus dbus-glib expat fontconfig freetype gcc glib2 gli
 BDEPEND="                           "
 RECOMMENDED="ypkg"
 
+INSTALL="$N.install"
+
 pbs_unpack() {
 	ypkg_unpack
 }
@@ -31,9 +33,4 @@ pbs_install() {
 	#ypkg_docp "$FILES_PATH"/files/systemd/*  lib/systemd/system
 	#for ymenu
 	ypkg_docp usr/share/icons/hicolor/24x24/apps/ycenter.png  usr/share/icons/titans/24x24/categories/
-}
-
-pbs_postinst() {
-	gnome2_desktop_database_update
-	gnome2_icon_cache_update "hicolor"
 }

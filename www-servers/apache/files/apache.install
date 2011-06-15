@@ -1,0 +1,15 @@
+. /usr/lib/ybs/funcs
+
+pre_install() {
+	ypkg_groupadd -r "apache"
+	ypkg_useradd -c "Apache Server" -d "/dev/null" -s "/bin/false" -r -N "apache"
+}
+
+post_install() {
+	chown -R apache:apache /srv/www
+}
+
+post_remove() {
+	ypkg_userdel  "apache"
+	ypkg_groupdel "apache"
+}
