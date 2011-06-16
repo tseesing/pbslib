@@ -13,6 +13,8 @@ RDEPEND="glibc gmp libtool ncurses readline"
 BDEPEND="    "
 RECOMMENDED=""
 
+INSTALL="$N.install"
+
 NOTES=""
 
 pbs_unpack() {
@@ -31,22 +33,4 @@ pbs_build() {
 
 pbs_install() {
 	ypkg_mkinstall
-}
-
-pbs_postinst() {
-	[ -x /usr/bin/install-info ] || return 0
-	infodir=/usr/share/info
-	files="r5rs.info guile-tut.info guile.info-7 guile.info-6 guile.info-5 guile.info-4 guile.info-3 guile.info-2 guile.info-1 guile.info goops.info"
-	for file in $files; do
-		install-info $infodir/$file.gz $infodir/dir 2>/dev/null
-	done
-}
-
-pbs_postrm() {
-	[ -x /usr/bin/install-info ] || return 0
-	infodir=/usr/share/info
-	files="r5rs.info guile-tut.info guile.info-7 guile.info-6 guile.info-5 guile.info-4 guile.info-3 guile.info-2 guile.info-1 guile.info goops.info"
-	for file in $files; do
-		install-info --delete $infodir/$file.gz $infodir/dir 2>/dev/null
-	done
 }

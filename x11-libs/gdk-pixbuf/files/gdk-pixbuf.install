@@ -1,0 +1,7 @@
+. /usr/lib/ybs/funcs
+
+pbs_postinst() {
+        if [ -d /usr/lib/gdk-pixbuf-2.0/2.10.0 ];then
+		gdk-pixbuf-query-loaders >/usr/lib/gdk-pixbuf-2.0/2.10.0/loaders.cache
+	fi
+}

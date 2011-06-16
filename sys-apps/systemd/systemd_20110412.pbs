@@ -11,23 +11,21 @@ PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 SRC_URI="git://anongit.freedesktop.org/systemd"
 
 RDEPEND="baselayout attr cryptsetup dbus device-mapper glibc libcap libgcrypt libgpg-error pam udev util-linux-ng"
-BDEPEND="          "
-         #vala: Don't require vala if gtk is disabled
+BDEPEND=""
 RECOMMENDED=""
+
+INSTALL="$N.install"
 
 NOTES="/etc/mtab must be a symlink to /proc/self/mounts
 To correct that, execute
 ln -sf /proc/self/mounts /etc/mtab"
-
-pbs_init() {
-	ypkg_groupadd -r "lock"  #used by var-lock.mount
-}
 
 pbs_unpack() {
         ypkg_unpack
 }
 
 pbs_config() {
+	ypkg_groupadd -r "lock"  #used by var-lock.mount
 	YPB_CONFIG+="--with-distro=gentoo 
 		     --disable-gtk
 		     --with-rootdir=/

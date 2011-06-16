@@ -10,8 +10,10 @@ PACKAGER="<ylmfos@115.com>"
 SRC_URI="ftp://lug.mtu.edu/gentoo/distfiles/"$N-$V".tar.gz"
 
 RDEPEND="atk cairo dbus dbus-glib expat fontconfig freetype gcc gconf glib2 glibc gstreamer gtk+ libglade libICE libnotify libpng libsexy libSM libwnck libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libxml2 libXrandr libXrender libXres orbit pango pixman startup-notification util-linux-ng zlib"
-BDEPEND="                                       "
+BDEPEND=""
 RECOMMENDED=""
+
+INSTALL="$N.install"
 
 NOTES=""
 
@@ -32,10 +34,4 @@ pbs_install() {
 	ypkg_mkinstall
 	ypkg_dodoc AUTHORS COPYING NEWS README
 	rm "$YPPATH_DEST"/usr/share/applications/notification-properties.desktop || return 0
-}
-
-pbs_postinst() {
-	gnome2_install_schema "/etc/gconf/schemas/notification-daemon.schemas"
-	gnome2_icon_cache_update "hicolor"
-	gnome2_gconfd_reload
 }

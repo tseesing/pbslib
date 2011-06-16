@@ -1,0 +1,10 @@
+. /usr/lib/ybs/funcs
+
+post_install() {
+	ypkg_install_info r5rs.info.gz guile-tut.info.gz guile.info-7.gz guile.info-6.gz guile.info-5.gz guile.info-4.gz guile.info-3.gz guile.info-2.gz guile.info-1.gz guile.info.gz goops.info.gz
+}       
+
+
+pre_remove() {
+        ypkg_remove_info r5rs.info.gz guile-tut.info.gz guile.info-7.gz guile.info-6.gz guile.info-5.gz guile.info-4.gz guile.info-3.gz guile.info-2.gz guile.info-1.gz guile.info.gz goops.info.gz
+}

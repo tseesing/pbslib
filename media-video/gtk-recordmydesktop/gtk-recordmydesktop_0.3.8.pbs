@@ -15,6 +15,8 @@ RDEPEND="recordmydesktop"
 BDEPEND=" "
 RECOMMENDED=""
 
+INSTALL="$N.install"
+
 NOTES=""
 
 pbs_unpack() {
@@ -31,8 +33,4 @@ pbs_build() {
 
 pbs_install() {
 	ypkg_mkinstall
-}
-
-pbs_postinst() {
-	gnome2_desktop_database_update
 }

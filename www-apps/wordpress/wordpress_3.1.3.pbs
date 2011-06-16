@@ -19,6 +19,8 @@ OPIONAL=" apache: Web server to run wordpress;
 	  cherokee: Lightweight Web server to run wordpress;
 	  mysql: Run mysql locally "
 
+INSTALL="$N.install"
+
 NOTES=""
 
 
@@ -32,13 +34,4 @@ pbs_install() {
 	cd "$YPPATH_DEST"
 	install -d -m775 srv/http/wordpress/wp-content/uploads
 	chown http:http  srv/http/wordpress/wp-content/uploads
-}
-
-pbs_postinst() {
-	echo 'Now you must configure your web server (PHP Compatible) to run Wordpress'
-}
-
-pbs_prerm() {
-	cp -r /srv/http/wordpress /srv/http/wordpress_backup
-	echo 'Your Wordpress folder were backed up to /srv/http/wordpress_backup'
 }

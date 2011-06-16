@@ -1,0 +1,18 @@
+. /usr/lib/ybs/funcs
+
+post_install() {
+	ypkg_groupadd -r "dialout"
+	gnome2_install_schema "/etc/gconf/schemas/gnome-system-tools.schemas"
+	gnome2_rarian_sk_update
+	gnome2_desktop_database_update
+	gnome2_icon_cache_update 
+	gnome2_gconfd_reload
+
+}
+
+post_remove() {
+	ypkg_groupdel "dialout"
+	gnome2_rarian_sk_update
+	gnome2_desktop_database_update
+	gnome2_gconfd_reload
+}

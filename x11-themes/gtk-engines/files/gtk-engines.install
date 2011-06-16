@@ -1,0 +1,8 @@
+. /usr/lib/ybs/funcs
+
+post_install() {
+	# libtoolize the installation
+	for dir in engines filesystems loaders; do
+		ypkg_libtool_finish /usr/lib*/gtk*/*/$dir
+	done
+}

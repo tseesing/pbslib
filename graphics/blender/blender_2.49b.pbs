@@ -18,12 +18,6 @@ CONFLICT=""
 
 NOTES=""
 
-pbs_init() {
-	:
-	#ypkg_useradd -c "$C" -d "$D" -s "$S" -g "$G" "$N"
-	#ypkg_ypkg_useradd "$N" "$C" "$D" "$S" "$G"
-}
-
 pbs_unpack() {
 	#unpard file from $YPPATH_SOURCE to current directory.
         ypkg_unpack

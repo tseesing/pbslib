@@ -8,7 +8,9 @@ HOMEPAGE="http://tango.freedesktop.org"
 SRC_URI="http://tango.freedesktop.org/releases/"$N-$V$R".tar.gz"
 
 RDEPEND=""
-BDEPEND=" imagemagick"
+BDEPEND="imagemagick"
+
+INSTALL="$N.install"
 
 pbs_unpack() {
         ypkg_unpack
@@ -24,8 +26,4 @@ pbs_build() {
 
 pbs_install() {
 	ypkg_mkinstall
-}
-
-pbs_postinst() {
-	gnome2_icon_cache_update  "Tango"
 }

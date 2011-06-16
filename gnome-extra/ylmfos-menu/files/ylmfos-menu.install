@@ -1,0 +1,5 @@
+. /usr/lib/ybs/funcs
+
+post_install() {
+	gnome2_install_defaut_gconf "string" "/apps/ymenu/orientation" "bottom"
+}       

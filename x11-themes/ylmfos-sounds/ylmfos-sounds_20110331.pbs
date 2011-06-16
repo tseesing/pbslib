@@ -14,6 +14,8 @@ RDEPEND=""
 BDEPEND=""
 RECOMMENDED=""
 
+INSTALL="$N.install"
+
 NOTES=""
 
 pbs_unpack() {
@@ -22,8 +24,4 @@ pbs_unpack() {
 
 pbs_install() {
 	ypkg_docp src/* "$YPPATH_DEST"
-}
-
-pbs_postinst() {
-	gnome2_install_defaut_gconf "string" "/desktop/gnome/sound/theme_name" "ylmfos"
 }

@@ -16,6 +16,8 @@ BDEPEND=""
 RECOMMENDED=""
 CONFLICT=""
 
+INSTALL="$N.install"
+
 NOTES=""
 
 pbs_unpack() {
@@ -35,9 +37,4 @@ pbs_build() {
 pbs_install() {
 	make INSTALL_ROOT="$YPPATH_DEST" install
 	ypkg_dodesktop "vym.desktop"  "vym.png"
-}
-
-pbs_postinst() {
-	gnome2_desktop_database_update
-	gnome2_icon_cache_update /usr/share/vym/icons
 }

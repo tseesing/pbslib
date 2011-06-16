@@ -1,0 +1,8 @@
+. /usr/lib/ybs/funcs
+
+pbs_postinst() {
+	gnome2_install_schema "/etc/gconf/schemas/notification-daemon.schemas"
+	gnome2_icon_cache_update "hicolor"
+	gnome2_gconfd_reload
+}
+

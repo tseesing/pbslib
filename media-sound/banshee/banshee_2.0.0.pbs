@@ -21,11 +21,6 @@ legacy iPod support: ipod-sharp
 libgpod-based iPod support: libgpod
 "
 
-pbs_init() {
-	:
-	#ypkg_useradd -c "$C" -d "$D" -s "$S" -g "$G" "$N"  
-}
-
 pbs_unpack() {
 	#unpard file from $YPPATH_SOURCE to current directory.
         ypkg_unpack

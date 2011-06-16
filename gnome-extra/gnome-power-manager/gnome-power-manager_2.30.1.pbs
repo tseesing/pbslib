@@ -9,9 +9,11 @@ PACKAGER="<ylmfos@115.com>"
 
 SRC_URI="http://ftp.gnome.org/pub/gnome/desktop/2.30/2.30.2/sources/"$N-$V$R".tar.bz2"
 
-RDEPEND="alsa-lib atk audiofile avahi cairo dbus dbus-glib devicekit-power eggdbus esound expat fontconfig freetype gail gcc gconf glib2 glibc gnome-panel gnome-vfs gtk+ libart_lgpl libbonobo libbonoboui libcanberra libgcrypt libgnome libgnomecanvas libgnome-keyring libgpg-error libICE libnotify libogg libpng libSM libtool libunique libusb libusb-compat libvorbis libwnck libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libxml2 libXrandr libXrender libXres openssl orbit pango pixman popt startup-notification util-linux-ng zlib"
-BDEPEND="pm-utils-dev         eggdbus                                                      "
+RDEPEND="alsa-lib atk audiofile avahi cairo dbus dbus-glib devicekit-power eggdbus esound expat fontconfig freetype gail gcc gconf glib2 glibc gnome-panel gnome-vfs gtk+ libart_lgpl libbonobo libbonoboui libcanberra libgcrypt libgnome libgnomecanvas libgnome-keyring libgpg-error libICE libnotify libogg libpng libSM libtool libunique libusb libusb-compat libvorbis libwnck libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libxml2 libXrandr libXrender libXres openssl orbit pango pixman popt startup-notification util-linux-ng zlib pm-utils"
+BDEPEND=""
 RECOMMENDED=""
+
+INSTALL="$N.install"
 
 NOTES=""
 
@@ -36,16 +38,4 @@ pbs_build() {
 pbs_install() {
 	ypkg_mkinstall
 	ypkg_dodoc AUTHORS COPYING NEWS README
-}
-
-pbs_postinst() {
-	gnome2_install_schema "/etc/gconf/schemas/gnome-power-manager.schemas"
-	#set default backlight
-	gnome2_install_defaut_gconf "int" "/apps/gnome-power-manager/backlight/brightness_ac" "85"
-	gnome2_install_defaut_gconf "int" "/apps/gnome-power-manager/backlight/brightness_dim_battery" "60"
-	#
-	gnome2_rarian_sk_update
-	gnome2_desktop_database_update
-	gnome2_icon_cache_update "hicolor"
-	gnome2_gconfd_reload
 }

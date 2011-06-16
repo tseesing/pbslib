@@ -13,6 +13,8 @@ RDEPEND=""
 BDEPEND="gnome-desktop-dev libelf-dev"
 RECOMMENDED=""
 
+INSTALL="$N.install"
+
 NOTES=""
 
 pbs_unpack() {
@@ -34,20 +36,5 @@ pbs_install() {
 	# Bugbuddy no longer interactive, so icon is pointless
 	rm -f "$YPPATH_DEST"/usr/share/applications/bug-buddy.desktop
 	rmdir -p "$YPPATH_DEST"/usr/share/applications
-	install -m755 -d "$YPPATH_DEST"/usr/share/doc/"$N-$V$R"
-	cp -a AUTHORS COPYING NEWS README "$YPPATH_DEST"/usr/share/doc/"$N-$V$R"
+	ypkg_dodoc AUTHORS COPYING NEWS README
 }
-
-pbs_postinst() {
-	gnome2_install_schema "/etc/gconf/schemas/bug-buddy.schemas"
-	gnome2_install_defaut_gconf "bool" "/apps/gnome_settings_daemon/gtk-modules/gnomebreakpad" "true"
-	gnome2_rarian_sk_update
-	gnome2_desktop_database_update
-	gnome2_icon_cache_update
-	gnome2_gconfd_reload
-}
-
-pbs_postrm() {
-	gnome2_install_defaut_gconf "bool" "/apps/gnome_settings_daemon/gtk-modules/gnomebreakpad" "false"
-}
-

@@ -9,9 +9,11 @@ PACKAGER="<ylmfos@115.com>"
 
 SRC_URI="http://downloads.sourceforge.net/sourceforge/"$N"/"$N-$V".tar.bz2"
 
-RDEPEND="mplayer expat fontconfig freetype gcc glib2 glibc libdrm libICE libpng libSM libX11 libXau libxcb libXdmcp libXext libXrender mesa qt-core udev util-linux-ng zlib"
-BDEPEND="                     faac-dev"
-RECOMMENDED="faac"
+RDEPEND="mplayer expat fontconfig freetype gcc glib2 glibc libdrm libICE libpng libSM libX11 libXau libxcb libXdmcp libXext libXrender mesa qt-core udev util-linux-ng zlib faac"
+BDEPEND=""
+RECOMMENDED=""
+
+INSTALL="$N.install"
 
 NOTES=""
 
@@ -28,29 +30,4 @@ pbs_install() {
 	ypkg_mkinstall PREFIX=/usr
 	ypkg_dodesktop "$N".desktop
 	rm "$YPPATH_DEST"/usr/share/applications/smplayer_enqueue.desktop
-}
-
-pbs_postinst() {
-	gnome2_desktop_database_update
-	gnome2_icon_cache_update "hicolor"
-	gnome2_mime_database_update
-	#The command to handle ZCAST scheme URLs
-	gnome2_install_defaut_gconf "string" "/desktop/gnome/url-handlers/zcast/command" "smplayer %s"
-	gnome2_install_defaut_gconf "bool"  "/desktop/gnome/url-handlers/zcast/enabled"  "True"
-	#The command to handle ZUNE scheme URLs
-	gnome2_install_defaut_gconf "string" "/desktop/gnome/url-handlers/zune/command" "smplayer %s"
-	gnome2_install_defaut_gconf "bool"  "/desktop/gnome/url-handlers/zune/enabled"  "True"
-	#The command to handle LASTFM scheme URLs
-	gnome2_install_defaut_gconf "string" "/desktop/gnome/url-handlers/lastfm/command" "smplayer %s"
-	gnome2_install_defaut_gconf "bool"  "/desktop/gnome/url-handlers/lastfm/enabled"  "True"
-	#The command to handle ITPC scheme URLs
-	gnome2_install_defaut_gconf "string" "/desktop/gnome/url-handlers/itpc/command" "smplayer %s"
-	gnome2_install_defaut_gconf "bool"  "/desktop/gnome/url-handlers/itpc/enabled"  "True"
-	#The command to handle FEED scheme URLs
-	gnome2_install_defaut_gconf "string" "/desktop/gnome/url-handlers/feed/command" "smplayer %s"
-	gnome2_install_defaut_gconf "bool"  "/desktop/gnome/url-handlers/feed/enabled"  "True"
-	#The command to handle ITMS scheme URLs
-	gnome2_install_defaut_gconf "string" "/desktop/gnome/url-handlers/itms/command" "smplayer %s"
-	gnome2_install_defaut_gconf "bool"  "/desktop/gnome/url-handlers/itms/enabled"  "True"
-
 }

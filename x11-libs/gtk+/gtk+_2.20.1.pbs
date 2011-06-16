@@ -14,6 +14,8 @@ RDEPEND="atk cairo cups e2fsprogs expat fontconfig freetype gail gcc glib2 glibc
 BDEPEND="gtk-doc"
 RECOMMENDED=""
 
+INSTALL="$N.install"
+
 pbs_unpack() {
         ypkg_unpack
 }
@@ -59,9 +61,4 @@ pbs_install() {
 	chmod 755 "$YPPATH_DEST"/etc/profile.d/*
 	ypkg_docp docs/faq/html/*      "$YPPATH_DEST"/usr/share/doc/"$N"/"$V$R"/faq
 	ypkg_docp docs/tutorial/html/* "$YPPATH_DEST"/usr/share/doc/"$N"/"$V$R"/tutorial
-}
-
-pbs_postinst() {
-	gnome2_gdk_pixbuf_loaders_update
-	gnome2_gtk_immodules_update
 }

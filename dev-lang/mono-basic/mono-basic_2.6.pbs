@@ -6,93 +6,30 @@ DESCRIPTION="Visual Basic .NET Runtime and Class Libraries"
 HOMEPAGE="http://www.go-mono.com"
 REPO=""
 LICENSE="GPL"
-#PRIORITY="required"
 PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 
-SRC_URI="ftp://ftp.novell.com/pub/mono/sources/moon/2.4.1/mono-basic-2.6.tar.bz2"
+SRC_URI="ftp://ftp.novell.com/pub/mono/sources/moon/2.4.1/"$N-$V$R".tar.bz2"
 
-RDEPEND=""
+RDEPEND="mono"
 BDEPEND=""
 RECOMMENDED=""
 CONFLICT=""
 
 NOTES=""
 
-#DESKTOPFILE="glchess.desktop" or "/opt/test/test.desktop"
-#ICONFILE="test.png"   or "/opt/test/test.png"
-
-pbs_init() {
-	:
-	#ypkg_useradd -c "$C" -d "$D" -s "$S" -g "$G" "$N"
-}
-
 pbs_unpack() {
         ypkg_unpack
 }
 
 pbs_config() {
-	#ypkg_patch $FILES_PATH/files/patches/*.patch 
-	#XX.patch should be found under $FILES_PATH/files or $FILES_PATH/files/patches/
-	#second, add package specified config params to YPB_CONFIG
-	#default is :
-	#YPB_CONFIG+=" --prefix=/usr
-	#	      --sysconfdir=/etc
-	#	      --localstatedir=/var
-	#             --infodir=/usr/share/info
-	#	      --mandir=/usr/share/man
-	#              --disable-static
-	#	      --enable-shared "
 	YPB_CONFIG+=""
-	#Third, call configure with $YPB_CONFIG
-	#./configure $YPB_CONFIG
 	ypkg_config
 }
 
 pbs_build() {
-	#make "$MAKEOPTS"
 	ypkg_make
 }
 
-#pbs_check() {
-#	make check
-#}
-
 pbs_install() {
-	#install everything to $YPPATH_DEST
-	#make DESTDIR="$YPPATH_DEST" install
 	ypkg_mkinstall
-	#ypkg_doinit "$N"
-	#ypkg_doinit "N".service
-	#ypkg_dodesktop "*.desktop" "*.png"
-	#ypkg_dodoc AUTHORS ChangeLog COPYING INSTALL NEWS README 
-	#ypkg_docp "$FILES_PATH/files/XXXX" "dirname"
-	#ypkg_domv "$FILES_PATH/files/XXXX" "dirname"
-	#ypkg_docp_rename "$1" "$2"
-	#ypkg_domv_rename "$1" "$2"
-	#ypkg_doln "$1 "$2"
-	#*****************
-	#when SRC_URI is deb or rpm package
-	#ypkg_docp data/*  "$YPPATH_DEST"
-}
-
-pbs_postinst() {
-	:
-	#gnome2_install_schema "$1"
-	#gnome2_install_defaut_gconf "$1 $2 $3
-	#gnome2_rarian_sk_update
-	#gnome2_desktop_database_update
-	#gnome2_icon_cache_update /usr/share/icons/titans|titans  $default is /usr/share/icons/hicolor
-	#gnome2_gconfd_reload
-	#gnome2_gtk_immodules_update
-	#gnome2_mime_database_update
-	#gnome2_gdk_pixbuf_loaders_update
-	#ypkg_dofont /usr/share/fonts/truetype/ttf-dejavu
-}
-
-pbs_prerm() {
-	:
-}
-
-pbs_postrm() {
-	:
 }

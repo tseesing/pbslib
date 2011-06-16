@@ -1,0 +1,7 @@
+. /usr/lib/ybs/funcs
+
+pbs_postinst() {
+        gnome2_gdk_pixbuf_loaders_update
+        gnome2_gtk_immodules_update
+}
+

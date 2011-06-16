@@ -15,6 +15,8 @@ RDEPEND="pixman directfb libpng libxcb libXrender expat orbit eggdbus libgcrypt 
 BDEPEND=" gconf gtk-vnc avahi vte libxml2"
 RECOMMENDED=""
 
+INSTALL="$N.install"
+
 NOTES=""
 
 pbs_unpack() {
@@ -36,12 +38,4 @@ pbs_install() {
 	# keep clean for rarian
 	rm -fr "$YPPATH_DEST"/var/lib/scrollkeeper
 	rm -fr "$YPPATH_DEST"/var/lib/log
-}
-
-pbs_postinst() {
-	gnome2_install_schema "/etc/gconf/schemas/vinagre.schemas"
-	gnome2_rarian_sk_update
-	gnome2_desktop_database_update
-	gnome2_icon_cache_update "hicolor"
-	gnome2_gconfd_reload
 }

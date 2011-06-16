@@ -16,6 +16,8 @@ BDEPEND="                                               "
 RECOMMENDED=""
 CONFLICT=""
 
+INSTALL="$N.install"
+
 NOTES="all games: aisleriot quadrapassel gnect gnomine swell-foop mahjongg gtali gnotravex gnotski glines iagno glchess gnobots2 gnibbles gnome-sudoku lightsoff"
 
 PROVIDE="gnome-games-aisleriot
@@ -55,9 +57,4 @@ gnome-games-glchess_install() {
 	ypkg_config
 	ypkg_make
 	ypkg_mkinstall
-}
-
-pbs_postinst() {
-	gnome2_desktop_database_update
-	gnome2_icon_cache_update
 }

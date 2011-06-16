@@ -16,12 +16,7 @@ post_install() {
 	gnome2_mime_database_update
 	gnome2_gdk_pixbuf_loaders_update
 	ypkg_dofont /usr/share/fonts/truetype/ttf-dejavu
-	[ -x /usr/bin/install-info ] || return 0
-	infodir=/usr/share/info
-	files="aspell.info aspell-dev.info"
-	for file in $files; do
-		install-info $infodir/$file.gz $infodir/dir 2>/dev/null
-	done
+	ypkg_install_info wget.info.gz 
 }
 
 pre_remove() {
@@ -31,10 +26,5 @@ pre_remove() {
 post_remove() {
 	ypkg_userdel -r "apache"
 	ypkg_groupdel "apache"
-	[ -x /usr/bin/install-info ] || return 0
-	infodir=/usr/share/info
-	files="aspell.info aspell-dev.info"
-	for file in $files; do
-		install-info --delete $infodir/$file.gz $infodir/dir 2>/dev/null
-	done
+	ypkg_remove_info wget.info.gz
 }

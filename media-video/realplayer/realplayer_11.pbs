@@ -14,6 +14,8 @@ RDEPEND="alsa-lib atk cairo expat fontconfig freetype gcc glib2 glibc gtk+ libpn
 BDEPEND=" "
 RECOMMENDED=""
 
+INSTALL="$N.install"
+
 pbs_unpack() {
 	ypkg_unpack
 }
@@ -34,27 +36,4 @@ pbs_install() {
 	#
 	ypkg_doln /opt/real/RealPlayer/mozilla/nphelix.so  usr/lib/mozilla/plugins/nphelix.so
 	ypkg_doln /opt/real/RealPlayer/mozilla/nphelix.xpt usr/lib/mozilla/plugins/nphelix.xpt
-}
-
-pbs_postinst() {
-	#/opt/real/RealPlayer/postinst/postinst.sh
-	/usr/bin/gconftool-2 --direct --config-source="$(/usr/bin/gconftool-2 --get-default-source)" --type string \
-	                --set /desktop/gnome/url-handlers/rtsp/command \"realplay %s\" >/dev/null 2>&1
-	/usr/bin/gconftool-2 --direct --config-source="$(/usr/bin/gconftool-2 --get-default-source)" --type boolean \
-	                --set /desktop/gnome/url-handlers/rtsp/need-terminal false >/dev/null 2>&1
-	/usr/bin/gconftool-2 --direct --config-source="$(/usr/bin/gconftool-2 --get-default-source)" --type boolean \
-	                --set /desktop/gnome/url-handlers/rtsp/enabled true >/dev/null 2>&1
-}
-
-
-pbs_prerm() {
-	:
-        #/opt/real/RealPlayer/postinst/postuninst.sh
-}
-
-pbs_postrm() {
-	:
-	#rm -r /opt/real/
-	#unlink /usr/share/realplay
-	#unlink /usr/bin/realplay
 }

@@ -8,11 +8,12 @@ REPO="stable"
 LICENSE="GPL-2"
 PACKAGER="<ylmfos@115.com>"
 
-name="yicon"
-SRC_URI="git://git.ylmf.com/"$name".git"
+SRC_URI="git://git.ylmf.com/yicon.git"
 
 RDEPEND=""
 BDEPEND=""
+
+INSTALL="$N.install"
 
 pbs_unpack() {
 	ypkg_unpack
@@ -29,15 +30,10 @@ pbs_build() {
 pbs_install() {
 	ypkg_mkinstall
 	#FIXME!
-	source=""$YPPATH_DEST"/usr/share/icons/titans/48x48/emblems/emblem-desktop.png"
+	source="$YPPATH_DEST"/usr/share/icons/titans/48x48/emblems/emblem-desktop.png
 	for i in 16 22 24 32 48 8;do
-		convert -resize "$i"x"$i" "$source" ""$YPPATH_DEST"/usr/share/icons/titans/"$i"x"$i"/emblems/emblem-desktop.png"
+		convert -resize "$i"x"$i" "$source" "$YPPATH_DEST"/usr/share/icons/titans/"$i"x"$i"/emblems/emblem-desktop.png
 	done
 	convert -resize 24x24 "$YPPATH_DEST"/usr/share/icons/titans/48x48/emblems/emblem-synchronizing.png \
 		"$YPPATH_DEST"/usr/share/icons/titans/24x24/emblems/emblem-synchronizing.png
-}
-
-pbs_postinst() {
-	gnome2_install_defaut_gconf "string" "/desktop/gnome/interface/icon_theme" "titans"
-	gnome2_icon_cache_update "titans"
 }

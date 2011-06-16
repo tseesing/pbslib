@@ -10,6 +10,8 @@ SRC_URI="http://icon-theme.freedesktop.org/releases/"$N-$V$R".tar.gz"
 RDEPEND=""
 BDEPEND=""
 
+INSTALL="$N.install"
+
 pbs_unpack() {
         ypkg_unpack
 }
@@ -20,8 +22,4 @@ pbs_config() {
 
 pbs_install() {
 	ypkg_mkinstall
-}
-
-pbs_postinst() {
-	gnome2_icon_cache_update "hicolor"
 }

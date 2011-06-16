@@ -1,0 +1,7 @@
+. /usr/lib/ybs/funcs
+
+post_install() {
+	gnome2_install_schema "/etc/gconf/schemas/yelp.schemas"
+	gnome2_desktop_database_update
+	gnome2_gconfd_reload
+} 

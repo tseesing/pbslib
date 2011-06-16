@@ -12,9 +12,11 @@ PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 SRC_URI="http://download.softagency.net/MySQL/Downloads/MySQL-5.1/"$N-$V$R".tar.gz"
 
 RDEPEND="gcc glibc ncurses zlib"
-BDEPEND="   "
+BDEPEND=""
 RECOMMENDED=""
 CONFLICT=""
+
+INSTALL="$N.install"
 
 NOTES=""
 
@@ -38,16 +40,4 @@ pbs_install() {
 	ypkg_doln /usr/lib/mysql/libmysqlclient_r.so    usr/lib/libmysqlclient_r.so
 	ypkg_doln /usr/lib/mysql/libmysqlclient.so.16   usr/lib/libmysqlclient.so.16
 	ypkg_doln /usr/lib/mysql/libmysqlclient_r.so.16 usr/lib/libmysqlclient_r.so.16 
-}
-
-pbs_postinst() {
-	[ -x /usr/bin/install-info ] || return 0
-	infodir=/usr/share/info
-	install-info $infodir/mysql.info.gz $infodir/dir 2>/dev/null
-}
-
-pbs_postrm() {
-	[ -x /usr/bin/install-info ] || return 0
-	infodir=/usr/share/info
-	install-info --delete $infodir/mysql.info.gz $infodir/dir 2>/dev/null
 }

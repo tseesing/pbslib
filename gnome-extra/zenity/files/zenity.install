@@ -1,0 +1,6 @@
+. /usr/lib/ybs/funcs
+
+post_install() {
+	gnome2_rarian_sk_update
+}       
+

@@ -13,6 +13,8 @@ RDEPEND="atk cairo dbus dbus-glib expat fontconfig freetype gcc gconf glib2 glib
 BDEPEND="gnome-doc-utils gst-plugins-good-dev                                    "
 RECOMMENDED=""
 
+INSTALL="$N.install"
+
 pbs_unpack() {
         ypkg_unpack
 }
@@ -36,14 +38,4 @@ pbs_install() {
 	# keep clean for rarian
 	rm -fr "$YPPATH_DEST"/var/lib/scrollkeeper
 	rm -fr "$YPPATH_DEST"/var/lib/log
-}
-
-pbs_postinst() {
-	gnome2_install_schema "/etc/gconf/schemas/gnome-volume-control.schemas"
-	gnome2_install_schema "/etc/gconf/schemas/gnome-sound-recorder.schemas"
-	gnome2_install_schema "/etc/gconf/schemas/gnome-audio-profiles.schemas"
-	gnome2_rarian_sk_update
-	gnome2_desktop_database_update
-	gnome2_icon_cache_update
-	gnome2_gconfd_reload
 }

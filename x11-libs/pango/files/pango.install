@@ -1,0 +1,7 @@
+. /usr/lib/ybs/funcs
+
+pbs_postinst() {
+	mkdir -p /etc/pango
+	pango-querymodules >/etc/pango/pango.modules
+}
+

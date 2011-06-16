@@ -22,6 +22,8 @@ gst-fluendo-mp3
 gst-fluendo-mpegdemux
 gst-fluendo-mpegmux"
 
+INSTALL="$N.install"
+
 pbs_unpack() {
         ypkg_unpack
 }
@@ -37,9 +39,4 @@ pbs_build() {
 
 pbs_install() {
 	ypkg_mkinstall
-}
-
-pbs_postinst() {
-	gnome2_desktop_database_update
-	gnome2_icon_cache_update
 }

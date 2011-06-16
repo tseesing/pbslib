@@ -14,15 +14,19 @@ NOTES="1. User and group polkituser should be created automatically.
 2. GDM requried complied witch consolekit, otherwise If you login using GDM, polkit authorizations will not work.
 3. member of wheel group has privilege of policykt"
 
+INSTALL="$N.install"
+
 RDEPEND="dbus dbus-glib eggdbus expat glib2 glibc pam policykit zlib"
-BDEPEND="  eggdbus      " 
+BDEPEND="" 
 
 pbs_unpack() {
         ypkg_unpack
 }
 
 pbs_config() {
-	ypkg_patch polkit-0.96-getcwd.patch 00git-pkexec-information-disclosure.patch 00git-fix-error-freeing.patch
+	ypkg_patch polkit-0.96-getcwd.patch \
+	           00git-pkexec-information-disclosure.patch \
+		   00git-fix-error-freeing.patch
 	YPB_CONFIG+=" --with-authfw=pam 
 	              --with-pam-module-dir=/lib/security
 		      --disable-introspection 
@@ -33,7 +37,6 @@ pbs_config() {
 		      --enable-man-pages 
 		      --disable-dependency-tracking 	
 		      --disable-verbose-mode 
-		       
 		      --enable-nls "
 	ypkg_config
 }
@@ -54,9 +57,4 @@ pbs_install() {
 	#chmod 4755 /usr/libexec/polkit-agent-helper-1 /usr/bin/pkexecmust
 	ypkg_docp "$FILES_PATH"/files/51-ylmfos-admin.conf   etc/polkit-1/localauthority.conf.d
 	ypkg_docp "$FILES_PATH"/files/com.ylmfos-admin.pkla  var/lib/polkit-1/localauthority/10-vendor.d
-}
-
-pbs_postinst() {
-	ypkg_groupadd -r "polkituser"
-	ypkg_useradd -c "Policy Kit Daemon User" -d "/dev/null" -s "/bin/false" -r "polkituser"
 }

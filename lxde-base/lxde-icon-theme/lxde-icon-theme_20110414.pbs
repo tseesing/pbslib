@@ -12,6 +12,8 @@ SRC_URI="git://lxde.git.sourceforge.net/gitroot/lxde/"$N""
 RDEPEND=""
 BDEPEND=" "
 
+INSTALL="$N.install"
+
 pbs_unpack() {
 	ypkg_unpack
 }
@@ -26,8 +28,4 @@ pbs_build() {
 
 pbs_install() {
 	ypkg_mkinstall
-}
-
-pbs_postinst() {
-	gnome2_icon_cache_update "nuoveXT2"
 }

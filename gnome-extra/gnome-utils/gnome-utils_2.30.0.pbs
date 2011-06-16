@@ -10,8 +10,10 @@ PACKAGER="<ylmfos@115.com>"
 SRC_URI="http://ftp.gnome.org/pub/gnome/desktop/2.30/2.30.2/sources/"$N-$V$R".tar.bz2"
 
 RDEPEND="atk cairo dbus dbus-glib expat fontconfig freetype gcc gconf glib2 glibc gtk+ libcanberra libgtop libICE libogg libpng libSM libtool libvorbis libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libXrandr libXrender orbit pango pixman util-linux-ng zlib"
-BDEPEND="gnome-desktop-dev gnome-panel-dev                                     "
+BDEPEND="gnome-desktop-dev gnome-panel-dev"
 RECOMMENDED=""
+
+INSTALL="$N.install"
 
 NOTES=""
 
@@ -37,16 +39,4 @@ pbs_install() {
 	find . -name "gnome-dictionary*" -exec rm -r {} \;  2>/dev/null
 	# keep clean for rarian
 	rm -rf var/lib/{scrollkeeper,log}
-}
-
-pbs_postinst() {
-	gnome2_install_schema  "/etc/gconf/schemas/gnome-system-log.schemas"
-	gnome2_install_schema  "/etc/gconf/schemas/gnome-search-tool.schemas"
-	gnome2_install_schema  "/etc/gconf/schemas/gnome-screenshot.schemas" 
-	gnome2_install_schema  "/etc/gconf/schemas/gnome-dictionary.schemas"
-	gnome2_install_schema  "/etc/gconf/schemas/baobab.schemas"
-	gnome2_rarian_sk_update
-	gnome2_desktop_database_update
-	gnome2_icon_cache_update
-	gnome2_gconfd_reload
 }

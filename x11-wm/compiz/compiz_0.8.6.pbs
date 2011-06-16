@@ -17,6 +17,8 @@ RDEPEND="libwnck libXres metacity libcanberra libvorbis libogg libtool gconf orb
 BDEPEND=" dbus libnotify gconf libpng glib2 gtk+ librsvg libxslt mesa metacity libgnomeui libwnck fuse"
 RECOMMENDED=""
 
+INSTALL="$N.install"
+
 pbs_unpack() {
         ypkg_unpack
 }
@@ -72,15 +74,4 @@ pbs_install() {
 	ypkg_docp "$FILES_PATH"/files/compiz-gnome.desktop "$YPPATH_DEST"/usr/share/xsessions
 	ypkg_docp "$FILES_PATH"/files/compiz-decorator "$YPPATH_DEST"/usr/bin/
 	chmod +x "$YPPATH_DEST"/usr/bin/compiz-decorator
-}
-
-pbs_postinst() {
-	gnome2_install_schema $(ls /etc/gconf/schemas/compiz-*.schemas)
-	gnome2_install_schema "/etc/gconf/schemas/gwd.schemas"
-	gnome2_desktop_database_update
-	# Fix for weird white bar around menus and dock
-	gnome2_install_defaut_gconf "string" "/apps/compiz/plugins/decoration/allscreens/options/shadow_match" "2 \!dock"
-	# set default plugin list
-	gnome2_install_defaut_gconf "list" "/apps/compiz/general/allscreens/options/active_plugins" "[core,workarounds,gnomecompat,dbus,resize,winrules,glib,svg,move,regex,decoration,png]"
-	gnome2_gconfd_reload
 }

@@ -1,0 +1,7 @@
+. /usr/lib/ybs/funcs
+
+post_install() {
+	gnome2_install_schema "/etc/gconf/schemas/nautilus-open-terminal.schemas"
+	gnome2_gconfd_reload
+}       
+

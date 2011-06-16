@@ -11,20 +11,21 @@ REPO=""
 SRC_URI="http://ftp.gnome.org/pub/gnome/desktop/2.30/2.30.2/sources/"$N-$V".tar.bz2"
 
 RDEPEND="zenity openssh alsa-lib atk audiofile avahi cairo dbus dbus-glib devicekit-power esound expat fontconfig freetype gail gcc gconf glib2 glibc gnome-panel gnome-vfs gtk+ libart_lgpl libbonobo libbonoboui libcanberra libgnome libgnomecanvas libICE libogg libpng libSM libtool libusb libusb-compat libvorbis libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libxkbfile libxklavier libxml2 libXrandr libXrender openssl orbit pam pango pixman popt util-linux-ng zlib"
-BDEPEND="consolekit-dev libglade-dev gnome-session kbproto-dev                                                         "
+BDEPEND="consolekit-dev libglade-dev gnome-session kbproto"
+
 RECOMMENDED="numlockx"
 
-NOTES="gdm user/group should be created automatically."
+INSTALL="$N.install"
 
-pbs_init() {
-	ypkg_useradd -c "gdm user" -d "/var/lib/gdm" -s "/bin/false" -r "gdm"
-}
+NOTES="gdm user/group should be created automatically."
 
 pbs_unpack() {
         ypkg_unpack
 }
 
 pbs_config() {	
+	#
+	ypkg_useradd -c "gdm user" -d "/var/lib/gdm" -s "/bin/false" -r "gdm"
 	patches=" 27_save_root_window.patch
 		  28_plymouth_transition.patch
 		  ylmfos-gdm-2.30.2-locale.patch
@@ -87,17 +88,4 @@ pbs_install() {
 	install -d -m755 var/run/"$N"/greeter/
 	#FIXME
 	sed -i 's/${exec_prefix}/\/usr/g' usr/share/gdm/autostart/LoginWindow/at-spi-registryd-wrapper.desktop
-}
-
-pbs_postinst() {
-	gnome2_install_schema "/etc/gconf/schemas/gdm-simple-greeter.schemas"
-	gnome2_install_defaut_gconf "boolean" "/apps/gdm/simple-greeter/accessibility/screen_reader_enabled" "true"
-	gnome2_rarian_sk_update
-	gnome2_desktop_database_update
-	# These GTK+ files need to be kept up to date for
-	# proper input method with additional gdm modules
-	gnome2_gtk_immodules_update
-	# update hicolor icons
-	gnome2_icon_cache_update
-	chown -R gdm:gdm /var/lib/gdm
 }

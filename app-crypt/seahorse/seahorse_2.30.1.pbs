@@ -16,6 +16,8 @@ RDEPEND="orbit avahi pixman libxml2 directfb libpng libxcb libXrender libX11 lib
 BDEPEND=" openssh gpgme gnome-keyring libnotify libgcrypt openldap-client libsoup"
 RECOMMENDED="seahorse-plugins"
 
+INSTALL="$N.install"
+
 NOTES="
 seahose is depend on avahi-daemon
 run avahidaemon before
@@ -26,16 +28,16 @@ pbs_unpack() {
 }
 
 pbs_config() {
-	YPB_CONFIG+=" --disable-schemas-install 
-		      --disable-tests 
-		      --enable-introspection=no 
-        	      --enable-ssh 
-		      --enable-pkcs11 
-		      --enable-libnotify 
-		      --enable-sharing 
-		      --enable-ldap 
-		      --enable-hkp 
-		      --enable-pgp  "
+	YPB_CONFIG+="--disable-schemas-install 
+		     --disable-tests 
+		     --enable-introspection=no 
+        	     --enable-ssh 
+		     --enable-pkcs11 
+		     --enable-libnotify 
+		     --enable-sharing 
+		     --enable-ldap 
+		     --enable-hkp 
+		     --enable-pgp"
 	ypkg_config
 }
 
@@ -46,12 +48,4 @@ pbs_build() {
 pbs_install() {
 	ypkg_mkinstall
 	ypkg_dodoc AUTHORS COPYING NEWS README 
-}
-
-pbs_postinst() {
-	gnome2_install_schema "/etc/gconf/schemas/seahorse.schemas"
-	gnome2_rarian_sk_update
-	gnome2_desktop_database_update
-	gnome2_icon_cache_update "hicolor"
-	gnome2_gconfd_reload
 }

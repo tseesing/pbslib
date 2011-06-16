@@ -10,8 +10,10 @@ PACKAGER="<ylmfos@115.com>"
 SRC_URI="http://ftp.gnome.org/pub/GNOME/desktop/2.30/2.30.2/sources/"$N-$V$R".tar.bz2"
 
 RDEPEND=""
-BDEPEND=" pygtk gnome-menus"
+BDEPEND="pygtk gnome-menus"
 RECOMMENDED=""
+
+INSTALL="$N.install"
 
 NOTES=""
 
@@ -31,8 +33,4 @@ pbs_build() {
 
 pbs_install() {
 	ypkg_mkinstall
-}
-
-pbs_postinst() {
-	gnome2_icon_cache_update
 }

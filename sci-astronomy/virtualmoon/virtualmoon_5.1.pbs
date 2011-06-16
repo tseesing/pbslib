@@ -15,6 +15,8 @@ BDEPEND=""
 RECOMMENDED=""
 CONFLICT=""
 
+INSTALL="$N.install"
+
 NOTES=""
 
 pbs_unpack() {
@@ -27,8 +29,4 @@ pbs_install() {
 	tar xf ../virtualmoon-data-5.1-linux_all.tgz -C "$YPPATH_DEST"/usr/
 	ypkg_dodoc ../licence
 	sed -i 's/\.\./\/usr\/share/g' "$YPPATH_DEST"/usr/share/applications/virtualmoon.desktop
-}
-
-pbs_postinst() {
-	gnome2_desktop_database_update
 }

@@ -9,9 +9,11 @@ PACKAGER="<ylmfos@115.com>"
  
 SRC_URI="ftp://ftp.gnome.org/pub/gnome/sources/"$N"/2.30/"$N-$V$R".tar.bz2"
 
-RDEPEND=""
-BDEPEND=" gedit"
+RDEPEND="gedit"
+BDEPEND=""
 RECOMMENDED=""
+
+INSTALL="$N.install"
 
 NOTES=""
 
@@ -33,10 +35,4 @@ pbs_install() {
 	ypkg_dodoc AUTHORS COPYING NEWS README
 	rm -fr "$YPPATH_DEST"/var/lib/scrollkeeper
 	rm -fr "$YPPATH_DEST"/var/lib/log
-}
-
-pbs_postinst() {
-	gnome2_install_schema "/etc/gconf/schemas/gedit-show-tabbar-plugin.schemas"
-	gnome2_install_schema "/etc/gconf/schemas/gedit-drawspaces.schemas"
-	gnome2_gconfd_reload
 }

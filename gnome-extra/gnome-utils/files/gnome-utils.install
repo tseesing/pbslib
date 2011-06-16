@@ -1,0 +1,14 @@
+. /usr/lib/ybs/funcs
+
+post_install() {
+	gnome2_install_schema  "/etc/gconf/schemas/gnome-system-log.schemas"
+	gnome2_install_schema  "/etc/gconf/schemas/gnome-search-tool.schemas"
+	gnome2_install_schema  "/etc/gconf/schemas/gnome-screenshot.schemas"
+	gnome2_install_schema  "/etc/gconf/schemas/gnome-dictionary.schemas"
+	gnome2_install_schema  "/etc/gconf/schemas/baobab.schemas"
+	gnome2_rarian_sk_update
+	gnome2_desktop_database_update
+	gnome2_icon_cache_update
+	gnome2_gconfd_reload
+}       
+

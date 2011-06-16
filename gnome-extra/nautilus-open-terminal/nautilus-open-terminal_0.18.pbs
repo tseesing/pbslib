@@ -10,8 +10,10 @@ PACKAGER="<ylmfos@115.com>"
 SRC_URI="http://ftp.gnome.org/pub/GNOME/sources/"$N"/"$V$R"/"$N-$V$R".tar.bz2"
 
 RDEPEND="atk cairo dbus dbus-glib expat fontconfig freetype gcc gconf glib2 glibc gnome-desktop gtk+ libICE libpng libSM libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libXrandr libXrender nautilus orbit pango pixman startup-notification util-linux-ng zlib"
-BDEPEND="                                  "
+BDEPEND=""
 RECOMMENDEd=""
+
+INSTALL="$N.install"
 
 NOTES=""
 
@@ -31,9 +33,4 @@ pbs_build() {
 pbs_install() {
 	ypkg_mkinstall
 	ypkg_dodoc AUTHORS COPYING NEWS README
-}
-
-pbs_postinst() {
-	gnome2_install_schema "/etc/gconf/schemas/nautilus-open-terminal.schemas"
-	gnome2_gconfd_reload
 }

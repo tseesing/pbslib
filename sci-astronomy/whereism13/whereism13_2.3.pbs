@@ -15,6 +15,8 @@ BDEPEND=""
 RECOMMENDED=""
 CONFLICT=""
 
+INSTALL="$N.install"
+
 NOTES=""
 
 pbs_unpack() {
@@ -27,7 +29,3 @@ pbs_install() {
 	ypkg_dodoc Distribution.txt License.txt README.html ReleaseNotes.txt
 	ypkg_dodesktop "$N.desktop"  "$N.png"
 } 
-
-pbs_postinst() {
-	gnome2_desktop_database_update
-}

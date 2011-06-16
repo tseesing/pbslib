@@ -1,0 +1,13 @@
+. /usr/lib/ybs/funcs
+
+post_install() {
+	[ -x /usr/bin/install-info ] || return 0
+	infodir=/usr/share/info
+	install-info $infodir/mysql.info.gz $infodir/dir 2>/dev/null
+}
+
+post_remove() {
+	[ -x /usr/bin/install-info ] || return 0
+	infodir=/usr/share/info
+	install-info --delete $infodir/mysql.info.gz $infodir/dir 2>/dev/null
+}

@@ -1,0 +1,9 @@
+. /usr/lib/ybs/funcs
+
+post_install() {
+	ypkg_install_info gpgme.info-2.gz gpgme.info-1.gz gpgme.info.gz  
+}       
+
+pre_remove() {
+	ypkg_remove_info gpgme.info-2.gz gpgme.info-1.gz gpgme.info.gz
+}

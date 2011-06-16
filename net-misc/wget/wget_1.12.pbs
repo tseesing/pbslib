@@ -10,6 +10,8 @@ SRC_URI="http://ftp.gnu.org/gnu/"$N"/"$N-$V$R".tar.bz2"
 RDEPEND="glibc openssl"
 BDEPEND=" "
 
+INSTALL="$N.install"
+
 pbs_unpack() {
         ypkg_unpack
 }
@@ -29,16 +31,4 @@ pbs_install() {
 		sed "s/eta(.*)/ETA/" | \
 		msgfmt - -o /tmp/wget.mo
 	ypkg_domv /tmp/wget.mo "$YPPATH_DEST"/usr/share/locale/zh_CN/LC_MESSAGES/
-}
-
-pbs_postinst() {
-	[ -x /usr/bin/install-info ] || return 0
-	infodir=/usr/share/info
-	install-info $infodir/wget.info.gz $infodir/dir 2>/dev/null
-}
-
-pbs_postrm() {
-	[ -x /usr/bin/install-info ] || return 0
-	infodir=/usr/share/info
-	install-info --delete $infodir/wget.info.gz $infodir/dir 2>/dev/null
 }

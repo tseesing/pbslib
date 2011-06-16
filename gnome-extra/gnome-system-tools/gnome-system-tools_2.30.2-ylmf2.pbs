@@ -13,17 +13,17 @@ RDEPEND="libsmbios atk cairo dbus dbus-glib eggdbus expat fontconfig freetype gc
 BDEPEND=" system-tools-backends-dev xml-twig libgnomeui-dev     eggdbus                               "
 RECOMMENDED="libgnomeui "
 
-NOTES=""
+INSTALL="$N.install"
 
-pbs_init() {
-	ypkg_groupadd -r "dialout"
-}
+NOTES=""
 
 pbs_unpack() {
         ypkg_unpack
 }
 
 pbs_config() {
+	#
+	ypkg_groupadd -r "dialout"
 	ypkg_patch user-settings-username.patch ylmfos-translate.patch change_network_png.patch
 	YPB_CONFIG+="--disable-schemas-install"
 	ypkg_config
@@ -43,12 +43,4 @@ pbs_install() {
 	#we use nautilus-share instead
 	rm usr/lib/nautilus/extensions-2.0/libnautilus-gst-shares.*
 	rm usr/share/applications/shares.desktop || return 0
-}
-
-pbs_postinst() {
-	gnome2_install_schema "/etc/gconf/schemas/gnome-system-tools.schemas"
-	gnome2_rarian_sk_update
-	gnome2_desktop_database_update
-	gnome2_icon_cache_update  "hicolor"
-	gnome2_gconfd_reload
 }

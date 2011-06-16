@@ -10,6 +10,8 @@ SRC_URI="http://www.tux.org/~bagleyd/xlock/$N-$V/$N-$V.tar.bz2"
 RDEPEND="atk cairo expat fontconfig freetype gcc glib2 glibc gtk+ libpng libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libXrandr libXrender pango pixman zlib"
 BDEPEND="                        "
 
+INSTALL="$N.install"
+
 pbs_unpack() {
         ypkg_unpack
 }
@@ -30,8 +32,4 @@ pbs_install() {
 	ypkg_docp pixmaps/m-lock.xpm "$YPPATH_DEST"/usr/share/icons/hicolor/48x48/apps/xlock.xpm
 	mkdir -p "$YPPATH_DEST"/etc/xg_launch/sys/
 	echo "+ Lock%/usr/share/icons/hicolor/32x32/apps/xlock.xpm%  Exec xlock -mode matrix" > "$YPPATH_DEST"/etc/xg_launch/sys/C05xlock
-}
-
-pbs_postinst() {
-	gnome2_icon_cache_update "hicolor"
 }

@@ -10,8 +10,10 @@ PACKAGER="<ylmfos@115.com>"
 SRC_URI="http://gstreamer.freedesktop.org/src/"$N"/"$N-$V$R".tar.bz2"
 
 RDEPEND="glib2 glibc gst-plugins-base gstreamer libxml2 python zlib"
-BDEPEND="      "
+BDEPEND=""
 RECOMMENDED=""
+
+INSTALL="$N.install"
 
 NOTES=""
 
@@ -31,8 +33,4 @@ pbs_build() {
 pbs_install() {
 	ypkg_mkinstall
 	ypkg_dodoc AUTHORS ChangeLog NEWS README TODO
-}
-
-pbs_postinst () {
-	ypkg_libtool_finish /usr/lib/python2.6/site-packages
 }

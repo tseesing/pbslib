@@ -1,0 +1,6 @@
+. /usr/lib/ybs/funcs
+
+pbs_postinst() {
+        gnome2_icon_cache_update "hicolor"
+}
+

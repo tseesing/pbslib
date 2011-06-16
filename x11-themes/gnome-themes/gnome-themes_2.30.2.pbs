@@ -13,6 +13,8 @@ RDEPEND="gtk-engines"
 BDEPEND="gtk-engines icon-naming-utils gnome-icon-theme hicolor-icon-theme"
 RECOMMENDED=""
 
+INSTALL="$N.install"
+
 pbs_unpack() {
         ypkg_unpack
 }
@@ -28,8 +30,4 @@ pbs_build() {
 
 pbs_install() {
 	ypkg_mkinstall
-}
-
-pbs_postinst() {
-	gnome2_icon_cache_update "hicolor" "Mist" "Crux"
 }

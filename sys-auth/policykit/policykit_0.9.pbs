@@ -9,20 +9,23 @@ PACKAGER="<ylmfos@115.com>"
 
 SRC_URI="http://hal.freedesktop.org/releases/PolicyKit-"$V$R".tar.gz"
 
-RDEPEND=""
-BDEPEND=" dbus-glib pam intltool docbook-xsl"
+RDEPEND="dbus-glib pam "
+BDEPEND="intltool docbook-xsl"
 RECOMMENDED=""
+
+INSTALL="$N.install"
 
 pbs_unpack() {
         ypkg_unpack
 }
 
 pbs_config() {
-	ypkg_patch  policykit-0.7-completions.patch
-	ypkg_patch  policykit-0.9-pk-debug.patch
-	ypkg_patch  policykit-0.9-pam-headers.patch
-	ypkg_patch  policykit-0.9-consolekit03.patch
-	ypkg_patch  policykit-0.9-dbus-auth.patch
+	patches=" policykit-0.7-completions.patch
+	          policykit-0.9-pk-debug.patch
+		  policykit-0.9-pam-headers.patch
+		  policykit-0.9-consolekit03.patch
+		  policykit-0.9-dbus-auth.patch "
+	ypkg_patch $patches
 	YPB_CONFIG+=" --datadir=/usr/share 
 		      --with-authdb=default 
 		      --with-authfw=pam 
@@ -30,7 +33,6 @@ pbs_config() {
 		      --enable-man-pages  
 		      --with-polkit-user=polkituser 
 		      --with-polkit-group=polkituser 
-		       
 		      --disable-selinux "
 		      #--with-os-type=gentoo \
 	ypkg_config	      
@@ -45,9 +47,4 @@ pbs_install() {
 	ypkg_dodoc doc/html
 	ypkg_docp "$FILES_PATH"/files/PolicyKit.conf "$YPPATH_DEST"/etc/PolicyKit
 	ypkg_dounit policykit-daemon.service
-}
-
-pbs_postinst() {
-	ypkg_groupadd -r "polkituser"
-	ypkg_useradd -c "Policy Kit Daemon User" -d "/dev/null" -s "/bin/false" -r -N "polkituser"
 }
