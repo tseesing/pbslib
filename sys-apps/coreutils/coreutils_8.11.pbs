@@ -8,15 +8,17 @@ HOMEPAGE="http://www.gnu.org/software/coreutils"
 SRC_URI="http://ftp.gnu.org/gnu/"$N"/"$N-$V$R".tar.gz"
 
 RDEPEND="acl attr glibc gmp libcap"
-BDEPEND="    "
+BDEPEND=""
 RECOMMENDED=""
+
+INSTALL="$N.install"
 
 pbs_unpack() {
         ypkg_unpack
 }
 
 pbs_config() {
-	YPB_CONFIG+=" --enable-no-install-program=kill,uptime "
+	YPB_CONFIG+="--enable-no-install-program=kill,uptime"
 	ypkg_config
 }
 
@@ -35,14 +37,3 @@ pbs_install() {
 	ypkg_domv usr/bin/{head,sleep,nice} 	                     bin
 }
 
-pbs_postinst() {
-	[ -x /usr/bin/install-info ] || return 0
-	infodir=/usr/share/info
-	install-info $infodir/coreutils.info.gz $infodir/dir 2>/dev/null
-}
-
-pbs_postrm() {
-	[ -x /usr/bin/install-info ] || return 0
-	infodir=/usr/share/info
-	install-info --delete $infodir/coreutils.info.gz $infodir/dir 2>/dev/null
-}

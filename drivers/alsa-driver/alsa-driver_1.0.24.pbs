@@ -16,6 +16,8 @@ BDEPEND="linux-kernel-headers"
 RECOMMENDED=""
 CONFLICT=""
 
+INSTALL="$N.install"
+
 NOTES=""
 
 pbs_unpack() {
@@ -33,7 +35,7 @@ pbs_build() {
 
 pbs_install() {
 	#ypkg_mkinstall
-	#most koes were provided by linux-kernel 
+	#most kernel modules were provided by linux-kernel 
 	ypkg_docp usb/6fire/snd-usb-6fire.ko          "$YPPATH_DEST"/lib/modules/"$(uname -r)"/kernel/sound/usb/6fire/
 	ypkg_docp pci/pdplus/snd-pdplus.ko            "$YPPATH_DEST"/lib/modules/"$(uname -r)"/kernel/sound/pci/pdplus/
 	ypkg_docp pci/hda/snd-hda-codec-nvhdmi.ko     "$YPPATH_DEST"/lib/modules/"$(uname -r)"/kernel/sound/pci/hda/
@@ -60,6 +62,3 @@ pbs_install() {
 	ypkg_dodoc doc/*
 }
 
-pbs_postinst() {
-	depmod -a
-}

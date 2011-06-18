@@ -24,14 +24,10 @@ pbs_unpack() {
 pbs_install() {
 	ypkg_docp data/*  "$YPPATH_DEST"
 	cd "$YPPATH_DEST"
-	ypkg_dodesktop "$N.desktop"
-	ypkg_docp_rename "opt/google/picasa/3.0/desktop/picasa32x32.xpm" "usr/share/pixmaps/$N.xpm"
+	ypkg_dodesktop "$N.desktop" "opt/google/picasa/3.0/desktop/picasa32x32.xpm"
 	for i in picasafontcfg showpicasascreensaver;do
 		ypkg_doln /usr/bin/"${i}" opt/google/picasa/3.0/bin/"${i}"
 	done
 	rm -rf opt/google/picasa/3.0/wine/lib/wine/wineesd.drv.so
 }
 
-pbs_postinst() {
-	gnome2_desktop_database_update
-}

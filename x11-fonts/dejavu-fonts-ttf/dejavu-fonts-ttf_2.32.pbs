@@ -12,6 +12,8 @@ SRC_URI="http://downloads.sourceforge.net/project/dejavu/dejavu/2.32/"$N-$V$R".t
 RDEPEND=""
 BDEPEND=" "
 
+INSTALL="$N.install"
+
 pbs_unpack() {
         ypkg_unpack
 }
@@ -21,6 +23,3 @@ pbs_install() {
 	ypkg_dodoc AUTHORS BUGS langcover.txt LICENSE NEWS README status.txt unicover.txt
 }
 
-pbs_postinst(){
-	ypkg_dofont /usr/share/fonts/truetype/ttf-dejavu 
-}

@@ -1,0 +1,7 @@
+. /usr/lib/ybs/funcs
+
+post_install() {
+	ypkg_libtool_finish /usr/lib/xorg/modules/extensions
+}
+
+

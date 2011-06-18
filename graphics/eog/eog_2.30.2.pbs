@@ -13,8 +13,10 @@ RDEPEND="glibc gnome-desktop libXrandr libXext startup-notification libSM util-l
          libICE gconf orbit gtk+ atk glib2 pango cairo pixman directfb libpng libxcb 
 	  libXrender fontconfig freetype libexif lcms dbus-glib dbus libjpeg-turbo libxml2 libX11
 	  libxcb libXau libXdmcp zlib expat libXi libXcursor libXcomposite libXdamage libXfixes"
-BDEPEND=" gtk+ " #exempi"
+BDEPEND=""
 RECOMMENDED=""
+
+INSTALL="$N.install"
 
 NOTES=""
 
@@ -39,10 +41,3 @@ pbs_install() {
 	rm -fr "$YPPATH_DEST"/var/lib/log
 }
 
-pbs_postinst() {
-	gnome2_install_schema "/etc/gconf/schemas/eog.schemas"
-	gnome2_rarian_sk_update
-	gnome2_desktop_database_update
-	gnome2_icon_cache_update "hicolor"
-	gnome2_gconfd_reload
-}

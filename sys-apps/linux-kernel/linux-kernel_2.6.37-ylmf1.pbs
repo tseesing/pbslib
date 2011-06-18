@@ -16,6 +16,8 @@ NOTES="http://aur.archlinux.org/packages.php?ID=40191"
 
 MYSPLIT="usr/src $N-headers"
 
+INSTALL="$N.install"
+
 pbs_unpack() {
         ypkg_unpack
 }
@@ -139,7 +141,3 @@ pbs_install() {
 	ln -sf  /usr/src/"$N-$V$R"                       "$YPPATH_DEST"/usr/src/linux
 }
 
-pbs_postinst() {
-	update-initramfs -c -k all
-	update-grub
-}

@@ -20,6 +20,8 @@ or earlier, because the ABI changed. If you cannot start X because
 of module version mismatch errors, this is your problem.
 "
 
+INSTALL="$N.install"
+
 pbs_unpack() {
         ypkg_unpack
 }
@@ -73,6 +75,3 @@ pbs_install() {
 	ypkg_doln /usr/share/fonts usr/lib/X11/fonts
 }
 
-pbs_postinst() {
-	ypkg_libtool_finish /usr/lib/xorg/modules/extensions
-}

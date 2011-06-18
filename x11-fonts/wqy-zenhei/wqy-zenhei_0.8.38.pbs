@@ -10,6 +10,8 @@ SRC_URI="http://downloads.sourceforge.net/project/wqy/wqy-zenhei/0.8.38%20%28Pan
 RDEPEND=""
 BDEPEND=""
 
+INSTALL="$N.install"
+
 pbs_unpack() {
         ypkg_unpack
 }
@@ -21,6 +23,3 @@ pbs_install() {
 	ypkg_dodoc zenheiset README INSTALL 
 }
 
-pbs_postinst() {
-	ypkg_dofont /usr/share/fonts/wenquanyi/wqy-zenhei
-}

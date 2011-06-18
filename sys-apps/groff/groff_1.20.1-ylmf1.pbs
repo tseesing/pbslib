@@ -8,7 +8,9 @@ HOMEPAGE="http://www.gnu.org/software/groff/groff.html"
 SRC_URI="ftp://ftp.gnu.org/gnu/"$N"/"$N-$V".tar.gz"
 
 RDEPEND="gcc glibc libICE libSM libX11 libXau libXaw libxcb libXdmcp libXext libXmu libXpm libXt util-linux-ng"
-BDEPEND="             "
+BDEPEND=""
+
+INSTALL="$N.install"
 
 pbs_unpack() {
         ypkg_unpack
@@ -30,20 +32,3 @@ pbs_install() {
 	ypkg_doln tbl "$YPPATH_DEST"/usr/bin/gtbl
 }
 
-pbs_postinst() {
-	[ -x /usr/bin/install-info ] || return 0
-	infodir=/usr/share/info
-	files="groff.info-3 groff.info-2 groff.info-1 groff.info"
-	for file in $files; do
-		install-info $infodir/$file.gz $infodir/dir 2>/dev/null
-	done
-}
-
-pbs_postrm() {
-	[ -x /usr/bin/install-info ] || return 0
-	infodir=/usr/share/info
-	files="groff.info-3 groff.info-2 groff.info-1 groff.info"
-	for file in $files; do
-		install-info --delete $infodir/$file.gz $infodir/dir 2>/dev/null
-	done
-}

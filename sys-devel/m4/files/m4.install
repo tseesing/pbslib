@@ -1,0 +1,9 @@
+. /usr/lib/ybs/funcs
+
+post_install() {
+        ypkg_install_info m4.info-2.gz m4.info-1.gz m4.info.gz  
+}       
+
+pre_remove() {
+        ypkg_remove_info m4.info-2.gz m4.info-1.gz m4.info.gz
+}

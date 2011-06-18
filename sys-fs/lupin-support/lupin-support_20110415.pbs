@@ -13,19 +13,13 @@ RDEPEND=""
 BDEPEND="procps"
 RECOMMENDED=""
 
+INSTALL="$N.install"
+
 pbs_unpack() {
         ypkg_unpack
 }
 
 pbs_install() {
 	ypkg_docp * "$YPPATH_DEST"
-}
-
-pbs_postinst() {
-	update-initramfs -k "$(uname -r)" -c
-}
-
-pbs_postrm() {
-	update-initramfs -k "$(uname -r)" -c
 }
 

@@ -33,7 +33,3 @@ pbs_install() {
 	ypkg_doln /opt/pps/lib/libemsnet.so.0.1.1676   usr/lib/libemsnet.so.0
 }
 
-pbs_postinst() {
-	gnome2_desktop_database_update
-}
-

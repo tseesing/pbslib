@@ -28,6 +28,3 @@ pbs_install() {
 	ypkg_docp data/*  "$YPPATH_DEST"
 }
 
-pbs_postinst() {
-	gnome2_desktop_database_update
-}

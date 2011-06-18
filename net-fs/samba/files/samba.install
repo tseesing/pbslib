@@ -1,0 +1,15 @@
+. /usr/lib/ybs/funcs
+
+post_install() {
+	ypkg_groupadd -r "nobody"
+	ypkg_useradd -c "nobody users" -d "/dev/null" -s "/bin/false" -r -N "nobody"
+	ypkg_groupadd -r "sambashare"
+	ypkg_groupadd -r "users"
+}       
+
+post_remove() {
+	ypkg_userdel  "nobody"
+	ypkg_groupdel "nobody"
+	ypkg_groupdel "users"
+	ypkg_groupdel "sambashare"
+}

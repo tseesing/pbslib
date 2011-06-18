@@ -16,6 +16,8 @@ BDEPEND=" "
 RECOMMENDED=""
 CONFLICT=""
 
+INSTALL="$N.install"
+
 NOTES=""
 
 pbs_unpack() {
@@ -30,6 +32,3 @@ pbs_install() {
 	ypkg_docp vhba.ko "$YPPATH_DEST"/lib/modules/"$(uname -r)"/extra/
 }
 
-pbs_postinst() {
-	depmod -a
-}

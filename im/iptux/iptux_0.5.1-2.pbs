@@ -12,9 +12,11 @@ PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 SRC_URI="http://iptux.googlecode.com/files/"$N-$V$R".tar.gz"
 
 RDEPEND="atk cairo dbus dbus-glib expat fontconfig freetype gcc gconf glib2 glibc gstreamer gtk+ libpng libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libxml2 libXrandr libXrender orbit pango pixman zlib"
-BDEPEND="                              "
+BDEPEND="" 
 RECOMMENDED=""
 CONFLICT=""
+
+INSTALL="$N.install"
 
 NOTES=""
 
@@ -35,6 +37,3 @@ pbs_install() {
 	ypkg_mkinstall
 }
 
-pbs_postinst() {
-	gnome2_icon_cache_update
-}

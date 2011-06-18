@@ -10,8 +10,10 @@ PACKAGER="<ylmfos@115.com>"
 SRC_URI="http://ftp.gnome.org/pub/gnome/desktop/2.30/2.30.2/sources/"$N-$V$R".tar.bz2 "
 
 RDEPEND="atk cairo dbus dbus-glib e2fsprogs eggdbus enchant evolution-data-server expat farsight2 fontconfig freetype gail gcc gconf glib2 glibc gnutls gst-plugins-base gstreamer gtk+ icu keyutils krb5 libcanberra libgcrypt libgnome-keyring libgpg-error libICE libjpeg-turbo libnotify libogg libpng libSM libsoup libtasn1 libtool libunique libvorbis libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libxml2 libXrandr libXrender libxslt libXt networkmanager nspr nss orbit pango pixman sqlite telepathy-farsight telepathy-glib udev util-linux-ng webkit zlib "
-BDEPEND=" nautilus-sendto-dev notification-daemon-dev telepathy-mission-control-dev      eggdbus                                                             "
+BDEPEND=" nautilus-sendto-dev notification-daemon-dev telepathy-mission-control-dev"
 RECOMMENDED=" telepathy-gabble telepathy-salut telepathy-haze telepathy-butterfly nautilus-sendto notification-daemon telepathy-mission-control"
+
+INSTALL="$N.install"
 
 NOTES=""
 
@@ -33,12 +35,3 @@ pbs_install() {
 	ypkg_dodoc AUTHORS COPYING NEWS README
 }
 
-pbs_postinst() {
-	gnome2_install_schema "/etc/gconf/schemas/empathy.schemas"
-	gnome2_install_defaut_gconf "bool" "/apps/empathy/notifications/notifications_focus" "True"
-	gnome2_install_defaut_gconf "bool" "/apps/empathy/ui/show_offline" "True"
-	gnome2_rarian_sk_update
-	gnome2_desktop_database_update
-	gnome2_icon_cache_update "hicolor"
-	gnome2_gconfd_reload
-}

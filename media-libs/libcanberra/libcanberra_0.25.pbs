@@ -10,8 +10,10 @@ PACKAGER="<ylmfos@115.com>"
 SRC_URI="http://0pointer.de/lennart/projects/"$N"/"$N-$V$R".tar.gz"
 
 RDEPEND="alsa-lib atk cairo expat fontconfig freetype gcc glib2 glibc gstreamer gtk+ libogg libpng libtool libvorbis libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libxml2 libXrandr libXrender pango pixman zlib"
-BDEPEND="sound-theme-freedesktop                               "
+BDEPEND="sound-theme-freedesktop"
 RECOMMENDED=""
+
+INSTALL="$N.install"
 
 pbs_unpack() {
         ypkg_unpack
@@ -34,6 +36,3 @@ pbs_install() {
 	ypkg_mkinstall
 }
 
-pbs_postinst() {
-	gnome2_install_schema "/etc/gconf/schemas/libcanberra.schemas"
-}

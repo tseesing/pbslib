@@ -10,7 +10,9 @@ PACKAGER="<ylmfos@115.com>"
 SRC_URI="http://kernel.org/pub/software/scm/"$N"/"$N-$V$R".tar.bz2"
 
 RDEPEND="curl cyrus-sasl expat glibc openldap-client openssl zlib perl python"
-BDEPEND="      "
+BDEPEND=""
+
+INSTALL="$N.install"
 
 NOTES="add some info:
 git config --system --add user.name ylmfos_user

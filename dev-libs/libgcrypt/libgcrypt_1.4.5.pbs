@@ -8,8 +8,10 @@ HOMEPAGE="http://www.gnupg.org/"
 SRC_URI="ftp://ftp.gnupg.org/gcrypt/"$N"/"$N-$V$R".tar.bz2"
 
 RDEPEND="glibc libgpg-error"
-BDEPEND="pth-dev libcap  "
+BDEPEND="pth-dev libcap"
 OPIONAL=""
+
+INSTALL="$N.install"
 
 pbs_unpack() {
         ypkg_unpack
@@ -27,14 +29,3 @@ pbs_install() {
 	ypkg_mkinstall
 }
 
-pbs_postinst() {
-	[ -x /usr/bin/install-info ] || return 0
-	infodir=/usr/share/info
-	install-info $infodir/gcrypt.info.gz $infodir/dir 2>/dev/null
-}
-
-pbs_postrm() {
-	[ -x /usr/bin/install-info ] || return 0
-	infodir=/usr/share/info
-	install-info --delete $infodir/gcrypt.info.gz $infodir/dir 2>/dev/null
-}

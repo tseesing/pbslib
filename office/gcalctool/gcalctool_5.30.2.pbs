@@ -10,8 +10,10 @@ PACKAGER="<ylmfos@115.com>"
 SRC_URI="http://ftp.gnome.org/pub/gnome/desktop/2.30/2.30.2/sources/"$N-$V$R".tar.bz2"
 
 RDEPEND="atk cairo dbus dbus-glib expat fontconfig freetype gcc gconf glib2 glibc gtk+ libpng libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libxml2 libXrandr libXrender orbit pango pixman zlib"
-BDEPEND="                             "
+BDEPEND=""
 RECOMMENDED=""
+
+INSTALL="$N.install"
 
 NOTES=""
 
@@ -33,9 +35,3 @@ pbs_install() {
 	ypkg_dodoc AUTHORS COPYING NEWS README
 }
 
-pbs_postinst() {
-	gnome2_install_schema "/etc/gconf/schemas/gcalctool.schemas"
-	gnome2_rarian_sk_update
-	gnome2_desktop_database_update
-	gnome2_gconfd_reload
-}

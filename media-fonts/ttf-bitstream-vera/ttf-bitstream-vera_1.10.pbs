@@ -13,6 +13,8 @@ RDEPEND="mkfontdir fontconfig"
 BDEPEND=""
 RECOMMENDED=""
 
+INSTALL="$N.install"
+
 NOTES=""
 
 pbs_unpack() {
@@ -25,6 +27,3 @@ pbs_install() {
 	ypkg_dodoc COPYRIGHT* README* RELEASE* 
 }
 
-pbs_postinst() {
-	ypkg_dofont /usr/share/fonts/ttf-bitstream-vera
-}

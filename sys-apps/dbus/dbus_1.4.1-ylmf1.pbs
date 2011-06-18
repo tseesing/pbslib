@@ -10,7 +10,9 @@ PACKAGER="<ylmfos@115.com>"
 SRC_URI="http://dbus.freedesktop.org/releases/"$N"/"$N-$V".tar.gz"
 
 RDEPEND="expat glibc libICE libSM libX11 libXau libxcb libXdmcp util-linux-ng"
-BDEPEND="libxml2-dev         "
+BDEPEND="libxml2-dev"
+
+INSTALL="$N.install"
 
 pbs_unpack(){
         ypkg_unpack
@@ -46,8 +48,3 @@ pbs_install() {
 	#ypkg_doln /etc/init.d/"$N" etc/rc3.d/K40"$N"
 }
 
-pbs_postinst() {
-	ypkg_groupadd -r "messagebus"
-	ypkg_useradd -c "D-BUS Message Daemon User" -d "/dev/null" -s "/bin/false" -r "messagebus"
-	dbus-uuidgen --ensure
-}

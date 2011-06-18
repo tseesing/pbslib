@@ -10,8 +10,10 @@ PACKAGER="<ylmfos@115.com>"
 SRC_URI="http://download.transmissionbt.com/files/"$N-$V$R".tar.bz2"
 
 RDEPEND="atk cairo curl cyrus-sasl dbus dbus-glib expat fontconfig freetype gcc gconf glib2 glibc gtk+ libcanberra libevent libnotify libogg libpng libtool libvorbis libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libXrandr libXrender openldap-client openssl orbit pango pixman zlib"
-BDEPEND="                                      "
+BDEPEND=""
 RECOMMENDED=""
+
+INSTALL="$N.install"
 
 NOTES=""
 
@@ -31,9 +33,3 @@ pbs_install() {
 	ypkg_mkinstall
 }
 
-pbs_postinst() {
-	gnome2_rarian_sk_update
-	gnome2_desktop_database_update
-	gnome2_gconfd_reload
-	gnome2_icon_cache_update "hicolor"
-}

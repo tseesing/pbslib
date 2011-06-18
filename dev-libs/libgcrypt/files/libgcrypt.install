@@ -1,0 +1,10 @@
+. /usr/lib/ybs/funcs
+
+post_install() {
+        ypkg_install_info gcrypt.info.gz 
+}       
+
+pre_remove() {
+        ypkg_remove_info gcrypt.info.gz
+}
+		 

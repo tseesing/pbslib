@@ -13,6 +13,8 @@ RDEPEND="device-mapper glibc"
 BDEPEND=" "
 RECOMMENDED=""
 
+INSTALL="$N.install"
+
 pbs_unpack() {
         ypkg_unpack
 }
@@ -39,10 +41,4 @@ pbs_install() {
 	ypkg_docp  "$FILES_PATH"/files/85-dmraid.rules         lib/udev/rules.d
 	ypkg_docp  "$FILES_PATH"/files/dmraid-activate         sbin
 }
-pbs_postinst() {
-	update-initramfs -k "$(uname -r)" -c
-}
 
-pbs_postrm() {
-	update-initramfs -k "$(uname -r)" -c
-}

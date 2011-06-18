@@ -10,9 +10,9 @@ PACKAGER="<ylmfos@115.com>"
 SRC_URI="ftp://ftp.gnome.org/pub/gnome/sources/"$N"/0.8/"$N-$V$R".tar.bz2"
 
 BDEPEND="docbook-xml gcc glibc libxml2 libxslt scrollkeeper zlib"
-RECOMMENDED="gcc-dev glibc-dev libxml2-dev libxslt-dev scrollkeeper-dev zlib-dev"
+RECOMMENDED=""
 
-NOTES="http://wiki.linuxfromscratch.org/blfs/wiki/rarian"
+INSTALL="$N.install"
 
 pbs_unpack() {
         ypkg_unpack
@@ -31,6 +31,3 @@ pbs_install() {
 	ypkg_mkinstall
 }
 
-pbs_postinst() {
-	gnome2_rarian_sk_update
-}

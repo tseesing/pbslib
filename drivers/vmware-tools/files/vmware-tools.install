@@ -1,0 +1,11 @@
+. /usr/lib/ybs/funcs
+
+post_install() {
+	depmod -a
+	update-initramfs -d -u
+}       
+
+post_remove() {
+	depmod -a
+	update-initramfs -d -u
+}

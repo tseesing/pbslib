@@ -1,0 +1,89 @@
+. /usr/lib/ybs/funcs
+
+glib_adjust_toolchain() {
+	local file
+	#adjust tool chain.
+	if [ -d /tools ];then
+		echo "Begin adjust tool chain..."
+		if [ -f /tools/bin/ld-new ];then
+			cp  /tools/bin/{ld-new,ld}
+			cp /tools/$(gcc -dumpmachine)/bin/{ld,ld-old} 
+			rm -f /tools/$(gcc -dumpmachine)/bin/ld
+		fi
+		if [ -f /tools/bin/ld ];then
+			ln -s /tools/bin/ld /tools/$(gcc -dumpmachine)/bin/ld
+		fi
+		#gcc libs.
+		for i in $(ls /tools/lib/libgcc_s.so* 2>/dev/null); do
+			file=${i##*/}
+			[ -f $file ] || ln -s $i /usr/lib 
+		done
+		for i in $(ls /tools/lib/libstdc++.* 2>/dev/null); do
+			file=${i##*/}
+			[ -f $file ] || ln -s $i /usr/lib 
+		done
+		#adjust gcc.
+		echo 'main(){}' > dummy.c
+		cc dummy.c -v -Wl,--verbose &> dummy.log
+		if [ $? != 0 ]; then
+			echo "[Error] compile dummy.c failed."
+			exit 1
+		fi
+		readelf -l a.out | grep ': /lib'
+		if [ "$?" != "0" ]; then
+			echo "change specs.."
+			gcc -dumpspecs | sed \
+				-e 's@/tools/lib/ld-linux.so.2@/lib/ld-linux.so.2@g' \
+				-e '/\*startfile_prefix_spec:/{n;s@.*@/usr/lib/ @}' \
+				-e '/\*cpp:/{n;s@$@ -isystem /usr/include@}' > \
+				`dirname $(gcc --print-libgcc-file-name)`/specs
+		fi
+		#check agian
+		echo 'main(){}' > dummy.c
+		cc dummy.c -v -Wl,--verbose &> dummy.log
+		if [ $? != 0 ]; then
+			echo "[Error] compile dummy.c failed."
+			exit 1
+		fi	
+		readelf -l a.out | grep ': /lib'
+		if [ $? != 0 ]; then
+			echo "[Error] gcc: not link to /lib."
+			exit 1
+		fi
+		grep -o '/usr/lib.*/crt[1in].*succeeded' dummy.log
+		if [ $? != 0 ]; then
+			echo "[Error] glib: start .o file check failed."
+			exit 1
+		fi
+		grep -B1 '^ /usr/include' dummy.log
+		if [ $? != 0 ]; then
+			echo "[Error] glib: include dir check failed."
+			exit 1
+		fi
+		rm dummy.c dummy.log a.out
+	fi
+}
+
+post_install() {
+	#install locale
+	mkdir -p /usr/lib/locale
+	localedef -i en_US -f ISO-8859-1 en_US
+	localedef -i en_US -f UTF-8 en_US.UTF-8
+	localedef -i zh_CN -f GB2312 zh_CN.GB2312
+	localedef -i zh_CN -f UTF-8 zh_CN.UTF-8
+	glib_adjust_toolchain
+	files="libc.info-9.gz libc.info-8.gz libc.info-7.gz libc.info-6.gz libc.info-5.gz libc.info-4.gz libc.info-3.gz libc.info-2.gz libc.info-11.gz libc.info-10.gz libc.info-1.gz libc.info.gz"
+	ypkg_install_info $files
+}
+
+pre_remove() {
+	#remove links
+	for i in $(ls /usr/lib/libgcc_s.so* 2>/dev/null); do
+		[ -L $i ] && unlink $i
+	done
+	for i in $(ls /usr/lib/libstdc++.* 2>/dev/null); do
+		[ -L $i ] && unlink $i
+	done
+	files="libc.info-9.gz libc.info-8.gz libc.info-7.gz libc.info-6.gz libc.info-5.gz libc.info-4.gz libc.info-3.gz libc.info-2.gz libc.info-11.gz libc.info-10.gz libc.info-1.gz libc.info.gz"
+	ypkg_remove_info $files
+}

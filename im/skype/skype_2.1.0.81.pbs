@@ -10,6 +10,8 @@ SRC_URI="http://download.skype.com/linux/"${N}"_static-"$V$R".tar.bz2"
 RDEPEND="alsa-lib expat fontconfig freetype gcc glib2 glibc libICE libSM libX11 libXau libxcb libXdmcp libXext libXi libXrandr libXrender libXScrnSaver libXv util-linux-ng zlib"
 BDEPEND=""
 
+INSTALL="$N.install"
+
 pbs_unpack() {
 	ypkg_unpack
 }
@@ -24,7 +26,3 @@ pbs_install() {
 	echo "+ skype%/opt/skype/icons/SkypeBlue_32x32.png%   Exec /opt/skype/skype" >etc/xg_launch/net/C15skype
 }
 
-pbs_postinst() {
-	gnome2_desktop_database_update
-	gnome2_gconfd_reload
-}

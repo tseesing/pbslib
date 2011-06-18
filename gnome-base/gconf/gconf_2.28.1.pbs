@@ -10,7 +10,9 @@ PACKAGER="<ylmfos@115.com>"
 SRC_URI="http://ftp.gnome.org/pub/gnome/sources/GConf/2.28/GConf-"$V$R".tar.bz2"
 
 RDEPEND="atk cairo cyrus-sasl dbus dbus-glib eggdbus expat fontconfig freetype gcc glib2 glibc gtk+ libpng libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libxml2 libXrandr libXrender openldap-client openssl orbit pango pixman polkit zlib"
-BDEPEND="     eggdbus                            "
+BDEPEND=""
+
+INSTALL="$N.install"
 
 pbs_unpack() {
         ypkg_unpack
@@ -34,16 +36,3 @@ pbs_install() {
 	install -m755 -d etc/gconf/gconf.xml.system
 }
 
-pbs_postinst() {
-	for GCONF_DIR in /etc/gconf/gconf.xml.mandatory /etc/gconf/gconf.xml.defaults;do
-		GCONF_TREE=$GCONF_DIR/%gconf-tree.xml
-		if [ ! -f "$GCONF_TREE" ]; then
-			gconf-merge-tree "$GCONF_DIR"
-			chmod 644 "$GCONF_TREE"
-			find "$GCONF_DIR" -mindepth 1 -maxdepth 1 -type d -exec rm -rf {} \;
-			rm -f "$GCONF_DIR/%gconf.xml"
-			SIGNAL_DAEMONS=yes
-		fi
- 	done
-	gnome2_gconfd_reload
-}

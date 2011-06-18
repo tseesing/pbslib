@@ -16,6 +16,8 @@ BDEPEND=" "
 RECOMMENDED=""
 CONFLICT=""
 
+INSTALL="$N.install"
+
 pbs_unpack() {
         ypkg_unpack
 }
@@ -25,6 +27,3 @@ pbs_install() {
 	ypkg_dodoc *.txt 
 }
 
-pbs_postinst() {
-	ypkg_dofont /usr/share/fonts/truetype/"$N"
-}

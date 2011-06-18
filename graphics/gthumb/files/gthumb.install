@@ -1,0 +1,24 @@
+. /usr/lib/ybs/funcs
+
+post_install() {
+	gnome2_install_schema   "/etc/gconf/schemas/gthumb_webalbums.schemas"
+	gnome2_install_schema   "/etc/gconf/schemas/gthumb-slideshow.schemas"
+	gnome2_install_schema   "/etc/gconf/schemas/gthumb_resize_images.schemas"
+	gnome2_install_schema   "/etc/gconf/schemas/gthumb_rename_series.schemas"
+	gnome2_install_schema   "/etc/gconf/schemas/gthumb-pixbuf-savers.schemas"
+	gnome2_install_schema   "/etc/gconf/schemas/gthumb-picasaweb.schemas"
+	gnome2_install_schema   "/etc/gconf/schemas/gthumb_photo_importer.schemas"
+	gnome2_install_schema   "/etc/gconf/schemas/gthumb-importer.schemas"
+	gnome2_install_schema   "/etc/gconf/schemas/gthumb_image_print.schemas"
+	gnome2_install_schema   "/etc/gconf/schemas/gthumb-gstreamer.schemas"
+	gnome2_install_schema   "/etc/gconf/schemas/gthumb_resize_options.schemas"
+	gnome2_install_schema   "/etc/gconf/schemas/gthumb_crop_options.schemas"
+	gnome2_install_schema   "/etc/gconf/schemas/gthumb-image-viewer.schemas"
+	gnome2_install_schema   "/etc/gconf/schemas/gthumb_convert_format.schemas"
+	gnome2_install_schema   "/etc/gconf/schemas/gthumb-comments.schemas"
+	gnome2_install_schema   "/etc/gconf/schemas/gthumb.schemas"
+	gnome2_rarian_sk_update
+	gnome2_desktop_database_update
+	gnome2_icon_cache_update
+	gnome2_gconfd_reload
+} 

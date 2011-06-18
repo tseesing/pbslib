@@ -1,0 +1,12 @@
+. /usr/lib/ybs/funcs
+
+post_install() {
+	#add wheel group for su
+	ypkg_groupadd -r "wheel"
+        pwconv
+        grpconv
+}
+
+post_remove() {
+	ypkg_groupdel "wheel"
+}

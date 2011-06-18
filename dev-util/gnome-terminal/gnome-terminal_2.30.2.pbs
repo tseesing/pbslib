@@ -10,8 +10,10 @@ PACKAGER="<ylmfos@115.com>"
 SRC_URI="http://ftp.gnome.org/pub/gnome/desktop/2.30/2.30.2/sources/"$N-$V$R".tar.bz2 "
 
 RDEPEND="atk cairo dbus dbus-glib expat fontconfig freetype gcc gconf glib2 glibc gtk+ libICE libpng libSM libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libXrandr libXrender ncurses orbit pango pixman util-linux-ng vte zlib"
-BDEPEND=" libgnome-dev startup-notification-dev                                  "
+BDEPEND=" libgnome-dev startup-notification-dev"
 RECOMMENDED=""
+
+INSTALL="$N.install"
 
 pbs_unpack() {
         ypkg_unpack
@@ -33,17 +35,3 @@ pbs_install() {
 	rm -fr "$YPPATH_DEST"/var/lib/log
 }	
 
-pbs_postinst() {
-	gnome2_install_schema "/etc/gconf/schemas/gnome-terminal.schemas"
-	gnome2_install_defaut_gconf "string" "/apps/gnome-terminal/profiles/Default/background_color"    "#000000000000"
-	gnome2_install_defaut_gconf "float"  "/apps/gnome-terminal/profiles/Default/background_darkness" "0.5"
-	gnome2_install_defaut_gconf "string" "/apps/gnome-terminal/profiles/Default/bold_color"          "#000000000000"
-	gnome2_install_defaut_gconf "string" "/apps/gnome-terminal/profiles/Default/foreground_color"    "#AAAAAAAAAAAA"
-	gnome2_install_defaut_gconf "string" "/apps/gnome-terminal/profiles/Default/cursor_shape"        "ibeam"
-	gnome2_install_defaut_gconf "string" "/apps/gnome-terminal/profiles/Default/font"                "Bitstream Vera Sans Mono 11"
-	gnome2_install_defaut_gconf "bool"   "/apps/gnome-terminal/profiles/Default/use_system_font"     "false"
-	gnome2_install_defaut_gconf "bool"   "/apps/gnome-terminal/profiles/Default/use_theme_colors"    "false"
-	gnome2_rarian_sk_update
-	gnome2_desktop_database_update
-	gnome2_gconfd_reload
-}

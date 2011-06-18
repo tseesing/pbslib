@@ -12,9 +12,11 @@ PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 SRC_URI="git://git.xfce.org/apps/midori"
 
 RDEPEND="atk cairo dbus dbus-glib enchant expat fontconfig freetype gail gcc glib2 glibc gnutls gst-plugins-base gstreamer gtk+ icu libgcrypt libgpg-error libICE libjpeg-turbo libnotify libpng libSM libsoup libtasn1 libunique libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libxml2 libXrandr libXrender libXScrnSaver libxslt libXt pango pixman sqlite util-linux-ng webkit zlib"
-BDEPEND="                                                "
+BDEPEND=""                    
 RECOMMENDED=""
 CONFLICT=""
+
+INSTALL="$N.install"
 
 NOTES=""
 
@@ -39,12 +41,5 @@ pbs_install() {
 	ypkg_mkinstall
 	#usage of MIME type "x-scheme-handler/http" is discouraged
 	sed -i 's/x-scheme-handler\/http;x-scheme-handler\/https;//g' "$YPPATH_DEST"/usr/share/applications/midori.desktop
-}
-
-pbs_postinst() {
-	gnome2_rarian_sk_update
-	gnome2_desktop_database_update
-	gnome2_gconfd_reload
-	gnome2_icon_cache_update "hicolor"
 }
 

@@ -16,6 +16,8 @@ BDEPEND=" "
 RECOMMENDED=""
 CONFLICT=""
 
+INSTALL="$N.install"
+
 NOTES=""
 
 pbs_unpack() {
@@ -50,7 +52,3 @@ pbs_install() {
 	chmod 755 "$YPPATH_DEST"/usr/bin/qbittorrent
 }
 
-pbs_postinst() {
-	gnome2_desktop_database_update
-	gnome2_icon_cache_update
-}

@@ -15,6 +15,8 @@ RECOMMENDED=""
 
 DESKTOPFILE="virtualbox.desktop"
 
+INSTALL="$N.install"
+
 NOTES=""
 
 pbs_unpack() {
@@ -70,29 +72,3 @@ pbs_install() {
 	ypkg_doln /lib/systemd/system/virtualbox.service "$YPPATH_DEST"/lib/systemd/system/multi-user.target.wants/virtualbox.service
 }
 
-pbs_postinst() {
-	ypkg_groupadd  "vboxusers"
-	#add users to vboxusers
-	for user in $(who |awk '{print $1}' |sort -u |xargs); do
-		/usr/sbin/usermod -aG "vboxusers"  "$user"
-	done
-	#
-	gnome2_desktop_database_update
- 	gnome2_gconfd_reload
-	depmod -a
-	rmmod vboxnetadp
-	rmmod vboxnetflt
-	rmmod vboxdrv
-	modprobe vboxdrv
-	modprobe vboxnetflt
-	modprobe vboxnetadp
-	return 0
-	#systemctl --system daemon-reload
-	#start virtualbox.service
-}
-
-pbs_prerm() {
-	for i in vboxnetflt vboxnetadp vboxdrv;do
-		grep "${i}" /proc/modules  >/dev/null 2>/dev/null && rmmod ${i} ||true
-	done
-}

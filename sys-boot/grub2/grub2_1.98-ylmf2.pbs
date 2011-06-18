@@ -7,12 +7,16 @@ HOMEPAGE="http://www.gnu.org/software/grub/grub-2.en.html"
 LICENSE="GPL-2"
 PACKAGER="<ylmfos@115.com>"
 
+PRIORITY="required"
+
 SRC_URI="ftp://alpha.gnu.org/gnu/grub/grub-"$V".tar.gz"
 
 RDEPEND="freetype glibc zlib"
 BDEPEND=""
 RECOMMENDED=""
 CONFLICT="grub"
+
+INSTALL="$N.install"
 
 NOTES=""
 
@@ -67,17 +71,3 @@ pbs_install() {
 	mv usr/sbin/grub-install{,.real}
 }
 
-pbs_postinst() {
-	if [ -x /usr/bin/install-info ]; then
-		infodir=/usr/share/info
-		install-info $infodir/grub.info.gz $infodir/dir 2>/dev/null
-	fi
-	/usr/sbin/grub-mkdevicemap
-	update-grub2
-}
-
-pbs_postrm() {
-	[ -x /usr/bin/install-info ] || return 0
-	infodir=/usr/share/info
-	install-info --delete $infodir/grub.info.gz $infodir/dir 2>/dev/null
-}

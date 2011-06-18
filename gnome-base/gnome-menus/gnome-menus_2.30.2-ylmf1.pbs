@@ -10,8 +10,10 @@ PACKAGER="<ylmfos@115.com>"
 SRC_URI=" http://ftp.gnome.org/pub/gnome/desktop/2.30/2.30.2/sources/"$N-$V".tar.bz2 "
 
 RDEPEND="glib2 glibc python zlib"
-BDEPEND="gamin-dev  gnome-desktop-dev   "
+BDEPEND="gamin-dev  gnome-desktop-dev"
 RECOMMENDED=""
+
+INSTALL="$N.install"
 
 pbs_unpack() {
         ypkg_unpack
@@ -33,8 +35,4 @@ pbs_install() {
 	ypkg_dodesktop "webapps.desktop" "webapps.png"
 	ypkg_docp "$FILES_PATH"/files/webapps.directory usr/share/desktop-directories/
 	ypkg_docp "$FILES_PATH"/files/webapps.menu      etc/xdg/menus/applications-merged/
-}
-
-pbs_postinst() {
-	gnome2_desktop_database_update
 }

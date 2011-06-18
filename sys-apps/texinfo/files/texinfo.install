@@ -1,0 +1,9 @@
+. /usr/lib/ybs/funcs
+
+post_install() {
+        ypkg_install_info texinfo-3.gz texinfo-2.gz texinfo-1.gz texinfo.gz info-stnd.info.gz info.info.gz  
+}       
+
+pre_remove() {
+        ypkg_remove_info texinfo-3.gz texinfo-2.gz texinfo-1.gz texinfo.gz info-stnd.info.gz info.info.gz
+}

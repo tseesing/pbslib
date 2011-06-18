@@ -26,6 +26,3 @@ pbs_install() {
 	ypkg_doln /opt/"$N-$V$R"/msc "$YPPATH_DEST"/usr/bin/msc
 }
 
-pbs_postinst() {
-	gnome2_desktop_database_update
-}

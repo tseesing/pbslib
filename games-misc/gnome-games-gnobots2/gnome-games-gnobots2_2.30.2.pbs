@@ -12,9 +12,11 @@ PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 SRC_URI="http://ftp.gnome.org/pub/GNOME/sources/gnome-games/2.30/gnome-games-"$V$R".tar.bz2"
 
 RDEPEND="atk cairo clutter clutter-gtk dbus dbus-glib expat fontconfig freetype gcc gconf glib2 glibc gmp gtk+ guile json-glib libcanberra libcroco libdrm libgsf libICE libogg libpng librsvg libSM libtool libvorbis libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libxml2 libXrandr libXrender libXxf86vm mesa orbit pango pixman util-linux-ng zlib"
-BDEPEND="                                               "
+BDEPEND=" "
 RECOMMENDED=""
 CONFLICT=""
+
+INSTALL="$N.install"
 
 DESKTOPFILE="gnobots2.desktop"
 
@@ -34,9 +36,4 @@ pbs_build() {
 
 pbs_install() {
 	ypkg_mkinstall
-}
-
-pbs_postinst() {
-	gnome2_desktop_database_update
-	gnome2_icon_cache_update
 }

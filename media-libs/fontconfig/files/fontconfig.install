@@ -1,0 +1,6 @@
+. /usr/lib/ybs/funcs
+
+post_install() {
+	# Creating global font cache"
+	fc-cache -srf
+}      

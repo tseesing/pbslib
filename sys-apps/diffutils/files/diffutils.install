@@ -1,0 +1,9 @@
+. /usr/lib/ybs/funcs
+
+post_install() {
+        ypkg_install_info diff.info.gz 
+}       
+
+pre_remove() {
+        ypkg_remove_info diff.info.gz
+}

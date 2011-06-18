@@ -27,11 +27,7 @@ pbs_unpack() {
 pbs_install() {
 	ypkg_docp data/*  "$YPPATH_DEST"
 	cd "$YPPATH_DEST"
-	ypkg_dodesktop   opt/dassault-systemes/draftsight/mime/dassault-systemes_draftsight.desktop
-	ypkg_docp_rename opt/dassault-systemes/draftsight/mime/pixmaps/32x32/dassault-systemes_draftsight.png  \
-	                 usr/share/pixmaps/dassault-systemes.draftsight.png   
+	ypkg_dodesktop   "opt/dassault-systemes/draftsight/mime/dassault-systemes_draftsight.desktop" \
+		 "opt/dassault-systemes/draftsight/mime/pixmaps/32x32/dassault-systemes_draftsight.png"
 }
 
-pbs_postinst() {
-	gnome2_desktop_database_update
-}

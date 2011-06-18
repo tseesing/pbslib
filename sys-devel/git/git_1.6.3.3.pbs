@@ -10,6 +10,8 @@ SRC_URI="http://kernel.org/pub/software/scm/git/$N-$V.tar.bz2"
 RDEPEND=""
 BDEPEND=""
 
+INSTALL="$N.install"
+
 pbs_unpack() {
         ypkg_unpack
 }
@@ -27,7 +29,3 @@ pbs_install() {
 	ypkg_mkinstall
 }
 
-pbs_postinst() {
-	git config --system --add user.name ylmfosuser
-	git config --system --add user.email ylmfosuser@ylmfos.com
-}

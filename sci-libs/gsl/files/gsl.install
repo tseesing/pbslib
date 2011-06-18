@@ -1,0 +1,11 @@
+. /usr/lib/ybs/funcs
+
+post_install() {
+	files="gsl-ref.info-6.gz gsl-ref.info-5.gz gsl-ref.info-4.gz gsl-ref.info-3.gz gsl-ref.info-2.gz gsl-ref.info-1.gz gsl-ref.info.gz"
+        ypkg_install_info $files 
+}       
+
+pre_remove() {
+	files="gsl-ref.info-6.gz gsl-ref.info-5.gz gsl-ref.info-4.gz gsl-ref.info-3.gz gsl-ref.info-2.gz gsl-ref.info-1.gz gsl-ref.info.gz"
+        ypkg_remove_info $files
+}

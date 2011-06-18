@@ -11,8 +11,10 @@ PACKAGER="<ylmfos@115.com>"
 SRC_URI="http://hal.freedesktop.org/releases/"$N-$V$R".tar.gz"
 
 RDEPEND="atk cairo dbus dbus-glib eggdbus expat fontconfig freetype gcc gconf glib2 glibc gtk+ hal libgcrypt libglade libgnome-keyring libgpg-error libnotify libpng libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libxml2 libXrandr libXrender nautilus orbit pango pixman zlib"
-BDEPEND="gnome-keyring-dev libgnomeui-dev     eggdbus                                 "
+BDEPEND="libgnomeui-dev "
 RECOMMENDED=""
+
+INSTALL="$N.install"
 
 pbs_unpack() {
         ypkg_unpack
@@ -29,9 +31,4 @@ pbs_build() {
 
 pbs_install() {
 	ypkg_mkinstall
-}
-
-pbs_postinst() {
-	gnome2_install_schema "/etc/gconf/schemas/gnome-mount.schemas"
-	gnome2_rarian_sk_update
 }

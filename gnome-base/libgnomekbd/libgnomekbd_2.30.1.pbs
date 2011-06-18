@@ -11,8 +11,10 @@ PACKAGER="<ylmfos@115.com>"
 SRC_URI="http://ftp.gnome.org/pub/gnome/desktop/2.30/2.30.2/sources/"$N-$V$R".tar.bz2"
 
 RDEPEND="atk cairo dbus dbus-glib expat fontconfig freetype gcc gconf glib2 glibc gtk+ libpng libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libxkbfile libxklavier libxml2 libXrandr libXrender orbit pango pixman zlib"
-BDEPEND="libbonoboui-dev gnome-keyring-dev libglade-dev  iso-codes-dev                                "
+BDEPEND="libbonoboui-dev gnome-keyring-dev libglade-dev  iso-codes-dev"
 RECOMMENDED=""
+
+INSTALL="$N.install"
 
 pbs_unpack() {
         ypkg_unpack
@@ -31,8 +33,3 @@ pbs_install() {
 	ypkg_mkinstall
 }
 
-pbs_postinst() {
-	gnome2_install_schema "/etc/gconf/schemas/desktop_gnome_peripherals_keyboard_xkb.schemas"
-	gnome2_desktop_database_update
-	gnome2_gconfd_reload
-}

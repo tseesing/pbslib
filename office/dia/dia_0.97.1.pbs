@@ -12,9 +12,11 @@ PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 SRC_URI="http://ftp.gnome.org/pub/gnome/sources/"$N"/0.97/"$N-$V$R".tar.bz2"
 
 RDEPEND="atk cairo expat fontconfig freetype gcc glib2 glibc gtk+ libart_lgpl libpng libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libxml2 libXrandr libXrender libxslt pango pixman zlib"
-BDEPEND="                           "
+BDEPEND=" "
 RECOMMENDED=""
 CONFLICT=""
+
+INSTALL="$N.install"
 
 NOTES=""
 
@@ -23,7 +25,6 @@ pbs_unpack() {
 }
 
 pbs_config() {
-	YPB_CONFIG+=""
 	ypkg_config
 }
 
@@ -35,7 +36,3 @@ pbs_install() {
 	ypkg_mkinstall
 }
 
-pbs_postinst() {
-	gnome2_desktop_database_update
-	gnome2_icon_cache_update
-}

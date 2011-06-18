@@ -1,0 +1,9 @@
+. /usr/lib/ybs/funcs
+
+post_install() {
+        ypkg_install_info aalib.info-3.gz aalib.info-2.gz aalib.info-1.gz aalib.info.gz
+}       
+
+pre_remove() {
+        ypkg_remove_info aalib.info-3.gz aalib.info-2.gz aalib.info-1.gz aalib.info.gz
+}

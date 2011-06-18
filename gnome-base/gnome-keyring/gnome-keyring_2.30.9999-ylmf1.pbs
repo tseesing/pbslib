@@ -10,8 +10,10 @@ PACKAGER="<ylmfos@115.com>"
 SRC_URI="git://git.gnome.org/gnome-keyring"
 
 RDEPEND="atk cairo dbus expat fontconfig freetype gcc glib2 glibc gtk+ libgcrypt libgpg-error libpng libtasn1 libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libXrandr libXrender pam pango pixman zlib"
-BDEPEND="                             "
+BDEPEND=" "
 RECOMMENDED=""
+
+INSTALL="$N.install"
 
 pbs_unpack() {
         ypkg_unpack
@@ -34,7 +36,3 @@ pbs_install() {
 	ypkg_mkinstall
 }
 
-pbs_postinst() {
-	gnome2_install_schema "/etc/gconf/schemas/gnome-keyring.schemas"
-	gnome2_gconfd_reload
-}

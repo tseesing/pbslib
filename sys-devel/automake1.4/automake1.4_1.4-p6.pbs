@@ -12,6 +12,8 @@ SRC_URI="http://ftp.gnu.org/gnu/automake/automake-"$V$R".tar.gz"
 RDEPEND="autoconf"
 BDEPEND=""
 
+INSTALL="$N.install"
+
 pbs_unpack() {
         ypkg_unpack
 }
@@ -31,20 +33,3 @@ pbs_install() {
 	mv "$YPPATH_DEST"/usr/bin/automake{,1.4}
 }
 
-pbs_postinst() {
-	[ -x /usr/bin/install-info ] || return 0
-	infodir=/usr/share/info
-	files="automake.info-3 automake.info-2 automake.info-1 automake.info"
-	for file in $files; do
-		install-info $infodir/$file.gz $infodir/dir 2>/dev/null
-	done
-}
-
-pbs_postrm() {
-	[ -x /usr/bin/install-info ] || return 0
-	infodir=/usr/share/info
-	files="automake.info-3 automake.info-2 automake.info-1 automake.info"
-	for file in $files; do
-		install-info --delete $infodir/$file.gz $infodir/dir 2>/dev/null
-	done
-}

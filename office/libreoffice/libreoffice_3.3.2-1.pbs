@@ -116,6 +116,8 @@ BDEPEND=""
 RECOMMENDED=""
 CONFLICT=""
 
+INSTALL="$N.install"
+
 NOTES="base on:
 https://aur.archlinux.org/packages/libreoffice-git/PKGBUILD
 http://gitorious.org/chakra-packages/apps/blobs/testing/libreoffice/PKGBUILD"
@@ -289,14 +291,3 @@ pbs_install() {
 	ln -vsf ${pkdir}/usr/lib/libreoffice/program/soffice .
 }
 
-pbs_postinst() {
-	gnome2_desktop_database_update
-	gnome2_icon_cache_update /usr/share/icons/hicolor
-	gnome2_mime_database_update
-}
-
-pbs_postrm() {
-	gnome2_desktop_database_update
-	gnome2_icon_cache_update /usr/share/icons/hicolor
-	gnome2_mime_database_update
-}

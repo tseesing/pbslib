@@ -1,0 +1,35 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="Pinpoint a simple presentation tool that hopes to avoid audience death by bullet point and instead encourage presentations containing beautiful images and small amounts of concise text in slides."
+HOMEPAGE="https://live.gnome.org/Pinpoint"
+REPO=""
+LICENSE="GPL"
+PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
+
+SRC_URI="http://ftp.gnome.org/pub/GNOME/sources/pinpoint/0.1/pinpoint-0.1.2.tar.bz2"
+
+RDEPEND="clutter "
+BDEPEND=""
+RECOMMENDED=""
+CONFLICT=""
+
+NOTES=""
+
+pbs_unpack() {
+        ypkg_unpack
+}
+
+pbs_config() {
+	YPB_CONFIG+=""
+	ypkg_config
+}
+
+pbs_build() {
+	ypkg_make
+}
+
+pbs_install() {
+	ypkg_mkinstall
+}

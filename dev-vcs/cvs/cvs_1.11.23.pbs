@@ -13,6 +13,8 @@ RDEPEND="zlib glibc"
 BDEPEND=" "
 RECOMMENDED=""
 
+INSTALL="$N.install"
+
 NOTES="
 If you want any CVS server functionality, you MUST parse server to congfigure.
 "
@@ -34,20 +36,3 @@ pbs_install() {
 	ypkg_dodoc FAQ README doc/*.pdf
 }
 
-pbs_postinst() {
-	[ -x /usr/bin/install-info ] || return 0
-	infodir=/usr/share/info
-	files="cvs.info-2 cvs.info-1 cvs.info cvsclient.info"
-	for file in $files; do
-	install-info $infodir/$file.gz $infodir/dir 2>/dev/null
-	done
-}
-
-pbs_postrm() {
-	[ -x /usr/bin/install-info ] || return 0
-	infodir=/usr/share/info
-	files="cvs.info-2 cvs.info-1 cvs.info cvsclient.info"
-	for file in $files; do
-	install-info --delete $infodir/$file.gz $infodir/dir 2>/dev/null
-	done
-}

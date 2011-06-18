@@ -10,8 +10,10 @@ PACKAGER="<ylmfos@115.com>"
 SRC_URI="http://downloads.sourceforge.net/project/"$N"/"$N"/"$N-$V$R"/"$N-$V$R".tar.bz2"
 
 RDEPEND="atk cairo cairomm device-mapper expat fontconfig freetype gcc glib2 glibc glibmm gtk+ gtkmm libpng libsigc++ libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libXrandr libXrender pango pangomm parted pixman util-linux-ng zlib"
-BDEPEND="                                "
+BDEPEND=" "
 RECOMMENDED="dosfstools jfsutils ntfsprogs e2fsprogs reiserfsprogs xfsprogs"
+
+INSTALL="$N.install"
 
 pbs_unpack() {
         ypkg_unpack
@@ -19,8 +21,8 @@ pbs_unpack() {
 
 pbs_config() {
 	ypkg_patch desktop-i18n.patch
-	YPB_CONFIG+=" --disable-schemas-install  
-		      --disable-scrollkeeper "
+	YPB_CONFIG+="--disable-schemas-install  
+		     --disable-scrollkeeper "
 	ypkg_config
 }
 
@@ -32,9 +34,3 @@ pbs_install() {
 	ypkg_mkinstall
 }
 
-pbs_postinst() {
-	gnome2_rarian_sk_update
-	gnome2_desktop_database_update
-	gnome2_icon_cache_update
-	gnome2_gconfd_reload
-}

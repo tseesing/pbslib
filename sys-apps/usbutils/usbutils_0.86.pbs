@@ -10,6 +10,8 @@ SRC_URI="http://downloads.sourceforge.net/linux-usb/"$N-$V$R".tar.gz"
 RDEPEND="glibc libusb libusb-compat"
 BDEPEND="  "
 
+INSTALL="$N.install"
+
 pbs_unpack() {
         ypkg_unpack
 }
@@ -29,6 +31,3 @@ pbs_install() {
 	ypkg_domv_rename "$YPPATH_DEST"/usr/sbin/update-usbids.sh "$YPPATH_DEST"/usr/sbin/update-usbids
 }
 
-pbs_postinst() {
-	/usr/sbin/update-usbids
-}

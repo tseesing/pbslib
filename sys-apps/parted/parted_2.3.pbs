@@ -13,6 +13,8 @@ RDEPEND="device-mapper glibc ncurses readline util-linux-ng"
 BDEPEND="    "
 RECOMMENDED=""
 
+INSTALL="$N.install"
+
 pbs_unpack() {
         ypkg_unpack
 }
@@ -38,14 +40,3 @@ pbs_install() {
 	ypkg_dodoc AUTHORS BUGS ChangeLog NEWS README THANKS TODO
 }
 
-pbs_postinst() {
-	[ -x /usr/bin/install-info ] || return 0
-	infodir=/usr/share/info
-	install-info $infodir/parted.info.gz $infodir/dir 2>/dev/null
-}
-
-pbs_postrm() {
-	[ -x /usr/bin/install-info ] || return 0
-	infodir=/usr/share/info
-	install-info --delete $infodir/parted.info.gz $infodir/dir 2>/dev/null
-}

@@ -11,6 +11,8 @@ RDEPEND="busybox-initramfs cpio module-init-tools udev findutils util-linux-ng "
 BDEPEND=""
 RECOMMENDED="fuse ntfs-3g plymouth kbd dejavu-fonts-ttf"
 
+INSTALL="$N.install"
+
 pbs_unpack() {
 	ypkg_unpack
 }
@@ -24,6 +26,3 @@ pbs_install() {
 		 etc/initramfs-tools/scripts/{init-bottom,init-premount,init-top,local-bottom,local-premount,local-top,nfs-bottom,nfs-premount,nfs-top,panic}
 }
 
-pbs_postinst() {	
-	update-initramfs -d -u 
-}

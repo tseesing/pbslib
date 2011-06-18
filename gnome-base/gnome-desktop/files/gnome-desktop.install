@@ -1,0 +1,22 @@
+. /usr/lib/ybs/funcs
+
+post_install() {
+	gnome2_rarian_sk_update
+	gnome2_desktop_database_update
+	gnome2_install_defaut_gconf "string" "/desktop/gnome/background/picture_filename"       "/usr/share/backgrounds/ylmfos/nature/ylmfos-2011.jpg"
+	gnome2_install_defaut_gconf "string" "/desktop/gnome/background/picture_options"        "zoom"
+	gnome2_install_defaut_gconf "string" "/desktop/gnome/peripherals/keyboard/bell_mode"    "off"
+	gnome2_install_defaut_gconf "bool"   "/desktop/gnome/sound/enable_esd"                  "True"
+	gnome2_install_defaut_gconf "bool"   "/desktop/gnome/sound/event_sounds"                "True"
+	gnome2_install_defaut_gconf "float"  "/desktop/gnome/font_rendering/dpi"                "96.0"
+	#
+	#gnome2_install_defaut_gconf "string" "/desktop/gnome/interface/font_name"               "Ubuntu 10"
+	gnome2_install_defaut_gconf "string" "/desktop/gnome/interface/font_name"               "WenQuanYi Micro Hei 10"
+	gnome2_install_defaut_gconf "string" "/desktop/gnome/interface/document_font_name"      "Sans 10"
+	#gnome2_install_defaut_gconf "string" "/desktop/gnome/interface/monospace_font_name"     "Monospace 10" 
+	gnome2_install_defaut_gconf "string" "/desktop/gnome/interface/monospace_font_name"     "WenQuanYi Micro Hei Mono 10"
+
+	#
+	gnome2_install_defaut_gconf "bool" "/desktop/gnome/peripherals/keyboard/remember_numlock_state"  "True"
+}
+

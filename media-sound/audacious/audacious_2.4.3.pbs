@@ -14,6 +14,8 @@ RDEPEND="libSM libICE glib2 gtk+ atk pango cairo freetype fontconfig dbus-glib d
 	 pixman libxml2 directfb libpng libxcb libXrender libXau libXdmcp glibc zlib expat"
 BDEPEND=" libglade"
 
+INSTALL="$N.install"
+
 pbs_unpack() {
         ypkg_unpack
 }
@@ -31,6 +33,3 @@ pbs_install() {
 	ypkg_dodoc README
 }
 
-pbs_postinst() {
-	gnome2_icon_cache_update "hicolor"
-}

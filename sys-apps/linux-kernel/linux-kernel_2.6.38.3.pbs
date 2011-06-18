@@ -14,6 +14,8 @@ BDEPEND="ncurses-dev"
 
 PROVIDE="linux-kernel-headers"
 
+INSTALL="$N.install"
+
 pbs_unpack() {
         ypkg_unpack
 }
@@ -137,13 +139,3 @@ linux-kernel-headers_install() {
 	ln -sf  /usr/src/"$N-$V$R"                       "$YPPATH_DEST"/usr/src/linux
 }
 
-pbs_postinst() {
-	update-initramfs -c -k "$V"-ylmfos
-	update-grub
-}
-
-pbs_postrm() {
-	[ -f /boot/initrd.img-"$V"-ylmfos ]         && rm /boot/initrd.img-"$V"-ylmfos
-	[ -f /var/lib/initramfs-tools/"$V"-ylmfos ] && rm /var/lib/initramfs-tools/"$V"-ylmfos
-	update-grub
-}

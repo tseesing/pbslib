@@ -1,0 +1,9 @@
+. /usr/lib/ybs/funcs
+
+post_install() {
+        ypkg_install_info automake.info-3.gz automake.info-2.gz automake.info-1.gz automake.info.gz  
+}       
+
+pre_remove() {
+        ypkg_remove_info automake.info-3.gz automake.info-2.gz automake.info-1.gz automake.info.gz
+}

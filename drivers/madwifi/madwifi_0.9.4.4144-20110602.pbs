@@ -29,18 +29,11 @@ pbs_build() {
 }
 
 pbs_install() {
+	INSTALL="$N.install"
 	ypkg_mkinstall
 }
 
 madwifi-utils_install() {
 	DESCRIPTION="madwifi utils"
 	ypkg_mkinstall -C tools
-}
-
-pbs_postinst() {
-	depmod -a
-}
-
-pbs_postrm() {
-	depmod -a
 }

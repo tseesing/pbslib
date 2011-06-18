@@ -12,6 +12,8 @@ RDEPEND="zlib glibc gcc"
 BDEPEND=" sys-apps/linux-kernel-ubuntu-source"
 RECOMMENDED=""
 
+INSTALL="$N.install"
+
 pbs_unpack() {
         ypkg_unpack
 }
@@ -35,10 +37,3 @@ pbs_install() {
 	done
 }
 
-pbs_postinst() {
-	depmod -a
-}
-
-pbs_postrm() {
-	depmod -a
-}

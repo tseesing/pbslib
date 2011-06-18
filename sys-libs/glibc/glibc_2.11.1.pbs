@@ -12,7 +12,9 @@ PRIORITY="required"
 SRC_URI="http://ftp.gnu.org/gnu/"$N"/"$N-$V$R".tar.bz2"
 
 RDEPEND="expat fontconfig freetype gd libjpeg-turbo libpng libX11 libXau libxcb libXdmcp libXpm zlib"
-BDEPEND="           "
+BDEPEND=""
+
+INSTALL="$N.install"
 
 pbs_unpack() {
         ypkg_unpack
@@ -67,103 +69,4 @@ pbs_install() {
 	ypkg_docp usr/share/zoneinfo/Asia/Shanghai etc/localtime
 	ypkg_docp "$FILES_PATH"/files/locale-gen   usr/sbin
 	ypkg_docp "$FILES_PATH"/files/SUPPORTED    usr/share/i18n
-}
-
-glib_adjust_toolchain() {
-	local file
-	#adjust tool chain.
-	if [ -d /tools ];then
-		echo "Begin adjust tool chain..."
-		if [ -f /tools/bin/ld-new ];then
-			cp  /tools/bin/{ld-new,ld}
-			cp /tools/$(gcc -dumpmachine)/bin/{ld,ld-old} 
-			rm -f /tools/$(gcc -dumpmachine)/bin/ld
-		fi
-		if [ -f /tools/bin/ld ];then
-			ln -s /tools/bin/ld /tools/$(gcc -dumpmachine)/bin/ld
-		fi
-		#gcc libs.
-		for i in $(ls /tools/lib/libgcc_s.so* 2>/dev/null); do
-			file=${i##*/}
-			[ -f $file ] || ln -s $i /usr/lib 
-		done
-		for i in $(ls /tools/lib/libstdc++.* 2>/dev/null); do
-			file=${i##*/}
-			[ -f $file ] || ln -s $i /usr/lib 
-		done
-		#adjust gcc.
-		echo 'main(){}' > dummy.c
-		cc dummy.c -v -Wl,--verbose &> dummy.log
-		if [ $? != 0 ]; then
-			echo "[Error] compile dummy.c failed."
-			exit 1
-		fi
-		readelf -l a.out | grep ': /lib'
-		if [ "$?" != "0" ]; then
-			echo "change specs.."
-			gcc -dumpspecs | sed \
-				-e 's@/tools/lib/ld-linux.so.2@/lib/ld-linux.so.2@g' \
-				-e '/\*startfile_prefix_spec:/{n;s@.*@/usr/lib/ @}' \
-				-e '/\*cpp:/{n;s@$@ -isystem /usr/include@}' > \
-				`dirname $(gcc --print-libgcc-file-name)`/specs
-		fi
-		#check agian
-		echo 'main(){}' > dummy.c
-		cc dummy.c -v -Wl,--verbose &> dummy.log
-		if [ $? != 0 ]; then
-			echo "[Error] compile dummy.c failed."
-			exit 1
-		fi	
-		readelf -l a.out | grep ': /lib'
-		if [ $? != 0 ]; then
-			echo "[Error] gcc: not link to /lib."
-			exit 1
-		fi
-		grep -o '/usr/lib.*/crt[1in].*succeeded' dummy.log
-		if [ $? != 0 ]; then
-			echo "[Error] glib: start .o file check failed."
-			exit 1
-		fi
-		grep -B1 '^ /usr/include' dummy.log
-		if [ $? != 0 ]; then
-			echo "[Error] glib: include dir check failed."
-			exit 1
-		fi
-		rm dummy.c dummy.log a.out
-	fi
-}
-
-pbs_postinst() {
-	#install locale
-	mkdir -p /usr/lib/locale
-	localedef -i en_US -f ISO-8859-1 en_US
-	localedef -i en_US -f UTF-8 en_US.UTF-8
-	localedef -i zh_CN -f GB2312 zh_CN.GB2312
-	localedef -i zh_CN -f UTF-8 zh_CN.UTF-8
-	glib_adjust_toolchain
-	if [ -x /usr/bin/install-info ]; then
-		infodir=/usr/share/info
-		files="libc.info-9 libc.info-8 libc.info-7 libc.info-6 libc.info-5 libc.info-4 libc.info-3 libc.info-2 libc.info-11 libc.info-10 libc.info-1 libc.info"
-		for file in $files; do
-			install-info $infodir/$file.gz $infodir/dir 2>/dev/null
-		done
-	fi
-}
-
-pbs_prerm() {
-	#remove links
-	for i in $(ls /usr/lib/libgcc_s.so* 2>/dev/null); do
-		[ -L $i ] && unlink $i
-	done
-	for i in $(ls /usr/lib/libstdc++.* 2>/dev/null); do
-		[ -L $i ] && unlink $i
-	done
-	if [ -x /usr/bin/install-info ]; then
-		infodir=/usr/share/info
-		files="libc.info-9 libc.info-8 libc.info-7 libc.info-6 libc.info-5 libc.info-4 libc.info-3 libc.info-2 libc.info-11 libc.info-10 libc.info-1 libc.info"
-		for file in $files; do
-			install-info --delete $infodir/$file.gz $infodir/dir 2>/dev/null
-		done
-	fi
-	return 0
 }

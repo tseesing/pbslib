@@ -13,6 +13,8 @@ SRC_URI="http://prdownloads.sourceforge.net/"$N"/"$N-$V$R".tar.bz2"
 RDEPEND="glibc"
 BDEPEND=""
 
+INSTALL="$N.install"
+
 pbs_unpack() {
         ypkg_unpack
 }
@@ -34,23 +36,5 @@ pbs_install() {
 exec /usr/bin/flex -l "$@"
 EOF
 	chmod 755 "$YPPATH_DEST"/usr/bin/lex	
-}
-
-pbs_postinst() {
-	[ -x /usr/bin/install-info ] || return 0
-	infodir=/usr/share/info
-	files="flex.info-2 flex.info-1 flex.info"
-	for file in $files; do
-		install-info $infodir/$file.gz $infodir/dir 2>/dev/null
-	done
-}
-
-pbs_postrm() {
-	[ -x /usr/bin/install-info ] || return 0
-	infodir=/usr/share/info
-	files="flex.info-2 flex.info-1 flex.info"
-	for file in $files; do
-		install-info --delete $infodir/$file.gz $infodir/dir 2>/dev/null
-	done
 }
 

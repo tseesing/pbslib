@@ -10,8 +10,10 @@ PACKAGER="<ylmfos@115.com>"
 SRC_URI="http://download.virtualbox.org/virtualbox/3.2.8/VirtualBox-3.2.8-OSE.tar.bz2"
 
 RDEPEND=""
-BDEPEND=" bin86 dev86 acpica"
+BDEPEND="bin86 dev86 acpica"
 RECOMMENDED=""
+
+INSTALL="$N.install"
 
 NOTES=""
 
@@ -46,7 +48,3 @@ pbs_install() {
 	cd -
 }
 
-pbs_postinst()
-{
-	ypkg_groupadd "vboxusers"
-}

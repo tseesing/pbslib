@@ -13,6 +13,8 @@ SRC_URI="http://downloads.sourceforge.net/aa-project/"$N-$V"rc5.tar.gz"
 RDEPEND="glibc libX11 libXau libxcb libXdmcp ncurses"
 BDEPEND="     "
 
+INSTALL="$N.install"
+
 pbs_unpack(){
         ypkg_unpack
 }
@@ -30,20 +32,3 @@ pbs_install() {
 	ypkg_dodoc AUTHORS ChangeLog COPYING INSTALL NEWS README 
 }
 
-pbs_postinst() {
-	[ -x /usr/bin/install-info ] || return 0
-	infodir=/usr/share/info
-	files="aalib.info-3 aalib.info-2 aalib.info-1 aalib.info"
-	for file in $files; do
-		install-info $infodir/$file.gz $infodir/dir 2>/dev/null
-	done
-}
-
-pbs_postrm() {
-	[ -x /usr/bin/install-info ] || return 0
-	infodir=/usr/share/info
-	files="aalib.info-3 aalib.info-2 aalib.info-1 aalib.info"
-	for file in $files; do
-		install-info --delete $infodir/$file.gz $infodir/dir 2>/dev/null
-	done
-}

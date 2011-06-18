@@ -19,6 +19,8 @@ BDEPEND=" "
 RECOMMENDED="perlmagick goo-canvas-perl net-dbus-glib-perl image-exiftool-perl x11-protocol-perl cairo-perl"
 CONFLICT=""
 
+INSTALL="$N.install"
+
 NOTES=""
 
 pbs_unpack() {
@@ -28,10 +30,5 @@ pbs_unpack() {
 pbs_install() {
 	ypkg_patch ylmfos-desktop-i18n.patch
 	ypkg_docp bin share "$YPPATH_DEST"/usr
-}
-
-pbs_postinst() {
-	gnome2_desktop_database_update
-	gnome2_icon_cache_update
 }
 

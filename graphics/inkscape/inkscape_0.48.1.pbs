@@ -14,6 +14,8 @@ RDEPEND="glibmm gc gsl poppler imagemagick"
 BDEPEND=""
 RECOMMENDED=""
 
+INSTALL="$N.install"
+
 NOTES=""
 
 pbs_unpack() {
@@ -33,6 +35,3 @@ pbs_install() {
 	ypkg_dodoc AUTHORS ChangeLog COPYING INSTALL NEWS README
 }
 
-pbs_postinst() {
-	gnome2_icon_cache_update "hicolor"
-}

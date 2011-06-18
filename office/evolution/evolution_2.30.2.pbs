@@ -19,6 +19,8 @@ RECOMMENDED=""
 
 NOTES=""
 
+INSTALL="$N.install"
+
 pbs_unpack() {
         ypkg_unpack
 }
@@ -49,22 +51,3 @@ pbs_install() {
 	rm -fr "$YPPATH_DEST"/var/lib/log
 }
 
-pbs_postinst() {
-	gnome2_install_schema  "/etc/gconf/schemas/apps_evolution_addressbook.schemas"
-	gnome2_install_schema  "/etc/gconf/schemas/apps-evolution-template-placeholders.schemas"
-	gnome2_install_schema  "/etc/gconf/schemas/apps_evolution_email_custom_header.schemas"
-	gnome2_install_schema  "/etc/gconf/schemas/apps-evolution-attachment-reminder.schemas"
-	gnome2_install_schema  "/etc/gconf/schemas/apps-evolution-mail-notification.schemas"
-	gnome2_install_schema  "/etc/gconf/schemas/apps-evolution-mail-prompts-checkdefault.schemas"
-	gnome2_install_schema  "/etc/gconf/schemas/bogo-junk-plugin.schemas"
-	gnome2_install_schema  "/etc/gconf/schemas/apps_evolution_calendar.schemas"
-	gnome2_install_schema  "/etc/gconf/schemas/evolution-mail.schemas"
-	gnome2_install_schema  "/etc/gconf/schemas/apps_evolution_shell.schemas"
-	gnome2_install_defaut_gconf "bool" "/apps/evolution/shell/skip_warning_dialog" "True"
-	gnome2_install_defaut_gconf "string" "/desktop/gnome/url-handlers/mailto/command" "evolution %s"
-	gnome2_install_defaut_gconf "bool" "/desktop/gnome/url-handlers/mailto/enabled" "True"
-	gnome2_rarian_sk_update
-	gnome2_desktop_database_update
-	gnome2_icon_cache_update "hicolor"
-	gnome2_gconfd_reload
-}

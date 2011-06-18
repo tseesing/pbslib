@@ -13,6 +13,8 @@ RDEPEND="glibc libgpg-error"
 BDEPEND=" "
 RECOMMENDED=""
 
+INSTALL="$N.install"
+
 NOTES=""
 
 pbs_unpack() {
@@ -32,15 +34,3 @@ pbs_install() {
 	ypkg_dodoc AUTHORS ChangeLog COPYING INSTALL NEWS README
 }
 
-
-pbs_postinst() {
-	[ -x /usr/bin/install-info ] || return 0
-	infodir=/usr/share/info
-	install-info $infodir/ksba.info.gz $infodir/dir 2>/dev/null
-}
-
-pbs_postrm() {
-	[ -x /usr/bin/install-info ] || return 0
-	infodir=/usr/share/info
-	install-info --delete $infodir/ksba.info.gz $infodir/dir 2>/dev/null
-}

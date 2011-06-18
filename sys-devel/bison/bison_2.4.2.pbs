@@ -10,6 +10,8 @@ SRC_URI="http://ftp.gnu.org/gnu/"$N"/"$N-$V$R".tar.bz2"
 RDEPEND="glibc"
 BDEPEND=""
 
+INSTALL="$N.install"
+
 pbs_unpack() {
         ypkg_unpack
 }
@@ -30,14 +32,3 @@ pbs_install() {
 	ypkg_mkinstall
 }
 
-pbs_postinst() {
-	[ -x /usr/bin/install-info ] || return 0
-	infodir=/usr/share/info
-	install-info $infodir/bison.info.gz $infodir/dir 2>/dev/null
-}
-
-pbs_postrm() {
-	[ -x /usr/bin/install-info ] || return 0
-	infodir=/usr/share/info
-	install-info --delete $infodir/bison.info.gz $infodir/dir 2>/dev/null
-}

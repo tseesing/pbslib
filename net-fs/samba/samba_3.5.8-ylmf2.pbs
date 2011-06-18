@@ -11,8 +11,10 @@ PACKAGER="<ylmfos@115.com>"
 SRC_URI="http://"$N".org/"$N"/ftp/stable/"$N-$V".tar.gz"
 
 RDEPEND="acl attr avahi cups cyrus-sasl dbus e2fsprogs gamin gcc glibc gnutls keyutils krb5 libcap libgcrypt libgpg-error libtasn1 ncurses openldap-client openssl pam popt readline talloc zlib"
-BDEPEND="                        "
+BDEPEND=""
 RECOMMENDED=""
+
+INSTALL="$N.install"
 
 NOTES="nobody/sambashare/users group created automatically."
 
@@ -46,9 +48,3 @@ pbs_install() {
 	ypkg_doln /lib/systemd/system/nmbd.service     nmbd.service
 }
 
-pbs_postinst() {
-	ypkg_groupadd -r "nobody"
-	ypkg_useradd -c "nobody users" -d "/dev/null" -s "/bin/false" -r -N "nobody"
-	ypkg_groupadd -r "sambashare"
-	ypkg_groupadd -r "users"
-}

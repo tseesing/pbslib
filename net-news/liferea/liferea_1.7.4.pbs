@@ -10,8 +10,10 @@ PACKAGER="<ylmfos@115.com>"
 SRC_URI=" http://downloads.sourceforge.net/project/"$N"/Liferea%20Unstable/"$V$R"/"$N-$V$R".tar.gz "
 
 RDEPEND="atk cairo dbus dbus-glib enchant expat fontconfig freetype gail gcc gconf glib2 glibc gnutls gst-plugins-base gstreamer gtk+ icu libgcrypt libgpg-error libICE libjpeg-turbo libnotify libpng libSM libsoup libtasn1 libunique libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libxml2 libXrandr libXrender libxslt libXt orbit pango pixman sqlite util-linux-ng webkit zlib"
-BDEPEND="                                                 "
+BDEPEND=" "
 RECOMMENDED=""
+
+INSTALL="$N.install"
 
 NOTES=""
 
@@ -37,10 +39,3 @@ pbs_install() {
 	ypkg_dodoc AUTHORS COPYING README 
 }
 
-pbs_postinst() {
-	gnome2_install_schema "/etc/gconf/schemas/liferea.schemas"
-	gnome2_rarian_sk_update
-	gnome2_desktop_database_update
-	gnome2_icon_cache_update  "hicolor"
-	gnome2_gconfd_reload
-}

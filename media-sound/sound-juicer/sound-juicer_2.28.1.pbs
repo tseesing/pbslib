@@ -6,12 +6,15 @@ DESCRIPTION="CD ripper for GNOME 2"
 HOMEPAGE="http://www.burtonini.com/blog/computers/sound-juicer/"
 LICENSE="GPL-2"
 PACKAGER="<ylmfos@115.com>"
+REPO="testing"
 
 SRC_URI="http://ftp.gnome.org/pub/gnome/sources/"$N"/2.28/"$N-$V$R".tar.bz2"
 
 RDEPEND=""
-BDEPEND=" brasero gnome-media libcanberra libmusicbrainz"
+BDEPEND="brasero-dev gnome-media-dev libcanberra-dev libmusicbrainz-dev"
 RECOMMENDED=""
+
+INSTALL="$N.install"
 
 pbs_unpack() {
         ypkg_unpack
@@ -29,11 +32,3 @@ pbs_install() {
 	ypkg_mkinstall
 }
 
-pbs_postinst() {
-	gnome2_install_schema /etc/gconf/schemas/sound-juicer.schemas
-	gnome2_rarian_sk_update
-	gnome2_desktop_database_update
-	gnome2_icon_cache_update
-	gnome2_gconfd_reload
-
-}

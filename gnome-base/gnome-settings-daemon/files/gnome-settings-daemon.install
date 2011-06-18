@@ -1,0 +1,17 @@
+. /usr/lib/ybs/funcs
+
+post_install() {
+	gnome2_install_schema  "/etc/gconf/schemas/apps_gnome_settings_daemon_xrandr.schemas"
+	gnome2_install_schema  "/etc/gconf/schemas/desktop_gnome_keybindings.schemas"
+	gnome2_install_schema  "/etc/gconf/schemas/desktop_gnome_peripherals_touchpad.schemas"
+	gnome2_install_schema  "/etc/gconf/schemas/apps_gnome_settings_daemon_housekeeping.schemas"
+	gnome2_install_schema  "/etc/gconf/schemas/gnome-settings-daemon.schemas"
+	gnome2_install_schema  "/etc/gconf/schemas/desktop_gnome_font_rendering.schemas"                 	gnome2_install_schema  "/etc/gconf/schemas/apps_gnome_settings_daemon_keybindings.schemas"
+	gnome2_install_defaut_gconf "string" "/apps/gnome_settings_daemon/keybindings/calculator" "<Alt>c"
+	gnome2_install_defaut_gconf "string" "/apps/gnome_settings_daemon/keybindings/email" "<Alt>m"
+	gnome2_install_defaut_gconf "string" "/apps/gnome_settings_daemon/keybindings/home" "<Alt>h"
+	gnome2_install_defaut_gconf "string" "/apps/gnome_settings_daemon/keybindings/search" "<Alt>f"
+	gnome2_install_defaut_gconf "string" "/apps/gnome_settings_daemon/keybindings/www" "<Alt>w"
+	gnome2_icon_cache_update "hicolor"
+	gnome2_gconfd_reload
+}

@@ -13,6 +13,8 @@ RDEPEND="gcc glibc opensp"
 BDEPEND="  "
 RECOMMENDED=""
 
+INSTALL="$N.install"
+
 NOTES=""
 
 pbs_unpack() {
@@ -41,9 +43,4 @@ pbs_install() {
 	ypkg_doln libostyle.so   usr/lib/libstyle.so
 	echo "SYSTEM \"http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd\" \"/usr/share/xml/docbook/xml-dtd-4.5/docbookx.dtd\"" \
 	      >> "$YPPATH_DEST"/usr/share/sgml/"$N-$V$R"/catalog
-}
-
-pbs_postinst() {
-	install-catalog --add /etc/sgml/"$N-$V$R".cat    /usr/share/sgml/"$N-$V$R"/catalog
-	install-catalog --add /etc/sgml/sgml-docbook.cat /etc/sgml/"$N-$V$R".cat
 }

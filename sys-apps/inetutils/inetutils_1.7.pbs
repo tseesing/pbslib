@@ -10,16 +10,18 @@ SRC_URI="http://ftp.gnu.org/gnu/"$N"/"$N-$V$R".tar.gz"
 RDEPEND="glibc keyutils krb5 ncurses"
 BDEPEND="   "
 
+INSTALL="$N.install"
+
 pbs_unpack() {
         ypkg_unpack
 }
 
 pbs_config() {
 	YPB_CONFIG+="--disable-ifconfig 
-	             --disable-logger 
 		     --disable-syslogd 
-		     --disable-whois 
-		     --disable-servers"
+		     --disable-servers
+	             --disable-logger "
+		     #--disable-whois 
 	ypkg_config
 }
 
@@ -34,14 +36,3 @@ pbs_install() {
 	ypkg_domv usr/bin/traceroute            sbin
 }
 
-pbs_postinst() {
-	[ -x /usr/bin/install-info ] || return 0
-	infodir=/usr/share/info
-	install-info $infodir/inetutils.info.gz $infodir/dir 2>/dev/null
-}
-
-pbs_postrm() {
-	[ -x /usr/bin/install-info ] || return 0
-	infodir=/usr/share/info
-	install-info --delete $infodir/inetutils.info.gz $infodir/dir 2>/dev/null
-}

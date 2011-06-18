@@ -11,8 +11,10 @@ PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 SRC_URI="$N-$V$R.tar.bz2"
 
 RDEPEND=""
-BDEPEND=" automake1.4"
+BDEPEND="automake1.4"
 RECOMMENDED=""
+
+INSTALL="$N.install"
 
 NOTES=""
 
@@ -32,22 +34,4 @@ pbs_build() {
 pbs_install() {
 	ypkg_mkinstall
 	ypkg_dodoc AUTHORS BACKLOG ChangeLog NEWS README THANKS TODO
-}
-
-pbs_postinst() {
-	[ -x /usr/bin/install-info ] || return 0
-	infodir=/usr/share/info
-	files="recode.info-2 recode.info-1 recode.info"
-	for file in $files; do
-		install-info $infodir/$file.gz $infodir/dir 2>/dev/null
-	done
-}
-
-pbs_postrm() {
-	[ -x /usr/bin/install-info ] || return 0
-	infodir=/usr/share/info
-	files="recode.info-2 recode.info-1 recode.info"
-	for file in $files; do
-		install-info --delete $infodir/$file.gz $infodir/dir 2>/dev/null
-	done
 }

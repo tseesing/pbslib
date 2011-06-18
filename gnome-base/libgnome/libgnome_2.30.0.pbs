@@ -11,16 +11,17 @@ PACKAGER="<ylmfos@115.com>"
 SRC_URI=" http://ftp.gnome.org/pub/gnome/platform/2.30/2.30.2/sources/"$N-$V$R".tar.bz2"
 
 RDEPEND="alsa-lib audiofile avahi dbus dbus-glib esound gcc gconf glib2 glibc gnome-vfs libbonobo libxml2 openssl orbit popt zlib"
-BDEPEND="libxslt-dev intltool                 "
+BDEPEND="libxslt-dev intltool"
 RECOMMENDED=""
+
+INSTALL="$N.install"
 
 pbs_unpack() {
         ypkg_unpack
 }
 
 pbs_config() {
-	YPB_CONFIG+="--disable-schemas-install 
-		      "
+	YPB_CONFIG+="--disable-schemas-install"
 	ypkg_config
 }
 
@@ -32,26 +33,3 @@ pbs_install() {
 	ypkg_mkinstall
 }
 
-pbs_postinst() {
-	gnome2_install_schema	"/etc/gconf/schemas/desktop_gnome_interface.schemas"     \
-				"/etc/gconf/schemas/desktop_gnome_background.schemas"     \
-			      	"/etc/gconf/schemas/desktop_gnome_thumbnailers.schemas"    \
-		              	"/etc/gconf/schemas/desktop_gnome_thumbnail_cache.schemas"  \
-			 	"/etc/gconf/schemas/desktop_gnome_typing_break.schemas"	    \
-				"/etc/gconf/schemas/desktop_gnome_sound.schemas"             \
-				"/etc/gconf/schemas/desktop_gnome_peripherals_keyboard.schemas" \
-				"/etc/gconf/schemas/desktop_gnome_peripherals_mouse.schemas" \
-				"/etc/gconf/schemas/desktop_gnome_lockdown.schemas"	 \
-				"/etc/gconf/schemas/desktop_gnome_file_views.schemas" 	\
-				"/etc/gconf/schemas/desktop_gnome_applications_office.schemas" \
-			 	"/etc/gconf/schemas/desktop_gnome_applications_window_manager.schemas" \
-			 	"/etc/gconf/schemas/desktop_gnome_applications_terminal.schemas" \
-			 	"/etc/gconf/schemas/desktop_gnome_applications_browser.schemas" \
-			 	"/etc/gconf/schemas/desktop_gnome_applications_at_mobility.schemas" \
-			 	"/etc/gconf/schemas/desktop_gnome_applications_at_visual.schemas" \
-			 	"/etc/gconf/schemas/desktop_gnome_accessibility_startup.schemas"  \
-			 	"/etc/gconf/schemas/desktop_gnome_accessibility_keyboard.schemas"
-	gnome2_install_defaut_gconf "bool" "/desktop/gnome/interface/menus_have_icons" "true"			
-	gnome2_mime_database_update
-	gnome2_gconfd_reload
-}

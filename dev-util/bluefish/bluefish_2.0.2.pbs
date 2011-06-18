@@ -12,9 +12,11 @@ PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 SRC_URI="http://downloads.sourceforge.net/project/bluefish/bluefish/2.0.2/bluefish-2.0.2.tar.bz2"
 
 RDEPEND="atk cairo enchant expat fontconfig freetype gcc glib2 glibc gtk+ gucharmap libpng libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libxml2 libXrandr libXrender pango pixman zlib"
-BDEPEND="                           "
+BDEPEND="  "
 RECOMMENDED=""
 CONFLICT=""
+
+INSTALL="$N.install"
 
 NOTES=""
 
@@ -35,7 +37,3 @@ pbs_install() {
 	ypkg_mkinstall
 }
 
-pbs_postinst() {
-	gnome2_desktop_database_update
-	gnome2_icon_cache_update
-}

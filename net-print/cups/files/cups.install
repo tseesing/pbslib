@@ -1,0 +1,11 @@
+. /usr/lib/ybs/funcs
+
+post_install() {
+	ypkg_groupadd -r "lp"
+	ypkg_useradd -c "Print Service User" -d "/dev/null" -s "/bin/false" -r -N "lp" "lp"
+}       
+
+post_remove() {
+	ypkg_userdel  "lp"
+	ypkg_groupdel "lp"
+}

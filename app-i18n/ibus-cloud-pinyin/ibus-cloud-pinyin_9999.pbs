@@ -11,8 +11,8 @@ PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 
 SRC_URI=""
 
-RDEPEND="ibus luasocket"
-BDEPEND=" lua libnotify libgee atk sqlite"
+RDEPEND="lua ibus luasocket atk sqlite libnotify libgee"
+BDEPEND=""
 RECOMMENDED=""
 CONFLICT=""
 
@@ -33,31 +33,5 @@ pbs_build() {
 }
 
 pbs_install() {
-	#make DESTDIR="$YPPATH_DEST" install
 	ypkg_mkinstall
-}
-
-#post install
-pbs_postinst() {
-	:
-	#gnome2_install_schema "$1"
-	#gnome2_install_defaut_gconf "$1 $2 $3
-	#gnome2_rarian_sk_update
-	#gnome2_desktop_database_update
-	#gnome2_icon_cache_update
-	#gnome2_gconfd_reload
-	#gnome2_gtk_immodules_update
-	#gnome2_mime_database_update
-	#gnome2_gdk_pixbuf_loaders_update
-	#ypkg_dofont /usr/share/fonts/truetype/ttf-dejavu
-}
-
-#pre remove
-pbs_prerm() {
-	:
-}
-
-#post remove
-pbs_postrm() {
-	:
 }

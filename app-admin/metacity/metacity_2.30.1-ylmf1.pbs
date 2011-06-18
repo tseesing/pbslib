@@ -11,12 +11,11 @@ PACKAGER="<ylmfos@115.com>"
 SRC_URI="http://ftp.gnome.org/pub/gnome/desktop/2.30/2.30.2/sources/"$N-$V".tar.bz2"
 
 RDEPEND="atk cairo dbus dbus-glib expat fontconfig freetype gcc gconf glib2 glibc gtk+ libcanberra libICE libogg libpng libSM libtool libvorbis libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libXrandr libXrender orbit pango pixman startup-notification util-linux-ng zlib"
-BDEPEND="libcm-dev                                     "
+BDEPEND="libcm-dev"
 RECOMMENDED=""
+OPIONAL="libcm: Required for composite manager support"
 
-NOTES="http://wiki.linuxfromscratch.org/blfs/wiki/metacity
-libcm (Required for composite manager support)
-"
+INSTALL="$N.install"
 
 pbs_unpack() {
         ypkg_unpack
@@ -57,17 +56,3 @@ pbs_install() {
 	ypkg_dodoc README rationales.txt doc/*.txt
 }
 
-pbs_postinst() {
-	gnome2_install_schema "/etc/gconf/schemas/metacity.schemas"
-	gnome2_install_defaut_gconf "int"    "/apps/metacity/general/num_workspaces" "4"
-	gnome2_install_defaut_gconf "string" "/apps/metacity/global_keybindings/switch_windows_backward" "<Shift><Alt>Tab"
-	gnome2_install_defaut_gconf "string" "/apps/metacity/global_keybindings/run_command_terminal"    "<Control><Alt>t"
-	#gnome2_install_defaut_gconf "string" "/apps/metacity/general/titlebar_font"   "Ubuntu Bold 10"
-	gnome2_install_defaut_gconf "string" "/apps/metacity/general/titlebar_font"   "WenQuanYi Micro Hei Bold 10"
-	gnome2_install_defaut_gconf "bool"   "/apps/metacity/general/compositing_manager"   "true"
-	gnome2_install_defaut_gconf "string" "/apps/metacity/global_keybindings/show_desktop" "<Alt>d"
-	gnome2_install_defaut_gconf "string" "/apps/metacity/global_keybindings/run_command_terminal" "<Alt>t"
-	gnome2_rarian_sk_update
-	gnome2_desktop_database_update
-	gnome2_gconfd_reload
-}

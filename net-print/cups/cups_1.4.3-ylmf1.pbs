@@ -13,6 +13,8 @@ RDEPEND="acl attr cyrus-sasl dbus e2fsprogs gcc glibc gnutls keyutils krb5 libgc
 BDEPEND="                     "
 RECOMMENDED=""
 
+INSTALL="$N.install"
+
 NOTES="http://wiki.linuxfromscratch.org/blfs/wiki/cups
 lp group/user should be created automatically"
 
@@ -33,7 +35,3 @@ pbs_install() {
 	make BUILDROOT="$YPPATH_DEST" install
 }
 
-pbs_postinst() {
-	ypkg_groupadd -r "lp"
-	ypkg_useradd -c "Print Service User" -d "/dev/null" -s "/bin/false" -r -N "lp" "lp"
-}

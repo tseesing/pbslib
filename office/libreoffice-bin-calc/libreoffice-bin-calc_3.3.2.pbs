@@ -37,6 +37,3 @@ pbs_install() {
 	ypkg_patch desktop-l10n.patch
 }
 
-pbs_postinst() {
-        gnome2_desktop_database_update
-}

@@ -10,6 +10,8 @@ SRC_URI="ftp://ftp.gnu.org/gnu/"$N"/"$N-$V$R".tar.gz"
 RDEPEND="glibc"
 BDEPEND=""
 
+INSTALL="$N.install"
+
 pbs_unpack(){
         ypkg_unpack
 }
@@ -27,17 +29,5 @@ pbs_install() {
 	#install the DBM and NDBM compatibility headers, as some 
 	#packages outside of LFS may look for these older dbm routines
 	make INSTALL_ROOT="$YPPATH_DEST" BINOWN=root BINGRP=root install-compat
-}
-
-pbs_postinst() {
-	[ -x /usr/bin/install-info ] || return 0
-	infodir=/usr/share/info
-	install-info $infodir/gdbm.info.gz $infodir/dir 2>/dev/null
-}
-
-pbs_postrm() {
-	[ -x /usr/bin/install-info ] || return 0
-	infodir=/usr/share/info
-	install-info --delete $infodir/gdbm.info.gz $infodir/dir 2>/dev/null
 }
 

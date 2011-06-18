@@ -12,6 +12,8 @@ SRC_URI="http://mirrors.kernel.org/gnu/"$N"/"$N-$V$R".tar.gz"
 RDEPEND="glibc"
 BDEPEND="gtk-doc "
 
+INSTALL="$N.install"
+
 NOTES="
 If you did not pass the --enable-gtk-doc parameter to the configure script, install the API documentation using the following command as the root user:
 make -C doc/reference install-data-local
@@ -34,14 +36,3 @@ pbs_install() {
 	ypkg_dodoc doc/libtasn1.{html,pdf,ps}
 }
 
-pbs_postinst() {
-	[ -x /usr/bin/install-info ] || return 0
-	infodir=/usr/share/info
-	install-info $infodir/libtasn1.info.gz $infodir/dir 2>/dev/null
-}
-
-pbs_postrm() {
-	[ -x /usr/bin/install-info ] || return 0
-	infodir=/usr/share/info
-	install-info --delete $infodir/libtasn1.info.gz $infodir/dir 2>/dev/null
-}

@@ -1,0 +1,8 @@
+. /usr/lib/ybs/funcs
+
+post_install() {
+	gnome2_install_schema "/etc/gconf/schemas/gweather.schemas"
+	gnome2_gconfd_reload
+	gnome2_icon_cache_update "gnome"
+}
+

@@ -1,0 +1,12 @@
+. /usr/lib/ybs/funcs
+
+post_install() {
+	ypkg_groupadd -r "ftpgroup"
+	ypkg_useradd -c "ftp user" -d "/var/ftp/public" -s "/bin/false" -r -N -G "ftpgroup" "ftp"
+}       
+
+pre_remove() {
+	ypkg_userdel "ftp"
+	ypkg_groupdel "ftpgroup"
+}
+

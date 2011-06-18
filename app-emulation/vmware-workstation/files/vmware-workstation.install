@@ -1,0 +1,9 @@
+. /usr/lib/ybs/funcs
+
+post_install() {
+	depmod -a
+	for i in vsock vmci vmblock vmnet vmmon; do
+		modprobe "$i"
+	done
+	return 0
+}      

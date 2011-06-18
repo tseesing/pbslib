@@ -16,6 +16,8 @@ BDEPEND=""
 RECOMMENDED=""
 CONFLICT=""
 
+INSTALL="$N.install"
+
 NOTES=""
 
 pbs_install() {
@@ -23,6 +25,3 @@ pbs_install() {
 	ypkg_dodesktop "sinaweibo-air.desktop"         "sinaweibo-air.png"
 }
 
-pbs_postinst() {
-	gnome2_desktop_database_update
-}

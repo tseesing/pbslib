@@ -12,9 +12,11 @@ PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 SRC_URI="http://download.gna.org/"$N"/"$N-$V$R".tar.bz2"
 
 RDEPEND="gcc glib2 glibc libpng python zlib"
-BDEPEND="swig scons      "
+BDEPEND="swig scons"
 RECOMMENDED=""
 CONFLICT=""
+
+INSTALL="$N.install"
 
 NOTES=""
 
@@ -35,7 +37,3 @@ pbs_install() {
 	ypkg_mkinstall prefix="$YPPATH_DEST"/usr
 }
 
-pbs_postinst() {
-	gnome2_desktop_database_update
-	gnome2_icon_cache_update
-}

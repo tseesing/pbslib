@@ -1,0 +1,9 @@
+. /usr/lib/ybs/funcs
+
+post_install() {
+        ypkg_install_info flex.info-2.gz flex.info-1.gz flex.info.gz  
+}       
+
+pre_remove() {
+        ypkg_remove_info flex.info-2.gz flex.info-1.gz flex.info.gz
+}

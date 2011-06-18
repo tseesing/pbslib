@@ -1,0 +1,21 @@
+. /usr/lib/ybs/funcs
+
+post_install() {
+	gnome2_install_schema /etc/gconf/schemas/window-list.schemas
+	gnome2_install_schema /etc/gconf/schemas/workspace-switcher.schemas
+        gnome2_install_schema /etc/gconf/schemas/fish.schemas
+        gnome2_install_schema /etc/gconf/schemas/clock.schemas
+        gnome2_install_schema /etc/gconf/schemas/panel-object.schemas
+        gnome2_install_schema /etc/gconf/schemas/panel-toplevel.schemas
+        gnome2_install_schema /etc/gconf/schemas/panel-general.schemas
+        gnome2_install_schema /etc/gconf/schemas/panel-global.schemas
+        gnome2_install_schema /etc/gconf/schemas/panel-compatibility.schemas
+        #default gnome-panel entries
+        gconftool-2 --direct --config-source xml:readwrite:/etc/gconf/gconf.xml.defaults --load /etc/gconf/schemas/panel-default-setup.entries
+        #
+        gnome2_install_defaut_gconf "string" "/apps/panel/applets/clock_screen0/prefs/format"  "24-hour"
+        gnome2_rarian_sk_update
+        gnome2_desktop_database_update
+        gnome2_icon_cache_update "hicolor"
+        gnome2_gconfd_reload
+}

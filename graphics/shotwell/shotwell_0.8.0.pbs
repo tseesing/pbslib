@@ -11,7 +11,7 @@ PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 SRC_URI="http://www.yorba.org/download/shotwell/0.8/"$N-$V$R".tar.bz2"
 
 RDEPEND="atk cairo dbus dbus-glib enchant exiv2 expat fontconfig freetype gail gcc gconf glib2 glibc gnutls gst-plugins-base gstreamer gtk+ icu json-glib libexif libgcrypt libgee libgexiv2 libgpg-error libgphoto2 libICE libjpeg-turbo libpng libSM libsoup libtasn1 libtool libunique libusb libusb-compat libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libxml2 libXrandr libXrender libxslt libXt orbit pango pixman sqlite udev util-linux-ng webkit zlib" 
-BDEPEND="vala libraw-dev                        libg                                   "
+BDEPEND="vala libraw-dev"
 RECOMMENDED="libraw"
 
 NOTES=""
@@ -21,14 +21,6 @@ pbs_unpack() {
 }
 
 pbs_config() {
-	
-	YPB_CONFIG+=" --prefix=/usr
-		      --sysconfdir=/etc
-		      --localstatedir=/var
-	              --infodir=/usr/share/info
-		      --mandir=/usr/share/man
-	              --disable-static
-		      --enable-shared "
 	ypkg_config
 }
 
@@ -40,15 +32,3 @@ pbs_install() {
 	ypkg_mkinstall
 }
 
-#post install
-pbs_postinst() {
-	:
-	#gnome2_install_schema "$1"
-	#gnome2_install_defaut_gconf "$1 $2 $3
-	#gnome2_rarian_sk_update
-	#gnome2_desktop_database_update
-	#gnome2_icon_cache_update
-	#gnome2_gconfd_reload
-	#gnome2_gtk_immodules_update
-	#gnome2_mime_database_update
-}

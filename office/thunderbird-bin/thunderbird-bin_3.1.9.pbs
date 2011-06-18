@@ -35,6 +35,3 @@ EOF
 	chmod +x "$YPPATH_DEST"/usr/bin/"$N"
 }
 
-pbs_postinst() {
-	gnome2_desktop_database_update
-}

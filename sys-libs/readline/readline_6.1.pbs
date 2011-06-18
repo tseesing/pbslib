@@ -12,13 +12,14 @@ SRC_URI="ftp://ftp.gnu.org/gnu/"$N"/"$N-$V$R".tar.gz "
 RDEPEND="glibc ncurses"
 BDEPEND=" "
 
+INSTALL="$N.install"
+
 pbs_unpack() {
         ypkg_unpack
 }
 
 pbs_config() {
-	ypkg_patch readline61-001
-	ypkg_patch readline61-002
+	ypkg_patch readline61-001 readline61-002
 	ypkg_config
 }
 
@@ -34,20 +35,3 @@ pbs_install() {
 	ypkg_doln libhistory.so.6   usr/lib/libhistory.so
 }
 
-pbs_postinst() {
-	[ -x /usr/bin/install-info ] || return 0
-	infodir=/usr/share/info
-	files="rluserman.info readline.info history.info"
-	for file in $files; do
-		install-info $infodir/$file.gz $infodir/dir 2>/dev/null
-	done
-}
-
-pbs_postrm() {
-	[ -x /usr/bin/install-info ] || return 0
-	infodir=/usr/share/info
-	files="rluserman.info readline.info history.info"
-	for file in $files; do
-		install-info --delete $infodir/$file.gz $infodir/dir 2>/dev/null
-	done
-}

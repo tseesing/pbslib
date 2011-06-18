@@ -16,6 +16,8 @@ RECOMMENDED=""
 
 NOTES=""
 
+INSTALL="$N.install"
+
 PROVIDE="vmware-workstation vmware-workstation-extra"
 
 pbs_unpack() {
@@ -63,10 +65,4 @@ vmware-workstation-extra_install() {
 	ypkg_domv /usr/lib/vmware/modules/binary "$YPPATH_DEST"/usr/lib/vmware/
 }
 
-pbs_postinst() {
-	depmod -a
-	for i in vsock vmci vmblock vmnet vmmon; do 
-		modprobe "$i"
-	done
-	return 0
-}
+

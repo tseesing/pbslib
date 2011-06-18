@@ -28,6 +28,8 @@ OPTIONAL="aspell: for spelling correction;
           tk: Tcl/Tk scripting support;
 	  dbus-python: for purple-remote and purple-url-handler"
 
+INSTALL="$N.install"
+
 pbs_unpack() {
         ypkg_unpack
 }
@@ -73,7 +75,3 @@ finch_install() {
 	rm -f "$YPPATH_DEST"/usr/share/man/man1/pidgin.1
 }
 
-pbs_postinst() {
-	gnome2_desktop_database_update
-	gnome2_icon_cache_update
-}

@@ -1,0 +1,9 @@
+. /usr/lib/ybs/funcs
+
+post_install() {
+	 update-initramfs -d -u
+}       
+
+pre_remove() {
+	 update-initramfs -d -u
+}

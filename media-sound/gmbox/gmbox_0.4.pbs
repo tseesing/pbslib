@@ -17,6 +17,8 @@ CONFLICT=""
 
 NOTES=""
 
+INSTALL="$N.install"
+
 pbs_unpack() {
         ypkg_unpack
 }
@@ -27,6 +29,3 @@ pbs_install() {
 	ypkg_doln  /usr/lib/gmbox/gmbox.py  "$YPPATH_DEST"/usr/bin/gmbox
 }
 
-pbs_postinst() {
-	gnome2_desktop_database_update
-}

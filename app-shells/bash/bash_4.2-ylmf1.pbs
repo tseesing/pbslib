@@ -16,8 +16,10 @@ SRC_URI="$URL/"$N-$V".tar.gz
 	 "$URL"/"$N"/"$N-$V"-patches/bash42-007
 	 "$URL"/"$N"/"$N-$V"-patches/bash42-008"
 
-RDEPEND="glibc"
-BDEPEND="readline-dev ncurses-dev "
+RDEPEND="glibc readline ncurses"
+BDEPEND=" "
+
+INSTALL="$N.install"
 
 pbs_unpack() {
         ypkg_unpack
@@ -43,14 +45,3 @@ pbs_install() {
 	ypkg_docp "$FILES_PATH"/files/skel "$YPPATH_DEST"/etc
 }
 
-pbs_postinst() {
-	[ -x /usr/bin/install-info ] || return 0
-	infodir=/usr/share/info
-	install-info $infodir/bash.info.gz $infodir/dir 2>/dev/null
-}
-
-pbs_postrm() {
-	[ -x /usr/bin/install-info ] || return 0
-	infodir=/usr/share/info
-	install-info --delete $infodir/bash.info.gz $infodir/dir 2>/dev/null
-}

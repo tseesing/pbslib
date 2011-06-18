@@ -7,11 +7,14 @@ HOMEPAGE="http://wiki.docbook.org/topic/DocBookXslStylesheets"
 REPO=""
 LICENSE="GPL-2"
 PACKAGER="<ylmfos@115.com>"
+
 SRC_URI="http://downloads.sourceforge.net/docbook/"$N-$V$R".tar.bz2 http://downloads.sourceforge.net/docbook/"$N"-doc-"$V$R".tar.bz2"
 
 RDEPEND=""
 BDEPEND="libxml2-dev"
 RECOMMENDED=""
+
+INSTALL="$N.install"
 
 NOTES=""
 
@@ -30,26 +33,3 @@ pbs_install() {
 	install -m644 -D README  "$YPPATH_DEST"/usr/share/doc/docbook-xsl-1.75.2/README.XSL 
 }
 
-pbs_postinst() {
-	#Create (or append) and populate the XML catalog file using the following commands as the root user:
-	mkdir -p /etc/xml
-	if [ ! -f /etc/xml/catalog ]; then
-	    xmlcatalog --noout --create /etc/xml/catalog
-	fi 
-	xmlcatalog --noout --add "rewriteSystem" \
-  		"http://docbook.sourceforge.net/release/xsl/1.75.2" \
-		"/usr/share/xml/docbook/xsl-stylesheets-1.75.2" \
-	        /etc/xml/catalog &&
-        xmlcatalog --noout --add "rewriteURI" \
-        	"http://docbook.sourceforge.net/release/xsl/1.75.2" \
-		"/usr/share/xml/docbook/xsl-stylesheets-1.75.2" \
-		/etc/xml/catalog &&
-	xmlcatalog --noout --add "rewriteSystem" \
-	        "http://docbook.sourceforge.net/release/xsl/current" \
-	        "/usr/share/xml/docbook/xsl-stylesheets-1.75.2" \
-	        /etc/xml/catalog &&
-        xmlcatalog --noout --add "rewriteURI" \
-                "http://docbook.sourceforge.net/release/xsl/current" \
-                "/usr/share/xml/docbook/xsl-stylesheets-1.75.2" \
-                /etc/xml/catalog
-}

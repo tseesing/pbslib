@@ -6,7 +6,6 @@ DESCRIPTION="Wrapper for using Windows drivers for some wireless cards"
 HOMEPAGE="http://sourceforge.net/projects/ndiswrapper/files/stable/"
 REPO=""
 LICENSE="GPL"
-#PRIORITY="required"
 PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 
 SRC_URI="http://nchc.dl.sourceforge.net/project/"$N"/stable/"$V$R"/"$N-$V$R".tar.gz"
@@ -15,6 +14,8 @@ RDEPEND=""
 BDEPEND=""
 RECOMMENDED=""
 CONFLICT=""
+
+INSTALL="$N.install"
 
 NOTES=""
 
@@ -50,10 +51,3 @@ pbs_install() {
 	ypkg_domv lib/modules/misc/ndiswrapper.ko  lib/modules/"$(uname -r)"/misc/
 }
 
-pbs_postinst() {	
-	depmod -a
-}
-
-pbs_postrm() {
-	depmod -a
-}

@@ -10,7 +10,7 @@ PACKAGER="<ylmfos@115.com>"
 SRC_URI="http://ibus.googlecode.com/files/"$N-$V".tar.gz"
 
 RDEPEND="atk cairo dbus dbus-glib expat fontconfig freetype gcc gconf glib2 glibc gtk+ libpng libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libXrandr libXrender orbit pango pixman zlib"
-BDEPEND="notify-python-dev imagemagick                             "
+BDEPEND="notify-python-dev imagemagick"
 RECOMMENDED="notify-python"
 
 NOTES="
@@ -25,6 +25,8 @@ export GTK_IM_MODULE=\"ibus\"
 export QT_IM_MODULE=\"xim\"
 ibus-daemon -d -x
 "
+
+INSTALL="$N.install"
 
 pbs_unpack() {
         ypkg_unpack
@@ -50,18 +52,3 @@ pbs_install() {
 	ypkg_dodoc AUTHORS ChangeLog COPYING INSTALL NEWS README
 }
 
-pbs_postinst() {
-	gnome2_install_schema "/etc/gconf/schemas/ibus.schemas"
-	gnome2_desktop_database_update
-	gnome2_icon_cache_update "hicolor"
-	# Run gtk-query-immodules so that "ibus" will appear under Input Method
-	# when you right- click your mouse in a text box.
-	gnome2_gtk_immodules_update
-	#preload_engines sunpinyin,wubi86 for os4
-	#gnome2_install_defaut_gconf "list" "/desktop/ibus/general/preload_engines"  "[sunpinyin,wubi86]"
-	gnome2_install_defaut_gconf "list" "/desktop/ibus/general/preload_engines"  "[yong:6,yong:1]"
-	#next_engine_in_menu
-	gnome2_install_defaut_gconf "list" "/desktop/ibus/general/hotkey/next_engine_in_menu" "[Alt+Shift_L,Control+Shift_L]"
-	#lookup_table_orientation 0=H，1=V
-	gnome2_install_defaut_gconf "int"  "/desktop/ibus/panel/lookup_table_orientation" "0"
-}

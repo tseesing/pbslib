@@ -12,6 +12,8 @@ SRC_URI="http://downloads.sourceforge.net/project/wqy/wqy-bitmapfont/1.0.0-RC1/w
 RDEPEND=""
 BDEPEND=""
 
+INSTALL="$N.install"
+
 pbs_unpack() {
         ypkg_unpack
 }
@@ -21,9 +23,5 @@ pbs_install() {
 	ypkg_docp *.conf "$YPPATH_DEST"/etc/fonts/conf.avail
 	cd "$YPPATH_DEST"
 	ypkg_doln /etc/fonts/conf.avail/85-wqy-bitmapsong.conf etc/fonts/conf.d/85-wqy-bitmapsong.conf
-}
-
-pbs_postinst() {
-	ypkg_dofont usr/share/fonts/wenquanyi/wqy-bitmap
 }
 

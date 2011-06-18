@@ -37,6 +37,3 @@ pbs_install() {
 	ypkg_patch desktop-i18n.patch
 }
 
-pbs_postinst() {
-	gnome2_desktop_database_update
-}

@@ -15,6 +15,8 @@ RDEPEND="gtksourceview gtk+ atk pango cairo pixman libxml2 directfb libpng libxc
 BDEPEND=" gtksourceview libsoup enchant pygtksourceview python"
 RECOMMENDED=""
 
+INSTALL="$N.install"
+
 NOTES=""
 
 pbs_unpack() {
@@ -43,10 +45,3 @@ pbs_install() {
 	rm -fr "$YPPATH_DEST"/var/lib/log
 }
 
-pbs_postinst() {
-	gnome2_install_schema "/etc/gconf/schemas/gedit-file-browser.schemas" "/etc/gconf/schemas/gedit.schemas"
-	gnome2_rarian_sk_update
-	gnome2_desktop_database_update
-	gnome2_icon_cache_update
-	gnome2_gconfd_reload
-}

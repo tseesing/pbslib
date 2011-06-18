@@ -1,0 +1,10 @@
+. /usr/lib/ybs/funcs
+
+post_install() {
+	update-initramfs -k "$(uname -r)" -c
+}       
+
+post_remove() {
+	update-initramfs -k "$(uname -r)" -c
+}
+

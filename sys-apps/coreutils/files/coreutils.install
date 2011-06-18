@@ -1,0 +1,9 @@
+. /usr/lib/ybs/funcs
+
+post_install() {
+        ypkg_install_info coreutils.info.gz  
+}       
+
+pre_remove() {
+        ypkg_remove_info coreutils.info.gz
+}

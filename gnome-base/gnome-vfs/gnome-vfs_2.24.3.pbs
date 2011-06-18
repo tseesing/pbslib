@@ -11,11 +11,12 @@ PACKAGER="<ylmfos@115.com>"
 SRC_URI="http://ftp.gnome.org/pub/gnome/platform/2.30/2.30.2/sources/"$N-$V$R".tar.bz2 "
 
 RDEPEND="acl attr avahi cyrus-sasl dbus dbus-glib gamin gcc gconf glib2 glibc hal keyutils krb5 libcap libxml2 openldap-client openssl orbit samba talloc zlib"
-BDEPEND="libbonobo-dev neon-dev                      "
+BDEPEND="libbonobo-dev neon-dev"
 RECOMMENDED=""
 
-NOTES="http://wiki.linuxfromscratch.org/blfs/wiki/gnome-vfs
-While several packages still depend on GNOME VFS, it is deprecated for new development. GVFS is the replacement package."
+INSTALL="$N.install"
+
+NOTES="While several packages still depend on GNOME VFS, it is deprecated for new development. GVFS is the replacement package."
 
 pbs_unpack() {
         ypkg_unpack
@@ -43,12 +44,3 @@ pbs_install() {
 	ypkg_mkinstall
 }
 
-pbs_postinst() {
-	gnome2_install_schema /etc/gconf/schemas/desktop_gnome_url_handlers.schemas
-	gnome2_install_schema /etc/gconf/schemas/desktop_default_applications.schemas
-	gnome2_install_schema /etc/gconf/schemas/system_dns_sd.schemas
-	gnome2_install_schema /etc/gconf/schemas/system_smb.schemas
-	gnome2_install_schema /etc/gconf/schemas/system_http_proxy.schemas
-	gnome2_mime_database_update
-	gnome2_gconfd_reload
-}		

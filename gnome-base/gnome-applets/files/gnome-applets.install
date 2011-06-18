@@ -1,0 +1,16 @@
+. /usr/lib/ybs/funcs
+
+post_install() {
+	gnome2_install_schema  "/etc/gconf/schemas/mixer.schemas"
+	gnome2_install_schema  "/etc/gconf/schemas/cpufreq-applet.schemas"
+	gnome2_install_schema  "/etc/gconf/schemas/battstat.schemas"
+	gnome2_install_schema  "/etc/gconf/schemas/multiload.schemas"
+	gnome2_install_schema  "/etc/gconf/schemas/stickynotes.schemas"
+	gnome2_install_schema  "/etc/gconf/schemas/geyes.schemas"
+	gnome2_install_schema  "/etc/gconf/schemas/drivemount.schemas"
+	gnome2_install_schema  "/etc/gconf/schemas/charpick.schemas"
+	gnome2_rarian_sk_update
+	gnome2_desktop_database_update
+	gnome2_gconfd_reload
+	gnome2_icon_cache_update "hicolor"
+}

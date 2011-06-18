@@ -16,6 +16,8 @@ BDEPEND=" "
 RECOMMENDED=""
 CONFLICT=""
 
+INSTALL="$N.install"
+
 NOTES=""
 
 pbs_unpack() {
@@ -39,6 +41,3 @@ pbs_install() {
 	#ypkg_doln /lib/systemd/system/rsyslog.service lib/systemd/system/multi-user.target.wants/rsyslog.service
 }
 
-pbs_postinst() {
-	ypkg_useradd -c "syslog user" -d "/dev/null" -s "/bin/false" -r "syslog"
-}

@@ -11,8 +11,10 @@ PACKAGER="<ylmfos@115.com>"
 SRC_URI="http://ftp.gnome.org/pub/gnome/desktop/2.30/2.30.2/sources/"$N-$V$R".tar.bz2 "
 
 RDEPEND="alsa-lib atk audiofile avahi cairo dbus dbus-glib eggdbus esound expat fontconfig freetype gail gcc gconf glib2 glibc gnome-desktop gnome-menus gnome-vfs gnutls gtk+ libart_lgpl libbonobo libbonoboui libcanberra libcroco libgcrypt libgnome libgnomecanvas libgnome-keyring libgpg-error libgsf libgweather libICE libogg libpng libproxy librsvg libSM libsoup libtasn1 libtool libvorbis libwnck libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libxml2 libXrandr libXrender libXres openssl orbit pango pixman polkit popt sqlite startup-notification util-linux-ng zlib"
-BDEPEND="gstreamer-dev evolution-data-server-dev polkit-gnome-dev consolekit-dev gnome-python-dev        eggdbus                                                             "
+BDEPEND="gstreamer-dev evolution-data-server-dev polkit-gnome-dev consolekit-dev gnome-python-dev"     
 RECOMMENDED=""
+
+INSTALL="$N.install"
 
 NOTES="The libxml2 Python module must have been built during the installation of libxml2 else the GNOME Panel build will fail"
 
@@ -38,24 +40,4 @@ pbs_install() {
 	ypkg_mkinstall
 	#replace our gnome-panel default configure
 	ypkg_docp_rename "$FILES_PATH"/files/ylmfos-default-setup.entries   "$YPPATH_DEST"/etc/gconf/schemas/panel-default-setup.entries
-}
-
-pbs_postinst() {
-	gnome2_install_schema /etc/gconf/schemas/window-list.schemas
-	gnome2_install_schema /etc/gconf/schemas/workspace-switcher.schemas
-	gnome2_install_schema /etc/gconf/schemas/fish.schemas
-	gnome2_install_schema /etc/gconf/schemas/clock.schemas
-	gnome2_install_schema /etc/gconf/schemas/panel-object.schemas
-	gnome2_install_schema /etc/gconf/schemas/panel-toplevel.schemas
-	gnome2_install_schema /etc/gconf/schemas/panel-general.schemas
-	gnome2_install_schema /etc/gconf/schemas/panel-global.schemas
-	gnome2_install_schema /etc/gconf/schemas/panel-compatibility.schemas
-	#default gnome-panel entries
-	gconftool-2 --direct --config-source xml:readwrite:/etc/gconf/gconf.xml.defaults --load /etc/gconf/schemas/panel-default-setup.entries
-	#
-	gnome2_install_defaut_gconf "string" "/apps/panel/applets/clock_screen0/prefs/format"  "24-hour"
-	gnome2_rarian_sk_update
-	gnome2_desktop_database_update
-	gnome2_icon_cache_update "hicolor"
-	gnome2_gconfd_reload
 }

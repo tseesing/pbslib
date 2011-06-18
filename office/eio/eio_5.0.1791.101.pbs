@@ -33,7 +33,3 @@ pbs_install() {
 	ypkg_docp_rename "$FILES_PATH"/files/eioicon.png  usr/share/eiofileicon/FileConvert.png
 	rm usr/share/applications/eiouninstall.desktop
 }
-
-pbs_postinst() {
-	gnome2_desktop_database_update
-}

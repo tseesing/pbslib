@@ -13,10 +13,12 @@ SRC_URI="http://get.opera.com/pub/opera/linux/1110/"$N"_"$V$R"_i386.deb"
 
 RDEPEND=""
 BDEPEND=" "
-RECOMMENDED="opera-doc"
+RECOMMENDED=""
 CONFLICT=""
 
 DESKTOPFILE="opera-browser.desktop"
+
+INSTALL="$N.install"
 
 NOTES=""
 
@@ -28,6 +30,3 @@ pbs_install() {
 	ypkg_docp data/*  "$YPPATH_DEST"/
 }
 
-pbs_postinst() {
-	gnome2_desktop_database_update
-}

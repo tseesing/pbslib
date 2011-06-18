@@ -16,6 +16,8 @@ BDEPEND=""
 RECOMMENDED=""
 CONFLICT=""
 
+INSTALL="$N.install"
+
 NOTES=""
 
 pbs_unpack() {
@@ -32,9 +34,5 @@ pbs_install() {
 	ypkg_mkinstall
 	cd ../
 	ypkg_dodoc copyright README.Debian README.txt
-}
-
-pbs_postinst() {	
-	depmod -a
 }
 

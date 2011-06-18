@@ -13,6 +13,8 @@ RDEPEND="openssl openldap-client glibc pam"
 BDEPEND=" "
 RECOMMENDED=""
 
+INSTALL="$N.install"
+
 NOTES="You should creat a users name \"ftp\" and a group name \"ftpgroup\""
 
 pbs_unpack() {
@@ -64,7 +66,3 @@ pbs_install() {
 	ypkg_dounit "$N".service
 }
 
-pbs_postinst() {
-	ypkg_groupadd -r "ftpgroup"
-	ypkg_useradd -c "ftp user" -d "/var/ftp/public" -s "/bin/false" -r -N -G "ftpgroup" "ftp"
-}
