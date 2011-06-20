@@ -1,0 +1,9 @@
+[Unit]
+Description=CUPS Server
+
+[Service]
+Type=forking
+ExecStart=/usr/sbin/cupsd
+
+[Install]
+WantedBy=multi-user.target

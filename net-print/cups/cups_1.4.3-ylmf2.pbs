@@ -1,0 +1,44 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="The Common Unix Printing System."
+HOMEPAGE="http://www.cups.org/"
+LICENSE="GPL-2"
+PACKAGER="<ylmfos@115.com>"
+
+SRC_URI="http://ftp.easysw.com/pub/"$N"/"$V"/"$N-$V"-source.tar.bz2"
+
+RDEPEND="acl attr cyrus-sasl dbus e2fsprogs gcc glibc gnutls keyutils krb5 libgcrypt libgpg-error libjpeg-turbo libpng libtasn1 libtiff libusb libusb-compat openldap-client openssl pam zlib"
+BDEPEND=""
+RECOMMENDED=""
+
+INSTALL="$N.install"
+
+NOTES="lp group/user should be created automatically"
+
+pbs_unpack() {
+        ypkg_unpack
+}
+
+pbs_config() {
+	ypkg_patch desktop-not-show.patch
+	YPB_CONFIG+=""
+	ypkg_config
+}
+
+pbs_build() {
+	ypkg_make
+}
+
+pbs_install() {
+	make BUILDROOT="$YPPATH_DEST" install
+	ypkg_dounit "$N".service
+	cd "$YPPATH_DEST"
+	mkdir -p lib/systemd/system/multi-user.target.wants/
+	ypkg_doln /lib/systemd/system/"$N".service "$N".service
+	#clean
+	rm -rf etc/rc5.d/ etc/rc3.d/ etc/rc2.d/ etc/rc0.d/
+	rm -rf etc/init.d/cups
+}
+

@@ -2,14 +2,14 @@
 # YLmf_OS package build script
 #
 
-DESCRIPTION="Printer information files for foomatic-db-engine to generate ppds"
+DESCRIPTION="Generates ppds out of xml foomatic printer description files"
 HOMEPAGE="http://www.linuxprinting.org/foomatic.html"
 LICENSE="GPL-2"
 PACKAGER="<ylmfos@115.com>"
 
-SRC_URI="http://www.openprinting.org/download/foomatic/foomatic-db-current.tar.gz"
+SRC_URI="http://www.openprinting.org/download/foomatic/"$N-$V$R".tar.gz"
 
-RDEPEND=""
+RDEPEND="libxml2 zlib glibc"
 BDEPEND=" "
 RECOMMENDED=""
 

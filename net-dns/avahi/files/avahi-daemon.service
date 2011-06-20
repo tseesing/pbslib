@@ -1,6 +1,6 @@
 [Unit]
 Description=Avahi Zero Conf Daemon
-After=syslog.target
+After=dbus.service
 
 [Service]
 Type=dbus

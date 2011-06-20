@@ -23,7 +23,11 @@ pbs_unpack() {
 }
 
 pbs_config() {
-	YPB_CONFIG+=""
+	YPB_CONFIG="--prefix=/usr
+	            --sysconfdir=/etc
+		    --localstatedir=/var
+		    --infodir=/usr/share/info
+		    --mandir=/usr/share/man"
 	ypkg_config
 }
 

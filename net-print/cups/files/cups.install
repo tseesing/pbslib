@@ -2,7 +2,10 @@
 
 post_install() {
 	ypkg_groupadd -r "lp"
-	ypkg_useradd -c "Print Service User" -d "/dev/null" -s "/bin/false" -r -N "lp" "lp"
+	ypkg_useradd -c "Print Service User" -d "/dev/null" -s "/bin/false" -r "lp" -g "lp"
+	systemctl --system daemon-reload
+	start cups
+	return 0
 }       
 
 post_remove() {

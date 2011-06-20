@@ -2,12 +2,12 @@
 # YLmf_OS package build script
 #
 
-DESCRIPTION="manufacturer-supplied PPD files for hp"
-HOMEPAGE="http://www.openprinting.org/download/foomatic/oldstuff/"
+DESCRIPTION="Printer information files for foomatic-db-engine to generate ppds"
+HOMEPAGE="http://www.linuxprinting.org/foomatic.html"
 LICENSE="GPL-2"
 PACKAGER="<ylmfos@115.com>"
 
-SRC_URI="http://www.openprinting.org/download/foomatic/oldstuff/"$N-$V$R".tar.gz"
+SRC_URI="http://www.openprinting.org/download/foomatic/"$N-$V$R".tar.gz"
 
 RDEPEND=""
 BDEPEND=" "

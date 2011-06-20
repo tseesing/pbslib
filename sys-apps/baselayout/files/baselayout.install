@@ -118,7 +118,8 @@ utmp:x:13:
 usb:x:14:
 cdrom:x:15:
 mail:x:34:
-nogroup:x:99:
+nogroup:x:65533:
+nobody:x:65534:
 EOF
 	fi
 

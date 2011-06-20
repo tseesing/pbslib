@@ -10,7 +10,7 @@ PACKAGER="<ylmfos@115.com>"
 SRC_URI="http://cyberelk.net/tim/data/"$N"/1.2/"$N-$V$R".tar.xz"
 
 RDEPEND="pycups pygobject libffi pygtk pycairo dbus-python notify-python libnotify cups e2fsprogs glib2 glibc gnutls keyutils krb5 libgcrypt libgpg-error libtasn1 libusb libusb-compat udev zlib"
-BDEPEND="xmlto                      "
+BDEPEND="xmlto"
 RECOMMENDED=""
 
 NOTES=""
@@ -23,9 +23,7 @@ pbs_config() {
 	#FIXME! do use setup.py to build
 	mv setup.py{,y}
 	sed -i 's/setup.py/setup.pyy/g' Makefile.*
-	YPB_CONFIG+="--with-udev-rules 
-		     --program-prefix= 
-		     --program-suffix= "
+	YPB_CONFIG+="--with-udev-rules "
 	ypkg_config
 }
 

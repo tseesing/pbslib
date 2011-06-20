@@ -1,0 +1,45 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="PDF printer for cups"
+HOMEPAGE=""
+REPO=""
+LICENSE="GPL"
+PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
+
+SRC_URI="http://www.physik.uni-wuerzburg.de/~vrbehr/cups-pdf/src/cups-pdf_2.5.1.tar.gz"
+
+RDEPEND="cups ghostscript"
+BDEPEND=""
+RECOMMENDED=""
+CONFLICT=""
+
+INSTALL="$N.install"
+
+NOTES=""
+
+pbs_unpack() {
+        ypkg_unpack
+}
+
+pbs_build() {
+	cd src/
+	[ -z "$CC" ] && CC=gcc
+	$CC $CFLAGS -Wall -o cups-pdf cups-pdf.c
+}
+
+pbs_install() {
+	install -D -m700  cups-pdf     "$YPPATH_DEST"/usr/lib/cups/backend/cups-pdf
+
+	# Install Postscript Color printer
+	cd ../extra
+	install -D -m644 CUPS-PDF.ppd  "$YPPATH_DEST"/usr/share/cups/model/CUPS-PDF.ppd
+	
+	# Install config file
+	install -D -m644 cups-pdf.conf "$YPPATH_DEST"/etc/cups/cups-pdf.conf
+
+	#
+	cd ../
+	ypkg_dodoc ChangeLog COPYING README
+}

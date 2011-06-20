@@ -12,6 +12,8 @@ SRC_URI="http://www.gratisoft.us/sudo/dist/"$N-$V$R".tar.gz"
 RDEPEND="glibc zlib"
 BDEPEND=" "
 
+INSTALL="sudo.install"
+
 NOTES="Please add your usrers to /etc/sudoer, using visudo"
 
 pbs_unpack() {

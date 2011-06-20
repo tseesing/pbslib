@@ -3,3 +3,8 @@
 post_install() {
 	ypkg_dofont /usr/share/fonts/wenquanyi/wqy-microhei
 }
+
+post_remove () {
+	rm -rf /usr/share/fonts/wenquanyi/wqy-microhei/{fonts.dir,fonts.scale}
+	rmdir /usr/share/fonts/wenquanyi/wqy-microhei ||return 0
+}

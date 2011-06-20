@@ -1,0 +1,35 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="A helper that makes system-config-printer use PolicyKit"
+HOMEPAGE="http://www.freedesktop.org/software/cups-pk-helper/releases/"
+REPO=""
+LICENSE="GPL"
+PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
+
+SRC_URI="http://www.freedesktop.org/software/cups-pk-helper/releases/cups-pk-helper-0.1.2.tar.bz2"
+
+RDEPEND="dbus-glib polkit cups"
+BDEPEND="intltool"
+RECOMMENDED=""
+CONFLICT=""
+
+NOTES=""
+
+pbs_unpack() {
+        ypkg_unpack
+}
+
+pbs_config() {
+	YPB_CONFIG+="" #--libexecdir=/usr/lib/cups-pk-helper"
+	ypkg_config
+}
+
+pbs_build() {
+	ypkg_make
+}
+
+pbs_install() {
+	ypkg_mkinstall
+}
