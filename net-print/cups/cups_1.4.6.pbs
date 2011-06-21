@@ -22,22 +22,25 @@ pbs_unpack() {
 }
 
 pbs_config() {
-	ypkg_patch desktop-not-show.patch cups-avahi.patch
+	ypkg_groupadd -r "lp"
+	ypkg_patch cups-avahi.patch ylmfos-add-wheel-group-to-systemgroup.patch
 	# Rebuild configure script for --enable-avahi.
 	aclocal -I config-scripts
 	autoconf -I config-scripts
-	YPB_CONFIG+=" --with-logdir=/var/log/cups
-	              --with-cups-group=lp 
-		      --enable-pam=yes 
-		      --disable-ldap
-		      --enable-raw-printing 
-		      --enable-dbus
+	YPB_CONFIG+=" --enable-dbus
+		      --enable-libusb
 		      --enable-ssl=yes
-		      --enable-gnutls 
-		      --disable-threads 
+		      --enable-pam=yes 
 		      --enable-avahi
+		      --enable-gnutls 
+		      --enable-raw-printing 
+		      --enable-use-network-default
+		      --disable-ldap
+		      --disable-threads 
+		      --with-pdftops=pdftops 
 	              --with-php=/usr/bin/php-cgi 
-		      --with-pdftops=pdftops "
+		      --with-logdir=/var/log/cups
+		      --with-cups-group=lp "
 		      #--with-cups-user=daemon
 	ypkg_config
 }
@@ -53,7 +56,7 @@ pbs_install() {
 	ypkg_dounit "$N".service
 	ypkg_doln /lib/systemd/system/"$N".service lib/systemd/system/multi-user.target.wants/"$N".service
 	#
-	ypkg_docp_rename "$FILES_PATH"/files/cups.logrotate etc/logrotate.d/cups
+	ypkg_docp_rename  "$FILES_PATH"/files/cups.logrotate etc/logrotate.d/cups
 	ypkg_docp_rename  "$FILES_PATH"/files/cups.pam      etc/pam.d/cups	
 	# fix perms on /var/spool and /etc
 	chmod 755 var/spool
@@ -72,7 +75,9 @@ pbs_install() {
 	touch etc/cups/subscriptions.conf
 	chgrp lp etc/cups/{printers.conf,classes.conf,client.conf,subscriptions.conf}
 	# compress some driver files, adopted from Fedora
-	find ${pkgdir}/usr/share/cups/model -name "*.ppd" | xargs gzip -n9f
+	find usr/share/cups/model -name "*.ppd" | xargs gzip -n9f
+	#
+	ypkg_docp "$FILES_PATH"/files/blacklist-cups.conf etc/modprobe.d/
 	#clean
 	rm -rf etc/rc5.d/ etc/rc3.d/ etc/rc2.d/ etc/rc0.d/
 	rm -rf etc/init.d/cups

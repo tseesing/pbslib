@@ -1,0 +1,59 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="High quality drivers for Canon, Epson, Lexmark, Sony, Olympus, and PCL printers for use with CUPS, Ghostscript, Foomatic, and GIMP."
+HOMEPAGE="http://gimp-print.sourceforge.net/"
+REPO=""
+LICENSE="GPL"
+PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
+
+SRC_URI="http://nchc.dl.sourceforge.net/project/gimp-print/gutenprint-5.2/5.2.7/gutenprint-5.2.7.tar.bz2"
+
+RDEPEND="readline gnutls"
+BDEPEND="cups:-dev ghostscript-dev gimp:-dev"
+RECOMMENDED=""
+CONFLICT=""
+
+OPIONAL="cups:		to use cups printer spooler(recommended)
+         foomatic-db-engine:	to use foomatic spooler
+	 ghostscript:	adds postscript support for ijsgutenprint
+	 gimp:		adds gutenprint plugin to gimp
+	 "
+
+INSTALL="$N.install"
+
+NOTES=""
+
+pbs_unpack() {
+        ypkg_unpack
+}
+
+pbs_config() {
+	YPB_CONFIG+="--disable-samples
+	             --with-cups
+		     --with-gimp2
+		     --disable-translated-cups-ppds
+		     --with-gimp2-as-gutenprint
+		     --disable-libgutenprintui
+		     --enable-libgutenprintui2
+		     --disable-gtktest
+		     --enable-cups-ppds
+		     --enable-cups-ppds-at-top-level
+		     --with-foomatic
+		     --with-foomatic3
+		     --with-ghostscript
+		     --disable-static
+		     --disable-static-genppd
+		     --with-ijs
+		     --disable-globalized-cups-ppds"
+	ypkg_config
+}
+
+pbs_build() {
+	ypkg_make
+}
+
+pbs_install() {
+	ypkg_mkinstall
+}

@@ -15,6 +15,8 @@ RDEPEND="libXt libSM libICE libXext libX11 libjpeg-turbo cups krb5 e2fsprogs gli
          libXcomposite libXdamage libXfixes directfb libXrender util-linux-ng"
 BDEPEND=" "
 RECOMMENDED="ghostscript-fonts-std gnu-gs-fonts-other"
+CONFLICT="ghostscript"
+
 
 NOTES=""
 

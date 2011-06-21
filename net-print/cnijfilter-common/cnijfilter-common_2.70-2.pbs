@@ -1,0 +1,51 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="Canon IJ Printer Driver (Common package from version 2.70)"
+HOMEPAGE="http://support-au.canon.com.au/contents/AU/EN/0100084103.html"
+REPO=""
+LICENSE=""
+PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
+
+SRC_URI="http://gdlp01.c-wss.com/gds/5/0900007185/02/cnijfilter-common-2.70-2.src.rpm"
+
+RDEPEND=""
+BDEPEND=""
+RECOMMENDED=""
+CONFLICT=""
+
+NOTES=""
+	
+pbs_unpack() {
+        ypkg_unpack
+}
+
+pbs_install() {
+	tar xf cnijfilter-common-2.70-2.src.tar.bz2
+	tar xf cnijfilter-common-2.70-2.tar.gz
+	cd cnijfilter-common-2.70
+	pwdir=$PWD
+	#
+	cd $pwdir/libs
+        ./autogen.sh --prefix=/usr 
+	ypkg_makinstall
+	#
+        cd $pwdir/cngpij
+	./autogen.sh --prefix=/usr --enable-progpath=/usr/bin
+	ypkg_mkinstall
+	#     
+	cd $pwdir/pstocanonij
+	./autogen.sh --prefix=/usr --enable-progpath=/usr/bin
+	ypkg_mkinstall
+	#
+	#cd $pwdir/cngpijmon
+	./autogen.sh --prefix=/usr
+	cd $pwdir/cngpijmon/backend
+	make clean
+	make
+	ypgk_mkinstall 
+	#
+	cd $pwdir
+	ypkg_dodoc LICENSE-cnijfilter-*E.txt LICENSE-cnijfilter-*J.txt
+}

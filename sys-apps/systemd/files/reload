@@ -1,0 +1,16 @@
+#!/bin/bash
+#
+# wrapper of systemctl start
+#
+echo " This is a wrapper of systemctl, e.g:"
+echo " \"reload gdm\" to reload gdm"
+echo
+
+if [ "x$1" != "x" ]; then
+	dm=${1%%.service}
+	systemctl reload "$(basename $dm)".service
+	systemctl status "$(basename $dm)".service
+fi
+
+exit 0
+
