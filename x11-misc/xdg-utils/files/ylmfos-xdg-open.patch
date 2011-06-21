@@ -1,5 +1,5 @@
 --- a/scripts/xdg-open	2007-06-25 03:58:01.000000000 +0800
-+++ b/scripts/xdg-open	2010-12-23 11:11:00.037000390 +0800
++++ b/scripts/xdg-open	2011-06-21 10:52:15.439901291 +0800
 @@ -200,7 +200,7 @@
  }
  
@@ -78,7 +78,7 @@
  
      if [ $? -eq 0 ]; then
          exit_success
-@@ -358,22 +378,108 @@
+@@ -358,22 +378,130 @@
      fi
  }
  
@@ -136,10 +136,52 @@
 +                fi 	;;
 +   esac	
 +
-+	
-+    # Paths or file:// URLs
-+    if (echo "$1" | grep -q '^file://' ||
-+        ! echo "$1" | egrep -q '^[a-zA-Z+\.\-]+:'); then
++   # deal with http:// www.
++   if echo "$1" | egrep -q '^http://' || echo "$1" | grep -q '^www.' || echo "$1" |grep -q '^--app='; then
++    	    #
++	    url=$1
++	    # for chromium --app=http://www.baidu.com
++    	    if echo "$1" |grep -q '^--app='; then
++		for browser in chromium chrome chromium-browse google-chrome chrome-browse; do
++			browser=$(which $browser 2>/dev/null)
++			[ "x$browser" != "x" ] && break
++		done
++		if [ "x$browser" != "x" ]; then
++			$browser "$1" &
++	    		if [ $? -eq 0 ]; then
++				exit_success;
++			fi
++		else
++			url=${url##--app=}
++		fi
++	    fi
++	    # 		
++
++	    my_browser="$(gconftool-2 -g /desktop/gnome/url-handlers/http/command |awk '{print $1}')"
++	    if which $my_browser >/dev/null;then
++		"$my_browser" "$url" &
++	    else
++		IFS=":"
++		for browser in $BROWSER; do
++		   if [ x"$browser" != x"" ]; then
++		     browser_with_arg=`printf "$browser" "$url" 2>/dev/null`
++		     if [ $? -ne 0 ]; then
++			 browser_with_arg=$browser;
++		     fi
++		     if [ x"$browser_with_arg" = x"$browser" ]; then
++			"$browser" "$url";
++		     else 
++		       eval '$browser_with_arg'$xdg_redirect_output &
++		     fi
++		   fi
++		done	
++	    fi
++	    if [ $? -eq 0 ]; then
++		exit_success;
++	    fi
++  else		
++    # Paths or file:/// file:// URLs
++    #if echo "$1" | grep -q '^file://' || ! echo "$1" | egrep -q '^[a-zA-Z+\.\-]+:' || ! echo "$1" | grep -q '^www.'; then
 +
 +        local file=$(echo "$1" | sed 's%^file://%%')
 +
@@ -148,6 +190,10 @@
 +
 +	# decode
 +	file=$(echo $file | echo -e $(sed 's/%/\\x/g'))
++
++	if echo "$1" |grep -q '^file://[a-z]'; then
++		file="/$file"
++	fi
 +
 +        check_input_file "$file"
 +
@@ -170,34 +216,24 @@
          fi
 -    done
 +    fi
-+
-+    #
-+    my_browser="$(gconftool-2 -g /desktop/gnome/url-handlers/http/command |awk '{print $1}')"
-+    if which $my_browser >/dev/null;then
-+     	"$my_browser" "$1" &
-+    else
-+        IFS=":"
-+        for browser in $BROWSER; do
-+           if [ x"$browser" != x"" ]; then
-+             browser_with_arg=`printf "$browser" "$1" 2>/dev/null`
-+             if [ $? -ne 0 ]; then
-+                 browser_with_arg=$browser;
-+             fi
-+             if [ x"$browser_with_arg" = x"$browser" ]; then
-+                "$browser" "$1";
-+             else 
-+	       eval '$browser_with_arg'$xdg_redirect_output &
-+	     fi
-+	   fi
-+        done	
-+    fi
-+    if [ $? -eq 0 ]; then
-+    	exit_success;
-+    fi
  
      exit_failure_operation_impossible "no method available for opening '$1'"
  }
-@@ -406,20 +512,26 @@
+@@ -384,8 +512,12 @@
+ while [ $# -gt 0 ] ; do
+     parm="$1"
+     shift
+-
+     case "$parm" in
++    	#support chromium or chrome option --app=http://www.baidu.com
++      --app=*)
++      	url="$parm" 	
++	;;
++
+       -*)
+         exit_failure_syntax "unexpected option '$parm'"
+         ;;
+@@ -406,20 +538,26 @@
  detectDE
  
  if [ x"$DE" = x"" ]; then

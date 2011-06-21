@@ -4,8 +4,8 @@
 Name=doubanfm
 Name[zh_CN]=豆瓣电台
 Type=Application
-Exec=chromium --app="http://douban.fm/"
-TryExec=chromium
+Exec=xdg-open --app="http://douban.fm/"
+TryExec=xdg-open
 Icon=doubanfm-web
 Comment[zh_CN]=豆瓣FM - 失败者的飞翔
 Categories=Webapps;

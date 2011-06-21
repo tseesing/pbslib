@@ -4,8 +4,8 @@
 Name=uupoop
 Name[zh_CN]=Photoshop 在线精简版
 Type=Application
-Exec=chromium --app="http://uupoop.com/"
-TryExec=chromium
+Exec=xdg-open --app="http://uupoop.com/"
+TryExec=xdg-open
 Icon=uupoop-web
 Comment[zh_CN]=Photoshop在线精简版
 Categories=Webapps;

@@ -8,7 +8,7 @@ REPO="stable"
 LICENSE="GPL-2"
 PACKAGER="<ylmfos@115.com>"
 
-RDEPEND="chromium"
+RDEPEND=" xdg-utils"
 BDEPEND=""
 
 pbs_install() {

@@ -4,8 +4,8 @@
 Name=webqq
 Name[zh_CN]=网页QQ
 Type=Application
-Exec=chromium --app="http://web2.qq.com/"
-TryExec=chromium
+Exec=xdg-open --app="http://web2.qq.com/"
+TryExec=xdg-open
 Icon=webqq-web
 Comment[zh_CN]=腾讯WebQQ
 Categories=Webapps;

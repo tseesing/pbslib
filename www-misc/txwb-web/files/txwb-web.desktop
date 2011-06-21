@@ -4,8 +4,8 @@
 Name=txwb
 Name[zh_CN]=腾讯微博
 Type=Application
-Exec=chromium --app="http://t.qq.com"
-TryExec=chromium
+Exec=xdg-open --app="http://t.qq.com"
+TryExec=xdg-open
 Icon=txwb-web
 Comment[zh_CN]=腾讯微博
 Categories=Webapps;

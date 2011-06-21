@@ -4,8 +4,8 @@
 Name=115u-web
 Name[zh_CN]=我的网盘
 Type=Application
-Exec=chromium --app="http://115.com/"
-TryExec=chromium
+Exec=xdg-open --app="http://115.com/"
+TryExec=xdg-open
 Icon=115u-web
 Comment[zh_CN]=115网络U盘-我的网盘|免费网络硬盘
 Categories=Webapps;
