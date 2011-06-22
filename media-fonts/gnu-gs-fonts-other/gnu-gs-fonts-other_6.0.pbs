@@ -1,15 +1,15 @@
 #
 # YLmf_OS package build script
 #
-DESCRIPTION="gnu-gs-fonts-other"
-HOMEPAGE=""
+DESCRIPTION="Ghostscript Extra Fonts"
+HOMEPAGE="http://www.cups.org/"
 REPO=""
 LICENSE=""
 PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 
 SRC_URI="http://ftp.gnu.org/pub/gnu/ghostscript/"$N-$V$R".tar.gz"
 
-RDEPEND="gnu-ghostscript"
+RDEPEND=""
 BDEPEND=" "
 RECOMMENDED=""
 
@@ -20,5 +20,5 @@ pbs_unpack() {
 }
 
 pbs_install() {
-	ypkg_docp * "$YPPATH_DEST"/usr/share/fonts/ghostscript
+	ypkg_docp * "$YPPATH_DEST"/usr/share/fonts/ghostscript/
 }

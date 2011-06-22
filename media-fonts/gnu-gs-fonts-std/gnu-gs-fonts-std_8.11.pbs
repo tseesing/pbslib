@@ -1,15 +1,15 @@
 #
 # YLmf_OS package build script
 #
-DESCRIPTION="ghostscript-fonts-std"
-HOMEPAGE=""
+DESCRIPTION="Ghostscript Standard Fonts"
+HOMEPAGE="http://www.cups.org/"
 REPO=""
 LICENSE=""
 PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 
-SRC_URI="http://mirror.cs.wisc.edu/pub/mirrors/ghost/fonts/"$N-$V$R".tar.gz"
+SRC_URI="http://mirror.cs.wisc.edu/pub/mirrors/ghost/fonts/ghostscript-fonts-std-"$V$R".tar.gz"
 
-RDEPEND="gnu-ghostscript"
+RDEPEND=""
 BDEPEND=" "
 RECOMMENDED=""
 

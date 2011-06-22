@@ -44,7 +44,7 @@ pbs_install() {
 	cd $pwdir/cngpijmon/backend
 	make clean
 	make
-	ypgk_mkinstall 
+	ypkg_mkinstall 
 	#
 	cd $pwdir
 	ypkg_dodoc LICENSE-cnijfilter-*E.txt LICENSE-cnijfilter-*J.txt

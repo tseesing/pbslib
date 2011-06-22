@@ -13,3 +13,4 @@ post_remove() {
 	ypkg_groupdel "users"
 	ypkg_groupdel "sambashare"
 }
+

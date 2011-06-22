@@ -1,0 +1,53 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="The Samba package provides file and print services to SMB/CIFS clients and Windows networking to Linux clients"
+HOMEPAGE="http://www.samba.org"
+REPO=""
+LICENSE="GPL-2"
+PACKAGER="<ylmfos@115.com>"
+
+SRC_URI="http://"$N".org/"$N"/ftp/stable/"$N-$V".tar.gz"
+
+RDEPEND="acl attr avahi cups cyrus-sasl dbus e2fsprogs gamin gcc glibc gnutls keyutils krb5 libcap libgcrypt libgpg-error libtasn1 ncurses openldap-client openssl pam popt readline talloc zlib"
+BDEPEND=""
+RECOMMENDED=""
+
+INSTALL="$N.install"
+
+NOTES="nobody/sambashare/users group created automatically."
+
+pbs_unpack() {
+        ypkg_unpack
+}
+
+pbs_config() {
+	cd source3
+	YPB_CONFIG+=" --with-piddir=/var/run
+		      --with-fhs
+		      --with-cifsmount
+		      --with-pam
+		      --with-pammodulesdir=/lib/security "
+	ypkg_config
+}
+
+pbs_build() {
+	ypkg_make
+}
+
+pbs_install() {
+	ypkg_mkinstall install-everything
+	ypkg_dounit nmbd.service smbd.service winbind.service
+	ypkg_docp "$FILES_PATH"/files/smb.conf "$YPPATH_DEST"/etc/samba/
+	install -d -m 1770 -g sambashare "$YPPATH_DEST"/var/lib/samba/usershares 
+	#for systemd
+	mkdir -p "$YPPATH_DEST"/lib/systemd/system/multi-user.target.wants "$YPPATH_DEST"/var/log/samba
+	cd "$YPPATH_DEST"/lib/systemd/system/multi-user.target.wants
+	ypkg_doln /lib/systemd/system/winbind.service  winbind.service
+	ypkg_doln /lib/systemd/system/smbd.service     smbd.service  
+	ypkg_doln /lib/systemd/system/nmbd.service     nmbd.service
+	#for cups share
+	ypkg_doln /usr/bin/smbspool "$YPPATH_DEST"/usr/lib/cups/backend/smb
+}
+
