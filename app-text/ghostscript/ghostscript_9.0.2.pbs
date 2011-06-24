@@ -10,7 +10,7 @@ PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 
 SRC_URI="http://downloads.ghostscript.com/public/ghostscript-9.02.tar.gz"
 
-RDEPEND="libxt fontconfig zlib libtiff"
+RDEPEND="libXt fontconfig zlib libtiff"
 BDEPEND=""
 RECOMMENDED=""
 CONFLICT="gnu-ghostscript"

@@ -23,16 +23,16 @@ pbs_unpack() {
 }
 
 pbs_config() {
-	ypkg_patch gnome-vfs.ftphandler.diff
+	ypkg_patch gnome-vfs.ftphandler.diff 07_trash_location.patch
 	YPB_CONFIG+="--disable-schemas-install 
-		      --enable-hal 
-		      --enable-openssl 
-		      --enable-samba 
-		      --disable-cdda 
-		      --enable-avahi 
-		      --enable-daemon 
-		      --enable-ipv6 
-	              --enable-fam"
+		     --enable-hal 
+		     --enable-openssl 
+		     --enable-samba 
+		     --disable-cdda 
+		     --enable-avahi 
+		     --enable-daemon 
+		     --enable-ipv6 
+	             --enable-fam"
 	ypkg_config
 }
 

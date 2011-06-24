@@ -4,7 +4,7 @@
 
 DESCRIPTION="Perl-compatible regular expression library"
 HOMEPAGE="http://www.pcre.org/"
-LICENSE="GPL-2"
+LICENSE="GPLv2"
 PACKAGER="<ylmfos@115.com>"
 
 SRC_URI="ftp://ftp.csx.cam.ac.uk/pub/software/programming/pcre/pcre-"$V$R".tar.bz2"
@@ -34,3 +34,4 @@ pbs_build() {
 pbs_install() {
 	ypkg_mkinstall
 }
+

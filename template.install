@@ -28,3 +28,11 @@ post_remove() {
 	ypkg_groupdel "apache"
 	ypkg_remove_info wget.info.gz
 }
+
+post_upgrade()  {
+	:
+}
+
+post_downgrade() {
+	:
+}

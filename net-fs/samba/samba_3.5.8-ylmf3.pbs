@@ -49,5 +49,7 @@ pbs_install() {
 	ypkg_doln /lib/systemd/system/nmbd.service     nmbd.service
 	#for cups share
 	ypkg_doln /usr/bin/smbspool "$YPPATH_DEST"/usr/lib/cups/backend/smb
+	mkdir -p "$YPPATH_DEST"/var/spool/samba
+	chmod 777 "$YPPATH_DEST"/var/spool/samba
 }
 

@@ -7,7 +7,7 @@ HOMEPAGE="www.gnome.com"
 LICENSE="GPL-2"
 PACKAGER="<ylmfos@115.com>"
 
-SRC_URI="http://ftp.gnome.org/pub/gnome/sources/"$N"/1.6/"$N-$V$R".tar.bz2"
+SRC_URI="http://ftp.gnome.org/pub/gnome/sources/"$N"/1.6/"$N-$V".tar.bz2"
 
 RDEPEND="acl attr avahi bluez cyrus-sasl dbus dbus-glib eggdbus expat fuse gcc gconf glib2 glibc gnome-disk-utility gnutls keyutils krb5 libarchive libcap libcdio libexif libgcrypt libgnome-keyring libgpg-error libgphoto2 libproxy libsoup libtasn1 libtool libusb libusb-compat libxml2 openldap-client openssl orbit samba sqlite talloc udev zlib"
 BDEPEND="gnome-keyring-dev"
@@ -17,17 +17,22 @@ pbs_unpack() {
 }
 
 pbs_config() {
-	YPB_CONFIG+=" --enable-hal 
-		      --enable-gphoto2 
-		      --enable-archive 
-		      --enable-samba 
-		      --enable-keyring 
-	              --enable-obexftp 
-		      --enable-gconf 
-		      --enable-fuse 
-		      --enable-cdda 
-		      --enable-avahi 
-		      --enable-http "
+	YPB_CONFIG+=" --enable-http
+	              --enable-avahi
+		      --enable-udev
+		      --enable-fuse
+		      --enable-gconf
+		      --enable-gdu
+		      --enable-hal
+		      --enable-gudev
+		      --enable-cdda
+		      --enable-afc
+		      --enable-obexftp
+		      --enable-gphoto2
+		      --enable-keyring
+		      --enable-samba
+		      --enable-archive
+		      --enable-bash-completion"
 	ypkg_config
 }
 
