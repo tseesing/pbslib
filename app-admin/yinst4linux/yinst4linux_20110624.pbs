@@ -2,74 +2,25 @@
 # YLmf_OS package build script
 #
 
-DESCRIPTION=""
-HOMEPAGE=""
-REPO=""
+DESCRIPTION="a tool for installing Ylmf OS under linux distributions."
+HOMEPAGE="http://www.ylmf.com"
+REPO="testing"
 LICENSE="GPL"
-#PRIORITY="required"
 PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 
-SRC_URI=""
+SRC_URI="git://git.ylmf.com/"$N".git"
 
-RDEPEND=""
+RDEPEND="python"
 BDEPEND=""
 RECOMMENDED=""
 CONFLICT=""
 
 INSTALL="$N.install"
 
-NOTES=""
-
-#DESKTOPFILE="glchess.desktop" or "/opt/test/test.desktop"
-#ICONFILE="test.png"   or "/opt/test/test.png"
-
 pbs_unpack() {
-	#unpard file from $YPPATH_SOURCE to current directory.
         ypkg_unpack
 }
 
-pbs_config() {
-	#ypkg_patch $FILES_PATH/files/patches/*.patch 
-	#XX.patch should be found under $FILES_PATH/files or $FILES_PATH/files/patches/
-	#second, add package specified config params to YPB_CONFIG
-	#default is :
-	#YPB_CONFIG+=" --prefix=/usr
-	#	      --sysconfdir=/etc
-	#	      --localstatedir=/var
-	#             --infodir=/usr/share/info
-	#	      --mandir=/usr/share/man
-	#              --disable-static
-	#	      --enable-shared "
-	YPB_CONFIG+=""
-	#Third, call configure with $YPB_CONFIG
-	#./configure $YPB_CONFIG
-	ypkg_config
-}
-
-pbs_build() {
-	#make "$MAKEOPTS"
-	ypkg_make
-}
-
-#pbs_check() {
-#	make check
-#}
-
 pbs_install() {
-	#install everything to $YPPATH_DEST
-	#make DESTDIR="$YPPATH_DEST" install
 	ypkg_mkinstall
-	#ypkg_doinit "$N"
-	#ypkg_doinit "N".service
-	#ypkg_dodesktop "*.desktop" "*.png"
-	#ypkg_dodoc AUTHORS ChangeLog COPYING INSTALL NEWS README 
-	#ypkg_docp "$FILES_PATH/files/XXXX" "dirname"
-	#ypkg_domv "$FILES_PATH/files/XXXX" "dirname"
-	#ypkg_docp_rename "$1" "$2"
-	#ypkg_domv_rename "$1" "$2"
-	#ypkg_doln "$1 "$2"
-	#ypkg_doman a.1 b.2 c.3
-	#*****************
-	#when SRC_URI is deb or rpm package
-	#ypkg_docp data/*  "$YPPATH_DEST"
 }

@@ -1,0 +1,34 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="OpenPrinting printer support - prebuilt PPD files "
+HOMEPAGE="http://www.openprinting.org/download/foomatic/oldstuff/"
+LICENSE="GPL-2"
+PACKAGER="<ylmfos@115.com>"
+
+SRC_URI="http://www.openprinting.org/download/foomatic/oldstuff/"$N-$V".tar.gz"
+
+RDEPEND=""
+BDEPEND=" "
+RECOMMENDED=""
+
+NOTES="
+Please restart the CUPS daemon. Note that the CUPS daemon
+needs some minutes to register all PPD files."
+
+pbs_unpack() {
+        ypkg_unpack
+}
+
+pbs_install() {
+	./install -p "$YPPATH_DEST"/usr
+	ypkg_dodoc COPYING README
+	cd "$YPPATH_DEST"
+	#FIXME 
+	#foomatic-rip is provided by foomatic-filters
+	rm -r usr/bin/foomatic-rip
+	#
+	chown root:root usr/bin/foomatic-gswrapper
+}
+
