@@ -12,6 +12,7 @@ post_install() {
 	# update hicolor icons
 	gnome2_icon_cache_update
 	chown -R gdm:gdm /var/lib/gdm
+	chown -R gdm:gdm /var/lib/gdm/
 }
 
 post_remove() {
