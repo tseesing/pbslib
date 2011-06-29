@@ -56,7 +56,7 @@ pbs_install() {
 
 libpurple_install() {
 	DESCRIPTION="IM library extracted from Pidgin"
-	RDEPEND="farsight2 libsasl dbus-glib gnutls"
+	RDEPEND="farsight2 dbus-glib gnutls"
         for dir in libpurple share/sounds share/ca-certs m4macros po; do
 		ypkg_mkinstall -C "${dir}"
 	done

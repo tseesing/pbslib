@@ -1,0 +1,68 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="Vim, an improved vi-style text editor"
+HOMEPAGE="http://www.vim.org/"
+REPO="testing"
+LICENSE=""
+PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
+
+SRC_URI="ftp://ftp.vim.org/pub/vim/unix/"$N-$V$R".tar.bz2" 
+
+RDEPEND="acl atk attr cairo directfb expat fontconfig freetype gtk+ libICE pango 
+	 pixman libpng libSM libX11 libXau libxcb libXcomposite libXcursor libXdamage 
+	 libXdmcp libXext libXfixes libXi libxml2 libXrandr libXrender libXt"
+BDEPEND=""
+
+pbs_unpack() {
+        ypkg_unpack
+}
+
+pbs_config() {
+	echo '#define SYS_VIMRC_FILE "/etc/vimrc"' >> src/feature.h
+	YPB_CONFIG+="--enable-gui=gtk2 --enable-pythoninterp=yes --enable-cscope --enable-multibyte --enable-xim --with-features=huge --with-x"
+	ypkg_config
+}
+
+pbs_build() {
+	ypkg_make
+}
+
+pbs_install(){
+	ypkg_mkinstall
+	cd "$YPPATH_DEST"
+	#create vi
+	ypkg_doln /usr/bin/vim usr/bin/vi
+	ypkg_doln /usr/share/vim/vim73/doc usr/share/doc/vim-7.3
+	#write vimrc
+	mkdir -p etc
+	cat > etc/vimrc << "EOF"
+set nocompatible
+set bsdir=buffer
+set autochdir
+set enc=utf-8
+set fenc=utf-8
+set fencs=utf-8,ucs-bom,gb18030,gbk,gb2312,cp936
+set langmenu=zh_CN.UTF-8
+source $VIMRUNTIME/delmenu.vim
+source $VIMRUNTIME/menu.vim
+syntax on
+set syn=cpp
+set nu!
+set hlsearch
+set tabstop=4
+set cindent shiftwidth=4
+set autoindent shiftwidth=4
+set hlsearch
+set incsearch
+set comments=://
+set comments=s1:/*,mb:*,ex0:/
+set tags=./tags,./../tags,./**/tags
+set fileformats=unix,dos
+map <Up> gk
+map <Down> gj
+set cmdheight=1
+EOF
+}
+
