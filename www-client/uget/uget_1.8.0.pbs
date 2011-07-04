@@ -1,0 +1,42 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="Download manager using gtk+ and libcurl"
+HOMEPAGE="http://urlget.sourceforge.net/"
+REPO=""
+LICENSE="GPL"
+PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
+
+SRC_URI="http://nchc.dl.sourceforge.net/project/urlget/uget%20%28stable%29/1.8.0/uget-1.8.0.tar.gz"
+
+RDEPEND="atk cairo curl cyrus-sasl dbus dbus-glib expat fontconfig freetype gcc glib2 glibc gstreamer gtk+ libidn libnotify libpng libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libxml2 libXrandr libXrender openldap-client pango pixman zlib"
+BDEPEND=""
+RECOMMENDED="aria2"
+CONFLICT=""
+
+INSTALL="$N.install"
+
+NOTES=""
+
+DESKTOPFILE="uget-gtk.desktop"
+
+pbs_unpack() {
+        ypkg_unpack
+}
+
+pbs_config() {
+	ypkg_patch "ylmfos_plugin_aria2_args.patch"
+	YPB_CONFIG+="--enable-plugin-curl
+	             --enable-plugin-aria2"
+	ypkg_config
+}
+
+pbs_build() {
+	ypkg_make
+}
+
+pbs_install() {
+	ypkg_mkinstall
+}
+

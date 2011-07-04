@@ -25,7 +25,10 @@ pbs_unpack() {
 
 pbs_config() {
 	ypkg_patch gnome-mplayer-1.0.2-implicit_declaration.patch ylmfos-argv.patch strip-audio-mime.patch
-	YPB_CONFIG+=""
+	YPB_CONFIG+="--with-gio --with-libnotify --with-gconf 
+	             --with-libmusicbrainz3 --with-gpm-new-method 
+		     --disable-schemas-install --disable-nautilus 
+		     --with-alsa --with-flat-volume"
 	ypkg_config
 }
 
