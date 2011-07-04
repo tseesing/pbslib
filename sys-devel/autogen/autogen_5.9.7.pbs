@@ -1,0 +1,38 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="Program and text file generation"
+HOMEPAGE="http://www.gnu.org/software/autogen/"
+REPO=""
+LICENSE="GPL"
+PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
+
+SRC_URI="http://ftp.gnu.org/gnu/autogen/rel5.9.7/autogen-5.9.7.tar.bz2"
+
+RDEPEND=""
+BDEPEND=""
+RECOMMENDED=""
+CONFLICT=""
+
+NOTES=""
+
+pbs_unpack() {
+        ypkg_unpack
+}
+
+pbs_config() {
+	YPB_CONFIG+=""
+	ypkg_config
+}
+
+pbs_build() {
+	ypkg_make
+}
+
+pbs_install() {
+	#make DESTDIR="$YPPATH_DEST" install
+	ypkg_mkinstall
+}
+
+

@@ -1,0 +1,37 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="An object-oriented language for quick and easy programming"
+HOMEPAGE="http://www.ruby-lang.org/en/"
+REPO=""
+LICENSE="custom"
+PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
+
+SRC_URI="ftp://ftp.ruby-lang.org/pub/ruby/1.9/ruby-"$V$R"-p180.tar.bz2"
+
+RDEPEND=""
+BDEPEND=""
+RECOMMENDED=""
+CONFLICT=""
+
+NOTES=""
+
+pbs_unpack() {
+	ypkg_unpack
+}
+
+pbs_config() {
+	YPB_CONFIG+="--enable-pthread --disable-rpath"
+	ypkg_config
+}
+
+pbs_build() {
+	ypkg_make
+}
+
+pbs_install() {
+	ypkg_mkinstall 
+	ypkg_dodoc COPYING
+}
+

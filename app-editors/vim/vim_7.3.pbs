@@ -4,7 +4,7 @@
 
 DESCRIPTION="Vim, an improved vi-style text editor"
 HOMEPAGE="http://www.vim.org/"
-REPO="testing"
+REPO=""
 LICENSE=""
 PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 
@@ -21,7 +21,9 @@ pbs_unpack() {
 
 pbs_config() {
 	echo '#define SYS_VIMRC_FILE "/etc/vimrc"' >> src/feature.h
-	YPB_CONFIG+="--enable-gui=gtk2 --enable-pythoninterp=yes --enable-cscope --enable-multibyte --enable-xim --with-features=huge --with-x"
+	YPB_CONFIG+="--enable-gui=gtk2 --enable-pythoninterp=yes 
+	             --enable-cscope --enable-multibyte --enable-xim 
+				 --with-features=huge --with-x"
 	ypkg_config
 }
 
@@ -38,31 +40,25 @@ pbs_install(){
 	#write vimrc
 	mkdir -p etc
 	cat > etc/vimrc << "EOF"
+" Begin /etc/vimrc
 set nocompatible
-set bsdir=buffer
-set autochdir
-set enc=utf-8
-set fenc=utf-8
-set fencs=utf-8,ucs-bom,gb18030,gbk,gb2312,cp936
-set langmenu=zh_CN.UTF-8
-source $VIMRUNTIME/delmenu.vim
-source $VIMRUNTIME/menu.vim
+set backspace=2
+set ruler
+set tags=tags
+set ai
+autocmd FileType python set omnifunc=pythoncomplete#Complete
+autocmd FileType javascript set omnifunc=javascriptcomplete#CompleteJS
+autocmd FileType html set omnifunc=htmlcomplete#CompleteTags
+autocmd FileType css set omnifunc=csscomplete#CompleteCSS
+autocmd FileType xml set omnifunc=xmlcomplete#CompleteTags
+autocmd FileType php set omnifunc=phpcomplete#CompletePHP
+autocmd FileType c set omnifunc=ccomplete#Complete
+set t_Co=256
 syntax on
-set syn=cpp
-set nu!
-set hlsearch
-set tabstop=4
-set cindent shiftwidth=4
-set autoindent shiftwidth=4
-set hlsearch
-set incsearch
-set comments=://
-set comments=s1:/*,mb:*,ex0:/
-set tags=./tags,./../tags,./**/tags
-set fileformats=unix,dos
-map <Up> gk
-map <Down> gj
-set cmdheight=1
+"if (&term == "iterm") || (&term == "putty")
+set background=dark
+"endif
+" End /etc/vimrc
 EOF
 }
 

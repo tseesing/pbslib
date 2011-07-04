@@ -1,7 +1,7 @@
 . /usr/lib/ybs/funcs
 
 post_install() {
-	lists="make patch automake autoconf patch intltool pkgconfig gcc-dev glib2-dev
+	lists="make patch automake autoconf patch intltool pkgconfig gcc-dev glib2-dev m4
 		   linux-headers-dev linux-kernel-headers"
 	for p in $lists;do 
 		yget install -y "${p}"
