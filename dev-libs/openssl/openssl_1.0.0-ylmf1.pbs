@@ -1,0 +1,44 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="Toolkit for SSL v2/v3 and TLS v1"
+HOMEPAGE="http://www.openssl.org/"
+LICENSE="custom:BSD"
+PACKAGER="<ylmfos@115.com>"
+REPO="testing"
+
+SRC_URI="ftp://ftp.openssl.org/source/"$N-$V"d.tar.gz"
+
+RDEPEND="glibc zlib"
+BDEPEND=""
+
+pbs_unpack() {
+        ypkg_unpack
+}
+
+pbs_config() {
+	# avoid conflicts with other man pages
+	ypkg_patch fix-manpages.patch
+	# remove rpath: http://bugs.archlinux.org/task/14367
+	ypkg_patch no-rpath.patch
+	# set ca dir to /etc/ssl by default
+	ypkg_patch ca-dir.patch
+	# 
+	ypkg_patch ylmfos-makefile-dir.patch
+	# mark stack as non-executable: http://bugs.archlinux.org/task/12434
+	./config --prefix=/usr --openssldir=/usr/lib/ssl \
+	         --libdir=lib shared zlib enable-md2   \
+		 -Wa,--noexecstack
+}
+
+pbs_build() {
+	make 
+}
+
+pbs_install() {
+	make INSTALL_PREFIX="$YPPATH_DEST" MANDIR=/usr/share/man install
+	ypkg_docp certs "$YPPATH_DEST"/etc/ssl/
+	ypkg_dodoc LICENSE
+}
+

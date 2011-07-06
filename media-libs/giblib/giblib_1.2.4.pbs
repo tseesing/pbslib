@@ -1,0 +1,36 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="giblib is a simple library which wraps imlib2."
+HOMEPAGE="http://freshmeat.net/projects/giblib/"
+REPO=""
+LICENSE="GPL"
+PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
+
+SRC_URI="http://linuxbrit.co.uk/downloads/"$N-$V$R".tar.gz"
+
+RDEPEND="freetype glibc imlib2 libX11 libXau libxcb libXdmcp libXext zlib"
+BDEPEND=""
+RECOMMENDED=""
+CONFLICT=""
+
+pbs_unpack() {
+        ypkg_unpack
+}
+
+pbs_config() {
+	ypkg_patch ylmfos-makefile-docsdir.patch
+	YPB_CONFIG+=""
+	ypkg_config
+}
+
+pbs_build() {
+	ypkg_make
+}
+
+pbs_install() {
+	ypkg_mkinstall
+}
+
+

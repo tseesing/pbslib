@@ -1,0 +1,44 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="Allows users or groups to run commands as other users"
+HOMEPAGE="http://www.sudo.ws/ http://www.gratisoft.us/sudo/"
+LICENSE=""
+PACKAGER="<ylmfos@115.com>"
+
+SRC_URI="http://www.gratisoft.us/sudo/dist/"$N-$V".tar.gz"
+
+RDEPEND="glibc zlib"
+BDEPEND=" "
+
+INSTALL="sudo.install"
+
+NOTES="Please add your usrers to /etc/sudoer, using visudo"
+
+pbs_unpack() {
+        ypkg_unpack
+}
+
+pbs_config() {
+	ypkg_patch member-of-wheel-run-sudo.patch
+	YPB_CONFIG+=" --libexecdir=/usr/lib 
+		      --with-ignore-dot 
+	              --with-all-insults 
+		      --enable-shell-sets-home 
+		      --with-logfac=auth 
+		      --without-pam 
+		      --without-sendmail"
+	ypkg_config
+}
+
+pbs_build() {
+	ypkg_make
+}
+
+pbs_install() {
+	ypkg_mkinstall
+	cd "$YPPATH_DEST"
+	chmod 755 usr/lib/sudoers.so 
+	chmod 755 var/lib/
+}

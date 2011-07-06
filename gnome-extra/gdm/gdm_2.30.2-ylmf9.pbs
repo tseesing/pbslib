@@ -89,3 +89,4 @@ pbs_install() {
 	#FIXME
 	sed -i 's/${exec_prefix}/\/usr/g' usr/share/gdm/autostart/LoginWindow/at-spi-registryd-wrapper.desktop
 }
+

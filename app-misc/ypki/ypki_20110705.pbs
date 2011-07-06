@@ -6,6 +6,7 @@ DESCRIPTION="ypk package installer, gtk frontend"
 HOMEPAGE="www.ylmf.net"
 REPO="stable"
 LICENSE="GPL-2"
+PRIORITY="required"
 PACKAGER="<ylmfos@115.com>"
 
 SRC_URI="git://git.ylmf.com/"$N".git"

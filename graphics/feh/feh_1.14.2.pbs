@@ -1,0 +1,38 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="feh is an X11 image viewer aimed mostly at console users. "
+HOMEPAGE="http://feh.finalrewind.org/"
+REPO=""
+LICENSE="MIT"
+PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
+
+SRC_URI="http://feh.finalrewind.org/"$N-$V$R".tar.bz2"
+
+RDEPEND="curl cyrus-sasl freetype giblib glibc imlib2 libidn libpng libX11 libXau libxcb libXdmcp libXext libXinerama openldap-client zlib"
+BDEPEND=""
+RECOMMENDED=""
+CONFLICT=""
+
+NOTES=""
+
+pbs_unpack() {
+        ypkg_unpack
+}
+
+pbs_config() {
+	ypkg_patch ylmfos-makefile-prefixdir.patch
+	YPB_CONFIG+=""
+	ypkg_config
+}
+
+pbs_build() {
+	ypkg_make
+}
+
+pbs_install() {
+	ypkg_mkinstall
+}
+
+

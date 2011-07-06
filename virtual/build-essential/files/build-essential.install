@@ -2,7 +2,7 @@
 
 post_install() {
 	lists="make patch automake autoconf patch intltool pkgconfig gcc-dev glib2-dev m4
-		   linux-headers-dev linux-kernel-headers"
+		   linux-headers linux-kernel-headers"
 	for p in $lists;do 
 		yget install -y "${p}"
 	done		

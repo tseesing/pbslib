@@ -1,0 +1,26 @@
+. /usr/lib/ybs/funcs
+
+post_install() {
+	gnome2_desktop_database_update
+	schemas="/etc/gconf/schemas/ccm-window-animation.schemas
+		 /etc/gconf/schemas/ccm-vala-window-plugin.schemas
+		 /etc/gconf/schemas/ccm-snapshot.schemas
+		 /etc/gconf/schemas/ccm-shadow.schemas
+		 /etc/gconf/schemas/ccm-screen.schemas
+		 /etc/gconf/schemas/ccm-perf.schemas
+		 /etc/gconf/schemas/ccm-opacity.schemas
+		 /etc/gconf/schemas/ccm-mosaic.schemas
+		 /etc/gconf/schemas/ccm-menu-animation.schemas
+		 /etc/gconf/schemas/ccm-magnifier.schemas
+		 /etc/gconf/schemas/ccm-freeze.schemas
+		 /etc/gconf/schemas/ccm-fade.schemas
+		 /etc/gconf/schemas/ccm-display.schemas
+		 /etc/gconf/schemas/ccm-decoration.schemas
+		 /etc/gconf/schemas/ccm-automate.schemas"
+	gnome2_install_schema $schemas
+}
+
+post_remove() {
+	post_install
+}
+
