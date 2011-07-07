@@ -1,0 +1,26 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="Microcode for the Intel PRO/Wireless 3945ABG miniPCI express adapter"
+HOMEPAGE="http://www.bughost.org/ipw3945/"
+REPO=""
+LICENSE=""
+PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
+
+SRC_URI="http://www.bughost.org/ipw3945/ucode/ipw3945-ucode-1.14.2.tgz"
+
+RDEPEND=""
+BDEPEND=""
+RECOMMENDED=""
+CONFLICT=""
+
+pbs_unpack() {
+        ypkg_unpack
+}
+
+pbs_install() {
+	ypkg_docp *.ucode "$YPPATH_DEST"/lib/firmware/
+	ypkg_dodoc README* LICENSE* 
+}
+

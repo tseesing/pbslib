@@ -1,0 +1,26 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="Firmware for the Intel PRO/Wireless 2200BG/2915ABG miniPCI and 2225BG PCI adapters"
+HOMEPAGE="http://ipw2200.sourceforge.net/"
+REPO=""
+LICENSE=""
+PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
+
+SRC_URI="http://bughost.org/firmware/ipw2200-fw-3.1.tgz"
+
+RDEPEND=""
+BDEPEND=""
+RECOMMENDED=""
+CONFLICT=""
+
+pbs_unpack() {
+        ypkg_unpack
+}
+
+pbs_install() {
+	ypkg_docp *.fw "$YPPATH_DEST"/lib/firmware/
+	ypkg_dodoc LICENSE.ipw2200-fw 
+}
+
