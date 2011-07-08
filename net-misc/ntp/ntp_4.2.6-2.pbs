@@ -1,0 +1,49 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="Network Time Protocol suite/programs"
+HOMEPAGE="http://www.ntp.org/"
+REPO=""
+LICENSE="GPL"
+PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
+
+SRC_URI="http://www.eecis.udel.edu/~ntp/ntp_spool/ntp4/ntp-4.2/ntp-4.2.6p2.tar.gz"
+
+RDEPEND=""
+BDEPEND=""
+RECOMMENDED=""
+CONFLICT=""
+
+INSTALL="$N.install"
+
+NOTES=""
+
+pbs_unpack() {
+        ypkg_unpack
+}
+
+pbs_config() {
+	ypkg_patch mod_nano.patch
+	YPB_CONFIG+="--bindir=/usr/sbin
+		     --enable-all-clocks
+	             --enable-parse-clocks
+		     --enable-debugging
+		     --sysconfdir=/var/lib/ntp
+		     --with-sntp"
+	ypkg_config
+}
+
+pbs_build() {
+	ypkg_make
+}
+
+pbs_install() {
+	ypkg_mkinstall
+	ypkg_dounit "ntpd.service"
+	cd "$YPPATH_DEST"
+	ypkg_doln /lib/systemd/system/ntpd.service lib/systemd/system/multi-user.target.wants/ntpd.service
+	ypkg_docp "$FILES_PATH"/files/ntp.conf etc/
+	mkdir -p var/lib/ntp
+}
+

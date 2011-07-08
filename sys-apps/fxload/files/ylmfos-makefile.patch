@@ -1,0 +1,13 @@
+diff -ur fxload-20081013/Makefile fxload-20081013.new//Makefile
+--- fxload-20081013/Makefile	2008-10-14 05:44:04.000000000 +0800
++++ fxload-20081013.new//Makefile	2011-07-08 09:56:29.519028177 +0800
+@@ -3,7 +3,8 @@
+ # Builds "fxload" binaries, distribution tarball, and RPMs.
+ #
+ 
+-prefix =		/
++DESTDIR =
++prefix =		${DESTDIR}/
+ exec_prefix =		${prefix}
+ sbindir =		${exec_prefix}/sbin
+ mandir =		${prefix}/usr/share/man

@@ -1,0 +1,26 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="firmware for Hauppauge PVR-x50 and Conexant 2341x based cards"
+HOMEPAGE="http://www.ivtvdriver.org/index.php/Firmware"
+REPO=""
+LICENSE="Hauppauge-Firmware"
+PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
+
+SRC_URI="http://dl.ivtvdriver.org/ivtv/firmware/ivtv-firmware-20080701.tar.gz"
+
+RDEPEND=""
+BDEPEND=""
+RECOMMENDED=""
+CONFLICT=""
+
+pbs_unpack() {
+        ypkg_unpack
+}
+
+pbs_install() {
+	cd ../
+	ypkg_docp *.fw *.mpg "$YPPATH_DEST"/lib/firmware/
+}
+

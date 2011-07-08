@@ -2,16 +2,16 @@
 # YLmf_OS package build script
 #
 
-DESCRIPTION="Driver for RealTek PCIE Wireless LAN NICs: RTL8188CE/RTL8192CE, RTL8191SE/RTL8192SE, RTL8192DE"
-HOMEPAGE="http://www.realtek.com.tw/"
+DESCRIPTION="RealTek RTL8101E, RTL8102E(L) and RTL8103E(L), the Fast Ethernet controller with PCI-Express interface."
+HOMEPAGE="http://www.realtek.com.tw"
 REPO=""
 LICENSE=""
 PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 
-SRC_URI="ftp://WebUser:Lc9FuH5r@202.134.71.22/cn/wlan/92ce_se_de_linux_mac80211_0003.0401.2011.tar.gz"
+SRC_URI="ftp://WebUser:fh7SkVT4@210.51.181.211/cn/nic/r8101-1.020.00.tar.bz2"
 
 RDEPEND=""
-BDEPEND="linux-headers"
+BDEPEND=""
 RECOMMENDED=""
 CONFLICT=""
 
@@ -25,10 +25,11 @@ pbs_unpack() {
 
 pbs_build() {
 	ypkg_patch ylmfos-makefile.patch
-	ypkg_make
+	ypkg_make modules
 }
 
 pbs_install() {
 	ypkg_mkinstall
+	ypkg_dodoc readme
 }
 

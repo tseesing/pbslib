@@ -2,7 +2,7 @@
 # YLmf_OS package build script
 #
 
-DESCRIPTION="rtl8712 8188 8191 8192SU usb wireless chipset driver"
+DESCRIPTION="RTL8712/8188/8191/8192SU usb wireless chipset driver"
 HOMEPAGE="http://122.146.118.42/default.aspx"
 REPO=""
 LICENSE=""
@@ -21,6 +21,8 @@ NOTES=""
 
 pbs_unpack() {
         ypkg_unpack
+	pwd
+	exit
 }
 
 pbs_build() {

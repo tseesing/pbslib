@@ -2,25 +2,27 @@
 # YLmf_OS package build script
 #
 
-DESCRIPTION="event logging framework"
-HOMEPAGE="http://zeitgeist-project.com/download/"
+DESCRIPTION="a graphical frontend for ndiswrapper."
+HOMEPAGE="http://jak-linux.org/projects/ndisgtk/"
 REPO=""
 LICENSE="GPL"
 PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 
-SRC_URI="http://edge.launchpad.net/zeitgeist/0.5/0.5.2/+download/zeitgeist-0.5.2.tar.gz"
+SRC_URI="http://jak-linux.org/projects/ndisgtk/ndisgtk-0.8.5.tar.gz"
 
-RDEPEND="python raptor2 rdflib"
-BDEPEND="rdflib"
+RDEPEND="python"
+BDEPEND=""
 RECOMMENDED=""
+CONFLICT=""
 
-NOTES=""
+INSTALL="$N.install"
 
 pbs_unpack() {
         ypkg_unpack
 }
 
 pbs_config() {
+	YPB_CONFIG+=""
 	ypkg_config
 }
 
@@ -31,4 +33,3 @@ pbs_build() {
 pbs_install() {
 	ypkg_mkinstall
 }
-

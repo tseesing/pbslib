@@ -1,0 +1,27 @@
+. /usr/lib/ybs/funcs
+
+post_install() {
+	ypkg_useradd -c "ntp user" -d "/dev/null" -s "/bin/false" -r "ntp"
+	ypkg_groupadd -r "ntp"
+	chown ntp:ntp /var/lib/ntp
+	start ntpd
+}
+
+pre_remove() {
+	stop ntpd
+}
+
+post_remove() {
+	ypkg_userdel -r "ntp"
+	ypkg_groupdel "ntp"
+}
+
+post_upgrade()  {
+	systemctl --system daemon-reload
+	restart ntpd 
+}
+
+post_downgrade() {
+	post_upgrade
+}
+
