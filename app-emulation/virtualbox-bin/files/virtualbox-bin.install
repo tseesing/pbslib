@@ -26,3 +26,4 @@ pre_remove() {
 		grep "${i}" /proc/modules  >/dev/null 2>/dev/null && rmmod ${i} ||true
 	done
 }
+

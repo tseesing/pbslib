@@ -1,0 +1,38 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="util-linux is a random collection of Linux utilities"
+HOMEPAGE="http://git.kernel.org/?p=utils/util-linux-ng/util-linux-ng.git"
+REPO="testing"
+SRC_URI="http://www.kernel.org/pub/linux/utils/"$N"/v2.19/util-linux-"$V".tar.bz2"
+
+RDEPEND="glibc ncurses zlib"
+BDEPEND=""
+
+pbs_unpack() {
+        ypkg_unpack
+}
+
+pbs_config() {
+	#fallocate will cause compile error.
+	YPB_CONFIG+="--enable-arch 
+	             --enable-partx 
+		     --enable-write
+	             --disable-static 
+		     --disable-fallocate "
+	ypkg_config
+}
+
+pbs_build() {
+	ypkg_make
+}
+
+pbs_install() {
+	ypkg_mkinstall
+	ypkg_dodoc AUTHORS NEWS README* TODO
+	ypkg_dounit "$FILES_PATH"/files/{hwclock-load.service,hwclock-save.service}
+	cd "$YPPATH_DEST"
+	ypkg_doln /lib/systemd/system/hwclock-load.service lib/systemd/system/sysinit.target.wants/hwclock-load.service
+}
+
