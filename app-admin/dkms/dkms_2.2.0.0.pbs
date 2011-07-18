@@ -1,0 +1,33 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="Dynamic Kernel Module Support Framework"
+HOMEPAGE="http://linux.dell.com/dkms"
+REPO="testing"
+LICENSE="GPL"
+PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
+
+SRC_URI="http://linux.dell.com/"$N"/permalink/"$N-$V$R".tar.gz"
+
+RDEPEND=""
+BDEPEND=" "
+RECOMMENDED=""
+
+NOTES=""
+
+pbs_unpack() {
+        ypkg_unpack
+}
+
+pbs_config() {
+	ypkg_config
+}
+
+pbs_install() {
+	ypkg_mkinstall
+	ypkg_mkinstall install-doc
+	ypkg_docp_rename dkms_apport.py "$YPPATH_DEST"/usr/share/apport/package-hooks/dkms.py
+	chmod +x "$YPPATH_DEST"/usr/share/apport/package-hooks/dkms.py
+}
+

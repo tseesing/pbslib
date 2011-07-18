@@ -11,7 +11,7 @@ PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 SRC_URI="ftp://WebUser:Lc9FuH5r@202.134.71.22/cn/wlan/92ce_se_de_linux_mac80211_0003.0401.2011.tar.gz"
 
 RDEPEND=""
-BDEPEND="linux-headers"
+BDEPEND=""
 RECOMMENDED=""
 CONFLICT=""
 
@@ -23,12 +23,9 @@ pbs_unpack() {
         ypkg_unpack
 }
 
-pbs_build() {
-	ypkg_patch ylmfos-makefile.patch
-	ypkg_make
-}
-
 pbs_install() {
-	ypkg_mkinstall
+	ypkg_patch ylmfos-makefile.patch
+	ypkg_docp firmware/rtlwifi/*  "$YPPATH_DEST"/lib/firmware/rtlwifi/
+	ypkg_docp * "$YPPATH_DEST"/usr/src/"$N-$V$R" 
 }
 

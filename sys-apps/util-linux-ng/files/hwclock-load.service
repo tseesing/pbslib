@@ -16,7 +16,7 @@ Before=sysinit.target shutdown.target udev.service time-sync.target
 [Service]
 Type=oneshot
 RemainAfterExit=yes
-ExecStart=/sbin/hwclock --systz
+ExecStart=/sbin/hwclock --hctosys --localtime --noadjfile
 StandardOutput=syslog
 
 # Note the weird semantics of hwclock and the kernel here: the first

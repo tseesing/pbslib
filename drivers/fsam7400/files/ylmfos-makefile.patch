@@ -1,0 +1,10 @@
+diff -ur fsam7400-0.5.2/Makefile fsam7400-0.5.2.new//Makefile
+--- fsam7400-0.5.2/Makefile	2008-11-22 02:44:52.000000000 +0800
++++ fsam7400-0.5.2.new//Makefile	2011-07-18 13:40:17.116686004 +0800
+@@ -1,5 +1,5 @@
+ KERNELSRC?=/lib/modules/`uname -r`/build
+-KERNELVERSION=$(shell awk -F\" '/REL/ {print $$2}' $(shell grep -s -l REL $(KERNELSRC)/include/linux/version.h $(KERNELSRC)/include/linux/utsrelease.h))
++KERNELVERSION=$(shell uname -r)
+ KERNELMAJOR=$(shell echo $(KERNELVERSION)|head -c3)
+ 
+ CONFIG_FSAM7400?=m

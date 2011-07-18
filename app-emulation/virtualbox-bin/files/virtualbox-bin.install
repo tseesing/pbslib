@@ -2,28 +2,28 @@
 
 post_install() {
 	ypkg_groupadd -r "vboxusers"
-	#add users to vboxusers
+	
+	# add users to vboxusers
 	for user in $(who |awk '{print $1}' |sort -u |xargs); do
 		/usr/sbin/usermod -aG "vboxusers"  "$user"
 	done
+	
 	#
 	gnome2_desktop_database_update
 	gnome2_gconfd_reload
-	depmod -a
-	rmmod vboxnetadp
-	rmmod vboxnetflt
-	rmmod vboxdrv
+	
+	#
+	ypkg_domk build vboxhost $2
 	modprobe vboxdrv
 	modprobe vboxnetflt
 	modprobe vboxnetadp
 	return 0
-	#systemctl --system daemon-reload
-	#start virtualbox.service
 }       
 
 pre_remove() {
-	for i in vboxnetflt vboxnetadp vboxdrv;do
-		grep "${i}" /proc/modules  >/dev/null 2>/dev/null && rmmod ${i} ||true
-	done
+	ypkg_domk delete vboxhost $2
+	return 0
 }
+
+
 

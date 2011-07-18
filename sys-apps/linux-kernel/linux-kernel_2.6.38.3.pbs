@@ -23,7 +23,8 @@ pbs_unpack() {
 pbs_build() {	
 	PATCHES=" aufs2-base-2.6.38.3.patch
 		  aufs2-kbuild-2.6.38.3.patch
-		  aufs2-standalone-2.6.38.3.patch"
+		  aufs2-standalone-2.6.38.3.patch 
+		  mce.patch"
 	for i in $PATCHES; do
 		ypkg_patch "${i}"
 	done

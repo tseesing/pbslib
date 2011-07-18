@@ -1,0 +1,41 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="Excellent program to automatically configure PPP sessions"
+HOMEPAGE="http://code.google.com/p/wvstreams/"
+REPO=""
+LICENSE="LGPL"
+PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
+
+SRC_URI="http://wvstreams.googlecode.com/files/wvdial-1.61.tar.gz"
+
+RDEPEND="wvstreams ppp"
+BDEPEND=""
+RECOMMENDED=""
+CONFLICT=""
+
+NOTES="Use wvdialconf to automagically generate a configuration file.
+Users have to be member of the dialout AND the uucp group to use wvdial!"
+
+pbs_unpack() {
+        ypkg_unpack
+}
+
+pbs_config() {
+	ypkg_patch wvdial-1.61-destdir.patch \
+	           wvdial-1.61-as-needed.patch \
+		   wvdial-1.61-parallel-make.patch
+	YPB_CONFIG+=""
+	ypkg_config
+}
+
+pbs_build() {
+	ypkg_make
+}
+
+pbs_install() {
+	ypkg_mkinstall
+}
+
+

@@ -1,0 +1,29 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="This module provides bindings for the cURL library."
+HOMEPAGE="http://ipython.scipy.org/ http://pypi.python.org/pypi/ipython"
+LICENSE="Dual licensed under the LGPL and an MIT/X derivative."
+PACKAGER="<ylmfos@115.com>"
+
+SRC_URI="http://pycurl.sourceforge.net/download/pycurl-7.19.0.tar.gz"
+
+RDEPEND=""
+BDEPEND=""
+RECOMMENDED=""
+
+NOTES=""
+
+pbs_unpack() {
+        ypkg_unpack
+}
+
+pbs_build() {
+	ypkg_make
+}
+
+pbs_install() {
+	ypkg_mkinstall
+}
+

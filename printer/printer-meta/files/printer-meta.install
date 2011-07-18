@@ -1,0 +1,10 @@
+. /usr/lib/ybs/funcs
+
+post_install() {
+	for i in cups foomatic-db-engine foomatic-filters-ppds foomatic-filters foomatic-db-nonfree \
+	         foomatic-db foo2zjs foomatic-db-hpijs ghostscript hplip gutenprint cups-pdf gnu-gs-fonts-std  \
+		 gnu-gs-fonts-other cups-pk-helper; do
+		yget install ${i}
+	done
+}
+

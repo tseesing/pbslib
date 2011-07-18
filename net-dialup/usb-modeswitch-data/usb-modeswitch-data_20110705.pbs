@@ -1,0 +1,26 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="handling mode-switching USB devices on linux, data package"
+HOMEPAGE="http://www.draisberghof.de/usb_modeswitch/"
+REPO=""
+LICENSE=""
+PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
+
+SRC_URI="http://www.draisberghof.de/usb_modeswitch/usb-modeswitch-data-20110705.tar.bz2"
+
+RDEPEND="usb-modeswitch"
+BDEPEND=""
+RECOMMENDED=""
+CONFLICT=""
+
+pbs_unpack() {
+        ypkg_unpack
+}
+
+pbs_install() {
+	ypkg_mkinstall
+	ypkg_dodoc README COPYING
+}
+

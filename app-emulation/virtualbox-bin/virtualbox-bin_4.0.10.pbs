@@ -12,7 +12,7 @@ SRC_URI="http://dlc.sun.com.edgesuite.net/virtualbox/4.0.10/VirtualBox-4.0.10-72
 
 RDEPEND=""
 BDEPEND="bin86 dev86 acpica"
-RECOMMENDED=""
+RECOMMENDED="linux-kernel-headers"
 
 DESKTOPFILE="virtualbox.desktop"
 
@@ -36,7 +36,7 @@ pbs_install() {
 	tar -xjf VirtualBox.tar.bz2 -C "$YPPATH_DEST"/opt/VirtualBox
 
 	#
-	ypkg_docp_rename vboxdrv.sh "$YPPATH_DEST"/etc/rc.d/vboxdrv
+	ypkg_docp_rename vboxdrv.sh "$YPPATH_DEST"/etc/init.d/vboxdrv
 	ypkg_dodoc LICENSE
 
 	#
@@ -54,12 +54,12 @@ pbs_install() {
 	#VBoxNetAdpCtl needs to be suid root in any case
 	chmod 4511 VBoxNetAdpCtl
 
-	#Replace VirtualBox built-in Qt by system Qt libraries (disabled as of
-	#2010-03-26, 3.1.6-1)
-	for lib in libQt{Core,Gui,Network,OpenGL}; do
-		rm "${lib}VBox.so.4"
-		ypkg_doln "/usr/lib/${lib}.so.4" "${lib}VBox.so.4"
-	done
+	#Replace VirtualBox built-in Qt by system Qt libraries 
+	#depends on qt-core
+	#for lib in libQt{Core,Gui,Network,OpenGL}; do
+	#	rm "${lib}VBox.so.4"
+	#	ypkg_doln "/usr/lib/${lib}.so.4" "${lib}VBox.so.4"
+	#done
 
 	#Patch "vboxshell.py" to use Python 2.x instead of Python 3
 	sed -i 's#/usr/bin/python#\02#' vboxshell.py
@@ -96,13 +96,13 @@ pbs_install() {
 	install -d "${YPPATH_DEST}/var/run/VirtualBox"
 
 	#vboxhost
-	ypkg_doln "/opt/VirtualBox/src/vboxhost" "${YPPATH_DEST}"/usr/src/vboxhost-"$V"
+	ypkg_doln "/opt/VirtualBox/src/vboxhost" "${YPPATH_DEST}"/usr/src/vboxhost-"$V$R"
 
 	#build kernel modules
-	cd src/vboxhost
-	ypkg_make
-	ypkg_docp vboxdrv.ko vboxnetadp.ko vboxnetflt.ko "$YPPATH_DEST"/lib/modules/"$(uname -r)"/kernel/misc
-	ypkg_make clean
+	#cd src/vboxhost
+	#ypkg_make
+	#ypkg_docp vboxdrv.ko vboxnetadp.ko vboxnetflt.ko "$YPPATH_DEST"/lib/modules/"$(uname -r)"/kernel/misc
+	#ypkg_make clean
 
 	#for systemd
 	ypkg_dounit virtualbox.service

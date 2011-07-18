@@ -1,0 +1,58 @@
+diff -ur ndiswrapper-1.56/driver/Makefile ndiswrapper-1.56.new//driver/Makefile
+--- ndiswrapper-1.56/driver/Makefile	2010-02-11 10:09:32.000000000 +0800
++++ ndiswrapper-1.56.new//driver/Makefile	2011-07-18 14:45:42.291302074 +0800
+@@ -34,7 +34,7 @@
+ $(error Cannot find kernel version in $(KBUILD), is it configured?)
+ endif
+ 
+-KVERS := $(shell sed -ne 's/"//g;s/^\#define UTS_RELEASE //p' $(VERSION_H))
++KVERS := $(shell uname -r)
+ 
+ ifdef DIST_DESTDIR
+ DESTDIR = $(DIST_DESTDIR)
+@@ -198,9 +198,6 @@
+ 	echo $(INST_DIR)
+ 	mkdir -p $(INST_DIR)
+ 	install -m 0644 $(MODULE) $(INST_DIR)
+-ifndef DIST_DESTDIR
+-	-/sbin/depmod -a $(KVERS) -b $(DESTDIR)
+-endif
+ 
+ dist:
+ 	@for file in $(DISTFILES); do \
+diff -ur ndiswrapper-1.56/Makefile ndiswrapper-1.56.new//Makefile
+--- ndiswrapper-1.56/Makefile	2010-02-11 10:09:32.000000000 +0800
++++ ndiswrapper-1.56.new//Makefile	2011-07-18 14:35:49.422854955 +0800
+@@ -20,6 +20,14 @@
+ 	+make -C driver
+ 	+make -C utils
+ 
++.PHONY: utils
++utils:
++	+make -C utils
++
++.PHONY: driver
++driver:
++	+make -C driver
++
+ .PHONY: install
+ install:
+ 	+make -C driver install
+@@ -28,6 +36,17 @@
+ 	install -m 644 ndiswrapper.8 $(mandir)/man8
+ 	install -m 644 loadndisdriver.8 $(mandir)/man8
+ 
++.PHONY: install-utils
++install-utils:
++	+make -C utils install
++	mkdir -p -m 0755 $(mandir)/man8
++	install -m 644 ndiswrapper.8 $(mandir)/man8
++	install -m 644 loadndisdriver.8 $(mandir)/man8
++
++.PHONY: install-driver
++install-driver:
++	+make -C driver install
++
+ .PHONY: clean distclean
+ clean:
+ 	+make -C driver clean

@@ -1,21 +1,33 @@
 . /usr/lib/ybs/funcs
 
 post_install() {
+	# Creat gdm user and groups
 	ypkg_useradd -c "gdm user" -d "/var/lib/gdm" -s "/bin/false" -r "gdm"
+
+	#
 	gnome2_install_schema "/etc/gconf/schemas/gdm-simple-greeter.schemas"
 	gnome2_install_defaut_gconf "boolean" "/apps/gdm/simple-greeter/accessibility/screen_reader_enabled" "true"
 	gnome2_rarian_sk_update
 	gnome2_desktop_database_update
+
+	#
+	[ -f /etc/gdm/custom.conf ] || cp /etc/gdm/custom.conf.ori /etc/gdm/custom.conf
+
 	# These GTK+ files need to be kept up to date for
 	# proper input method with additional gdm modules
 	gnome2_gtk_immodules_update
+	
 	# update hicolor icons
 	gnome2_icon_cache_update
 	chown -R gdm:gdm /var/lib/gdm
 	chown -R gdm:gdm /var/lib/gdm/
+
+
 }
 
 post_remove() {
+	[ -f /etc/gdm/custom.conf ] && rm /etc/gdm/custom.conf
 	ypkg_userdel -r "gdm"
 	gnome2_desktop_database_update
 }
+

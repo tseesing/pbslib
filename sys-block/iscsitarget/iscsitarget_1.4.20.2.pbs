@@ -1,0 +1,35 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="Open Source iSCSI target with professional features"
+HOMEPAGE="http://iscsitarget.sourceforge.net/"
+REPO=""
+LICENSE=""
+PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
+
+SRC_URI="http://nchc.dl.sourceforge.net/project/iscsitarget/iscsitarget/1.4.20.2/iscsitarget-1.4.20.2.tar.gz"
+
+RDEPEND=""
+BDEPEND=""
+RECOMMENDED=""
+CONFLICT=""
+
+INSTALL="$N.install"
+
+NOTES=""
+
+pbs_unpack() {
+        ypkg_unpack
+}
+
+pbs_build() {
+	ypkg_patch ylmfos-misc.patch
+	ypkg_make usr
+}
+
+pbs_install() {
+	make DESTDIR="$YPPATH_DEST" install-usr install-etc install-doc
+	ypkg_docp include Makefile kernel "$YPPATH_DEST"/usr/src/"$N-$V$R"
+}
+

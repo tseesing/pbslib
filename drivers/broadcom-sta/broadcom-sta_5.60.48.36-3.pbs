@@ -14,7 +14,7 @@ SRC_URI="broadcom-sta-5.60.48.36-3.tar.bz2"
 RDEPEND=""
 BDEPEND=""
 RECOMMENDED=""
-CONFLICT=""
+CONFLICT="bcmwl"
 
 INSTALL="$N.install"
 
@@ -24,15 +24,9 @@ pbs_unpack() {
         ypkg_unpack
 }
 
-pbs_build() {
+pbs_install() {
 	ypkg_patch ylmfos-makeinstall.patch
 	cd i386
-	ypkg_make
-}
-
-pbs_install() {
-	ypkg_mkinstall
-	cd ../
-	ypkg_dodoc copyright README.Debian README.txt
+	ypkg_docp * "$YPPATH_DEST"/usr/src/"$N-$V$R"
 }
 

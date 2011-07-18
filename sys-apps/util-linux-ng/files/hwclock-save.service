@@ -14,4 +14,4 @@ Conflicts=hwclock-load.service
 
 [Service]
 Type=oneshot
-ExecStart=/sbin/hwclock --systohc
+ExecStart=/sbin/hwclock --rtc=/dev/rtc0 --systohc --localtime --noadjfile 

@@ -23,14 +23,10 @@ pbs_unpack() {
         ypkg_unpack
 }
 
-pbs_build() {
+pbs_install() {
 	cd driver
 	tar xf rtl8192_8188CU_linux_v3.0.1590.20110511.tar.gz
 	cd rtl8192_8188CU_linux_v3.0.1590.20110511
-	ypkg_make
-}
-
-pbs_install() {
-	ypkg_docp 8192cu.ko "$YPPATH_DEST"/lib/modules/$(uname -r)/kernel/drivers/net/wireless/
+	ypkg_docp * "$YPPATH_DEST"/usr/src/"$N-$V$R"
 }
 

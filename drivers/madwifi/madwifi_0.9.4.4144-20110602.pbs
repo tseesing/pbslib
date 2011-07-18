@@ -23,17 +23,15 @@ pbs_unpack() {
         ypkg_unpack
 }
 
-pbs_build() {
-	ypkg_patch madwifi-utils-install-dir.patch
-	ypkg_make
-}
-
 pbs_install() {
 	INSTALL="$N.install"
-	ypkg_mkinstall
+	ypkg_patch madwifi-utils-install-dir.patch
+	ypkg_docp * "$YPPATH_DEST"/usr/src/"$N-$V$R"
 }
 
 madwifi-utils_install() {
 	DESCRIPTION="madwifi utils"
+	ypkg_make tools
 	ypkg_mkinstall -C tools
 }
+

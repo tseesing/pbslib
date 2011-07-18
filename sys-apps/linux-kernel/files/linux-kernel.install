@@ -1,12 +1,17 @@
 . /usr/lib/ybs/funcs
 
 post_install() {
-	update-initramfs -c -k "$V"-ylmfos
+	# automatic build modules
+	ypkg_domk autoinstall
+
+	#
+	update-initramfs -c -k "$2"-ylmfos
 	update-grub
 }       
 
 post_remove() {
-	[ -f /boot/initrd.img-"$V"-ylmfos ]         && rm /boot/initrd.img-"$V"-ylmfos
-	[ -f /var/lib/initramfs-tools/"$V"-ylmfos ] && rm /var/lib/initramfs-tools/"$V"-ylmfos
+	[ -f /boot/initrd.img-"$2"-ylmfos ]         && rm /boot/initrd.img-"$2"-ylmfos
+	[ -f /var/lib/initramfs-tools/"$2"-ylmfos ] && rm /var/lib/initramfs-tools/"$2"-ylmfos
 	update-grub
 }
+

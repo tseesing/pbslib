@@ -1,0 +1,10 @@
+. /usr/lib/ybs/funcs
+
+post_install() {
+	ypkg_domk build $1 $2
+}
+
+post_remove() {
+	ypkg_domk delete $1 $2
+}
+

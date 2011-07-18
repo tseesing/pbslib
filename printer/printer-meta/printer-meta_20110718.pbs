@@ -1,0 +1,25 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="meta package, install cups foomatces"
+HOMEPAGE=""
+REPO=""
+LICENSE="GPL"
+PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
+
+SRC_URI=""
+
+RDEPEND=""
+BDEPEND=""
+RECOMMENDED=""
+CONFLICT=""
+
+INSTALL="$N.install"
+
+NOTES=""
+
+pbs_install() {
+	ypkg_dodesktop "$N.desktop" "printer.png"
+}
+

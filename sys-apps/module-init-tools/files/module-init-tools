@@ -1,0 +1,11 @@
+#!/bin/bash
+#
+# This task loads the kernel modules specified in the /etc/modules file
+#
+grep '^[^#]' /etc/modules |while read module args; do
+	[ "$module" ] || continue
+  	modprobe $module $args || :
+done
+
+exit 0
+

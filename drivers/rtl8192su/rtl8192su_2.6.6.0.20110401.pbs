@@ -21,18 +21,13 @@ NOTES=""
 
 pbs_unpack() {
         ypkg_unpack
-	pwd
-	exit
-}
-
-pbs_build() {
-	cd driver
-	tar xf rtl8712_8188_8191_8192SU_usb_linux_v2.6.6.0.20110401.tar.gz
-	cd rtl8712_8188_8191_8192SU_usb_linux_v2.6.6.0.20110401
-	ypkg_make
 }
 
 pbs_install() {
-	ypkg_docp 8712u.ko "$YPPATH_DEST"/lib/modules/$(uname -r)/kernel/drivers/net/wireless/
+	cd driver
+	tar xf rtl8712_8188_8191_8192SU_usb_linux_v2.6.6.0.20110401.tar.gz
+	cd rtl8712_8188_8191_8192SU_usb_linux_v2.6.6.0.20110401
+	ypkg_docp * "$YPPATH_DEST"/usr/src/"$N-$V$R"
 }
+
 

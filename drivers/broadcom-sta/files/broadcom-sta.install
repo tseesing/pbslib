@@ -1,5 +1,15 @@
 . /usr/lib/ybs/funcs
 
 post_install() {
-	depmod -a
+	#
+	ypkg_domk build $1 $2
+	return 0
 }       
+
+post_remove() {
+	#
+	set -x
+	ypkg_domk delete $1 $2
+	set +x
+	return 0
+}

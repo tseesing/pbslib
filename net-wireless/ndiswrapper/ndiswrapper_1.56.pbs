@@ -28,26 +28,18 @@ pbs_config() {
 	         ndiswrapper-1.56-ldflags.patch
 		 ndiswrapper-1.56-2.6.35.patch
 		 ndiswrapper-1.56-2.6.36.patch
-		 ndiswrapper-1.56-2.6.38.patch"
+		 ndiswrapper-1.56-2.6.38.patch
+		 ylmfos-makefile.patch "
 	ypkg_patch $patches
 	ypkg_config
 }
 
 pbs_build() {
-	cd utils 
-	ypkg_make 
-	cd ../
-	ypkg_make
+	ypkg_make utils
 }
 
 pbs_install() {
-	#make DESTDIR="$YPPATH_DEST" install
-	cd utils
-	ypkg_mkinstall
-	cd ../
-	ypkg_mkinstall
-	ypkg_dodoc AUTHORS ChangeLog INSTALL README
-	cd "$YPPATH_DEST"
-	ypkg_domv lib/modules/misc/ndiswrapper.ko  lib/modules/"$(uname -r)"/misc/
+	make DESTDIR="$YPPATH_DEST" install-utils
+	ypkg_docp AUTHORS ChangeLog driver INSTALL Makefile ndiswrapper.spec README "$YPPATH_DEST"/usr/src/"$N-$V$R"
 }
 

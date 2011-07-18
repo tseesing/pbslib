@@ -1,0 +1,9 @@
+[Unit]
+Description=load modules from /etc/modules
+After=udev.service udev-settle.service
+
+[Service]
+ExecStart=/sbin/module-init-tools
+
+[Install]
+WantedBy=sysinit.target

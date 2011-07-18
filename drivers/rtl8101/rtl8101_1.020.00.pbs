@@ -25,11 +25,9 @@ pbs_unpack() {
 
 pbs_build() {
 	ypkg_patch ylmfos-makefile.patch
-	ypkg_make modules
 }
 
 pbs_install() {
-	ypkg_mkinstall
-	ypkg_dodoc readme
+	ypkg_docp * "$YPPATH_DEST"/usr/src/"$N-$V$R"
 }
 

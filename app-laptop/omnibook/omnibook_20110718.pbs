@@ -1,0 +1,29 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="Linux kernel module for (but not limited to) HP Omnibook support"
+HOMEPAGE="http://www.sourceforge.net/projects/omnibook"
+REPO=""
+LICENSE="GPL"
+PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
+
+SRC_URI="git://omnibook.git.sourceforge.net/gitroot/omnibook/omnibook"
+
+RDEPEND=""
+BDEPEND=""
+RECOMMENDED=""
+CONFLICT=""
+
+INSTALL="$N.install"
+
+NOTES=""
+
+pbs_unpack() {
+        ypkg_unpack
+}
+
+pbs_install() {
+	ypkg_docp * "$YPPATH_DEST"/usr/src/"$N-$V$R"
+}
+

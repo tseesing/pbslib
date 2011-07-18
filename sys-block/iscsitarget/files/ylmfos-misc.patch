@@ -1,0 +1,89 @@
+diff -ur kernel/block-io.c kernel/block-io.c
+--- kernel/block-io.c	2010-06-30 06:02:26.000000000 +0800
++++ kernel/block-io.c	2011-07-18 11:25:51.000000000 +0800
+@@ -162,7 +162,7 @@
+ 	if (!bio_data->path)
+ 		return -ENOMEM;
+ 
+-	bdev = open_bdev_exclusive(path, flags, THIS_MODULE);
++	bdev = blkdev_get_by_path(path, flags | FMODE_EXCL, THIS_MODULE);
+ 	if (IS_ERR(bdev)) {
+ 		err = PTR_ERR(bdev);
+ 		eprintk("Can't open device %s, error %d\n", path, err);
+@@ -253,7 +253,7 @@
+ 	int flags = FMODE_READ | (LUReadonly(volume) ? 0 : FMODE_WRITE);
+ 
+ 	if (bio_data->bdev)
+-		close_bdev_exclusive(bio_data->bdev, flags);
++		blkdev_put(bio_data->bdev, flags | FMODE_EXCL);
+ 	kfree(bio_data->path);
+ 
+ 	kfree(volume->private);
+diff -ur kernel//config.c kernel/config.c
+--- kernel/config.c	2010-03-31 02:08:19.000000000 +0800
++++ kernel/config.c	2011-07-18 11:25:51.000000000 +0800
+@@ -9,7 +9,7 @@
+ #include "iscsi.h"
+ #include "iscsi_dbg.h"
+ 
+-static DECLARE_MUTEX(ioctl_sem);
++static DEFINE_SEMAPHORE(ioctl_sem);
+ 
+ struct proc_entries {
+ 	const char *name;
+diff -ur kernel//conn.c kernel/conn.c
+--- kernel/conn.c	2010-04-11 23:13:42.000000000 +0800
++++ kernel/conn.c	2011-07-18 11:25:51.000000000 +0800
+@@ -44,7 +44,7 @@
+ 		switch (sk->sk_family) {
+ 		case AF_INET:
+ 			snprintf(buf, sizeof(buf),
+-				 "%u.%u.%u.%u", NIPQUAD(inet_sk(sk)->inet_daddr));
++				 "%pI4", &inet_sk(sk)->inet_daddr);
+ 			break;
+ 		case AF_INET6:
+ 			snprintf(buf, sizeof(buf), "[%pI6]",
+diff -ur kernel//target.c kernel/target.c
+--- kernel/target.c	2010-04-12 00:06:14.000000000 +0800
++++ kernel/target.c	2011-07-18 11:25:51.000000000 +0800
+@@ -11,7 +11,7 @@
+ #define	MAX_NR_TARGETS	(1UL << 30)
+ 
+ static LIST_HEAD(target_list);
+-static DECLARE_MUTEX(target_list_sem);
++static DEFINE_SEMAPHORE(target_list_sem);
+ static u32 next_target_id;
+ static u32 nr_targets;
+ 
+@@ -157,7 +157,7 @@
+ 
+ 	strncpy(target->name, name, sizeof(target->name) - 1);
+ 
+-	init_MUTEX(&target->target_sem);
++	sema_init(&target->target_sem, 1);
+ 	spin_lock_init(&target->session_list_lock);
+ 
+ 	INIT_LIST_HEAD(&target->session_list);
+diff -ur kernel//wthread.c kernel/wthread.c
+--- kernel/wthread.c	2010-04-11 23:34:14.000000000 +0800
++++ kernel//wthread.c	2011-07-18 11:25:51.000000000 +0800
+@@ -59,6 +59,19 @@
+ 	return target_type_array[type]->execute_cmnd(cmnd);
+ }
+ 
++static void copy_io_context(struct io_context **pdst, struct io_context **psrc)
++{
++	struct io_context *src = *psrc;
++	struct io_context *dst = *pdst;
++
++	if (src) {
++		BUG_ON(atomic_long_read(&src->refcount) == 0);
++		atomic_long_inc(&src->refcount);
++		put_io_context(dst);
++		*pdst = src;
++	}
++}
++
+ static int worker_thread(void *arg)
+ {
+ 	struct worker_thread *wt = (struct worker_thread *) arg;
