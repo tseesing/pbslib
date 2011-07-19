@@ -15,7 +15,7 @@ INSTALL="$N.install"
 
 RDEPEND=""
 BDEPEND=""
-RECOMMENDED=""
+RECOMMENDED="libbluray enca lzo a52dec nas mplayer"
 CONFLICT=""
 
 NOTES=""

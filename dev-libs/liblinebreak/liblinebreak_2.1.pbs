@@ -1,0 +1,34 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="Liblinebreak is an implementation of the line breaking algorithm as described in Unicode 6.0.0 Standard Annex 14, Revision 26."
+HOMEPAGE="http://vimgadgets.sourceforge.net/liblinebreak/"
+REPO=""
+LICENSE="the zlib/libpng licence"
+PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
+
+SRC_URI="http://nchc.dl.sourceforge.net/project/vimgadgets/liblinebreak/2.1/liblinebreak-2.1.tar.gz"
+
+RDEPEND="glibc"
+BDEPEND=""
+RECOMMENDED=""
+CONFLICT=""
+
+pbs_unpack() {
+        ypkg_unpack
+}
+
+pbs_config() {
+	YPB_CONFIG+=""
+	ypkg_config
+}
+
+pbs_build() {
+	ypkg_make
+}
+
+pbs_install() {
+	ypkg_mkinstall
+}
+

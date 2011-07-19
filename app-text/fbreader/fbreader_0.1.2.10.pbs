@@ -1,0 +1,40 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="e-book reader for Unix/Windows computers"
+HOMEPAGE="http://www.fbreader.org/about.php"
+REPO=""
+LICENSE=""
+PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
+
+SRC_URI="http://www.fbreader.org/fbreader-sources-0.12.10.tgz"
+
+RDEPEND="atk bzip2 cairo curl cyrus-sasl expat fontconfig freetype fribidi gcc glib2 glibc gtk+ libidn libjpeg-turbo liblinebreak libpng libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libXrandr libXrender openldap-client openssl pango pixman sqlite zlib"
+BDEPEND=""
+RECOMMENDED=""
+CONFLICT=""
+
+INSTALL="$N.install"
+
+NOTES=""
+
+DESKTOPFILE="FBReader.desktop"
+
+pbs_unpack() {
+        ypkg_unpack
+}
+
+pbs_config() {
+	YPB_CONFIG+=""
+	ypkg_config
+}
+
+pbs_build() {
+	make -j1
+}
+
+pbs_install() {
+	ypkg_mkinstall
+}
+

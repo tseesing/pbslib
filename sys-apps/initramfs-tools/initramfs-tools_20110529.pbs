@@ -18,7 +18,7 @@ pbs_unpack() {
 }
 
 pbs_install() {
-	ypkg_docp * "$YPPATH_DEST"
+	ypkg_docp etc usr "$YPPATH_DEST"
 	#creat some empty dirs
 	cd "$YPPATH_DEST"
 	mkdir -p etc/initramfs-tools/conf.d \
