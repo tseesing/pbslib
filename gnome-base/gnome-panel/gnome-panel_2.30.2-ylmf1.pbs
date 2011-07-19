@@ -4,7 +4,7 @@
 
 DESCRIPTION="The GNOME Panel package contains hooks to the menu sub-system and the applet sub-system."
 HOMEPAGE="http://www.gnome.org/"
-REPO="testing"
+REPO=""
 LICENSE="GPL-2"
 PACKAGER="<ylmfos@115.com>"
 
@@ -42,3 +42,4 @@ pbs_install() {
 	#replace our gnome-panel default configure
 	ypkg_docp_rename "$FILES_PATH"/files/ylmfos-default-setup.entries   "$YPPATH_DEST"/etc/gconf/schemas/panel-default-setup.entries
 }
+

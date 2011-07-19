@@ -4,7 +4,7 @@
 
 DESCRIPTION="Fluendo ismd  GStreamer plugin"
 HOMEPAGE="http://core.fluendo.com/gstreamer/src/gst-fluendo-ismd/"
-REPO="testing"
+REPO=""
 LICENSE="GPL-2"
 PACKAGER="<ylmfos@115.com>"
 
@@ -31,3 +31,4 @@ pbs_build() {
 pbs_install() {
 	ypkg_mkinstall
 }
+

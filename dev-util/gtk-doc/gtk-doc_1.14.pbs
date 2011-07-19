@@ -11,9 +11,9 @@ SRC_URI="http://ftp.gnome.org/pub/gnome/mobile/2.30/2.30.2/sources/"$N-$V$R".tar
 
 RDEPEND=""
 BDEPEND=" docbook-xml docbook-xsl libxslt docbook"
-RECOMMENDED=""
+CONFLICT="gtk-doc-dev"
 
-NOTES="http://wiki.linuxfromscratch.org/blfs/wiki/gtk-doc"
+OPINION="nodev"
 
 pbs_unpack() {
         ypkg_unpack

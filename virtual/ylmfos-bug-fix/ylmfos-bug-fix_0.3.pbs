@@ -4,7 +4,7 @@
 
 DESCRIPTION="a collection of ylmfos bug fixed scripts"
 HOMEPAGE="www.ylmf.org"
-REPO="testing"
+REPO=""
 LICENSE="GPL"
 PRIORITY="required"
 PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
@@ -24,3 +24,4 @@ pbs_install() {
 	mkdir -p "$YPPATH_DEST"/usr/share/"$N"
 	touch "$YPPATH_DEST"/usr/share/"$N"/Readme
 }
+

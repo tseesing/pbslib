@@ -9,6 +9,9 @@ SRC_URI="http://pkgconfig.freedesktop.org/releases/pkg-config-"$V$R".tar.gz"
 
 RDEPEND="glibc"
 BDEPEND=""
+CONFLICT="pkgconfig-dev"
+
+OPINION="nodev"
 
 pbs_unpack() {
         ypkg_unpack
@@ -25,3 +28,4 @@ pbs_build() {
 pbs_install() {
 	ypkg_mkinstall
 }
+

@@ -6,7 +6,7 @@ DESCRIPTION="livecd installer for Ylmf_OS Linux"
 HOMEPAGE="http://www.ylmf.net"
 LICENSE=""
 PACKAGER="<ylmfos@115.com>"
-REPO="testing"
+REPO=""
 
 SRC_URI="git://192.168.1.22/"$N".git"
 

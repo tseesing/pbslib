@@ -10,7 +10,7 @@ PACKAGER="<ylmfos@115.com>"
 SRC_URI="http://webkitgtk.org/"$N-$V$R".tar.gz"
 
 RDEPEND="atk cairo enchant expat fontconfig freetype gail gcc glib2 glibc gnutls gst-plugins-base gstreamer gtk+ icu libgcrypt libgpg-error libICE libjpeg-turbo libpng libSM libsoup libtasn1 libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libxml2 libXrandr libXrender libxslt libXt pango pixman sqlite util-linux-ng zlib"
-BDEPEND="                                          "
+BDEPEND=""
 RECOMMENDED=""
 
 NOTES=""
@@ -33,3 +33,4 @@ pbs_build() {
 pbs_install() {
 	ypkg_mkinstall
 }
+

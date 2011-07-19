@@ -4,10 +4,11 @@
 
 DESCRIPTION="Package management system for Ylmf_OS Linux"
 HOMEPAGE="www.ylmf.net"
-REPO="testing"
+REPO=""
 LICENSE="GPL-2"
 PACKAGER="<ylmfos@115.com>"
 PRIORITY="required"
+
 INSTALL="$N.install"
 
 SRC_URI="git://git.ylmf.com/"$N".git"

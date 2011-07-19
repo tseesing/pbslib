@@ -9,6 +9,9 @@ SRC_URI="http://edge.launchpad.net/intltool/trunk/0.41.1/+download/"$N-$V$R".tar
 
 RDEPEND="xml-parser"
 BDEPEND=""
+CONFLICT="intltool-dev"
+
+OPINION="nodev"
 
 pbs_unpack() {
         ypkg_unpack
