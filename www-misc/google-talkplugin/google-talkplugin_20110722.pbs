@@ -1,0 +1,28 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="google talkplugin"
+HOMEPAGE="http://www.google.com/tools/dlpage/res/talkvideo/hangouts/"
+REPO=""
+LICENSE=""
+PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
+
+SRC_URI="http://dl.google.com/linux/direct/google-talkplugin_current_i386.deb"
+
+RDEPEND=""
+BDEPEND=""
+RECOMMENDED=""
+CONFLICT=""
+
+NOTES=""
+
+pbs_unpack() {
+        ypkg_unpack
+}
+
+pbs_install() {
+	ypkg_docp data/*  "$YPPATH_DEST"
+}
+
+

@@ -52,6 +52,7 @@ pbs_install() {
 
 linux-kernel-headers_install() {
 	DESCRIPTION="linux kernel headers"
+	INSTALL="linux-kernel-headers.install"
 	# headers
 	KARCH=x86
 	CARCH=i686

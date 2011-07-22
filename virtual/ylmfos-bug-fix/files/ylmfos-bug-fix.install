@@ -3,7 +3,22 @@
 post_install() {
 	#install some missing libs and change mplayer version
 	#yget install -y libbluray enca lzo a52dec nas mplayer
+
 	#fix permission of dirs
 	chmod -s /boot /home /media /mnt /srv /root
+
+	#fix grub
+	if [ -f /boot/grub/grubenv ]; then
+		. /boot/grub/grubenv || return 0
+		if [ "x$recordfail" != "x0" ]; then
+			/usr/bin/grub-editenv /boot/grub/grubenv set recordfail=0
+		fi
+	fi	
+
+	#fix gdm permission
+	chown gdm:gdm /var/lib/gdm/ -R 
+
+	#
+	return 0
 }
 

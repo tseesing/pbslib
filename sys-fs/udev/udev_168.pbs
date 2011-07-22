@@ -7,6 +7,8 @@ HOMEPAGE="http://www.kernel.org/pub/linux/utils/kernel/hotplug/udev.html"
 LICENSE=""
 PACKAGER="<ylmfos@115.com>"
 
+REPO="testing"
+
 SRC_URI="http://www.kernel.org/pub/linux/utils/kernel/hotplug/"$N-$V".tar.bz2"
 
 RDEPEND="acl attr glib2 glibc libusb libusb-compat pciutils usbutils"
@@ -49,6 +51,5 @@ pbs_install() {
 	ypkg_docp_rename "$FILES_PATH"/files/init-bottom_udev  usr/share/initramfs-tools/scripts/init-bottom/udev
 	# 
 	ypkg_docp "$FILES_PATH"/files/{64-device-mapper.rules,78-graphics-card.rules} lib/udev/rules.d
-	#
-	ypkg_docp "$FILES_PATH"/files/systemd/*  lib/systemd/system/
 }
+

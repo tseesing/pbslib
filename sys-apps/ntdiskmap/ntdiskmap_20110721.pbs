@@ -1,0 +1,29 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="ntdiskmap"
+HOMEPAGE="www.ylmf.net"
+REPO=""
+LICENSE="GPL-2"
+PACKAGER="<ylmfos@115.com>"
+
+INSTALL="$N.install"
+
+SRC_URI="git://192.168.1.22/"$N".git"
+
+RDEPEND=""
+BDEPEND=""
+
+pbs_unpack() {
+	ypkg_unpack
+}
+
+pbs_build() {
+	ypkg_make
+}
+
+pbs_install() {
+	ypkg_mkinstall
+}
+

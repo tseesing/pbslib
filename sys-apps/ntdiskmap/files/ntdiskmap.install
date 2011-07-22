@@ -1,0 +1,10 @@
+. /usr/lib/ybs/funcs
+
+post_install() {
+	reload dbus || true
+}
+
+post_remove() {
+	post_install
+}
+

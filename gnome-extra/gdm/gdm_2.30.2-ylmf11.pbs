@@ -1,0 +1,99 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="GNOME Display Manager"
+HOMEPAGE="http://www.gnome.org/projects/gdm/"
+LICENSE="GPL-2"
+PACKAGER="<ylmfos@115.com>"
+REPO="testing"
+
+SRC_URI="http://ftp.gnome.org/pub/gnome/desktop/2.30/2.30.2/sources/"$N-$V".tar.bz2"
+
+RDEPEND="zenity openssh alsa-lib atk audiofile avahi cairo dbus dbus-glib devicekit-power esound expat fontconfig freetype gail gcc gconf glib2 glibc gnome-panel gnome-vfs gtk+ libart_lgpl libbonobo libbonoboui libcanberra libgnome libgnomecanvas libICE libogg libpng libSM libtool libusb libusb-compat libvorbis libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libxkbfile libxklavier libxml2 libXrandr libXrender openssl orbit pam pango pixman popt util-linux-ng zlib"
+BDEPEND="consolekit-dev libglade-dev gnome-session kbproto"
+
+RECOMMENDED="numlockx"
+
+INSTALL="$N.install"
+
+NOTES="gdm user/group should be created automatically."
+
+pbs_unpack() {
+        ypkg_unpack
+}
+
+pbs_config() {	
+	#
+	ypkg_useradd -c "gdm user" -d "/var/lib/gdm" -s "/bin/false" -r "gdm"
+	patches=" 27_save_root_window.patch
+		  28_plymouth_transition.patch
+		  ylmfos-gdm-2.30.2-locale.patch
+		  pam-gnome_keyring.patch 
+		  ylmfos-missing-panel.patch 
+		  ylmfos-set-numlock-login.patch 
+		  09_gdmsetup.patch "
+		  #ylmfos_autoreconf.patch  "
+		  #ylmfos-spawn-x-at-vt1.patch
+	ypkg_patch $patches
+	YPB_CONFIG+=" --disable-scrollkeeper
+		      --enable-ipv6
+		      --enable-console-helper=no
+		      --with-xdmcp=yes
+		      --with-sysconfsubdir=gdm
+		      --with-dmconfdir=/usr/share/xsessions
+		      --with-log-dir=/var/log/gdm
+		      --with-pid-file=/var/run/gdm.pid
+		      --disable-schemas-install 
+		      --enable-console-helper
+		      --with-console-kit "
+	ypkg_config
+}
+
+pbs_build() {
+	ypkg_make
+}
+
+pbs_install() {
+	ypkg_mkinstall
+	# Make some handy softlinks
+	cd "$YPPATH_DEST"/usr/bin; ln -s ../sbin/gdm . ; ln -s ../sbin/gdmsetup .
+
+	#
+	cd "$YPPATH_DEST"/
+	ypkg_docp "$FILES_PATH"/files/sessions/ssh.desktop usr/share/xsessions
+	chown -R root:root usr/share/xsessions/*
+
+	# preserve settings
+	install -m755 -d  etc/gdm
+	[ -f etc/gdm/custom.conf ] && rm etc/gdm/custom.conf
+	ypkg_docp_rename "$FILES_PATH"/files/custom.conf  etc/gdm/custom.conf.ori
+	ypkg_domv        "$YPPATH_DEST"/etc/gdm/PostLogin/Default.sample  etc/gdm/PostLogin/Default
+
+	## FIXME! 
+	#gnome-session forgot to run /usr/share/gnome/shutdown/libcanberra-logout-sound.sh
+	#add libcanberra-logout-sound.sh to gdm logout script
+	ypkg_docp "$FILES_PATH"/files/Default  etc/gdm/PostSession
+	chown -R root:root  etc/gdm
+
+	#Copy gdm init script
+	#ypkg_doinit "$FILES_PATH"/files/"$N"
+	#install -m755 -d etc/rc3.d
+	#ln -sf /etc/init.d/"$N"  etc/rc3.d/S99"$N"
+	#ln -sf /etc/init.d/"$N"  etc/rc3.d/K01"$N"
+	ypkg_docp "$FILES_PATH"/files/systemd/*  lib/systemd/system/
+
+	#
+	#[ -d var/lib/gdm ] && rm -r var/lib/gdm
+	#mkdir -p      var/lib/gdm
+	#chown gdm:gdm var/lib/gdm 
+	rm -rf var/gdm
+	chown -R gdm:gdm var/lib/gdm
+	
+	#for gdm screenshot
+	install -d -m755 var/run/"$N"/greeter/
+	
+	#FIXME
+	sed -i 's/${exec_prefix}/\/usr/g' usr/share/gdm/autostart/LoginWindow/at-spi-registryd-wrapper.desktop
+}
+

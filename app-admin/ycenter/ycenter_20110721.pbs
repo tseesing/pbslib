@@ -1,0 +1,39 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="ylmfos app store"
+HOMEPAGE="http://www.ylmf.net"
+LICENSE=""
+REPO="testing"
+PRIORITY="required"
+PACKAGER="<ylmfos@115.com>"
+
+SRC_URI="git://192.168.1.22/ylmfcenter.git"
+
+RDEPEND="python atk cairo dbus dbus-glib expat fontconfig freetype gcc glib2 glibc gtk+ libpng libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libxml2 libXrandr libXrender pango pixman zlib"
+BDEPEND=""
+RECOMMENDED="ypkg"
+
+INSTALL="$N.install"
+
+pbs_unpack() {
+	ypkg_unpack
+}
+
+pbs_config() {
+	ypkg_config
+}
+
+pbs_build() {
+	ypkg_make
+}
+
+pbs_install() {
+	ypkg_mkinstall
+	cd "$YPPATH_DEST"
+	#ypkg_docp "$FILES_PATH"/files/systemd/*  lib/systemd/system
+	#for ymenu
+	ypkg_docp usr/share/icons/hicolor/24x24/apps/ycenter.png  usr/share/icons/titans/24x24/categories/
+}
+

@@ -1,0 +1,29 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="Offline Windows NT Password & Registry Editor"
+HOMEPAGE="http://pogostick.net/~pnh/ntpasswd/"
+REPO=""
+LICENSE="GPL"
+PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
+
+SRC_URI="http://pogostick.net/~pnh/ntpasswd/chntpw-source-110511.zip"
+
+RDEPEND="glibc"
+BDEPEND=""
+RECOMMENDED=""
+CONFLICT=""
+
+pbs_unpack() {
+        ypkg_unpack
+}
+
+pbs_build() {
+	ypkg_make
+}
+
+pbs_install() {
+	ypkg_docp chntpw chntpw.static cpnt reged reged.static "$YPPATH_DEST"/usr/bin/
+}
+

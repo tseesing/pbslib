@@ -1,9 +1,6 @@
 . /usr/lib/ybs/funcs
 
 post_install() {
-	# automatic build modules
-	ypkg_domk autoinstall
-
 	#
 	update-initramfs -c -k "$2"-ylmfos
 	update-grub
