@@ -1,0 +1,48 @@
+--- include/os/rt_linux.h.orig	2010-12-17 10:01:06.000000000 +0100
++++ include/os/rt_linux.h	2010-12-17 20:43:48.000000000 +0100
+@@ -111,10 +111,10 @@
+ 
+ #ifdef CONFIG_STA_SUPPORT
+ #ifdef RTMP_MAC_PCI
+-#define STA_PROFILE_PATH			"/etc/Wireless/RT2860STA/RT2860STA.dat"
++#define STA_PROFILE_PATH			"/etc/Wireless/RT3090STA/RT3090STA.dat"
+ #define STA_DRIVER_VERSION			"2.4.0.4"
+ #ifdef MULTIPLE_CARD_SUPPORT
+-#define CARD_INFO_PATH			"/etc/Wireless/RT2860STA/RT2860STACard.dat"
++#define CARD_INFO_PATH			"/etc/Wireless/RT3090STA/RT3090STACard.dat"
+ #endif // MULTIPLE_CARD_SUPPORT //
+ #endif // RTMP_MAC_PCI //
+ 
+--- os/linux/pci_main_dev.c.orig	2010-12-08 21:49:06.000000000 +0100
++++ os/linux/pci_main_dev.c	2010-12-17 20:43:48.000000000 +0100
+@@ -83,7 +83,7 @@
+ //
+ static struct pci_driver rt2860_driver =
+ {
+-    name:       "rt2860",
++    name:       "rt3090",
+     id_table:   rt2860_pci_tbl,
+     probe:      rt2860_probe,
+ #if LINUX_VERSION_CODE >= 0x20412
+@@ -306,9 +306,9 @@
+ 	}
+ 
+ #if LINUX_VERSION_CODE >= KERNEL_VERSION(2,5,0)
+-	print_name = pci_dev ? pci_name(pci_dev) : "rt2860";
++	print_name = pci_dev ? pci_name(pci_dev) : "rt3090";
+ #else
+-	print_name = pci_dev ? pci_dev->slot_name : "rt2860";
++	print_name = pci_dev ? pci_dev->slot_name : "rt3090";
+ #endif // LINUX_VERSION_CODE //
+ 
+ 	if ((rv = pci_request_regions(pci_dev, print_name)) != 0)
+--- os/linux/rt_main_dev.c.orig	2010-12-17 20:44:30.000000000 +0100
++++ os/linux/rt_main_dev.c	2010-12-17 20:46:13.000000000 +0100
+@@ -46,6 +46,7 @@
+ MODULE_PARM_DESC (mac, "rt28xx: wireless mac addr");
+ 
+ MODULE_LICENSE("GPL");
++MODULE_DESCRIPTION("RT3090 Wireless Lan Linux Driver");
+ 
+ #ifdef OS_ABL_SUPPORT
+ 

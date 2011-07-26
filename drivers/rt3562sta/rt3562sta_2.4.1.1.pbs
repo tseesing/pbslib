@@ -1,0 +1,30 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="This is a linux device driver for Ralink ABGN WLAN Card: RT3062PCI/mPCI/CB/PCIe(RT3060/RT3062/RT3562/RT3592)"
+HOMEPAGE="http://www.ralinktech.com/support.php?s=2"
+REPO=""
+LICENSE="GPL"
+PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
+
+SRC_URI="DPO_RT3562_3592_3062_LinuxSTA_V2.4.1.1_20101217.tgz"
+
+RDEPEND=""
+BDEPEND=""
+RECOMMENDED="make linux-kernel-headers"
+CONFLICT=""
+
+INSTALL="$N.install"
+
+NOTES=""
+
+pbs_unpack() {
+        ypkg_unpack
+}
+
+pbs_install() {
+	ypkg_docp *  "$YPPATH_DEST"/usr/src/"$N-$V$R"
+}
+
+

@@ -11,7 +11,7 @@ post_install() {
 	if [ -f /boot/grub/grubenv ]; then
 		. /boot/grub/grubenv || return 0
 		if [ "x$recordfail" != "x0" ]; then
-			/usr/bin/grub-editenv /boot/grub/grubenv set recordfail=0
+			sed -i 's/recordfail=1/recordfail=0/g' /boot/grub/grubenv
 		fi
 	fi	
 

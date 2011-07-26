@@ -1,0 +1,17 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="google plus web"
+HOMEPAGE="https://plus.google.com"
+REPO="stable"
+LICENSE="GPL-2"
+PACKAGER="<ylmfos@115.com>"
+
+RDEPEND="xdg-utils"
+BDEPEND=""
+
+pbs_install() {
+	ypkg_dodesktop "$N.desktop" "$N.png"
+}
+

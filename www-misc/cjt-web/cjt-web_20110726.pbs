@@ -1,0 +1,16 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="cai jin tong stock market software"
+HOMEPAGE="www.ylmf.net"
+REPO="stable"
+LICENSE="GPL-2"
+PACKAGER="<ylmfos@115.com>"
+
+RDEPEND="xdg-utils"
+BDEPEND=""
+
+pbs_install() {
+	ypkg_dodesktop "$N.desktop" "$N.png"
+}

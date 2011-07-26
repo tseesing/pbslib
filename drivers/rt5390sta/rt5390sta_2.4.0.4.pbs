@@ -1,0 +1,36 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="Ralink RT5390 "Draft-n" PCI WLAN adaptors"
+HOMEPAGE="https://build.opensuse.org/project/list_public"
+REPO=""
+LICENSE="GPL"
+PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
+
+SRC_URI="https://api.opensuse.org/public/source/driver:wireless/rt5390sta/2010_1216_RT5390_LinuxSTA_V2.4.0.4_WiFiBTCombo_DPO.tar.bz2"
+
+RDEPEND=""
+BDEPEND=""
+RECOMMENDED="make linux-kernel-headers"
+CONFLICT=""
+
+INSTALL="$N.install"
+
+NOTES=""
+
+pbs_unpack() {
+        ypkg_unpack
+}
+
+pbs_install() {
+	patches="rt5390sta-2.4.0.4-config.patch 
+	         rt5390sta-2.4.0.4-convert-devicename-to-wlanX.patch
+		 rt5390sta-2.4.0.4-gcc-warnings-x86_64.patch
+		 rt5390sta-2.4.0.4-remove-potential-conflicts-with-rt2860sta.patch
+		 rt5390sta-2.4.0.4-return_nonvoid_function.patch
+		 rt5390sta-2.4.0.4-WPA-mixed.patch"
+	ypkg_patch $patches
+	ypkg_docp *  "$YPPATH_DEST"/usr/src/"$N-$V$R"
+}
+

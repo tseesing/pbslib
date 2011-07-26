@@ -1,0 +1,30 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="This is a linux device driver for Ralink RT3572 PCI ABGN WLAN Card."
+HOMEPAGE="http://www.ralinktech.com/support.php?s=2"
+REPO=""
+LICENSE="GPL"
+PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
+
+SRC_URI="2011_0427_RT3572_Linux_STA_v2.5.0.0.DPO.bz2"
+
+RDEPEND=""
+BDEPEND=""
+RECOMMENDED="make linux-kernel-headers"
+CONFLICT=""
+
+INSTALL="$N.install"
+
+NOTES=""
+
+pbs_unpack() {
+        ypkg_unpack
+}
+
+pbs_install() {
+	ypkg_docp *  "$YPPATH_DEST"/usr/src/"$N-$V$R"
+}
+
+

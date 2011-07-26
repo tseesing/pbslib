@@ -7,10 +7,12 @@ HOMEPAGE="http://ffmpeg.org/"
 LICENSE="GPL-2 and others depending on your choice of configuration options"
 PACKAGER="<ylmfos@115.com>"
 
-SRC_URI="git://git.videolan.org/ffmpeg.git"
+REPO="testing"
+
+SRC_URI="http://ffmpeg.org/releases/ffmpeg-0.8.tar.gz"
 
 RDEPEND="alsa-lib audiofile directfb esound glibc jack-audio-connection-kit libsdl libva zlib"
-BDEPEND="x264-dev         " 
+BDEPEND="x264-dev" 
 RECOMMENDED=""
 
 
@@ -35,3 +37,4 @@ pbs_build() {
 pbs_install() {
 	ypkg_mkinstall
 }
+
