@@ -1,0 +1,30 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="the All-In-One Solution for Remote Access and Support over the Internet"
+HOMEPAGE="http://www.teamviewer.com/en/index.aspx"
+REPO=""
+LICENSE=""
+PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
+
+SRC_URI="http://www.teamviewer.com/download/teamviewer_linux.deb"
+
+RDEPEND="alsa-lib atk cairo expat fontconfig freetype gcc glib2 glibc gtk+ libICE libpng libSM libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libXrandr libXrender lunar-calendar lunar-date pango pixman util-linux-ng wine zlib"
+BDEPEND=""
+RECOMMENDED=""
+CONFLICT=""
+
+INSTALL="$N.install"
+
+NOTES=""
+
+pbs_unpack() {
+        ypkg_unpack
+}
+
+pbs_install() {
+	ypkg_docp data/*  "$YPPATH_DEST"
+	ypkg_dodesktop "$N.desktop" "$N.png"
+}
+

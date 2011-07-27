@@ -179,8 +179,11 @@ diff -Nur -x '*Po' -x '*lo' -x '*o' -x 'Makefile*' -x '*ing' -x '*so' -x '*a' -x
  		</placeholder>
  	</menu>
          <placeholder name="Other Menus">
---- nautilus-2.30.1-ylmf3/src/nautilus-places-sidebar.c	2011-07-25 11:42:22.449459645 +0800
-+++ nautilus/src/nautilus-places-sidebar.c	2011-07-25 11:40:47.496640715 +0800
+
+
+
+--- nautilus-2.30.1-ylmf3/src/nautilus-places-sidebar.c	2011-07-26 09:49:55.712638599 +0800
++++ nautilus/src/nautilus-places-sidebar.c	2011-07-26 09:46:16.800491215 +0800
 @@ -48,12 +48,18 @@
  #include <libnautilus-private/nautilus-window-slot-info.h>
  #include <gio/gio.h>
@@ -247,7 +250,7 @@ diff -Nur -x '*Po' -x '*lo' -x '*o' -x 'Makefile*' -x '*ing' -x '*so' -x '*a' -x
  
  	selection = gtk_tree_view_get_selection (sidebar->tree_view);
  	gtk_list_store_clear (sidebar->store);
-@@ -365,6 +381,106 @@
+@@ -365,6 +381,114 @@
  					root = g_mount_get_default_location (mount);
  					mount_uri = g_file_get_uri (root);
  					name = g_mount_get_name (mount);
@@ -291,7 +294,15 @@ diff -Nur -x '*Po' -x '*lo' -x '*o' -x 'Makefile*' -x '*ing' -x '*so' -x '*a' -x
 +						memset(buf, '\0', sizeof(buf));
 +						memset(cmd, '\0', sizeof(cmd));
 +						
-+						fread(buf, sizeof(char), 9, stream);
++						fread(buf, sizeof(char), sizeof(buf), stream);
++						int i ;
++						
++						for(i = 0; i < strlen(buf); i++)
++						{
++							if (buf[i] == '\n')
++								buf[i] = '\0';
++						}
++						
 +
 +						if(buf[6] == 'd')
 +						{
@@ -354,7 +365,7 @@ diff -Nur -x '*Po' -x '*lo' -x '*o' -x 'Makefile*' -x '*ing' -x '*so' -x '*a' -x
  					tooltip = g_file_get_parse_name (root);
  					last_iter = add_place (sidebar, PLACES_MOUNTED_VOLUME,
  							       name, icon, mount_uri,
-@@ -1460,6 +1576,84 @@
+@@ -1460,6 +1584,84 @@
  	g_free (uri);
  }
  
@@ -439,7 +450,7 @@ diff -Nur -x '*Po' -x '*lo' -x '*o' -x 'Makefile*' -x '*ing' -x '*so' -x '*a' -x
  /* Callback used when the selection in the shortcuts tree changes */
  static void
  bookmarks_selection_changed_cb (GtkTreeSelection      *selection,
-@@ -2722,6 +2916,13 @@
+@@ -2722,6 +2924,13 @@
  	g_signal_connect_object (sidebar->volume_monitor, "drive_changed",
  				 G_CALLBACK (drive_changed_callback), sidebar, 0);
  
@@ -453,3 +464,4 @@ diff -Nur -x '*Po' -x '*lo' -x '*o' -x 'Makefile*' -x '*ing' -x '*so' -x '*a' -x
  	update_places (sidebar);
  }
  
+

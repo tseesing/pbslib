@@ -1,0 +1,26 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="BeanShell: A small embeddable Java source interpreter"
+HOMEPAGE="http://www.beanshell.org"
+REPO=""
+LICENSE="GPL"
+PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
+
+SRC_URI="http://www.beanshell.org/bsh-2.0b4.jar"
+
+RDEPEND="jre"
+BDEPEND=""
+RECOMMENDED=""
+CONFLICT=""
+
+pbs_install() {
+	. /etc/profile.d/jdk.sh
+	. /etc/profile.d/jre.sh
+
+	ypkg_docp "$YPPATH_SOURCE"/bsh-2.0b4.jar "$YPPATH_DEST"/"$JAVA_HOME"/
+
+	cd "$YPPATH_DEST"/"$JAVA_HOME"/
+	ypkg_doln bsh-2.0b4.jar bsh.jar
+}

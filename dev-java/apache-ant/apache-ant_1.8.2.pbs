@@ -1,0 +1,55 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="Java-based build tool similar to 'make' that uses XML configuration files."
+HOMEPAGE="http://ant.apache.org/"
+REPO=""
+LICENSE="http://www.apache.org/licenses/LICENSE-2.0.html"
+PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
+
+SRC_URI="http://archive.apache.org/dist/ant/binaries/apache-ant-1.8.2-bin.tar.bz2"
+
+RDEPEND=""
+BDEPEND=""
+RECOMMENDED=""
+CONFLICT=""
+
+INSTALL="$N.install"
+
+NOTES=""
+
+pbs_unpack() {
+	ypkg_unpack
+}
+
+pbs_install() {
+	# install profile.d script
+	ypkg_docp "$FILES_PATH"/files/apache-ant.{csh,sh} "$YPPATH_DEST"/etc/profile.d/
+
+	#Get the ANT_HOME env var
+	source "$FILES_PATH"/files/apache-ant.sh
+
+	#
+	ypkg_docp  lib/*.jar   "$YPPATH_DEST"/${ANT_HOME}/lib/
+	ypkg_docp  lib/README  "$YPPATH_DEST"/${ANT_HOME}/lib/
+	ypkg_docp  bin/*       "$YPPATH_DEST"/${ANT_HOME}/bin/
+	ypkg_docp  etc/*       "$YPPATH_DEST"/${ANT_HOME}/etc/
+
+	# Do not copy Windows .bat/.cmd files
+	find bin -type f -a ! -name \*.bat -a ! -name \*.cmd |while read i; do
+		ypkg_docp "${i}" "$YPPATH_DEST"/${ANT_HOME}/bin/
+	done
+
+	#
+	chmod 644 "$YPPATH_DEST"/${ANT_HOME}/lib/ -R
+	chmod 755 "$YPPATH_DEST"/${ANT_HOME}/bin/ -R     
+	
+	# fix python2 path
+	sed -i 's|/usr/bin/python|/usr/bin/python2|' "$YPPATH_DEST"/opt/java/apache-ant/bin/runant.py
+
+	#
+	# The license says the NOTICE file should be redistributed for derivative
+	# works, so lets supply it.
+	ypkg_dodoc LICENSE NOTICE
+}

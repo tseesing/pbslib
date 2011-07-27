@@ -1,0 +1,27 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="A text menu based utility for configuring ppp."
+HOMEPAGE="http://http.us.debian.org/debian/pool/main/p/pppconfig/"
+REPO=""
+LICENSE="GPL"
+PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
+
+SRC_URI="http://http.us.debian.org/debian/pool/main/p/pppconfig/pppconfig_2.3.18_all.deb"
+
+RDEPEND=""
+BDEPEND=""
+RECOMMENDED=""
+CONFLICT=""
+
+pbs_unpack() {
+        ypkg_unpack
+}
+
+pbs_install() {
+	ypkg_docp data/*  "$YPPATH_DEST"
+	cd "$YPPATH_DEST"
+	mkdir -p etc/ppp/{peers,resolv} etc/chatscripts
+}
+

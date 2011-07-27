@@ -1,0 +1,40 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="Simple framework to write repeatable tests"
+HOMEPAGE="http://www.junit.org/"
+REPO=""
+LICENSE="http://www.junit.org/license"
+PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
+
+SRC_URI="http://cloud.github.com/downloads/KentBeck/junit/junit4.9b3.zip"
+
+RDEPEND=""
+BDEPEND="jdk jre apache-ant"
+RECOMMENDED=""
+CONFLICT=""
+
+pbs_unpack() {
+        ypkg_unpack
+}
+
+pbs_install() {
+	#
+	. /etc/profile.d/jdk.sh
+	
+	# prepare
+	jar xf junit-4.9b3-src.jar
+	rm -f junit-4.9b3-src.jar
+	cp "$FILES_PATH"/files/build.xml .
+	find . -name \*.class -delete
+	find . -name \*.jar -delete
+	
+	# build
+	. /etc/profile.d/apache-ant.sh
+	ant dist
+
+	# install
+	ypkg_docp junit4.4/junit.jar "$YPPATH_DEST"/"$JAVA_HOME"/
+}
+

@@ -18,6 +18,9 @@ post_install() {
 	#fix gdm permission
 	chown gdm:gdm /var/lib/gdm/ -R 
 
+	#fix /etc/fstab
+	sed -i 's/\/isodevice\//\/host\//g' /etc/fstab
+
 	#
 	return 0
 }
