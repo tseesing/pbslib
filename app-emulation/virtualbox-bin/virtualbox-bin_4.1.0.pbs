@@ -4,11 +4,11 @@
 
 DESCRIPTION="Softwarefamily of powerful x86 virtualizatio (binary version)"
 HOMEPAGE="http://www.virtualbox.org/"
-REPO="testing"
+REPO=""
 LICENSE="GPL-2"
 PACKAGER="<ylmfos@115.com>"
 
-SRC_URI="http://dlc.sun.com.edgesuite.net/virtualbox/4.0.10/VirtualBox-4.0.10-72479-Linux_x86.run"
+SRC_URI="http://dlc.sun.com.edgesuite.net/virtualbox/4.1.0/VirtualBox-4.1.0-73009-Linux_x86.run"
 
 RDEPEND=""
 BDEPEND="bin86 dev86 acpica"
@@ -17,6 +17,8 @@ RECOMMENDED="linux-kernel-headers"
 DESKTOPFILE="virtualbox.desktop"
 
 INSTALL="$N.install"
+
+PROVIDE="virtualbox-guest-additions"
 
 NOTES=""
 
@@ -33,6 +35,9 @@ pbs_build() {
 pbs_install() {
 	#Unpack bundled files
 	mkdir -p "$YPPATH_DEST"/opt/VirtualBox
+
+	#
+	source_pack="$(readlink -f VirtualBox.tar.bz2)"
 	tar -xjf VirtualBox.tar.bz2 -C "$YPPATH_DEST"/opt/VirtualBox
 
 	#
@@ -108,6 +113,18 @@ pbs_install() {
 	ypkg_dounit virtualbox.service
 	ypkg_doln /lib/systemd/system/virtualbox.service \
 	         "$YPPATH_DEST"/lib/systemd/system/multi-user.target.wants/virtualbox.service
+
+	#additions should be packed as virtualbox-guest-additions
+	rm -rf "${YPPATH_DEST}"/opt/VirtualBox/additions
 }
 
+virtualbox-guest-additions_install () {
+	DESCRIPTION="Virtualbox guest additions iso file"
+	RDEPEND=""
+	BDEPEND=""
+	RECOMMENDED=""
+
+	mkdir -p "$YPPATH_DEST"/opt/VirtualBox
+	tar -xjf "$source_pack" additions -C "$YPPATH_DEST"/opt/VirtualBox/
+}
 

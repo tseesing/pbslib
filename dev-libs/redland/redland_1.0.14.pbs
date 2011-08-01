@@ -1,0 +1,34 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="High-level interface for the Resource Description Framework"
+HOMEPAGE="http://librdf.org/"
+REPO=""
+LICENSE="http://librdf.org/LICENSE.html"
+PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
+
+SRC_URI="http://download.librdf.org/source/redland-1.0.14.tar.gz"
+
+RDEPEND="berkeley-db curl cyrus-sasl glibc gmp libidn libiodbc libtool libxml2 libxslt mpfr mysql openldap openssl raptor2 rasqal sqlite zlib"
+BDEPEND=""
+RECOMMENDED=""
+CONFLICT=""
+
+pbs_unpack() {
+        ypkg_unpack
+}
+
+pbs_config() {
+	YPB_CONFIG+=""
+	ypkg_config
+}
+
+pbs_build() {
+	ypkg_make
+}
+
+pbs_install() {
+	ypkg_mkinstall
+}
+

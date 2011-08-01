@@ -1,0 +1,42 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="A lightweight wired and wireless network manager for Linux"
+HOMEPAGE="http://wicd.sourceforge.net/"
+REPO=""
+LICENSE="GPL"
+PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
+
+SRC_URI="http://nchc.dl.sourceforge.net/project/wicd/wicd-stable/wicd-1.7.0/wicd-1.7.0.tar.bz2"
+
+RDEPEND=""
+BDEPEND=""
+RECOMMENDED=""
+CONFLICT=""
+
+INSTALL="$N.install"
+
+NOTES=""
+
+pbs_unpack() {
+        ypkg_unpack
+}
+
+pbs_config() {
+	python setup.py configure --no-install-init \
+	       --resume=/usr/share/wicd/scripts/ \
+	       --suspend=/usr/share/wicd/scripts/ \
+	       --verbose
+}
+
+pbs_install() {
+	python setup.py install --optimize=1 --root="$YPPATH_DEST"
+	cd build/lib/wicd
+	for i in *.py; do
+		install -Dm 755 $i "$YPPATH_DEST"/usr/lib/wicd/$i
+	done
+	ypkg_dounit "$N".service
+}
+
+

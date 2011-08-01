@@ -10,7 +10,7 @@ PACKAGER="<ylmfos@115.com>"
 
 SRC_URI="http://ftp.gnome.org/pub/gnome/platform/2.30/2.30.2/sources/"$N-$V$R".tar.bz2 "
 
-RDEPEND="acl attr avahi cyrus-sasl dbus dbus-glib gamin gcc gconf glib2 glibc hal keyutils krb5 libcap libxml2 openldap-client openssl orbit samba talloc zlib"
+RDEPEND="acl attr avahi cyrus-sasl dbus dbus-glib gamin gcc gconf glib2 glibc hal keyutils krb5 libcap libxml2 openldap openssl orbit samba talloc zlib"
 BDEPEND="libbonobo-dev neon-dev"
 RECOMMENDED=""
 

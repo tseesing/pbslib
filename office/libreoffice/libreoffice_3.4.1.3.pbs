@@ -141,12 +141,12 @@ pbs_config() {
 	
 	#
 	mkdir -p "$N-$V$R" && cd "$N-$V$R"
-	tar xf  "$YPPATH_SOURCE"/libreoffice-bootstrap-3.4.1.3.tar.bz2
-	cd libreoffice-bootstrap-3.4.1.3
+	tar xf  "$YPPATH_SOURCE"/libreoffice-bootstrap-"$V$R".tar.bz2
+	cd libreoffice-bootstrap-"$V$R"
 
 	SRC_URI=($SRC_URI)
 	for i in ${SRC_URI[@]};do
-		cp "$YPPATH_SOURCE"/"${i##*/}" src
+		ypkg_docp "$YPPATH_SOURCE"/"${i##*/}" src
 	done
 
 	#

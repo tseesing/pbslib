@@ -11,7 +11,7 @@ PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 
 SRC_URI="http://libtorrent.rakshasa.no/downloads/"$N-$V$R".tar.gz"
 
-RDEPEND="curl cyrus-sasl gcc glibc libsigc++ libtorrent ncurses openldap-client openssl zlib"
+RDEPEND="curl cyrus-sasl gcc glibc libsigc++ libtorrent ncurses openldap openssl zlib"
 BDEPEND="         "
 RECOMMENDED=""
 CONFLICT=""

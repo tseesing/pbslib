@@ -1,0 +1,34 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="library that handles Resource Description Framework (RDF)"
+HOMEPAGE="http://librdf.org/rasqal/"
+REPO=""
+LICENSE="GPL"
+PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
+
+SRC_URI="http://download.librdf.org/source/"$N-$V$R".tar.gz"
+
+RDEPEND="curl cyrus-sasl glibc gmp libidn libxml2 libxslt mpfr openldap openssl raptor2 zlib"
+BDEPEND=""
+RECOMMENDED=""
+CONFLICT=""
+
+pbs_unpack() {
+        ypkg_unpack
+}
+
+pbs_config() {
+	YPB_CONFIG+=""
+	ypkg_config
+}
+
+pbs_build() {
+	ypkg_make
+}
+
+pbs_install() {
+	ypkg_mkinstall
+}
+

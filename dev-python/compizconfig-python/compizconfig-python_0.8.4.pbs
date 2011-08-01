@@ -6,25 +6,20 @@ DESCRIPTION="Compizconfig Python Bindings"
 HOMEPAGE="http://www.compiz.org/"
 LICENSE="GPL-2"
 PACKAGER="<ylmfos@115.com>"
+
 REPO="testing"
 
-SRC_URI="http://ftp.osuosl.org/pub/gsb/gsb-2.30_slackware-13.1/source/c/compizconfig-python/$N-$V.tar.bz2"
+SRC_URI="http://releases.compiz.org/components/compizconfig-python/compizconfig-python-0.8.4.tar.bz2"
 
-RDEPEND=""
-BDEPEND=" python pygtk libcompizconfig pyrex"
+RDEPEND="python pygtk pyrex compiz compiz-bcop libcompizconfig"
+BDEPEND=""
 RECOMMENDED=""
-
-NOTES=""
 
 pbs_unpack() {
         ypkg_unpack
 }
 
 pbs_config() {
-	
-	YPB_CONFIG+=" --prefix=/usr --sysconfdir=/etc --localstatedir=/var \
-	              --infodir=/usr/share/info --mandir=/usr/share/man \
-	              --disable-static --enable-shared "
 	ypkg_config
 }
 
@@ -34,6 +29,5 @@ pbs_build() {
 
 pbs_install() {
 	ypkg_mkinstall
-	install -m755 -d "$YPPATH_DEST"/usr/share/doc/"$N-$V$R"
-	cp -a AUTHORS ChangeLog COPYING INSTALL NEWS README   "$YPPATH_DEST"/usr/share/doc/"$N-$V$R" 
 }
+

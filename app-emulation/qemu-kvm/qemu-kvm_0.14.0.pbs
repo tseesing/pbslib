@@ -10,7 +10,7 @@ PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 
 SRC_URI="http://downloads.sourceforge.net/project/kvm/"$N"/"$V"/"$N-$V".tar.gz"
 
-RDEPEND="alsa-lib attr audiofile bluez curl cyrus-sasl directfb esound glibc gnutls libgcrypt libgpg-error libjpeg-turbo libpng libsdl libtasn1 libX11 libXau libxcb libXdmcp ncurses openldap-client openssl util-linux-ng zlib"
+RDEPEND="alsa-lib attr audiofile bluez curl cyrus-sasl directfb esound glibc gnutls libgcrypt libgpg-error libjpeg-turbo libpng libsdl libtasn1 libX11 libXau libxcb libXdmcp ncurses openldap openssl util-linux-ng zlib"
 BDEPEND=" "
 RECOMMENDED=""
 

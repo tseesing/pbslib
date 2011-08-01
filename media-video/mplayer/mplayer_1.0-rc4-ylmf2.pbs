@@ -1,0 +1,51 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="Media Player for Linux"
+HOMEPAGE="http://www.mplayerhq.hu/"
+LICENSE=""
+PACKAGER="<ylmfos@115.com>"
+
+SRC_URI="http://www.mplayerhq.hu/MPlayer/releases/MPlayer-1.0rc4.tar.gz"
+
+RDEPEND="aalib alsa-lib attr audiofile cyrus-sasl directfb esound expat faac faad2 fontconfig freetype fribidi gcc giflib glibc jack-audio-connection-kit keyutils krb5 lame lcms libcap libcdio libdrm libICE libjpeg-turbo libmad libmng libogg libpng libsdl libSM libtheora libtool libvdpau libX11 libXau libxcb libXdamage libXdmcp libXext libXfixes libXinerama libXScrnSaver libXv libXxf86dga libXxf86vm lirc mesa mpg123 ncurses openal openldap openssl samba speex talloc util-linux-ng zlib slang x264"
+BDEPEND="libgsm-dev" 
+
+pbs_unpack() {
+	ypkg_unpack
+}
+
+pbs_config() {
+	#ypkg_patch configure-downlaod-ffmpeg.patch
+	#It is important to unset CFLAGS. Otherwise build will fail! If it doesn't fail, it will most likely error when run.
+	unset CFLAGS
+	YPB_CONFIG="--prefix=/usr 
+	            --mandir=/usr/share/man 
+		    --confdir=/etc/mplayer
+		    --enable-runtime-cpudetection 
+		    --language=all "
+		    #--disable-gui 
+		    #--disable-arts 
+		    #--disable-liblzo 
+		    #--disable-speex 
+		    #--disable-openal 
+		    #--disable-libdv 
+		    #--disable-musepack 
+		    #--disable-esd 
+		    #--disable-mga 
+		    #--enable-xvmc 
+	ypkg_config
+}
+
+pbs_build() {
+	sed 's|-march=i486|-march=i686|g' -i config.mak
+	ypkg_make
+}
+
+pbs_install() {
+	ypkg_mkinstall
+	ypkg_docp etc/{codecs.conf,input.conf,example.conf} "$YPPATH_DEST"/etc/mplayer
+	ypkg_doln /usr/share/fonts/truetype/ttf-dejavu/DejaVuSans.ttf  \
+		"$YPPATH_DEST"/usr/share/mplayer/subfont.ttf
+}

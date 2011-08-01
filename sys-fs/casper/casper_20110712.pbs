@@ -6,7 +6,7 @@ DESCRIPTION="Run a "live" preinstalled system from read-only media"
 HOMEPAGE="http://www.ylmf.com"
 LICENSE="GPL-2"
 PACKAGER="<ylmfos@115.com>"
-REPO="testing"
+REPO=""
 
 SRC_URI="git://git.ylmf.com/"$N".git"
 

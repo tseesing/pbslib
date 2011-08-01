@@ -1,0 +1,34 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="an open source implementation of the Lightweight Directory Access Protocol."
+HOMEPAGE="http://www.OpenLDAP.org/"
+LICENSE="GPL-2"
+PACKAGER="<ylmfos@115.com>"
+
+SRC_URI="ftp://ftp.openldap.org/pub/OpenLDAP/openldap-release/openldap-"$V$R".tgz"
+
+RDEPEND="berkeley-db cyrus-sasl gcc glibc icu openssl util-linux-ng zlib"
+BDEPEND=""
+RECOMMENDED=""
+CONFLICT="openldap-client"
+
+NOTES=""
+
+pbs_unpack() {
+        ypkg_unpack
+}
+
+pbs_config() {
+	ypkg_config
+}
+
+pbs_build() {
+	ypkg_make
+}
+
+pbs_install() {
+	ypkg_mkinstall
+}
+

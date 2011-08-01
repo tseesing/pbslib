@@ -1,0 +1,49 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="Mozilla runtime package that can be used to bootstrap XUL+XPCOM applications"
+HOMEPAGE="http://developer.mozilla.org/en/docs/XULRunner"
+REPO=""
+LICENSE=""
+PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
+
+SRC_URI="http://releases.mozilla.org/pub/mozilla.org/"$N"/releases/"$V"/source/"$N-$V".source.tar.bz2"
+
+RDEPEND="alsa-lib atk avahi cairo dbus dbus-glib expat fontconfig freetype gcc gconf glib2 glibc gnome-vfs gtk+ libICE libIDL libnotify libpng libSM libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libxml2 libXrandr libXrender libXt nspr nss openssl orbit pango pixman sqlite util-linux-ng zlib"
+BDEPEND=" "
+RECOMMENDED=""
+
+NOTES=""
+
+pbs_unpack() {
+        ypkg_unpack
+}
+
+pbs_config() {
+	YPB_CONFIG+="--disable-debug 
+	             --disable-tests 
+		     --enable-editor 
+		     --with-openldap 
+		     --enable-optimize 
+		     --with-pthreads 
+		     --enable-application=xulrunner
+		     --disable-javaxpcom"
+		     #--enable-ldap 
+	ypkg_config
+}
+
+pbs_build() {
+	ypkg_make
+}
+
+pbs_install() {
+	ypkg_mkinstall
+	cd "$YPPATH_DEST"
+	for i in libxul.so libxpcom.so libmozjs.so;do
+		ypkg_doln /usr/lib/xulrunner-"$V"/"$i" usr/lib/"$i"
+	done
+	#
+	ypkg_doln /usr/include/xulrunner-"$V" usr/include/xulrunner
+}
+

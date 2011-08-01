@@ -14,9 +14,14 @@ post_install() {
 	
 	#
 	ypkg_domk build vboxhost $2
+	rmmod vboxpci
+	rmmod vboxnetflt
+	rmmod vboxnetadp
+	rmmod vboxdrv
 	modprobe vboxdrv
 	modprobe vboxnetflt
 	modprobe vboxnetadp
+	modprobe vboxpci
 	return 0
 }       
 
@@ -24,6 +29,4 @@ pre_remove() {
 	ypkg_domk delete vboxhost $2
 	return 0
 }
-
-
 

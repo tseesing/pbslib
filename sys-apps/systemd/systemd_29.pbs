@@ -4,15 +4,17 @@
 
 DESCRIPTION="a system and service manager for Linux, compatible with SysV and LSB init scripts."
 HOMEPAGE="http://freedesktop.org/wiki/Software/systemd"
-REPO=""
 LICENSE="GPL"
 PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 
-SRC_URI="git://anongit.freedesktop.org/systemd"
+REPO=""
+
+SRC_URI="http://www.freedesktop.org/software/"$N"/"$N-$V$R".tar.bz2"
 
 RDEPEND="baselayout attr cryptsetup dbus device-mapper glibc libcap libgcrypt libgpg-error pam udev util-linux-ng"
 BDEPEND=""
 RECOMMENDED=""
+OPIONAL="vala: Don't require vala if gtk is disabled"
 
 INSTALL="$N.install"
 
@@ -25,11 +27,11 @@ pbs_unpack() {
 }
 
 pbs_config() {
-	ypkg_groupadd -r "lock"  #used by var-lock.mount
 	YPB_CONFIG+="--with-distro=gentoo 
 		     --disable-gtk
 		     --with-rootdir=/
 		     --with-udevrulesdir=/lib/udev/rules.d"
+		     #--enable-plymouth
 	ypkg_config
 }
 
@@ -39,13 +41,22 @@ pbs_build() {
 
 pbs_install() {
 	ypkg_mkinstall
-	ypkg_docp "$FILES_PATH"/files/services/*           "$YPPATH_DEST"/lib/systemd/system/
-	ypkg_docp "$FILES_PATH"/files/{start,stop,status}  "$YPPATH_DEST"/usr/bin
+	ypkg_docp "$FILES_PATH"/files/services/*                     "$YPPATH_DEST"/lib/systemd/system/
+	ypkg_docp "$FILES_PATH"/files/{start,stop,status,restart,reload}  "$YPPATH_DEST"/usr/bin/
 	cd "$YPPATH_DEST"
-	mkdir run
+	#FIXME!
+	#VT1 cause xorg 100% cpu!
+	rm etc/systemd/system/getty.target.wants/getty@tty1.service
+	#
+	#FIXME!
+	#disable mount: make /media a tmpfs at boot time
+	rm lib/systemd/system/local-fs.target.wants/media.mount
+	#
+	mkdir -p run
 	ypkg_doln /bin/systemd sbin/init
 	for i in halt poweroff reboot runlevel shutdown telinit; do
 		ypkg_doln  /bin/systemctl  sbin/"${i}" 	
 	done
 	ln -sf /proc/self/mounts etc/mtab
 }
+

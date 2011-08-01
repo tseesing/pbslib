@@ -9,7 +9,7 @@ PACKAGER="<ylmfos@115.com>"
  
 SRC_URI="ftp://ftp.gnupg.org/gcrypt/"$N"/"$N-$V$R".tar.bz2"
 
-RDEPEND="curl cyrus-sasl glibc libassuan libgcrypt libgpg-error libksba libusb libusb-compat ncurses openldap-client openssl pth readline zlib"
+RDEPEND="curl cyrus-sasl glibc libassuan libgcrypt libgpg-error libksba libusb libusb-compat ncurses openldap openssl pth readline zlib"
 BDEPEND="bzip2"
 
 INSTALL="$N.install"

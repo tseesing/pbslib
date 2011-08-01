@@ -9,7 +9,7 @@ PACKAGER="<ylmfos@115.com>"
 
 SRC_URI="http://download.pureftpd.org/pub/"$N"/releases/"$N-$V$R".tar.bz2"
 
-RDEPEND="openssl openldap-client glibc pam"
+RDEPEND="openssl openldap glibc pam"
 BDEPEND=" "
 RECOMMENDED=""
 

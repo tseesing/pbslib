@@ -1,0 +1,10 @@
+. /usr/lib/ybs/funcs
+
+post_install() {
+	gnome2_icon_cache_update 
+}
+
+post_remove() {
+	gnome2_icon_cache_update
+}
+

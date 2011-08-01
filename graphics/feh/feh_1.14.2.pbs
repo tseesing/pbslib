@@ -10,7 +10,7 @@ PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 
 SRC_URI="http://feh.finalrewind.org/"$N-$V$R".tar.bz2"
 
-RDEPEND="curl cyrus-sasl freetype giblib glibc imlib2 libidn libpng libX11 libXau libxcb libXdmcp libXext libXinerama openldap-client zlib"
+RDEPEND="curl cyrus-sasl freetype giblib glibc imlib2 libidn libpng libX11 libXau libxcb libXdmcp libXext libXinerama openldap zlib"
 BDEPEND=""
 RECOMMENDED=""
 CONFLICT=""

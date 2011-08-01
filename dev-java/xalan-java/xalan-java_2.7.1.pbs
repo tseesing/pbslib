@@ -1,0 +1,26 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="XSLT processor for transforming XML documents into HTML, text, or other XML document types"
+HOMEPAGE="http://xml.apache.org/xalan-j"
+REPO=""
+LICENSE="APACHE"
+PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
+
+SRC_URI="http://www.apache.org/dist/xml/xalan-j/xalan-j_2_7_1-bin-2jars.tar.gz"
+
+RDEPEND="jdk xerces2-java"
+BDEPEND=""
+RECOMMENDED=""
+CONFLICT=""
+
+pbs_unpack() {
+        ypkg_unpack
+}
+
+pbs_install() {
+	. /etc/profile.d/jdk.sh
+	ypkg_docp xalan.jar xsltc.jar "$YPPATH_DEST"/"$JAVA_HOME"/
+}
+

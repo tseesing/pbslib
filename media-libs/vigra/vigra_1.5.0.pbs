@@ -1,0 +1,34 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="Computer vision library"
+HOMEPAGE="http://hci.iwr.uni-heidelberg.de/vigra/"
+REPO=""
+LICENSE="custom:MIT"
+PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
+
+SRC_URI="http://hci.iwr.uni-heidelberg.de/vigra/vigra1.5.0.tar.gz"
+
+RDEPEND="libpng libtiff"
+BDEPEND=""
+RECOMMENDED=""
+CONFLICT=""
+
+pbs_unpack() {
+        ypkg_unpack
+}
+
+pbs_config() {
+	ypkg_patch 1.5.0-makefile.patch
+	./configure --prefix=/usr --docdir=/usr/share/doc/"$N" --enable-shared
+}
+
+pbs_build() {
+	ypkg_make
+}
+
+pbs_install() {
+	ypkg_mkinstall
+}
+

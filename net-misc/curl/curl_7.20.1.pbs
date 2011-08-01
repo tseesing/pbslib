@@ -9,7 +9,7 @@ PACKAGER="<ylmfos@115.com>"
 
 SRC_URI="http://curl.haxx.se/download/"$N-$V$R".tar.bz2"
 
-RDEPEND="cyrus-sasl glibc openldap-client openssl zlib"
+RDEPEND="cyrus-sasl glibc openldap openssl zlib"
 BDEPEND="    "
 
 pbs_unpack() {

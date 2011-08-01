@@ -10,7 +10,7 @@ PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 
 SRC_URI="http://www.fbreader.org/fbreader-sources-0.12.10.tgz"
 
-RDEPEND="atk bzip2 cairo curl cyrus-sasl expat fontconfig freetype fribidi gcc glib2 glibc gtk+ libidn libjpeg-turbo liblinebreak libpng libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libXrandr libXrender openldap-client openssl pango pixman sqlite zlib"
+RDEPEND="atk bzip2 cairo curl cyrus-sasl expat fontconfig freetype fribidi gcc glib2 glibc gtk+ libidn libjpeg-turbo liblinebreak libpng libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libXrandr libXrender openldap openssl pango pixman sqlite zlib"
 BDEPEND=""
 RECOMMENDED=""
 CONFLICT=""
