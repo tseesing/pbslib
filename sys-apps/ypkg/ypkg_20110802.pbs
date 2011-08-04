@@ -1,0 +1,29 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="Package management system for Ylmf_OS Linux"
+HOMEPAGE="www.ylmf.net"
+REPO="testing"
+LICENSE="GPL-2"
+PACKAGER="<ylmfos@115.com>"
+PRIORITY="required"
+
+INSTALL="$N.install"
+
+SRC_URI="git://git.ylmf.com/"$N".git"
+
+RDEPEND="gawk cpio xz-utils sed coreutils git findutils procps psmisc bash bc glibc"
+BDEPEND=""
+
+pbs_unpack() {
+	ypkg_unpack
+}
+
+pbs_build() {
+	ypkg_make
+}
+
+pbs_install() {
+	ypkg_mkinstall
+}

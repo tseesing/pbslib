@@ -7,8 +7,6 @@ HOMEPAGE="http://www.compiz.org/"
 LICENSE="GPL-2"
 PACKAGER="<ylmfos@115.com>"
 
-REPO="testing"
-
 SRC_URI="http://releases.compiz-fusion.org/"$V$R"/"$N-$V$R".tar.bz2"
 
 RDEPEND="libxml2 libX11 libxcb libXau libXdmcp protobuf zlib gcc libnotify compiz compiz-bcop protobuf"

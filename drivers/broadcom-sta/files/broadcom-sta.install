@@ -8,8 +8,6 @@ post_install() {
 
 post_remove() {
 	#
-	set -x
 	ypkg_domk delete $1 $2
-	set +x
 	return 0
 }

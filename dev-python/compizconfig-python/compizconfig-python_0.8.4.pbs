@@ -7,8 +7,6 @@ HOMEPAGE="http://www.compiz.org/"
 LICENSE="GPL-2"
 PACKAGER="<ylmfos@115.com>"
 
-REPO="testing"
-
 SRC_URI="http://releases.compiz.org/components/compizconfig-python/compizconfig-python-0.8.4.tar.bz2"
 
 RDEPEND="python pygtk pyrex compiz compiz-bcop libcompizconfig"

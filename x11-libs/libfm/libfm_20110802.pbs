@@ -7,7 +7,8 @@ HOMEPAGE="http://pcmanfm.sourceforge.net/"
 LICENSE="GPL-2"
 PACKAGER="<ylmfos@115.com>"
 
-SRC_URI="git://pcmanfm.git.sourceforge.net/gitroot/pcmanfm/"$N""
+REPO="Unusable"
+SRC_URI="git://pcmanfm.git.sourceforge.net/gitroot/pcmanfm/libfm"
 
 RDEPEND="atk cairo expat fontconfig freetype gcc glib2 glibc gtk+ libpng libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libXrandr libXrender menu-cache pango pixman zlib"
 BDEPEND=""

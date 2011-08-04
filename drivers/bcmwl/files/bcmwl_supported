@@ -1,0 +1,48 @@
+#!/bin/sh
+
+[ -n "$1" ] || {
+  echo "USAGE: $0 path/to/wl_linux.c" >&2
+  exit 1
+}
+
+device_ids() {
+	local filename="$1"
+	grep PCI_VENDOR_ID_BROADCOM, $filename |
+	while read line; do
+		id=${line#*, }
+		id=${id%%,*}
+		id=${id#*0x}
+		echo $id
+	done
+}
+
+
+seen_ids=' '
+
+filename="$1" 
+	
+orig_ids="$(device_ids "$filename")"
+
+if [ -z "$orig_ids" ]; then
+   echo "WARNING: No IDs were found from $filename" >&2
+   exit 1	
+fi
+
+for id in $orig_ids; do
+   case "$seen_ids" in
+     *" $id "*)
+       # Already seen the ID.
+       ;;
+      *)
+        # Not seen it yet.
+        seen_ids="${seen_ids}${id} "
+
+        printf "pci:v%08Xd%08Xsv*sd*bc*sc*i* %s %s\n" \
+          0x14E4 "0x$id" 
+       ;;
+   esac
+done
+
+exit 0
+
+

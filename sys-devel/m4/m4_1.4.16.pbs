@@ -2,13 +2,17 @@
 # YLmf_OS package build script
 #
 
-DESCRIPTION="Serial Communication Program"
-HOMEPAGE="http://alioth.debian.org/projects/minicom"
+DESCRIPTION="GNU macro processor"
+HOMEPAGE="http://www.gnu.org/software/m4/m4.html"
  
-SRC_URI="https://alioth.debian.org/frs/download.php/3195/minicom-"$V".tar.gz"
+REPO="testing"
+
+SRC_URI="http://ftp.gnu.org/gnu/"$N"/"$N-$V$R".tar.bz2"
 
 RDEPEND=""
 BDEPEND=""
+
+INSTALL="$N.install"
 
 pbs_unpack() {
         ypkg_unpack
@@ -25,3 +29,4 @@ pbs_build() {
 pbs_install() {
 	ypkg_mkinstall
 }
+

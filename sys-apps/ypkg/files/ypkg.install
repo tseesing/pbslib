@@ -27,6 +27,14 @@ EOF
 	fi
 }
 
+post_upgrade() {
+	post_install
+}
+
+post_downgrade() {
+	post_upgrade
+}
+
 post_remove() {
 	rm -r /etc/yget.conf /etc/ybs.conf
 }

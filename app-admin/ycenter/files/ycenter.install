@@ -3,8 +3,29 @@
 post_install() {
 	gnome2_desktop_database_update
 	gnome2_icon_cache_update
+	#
+	systemctl enable ycenter.service
+	#start ycenter
+	
+	return 0
+}
+
+pre_remove() {
+	#stop ycenter
+	systemctl disable ycenter.service
+}
+
+post_upgrade() {
+	systemctl --system daemon-reload	
+	#restart ycenter
+}
+
+post_downgrade() {
+	post_upgrade
 }
 
 post_remove() {
-	post_install
+	gnome2_desktop_database_update
+	gnome2_icon_cache_update
 }
+

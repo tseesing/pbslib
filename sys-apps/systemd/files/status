@@ -2,13 +2,17 @@
 #
 # wrapper of systemctl start
 #
-echo " This is a wrapper of systemctl, e.g:"
-echo " \"status gdm\" to status gdm"
-echo
+if [ "x$@" = "x" ]; then
+        echo "* Error, please specify a systemd unit."
+        exit 1
+else
+	echo "* This is a wrapper of systemctl, try to status $1."
+	echo
 
-if [ "x$1" != "x" ]; then
-	dm=${1%%.service}
-	systemctl status "$(basename $dm)".service
+	if [ "x$1" != "x" ]; then
+		dm=${1%%.service}
+		systemctl status "$(basename $dm)".service
+	fi
 fi
 
 exit 0

@@ -3,14 +3,16 @@
 #
 
 DESCRIPTION="an open-source implementation of the OpenGL specification - a system for rendering interactive 3D graphics."
-HOMEPAGE="http://mesa3d.sourceforge.net/"
+HOMEPAGE="http://www.mesa3d.org/"
 LICENSE="http://www.mesa3d.org/license.html"
+
 PACKAGER="<ylmfos@115.com>"
 
-SRC_URI="git://anongit.freedesktop.org/mesa/mesa"
+SRC_URI="ftp://ftp.freedesktop.org/pub/mesa/"$V$R"/MesaLib-"$V$R".tar.bz2 
+         ftp://ftp.freedesktop.org/pub/mesa/"$V$R"/MesaGLUT-"$V$R".tar.bz2"
 
 RDEPEND="talloc expat gcc glibc libdrm libICE libSM libX11 libXau libxcb libXdamage libXdmcp libXext libXfixes libXi libXmu libXt libXxf86vm udev util-linux-ng"
-BDEPEND="dri2proto-dev xorg-server-dev                    "
+BDEPEND="dri2proto xorg-server-dev llvm-dev"
 
 NOTES="
  You have enabled gallium infrastructure.
@@ -23,32 +25,24 @@ NOTES="
 "
 
 pbs_unpack() {
-	ypkg_unpack
+	tar xf "$YPPATH_SOURCE"/MesaLib-"$V$R".tar.bz2
+        tar xf "$YPPATH_SOURCE"/MesaGLUT-"$V$R".tar.bz2
+        mv Mesa-"$V$R"  "$N-$V$R"
 }
 
 pbs_config() {
-	YPB_CONFIG+="--disable-gallium-i965
-		     --disable-gallium-i915
-	             --enable-gallium-llvm
-		     --enable-gallium-egl   
-		     --enable-gallium-svga
-	             --enable-gallium-radeon 
-		     --enable-gallium-r600
-		     --enable-gallium-swrast 
-		     --enable-gallium-nouveau 
+	# i915,i965 set disable
+	YPB_CONFIG+="--with-gallium-drivers=nouveau,r300,r600,svga,swrast
 		     --enable-xcb"
 	ypkg_config
 }
 
 pbs_build() {
-	#ypkg_make
 	make -j1
 }
 
 pbs_install() {
 	ypkg_mkinstall
-	#radeon_drv.so from mesa is very experimental (and only concern r3xx,r4xx,r5xx
-	#aka radeon 9600 to radeon HD1950)
-	cd "$YPPATH_DEST"
-	[ -f usr/lib/xorg/modules/drivers/radeon_drv.so ] && rm usr/lib/xorg/modules/drivers/radeon_drv.so || return 0
 }
+
+

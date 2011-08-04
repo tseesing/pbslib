@@ -5,7 +5,7 @@
 DESCRIPTION="Serial Communication Program"
 HOMEPAGE="http://alioth.debian.org/projects/minicom"
  
-SRC_URI="https://alioth.debian.org/frs/download.php/3195/minicom-"$V".tar.gz"
+SRC_URI="http://alioth.debian.org/frs/download.php/3487/"$N-$V$R".tar.gz"
 
 RDEPEND=""
 BDEPEND=""
