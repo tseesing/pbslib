@@ -41,7 +41,7 @@ fi
 export XDG_DATA_DIRS
 
 #source etc/X11/Xsession.d/ scripts
-for i in $(ls /etc/X11/Xsession.d/*);do
+for i in $(ls /etc/X11/Xsession.d/[0-9]*);do
 	. "${i}"
 done
 

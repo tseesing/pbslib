@@ -1,12 +1,17 @@
-diff -ur pps-1.0.0-1/data/usr/share/applications/pps.desktop pps-1.0.0-1.new/data/usr/share/applications/pps.desktop
---- pps-1.0.0-1/data/usr/share/applications/pps.desktop	2010-10-21 10:16:50.000000000 +0800
-+++ pps-1.0.0-1.new/data/usr/share/applications/pps.desktop	2011-04-18 20:44:41.404282611 +0800
-@@ -1,6 +1,8 @@
- [Desktop Entry]
+diff -ur data/usr/share/applications/pps.desktop data.new/usr/share/applications/pps.desktop
+--- data/usr/share/applications/pps.desktop	2010-10-21 10:16:50.000000000 +0800
++++ data.new/usr/share/applications/pps.desktop	2011-08-09 16:00:02.540491031 +0800
+@@ -2,9 +2,12 @@
  Name=PPStream
-+Name[zh_CN]=PPStream 网络电视
  Comment=PPStream for Linux
-+Comment[zh_CN]=集P2P直播点播于一身的网络电视软件
  Encoding=UTF-8
- Exec=/opt/pps/bin/PPStream
+-Exec=/opt/pps/bin/PPStream
++Exec=/usr/bin/PPStream
  Terminal=false
+ Type=Application
+ Icon=/usr/share/icons/pps/pps_logo.png
+ StartupNotify=true
+ Categories=Application;Network;PPStream;
++Comment=PPStream for Linux
++Comment[zh_CN]=集P2P直播点播于一身的网络电视软件
++

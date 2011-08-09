@@ -27,6 +27,7 @@ pbs_unpack() {
 }
 
 pbs_install() {
+	ypkg_patch ylmfos-desktop.patch
 	ypkg_docp data/*  "$YPPATH_DEST"/
 }
 

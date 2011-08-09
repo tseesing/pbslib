@@ -8,7 +8,7 @@ REPO=""
 LICENSE=""
 PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 
-SRC_URI="https://dl-ssl.google.com/linux/direct/"$N"-stable_current_i386.deb"
+SRC_URI="https://dl.google.com/linux/direct/google-chrome-stable_current_i386.deb"
 
 RDEPEND="nss nspr"
 BDEPEND=""
@@ -22,7 +22,7 @@ pbs_unpack() {
 }
 
 pbs_install() {
-	ypkg_patch ylmfos-desktop.patch
+	ypkg_patch ylmfos-desktop-13.patch
 	ypkg_docp data/*  "$YPPATH_DEST"
 	cd "$YPPATH_DEST"
 	ypkg_dodesktop "opt/google/chrome/google-chrome.desktop" "opt/google/chrome/product_logo_48.png"

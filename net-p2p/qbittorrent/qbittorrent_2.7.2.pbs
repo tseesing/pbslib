@@ -25,6 +25,7 @@ pbs_unpack() {
 }
 
 pbs_config() {
+	ypkg_patch ylmfos-desktop.patch
 	YPB_CONFIG=" --prefix=/usr"
 	ypkg_config
 }
@@ -34,7 +35,7 @@ pbs_build() {
 }
 
 pbs_install() {
-	ypkg_docp  doc/qbittorrent.1                          "$YPPATH_DEST"/usr/share/man/man1/
+	#
 	ypkg_docp  src/menuicons/16x16/apps/qbittorrent.png   "$YPPATH_DEST"/usr/share/icons/hicolor/16x16/apps/
 	ypkg_docp  src/menuicons/22x22/apps/qbittorrent.png   "$YPPATH_DEST"/usr/share/icons/hicolor/22x22/apps/
 	ypkg_docp  src/menuicons/24x24/apps/qbittorrent.png   "$YPPATH_DEST"/usr/share/icons/hicolor/24x24/apps/
@@ -46,8 +47,12 @@ pbs_install() {
 	ypkg_docp  src/menuicons/96x96/apps/qbittorrent.png   "$YPPATH_DEST"/usr/share/icons/hicolor/96x96/apps/
 	ypkg_docp  src/menuicons/128x128/apps/qbittorrent.png "$YPPATH_DEST"/usr/share/icons/hicolor/128x128/apps/
 	ypkg_docp  src/menuicons/192x192/apps/qbittorrent.png "$YPPATH_DEST"/usr/share/icons/hicolor/192x192/apps/
-	ypkg_docp  src/menuicons/128x128/apps/qbittorrent.png "$YPPATH_DEST"/usr/share/pixmaps/
+	ypkg_docp  src/menuicons/48x48/apps/qbittorrent.png   "$YPPATH_DEST"/usr/share/pixmaps/
+	#
+	ypkg_doman doc/qbittorrent.1
+	#
 	ypkg_docp  src/qbittorrent        	              "$YPPATH_DEST"/usr/bin/
+	#
 	ypkg_docp_rename  src/Icons/qBittorrent.desktop       "$YPPATH_DEST"/usr/share/applications/"$N".desktop
 	chmod 755 "$YPPATH_DEST"/usr/bin/qbittorrent
 }
