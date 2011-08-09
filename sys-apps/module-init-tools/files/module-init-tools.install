@@ -1,6 +1,9 @@
 . /usr/lib/ybs/funcs
 
 post_install() {
+	#
+	# systemd use /etc/modules-load.d/ replace, following is for compatibility.
+	#
 	if [ ! -f /etc/modules ]; then
 	cat >/etc/modules <<"EOF"
 # /etc/modules: kernel modules to load at boot time.
@@ -10,9 +13,30 @@ post_install() {
 
 EOF
 	fi
+
+	#
+	systemctl enable module-init-tools.service
+	systemctl enable module-unload-tools.service
+
+	return 0
+}
+
+post_upgrade() {
+	post_install
+}
+
+post_downgrade() {
+	post_install
+}
+
+pre_remove() {
+	systemctl disable module-init-tools.service
+	systemctl disable module-unload-tools.service
+	return 0
 }
 
 post_remove() {
-	rm /etc/modules 
+	rm /etc/modules /etc/unload_modules
+	return 0
 }
 

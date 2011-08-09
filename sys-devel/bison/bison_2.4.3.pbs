@@ -10,8 +10,6 @@ SRC_URI="http://ftp.gnu.org/gnu/"$N"/"$N-$V$R".tar.bz2"
 RDEPEND="glibc"
 BDEPEND="m4"
 
-REPO="testing"
-
 INSTALL="$N.install"
 
 pbs_unpack() {

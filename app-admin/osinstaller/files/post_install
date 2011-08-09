@@ -52,11 +52,6 @@ for file in $FILES;do
     chroot "$TARGETDIR" ypkg -C ${file}
 done
 
-#Disable autologin at install-automatic mode
-if grep "install-automatic" /proc/cmdline >/dev/null;then
-	cp "$TARGETDIR"/etc/gdm/custom.conf.ori  "$TARGETDIR"/etc/gdm/custom.conf
-fi	
-
 #Update initrd.img
 #chroot "$TARGETDIR" update-initramfs -d -u
 

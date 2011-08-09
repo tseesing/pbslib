@@ -8,7 +8,7 @@ REPO=""
 LICENSE="GPL-2"
 PACKAGER="<ylmfos@115.com>"
 
-SRC_URI="http://dlc.sun.com.edgesuite.net/virtualbox/"$V"/VirtualBox-"$V"-73009-Linux_x86.run"
+SRC_URI="http://dlc.sun.com.edgesuite.net/virtualbox/"$V"/VirtualBox-"$V"-72916-Linux_x86.run"
 
 RDEPEND=""
 BDEPEND="bin86 dev86 acpica"

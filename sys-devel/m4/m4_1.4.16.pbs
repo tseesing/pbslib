@@ -5,8 +5,6 @@
 DESCRIPTION="GNU macro processor"
 HOMEPAGE="http://www.gnu.org/software/m4/m4.html"
  
-REPO="testing"
-
 SRC_URI="http://ftp.gnu.org/gnu/"$N"/"$N-$V$R".tar.bz2"
 
 RDEPEND=""

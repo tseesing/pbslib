@@ -5,7 +5,6 @@
 DESCRIPTION="OpenGL window and compositing manager"
 HOMEPAGE="http://www.compiz.org/"
 LICENSE="GPL-2"
-REPO="testing"
 PACKAGER="<ylmfos@115.com>"
 
 SRC_URI="http://releases.compiz.org/"$V"/"$N-$V".tar.bz2"
@@ -24,7 +23,7 @@ pbs_unpack() {
 }
 
 pbs_config() {
-	ypkg_patch 060_move_checks_to_compiz.patch
+	ypkg_patch ylmfos_move_checks_to_compiz.patch
 	YPB_CONFIG+=" --disable-schemas-install 
 		      --enable-kde4 
 		      --enable-kconfig 

@@ -1,7 +1,7 @@
 #!/bin/bash
 #
-if [ -f /etc/os-release ]; then 
-	. /etc/os-release
+if [ -f /etc/ylmfos-release ]; then 
+	. /etc/ylmfos-release
 fi
 
 case "$1" in 

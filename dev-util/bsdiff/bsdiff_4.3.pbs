@@ -1,0 +1,32 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="bsdiff: Binary Differencer using a suffix alg"
+HOMEPAGE="http://www.daemonology.net/bsdiff/"
+REPO=""
+LICENSE="GPL"
+PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
+
+SRC_URI="http://www.daemonology.net/"$N"/"$N-$V$R".tar.gz"
+
+RDEPEND=""
+BDEPEND=""
+RECOMMENDED=""
+CONFLICT=""
+
+pbs_unpack() {
+        ypkg_unpack
+}
+
+pbs_build() {
+	gcc -o bsdiff  bsdiff.c -lbz2
+	gcc -o bspatch bspatch.c -lbz2
+}
+
+pbs_install() {
+	ypkg_docp bsdiff bspatch "$YPPATH_DEST"/usr/bin/
+
+}
+
+

@@ -1,0 +1,10 @@
+[Unit]
+Description=unload modules from /etc/unload_modules
+DefaultDependencies=no
+Before=shutdown.target
+
+[Service]
+ExecStart=/sbin/module-unload-tools
+
+[Install]
+WantedBy=shutdown.target

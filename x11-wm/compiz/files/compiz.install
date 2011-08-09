@@ -37,14 +37,19 @@ schemas="
 
 post_install() {
 	gnome2_install_schema "$schemas"
-
+	
 	gnome2_desktop_database_update
 	
 	# Fix for weird white bar around menus and dock
 	gnome2_install_defaut_gconf "string" "/apps/compiz/plugins/decoration/allscreens/options/shadow_match" "2 \!dock"
 	
-	# set default plugin list
+	# Set default plugin list
 	gnome2_install_defaut_gconf "list" "/apps/compiz/general/allscreens/options/active_plugins" "[core,workarounds,gnomecompat,dbus,resize,winrules,glib,svg,move,regex,decoration,png]"
+
+	# Set compiz as default windowmanager
+	#gnome2_install_defaut_gconf "string" "/desktop/gnome/session/required_components/windowmanager" "compiz"
+
+	#
 	gnome2_gconfd_reload
 }
 
@@ -53,8 +58,11 @@ pre_remove() {
 }
 
 post_remove() {
+	# Set gnome-wm as default windowmanager
+	#gnome2_install_defaut_gconf "string" "/desktop/gnome/session/required_components/windowmanager" "gnome-wm"
+
 	gnome2_desktop_database_update
+
 	gnome2_gconfd_reload
-	gnome2_desktop_database_update
 }
 

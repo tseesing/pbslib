@@ -114,6 +114,14 @@ pbs_install() {
 
 	#additions should be packed as virtualbox-guest-additions
 	rm -rf "${YPPATH_DEST}"/opt/VirtualBox/additions
+
+	#FIXME 
+	# virtualbox 4.1.0: 
+	#    vboxdrv: unable to handle kernel paging request.
+	#    https://bugs.launchpad.net/ubuntu/+source/virtualbox-ose/+bug/708968
+	# so rmmod module at shutdown time.
+	#
+	ypkg_docp "$FILES_PATH"/files/virtualbox.conf "${YPPATH_DEST}"/etc/modules-unload.d/
 }
 
 virtualbox-guest-additions_install () {

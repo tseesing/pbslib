@@ -37,25 +37,33 @@ pbs_build() {
 
 pbs_install() {
 	ypkg_mkinstall
+	
 	cd "$YPPATH_DEST"
+	
 	#Change gnome-wm to use compiz ccp if compiz selected
 	#ypkg_domv_rename usr/bin/gnome-wm usr/bin/gnome-wm.orig
 	#ypkg_docp_rename "$FILES_PATH"/files/gnome-wm.gsb  usr/bin/gnome-wm
 	#chmod +x usr/bin/gnome-wm
 	ypkg_docp "$FILES_PATH"/files/gnome-wm.desktop usr/share/applications
+	
 	# Add xinitrc script for gnome
 	mkdir -p etc/X11/xinit
 	cat "$FILES_PATH"/files/xinitrc.gnome | sed -e "s,@LIBDIR@,lib,g"   > etc/X11/xinit/xinitrc.gnome
 	chmod 755 etc/X11/xinit/xinitrc.gnome
+	
 	# Install splash screen
 	ypkg_docp "$FILES_PATH"/files/gnome-splash.png  usr/share/pixmaps/splash
+	
 	# Add default `gnome` for gnome-session
 	( cd usr/bin ; ln -s gnome-session gnome ); 
+	
 	# Fix gdm session file (in case it's replaced)
 	ypkg_docp "$FILES_PATH"/files/gnome.desktop  usr/share/xsessions
 	chmod +x usr/share/xsessions/gnome.desktop
+	
 	#
 	mkdir -p etc/X11/Xsession.d/
+	
 	# ylmfos misc
 	ypkg_docp "$FILES_PATH"/files/ylmfos-misc.desktop etc/xdg/autostart/
 	ypkg_docp "$FILES_PATH"/files/ylmfos-misc.sh      usr/bin/

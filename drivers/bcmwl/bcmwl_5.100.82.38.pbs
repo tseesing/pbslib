@@ -2,7 +2,7 @@
 # YLmf_OS package build script
 #
 
-DESCRIPTION="Broadcom 802.11 Linux STA wireless driver for use with Broadcom's BCM4311 BCM4312 BCM4313 BCM4321 BCM4322 BCM43224 and BCM43225 BCM43227 and BCM43228-based hardware"
+DESCRIPTION="Broadcom 802.11 Linux STA wireless driver for BCM4311/4312/4313 BCM4321/4322 BCM43224/43225/43227/43228."
 HOMEPAGE="http://www.broadcom.com/company/"
 REPO=""
 LICENSE=""
@@ -27,5 +27,6 @@ pbs_unpack() {
 pbs_install() {
 	ypkg_patch ylmfos-missing-init_MUTEX.patch
 	ypkg_docp * "$YPPATH_DEST"/usr/src/"$N-$V$R"
+	ypkg_dosupported "bcmwl_supported"
 }
 

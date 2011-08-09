@@ -12,7 +12,7 @@ SRC_URI="http://snapshots.madwifi-project.org/madwifi-0.9.4-current.tar.gz"
 
 RDEPEND=""
 BDEPEND=""
-RECOMMENDED=""
+RECOMMENDED="make linux-kernel-headers"
 CONFLICT=""
 
 NOTES=""
@@ -27,6 +27,7 @@ pbs_install() {
 	INSTALL="$N.install"
 	ypkg_patch madwifi-utils-install-dir.patch
 	ypkg_docp * "$YPPATH_DEST"/usr/src/"$N-$V$R"
+	ypkg_dosupported "${N}_supported"
 }
 
 madwifi-utils_install() {

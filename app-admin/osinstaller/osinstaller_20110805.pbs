@@ -11,7 +11,7 @@ REPO=""
 SRC_URI="git://10.0.0.11/"$N".git"
 
 RDEPEND="pyparted squashfs-tools atk cairo enchant expat fontconfig freetype gail gcc glib2 glibc gnutls gst-plugins-base gstreamer gtk+ icu libgcrypt libgpg-error libICE libjpeg-turbo libpng libSM libsoup libtasn1 libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libxml2 libXrandr libXrender libxslt libXt pango pixman python sqlite util-linux-ng webkit zlib" 
-BDEPEND="                                            "
+BDEPEND=""
 RECOMMENDED="pywebkitgtk dosfstools jfsutils ntfsprogs e2fsprogs reiserfsprogs xfsprogs"
 
 pbs_unpack() {

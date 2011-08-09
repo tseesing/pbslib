@@ -7,12 +7,10 @@ HOMEPAGE="http://code.google.com/p/libarchive/"
 LICENSE="GPL-2"
 PACKAGER="<ylmfos@115.com>"
 
-REPO="testing"
-
 SRC_URI="http://libarchive.googlecode.com/files/"$N-$V$R".tar.gz"
 
 RDEPEND="acl attr glibc zlib"
-BDEPEND="sharutils    "
+BDEPEND="sharutils"
 RECOMMENDED=""
 
 NOTES=""
