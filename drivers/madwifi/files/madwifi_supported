@@ -2,9 +2,6 @@
 
 main() {
 	#	
-	echo "ath_pci.ko"
-	echo "description Support for Atheros 802.11 wireless LAN cards."
-	
 	filename="$1" 
 	grep PCI_ANY_ID, $filename |while read line; do 
 		echo $line |sed 's/PCI_ANY_ID.*//g' |sed 's/{ //g' |sed 's/,//g' |sed 's/0x//g'
@@ -14,6 +11,9 @@ main() {
 
 }
 
+#
+echo "module ath_pci.ko"
+echo "description Support for Atheros 802.11 wireless LAN cards."
 main ath/if_ath_pci.c
 
 exit 0

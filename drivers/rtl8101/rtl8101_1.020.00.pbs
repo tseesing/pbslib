@@ -28,6 +28,7 @@ pbs_build() {
 }
 
 pbs_install() {
-	ypkg_docp * "$YPPATH_DEST"/usr/src/"$N-$V$R"
+	ypkg_dosrc *
+	ypkg_dosupported "$N"_supported
 }
 

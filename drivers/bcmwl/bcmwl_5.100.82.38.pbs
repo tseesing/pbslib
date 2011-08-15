@@ -26,7 +26,7 @@ pbs_unpack() {
 
 pbs_install() {
 	ypkg_patch ylmfos-missing-init_MUTEX.patch
-	ypkg_docp * "$YPPATH_DEST"/usr/src/"$N-$V$R"
+	ypkg_dosrc *
 	ypkg_dosupported "bcmwl_supported"
 }
 

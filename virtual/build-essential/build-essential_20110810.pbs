@@ -8,12 +8,10 @@ REPO=""
 LICENSE="GPL"
 PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 
-RDEPEND="ypkg"
+RDEPEND="ypkg make patch automake autoconf patch intltool pkgconfig gcc-dev glib2-dev m4 linux-headers linux-kernel-headers glibc-dev"
 BDEPEND=""
 RECOMMENDED=""
 CONFLICT=""
-
-INSTALL="$N.install"
 
 pbs_install() {
 	mkdir -p "$YPPATH_DEST"/usr/share/doc/"$N"/
@@ -21,3 +19,4 @@ pbs_install() {
 install build-essential packages
 EOF
 }
+

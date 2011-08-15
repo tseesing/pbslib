@@ -58,8 +58,7 @@ pbs_install() {
 	( cd usr/bin ; ln -s gnome-session gnome ); 
 	
 	# Fix gdm session file (in case it's replaced)
-	ypkg_docp "$FILES_PATH"/files/gnome.desktop  usr/share/xsessions
-	chmod +x usr/share/xsessions/gnome.desktop
+	ypkg_docp "$FILES_PATH"/files/gnome-classic.desktop  usr/share/xsessions
 	
 	#
 	mkdir -p etc/X11/Xsession.d/

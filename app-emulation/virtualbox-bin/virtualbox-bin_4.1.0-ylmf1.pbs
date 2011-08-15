@@ -101,7 +101,7 @@ pbs_install() {
 	install -d "${YPPATH_DEST}/var/run/VirtualBox"
 
 	#vboxhost
-	ypkg_doln "/opt/VirtualBox/src/vboxhost" "${YPPATH_DEST}"/usr/src/vboxhost-"$V$R"
+	ypkg_doln "/opt/VirtualBox/src/vboxhost" "${YPPATH_DEST}"/usr/src/vboxhost_"$V$R"
 
 	#build kernel modules
 	#cd src/vboxhost

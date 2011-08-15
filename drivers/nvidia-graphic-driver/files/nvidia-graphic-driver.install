@@ -1,0 +1,85 @@
+. /usr/lib/ybs/funcs
+
+restore() {
+	# restore mesa 
+	cd /usr/lib/
+	if [ -f libGL.so.1.2 ]; then
+		rm libGL.so libGL.so.1
+		ln -sf libGL.so.1.2 libGL.so.1
+		ln -sf libGL.so.1 libGL.so
+	fi
+
+	# restore xorg-server
+	cd /usr/lib/xorg/modules/extensions/
+	if [ -f libglx.so-pkg.xorg-server ]; then
+		rm libglx.so
+		cp libglx.so-pkg.xorg-server libglx.so 
+	fi
+
+	# restore xorg.conf
+	cd /etc/X11 
+	if [ -f xorg.conf.backup ]; then
+		grep -q nvidia-xconfig xorg.conf.backup >/dev/null || cp xorg.conf.backup xorg.conf
+	fi
+	return 0
+}
+
+post_install() {
+	if lspci |grep VGA |grep nVidia; then
+		ypkg_domk build $1 $2 "-f Makefile.kbuild module"
+		if ! modinfo nvidia >/dev/null; then
+			echo "* Error: build nvidia kernenl module failed!"
+			restore
+			return 0
+		fi
+		nvidia-xconfig
+		cat > /etc/modprobe.d/blacklist-nvidia.conf <<EOF
+blacklist nouveau
+options nouveau modeset=0
+
+blacklist lbm-nouveau
+
+blacklist nvidia-173
+
+blacklist nvidia-96
+EOF
+		update-initramfs -d -u
+	else
+		echo "* Error: nvidia graphic card not found!"
+		echo "* You do not need this driver,please remove manually."
+		restore
+		return 0
+	fi
+	gnome2_desktop_database_update
+
+	echo '* By using this package you accept the NVIDIA license,'
+	echo '* which has been installed in /usr/share/licenses/nvidia/LICENSE'
+	echo '* If you do not accept this license, you must remove the package immediately.'
+	echo 
+	echo '* You must reboot your computer for the changes to take effect.'
+
+	return 0
+}
+
+post_remove() {
+	if lspci |grep VGA |grep nVidia; then
+		rm  /etc/modprobe.d/blacklist-nvidia.conf /etc/X11/xorg.conf 
+		ypkg_domk delete $1 $2
+		rm  -rf /usr/src/"$1-$2"
+		update-initramfs -d -u
+	fi
+	
+	restore
+	echo '* You must logout your session for the changes to take effect.'
+
+	return 0
+}
+
+post_upgrade()  {
+	post_install
+}
+
+post_downgrade() {
+	post_install
+}
+

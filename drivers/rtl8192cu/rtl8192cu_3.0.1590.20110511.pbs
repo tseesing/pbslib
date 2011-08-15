@@ -27,6 +27,7 @@ pbs_install() {
 	cd driver
 	tar xf rtl8192_8188CU_linux_v3.0.1590.20110511.tar.gz
 	cd rtl8192_8188CU_linux_v3.0.1590.20110511
-	ypkg_docp * "$YPPATH_DEST"/usr/src/"$N-$V$R"
+	ypkg_dosrc *
+	ypkg_dosupported "$N"_supported
 }
 

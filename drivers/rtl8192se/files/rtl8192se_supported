@@ -1,0 +1,20 @@
+#!/bin/bash
+#
+#
+
+devicd_id () {
+	ids=$(grep DEVICE_ID $1 |awk '{print $3}' |sort -u |xargs)
+	
+	for id in $ids; do
+		printf "alias pci:v%08Xd%08Xsv*sd*bc*sc*i* %s %s\n" 0x10EC "$id"
+	done
+
+	return 0
+}
+
+#
+echo "module r8192se_pci.ko"
+echo "description Linux driver for Realtek RTL819x WiFi cards"
+devicd_id HAL/rtl8192/rtl_core.h
+
+exit 0

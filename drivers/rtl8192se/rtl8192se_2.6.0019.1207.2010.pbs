@@ -25,8 +25,9 @@ pbs_unpack() {
 
 pbs_install() {
 	ypkg_patch ylmfos-makefile.patch
-	ypkg_docp  * "$YPPATH_DEST"/usr/src/"$N-$V$R"
+	ypkg_dosrc  * 
 	ypkg_docp  firmware/RTL8192SE  "$YPPATH_DEST"/lib/firmware/
+	ypkg_dosupported "$N"_supported
 }
 
 

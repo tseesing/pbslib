@@ -27,7 +27,8 @@ pbs_install() {
 	cd driver
 	tar xf rtl8712_8188_8191_8192SU_usb_linux_v2.6.6.0.20110401.tar.gz
 	cd rtl8712_8188_8191_8192SU_usb_linux_v2.6.6.0.20110401
-	ypkg_docp * "$YPPATH_DEST"/usr/src/"$N-$V$R"
+	ypkg_dosrc *
+	ypkg_dosupported "$N"_supported
 }
 
 

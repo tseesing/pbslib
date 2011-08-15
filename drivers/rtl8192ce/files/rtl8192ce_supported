@@ -1,0 +1,28 @@
+#!/bin/sh
+
+device_id() {
+	local filename="$1"/sw.c
+	local ids=$(grep PCI_VENDOR_ID $filename |while read line;do line=${line#*,}; line=${line%%,*}; echo $line;done |xargs)
+	
+	for id in $ids; do
+		printf "alias pci:v%08Xd%08Xsv*sd*bc*sc*i* %s %s\n" 0x10EC "$id" 
+	done
+}
+
+echo "module rtl8192se.ko"
+echo "description Realtek 8192S/8191S 802.11n PCI wireless"
+device_id rtl8192se
+echo 
+
+echo "module rtl8192ce.ko"
+echo "description Realtek 8192C/8188C 802.11n PCI wireless"
+device_id rtl8192ce
+echo 
+
+echo "module rtl8192de.ko"
+echo "description Realtek 8192DE 802.11n Dul Mac PCI wireless"
+device_id rtl8192de
+echo 
+
+exit 0
+

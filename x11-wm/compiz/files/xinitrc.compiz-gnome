@@ -44,6 +44,11 @@ if [ -f $usermodmap ]; then
     xmodmap $usermodmap
 fi
 
+## source etc/X11/Xsession.d/ scripts
+for i in $(ls /etc/X11/Xsession.d/[0-9]*);do
+	. "${i}"
+done
+
 ## Use ssh-agent if available
 if [ -x /usr/bin/ssh-agent ]; then
   GNOME_SESSION_SETTINGS="$GNOME_SESSION_SETTINGS /usr/bin/ssh-agent"

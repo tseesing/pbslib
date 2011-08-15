@@ -30,6 +30,6 @@ pbs_build() {
 
 pbs_install() {
 	make DESTDIR="$YPPATH_DEST" install-usr install-etc install-doc
-	ypkg_docp include Makefile kernel "$YPPATH_DEST"/usr/src/"$N-$V$R"
+	ypkg_dosrc include Makefile kernel
 }
 

@@ -26,6 +26,7 @@ pbs_unpack() {
 pbs_install() {
 	ypkg_patch ylmfos-makefile.patch
 	ypkg_docp firmware/rtlwifi/*  "$YPPATH_DEST"/lib/firmware/rtlwifi/
-	ypkg_docp * "$YPPATH_DEST"/usr/src/"$N-$V$R" 
+	ypkg_dosrc *
+	ypkg_dosupported rtl8192ce_supported
 }
 
