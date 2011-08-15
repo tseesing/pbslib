@@ -3,8 +3,9 @@
 restore() {
 	# restore mesa 
 	cd /usr/lib/
-	if [ -f libGL.so.1.2 ]; then
-		rm libGL.so libGL.so.1
+	if [ -f libGL.so.1.2-pkg.mesa ]; then
+		rm libGL.so libGL.so.1 libGL.so.1.2
+		cp libGL.so.1.2-pkg.mesa libGL.so.1.2
 		ln -sf libGL.so.1.2 libGL.so.1
 		ln -sf libGL.so.1 libGL.so
 	fi

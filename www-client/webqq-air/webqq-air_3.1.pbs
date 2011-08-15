@@ -1,0 +1,24 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="webqq client (AIR)"
+HOMEPAGE="www.qq.com"
+REPO=""
+LICENSE=""
+PRIORITY=""
+PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
+
+SRC_URI="http://dl_dir.qq.com/qqfile/web/webqq/WebQQ.air"
+
+RDEPEND="adobe-air-sdk"
+BDEPEND=""
+RECOMMENDED=""
+CONFLICT=""
+
+NOTES=""
+
+pbs_install() {
+	ypkg_docp      "$YPPATH_SOURCE"/WebQQ.air  "$YPPATH_DEST"/usr/lib/"$N"
+	ypkg_dodesktop "$N.desktop"      "$N.png"
+}

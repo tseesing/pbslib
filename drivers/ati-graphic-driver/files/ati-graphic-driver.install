@@ -1,0 +1,89 @@
+. /usr/lib/ybs/funcs
+
+restore() {
+	# restore mesa 
+	cd /usr/lib/
+	if [ -f libGL.so.1.2-pkg.mesa ]; then
+		rm libGL.so libGL.so.1 libGL.so.1.2
+		cp libGL.so.1.2-pkg.mesa libGL.so.1.2
+		ln -sf libGL.so.1.2 libGL.so.1
+		ln -sf libGL.so.1 libGL.so
+	fi
+
+	# restore xorg-server
+	cd /usr/lib/xorg/modules/extensions/
+	if [ -f libglx.so-pkg.xorg-server ]; then
+		rm libglx.so
+		cp libglx.so-pkg.xorg-server libglx.so 
+	fi
+
+	# restore xorg.conf
+	cd /etc/X11 
+	if ls xorg.conf.original-* >/dev/null 2>/dev/null; then
+		cp $(ls xorg.conf.original-* |sort -ur |head -n1) xorg.conf
+	fi
+	return 0
+}
+
+post_install() {
+	if lspci |grep VGA |grep "ATI Technologies"; then
+		if lspci |grep VGA |grep "Intel Corporation"; then
+			echo "* Error: ATI and Intel Dual-Video-Cards found!"
+			echo "* You MUSE select discrete grahpic at BIOS and reinstall manually."
+			restore
+			return 0
+		else	
+			ypkg_domk build $1 $2
+			if ! modinfo fglrx >/dev/null; then
+				echo "* Error: build fglrx kernenl module failed!"
+				restore
+				return 0
+			fi
+			aticonfig --initial
+			cat > /etc/modprobe.d/blacklist-fglrx.conf <<EOF
+# Advanced Micro Devices, Inc.
+# radeon conflicts with AMD Linux Graphics Driver
+blacklist radeon
+EOF
+			update-initramfs -d -u
+		fi
+	else
+		echo "* Error: ATI graphic card not found!"
+		echo "* You do not need this driver, please remove manually."
+		restore
+		return 0
+	fi
+	gnome2_desktop_database_update
+
+	echo '* By using this package you accept the ATI license,'
+	echo '* which has been installed in /usr/share/doc/ati-graphic-driver/11.6/ATI_LICENSE.TXT'
+	echo '* If you do not accept this license, you must remove the package immediately.'
+	echo 
+	echo '* You must reboot computer for the changes to take effect.'
+
+	return 0
+}
+
+post_remove() {
+	if lspci |grep VGA |grep "ATI Technologies"; then
+		rm  /etc/modprobe.d/blacklist-fglrx.conf /etc/X11/xorg.conf 
+		ypkg_domk delete $1 $2
+		rm  -rf /usr/src/"$1-$2"
+		update-initramfs -d -u
+	fi
+
+	restore
+
+	echo '* You must logout session for the changes to take effect.'
+
+	return 0
+}
+
+post_upgrade()  {
+	post_install
+}
+
+post_downgrade() {
+	post_install
+}
+
