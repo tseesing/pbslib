@@ -2,6 +2,18 @@
 
 post_install() {
 	ypkg_libtool_finish /usr/lib/xorg/modules/extensions
+	systemctl enable xorgconf-check.service
 }
 
+pre_remove() {
+	systemctl disable xorgconf-check.service
+}
 
+post_upgrade() {
+	systemctl --system daemon-reload
+	systemctl enable xorgconf-check.service
+}
+
+post_downgrade() {
+	post_upgrade
+}

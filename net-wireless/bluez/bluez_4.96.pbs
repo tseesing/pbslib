@@ -1,0 +1,32 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="Bluetooth Tools and System Daemons for Linux"
+HOMEPAGE="http://bluez.sourceforge.net/"
+LICENSE="GPL-2"
+PACKAGER="<ylmfos@115.com>"
+
+REPO="testing"
+
+SRC_URI="http://www.kernel.org/pub/linux/bluetooth/"$N-$V$R".tar.gz"
+
+RDEPEND="alsa-lib dbus glib2 glibc gst-plugins-base gstreamer libxml2 zlib"
+BDEPEND=""
+RECOMMENDED=""
+
+pbs_unpack() {
+        ypkg_unpack
+}
+
+pbs_config() {
+	ypkg_config
+}
+
+pbs_build() {
+	ypkg_make
+}
+
+pbs_install() {
+	ypkg_mkinstall
+}

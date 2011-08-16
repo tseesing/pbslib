@@ -1,0 +1,60 @@
+#!/bin/sh
+#
+# checking /etc/X11/xorg.conf for confilcted xorg modules of grahpic cards.
+#
+
+xorgfile="/etc/X11/xorg.conf"
+xorgfile_restore="/etc/X11/xorg.conf.check"
+
+card=""
+conflict=""
+fglrx=""
+_fglrx=""
+nvidia=""
+_nvidia=""
+
+
+# dual grahpic cards 
+if [ $(lspci |grep VGA |wc -l) -ge 2 ]; then
+	[ -f $xorgfile ] && mv $xorgfile $xorgfile_restore
+	exit 0
+fi
+
+if [ -f $xorgfile ]; then
+	fglrx="$(grep -w "Driver"  $xorgfile |grep -w "fglrx")"
+	nvidia="$(grep -w "Driver" $xorgfile |grep -w "nvidia")"
+fi
+
+if [ -f $xorgfile_restore ]; then
+	_fglrx="$(grep -w "Driver"  $xorgfile_restore |grep -w "fglrx")"
+	_nvidia="$(grep -w "Driver" $xorgfile_restore |grep -w "nvidia")"
+fi
+
+
+lspci |grep VGA |grep -q "Intel Corporation" && card="intel"
+lspci |grep VGA |grep -q "ATI Technologies"  && card="ati"
+lspci |grep VGA |grep -q "nVidia"            && card="nv"
+
+if [ -f $xorgfile ]; then
+	case $card in 
+		intel)
+			if [ "x$fglrx" != "x" ] || [ "x$nvidia" != "x" ]; then
+				conflict="yes"
+			fi ;;
+	 	 ati)
+			[ "x$nvidia" != "x" ] && conflict="yes" ;;
+		  nv)
+			[ "x$fglrx" != "x" ] && conflict="yes" 
+	esac
+
+	[ "x$conflict" = "xyes" ] && mv $xorgfile $xorgfile_restore
+else
+	if [ -f $xorgfile_restore ]; then
+		case $card in 
+			ati) [ "x$_fglrx" != "x" ]  && mv $xorgfile_restore $xorgfile ;;
+			 nv) [ "x$_nvidia" != "x" ] && mv $xorgfile_restore $xorgfile 
+		esac
+	fi
+fi
+
+exit 0

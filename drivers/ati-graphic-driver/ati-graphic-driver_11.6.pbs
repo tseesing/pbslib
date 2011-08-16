@@ -19,6 +19,7 @@ CONFLICT=""
 INSTALL="$N.install"
 
 DESKTOPFILE="amdcccle.desktop"
+ICONFILE="/usr/share/icons/ccc_large.xpm"
 
 pbs_unpack() {
 	# Extract-only

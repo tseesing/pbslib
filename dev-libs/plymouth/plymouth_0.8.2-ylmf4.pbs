@@ -7,13 +7,13 @@ HOMEPAGE="http://cgit.freedesktop.org/plymouth/ http://www.freedesktop.org/softw
 LICENSE="GPL-2"
 PACKAGER="<ylmfos@115.com>"
 
-REPO="testing"
-
 SRC_URI="https://launchpad.net/ubuntu/lucid/+source/"$N"/0.8.2-2ubuntu2/+files/"${N}_$V".orig.tar.bz2"
 
 RDEPEND="atk cairo expat fontconfig freetype gcc glib2 glibc gtk+ libdrm libpng libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libXrandr libXrender pango pixman zlib"
 BDEPEND="                         "
 RECOMMENDED="plymouth-theme-ylmf-logo"
+
+INSTALL="$N.install"
 
 NOTES=""
 
