@@ -1,0 +1,77 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="GTK Instant Messenger client, split into finch and libpurple"
+HOMEPAGE="http://pidgin.im/"
+LICENSE="GPL"
+PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
+
+SRC_URI="http://nchc.dl.sourceforge.net/project/pidgin/Pidgin/"$V$R"/"$N-$V$R".tar.bz2"
+
+PROVIDE="libpurple finch"
+
+RDEPEND="atk cairo dbus dbus-glib expat farsight2 fontconfig freetype gcc 
+	 glib2 glibc gnutls gstreamer gtk+ libgcrypt libgpg-error libICE 
+	 libpng libSM libtasn1 libX11 libXau libxcb libXcomposite libXcursor 
+	 libXdamage libXdmcp libXext libXfixes libXi libxml2 libXrandr libXrender 
+	 libXScrnSaver ncurses nspr nss pango pixman startup-notification 
+	 util-linux-ng zlib gtkspell meanwhile"
+RECOMMENDED="libpurple finch"
+BDEPEND=""
+
+OPTIONAL="aspell: for spelling correction;
+          avahi: Bonjour protocol support;
+          ca-certificates: SSL CA certificates;
+          gstreamer0.10-good-plugins: video and voice support;
+          tk: Tcl/Tk scripting support;
+	  dbus-python: for purple-remote and purple-url-handler"
+
+INSTALL="$N.install"
+
+pbs_unpack() {
+        ypkg_unpack
+}
+
+pbs_config() {
+	YPB_CONFIG+="--disable-schemas-install"
+	ypkg_config
+}
+
+pbs_build() {
+	ypkg_make
+}
+
+pbs_install() {
+	#for linking
+	make -C libpurple DESTDIR="$YPPATH_DEST" install-libLTLIBRARIES
+	ypkg_mkinstall -C pidgin 
+	ypkg_mkinstall -C doc 
+        #clean up libpurple
+        make -C libpurple DESTDIR="$YPPATH_DEST" uninstall-libLTLIBRARIES
+	rm -f "$YPPATH_DEST"/usr/share/man/man1/finch.1
+}
+
+libpurple_install() {
+	DESCRIPTION="IM library extracted from Pidgin"
+	RDEPEND="farsight2 dbus-glib gnutls"
+	REPO="testing"
+        for dir in libpurple share/sounds share/ca-certs m4macros po; do
+		ypkg_mkinstall -C "${dir}"
+	done
+}
+
+
+finch_install() {
+	DESCRIPTION="A ncurses-based messaging client"
+	RDEPEND="libpurple python gstreamer"
+	REPO="testing"
+	#for linking
+	make -C libpurple DESTDIR="$YPPATH_DEST" install-libLTLIBRARIES
+	ypkg_mkinstall -C finch
+	ypkg_mkinstall -C doc 
+        #clean up libpurple
+        make -C libpurple DESTDIR="$YPPATH_DEST" uninstall-libLTLIBRARIES
+	rm -f "$YPPATH_DEST"/usr/share/man/man1/pidgin.1
+}
+

@@ -1,0 +1,35 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="GNU GPL'd Pico clone with more functionality"
+HOMEPAGE="http://www.nano-editor.org/"
+REPO=""
+LICENSE="GPL"
+PRIORITY=""
+PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
+
+SRC_URI="http://ftp.gnu.org/pub/gnu/nano/"$N-$V$R".tar.gz"
+
+RDEPEND="glibc ncurses"
+BDEPEND=" "
+RECOMMENDED=""
+CONFLICT=""
+
+NOTES=""
+
+pbs_unpack() {
+        ypkg_unpack
+}
+
+pbs_config() {
+	ypkg_config
+}
+
+pbs_build() {
+	ypkg_make
+}
+
+pbs_install() {
+	ypkg_mkinstall
+}

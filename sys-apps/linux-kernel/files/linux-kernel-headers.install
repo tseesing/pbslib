@@ -6,3 +6,11 @@ post_install() {
 	return 0
 }       
 
+post_upgrade() {
+	post_install $1 $2
+}	
+
+post_downgrade() {
+	post_install $1 $2
+}
+

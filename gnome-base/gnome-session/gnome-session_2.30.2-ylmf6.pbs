@@ -57,7 +57,8 @@ pbs_install() {
 	# Add default `gnome` for gnome-session
 	( cd usr/bin ; ln -s gnome-session gnome ); 
 	
-	# Fix gdm session file (in case it's replaced)
+	# Replace of gnome-classic.desktop
+	[ -f usr/share/xsessions/gnome.desktop ] && rm usr/share/xsessions/gnome.desktop
 	ypkg_docp "$FILES_PATH"/files/gnome-classic.desktop  usr/share/xsessions
 	
 	#

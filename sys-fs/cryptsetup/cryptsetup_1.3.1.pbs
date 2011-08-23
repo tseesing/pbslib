@@ -1,0 +1,45 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="Tool to setup encrypted devices with dm-crypt"
+HOMEPAGE="http://code.google.com/p/cryptsetup/"
+LICENSE="GPL-2"
+PACKAGER="<ylmfos@115.com>"
+
+REPO="testing"
+SRC_URI="http://cryptsetup.googlecode.com/files/"$N-$V$R".tar.bz2"
+
+RDEPEND="device-mapper glibc libgcrypt libgpg-error popt util-linux-ng"
+BDEPEND="     "
+RECOMMENDED=""
+
+INSTALL="$N.install"
+
+NOTES=""
+
+pbs_unpack() {
+        ypkg_unpack
+}
+
+pbs_config() {
+	ypkg_config
+}
+
+pbs_build() {
+	ypkg_make
+}
+
+pbs_install() {
+	ypkg_mkinstall
+	ypkg_dodoc AUTHORS ChangeLog COPYING INSTALL NEWS README
+	#for initramfs-tools
+	cd "$YPPATH_DEST"
+	ypkg_docp "$FILES_PATH"/files/cryptsetup                      lib
+	ypkg_docp "$FILES_PATH"/files/hooks/*                         usr/share/initramfs-tools/hooks
+	ypkg_docp "$FILES_PATH"/files/conf-hooks.d_cryptsetup         usr/share/initramfs-tools/conf-hooks.d
+	ypkg_docp_rename "$FILES_PATH"/files/local-top_cryptroot      usr/share/initramfs-tools/scripts/local-top/cryptroot
+	ypkg_docp_rename "$FILES_PATH"/files/local-top_cryptopensc    usr/share/initramfs-tools/scripts/cryptopensc
+	ypkg_docp_rename "$FILES_PATH"/files/local-bottom_cryptopensc usr/share/initramfs-tools/scripts/local-bottom/cryptopensc
+}
+

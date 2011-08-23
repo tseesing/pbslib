@@ -1,7 +1,6 @@
 . /usr/lib/ybs/funcs
 
 post_install() {
-	#
 	update-initramfs -c -k "$2"-ylmfos
 	update-grub
 }       
@@ -12,3 +11,10 @@ post_remove() {
 	update-grub
 }
 
+post_upgrade() {
+	post_install $1 $2
+}
+
+post_downgrade() {
+	post_install $1 $2
+}

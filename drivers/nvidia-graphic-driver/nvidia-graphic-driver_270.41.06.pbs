@@ -79,7 +79,7 @@ pbs_install() {
 	
 	#
 	ln -sf libGL.so."$V" libGL.so.1
-	ln libGL.so.1        libGL.so
+	ln -sf libGL.so.1    libGL.so
 
 	ln -sf libnvidia-cfg.so."$V" libnvidia-cfg.so.1
 	ln -sf libnvidia-cfg.so.1    libnvidia-cfg.so

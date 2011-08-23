@@ -2,17 +2,15 @@
 # YLmf_OS package build script
 #
 
-DESCRIPTION="The GDK Pixel Buffer package is the GTK+ pixel buffer library."
-HOMEPAGE="http://www.gnome.org"
+DESCRIPTION="Standard tool to compile source trees"
+HOMEPAGE="http://www.gnu.org/software/make/make.html"
 LICENSE="GPL-2"
 PACKAGER="<ylmfos@115.com>"
-REPO="testing"
 
-SRC_URI="http://ftp.gnome.org/pub/GNOME/sources/"$N"/2.21/"$N-$V$R".tar.bz2"
+SRC_URI="http://ftp.gnu.org/pub/gnu/"$N"/"$N-$V$R".tar.bz2"
 
 RDEPEND=""
 BDEPEND=""
-RECOMMENDED=""
 
 INSTALL="$N.install"
 
@@ -21,7 +19,6 @@ pbs_unpack() {
 }
 
 pbs_config() {
-	YPB_CONFIG+=""
 	ypkg_config
 }
 
@@ -32,3 +29,4 @@ pbs_build() {
 pbs_install() {
 	ypkg_mkinstall
 }
+

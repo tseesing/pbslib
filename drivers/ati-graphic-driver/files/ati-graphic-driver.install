@@ -73,7 +73,7 @@ EOF
 	gnome2_desktop_database_update
 
 	echo '* By using this package you accept the ATI license,'
-	echo '* which has been installed in /usr/share/doc/ati-graphic-driver/11.6/ATI_LICENSE.TXT'
+	echo '* which has been installed in /usr/share/doc/ati-graphic-driver/$2/LICENSE.TXT'
 	echo '* If you do not accept this license, you must remove the package immediately.'
 	echo 
 	echo '* You must reboot computer for the changes to take effect.'
