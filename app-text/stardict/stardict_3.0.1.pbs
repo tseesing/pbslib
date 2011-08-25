@@ -4,9 +4,9 @@
 
 DESCRIPTION="A GNOME2 international dictionary supporting fuzzy and glob style matching"
 HOMEPAGE="http://stardict.sourceforge.net/"
-REPO="testing"
 LICENSE="GPL-2"
-SRC_URI="http://downloads.sourceforge.net/$N/"$N-$V$R".tar.bz2"
+
+SRC_URI="http://downloads.sourceforge.net/"$N"/"$N-$V$R".tar.bz2"
 
 RDEPEND=""
 BDEPEND=""
@@ -22,20 +22,25 @@ pbs_unpack() {
 }
 
 pbs_config() {
-	
-	patch -p0 -i $FILES_PATH/files/"$N-$V$R"-configure.in-EST.diff
-	patch -p0 -i $FILES_PATH/files/"$N-$V$R"-gconf-m4.diff
-	patch -p0 -i $FILES_PATH/files/"$N-$V$R"-gcc43.patch
-	patch -p1 -i $FILES_PATH/files/"$N-$V$R"-transparent_trayicon.patch
-	patch -p1 -i $FILES_PATH/files/"$N-$V$R"-changelog-minor-typo-fixes.patch
-	patch -p0 -i $FILES_PATH/files/"$N-$V$R"-gcc44.patch
-	patch -p0 -i $FILES_PATH/files/"$N-$V$R"-gucharmap2.patch
+	patches=" "$N-$V$R"-configure.in-EST.diff 
+		  "$N-$V$R"-gconf-m4.diff 
+		  "$N-$V$R"-gcc43.patch  
+		  "$N-$V$R"-transparent_trayicon.patch  
+		  "$N-$V$R"-changelog-minor-typo-fixes.patch 
+		  "$N-$V$R"-gcc44.patch 
+		  "$N-$V$R"-gucharmap2.patch "
+	ypkg_patch $patches
 	AT_M4DIR="m4" ./autogen.sh
 	export PKG_CONFIG=/usr/bin/pkg-config
-	YPB_CONFIG+="--prefix=/usr --mandir=/usr/share/man --infodir=/usr/share/info 
-	             --datadir=/usr/share --sysconfdir=/etc --localstatedir=/var
-	             --disable-gnome-support --enable-spell --disable-gucharmap --disable-espeak 
-		     --disable-qqwry --disable-festival --disable-advertisement --disable-updateinfo"
+	YPB_CONFIG+="--datadir=/usr/share
+	             --disable-gnome-support 
+		     --enable-spell
+		     --disable-gucharmap 
+		     --disable-espeak 
+		     --disable-qqwry 
+		     --disable-festival 
+		     --disable-advertisement 
+		     --disable-updateinfo"
 	ypkg_config
 }
 
@@ -45,7 +50,6 @@ pbs_build() {
 
 pbs_install() {
 	ypkg_mkinstall
-	#
-	install -m755 -d "$YPPATH_DEST"/usr/share/doc/"$N-$V$R"
-	cp -a doc/{FAQ,HowToCreateDictionary,StarDictFileFormat,Translation,HACKING} "$YPPATH_DEST"/usr/share/doc/"$N-$V$R"
+	ypkg_dodoc doc/{FAQ,HowToCreateDictionary,StarDictFileFormat,Translation,HACKING}
 }
+

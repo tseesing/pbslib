@@ -1,0 +1,34 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="An open-source cross platform audio API."
+HOMEPAGE="http://www.portaudio.com"
+LICENSE="custom"
+PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
+
+SRC_URI="http://www.portaudio.com/archives/pa_stable_v19_20110326.tgz"
+
+RDEPEND="alsa-lib glibc jack-audio-connection-kit"
+BDEPEND=""
+RECOMMENDED=""
+CONFLICT=""
+
+pbs_unpack() {
+        ypkg_unpack
+}
+
+pbs_config() {
+	YPB_CONFIG+=""
+	ypkg_config
+}
+
+pbs_build() {
+	ypkg_make
+}
+
+pbs_install() {
+	ypkg_mkinstall
+	ypkg_dodoc LICENSE.txt
+}
+

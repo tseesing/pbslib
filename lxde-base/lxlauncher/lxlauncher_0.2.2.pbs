@@ -1,0 +1,36 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="An open source clone of the Asus launcher for EeePC"
+HOMEPAGE="http://sourceforge.net/projects/lxde/files/"
+REPO=""
+LICENSE="GPL"
+PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
+
+SRC_URI="http://ncu.dl.sourceforge.net/project/lxde/LXLauncher%20%28for%20Asus%20EeePC%29/LXLauncher%200.2.2/"$N-$V$R".tar.gz"
+
+RDEPEND="atk cairo expat fontconfig freetype gcc glib2 glibc gtk+ libICE libpng libSM libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libXrandr libXrender menu-cache pango pixman startup-notification util-linux-ng zlib"
+BDEPEND=""
+RECOMMENDED=""
+CONFLICT=""
+
+INSTLL="$N.install"
+
+pbs_unpack() {
+        ypkg_unpack
+}
+
+pbs_config() {
+	YPB_CONFIG+=""
+	ypkg_config
+}
+
+pbs_build() {
+	ypkg_make
+}
+
+pbs_install() {
+	ypkg_mkinstall
+}
+

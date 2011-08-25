@@ -1,0 +1,35 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="lxappearance obconf"
+HOMEPAGE="http://sourceforge.net/projects/lxde/files/"
+REPO=""
+LICENSE="GPL"
+PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
+
+SRC_URI="http://ncu.dl.sourceforge.net/project/lxde/LXAppearance%20Obconf/"$N-$V$R".tar.gz"
+
+RDEPEND="atk cairo expat fontconfig freetype gcc glib2 glibc gtk+ libICE libpng libSM libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXft libXi libxml2 libXrandr libXrender pango pixman util-linux-ng zlib"
+BDEPEND=""
+RECOMMENDED=""
+CONFLICT=""
+
+pbs_unpack() {
+        ypkg_unpack
+}
+
+pbs_config() {
+	YPB_CONFIG+=""
+	ypkg_config
+}
+
+pbs_build() {
+	ypkg_make
+}
+
+pbs_install() {
+	ypkg_mkinstall
+}
+
+

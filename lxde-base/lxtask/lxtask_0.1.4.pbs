@@ -1,0 +1,31 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="simple task manager for LXDE"
+HOMEPAGE="www.lxde.org"
+LICENSE="GPL-2"
+PACKAGER="<ylmfos@115.com>"
+
+SRC_URI="http://ncu.dl.sourceforge.net/project/lxde/LXTask%20%28task%20manager%29/LXTask%200.1.4/"$N-$V$R".tar.gz"
+
+RDEPEND="atk cairo expat fontconfig freetype gcc glib2 glibc gtk+ libpng libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libXrandr libXrender pango pixman zlib"
+BDEPEND=""
+
+INSTALL="$N.install"
+
+pbs_unpack() {
+	ypkg_unpack
+}
+
+pbs_config() {
+	ypkg_config
+}
+
+pbs_build() {
+	ypkg_make
+}
+
+pbs_install() {
+	ypkg_mkinstall
+}

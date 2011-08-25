@@ -1,0 +1,27 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="A fully functional X client library for Python, written in Python"
+HOMEPAGE="http://python-xlib.sourceforge.net/"
+LICENSE="GPL-2"
+PACKAGER="<ylmfos@115.com>"
+
+SRC_URI="http://downloads.sourceforge.net/project/"$N"/"$N"/"$Vrc1"/"$N-$V"rc1.tar.bz2 "
+
+RDEPEND=""
+BDEPEND="python"
+RECOMMENDED=""
+
+pbs_unpack() {
+        ypkg_unpack
+}
+
+pbs_build() {
+	python setup.py build
+}
+
+pbs_install() {
+	python setup.py install --prefix=/usr --root="$YPPATH_DEST"
+	ypkg_dodoc COPYING NEWS README
+}

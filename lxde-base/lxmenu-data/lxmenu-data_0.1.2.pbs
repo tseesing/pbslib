@@ -1,0 +1,29 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="Freedesktop.org menu-spec-compliant desktop menus for LXDE.."
+HOMEPAGE="www.lxde.org"
+LICENSE="GPL-2"
+PACKAGER="<ylmfos@115.com>"
+
+SRC_URI="http://ncu.dl.sourceforge.net/project/lxde/lxmenu-data%20%28desktop%20menu%29/lxmenu-data%200.1.2/"$N-$V$R".tar.gz"
+
+RDEPEND=""
+BDEPEND=""
+
+pbs_unpack() {
+	ypkg_unpack
+}
+
+pbs_config() {
+	ypkg_config
+}
+
+pbs_build() {
+	ypkg_make
+}
+
+pbs_install() {
+	ypkg_mkinstall
+}

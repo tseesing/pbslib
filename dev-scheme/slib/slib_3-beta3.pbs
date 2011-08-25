@@ -4,37 +4,43 @@
 
 DESCRIPTION="SLIB is a portable library for the programming language Scheme."
 HOMEPAGE="http://people.csail.mit.edu/jaffer/SLIB"
-REPO=""
-LICENSE="http://people.csail.mit.edu/jaffer/SLIB_COPYING.txt"
+LICENSE="custom"
 PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 
 SRC_URI="http://groups.csail.mit.edu/mac/ftpdir/scm/slib-3b3.zip"
 
-RDEPEND=""
+RDEPEND="guile texinfo"
 BDEPEND=""
 RECOMMENDED=""
 CONFLICT=""
 
-NOTES=""
+INSTALL="$N.install"
 
 pbs_unpack() {
         ypkg_unpack
 }
 
-pbs_config() {
-	YPB_CONFIG=" --prefix=/usr
-		     --sysconfdir=/etc
-		     --localstatedir=/var
-	             --infodir=/usr/share/info
-		     --mandir=/usr/share/man"
-	ypkg_config
-}
-
-pbs_build() {
-	ypkg_make
-}
-
 pbs_install() {
-	ypkg_mkinstall
+	 sed -r -i "s,/usr/(local/)?lib/slib,/usr/share/slib,g" *.init
+	 ypkg_docp *.scm *.init *.xyz *.txt *.dat *.ps "${YPPATH_DEST}/usr/share/slib/"
+	 ypkg_docp slib.info "${YPPATH_DEST}/usr/share/info/"
+
+         install -m755 -d "${YPPATH_DEST}/usr/bin"
+	 cat << _EOF > "${YPPATH_DEST}/usr/bin/slib"
+#!/bin/sh
+SCHEME_LIBRARY_PATH=/usr/share/slib/
+export SCHEME_LIBRARY_PATH
+VERSION=${V}
+S48_VICINITY="/usr/share/scheme48/"
+export S48_VICINITY
+_EOF
+
+cat slib.sh >> "${YPPATH_DEST}/usr/bin/slib"
+chmod 755 "${YPPATH_DEST}/usr/bin/slib"
+
+ypkg_doman slib.1
+ypkg_dodoc COPYING
+
+ypkg_doln /usr/share/slib "${YPPATH_DEST}/usr/share/guile/site/slib"
 }
 

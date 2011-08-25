@@ -1,0 +1,46 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="TCP/IP swiss army knife. OpenBSD variant."
+HOMEPAGE="http://packages.debian.org/sid/netcat-openbsd"
+REPO=""
+LICENSE="bsd"
+PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
+
+SRC_URI="http://ftp.debian.org/debian/pool/main/n/netcat-openbsd/netcat-openbsd_1.89.orig.tar.gz
+         http://ftp.debian.org/debian/pool/main/n/netcat-openbsd/netcat-openbsd_1.89-4.diff.gz"
+
+RDEPEND="glib2 glibc"
+BDEPEND=""
+RECOMMENDED=""
+CONFLICT=""
+
+pbs_unpack() {
+        ypkg_unpack
+
+}
+
+pbs_config() {
+	cp "$YPPATH_SOURCE"/netcat-openbsd_1.89-4.diff.gz .
+	gunzip netcat-openbsd_1.89-4.diff.gz
+	ypkg_patch netcat-openbsd_1.89-4.diff
+	
+	cat debian/patches/series|while read i; do
+		ypkg_patch debian/patches/"$i"
+	done
+
+	YPB_CONFIG+=""
+	ypkg_config
+}
+
+pbs_build() {
+	pkgrel=4
+	make CFLAGS="$CFLAGS -DDEBIAN_VERSION=\"\\\"${pkgrel}\\\"\""
+}
+
+pbs_install() {
+	ypkg_docp_rename nc "$YPPATH_DEST"/usr/bin/nc.openbsd
+	chmod +x "$YPPATH_DEST"/usr/bin/nc.openbsd
+	ypkg_doman nc.1
+}
