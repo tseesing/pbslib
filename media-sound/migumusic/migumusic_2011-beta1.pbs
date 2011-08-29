@@ -4,9 +4,7 @@
 
 DESCRIPTION="An online music client from chinamobile"
 HOMEPAGE="http://music.10086.cn/"
-REPO="testing"
-LICENSE=""
-PRIORITY=""
+LICENSE="custom"
 PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 
 SRC_URI="migumusic-2011-beta1.tar.bz2"
@@ -16,12 +14,12 @@ BDEPEND=" "
 RECOMMENDED=""
 CONFLICT=""
 
-NOTES=""
-
 pbs_unpack() {
         ypkg_unpack
 }
 
 pbs_install() {
 	ypkg_docp * "$YPPATH_DEST"
+	ypkg_docp "$FILES_PATH"/files/migumusic "$YPPATH_DEST"/usr/bin/
+	chmod +x "$YPPATH_DEST"/usr/bin/migumusic
 }

@@ -1,0 +1,98 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="NVIDIA binary Xorg driver, kernel module and VDPAU library"
+HOMEPAGE="http://www.nvidia.com/object/citizenship-report-home.html"
+LICENSE=""
+PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
+
+REPO="testing"
+
+SRC_URI="http://us.download.nvidia.com/XFree86/Linux-x86/96.43.19/NVIDIA-Linux-x86-"$V$R"-pkg1.run"
+
+RDEPEND="glibc"
+BDEPEND="make prelink"
+RECOMMENDED="glibc-dev gcc-dev make linux-kernel-headers"
+CONFLICT=""
+
+INSTALL="$N.install"
+
+DESKTOPFILE="nvidia-settings.desktop"
+
+pbs_install() {
+	# Extract-only
+	rm -r NVIDIA-Linux-x86-"$V$R"-pkg1 2>/dev/null
+	bash "$YPPATH_SOURCE"/NVIDIA-Linux-x86-"$V$R"-pkg1.run --extract-only
+	cd NVIDIA-Linux-x86-"$V$R"-pkg1
+	
+	# License 
+	ypkg_dodoc LICENSE
+
+	# Headers
+	ypkg_domv usr/include/{cuda,GL} usr/include/nvidia-graphic-driver
+
+	# Kernel source
+	# Get around Xen checks
+	cp usr/src/nv/nv.c usr/src/nv/nv1.c
+	cp usr/src/nv/nv-linux.h usr/src/nv/nv-linux1.h
+	sed 's/CONFIG_XEN/CONFIG_ALB/g' usr/src/nv/nv1.c >usr/src/nv/nv.c
+	sed 's/CONFIG_XEN/CONFIG_ALB/g' usr/src/nv/nv-linux1.h >usr/src/nv/nv-linux.h
+	rm usr/src/nv/nv1.c
+	rm usr/src/nv/nv-linux1.h
+	cp usr/src/nv/Makefile.kbuild usr/src/nv/Makefile
+	ypkg_domv_rename usr/src/nv usr/src/"${N}_$V$R"
+
+	# Xorg base-directory is /usr/lib/xorg
+	mv usr/X11R6/lib/libXvMCNVIDIA.* usr/lib/
+	ypkg_domv usr/X11R6/lib/modules usr/lib/xorg
+	rm -r usr/X11R6/
+
+	#
+	# Disable the stack markings of binaries for security reasons.
+	# See (LP: #409456)
+	find usr -name *.so* | xargs -n1 execstack -c
+
+	# XvMCConfig
+	echo "libXvMCNVIDIA_dynamic.so.1" >usr/lib/XvMCConfig
+
+	#
+	sed -i 's/__UTILS_PATH__/\/usr\/bin/g' usr/share/applications/nvidia-settings.desktop
+	sed -i 's/__PIXMAP_PATH__\///g'        usr/share/applications/nvidia-settings.desktop
+
+	# Link
+	cd usr/lib/
+	ln -sf libcuda.so.173.14.30 libcuda.so.1
+	ln -sf libcuda.so.1 libcuda.so
+
+	ln -sf libGLcore.so.173.14.30 libGLcore.so.1
+	ln -sf libGLcore.so.1 libGLcore.so
+
+	ln -sf libGL.so.173.14.30 libGL.so.1
+	ln -sf libGL.so.1 libGL.so
+
+	ln -sf libnvidia-cfg.so.173.14.30 libnvidia-cfg.so.1
+	ln -sf libnvidia-cfg.so.1 libnvidia-cfg.so
+
+	ln -sf libnvidia-tls.so.173.14.30 libnvidia-tls.so.1
+	ln -sf libnvidia-tls.so.1 libnvidia-tls.so
+
+	ln -sf libXvMCNVIDIA.so.173.14.30 libXvMCNVIDIA.so.1
+	ln -sf libXvMCNVIDIA.so.1 libXvMCNVIDIA.so
+	cd - >/dev/null
+
+	cd usr/lib/xorg/modules/
+	ln -sf libnvidia-wfb.so.173.14.30 libnvidia-wfb.so.1
+	cd - >/dev/null
+
+	cd usr/lib/xorg/modules/extensions
+	ln -sf libglx.so.173.14.30 libglx.so
+	cd - >/dev/null
+
+	#
+	ypkg_docp usr "$YPPATH_DEST"/
+
+	#
+	ypkg_dosupported "${N}"_supported
+}
+

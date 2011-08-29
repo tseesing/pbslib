@@ -22,10 +22,6 @@ NOTES=""
 
 DESKTOPFILE="nvidia-settings.desktop"
 
-pbs_unpack() {
-        ypkg_unpack
-}
-
 pbs_install() {
 	# Extract-only
 	bash "$YPPATH_SOURCE"/NVIDIA-Linux-x86-"$V$R".run --extract-only

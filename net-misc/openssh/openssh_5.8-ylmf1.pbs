@@ -10,7 +10,7 @@ PACKAGER="<ylmfos@115.com>"
 SRC_URI="http://ftp.openbsd.org/pub/OpenBSD/OpenSSH/portable/"$N-$V"p1.tar.gz"
 
 RDEPEND="openssl glibc zlib"
-BDEPEND="  "
+BDEPEND=""
 
 INSTALL="$N.install"
 
@@ -40,3 +40,4 @@ pbs_install() {
 	mkdir -p etc/ssh/
 	ypkg_docp "$FILES_PATH"/files/systemd/*  lib/systemd/system/
 }
+

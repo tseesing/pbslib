@@ -5,23 +5,22 @@ post_install() {
 	gnome2_icon_cache_update
 	#
 	systemctl enable ycenter.service
-	#start ycenter
-	
+	start ycenter
 	return 0
-}
-
-pre_remove() {
-	#stop ycenter
-	systemctl disable ycenter.service
 }
 
 post_upgrade() {
 	systemctl --system daemon-reload	
-	#restart ycenter
+	restart ycenter
+	return 0
 }
 
 post_downgrade() {
 	post_upgrade
+}
+
+pre_remove() {
+	systemctl disable ycenter.service
 }
 
 post_remove() {

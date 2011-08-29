@@ -1,0 +1,39 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="Fully customisable dock-like window navigator."
+HOMEPAGE="https://launchpad.net/awn"
+REPO=""
+LICENSE="GPL"
+PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
+
+SRC_URI="http://launchpadlibrarian.net/43821484/"$N-$V$R".tar.gz"
+
+RDEPEND="atk cairo dbus dbus-glib expat fontconfig freetype gcc glib2 glibc gtk+ libdesktop-agnostic libgtop libICE libpng libSM libwnck libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libXrandr libXrender libXres pango pixman python startup-notification util-linux-ng zlib"
+BDEPEND=""
+RECOMMENDED=""
+CONFLICT=""
+
+INSTALL="$N.install"
+
+NOTES=""
+
+pbs_unpack() {
+        ypkg_unpack
+}
+
+pbs_config() {
+	ypkg_patch awn-applet-simple.patch
+	YPB_CONFIG+=""
+	ypkg_config
+}
+
+pbs_build() {
+	ypkg_make
+}
+
+pbs_install() {
+	ypkg_mkinstall
+}
+

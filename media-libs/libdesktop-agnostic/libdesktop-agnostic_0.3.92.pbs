@@ -1,0 +1,41 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="Provides an extensible config API, a unified virtual fs API, and a desktop item editor for GLib-based projects."
+HOMEPAGE="https://launchpad.net/libdesktop-agnostic"
+REPO=""
+LICENSE="GPL/LGPL"
+PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
+
+SRC_URI="http://launchpadlibrarian.net/66283962/"$N-$V$R".tar.gz"
+
+RDEPEND="atk cairo dbus dbus-glib expat fontconfig freetype gcc gconf glib2 glibc gtk+ libpng libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libXrandr libXrender orbit pango pixman python zlib"
+BDEPEND=""
+RECOMMENDED=""
+CONFLICT=""
+
+pbs_unpack() {
+        ypkg_unpack
+}
+
+pbs_config() {
+	# Force source regeneration
+	rm -r gen_src
+	YPB_CONFIG="--config-backends=gconf,keyfile 
+	            --vfs-backends=gio
+	            --desktop-entry-backends=gio,glib 
+		    --prefix=/usr 
+		    --sysconfdir=/etc"
+	ypkg_config
+}
+
+pbs_build() {
+	ypkg_make
+}
+
+pbs_install() {
+	ypkg_mkinstall
+}
+
+

@@ -1,0 +1,45 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="Tool Command Language"
+HOMEPAGE="http://www.tcl.tk/"
+LICENSE="GPL-2"
+PACKAGER="<ylmfos@115.com>"
+ 
+SRC_URI="http://downloads.sourceforge.net/"$N"/"$N$V$R"-src.tar.gz"
+
+RDEPEND=""
+BDEPEND=""
+
+pbs_unpack() {
+        ypkg_unpack
+}
+
+pbs_config() {
+	cd unix
+	YPB_CONFIG+="--enable-threads --disable-64bit"  
+	ypkg_config
+}
+
+pbs_build() {
+	ypkg_make
+}
+
+pbs_install() {
+	make INSTALL_ROOT="$YPPATH_DEST" install install-private-headers
+	ypkg_dodoc ../license.terms
+	cd "$YPPATH_DEST"
+	ypkg_doln /usr/bin/tclsh8.5 usr/bin/tclsh 
+	# remove buildroot traces
+	sed -i \
+	    -e "s,^TCL_BUILD_LIB_SPEC='-L.*/unix,TCL_BUILD_LIB_SPEC='-L/usr/lib," \
+	    -e "s,^TCL_SRC_DIR='.*',TCL_SRC_DIR='/usr/include'," \
+	    -e "s,^TCL_BUILD_STUB_LIB_SPEC='-L.*/unix,TCL_BUILD_STUB_LIB_SPEC='-L/usr/lib," \
+	    -e "s,^TCL_BUILD_STUB_LIB_PATH='.*/unix,TCL_BUILD_STUB_LIB_PATH='/usr/lib," \
+	    -e "s,^TCL_LIB_FILE='libtcl8.5..TCL_DBGX..so',TCL_LIB_FILE=\"libtcl8.5\$\{TCL_DBGX\}.so\"," \
+	    -e "s,^TCL_CC_SEARCH_FLAGS='\(.*\)',TCL_CC_SEARCH_FLAGS='\1:/usr/lib'," \
+	    -e "s,^TCL_LD_SEARCH_FLAGS='\(.*\)',TCL_LD_SEARCH_FLAGS='\1:/usr/lib'," \
+			usr/lib/tclConfig.sh
+}
+
