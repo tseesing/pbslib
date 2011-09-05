@@ -7,16 +7,13 @@ HOMEPAGE="http://code.google.com/p/cryptsetup/"
 LICENSE="GPL-2"
 PACKAGER="<ylmfos@115.com>"
 
-REPO="testing"
 SRC_URI="http://cryptsetup.googlecode.com/files/"$N-$V$R".tar.bz2"
 
 RDEPEND="device-mapper glibc libgcrypt libgpg-error popt util-linux-ng"
-BDEPEND="     "
+BDEPEND=""
 RECOMMENDED=""
 
 INSTALL="$N.install"
-
-NOTES=""
 
 pbs_unpack() {
         ypkg_unpack

@@ -1,0 +1,29 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="PPStream for Linux"
+HOMEPAGE="http://www.pps.tv/"
+LICENSE="custom"
+PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
+
+SRC_URI="http://download.ppstream.com/linux/PPStream.deb"
+
+RDEPEND="qt-core expat fontconfig freetype fuse gcc glib2 glibc libdrm libICE libpng libSM libX11 libXau libxcb libXdmcp libXext libXrender mesa udev util-linux-ng zlib"
+BDEPEND=" "
+RECOMMENDED=""
+CONFLICT=""
+
+pbs_unpack() {
+        ypkg_unpack
+}
+
+pbs_install() {
+	ypkg_patch desktop.patch
+	ypkg_docp data/*  "$YPPATH_DEST"
+	ypkg_docp "$FILES_PATH"/files/PPStream   "$YPPATH_DEST"/usr/bin/
+	cd "$YPPATH_DEST"
+	chmod +x usr/bin/PPStream
+	ypkg_doln /usr/bin/PPStream usr/bin/pps
+}
+

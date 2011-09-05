@@ -7,7 +7,6 @@ HOMEPAGE="http://gcc.gnu.org/"
 LICENSE=""
 PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 
-REPO="testing"
 SRC_URI="http://ftp.gnu.org/gnu/"$N"/"$N-$V$R"/"$N-$V$R".tar.bz2"
 
 RDEPEND="glibc gmp mpfr"

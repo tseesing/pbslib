@@ -8,6 +8,9 @@ DESCRIPTION=""
 # Homepage, not used by Portage directly but handy for developer reference
 HOMEPAGE=""
 
+# 
+#YARCH="any"
+
 # Repository, testing or stable, default is stable.
 REPO=""
 
@@ -43,7 +46,7 @@ OPTIONAL="a: support a
           b: support b"
 
 #do not spilte dev files
-#OPINION="nodev"
+#OPINION="nodev nostrip"
 
 
 #

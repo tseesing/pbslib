@@ -1,0 +1,29 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="themes for smplayer"
+HOMEPAGE="http://smplayer.berlios.de/"
+LICENSE="GPL-2"
+PACKAGER="<ylmfos@115.com>"
+
+REPO="testing"
+SRC_URI="http://download.berlios.de/smplayer/"$N-$V$R".tar.bz2"
+
+RDEPEND="smplayer"
+BDEPEND=""
+RECOMMENDED=""
+
+pbs_unpack() {
+        ypkg_unpack
+}
+
+pbs_build() {
+	ypkg_make PREFIX=/usr
+}
+
+pbs_install() {
+	ypkg_mkinstall PREFIX=/usr
+}
+
+

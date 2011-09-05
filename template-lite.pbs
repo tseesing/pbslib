@@ -4,24 +4,27 @@
 
 DESCRIPTION=""
 HOMEPAGE=""
-REPO=""
 LICENSE="GPL"
 #PRIORITY="required"
 PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 
+REPO=""
 SRC_URI=""
 
 RDEPEND=""
-BDEPEND=""
 RECOMMENDED=""
+BDEPEND=""
+OPTIONAL="a: support a 
+          b: support b"
 CONFLICT=""
+#OPINION="nodev nostrip"
 
 INSTALL="$N.install"
 
-NOTES=""
-
 #DESKTOPFILE="glchess.desktop" or "/opt/test/test.desktop"
 #ICONFILE="test.png"   or "/opt/test/test.png"
+
+#PROVIDE="foo"
 
 pbs_unpack() {
 	#unpard file from $YPPATH_SOURCE to current directory.
@@ -29,10 +32,6 @@ pbs_unpack() {
 }
 
 pbs_config() {
-	#ypkg_patch $FILES_PATH/files/patches/*.patch 
-	#XX.patch should be found under $FILES_PATH/files or $FILES_PATH/files/patches/
-	#second, add package specified config params to YPB_CONFIG
-	#default is :
 	#YPB_CONFIG+=" --prefix=/usr
 	#	      --sysconfdir=/etc
 	#	      --localstatedir=/var
@@ -41,26 +40,18 @@ pbs_config() {
 	#              --disable-static
 	#	      --enable-shared "
 	YPB_CONFIG+=""
-	#Third, call configure with $YPB_CONFIG
-	#./configure $YPB_CONFIG
 	ypkg_config
 }
 
 pbs_build() {
-	#make "$MAKEOPTS"
 	ypkg_make
 }
 
-#pbs_check() {
-#	make check
-#}
-
 pbs_install() {
-	#install everything to $YPPATH_DEST
 	#make DESTDIR="$YPPATH_DEST" install
 	ypkg_mkinstall
 	#ypkg_doinit "$N"
-	#ypkg_doinit "N".service
+	#ypkg_dounit "N".service
 	#ypkg_dodesktop "*.desktop" "*.png"
 	#ypkg_dodoc AUTHORS ChangeLog COPYING INSTALL NEWS README 
 	#ypkg_docp "$FILES_PATH/files/XXXX" "dirname"
@@ -73,3 +64,10 @@ pbs_install() {
 	#when SRC_URI is deb or rpm package
 	#ypkg_docp data/*  "$YPPATH_DEST"
 }
+
+#split package
+foo_install () {
+	:
+}
+
+

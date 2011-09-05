@@ -55,7 +55,6 @@ pbs_install() {
 libpurple_install() {
 	DESCRIPTION="IM library extracted from Pidgin"
 	RDEPEND="farsight2 dbus-glib gnutls"
-	REPO="testing"
         for dir in libpurple share/sounds share/ca-certs m4macros po; do
 		ypkg_mkinstall -C "${dir}"
 	done
@@ -65,7 +64,6 @@ libpurple_install() {
 finch_install() {
 	DESCRIPTION="A ncurses-based messaging client"
 	RDEPEND="libpurple python gstreamer"
-	REPO="testing"
 	#for linking
 	make -C libpurple DESTDIR="$YPPATH_DEST" install-libLTLIBRARIES
 	ypkg_mkinstall -C finch

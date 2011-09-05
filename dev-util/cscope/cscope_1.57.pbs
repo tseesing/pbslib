@@ -1,0 +1,40 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="Interactively examine a C program"
+HOMEPAGE="http://cscope.sourceforge.net/"
+REPO=""
+LICENSE="BSD"
+PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
+
+SRC_URI="http://nchc.dl.sourceforge.net/project/cscope/cscope/15.7a/cscope-15.7a.tar.bz2"
+
+RDEPEND="glibc ncurses"
+BDEPEND=""
+RECOMMENDED=""
+CONFLICT=""
+
+pbs_unpack() {
+        ypkg_unpack
+}
+
+pbs_config() {
+	sed -i 's|/usr/local/lib/cs|/usr/lib/cs|' contrib/ocs
+	YPB_CONFIG+=""
+	ypkg_config
+}
+
+pbs_build() {
+	ypkg_make
+}
+
+pbs_install() {
+	ypkg_mkinstall
+	ypkg_dodoc AUTHORS COPYING README
+	install -d "${YPPATH_DEST}/usr/lib/cs"
+	cd contrib/xcscope
+	ypkg_docp xcscope.el ${YPPATH_DEST}/usr/share/emacs/site-lisp/
+	install -m755 cscope-indexer $YPPATH_DEST/usr/bin
+}
+
