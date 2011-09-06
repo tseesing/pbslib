@@ -12,15 +12,12 @@ EOF
 		cat >/etc/ybs.conf <<"EOF"
 CC=gcc
 CXX=g++
-#CFLAGS="-march=native -mtune=native -O2 -fomit-frame-pointer -pipe"
-CFLAGS="-march=i686 -mtune=i686 -O2 -pipe"
-CXXFLAGS="$CFLAGS"
 MAKEOPTS="-j6"
 #YPINST_PREFIX="--prefix=/usr"
 YPINST_PREFIX=
 ACCEPT_REPO="stable"
 #YP_I18N="en zh_CN"
-#YPPATH_DIST_URI="http://pkg.ylmf.com/sources"
+YPPATH_DIST_URI="http://pkg.ylmf.com/sources"
 AUTO_INSTALL="yes"
 YPPATH_PACKAGE="/var/ypkg/packages"
 EOF
@@ -38,3 +35,4 @@ post_downgrade() {
 post_remove() {
 	rm -r /etc/yget.conf /etc/ybs.conf
 }
+

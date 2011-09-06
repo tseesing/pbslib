@@ -14,6 +14,7 @@ SRC_URI="git://git.ylmf.com/"$N".git"
 
 RDEPEND="gawk cpio xz-utils sed coreutils git findutils procps psmisc bash bc glibc"
 BDEPEND=""
+RECOMMENDED="ypkg2"
 
 pbs_unpack() {
 	ypkg_unpack

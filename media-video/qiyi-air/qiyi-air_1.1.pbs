@@ -1,0 +1,21 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="qiyi client (AIR)"
+HOMEPAGE="www.qiyi.com"
+LICENSE="custom"
+PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
+
+SRC_URI="http://static.qiyi.com/ext/common/xplayerForAir.air"
+
+RDEPEND="adobe-air-sdk"
+BDEPEND=""
+RECOMMENDED=""
+CONFLICT=""
+
+pbs_install() {
+	ypkg_docp_rename "$YPPATH_SOURCE"/xplayerForAir.air "$YPPATH_DEST"/usr/lib/"$N"/qiyi.air
+	ypkg_dodesktop   "$N.desktop"      "$N.png"
+}
+

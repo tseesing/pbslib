@@ -4,9 +4,7 @@
 
 DESCRIPTION="A Graphical Temperature Monitor"
 HOMEPAGE="http://wpitchoune.net/blog/?page_id=109"
-REPO=""
 LICENSE="GPL"
-PRIORITY=""
 PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 
 SRC_URI="http://wpitchoune.net/psensor/files/"$N-$V$R"-src.tar.gz"
@@ -15,8 +13,6 @@ RDEPEND=""
 BDEPEND=" "
 RECOMMENDED=""
 CONFLICT=""
-
-NOTES=""
 
 pbs_unpack() {
         ypkg_unpack

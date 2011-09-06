@@ -19,6 +19,7 @@ pbs_unpack() {
 
 pbs_build() {
 	ypkg_docp_rename "$FILES_PATH"/files/config-initramfs .config
+	ypkg_patch ylmfos-makefile-"$V".patch
 	ypkg_make
 }
 
