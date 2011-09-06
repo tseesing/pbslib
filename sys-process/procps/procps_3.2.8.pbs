@@ -4,7 +4,9 @@
 
 DESCRIPTION="Standard informational utilities and process-handling tools"
 HOMEPAGE="http://procps.sourceforge.net/"
- 
+LICENSE="GPL LGPL"
+PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
+
 SRC_URI="http://procps.sourceforge.net/"$N-$V$R".tar.gz"
 
 RDEPEND="glibc ncurses"
@@ -15,13 +17,23 @@ pbs_unpack() {
 }
 
 pbs_config() {
+	# The following patch adds process control group support to ps
+	ypkg_patch procps-3.2.8-ps_cgroup-1.patch
+	
+	# The following fixes an issue with Make 3.82
+	sed -i -r '/^-include/s/\*(.*)/proc\1 ps\1/' Makefile
 	ypkg_config
 }
 
 pbs_build() {
-	ypkg_make
+	case $ARCH in 
+		i?86) ypkg_make ;;
+      	      x86_64) ypkg_make m64=""
+	esac
+
 }
 
 pbs_install() {
 	ypkg_mkinstall
 }
+

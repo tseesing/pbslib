@@ -4,7 +4,7 @@
 
 DESCRIPTION="Utility to apply diffs to files"
 HOMEPAGE="http://savannah.gnu.org/projects/patch"
-LICENSE=""
+LICENSE="GPL"
 PACKAGER="<ylmfos@115.com>"
 
 SRC_URI="ftp://ftp.gnu.org/gnu/"$N"/"$N-$V$R".tar.bz2"

@@ -4,8 +4,9 @@
 
 DESCRIPTION="ylmfos start menu"
 HOMEPAGE="www.ylmf.com"
-LICENSE=""
+LICENSE="GPL"
 PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
+YARCH="any"
 
 SRC_URI="git://git.ylmf.com/ymenu.git"
 
@@ -14,8 +15,6 @@ BDEPEND=""
 RECOMMENDED="psyco"
 
 INSTALL="$N.install"
-
-NOTES=""
 
 pbs_unpack() {
 	ypkg_unpack

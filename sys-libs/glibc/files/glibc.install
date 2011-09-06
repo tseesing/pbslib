@@ -1,5 +1,7 @@
 . /usr/lib/ybs/funcs
 
+files="libc.info-9.gz libc.info-8.gz libc.info-7.gz libc.info-6.gz libc.info-5.gz libc.info-4.gz libc.info-3.gz libc.info-2.gz libc.info-11.gz libc.info-10.gz libc.info-1.gz libc.info.gz"
+
 glib_adjust_toolchain() {
 	local file
 	#adjust tool chain.
@@ -72,7 +74,6 @@ post_install() {
 	localedef -i zh_CN -f GB2312 zh_CN.GB2312
 	localedef -i zh_CN -f UTF-8 zh_CN.UTF-8
 	glib_adjust_toolchain
-	files="libc.info-9.gz libc.info-8.gz libc.info-7.gz libc.info-6.gz libc.info-5.gz libc.info-4.gz libc.info-3.gz libc.info-2.gz libc.info-11.gz libc.info-10.gz libc.info-1.gz libc.info.gz"
 	ypkg_install_info $files
 }
 
@@ -84,6 +85,15 @@ pre_remove() {
 	for i in $(ls /usr/lib/libstdc++.* 2>/dev/null); do
 		[ -L $i ] && unlink $i
 	done
-	files="libc.info-9.gz libc.info-8.gz libc.info-7.gz libc.info-6.gz libc.info-5.gz libc.info-4.gz libc.info-3.gz libc.info-2.gz libc.info-11.gz libc.info-10.gz libc.info-1.gz libc.info.gz"
 	ypkg_remove_info $files
 }
+
+post_upgrade () {
+       ypkg_install_info $files
+}
+
+post_downgrade() {
+       post_upgrade
+}
+
+

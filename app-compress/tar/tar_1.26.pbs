@@ -1,0 +1,39 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="tarball tools"
+HOMEPAGE="http://www.gnu.org/software/tar/"
+LICENSE="GPLv3"
+PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
+
+SRC_URI="http://ftp.gnu.org/gnu/tar/"$N-$V$R".tar.bz2"
+
+RDEPEND="glibc"
+BDEPEND=""
+
+INSTALL="$N.install"
+
+pbs_unpack() {
+        ypkg_unpack
+}
+
+pbs_config() {
+	# Adds a man page for tar
+	ypkg_patch tar-1.26-man-1.patch
+	
+	# Run configure as root is not recommended, bypass this check. 
+	export FORCE_UNSAFE_CONFIGURE=1
+
+	YPB_CONFIG+=" --bindir=/bin --libexecdir=/usr/sbin "
+	ypkg_config
+}
+
+pbs_build() {
+	ypkg_make
+}
+
+pbs_install() {
+	ypkg_mkinstall
+}
+

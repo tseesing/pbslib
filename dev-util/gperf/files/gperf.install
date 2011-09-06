@@ -1,5 +1,6 @@
 . /usr/lib/ybs/funcs
 
+
 post_install() {
         ypkg_install_info gperf.info.gz 
 }       
@@ -7,3 +8,12 @@ post_install() {
 pre_remove() {
         ypkg_remove_info gperf.info.gz
 }
+
+post_upgrade() {
+       post_install
+}
+
+post_downgrade() {
+       post_install
+}
+

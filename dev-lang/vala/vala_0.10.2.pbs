@@ -14,8 +14,6 @@ RDEPEND=""
 BDEPEND=" "
 RECOMMENDED=""
 
-NOTES=""
-
 pbs_unpack() {
         ypkg_unpack
 }
@@ -35,3 +33,4 @@ pbs_install() {
 	ypkg_doln /usr/bin/valac-0.10             usr/bin/valac
 	ypkg_doln /usr/lib/pkgconfig/vala-0.10.pc usr/lib/pkgconfig/vala-1.0.pc
 }
+

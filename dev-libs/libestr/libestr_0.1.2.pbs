@@ -1,0 +1,32 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="Library for some string essentials"
+HOMEPAGE="http://libestr.adiscon.com/"
+LICENSE="GPL"
+PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
+
+SRC_URI="http://libestr.adiscon.com/files/download/"$N-$V$R".tar.gz"
+
+RDEPEND=""
+BDEPEND=""
+RECOMMENDED=""
+CONFLICT=""
+
+pbs_unpack() {
+        ypkg_unpack
+}
+
+pbs_config() {
+	ypkg_config
+}
+
+pbs_build() {
+	ypkg_make
+}
+
+pbs_install() {
+	ypkg_mkinstall
+}
+

@@ -3,7 +3,8 @@
 #
 
 DESCRIPTION="tools for generating an initramfs"
-HOMEPAGE=""
+HOMEPAGE="www.ylmf.net"
+YARCH="any"
 
 SRC_URI="git://git.ylmf.com/"$N".git"
 

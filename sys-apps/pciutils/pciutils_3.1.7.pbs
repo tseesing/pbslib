@@ -4,8 +4,10 @@
 
 DESCRIPTION="Various utilities dealing with the PCI bus"
 HOMEPAGE="http://atrey.karlin.mff.cuni.cz/~mj/pciutils.html"
- 
-SRC_URI="http://www.kernel.org/pub/software/utils/pciutils/$N-$V.tar.bz2"
+LICENSE="GPL"
+PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
+
+SRC_URI="http://www.kernel.org/pub/software/utils/pciutils/"$N-$V".tar.bz2"
 
 RDEPEND="which curl glibc"
 BDEPEND=""
@@ -15,10 +17,10 @@ pbs_unpack() {
 }
 
 pbs_build() {
-	ypkg_make PREFIX=/usr ZLIB=no
+        ypkg_make PREFIX=/usr LIBDIR=/usr/lib"$LIBDIRSUFFIX" ZLIB=no SHARED=yes
 }
 
 pbs_install() {
-	ypkg_mkinstall PREFIX=/usr 
-	ypkg_mkinstall PREFIX=/usr install-lib
+	ypkg_mkinstall PREFIX=/usr LIBDIR=/usr/lib"$LIBDIRSUFFIX" SHARED=yes install
+	ypkg_mkinstall PREFIX=/usr LIBDIR=/usr/lib"$LIBDIRSUFFIX" SHARED=yes install-lib
 }

@@ -4,11 +4,15 @@
 
 DESCRIPTION="library for multiple-precision floating-point computations with exact rounding"
 HOMEPAGE="http://www.mpfr.org"
- 
+LICENSE="LGPL" 
+PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
+
 SRC_URI="http://www.mpfr.org/"$N-$V$R"/"$N-$V$R".tar.bz2"
 
 RDEPEND="glibc gmp"
 BDEPEND=" "
+
+INSTALL="$N.install"
 
 pbs_unpack() {
         ypkg_unpack

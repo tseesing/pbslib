@@ -1,5 +1,7 @@
 . /usr/lib/ybs/funcs
 
+files="libgomp.info.gz gccint.info.gz gccinstall.info.gz gcc.info.gz cppinternals.info.gz cpp.info.gz"
+
 post_install() {
 	if [ -d /tools ];then
 		echo 'main(){}' > dummy.c
@@ -9,12 +11,19 @@ post_install() {
 	        grep -B1 '^ /usr/include' dummy.log
 	        rm dummy.c dummy.log a.out
 	fi
-	files="libgomp.info.gz gccint.info.gz gccinstall.info.gz gcc.info.gz cppinternals.info.gz cpp.info.gz"
 	ypkg_install_info $files
 }       
 
 post_remove() {
-	files="libgomp.info.gz gccint.info.gz gccinstall.info.gz gcc.info.gz cppinternals.info.gz cpp.info.gz"
 	ypkg_remove_info $files
 }
+
+post_upgrade() {
+       ypkg_install_info $files
+}
+
+post_downgrade() {
+       ypkg_install_info  $files
+}
+
 

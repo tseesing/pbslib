@@ -4,8 +4,7 @@
 
 DESCRIPTION="Vim, an improved vi-style text editor"
 HOMEPAGE="http://www.vim.org/"
-REPO=""
-LICENSE=""
+LICENSE="custom:vim"
 PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 
 SRC_URI="ftp://ftp.vim.org/pub/vim/unix/"$N-$V$R".tar.bz2" 
@@ -15,15 +14,24 @@ RDEPEND="acl atk attr cairo directfb expat fontconfig freetype gtk+ libICE pango
 	 libXdmcp libXext libXfixes libXi libxml2 libXrandr libXrender libXt"
 BDEPEND=""
 
+INSTALL="$N.install"
+
 pbs_unpack() {
         ypkg_unpack
 }
 
 pbs_config() {
+	# The following patch merges all updates from the 7.3 Branch from the Vim developers
+	ypkg_patch vim-7.3-branch_update-2.patch
+
 	echo '#define SYS_VIMRC_FILE "/etc/vimrc"' >> src/feature.h
-	YPB_CONFIG+="--enable-gui=gtk2 --enable-pythoninterp=yes 
-	             --enable-cscope --enable-multibyte --enable-xim 
-				 --with-features=huge --with-x"
+	YPB_CONFIG+="--enable-gui=gtk2
+	             --enable-pythoninterp=yes
+	             --enable-cscope
+	             --enable-multibyte
+	             --enable-xim
+	             --with-features=huge
+	             --with-x"
 	ypkg_config
 }
 
@@ -34,31 +42,9 @@ pbs_build() {
 pbs_install(){
 	ypkg_mkinstall
 	cd "$YPPATH_DEST"
-	#create vi
+	
+	# Create vi
 	ypkg_doln /usr/bin/vim usr/bin/vi
 	ypkg_doln /usr/share/vim/vim73/doc usr/share/doc/vim-7.3
-	#write vimrc
-	mkdir -p etc
-	cat > etc/vimrc << "EOF"
-" Begin /etc/vimrc
-set nocompatible
-set backspace=2
-set ruler
-set tags=tags
-set ai
-autocmd FileType python set omnifunc=pythoncomplete#Complete
-autocmd FileType javascript set omnifunc=javascriptcomplete#CompleteJS
-autocmd FileType html set omnifunc=htmlcomplete#CompleteTags
-autocmd FileType css set omnifunc=csscomplete#CompleteCSS
-autocmd FileType xml set omnifunc=xmlcomplete#CompleteTags
-autocmd FileType php set omnifunc=phpcomplete#CompletePHP
-autocmd FileType c set omnifunc=ccomplete#Complete
-set t_Co=256
-syntax on
-"if (&term == "iterm") || (&term == "putty")
-set background=dark
-"endif
-" End /etc/vimrc
-EOF
 }
 

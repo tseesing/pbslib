@@ -17,7 +17,6 @@ pbs_unpack() {
 }
 
 pbs_config() {
-	YPB_CONFIG+=" --bindir=/bin "
 	ypkg_config
 }
 
@@ -27,8 +26,5 @@ pbs_build() {
 
 pbs_install() {
 	ypkg_mkinstall
-	#Move some programs that do not need to be on the root filesystem
-	cd "$YPPATH_DEST"
-	ypkg_domv bin/{gzexe,uncompress,zcmp,zdiff,zegrep} usr/bin
-	ypkg_domv bin/{zfgrep,zforce,zgrep,zless,zmore,znew} usr/bin
 }
+

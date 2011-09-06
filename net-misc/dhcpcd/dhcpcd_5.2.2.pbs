@@ -4,7 +4,7 @@
 
 DESCRIPTION="A RFC 2131 compliant DHCP client"
 HOMEPAGE="http://roy.marples.name/projects/dhcpcd/"
-LICENSE=""
+LICENSE="BSD"
 PACKAGER="<ylmfos@115.com>"
 
 SRC_URI="http://roy.marples.name/downloads/"$N"/"$N-$V$R".tar.bz2"
@@ -30,3 +30,4 @@ pbs_install() {
 	ypkg_domv "$YPPATH_DEST"/usr/sbin "$YPPATH_DEST"/
 	ypkg_dounit "dhcpcd.service"
 }
+

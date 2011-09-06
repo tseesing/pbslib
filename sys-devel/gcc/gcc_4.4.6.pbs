@@ -4,7 +4,7 @@
 
 DESCRIPTION="The GNU Compiler Collection"
 HOMEPAGE="http://gcc.gnu.org/"
-LICENSE=""
+LICENSE="GPL"
 PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 
 SRC_URI="http://ftp.gnu.org/gnu/"$N"/"$N-$V$R"/"$N-$V$R".tar.bz2"

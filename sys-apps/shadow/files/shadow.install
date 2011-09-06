@@ -5,8 +5,10 @@ post_install() {
 	ypkg_groupadd -r "wheel"
         pwconv
         grpconv
+	return 0
 }
 
 post_remove() {
 	ypkg_groupdel "wheel"
+	 return 0
 }

@@ -4,7 +4,7 @@
 
 DESCRIPTION="a statically linked simple stand alone shell that provides only the basic utilities needed for the initramfs."
 HOMEPAGE="http://www.busybox.net/"
-LICENSE="GPL-2"
+LICENSE="GPLv2"
 PACKAGER="<ylmfos@115.com>"
 
 SRC_URI="http://busybox.net/downloads/busybox-"$V$R".tar.bz2"
@@ -27,3 +27,4 @@ pbs_install() {
 	ypkg_docp busybox "$YPPATH_DEST"/usr/lib/initramfs-tools/bin
 	ypkg_dodoc AUTHORS INSTALL README
 }
+

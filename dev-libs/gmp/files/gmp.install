@@ -1,10 +1,21 @@
 . /usr/lib/ybs/funcs
 
+files="gmp.info-2.gz gmp.info-1.gz gmp.info.gz"
+
 post_install() {
-        ypkg_install_info gmp.info-2.gz gmp.info-1.gz gmp.info.gz  
+        ypkg_install_info $files
 }       
 
 pre_remove() {
-        ypkg_remove_info gmp.info-2.gz gmp.info-1.gz gmp.info.gz
+        ypkg_remove_info $files
 }
-		
+	
+post_upgrade() {
+       post_install
+}
+
+post_downgrade() {
+       post_install
+}
+
+

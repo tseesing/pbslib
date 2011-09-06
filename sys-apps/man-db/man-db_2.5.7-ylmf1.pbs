@@ -4,7 +4,8 @@
 
 DESCRIPTION="Database-driven manual pager suite"
 HOMEPAGE="http://savannah.nongnu.org/projects/man-db"
- 
+LICENSE="GPL LGPL"
+
 SRC_URI="http://ftp.twaren.net/Unix/NonGNU/"$N"/"$N-$V".tar.gz"
 
 RDEPEND="gdbm zlib glibc"
@@ -16,10 +17,10 @@ pbs_unpack() {
 }
 
 pbs_config() {
-	YPB_CONFIG+="--disable-setuid 
-		     --with-browser=/usr/bin/links 
-		     --with-vgrind=/usr/bin/vgrind 
-		     --with-grap=/usr/bin/grap"
+	YPB_CONFIG+="--with-db=gdbm
+	             --disable-setuid
+	             --enable-mandirs=GNU
+	             --with-sections="1 n l 8 3 0 2 5 4 9 6 7""
 	ypkg_config
 }
 
@@ -29,4 +30,7 @@ pbs_build() {
 
 pbs_install() {
 	ypkg_mkinstall
+	# part of groff pkg
+	rm -f "$YPPATH_DEST"/usr/bin/zsoelim
 }
+

@@ -4,6 +4,8 @@
 
 DESCRIPTION="Pthread functions stubs for platforms missing them"
 HOMEPAGE="http://xorg.freedesktop.org/"
+LICENSE="GPL"
+PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
  
 SRC_URI="http://www.x.org/releases/X11R7.6/src/xcb/"$N-$V$R".tar.bz2"
 

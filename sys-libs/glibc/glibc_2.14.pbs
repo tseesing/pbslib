@@ -1,0 +1,120 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="GNU libc6 (also called glibc2) C library"
+HOMEPAGE="http://www.gnu.org/software/libc/libc.html"
+LICENSE="GPL LGPL"
+PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
+PRIORITY="required"
+
+SRC_URI="http://ftp.gnu.org/gnu/"$N"/"$N-$V$R".tar.xz"
+
+RDEPEND=""
+BDEPEND=""
+
+INSTALL="$N-$V$R.install"
+
+pbs_unpack() {
+        ypkg_unpack
+}
+
+pbs_config() {
+	# http://sources.redhat.com/bugzilla/show_bug.cgi?id=4781
+	ypkg_patch glibc-2.10-bz4781.patch
+	
+	# http://sources.redhat.com/bugzilla/show_bug.cgi?id=411
+	# http://sourceware.org/ml/libc-alpha/2009-07/msg00072.html
+	ypkg_patch glibc-__i686.patch
+	
+	# http://sourceware.org/bugzilla/show_bug.cgi?id=11929
+	# using Fedora "fix" as patch in that bug report causes breakages...
+	ypkg_patch glibc-2.12.1-static-shared-getpagesize.patch
+
+	# http://www.exploit-db.com/exploits/15274/
+        # http://sourceware.org/git/?p=glibc.git;a=patch;h=d14e6b09 (only fedora branch...)
+	ypkg_patch glibc-2.12.2-ignore-origin-of-privileged-program.patch
+
+	# http://sourceware.org/bugzilla/show_bug.cgi?id=12403
+	ypkg_patch glibc-2.13-futex.patch
+
+        # http://sourceware.org/git/?p=glibc.git;a=commitdiff;h=675155e9 (only fedora branch...)
+	# http://sourceware.org/ml/libc-alpha/2011-06/msg00006.html
+	ypkg_patch glibc-2.14-libdl-crash.patch
+
+        # This fixes the main segfault but not the assert fail (FS#24615)
+	# http://sourceware.org/git/?p=glibc.git;a=commitdiff;h=57912a71 
+	#patch -Np1 -i ${srcdir}/glibc-2.14-fix-resolver-crash-typo.patch
+	# resort to reverting the bad commit completely for the moment
+	ypkg_patch glibc-2.14-revert-4462fad3.patch
+
+	# re-export RPC interface until libtirpc is ready as a replacement
+	# http://sourceware.org/git/?p=glibc.git;a=commitdiff;h=acee4873 (only fedora branch...)
+	ypkg_patch glibc-2.14-reexport-rpc-interface.patch
+	
+	# http://sourceware.org/git/?p=glibc.git;a=commitdiff;h=bdd816a3 (only fedora branch...)
+	ypkg_patch glibc-2.14-reinstall-nis-rpc-headers.patch
+
+	# Fix a potential issue : bash infinite loop. 
+	sed -i '/vi_VN.TCVN/d' localedata/SUPPORTED
+	
+	# Fix sh problem if other shell installed.
+	sed -i 's|@BASH@|/bin/bash|' elf/ldd.bash.in
+	
+	if [ ${ARCH} = "i686" ]; then
+	    # Hack to fix NPTL issues with Xen, only required on 32bit platforms
+	    export CFLAGS="${CFLAGS} -mno-tls-direct-seg-refs"
+	fi
+
+	echo "slibdir=/lib" >> configparms
+
+	# remove hardening options from CFLAGS for building libraries
+	CFLAGS=${CFLAGS/-fstack-protector/}
+	CFLAGS=${CFLAGS/-D_FORTIFY_SOURCE=2/}
+
+	mkdir -p "$N"-build && cd "$N"-build && rm * -rf
+
+	unset ARCH
+	
+	YPB_CONFIG+=" --with-headers=/usr/include 
+		      --enable-add-ons=nptl,libidn 
+		      --enable-kernel=2.6.27 
+		      --with-tls
+		      --with-__thread 
+		      --enable-bind-now 
+		      --without-gd 
+		      --without-cvs 
+		      --disable-profile
+		      --disable-multi-arch "
+	../configure $YPB_CONFIG
+}
+
+pbs_build() {
+	# build libraries with hardening disabled
+	echo "build-programs=no" >> configparms
+
+	ypkg_make
+
+	# re-enable hardening for programs
+	sed -i "s#=no#=yes#" configparms
+	echo "CC += -fstack-protector -D_FORTIFY_SOURCE=2" >> configparms
+	echo "CXX += -fstack-protector -D_FORTIFY_SOURCE=2" >> configparms
+	
+	ypkg_make
+
+	# remove harding in preparation to run test-suite
+	sed -i '2,4d' configparms
+}
+
+pbs_install() {
+	make install_root="$YPPATH_DEST" install
+	cd "$YPPATH_DEST"
+	ypkg_docp "$FILES_PATH"/files/locale-gen   usr/sbin
+	ypkg_docp "$FILES_PATH"/files/SUPPORTED    usr/share/i18n
+
+	# Remove default localtime
+	# /etc/localtime -> ../usr/share/zoneinfo/Factory
+	rm -rf etc/localtime
+}
+
+

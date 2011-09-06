@@ -1,0 +1,44 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="A shared library tool for developers"
+HOMEPAGE="http://www.gnu.org/software/libtool/"
+LICENSE="GPL"
+PACKAGER="<ylmfos@115.com>"
+
+SRC_URI="http://ftp.gnu.org/gnu/"$N"/"$N-$V".tar.xz"
+
+RDEPEND="glibc"
+BDEPEND=""
+
+INSTALL="$N.install"
+
+pbs_unpack() {
+        ypkg_unpack
+}
+
+pbs_config() {
+	# The following config.cache entry overrides the default search path, which does not take multilib into account
+	echo lt_cv_sys_dlsearch_path=\"/lib"$LIBDIRSUFFIX" /usr/lib"$LIBDIRSUFFIX" /usr/local/lib"$LIBDIRSUFFIX" /opt/lib"$LIBDIRSUFFIX"\" > config.cache 
+
+	YPB_CONFIG+="--cache-file=config.cache"
+	ypkg_config
+}
+
+pbs_build() {
+	ypkg_make
+}
+
+pbs_install() {
+	ypkg_mkinstall
+	#cd "$YPPATH_DEST" 
+	#case $ARCH in
+        #        i?86)
+	#mv usr/bin/libtool{,-32} ;;
+	#	x86_64)
+	#mv usr/bin/libtool{,-64}
+	#ypkg_doln /usr/bin/multiarch_wrapper usr/bin/libtool
+	#esac
+}
+

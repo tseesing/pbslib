@@ -1,0 +1,61 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="Library for arithmetic on arbitrary precision integers, rational numbers, and floating-point numbers"
+HOMEPAGE="http://gmplib.org/"
+ 
+SRC_URI="ftp://ftp.gnu.org/gnu/"$N"/"$N-$V$R".tar.bz2"
+
+RDEPEND="gcc glibc"
+BDEPEND=""
+
+INSTALL="$N.install"
+
+pbs_unpack() {
+        ypkg_unpack
+}
+
+pbs_config() {
+	# Prevent GMP from optimizing for the current CPU 
+	mv config{fsf,}.guess
+	mv config{fsf,}.sub
+	
+	#
+	case $ARCH in
+		i?86) export ABI=32
+	esac	
+	YPB_CONFIG+="--enable-cxx --enable-mpbsd"
+	ypkg_config
+}
+
+pbs_build() {
+	make 
+}
+
+pbs_install() {
+	ypkg_mkinstall
+	#cd "$YPPATH_DEST"
+	#case $ARCH in 
+	#	i?86)	mv usr/include/gmp{,-32}.h ;;
+	#      x86_64)	mv usr/include/gmp{,-64}.h
+	#		cat > usr/include/gmp.h << "EOF"
+#  /* gmp.h - Stub Header  */
+#  #ifndef __STUB__GMP_H__
+#  #define __STUB__GMP_H__
+#
+#  #if defined(__x86_64__) || \
+#     defined(__sparc64__) || \
+#     defined(__arch64__) || \
+#     defined(__powerpc64__) || \
+#     defined (__s390x__)
+#  # include "gmp-64.h"
+#  #else
+#  # include "gmp-32.h"
+#  #endif
+# 
+#  #endif /* __STUB__GMP_H__ */
+#  EOF
+#	esac
+}
+

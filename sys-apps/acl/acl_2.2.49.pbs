@@ -34,6 +34,5 @@ pbs_install() {
 	ypkg_mkinstall install-dev install-lib
 	ypkg_docp include/libacl.h       "$YPPATH_DEST"/usr/include/acl 
 	ypkg_docp include/acl.h          "$YPPATH_DEST"/usr/include/sys
-	ypkg_doln /usr/libexec/libacl.a  "$YPPATH_DEST"/usr/lib/libacl.a
-	ypkg_doln /usr/libexec/libacl.la "$YPPATH_DEST"/usr/lib/libacl.la
 }
+

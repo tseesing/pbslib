@@ -8,7 +8,7 @@ HOMEPAGE="http://sed.sourceforge.net/"
 SRC_URI="http://ftp.gnu.org/pub/gnu/"$N"/"$N-$V$R".tar.bz2"
 
 RDEPEND="acl attr glibc"
-BDEPEND="  "
+BDEPEND=""
 
 INSTALL="$N.install"
 

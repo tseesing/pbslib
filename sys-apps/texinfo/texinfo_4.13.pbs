@@ -4,11 +4,12 @@
 
 DESCRIPTION="The GNU info program and utilities"
 HOMEPAGE="http://www.gnu.org/software/texinfo/"
- 
+LICENSE="GPLv3"
+
 SRC_URI="http://ftp.gnu.org/gnu/"$N"/"$N-$V"a.tar.gz"
 
 RDEPEND="glibc ncurses"
-BDEPEND=" "
+BDEPEND=""
 
 INSTALL="$N.install"
 
@@ -17,6 +18,8 @@ pbs_unpack() {
 }
 
 pbs_config() {
+	# Support for new compressors like XZ Utils
+	ypkg_patch texinfo-4.13a-new_compressors-1.patch
 	ypkg_config
 }
 

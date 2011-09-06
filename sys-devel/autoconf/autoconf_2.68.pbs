@@ -1,0 +1,33 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="Used to create autoconfiguration files"
+HOMEPAGE="http://www.gnu.org/software/autoconf/autoconf.html"
+LICENSE="GPL-2"
+PACKAGER="<ylmfos@115.com>"
+YARCH="any"
+
+SRC_URI="http://ftp.gnu.org/gnu/"$N"/"$N-$V$R".tar.bz2"
+
+RDEPEND="m4"
+BDEPEND=""
+
+INSTALL="$N.install"
+
+pbs_unpack() {
+        ypkg_unpack
+}
+
+pbs_config() {
+	ypkg_config
+}
+
+pbs_build() {
+	ypkg_make
+}
+
+pbs_install() {
+	ypkg_mkinstall
+}
+

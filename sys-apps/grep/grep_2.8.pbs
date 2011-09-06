@@ -1,0 +1,32 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="GNU regular expression matcher"
+HOMEPAGE="http://www.gnu.org/software/grep/"
+ 
+SRC_URI="ftp://ftp.gnu.org/gnu/"$N"/"$N-$V$R".tar.gz"
+
+RDEPEND="glibc libpcre"
+BDEPEND=" "
+RECOMMENDED=""
+
+INSTALL="$N.install"
+
+pbs_unpack() {
+        ypkg_unpack
+}
+
+pbs_config() {
+	YPB_CONFIG+="--bindir=/bin"
+	ypkg_config
+}
+
+pbs_build() {
+	ypkg_make
+}
+
+pbs_install() {
+	ypkg_mkinstall
+}
+

@@ -4,4 +4,12 @@ post_install() {
 	/usr/sbin/update-usbids
 }       
 
+post_downgrade() {
+       post_install
+}
+
+post_downgrade() {
+       post_install
+}
+
 

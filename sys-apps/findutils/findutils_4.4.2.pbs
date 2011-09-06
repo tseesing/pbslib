@@ -4,7 +4,9 @@
 
 DESCRIPTION="GNU utilities for finding files"
 HOMEPAGE="http://www.gnu.org/software/findutils/"
- 
+LICENSE="GPLv3"
+PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
+
 SRC_URI="http://ftp.gnu.org/pub/gnu/"$N"/"$N-$V$R".tar.gz"
 
 RDEPEND="glibc"
@@ -17,7 +19,10 @@ pbs_unpack() {
 }
 
 pbs_config() {
-	ypkg_config
+       YPB_CONFIG+="--libexecdir=/usr/lib"$LIBDIRSUFFIX"/locate 
+                    --localstatedir=/var/lib"$LIBDIRSUFFIX"/locate"
+       
+       ypkg_config
 }
 
 pbs_build() {

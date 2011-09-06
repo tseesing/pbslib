@@ -1,0 +1,36 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="Tools necessary to build programs"
+HOMEPAGE="http://www.gnu.org/software/binutils/"
+ 
+SRC_URI="http://ftp.gnu.org/gnu/"$N"/"$N-$V$R"a.tar.bz2"
+
+RDEPEND="glibc zlib"
+BDEPEND=""
+
+pbs_unpack() {
+        ypkg_unpack
+}
+
+pbs_config() {
+	[ -d "$N"-build ] && rm -fr "$N"-build
+	mkdir "$N"-build && cd "$N"-build
+	case $ARCH in 
+		i?86) YPB_CONFIG+="" ;;
+              x86_64) YPB_CONFIG+="--enable-64-bit-bfd"	
+	esac
+	../configure $YPB_CONFIG
+}
+
+pbs_build() {
+	make configure-host
+	make tooldir=/usr
+}
+
+pbs_install() {
+	ypkg_mkinstall tooldir=/usr
+	ypkg_docp ../include/libiberty.h "$YPPATH_DEST"/usr/include
+}
+

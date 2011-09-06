@@ -1,0 +1,29 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="Small utilities that use the /proc filesystem"
+HOMEPAGE="http://psmisc.sourceforge.net/"
+LICENSE="GPL"
+ 
+SRC_URI="http://downloads.sourceforge.net/project/"$N"/"$N"/"$N-$V$R".tar.gz"
+
+RDEPEND="glibc ncurses"
+BDEPEND=" "
+
+pbs_unpack() {
+        ypkg_unpack
+}
+
+pbs_config() {
+	ypkg_config
+}
+
+pbs_build() {
+	ypkg_make
+}
+
+pbs_install() {
+	ypkg_mkinstall
+}
+

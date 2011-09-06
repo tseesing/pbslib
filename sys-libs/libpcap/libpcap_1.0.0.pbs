@@ -2,10 +2,10 @@
 # YLmf_OS package build script
 #
 
-DESCRIPTION="Libpcap provides a system-independent interface for user-level packet capture. It includes a portable framework for low-level network monitoring. Applications include network statistics collection, security monitoring, network debugging, etc."
+DESCRIPTION="A system-independent library for user-level network packet capture"
 HOMEPAGE="http://www.tcpdump.org/"
-LICENSE="GPL-2"
-PACKAGER="<ylmfos@115.com>"
+LICENSE="GPLv2"
+PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 
 SRC_URI="http://www.tcpdump.org/release/"$N-$V$R".tar.gz"
 
@@ -31,7 +31,8 @@ pbs_build() {
 pbs_install() {
 	mkdir -p "$YPPATH_DEST"/usr/bin
 	ypkg_mkinstall
-	ypkg_docp libpcap.so."$V$R"  "$YPPATH_DEST"/usr/lib 
-	ypkg_doln libpcap.so."$V$R"  "$YPPATH_DEST"/usr/lib/libpcap.so.1
-	ypkg_doln libpcap.so.1       "$YPPATH_DEST"/usr/lib/libpcap.so
+	ypkg_docp libpcap.so."$V$R"  "$YPPATH_DEST"/usr/lib"${LIBDIRSUFFIX}"
+	ypkg_doln libpcap.so."$V$R"  "$YPPATH_DEST"/usr/lib"${LIBDIRSUFFIX}"/libpcap.so.1
+	ypkg_doln libpcap.so.1       "$YPPATH_DEST"/usr/lib"${LIBDIRSUFFIX}"/libpcap.so
 }
+
