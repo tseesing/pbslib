@@ -1,0 +1,34 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="Perl interface to the 2.x series of the GNOME VFS library"
+HOMEPAGE="http://search.cpan.org/~tsch/Gnome2-VFS-1.081/VFS.pm"
+PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
+LICENSE="GPL PerlArtistic"
+YVERSION="1"
+
+SRC_URI="http://search.cpan.org/CPAN/authors/id/T/TS/TSCH/Gnome2-VFS-"$V".tar.gz"
+
+RDEPEND="gtk2-perl perl gnome-vfs"
+BDEPEND="extutils-depends extutils-pkgconfig"
+RECOMMENDED=""
+CONFLICT=""
+
+pbs_unpack() {
+        ypkg_unpack
+}
+
+pbs_config() {
+	ypkg_config INSTALLDIRS=vendor
+}
+
+pbs_build() {
+	ypkg_make
+}
+
+pbs_install() {
+	ypkg_mkinstall
+        perl_cleanup
+}
+

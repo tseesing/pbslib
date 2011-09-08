@@ -1,0 +1,36 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="building, finding and using SDL binaries"
+HOMEPAGE="http://search.cpan.org/~froggs/Alien-SDL-1.428/"
+LICENSE="GPL PerlArtistic"
+PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
+YVERSION="0"
+
+SRC_URI="http://mirrors.ustc.edu.cn/CPAN/authors/id/F/FR/FROGGS/Alien-SDL-"$V".tar.gz"
+
+RDEPEND="perl libsdl file-sharedir file-sharedir class-inspector text-patch capture-tiny"
+BDEPEND=" "
+RECOMMENDED=""
+CONFLICT=""
+
+pbs_unpack() {
+        ypkg_unpack
+}
+
+pbs_config() {
+	# install module in vendor directories
+	perl Build.PL installdirs=vendor destdir="$YPPATH_DEST" --with-sdl-config
+}
+
+pbs_build() {
+	perl Build
+}
+
+pbs_install() {
+	perl Build install
+        perl_cleanup
+}
+
+

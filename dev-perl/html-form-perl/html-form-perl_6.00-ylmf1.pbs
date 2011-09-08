@@ -1,0 +1,35 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="Class that represents an HTML form element "
+HOMEPAGE="http://search.cpan.org/~gaas/HTML-Form-6.00/lib/HTML/Form.pm"
+PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
+LICENSE="GPL PerlArtistic"
+YVERSION="1"
+
+SRC_URI="http://search.cpan.org/CPAN/authors/id/G/GA/GAAS/HTML-Form-"$V".tar.gz"
+
+RDEPEND="perl html-parser-perl uri-perl http-message-perl"
+BDEPEND=""
+RECOMMENDED=""
+CONFLICT=""
+
+pbs_unpack() {
+        ypkg_unpack
+}
+
+pbs_config() {
+	export PERL_MM_USE_DEFAULT=1
+	ypkg_config INSTALLDIRS=vendor
+}
+
+pbs_build() {
+	ypkg_make
+}
+
+pbs_install() {
+	ypkg_mkinstall
+        perl_cleanup
+}
+

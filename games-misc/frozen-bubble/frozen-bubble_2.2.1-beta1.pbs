@@ -1,0 +1,37 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="A game in which you throw colorful bubbles and build groups to destroy the bubbles"
+HOMEPAGE="http://www.frozen-bubble.org"
+LICENSE="GPLv2"
+PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
+YVERSION="1"
+
+SRC_URI="http://www.frozen-bubble.org/data/"$N-$V$R".tar.bz2"
+
+RDEPEND="sdl-perl alien-sdl ipc-system-simple file-which compress-bzip2"
+BDEPEND="file-slurp locale-maketext-lexicon"
+RECOMMENDED=""
+CONFLICT=""
+
+INSTALL="$N.install"
+
+pbs_unpack() {
+        ypkg_unpack
+}
+
+pbs_config() {
+	unset CFLAGS
+	perl Build.PL installdirs=vendor
+}
+
+pbs_build() {
+	perl Build
+}
+
+pbs_install() {
+	perl Build install destdir="$YPPATH_DEST"
+	ypkg_dodesktop "$N.desktop"  "$N.png"
+}
+

@@ -1,0 +1,38 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="GIT - the stupid content tracker, the revision control system"
+HOMEPAGE="http://www.git-scm.com/"
+LICENSE="GPL-2"
+PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
+YVERSION=1
+
+SRC_URI="http://kernel.org/pub/software/scm/"$N"/"$N-$V".tar.bz2"
+
+RDEPEND="curl cyrus-sasl expat glibc openldap openssl zlib perl python"
+BDEPEND=""
+
+INSTALL="$N.install"
+
+NOTES="add some info:
+git config --system --add user.name ylmfos_user
+git config --system --add user.email ylmfos_user@115.com"
+
+pbs_unpack() {
+        ypkg_unpack
+}
+
+pbs_config() {
+	ypkg_config
+}
+
+pbs_build() {
+	ypkg_make
+}
+
+pbs_install() {
+	ypkg_mkinstall
+}
+
+

@@ -1,0 +1,35 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="Perl wrappers for the eggdbus cup Gtk2::TrayIcon utilities."
+HOMEPAGE="http://gtk2-perl.sf.net/"
+PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
+LICENSE="GPL PerlArtistic"
+YVERSION="1"
+
+SRC_URI="http://nchc.dl.sourceforge.net/project/gtk2-perl/Gtk2_TrayIcon/0.06/Gtk2-TrayIcon-"$V".tar.gz"
+
+RDEPEND="gtk2-perl"
+BDEPEND="extutils-depends extutils-pkgconfig"
+RECOMMENDED=""
+CONFLICT=""
+
+pbs_unpack() {
+        ypkg_unpack
+}
+
+pbs_config() {
+	export PERL_MM_USE_DEFAULT=1
+	ypkg_config INSTALLDIRS=vendor
+}
+
+pbs_build() {
+	ypkg_make
+}
+
+pbs_install() {
+	ypkg_mkinstall
+        perl_cleanup
+}
+

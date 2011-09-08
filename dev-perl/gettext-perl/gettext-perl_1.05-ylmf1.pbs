@@ -1,0 +1,35 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="message handling functions"
+HOMEPAGE="http://search.cpan.org/~pvandry/gettext-1.05/gettext.pm"
+PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
+LICENSE="GPL PerlArtistic"
+YARCH="any"
+YVERSION="1"
+
+SRC_URI="http://search.cpan.org/CPAN/authors/id/P/PV/PVANDRY/gettext-"$V".tar.gz"
+
+RDEPEND="perl"
+BDEPEND=" "
+RECOMMENDED=""
+CONFLICT=""
+
+pbs_unpack() {
+        ypkg_unpack
+}
+
+pbs_config() {
+	export PERL_MM_USE_DEFAULT=1
+	ypkg_config INSTALLDIRS=vendor
+}
+
+pbs_build() {
+	ypkg_make
+}
+
+pbs_install() {
+	ypkg_mkinstall
+        perl_cleanup
+}

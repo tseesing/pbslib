@@ -1,0 +1,34 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="simplistic interface to pkg-config "
+HOMEPAGE="http://search.cpan.org/~tsch/ExtUtils-PkgConfig-1.12/lib/ExtUtils/PkgConfig.pm"
+PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
+LICENSE="GPL PerlArtistic"
+YARCH="any"
+YVERSION="1"
+
+SRC_URI="http://search.cpan.org/CPAN/authors/id/T/TS/TSCH/ExtUtils-PkgConfig-"$V".tar.gz"
+
+RDEPEND="perl"
+BDEPEND=" "
+RECOMMENDED=""
+CONFLICT=""
+
+pbs_unpack() {
+        ypkg_unpack
+}
+
+pbs_config() {
+	ypkg_config INSTALLDIRS=vendor
+}
+
+pbs_build() {
+	ypkg_make
+}
+
+pbs_install() {
+	ypkg_mkinstall
+        perl_cleanup
+}

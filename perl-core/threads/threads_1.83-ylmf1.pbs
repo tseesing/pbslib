@@ -1,0 +1,34 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="Perl interpreter-based threads"
+HOMEPAGE="http://search.cpan.org/dist/threads/"
+PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
+LICENSE="GPL PerlArtistic"
+YVERSION="1"
+
+SRC_URI="http://cpan.communilink.net/authors/id/J/JD/JDHEDDEN/threads-"$V".tar.gz"
+
+RDEPEND="perl glibc"
+BDEPEND=""
+RECOMMENDED=""
+CONFLICT=""
+
+pbs_unpack() {
+        ypkg_unpack
+}
+
+pbs_config() {
+	export PERL_MM_USE_DEFAULT=1
+	ypkg_config INSTALLDIRS=vendor
+}
+
+pbs_build() {
+	ypkg_make
+}
+
+pbs_install() {
+	ypkg_mkinstall
+}
+

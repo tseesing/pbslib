@@ -12,8 +12,6 @@ RDEPEND="shadow perl"
 BDEPEND=""
 RECOMMENDED=""
 
-NOTES=""
-
 pbs_unpack() {
         ypkg_unpack
 }

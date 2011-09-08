@@ -1,0 +1,35 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="Perl interface to the sexy widget collection  "
+HOMEPAGE="http://search.cpan.org/~flora/Gtk2-Sexy-0.05/"
+PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
+LICENSE="GPL PerlArtistic"
+YVERSION="1"
+
+SRC_URI="http://mirrors.xmu.edu.cn/CPAN/authors/id/F/FL/FLORA/Gtk2-Sexy-"$V".tar.gz"
+
+RDEPEND="gtk+ libsexy"
+BDEPEND="extutils-depends extutils-pkgconfig gtk2-perl"
+RECOMMENDED=""
+CONFLICT=""
+
+pbs_unpack() {
+        ypkg_unpack
+}
+
+pbs_config() {
+	export PERL_MM_USE_DEFAULT=1
+	ypkg_config INSTALLDIRS=vendor
+}
+
+pbs_build() {
+	ypkg_make
+}
+
+pbs_install() {
+	ypkg_mkinstall
+        perl_cleanup
+}
+

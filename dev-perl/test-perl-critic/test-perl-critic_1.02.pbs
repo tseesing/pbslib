@@ -1,0 +1,36 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="Use Perl::Critic in test programs"
+HOMEPAGE="http://search.cpan.org/~thaljef/Test-Perl-Critic-1.02/"
+LICENSE="GPL PerlArtistic"
+PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
+YARCH="any"
+YVERSION="1"
+
+SRC_URI="http://mirrors.sohu.com/CPAN/authors/id/T/TH/THALJEF/Test-Perl-Critic-"$V".tar.gz"
+
+RDEPEND="perl"
+BDEPEND=" "
+RECOMMENDED=""
+CONFLICT=""
+
+pbs_unpack() {
+        ypkg_unpack
+}
+
+pbs_config() {
+	export PERL_MM_USE_DEFAULT=1
+	ypkg_config INSTALLDIRS=vendor
+}
+
+pbs_build() {
+	ypkg_make
+}
+
+pbs_install() {
+	ypkg_mkinstall
+        perl_cleanup
+}
+

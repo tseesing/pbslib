@@ -1,0 +1,24 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="add remove user and group"
+HOMEPAGE="www.ylmf.net"
+LICENSE="GPL-2"
+PACKAGER="<ylmfos@115.com>"CKAGER="Ylmf OS Developers <ylmfos@115.com>"
+YVERSION="2"
+
+SRC_URI="git://git.ylmf.com/"$N".git"
+
+RDEPEND="shadow perl"
+BDEPEND=""
+RECOMMENDED=""
+
+pbs_unpack() {
+        ypkg_unpack
+}
+
+pbs_install() {
+	ypkg_docp * "$YPPATH_DEST"
+}
+

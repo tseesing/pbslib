@@ -1,0 +1,35 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="Easily build XS extensions that depend on XS extensions"
+HOMEPAGE="http://search.cpan.org/~flora/ExtUtils-Depends-0.304/lib/ExtUtils/Depends.pm"
+PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
+LICENSE="GPL PerlArtistic"
+YARCH="any"
+YVERSION="1"
+
+SRC_URI="http://search.cpan.org/CPAN/authors/id/F/FL/FLORA/ExtUtils-Depends-"$V".tar.gz"
+
+RDEPEND="perl"
+BDEPEND=" "
+RECOMMENDED=""
+CONFLICT=""
+
+pbs_unpack() {
+        ypkg_unpack
+}
+
+pbs_config() {
+	ypkg_config INSTALLDIRS=vendor
+}
+
+pbs_build() {
+	ypkg_make
+}
+
+pbs_install() {
+	ypkg_mkinstall
+        perl_cleanup
+}
+

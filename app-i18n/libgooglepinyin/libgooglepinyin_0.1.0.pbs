@@ -2,9 +2,9 @@
 # YLmf_OS package build script
 #
 
-DESCRIPTION="A fork from google pinyin on android"
+DESCRIPTION="A fork from google pinyin on android library"
 HOMEPAGE="http://code.google.com/p/libgooglepinyin"
-LICENSE="APACHE"
+LICENSE="Apache License 2.0"
 PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 
 SRC_URI="http://libgooglepinyin.googlecode.com/files/"$N-$V$R".tar.bz2"
@@ -30,6 +30,4 @@ pbs_build() {
 pbs_install() {
 	ypkg_mkinstall
 }
-
-
 

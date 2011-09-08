@@ -1,0 +1,36 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="Provide https support for LWP::UserAgent  "
+HOMEPAGE="http://search.cpan.org/~gaas/LWP-Protocol-https-6.02/"
+PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
+LICENSE="GPL PerlArtistic"
+YVERSION="1"
+YARCH="any"
+
+SRC_URI="http://mirrors.xmu.edu.cn/CPAN/authors/id/G/GA/GAAS/LWP-Protocol-https-"$V".tar.gz"
+
+RDEPEND="perl io-socket-ssl libwww-perl mozilla-ca net-http"
+BDEPEND=""
+RECOMMENDED=""
+CONFLICT=""
+
+pbs_unpack() {
+        ypkg_unpack
+}
+
+pbs_config() {
+	export PERL_MM_USE_DEFAULT=1
+	ypkg_config INSTALLDIRS=vendor
+}
+
+pbs_build() {
+	ypkg_make
+}
+
+pbs_install() {
+	ypkg_mkinstall
+        perl_cleanup
+}
+

@@ -1,0 +1,36 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="Perl extension for the SANE (Scanner Access Now Easy) Project"
+HOMEPAGE="http://search.cpan.org/~ratcliffe/Sane-0.03/"
+LICENSE="GPL PerlArtistic"
+PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
+YARCH="any"
+YVERSION="1"
+
+SRC_URI="http://mirrors.ustc.edu.cn/CPAN/authors/id/R/RA/RATCLIFFE/Sane-"$V".tar.gz"
+
+RDEPEND="perl"
+BDEPEND=" "
+RECOMMENDED=""
+CONFLICT=""
+
+pbs_unpack() {
+        ypkg_unpack
+}
+
+pbs_config() {
+	export PERL_MM_USE_DEFAULT=1
+	ypkg_config INSTALLDIRS=vendor
+}
+
+pbs_build() {
+	ypkg_make
+}
+
+pbs_install() {
+	ypkg_mkinstall
+        perl_cleanup
+}
+

@@ -1,0 +1,34 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="Interface to Bzip2 compression library"
+HOMEPAGE="http://search.cpan.org/dist/$_realname"
+LICENSE="GPL PerlArtistic"
+PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
+
+SRC_URI="http://mirror.osqdu.org/CPAN/authors/id/A/AR/ARJAY/Compress-Bzip2-"$V".tar.gz"
+
+RDEPEND="perl bzip2"
+BDEPEND=" "
+RECOMMENDED=""
+CONFLICT=""
+
+pbs_unpack() {
+        ypkg_unpack
+}
+
+pbs_config() {
+	export PERL_MM_USE_DEFAULT=1
+	ypkg_config INSTALLDIRS=vendor
+}
+
+pbs_build() {
+	ypkg_make
+}
+
+pbs_install() {
+	ypkg_mkinstall
+        perl_cleanup
+}
+

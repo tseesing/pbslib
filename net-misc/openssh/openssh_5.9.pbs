@@ -1,0 +1,42 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="http://www.openssh.org/"
+HOMEPAGE="Port of OpenBSD's free SSH release"
+LICENSE="GPL-2"
+PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
+YVERSION="1"
+
+SRC_URI="http://ftp.openbsd.org/pub/OpenBSD/OpenSSH/portable/"$N-$V"p1.tar.gz"
+
+RDEPEND="openssl glibc zlib"
+BDEPEND=""
+
+INSTALL="$N.install"
+
+pbs_unpack() {
+        ypkg_unpack
+}
+
+pbs_config() {
+	YPB_CONFIG+=" --sysconfdir=/etc/ssh  
+		      --datadir=/usr/share/sshd  
+		      --libexecdir=/usr/lib/openssh  
+		      --with-md5-passwords  
+		      --with-privsep-path=/var/lib/sshd "
+	ypkg_config
+}
+
+pbs_build() {
+	ypkg_make
+}
+
+pbs_install() {
+	ypkg_mkinstall
+	
+	cd "$YPPATH_DEST"
+	mkdir -p etc/ssh/
+	ypkg_docp "$FILES_PATH"/files/systemd/*  lib/systemd/system/
+}
+

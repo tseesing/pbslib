@@ -1,0 +1,36 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="Variable ties made easier: much, much, much easier... "
+HOMEPAGE="http://search.cpan.org/~hanenkamp/Tie-Simple-1.03/"
+LICENSE="GPL PerlArtistic"
+PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
+YARCH="any"
+YVERSION="1"
+
+SRC_URI="http://cpan.wenzk.com/authors/id/H/HA/HANENKAMP/Tie-Simple-"$V".tar.gz"
+
+RDEPEND="perl"
+BDEPEND=" "
+RECOMMENDED=""
+CONFLICT=""
+
+pbs_unpack() {
+        ypkg_unpack
+}
+
+pbs_config() {
+	export PERL_MM_USE_DEFAULT=1
+	ypkg_config INSTALLDIRS=vendor
+}
+
+pbs_build() {
+	ypkg_make
+}
+
+pbs_install() {
+	ypkg_mkinstall
+        perl_cleanup
+}
+

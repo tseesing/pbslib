@@ -1,0 +1,33 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="Perl module implementing 'which' internally"
+HOMEPAGE="http://search.cpan.org/~adamk/File-Which-1.09/"
+LICENSE="GPL PerlArtistic"
+YARCH="any"
+YVERSION="1"
+PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
+
+SRC_URI="http://search.cpan.org/CPAN/authors/id/A/AD/ADAMK/File-Which-"$V".tar.gz"
+
+RDEPEND=""
+BDEPEND="test-script"
+
+pbs_unpack() {
+        ypkg_unpack
+}
+
+pbs_config() {
+	export PERL_MM_USE_DEFAULT=1
+	ypkg_config INSTALLDIRS=vendor
+}
+
+pbs_build() {
+	ypkg_make
+}
+
+pbs_install() {
+	ypkg_mkinstall
+        perl_cleanup
+}

@@ -1,0 +1,30 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="Adobe Flash Player plugin"
+HOMEPAGE="http://www.adobe.com/"
+LICENSE="Flash Player 11 License,Adobe.com Terms of Use,Adobe Online Privacy Policy"
+PACKAGER="<ylmfos@115.com>"
+
+SRC_URI="http://download.macromedia.com/pub/labs/flashplatformruntimes/flashplayer11/flashplayer11_rc1_install_lin_32_090611.tar.gz"
+
+RDEPEND=""
+BDEPEND=" "
+RECOMMENDED=""
+
+INSTALL="$N.install"
+
+pbs_unpack() {
+	ypkg_unpack
+}
+
+pbs_install() {
+	ypkg_docp libflashplayer.so  "$YPPATH_DEST"/usr/lib/adobe-flashplugin
+        for i in xulrunner mozilla iceape iceweasel firefox midbrowser xulrunner-addons; do
+	      ypkg_doln /usr/lib/adobe-flashplugin/libflashplayer.so "$YPPATH_DEST"/usr/lib/"${i}"/plugins/libflashplayer.so
+	done
+	ypkg_docp ../usr "$YPPATH_DEST"/
+	mkdir -p "$YPPATH_DEST"/etc/adobe
+}
+

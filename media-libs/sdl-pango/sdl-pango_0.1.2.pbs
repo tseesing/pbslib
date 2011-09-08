@@ -4,26 +4,22 @@
 
 DESCRIPTION="Pango SDL binding"
 HOMEPAGE="http://sdlpango.sourceforge.net/"
-REPO=""
 LICENSE="LGPL"
 PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 
-SRC_URI="http://downloads.sourceforge.net/sourceforge/sdlpango/SDL_Pango-0.1.2.tar.gz"
+SRC_URI="http://downloads.sourceforge.net/sourceforge/sdlpango/SDL_Pango-"$V".tar.gz"
 
-RDEPEND=""
+RDEPEND="pango libsdl"
 BDEPEND=""
 RECOMMENDED=""
 CONFLICT=""
-
-NOTES=""
 
 pbs_unpack() {
         ypkg_unpack
 }
 
 pbs_config() {
-	ypkg_patch SDL_Pango-0.1.2-API-adds.patch
-	YPB_CONFIG+=""
+	ypkg_patch SDL_Pango-0.1.2-API-adds.patch matrix_declarations.patch
 	ypkg_config
 }
 
@@ -34,3 +30,4 @@ pbs_build() {
 pbs_install() {
 	ypkg_mkinstall
 }
+

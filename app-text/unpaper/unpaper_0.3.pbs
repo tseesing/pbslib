@@ -1,0 +1,30 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="Post-processor for scanned and photocopied book pages"
+HOMEPAGE="http://unpaper.berlios.de/"
+LICENSE="GPL"
+PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
+
+SRC_URI="http://download.berlios.de/"$N"/"$N-$V".tar.gz"
+
+RDEPEND=""
+RECOMMENDED=""
+BDEPEND=""
+
+pbs_unpack() {
+        ypkg_unpack
+}
+
+pbs_build() {
+	cd src
+	$CC $CFLAGS -lm -funroll-all-loops -fomit-frame-pointer -ftree-vectorize -o unpaper unpaper.c
+}
+
+pbs_install() {
+	ypkg_docp unpaper "$YPPATH_DEST"/usr/bin/
+	chmod 755 "$YPPATH_DEST"/usr/bin/unpaper
+	ypkg_dodoc ../doc/* 
+}
+

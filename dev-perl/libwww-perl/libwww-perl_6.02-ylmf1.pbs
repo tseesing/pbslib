@@ -1,0 +1,36 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="Web user agent class "
+HOMEPAGE="http://search.cpan.org/~gaas/libwww-perl-6.02/lib/LWP/UserAgent.pm"
+PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
+LICENSE="GPL PerlArtistic"
+YVERSION="1"
+YARCH="any"
+
+SRC_URI="http://search.cpan.org/CPAN/authors/id/G/GA/GAAS/libwww-perl-"$V".tar.gz"
+
+RDEPEND="perl encode-locale file-listing html-parser-perl http-cookies-perl http-daemon http-date-perl http-message-perl http-negotiate lwp-mediatypes net-http uri-perl www-robotrules"
+BDEPEND=" "
+RECOMMENDED=""
+CONFLICT=""
+
+pbs_unpack() {
+        ypkg_unpack
+}
+
+pbs_config() {
+	export PERL_MM_USE_DEFAULT=1
+	ypkg_config INSTALLDIRS=vendor
+}
+
+pbs_build() {
+	ypkg_make
+}
+
+pbs_install() {
+	ypkg_mkinstall
+        perl_cleanup
+}
+

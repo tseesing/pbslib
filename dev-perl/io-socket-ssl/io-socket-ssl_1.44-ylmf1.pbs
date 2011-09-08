@@ -1,0 +1,35 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="Nearly transparent SSL encapsulation for IO::Socket::INET.  "
+HOMEPAGE="http://search.cpan.org/"
+PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
+LICENSE="GPL PerlArtistic"
+YVERSION="1"
+YARCH="any"
+
+SRC_URI="http://cpan.communilink.net/authors/id/S/SU/SULLR/IO-Socket-SSL-"$V".tar.gz"
+
+RDEPEND="perl"
+BDEPEND=""
+RECOMMENDED=""
+CONFLICT=""
+
+pbs_unpack() {
+        ypkg_unpack
+}
+
+pbs_config() {
+	ypkg_config INSTALLDIRS=vendor
+}
+
+pbs_build() {
+	ypkg_make
+}
+
+pbs_install() {
+	ypkg_mkinstall
+        perl_cleanup
+}
+
