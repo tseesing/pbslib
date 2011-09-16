@@ -70,6 +70,9 @@ pbs_config() {
 		ylmfos_export_patch-1.98-ylmf4.patch 
 		ylmfos_disable-recordfail.patch "
 	ypkg_patch $patches
+
+	pwd
+	exit
 	ypkg_config
 	# FIXME 
 	sed -i 's/PACKAGE_VERSION = 0/PACKAGE_VERSION = '"$V$R"'/g' Makefile

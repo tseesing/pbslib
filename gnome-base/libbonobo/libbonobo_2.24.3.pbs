@@ -10,7 +10,7 @@ PACKAGER="<ylmfos@115.com>"
 
 SRC_URI="http://ftp.gnome.org/pub/gnome/platform/2.30/2.30.2/sources/"$N-$V$R".tar.bz2"
 
-RDEPEND="dbus dbus-glib glib2 glibc libxml2 orbit zlib"
+RDEPEND="dbus dbus-glib glib2 gdk-pixbuf glibc libxml2 orbit zlib"
 BDEPEND="aflex-dev xrdb pkgconfig intltool       "
 RECOMMENDED=""
 

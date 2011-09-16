@@ -11,7 +11,7 @@ PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 SRC_URI="http://ftp.debian.org/debian/pool/main/n/netcat-openbsd/netcat-openbsd_1.89.orig.tar.gz
          http://ftp.debian.org/debian/pool/main/n/netcat-openbsd/netcat-openbsd_1.89-4.diff.gz"
 
-RDEPEND="glib2 glibc"
+RDEPEND="glib2 gdk-pixbuf glibc"
 BDEPEND=""
 RECOMMENDED=""
 CONFLICT=""

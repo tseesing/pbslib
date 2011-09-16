@@ -1,0 +1,32 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="GnomeVFS-Monikers (Gnome-vfs Bonobo moniker)"
+HOMEPAGE="www.gtk.org"
+LICENSE="GPLv2"
+PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
+
+SRC_URI="http://ftp.acc.umu.se/pub/gnome/platform/2.32/2.32.1/sources/"$N-$V".tar.bz2"
+
+RDEPEND="avahi dbus dbus-glib gcc gconf gconf-dbus glib2 gdk-pixbuf glibc gnome-vfs libbonobo libxml2 openssl orbit zlib"
+RECOMMENDED=""
+BDEPEND=""
+
+pbs_unpack() {
+        ypkg_unpack
+}
+
+pbs_config() {
+	YPB_CONFIG+=""
+	ypkg_config
+}
+
+pbs_build() {
+	ypkg_make
+}
+
+pbs_install() {
+	ypkg_mkinstall
+}
+

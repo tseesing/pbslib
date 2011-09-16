@@ -7,7 +7,7 @@ HOMEPAGE="http://libexif.sf.net"
 
 SRC_URI="http://downloads.sourceforge.net/project/libexif/"$N"/"$V"/"$N-$V$R".tar.bz2 "
 
-RDEPEND="atk cairo expat fontconfig freetype gcc glib2 glibc gtk+ libexif libpng libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libXrandr libXrender pango pixman zlib"
+RDEPEND="atk cairo expat fontconfig freetype gcc glib2 gdk-pixbuf glibc gtk+ libexif libpng libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libXrandr libXrender pango pixman zlib"
 BDEPEND="                         "
 
 pbs_unpack() {

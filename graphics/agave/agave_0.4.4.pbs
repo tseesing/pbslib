@@ -11,7 +11,7 @@ PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 
 SRC_URI="http://download.gna.org/colorscheme/releases/"$N-$V$R".tar.bz2"
 
-RDEPEND="alsa-lib atk audiofile avahi cairo cairomm dbus dbus-glib eggdbus esound expat fontconfig freetype gail gcc gconf gconfmm glib2 glibc glibmm gnome-vfs gtk+ gtkmm libart_lgpl libbonobo libbonoboui libgcrypt libglade libglademm libgnome libgnomecanvas libgnome-keyring libgnomeui libgpg-error libICE libpng libsigc++ libSM libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libxml2 libXrandr libXrender openssl orbit pango pangomm pixman popt util-linux-ng zlib"
+RDEPEND="alsa-lib atk audiofile avahi cairo cairomm dbus dbus-glib eggdbus esound expat fontconfig freetype gail gcc gconf gconfmm glib2 gdk-pixbuf glibc glibmm gnome-vfs gtk+ gtkmm libart_lgpl libbonobo libbonoboui libgcrypt libglade libglademm libgnome libgnomecanvas libgnome-keyring libgnomeui libgpg-error libICE libpng libsigc++ libSM libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libxml2 libXrandr libXrender openssl orbit pango pangomm pixman popt util-linux-ng zlib"
 BDEPEND="eggdbus"
 RECOMMENDED=""
 CONFLICT=""

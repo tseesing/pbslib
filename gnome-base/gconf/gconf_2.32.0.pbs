@@ -1,0 +1,38 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="The gconf package contains a configuration database system"
+HOMEPAGE="http://www.gnome.org/projects/gconf/"
+LICENSE="GPLv2"
+PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
+
+SRC_URI="http://ftp.acc.umu.se/pub/gnome/platform/2.32/2.32.1/sources/GConf-"$V".tar.bz2"
+
+RDEPEND="atk cairo cyrus-sasl dbus dbus-glib eggdbus expat fontconfig freetype gcc glib2 gdk-pixbuf glibc gtk+ libpng libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libxml2 libXrandr libXrender openldap openssl orbit pango pixman polkit zlib"
+BDEPEND=""
+
+INSTALL="$N.install"
+
+pbs_unpack() {
+        ypkg_unpack
+}
+
+pbs_config() {
+	YPB_CONFIG+=" --enable-gtk		
+		      --with-openldap		
+		      --enable-defaults-service "
+	ypkg_config
+}
+
+pbs_build() {
+	ypkg_make
+}
+
+pbs_install() {
+	ypkg_mkinstall
+	cd "$YPPATH_DEST"
+	ypkg_docp "$FILES_PATH"/files/gconf-schemas usr/sbin/ 
+	install -m755 -d etc/gconf/gconf.xml.system
+}
+

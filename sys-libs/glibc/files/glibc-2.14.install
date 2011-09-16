@@ -43,6 +43,8 @@ post_install() {
 	[ ! -f /etc/ld.so.conf ] && ld_so_conf
 	[ ! -f /etc/localtime ] && localtime_
 
+	update-initramfs -d -u
+
 	return 0
 }
 
@@ -52,6 +54,7 @@ pre_remove() {
 
 post_upgrade () {
 	ypkg_install_info $files
+	update-initramfs -d -u
 }
 
 post_downgrade() {

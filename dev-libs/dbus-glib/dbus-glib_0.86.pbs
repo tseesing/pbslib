@@ -9,7 +9,7 @@ SRC_URI="http://dbus.freedesktop.org/releases/"$N"/"$N-$V$R".tar.gz"
 
 RDEPEND=""
 
-RDEPEND="dbus expat glib2 glibc"
+RDEPEND="dbus expat glib2 gdk-pixbuf glibc"
 BDEPEND=""
 
 pbs_unpack() {

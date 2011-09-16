@@ -1,0 +1,39 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="The libsoup package contains an HTTP library implementation in C. This is useful for accessing HTTP servers in a completely asynchronous mode."
+HOMEPAGE="http://live.gnome.org/LibSoup/"
+LICENSE="GPL-2"
+PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
+
+SRC_URI=" http://ftp.gnome.org/pub/gnome/desktop/2.32/2.32.1/sources/"$N-$V$R".tar.bz2"
+
+RDEPEND="dbus dbus-glib eggdbus gconf glib2 gdk-pixbuf glibc gnutls libgcrypt libgnome-keyring libgpg-error libproxy libtasn1 libxml2 orbit sqlite zlib"
+BDEPEND=""
+RECOMMENDED=""
+
+NOTES="http://wiki.linuxfromscratch.org/blfs/wiki/libsoup
+Apache-2.2.15 (required to run the test suite), and PHP-5.3.2 compiled with XMLRPC-EPI support (only used for the XMLRPC regression tests)
+libproxy required for GNOME proxy support
+Pass \"--without-gnome\" to configure if you want to build libsoup without GNOME support.
+"
+
+pbs_unpack() {
+        ypkg_unpack
+}
+
+pbs_config() {
+	YPB_CONFIG+="--enable-ssl --with-gnome"
+	ypkg_config
+}
+
+pbs_build() {
+	ypkg_make
+}
+
+pbs_install() {
+	ypkg_mkinstall
+	ypkg_dodoc AUTHORS COPYING NEWS README 
+}
+

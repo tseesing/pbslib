@@ -7,7 +7,7 @@ HOMEPAGE="http://wvware.sourceforge.net/"
  
 SRC_URI="http://downloads.sourceforge.net/project/wvware/"$N"/"$V"/"$N-$V$R".tar.gz"
 
-RDEPEND="expat freetype glib2 glibc gtk+ libjpeg-turbo libpng libX11 libXau libxcb libXdmcp zlib"
+RDEPEND="expat freetype glib2 gdk-pixbuf glibc gtk+ libjpeg-turbo libpng libX11 libXau libxcb libXdmcp zlib"
 BDEPEND="           "
 
 pbs_unpack() {

@@ -1,0 +1,31 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="GTK+ & GNOME Accessibility Toolkit"
+HOMEPAGE="http://library.gnome.org/devel/atk/stable/"
+LICENSE="GPLv2"
+PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
+
+SRC_URI="http://ftp.gnome.org/pub/gnome/mobile/2.32/2.32.1/sources/"$N-$V".tar.bz2"
+
+RDEPEND="glib2 gdk-pixbuf glibc"
+BDEPEND=" "
+
+pbs_unpack() {
+        ypkg_unpack
+}
+
+pbs_config() {
+	YPB_CONFIG+=""
+	ypkg_config
+}
+
+pbs_build() {
+	ypkg_make
+}
+
+pbs_install() {
+	ypkg_mkinstall
+}
+

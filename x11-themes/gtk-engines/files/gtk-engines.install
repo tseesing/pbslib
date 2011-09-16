@@ -6,3 +6,11 @@ post_install() {
 		ypkg_libtool_finish /usr/lib*/gtk*/*/$dir
 	done
 }
+
+post_upgrade() {
+	post_install
+}
+
+post_downgrade() {
+	post_install
+}

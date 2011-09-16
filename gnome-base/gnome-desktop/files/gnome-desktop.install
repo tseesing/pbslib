@@ -20,9 +20,10 @@ post_install() {
 	gnome2_install_defaut_gconf "bool" "/desktop/gnome/peripherals/keyboard/remember_numlock_state"  "True"
 	# chromium is default browser
 	gnome2_install_defaut_gconf "string" "/desktop/gnome/applications/browser/exec"    "/usr/bin/chromium"
-	 gnome2_install_defaut_gconf "string" "/desktop/gnome/url-handlers/unknown/command" "/usr/bin/chromium %s"
-	 gnome2_install_defaut_gconf "string" "/desktop/gnome/url-handlers/http/command"    "/usr/bin/chromium %s"
-	 gnome2_install_defaut_gconf "string" "/desktop/gnome/url-handlers/https/command"   "/usr/bin/chromium %s"
-	 gnome2_install_defaut_gconf "string" "/desktop/gnome/url-handlers/about/command"   "/usr/bin/chromium %s"
+	gnome2_install_defaut_gconf "string" "/desktop/gnome/url-handlers/unknown/command" "/usr/bin/chromium %s"
+	gnome2_install_defaut_gconf "string" "/desktop/gnome/url-handlers/http/command"    "/usr/bin/chromium %s"
+	gnome2_install_defaut_gconf "string" "/desktop/gnome/url-handlers/https/command"   "/usr/bin/chromium %s"
+	gnome2_install_defaut_gconf "string" "/desktop/gnome/url-handlers/about/command"   "/usr/bin/chromium %s"
+	gnome2_gconfd_reload
 }
 

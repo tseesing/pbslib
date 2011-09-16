@@ -10,7 +10,7 @@ PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 
 SRC_URI="http://nchc.dl.sourceforge.net/project/urlget/uget%20%28stable%29/1.8.0/uget-1.8.0.tar.gz"
 
-RDEPEND="atk cairo curl cyrus-sasl dbus dbus-glib expat fontconfig freetype gcc glib2 glibc gstreamer gtk+ libidn libnotify libpng libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libxml2 libXrandr libXrender openldap pango pixman zlib"
+RDEPEND="atk cairo curl cyrus-sasl dbus dbus-glib expat fontconfig freetype gcc glib2 gdk-pixbuf glibc gstreamer gtk+ libidn libnotify libpng libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libxml2 libXrandr libXrender openldap pango pixman zlib"
 BDEPEND=""
 RECOMMENDED="aria2"
 CONFLICT=""

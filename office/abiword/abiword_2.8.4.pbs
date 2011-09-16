@@ -7,7 +7,7 @@ HOMEPAGE="http://www.abisource.com/"
  
 SRC_URI="http://www.abisource.com/downloads/"$N"/"$V"/source/"$N-$V$R".tar.gz"
 
-RDEPEND="atk avahi cairo dbus dbus-glib enchant expat fontconfig freetype fribidi gcc gconf glib2 glibc gnome-vfs gtk+ libbonobo libcroco libgsf libjpeg-turbo libpng librsvg libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libxml2 libXrandr libXrender openssl orbit pango pixman wv zlib"
+RDEPEND="atk avahi cairo dbus dbus-glib enchant expat fontconfig freetype fribidi gcc gconf glib2 gdk-pixbuf glibc gnome-vfs gtk+ libbonobo libcroco libgsf libjpeg-turbo libpng librsvg libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libxml2 libXrandr libXrender openssl orbit pango pixman wv zlib"
 BDEPEND="                                        "
 
 pbs_unpack() {

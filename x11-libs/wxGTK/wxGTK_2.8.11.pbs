@@ -7,7 +7,7 @@ HOMEPAGE="http://wxwidgets.org/"
  
 SRC_URI="http://downloads.sourceforge.net/project/wxwindows/"$V$R"/"$N-$V$R".tar.gz"
 
-RDEPEND="atk cairo expat fontconfig freetype gcc glib2 glibc gtk+ libICE libjpeg-turbo libpng libSM libtiff libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libXinerama libXrandr libXrender libXxf86vm pango pixman util-linux-ng wxWidgets zlib"
+RDEPEND="atk cairo expat fontconfig freetype gcc glib2 gdk-pixbuf glibc gtk+ libICE libjpeg-turbo libpng libSM libtiff libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libXinerama libXrandr libXrender libXxf86vm pango pixman util-linux-ng wxWidgets zlib"
 BDEPEND="                                "
 
 pbs_unpack() {

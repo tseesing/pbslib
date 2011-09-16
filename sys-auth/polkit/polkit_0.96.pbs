@@ -16,7 +16,7 @@ NOTES="1. User and group polkituser should be created automatically.
 
 INSTALL="$N.install"
 
-RDEPEND="dbus dbus-glib eggdbus expat glib2 glibc pam policykit zlib"
+RDEPEND="dbus dbus-glib eggdbus expat glib2 gdk-pixbuf glibc pam policykit zlib"
 BDEPEND="" 
 
 pbs_unpack() {

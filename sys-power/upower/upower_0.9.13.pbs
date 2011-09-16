@@ -1,0 +1,31 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="D-Bus abstraction for enumerating power devices and querying history and statistics"
+HOMEPAGE="http://upower.freedesktop.org/"
+LICENSE="GPL-2"
+PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
+
+SRC_URI="http://upower.freedesktop.org/releases/"$N-$V".tar.xz"
+
+RDEPEND="dbus dbus-glib eggdbus glib2 glibc libusb polkit udev zlib"
+BDEPEND=" "
+RECOMMENDED=""
+
+pbs_unpack() {
+        ypkg_unpack
+}
+
+pbs_config() {
+	YPB_CONFIG+=""
+	ypkg_config
+}
+
+pbs_build() {
+	ypkg_make
+}
+
+pbs_install() {
+	ypkg_mkinstall
+}

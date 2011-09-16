@@ -12,7 +12,7 @@ SRC_URI="http://releases.compiz.org/"$V$R"/"$N-$V$R".tar.bz2"
 
 RDEPEND="libwnck libXres metacity libcanberra libvorbis libogg libtool gconf orbit dbus-glib dbus
 	 startup-notification libXcomposite libXdamage libXcursor libXfixes libgtop libXrandr libSM 
-	 util-linux-ng libICE libXinerama libXext gtk+ atk glib2 glibc pango gcc cairo pixman libxml2
+	 util-linux-ng libICE libXinerama libXext gtk+ atk glib2 gdk-pixbuf glibc pango gcc cairo pixman libxml2
 	 directfb libpng libxcb libXrender libX11 libxcb libXau libXdmcp fontconfig freetype zlib expat libXi gcc"
 BDEPEND=""
 RECOMMENDED=""

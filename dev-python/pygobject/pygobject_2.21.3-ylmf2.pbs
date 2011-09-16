@@ -9,7 +9,7 @@ PACKAGER="<ylmfos@115.com>"
 
 SRC_URI="http://ftp.gnome.org/pub/gnome/bindings/2.30/2.30.2/sources/python/"$N-$V".tar.bz2"
 
-RDEPEND="glib2 glibc libffi zlib"
+RDEPEND="glib2 gdk-pixbuf glibc libffi zlib"
 BDEPEND="   "
 RECOMMENDED=""
 

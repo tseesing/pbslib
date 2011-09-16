@@ -11,7 +11,7 @@ PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 
 SRC_URI="http://downloads.sourceforge.net/project/bluefish/bluefish/2.0.2/bluefish-2.0.2.tar.bz2"
 
-RDEPEND="atk cairo enchant expat fontconfig freetype gcc glib2 glibc gtk+ gucharmap libpng libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libxml2 libXrandr libXrender pango pixman zlib"
+RDEPEND="atk cairo enchant expat fontconfig freetype gcc glib2 gdk-pixbuf glibc gtk+ gucharmap libpng libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libxml2 libXrandr libXrender pango pixman zlib"
 BDEPEND="  "
 RECOMMENDED=""
 CONFLICT=""

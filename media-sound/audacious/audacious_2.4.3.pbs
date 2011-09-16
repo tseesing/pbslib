@@ -9,7 +9,7 @@ PACKAGER="<ylmfos@115.com>"
 
 SRC_URI="http://distfiles.atheme.org/"$N-$V$R".tgz"
 
-RDEPEND="libSM libICE glib2 gtk+ atk pango cairo freetype fontconfig dbus-glib dbus libmowgli libmcs
+RDEPEND="libSM libICE glib2 gdk-pixbuf gtk+ atk pango cairo freetype fontconfig dbus-glib dbus libmowgli libmcs
          libX11 util-linux-ng libXi libXrandr libXcursor libXcomposite libXext libXdamage libXfixes 
 	 pixman libxml2 directfb libpng libxcb libXrender libXau libXdmcp glibc zlib expat"
 BDEPEND=" libglade"

@@ -1,0 +1,31 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="Streaming media framework"
+HOMEPAGE="http://gstreamer.sourceforge.net"
+LICENSE="GPL-2"
+PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
+
+SRC_URI="http://ftp.gnome.org/pub/gnome/sources/gstreamer/0.10/"$N-$V".tar.xz"
+
+RDEPEND="glib2 gdk-pixbuf glibc libxml2 zlib"
+BDEPEND="   "
+RECOMMENDED=""
+
+pbs_unpack() {
+        ypkg_unpack
+}
+
+pbs_config() {
+	YPB_CONFIG+=" --disable-docbook --disable-tests"
+	ypkg_config
+}
+
+pbs_build() {
+	ypkg_make
+}
+
+pbs_install() {
+	ypkg_mkinstall
+}

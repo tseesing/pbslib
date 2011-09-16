@@ -11,7 +11,7 @@ PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 
 SRC_URI="http://ankeena.mozilla.org/pub/mozilla.org/thunderbird/releases/3.1.11/linux-i686/zh-CN/thunderbird-3.1.11.tar.bz2"
 
-RDEPEND="alsa-lib atk avahi cairo dbus dbus-glib expat fontconfig freetype gcc gconf glib2 glibc gnome-vfs gtk+ libICE libnotify libpng 
+RDEPEND="alsa-lib atk avahi cairo dbus dbus-glib expat fontconfig freetype gcc gconf glib2 gdk-pixbuf glibc gnome-vfs gtk+ libICE libnotify libpng 
          libSM libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libxml2 libXrandr libXrender 
 		 libXt nspr nss openssl orbit pango pixman sqlite startup-notification util-linux-ng zlib"
 BDEPEND=""

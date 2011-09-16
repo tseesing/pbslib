@@ -10,7 +10,7 @@ PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 
 SRC_URI="http://download.tuxfamily.org/"$N"/"$N-$V$R".tar.gz"
 
-RDEPEND="alsa-lib dbus glib2 glibc gst-plugins-base gstreamer libxml2 ncurses readline zlib"
+RDEPEND="alsa-lib dbus glib2 gdk-pixbuf glibc gst-plugins-base gstreamer libxml2 ncurses readline zlib"
 BDEPEND=""
 RECOMMENDED=""
 CONFLICT=""

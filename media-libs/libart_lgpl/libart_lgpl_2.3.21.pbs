@@ -4,14 +4,13 @@
 
 DESCRIPTION="The libart_lgpl package contains the libart libraries. These are useful for high-performance 2D graphics."
 HOMEPAGE="http://www.levien.com/libart"
-REPO=""
 LICENSE="GPL-2"
-PACKAGER="<ylmfos@115.com>"
+PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 
-SRC_URI=" http://ftp.gnome.org/pub/gnome/platform/2.30/2.30.2/sources/"$N-$V$R".tar.bz2 "
+SRC_URI="http://ftp.acc.umu.se/pub/gnome/platform/2.32/2.32.1/sources/"$N-$V".tar.bz2"
 
 BDEPEND="glibc"
-RECOMMENDED="glibc"
+RECOMMENDED=""
 
 pbs_unpack() {
         ypkg_unpack

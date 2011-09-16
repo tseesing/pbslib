@@ -11,7 +11,7 @@ PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 
 SRC_URI="http://downloads.sourceforge.net/project/"$N"/"$V"/"$N-$V$R".tar.bz2"
 
-RDEPEND="a52dec alsa-lib atk attr audiofile avahi cairo cyrus-sasl dbus dbus-glib directfb esound expat ffmpeg flac fontconfig freetype fribidi gcc gconf glib2 glibc gnome-vfs gnutls gtk+ jack-audio-connection-kit keyutils krb5 libcap libcddb libcroco libdrm libgcrypt libgpg-error libgsf libICE libmad libmodplug libmpeg2 libmtp libnotify libogg libpng libproxy librsvg libsdl libSM libtar libtasn1 libtheora libupnp libusb libusb-compat libva libvorbis libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libxml2 libXpm libXrandr libXrender libXxf86vm mesa openldap openssl orbit pango pixman qt-core samba sdl-image speex sqlite taglib talloc udev util-linux-ng v4l-utils x264 xcb-util zlib"
+RDEPEND="a52dec alsa-lib atk attr audiofile avahi cairo cyrus-sasl dbus dbus-glib directfb esound expat ffmpeg flac fontconfig freetype fribidi gcc gconf glib2 gdk-pixbuf glibc gnome-vfs gnutls gtk+ jack-audio-connection-kit keyutils krb5 libcap libcddb libcroco libdrm libgcrypt libgpg-error libgsf libICE libmad libmodplug libmpeg2 libmtp libnotify libogg libpng libproxy librsvg libsdl libSM libtar libtasn1 libtheora libupnp libusb libusb-compat libva libvorbis libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libxml2 libXpm libXrandr libXrender libXxf86vm mesa openldap openssl orbit pango pixman qt-core samba sdl-image speex sqlite taglib talloc udev util-linux-ng v4l-utils x264 xcb-util zlib"
 BDEPEND=""
 RECOMMENDED=""
 CONFLICT=""

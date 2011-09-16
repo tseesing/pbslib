@@ -1,0 +1,20 @@
+. /usr/lib/ybs/funcs
+
+dir="/usr/share/fonts/unifont"
+
+post_install() {
+	ypkg_dofont $dir 
+}
+
+post_remove() {
+	rm -rf $dir/{fonts.dir,fonts.scale}
+	rmdir /usr/share/fonts/wenquanyi/wqy-microhei ||return 0
+}
+
+post_upgrade() {
+	post_install
+}
+
+post_downgrade() {
+	post_install
+}

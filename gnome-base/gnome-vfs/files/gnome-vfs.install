@@ -1,11 +1,30 @@
 . /usr/lib/ybs/funcs
 
+files="/etc/gconf/schemas/desktop_gnome_url_handlers.schemas 
+       /etc/gconf/schemas/desktop_default_applications.schemas
+       /etc/gconf/schemas/system_dns_sd.schemas 
+       /etc/gconf/schemas/system_smb.schemas 
+       /etc/gconf/schemas/system_http_proxy.schemas"
+
 post_install() {
-	gnome2_install_schema /etc/gconf/schemas/desktop_gnome_url_handlers.schemas
-	gnome2_install_schema /etc/gconf/schemas/desktop_default_applications.schemas
-	gnome2_install_schema /etc/gconf/schemas/system_dns_sd.schemas
-	gnome2_install_schema /etc/gconf/schemas/system_smb.schemas
-	gnome2_install_schema /etc/gconf/schemas/system_http_proxy.schemas
-	gnome2_mime_database_update
+	gnome2_install_schema "$files"
+	gnome2_rarian_sk_update
 	gnome2_gconfd_reload
+}
+
+pre_remove() {
+	gnome2_uninstall_schema "$files"
+}
+
+post_remove() {
+	gnome2_rarian_sk_update
+	gnome2_gconfd_reload
+}
+
+post_upgrade() {
+	post_remove
+}
+
+post_downgrade() {
+	post_remove
 }

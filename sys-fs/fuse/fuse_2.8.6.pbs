@@ -1,0 +1,39 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="This is File-System-In-User-Space implementation. Used for organising virtual file-systems. Well known user is ntfs-3g."
+HOMEPAGE="http://fuse.sourceforge.net/"
+LICENSE="GPL-2"
+PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
+
+SRC_URI="http://sourceforge.net/projects/fuse/files/fuse-2.X/"$V"/"$N-$V".tar.gz"
+
+RDEPEND="glibc"
+BDEPEND=""
+
+pbs_unpack() {
+        ypkg_unpack
+}
+
+pbs_config() {
+	YPB_CONFIG+="--enable-lib --enable-util"
+	ypkg_config
+}
+
+pbs_build() {
+	ypkg_make
+}
+
+pbs_install() {
+	ypkg_mkinstall
+	
+	cd "$YPPATH_DEST"
+
+	# For initramfs-tools
+	ypkg_docp_rename "$FILES_PATH"/files/hook_fuse usr/share/initramfs-tools/hooks/fuse
+	
+	# Delete sysv init script
+	rm -rf etc/init.d/ || return 0
+}
+

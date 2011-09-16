@@ -9,7 +9,7 @@ PACKAGER="<ylmfos@115.com>"
 
 SRC_URI="http://ftp.acc.umu.se/pub/GNOME/sources/"$N"/0.4/"$N-$V$R".tar.bz2"
 
-RDEPEND="gtk+ atk pango cairo pixman libxml2 directfb libpng libxcb gnutls libgcrypt libgcrypt libgpg-error cyrus-sasl gtk+ glib2 
+RDEPEND="gtk+ atk pango cairo pixman libxml2 directfb libpng libxcb gnutls libgcrypt libgcrypt libgpg-error cyrus-sasl gtk+ glib2 gdk-pixbuf 
          libXrender fontconfig freetype expat libX11 libxcb libXau libXdmcp gnutls libgcrypt libgpg-error cyrus-sasl zlib libXi libXrandr 
 	 libXcursor libXcomposite libXext libXdamage libXfixes "
 BDEPEND="  "

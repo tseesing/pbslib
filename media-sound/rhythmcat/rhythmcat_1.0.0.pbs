@@ -11,7 +11,7 @@ PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 
 SRC_URI="http://rhythmcat.googlecode.com/files/RhythmCat-1.0.0-alpha1~110402.tar.bz2"
 
-RDEPEND="atk cairo dbus dbus-glib expat fontconfig freetype gcc glib2 glibc gst-plugins-base gstreamer gtk+ libpng libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libxml2 libXrandr libXrender pango pixman zlib"
+RDEPEND="atk cairo dbus dbus-glib expat fontconfig freetype gcc glib2 gdk-pixbuf glibc gst-plugins-base gstreamer gtk+ libpng libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libxml2 libXrandr libXrender pango pixman zlib"
 BDEPEND=""
 RECOMMENDED=""
 CONFLICT=""

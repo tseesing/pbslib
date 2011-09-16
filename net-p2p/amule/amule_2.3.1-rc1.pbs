@@ -8,7 +8,7 @@ REPO=""
 
 SRC_URI="http://nchc.dl.sourceforge.net/project/amule/aMule/2.3.1rc1/aMule-2.3.1rc1.tar.bz2"
 
-RDEPEND="crypto++ geoip atk binutils cairo expat fontconfig freetype gd geoip glib2 glibc gtk+ libICE libjpeg-turbo libpng libSM libtiff libupnp libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libXinerama libXpm libXrandr libXrender libXxf86vm ncurses pango pixman readline util-linux-ng wxGTK wxWidgets zlib"
+RDEPEND="crypto++ geoip atk binutils cairo expat fontconfig freetype gd geoip glib2 gdk-pixbuf glibc gtk+ libICE libjpeg-turbo libpng libSM libtiff libupnp libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libXinerama libXpm libXrandr libXrender libXxf86vm ncurses pango pixman readline util-linux-ng wxGTK wxWidgets zlib"
 BDEPEND="crypto++-dev"
 
 pbs_unpack() {

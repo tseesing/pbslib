@@ -10,7 +10,7 @@ PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 
 SRC_URI="http://ncu.dl.sourceforge.net/project/"$N"/"$N"/"$V$R"/"$N-$V$R"-src.tar.gz"
 
-RDEPEND="farsight2 gcc glib2 glibc gst-plugins-base gstreamer libICE libjpeg-turbo libpng libSM libX11 libXau libxcb libXdmcp libxml2 util-linux-ng v4l-utils zlib tk tls"
+RDEPEND="farsight2 gcc glib2 gdk-pixbuf glibc gst-plugins-base gstreamer libICE libjpeg-turbo libpng libSM libX11 libXau libxcb libXdmcp libxml2 util-linux-ng v4l-utils zlib tk tls"
 BDEPEND=""
 RECOMMENDED=""
 CONFLICT=""

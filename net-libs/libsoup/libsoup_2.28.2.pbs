@@ -7,7 +7,7 @@ HOMEPAGE="http://www.gnome.org/"
 LICENSE="GPL-2"
 PACKAGER="<ylmfos@115.com>"
 SRC_URI="ftp://ftp.gnome.org/pub/gnome/sources/$N/2.28/$N-$V.tar.bz2"
-BDEPEND="glib2 libxml2 net-libs/libproxy"
+BDEPEND="glib2 gdk-pixbuf libxml2 net-libs/libproxy"
 RECOMMENDED="gnutls gnome-keyring libproxy "
 
 NOTES="http://wiki.linuxfromscratch.org/blfs/wiki/libsoup

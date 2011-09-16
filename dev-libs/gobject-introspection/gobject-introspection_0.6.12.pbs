@@ -9,8 +9,8 @@ PACKAGER="<ylmfos@115.com>"
  
 SRC_URI="http://ftp.gnome.org/pub/GNOME/sources/gobject-introspection/0.6/$N-$V.tar.bz2"
 
-RDEPEND=""
-BDEPEND=" glib2 libffi python"
+RDEPEND="glib2 libffi python"
+BDEPEND=""
 
 pbs_unpack() {
         ypkg_unpack

@@ -1,0 +1,32 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="GTK+2 bindings for Python"
+HOMEPAGE="http://www.pygtk.org/"
+LICENSE="GPLv2"
+PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
+
+SRC_URI="http://ftp.gnome.org/pub/gnome/bindings/2.32/2.32.1/sources/python/"$N-$V".tar.bz2 "
+
+RDEPEND="atk cairo expat fontconfig freetype gcc glib2 gdk-pixbuf glibc gtk+ libglade libpng libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libxml2 libXrandr libXrender pango pixman zlib"
+BDEPEND=""
+RECOMMENDED=""
+
+pbs_unpack() {
+        ypkg_unpack
+}
+
+pbs_config() {
+	YPB_CONFIG+="--disable-static"
+	ypkg_config
+}
+
+pbs_build() {
+	make $MAKEOPTS
+}
+
+pbs_install() {
+	make DESTDIR="$YPPATH_DEST" install
+}
+

@@ -1,0 +1,32 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="Basepack of plugins for gstreamer"
+HOMEPAGE="http://gstreamer.sourceforge.net"
+LICENSE="GPL-2"
+PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
+
+SRC_URI="http://ftp.gnome.org/pub/gnome/sources/gst-plugins-base/0.10/"$N-$V".tar.xz"
+
+RDEPEND="alsa-lib avahi cairo dbus dbus-glib expat fontconfig freetype gcc gconf glib2 gdk-pixbuf glibc gnome-vfs gstreamer libICE libogg libpng libSM libtheora libvorbis libX11 libXau libxcb libXdmcp libXext libxml2 libXrender libXv openssl orbit pango pixman udev util-linux-ng zlib"
+BDEPEND="liboil-dev"
+RECOMMENDED=""
+
+pbs_unpack() {
+        ypkg_unpack
+}
+
+pbs_config() {
+	YPB_CONFIG+=""
+	ypkg_config
+}
+
+pbs_build() {
+	ypkg_make
+}
+
+pbs_install() {
+	ypkg_mkinstall
+}
+

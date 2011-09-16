@@ -9,7 +9,7 @@ PACKAGER="<ylmfos@115.com>"
  
 SRC_URI="http://www.freedesktop.org/software/ConsoleKit/dist/ConsoleKit-"$V$R".tar.bz2"
 
-RDEPEND="glib2 zlib glibc dbus-glib dbus polkit eggdbus"
+RDEPEND="glib2 gdk-pixbuf zlib glibc dbus-glib dbus polkit eggdbus"
 BDEPEND=" dbus-glib pam"
 RECOMMENDED="polkit"
 

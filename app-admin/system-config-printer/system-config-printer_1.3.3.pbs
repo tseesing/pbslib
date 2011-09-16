@@ -9,7 +9,7 @@ PACKAGER="<ylmfos@115.com>"
 
 SRC_URI="http://cyberelk.net/tim/data/"$N"/1.3/"$N-$V$R".tar.xz"
 
-RDEPEND="pycups pygobject libffi pygtk pycairo dbus-python notify-python libnotify cups e2fsprogs glib2 glibc gnutls keyutils krb5 libgcrypt libgpg-error libtasn1 libusb libusb-compat udev zlib"
+RDEPEND="pycups pygobject libffi pygtk pycairo dbus-python notify-python libnotify cups e2fsprogs glib2 gdk-pixbuf glibc gnutls keyutils krb5 libgcrypt libgpg-error libtasn1 libusb libusb-compat udev zlib"
 BDEPEND="xmlto"
 RECOMMENDED=""
 

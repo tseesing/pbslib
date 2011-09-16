@@ -9,7 +9,7 @@ PACKAGER="<ylmfos@115.com>"
 SRC_URI="ftp://ftp.gnome.org/pub/gnome/sources/$N/0.10/$N-$V.tar.bz2"
 
 RDEPEND=""
-BDEPEND=" glib2 libxml2"
+BDEPEND=" glib2 gdk-pixbuf libxml2"
 RECOMMENDED=""
 
 NOTES="http://wiki.linuxfromscratch.org/blfs/wiki/gstreamer"

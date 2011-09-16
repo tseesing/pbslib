@@ -1,0 +1,35 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="a tool to generate images and thumbnails from HTML files"
+HOMEPAGE="ftp://ftp.gnome.org/pub/gnome/sources/gnome-web-photo"
+LICENSE="GPL"
+PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
+
+SRC_URI="http://ftp.gnome.org/pub/gnome/sources/"$N"/0.10/"$N-$V$R".tar.xz"
+
+RDEPEND="atk cairo dbus dbus-glib enchant expat fontconfig freetype gail gcc gconf glib2 gdk-pixbuf glibc gnutls gst-plugins-base gstreamer gtk+ icu libgcrypt libgpg-error libICE libjpeg-turbo libpng libSM libsoup libtasn1 libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libxml2 libXrandr libXrender libxslt libXt orbit pango pixman sqlite util-linux-ng webkit zlib"
+BDEPEND=" "
+RECOMMENDED=""
+CONFLICT=""
+
+INSTALL="$N.install"
+
+pbs_unpack() {
+        ypkg_unpack
+}
+
+pbs_config() {
+	YPB_CONFIG+="-with-gtk=2.0"
+	ypkg_config
+}
+
+pbs_build() {
+	ypkg_make
+}
+
+pbs_install() {
+	ypkg_mkinstall
+}
+

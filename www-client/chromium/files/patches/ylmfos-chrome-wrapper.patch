@@ -1,6 +1,5 @@
-diff -ur chromium-13.0.762.0/chrome/tools/build/linux/chrome-wrapper chromium-13.0.762.0.new//chrome/tools/build/linux/chrome-wrapper
---- chromium-13.0.762.0/chrome/tools/build/linux/chrome-wrapper	2011-05-11 10:00:55.000000000 +0800
-+++ chromium-13.0.762.0.new//chrome/tools/build/linux/chrome-wrapper	2011-05-12 17:48:58.517417513 +0800
+--- chrome/tools/build/linux/chrome-wrapper	2011-09-03 16:56:13.000000000 +0800
++++ chrome/tools/build/linux/chrome-wrapper.new	2011-09-08 19:10:28.818962680 +0800
 @@ -7,11 +7,13 @@
  # Running Chromium via this script makes it possible to set Chromium as the
  # default browser directly out of a compile, without needing to package it.
@@ -51,26 +50,29 @@ diff -ur chromium-13.0.762.0/chrome/tools/build/linux/chrome-wrapper chromium-13
          exit 0 ;;
      "--man-page")
 -        exec man "$HERE/../../chrome/app/resources/manpage.1.in" ;;
-+        exec man "$APP" ;;
++    	exec man "$APP" ;;
      *)
          ARGS=( "${ARGS[@]}" "$1" ) ;;
      esac
-@@ -160,4 +162,12 @@
+@@ -160,4 +162,20 @@
  done
  set -- "${ARGS[@]}" "$@"
  
 -exec $CMD_PREFIX "$HERE/chrome" "$@"
-+#cp default Preferences to HOME
++# CP default Preferences to HOME
 +#     
 +if [ ! -d $HOME/.config/chromium ]; then
-+	mkdir -p $HOME/.config
-+	tar xf /usr/lib/chromium/chromium.tar.bz2 -C $HOME/.config/
-+	chown -R $USER:$USER $HOME/.config/chromium 
++       mkdir -p $HOME/.config
++       tar xf /usr/lib/chromium/chromium.tar.bz2 -C $HOME/.config/
++       chown -R $USER:$USER $HOME/.config/chromium 
 +fi
++
 +flash_setting_dir="$HOME/.macromedia/Flash_Player/macromedia.com/support/flashplayer/sys"
 +if [ ! -d $flash_setting_dir ]; then
-+	mkdir -p $flash_setting_dir
-+	cp -a /usr/lib/chromium/settings.sol $flash_setting_dir
-+	chown -R $USER:$USER $flash_setting_dir/settings.sol
++       mkdir -p $flash_setting_dir
++       cp -a /usr/lib/chromium/settings.sol $flash_setting_dir
++       chown -R $USER:$USER $flash_setting_dir/settings.sol
 +fi
++
 +exec $CMD_PREFIX "$BIN" "$@"
++                                      

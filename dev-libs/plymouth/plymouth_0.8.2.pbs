@@ -9,7 +9,7 @@ PACKAGER="<ylmfos@115.com>"
 
 SRC_URI="https://launchpad.net/ubuntu/lucid/+source/"$N"/0.8.2-2ubuntu2/+files/"${N}_$V$R".orig.tar.bz2"
 
-RDEPEND="atk cairo expat fontconfig freetype gcc glib2 glibc gtk+ libdrm libpng libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libXrandr libXrender pango pixman zlib"
+RDEPEND="atk cairo expat fontconfig freetype gcc glib2 gdk-pixbuf glibc gtk+ libdrm libpng libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libXrandr libXrender pango pixman zlib"
 BDEPEND="                         "
 RECOMMENDED="plymouth-theme-ylmf-logo"
 

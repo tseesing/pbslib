@@ -10,7 +10,7 @@ PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 
 SRC_URI="http://nchc.dl.sourceforge.net/project/"$N"/"$N"/"$V$R"/"$N-$V$R".tar.gz"
 
-RDEPEND="glib2 glibc"
+RDEPEND="glib2 gdk-pixbuf glibc"
 BDEPEND=""
 RECOMMENDED=""
 CONFLICT=""

@@ -4,9 +4,7 @@
 
 DESCRIPTION="Feature-rich screenshot program"
 HOMEPAGE="http://shutter-project.org/"
-REPO=""
 LICENSE="GPLv3"
-PRIORITY=""
 PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 
 SRC_URI="http://shutter-project.org/wp-content/uploads/releases/tars/"$N-$V".tar.gz"
@@ -17,12 +15,10 @@ RDEPEND="gnome2-perl gnome2-gconf-perl gnome2-wnck-perl gtk2-imageview-perl gtk2
 	 gtk2-perl glib-perl pango-perl gnome2-canvas-perl gnome2-vfs-perl goocanvas gtkimageview imagemagick net-dbus
 	 proc-processtable"
 BDEPEND=" "
-RECOMMENDED="perlmagick goo-canvas-perl net-dbus-glib-perl image-exiftool-perl x11-protocol-perl cairo-perl"
+RECOMMENDED="perlmagick goo-canvas-perl net-dbus-glib-perl image-exiftool-perl x11-protocol-perl cairo-perl gnome-web-photo"
 CONFLICT=""
 
 INSTALL="$N.install"
-
-NOTES=""
 
 pbs_unpack() {
         ypkg_unpack

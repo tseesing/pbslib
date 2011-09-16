@@ -1,7 +1,9 @@
 . /usr/lib/ybs/funcs
 
+files="/etc/gconf/schemas/cheese.schemas"
+
 post_install() {
-	gnome2_install_schema "/etc/gconf/schemas/cheese.schemas"
+	gnome2_install_schema $files
 	gnome2_rarian_sk_update
 	gnome2_desktop_database_update
 	gnome2_icon_cache_update
@@ -9,7 +11,22 @@ post_install() {
 }   
 
 pre_remove() {
-	gnome2_desktop_database_update
-	gnome2_gconfd_reload
+	gnome2_uninstall_schema $files
 }
+
+post_remove() {
+	gnome2_rarian_sk_update
+        gnome2_desktop_database_update
+        gnome2_icon_cache_update
+        gnome2_gconfd_reload
+}
+
+post_upgrade() {
+	post_remove
+}
+
+post_downgrade() {
+	post_remove
+}
+
 	

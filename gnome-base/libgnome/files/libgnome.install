@@ -1,24 +1,46 @@
 . /usr/lib/ybs/funcs
 
+files=" /etc/gconf/schemas/desktop_gnome_interface.schemas
+        /etc/gconf/schemas/desktop_gnome_background.schemas
+	/etc/gconf/schemas/desktop_gnome_thumbnailers.schemas
+	/etc/gconf/schemas/desktop_gnome_thumbnail_cache.schemas
+	/etc/gconf/schemas/desktop_gnome_typing_break.schemas
+	/etc/gconf/schemas/desktop_gnome_sound.schemas
+	/etc/gconf/schemas/desktop_gnome_peripherals_keyboard.schemas
+	/etc/gconf/schemas/desktop_gnome_peripherals_mouse.schemas
+	/etc/gconf/schemas/desktop_gnome_lockdown.schemas
+	/etc/gconf/schemas/desktop_gnome_file_views.schemas
+	/etc/gconf/schemas/desktop_gnome_applications_office.schemas
+	/etc/gconf/schemas/desktop_gnome_applications_window_manager.schemas
+	/etc/gconf/schemas/desktop_gnome_applications_terminal.schemas
+	/etc/gconf/schemas/desktop_gnome_applications_browser.schemas
+	/etc/gconf/schemas/desktop_gnome_applications_at_mobility.schemas
+	/etc/gconf/schemas/desktop_gnome_applications_at_visual.schemas
+	/etc/gconf/schemas/desktop_gnome_accessibility_startup.schemas
+	etc/gconf/schemas/desktop_gnome_accessibility_keyboard.schemas"
+									       
 post_install() {
-	gnome2_install_schema   "/etc/gconf/schemas/desktop_gnome_interface.schemas"     \
-				"/etc/gconf/schemas/desktop_gnome_background.schemas"     \
-				"/etc/gconf/schemas/desktop_gnome_thumbnailers.schemas"    \
-				"/etc/gconf/schemas/desktop_gnome_thumbnail_cache.schemas"  \
-				"/etc/gconf/schemas/desktop_gnome_typing_break.schemas"     \
-				"/etc/gconf/schemas/desktop_gnome_sound.schemas"             \
-				"/etc/gconf/schemas/desktop_gnome_peripherals_keyboard.schemas" \
-				"/etc/gconf/schemas/desktop_gnome_peripherals_mouse.schemas" \
-				"/etc/gconf/schemas/desktop_gnome_lockdown.schemas"      \
-				"/etc/gconf/schemas/desktop_gnome_file_views.schemas"   \
-				"/etc/gconf/schemas/desktop_gnome_applications_office.schemas" \
-				"/etc/gconf/schemas/desktop_gnome_applications_window_manager.schemas" \
-				"/etc/gconf/schemas/desktop_gnome_applications_terminal.schemas" \
-				"/etc/gconf/schemas/desktop_gnome_applications_browser.schemas" \
-				"/etc/gconf/schemas/desktop_gnome_applications_at_mobility.schemas" \
-				"/etc/gconf/schemas/desktop_gnome_applications_at_visual.schemas" \
-				"/etc/gconf/schemas/desktop_gnome_accessibility_startup.schemas"  \
-				"/etc/gconf/schemas/desktop_gnome_accessibility_keyboard.schemas"
-	gnome2_install_defaut_gconf "bool" "/desktop/gnome/interface/menus_have_icons" "true"            	gnome2_mime_database_update
+	ypkg_domk build $1 $2
+	gnome2_install_schema "$files"
+	gnome2_install_defaut_gconf "bool" "/desktop/gnome/interface/menus_have_icons" "true" 
+	gnome2_rarian_sk_update
 	gnome2_gconfd_reload
 }
+
+pre_remove() {
+	gnome2_uninstall_schema "$files"
+}
+
+post_remove() {
+	gnome2_rarian_sk_update
+	gnome2_gconfd_reload
+}
+
+post_upgrade() {
+	post_remove
+}
+
+post_downgrade() {
+	post_remove
+}
+

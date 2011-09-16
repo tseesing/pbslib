@@ -2,14 +2,14 @@
 # YLmf_OS package build script
 #
 
-DESCRIPTION="C++ interface for glib22"
+DESCRIPTION="C++ interface for glib2"
 HOMEPAGE="http://www.gtkmm.org"
 LICENSE="GPL-2"
 PACKAGER="<ylmfos@115.com>"
  
 SRC_URI=" http://ftp.gnome.org/pub/gnome/sources/"$N"/2.24/"$N-$V$R".tar.bz2 "
 
-RDEPEND="gcc glib2 glibc libsigc++ zlib"
+RDEPEND="gcc glib2 gdk-pixbuf glibc libsigc++ zlib"
 BDEPEND=""
 RECOMMENDED=""
 

@@ -10,7 +10,7 @@ PACKAGER="<ylmfos@115.com>"
 
 SRC_URI="http://hal.freedesktop.org/releases/"$N-$V$R".tar.gz"
 
-RDEPEND="dbus dbus-glib glib2 glibc zlib"
+RDEPEND="dbus dbus-glib glib2 gdk-pixbuf glibc zlib"
 BDEPEND="    "
 
 pbs_unpack() {

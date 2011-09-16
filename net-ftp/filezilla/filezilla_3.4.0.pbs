@@ -11,7 +11,7 @@ PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 
 SRC_URI="http://downloads.sourceforge.net/"$N"/FileZilla_"$V$R"_src.tar.bz2"
 
-RDEPEND="atk cairo dbus expat fontconfig freetype gcc glib2 glibc gnutls gtk+ libgcrypt libgpg-error libICE libidn libjpeg-turbo libpng libSM libtasn1 libtiff libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libXinerama libXrandr libXrender libXxf86vm pango pixman util-linux-ng wxGTK wxWidgets zlib"
+RDEPEND="atk cairo dbus expat fontconfig freetype gcc glib2 gdk-pixbuf glibc gnutls gtk+ libgcrypt libgpg-error libICE libidn libjpeg-turbo libpng libSM libtasn1 libtiff libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libXinerama libXrandr libXrender libXxf86vm pango pixman util-linux-ng wxGTK wxWidgets zlib"
 BDEPEND=""
 RECOMMENDED=""
 CONFLICT=""

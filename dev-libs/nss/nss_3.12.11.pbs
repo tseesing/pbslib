@@ -1,0 +1,99 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="Mozilla's Network Security Services library that implements PKI support"
+HOMEPAGE="http://www.mozilla.org/projects/security/pki/nss/"
+LICENSE="GPL-2"
+YVERSION="2"
+
+SRC_URI="http://ftp.mozilla.org/pub/mozilla.org/security/"$N"/releases/NSS_3_12_11_RTM/src/"$N-$V".tar.gz"
+
+RDEPEND="glibc nspr sqlite zlib"
+BDEPEND=""
+
+pbs_unpack() {
+        ypkg_unpack
+}
+
+pbs_build() {
+	# Distrust DigiNotar root CA - backported from CVS (https://bugzilla.mozilla.org/show_bug.cgi?id=682927)
+	ypkg_patch distrust-diginotar.patch
+
+	# Adds the SPI Inc. and CAcert.org CA certificates - patch from Debian
+	ypkg_patch add_spi+cacert_ca_certs.patch
+
+	# Adds transitional SSL renegotiate support - patch from Debian
+	ypkg_patch ssl-renegotiate-transitional.patch
+
+	# Removes rpath
+	ypkg_patch nss-no-rpath.patch
+
+	# Respect LDFLAGS
+	sed -e 's/\$(MKSHLIB) -o/\$(MKSHLIB) \$(LDFLAGS) -o/g' \
+	    -i mozilla/security/coreconf/rules.mk
+
+	export BUILD_OPT=1
+	export PKG_CONFIG_ALLOW_SYSTEM_LIBS=1
+	export PKG_CONFIG_ALLOW_SYSTEM_CFLAGS=1
+	export NSS_USE_SYSTEM_SQLITE=1
+	export NSPR_INCLUDE_DIR=`pkg-config --cflags-only-I nspr | sed 's/-I//'`
+	export NSPR_LIB_DIR=`pkg-config --libs-only-L nspr | sed 's/-L.//'`
+	export XCFLAGS="${CFLAGS}"
+
+        [ "$ARCH" = "x86_64" ] && export USE_64=1
+
+	make -j 1 -C mozilla/security/coreconf
+	make -j 1 -C mozilla/security/dbm
+	make -j 1 -C mozilla/security/nss
+}
+
+pbs_install() {
+	install -m755 -d "${YPPATH_DEST}/usr/lib/pkgconfig"
+	install -m755 -d "${YPPATH_DEST}/usr/bin"
+	install -m755 -d "${YPPATH_DEST}/usr/include/nss"
+
+	NSS_VMAJOR=`grep "#define.*NSS_VMAJOR" mozilla/security/nss/lib/nss/nss.h | awk '{print $3}'`
+	NSS_VMINOR=`grep "#define.*NSS_VMINOR" mozilla/security/nss/lib/nss/nss.h | awk '{print $3}'`
+	NSS_VPATCH=`grep "#define.*NSS_VPATCH" mozilla/security/nss/lib/nss/nss.h | awk '{print $3}'`
+
+	sed "${FILES_PATH}/files/nss.pc.in" -e "s,%libdir%,/usr/lib,g" \
+	 		                    -e "s,%prefix%,/usr,g" \
+					    -e "s,%exec_prefix%,/usr/bin,g" \
+					    -e "s,%includedir%,/usr/include/nss,g" \
+					    -e "s,%NSPR_VERSION%,${V},g" \
+					    -e "s,%NSS_VERSION%,${V},g" \
+					    >"${YPPATH_DEST}/usr/lib/pkgconfig/nss.pc"
+     
+       ln -sf nss.pc "${YPPATH_DEST}/usr/lib/pkgconfig/mozilla-nss.pc"
+       chmod 644 ${YPPATH_DEST}/usr/lib/pkgconfig/*.pc
+  		
+       sed "${FILES_PATH}/files/nss-config.in" -e "s,@libdir@,/usr/lib,g" \
+       			 	    -e "s,@prefix@,/usr/bin,g" \
+   				    -e "s,@exec_prefix@,/usr/bin,g" \
+    				    -e "s,@includedir@,/usr/include/nss,g" \
+ 				    -e "s,@MOD_MAJOR_VERSION@,${NSS_VMAJOR},g" \
+				    -e "s,@MOD_MINOR_VERSION@,${NSS_VMINOR},g" \
+    				    -e "s,@MOD_PATCH_VERSION@,${NSS_VPATCH},g" \
+	    			    > "${YPPATH_DEST}/usr/bin/nss-config"
+
+	chmod 755 "${YPPATH_DEST}/usr/bin/nss-config"
+  
+  	for file in libsoftokn3.so libfreebl3.so libnss3.so libnssutil3.so \
+	            libssl3.so libsmime3.so libnssckbi.so libnssdbm3.so; do
+		install -m755 mozilla/dist/*.OBJ/lib/${file} "${YPPATH_DEST}/usr/lib/"
+	done
+													        install -m644 mozilla/dist/*.OBJ/lib/libcrmf.a "${YPPATH_DEST}/usr/lib/"
+	install -m644 mozilla/dist/*.OBJ/lib/*.chk "${YPPATH_DEST}/usr/lib/"
+
+	for file in certutil cmsutil crlutil modutil pk12util shlibsign signtool signver ssltap; do
+		install -m755 mozilla/dist/*.OBJ/bin/${file} "${YPPATH_DEST}/usr/bin/"
+	done
+
+	install -m644 mozilla/dist/public/nss/*.h "${YPPATH_DEST}/usr/include/nss/"
+
+	cd "$YPPATH_DEST"/
+	ypkg_doln /usr/lib/libnss3.so      usr/lib/libnss3.so.1d
+	ypkg_doln /usr/lib/libnssutil3.so  usr/lib/libnssutil3.so.1d
+	ypkg_doln /usr/lib/libsmime3.so    usr/lib/libsmime3.so.1d
+}

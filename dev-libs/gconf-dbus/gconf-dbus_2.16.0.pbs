@@ -1,0 +1,32 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="a DBus library for GConf"
+HOMEPAGE="http://ftp.gnome.org/pub/gnome/mobile/2.32/2.32.1/sources/"
+LICENSE="GPLv2"
+PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
+
+SRC_URI="http://ftp.gnome.org/pub/gnome/mobile/2.32/2.32.1/sources/GConf-dbus-"$V".tar.bz2"
+
+RDEPEND="atk cairo cyrus-sasl dbus dbus-glib expat fontconfig freetype gcc gconf gdk-pixbuf glib2 gdk-pixbuf glibc gtk+ libpng libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libxml2 libXrandr libXrender openldap openssl pango pixman zlib"
+RECOMMENDED=""
+BDEPEND=""
+
+pbs_unpack() {
+        ypkg_unpack
+}
+
+pbs_config() {
+	YPB_CONFIG+=""
+	ypkg_config
+}
+
+pbs_build() {
+	ypkg_make
+}
+
+pbs_install() {
+	ypkg_mkinstall
+}
+

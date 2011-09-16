@@ -10,7 +10,7 @@ PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 
 SRC_URI="ftp://ftp.gnu.org/gnu/emacs/"$N-$V$R".tar.bz2"
 
-RDEPEND="alsa-lib atk bzip2 cairo dbus dbus-glib expat fontconfig freetype gcc gconf giflib glib2 glibc gtk+ libcroco libgsf libICE libjpeg-turbo libpng librsvg libSM libtiff libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXft libXi libxml2 libXpm libXrandr libXrender ncurses orbit pango pixman util-linux-ng zlib"
+RDEPEND="alsa-lib atk bzip2 cairo dbus dbus-glib expat fontconfig freetype gcc gconf giflib glib2 gdk-pixbuf glibc gtk+ libcroco libgsf libICE libjpeg-turbo libpng librsvg libSM libtiff libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXft libXi libxml2 libXpm libXrandr libXrender ncurses orbit pango pixman util-linux-ng zlib"
 BDEPEND=""
 RECOMMENDED=""
 CONFLICT=""

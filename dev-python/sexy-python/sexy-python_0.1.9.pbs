@@ -9,7 +9,7 @@ PACKAGER="<ylmfos@115.com>"
 
 SRC_URI="http://releases.chipx86.com/libsexy/"$N"/"$N-$V$R".tar.gz"
 
-RDEPEND="atk cairo expat fontconfig freetype gcc glib2 glibc gtk+ libpng libsexy libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libxml2 libXrandr libXrender pango pixman zlib"
+RDEPEND="atk cairo expat fontconfig freetype gcc glib2 gdk-pixbuf glibc gtk+ libpng libsexy libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libxml2 libXrandr libXrender pango pixman zlib"
 BDEPEND="pygtk-dev                           "
 RECOMMENDED=""
 

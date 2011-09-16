@@ -9,7 +9,7 @@ PACKAGER="<ylmfos@115.com>"
 
 SRC_URI="http://hal.freedesktop.org/releases/"$N-$V".tar.gz"
 
-RDEPEND="dbus dbus-glib expat glib2 glibc util-linux-ng"
+RDEPEND="dbus dbus-glib expat glib2 gdk-pixbuf glibc util-linux-ng"
 BDEPEND="consolekit-dev      "
 RECOMMEND=""
 

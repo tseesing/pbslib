@@ -7,7 +7,7 @@ HOMEPAGE="http://freedesktop.org/wiki/Software/shared-mime-info"
  
 SRC_URI=" http://people.freedesktop.org/~hadess/"$N-$V$R".tar.bz2 "
 
-RDEPEND="glib2 glibc libxml2 zlib"
+RDEPEND="glib2 gdk-pixbuf glibc libxml2 zlib"
 BDEPEND="intltool xml-parser    "
 OPIONAL=""
 

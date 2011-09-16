@@ -10,7 +10,7 @@ REPO=""
 
 SRC_URI="ftp://ftp.trolltech.com/qt/source/qt-everywhere-opensource-src-"$V$R".tar.gz"
 
-RDEPEND="libpng freetype glib2 libSM libICE libXrender fontconfig libXext libX11 zlib gcc 
+RDEPEND="libpng freetype glib2 gdk-pixbuf libSM libICE libXrender fontconfig libXext libX11 zlib gcc 
 	 util-linux-ng expat libxcb libXau libXdmcp glibc gcc"
 BDEPEND=""
 RECOMMENDED=""

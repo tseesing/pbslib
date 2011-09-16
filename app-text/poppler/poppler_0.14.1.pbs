@@ -7,7 +7,7 @@ HOMEPAGE="http://poppler.freedesktop.org/"
  
 SRC_URI="http://poppler.freedesktop.org/"$N-$V$R".tar.gz"
 
-RDEPEND="cairo expat fontconfig freetype gcc glib2 glibc gtk+ lcms libjpeg-turbo libpng libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libxml2 libXrandr libXrender pango pixman zlib"
+RDEPEND="cairo expat fontconfig freetype gcc glib2 gdk-pixbuf glibc gtk+ lcms libjpeg-turbo libpng libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libxml2 libXrandr libXrender pango pixman zlib"
 BDEPEND="                          "
 
 pbs_unpack() {

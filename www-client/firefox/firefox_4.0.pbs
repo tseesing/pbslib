@@ -4,17 +4,15 @@
 
 DESCRIPTION="Firefox Web Browser"
 HOMEPAGE="http://www.mozilla.com/firefox"
-REPO=""
 LICENSE="multi license"
-PRIORITY=""
 PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
+YVERSION="1"
 
 SRC_URI="ftp://ftp.mozilla.org/pub/mozilla.org/"$N"/releases/"$V$R"/source/"$N-$V$R".source.tar.bz2"
 
 RDEPEND=""
-BDEPEND=" mercurial curl wireless-tools mesa libIDL"
+BDEPEND="mercurial curl wireless-tools mesa libIDL"
 RECOMMENDED="ylmfox"
-CONFLICT=""
 
 NOTES="Do not distribute builds with
 --enable-official-branding unless you have
@@ -53,3 +51,4 @@ pbs_install() {
 	ypkg_dodesktop "firefox.desktop"
 	ypkg_docp_rename usr/lib/firefox-4.0/icons/mozicon128.png usr/share/pixmaps/firefox.png
 }
+

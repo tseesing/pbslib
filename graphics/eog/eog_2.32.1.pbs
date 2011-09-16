@@ -1,0 +1,41 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="The Eye of GNOME image viewer"
+HOMEPAGE="http://www.gnome.org/projects/eog/"
+LICENSE="GPLv2"
+PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
+
+SRC_URI="http://ftp.gnome.org/pub/gnome/desktop/2.32/2.32.1/sources/"$N-$V".tar.bz2"
+
+RDEPEND="glibc gnome-desktop libXrandr libXext startup-notification libSM util-linux-ng
+         libICE gconf orbit gtk+ atk glib2 gdk-pixbuf pango cairo pixman directfb libpng libxcb 
+	 libXrender fontconfig freetype libexif lcms dbus-glib dbus libjpeg-turbo libxml2 libX11
+	 libxcb libXau libXdmcp zlib expat libXi libXcursor libXcomposite libXdamage libXfixes"
+BDEPEND=""
+RECOMMENDED=""
+
+INSTALL="$N.install"
+
+pbs_unpack() {
+        ypkg_unpack
+}
+
+pbs_config() {
+	YPB_CONFIG+="--disable-schemas-install"
+	ypkg_config
+}
+
+pbs_build() {
+	ypkg_make
+}
+
+pbs_install() {
+	ypkg_mkinstall
+	ypkg_dodoc AUTHORS COPYING NEWS README
+	# keep clean for rarian
+	rm -fr "$YPPATH_DEST"/var/lib/scrollkeeper
+	rm -fr "$YPPATH_DEST"/var/lib/log
+}
+

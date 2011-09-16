@@ -9,7 +9,7 @@ PACKAGER="<ylmfos@115.com>"
 
 SRC_URI="http://ftp.gnome.org/pub/gnome/desktop/2.30/2.30.2/sources/"$N-$V$R".tar.bz2"
 
-RDEPEND="alsa-lib atk audiofile avahi cairo dbus dbus-glib devicekit-power eggdbus esound expat fontconfig freetype gail gcc gconf glib2 glibc gnome-panel gnome-vfs gtk+ libart_lgpl libbonobo libbonoboui libcanberra libgcrypt libgnome libgnomecanvas libgnome-keyring libgpg-error libICE libnotify libogg libpng libSM libtool libunique libusb libusb-compat libvorbis libwnck libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libxml2 libXrandr libXrender libXres openssl orbit pango pixman popt startup-notification util-linux-ng zlib pm-utils"
+RDEPEND="alsa-lib atk audiofile avahi cairo dbus dbus-glib devicekit-power eggdbus esound expat fontconfig freetype gail gcc gconf glib2 gdk-pixbuf glibc gnome-panel gnome-vfs gtk+ libart_lgpl libbonobo libbonoboui libcanberra libgcrypt libgnome libgnomecanvas libgnome-keyring libgpg-error libICE libnotify libogg libpng libSM libtool libunique libusb libusb-compat libvorbis libwnck libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libxml2 libXrandr libXrender libXres openssl orbit pango pixman popt startup-notification util-linux-ng zlib pm-utils"
 BDEPEND=""
 RECOMMENDED=""
 

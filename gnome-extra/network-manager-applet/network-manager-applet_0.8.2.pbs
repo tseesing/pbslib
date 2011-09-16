@@ -9,7 +9,7 @@ PACKAGER="<ylmfos@115.com>"
 
 SRC_URI="http://ftp.gnome.org/pub/gnome/sources/"$N"/0.8/"$N-$V$R".tar.bz2"
 
-RDEPEND="atk cairo dbus dbus-glib eggdbus expat fontconfig freetype gcc gconf glib2 glibc gnome-bluetooth gtk+ libgcrypt libglade libgnome-keyring libgpg-error libnotify libpng libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libxml2 libXrandr libXrender networkmanager nspr nss orbit pango pixman sqlite udev util-linux-ng zlib"
+RDEPEND="atk cairo dbus dbus-glib eggdbus expat fontconfig freetype gcc gconf glib2 gdk-pixbuf glibc gnome-bluetooth gtk+ libgcrypt libglade libgnome-keyring libgpg-error libnotify libpng libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libxml2 libXrandr libXrender networkmanager nspr nss orbit pango pixman sqlite udev util-linux-ng zlib"
 BDEPEND=""
 RECOMMENDED=""
 

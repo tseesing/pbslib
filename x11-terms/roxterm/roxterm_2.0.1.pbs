@@ -10,7 +10,7 @@ PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 
 SRC_URI="http://nchc.dl.sourceforge.net/project/"$N"/"$N"/"$V$R"/"$N-$V$R".tar.gz"
 
-RDEPEND="atk cairo dbus dbus-glib expat fontconfig freetype gcc glib2 glibc gtk+ libICE libpng libSM libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libXrandr libXrender ncurses pango pixman util-linux-ng vte zlib"
+RDEPEND="atk cairo dbus dbus-glib expat fontconfig freetype gcc glib2 gdk-pixbuf glibc gtk+ libICE libpng libSM libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libXrandr libXrender ncurses pango pixman util-linux-ng vte zlib"
 BDEPEND=""
 RECOMMENDED=""
 CONFLICT=""

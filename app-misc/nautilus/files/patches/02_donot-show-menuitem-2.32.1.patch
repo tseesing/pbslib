@@ -1,0 +1,266 @@
+diff -ur nautilus-2.32.1/src/file-manager/fm-directory-view.c nautilus-2.32.1.new/src/file-manager/fm-directory-view.c
+--- nautilus-2.32.1/src/file-manager/fm-directory-view.c	2010-11-13 19:59:01.000000000 +0800
++++ nautilus-2.32.1.new/src/file-manager/fm-directory-view.c	2011-09-14 10:47:45.060860968 +0800
+@@ -274,6 +274,9 @@
+ static void     fm_directory_view_create_links_for_files       (FMDirectoryView      *view,
+ 								GList                *files,
+ 								GArray               *item_locations);
++static void     fm_directory_view_desktop_links_for_files 	(FMDirectoryView *view,
++                                				GList *files,
++                         					GArray *relative_item_points);
+ static void     trash_or_delete_files                          (GtkWindow            *parent_window,
+ 								const GList          *files,
+ 								gboolean              delete_if_all_already_in_trash,
+@@ -1096,6 +1099,27 @@
+ }
+ 
+ static void
++action_desktop_link_callback (GtkAction *action,
++gpointer callback_data)
++{
++    FMDirectoryView *view;
++     GList *selection;
++     GArray *selected_item_locations;
++ 
++     g_assert (FM_IS_DIRECTORY_VIEW (callback_data));
++ 
++     view = FM_DIRECTORY_VIEW (callback_data);
++     selection = fm_directory_view_get_selection (view);
++     if (selection_not_empty_in_menu_callback (view, selection)) {
++         selected_item_locations = fm_directory_view_get_selected_icon_locations (view);
++         fm_directory_view_desktop_links_for_files (view, selection, selected_item_locations);
++         g_array_free (selected_item_locations, TRUE);
++     }
++ 
++     nautilus_file_list_free (selection);
++}
++ 
++static void
+ action_select_all_callback (GtkAction *action, 
+ 			    gpointer callback_data)
+ {
+@@ -1448,6 +1472,26 @@
+ 	g_free (parent_uri);
+ }
+ 
++static gboolean
++action_computer_icon(GList *files)
++{
++       gboolean ret = FALSE;
++       gsize length;
++       char *file_uris;
++
++       length = g_list_length(files);
++       if(length == 1){
++               file_uris = nautilus_file_get_uri(files->data);
++              if(strcmp(file_uris,"x-nautilus-desktop:///computer") == 0 ||
++               strcmp(file_uris,"computer:///") == 0){
++                       ret = g_spawn_command_line_async("gnome-system-monitor -s",NULL);
++              }
++               g_free(file_uris);
++       }
++       return ret;
++}
++
++
+ static void
+ action_properties_callback (GtkAction *action,
+ 			    gpointer callback_data)
+@@ -1469,7 +1513,8 @@
+ 			nautilus_file_list_free (files);
+ 		}
+ 	} else {
+-		fm_properties_window_present (selection, GTK_WIDGET (view));
++		if(!action_computer_icon(selection))
++		               fm_properties_window_present (selection, GTK_WIDGET (view));
+ 	}
+         nautilus_file_list_free (selection);
+ }
+@@ -1488,7 +1533,8 @@
+ 
+ 	files = g_list_append (NULL, nautilus_file_ref (view->details->location_popup_directory_as_file));
+ 
+-	fm_properties_window_present (files, GTK_WIDGET (view));
++	if(!action_computer_icon(files))
++		fm_properties_window_present (files, GTK_WIDGET (view));
+ 
+ 	nautilus_file_list_free (files);
+ }
+@@ -3749,6 +3795,41 @@
+ }
+ 
+ static void
++fm_directory_view_desktop_links_for_files (FMDirectoryView *view, GList *files,
++                                          GArray *relative_item_points)
++{
++       GList *uris;
++       char *dir_uri;
++       CopyMoveDoneData *copy_move_done_data;
++       g_assert (relative_item_points->len == 0
++                 || g_list_length (files) == relative_item_points->len);
++       
++        g_assert (FM_IS_DIRECTORY_VIEW (view));
++        g_assert (files != NULL);
++
++       /* create a list of URIs */
++        uris = NULL;
++        g_list_foreach (files, prepend_uri_one, &uris);
++        uris = g_list_reverse (uris);
++ 
++         g_assert (g_list_length (uris) == g_list_length (files));
++ 
++        /* offset the drop locations a bit so that we don't pile
++         * up the icons on top of each other
++         */
++        offset_drop_points (relative_item_points,
++                            DUPLICATE_HORIZONTAL_ICON_OFFSET,
++                            DUPLICATE_VERTICAL_ICON_OFFSET);
++ 
++         copy_move_done_data = pre_copy_move (view);
++        dir_uri = g_filename_to_uri(g_get_user_special_dir(G_USER_DIRECTORY_DESKTOP),NULL,NULL);
++        nautilus_file_operations_copy_move (uris, relative_item_points, dir_uri, GDK_ACTION_LINK, 
++                                            GTK_WIDGET (view), copy_move_done_callback, copy_move_done_data);
++        g_free (dir_uri);
++        eel_g_list_free_deep (uris);
++}
++ 
++static void
+ fm_directory_view_duplicate_selection (FMDirectoryView *view, GList *files,
+ 				       GArray *relative_item_points)
+ {
+@@ -7170,6 +7251,12 @@
+   /* label, accelerator */       N_("Ma_ke Link"), "<control>M",
+   /* tooltip */                  N_("Create a symbolic link for each selected item"),
+                                  G_CALLBACK (action_create_link_callback) },
++
++  /* name, stock id */         { "Desktop Link", NULL,
++  /* label, accelerator */       N_("Ma_ke Link on desktop"), "<control>L",
++  /* tooltip */                  N_("Create a symbolic link for each selected item on desktop"),
++                                 G_CALLBACK (action_desktop_link_callback) },
++
+   /* name, stock id */         { "Rename", NULL,
+   /* label, accelerator */       N_("_Rename..."), "F2",
+   /* tooltip */                  N_("Rename selected item"),
+@@ -7907,6 +7994,12 @@
+ 	}
+ }
+ 
++static gboolean
++fm_directory_view_is_desktop(FMDirectoryView *view)
++{
++       return (nautilus_window_info_get_window_type(view->details->window) == NAUTILUS_WINDOW_DESKTOP);
++}
++
+ static void
+ real_update_menus_volumes (FMDirectoryView *view,
+ 			   GList *selection,
+@@ -8294,7 +8387,7 @@
+ 	
+ 	action = gtk_action_group_get_action (view->details->dir_action_group,
+ 					      FM_ACTION_PASTE_FILES_INTO);
+-	gtk_action_set_visible (action, can_paste_files_into);
++	gtk_action_set_visible (action, FALSE/*can_paste_files_into*/);
+ 	gtk_action_set_sensitive (action, !selection_is_read_only);
+ 
+ 	/* Ask the clipboard */
+@@ -8546,6 +8639,10 @@
+ 				  selection_count == 1 &&
+ 				  fm_directory_view_can_rename_file (view, selection->data));
+ 
++        if(fm_directory_view_is_desktop(view)){
++	                      gtk_action_set_visible(action,gtk_action_get_sensitive(action));
++	}
++
+ 	action = gtk_action_group_get_action (view->details->dir_action_group,
+ 					      FM_ACTION_NEW_FOLDER);
+ 	gtk_action_set_sensitive (action, can_create_files);
+@@ -8754,6 +8851,11 @@
+ 	}
+ 	gtk_action_set_sensitive (action, can_delete_files);
+ 
++	if(fm_directory_view_is_desktop(view)){
++	                      gtk_action_set_visible (action, can_delete_files);
++	                      if(!can_delete_files)
++	                              show_separate_delete_command = can_delete_files;
++	}
+ 
+ 	action = gtk_action_group_get_action (view->details->dir_action_group,
+ 					      FM_ACTION_RESTORE_FROM_TRASH);
+@@ -8775,6 +8877,13 @@
+ 	show_properties = (!FM_IS_DESKTOP_ICON_VIEW (view) || selection_count > 0) &&
+ 			   fm_directory_view_supports_properties (view);
+ 
++	gtk_action_set_visible(action,can_link_files);
++	      
++	action = gtk_action_group_get_action (view->details->dir_action_group,
++	                                                    "Desktop Link");
++	gtk_action_set_sensitive (action, can_link_files);
++	gtk_action_set_visible(action,can_link_files);
++
+ 	action = gtk_action_group_get_action (view->details->dir_action_group,
+ 					      FM_ACTION_PROPERTIES);
+ 
+@@ -8841,10 +8950,23 @@
+ 					      FM_ACTION_CUT);
+ 	gtk_action_set_sensitive (action, can_delete_files);
+ 
++	gtk_action_set_sensitive (action, can_copy_files);
++	      if(selection_contains_special_link){
++	                     gtk_action_set_visible(action,gtk_action_get_sensitive(action));
++	             }else{
++	                      gtk_action_set_visible(action,TRUE);
++	 }
++
+ 	action = gtk_action_group_get_action (view->details->dir_action_group,
+ 					      FM_ACTION_COPY);
+ 	gtk_action_set_sensitive (action, can_copy_files);
+ 
++	if(selection_contains_special_link){
++	              gtk_action_set_visible(action,gtk_action_get_sensitive(action));
++	      }else{
++	              gtk_action_set_visible(action,TRUE);
++	 }
++
+ 	real_update_paste_menu (view, selection, selection_count);
+ 
+ 	disable_command_line = eel_preferences_get_boolean (NAUTILUS_PREFERENCES_LOCKDOWN_COMMAND_LINE);
+diff -ur nautilus-2.32.1/src/file-manager/fm-properties-window.c nautilus-2.32.1.new/src/file-manager/fm-properties-window.c
+--- nautilus-2.32.1/src/file-manager/fm-properties-window.c	2010-11-13 19:59:01.000000000 +0800
++++ nautilus-2.32.1.new/src/file-manager/fm-properties-window.c	2011-09-14 10:50:27.411168496 +0800
+@@ -87,7 +87,7 @@
+ static GHashTable *windows;
+ static GHashTable *pending_lists;
+ 
+-struct FMPropertiesWindowDetails {	
++struct FMPropertiesWindowDetails {
+ 	GList *original_files;
+ 	GList *target_files;
+ 	
+diff -ur nautilus-2.32.1/src/file-manager/nautilus-directory-view-ui.xml nautilus-2.32.1.new/src/file-manager/nautilus-directory-view-ui.xml
+--- nautilus-2.32.1/src/file-manager/nautilus-directory-view-ui.xml	2011-09-14 10:31:30.342429932 +0800
++++ nautilus-2.32.1.new/src/file-manager/nautilus-directory-view-ui.xml	2011-09-14 10:52:02.139961424 +0800
+@@ -66,6 +66,7 @@
+ 		<placeholder name="File Items Placeholder">
+ 			<menuitem name="Duplicate" action="Duplicate"/>
+ 			<menuitem name="Create Link" action="Create Link"/>
++			<menuitem name="Desktop Link" action="Desktop Link"/>
+ 			<menuitem name="Rename" action="Rename"/>
+ 			<menu action="CopyToMenu">
+ 				<menuitem name="Copy to next pane" action="Copy to next pane"/>
+@@ -158,13 +159,14 @@
+ 	<separator name="File actions separator"/>
+ 	<placeholder name="File Actions">
+ 		<menuitem name="Create Link" action="Create Link"/>
++		<menuitem name="Desktop Link" action="Desktop Link"/>
+ 		<menuitem name="Rename" action="Rename"/>
+-		<menu action="CopyToMenu">
++		<!-- menu action="CopyToMenu">
+ 			<menuitem name="Copy to next pane" action="Copy to next pane"/>
+ 		</menu>
+ 		<menu action="MoveToMenu">
+ 			<menuitem name="Move to next pane" action="Move to next pane"/>
+-		</menu>
++		</menu -->
+ 	</placeholder>
+ 	<separator name="Dangerous separator"/>
+ 	<placeholder name="Dangerous File Actions">

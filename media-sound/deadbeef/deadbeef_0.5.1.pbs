@@ -10,7 +10,7 @@ PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 
 SRC_URI="http://downloads.sourceforge.net/project/"$N"/"$N-$V".tar.bz2"
 
-RDEPEND="alsa-lib atk cairo curl cyrus-sasl dbus expat faad2 ffmpeg flac fontconfig freetype gcc glib2 glibc gtk+ jack-audio-connection-kit libcddb libcdio libmad libogg libpng libsamplerate libsndfile libva libvorbis libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libXrandr libXrender openldap openssl pango pixman wavpack zlib"
+RDEPEND="alsa-lib atk cairo curl cyrus-sasl dbus expat faad2 ffmpeg flac fontconfig freetype gcc glib2 gdk-pixbuf glibc gtk+ jack-audio-connection-kit libcddb libcdio libmad libogg libpng libsamplerate libsndfile libva libvorbis libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libXrandr libXrender openldap openssl pango pixman wavpack zlib"
 BDEPEND="imlib2-dev"
 RECOMMENDED=""
 

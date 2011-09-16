@@ -4,11 +4,11 @@
 
 DESCRIPTION="Multiple GNOME terminals in one window"
 HOMEPAGE="http://www.tenshu.net/terminator/"
-REPO=""
 LICENSE="GPL"
+YARCH="any"
 PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 
-SRC_URI="http://launchpadlibrarian.net/54318913/terminator-0.95.tar.gz"
+SRC_URI="http://launchpadlibrarian.net/54318913/"$N-$V".tar.gz"
 
 RDEPEND="python"
 BDEPEND=""

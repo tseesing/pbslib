@@ -10,7 +10,7 @@ PACKAGER="<ylmfos@115.com>"
 
 SRC_URI="http://hal.freedesktop.org/releases/"$N-$V$R".tar.gz"
 
-RDEPEND="atk cairo dbus dbus-glib eggdbus expat fontconfig freetype gcc gconf glib2 glibc gtk+ hal libgcrypt libglade libgnome-keyring libgpg-error libnotify libpng libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libxml2 libXrandr libXrender nautilus orbit pango pixman zlib"
+RDEPEND="atk cairo dbus dbus-glib eggdbus expat fontconfig freetype gcc gconf glib2 gdk-pixbuf glibc gtk+ hal libgcrypt libglade libgnome-keyring libgpg-error libnotify libpng libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libxml2 libXrandr libXrender nautilus orbit pango pixman zlib"
 BDEPEND="libgnomeui-dev "
 RECOMMENDED=""
 

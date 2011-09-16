@@ -1,7 +1,9 @@
 . /usr/lib/ybs/funcs
 
+files="/etc/gconf/schemas/metacity.schemas"
+
 post_install() {
-	gnome2_install_schema "/etc/gconf/schemas/metacity.schemas"
+	gnome2_install_schema $files
         gnome2_install_defaut_gconf "int"    "/apps/metacity/general/num_workspaces" "4"
         gnome2_install_defaut_gconf "string" "/apps/metacity/global_keybindings/switch_windows_backward" "<Shift><Alt>Tab"
         gnome2_install_defaut_gconf "string" "/apps/metacity/global_keybindings/run_command_terminal"    "<Control><Alt>t"
@@ -15,4 +17,18 @@ post_install() {
         gnome2_gconfd_reload
 }
 
+pre_remove() {
+	gnome2_uninstall_schema $files
+}
+
+post_upgrade() {
+	gnome2_rarian_sk_update
+	gnome2_desktop_database_update
+	gnome2_gconfd_reload
+}
+
+
+post_downgrade() {
+	post_upgrade
+}
 

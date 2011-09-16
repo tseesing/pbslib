@@ -1,7 +1,14 @@
 . /usr/lib/ybs/funcs
 
-pbs_postinst() {
+post_install() {
         gnome2_gdk_pixbuf_loaders_update
         gnome2_gtk_immodules_update
 }
 
+post_upgrade() {
+	post_install
+}
+
+post_downgrade() {
+	post_install
+}

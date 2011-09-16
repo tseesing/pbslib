@@ -9,7 +9,7 @@ PACKAGER="<ylmfos@115.com>"
 
 SRC_URI="http://0pointer.de/lennart/projects/"$N"/"$N-$V$R".tar.gz"
 
-RDEPEND="alsa-lib atk cairo expat fontconfig freetype gcc glib2 glibc gstreamer gtk+ libogg libpng libtool libvorbis libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libxml2 libXrandr libXrender pango pixman zlib"
+RDEPEND="alsa-lib atk cairo expat fontconfig freetype gcc glib2 gdk-pixbuf glibc gstreamer gtk+ libogg libpng libtool libvorbis libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libxml2 libXrandr libXrender pango pixman zlib"
 BDEPEND="sound-theme-freedesktop"
 RECOMMENDED=""
 

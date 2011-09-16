@@ -9,7 +9,7 @@ PACKAGER="<ylmfos@115.com>"
 SRC_URI="http://freedesktop.org/software/desktop-file-utils/releases/$N-$V.tar.gz"
 
 RDEPEND=""
-BDEPEND=" glib2"
+BDEPEND=" glib2 gdk-pixbuf"
 RECOMMENDED=""
 
 NOTES="http://wiki.linuxfromscratch.org/blfs/wiki/desktop-file-utils"

@@ -1,9 +1,6 @@
-http://bugzilla.gnome.org/show_bug.cgi?id=536767
-
-Makes inkscape and claws-mail buildable again. Basically all packages still using
-GtkCList and single included headers.
---- gtk/gtksignal.h.orig	2008-06-12 01:40:59.000000000 -0400
-+++ gtk/gtksignal.h	2008-06-11 18:21:47.000000000 -0400
+diff -ur gtk+-2.24.6/gtk/gtksignal.h gtk+-2.24.6.new//gtk/gtksignal.h
+--- gtk+-2.24.6/gtk/gtksignal.h	2011-08-16 10:30:52.000000000 +0800
++++ gtk+-2.24.6.new//gtk/gtksignal.h	2011-09-14 11:37:23.639968032 +0800
 @@ -29,7 +29,9 @@
  #ifndef __GTK_SIGNAL_H__
  #define __GTK_SIGNAL_H__

@@ -4,3 +4,10 @@ post_install() {
 	gnome2_rarian_sk_update
 }       
 
+post_upgrade() {
+	post_install
+}
+
+post_downgrade() {
+	post_install
+}

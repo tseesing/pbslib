@@ -9,7 +9,7 @@ PACKAGER="<ylmfos@115.com>"
 
 SRC_URI="http://savannah.nongnu.org/download/"$N"/"$N-$V$R".tar.gz"
 
-RDEPEND="gtk+ atk glib2 pango cairo freetype fontconfig glibc libXi 
+RDEPEND="gtk+ atk glib2 gdk-pixbuf pango cairo freetype fontconfig glibc libXi 
 	 libXrandr libXcursor gcc libXcomposite  libXext libXdamage 
 	 libXfixes pixman libxml2 directfb libpng libxcb libXrender 
 	 libX11 libXau libXdmcp zlib expat"

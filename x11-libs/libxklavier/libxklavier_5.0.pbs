@@ -10,7 +10,7 @@ PACKAGER="<ylmfos@115.com>"
 
 SRC_URI="http://ftp.gnome.org/pub/gnome/sources/"$N"/"$V"/"$N-$V$R".tar.bz2"
 
-RDEPEND="glib2 glibc libX11 libXau libxcb libXdmcp libXext libXi libxkbfile libxml2 zlib"
+RDEPEND="glib2 gdk-pixbuf glibc libX11 libXau libxcb libXdmcp libXext libXi libxkbfile libxml2 zlib"
 BDEPEND=" iso-codes pkgconfig           "
 RECOMMENDED=""
 

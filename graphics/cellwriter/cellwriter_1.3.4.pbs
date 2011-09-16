@@ -10,7 +10,7 @@ PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 
 SRC_URI="http://pub.risujin.org/cellwriter/cellwriter-1.3.4.tar.gz"
 
-RDEPEND="alsa-lib atk audiofile avahi cairo dbus dbus-glib esound expat fontconfig freetype gcc gconf glib2 glibc gnome-vfs gtk+ libbonobo libgnome libpng libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libxml2 libXrandr libXrender libXtst openssl orbit pango pixman popt zlib"
+RDEPEND="alsa-lib atk audiofile avahi cairo dbus dbus-glib esound expat fontconfig freetype gcc gconf glib2 gdk-pixbuf glibc gnome-vfs gtk+ libbonobo libgnome libpng libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libxml2 libXrandr libXrender libXtst openssl orbit pango pixman popt zlib"
 BDEPEND=""
 RECOMMENDED=""
 CONFLICT=""

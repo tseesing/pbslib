@@ -10,7 +10,7 @@ PACKAGER="<ylmfos@115.com>"
 
 SRC_URI="git://192.168.1.58/"$N".git"
 
-RDEPEND="atk cairo expat fontconfig freetype gcc glib2 glibc gtk+ libICE libjpeg-turbo libpng libSM libtiff libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libXinerama libXrandr libXrender libXxf86vm pango pixman util-linux-ng wxGTK wxWidgets zlib"
+RDEPEND="atk cairo expat fontconfig freetype gcc glib2 gdk-pixbuf glibc gtk+ libICE libjpeg-turbo libpng libSM libtiff libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libXinerama libXrandr libXrender libXxf86vm pango pixman util-linux-ng wxGTK wxWidgets zlib"
 BDEPEND="                                  openssl-dev"
 
 pbs_unpack() {

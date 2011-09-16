@@ -8,11 +8,9 @@ LICENSE="GPL-2"
 PACKAGER="<ylmfos@115.com>"
 SRC_URI="ftp://ftp.gnome.org/pub/gnome/sources/$N/$V/"$N-$V$R".tar.bz2"
 
-RDEPEND=""
-BDEPEND=" glib2 x11-libs/libX11 libxml2 iso-codes"
+RDEPEND="glib2 gdk-pixbuf x11-libs/libX11 libxml2 iso-codes"
+BDEPEND=""
 RECOMMENDED=""
-
-NOTES="http://wiki.linuxfromscratch.org/blfs/wiki/libxklavier"
 
 pbs_unpack() {
         ypkg_unpack

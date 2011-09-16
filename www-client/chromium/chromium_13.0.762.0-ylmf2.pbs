@@ -7,8 +7,8 @@ HOMEPAGE="http://code.google.com/p/chromium/"
 LICENSE="Multiple Licenses"
 SRC_URI="http://build.chromium.org/buildbot/official/"$N-$V".tar.bz2"
 
-RDEPEND="alsa-lib atk bzip2 cairo cups dbus dbus-glib expat ffmpeg fontconfig freetype gcc gconf glib2 glibc gnutls gtk+ keyutils krb5 libevent libgcrypt libgpg-error libjpeg-turbo libpng libtasn1 libva libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libxml2 libXrandr libXrender libXScrnSaver libxslt libXtst nspr nss orbit pam pango pixman speex zlib"
-BDEPEND="perl gperf pkgconfig flex renderproto-dev libXinerama-dev libvpx-dev"
+RDEPEND="alsa-lib atk bzip2 cairo cups dbus dbus-glib expat ffmpeg fontconfig freetype gcc gconf glib2 gdk-pixbuf glibc gnutls gtk+ keyutils krb5 libevent libgcrypt libgpg-error libjpeg-turbo libpng libtasn1 libva libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libxml2 libXrandr libXrender libXScrnSaver libxslt libXtst nspr nss orbit pam pango pixman speex zlib"
+BDEPEND="perl gperf pkgconfig flex renderproto-dev libXinerama-dev libvpx-dev switch"
 
 INSTALL="$N.install"
 
@@ -17,7 +17,34 @@ pbs_unpack() {
 } 
 
 pbs_config() {
+	#ypkg_patch chromium-13.0.772.0-gcc46.patch \
+	#           tcmalloc-prototypes-glibc-2.14.patch \
+
+	# Ylmfos 
 	ypkg_patch ylmfos-chrome-wrapper.patch ylmfos-baidu-tn.patch
+
+	# Fix build with gcc 4.6
+	# http://code.google.com/p/chromium/issues/detail?id=80071
+	ypkg_patch gcc-4.6.patch
+	
+	# Fix build with glibc 2.14
+	# http://code.google.com/p/chromium/issues/detail?id=86646
+	#ypkg_patch glibc-2.14.patch
+	ypkg_patch tcmalloc-prototypes-glibc-2.14.patch
+
+	# Fix build with Perl 5.14
+	ypkg_patch make-hash-tools-use-if-instead-of-switch.patch
+
+        # Fix build with CUPS 1.5
+        #sed -i '/#include <cups\/cups.h>/ a #include <cups/ppd.h>' \
+	#	       chrome/browser/ui/webui/print_preview_handler.cc
+
+	# Fix upstream issue #77625: Chromium Generates HUGE numbers of CPU wakeups
+	# and uses massive amounts of power
+	# http://code.google.com/p/chromium/issues/detail?id=77625
+	# Patch from: http://code.google.com/p/v8/source/detail?r=8472
+	#ypkg_patch v8-r8472-crbug-77625-huge-number-of-cpu-wakeups.patch
+
 	ls -1d translations-patches/*.patch |while read i;do
 		ypkg_patch $(readlink -f "${i}")
 	done
@@ -29,6 +56,7 @@ pbs_config() {
 		no_strict_aliasing=1
 		linux_sandbox_path=/usr/lib/chromium/chromium-sandbox
 		linux_strip_binary=1
+		-Drelease_extra_cflags="$CFLAGS"
 		proprietary_codecs=1
 		remove_webcore_debug_symbols=1
 		use_system_bzip2=1
@@ -44,14 +72,14 @@ pbs_config() {
 		use_system_vpx=1
 		use_system_yasm=1
 		use_system_zlib=1
-		werror=  "
+		werror=""  
+		$([[ "$ARCH" == i686 ]] && echo '-Ddisable_sse2=1')"
 
 	if [ "${_shared_build}" = "true" ]; then
 		msg "Preparing a shared build..."
 		GYP_DEFINES="${GYP_DEFINES} library=shared_library"
 	fi
-	CARCH=$(uname -m)
-	if [ "${CARCH}" = 'x86_64' ]; then
+	if [ "$(uname -m)" = 'x86_64' ]; then
 		# 64-bit instructions from
 		# http://code.google.com/p/chromium/wiki/LinuxBuildInstructions
 		GYP_DEFINES="${GYP_DEFINES} target_arch=x64"
