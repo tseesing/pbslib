@@ -1,6 +1,7 @@
 . /usr/lib/ybs/funcs
 
 post_install() {
+	unset ARCH
 	ypkg_domk build $1 $2 modules
 	return 0
 }       

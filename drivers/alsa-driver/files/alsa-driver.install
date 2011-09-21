@@ -1,5 +1,46 @@
 . /usr/lib/ybs/funcs
 
 post_install() {
-	depmod -a
-}     
+	name=$1
+	version=$2
+ if cd /usr/src/"${name}_$version"; then
+ 	unset ARCH
+ 	./configure --prefix=/usr
+     if make; then
+	 ypkg_docp usb/6fire/snd-usb-6fire.ko 	       /lib/modules/"$(uname -r)"/kernel/sound/usb/6fire/
+	 ypkg_docp pci/pdplus/snd-pdplus.ko   	       /lib/modules/"$(uname -r)"/kernel/sound/pci/pdplus/
+	 ypkg_docp pci/hda/snd-hda-codec-nvhdmi.ko     /lib/modules/"$(uname -r)"/kernel/sound/pci/hda/
+	 ypkg_docp pci/hda/snd-hda-codec-intelhdmi.ko  /lib/modules/"$(uname -r)"/kernel/sound/pci/hda/
+	 ypkg_docp pci/hda/snd-hda-codec-atihdmi.ko    /lib/modules/"$(uname -r)"/kernel/sound/pci/hda/
+  	 ypkg_docp misc/ac97_bus.ko                    /lib/modules/"$(uname -r)"/kernel/sound/misc/
+	 ypkg_docp acore/snd-timer.ko       	       /lib/modules/"$(uname -r)"/kernel/sound/acore/
+	 ypkg_docp acore/snd-rawmidi.ko  	       /lib/modules/"$(uname -r)"/kernel/sound/acore/
+	 ypkg_docp acore/snd-pcm.ko    		       /lib/modules/"$(uname -r)"/kernel/sound/acore/
+	 ypkg_docp acore/snd-page-alloc.ko  	       /lib/modules/"$(uname -r)"/kernel/sound/acore/
+	 ypkg_docp acore/snd.ko      		       /lib/modules/"$(uname -r)"/kernel/sound/acore/
+	 ypkg_docp acore/snd-hwdep.ko                  /lib/modules/"$(uname -r)"/kernel/sound/acore/
+	 ypkg_docp acore/snd-hrtimer.ko                /lib/modules/"$(uname -r)"/kernel/sound/acore/
+	 ypkg_docp acore/seq/snd-seq-virmidi.ko        /lib/modules/"$(uname -r)"/kernel/sound/acore/seq/
+	 ypkg_docp acore/seq/snd-seq-midi.ko           /lib/modules/"$(uname -r)"/kernel/sound/acore/seq/
+	 ypkg_docp acore/seq/snd-seq-midi-event.ko     /lib/modules/"$(uname -r)"/kernel/sound/acore/seq/
+	 ypkg_docp acore/seq/snd-seq-midi-emul.ko      /lib/modules/"$(uname -r)"/kernel/sound/acore/seq/
+	 ypkg_docp acore/seq/snd-seq.ko                /lib/modules/"$(uname -r)"/kernel/sound/acore/seq/
+	 ypkg_docp acore/seq/snd-seq-dummy.ko          /lib/modules/"$(uname -r)"/kernel/sound/acore/seq/
+	 ypkg_docp acore/seq/snd-seq-device.ko         /lib/modules/"$(uname -r)"/kernel/sound/acore/seq/
+	 ypkg_docp acore/seq/oss/snd-seq-oss.ko        /lib/modules/"$(uname -r)"/kernel/sound/acore/seq/oss/
+	 ypkg_docp acore/oss/snd-pcm-oss.ko            /lib/modules/"$(uname -r)"/kernel/sound/acore/oss/
+	 ypkg_docp acore/oss/snd-mixer-oss.ko          /lib/modules/"$(uname -r)"/kernel/sound/acore/oss/
+	 depmod -a
+	 make clean
+    fi
+  fi
+}
+
+post_upgrade() {
+	post_install
+}
+
+post_downgrade() {
+	post_install
+}
+

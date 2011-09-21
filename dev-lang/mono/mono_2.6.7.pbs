@@ -1,0 +1,47 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="Free implementation of the .NET platform including runtime and compiler"
+HOMEPAGE="http://www.go-mono.com http://ftp.novell.com/pub/mono/sources-stable/"
+LICENSE="LGPLv2, MIT X11"
+PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
+
+SRC_URI="http://download.mono-project.com/sources/"$N"/"$N-$V".tar.bz2"
+
+RDEPEND="zlib libgdiplus"
+BDEPEND=""
+RECOMMENDED=""
+CONFLICT=""
+
+pbs_unpack() {
+        ypkg_unpack
+}
+
+pbs_config() {
+	YPB_CONFIG+="--with-libgdiplus=installed"
+	ypkg_config
+}
+
+pbs_build() {
+	ypkg_make
+	
+	# Build jay
+	cd mcs/jay
+	ypkg_make
+	
+	cd -
+}
+
+pbs_install() {
+	ypkg_mkinstall
+	ypkg_dodoc mcs/MIT.X11
+	
+	# Install jay
+	cd mcs/jay
+	ypkg_mkinstall prefix=/usr install=../../install-sh install
+
+	# Fix .pc file to be able to request mono on what it depends, fixes #go-oo build
+	sed -i -e "s:#Requires:Requires:" "$YPPATH_DEST"/usr/lib/pkgconfig/mono.pc
+}
+

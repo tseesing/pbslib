@@ -22,8 +22,7 @@ pbs_config() {
 	ypkg_patch ylmfos-rules-"$V".patch
 	YPB_CONFIG+=" --sbindir=/sbin  
 	              --with-rootlibdir=/lib 
-		      --libexecdir=/lib/udev 
-		      --disable-introspection "
+		      --libexecdir=/lib/udev" 
 	ypkg_config
 }
 

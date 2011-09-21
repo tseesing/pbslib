@@ -5,7 +5,7 @@
 DESCRIPTION="an open-source implementation of the OpenGL specification - a system for rendering interactive 3D graphics."
 HOMEPAGE="http://www.mesa3d.org/"
 LICENSE="http://www.mesa3d.org/license.html"
-PACKAGER="<ylmfos@115.com>"
+PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 
 SRC_URI="ftp://ftp.freedesktop.org/pub/mesa/"$V"/MesaLib-"$V".tar.bz2 
          ftp://ftp.freedesktop.org/pub/mesa/"$V"/MesaGLUT-"$V".tar.bz2"
@@ -32,7 +32,6 @@ pbs_unpack() {
 }
 
 pbs_config() {
-	
 	# i915,i965 disable
 	YPB_CONFIG+="--with-gallium-drivers=nouveau,r300,r600,svga,swrast
 		     --enable-xcb"
@@ -51,5 +50,4 @@ pbs_install() {
 	mv libGL.so.1.2 libGL.so.1.2-pkg."$N"
 	ln -sf /usr/lib/libGL.so.1.2-pkg."$N" libGL.so.1.2
 }
-
 

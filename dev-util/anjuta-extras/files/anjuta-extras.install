@@ -1,0 +1,13 @@
+. /usr/lib/ybs/funcs
+
+files=" /etc/gconf/schemas/anjuta-valgrind.schemas 
+        /etc/gconf/schemas/anjuta-editor-scintilla.schemas"
+
+post_install() {
+	gnome2_install_schema $files
+}
+
+pre_remove() {
+	gnome2_uninstall_schema $files
+}
+

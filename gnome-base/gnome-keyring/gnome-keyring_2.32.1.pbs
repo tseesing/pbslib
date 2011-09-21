@@ -13,12 +13,14 @@ RDEPEND="atk cairo dbus expat fontconfig freetype gcc glib2 gdk-pixbuf glibc gtk
 BDEPEND=" "
 RECOMMENDED=""
 
+INSTALL="$N-$V.install"
+
 pbs_unpack() {
         ypkg_unpack
 }
 
 pbs_config() {
-	#ypkg_patch ylmfos-i18n-zh.patch
+	ypkg_patch ylmfos-i18n-zh-"$V".patch
 	YPB_CONFIG+=" --disable-schemas-install 
 		      --enable-pam 
 		      --with-pam-dir=/lib/security"

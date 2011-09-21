@@ -17,6 +17,7 @@ RECOMMENDED="glibc-dev gcc-dev make linux-kernel-headers"
 CONFLICT=""
 
 INSTALL="$N.install"
+OPINION="nodev"
 
 DESKTOPFILE="nvidia-settings.desktop"
 

@@ -1,0 +1,55 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="Intelligent Input Bus for Linux / Unix OS"
+HOMEPAGE="http://code.google.com/p/ibus/"
+LICENSE="GNU Lesser GPL"
+PACKAGER="Ylmf OS developers <ylmfos@115.com>"
+YVERSION="1"
+
+SRC_URI="http://ibus.googlecode.com/files/"$N-$V".tar.gz"
+
+RDEPEND="atk cairo dbus dbus-glib expat fontconfig freetype gcc gconf glib2 gdk-pixbuf glibc gtk+ libpng libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libXrandr libXrender orbit pango pixman zlib gobject-introspection"
+BDEPEND="notify-python-dev imagemagick-dev"
+RECOMMENDED="notify-python"
+
+NOTES="
+To use ibus, you should:
+1. Get input engines from sunrise overlay.
+2. Setup ibus:
+$ ibus-setup
+3. Set the following in your user startup scripts
+such as .xinitrc, .xsession or .xprofile:
+export XMODIFIERS=\"@im=ibus\"
+export GTK_IM_MODULE=\"ibus\"
+export QT_IM_MODULE=\"xim\"
+ibus-daemon -d -x
+"
+
+INSTALL="$N.install"
+
+pbs_unpack() {
+        ypkg_unpack
+}
+
+pbs_config() {
+	ypkg_docp "$FILES_PATH"/files/ibus-keyboard.svg data/icons/scalable
+	for i in 24 48 22 16 32;do 
+		convert -resize "${i}"x"${i}" "$FILES_PATH"/files/ibus-keyboard.png data/icons/"${i}"/ibus-keyboard.png
+	done
+	#
+	ypkg_patch "ibus_ui.patch" ibus-i18n.patch
+	YPB_CONFIG+="--enable-maintainer-mode --disable-schemas-install"
+	ypkg_config
+}
+
+pbs_build() {
+	ypkg_make
+}
+
+pbs_install() {
+	ypkg_mkinstall
+	ypkg_dodoc AUTHORS ChangeLog COPYING INSTALL NEWS README
+}
+

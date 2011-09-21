@@ -5,22 +5,20 @@
 DESCRIPTION=" C++ interface for pango"
 HOMEPAGE="http://www.gtkmm.org"
 LICENSE="GPL-2"
-PACKAGER="<ylmfos@115.com>"
+PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
  
-SRC_URI=" http://ftp.gnome.org/pub/gnome/sources/"$N"/2.26/"$N-$V$R".tar.bz2"
+SRC_URI="http://ftp.gnome.org/pub/gnome/sources/"$N"/2.26/"$N-$V$R".tar.bz2"
 
-RDEPEND="cairo cairomm expat fontconfig freetype gcc glib2 gdk-pixbuf glibc glibmm libpng libsigc++ libX11 libXau libxcb libXdmcp libXrender pango pixman zlib"
-BDEPEND="                  "
+RDEPEND="cairo cairomm expat fontconfig freetype gcc glib2 glibc glibmm libpng libsigc++ libX11 libXau libxcb libXdmcp libXrender pango pixman zlib"
+BDEPEND=""
 RECOMMENDED=""
-
-NOTES=" http://wiki.linuxfromscratch.org/blfs/wiki/pangomm"
 
 pbs_unpack() {
         ypkg_unpack
 }
 
 pbs_config() {
-	YPB_CONFIG+="--disable-documentation" 
+	YPB_CONFIG+="" 
 	ypkg_config
 }
 
@@ -31,3 +29,4 @@ pbs_build() {
 pbs_install() {
 	ypkg_mkinstall
 }
+

@@ -1,0 +1,34 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="Gnome Database Access Library"
+HOMEPAGE="http://www.gnome-db.org/"
+LICENSE="GPL"
+PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
+
+SRC_URI="http://ftp.gnome.org/pub/gnome/sources/libgda/4.2/"$N-$V".tar.xz"
+
+RDEPEND="atk cairo cyrus-sasl dbus dbus-glib expat fontconfig freetype gcc gdk-pixbuf glib2 glibc gnutls goocanvas gtk+ gtksourceview libgcrypt libgnome-keyring libgpg-error libpng libsoup libtasn1 libunique libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libxml2 libXrandr libXrender libxslt mysql ncurses openldap openssl pango pixman readline zlib readline"
+RECOMMENDED=""
+BDEPEND=""
+
+INSTALL="$N.install"
+
+pbs_unpack() {
+        ypkg_unpack
+}
+
+pbs_config() {
+	YPB_CONFIG+=""
+	ypkg_config
+}
+
+pbs_build() {
+	ypkg_make
+}
+
+pbs_install() {
+	ypkg_mkinstall
+}
+

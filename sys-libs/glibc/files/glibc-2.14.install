@@ -39,7 +39,7 @@ post_install() {
 	localedef -i zh_CN -f GB2312 zh_CN.GB2312
 	localedef -i zh_CN -f UTF-8 zh_CN.UTF-8
 	
-	[ ! -f /etc/nsswitch.conf ] && /etc/nsswitch.conf
+	[ ! -f /etc/nsswitch.conf ] && nsswitch_conf
 	[ ! -f /etc/ld.so.conf ] && ld_so_conf
 	[ ! -f /etc/localtime ] && localtime_
 

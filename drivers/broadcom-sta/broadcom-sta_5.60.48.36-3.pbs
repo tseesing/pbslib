@@ -17,8 +17,7 @@ RECOMMENDED=""
 CONFLICT="bcmwl"
 
 INSTALL="$N.install"
-
-NOTES=""
+OPINION="nodev"
 
 pbs_unpack() {
         ypkg_unpack

@@ -4,7 +4,6 @@
 
 DESCRIPTION="Firmware for the Intel PRO/Wireless 2100 3B miniPCI adapter"
 HOMEPAGE="http://ipw2100.sourceforge.net/"
-REPO=""
 LICENSE=""
 PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 
@@ -23,5 +22,4 @@ pbs_install() {
 	ypkg_docp ../*.fw "$YPPATH_DEST"/lib/firmware/
 	ypkg_dodoc LICENSE
 }
-
 

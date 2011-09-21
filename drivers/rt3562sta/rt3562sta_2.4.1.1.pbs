@@ -16,6 +16,7 @@ RECOMMENDED="make linux-kernel-headers"
 CONFLICT=""
 
 INSTALL="$N.install"
+OPINION="nodev"
 
 NOTES=""
 

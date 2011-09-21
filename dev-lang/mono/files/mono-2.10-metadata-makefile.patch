@@ -1,0 +1,40 @@
+--- mono-2.10/mono/metadata/Makefile.am	2011-01-31 20:16:05.000000000 +0000
++++ mono-2.10/mono/metadata/Makefile-new.am	2011-02-03 20:09:49.629265658 +0000
+@@ -20,7 +20,7 @@
+ AM_CFLAGS = -O
+ else
+ 
+-assembliesdir = $(exec_prefix)/lib
++assembliesdir = @LIBDIR@
+ confdir = $(sysconfdir)
+ unix_sources = \
+ 	console-unix.c
+@@ -56,7 +56,7 @@
+ endif
+ noinst_LTLIBRARIES =  $(shared_libraries) libmonoruntime-static.la $(sgen_libraries) $(moonlight_libraries)
+ 
+-INCLUDES = -I$(top_srcdir) -I$(top_srcdir)/mono $(LIBGC_CFLAGS) $(GLIB_CFLAGS) -DMONO_BINDIR=\"$(bindir)/\" -DMONO_ASSEMBLIES=\"$(assembliesdir)\" -DMONO_CFG_DIR=\"$(confdir)\"
++INCLUDES = -I$(top_srcdir) -I$(top_srcdir)/mono $(LIBGC_CFLAGS) $(GLIB_CFLAGS) -DMONO_BINDIR=\"$(bindir)/\" -DMONO_ASSEMBLIES=\"$(assembliesdir)\" -DMONO_CFG_DIR=\"$(confdir)\" -DMONO_RELOC_LIBDIR=\"$(reloc_libdir)\"
+ 
+ #
+ # Make sure any prefix changes are updated in the binaries too.
+--- mono-2.10/mono/metadata/Makefile.in	2011-01-31 20:32:29.000000000 +0000
++++ mono-2.10/mono/metadata/Makefile-new.in	2011-02-03 20:10:45.176821202 +0000
+@@ -848,7 +848,7 @@
+ # The files that use MONO_ASSEMBLIES and/or MONO_CFG_DIR replace the
+ # / by \ if running under WIN32.
+ @CROSS_COMPILING_TRUE@@HOST_WIN32_TRUE@assembliesdir = ${libdir}
+-@HOST_WIN32_FALSE@assembliesdir = $(exec_prefix)/lib
++@HOST_WIN32_FALSE@assembliesdir = @LIBDIR@
+ @CROSS_COMPILING_FALSE@@HOST_WIN32_TRUE@confdir = `cygpath -m "${sysconfdir}"`
+ @CROSS_COMPILING_TRUE@@HOST_WIN32_TRUE@confdir = ${sysconfdir}
+ @HOST_WIN32_FALSE@confdir = $(sysconfdir)
+@@ -868,7 +868,7 @@
+ @MOONLIGHT_TRUE@moonlight_libraries = libmonoruntimemoon.la
+ @SHARED_MONO_TRUE@shared_libraries = libmonoruntime.la
+ noinst_LTLIBRARIES = $(shared_libraries) libmonoruntime-static.la $(sgen_libraries) $(moonlight_libraries)
+-INCLUDES = -I$(top_srcdir) -I$(top_srcdir)/mono $(LIBGC_CFLAGS) $(GLIB_CFLAGS) -DMONO_BINDIR=\"$(bindir)/\" -DMONO_ASSEMBLIES=\"$(assembliesdir)\" -DMONO_CFG_DIR=\"$(confdir)\"
++INCLUDES = -I$(top_srcdir) -I$(top_srcdir)/mono $(LIBGC_CFLAGS) $(GLIB_CFLAGS) -DMONO_BINDIR=\"$(bindir)/\" -DMONO_ASSEMBLIES=\"$(assembliesdir)\" -DMONO_CFG_DIR=\"$(confdir)\" -DMONO_RELOC_LIBDIR=\"$(reloc_libdir)\"
+ CLEANFILES = mono-bundle.stamp
+ libmonoruntime_static_la_LIBADD = $(bundle_obj) $(libmonoruntime_la_LIBADD)
+ null_sources = \

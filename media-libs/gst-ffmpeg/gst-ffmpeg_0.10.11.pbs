@@ -4,9 +4,7 @@
 
 DESCRIPTION="FFmpeg based gstreamer plugin"
 HOMEPAGE="http://gstreamer.freedesktop.org"
-REPO=""
 LICENSE="GPL"
-PRIORITY=""
 PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 
 SRC_URI="http://gstreamer.freedesktop.org/src/"$N"/"$N-$V$R".tar.bz2"

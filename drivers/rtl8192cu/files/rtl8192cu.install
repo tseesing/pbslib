@@ -2,6 +2,7 @@
 
 post_install() {
 	#
+        unset ARCH
 	ypkg_domk build $1 $2
 	return 0
 }

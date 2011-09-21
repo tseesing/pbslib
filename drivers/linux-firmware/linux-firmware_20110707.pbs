@@ -5,11 +5,12 @@
 DESCRIPTION="Linux firmware files"
 HOMEPAGE="http://www.kernel.org/pub/linux/kernel/people/dwmw2/firmware"
 LICENSE="GPL-1 GPL-2 GPL-3 BSD freedist"
-PACKAGER="<ylmfos@115.com>"
+PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
+YARCH="any"
 
 SRC_URI="git://git.kernel.org/pub/scm/linux/kernel/git/dwmw2/linux-firmware.git"
 
-RDEPEND="linux-kernel"
+RDEPEND=""
 BDEPEND=""
 RECOMMENDED=""
 
@@ -19,12 +20,15 @@ pbs_unpack() {
 
 pbs_install() {
 	ypkg_docp * "$YPPATH_DEST"/lib/firmware
-	#Added carl9170.fw for Atheros wireless AR9170 based devices.
+	
+	# Added carl9170.fw for Atheros wireless AR9170 based devices.
 	cd "$YPPATH_DEST"/lib/firmware
 	ypkg_docp "$FILES_PATH"/files/carl9170-1.fw .
+	
 	#
 	ypkg_docp "$FILES_PATH"/files/{ar9170.fw,aic94xx-seq.fw,NPE-B,NPE-C} .
-	#check firmware
+	
+	# Check firmware
 	ypkg_docp "$FILES_PATH"/files/check_firmware script/
 }
 

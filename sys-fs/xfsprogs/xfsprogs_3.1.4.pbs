@@ -3,8 +3,8 @@
 #
 DaESCRIPTION="xfs filesystem utilities"
 HOMEPAGE="http://oss.sgi.com/projects/xfs/"
-LICENSE=""
-PACKAGER="<ylmfos@115.com>"
+LICENSE="GPL"
+PACKAGER="YLmf OS Developers <ylmfos@115.com>"
 
 SRC_URI="git://oss.sgi.com/xfs/cmds/"$N""
 
@@ -29,3 +29,4 @@ pbs_build() {
 pbs_install() {
 	make DIST_ROOT="$YPPATH_DEST" install install-dev
 }
+

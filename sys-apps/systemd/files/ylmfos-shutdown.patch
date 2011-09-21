@@ -1,0 +1,31 @@
+--- systemd-35/src/shutdown.c	2011-08-02 02:50:08.627599350 +0800
++++ systemd-35-ylmf/src/shutdown.c	2011-09-20 17:34:59.425312131 +0800
+@@ -351,6 +351,28 @@
+                                 log_info("Not all file systems unmounted, %d left.", r);
+                         else
+                                 log_error("Failed to unmount file systems: %s", strerror(-r));
++                        
++                        /* if livecd or wubi install os that maybe have serveral problem */
++                        /* could't some device so....*/
++                        switch(retries)
++                        {
++                                case 0:
++                                        system("sync");
++                                        sleep(1);
++                                        break;
++                                case 1:
++                                        system("sync");
++                                        sleep(1);
++                                        break;
++                                case 2:
++                                        system("sync");
++                                        sleep(1);
++                                        break;
++                                case 3:
++                                        need_umount = false;
++                                        break;
++                        }
++                        
+                 }
+ 
+                 if (need_swapoff) {

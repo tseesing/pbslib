@@ -16,8 +16,6 @@ BDEPEND="b43-fwcutter"
 RECOMMENDED=""
 CONFLICT=""
 
-NOTES=""
-
 pbs_build() {
 	b43-fwcutter "$YPPATH_SOURCE"/wl_apsta-3.130.20.0.o
 }

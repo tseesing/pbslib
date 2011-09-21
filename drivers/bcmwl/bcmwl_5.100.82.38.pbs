@@ -17,8 +17,7 @@ RECOMMENDED=""
 CONFLICT="broadcom-sta"
 
 INSTALL="$N.install"
-
-NOTES=""
+OPINION="nodev"
 
 pbs_unpack() {
         ypkg_unpack

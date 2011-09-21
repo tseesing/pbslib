@@ -1,16 +1,14 @@
-# Description: Add GDM Setup
-## Description: add some description
-## Origin/Author: add some origin or author
-## Bug: bug URL
-# Ubuntu: https://bugs.launchpad.net/ubuntu/+source/gdm/+bug/395299
-# Upstream: http://bugzilla.gnome.org/show_bug.cgi?id=587750
-#
-diff -Nur -x '*.orig' -x '*~' gdm-2.30.0/configure.ac gdm-2.30.0.new/configure.ac
---- gdm-2.30.0/configure.ac	2010-03-31 18:45:09.095560322 +0200
-+++ gdm-2.30.0.new/configure.ac	2010-03-31 18:45:09.815545484 +0200
-@@ -115,6 +115,14 @@
- AC_SUBST(DEVKIT_POWER_CFLAGS)
- AC_SUBST(DEVKIT_POWER_LIBS)
+Description: Add GDM Setup
+Bug: http://bugzilla.gnome.org/show_bug.cgi?id=587750
+Bug-Ubuntu: https://bugs.launchpad.net/ubuntu/+source/gdm/+bug/395299
+
+Index: gdm-2.32.1/configure.ac
+===================================================================
+--- gdm-2.32.1.orig/configure.ac	2011-04-08 16:33:45.141921352 +1000
++++ gdm-2.32.1/configure.ac	2011-04-08 16:33:46.921921354 +1000
+@@ -121,6 +121,14 @@
+ AC_SUBST(UPOWER_CFLAGS)
+ AC_SUBST(UPOWER_LIBS)
  
 +PKG_CHECK_MODULES(GDMSETUP,
 +        dbus-glib-1 >= $DBUS_GLIB_REQUIRED_VERSION
@@ -23,7 +21,7 @@ diff -Nur -x '*.orig' -x '*~' gdm-2.30.0/configure.ac gdm-2.30.0.new/configure.a
  PKG_CHECK_MODULES(SIMPLE_GREETER,
          dbus-glib-1 >= $DBUS_GLIB_REQUIRED_VERSION
          gtk+-2.0 >= $GTK_REQUIRED_VERSION
-@@ -1389,12 +1397,14 @@
+@@ -1399,6 +1407,7 @@
  daemon/Makefile
  docs/Makefile
  gui/Makefile
@@ -31,16 +29,10 @@ diff -Nur -x '*.orig' -x '*~' gdm-2.30.0/configure.ac gdm-2.30.0.new/configure.a
  gui/simple-greeter/Makefile
  gui/simple-greeter/libnotificationarea/Makefile
  gui/simple-chooser/Makefile
- gui/user-switch-applet/Makefile
- utils/Makefile
- data/gdm.conf
-+data/gdm.policy
- data/Makefile
- data/faces/Makefile
- data/greeter-autostart/Makefile
-diff -Nur -x '*.orig' -x '*~' gdm-2.30.0/gui/gdmsetup/gdm-sessions.c gdm-2.30.0.new/gui/gdmsetup/gdm-sessions.c
---- gdm-2.30.0/gui/gdmsetup/gdm-sessions.c	1970-01-01 01:00:00.000000000 +0100
-+++ gdm-2.30.0.new/gui/gdmsetup/gdm-sessions.c	2010-03-31 18:45:09.815545484 +0200
+Index: gdm-2.32.1/gui/gdmsetup/gdm-sessions.c
+===================================================================
+--- /dev/null	1970-01-01 00:00:00.000000000 +0000
++++ gdm-2.32.1/gui/gdmsetup/gdm-sessions.c	2011-04-08 16:33:46.921921354 +1000
 @@ -0,0 +1,265 @@
 +/* -*- Mode: C; tab-width: 8; indent-tabs-mode: nil; c-basic-offset: 8 -*-
 + *
@@ -307,9 +299,10 @@ diff -Nur -x '*.orig' -x '*~' gdm-2.30.0/gui/gdmsetup/gdm-sessions.c gdm-2.30.0.
 +
 +        return TRUE;
 +}
-diff -Nur -x '*.orig' -x '*~' gdm-2.30.0/gui/gdmsetup/gdm-sessions.h gdm-2.30.0.new/gui/gdmsetup/gdm-sessions.h
---- gdm-2.30.0/gui/gdmsetup/gdm-sessions.h	1970-01-01 01:00:00.000000000 +0100
-+++ gdm-2.30.0.new/gui/gdmsetup/gdm-sessions.h	2010-03-31 18:45:09.815545484 +0200
+Index: gdm-2.32.1/gui/gdmsetup/gdm-sessions.h
+===================================================================
+--- /dev/null	1970-01-01 00:00:00.000000000 +0000
++++ gdm-2.32.1/gui/gdmsetup/gdm-sessions.h	2011-04-08 16:33:46.921921354 +1000
 @@ -0,0 +1,38 @@
 +/* -*- Mode: C; tab-width: 8; indent-tabs-mode: nil; c-basic-offset: 8 -*-
 + *
@@ -349,10 +342,11 @@ diff -Nur -x '*.orig' -x '*~' gdm-2.30.0/gui/gdmsetup/gdm-sessions.h gdm-2.30.0.
 +G_END_DECLS
 +
 +#endif /* __GDM_SESSION_H */
-diff -Nur -x '*.orig' -x '*~' gdm-2.30.0/gui/gdmsetup/gdmsetup.c gdm-2.30.0.new/gui/gdmsetup/gdmsetup.c
---- gdm-2.30.0/gui/gdmsetup/gdmsetup.c	1970-01-01 01:00:00.000000000 +0100
-+++ gdm-2.30.0.new/gui/gdmsetup/gdmsetup.c	2010-03-31 18:47:55.539569268 +0200
-@@ -0,0 +1,716 @@
+Index: gdm-2.32.1/gui/gdmsetup/gdmsetup.c
+===================================================================
+--- /dev/null	1970-01-01 00:00:00.000000000 +0000
++++ gdm-2.32.1/gui/gdmsetup/gdmsetup.c	2011-04-08 16:33:46.921921354 +1000
+@@ -0,0 +1,717 @@
 +#ifdef HAVE_CONFIG_H
 +#include "config.h"
 +#endif
@@ -899,7 +893,7 @@ diff -Nur -x '*.orig' -x '*~' gdm-2.30.0/gui/gdmsetup/gdmsetup.c gdm-2.30.0.new/
 +    model = GTK_LIST_STORE (gtk_builder_get_object (ui, "session_model"));
 +    gtk_list_store_append (model, &iter);
 +    label = g_string_new("");
-+    g_string_printf (label, "%s (%s)", name, comment);
++    g_string_printf (label, "%s", name);
 +    gtk_list_store_set (model, &iter,
 +                        0, label->str,
 +                        1, session_id,
@@ -1030,11 +1024,12 @@ diff -Nur -x '*.orig' -x '*~' gdm-2.30.0/gui/gdmsetup/gdmsetup.c gdm-2.30.0.new/
 +    sound_enable_check = GTK_WIDGET (gtk_builder_get_object (ui, "sound_enable_check"));
 +    face_browser_enable_check = GTK_WIDGET (gtk_builder_get_object (ui, "face_browser_enable_check"));
 +
-+    gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (sound_enable_check), get_sound_enabled ());
-+  
-+    // Disable face browser as not working
-+    //gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (face_browser_enable_check), get_face_browser_enabled ());
-+    gtk_widget_hide (face_browser_enable_check);
++    if (g_file_test ("/usr/share/gdm/autostart/LoginWindow/libcanberra-ready-sound.desktop", G_FILE_TEST_EXISTS))
++        gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (sound_enable_check), get_sound_enabled ());
++    else
++        gtk_widget_hide (GTK_WIDGET (sound_enable_check));
++
++    gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (face_browser_enable_check), get_face_browser_enabled ());
 +  
 +    gtk_builder_connect_signals (ui, NULL);
 +
@@ -1069,9 +1064,10 @@ diff -Nur -x '*.orig' -x '*~' gdm-2.30.0/gui/gdmsetup/gdmsetup.c gdm-2.30.0.new/
 +    
 +    return 0;
 +}
-diff -Nur -x '*.orig' -x '*~' gdm-2.30.0/gui/gdmsetup/gdmsetup.desktop.in gdm-2.30.0.new/gui/gdmsetup/gdmsetup.desktop.in
---- gdm-2.30.0/gui/gdmsetup/gdmsetup.desktop.in	1970-01-01 01:00:00.000000000 +0100
-+++ gdm-2.30.0.new/gui/gdmsetup/gdmsetup.desktop.in	2010-03-31 18:45:09.815545484 +0200
+Index: gdm-2.32.1/gui/gdmsetup/gdmsetup.desktop.in
+===================================================================
+--- /dev/null	1970-01-01 00:00:00.000000000 +0000
++++ gdm-2.32.1/gui/gdmsetup/gdmsetup.desktop.in	2011-04-08 16:33:46.921921354 +1000
 @@ -0,0 +1,12 @@
 +[Desktop Entry]
 +_Name=Login Screen
@@ -1085,10 +1081,11 @@ diff -Nur -x '*.orig' -x '*~' gdm-2.30.0/gui/gdmsetup/gdmsetup.desktop.in gdm-2.
 +X-GNOME-Bugzilla-Bugzilla=GNOME
 +X-GNOME-Bugzilla-Product=gdm
 +X-GNOME-Bugzilla-Component=general
-diff -Nur -x '*.orig' -x '*~' gdm-2.30.0/gui/gdmsetup/gdmsetup.ui gdm-2.30.0.new/gui/gdmsetup/gdmsetup.ui
---- gdm-2.30.0/gui/gdmsetup/gdmsetup.ui	1970-01-01 01:00:00.000000000 +0100
-+++ gdm-2.30.0.new/gui/gdmsetup/gdmsetup.ui	2010-03-31 18:45:09.815545484 +0200
-@@ -0,0 +1,358 @@
+Index: gdm-2.32.1/gui/gdmsetup/gdmsetup.ui
+===================================================================
+--- /dev/null	1970-01-01 00:00:00.000000000 +0000
++++ gdm-2.32.1/gui/gdmsetup/gdmsetup.ui	2011-04-08 16:33:46.921921354 +1000
+@@ -0,0 +1,345 @@
 +<?xml version="1.0"?>
 +<interface>
 +  <requires lib="gtk+" version="2.16"/>
@@ -1105,7 +1102,7 @@ diff -Nur -x '*.orig' -x '*~' gdm-2.30.0/gui/gdmsetup/gdmsetup.ui gdm-2.30.0.new
 +  </object>
 +  <object class="GtkListStore" id="session_model">
 +    <columns>
-+      <!-- column-name user and comment -->
++      <!-- column-name user -->
 +      <column type="gchararray"/>
 +      <!-- column-name session_id -->
 +      <column type="gchararray"/>
@@ -1159,43 +1156,27 @@ diff -Nur -x '*.orig' -x '*~' gdm-2.30.0/gui/gdmsetup/gdmsetup.ui gdm-2.30.0.new
 +                  </packing>
 +                </child>
 +                <child>
-+                  <object class="GtkVBox" id="vbox1">
++                  <object class="GtkCheckButton" id="face_browser_enable_check">
++                    <property name="label" translatable="yes">Show list of users</property>
 +                    <property name="visible">True</property>
-+                    <property name="spacing">6</property>
-+                    <child>
-+                      <object class="GtkRadioButton" id="manual_login_radio">
-+                        <property name="label" translatable="yes" comments="Radio option to set login screen to prompt for user">_Show the screen for choosing who will log in</property>
-+                        <property name="visible">True</property>
-+                        <property name="can_focus">True</property>
-+                        <property name="receives_default">False</property>
-+                        <property name="use_underline">True</property>
-+                        <property name="active">True</property>
-+                        <property name="draw_indicator">True</property>
-+                      </object>
-+                      <packing>
-+                        <property name="expand">False</property>
-+                        <property name="position">0</property>
-+                      </packing>
-+                    </child>
-+                    <child>
-+                      <object class="GtkAlignment" id="alignment2">
-+                        <property name="visible">True</property>
-+                        <property name="left_padding">16</property>
-+                        <child>
-+                          <object class="GtkCheckButton" id="face_browser_enable_check">
-+                            <property name="label" translatable="yes">Show list of users</property>
-+                            <property name="visible">True</property>
-+                            <property name="can_focus">True</property>
-+                            <property name="receives_default">False</property>
-+                            <property name="draw_indicator">True</property>
-+                            <signal name="toggled" handler="face_browser_enable_check_toggled_cb"/>
-+                          </object>
-+                        </child>
-+                      </object>
-+                      <packing>
-+                        <property name="position">1</property>
-+                      </packing>
-+                    </child>
++                    <property name="can_focus">True</property>
++                    <property name="receives_default">False</property>
++                    <property name="draw_indicator">True</property>
++                    <signal name="toggled" handler="face_browser_enable_check_toggled_cb"/>
++                  </object>
++                  <packing>
++                    <property name="position">1</property>
++                  </packing>
++                </child>
++                <child>
++                  <object class="GtkRadioButton" id="manual_login_radio">
++                    <property name="label" translatable="yes" comments="Radio option to set login screen to prompt for user">_Show the screen for choosing who will log in</property>
++                    <property name="visible">True</property>
++                    <property name="can_focus">True</property>
++                    <property name="receives_default">False</property>
++                    <property name="use_underline">True</property>
++                    <property name="active">True</property>
++                    <property name="draw_indicator">True</property>
 +                  </object>
 +                  <packing>
 +                    <property name="expand">False</property>
@@ -1375,6 +1356,9 @@ diff -Nur -x '*.orig' -x '*~' gdm-2.30.0/gui/gdmsetup/gdmsetup.ui gdm-2.30.0.new
 +                      </packing>
 +                    </child>
 +                  </object>
++                  <packing>
++                    <property name="position">4</property>
++                  </packing>
 +                </child>
 +              </object>
 +              <packing>
@@ -1447,9 +1431,10 @@ diff -Nur -x '*.orig' -x '*~' gdm-2.30.0/gui/gdmsetup/gdmsetup.ui gdm-2.30.0.new
 +    <property name="step_increment">1</property>
 +  </object>
 +</interface>
-diff -Nur -x '*.orig' -x '*~' gdm-2.30.0/gui/gdmsetup/gdm-user.c gdm-2.30.0.new/gui/gdmsetup/gdm-user.c
---- gdm-2.30.0/gui/gdmsetup/gdm-user.c	1970-01-01 01:00:00.000000000 +0100
-+++ gdm-2.30.0.new/gui/gdmsetup/gdm-user.c	2010-03-31 18:45:09.819557447 +0200
+Index: gdm-2.32.1/gui/gdmsetup/gdm-user.c
+===================================================================
+--- /dev/null	1970-01-01 00:00:00.000000000 +0000
++++ gdm-2.32.1/gui/gdmsetup/gdm-user.c	2011-04-08 16:33:46.921921354 +1000
 @@ -0,0 +1,1172 @@
 +/* -*- Mode: C; tab-width: 8; indent-tabs-mode: nil; c-basic-offset: 8 -*-
 + *
@@ -2623,9 +2608,10 @@ diff -Nur -x '*.orig' -x '*~' gdm-2.30.0/gui/gdmsetup/gdm-user.c gdm-2.30.0.new/
 +
 +        return pixbuf;
 +}
-diff -Nur -x '*.orig' -x '*~' gdm-2.30.0/gui/gdmsetup/gdm-user.h gdm-2.30.0.new/gui/gdmsetup/gdm-user.h
---- gdm-2.30.0/gui/gdmsetup/gdm-user.h	1970-01-01 01:00:00.000000000 +0100
-+++ gdm-2.30.0.new/gui/gdmsetup/gdm-user.h	2010-03-31 18:45:09.819557447 +0200
+Index: gdm-2.32.1/gui/gdmsetup/gdm-user.h
+===================================================================
+--- /dev/null	1970-01-01 00:00:00.000000000 +0000
++++ gdm-2.32.1/gui/gdmsetup/gdm-user.h	2011-04-08 16:33:46.921921354 +1000
 @@ -0,0 +1,59 @@
 +/* -*- Mode: C; tab-width: 8; indent-tabs-mode: nil; c-basic-offset: 8 -*-
 + *
@@ -2686,9 +2672,10 @@ diff -Nur -x '*.orig' -x '*~' gdm-2.30.0/gui/gdmsetup/gdm-user.h gdm-2.30.0.new/
 +G_END_DECLS
 +
 +#endif
-diff -Nur -x '*.orig' -x '*~' gdm-2.30.0/gui/gdmsetup/gdm-user-manager.c gdm-2.30.0.new/gui/gdmsetup/gdm-user-manager.c
---- gdm-2.30.0/gui/gdmsetup/gdm-user-manager.c	1970-01-01 01:00:00.000000000 +0100
-+++ gdm-2.30.0.new/gui/gdmsetup/gdm-user-manager.c	2010-03-31 18:45:09.819557447 +0200
+Index: gdm-2.32.1/gui/gdmsetup/gdm-user-manager.c
+===================================================================
+--- /dev/null	1970-01-01 00:00:00.000000000 +0000
++++ gdm-2.32.1/gui/gdmsetup/gdm-user-manager.c	2011-04-08 16:33:46.931921354 +1000
 @@ -0,0 +1,1658 @@
 +/* -*- Mode: C; tab-width: 8; indent-tabs-mode: nil; c-basic-offset: 8 -*-
 + *
@@ -4348,9 +4335,10 @@ diff -Nur -x '*.orig' -x '*~' gdm-2.30.0/gui/gdmsetup/gdm-user-manager.c gdm-2.3
 +
 +        return GDM_USER_MANAGER (user_manager_object);
 +}
-diff -Nur -x '*.orig' -x '*~' gdm-2.30.0/gui/gdmsetup/gdm-user-manager.h gdm-2.30.0.new/gui/gdmsetup/gdm-user-manager.h
---- gdm-2.30.0/gui/gdmsetup/gdm-user-manager.h	1970-01-01 01:00:00.000000000 +0100
-+++ gdm-2.30.0.new/gui/gdmsetup/gdm-user-manager.h	2010-03-31 18:45:09.819557447 +0200
+Index: gdm-2.32.1/gui/gdmsetup/gdm-user-manager.h
+===================================================================
+--- /dev/null	1970-01-01 00:00:00.000000000 +0000
++++ gdm-2.32.1/gui/gdmsetup/gdm-user-manager.h	2011-04-08 16:33:46.931921354 +1000
 @@ -0,0 +1,87 @@
 +/* -*- Mode: C; tab-width: 8; indent-tabs-mode: nil; c-basic-offset: 8 -*-
 + *
@@ -4439,9 +4427,10 @@ diff -Nur -x '*.orig' -x '*~' gdm-2.30.0/gui/gdmsetup/gdm-user-manager.h gdm-2.3
 +G_END_DECLS
 +
 +#endif /* __GDM_USER_MANAGER_H */
-diff -Nur -x '*.orig' -x '*~' gdm-2.30.0/gui/gdmsetup/gdm-user-private.h gdm-2.30.0.new/gui/gdmsetup/gdm-user-private.h
---- gdm-2.30.0/gui/gdmsetup/gdm-user-private.h	1970-01-01 01:00:00.000000000 +0100
-+++ gdm-2.30.0.new/gui/gdmsetup/gdm-user-private.h	2010-03-31 18:45:09.819557447 +0200
+Index: gdm-2.32.1/gui/gdmsetup/gdm-user-private.h
+===================================================================
+--- /dev/null	1970-01-01 00:00:00.000000000 +0000
++++ gdm-2.32.1/gui/gdmsetup/gdm-user-private.h	2011-04-08 16:33:46.931921354 +1000
 @@ -0,0 +1,44 @@
 +/* -*- Mode: C; tab-width: 8; indent-tabs-mode: nil; c-basic-offset: 8 -*-
 + *
@@ -4487,9 +4476,10 @@ diff -Nur -x '*.orig' -x '*~' gdm-2.30.0/gui/gdmsetup/gdm-user-private.h gdm-2.3
 +G_END_DECLS
 +
 +#endif /* !__GDM_USER_PRIVATE__ */
-diff -Nur -x '*.orig' -x '*~' gdm-2.30.0/gui/gdmsetup/Makefile.am gdm-2.30.0.new/gui/gdmsetup/Makefile.am
---- gdm-2.30.0/gui/gdmsetup/Makefile.am	1970-01-01 01:00:00.000000000 +0100
-+++ gdm-2.30.0.new/gui/gdmsetup/Makefile.am	2010-03-31 18:45:09.819557447 +0200
+Index: gdm-2.32.1/gui/gdmsetup/Makefile.am
+===================================================================
+--- /dev/null	1970-01-01 00:00:00.000000000 +0000
++++ gdm-2.32.1/gui/gdmsetup/Makefile.am	2011-04-08 16:33:46.931921354 +1000
 @@ -0,0 +1,40 @@
 +NULL =
 +
@@ -4531,21 +4521,11 @@ diff -Nur -x '*.orig' -x '*~' gdm-2.30.0/gui/gdmsetup/Makefile.am gdm-2.30.0.new
 +	$(ui_DATA)		\
 +	$(Utilities_in_files)	\
 +	$(NULL)
-diff -Nur -x '*.orig' -x '*~' gdm-2.30.0/gui/Makefile.am gdm-2.30.0.new/gui/Makefile.am
---- gdm-2.30.0/gui/Makefile.am	2010-03-29 23:42:03.000000000 +0200
-+++ gdm-2.30.0.new/gui/Makefile.am	2010-03-31 18:45:09.819557447 +0200
-@@ -1,6 +1,7 @@
- NULL =
- 
- SUBDIRS =			\
-+	gdmsetup		\
- 	simple-chooser		\
- 	simple-greeter		\
- 	user-switch-applet	\
-diff -Nur -x '*.orig' -x '*~' gdm-2.30.0/po/POTFILES.in gdm-2.30.0.new/po/POTFILES.in
---- gdm-2.30.0/po/POTFILES.in	2010-03-31 18:45:09.095560322 +0200
-+++ gdm-2.30.0.new/po/POTFILES.in	2010-03-31 18:45:09.819557447 +0200
-@@ -59,6 +59,9 @@
+Index: gdm-2.32.1/po/POTFILES.in
+===================================================================
+--- gdm-2.32.1.orig/po/POTFILES.in	2011-04-08 16:33:45.161921352 +1000
++++ gdm-2.32.1/po/POTFILES.in	2011-04-08 16:33:46.931921354 +1000
+@@ -60,6 +60,9 @@
  data/greeter-autostart/metacity.desktop.in
  data/greeter-autostart/orca-screen-reader.desktop.in
  data/greeter-autostart/polkit-gnome-authentication-agent-1.desktop.in.in
@@ -4555,3 +4535,15 @@ diff -Nur -x '*.orig' -x '*~' gdm-2.30.0/po/POTFILES.in gdm-2.30.0.new/po/POTFIL
  gui/simple-chooser/gdm-host-chooser-dialog.c
  gui/simple-chooser/gdm-host-chooser-widget.c
  gui/simple-greeter/gdm-cell-renderer-timer.c
+Index: gdm-2.32.1/gui/Makefile.am
+===================================================================
+--- gdm-2.32.1.orig/gui/Makefile.am	2011-04-08 16:33:45.041921352 +1000
++++ gdm-2.32.1/gui/Makefile.am	2011-04-08 16:33:46.931921354 +1000
+@@ -3,6 +3,7 @@
+ SUBDIRS =			\
+ 	simple-greeter		\
+ 	user-switch-applet	\
++	gdmsetup		\
+ 	$(NULL)
+ 
+ if XDMCP_SUPPORT

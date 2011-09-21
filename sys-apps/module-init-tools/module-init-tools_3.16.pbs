@@ -1,0 +1,44 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="tools for managing linux kernel modules"
+HOMEPAGE="http://kerneltools.org/"
+LICENSE="GPL"
+PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
+
+SRC_URI="http://www.kernel.org/pub/linux/utils/kernel/"$N"/"$N-$V".tar.bz2"
+
+RDEPEND="glibc zlib"
+BDEPEND=" "
+
+INSTALL="$N.install"
+
+pbs_unpack() {
+        ypkg_unpack
+}
+
+pbs_config() {
+	YPB_CONFIG="--prefix=/ --enable-zlib-dynamic --mandir=/usr/share/man" 
+	ypkg_config
+}
+
+pbs_build() {
+	ypkg_make DOCBOOKTOMAN=true
+}
+
+pbs_install() {
+	ypkg_mkinstall
+	cd "$YPPATH_DEST"
+	
+	#
+	mkdir -p etc/modules-unload.d/
+	ypkg_docp "$FILES_PATH"/files/modprobe.d/* etc/modprobe.d
+	ypkg_domv  bin/lsmod sbin
+	rm -rf bin
+
+	#
+	ypkg_docp "$FILES_PATH"/files/{module-init-tools,module-unload-tools} sbin
+	ypkg_dounit "$N.service" "module-unload-tools.service"
+}
+

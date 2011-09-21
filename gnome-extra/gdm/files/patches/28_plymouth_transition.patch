@@ -5,22 +5,21 @@ Subject: Enable smooth transition between plymouth and X
 
 This commit checks if plymouth is running, and if so,
 turns on the smooth transition between plymouth and X.
-diff -Nur -x '*.orig' -x '*~' gdm/daemon/gdm-server.c gdm.new/daemon/gdm-server.c
---- gdm/daemon/gdm-server.c	2010-03-11 20:04:29.713911923 +0000
-+++ gdm.new/daemon/gdm-server.c	2010-03-11 20:04:35.660911091 +0000
-@@ -32,8 +32,11 @@
- #include <pwd.h>
- #include <grp.h>
+Index: gdm-2.32.1/daemon/gdm-server.c
+===================================================================
+--- gdm-2.32.1.orig/daemon/gdm-server.c	2011-04-08 16:32:05.000000000 +1000
++++ gdm-2.32.1/daemon/gdm-server.c	2011-04-08 16:33:12.701921336 +1000
+@@ -34,6 +34,9 @@
  #include <signal.h>
-+#include <sys/ioctl.h>
  #include <sys/resource.h>
  
++#include <sys/ioctl.h>
 +#include <linux/vt.h>
 +
- #include <glib.h>
- #include <glib/gi18n.h>
- #include <glib/gstdio.h>
-@@ -663,6 +666,44 @@
+ #ifdef HAVE_SYS_PRCTL_H
+ #include <sys/prctl.h>
+ #endif
+@@ -680,6 +683,44 @@
          return ret;
  }
  
@@ -65,10 +64,11 @@ diff -Nur -x '*.orig' -x '*~' gdm/daemon/gdm-server.c gdm.new/daemon/gdm-server.
  /**
   * gdm_server_start:
   * @disp: Pointer to a GdmDisplay structure
-@@ -681,6 +734,21 @@
+@@ -702,6 +743,21 @@
+ 
          return res;
  }
- 
++
 +gboolean
 +gdm_server_start_on_active_vt (GdmServer *server)
 +{
@@ -76,20 +76,20 @@ diff -Nur -x '*.orig' -x '*~' gdm/daemon/gdm-server.c gdm.new/daemon/gdm-server.
 +        char *vt;
 +
 +        g_free (server->priv->command);
-+        server->priv->command = g_strdup (X_SERVER " -br -verbose ");
++        server->priv->command = g_strdup (X_SERVER " -nr -verbose");
 +        vt = get_active_vt_as_string ();
 +        res = gdm_server_spawn (server, vt);
 +        g_free (vt);
 +
 +        return res;
 +}
-+
+ 
  static void
  server_died (GdmServer *server)
- {
-diff -Nur -x '*.orig' -x '*~' gdm/daemon/gdm-server.h gdm.new/daemon/gdm-server.h
---- gdm/daemon/gdm-server.h	2010-03-11 19:46:50.755211000 +0000
-+++ gdm.new/daemon/gdm-server.h	2010-03-11 20:04:35.660911091 +0000
+Index: gdm-2.32.1/daemon/gdm-server.h
+===================================================================
+--- gdm-2.32.1.orig/daemon/gdm-server.h	2011-02-18 14:27:53.000000000 +1100
++++ gdm-2.32.1/daemon/gdm-server.h	2011-04-08 16:33:12.701921336 +1000
 @@ -56,6 +56,7 @@
  GdmServer *         gdm_server_new       (const char *display_id,
                                            const char *auth_file);
@@ -98,18 +98,19 @@ diff -Nur -x '*.orig' -x '*~' gdm/daemon/gdm-server.h gdm.new/daemon/gdm-server.
  gboolean            gdm_server_stop      (GdmServer   *server);
  char *              gdm_server_get_display_device (GdmServer *server);
  
-diff -Nur -x '*.orig' -x '*~' gdm/daemon/gdm-simple-slave.c gdm.new/daemon/gdm-simple-slave.c
---- gdm/daemon/gdm-simple-slave.c	2010-03-11 20:04:30.285908021 +0000
-+++ gdm.new/daemon/gdm-simple-slave.c	2010-03-11 20:05:15.296908720 +0000
-@@ -84,6 +84,7 @@
- 
-         guint              start_session_when_ready : 1;
-         guint              waiting_to_start_session : 1;
+Index: gdm-2.32.1/daemon/gdm-simple-slave.c
+===================================================================
+--- gdm-2.32.1.orig/daemon/gdm-simple-slave.c	2011-04-08 16:32:54.851921328 +1000
++++ gdm-2.32.1/daemon/gdm-simple-slave.c	2011-04-08 16:33:12.701921336 +1000
+@@ -91,6 +91,7 @@
+ #ifdef  HAVE_LOGINDEVPERM
+         gboolean           use_logindevperm;
+ #endif
 +        guint              plymouth_is_running : 1;
  };
  
  enum {
-@@ -894,6 +896,91 @@
+@@ -1002,6 +1003,91 @@
          slave->priv->start_session_when_ready = FALSE;
  }
  
@@ -201,7 +202,7 @@ diff -Nur -x '*.orig' -x '*~' gdm/daemon/gdm-simple-slave.c gdm.new/daemon/gdm-s
  static void
  setup_server (GdmSimpleSlave *slave)
  {
-@@ -908,6 +994,10 @@
+@@ -1016,6 +1102,10 @@
           */
          gdm_slave_save_root_windows (GDM_SLAVE (slave));
  
@@ -212,7 +213,7 @@ diff -Nur -x '*.orig' -x '*~' gdm/daemon/gdm-simple-slave.c gdm.new/daemon/gdm-s
  }
  
  static void
-@@ -1101,6 +1191,10 @@
+@@ -1217,6 +1307,10 @@
          g_debug ("GdmSimpleSlave: server exited with code %d\n", exit_code);
  
          gdm_slave_stopped (GDM_SLAVE (slave));
@@ -223,7 +224,7 @@ diff -Nur -x '*.orig' -x '*~' gdm/daemon/gdm-simple-slave.c gdm.new/daemon/gdm-s
  }
  
  static void
-@@ -1113,6 +1207,10 @@
+@@ -1229,6 +1323,10 @@
                   g_strsignal (signal_number));
  
          gdm_slave_stopped (GDM_SLAVE (slave));
@@ -234,7 +235,7 @@ diff -Nur -x '*.orig' -x '*~' gdm/daemon/gdm-simple-slave.c gdm.new/daemon/gdm-s
  }
  
  static gboolean
-@@ -1157,7 +1255,21 @@
+@@ -1273,7 +1371,21 @@
                                    G_CALLBACK (on_server_ready),
                                    slave);
  
@@ -257,7 +258,7 @@ diff -Nur -x '*.orig' -x '*~' gdm/daemon/gdm-simple-slave.c gdm.new/daemon/gdm-s
                  if (! res) {
                          g_warning (_("Could not start the X "
                                       "server (your graphical environment) "
-@@ -1167,6 +1279,9 @@
+@@ -1283,6 +1395,9 @@
                                       "In the meantime this display will be "
                                       "disabled.  Please restart GDM when "
                                       "the problem is corrected."));

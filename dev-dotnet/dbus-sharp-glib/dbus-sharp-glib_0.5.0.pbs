@@ -1,0 +1,36 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="dbus-sharp-glib"
+HOMEPAGE="C# GLib implementation of D-Bus"
+LICENSE="custom"
+PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
+
+SRC_URI="https://github.com/downloads/mono/dbus-sharp/"$N-$V".tar.gz"
+
+RDEPEND="dbus-sharp"
+RECOMMENDED=""
+BDEPEND="pkgconfig"
+
+pbs_unpack() {
+        ypkg_unpack
+}
+
+pbs_config() {
+	export MONO_SHARED_DIR="${PWD}/.wabi"
+	mkdir -p "${MONO_SHARED_DIR}"
+	
+	YPB_CONFIG+=""
+	ypkg_config
+}
+
+pbs_build() {
+	ypkg_make
+}
+
+pbs_install() {
+	ypkg_mkinstall
+	ypkg_dodoc COPYING
+}
+

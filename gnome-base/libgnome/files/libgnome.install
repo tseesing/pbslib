@@ -17,10 +17,9 @@ files=" /etc/gconf/schemas/desktop_gnome_interface.schemas
 	/etc/gconf/schemas/desktop_gnome_applications_at_mobility.schemas
 	/etc/gconf/schemas/desktop_gnome_applications_at_visual.schemas
 	/etc/gconf/schemas/desktop_gnome_accessibility_startup.schemas
-	etc/gconf/schemas/desktop_gnome_accessibility_keyboard.schemas"
+	/etc/gconf/schemas/desktop_gnome_accessibility_keyboard.schemas"
 									       
 post_install() {
-	ypkg_domk build $1 $2
 	gnome2_install_schema "$files"
 	gnome2_install_defaut_gconf "bool" "/desktop/gnome/interface/menus_have_icons" "true" 
 	gnome2_rarian_sk_update

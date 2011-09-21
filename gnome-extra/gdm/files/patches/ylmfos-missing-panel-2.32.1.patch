@@ -1,0 +1,12 @@
+diff -ur gdm-2.32.1/gui/simple-greeter/gdm-greeter-panel.c gdm-2.32.1.new//gui/simple-greeter/gdm-greeter-panel.c
+--- gdm-2.32.1/gui/simple-greeter/gdm-greeter-panel.c	2011-03-29 00:48:50.000000000 +0800
++++ gdm-2.32.1.new//gui/simple-greeter/gdm-greeter-panel.c	2011-09-16 17:56:11.764788442 +0800
+@@ -740,7 +740,7 @@
+ 
+         gtk_window_set_keep_above (GTK_WINDOW (panel), TRUE);
+         gtk_window_set_type_hint (GTK_WINDOW (panel), GDK_WINDOW_TYPE_HINT_DOCK);
+-        gtk_window_set_opacity (GTK_WINDOW (panel), 0.85);
++        //gtk_window_set_opacity (GTK_WINDOW (panel), 0.85);
+ 
+         panel->priv->hbox = gtk_hbox_new (FALSE, 12);
+         gtk_container_set_border_width (GTK_CONTAINER (panel->priv->hbox), 0);

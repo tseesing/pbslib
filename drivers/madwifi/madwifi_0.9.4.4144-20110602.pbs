@@ -25,6 +25,7 @@ pbs_unpack() {
 
 pbs_install() {
 	INSTALL="$N.install"
+OPINION="nodev"
 	ypkg_patch madwifi-utils-install-dir.patch
 	ypkg_dosrc *
 	ypkg_dosupported "${N}_supported"

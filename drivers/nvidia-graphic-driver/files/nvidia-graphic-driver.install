@@ -44,6 +44,8 @@ pre_install() {
 
 post_install() {
 	# Build nvidia.ko
+	# disable checking gcc used to compile kernel and current gcc.
+	export IGNORE_CC_MISMATCH="1"
 	ypkg_domk build $1 $2 "-f Makefile.kbuild module"
 
 	# Check nvidia.ko

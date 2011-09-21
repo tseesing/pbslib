@@ -1,7 +1,9 @@
 . /usr/lib/ybs/funcs
 
 post_install() {
-	# automatic build modules
+	# Automatic build modules
+	#
+	unset ARCH
 	ypkg_domk autoinstall
 	return 0
 }       

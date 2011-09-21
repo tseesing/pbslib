@@ -7,7 +7,7 @@ HOMEPAGE="http://www.gtkmm.org"
 LICENSE="GPL-2"
 PACKAGER="<ylmfos@115.com>"
  
-SRC_URI=" http://ftp.gnome.org/pub/gnome/sources/"$N"/2.24/"$N-$V$R".tar.bz2 "
+SRC_URI="http://ftp.gnome.org/pub/gnome/bindings/2.32/2.32.1/sources/c++/"$N-$V".tar.bz2"
 
 RDEPEND="gcc glib2 gdk-pixbuf glibc libsigc++ zlib"
 BDEPEND=""

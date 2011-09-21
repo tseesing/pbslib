@@ -1,6 +1,4 @@
-#
-# Description: Saves the root window background so that other things like gnome-settings-daemon can access it.  Taken from the plymouth-integration branch of Upstream GIT.
-#
+Description: Saves the root window background so that other things like gnome-settings-daemon can access it.  Taken from the plymouth-integration branch of Upstream GIT.
 From 9768d9e2783de7e836421d9645070bb1917800dd Mon Sep 17 00:00:00 2001
 From: Ray Strode <rstrode@redhat.com>
 Date: Fri, 27 Nov 2009 23:27:53 +0000
@@ -9,11 +7,11 @@ Subject: Save root window to pixmap at _XROOTPMAP_ID
 This combined with starting the X server with -nr
 will give us a nice fade transition when g-s-d starts
 ---
-diff --git a/daemon/gdm-simple-slave.c b/daemon/gdm-simple-slave.c
-index 2cbb568..66d1c77 100644
---- a/daemon/gdm-simple-slave.c
-+++ b/daemon/gdm-simple-slave.c
-@@ -899,6 +899,15 @@ setup_server (GdmSimpleSlave *slave)
+Index: gdm-2.32.1/daemon/gdm-simple-slave.c
+===================================================================
+--- gdm-2.32.1.orig/daemon/gdm-simple-slave.c	2011-04-08 16:32:16.451921308 +1000
++++ gdm-2.32.1/daemon/gdm-simple-slave.c	2011-04-08 16:32:23.731921312 +1000
+@@ -1007,6 +1007,15 @@
  {
          /* Set the busy cursor */
          gdm_slave_set_busy_cursor (GDM_SLAVE (slave));
@@ -29,8 +27,10 @@ index 2cbb568..66d1c77 100644
  }
  
  static void
---- a/daemon/gdm-slave.c	2010-04-27 21:48:54.000000000 +0800
-+++ b/daemon/gdm-slave.c.new	2010-11-24 16:23:51.193000053 +0800
+Index: gdm-2.32.1/daemon/gdm-slave.c
+===================================================================
+--- gdm-2.32.1.orig/daemon/gdm-slave.c	2011-03-29 03:48:50.000000000 +1100
++++ gdm-2.32.1/daemon/gdm-slave.c	2011-04-08 16:32:23.731921312 +1000
 @@ -43,6 +43,7 @@
  #include <dbus/dbus-glib-lowlevel.h>
  
@@ -39,7 +39,7 @@ index 2cbb568..66d1c77 100644
  #include <X11/cursorfont.h> /* for watch cursor */
  #include <X11/Xatom.h>
  
-@@ -352,6 +353,78 @@
+@@ -354,6 +355,77 @@
          return ret;
  }
  
@@ -58,7 +58,7 @@ index 2cbb568..66d1c77 100644
 +                                  screen_number);
 +
 +        width = DisplayWidth (slave->priv->server_display, screen_number);
-+       height = DisplayHeight (slave->priv->server_display, screen_number);
++        height = DisplayHeight (slave->priv->server_display, screen_number);
 +        depth = DefaultDepth (slave->priv->server_display, screen_number);
 +        pixmap = XCreatePixmap (slave->priv->server_display,
 +                                root_window,
@@ -100,8 +100,8 @@ index 2cbb568..66d1c77 100644
 +
 +        number_of_screens = ScreenCount (slave->priv->server_display);
 +
-+       atom = XInternAtom (slave->priv->server_display,
-+                           "_XROOTPMAP_ID", False);
++        atom = XInternAtom (slave->priv->server_display,
++                            "_XROOTPMAP_ID", False);
 +
 +        if (atom == 0) {
 +                return;
@@ -114,12 +114,13 @@ index 2cbb568..66d1c77 100644
 +        XSync (slave->priv->server_display, False);
 +}
 +
-+
  void
  gdm_slave_set_busy_cursor (GdmSlave *slave)
  {
---- a/daemon/gdm-slave.h	2010-03-26 21:28:03.000000000 +0800
-+++ b/daemon/gdm-slave.h.new	2010-11-24 16:28:29.845000054 +0800
+Index: gdm-2.32.1/daemon/gdm-slave.h
+===================================================================
+--- gdm-2.32.1.orig/daemon/gdm-slave.h	2011-03-29 03:48:50.000000000 +1100
++++ gdm-2.32.1/daemon/gdm-slave.h	2011-04-08 16:32:23.731921312 +1000
 @@ -74,6 +74,7 @@
  
  gboolean            gdm_slave_connect_to_x11_display (GdmSlave   *slave);

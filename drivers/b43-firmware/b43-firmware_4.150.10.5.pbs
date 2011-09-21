@@ -16,7 +16,7 @@ BDEPEND=" b43-fwcutter"
 RECOMMENDED=""
 CONFLICT=""
 
-NOTES=""
+PINION="nodeva"
 
 pbs_unpack() {
         ypkg_unpack

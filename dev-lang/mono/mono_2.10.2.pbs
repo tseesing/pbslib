@@ -1,0 +1,71 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="Free implementation of the .NET platform including runtime and compiler"
+HOMEPAGE="http://www.go-mono.com http://ftp.novell.com/pub/mono/sources-stable/"
+LICENSE="LGPLv2, MIT X11"
+PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
+
+# another download url: http://download.mono-project.com/sources/
+SRC_URI="http://ftp.novell.com/pub/mono/sources/"$N"/"$N-$V".tar.bz2"
+
+RDEPEND="zlib libgdiplus"
+BDEPEND="bison pkgconfig"
+RECOMMENDED=""
+CONFLICT=""
+
+pbs_unpack() {
+        ypkg_unpack
+}
+
+pbs_config() {
+	patches="mono-2.8-ppc-thread.patch 
+	         mono-2.10-libdir.patch
+		 mono-1.2.3-use-monodir.patch
+		 mono-2.2-uselibdir.patch
+		 mono-2.0-monoservice.patch
+		 mono-2.10-metadata-makefile.patch
+		 mono-281-libgdiplusconfig.patch
+		 mono-2.10-monodis.patch"
+	ypkg_patch $patches
+
+	autoreconf -f -i -s
+	# Remove prebuilt binaries
+	rm -rf mcs/class/lib/monolite/*
+
+	YPB_CONFIG+="--with-ikvm-native=yes 
+	             --with-jit=yes
+		     --with-xen_opt=yes
+	             --with-moonlight=no
+		     --with-profile2=yes
+		     --with-monotouch=no
+		     --with-libgdiplus=installed
+		     --with-sgen=no
+		     --with-profile4=yes"
+
+	export CFLAGS+="-fno-strict-aliasing"
+	ypkg_config
+}
+
+pbs_build() {
+	ypkg_make
+	
+	# Build jay
+	# cd mcs/jay
+	# ypkg_make
+	# cd -
+}
+
+pbs_install() {
+	ypkg_mkinstall
+	ypkg_dodoc mcs/MIT.X11
+	
+	# Install jay
+	# cd mcs/jay
+	# ypkg_mkinstall prefix=/usr install=../../install-sh install
+
+	# Fix .pc file to be able to request mono on what it depends, fixes #go-oo build
+	sed -i -e "s:#Requires:Requires:" "$YPPATH_DEST"/usr/lib/pkgconfig/mono.pc
+}
+

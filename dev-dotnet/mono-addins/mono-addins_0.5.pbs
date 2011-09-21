@@ -4,26 +4,22 @@
 
 DESCRIPTION="A generic framework for creating extensible applications"
 HOMEPAGE="http://www.mono-project.com/Mono.Addins"
-REPO=""
-LICENSE=""
-PRIORITY=""
+LICENSE="custom:MIT"
 PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 
-SRC_URI="http://ftp.novell.com/pub/mono/sources/"$N"/"$N-$V$R".tar.bz2"
+SRC_URI="http://download.mono-project.com/sources/"$N"/"$N-$V".tar.bz2"
 
-RDEPEND=""
-BDEPEND="gtk-sharp"
+RDEPEND="gtk-sharp mono"
+BDEPEND="pkgconfig"
 RECOMMENDED=""
 CONFLICT=""
-
-NOTES=""
 
 pbs_unpack() {
         ypkg_unpack
 }
 
 pbs_config() {
-	YPB_CONFIG+=""
+	YPB_CONFIG+="--enable-gui"
 	ypkg_config
 }
 
@@ -33,4 +29,6 @@ pbs_build() {
 
 pbs_install() {
 	ypkg_mkinstall
+	ypkg_dodoc COPYING
 }
+

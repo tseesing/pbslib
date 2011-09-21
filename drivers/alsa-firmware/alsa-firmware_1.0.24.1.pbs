@@ -4,9 +4,7 @@
 
 DESCRIPTION="Firmware for cards that require it"
 HOMEPAGE="http://www.alsa-project.org/"
-REPO=""
 LICENSE="GPL"
-PRIORITY=""
 PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 
 SRC_URI="ftp://ftp.alsa-project.org/pub/firmware/"$N-$V$R".tar.bz2"
@@ -16,7 +14,7 @@ BDEPEND=""
 RECOMMENDED=""
 CONFLICT=""
 
-NOTES=""
+OPINION="nodev"
 
 pbs_unpack() {
         ypkg_unpack
@@ -33,4 +31,20 @@ pbs_build() {
 
 pbs_install() {
 	ypkg_mkinstall
+	cd "$YPPATH_DEST"
+
+	# Remove files which conflicts with kernel26-firmware
+	rm -rf lib/firmware/ess/maestro3_assp_kernel.fw
+	rm -rf lib/firmware/ess/maestro3_assp_minisrc.fw
+	rm -rf lib/firmware/korg/k1212.dsp
+	rm -rf lib/firmware/sb16/alaw_main.csp
+	rm -rf lib/firmware/sb16/ima_adpcm_capture.csp
+	rm -rf lib/firmware/sb16/ima_adpcm_init.csp
+	rm -rf lib/firmware/sb16/ima_adpcm_playback.csp
+	rm -rf lib/firmware/sb16/mulaw_main.csp
+	rm -rf lib/firmware/yamaha/ds1_ctrl.fw
+	rm -rf lib/firmware/yamaha/ds1_dsp.fw
+	rm -rf lib/firmware/yamaha/ds1e_ctrl.fw
+	rm -rf lib/firmware/yamaha/yss225_registers.bin
 }
+
