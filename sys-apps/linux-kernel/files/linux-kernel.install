@@ -4,6 +4,7 @@ post_install() {
 	name="$1"
 	version="$2"
 	atom_parse ${name}_$version
+	depmod -a
 	update-initramfs -c -k "$V"-ylmfos
 	update-grub
 }       
@@ -12,6 +13,7 @@ post_remove() {
 	name="$1"
 	version="$2"
         atom_parse ${name}_$version
+	depmod -a
 	[ -f /boot/initrd.img-"$V"-ylmfos ]         && rm /boot/initrd.img-"$V"-ylmfos
 	[ -f /var/lib/initramfs-tools/"$V"-ylmfos ] && rm /var/lib/initramfs-tools/"$V"-ylmfos
 	update-grub

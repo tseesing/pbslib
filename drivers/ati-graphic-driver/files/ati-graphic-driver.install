@@ -67,6 +67,7 @@ post_install() {
 blacklist radeon
 EOF
 	# Update initramfs
+        depmod -a
 	update-initramfs -d -u
 	
 	#
@@ -97,6 +98,7 @@ post_remove() {
 	rm  -rf /usr/src/"$1-$2"
 	
 	# Update initramfs
+        depmod -a
 	update-initramfs -d -u
 
 	# Restore libGL and libglx

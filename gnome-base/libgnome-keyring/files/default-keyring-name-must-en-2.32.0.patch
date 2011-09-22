@@ -1,5 +1,12 @@
-libgnome-keyring-2.32.0/docs 和 libgnome-keyring-2.32.0.new/docs 有共同的子目录
-libgnome-keyring-2.32.0/egg 和 libgnome-keyring-2.32.0.new/egg 有共同的子目录
-libgnome-keyring-2.32.0/library 和 libgnome-keyring-2.32.0.new/library 有共同的子目录
-libgnome-keyring-2.32.0/po 和 libgnome-keyring-2.32.0.new/po 有共同的子目录
-libgnome-keyring-2.32.0/tests 和 libgnome-keyring-2.32.0.new/tests 有共同的子目录
+diff -ur libgnome-keyring-2.32.0/library/gnome-keyring.c libgnome-keyring-2.32.0.new//library/gnome-keyring.c
+--- libgnome-keyring-2.32.0/library/gnome-keyring.c	2010-09-13 03:18:27.000000000 +0800
++++ libgnome-keyring-2.32.0.new//library/gnome-keyring.c	2011-09-20 22:41:00.044627456 +0800
+@@ -2816,7 +2816,7 @@
+ 							    SERVICE_INTERFACE, "CreateCollection");
+ 			dbus_message_iter_init_append (req, &iter);
+ 			/* TRANSLATORS: This is the name of an automatically created default keyring. */
+-			create_keyring_encode_properties (&iter, _("Default"));
++			create_keyring_encode_properties (&iter, _("default"));
+ 			gkr_operation_push (op, item_create_1_collection_reply, GKR_CALLBACK_OP_MSG, args, NULL);
+ 			gkr_operation_request (op, req);
+ 			dbus_message_unref (req);

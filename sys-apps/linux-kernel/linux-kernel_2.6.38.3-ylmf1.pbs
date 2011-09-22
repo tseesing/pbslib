@@ -17,6 +17,8 @@ PROVIDE="linux-kernel-headers"
 
 INSTALL="$N.install"
 
+OPINION="nodev"
+
 pbs_unpack() {
         ypkg_unpack
 }
@@ -70,6 +72,8 @@ pbs_install() {
 
 linux-kernel-headers_install() {
 	DESCRIPTION="linux kernel headers"
+	OPINION="nodev"
+	CONFLICT="linux-kernel-headers-dev"
 	INSTALL="linux-kernel-headers.install"
 	
 	# headers

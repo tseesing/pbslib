@@ -5,7 +5,7 @@
 DESCRIPTION="Compatibility library for accessing secrets"
 HOMEPAGE="http://live.gnome.org/GnomeKeyring"
 LICENSE="GPL-2"
-PACKAGER="<ylmfos@115.com>"
+PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 
 SRC_URI="http://ftp.gnome.org/pub/gnome/desktop/2.32/2.32.1/sources/"$N-$V".tar.bz2"
 

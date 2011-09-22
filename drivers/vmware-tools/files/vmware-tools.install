@@ -2,10 +2,12 @@
 
 post_install() {
 	depmod -a
+        depmod -a
 	update-initramfs -d -u
 }       
 
 post_remove() {
 	depmod -a
+        depmod -a
 	update-initramfs -d -u
 }

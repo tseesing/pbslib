@@ -88,9 +88,13 @@ pbs_build() {
 pbs_install() {
 	ypkg_mkinstall
 	ypkg_dodoc AUTHORS ChangeLog COPYING INSTALL NEWS README
+	
 	cd "$YPPATH_DEST"
+	
 	ypkg_docp "$FILES_PATH"/files/{update-grub2,update-grub}  usr/sbin
 	ypkg_docp "$FILES_PATH"/files/grub  etc/default
+	ypkg_docp "$FILES_PATH"/files/05_debian_theme  etc/grub.d
+	
 	mv usr/sbin/grub-install{,.real}
 }
 

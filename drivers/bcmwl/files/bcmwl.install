@@ -28,6 +28,7 @@ fi
 	fi
 
         # Update initramfs
+        depmod -a
 	update-initramfs -u
 }
 
@@ -38,6 +39,7 @@ post_remove () {
 	#
 	BLACKLIST_FILE="/etc/modprobe.d/blacklist-bcm43.conf"
         rm -f "$BLACKLIST_FILE"
+        depmod -a
         update-initramfs -u
 }
 

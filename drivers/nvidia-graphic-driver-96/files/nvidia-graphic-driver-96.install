@@ -64,6 +64,7 @@ options nouveau modeset=0
 blacklist lbm-nouveau
 EOF
 	# Update initramfs
+        depmod -a
 	update-initramfs -d -u
 	
 	#	
@@ -95,6 +96,7 @@ post_remove() {
 	rm  -rf /usr/src/"$1-$2"
 
 	# Update initramfs
+        depmod -a
 	update-initramfs -d -u
 	
 	# restore libGL and libglx.so

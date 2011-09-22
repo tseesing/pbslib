@@ -4,10 +4,8 @@
 
 DESCRIPTION="NVIDIA binary Xorg driver, kernel module and VDPAU library"
 HOMEPAGE="http://www.nvidia.com/object/citizenship-report-home.html"
-LICENSE=""
+LICENSE="custom"
 PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
-
-REPO="testing"
 
 SRC_URI="ftp://download.nvidia.com/XFree86/Linux-x86/"$V$R"/NVIDIA-Linux-x86-"$V$R".run"
 
@@ -18,8 +16,6 @@ CONFLICT=""
 
 INSTALL="$N.install"
 OPINION="nodev"
-
-NOTES=""
 
 DESKTOPFILE="nvidia-settings.desktop"
 
@@ -123,7 +119,7 @@ pbs_install() {
 	ypkg_domv nvidia-installer nvidia-xconfig nvidia-smi nvidia-bug-report.sh nvidia-settings "$YPPATH_DEST"/usr/bin/
 
 	#
-	sed -i 's/__UTILS_PATH__/\/usr\/bin/g'             nvidia-settings.desktop
+	sed -i 's/__UTILS_PATH__/\/usr\/bin/g' nvidia-settings.desktop
 	sed -i 's/__PIXMAP_PATH__\///g' nvidia-settings.desktop
 	ypkg_dodesktop nvidia-settings.desktop nvidia-settings.png
 	rm nvidia-settings.desktop nvidia-settings.png 

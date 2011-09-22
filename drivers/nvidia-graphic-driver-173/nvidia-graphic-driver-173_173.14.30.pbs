@@ -4,12 +4,10 @@
 
 DESCRIPTION="NVIDIA binary Xorg driver, kernel module and VDPAU library"
 HOMEPAGE="http://www.nvidia.com/object/citizenship-report-home.html"
-LICENSE=""
+LICENSE="custom"
 PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 
-REPO="testing"
-
-SRC_URI="http://us.download.nvidia.com/XFree86/Linux-x86/173.14.30/NVIDIA-Linux-x86-"$V$R"-pkg1.run"
+SRC_URI="http://us.download.nvidia.com/XFree86/Linux-x86/"$V"/NVIDIA-Linux-x86-"$V"-pkg1.run"
 
 RDEPEND="glibc"
 BDEPEND="make prelink"
@@ -24,7 +22,7 @@ DESKTOPFILE="nvidia-settings.desktop"
 pbs_install() {
 	# Extract-only
 	rm -r NVIDIA-Linux-x86-173.14.30-pkg1 2>/dev/null
-	bash "$YPPATH_SOURCE"/NVIDIA-Linux-x86-"$V$R"-pkg1.run --extract-only
+	bash "$YPPATH_SOURCE"/NVIDIA-Linux-x86-"$V"-pkg1.run --extract-only
 	cd NVIDIA-Linux-x86-173.14.30-pkg1
 	
 	# License 
