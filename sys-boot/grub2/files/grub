@@ -23,5 +23,14 @@ GRUB_CMDLINE_LINUX=""
 # Uncomment to disable generation of recovery mode menu entries
 #GRUB_DISABLE_LINUX_RECOVERY="true"
 
+# Uncomment to disable generation of nomodeset mode menu entries
+#GRUB_DISABLE_LINUX_NOMODESET="true"
+
 # Uncomment to get a beep at grub start
 #GRUB_INIT_TUNE="480 440 1"
+
+# Grub2 background image and color
+# Supports: *.jpg *.JPG *.jpeg *.JPEG *.png *.PNG *.tga *.TGA; 8/16/24bit; 640x480
+WALLPAPER="/usr/share/images/grub/ylmfos-default-grub.png"
+COLOR_NORMAL="white/black"
+COLOR_HIGHLIGHT="black/light-gray"

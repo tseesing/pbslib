@@ -1,0 +1,105 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="GRand Unified Bootloader, version 2 with Ubuntu patchs"
+HOMEPAGE="http://www.gnu.org/software/grub/grub-2.en.html"
+LICENSE="GPL-2"
+PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
+
+PRIORITY="required"
+
+SRC_URI="http://ftp.csie.ncu.edu.tw/pub/Linux/Ubuntu/pool/main/g/grub2/grub2_1.98+20100804.orig.tar.gz"
+
+RDEPEND="freetype glibc zlib"
+BDEPEND="unifont"
+RECOMMENDED="grub2-splashimages"
+CONFLICT="grub"
+
+INSTALL="$N.install"
+
+pbs_unpack() {
+        ypkg_unpack
+}
+
+pbs_config() {
+	patches="
+		olpc_prefix_hack.patch
+		core_in_fs.patch
+		boot_blocklist_hack.patch
+		grub_legacy_0_based_partitions.patch
+		disable_floppies.patch
+		grub.cfg_400.patch
+		gfxpayload_keep_default.patch
+		mkrescue_diet.patch
+		mkconfig_skip_dmcrypt.patch
+		install_stage2_confusion.patch
+		kfreebsd_ext2.patch
+		dmraid_mapper_paths.patch
+		dmraid_pool_leak.patch
+		ubuntu_grub_standards.patch
+		ubuntu_crashkernel.patch
+		ubuntu_quick_boot.patch
+		ubuntu_sleep_shift.patch
+		ubuntu_normal_quiet.patch
+		ubuntu_really_quiet.patch
+		ubuntu_linux_quiet.patch
+		ubuntu_handle_loopback.patch
+		ubuntu_linux_no_loopmount.patch
+		ubuntu_failed_boot_menu.patch 
+		ubuntu_raid_virtio.patch
+		ubuntu_no_device_map.patch
+		ubuntu_quiet_grub_loading.patch 
+		ubuntu_lvm_raid_probe.patch 
+		ubuntu_langpacks.patch
+		ubuntu_drive_probe.patch 
+		ubuntu_hostdisk_hd.patch
+		ubuntu_qemu.patch
+		ubuntu_efi_install.patch
+		ubuntu_vesafb.patch 
+		ubuntu_diskless_partitions.patch
+		ubuntu_embed_signatures.patch
+		ubuntu_disable_bochs_cirrus.patch 
+		ubuntu_multipath.patch
+		ubuntu_loopback_replace.patch
+		ubuntu_ntfs_uuid_uppercase.patch 
+		977_ylmf_mkdevicemap.diff 
+		ylmfos_grub-probe-skip-fd.patch 
+		ylmfos_export_patch-1.98-ylmf4.patch 
+		ylmfos_disable-recordfail.patch 
+		ylmfos_set-grub-lang.patch 
+		ylmfos_add-nomodeset-entry.patch "
+	ypkg_patch $patches
+		
+	# Copy locale po files
+	ypkg_docp "$FILES_PATH"/files/po/*  po/
+
+	YPB_CONFIG+="--enable-grub-mkfont --enable-nls"
+	ypkg_config
+
+	# FIXME 
+	sed -i 's/PACKAGE_VERSION = 0/PACKAGE_VERSION = '"$V$R"'/g' Makefile
+	sed -i 's/PACKAGE_STRING = GRUB 0/PACKAGE_STRING = GRUB '"$V$R"'/g' Makefile
+	sed -i 's/PACKAGE_VERSION=.*/PACKAGE_VERSION='"$V$R"'/g' configure
+	sed -i 's/ VERSION=.*/ VERSION='"$V$R"'/g' configure
+	
+	./configure $YPB_CONFIG
+}
+
+pbs_build() {
+	ypkg_make
+}
+
+pbs_install() {
+	ypkg_mkinstall
+	ypkg_dodoc AUTHORS ChangeLog COPYING INSTALL NEWS README
+	
+	cd "$YPPATH_DEST"
+	
+	ypkg_docp "$FILES_PATH"/files/{update-grub2,update-grub}  usr/sbin/
+	ypkg_docp "$FILES_PATH"/files/grub  etc/default/
+	ypkg_docp "$FILES_PATH"/files/05_debian_theme  etc/grub.d/
+	
+	cp usr/sbin/grub-install{,.real}
+}
+

@@ -1,0 +1,19 @@
+--- ./util/grub.d/00_header.in	2011-09-23 11:06:49.729898583 +0800
++++ ./util/grub.d/00_header.in.new	2011-09-23 11:06:33.313232132 +0800
+@@ -24,7 +24,7 @@
+ exec_prefix=@exec_prefix@
+ libdir=@libdir@
+ locale_dir=`echo ${GRUB_PREFIX}/locale | sed ${transform}`
+-grub_lang=`echo $LANG | cut -d _ -f 1`
++grub_lang=`echo $LANG | cut -d . -f 1`
+ 
+ . ${libdir}/grub/grub-mkconfig_lib
+ 
+@@ -228,6 +228,7 @@
+ 
+ # Gettext variables and module
+ if [ "x${LANG}" != "xC" ] && [ -d "${locale_dir}" ] ; then
++    echo "Setting lang: ${grub_lang}" >&2
+     prepare_grub_to_access_device $(${grub_probe} --target=device ${locale_dir})
+   cat << EOF
+ set locale_dir=(\$root)$(make_system_path_relative_to_its_root ${locale_dir})

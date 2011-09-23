@@ -23,15 +23,7 @@ set -e
 # We want to work in /boot/grub/ only.
 test -d "${GRUB_PREFIX}"; cd "${GRUB_PREFIX}"
 
-# Set the location of a possibly necessary cache file for the background image.
-# NOTE: This MUST BE A DOTFILE to avoid confusing it with user-defined images.
-BACKGROUND_CACHE=".background_cache"
-
 set_default_theme(){
-	# Set a monochromatic theme for Ubuntu.
-	echo "${1}set menu_color_normal=white/black"
-	echo "${1}set menu_color_highlight=black/light-gray"
-
 	if [ -e /lib/plymouth/themes/default.grub ]; then
 		sed "s/^/${1}/" /lib/plymouth/themes/default.grub
 	fi
@@ -58,6 +50,7 @@ set_background_image(){
 
 	# Step #3: Search the correct GRUB module for our background image.
 	local reader
+	USER_IMAGE="${1}"
 	case "${1}" in
 		*.jpg|*.JPG|*.jpeg|*.JPEG) reader="jpeg";;
 		*.png|*.PNG) reader="png";;
@@ -70,25 +63,13 @@ set_background_image(){
 		return 4
 	fi
 
-	# Step #5: Check if GRUB can read the background image directly.
-	# If so, we can remove the cache file (if any). Otherwise the backgound
-	# image needs to be cached under /boot/grub/.
-	if is_path_readable_by_grub "${1}"; then
-		rm --force "${BACKGROUND_CACHE}.jpeg" \
-			"${BACKGROUND_CACHE}.png" "${BACKGROUND_CACHE}.tga"
-	elif cp "${1}" "${BACKGROUND_CACHE}.${reader}"; then
-		set -- "${BACKGROUND_CACHE}.${reader}" "${2}" "${3}"
-	else
+	# Step #5: Prepare GRUB to read the background image.
+	if ! prepare_grub_to_access_device "`${grub_probe} --target=device "${1}"`"; then
 		return 5
 	fi
 
-	# Step #6: Prepare GRUB to read the background image.
-	if ! prepare_grub_to_access_device "`${grub_probe} --target=device "${1}"`"; then
-		return 6
-	fi
-
-	# Step #7: Everything went fine, print out a message to stderr ...
-	echo "Found background image: ${1}" >&2
+	# Step #6: Everything went fine, print out a message to stderr ...
+	echo "Found background image: ${USER_IMAGE}" >&2
 
 	# ... and write our configuration snippet to stdout. Use the colors
 	# desktop-base specified. If we're using a user-defined background, use
@@ -128,14 +109,13 @@ d00d5e505ab63f2d53fa880bfac447e2d3bb197c  moreblue-orbit-grub.png
 f5b12c1009ec0a3b029185f6b66cd0d7e5611019  moreblue-orbit-grub.png
 EOF
 
-# Include the configuration of desktop-base if available.
-if [ -f "/usr/share/desktop-base/grub_background.sh" ]; then
-	. "/usr/share/desktop-base/grub_background.sh"
+# Include the configuration if available.
+if [ -f "/etc/default/grub" ]; then
+	. "/etc/default/grub"
 fi
 
 # First check whether the user has specified a background image explicitly.
 # If so, try to use it. Don't try the other possibilities in that case
-# (#608263).
 if [ -n "${GRUB_BACKGROUND+x}" ]; then
 	set_background_image "${GRUB_BACKGROUND}" || set_default_theme
 	exit 0
@@ -143,20 +123,16 @@ fi
 
 # Next search for pictures the user put into /boot/grub/ and use the first one.
 for background in *.jpg *.JPG *.jpeg *.JPEG *.png *.PNG *.tga *.TGA; do
-	if set_background_image "${background}"; then
+	if set_background_image "${background}" "${COLOR_NORMAL}" "${COLOR_HIGHLIGHT}"; then
 		exit 0
 	fi
 done
 
-# Next try to use the background image and colors specified by desktop-base.
+# Next try to use the background image and colors specified.
 if set_background_image "${WALLPAPER}" "${COLOR_NORMAL}" "${COLOR_HIGHLIGHT}"; then
-	exit 0
-fi
-
-# If we haven't found a background image yet, use the default from desktop-base.
-if set_background_image "/usr/share/images/desktop-base/desktop-grub.png"; then
 	exit 0
 fi
 
 # Finally, if all of the above fails, use the default theme.
 set_default_theme
+
