@@ -2,14 +2,12 @@
 # YLmf_OS package build script
 #
 
-DESCRIPTION="Import, organize, play, and share your music using a simple and powerful interface."
+DESCRIPTION="Music management and playback for GNOME"
 HOMEPAGE="http://banshee.fm/"
-REPO=""
-LICENSE="GPL"
-PRIORITY=""
+LICENSE="MIT"
 PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 
-SRC_URI="http://download.banshee-project.org/banshee/stable/2.0.0/banshee-2.0.0.tar.bz2"
+SRC_URI="http://download.banshee-project.org/"$N"/stable/"$V"/"$N-$V".tar.bz2"
 
 RDEPEND=""
 BDEPEND="mono-dev ndesk-dbus-glib mono-addins boo taglib-sharp gnome-sharp gnome-desktop-sharp mono-zeroconf libgpod ipod-sharp"
@@ -41,7 +39,9 @@ pbs_config() {
 	#	      --mandir=/usr/share/man
 	#              --disable-static
 	#	      --enable-shared "
-	YPB_CONFIG+="--disable-youtube"
+	YPB_CONFIG+="--disable-scrollkeeper
+	             --disable-schemas-install
+		     --with-vendor-build-id=ylmfos"
 	# --disable-appledevice --disable-ipod" 
 	#Third, call configure with $YPB_CONFIG
 	#./configure $YPB_CONFIG

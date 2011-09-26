@@ -67,7 +67,7 @@ pbs_config() {
 		ylmfos_grub-probe-skip-fd.patch 
 		ylmfos_export_patch-1.98-ylmf4.patch 
 		ylmfos_disable-recordfail.patch 
-		ylmfos_set-grub-lang.patch 
+		ylmfos_set-grub-lang.patch
 		ylmfos_add-nomodeset-entry.patch "
 	ypkg_patch $patches
 		

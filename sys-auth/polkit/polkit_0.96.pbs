@@ -4,20 +4,19 @@
 
 DESCRIPTION="The polkit package is an application-level toolkit for defining and handling the policy that allows unprivileged processes to speak to privileged processes."
 HOMEPAGE="http://hal.freedesktop.org/docs/PolicyKit"
-REPO=""
 LICENSE="GPL-2"
-PACKAGER="<ylmfos@115.com>"
+PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 
-SRC_URI="http://hal.freedesktop.org/releases/"$N-$V$R".tar.gz"
+SRC_URI="http://hal.freedesktop.org/releases/"$N-$V".tar.gz"
+
+RDEPEND="dbus dbus-glib eggdbus expat glib2 glibc pam policykit zlib"
+BDEPEND="" 
+
+INSTALL="$N.install"
 
 NOTES="1. User and group polkituser should be created automatically.
 2. GDM requried complied witch consolekit, otherwise If you login using GDM, polkit authorizations will not work.
 3. member of wheel group has privilege of policykt"
-
-INSTALL="$N.install"
-
-RDEPEND="dbus dbus-glib eggdbus expat glib2 gdk-pixbuf glibc pam policykit zlib"
-BDEPEND="" 
 
 pbs_unpack() {
         ypkg_unpack
@@ -29,7 +28,7 @@ pbs_config() {
 		   00git-fix-error-freeing.patch
 	YPB_CONFIG+=" --with-authfw=pam 
 	              --with-pam-module-dir=/lib/security
-		      --disable-introspection 
+		      --disable-introspection
 		      --disable-ansi 
 		      --disable-examples 
 		      --enable-fast-install
@@ -47,14 +46,17 @@ pbs_build() {
 
 pbs_install() {
 	ypkg_mkinstall
+	
 	#The directory /etc/polkit-1/localauthority /var/lib/polkit-1 must be owned
 	#by root and have mode 700
 	cd "$YPPATH_DEST"
 	install -m700 -d etc/polkit-1/localauthority var/lib/polkit-1
 	chmod 700 etc/polkit-1/localauthority var/lib/polkit-1
+	
 	#The file /usr/libexec/polkit-agent-helper-1 /usr/bin/pkexecmust be owned 
 	#     by root and have mode 4755 (setuid root binary)
 	#chmod 4755 /usr/libexec/polkit-agent-helper-1 /usr/bin/pkexecmust
 	ypkg_docp "$FILES_PATH"/files/51-ylmfos-admin.conf   etc/polkit-1/localauthority.conf.d
 	ypkg_docp "$FILES_PATH"/files/com.ylmfos-admin.pkla  var/lib/polkit-1/localauthority/10-vendor.d
 }
+

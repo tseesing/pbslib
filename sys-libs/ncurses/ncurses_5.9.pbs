@@ -20,8 +20,7 @@ pbs_config() {
 	# Patch contains updates from the 5.9 branch by the Ncurses developers
 	ypkg_patch ncurses-5.9-branch_update-2.patch
 	
-	YPB_CONFIG+="--with-libtool
-                     --with-shared
+	YPB_CONFIG+="--with-shared
 		     --without-debug 
                      --enable-widec
                      --with-manpage-format=normal"
