@@ -112,6 +112,9 @@ pbs_install() {
 	ypkg_docp "$FILES_PATH"/files/locale-gen   usr/sbin
 	ypkg_docp "$FILES_PATH"/files/SUPPORTED    usr/share/i18n
 
+	#
+	ypkg_doln /usr/include/utime.h usr/include/sys/utime.h
+
 	# Remove default localtime
 	# /etc/localtime -> ../usr/share/zoneinfo/Factory
 	rm -rf etc/localtime

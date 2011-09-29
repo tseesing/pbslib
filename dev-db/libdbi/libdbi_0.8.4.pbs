@@ -1,0 +1,33 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION=" libdbi implements a database-independent abstraction layer in C, similar to the DBI/DBD layer in Perl."
+HOMEPAGE="http://libdbi.sourceforge.net/"
+LICENSE="GPL"
+PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
+
+SRC_URI="http://sourceforge.net/projects/libdbi/files/"$N"/"$N-$V"/"$N-$V".tar.gz"
+
+RDEPEND="glibc"
+RECOMMENDED=""
+BDEPEND=""
+CONFLICT=""
+
+pbs_unpack() {
+        ypkg_unpack
+}
+
+pbs_config() {
+	YPB_CONFIG+=""
+	ypkg_config
+}
+
+pbs_build() {
+	ypkg_make
+}
+
+pbs_install() {
+	ypkg_mkinstall
+}
+

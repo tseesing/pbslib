@@ -4,25 +4,22 @@
 
 DESCRIPTION="Javascript bindings for Webkit-GTK and GNOME libraries"
 HOMEPAGE="http://live.gnome.org/Seed"
-REPO=""
 LICENSE="LGPL"
-PRIORITY=""
 PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 
 SRC_URI="http://ftp.gnome.org/pub/gnome/sources/seed/2.30/"$N-$V$R".tar.bz2"
 
-RDEPEND=""
-BDEPEND="gnome-js-common gobject-introspection-dev"
+RDEPEND="atk cairo dbus dbus-glib enchant expat fontconfig freetype gail gcc gdk-pixbuf glib2 glibc gmp gnutls gobject-introspection gst-plugins-base gstreamer gtk+ icu libffi libgcrypt libgpg-error libICE libjpeg-turbo libpng libSM libsoup libtasn1 libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libxml2 libXrandr libXrender libxslt libXt mpfr ncurses pango pixman readline sqlite util-linux-ng webkitgtk zlib"
+BDEPEND="gnome-js-common webkit-dev"
 RECOMMENDED=""
 CONFLICT=""
-
-NOTES=""
 
 pbs_unpack() {
         ypkg_unpack
 }
 
 pbs_config() {
+	ypkg_patch Fix-build-with-latest-GI.patch
 	YPB_CONFIG+=""
 	ypkg_config
 }
@@ -34,3 +31,4 @@ pbs_build() {
 pbs_install() {
 	ypkg_mkinstall
 }
+

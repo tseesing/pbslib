@@ -4,20 +4,19 @@
 
 DESCRIPTION="Firefox Web Browser"
 HOMEPAGE="http://www.mozilla.com/firefox"
-LICENSE="multi license"
+LICENSE="Multilicense"
 PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
-YVERSION="2"
 
 REPO="testing"
 SRC_URI="ftp://ftp.mozilla.org/pub/mozilla.org/"$N"/releases/"$V"/source/"$N-$V".source.tar.bz2"
 
 RDEPEND=""
-BDEPEND="mercurial curl wireless-tools mesa libIDL"
+BDEPEND="mercurial curl-dev wireless-tools-dev mesa-dev libIDL-dev"
 RECOMMENDED="ylmfox"
 
 NOTES="Do not distribute builds with
---enable-official-branding unless you have
-permission to use trademarks per
+--enable-official-branding
+unless you have permission to use trademarks per
 http://www.mozilla.org/foundation/trademarks/"
 
 INSTALL="$N.install"
@@ -28,20 +27,80 @@ pbs_unpack() {
 
 pbs_config() {
 	mkdir -p l10n
-	cd l10n
-	echo "* ui locale zh-CN downloading ..."
+	pushd l10n
+	echo "* Downloading UI locale zh-CN..."
 	hg clone http://hg.mozilla.org/l10n-central/zh-CN/
-	cd ..
-		
-	ypkg_docp_rename "$FILES_PATH/files/mozconfig" ".mozconfig" 
+	popd
+	#ypkg_docp_rename "$FILES_PATH/files/mozconfig" ".mozconfig" 
+	YPB_CONFIG+="--with-system-nspr
+	             --with-system-nss
+		     --with-system-jpeg
+		     --with-system-zlib
+		     --with-system-bz2
+		     --with-system-libevent
+		     --with-system-libvpx
+		     --enable-system-hunspell
+		     --enable-system-cairo
+		     --enable-system-lcms
+		     --with-pthreads
+		     --enable-default-toolkit=cairo-gtk2
+		     --enable-safe-browsing
+		     --enable-extensions=default
+		     --enable-startup-notification
+		     --enable-pango
+		     --enable-svg
+		     --enable-canvas
+		     --enable-smil
+		     --enable-canvas3d
+		     --enable-places
+		     --enable-url-classifier
+		     --enable-optimize
+		     --enable-strip
+		     --enable-install-strip
+		     --enable-jemalloc
+		     --enable-xterm-updates
+		     --enable-printing
+		     --enable-xinerama
+		     --disable-javaxpcom
+		     --disable-crashreporter
+		     --disable-updater
+		     --disable-tests
+		     --disable-mochitest
+		     --disable-debug
+		     --disable-installer
+		     --disable-pedantic
+		     --disable-static
+		     --enable-gio
+		     --enable-gconf
+		     --enable-libnotify
+		     --enable-application=browser
+		     --with-l10n-base=l10n
+		     --enable-ui-locale=zh-CN
+		     --with-distribution-id=ylmfos
+		     --disable-debug
+		     --disable-tests
+		     --enable-official-branding
+		     --enable-profile-guided-optimization"
+		     #--enable-system-sqlite
+		     #--with-system-png
+	ypkg_config
 }
 
 pbs_build() {
-	ypkg_make -f client.mk
+	ypkg_docp l10n/zh-CN/other-licenses/branding/firefox/{brand.dtd,brand.properties} \
+	          l10n/zh-CN/browser/branding/official/
+	ypkg_docp browser/locales/en-US/chrome/browser/{scratchpad.properties,scratchpad.dtd} \
+		  l10n/zh-CN/browser/chrome/browser/
+	ypkg_docp browser/locales/en-US/chrome/browser/preferences/{aboutPermissions.dtd,aboutPermissions.properties} \
+		 l10n/zh-CN/browser/chrome/browser/preferences/
+	ypkg_make
+	#ypkg_make -f client.mk
 }
 
 pbs_install() {
-	ypkg_mkinstall -f client.mk
-	ypkg_dodesktop "firefox.desktop" "lib/firefox-6.0.2/chrome/icons/default/default48.png"
+	ypkg_mkinstall
+	#ypkg_mkinstall -f client.mk
+	cd "$YPPATH_DEST"
+	ypkg_dodesktop "firefox.desktop" "usr/lib/firefox-6.0.2/chrome/icons/default/default48.png"
 }
 

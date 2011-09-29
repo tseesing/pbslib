@@ -4,19 +4,17 @@
 
 DESCRIPTION="the globally-shared menu bar of all applications launched in your desktop session."
 HOMEPAGE="http://code.google.com/p/gnome2-globalmenu/"
-REPO=""
 LICENSE="GPL"
-PRIORITY=""
 PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 
-SRC_URI="http://gnome2-globalmenu.googlecode.com/files/"$N-$V$R".tar.bz2"
+SRC_URI="http://gnome2-globalmenu.googlecode.com/files/"$N-$V".tar.bz2"
 
-RDEPEND=""
-BDEPEND=" "
+RDEPEND="alsa-lib atk audiofile avahi cairo dbus dbus-glib esound expat fontconfig freetype gail gcc gconf gconf-dbus gdk-pixbuf glib2 glibc gnome-menus gnome-panel gnome-vfs gtk+ libart_lgpl libbonobo libbonoboui libcanberra libgnome libgnomecanvas libICE libogg libpng libSM libtool libvorbis libwnck libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libxml2 libXrandr libXrender libXres openssl orbit pango pixman popt startup-notification util-linux-ng zlib"
+BDEPEND=""
 RECOMMENDED=""
 CONFLICT=""
 
-NOTES=""
+INSTALL="$N.install"
 
 pbs_unpack() {
         ypkg_unpack
@@ -34,3 +32,4 @@ pbs_build() {
 pbs_install() {
 	ypkg_mkinstall
 }
+

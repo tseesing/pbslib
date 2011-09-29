@@ -4,8 +4,10 @@
 
 DESCRIPTION="Library for arithmetic on arbitrary precision integers, rational numbers, and floating-point numbers"
 HOMEPAGE="http://gmplib.org/"
- 
-SRC_URI="ftp://ftp.gnu.org/gnu/"$N"/"$N-$V$R".tar.bz2"
+LICENSE="GPL"
+PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
+
+SRC_URI="ftp://ftp.gnu.org/gnu/"$N"/"$N-$V".tar.bz2"
 
 RDEPEND="gcc glibc"
 BDEPEND=""

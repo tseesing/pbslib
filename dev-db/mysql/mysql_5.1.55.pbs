@@ -4,9 +4,7 @@
 
 DESCRIPTION="A fast, multi-threaded, multi-user SQL database server."
 HOMEPAGE="http://www.mysql.com/"
-REPO=""
 LICENSE="GPL"
-PRIORITY=""
 PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 
 SRC_URI="http://download.softagency.net/MySQL/Downloads/MySQL-5.1/"$N-$V$R".tar.gz"
@@ -17,8 +15,6 @@ RECOMMENDED=""
 CONFLICT=""
 
 INSTALL="$N.install"
-
-NOTES=""
 
 pbs_unpack() {
         ypkg_unpack
@@ -41,3 +37,4 @@ pbs_install() {
 	ypkg_doln /usr/lib/mysql/libmysqlclient.so.16   usr/lib/libmysqlclient.so.16
 	ypkg_doln /usr/lib/mysql/libmysqlclient_r.so.16 usr/lib/libmysqlclient_r.so.16 
 }
+

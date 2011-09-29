@@ -4,9 +4,7 @@
 
 DESCRIPTION="a collection of sixteen small "five-minute" games in a variety of styles and genres for the GNOME desktop"
 HOMEPAGE="http://live.gnome.org/GnomeGames/"
-REPO=""
 LICENSE="GPL"
-PRIORITY=""
 PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 
 SRC_URI="http://ftp.gnome.org/pub/gnome/desktop/2.32/2.32.1/sources/"$N-$V".tar.bz2"
@@ -42,7 +40,7 @@ pbs_unpack() {
 }
 
 gnome-games-aisleriot_install() {
-	DESCRIPTION=""
+	DESCRIPTION="aisleriot"
 	YPB_CONFIG+="--enable-games=aisleriot
 	             --disable-schemas-install"
 	ypkg_config
@@ -51,10 +49,137 @@ gnome-games-aisleriot_install() {
 }
 
 gnome-games-glchess_install() {
-	DESCRIPTION=""
+	DESCRIPTION="glchess"
 	YPB_CONFIG+="--enable-games=glchess
 	             --disable-schemas-install"
 	ypkg_config
 	ypkg_make
 	ypkg_mkinstall
 }
+
+gnome-games-glines_install() {
+	DESCRIPTION="glines"
+	YPB_CONFIG+="--enable-games=glines
+	             --disable-schemas-install"
+	ypkg_config
+	ypkg_make
+	ypkg_mkinstall
+}
+
+gnome-games-gnect_install() {
+	DESCRIPTION="gnect"
+	YPB_CONFIG+="--enable-games=gnect
+	             --disable-schemas-install"
+	ypkg_config
+	ypkg_make
+	ypkg_mkinstall
+}
+
+gnome-games-gnibbles_install() {
+	DESCRIPTION="gnibbles"
+	YPB_CONFIG+="--enable-games=gnibbles
+	             --disable-schemas-install"
+	ypkg_config
+	ypkg_make
+	ypkg_mkinstall
+}
+
+gnome-games-gnobots2_install() {
+	DESCRIPTION="gnobots2"
+	YPB_CONFIG+="--enable-games=gnobots2
+	             --disable-schemas-install"
+	ypkg_config
+	ypkg_make
+	ypkg_mkinstall
+}
+
+gnome-games-gnomine_install() {
+	DESCRIPTION="gnomine"
+	YPB_CONFIG+="--enable-games=gnomine
+	             --disable-schemas-install"
+	ypkg_config
+	ypkg_make
+	ypkg_mkinstall
+}
+
+gnome-games-gnotravex_install() {
+	DESCRIPTION="gnotravex"
+	YPB_CONFIG+="--enable-games=gnotravex
+	             --disable-schemas-install"
+	ypkg_config
+	ypkg_make
+	ypkg_mkinstall
+}
+
+gnome-games-gnotski_install() {
+	DESCRIPTION="gnotski"
+	YPB_CONFIG+="--enable-games=gnotski
+	             --disable-schemas-install"
+	ypkg_config
+	ypkg_make
+	ypkg_mkinstall
+}
+
+gnome-games-gtali_install() {
+        DESCRIPTION="gtali"
+	YPB_CONFIG+="--enable-games=gtali
+	             --disable-schemas-install"
+	ypkg_config
+	ypkg_make
+	ypkg_mkinstall
+}
+
+gnome-games-iagno_install() {
+        DESCRIPTION="iagno"
+	YPB_CONFIG+="--enable-games=iagno
+	             --disable-schemas-install"
+	ypkg_config
+	ypkg_make
+	ypkg_mkinstall
+}
+
+gnome-games-lightsoff_install() {
+        DESCRIPTION="lightsoff"
+	YPB_CONFIG+="--enable-games=lightsoff
+	             --disable-schemas-install"
+	ypkg_config
+	ypkg_make
+	ypkg_mkinstall
+}
+
+gnome-games-mahjongg_install() {
+        DESCRIPTION="mahjongg"
+	YPB_CONFIG+="--enable-games=mahjongg
+	             --disable-schemas-install"
+	ypkg_config
+	ypkg_make
+	ypkg_mkinstall
+}
+
+gnome-games-quadrapassel_install() {
+        DESCRIPTION="quadrapassel"
+	YPB_CONFIG+="--enable-games=quadrapassel
+	             --disable-schemas-install"
+	ypkg_config
+	ypkg_make
+	ypkg_mkinstall
+}
+
+gnome-games-sudoku_install() {
+        DESCRIPTION="sudoku"
+	YPB_CONFIG+="--enable-games=sudoku
+	             --disable-schemas-install"
+	ypkg_config
+	ypkg_make
+	ypkg_mkinstall
+}
+
+gnome-games-swell-foop_install() {
+        DESCRIPTION="swell-foop"
+	YPB_CONFIG+="--enable-games=swell-foop
+	             --disable-schemas-install"
+	ypkg_config
+	ypkg_make
+	ypkg_mkinstall
+}
+

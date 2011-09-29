@@ -7,7 +7,7 @@ HOMEPAGE="https://launchpad.net/awn-extras"
 LICENSE="GPL"
 PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 
-SRC_URI="http://launchpadlibrarian.net/43836074/awn-extras-"$V$R".tar.gz"
+SRC_URI="http://launchpadlibrarian.net/43836074/awn-extras-"$V".tar.gz"
 
 RDEPEND="feedparser avant-window-navigator"
 BDEPEND=""
@@ -21,7 +21,7 @@ pbs_unpack() {
 }
 
 pbs_config() {
-	YPB_CONFIG+="--disable-pymod-checks"
+	YPB_CONFIG+="--disable-pymod-checks --disable-schemas-install"
 	ypkg_config
 }
 

@@ -1,0 +1,63 @@
+diff -ruN orig/xorg-server-1.9.3/hw/xfree86/common/xf86pciBus.c xorg-server-1.9.3/hw/xfree86/common/xf86pciBus.c
+--- orig/xorg-server-1.9.3/hw/xfree86/common/xf86pciBus.c	2010-07-02 01:17:35.000000000 +0800
++++ xorg-server-1.9.3/hw/xfree86/common/xf86pciBus.c	2011-09-27 22:45:57.946386604 +0800
+@@ -1118,7 +1118,23 @@
+ 	    break;
+ 	case 0x102b:		    driverList[0] = "mga";	break;
+ 	case 0x10c8:		    driverList[0] = "neomagic"; break;
+-	case 0x10de: case 0x12d2:   driverList[0] = "nv";	break;
++	case 0x10de: case 0x12d2:
++	    switch (dev->device_id) {
++	    /* NV1 */
++	    case 0x0008:
++	    case 0x0009:
++		driverList[0] = "vesa";
++		break;
++	    /* NV3 */
++	    case 0x0018:
++	    case 0x0019:
++		driverList[0] = "nv";
++		break;
++	    default:
++		driverList[0] = "nouveau";
++		break;
++	    }
++	    break;
+ 	case 0x1106:		    driverList[0] = "openchrome"; break;
+         case 0x1b36:		    driverList[0] = "qxl"; break;
+ 	case 0x1163:		    driverList[0] = "rendition"; break;
+diff -ruN orig/xorg-server-1.9.3/Xext/panoramiXprocs.c xorg-server-1.9.3/Xext/panoramiXprocs.c
+--- orig/xorg-server-1.9.3/Xext/panoramiXprocs.c	2010-11-24 03:07:26.000000000 +0800
++++ xorg-server-1.9.3/Xext/panoramiXprocs.c	2011-09-27 22:45:53.119720174 +0800
+@@ -597,7 +597,7 @@
+     rep.child = None;
+ 
+     if((pWin == screenInfo.screens[0]->root) ||
+-       (pWin->drawable.id == screenInfo.screens[0]->screensaver.wid))
++       (pDst->drawable.id == screenInfo.screens[0]->screensaver.wid))
+     { 
+ 	x = stuff->srcX - screenInfo.screens[0]->x;
+ 	y = stuff->srcY - screenInfo.screens[0]->y;
+diff -ruN orig/xorg-server-1.9.3/Xext/sync.c xorg-server-1.9.3/Xext/sync.c
+--- orig/xorg-server-1.9.3/Xext/sync.c	2010-05-21 12:08:48.000000000 +0800
++++ xorg-server-1.9.3/Xext/sync.c	2011-09-27 22:47:51.749714363 +0800
+@@ -243,8 +243,8 @@
+ SyncCheckTriggerNegativeTransition(SyncTrigger *pTrigger, CARD64 oldval)
+ {
+     return (pTrigger->pCounter == NULL ||
+-	    (XSyncValueGreaterThan(oldval, pTrigger->test_value) &&
+-	     XSyncValueLessOrEqual(pTrigger->pCounter->value,
++	    (XSyncValueGreaterOrEqual(oldval, pTrigger->test_value) &&
++	     XSyncValueLessThan(pTrigger->pCounter->value,
+ 				   pTrigger->test_value)));
+ }
+ 
+@@ -943,7 +943,7 @@
+ 	else if (pTrigger->test_type == XSyncNegativeComparison &&
+ 		 ct != XSyncCounterNeverDecreases)
+ 	{
+-	    if (XSyncValueGreaterThan(pCounter->value, pTrigger->test_value) &&
++	    if (XSyncValueGreaterOrEqual(pCounter->value, pTrigger->test_value) &&
+ 		XSyncValueGreaterThan(pTrigger->test_value,
+ 				      psci->bracket_less))
+ 	    {

@@ -1,0 +1,40 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="VNC Client for the GNOME Desktop"
+HOMEPAGE="http://www.gnome.org/projects/vinagre/"
+LICENSE="GPL-2"
+PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
+
+SRC_URI="http://ftp.gnome.org/pub/gnome/desktop/2.32/2.32.1/sources/"$N-$V".tar.bz2"
+
+RDEPEND="alsa-lib atk audiofile avahi cairo cyrus-sasl dbus dbus-glib esound expat fontconfig freetype gail gcc gconf gconf-dbus gdbm gdk-pixbuf glib2 glibc gnome-panel gnome-vfs gnutls gtk+ gtk-vnc libart_lgpl libbonobo libbonoboui libcanberra libgcrypt libgnome libgnomecanvas libgnome-keyring libgpg-error libICE libogg libpng libSM libtasn1 libtool libvorbis libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libxml2 libXrandr libXrender ncurses openssl orbit pango pixman popt util-linux-ng vte zlib"
+BDEPEND="gconf-dev gtk-vnc-dev avahi-dev vte-dev"
+RECOMMENDED=""
+
+INSTALL="$N.install"
+
+pbs_unpack() {
+        ypkg_unpack
+}
+
+pbs_config() {
+	YPB_CONFIG+="--disable-schemas-install 
+	             --enable-ssh 
+		     --enable-telepathy=no"
+	ypkg_config
+}
+
+pbs_build() {
+	ypkg_make
+}
+
+pbs_install() {
+	ypkg_mkinstall
+	ypkg_dodoc AUTHORS COPYING NEWS README
+	# keep clean for rarian
+	rm -fr "$YPPATH_DEST"/var/lib/scrollkeeper
+	rm -fr "$YPPATH_DEST"/var/lib/log
+}
+

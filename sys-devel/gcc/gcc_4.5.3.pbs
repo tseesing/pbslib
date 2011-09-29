@@ -6,6 +6,7 @@ DESCRIPTION="The GNU Compiler Collection"
 HOMEPAGE="http://gcc.gnu.org/"
 LICENSE="GPL/LGPL/FDL/custom"
 PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
+YVERSION="1"
 
 SRC_URI="http://ftp.gnu.org/gnu/"$N"/"$N-$V$R"/"$N-$V$R".tar.bz2"
 
@@ -43,7 +44,11 @@ pbs_build() {
 pbs_install() {
 	ypkg_mkinstall
 	cd "$YPPATH_DEST"
+	#
+	rm usr/lib/libstdc++.so.6.0.14-gdb.py
+
 	ypkg_doln /usr/bin/gcc usr/bin/cc
 	ypkg_doln /usr/bin/cpp lib/cpp
 }
+
 

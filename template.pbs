@@ -42,18 +42,15 @@ SRC_URI=""
 
 # Dependencies 
 RDEPEND=""
-RECOMMENDED=""
-
 BDEPEND=""
+RECOMMENDED=""
+CONFLICT=""
 OPTIONAL="a: support a 
           b: support b"
 
 #do not spilte dev files
-#OPINION="nodev nostrip"
+OPINION="nodev nostrip"
 
-
-#
-CONFLICT=""
 
 #
 INSTALL="$N.install"
@@ -125,6 +122,8 @@ pbs_install() {
 	#*****************
 	#when SRC_URI is deb or rpm package
 	#ypkg_docp data/*  "$YPPATH_DEST"
+	#ypkg_dosrc *
+	#ypkg_dosupported
 }
 
 #split package

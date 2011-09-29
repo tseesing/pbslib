@@ -1,13 +1,19 @@
 . /usr/lib/ybs/funcs
 
+files="mysql.info.gz"
+
 post_install() {
-	[ -x /usr/bin/install-info ] || return 0
-	infodir=/usr/share/info
-	install-info $infodir/mysql.info.gz $infodir/dir 2>/dev/null
+	ypkg_install_info "$files"
 }
 
-post_remove() {
-	[ -x /usr/bin/install-info ] || return 0
-	infodir=/usr/share/info
-	install-info --delete $infodir/mysql.info.gz $infodir/dir 2>/dev/null
+pre_remove() {
+	ypkg_remove_info "$files"
+}
+
+post_upgrade() {
+	post_install
+}
+
+post_downgrade() {
+	post_install
 }

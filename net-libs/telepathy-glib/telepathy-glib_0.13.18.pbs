@@ -1,0 +1,32 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="GLib bindings for the Telepathy D-Bus protocol."
+HOMEPAGE="http://telepathy.freedesktop.org"
+LICENSE="GPL-2"
+PACKAGER="Ylmf os Developers <ylmfos@115.com>"
+
+SRC_URI="http://telepathy.freedesktop.org/releases/"$N"/"$N-$V".tar.gz"
+
+RDEPEND="dbus dbus-glib glib2 glibc zlib"
+BDEPEND=""
+RECOMMENDED=""
+
+pbs_unpack() {
+        ypkg_unpack
+}
+
+pbs_config() {
+	YPB_CONFIG+="--enable-vala-bindings"
+	ypkg_config
+}
+
+pbs_build() {
+	ypkg_make
+}
+
+pbs_install() {
+	ypkg_mkinstall
+}
+

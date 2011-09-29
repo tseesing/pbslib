@@ -1,0 +1,31 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="Murrine GTK+2 Cairo Engine"
+HOMEPAGE="http://www.cimitan.com/murrine/"
+LICENSE="GPLv2"
+PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
+
+SRC_URI="http://ftp.acc.umu.se/pub/GNOME/sources/murrine/0.98/"$N-$V$R".tar.bz2"
+
+RDEPEND="atk cairo expat fontconfig freetype gcc glib2 gdk-pixbuf glibc gtk+ libpng libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libXrandr libXrender pango pixman zlib"
+BDEPEND=""
+RECOMMENDED=""
+
+pbs_unpack() {
+        ypkg_unpack
+}
+
+pbs_config() {
+	ypkg_config
+}
+
+pbs_build() {
+	ypkg_make
+}
+
+pbs_install() {
+	ypkg_mkinstall
+}
+

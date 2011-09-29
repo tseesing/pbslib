@@ -6,6 +6,7 @@ DESCRIPTION="A multi-platform toolkit for creating graphical user interfaces. It
 HOMEPAGE="http://www.gtk.org/"
 LICENSE="GPL"
 PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
+YVERSION="1"
 
 SRC_URI="http://ftp.gnome.org/pub/gnome/sources/gtk+/2.24/"$N-$V$R".tar.xz"
 
@@ -55,5 +56,12 @@ pbs_install() {
 	# probably less than the comments here waste ;-)
 	ypkg_docp "$FILES_PATH"/files/profile.d/*  "$YPPATH_DEST"/etc/profile.d
 	chmod 755 "$YPPATH_DEST"/etc/profile.d/*
+
+	# 
+	cd "$YPPATH_DEST"
+	ypkg_doln /usr/include/gtk-2.0/gtk             usr/include/gtk
+	ypkg_doln /usr/include/gtk-2.0/gdk             usr/include/gdk
+	ypkg_doln /usr/lib/gtk-2.0/include/gdkconfig.h usr/include/gdkconfig.h
 }
+
 

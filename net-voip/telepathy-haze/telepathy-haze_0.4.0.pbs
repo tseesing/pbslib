@@ -1,0 +1,32 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION=" Telepathy connection manager providing libpurple supported protocols. "
+HOMEPAGE=" http://developer.pidgin.im/wiki/Telepathy"
+LICENSE="GPL-2"
+PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
+
+SRC_URI="http://telepathy.freedesktop.org/releases/"$N"/"$N-$V".tar.gz"
+
+RDEPEND="dbus dbus-glib farsight2 glib2 glibc gst-plugins-base gstreamer libidn libpurple libxml2 telepathy-glib zlib"
+BDEPEND=""
+RECOMMENDED=""
+
+pbs_unpack() {
+        ypkg_unpack
+}
+
+pbs_config() {
+	ypkg_config
+}
+
+pbs_build() {
+	ypkg_make
+}
+
+pbs_install() {
+	ypkg_mkinstall
+}
+
+

@@ -1,0 +1,11 @@
+. /usr/lib/ybs/funcs
+
+files="stabs.info.gz gdbint.info.gz gdb.info.gz annotate.info.gz"
+
+post_install() {
+        ypkg_install_info $files
+}       
+
+pre_remove() {
+        ypkg_remove_info $files
+}

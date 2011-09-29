@@ -4,8 +4,9 @@
 
 DESCRIPTION="Scheme interpreter"
 HOMEPAGE="http://www.gnu.org/software/guile/"
-LICENSE="GPL-2"
-PACKAGER="<ylmfos@115.com>"
+LICENSE="GPLv2"
+PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
+YVERSION="1"
 
 SRC_URI="http://ftp.gnu.org/pub/gnu/"$N"/"$N-$V$R".tar.gz"
 
@@ -15,13 +16,12 @@ RECOMMENDED=""
 
 INSTALL="$N.install"
 
-NOTES=""
-
 pbs_unpack() {
         ypkg_unpack
 }
 
 pbs_config() {
+	ypkg_patch guile-1.8.7-multilib.patch guile-1.8.7-testsuite.patch guile-1.8.8-deplibs.patch
 	YPB_CONFIG+="--disable-static
 	             --disable-error-on-warning"
 	ypkg_config

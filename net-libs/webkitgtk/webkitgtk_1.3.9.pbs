@@ -1,0 +1,32 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="the port of the portable web rendering engine WebKit to the GTK+ platform. "
+HOMEPAGE="http://www.webkitgtk.org/"
+LICENSE="GPL-2"
+PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
+
+SRC_URI="http://webkitgtk.org/webkit-"$V".tar.gz"
+
+RDEPEND="atk cairo enchant expat fontconfig freetype gail gcc gdk-pixbuf glib2 glibc gnutls gst-plugins-base gstreamer gtk+ icu libgcrypt libgpg-error libICE libjpeg-turbo libpng libSM libsoup libtasn1 libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libxml2 libXrandr libXrender libxslt libXt pango pixman sqlite util-linux-ng zlib"
+BDEPEND=""
+RECOMMENDED=""
+
+pbs_unpack() {
+        ypkg_unpack
+}
+
+pbs_config() {
+	YPB_CONFIG+="--enable-introspection"
+	ypkg_config
+}
+
+pbs_build() {
+	ypkg_make
+}
+
+pbs_install() {
+	ypkg_mkinstall
+}
+

@@ -1,0 +1,43 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="GNU debugger"
+HOMEPAGE="http://sources.redhat.com/gdb/"
+LICENSE="GPL-2"
+PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
+
+SRC_URI="http://ftp.gnu.org/gnu/"$N"/"$N-$V".tar.bz2"
+
+RDEPEND="ncurses zlib glibc python expat"
+BDEPEND=""
+RECOMMENDED=""
+
+INSTALL="$N-$V.install"
+
+pbs_unpack() {
+        ypkg_unpack
+}
+
+pbs_config() {
+	ypkg_config
+}
+
+pbs_build() {
+	ypkg_make
+}
+
+pbs_install() {
+	ypkg_mkinstall
+	cd "$YPPATH_DEST"
+	
+	# install "custom" system gdbinit
+	install -dm755 etc/gdb
+	touch etc/gdb/gdbinit
+
+        # resolve conflicts with binutils
+        rm usr/include/{ansidecl,bfd,bfdlink,dis-asm,symcat}.h
+	rm usr/lib/{libbfd,libiberty,libopcodes}.a
+	rm usr/share/info/{bfd,configure,standards}.info
+}
+

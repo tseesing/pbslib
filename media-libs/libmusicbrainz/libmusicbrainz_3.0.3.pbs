@@ -1,0 +1,32 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION=" Client library to access metadata of mp3/vorbis/CD media"
+HOMEPAGE="http://musicbrainz.org/"
+LICENSE="GPL-2"
+PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
+
+SRC_URI="http://ftp.musicbrainz.org/pub/musicbrainz/"$N-$V".tar.gz "
+
+RDEPEND="e2fsprogs expat gcc glibc keyutils krb5 libproxy neon openssl zlib"
+BDEPEND=""
+RECOMMENDED=""
+
+pbs_unpack() {
+        ypkg_unpack
+}
+
+pbs_config() {
+	ypkg_config
+}
+
+pbs_build() {
+	ypkg_make
+}
+
+pbs_install() {
+	ypkg_mkinstall
+}
+
+
