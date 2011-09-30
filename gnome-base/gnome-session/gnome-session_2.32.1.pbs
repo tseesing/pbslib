@@ -25,9 +25,7 @@ pbs_config() {
 	done
 	ypkg_docp "$FILES_PATH"/files/session-properties.svg data/icons/scalable
 	YPB_CONFIG+=" --disable-schemas-install 
-		      --with-default-wm=gnome-wm 
-		      --enable-splash	
-		      --enable-debug "
+		      --with-default-wm=gnome-wm "
 	ypkg_config
 }
 

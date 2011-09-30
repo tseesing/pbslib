@@ -25,10 +25,9 @@ pbs_config() {
 	done
 	ypkg_docp "$FILES_PATH"/files/session-properties.svg data/icons/scalable
 	ypkg_patch gnome-session-2.32.1_fade-out-bug.patch
-	YPB_CONFIG+=" --disable-schemas-install 
-		      --with-default-wm=gnome-wm 
-		      --enable-splash	
-		      --enable-debug "
+	YPB_CONFIG+="--disable-schemas-install 
+		     --with-default-wm=gnome-wm
+		     --disable-debug"
 	ypkg_config
 }
 

@@ -1,0 +1,16 @@
+diff -ur metacity-2.30.3-ylmf1/src/core/display.c metacity-2.30.3-ylmf1.new//src/core/display.c
+--- metacity-2.30.3-ylmf1/src/core/display.c	2010-09-05 00:09:53.000000000 +0800
++++ metacity-2.30.3-ylmf1.new//src/core/display.c	2011-09-29 17:22:07.796624727 +0800
+@@ -3266,10 +3266,12 @@
+   
+   if (display->grab_op != META_GRAB_OP_NONE)
+     {
++    #if 0
+       if (window)
+         meta_warning ("Attempt to perform window operation %u on window %s when operation %u on %s already in effect\n",
+                       op, window->desc, display->grab_op,
+                       display->grab_window ? display->grab_window->desc : "none");
++    #endif  
+       return FALSE;
+     }
+ 

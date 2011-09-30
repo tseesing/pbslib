@@ -4,7 +4,6 @@
 
 DESCRIPTION="Network Time Protocol suite/programs"
 HOMEPAGE="http://www.ntp.org/"
-REPO=""
 LICENSE="GPL"
 PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 
@@ -28,7 +27,6 @@ pbs_config() {
 	YPB_CONFIG+="--bindir=/usr/sbin
 		     --enable-all-clocks
 	             --enable-parse-clocks
-		     --enable-debugging
 		     --sysconfdir=/var/lib/ntp
 		     --with-sntp"
 	ypkg_config

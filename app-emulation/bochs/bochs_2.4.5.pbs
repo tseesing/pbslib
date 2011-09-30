@@ -4,13 +4,13 @@
 
 DESCRIPTION="a LGPL-ed pc emulator"
 HOMEPAGE="http://bochs.sourceforge.net/"
-REPO=""
-LICENSE=""
+LICENSE="LGPL"
 PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
+YVERSION="1"
 
-SRC_URI="http://downloads.sourceforge.net/project/"$N"/"$N"/"$V"/"$N-$V$R".tar.gz"
+SRC_URI="http://downloads.sourceforge.net/project/"$N"/"$N"/"$V"/"$N-$V".tar.gz"
 
-RDEPEND=""
+RDEPEND="alsa-lib atk cairo expat fontconfig freetype gcc gdk-pixbuf glib2 glibc gtk+ libICE libpng libSM libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libXpm libXrandr libXrender ncurses pango pixman readline util-linux-ng zlib"
 BDEPEND=""
 
 pbs_unpack() {
@@ -22,7 +22,6 @@ pbs_config() {
 		      --enable-repeat-speedups
 		      --enable-trace-cache
    		      --enable-fast-function-calls
-		      --enable-debugger 
 		      --enable-disasm 
 		      --enable-logging 
 		      --enable-raw-serial 
@@ -39,8 +38,8 @@ pbs_config() {
 		      --enable-cdrom 
 		      --enable-pci 
 		      --enable-pcidev 
-		      --enable-pnic 
-		      --with-nogui "
+		      --enable-pnic "
+		      #--with-nogui "
 	ypkg_config
 }
 
@@ -51,3 +50,4 @@ pbs_build() {
 pbs_install() {
 	ypkg_mkinstall
 }
+
