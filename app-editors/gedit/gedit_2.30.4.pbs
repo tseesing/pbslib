@@ -6,12 +6,13 @@ DESCRIPTION="A text editor for the GNOME desktop"
 HOMEPAGE="http://www.gnome.org/"
 LICENSE="GPL"
 PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
- 
+YVERSION="1"
+
 SRC_URI="http://ftp.gnome.org/pub/gnome/desktop/2.32/2.32.1/sources/"$N-$V".tar.bz2"
 
 RDEPEND="gtksourceview gtk+ atk pango cairo pixman libxml2 directfb libpng libxcb libXrender fontconfig freetype zlib expat gconf orbit dbus-glib dbus libX11 libxcb libXau libXdmcp libSM util-linux-ng libICE libXi libXrandr libXcursor libXcomposite libXext libXdamage libXfixes aspell"
 BDEPEND="gtksourceview libsoup enchant pygtksourceview python"
-RECOMMENDED=""
+RECOMMENDED="aspell aspell-en"
 
 INSTALL="$N-$V.install"
 
@@ -31,7 +32,6 @@ pbs_build() {
 pbs_install() {
 	ypkg_mkinstall
 	cd "$YPPATH_DEST"
-	
 	# keep clean for rarian
 	rm -fr "$YPPATH_DEST"/var/lib/scrollkeeper
 	rm -fr "$YPPATH_DEST"/var/lib/log

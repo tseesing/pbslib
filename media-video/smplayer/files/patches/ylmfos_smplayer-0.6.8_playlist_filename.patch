@@ -1,0 +1,12 @@
+diff -ruN smplayer-0.6.8.orig/src/mplayerprocess.cpp smplayer-0.6.8/src/mplayerprocess.cpp
+--- smplayer-0.6.8.orig/src/mplayerprocess.cpp	2009-06-21 23:05:42.000000000 +0000
++++ smplayer-0.6.8/src/mplayerprocess.cpp	2011-10-08 09:02:51.803318187 +0000
+@@ -588,7 +588,7 @@
+ 		if (rx_clip_name.indexIn(line) > -1) {
+ 			QString s = rx_clip_name.cap(2).trimmed();
+ 			qDebug("MplayerProcess::parseLine: clip_name: '%s'", s.toUtf8().data());
+-			md.clip_name = s;
++			md.clip_name = md.filename;//s;
+ 		}
+ 		else
+ 

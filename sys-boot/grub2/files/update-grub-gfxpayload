@@ -1,0 +1,8 @@
+#! /bin/sh
+set -e
+
+mkdir -p /boot/grub
+cat /usr/share/grub-gfxpayload-lists/blacklist/* >/boot/grub/gfxblacklist.txt.new
+mv /boot/grub/gfxblacklist.txt.new /boot/grub/gfxblacklist.txt
+
+exit 0

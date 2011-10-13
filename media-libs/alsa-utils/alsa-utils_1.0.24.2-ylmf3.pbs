@@ -2,13 +2,15 @@
 # YLmf_OS package build script
 #
 
-DESCRIPTION="Advanced Linux Sound Architecture Library"
-HOMEPAGE=" http://www.alsa-project.org/"
- 
+DESCRIPTION="Advanced Linux Sound Architecture Utils (alsactl, alsamixer, etc.)"
+HOMEPAGE="http://www.alsa-project.org/"
+LICENSE="GPL"
+PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
+
 SRC_URI="ftp://ftp.alsa-project.org/pub/utils/"$N-$V".tar.bz2"
 
 RDEPEND="alsa-lib glibc libsamplerate ncurses"
-BDEPEND="   "
+BDEPEND=""
 
 pbs_unpack() {
         ypkg_unpack
@@ -16,6 +18,7 @@ pbs_unpack() {
 
 pbs_config() {
 	YPB_CONFIG+="--disable-xmlto"
+	YPB_CONFIG=${YPB_CONFIG/--enable-shared/}
 	ypkg_config
 }
 
@@ -27,3 +30,4 @@ pbs_install() {
 	ypkg_mkinstall
 	ypkg_docp "$FILES_PATH"/files/alsa.conf "$YPPATH_DEST"/etc/modprobe.d
 }
+

@@ -5,10 +5,9 @@
 DESCRIPTION="Great Qt4 GUI front-end for mplayer"
 HOMEPAGE="http://smplayer.berlios.de/"
 LICENSE="GPL-2"
-PACKAGER="<ylmfos@115.com>"
+PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 
-REPO="testing"
-SRC_URI="http://sourceforge.net/projects/"$N"/files/SMPlayer/"$V$R"/"$N-$V$R".tar.bz2"
+SRC_URI="http://downloads.sourceforge.net/sourceforge/"$N"/"$N-$V".tar.bz2"
 
 RDEPEND="mplayer expat fontconfig freetype gcc glib2 gdk-pixbuf glibc libdrm libICE libpng libSM libX11 libXau libxcb libXdmcp libXext libXrender mesa qt-core udev util-linux-ng zlib faac"
 BDEPEND=""
@@ -16,19 +15,18 @@ RECOMMENDED=""
 
 INSTALL="$N.install"
 
-DESKTOPFILE=""$N".desktop"
-
 pbs_unpack() {
         ypkg_unpack
 }
 
 pbs_build() {
-	ypkg_patch ylmfos_subcp_cp936-"$V".patch
+	ypkg_patch ylmfos_subcp_cp936.patch ylmfos_smplayer-0.6.8_playlist_filename.patch
 	ypkg_make PREFIX=/usr
 }
 
 pbs_install() {
 	ypkg_mkinstall PREFIX=/usr
+	ypkg_dodesktop "$N".desktop
 	rm "$YPPATH_DEST"/usr/share/applications/smplayer_enqueue.desktop
 }
 

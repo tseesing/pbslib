@@ -1,0 +1,32 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="A free library for encoding X264/AVC streams"
+HOMEPAGE="http://www.videolan.org/developers/x264.html"
+LICENSE="GPL"
+PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
+
+SRC_URI="ftp://ftp.videolan.org/pub/videolan/x264/snapshots/"$N"-snapshot-"$V"-2245.tar.bz2"
+
+RDEPEND="ffmpeg glibc"
+BDEPEND="yasm"
+RECOMMENDED=""
+
+pbs_unpack() {
+        ypkg_unpack
+}
+
+pbs_config() {
+	YPB_CONFIG+=""
+	ypkg_config
+}
+
+pbs_build() {
+	ypkg_make
+}
+
+pbs_install() {
+	ypkg_mkinstall
+}
+

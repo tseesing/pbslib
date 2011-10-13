@@ -1,0 +1,35 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="A library based on quicktime4linux with extensions"
+HOMEPAGE="http://libquicktime.sourceforge.net/"
+LICENSE="GPL"
+PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
+
+SRC_URI="http://downloads.sourceforge.net/sourceforge/libquicktime/libquicktime-1.2.3.tar.gz"
+
+RDEPEND="alsa-lib atk cairo expat ffmpeg fontconfig freetype gcc gdk-pixbuf glib2 glibc gtk+ lame libdrm libICE libjpeg-turbo libogg libpng libSM libva libvorbis libX11 libXau libXaw libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libXmu libXpm libXrandr libXrender libXt libXv libXxf86vm mesa pango pixman util-linux-ng zlib"
+RECOMMENDED=""
+BDEPEND=""
+OPTIONAL=""
+CONFLICT=""
+
+pbs_unpack() {
+        ypkg_unpack
+}
+
+pbs_config() {
+	YPB_CONFIG+=""
+	ypkg_config
+}
+
+pbs_build() {
+	ypkg_make
+}
+
+pbs_install() {
+	ypkg_mkinstall
+}
+
+

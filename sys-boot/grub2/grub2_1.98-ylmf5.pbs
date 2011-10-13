@@ -66,7 +66,7 @@ pbs_config() {
 		ubuntu_multipath.patch
 		ubuntu_loopback_replace.patch
 		ubuntu_ntfs_uuid_uppercase.patch 
-		977_ylmf_mkdevicemap.diff 
+		ylmfos_mkdevicemap.patch 
 		ylmfos_grub-probe-skip-fd.patch 
 		ylmfos_export_patch-1.98-ylmf4.patch "
 	ypkg_patch $patches

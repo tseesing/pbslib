@@ -1,0 +1,35 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="Implementation of Adaptive Multi Rate Narrowband and Wideband speech codec"
+HOMEPAGE="http://opencore-amr.sourceforge.net/"
+LICENSE="APACHE"
+PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
+YVERSION=""
+
+SRC_URI="http://downloads.sourceforge.net/project/"$N"/"$N"/"$V"/"$N-$V".tar.gz"
+
+RDEPEND="gcc glibc"
+RECOMMENDED=""
+BDEPEND=""
+CONFLICT=""
+
+pbs_unpack() {
+        ypkg_unpack
+}
+
+pbs_config() {
+	YPB_CONFIG+=""
+	ypkg_config
+}
+
+pbs_build() {
+	ypkg_make
+}
+
+pbs_install() {
+	ypkg_mkinstall
+}
+
+

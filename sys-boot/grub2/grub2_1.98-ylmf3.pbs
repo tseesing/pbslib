@@ -53,7 +53,7 @@ pbs_config() {
 		   973_grub_distributor_spaces.diff
 		   975_hostdisk_hd.diff
 		   976_escape_translations.diff
-		   977_ylmf_mkdevicemap.diff
+		   ylmfos_mkdevicemap.patch
 		   1000_ylmfos_grub-probe-skip-fd.patch 
 		   ylmfos_export_patch.patch"
 	ypkg_patch $patches

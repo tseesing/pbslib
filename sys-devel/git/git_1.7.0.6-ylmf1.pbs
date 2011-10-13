@@ -13,8 +13,6 @@ SRC_URI="http://kernel.org/pub/software/scm/"$N"/"$N-$V".tar.bz2"
 RDEPEND="curl cyrus-sasl expat glibc openldap openssl zlib perl python"
 BDEPEND=""
 
-INSTALL="$N.install"
-
 NOTES="add some info:
 git config --system --add user.name ylmfos_user
 git config --system --add user.email ylmfos_user@115.com"
@@ -24,6 +22,7 @@ pbs_unpack() {
 }
 
 pbs_config() {
+	YPB_CONFIG=${YPB_CONFIG/--enable-shared/}
 	ypkg_config
 }
 
@@ -34,5 +33,4 @@ pbs_build() {
 pbs_install() {
 	ypkg_mkinstall
 }
-
 

@@ -1,0 +1,15 @@
+文件 grub2-1.99/config.pipe 是fifo而文件 grub2-1.99.new//config.pipe 是fifo
+diff -ur grub2-1.99/po/zh_CN.po grub2-1.99.new//po/zh_CN.po
+--- grub2-1.99/po/zh_CN.po	2011-10-10 09:57:54.000000000 +0800
++++ grub2-1.99.new//po/zh_CN.po	2011-10-10 15:40:56.970095794 +0800
+@@ -2113,6 +2113,10 @@
+ msgid "%s, with Linux %s (recovery mode)"
+ msgstr "%s，Linux %s (恢复模式)"
+ 
++#: util/grub.d/10_linux.in:61
++msgid "%s, with Linux %s (nomodeset mode)"
++msgstr "%s，Linux %s (安全图形模式)"
++
+ #: util/grub.d/10_linux.in:63
+ msgid "%s, with Linux %s"
+ msgstr "%s，Linux %s"

@@ -1,0 +1,13 @@
+diff -ur grub2-1.99/util/grub.d/10_linux.in grub2-1.99.new//util/grub.d/10_linux.in
+--- grub2-1.99/util/grub.d/10_linux.in	2011-10-10 09:59:23.000000000 +0800
++++ grub2-1.99.new//util/grub.d/10_linux.in	2011-10-10 10:22:20.657030954 +0800
+@@ -87,9 +87,6 @@
+     title="$(gettext_quoted "%s, with Linux %s")"
+   fi
+   printf "menuentry '${title}' ${CLASS} {\n" "${os}" "${version}"
+-  cat << EOF
+-	recordfail
+-EOF
+   if ! ${recovery} ; then
+       save_default_entry | sed -e "s/^/\t/"
+   fi

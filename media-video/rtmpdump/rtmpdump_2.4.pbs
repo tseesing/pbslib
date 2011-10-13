@@ -1,0 +1,37 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="pen source command-line RTMP client intended to stream audio or video flash content"
+HOMEPAGE="http://rtmpdump.mplayerhq.hu/"
+LICENSE="GPL"
+PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
+YVERSION=""
+
+SRC_URI="ftp://ftp.archlinux.org/other/"$N"/"$N-$V".tar.xz"
+
+RDEPEND="glibc openssl zlib"
+RECOMMENDED=""
+BDEPEND=""
+CONFLICT=""
+
+pbs_unpack() {
+        ypkg_unpack
+}
+
+pbs_config() {
+	YPB_CONFIG+=""
+	ypkg_config
+}
+
+pbs_build() {
+	ypkg_make
+}
+
+pbs_install() {
+	install -d -m755 "$YPPATH_DEST/usr/lib"
+	make prefix=/usr mandir=/usr/share/man DESTDIR="$YPPATH_DEST" install
+}
+
+
+

@@ -5,7 +5,7 @@
 DESCRIPTION="A message bus system, a simple way for applications to talk to each other"
 HOMEPAGE="http://dbus.freedesktop.org/"
 LICENSE="custom GPL"
-PACKAGER="<ylmfos@115.com>"
+PACKAGER="Ylmf OS developers <ylmfos@115.com>"
 
 SRC_URI="http://dbus.freedesktop.org/releases/"$N"/"$N-$V".tar.gz"
 
@@ -19,9 +19,7 @@ pbs_unpack(){
 }
 
 pbs_config() {
-	ypkg_patch  10_dbus-1.0.1-generate-xml-docs.patch \
-		    20_system_conf_limit.patch \
-		    81-session.conf-timeout.patch
+	ypkg_patch  10_dbus-1.0.1-generate-xml-docs.patch 20_system_conf_limit.patch 81-session.conf-timeout.patch
 	YPB_CONFIG+=" --with-xml=expat  
 		      --with-dbus-user=messagebus 
 		      --disable-xml-docs 
@@ -43,5 +41,4 @@ pbs_build() {
 pbs_install() {
 	ypkg_mkinstall
 }
-
 

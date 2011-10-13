@@ -4,11 +4,10 @@
 
 DESCRIPTION="Software killswitch for F-S Amilo laptops and compatible"
 HOMEPAGE="http://zwobbl.homelinux.net"
-REPO=""
-LICENSE=""
+LICENSE="GPL"
 PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 
-SRC_URI="http://www.iragan.com/linux/fsam7400/fsam7400-0.5.2.tbz"
+SRC_URI="http://www.iragan.com/linux/fsam7400/"$N-$V".tbz"
 
 RDEPEND=""
 BDEPEND=""
@@ -18,8 +17,6 @@ CONFLICT=""
 INSTALL="$N.install"
 OPINION="nodev"
 
-NOTES=""
-
 pbs_unpack() {
         ypkg_unpack
 }
@@ -28,3 +25,4 @@ pbs_install() {
 	ypkg_patch ylmfos-makefile.patch
 	ypkg_dosrc *
 }
+

@@ -1,7 +1,0 @@
-. /usr/lib/ybs/funcs
-
-post_install() {
-	git config --system --add user.name ylmfosuser
-	git config --system --add user.email ylmfosuser@ylmfos.com
-}       
-

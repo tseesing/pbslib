@@ -1,0 +1,33 @@
+diff -ur grub2-1.98-ylmf4/util/grub.d/00_header.in grub2-1.98-ylmf4.new/util/grub.d/00_header.in
+--- grub2-1.98-ylmf4/util/grub.d/00_header.in	2011-07-04 11:51:33.173208723 +0800
++++ grub2-1.98-ylmf4.new/util/grub.d/00_header.in	2011-07-04 11:52:10.669874892 +0800
+@@ -17,6 +17,7 @@
+ # You should have received a copy of the GNU General Public License
+ # along with GRUB.  If not, see <http://www.gnu.org/licenses/>.
+ 
++export PATH=$PATH
+ transform="@program_transform_name@"
+ 
+ prefix=@prefix@
+diff -ur grub2-1.98-ylmf4/util/grub.d/10_linux.in grub2-1.98-ylmf4.new/util/grub.d/10_linux.in
+--- grub2-1.98-ylmf4/util/grub.d/10_linux.in	2011-07-04 11:51:32.726542062 +0800
++++ grub2-1.98-ylmf4.new/util/grub.d/10_linux.in	2011-07-04 11:52:23.886541385 +0800
+@@ -17,6 +17,7 @@
+ # You should have received a copy of the GNU General Public License
+ # along with GRUB.  If not, see <http://www.gnu.org/licenses/>.
+ 
++export PATH=$PATH
+ prefix=@prefix@
+ exec_prefix=@exec_prefix@
+ bindir=@bindir@
+diff -ur grub2-1.98-ylmf4/util/grub.d/30_os-prober.in grub2-1.98-ylmf4.new/util/grub.d/30_os-prober.in
+--- grub2-1.98-ylmf4/util/grub.d/30_os-prober.in	2011-07-04 11:51:32.483208731 +0800
++++ grub2-1.98-ylmf4.new/util/grub.d/30_os-prober.in	2011-07-04 11:52:44.956541104 +0800
+@@ -17,6 +17,7 @@
+ # You should have received a copy of the GNU General Public License
+ # along with GRUB.  If not, see <http://www.gnu.org/licenses/>.
+ 
++export PATH=$PATH
+ prefix=@prefix@
+ exec_prefix=@exec_prefix@
+ libdir=@libdir@

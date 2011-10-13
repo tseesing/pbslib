@@ -1,0 +1,12 @@
+文件 grub2-1.99/config.pipe 是fifo而文件 grub2-1.99.new//config.pipe 是fifo
+diff -ur grub2-1.99/util/grub.d/00_header.in grub2-1.99.new//util/grub.d/00_header.in
+--- grub2-1.99/util/grub.d/00_header.in	2011-10-10 10:30:00.742097330 +0800
++++ grub2-1.99.new//util/grub.d/00_header.in	2011-10-10 10:31:49.551010928 +0800
+@@ -219,6 +219,7 @@
+ 
+ # Gettext variables and module
+ if [ "x${LANG}" != "xC" ] && [ -d "${locale_dir}" ] ; then
++	echo "Setting lang: ${grub_lang}" >&2
+     prepare_grub_to_access_device $(${grub_probe} --target=device ${locale_dir})
+   cat << EOF
+ set locale_dir=(\$root)$(make_system_path_relative_to_its_root ${locale_dir})

@@ -23,8 +23,7 @@ pbs_unpack() {
 }
 
 pbs_config() {
-	patches="
-		olpc_prefix_hack.patch
+	patches=" olpc_prefix_hack.patch
 		core_in_fs.patch
 		boot_blocklist_hack.patch
 		grub_legacy_0_based_partitions.patch
@@ -63,7 +62,7 @@ pbs_config() {
 		ubuntu_multipath.patch
 		ubuntu_loopback_replace.patch
 		ubuntu_ntfs_uuid_uppercase.patch 
-		977_ylmf_mkdevicemap.diff 
+		ylmfos_mkdevicemap.patch 
 		ylmfos_grub-probe-skip-fd.patch 
 		ylmfos_export_patch-1.98-ylmf4.patch 
 		ylmfos_disable-recordfail.patch 
@@ -75,6 +74,7 @@ pbs_config() {
 	ypkg_docp "$FILES_PATH"/files/po/*  po/
 
 	YPB_CONFIG+="--enable-grub-mkfont --enable-nls"
+	YPB_CONFIG=${YPB_CONFIG/--enable-shared/}
 	ypkg_config
 
 	# FIXME 

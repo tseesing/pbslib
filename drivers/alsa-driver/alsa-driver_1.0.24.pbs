@@ -7,7 +7,7 @@ HOMEPAGE="http://www.alsa-project.org/"
 LICENSE="GPL"
 PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 
-SRC_URI="ftp://ftp.alsa-project.org/pub/driver/"$N-$V$R".tar.bz2"
+SRC_URI="ftp://ftp.alsa-project.org/pub/driver/"$N-$V".tar.bz2"
 
 RDEPEND=""
 BDEPEND=""
@@ -23,6 +23,9 @@ pbs_unpack() {
 }
 
 pbs_install() {
+	ypkg_docp "$FILES_PATH"/files/ypkg_domk .
+	chmod +x ypkg_domk
 	ypkg_dosrc *
+	ypkg_dosupported "${N}_supported"
 }
 

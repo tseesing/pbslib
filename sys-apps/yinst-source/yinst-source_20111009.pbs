@@ -6,18 +6,20 @@ DESCRIPTION="yinst - modified from WUBI for installing Ylmf OS under Windows."
 HOMEPAGE="www.ylmf.net"
 REPO="stable"
 LICENSE="GPL-2"
-PACKAGER="<ylmfos@115.com>"
+PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 
 SRC_URI="git://git.ylmf.com/yinst.git"
 
 RDEPEND=""
 BDEPEND=""
 
+OPINION="nodev"
+
 pbs_unpack() {
 	ypkg_unpack
 }
 
 pbs_install() {
-	ypkg_docp * "$YPPATH_DEST"/usr/src/"$N"/
+	ypkg_dosrc *
 }
 

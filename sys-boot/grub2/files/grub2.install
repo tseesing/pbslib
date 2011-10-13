@@ -1,12 +1,139 @@
 . /usr/lib/ybs/funcs
 
+msg_install() {
+	echo "* Please install grub2 as bootloader, run:"
+	echo "* grub-install DEVICE"
+	echo 
+	/usr/sbin/grub-mkdevicemap --no-floppy
+	devicemap_regenerated=1
+	update-grub2
+}
+
+#
+get_wubi_device() {
+	if [ ! -x /usr/share/lupin-support/grub-mkimage ] || \
+		! /usr/share/lupin-support/grub-mkimage --test; then
+		return 1
+	fi
+
+	local bootdev="$(grub-probe --target=device /boot)" || true
+	local loop_file=
+	case $bootdev in
+		/dev/loop/*|/dev/loop[0-9])
+			loop_file="$(losetup "$bootdev" | sed -e "s/^[^(]*(\([^)]\+\)).*/\1/")"
+		# If it's loop-mounted from another device, it isn't Wubi.
+		case $loop_file in
+			/dev/*) return 1 ;;
+		esac
+			 ;;
+		       *) return 1 ;;
+		 esac
+	echo "$bootdev"
+}
+
+# In order to determine whether we accidentally ran grub-install without
+# upgrade-from-grub-legacy on versions older than 1.98+20100617-1, we need
+# to be able to scan a disk to determine whether GRUB 2 was installed in its
+# boot sector.  This is specific to i386-pc (but that's the only platform
+# where we need it).
+scan_grub2() {
+	if ! dd if="$1" bs=512 count=1 2>/dev/null | grep -aq GRUB; then
+		# No version of GRUB is installed.
+		return 1
+	fi
+
+	# The GRUB boot sector always starts with a JMP instruction.
+	initial_jmp="$(dd if="$1" bs=2 count=1 2>/dev/null | od -Ax -tx1 | \
+	head -n1 | cut -d' ' -f2,3)"
+	[ "$initial_jmp" ] || return 1
+	initial_jmp_opcode="${initial_jmp%% *}"
+	[ "$initial_jmp_opcode" = eb ] || return 1
+        initial_jmp_operand="${initial_jmp#* }"
+	case $initial_jmp_operand in
+		47|4b|4c|63)
+		# I believe this covers all versions of GRUB 2 up to the package
+		# version where we gained a more explicit mechanism.  GRUB Legacy
+		# always had 48 here.
+		return 0
+	        ;;
+	 esac
+	return 1
+}
+
+install_grub() {
+	#1.
+	grub-probe --target=device /boot
+	#/dev/sda5
+	#/dev/loop0
+
+	#2.
+	grub-probe -t drive /boot/grub
+	#(hd0,msdos5)
+	#(/dev/loop0)
+
+	#echo "Generating core.img" >&2
+	#grub-install --no-floppy --grub-setup=/bin/true "$(grub-probe -t drive /boot/grub)" > /dev/null
+	#grub-install --force --no-floppy $real_device
+}
+
+symlink_grub_install() {
+	local mklink=
+	cd /usr/sbin/
+	if [ -e grub-install ]; then
+		if diff grub-install grub-install.real >/dev/null; then
+			mklink="yes"
+		else
+			if ! grep lupin-support grub-install -q; then	
+				rm grub-install
+				ln -svf grub-install.real grub-install
+			fi
+		fi
+	else
+		mklink="yes"
+	fi
+	if [ x"$mklink" = x"yes" ]; then
+		rm grub-install 2>/dev/null
+		[ -f grub-install.real ] && ln -svf grub-install.real grub-install
+	fi
+
+	return 0
+}
+
 post_install() {
         ypkg_install_info grub.info.gz 
-	/usr/sbin/grub-mkdevicemap
-	update-grub2
+	msg_install
+	symlink_grub_install
 }       
 
 pre_remove() {
         ypkg_remove_info grub.info.gz
+}
+
+pre_upgrade() {
+	#install_version
+	iv=$2
+	#installed_version
+	iev=$3
+	if [ x"${iv%-*}" != x"${iev%-*}" ]; then
+		echo "* Caution! "
+		echo "* up/downgrade between variant edition is not allowed."
+		exit 1
+	fi
+	return 0
+}
+
+pre_downgrade() {
+	pre_upgrade $1 $2 $3
+}
+
+post_upgrade() {
+	/usr/sbin/grub-mkdevicemap --no-floppy
+	devicemap_regenerated=1
+	update-grub2
+	symlink_grub_install
+}
+
+post_downgrade() {
+	post_upgrade
 }
 

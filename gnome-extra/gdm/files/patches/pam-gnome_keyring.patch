@@ -7,8 +7,9 @@
  auth       required    pam_succeed_if.so user != root quiet
  auth       sufficient  pam_succeed_if.so user ingroup nopasswdlogin
  auth       include     system-auth
-@@ -10,3 +11,4 @@
+@@ -10,3 +11,5 @@
  session    include     system-auth
  session    required    pam_loginuid.so
  session    optional    pam_console.so
-+session    optional    pam_gnome_keyring.so
++auth       required    pam_unix.so 
++session    optional    pam_gnome_keyring.so auto_start 

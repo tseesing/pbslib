@@ -4,19 +4,15 @@
 
 DESCRIPTION="OSS compatibility library"
 HOMEPAGE="http://www.alsa-project.org/"
-REPO=""
 LICENSE="GPL"
-PRIORITY=""
 PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 
-SRC_URI="ftp://ftp.alsa-project.org/pub/oss-lib/alsa-oss-1.0.17.tar.bz2"
+SRC_URI="ftp://ftp.alsa-project.org/pub/oss-lib/"$N-$V".tar.bz2"
 
 RDEPEND="alsa-lib glibc"
 BDEPEND=" "
 RECOMMENDED=""
 CONFLICT=""
-
-NOTES=""
 
 pbs_unpack() {
         ypkg_unpack
@@ -34,3 +30,4 @@ pbs_build() {
 pbs_install() {
 	ypkg_mkinstall
 }
+
