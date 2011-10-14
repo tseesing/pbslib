@@ -5,7 +5,6 @@
 DESCRIPTION="Netscape Portable Runtime"
 HOMEPAGE="http://www.mozilla.org/projects/nspr/"
 LICENSE="GPL-2"
-YVERSION="1"
 
 SRC_URI="http://ftp.mozilla.org/pub/mozilla.org/"$N"/releases/v"$V"/src/"$N-$V".tar.gz"
 

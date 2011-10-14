@@ -6,7 +6,6 @@ DESCRIPTION="Linux Kernel with ylmfos patches, split into linux-kernel-headers"
 HOMEPAGE="http://www.kernel.org"
 LICENSE="GPLv2"
 PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
-YVERSION="1"
 
 SRC_URI="ftp://ftp.kernel.org/pub/linux/kernel/v2.6/linux-"$V".tar.bz2"
 

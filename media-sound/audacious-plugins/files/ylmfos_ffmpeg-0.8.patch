@@ -1,0 +1,29 @@
+--- src/ffaudio/ffaudio-core.c	2011-01-12 19:13:26.000000000 +0800
++++ src/ffaudio/ffaudio-core.c	2011-10-14 09:31:51.898671709 +0800
+@@ -108,7 +108,7 @@
+     for (i = 0; i < ic->nb_streams; i++)
+     {
+         c = ic->streams[i]->codec;
+-        if (c->codec_type == CODEC_TYPE_AUDIO)
++        if (c->codec_type == AVMEDIA_TYPE_AUDIO)
+         {
+             av_find_stream_info(ic);
+             codec = avcodec_find_decoder(c->codec_id);
+@@ -243,7 +243,7 @@
+     {
+         s = ic->streams[i];
+         c = s->codec;
+-        if (c->codec_type == CODEC_TYPE_AUDIO)
++        if (c->codec_type == AVMEDIA_TYPE_AUDIO)
+         {
+             av_find_stream_info(ic);
+             codec = avcodec_find_decoder(c->codec_id);
+@@ -319,7 +319,7 @@
+     {
+         s = ic->streams[i];
+         c = s->codec;
+-        if (c->codec_type == CODEC_TYPE_AUDIO)
++        if (c->codec_type == AVMEDIA_TYPE_AUDIO)
+         {
+             av_find_stream_info(ic);
+             codec = avcodec_find_decoder(c->codec_id);

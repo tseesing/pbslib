@@ -1,0 +1,34 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="A JSON implementation in C"
+HOMEPAGE="http://oss.metaparadigm.com/json-c/"
+LICENSE="MIT"
+PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
+
+SRC_URI="http://oss.metaparadigm.com/"$N"/"$N-$V".tar.gz"
+
+RDEPEND="glibc"
+RECOMMENDED=""
+BDEPEND=""
+
+pbs_unpack() {
+        ypkg_unpack
+}
+
+pbs_config() {
+	YPB_CONFIG+=""
+	ypkg_config
+}
+
+pbs_build() {
+	ypkg_make
+}
+
+pbs_install() {
+	ypkg_mkinstall
+	ypkg_dodoc COPYING
+}
+
+

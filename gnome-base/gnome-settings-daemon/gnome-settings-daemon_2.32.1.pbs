@@ -10,7 +10,7 @@ PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 
 SRC_URI="http://ftp.gnome.org/pub/gnome/desktop/2.32/2.32.1/sources/"$N-$V".tar.bz2"
 
-RDEPEND="atk cairo dbus dbus-glib expat fontconfig freetype gcc gconf glib2 gdk-pixbuf glibc gnome-desktop gtk+ libgnomekbd libICE libnotify libpng libSM libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libxkbfile libxklavier libxml2 libXrandr libXrender orbit pango pixman startup-notification util-linux-ng zlib"
+RDEPEND="atk attr cairo dbus dbus-glib eggdbus expat flac fontconfig freetype gcc gconf gconf-dbus gdk-pixbuf glib2 glibc gnome-desktop gtk+ json-c libcanberra libcap libgnomekbd libICE libnotify libogg libpng libsamplerate libSM libsndfile libtool libvorbis libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libxkbfile libxklavier libxml2 libXrandr libXrender libXtst nspr nss orbit pango pixman polkit pulseaudio samba startup-notification tdb util-linux-ng zlib"
 BDEPEND="kbproto"
 RECOMMENDED=""
 

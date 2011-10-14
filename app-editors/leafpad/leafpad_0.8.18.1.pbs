@@ -4,13 +4,13 @@
 
 DESCRIPTION="GTK+ based simple text editor."
 HOMEPAGE="http://tarot.freeshell.org/leafpad/"
-LICENSE="GPL-2"
-PACKAGER="<ylmfos@115.com>"
+LICENSE="GPL"
+PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 
 SRC_URI="http://savannah.nongnu.org/download/"$N"/"$N-$V$R".tar.gz"
 
 RDEPEND="atk cairo expat fontconfig freetype gcc glib2 gdk-pixbuf glibc gtk+ libpng libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libXrandr libXrender pango pixman zlib"
-BDEPEND="libpng"
+BDEPEND=""
 
 pbs_unpack() {
 	ypkg_unpack

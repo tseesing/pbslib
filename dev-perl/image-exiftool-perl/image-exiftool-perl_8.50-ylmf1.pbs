@@ -6,7 +6,6 @@ DESCRIPTION="Read and write meta information"
 HOMEPAGE="http://search.cpan.org/~exiftool/Image-ExifTool-8.50/lib/Image/ExifTool.pod"
 PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 LICENSE="GPL PerlArtistic"
-YVERSION="1"
 YARCH="any"
 
 SRC_URI="http://search.cpan.org/CPAN/authors/id/E/EX/EXIFTOOL/Image-ExifTool-"$V".tar.gz"

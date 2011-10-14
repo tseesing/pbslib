@@ -6,7 +6,6 @@ DESCRIPTION="a LGPL-ed pc emulator"
 HOMEPAGE="http://bochs.sourceforge.net/"
 LICENSE="LGPL"
 PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
-YVERSION="1"
 
 SRC_URI="http://downloads.sourceforge.net/project/"$N"/"$N"/"$V"/"$N-$V".tar.gz"
 

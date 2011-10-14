@@ -9,7 +9,7 @@ PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 
 SRC_URI="ftp://ftp.alsa-project.org/pub/plugins/"$N-$V".tar.bz2"
 
-RDEPEND="alsa-lib ffmpeg glibc jack-audio-connection-kit libsamplerate libva zlib"
+RDEPEND="alsa-lib attr dbus ffmpeg flac gcc glibc jack-audio-connection-kit json-c lame libcap libICE libogg libsamplerate libSM libsndfile libtheora libva libvorbis libX11 libXau libxcb libXdmcp libXext libXi libXtst opencore-amr orc pulseaudio schroedinger speex util-linux-ng x264 xvidcore zlib"
 BDEPEND=""
 
 pbs_unpack() {

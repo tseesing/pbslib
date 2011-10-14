@@ -6,7 +6,6 @@ DESCRIPTION="Scheme interpreter"
 HOMEPAGE="http://www.gnu.org/software/guile/"
 LICENSE="GPLv2"
 PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
-YVERSION="1"
 
 SRC_URI="http://ftp.gnu.org/pub/gnu/"$N"/"$N-$V$R".tar.gz"
 

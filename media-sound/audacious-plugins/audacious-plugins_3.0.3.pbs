@@ -1,0 +1,38 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="Audacious Player - Your music, your way, no exceptions"
+HOMEPAGE="http://audacious-media-player.org/"
+LICENSE="GPL2"
+PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
+
+SRC_URI="http://distfiles.atheme.org/"$N-$V".tar.bz2"
+
+RDEPEND="alsa-lib atk attr audacious audiofile bzip2 cairo curl cyrus-sasl dbus dbus-glib directfb e2fsprogs esound expat faad2 ffmpeg flac fontconfig freetype gcc gdk-pixbuf glib2 glibc gtk+ json-c keyutils krb5 lame libcap libcddb libcdio libICE libidn libmcs libmms libmodplug libmowgli libmtp libnotify libogg libpng libproxy libsamplerate libsdl libSM libsndfile libtheora libtool libusb libusb-compat libva libvorbis libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libxml2 libXrandr libXrender libXt libXtst mpg123 nas neon opencore-amr openldap openssl orc pango pixman pulseaudio rtmpdump samba schroedinger talloc util-linux-ng wavpack x264 xvidcore zlib"
+BDEPEND=""
+RECOMMENDED=""
+
+pbs_unpack() {
+        ypkg_unpack
+}
+
+pbs_config() {
+	[[ ${ARCH} == x86_64 ]] && extraopts='' || extraopts='--disable-sse2'
+
+	YPB_CONFIG+="--enable-chardet 
+		     --enable-amidiplug
+		     --disable-adplug
+		     ${extraopts}"
+	YPB_CONFIG=${YPB_CONFIG/--enable-shared/}
+	ypkg_config
+}
+
+pbs_build() {
+	ypkg_make
+}
+
+pbs_install() {
+	ypkg_mkinstall
+}
+

@@ -6,7 +6,6 @@ DESCRIPTION="Provide https support for LWP::UserAgent  "
 HOMEPAGE="http://search.cpan.org/~gaas/LWP-Protocol-https-6.02/"
 PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 LICENSE="GPL PerlArtistic"
-YVERSION="1"
 YARCH="any"
 
 SRC_URI="http://mirrors.xmu.edu.cn/CPAN/authors/id/G/GA/GAAS/LWP-Protocol-https-"$V".tar.gz"

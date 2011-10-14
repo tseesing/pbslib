@@ -2,14 +2,14 @@
 # YLmf_OS package build script
 #
 
-DESCRIPTION="An implementation of the XDG Sound Theme and Name Specifications, for generating event sounds on free desktops, such as GNOME."
+DESCRIPTION="A small and lightweight implementation of the XDG Sound Theme Specification"
 HOMEPAGE="http://0pointer.de/lennart/projects/libcanberra/"
-LICENSE="GPL-2"
-PACKAGER="<ylmfos@115.com>"
+LICENSE="LGPL"
+PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 
-SRC_URI="http://0pointer.de/lennart/projects/"$N"/"$N-$V$R".tar.gz"
+SRC_URI="http://0pointer.de/lennart/projects/"$N"/"$N-$V".tar.gz"
 
-RDEPEND="alsa-lib atk cairo expat fontconfig freetype gcc glib2 gdk-pixbuf glibc gstreamer gtk+ libogg libpng libtool libvorbis libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libxml2 libXrandr libXrender pango pixman zlib"
+RDEPEND="alsa-lib atk attr cairo dbus expat flac fontconfig freetype gcc gdk-pixbuf glib2 glibc gstreamer gtk+ json-c libcap libICE libogg libpng libsamplerate libSM libsndfile libtool libvorbis libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libxml2 libXrandr libXrender libXtst pango pixman pulseaudio samba tdb udev util-linux-ng zlib"
 BDEPEND="sound-theme-freedesktop"
 RECOMMENDED=""
 
@@ -20,11 +20,15 @@ pbs_unpack() {
 }
 
 pbs_config() {
-	YPB_CONFIG+="--enable-alsa 
+	YPB_CONFIG+="--enable-gtk 
+		     --enable-gtk-doc-html=no
+		     --disable-static 
+		     --with-builtin=dso
 		     --enable-null 
-		     --enable-gtk 
-		     --disable-oss 
-		     --enable-gtk-doc-html=no"
+		     --disable-oss
+		     --enable-alsa 
+		     --enable-gstreamer 
+		     --enable-pulse"
 	ypkg_config
 }
 

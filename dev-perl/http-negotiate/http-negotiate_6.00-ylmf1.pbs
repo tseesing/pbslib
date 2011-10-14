@@ -6,7 +6,6 @@ DESCRIPTION="choose a variant to serve"
 HOMEPAGE="http://search.cpan.org/"
 PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 LICENSE="GPL PerlArtistic"
-YVERSION="1"
 YARCH="any"
 
 SRC_URI="http://mirrors.ustc.edu.cn/CPAN/authors/id/G/GA/GAAS/HTTP-Negotiate-"$V".tar.gz"

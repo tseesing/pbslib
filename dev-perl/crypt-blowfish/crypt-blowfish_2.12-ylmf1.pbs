@@ -7,7 +7,6 @@ HOMEPAGE="http://search.cpan.org/~dparis/Crypt-Blowfish-2.12/"
 PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 LICENSE="GPL PerlArtistic"
 YARCH="any"
-YVERSION="1"
 
 SRC_URI="http://mirror.osqdu.org/CPAN/authors/id/D/DP/DPARIS/Crypt-Blowfish-"$V".tar.gz"
 

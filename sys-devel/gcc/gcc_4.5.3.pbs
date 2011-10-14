@@ -6,7 +6,6 @@ DESCRIPTION="The GNU Compiler Collection"
 HOMEPAGE="http://gcc.gnu.org/"
 LICENSE="GPL/LGPL/FDL/custom"
 PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
-YVERSION="1"
 
 SRC_URI="http://ftp.gnu.org/gnu/"$N"/"$N-$V$R"/"$N-$V$R".tar.bz2"
 

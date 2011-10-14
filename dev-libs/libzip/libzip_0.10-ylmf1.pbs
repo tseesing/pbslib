@@ -1,0 +1,35 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="libzip is a C library for reading, creating, and modifying zip archives."
+HOMEPAGE="http://www.nih.at/libzip/"
+LICENSE="GPL"
+PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
+
+SRC_URI="http://www.nih.at/"$N"/"$N-$V".tar.bz2"
+
+RDEPEND="glibc zlib"
+BDEPEND=""
+RECOMMENDED=""
+CONFLICT=""
+
+pbs_unpack() {
+        ypkg_unpack
+}
+
+pbs_config() {
+	YPB_CONFIG+=""
+	ypkg_config
+}
+
+pbs_build() {
+	ypkg_make
+}
+
+pbs_install() {
+	ypkg_mkinstall
+	cd "$YPPATH_DEST"
+	ypkg_doln /usr/lib/libzip/include/zipconf.h  usr/include/zipconf.h
+}
+

@@ -6,7 +6,6 @@ DESCRIPTION="Mozilla's CA cert bundle in PEM format"
 HOMEPAGE="http://search.cpan.org/"
 PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 LICENSE="GPL PerlArtistic"
-YVERSION="1"
 YARCH="any"
 
 SRC_URI="http://mirrors.sohu.com/CPAN/authors/id/A/AB/ABH/Mozilla-CA-"$V".tar.gz"

@@ -1,0 +1,34 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="A Trivia Database similar to GDBM but allows simultaneous commits"
+HOMEPAGE="http://tdb.samba.org"
+LICENSE="GPLv3"
+PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
+
+SRC_URI="http://samba.org/ftp/"$N"/"$N-$V".tar.gz"
+
+RDEPEND="glibc python samba"
+RECOMMENDED=""
+BDEPEND=""
+
+pbs_unpack() {
+        ypkg_unpack
+}
+
+pbs_config() {
+	YPB_CONFIG="--prefix=/usr 
+	            --localstatedir=/var
+		    --sysconfdir=/etc/samba"
+	ypkg_config
+}
+
+pbs_build() {
+	ypkg_make
+}
+
+pbs_install() {
+	ypkg_mkinstall
+}
+

@@ -4,9 +4,7 @@
 
 DESCRIPTION="Blu-ray playback libraries"
 HOMEPAGE="http://www.videolan.org/developers/libbluray.html"
-REPO=""
 LICENSE="GPL"
-PRIORITY=""
 PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 
 SRC_URI="git://git.videolan.org/libbluray.git"
@@ -15,8 +13,6 @@ RDEPEND="glibc libxml2 zlib"
 BDEPEND="  "
 RECOMMENDED=""
 CONFLICT=""
-
-NOTES=""
 
 pbs_unpack() {
         ypkg_unpack
@@ -35,3 +31,4 @@ pbs_build() {
 pbs_install() {
 	ypkg_mkinstall
 }
+

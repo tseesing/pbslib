@@ -5,7 +5,6 @@
 DESCRIPTION="Mozilla's Network Security Services library that implements PKI support"
 HOMEPAGE="http://www.mozilla.org/projects/security/pki/nss/"
 LICENSE="GPL-2"
-YVERSION="2"
 
 SRC_URI="http://ftp.mozilla.org/pub/mozilla.org/security/"$N"/releases/NSS_3_12_11_RTM/src/"$N-$V".tar.gz"
 

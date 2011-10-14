@@ -1,0 +1,35 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="A simple GTK-based configuration dialog for PulseAudio"
+HOMEPAGE="http://0pointer.de/lennart/projects/paprefs"
+LICENSE="GPL"
+PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
+
+SRC_URI="http://freedesktop.org/software/pulseaudio/"$N"/"$N-$V".tar.xz"
+
+RDEPEND="atk atkmm attr cairo cairomm dbus dbus-glib expat flac fontconfig freetype gcc gconf gconf-dbus gconfmm gdk-pixbuf glib2 glibc glibmm gtk+ gtkmm json-c libcap libglade libglademm libICE libogg libpng libsamplerate libsigc++ libSM libsndfile libvorbis libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libxml2 libXrandr libXrender libXtst orbit pango pangomm pixman pulseaudio util-linux-ng zlib"
+RECOMMENDED=""
+BDEPEND=""
+
+INSTALL="$N.install"
+
+pbs_unpack() {
+        ypkg_unpack
+}
+
+pbs_config() {
+	YPB_CONFIG+=""
+	ypkg_config
+}
+
+pbs_build() {
+	ypkg_make
+}
+
+pbs_install() {
+	ypkg_mkinstall
+}
+
+

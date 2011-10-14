@@ -4,21 +4,29 @@
 
 DESCRIPTION="Audacious Player - Your music, your way, no exceptions"
 HOMEPAGE="http://audacious-media-player.org/"
-LICENSE="GPL-2"
-PACKAGER="<ylmfos@115.com>"
+LICENSE="GPL2"
+PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 
-SRC_URI="http://distfiles.atheme.org/"$N-$V$R".tgz"
+SRC_URI="http://distfiles.atheme.org/"$N-$V".tgz"
 
-RDEPEND=""
-BDEPEND=" audacious"
-RECOMMENDED="adplug alsa-lib libcdio curl esound jack-audio-connection-kit 
-  	     lame libmad libmms libsndfile libvorbis lirc libsdl taglib wavpack "
+RDEPEND="alsa-lib atk attr audacious audiofile bzip2 cairo curl cyrus-sasl dbus dbus-glib directfb e2fsprogs esound expat faad2 ffmpeg flac fontconfig freetype gcc gdk-pixbuf glib2 glibc gtk+ jack-audio-connection-kit json-c keyutils krb5 lame libcap libcddb libcdio libICE libidn libmcs libmms libmowgli libmtp libnotify libogg libpng libproxy libsamplerate libsdl libSM libsndfile libtheora libusb libusb-compat libva libvorbis libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libxml2 libXrandr libXrender libXt libXtst lirc nas neon opencore-amr openldap openssl orc pango pixman pulseaudio rtmpdump schroedinger util-linux-ng wavpack x264 xvidcore zlib"
+BDEPEND=""
+RECOMMENDED=""
 
 pbs_unpack() {
         ypkg_unpack
 }
 
 pbs_config() {
+	ypkg_patch ylmfos_ffmpeg-0.8.patch
+
+	[[ ${ARCH} == x86_64 ]] && extraopts='' || extraopts='--disable-sse2'
+
+	YPB_CONFIG+="--enable-chardet 
+		     --enable-amidiplug
+		     --disable-adplug
+		     ${extraopts}"
+	YPB_CONFIG=${YPB_CONFIG/--enable-shared/}
 	ypkg_config
 }
 
@@ -29,3 +37,4 @@ pbs_build() {
 pbs_install() {
 	ypkg_mkinstall
 }
+
