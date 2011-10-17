@@ -4,19 +4,15 @@
 
 DESCRIPTION="a feature complete C++ bittorrent implementation focusing on efficiency and scalability"
 HOMEPAGE="http://www.rasterbar.com/products/libtorrent/"
-REPO=""
 LICENSE="BSD-license"
-PRIORITY=""
 PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 
-SRC_URI="http://libtorrent.googlecode.com/files/"$N-$V$R".tar.gz"
+SRC_URI="http://libtorrent.googlecode.com/files/"$N-$V".tar.gz"
 
 RDEPEND="boost gcc glibc openssl zlib"
-BDEPEND="    "
+BDEPEND=""
 RECOMMENDED=""
 CONFLICT=""
-
-NOTES=""
 
 pbs_unpack() {
         ypkg_unpack
@@ -34,3 +30,4 @@ pbs_build() {
 pbs_install() {
 	ypkg_mkinstall
 }
+

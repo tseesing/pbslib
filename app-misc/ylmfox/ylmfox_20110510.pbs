@@ -5,9 +5,8 @@
 DESCRIPTION="Ylmf OS configuration defaults for firefox extensions/plugins."
 HOMEPAGE="www.ylmf.net"
 REPO="stable"
-LICENSE=""
-PACKAGER="<ylmfos@115.com>"
-PRIORITY=""
+LICENSE="GPLv2"
+PACKAGER="Ylmf OS<ylmfos@115.com>"
 
 SRC_URI="git://git.ylmf.com/"$N".git"
 
@@ -19,6 +18,7 @@ pbs_unpack() {
 }
 
 pbs_build() {
+	cd 4.0/
 	zip -r usr/share/xul-ext/ubufox/chrome/ubufox.jar content locale skin
 }
 

@@ -70,7 +70,7 @@ pbs_install() {
 
 	# Add rc-local.service
 	ypkg_dounit rc-local.service
-	ypkg_docp "$FILES_PATH"/files/rc.local etc/rc.local
+	ypkg_docp "$FILES_PATH"/files/rc.local etc/
 	chmod +x etc/rc.local 
 	
 	#

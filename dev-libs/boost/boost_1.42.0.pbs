@@ -4,13 +4,13 @@
 
 DESCRIPTION="Boost Libraries for C++"
 HOMEPAGE="http://www.boost.org/"
-LICENSE="GPL-2"
-PACKAGER="<ylmfos@115.com>"
+LICENSE="GPLv2"
+PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 
 SRC_URI=" http://nchc.dl.sourceforge.net/project/"$N"/"$N"/"$V$R"/"${N}"_1_42_0.tar.bz2 "
 
-RDEPEND="gcc glibc zlib"
-BDEPEND="  "
+RDEPEND="bzip2 gcc glibc zlib"
+BDEPEND=""
 RECOMMENDED=""
 
 NOTES="Apply Hotfixes from:
@@ -24,18 +24,23 @@ pbs_config() {
 	# This is the python we build against:
 	PYTHON_VERSION=$(python -c 'import sys; print sys.version[:3]')
 	PYTHON_FLAGS="-sPYTHON_ROOT=/usr -sPYTHON_VERSION=$PYTHON_VERSION"
+	
 	# First build bjam, the boost build system:
 	cd tools/jam/src
-	CFLAGS="$CFLAGS -fno-strict-aliasing" CC=gcc ./build.sh cc
+	#CFLAGS="$CFLAGS -fno-strict-aliasing" CC=gcc ./build.sh cc
+	CFLAGS="$CFLAGS -fno-strict-aliasing" CC=gcc ./build.sh
 	cd -
 	BJAM=$(find tools/jam/src/ -name bjam -a -type f)
+	
 	# Create build subdirectory
 	mkdir obj
+	
 	# Change the build options from 'minimal' to what we want, since adding
  	# "-sBUILD=<optimization>speed <inlining>full <threading>single/multi
 	# <link>shared <runtime-link>shared" to $BJAM command no longer seems to work.
 	FLAGS="<threading>multi <threading>single <optimization>speed <inlining>full"
 	sed -i "s/    <threading>multi/    $FLAGS/" Jamroot
+	
 	# Disable static libraries ( the only software that *requires* the static libs,
 	# is Microsoft's CW compiler (CW or Comega is an experimental language which
 	# extends C# )
@@ -44,7 +49,7 @@ pbs_config() {
 
 pbs_build() {
 	# Next, we build boost using bjam
-	$BJAM \
+	"$BJAM" \
 	  release \
 	  "-sNO_COMPRESSION=0" \
 	  "-sZLIB_INCLUDE=/usr/include" \
@@ -59,12 +64,12 @@ pbs_build() {
 	  --prefix=/usr \
 	  --libdir=/usr/lib \
 	  --build-type=minimal \
-	  $PYTHON_FLAGS stage
+	  "$PYTHON_FLAGS" stage
 }
 
 pbs_install() {
 	mkdir -p "$YPPATH_DEST"/usr/{lib,include}
-	$BJAM \
+	"$BJAM" \
 	  release \
 	  "-sEXPAT_INCLUDE=/usr/include" \
 	  "-sEXPAT_LIBPATH=/usr/lib" \
@@ -75,8 +80,10 @@ pbs_install() {
 	  --libdir="$YPPATH_DEST"/usr/lib \
           --build-type=minimal \
 	  $PYTHON_FLAGS install
-	ypkg_docp $BJAM  "$YPPATH_DEST"/usr/bin
+	ypkg_docp "$BJAM"  "$YPPATH_DEST"/usr/bin
+
 	# Do not copy 44MB of developer 'doc/html' into our package...
-	ypkg_docp LICENSE* index.html "$YPPATH_DEST"/usr/share/doc/boost-"$V$R"
+	ypkg_dodoc LICENSE* index.html 
 	find "$YPPATH_DEST"/usr/share/doc/boost-"$V$R" -type f -exec chmod 0644 {} \;
 }
+

@@ -17,11 +17,11 @@ esac
 
 . /usr/share/initramfs-tools/hook-functions
 
-if [ -x /sbin/dmraid ]; then
+if [ -x /usr/sbin/dmraid ]; then
 	force_load dm-mod
 	force_load dm-mirror
 	force_load dm-raid45
-	copy_exec /sbin/dmraid sbin
+	copy_exec /usr/sbin/dmraid sbin
 	copy_exec /sbin/dmraid-activate sbin
 	if [ "$BUSYBOX" = n ]; then
 		copy_exec /bin/grep bin

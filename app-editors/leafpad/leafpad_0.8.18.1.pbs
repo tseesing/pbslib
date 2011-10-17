@@ -18,7 +18,7 @@ pbs_unpack() {
 
 pbs_config() {
 	ypkg_patch desktop-i18n.patch
-	YPB_CONFIG+="--disable-print"
+	YPB_CONFIG=${YPB_CONFIG/--enable-shared/}
 	ypkg_config
 }
 

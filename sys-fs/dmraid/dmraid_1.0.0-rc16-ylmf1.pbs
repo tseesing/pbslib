@@ -4,13 +4,13 @@
 
 DESCRIPTION="Device-mapper RAID tool and library"
 HOMEPAGE="http://people.redhat.com/~heinzm/sw/dmraid/"
-LICENSE="GPL-2"
-PACKAGER="<ylmfos@115.com>"
+LICENSE="GPLv2"
+PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 
 SRC_URI="http://people.redhat.com/~heinzm/sw/"$N"/src/"$N-$V".rc16.tar.bz2"
 
 RDEPEND="device-mapper glibc"
-BDEPEND=" "
+BDEPEND=""
 RECOMMENDED=""
 
 INSTALL="$N.install"

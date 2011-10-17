@@ -1,0 +1,33 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="Firefox Web Browser"
+HOMEPAGE="http://www.mozilla.com/firefox"
+LICENSE="custom"
+PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
+
+SRC_URI="ftp://ftp.mozilla.org/pub/mozilla.org/firefox/releases/"$V$R"/linux-i686/zh-CN/firefox-"$V$R".tar.bz2"
+
+RDEPEND="alsa-lib atk avahi cairo dbus dbus-glib expat fontconfig freetype gcc gconf gconf-dbus gdk-pixbuf glib2 glibc gnome-vfs gtk+ libICE libnotify libpng libSM libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libxml2 libXrandr libXrender libXt nspr nss openssl orbit pango pixman sqlite util-linux-ng xulrunner zlib"
+BDEPEND=""
+
+pbs_unpack() {
+        ypkg_unpack
+}
+
+pbs_install() {
+	ypkg_docp *  "$YPPATH_DEST"/opt/"$N-$V$R"
+	ypkg_dodesktop "$FILES_PATH"/files/firefox-bin.desktop  
+
+	cd "$YPPATH_DEST"
+	ypkg_docp_rename opt/"$N-$V$R"/icons/mozicon128.png usr/share/pixmaps/"$N".png
+	mkdir -p usr/bin
+	cat >> usr/bin/firefox-bin.sh <<EOF
+#!/bin/sh
+cd /opt/"$N-$V$R"
+exec ./firefox 
+EOF
+	chmod +x usr/bin/firefox-bin.sh
+}
+

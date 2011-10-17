@@ -4,21 +4,17 @@
 
 DESCRIPTION="a port of Tomboy to C++, taking application, including most of the add-ins (more are to come)."
 HOMEPAGE="http://live.gnome.org/Gnote"
-REPO=""
 LICENSE="GPL"
-PRIORITY=""
 PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 
-SRC_URI="http://ftp.gnome.org/pub/GNOME/sources/"$N"/0.7/"$N-$V$R".tar.bz2"
+SRC_URI="http://ftp.gnome.org/pub/GNOME/sources/"$N"/0.7/"$N-$V".tar.bz2"
 
-RDEPEND="atk boost cairo cairomm dbus dbus-glib expat fontconfig freetype gcc gconf glib2 gdk-pixbuf glibc glibmm gtk+ gtkmm libpcre libpng libsigc++ libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libxml2 libXrandr libXrender libxslt orbit pango pangomm pixman util-linux-ng zlib"
+RDEPEND="atk atkmm boost cairo cairomm enchant expat fontconfig freetype gcc gconf gconf-dbus gdk-pixbuf glib2 glibc glibmm gtk+ gtkmm gtkspell libpcre libpng libsigc++ libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libxml2 libXrandr libXrender libxslt orbit pango pangomm pixman util-linux-ng zlib"
 BDEPEND=""
 RECOMMENDED=""
 CONFLICT=""
 
 INSTALL="$N.install"
-
-NOTES=""
 
 pbs_unpack() {
         ypkg_unpack
