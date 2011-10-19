@@ -4,16 +4,14 @@
 
 DESCRIPTION="Apache Portable Runtime Library"
 HOMEPAGE="http://apr.apache.org/"
-LICENSE="GPL-2"
-PACKAGER="<ylmfos@115.com>"
+LICENSE="APACHE"
+PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
  
-SRC_URI="ftp://ftp.oregonstate.edu/pub/apache/apr/"$N-$V$R".tar.bz2"
+SRC_URI="ftp://ftp.oregonstate.edu/pub/apache/apr/"$N-$V".tar.bz2"
 
 RDEPEND="glibc util-linux-ng"
-BDEPEND=" "
+BDEPEND=""
 RECOMMENDED=""
-
-NOTES=""
 
 pbs_unpack() {
         ypkg_unpack
@@ -31,3 +29,4 @@ pbs_build() {
 pbs_install() {
 	ypkg_mkinstall
 }
+

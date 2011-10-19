@@ -4,12 +4,12 @@
 
 DESCRIPTION="Tool to setup encrypted devices with dm-crypt"
 HOMEPAGE="http://code.google.com/p/cryptsetup/"
-LICENSE="GPL-2"
-PACKAGER="<ylmfos@115.com>"
+LICENSE="GPL"
+PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 
-SRC_URI="http://cryptsetup.googlecode.com/files/"$N-$V$R".tar.bz2"
+SRC_URI="http://cryptsetup.googlecode.com/files/"$N-$V".tar.bz2"
 
-RDEPEND="device-mapper glibc libgcrypt libgpg-error popt util-linux-ng"
+RDEPEND="device-mapper glibc libgcrypt libgpg-error popt udev util-linux-ng"
 BDEPEND=""
 RECOMMENDED=""
 
@@ -30,7 +30,8 @@ pbs_build() {
 pbs_install() {
 	ypkg_mkinstall
 	ypkg_dodoc AUTHORS ChangeLog COPYING INSTALL NEWS README
-	#for initramfs-tools
+	
+	# For initramfs-tools
 	cd "$YPPATH_DEST"
 	ypkg_docp "$FILES_PATH"/files/cryptsetup                      lib
 	ypkg_docp "$FILES_PATH"/files/hooks/*                         usr/share/initramfs-tools/hooks

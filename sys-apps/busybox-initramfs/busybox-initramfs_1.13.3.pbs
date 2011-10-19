@@ -4,10 +4,10 @@
 
 DESCRIPTION="a statically linked simple stand alone shell that provides only the basic utilities needed for the initramfs."
 HOMEPAGE="http://www.busybox.net/"
-LICENSE="GPLv2"
-PACKAGER="<ylmfos@115.com>"
+LICENSE="GPL"
+PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 
-SRC_URI="http://busybox.net/downloads/busybox-"$V$R".tar.bz2"
+SRC_URI="http://busybox.net/downloads/busybox-"$V".tar.bz2"
 
 RDEPEND="glibc"
 BDEPEND=""

@@ -4,12 +4,10 @@
 
 DESCRIPTION="b43-fwcutter is a tool which can extract firmware from various source files"
 HOMEPAGE="http://bu3sch.de/b43/fwcutter"
-REPO=""
 LICENSE="GPL"
-PRIORITY=""
 PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 
-SRC_URI="http://bu3sch.de/b43/fwcutter/"$N-$V$R".tar.bz2"
+SRC_URI="http://bu3sch.de/b43/fwcutter/"$N-$V".tar.bz2"
 
 RDEPEND="glibc"
 BDEPEND=" "
@@ -31,5 +29,7 @@ pbs_build() {
 
 pbs_install() {
 	ypkg_docp b43-fwcutter "$YPPATH_DEST"/usr/bin
-	ypkg_docp b43-fwcutter.1 "$YPPATH_DEST"/usr/share/man/man1
+	ypkg_doman b43-fwcutter.1 
 }
+
+

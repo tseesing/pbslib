@@ -1,0 +1,55 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="Media Player for Linux"
+HOMEPAGE="http://www.mplayerhq.hu/"
+LICENSE="GPL"
+PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
+
+SRC_URI="http://www.mplayerhq.hu/MPlayer/releases/MPlayer-1.0rc4.tar.gz"
+
+RDEPEND="a52dec aalib alsa-lib attr audiofile bzip2 cyrus-sasl dbus directfb enca esound expat faac flac fontconfig freetype fribidi gcc giflib glibc jack-audio-connection-kit json-c keyutils krb5 lame lcms libcap libcdio libdrm libICE libjpeg-turbo libmad libmng libmpcdec libogg libpng libsamplerate libsdl libSM libsndfile libtheora libtool libvdpau libvorbis libX11 libXau libxcb libXdamage libXdmcp libXext libXfixes libXi libXinerama libXScrnSaver libXt libXtst libXv libXvMC libXxf86dga libXxf86vm lirc lzo mesa mpg123 nas ncurses openal opencore-amr openldap openssl orc pulseaudio rtmpdump samba schroedinger slang speex talloc util-linux-ng x264 xvidcore zlib"
+BDEPEND="libgsm-dev" 
+
+OPINION="upx"
+
+pbs_unpack() {
+	ypkg_unpack
+}
+
+pbs_config() {
+	# It is important to unset CFLAGS. Otherwise build will fail! If it doesn't fail, it will most likely error when run.
+	unset CFLAGS
+	YPB_CONFIG="--prefix=/usr 
+	            --mandir=/usr/share/man 
+		    --confdir=/etc/mplayer
+		    --language=all
+		    --enable-runtime-cpudetection 
+		    --enable-xvmc 
+		    --enable-menu 
+	            --enable-largefiles 
+                    --enable-joystick
+		    --enable-mga
+		    --enable-3dfx
+		    --enable-tdfxfb
+		    --disable-gui 
+		    --disable-arts 
+	            --disable-libdvdcss-internal 
+		    --disable-dvdread-internal"
+	ypkg_config
+}
+
+pbs_build() {
+	[ "x$ARCH" = "xi686" ] && sed 's|-march=i486|-march=i686|g' -i config.mak
+	ypkg_make
+}
+
+pbs_install() {
+	ypkg_mkinstall
+	ypkg_docp etc/{codecs.conf,input.conf,example.conf} "$FILES_PATH"/files/mplayer.conf  \
+		 "$YPPATH_DEST"/etc/mplayer/
+	ypkg_doln /usr/share/fonts/truetype/ttf-dejavu/DejaVuSans.ttf  \
+		"$YPPATH_DEST"/usr/share/mplayer/subfont.ttf
+}
+

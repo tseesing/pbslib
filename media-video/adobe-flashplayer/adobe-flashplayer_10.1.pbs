@@ -4,8 +4,7 @@
 
 DESCRIPTION="Adobe Flash Player"
 HOMEPAGE="http://www.adobe.com/"
-REPO=""
-LICENSE=""
+LICENSE="custom"
 PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 
 SRC_URI="http://download.macromedia.com/pub/flashplayer/updaters/10/flashplayer_10_sa.tar.gz"
@@ -16,7 +15,7 @@ RECOMMENDED=""
 
 INSTALL="$N.install"
 
-NOTES=""
+OPINION="upx"
 
 pbs_unpack() {
         ypkg_unpack

@@ -5,9 +5,11 @@
 DESCRIPTION="The open-source project behind Google Chrome, an attempt at creating a safer, faster, and more stable browser."
 HOMEPAGE="http://code.google.com/p/chromium/"
 LICENSE="Multiple Licenses"
+PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
+
 SRC_URI="http://build.chromium.org/buildbot/official/"$N-$V".tar.bz2"
 
-RDEPEND="alsa-lib atk bzip2 cairo cups dbus dbus-glib expat ffmpeg fontconfig freetype gcc gconf glib2 gdk-pixbuf glibc gnutls gtk+ keyutils krb5 libevent libgcrypt libgpg-error libjpeg-turbo libpng libtasn1 libva libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libxml2 libXrandr libXrender libXScrnSaver libxslt libXtst nspr nss orbit pam pango pixman speex zlib"
+RDEPEND="alsa-lib atk avahi bzip2 cairo cups dbus dbus-glib expat fontconfig freetype gcc gconf gconf-dbus gdk-pixbuf glib2 glibc gnutls gtk+ keyutils krb5 libevent libgcrypt libgpg-error libjpeg-turbo libpng libtasn1 libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libxml2 libXrandr libXrender libXScrnSaver libxslt nspr nss orbit pango pixman speex zlib"
 BDEPEND="perl gperf pkgconfig flex renderproto-dev libXinerama-dev libvpx-dev switch"
 
 INSTALL="$N.install"

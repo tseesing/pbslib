@@ -5,15 +5,13 @@
 DESCRIPTION="System which facilitates service discovery on a local network"
 HOMEPAGE="http://avahi.org/"
 LICENSE="GPL-2"
-PACKAGER="<ylmfos@115.com>"
+PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 
 SRC_URI="http://avahi.org/download/"$N-$V".tar.gz"
 
-RDEPEND="atk attr cairo dbus expat fontconfig freetype gcc gdbm glib2 gdk-pixbuf glibc gtk+ libcap libdaemon libglade libpng libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libxml2 libXrandr libXrender pango pixman zlib"
+RDEPEND="atk attr cairo dbus expat fontconfig freetype gcc gdbm gdk-pixbuf glib2 glibc gtk+ libcap libdaemon libpng libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libXrandr libXrender pango pixman qt-core zlib"
 BDEPEND="desktop-file-utils dbus-python-dev pygtk-dev dbus-glib-dev"
 RECOMMENDED=""
-
-NOTES=""
 
 pbs_unpack() {
         ypkg_unpack
@@ -29,8 +27,8 @@ pbs_config() {
 	YPB_CONFIG+="--disable-qt3  
 		     --disable-static
 		     --disable-monodoc 
+		     --disable-mono
 		     --enable-qt4  
-		     --enable-mono
 		     --enable-shared 
 		     --enable-python-dbus
 		     --enable-pygtk 
@@ -66,3 +64,4 @@ pbs_install() {
 	#
 	ypkg_dounit avahi-dnsconfd.service avahi-daemon.service
 }
+

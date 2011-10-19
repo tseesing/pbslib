@@ -4,8 +4,10 @@
 
 DESCRIPTION="Exuberant Ctags creates tags files for code browsing in editors"
 HOMEPAGE="http://ctags.sourceforge.net"
- 
-SRC_URI="http://prdownloads.sourceforge.net/"$N"/"$N-$V$R".tar.gz"
+LICENSE="GPL"
+PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
+
+SRC_URI="http://prdownloads.sourceforge.net/"$N"/"$N-$V".tar.gz"
 
 RDEPEND="glibc"
 BDEPEND=""
@@ -18,7 +20,7 @@ pbs_config() {
 	YPB_CONFIG+="--with-posix-regex 
 	             --without-readlib 
 		     --disable-etags 
-		     --enable-tmpdir=/tmp "
+		     --enable-tmpdir=/tmp"
 	ypkg_config
 }
 
@@ -29,3 +31,4 @@ pbs_build() {
 pbs_install() {
 	make prefix="$YPPATH_DEST"/usr install
 }
+

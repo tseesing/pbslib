@@ -4,17 +4,14 @@
 
 DESCRIPTION="Simple config file reader and writer"
 HOMEPAGE="http://pypi.python.org/pypi/configobj"
-REPO=""
 LICENSE="OSI Approved/BSD License"
 PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 
-SRC_URI="http://pypi.python.org/packages/source/c/"$N"/"$N-$V$R".tar.gz"
+SRC_URI="http://pypi.python.org/packages/source/c/"$N"/"$N-$V".tar.gz"
 
-RDEPEND="glibc"
+RDEPEND="python"
 BDEPEND=""
 RECOMMENDED=""
-
-NOTES=""
 
 pbs_unpack() {
         ypkg_unpack
@@ -31,3 +28,4 @@ pbs_build() {
 pbs_install() {
 	ypkg_mkinstall
 }
+

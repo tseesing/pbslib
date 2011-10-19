@@ -4,8 +4,10 @@
 
 DESCRIPTION="A high-quality data compressor"
 HOMEPAGE="http://www.bzip.org/"
+LICENSE="GPL"
+PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 
-SRC_URI="http://www.bzip.org/$V/"$N-$V".tar.gz "
+SRC_URI="http://www.bzip.org/$V/"$N-$V".tar.gz"
 
 RDEPEND="glibc"
 BDEPEND=""
@@ -23,8 +25,8 @@ pbs_config() {
 }	
 
 pbs_build() {
-	#creates a dynamic libbz2.so  library and links the Bzip2 
-	#utilities against it
+	# Creates a dynamic libbz2.so library and links the Bzip2 
+	# utilities against it
 	ypkg_make -f Makefile-libbz2_so
 	make clean
 	ypkg_make 

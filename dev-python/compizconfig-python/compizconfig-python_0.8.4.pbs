@@ -4,12 +4,12 @@
 
 DESCRIPTION="Compizconfig Python Bindings"
 HOMEPAGE="http://www.compiz.org/"
-LICENSE="GPL-2"
-PACKAGER="<ylmfos@115.com>"
+LICENSE="GPL"
+PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 
-SRC_URI="http://releases.compiz.org/components/compizconfig-python/compizconfig-python-0.8.4.tar.bz2"
+SRC_URI="http://releases.compiz.org/components/"$N"/"$N-$V".tar.bz2"
 
-RDEPEND="python pygtk pyrex compiz compiz-bcop libcompizconfig"
+RDEPEND="gcc glib2 glibc libcompizconfig libICE libSM libX11 libXau libxcb libXcomposite libXdamage libXdmcp libXext libXfixes libXinerama libxml2 libXrandr libXrender libxslt protobuf startup-notification util-linux-ng zlib"
 BDEPEND=""
 RECOMMENDED=""
 

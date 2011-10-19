@@ -4,13 +4,12 @@
 
 DESCRIPTION="The Common Unix Printing System."
 HOMEPAGE="http://www.cups.org/"
-LICENSE="GPL-2"
-PACKAGER="<ylmfos@115.com>"
-REPO=""
+LICENSE="GPL"
+PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 
 SRC_URI="http://ftp.easysw.com/pub/"$N"/"$V"/"$N-$V"-source.tar.bz2"
 
-RDEPEND="acl attr cyrus-sasl dbus e2fsprogs gcc glibc gnutls keyutils krb5 libgcrypt libgpg-error libjpeg-turbo libpng libtasn1 libtiff libusb libusb-compat openldap openssl pam zlib"
+RDEPEND="acl attr avahi dbus e2fsprogs gcc glibc gnutls keyutils krb5 libgcrypt libgpg-error libjpeg-turbo libpng libtasn1 libtiff libusb libusb-compat pam zlib"
 BDEPEND=""
 RECOMMENDED=""
 
@@ -25,6 +24,7 @@ pbs_unpack() {
 pbs_config() {
 	ypkg_groupadd -r "lp"
 	ypkg_patch cups-avahi.patch ylmfos-add-wheel-group-to-systemgroup.patch
+	
 	# Rebuild configure script for --enable-avahi.
 	aclocal -I config-scripts
 	autoconf -I config-scripts
@@ -53,21 +53,27 @@ pbs_build() {
 pbs_install() {
 	make BUILDROOT="$YPPATH_DEST" install
 	cd "$YPPATH_DEST"
-	#systemd
+	
+	# Systemd
 	ypkg_dounit "$N".service
 	ypkg_doln /lib/systemd/system/"$N".service lib/systemd/system/multi-user.target.wants/"$N".service
+	
 	#
 	ypkg_docp_rename  "$FILES_PATH"/files/cups.logrotate etc/logrotate.d/cups
 	ypkg_docp_rename  "$FILES_PATH"/files/cups.pam      etc/pam.d/cups	
-	# fix perms on /var/spool and /etc
+	
+	# Fix perms on /var/spool and /etc
 	chmod 755 var/spool
 	chmod 755 etc
-	# serial backend needs to run as root (http://bugs.archlinux.org/task/20396)
+	
+	# Serial backend needs to run as root (http://bugs.archlinux.org/task/20396)
 	chmod 700 usr/lib/cups/backend/serial
-	# install ssl directory where to store the certs, solves some samba issues
+	
+	# Install ssl directory where to store the certs, solves some samba issues
 	install -dm700 -g lp etc/cups/ssl
 	install -dm511 -g lp var/run/cups/certs
-	#install some more configuration files that will get filled by cupsd
+	
+	# Install some more configuration files that will get filled by cupsd
 	touch etc/cups/printers.conf
 	touch etc/cups/classes.conf
 	touch etc/cups/client.conf
@@ -75,11 +81,14 @@ pbs_install() {
 	echo "ServerName /var/run/cups/cups.sock #  alternative: ServerName hostname-or-ip-address[:port] of a remote server" >> etc/cups/client.conf
 	touch etc/cups/subscriptions.conf
 	chgrp lp etc/cups/{printers.conf,classes.conf,client.conf,subscriptions.conf}
-	# compress some driver files, adopted from Fedora
+	
+	# Compress some driver files, adopted from Fedora
 	find usr/share/cups/model -name "*.ppd" | xargs gzip -n9f
+	
 	#
 	ypkg_docp "$FILES_PATH"/files/blacklist-cups.conf etc/modprobe.d/
-	#clean
+	
+	# Clean
 	rm -rf etc/rc5.d/ etc/rc3.d/ etc/rc2.d/ etc/rc0.d/
 	rm -rf etc/init.d/cups
 }

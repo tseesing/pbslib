@@ -4,16 +4,14 @@
 
 DESCRIPTION="A free, cross-platform, hardware independent AdLib sound player library"
 HOMEPAGE="http://adplug.sourceforge.net"
-LICENSE="GPL-2"
-PACKAGER="<ylmfos@115.com>"
+LICENSE="GPL"
+PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 
-SRC_URI="http://downloads.sourceforge.net/project/"$N"/AdPlug%20core%20library/"$V$R"/"$N-$V$R".tar.bz2"
+SRC_URI="http://downloads.sourceforge.net/project/"$N"/AdPlug%20core%20library/"$V"/"$N-$V".tar.bz2"
 
-RDEPEND="libbinio gcc glibc"
-BDEPEND="  "
+RDEPEND="gcc glibc libbinio"
+BDEPEND=""
 RECOMMENDED=""
-
-NOTES=""
 
 pbs_unpack() {
         ypkg_unpack
@@ -31,3 +29,4 @@ pbs_install() {
 	ypkg_mkinstall
 	ypkg_dodoc AUTHORS ChangeLog COPYING INSTALL NEWS README
 }
+

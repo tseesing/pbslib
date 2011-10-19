@@ -10,7 +10,7 @@ YARCH="any"
 
 SRC_URI="git://git.ylmf.com/"$N".git"
 
-RDEPEND="python"
+RDEPEND="python boost gcc glibc"
 RECOMMENDED=""
 BDEPEND=""
 CONFLICT=""

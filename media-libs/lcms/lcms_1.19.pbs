@@ -3,12 +3,15 @@
 #
 
 DESCRIPTION="A lightweight, speed optimized color management engine"
+COMMENTS=""
 HOMEPAGE="http://www.littlecms.com/"
- 
-SRC_URI="http://downloads.sourceforge.net/project/"$N"/"$N"/"$V"/"$N-$V$R".tar.gz"
+LICENSE="GPL"
+PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
+
+SRC_URI="http://downloads.sourceforge.net/project/"$N"/"$N"/"$V"/"$N-$V".tar.gz"
 
 RDEPEND="glibc libjpeg-turbo libtiff zlib"
-BDEPEND="   "
+BDEPEND=""
 
 pbs_unpack() {
         ypkg_unpack
@@ -25,3 +28,4 @@ pbs_build() {
 pbs_install() {
 	ypkg_mkinstall
 }
+

@@ -1,0 +1,30 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="Fast lightweight tabbed filemanager"
+HOMEPAGE="www.lxde.org"
+LICENSE="GPL-2"
+PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
+
+SRC_URI="git://pcmanfm.git.sourceforge.net/gitroot/"$N"/"$N""
+
+RDEPEND="atk cairo expat fontconfig freetype gcc gdk-pixbuf glib2 glibc gtk+ libfm libpng libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libXrandr libXrender menu-cache pango pixman zlib"
+BDEPEND=""
+
+pbs_unpack() {
+	ypkg_unpack
+}
+
+pbs_config() {
+	ypkg_config
+}
+
+pbs_build() {
+	ypkg_make
+}
+
+pbs_install() {
+	ypkg_mkinstall
+}
+

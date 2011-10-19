@@ -4,11 +4,13 @@
 
 DESCRIPTION="A spell checker replacement for ispell"
 HOMEPAGE="http://aspell.net/"
- 
-SRC_URI="ftp://ftp.gnu.org/gnu/"$N"/"$N-$V$R".tar.gz"
+LICENSE="LGPL"
+PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
+
+SRC_URI="ftp://ftp.gnu.org/gnu/"$N"/"$N-$V".tar.gz"
 
 RDEPEND="gcc glibc ncurses"
-BDEPEND="  "
+BDEPEND=""
 
 INSTALL="$N.install"
 
@@ -27,3 +29,4 @@ pbs_build() {
 pbs_install() {
 	ypkg_mkinstall
 }
+

@@ -4,9 +4,10 @@
 
 DESCRIPTION="A dynamic, any to any, pixel format conversion library"
 HOMEPAGE="http://www.gegl.org/babl/"
-REPO="testing"
+LICENSE="GPL"
+PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 
-SRC_URI="ftp://ftp.gimp.org/pub/"$N"/0.1/"$N-$V$R".tar.bz2"
+SRC_URI="ftp://ftp.gimp.org/pub/"$N"/0.1/"$N-$V".tar.bz2"
 
 RDEPEND="glibc"
 BDEPEND=""

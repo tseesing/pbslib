@@ -4,21 +4,19 @@
 
 DESCRIPTION="A vector graphics library with cross-device output support"
 HOMEPAGE="http://cairographics.org/"
-LICENSE="GPL-2"
-PACKAGER="<ylmfos@115.com>"
+LICENSE="GPL"
+PACKAGER="Ylmf developers <ylmfos@115.com>"
 
 SRC_URI="http://cairographics.org/releases/"$N-$V$R".tar.gz"
 
-RDEPEND="expat fontconfig freetype glib2 gdk-pixbuf glibc libpng libX11 libXau libxcb libXdmcp libXrender pixman zlib"
-BDEPEND="xcb-util-dev             "
+RDEPEND="binutils expat fontconfig freetype glib2 glibc libpng libX11 libXau libxcb libXdmcp libXrender pixman zlib"
+BDEPEND="xcb-util-dev"
 
 pbs_unpack() {
         ypkg_unpack
 }
 
 pbs_config() {
-	# ypkg_patch cairo-1.8.8-interix.patch
-	# ypkg_patch cairo-1.10.0-buggy_gradients.patch
 	ypkg_patch 01_build_perf_utils.patch
 	ypkg_patch 02_am-maintainer-mode.patch
 	ypkg_patch 03_export-symbols.patch
@@ -38,3 +36,4 @@ pbs_build() {
 pbs_install() {
 	ypkg_mkinstall
 }
+

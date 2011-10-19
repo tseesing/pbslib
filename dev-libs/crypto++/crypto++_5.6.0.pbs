@@ -4,23 +4,25 @@
 
 DESCRIPTION="Crypto++ is a C++ class library of cryptographic schemes"
 HOMEPAGE="http://cryptopp.com"
-LICENSE=""
-PACKAGER="<ylmfos@115.com>"
+LICENSE="custom"
+PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 
 SRC_URI="http://cryptopp.com/cryptopp560.zip"
 
 RDEPEND="gcc glibc"
-BDEPEND="  unzip"
+BDEPEND="unzip"
 
 pbs_unpack() {
 	ypkg_unpack
 }
 
 pbs_build() {
-	ypkg_patch "$N-$V$R"-fix_build_system.patch
+	ypkg_patch "$N-$V"-fix_build_system.patch
 	ypkg_make 
 }
 
 pbs_install() {
-	make DESTDIR="$YPPATH_DEST"  install
+	ypkg_mkinstall
+	ypkg_docp "$FILES_PATH"/files/libcrypto++.pc "$YPPATH_DEST"/usr/lib/pkgconfig/
 }
+

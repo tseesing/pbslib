@@ -5,25 +5,23 @@
 DESCRIPTION="Berkeley Data base library"
 HOMEPAGE="http://download-east.oracle.com/berkeley-db/"
 LICENSE="custom"
-PACKAGER="<ylmfos@115.com>"
+PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 
-SRC_URI="http://download.oracle.com/"$N"/db-"$V$R".tar.gz"
+SRC_URI="http://download.oracle.com/"$N"/db-"$V".tar.gz"
 
 RDEPEND="gcc glibc"
-BDEPEND=" "
-
-NOTES=""
+BDEPEND=""
 
 pbs_unpack() {
         ypkg_unpack
 }
 
 pbs_config() {
-	ypkg_patch db-"$V$R"-upstream_fixes-1.patch
+	ypkg_patch db-"$V"-upstream_fixes-1.patch
 	cd build_unix
-	YPB_CONFIG+=" --enable-compat185 
-		      --enable-cxx
-		      --enable-rpc "
+	YPB_CONFIG+="--enable-compat185 
+		     --enable-cxx
+		     --enable-rpc"
 	../dist/configure $YPB_CONFIG
 }
 
@@ -34,3 +32,4 @@ pbs_build() {
 pbs_install() {
 	ypkg_mkinstall docdir=/usr/share/doc/db/"$V$R"
 }
+

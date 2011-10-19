@@ -1,0 +1,33 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="Ultimate executable compressor."
+COMMENTS=""
+HOMEPAGE="http://upx.sourceforge.net/"
+LICENSE="GPL"
+PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
+
+SRC_URI="http://upx.sourceforge.net/download/"$N-$V"-src.tar.bz2 
+         http://downloads.sourceforge.net/sevenzip/lzma465.tar.bz2"
+
+RDEPEND="gcc glibc ucl zlib"
+RECOMMENDED=""
+BDEPEND=""
+CONFLICT=""
+
+pbs_unpack() {
+        ypkg_unpack
+}
+
+pbs_build() {
+	tar xf "$YPPATH_SOURCE"/lzma465.tar.bz2
+	make UPX_LZMA_VERSION=0x465 UPX_LZMADIR="$PWD" all
+}
+
+pbs_install() {
+	install -D src/upx.out "$YPPATH_DEST"/usr/bin/upx
+	ypkg_doman doc/upx.1
+}
+
+

@@ -4,10 +4,10 @@
 
 DESCRIPTION="Extended attributes tools"
 HOMEPAGE="http://oss.sgi.com/projects/xfs/"
-LICENSE="GPL-2"
+LICENSE="LGPL"
 PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 
-SRC_URI="ftp://oss.sgi.com/projects/xfs/cmd_tars-oct_09/"$N-$V$R".src.tar.gz"
+SRC_URI="ftp://oss.sgi.com/projects/xfs/cmd_tars-oct_09/"$N-$V".src.tar.gz"
 
 RDEPEND="glibc"
 BDEPEND="gettext" 

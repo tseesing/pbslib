@@ -4,13 +4,13 @@
 
 DESCRIPTION="list X application resource database"
 HOMEPAGE="http://xorg.freedesktop.org/http://xorg.freedesktop.org/"
-LICENSE="http://xorg.freedesktop.org/"
-PACKAGER="<ylmfos@115.com>"
+LICENSE="custom"
+PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 
-SRC_URI="http://xorg.freedesktop.org/releases/individual/app/"$N-$V$R".tar.bz2"
+SRC_URI="http://xorg.freedesktop.org/releases/individual/app/"$N-$V".tar.bz2"
 
 RDEPEND="glibc libICE libSM libX11 libXau libxcb libXdmcp libXt util-linux-ng"
-BDEPEND="        "
+BDEPEND=""
 
 pbs_unpack() {
         ypkg_unpack
@@ -26,4 +26,6 @@ pbs_build() {
 
 pbs_install() {
 	ypkg_mkinstall
+	ypkg_dodoc COPYING
 }
+

@@ -13,3 +13,4 @@ post_remove() {
 	ypkg_groupdel "avahi"
 	gnome2_desktop_database_update
 }
+

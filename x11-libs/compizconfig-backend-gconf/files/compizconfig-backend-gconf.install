@@ -1,6 +1,0 @@
-. /usr/lib/ybs/funcs
-
-pbs_postinst() {
-        gnome2_gconfd_reload
-}
-

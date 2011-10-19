@@ -4,12 +4,12 @@
 
 DESCRIPTION="The Gnome Accessibility Toolkit"
 HOMEPAGE="http://developer.gnome.org/projects/gap/"
-LICENSE="GPLv2"
+LICENSE="GPL"
 PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 
 SRC_URI="http://ftp.gnome.org/pub/gnome/sources/at-spi/1.32/"$N-$V".tar.bz2"
 
-RDEPEND="atk cairo dbus dbus-glib expat fontconfig freetype gcc gconf glib2 gdk-pixbuf glibc gtk+ libbonobo libICE libpng libSM libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libXrandr libXrender libXtst orbit pango pixman util-linux-ng zlib"
+RDEPEND="atk cairo dbus dbus-glib expat fontconfig freetype gcc gconf gconf-dbus gdk-pixbuf glib2 glibc gtk+ libbonobo libICE libpng libSM libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libXrandr libXrender libXtst orbit pango pixman util-linux-ng zlib"
 BDEPEND=""
 RECOMMENDED=""
 

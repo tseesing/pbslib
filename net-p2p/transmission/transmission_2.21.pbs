@@ -4,18 +4,16 @@
 
 DESCRIPTION="A Fast, Easy and Free BitTorrent client"
 HOMEPAGE="http://www.transmissionbt.com/"
-LICENSE="GPL-2"
-PACKAGER="<ylmfos@115.com>"
+LICENSE="GPL"
+PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 
-SRC_URI="http://download.transmissionbt.com/files/"$N-$V$R".tar.bz2"
+SRC_URI="http://download.transmissionbt.com/files/"$N-$V".tar.bz2"
 
 RDEPEND="atk cairo curl cyrus-sasl dbus dbus-glib expat fontconfig freetype gcc gconf glib2 gdk-pixbuf glibc gtk+ libcanberra libevent libnotify libogg libpng libtool libvorbis libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libXrandr libXrender openldap openssl orbit pango pixman zlib"
 BDEPEND=""
 RECOMMENDED=""
 
 INSTALL="$N.install"
-
-NOTES=""
 
 pbs_unpack() {
         ypkg_unpack

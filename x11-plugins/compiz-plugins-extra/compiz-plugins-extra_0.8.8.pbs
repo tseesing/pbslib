@@ -4,12 +4,12 @@
 
 DESCRIPTION="Compiz Fusion Window Decorator Plugins"
 HOMEPAGE="http://www.compiz.org/"
-LICENSE="GPL-2"
-PACKAGER="<ylmfos@115.com>"
+LICENSE="GPL"
+PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 
 SRC_URI="http://releases.compiz.org/"$V$R"/"$N-$V$R".tar.bz2"
 
-RDEPEND="pango cairo mesa compiz-plugins-main"
+RDEPEND="atk cairo dbus dbus-glib expat fontconfig freetype gcc gdk-pixbuf glib2 glibc gtk+ libdrm libICE libnotify libpng libSM libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libXinerama libxml2 libXrandr libXrender libxslt libXxf86vm mesa pango pixman startup-notification util-linux-ng zlib"
 BDEPEND=""
 RECOMMENDED=""
 
@@ -31,3 +31,4 @@ pbs_build() {
 pbs_install() {
 	ypkg_mkinstall
 }
+

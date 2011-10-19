@@ -2,15 +2,15 @@
 # YLmf_OS package build script
 #
 
-DESCRIPTION="utilities to administer Access Control Lists, which are used to define more fine-grained discretionary access rights for files and directories."
+DESCRIPTION="access control list utilities, libraries and headers"
 HOMEPAGE="http://savannah.nongnu.org/projects/acl"
-LICENSE="GPL-2"
+LICENSE="LGPL"
 PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 
-SRC_URI="http://mirrors.zerg.biz/nongnu/"$N"/"$N-$V$R".src.tar.gz"
+SRC_URI="http://mirrors.zerg.biz/nongnu/"$N"/"$N-$V".src.tar.gz"
 
 RDEPEND="attr glibc"
-BDEPEND=" "
+BDEPEND=""
 
 pbs_unpack() {
         ypkg_unpack

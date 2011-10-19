@@ -3,21 +3,18 @@
 #
 
 DESCRIPTION="PDF printer for cups"
-HOMEPAGE=""
-REPO=""
+HOMEPAGE="http://www.cups-pdf.de/"
 LICENSE="GPL"
 PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 
-SRC_URI="http://www.physik.uni-wuerzburg.de/~vrbehr/cups-pdf/src/cups-pdf_2.5.1.tar.gz"
+SRC_URI="http://www.physik.uni-wuerzburg.de/~vrbehr/"$N"/src/"${N}_$V".tar.gz"
 
-RDEPEND="cups ghostscript"
+RDEPEND="glibc cups ghostscript"
 BDEPEND=""
 RECOMMENDED=""
 CONFLICT=""
 
 INSTALL="$N.install"
-
-NOTES=""
 
 pbs_unpack() {
         ypkg_unpack
@@ -43,3 +40,4 @@ pbs_install() {
 	cd ../
 	ypkg_dodoc ChangeLog COPYING README
 }
+

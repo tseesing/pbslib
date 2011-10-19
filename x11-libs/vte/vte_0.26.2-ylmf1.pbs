@@ -1,0 +1,35 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="Terminal emulator widget used by Ylmf_OS Linux"
+HOMEPAGE="http://library.gnome.org/devel/vte/"
+LICENSE="GPL"
+PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
+
+SRC_URI="http://ftp.gnome.org/pub/gnome/desktop/2.32/2.32.1/sources/"$N-$V".tar.bz2"
+
+RDEPEND="atk cairo expat fontconfig freetype gcc glib2 gdk-pixbuf glibc gtk+ libpng libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libXrandr libXrender ncurses pango pixman zlib"
+BDEPEND=""
+
+pbs_unpack() {
+        ypkg_unpack
+}
+
+pbs_config() {
+	#fixed The Home and End keys broken problem in the xterm termcap file
+	sed -i 's%\\177:%&kh=\\EOH:@7=\\EOF:%' termcaps/xterm 
+	YPB_CONFIG+=""
+	ypkg_config
+}
+
+pbs_build() {
+	ypkg_make
+}
+
+pbs_install() {
+	ypkg_mkinstall
+	cd "$YPPATH_DEST"
+	ypkg_doln /usr/include/vte-0.0/vte usr/include/vte
+}
+
