@@ -4,18 +4,16 @@
 
 DESCRIPTION="A library to encapsulate CD-ROM reading and control"
 HOMEPAGE="http://www.gnu.org/software/libcdio/"
-LICENSE="GPL-2"
-PACKAGER="<ylmfos@115.com>"
+LICENSE="GPL"
+PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
  
-SRC_URI="http://ftp.gnu.org/gnu/"$N"/"$N-$V$R".tar.gz"
+SRC_URI="http://ftp.gnu.org/gnu/"$N"/"$N-$V".tar.gz"
 
 RDEPEND="gcc glibc libcddb ncurses"
-BDEPEND="   "
+BDEPEND=""
 RECOMMENDED=""
 
 INSTALL="$N.install"
-
-NOTES=""
 
 pbs_unpack() {
         ypkg_unpack

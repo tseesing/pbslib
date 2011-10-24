@@ -4,16 +4,14 @@
 
 DESCRIPTION="eCryptfs userspace utilities"
 HOMEPAGE="http://launchpad.net/ecryptfs"
-LICENSE="GPL-2"
-PACKAGER="<ylmfos@115.com>"
+LICENSE="GPL"
+PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 
-SRC_URI="http://launchpad.net/ecryptfs/trunk/83/+download/"${N}_$V$R".orig.tar.gz"
+SRC_URI="http://launchpad.net/ecryptfs/trunk/83/+download/"${N}_$V".orig.tar.gz"
 
-RDEPEND="glibc keyutils nspr nss openssl pam sqlite zlib"
-BDEPEND="       "
+RDEPEND="glibc keyutils nspr nss openssl pam zlib"
+BDEPEND=""
 RECOMMENDED=""
-
-NOTES=""
 
 pbs_unpack() {
         ypkg_unpack
@@ -31,3 +29,4 @@ pbs_install() {
 	ypkg_mkinstall
 	ypkg_dodoc AUTHORS ChangeLog COPYING INSTALL NEWS README
 }
+

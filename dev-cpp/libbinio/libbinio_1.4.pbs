@@ -4,16 +4,14 @@
 
 DESCRIPTION="Binary I/O stream class library"
 HOMEPAGE="http://libbinio.sourceforge.net/"
-LICENSE="GPL-2"
-PACKAGER="<ylmfos@115.com>"
+LICENSE="GPL"
+PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
  
-SRC_URI="http://downloads.sourceforge.net/project/"$N"/"$N"/"$V$R"/"$N-$V$R".tar.bz2"
+SRC_URI="http://downloads.sourceforge.net/project/"$N"/"$N"/"$V"/"$N-$V".tar.bz2"
 
 RDEPEND="gcc glibc"
-BDEPEND=" "
+BDEPEND=""
 RECOMMENDED=""
-
-NOTES=""
 
 INSTALL="$N.install"
 

@@ -7,9 +7,9 @@ HOMEPAGE="http://www.gtk.org/"
 LICENSE="GPL"
 PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 
-SRC_URI="http://ftp.gnome.org/pub/gnome/sources/gtk+/2.24/"$N-$V$R".tar.xz"
+SRC_URI="http://ftp.gnome.org/pub/gnome/sources/"$N"/2.24/"$N-$V".tar.xz"
 
-RDEPEND="atk cairo cups e2fsprogs expat fontconfig freetype gail gcc glib2 gdk-pixbuf glibc gnutls keyutils krb5 libgcrypt libgpg-error libjpeg-turbo libpng libtasn1 libtiff libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libXrandr libXrender pango pixman zlib"
+RDEPEND="atk avahi cairo cups dbus e2fsprogs expat fontconfig freetype gail gcc gdk-pixbuf glib2 glibc gnutls keyutils krb5 libgcrypt libgpg-error libpng libtasn1 libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libXrandr libXrender pango pixman zlib"
 BDEPEND="gtk-doc"
 RECOMMENDED=""
 
@@ -47,9 +47,11 @@ pbs_build() {
 
 pbs_install() {
 	ypkg_mkinstall RUN_QUERY_IMMODULES_TEST=false RUN_QUERY_LOADER_TEST=false
+
 	# Install wrappers for the binaries:
 	ypkg_docp "$FILES_PATH"/files/{update-gdk-pixbuf-loaders,update-gtk-immodules}  "$YPPATH_DEST"/usr/bin/
 	chmod 0755 "$YPPATH_DEST"/usr/bin/update-*
+
 	# I'm almost inclined to think this stuff is obsolete but I don't know for sure.
 	# I do know that leaving it in doesn't hurt (aside from a few wasted bytes, but
 	# probably less than the comments here waste ;-)
@@ -62,5 +64,4 @@ pbs_install() {
 	ypkg_doln /usr/include/gtk-2.0/gdk             usr/include/gdk
 	ypkg_doln /usr/lib/gtk-2.0/include/gdkconfig.h usr/include/gdkconfig.h
 }
-
 

@@ -4,7 +4,7 @@
 
 DESCRIPTION="http://www.openssh.org/"
 HOMEPAGE="Port of OpenBSD's free SSH release"
-LICENSE="GPL-2"
+LICENSE="custom:BSD"
 PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 
 SRC_URI="http://ftp.openbsd.org/pub/OpenBSD/OpenSSH/portable/"$N-$V"p1.tar.gz"
@@ -23,6 +23,7 @@ pbs_config() {
 		      --datadir=/usr/share/sshd  
 		      --libexecdir=/usr/lib/openssh  
 		      --with-md5-passwords  
+		      --with-pam
 		      --with-privsep-path=/var/lib/sshd "
 	ypkg_config
 }
@@ -33,9 +34,11 @@ pbs_build() {
 
 pbs_install() {
 	ypkg_mkinstall
-	
+	ypkg_dodoc LICENCE 
+
 	cd "$YPPATH_DEST"
 	mkdir -p etc/ssh/
 	ypkg_docp "$FILES_PATH"/files/systemd/*  lib/systemd/system/
+	ypkg_docp_rename "$FILES_PATH"/files/sshd.pam   etc/pam.d/sshd
 }
 

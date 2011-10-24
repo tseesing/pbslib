@@ -30,4 +30,3 @@ pbs_install() {
 	ypkg_docp lib/libgsm.so*  "$YPPATH_DEST"/usr/lib
 }
 
-

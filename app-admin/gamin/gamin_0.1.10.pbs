@@ -4,13 +4,13 @@
 
 DESCRIPTION="Meta package providing the File Alteration Monitor API & Server"
 HOMEPAGE="http://www.gnome.org/~veillard/gamin/"
-LICENSE=""
-PACKAGER="<ylmfos@115.com>"
+LICENSE="GPL"
+PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 
-SRC_URI="http://download.gnome.org/sources/"$N"/0.1/"$N-$V$R".tar.bz2"
+SRC_URI="http://download.gnome.org/sources/"$N"/0.1/"$N-$V".tar.bz2"
 
-RDEPEND="glib2 gdk-pixbuf glibc"
-BDEPEND=" "
+RDEPEND="glib2 glibc"
+BDEPEND=""
 
 pbs_unpack() {
         ypkg_unpack
@@ -28,3 +28,4 @@ pbs_build() {
 pbs_install() {
 	ypkg_mkinstall
 }
+

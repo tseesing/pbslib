@@ -6,6 +6,16 @@ post_install() {
 
 post_remove() {
 	post_install
+
+	gdmconf="/etc/gdm/custom.conf"
+	if [ -f $gdmconf ]; then
+		if ! grep -q User $gdmconf; then
+			cp /etc/gdm/custom.conf.ori $gdmconf
+		fi
+	else
+		cp /etc/gdm/custom.conf.ori $gdmconf
+	fi
+	return 0 
 }
 
 post_upgrade() {

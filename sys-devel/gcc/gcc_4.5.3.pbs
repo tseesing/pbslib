@@ -7,7 +7,7 @@ HOMEPAGE="http://gcc.gnu.org/"
 LICENSE="GPL/LGPL/FDL/custom"
 PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 
-SRC_URI="http://ftp.gnu.org/gnu/"$N"/"$N-$V$R"/"$N-$V$R".tar.bz2"
+SRC_URI="http://ftp.gnu.org/gnu/"$N"/"$N-$V"/"$N-$V".tar.bz2"
 
 RDEPEND="glibc gmp mpfr libelf"
 BDEPEND=""
@@ -49,5 +49,4 @@ pbs_install() {
 	ypkg_doln /usr/bin/gcc usr/bin/cc
 	ypkg_doln /usr/bin/cpp lib/cpp
 }
-
 

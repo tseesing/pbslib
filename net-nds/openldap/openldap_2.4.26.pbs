@@ -4,17 +4,15 @@
 
 DESCRIPTION="an open source implementation of the Lightweight Directory Access Protocol."
 HOMEPAGE="http://www.OpenLDAP.org/"
-LICENSE="GPL-2"
-PACKAGER="<ylmfos@115.com>"
+LICENSE="custom"
+PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 
-SRC_URI="ftp://ftp.openldap.org/pub/OpenLDAP/openldap-release/openldap-"$V$R".tgz"
+SRC_URI="ftp://ftp.openldap.org/pub/OpenLDAP/"$N"-release/"$N-$V".tgz"
 
 RDEPEND="berkeley-db cyrus-sasl gcc glibc icu openssl util-linux-ng zlib"
 BDEPEND=""
 RECOMMENDED=""
 CONFLICT="openldap-client"
-
-NOTES=""
 
 pbs_unpack() {
         ypkg_unpack

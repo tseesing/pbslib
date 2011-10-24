@@ -1,9 +1,12 @@
 . /usr/lib/ybs/funcs
 
+files="libbinio.info-2.gz libbinio.info-1.gz libbinio.info.gz"
+
 post_install() {
-	ypkg_install_info libbinio.info-2.gz libbinio.info-1.gz libbinio.info.gz
+	ypkg_install_info $files
 }       
 
 pre_remove() {
-	ypkg_remove_info libbinio.info-2.gz libbinio.info-1.gz libbinio.info.gz
+	ypkg_remove_info $files
 }
+

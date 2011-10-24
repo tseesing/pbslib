@@ -1,9 +1,12 @@
 . /usr/lib/ybs/funcs
 
+files="gnupg.info-2.gz gnupg.info-1.gz gnupg.info.gz"
+
 post_install() {
-	ypkg_install_info gnupg.info-2.gz gnupg.info-1.gz gnupg.info.gz
+	ypkg_install_info $files
 }       
 
 pre_remove() {
-	ypkg_remove_info gnupg.info-2.gz gnupg.info-1.gz gnupg.info.gz
+	ypkg_remove_info $files
 }
+

@@ -9,7 +9,7 @@ PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 
 SRC_URI="ftp://ftp.mozilla.org/pub/mozilla.org/"$N"/releases/"$V$R"/source/"$N-$V".source.tar.bz2"
 
-RDEPEND="alsa-lib atk avahi cairo dbus dbus-glib expat fontconfig freetype gcc gconf gconf-dbus gdk-pixbuf glib2 glibc gnome-vfs gtk+ libICE libIDL libnotify libpng libSM libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libxml2 libXrandr libXrender libXt nspr nss openssl orbit pango pixman sqlite startup-notification util-linux-ng xulrunner zlib"
+RDEPEND="alsa-lib atk avahi cairo dbus dbus-glib expat fontconfig freetype gcc gconf  gdk-pixbuf glib2 glibc gnome-vfs gtk+ libICE libIDL libnotify libpng libSM libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libxml2 libXrandr libXrender libXt nspr nss openssl orbit pango pixman sqlite startup-notification util-linux-ng xulrunner zlib"
 BDEPEND="mercurial"
 RECOMMENDED="ylmfox"
 

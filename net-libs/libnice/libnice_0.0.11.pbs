@@ -4,16 +4,14 @@
 
 DESCRIPTION="An implementation of the Interactice Connectivity Establishment standard (ICE)"
 HOMEPAGE="http://nice.freedesktop.org/wiki/"
-LICENSE="GPL-2"
-PACKAGER="<ylmfos@115.com>"
+LICENSE="GPL"
+PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 
-SRC_URI="http://nice.freedesktop.org/releases/"$N-$V$R".tar.gz"
+SRC_URI="http://nice.freedesktop.org/releases/"$N-$V".tar.gz"
 
 RDEPEND="glib2 gdk-pixbuf glibc gstreamer libxml2 zlib"
-BDEPEND="    "
+BDEPEND=""
 RECOMMENDED=""
-
-NOTES=""
 
 pbs_unpack() {
         ypkg_unpack
@@ -30,3 +28,4 @@ pbs_build() {
 pbs_install() {
 	ypkg_mkinstall
 }
+

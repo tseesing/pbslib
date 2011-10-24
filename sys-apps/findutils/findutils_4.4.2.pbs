@@ -7,7 +7,7 @@ HOMEPAGE="http://www.gnu.org/software/findutils/"
 LICENSE="GPLv3"
 PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 
-SRC_URI="http://ftp.gnu.org/pub/gnu/"$N"/"$N-$V$R".tar.gz"
+SRC_URI="http://ftp.gnu.org/pub/gnu/"$N"/"$N-$V".tar.gz"
 
 RDEPEND="glibc"
 BDEPEND=""

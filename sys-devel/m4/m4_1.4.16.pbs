@@ -4,10 +4,12 @@
 
 DESCRIPTION="GNU macro processor"
 HOMEPAGE="http://www.gnu.org/software/m4/m4.html"
- 
-SRC_URI="http://ftp.gnu.org/gnu/"$N"/"$N-$V$R".tar.bz2"
+LICENSE="GPL"
+PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 
-RDEPEND=""
+SRC_URI="http://ftp.gnu.org/gnu/"$N"/"$N-$V".tar.bz2"
+
+RDEPEND="glibc"
 BDEPEND=""
 
 INSTALL="$N.install"

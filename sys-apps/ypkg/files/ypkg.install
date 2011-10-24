@@ -1,4 +1,3 @@
-. /usr/lib/ybs/funcs
 
 post_install() {
 	if [ ! -f /etc/yget.conf  ];then

@@ -4,6 +4,8 @@
 
 DESCRIPTION="The GLib library of C routines"
 HOMEPAGE="http://www.gtk.org/"
+LICENSE="GPL"
+PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 
 SRC_URI="http://ftp.gnome.org/pub/gnome/sources/glib/2.28/glib-"$V$R".tar.bz2"
 
@@ -27,8 +29,9 @@ pbs_build() {
 
 pbs_install() {
 	ypkg_mkinstall
-	install -d -m755 "$YPPATH_DEST"/etc/profile.d
-	cat > "$YPPATH_DEST"/etc/profile.d/glib2-locale.sh << "EOF"
+	cd "$YPPATH_DEST"/
+	install -d -m755 etc/profile.d
+	cat > etc/profile.d/glib2-locale.sh << "EOF"
 export G_FILENAME_ENCODING=@locale
 EOF
 }

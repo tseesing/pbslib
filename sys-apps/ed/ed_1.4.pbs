@@ -4,8 +4,10 @@
 
 DESCRIPTION="a line-oriented text editor"
 HOMEPAGE="http://www.gnu.org/software/ed/"
- 
-SRC_URI="http://ftp.gnu.org/gnu/"$N"/"$N-$V$R".tar.gz"
+LICENSE="GPL"
+PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
+
+SRC_URI="http://ftp.gnu.org/gnu/"$N"/"$N-$V".tar.gz"
 
 RDEPEND="glibc"
 BDEPEND=""

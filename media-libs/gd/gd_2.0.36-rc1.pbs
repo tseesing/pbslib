@@ -4,10 +4,12 @@
 
 DESCRIPTION="A graphics library for fast image creation"
 HOMEPAGE="http://libgd.org/"
- 
+LICENSE="GPL"
+PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
+
 SRC_URI="http://www.libgd.org/releases/"$N-$V"RC1.tar.bz2"
 
-RDEPEND="fontconfig libjpeg-turbo libpng zlib freetype libXpm libXt"
+RDEPEND="expat fontconfig freetype glibc libjpeg-turbo libpng libX11 libXau libxcb libXdmcp libXpm zlib"
 BDEPEND=""
 
 pbs_unpack() {
@@ -25,3 +27,4 @@ pbs_build() {
 pbs_install() {
 	ypkg_mkinstall
 }
+

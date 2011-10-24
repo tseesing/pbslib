@@ -4,8 +4,7 @@
 
 DESCRIPTION="Sun's java runtime environment"
 HOMEPAGE="http://java.sun.com"
-REPO=""
-LICENSE=""
+LICENSE="custom"
 PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 
 SRC_URI="http://download.java.net/dlj/binaries/jdk-6u25-dlj-linux-i586.bin"
@@ -16,8 +15,6 @@ RECOMMENDED=""
 CONFLICT="sun-jre"
 
 INSTALL="$N.install"
-
-NOTES=""
 
 pbs_unpack() {
 	mkdir -p "$N-$V$R"
@@ -46,3 +43,4 @@ pbs_install() {
 	ypkg_dodesktop "opt/java/jre/lib/desktop/applications/sun-java.desktop" \
 	               "opt/java/jre/lib/images/icons/sun-java.png"
 }
+

@@ -1,9 +1,12 @@
 . /usr/lib/ybs/funcs
 
+files="libcdio.info.gz"
+
 post_install() {
-        ypkg_install_info libcdio.info.gz 
+        ypkg_install_info $files
 }       
 
 pre_remove() {
-	ypkg_remove_info libcdio.info.gz
+	ypkg_remove_info $files
 }
+

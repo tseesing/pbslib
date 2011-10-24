@@ -4,14 +4,13 @@
 
 DESCRIPTION="The GNOME Structured File Library"
 HOMEPAGE="http://ftp.acc.umu.se/pub/gnome/sources/libgsf/"
-REPO=""
-LICENSE=""
+LICENSE="GPL"
 PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 
-SRC_URI=" http://ftp.gnome.org/pub/GNOME/sources/"$N"/1.14/"$N-$V$R".tar.bz2 "
+SRC_URI="http://ftp.gnome.org/pub/GNOME/sources/"$N"/1.14/"$N-$V".tar.bz2 "
 
-RDEPEND="glib2 gdk-pixbuf glibc gtk+ libbonobo libxml2 orbit zlib"
-BDEPEND="intltool       "
+RDEPEND="bzip2 gdk-pixbuf glib2 glibc libbonobo libpng libxml2 orbit zlib"
+BDEPEND="intltool"
 
 pbs_unpack() {
         ypkg_unpack
@@ -29,3 +28,4 @@ pbs_build() {
 pbs_install() {
 	ypkg_mkinstall
 }
+

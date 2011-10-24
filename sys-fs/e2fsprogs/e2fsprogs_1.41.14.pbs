@@ -7,9 +7,9 @@ HOMEPAGE="http://e2fsprogs.sourceforge.net/"
 LICENSE="GPL"
 PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 
-SRC_URI="http://downloads.sourceforge.net/project/"$N"/"$N"/"$V$R"/"$N-$V".tar.gz"
+SRC_URI="http://downloads.sourceforge.net/project/"$N"/"$N"/"$V"/"$N-$V".tar.gz"
 
-RDEPEND="glibc keyutils krb5 util-linux-ng"
+RDEPEND="glibc util-linux-ng"
 BDEPEND="pkgconfig"
 
 pbs_unpack() {

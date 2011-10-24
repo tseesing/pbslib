@@ -4,25 +4,21 @@
 
 DESCRIPTION="free lossless audio encoder and decoder"
 HOMEPAGE="http://flac.sourceforge.net"
-LICENSE="GPL-2"
-PACKAGER="<ylmfos@115.com>"
-SRC_URI="http://downloads.xiph.org/releases/$N/"$N-$V$R".tar.gz"
+LICENSE="GPL"
+PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
+
+SRC_URI="http://downloads.xiph.org/releases/"$N"/"$N-$V".tar.gz"
 
 RDEPEND="gcc glibc libogg"
-BDEPEND="  "
+BDEPEND=""
 RECOMMENDED=""
-
-NOTES=""
 
 pbs_unpack() {
         ypkg_unpack
 }
 
 pbs_config() {
-	
-	YPB_CONFIG+=" --prefix=/usr --sysconfdir=/etc --localstatedir=/var \
-	               --infodir=/usr/share/info --mandir=/usr/share/man \
-	               --disable-static --enable-shared "
+	YPB_CONFIG+=""
 	LIBS=-lm ypkg_config
 }
 
@@ -34,6 +30,6 @@ pbs_build() {
 pbs_install() {
 	ypkg_mkinstall
 	sed -i '/#include "config.h"/d' "$YPPATH_DEST"/usr/include/FLAC/export.h
-	install -m755 -d "$YPPATH_DEST"/usr/share/doc/"$N-$V$R"
-	cp -a README "$YPPATH_DEST"/usr/share/doc/"$N-$V$R" 
+	ypkg_dodoc README
 }
+

@@ -2,14 +2,14 @@
 # YLmf_OS package build script
 #
 
-DESCRIPTION="The libgweather package is a library to access weather information from online services for numerous locations."
+DESCRIPTION="Provides access to weather information from the net"
 HOMEPAGE="http://www.gnome.org/"
-LICENSE="GPL-2"
+LICENSE="GPL"
 PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
  
 SRC_URI="http://ftp.gnome.org/pub/gnome/desktop/2.32/2.32.1/sources/"$N-$V".tar.bz2"
 
-RDEPEND="atk cairo dbus dbus-glib eggdbus expat fontconfig freetype gcc gconf glib2 gdk-pixbuf glibc gnutls gtk+ libgcrypt libgnome-keyring libgpg-error libpng libproxy libsoup libtasn1 libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libxml2 libXrandr libXrender orbit pango pixman sqlite zlib"
+RDEPEND="atk cairo dbus expat fontconfig freetype gcc gconf gdk-pixbuf glib2 glibc gnutls gtk+ libgcrypt libgnome-keyring libgpg-error libpng libproxy libsoup libtasn1 libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libxml2 libXrandr libXrender orbit pango pixman sqlite zlib"
 BDEPEND=""
 RECOMMENDED=""
 
@@ -20,7 +20,7 @@ pbs_unpack() {
 }
 
 pbs_config() {
-	YPB_CONFIG+=" --disable-schemas-install --enable-locations-compression"
+	YPB_CONFIG+="--disable-schemas-install --enable-locations-compression"
 	ypkg_config
 }
 

@@ -4,13 +4,13 @@
 
 DESCRIPTION="Basepack of plugins for gstreamer"
 HOMEPAGE="http://gstreamer.sourceforge.net"
-LICENSE="GPL-2"
+LICENSE="GPL"
 PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 
-SRC_URI="http://ftp.gnome.org/pub/gnome/sources/gst-plugins-base/0.10/"$N-$V".tar.xz"
+SRC_URI="http://ftp.gnome.org/pub/gnome/sources/"$N"/0.10/"$N-$V".tar.xz"
 
-RDEPEND="alsa-lib avahi cairo dbus dbus-glib expat fontconfig freetype gcc gconf glib2 gdk-pixbuf glibc gnome-vfs gstreamer libICE libogg libpng libSM libtheora libvorbis libX11 libXau libxcb libXdmcp libXext libxml2 libXrender libXv openssl orbit pango pixman udev util-linux-ng zlib"
-BDEPEND="liboil-dev"
+RDEPEND="alsa-lib avahi cairo dbus dbus-glib expat fontconfig freetype gcc gconf glib2 glibc gnome-vfs gstreamer libICE libogg libpng libSM libtheora libvorbis libX11 libXau libxcb libXdmcp libXext libxml2 libXrender libXv openssl orbit orc pango pixman udev util-linux-ng zlib"
+BDEPEND=""
 RECOMMENDED=""
 
 pbs_unpack() {

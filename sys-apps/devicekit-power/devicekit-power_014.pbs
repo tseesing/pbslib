@@ -2,15 +2,14 @@
 # YLmf_OS package build script
 #
 
-DESCRIPTION="The devicekit-power provides an interface to enumerate power sources on the system and control system-wide power management."
+DESCRIPTION="Provides an interface to enumerate power sources on the system and control system-wide power management."
 HOMEPAGE="http://www.freedesktop.org/wiki/Software/devicekit"
-LICENSE="GPL-2 LGPL-2"
-PACKAGER="<ylmfos@115.com>"
+LICENSE="GPL LGPL"
+PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 
-SRC_URI="http://cgit.freedesktop.org/DeviceKit/DeviceKit-power/snapshot/DeviceKit-power-"$V$R".tar.bz2"
-
-RDEPEND="dbus dbus-glib eggdbus glib2 gdk-pixbuf glibc libusb libusb-compat polkit udev zlib"
-BDEPEND="  eggdbus       "
+SRC_URI="http://cgit.freedesktop.org/DeviceKit/DeviceKit-power/snapshot/DeviceKit-power-"$V".tar.bz2"
+RDEPEND="dbus dbus-glib eggdbus glib2 glibc libusb libusb-compat polkit udev zlib"
+BDEPEND=""
 RECOMMENDED=""
 
 pbs_unpack() {
@@ -30,3 +29,4 @@ pbs_build() {
 pbs_install() {
 	ypkg_mkinstall
 }
+

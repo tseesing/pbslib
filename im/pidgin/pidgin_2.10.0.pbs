@@ -7,16 +7,11 @@ HOMEPAGE="http://pidgin.im/"
 LICENSE="GPL"
 PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 
-SRC_URI="http://nchc.dl.sourceforge.net/project/pidgin/Pidgin/"$V$R"/"$N-$V$R".tar.bz2"
+SRC_URI="http://nchc.dl.sourceforge.net/project/pidgin/Pidgin/"$V$R"/"$N-$V".tar.bz2"
 
 PROVIDE="libpurple finch"
 
-RDEPEND="atk cairo dbus dbus-glib expat farsight2 fontconfig freetype gcc 
-	 glib2 gdk-pixbuf glibc gnutls gstreamer gtk+ libgcrypt libgpg-error libICE 
-	 libpng libSM libtasn1 libX11 libXau libxcb libXcomposite libXcursor 
-	 libXdamage libXdmcp libXext libXfixes libXi libxml2 libXrandr libXrender 
-	 libXScrnSaver ncurses nspr nss pango pixman startup-notification 
-	 util-linux-ng zlib gtkspell meanwhile"
+RDEPEND="atk cairo dbus dbus-glib enchant expat farsight2 fontconfig freetype gcc gdk-pixbuf glib2 glibc gst-plugins-base gstreamer gtk+ gtkspell libICE libidn libpng libpurple libSM libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libxml2 libXrandr libXrender libXScrnSaver pango pixman util-linux-ng zlib"
 RECOMMENDED="libpurple finch"
 BDEPEND=""
 
@@ -43,32 +38,34 @@ pbs_build() {
 }
 
 pbs_install() {
-	#for linking
+	# For linking
 	make -C libpurple DESTDIR="$YPPATH_DEST" install-libLTLIBRARIES
 	ypkg_mkinstall -C pidgin 
 	ypkg_mkinstall -C doc 
-        #clean up libpurple
+
+        # Clean up libpurple
         make -C libpurple DESTDIR="$YPPATH_DEST" uninstall-libLTLIBRARIES
 	rm -f "$YPPATH_DEST"/usr/share/man/man1/finch.1
 }
 
 libpurple_install() {
 	DESCRIPTION="IM library extracted from Pidgin"
-	RDEPEND="farsight2 dbus-glib gnutls"
+	RDEPEND="avahi dbus dbus-glib expat farsight2 fontconfig freetype gcc glib2 glibc gnutls gst-plugins-base gstreamer libgcrypt libgpg-error libidn libtasn1 libX11 libXau libxcb libXdmcp libXext libXft libxml2 libXrender libXScrnSaver meanwhile nspr nss perl tcl tk zlib"
         for dir in libpurple share/sounds share/ca-certs m4macros po; do
 		ypkg_mkinstall -C "${dir}"
 	done
 }
 
-
 finch_install() {
 	DESCRIPTION="A ncurses-based messaging client"
-	RDEPEND="libpurple python gstreamer"
-	#for linking
+	RDEPEND="dbus dbus-glib farsight2 glib2 glibc gst-plugins-base gstreamer libidn libpurple libX11 libXau libxcb libXdmcp libxml2 ncurses zlib"
+
+	# For linking
 	make -C libpurple DESTDIR="$YPPATH_DEST" install-libLTLIBRARIES
 	ypkg_mkinstall -C finch
 	ypkg_mkinstall -C doc 
-        #clean up libpurple
+
+        # Clean up libpurple
         make -C libpurple DESTDIR="$YPPATH_DEST" uninstall-libLTLIBRARIES
 	rm -f "$YPPATH_DEST"/usr/share/man/man1/pidgin.1
 }

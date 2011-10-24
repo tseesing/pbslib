@@ -4,13 +4,14 @@
 
 DESCRIPTION="GTK+ Documentation Generator"
 HOMEPAGE="http://www.gtk.org/gtk-doc/"
-LICENSE="GPL-2"
-PACKAGER="<ylmfos@115.com>"
+LICENSE="GPL"
+PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
+YARCH="any"
 
 SRC_URI="http://ftp.gnome.org/pub/gnome/mobile/2.32/2.32.1/sources/"$N-$V".tar.bz2"
 
-RDEPEND=""
-BDEPEND=" docbook-xml docbook-xsl libxslt docbook"
+RDEPEND="gnome-doc-utils"
+BDEPEND="docbook-xml docbook-xsl libxslt docbook"
 CONFLICT="gtk-doc-dev"
 
 OPINION="nodev"

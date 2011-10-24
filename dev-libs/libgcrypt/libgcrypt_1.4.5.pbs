@@ -4,8 +4,10 @@
 
 DESCRIPTION="general purpose crypto library based on the code used in GnuPG"
 HOMEPAGE="http://www.gnupg.org/"
- 
-SRC_URI="ftp://ftp.gnupg.org/gcrypt/"$N"/"$N-$V$R".tar.bz2"
+LICENSE="GPL"
+PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
+
+SRC_URI="ftp://ftp.gnupg.org/gcrypt/"$N"/"$N-$V".tar.bz2"
 
 RDEPEND="glibc libgpg-error"
 BDEPEND="pth-dev libcap"

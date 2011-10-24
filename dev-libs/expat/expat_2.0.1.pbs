@@ -7,7 +7,7 @@ HOMEPAGE="http://expat.sourceforge.net/"
 LICENSE="GPL"
 PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 
-SRC_URI="http://downloads.sourceforge.net/"$N"/"$N-$V$R".tar.gz"
+SRC_URI="http://downloads.sourceforge.net/"$N"/"$N-$V".tar.gz"
 
 RDEPEND="glibc"
 BDEPEND=""

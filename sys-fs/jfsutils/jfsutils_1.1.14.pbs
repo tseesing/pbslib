@@ -4,13 +4,13 @@
 
 DESCRIPTION="IBM's Journaling Filesystem (JFS) Utilities"
 HOMEPAGE="http://jfs.sourceforge.net/"
-LICENSE=""
-PACKAGER="<ylmfos@115.com>"
+LICENSE="GPL"
+PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 
-SRC_URI="http://jfs.sourceforge.net/project/pub/"$N-$V$R".tar.gz"
+SRC_URI="http://jfs.sourceforge.net/project/pub/"$N-$V".tar.gz"
 
 RDEPEND="glibc util-linux-ng"
-BDEPEND=" "
+BDEPEND=""
 RECOMMENDED=""
 
 pbs_unpack() {
@@ -29,3 +29,4 @@ pbs_install() {
 	ypkg_mkinstall
 	ypkg_dodoc AUTHORS ChangeLog COPYING INSTALL NEWS README
 }
+

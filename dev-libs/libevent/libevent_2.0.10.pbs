@@ -4,16 +4,14 @@
 
 DESCRIPTION="A library to execute a function when a specific event occurs on a file descriptor"
 HOMEPAGE="http://monkey.org/~provos/libevent/"
-LICENSE="GPL-2"
-PACKAGER="<ylmfos@115.com>"
+LICENSE="GPL"
+PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 
-SRC_URI="http://www.monkey.org/~provos/"$N-$V$R"-stable.tar.gz"
+SRC_URI="http://www.monkey.org/~provos/"$N-$V"-stable.tar.gz"
 
-RDEPEND="glibc openssl"
-BDEPEND=" "
+RDEPEND="glibc openssl zlib"
+BDEPEND=""
 RECOMMENDED=""
-
-NOTES=""
 
 pbs_unpack() {
         ypkg_unpack
@@ -30,3 +28,4 @@ pbs_build() {
 pbs_install() {
 	ypkg_mkinstall
 }
+

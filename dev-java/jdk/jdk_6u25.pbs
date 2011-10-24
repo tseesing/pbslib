@@ -4,8 +4,7 @@
 
 DESCRIPTION="Sun's Java Development Kit"
 HOMEPAGE="http://java.sun.com"
-REPO=""
-LICENSE=""
+LICENSE="custom"
 PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 
 SRC_URI="http://download.oracle.com/auth/otn-pub/java/jdk/6u25-b06/jdk-6u25-linux-i586.bin"
@@ -16,8 +15,6 @@ RECOMMENDED=""
 CONFLICT="sun-jdk"
 
 INSTALL="$N.install"
-
-NOTES=""
 
 pbs_unpack() {
 	mkdir -p "$N-$V$R"
@@ -30,8 +27,8 @@ pbs_unpack() {
 }
 
 pbs_install() {
-	#make DESTDIR="$YPPATH_DEST" install
-	#copy icon
+	# Make DESTDIR="$YPPATH_DEST" install
+	# Copy icon
 	ypkg_docp_rename linux-jdk/jre/lib/desktop/icons/hicolor/48x48/apps/sun-java.png "$YPPATH_DEST"/usr/share/pixmaps/java.png
 	rm -rf linux-jdk/jre
 	ypkg_docp linux-jdk/* "$YPPATH_DEST"/opt/java/
@@ -40,6 +37,7 @@ pbs_install() {
 	
 	cd "$YPPATH_DEST"
 	ypkg_docp opt/java/{COPYRIGHT,LICENSE,THIRDPARTYLICENSEREADME.txt} usr/share/licenses/jdk/
-	#desktop entries
+	# Desktop entries
 	ypkg_dodesktop java-control-panel.desktop java-monitoring-and-management-console.desktop java-policy-settings.desktop java-visualvm.desktop java-web-start.desktop
 }
+

@@ -12,9 +12,9 @@ INSTALL="$N.install"
 
 SRC_URI="git://git.ylmf.com/"$N".git"
 
-RDEPEND="gawk cpio xz-utils sed coreutils git findutils procps psmisc bash bc glibc upx"
+RDEPEND="gawk cpio xz-utils sed coreutils git findutils procps psmisc bash bc glibc"
 BDEPEND=""
-RECOMMENDED="ypkg2"
+RECOMMENDED="ypkg2 upx"
 
 pbs_unpack() {
 	ypkg_unpack

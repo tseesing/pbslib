@@ -4,12 +4,12 @@
 
 DESCRIPTION="a library for font customization and configuration"
 HOMEPAGE="http://fontconfig.org/wiki/"
-REPO=""
-LICENSE=""
+LICENSE="GPL"
 PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
-SRC_URI="http://fontconfig.org/release/$N-$V$R.tar.gz"
 
-RDEPEND="expat freetype glibc zlib libxml2"
+SRC_URI="http://fontconfig.org/release/"$N-$V".tar.gz"
+
+RDEPEND="expat freetype glibc zlib"
 BDEPEN=""
 
 INSTALL="$N.install"
@@ -19,17 +19,12 @@ pbs_unpack() {
 }
 
 pbs_config() {
-	#disables the automatic search for X Window System fonts 
+	# Disables the automatic search for X Window System fonts 
 	# which, if found, may confuse some applications
 	# avoids building the documentation (the release tarball \
 	# includes pre-generated documentation)
-	#patching
-	ypkg_patch  fontconfig-2.8.0-urw-aliases.patch \
-	            fontconfig-2.8.0-ubuntu.patch 
-	YPB_CONFIG+=" -sysconfdir=/etc \
-	 	      --localstatedir=/var \
-		      --without-add-fonts \
-		      --docdir=/usr/share/doc/$N-$V$R"
+	ypkg_patch fontconfig-2.8.0-urw-aliases.patch fontconfig-2.8.0-ubuntu.patch 
+	YPB_CONFIG+="--without-add-fonts"
 	ypkg_config
 }
 

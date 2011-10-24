@@ -5,10 +5,12 @@
 DESCRIPTION="tools for generating an initramfs"
 HOMEPAGE="www.ylmf.net"
 YARCH="any"
+LICENSE="GPL"
+PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 
 SRC_URI="git://git.ylmf.com/"$N".git"
 
-RDEPEND="busybox-initramfs cpio module-init-tools udev findutils util-linux-ng "
+RDEPEND="busybox-initramfs cpio module-init-tools udev findutils util-linux-ng"
 BDEPEND=""
 RECOMMENDED="fuse ntfs-3g plymouth kbd dejavu-fonts-ttf"
 
@@ -20,7 +22,8 @@ pbs_unpack() {
 
 pbs_install() {
 	ypkg_docp etc usr "$YPPATH_DEST"
-	#creat some empty dirs
+	
+	# Creat some empty dirs
 	cd "$YPPATH_DEST"
 	mkdir -p etc/initramfs-tools/conf.d \
 	         etc/initramfs-tools/hooks \

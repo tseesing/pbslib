@@ -3,17 +3,15 @@
 #
 DESCRIPTION="Ghostscript Standard Fonts"
 HOMEPAGE="http://www.cups.org/"
-REPO=""
-LICENSE=""
+LICENSE="GPL"
+YARCH="any"
 PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 
-SRC_URI="http://mirror.cs.wisc.edu/pub/mirrors/ghost/fonts/ghostscript-fonts-std-"$V$R".tar.gz"
+SRC_URI="http://mirror.cs.wisc.edu/pub/mirrors/ghost/fonts/ghostscript-fonts-std-"$V".tar.gz"
 
 RDEPEND=""
-BDEPEND=" "
+BDEPEND=""
 RECOMMENDED=""
-
-NOTES=""
 
 pbs_unpack() {
         ypkg_unpack
@@ -22,3 +20,4 @@ pbs_unpack() {
 pbs_install() {
 	ypkg_docp * "$YPPATH_DEST"/usr/share/fonts/ghostscript
 }
+

@@ -4,7 +4,9 @@
 
 DESCRIPTION="Text formatter used for man pages"
 HOMEPAGE="http://www.gnu.org/software/groff/groff.html"
- 
+LICENSE="GPL"
+PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
+
 SRC_URI="ftp://ftp.gnu.org/gnu/"$N"/"$N-$V".tar.gz"
 
 RDEPEND="gcc glibc libICE libSM libX11 libXau libXaw libxcb libXdmcp libXext libXmu libXpm libXt util-linux-ng"
@@ -26,8 +28,8 @@ pbs_build() {
 
 pbs_install() {
 	ypkg_mkinstall 
-	#Some documentation programs, such as xman, will not work 
-	#properly without the following symlinks: 
+	# Some documentation programs, such as xman, will not work 
+	# properly without the following symlinks: 
 	cd "$YPPATH_DEST"
 	ypkg_doln /usr/bin/soelim usr/bin/zsoelim
 	ypkg_doln /usr/bin/eqn    usr/bin/geqn

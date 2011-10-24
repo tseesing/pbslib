@@ -4,16 +4,14 @@
 
 DESCRIPTION="A ELF object file access library"
 HOMEPAGE="http://www.mr511.de/software/"
-LICENSE="GPL-2"
-PACKAGER="<ylmfos@115.com>"
+LICENSE="GPL"
+PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
  
-SRC_URI="http://www.mr511.de/software/"$N-$V$R".tar.gz"
+SRC_URI="http://www.mr511.de/software/"$N-$V".tar.gz"
 
 RDEPEND="glibc"
 BDEPEND=""
 RECOMMENDED=""
-
-NOTES=""
 
 pbs_unpack() {
         ypkg_unpack
@@ -33,3 +31,4 @@ pbs_install() {
 	     install  install-compat 
 	ypkg_dodoc ChangeLog VERSION README
 }
+

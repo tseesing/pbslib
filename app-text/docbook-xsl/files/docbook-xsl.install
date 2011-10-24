@@ -1,7 +1,7 @@
 . /usr/lib/ybs/funcs
 
 post_install() {
-	#Create (or append) and populate the XML catalog file using the following commands as the root user:
+	# Create (or append) and populate the XML catalog file using the following commands as the root user:
         mkdir -p /etc/xml
         if [ ! -f /etc/xml/catalog ]; then
  	       xmlcatalog --noout --create /etc/xml/catalog

@@ -4,10 +4,10 @@
 
 DESCRIPTION="Linux Key Management Utilities"
 HOMEPAGE="http://www.kernel.org/"
-LICENSE="GPL-2"
-PACKAGER="<ylmfos@115.com>"
+LICENSE="GPL"
+PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 
-SRC_URI="http://people.redhat.com/dhowells/"$N"/"$N-$V$R".tar.bz2"
+SRC_URI="http://people.redhat.com/dhowells/"$N"/"$N-$V".tar.bz2"
 
 RDEPEND="glibc"
 BDEPEND=""
@@ -25,3 +25,4 @@ pbs_install() {
 	ypkg_mkinstall
 	ypkg_dodoc README
 }
+

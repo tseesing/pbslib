@@ -4,8 +4,10 @@
 
 DESCRIPTION="X.Org Bigelow & Holmes Type 1 fonts"
 HOMEPAGE="http://www.x.org/wiki/"
+LICENSE="GPL"
+PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 
-SRC_URI="http://www.x.org/releases/X11R7.6/src/font/"$N-$V$R".tar.bz2"
+SRC_URI="http://www.x.org/releases/X11R7.6/src/font/"$N-$V".tar.bz2"
 
 RDEPEND=""
 BDEPEND="mkfontdir mkfontscale"
@@ -26,3 +28,4 @@ pbs_build() {
 pbs_install() {
 	ypkg_mkinstall
 }
+

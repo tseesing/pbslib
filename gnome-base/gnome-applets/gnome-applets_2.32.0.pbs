@@ -9,7 +9,7 @@ PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 
 SRC_URI="http://ftp.gnome.org/pub/gnome/desktop/2.32/2.32.1/sources/"$N-$V".tar.bz2"
 
-RDEPEND="alsa-lib atk audiofile avahi cairo dbus dbus-glib eggdbus esound expat fontconfig freetype gail gcc gconf glib2 gdk-pixbuf glibc gnome-desktop gnome-panel gnome-vfs gnutls gst-plugins-base gstreamer gtk+ gucharmap hal libart_lgpl libbonobo libbonoboui libgcrypt libgnome libgnomecanvas libgnome-keyring libgpg-error libgtop libgweather libICE libnotify libpng libproxy libSM libsoup libtasn1 libwnck libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libxml2 libXrandr libXrender libXres openssl orbit pango pixman popt sqlite startup-notification util-linux-ng zlib"
+RDEPEND="atk avahi cairo dbus dbus-glib expat fontconfig freetype gail gcc gconf gdk-pixbuf glib2 glibc gnome-desktop gnome-panel gnome-vfs gnutls gst-plugins-base gstreamer gtk+ gucharmap hal libart_lgpl libbonobo libbonoboui libcanberra libgcrypt libgnome libgnomecanvas libgnome-keyring libgpg-error libgtop libgweather libICE libnotify libogg libpng libproxy libSM libsmbios libsoup libtasn1 libtool libvorbis libwnck libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libxml2 libXrandr libXrender libXres openssl orbit pango pixman popt sqlite startup-notification tdb util-linux-ng zlib"
 BDEPEND="pygtk-dev gnome-settings-daemon-dev"
 RECOMMENDED="gnome-python-desktop gnome-icon-theme"
 
@@ -23,7 +23,7 @@ pbs_config() {
 	ypkg_docp "$FILES_PATH"/files/cpufreq-*      cpufreq/pixmaps
 	YPB_CONFIG+="--disable-schemas-install
 		     --disable-polkit
-		     --enable-mixer-applet "
+		     --enable-mixer-applet"
 	ypkg_config
 }
 

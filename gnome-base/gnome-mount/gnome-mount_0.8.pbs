@@ -5,13 +5,13 @@
 DESCRIPTION="The gnome-mount package contains programs for mounting, unmounting and ejecting storage devices."
 HOMEPAGE="http://www.gnome.org"
 REPO="stable"
-LICENSE="GPL-2"
-PACKAGER="<ylmfos@115.com>"
+LICENSE="GPL"
+PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 
-SRC_URI="http://hal.freedesktop.org/releases/"$N-$V$R".tar.gz"
+SRC_URI="http://hal.freedesktop.org/releases/"$N-$V".tar.gz"
 
-RDEPEND="atk cairo dbus dbus-glib eggdbus expat fontconfig freetype gcc gconf glib2 gdk-pixbuf glibc gtk+ hal libgcrypt libglade libgnome-keyring libgpg-error libnotify libpng libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libxml2 libXrandr libXrender nautilus orbit pango pixman zlib"
-BDEPEND="libgnomeui-dev "
+RDEPEND="atk cairo dbus dbus-glib expat fontconfig freetype gcc gconf gdk-pixbuf glib2 glibc gtk+ hal libgcrypt libglade libgnome-keyring libgpg-error libnotify libpng libsmbios libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libxml2 libXrandr libXrender nautilus orbit pango pixman zlib"
+BDEPEND="libgnomeui-dev"
 RECOMMENDED=""
 
 INSTALL="$N.install"
@@ -32,3 +32,4 @@ pbs_build() {
 pbs_install() {
 	ypkg_mkinstall
 }
+

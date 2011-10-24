@@ -4,32 +4,45 @@
 
 DESCRIPTION="A library for integration of su into applications"
 HOMEPAGE="http://www.nongnu.org/gksu/"
-LICENSE="GPL-2"
-PACKAGER="<ylmfos@115.com>"
+LICENSE="GPL"
+PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 
-SRC_URI="ftp://lug.mtu.edu/gentoo/distfiles/"$N-$V$R".tar.gz"
+SRC_URI="http://people.debian.org/~kov/gksu/"$N-$V".tar.gz"
 
-RDEPEND="gtk+ atk glib2 gdk-pixbuf pango cairo freetype fontconfig glibc gconf libXi libXrandr libXcursor libXcomposite libXext
-	 libXdamage libXfixes pixman libxml2 directfb libpng libxcb libXrender libX11 libXau libXdmcp zlib expat orbit dbus-glib dbus
-	 startup-notification libgnome-keyring libgtop libSM libICE eggdbus libgcrypt libgpg-error"
-BDEPEND=" "
+RDEPEND="atk cairo dbus expat fontconfig freetype gcc gconf gdk-pixbuf glib2 glibc gtk+ libgcrypt libgnome-keyring libgpg-error libgtop libICE libpng libSM libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libXrandr libXrender orbit pango pixman startup-notification util-linux-ng zlib"
+BDEPEND=""
 RECOMMENDED=""
 
-NOTES=""
+INSTALL="$N.install"
 
 pbs_unpack() {
         ypkg_unpack
 }
 
 pbs_config() {
+	ypkg_patch libgksu-2.0.12-revert-forkpty.patch
+
 	ypkg_docp "$FILES_PATH"/files/gksu.png  .
 	ypkg_config
 }
 
 pbs_build() {
+	ypkg_patch ylmfos_makefile.patch
 	ypkg_make
+
+	# FIXME, creat mo
+	cd po
+	for i in *.po; do
+		msgfmt $i -o ${i%*.po}.mo
+	done
+	cd ..
 }
 
 pbs_install() {
-	ypkg_mkinstall
+	ypkg_mkinstall GCONF_DISABLE_MAKEFILE_SCHEMA_INSTALL=1
+	cd po
+	for i in *.mo; do
+		ypkg_docp_rename $i "$YPPATH_DEST"/usr/share/locale/${i%*.mo}/LC_MESSAGES/libgksu.mo
+	done
 }
+

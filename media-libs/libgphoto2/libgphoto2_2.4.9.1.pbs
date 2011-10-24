@@ -4,14 +4,13 @@
 
 DESCRIPTION="Library that implements support for numerous digital cameras"
 HOMEPAGE="http://www.gphoto.org/"
-REPO=""
-LICENSE=""
+LICENSE="GPL"
 PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 
-SRC_URI="http://downloads.sourceforge.net/project/gphoto/libgphoto/"$V"/"$N-$V$R".tar.bz2"
+SRC_URI="http://downloads.sourceforge.net/project/gphoto/libgphoto/"$V"/"$N-$V".tar.bz2"
 
-RDEPEND="dbus expat fontconfig freetype gd glibc hal libexif libjpeg-turbo libpng libtool libusb libusb-compat libX11 libXau libxcb libXdmcp libXpm zlib"
-BDEPEND="libexif-gtk-dev                   "
+RDEPEND="dbus expat fontconfig freetype gcc gd glibc hal libexif libjpeg-turbo libpng libsmbios libtool libusb libusb-compat libX11 libXau libxcb libXdmcp libXpm zlib"
+BDEPEND="libexif-gtk-dev"
 
 pbs_unpack(){
         ypkg_unpack
@@ -28,3 +27,4 @@ pbs_build() {
 pbs_install() {
 	ypkg_mkinstall
 }
+

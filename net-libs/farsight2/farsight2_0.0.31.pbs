@@ -1,0 +1,34 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="Audio/Video conference software for Instant Messengers"
+HOMEPAGE="http://farsight.freedesktop.org/"
+LICENSE="LGPL"
+PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
+
+SRC_URI="http://farsight.freedesktop.org/releases/"$N"/"$N-$V".tar.gz"
+
+RDEPEND="glib2 glibc gst-plugins-base gstreamer libnice libxml2 zlib"
+BDEPEND=""
+RECOMMENDED=""
+
+pbs_unpack() {
+        ypkg_unpack
+}
+
+pbs_config() {
+	YPB_CONFIG+=" --disable-static 
+		      --disable-valgrind 
+		      --disable-debug "
+	ypkg_config
+}
+
+pbs_build() {
+	ypkg_make
+}
+
+pbs_install() {
+	ypkg_mkinstall
+}
+

@@ -4,11 +4,11 @@
 
 DESCRIPTION="firmware for Hauppauge PVR-x50 and Conexant 2341x based cards"
 HOMEPAGE="http://www.ivtvdriver.org/index.php/Firmware"
-REPO=""
 LICENSE="Hauppauge-Firmware"
 PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
+YARCH="any"
 
-SRC_URI="http://dl.ivtvdriver.org/ivtv/firmware/ivtv-firmware-20080701.tar.gz"
+SRC_URI="http://dl.ivtvdriver.org/ivtv/firmware/ivtv-firmware-"$V".tar.gz"
 
 RDEPEND=""
 BDEPEND=""

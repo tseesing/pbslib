@@ -4,7 +4,7 @@
 
 DESCRIPTION="Device-mapper RAID tool and library"
 HOMEPAGE="http://people.redhat.com/~heinzm/sw/dmraid/"
-LICENSE="GPLv2"
+LICENSE="GPL"
 PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 
 SRC_URI="http://people.redhat.com/~heinzm/sw/"$N"/src/"$N-$V".rc16.tar.bz2"
@@ -32,13 +32,14 @@ pbs_build() {
 pbs_install() {
 	ypkg_mkinstall
 	ypkg_dodoc README 
-	ypkg_doln  /usr/lib/libdmraid.so            "$YPPATH_DEST"/usr/lib/libdmraid.so."$V$R"
-	ypkg_doln  /usr/lib/libdmraid-events-isw.so "$YPPATH_DEST"/usr/lib/libdmraid-events-isw.so.1.0.0.rc16
-	#for initramfs
+
+	# For initramfs
 	cd "$YPPATH_DEST"
 	ypkg_docp_rename "$FILES_PATH"/files/hook_dmraid       usr/share/initramfs-tools/hooks/dmraid
 	ypkg_docp_rename "$FILES_PATH"/files/local-top_dmraid  usr/share/initramfs-tools/scripts/local-top/dmraid
 	ypkg_docp  "$FILES_PATH"/files/85-dmraid.rules         lib/udev/rules.d
 	ypkg_docp  "$FILES_PATH"/files/dmraid-activate         sbin
+	ypkg_doln /usr/lib/libdmraid-events-isw.so   usr/lib/libdmraid-events-isw.so."$V".rc16
+	ypkg_doln  /usr/lib/libdmraid.so             usr/lib/libdmraid.so."$V".rc16
 }
 

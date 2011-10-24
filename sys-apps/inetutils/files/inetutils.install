@@ -1,10 +1,13 @@
 . /usr/lib/ybs/funcs
 
+files="inetutils.info.gz"
+
 post_install() {
-        ypkg_install_info inetutils.info.gz  
+        ypkg_install_info $files
 }       
 
 pre_remove() {
-        ypkg_remove_info inetutils.info.gz
+        ypkg_remove_info $files
 }
+
 		

@@ -3,12 +3,14 @@
 post_install() {
 	ypkg_groupadd -r "haldaemon"
 	ypkg_useradd -c "HAL Daemon User" -d "/dev/null" -s "/bin/false" -r -N "haldaemon"
-	systemctl --system daemon-reload
+	
+	#
+	systemctl enable hald.service
 	start hald || return 0
 }
 
 pre_remove() {
-	stop hald
+	systemctl disable hald.service
 }
 
 post_remove() {
@@ -16,3 +18,13 @@ post_remove() {
 	ypkg_groupdel "haldaemon"
 	return 0
 }
+
+post_upgrade() {
+	systemctl --system daemon-reload
+	restart hald || return 0
+}
+
+post_downgrade() {
+	post_upgrade
+}
+

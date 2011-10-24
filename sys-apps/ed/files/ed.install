@@ -1,9 +1,12 @@
 . /usr/lib/ybs/funcs
 
+files="ed.info.gz"
+
 post_install() {
-        ypkg_install_info ed.info.gz 
+        ypkg_install_info $files
 }       
 
 pre_remove() {
-        ypkg_remove_info ed.info.gz
+        ypkg_remove_info $files
 }
+

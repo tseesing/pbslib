@@ -1,9 +1,11 @@
 . /usr/lib/ybs/funcs
 
+files="libidn.info.gz"
+
 post_install() {
-	ypkg_install_info libidn.info.gz  
+	ypkg_install_info $files
 }       
 
 pre_remove() {
-	ypkg_remove_info libidn.info.gz
+	ypkg_remove_info $files
 }

@@ -1,0 +1,34 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="Shared library to access the contents of an iPod"
+HOMEPAGE="http://www.gtkpod.org/libgpod/"
+LICENSE="LGPL"
+PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
+
+SRC_URI="http://downloads.sourceforge.net/sourceforge/gtkpod/"$N-$V".tar.bz2"
+
+RDEPEND=""
+BDEPEND="libplist"
+RECOMMENDED=""
+CONFLICT=""
+
+pbs_unpack() {
+        ypkg_unpack
+}
+
+pbs_config() {
+	YPB_CONFIG+=""
+	ypkg_config
+}
+
+pbs_build() {
+	make -j1
+}
+
+pbs_install() {
+	ypkg_mkinstall
+	[ -d "$YPPATH_DEST"/tmp ] && rm -rf "$YPPATH_DEST"/tmp
+}
+

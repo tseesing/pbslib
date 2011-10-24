@@ -1,9 +1,12 @@
 . /usr/lib/ybs/funcs
 
+files="standards.info.gz autoconf.info.gz"
+
 post_install() {
-        ypkg_install_info standards.info.gz autoconf.info.gz 
+        ypkg_install_info $files
 }       
 
 pre_remove() {
-        ypkg_remove_info standards.info.gz autoconf.info.gz
+        ypkg_remove_info $files
 }
+

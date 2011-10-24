@@ -4,16 +4,14 @@
 
 DESCRIPTION="Generic Cascading Style Sheet (CSS) parsing and manipulation toolkit"
 HOMEPAGE="http://www.freespiders.org/projects/libcroco/"
-LICENSE="GPL-2"
-PACKAGER="<ylmfos@115.com>"
+LICENSE="GPL"
+PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 
-SRC_URI="http://download.gnome.org/sources/"$N"/0.6/"$N-$V$R".tar.bz2"
+SRC_URI="http://download.gnome.org/sources/"$N"/0.6/"$N-$V".tar.bz2"
 
-RDEPEND="glib2 gdk-pixbuf glibc libxml2 zlib"
-BDEPEND="   "
+RDEPEND="glib2 glibc libxml2 zlib"
+BDEPEND=""
 RECOMMENDED=""
-
-NOTES=""
 
 pbs_unpack() {
         ypkg_unpack
@@ -30,3 +28,4 @@ pbs_build() {
 pbs_install() {
 	ypkg_mkinstall
 }
+

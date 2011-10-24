@@ -7,7 +7,7 @@ HOMEPAGE="http://www.zlib.net/"
 LICENSE="custom"
 PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 
-SRC_URI="http://zlib.net/"$N-$V$R".tar.bz2"
+SRC_URI="http://zlib.net/"$N-$V".tar.bz2"
 
 RDEPEND="glibc"
 BDEPEND=""
@@ -28,6 +28,7 @@ pbs_build() {
 pbs_install() {
 	ypkg_mkinstall
 	cd "$YPPATH_DEST"
+	
 	#for FHS compliant
 	ypkg_domv usr/lib/libz.so.* lib"$LIBDIRSUFFIX"
 	ypkg_doln /lib/libz.so.1    usr/lib"$LIBDIRSUFFIX"/libz.so 

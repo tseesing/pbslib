@@ -4,7 +4,8 @@
 
 DESCRIPTION="Mozilla's Network Security Services library that implements PKI support"
 HOMEPAGE="http://www.mozilla.org/projects/security/pki/nss/"
-LICENSE="GPL-2"
+LICENSE="GPL MPL"
+PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 
 SRC_URI="http://ftp.mozilla.org/pub/mozilla.org/security/"$N"/releases/NSS_3_12_11_RTM/src/"$N-$V".tar.gz"
 
@@ -96,3 +97,4 @@ pbs_install() {
 	ypkg_doln /usr/lib/libnssutil3.so  usr/lib/libnssutil3.so.1d
 	ypkg_doln /usr/lib/libsmime3.so    usr/lib/libsmime3.so.1d
 }
+

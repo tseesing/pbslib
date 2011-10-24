@@ -9,8 +9,8 @@ PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 
 SRC_URI="http://ftp.acc.umu.se/pub/gnome/platform/2.32/2.32.1/sources/libIDL-"$V".tar.bz2"
 
-RDEPEND="glib2 gdk-pixbuf glibc"
-BDEPEND=" "
+RDEPEND="glib2 glibc"
+BDEPEND=""
 
 INSTALL="$N.install"
 
@@ -29,5 +29,4 @@ pbs_build() {
 pbs_install() {
 	ypkg_mkinstall
 }
-
 

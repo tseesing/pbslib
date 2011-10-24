@@ -4,12 +4,12 @@
 
 DESCRIPTION="GIT - the stupid content tracker, the revision control system"
 HOMEPAGE="http://www.git-scm.com/"
-LICENSE="GPL-2"
+LICENSE="GPL"
 PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 
 SRC_URI="http://kernel.org/pub/software/scm/"$N"/"$N-$V".tar.bz2"
 
-RDEPEND="curl cyrus-sasl expat glibc openldap openssl zlib perl python"
+RDEPEND="curl cyrus-sasl expat glibc libidn openldap openssl zlib"
 BDEPEND=""
 
 NOTES="add some info:

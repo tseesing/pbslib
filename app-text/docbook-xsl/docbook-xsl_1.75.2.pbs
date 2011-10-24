@@ -4,32 +4,27 @@
 
 DESCRIPTION="XSL Stylesheets for Docbook"
 HOMEPAGE="http://wiki.docbook.org/topic/DocBookXslStylesheets"
-REPO=""
-LICENSE="GPL-2"
-PACKAGER="<ylmfos@115.com>"
+LICENSE="custom"
+PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 
-SRC_URI="http://downloads.sourceforge.net/docbook/"$N-$V$R".tar.bz2 http://downloads.sourceforge.net/docbook/"$N"-doc-"$V$R".tar.bz2"
+SRC_URI="http://downloads.sourceforge.net/docbook/"$N-$V".tar.bz2 http://downloads.sourceforge.net/docbook/"$N"-doc-"$V".tar.bz2"
 
 RDEPEND=""
-BDEPEND="libxml2-dev"
+BDEPEND=""
 RECOMMENDED=""
 
 INSTALL="$N.install"
-
-NOTES=""
 
 pbs_unpack() {
         ypkg_unpack
 }
 
 pbs_install() {
-	mmsg ">>> tar xf "$YPPATH_SOURCE"/"$N"-doc-"$V$R".tar.bz2"
-	tar xf "$YPPATH_SOURCE"/"$N"-doc-"$V$R".tar.bz2 --strip-components=1
+	tar xf "$YPPATH_SOURCE"/"$N"-doc-"$V".tar.bz2 --strip-components=1
 	ypkg_docp VERSION common eclipse extensions fo highlighting html  \
-	         htmlhelp images javahelp lib manpages params profiling  \
-		 roundtrip slides template tools website xhtml xhtml-1_1 \
-	"$YPPATH_DEST"/usr/share/xml/docbook/xsl-stylesheets-1.75.2
-	ypkg_dodoc RELEASE-NOTES* NEWS* doc/* 
-	install -m644 -D README  "$YPPATH_DEST"/usr/share/doc/docbook-xsl-1.75.2/README.XSL 
+	          htmlhelp images javahelp lib manpages params profiling  \
+	  	  roundtrip slides template tools website xhtml xhtml-1_1 \
+		"$YPPATH_DEST"/usr/share/xml/docbook/xsl-stylesheets-"$V"
+	ypkg_dodoc README
 }
 

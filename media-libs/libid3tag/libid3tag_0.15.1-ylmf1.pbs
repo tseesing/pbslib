@@ -1,0 +1,31 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="The MAD id3tag library"
+HOMEPAGE="http://www.underbit.com/products/mad/"
+LICENSE="GPL"
+PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
+
+SRC_URI="http://downloads.sourceforge.net/project/mad/"$N"/"$V"b/"$N-$V"b.tar.gz "
+
+RDEPEND="glibc zlib"
+BDEPEND=""
+RECOMMENDED=""
+
+pbs_unpack() {
+        ypkg_unpack
+}
+
+pbs_config() {
+	ypkg_config
+}
+
+pbs_build() {
+	ypkg_make
+}
+
+pbs_install() {
+	ypkg_mkinstall
+}
+

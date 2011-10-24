@@ -4,32 +4,21 @@
 
 DESCRIPTION="AAC audio decoding library"
 HOMEPAGE="http://www.audiocoding.com/faad2.html"
-REPO=""
-LICENSE=""
+LICENSE="GPL"
 PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 
-SRC_URI="http://downloads.sourceforge.net/project/faac/faad2-src/"$N-$V$R"/"$N-$V$R".tar.bz2"
+SRC_URI="http://downloads.sourceforge.net/project/faac/"$N"-src/"$N-$V"/"$N-$V".tar.bz2"
 
 RDEPEND="glibc"
-BDEPEND=" mp4v2-dev"
+BDEPEND="mp4v2-dev"
 RECOMMENDED=""
-
-NOTES=""
 
 pbs_unpack() {
         ypkg_unpack
 }
 
 pbs_config() {
-	
-	YPB_CONFIG+=" --prefix=/usr
-		      --sysconfdir=/etc
-		      --localstatedir=/var
-	              --infodir=/usr/share/info
-		      --mandir=/usr/share/man
-	              --disable-static
-		      --enable-shared 
-		      --disable-dependency-tracking "
+	YPB_CONFIG+="--disable-dependency-tracking"
 	ypkg_config
 }
 
@@ -41,3 +30,4 @@ pbs_install() {
 	ypkg_mkinstall
 	ypkg_dodoc AUTHORS ChangeLog NEWS README TODO
 }
+

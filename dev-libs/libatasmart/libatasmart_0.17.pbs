@@ -4,16 +4,14 @@
 
 DESCRIPTION="Lean and small library for ATA S.M.A.R.T. hard disks"
 HOMEPAGE="http://0pointer.de/blog/projects/being-smart.html"
-LICENSE="GPL-2"
-PACKAGER="<ylmfos@115.com>"
+LICENSE="GPL"
+PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
  
-SRC_URI="http://0pointer.de/public/"$N-$V$R".tar.gz"
+SRC_URI="http://0pointer.de/public/"$N-$V".tar.gz"
 
-RDEPEND="udev glibc"
-BDEPEND=" "
+RDEPEND="glibc udev"
+BDEPEND=""
 RECOMMENDED=""
-
-NOTES="http://wiki.linuxfromscratch.org/blfs/wiki/libatasmart"
 
 pbs_unpack() {
         ypkg_unpack
@@ -30,3 +28,4 @@ pbs_build() {
 pbs_install() {
 	ypkg_mkinstall
 }
+

@@ -4,13 +4,15 @@
 
 DESCRIPTION="GNU awk pattern-matching language"
 HOMEPAGE="http://www.gnu.org/software/gawk/gawk.html"
- 
-SRC_URI="http://mirror.anl.gov/pub/gnu/"$N"/"$N-$V$R".tar.gz"
+LICENSE="GPL"
+PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
+PRIORITY="required"
+
+SRC_URI="http://mirror.anl.gov/pub/gnu/"$N"/"$N-$V".tar.gz"
 
 RDEPEND="glibc"
 BDEPEND=""
 
-PRIORITY="required"
 
 INSTALL="$N.install"
 

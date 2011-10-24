@@ -4,11 +4,13 @@
 
 DESCRIPTION="A completely OpenSourced alternative to the OpenGL Utility Toolkit (GLUT) library"
 HOMEPAGE="ttp://freeglut.sourceforge.net/"
- 
-SRC_URI="http://downloads.sourceforge.net/project/"$N"/"$N"/"$N-$V$R".tar.gz"
+LICENSE="GPL"
+PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
+
+SRC_URI="http://downloads.sourceforge.net/project/"$N"/"$N"/"$N-$V".tar.gz"
 
 RDEPEND="gcc glibc libdrm libX11 libXau libxcb libXdamage libXdmcp libXext libXfixes libXi libXxf86vm mesa"
-BDEPEND="            "
+BDEPEND=""
 
 pbs_unpack() {
         ypkg_unpack
@@ -25,3 +27,4 @@ pbs_build() {
 pbs_install() {
 	ypkg_mkinstall
 }
+

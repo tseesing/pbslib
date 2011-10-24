@@ -4,13 +4,13 @@
 
 DESCRIPTION="A gtk+ frontend for libgksu"
 HOMEPAGE="http://www.nongnu.org/gksu/"
-LICENSE="GPL-2"
-PACKAGER="<ylmfos@115.com>"
+LICENSE="GPL"
+PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 
 SRC_URI="http://people.debian.org/~kov/gksu/"$N-$V".tar.gz"
 
-RDEPEND="atk cairo dbus dbus-glib eggdbus expat fontconfig freetype gcc gconf glib2 gdk-pixbuf glibc gtk+ libgcrypt libgksu libgnome-keyring libgpg-error libgtop libICE libpng libSM libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libXrandr libXrender nautilus orbit pango pixman startup-notification util-linux-ng zlib"
-BDEPEND="    eggdbus                                   "
+RDEPEND="atk cairo dbus dbus-glib expat fontconfig freetype gcc gconf gdk-pixbuf glib2 glibc gtk+ libgcrypt libgksu libgnome-keyring libgpg-error libgtop libICE libpng libSM libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libXrandr libXrender nautilus orbit pango pixman startup-notification util-linux-ng zlib"
+BDEPEND=""
 RECOMMENDED=""
 
 pbs_unpack() {
@@ -19,12 +19,18 @@ pbs_unpack() {
 
 pbs_config() {
 	ypkg_docp "$FILES_PATH"/files/gksu-icon.png .
-	ypkg_patch 01_always_ask.patch 07_desktop_in_ship.patch 14_set_http_proxy_env.patch 21_strip_blank_space.patch gksu.sudo_mode.patch 99_ylmfos.patch
+	ypkg_patch 01_always_ask.patch \
+	           07_desktop_in_ship.patch \
+		   14_set_http_proxy_env.patch \
+		   21_strip_blank_space.patch \
+		   gksu.sudo_mode.patch 
+		   99_ylmfos.patch
 	ypkg_config
 }
 
 pbs_build() {
 	ypkg_make
+
 	#FIXME, creat mo
 	cd po
 	for i in *.po; do
@@ -41,3 +47,4 @@ pbs_install() {
 	done
 	ypkg_doln /usr/bin/gnome-terminal.wrapper "$YPPATH_DEST"/usr/bin/x-terminal-emulator
 }
+

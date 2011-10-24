@@ -4,16 +4,14 @@
 
 DESCRIPTION="GNOME cups library"
 HOMEPAGE="http://www.gnome.org/"
-LICENSE="GPL-2"
-PACKAGER="<ylmfos@115.com>"
+LICENSE="GPL"
+PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 
 SRC_URI="http://ftp.gnome.org/pub/GNOME/sources/"$N"/0.2/"$N-$V".tar.bz2"
 
-RDEPEND="cups e2fsprogs glib2 gdk-pixbuf glibc gnutls keyutils krb5 libgcrypt libgpg-error libtasn1 zlib"
-BDEPEND="xml-parser           "
+RDEPEND="avahi cups dbus e2fsprogs gcc glib2 glibc gnutls keyutils krb5 libgcrypt libgpg-error libtasn1 zlib"
+BDEPEND="xml-parser"
 RECOMMENDED=""
-
-NOTES=""
 
 pbs_unpack() {
         ypkg_unpack
@@ -31,3 +29,4 @@ pbs_build() {
 pbs_install() {
 	ypkg_mkinstall
 }
+

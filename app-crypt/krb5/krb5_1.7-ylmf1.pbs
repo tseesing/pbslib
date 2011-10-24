@@ -2,15 +2,15 @@
 # YLmf_OS package build script
 #
 
-DESCRIPTION=" MIT Kerberos V"
+DESCRIPTION="MIT Kerberos V"
 HOMEPAGE="http://web.mit.edu/kerberos/www/"
-LICENSE="GPL-2"
+LICENSE="custom"
 PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 
 SRC_URI="http://web.mit.edu/kerberos/www/dist/"$N"/"$V"/"$N-$V"-signed.tar"
 
-RDEPEND="glibc keyutils ncurses"
-BDEPEND="  "
+RDEPEND="glibc keyutils"
+BDEPEND=""
 RECOMMENDED=""
 
 pbs_unpack() {
@@ -33,11 +33,12 @@ pbs_build() {
 pbs_install() {
 	ypkg_mkinstall
 	cd "$YPPATH_DEST"
+
 	# Create the db directory exists with the following command
 	install -d -m755 var/lib/krb5kdc etc/
 	
 	# Create the Kerberos configuration with the following command. It's recommended that the Kerberos Realm be all uppercase.
-	cat > etc/krb5.conf << "EOF"
+	cat >etc/krb5.conf << "EOF"
 [libdefaults]
 default_realm = <REALMNAME.COM>
 encrypt = true
@@ -64,7 +65,7 @@ admin_server = SYSLOG[INFO[:AUTH]]
 default = SYSLOG[[:SYS]]
 EOF
 	# On the Kerberos Server create the KDC Configuration File:
-	cat > var/lib/krb5kdc/kdc.conf << "EOF"
+	cat >var/lib/krb5kdc/kdc.conf << "EOF"
 [kdcdefaults]
 kdc_ports = 750,88
 [realms]

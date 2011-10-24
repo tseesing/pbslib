@@ -4,13 +4,13 @@
 
 DESCRIPTION="Evolution groupware backend"
 HOMEPAGE="http://www.gnome.org/projects/evolution/"
-LICENSE="GPL-2"
+LICENSE="GPL"
 PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 
 SRC_URI="http://ftp.gnome.org/pub/gnome/sources/evolution-data-server/2.32/"$N-$V".tar.bz2"
 
-RDEPEND="atk berkeley-db cairo cyrus-sasl dbus dbus-glib e2fsprogs eggdbus expat fontconfig freetype gcc gconf glib2 gdk-pixbuf glibc gnutls gtk+ keyutils krb5 libgcrypt libgnome-keyring libgpg-error libgweather libical libpng libproxy libsoup libtasn1 libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libxml2 libXrandr libXrender nspr nss openldap openssl orbit pango pixman sqlite zlib"
-BDEPEND="eggdbus"
+RDEPEND="atk berkeley-db cairo cyrus-sasl dbus dbus-glib expat fontconfig freetype gcc gconf  gdk-pixbuf glib2 glibc gnutls gtk+ keyutils krb5 libgcrypt libgdata libgnome-keyring libgpg-error libgweather libical libpng libproxy libsoup libtasn1 libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libxml2 libXrandr libXrender nspr nss openldap openssl orbit pango pixman sqlite zlib"
+BDEPEND=""
 RECOMMENDED=""
 
 pbs_unpack() {

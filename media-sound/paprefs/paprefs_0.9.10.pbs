@@ -9,7 +9,7 @@ PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 
 SRC_URI="http://freedesktop.org/software/pulseaudio/"$N"/"$N-$V".tar.xz"
 
-RDEPEND="atk atkmm attr cairo cairomm dbus dbus-glib expat flac fontconfig freetype gcc gconf gconf-dbus gconfmm gdk-pixbuf glib2 glibc glibmm gtk+ gtkmm json-c libcap libglade libglademm libICE libogg libpng libsamplerate libsigc++ libSM libsndfile libvorbis libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libxml2 libXrandr libXrender libXtst orbit pango pangomm pixman pulseaudio util-linux-ng zlib"
+RDEPEND="atk atkmm attr cairo cairomm dbus dbus-glib expat flac fontconfig freetype gcc gconf  gconfmm gdk-pixbuf glib2 glibc glibmm gtk+ gtkmm json-c libcap libglade libglademm libICE libogg libpng libsamplerate libsigc++ libSM libsndfile libvorbis libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libxml2 libXrandr libXrender libXtst orbit pango pangomm pixman pulseaudio util-linux-ng zlib"
 RECOMMENDED=""
 BDEPEND=""
 

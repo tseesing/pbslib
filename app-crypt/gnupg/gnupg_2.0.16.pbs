@@ -4,13 +4,13 @@
 
 DESCRIPTION="The GNU Privacy Guard, a GPL pgp replacement"
 HOMEPAGE="http://www.gnupg.org/"
-LICENSE="GPL-2"
-PACKAGER="<ylmfos@115.com>"
+LICENSE="GPL"
+PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
  
-SRC_URI="ftp://ftp.gnupg.org/gcrypt/"$N"/"$N-$V$R".tar.bz2"
+SRC_URI="ftp://ftp.gnupg.org/gcrypt/"$N"/"$N-$V".tar.bz2"
 
-RDEPEND="curl cyrus-sasl glibc libassuan libgcrypt libgpg-error libksba libusb libusb-compat ncurses openldap openssl pth readline zlib"
-BDEPEND="bzip2"
+RDEPEND="bzip2 curl cyrus-sasl glibc libassuan libgcrypt libgpg-error libidn libksba libusb libusb-compat ncurses openldap openssl pth readline zlib"
+BDEPEND=""
 
 INSTALL="$N.install"
 
@@ -29,3 +29,4 @@ pbs_build() {
 pbs_install() {
 	ypkg_mkinstall
 }
+

@@ -4,10 +4,12 @@
 
 DESCRIPTION="An extremely powerful ICCCM-compliant multiple virtual desktop window manager"
 HOMEPAGE="http://www.fvwm.org/"
- 
-SRC_URI="ftp://ftp.fvwm.org/pub/"$N"/version-2/"$N-$V$R".tar.bz2"
+LICENSE="GPL"
+PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 
-RDEPEND="cairo expat fontconfig freetype fribidi gcc glib2 gdk-pixbuf glibc gtk+ libcroco libgsf libICE libpng librsvg libSM libX11 libXau libxcb libXcursor libXdmcp libXext libXfixes libXft libXinerama libxml2 libXpm libXrender ncurses pango pixman readline util-linux-ng zlib"
+SRC_URI="ftp://ftp.fvwm.org/pub/"$N"/version-2/"$N-$V".tar.bz2"
+
+RDEPEND="cairo expat fontconfig freetype fribidi gcc gdk-pixbuf glib2 glibc libcroco libICE libpng librsvg libSM libX11 libXau libxcb libXcursor libXdmcp libXext libXfixes libXft libXinerama libxml2 libXpm libXrender ncurses pango pixman readline util-linux-ng zlib"
 BDEPEND=""
 
 pbs_unpack() {
@@ -25,3 +27,4 @@ pbs_build() {
 pbs_install() {
 	ypkg_mkinstall
 }
+

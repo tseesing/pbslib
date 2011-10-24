@@ -17,12 +17,8 @@ pbs_unpack() {
 }
 
 pbs_config() {
-        sed -i s%"@bindir@"%"\$\(DESTDIR\)@bindir@"% include/builddefs.in
-	sed -i s%"@sbindir@"%"\$\(DESTDIR\)@sbindir@"% include/builddefs.in
-	sed -i s%"@libdir@@libdirsuffix@"%"\$\(DESTDIR\)@libdir@@libdirsuffix@"% include/builddefs.in
-	sed -i s%"@libexecdir@@libdirsuffix@"%"\$\(DESTDIR\)@libexecdir@@libdirsuffix@"% include/builddefs.in
-	sed -i s%"@includedir@/attr"%"\$\(DESTDIR\)@includedir@/attr"% include/builddefs.in
-	sed -i s%"@mandir@"%"\$\(DESTDIR\)@mandir@"% include/builddefs.in
+	export INSTALL_USER=root INSTALL_GROUP=root 
+	YPB_CONFIG="--prefix=/usr --libdir=/lib --libexecdir=/usr/lib"
 	ypkg_config
 }
 
@@ -31,8 +27,6 @@ pbs_build() {
 }
 
 pbs_install() {
-	ypkg_mkinstall install-dev install-lib
-	ypkg_docp include/libacl.h       "$YPPATH_DEST"/usr/include/acl 
-	ypkg_docp include/acl.h          "$YPPATH_DEST"/usr/include/sys
+	make DIST_ROOT="$YPPATH_DEST" install install-lib install-dev
 }
 

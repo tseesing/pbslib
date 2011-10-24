@@ -9,7 +9,7 @@ PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 
 SRC_URI="http://gstreamer.freedesktop.org/src/"$N"/"$N-$V".tar.bz2"
 
-RDEPEND="gstreamer"
+RDEPEND="bzip2 glib2 glibc gst-plugins-base gstreamer libxml2 orc zlib"
 BDEPEND=""
 RECOMMENDED=""
 CONFLICT=""

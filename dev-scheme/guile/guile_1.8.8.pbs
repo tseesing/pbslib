@@ -7,10 +7,10 @@ HOMEPAGE="http://www.gnu.org/software/guile/"
 LICENSE="GPLv2"
 PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 
-SRC_URI="http://ftp.gnu.org/pub/gnu/"$N"/"$N-$V$R".tar.gz"
+SRC_URI="http://ftp.gnu.org/pub/gnu/"$N"/"$N-$V".tar.gz"
 
 RDEPEND="glibc gmp libtool ncurses readline"
-BDEPEND="    "
+BDEPEND=""
 RECOMMENDED=""
 
 INSTALL="$N.install"
@@ -20,7 +20,9 @@ pbs_unpack() {
 }
 
 pbs_config() {
-	ypkg_patch guile-1.8.7-multilib.patch guile-1.8.7-testsuite.patch guile-1.8.8-deplibs.patch
+	ypkg_patch guile-1.8.7-multilib.patch \
+	           guile-1.8.7-testsuite.patch \
+		   guile-1.8.8-deplibs.patch
 	YPB_CONFIG+="--disable-static
 	             --disable-error-on-warning"
 	ypkg_config
@@ -33,3 +35,4 @@ pbs_build() {
 pbs_install() {
 	ypkg_mkinstall
 }
+

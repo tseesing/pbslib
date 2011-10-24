@@ -4,8 +4,10 @@
 
 DESCRIPTION="Standard GNU database libraries"
 HOMEPAGE="http://www.gnu.org/software/gdbm/gdbm.html"
- 
-SRC_URI="ftp://ftp.gnu.org/gnu/"$N"/"$N-$V$R".tar.gz"
+LICENSE="GPL"
+PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
+
+SRC_URI="ftp://ftp.gnu.org/gnu/"$N"/"$N-$V".tar.gz"
 
 RDEPEND="glibc"
 BDEPEND=""
@@ -26,8 +28,8 @@ pbs_build() {
 
 pbs_install() {
 	make INSTALL_ROOT="$YPPATH_DEST" BINOWN=root BINGRP=root install
-	#install the DBM and NDBM compatibility headers, as some 
-	#packages outside of LFS may look for these older dbm routines
+	# Install the DBM and NDBM compatibility headers, as some 
+	# packages outside of LFS may look for these older dbm routines
 	make INSTALL_ROOT="$YPPATH_DEST" BINOWN=root BINGRP=root install-compat
 }
 

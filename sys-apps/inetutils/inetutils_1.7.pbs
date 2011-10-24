@@ -4,11 +4,13 @@
 
 DESCRIPTION="a collection of common network programs"
 HOMEPAGE="http://www.gnu.org/software/inetutils/"
- 
-SRC_URI="http://ftp.gnu.org/gnu/"$N"/"$N-$V$R".tar.gz"
+LICENSE="GPL"
+PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 
-RDEPEND="glibc keyutils krb5 ncurses"
-BDEPEND="   "
+SRC_URI="http://ftp.gnu.org/gnu/"$N"/"$N-$V".tar.gz"
+
+RDEPEND="glibc ncurses readline"
+BDEPEND=""
 
 INSTALL="$N.install"
 

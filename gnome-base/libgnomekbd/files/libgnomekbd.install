@@ -18,3 +18,4 @@ post_upgrade() {
 post_downgrade() {
 	gnome2_gconfd_reload
 }
+

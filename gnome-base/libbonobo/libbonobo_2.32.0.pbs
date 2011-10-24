@@ -9,7 +9,7 @@ PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 
 SRC_URI="http://ftp.acc.umu.se/pub/gnome/platform/2.32/2.32.1/sources/"$N-$V".tar.bz2"
 
-RDEPEND="dbus dbus-glib glib2 gdk-pixbuf glibc libxml2 orbit zlib"
+RDEPEND="glib2 glibc libxml2 orbit zlib"
 BDEPEND="flex-dev xrdb pkgconfig intltool"
 RECOMMENDED=""
 

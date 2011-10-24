@@ -5,15 +5,14 @@
 DESCRIPTION="An advanced interactive shell for Python."
 HOMEPAGE="http://ipython.scipy.org/ http://pypi.python.org/pypi/ipython"
 LICENSE="BSD"
-PACKAGER="<ylmfos@115.com>"
+PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
+YARCH="any"
 
-SRC_URI="http://ipython.scipy.org/dist/"$V"/"$N-$V$R".tar.gz"
+SRC_URI="http://ipython.scipy.org/dist/"$V"/"$N-$V".tar.gz"
 
-RDEPEND=""
+RDEPEND="python"
 BDEPEND="cups-dev"
 RECOMMENDED=""
-
-NOTES=""
 
 pbs_unpack() {
         ypkg_unpack
@@ -26,3 +25,4 @@ pbs_build() {
 pbs_install() {
 	ypkg_mkinstall
 }
+

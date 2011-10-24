@@ -4,13 +4,13 @@
 
 DESCRIPTION="A low-latency audio server"
 HOMEPAGE="http://jackaudio.org/"
-LICENSE="GPL-2"
-PACKAGER="<ylmfos@115.com>"
+LICENSE="GPL"
+PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 
-SRC_URI="http://jackaudio.org/downloads/"$N-$V$R".tar.gz"
+SRC_URI="http://jackaudio.org/downloads/"$N-$V".tar.gz"
 
 RDEPEND="alsa-lib flac glibc libogg libsamplerate libsndfile libvorbis ncurses readline"
-BDEPEND="        "
+BDEPEND=""
 RECOMMENDED=""
 
 pbs_unpack() {
@@ -29,3 +29,4 @@ pbs_install() {
 	ypkg_mkinstall
 	ypkg_dodoc AUTHORS COPYING README
 }
+

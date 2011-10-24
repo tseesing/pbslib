@@ -19,7 +19,9 @@ pbs_unpack(){
 }
 
 pbs_config() {
-	ypkg_patch  10_dbus-1.0.1-generate-xml-docs.patch 20_system_conf_limit.patch 81-session.conf-timeout.patch
+	ypkg_patch  10_dbus-1.0.1-generate-xml-docs.patch \
+	            20_system_conf_limit.patch \
+		    81-session.conf-timeout.patch
 	YPB_CONFIG+=" --with-xml=expat  
 		      --with-dbus-user=messagebus 
 		      --disable-xml-docs 

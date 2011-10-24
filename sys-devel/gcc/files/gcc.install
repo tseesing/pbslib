@@ -26,4 +26,3 @@ post_downgrade() {
        ypkg_install_info  $files
 }
 
-

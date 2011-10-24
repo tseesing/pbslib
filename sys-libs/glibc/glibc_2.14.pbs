@@ -8,7 +8,7 @@ LICENSE="GPL LGPL"
 PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 PRIORITY="required"
 
-SRC_URI="http://ftp.gnu.org/gnu/"$N"/"$N-$V$R".tar.xz"
+SRC_URI="http://ftp.gnu.org/gnu/"$N"/"$N-$V".tar.xz"
 
 RDEPEND=""
 BDEPEND=""
@@ -90,19 +90,19 @@ pbs_config() {
 }
 
 pbs_build() {
-	# build libraries with hardening disabled
+	# Build libraries with hardening disabled
 	echo "build-programs=no" >> configparms
 
 	ypkg_make
 
-	# re-enable hardening for programs
+	# Re-enable hardening for programs
 	sed -i "s#=no#=yes#" configparms
 	echo "CC += -fstack-protector -D_FORTIFY_SOURCE=2" >> configparms
 	echo "CXX += -fstack-protector -D_FORTIFY_SOURCE=2" >> configparms
 	
 	ypkg_make
 
-	# remove harding in preparation to run test-suite
+	# Remove harding in preparation to run test-suite
 	sed -i '2,4d' configparms
 }
 

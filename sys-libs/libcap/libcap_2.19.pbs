@@ -7,10 +7,10 @@ HOMEPAGE="http://www.kernel.org/"
 LICENSE="GPLv2"
 PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 
-SRC_URI="http://www.kernel.org/pub/linux/libs/security/linux-privs/libcap2/"$N-$V$R".tar.bz2"
+SRC_URI="http://www.kernel.org/pub/linux/libs/security/linux-privs/libcap2/"$N-$V".tar.bz2"
 
 RDEPEND="attr glibc"
-BDEPEND="gperf  "
+BDEPEND="gperf"
 RECOMMENDED=""
 
 pbs_unpack() {
@@ -29,3 +29,4 @@ pbs_install() {
 	ypkg_domv lib/libcap* usr/lib"$LIBDIRSUFFIX"/
 	rm -rf lib"$LIBDIRSUFFIX"
 }
+

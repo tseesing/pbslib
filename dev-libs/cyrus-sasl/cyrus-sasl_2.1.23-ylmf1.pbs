@@ -4,16 +4,14 @@
 
 DESCRIPTION="The Cyrus SASL (Simple Authentication and Security Layer)."
 HOMEPAGE="http://asg.web.cmu.edu/sasl/"
-LICENSE="GPL-2"
-PACKAGER="<ylmfos@115.com>"
+LICENSE="GPL"
+PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
  
 SRC_URI="ftp://ftp.andrew.cmu.edu/pub/cyrus-mail/"$N-$V".tar.gz"
 
-RDEPEND="berkeley-db glibc keyutils krb5 openssl pam"
-BDEPEND="     "
+RDEPEND="berkeley-db e2fsprogs glibc keyutils krb5 openssl pam zlib"
+BDEPEND=""
 RECOMMENDED=""
-
-NOTES=""
 
 pbs_unpack() {
         ypkg_unpack
@@ -31,6 +29,6 @@ pbs_build() {
 
 pbs_install() {
 	ypkg_mkinstall
-	ypkg_dodoc doc/{*.{html,txt,fig},ONEWS,TODO} saslauthd/LDAP_SASLAUTHD
 	install -m700 -d "$YPPATH_DEST"/var/lib/sasl
 }
+

@@ -4,13 +4,13 @@
 
 DESCRIPTION="Hardware Abstraction Layer"
 HOMEPAGE="http://www.freedesktop.org/wiki/Software/hal"
-LICENSE=""
-PACKAGER="<ylmfos@115.com>"
+LICENSE="GPL"
+PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 
 SRC_URI="http://hal.freedesktop.org/releases/"$N-$V".tar.gz"
 
 RDEPEND="dbus dbus-glib expat glib2 gdk-pixbuf glibc util-linux-ng"
-BDEPEND="consolekit-dev      "
+BDEPEND="consolekit-dev"
 RECOMMEND=""
 
 INSTALL="$N.install"
@@ -63,5 +63,5 @@ pbs_install() {
 	cd "$YPPATH_DEST"
 	ypkg_docp "$FILES_PATH"/files/11-mousewheel.fdi usr/share/hal/fdi/policy/10osvendor
 	ypkg_dounit "hald.service"
-	ypkg_doln  /lib/systemd/system/hald.service lib/systemd/system/graphical.target.wants/"hald.service"
 }
+

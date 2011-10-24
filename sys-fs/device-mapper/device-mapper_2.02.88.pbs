@@ -4,12 +4,12 @@
 
 DESCRIPTION="Device mapper ioctl library for use with LVM2 utilities"
 HOMEPAGE="http://sources.redhat.com/dm/"
-LICENSE="GPL-2"
-PACKAGER="<ylmfos@115.com>"
+LICENSE="GPL"
+PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 
-SRC_URI="ftp://sources.redhat.com/pub/lvm2/LVM2.2.02.88.tgz"
+SRC_URI="ftp://sources.redhat.com/pub/lvm2/LVM2."$V$R".tgz"
 
-RDEPEND="glibc ncurses readline"
+RDEPEND="glibc udev"
 BDEPEND="  "
 RECOMMENDED=""
 
@@ -53,9 +53,9 @@ pbs_install() {
 
 lvm2_install() {
 	DESCRIPTION="Logical Volume Manager 2 utilities"
-	RDEPEND="device-mapper udev readline"
+	RDEPEND="device-mapper glibc ncurses readline udev"
 	make DESTDIR="$YPPATH_DEST" install_lvm2
-	# install applib
+	# Install applib
 	make -C liblvm DESTDIR="$YPPATH_DEST" install
 }
 
