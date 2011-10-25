@@ -4,16 +4,14 @@
 
 DESCRIPTION="Library to provide file system information"
 HOMEPAGE="http://www.marcuscom.com"
-LICENSE="GPL-2"
-PACKAGER="<ylmfos@115.com>"
+LICENSE="GPL"
+PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
  
-SRC_URI="ftp://lug.mtu.edu/gentoo/distfiles/"$N-$V$R".tar.bz2"
+SRC_URI="ftp://lug.mtu.edu/gentoo/distfiles/"$N-$V".tar.bz2"
 
 RDEPEND="glibc"
 BDEPEND=""
 RECOMMENDED=""
-
-NOTES=""
 
 pbs_unpack() {
         ypkg_unpack
@@ -29,3 +27,4 @@ pbs_install() {
 	ypkg_docp libvolume_id.so.0  "$YPPATH_DEST"/usr/lib
 	ypkg_doln /usr/lib/libvolume_id.so.0  "$YPPATH_DEST"/usr/lib/libvolume_id.so
 }
+

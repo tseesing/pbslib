@@ -4,18 +4,15 @@
 
 DESCRIPTION="Provide access to (SM)BIOS information"
 HOMEPAGE="http://linux.dell.com/libsmbios/main/index.html"
-REPO=""
 LICENSE="GPL"
 PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 
-SRC_URI="http://linux.dell.com/libsmbios/download/"$N"/"$N-$V$R"/"$N-$V$R".tar.bz2"
+SRC_URI="http://linux.dell.com/libsmbios/download/"$N"/"$N-$V"/"$N-$V".tar.bz2"
 
-RDEPEND=""
+RDEPEND="gcc glibc"
 BDEPEND=""
 RECOMMENDED=""
 CONFLICT=""
-
-NOTES=""
 
 pbs_unpack() {
         ypkg_unpack
@@ -33,3 +30,4 @@ pbs_build() {
 pbs_install() {
 	ypkg_mkinstall
 }
+

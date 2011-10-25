@@ -4,12 +4,12 @@
 
 DESCRIPTION="HTTP and WebDAV client library"
 HOMEPAGE="http://www.webdav.org/neon/"
-LICENSE="GPL-2"
+LICENSE="GPL"
 PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 
 SRC_URI="http://www.webdav.org/"$N"/"$N-$V".tar.gz"
 
-RDEPEND="e2fsprogs expat glibc keyutils krb5 libproxy openssl zlib"
+RDEPEND="expat glibc keyutils krb5 libproxy openssl zlib"
 BDEPEND=""
 RECOMMENDED=""
 

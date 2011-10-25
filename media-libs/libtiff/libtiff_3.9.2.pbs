@@ -4,14 +4,13 @@
 
 DESCRIPTION="Library for manipulation of TIFF (Tag Image File Format) images"
 HOMEPAGE="http://www.remotesensing.org/libtiff/"
-REPO=""
-LICENSE=""
+LICENSE="GPL"
 PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 
-SRC_URI="http://download.osgeo.org/"$N"/tiff-"$V$R".tar.gz"
+SRC_URI="http://download.osgeo.org/"$N"/tiff-"$V".tar.gz"
 
 RDEPEND="freeglut gcc glibc libdrm libICE libjpeg-turbo libSM libX11 libXau libxcb libXdamage libXdmcp libXext libXfixes libXi libXmu libXt libXxf86vm mesa util-linux-ng zlib"
-BDEPEND="                    "
+BDEPEND=""
 
 pbs_unpack() {
         ypkg_unpack
@@ -27,5 +26,6 @@ pbs_build() {
 
 pbs_install() {
 	ypkg_mkinstall
-	ypkg_dodoc HOWTO-RELEASE README RELEASE-DATE ChangeLog COPYRIGHT README.vms TODO VERSION
+	ypkg_dodoc ChangeLog COPYRIGHT TODO VERSION
 }
+

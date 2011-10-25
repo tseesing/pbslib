@@ -4,17 +4,14 @@
 
 DESCRIPTION="LibRaw is a library for reading RAW files obtained from digital photo cameras"
 HOMEPAGE="http://www.libraw.org/"
-REPO=""
-LICENSE=""
+LICENSE="GPL"
 PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 
-SRC_URI="http://www.libraw.org/data/LibRaw-"$V$R".tar.gz"
+SRC_URI="http://www.libraw.org/data/LibRaw-"$V".tar.gz"
 
 RDEPEND="gcc glibc"
-BDEPEND=" "
+BDEPEND=""
 RECOMMENDED=""
-
-NOTES=""
 
 pbs_unpack() {
         ypkg_unpack

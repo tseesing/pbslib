@@ -4,11 +4,13 @@
 
 DESCRIPTION="Multiple Image Networkgraphics lib (animated png's)"
 HOMEPAGE="http://www.libmng.com/"
- 
-SRC_URI="http://downloads.sourceforge.net/"$N"/"$N-$V$R".tar.bz2"
+LICENSE="GPL"
+PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
+
+SRC_URI="http://downloads.sourceforge.net/"$N"/"$N-$V".tar.bz2"
 
 RDEPEND="glibc lcms libjpeg-turbo zlib"
-BDEPEND="   "
+BDEPEND=""
 
 pbs_unpack() {
         ypkg_unpack
@@ -30,3 +32,4 @@ pbs_install() {
 	ypkg_docp doc/man/*.5 "$YPPATH_DEST"/usr/share/man/man5
 	ypkg_dodoc doc/*.{png,txt}
 }
+

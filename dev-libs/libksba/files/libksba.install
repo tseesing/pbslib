@@ -1,9 +1,12 @@
 . /usr/lib/ybs/funcs
 
+files="ksba.info.gz"
+
 post_install() {
-        ypkg_install_info ksba.info.gz 
+        ypkg_install_info $files
 }       
 
 pre_remove() {
-        ypkg_remove_info ksba.info.gz
+        ypkg_remove_info $files
 }
+

@@ -4,14 +4,13 @@
 
 DESCRIPTION="X C-language Bindings library"
 HOMEPAGE="http://xcb.freedesktop.org/"
-REPO=""
-LICENSE=""
+LICENSE="GPL"
 PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 
-SRC_URI="http://www.x.org/releases/X11R7.6/src/xcb/"$N-$V$R".tar.bz2"
+SRC_URI="http://www.x.org/releases/X11R7.6/src/xcb/"$N-$V".tar.bz2"
 
 RDEPEND="glibc libXau libXdmcp"
-BDEPEND="xcb-proto-dev libpthread-stubs-dev"
+BDEPEND="xcb-proto libpthread-stubs"
 
 pbs_unpack() {
         ypkg_unpack
@@ -28,3 +27,4 @@ pbs_build() {
 pbs_install() {
 	ypkg_mkinstall
 }
+

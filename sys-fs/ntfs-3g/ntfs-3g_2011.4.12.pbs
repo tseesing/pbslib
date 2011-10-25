@@ -4,13 +4,13 @@
 
 DESCRIPTION="Open source read-write NTFS driver that runs under FUSE"
 HOMEPAGE="http://www.tuxera.com/community/ntfs-3g-download/"
-LICENSE="GPL-2"
-PACKAGER="<ylmfos@115.com>"
+LICENSE="GPL"
+PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 
-SRC_URI="http://tuxera.com/opensource/ntfs-3g_ntfsprogs-"$V$R".tgz"
+SRC_URI="http://tuxera.com/opensource/ntfs-3g_ntfsprogs-"$V".tgz"
 
-RDEPEND="glibc ntfsprogs util-linux-ng fuse"
-BDEPEND="attr-dev  "
+RDEPEND="glibc util-linux-ng"
+BDEPEND="attr-dev"
 
 pbs_unpack() {
         ypkg_unpack
@@ -36,3 +36,4 @@ pbs_install() {
 	ypkg_docp_rename "$FILES_PATH"/files/pre_ntfs_3g     usr/share/initramfs-tools/scripts/local-premount/ntfs_3g
 	ypkg_docp_rename "$FILES_PATH"/files/bot_ntfs_3g     usr/share/initramfs-tools/scripts/local-bottom/ntfs_3g
 }
+

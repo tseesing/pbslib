@@ -5,11 +5,12 @@
 DESCRIPTION="Database-driven manual pager suite"
 HOMEPAGE="http://savannah.nongnu.org/projects/man-db"
 LICENSE="GPL LGPL"
+PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 
 SRC_URI="http://ftp.twaren.net/Unix/NonGNU/"$N"/"$N-$V".tar.gz"
 
-RDEPEND="gdbm zlib glibc"
-BDEPEND="  "
+RDEPEND="gdbm glibc zlib"
+BDEPEND=""
 RECOMMENDED="groff"
 
 pbs_unpack() {
@@ -30,7 +31,8 @@ pbs_build() {
 
 pbs_install() {
 	ypkg_mkinstall
-	# part of groff pkg
+	
+	# Part of groff pkg
 	rm -f "$YPPATH_DEST"/usr/bin/zsoelim
 }
 

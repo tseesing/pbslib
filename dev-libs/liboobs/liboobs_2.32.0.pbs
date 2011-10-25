@@ -4,13 +4,13 @@
 
 DESCRIPTION="Liboobs is a wrapping library to the System Tools Backends."
 HOMEPAGE="http://www.gnome.org"
-LICENSE="GPL-2"
-PACKAGER="<ylmfos@115.com>"
+LICENSE="GPL"
+PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 
-SRC_URI="http://ftp.gnome.org/pub/gnome/desktop/2.32/2.32.2/sources/"$N-$V$R".tar.bz2"
+SRC_URI="http://ftp.gnome.org/pub/gnome/desktop/2.32/2.32.2/sources/"$N-$V".tar.bz2"
 
-RDEPEND="dbus dbus-glib glib2 gdk-pixbuf glibc hal"
-BDEPEND="system-tools-backends-dev"
+RDEPEND="dbus dbus-glib gcc glib2 glibc hal libsmbios"
+BDEPEND=""
 RECOMMENDED=""
 
 pbs_unpack() {
@@ -18,6 +18,7 @@ pbs_unpack() {
 }
 
 pbs_config() {
+	YPB_CONFIG+="--without-hal"
 	ypkg_config
 }
 

@@ -4,19 +4,15 @@
 
 DESCRIPTION="C library for manipulating tar archives"
 HOMEPAGE="http://www.feep.net/libtar/"
-REPO=""
 LICENSE="GPL"
-PRIORITY=""
 PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 
-SRC_URI="ftp://ftp.feep.net/pub/software/"$N"/"$N-$V$R".tar.gz"
+SRC_URI="ftp://ftp.feep.net/pub/software/"$N"/"$N-$V".tar.gz"
 
 RDEPEND="glibc zlib"
-BDEPEND=" "
+BDEPEND=""
 RECOMMENDED=""
 CONFLICT=""
-
-NOTES=""
 
 pbs_unpack() {
         ypkg_unpack

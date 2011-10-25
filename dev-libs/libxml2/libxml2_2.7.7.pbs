@@ -4,13 +4,13 @@
 
 DESCRIPTION="Version 2 of the library to manipulate XML files"
 HOMEPAGE="http://www.xmlsoft.org/"
+LICENSE="MIT License"
+PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 
-LICENSE="MIT License."
-
-SRC_URI="ftp://xmlsoft.org/"$N"/"$N-$V$R".tar.gz"
+SRC_URI="ftp://xmlsoft.org/"$N"/"$N-$V".tar.gz"
 
 RDEPEND="glibc python zlib"
-BDEPEND="  "
+BDEPEND=""
 
 pbs_unpack() {
         ypkg_unpack
@@ -29,3 +29,4 @@ pbs_install() {
 	cd "$YPPATH_DEST"
 	ypkg_doln /usr/include/libxml2/libxml  usr/include/libxml
 }
+

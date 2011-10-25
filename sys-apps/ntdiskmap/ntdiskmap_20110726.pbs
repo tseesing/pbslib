@@ -4,15 +4,14 @@
 
 DESCRIPTION="ntdiskmap"
 HOMEPAGE="www.ylmf.net"
-REPO=""
-LICENSE="GPL-2"
-PACKAGER="<ylmfos@115.com>"
+LICENSE="GPL"
+PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 
 INSTALL="$N.install"
 
-SRC_URI="git://192.168.1.22/"$N".git"
+SRC_URI="git://10.0.0.11/"$N".git"
 
-RDEPEND=""
+RDEPEND="dbus dbus-glib eggdbus glib2 glibc polkit zlib"
 BDEPEND=""
 
 pbs_unpack() {

@@ -4,19 +4,15 @@
 
 DESCRIPTION="Support library to deal with Apple Property Lists (Binary & XML)"
 HOMEPAGE="http://libimobiledevice.org/"
-REPO=""
-LICENSE="GPL"
-PRIORITY=""
+LICENSE="GPL LGPL"
 PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 
-SRC_URI="git://github.com/JonathanBeck/libplist.git"
+SRC_URI="http://www.libimobiledevice.org/downloads/"$N-$V".tar.bz2"
 
-RDEPEND=""
-BDEPEND=""
+RDEPEND="gcc glib2 glibc libxml2 python zlib"
+BDEPEND="cmake"
 RECOMMENDED=""
 CONFLICT=""
-
-NOTES=""
 
 pbs_unpack() {
         ypkg_unpack
@@ -34,3 +30,4 @@ pbs_build() {
 pbs_install() {
 	ypkg_mkinstall
 }
+

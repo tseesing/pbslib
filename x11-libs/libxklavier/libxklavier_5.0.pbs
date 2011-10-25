@@ -4,17 +4,14 @@
 
 DESCRIPTION="High level XKB library"
 HOMEPAGE="http://www.freedesktop.org/Software/LibXklavier"
-REPO=""
-LICENSE="GPL-2"
-PACKAGER="<ylmfos@115.com>"
+LICENSE="GPL"
+PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 
-SRC_URI="http://ftp.gnome.org/pub/gnome/sources/"$N"/"$V"/"$N-$V$R".tar.bz2"
+SRC_URI="http://ftp.gnome.org/pub/gnome/sources/"$N"/"$V"/"$N-$V".tar.bz2"
 
-RDEPEND="glib2 gdk-pixbuf glibc libX11 libXau libxcb libXdmcp libXext libXi libxkbfile libxml2 zlib"
-BDEPEND=" iso-codes pkgconfig           "
+RDEPEND="glib2 glibc libX11 libXau libxcb libXdmcp libXext libXi libxkbfile libxml2 zlib"
+BDEPEND="pkgconfig"
 RECOMMENDED=""
-
-NOTES="http://wiki.linuxfromscratch.org/blfs/wiki/libxklavier"
 
 pbs_unpack() {
         ypkg_unpack
@@ -32,3 +29,4 @@ pbs_build() {
 pbs_install() {
 	ypkg_mkinstall
 }
+

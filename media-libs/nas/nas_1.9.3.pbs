@@ -1,0 +1,29 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="Network Audio System"
+HOMEPAGE="http://radscan.com/nas.html"
+LICENSE="custom"
+PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
+
+SRC_URI="http://downloads.sourceforge.net/sourceforge/"$N"/"$N-$V".src.tar.gz"
+
+RDEPEND="glibc libICE libSM libX11 libXau libXaw libxcb libXdmcp libXext libXmu libXpm libXt util-linux-ng"
+BDEPEND="imake"
+RECOMMENDED=""
+CONFLICT=""
+
+pbs_unpack() {
+        ypkg_unpack
+}
+
+pbs_build() {
+	xmkmf
+	ypkg_make World
+}
+
+pbs_install() {
+	ypkg_mkinstall USRLIBDIR=/usr/lib
+}
+

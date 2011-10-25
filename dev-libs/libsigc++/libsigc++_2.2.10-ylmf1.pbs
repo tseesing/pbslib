@@ -7,10 +7,10 @@ HOMEPAGE="http://libsigc.sourceforge.net/"
 LICENSE="GPL-2"
 PACKAGER="Ylmf OS Developer <ylmfos@115.com>"
 
-SRC_URI="http://ftp.gnome.org/pub/gnome/sources/libsigc++/2.2/libsigc++-2.2.10.tar.xz"
+SRC_URI="http://ftp.gnome.org/pub/gnome/sources/"$N"/2.2/"$N-$V".tar.xz"
 
 RDEPEND="gcc glibc"
-BDEPEND=" "
+BDEPEND=""
 
 pbs_unpack() {
         ypkg_unpack
@@ -27,3 +27,4 @@ pbs_build() {
 pbs_install() {
 	ypkg_mkinstall
 }
+

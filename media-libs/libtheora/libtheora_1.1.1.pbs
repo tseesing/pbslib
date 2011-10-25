@@ -4,17 +4,14 @@
 
 DESCRIPTION="The Theora Video Compression Codec"
 HOMEPAGE="http://www.theora.org"
-REPO=""
-LICENSE=""
+LICENSE="GPL"
 PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 
-SRC_URI="http://downloads.xiph.org/releases/theora/"$N-$V$R".tar.bz2"
+SRC_URI="http://downloads.xiph.org/releases/theora/"$N-$V".tar.bz2"
 
 RDEPEND="glibc libogg"
-BDEPEND="  libvorbis-dev libsdl-dev"
+BDEPEND="libvorbis-dev libsdl-dev"
 RECOMMENDED="libvorbis libsdl"
-
-NOTES=""
 
 pbs_unpack() {
         ypkg_unpack
@@ -32,3 +29,4 @@ pbs_install() {
 	make DESTDIR="$YPPATH_DEST" install
 	ypkg_dodoc AUTHORS COPYING README
 }
+

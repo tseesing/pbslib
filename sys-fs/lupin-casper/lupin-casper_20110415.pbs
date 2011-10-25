@@ -3,9 +3,10 @@
 #
 
 DESCRIPTION="Add support for loop-mount installations to casper"
-HOMEPAGE=""
-LICENSE="GPL-2"
-PACKAGER="<ylmfos@115.com>"
+HOMEPAGE="www.ylmf.com"
+LICENSE="GPL"
+PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
+YARCH="any"
 
 SRC_URI="git://git.ylmf.com/"$N".git"
 

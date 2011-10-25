@@ -4,19 +4,14 @@
 
 DESCRIPTION="Video Acceleration (VA) API for Linux"
 HOMEPAGE="http://www.freedesktop.org/wiki/Software/vaapi"
-REPO=""
-LICENSE="GPL"
+LICENSE="MIT"
 PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 
-SRC_URI="git://anongit.freedesktop.org/git/libva"
+SRC_URI="http://cgit.freedesktop.org/"$N"/snapshot/"$N-$V".tar.bz2"
 
-RDEPEND=""
-BDEPEND=" "
+RDEPEND="gcc glibc libdrm libpciaccess libX11 libXau libxcb libXdamage libXdmcp libXext libXfixes libXxf86vm mesa udev"
+BDEPEND=""
 RECOMMENDED=""
-
-NOTES="
-patches: http://www.splitted-desktop.com/~gbeauchesne/libva/
-"
 
 pbs_unpack() {
         ypkg_unpack
@@ -37,3 +32,4 @@ pbs_build() {
 pbs_install() {
 	ypkg_mkinstall
 }
+

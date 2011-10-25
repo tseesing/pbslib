@@ -4,18 +4,16 @@
 
 DESCRIPTION=" makes X.509 certificates and CMS easily accessible to applications"
 HOMEPAGE="http://www.gnupg.org/related_software/libksba"
-LICENSE="GPL-2"
-PACKAGER="<ylmfos@115.com>"
+LICENSE="GPL"
+PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
  
-SRC_URI="ftp://ftp.gnupg.org/gcrypt/"$N"/"$N-$V$R".tar.bz2"
+SRC_URI="ftp://ftp.gnupg.org/gcrypt/"$N"/"$N-$V".tar.bz2"
 
 RDEPEND="glibc libgpg-error"
-BDEPEND=" "
+BDEPEND=""
 RECOMMENDED=""
 
 INSTALL="$N.install"
-
-NOTES=""
 
 pbs_unpack() {
         ypkg_unpack

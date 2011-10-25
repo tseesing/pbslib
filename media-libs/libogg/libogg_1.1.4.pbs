@@ -2,18 +2,16 @@
 # YLmf_OS package build script
 #
 
-DESCRIPTION="The libogg package contains the Ogg file structure. This is useful for creating (encoding) or playing (decoding) a single physical bit stream."
+DESCRIPTION="Ogg bitstream and framing library"
 HOMEPAGE="http://www.annodex.net/software/liboggz"
-LICENSE="GPL-2"
-PACKAGER="<ylmfos@115.com>"
+LICENSE="BSD"
+PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 
-SRC_URI="http://downloads.xiph.org/releases/ogg/"$N-$V$R".tar.gz"
+SRC_URI="http://downloads.xiph.org/releases/ogg/"$N-$V".tar.gz"
 
 RDEPEND="glibc"
 BDEPEND=""
 RECOMMENDED=""
-
-NOTES="http://wiki.linuxfromscratch.org/blfs/wiki/libogg"
 
 pbs_unpack() {
         ypkg_unpack
@@ -30,3 +28,4 @@ pbs_build() {
 pbs_install() {
 	ypkg_mkinstall
 }
+

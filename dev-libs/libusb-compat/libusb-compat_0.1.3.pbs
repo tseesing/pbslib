@@ -7,7 +7,7 @@ HOMEPAGE="http://libusb.sourceforge.net/"
 LICENSE="GPL"
 PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 
-SRC_URI="http://downloads.sourceforge.net/libusb/"$N-$V$R".tar.bz2"
+SRC_URI="http://downloads.sourceforge.net/libusb/"$N-$V".tar.bz2"
 
 RDEPEND="glibc libusb"
 BDEPEND="pkgconfig"

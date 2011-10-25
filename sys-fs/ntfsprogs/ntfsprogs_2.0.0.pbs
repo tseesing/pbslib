@@ -4,13 +4,13 @@
 
 DESCRIPTION="User tools for NTFS filesystems"
 HOMEPAGE="http://www.linux-ntfs.org/"
-LICENSE="GPL-2"
-PACKAGER="<ylmfos@115.com>"
+LICENSE="GPL"
+PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 
-SRC_URI="http://downloads.sourceforge.net/project/linux-ntfs/NTFS%20Tools%20and%20Library/"$V$R"/"$N-$V$R".tar.bz2"
+SRC_URI="http://downloads.sourceforge.net/project/linux-ntfs/NTFS%20Tools%20and%20Library/"$V$R"/"$N-$V".tar.bz2"
 
 RDEPEND="fuse glibc util-linux-ng"
-BDEPEND="  "
+BDEPEND=""
 RECOMMENDED=""
 
 pbs_unpack() {
@@ -29,3 +29,4 @@ pbs_install() {
 	ypkg_mkinstall
 	ypkg_dodoc AUTHORS ChangeLog COPYING INSTALL NEWS README 
 }
+

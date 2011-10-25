@@ -22,3 +22,4 @@ pbs_unpack() {
 pbs_install() {
 	ypkg_docp *  "$YPPATH_DEST"/lib/firmware/nouveau/
 }
+

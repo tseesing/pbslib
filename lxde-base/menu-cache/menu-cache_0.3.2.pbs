@@ -4,12 +4,12 @@
 
 DESCRIPTION="Standard compliant menu library used by LXDE."
 HOMEPAGE="www.lxde.org"
-LICENSE="GPL-2"
-PACKAGER="<ylmfos@115.com>"
+LICENSE="GPL"
+PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 
-SRC_URI="http://nchc.dl.sourceforge.net/project/lxde/menu-cache/menu-cache%200.3.2/"$N-$V$R".tar.gz"
+SRC_URI="http://nchc.dl.sourceforge.net/project/lxde/"$N"/"$N"%200.3.2/"$N-$V".tar.gz"
 
-RDEPEND="glib2 gdk-pixbuf glibc zlib"
+RDEPEND="glib2 glibc zlib"
 BDEPEND=""
 
 pbs_unpack() {
@@ -28,3 +28,4 @@ pbs_build() {
 pbs_install() {
 	ypkg_mkinstall
 }
+

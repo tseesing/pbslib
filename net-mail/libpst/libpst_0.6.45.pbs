@@ -4,23 +4,21 @@
 
 DESCRIPTION="Tools and library for reading Outlook files (.pst format)"
 HOMEPAGE="http://www.five-ten-sg.com/libpst/"
-LICENSE="GPL-2"
-PACKAGER="<ylmfos@115.com>"
+LICENSE="GPL"
+PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 
-SRC_URI="http://www.five-ten-sg.com/"$N"/packages/"$N-$V$R".tar.gz"
+SRC_URI="http://www.five-ten-sg.com/"$N"/packages/"$N-$V".tar.gz"
 
 RDEPEND="expat fontconfig freetype gcc gd glibc libjpeg-turbo libpng libX11 libXau libxcb libXdmcp libXpm zlib"
-BDEPEND="boost-dev              "
+BDEPEND=""
 RECOMMENDED=""
-
-NOTES=""
 
 pbs_unpack() {
         ypkg_unpack
 }
 
 pbs_config() {
-	YPB_CONFIG+="--disable-python --enable-libpst-shared "
+	YPB_CONFIG+="--disable-python --enable-libpst-shared"
 	ypkg_config
 }
 
@@ -32,3 +30,4 @@ pbs_install() {
 	ypkg_mkinstall
 	ypkg_dodoc AUTHORS ChangeLog COPYING INSTALL NEWS README
 }
+

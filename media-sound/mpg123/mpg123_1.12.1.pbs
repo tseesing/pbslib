@@ -4,14 +4,13 @@
 
 DESCRIPTION="a realtime MPEG 1.0/2.0/2.5 audio player for layers 1, 2 and 3"
 HOMEPAGE="http://www.mpg123.org/"
-REPO=""
-LICENSE=""
+LICENSE="GPL"
 PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 
-SRC_URI="http://www.mpg123.org/download/"$N-$V$R".tar.bz2"
+SRC_URI="http://www.mpg123.org/download/"$N-$V".tar.bz2"
 
-RDEPEND="alsa-lib audiofile directfb esound glibc jack-audio-connection-kit libao libid3tag libmad libsdl libtool openal zlib"
-BDEPEND="            "
+RDEPEND="alsa-lib attr audiofile dbus directfb esound flac glibc jack-audio-connection-kit json-c libcap libICE libogg libsamplerate libsdl libSM libsndfile libtool libvorbis libX11 libXau libxcb libXdmcp libXext libXi libXt libXtst nas openal portaudio pulseaudio util-linux-ng zlib"
+BDEPEND=""
 
 pbs_unpack() {
         ypkg_unpack
@@ -28,3 +27,4 @@ pbs_build() {
 pbs_install() {
 	ypkg_mkinstall
 }
+

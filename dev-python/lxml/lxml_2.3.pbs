@@ -4,19 +4,15 @@
 
 DESCRIPTION="A Pythonic binding for the libxml2 and libxslt libraries"
 HOMEPAGE="http://codespeak.net/lxml/ http://pypi.python.org/pypi/lxml"
-REPO=""
-LICENSE="GPL"
-PRIORITY=""
+LICENSE="BSD GPL custom"
 PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 
-SRC_URI="http://lxml.de/files/"$N-$V$R".tgz"
+SRC_URI="http://lxml.de/files/"$N-$V".tgz"
 
 RDEPEND="glibc libgcrypt libgpg-error libxml2 libxslt python zlib"
-BDEPEND="      "
+BDEPEND=""
 RECOMMENDED=""
 CONFLICT=""
-
-NOTES=""
 
 pbs_unpack() {
         ypkg_unpack
@@ -34,3 +30,4 @@ pbs_build() {
 pbs_install() {
 	ypkg_mkinstall
 }
+

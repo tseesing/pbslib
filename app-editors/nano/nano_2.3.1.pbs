@@ -4,19 +4,15 @@
 
 DESCRIPTION="GNU GPL'd Pico clone with more functionality"
 HOMEPAGE="http://www.nano-editor.org/"
-REPO=""
 LICENSE="GPL"
-PRIORITY=""
 PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 
-SRC_URI="http://ftp.gnu.org/pub/gnu/nano/"$N-$V$R".tar.gz"
+SRC_URI="http://ftp.gnu.org/pub/gnu/nano/"$N-$V".tar.gz"
 
-RDEPEND="glibc ncurses"
-BDEPEND=" "
+RDEPEND="file glibc ncurses zlib"
+BDEPEND=""
 RECOMMENDED=""
 CONFLICT=""
-
-NOTES=""
 
 pbs_unpack() {
         ypkg_unpack
@@ -33,3 +29,4 @@ pbs_build() {
 pbs_install() {
 	ypkg_mkinstall
 }
+

@@ -1,0 +1,36 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION=" Notifications daemon"
+HOMEPAGE="http://www.galago-project.org/"
+LICENSE="GPL"
+PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
+
+SRC_URI="http://ftp.gnome.org/pub/gnome/sources/"$N"/0.5/"$N-$V".tar.bz2"
+
+RDEPEND="atk cairo dbus dbus-glib expat fontconfig freetype gcc gconf gdk-pixbuf glib2 glibc gtk+ libcanberra libICE libnotify libogg libpng libSM libtool libvorbis libwnck libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libXrandr libXrender libXres orbit pango pixman startup-notification tdb util-linux-ng zlib"
+BDEPEND=""
+RECOMMENDED=""
+
+INSTALL="$N.install"
+
+pbs_unpack() {
+        ypkg_unpack
+}
+
+pbs_config() {
+	YPB_CONFIG+="--disable-schemas-install"
+	ypkg_config
+}
+
+pbs_build() {
+	ypkg_make
+}
+
+pbs_install() {
+	ypkg_mkinstall
+	ypkg_dodoc AUTHORS COPYING NEWS README
+	rm "$YPPATH_DEST"/usr/share/applications/notification-properties.desktop || return 0
+}
+

@@ -3,21 +3,18 @@
 #
 
 DESCRIPTION="Library for manipulating Unicode strings and C strings according to the Unicode standard"
-HOMEPAGE=""
-REPO=""
+HOMEPAGE="http://www.gnu.org/software/libunistring/"
 LICENSE="GPL"
 PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 
-SRC_URI="http://ftp.gnu.org/gnu/"$N"/"$N-$V$R".tar.gz"
+SRC_URI="http://ftp.gnu.org/gnu/"$N"/"$N-$V".tar.gz"
 
-RDEPEND=""
+RDEPEND="glibc"
 BDEPEND=""
 RECOMMENDED=""
 CONFLICT=""
 
 INSTALL="$N.install"
-
-NOTES=""
 
 pbs_unpack() {
         ypkg_unpack

@@ -2,15 +2,15 @@
 # YLmf_OS package build script
 #
 
-DESCRIPTION="libtasn1 is a highly portable C library that encodes and decodes DER/BER data following an ASN.1 schema."
+DESCRIPTION="The ASN.1 library used in GNUTLS"
 HOMEPAGE="http://www.gnu.org/software/libtasn1/"
-LICENSE="GPL-2"
-PACKAGER="<ylmfos@115.com>"
+LICENSE="GPL"
+PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 
-SRC_URI="http://mirrors.kernel.org/gnu/"$N"/"$N-$V$R".tar.gz"
+SRC_URI="http://mirrors.kernel.org/gnu/"$N"/"$N-$V".tar.gz"
 
 RDEPEND="glibc"
-BDEPEND="gtk-doc "
+BDEPEND="gtk-doc"
 
 INSTALL="$N.install"
 
@@ -33,6 +33,6 @@ pbs_build() {
 
 pbs_install() {
 	ypkg_mkinstall
-	ypkg_dodoc doc/libtasn1.{html,pdf,ps}
 }
+
 

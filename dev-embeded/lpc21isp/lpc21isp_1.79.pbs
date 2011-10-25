@@ -4,11 +4,10 @@
 
 DESCRIPTION="In-circuit programming (ISP) tool for the NXP (Philips) ARM microcontrollers"
 HOMEPAGE="http://sourceforge.net/projects/lpc21isp/"
-REPO=""
-LICENSE=""
+LICENSE="GPL"
 PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 
-SRC_URI="http://downloads.sourceforge.net/project/"$N"/"$N"/"$V"/"$N-$V$R".tar.gz"
+SRC_URI="http://downloads.sourceforge.net/project/"$N"/"$N"/"$V"/"$N-$V".tar.gz"
 
 RDEPEND="glibc"
 BDEPEND=""
@@ -25,3 +24,4 @@ pbs_install() {
 	ypkg_docp lpc21isp "$YPPATH_DEST"/usr/bin/
 	chmod 755 "$YPPATH_DEST"/usr/bin/lpc21isp
 }
+

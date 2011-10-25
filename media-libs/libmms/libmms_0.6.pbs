@@ -4,13 +4,13 @@
 
 DESCRIPTION="Common library for accessing Microsoft Media Server (MMS) media streaming protocol"
 HOMEPAGE="http://sourceforge.net/projects/libmms/ http://launchpad.net/libmms/"
-LICENSE="GPL-2"
-PACKAGER="<ylmfos@115.com>"
+LICENSE="GPL"
+PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 
-SRC_URI="http://downloads.sourceforge.net/project/"$N"/"$N"/"$V$R"/"$N-$V$R".tar.gz"
+SRC_URI="http://downloads.sourceforge.net/project/"$N"/"$N"/"$V"/"$N-$V".tar.gz"
 
-RDEPEND="glib2 gdk-pixbuf glibc"
-BDEPEND=" "
+RDEPEND="glib2 glibc"
+BDEPEND=""
 RECOMMENDED=""
 
 pbs_unpack() {
@@ -29,3 +29,4 @@ pbs_install() {
 	ypkg_mkinstall
 	ypkg_dodoc AUTHORS ChangeLog INSTALL NEWS README 
 }
+

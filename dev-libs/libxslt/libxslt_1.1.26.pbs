@@ -4,14 +4,13 @@
 
 DESCRIPTION="XSLT libraries and tools"
 HOMEPAGE="http://www.xmlsoft.org/"
-REPO=""
-LICENSE=""
+LICENSE="GPL"
 PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 
-SRC_URI="ftp://xmlsoft.org/libxml2/"$N-$V$R".tar.gz"
+SRC_URI="ftp://xmlsoft.org/libxml2/"$N-$V".tar.gz"
 
 RDEPEND="glibc libgcrypt libgpg-error libxml2 zlib"
-BDEPEND="    "
+BDEPEND=""
 
 pbs_unpack() {
         ypkg_unpack
@@ -29,3 +28,4 @@ pbs_build() {
 pbs_install() {
 	ypkg_mkinstall
 }
+

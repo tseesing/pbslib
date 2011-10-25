@@ -4,8 +4,9 @@
 
 DESCRIPTION="Provides /etc/mime.types file"
 HOMEPAGE="www.ylmf.net"
-LICENSE="GPL-2"
-PACKAGER="<ylmfos@115.com>"
+LICENSE="GPL"
+YARCH="any"
+PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
  
 SRC_URI=""
 
@@ -13,8 +14,7 @@ RDEPEND=""
 BDEPEND=""
 RECOMMENDED=""
 
-NOTES=""
-
 pbs_install() {
 	ypkg_docp "$FILES_PATH"/files/mime.types  "$YPPATH_DEST"/etc
 }
+

@@ -4,10 +4,10 @@
 
 DESCRIPTION="Lists open files for running Unix processes"
 HOMEPAGE="http://people.freebsd.org/~abe/"
-LICENSE="GPL-2"
-PACKAGER="<ylmfos@115.com>"
+LICENSE="custom"
+PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 
-SRC_URI="ftp://lug.mtu.edu/gentoo/distfiles/"${N}_$V$R".tar.bz2"
+SRC_URI="ftp://lug.mtu.edu/gentoo/distfiles/"${N}_$V".tar.bz2"
 
 RDEPEND="glibc"
 BDEPEND=""

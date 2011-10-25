@@ -11,7 +11,7 @@ PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 SRC_URI="http://people.freedesktop.org/~aplattner/vdpau/"$N-$V".tar.gz"
 
 RDEPEND="gcc glibc libX11 libXau libxcb libXdmcp libXext"
-BDEPEND="      "
+BDEPEND=""
 RECOMMENDED=""
 
 pbs_unpack() {

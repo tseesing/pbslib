@@ -1,9 +1,33 @@
 . /usr/lib/ybs/funcs
 
+unit="NetworkManager.service"
+
 post_install() {
 	ypkg_groupadd -r "netdev"
+
+	# Systemd unit
+	systemctl enable $unit
+	start $unit
+	return 0
 }
 
 post_remove() {
 	ypkg_groupdel "netdev"
+	stop $unit
+	systemctl disable $unit
+	return 0
 }
+
+post_upgrade() {
+	# Systemd unit
+	systemctl --system daemon-reload
+	systemctl enable $unit
+	restart $unit
+	return 0
+}
+
+pos_downgrade() {
+	post_upgrade
+}
+
+

@@ -9,7 +9,7 @@ LICENSE="GPL PerlArtistic"
 
 SRC_URI="http://search.cpan.org/CPAN/authors/id/D/DA/DANBERR/Net-DBus-"$V".tar.gz"
 
-RDEPEND="dbus xml-twig"
+RDEPEND="dbus glibc xml-twig"
 BDEPEND=""
 RECOMMENDED=""
 
