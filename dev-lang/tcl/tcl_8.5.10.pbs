@@ -4,12 +4,12 @@
 
 DESCRIPTION="Tool Command Language"
 HOMEPAGE="http://www.tcl.tk/"
-LICENSE="GPL-2"
-PACKAGER="<ylmfos@115.com>"
+LICENSE="GPL"
+PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
  
-SRC_URI="http://downloads.sourceforge.net/"$N"/"$N$V$R"-src.tar.gz"
+SRC_URI="http://downloads.sourceforge.net/"$N"/"$N$V"-src.tar.gz"
 
-RDEPEND=""
+RDEPEND="glibc"
 BDEPEND=""
 
 pbs_unpack() {
@@ -31,7 +31,7 @@ pbs_install() {
 	ypkg_dodoc ../license.terms
 	cd "$YPPATH_DEST"
 	ypkg_doln /usr/bin/tclsh8.5 usr/bin/tclsh 
-	# remove buildroot traces
+	# Remove buildroot traces
 	sed -i \
 	    -e "s,^TCL_BUILD_LIB_SPEC='-L.*/unix,TCL_BUILD_LIB_SPEC='-L/usr/lib," \
 	    -e "s,^TCL_SRC_DIR='.*',TCL_SRC_DIR='/usr/include'," \

@@ -5,9 +5,9 @@
 DESCRIPTION="Port of 7-Zip archiver for Unix"
 HOMEPAGE="http://p7zip.sourceforge.net/"
 LICENSE="LGPL-2.1"
-PACKAGER="<ylmfos@115.com>"
+PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 
-SRC_URI="http://downloads.sourceforge.net/project/"$N"/"$N"/"$V"/"${N}"_"$V${R}"_src_all.tar.bz2"
+SRC_URI="http://downloads.sourceforge.net/project/"$N"/"$N"/"$V"/"${N}"_"$V"_src_all.tar.bz2"
 
 RDEPEND="gcc glibc"
 BDEPEND=" "
@@ -27,7 +27,8 @@ pbs_build() {
 
 pbs_install() {
 	make install
-	cd "$YPPATH_DEST"
+	mkdir -p "$YPPATH_DEST" && cd "$YPPATH_DEST"
+
 	ypkg_domv /usr/local/share/doc/p7zip  usr/share/doc
 	ypkg_domv /usr/local/man/man1/7z*     usr/share/man/man1
 	ypkg_domv /usr/local/lib/p7zip        usr/lib
@@ -35,3 +36,4 @@ pbs_install() {
 	chmod 755  usr/bin/7z*
 	sed  -i 's/local\///g' usr/bin/7z*
 }
+

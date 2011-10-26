@@ -1,0 +1,31 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="Open Source 3D acceleration driver for nVidia cards (experimental)"
+HOMEPAGE="http://nouveau.freedesktop.org/"
+LICENSE="MIT"
+PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
+
+SRC_URI="git://anongit.freedesktop.org/git/nouveau/"$N"/"
+
+RDEPEND="glibc libdrm udev"
+BDEPEND="dri2proto fontsproto randrproto renderproto videoproto xextproto xf86driproto xproto"
+RECOMMENDED=""
+	
+pbs_unpack() {
+        ypkg_unpack
+}
+
+pbs_config() {
+        ypkg_config
+}
+
+pbs_build() {
+        ypkg_make
+}
+
+pbs_install() {
+       ypkg_mkinstall
+}
+

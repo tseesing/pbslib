@@ -4,11 +4,13 @@
 
 DESCRIPTION="Terminal Emulator for X Windows"
 HOMEPAGE="http://invisible-island.net/xterm/xterm.html"
- 
+LICENSE="GPL"
+PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
+
 SRC_URI="http://invisible-island.net/datafiles/release/"$N".tar.gz"
 
 RDEPEND="expat fontconfig freetype glibc libICE libSM libX11 libXau libXaw libxcb libXdmcp libXext libXft libXmu libXpm libXrender libXt ncurses util-linux-ng zlib"
-BDEPEND="                   "
+BDEPEND=""
 
 pbs_unpack() {
         ypkg_unpack
@@ -25,3 +27,4 @@ pbs_build() {
 pbs_install() {
 	ypkg_mkinstall
 }
+

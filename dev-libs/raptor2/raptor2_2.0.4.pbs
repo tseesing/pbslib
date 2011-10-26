@@ -4,17 +4,14 @@
 
 DESCRIPTION="Raptor RDF parser and serializer utilities"
 HOMEPAGE="http://librdf.org/raptor/"
-REPO=""
 LICENSE="GPL"
 PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 
-SRC_URI="http://download.librdf.org/source/"$N-$V$R".tar.gz"
+SRC_URI="http://download.librdf.org/source/"$N-$V".tar.gz"
 
-RDEPEND="curl cyrus-sasl glibc libxml2 libxslt openldap openssl zlib"
-BDEPEND="       "
+RDEPEND="curl cyrus-sasl glibc libidn libxml2 libxslt openldap openssl zlib"
+BDEPEND=""
 RECOMMENDED=""
-
-NOTES=""
 
 pbs_unpack() {
         ypkg_unpack
@@ -31,3 +28,4 @@ pbs_build() {
 pbs_install() {
 	ypkg_mkinstall
 }
+

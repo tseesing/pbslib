@@ -4,27 +4,28 @@
 
 DESCRIPTION="a strictly RFC 3986 compliant URI parsing library written in C"
 HOMEPAGE="http://uriparser.sourceforge.net/"
-LICENSE="GPL-2"
-PACKAGER="<ylmfos@115.com>"
+LICENSE="custom"
+PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
  
-SRC_URI="http://downloads.sourceforge.net/project/"$N"/Sources/"$V$R"/"$N-$V$R".tar.gz"
+SRC_URI="http://downloads.sourceforge.net/project/"$N"/Sources/"$V"/"$N-$V".tar.gz"
 
 RDEPEND="glibc"
-BDEPEND="cpptest "
+BDEPEND="cpptest"
 
 pbs_unpack() {
         ypkg_unpack
 }
 
 pbs_config() {
-	YPB_CONFIG+=""
 	ypkg_config
 }
 
 pbs_build() {
+	ln -sf "$PWD"/doc/Doxyfile.in doc/Doxyfile
 	ypkg_make
 }
 
 pbs_install() {
 	ypkg_mkinstall
 }
+

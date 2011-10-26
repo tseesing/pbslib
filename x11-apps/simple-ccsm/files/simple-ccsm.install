@@ -5,6 +5,13 @@ post_install() {
 }
 
 post_remove() {
-	gnome2_icon_cache_update
+	post_install
 }
 
+post_upgrade() {
+	post_install
+}
+
+post_downgrade() {
+	post_install
+}

@@ -4,11 +4,13 @@
 
 DESCRIPTION="Uncompress rar files"
 HOMEPAGE="http://www.rarlab.com/rar_add.htm"
- 
+LICENSE="custom"
+PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
+
 SRC_URI="http://www.rarlab.com/rar/unrarsrc-"$V".tar.gz"
 
 RDEPEND="gcc glibc"
-BDEPEND=" "
+BDEPEND=""
 
 pbs_unpack() {
 	ypkg_unpack
@@ -22,3 +24,4 @@ pbs_install() {
 	mkdir -p "$YPPATH_DEST"/usr/bin
 	make -f makefile.unix DESTDIR="$YPPATH_DEST"/usr install
 }
+

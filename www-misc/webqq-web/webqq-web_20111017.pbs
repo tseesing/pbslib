@@ -6,11 +6,12 @@ DESCRIPTION="webqq web"
 HOMEPAGE="www.ylmf.net"
 REPO="stable"
 LICENSE="GPL-2"
-PACKAGER="<ylmfos@115.com>"
+PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 
-RDEPEND=" xdg-utils"
+RDEPEND="xdg-utils"
 BDEPEND=""
 
 pbs_install() {
 	ypkg_dodesktop "$N.desktop" "$N.png"
 }
+

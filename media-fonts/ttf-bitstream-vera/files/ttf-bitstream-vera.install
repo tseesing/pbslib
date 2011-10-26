@@ -2,4 +2,16 @@
 
 post_install() {
 	ypkg_dofont /usr/share/fonts/ttf-bitstream-vera
-}     
+}
+
+post_remove() {
+	post_install
+}
+
+post_upgrade() {
+	post_install
+}
+
+post_downgrade() {
+	post_install
+}

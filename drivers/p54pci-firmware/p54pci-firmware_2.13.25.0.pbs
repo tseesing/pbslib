@@ -4,11 +4,11 @@
 
 DESCRIPTION="Supports PC Card and Mini PCI devices with an ISL3877, ISL3880, ISL3886 or ISL3890 chipset"
 HOMEPAGE="http://wireless.kernel.org/en/users/Drivers/p54#firmware"
-REPO=""
-LICENSE=""
+LICENSE="custom"
 PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
+YARCH="any"
 
-SRC_URI="http://daemonizer.de/prism54/prism54-fw/fw-softmac/2.13.25.0.arm"
+SRC_URI="http://daemonizer.de/prism54/prism54-fw/fw-softmac/"$V".arm"
 
 RDEPEND=""
 BDEPEND=""

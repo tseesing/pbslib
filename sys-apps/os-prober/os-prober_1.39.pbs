@@ -4,10 +4,10 @@
 
 DESCRIPTION="Utility to detect other OSs on a set of drives"
 HOMEPAGE="http://packages.debian.org/source/sid/os-prober"
-LICENSE="GPL-2"
-PACKAGER="<ylmfos@115.com>"
+LICENSE="GPL"
+PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 
-SRC_URI="http://ftp.de.debian.org/debian/pool/main/o/"$N"/"${N}_$V$R".tar.gz"
+SRC_URI="http://ftp.de.debian.org/debian/pool/main/o/"$N"/"${N}_$V".tar.gz"
 
 RDEPEND="glibc"
 BDEPEND=""
@@ -48,3 +48,4 @@ pbs_install() {
 	      usr/lib/os-probes/init/common usr/lib/os-probes/mounted/common usr/lib/os-probes/common \
 	      usr/lib/os-probes/mounted/x86 usr/lib/linux-boot-probes/mounted/x86
 }
+

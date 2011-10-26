@@ -5,11 +5,26 @@ if [ -f /etc/ylmfos-release ]; then
 fi
 
 case "$1" in 
-	-i)	echo $DISTRIB_ID ;;
-	-r)	echo $DISTRIB_RELEASE ;;
-	-c)	echo $DISTRIB_CODENAME ;;
-	-d)     echo $DISTRIB_DESCRIPTION ;;
-	*)	cat <<OOO
+	-i|--id)		echo $DISTRIB_ID ;;
+	-r|--release)		echo $DISTRIB_RELEASE ;;
+	-c|--codename)		echo $DISTRIB_CODENAME ;;
+	-d|--description)     	echo $DISTRIB_DESCRIPTION ;;
+	-h|--help)	
+cat <<OOO
+Usage: $0 [options]
+
+Options:	
+	-i, --id           show distributor ID
+        -d, --description  show description of this distribution
+        -r, --release      show release number of this distribution
+        -c, --codename     show code name of this distribution
+        -a, --all          show all of the above information
+	-h, --help         show this help
+OOO
+		;;
+
+	*)
+cat <<OOO
 ID:$DISTRIB_ID
 Release:$DISTRIB_RELEASE
 Codename:$DISTRIB_CODENAME

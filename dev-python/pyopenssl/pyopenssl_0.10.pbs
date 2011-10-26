@@ -4,13 +4,13 @@
 
 DESCRIPTION="Python interface to the OpenSSL library"
 HOMEPAGE="http://pyopenssl.sourceforge.net/ http://pypi.python.org/pypi/pyOpenSSL"
-LICENSE="GPL-2"
-PACKAGER="<ylmfos@115.com>"
+LICENSE="GPL"
+PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 
-SRC_URI="http://pypi.python.org/packages/source/p/pyOpenSSL/pyOpenSSL-"$V$R".tar.gz"
+SRC_URI="http://pypi.python.org/packages/source/p/pyOpenSSL/pyOpenSSL-"$V".tar.gz"
 
-RDEPEND="glibc openssl python"
-BDEPEND="  "
+RDEPEND="glibc openssl python zlib"
+BDEPEND=""
 RECOMMENDED=""
 
 pbs_unpack() {
@@ -24,3 +24,4 @@ pbs_build() {
 pbs_install() {
 	ypkg_mkinstall
 }
+

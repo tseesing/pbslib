@@ -5,8 +5,9 @@
 DESCRIPTION="Small utilities that use the /proc filesystem"
 HOMEPAGE="http://psmisc.sourceforge.net/"
 LICENSE="GPL"
- 
-SRC_URI="http://downloads.sourceforge.net/project/"$N"/"$N"/"$N-$V$R".tar.gz"
+PACKAGER="Ylmf OS Developers <ylmfos@115.com>" 
+
+SRC_URI="http://downloads.sourceforge.net/project/"$N"/"$N"/"$N-$V".tar.gz"
 
 RDEPEND="glibc ncurses"
 BDEPEND=" "

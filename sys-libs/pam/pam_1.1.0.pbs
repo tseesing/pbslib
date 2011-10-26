@@ -4,13 +4,13 @@
 
 DESCRIPTION="Linux-PAM (Pluggable Authentication Modules)"
 HOMEPAGE="http://www.kernel.org/pub/linux/libs/pam/"
-LICENSE="GPL-2"
-PACKAGER="<ylmfos@115.com>"
+LICENSE="GPL"
+PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 
-SRC_URI="http://www.kernel.org/pub/linux/libs/"$N"/library/Linux-PAM-"$V$R".tar.bz2"
+SRC_URI="http://www.kernel.org/pub/linux/libs/"$N"/library/Linux-PAM-"$V".tar.bz2"
 
 RDEPEND="berkeley-db glibc"
-BDEPEND=" "
+BDEPEND=""
 
 pbs_unpack() {
         ypkg_unpack
@@ -31,6 +31,7 @@ pbs_build() {
 
 pbs_install() {
 	ypkg_mkinstall
+	
 	cd "$YPPATH_DEST"
 	chmod 4755 lib/security/unix_chkpwd
 	ypkg_domv  lib/security/pam_tally  sbin
@@ -131,3 +132,4 @@ account    required     pam_permit.so
 EOF
 	       done
 }
+

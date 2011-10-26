@@ -4,17 +4,15 @@
 
 DESCRIPTION="a Python library for working with RDF, a simple yet powerful language for representing information."
 HOMEPAGE="http://rdflib.net/"
-REPO=""
 LICENSE="New BSD License"
 PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
+YARCH="any"
 
-SRC_URI="rdflib-3.0.0.tar.gz"
+SRC_URI="$N-$V.tar.gz"
 
-RDEPEND=""
+RDEPEND="python"
 BDEPEND=""
 RECOMMENDED=""
-
-NOTES=""
 
 pbs_unpack() {
         ypkg_unpack

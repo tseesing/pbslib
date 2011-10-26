@@ -4,13 +4,13 @@
 
 DESCRIPTION="PC/SC Architecture smartcard middleware library"
 HOMEPAGE="http://www.linuxnet.com/middle.html"
-LICENSE=""
-PACKAGER="<ylmfos@115.com>"
+LICENSE="GPL"
+PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 
-SRC_URI="https://alioth.debian.org/frs/download.php/3082/"$N-$V$R".tar.bz2"
+SRC_URI="https://alioth.debian.org/frs/download.php/3082/"$N-$V".tar.bz2"
 
-RDEPEND="dbus glibc hal"
-BDEPEND="  "
+RDEPEND="dbus gcc glibc hal libsmbios"
+BDEPEND=""
 RECOMMENDED=""
 
 pbs_unpack() {
@@ -27,5 +27,6 @@ pbs_build() {
 
 pbs_install() {
 	ypkg_mkinstall
-	ypkg_dodoc  AUTHORS ChangeLog COPYING INSTALL NEWS README
+	ypkg_dodoc AUTHORS ChangeLog COPYING INSTALL NEWS README
 }
+

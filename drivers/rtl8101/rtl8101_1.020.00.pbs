@@ -4,21 +4,19 @@
 
 DESCRIPTION="RealTek RTL8101E, RTL8102E(L) and RTL8103E(L), the Fast Ethernet controller with PCI-Express interface."
 HOMEPAGE="http://www.realtek.com.tw"
-REPO=""
-LICENSE=""
+LICENSE="GPL"
 PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 
 SRC_URI="ftp://WebUser:fh7SkVT4@210.51.181.211/cn/nic/r8101-1.020.00.tar.bz2"
 
 RDEPEND=""
 BDEPEND=""
-RECOMMENDED=""
+RECOMMENDED="build-essential"
 CONFLICT=""
 
 INSTALL="$N.install"
-OPINION="nodev"
 
-NOTES=""
+OPINION="nodev"
 
 pbs_unpack() {
         ypkg_unpack

@@ -7,7 +7,7 @@ HOMEPAGE="http://www.gnu.org/software/tar/"
 LICENSE="GPLv3"
 PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 
-SRC_URI="http://ftp.gnu.org/gnu/tar/"$N-$V$R".tar.bz2"
+SRC_URI="http://ftp.gnu.org/gnu/tar/"$N-$V".tar.bz2"
 
 RDEPEND="glibc"
 BDEPEND=""

@@ -4,16 +4,15 @@
 
 DESCRIPTION="Python interface to SGML software in a DocBook/OpenJade env"
 HOMEPAGE="http://sgmltools-lite.sourceforge.net/"
-LICENSE="GPL-2"
-PACKAGER="<ylmfos@115.com>"
+LICENSE="GPL"
+PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
+YARCH="any"
  
-SRC_URI="http://downloads.sourceforge.net/project/"$N"/"$N"/"$V$R"/"$N-$V$R".tar.gz"
+SRC_URI="http://downloads.sourceforge.net/project/"$N"/"$N"/"$V"/"$N-$V".tar.gz"
 
 RDEPEND=""
 BDEPEND="openjade"
 RECOMMENDED=""
-
-NOTES=""
 
 pbs_unpack() {
         ypkg_unpack
@@ -39,3 +38,4 @@ pbs_install() {
 	ypkg_docp catalog.rh62 catalog.suse aliases "$YPPATH_DEST"/etc/sgml
 	ypkg_docp VERSION "$YPPATH_DEST"/usr/share/sgml/misc/sgmltools
 }
+

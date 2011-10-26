@@ -29,7 +29,7 @@ pbs_install() {
 	ypkg_mkinstall
 	cd "$YPPATH_DEST"
 	
-	#for FHS compliant
+	# For FHS compliant
 	ypkg_domv usr/lib/libz.so.* lib"$LIBDIRSUFFIX"
 	ypkg_doln /lib/libz.so.1    usr/lib"$LIBDIRSUFFIX"/libz.so 
 }

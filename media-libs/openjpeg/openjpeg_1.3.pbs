@@ -4,14 +4,13 @@
 
 DESCRIPTION="An open-source JPEG 2000 codec written in C"
 HOMEPAGE="http://www.openjpeg.org/"
-REPO=""
-LICENSE=""
+LICENSE="GPL"
 PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 
 SRC_URI="http://openjpeg.googlecode.com/files/"${N}"_v1_3.tar.gz"
 
 RDEPEND="gcc glibc"
-BDEPEND=" "
+BDEPEND=""
 
 pbs_unpack() {
         ypkg_unpack
@@ -24,3 +23,4 @@ pbs_build() {
 pbs_install(){
 	ypkg_mkinstall
 }
+

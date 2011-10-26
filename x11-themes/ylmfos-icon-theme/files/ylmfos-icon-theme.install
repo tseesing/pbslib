@@ -5,3 +5,10 @@ post_install() {
 	gnome2_icon_cache_update "titans"
 }
 
+post_upgrade() {
+	gnome2_icon_cache_update "titans"
+}
+
+post_downgrade() {
+	gnome2_icon_cache_update "titans"
+}

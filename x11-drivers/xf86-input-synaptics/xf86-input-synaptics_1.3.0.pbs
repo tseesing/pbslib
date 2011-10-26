@@ -4,13 +4,13 @@
 
 DESCRIPTION="Driver for Synaptics touchpads"
 HOMEPAGE="http://cgit.freedesktop.org/xorg/driver/xf86-input-synaptics/"
-LICENSE="GPL-2"
-PACKAGER="<ylmfos@115.com>"
+LICENSE="GPL"
+PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 
-SRC_URI="http://www.x.org/releases/X11R7.6/src/driver/"$N-$V$R".tar.bz2"
+SRC_URI="http://www.x.org/releases/X11R7.6/src/driver/"$N-$V".tar.bz2"
 
 RDEPEND="glibc libX11 libXau libxcb libXdmcp libXext libXi libXtst"
-BDEPEND="xorg-server-dev        "
+BDEPEND="xorg-server-dev"
 
 pbs_unpack() {
         ypkg_unpack
@@ -28,3 +28,4 @@ pbs_build() {
 pbs_install() {
 	ypkg_mkinstall
 }	
+

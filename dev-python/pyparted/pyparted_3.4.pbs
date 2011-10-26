@@ -4,16 +4,14 @@
 
 DESCRIPTION="Python bindings for sys-apps/parted"
 HOMEPAGE="https://fedorahosted.org/pyparted/"
-LICENSE="GPL-2"
-PACKAGER="<ylmfos@115.com>"
+LICENSE="GPL"
+PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 
-SRC_URI="https://fedorahosted.org/releases/p/y/"$N"/"$N-$V$R".tar.gz"
+SRC_URI="https://fedorahosted.org/releases/p/y/"$N"/"$N-$V".tar.gz"
 
-RDEPEND="device-mapper glibc parted python util-linux-ng"
-BDEPEND="decorator     "
+RDEPEND="device-mapper glibc parted python udev util-linux-ng"
+BDEPEND="decorator"
 RECOMMENDED=""
-
-NOTES=""
 
 pbs_unpack() {
         ypkg_unpack

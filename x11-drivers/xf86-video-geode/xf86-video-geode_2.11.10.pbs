@@ -4,13 +4,13 @@
 
 DESCRIPTION="AMD Geode GX and LX video driver"
 HOMEPAGE="http://xorg.freedesktop.org/"
-LICENSE="GPL-2"
-PACKAGER="<ylmfos@115.com>"
+LICENSE="GPL"
+PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 
-SRC_URI="http://www.x.org/releases/X11R7.6/src/driver/"$N-$V$R".tar.bz2"
+SRC_URI="http://www.x.org/releases/X11R7.6/src/driver/"$N-$V".tar.bz2"
 
 RDEPEND="glibc"
-BDEPEND=" xorg-server-dev"
+BDEPEND="xorg-server-dev"
 
 pbs_unpack() {
         ypkg_unpack
@@ -28,3 +28,4 @@ pbs_build() {
 pbs_install() {
 	ypkg_mkinstall
 }
+

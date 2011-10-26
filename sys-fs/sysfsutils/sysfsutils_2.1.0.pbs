@@ -4,10 +4,10 @@
 
 DESCRIPTION="System Utilities Based on Sysfs"
 HOMEPAGE="http://linux-diag.sourceforge.net/Sysfsutils.html"
-LICENSE="GPL-2"
-PACKAGER="<ylmfos@115.com>"
+LICENSE="GPL"
+PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 
-SRC_URI="http://downloads.sourceforge.net/linux-diag/"$N-$V$R".tar.gz"
+SRC_URI="http://downloads.sourceforge.net/linux-diag/"$N-$V".tar.gz"
 
 RDEPEND="glibc"
 BDEPEND=""
@@ -29,3 +29,4 @@ pbs_install() {
 	ypkg_mkinstall
 	ypkg_dodoc AUTHORS ChangeLog COPYING INSTALL NEWS README
 }
+

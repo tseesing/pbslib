@@ -1,9 +1,12 @@
 . /usr/lib/ybs/funcs
 
+files="rluserman.info.gz readline.info.gz history.info.gz"
+
 post_install() {
-        ypkg_install_info rluserman.info.gz readline.info.gz history.info.gz  
+        ypkg_install_info $files
 }       
 
 pre_remove() {
-	ypkg_remove_info rluserman.info.gz readline.info.gz history.info.gz
+	ypkg_remove_info $files
 }
+

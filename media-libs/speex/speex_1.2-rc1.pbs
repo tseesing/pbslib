@@ -4,19 +4,15 @@
 
 DESCRIPTION="Audio compression format designed for speech."
 HOMEPAGE=" http://www.speex.org"
-REPO=""
 LICENSE="GPL"
-PRIORITY=""
 PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 
-SRC_URI="http://downloads.xiph.org/releases/"$N"/"$N"-1.2rc1.tar.gz"
+SRC_URI="http://downloads.xiph.org/releases/"$N"/"$N-$V"rc1.tar.gz"
 
 RDEPEND="glibc libogg"
 BDEPEND=" "
 RECOMMENDED=""
 CONFLICT=""
-
-NOTES=""
 
 pbs_unpack() {
         ypkg_unpack
@@ -34,3 +30,4 @@ pbs_build() {
 pbs_install() {
 	ypkg_mkinstall
 }
+

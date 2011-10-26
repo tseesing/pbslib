@@ -4,10 +4,10 @@
 
 DESCRIPTION="a collection of ylmfos bug fixed scripts"
 HOMEPAGE="www.ylmf.org"
-REPO=""
 LICENSE="GPL"
 PRIORITY="required"
 PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
+YARCH="any"
 
 SRC_URI=""
 
@@ -17,8 +17,6 @@ RDEPEND=""
 BDEPEND=""
 RECOMMENDED="libbluray enca lzo a52dec nas mplayer systemd"
 CONFLICT=""
-
-NOTES=""
 
 pbs_install() {
 	mkdir -p "$YPPATH_DEST"/usr/share/"$N"

@@ -4,19 +4,15 @@
 
 DESCRIPTION="A C++ library that lets developers create applications"
 HOMEPAGE="http://wxwidgets.org/"
-REPO=""
 LICENSE="GPL"
-PRIORITY=""
 PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 
-SRC_URI="http://downloads.sourceforge.net/project/wxwindows/"$V$R"/"$N-$V$R".tar.bz2"
+SRC_URI="http://downloads.sourceforge.net/project/wxwindows/"$V"/"$N-$V".tar.bz2"
 
-RDEPEND="atk cairo expat fontconfig freetype gcc glib2 gdk-pixbuf glibc gtk+ libICE libjpeg-turbo libpng libSM libtiff libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libXinerama libXrandr libXrender libXxf86vm pango pixman util-linux-ng wxGTK zlib"
-BDEPEND="                                "
+RDEPEND="atk cairo expat fontconfig freetype gcc gdk-pixbuf glib2 glibc gtk+ libICE libjpeg-turbo libpng libSM libtiff libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libXinerama libXrandr libXrender libXxf86vm pango pixman util-linux-ng wxGTK zlib"
+BDEPEND=""
 RECOMMENDED=""
 CONFLICT=""
-
-NOTES=""
 
 pbs_unpack() {
         ypkg_unpack
@@ -34,3 +30,4 @@ pbs_build() {
 pbs_install() {
 	ypkg_mkinstall
 }
+

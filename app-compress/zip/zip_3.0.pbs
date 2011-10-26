@@ -4,8 +4,7 @@
 
 DESCRIPTION="Info ZIP (encryption support)"
 HOMEPAGE="http://www.info-zip.org/Zip.html"
-REPO=""
-LICENSE=""
+LICENSE="GPL"
 PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 
 SRC_URI="http://downloads.sourceforge.net/infozip/"$N"30.tar.gz"
@@ -27,3 +26,4 @@ pbs_install() {
 	cd "$YPPATH_DEST"
 	ypkg_domv usr/man usr/share
 }
+

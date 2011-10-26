@@ -4,8 +4,10 @@
 
 DESCRIPTION="interchange between cut buffer and selection"
 HOMEPAGE="http://xorg.freedesktop.org/"
- 
-SRC_URI="http://xorg.freedesktop.org/releases/individual/app/$N-$V$R.tar.bz2"
+LICENSE="GPL"
+PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
+
+SRC_URI="http://xorg.freedesktop.org/releases/individual/app/"$N-$V".tar.bz2"
 
 RDEPEND="glibc libICE libSM libX11 libXau libXaw libxcb libXdmcp libXext libxkbfile libXmu libXpm libXt util-linux-ng"
 BDEPEND=""
@@ -15,7 +17,6 @@ pbs_unpack() {
 }
 
 pbs_config() {
-	
 	ypkg_config
 }
 
@@ -27,3 +28,4 @@ pbs_install() {
 	ypkg_mkinstall
 	ypkg_dodoc AUTHORS ChangeLog COPYING INSTALL NEWS README 
 }
+

@@ -4,21 +4,19 @@
 
 DESCRIPTION="Driver for RealTek PCIE Wireless LAN NICs: RTL8188CE/RTL8192CE, RTL8191SE/RTL8192SE, RTL8192DE"
 HOMEPAGE="http://www.realtek.com.tw/"
-REPO=""
-LICENSE=""
+LICENSE="GPL"
 PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 
 SRC_URI="ftp://WebUser:Lc9FuH5r@202.134.71.22/cn/wlan/92ce_se_de_linux_mac80211_0003.0401.2011.tar.gz"
 
 RDEPEND=""
 BDEPEND=""
-RECOMMENDED=""
+RECOMMENDED="build-essential"
 CONFLICT=""
 
 INSTALL="$N.install"
-OPINION="nodev"
 
-NOTES=""
+OPINION="nodev"
 
 pbs_unpack() {
         ypkg_unpack

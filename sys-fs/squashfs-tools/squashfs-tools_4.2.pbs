@@ -4,13 +4,13 @@
 
 DESCRIPTION="Tool for creating compressed filesystem type squashfs, with lzma support"
 HOMEPAGE="http://squashfs.sourceforge.net/"
-LICENSE=""
-PACKAGER="<ylmfos@115.com>"
+LICENSE="GPL"
+PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 
-SRC_URI="http://downloads.sourceforge.net/project/squashfs/squashfs/squashfs"$V$R"/squashfs"$V$R".tar.gz"
+SRC_URI="http://downloads.sourceforge.net/project/squashfs/squashfs/squashfs"$V"/squashfs"$V".tar.gz"
 
-RDEPEND="glibc zlib"
-BDEPEND=" "
+RDEPEND="glibc xz-utils zlib"
+BDEPEND=""
 RECOMMENDED=""
 
 pbs_unpack() {
@@ -29,3 +29,4 @@ pbs_build() {
 pbs_install() {
 	ypkg_docp mksquashfs unsquashfs "$YPPATH_DEST"/usr/bin
 }
+

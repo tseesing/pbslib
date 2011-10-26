@@ -4,16 +4,14 @@
 
 DESCRIPTION="Open source photo manager for GNOME"
 HOMEPAGE="http://www.yorba.org/shotwell/"
-LICENSE="GNU Lesser General Public License 2.1"
+LICENSE="GPLv2"
 PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 
-SRC_URI="http://www.yorba.org/download/shotwell/0.8/"$N-$V$R".tar.bz2"
+SRC_URI="http://www.yorba.org/download/shotwell/0.8/"$N-$V".tar.bz2"
 
 RDEPEND="atk cairo dbus dbus-glib enchant exiv2 expat fontconfig freetype gail gcc gconf glib2 gdk-pixbuf glibc gnutls gst-plugins-base gstreamer gtk+ icu json-glib libexif libgcrypt libgee libgexiv2 libgpg-error libgphoto2 libICE libjpeg-turbo libpng libSM libsoup libtasn1 libtool libunique libusb libusb-compat libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libxml2 libXrandr libXrender libxslt libXt orbit pango pixman sqlite udev util-linux-ng webkitgtk zlib" 
 BDEPEND="vala libraw-dev"
 RECOMMENDED="libraw"
-
-NOTES=""
 
 pbs_unpack() {
         ypkg_unpack

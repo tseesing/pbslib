@@ -4,16 +4,14 @@
 
 DESCRIPTION="A free, object-oriented toolkit for SGML parsing and entity management"
 HOMEPAGE="http://openjade.sourceforge.net/"
-LICENSE="GPL-2"
-PACKAGER="<ylmfos@115.com>"
+LICENSE="GPL"
+PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
  
-SRC_URI="http://downloads.sourceforge.net/"$N"/OpenSP-"$V$R".tar.gz"
+SRC_URI="http://downloads.sourceforge.net/"$N"/OpenSP-"$V".tar.gz"
 
 RDEPEND="gcc glibc"
-BDEPEND="sgml-common  "
+BDEPEND="sgml-common"
 RECOMMENDED=""
-
-NOTES=""
 
 pbs_unpack() {
         ypkg_unpack
@@ -37,3 +35,4 @@ pbs_build() {
 pbs_install() {
 	ypkg_mkinstall
 }
+

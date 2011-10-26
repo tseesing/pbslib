@@ -1,0 +1,30 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="Driver for ATI/AMD Radeon based video chips, everything from Radeon 7000 to Radeon HD 5890 series."
+HOMEPAGE="http://xorg.freedesktop.org/"
+LICENSE="MIT"
+PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
+
+SRC_URI="git://anongit.freedesktop.org/xorg/driver/"$N""
+
+RDEPEND="glibc libdrm libpciaccess pixman udev"
+BDEPEND="xorg-server-dev"
+
+pbs_unpack() {
+        ypkg_unpack
+}
+
+pbs_config() {
+	ypkg_config
+}
+
+pbs_build() {
+	ypkg_make
+}
+
+pbs_install() {
+	ypkg_mkinstall
+}
+

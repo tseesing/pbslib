@@ -4,8 +4,10 @@
 
 DESCRIPTION="Prints out location of specified executables"
 HOMEPAGE="http://www.xs4all.nl/~carlo17/which/"
- 
-SRC_URI="http://ftp.gnu.org/gnu/"$N"/"$N-$V$R".tar.gz"
+LICENSE="GPL"
+PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
+
+SRC_URI="http://ftp.gnu.org/gnu/"$N"/"$N-$V".tar.gz"
 
 RDEPEND="glibc"
 BDEPEND=""

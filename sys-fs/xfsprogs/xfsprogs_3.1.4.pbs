@@ -1,15 +1,16 @@
 #
 # YLmf_OS package build script
 #
-DaESCRIPTION="xfs filesystem utilities"
+
+DESCRIPTION="xfs filesystem utilities"
 HOMEPAGE="http://oss.sgi.com/projects/xfs/"
 LICENSE="GPL"
 PACKAGER="YLmf OS Developers <ylmfos@115.com>"
 
 SRC_URI="git://oss.sgi.com/xfs/cmds/"$N""
 
-RDEPEND="glibc util-linux-ng"
-BDEPEND=" "
+RDEPEND="glibc util-linux-ng "
+BDEPEND=""
 RECOMMENDED=""
 
 pbs_unpack() {

@@ -4,13 +4,14 @@
 
 DESCRIPTION="A fully functional X client library for Python, written in Python"
 HOMEPAGE="http://python-xlib.sourceforge.net/"
-LICENSE="GPL-2"
-PACKAGER="<ylmfos@115.com>"
+LICENSE="GPL"
+PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
+YARCH="any"
 
 SRC_URI="http://downloads.sourceforge.net/project/"$N"/"$N"/"$Vrc1"/"$N-$V"rc1.tar.bz2 "
 
-RDEPEND=""
-BDEPEND="python"
+RDEPEND="python"
+BDEPEND=""
 RECOMMENDED=""
 
 pbs_unpack() {
@@ -25,3 +26,4 @@ pbs_install() {
 	python setup.py install --prefix=/usr --root="$YPPATH_DEST"
 	ypkg_dodoc COPYING NEWS README
 }
+

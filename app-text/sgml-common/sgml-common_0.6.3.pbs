@@ -4,10 +4,10 @@
 
 DESCRIPTION="Base ISO character entities and utilities for SGML"
 HOMEPAGE="http://www.iso.ch/cate/3524030.html"
-LICENSE="GPL-2"
-PACKAGER="<ylmfos@115.com>"
+LICENSE="GPL"
+PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 
-SRC_URI="http://gd.tuwien.ac.at/hci/kde/devel/docbook/SOURCES/"$N-$V$R".tgz"
+SRC_URI="http://gd.tuwien.ac.at/hci/kde/devel/docbook/SOURCES/"$N-$V".tgz"
 
 RDEPEND=""
 BDEPEND=""

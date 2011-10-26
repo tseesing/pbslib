@@ -2,22 +2,20 @@
 # YLmf_OS package build script
 #
 
-DESCRIPTION="The Samba package provides file and print services to SMB/CIFS clients and Windows networking to Linux clients"
+DESCRIPTION="Tools to access a server's filespace and printers via SMB"
 HOMEPAGE="http://www.samba.org"
 LICENSE="GPLv2"
 PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 
 SRC_URI="http://"$N".org/"$N"/ftp/stable/"$N-$V".tar.gz"
 
-RDEPEND="attr cyrus-sasl e2fsprogs gamin glibc keyutils krb5 libcap openldap openssl pam talloc tdb zlib"
+RDEPEND="acl attr avahi cups cyrus-sasl dbus e2fsprogs gamin gcc glibc gnutls keyutils krb5 libcap libgcrypt libgpg-error libtasn1 ncurses openldap openssl pam popt readline talloc tdb zlib"
 BDEPEND=""
 RECOMMENDED=""
 
 INSTALL="$N.install"
 
 NOTES="nobody/sambashare/users group created automatically."
-
-OPINION="upx"
 
 pbs_unpack() {
         ypkg_unpack

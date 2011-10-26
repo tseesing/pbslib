@@ -5,7 +5,8 @@
 DESCRIPTION="A droid derived Sans-Serif style CJK font"
 HOMEPAGE="http://wqy.sourceforge.net/"
 LICENSE="Apache 2.0,GPL v3"
-PACKAGER="<ylmfos@115.com>"
+PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
+YARCH="any"
 
 SRC_URI="http://nchc.dl.sourceforge.net/project/wqy/wqy-microhei/0.2.0-beta/"$N-$V$R".tar.gz"
 

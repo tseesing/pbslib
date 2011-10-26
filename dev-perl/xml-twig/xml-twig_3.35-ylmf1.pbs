@@ -10,7 +10,7 @@ YARCH="any"
 
 SRC_URI="ftp://lug.mtu.edu/gentoo/distfiles/XML-Twig-"$V".tar.gz"
 
-RDEPEND="perl xml-parser"
+RDEPEND="perl xml-parser glibc"
 BDEPEND=""
 
 pbs_unpack() {

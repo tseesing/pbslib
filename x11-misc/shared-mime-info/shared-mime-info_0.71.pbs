@@ -4,11 +4,13 @@
 
 DESCRIPTION="The Shared MIME-info Database specification"
 HOMEPAGE="http://freedesktop.org/wiki/Software/shared-mime-info"
+LICENSE="GPL"
+PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
  
-SRC_URI=" http://people.freedesktop.org/~hadess/"$N-$V$R".tar.bz2 "
+SRC_URI=" http://people.freedesktop.org/~hadess/"$N-$V".tar.bz2 "
 
-RDEPEND="glib2 gdk-pixbuf glibc libxml2 zlib"
-BDEPEND="intltool xml-parser    "
+RDEPEND="glib2 glibc libxml2 zlib"
+BDEPEND="intltool xml-parser"
 OPIONAL=""
 
 pbs_unpack() {
@@ -27,3 +29,4 @@ pbs_build() {
 pbs_install() {
 	ypkg_mkinstall
 }
+

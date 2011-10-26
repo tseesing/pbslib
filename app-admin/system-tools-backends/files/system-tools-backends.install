@@ -3,3 +3,8 @@
 post_install() {
 	ypkg_groupadd -r "wheel"
 }
+
+post_remove() {
+	ypkg_groupdel "wheel"
+}
+

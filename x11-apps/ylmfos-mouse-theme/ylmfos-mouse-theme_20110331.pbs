@@ -4,9 +4,9 @@
 
 DESCRIPTION="ylmfos default mouse theme"
 HOMEPAGE="www.gnome-look.org"
-REPO=""
 LICENSE="Artistic 2.0"
 PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
+YARCH="any"
 
 SRC_URI="git://git.ylmf.com/"$N".git"
 

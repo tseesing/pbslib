@@ -5,12 +5,12 @@
 DESCRIPTION="Another cute console display library"
 HOMEPAGE="http://tiswww.case.edu/php/chet/readline/rltop.html"
 LICENSE="GPL"
-PACKAGER="<ylmfos@115.com>"
+PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 
-SRC_URI="ftp://ftp.gnu.org/gnu/"$N"/"$N-$V$R".tar.gz "
+SRC_URI="ftp://ftp.gnu.org/gnu/"$N"/"$N-$V".tar.gz "
 
 RDEPEND="glibc ncurses"
-BDEPEND=" "
+BDEPEND=""
 
 INSTALL="$N.install"
 

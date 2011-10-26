@@ -4,11 +4,13 @@
 
 DESCRIPTION="Tool for conversion of MSWord doc and rtf files to something readable"
 HOMEPAGE="http://www.abisource.com/downloads/wv/"
- 
-SRC_URI="http://www.abisource.com/downloads/"$N"/"$V$R"/"$N-$V$R".tar.gz"
+LICENSE="GPL"
+PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 
-RDEPEND="glib2 gdk-pixbuf glibc libgsf libpng libxml2 zlib"
-BDEPEND="     "
+SRC_URI="http://www.abisource.com/downloads/"$N"/"$V"/"$N-$V".tar.gz"
+
+RDEPEND="bzip2 glib2 glibc libgsf libpng libxml2 zlib"
+BDEPEND=""
 
 pbs_unpack() {
         ypkg_unpack

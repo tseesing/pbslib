@@ -4,11 +4,13 @@
 
 DESCRIPTION="X keyboard configuration databas"
 HOMEPAGE="http://www.freedesktop.org/wiki/Software/XKeyboardConfig"
- 
-SRC_URI="http://xlibs.freedesktop.org/xkbdesc/$N-$V.tar.bz2"
+LICENSE="GPL"
+PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 
-RDEPEND="xkbcomp glibc libX11 libXau libxcb libXdmcp libxkbfile"
-BDEPEND="intltool      "
+SRC_URI="http://xlibs.freedesktop.org/xkbdesc/"$N-$V".tar.bz2"
+
+RDEPEND="glibc libX11 libXau libxcb libXdmcp libxkbfile"
+BDEPEND="intltool"
 
 pbs_unpack() {
         ypkg_unpack
@@ -26,3 +28,4 @@ pbs_build() {
 pbs_install() {
 	ypkg_mkinstall
 }
+

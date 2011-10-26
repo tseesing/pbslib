@@ -2,14 +2,14 @@
 # YLmf_OS package build script
 #
 
-DESCRIPTION="a CORBA version 2.4 complient Object Request Broker which features C, C++, and Python bindings. Bindings are also available for Perl, Lisp, Pascal, Ruby, and TCL."
+DESCRIPTION="Thin/fast CORBA ORB"
 HOMEPAGE="http://www.gnome.org/projects/orbit"
 LICENSE="GPLv2"
 PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 
 SRC_URI="http://ftp.acc.umu.se/pub/gnome/platform/2.32/2.32.1/sources/ORBit2-"$V".tar.bz2"
 
-RDEPEND="glib2 gdk-pixbuf glibc libIDL"
+RDEPEND="glib2 glibc libIDL"
 BDEPEND=""
 
 pbs_unpack() {

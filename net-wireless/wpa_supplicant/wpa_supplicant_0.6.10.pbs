@@ -4,13 +4,13 @@
 
 DESCRIPTION=" IEEE 802.1X/WPA supplicant for secure wireless transfers"
 HOMEPAGE="http://hostap.epitest.fi/wpa_supplicant/"
-LICENSE="GPL-2"
-PACKAGER="<ylmfos@115.com>"
+LICENSE="GPL"
+PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 
-SRC_URI="http://hostap.epitest.fi/releases/"$N-$V$R".tar.gz"
+SRC_URI="http://hostap.epitest.fi/releases/"$N-$V".tar.gz"
 
-RDEPEND="dbus glibc libnl ncurses openssl pcsc-lite readline"
-BDEPEND="      "
+RDEPEND="dbus glibc libnl ncurses openssl pcsc-lite readline zlib"
+BDEPEND=""
 RECOMMENDED=""
 
 NOTES="
@@ -18,7 +18,7 @@ If this is a clean installation of wpa_supplicant, you
 have to create a configuration file named
 /etc/wpa_supplicant/wpa_supplicant.conf
 An example configuration file is available for reference in
-/usr/share/doc/"$N-$V$R"
+/usr/share/doc/"$N"
 "
 
 pbs_unpack() {
@@ -51,4 +51,5 @@ pbs_install() {
 	ypkg_docp_rename dbus-wpa_supplicant.conf    "$YPPATH_DEST"/etc/dbus-1/system.d/wpa_supplicant.conf
 	ypkg_docp_rename dbus-wpa_supplicant.service "$YPPATH_DEST"/usr/share/dbus-1/system-services/fi.epitest.hostap.WPASupplicant.service
 	ypkg_dounit wpa_supplicant.service
-}	
+}
+

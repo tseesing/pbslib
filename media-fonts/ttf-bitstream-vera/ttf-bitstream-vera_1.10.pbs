@@ -5,17 +5,15 @@
 DESCRIPTION="Bitstream Vera font family"
 HOMEPAGE="http://www.gnome.org/fonts/"
 LICENSE="Copyright (c) 2003 by Bitstream, Inc."
-PACKAGER="<ylmfos@115.com>"
+PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 
-SRC_URI="http://ftp.osuosl.org/pub/gsb/gsb-2.30_slackware-13.1/source/t/$N/"$N-$V$R".tar.bz2"
+SRC_URI="http://ftp.osuosl.org/pub/gsb/gsb-2.30_slackware-13.1/source/t/"$N"/"$N-$V".tar.bz2"
 
 RDEPEND="mkfontdir fontconfig"
 BDEPEND=""
 RECOMMENDED=""
 
 INSTALL="$N.install"
-
-NOTES=""
 
 pbs_unpack() {
         ypkg_unpack

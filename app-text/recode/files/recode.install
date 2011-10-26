@@ -1,10 +1,12 @@
 . /usr/lib/ybs/funcs
 
+files="recode.info-2.gz recode.info-1.gz recode.info.gz"
+
 post_install() {
-	ypkg_install_info recode.info-2.gz recode.info-1.gz recode.info.gz
+	ypkg_install_info $files
 }       
 
 pre_remove() {
-	ypkg_remove_info recode.info-2.gz recode.info-1.gz recode.info.gz
+	ypkg_remove_info $files
 }
 

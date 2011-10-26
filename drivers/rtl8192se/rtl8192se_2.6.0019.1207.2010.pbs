@@ -4,21 +4,19 @@
 
 DESCRIPTION="RTL8191SE/8192SE wireless chipset driver"
 HOMEPAGE="http://www.realtek.com.tw/"
-REPO=""
-LICENSE=""
+LICENSE="GPL"
 PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 
 SRC_URI="http://www.nd.edu/~pbui/scratch/aur/rtl8192se_linux_2.6.0019.1207.2010.tar.gz"
 
 RDEPEND=""
 BDEPEND=""
-RECOMMENDED=""
+RECOMMENDED="build-essential"
 CONFLICT=""
 
 INSTALL="$N.install"
-OPINION="nodev"
 
-NOTES=""
+OPINION="nodev"
 
 pbs_unpack() {
         ypkg_unpack
@@ -30,5 +28,4 @@ pbs_install() {
 	ypkg_docp  firmware/RTL8192SE  "$YPPATH_DEST"/lib/firmware/
 	ypkg_dosupported "$N"_supported
 }
-
 

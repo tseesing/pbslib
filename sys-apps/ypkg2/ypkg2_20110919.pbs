@@ -4,8 +4,8 @@
 
 DESCRIPTION="Package management system for Ylmf_OS Linux, version2"
 HOMEPAGE="www.ylmf.net"
-LICENSE="GPL-2"
-PACKAGER="<ylmfos@115.com>"
+LICENSE="GPL"
+PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 PRIORITY="required"
 REPO="testing"
 
@@ -25,5 +25,4 @@ pbs_build() {
 pbs_install() {
 	ypkg_mkinstall
 }
-
 

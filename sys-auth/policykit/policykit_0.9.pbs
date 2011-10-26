@@ -4,12 +4,12 @@
 
 DESCRIPTION="Policy framework for controlling privileges for system-wide services"
 HOMEPAGE="http://hal.freedesktop.org/docs/PolicyKit"
-LICENSE="GPL-2"
-PACKAGER="<ylmfos@115.com>"
+LICENSE="GPL"
+PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 
-SRC_URI="http://hal.freedesktop.org/releases/PolicyKit-"$V$R".tar.gz"
+SRC_URI="http://hal.freedesktop.org/releases/PolicyKit-"$V".tar.gz"
 
-RDEPEND="dbus-glib pam "
+RDEPEND="dbus dbus-glib expat glib2 glibc pam"
 BDEPEND="intltool docbook-xsl"
 RECOMMENDED=""
 
@@ -48,3 +48,4 @@ pbs_install() {
 	ypkg_docp "$FILES_PATH"/files/PolicyKit.conf "$YPPATH_DEST"/etc/PolicyKit
 	ypkg_dounit policykit-daemon.service
 }
+

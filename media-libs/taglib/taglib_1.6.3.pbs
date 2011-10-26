@@ -4,13 +4,13 @@
 
 DESCRIPTION="A library for reading and editing audio meta data"
 HOMEPAGE="http://developer.kde.org/~wheeler/taglib.html"
-LICENSE="GPL-2"
-PACKAGER="<ylmfos@115.com>"
+LICENSE="GPL"
+PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 
-SRC_URI="http://developer.kde.org/~wheeler/files/src/"$N-$V$R".tar.gz"
+SRC_URI="http://developer.kde.org/~wheeler/files/src/"$N-$V".tar.gz"
 
 RDEPEND="gcc glibc zlib"
-BDEPEND="  "
+BDEPEND=""
 RECOMMENDED=""
 
 pbs_unpack() {
@@ -29,3 +29,4 @@ pbs_install() {
 	ypkg_mkinstall
 	ypkg_dodoc AUTHORS INSTALL NEWS
 }
+

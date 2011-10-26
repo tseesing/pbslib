@@ -4,10 +4,10 @@
 
 DESCRIPTION="Low-level pixel manipulation routines"
 HOMEPAGE="http://xorg.freedesktop.org/"
-LICENSE=""
-PACKAGER="<ylmfos@115.com>"
+LICENSE="GPL"
+PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 
-SRC_URI="http://cairographics.org/releases/"$N-$V$R".tar.gz"
+SRC_URI="http://cairographics.org/releases/"$N-$V".tar.gz"
 
 RDEPEND="glibc"
 BDEPEND=""
@@ -17,7 +17,10 @@ pbs_unpack() {
 }
 
 pbs_config() {
-	YPB_CONFIG+="--disable-vmx --disable-gtk --disable-mmx --disable-sse2"
+	YPB_CONFIG+="--disable-vmx 
+	             --disable-gtk 
+		     --disable-mmx 
+		     --disable-sse2"
 	ypkg_config
 }
 
@@ -28,3 +31,4 @@ pbs_build() {
 pbs_install() {
 	ypkg_mkinstall
 }
+

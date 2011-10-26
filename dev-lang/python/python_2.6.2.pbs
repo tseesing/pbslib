@@ -7,9 +7,9 @@ HOMEPAGE="http://www.python.org/"
 LICENSE="custom"
 PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 
-SRC_URI="http://www.python.org/ftp/"$N"/"$V"/Python-"$V$R".tar.bz2"
+SRC_URI="http://www.python.org/ftp/"$N"/"$V"/Python-"$V".tar.bz2"
 
-RDEPEND="berkeley-db expat fontconfig freetype gdbm glibc libX11 libXau libxcb libXdmcp libXext libXft libXrender libXScrnSaver ncurses openssl readline sqlite tcl tk zlib"
+RDEPEND="berkeley-db bzip2 expat fontconfig freetype gdbm glibc libX11 libXau libxcb libXdmcp libXext libXft libXrender libXScrnSaver ncurses openssl readline sqlite tcl tk zlib"
 BDEPEND=""
 
 pbs_unpack() {
@@ -17,7 +17,15 @@ pbs_unpack() {
 }
 
 pbs_config(){
-	YPB_CONFIG+=""
+	# Ensure that internal copies of expat, libffi and zlib are not used.
+	rm -fr Modules/expat
+	rm -fr Modules/_ctypes/libffi*
+	rm -fr Modules/zlib
+
+	YPB_CONFIG+="--enable-shared 
+	             --with-threads 
+		     --with-system-expat 
+		     --with-system-ffi"
 	ypkg_config
 }
 
@@ -28,4 +36,5 @@ pbs_build() {
 pbs_install() {
 	ypkg_mkinstall
 }
+
 

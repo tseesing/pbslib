@@ -9,7 +9,7 @@ PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 
 SRC_URI="http://samba.org/ftp/"$N"/"$N-$V".tar.gz"
 
-RDEPEND="glibc python samba"
+RDEPEND="glibc python"
 RECOMMENDED=""
 BDEPEND=""
 

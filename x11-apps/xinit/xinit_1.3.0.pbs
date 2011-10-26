@@ -4,18 +4,19 @@
 
 DESCRIPTION="X Window System initializer"
 HOMEPAGE="http://xorg.freedesktop.org/"
- 
-SRC_URI="http://xorg.freedesktop.org/releases/individual/app/$N-$V$R.tar.bz2"
+LICENSE="GPL"
+PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
+
+SRC_URI="http://xorg.freedesktop.org/releases/individual/app/"$N-$V".tar.bz2"
 
 RDEPEND="glibc libX11 libXau libxcb libXdmcp"
-BDEPEND="    "
+BDEPEND=""
 
 pbs_unpack() {
         ypkg_unpack
 }
 
 pbs_config() {
-	
 	ypkg_config
 }
 
@@ -25,7 +26,9 @@ pbs_build() {
 
 pbs_install() {
 	ypkg_mkinstall
+	
 	cd "$YPPATH_DEST"
 	ypkg_domv usr/lib/X11/xinit etc/X11
-	ypkg_doln /etc/X11/xinit usr/lib/X11
+	ypkg_doln /etc/X11/xinit    usr/lib/X11
 }
+

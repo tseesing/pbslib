@@ -4,12 +4,12 @@
 
 DESCRIPTION="An X.org video driver for codenamed R500-R700 graphics devices. It is being developed by the X11 community, currently centered around Novell and AMD, with the free documentation provided by AMD."
 HOMEPAGE="http://wiki.x.org/wiki/radeonhd"
-LICENSE="GPL-2"
-PACKAGER="<ylmfos@115.com>"
+LICENSE="GPL"
+PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 
-SRC_URI="http://cgit.freedesktop.org/xorg/driver/xf86-video-radeonhd/snapshot/"$N-$V$R".tar.bz2"
+SRC_URI="http://cgit.freedesktop.org/xorg/driver/"$N"/snapshot/"$N-$V".tar.bz2"
 
-RDEPEND="glibc libdrm libpciaccess pciutils"
+RDEPEND="glibc libdrm libpciaccess"
 BDEPEND="xextproto xproto"
 RECOMMENDED=""
 
@@ -31,3 +31,4 @@ pbs_build() {
 pbs_install() {
 	ypkg_mkinstall
 }
+

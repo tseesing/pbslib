@@ -4,17 +4,14 @@
 
 DESCRIPTION="xdg-user-dirs is a tool to help manage 'well known' user directories"
 HOMEPAGE="http://www.freedesktop.org/wiki/Software/xdg-user-dirs"
-REPO=""
-LICENSE=""
+LICENSE="GPL"
 PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 
-SRC_URI="http://user-dirs.freedesktop.org/releases/"$N-$V$R".tar.gz"
+SRC_URI="http://user-dirs.freedesktop.org/releases/"$N-$V".tar.gz"
 
 RDEPEND="glibc"
 BDEPEND=""
 RECOMMENDED=""
-
-NOTES=""
 
 pbs_unpack() {
         ypkg_unpack
@@ -33,3 +30,4 @@ pbs_install() {
 	ypkg_mkinstall
 	ypkg_docp "$FILES_PATH"/files/60xdg-user-dirs-update "$YPPATH_DEST"/etc/X11/Xsession.d
 }
+

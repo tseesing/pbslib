@@ -4,18 +4,15 @@
 
 DESCRIPTION="Python extension module which can massively speed up the execution of any Python code."
 HOMEPAGE="http://psyco.sourceforge.net/"
-REPO=""
 LICENSE="GPL"
 PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 
-SRC_URI="http://nchc.dl.sourceforge.net/project/"$N"/"$N"/"$V$R"/"$N-$V$R"-src.tar.gz"
+SRC_URI="http://nchc.dl.sourceforge.net/project/"$N"/"$N"/"$V"/"$N-$V"-src.tar.gz"
 
-RDEPEND=""
+RDEPEND="glibc python"
 BDEPEND=""
 RECOMMENDED=""
 CONFLICT=""
-
-NOTES=""
 
 pbs_unpack() {
         ypkg_unpack

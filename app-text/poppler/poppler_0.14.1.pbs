@@ -4,18 +4,23 @@
 
 DESCRIPTION="PDF rendering library based on the xpdf-3.0 code base"
 HOMEPAGE="http://poppler.freedesktop.org/"
- 
-SRC_URI="http://poppler.freedesktop.org/"$N-$V$R".tar.gz"
+LICENSE="GPL"
+PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 
-RDEPEND="cairo expat fontconfig freetype gcc glib2 gdk-pixbuf glibc gtk+ lcms libjpeg-turbo libpng libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libxml2 libXrandr libXrender pango pixman zlib"
-BDEPEND="                          "
+SRC_URI="http://poppler.freedesktop.org/"$N-$V".tar.gz"
+
+RDEPEND="cairo expat fontconfig freetype gcc gdk-pixbuf glib2 glibc gtk+ lcms libjpeg-turbo libpng libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libxml2 libXrandr libXrender pango pixman zlib"
+BDEPEND=""
 
 pbs_unpack() {
         ypkg_unpack
 }
 
 pbs_config() {
-	YPB_CONFIG+="--disable-poppler-qt --disable-poppler-qt4 --enable-xpdf-headers --enable-gtk-doc-pdf"
+	YPB_CONFIG+="--disable-poppler-qt 
+	             --disable-poppler-qt4 
+		     --enable-xpdf-headers 
+		     --enable-gtk-doc-pdf"
 	ypkg_config
 }
 
@@ -26,3 +31,4 @@ pbs_build() {
 pbs_install() {
 	ypkg_mkinstall
 }
+

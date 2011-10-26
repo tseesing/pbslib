@@ -1,7 +1,7 @@
 . /usr/lib/ybs/funcs
 
 post_install() {
-	update-grub
+	update-initramfs -k "$(uname -r)" -c
 }
 
 post_remove() {
@@ -15,3 +15,4 @@ post_upgrade() {
 post_downgrade() {
 	post_install
 }
+

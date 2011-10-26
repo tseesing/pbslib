@@ -1,13 +1,13 @@
 . /usr/lib/ybs/funcs
 
 post_install() {
-	#install some missing libs and change mplayer version
+	# Install some missing libs and change mplayer version
 	#yget install -y libbluray enca lzo a52dec nas mplayer
 
-	#fix permission of dirs
+	# Fix permission of dirs
 	chmod -s /boot /home /media /mnt /srv /root
 
-	#fix grub
+	# Fix grub
 	if [ -f /boot/grub/grubenv ]; then
 		. /boot/grub/grubenv || return 0
 		if [ "x$recordfail" != "x0" ]; then
@@ -15,10 +15,10 @@ post_install() {
 		fi
 	fi	
 
-	#fix gdm permission
+	# Fix gdm permission
 	chown gdm:gdm /var/lib/gdm/ -R 
 
-	#fix /etc/fstab
+	# Fix /etc/fstab
 	sed -i 's/\/isodevice\//\/host\//g' /etc/fstab
 
 	#

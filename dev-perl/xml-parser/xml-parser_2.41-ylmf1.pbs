@@ -9,7 +9,7 @@ LICENSE="GPL PerlArtistic"
 
 SRC_URI="http://mirror.osqdu.org/CPAN/authors/id/T/TO/TODDR/XML-Parser-"$V".tar.gz"
 
-RDEPEND="perl expat"
+RDEPEND="perl expat glibc"
 BDEPEND=""
 
 pbs_unpack() {
@@ -28,5 +28,4 @@ pbs_install() {
 	ypkg_mkinstall
         perl_cleanup
 }
-
 

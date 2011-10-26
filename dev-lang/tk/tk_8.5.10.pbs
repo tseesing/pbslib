@@ -4,10 +4,12 @@
 
 DESCRIPTION="A windowing toolkit for use with tcl"
 HOMEPAGE="http://tcl.sourceforge.net/"
+LICENSE="GPL"
+PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 
-SRC_URI="http://downloads.sourceforge.net/sourceforge/tcl/tk"$V$R"-src.tar.gz"
+SRC_URI="http://downloads.sourceforge.net/sourceforge/tcl/"$N$V"-src.tar.gz"
 
-RDEPEND="tcl libX11 libXScrnSaver libXext libXft freetype fontconfig libXrender libxcb libXau libXdmcp zlib expat"
+RDEPEND="expat fontconfig freetype glibc libX11 libXau libxcb libXdmcp libXext libXft libXrender libXScrnSaver tcl zlib"
 BDEPEND=""
 
 pbs_unpack(){
@@ -28,17 +30,17 @@ pbs_install() {
 	make INSTALL_ROOT="$YPPATH_DEST" install install-private-headers
 	ypkg_doln /usr/bin/wish8.5 "$YPPATH_DEST"/usr/bin/wish 
 
-	# install private headers
+	# Install private headers
 	cd ../
 	for dir in compat generic generic/ttk unix; do
 		install -dm755 "$YPPATH_DEST"/usr/include/tk-private/"$dir"
 	        install -m644 -t "$YPPATH_DEST"/usr/include/tk-private/"$dir" "$dir"/*.h
 	done
 
-        # install license
+        # Install license
 	ypkg_dodoc license.terms
 
-        # remove buildroot traces
+        # Remove buildroot traces
         sed -i \
             -e "s,^TK_BUILD_LIB_SPEC='-L.*/unix,TK_BUILD_LIB_SPEC='-L/usr/lib," \
             -e "s,^TK_SRC_DIR='.*',TK_SRC_DIR='/usr/include'," \

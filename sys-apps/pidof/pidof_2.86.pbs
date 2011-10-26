@@ -4,8 +4,10 @@
 
 DESCRIPTION="pidof command, part of sysvinit"
 HOMEPAGE="http://freshmeat.net/projects/sysvinit/"
- 
-SRC_URI="ftp://ftp.cistron.nl/pub/people/miquels/sysvinit/sysvinit-"$V$R".tar.gz"
+LICENSE="GPL"
+PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
+
+SRC_URI="ftp://ftp.cistron.nl/pub/people/miquels/sysvinit/sysvinit-"$V".tar.gz"
 
 RDEPEND="glibc"
 BDEPEND=""
@@ -15,7 +17,7 @@ pbs_unpack() {
 }
 
 pbs_build() {
-	#all program was installed earlier by Util-linux-ng
+	# All program was installed earlier by Util-linux-ng
 	sed -i -e 's/utmpdump wall/utmpdump/' \
 	       -e 's/mountpoint.1 wall.1/mountpoint.1/' src/Makefile
 	make -C src
@@ -27,3 +29,4 @@ pbs_install() {
 		  "$YPPATH_DEST"/usr/bin/
 	ypkg_doln  /usr/bin/killall5 "$YPPATH_DEST"/usr/bin/pidof
 }
+

@@ -4,8 +4,11 @@
 
 DESCRIPTION="Data files for poppler to support uncommon encodings without xpdfrc"
 HOMEPAGE="http://poppler.freedesktop.org/"
- 
-SRC_URI="http://poppler.freedesktop.org/"$N-$V$R".tar.gz"
+LICENSE="GPL"
+YARCH="any"
+PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
+
+SRC_URI="http://poppler.freedesktop.org/"$N-$V".tar.gz"
 
 RDEPEND=""
 BDEPEND="fontconfig"
@@ -21,3 +24,4 @@ pbs_config() {
 pbs_install() {
 	make prefix=/usr DESTDIR="$YPPATH_DEST" install
 }
+

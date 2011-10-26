@@ -3,7 +3,6 @@
 #
 
 DESCRIPTION="Ultimate executable compressor."
-COMMENTS=""
 HOMEPAGE="http://upx.sourceforge.net/"
 LICENSE="GPL"
 PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
@@ -29,5 +28,4 @@ pbs_install() {
 	install -D src/upx.out "$YPPATH_DEST"/usr/bin/upx
 	ypkg_doman doc/upx.1
 }
-
 

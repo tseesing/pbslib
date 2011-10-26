@@ -4,10 +4,10 @@
 
 DESCRIPTION="unzipper for pkzip-compressed files"
 HOMEPAGE="http://www.info-zip.org/UnZip.html"
-REPO=""
-LICENSE=""
+LICENSE="GPL"
 PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
-SRC_URI="http://downloads.sourceforge.net/infozip/unzip60.tar.gz"
+
+SRC_URI="http://downloads.sourceforge.net/infozip/"$N"60.tar.gz"
 
 RDEPEND="glibc"
 BDEPEND=""
@@ -23,6 +23,8 @@ pbs_build() {
 pbs_install() {
 	mkdir -p "$YPPATH_DEST"/usr
 	make prefix="$YPPATH_DEST"/usr install
-	install -m755 -v -d "$YPPATH_DEST"/usr/share
-	mv "$YPPATH_DEST"/usr/man "$YPPATH_DEST"/usr/share
+
+	cd "$YPPATH_DEST"
+	ypkg_domv usr/man usr/share
 }
+

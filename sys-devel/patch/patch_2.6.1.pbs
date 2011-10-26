@@ -5,11 +5,11 @@
 DESCRIPTION="Utility to apply diffs to files"
 HOMEPAGE="http://savannah.gnu.org/projects/patch"
 LICENSE="GPL"
-PACKAGER="<ylmfos@115.com>"
+PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 
-SRC_URI="ftp://ftp.gnu.org/gnu/"$N"/"$N-$V$R".tar.bz2"
+SRC_URI="ftp://ftp.gnu.org/gnu/"$N"/"$N-$V".tar.bz2"
 
-RDEPEND=""
+RDEPEND="glibc"
 BDEPEND=""
 
 pbs_unpack() {
@@ -27,3 +27,4 @@ pbs_build() {
 pbs_install() {
 	ypkg_mkinstall
 }
+

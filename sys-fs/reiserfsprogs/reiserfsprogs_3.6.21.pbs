@@ -4,13 +4,13 @@
 
 DESCRIPTION="various utilities for use with the Reiser file system."
 HOMEPAGE="http://www.kernel.org/pub/linux/utils/fs/reiserfs"
-LICENSE="GPL-2"
-PACKAGER="<ylmfos@115.com>"
+LICENSE="GPL"
+PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 
-SRC_URI="http://www.kernel.org/pub/linux/utils/fs/reiserfs/"$N-$V$R".tar.bz2"
+SRC_URI="http://www.kernel.org/pub/linux/utils/fs/reiserfs/"$N-$V".tar.bz2"
 
 RDEPEND="glibc util-linux-ng"
-BDEPEND=" "
+BDEPEND=""
 
 pbs_unpack() {
         ypkg_unpack
@@ -30,3 +30,4 @@ pbs_install() {
 	ypkg_doln reiserfsck "$YPPATH_DEST"/sbin/fsck.reiserfs
 	ypkg_doln mkreiserfs "$YPPATH_DEST"/sbin/mkfs.reiserfs
 }
+

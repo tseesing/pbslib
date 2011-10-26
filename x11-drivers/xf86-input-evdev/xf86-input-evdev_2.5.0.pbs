@@ -4,13 +4,13 @@
 
 DESCRIPTION="Generic Linux input driver"
 HOMEPAGE="http://xorg.freedesktop.org/"
-LICENSE="GPL-2"
-PACKAGER="<ylmfos@115.com>"
+LICENSE="GPL"
+PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 
-SRC_URI="http://www.x.org/releases/X11R7.6/src/driver/"$N-$V$R".tar.bz2"
+SRC_URI="http://www.x.org/releases/X11R7.6/src/driver/"$N-$V".tar.bz2"
 
 RDEPEND="glibc"
-BDEPEND="glibc xorg-server-dev util-macros-dev"
+BDEPEND="xorg-server-dev util-macros"
 
 pbs_unpack() {
         ypkg_unpack

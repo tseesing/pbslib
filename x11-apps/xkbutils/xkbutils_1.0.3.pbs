@@ -4,21 +4,19 @@
 
 DESCRIPTION="X.Org xkbutils application"
 HOMEPAGE="http://xorg.freedesktop.org/"
-REPO=""
-LICENSE=""
+LICENSE="GPL"
 PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 
-SRC_URI="http://www.x.org/releases/X11R7.6/src/app/"$N-$V$R".tar.bz2"
+SRC_URI="http://www.x.org/releases/X11R7.6/src/app/"$N-$V".tar.bz2"
 
 RDEPEND="glibc libICE libSM libX11 libXau libXaw libxcb libXdmcp libXext libXmu libXpm libXt util-linux-ng"
-BDEPEND="            "
+BDEPEND=""
 
 pbs_unpack() {
         ypkg_unpack
 }
 
 pbs_config() {
-	
 	ypkg_config
 }
 
@@ -29,3 +27,4 @@ pbs_build() {
 pbs_install() {
 	ypkg_mkinstall
 }
+

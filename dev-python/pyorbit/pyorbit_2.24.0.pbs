@@ -9,8 +9,8 @@ PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 
 SRC_URI="http://ftp.acc.umu.se/pub/gnome/bindings/2.32/2.32.1/sources/python/"$N-$V".tar.bz2"
 
-RDEPEND="glib2 gdk-pixbuf glibc libIDL orbit python"
-BDEPEND="    "
+RDEPEND="glib2 glibc libIDL orbit python"
+BDEPEND=""
 RECOMMENDED=""
 
 pbs_unpack() {

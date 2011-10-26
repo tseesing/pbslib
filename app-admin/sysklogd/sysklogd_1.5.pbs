@@ -4,8 +4,10 @@
 
 DESCRIPTION="Kernel and system logging daemons"
 HOMEPAGE="http://www.infodrom.org/projects/sysklogd/index.php"
- 
-SRC_URI="http://www.infodrom.org/projects/"$N"/download/"$N-$V$R".tar.gz"
+LICENSE="GPL"
+PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
+
+SRC_URI="http://www.infodrom.org/projects/"$N"/download/"$N-$V".tar.gz"
 
 RDEPEND="glibc"
 BDEPEND=""
@@ -32,3 +34,4 @@ user.* -/var/log/user.log
 *.emerg *
 EOF
 }
+

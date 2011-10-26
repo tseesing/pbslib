@@ -5,6 +5,7 @@
 DESCRIPTION="The GNU info program and utilities"
 HOMEPAGE="http://www.gnu.org/software/texinfo/"
 LICENSE="GPLv3"
+PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 
 SRC_URI="http://ftp.gnu.org/gnu/"$N"/"$N-$V"a.tar.gz"
 

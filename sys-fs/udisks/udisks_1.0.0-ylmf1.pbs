@@ -4,12 +4,12 @@
 
 DESCRIPTION="Daemon providing interfaces to work with storage devices"
 HOMEPAGE="http://www.freedesktop.org/wiki/Software/udisks"
-LICENSE="GPL-2"
-PACKAGER="<ylmfos@115.com>"
+LICENSE="GPL"
+PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 
 SRC_URI="http://hal.freedesktop.org/releases/"$N-$V".tar.gz"
 
-RDEPEND="dbus dbus-glib device-mapper eggdbus expat glib2 gdk-pixbuf glibc libatasmart parted polkit sg3_utils udev util-linux-ng zlib"
+RDEPEND="dbus dbus-glib device-mapper eggdbus expat glib2 glibc libatasmart lvm2 parted polkit sg3_utils udev util-linux-ng zlib"
 BDEPEND=""
 RECOMMENDED=""
 
@@ -28,5 +28,6 @@ pbs_build() {
 
 pbs_install() {
 	ypkg_mkinstall
-	ypkg_dodoc  AUTHORS ChangeLog COPYING HACKING INSTALL NEWS README 
+	ypkg_dodoc AUTHORS ChangeLog COPYING HACKING INSTALL NEWS README 
 }
+

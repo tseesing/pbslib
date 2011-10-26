@@ -32,5 +32,3 @@ pbs_install() {
 	make prefix=/usr mandir=/usr/share/man DESTDIR="$YPPATH_DEST" install
 }
 
-
-

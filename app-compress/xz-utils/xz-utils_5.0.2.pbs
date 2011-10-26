@@ -7,7 +7,7 @@ HOMEPAGE="http://tukaani.org/xz/"
 LICENSE="GPL LGPL custom"
 PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 
-SRC_URI="http://tukaani.org/xz/xz-"$V$R".tar.bz2"
+SRC_URI="http://tukaani.org/xz/xz-"$V".tar.bz2"
 
 RDEPEND="glibc"
 BDEPEND=""

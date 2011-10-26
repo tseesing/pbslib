@@ -4,9 +4,9 @@
 
 DESCRIPTION="Ylmfos sound theme"
 HOMEPAGE="www.ylmf.org"
-REPO=""
-LICENSE=""
+LICENSE="custom"
 PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
+YARCH="any"
 
 SRC_URI="git://git.ylmf.com/"$N".git"
 
@@ -15,8 +15,6 @@ BDEPEND=""
 RECOMMENDED=""
 
 INSTALL="$N.install"
-
-NOTES=""
 
 pbs_unpack() {
 	ypkg_unpack

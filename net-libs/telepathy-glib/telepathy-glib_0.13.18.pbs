@@ -4,7 +4,7 @@
 
 DESCRIPTION="GLib bindings for the Telepathy D-Bus protocol."
 HOMEPAGE="http://telepathy.freedesktop.org"
-LICENSE="GPL-2"
+LICENSE="GPL"
 PACKAGER="Ylmf os Developers <ylmfos@115.com>"
 
 SRC_URI="http://telepathy.freedesktop.org/releases/"$N"/"$N-$V".tar.gz"

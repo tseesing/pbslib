@@ -4,18 +4,16 @@
 
 DESCRIPTION="Jade is an implementation of DSSSL - an ISO standard for formatting SGML and XML documents"
 HOMEPAGE="http://openjade.sourceforge.net"
-LICENSE="GPL-2"
-PACKAGER="<ylmfos@115.com>"
+LICENSE="GPL"
+PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
  
-SRC_URI="http://downloads.sourceforge.net/project/"$N"/"$N"/"$V$R"/"$N-$V$R".tar.gz"
+SRC_URI="http://downloads.sourceforge.net/project/"$N"/"$N"/"$V"/"$N-$V".tar.gz"
 
 RDEPEND="gcc glibc opensp"
-BDEPEND="  "
+BDEPEND=""
 RECOMMENDED=""
 
 INSTALL="$N.install"
-
-NOTES=""
 
 pbs_unpack() {
         ypkg_unpack
@@ -44,3 +42,4 @@ pbs_install() {
 	echo "SYSTEM \"http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd\" \"/usr/share/xml/docbook/xml-dtd-4.5/docbookx.dtd\"" \
 	      >> "$YPPATH_DEST"/usr/share/sgml/"$N-$V$R"/catalog
 }
+
