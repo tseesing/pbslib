@@ -6,7 +6,7 @@ DESCRIPTION=" MIT Kerberos V"
 HOMEPAGE="http://web.mit.edu/kerberos/www/"
 REPO=""
 LICENSE="GPL-2"
-PACKAGER="<ylmfos@115.com>"
+PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 
 SRC_URI="http://web.mit.edu/kerberos/www/dist/"$N"/"$V"/"$N-$V$R"-signed.tar"
 

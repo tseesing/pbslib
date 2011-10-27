@@ -5,7 +5,7 @@
 DESCRIPTION="D-Bus bindings for GObject"
 HOMEPAGE="http://cgit.freedesktop.org/~david/eggdbus"
 LICENSE="GPL-2"
-PACKAGER="<ylmfos@115.com>"
+PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 SRC_URI="http://hal.freedesktop.org/releases/$N-$V.tar.gz"
 
 RDEPEND=""

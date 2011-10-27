@@ -6,7 +6,7 @@ DESCRIPTION="The Samba package provides file and print services to SMB/CIFS clie
 HOMEPAGE="http://www.samba.org"
 REPO=""
 LICENSE="GPL-2"
-PACKAGER="<ylmfos@115.com>"
+PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 
 SRC_URI="http://"$N".org/"$N"/ftp/stable/"$N-$V".tar.gz"
 

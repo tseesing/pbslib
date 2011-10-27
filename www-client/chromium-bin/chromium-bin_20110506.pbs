@@ -5,7 +5,7 @@
 DESCRIPTION="Open-source version of Google Chrome web browser (binary snapshots version)"
 HOMEPAGE="http://code.google.com/chromium/"
 LICENSE="GPL-2"
-PACKAGER="<ylmfos@115.com>"
+PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 
 RDEPEND="libX11 libXrender libXScrnSaver libXext gtk+ atk pango cairo fontconfig libjpeg-turbo libpng gconf
 	 bzip2 alsa-lib expat dbus-glib dbus cups libgcrypt libxcb libXau libXdmcp libXi libXrandr libXcursor

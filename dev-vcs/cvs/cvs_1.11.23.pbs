@@ -5,7 +5,7 @@
 DESCRIPTION="Concurrent Versions System - source code revision control tools"
 HOMEPAGE="http://www.nongnu.org/cvs/"
 LICENSE="GPL-2"
-PACKAGER="<ylmfos@115.com>"
+PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 
 SRC_URI="ftp://ftp.gnu.org/non-gnu/"$N"/source/stable/"$V$R"/"$N-$V$R".tar.bz2 "
 

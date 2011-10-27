@@ -5,7 +5,7 @@
 DESCRIPTION="X11 Apps"
 HOMEPAGE="http://www.x.org/wiki/"
 LICENSE="GPL"
-PACKAGER="<ylmfos@115.com>"
+PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 SRC_URI="http://xorg.freedesktop.org/releases/individual/app/$N-$V.tar.bz2"
 
 RDEPEND="libXext libXmu libXt libX11 libSM libICE libxcb util-linux-ng libXau libXdmcp"

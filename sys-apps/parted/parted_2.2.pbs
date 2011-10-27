@@ -5,7 +5,7 @@
 DESCRIPTION="Create, destroy, resize, check, copy partitions and file systems"
 HOMEPAGE="http://www.gnu.org/software/parted"
 LICENSE="GPL-2"
-PACKAGER="<ylmfos@115.com>"
+PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 SRC_URI="http://ftp.gnu.org/gnu/$N/"$N-$V$R".tar.gz"
 
 RDEPEND="readline ncurses device-mapper"

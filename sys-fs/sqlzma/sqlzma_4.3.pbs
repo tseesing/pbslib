@@ -5,7 +5,7 @@
 DESCRIPTION="squashfs filesystem with lzma patch kernel module and tools"
 HOMEPAGE="http://www.squashfs-lzma.org"
 LICENSE="GPL-2"
-PACKAGER="<ylmfos@115.com>"
+PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 SRC_URI=""
 
 RDEPEND="zlib glibc gcc"

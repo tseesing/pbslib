@@ -5,7 +5,7 @@
 DESCRIPTION="Basepack of plugins for gstreamer"
 HOMEPAGE="http://gstreamer.sourceforge.net"
 LICENSE="GPL-2"
-PACKAGER="<ylmfos@115.com>"
+PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 SRC_URI="ftp://ftp.gnome.org/pub/gnome/sources/$N/0.10/"$N-$V$R".tar.bz2"
 
 RDEPEND=""

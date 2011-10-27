@@ -5,7 +5,7 @@
 DESCRIPTION="Open source read-write NTFS driver that runs under FUSE"
 HOMEPAGE="http://www.tuxera.com/community/ntfs-3g-download/"
 LICENSE="GPL-2"
-PACKAGER="<ylmfos@115.com>"
+PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 
 SRC_URI="http://tuxera.com/opensource/"$N-$V$R".tgz"
 

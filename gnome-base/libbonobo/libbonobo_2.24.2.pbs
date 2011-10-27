@@ -5,7 +5,7 @@
 DESCRIPTION="GNOME CORBA framework."
 HOMEPAGE="http://www.gnome.org/"
 LICENSE="GPL-2"
-PACKAGER="<ylmfos@115.com>"
+PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 SRC_URI="ftp://ftp.gnome.org/pub/gnome/sources/$N/2.24/"$N-$V$R".tar.bz2"
 BDEPEND="dbus-glib intltool libxml2 orbit popt dev-perl/xml-parser"
 RECOMMENDED=""

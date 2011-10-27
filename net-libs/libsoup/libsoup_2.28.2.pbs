@@ -5,7 +5,7 @@
 DESCRIPTION="The libsoup package contains an HTTP library implementation in C. This is useful for accessing HTTP servers in a completely asynchronous mode."
 HOMEPAGE="http://www.gnome.org/"
 LICENSE="GPL-2"
-PACKAGER="<ylmfos@115.com>"
+PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 SRC_URI="ftp://ftp.gnome.org/pub/gnome/sources/$N/2.28/$N-$V.tar.bz2"
 BDEPEND="glib2 gdk-pixbuf libxml2 net-libs/libproxy"
 RECOMMENDED="gnutls gnome-keyring libproxy "

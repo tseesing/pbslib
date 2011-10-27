@@ -5,7 +5,7 @@
 DESCRIPTION="The gnome-keyring package contains a daemon that keeps passwords and other secrets for users."
 HOMEPAGE="www.gnome.com"
 LICENSE="GPL-2"
-PACKAGER="<ylmfos@115.com>"
+PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 SRC_URI="http://ftp.gnome.org/pub/gnome/sources/$N/2.28/"$N-$V$R".tar.bz2"
 
 RDEPEND=""

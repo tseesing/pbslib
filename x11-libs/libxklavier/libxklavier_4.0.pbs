@@ -5,7 +5,7 @@
 DESCRIPTION="High level XKB library"
 HOMEPAGE="http://www.freedesktop.org/Software/LibXklavier"
 LICENSE="GPL-2"
-PACKAGER="<ylmfos@115.com>"
+PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 SRC_URI="ftp://ftp.gnome.org/pub/gnome/sources/$N/$V/"$N-$V$R".tar.bz2"
 
 RDEPEND="glib2 gdk-pixbuf x11-libs/libX11 libxml2 iso-codes"

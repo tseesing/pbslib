@@ -5,7 +5,7 @@
 DESCRIPTION="A library to execute a function when a specific event occurs on a file descriptor"
 HOMEPAGE="http://monkey.org/~provos/libevent/"
 LICENSE="GPL-2"
-PACKAGER="<ylmfos@115.com>"
+PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 
 SRC_URI="http://www.monkey.org/~provos/"$N-$V$R"-stable.tar.gz"
 

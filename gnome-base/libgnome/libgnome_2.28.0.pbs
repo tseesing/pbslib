@@ -5,7 +5,7 @@
 DESCRIPTION="The libgnome package contains the libgnome library."
 HOMEPAGE="http://www.gnome.org"
 LICENSE="GPL-2"
-PACKAGER="<ylmfos@115.com>"
+PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 SRC_URI="ftp://ftp.gnome.org/pub/gnome/sources/libgnome/2.28/"$N-$V$R".tar.bz2"
 
 RDEPEND=""

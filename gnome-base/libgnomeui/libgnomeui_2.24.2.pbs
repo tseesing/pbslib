@@ -5,7 +5,7 @@
 DESCRIPTION="User Interface routines for Gnome"
 HOMEPAGE="http://www.gnome.org"
 LICENSE="GPL-2"
-PACKAGER="<ylmfos@115.com>"
+PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 SRC_URI="ftp://ftp.gnome.org/pub/gnome/sources/libgnomeui/2.24/$N-$V.tar.bz2"
 BDEPEND="libbonoboui gnome-keyring"
 RECOMMENDED=""

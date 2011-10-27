@@ -1,0 +1,67 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="System which facilitates service discovery on a local network"
+HOMEPAGE="http://avahi.org/"
+LICENSE="GPL"
+PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
+
+SRC_URI="http://avahi.org/download/"$N-$V".tar.gz"
+
+RDEPEND="atk attr cairo dbus expat fontconfig freetype gcc gdbm gdk-pixbuf glib2 glibc gtk+ libcap libdaemon libpng libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libXrandr libXrender pango pixman zlib"
+BDEPEND="desktop-file-utils dbus-python-dev pygtk-dev dbus-glib-dev"
+RECOMMENDED=""
+
+pbs_unpack() {
+        ypkg_unpack
+}
+
+pbs_config() {
+	#
+	ypkg_groupadd -r "avahi"
+	ypkg_useradd -c "avahi users" -d "/dev/null" -s "/bin/false" -r "avahi"
+	ypkg_useradd -c "avahi-autoipd users" -d "/dev/null" -s "/bin/false" -r "avahi-autoipd"
+	#
+	ypkg_patch desktop-not-show.patch
+	YPB_CONFIG+="--disable-qt3  
+		     --disable-qt4  
+		     --disable-static
+		     --disable-monodoc 
+		     --disable-mono
+		     --enable-shared 
+		     --enable-python-dbus
+		     --enable-pygtk 
+		     --enable-glib
+		     --enable-dbus  
+		     --enable-gtk  
+		     --enable-core-docs
+		     --enable-compat-howl
+		     --enable-compat-libdns_sd
+		     --with-avahi-user=avahi
+		     --with-avahi-group=avahi
+		     --with-autoipd-user=avahi-autoipd
+		     --with-autoipd-group=avahi-autoipd
+		     --with-distro=slackware 
+		     --program-prefix= 
+		     --program-suffix= "
+	ypkg_config
+}
+
+pbs_build() {
+	ypkg_make
+}
+
+pbs_install() {
+	ypkg_mkinstall
+	cd "$YPPATH_DEST"
+	#ypkg_domv_rename etc/rc.d/rc.avahidnsconfd  etc/init.d/avahidnsconfd
+	#ypkg_domv_rename etc/rc.d/rc.avahidaemon    etc/init.d/avahidaemon
+	rm -rf etc/rc.d
+	rm -fr usr/share/applications/bssh.desktop
+	rm -fr usr/share/applications/bvnc.desktop
+	mkdir -p var/run/avahi-daemon var/run/avahi-autoipd 
+	#
+	ypkg_dounit avahi-dnsconfd.service avahi-daemon.service
+}
+

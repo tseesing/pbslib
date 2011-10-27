@@ -5,7 +5,7 @@
 DESCRIPTION="Used to generate Makefile.in from Makefile.am"
 HOMEPAGE="http://www.gnu.org/software/automake/"
 LICENSE="GPL-2"
-PACKAGER="<ylmfos@115.com>"
+PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 SRC_URI="http://ftp.gnu.org/gnu/$N/"$N-$V$R".tar.bz2"
 
 RDEPEND="autoconf"

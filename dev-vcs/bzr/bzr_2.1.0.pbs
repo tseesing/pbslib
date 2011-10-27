@@ -5,7 +5,7 @@
 DESCRIPTION="Bazaar is a next generation distributed version control system."
 HOMEPAGE="http://bazaar-vcs.org/"
 LICENSE="GPL-2"
-PACKAGER="<ylmfos@115.com>"
+PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 
 SRC_URI="http://launchpad.net/bzr/2.1/"$N"/+download/"$N-$V$R".tar.gz"
 
