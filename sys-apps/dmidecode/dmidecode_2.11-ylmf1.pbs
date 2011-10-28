@@ -1,0 +1,28 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="DMI (Desktop Management Interface) table related utilities"
+HOMEPAGE="http://www.nongnu.org/dmidecode/"
+LICENSE="GPL"
+PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
+
+SRC_URI="http://download.savannah.gnu.org/releases/"$N"/"$N-$V".tar.bz2"
+
+RDEPEND="glibc"
+BDEPEND=""
+RECOMMENDED=""
+CONFLICT=""
+
+pbs_unpack() {
+        ypkg_unpack
+}
+
+pbs_build() {
+	ypkg_make prefix=/usr
+}
+
+pbs_install() {
+	ypkg_mkinstall prefix=/usr
+}
+

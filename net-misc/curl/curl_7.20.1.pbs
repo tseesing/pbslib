@@ -4,12 +4,12 @@
 
 DESCRIPTION="A Client that groks URLs"
 HOMEPAGE="http://curl.haxx.se/"
-LICENSE="GPL"
+LICENSE="MIT"
 PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 
 SRC_URI="http://curl.haxx.se/download/"$N-$V".tar.bz2"
 
-RDEPEND="cyrus-sasl glibc openldap openssl zlib"
+RDEPEND="cyrus-sasl glibc libidn libssh2 openldap openssl rtmpdump zlib"
 BDEPEND=""
 
 pbs_unpack() {

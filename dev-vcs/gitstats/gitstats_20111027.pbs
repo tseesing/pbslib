@@ -1,0 +1,36 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="Statistics generator for git"
+HOMEPAGE="http://gitstats.sourceforge.net/"
+LICENSE="GPL"
+YARCH="any"
+PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
+
+SRC_URI="git://repo.or.cz/gitstats.git"
+
+RDEPEND="python"
+RECOMMENDED=""
+BDEPEND=""
+CONFLICT=""
+
+pbs_unpack() {
+        ypkg_unpack
+}
+
+pbs_config() {
+	ypkg_patch ylmfos-makefile.patch
+	YPB_CONFIG+=""
+	ypkg_config
+}
+
+pbs_build() {
+	ypkg_make
+}
+
+pbs_install() {
+	ypkg_mkinstall
+}
+
+

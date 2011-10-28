@@ -4,11 +4,13 @@
 
 DESCRIPTION="Fully featured yet light and fast cross platform word processor"
 HOMEPAGE="http://www.abisource.com/"
- 
-SRC_URI="http://www.abisource.com/downloads/"$N"/"$V"/source/"$N-$V$R".tar.gz"
+LICENSE="GPL"
+PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 
-RDEPEND="atk avahi cairo dbus dbus-glib enchant expat fontconfig freetype fribidi gcc gconf glib2 gdk-pixbuf glibc gnome-vfs gtk+ libbonobo libcroco libgsf libjpeg-turbo libpng librsvg libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libxml2 libXrandr libXrender openssl orbit pango pixman wv zlib"
-BDEPEND="                                        "
+SRC_URI="http://www.abisource.com/downloads/"$N"/"$V"/source/"$N-$V".tar.gz"
+
+RDEPEND="atk avahi bzip2 cairo dbus dbus-glib enchant expat fontconfig freetype fribidi gcc gconf gdk-pixbuf glib2 glibc gnome-vfs goffice gtk+ libbonobo libcroco libgsf libjpeg-turbo libpng librsvg libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libxml2 libXrandr libXrender openssl orbit pango pixman wv zlib"
+BDEPEND=""
 
 pbs_unpack() {
         ypkg_unpack
@@ -28,3 +30,4 @@ pbs_install() {
 	mkdir -p "$YPPATH_DEST"/etc/xg_launch/others
 	echo '+ abiword%/usr/share/icons/abiword_48.png%      Exec abiword' >"$YPPATH_DEST"/etc/xg_launch/others/C10abiword 
 }
+

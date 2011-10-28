@@ -9,7 +9,7 @@ PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 
 SRC_URI="http://build.chromium.org/buildbot/official/"$N-$V".tar.bz2"
 
-RDEPEND="alsa-lib atk avahi bzip2 cairo cups dbus dbus-glib expat fontconfig freetype gcc gconf  gdk-pixbuf glib2 glibc gnutls gtk+ keyutils krb5 libevent libgcrypt libgpg-error libjpeg-turbo libpng libtasn1 libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libxml2 libXrandr libXrender libXScrnSaver libxslt nspr nss orbit pango pixman speex zlib"
+RDEPEND="alsa-lib atk avahi bzip2 cairo cups dbus dbus-glib e2fsprogs expat fontconfig freetype gcc gconf gdk-pixbuf glib2 glibc gnutls gtk+ keyutils krb5 libevent libgcrypt libgpg-error libjpeg-turbo libpng libtasn1 libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libxml2 libXrandr libXrender libXScrnSaver libxslt nspr nss orbit pango pixman speex zlib"
 BDEPEND="perl gperf pkgconfig flex renderproto-dev libXinerama-dev libvpx-dev switch"
 
 INSTALL="$N.install"

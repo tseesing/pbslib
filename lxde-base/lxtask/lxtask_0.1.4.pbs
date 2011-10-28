@@ -4,12 +4,12 @@
 
 DESCRIPTION="simple task manager for LXDE"
 HOMEPAGE="www.lxde.org"
-LICENSE="GPL-2"
+LICENSE="GPL"
 PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 
-SRC_URI="http://ncu.dl.sourceforge.net/project/lxde/LXTask%20%28task%20manager%29/LXTask%200.1.4/"$N-$V$R".tar.gz"
+SRC_URI="http://ncu.dl.sourceforge.net/project/lxde/LXTask%20%28task%20manager%29/LXTask%200.1.4/"$N-$V".tar.gz"
 
-RDEPEND="atk cairo expat fontconfig freetype gcc glib2 gdk-pixbuf glibc gtk+ libpng libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libXrandr libXrender pango pixman zlib"
+RDEPEND="atk cairo expat fontconfig freetype gcc gdk-pixbuf glib2 glibc gtk+ libpng libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libXrandr libXrender pango pixman zlib"
 BDEPEND=""
 
 INSTALL="$N.install"
@@ -29,3 +29,4 @@ pbs_build() {
 pbs_install() {
 	ypkg_mkinstall
 }
+

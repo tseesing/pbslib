@@ -4,13 +4,12 @@
 
 DESCRIPTION="A simple PolicyKit auhentication agent"
 HOMEPAGE="http://sourceforge.net/projects/lxde/files/"
-REPO=""
 LICENSE="GPL"
 PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 
-SRC_URI="http://ncu.dl.sourceforge.net/project/lxde/LXPolkit/"$N-$V$R".tar.gz"
+SRC_URI="http://ncu.dl.sourceforge.net/project/lxde/LXPolkit/"$N-$V".tar.gz"
 
-RDEPEND="atk cairo dbus dbus-glib eggdbus expat fontconfig freetype gcc glib2 gdk-pixbuf glibc gtk+ libpng libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libXrandr libXrender pango pixman polkit zlib"
+RDEPEND="atk cairo dbus dbus-glib eggdbus expat fontconfig freetype gcc gdk-pixbuf glib2 glibc gtk+ libpng libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libXrandr libXrender pango pixman polkit zlib"
 BDEPEND=""
 RECOMMENDED=""
 CONFLICT=""

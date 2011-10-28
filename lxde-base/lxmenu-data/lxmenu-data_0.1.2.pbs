@@ -4,10 +4,11 @@
 
 DESCRIPTION="Freedesktop.org menu-spec-compliant desktop menus for LXDE.."
 HOMEPAGE="www.lxde.org"
-LICENSE="GPL-2"
+LICENSE="GPL"
 PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
+YARCH="any"
 
-SRC_URI="http://ncu.dl.sourceforge.net/project/lxde/lxmenu-data%20%28desktop%20menu%29/lxmenu-data%200.1.2/"$N-$V$R".tar.gz"
+SRC_URI="http://ncu.dl.sourceforge.net/project/lxde/lxmenu-data%20%28desktop%20menu%29/lxmenu-data%200.1.2/"$N-$V".tar.gz"
 
 RDEPEND=""
 BDEPEND=""
@@ -27,3 +28,4 @@ pbs_build() {
 pbs_install() {
 	ypkg_mkinstall
 }
+

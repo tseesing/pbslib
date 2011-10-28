@@ -4,13 +4,13 @@
 
 DESCRIPTION="Small-footprint and standard compliant Window Manager."
 HOMEPAGE="http://icculus.org/openbox/"
-LICENSE="GPL-2"
+LICENSE="GPL"
 PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 
-SRC_URI="http://offload2.icculus.org:9090/"$N"/releases/"$N-$V$R".tar.gz"
+SRC_URI="http://offload2.icculus.org:9090/"$N"/releases/"$N-$V".tar.gz"
 
-RDEPEND=""
-BDEPEND=" fuse"
+RDEPEND="expat fontconfig freetype gcc glib2 glibc libICE libSM libX11 libXau libxcb libXcursor libXdmcp libXext libXfixes libXft libXinerama libxml2 libXrandr libXrender pango startup-notification util-linux-ng zlib"
+BDEPEND=""
 
 pbs_unpack() {
         ypkg_unpack
@@ -19,7 +19,7 @@ pbs_unpack() {
 pbs_config() {
 	chmod +x install-sh
 	ypkg_config
-	#FIXME!
+	# FIXME
 	sed -i 's/^mkdir_p = .*/mkdir_p = mkdir -p/' po/Makefile
 }
 
@@ -30,3 +30,4 @@ pbs_build() {
 pbs_install() {
 	ypkg_mkinstall
 }
+

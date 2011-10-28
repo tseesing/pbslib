@@ -2,16 +2,18 @@
 # YLmf_OS package build script
 #
 
-DESCRIPTION="v4l-utils"
+DESCRIPTION="Userspace tools and conversion library for Video 4 Linux"
 HOMEPAGE="http://people.fedoraproject.org/~jwrdegoede/"
 LICENSE="GPL"
 PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 
 SRC_URI="http://linuxtv.org/downloads/"$N"/"$N-$V".tar.bz2"
 
-RDEPEND="expat fontconfig freetype gcc glib2 glibc libdrm libICE libpng libSM libX11 libXau libxcb libXdmcp libXext libXrender mesa qt-core sysfsutils udev util-linux-ng zlib"
+RDEPEND="gcc glibc sysfsutils"
 BDEPEND=""
 RECOMMENDED=""
+
+PROVIDE="qv4l2"
 
 pbs_unpack() {
         ypkg_unpack
@@ -23,5 +25,19 @@ pbs_build() {
 
 pbs_install() {
 	make DESTDIR="$YPPATH_DEST" PREFIX="/usr" install
+	
+	# Splite
+	rm "$YPPATH_DEST"/usr/bin/qv4l2	
+}
+
+qv4l2_install() {
+	DESCRIPTION="qv4l2"
+	HOMEPAGE="http://people.fedoraproject.org/~jwrdegoede/"
+	LICENSE="GPL"
+	PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
+	RDEPEND="expat fontconfig freetype gcc glib2 glibc libdrm libICE libpng libSM libX11 libXau libxcb libXdmcp libXext libXrender mesa qt-core udev util-linux-ng v4l-utils zlib"
+
+	ypkg_docp utils/qv4l2/qv4l2 "$YPPATH_DEST"/usr/bin/
+	chmod 755 "$YPPATH_DEST"/usr/bin/qv4l2
 }
 

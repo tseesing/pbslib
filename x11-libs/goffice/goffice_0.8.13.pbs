@@ -9,7 +9,7 @@ PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 
 SRC_URI="http://caesar.acc.umu.se/pub/GNOME/sources/"$N"/0.8/"$N-$V".tar.gz"
 
-RDEPEND="atk bzip2 cairo expat fontconfig freetype gcc gconf  gdk-pixbuf glib2 glibc gtk+ libgsf libpng libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libxml2 libXrandr libXrender orbit pango pixman zlib"
+RDEPEND="atk bzip2 cairo expat fontconfig freetype gcc gconf gdk-pixbuf glib2 glibc gtk+ libgsf libpng libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libxml2 libXrandr libXrender orbit pango pixman zlib"
 RECOMMENDED=""
 BDEPEND=""
 CONFLICT=""
@@ -30,5 +30,4 @@ pbs_build() {
 pbs_install() {
 	ypkg_mkinstall
 }
-
 

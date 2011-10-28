@@ -7,9 +7,9 @@ HOMEPAGE="http://www.mozilla.com/firefox"
 LICENSE="Multi-licensing"
 PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 
-SRC_URI="ftp://ftp.mozilla.org/pub/mozilla.org/"$N"/releases/"$V$R"/source/"$N-$V".source.tar.bz2"
+SRC_URI="ftp://ftp.mozilla.org/pub/mozilla.org/"$N"/releases/"$V"/source/"$N-$V".source.tar.bz2"
 
-RDEPEND="alsa-lib atk avahi cairo dbus dbus-glib expat fontconfig freetype gcc gconf  gdk-pixbuf glib2 glibc gnome-vfs gtk+ libICE libIDL libnotify libpng libSM libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libxml2 libXrandr libXrender libXt nspr nss openssl orbit pango pixman sqlite startup-notification util-linux-ng xulrunner zlib"
+RDEPEND="alsa-lib atk avahi cairo dbus dbus-glib expat fontconfig freetype gcc gconf gdk-pixbuf glib2 glibc gnome-vfs gtk+ libICE libIDL libnotify libpng libSM libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libxml2 libXrandr libXrender libXt nspr nss openssl orbit pango pixman sqlite startup-notification util-linux-ng xulrunner zlib"
 BDEPEND="mercurial"
 RECOMMENDED=""
 CONFLICT="ylmfox"
@@ -46,7 +46,7 @@ pbs_install() {
 	# 
 	ypkg_dodesktop "firefox.desktop" "usr/lib/firefox-"$V"/icons/mozicon128.png"
 	
-	# Add extensions including langpack-zh-CN
+	# Add extensions including langpack-zh-CN and ylmfox
 	ypkg_docp "$FILES_PATH"/files/extensions/* usr/lib/firefox-"$V"/extensions/
 
 	# Add baidu searchplugin

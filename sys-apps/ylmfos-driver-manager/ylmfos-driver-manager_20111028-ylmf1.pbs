@@ -1,0 +1,34 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="driver manager for ylmfos"
+HOMEPAGE="www.ylmf.net"
+LICENSE="GPL"
+PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
+YARCH="any"
+
+SRC_URI="git://git.ylmf.com/"$N".git"
+
+RDEPEND="python boost gcc glibc lm_sensors" 
+RECOMMENDED=""
+BDEPEND=""
+CONFLICT=""
+
+pbs_unpack() {
+	git checkout test
+        ypkg_unpack
+}
+
+pbs_config() {
+	ypkg_config
+}
+
+pbs_build() {
+	ypkg_make
+}
+
+pbs_install() {
+	ypkg_mkinstall
+}
+

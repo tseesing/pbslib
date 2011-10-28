@@ -4,13 +4,13 @@
 
 DESCRIPTION="Small but powerful ftp client"
 HOMEPAGE="http://lftp.yar.ru/"
-LICENSE="GPL-2"
+LICENSE="GPL"
 PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 
-SRC_URI="http://ftp.yars.free.net/pub/source/"$N"/"$N-$V$R".tar.xz"
+SRC_URI="http://ftp.yars.free.net/pub/source/"$N"/"$N-$V".tar.xz"
 
-RDEPEND="expat gnutls zlib libgcrypt libgpg-error glibc gcc readline ncurses gcc"
-BDEPEND=" readline expat"
+RDEPEND="expat gcc glibc gnutls libgcrypt libgpg-error libtasn1 ncurses readline zlib"
+BDEPEND=""
 RECOMMENDED=""
 
 pbs_unpack() {

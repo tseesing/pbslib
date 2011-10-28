@@ -9,7 +9,7 @@ PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 
 SRC_URI="http://gnome2-globalmenu.googlecode.com/files/"$N-$V".tar.bz2"
 
-RDEPEND="alsa-lib atk audiofile avahi cairo dbus dbus-glib esound expat fontconfig freetype gail gcc gconf  gdk-pixbuf glib2 glibc gnome-menus gnome-panel gnome-vfs gtk+ libart_lgpl libbonobo libbonoboui libcanberra libgnome libgnomecanvas libICE libogg libpng libSM libtool libvorbis libwnck libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libxml2 libXrandr libXrender libXres openssl orbit pango pixman popt startup-notification util-linux-ng zlib"
+RDEPEND="atk avahi cairo dbus dbus-glib expat fontconfig freetype gail gcc gconf gdk-pixbuf glib2 glibc gnome-menus gnome-panel gnome-vfs gtk+ libart_lgpl libbonobo libbonoboui libcanberra libgnome libgnomecanvas libICE libogg libpng libSM libtool libvorbis libwnck libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libxml2 libXrandr libXrender libXres openssl orbit pango pixman popt startup-notification tdb util-linux-ng zlib"
 BDEPEND=""
 RECOMMENDED=""
 CONFLICT=""

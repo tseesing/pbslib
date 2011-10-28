@@ -4,13 +4,12 @@
 
 DESCRIPTION="LXDE session autostart editor"
 HOMEPAGE="http://sourceforge.net/projects/lxde/files/"
-REPO=""
 LICENSE="GPL"
 PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 
-SRC_URI="http://ncu.dl.sourceforge.net/project/lxde/LXSession%20Edit/lxsession-edit%200.2.0/"$N-$V$R".tar.gz"
+SRC_URI="http://ncu.dl.sourceforge.net/project/lxde/LXSession%20Edit/lxsession-edit%200.2.0/"$N-$V".tar.gz"
 
-RDEPEND="atk cairo expat fontconfig freetype gcc glib2 gdk-pixbuf glibc gtk+ libpng libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libXrandr libXrender pango pixman zlib"
+RDEPEND="atk cairo expat fontconfig freetype gcc gdk-pixbuf glib2 glibc gtk+ libpng libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libXrandr libXrender pango pixman zlib"
 BDEPEND=""
 RECOMMENDED=""
 CONFLICT=""
@@ -33,5 +32,4 @@ pbs_build() {
 pbs_install() {
 	ypkg_mkinstall
 }
-
 

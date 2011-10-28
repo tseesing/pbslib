@@ -31,7 +31,7 @@ pbs_build() {
 pbs_install() {
 	ypkg_mkinstall
 	
-	# keep clean for rarian
+	# Keep clean for rarian
 	rm -fr "$YPPATH_DEST"/var/lib/scrollkeeper
 	rm -fr "$YPPATH_DEST"/var/lib/log
 }
