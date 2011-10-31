@@ -4,13 +4,13 @@
 
 DESCRIPTION="Fast, production-quality, standard-conformant FTP server."
 HOMEPAGE="http://www.pureftpd.org/"
-LICENSE="GPL-2"
+LICENSE="GPL"
 PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 
-SRC_URI="http://download.pureftpd.org/pub/"$N"/releases/"$N-$V$R".tar.bz2"
+SRC_URI="http://download.pureftpd.org/pub/"$N"/releases/"$N-$V".tar.bz2"
 
-RDEPEND="openssl openldap glibc pam"
-BDEPEND=" "
+RDEPEND="cyrus-sasl glibc openldap openssl pam zlib"
+BDEPEND=""
 RECOMMENDED=""
 
 INSTALL="$N.install"
@@ -57,12 +57,15 @@ pbs_build() {
 pbs_install() {
 	ypkg_mkinstall
 	ypkg_dodoc AUTHORS ChangeLog COPYING INSTALL NEWS README
-	#for sysvinit
+
+	# For sysvinit
 	#ypkg_doinit "$N"
+	
 	cd "$YPPATH_DEST"
 	ypkg_docp "$FILES_PATH"/files/ftpusers       etc
 	ypkg_docp "$FILES_PATH"/files/pure-ftpd.conf etc/pure-ftpd
-	#for systemd
+	
+	# For systemd
 	ypkg_dounit "$N".service
 }
 

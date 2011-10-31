@@ -9,7 +9,7 @@ PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 
 SRC_URI="http://www.libsdl.org/projects/SDL_net/release/SDL_net-"$V".tar.gz"
 
-RDEPEND="libsdl"
+RDEPEND="alsa-lib audiofile directfb esound glibc libICE libsdl libSM libX11 libXau libxcb libXdmcp libXt nas util-linux-ng zlib"
 RECOMMENDED=""
 BDEPEND=""
 CONFLICT=""

@@ -4,19 +4,15 @@
 
 DESCRIPTION="BitTorrent Client using libtorrent"
 HOMEPAGE="http://libtorrent.rakshasa.no/"
-REPO=""
 LICENSE="GPL"
-PRIORITY=""
 PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 
-SRC_URI="http://libtorrent.rakshasa.no/downloads/"$N-$V$R".tar.gz"
+SRC_URI="http://libtorrent.rakshasa.no/downloads/"$N-$V".tar.gz"
 
-RDEPEND="curl cyrus-sasl gcc glibc libsigc++ libtorrent ncurses openldap openssl zlib"
-BDEPEND="         "
+RDEPEND="curl cyrus-sasl gcc glibc libidn libsigc++ libssh2 libtorrent ncurses openldap openssl rtmpdump zlib"
+BDEPEND=""
 RECOMMENDED=""
 CONFLICT=""
-
-NOTES=""
 
 pbs_unpack() {
         ypkg_unpack

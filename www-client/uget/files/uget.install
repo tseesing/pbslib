@@ -9,3 +9,12 @@ post_remove() {
 	post_install
 }
 
+post_ugprade() {
+	post_install
+}
+
+post_downgrade() {
+	post_install
+}
+
+

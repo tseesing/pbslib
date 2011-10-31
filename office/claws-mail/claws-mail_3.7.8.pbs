@@ -4,21 +4,17 @@
 
 DESCRIPTION="Claws Mail is an email client (and news reader), based on GTK+"
 HOMEPAGE="http://www.claws-mail.org/"
-REPO=""
 LICENSE="GPL"
-PRIORITY=""
 PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 
-SRC_URI="http://downloads.sourceforge.net/project/sylpheed-claws/Claws%20Mail/"$V$R"/"$N-$V$R".tar.gz"
+SRC_URI="http://downloads.sourceforge.net/project/sylpheed-claws/Claws%20Mail/"$V"/"$N-$V".tar.gz"
 
-RDEPEND="atk berkeley-db cairo curl cyrus-sasl dbus dbus-glib enchant expat fontconfig freetype gcc glib2 gdk-pixbuf glibc gnutls gpgme gtk+ libassuan libetpan libgcrypt libgpg-error libICE libpng libSM libtasn1 libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libXrandr libXrender openldap openssl pango pixman startup-notification util-linux-ng zlib"
-BDEPEND=" "
+RDEPEND="atk berkeley-db cairo curl cyrus-sasl dbus dbus-glib enchant expat fontconfig freetype gcc gdk-pixbuf glib2 glibc gnutls gpgme gtk+ libassuan libetpan libgcrypt libgpg-error libICE libidn libpng libSM libssh2 libtasn1 libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libXrandr libXrender openldap openssl pango pixman rtmpdump startup-notification util-linux-ng zlib"
+BDEPEND=""
 RECOMMENDED=""
 CONFLICT=""
 
 INSTALL="$N.install"
-
-NOTES=""
 
 pbs_unpack() {
         ypkg_unpack

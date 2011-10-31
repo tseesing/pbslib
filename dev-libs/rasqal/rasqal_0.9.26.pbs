@@ -4,13 +4,12 @@
 
 DESCRIPTION="library that handles Resource Description Framework (RDF)"
 HOMEPAGE="http://librdf.org/rasqal/"
-REPO=""
 LICENSE="GPL"
 PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 
-SRC_URI="http://download.librdf.org/source/"$N-$V$R".tar.gz"
+SRC_URI="http://download.librdf.org/source/"$N-$V".tar.gz"
 
-RDEPEND="curl cyrus-sasl glibc gmp libidn libxml2 libxslt mpfr openldap openssl raptor2 zlib"
+RDEPEND="curl cyrus-sasl glibc gmp libidn libssh2 libxml2 libxslt mpfr openldap openssl raptor2 rtmpdump zlib"
 BDEPEND=""
 RECOMMENDED=""
 CONFLICT=""

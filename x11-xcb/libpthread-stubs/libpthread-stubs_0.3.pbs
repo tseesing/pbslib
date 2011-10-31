@@ -11,6 +11,7 @@ SRC_URI="http://www.x.org/releases/X11R7.6/src/xcb/"$N-$V".tar.bz2"
 
 RDEPEND=""
 BDEPEND=""
+CONFLICT="libpthread-stubs-dev"
 
 OPINION="nodev"
 

@@ -5,7 +5,7 @@ post_install() {
 	ypkg_useradd -c "ftp user" -d "/var/ftp/public" -s "/bin/false" -r -N -G "ftpgroup" "ftp"
 }       
 
-pre_remove() {
+post_remove() {
 	ypkg_userdel "ftp"
 	ypkg_groupdel "ftpgroup"
 }

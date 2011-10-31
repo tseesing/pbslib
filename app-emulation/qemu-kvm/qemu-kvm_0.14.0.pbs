@@ -4,17 +4,14 @@
 
 DESCRIPTION="QEMU + Kernel-based Virtual Machine userland tools"
 HOMEPAGE="http://www.linux-kvm.org"
-REPO=""
-LICENSE=""
+LICENSE="GPL"
 PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 
 SRC_URI="http://downloads.sourceforge.net/project/kvm/"$N"/"$V"/"$N-$V".tar.gz"
 
-RDEPEND="alsa-lib attr audiofile bluez curl cyrus-sasl directfb esound glibc gnutls libgcrypt libgpg-error libjpeg-turbo libpng libsdl libtasn1 libX11 libXau libxcb libXdmcp ncurses openldap openssl util-linux-ng zlib"
-BDEPEND=" "
+RDEPEND=""
+BDEPEND=""
 RECOMMENDED=""
-
-NOTES=""
 
 pbs_unpack() {
         ypkg_unpack
@@ -35,3 +32,4 @@ pbs_install() {
 	ypkg_docp "$FILES_PATH"/files/qemu-kvm  "$YPPATH_DEST"/usr/bin
 	ypkg_doln /usr/bin/qemu-kvm "$YPPATH_DEST"/usr/bin/kvm
 }
+
