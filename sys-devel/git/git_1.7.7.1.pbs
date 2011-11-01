@@ -1,0 +1,61 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="GIT - the stupid content tracker, the revision control system"
+HOMEPAGE="http://www.git-scm.com/"
+LICENSE="GPL"
+PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
+
+#SRC_URI="http://kernel.org/pub/software/scm/"$N"/"$N-$V".tar.bz2"
+SRC_URI="http://git-core.googlecode.com/files/"$N-$V".tar.gz"
+
+RDEPEND="curl cyrus-sasl expat glibc libidn openldap openssl zlib"
+BDEPEND=""
+
+OPTIONAL=" tk: gitk and git gui
+           libwww-perl: git svn
+	   term-readkey-perl: git svn
+	   mime-tools-perl: git send-email
+   	   net-smtp-ssl-perl: git send-email TLS support
+	   perl-authen-sasl: git send-email TLS support
+	   subversion: git svn
+	   cvsps: git cvsimport"
+
+NOTES="add some info:
+git config --system --add user.name ylmfos_user
+git config --system --add user.email ylmfos_user@115.com"
+
+pbs_unpack() {
+        ypkg_unpack
+}
+
+pbs_config() {
+	YPB_CONFIG=${YPB_CONFIG/--enable-shared/}
+	ypkg_config
+}
+
+pbs_build() {
+	ypkg_make USE_LIBPCRE=1 NO_CROSS_DIRECTORY_HARDLINKS=1
+	cd contrib/emacs
+        ypkg_make prefix=/usr
+	cd -
+}
+
+pbs_install() {
+	ypkg_mkinstall USE_LIBPCRE=1 NO_CROSS_DIRECTORY_HARDLINKS=1 INSTALLDIRS=vendor 
+
+	# Bash completion
+	ypkg_docp_rename contrib/completion/git-completion.bash "$YPPATH_DEST"/etc/bash_completion.d/git 
+	 
+	# More contrib stuff
+	ypkg_docp contrib "$YPPATH_DEST"/usr/share/git/ 
+
+	# Emacs interface
+	cd contrib/emacs
+	ypkg_mkinstall prefix=/usr
+
+	# Remove perllocal.pod, .packlist, and empty directories.
+        rm -rf "$YPPATH_DEST"/usr/lib/perl5
+}
+

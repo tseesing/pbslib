@@ -1,0 +1,40 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="The GNOME Desktop package contains the gnome-about program, the libgnome-desktop-2 library and GNOME's core graphics files and icons."
+HOMEPAGE="http://www.gnome.org"
+LICENSE="GPL"
+PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
+
+SRC_URI="http://ftp.gnome.org/pub/gnome/desktop/2.32/2.32.1/sources/"$N-$V".tar.bz2"
+
+RDEPEND="atk cairo expat fontconfig freetype gcc gconf gdk-pixbuf glib2 glibc gtk+ libICE libpng libSM libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libXrandr libXrender orbit pango pixman startup-notification util-linux-ng zlib"
+BDEPEND="gnome-vfs-dev rarian-dev"
+RECOMMENDED="" 
+
+INSTALL="$N.install"
+
+pbs_unpack() {
+        ypkg_unpack
+}
+
+pbs_config() {
+	YPB_CONFIG+="--with-gnome-distributor=www.ylmf.org"
+	ypkg_config
+}
+
+pbs_build() {
+	ypkg_make
+}
+
+pbs_install() {
+	ypkg_mkinstall
+
+	cd "$YPPATH_DEST"
+	
+	# Default desktop background
+	ypkg_docp "$FILES_PATH"/files/ylmfos-desktop-default.jpg  usr/share/backgrounds/
+	rm -fr var/lib/scrollkeeper var/lib/log
+}
+
