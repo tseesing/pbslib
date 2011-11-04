@@ -1,0 +1,67 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="Hardware Abstraction Layer"
+HOMEPAGE="http://www.freedesktop.org/wiki/Software/hal"
+LICENSE="GPL"
+PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
+
+SRC_URI="http://hal.freedesktop.org/releases/"$N-$V".tar.gz"
+
+RDEPEND="dbus dbus-glib expat glib2 gdk-pixbuf glibc util-linux-ng"
+BDEPEND="consolekit-dev"
+RECOMMEND=""
+
+INSTALL="$N.install"
+
+pbs_unpack(){
+        ypkg_unpack
+}
+
+pbs_config() {
+	YPB_CONFIG+=" --with-udev-prefix=/etc 
+		      --docdir=/usr/share/doc/"$N"/"$V$R" 
+		      --with-backend=linux
+		      --with-os-type=ylmfos
+		      --with-hwdata=/usr/share/misc 
+		      --disable-acl-management
+		      --disable-apm
+		      --disable-verbose-mode
+		      --disable-acpi-ibm
+		      --disable-acpi-toshiba
+		      --disable-parted  
+		      --disable-docbook-docs
+		      --disable-policy-kit  
+		      --enable-umount-helper
+		      --enable-man-pages
+		      --enable-sonypic  
+		      --enable-pci
+		      --enable-console-kit
+		      --enable-acpi
+		      --enable-acpi-proc
+		      --enable-acpi-acpid
+		      --with-cpufreq
+		      --with-usb-csr
+		      --with-keymaps
+		      --with-macbook
+		      --with-macbookpro
+		      --without-dell-backlight "
+	ypkg_config
+}
+
+pbs_build() {
+	## FIXME! 
+	#videodev.h was droped at linux_2.6.38, but hal needs. 
+	#copy from linux_2.6.32
+	ypkg_docp "$FILES_PATH"/files/videodev.h  /usr/include/linux/
+	ypkg_make
+}
+
+pbs_install() {
+	ypkg_mkinstall
+	cd "$YPPATH_DEST"
+	ypkg_docp "$FILES_PATH"/files/11-mousewheel.fdi usr/share/hal/fdi/policy/10osvendor
+	ypkg_dounit "hald.service"
+}
+

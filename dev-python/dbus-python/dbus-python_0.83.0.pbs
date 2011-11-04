@@ -2,15 +2,15 @@
 # YLmf_OS package build script
 #
 
-DESCRIPTION=" Python bindings for the D-Bus messagebus."
+DESCRIPTION="Python bindings for the D-Bus messagebus."
 HOMEPAGE="http://www.freedesktop.org/wiki/Software/DBusBindings http://dbus.freedesktop.org/doc/dbus-python/"
-LICENSE="GPL-2"
+LICENSE="GPL"
 PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 
-SRC_URI="http://dbus.freedesktop.org/releases/"$N"/"$N-$V$R".tar.gz"
+SRC_URI="http://dbus.freedesktop.org/releases/"$N"/"$N-$V".tar.gz"
 
-RDEPEND="dbus dbus-glib glib2 gdk-pixbuf glibc"
-BDEPEND="    python-dev"
+RDEPEND="dbus dbus-glib glib2 glibc"
+BDEPEND=""
 RECOMMENDED=""
 
 NOTES="docutils epydoc is required to Build Documentation"
@@ -30,3 +30,4 @@ pbs_build() {
 pbs_install() {
 	ypkg_mkinstall
 }
+

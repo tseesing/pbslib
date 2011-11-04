@@ -1,0 +1,39 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="Applets for the GNOME Desktop and Panel"
+HOMEPAGE="http://www.gnome.org/"
+LICENSE="GPL"
+PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
+
+SRC_URI="http://ftp.gnome.org/pub/gnome/desktop/2.32/2.32.1/sources/"$N-$V".tar.bz2"
+
+RDEPEND="atk avahi cairo dbus dbus-glib expat fontconfig freetype gail gcc gconf gdk-pixbuf glib2 glibc gnome-desktop gnome-panel gnome-vfs gnutls gst-plugins-base gstreamer gtk+ gucharmap libart_lgpl libbonobo libbonoboui libcanberra libgcrypt libgnome libgnomecanvas libgnome-keyring libgpg-error libgtop libgweather libICE libnotify libogg libpng libproxy libSM libsoup libtasn1 libtool libvorbis libwnck libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libxml2 libXrandr libXrender libXres openssl orbit pango pixman popt sqlite startup-notification tdb util-linux-ng zlib"
+BDEPEND="pygtk-dev gnome-settings-daemon-dev"
+RECOMMENDED="gnome-python-desktop gnome-icon-theme"
+
+INSTALL="$N.install"
+
+pbs_unpack() {
+        ypkg_unpack
+}
+
+pbs_config() {
+	ypkg_docp "$FILES_PATH"/files/cpufreq-*      cpufreq/pixmaps
+	YPB_CONFIG+="--disable-schemas-install
+		     --disable-polkit
+		     --enable-mixer-applet
+		     --without-hal"
+	ypkg_config
+}
+
+pbs_build() {
+	ypkg_make
+}
+
+pbs_install() {
+	ypkg_mkinstall
+	ypkg_mkinstall -C man install-man
+}
+

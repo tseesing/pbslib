@@ -8,22 +8,19 @@ REPO=""
 LICENSE="GPL"
 PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 
-SRC_URI="http://nchc.dl.sourceforge.net/project/gimp-print/gutenprint-5.2/5.2.7/gutenprint-5.2.7.tar.bz2"
+SRC_URI="http://nchc.dl.sourceforge.net/project/gimp-print/"$N"-5.2/"$V"/"$N-$V".tar.bz2"
 
 RDEPEND="readline gnutls"
-BDEPEND="cups:-dev ghostscript-dev gimp:-dev"
+BDEPEND="cups-dev ghostscript-dev gimp-dev"
 RECOMMENDED=""
 CONFLICT=""
 
-OPIONAL="cups:		to use cups printer spooler(recommended)
+OPIONAL="cups:	      to use cups printer spooler(recommended)
          foomatic-db-engine:	to use foomatic spooler
-	 ghostscript:	adds postscript support for ijsgutenprint
-	 gimp:		adds gutenprint plugin to gimp
-	 "
+	 ghostscript: adds postscript support for ijsgutenprint
+	 gimp:	      adds gutenprint plugin to gimp"
 
 INSTALL="$N.install"
-
-NOTES=""
 
 pbs_unpack() {
         ypkg_unpack
@@ -57,3 +54,4 @@ pbs_build() {
 pbs_install() {
 	ypkg_mkinstall
 }
+

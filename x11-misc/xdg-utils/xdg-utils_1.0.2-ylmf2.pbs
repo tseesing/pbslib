@@ -29,5 +29,6 @@ pbs_build() {
 
 pbs_install() {
 	ypkg_mkinstall
+	ypkg_docp "$FILES_PATH"/files/xdg-settings "$YPPATH_DEST"/usr/bin/
 }
 

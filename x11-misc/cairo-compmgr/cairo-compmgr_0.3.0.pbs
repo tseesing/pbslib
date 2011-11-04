@@ -4,20 +4,17 @@
 
 DESCRIPTION="Cairo Composite Manager is a versatile and extensible composite manager which use cairo for rendering. "
 HOMEPAGE="http://cairo-compmgr.tuxfamily.org/"
-REPO=""
 LICENSE="GPL"
 PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 
-SRC_URI="http://download.tuxfamily.org/ccm/cairo-compmgr/cairo-compmgr-0.3.0.tar.gz"
+SRC_URI="http://download.tuxfamily.org/ccm/"$N"/"$N-$V".tar.gz"
 
-RDEPEND="atk cairo dbus dbus-glib expat fontconfig freetype gcc gconf gdb glade glib2 gdk-pixbuf glibc gtk+ libgtop libICE libpng libSM libwnck libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libxml2 libXrandr libXrender libXres orbit pango pixman startup-notification util-linux-ng vala zlib"
+RDEPEND="atk binutils cairo expat fontconfig freetype gcc gconf gdk-pixbuf glib2 glibc gtk+ libgtop libICE libpng libSM libwnck libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libxml2 libXrandr libXrender libXres orbit pango pixman startup-notification util-linux-ng vala zlib"
 BDEPEND=""
 RECOMMENDED=""
 CONFLICT=""
 
 INSTALL="$N.install"
-
-NOTES=""
 
 pbs_unpack() {
         ypkg_unpack

@@ -9,18 +9,32 @@ PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 
 SRC_URI="git://omnibook.git.sourceforge.net/gitroot/omnibook/omnibook"
 
-RDEPEND=""
-BDEPEND=""
-RECOMMENDED="build-essential"
-CONFLICT=""
-
-INSTALL="$N.install"
+PROVIDE="$N-source $N-driver"
 
 pbs_unpack() {
         ypkg_unpack
 }
 
-pbs_install() {
+pbs_config() {
+	ypkg_patch ylmfos_makefile.patch
+}
+
+omnibook-source_install() {
+	DESCRIPTION="Linux kernel module for (but not limited to) HP Omnibook support (source)."
+	RECOMMENDED="build-essential"
+	INSTALL="$N.install"
+	OPINION="nodev"
+
 	ypkg_dosrc *
+}
+
+omnibook-driver_install() {
+	DESCRIPTION="Linux kernel module for (but not limited to) HP Omnibook support (kernel module)."
+	BDEPEND="make gcc linux-kernel-headers"
+	INSTALL="$N.install"
+
+	unset ARCH
+	ypkg_make
+	ypkg_mkinstall
 }
 

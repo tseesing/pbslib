@@ -1,0 +1,164 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="NVIDIA binary Xorg driver, kernel module and VDPAU library"
+HOMEPAGE="http://www.nvidia.com/object/citizenship-report-home.html"
+LICENSE="custom"
+PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
+
+SRC_URI="ftp://download.nvidia.com/XFree86/Linux-x86/"$V$R"/NVIDIA-Linux-x86-"$V$R".run"
+
+PROVIDE="$N-source $N-driver $N-utils"
+
+pbs_config() {
+	# Extract-only
+	[ -d NVIDIA-Linux-x86-"$V$R" ] && rm -fr NVIDIA-Linux-x86-"$V$R"
+	bash "$YPPATH_SOURCE"/NVIDIA-Linux-x86-"$V$R".run --extract-only
+	cd NVIDIA-Linux-x86-"$V$R"/
+
+	# Get around Xen checks
+	cp kernel/nv.c kernel/nv1.c
+	cp kernel/nv-linux.h kernel/nv-linux1.h
+	sed 's/CONFIG_XEN/CONFIG_ALB/g'  kernel/nv1.c >kernel/nv.c
+	sed 's/CONFIG_XEN/CONFIG_ALB/g'  kernel/nv-linux1.h > kernel/nv-linux.h
+	rm kernel/nv1.c kernel/nv-linux1.h
+
+	# kernel module source
+	cp kernel/Makefile.kbuild kernel/Makefile
+	# for surpported
+	cp README.txt kernel/
+
+	#
+	ypkg_patch ylmfos_makefile.patch
+}
+
+nvidia-graphic-source_install () {
+	DESCRIPTION="NVIDIA Xorg driver, kernel module (source)"
+	BDEPEND="make prelink"
+	RECOMMENDED="build-essential nvidia-graphic-utils" 	
+	OPINION="nodev"
+	YARCH="any"
+
+	INSTALL="$N.install"
+	
+	ypkg_dosrc kernel/* 
+	ypkg_dosupported "${N}"_supported
+}
+
+nvidia-graphic-driver_install () {
+	DESCRIPTION="NVIDIA kernel module (kernel module)"
+	BDEPEND="make prelink gcc linux-kernel-headers"
+	RECOMMENDED="nvidia-graphic-utils" 	
+	
+	DESKTOPFILE="nvidia-settings.desktop"
+	
+	INSTALL="$N.install"
+		
+	unset ARCH
+	cd kernel
+	export IGNORE_CC_MISMATCH="1"
+	ypkg_make -f Makefile.kbuild module
+	make DESTDIR="$YPPATH_DEST" module-install
+
+	cd ../
+	rm -rf kernel
+}
+
+nvidia-graphic-utils_install () {
+	DESCRIPTION="NVIDIA binary Xorg driver and VDPAU library (libs and utils)"
+	RDEPEND="nvidia-graphic-driver"
+
+	INSTALL="$N.install"
+	OPINION="nodev"
+
+	#
+	ypkg_docp *  "$YPPATH_DEST"/usr/lib/
+	cd "$YPPATH_DEST"/usr/lib/
+
+	# Disable the stack markings of binaries for security reasons.
+	find . -name "*.so*" | xargs -n1 execstack -c
+
+	# Disable the stack markings of other binaries (only for the current arch)
+	# Note: don't use for loops or pass more than 1 argument to execstack
+	# or it will fail.
+	execstack -c nvidia-xconfig || true
+	execstack -c nvidia-smi || true
+	
+	# XvMCConfig
+	echo "libXvMCNVIDIA_dynamic.so.1" >XvMCConfig
+	
+	# Man files
+	ypkg_domv nvidia-installer.1.gz nvidia-xconfig.1.gz nvidia-settings.1.gz nvidia-smi.1.gz "$YPPATH_DEST"/usr/share/man/man1/
+
+	# Dev
+	ypkg_domv gl*.h   "$YPPATH_DEST"/usr/include/"$N"/GL
+
+	# OpenCL
+	ypkg_domv nvidia.icd "$YPPATH_DEST"/etc/OpenCL/vendors/
+
+	# Doc
+	ypkg_domv mkprecompiled LICENSE NVIDIA_Changelog README.txt html pkg-history.txt makeself.sh "$YPPATH_DEST"/usr/share/doc/"$N"/"$V$R"/
+
+	# 
+	mkdir -p "$YPPATH_DEST"/usr/share/grub-gfxpayload-lists/
+	echo "# Blacklist cards here" >"$YPPATH_DEST"/usr/share/grub-gfxpayload-lists/blacklist
+	
+	#
+	ln -sf libGL.so."$V" libGL.so.1
+	ln -sf libGL.so.1    libGL.so
+
+	ln -sf libnvidia-cfg.so."$V" libnvidia-cfg.so.1
+	ln -sf libnvidia-cfg.so.1    libnvidia-cfg.so
+
+	ypkg_domv libglx.so."$V"      "$YPPATH_DEST"/usr/lib/xorg/modules/extensions/
+	cd "$YPPATH_DEST"/usr/lib/xorg/modules/extensions/
+	ln -sf libglx.so."$V" libglx.so
+	cd -
+
+	ln -sf libXvMCNVIDIA.so."$V"  libXvMCNVIDIA.so
+	ln -sf libXvMCNVIDIA.so."$V"  libXvMCNVIDIA.so.1
+	ln -sf libXvMCNVIDIA.so."$V"  libXvMCNVIDIA_dynamic.so.1
+
+	ln -sf libcuda.so."$V"  libcuda.so
+	ln -sf libcuda.so."$V"  libcuda.so.1
+
+	ypkg_domv libvdpau_nvidia.so."$V"    vdpau/
+	ln -sf vdpau/libvdpau_nvidia.so."$V" libvdpau_nvidia.so.1
+	ln -sf libvdpau_nvidia.so.1          libvdpau_nvidia.so 
+	ln -sf vdpau/libvdpau_nvidia.so."$V" libvdpau_trace.so
+	
+	ypkg_domv libnvidia-wfb.so."$V"  "$YPPATH_DEST"/usr/lib/xorg/modules/  
+	cd "$YPPATH_DEST"/usr/lib/xorg/modules/
+	ln -sf  libnvidia-wfb.so."$V" libnvidia-wfb.so.1
+	cd -
+
+	ln -sf libOpenCL.so.1.0.0  libOpenCL.so.1.0
+	ln -sf libOpenCL.so.1.0    libOpenCL.so.1
+	ln -sf libOpenCL.so.1      libOpenCL.so
+
+	ln -sf libnvidia-compiler.so."$V" libnvidia-compiler.so.1
+	ln -sf libnvidia-compiler.so.1    libnvidia-compiler.so
+
+	ln -sf libnvidia-ml.so."$V"       libnvidia-ml.so.1
+	ln -sf libnvidia-ml.so.1          libnvidia-ml.so
+
+	ln -sf libnvcuvid.so."$V"         libnvcuvid.so.1
+	ln -sf libnvcuvid.so.1            libnvcuvid.so
+
+	ln -sf libXvMCNVIDIA.so."$V"      libXvMCNVIDIA.so
+
+
+	# Usr/bin
+	ypkg_domv nvidia-installer nvidia-xconfig nvidia-smi nvidia-bug-report.sh nvidia-settings "$YPPATH_DEST"/usr/bin/
+
+	#
+	sed -i 's/__UTILS_PATH__/\/usr\/bin/g' nvidia-settings.desktop
+	sed -i 's/__PIXMAP_PATH__\///g' nvidia-settings.desktop
+	ypkg_dodesktop nvidia-settings.desktop nvidia-settings.png
+	rm nvidia-settings.desktop nvidia-settings.png 
+	
+	# Xorg
+	ypkg_domv nvidia_drv.so "$YPPATH_DEST"/usr/lib/xorg/modules/drivers/
+}
+

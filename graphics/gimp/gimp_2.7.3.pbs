@@ -4,11 +4,10 @@
 
 DESCRIPTION="GNU Image Manipulation Program"
 HOMEPAGE="http://www.gimp.org/"
-REPO="testing"
 LICENSE="GPL LGPL"
 PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 
-SRC_URI="ftp://ftp.gimp.org/pub/"$N"/v2.7/"$N-$V$R".tar.bz2"
+SRC_URI="ftp://ftp.gimp.org/pub/"$N"/v2.7/"$N-$V".tar.bz2"
 
 RDEPEND="poppler libjpeg-turbo libpng lcms aalib alsa-lib atk babl cairo dbus dbus-glib enchant expat fontconfig freetype gail gcc gegl glib2 gdk-pixbuf glibc gnutls gst-plugins-base gstreamer gtk+ hal icu libcroco libexif libgcrypt libgpg-error libgsf libICE libmng librsvg libSM libsoup libtasn1 libtiff libwmf libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libxml2 libXmu libXpm libXrandr libXrender libxslt libXt ncurses pango pixman poppler sqlite util-linux-ng webkitgtk zlib"
 BDEPEND=""

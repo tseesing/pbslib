@@ -11,10 +11,9 @@ SRC_URI="http://nchc.dl.sourceforge.net/project/"$N"/stable/"$V"/"$N-$V".tar.gz"
 
 RDEPEND=""
 BDEPEND=""
-RECOMMENDED="build-essential"
 CONFLICT=""
 
-INSTALL="$N.install"
+PROVIDE="$N-utils $N-driver $N-source"
 
 pbs_unpack() {
         ypkg_unpack
@@ -32,13 +31,32 @@ pbs_config() {
 }
 
 pbs_build() {
+	unset ARCH
 	ypkg_make utils
+	ypkg_make driver
 }
 
-pbs_install() {
-	make DESTDIR="$YPPATH_DEST" install-utils
 
-	#
+ndiswrapper-utils_install () {
+	DESCRIPTION="Wrapper for using Windows drivers for some wireless cards, (utils)"
+	make DESTDIR="$YPPATH_DEST" install-utils	
+}
+
+ndiswrapper-driver_install() {
+	DESCRIPTION="Wrapper for using Windows drivers for some wireless cards, (kernel module)"
+	BDEPEND="make gcc linux-kernel-headers"
+	INSTALL="$N.install"
+
+	make DESTDIR="$YPPATH_DEST" install-driver
+}
+
+ndiswrapper-source_install() {
+	DESCRIPTION="Wrapper for using Windows drivers for some wireless cards, (source)"
+	RECOMMENDED="build-essential"
+	OPINION="nodev"
+	YARCH="any"
+	INSTALL="$N.install"
+
 	ypkg_patch ylmfos_makefile_driver.patch
 	ypkg_dosrc AUTHORS ChangeLog driver INSTALL Makefile ndiswrapper.spec README 
 }

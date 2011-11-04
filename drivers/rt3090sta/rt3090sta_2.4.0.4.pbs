@@ -4,24 +4,19 @@
 
 DESCRIPTION="Ralink RT3090 PCI WLAN adaptors"
 HOMEPAGE="http://www.ralinktech.com/support.php?s=2"
-REPO=""
 LICENSE="GPL"
 PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 
 SRC_URI="2010_1217_RT3090_LinuxSTA_V2.4.0.4_WiFiBTCombo_DPO.zip"
 
-RDEPEND=""
-BDEPEND=""
-RECOMMENDED="make linux-kernel-headers"
-CONFLICT=""
-
-INSTALL="$N.install"
-OPINION="nodev"
-
-NOTES=""
+PROVIDE="$N-source $N-driver"
 
 pbs_unpack() {
         ypkg_unpack
+}
+
+pbs_config() {
+	ypkg_patch ylmfos_makefile.patch
 }
 
 pbs_install() {
@@ -32,7 +27,27 @@ pbs_install() {
 		  rt3090sta-2.4.0.4-remove-potential-conflicts-with-rt2860sta.patch
 		  rt3090sta-2.4.0.4-WPA-mixed.patch"
 	ypkg_patch $patches
+}
+
+rt3090sta-source_install() {
+	DESCRIPTION="Ralink RT3090 PCI WLAN adaptors (source)"
+	RECOMMENDED="build-essential"
+	INSTALL="$N.install"
+	OPINION="nodev"
+        YARCH="any"
+
 	ypkg_dosrc * 
-	ypkg_dosupported rt3090sta_supported
+	ypkg_dosupported "$N"_supported
+
+}
+
+rt3090sta-driver_install() {
+	DESCRIPTION="Ralink RT3090 PCI WLAN adaptors (kernel module)"
+	BDEPEND="make gcc linux-kernel-headers"
+	INSTALL="$N.install"
+
+	unset ARCH
+	ypkg_make
+	ypkg_mkinstall
 }
 

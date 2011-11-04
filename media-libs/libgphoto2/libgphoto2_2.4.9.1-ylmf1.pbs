@@ -1,0 +1,30 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="Library that implements support for numerous digital cameras"
+HOMEPAGE="http://www.gphoto.org/"
+LICENSE="GPL"
+PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
+
+SRC_URI="http://downloads.sourceforge.net/project/gphoto/libgphoto/"$V"/"$N-$V".tar.bz2"
+
+RDEPEND="expat fontconfig freetype gd glibc libexif libjpeg-turbo libpng libtool libusb libusb-compat libX11 libXau libxcb libXdmcp libXpm zlib"
+BDEPEND="libexif-gtk-dev"
+
+pbs_unpack(){
+        ypkg_unpack
+}
+
+pbs_config() {
+	ypkg_config
+}
+
+pbs_build() {
+	ypkg_make
+}
+
+pbs_install() {
+	ypkg_mkinstall
+}
+

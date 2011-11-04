@@ -1,0 +1,36 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="gdm setup tool"
+HOMEPAGE="www.ylmf.net"
+LICENSE="GPL2"
+PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
+
+INSTALL="$N.install"
+
+SRC_URI="git://git.ylmf.com/"$N".git"
+
+RDEPEND="atk cairo dbus dbus-glib expat fontconfig freetype gcc gdk-pixbuf glib2 glibc gtk+ libpng libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libXrandr libXrender pango pixman zlib ylmfos-dbus-polkit"
+BDEPEND=""
+RECOMMENDED=""
+CONFLICT="gdm2setup"
+
+
+pbs_unpack() {
+	ypkg_unpack
+}
+
+pbs_config() {
+	ypkg_config
+}
+
+pbs_build() {
+	ypkg_make
+}
+
+pbs_install() {
+	ypkg_mkinstall
+	ypkg_doln /usr/bin/ygs "$YPPATH_DEST"/usr/bin/gdmsetup
+}
+

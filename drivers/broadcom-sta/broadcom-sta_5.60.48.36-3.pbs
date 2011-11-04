@@ -2,7 +2,7 @@
 # YLmf_OS package build script
 #
 
-DESCRIPTION="Broadcom STA is a binary-only device driver to support the following IEEE 802.11a/b/g/n wireless network cards: BCM4311-, BCM4312-, BCM4313-, BCM4321-, and BCM4322-based hardware."
+DESCRIPTION="driver for BCM4311-, BCM4312-, BCM4313-, BCM4321-, and BCM4322-based hardware."
 HOMEPAGE="http://www.broadcom.com/support/802.11/linux_sta.php"
 LICENSE="GPL"
 PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
@@ -11,20 +11,34 @@ SRC_URI="broadcom-sta-5.60.48.36-3.tar.bz2"
 
 RDEPEND=""
 BDEPEND=""
-RECOMMENDED="build-essential"
-CONFLICT="bcmwl"
 
-INSTALL="$N.install"
-OPINION="nodev"
+PROVIDE="broadcom-sta-source broadcom-sta-driver"
 
 pbs_unpack() {
         ypkg_unpack
 }
 
-pbs_install() {
+broadcom-sta-source_install() {
+	DESCRIPTION="driver for BCM4311-, BCM4312-, BCM4313-, BCM4321-, and BCM4322-based hardware, (source)"
+	RECOMMENDED="build-essential"
+	INSTALL="broadcom-sta-source.install"
+	OPINION="nodev"
+        YARCH="any"
+	
 	ypkg_patch ylmfos-makeinstall.patch
 	cd i386
 	ypkg_dosrc * 
-	ypkg_dosupported "$N"_supported
+	ypkg_dosupported broadcom-sta_supported
+}
+
+broadcom-sta-driver_install() {
+	DESCRIPTION="driver for BCM4311-, BCM4312-, BCM4313-, BCM4321-, and BCM4322-based hardware, (driver module)"
+	BDEPEND="make gcc linux-kernel-headers"
+	CONFLICT="bcmwl-driver"
+	INSTALL="broadcom-sta-driver.install"
+
+	unset ARCH
+	ypkg_make
+	ypkg_mkinstall
 }
 

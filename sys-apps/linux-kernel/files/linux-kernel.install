@@ -1,21 +1,30 @@
 . /usr/lib/ybs/funcs
 
 post_install() {
+	# Install header package for drivers (locates at /usr/src) compiling automatically.
+	yget install linux-kernel-headers
+
+	# For initramfs
 	name="$1"
 	version="$2"
 	atom_parse ${name}_$version
 	depmod -a
 	update-initramfs -c -k "$V"-ylmfos
+
+	# For grub
 	update-grub
 }       
 
 post_remove() {
+	# 
 	name="$1"
 	version="$2"
         atom_parse ${name}_$version
 	depmod -a
 	[ -f /boot/initrd.img-"$V"-ylmfos ]         && rm /boot/initrd.img-"$V"-ylmfos
 	[ -f /var/lib/initramfs-tools/"$V"-ylmfos ] && rm /var/lib/initramfs-tools/"$V"-ylmfos
+
+	# For grub
 	update-grub
 }
 

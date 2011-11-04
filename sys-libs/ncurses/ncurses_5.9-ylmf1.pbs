@@ -33,7 +33,7 @@ pbs_config() {
 
 	# libncurses.so.5 for external binary support 
 	mkdir -p "$N"-build &&  pushd "$N"-build 
-	[ $ARCH = "x86_64" ] && CONFIGFLAG="--with-chtype=long"
+	[ "$ARCH" = "x86_64" ] && CONFIGFLAG="--with-chtype=long"
 	YPB_CONFIG="--prefix=/usr 
 	            --with-shared 
 		    --with-normal 
@@ -58,6 +58,7 @@ pbs_install() {
 
 	# non-widec compatibility library
 	pushd "$N"-build
+	ypkg_docp lib/libncurses.so."$V"      "$YPPATH_DEST"/usr/lib/
 	ypkg_doln /usr/lib/libncurses.so."$V" "$YPPATH_DEST"/usr/lib/libncurses.so.5
 
 

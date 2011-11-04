@@ -2,28 +2,36 @@
 
 post_install() {
 	#glib-compile-schemas /usr/share/glib-2.0/schemas/
+	
 	gnome2_desktop_database_update
 	gnome2_icon_cache_update
 	gnome2_gconfd_reload
 	gnome2_mime_database_update
-	#The command to handle ZCAST scheme URLs
+	
+	# The command to handle ZCAST scheme URLs
 	gnome2_install_defaut_gconf "string" "/desktop/gnome/url-handlers/zcast/command" "gnome-mplayer %s"
 	gnome2_install_defaut_gconf "bool"  "/desktop/gnome/url-handlers/zcast/enabled"  "True"
-	#The command to handle ZUNE scheme URLs
+	
+	# The command to handle ZUNE scheme URLs
 	gnome2_install_defaut_gconf "string" "/desktop/gnome/url-handlers/zune/command" "gnome-mplayer %s"
 	gnome2_install_defaut_gconf "bool"  "/desktop/gnome/url-handlers/zune/enabled"  "True"
-	#The command to handle LASTFM scheme URLs
+	
+	# The command to handle LASTFM scheme URLs
 	gnome2_install_defaut_gconf "string" "/desktop/gnome/url-handlers/lastfm/command" "gnome-mplayer %s"
 	gnome2_install_defaut_gconf "bool"  "/desktop/gnome/url-handlers/lastfm/enabled"  "True"
-	#The command to handle ITPC scheme URLs
+	
+	# The command to handle ITPC scheme URLs
 	gnome2_install_defaut_gconf "string" "/desktop/gnome/url-handlers/itpc/command" "gnome-mplayer %s"
 	gnome2_install_defaut_gconf "bool"  "/desktop/gnome/url-handlers/itpc/enabled"  "True"
-	#The command to handle FEED scheme URLs
+	
+	# The command to handle FEED scheme URLs
 	gnome2_install_defaut_gconf "string" "/desktop/gnome/url-handlers/feed/command" "gnome-mplayer %s"
 	gnome2_install_defaut_gconf "bool"  "/desktop/gnome/url-handlers/feed/enabled"  "True"
-	#The command to handle ITMS scheme URLs
+	
+	# The command to handle ITMS scheme URLs
 	gnome2_install_defaut_gconf "string" "/desktop/gnome/url-handlers/itms/command" "gnome-mplayer %s"
 	gnome2_install_defaut_gconf "bool"  "/desktop/gnome/url-handlers/itms/enabled"  "True"
+	
 	#
 	gnome2_install_defaut_gconf "string" "/apps/gnome-mplayer/preferences/subtitlecodepage" "CP936"
 }
@@ -34,3 +42,12 @@ post_remove() {
 	gnome2_gconfd_reload
 	gnome2_mime_database_update
 }
+
+post_upgrade () {
+	post_install
+}
+
+post_downgrade () {
+	post_install
+}
+

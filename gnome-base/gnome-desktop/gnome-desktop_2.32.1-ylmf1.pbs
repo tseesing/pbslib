@@ -34,7 +34,10 @@ pbs_install() {
 	cd "$YPPATH_DEST"
 	
 	# Default desktop background
-	ypkg_docp "$FILES_PATH"/files/ylmfos-desktop-default.jpg  usr/share/backgrounds/
+	ypkg_docp "$FILES_PATH"/files/ylmfos-desktop.jpg    usr/share/backgrounds/
+	ypkg_doln /usr/share/backgrounds/ylmfos-desktop.jpg usr/share/backgrounds/default.jpg
+
+	#
 	rm -fr var/lib/scrollkeeper var/lib/log
 }
 
