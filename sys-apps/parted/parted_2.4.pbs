@@ -1,0 +1,42 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="Create, destroy, resize, check, copy partitions and file systems"
+HOMEPAGE="http://www.gnu.org/software/parted"
+LICENSE="GPL"
+PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
+
+SRC_URI="http://ftp.gnu.org/gnu/"$N"/"$N-$V".tar.xz"
+
+RDEPEND="device-mapper glibc ncurses readline udev util-linux-ng"
+BDEPEND=""
+RECOMMENDED=""
+
+INSTALL="$N.install"
+
+pbs_unpack() {
+        ypkg_unpack
+}
+
+pbs_config() {
+	# Remove tests known to FAIL instead of SKIP without OS/userland support
+	sed -i libparted/tests/Makefile.am -e 's|t3000-symlink.sh||g'
+	sed -i tests/Makefile.am -e '/t4100-msdos-partition-limits.sh/d' \
+	       -e '/t4100-dvh-partition-limits.sh/d' \
+	       -e '/t6000-dm.sh/d'
+	YPB_CONFIG+=" --disable-rpath
+		      --disable-Werror
+	              --enable-device-mapper=yes "
+	ypkg_config
+}
+
+pbs_build() {
+	ypkg_make
+}
+
+pbs_install() {
+	ypkg_mkinstall
+	ypkg_dodoc AUTHORS BUGS ChangeLog NEWS README THANKS TODO
+}
+
