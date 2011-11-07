@@ -44,8 +44,8 @@ pre_install() {
 
 post_install() {
 	# Check nvidia.ko
-	if ! modinfo nvidia >/dev/null; then
-		echo "* Error: modprobe nvidia kernel module failed!"
+	if ! modprobe nvidia >/dev/null; then
+		echo "* Error: nvidia kernel module not found or modprobe failed!"
 		echo "* Please install nvidia-graphic-driver or nvidia-graphic-source"
 		echo "* if you are using nvidia graphic card."
 		echo 
@@ -101,6 +101,14 @@ post_remove() {
 	echo '* Re-login session for the changes to take effect.'
 
 	return 0
+}
+
+pre_upgrade() {
+	pre_install
+}
+
+pre_downgrade() {
+	pre_install
 }
 
 post_upgrade()  {

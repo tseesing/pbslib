@@ -2,30 +2,41 @@
 # YLmf_OS package build script
 #
 
-DESCRIPTION="Broadcom 802.11 Linux STA wireless driver for BCM4311/4312/4313 BCM4321/4322 BCM43224/43225/43227/43228."
+DESCRIPTION="driver for BCM4311/4312/4313 BCM4321/4322 BCM43224/43225/43227/43228."
 HOMEPAGE="http://www.broadcom.com/company/"
-REPO=""
-LICENSE=""
-PRIORITY=""
+LICENSE="GPL"
 PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 
 SRC_URI="bcmwl-5.100.82.38.tar.bz2"
 
-RDEPEND=""
-BDEPEND=""
-RECOMMENDED=""
-CONFLICT="broadcom-sta"
-
-INSTALL="$N.install"
-OPINION="nodev"
+PROVIDE="$N-source $N-driver"
 
 pbs_unpack() {
         ypkg_unpack
 }
 
-pbs_install() {
+pbs_config() {
 	ypkg_patch ylmfos-missing-init_MUTEX.patch
+}
+
+bcmwl-source_install() {
+	DESCRIPTION="driver for BCM4311/4312/4313 BCM4321/4322 BCM43224/43225/43227/43228 (source)."
+	RECOMMENDED="build-essential"
+	INSTALL="$N.install"
+	OPINION="nodev"
+
 	ypkg_dosrc *
-	ypkg_dosupported "bcmwl_supported"
+	ypkg_dosupported "$N"_supported
+}
+
+bcmwl-driver_install() {
+	DESCRIPTION="driver for BCM4311/4312/4313 BCM4321/4322 BCM43224/43225/43227/43228 (kernel module"
+	BDEPEND="make gcc linux-kernel-headers"
+	CONFLICT="broadcom-sta-driver"
+	INSTALL="$N.install"
+	
+	unset ARCH
+	ypkg_make
+	ypkg_mkinstall
 }
 

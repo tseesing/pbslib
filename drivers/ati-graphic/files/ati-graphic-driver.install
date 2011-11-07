@@ -1,19 +1,19 @@
 . /usr/lib/ybs/funcs
 
 post_install() {
- 	unset ARCH
-	ypkg_domk build $1 $2
+	depmod -a
+        echo "* Please install ati-graphic-utils further."
 }
 
 post_remove() {
-	ypkg_domk delete $1 $2
+	post_install
 }
 
 post_upgrade() {
 	post_install
 }
 
-post_downgrade() {
+post_downgrade(){
 	post_install
 }
 

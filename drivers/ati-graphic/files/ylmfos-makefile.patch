@@ -1,14 +1,19 @@
 diff -aur common/lib/modules/fglrx/build_mod/2.6.x/Makefile common.new//lib/modules/fglrx/build_mod/2.6.x/Makefile
 --- common/lib/modules/fglrx/build_mod/2.6.x/Makefile	2011-07-07 02:47:55.000000000 +0800
 +++ common.new//lib/modules/fglrx/build_mod/2.6.x/Makefile	2011-08-15 11:57:17.725007087 +0800
-@@ -96,6 +96,10 @@
+@@ -96,10 +96,14 @@
  %.a:
  	@ln -s $(LIBIP_PREFIX)/$@
  
 +install:: kmod_build
-+	mkdir -p /lib/modules/$(KVER)/kernel/drivers/char/drm/
-+	install -m755 fglrx.ko /lib/modules/$(KVER)/kernel/drivers/char/drm/
++	mkdir -p $(DESTDIR)/lib/modules/$(KVER)/kernel/drivers/char/drm/
++	install -m755 fglrx.ko $(DESTDIR)/lib/modules/$(KVER)/kernel/drivers/char/drm/
 +
  # distclean:: clean
  
  clean::
+-	rm -rf *.c *.h *.o *.ko *.a .??* *.symvers
++	rm -rf *.o *.ko 
+ 
+ endif
+ 

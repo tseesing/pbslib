@@ -19,7 +19,8 @@ pbs_unpack() {
 }
 
 pbs_build() {
-	ypkg_make
+	git checkout develop
+	make
 }
 
 pbs_install() {

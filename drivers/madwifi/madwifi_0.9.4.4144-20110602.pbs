@@ -27,6 +27,7 @@ madwifi-source_install() {
         YARCH="any"
 	
 	ypkg_dosrc *
+	ypkg_doykms
 	ypkg_dosupported "${N}_supported"
 }
 

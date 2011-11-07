@@ -1,0 +1,10 @@
+. /usr/lib/ybs/funcs
+
+post_install() {
+	ykms install $1 $2
+}
+
+post_remove() {
+	ykms remove $1 $2
+}
+

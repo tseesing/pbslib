@@ -4,7 +4,8 @@ post_install() {
 	# Automatic build modules
 	#
 	unset ARCH
-	ypkg_domk autoinstall
+	ykms autoinstall
+	
 	return 0
 }       
 

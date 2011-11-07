@@ -13,7 +13,6 @@ post_install() {
 	gnome2_gconfd_reload
 	
 	#
-	ypkg_domk build vboxhost $2
 	rmmod vboxpci    2>/dev/null
 	rmmod vboxnetflt 2>/dev/null
 	rmmod vboxnetadp 2>/dev/null
@@ -35,7 +34,6 @@ post_upgrade() {
 	gnome2_gconfd_reload
 
 	#
-	ypkg_domk build vboxhost $2
 
 	#
 	systemctl --system daemon-reload
@@ -49,8 +47,6 @@ post_downgrade() {
 }
 
 pre_remove() {
-	ypkg_domk delete vboxhost $2
-
 	#
 	systemctl disable virtualbox.service
 

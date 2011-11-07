@@ -43,14 +43,12 @@ pre_install() {
 }
 
 post_install() {
-	# Build nvidia.ko
-	# disable checking gcc used to compile kernel and current gcc.
-	export IGNORE_CC_MISMATCH="1"
-	ypkg_domk build $1 $2 "-f Makefile.kbuild module"
-
 	# Check nvidia.ko
-	if ! modinfo nvidia >/dev/null; then
-		echo "* Error: build nvidia kernenl module failed!"
+	if ! modprobe nvidia >/dev/null; then
+		echo "* Error: nvidia kernel module not found or modprobe failed!"
+		echo "* Please install nvidia-graphic-96-driver or nvidia-graphic-96-source"
+		echo "* if you are using nvidia graphic card."
+		echo 
 		restore
 		return 1
 	fi
@@ -65,7 +63,6 @@ blacklist lbm-nouveau
 EOF
 	# Update initramfs
         depmod -a
-        depmod -a
 	update-initramfs -d -u
 	
 	#	
@@ -76,7 +73,7 @@ EOF
 	echo '* which has been installed in /usr/share/licenses/nvidia/LICENSE'
 	echo '* If you do not accept this license, you must remove the package immediately.'
 	echo 
-	echo '* You must reboot your computer for the changes to take effect.'
+	echo '* Reboot your computer for the changes to take effect.'
 
 	return 0
 }
@@ -90,14 +87,10 @@ post_remove() {
 		grep -w Driver /etc/X11/xorg.conf |grep -w nvidia && rm /etc/X11/xorg.conf
 	fi
 
-	# Delete nvidia.ko
-	ypkg_domk delete $1 $2
-
 	# Delete module source 
 	rm  -rf /usr/src/"$1-$2"
 
 	# Update initramfs
-        depmod -a
         depmod -a
 	update-initramfs -d -u
 	
@@ -105,9 +98,17 @@ post_remove() {
 	restore
 
 	# Mesassge
-	echo '* You must logout your session for the changes to take effect.'
+	echo '* Re-login session for the changes to take effect.'
 
 	return 0
+}
+
+pre_upgrade() {
+	pre_install
+}
+
+pre_downgrade() {
+	pre_install
 }
 
 post_upgrade()  {

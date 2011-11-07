@@ -1,14 +1,15 @@
 . /usr/lib/ybs/funcs
 
 post_install() {
-	#
 	unset ARCH
-	ypkg_domk build $1 $2
+	ykms install $1 $2
+
 	return 0
 }       
 
 post_remove() {
-	#
-	ypkg_domk delete $1 $2
+	ykms remove $1 $2
+
 	return 0
 }
+

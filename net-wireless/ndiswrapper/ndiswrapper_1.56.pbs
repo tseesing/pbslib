@@ -57,7 +57,7 @@ ndiswrapper-source_install() {
 	YARCH="any"
 	INSTALL="$N.install"
 
-	ypkg_patch ylmfos_makefile_driver.patch
+	ypkg_doykms
 	ypkg_dosrc AUTHORS ChangeLog driver INSTALL Makefile ndiswrapper.spec README 
 }
 

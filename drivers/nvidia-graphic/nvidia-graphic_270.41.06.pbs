@@ -24,9 +24,12 @@ pbs_config() {
 	sed 's/CONFIG_XEN/CONFIG_ALB/g'  kernel/nv-linux1.h > kernel/nv-linux.h
 	rm kernel/nv1.c kernel/nv-linux1.h
 
-	# kernel module source
-	cp kernel/Makefile.kbuild kernel/Makefile
-	# for surpported
+	# Kernel module source
+	cd kernel
+	ln -sf Makefile.kbuild Makefile
+	cd -
+
+	# For surpported
 	cp README.txt kernel/
 
 	#
@@ -43,6 +46,7 @@ nvidia-graphic-source_install () {
 	INSTALL="$N.install"
 	
 	ypkg_dosrc kernel/* 
+	ypkg_doykms
 	ypkg_dosupported "${N}"_supported
 }
 
@@ -50,8 +54,6 @@ nvidia-graphic-driver_install () {
 	DESCRIPTION="NVIDIA kernel module (kernel module)"
 	BDEPEND="make prelink gcc linux-kernel-headers"
 	RECOMMENDED="nvidia-graphic-utils" 	
-	
-	DESKTOPFILE="nvidia-settings.desktop"
 	
 	INSTALL="$N.install"
 		
@@ -68,6 +70,7 @@ nvidia-graphic-driver_install () {
 nvidia-graphic-utils_install () {
 	DESCRIPTION="NVIDIA binary Xorg driver and VDPAU library (libs and utils)"
 	RDEPEND="nvidia-graphic-driver"
+	DESKTOPFILE="nvidia-settings.desktop"
 
 	INSTALL="$N.install"
 	OPINION="nodev"
@@ -101,8 +104,8 @@ nvidia-graphic-utils_install () {
 	ypkg_domv mkprecompiled LICENSE NVIDIA_Changelog README.txt html pkg-history.txt makeself.sh "$YPPATH_DEST"/usr/share/doc/"$N"/"$V$R"/
 
 	# 
-	mkdir -p "$YPPATH_DEST"/usr/share/grub-gfxpayload-lists/
-	echo "# Blacklist cards here" >"$YPPATH_DEST"/usr/share/grub-gfxpayload-lists/blacklist
+	mkdir -p "$YPPATH_DEST"/usr/share/grub-gfxpayload-lists/blacklist/
+	echo "# Blacklist cards here" >"$YPPATH_DEST"/usr/share/grub-gfxpayload-lists/blacklist/01_nvidia
 	
 	#
 	ln -sf libGL.so."$V" libGL.so.1

@@ -6,7 +6,7 @@ pre_install() {
 }
 
 post_install() {
-	ypkg_domk build $1 $2
+	ykms install $1 $2
 	gnome2_install_schema "$1"
 	gnome2_install_defaut_gconf "$1 $2 $3
 	gnome2_rarian_sk_update
@@ -28,7 +28,7 @@ pre_remove() {
 }
 
 post_remove() {
-	ypkg_domk delete $1 $2
+	ykms remove $1 $2
 	ypkg_userdel -r "apache"
 	ypkg_groupdel "apache"
 }

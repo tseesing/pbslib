@@ -1,0 +1,24 @@
+. /usr/lib/ybs/funcs
+
+post_install() {
+	depmod -a
+	# License
+        echo '* By using this package you accept the NVIDIA license,'
+        echo '* If you do not accept this license, you must remove the package immediately.'
+        echo 
+        echo "* Please install nvidia-graphic-96-utils further."
+        echo 
+}
+
+post_remove() {
+	post_install
+}
+
+post_upgrade() {
+	post_install
+}
+
+post_downgrade(){
+	post_install
+}
+

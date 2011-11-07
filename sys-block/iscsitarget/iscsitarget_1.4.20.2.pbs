@@ -4,32 +4,49 @@
 
 DESCRIPTION="Open Source iSCSI target with professional features"
 HOMEPAGE="http://iscsitarget.sourceforge.net/"
-REPO=""
-LICENSE=""
+LICENSE="custom"
 PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 
-SRC_URI="http://nchc.dl.sourceforge.net/project/iscsitarget/iscsitarget/1.4.20.2/iscsitarget-1.4.20.2.tar.gz"
+SRC_URI="http://nchc.dl.sourceforge.net/project/"$N"/"$N"/"$V"/"$N-$V".tar.gz"
 
-RDEPEND=""
-BDEPEND=""
-RECOMMENDED=""
-CONFLICT=""
-
-INSTALL="$N.install"
-
-NOTES=""
+PROVIDE="$N-source $N-driver $N-utils"
 
 pbs_unpack() {
         ypkg_unpack
 }
 
-pbs_build() {
+pbs_config() {
 	ypkg_patch ylmfos-misc.patch
-	ypkg_make usr
 }
 
-pbs_install() {
-	make DESTDIR="$YPPATH_DEST" install-usr install-etc install-doc
+iscsitarget-source_install() {
+	DESCRIPTION="Open Source iSCSI target with professional features (source)."
+	RECOMMENDED="build-essential iscsitarget-utils"
+	INSTALL="$N.install"
+	OPINION="nodev"
+	YARCH="any"
+
 	ypkg_dosrc include Makefile kernel
+	ypkg_doykms
+}
+
+iscsitarget-driver_install() {
+	DESCRIPTION="Open Source iSCSI target with professional features (kernel module)."
+	BDEPEND="gcc make linux-kernel-headers"
+	RECOMMENDED="iscsitarget-utils"
+	INSTALL="$N.install"
+
+	unset ARCH
+	ypkg_make kernel
+	make DESTDIR="$YPPATH_DEST" install-kernel
+}
+
+iscsitarget-utils_install() {
+	DESCRIPTION="Open Source iSCSI target with professional features (utils)."
+	RDEPEND="iscsitarget-driver"
+
+	OPINION="nodev"
+	ypkg_make usr
+	make DESTDIR="$YPPATH_DEST" install-usr install-etc install-doc
 }
 

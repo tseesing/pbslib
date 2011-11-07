@@ -5,7 +5,7 @@ post_install() {
 	
 	# Disable checking gcc 
 	export IGNORE_CC_MISMATCH="1"
-	ypkg_domk build $1 $2 "-f Makefile.kbuild module"
+	ykms install $1 $2
 
 	# License
 	echo '* By using this package you accept the NVIDIA license,'
@@ -19,7 +19,7 @@ post_install() {
 
 post_remove() {
 	# Delete nvidia.ko
-	ypkg_domk delete $1 $2
+	ykms remove $1 $2
 
 	# Delete module source 
 	rm  -rf /usr/src/"$1-$2"
