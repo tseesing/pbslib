@@ -1,0 +1,65 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="A provider for Evolution that can connect to Exchange 2007 servers and also to Exchange 2003, 2000 and 5.5."
+HOMEPAGE="http://www.go-evolution.org/MAPIProvider"
+LICENSE="GPL"
+PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
+
+SRC_URI="http://ftp.acc.umu.se/pub/GNOME/sources/"$N"/0.28/"$N-$V".tar.bz2"
+
+RDEPEND=""
+RECOMMENDED=""
+BDEPEND=""
+OPTIONAL="a: support a 
+          b: support b"
+CONFLICT=""
+
+INSTALL="$N.install"
+
+pbs_unpack() {
+	#unpard file from $YPPATH_SOURCE to current directory.
+        ypkg_unpack
+}
+
+pbs_config() {
+	#YPB_CONFIG+=" --prefix=/usr
+	#	      --sysconfdir=/etc
+	#	      --localstatedir=/var
+	#             --infodir=/usr/share/info
+	#	      --mandir=/usr/share/man
+	#              --disable-static
+	#	      --enable-shared "
+	YPB_CONFIG+=""
+	ypkg_config
+}
+
+pbs_build() {
+	ypkg_make
+}
+
+pbs_install() {
+	#make DESTDIR="$YPPATH_DEST" install
+	ypkg_mkinstall
+	#ypkg_doinit "$N"
+	#ypkg_dounit "N".service
+	#ypkg_dodesktop "*.desktop" "*.png"
+	#ypkg_dodoc AUTHORS ChangeLog COPYING INSTALL NEWS README 
+	#ypkg_docp "$FILES_PATH/files/XXXX" "dirname"
+	#ypkg_domv "$FILES_PATH/files/XXXX" "dirname"
+	#ypkg_docp_rename "$1" "$2"
+	#ypkg_domv_rename "$1" "$2"
+	#ypkg_doln "$1 "$2"
+	#ypkg_doman a.1 b.2 c.3
+	#*****************
+	#when SRC_URI is deb or rpm package
+	#ypkg_docp data/*  "$YPPATH_DEST"
+}
+
+#split package
+foo_install () {
+	:
+}
+
+

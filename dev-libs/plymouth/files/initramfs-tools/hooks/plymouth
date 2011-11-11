@@ -60,7 +60,7 @@ if [ -e "$THEME" ]; then
 	copy_exec /lib/plymouth/renderers/drm.so /lib/plymouth/renderers/
 	copy_exec /lib/plymouth/renderers/vga16fb.so /lib/plymouth/renderers/
 
-	cp /lib/plymouth/ylmfos-logo.png ${DESTDIR}/lib/plymouth
+	#cp /lib/plymouth/ylmfos-logo.png ${DESTDIR}/lib/plymouth
 
 	# and copy the font support files needed in order to actually display
 	# any text
@@ -76,3 +76,4 @@ if [ -e "$THEME" ]; then
 	cp /etc/pango/pango.modules ${DESTDIR}/etc/pango
 	cp /usr/lib/pango/1.6.0/modules/pango-basic-fc.so ${DESTDIR}/usr/lib/pango/1.6.0/modules/pango-basic-fc.so
 fi
+

@@ -43,16 +43,6 @@ pre_install() {
 }
 
 post_install() {
-	# Check nvidia.ko
-	if ! modprobe nvidia >/dev/null; then
-		echo "* Error: nvidia kernel module not found or modprobe failed!"
-		echo "* Please install nvidia-graphic-driver or nvidia-graphic-source"
-		echo "* if you are using nvidia graphic card."
-		echo 
-		restore
-		return 1
-	fi
-
 	# Setup xorg.conf
 	nvidia-xconfig
 	cat > /etc/modprobe.d/blacklist-nvidia.conf <<EOF
@@ -65,7 +55,7 @@ EOF
         depmod -a
 	update-initramfs -d -u
 	
-	#	
+	 #
 	gnome2_desktop_database_update
 
 	# License

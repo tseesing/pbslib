@@ -22,7 +22,6 @@ pbs_config() {
 	YPB_CONFIG="--prefix=/usr 
 	            --sysconfdir=/etc  
 		    --with-libgdiplus=installed"
-	unset CFLAGS CXXFLAGS BUILD
 	ypkg_config
 }
 

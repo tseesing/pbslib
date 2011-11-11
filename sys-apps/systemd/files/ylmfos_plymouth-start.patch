@@ -1,0 +1,12 @@
+diff -ur systemd-35-ylmf5/units/plymouth-start.service systemd-35-ylmf5.new//units/plymouth-start.service
+--- systemd-35-ylmf5/units/plymouth-start.service	2011-04-30 10:14:51.562062202 +0800
++++ systemd-35-ylmf5.new//units/plymouth-start.service	2011-11-08 11:50:50.015652634 +0800
+@@ -13,7 +13,7 @@
+ Before=systemd-ask-password-plymouth.service
+ 
+ # Dracut informs us with this flag file if plymouth is already running
+-ConditionPathExists=!/run/plymouth/pid
++ConditionPathExists=!/dev/.initramfs/plymouth.pid
+ ConditionKernelCommandLine=!plymouth.enable=0
+ 
+ [Service]

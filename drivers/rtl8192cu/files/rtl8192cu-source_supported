@@ -5,6 +5,7 @@
 # modinfo 8192cu.ko
 #
 
+echo "package rtl8192cu-driver"
 echo "module 8192cu.ko"
 echo "description Realtek Wireless Lan Driver"
 echo "alias usb:v20F4p624Dd*dc*dsc*dp*ic*isc*ip*

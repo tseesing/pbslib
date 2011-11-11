@@ -31,7 +31,7 @@ pbs_config() {
 		  pam-gnome_keyring.patch 
 		  ylmfos-missing-panel.patch 
 		  ylmfos-set-numlock-login.patch 
-		  09_gdmsetup.patch "
+		  ylmfos-spawn-x-at-vt1.patch"
 		  #ylmfos_autoreconf.patch  "
 		  #ylmfos-spawn-x-at-vt1.patch
 	ypkg_patch $patches

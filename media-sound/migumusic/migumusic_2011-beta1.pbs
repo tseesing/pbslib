@@ -10,7 +10,7 @@ PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 REPO="testing"
 SRC_URI="migumusic-2011-beta1.tar.bz2"
 
-RDEPEND="qt-core gst-ffmpeg gst-fluendo-mp3 gst-plugins-ugly gst-plugins-bad"
+RDEPEND="qt-core gst-ffmpeg gst-fluendo-mp3 gst-plugins-ugly"
 BDEPEND=" "
 RECOMMENDED=""
 CONFLICT=""

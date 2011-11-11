@@ -70,7 +70,6 @@ nvidia-graphic-driver_install () {
 nvidia-graphic-utils_install () {
 	DESCRIPTION="NVIDIA binary Xorg driver and VDPAU library (libs and utils)"
 	RDEPEND="nvidia-graphic-driver"
-	DESKTOPFILE="nvidia-settings.desktop"
 
 	INSTALL="$N.install"
 	OPINION="nodev"

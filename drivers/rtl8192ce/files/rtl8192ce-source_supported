@@ -9,6 +9,8 @@ device_id() {
 	done
 }
 
+echo "package rtl8192ce-driver"
+
 echo "module rtl8192se.ko"
 echo "description Realtek 8192S/8191S 802.11n PCI wireless"
 device_id rtl8192se

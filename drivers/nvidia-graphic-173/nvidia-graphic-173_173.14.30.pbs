@@ -65,7 +65,6 @@ nvidia-graphic-173-driver_install () {
 nvidia-graphic-173-utils_install () {
 	DESCRIPTION="NVIDIA binary Xorg driver and VDPAU library (libs and utils)"
         RDEPEND="nvidia-graphic-173-driver"
-        DESKTOPFILE="nvidia-settings.desktop"
 
         INSTALL="$N.install"
         OPINION="nodev"

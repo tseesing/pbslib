@@ -4,12 +4,12 @@
 
 DESCRIPTION="Great Qt4 GUI front-end for mplayer"
 HOMEPAGE="http://smplayer.berlios.de/"
-LICENSE="GPL-2"
+LICENSE="GPLv2"
 PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 
 SRC_URI="http://downloads.sourceforge.net/sourceforge/"$N"/"$N-$V".tar.bz2"
 
-RDEPEND="mplayer expat fontconfig freetype gcc glib2 gdk-pixbuf glibc libdrm libICE libpng libSM libX11 libXau libxcb libXdmcp libXext libXrender mesa qt-core udev util-linux-ng zlib faac"
+RDEPEND="mplayer-svn expat fontconfig freetype gcc glib2 glibc libdrm libICE libpng libSM libX11 libXau libxcb libXdmcp libXext libXrender mesa qt-core udev util-linux-ng zlib"
 BDEPEND=""
 RECOMMENDED=""
 

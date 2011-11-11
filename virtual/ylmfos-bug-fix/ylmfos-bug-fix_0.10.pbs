@@ -15,7 +15,7 @@ INSTALL="$N.install"
 
 RDEPEND=""
 BDEPEND=""
-RECOMMENDED="libbluray enca lzo a52dec nas mplayer systemd"
+RECOMMENDED="libbluray enca lzo a52dec nas mplayer-svn systemd"
 CONFLICT=""
 
 pbs_install() {

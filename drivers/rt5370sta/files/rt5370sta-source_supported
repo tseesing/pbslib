@@ -6,6 +6,7 @@
 # modinfo ./os/linux/rt5370sta.ko
 #
 
+echo "package rt5370sta-driver"
 echo "module rt5370sta.ko"
 echo "description RT2870 Wireless Lan Linux Driver"
 echo "alias usb:v13D3p3329d*dc*dsc*dp*ic*isc*ip*

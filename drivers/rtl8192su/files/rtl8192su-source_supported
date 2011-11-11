@@ -4,6 +4,7 @@
 # modinfo 8712u.ko
 # 
 
+echo "package rtl8192su-driver"
 echo "module 8712u.ko"
 echo "description rtl871x wireless lan driver"
 echo "alias usb:v0409p02B6d*dc*dsc*dp*ic*isc*ip*

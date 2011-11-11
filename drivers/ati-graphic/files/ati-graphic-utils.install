@@ -47,15 +47,6 @@ pre_install() {
 }
 
 post_install() {
-	# Check fglrx.ko
-	if ! modprobe fglrx >/dev/null; then
-		echo "* Error: fglrx kernenl module not found or modprobe failed!"
-		echo "* Please install ati-graphic-driver or ati-graphic-source "
-		echo "* if you are using ATI graphic card."
-		restore
-		return 1
-	fi
-
 	# Setup xorg.conf
 	aticonfig --initial
 

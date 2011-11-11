@@ -28,7 +28,7 @@ broadcom-sta-source_install() {
 	ypkg_patch ylmfos-makeinstall.patch
 	cd i386
 	ypkg_dosrc * 
-	ypkg_dosupported broadcom-sta_supported
+	ypkg_dosupported "$N"_supported
 }
 
 broadcom-sta-driver_install() {

@@ -11,6 +11,7 @@ device_id () {
 }
 
 #
+echo "package broadcom-sta-driver"
 echo "module wl.ko"
 echo "description Broadcom STA wireless network cards: BCM4311/BCM4312/BCM4313/BCM4321/BCM4322."
 device_id src/wl/sys/wl_linux.c

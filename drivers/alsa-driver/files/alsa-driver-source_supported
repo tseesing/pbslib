@@ -4,6 +4,8 @@
 #make 
 #modinfo
 
+echo "package alsa-driver-module"
+
 echo "
 module snd-mixer-oss.ko
 description    Mixer OSS emulation for ALSA.

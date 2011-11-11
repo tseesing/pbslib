@@ -4,10 +4,10 @@
 
 DESCRIPTION="Driver for ATI/AMD Radeon based video chips, everything from Radeon 7000 to Radeon HD 5890 series."
 HOMEPAGE="http://xorg.freedesktop.org/"
-LICENSE="MIT"
+LICENSE="custom"
 PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 
-SRC_URI="git://anongit.freedesktop.org/xorg/driver/"$N""
+SRC_URI="http://xorg.freedesktop.org/archive/individual/driver/"$N-$V".tar.bz2"
 
 RDEPEND="glibc libdrm libpciaccess pixman udev"
 BDEPEND="xorg-server-dev"
@@ -17,6 +17,7 @@ pbs_unpack() {
 }
 
 pbs_config() {
+	YPB_CONFIG+="--enable-dri"
 	ypkg_config
 }
 
@@ -26,5 +27,6 @@ pbs_build() {
 
 pbs_install() {
 	ypkg_mkinstall
+	ypkg_dodoc COPYING
 }
 

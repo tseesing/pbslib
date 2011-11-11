@@ -43,6 +43,7 @@ main () {
   if [ -z "$orig_ids" ]; then
     echo "WARNING: No IDs were found from $filename" >&2
   fi
+  echo 'package nvidia-graphic-96-driver'
   echo 'module nvidia.ko'
   echo 'description Video driver for the NVIDIA graphics accelerators'
 

@@ -10,7 +10,7 @@ YARCH="any"
 
 SRC_URI="git://git.ylmf.com/ymenu.git"
 
-RDEPEND="python numpy gst-python python-xlib zeitgeist configobj gnome-panel"
+RDEPEND="python numpy gst-python python-xlib zeitgeist configobj gnome-panel pycairo"
 BDEPEND=""
 RECOMMENDED="psyco"
 

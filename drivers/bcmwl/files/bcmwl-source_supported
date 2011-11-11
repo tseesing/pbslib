@@ -34,6 +34,7 @@ main() {
 	done
 }
 
+echo "package bcmwl-driver"
 echo "module wl.ko"
 echo "description Broadcom 802.11 Linux STA wireless driver for BCM4311/4312/4313 BCM4321/4322 BCM43224/43225/43227/43228"
 main src/wl/sys/wl_linux.c

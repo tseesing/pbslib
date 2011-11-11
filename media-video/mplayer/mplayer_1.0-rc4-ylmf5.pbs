@@ -7,10 +7,14 @@ HOMEPAGE="http://www.mplayerhq.hu/"
 LICENSE="GPL"
 PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 
+REPO="testing"
+
 SRC_URI="http://www.mplayerhq.hu/MPlayer/releases/MPlayer-1.0rc4.tar.gz"
 
 RDEPEND="a52dec aalib alsa-lib attr audiofile bzip2 cyrus-sasl dbus directfb enca esound expat faac flac fontconfig freetype fribidi gcc giflib glibc jack-audio-connection-kit json-c keyutils krb5 lame lcms libcap libcdio libdrm libICE libjpeg-turbo libmad libmng libmpcdec libogg libpng libsamplerate libsdl libSM libsndfile libtheora libtool libvdpau libvorbis libX11 libXau libxcb libXdamage libXdmcp libXext libXfixes libXi libXinerama libXScrnSaver libXt libXtst libXv libXvMC libXxf86dga libXxf86vm lirc lzo mesa mpg123 nas ncurses openal opencore-amr openldap openssl orc pulseaudio rtmpdump samba schroedinger slang speex talloc util-linux-ng x264 xvidcore zlib"
 BDEPEND="libgsm-dev" 
+
+CONFLICT="mplayer-svn"
 
 OPINION="upx"
 

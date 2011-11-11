@@ -56,9 +56,6 @@ ati-graphic-utils_install () {
 	RDEPEND="ati-graphic-driver"
 	OPINION="nodev"
 
-	DESKTOPFILE="amdcccle.desktop"
-	ICONFILE="/usr/share/icons/ccc_large.xpm"
-
 	INSTALL="$N.install"
 
 	# Dev
