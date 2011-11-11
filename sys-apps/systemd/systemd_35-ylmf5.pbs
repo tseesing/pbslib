@@ -32,14 +32,14 @@ pbs_config() {
 	# Clean /tmp should be part of systemd-tmpfiles-clean.service,
 	# but it did not works, so we add tmpfiles-clean.service modified 
 	# from it and set time as 1s (/usr/lib//tmpfiles.d/tmp.conf) for cleaning /tmp  
-	# at evevry halt time.
+	# at every halt time.
 	ypkg_patch ylmfos_tmp-clean-time.patch
 	
 	# FIXME
 	ypkg_patch ylmfos_plymouth-start.patch
 
 	YPB_CONFIG+="--with-distro=ylmfos 
-		     --with-rootdir=/
+		     --with-rootdir=/ 
 		     --with-udevrulesdir=/lib/udev/rules.d
 		     --enable-gtk
 		     --enable-plymouth"

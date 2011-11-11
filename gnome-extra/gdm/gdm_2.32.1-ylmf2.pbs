@@ -29,7 +29,8 @@ pbs_config() {
 		 ylmfos-gdm-2.30.2-locale.patch
 		 pam-gnome_keyring.patch
 		 ylmfos-set-numlock-login.patch
-		 ylmfos-missing-panel-2.32.1.patch"
+		 ylmfos-missing-panel-2.32.1.patch
+		 ylmfos_initial_server_on_vt7.patch"
 	ypkg_patch $patches
 	
 	YPB_CONFIG+=" --disable-scrollkeeper
