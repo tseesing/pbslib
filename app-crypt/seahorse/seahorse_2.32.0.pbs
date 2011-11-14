@@ -21,11 +21,11 @@ run avahidaemon before
 "
 
 pbs_unpack() {
-        ypkg_unpack
+        dounpack
 }
 
 pbs_config() {
-	YPB_CONFIG+="--disable-schemas-install 
+	config+="--disable-schemas-install 
 		     --disable-tests 
 		     --enable-introspection=yes 
         	     --enable-ssh 
@@ -35,14 +35,14 @@ pbs_config() {
 		     --enable-ldap 
 		     --enable-hkp 
 		     --enable-pgp"
-	ypkg_config
+	doconfig
 }
 
 pbs_build() {
-	ypkg_make
+	domake
 }
 
 pbs_install() {
-	ypkg_mkinstall
+	domkinstall
 }
 

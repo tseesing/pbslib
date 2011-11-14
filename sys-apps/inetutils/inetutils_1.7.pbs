@@ -15,26 +15,26 @@ BDEPEND=""
 INSTALL="$N.install"
 
 pbs_unpack() {
-        ypkg_unpack
+        dounpack
 }
 
 pbs_config() {
-	YPB_CONFIG+="--disable-ifconfig 
+	config+="--disable-ifconfig 
 		     --disable-syslogd 
 		     --disable-servers
 	             --disable-logger "
 		     #--disable-whois 
-	ypkg_config
+	doconfig
 }
 
 pbs_build() {
-	ypkg_make
+	domake
 }
 
 pbs_install() {
-	ypkg_mkinstall
-	cd "$YPPATH_DEST"
-	ypkg_domv usr/bin/{hostname,ping,ping6} bin
-	ypkg_domv usr/bin/traceroute            sbin
+	domkinstall
+	cd "$destdir"
+	domv usr/bin/{hostname,ping,ping6} bin
+	domv usr/bin/traceroute            sbin
 }
 

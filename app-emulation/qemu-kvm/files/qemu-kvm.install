@@ -1,7 +1,7 @@
 . /usr/lib/ybs/funcs
 
 post_install() {
-	ypkg_groupadd kvm -f -g 78
+	dogroupadd kvm -f -g 78
 	echo ">>> PLEASE READ FOR KVM USAGE!"
 	echo ">>>  Load the correct KVM module, you will need a KVM capable CPU!"
 	echo ">>>  Add yourself to the group 'kvm'."
@@ -14,5 +14,5 @@ post_upgrade() {
 }
 
 post_remove() {
-	ypkg_groupdel kvm
+	dogroupdel kvm
 }

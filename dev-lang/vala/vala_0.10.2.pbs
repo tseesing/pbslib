@@ -14,24 +14,24 @@ BDEPEND=""
 RECOMMENDED=""
 
 pbs_unpack() {
-        ypkg_unpack
+        dounpack
 }
 
 pbs_config() {
-	YPB_CONFIG+="--disable-unversioned --enable-vapigen"
-	ypkg_config
+	config+="--disable-unversioned --enable-vapigen"
+	doconfig
 }
 
 pbs_build() {
-	ypkg_make
+	domake
 }
 
 pbs_install() {
-	ypkg_mkinstall
-	cd "$YPPATH_DEST"
-	ypkg_doln /usr/bin/valac-0.10    	  usr/bin/valac
-	ypkg_doln /usr/bin/vapigen-0.10 	  usr/bin/vapigen
-	ypkg_doln /usr/bin/vala-0.10    	  usr/bin/vala
-	ypkg_doln /usr/lib/pkgconfig/vala-0.10.pc usr/lib/pkgconfig/vala-1.0.pc
+	domkinstall
+	cd "$destdir"
+	doln /usr/bin/valac-0.10    	  usr/bin/valac
+	doln /usr/bin/vapigen-0.10 	  usr/bin/vapigen
+	doln /usr/bin/vala-0.10    	  usr/bin/vala
+	doln /usr/lib/pkgconfig/vala-0.10.pc usr/lib/pkgconfig/vala-1.0.pc
 }
 

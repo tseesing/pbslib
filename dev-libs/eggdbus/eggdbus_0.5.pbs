@@ -12,19 +12,19 @@ RDEPEND=""
 BDEPEND=" dbus-glib"
 
 pbs_unpack() {
-        ypkg_unpack
+        dounpack
 }
 
 pbs_config() {
 	
-	YPB_CONFIG+=" --prefix=/usr --enable-man-pages=no"
-	ypkg_config
+	config+=" --prefix=/usr --enable-man-pages=no"
+	doconfig
 }
 
 pbs_build() {
-	ypkg_make
+	domake
 }
 
 pbs_install() {
-	ypkg_mkinstall
+	domkinstall
 }

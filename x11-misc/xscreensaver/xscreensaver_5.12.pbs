@@ -14,18 +14,18 @@ BDEPEND="bc"
 RECOMMENDED=""
 
 pbs_unpack() {
-        ypkg_unpack
+        dounpack
 }
 
 pbs_config() {
-	ypkg_config
+	doconfig
 }
 
 pbs_build() {
-	ypkg_make
+	domake
 }
 
 pbs_install() {
-	make install_prefix="$YPPATH_DEST" install
+	make install_prefix="$destdir" install
 }
 

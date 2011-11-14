@@ -16,23 +16,23 @@ RECOMMENDED=""
 NOTES="Currently, Libpcap does not compile with Flex 2.5.34. With 2.5.33 and 2.5.35 there are no problem"
 
 pbs_unpack() {
-        ypkg_unpack
+        dounpack
 }
 
 pbs_config() {
-	ypkg_config
+	doconfig
 }
 
 pbs_build() {
-	ypkg_make
+	domake
 	make shared
 }
 
 pbs_install() {
-	mkdir -p "$YPPATH_DEST"/usr/bin
-	ypkg_mkinstall
-	ypkg_docp libpcap.so."$V$R"  "$YPPATH_DEST"/usr/lib"${LIBDIRSUFFIX}"
-	ypkg_doln libpcap.so."$V$R"  "$YPPATH_DEST"/usr/lib"${LIBDIRSUFFIX}"/libpcap.so.1
-	ypkg_doln libpcap.so.1       "$YPPATH_DEST"/usr/lib"${LIBDIRSUFFIX}"/libpcap.so
+	mkdir -p "$destdir"/usr/bin
+	domkinstall
+	docp libpcap.so."$V$R"  "$destdir"/usr/lib"${LIBDIRSUFFIX}"
+	doln libpcap.so."$V$R"  "$destdir"/usr/lib"${LIBDIRSUFFIX}"/libpcap.so.1
+	doln libpcap.so.1       "$destdir"/usr/lib"${LIBDIRSUFFIX}"/libpcap.so
 }
 

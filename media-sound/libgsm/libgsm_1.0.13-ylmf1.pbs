@@ -14,19 +14,19 @@ BDEPEND=""
 RECOMMENDED=""
 
 pbs_unpack() {
-        ypkg_unpack
+        dounpack
 }
 
 pbs_build() {
-	ypkg_patch gsm-1.0.13-shared.patch 
-	ypkg_patch gsm-1.0.12-memcpy.patch
-	ypkg_patch gsm-1.0.12-64bit.patch
-	ypkg_make
+	dopatch gsm-1.0.13-shared.patch 
+	dopatch gsm-1.0.12-memcpy.patch
+	dopatch gsm-1.0.12-64bit.patch
+	domake
 }
 
 pbs_install() {
-	mkdir -p "$YPPATH_DEST"/usr/lib
-	make INSTALL_ROOT="$YPPATH_DEST"/usr install
-	ypkg_docp lib/libgsm.so*  "$YPPATH_DEST"/usr/lib
+	mkdir -p "$destdir"/usr/lib
+	make INSTALL_ROOT="$destdir"/usr install
+	docp lib/libgsm.so*  "$destdir"/usr/lib
 }
 

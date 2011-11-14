@@ -16,22 +16,22 @@ RECOMMENDED=""
 NOTES=""
 
 pbs_unpack() {
-        ypkg_unpack
+        dounpack
 }
 
 pbs_config() {
 	sed -i "/elif/s/WITH_DES/defined &/" plugins/digestmd5.c
-	YPB_CONFIG+="--with-dbpath=/var/lib/sasl/sasldb2 --with-saslauthd=/var/run"
-	ypkg_config
+	config+="--with-dbpath=/var/lib/sasl/sasldb2 --with-saslauthd=/var/run"
+	doconfig
 }
 
 pbs_build() {
-	ypkg_make 
+	domake 
 }
 
 pbs_install() {
-	ypkg_mkinstall
-	ypkg_dodoc doc/{*.{html,txt,fig},ONEWS,TODO} saslauthd/LDAP_SASLAUTHD
-	ypkg_doinit "$FILES_PATH"/files/"$N"
-	install -m700 -d "$YPPATH_DEST"/var/lib/sasl
+	domkinstall
+	dodoc doc/{*.{html,txt,fig},ONEWS,TODO} saslauthd/LDAP_SASLAUTHD
+	doinit $filesdir/"$N"
+	install -m700 -d "$destdir"/var/lib/sasl
 }

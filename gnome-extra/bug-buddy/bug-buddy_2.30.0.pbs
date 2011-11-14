@@ -18,23 +18,23 @@ INSTALL="$N.install"
 NOTES=""
 
 pbs_unpack() {
-        ypkg_unpack
+        dounpack
 }
 
 pbs_config() {
-	YPB_CONFIG+="--disable-schemas-install
+	config+="--disable-schemas-install
 		     --program-prefix=""  "
-	ypkg_config
+	doconfig
 }
 
 pbs_build() {
-	ypkg_make
+	domake
 }
 
 pbs_install() {
-	ypkg_mkinstall
+	domkinstall
 	# Bugbuddy no longer interactive, so icon is pointless
-	rm -f "$YPPATH_DEST"/usr/share/applications/bug-buddy.desktop
-	rmdir -p "$YPPATH_DEST"/usr/share/applications
-	ypkg_dodoc AUTHORS COPYING NEWS README
+	rm -f "$destdir"/usr/share/applications/bug-buddy.desktop
+	rmdir -p "$destdir"/usr/share/applications
+	dodoc AUTHORS COPYING NEWS README
 }

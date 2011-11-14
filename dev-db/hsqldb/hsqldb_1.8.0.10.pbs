@@ -16,7 +16,7 @@ RECOMMENDED=""
 CONFLICT=""
 
 pbs_unpack() {
-        ypkg_unpack
+        dounpack
 }
 
 pbs_install() {
@@ -26,6 +26,6 @@ pbs_install() {
 
 	cd build && ant jar && cd ..
 
-	ypkg_docp lib/hsqldb.jar "$YPPATH_DEST"/"$JAVA_HOME"
-	ypkg_dodoc doc/hsqldb_lic.txt
+	docp lib/hsqldb.jar "$destdir"/"$JAVA_HOME"
+	dodoc doc/hsqldb_lic.txt
 }

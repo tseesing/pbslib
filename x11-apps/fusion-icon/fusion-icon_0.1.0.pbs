@@ -16,16 +16,16 @@ RECOMMENDED=""
 INSTALL="$N.install"
 
 pbs_unpack() {
-        ypkg_unpack
+        dounpack
 }
 
 pbs_build() {
-	ypkg_make
+	domake
 }
 
 pbs_install() {
-	ypkg_mkinstall
+	domkinstall
 	# set autostart at starting session
-	ypkg_docp "$FILES_PATH"/files/fusion-icon.desktop "$YPPATH_DEST"/etc/xdg/autostart
+	docp $filesdir/fusion-icon.desktop "$destdir"/etc/xdg/autostart
 }
 

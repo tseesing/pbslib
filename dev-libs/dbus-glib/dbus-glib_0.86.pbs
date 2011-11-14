@@ -13,15 +13,15 @@ RDEPEND="dbus expat glib2 gdk-pixbuf glibc"
 BDEPEND=""
 
 pbs_unpack() {
-        ypkg_unpack
+        dounpack
 }
 
 pbs_config() {
-	YPB_CONFIG+="--libexecdir=/usr/lib/dbus-1.0/dbus-1"
-	ypkg_config
+	config+="--libexecdir=/usr/lib/dbus-1.0/dbus-1"
+	doconfig
 }
 
 pbs_install() {
-	ypkg_mkinstall
-	ypkg_doln /usr/include/dbus-1.0/dbus "$YPPATH_DEST"/usr/include/dbus
+	domkinstall
+	doln /usr/include/dbus-1.0/dbus "$destdir"/usr/include/dbus
 }

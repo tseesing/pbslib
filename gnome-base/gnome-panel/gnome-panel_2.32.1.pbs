@@ -18,28 +18,28 @@ INSTALL="$N.install"
 NOTES="The libxml2 Python module must have been built during the installation of libxml2 else the GNOME Panel build will fail"
 
 pbs_unpack() {
-        ypkg_unpack
+        dounpack
 }
 
 pbs_config() {
-	ypkg_patch ylmfos-autohide-signal-2.32.1.patch
-	YPB_CONFIG+=" --disable-schemas-install  
+	dopatch ylmfos-autohide-signal-2.32.1.patch
+	config+=" --disable-schemas-install  
 		      --disable-scrollkeeper  
 		      --enable-network-manager 
 		      --enable-polkit  
 		      --enable-shared  
 		      --with-in-process-applets=clock,notification-area,wncklet "
-	ypkg_config
+	doconfig
 }
 
 pbs_build() {
-	ypkg_make
+	domake
 }
 
 pbs_install() {
-	ypkg_mkinstall
+	domkinstall
 
 	# replace our gnome-panel default configure
-	ypkg_docp_rename "$FILES_PATH"/files/ylmfos-default-setup.entries   "$YPPATH_DEST"/etc/gconf/schemas/panel-default-setup.entries
+	docp_rename $filesdir/ylmfos-default-setup.entries   "$destdir"/etc/gconf/schemas/panel-default-setup.entries
 }
 

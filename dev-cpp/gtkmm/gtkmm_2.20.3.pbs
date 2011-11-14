@@ -14,20 +14,20 @@ BDEPEND=""
 RECOMMENDED=""
 
 pbs_unpack() {
-        ypkg_unpack
+        dounpack
 }
 
 pbs_config() {
-	YPB_CONFIG+="--disable-documentation"
-	ypkg_config
+	config+="--disable-documentation"
+	doconfig
 }
 
 pbs_build() {
-	ypkg_make
+	domake
 }
 
 pbs_install() {
-	ypkg_mkinstall
-	ypkg_dodoc NEWS README ChangeLog COPYING INSTALL
+	domkinstall
+	dodoc NEWS README ChangeLog COPYING INSTALL
 }
 

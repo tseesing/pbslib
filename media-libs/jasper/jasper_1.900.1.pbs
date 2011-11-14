@@ -14,19 +14,19 @@ BDEPEND="unzip"
 RECOMMENDED=""
 
 pbs_unpack() {
-	ypkg_unpack
+	dounpack
 }
 
 pbs_config() {
-	ypkg_patch "$N-$V$R"-security_fixes-1.patch
-	ypkg_config
+	dopatch "$N-$V$R"-security_fixes-1.patch
+	doconfig
 }
 
 pbs_build() {
-	ypkg_make
+	domake
 }
 
 pbs_install() {
-	ypkg_mkinstall
+	domkinstall
 }
 

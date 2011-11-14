@@ -20,11 +20,11 @@ INSTALL="$N.install"
 NOTES=""
 
 pbs_unpack() {
-        ypkg_unpack
+        dounpack
 }
 
 pbs_install() {
-	ypkg_docp data/*  "$YPPATH_DEST"
-	ypkg_dodesktop "$N.desktop" "$N.png"
+	docp data/*  "$destdir"
+	dodesktop "$N.desktop" "$N.png"
 }
 

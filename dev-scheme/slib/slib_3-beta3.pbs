@@ -17,16 +17,16 @@ CONFLICT=""
 INSTALL="$N.install"
 
 pbs_unpack() {
-        ypkg_unpack
+        dounpack
 }
 
 pbs_install() {
 	 sed -r -i "s,/usr/(local/)?lib/slib,/usr/share/slib,g" *.init
-	 ypkg_docp *.scm *.init *.xyz *.txt *.dat *.ps "${YPPATH_DEST}/usr/share/slib/"
-	 ypkg_docp slib.info "${YPPATH_DEST}/usr/share/info/"
+	 docp *.scm *.init *.xyz *.txt *.dat *.ps "${destdir}/usr/share/slib/"
+	 docp slib.info "${destdir}/usr/share/info/"
 
-         install -m755 -d "${YPPATH_DEST}/usr/bin"
-	 cat << _EOF > "${YPPATH_DEST}/usr/bin/slib"
+         install -m755 -d "${destdir}/usr/bin"
+	 cat << _EOF > "${destdir}/usr/bin/slib"
 #!/bin/sh
 SCHEME_LIBRARY_PATH=/usr/share/slib/
 export SCHEME_LIBRARY_PATH
@@ -35,12 +35,12 @@ S48_VICINITY="/usr/share/scheme48/"
 export S48_VICINITY
 _EOF
 
-cat slib.sh >> "${YPPATH_DEST}/usr/bin/slib"
-chmod 755 "${YPPATH_DEST}/usr/bin/slib"
+cat slib.sh >> "${destdir}/usr/bin/slib"
+chmod 755 "${destdir}/usr/bin/slib"
 
-ypkg_doman slib.1
-ypkg_dodoc COPYING
+doman slib.1
+dodoc COPYING
 
-ypkg_doln /usr/share/slib "${YPPATH_DEST}/usr/share/guile/site/slib"
+doln /usr/share/slib "${destdir}/usr/share/guile/site/slib"
 }
 

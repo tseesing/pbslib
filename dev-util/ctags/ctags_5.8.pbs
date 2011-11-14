@@ -13,22 +13,22 @@ RDEPEND="glibc"
 BDEPEND=""
 
 pbs_unpack() {
-        ypkg_unpack
+        dounpack
 }
 
 pbs_config() {
-	YPB_CONFIG+="--with-posix-regex 
+	config+="--with-posix-regex 
 	             --without-readlib 
 		     --disable-etags 
 		     --enable-tmpdir=/tmp"
-	ypkg_config
+	doconfig
 }
 
 pbs_build() {
-	ypkg_make
+	domake
 }
 
 pbs_install() {
-	make prefix="$YPPATH_DEST"/usr install
+	make prefix="$destdir"/usr install
 }
 

@@ -15,7 +15,7 @@ RECOMMENDED=""
 INSTALL="$N.install"
 
 pbs_unpack() {
-        ypkg_unpack
+        dounpack
 }
 
 pbs_build() {
@@ -24,16 +24,16 @@ pbs_build() {
 	make prepare
 	cd -
 	
-	ypkg_make
+	domake
 }
 
 pbs_install() {
 	kodir=/lib/modules/$(uname -r)/kernel/fs/squashfs
 	tooldir=/usr/bin
-	install -d -m755 "$YPPATH_DEST"/$kodir  "$YPPATH_DEST"/usr/bin
-	cp -a ./C/Compress/Lzma/kmod/unlzma.ko  ./C/Compress/Lzma/kmod/sqlzma.ko  ./squashfs/squashfs.ko "$YPPATH_DEST"/$kodir
+	install -d -m755 "$destdir"/$kodir  "$destdir"/usr/bin
+	cp -a ./C/Compress/Lzma/kmod/unlzma.ko  ./C/Compress/Lzma/kmod/sqlzma.ko  ./squashfs/squashfs.ko "$destdir"/$kodir
         for i in mksquashfs unsquashfs; do
-		cp -a squashfs3.4/squashfs-tools/$i "$YPPATH_DEST"/usr/bin/"$i"-lzma
+		cp -a squashfs3.4/squashfs-tools/$i "$destdir"/usr/bin/"$i"-lzma
 	done
 }
 

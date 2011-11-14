@@ -19,6 +19,6 @@ CONFLICT=""
 NOTES=""
 
 pbs_install() {
-	ypkg_docp      "$YPPATH_SOURCE"/WebQQ.air  "$YPPATH_DEST"/usr/lib/"$N"
-	ypkg_dodesktop "$N.desktop"      "$N.png"
+	docp      "$YPPATH_SOURCE"/WebQQ.air  "$destdir"/usr/lib/"$N"
+	dodesktop "$N.desktop"      "$N.png"
 }

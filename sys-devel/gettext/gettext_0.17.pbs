@@ -12,20 +12,20 @@ RDEPEND="glibc ncurses"
 BDEPEND=""
 
 pbs_unpack() {
-        ypkg_unpack
+        dounpack
 }
 
 pbs_config() {
 	
-	patch -p1 -i $FILES_PATH/files/"$N-$V$R"-upstream_fixes-2.patch
-	YPB_CONFIG+=" --prefix=/usr "
-	ypkg_config
+	patch -p1 -i $filesdir/"$N-$V$R"-upstream_fixes-2.patch
+	config+=" --prefix=/usr "
+	doconfig
 }
 
 pbs_build() {
-	ypkg_make
+	domake
 }
 
 pbs_install() {
-	ypkg_mkinstall
+	domkinstall
 }

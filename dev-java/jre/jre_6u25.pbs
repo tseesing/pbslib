@@ -23,24 +23,24 @@ pbs_unpack() {
 	cd unbundle-jdk
 	sh "$YPPATH_SOURCE"/jdk-6u25-dlj-linux-i586.bin --accept-license
 	cd ../
-	sh "$FILES_PATH"/files/construct.sh unbundle-jdk linux-jdk linux-jre
+	sh $filesdir/construct.sh unbundle-jdk linux-jdk linux-jre
 
 }
 
 pbs_install() {
-	ypkg_docp linux-jdk/jre "$YPPATH_DEST"/opt/java/
-	install -Dm755 "$FILES_PATH"/files/jre.profile "$YPPATH_DEST"/etc/profile.d/jre.sh
+	docp linux-jdk/jre "$destdir"/opt/java/
+	install -Dm755 $filesdir/jre.profile "$destdir"/etc/profile.d/jre.sh
 
-	cd "$YPPATH_DEST"
+	cd "$destdir"
 	#if [ "$CARCH" = "i686" ]; then
-	ypkg_doln /opt/java/jre/lib/i386/libnpjp2.so usr/lib/mozilla/plugins/libnpjp2.so
+	doln /opt/java/jre/lib/i386/libnpjp2.so usr/lib/mozilla/plugins/libnpjp2.so
 	#else ln -s /opt/java/jre/lib/amd64/libnpjp2.so ${pkgdir}/usr/lib/mozilla/plugins
 	#fi
-	ypkg_docp opt/java/jre/{COPYRIGHT,LICENSE,THIRDPARTYLICENSEREADME.txt}  usr/share/licenses/jre/
+	docp opt/java/jre/{COPYRIGHT,LICENSE,THIRDPARTYLICENSEREADME.txt}  usr/share/licenses/jre/
 	# Fix system prefs folder (FS#18872)
 	install -dm755 etc/.java/.systemPrefs
 	#
-	ypkg_dodesktop "opt/java/jre/lib/desktop/applications/sun-java.desktop" \
+	dodesktop "opt/java/jre/lib/desktop/applications/sun-java.desktop" \
 	               "opt/java/jre/lib/images/icons/sun-java.png"
 }
 

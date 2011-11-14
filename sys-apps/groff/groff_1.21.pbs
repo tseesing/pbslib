@@ -15,24 +15,24 @@ BDEPEND=""
 INSTALL="$N.install"
 
 pbs_unpack() {
-        ypkg_unpack
+        dounpack
 }
 
 pbs_config() {
-	PAGE=A4 ypkg_config
+	PAGE=A4 doconfig
 }
 
 pbs_build() {
-	ypkg_make
+	domake
 }
 
 pbs_install() {
-	ypkg_mkinstall 
+	domkinstall 
 	# Some documentation programs, such as xman, will not work 
 	# properly without the following symlinks: 
-	cd "$YPPATH_DEST"
-	ypkg_doln /usr/bin/soelim usr/bin/zsoelim
-	ypkg_doln /usr/bin/eqn    usr/bin/geqn
-	ypkg_doln /usr/bin/tbl    usr/bin/gtbl
+	cd "$destdir"
+	doln /usr/bin/soelim usr/bin/zsoelim
+	doln /usr/bin/eqn    usr/bin/geqn
+	doln /usr/bin/tbl    usr/bin/gtbl
 }
 

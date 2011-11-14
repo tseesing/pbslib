@@ -16,12 +16,12 @@ RECOMMENDED=""
 INSTALL="$N.install"
 
 pbs_unpack() {
-	ypkg_unpack
+	dounpack
 }
 
 pbs_install() {
 	sed -i -e '/ISO 8879/d' -e '/gml/d' docbook.cat
-	ypkg_docp_rename docbook.cat "$YPPATH_DEST"/usr/share/sgml/docbook/sgml-dtd-"$V$R"/catalog
-	ypkg_docp *.dtd *.mod *.dcl  "$YPPATH_DEST"/usr/share/sgml/docbook/sgml-dtd-"$V$R"
+	docp_rename docbook.cat "$destdir"/usr/share/sgml/docbook/sgml-dtd-"$V$R"/catalog
+	docp *.dtd *.mod *.dcl  "$destdir"/usr/share/sgml/docbook/sgml-dtd-"$V$R"
 }
 

@@ -15,24 +15,24 @@ BDEPEND=""
 CONFLICT=""
 
 pbs_unpack() {
-        ypkg_unpack
+        dounpack
 }
 
 pbs_config() {
 	cd build/generic
-	YPB_CONFIG+=""
-	ypkg_config
+	config+=""
+	doconfig
 }
 
 pbs_build() {
-	ypkg_make
+	domake
 }
 
 pbs_install() {
-	ypkg_mkinstall
-	cd "$YPPATH_DEST"
+	domkinstall
+	cd "$destdir"
 	lib=$(basename usr/lib/libxvidcore.so.*)
-	ypkg_doln /usr/lib/$lib             usr/lib/libxvidcore.so.4
-	ypkg_doln /usr/lib/libxvidcore.so.4 usr/lib/libxvidcore.so
+	doln /usr/lib/$lib             usr/lib/libxvidcore.so.4
+	doln /usr/lib/libxvidcore.so.4 usr/lib/libxvidcore.so
 }
 

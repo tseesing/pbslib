@@ -15,20 +15,20 @@ BDEPEND=""
 OPINION="upx"
 
 pbs_unpack() {
-	ypkg_unpack
+	dounpack
 }
 
 pbs_config() {
-	ypkg_patch desktop-i18n.patch
-	YPB_CONFIG=${YPB_CONFIG/--enable-shared/}
-	ypkg_config
+	dopatch desktop-i18n.patch
+	config=${config/--enable-shared/}
+	doconfig
 }
 
 pbs_build() {
-	ypkg_make
+	domake
 }
 
 pbs_install() {
-	ypkg_mkinstall
+	domkinstall
 }
 

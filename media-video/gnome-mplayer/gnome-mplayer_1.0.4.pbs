@@ -17,12 +17,12 @@ CONFLICT=""
 INSTALL="$N.install"
 
 pbs_unpack() {
-        ypkg_unpack
+        dounpack
 }
 
 pbs_config() {
-	ypkg_patch ylmfos_strip-audio-mime-1.0.4.patch
-	YPB_CONFIG+="--with-gio 
+	dopatch ylmfos_strip-audio-mime-1.0.4.patch
+	config+="--with-gio 
 	             --with-libnotify 
 		     --with-gconf 
 	             --with-libmusicbrainz3 
@@ -32,14 +32,14 @@ pbs_config() {
 		     --with-alsa
 		     --with-pulseaudio
 		     --with-libnotify"
-	ypkg_config
+	doconfig
 }
 
 pbs_build() {
-	ypkg_make
+	domake
 }
 
 pbs_install() {
-	ypkg_mkinstall
+	domkinstall
 }
 

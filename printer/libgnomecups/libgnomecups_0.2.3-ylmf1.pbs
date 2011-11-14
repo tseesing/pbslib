@@ -14,19 +14,19 @@ BDEPEND="xml-parser"
 RECOMMENDED=""
 
 pbs_unpack() {
-        ypkg_unpack
+        dounpack
 }
 
 pbs_config() {
-	ypkg_patch libgnomecups_0.2.3-ignore-ipp-not-found.patch
-	ypkg_config
+	dopatch libgnomecups_0.2.3-ignore-ipp-not-found.patch
+	doconfig
 }
 
 pbs_build() {
-	ypkg_make
+	domake
 }
 
 pbs_install() {
-	ypkg_mkinstall
+	domkinstall
 }
 

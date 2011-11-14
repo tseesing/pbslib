@@ -16,11 +16,11 @@ RECOMMEND=""
 INSTALL="$N.install"
 
 pbs_unpack(){
-        ypkg_unpack
+        dounpack
 }
 
 pbs_config() {
-	YPB_CONFIG+=" --with-udev-prefix=/etc 
+	config+=" --with-udev-prefix=/etc 
 		      --docdir=/usr/share/doc/"$N"/"$V$R" 
 		      --with-backend=linux
 		      --with-os-type=ylmfos
@@ -47,21 +47,21 @@ pbs_config() {
 		      --with-macbook
 		      --with-macbookpro
 		      --without-dell-backlight "
-	ypkg_config
+	doconfig
 }
 
 pbs_build() {
 	## FIXME! 
 	#videodev.h was droped at linux_2.6.38, but hal needs. 
 	#copy from linux_2.6.32
-	ypkg_docp "$FILES_PATH"/files/videodev.h  /usr/include/linux/
-	ypkg_make
+	docp $filesdir/videodev.h  /usr/include/linux/
+	domake
 }
 
 pbs_install() {
-	ypkg_mkinstall
-	cd "$YPPATH_DEST"
-	ypkg_docp "$FILES_PATH"/files/11-mousewheel.fdi usr/share/hal/fdi/policy/10osvendor
-	ypkg_dounit "hald.service"
+	domkinstall
+	cd "$destdir"
+	docp $filesdir/11-mousewheel.fdi usr/share/hal/fdi/policy/10osvendor
+	dounit "hald.service"
 }
 

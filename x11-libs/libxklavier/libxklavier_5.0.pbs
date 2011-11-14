@@ -14,19 +14,19 @@ BDEPEND="pkgconfig"
 RECOMMENDED=""
 
 pbs_unpack() {
-        ypkg_unpack
+        dounpack
 }
 
 pbs_config() {
-	YPB_CONFIG+=" --with-xkb-base=/usr/share/X11/xkb"
-	ypkg_config
+	config+=" --with-xkb-base=/usr/share/X11/xkb"
+	doconfig
 }
 
 pbs_build() {
-	ypkg_make
+	domake
 }
 
 pbs_install() {
-	ypkg_mkinstall
+	domkinstall
 }
 

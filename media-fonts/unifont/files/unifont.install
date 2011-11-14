@@ -3,7 +3,7 @@
 dir="/usr/share/fonts/unifont"
 
 post_install() {
-	ypkg_dofont $dir 
+	dofont $dir 
 }
 
 post_remove() {

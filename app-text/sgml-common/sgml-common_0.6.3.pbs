@@ -16,22 +16,22 @@ RECOMMENDED=""
 INSTALL="$N.install"
 
 pbs_unpack() {
-        ypkg_unpack
+        dounpack
 }
 
 pbs_config() {
-	ypkg_patch "$N-$V$R"-manpage-1.patch
+	dopatch "$N-$V$R"-manpage-1.patch
 	autoreconf -f -i
-	ypkg_config
+	doconfig
 }
 
 pbs_build() {
-	ypkg_make
+	domake
 }
 
 pbs_install() {
-	ypkg_mkinstall
-	cd "$YPPATH_DEST"
-	ypkg_domv usr/doc usr/share/
+	domkinstall
+	cd "$destdir"
+	domv usr/doc usr/share/
 }
 

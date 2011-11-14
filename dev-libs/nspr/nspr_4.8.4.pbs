@@ -12,21 +12,21 @@ RDEPEND="glibc"
 BDEPEND=""
 
 pbs_unpack() {
-        ypkg_unpack
+        dounpack
 }
 
 pbs_config() {
-	ypkg_patch nspr-4.8.3-pkgconfig-1.patch
+	dopatch nspr-4.8.3-pkgconfig-1.patch
  	cd mozilla/nsprpub
-	YPB_CONFIG+="--with-mozilla --with-pthreads"
-	ypkg_config
+	config+="--with-mozilla --with-pthreads"
+	doconfig
 }
 
 pbs_build() {
-	ypkg_make
+	domake
 }
 
 pbs_install() {
-	ypkg_mkinstall
-	ypkg_docp pr/include/* "$YPPATH_DEST"/usr/include/nspr
+	domkinstall
+	docp pr/include/* "$destdir"/usr/include/nspr
 }

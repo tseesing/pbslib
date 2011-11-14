@@ -1,8 +1,8 @@
 . /usr/lib/ybs/funcs
 
 post_install() {
-	ypkg_groupadd -r "sshd"
-	ypkg_useradd -c "sshd PrivSep" -d "/var/lib/sshd" -s "/bin/false" -r -N -G "sshd" "sshd"
+	dogroupadd -r "sshd"
+	douseradd -c "sshd PrivSep" -d "/var/lib/sshd" -s "/bin/false" -r -N -G "sshd" "sshd"
 
 	install -m700 -d /var/lib/sshd
 	chown root:sys   /var/lib/sshd
@@ -14,8 +14,8 @@ post_install() {
 }
 
 post_remove() {
-	ypkg_userdel -r "sshd"
-	ypkg_groupdel "sshd"
+	douserdel -r "sshd"
+	dogroupdel "sshd"
 
 	[ -d /var/lib/sshd ] && rm -r /var/lib/sshd
 

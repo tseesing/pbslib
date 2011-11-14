@@ -13,18 +13,18 @@ RDEPEND="glibc"
 BDEPEND="docbook-xml docbook-xsl libxslt-dev"
 
 pbs_unpack() {
-        ypkg_unpack
+        dounpack
 }
 
 pbs_config() {
-	ypkg_config
+	doconfig
 }
 
 pbs_build() {
-	ypkg_make
+	domake
 }
 
 pbs_install() {
-	ypkg_mkinstall
+	domkinstall
 }
 

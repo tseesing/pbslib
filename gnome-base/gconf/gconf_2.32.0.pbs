@@ -16,24 +16,24 @@ CONFLICT="gconf-dbus"
 INSTALL="$N.install"
 
 pbs_unpack() {
-        ypkg_unpack
+        dounpack
 }
 
 pbs_config() {
-	YPB_CONFIG+=" --enable-gtk		
+	config+=" --enable-gtk		
 		      --with-openldap		
 		      --enable-defaults-service "
-	ypkg_config
+	doconfig
 }
 
 pbs_build() {
-	ypkg_make
+	domake
 }
 
 pbs_install() {
-	ypkg_mkinstall
-	cd "$YPPATH_DEST"
-	ypkg_docp "$FILES_PATH"/files/gconf-schemas usr/sbin/ 
+	domkinstall
+	cd "$destdir"
+	docp $filesdir/gconf-schemas usr/sbin/ 
 	install -m755 -d etc/gconf/gconf.xml.system
 }
 

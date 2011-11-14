@@ -13,23 +13,23 @@ RDEPEND="gcc glibc"
 BDEPEND=""
 
 pbs_unpack() {
-        ypkg_unpack
+        dounpack
 }
 
 pbs_config() {
-	ypkg_patch db-"$V"-upstream_fixes-1.patch
+	dopatch db-"$V"-upstream_fixes-1.patch
 	cd build_unix
-	YPB_CONFIG+="--enable-compat185 
+	config+="--enable-compat185 
 		     --enable-cxx
 		     --enable-rpc"
-	../dist/configure $YPB_CONFIG
+	../dist/configure $config
 }
 
 pbs_build() {
-	ypkg_make
+	domake
 }
 
 pbs_install() {
-	ypkg_mkinstall docdir=/usr/share/doc/db/"$V$R"
+	domkinstall docdir=/usr/share/doc/db/"$V$R"
 }
 

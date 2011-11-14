@@ -16,23 +16,23 @@ RECOMMENDED=""
 NOTES=""
 
 pbs_unpack() {
-        ypkg_unpack
+        dounpack
 }
 
 pbs_config() {
-	ypkg_patch valgrind-3.4.1-glibc-2.10.1.patch
-	ypkg_patch valgrind-3.5.0-glibc-2.11.patch 
-	ypkg_patch valgrind-3.5.0-non-exec-stack.patch 
-	ypkg_patch valgrind-3.5.0-respect-LDFLAGS.patch 
-	ypkg_patch valgrind-3.5.0-local-labels.patch
+	dopatch valgrind-3.4.1-glibc-2.10.1.patch
+	dopatch valgrind-3.5.0-glibc-2.11.patch 
+	dopatch valgrind-3.5.0-non-exec-stack.patch 
+	dopatch valgrind-3.5.0-respect-LDFLAGS.patch 
+	dopatch valgrind-3.5.0-local-labels.patch
 	autoconf
-	ypkg_config
+	doconfig
 }
 
 pbs_build() {
-	ypkg_make
+	domake
 }
 
 pbs_install() {
-	ypkg_mkinstall
+	domkinstall
 }

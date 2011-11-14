@@ -18,12 +18,12 @@ INSTALL="$N.install"
 NOTES="gdm user/group should be created automatically."
 
 pbs_unpack() {
-        ypkg_unpack
+        dounpack
 }
 
 pbs_config() {	
 	# Add user and group
-	ypkg_useradd -c "gdm user" -d "/var/lib/gdm" -s "/bin/false" -r "gdm"
+	douseradd -c "gdm user" -d "/var/lib/gdm" -s "/bin/false" -r "gdm"
 
 	# Most of patches from ubuntu
 	patches="05_initial_server_on_vt7.patch
@@ -50,9 +50,9 @@ pbs_config() {
 		 ylmfos-set-numlock-login.patch
 		 ylmfos-missing-panel-2.32.1.patch
 		 ylmfos-show-mouse-cursor.patch"
-	ypkg_patch $patches
+	dopatch $patches
 
-	YPB_CONFIG+=" --disable-scrollkeeper
+	config+=" --disable-scrollkeeper
 		      --enable-ipv6
 		      --enable-console-helper=no
 		      --with-xdmcp=yes
@@ -63,38 +63,38 @@ pbs_config() {
 		      --disable-schemas-install 
 		      --enable-console-helper
 		      --with-console-kit "
-	ypkg_config
+	doconfig
 }
 
 pbs_build() {
-	ypkg_make
+	domake
 }
 
 pbs_install() {
-	ypkg_mkinstall
+	domkinstall
 	
 	# Make some handy softlinks
-	cd "$YPPATH_DEST"/usr/bin; ln -s ../sbin/gdm . ; ln -s ../sbin/gdmsetup .
+	cd "$destdir"/usr/bin; ln -s ../sbin/gdm . ; ln -s ../sbin/gdmsetup .
 
 	# Ssh session
-	cd "$YPPATH_DEST"/
-	ypkg_docp "$FILES_PATH"/files/sessions/ssh.desktop usr/share/xsessions
+	cd "$destdir"/
+	docp $filesdir/sessions/ssh.desktop usr/share/xsessions
 	chown -R root:root usr/share/xsessions/*
 
 	# Preserve settings
 	install -m755 -d  etc/gdm
 	[ -f etc/gdm/custom.conf ] && rm etc/gdm/custom.conf
-	ypkg_docp_rename "$FILES_PATH"/files/custom.conf  etc/gdm/custom.conf.ori
-	ypkg_domv        "$YPPATH_DEST"/etc/gdm/PostLogin/Default.sample  etc/gdm/PostLogin/Default
+	docp_rename $filesdir/custom.conf  etc/gdm/custom.conf.ori
+	domv        "$destdir"/etc/gdm/PostLogin/Default.sample  etc/gdm/PostLogin/Default
 
 	# FIXME! 
 	# gnome-session forgot to run /usr/share/gnome/shutdown/libcanberra-logout-sound.sh
 	# add libcanberra-logout-sound.sh to gdm logout script
-	ypkg_docp "$FILES_PATH"/files/Default  etc/gdm/PostSession
+	docp $filesdir/Default  etc/gdm/PostSession
 	chown -R root:root  etc/gdm
 
 	# Gdm systemd unit
-	ypkg_dounit "$N.service"
+	dounit "$N.service"
 
 	# Delete
 	rm -rf var/gdm

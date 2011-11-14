@@ -17,7 +17,7 @@ CONFLICT=""
 INSTALL="$N.install"
 
 pbs_unpack() {
-        ypkg_unpack
+        dounpack
 }
 
 pbs_build() {
@@ -27,17 +27,17 @@ pbs_build() {
 }
 
 pbs_install() {
-	install -D -m700  cups-pdf     "$YPPATH_DEST"/usr/lib/cups/backend/cups-pdf
+	install -D -m700  cups-pdf     "$destdir"/usr/lib/cups/backend/cups-pdf
 
 	# Install Postscript Color printer
 	cd ../extra
-	install -D -m644 CUPS-PDF.ppd  "$YPPATH_DEST"/usr/share/cups/model/CUPS-PDF.ppd
+	install -D -m644 CUPS-PDF.ppd  "$destdir"/usr/share/cups/model/CUPS-PDF.ppd
 	
 	# Install config file
-	install -D -m644 cups-pdf.conf "$YPPATH_DEST"/etc/cups/cups-pdf.conf
+	install -D -m644 cups-pdf.conf "$destdir"/etc/cups/cups-pdf.conf
 
 	#
 	cd ../
-	ypkg_dodoc ChangeLog COPYING README
+	dodoc ChangeLog COPYING README
 }
 

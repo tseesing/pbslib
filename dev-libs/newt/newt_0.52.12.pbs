@@ -19,19 +19,19 @@ CONFLICT=""
 NOTES=""
 
 pbs_unpack() {
-        ypkg_unpack
+        dounpack
 }
 
 pbs_config() {
-	YPB_CONFIG+="--without-tcl"
-	ypkg_config
+	config+="--without-tcl"
+	doconfig
 }
 
 pbs_build() {
-	ypkg_make
+	domake
 }
 
 pbs_install() {
-	#make DESTDIR="$YPPATH_DEST" install
-	ypkg_mkinstall instroot="$YPPATH_DEST" install
+	#make DESTDIR="$destdir" install
+	domkinstall instroot="$destdir" install
 }

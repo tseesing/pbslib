@@ -16,6 +16,6 @@ RECOMMENDED=""
 CONFLICT=""
 
 pbs_install() {
-	ypkg_dodesktop "$N.desktop" "printer.png"
+	dodesktop "$N.desktop" "printer.png"
 }
 

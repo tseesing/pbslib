@@ -14,25 +14,25 @@ BDEPEND="sgml-common"
 RECOMMENDED=""
 
 pbs_unpack() {
-        ypkg_unpack
+        dounpack
 }
 
 pbs_config() {
 	#These seds prevent some annoying messages that may otherwise appear while running openjade
 	sed -i 's:32,:253,:' lib/Syntax.cxx 
 	sed -i 's:LITLEN          240 :LITLEN          8092:' unicode/{gensyntax.pl,unicode.syn} 
-	YPB_CONFIG+=" --disable-doc-build  
+	config+=" --disable-doc-build  
 	              --enable-default-catalog=/etc/sgml/catalog 
 		      --enable-http 
 	              --enable-default-search-path=/usr/share/sgml "
-	ypkg_config
+	doconfig
 }
 
 pbs_build() {
-	ypkg_make
+	domake
 }
 
 pbs_install() {
-	ypkg_mkinstall
+	domkinstall
 }
 

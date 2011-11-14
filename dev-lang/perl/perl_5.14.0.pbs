@@ -13,7 +13,7 @@ RDEPEND="berkeley-db gdbm glibc zlib"
 BDEPEND=""
 
 pbs_unpack() {
-        ypkg_unpack
+        dounpack
 }
 
 pbs_config() {
@@ -42,20 +42,20 @@ pbs_config() {
 }
 
 pbs_build() {
-	ypkg_make
+	domake
 }
 
 pbs_install() {
-	ypkg_mkinstall
+	domkinstall
 	
-	#cd "$YPPATH_DEST"
+	#cd "$destdir"
 	#case $ARCH in 
 	#	i?86) 	mv usr/bin/perl{,-32}
 	#		mv usr/bin/perl5.14.0{,-32} ;;
 	#      x86_64)	mv usr/bin/perl{,-64}
 	#		mv usr/bin/perl5.14.0{,-64}
-	#		ypkg_doln /usr/bin/multiarch_wrapper usr/bin/perl
-	#		ypkg_doln /usr/bin/multiarch_wrapper usr/bin/perl5.14.0
+	#		doln /usr/bin/multiarch_wrapper usr/bin/perl
+	#		doln /usr/bin/multiarch_wrapper usr/bin/perl5.14.0
 	#esac
 }
 

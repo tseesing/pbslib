@@ -15,19 +15,19 @@ BDEPEND=""
 CONFLICT=""
 
 pbs_unpack() {
-        ypkg_unpack
+        dounpack
 }
 
 pbs_config() {
-	YPB_CONFIG+="--disable-docs --enable-import-tool --disable-Werror"
-	ypkg_config
+	config+="--disable-docs --enable-import-tool --disable-Werror"
+	doconfig
 }
 
 pbs_build() {
-	ypkg_make
+	domake
 }
 
 pbs_install() {
-	ypkg_mkinstall
+	domkinstall
 }
 

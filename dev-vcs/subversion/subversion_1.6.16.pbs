@@ -16,22 +16,22 @@ RECOMMENDED=""
 NOTES=""
 
 pbs_unpack() {
-        ypkg_unpack
+        dounpack
 }
 
 pbs_config() {
 	wget http://www.webdav.org/neon/neon-0.28.4.tar.gz
 	tar xf neon-0.28.4.tar.gz
 	mv neon-0.28.4 neon
-	YPB_CONFIG+="--disable-shared"
-	ypkg_config
+	config+="--disable-shared"
+	doconfig
 }
 
 pbs_build() {
-	ypkg_make
+	domake
 }
 
 pbs_install() {
-	ypkg_mkinstall
-	#ypkg_dodoc doc/*
+	domkinstall
+	#dodoc doc/*
 }

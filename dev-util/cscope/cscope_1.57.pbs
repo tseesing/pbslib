@@ -16,25 +16,25 @@ RECOMMENDED=""
 CONFLICT=""
 
 pbs_unpack() {
-        ypkg_unpack
+        dounpack
 }
 
 pbs_config() {
 	sed -i 's|/usr/local/lib/cs|/usr/lib/cs|' contrib/ocs
-	YPB_CONFIG+=""
-	ypkg_config
+	config+=""
+	doconfig
 }
 
 pbs_build() {
-	ypkg_make
+	domake
 }
 
 pbs_install() {
-	ypkg_mkinstall
-	ypkg_dodoc AUTHORS COPYING README
-	install -d "${YPPATH_DEST}/usr/lib/cs"
+	domkinstall
+	dodoc AUTHORS COPYING README
+	install -d "${destdir}/usr/lib/cs"
 	cd contrib/xcscope
-	ypkg_docp xcscope.el ${YPPATH_DEST}/usr/share/emacs/site-lisp/
-	install -m755 cscope-indexer $YPPATH_DEST/usr/bin
+	docp xcscope.el ${destdir}/usr/share/emacs/site-lisp/
+	install -m755 cscope-indexer $destdir/usr/bin
 }
 

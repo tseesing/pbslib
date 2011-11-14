@@ -14,6 +14,6 @@ BDEPEND=" "
 RECOMMENDED=""
 
 pbs_install() {
-	ypkg_docp "$FILES_PATH"/files/mp32ogg "$YPPATH_DEST"/usr/bin
+	docp $filesdir/mp32ogg "$destdir"/usr/bin
 }
 

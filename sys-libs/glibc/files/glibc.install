@@ -74,7 +74,7 @@ post_install() {
 	localedef -i zh_CN -f GB2312 zh_CN.GB2312
 	localedef -i zh_CN -f UTF-8 zh_CN.UTF-8
 	glib_adjust_toolchain
-	ypkg_install_info $files
+	doinstall_info $files
 }
 
 pre_remove() {
@@ -85,11 +85,11 @@ pre_remove() {
 	for i in $(ls /usr/lib/libstdc++.* 2>/dev/null); do
 		[ -L $i ] && unlink $i
 	done
-	ypkg_remove_info $files
+	doremove_info $files
 }
 
 post_upgrade () {
-       ypkg_install_info $files
+       doinstall_info $files
 }
 
 post_downgrade() {

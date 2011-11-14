@@ -15,21 +15,21 @@ RECOMMENDED=""
 NOTES="http://wiki.linuxfromscratch.org/blfs/wiki/gstreamer"
 
 pbs_unpack() {
-        ypkg_unpack
+        dounpack
 }
 
 pbs_config() {
 	
-	YPB_CONFIG+=" --prefix=/usr  --disable-docbook --disable-tests --disable-static"
-	ypkg_config
+	config+=" --prefix=/usr  --disable-docbook --disable-tests --disable-static"
+	doconfig
 }
 
 pbs_build() {
-	ypkg_make
+	domake
 }
 
 pbs_install() {
-	ypkg_mkinstall
-	install -m755 -d "$YPPATH_DEST"/usr/share/doc/"$N-$V$R"/design
-	install -m644 docs/design/*.txt "$YPPATH_DEST"/usr/share/doc/"$N-$V$R"/design
+	domkinstall
+	install -m755 -d "$destdir"/usr/share/doc/"$N-$V$R"/design
+	install -m644 docs/design/*.txt "$destdir"/usr/share/doc/"$N-$V$R"/design
 }

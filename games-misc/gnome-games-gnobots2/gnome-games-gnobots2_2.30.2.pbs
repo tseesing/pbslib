@@ -21,19 +21,19 @@ INSTALL="$N.install"
 DESKTOPFILE="gnobots2.desktop"
 
 pbs_unpack() {
-        ypkg_unpack
+        dounpack
 }
 
 pbs_config() {
-	YPB_CONFIG+="--enable-games=gnobots2
+	config+="--enable-games=gnobots2
 	             --disable-schemas-install"
-	ypkg_config
+	doconfig
 }
 
 pbs_build() {
-	ypkg_make
+	domake
 }
 
 pbs_install() {
-	ypkg_mkinstall
+	domkinstall
 }

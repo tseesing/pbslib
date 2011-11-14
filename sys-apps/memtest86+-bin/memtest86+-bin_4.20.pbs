@@ -23,7 +23,7 @@ pbs_unpack(){
 }
 
 pbs_install() {
-	ypkg_docp_rename memtest86+-"$V".bin "$YPPATH_DEST"/boot/memtest86+.bin
-	ypkg_docp "$FILES_PATH"/files/20_memtest86+ "$YPPATH_DEST"/etc/grub.d/
+	docp_rename memtest86+-"$V".bin "$destdir"/boot/memtest86+.bin
+	docp $filesdir/20_memtest86+ "$destdir"/etc/grub.d/
 }
 

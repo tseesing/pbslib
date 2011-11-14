@@ -16,28 +16,28 @@ RECOMMENDED=""
 INSTALL="$N.install"
 
 pbs_unpack() {
-        ypkg_unpack
+        dounpack
 }
 
 pbs_config() {
-	ypkg_config
+	doconfig
 }
 
 pbs_build() {
-	ypkg_make
+	domake
 }
 
 pbs_install() {
-	ypkg_mkinstall
-	ypkg_dodoc AUTHORS ChangeLog COPYING INSTALL NEWS README
+	domkinstall
+	dodoc AUTHORS ChangeLog COPYING INSTALL NEWS README
 	
 	# For initramfs-tools
-	cd "$YPPATH_DEST"
-	ypkg_docp "$FILES_PATH"/files/cryptsetup                      lib
-	ypkg_docp "$FILES_PATH"/files/hooks/*                         usr/share/initramfs-tools/hooks
-	ypkg_docp "$FILES_PATH"/files/conf-hooks.d_cryptsetup         usr/share/initramfs-tools/conf-hooks.d
-	ypkg_docp_rename "$FILES_PATH"/files/local-top_cryptroot      usr/share/initramfs-tools/scripts/local-top/cryptroot
-	ypkg_docp_rename "$FILES_PATH"/files/local-top_cryptopensc    usr/share/initramfs-tools/scripts/cryptopensc
-	ypkg_docp_rename "$FILES_PATH"/files/local-bottom_cryptopensc usr/share/initramfs-tools/scripts/local-bottom/cryptopensc
+	cd "$destdir"
+	docp $filesdir/cryptsetup                      lib
+	docp $filesdir/hooks/*                         usr/share/initramfs-tools/hooks
+	docp $filesdir/conf-hooks.d_cryptsetup         usr/share/initramfs-tools/conf-hooks.d
+	docp_rename $filesdir/local-top_cryptroot      usr/share/initramfs-tools/scripts/local-top/cryptroot
+	docp_rename $filesdir/local-top_cryptopensc    usr/share/initramfs-tools/scripts/cryptopensc
+	docp_rename $filesdir/local-bottom_cryptopensc usr/share/initramfs-tools/scripts/local-bottom/cryptopensc
 }
 

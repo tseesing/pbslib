@@ -16,7 +16,7 @@ RECOMMENDED=""
 CONFLICT=""
 
 pbs_unpack() {
-        ypkg_unpack
+        dounpack
 }
 
 pbs_config() {
@@ -30,7 +30,7 @@ pbs_build() {
 }
 
 pbs_install() {
-	ypkg_mkinstall
-	#"$YPPATH_DEST"
+	domkinstall
+	#"$destdir"
 }
 

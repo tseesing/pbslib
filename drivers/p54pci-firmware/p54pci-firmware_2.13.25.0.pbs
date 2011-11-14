@@ -16,6 +16,6 @@ RECOMMENDED=""
 CONFLICT=""
 
 pbs_install() {
-	ypkg_docp_rename "$YPPATH_SOURCE"/2.13.25.0.arm "$YPPATH_DEST"/lib/firmware/isl3886pci
+	docp_rename "$YPPATH_SOURCE"/2.13.25.0.arm "$destdir"/lib/firmware/isl3886pci
 }
 

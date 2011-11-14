@@ -13,22 +13,22 @@ RECOMMENDED=""
 NOTES="http://wiki.linuxfromscratch.org/blfs/wiki/libbonoboui"
 
 pbs_unpack() {
-        ypkg_unpack
+        dounpack
 }
 
 pbs_config() {
 	
-	YPB_CONFIG+=" --prefix=$(pkg-config --variable=prefix ORBit-2.0) "
-	ypkg_config
+	config+=" --prefix=$(pkg-config --variable=prefix ORBit-2.0) "
+	doconfig
 }
 
 pbs_build() {
-	ypkg_make
+	domake
 }
 
 pbs_install() {
-	ypkg_mkinstall
+	domkinstall
 	#
-	install -m755 -d "$YPPATH_DEST"/$(pkg-config --variable=prefix ORBit-2.0)/share/doc/"$N-$V$R"
-	install -m644 doc/*.{dtd,txt,xml,html} "$YPPATH_DEST"/$(pkg-config --variable=prefix ORBit-2.0)/share/doc/"$N-$V$R"
+	install -m755 -d "$destdir"/$(pkg-config --variable=prefix ORBit-2.0)/share/doc/"$N-$V$R"
+	install -m644 doc/*.{dtd,txt,xml,html} "$destdir"/$(pkg-config --variable=prefix ORBit-2.0)/share/doc/"$N-$V$R"
 }

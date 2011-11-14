@@ -16,21 +16,21 @@ RECOMMENDED=""
 CONFLICT=""
 
 pbs_unpack() {
-        ypkg_unpack
+        dounpack
 }
 
 pbs_config() {
-	ypkg_patch avcodec-plugin-with-latest-libavcodec.patch
-	YPB_CONFIG="--prefix=/usr 
+	dopatch avcodec-plugin-with-latest-libavcodec.patch
+	config="--prefix=/usr 
 	            --with-optionals=python,cli,launcher,xmmsclient++,xmmsclient++-glib,perl,ruby,nycli"
-	ypkg_config
+	doconfig
 }
 
 pbs_build() {
-	ypkg_make
+	domake
 }
 
 pbs_install() {
-	ypkg_mkinstall
+	domkinstall
 }
 

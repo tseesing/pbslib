@@ -13,26 +13,26 @@ RDEPEND="glibc"
 BDEPEND=""
 
 pbs_unpack() {
-        ypkg_unpack
+        dounpack
 }
 
 pbs_config() {
-	ypkg_patch ylmfos-GNU_SOURCE-defined.patch
-	YPB_CONFIG+="--enable-lib 
+	dopatch ylmfos-GNU_SOURCE-defined.patch
+	config+="--enable-lib 
 	             --enable-util"
-	ypkg_config
+	doconfig
 }
 
 pbs_build() {
-	ypkg_make
+	domake
 }
 
 pbs_install() {
-	ypkg_mkinstall
-	cd "$YPPATH_DEST"
+	domkinstall
+	cd "$destdir"
 	
 	# For initramfs-tools
-	ypkg_docp_rename "$FILES_PATH"/files/hook_fuse usr/share/initramfs-tools/hooks/fuse
+	docp_rename $filesdir/hook_fuse usr/share/initramfs-tools/hooks/fuse
 	
 	# Delete sysv init script
 	rm -rf etc/init.d/ || return 0

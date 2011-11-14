@@ -15,21 +15,21 @@ RECOMMENDED="hal"
 NOTES="http://wiki.linuxfromscratch.org/blfs/wiki/gnome-power-manager"
 
 pbs_unpack() {
-        ypkg_unpack
+        dounpack
 }
 
 pbs_config() {
 	
-	YPB_CONFIG+=" --prefix=$(pkg-config --variable=prefix ORBit-2.0)
+	config+=" --prefix=$(pkg-config --variable=prefix ORBit-2.0)
 	              --sysconfdir=/etc/gnome/2.28.2
 		      --libexecdir=$(pkg-config --variable=prefix ORBit-2.0)/lib/gnome-power-manager "
-	ypkg_config
+	doconfig
 }
 
 pbs_build() {
-	ypkg_make
+	domake
 }
 
 pbs_install() {
-	ypkg_mkinstall
+	domkinstall
 }

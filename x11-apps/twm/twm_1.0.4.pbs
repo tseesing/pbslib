@@ -12,22 +12,22 @@ RDEPEND="libXext libXmu libXt libX11 libSM libICE libxcb util-linux-ng libXau li
 BDEPEND=""
 
 pbs_unpack() {
-        ypkg_unpack
+        dounpack
 }
 
 pbs_config() {
 	
-	ypkg_config
+	doconfig
 }
 
 pbs_build() {
-	ypkg_make
+	domake
 }
 
 pbs_install() {
-	ypkg_mkinstall
+	domkinstall
 	#change config
-	mkdir -p "$YPPATH_DEST"/etc/X11 
-	mv "$YPPATH_DEST"/usr/share/X11/twm "$YPPATH_DEST"/etc/X11
-	ln -sf /etc/X11/twm "$YPPATH_DEST"/usr/share/X11
+	mkdir -p "$destdir"/etc/X11 
+	mv "$destdir"/usr/share/X11/twm "$destdir"/etc/X11
+	ln -sf /etc/X11/twm "$destdir"/usr/share/X11
 }

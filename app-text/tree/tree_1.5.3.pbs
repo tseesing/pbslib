@@ -17,15 +17,15 @@ RECOMMENDED=""
 NOTES=""
 
 pbs_unpack() {
-        ypkg_unpack
+        dounpack
 }
 
 pbs_build() {
-	ypkg_make
+	domake
 }
 
 pbs_install() {
-	ypkg_docp "$N" "$YPPATH_DEST"/usr/bin
-	ypkg_docp man/"$N".1  "$YPPATH_DEST"/usr/share/man/man1
-	ypkg_dodoc CHANGES README* 
+	docp "$N" "$destdir"/usr/bin
+	docp man/"$N".1  "$destdir"/usr/share/man/man1
+	dodoc CHANGES README* 
 }

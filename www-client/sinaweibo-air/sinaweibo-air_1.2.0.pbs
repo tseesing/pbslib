@@ -21,7 +21,7 @@ INSTALL="$N.install"
 NOTES=""
 
 pbs_install() {
-	ypkg_docp_rename "$YPPATH_SOURCE"/"AIRweibo(1.2.0).air" "$YPPATH_DEST"/usr/lib/"$N"/airweibo.air
-	ypkg_dodesktop "sinaweibo-air.desktop"         "sinaweibo-air.png"
+	docp_rename "$YPPATH_SOURCE"/"AIRweibo(1.2.0).air" "$destdir"/usr/lib/"$N"/airweibo.air
+	dodesktop "sinaweibo-air.desktop"         "sinaweibo-air.png"
 }
 

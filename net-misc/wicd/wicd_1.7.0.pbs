@@ -20,7 +20,7 @@ INSTALL="$N.install"
 NOTES=""
 
 pbs_unpack() {
-        ypkg_unpack
+        dounpack
 }
 
 pbs_config() {
@@ -31,12 +31,12 @@ pbs_config() {
 }
 
 pbs_install() {
-	python setup.py install --optimize=1 --root="$YPPATH_DEST"
+	python setup.py install --optimize=1 --root="$destdir"
 	cd build/lib/wicd
 	for i in *.py; do
-		install -Dm 755 $i "$YPPATH_DEST"/usr/lib/wicd/$i
+		install -Dm 755 $i "$destdir"/usr/lib/wicd/$i
 	done
-	ypkg_dounit "$N".service
+	dounit "$N".service
 }
 
 

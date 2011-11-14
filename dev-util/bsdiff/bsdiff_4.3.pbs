@@ -16,7 +16,7 @@ RECOMMENDED=""
 CONFLICT=""
 
 pbs_unpack() {
-        ypkg_unpack
+        dounpack
 }
 
 pbs_build() {
@@ -25,7 +25,7 @@ pbs_build() {
 }
 
 pbs_install() {
-	ypkg_docp bsdiff bspatch "$YPPATH_DEST"/usr/bin/
+	docp bsdiff bspatch "$destdir"/usr/bin/
 
 }
 

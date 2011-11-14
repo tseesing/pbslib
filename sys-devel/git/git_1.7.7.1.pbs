@@ -27,35 +27,35 @@ git config --system --add user.name ylmfos_user
 git config --system --add user.email ylmfos_user@115.com"
 
 pbs_unpack() {
-        ypkg_unpack
+        dounpack
 }
 
 pbs_config() {
-	YPB_CONFIG=${YPB_CONFIG/--enable-shared/}
-	ypkg_config
+	config=${config/--enable-shared/}
+	doconfig
 }
 
 pbs_build() {
-	ypkg_make USE_LIBPCRE=1 NO_CROSS_DIRECTORY_HARDLINKS=1
+	domake USE_LIBPCRE=1 NO_CROSS_DIRECTORY_HARDLINKS=1
 	cd contrib/emacs
-        ypkg_make prefix=/usr
+        domake prefix=/usr
 	cd -
 }
 
 pbs_install() {
-	ypkg_mkinstall USE_LIBPCRE=1 NO_CROSS_DIRECTORY_HARDLINKS=1 INSTALLDIRS=vendor 
+	domkinstall USE_LIBPCRE=1 NO_CROSS_DIRECTORY_HARDLINKS=1 INSTALLDIRS=vendor 
 
 	# Bash completion
-	ypkg_docp_rename contrib/completion/git-completion.bash "$YPPATH_DEST"/etc/bash_completion.d/git 
+	docp_rename contrib/completion/git-completion.bash "$destdir"/etc/bash_completion.d/git 
 	 
 	# More contrib stuff
-	ypkg_docp contrib "$YPPATH_DEST"/usr/share/git/ 
+	docp contrib "$destdir"/usr/share/git/ 
 
 	# Emacs interface
 	cd contrib/emacs
-	ypkg_mkinstall prefix=/usr
+	domkinstall prefix=/usr
 
 	# Remove perllocal.pod, .packlist, and empty directories.
-        rm -rf "$YPPATH_DEST"/usr/lib/perl5
+        rm -rf "$destdir"/usr/lib/perl5
 }
 

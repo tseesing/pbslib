@@ -13,22 +13,22 @@ RDEPEND="glibc zlib"
 BDEPEND=" "
 
 pbs_unpack() {
-        ypkg_unpack
+        dounpack
 }
 
 pbs_config() {
-	YPB_CONFIG="--prefix=/ --enable-zlib-dynamic --mandir=/usr/share/man" 
-	ypkg_config
+	config="--prefix=/ --enable-zlib-dynamic --mandir=/usr/share/man" 
+	doconfig
 }
 
 pbs_build() {
-	ypkg_make
+	domake
 }
 
 pbs_install() {
-	ypkg_mkinstall
-	ypkg_dodoc AUTHORS COPYING NEWS TODO CODING INSTALL
-	ypkg_docp "$FILES_PATH"/files/modprobe.d/*   "$YPPATH_DEST"/etc/modprobe.d
-	ypkg_domv "$YPPATH_DEST"/bin/lsmod  "$YPPATH_DEST"/sbin
-	rm -rf "$YPPATH_DEST"/bin
+	domkinstall
+	dodoc AUTHORS COPYING NEWS TODO CODING INSTALL
+	docp $filesdir/modprobe.d/*   "$destdir"/etc/modprobe.d
+	domv "$destdir"/bin/lsmod  "$destdir"/sbin
+	rm -rf "$destdir"/bin
 }

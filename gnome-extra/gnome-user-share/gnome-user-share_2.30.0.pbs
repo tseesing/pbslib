@@ -18,20 +18,20 @@ INSTALL="$N.install"
 NOTES=""
 
 pbs_unpack() {
-        ypkg_unpack
+        dounpack
 }
 
 pbs_config() {
 	sed -i 's/folder-remote/folder-publicshare/g' data/gnome-user-share-properties.desktop.in data/gnome-user-share.desktop.in.in
-	YPB_CONFIG+="--disable-schemas-install"
-	ypkg_config
+	config+="--disable-schemas-install"
+	doconfig
 }
 
 pbs_build() {
-	ypkg_make
+	domake
 }
 
 pbs_install() {
-	ypkg_mkinstall
-	ypkg_dodoc AUTHORS COPYING NEWS README
+	domkinstall
+	dodoc AUTHORS COPYING NEWS README
 }

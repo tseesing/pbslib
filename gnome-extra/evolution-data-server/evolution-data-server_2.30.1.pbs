@@ -15,12 +15,12 @@ RECOMMENDED=""
 NOTES=""
 
 pbs_unpack() {
-        ypkg_unpack
+        dounpack
 }
 
 pbs_config() {
 	
-	YPB_CONFIG+=" --prefix=/usr --sysconfdir=/etc --localstatedir=/var \
+	config+=" --prefix=/usr --sysconfdir=/etc --localstatedir=/var \
 	              --mandir=/usr/share/man  \
 		       \
 		      --disable-schemas-install \
@@ -33,13 +33,13 @@ pbs_config() {
 		      --with-libdb=/usr	
 		      --with-nspr-includes=/usr/include/nspr 
 		      --with-nss-includes=/usr/include/nss "
-	ypkg_config
+	doconfig
 }
 
 pbs_build() {
-	ypkg_make
+	domake
 }
 
 pbs_install() {
-	ypkg_mkinstall
+	domkinstall
 }

@@ -1,8 +1,8 @@
 . /usr/lib/ybs/funcs
 
 post_install() {
-	ypkg_useradd -c "ntp user" -d "/dev/null" -s "/bin/false" -r "ntp"
-	ypkg_groupadd -r "ntp"
+	douseradd -c "ntp user" -d "/dev/null" -s "/bin/false" -r "ntp"
+	dogroupadd -r "ntp"
 	chown ntp:ntp /var/lib/ntp
 	start ntpd
 }
@@ -12,8 +12,8 @@ pre_remove() {
 }
 
 post_remove() {
-	ypkg_userdel -r "ntp"
-	ypkg_groupdel "ntp"
+	douserdel -r "ntp"
+	dogroupdel "ntp"
 }
 
 post_upgrade()  {

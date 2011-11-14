@@ -13,19 +13,19 @@ RDEPEND="perl expat glibc"
 BDEPEND=""
 
 pbs_unpack() {
-        ypkg_unpack
+        dounpack
 }
 
 pbs_config() {
-	ypkg_config INSTALLDIRS=vendor
+	doconfig INSTALLDIRS=vendor
 }
 
 pbs_build() {
-	ypkg_make
+	domake
 }
 
 pbs_install() {
-	ypkg_mkinstall
+	domkinstall
         perl_cleanup
 }
 

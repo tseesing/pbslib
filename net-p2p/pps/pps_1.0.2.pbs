@@ -15,15 +15,15 @@ RECOMMENDED=""
 CONFLICT=""
 
 pbs_unpack() {
-        ypkg_unpack
+        dounpack
 }
 
 pbs_install() {
-	ypkg_patch desktop.patch
-	ypkg_docp data/*  "$YPPATH_DEST"
-	ypkg_docp "$FILES_PATH"/files/PPStream   "$YPPATH_DEST"/usr/bin/
-	cd "$YPPATH_DEST"
+	dopatch desktop.patch
+	docp data/*  "$destdir"
+	docp $filesdir/PPStream   "$destdir"/usr/bin/
+	cd "$destdir"
 	chmod +x usr/bin/PPStream
-	ypkg_doln /usr/bin/PPStream usr/bin/pps
+	doln /usr/bin/PPStream usr/bin/pps
 }
 

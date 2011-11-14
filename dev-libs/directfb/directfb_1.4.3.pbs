@@ -14,19 +14,19 @@ BDEPEND="libsdl-dev"
 RECOMMENDED="libsdl"
 
 pbs_unpack() {
-        ypkg_unpack
+        dounpack
 }
 
 pbs_config() {
-	YPB_CONFIG+="--disable-mmx --disable-sse"
-	ypkg_config
+	config+="--disable-mmx --disable-sse"
+	doconfig
 }
 
 pbs_build() {
-	ypkg_make
+	domake
 }
 
 pbs_install() {
-	ypkg_mkinstall
+	domkinstall
 }
 

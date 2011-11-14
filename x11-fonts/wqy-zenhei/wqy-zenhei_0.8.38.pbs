@@ -13,13 +13,13 @@ BDEPEND=""
 INSTALL="$N.install"
 
 pbs_unpack() {
-        ypkg_unpack
+        dounpack
 }
 
 pbs_install() {
-	ypkg_docp wqy-zenhei.ttc "$YPPATH_DEST"/usr/share/fonts/wenquanyi/wqy-zenhei
-	ypkg_docp *.conf "$YPPATH_DEST"/etc/fonts/conf.avail
-	ypkg_doln /etc/fonts/conf.avail/66-wqy-zenhei-sharp.conf "$YPPATH_DEST"/etc/fonts/conf.d/66-wqy-zenhei-sharp.conf
-	ypkg_dodoc zenheiset README INSTALL 
+	docp wqy-zenhei.ttc "$destdir"/usr/share/fonts/wenquanyi/wqy-zenhei
+	docp *.conf "$destdir"/etc/fonts/conf.avail
+	doln /etc/fonts/conf.avail/66-wqy-zenhei-sharp.conf "$destdir"/etc/fonts/conf.d/66-wqy-zenhei-sharp.conf
+	dodoc zenheiset README INSTALL 
 }
 

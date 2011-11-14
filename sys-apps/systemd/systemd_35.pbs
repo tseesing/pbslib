@@ -21,36 +21,36 @@ To correct that, execute
 ln -sf /proc/self/mounts /etc/mtab"
 
 pbs_unpack() {
-        ypkg_unpack
+        dounpack
 }
 
 pbs_config() {
-	ypkg_patch ylmfos-gnome-ask-password-agent.patch ylmfos-configure-add-distro-"$V".patch
-	YPB_CONFIG+="--with-distro=ylmfos 
+	dopatch ylmfos-gnome-ask-password-agent.patch ylmfos-configure-add-distro-"$V".patch
+	config+="--with-distro=ylmfos 
 		     --enable-gtk
 		     --with-rootdir=/
 		     --with-udevrulesdir=/lib/udev/rules.d
 		     --enable-plymouth"
-	ypkg_config
+	doconfig
 }
 
 pbs_build() {
-	ypkg_make
+	domake
 }
 
 pbs_install() {
-	ypkg_mkinstall
-	ypkg_docp "$FILES_PATH"/files/{start,stop,status,restart,reload} "$YPPATH_DEST"/usr/bin/
-	cd "$YPPATH_DEST"
+	domkinstall
+	docp $filesdir/{start,stop,status,restart,reload} "$destdir"/usr/bin/
+	cd "$destdir"
 	
 	# Disable mount: make /media a tmpfs at boot time
 	rm lib/systemd/system/local-fs.target.wants/media.mount
 	
 	#
 	mkdir -p run
-	ypkg_doln /bin/systemd sbin/init
+	doln /bin/systemd sbin/init
 	for i in halt poweroff reboot runlevel shutdown telinit; do
-		ypkg_doln  /bin/systemctl  sbin/"${i}" 	
+		doln  /bin/systemctl  sbin/"${i}" 	
 	done
 	ln -sf /proc/self/mounts etc/mtab
 }

@@ -14,20 +14,20 @@ BDEPEND=""
 RECOMMENDED=""
 
 pbs_unpack() {
-        ypkg_unpack
+        dounpack
 }
 
 pbs_config() {
-	YPB_CONFIG+="--disable-python --enable-libpst-shared"
-	ypkg_config
+	config+="--disable-python --enable-libpst-shared"
+	doconfig
 }
 
 pbs_build() {
-	ypkg_make
+	domake
 }
 
 pbs_install() {
-	ypkg_mkinstall
-	ypkg_dodoc AUTHORS ChangeLog COPYING INSTALL NEWS README
+	domkinstall
+	dodoc AUTHORS ChangeLog COPYING INSTALL NEWS README
 }
 

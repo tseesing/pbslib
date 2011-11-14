@@ -13,20 +13,20 @@ RDEPEND="glibc python zlib"
 BDEPEND=""
 
 pbs_unpack() {
-        ypkg_unpack
+        dounpack
 }
 
 pbs_config() {
-	ypkg_config
+	doconfig
 }
 
 pbs_build() {
-	ypkg_make
+	domake
 }
 
 pbs_install() {
-	ypkg_mkinstall
-	cd "$YPPATH_DEST"
-	ypkg_doln /usr/include/libxml2/libxml  usr/include/libxml
+	domkinstall
+	cd "$destdir"
+	doln /usr/include/libxml2/libxml  usr/include/libxml
 }
 

@@ -18,11 +18,11 @@ INSTALL="$N.install"
 NOTES="You should creat a users name \"ftp\" and a group name \"ftpgroup\""
 
 pbs_unpack() {
-        ypkg_unpack
+        dounpack
 }
 
 pbs_config() {
-	YPB_CONFIG+=" --with-altlog
+	config+=" --with-altlog
 		      --with-cookie
 		      --with-diraliases
 		      --with-extauth
@@ -47,25 +47,25 @@ pbs_config() {
 		      --with-tls
 		      --without-virtualchroot
 		      --without-inetd "
-	ypkg_config
+	doconfig
 }
 
 pbs_build() {
-	ypkg_make
+	domake
 }
 
 pbs_install() {
-	ypkg_mkinstall
-	ypkg_dodoc AUTHORS ChangeLog COPYING INSTALL NEWS README
+	domkinstall
+	dodoc AUTHORS ChangeLog COPYING INSTALL NEWS README
 
 	# For sysvinit
-	#ypkg_doinit "$N"
+	#doinit "$N"
 	
-	cd "$YPPATH_DEST"
-	ypkg_docp "$FILES_PATH"/files/ftpusers       etc
-	ypkg_docp "$FILES_PATH"/files/pure-ftpd.conf etc/pure-ftpd
+	cd "$destdir"
+	docp $filesdir/ftpusers       etc
+	docp $filesdir/pure-ftpd.conf etc/pure-ftpd
 	
 	# For systemd
-	ypkg_dounit "$N".service
+	dounit "$N".service
 }
 

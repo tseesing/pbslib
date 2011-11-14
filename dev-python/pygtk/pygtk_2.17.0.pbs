@@ -16,18 +16,18 @@ RECOMMENDED=""
 NOTES="http://wiki.linuxfromscratch.org/blfs/wiki/pygtk"
 
 pbs_unpack() {
-        ypkg_unpack
+        dounpack
 }
 
 pbs_config() {
-	YPB_CONFIG+="--disable-static"
-	ypkg_config
+	config+="--disable-static"
+	doconfig
 }
 
 pbs_build() {
-	ypkg_make make
+	domake make
 }
 
 pbs_install() {
-	ypkg_mkinstall make
+	domkinstall make
 }

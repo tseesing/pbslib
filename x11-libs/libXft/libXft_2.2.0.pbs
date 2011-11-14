@@ -13,19 +13,19 @@ RDEPEND="expat fontconfig freetype glibc libX11 libXau libxcb libXdmcp libXrende
 BDEPEND=""
 
 pbs_unpack() {
-        ypkg_unpack
+        dounpack
 }
 
 pbs_config() {
-	ypkg_patch xft_2.1.14-2ubuntu1.patch
-	ypkg_config
+	dopatch xft_2.1.14-2ubuntu1.patch
+	doconfig
 }
 
 pbs_build() {
-	ypkg_make
+	domake
 }
 
 pbs_install() {
-	ypkg_mkinstall
+	domkinstall
 }
 

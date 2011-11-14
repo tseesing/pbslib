@@ -13,20 +13,20 @@ RDEPEND="glibc libdrm libpciaccess pixman udev"
 BDEPEND="xorg-server-dev"
 
 pbs_unpack() {
-        ypkg_unpack
+        dounpack
 }
 
 pbs_config() {
-	YPB_CONFIG+="--enable-dri"
-	ypkg_config
+	config+="--enable-dri"
+	doconfig
 }
 
 pbs_build() {
-	ypkg_make
+	domake
 }
 
 pbs_install() {
-	ypkg_mkinstall
-	ypkg_dodoc COPYING
+	domkinstall
+	dodoc COPYING
 }
 

@@ -16,10 +16,10 @@ RECOMMENDED=""
 CONFLICT=""
 
 pbs_unpack() {
-        ypkg_unpack
+        dounpack
 }
 
 pbs_install() {
-	ypkg_docp * "$YPPATH_DEST"/lib/firmware/zd1211
+	docp * "$destdir"/lib/firmware/zd1211
 }
 

@@ -16,11 +16,11 @@ RECOMMENDED=""
 INSTALL="$N.install"
 
 pbs_unpack() {
-        ypkg_unpack
+        dounpack
 }
 
 pbs_config() {
-	YPB_CONFIG+="--enable-gtk 
+	config+="--enable-gtk 
 		     --enable-gtk-doc-html=no
 		     --disable-static 
 		     --with-builtin=dso
@@ -29,14 +29,14 @@ pbs_config() {
 		     --enable-alsa 
 		     --enable-gstreamer 
 		     --enable-pulse"
-	ypkg_config
+	doconfig
 }
 
 pbs_build() {
-	ypkg_make
+	domake
 }
 
 pbs_install() {
-	ypkg_mkinstall
+	domkinstall
 }
 

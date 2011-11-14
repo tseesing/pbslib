@@ -1,10 +1,10 @@
 . /usr/lib/ybs/funcs
 
 post_install() {
-	ypkg_useradd -c "syslog user" -d "/dev/null" -s "/bin/false" -r "syslog"  
+	douseradd -c "syslog user" -d "/dev/null" -s "/bin/false" -r "syslog"  
 }       
 
 post_remove() {
-	ypkg_userdel "syslog"
+	douserdel "syslog"
 }
 

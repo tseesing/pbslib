@@ -13,11 +13,11 @@ RDEPEND="acl attr avahi bluez cyrus-sasl dbus dbus-glib eggdbus expat fuse gcc g
 BDEPEND="gnome-keyring-dev"
 
 pbs_unpack() {
-        ypkg_unpack
+        dounpack
 }
 
 pbs_config() {
-	YPB_CONFIG+=" --enable-hal 
+	config+=" --enable-hal 
 		      --enable-gphoto2 
 		      --enable-archive 
 		      --enable-samba 
@@ -28,14 +28,14 @@ pbs_config() {
 		      --enable-cdda 
 		      --enable-avahi 
 		      --enable-http "
-	ypkg_config
+	doconfig
 }
 
 pbs_build() {
-	ypkg_make
+	domake
 }
 
 pbs_install() {
-	ypkg_mkinstall
-	ypkg_dodoc COPYING README
+	domkinstall
+	dodoc COPYING README
 }

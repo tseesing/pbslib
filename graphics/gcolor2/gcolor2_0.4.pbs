@@ -15,7 +15,7 @@ BDEPEND=" "
 RECOMMENDED=""
 
 pbs_unpack() {
-        ypkg_unpack
+        dounpack
 }
 
 pbs_config() {
@@ -23,11 +23,11 @@ pbs_config() {
 }
 
 pbs_build() {
-	ypkg_make 
+	domake 
 }
 
 pbs_install() {
-	ypkg_mkinstall
-	ypkg_docp_rename "$YPPATH_DEST"/usr/share/pixmaps/gcolor2/icon.png "$YPPATH_DEST"/usr/share/pixmaps/"$N".png
-	ypkg_docp        "$FILES_PATH"/files/"$N".desktop  "$YPPATH_DEST"/usr/share/applications
+	domkinstall
+	docp_rename "$destdir"/usr/share/pixmaps/gcolor2/icon.png "$destdir"/usr/share/pixmaps/"$N".png
+	docp        $filesdir/"$N".desktop  "$destdir"/usr/share/applications
 }

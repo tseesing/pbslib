@@ -11,15 +11,15 @@ RDEPEND=""
 BDEPEND=""
 
 pbs_unpack() {
-        ypkg_unpack
+        dounpack
 }
 
 pbs_install() {
 	
-	install -d -m755 "$YPPATH_DEST"/opt  "$YPPATH_DEST"/usr/share/applications  "$YPPATH_DEST"/usr/bin
-	mv *  "$YPPATH_DEST"/opt
-	cd "$YPPATH_DEST"
-	cp "$FILES_PATH"/files/firefox-bin.desktop  usr/share/applications
+	install -d -m755 "$destdir"/opt  "$destdir"/usr/share/applications  "$destdir"/usr/bin
+	mv *  "$destdir"/opt
+	cd "$destdir"
+	cp $filesdir/firefox-bin.desktop  usr/share/applications
 	cat >> usr/bin/firefox-bin.sh <<EOF
 cd /opt/"$N-$V$R"
 exec ./firefox 

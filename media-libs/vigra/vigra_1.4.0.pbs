@@ -16,20 +16,20 @@ RECOMMENDED=""
 CONFLICT=""
 
 pbs_unpack() {
-        ypkg_unpack
+        dounpack
 }
 
 pbs_config() {
-	ypkg_patch 1.4.0-makefile.patch
+	dopatch 1.4.0-makefile.patch
 	./configure --prefix=/usr --docdir=/usr/share/doc/"$N" --enable-shared
 }
 
 pbs_build() {
-	ypkg_make
+	domake
 }
 
 pbs_install() {
-	ypkg_mkinstall
-	ypkg_dodoc LICENSE
+	domkinstall
+	dodoc LICENSE
 }
 

@@ -16,12 +16,12 @@ RECOMMENDED=""
 CONFLICT=""
 
 pbs_unpack() {
-        ypkg_unpack
+        dounpack
 }
 
 pbs_install() {
 	. /etc/profile.d/jdk.sh
 	rm -f xercesSamples.jar
-	ypkg_docp *.jar "$YPPATH_DEST"/"$JAVA_HOME"/
+	docp *.jar "$destdir"/"$JAVA_HOME"/
 }
 

@@ -16,22 +16,22 @@ RECOMMENDED=""
 INSTALL="$N.install"
 
 pbs_unpack() {
-        ypkg_unpack
+        dounpack
 }
 
 pbs_config() {
-	YPB_CONFIG+="--with-gnome-distributor=www.ylmf.org"
-	ypkg_config
+	config+="--with-gnome-distributor=www.ylmf.org"
+	doconfig
 }
 
 pbs_build() {
-	ypkg_make
+	domake
 }
 
 pbs_install() {
-	ypkg_mkinstall
+	domkinstall
 
-	cd "$YPPATH_DEST"
+	cd "$destdir"
 	rm -fr var/lib/scrollkeeper var/lib/log
 }
 

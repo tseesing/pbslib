@@ -16,7 +16,7 @@ BDEPEND="rpm2targz"
 INSTALL="$N.install"
 
 pbs_unpack() {
-        ypkg_unpack
+        dounpack
 }
 
 pbs_install() {
@@ -26,14 +26,14 @@ pbs_install() {
 		echo ">>> Unpack $(basename $i)"
 		ar x "${i}"; tar xf data.tar.gz
 	done	
-	ypkg_docp opt/openoffice.org*   "$YPPATH_DEST"/opt
+	docp opt/openoffice.org*   "$destdir"/opt
 	for app in base calc draw impress math writer; do
-		ypkg_doln /opt/openoffice.org3/program/s"${app}" "$YPPATH_DEST"/usr/bin/oo"${app}"
+		doln /opt/openoffice.org3/program/s"${app}" "$destdir"/usr/bin/oo"${app}"
         done
-	ypkg_doln /opt/openoffice.org3/program/soffice "$YPPATH_DEST"/usr/bin/soffice
-	ypkg_doln /opt/openoffice.org3/program/soffice "$YPPATH_DEST"/usr/bin/openoffice.org3
-	ypkg_docp_rename "$YPPATH_DEST"/opt/openoffice.org3/program/soffice.bin  "$YPPATH_DEST"/opt/openoffice.org3/program/openoffice.org3.bin
-	ypkg_docp "$FILES_PATH"/files/*.desktop  "$YPPATH_DEST"/usr/share/applications
-	ypkg_docp "$FILES_PATH"/files/*.png  "$YPPATH_DEST"/usr/share/pixmaps
+	doln /opt/openoffice.org3/program/soffice "$destdir"/usr/bin/soffice
+	doln /opt/openoffice.org3/program/soffice "$destdir"/usr/bin/openoffice.org3
+	docp_rename "$destdir"/opt/openoffice.org3/program/soffice.bin  "$destdir"/opt/openoffice.org3/program/openoffice.org3.bin
+	docp $filesdir/*.desktop  "$destdir"/usr/share/applications
+	docp $filesdir/*.png  "$destdir"/usr/share/pixmaps
 }
 

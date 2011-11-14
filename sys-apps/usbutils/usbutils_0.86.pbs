@@ -15,23 +15,23 @@ BDEPEND=""
 INSTALL="$N.install"
 
 pbs_unpack() {
-        ypkg_unpack
+        dounpack
 }
 
 pbs_config() {
-	YPB_CONFIG+="--disable-zlib"
-	ypkg_config
+	config+="--disable-zlib"
+	doconfig
 }
 
 pbs_build() {
-	ypkg_make
+	domake
 }
 
 pbs_install() {
-	ypkg_mkinstall
+	domkinstall
 
 	# Rename tools
-	cd "$YPPATH_DEST"
-	ypkg_domv_rename usr/sbin/update-usbids.sh usr/sbin/update-usbids
+	cd "$destdir"
+	domv_rename usr/sbin/update-usbids.sh usr/sbin/update-usbids
 }
 

@@ -20,7 +20,7 @@ VDPAU (Video Decode and Presentation API for Unix) is an API designed by NVIDIA 
 "
 
 pbs_unpack() {
-        ypkg_unpack
+        dounpack
 }
 
 pbs_build() {

@@ -18,19 +18,19 @@ INSTALL="$N.install"
 NOTES=""
 
 pbs_unpack() {
-        ypkg_unpack
+        dounpack
 }
 
 pbs_config() {
 	#Make sure that the data installed in the site-packages directory can be found:
 	sed -i "/^import sys/a\if not \"/usr\/lib\/python2.6\/site-packages\" in sys.path:\n    sys.path.insert (0, \"/usr\/lib\/python2.6\/site-packages\")" alacarte.in
-	ypkg_config
+	doconfig
 }
 
 pbs_build() {
-	ypkg_make
+	domake
 }
 
 pbs_install() {
-	ypkg_mkinstall
+	domkinstall
 }

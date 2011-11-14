@@ -13,14 +13,14 @@ BDEPEND=" "
 RECOMMENDED=""
 
 pbs_unpack() {
-        ypkg_unpack
+        dounpack
 }
 
 pbs_config() {
 	# https://bugzilla.mozilla.org/show_bug.cgi?id=623126
-	ypkg_patch add-missing-constructor.patch
+	dopatch add-missing-constructor.patch
 
-	YPB_CONFIG+="--disable-debug 
+	config+="--disable-debug 
 	             --disable-tests 
 		     --enable-editor 
 		     --with-openldap 
@@ -29,20 +29,20 @@ pbs_config() {
 		     --enable-application=xulrunner
 		     --disable-javaxpcom"
 		     #--enable-ldap 
-	ypkg_config
+	doconfig
 }
 
 pbs_build() {
-	ypkg_make
+	domake
 }
 
 pbs_install() {
-	ypkg_mkinstall
-	cd "$YPPATH_DEST"
+	domkinstall
+	cd "$destdir"
 	for i in libxul.so libxpcom.so libmozjs.so;do
-		ypkg_doln /usr/lib/xulrunner-"$V"/"$i" usr/lib/"$i"
+		doln /usr/lib/xulrunner-"$V"/"$i" usr/lib/"$i"
 	done
 	#
-	ypkg_doln /usr/include/xulrunner-"$V" usr/include/xulrunner
+	doln /usr/include/xulrunner-"$V" usr/include/xulrunner
 }
 

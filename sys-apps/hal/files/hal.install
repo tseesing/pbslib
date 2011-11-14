@@ -1,8 +1,8 @@
 . /usr/lib/ybs/funcs
 
 post_install() {
-	ypkg_groupadd -r "haldaemon"
-	ypkg_useradd -c "HAL Daemon User" -d "/dev/null" -s "/bin/false" -r -N "haldaemon"
+	dogroupadd -r "haldaemon"
+	douseradd -c "HAL Daemon User" -d "/dev/null" -s "/bin/false" -r -N "haldaemon"
 }
 
 pre_remove() {
@@ -10,8 +10,8 @@ pre_remove() {
 }
 
 post_remove() {
-	ypkg_userdel  "haldaemon"
-	ypkg_groupdel "haldaemon"
+	douserdel  "haldaemon"
+	dogroupdel "haldaemon"
 	return 0
 }
 

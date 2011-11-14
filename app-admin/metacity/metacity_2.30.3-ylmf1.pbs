@@ -17,69 +17,69 @@ OPIONAL="libcm: Required for composite manager support"
 INSTALL="$N.install"
 
 pbs_unpack() {
-        ypkg_unpack
+        dounpack
 }
 
 pbs_config() {
 	# http://bugzilla.gnome.org/show_bug.cgi?id=558723
-	ypkg_patch stop-spamming-xsession-errors.patch
+	dopatch stop-spamming-xsession-errors.patch
 
 	# http://bugzilla.gnome.org/show_bug.cgi?id=135056
-	ypkg_patch dnd-keynav.patch
+	dopatch dnd-keynav.patch
 
 	# http://bugzilla.gnome.org/show_bug.cgi?id=588119
-	ypkg_patch Should-set-RestartStyleHint-to-RestartIfRunning-when.patch
+	dopatch Should-set-RestartStyleHint-to-RestartIfRunning-when.patch
 	
 	# http://bugzilla.gnome.org/show_bug.cgi?id=336750
-	ypkg_patch screenshot-forkbomb.patch
+	dopatch screenshot-forkbomb.patch
 
 	# fedora specific patches
 	#Patch11: workspaces.patch
 	#Patch12: fresh-tooltips.patch
 
 	# https://bugzilla.gnome.org/show_bug.cgi?id=567528
-	ypkg_patch Allow-explicit-raises-from-same-client-not-just-sa.patch
+	dopatch Allow-explicit-raises-from-same-client-not-just-sa.patch
 	
 	# https://bugzilla.gnome.org/show_bug.cgi?id=445447
-	ypkg_patch Allow-applications-to-raise-windows-when-raise_on_cl.patch
+	dopatch Allow-applications-to-raise-windows-when-raise_on_cl.patch
 	
 	# https://bugzilla.gnome.org/show_bug.cgi?id=598995
-	ypkg_patch Dont-focus-ancestor-window-on-a-different-workspac.patch
+	dopatch Dont-focus-ancestor-window-on-a-different-workspac.patch
 	
 	# https://bugzilla.gnome.org/show_bug.cgi?id=599097
-	ypkg_patch For-mouse-and-sloppy-focus-return-to-mouse-mode-on.patch
+	dopatch For-mouse-and-sloppy-focus-return-to-mouse-mode-on.patch
 	
 	# https://bugzilla.gnome.org/show_bug.cgi?id=599248
-	#ypkg_patch Add-nofocuswindows-preference-to-list-windows-that.patch
-	ypkg_patch Exclude-the-current-application-from-no_focus_window.patch
+	#dopatch Add-nofocuswindows-preference-to-list-windows-that.patch
+	dopatch Exclude-the-current-application-from-no_focus_window.patch
 	
 	# https://bugzilla.gnome.org/show_bug.cgi?id=599261
-	ypkg_patch Add-a-newwindowsalwaysontop-preference.patch
-	ypkg_patch Apply-new_windows_always_on_top-to-newly-raised-acti.patch
+	dopatch Add-a-newwindowsalwaysontop-preference.patch
+	dopatch Apply-new_windows_always_on_top-to-newly-raised-acti.patch
 	
 	# https://bugzilla.gnome.org/show_bug.cgi?id=559816
-	ypkg_patch metacity-2.28-empty-keybindings.patch
+	dopatch metacity-2.28-empty-keybindings.patch
 	
 	# https://bugzilla.gnome.org/show_bug.cgi?id=604319
-	ypkg_patch metacity-2.28-xioerror-unknown-display.patch
+	dopatch metacity-2.28-xioerror-unknown-display.patch
 	
 	# https://bugzilla.gnome.org/show_bug.cgi?id=599181
-	ypkg_patch Stop-confusing-GDK-s-grab-tracking.patch
+	dopatch Stop-confusing-GDK-s-grab-tracking.patch
 	
 	# https://bugzilla.gnome.org/show_bug.cgi?id=622517
-	#ypkg_patch Allow-breaking-out-from-maximization-during-mouse.patch
+	#dopatch Allow-breaking-out-from-maximization-during-mouse.patch
 
 	# default window icon: https://bugzilla.gnome.org/show_bug.cgi?id=616246
-	#ypkg_patch default-window-icon.patch
+	#dopatch default-window-icon.patch
 
 	# allow keybindings ungrab: https://bugzilla.gnome.org/show_bug.cgi?id=643682
 	# already upstream
-	ypkg_patch allow-keybindings-ungrab.patch
+	dopatch allow-keybindings-ungrab.patch
 
 	#
-	ypkg_docp "$FILES_PATH"/files/{mini-window.png,window.png} src/
+	docp $filesdir/{mini-window.png,window.png} src/
 
-	YPB_CONFIG+=" --disable-schemas-install
+	config+=" --disable-schemas-install
 		      --enable-compositor
 		      --enable-gconf 
 		      --enable-render 
@@ -88,14 +88,14 @@ pbs_config() {
 		      --enable-startup-notification 
 		      --enable-xsync 
 		      --disable-xinerama "
-	ypkg_config
+	doconfig
 }
 
 pbs_build() {
-	ypkg_make
+	domake
 }
 
 pbs_install() {
-	ypkg_mkinstall
+	domkinstall
 }
 

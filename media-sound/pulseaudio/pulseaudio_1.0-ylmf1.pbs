@@ -17,26 +17,26 @@ CONFLICT=""
 INSTALL="$N.install"
 
 pbs_unpack() {
-        ypkg_unpack
+        dounpack
 }
 
 pbs_config() {	
-	ypkg_patch version-number.patch
-	YPB_CONFIG+="--with-database=tdb
+	dopatch version-number.patch
+	config+="--with-database=tdb
 	             --disable-hal
 	             --disable-tcpwrap 
 		     --disable-rpath 
 		     --disable-default-build-tests"
-	ypkg_config
+	doconfig
 }
 
 pbs_build() {
-	ypkg_make
+	domake
 }
 
 pbs_install() {
-	ypkg_mkinstall
-	cd "$YPPATH_DEST"
+	domkinstall
+	cd "$destdir"
 
 	# Lower resample quality, saves CPU
 	sed -e '/resample-method/iresample-method=speex-float-0' -i etc/pulse/daemon.conf
@@ -51,6 +51,6 @@ pbs_install() {
 	rm etc/dbus-1/system.d/pulseaudio-system.conf
 
 	# PulseAudio for alsa 
-	ypkg_docp "$FILES_PATH"/files/asound.conf  etc/
+	docp $filesdir/asound.conf  etc/
 }
 

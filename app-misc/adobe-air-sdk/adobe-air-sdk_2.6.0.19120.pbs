@@ -21,13 +21,13 @@ INSTALL="$N.install"
 NOTES=""
 
 pbs_unpack() {
-        ypkg_unpack
+        dounpack
 }
 
 pbs_install() {
-	#install everything to $YPPATH_DEST
-	ypkg_docp * "$YPPATH_DEST"/opt/adobe-air-sdk
-	ypkg_docp "$FILES_PATH"/files/adobe-air  "$YPPATH_DEST"/usr/bin/
-	chmod +x "$YPPATH_DEST"/usr/bin/adobe-air
+	#install everything to $destdir
+	docp * "$destdir"/opt/adobe-air-sdk
+	docp $filesdir/adobe-air  "$destdir"/usr/bin/
+	chmod +x "$destdir"/usr/bin/adobe-air
 }
 

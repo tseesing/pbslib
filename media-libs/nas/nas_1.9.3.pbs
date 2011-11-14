@@ -15,15 +15,15 @@ RECOMMENDED=""
 CONFLICT=""
 
 pbs_unpack() {
-        ypkg_unpack
+        dounpack
 }
 
 pbs_build() {
 	xmkmf
-	ypkg_make World
+	domake World
 }
 
 pbs_install() {
-	ypkg_mkinstall USRLIBDIR=/usr/lib
+	domkinstall USRLIBDIR=/usr/lib
 }
 

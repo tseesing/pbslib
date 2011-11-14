@@ -13,9 +13,9 @@ RDEPEND=""
 BDEPEND=""
 
 pbs_unpack() {
-        ypkg_unpack
+        dounpack
 }
 
 pbs_install() {
-	ypkg_docp * "$YPPATH_DEST"/usr/lib/win32
+	docp * "$destdir"/usr/lib/win32
 }

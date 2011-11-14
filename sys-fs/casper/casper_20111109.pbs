@@ -16,13 +16,13 @@ RECOMMENDED="initramfs-tools busybox-initramfs sudo eject util-linux-ng ntfs-3g"
 INSTALL="$N.install"
 
 pbs_unpack() {
-	ypkg_unpack
+	dounpack
 }
 
 pbs_install() {
 	export PKG_CONFIG_PATH+=/lib/pkgconfig/
 	make -C casper-md5check/ 
-	ypkg_docp casper-md5check/casper-md5check usr/lib/casper/
-	ypkg_docp etc sbin usr "$YPPATH_DEST"
+	docp casper-md5check/casper-md5check usr/lib/casper/
+	docp etc sbin usr "$destdir"
 }
 

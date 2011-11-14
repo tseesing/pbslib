@@ -16,10 +16,10 @@ RECOMMENDED=""
 CONFLICT=""
 
 pbs_unpack() {
-        ypkg_unpack
+        dounpack
 }
 
 pbs_install() {
-	ypkg_docp *  "$YPPATH_DEST"/lib/firmware/nouveau/
+	docp *  "$destdir"/lib/firmware/nouveau/
 }
 

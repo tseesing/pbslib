@@ -15,14 +15,14 @@ RECOMMENDED=""
 CONFLICT=""
 
 pbs_unpack() {
-        ypkg_unpack
+        dounpack
 }
 
 pbs_build() {
-	ypkg_make
+	domake
 }
 
 pbs_install() {
-	ypkg_docp chntpw chntpw.static cpnt reged reged.static "$YPPATH_DEST"/usr/bin/
+	docp chntpw chntpw.static cpnt reged reged.static "$destdir"/usr/bin/
 }
 

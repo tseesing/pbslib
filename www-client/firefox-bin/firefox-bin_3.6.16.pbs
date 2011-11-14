@@ -12,19 +12,19 @@ RDEPEND=""
 BDEPEND=""
 
 pbs_unpack() {
-        ypkg_unpack
+        dounpack
 }
 
 pbs_install() {
-	ypkg_docp *  "$YPPATH_DEST"/opt/"$N-$V$R"
-	ypkg_dodesktop "$FILES_PATH"/files/firefox-bin.desktop  
-	ypkg_docp_rename "$YPPATH_DEST"/opt/"$N-$V$R"/icons/mozicon128.png "$YPPATH_DEST"/usr/share/pixmaps/"$N".png
-	rsync -a "$FILES_PATH"/files/"$N-$V$R"/* "$YPPATH_DEST"/opt/"$N-$V$R"
-	mkdir -p "$YPPATH_DEST"/usr/bin
-	cat >> "$YPPATH_DEST"/usr/bin/firefox-bin.sh <<EOF
+	docp *  "$destdir"/opt/"$N-$V$R"
+	dodesktop $filesdir/firefox-bin.desktop  
+	docp_rename "$destdir"/opt/"$N-$V$R"/icons/mozicon128.png "$destdir"/usr/share/pixmaps/"$N".png
+	rsync -a $filesdir/"$N-$V$R"/* "$destdir"/opt/"$N-$V$R"
+	mkdir -p "$destdir"/usr/bin
+	cat >> "$destdir"/usr/bin/firefox-bin.sh <<EOF
 #!/bin/sh
 cd /opt/"$N-$V$R"
 exec ./firefox 
 EOF
-	chmod +x "$YPPATH_DEST"/usr/bin/firefox-bin.sh
+	chmod +x "$destdir"/usr/bin/firefox-bin.sh
 }

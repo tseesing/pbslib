@@ -17,34 +17,34 @@ BDEPEND=""
 INSTALL="$N.install"
 
 pbs_unpack() {
-        ypkg_unpack
+        dounpack
 }
 
 pbs_config() {
 	# The following patch merges all updates from the 7.3 Branch from the Vim developers
-	ypkg_patch vim-7.3-branch_update-2.patch
+	dopatch vim-7.3-branch_update-2.patch
 
 	echo '#define SYS_VIMRC_FILE "/etc/vimrc"' >> src/feature.h
-	YPB_CONFIG+="--enable-gui=gtk2
+	config+="--enable-gui=gtk2
 	             --enable-pythoninterp=yes
 	             --enable-cscope
 	             --enable-multibyte
 	             --enable-xim
 	             --with-features=huge
 	             --with-x"
-	ypkg_config
+	doconfig
 }
 
 pbs_build() {
-	ypkg_make
+	domake
 }
 
 pbs_install(){
-	ypkg_mkinstall
-	cd "$YPPATH_DEST"
+	domkinstall
+	cd "$destdir"
 	
 	# Create vi
-	ypkg_doln /usr/bin/vim usr/bin/vi
-	ypkg_doln /usr/share/vim/vim73/doc usr/share/doc/vim-7.3
+	doln /usr/bin/vim usr/bin/vi
+	doln /usr/share/vim/vim73/doc usr/share/doc/vim-7.3
 }
 

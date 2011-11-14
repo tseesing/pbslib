@@ -17,17 +17,17 @@ RECOMMENDED=""
 NOTES=""
 
 pbs_unpack() {
-        ypkg_unpack
+        dounpack
 }
 
 pbs_config() {
-	ypkg_config
+	doconfig
 }
 
 pbs_install() {
-	ypkg_mkinstall
-	ypkg_mkinstall install-doc
-	ypkg_docp_rename dkms_apport.py "$YPPATH_DEST"/usr/share/apport/package-hooks/dkms.py
-	chmod +x "$YPPATH_DEST"/usr/share/apport/package-hooks/dkms.py
+	domkinstall
+	domkinstall install-doc
+	docp_rename dkms_apport.py "$destdir"/usr/share/apport/package-hooks/dkms.py
+	chmod +x "$destdir"/usr/share/apport/package-hooks/dkms.py
 }
 

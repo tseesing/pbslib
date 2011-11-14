@@ -13,15 +13,15 @@ RDEPEND="glibc readline ncurses"
 BDEPEND=""
 
 pbs_unpack() {
-        ypkg_unpack
+        dounpack
 }
 
 pbs_build() {
-	ypkg_make linux
+	domake linux
 }
 
 pbs_install() {
-	make INSTALL_TOP="$YPPATH_DEST"/usr install
-	ypkg_domv "$YPPATH_DEST"/usr/man  "$YPPATH_DEST"/usr/share
-	ypkg_docp etc/*.pc "$YPPATH_DEST"/usr/lib/pkgconfig
+	make INSTALL_TOP="$destdir"/usr install
+	domv "$destdir"/usr/man  "$destdir"/usr/share
+	docp etc/*.pc "$destdir"/usr/lib/pkgconfig
 }

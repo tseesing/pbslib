@@ -1,9 +1,9 @@
 . /usr/lib/ybs/funcs
 
 post_install() {
-        ypkg_install_info texi2html.info-3.gz texi2html.info-2.gz texi2html.info-1.gz texi2html.info.gz 
+        doinstall_info texi2html.info-3.gz texi2html.info-2.gz texi2html.info-1.gz texi2html.info.gz 
 }       
 
 pre_remove() {
-        ypkg_remove_info texi2html.info-3.gz texi2html.info-2.gz texi2html.info-1.gz texi2html.info.gz
+        doremove_info texi2html.info-3.gz texi2html.info-2.gz texi2html.info-1.gz texi2html.info.gz
 }

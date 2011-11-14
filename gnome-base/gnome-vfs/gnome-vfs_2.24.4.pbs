@@ -18,12 +18,12 @@ INSTALL="$N.install"
 NOTES="While several packages still depend on GNOME VFS, it is deprecated for new development. GVFS is the replacement package."
 
 pbs_unpack() {
-        ypkg_unpack
+        dounpack
 }
 
 pbs_config() {
-	ypkg_patch gnome-vfs.ftphandler.diff 07_trash_location.patch
-	YPB_CONFIG+="--disable-schemas-install 
+	dopatch gnome-vfs.ftphandler.diff 07_trash_location.patch
+	config+="--disable-schemas-install 
 		     --enable-hal 
 		     --enable-openssl 
 		     --enable-samba 
@@ -32,14 +32,14 @@ pbs_config() {
 		     --enable-daemon 
 		     --enable-ipv6 
 	             --enable-fam"
-	ypkg_config
+	doconfig
 }
 
 pbs_build() {
-	ypkg_make
+	domake
 }
 
 pbs_install() {
-	ypkg_mkinstall
+	domkinstall
 }
 

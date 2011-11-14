@@ -16,12 +16,12 @@ RECOMMENDED=""
 CONFLICT=""
 
 pbs_unpack() {
-        ypkg_unpack
+        dounpack
 }
 
 pbs_install() {
-	ypkg_docp data/*  "$YPPATH_DEST"
-	cd "$YPPATH_DEST"
+	docp data/*  "$destdir"
+	cd "$destdir"
 	mkdir -p etc/ppp/{peers,resolv} etc/chatscripts
 }
 

@@ -15,22 +15,22 @@ RECOMMENDED="gtk+"
 NOTES="http://wiki.linuxfromscratch.org/blfs/wiki/gir-repository"
 
 pbs_unpack() {
-        ypkg_unpack
+        dounpack
 }
 
 pbs_config() {
 	
-	patch -Np1 -i $FILES_PATH/files/"$N-$V$R"-dbus-glib-2.patch 
+	patch -Np1 -i $filesdir/"$N-$V$R"-dbus-glib-2.patch 
 	#FIXME!
 	sed -i 's/babl-0.0/babl-0.1/g' gir/Makefile.in
-	YPB_CONFIG+=" --prefix=/usr "
-	ypkg_config
+	config+=" --prefix=/usr "
+	doconfig
 }
 
 pbs_build() {
-	ypkg_make
+	domake
 }
 
 pbs_install() {
-	ypkg_mkinstall
+	domkinstall
 }

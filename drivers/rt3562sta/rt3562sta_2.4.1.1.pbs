@@ -12,11 +12,11 @@ SRC_URI="DPO_RT3562_3592_3062_LinuxSTA_V2.4.1.1_20101217.tgz"
 PROVIDE="$N-source $N-driver"
 
 pbs_unpack() {
-        ypkg_unpack
+        dounpack
 }
 
 pbs_config() {
-	ypkg_patch ylmfos_makefile.patch
+	dopatch ylmfos_makefile.patch
 }
 
 rt3562sta-source_install() {
@@ -26,8 +26,8 @@ rt3562sta-source_install() {
 	OPINION="nodev"
 	YARCH="any"
 	
-	ypkg_dosrc *
-	ypkg_dosupported "$N"_supported
+	dosrc *
+	dosupported "$N"_supported
 }
 
 rt3562sta-driver_install() {
@@ -36,7 +36,7 @@ rt3562sta-driver_install() {
 	INSTALL="$N.install"
 
 	unset ARCH
-	ypkg_make
-	ypkg_mkinstall
+	domake
+	domkinstall
 }
 

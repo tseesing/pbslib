@@ -14,19 +14,19 @@ BDEPEND=""
 RECOMMENDED=""
 
 pbs_unpack() {
-        ypkg_unpack
+        dounpack
 }
 
 pbs_config() {
 	cd squashfs-tools
-	ypkg_patch enable-xz.patch
+	dopatch enable-xz.patch
 }
 
 pbs_build() {
-	ypkg_make
+	domake
 }
 
 pbs_install() {
-	ypkg_docp mksquashfs unsquashfs "$YPPATH_DEST"/usr/bin
+	docp mksquashfs unsquashfs "$destdir"/usr/bin
 }
 

@@ -15,11 +15,11 @@ BDEPEND=" "
 INSTALL="$N.install"
 
 pbs_unpack() {
-        ypkg_unpack
+        dounpack
 }
 
 pbs_install() {
-	ypkg_docp ttf/*.ttf "$YPPATH_DEST"/usr/share/fonts/truetype/ttf-dejavu	
-	ypkg_dodoc AUTHORS BUGS langcover.txt LICENSE NEWS README status.txt unicover.txt
+	docp ttf/*.ttf "$destdir"/usr/share/fonts/truetype/ttf-dejavu	
+	dodoc AUTHORS BUGS langcover.txt LICENSE NEWS README status.txt unicover.txt
 }
 

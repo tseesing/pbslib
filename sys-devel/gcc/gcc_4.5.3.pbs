@@ -15,17 +15,17 @@ BDEPEND=""
 INSTALL="$N.install"
 
 pbs_unpack() {
-        ypkg_unpack
+        dounpack
 }
 
 pbs_config() {
 	# Add ylmfos version string
-	ypkg_patch ylmfos-version-string-"$V".patch
+	dopatch ylmfos-version-string-"$V".patch
 	
 	# Suppress the installation of libiberty.a. libiberty.a should be provided by Binutils
 	sed -i 's/install_to_$(INSTALL_DEST) //' libiberty/Makefile.in
 
-	YPB_CONFIG+=" --libexecdir=/usr/lib"$LIBDIRSUFFIX" 
+	config+=" --libexecdir=/usr/lib"$LIBDIRSUFFIX" 
                       --enable-threads=posix
   	              --enable-__cxa_atexit 
     		      --enable-clocale=gnu 
@@ -33,20 +33,20 @@ pbs_config() {
 	
 	# 
 	mkdir -p gcc-build && cd gcc-build && rm * -rf
-	../configure $YPB_CONFIG
+	../configure $config
 }
 
 pbs_build() {
-	ypkg_make
+	domake
 }
 
 pbs_install() {
-	ypkg_mkinstall
-	cd "$YPPATH_DEST"
+	domkinstall
+	cd "$destdir"
 	#
 	rm usr/lib/libstdc++.so.6.0.14-gdb.py
 
-	ypkg_doln /usr/bin/gcc usr/bin/cc
-	ypkg_doln /usr/bin/cpp lib/cpp
+	doln /usr/bin/gcc usr/bin/cc
+	doln /usr/bin/cpp lib/cpp
 }
 

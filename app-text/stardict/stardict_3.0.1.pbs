@@ -18,7 +18,7 @@ Or download from http://reciteword.cosoft.org.cn/stardict-iso/stardict-dic, then
 "
 
 pbs_unpack() {
-        ypkg_unpack
+        dounpack
 }
 
 pbs_config() {
@@ -29,10 +29,10 @@ pbs_config() {
 		  "$N-$V$R"-changelog-minor-typo-fixes.patch 
 		  "$N-$V$R"-gcc44.patch 
 		  "$N-$V$R"-gucharmap2.patch "
-	ypkg_patch $patches
+	dopatch $patches
 	AT_M4DIR="m4" ./autogen.sh
 	export PKG_CONFIG=/usr/bin/pkg-config
-	YPB_CONFIG+="--datadir=/usr/share
+	config+="--datadir=/usr/share
 	             --disable-gnome-support 
 		     --enable-spell
 		     --disable-gucharmap 
@@ -41,15 +41,15 @@ pbs_config() {
 		     --disable-festival 
 		     --disable-advertisement 
 		     --disable-updateinfo"
-	ypkg_config
+	doconfig
 }
 
 pbs_build() {
-	ypkg_make
+	domake
 }
 
 pbs_install() {
-	ypkg_mkinstall
-	ypkg_dodoc doc/{FAQ,HowToCreateDictionary,StarDictFileFormat,Translation,HACKING}
+	domkinstall
+	dodoc doc/{FAQ,HowToCreateDictionary,StarDictFileFormat,Translation,HACKING}
 }
 

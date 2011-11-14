@@ -12,23 +12,23 @@ RDEPEND="libpng pixman fontconfig"
 BDEPEND=" x11-libs/xcb-util directfb"
 
 pbs_unpack() {
-        ypkg_unpack
+        dounpack
 }
 
 pbs_config() {
 	
-	YPB_CONFIG+=" --prefix=/usr
+	config+=" --prefix=/usr
 		      --enable-xcb
 		      --enable-directfb	"
-	ypkg_config
+	doconfig
 }
 
 pbs_build() {
-	ypkg_make
+	domake
 }
 
 pbs_install() {
-	ypkg_mkinstall
+	domkinstall
 	#
-	find "$YPPATH_DEST" -name "*.la" -delete
+	find "$destdir" -name "*.la" -delete
 }

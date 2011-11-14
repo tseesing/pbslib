@@ -13,21 +13,21 @@ RDEPEND="atk avahi bzip2 cairo dbus dbus-glib enchant expat fontconfig freetype 
 BDEPEND=""
 
 pbs_unpack() {
-        ypkg_unpack
+        dounpack
 }
 
 pbs_config() {
-	ypkg_patch desktop.patch
-	ypkg_config
+	dopatch desktop.patch
+	doconfig
 }
 
 pbs_build() {
-	ypkg_make
+	domake
 }
 
 pbs_install() {
-	ypkg_mkinstall
-	mkdir -p "$YPPATH_DEST"/etc/xg_launch/others
-	echo '+ abiword%/usr/share/icons/abiword_48.png%      Exec abiword' >"$YPPATH_DEST"/etc/xg_launch/others/C10abiword 
+	domkinstall
+	mkdir -p "$destdir"/etc/xg_launch/others
+	echo '+ abiword%/usr/share/icons/abiword_48.png%      Exec abiword' >"$destdir"/etc/xg_launch/others/C10abiword 
 }
 

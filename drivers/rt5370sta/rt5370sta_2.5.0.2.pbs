@@ -12,12 +12,12 @@ SRC_URI="2011_0407_RT3070_RT3370_RT5370_RT5372_Linux_STA_V2.5.0.2_DPO.bz2"
 PROVIDE="$N-source $N-driver"
 
 pbs_unpack() {
-        ypkg_unpack
+        dounpack
 }
 
 pbs_config() {
-	ypkg_patch ylmfos-loadmode.patch
-	ypkg_patch ylmfos_makefile.patch
+	dopatch ylmfos-loadmode.patch
+	dopatch ylmfos_makefile.patch
 }
 
 rt5370sta-source_install() {
@@ -27,8 +27,8 @@ rt5370sta-source_install() {
 	OPINION="nodev"
         YARCH="any"
 
-	ypkg_dosrc *
-	ypkg_dosupported "$N"_supported
+	dosrc *
+	dosupported "$N"_supported
 }
 
 rt5370sta-driver_install() {
@@ -37,7 +37,7 @@ rt5370sta-driver_install() {
 	INSTALL="$N.install"
 	
 	unset ARCH
-	ypkg_make
-	ypkg_mkinstall
+	domake
+	domkinstall
 }
 

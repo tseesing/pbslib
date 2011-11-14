@@ -14,19 +14,19 @@ BDEPEND=""
 RECOMMENDED=""
 
 pbs_unpack() {
-        ypkg_unpack
+        dounpack
 }
 
 pbs_config() {
-	ypkg_patch gexiv2-0.2.1-new-exiv2.patch
-	ypkg_config
+	dopatch gexiv2-0.2.1-new-exiv2.patch
+	doconfig
 }
 
 pbs_build() {
-	ypkg_make
+	domake
 }
 
 pbs_install() {
-	ypkg_mkinstall
+	domkinstall
 }
 

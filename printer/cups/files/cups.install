@@ -1,11 +1,11 @@
 . /usr/lib/ybs/funcs
 
 post_install() {
-	ypkg_groupadd -r "lp"
-	ypkg_groupadd -r "lpadmin" -g 105
+	dogroupadd -r "lp"
+	dogroupadd -r "lpadmin" -g 105
 	
-	#ypkg_useradd -c "Print Service User" -d "/dev/null" -s "/bin/false" -r "lp" -g "lp"
-	ypkg_useradd -c "Print Service User" -d "/var/spool/lpd" -s "/bin/false" -r "lp" -g "lp"
+	#douseradd -c "Print Service User" -d "/dev/null" -s "/bin/false" -r "lp" -g "lp"
+	douseradd -c "Print Service User" -d "/var/spool/lpd" -s "/bin/false" -r "lp" -g "lp"
 	
 	#
 	chown root:lp   /etc/cups/cupsd.conf /etc/cups/cupsd.conf.*  /etc/cups/snmp.conf /etc/cups/snmp.conf.*
@@ -21,9 +21,9 @@ post_install() {
 }       
 
 post_remove() {
-	ypkg_userdel  "lp"
-	ypkg_groupdel "lp"
-	ypkg_groupdel "lpadmin"
+	douserdel  "lp"
+	dogroupdel "lp"
+	dogroupdel "lpadmin"
 }
 
 post_upgrade() {

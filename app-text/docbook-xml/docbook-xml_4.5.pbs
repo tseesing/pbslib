@@ -17,12 +17,12 @@ RECOMMENDED=""
 INSTALL="$N.install"
 
 pbs_unpack() {
-	ypkg_unpack 
+	dounpack 
 }
 
 pbs_install() {
 	chown -R root:root . 
-	ypkg_docp docbook.cat *.dtd ent/ *.mod "$YPPATH_DEST"/usr/share/xml/docbook/xml-dtd-4.5
-	install -d -m755 "$YPPATH_DEST"/etc/xml 
+	docp docbook.cat *.dtd ent/ *.mod "$destdir"/usr/share/xml/docbook/xml-dtd-4.5
+	install -d -m755 "$destdir"/etc/xml 
 }
 

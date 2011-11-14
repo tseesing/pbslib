@@ -11,26 +11,26 @@ RDEPEND="glibc ncurses zlib"
 BDEPEND=""
 
 pbs_unpack() {
-        ypkg_unpack
+        dounpack
 }
 
 pbs_config() {
-	YPB_CONFIG+="--enable-arch 
+	config+="--enable-arch 
 	             --enable-partx
 		     --enable-write
 	             --disable-static 
 		     --disable-fallocate "
-	ypkg_config
+	doconfig
 }
 
 pbs_build() {
-	ypkg_make
+	domake
 }
 
 pbs_install() {
-	ypkg_mkinstall
-	ypkg_dodoc AUTHORS NEWS README* TODO
+	domkinstall
+	dodoc AUTHORS NEWS README* TODO
 	#
-	ypkg_dounit hwclock-load.service hwclock-save.service
+	dounit hwclock-load.service hwclock-save.service
 }
 

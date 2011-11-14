@@ -19,25 +19,25 @@ RECOMMENDED=""
 INSTALL="$N.install"
 
 pbs_unpack() {
-        ypkg_unpack
+        dounpack
 }
 
 pbs_config() {
-	ypkg_patch  01_disable_move-to-home-desktop.patch nautilus_automount-1.patch ylmfos-translate.patch 02_donot-show-menuitem.patch ylmfos-show-windows-hd-label.patch
-	YPB_CONFIG+=" --disable-schemas-install 
+	dopatch  01_disable_move-to-home-desktop.patch nautilus_automount-1.patch ylmfos-translate.patch 02_donot-show-menuitem.patch ylmfos-show-windows-hd-label.patch
+	config+=" --disable-schemas-install 
 		      --disable-update-mimedb 
 		      --enable-packagekit "
-	ypkg_config
+	doconfig
 }
 
 pbs_build() {
-	ypkg_make
+	domake
 }
 
 pbs_install() {
-	ypkg_mkinstall
-	ypkg_dodoc AUTHORS COPYING COPYING-DOCS COPYING.EXTENSIONS COPYING.LIB README MAINTAINERS
+	domkinstall
+	dodoc AUTHORS COPYING COPYING-DOCS COPYING.EXTENSIONS COPYING.LIB README MAINTAINERS
 	# Clean up empty mime files
-	find "$YPPATH_DEST"/usr/share/mime -size 0 -type f -exec rm {} \;
+	find "$destdir"/usr/share/mime -size 0 -type f -exec rm {} \;
 }
 

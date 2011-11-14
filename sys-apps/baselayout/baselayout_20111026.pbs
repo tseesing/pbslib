@@ -16,8 +16,8 @@ BDEPEND=""
 INSTALL="$N.install"
 
 pbs_install() {
-	ypkg_docp "$FILES_PATH"/files/ylmfos-release  "$YPPATH_DEST"/etc
-	ypkg_docp "$FILES_PATH"/files/lsb_release  "$YPPATH_DEST"/usr/bin/
-	chmod +x  "$YPPATH_DEST"/usr/bin/lsb_release
+	docp $filesdir/ylmfos-release  "$destdir"/etc
+	docp $filesdir/lsb_release  "$destdir"/usr/bin/
+	chmod +x  "$destdir"/usr/bin/lsb_release
 }
 

@@ -1,10 +1,10 @@
 . /usr/lib/ybs/funcs
 
 post_install() {
-	ypkg_groupadd -r "nobody" -g 65534
-	ypkg_useradd -c "nobody users" -d "/dev/null" -s "/bin/false" -r -N "nobody"
-	ypkg_groupadd -r "sambashare"
-	ypkg_groupadd -r "users"
+	dogroupadd -r "nobody" -g 65534
+	douseradd -c "nobody users" -d "/dev/null" -s "/bin/false" -r -N "nobody"
+	dogroupadd -r "sambashare"
+	dogroupadd -r "users"
 	
 	# Systemd unit
 	for i in winbind.service smbd.service nmbd.service; do
@@ -27,10 +27,10 @@ pre_remove() {
 }
 
 post_remove() {
-	ypkg_userdel  "nobody"
-	ypkg_groupdel "nobody"
-	ypkg_groupdel "users"
-	ypkg_groupdel "sambashare"
+	douserdel  "nobody"
+	dogroupdel "nobody"
+	dogroupdel "users"
+	dogroupdel "sambashare"
 }
 
 post_upgrade() {

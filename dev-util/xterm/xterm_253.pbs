@@ -12,22 +12,22 @@ RDEPEND="libXft libXaw ncurses fontconfig libX11 libXmu libXt libICE freetype li
 BDEPEND=""
 
 pbs_unpack() {
-        ypkg_unpack
+        dounpack
 }
 
 pbs_config() {
 	sed -i '/v0/,+1s/new:/new:kb=^?:/' termcap 
 	echo -e '\tkbs=\\177,' >>terminfo 
-	YPB_CONFIG+="--enable-luit 
+	config+="--enable-luit 
 	             --enable-wide-chars"
-	TERMINFO=/usr/lib/terminfo ypkg_config
+	TERMINFO=/usr/lib/terminfo doconfig
 }
 
 pbs_build() {
-	ypkg_make
+	domake
 }
 
 pbs_install() {
-	ypkg_mkinstall
-	ypkg_mkinstall install-ti
+	domkinstall
+	domkinstall install-ti
 }

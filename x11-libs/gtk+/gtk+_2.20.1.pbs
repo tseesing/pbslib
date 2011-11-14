@@ -17,21 +17,21 @@ RECOMMENDED=""
 INSTALL="$N.install"
 
 pbs_unpack() {
-        ypkg_unpack
+        dounpack
 }
 
 pbs_config() {
-	ypkg_patch "$N"-2.14.3-limit-gtksignal-includes.patch
-	ypkg_patch "$N-$V$R"-darwin8.patch
-	ypkg_patch "$N-$V$R"-libpixbufloader-warning.patch
-	ypkg_patch "$N-$V$R"-gtkrange.patch
-	ypkg_patch "$N-$V$R"-gail_cell_type.patch
-	ypkg_patch "$N-$V$R"-GtkOffscreenWindow.patch 
-	ypkg_patch "$N-$V$R"-libpng-fix.patch
+	dopatch "$N"-2.14.3-limit-gtksignal-includes.patch
+	dopatch "$N-$V$R"-darwin8.patch
+	dopatch "$N-$V$R"-libpixbufloader-warning.patch
+	dopatch "$N-$V$R"-gtkrange.patch
+	dopatch "$N-$V$R"-gail_cell_type.patch
+	dopatch "$N-$V$R"-GtkOffscreenWindow.patch 
+	dopatch "$N-$V$R"-libpng-fix.patch
 	# Regenerate ./configure:
 	libtoolize --force
 	autoreconf -vif
-	YPB_CONFIG+=" --libdir=/usr/lib 
+	config+=" --libdir=/usr/lib 
 		      --with-libjpeg 
 		      --without-libjasper 
 		      --with-libtiff 
@@ -42,23 +42,23 @@ pbs_config() {
 		      --with-gdktarget=x11 
 		      --with-xinput "
 		      #--disable-cups \
-	ypkg_config
+	doconfig
 }
 
 pbs_build() {
-	ypkg_make
+	domake
 }
 
 pbs_install() {
-	ypkg_mkinstall RUN_QUERY_IMMODULES_TEST=false RUN_QUERY_LOADER_TEST=false
+	domkinstall RUN_QUERY_IMMODULES_TEST=false RUN_QUERY_LOADER_TEST=false
 	# Install wrappers for the binaries:
-	ypkg_docp "$FILES_PATH"/files/{update-gdk-pixbuf-loaders,update-gtk-immodules}  "$YPPATH_DEST"/usr/bin/
-	chmod 0755 "$YPPATH_DEST"/usr/bin/update-*
+	docp $filesdir/{update-gdk-pixbuf-loaders,update-gtk-immodules}  "$destdir"/usr/bin/
+	chmod 0755 "$destdir"/usr/bin/update-*
 	# I'm almost inclined to think this stuff is obsolete but I don't know for sure.
 	# I do know that leaving it in doesn't hurt (aside from a few wasted bytes, but
 	# probably less than the comments here waste ;-)
-	ypkg_docp "$FILES_PATH"/files/profile.d/*  "$YPPATH_DEST"/etc/profile.d
-	chmod 755 "$YPPATH_DEST"/etc/profile.d/*
-	ypkg_docp docs/faq/html/*      "$YPPATH_DEST"/usr/share/doc/"$N"/"$V$R"/faq
-	ypkg_docp docs/tutorial/html/* "$YPPATH_DEST"/usr/share/doc/"$N"/"$V$R"/tutorial
+	docp $filesdir/profile.d/*  "$destdir"/etc/profile.d
+	chmod 755 "$destdir"/etc/profile.d/*
+	docp docs/faq/html/*      "$destdir"/usr/share/doc/"$N"/"$V$R"/faq
+	docp docs/tutorial/html/* "$destdir"/usr/share/doc/"$N"/"$V$R"/tutorial
 }

@@ -16,28 +16,28 @@ RECOMMENDED=""
 INSTALL="$N.install"
 
 pbs_unpack() {
-        ypkg_unpack
+        dounpack
 }
 
 pbs_config() {
 	# A known issue with the uname program from this package is that the -p switch always returns unknown.
-	ypkg_patch coreutils-8.12-uname-1.patch
-	YPB_CONFIG+="--enable-no-install-program=kill,uptime"
-	ypkg_config
+	dopatch coreutils-8.12-uname-1.patch
+	config+="--enable-no-install-program=kill,uptime"
+	doconfig
 }
 
 pbs_build() {
-	ypkg_make
+	domake
 }
 
 pbs_install() {
-	ypkg_mkinstall
+	domkinstall
 	# For FHS
-	cd "$YPPATH_DEST"
-	ypkg_domv usr/bin/{cat,chgrp,chmod,chown,cp,date,dd,df,echo} bin
-	ypkg_domv usr/bin/{false,ln,ls,mkdir,mknod,mv,pwd,rm}        bin
-	ypkg_domv usr/bin/{rmdir,stty,sync,true,uname}  	     bin
-	ypkg_domv usr/bin/chroot 				     usr/sbin
-	ypkg_domv usr/bin/{head,sleep,nice} 	                     bin
+	cd "$destdir"
+	domv usr/bin/{cat,chgrp,chmod,chown,cp,date,dd,df,echo} bin
+	domv usr/bin/{false,ln,ls,mkdir,mknod,mv,pwd,rm}        bin
+	domv usr/bin/{rmdir,stty,sync,true,uname}  	     bin
+	domv usr/bin/chroot 				     usr/sbin
+	domv usr/bin/{head,sleep,nice} 	                     bin
 }
 

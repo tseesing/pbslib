@@ -13,13 +13,13 @@ RECOMMENDED=""
 NOTES="http://wiki.linuxfromscratch.org/blfs/wiki/libproxy"
 
 pbs_unpack() {
-        ypkg_unpack
+        dounpack
 }
 
 pbs_config() {
 	
-	YPB_CONFIG+=" --prefix=/usr --with-networkmanager=no "
-	ypkg_config
+	config+=" --prefix=/usr --with-networkmanager=no "
+	doconfig
 }
 
 pbs_build() {
@@ -27,5 +27,5 @@ pbs_build() {
 }
 
 pbs_install() {
-	ypkg_mkinstall
+	domkinstall
 }

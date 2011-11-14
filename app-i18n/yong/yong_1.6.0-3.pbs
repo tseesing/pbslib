@@ -15,19 +15,19 @@ RECOMMENDED=""
 CONFLICT=""
 
 pbs_unpack() {
-        ypkg_unpack
+        dounpack
 }
 
 pbs_install() {
-	ypkg_docp * "$YPPATH_DEST"/usr/share/"$N"
-	cd "$YPPATH_DEST"
-	ypkg_dodesktop "$N.desktop" 
-	ypkg_docp_rename usr/share/"$N"/skin/logo.png  usr/share/pixmaps/"$N".png
-	ypkg_docp "$FILES_PATH"/files/mb/*     usr/share/"$N"/mb
-	ypkg_docp "$FILES_PATH"/files/skin/*   usr/share/"$N"/skin
-	ypkg_docp "$FILES_PATH"/files/{yong.ini,yong.xml} usr/share/"$N"
-	ypkg_docp usr/share/"$N"/yong.xml      usr/share/ibus/component
-	ypkg_doln /usr/share/"$N"/yong         usr/bin/yong
-	ypkg_doln /usr/share/"$N"/yong-config  usr/bin/yong-config
-	ypkg_doln /usr/share/"$N"/libl.so      usr/lib/libl.so
+	docp * "$destdir"/usr/share/"$N"
+	cd "$destdir"
+	dodesktop "$N.desktop" 
+	docp_rename usr/share/"$N"/skin/logo.png  usr/share/pixmaps/"$N".png
+	docp $filesdir/mb/*     usr/share/"$N"/mb
+	docp $filesdir/skin/*   usr/share/"$N"/skin
+	docp $filesdir/{yong.ini,yong.xml} usr/share/"$N"
+	docp usr/share/"$N"/yong.xml      usr/share/ibus/component
+	doln /usr/share/"$N"/yong         usr/bin/yong
+	doln /usr/share/"$N"/yong-config  usr/bin/yong-config
+	doln /usr/share/"$N"/libl.so      usr/lib/libl.so
 }

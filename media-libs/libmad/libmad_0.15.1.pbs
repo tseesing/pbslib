@@ -14,16 +14,16 @@ BDEPEND=""
 RECOMMENDED=""
 
 pbs_unpack() {
-        ypkg_unpack
+        dounpack
 }
 
 pbs_config() {
-	ypkg_patch "$N-$V$R"-fforce-2.patch
-	ypkg_config
+	dopatch "$N-$V$R"-fforce-2.patch
+	doconfig
 }
 
 pbs_build() {
-	ypkg_make
+	domake
 }
 
 pbs_install() {
@@ -38,8 +38,8 @@ Version: 0.15.1b
 Libs: -L${libdir} -lmad
 Cflags: -I${includedir}
 EOF
-	ypkg_mkinstall
-	ypkg_docp mad.pc "$YPPATH_DEST"/usr/lib/pkgconfig
-	ypkg_dodoc COPYING INSTALL README 
+	domkinstall
+	docp mad.pc "$destdir"/usr/lib/pkgconfig
+	dodoc COPYING INSTALL README 
 }
 

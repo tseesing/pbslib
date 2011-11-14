@@ -14,22 +14,22 @@ BDEPEND=""
 RECOMMENDED="" 
 
 pbs_unpack() {
-        ypkg_unpack
+        dounpack
 }
 
 pbs_config() {
-	YPB_CONFIG+="--enable-introspection=no 
+	config+="--enable-introspection=no 
 	             --enable-silent-rules"
-	ypkg_config
+	doconfig
 }
 
 pbs_build() {
-	ypkg_make
+	domake
 }
 
 pbs_install() {
-	ypkg_mkinstall
-	cd "$YPPATH_DEST"/usr/include
+	domkinstall
+	cd "$destdir"/usr/include
 	ln -sf  /usr/include/unique-1.0/unique unique
 }
 

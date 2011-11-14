@@ -14,22 +14,22 @@ BDEPEND=""
 RECOMMENDED=""
 
 pbs_unpack() {
-        ypkg_unpack
+        dounpack
 }
 
 pbs_config() {
-	YPB_CONFIG+=""
-	LIBS=-lm ypkg_config
+	config+=""
+	LIBS=-lm doconfig
 }
 
 pbs_build() {
 	sed -i "33i\#include <string.h>" examples/cpp/encode/file/main.cpp
-	ypkg_make
+	domake
 }
 
 pbs_install() {
-	ypkg_mkinstall
-	sed -i '/#include "config.h"/d' "$YPPATH_DEST"/usr/include/FLAC/export.h
-	ypkg_dodoc README
+	domkinstall
+	sed -i '/#include "config.h"/d' "$destdir"/usr/include/FLAC/export.h
+	dodoc README
 }
 

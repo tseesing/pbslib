@@ -20,10 +20,10 @@ INSTALL="$N.install"
 NOTES=""
 
 pbs_unpack() {
-        ypkg_unpack
+        dounpack
 }
 
 pbs_install() {
-	ypkg_docp data/*  "$YPPATH_DEST"
-	sed -i 's/\.\./\/usr\/share/g' "$YPPATH_DEST"/usr/share/applications/skychart.desktop
+	docp data/*  "$destdir"
+	sed -i 's/\.\./\/usr\/share/g' "$destdir"/usr/share/applications/skychart.desktop
 }

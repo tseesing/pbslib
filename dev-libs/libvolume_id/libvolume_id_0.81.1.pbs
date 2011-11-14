@@ -14,7 +14,7 @@ BDEPEND=""
 RECOMMENDED=""
 
 pbs_unpack() {
-        ypkg_unpack
+        dounpack
 }
 
 pbs_build() {
@@ -22,9 +22,9 @@ pbs_build() {
 }
 
 pbs_install() {
-	ypkg_docp libvolume_id.pc    "$YPPATH_DEST"/usr/share/pkgconfig
-	ypkg_docp libvolume_id.h     "$YPPATH_DEST"/usr/include
-	ypkg_docp libvolume_id.so.0  "$YPPATH_DEST"/usr/lib
-	ypkg_doln /usr/lib/libvolume_id.so.0  "$YPPATH_DEST"/usr/lib/libvolume_id.so
+	docp libvolume_id.pc    "$destdir"/usr/share/pkgconfig
+	docp libvolume_id.h     "$destdir"/usr/include
+	docp libvolume_id.so.0  "$destdir"/usr/lib
+	doln /usr/lib/libvolume_id.so.0  "$destdir"/usr/lib/libvolume_id.so
 }
 

@@ -19,20 +19,20 @@ CONFLICT=""
 NOTES=""
 
 pbs_unpack() {
-        ypkg_unpack
+        dounpack
 }
 
 pbs_config() {
-	YPB_CONFIG+=""
-	ypkg_config
+	config+=""
+	doconfig
 }
 
 pbs_build() {
-	ypkg_make
+	domake
 }
 
 pbs_install() {
-	#make DESTDIR="$YPPATH_DEST" install
-	ypkg_mkinstall
-	rm -rf "$YPPATH_DEST"/tmp  || return 0
+	#make DESTDIR="$destdir" install
+	domkinstall
+	rm -rf "$destdir"/tmp  || return 0
 }

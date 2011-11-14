@@ -16,15 +16,15 @@ RECOMMENDED=""
 INSTALL="$N.install"
 
 pbs_unpack() {
-        ypkg_unpack
+        dounpack
 }
 
 pbs_install() {
 	tar xf "$YPPATH_SOURCE"/"$N"-doc-"$V".tar.bz2 --strip-components=1
-	ypkg_docp VERSION common eclipse extensions fo highlighting html  \
+	docp VERSION common eclipse extensions fo highlighting html  \
 	          htmlhelp images javahelp lib manpages params profiling  \
 	  	  roundtrip slides template tools website xhtml xhtml-1_1 \
-		"$YPPATH_DEST"/usr/share/xml/docbook/xsl-stylesheets-"$V"
-	ypkg_dodoc README
+		"$destdir"/usr/share/xml/docbook/xsl-stylesheets-"$V"
+	dodoc README
 }
 

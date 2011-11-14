@@ -16,52 +16,52 @@ RECOMMENDED=""
 INSTALL="$N.install"
 
 pbs_unpack() {
-        ypkg_unpack
+        dounpack
 }
 
 pbs_config() {
 	# use an arch-specific config directory so that 32bit and 64bit versions
 	# dont clash on multilib systems
-	ypkg_patch "$N"-2.21.3-multilib.patch
+	dopatch "$N"-2.21.3-multilib.patch
 
 	# Don't break inclusion of gtkclist.h, upstream bug 536767
-	ypkg_patch "$N"-2.14.3-limit-gtksignal-includes.patch
+	dopatch "$N"-2.14.3-limit-gtksignal-includes.patch
 
         # Create symlinks to old icons until apps are ported, bug #339319
-	ypkg_patch "$N"-2.24.4-old-icons.patch
+	dopatch "$N"-2.24.4-old-icons.patch
 	
 	# fix building with gir #372953
-	ypkg_patch "$N"-2.24.5-darwin-quartz-introspection.patch
+	dopatch "$N"-2.24.5-darwin-quartz-introspection.patch
 
-	YPB_CONFIG+=" --libdir=/usr/lib 
+	config+=" --libdir=/usr/lib 
 		      --disable-xinerama 
 		      --disable-papi 
 		      --with-gdktarget=x11 
 		      --with-xinput"
-	ypkg_config
+	doconfig
 }
 
 pbs_build() {
-	ypkg_make
+	domake
 }
 
 pbs_install() {
-	ypkg_mkinstall RUN_QUERY_IMMODULES_TEST=false RUN_QUERY_LOADER_TEST=false
+	domkinstall RUN_QUERY_IMMODULES_TEST=false RUN_QUERY_LOADER_TEST=false
 
 	# Install wrappers for the binaries:
-	ypkg_docp "$FILES_PATH"/files/{update-gdk-pixbuf-loaders,update-gtk-immodules}  "$YPPATH_DEST"/usr/bin/
-	chmod 0755 "$YPPATH_DEST"/usr/bin/update-*
+	docp $filesdir/{update-gdk-pixbuf-loaders,update-gtk-immodules}  "$destdir"/usr/bin/
+	chmod 0755 "$destdir"/usr/bin/update-*
 
 	# I'm almost inclined to think this stuff is obsolete but I don't know for sure.
 	# I do know that leaving it in doesn't hurt (aside from a few wasted bytes, but
 	# probably less than the comments here waste ;-)
-	ypkg_docp "$FILES_PATH"/files/profile.d/*  "$YPPATH_DEST"/etc/profile.d
-	chmod 755 "$YPPATH_DEST"/etc/profile.d/*
+	docp $filesdir/profile.d/*  "$destdir"/etc/profile.d
+	chmod 755 "$destdir"/etc/profile.d/*
 
 	# 
-	cd "$YPPATH_DEST"
-	ypkg_doln /usr/include/gtk-2.0/gtk             usr/include/gtk
-	ypkg_doln /usr/include/gtk-2.0/gdk             usr/include/gdk
-	ypkg_doln /usr/lib/gtk-2.0/include/gdkconfig.h usr/include/gdkconfig.h
+	cd "$destdir"
+	doln /usr/include/gtk-2.0/gtk             usr/include/gtk
+	doln /usr/include/gtk-2.0/gdk             usr/include/gdk
+	doln /usr/lib/gtk-2.0/include/gdkconfig.h usr/include/gdkconfig.h
 }
 

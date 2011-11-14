@@ -13,21 +13,21 @@ RDEPEND="alsa-lib glibc libsamplerate ncurses"
 BDEPEND=""
 
 pbs_unpack() {
-        ypkg_unpack
+        dounpack
 }
 
 pbs_config() {
-	YPB_CONFIG+="--disable-xmlto"
-	YPB_CONFIG=${YPB_CONFIG/--enable-shared/}
-	ypkg_config
+	config+="--disable-xmlto"
+	config=${config/--enable-shared/}
+	doconfig
 }
 
 pbs_build() {
-	ypkg_make
+	domake
 }
 
 pbs_install() {
-	ypkg_mkinstall
-	ypkg_docp "$FILES_PATH"/files/alsa.conf "$YPPATH_DEST"/etc/modprobe.d
+	domkinstall
+	docp $filesdir/alsa.conf "$destdir"/etc/modprobe.d
 }
 

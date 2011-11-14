@@ -16,14 +16,14 @@ RECOMMENDED=""
 PROVIDE="flash-player-properties"
 
 pbs_unpack() {
-	ypkg_unpack
+	dounpack
 }
 
 pbs_install() {
-	ypkg_docp libflashplayer.so  "$YPPATH_DEST"/usr/lib/adobe-flashplugin
-	cd "$YPPATH_DEST"
+	docp libflashplayer.so  "$destdir"/usr/lib/adobe-flashplugin
+	cd "$destdir"
         for i in xulrunner mozilla iceape iceweasel firefox midbrowser xulrunner-addons; do
-	      ypkg_doln /usr/lib/adobe-flashplugin/libflashplayer.so usr/lib/"${i}"/plugins/libflashplayer.so
+	      doln /usr/lib/adobe-flashplugin/libflashplayer.so usr/lib/"${i}"/plugins/libflashplayer.so
 	done
 }
 
@@ -33,7 +33,7 @@ flash-player-properties_install () {
 	RECOMMENDED="adobe-flashplugin"
 	INSTALL="flash-player-properties.install"
 
-	ypkg_docp ../usr "$YPPATH_DEST"/
-	mkdir -p "$YPPATH_DEST"/etc/adobe
+	docp ../usr "$destdir"/
+	mkdir -p "$destdir"/etc/adobe
 }
 

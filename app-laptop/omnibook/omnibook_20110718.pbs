@@ -12,11 +12,11 @@ SRC_URI="git://omnibook.git.sourceforge.net/gitroot/omnibook/omnibook"
 PROVIDE="$N-source $N-driver"
 
 pbs_unpack() {
-        ypkg_unpack
+        dounpack
 }
 
 pbs_config() {
-	ypkg_patch ylmfos_makefile.patch
+	dopatch ylmfos_makefile.patch
 }
 
 omnibook-source_install() {
@@ -25,7 +25,7 @@ omnibook-source_install() {
 	INSTALL="$N.install"
 	OPINION="nodev"
 
-	ypkg_dosrc *
+	dosrc *
 }
 
 omnibook-driver_install() {
@@ -34,7 +34,7 @@ omnibook-driver_install() {
 	INSTALL="$N.install"
 
 	unset ARCH
-	ypkg_make
-	ypkg_mkinstall
+	domake
+	domkinstall
 }
 

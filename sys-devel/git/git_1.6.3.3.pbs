@@ -13,19 +13,19 @@ BDEPEND=""
 INSTALL="$N.install"
 
 pbs_unpack() {
-        ypkg_unpack
+        dounpack
 }
 
 pbs_config() {
-	YPB_CONFIG+=" --sysconfdir=/etc --libexecdir=/usr/lib/git "
-	ypkg_config
+	config+=" --sysconfdir=/etc --libexecdir=/usr/lib/git "
+	doconfig
 }
 
 pbs_build() {
-	ypkg_make
+	domake
 }
 
 pbs_install() {
-	ypkg_mkinstall
+	domkinstall
 }
 

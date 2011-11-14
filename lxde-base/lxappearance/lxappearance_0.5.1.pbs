@@ -13,19 +13,19 @@ RDEPEND="atk cairo expat fontconfig freetype gcc gdk-pixbuf glib2 glibc gtk+ lib
 BDEPEND=""
 
 pbs_unpack() {
-	ypkg_unpack
+	dounpack
 }
 
 pbs_config() {
-	YPB_CONFIG+="--enable-man"
-	ypkg_config
+	config+="--enable-man"
+	doconfig
 }
 
 pbs_build() {
-	ypkg_make
+	domake
 }
 
 pbs_install() {
-	ypkg_mkinstall
+	domkinstall
 }
 

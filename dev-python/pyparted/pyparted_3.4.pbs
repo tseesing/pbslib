@@ -14,19 +14,19 @@ BDEPEND="decorator"
 RECOMMENDED=""
 
 pbs_unpack() {
-        ypkg_unpack
+        dounpack
 }
 
 pbs_config() {
 	sed -i -e 's/-avoid-version/& -shared /' src/Makefile.am 
-	ypkg_config
+	doconfig
 }
 
 pbs_build() {
-	ypkg_make
+	domake
 }
 
 pbs_install() {
-	ypkg_mkinstall
-	ypkg_dodoc ChangeLog NEWS README TODO
+	domkinstall
+	dodoc ChangeLog NEWS README TODO
 }

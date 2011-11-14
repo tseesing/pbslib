@@ -3,10 +3,10 @@
 files="texinfo-3.gz texinfo-2.gz texinfo-1.gz texinfo.gz info-stnd.info.gz info.info.gz"
 
 post_install() {
-        ypkg_install_info $files
+        doinstall_info $files
 }       
 
 pre_remove() {
-        ypkg_remove_info $files
+        doremove_info $files
 }
 

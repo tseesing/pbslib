@@ -11,25 +11,25 @@ RDEPEND="alsa-lib glibc ncurses"
 BDEPEND=""
 
 pbs_unpack() {
-        ypkg_unpack
+        dounpack
 }
 
 pbs_config() {
-	YPB_CONFIG+="--disable-xmlto"
-	ypkg_config
+	config+="--disable-xmlto"
+	doconfig
 }
 
 pbs_build() {
-	ypkg_make
+	domake
 }
 
 pbs_install() {
-	ypkg_mkinstall
-	ypkg_dodoc ChangeLog COPYING INSTALL README
-	#ypkg_doinit "$FILES_PATH"/files/alsa-utils
-	#cd "$YPPATH_DEST"
-	#ypkg_doln /etc/init.d/"$N"  etc/rc3.d/S43"$N"
-	#ypkg_doln /etc/init.d/"$N"  etc/rc3.d/K43"$N"
-	cd "$YPPATH_DEST"
-	ypkg_docp "$FILES_PATH"/files/systemd/*  lib/systemd/system
+	domkinstall
+	dodoc ChangeLog COPYING INSTALL README
+	#doinit $filesdir/alsa-utils
+	#cd "$destdir"
+	#doln /etc/init.d/"$N"  etc/rc3.d/S43"$N"
+	#doln /etc/init.d/"$N"  etc/rc3.d/K43"$N"
+	cd "$destdir"
+	docp $filesdir/systemd/*  lib/systemd/system
 }

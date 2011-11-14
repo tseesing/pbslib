@@ -17,9 +17,9 @@ RECOMMENDED=""
 INSTALL="$N.install"
 
 pbs_unpack() {
-	ypkg_unpack
+	dounpack
 }
 
 pbs_install() {
-	ypkg_docp src/* "$YPPATH_DEST"
+	docp src/* "$destdir"
 }

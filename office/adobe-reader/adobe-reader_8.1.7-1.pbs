@@ -17,11 +17,11 @@ RECOMMENDED=""
 NOTES=""
 
 pbs_unpack() {
-        ypkg_unpack
+        dounpack
 }
 
 pbs_install() {
-	./INSTALL --install_path="$YPPATH_DEST"/opt
-	cd "$YPPATH_DEST"
-	ypkg_dodesktop "adobe-reader.desktop" "adobe-reader.png"
+	./INSTALL --install_path="$destdir"/opt
+	cd "$destdir"
+	dodesktop "adobe-reader.desktop" "adobe-reader.png"
 }

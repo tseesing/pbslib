@@ -15,10 +15,10 @@ RECOMMENDED=""
 NOTES=""
 
 pbs_unpack() {
-        ypkg_unpack
+        dounpack
 }
 
 pbs_install() {
 	
-	cp -a * $YPPATH_DEST
+	cp -a * $destdir
 }

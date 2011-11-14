@@ -18,7 +18,7 @@ CONFLICT="grub"
 INSTALL="$N.install"
 
 pbs_unpack() {
-        ypkg_unpack
+        dounpack
 }
 
 pbs_config() {
@@ -29,17 +29,17 @@ pbs_config() {
 		  ylmfos_add-nomodeset-entry.patch
 		  ylmfos_l18n.patch"
 	for patch in $patches; do
-		ypkg_patch "$patch-$V"
+		dopatch "$patch-$V"
 	done
 	
-	YPB_CONFIG+="--enable-grub-mkfont --enable-nls"
-	YPB_CONFIG=${YPB_CONFIG/--enable-shared/}
+	config+="--enable-grub-mkfont --enable-nls"
+	config=${config/--enable-shared/}
 	sed -i configure.ac -e "s/^AC_INIT.*/AC_INIT(\[GRUB\],\[$V$R\],\[bug-grub@gnu.org\])/"
-	ypkg_config
+	doconfig
 }
 
 pbs_build() {
-	ypkg_make
+	domake
 
 	# FIXME
 	cd po/
@@ -50,17 +50,17 @@ pbs_build() {
 }
 
 pbs_install() {
-	ypkg_mkinstall
+	domkinstall
 
 	# FIXME
 	cd po
-	ypkg_mkinstall
+	domkinstall
 
-	cd "$YPPATH_DEST"
-	ypkg_docp "$FILES_PATH"/files/{update-grub2,update-grub,update-grub-gfxpayload}  usr/sbin/
-	ypkg_docp "$FILES_PATH"/files/grub  etc/default/
-	ypkg_docp "$FILES_PATH"/files/05_debian_theme  etc/grub.d/
-	ypkg_docp "$FILES_PATH"/files/00_header usr/share/grub-gfxpayload-lists/blacklist/
+	cd "$destdir"
+	docp $filesdir/{update-grub2,update-grub,update-grub-gfxpayload}  usr/sbin/
+	docp $filesdir/grub  etc/default/
+	docp $filesdir/05_debian_theme  etc/grub.d/
+	docp $filesdir/00_header usr/share/grub-gfxpayload-lists/blacklist/
 	mv usr/sbin/grub-install{,.real}
 }
 

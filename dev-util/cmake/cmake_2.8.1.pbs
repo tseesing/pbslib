@@ -11,21 +11,21 @@ RDEPEND="glibc ncurses gcc"
 BDEPEND=" jdk"
 
 pbs_unpack() {
-        ypkg_unpack
+        dounpack
 }
 
 pbs_config() {
 	#./bootstrap --prefix=/usr --docdir=/share/doc/"$N-$V$R" --mandir=/share/man
-	YPB_CONFIG+="--prefix=/usr
+	config+="--prefix=/usr
 	             --docdir=/share/doc/"$N-$V$R" 
 		     --mandir=/share/man"
-	ypkg_config
+	doconfig
 }
 
 pbs_build() {
-	ypkg_make
+	domake
 }
 
 pbs_install() {
-	ypkg_mkinstall
+	domkinstall
 }

@@ -12,19 +12,19 @@ RDEPEND=""
 BDEPEND=""
 
 pbs_unpack() {
-        ypkg_unpack
+        dounpack
 }
 
 pbs_config() {
 	
-	patch -p1 -i $FILES_PATH/files/"$N-$V$R"-fix-ca-translation.patch
-	ypkg_config
+	patch -p1 -i $filesdir/"$N-$V$R"-fix-ca-translation.patch
+	doconfig
 }
 
 pbs_build() {
-	ypkg_make
+	domake
 }
 
 pbs_install() {
-	ypkg_mkinstall
+	domkinstall
 }

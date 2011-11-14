@@ -14,21 +14,21 @@ BDEPEND=""
 RECOMMENDED=""
 
 pbs_unpack() {
-        ypkg_unpack
+        dounpack
 }
 
 pbs_config() {
-	ypkg_patch 05_all_readline-headers.patch
-	ypkg_patch 20_all_gdb-tdep-opcode-include-workaround.patch
-	ypkg_patch 35_all_gdb-6.3-security-errata-20050610.patch
-	ypkg_patch 80_all_gdb-6.5-dwarf-stack-overflow.patch
-	ypkg_config
+	dopatch 05_all_readline-headers.patch
+	dopatch 20_all_gdb-tdep-opcode-include-workaround.patch
+	dopatch 35_all_gdb-6.3-security-errata-20050610.patch
+	dopatch 80_all_gdb-6.5-dwarf-stack-overflow.patch
+	doconfig
 }
 
 pbs_build() {
-	ypkg_make
+	domake
 }
 
 pbs_install() {
-	ypkg_mkinstall
+	domkinstall
 }

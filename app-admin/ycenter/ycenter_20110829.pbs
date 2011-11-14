@@ -17,27 +17,27 @@ RECOMMENDED="ypkg"
 INSTALL="$N.install"
 
 pbs_unpack() {
-	ypkg_unpack
+	dounpack
 }
 
 pbs_config() {
-	ypkg_config
+	doconfig
 }
 
 pbs_build() {
-	ypkg_make
+	domake
 }
 
 pbs_install() {
-	ypkg_mkinstall
+	domkinstall
 	
 	#
-	ypkg_dounit "$N".service
+	dounit "$N".service
 
 	#
-	cd "$YPPATH_DEST"
+	cd "$destdir"
 	
 	# for ymenu
-	ypkg_docp usr/share/icons/hicolor/24x24/apps/ycenter.png  usr/share/icons/titans/24x24/categories/
+	docp usr/share/icons/hicolor/24x24/apps/ycenter.png  usr/share/icons/titans/24x24/categories/
 }
 

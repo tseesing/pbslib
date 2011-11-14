@@ -15,17 +15,17 @@ BDEPEND=""
 INSTALL="$N.install"
 
 pbs_unpack() {
-        ypkg_unpack
+        dounpack
 }
 
 pbs_config() {
-	YPB_CONFIG+="--disable-python"
-	ypkg_config
+	config+="--disable-python"
+	doconfig
 }
 
 pbs_install() {
-	ypkg_mkinstall
-	cd "$YPPATH_DEST"
+	domkinstall
+	cd "$destdir"
 	mkdir -p etc/xg_launch/image
 	echo "+ Gimp%/usr/share/icons/hicolor/32x32/apps/gimp.png% Exec gimp" >etc/xg_launch/image/C10gimp 
 }

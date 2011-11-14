@@ -18,19 +18,19 @@ INSTALL="$N.install"
 NOTES="Users add themselves to the "netdev" group to use networkmanager."
 
 pbs_unpack() {
-        ypkg_unpack
+        dounpack
 }
 
 pbs_config() {
-	ypkg_patch ylmf_nm-applet.conf.patch
-	ypkg_config
+	dopatch ylmf_nm-applet.conf.patch
+	doconfig
 }
 
 pbs_build() {
-	ypkg_make
+	domake
 }
 
 pbs_install() {
-	ypkg_mkinstall
+	domkinstall
 }
 

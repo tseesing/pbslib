@@ -16,11 +16,11 @@ RECOMMENDED=""
 CONFLICT=""
 
 pbs_unpack() {
-        ypkg_unpack
+        dounpack
 }
 
 pbs_install() {
-	ypkg_docp * "$YPPATH_DEST"
-	ypkg_docp "$FILES_PATH"/files/migumusic "$YPPATH_DEST"/usr/bin/
-	chmod +x "$YPPATH_DEST"/usr/bin/migumusic
+	docp * "$destdir"
+	docp $filesdir/migumusic "$destdir"/usr/bin/
+	chmod +x "$destdir"/usr/bin/migumusic
 }

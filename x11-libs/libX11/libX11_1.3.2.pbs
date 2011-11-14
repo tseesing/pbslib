@@ -13,26 +13,26 @@ BDEPEND=" x11-libs/xtrans"
 
 pbs_unpack()
 {
-        ypkg_unpack
+        dounpack
 }
 
 pbs_config()
 {
 	
-	YPB_CONFIG+=" --sysconfdir=/etc 
+	config+=" --sysconfdir=/etc 
 		      --mandir=/usr/share/man 
 		      --localstatedir=/var
 		      --disable-static
 		      --with-xcb=yes "
-	ypkg_config
+	doconfig
 }
 
 pbs_build()
 {
-	ypkg_make
+	domake
 }
 
 pbs_install()
 {
-	ypkg_mkinstall
+	domkinstall
 }

@@ -1,5 +1,5 @@
 . /usr/lib/ybs/funcs
 
 post_install() {
-	ypkg_dofont /usr/share/fonts/truetype/ttf-dejavu
+	dofont /usr/share/fonts/truetype/ttf-dejavu
 }

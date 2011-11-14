@@ -33,9 +33,9 @@ pbs_unpack() {
 
 pbs_config() {
 	# i915,i965 disable
-	YPB_CONFIG+="--with-gallium-drivers=nouveau,r300,r600,svga,swrast
+	config+="--with-gallium-drivers=nouveau,r300,r600,svga,swrast
 		     --enable-xcb"
-	ypkg_config
+	doconfig
 }
 
 pbs_build() {
@@ -43,8 +43,8 @@ pbs_build() {
 }
 
 pbs_install() {
-	ypkg_mkinstall
-	cd "$YPPATH_DEST"/usr/lib/
+	domkinstall
+	cd "$destdir"/usr/lib/
 	
 	# Backup /usr/lib/libGL.so.1.2 which would be overrided by ati-graphic-driver and so packages.
 	mv libGL.so.1.2 libGL.so.1.2-pkg."$N"

@@ -17,28 +17,28 @@ INSTALL="$N.install"
 NOTES="Please add your usrers to /etc/sudoer, using visudo"
 
 pbs_unpack() {
-        ypkg_unpack
+        dounpack
 }
 
 pbs_config() {
-	ypkg_patch member-of-wheel-run-sudo.patch
-	YPB_CONFIG+=" --libexecdir=/usr/lib 
+	dopatch member-of-wheel-run-sudo.patch
+	config+=" --libexecdir=/usr/lib 
 		      --with-ignore-dot 
 	              --with-all-insults 
 		      --enable-shell-sets-home 
 		      --with-logfac=auth 
 		      --without-pam 
 		      --without-sendmail"
-	ypkg_config
+	doconfig
 }
 
 pbs_build() {
-	ypkg_make
+	domake
 }
 
 pbs_install() {
-	ypkg_mkinstall
-	cd "$YPPATH_DEST"
+	domkinstall
+	cd "$destdir"
 	chmod 755 usr/lib/sudoers.so 
 	chmod 755 var/lib/
 }

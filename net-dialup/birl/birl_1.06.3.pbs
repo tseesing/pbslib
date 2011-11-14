@@ -14,10 +14,10 @@ BDEPEND=""
 INSTALL="$N.install"
 
 pbs_unpack() {
-        ypkg_unpack
+        dounpack
 }
 
 pbs_install() {
-	ypkg_docp "$FILES_PATH"/files/{opt,usr} "$YPPATH_DEST"/
+	docp $filesdir/{opt,usr} "$destdir"/
 }
 

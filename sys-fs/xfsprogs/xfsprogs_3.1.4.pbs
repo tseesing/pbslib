@@ -14,20 +14,20 @@ BDEPEND=""
 RECOMMENDED=""
 
 pbs_unpack() {
-        ypkg_unpack
+        dounpack
 }
 
 pbs_config() {
 	export DEBUG=-DNDEBUG
-	YPB_CONFIG+="--enable-gettext"
-	ypkg_config
+	config+="--enable-gettext"
+	doconfig
 }
 
 pbs_build() {
-	ypkg_make
+	domake
 }
 
 pbs_install() {
-	make DIST_ROOT="$YPPATH_DEST" install install-dev
+	make DIST_ROOT="$destdir" install install-dev
 }
 

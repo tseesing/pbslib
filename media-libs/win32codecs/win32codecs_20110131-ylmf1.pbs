@@ -14,12 +14,12 @@ RDEPEND="glibc"
 BDEPEND=""
 
 pbs_unpack() {
-        ypkg_unpack
+        dounpack
 }
 
 pbs_install() {
-	ypkg_docp * "$YPPATH_DEST"/usr/lib/win32
+	docp * "$destdir"/usr/lib/win32
 	# DirectShow codec drvc.dll.
-	ypkg_docp "$FILES_PATH"/files/drvc.dll  "$YPPATH_DEST"/usr/lib/win32
+	docp $filesdir/drvc.dll  "$destdir"/usr/lib/win32
 }
 

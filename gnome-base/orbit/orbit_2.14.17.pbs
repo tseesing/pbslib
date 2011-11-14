@@ -12,20 +12,20 @@ RDEPEND=""
 BDEPEND=" libIDL"
 
 pbs_unpack() {
-        ypkg_unpack
+        dounpack
 	mv ORBit2-$V$R  "$N-$V$R"
 }
 
 pbs_config() {
 	
-	YPB_CONFIG+="--prefix=/usr --sysconfdir=/etc/gnome/2.28.2"
-	ypkg_config
+	config+="--prefix=/usr --sysconfdir=/etc/gnome/2.28.2"
+	doconfig
 }
 
 pbs_build() {
-	ypkg_make
+	domake
 }
 
 pbs_install() {
-	ypkg_mkinstall
+	domkinstall
 }

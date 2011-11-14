@@ -21,20 +21,20 @@ CONFLICT="ghostscript"
 NOTES=""
 
 pbs_unpack() {
-        ypkg_unpack
+        dounpack
 }
 
 pbs_config() {
 	#The following causes -fPIC to be passed to the compiler when building shared libraries:
 	#sed -i "s/CFLAGS='/&-fPIC /g" base/unix-dll.mak
-	ypkg_config
+	doconfig
 }
 
 pbs_build() {
-	ypkg_make so all
+	domake so all
 }
 
 pbs_install() {
-	ypkg_mkinstall soinstall
+	domkinstall soinstall
 }
 

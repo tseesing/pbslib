@@ -14,23 +14,23 @@ BDEPEND=""
 RECOMMENDED="pywebkitgtk dosfstools jfsutils ntfsprogs e2fsprogs reiserfsprogs xfsprogs"
 
 pbs_unpack() {
-        ypkg_unpack
+        dounpack
 }
 
 pbs_config() {
-	ypkg_config
+	doconfig
 }
 
 pbs_build() {
-	ypkg_make
+	domake
 }
 
 pbs_install() {
-	ypkg_mkinstall
-	cd "$YPPATH_DEST"
-	ypkg_docp "$FILES_PATH"/files/installbg.png  usr/share/"$N"
-	ypkg_docp "$FILES_PATH"/files/"$N" etc/init.d
-	ypkg_dounit "$N".service
-	ypkg_docp "$FILES_PATH"/files/{pre_install,post_install} usr/share/"$N"
+	domkinstall
+	cd "$destdir"
+	docp $filesdir/installbg.png  usr/share/"$N"
+	docp $filesdir/"$N" etc/init.d
+	dounit "$N".service
+	docp $filesdir/{pre_install,post_install} usr/share/"$N"
 }
 

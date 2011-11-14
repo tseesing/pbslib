@@ -20,16 +20,16 @@ This version of fwcutter works with all b43 driver versions.
 "
 
 pbs_unpack() {
-        ypkg_unpack
+        dounpack
 }
 
 pbs_build() {
-	ypkg_make
+	domake
 }
 
 pbs_install() {
-	ypkg_docp b43-fwcutter "$YPPATH_DEST"/usr/bin
-	ypkg_doman b43-fwcutter.1 
+	docp b43-fwcutter "$destdir"/usr/bin
+	doman b43-fwcutter.1 
 }
 
 

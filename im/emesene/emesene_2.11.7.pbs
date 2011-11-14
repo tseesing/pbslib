@@ -25,22 +25,22 @@ OPTIONAL="gnome-python-extras: spell-check plugin
 INSTALL="$N.install"
 
 pbs_unpack() {
-        ypkg_unpack
+        dounpack
 }
 
 pbs_install() {
 	# install files
-	export PYTHONPATH=""$YPPATH_DEST"/usr/lib/python2.6/site-packages/"
-	install -d "$YPPATH_DEST"/usr/lib/python2.6/site-packages/
-	python setup.py install --prefix="$YPPATH_DEST"/usr
+	export PYTHONPATH=""$destdir"/usr/lib/python2.6/site-packages/"
+	install -d "$destdir"/usr/lib/python2.6/site-packages/
+	python setup.py install --prefix="$destdir"/usr
 
 	#
-	cd "$YPPATH_DEST"
-	ypkg_domv usr/lib/python2.6/site-packages/emesene-2.0-py2.6.egg/share usr/
-	ypkg_domv usr/lib/python2.6/site-packages/emesene-2.0-py2.6.egg/emesene usr/share/
+	cd "$destdir"
+	domv usr/lib/python2.6/site-packages/emesene-2.0-py2.6.egg/share usr/
+	domv usr/lib/python2.6/site-packages/emesene-2.0-py2.6.egg/emesene usr/share/
 
 	#
-	ypkg_docp "$FILES_PATH"/files/emesene usr/bin/
+	docp $filesdir/emesene usr/bin/
 	chmod +x  usr/bin/emesene
 
 	#

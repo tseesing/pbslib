@@ -13,12 +13,12 @@ RDEPEND="expat avahi dbus zlib"
 BDEPEND=" gconf samba fuse libgphoto2 libarchive avahi gnome-keyring bluez"
 
 pbs_unpack() {
-        ypkg_unpack
+        dounpack
 }
 
 pbs_config() {
 	
-	YPB_CONFIG+=" --prefix=/usr
+	config+=" --prefix=/usr
 		      --sysconfdir=/etc
 		      --localstatedir=/var 
 	              --mandir=/usr/share/man
@@ -35,13 +35,13 @@ pbs_config() {
 		      --enable-cdda 
 		      --enable-avahi 
 		      --enable-http "
-	ypkg_config
+	doconfig
 }
 
 pbs_build() {
-	ypkg_make
+	domake
 }
 
 pbs_install() {
-	ypkg_mkinstall
+	domkinstall
 }

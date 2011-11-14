@@ -19,32 +19,32 @@ INSTALL="$N.install"
 NOTES="nobody/sambashare/users group created automatically."
 
 pbs_unpack() {
-        ypkg_unpack
+        dounpack
 }
 
 pbs_config() {
 	cd source3
-	YPB_CONFIG+=" --with-piddir=/var/run
+	config+=" --with-piddir=/var/run
 		      --with-fhs
 		      --with-cifsmount
 		      --with-pam
 		      --with-pammodulesdir=/lib/security "
-	ypkg_config
+	doconfig
 }
 
 pbs_build() {
-	ypkg_make
+	domake
 }
 
 pbs_install() {
-	ypkg_mkinstall install-everything
-	ypkg_dounit nmbd.service smbd.service winbind.service
-	ypkg_docp "$FILES_PATH"/files/smb.conf "$YPPATH_DEST"/etc/samba
-	install -d -m 1770 -g sambashare "$YPPATH_DEST"/var/lib/samba/usershares 
-	mkdir -p "$YPPATH_DEST"/lib/systemd/system/multi-user.target.wants "$YPPATH_DEST"/var/log/samba
-	cd "$YPPATH_DEST"/lib/systemd/system/multi-user.target.wants
-	ypkg_doln /lib/systemd/system/winbind.service  winbind.service
-	ypkg_doln /lib/systemd/system/smbd.service     smbd.service  
-	ypkg_doln /lib/systemd/system/nmbd.service     nmbd.service
+	domkinstall install-everything
+	dounit nmbd.service smbd.service winbind.service
+	docp $filesdir/smb.conf "$destdir"/etc/samba
+	install -d -m 1770 -g sambashare "$destdir"/var/lib/samba/usershares 
+	mkdir -p "$destdir"/lib/systemd/system/multi-user.target.wants "$destdir"/var/log/samba
+	cd "$destdir"/lib/systemd/system/multi-user.target.wants
+	doln /lib/systemd/system/winbind.service  winbind.service
+	doln /lib/systemd/system/smbd.service     smbd.service  
+	doln /lib/systemd/system/nmbd.service     nmbd.service
 }
 

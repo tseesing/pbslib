@@ -21,17 +21,17 @@ slime should start at boot level 3
 "
 
 pbs_unpack() {
-        ypkg_unpack
+        dounpack
 }
 
 pbs_build() {
-	ypkg_patch 14509-fix-keyboard-in-tty-from-which-slim-is-lauched.patch
-	ypkg_patch 15287-fix-pam-authentication-with-pam_unix2.patch
-	ypkg_patch slim-1.3.1-gcc4.4.patch
-	ypkg_make
+	dopatch 14509-fix-keyboard-in-tty-from-which-slim-is-lauched.patch
+	dopatch 15287-fix-pam-authentication-with-pam_unix2.patch
+	dopatch slim-1.3.1-gcc4.4.patch
+	domake
 }
 
 pbs_install() {
-	ypkg_mkinstall
-	ypkg_doinit "$FILES_PATH"/files/"$N"
+	domkinstall
+	doinit $filesdir/"$N"
 }

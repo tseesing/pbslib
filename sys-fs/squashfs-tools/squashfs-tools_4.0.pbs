@@ -14,23 +14,23 @@ BDEPEND=" "
 RECOMMENDED=""
 
 pbs_unpack() {
-        ypkg_unpack
+        dounpack
 }
 
 pbs_config() {
 	cd squashfs-tools
 	for i in 02_lzmasdk.patch 03_lzmasdk_static_lib.patch squashfs-tools-4.0-lzma.patch; do
-		ypkg_patch "${i}"
+		dopatch "${i}"
 	done
 	sed -i -e 's:-O2:$(CFLAGS):' -e '/-lz/s:$: $(LDFLAGS):' Makefile
 	sed -i -e 's:get_nprocs():sysconf(_SC_NPROCESSORS_ONLN):' *.c
 }
 
 pbs_build() {
-	ypkg_make
+	domake
 }
 
 pbs_install() {
-	ypkg_docp mksquashfs unsquashfs "$YPPATH_DEST"/usr/bin
-	ypkg_dodoc ../{ACKNOWLEDGEMENTS,CHANGES,COPYING,INSTALL,OLD-READMEs,PERFORMANCE.README,README,README-4.0}
+	docp mksquashfs unsquashfs "$destdir"/usr/bin
+	dodoc ../{ACKNOWLEDGEMENTS,CHANGES,COPYING,INSTALL,OLD-READMEs,PERFORMANCE.README,README,README-4.0}
 }

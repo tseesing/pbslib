@@ -14,12 +14,12 @@ RECOMMENDED=""
 BDEPEND=""
 
 pbs_unpack() {
-        ypkg_unpack
+        dounpack
 }
 
 pbs_config() {
 	 [ $ARCH == "x86_64" ] && export CFLAGS=-fPIC
-	ypkg_config
+	doconfig
 }
 
 pbs_build() {
@@ -27,13 +27,13 @@ pbs_build() {
 }
 
 pbs_install() {
-	mkdir -p "$YPPATH_DEST"/usr/lib
-	ypkg_mkinstall libdir=/usr/lib/ bindir=/usr/bin
+	mkdir -p "$destdir"/usr/lib
+	domkinstall libdir=/usr/lib/ bindir=/usr/bin
 
-	(cd "$YPPATH_DEST"/usr/lib/ && rm -f libPgm2asc.so && ln -s `echo libPgm2asc*.so` libPgm2asc.so)
-	ypkg_dodoc doc/gocr.html
+	(cd "$destdir"/usr/lib/ && rm -f libPgm2asc.so && ln -s `echo libPgm2asc*.so` libPgm2asc.so)
+	dodoc doc/gocr.html
 	for i in pgm2asc.h gocr.h; do
-		install -D -m644 src/${i} "$YPPATH_DEST"/usr/include/gocr/${i}
+		install -D -m644 src/${i} "$destdir"/usr/include/gocr/${i}
 	done
 }
 

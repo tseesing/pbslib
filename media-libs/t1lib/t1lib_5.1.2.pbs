@@ -16,13 +16,13 @@ RECOMMENDED=""
 CONFLICT=""
 
 pbs_unpack() {
-        ypkg_unpack
+        dounpack
 }
 
 pbs_config() {
-	ypkg_patch t1lib-5.1.1-parallel.patch t1lib-do-not-install-t1lib_doc.patch
-	YPB_CONFIG+=""
-	ypkg_config
+	dopatch t1lib-5.1.1-parallel.patch t1lib-do-not-install-t1lib_doc.patch
+	config+=""
+	doconfig
 }
 
 pbs_build() {
@@ -30,7 +30,7 @@ pbs_build() {
 }
 
 pbs_install() {
-	ypkg_mkinstall
+	domkinstall
 }
 
 

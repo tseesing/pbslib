@@ -18,7 +18,7 @@ CONFLICT=""
 NOTES=""
 	
 pbs_unpack() {
-        ypkg_unpack
+        dounpack
 }
 
 pbs_install() {
@@ -33,19 +33,19 @@ pbs_install() {
 	#
         cd $pwdir/cngpij
 	./autogen.sh --prefix=/usr --enable-progpath=/usr/bin
-	ypkg_mkinstall
+	domkinstall
 	#     
 	cd $pwdir/pstocanonij
 	./autogen.sh --prefix=/usr --enable-progpath=/usr/bin
-	ypkg_mkinstall
+	domkinstall
 	#
 	#cd $pwdir/cngpijmon
 	./autogen.sh --prefix=/usr
 	cd $pwdir/cngpijmon/backend
 	make clean
 	make
-	ypkg_mkinstall 
+	domkinstall 
 	#
 	cd $pwdir
-	ypkg_dodoc LICENSE-cnijfilter-*E.txt LICENSE-cnijfilter-*J.txt
+	dodoc LICENSE-cnijfilter-*E.txt LICENSE-cnijfilter-*J.txt
 }

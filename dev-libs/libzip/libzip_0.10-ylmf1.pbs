@@ -15,21 +15,21 @@ RECOMMENDED=""
 CONFLICT=""
 
 pbs_unpack() {
-        ypkg_unpack
+        dounpack
 }
 
 pbs_config() {
-	YPB_CONFIG+=""
-	ypkg_config
+	config+=""
+	doconfig
 }
 
 pbs_build() {
-	ypkg_make
+	domake
 }
 
 pbs_install() {
-	ypkg_mkinstall
-	cd "$YPPATH_DEST"
-	ypkg_doln /usr/lib/libzip/include/zipconf.h  usr/include/zipconf.h
+	domkinstall
+	cd "$destdir"
+	doln /usr/lib/libzip/include/zipconf.h  usr/include/zipconf.h
 }
 

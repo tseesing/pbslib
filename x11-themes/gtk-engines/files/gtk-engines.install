@@ -3,7 +3,7 @@
 post_install() {
 	# libtoolize the installation
 	for dir in engines filesystems loaders; do
-		ypkg_libtool_finish /usr/lib*/gtk*/*/$dir
+		dolibtool_finish /usr/lib*/gtk*/*/$dir
 	done
 }
 

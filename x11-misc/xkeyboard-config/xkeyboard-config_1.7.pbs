@@ -13,19 +13,19 @@ RDEPEND="glibc libX11 libXau libxcb libXdmcp libxkbfile"
 BDEPEND="intltool"
 
 pbs_unpack() {
-        ypkg_unpack
+        dounpack
 }
 
 pbs_config() {
-	YPB_CONFIG+="--with-xkb-rules-symlink=xorg"
-	ypkg_config
+	config+="--with-xkb-rules-symlink=xorg"
+	doconfig
 }
 
 pbs_build() {
-	ypkg_make
+	domake
 }
 
 pbs_install() {
-	ypkg_mkinstall
+	domkinstall
 }
 

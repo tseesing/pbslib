@@ -19,9 +19,9 @@ INSTALL="$N.install"
 NOTES=""
 
 pbs_unpack() {
-	ypkg_unpack
+	dounpack
 }
 
 pbs_install() {
-	ypkg_mkinstall
+	domkinstall
 }

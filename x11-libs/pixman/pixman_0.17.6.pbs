@@ -12,22 +12,22 @@ BDEPEND=""
 
 pbs_unpack()
 {
-        ypkg_unpack
+        dounpack
 }
 
 pbs_config()
 {
 	
-	YPB_CONFIG+=" --prefix=/usr " #opt/gnome-2.30 --libdir=/opt/gnome-2.30/lib "
-	ypkg_config
+	config+=" --prefix=/usr " #opt/gnome-2.30 --libdir=/opt/gnome-2.30/lib "
+	doconfig
 }
 
 pbs_build()
 {
-	ypkg_make
+	domake
 }
 
 pbs_install()
 {
-	ypkg_mkinstall
+	domkinstall
 }

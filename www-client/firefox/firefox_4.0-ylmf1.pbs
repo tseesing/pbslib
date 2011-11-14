@@ -19,7 +19,7 @@ permission to use trademarks per
 http://www.mozilla.org/foundation/trademarks/"
 
 pbs_unpack() {
-        ypkg_unpack
+        dounpack
 }
 
 pbs_config() {
@@ -30,9 +30,9 @@ pbs_config() {
 	cd ..
 
 	# https://bugzilla.mozilla.org/show_bug.cgi?id=623126
-	ypkg_patch add-missing-constructor.patch
+	dopatch add-missing-constructor.patch
 	
-	YPB_CONFIG+="--enable-application=browser
+	config+="--enable-application=browser
 		     --with-l10n-base=l10n
 		     --enable-ui-locale=zh-CN
 		     --enable-official-branding
@@ -41,17 +41,17 @@ pbs_config() {
 		     --with-distribution-id=ylmfos
 		     --disable-debug 
 		     --disable-tests"
-	ypkg_config
+	doconfig
 }
 
 pbs_build() {
-	ypkg_make
+	domake
 }
 
 pbs_install() {
-	ypkg_mkinstall
-	cd "$YPPATH_DEST"
-	ypkg_dodesktop "firefox.desktop" "usr/lib/firefox-4.0/icons/mozicon128.png"
-	#ypkg_docp_rename usr/lib/firefox-4.0/icons/mozicon128.png usr/share/pixmaps/firefox.png
+	domkinstall
+	cd "$destdir"
+	dodesktop "firefox.desktop" "usr/lib/firefox-4.0/icons/mozicon128.png"
+	#docp_rename usr/lib/firefox-4.0/icons/mozicon128.png usr/share/pixmaps/firefox.png
 }
 

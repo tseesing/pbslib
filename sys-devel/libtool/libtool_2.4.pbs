@@ -15,30 +15,30 @@ BDEPEND=""
 INSTALL="$N.install"
 
 pbs_unpack() {
-        ypkg_unpack
+        dounpack
 }
 
 pbs_config() {
 	# The following config.cache entry overrides the default search path, which does not take multilib into account
 	echo lt_cv_sys_dlsearch_path=\"/lib"$LIBDIRSUFFIX" /usr/lib"$LIBDIRSUFFIX" /usr/local/lib"$LIBDIRSUFFIX" /opt/lib"$LIBDIRSUFFIX"\" > config.cache 
 
-	YPB_CONFIG+="--cache-file=config.cache"
-	ypkg_config
+	config+="--cache-file=config.cache"
+	doconfig
 }
 
 pbs_build() {
-	ypkg_make
+	domake
 }
 
 pbs_install() {
-	ypkg_mkinstall
-	#cd "$YPPATH_DEST" 
+	domkinstall
+	#cd "$destdir" 
 	#case $ARCH in
         #        i?86)
 	#mv usr/bin/libtool{,-32} ;;
 	#	x86_64)
 	#mv usr/bin/libtool{,-64}
-	#ypkg_doln /usr/bin/multiarch_wrapper usr/bin/libtool
+	#doln /usr/bin/multiarch_wrapper usr/bin/libtool
 	#esac
 }
 

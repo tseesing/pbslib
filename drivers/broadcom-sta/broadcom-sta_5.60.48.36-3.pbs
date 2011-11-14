@@ -15,7 +15,7 @@ BDEPEND=""
 PROVIDE="broadcom-sta-source broadcom-sta-driver"
 
 pbs_unpack() {
-        ypkg_unpack
+        dounpack
 }
 
 broadcom-sta-source_install() {
@@ -25,10 +25,10 @@ broadcom-sta-source_install() {
 	OPINION="nodev"
         YARCH="any"
 	
-	ypkg_patch ylmfos-makeinstall.patch
+	dopatch ylmfos-makeinstall.patch
 	cd i386
-	ypkg_dosrc * 
-	ypkg_dosupported "$N"_supported
+	dosrc * 
+	dosupported "$N"_supported
 }
 
 broadcom-sta-driver_install() {
@@ -38,7 +38,7 @@ broadcom-sta-driver_install() {
 	INSTALL="broadcom-sta-driver.install"
 
 	unset ARCH
-	ypkg_make
-	ypkg_mkinstall
+	domake
+	domkinstall
 }
 

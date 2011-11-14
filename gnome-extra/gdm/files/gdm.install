@@ -2,7 +2,7 @@
 
 post_install() {
 	# Creat gdm user and groups
-	ypkg_useradd -c "gdm user" -d "/var/lib/gdm" -s "/bin/false" -r "gdm"
+	douseradd -c "gdm user" -d "/var/lib/gdm" -s "/bin/false" -r "gdm"
 
 	# Install schemas
 	gnome2_install_schema "/etc/gconf/schemas/gdm-simple-greeter.schemas"
@@ -67,7 +67,7 @@ pre_remove() {
 
 post_remove() {
 	[ -f /etc/gdm/custom.conf ] && rm /etc/gdm/custom.conf
-	ypkg_userdel -r "gdm"
+	douserdel -r "gdm"
 	gnome2_desktop_database_update
 }
 

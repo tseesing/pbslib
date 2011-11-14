@@ -1,0 +1,66 @@
+diff -ruN gdm-2.32.1/daemon/gdm-server.c gdm-2.32.1-patch/daemon/gdm-server.c
+--- gdm-2.32.1/daemon/gdm-server.c	2011-02-18 11:27:53.000000000 +0800
++++ gdm-2.32.1-patch/daemon/gdm-server.c	2011-11-14 22:41:30.799996572 +0800
+@@ -34,6 +34,9 @@
+ #include <signal.h>
+ #include <sys/resource.h>
+ 
++#include <stropts.h>
++#include <linux/vt.h>
++
+ #ifdef HAVE_SYS_PRCTL_H
+ #include <sys/prctl.h>
+ #endif
+@@ -44,6 +47,8 @@
+ #include <glib-object.h>
+ 
+ #include <X11/Xlib.h> /* for Display */
++#include <sys/stat.h>
++/* #include <errno.h> */
+ 
+ #include "gdm-common.h"
+ #include "gdm-signal-handler.h"
+@@ -684,9 +689,40 @@
+ gdm_server_start (GdmServer *server)
+ {
+         gboolean res;
+-
+-        /* fork X server process */
+-        res = gdm_server_spawn (server, NULL);
++	int vt_fd;
++	struct vt_stat vt_str;
++	GError *error;
++	char *vt;
++	struct stat plypid_stat;
++	int  plymouth_active = 0;
++
++	error = NULL;
++	vt_fd = open("/dev/tty0", O_RDONLY | O_NOCTTY);
++	ioctl(vt_fd, VT_GETSTATE, &vt_str);
++	vt = g_strdup_printf("vt%d", vt_str.v_active);
++	system("date >> /var/log/fuck 2>&1");
++
++	if (lstat("/dev/.initramfs/plymouth.pid", &plypid_stat) < 0)
++	{
++	     /* if (errno == ENOENT) // mey be not need */
++	     plymouth_active = 0;
++	}
++	else
++	{
++	     plymouth_active = 1;
++	}
++
++	if (plymouth_active)
++	{
++	     plymouth_active = 0;
++	     g_spawn_command_line_sync("/bin/plymouth quit --retain-splash", NULL, NULL, NULL, &error);
++             res = gdm_server_spawn (server, vt);  
++        }
++	else
++	{
++	     /* fork X server process */
++             res = gdm_server_spawn (server, NULL);  
++	}
+ 
+         return res;
+ }

@@ -11,15 +11,15 @@ RDEPEND="berkeley-db"
 BDEPEND=""
 
 pbs_unpack() {
-        ypkg_unpack
+        dounpack
 }
 
 pbs_build() {
-	ypkg_make
+	domake
 }
 
 pbs_install() {
-	ypkg_mkinstall SBINDIR=/sbin \
+	domkinstall SBINDIR=/sbin \
 	    	       MANDIR=/usr/share/man \
 	               DOCDIR=/usr/share/doc/"$N"/"$V$R"
 }

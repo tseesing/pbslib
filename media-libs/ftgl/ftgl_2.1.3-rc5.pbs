@@ -13,19 +13,19 @@ RDEPEND="freetype gcc glibc libdrm libX11 libXau libxcb libXdamage libXdmcp libX
 BDEPEND=""
 
 pbs_unpack() {
-        ypkg_unpack
+        dounpack
 }
 
 pbs_config() {
-	ypkg_config
+	doconfig
 }
 
 pbs_build() {
-	ypkg_make
+	domake
 }
 
 pbs_install() {
-	ypkg_mkinstall
-	ypkg_dodoc AUTHORS ChangeLog COPYING INSTALL NEWS README
+	domkinstall
+	dodoc AUTHORS ChangeLog COPYING INSTALL NEWS README
 }
 

@@ -19,13 +19,13 @@ CONFLICT=""
 NOTES=""
 
 pbs_unpack() {
-        ypkg_unpack
+        dounpack
 }
 
 pbs_install() {
-	ypkg_patch desktop.patch
-	ypkg_docp data/*  "$YPPATH_DEST"
-	ypkg_docp "$FILES_PATH"/files/PPStream   "$YPPATH_DEST"/usr/bin/
-	chmod +x "$YPPATH_DEST"/usr/bin/PPStream
+	dopatch desktop.patch
+	docp data/*  "$destdir"
+	docp $filesdir/PPStream   "$destdir"/usr/bin/
+	chmod +x "$destdir"/usr/bin/PPStream
 }
 

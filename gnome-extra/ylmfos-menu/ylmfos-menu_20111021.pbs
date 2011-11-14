@@ -17,10 +17,10 @@ RECOMMENDED="psyco"
 INSTALL="$N.install"
 
 pbs_unpack() {
-	ypkg_unpack
+	dounpack
 }
 
 pbs_install() {
-	ypkg_mkinstall
+	domkinstall
 }
 

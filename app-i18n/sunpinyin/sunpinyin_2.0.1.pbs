@@ -13,20 +13,20 @@ RDEPEND="gtk+ ibus"
 BDEPEND=""
 
 pbs_unpack() {
-        ypkg_unpack
+        dounpack
 }
 
 pbs_config(){
-	ypkg_patch "$N-$V$R"-mkdir.patch
-	YPB_CONFIG+="--enable-ibus"
-	ypkg_config
+	dopatch "$N-$V$R"-mkdir.patch
+	config+="--enable-ibus"
+	doconfig
 }
 
 pbs_build(){
-	ypkg_make
+	domake
 }
 
 pbs_install() {
-	ypkg_mkinstall
-	ypkg_dodoc AUTHORS ChangeLog NEWS README TODO
+	domkinstall
+	dodoc AUTHORS ChangeLog NEWS README TODO
 }

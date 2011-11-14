@@ -14,20 +14,20 @@ BDEPEND=" "
 RECOMMENDED=""
 
 pbs_unpack() {
-        ypkg_unpack
+        dounpack
 }
 
 pbs_config() {
-	ypkg_patch no_xdirectory_warning.patch
-	ypkg_config
+	dopatch no_xdirectory_warning.patch
+	doconfig
 }
 
 pbs_build() {
-	ypkg_make
+	domake
 }
 
 pbs_install() {
-	ypkg_mkinstall
-	ypkg_docp "$FILES_PATH"/files/defaults.list "$YPPATH_DEST"/usr/share/applications
+	domkinstall
+	docp $filesdir/defaults.list "$destdir"/usr/share/applications
 }
 

@@ -4,11 +4,11 @@ files="r5rs.info.gz guile.info.gz guile.info-9.gz guile.info-8.gz guile.info-7.g
 guile.info-6.gz guile.info-5.gz guile.info-4.gz guile.info-3.gz guile.info-2.gz guile.info-1.gz"
 
 post_install() {
-	ypkg_install_info "$files"
+	doinstall_info "$files"
 }       
 
 pre_remove() {
-        ypkg_remove_info "$files"
+        doremove_info "$files"
 }
 
 post_upgrade() {

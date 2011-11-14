@@ -1,8 +1,8 @@
 . /usr/lib/ybs/funcs
 
 pre_install() {
-	ypkg_groupadd -r "apache"
-	ypkg_useradd -c "Apache Server" -d "/dev/null" -s "/bin/false" -r -N "apache"
+	dogroupadd -r "apache"
+	douseradd -c "Apache Server" -d "/dev/null" -s "/bin/false" -r -N "apache"
 }
 
 post_install() {
@@ -17,20 +17,20 @@ post_install() {
 	gnome2_gtk_immodules_update
 	gnome2_mime_database_update
 	gnome2_gdk_pixbuf_loaders_update
-	ypkg_dofont /usr/share/fonts/truetype/ttf-dejavu
-	ypkg_install_info wget.info.gz 
+	dofont /usr/share/fonts/truetype/ttf-dejavu
+	doinstall_info wget.info.gz 
 }
 
 pre_remove() {
 	gnome2_uninstall_schema
 	gnome2_uninstall_mine
-	ypkg_remove_info wget.info.gz
+	doremove_info wget.info.gz
 }
 
 post_remove() {
 	ykms remove $1 $2
-	ypkg_userdel -r "apache"
-	ypkg_groupdel "apache"
+	douserdel -r "apache"
+	dogroupdel "apache"
 }
 
 post_upgrade() {

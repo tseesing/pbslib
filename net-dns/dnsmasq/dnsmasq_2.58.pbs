@@ -17,26 +17,26 @@ CONFLICT=""
 INSTALL="$N.install"
 
 pbs_unpack() {
-        ypkg_unpack
+        dounpack
 }
 
 pbs_build() {
 	# link against dbus
 	echo '#define HAVE_DBUS' >> src/config.h
 	
-	ypkg_make
+	domake
 }
 
 pbs_install() {
-	ypkg_mkinstall PREFIX=/usr
+	domkinstall PREFIX=/usr
 	
 	# For systemd unit
-	ypkg_dounit "$N".service
+	dounit "$N".service
 
 	# For dbus
-	ypkg_docp "dbus/dnsmasq.conf" "$YPPATH_DEST"/etc/dbus-1/system.d/
+	docp "dbus/dnsmasq.conf" "$destdir"/etc/dbus-1/system.d/
 
 	#
-	install -Dm644 "dnsmasq.conf.example" "$YPPATH_DEST"/etc/dnsmasq.conf
+	install -Dm644 "dnsmasq.conf.example" "$destdir"/etc/dnsmasq.conf
 }
 

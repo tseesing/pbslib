@@ -1,7 +1,7 @@
 . /usr/lib/ybs/funcs
 
 post_install() {
-	 ypkg_dofont usr/share/fonts/wenquanyi/wqy-bitmap
+	 dofont usr/share/fonts/wenquanyi/wqy-bitmap
 }
 
 post_remove() {

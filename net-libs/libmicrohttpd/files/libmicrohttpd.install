@@ -1,9 +1,9 @@
 . /usr/lib/ybs/funcs
 
 post_install() {
-        ypkg_install_info microhttpd-tutorial.info.gz microhttpd.info.gz  
+        doinstall_info microhttpd-tutorial.info.gz microhttpd.info.gz  
 }       
 
 pre_remove() {
-        ypkg_remove_info microhttpd-tutorial.info.gz microhttpd.info.gz
+        doremove_info microhttpd-tutorial.info.gz microhttpd.info.gz
 }

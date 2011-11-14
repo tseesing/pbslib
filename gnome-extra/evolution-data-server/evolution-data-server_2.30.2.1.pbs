@@ -16,11 +16,11 @@ RECOMMENDED=""
 NOTES=""
 
 pbs_unpack() {
-        ypkg_unpack
+        dounpack
 }
 
 pbs_config() {
-	YPB_CONFIG+="  
+	config+="  
 		      --disable-schemas-install 
 		      --enable-ipv6 
 		      --enable-smime=yes 
@@ -31,13 +31,13 @@ pbs_config() {
 		      --with-libdb=/usr	
 		      --with-nspr-includes=/usr/include/nspr 
 		      --with-nss-includes=/usr/include/nss "
-	ypkg_config
+	doconfig
 }
 
 pbs_build() {
-	ypkg_make
+	domake
 }
 
 pbs_install() {
-	ypkg_mkinstall
+	domkinstall
 }

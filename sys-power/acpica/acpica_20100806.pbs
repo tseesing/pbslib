@@ -14,7 +14,7 @@ BDEPEND="udev-dev"
 RECOMMENDED=""
 
 pbs_unpack() {
-        ypkg_unpack
+        dounpack
 }
 
 pbs_build() {
@@ -30,8 +30,8 @@ pbs_build() {
 }
 
 pbs_install() {
-	ypkg_docp compiler/iasl "$YPPATH_DEST"/usr/bin
-	ypkg_docp tools/{acpisrc/acpisrc,acpixtract/acpixtract,acpiexec/acpiexec} "$YPPATH_DEST"/usr/bin
-	ypkg_dodoc changes.txt README
+	docp compiler/iasl "$destdir"/usr/bin
+	docp tools/{acpisrc/acpisrc,acpixtract/acpixtract,acpiexec/acpiexec} "$destdir"/usr/bin
+	dodoc changes.txt README
 }
 

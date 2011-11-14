@@ -17,10 +17,10 @@ CONFLICT=""
 INSTALL="$N.install"
 
 pbs_unpack() {
-        ypkg_unpack
+        dounpack
 }
 
 pbs_install() {
-	make prefix=/usr DESTDIR="$YPPATH_DEST" install
+	make prefix=/usr DESTDIR="$destdir" install
 }
 

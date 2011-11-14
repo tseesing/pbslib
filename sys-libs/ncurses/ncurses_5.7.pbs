@@ -14,11 +14,11 @@ RDEPEND="gcc glibc"
 BDEPEND=" "
 
 pbs_unpack() {
-        ypkg_unpack
+        dounpack
 }
 
 pbs_config() {
-	YPB_CONFIG+="  --with-libtool        
+	config+="  --with-libtool        
 		       --with-shared        
 		       --without-debug 
 		       --enable-widec 
@@ -27,33 +27,33 @@ pbs_config() {
 		       #--with-profile 
 		       #--with-termlib  
 		       #--with-ticlib  
-	ypkg_config
+	doconfig
 }
 
 pbs_build() {
-	ypkg_make
+	domake
 }
 
 pbs_install() {
-	ypkg_mkinstall
-        cd "$YPPATH_DEST"
- 	ypkg_domv usr/lib/libncurses*    lib
-	ypkg_doln  /lib/libncursesw.so.5  usr/lib/libncursesw.so
-	ypkg_doln  /lib/libncursesw.so.5  usr/lib/libncursesw.so.5
+	domkinstall
+        cd "$destdir"
+ 	domv usr/lib/libncurses*    lib
+	doln  /lib/libncursesw.so.5  usr/lib/libncursesw.so
+	doln  /lib/libncursesw.so.5  usr/lib/libncursesw.so.5
 	for lib in curses ncurses form panel menu; do
 		rm -f usr/lib/lib${lib}.so
 		echo "INPUT(-l${lib}w)"  > usr/lib/lib"${lib}".so
-		ypkg_doln lib"${lib}"w.a     usr/lib/lib"${lib}".a
+		doln lib"${lib}"w.a     usr/lib/lib"${lib}".a
 	done
-	ypkg_doln libncurses++w.a       usr/lib/libncurses++.a
+	doln libncurses++w.a       usr/lib/libncurses++.a
 	#Finally, make sure look for - lcurses  are still buildable:
 	rm -f usr/lib/libcursesw.so
 	echo "INPUT(-lncursesw)"   >   usr/lib/libcursesw.so
-	ypkg_doln libncurses.so             usr/lib/libcurses.so
-	ypkg_doln libncursesw.a             usr/lib/libcursesw.a
-	ypkg_doln libncurses.a               usr/lib/libcurses.a
+	doln libncurses.so             usr/lib/libcurses.so
+	doln libncursesw.a             usr/lib/libcursesw.a
+	doln libncurses.a               usr/lib/libcurses.a
 	#
 	ls -1 usr/include/ncursesw/*.h |while read line; do
-		ypkg_doln "/$line"               usr/include/"$(basename $line)"
+		doln "/$line"               usr/include/"$(basename $line)"
 	done 
 }

@@ -18,23 +18,23 @@ INSTALL="$N.install"
 NOTES=""
 
 pbs_unpack() {
-        ypkg_unpack
+        dounpack
 }
 
 pbs_config() {
-	YPB_CONFIG+="--disable-schemas-install 
+	config+="--disable-schemas-install 
 	             --enable-gdict-applet=no "   
-	ypkg_config
+	doconfig
 }
 
 pbs_build() {
-	ypkg_make
+	domake
 }
 
 pbs_install() {
-	ypkg_mkinstall
-	ypkg_dodoc AUTHORS COPYING NEWS README
-	cd "$YPPATH_DEST"
+	domkinstall
+	dodoc AUTHORS COPYING NEWS README
+	cd "$destdir"
 	#sorry, no one use it.
 	find . -name "gnome-dictionary*" -exec rm -r {} \;  2>/dev/null
 	# keep clean for rarian

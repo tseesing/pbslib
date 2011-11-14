@@ -13,19 +13,19 @@ RDEPEND="freeglut gcc glibc libdrm libICE libjpeg-turbo libSM libX11 libXau libx
 BDEPEND=""
 
 pbs_unpack() {
-        ypkg_unpack
+        dounpack
 }
 
 pbs_config() {
-	ypkg_config
+	doconfig
 }
 
 pbs_build() {
-	ypkg_make
+	domake
 }
 
 pbs_install() {
-	ypkg_mkinstall
-	ypkg_dodoc ChangeLog COPYRIGHT TODO VERSION
+	domkinstall
+	dodoc ChangeLog COPYRIGHT TODO VERSION
 }
 

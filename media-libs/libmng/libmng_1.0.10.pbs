@@ -13,23 +13,23 @@ RDEPEND="glibc lcms libjpeg-turbo zlib"
 BDEPEND=""
 
 pbs_unpack() {
-        ypkg_unpack
+        dounpack
 }
 
 pbs_config() {
-	ypkg_config
+	doconfig
 }
 
 pbs_build() {
 	cp makefiles/makefile.linux Makefile
-	ypkg_make
+	domake
 }
 
 pbs_install() {
-	mkdir -p "$YPPATH_DEST"/usr
-	make prefix="$YPPATH_DEST"/usr install
-	ypkg_docp doc/man/*.3 "$YPPATH_DEST"/usr/share/man/man3
-	ypkg_docp doc/man/*.5 "$YPPATH_DEST"/usr/share/man/man5
-	ypkg_dodoc doc/*.{png,txt}
+	mkdir -p "$destdir"/usr
+	make prefix="$destdir"/usr install
+	docp doc/man/*.3 "$destdir"/usr/share/man/man3
+	docp doc/man/*.5 "$destdir"/usr/share/man/man5
+	dodoc doc/*.{png,txt}
 }
 

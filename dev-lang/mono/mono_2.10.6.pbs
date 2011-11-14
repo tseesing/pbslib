@@ -15,34 +15,34 @@ RECOMMENDED=""
 CONFLICT=""
 
 pbs_unpack() {
-        ypkg_unpack
+        dounpack
 }
 
 pbs_config() {
-	YPB_CONFIG="--prefix=/usr 
+	config="--prefix=/usr 
 	            --sysconfdir=/etc  
 		    --with-libgdiplus=installed"
-	ypkg_config
+	doconfig
 }
 
 pbs_build() {
-	ypkg_make
+	domake
 	
 	# Build jay
 	cd mcs/jay
-	ypkg_make
+	domake
 	cd -
 }
 
 pbs_install() {
-	ypkg_mkinstall
-	ypkg_dodoc mcs/MIT.X11
+	domkinstall
+	dodoc mcs/MIT.X11
 	
 	# Install jay
 	cd mcs/jay
-	ypkg_mkinstall prefix=/usr install=../../install-sh
+	domkinstall prefix=/usr install=../../install-sh
 
 	# Fix .pc file to be able to request mono on what it depends, fixes #go-oo build
-	sed -i -e "s:#Requires:Requires:" "$YPPATH_DEST"/usr/lib/pkgconfig/mono.pc
+	sed -i -e "s:#Requires:Requires:" "$destdir"/usr/lib/pkgconfig/mono.pc
 }
 

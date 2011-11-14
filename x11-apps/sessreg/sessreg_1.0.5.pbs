@@ -11,20 +11,20 @@ RDEPEND=""
 BDEPEND=""
 
 pbs_unpack() {
-        ypkg_unpack
+        dounpack
 }
 
 pbs_config() {
 	
-	ypkg_config
+	doconfig
 }
 
 pbs_build() {
-	ypkg_make
+	domake
 }
 
 pbs_install() {
-	ypkg_mkinstall
-	install -m755 -d "$YPPATH_DEST"/usr/share/doc/"$N-$V$R"
-	cp -a AUTHORS ChangeLog COPYING INSTALL NEWS README   "$YPPATH_DEST"/usr/share/doc/"$N-$V$R"
+	domkinstall
+	install -m755 -d "$destdir"/usr/share/doc/"$N-$V$R"
+	cp -a AUTHORS ChangeLog COPYING INSTALL NEWS README   "$destdir"/usr/share/doc/"$N-$V$R"
 }

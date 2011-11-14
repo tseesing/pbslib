@@ -13,22 +13,22 @@ BDEPEND=" "
 INSTALL="$N.install"
 
 pbs_unpack() {
-        ypkg_unpack
+        dounpack
 }
 
 pbs_config() {
-	ypkg_config
+	doconfig
 }
 
 pbs_build() {
-	ypkg_make
+	domake
 }
 
 pbs_install() {
-	ypkg_mkinstall
+	domkinstall
 	#fix Chinese translation error
-	msgunfmt "$YPPATH_DEST"/usr/share/locale/zh_CN/LC_MESSAGES/wget.mo | \
+	msgunfmt "$destdir"/usr/share/locale/zh_CN/LC_MESSAGES/wget.mo | \
 		sed "s/eta(.*)/ETA/" | \
 		msgfmt - -o /tmp/wget.mo
-	ypkg_domv /tmp/wget.mo "$YPPATH_DEST"/usr/share/locale/zh_CN/LC_MESSAGES/
+	domv /tmp/wget.mo "$destdir"/usr/share/locale/zh_CN/LC_MESSAGES/
 }

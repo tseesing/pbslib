@@ -16,20 +16,20 @@ RECOMMENDED=""
 INSTALL="$N.install"
 
 pbs_unpack() {
-        ypkg_unpack
+        dounpack
 }
 
 pbs_config() {
-	YPB_CONFIG+="--with-gnome-distributor=YlmfOS"
-	ypkg_config
+	config+="--with-gnome-distributor=YlmfOS"
+	doconfig
 }
 
 pbs_build() {
-	ypkg_make
+	domake
 }
 
 pbs_install() {
-	ypkg_mkinstall
-	cd "$YPPATH_DEST"
+	domkinstall
+	cd "$destdir"
 	rm -fr var/lib/scrollkeeper var/lib/log
 }

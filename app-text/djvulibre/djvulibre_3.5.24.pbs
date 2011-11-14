@@ -16,12 +16,12 @@ BDEPEND=""
 INSTALL="$N.install"
 
 pbs_unpack() {
-        ypkg_unpack
+        dounpack
 }
 
 pbs_config() {
-	YPB_CONFIG+="--disable-desktopfiles"
-	ypkg_config
+	config+="--disable-desktopfiles"
+	doconfig
 }
 
 pbs_build() {
@@ -29,6 +29,6 @@ pbs_build() {
 }
 
 pbs_install() {
-	ypkg_mkinstall
+	domkinstall
 }
 

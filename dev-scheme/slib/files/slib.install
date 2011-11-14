@@ -2,12 +2,12 @@
 
 post_install() {
 	/usr/bin/guile -c "((use-modules (ice-9 slib))(require 'new-catalog)(quit))"
-	ypkg_install_info slib.info.gz
+	doinstall_info slib.info.gz
 }
 
 pre_remove() {
 	rm /usr/share/guile/site/slibcat
-	ypkg_remove_info slib.info.gz
+	doremove_info slib.info.gz
 }
 
 post_upgrade()  {

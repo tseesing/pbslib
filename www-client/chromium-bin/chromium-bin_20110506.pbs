@@ -28,23 +28,23 @@ pbs_unpack() {
 }
 
 pbs_install() {
-	ypkg_docp * "$YPPATH_DEST"/opt/chromium.org/chrome-linux
-	ypkg_docp chrome.1 "$YPPATH_DEST"/usr/share/man/chromium-bin/
-	ypkg_docp "$FILES_PATH"/files/chromium-bin   "$YPPATH_DEST"/usr/bin
-	ypkg_dodesktop "$FILES_PATH"/files/chromium-bin.desktop  
-	ypkg_docp_rename product_logo_48.png         "$YPPATH_DEST"/usr/share/pixmaps/chromium-bin.png 
-	mkdir -p "$YPPATH_DEST"/opt/chromium.org/nss-nspr
-	cd "$YPPATH_DEST"/opt/chromium.org/nss-nspr
-	ypkg_doln /usr/lib/libnspr4.so     libnspr4.so.0d
-	ypkg_doln /usr/lib/libnss3.so      libnss3.so.1d 
-	ypkg_doln /usr/lib/libnssutil3.so  libnssutil3.so.1d
-	ypkg_doln /usr/lib/libplc4.so      libplc4.so.0d
-	ypkg_doln /usr/lib/libplds4.so     libplds4.so.0d
-	ypkg_doln /usr/lib/libsmime3.so    libsmime3.so.1d
-	ypkg_doln /usr/lib/libssl3.so      libssl3.so.1d
+	docp * "$destdir"/opt/chromium.org/chrome-linux
+	docp chrome.1 "$destdir"/usr/share/man/chromium-bin/
+	docp $filesdir/chromium-bin   "$destdir"/usr/bin
+	dodesktop $filesdir/chromium-bin.desktop  
+	docp_rename product_logo_48.png         "$destdir"/usr/share/pixmaps/chromium-bin.png 
+	mkdir -p "$destdir"/opt/chromium.org/nss-nspr
+	cd "$destdir"/opt/chromium.org/nss-nspr
+	doln /usr/lib/libnspr4.so     libnspr4.so.0d
+	doln /usr/lib/libnss3.so      libnss3.so.1d 
+	doln /usr/lib/libnssutil3.so  libnssutil3.so.1d
+	doln /usr/lib/libplc4.so      libplc4.so.0d
+	doln /usr/lib/libplds4.so     libplds4.so.0d
+	doln /usr/lib/libsmime3.so    libsmime3.so.1d
+	doln /usr/lib/libssl3.so      libssl3.so.1d
 	# Plugins symlink, optional wrt bug #301911
-	#ln -sv /usr/lib/nsbrowser/plugins "$YPPATH_DEST"/opt/chromium.org/chrome-linux/plugins
+	#ln -sv /usr/lib/nsbrowser/plugins "$destdir"/opt/chromium.org/chrome-linux/plugins
 	#
-	chmod 755 "$YPPATH_DEST"/* -R
+	chmod 755 "$destdir"/* -R
 }
 

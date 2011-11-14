@@ -22,7 +22,7 @@ INSTALL="$N.install"
 NOTES=""
 
 pbs_unpack() {
-        ypkg_unpack
+        dounpack
 }
 
 pbs_config() {
@@ -56,20 +56,20 @@ pbs_config() {
 		   ylmfos_mkdevicemap.patch
 		   1000_ylmfos_grub-probe-skip-fd.patch 
 		   ylmfos_export_patch.patch"
-	ypkg_patch $patches
-	ypkg_config
+	dopatch $patches
+	doconfig
 }
 
 pbs_build() {
-	ypkg_make
+	domake
 }
 
 pbs_install() {
-	ypkg_mkinstall
-	ypkg_dodoc AUTHORS ChangeLog COPYING INSTALL NEWS README
-	cd "$YPPATH_DEST"
-	ypkg_docp "$FILES_PATH"/files/{update-grub2,update-grub}  usr/sbin
-	ypkg_docp "$FILES_PATH"/files/grub  etc/default
+	domkinstall
+	dodoc AUTHORS ChangeLog COPYING INSTALL NEWS README
+	cd "$destdir"
+	docp $filesdir/{update-grub2,update-grub}  usr/sbin
+	docp $filesdir/grub  etc/default
 	mv usr/sbin/grub-install{,.real}
 }
 

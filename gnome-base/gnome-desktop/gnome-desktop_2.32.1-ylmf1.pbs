@@ -16,26 +16,26 @@ RECOMMENDED=""
 INSTALL="$N.install"
 
 pbs_unpack() {
-        ypkg_unpack
+        dounpack
 }
 
 pbs_config() {
-	YPB_CONFIG+="--with-gnome-distributor=www.ylmf.org"
-	ypkg_config
+	config+="--with-gnome-distributor=www.ylmf.org"
+	doconfig
 }
 
 pbs_build() {
-	ypkg_make
+	domake
 }
 
 pbs_install() {
-	ypkg_mkinstall
+	domkinstall
 
-	cd "$YPPATH_DEST"
+	cd "$destdir"
 	
 	# Default desktop background
-	ypkg_docp "$FILES_PATH"/files/ylmfos-desktop.jpg    usr/share/backgrounds/
-	ypkg_doln /usr/share/backgrounds/ylmfos-desktop.jpg usr/share/backgrounds/default.jpg
+	docp $filesdir/ylmfos-desktop.jpg    usr/share/backgrounds/
+	doln /usr/share/backgrounds/ylmfos-desktop.jpg usr/share/backgrounds/default.jpg
 
 	#
 	rm -fr var/lib/scrollkeeper var/lib/log

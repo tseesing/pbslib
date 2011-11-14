@@ -4,30 +4,29 @@
 
 DESCRIPTION="X C-language Bindings library"
 HOMEPAGE="http://xcb.freedesktop.org/"
-REPO=""
-LICENSE=""
+LICENSE="GPL"
 PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
-SRC_URI="http://xcb.freedesktop.org/dist/$N-$V$R.tar.bz2"
+
+SRC_URI="http://xcb.freedesktop.org/dist/"$N-$V$R".tar.bz2"
 
 RDEPEND="libxslt libXau libXdmcp"
-BDEPEND=" xcb-proto x11-libs/libXau libpthread-stubs"
+BDEPEND="xcb-proto libXau libpthread-stubs"
 
 pbs_unpack() {
-        ypkg_unpack
+        dounpack
 }
 
 pbs_config() {
-	
-	YPB_CONFIG+="--prefix=/usr --docdir=/usr/share/$N-$V$R"
-	ypkg_config
+	config+="--prefix=/usr --docdir=/usr/share/$N-$V$R"
+	doconfig
 }
 
 pbs_build() {
-	ypkg_make
+	domake
 }
 
 pbs_install() {
-	ypkg_mkinstall
+	domkinstall
 	#
-	find "$YPPATH_DEST" -name "*.la" -delete
+	find "$destdir" -name "*.la" -delete
 }

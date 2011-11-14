@@ -16,12 +16,12 @@ RECOMMENDED=""
 CONFLICT=""
 
 pbs_unpack() {
-        ypkg_unpack
+        dounpack
 }
 
 pbs_config() {
 	export PYTHON=`which python`
-	YPB_CONFIG+=" --with-hpppddir=/usr/share/ppd/HP
+	config+=" --with-hpppddir=/usr/share/ppd/HP
 	              --enable-qt4
 		      --enable-doc-build
 		      --enable-cups-ppd-install 
@@ -36,13 +36,13 @@ pbs_config() {
 		      --disable-network-build
 		      --enable-fax-build "
 		      #--enable-network-build
-	ypkg_config
+	doconfig
 }
 
 pbs_build() {
-	ypkg_make
+	domake
 }
 
 pbs_install() {
-	ypkg_mkinstall
+	domkinstall
 }

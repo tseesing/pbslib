@@ -15,27 +15,27 @@ BDEPEND="openjade"
 RECOMMENDED=""
 
 pbs_unpack() {
-        ypkg_unpack
+        dounpack
 }
 
 pbs_config() {
 	find . -name CVS | xargs rm -rf
-	ypkg_config
+	doconfig
 }
 
 pbs_build() {
-	ypkg_make
+	domake
 }
 
 pbs_install() {
 	make install
-        ypkg_docp bin/sgmltools bin/buildcat bin/gensgmlenv bin/sgmlwhich "$YPPATH_DEST"/usr/bin
-	ypkg_docp dsssl/*.dsl dsssl/*.cat "$YPPATH_DEST"/usr/share/sgml/stylesheets/sgmltools
-	ypkg_docp dtd/[a-z]*  "$YPPATH_DEST"/usr/share/sgml/dtd/sgmltools
-	ypkg_docp man/sgmltools-lite.1 "$YPPATH_DEST"/usr/share/man/man1
-	ypkg_docp python/*.py "$YPPATH_DEST"/usr/share/sgml/misc/sgmltools/python
-	ypkg_docp python/backends/*.py "$YPPATH_DEST"/usr/share/sgml/misc/sgmltools/python/backends
-	ypkg_docp catalog.rh62 catalog.suse aliases "$YPPATH_DEST"/etc/sgml
-	ypkg_docp VERSION "$YPPATH_DEST"/usr/share/sgml/misc/sgmltools
+        docp bin/sgmltools bin/buildcat bin/gensgmlenv bin/sgmlwhich "$destdir"/usr/bin
+	docp dsssl/*.dsl dsssl/*.cat "$destdir"/usr/share/sgml/stylesheets/sgmltools
+	docp dtd/[a-z]*  "$destdir"/usr/share/sgml/dtd/sgmltools
+	docp man/sgmltools-lite.1 "$destdir"/usr/share/man/man1
+	docp python/*.py "$destdir"/usr/share/sgml/misc/sgmltools/python
+	docp python/backends/*.py "$destdir"/usr/share/sgml/misc/sgmltools/python/backends
+	docp catalog.rh62 catalog.suse aliases "$destdir"/etc/sgml
+	docp VERSION "$destdir"/usr/share/sgml/misc/sgmltools
 }
 

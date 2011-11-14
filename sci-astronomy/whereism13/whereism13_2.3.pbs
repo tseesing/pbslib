@@ -20,12 +20,12 @@ INSTALL="$N.install"
 NOTES=""
 
 pbs_unpack() {
-        ypkg_unpack
+        dounpack
 }
 
 pbs_install() {
 	cd "Where is M13"
-	ypkg_docp WhereIsM13.jar "$YPPATH_DEST"/opt/"$N"/
-	ypkg_dodoc Distribution.txt License.txt README.html ReleaseNotes.txt
-	ypkg_dodesktop "$N.desktop"  "$N.png"
+	docp WhereIsM13.jar "$destdir"/opt/"$N"/
+	dodoc Distribution.txt License.txt README.html ReleaseNotes.txt
+	dodesktop "$N.desktop"  "$N.png"
 } 

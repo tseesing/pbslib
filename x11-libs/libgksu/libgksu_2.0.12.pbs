@@ -16,19 +16,19 @@ RECOMMENDED=""
 INSTALL="$N.install"
 
 pbs_unpack() {
-        ypkg_unpack
+        dounpack
 }
 
 pbs_config() {
-	ypkg_patch libgksu-2.0.12-revert-forkpty.patch
+	dopatch libgksu-2.0.12-revert-forkpty.patch
 
-	ypkg_docp "$FILES_PATH"/files/gksu.png  .
-	ypkg_config
+	docp $filesdir/gksu.png  .
+	doconfig
 }
 
 pbs_build() {
-	ypkg_patch ylmfos_makefile.patch
-	ypkg_make
+	dopatch ylmfos_makefile.patch
+	domake
 
 	# FIXME, creat mo
 	cd po
@@ -39,10 +39,10 @@ pbs_build() {
 }
 
 pbs_install() {
-	ypkg_mkinstall GCONF_DISABLE_MAKEFILE_SCHEMA_INSTALL=1
+	domkinstall GCONF_DISABLE_MAKEFILE_SCHEMA_INSTALL=1
 	cd po
 	for i in *.mo; do
-		ypkg_docp_rename $i "$YPPATH_DEST"/usr/share/locale/${i%*.mo}/LC_MESSAGES/libgksu.mo
+		docp_rename $i "$destdir"/usr/share/locale/${i%*.mo}/LC_MESSAGES/libgksu.mo
 	done
 }
 

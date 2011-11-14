@@ -15,17 +15,17 @@ RECOMMENDED=""
 CONFLICT=""
 
 pbs_unpack() {
-        ypkg_unpack
+        dounpack
 }
 
 pbs_build() {
 	cd src
 	cp portaudio19.h portaudio.h
-	ypkg_make
+	domake
 }
 
 pbs_install() {
-	ypkg_mkinstall
-	find "$YPPATH_DEST/usr/share/espeak-data" -type f -print0 |xargs -0 chmod 644
+	domkinstall
+	find "$destdir/usr/share/espeak-data" -type f -print0 |xargs -0 chmod 644
 }
 

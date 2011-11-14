@@ -10,24 +10,24 @@ RDEPEND=""
 BDEPEND=" font-util mkfontdir mkfontscale"
 
 pbs_unpack() {	
-        ypkg_unpack
+        dounpack
 }
 
 pbs_config() {
 	
-	YPB_CONFIG+=" --prefix=/usr --sysconfdir=/etc --localstatedir=/var \
+	config+=" --prefix=/usr --sysconfdir=/etc --localstatedir=/var \
 	              --infodir=/usr/share/info --mandir=/usr/share/man \
 		      --with-fontrootdir=/usr/share/fonts "
-	ypkg_config
+	doconfig
 }
 
 pbs_build() {
-	ypkg_make
+	domake
 }
 
 pbs_install() {
-	ypkg_mkinstall
-	mkdir -p "$YPPATH_DEST"/usr/lib/X11
-	ln -s /usr/share/fonts "$YPPATH_DEST"/usr/lib/X11
+	domkinstall
+	mkdir -p "$destdir"/usr/lib/X11
+	ln -s /usr/share/fonts "$destdir"/usr/lib/X11
 	return 0
 }

@@ -15,20 +15,20 @@ BDEPEND=""
 RECOMMENDED=""
 
 pbs_unpack() {
-        ypkg_unpack
+        dounpack
 }
 
 pbs_install() {
-	ypkg_docp * "$YPPATH_DEST"/lib/firmware
+	docp * "$destdir"/lib/firmware
 	
 	# Added carl9170.fw for Atheros wireless AR9170 based devices.
-	cd "$YPPATH_DEST"/lib/firmware
-	ypkg_docp "$FILES_PATH"/files/carl9170-1.fw .
+	cd "$destdir"/lib/firmware
+	docp $filesdir/carl9170-1.fw .
 	
 	#
-	ypkg_docp "$FILES_PATH"/files/{ar9170.fw,aic94xx-seq.fw,NPE-B,NPE-C} .
+	docp $filesdir/{ar9170.fw,aic94xx-seq.fw,NPE-B,NPE-C} .
 	
 	# Check firmware
-	ypkg_docp "$FILES_PATH"/files/check_firmware script/
+	docp $filesdir/check_firmware script/
 }
 

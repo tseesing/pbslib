@@ -14,19 +14,19 @@ BDEPEND="sharutils"
 RECOMMENDED=""
 
 pbs_unpack() {
-        ypkg_unpack
+        dounpack
 }
 
 pbs_config() {
-	YPB_CONFIG+="--enable-bsdtar --enable-bsdcpio"
-	ypkg_config
+	config+="--enable-bsdtar --enable-bsdcpio"
+	doconfig
 }
 
 pbs_build() {
-	ypkg_make
+	domake
 }
 
 pbs_install() {
-	ypkg_mkinstall
+	domkinstall
 }
 

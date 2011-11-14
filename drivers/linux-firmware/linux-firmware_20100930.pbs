@@ -14,10 +14,10 @@ BDEPEND=""
 RECOMMENDED=""
 
 pbs_unpack() {
-        ypkg_unpack
+        dounpack
 }
 
 pbs_install() {
-	install -m755 -d "$YPPATH_DEST"/lib/firmware
-	ypkg_docp -a * "$YPPATH_DEST"/lib/firmware
+	install -m755 -d "$destdir"/lib/firmware
+	docp -a * "$destdir"/lib/firmware
 }

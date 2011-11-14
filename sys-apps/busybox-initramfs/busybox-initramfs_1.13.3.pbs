@@ -14,17 +14,17 @@ BDEPEND=""
 RECOMMENDED=""
 
 pbs_unpack() {
-        ypkg_unpack
+        dounpack
 }
 
 pbs_build() {
-	ypkg_docp_rename "$FILES_PATH"/files/config-initramfs .config
-	ypkg_patch ylmfos-makefile-"$V".patch
-	ypkg_make
+	docp_rename $filesdir/config-initramfs .config
+	dopatch ylmfos-makefile-"$V".patch
+	domake
 }
 
 pbs_install() {
-	ypkg_docp busybox "$YPPATH_DEST"/usr/lib/initramfs-tools/bin
-	ypkg_dodoc AUTHORS INSTALL README
+	docp busybox "$destdir"/usr/lib/initramfs-tools/bin
+	dodoc AUTHORS INSTALL README
 }
 

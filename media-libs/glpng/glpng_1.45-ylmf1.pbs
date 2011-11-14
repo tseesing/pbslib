@@ -13,17 +13,17 @@ RDEPEND="gcc glibc libdrm libpng libX11 libXau libxcb libXdamage libXdmcp libXex
 BDEPEND="cmake"
 
 pbs_unpack() {
-        ypkg_unpack
+        dounpack
 }
 
 pbs_build() {
-	ypkg_patch libglpng-1.45-debian.patch libpng14.patch
-	ypkg_docp "$FILES_PATH"/files/{Makefile,license} .
-	ypkg_make libglpng.so.1.45
+	dopatch libglpng-1.45-debian.patch libpng14.patch
+	docp $filesdir/{Makefile,license} .
+	domake libglpng.so.1.45
 }
 
 pbs_install() {
-	ypkg_mkinstall
-	ypkg_dodoc license
+	domkinstall
+	dodoc license
 }
 

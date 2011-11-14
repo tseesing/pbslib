@@ -14,19 +14,19 @@ BDEPEND="linux-kernel-headers"
 RECOMMENDED=""
 
 pbs_unpack() {
-	ypkg_unpack
+	dounpack
 }
 
 pbs_build() {
-	ypkg_doln /usr/src/linux linux
-	ypkg_make
+	doln /usr/src/linux linux
+	domake
 }
 
 pbs_install() {
-	sed -i '/SHLIBDIR = \/lib/aINSTALLROOT = '"$YPPATH_DEST"'' scripts/Kbuild.install
-	ypkg_mkinstall
-	ypkg_docp "$FILES_PATH"/files/klibc.m4 /usr/share/aclocal
-	cd "$YPPATH_DEST"
-	ypkg_domv  usr/man usr/share/
+	sed -i '/SHLIBDIR = \/lib/aINSTALLROOT = '"$destdir"'' scripts/Kbuild.install
+	domkinstall
+	docp $filesdir/klibc.m4 /usr/share/aclocal
+	cd "$destdir"
+	domv  usr/man usr/share/
 }
 

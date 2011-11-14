@@ -20,12 +20,12 @@ NOTES=""
 INSTALL="$N.install"
 
 pbs_unpack() {
-        ypkg_unpack
+        dounpack
 }
 
 pbs_install() {
-	ypkg_docp gmbox "$YPPATH_DEST"/usr/lib/
-	ypkg_dodesktop "debian/gmbox.desktop" "gmbox/pixbufs/gmbox.png"
-	ypkg_doln  /usr/lib/gmbox/gmbox.py  "$YPPATH_DEST"/usr/bin/gmbox
+	docp gmbox "$destdir"/usr/lib/
+	dodesktop "debian/gmbox.desktop" "gmbox/pixbufs/gmbox.png"
+	doln  /usr/lib/gmbox/gmbox.py  "$destdir"/usr/bin/gmbox
 }
 

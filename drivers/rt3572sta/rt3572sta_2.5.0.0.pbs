@@ -12,11 +12,11 @@ SRC_URI="2011_0427_RT3572_Linux_STA_v2.5.0.0.DPO.bz2"
 PROVIDE="$N-source $N-driver"
 
 pbs_unpack() {
-        ypkg_unpack
+        dounpack
 }
 
 pbs_config() {
-	ypkg_patch ylmfos_makefile.patch
+	dopatch ylmfos_makefile.patch
 }
 
 rt3572sta-source_install() {
@@ -26,8 +26,8 @@ rt3572sta-source_install() {
 	OPINION="nodev"
         YARCH="any"
 	
-	ypkg_dosrc *
-	ypkg_dosupported "$N"_supported
+	dosrc *
+	dosupported "$N"_supported
 }
 
 rt3572sta-driver_install() {
@@ -36,7 +36,7 @@ rt3572sta-driver_install() {
 	INSTALL="$N.install"
 	
 	unset ARCH
-	ypkg_make
-	ypkg_mkinstall
+	domake
+	domkinstall
 }
 

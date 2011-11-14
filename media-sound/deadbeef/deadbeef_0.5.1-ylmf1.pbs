@@ -16,21 +16,21 @@ RECOMMENDED=""
 INSTALL="$N.install"
 
 pbs_unpack() {
-        ypkg_unpack
+        dounpack
 }
 
 pbs_config() {
-	ypkg_patch ylmfos-deadbeef-0.5.1.patch ylmfos_ffmpeg-0.8.patch
-	ypkg_config
+	dopatch ylmfos-deadbeef-0.5.1.patch ylmfos_ffmpeg-0.8.patch
+	doconfig
 }
 
 pbs_build() {
-	ypkg_make
+	domake
 }
  
 pbs_install() {
-	ypkg_mkinstall
-	cd "$YPPATH_DEST"
+	domkinstall
+	cd "$destdir"
 	sed -i 's/audio\/mp3;/audio\/mp3;audio\/x-ape;audio\/x-ms-wma;audio\/mp4;audio\/x-wavpack;audio\/x-wav;/g' usr/share/applications/deadbeef.desktop
 }
 

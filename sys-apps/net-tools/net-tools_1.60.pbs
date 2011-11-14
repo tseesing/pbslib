@@ -13,13 +13,13 @@ RDEPEND="glibc"
 BDEPEND=""
 
 pbs_unpack() {
-        ypkg_unpack
+        dounpack
 }
 
 pbs_config() {
-	ypkg_patch "$N-$V$R"-gcc34-3.patch 
-	ypkg_patch "$N-$V$R"-kernel_headers-2.patch
-	ypkg_patch "$N-$V$R"-mii_ioctl-1.patch
+	dopatch "$N-$V$R"-gcc34-3.patch 
+	dopatch "$N-$V$R"-kernel_headers-2.patch
+	dopatch "$N-$V$R"-mii_ioctl-1.patch
 	yes "" |make config 
 	sed -i -e 's|HAVE_IP_TOOLS 0|HAVE_IP_TOOLS 1|g' -e 's|HAVE_MII 0|HAVE_MII 1|g' config.h
 	sed -i -e 's|# HAVE_IP_TOOLS=0|HAVE_IP_TOOLS=1|g' -e 's|# HAVE_MII=0|HAVE_MII=1|g' config.make
@@ -30,6 +30,6 @@ pbs_build() {
 }
 
 pbs_install() {
-	make BASEDIR="$YPPATH_DEST" install
+	make BASEDIR="$destdir" install
 }
 

@@ -16,24 +16,24 @@ BDEPEND=""
 INSTALL="$N.install"
 
 pbs_unpack() {
-	ypkg_unpack
+	dounpack
 }
 
 pbs_config() {
 	#sed -i 's/pcmanfm\/lxde.conf/pcmanfm\/LXDE.conf/g' Makefile.am
 	#my default config
-	#cp "$FILES_PATH"/files/LXDE.conf.in  pcmanfm
-	#cp "$FILES_PATH"/files/panel.in  lxpanel
-	#cp "$FILES_PATH"/files/autostart  .
-	#cp "$FILES_PATH"/files/desktop.conf .
-	YPB_CONFIG+="--sysconfdir=/etc --enable-man"
-	ypkg_config
+	#cp $filesdir/LXDE.conf.in  pcmanfm
+	#cp $filesdir/panel.in  lxpanel
+	#cp $filesdir/autostart  .
+	#cp $filesdir/desktop.conf .
+	config+="--sysconfdir=/etc --enable-man"
+	doconfig
 }
 
 pbs_build() {
-	ypkg_make
+	domake
 }
 
 pbs_install() {
-	ypkg_mkinstall
+	domkinstall
 }

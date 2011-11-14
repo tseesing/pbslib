@@ -17,14 +17,14 @@ RECOMMENDED="fuse ntfs-3g plymouth kbd dejavu-fonts-ttf"
 INSTALL="$N.install"
 
 pbs_unpack() {
-	ypkg_unpack
+	dounpack
 }
 
 pbs_install() {
-	ypkg_docp etc usr "$YPPATH_DEST"
+	docp etc usr "$destdir"
 	
 	# Creat some empty dirs
-	cd "$YPPATH_DEST"
+	cd "$destdir"
 	mkdir -p etc/initramfs-tools/conf.d \
 	         etc/initramfs-tools/hooks \
 		 etc/initramfs-tools/scripts/{init-bottom,init-premount,init-top,local-bottom,local-premount,local-top,nfs-bottom,nfs-premount,nfs-top,panic}

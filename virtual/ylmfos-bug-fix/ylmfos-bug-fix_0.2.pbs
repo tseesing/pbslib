@@ -21,6 +21,6 @@ CONFLICT=""
 NOTES=""
 
 pbs_install() {
-	mkdir -p "$YPPATH_DEST"/usr/share/"$N"
-	touch "$YPPATH_DEST"/usr/share/"$N"/Readme
+	mkdir -p "$destdir"/usr/share/"$N"
+	touch "$destdir"/usr/share/"$N"/Readme
 }

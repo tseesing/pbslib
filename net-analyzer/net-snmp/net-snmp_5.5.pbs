@@ -15,22 +15,22 @@ RECOMMENDED=""
 NOTES=""
 
 pbs_unpack() {
-        ypkg_unpack
+        dounpack
 }
 
 pbs_config() {
 	
-	YPB_CONFIG+=" --prefix=/usr "
-	ypkg_config
+	config+=" --prefix=/usr "
+	doconfig
 }
 
 pbs_build() {
-	ypkg_make
+	domake
 }
 
 pbs_install() {
-	ypkg_mkinstall
-	install -m755 -d "$YPPATH_DEST"/usr/share/{doc,man}/"$N-$V$R"
-	cp -a *.txt  "$YPPATH_DEST"/usr/share/doc/"$N-$V$R"
-	cp -av *.1  "$YPPATH_DEST"/usr/share/man/"$N-$V$R" 
+	domkinstall
+	install -m755 -d "$destdir"/usr/share/{doc,man}/"$N-$V$R"
+	cp -a *.txt  "$destdir"/usr/share/doc/"$N-$V$R"
+	cp -av *.1  "$destdir"/usr/share/man/"$N-$V$R" 
 }

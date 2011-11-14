@@ -18,7 +18,7 @@ INSTALL="$N.install"
 NOTES=""
 
 pbs_unpack() {
-        ypkg_unpack
+        dounpack
 	mv VirtualBox-3.2.8_OSE  "$N-$V$R"
 }
 
@@ -37,10 +37,10 @@ pbs_build() {
 }
 
 pbs_install() {
-	install -m755 -d "$YPPATH_DEST"/opt/VirtualBox
+	install -m755 -d "$destdir"/opt/VirtualBox
 	cd out/linux.*/release/bin 
-	cp -a * "$YPPATH_DEST"/opt/VirtualBox
-	chown -R root:root "$YPPATH_DEST"/opt/VirtualBox
+	cp -a * "$destdir"/opt/VirtualBox
+	chown -R root:root "$destdir"/opt/VirtualBox
 	cd -
 	#install kernel modules
 	cd ./out/linux.x86/release/bin/src

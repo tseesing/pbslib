@@ -1,11 +1,11 @@
 . /usr/lib/ybs/funcs
 
 post_install() {
-        ypkg_install_info nano.info.gz
+        doinstall_info nano.info.gz
 }       
 
 pre_remove() {
-        ypkg_remove_info nano.info.gz
+        doremove_info nano.info.gz
 }
 
 post_upgrade() {

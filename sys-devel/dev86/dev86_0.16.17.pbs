@@ -14,23 +14,23 @@ BDEPEND=" dev-util/gperf"
 RECOMMENDED=""
 
 pbs_unpack() {
-        ypkg_unpack
+        dounpack
 }
 
 pbs_config() {
-	ypkg_patch "$N"-pic.patch
-	ypkg_patch "$N-$V$R"-fortify.patch
+	dopatch "$N"-pic.patch
+	dopatch "$N-$V$R"-fortify.patch
 	sed -i -e "s:-O2 -g:${CFLAGS} ${CPPFLAGS}:" -e '/INEXE=/s:-s::' makefile.in
 	sed -i -e '/INSTALL_OPTS=/s:-s::' bin86/Makefile
 	sed -i -e '/install -m 755 -s/s:-s::' dis88/Makefile
 }
 
 pbs_build() {
-	make -j1 DIST="$YPPATH_DEST"
+	make -j1 DIST="$destdir"
 }
 
 pbs_install() {
-	make -j1 install-all DIST="$YPPATH_DEST"
-	ypkg_dodoc COPYING README
-	ypkg_domv "$YPPATH_DEST"/usr/man "$YPPATH_DEST"/usr/share
+	make -j1 install-all DIST="$destdir"
+	dodoc COPYING README
+	domv "$destdir"/usr/man "$destdir"/usr/share
 }

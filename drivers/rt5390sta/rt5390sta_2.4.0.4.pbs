@@ -12,7 +12,7 @@ SRC_URI="https://api.opensuse.org/public/source/driver:wireless/rt5390sta/2010_1
 PROVIDE="$N-source $N-driver"
 
 pbs_unpack() {
-        ypkg_unpack
+        dounpack
 }
 
 pbs_config() {
@@ -23,7 +23,7 @@ pbs_config() {
 		 rt5390sta-2.4.0.4-return_nonvoid_function.patch
 		 rt5390sta-2.4.0.4-WPA-mixed.patch
 		 ylmfos_makefile.patch"
-	ypkg_patch $patches
+	dopatch $patches
 }
 
 rt5390sta-source_install () {
@@ -33,8 +33,8 @@ rt5390sta-source_install () {
 	OPINION="nodev"
         YARCH="any"
 	
-	ypkg_dosrc *
-	ypkg_dosupported "$N"_supported
+	dosrc *
+	dosupported "$N"_supported
 }
 
 rt5390sta-driver_install () {
@@ -43,6 +43,6 @@ rt5390sta-driver_install () {
 	INSTALL="$N.install"
 	
 	unset ARCH
-	ypkg_make
-	ypkg_mkinstall
+	domake
+	domkinstall
 }

@@ -15,24 +15,24 @@ BDEPEND=""
 INSTALL="$N.install"
 
 pbs_unpack() {
-        ypkg_unpack
+        dounpack
 }
 
 pbs_config() {
 	# The following patch contains fixes to Generate proper GCC 4.4.x code
-	ypkg_patch flex-2.5.35-gcc44-1.patch
-	ypkg_config
+	dopatch flex-2.5.35-gcc44-1.patch
+	doconfig
 }
 
 pbs_build() {
-	ypkg_make
+	domake
 }
 
 pbs_install() {
-	ypkg_mkinstall
-	ypkg_dodoc COPYING
+	domkinstall
+	dodoc COPYING
 
-	cd "$YPPATH_DEST"
+	cd "$destdir"
 	
 	# A few programs do not know about flex yet and try to run its predecessor, lex.
 	cat >usr/bin/lex << "EOF"
@@ -41,6 +41,6 @@ EOF
 	chmod 755 usr/bin/lex
 	
 	# Some packages that expect to find the lex library in /usr/lib.
-	ypkg_doln /usr/lib/ibfl.a /usr/lib/libl.a
+	doln /usr/lib/ibfl.a /usr/lib/libl.a
  }
 

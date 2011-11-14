@@ -15,7 +15,7 @@ BDEPEN=""
 INSTALL="$N.install"
 
 pbs_unpack() {
-        ypkg_unpack
+        dounpack
 }
 
 pbs_config() {
@@ -23,17 +23,17 @@ pbs_config() {
 	# which, if found, may confuse some applications
 	# avoids building the documentation (the release tarball \
 	# includes pre-generated documentation)
-	ypkg_patch fontconfig-2.8.0-urw-aliases.patch fontconfig-2.8.0-ubuntu.patch 
-	YPB_CONFIG+="--without-add-fonts"
-	ypkg_config
+	dopatch fontconfig-2.8.0-urw-aliases.patch fontconfig-2.8.0-ubuntu.patch 
+	config+="--without-add-fonts"
+	doconfig
 }
 
 pbs_build() {
-	ypkg_make
+	domake
 }
 
 pbs_install() {
-	ypkg_mkinstall
-	ypkg_dodoc AUTHORS ChangeLog README
+	domkinstall
+	dodoc AUTHORS ChangeLog README
 }
 

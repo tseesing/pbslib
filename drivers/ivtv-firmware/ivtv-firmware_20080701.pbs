@@ -16,11 +16,11 @@ RECOMMENDED=""
 CONFLICT=""
 
 pbs_unpack() {
-        ypkg_unpack
+        dounpack
 }
 
 pbs_install() {
 	cd ../
-	ypkg_docp *.fw *.mpg "$YPPATH_DEST"/lib/firmware/
+	docp *.fw *.mpg "$destdir"/lib/firmware/
 }
 

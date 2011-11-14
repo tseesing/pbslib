@@ -13,29 +13,29 @@ RDEPEND="berkeley-db glibc iptables"
 BDEPEND=""
 
 pbs_unpack() {
-        ypkg_unpack
+        dounpack
 }
 
 pbs_config () {
-	ypkg_patch iproute2-fhs.patch
+	dopatch iproute2-fhs.patch
 	./configure
 }
 
 
 pbs_build() {
-	ypkg_make
+	domake
 }
 
 pbs_install() {
-	ypkg_mkinstall
+	domkinstall
 
 	# libnetlink isn't installed, install it FS#19385
-	ypkg_docp include/libnetlink.h "$YPPATH_DEST"/usr/include/
-	ypkg_docp lib/libnetlink.a "$YPPATH_DEST"/usr/lib/
+	docp include/libnetlink.h "$destdir"/usr/include/
+	docp lib/libnetlink.a "$destdir"/usr/lib/
 
 	# Allow loopback to be started before /usr is mounted, this may not be supported in the future
-	cd "$YPPATH_DEST"	
-	ypkg_domv usr/sbin/ip sbin/
-	ypkg_doln /sbin/ip usr/sbin/ip
+	cd "$destdir"	
+	domv usr/sbin/ip sbin/
+	doln /sbin/ip usr/sbin/ip
 }
 

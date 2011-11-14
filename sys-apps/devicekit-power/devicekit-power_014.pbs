@@ -13,20 +13,20 @@ BDEPEND=""
 RECOMMENDED=""
 
 pbs_unpack() {
-        ypkg_unpack
+        dounpack
 }
 
 pbs_config() {
-	ypkg_patch devicekit-power.automake.diff
-	YPB_CONFIG+="--enable-man-pages "
-	ypkg_config
+	dopatch devicekit-power.automake.diff
+	config+="--enable-man-pages "
+	doconfig
 }
 
 pbs_build() {
-	ypkg_make
+	domake
 }
 
 pbs_install() {
-	ypkg_mkinstall
+	domkinstall
 }
 

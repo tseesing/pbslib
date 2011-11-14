@@ -21,9 +21,9 @@ OPINION="nodev"
 NOTES=""
 
 pbs_unpack() {
-        ypkg_unpack
+        dounpack
 }
 
 pbs_install() {	
-	ypkg_docp * "$YPPATH_DEST"
+	docp * "$destdir"
 }

@@ -14,18 +14,18 @@ RDEPEND="cairo expat fontconfig freetype gcc glib2 gdk-pixbuf glibc gtk+ lcms li
 BDEPEND=""
 
 pbs_unpack() {
-        ypkg_unpack
+        dounpack
 }
 
 pbs_config() {
-	ypkg_config
+	doconfig
 }
 
 pbs_build() {
-	ypkg_make
+	domake
 }
 
 pbs_install() {
-	ypkg_mkinstall
-	ypkg_dodoc ChangeLog
+	domkinstall
+	dodoc ChangeLog
 }

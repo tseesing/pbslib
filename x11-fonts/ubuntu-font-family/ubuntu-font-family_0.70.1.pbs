@@ -19,11 +19,11 @@ CONFLICT=""
 INSTALL="$N.install"
 
 pbs_unpack() {
-        ypkg_unpack
+        dounpack
 }
 
 pbs_install() {
-	ypkg_docp *.ttf "$YPPATH_DEST"/usr/share/fonts/truetype/"$N"
-	ypkg_dodoc *.txt 
+	docp *.ttf "$destdir"/usr/share/fonts/truetype/"$N"
+	dodoc *.txt 
 }
 

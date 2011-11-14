@@ -9,13 +9,15 @@ PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 PRIORITY="required"
 REPO="testing"
 
+INSTALL="$N.install"
+
 SRC_URI="git://git.ylmf.com/"$N".git"
 
 RDEPEND="acl attr bzip2 curl cyrus-sasl glibc libarchive libidn libxml2 openldap openssl sqlite xz-utils zlib"
 BDEPEND=""
 
 pbs_unpack() {
-	ypkg_unpack
+	dounpack
 }
 
 pbs_build() {
@@ -24,6 +26,6 @@ pbs_build() {
 }
 
 pbs_install() {
-	ypkg_mkinstall
+	domkinstall
 }
 

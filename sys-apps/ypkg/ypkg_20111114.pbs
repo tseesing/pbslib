@@ -17,7 +17,7 @@ BDEPEND=""
 RECOMMENDED="ypkg2 upx"
 
 pbs_unpack() {
-	ypkg_unpack
+	dounpack
 }
 
 pbs_build() {
@@ -26,6 +26,6 @@ pbs_build() {
 }
 
 pbs_install() {
-	ypkg_mkinstall
+	domkinstall
 }
 

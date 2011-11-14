@@ -15,7 +15,7 @@ BDEPEND=""
 RECOMMENDED=""
 
 pbs_unpack() {
-        ypkg_unpack
+        dounpack
 }
 
 pbs_build() {
@@ -23,7 +23,7 @@ pbs_build() {
 }
 
 pbs_install() {
-	python setup.py install --prefix=/usr --root="$YPPATH_DEST"
-	ypkg_dodoc COPYING NEWS README
+	python setup.py install --prefix=/usr --root="$destdir"
+	dodoc COPYING NEWS README
 }
 

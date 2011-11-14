@@ -12,11 +12,11 @@ SRC_URI="bcmwl-5.100.82.38.tar.bz2"
 PROVIDE="$N-source $N-driver"
 
 pbs_unpack() {
-        ypkg_unpack
+        dounpack
 }
 
 pbs_config() {
-	ypkg_patch ylmfos-missing-init_MUTEX.patch
+	dopatch ylmfos-missing-init_MUTEX.patch
 }
 
 bcmwl-source_install() {
@@ -25,8 +25,8 @@ bcmwl-source_install() {
 	INSTALL="$N.install"
 	OPINION="nodev"
 
-	ypkg_dosrc *
-	ypkg_dosupported "$N"_supported
+	dosrc *
+	dosupported "$N"_supported
 }
 
 bcmwl-driver_install() {
@@ -36,7 +36,7 @@ bcmwl-driver_install() {
 	INSTALL="$N.install"
 	
 	unset ARCH
-	ypkg_make
-	ypkg_mkinstall
+	domake
+	domkinstall
 }
 

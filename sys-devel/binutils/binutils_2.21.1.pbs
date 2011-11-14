@@ -13,17 +13,17 @@ RDEPEND="glibc zlib"
 BDEPEND=""
 
 pbs_unpack() {
-        ypkg_unpack
+        dounpack
 }
 
 pbs_config() {
 	[ -d "$N"-build ] && rm -fr "$N"-build
 	mkdir "$N"-build && cd "$N"-build
 	case $ARCH in 
-		i?86) YPB_CONFIG+="" ;;
-              x86_64) YPB_CONFIG+="--enable-64-bit-bfd"	
+		i?86) config+="" ;;
+              x86_64) config+="--enable-64-bit-bfd"	
 	esac
-	../configure $YPB_CONFIG
+	../configure $config
 }
 
 pbs_build() {
@@ -32,7 +32,7 @@ pbs_build() {
 }
 
 pbs_install() {
-	ypkg_mkinstall tooldir=/usr
-	ypkg_docp ../include/libiberty.h "$YPPATH_DEST"/usr/include
+	domkinstall tooldir=/usr
+	docp ../include/libiberty.h "$destdir"/usr/include
 }
 

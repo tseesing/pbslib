@@ -22,32 +22,32 @@ NOTES=""
 INSTALL="$N.install"
 
 pbs_unpack() {
-        ypkg_unpack
+        dounpack
 }
 
 pbs_config() {
 	#for i in 24 48 22 16 32;do
-	#	convert -resize "${i}"x"${i}" "$FILES_PATH"/files/evolution.png  data/icons/hicolor_apps_"${i}"x"${i}"_evolution.png
+	#	convert -resize "${i}"x"${i}" $filesdir/evolution.png  data/icons/hicolor_apps_"${i}"x"${i}"_evolution.png
 	#done
-	ypkg_docp_rename "$FILES_PATH"/files/evolution.svg  data/icons/hicolor_apps_scalable_evolution.svg
-	YPB_CONFIG+=" --disable-schemas-install  
+	docp_rename $filesdir/evolution.svg  data/icons/hicolor_apps_scalable_evolution.svg
+	config+=" --disable-schemas-install  
 		      --disable-nm 
 		      --with-openldap 
 		      --enable-python 
 		      --enable-pst-import 
 		      --with-krb5=/usr "
-	ypkg_config
+	doconfig
 }
 
 pbs_build() {
-	ypkg_make
+	domake
 }
 
 pbs_install() {
-	ypkg_mkinstall
-	ypkg_dodoc AUTHORS COPYING NEWS README
+	domkinstall
+	dodoc AUTHORS COPYING NEWS README
 	# keep clean for rarian
-	rm -fr "$YPPATH_DEST"/var/lib/scrollkeeper
-	rm -fr "$YPPATH_DEST"/var/lib/log
+	rm -fr "$destdir"/var/lib/scrollkeeper
+	rm -fr "$destdir"/var/lib/log
 }
 

@@ -13,15 +13,15 @@ RDEPEND="alsa-lib atk avahi cairo dbus dbus-glib expat fontconfig freetype gcc g
 BDEPEND=""
 
 pbs_unpack() {
-        ypkg_unpack
+        dounpack
 }
 
 pbs_install() {
-	ypkg_docp *  "$YPPATH_DEST"/opt/"$N-$V$R"
-	ypkg_dodesktop "$FILES_PATH"/files/firefox-bin.desktop  
+	docp *  "$destdir"/opt/"$N-$V$R"
+	dodesktop $filesdir/firefox-bin.desktop  
 
-	cd "$YPPATH_DEST"
-	ypkg_docp_rename opt/"$N-$V$R"/icons/mozicon128.png usr/share/pixmaps/"$N".png
+	cd "$destdir"
+	docp_rename opt/"$N-$V$R"/icons/mozicon128.png usr/share/pixmaps/"$N".png
 	mkdir -p usr/bin
 	cat >> usr/bin/firefox-bin.sh <<EOF
 #!/bin/sh

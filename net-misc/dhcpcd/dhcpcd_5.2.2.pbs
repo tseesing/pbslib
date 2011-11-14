@@ -13,21 +13,21 @@ RDEPEND="glibc"
 BDEPEND=""
 
 pbs_unpack() {
-        ypkg_unpack
+        dounpack
 }
 
 pbs_config() {
-	YPB_CONFIG+="--dbdir=/var/lib/dhcpcd"
-	ypkg_config
+	config+="--dbdir=/var/lib/dhcpcd"
+	doconfig
 }
 
 pbs_build() {
-	ypkg_make
+	domake
 }
 
 pbs_install() {
-	ypkg_mkinstall
-	ypkg_domv "$YPPATH_DEST"/usr/sbin "$YPPATH_DEST"/
-	ypkg_dounit "dhcpcd.service"
+	domkinstall
+	domv "$destdir"/usr/sbin "$destdir"/
+	dounit "dhcpcd.service"
 }
 

@@ -15,7 +15,7 @@ BDEPEND=""
 RECOMMENDED=""
 
 pbs_unpack() {
-        ypkg_unpack
+        dounpack
 }
 
 pbs_build() {
@@ -24,9 +24,9 @@ pbs_build() {
 }
 
 pbs_install() {
-	ypkg_docp laptop-detect "$YPPATH_DEST"/usr/sbin
-	ypkg_dodoc README
-	ypkg_doman laptop-detect.8
+	docp laptop-detect "$destdir"/usr/sbin
+	dodoc README
+	doman laptop-detect.8
 }
 
 

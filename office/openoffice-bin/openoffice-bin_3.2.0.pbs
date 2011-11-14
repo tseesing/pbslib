@@ -12,7 +12,7 @@ BDEPEND=" rpm2targz"
 
 pbs_unpack()
 {
-        ypkg_unpack
+        dounpack
 }
 
 pbs_config()
@@ -32,24 +32,24 @@ pbs_install()
 {
 	for i in *.tar
 	do
-		tar xf $i -C $YPPATH_DEST
+		tar xf $i -C $destdir
 	done
 	#move to right place.
-	mkdir -p "$YPPATH_DEST"/opt/openoffice
-	mv "$YPPATH_DEST"/opt/{openoffice.org/*,openoffice}
-	mv "$YPPATH_DEST"/opt/{openoffice.org3/*,openoffice}
-	rm -r "$YPPATH_DEST"/opt/openoffice.org &&\
-		rm -r "$YPPATH_DEST"/opt/openoffice.org3 
+	mkdir -p "$destdir"/opt/openoffice
+	mv "$destdir"/opt/{openoffice.org/*,openoffice}
+	mv "$destdir"/opt/{openoffice.org3/*,openoffice}
+	rm -r "$destdir"/opt/openoffice.org &&\
+		rm -r "$destdir"/opt/openoffice.org3 
 	#symbol link
-	rm "$YPPATH_DEST"/opt/openoffice/basis-link
-	ln -sv basis3.2 "$YPPATH_DEST"/opt/openoffice/basis-link
+	rm "$destdir"/opt/openoffice/basis-link
+	ln -sv basis3.2 "$destdir"/opt/openoffice/basis-link
 	# Component symlinks 
-	mkdir -p "$YPPATH_DEST"/usr/bin
+	mkdir -p "$destdir"/usr/bin
 	for app in base calc draw impress math writer; 
 	do
-		ln -sv /opt/openoffice/program/s${app} "$YPPATH_DEST"/usr/bin/oo${app}
+		ln -sv /opt/openoffice/program/s${app} "$destdir"/usr/bin/oo${app}
         done
-	ln -sv /opt/openoffice/program/soffice "$YPPATH_DEST"/usr/bin
+	ln -sv /opt/openoffice/program/soffice "$destdir"/usr/bin
 	# Change user install dir
-        sed -i -e "s/.openoffice.org\/3/.ooo3/g" ""$YPPATH_DEST"/opt/openoffice/program/bootstraprc" 
+        sed -i -e "s/.openoffice.org\/3/.ooo3/g" ""$destdir"/opt/openoffice/program/bootstraprc" 
 }

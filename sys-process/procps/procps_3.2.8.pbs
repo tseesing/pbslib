@@ -13,27 +13,27 @@ RDEPEND="glibc ncurses"
 BDEPEND=" "
 
 pbs_unpack() {
-        ypkg_unpack
+        dounpack
 }
 
 pbs_config() {
 	# The following patch adds process control group support to ps
-	ypkg_patch procps-3.2.8-ps_cgroup-1.patch
+	dopatch procps-3.2.8-ps_cgroup-1.patch
 	
 	# The following fixes an issue with Make 3.82
 	sed -i -r '/^-include/s/\*(.*)/proc\1 ps\1/' Makefile
-	ypkg_config
+	doconfig
 }
 
 pbs_build() {
 	case $ARCH in 
-		i?86) ypkg_make ;;
-      	      x86_64) ypkg_make m64=""
+		i?86) domake ;;
+      	      x86_64) domake m64=""
 	esac
 
 }
 
 pbs_install() {
-	ypkg_mkinstall
+	domkinstall
 }
 

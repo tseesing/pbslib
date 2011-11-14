@@ -15,21 +15,21 @@ BDEPEND=" pth libgcrypt libksba libgpg-error curl bzip2 libassuan gettext" #pine
 NOTES=""
 
 pbs_unpack() {
-        ypkg_unpack
+        dounpack
 }
 
 pbs_config() {
 	
-	YPB_CONFIG+=" --prefix=/usr --sysconfdir=/etc --localstatedir=/var \
+	config+=" --prefix=/usr --sysconfdir=/etc --localstatedir=/var \
 	               --infodir=/usr/share/info --mandir=/usr/share/man \
 	               --disable-static --enable-shared "
-	ypkg_config
+	doconfig
 }
 
 pbs_build() {
-	ypkg_make
+	domake
 }
 
 pbs_install() {
-	ypkg_mkinstall
+	domkinstall
 }

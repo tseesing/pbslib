@@ -19,12 +19,12 @@ CONFLICT=""
 DESKTOPFILE="dassault-systemes_draftsight.desktop"
 
 pbs_unpack() {
-        ypkg_unpack
+        dounpack
 }
 
 pbs_install() {
-	ypkg_docp data/*  "$YPPATH_DEST"
-	cd "$YPPATH_DEST"
-	ypkg_dodesktop   "opt/dassault-systemes/draftsight/mime/dassault-systemes_draftsight.desktop" "opt/dassault-systemes/draftsight/mime/pixmaps/32x32/dassault-systemes_draftsight.png"
+	docp data/*  "$destdir"
+	cd "$destdir"
+	dodesktop   "opt/dassault-systemes/draftsight/mime/dassault-systemes_draftsight.desktop" "opt/dassault-systemes/draftsight/mime/pixmaps/32x32/dassault-systemes_draftsight.png"
 }
 

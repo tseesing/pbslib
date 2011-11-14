@@ -16,31 +16,31 @@ RECOMMENDED=""
 INSTALL="$N.install"
 
 pbs_unpack() {
-        ypkg_unpack
+        dounpack
 }
 
 pbs_config() {
 	if [ -x /usr/bin/convert ]; then
-		icon="$FILES_PATH"/files/gnome-display-properties.png
+		icon=$filesdir/gnome-display-properties.png
 		for i in 24x24 22x22 16x16 32x32; do
 			convert -resize "${i}" "$icon" capplets/display/icons/"${i}"/gnome-display-properties.png
 		done
 	fi
-	cp "$FILES_PATH"/files/gnome-display-properties.svg  capplets/display/icons/scalable/gnome-display-properties.svg
-	ypkg_patch 01_gnome-about-me.patch  100-desktop-i18n.patch ylmfos-windows-resize.patch
-	YPB_CONFIG+="--enable-aboutme --disable-schemas-install --disable-update-mimedb "
-	ypkg_config
+	cp $filesdir/gnome-display-properties.svg  capplets/display/icons/scalable/gnome-display-properties.svg
+	dopatch 01_gnome-about-me.patch  100-desktop-i18n.patch ylmfos-windows-resize.patch
+	config+="--enable-aboutme --disable-schemas-install --disable-update-mimedb "
+	doconfig
 }
 
 pbs_build() {
-	ypkg_make
+	domake
 }
 
 pbs_install() {
-	ypkg_mkinstall
+	domkinstall
 	# clean up empty mime file
-	find "$YPPATH_DEST"/usr/share/mime -size 0 -type f -exec rm -v {} \;
-	rm -fr "$YPPATH_DEST"/usr/share/applications/mimeinfo.cache
+	find "$destdir"/usr/share/mime -size 0 -type f -exec rm -v {} \;
+	rm -fr "$destdir"/usr/share/applications/mimeinfo.cache
 	# Copy extra documentation into package.
-	ypkg_docp AUTHORS COPYING NEWS README PACKAGERS
+	docp AUTHORS COPYING NEWS README PACKAGERS
 }

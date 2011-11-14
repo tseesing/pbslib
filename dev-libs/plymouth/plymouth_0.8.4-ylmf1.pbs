@@ -16,11 +16,11 @@ RECOMMENDED="plymouth-theme-ylmf-logo"
 INSTALL="$N.install"
 
 pbs_unpack() {
-        ypkg_unpack
+        dounpack
 }
 
 pbs_config() {
-	YPB_CONFIG+="--libdir=/lib 
+	config+="--libdir=/lib 
 		     --datarootdir=/lib
 		     --enable-tracing --disable-tests
   	             --with-background-start-color-stop=0x0073B3           
@@ -32,21 +32,21 @@ pbs_config() {
 	             --with-rhgb-compat-link                               
 		     --without-log-viewer"
 		     #--with-logo=%{_datadir}/pixmaps/system-logo-white.png
-	ypkg_config
+	doconfig
 }
 
 pbs_build() {
-	ypkg_make
+	domake
 }
 
 pbs_install() {
-	ypkg_mkinstall
+	domkinstall
 	
 	# For initramfs-tools
-	cd "$YPPATH_DEST" 
-	ypkg_docp "$FILES_PATH"/files/initramfs-tools usr/share/
+	cd "$destdir" 
+	docp $filesdir/initramfs-tools usr/share/
 
 	#
-	ypkg_doln /lib/plymouth/themes/text/text.plymouth  lib/plymouth/themes/text.plymouth
+	doln /lib/plymouth/themes/text/text.plymouth  lib/plymouth/themes/text.plymouth
 }
 

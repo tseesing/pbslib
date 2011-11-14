@@ -13,7 +13,7 @@ RDEPEND=""
 BDEPEND=""
 
 pbs_unpack() {
-        ypkg_unpack
+        dounpack
 }
 
 pbs_build() {
@@ -22,11 +22,11 @@ pbs_build() {
 }
 
 pbs_install() {
-	mkdir -p "$YPPATH_DEST"/usr
-	make INSTALL_HDR_PATH="$YPPATH_DEST"/usr headers_install
+	mkdir -p "$destdir"/usr
+	make INSTALL_HDR_PATH="$destdir"/usr headers_install
 	# hrm, build system sucks
-	find "${YPPATH_DEST}" \( -name '.install' -o -name '*.cmd' \) -print0 | xargs -0 rm -f
+	find "${destdir}" \( -name '.install' -o -name '*.cmd' \) -print0 | xargs -0 rm -f
         # provided by libdrm and glibc
-        rm -rf "$YPPATH_DEST"/usr/include/drm
-        rm -rf "$YPPATH_DEST"/usr/include/scsi
+        rm -rf "$destdir"/usr/include/drm
+        rm -rf "$destdir"/usr/include/scsi
 }

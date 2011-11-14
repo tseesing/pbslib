@@ -16,19 +16,19 @@ RECOMMENDED=""
 NOTES=""
 
 pbs_unpack() {
-        ypkg_unpack
+        dounpack
 }
 
 pbs_config() {
-	YPB_CONFIG+="--enable-nls"
-	ypkg_config
+	config+="--enable-nls"
+	doconfig
 }
 
 pbs_build() {
-	ypkg_make
+	domake
 }
 
 pbs_install() {
-	ypkg_mkinstall
-	ypkg_dodoc AUTHORS ChangeLog NEWS README
+	domkinstall
+	dodoc AUTHORS ChangeLog NEWS README
 }

@@ -14,7 +14,7 @@ RDEPEND=""
 BDEPEND="zip"
 
 pbs_unpack() {
-	ypkg_unpack
+	dounpack
 }
 
 pbs_build() {
@@ -23,5 +23,5 @@ pbs_build() {
 }
 
 pbs_install() {
-	ypkg_docp etc usr "$YPPATH_DEST"/
+	docp etc usr "$destdir"/
 }

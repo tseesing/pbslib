@@ -14,23 +14,23 @@ BDEPEND="python-dev   "
 RECOMMENDED=""
 
 pbs_unpack() {
-        ypkg_unpack
+        dounpack
 }
 
 pbs_config() {
-	ypkg_patch "$N-$V$R"-missing-includes-1.patch
-	ypkg_config
+	dopatch "$N-$V$R"-missing-includes-1.patch
+	doconfig
 }
 
 pbs_build() {
-	ypkg_make
+	domake
 	cd python
-	ypkg_make
+	domake
 	cd ..
 }
 
 pbs_install() {
-	ypkg_mkinstall
+	domkinstall
 	cd python
-	ypkg_mkinstall
+	domkinstall
 }

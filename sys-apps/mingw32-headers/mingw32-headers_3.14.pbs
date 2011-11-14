@@ -19,15 +19,15 @@ CONFLICT=""
 OPINION="nodev nostrip"
 
 pbs_unpack() {
-        ypkg_unpack
+        dounpack
 	tar xf "$YPPATH_SOURCE"/mingwrt-3.18-mingw32-src.tar.gz
 	cp -a mingwrt-3.18-mingw32/include/* mingw32-headers-3.14/include/
 }
 
 pbs_install() {
 	INSTALL_DIR="/usr/mingw"
-	ypkg_docp include "$YPPATH_DEST"/"$INSTALL_DIR"
-	cd "$YPPATH_DEST"/"$INSTALL_DIR"
+	docp include "$destdir"/"$INSTALL_DIR"
+	cd "$destdir"/"$INSTALL_DIR"
 	ln -sf . usr
 	mkdir mingw
 	ln -sf /usr/mingw/include mingw/include

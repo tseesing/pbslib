@@ -21,14 +21,14 @@ INSTALL="$N.install"
 NOTES=""
 
 pbs_unpack() {
-        ypkg_unpack
+        dounpack
 }
 
 pbs_build() {
-	ypkg_make
+	domake
 }
 
 pbs_install() {
-	ypkg_docp vhba.ko "$YPPATH_DEST"/lib/modules/"$(uname -r)"/extra/
+	docp vhba.ko "$destdir"/lib/modules/"$(uname -r)"/extra/
 }
 

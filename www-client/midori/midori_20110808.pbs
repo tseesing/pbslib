@@ -17,26 +17,26 @@ CONFLICT=""
 INSTALL="$N.install"
 
 pbs_unpack() {
-        ypkg_unpack
+        dounpack
 }
 
 pbs_config() {
 	#FIXME 
 	#"x-scheme-handler/geo" is discouraged. 
-	ypkg_patch ylmfos-desktop.patch
-	YPB_CONFIG="--prefix=/usr
+	dopatch ylmfos-desktop.patch
+	config="--prefix=/usr
 	            --sysconfdir=/etc
 	            --localstatedir=/var
 	            --infodir=/usr/share/info
 		    --mandir=/usr/share/man"
-	ypkg_config
+	doconfig
 }
 
 pbs_build() {
-	ypkg_make
+	domake
 }
 
 pbs_install() {
-	ypkg_mkinstall
+	domkinstall
 }
 

@@ -13,83 +13,83 @@ RDEPEND="glibc"
 BDEPEND=""
 
 pbs_unpack() {
-        ypkg_unpack
+        dounpack
 }
 
 pbs_config() {
 	# Patch contains updates from the 5.9 branch by the Ncurses developers
-	ypkg_patch ncurses-5.9-branch_update-2.patch
+	dopatch ncurses-5.9-branch_update-2.patch
 	
 	mkdir -p "$N"w-build && pushd "$N"w-build 
-	YPB_CONFIG+="--with-shared
+	config+="--with-shared
 	             --with-normal
 	             --without-debug
 		     --without-ada 
 	             --enable-widec"
 	
-	../configure $YPB_CONFIG
-	ypkg_make
+	../configure $config
+	domake
 	popd
 
 	# libncurses.so.5 for external binary support 
 	mkdir -p "$N"-build &&  pushd "$N"-build 
 	[ "$ARCH" = "x86_64" ] && CONFIGFLAG="--with-chtype=long"
-	YPB_CONFIG="--prefix=/usr 
+	config="--prefix=/usr 
 	            --with-shared 
 		    --with-normal 
 		    --without-debug 
 		    --without-ada
 	            "$CONFIGFLAG""
 
-	../configure $YPB_CONFIG	    
-	ypkg_make
+	../configure $config	    
+	domake
 	popd
 }
 
 pbs_install() {
 	# Install license, rip it from the readme
 	grep -B 100 '$Id' README >license.txt
-	ypkg_dodoc license.txt
+	dodoc license.txt
 	
 	pushd "$N"w-build
-	ypkg_mkinstall
-	ypkg_doln /usr/lib/libncursesw.so.5 "$YPPATH_DEST"/usr/lib/libncursesw.so
+	domkinstall
+	doln /usr/lib/libncursesw.so.5 "$destdir"/usr/lib/libncursesw.so
 	popd
 
 	# non-widec compatibility library
 	pushd "$N"-build
-	ypkg_docp lib/libncurses.so."$V"      "$YPPATH_DEST"/usr/lib/
-	ypkg_doln /usr/lib/libncurses.so."$V" "$YPPATH_DEST"/usr/lib/libncurses.so.5
+	docp lib/libncurses.so."$V"      "$destdir"/usr/lib/
+	doln /usr/lib/libncurses.so."$V" "$destdir"/usr/lib/libncurses.so.5
 
 
-	cd  "$YPPATH_DEST"
+	cd  "$destdir"
 
  	# move libraries needed for boot to /lib (we call tput in initscripts)
-        ypkg_doln /usr/lib/libncursesw.so.5 usr/lib/libncursesw.so
+        doln /usr/lib/libncursesw.so.5 usr/lib/libncursesw.so
 
         # Fool packages looking to link to non-wide-character ncurses libraries
 	for lib in curses ncurses form panel menu; do
 		rm -f usr/lib/lib"${lib}".so
 	        echo "INPUT(-l${lib}w)" >usr/lib/lib"${lib}".so
-  	        ypkg_doln /usr/lib/lib"${lib}"w.a usr/lib/lib"${lib}".a
+  	        doln /usr/lib/lib"${lib}"w.a usr/lib/lib"${lib}".a
 	done
-	ypkg_doln /usr/lib/libncurses++w.a usr/lib/libncurses++.a
+	doln /usr/lib/libncurses++w.a usr/lib/libncurses++.a
 
 	# Some packages look for -lcurses during build
 	rm -f usr/lib/libcursesw.so
 	echo "INPUT(-lncursesw)" >usr/lib/libcursesw.so
-	ypkg_doln /usr/lib/libncurses.so usr/lib/libcurses.so
-	ypkg_doln /usr/lib/libncursesw.a usr/lib/libcursesw.a
-	ypkg_doln /usr/lib/libncurses.a  usr/lib/libcurses.a
+	doln /usr/lib/libncurses.so usr/lib/libcurses.so
+	doln /usr/lib/libncursesw.a usr/lib/libcursesw.a
+	doln /usr/lib/libncurses.a  usr/lib/libcurses.a
 
 	# Create a symlink for /usr/share/terminfo in /usr/lib for compatibility
-	ypkg_doln /usr/share/terminfo usr/lib/terminfo
+	doln /usr/share/terminfo usr/lib/terminfo
 
-	#ypkg_doln /usr/lib"$LIBDIRSUFFIX"/libcurses.so        usr/lib"$LIBDIRSUFFIX"/libcursesw.so
-	#ypkg_doln /usr/lib"$LIBDIRSUFFIX"/libncurses.so       usr/lib"$LIBDIRSUFFIX"/libcurses.so
-	#ypkg_doln /usr/lib"$LIBDIRSUFFIX"/libncursesw.a       usr/lib"$LIBDIRSUFFIX"/libcursesw.a
-	#ypkg_doln /usr/lib"$LIBDIRSUFFIX"/libncurses.a        usr/lib"$LIBDIRSUFFIX"/libcurses.a
-	#ypkg_doln /usr/lib"$LIBDIRSUFFIX"/libncurses++w.a     usr/lib"$LIBDIRSUFFIX"/libncurses++.a
+	#doln /usr/lib"$LIBDIRSUFFIX"/libcurses.so        usr/lib"$LIBDIRSUFFIX"/libcursesw.so
+	#doln /usr/lib"$LIBDIRSUFFIX"/libncurses.so       usr/lib"$LIBDIRSUFFIX"/libcurses.so
+	#doln /usr/lib"$LIBDIRSUFFIX"/libncursesw.a       usr/lib"$LIBDIRSUFFIX"/libcursesw.a
+	#doln /usr/lib"$LIBDIRSUFFIX"/libncurses.a        usr/lib"$LIBDIRSUFFIX"/libcurses.a
+	#doln /usr/lib"$LIBDIRSUFFIX"/libncurses++w.a     usr/lib"$LIBDIRSUFFIX"/libncurses++.a
 
 #	case $ARCH in
 #		i?86) 
@@ -97,7 +97,7 @@ pbs_install() {
 #	mv usr/bin/ncursesw5-config{,-32} ;;
 #		x86_64)
 #	mv usr/bin/ncursesw5-config{,-64}
-#	ypkg_doln /usr/bin/multiarch_wrapper usr/bin/ncursesw5-config
+#	doln /usr/bin/multiarch_wrapper usr/bin/ncursesw5-config
 #	esac
 }
 

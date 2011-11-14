@@ -12,24 +12,24 @@ BDEPEND=" x11-libs/startup-notification net-libs/gnutls"
 
 pbs_unpack()
 {
-        ypkg_unpack
+        dounpack
 }
 
 pbs_config()
 {
 	
-	YPB_CONFIG+=" --disable-gtkspell --disable-gstreamer --disable-vv \
+	config+=" --disable-gtkspell --disable-gstreamer --disable-vv \
 		--disable-idn --disable-meanwhile --disable-avahi --disable-nm \
 		--disable-tcl"
-	ypkg_config
+	doconfig
 }
 
 pbs_build()
 {
-	ypkg_make
+	domake
 }
 
 pbs_install()
 {
-	ypkg_mkinstall
+	domkinstall
 }

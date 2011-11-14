@@ -15,21 +15,21 @@ BDEPEND=""
 INSTALL="$N.install"
 
 pbs_unpack() {
-        ypkg_unpack
+        dounpack
 }
 
 pbs_config() {
 	[[ ${ARCH} == x86_64 ]] && extraopts='' || extraopts='--disable-sse2'
-	YPB_CONFIG+="${extraopts}"
-	ypkg_config
+	config+="${extraopts}"
+	doconfig
 }
 
 pbs_build() {
-	ypkg_make
+	domake
 }
 
 pbs_install() {
-	ypkg_mkinstall
+	domkinstall
 }
 
 

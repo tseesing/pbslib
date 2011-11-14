@@ -21,20 +21,20 @@ INSTALL="$N.install"
 NOTES=""
 
 pbs_unpack() {
-        ypkg_unpack
+        dounpack
 }
 
 pbs_config() {
-	ypkg_config
+	doconfig
 }
 
 pbs_build() {
-	ypkg_make
+	domake
 }
 
 pbs_install() {
-	ypkg_mkinstall
-	cd "$YPPATH_DEST"
-	ypkg_docp_rename "usr/share/icons/hicolor/32x32/apps/agave.png" "usr/share/pixmaps/agave-icon.png"
+	domkinstall
+	cd "$destdir"
+	docp_rename "usr/share/icons/hicolor/32x32/apps/agave.png" "usr/share/pixmaps/agave-icon.png"
 }
 

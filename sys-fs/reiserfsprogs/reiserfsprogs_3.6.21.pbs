@@ -13,21 +13,21 @@ RDEPEND="glibc util-linux-ng"
 BDEPEND=""
 
 pbs_unpack() {
-        ypkg_unpack
+        dounpack
 }
 
 pbs_config() {
-	YPB_CONFIG+="--sbindir=/sbin"
-	ypkg_config
+	config+="--sbindir=/sbin"
+	doconfig
 }
 
 pbs_build() {
-	ypkg_make
+	domake
 }
 
 pbs_install() {
-	ypkg_mkinstall
-	ypkg_doln reiserfsck "$YPPATH_DEST"/sbin/fsck.reiserfs
-	ypkg_doln mkreiserfs "$YPPATH_DEST"/sbin/mkfs.reiserfs
+	domkinstall
+	doln reiserfsck "$destdir"/sbin/fsck.reiserfs
+	doln mkreiserfs "$destdir"/sbin/mkfs.reiserfs
 }
 

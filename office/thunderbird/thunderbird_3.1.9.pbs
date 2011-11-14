@@ -20,7 +20,7 @@ CONFLICT=""
 NOTES=""
 
 pbs_unpack() {
-        ypkg_unpack
+        dounpack
 }
 
 pbs_config() {
@@ -29,7 +29,7 @@ pbs_config() {
 	#echo "* ui locale zh-CN downloading ..."
 	#hg clone http://hg.mozilla.org/l10n-central/zh-CN/
 	#cd ..
-	YPB_CONFIG+="--enable-application=mail
+	config+="--enable-application=mail
 		     --enable-official-branding
 		     --with-distribution-id=ylmfos
 		     --disable-debug 
@@ -39,16 +39,16 @@ pbs_config() {
 		     --enable-optimize=-O2"
 		     #--with-l10n-base=l10n
 		     #--enable-ui-locale=zh-CN
-	ypkg_config
+	doconfig
 }
 
 pbs_build() {
-	ypkg_make
+	domake
 }
 
 pbs_install() {
-	ypkg_mkinstall
-	cd "$YPPATH_DEST"
-	ypkg_dodesktop "thunderbird.desktop" "usr/lib/thunderbird-3.1.9/chrome/icons/default/default48.png"
+	domkinstall
+	cd "$destdir"
+	dodesktop "thunderbird.desktop" "usr/lib/thunderbird-3.1.9/chrome/icons/default/default48.png"
 }
 

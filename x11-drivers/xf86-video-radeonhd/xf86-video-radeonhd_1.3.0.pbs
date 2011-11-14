@@ -16,19 +16,19 @@ RECOMMENDED=""
 NOTES="Status 09/2010: Linux distributions, including Novell's openSUSE, have now abandoned radeonhd as the default driver, instead using the radeon driver. radeon has more features, including Kernel Mode-Setting support and more 3D support, and it supports all Radeon generation from original R100 Radeons to R800 Radeons (HD 5000 series). Radeonhd can be continued to be updated as long as there are people find it useful."
 
 pbs_unpack() {
-        ypkg_unpack
+        dounpack
 }
 
 pbs_config() {
 	
-	ypkg_config
+	doconfig
 }
 
 pbs_build() {
-	ypkg_make
+	domake
 }
 
 pbs_install() {
-	ypkg_mkinstall
+	domkinstall
 }
 

@@ -21,29 +21,29 @@ To correct that, execute
 ln -sf /proc/self/mounts /etc/mtab"
 
 pbs_unpack() {
-        ypkg_unpack
+        dounpack
 }
 
 pbs_config() {
-	ypkg_patch ylmfos-gnome-ask-password-agent.patch ylmfos-configure-add-distro.patch
-	YPB_CONFIG+="--with-distro=ylmfos 
+	dopatch ylmfos-gnome-ask-password-agent.patch ylmfos-configure-add-distro.patch
+	config+="--with-distro=ylmfos 
 		     --enable-gtk
 		     --with-rootdir=/
 		     --with-udevrulesdir=/lib/udev/rules.d"
 		     #--with-sysvinit-path=/etc/init.d/
 		     #--with-sysvrcd-path=/etc"
-	ypkg_config
+	doconfig
 }
 
 pbs_build() {
-	ypkg_make
+	domake
 }
 
 pbs_install() {
-	ypkg_mkinstall
-	ypkg_docp "$FILES_PATH"/files/services/*                         "$YPPATH_DEST"/lib/systemd/system/
-	ypkg_docp "$FILES_PATH"/files/{start,stop,status,restart,reload} "$YPPATH_DEST"/usr/bin/
-	cd "$YPPATH_DEST"
+	domkinstall
+	docp $filesdir/services/*                         "$destdir"/lib/systemd/system/
+	docp $filesdir/{start,stop,status,restart,reload} "$destdir"/usr/bin/
+	cd "$destdir"
 	# FIXME
 	# VT1 cause xorg 100% cpu.
 	rm etc/systemd/system/getty.target.wants/getty@tty1.service
@@ -53,9 +53,9 @@ pbs_install() {
 	rm lib/systemd/system/local-fs.target.wants/media.mount
 	#
 	mkdir -p run
-	ypkg_doln /bin/systemd sbin/init
+	doln /bin/systemd sbin/init
 	for i in halt poweroff reboot runlevel shutdown telinit; do
-		ypkg_doln  /bin/systemctl  sbin/"${i}" 	
+		doln  /bin/systemctl  sbin/"${i}" 	
 	done
 	ln -sf /proc/self/mounts etc/mtab
 }

@@ -16,19 +16,19 @@ RECOMMENDED=""
 CONFLICT=""
 
 pbs_unpack() {
-        ypkg_unpack
+        dounpack
 }
 
 pbs_config() {
-	ypkg_patch ylmfos-makefile-prefix.patch
-	ypkg_config
+	dopatch ylmfos-makefile-prefix.patch
+	doconfig
 }
 
 pbs_build() {
-	ypkg_make
+	domake
 }
 
 pbs_install() {
-	ypkg_mkinstall
-	ypkg_dodoc LICENSE README
+	domkinstall
+	dodoc LICENSE README
 }

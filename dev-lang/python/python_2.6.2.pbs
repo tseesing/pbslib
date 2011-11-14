@@ -13,7 +13,7 @@ RDEPEND="berkeley-db bzip2 expat fontconfig freetype gdbm glibc libX11 libXau li
 BDEPEND=""
 
 pbs_unpack() {
-        ypkg_unpack
+        dounpack
 }
 
 pbs_config(){
@@ -22,19 +22,19 @@ pbs_config(){
 	rm -fr Modules/_ctypes/libffi*
 	rm -fr Modules/zlib
 
-	YPB_CONFIG+="--enable-shared 
+	config+="--enable-shared 
 	             --with-threads 
 		     --with-system-expat 
 		     --with-system-ffi"
-	ypkg_config
+	doconfig
 }
 
 pbs_build() {
-	ypkg_make
+	domake
 }
 
 pbs_install() {
-	ypkg_mkinstall
+	domkinstall
 }
 
 

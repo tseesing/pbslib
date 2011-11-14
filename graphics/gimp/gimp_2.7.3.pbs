@@ -15,16 +15,16 @@ BDEPEND=""
 INSTALL="$N.install"
 
 pbs_unpack() {
-        ypkg_unpack
+        dounpack
 }
 
 pbs_config() {
-	YPB_CONFIG+="--disable-python --enable-default-binary --with-x --with-xmc --without-xvfb-run"
-	ypkg_config
+	config+="--disable-python --enable-default-binary --with-x --with-xmc --without-xvfb-run"
+	doconfig
 }
 
 pbs_install() {
-	ypkg_mkinstall
+	domkinstall
 }
 
 

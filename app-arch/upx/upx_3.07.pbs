@@ -16,7 +16,7 @@ BDEPEND=""
 CONFLICT=""
 
 pbs_unpack() {
-        ypkg_unpack
+        dounpack
 }
 
 pbs_build() {
@@ -25,7 +25,7 @@ pbs_build() {
 }
 
 pbs_install() {
-	install -D src/upx.out "$YPPATH_DEST"/usr/bin/upx
-	ypkg_doman doc/upx.1
+	install -D src/upx.out "$destdir"/usr/bin/upx
+	doman doc/upx.1
 }
 

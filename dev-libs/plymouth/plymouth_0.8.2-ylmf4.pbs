@@ -16,12 +16,12 @@ RECOMMENDED="plymouth-theme-ylmf-logo"
 INSTALL="$N.install"
 
 pbs_unpack() {
-        ypkg_unpack
+        dounpack
 }
 
 pbs_config() {
-	# ypkg_patch debian-changes.patch
-	ypkg_docp "$FILES_PATH"/files/ubuntu-logo/*.png themes/ubuntu-logo
+	# dopatch debian-changes.patch
+	docp $filesdir/ubuntu-logo/*.png themes/ubuntu-logo
 	patches=" ubuntu_details.patch
 		  details_removeSeparator.patch
 		  misc-changes.patch
@@ -40,29 +40,29 @@ pbs_config() {
 		  upstream-terminal-OPOST.patch
 		  upstream-terminal-no-ISTRIP.patch
 		  autoreconf.patch "
-	ypkg_patch $patches
-	YPB_CONFIG+="--libdir=/lib 
+	dopatch $patches
+	config+="--libdir=/lib 
 		     --enable-gdm-transition
 		     --datarootdir=/lib"
-	ypkg_config
+	doconfig
 }
 
 pbs_build() {
-	ypkg_make
+	domake
 }
 
 pbs_install() {
-	ypkg_mkinstall
-	ypkg_dodoc AUTHORS ChangeLog COPYING INSTALL NEWS README
+	domkinstall
+	dodoc AUTHORS ChangeLog COPYING INSTALL NEWS README
 	
 	# For initramfs-tools
-	cd "$YPPATH_DEST" 
-	ypkg_docp "$FILES_PATH"/files/initramfs-tools usr/share/
-	ypkg_docp "$FILES_PATH"/files/ylmfos-logo.png lib/plymouth
+	cd "$destdir" 
+	docp $filesdir/initramfs-tools usr/share/
+	docp $filesdir/ylmfos-logo.png lib/plymouth
 	
 	#
 	rm -rf lib/plymouth/plymouthd.defaults lib/plymouth/themes/ubuntu-text \
 	       lib/plymouth/themes/ubuntu-logo lib/plymouth/themes/kubuntu-text lib/plymouth/ubuntu-text.so
-	ypkg_doln /lib/plymouth/themes/text/text.plymouth  lib/plymouth/themes/text.plymouth
+	doln /lib/plymouth/themes/text/text.plymouth  lib/plymouth/themes/text.plymouth
 }
 

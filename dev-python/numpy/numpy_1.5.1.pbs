@@ -14,15 +14,15 @@ BDEPEND=" "
 RECOMMENDED=""
 
 pbs_unpack() {
-        ypkg_unpack
+        dounpack
 }
 
 pbs_build() {
-	ypkg_make
+	domake
 }
 
 pbs_install() {
-	ypkg_mkinstall
-	ypkg_dodoc COMPATIBILITY LICENSE.txt README.txt DEV_README.txt THANKS.txt INSTALL.txt
+	domkinstall
+	dodoc COMPATIBILITY LICENSE.txt README.txt DEV_README.txt THANKS.txt INSTALL.txt
 }
 

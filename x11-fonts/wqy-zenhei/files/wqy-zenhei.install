@@ -1,7 +1,7 @@
 . /usr/lib/ybs/funcs
 
 post_install() {
-	ypkg_dofont /usr/share/fonts/wenquanyi/wqy-zenhei
+	dofont /usr/share/fonts/wenquanyi/wqy-zenhei
 }
 
 post_remove () {

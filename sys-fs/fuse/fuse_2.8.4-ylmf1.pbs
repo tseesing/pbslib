@@ -13,21 +13,21 @@ RDEPEND="glibc"
 BDEPEND=""
 
 pbs_unpack() {
-        ypkg_unpack
+        dounpack
 }
 
 pbs_config() {
-	ypkg_config
+	doconfig
 }
 
 pbs_build() {
-	ypkg_make
+	domake
 }
 
 pbs_install() {
-	ypkg_mkinstall
+	domkinstall
 	#for initramfs-tools
-	ypkg_docp_rename "$FILES_PATH"/files/hook_fuse "$YPPATH_DEST"/usr/share/initramfs-tools/hooks/fuse
+	docp_rename $filesdir/hook_fuse "$destdir"/usr/share/initramfs-tools/hooks/fuse
 	#delete sysv init script
-	rm -rf "$YPPATH_DEST"/etc/init.d/ || return 0
+	rm -rf "$destdir"/etc/init.d/ || return 0
 }

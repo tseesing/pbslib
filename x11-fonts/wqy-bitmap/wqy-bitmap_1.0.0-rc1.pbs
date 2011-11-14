@@ -15,13 +15,13 @@ BDEPEND=""
 INSTALL="$N.install"
 
 pbs_unpack() {
-        ypkg_unpack
+        dounpack
 }
 
 pbs_install() {
-	ypkg_docp *.pcf "$YPPATH_DEST"/usr/share/fonts/wenquanyi/wqy-bitmap
-	ypkg_docp *.conf "$YPPATH_DEST"/etc/fonts/conf.avail
-	cd "$YPPATH_DEST"
-	ypkg_doln /etc/fonts/conf.avail/85-wqy-bitmapsong.conf etc/fonts/conf.d/85-wqy-bitmapsong.conf
+	docp *.pcf "$destdir"/usr/share/fonts/wenquanyi/wqy-bitmap
+	docp *.conf "$destdir"/etc/fonts/conf.avail
+	cd "$destdir"
+	doln /etc/fonts/conf.avail/85-wqy-bitmapsong.conf etc/fonts/conf.d/85-wqy-bitmapsong.conf
 }
 

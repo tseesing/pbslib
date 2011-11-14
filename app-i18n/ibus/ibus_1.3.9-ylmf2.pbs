@@ -29,26 +29,26 @@ ibus-daemon -d -x
 INSTALL="$N.install"
 
 pbs_unpack() {
-        ypkg_unpack
+        dounpack
 }
 
 pbs_config() {
-	ypkg_docp "$FILES_PATH"/files/ibus-keyboard.svg data/icons/scalable
+	docp $filesdir/ibus-keyboard.svg data/icons/scalable
 	for i in 24 48 22 16 32;do 
-		convert -resize "${i}"x"${i}" "$FILES_PATH"/files/ibus-keyboard.png data/icons/"${i}"/ibus-keyboard.png
+		convert -resize "${i}"x"${i}" $filesdir/ibus-keyboard.png data/icons/"${i}"/ibus-keyboard.png
 	done
 	#
-	ypkg_patch "ibus_ui.patch" ibus-i18n.patch
-	YPB_CONFIG+="--enable-maintainer-mode --disable-schemas-install"
-	ypkg_config
+	dopatch "ibus_ui.patch" ibus-i18n.patch
+	config+="--enable-maintainer-mode --disable-schemas-install"
+	doconfig
 }
 
 pbs_build() {
-	ypkg_make
+	domake
 }
 
 pbs_install() {
-	ypkg_mkinstall
-	ypkg_dodoc AUTHORS ChangeLog COPYING INSTALL NEWS README
+	domkinstall
+	dodoc AUTHORS ChangeLog COPYING INSTALL NEWS README
 }
 

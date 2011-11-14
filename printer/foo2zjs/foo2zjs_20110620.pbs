@@ -15,12 +15,12 @@ RECOMMENDED=""
 CONFLICT=""
 
 pbs_unpack() {
-        ypkg_unpack
+        dounpack
 }
 
 pbs_build() {
 	CC="${CC/-m32}"
-	ypkg_make
+	domake
 
 	# Get extra files from the web, such as .ICM profiles for color correction,
 	# and firmware.  Select the model number for your printer:
@@ -36,7 +36,7 @@ pbs_build() {
 }
 
 pbs_install() {
-	#make DESTDIR="$YPPATH_DEST" install
-	ypkg_mkinstall
+	#make DESTDIR="$destdir" install
+	domkinstall
 }
 

@@ -17,7 +17,7 @@ NOTES="Apply Hotfixes from:
 http://svn.boost.org/trac/boost/wiki/ReleasePractices/HotFixes"
 
 pbs_unpack() {
-        ypkg_unpack
+        dounpack
 }
 
 pbs_config() {
@@ -68,7 +68,7 @@ pbs_build() {
 }
 
 pbs_install() {
-	mkdir -p "$YPPATH_DEST"/usr/{lib,include}
+	mkdir -p "$destdir"/usr/{lib,include}
 	"$BJAM" \
 	  release \
 	  "-sEXPAT_INCLUDE=/usr/include" \
@@ -76,11 +76,11 @@ pbs_install() {
 	  --toolset=gcc \
 	  --layout=system \
 	  --builddir=obj \
-	  --prefix="$YPPATH_DEST"/usr \
-	  --libdir="$YPPATH_DEST"/usr/lib \
+	  --prefix="$destdir"/usr \
+	  --libdir="$destdir"/usr/lib \
           --build-type=minimal \
 	  $PYTHON_FLAGS install
-	ypkg_docp "$BJAM"  "$YPPATH_DEST"/usr/bin
+	docp "$BJAM"  "$destdir"/usr/bin
 }
 
 

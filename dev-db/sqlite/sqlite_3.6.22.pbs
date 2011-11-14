@@ -11,13 +11,13 @@ BDEPEND=" dev-lang/tcl"
 OPIONAL="dev-lang/tcl"
 
 pbs_unpack() {
-        ypkg_unpack
+        dounpack
 }
 
 pbs_config() {
 	
-	patch -Np1 -i $FILES_PATH/files/"$N-$V$R"-build_fix-1.patch
-	YPB_CONFIG+=" --prefix=/usr            \
+	patch -Np1 -i $filesdir/"$N-$V$R"-build_fix-1.patch
+	config+=" --prefix=/usr            \
 	              --sysconfdir=/etc        \
 	              --localstatedir=/var 	\
 	              --enable-threadsafe       \
@@ -25,19 +25,19 @@ pbs_config() {
 		      --enable-tempstore=yes   \
 		      --enable-load-extension  \
 		      --enable-static=no "
-	if ! ypkg_config;then
+	if ! doconfig;then
 		autoconf
-		ypkg_config
+		doconfig
 	fi
 }
 
 pbs_build() {
-	ypkg_make
+	domake
 }
 
 pbs_install() {
-	ypkg_mkinstall
-	install -m755 -d           "$YPPATH_DEST"/usr/share/{man,doc}/"$N-$V$R"
-	install -m 0644 sqlite3.1  "$YPPATH_DEST"/usr/share/man/"$N-$V$R"
-	cp -a README* VERSION      "$YPPATH_DEST"/usr/share/doc/"$N-$V$R"
+	domkinstall
+	install -m755 -d           "$destdir"/usr/share/{man,doc}/"$N-$V$R"
+	install -m 0644 sqlite3.1  "$destdir"/usr/share/man/"$N-$V$R"
+	cp -a README* VERSION      "$destdir"/usr/share/doc/"$N-$V$R"
 }

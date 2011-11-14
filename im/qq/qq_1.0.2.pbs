@@ -16,14 +16,14 @@ RECOMMENDED=""
 NOTES=""
 
 pbs_unpack() {
-        ypkg_unpack
+        dounpack
 }
 
 pbs_install() {
-	ypkg_docp qq res.db      	  "$YPPATH_DEST"/usr/share/tencent/qq
-	ypkg_docp "$FILES_PATH"/files/qq  "$YPPATH_DEST"/usr/bin
-	cd "$YPPATH_DEST"
-	ypkg_docp "$FILES_PATH"/files/qq.png     usr/share/tencent/qq
-	ypkg_docp "$FILES_PATH"/files/qq.desktop usr/share/applications
-	ypkg_docp "$FILES_PATH"/files/qq_doc	  usr/share/doc/"$N-$V$R"/qq
+	docp qq res.db      	  "$destdir"/usr/share/tencent/qq
+	docp $filesdir/qq  "$destdir"/usr/bin
+	cd "$destdir"
+	docp $filesdir/qq.png     usr/share/tencent/qq
+	docp $filesdir/qq.desktop usr/share/applications
+	docp $filesdir/qq_doc	  usr/share/doc/"$N-$V$R"/qq
 }

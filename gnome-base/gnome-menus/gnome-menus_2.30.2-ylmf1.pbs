@@ -16,23 +16,23 @@ RECOMMENDED=""
 INSTALL="$N.install"
 
 pbs_unpack() {
-        ypkg_unpack
+        dounpack
 }
 
 pbs_config() {
-	YPB_CONFIG+="--enable-introspection=no --enable-python"
-	ypkg_config
+	config+="--enable-introspection=no --enable-python"
+	doconfig
 }
 
 pbs_build() {
-	ypkg_make
+	domake
 }
 
 pbs_install() {
-	ypkg_mkinstall
+	domkinstall
 	# Add webapps
-	cd "$YPPATH_DEST"
-	ypkg_dodesktop "webapps.desktop" "webapps.png"
-	ypkg_docp "$FILES_PATH"/files/webapps.directory usr/share/desktop-directories/
-	ypkg_docp "$FILES_PATH"/files/webapps.menu      etc/xdg/menus/applications-merged/
+	cd "$destdir"
+	dodesktop "webapps.desktop" "webapps.png"
+	docp $filesdir/webapps.directory usr/share/desktop-directories/
+	docp $filesdir/webapps.menu      etc/xdg/menus/applications-merged/
 }

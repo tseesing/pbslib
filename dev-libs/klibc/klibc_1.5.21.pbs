@@ -16,16 +16,16 @@ RECOMMENDED=""
 NOTES=""
 
 pbs_unpack() {
-	ypkg_unpack
+	dounpack
 }
 
 pbs_build() {
 	ln -sf /usr/src/linux linux
-	ypkg_make
+	domake
 }
 
 pbs_install() {
-	sed -i '/SHLIBDIR = \/lib/aINSTALLROOT = '"$YPPATH_DEST"'' scripts/Kbuild.install
-	ypkg_mkinstall
-	ypkg_docp "$FILES_PATH"/files/klibc.m4 /usr/share/aclocal
+	sed -i '/SHLIBDIR = \/lib/aINSTALLROOT = '"$destdir"'' scripts/Kbuild.install
+	domkinstall
+	docp $filesdir/klibc.m4 /usr/share/aclocal
 }

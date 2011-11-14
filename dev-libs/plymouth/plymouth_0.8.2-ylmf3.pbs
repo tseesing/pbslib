@@ -16,12 +16,12 @@ RECOMMENDED="plymouth-theme-ylmf-logo"
 NOTES=""
 
 pbs_unpack() {
-        ypkg_unpack
+        dounpack
 }
 
 pbs_config() {
-	#ypkg_patch debian-changes.patch
-	ypkg_docp "$FILES_PATH"/files/ubuntu-logo/*.png themes/ubuntu-logo
+	#dopatch debian-changes.patch
+	docp $filesdir/ubuntu-logo/*.png themes/ubuntu-logo
 	patches=" ubuntu_details.patch
 		  details_removeSeparator.patch
 		  misc-changes.patch
@@ -40,35 +40,35 @@ pbs_config() {
 		  upstream-terminal-OPOST.patch
 		  upstream-terminal-no-ISTRIP.patch
 		  autoreconf.patch "
-	ypkg_patch $patches
-	YPB_CONFIG+="--libdir=/lib 
+	dopatch $patches
+	config+="--libdir=/lib 
 		     --enable-gdm-transition
 		     --datarootdir=/lib"
-	ypkg_config
+	doconfig
 }
 
 pbs_build() {
-	ypkg_make
+	domake
 }
 
 pbs_install() {
-	ypkg_mkinstall
-	ypkg_dodoc AUTHORS ChangeLog COPYING INSTALL NEWS README
+	domkinstall
+	dodoc AUTHORS ChangeLog COPYING INSTALL NEWS README
 	#for initramfs-tools
-	cd "$YPPATH_DEST" 
-	ypkg_docp   "$FILES_PATH"/files/initramfs-tools 	    usr/share/
-	ypkg_docp   "$FILES_PATH"/files/ylmfos-logo.png        lib/plymouth
+	cd "$destdir" 
+	docp   $filesdir/initramfs-tools 	    usr/share/
+	docp   $filesdir/ylmfos-logo.png        lib/plymouth
 	#
 	#install -d -m755 etc/rc3.d
 	#ln -sf /etc/init.d/"$N"  etc/rc3.d/K02"$N"
 	#ln -sf /etc/init.d/"$N"  etc/rc3.d/S01"$N"
-	ypkg_doinit "$FILES_PATH"/files/plymouth
-	#ypkg_dounit  "$N"-start.service "$N"-halt.service
-	#ypkg_dounit  "$N"-halt.service
-	ypkg_docp "$FILES_PATH"/files/systemd/*  lib/systemd/system/
-	#ypkg_doln   ../"$N"-start.service lib/systemd/system/basic.target.wants/"$N"-start.service
-	ypkg_doln   ../"$N"-halt.service  lib/systemd/system/shutdown.target.wants/"$N"-halt.service
+	doinit $filesdir/plymouth
+	#dounit  "$N"-start.service "$N"-halt.service
+	#dounit  "$N"-halt.service
+	docp $filesdir/systemd/*  lib/systemd/system/
+	#doln   ../"$N"-start.service lib/systemd/system/basic.target.wants/"$N"-start.service
+	doln   ../"$N"-halt.service  lib/systemd/system/shutdown.target.wants/"$N"-halt.service
 	rm -rf lib/plymouth/plymouthd.defaults lib/plymouth/themes/ubuntu-text \
 	       lib/plymouth/themes/ubuntu-logo lib/plymouth/themes/kubuntu-text lib/plymouth/ubuntu-text.so
-	ypkg_doln /lib/plymouth/themes/text/text.plymouth  lib/plymouth/themes/text.plymouth
+	doln /lib/plymouth/themes/text/text.plymouth  lib/plymouth/themes/text.plymouth
 }

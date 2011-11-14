@@ -16,10 +16,10 @@ BDEPEND=""
 OPINION="nodev"
 
 pbs_unpack() {
-	ypkg_unpack
+	dounpack
 }
 
 pbs_install() {
-	ypkg_dosrc *
+	dosrc *
 }
 

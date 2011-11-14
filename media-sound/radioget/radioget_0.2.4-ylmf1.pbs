@@ -17,11 +17,11 @@ CONFLICT=""
 INSTALL="$N.install"
 
 pbs_unpack() {
-        ypkg_unpack
+        dounpack
 }
 
 pbs_install() {
-	ypkg_docp "$N" "$YPPATH_DEST"/usr/bin
-	ypkg_dodesktop "$N".desktop "$N".png
+	docp "$N" "$destdir"/usr/bin
+	dodesktop "$N".desktop "$N".png
 }
 

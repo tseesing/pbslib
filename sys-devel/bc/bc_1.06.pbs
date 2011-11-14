@@ -16,7 +16,7 @@ RECOMMENDED=""
 INSTALL="$N.install"
 
 pbs_unpack() {
-        ypkg_unpack
+        dounpack
 }
 
 pbs_config() {
@@ -24,15 +24,15 @@ pbs_config() {
 	sed -i '/flex -I8/s/8//' configure
 	sed -i '/stdlib/a #include <string.h>' lib/number.c
 	sed -i 's/program.*save/static &/' bc/load.c
-	YPB_CONFIG+="--with-readline "
-	ypkg_config
+	config+="--with-readline "
+	doconfig
 }
 
 pbs_build() {
-	ypkg_make
+	domake
 }
 
 pbs_install() {
-	ypkg_mkinstall
+	domkinstall
 }
 

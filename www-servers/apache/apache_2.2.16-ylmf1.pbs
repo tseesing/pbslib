@@ -18,31 +18,31 @@ INSTALL="apache.install"
 NOTES="apache user/group should be created automatic."
 
 pbs_unpack() {
-        ypkg_unpack
+        dounpack
 }
 
 pbs_config() {
 	#Creat user and group 	
-	ypkg_groupadd -r "apache"
-	ypkg_useradd -c "Apache Server" -d "/dev/null" -s "/bin/false" -r -N "apache"
+	dogroupadd -r "apache"
+	douseradd -c "Apache Server" -d "/dev/null" -s "/bin/false" -r -N "apache"
 
 	#The following patch modifies the layout of destination directories and among them 
 	#the build directory at /usr/lib/apache/build. This will allow the modules added to Apache to be configured without errors
-	ypkg_patch httpd-2.2.15-config-1.patch
-	YPB_CONFIG+=" --sysconfdir=/etc/apache 
+	dopatch httpd-2.2.15-config-1.patch
+	config+=" --sysconfdir=/etc/apache 
 		      --enable-ssl    
 		      --enable-layout=FHS 
 		      --enable-mods-shared=all "
-	ypkg_config
+	doconfig
 }
 
 pbs_build() {
-	ypkg_make
+	domake
 }
 
 pbs_install() {
-	ypkg_mkinstall
-	cd "$YPPATH_DEST"
+	domkinstall
+	cd "$destdir"
 	chown root:root usr/lib/apache/httpd.exp usr/sbin/{apxs,apachectl,dbmmanage,envvars{,-std}} \
 	                usr/share/man/man1/{dbmmanage,ht{dbm,digest,passwd}}.1 \
 		        usr/share/man/man8/{ab,apachectl,apxs,htcacheclean,httpd}.8 \

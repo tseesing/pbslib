@@ -15,21 +15,21 @@ BDEPEND=""
 INSTALL="$N.install"
 
 pbs_unpack() {
-        ypkg_unpack
+        dounpack
 }
 
 pbs_config() {
-       YPB_CONFIG+="--libexecdir=/usr/lib"$LIBDIRSUFFIX"/locate 
+       config+="--libexecdir=/usr/lib"$LIBDIRSUFFIX"/locate 
                     --localstatedir=/var/lib"$LIBDIRSUFFIX"/locate"
        
-       ypkg_config
+       doconfig
 }
 
 pbs_build() {
-	ypkg_make
+	domake
 }
 
 pbs_install() {
-	ypkg_mkinstall
+	domkinstall
 }
 

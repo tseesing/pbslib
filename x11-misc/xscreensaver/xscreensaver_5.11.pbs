@@ -15,13 +15,13 @@ RECOMMENDED=""
 NOTES="http://wiki.linuxfromscratch.org/blfs/wiki/xscreensaver"
 
 pbs_unpack() {
-        ypkg_unpack
+        dounpack
 }
 
 pbs_config() {
 	
-	YPB_CONFIG+=" --prefix=/usr --libexecdir=/usr/lib "
-	ypkg_config
+	config+=" --prefix=/usr --libexecdir=/usr/lib "
+	doconfig
 }
 
 pbs_build() {
@@ -29,5 +29,5 @@ pbs_build() {
 }
 
 pbs_install() {
-	ypkg_mkinstall
+	domkinstall
 }

@@ -13,27 +13,27 @@ RDEPEND="binutils expat fontconfig freetype glib2 glibc libpng libX11 libXau lib
 BDEPEND="xcb-util-dev"
 
 pbs_unpack() {
-        ypkg_unpack
+        dounpack
 }
 
 pbs_config() {
-	ypkg_patch 01_build_perf_utils.patch
-	ypkg_patch 02_am-maintainer-mode.patch
-	ypkg_patch 03_export-symbols.patch
-	ypkg_patch cairo-lp-680628.patch
-	ypkg_patch server_side_gradients.patch
-	ypkg_patch cairo-respect-fontconfig.patch
-	YPB_CONFIG+="--enable-xcb=yes
+	dopatch 01_build_perf_utils.patch
+	dopatch 02_am-maintainer-mode.patch
+	dopatch 03_export-symbols.patch
+	dopatch cairo-lp-680628.patch
+	dopatch server_side_gradients.patch
+	dopatch cairo-respect-fontconfig.patch
+	config+="--enable-xcb=yes
 		     --enable-svg=yes
 		     --enable-tee=yes"
-	ypkg_config
+	doconfig
 }
 
 pbs_build() {
-	ypkg_make
+	domake
 }
 
 pbs_install() {
-	ypkg_mkinstall
+	domkinstall
 }
 

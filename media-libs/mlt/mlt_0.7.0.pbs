@@ -19,20 +19,20 @@ CONFLICT=""
 NOTES=""
 
 pbs_unpack() {
-        ypkg_unpack
+        dounpack
 }
 
 pbs_config() {
-	YPB_CONFIG+="--enable-gpl --swig-languages=python"
-	ypkg_config
+	config+="--enable-gpl --swig-languages=python"
+	doconfig
 }
 
 pbs_build() {
-	ypkg_make
+	domake
 }
 
 pbs_install() {
-	ypkg_mkinstall
-	ypkg_docp src/swig/python/mlt.py  "$YPPATH_DEST"/usr/lib/python2.6/site-packages/
-	ypkg_docp src/swig/python/_mlt.so "$YPPATH_DEST"/usr/lib/python2.6/site-packages/
+	domkinstall
+	docp src/swig/python/mlt.py  "$destdir"/usr/lib/python2.6/site-packages/
+	docp src/swig/python/_mlt.so "$destdir"/usr/lib/python2.6/site-packages/
 }

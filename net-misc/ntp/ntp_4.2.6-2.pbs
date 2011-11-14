@@ -19,29 +19,29 @@ INSTALL="$N.install"
 NOTES=""
 
 pbs_unpack() {
-        ypkg_unpack
+        dounpack
 }
 
 pbs_config() {
-	ypkg_patch mod_nano.patch
-	YPB_CONFIG+="--bindir=/usr/sbin
+	dopatch mod_nano.patch
+	config+="--bindir=/usr/sbin
 		     --enable-all-clocks
 	             --enable-parse-clocks
 		     --sysconfdir=/var/lib/ntp
 		     --with-sntp"
-	ypkg_config
+	doconfig
 }
 
 pbs_build() {
-	ypkg_make
+	domake
 }
 
 pbs_install() {
-	ypkg_mkinstall
-	ypkg_dounit "ntpd.service"
-	cd "$YPPATH_DEST"
-	ypkg_doln /lib/systemd/system/ntpd.service lib/systemd/system/multi-user.target.wants/ntpd.service
-	ypkg_docp "$FILES_PATH"/files/ntp.conf etc/
+	domkinstall
+	dounit "ntpd.service"
+	cd "$destdir"
+	doln /lib/systemd/system/ntpd.service lib/systemd/system/multi-user.target.wants/ntpd.service
+	docp $filesdir/ntp.conf etc/
 	mkdir -p var/lib/ntp
 }
 

@@ -20,21 +20,21 @@ INSTALL="$N.install"
 NOTES=""
 
 pbs_unpack() {
-        ypkg_unpack
+        dounpack
 }
 
 pbs_config() {
 	sed -i 's/png_check_sig/png_sig_cmp/' configure
-	YPB_CONFIG+="--sysconfdir=/etc/dosbox"
-	ypkg_config
+	config+="--sysconfdir=/etc/dosbox"
+	doconfig
 }
 
 pbs_build() {
-	ypkg_make
+	domake
 }
 
 pbs_install() {
-	ypkg_mkinstall
-	ypkg_dodesktop "$N.desktop" "$N.png"
+	domkinstall
+	dodesktop "$N.desktop" "$N.png"
 }
 

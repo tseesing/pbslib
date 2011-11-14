@@ -15,7 +15,7 @@ RECOMMENDED=""
 CONFLICT=""
 
 pbs_install() {
-	ypkg_docp_rename "$YPPATH_SOURCE"/xplayerForAir.air "$YPPATH_DEST"/usr/lib/"$N"/qiyi.air
-	ypkg_dodesktop   "$N.desktop"      "$N.png"
+	docp_rename "$YPPATH_SOURCE"/xplayerForAir.air "$destdir"/usr/lib/"$N"/qiyi.air
+	dodesktop   "$N.desktop"      "$N.png"
 }
 

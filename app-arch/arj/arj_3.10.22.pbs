@@ -19,18 +19,18 @@ CONFLICT=""
 NOTES=""
 
 pbs_unpack() {
-        ypkg_unpack
+        dounpack
 }
 
 pbs_config() {
-	#ypkg_patch arj-3.10.22-darwin.patch arj-3.10.22-glibc2.10.patch
+	#dopatch arj-3.10.22-darwin.patch arj-3.10.22-glibc2.10.patch
 	# patch for gcc 4.x https://svn.uhulinux.hu/packages/dev/arj/patches/gcc4.patch
 	# Thanks to Pedro Pinto (pnboy~AT~pinguix.com) http://users.zenwalk.org/user-accounts/pnboy/arj/ZENBUILD
 	sed -i -e 's/   return(POSTPROC_ERL_BAD_EXE);/   break; \/\/   return(POSTPROC_ERL_BAD_EXE);/g' postproc.c
 	cd gnu
-	YPB_CONFIG+=""
+	config+=""
 	autoconf
-	ypkg_config
+	doconfig
 	cd -
 }
 
@@ -40,7 +40,7 @@ pbs_build() {
 }
 
 pbs_install() {
-	#make DESTDIR="$YPPATH_DEST" install
-	ypkg_mkinstall
-	ypkg_dodoc ChangeLog
+	#make DESTDIR="$destdir" install
+	domkinstall
+	dodoc ChangeLog
 }

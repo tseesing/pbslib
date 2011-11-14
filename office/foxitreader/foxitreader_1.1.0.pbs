@@ -21,10 +21,10 @@ DESKTOPFILE="Foxit-Reader.desktop"
 ICONFILE="fx-icon.png"
 
 pbs_unpack() {
-        ypkg_unpack
+        dounpack
 }
 
 pbs_install() {
-	ypkg_docp data/*  "$YPPATH_DEST"
+	docp data/*  "$destdir"
 }
 

@@ -13,22 +13,22 @@ OPIONAL="pth libcap2"
 
 pbs_unpack()
 {
-        ypkg_unpack
+        dounpack
 }
 
 pbs_config()
 {
 	
-	YPB_CONFIG+=" --prefix=/usr  --disable-static "
-	ypkg_config
+	config+=" --prefix=/usr  --disable-static "
+	doconfig
 }
 
 pbs_build()
 {
-	ypkg_make
+	domake
 }
 
 pbs_install()
 {
-	ypkg_mkinstall
+	domkinstall
 }

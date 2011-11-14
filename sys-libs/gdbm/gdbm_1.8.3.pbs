@@ -15,21 +15,21 @@ BDEPEND=""
 INSTALL="$N.install"
 
 pbs_unpack(){
-        ypkg_unpack
+        dounpack
 }
 
 pbs_config() {
-	ypkg_config
+	doconfig
 }
 
 pbs_build() {
-	ypkg_make
+	domake
 }
 
 pbs_install() {
-	make INSTALL_ROOT="$YPPATH_DEST" BINOWN=root BINGRP=root install
+	make INSTALL_ROOT="$destdir" BINOWN=root BINGRP=root install
 	# Install the DBM and NDBM compatibility headers, as some 
 	# packages outside of LFS may look for these older dbm routines
-	make INSTALL_ROOT="$YPPATH_DEST" BINOWN=root BINGRP=root install-compat
+	make INSTALL_ROOT="$destdir" BINOWN=root BINGRP=root install-compat
 }
 

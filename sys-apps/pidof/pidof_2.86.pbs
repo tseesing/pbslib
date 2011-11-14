@@ -13,7 +13,7 @@ RDEPEND="glibc"
 BDEPEND=""
 
 pbs_unpack() {
-        ypkg_unpack
+        dounpack
 }
 
 pbs_build() {
@@ -25,8 +25,8 @@ pbs_build() {
 
 pbs_install() {
 	cd src
-	ypkg_docp killall5 mountpoint bootlogd last mesg utmpdump \
-		  "$YPPATH_DEST"/usr/bin/
-	ypkg_doln  /usr/bin/killall5 "$YPPATH_DEST"/usr/bin/pidof
+	docp killall5 mountpoint bootlogd last mesg utmpdump \
+		  "$destdir"/usr/bin/
+	doln  /usr/bin/killall5 "$destdir"/usr/bin/pidof
 }
 

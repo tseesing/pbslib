@@ -15,29 +15,29 @@ BDEPEND=" "
 INSTALL="$N.install"
 
 pbs_unpack() {
-        ypkg_unpack
+        dounpack
 }
 
 pbs_config() {
-	YPB_CONFIG="--prefix=/ --enable-zlib-dynamic --mandir=/usr/share/man" 
-	ypkg_config
+	config="--prefix=/ --enable-zlib-dynamic --mandir=/usr/share/man" 
+	doconfig
 }
 
 pbs_build() {
-	ypkg_make
+	domake
 }
 
 pbs_install() {
-	ypkg_mkinstall
-	ypkg_dodoc AUTHORS COPYING NEWS TODO CODING INSTALL
+	domkinstall
+	dodoc AUTHORS COPYING NEWS TODO CODING INSTALL
 	#
-	cd "$YPPATH_DEST"
+	cd "$destdir"
 	mkdir -p etc/modules-unload.d/
-	ypkg_docp "$FILES_PATH"/files/modprobe.d/* etc/modprobe.d
-	ypkg_domv  bin/lsmod  sbin
+	docp $filesdir/modprobe.d/* etc/modprobe.d
+	domv  bin/lsmod  sbin
 	rm -rf bin
 	#
-	ypkg_docp "$FILES_PATH"/files/{module-init-tools,module-unload-tools} sbin
-	ypkg_dounit "$N.service" "module-unload-tools.service"
+	docp $filesdir/{module-init-tools,module-unload-tools} sbin
+	dounit "$N.service" "module-unload-tools.service"
 }
 

@@ -20,7 +20,7 @@ NOTES=""
 #ICONFILE="test.png"   or "/opt/test/test.png"
 
 pbs_unpack() {
-        ypkg_unpack
+        dounpack
 }
 
 pbs_build() {
@@ -29,8 +29,8 @@ pbs_build() {
 }
 
 pbs_install() {
-	#make DESTDIR="$YPPATH_DEST" install
-	ypkg_mkinstall
+	#make DESTDIR="$destdir" install
+	domkinstall
 	# install desktop file so you can start awesome from your login manager
-	ypkg_docp "$FILES_PATH"/files/awesome.desktop "$YPPATH_DEST"/awesome.desktop
+	docp $filesdir/awesome.desktop "$destdir"/awesome.desktop
 }

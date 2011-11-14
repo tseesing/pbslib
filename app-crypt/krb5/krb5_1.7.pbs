@@ -17,27 +17,27 @@ RECOMMENDED=""
 NOTES=""
 
 pbs_unpack() {
-        ypkg_unpack
+        dounpack
 }
 
 pbs_config() {
 	tar xf "$N-$V$R".tar.gz
 	cd "$N-$V$R"/src
-	YPB_CONFIG+=" --enable-dns-for-realm
+	config+=" --enable-dns-for-realm
 		      --mandir=/usr/share/man
 		      --disable-pkinit "
-	CPPFLAGS="-DEAI_NODATA=EAI_NONAME" ypkg_config
+	CPPFLAGS="-DEAI_NODATA=EAI_NONAME" doconfig
 }
 
 pbs_build() {
-	ypkg_make 
+	domake 
 }
 
 pbs_install() {
-	ypkg_mkinstall
-	ypkg_doinit "$FILES_PATH"/files/kerberos
+	domkinstall
+	doinit $filesdir/kerberos
 	#Create the db directory exists with the following command
-	cd "$YPPATH_DEST"
+	cd "$destdir"
 	install -d -m755 var/lib/krb5kdc
 	#Create the Kerberos configuration with the following command. It's recommended that the Kerberos Realm be all uppercase.
 	cat > etc/krb5.conf << "EOF"

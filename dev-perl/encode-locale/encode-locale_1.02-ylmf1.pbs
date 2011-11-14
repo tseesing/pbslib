@@ -16,20 +16,20 @@ RECOMMENDED=""
 CONFLICT=""
 
 pbs_unpack() {
-        ypkg_unpack
+        dounpack
 }
 
 pbs_config() {
 	export PERL_MM_USE_DEFAULT=1
-	ypkg_config INSTALLDIRS=vendor PERL5LIB=""
+	doconfig INSTALLDIRS=vendor PERL5LIB=""
 }
 
 pbs_build() {
-	ypkg_make
+	domake
 }
 
 pbs_install() {
-	ypkg_mkinstall
+	domkinstall
         perl_cleanup
 }
 

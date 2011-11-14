@@ -14,14 +14,14 @@ RDEPEND=""
 BDEPEND="fontconfig"
 
 pbs_unpack() {
-        ypkg_unpack
+        dounpack
 }
 
 pbs_config() {
-	ypkg_config
+	doconfig
 }
 
 pbs_install() {
-	make prefix=/usr DESTDIR="$YPPATH_DEST" install
+	make prefix=/usr DESTDIR="$destdir" install
 }
 

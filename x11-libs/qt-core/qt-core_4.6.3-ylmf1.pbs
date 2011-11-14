@@ -14,11 +14,11 @@ BDEPEND=""
 RECOMMENDED=""
 
 pbs_unpack() {
-        ypkg_unpack
+        dounpack
 }
 
 pbs_config() {
-	YPB_CONFIG=" -prefix         /usr 
+	config=" -prefix         /usr 
 	             -bindir         /usr/bin 
 		     -libdir         /usr/lib
 		     -datadir        /usr/share/qt4 
@@ -34,18 +34,18 @@ pbs_config() {
 		     -qt3support 
 		     -confirm-license 
 		     -largefile"
-	#yes yes |ypkg_config
+	#yes yes |doconfig
 	#choose o for opensource license
-	yes o |ypkg_config
+	yes o |doconfig
 }
 
 pbs_build() {
-	ypkg_make
+	domake
 }
 
 pbs_install () {
-	make INSTALL_ROOT="$YPPATH_DEST" install
+	make INSTALL_ROOT="$destdir" install
 	# Sorry, doc is too large
-	rm -rf "$YPPATH_DEST"//usr/share/doc/qt-"$V"
+	rm -rf "$destdir"//usr/share/doc/qt-"$V"
 }
 

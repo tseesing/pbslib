@@ -16,11 +16,11 @@ RECOMMENDED=""
 CONFLICT=""
 
 pbs_unpack() {
-        ypkg_unpack
+        dounpack
 }
 
 pbs_install() {
-	ypkg_docp *.fw "$YPPATH_DEST"/lib/firmware/
-	ypkg_dodoc LICENSE.ipw2200-fw 
+	docp *.fw "$destdir"/lib/firmware/
+	dodoc LICENSE.ipw2200-fw 
 }
 

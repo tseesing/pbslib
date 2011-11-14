@@ -19,21 +19,21 @@ INSTALL="$N.install"
 DESKTOPFILE="uget-gtk.desktop"
 
 pbs_unpack() {
-        ypkg_unpack
+        dounpack
 }
 
 pbs_config() {
-	ypkg_patch "ylmfos_plugin_aria2_args.patch"
-	YPB_CONFIG+="--enable-plugin-curl
+	dopatch "ylmfos_plugin_aria2_args.patch"
+	config+="--enable-plugin-curl
 	             --enable-plugin-aria2"
-	ypkg_config
+	doconfig
 }
 
 pbs_build() {
-	ypkg_make
+	domake
 }
 
 pbs_install() {
-	ypkg_mkinstall
+	domkinstall
 }
 

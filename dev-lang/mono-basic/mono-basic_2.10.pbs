@@ -15,20 +15,20 @@ RECOMMENDED=""
 CONFLICT=""
 
 pbs_unpack() {
-        ypkg_unpack
+        dounpack
 }
 
 pbs_config() {
-	YPB_CONFIG="--prefix=/usr"
-	ypkg_config
+	config="--prefix=/usr"
+	doconfig
 }
 
 pbs_build() {
-	ypkg_make libdir=/usr/lib
+	domake libdir=/usr/lib
 }
 
 pbs_install() {
-	ypkg_mkinstall libdir=/usr/lib
+	domkinstall libdir=/usr/lib
 
 	#
 	#cat <<EOF >%{buildroot}/%{_libdir}/pkgconfig/mono-basic.pc

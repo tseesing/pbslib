@@ -15,20 +15,20 @@ BDEPEND=""
 CONFLICT=""
 
 pbs_unpack() {
-        ypkg_unpack
+        dounpack
 }
 
 pbs_config() {
-	YPB_CONFIG+=""
-	ypkg_config
+	config+=""
+	doconfig
 }
 
 pbs_build() {
-	ypkg_make
+	domake
 }
 
 pbs_install() {
-	install -d -m755 "$YPPATH_DEST/usr/lib"
-	make prefix=/usr mandir=/usr/share/man DESTDIR="$YPPATH_DEST" install
+	install -d -m755 "$destdir/usr/lib"
+	make prefix=/usr mandir=/usr/share/man DESTDIR="$destdir" install
 }
 

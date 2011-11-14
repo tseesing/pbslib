@@ -1,8 +1,8 @@
 . /usr/lib/ybs/funcs
 
 pre_install() {
-	ypkg_groupadd -r "apache"
-	ypkg_useradd -c "Apache Server" -d "/dev/null" -s "/bin/false" -r -N "apache"
+	dogroupadd -r "apache"
+	douseradd -c "Apache Server" -d "/dev/null" -s "/bin/false" -r -N "apache"
 }
 
 post_install() {
@@ -10,6 +10,6 @@ post_install() {
 }
 
 post_remove() {
-	ypkg_userdel  "apache"
-	ypkg_groupdel "apache"
+	douserdel  "apache"
+	dogroupdel "apache"
 }

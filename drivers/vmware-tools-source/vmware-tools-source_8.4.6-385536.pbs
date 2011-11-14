@@ -18,9 +18,9 @@ CONFLICT="vmware-tools"
 NOTES=""
 
 pbs_unpack() {
-        ypkg_unpack
+        dounpack
 }
 
 pbs_install() {	
-	ypkg_dosrc *
+	dosrc *
 }

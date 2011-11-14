@@ -36,150 +36,150 @@ PROVIDE="gnome-games-aisleriot
 	 gnome-games-swell-foop"
 
 pbs_unpack() {
-        ypkg_unpack
+        dounpack
 }
 
 gnome-games-aisleriot_install() {
 	DESCRIPTION="aisleriot"
-	YPB_CONFIG+="--enable-games=aisleriot
+	config+="--enable-games=aisleriot
 	             --disable-schemas-install"
-	ypkg_config
-	ypkg_make
-	ypkg_mkinstall
+	doconfig
+	domake
+	domkinstall
 }
 
 gnome-games-glchess_install() {
 	DESCRIPTION="glchess"
-	YPB_CONFIG+="--enable-games=glchess
+	config+="--enable-games=glchess
 	             --disable-schemas-install"
-	ypkg_config
-	ypkg_make
-	ypkg_mkinstall
+	doconfig
+	domake
+	domkinstall
 }
 
 gnome-games-glines_install() {
 	DESCRIPTION="glines"
-	YPB_CONFIG+="--enable-games=glines
+	config+="--enable-games=glines
 	             --disable-schemas-install"
-	ypkg_config
-	ypkg_make
-	ypkg_mkinstall
+	doconfig
+	domake
+	domkinstall
 }
 
 gnome-games-gnect_install() {
 	DESCRIPTION="gnect"
-	YPB_CONFIG+="--enable-games=gnect
+	config+="--enable-games=gnect
 	             --disable-schemas-install"
-	ypkg_config
-	ypkg_make
-	ypkg_mkinstall
+	doconfig
+	domake
+	domkinstall
 }
 
 gnome-games-gnibbles_install() {
 	DESCRIPTION="gnibbles"
-	YPB_CONFIG+="--enable-games=gnibbles
+	config+="--enable-games=gnibbles
 	             --disable-schemas-install"
-	ypkg_config
-	ypkg_make
-	ypkg_mkinstall
+	doconfig
+	domake
+	domkinstall
 }
 
 gnome-games-gnobots2_install() {
 	DESCRIPTION="gnobots2"
-	YPB_CONFIG+="--enable-games=gnobots2
+	config+="--enable-games=gnobots2
 	             --disable-schemas-install"
-	ypkg_config
-	ypkg_make
-	ypkg_mkinstall
+	doconfig
+	domake
+	domkinstall
 }
 
 gnome-games-gnomine_install() {
 	DESCRIPTION="gnomine"
-	YPB_CONFIG+="--enable-games=gnomine
+	config+="--enable-games=gnomine
 	             --disable-schemas-install"
-	ypkg_config
-	ypkg_make
-	ypkg_mkinstall
+	doconfig
+	domake
+	domkinstall
 }
 
 gnome-games-gnotravex_install() {
 	DESCRIPTION="gnotravex"
-	YPB_CONFIG+="--enable-games=gnotravex
+	config+="--enable-games=gnotravex
 	             --disable-schemas-install"
-	ypkg_config
-	ypkg_make
-	ypkg_mkinstall
+	doconfig
+	domake
+	domkinstall
 }
 
 gnome-games-gnotski_install() {
 	DESCRIPTION="gnotski"
-	YPB_CONFIG+="--enable-games=gnotski
+	config+="--enable-games=gnotski
 	             --disable-schemas-install"
-	ypkg_config
-	ypkg_make
-	ypkg_mkinstall
+	doconfig
+	domake
+	domkinstall
 }
 
 gnome-games-gtali_install() {
         DESCRIPTION="gtali"
-	YPB_CONFIG+="--enable-games=gtali
+	config+="--enable-games=gtali
 	             --disable-schemas-install"
-	ypkg_config
-	ypkg_make
-	ypkg_mkinstall
+	doconfig
+	domake
+	domkinstall
 }
 
 gnome-games-iagno_install() {
         DESCRIPTION="iagno"
-	YPB_CONFIG+="--enable-games=iagno
+	config+="--enable-games=iagno
 	             --disable-schemas-install"
-	ypkg_config
-	ypkg_make
-	ypkg_mkinstall
+	doconfig
+	domake
+	domkinstall
 }
 
 gnome-games-lightsoff_install() {
         DESCRIPTION="lightsoff"
-	YPB_CONFIG+="--enable-games=lightsoff
+	config+="--enable-games=lightsoff
 	             --disable-schemas-install"
-	ypkg_config
-	ypkg_make
-	ypkg_mkinstall
+	doconfig
+	domake
+	domkinstall
 }
 
 gnome-games-mahjongg_install() {
         DESCRIPTION="mahjongg"
-	YPB_CONFIG+="--enable-games=mahjongg
+	config+="--enable-games=mahjongg
 	             --disable-schemas-install"
-	ypkg_config
-	ypkg_make
-	ypkg_mkinstall
+	doconfig
+	domake
+	domkinstall
 }
 
 gnome-games-quadrapassel_install() {
         DESCRIPTION="quadrapassel"
-	YPB_CONFIG+="--enable-games=quadrapassel
+	config+="--enable-games=quadrapassel
 	             --disable-schemas-install"
-	ypkg_config
-	ypkg_make
-	ypkg_mkinstall
+	doconfig
+	domake
+	domkinstall
 }
 
 gnome-games-sudoku_install() {
         DESCRIPTION="sudoku"
-	YPB_CONFIG+="--enable-games=sudoku
+	config+="--enable-games=sudoku
 	             --disable-schemas-install"
-	ypkg_config
-	ypkg_make
-	ypkg_mkinstall
+	doconfig
+	domake
+	domkinstall
 }
 
 gnome-games-swell-foop_install() {
         DESCRIPTION="swell-foop"
-	YPB_CONFIG+="--enable-games=swell-foop
+	config+="--enable-games=swell-foop
 	             --disable-schemas-install"
-	ypkg_config
-	ypkg_make
-	ypkg_mkinstall
+	doconfig
+	domake
+	domkinstall
 }
 

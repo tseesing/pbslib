@@ -1,7 +1,7 @@
 . /usr/lib/ybs/funcs
 
 post_install() {
-	ypkg_groupadd -r "vboxusers"
+	dogroupadd -r "vboxusers"
 	
 	# add users to vboxusers
 	for user in $(who |awk '{print $1}' |sort -u |xargs); do

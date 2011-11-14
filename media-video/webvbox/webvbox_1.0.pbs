@@ -20,17 +20,17 @@ INSTALL="$N.install"
 NOTES=""
 
 pbs_unpack() {
-        ypkg_unpack
+        dounpack
 }
 
 pbs_install() {
-	ypkg_docp webvbox/webvbox/   "$YPPATH_DEST"/usr/lib/
-	ypkg_dodesktop  "webvbox/webvbox.desktop"  "webvbox/webvbox/webvbox.png"
-	mkdir "$YPPATH_DEST"/usr/bin/
-	cat > "$YPPATH_DEST"/usr/bin/webvbox << "EOF"
+	docp webvbox/webvbox/   "$destdir"/usr/lib/
+	dodesktop  "webvbox/webvbox.desktop"  "webvbox/webvbox/webvbox.png"
+	mkdir "$destdir"/usr/bin/
+	cat > "$destdir"/usr/bin/webvbox << "EOF"
 #!/bin/sh
 cd /usr/lib/webvbox
 ./webvbox $@
 EOF
-	chmod +x "$YPPATH_DEST"/usr/bin/webvbox
+	chmod +x "$destdir"/usr/bin/webvbox
 }
