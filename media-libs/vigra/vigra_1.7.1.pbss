@@ -16,11 +16,11 @@ RECOMMENDED=""
 CONFLICT=""
 
 pbs_unpack() {
-        ypkg_unpack
+        dounpack
 }
 
 pbs_config() {
-	ypkg_patch 1.7.1-png-1.5.patch 1.7.1-automagicness.patch \
+	dopatch 1.7.1-png-1.5.patch 1.7.1-automagicness.patch \
 	           1.7.1-hdf5.patch 1.7.1-gcc4.6.patch
 	cmake -DCMAKE_INSTALL_PREFIX=/usr \
 		-DWITH_VIGRANUMPY=1 \
@@ -32,7 +32,7 @@ pbs_build() {
 }
 
 pbs_install() {
-	ypkg_mkinstall
-	ypkg_dodoc LICENSE.txt
+	domkinstall
+	dodoc LICENSE.txt
 }
 

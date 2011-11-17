@@ -4,24 +4,22 @@
 
 DESCRIPTION="Streaming media framework"
 HOMEPAGE="http://gstreamer.sourceforge.net"
-LICENSE="GPL-2"
+LICENSE="GPL"
 PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
-SRC_URI="ftp://ftp.gnome.org/pub/gnome/sources/$N/0.10/$N-$V.tar.bz2"
 
-RDEPEND=""
-BDEPEND=" glib2 gdk-pixbuf libxml2"
+SRC_URI="ftp://ftp.gnome.org/pub/gnome/sources/"$N"/0.10/"$N-$V".tar.bz2"
+
+RDEPEND="glib2 gdk-pixbuf libxml2"
+BDEPEND=""
 RECOMMENDED=""
-
-NOTES="http://wiki.linuxfromscratch.org/blfs/wiki/gstreamer"
 
 pbs_unpack() {
         dounpack
 }
 
 pbs_config() {
-	
 	sed -i 's/\(.*gtkdoc-rebase --relative.* \)\(;.*\)/\1|| true\2/' docs/{gst,libs}/Makefile.in
-	config+=" --prefix=/usr  --disable-docbook "
+	config+="--prefix=/usr --disable-docbook"
 	doconfig
 }
 
@@ -31,6 +29,6 @@ pbs_build() {
 
 pbs_install() {
 	domkinstall
-	install -m755 -d "$destdir"/usr/share/doc/"$N-$V$R"/design
-	install -m644 docs/design/*.txt "$destdir"/usr/share/doc/"$N-$V$R"/design
+	dodoc docs/design/*.txt
 }
+

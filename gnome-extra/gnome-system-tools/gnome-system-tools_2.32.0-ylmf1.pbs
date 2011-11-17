@@ -21,7 +21,7 @@ pbs_unpack() {
 
 pbs_config() {
 	#
-	ypkg_groupadd -r "dialout"
+	dogroupadd -r "dialout"
 	dopatch ylmfos-translate-2.32.0.patch change_network_png-2.32.0.patch
 
 	# Disable services, replaced by ylmfos-service-manager
@@ -36,7 +36,7 @@ pbs_build() {
 pbs_install() {
 	domkinstall
 	cd "$destdir"
-	docp $filesdir/network-setting.png  usr/share/pixmaps/
+	docp "$filesdir"/network-setting.png  usr/share/pixmaps/
 	
 	# Keep clean for rarian
 	rm -fr var/lib/scrollkeeper

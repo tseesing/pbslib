@@ -4,19 +4,16 @@
 
 DESCRIPTION="Mono bindings for GLib’s GKeyFile"
 HOMEPAGE="http://github.com/mono/gkeyfile-sharp"
-REPO=""
 LICENSE="LGPL"
-PRIORITY=""
 PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
+YARCH="any"
 
 SRC_URI="git://github.com/mono/gkeyfile-sharp.git"
 
-RDEPEND=""
+RDEPEND="gtk-sharp"
 BDEPEND=""
 RECOMMENDED=""
 CONFLICT=""
-
-NOTES=""
 
 pbs_unpack() {
         dounpack
@@ -33,3 +30,4 @@ pbs_build() {
 pbs_install() {
 	domkinstall
 }
+

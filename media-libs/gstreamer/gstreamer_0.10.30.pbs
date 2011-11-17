@@ -28,5 +28,5 @@ pbs_build() {
 
 pbs_install() {
 	domkinstall
-	dodoc docs/design/*.txt
+	dodoc dodocs/design/*.txt
 }

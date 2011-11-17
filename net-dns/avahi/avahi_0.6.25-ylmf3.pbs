@@ -19,7 +19,7 @@ pbs_unpack() {
 
 pbs_config() {
 	#
-	ypkg_groupadd -r "avahi"
+	dogroupadd -r "avahi"
 	douseradd -c "avahi users" -d "/dev/null" -s "/bin/false" -r "avahi"
 	douseradd -c "avahi-autoipd users" -d "/dev/null" -s "/bin/false" -r "avahi-autoipd"
 	#

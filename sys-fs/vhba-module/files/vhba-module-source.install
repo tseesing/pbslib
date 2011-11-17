@@ -1,0 +1,15 @@
+. /usr/lib/ybs/funcs
+
+post_install() {
+        unset ARCH
+        ykms install $1 $2
+
+        return 0
+}
+
+post_remove() {
+        ykms remove $1 $2
+
+        return 0
+}
+

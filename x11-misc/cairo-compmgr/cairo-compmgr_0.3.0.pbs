@@ -9,7 +9,7 @@ PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 
 SRC_URI="http://download.tuxfamily.org/ccm/"$N"/"$N-$V".tar.gz"
 
-RDEPEND="atk binutils cairo expat fontconfig freetype gcc gconf gdk-pixbuf glib2 glibc gtk+ libgtop libICE libpng libSM libwnck libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libxml2 libXrandr libXrender libXres orbit pango pixman startup-notification util-linux-ng vala zlib"
+RDEPEND="atk cairo expat fontconfig freetype gcc gconf gdb gdk-pixbuf glade glib2 glibc gtk+ libgtop libICE libpng libSM libwnck libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libxml2 libXrandr libXrender libXres orbit pango pixman startup-notification util-linux-ng vala zlib"
 BDEPEND=""
 RECOMMENDED=""
 CONFLICT=""
@@ -22,7 +22,7 @@ pbs_unpack() {
 
 pbs_config() {
 	config+="--enable-gconf 
-	             --enable-perf-plugin"
+	         --enable-perf-plugin"
 	doconfig
 }
 

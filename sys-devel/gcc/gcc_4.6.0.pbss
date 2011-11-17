@@ -16,7 +16,7 @@ BDEPEND=""
 INSTALL="$N.install"
 
 pbs_unpack() {
-        ypkg_unpack
+        dounpack
 }
 
 pbs_config() {
@@ -31,7 +31,7 @@ pbs_config() {
 	#             --disable-bootstrap "	;;
 	
 	# A  number of updates to the 4.6.0 branch by the GCC developers
-	ypkg_patch gcc-4.6.0-branch_update-1.patch 
+	dopatch gcc-4.6.0-branch_update-1.patch 
 
 	# Suppress the installation of libiberty.a. libiberty.a should be provided by Binutils
 	sed -i 's/install_to_$(INSTALL_DEST) //' libiberty/Makefile.in
@@ -51,13 +51,13 @@ pbs_config() {
 }
 
 pbs_build() {
-	ypkg_make
+	domake
 }
 
 pbs_install() {
-	ypkg_mkinstall
+	domkinstall
 	cd "$YPPATH_DEST"
-	ypkg_doln /usr/bin/gcc usr/bin/cc
-	ypkg_doln /usr/bin/cpp lib/cpp
+	doln /usr/bin/gcc usr/bin/cc
+	doln /usr/bin/cpp lib/cpp
 }
 

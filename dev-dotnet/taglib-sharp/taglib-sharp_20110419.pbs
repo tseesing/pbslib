@@ -4,19 +4,15 @@
 
 DESCRIPTION="Taglib# 2.0 - Managed tag reader/writer"
 HOMEPAGE="http://developer.novell.com/wiki/index.php/TagLib_Sharp"
-REPO=""
-LICENSE="GPL"
-PRIORITY=""
+LICENSE="LGPL"
 PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 
 SRC_URI="git://github.com/mono/"$N".git"
 
-RDEPEND=""
+RDEPEND="mono"
 BDEPEND=""
 RECOMMENDED=""
 CONFLICT=""
-
-NOTES=""
 
 pbs_unpack() {
         dounpack
@@ -32,7 +28,7 @@ pbs_build() {
 }
 
 pbs_install() {
-	#make DESTDIR="$destdir" install
 	domkinstall
 	rm -rf "$destdir"/tmp  || return 0
 }
+

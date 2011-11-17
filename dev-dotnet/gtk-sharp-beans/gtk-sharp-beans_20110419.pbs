@@ -4,19 +4,16 @@
 
 DESCRIPTION="GtkSharp's gtk module of the gtk-sharp-beans tarball"
 HOMEPAGE="http://www.mono-project.com/GtkSharp"
-REPO=""
 LICENSE="GPL"
-PRIORITY=""
 PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
+YARCH="any"
 
 SRC_URI="git://github.com/mono/gtk-sharp-beans.git"
 
-RDEPEND=""
-BDEPEND="gio-sharp"
+RDEPEND="gio-sharp"
+BDEPEND=""
 RECOMMENDED=""
 CONFLICT=""
-
-NOTES=""
 
 pbs_unpack() {
         dounpack
@@ -34,3 +31,4 @@ pbs_build() {
 pbs_install() {
 	domkinstall
 }
+

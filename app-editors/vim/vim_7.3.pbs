@@ -9,9 +9,7 @@ PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 
 SRC_URI="ftp://ftp.vim.org/pub/vim/unix/"$N-$V$R".tar.bz2" 
 
-RDEPEND="acl atk attr cairo directfb expat fontconfig freetype gtk+ libICE pango 
-	 pixman libpng libSM libX11 libXau libxcb libXcomposite libXcursor libXdamage 
-	 libXdmcp libXext libXfixes libXi libxml2 libXrandr libXrender libXt"
+RDEPEND="acl atk attr cairo directfb expat fontconfig freetype gtk+ libICE pango pixman libpng libSM libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libxml2 libXrandr libXrender libXt"
 BDEPEND=""
 
 INSTALL="$N.install"
@@ -26,12 +24,12 @@ pbs_config() {
 
 	echo '#define SYS_VIMRC_FILE "/etc/vimrc"' >> src/feature.h
 	config+="--enable-gui=gtk2
-	             --enable-pythoninterp=yes
-	             --enable-cscope
-	             --enable-multibyte
-	             --enable-xim
-	             --with-features=huge
-	             --with-x"
+	         --enable-pythoninterp=yes
+	         --enable-cscope
+	         --enable-multibyte
+	         --enable-xim
+	         --with-features=huge
+	         --with-x"
 	doconfig
 }
 

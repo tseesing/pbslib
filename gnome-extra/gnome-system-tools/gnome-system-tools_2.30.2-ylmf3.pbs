@@ -23,7 +23,7 @@ pbs_unpack() {
 
 pbs_config() {
 	#
-	ypkg_groupadd -r "dialout"
+	dogroupadd -r "dialout"
 	dopatch user-settings-username.patch ylmfos-translate.patch change_network_png.patch
 	# disable services, replaced by ylmfos-service-manager
 	config+="--disable-schemas-install --disable-services"

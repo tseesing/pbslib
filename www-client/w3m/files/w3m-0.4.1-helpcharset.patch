@@ -1,0 +1,24 @@
+diff -ur w3m-0.5.3/scripts/w3mhelp.cgi.in w3m-0.5.3.new//scripts/w3mhelp.cgi.in
+--- w3m-0.5.3/scripts/w3mhelp.cgi.in	2011-01-04 17:22:28.000000000 +0800
++++ w3m-0.5.3.new//scripts/w3mhelp.cgi.in	2011-11-17 10:39:20.124736806 +0800
+@@ -54,6 +54,12 @@
+     }
+ }
+ 
++if ($lang eq 'ja') {
++	$help_charset='EUC-JP';
++} else {
++	$help_charset='UTF-8';
++}
++
+ %f = %keyfunc;
+ %keyfunc = ();
+ while (($key, $fname) = each %f) {
+@@ -95,6 +101,7 @@
+ 
+ <HTML>
+ <HEAD>
++<META http-equiv="Content-Type" content="text/html; charset=$help_charset">
+ <TITLE>w3m help page</TITLE>
+ </HEAD>
+ <BODY>

@@ -4,23 +4,21 @@
 
 DESCRIPTION="Meta build which provides python interfacing modules for some GNOME libraries"
 HOMEPAGE="http://pygtk.org/"
-REPO=""
-LICENSE="GPL-2"
+LICENSE="GPL"
 PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 
 SRC_URI="http://ftp.gnome.org/pub/GNOME/sources/"$N"/2.25/"$N-$V$R".tar.bz2"
 
 RDEPEND=""
-BDEPEND=" "
+BDEPEND=""
 RECOMMENDED=""
-
-NOTES=""
 
 pbs_unpack() {
         dounpack
 }
 
 pbs_config() {
+	dopatch gnome-python-extras-2.25.3-update-for-2.27.2.patch
 	doconfig
 }
 

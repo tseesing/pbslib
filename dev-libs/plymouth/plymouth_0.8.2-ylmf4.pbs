@@ -41,6 +41,8 @@ pbs_config() {
 		  upstream-terminal-no-ISTRIP.patch
 		  autoreconf.patch "
 	dopatch $patches
+	pwd
+	exit
 	config+="--libdir=/lib 
 		     --enable-gdm-transition
 		     --datarootdir=/lib"

@@ -14,14 +14,16 @@ BDEPEND="bison pkgconfig"
 RECOMMENDED=""
 CONFLICT=""
 
+OPINION="nostrip"
+
 pbs_unpack() {
         dounpack
 }
 
 pbs_config() {
 	config="--prefix=/usr 
-	            --sysconfdir=/etc  
-		    --with-libgdiplus=installed"
+	        --sysconfdir=/etc  
+		--with-libgdiplus=installed"
 	doconfig
 }
 

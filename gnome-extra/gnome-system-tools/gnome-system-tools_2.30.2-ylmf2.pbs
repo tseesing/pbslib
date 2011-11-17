@@ -23,7 +23,7 @@ pbs_unpack() {
 
 pbs_config() {
 	#
-	ypkg_groupadd -r "dialout"
+	dogroupadd -r "dialout"
 	dopatch user-settings-username.patch ylmfos-translate.patch change_network_png.patch
 	config+="--disable-schemas-install"
 	doconfig

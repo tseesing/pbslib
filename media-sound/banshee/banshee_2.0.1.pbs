@@ -20,60 +20,23 @@ libgpod-based iPod support: libgpod
 "
 
 pbs_unpack() {
-	#unpard file from $YPPATH_SOURCE to current directory.
         dounpack
 }
 
 pbs_config() {
-	#fist, cd build directory
-	#cd "$N-$V$R"
-	#dopatch $filesdir/patches/*.patch 
-	#XX.patch should be found under $filesdir or $filesdir/patches/
-	#dopatch XX.patch
-	#second, add package specified config params to config
-	#default is :
-	#config+=" --prefix=/usr
-	#	      --sysconfdir=/etc
-	#	      --localstatedir=/var
-	#             --infodir=/usr/share/info
-	#	      --mandir=/usr/share/man
-	#              --disable-static
-	#	      --enable-shared "
-	config+="--disable-scrollkeeper
-	             --disable-schemas-install
-		     --with-vendor-build-id=ylmfos"
-	# --disable-appledevice --disable-ipod" 
-	#Third, call configure with $config
-	#./configure $config
+	config+="--disable-youtube
+	         --disable-scrollkeeper
+	         --disable-schemas-install
+	         --with-vendor-build-id=ylmfos"
 	doconfig
 }
 
 pbs_build() {
-	#make "$MAKEOPTS"
 	make
 }
 
-#check
-pbs_check() {
-	:
-	#make check
+pbs_install() {
+	domkinstall
 }
 
-#install
-pbs_install() {
-	#install everything to $destdir
-	#make DESTDIR="$destdir" install
-	domkinstall
-	#doinit "$filesdir/slim"
-	#dodesktop "*.desktop" "*.png"
-	#dodoc AUTHORS ChangeLog COPYING INSTALL NEWS README 
-	#docp "$filesdir/XXXX" "dirname"
-	#domv "$filesdir/XXXX" "dirname"
-	#docp_rename "$1" "$2"
-	#domv_rename "$1" "$2"
-	#doln "$1 "$2"
-	#*****************
-	#when SRC_URI is deb or rpm package
-	#docp data/*  "$destdir"
-}
 

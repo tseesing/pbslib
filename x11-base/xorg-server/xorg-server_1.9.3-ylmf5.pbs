@@ -25,40 +25,40 @@ pbs_unpack() {
 }
 
 pbs_config() {
-	dopatch  "$N"-1.9-xinerama-crash-fix.patch \
-	            "$N"-1.9-nouveau-default.patch \
-		    debian_patches_204_fix-neg-sync-transition.patch
-	#dopatch   ylmfos-xserver_1.5.0_bg_none_root.patch
-	config+=" --sysconfdir=/etc/X11
-		      --with-xkb-output=/var/lib/xkb 
-		      --enable-install-setuid 
-		      --enable-xcsecurity  
-		      --enable-xorg   
-		      --enable-xvfb  
-		      --enable-xnest  
-	              --enable-kdrive 
-		      --enable-xephyr   
-		      --enable-xfbdev 
-		      --enable-xnest 
-		      --enable-record 
-		      --enable-xfree86-utils 
-		      --enable-install-libxf86config 
-		      --enable-dri 
-		      --enable-dri2 
-		      --enable-glx 
-		      --enable-glx-tls 
-		      --enable-config-hal 
-		      --enable-ipv6
-		      --disable-dmx 
-		      --enable-kdrive 
-		      --disable-tslib 
-		      --disable-xcalibrate 
-		      --enable-install-setuid 
-		      --without-dtrace
-		      --with-pic
-		      --disable-static 
-		      --with-os-vendor=Ylmf_OS "
-		      #--with-module-dir=/usr/lib/X11/modules
+	dopatch "$N"-1.9-xinerama-crash-fix.patch \
+	        "$N"-1.9-nouveau-default.patch \
+		debian_patches_204_fix-neg-sync-transition.patch \
+		ylmfos-xserver_1.5.0_bg_none_root.patch
+	config+="--sysconfdir=/etc/X11
+		 --with-xkb-output=/var/lib/xkb 
+		 --enable-install-setuid 
+		 --enable-xcsecurity  
+		 --enable-xorg   
+		 --enable-xvfb  
+		 --enable-xnest  
+	         --enable-kdrive 
+		 --enable-xephyr   
+		 --enable-xfbdev 
+		 --enable-xnest 
+		 --enable-record 
+		 --enable-xfree86-utils 
+		 --enable-install-libxf86config 
+		 --enable-dri 
+		 --enable-dri2 
+		 --enable-glx 
+		 --enable-glx-tls 
+		 --enable-config-hal 
+		 --enable-ipv6
+		 --disable-dmx 
+		 --enable-kdrive 
+		 --disable-tslib 
+		 --disable-xcalibrate 
+		 --enable-install-setuid 
+		 --without-dtrace
+		 --with-pic
+		 --disable-static 
+		 --with-os-vendor=Ylmf_OS "
+		 #--with-module-dir=/usr/lib/X11/modules
 	doconfig
 }
 
@@ -74,10 +74,10 @@ pbs_install() {
 	doln /usr/share/X11/app-defaults etc/X11/app-defaults
 	
 	#
-	docp $filesdir/{10-evdev.conf,10-quirks.conf}  etc/X11/xorg.conf.d
+	docp "$filesdir"/{10-evdev.conf,10-quirks.conf}  etc/X11/xorg.conf.d
 	
 	#
-	docp $filesdir/xorgconf-check usr/bin/
+	docp "$filesdir"/xorgconf-check usr/bin/
 	chmod +x usr/bin/xorgconf-check
 	
 	#
@@ -86,13 +86,13 @@ pbs_install() {
 	# Backup libglx.so which should be overrided by other packages, e.g. nvidia-graphic-driver
 	cd usr/lib/xorg/modules/extensions/
 	mv libglx.so libglx.so-pkg."$N"
-	ln -sf /usr/lib/xorg/modules/extensions/libglx.so-pkg."$N" libglx.so
+	doln -sf /usr/lib/xorg/modules/extensions/libglx.so-pkg."$N" libglx.so
 	
 	# 
 	dounit "xorgconf-check.service"	
 
 	#
-	docp $filesdir/xvfb-run usr/bin/
+	docp "$filesdir"/xvfb-run usr/bin/
 	chmod +x usr/bin/xvfb-run
 
 	doman xvfb-run.1

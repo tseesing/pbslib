@@ -29,7 +29,7 @@ pbs_install() {
 	#
 	cd $pwdir/libs
         ./autogen.sh --prefix=/usr 
-	ypkg_makinstall
+	domakinstall
 	#
         cd $pwdir/cngpij
 	./autogen.sh --prefix=/usr --enable-progpath=/usr/bin

@@ -1,0 +1,18 @@
+diff -ur w3m-0.5.3/url.c w3m-0.5.3.new//url.c
+--- w3m-0.5.3/url.c	2011-01-04 17:22:24.000000000 +0800
++++ w3m-0.5.3.new//url.c	2011-11-17 10:51:16.517537845 +0800
+@@ -82,11 +82,11 @@
+     {"ftp", SCM_FTP},
+     {"local", SCM_LOCAL},
+     {"file", SCM_LOCAL},
+-    /*  {"exec", SCM_EXEC}, */
++    {"exec", SCM_EXEC},
+     {"nntp", SCM_NNTP},
+-    /*  {"nntp", SCM_NNTP_GROUP}, */
++    {"nntp", SCM_NNTP_GROUP}, 
+     {"news", SCM_NEWS},
+-    /*  {"news", SCM_NEWS_GROUP}, */
++    {"news", SCM_NEWS_GROUP},
+     {"data", SCM_DATA},
+ #ifndef USE_W3MMAILER
+     {"mailto", SCM_MAILTO},

@@ -13,7 +13,7 @@ RDEPEND="dbus dbus-glib glib2 glibc"
 BDEPEND=""
 RECOMMENDED=""
 
-NOTES="docutils epydoc is required to Build Documentation"
+NOTES="dodocutils epydodoc is required to Build Documentation"
 
 pbs_unpack() {
         dounpack

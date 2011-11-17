@@ -1,0 +1,36 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="Telepathy Logger is a session daemon that should be activated whenever telepathy is being used."
+HOMEPAGE="http://telepathy.freedesktop.org/wiki/Logger"
+LICENSE="GPL"
+PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
+
+SRC_URI="http://telepathy.freedesktop.org/releases/"$N"/"$N-$V".tar.bz2"
+
+RDEPEND="dbus dbus-glib glib2 glibc libxml2 sqlite telepathy-glib zlib"
+RECOMMENDED=""
+BDEPEND=""
+CONFLICT=""
+
+INSTALL="$N.install"
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_config() {
+	config+="--enable-call 
+		 --disable-schemas-compile"
+	doconfig
+}
+
+pbs_build() {
+	domake
+}
+
+pbs_install() {
+	domkinstall
+}
+

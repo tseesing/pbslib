@@ -98,7 +98,7 @@ ati-graphic-utils_install () {
 	chmod 755 "$destdir"/usr/bin/*
 
 	# Doc
-	dodoc common/usr/share/doc/*
+	doc common/usr/share/doc/*
 
 	# Etc
 	docp common/etc/* "$destdir"/etc/

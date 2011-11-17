@@ -3,8 +3,7 @@
 post_install() {
 	gnome2_desktop_database_update
 	gnome2_mime_database_update
-	xdg-icon-resource forceupdate
-	gnome2_icon_cache_update /usr/share/banshee/icons/hicolor
+	gnome2_icon_cache_update 
 }
 
 post_remove() {
@@ -18,3 +17,4 @@ post_upgrade() {
 post_downgrade() {
 	post_install
 }
+

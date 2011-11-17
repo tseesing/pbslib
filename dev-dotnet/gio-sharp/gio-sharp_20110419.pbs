@@ -2,21 +2,17 @@
 # YLmf_OS package build script
 #
 
-DESCRIPTION="gio sharp tarball"
+DESCRIPTION="a branch of the official gtk-sharp/gio to get gio-sharp building on gtk-sharp 2.12"
 HOMEPAGE="http://banshee.fm/download/development/"
-REPO=""
-LICENSE="GPL"
-PRIORITY=""
+LICENSE="MIT"
 PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 
 SRC_URI="git://github.com/mono/gio-sharp.git"
 
-RDEPEND=""
+RDEPEND="gtk-sharp"
 BDEPEND=""
 RECOMMENDED=""
 CONFLICT=""
-
-NOTES=""
 
 pbs_unpack() {
         dounpack
@@ -35,3 +31,4 @@ pbs_build() {
 pbs_install() {
 	domkinstall
 }
+

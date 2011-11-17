@@ -4,23 +4,21 @@
 
 DESCRIPTION="Software for generating and retrieving SNMP data"
 HOMEPAGE="http://net-snmp.sourceforge.net/"
-LICENSE="GPL-2"
+LICENSE="GPL"
 PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
+
 SRC_URI="http://downloads.sourceforge.net/project/$N/$N/$V/"$N-$V$R".tar.gz"
 
 RDEPEND=""
-BDEPEND=" "
+BDEPEND=""
 RECOMMENDED=""
-
-NOTES=""
 
 pbs_unpack() {
         dounpack
 }
 
 pbs_config() {
-	
-	config+=" --prefix=/usr "
+	config="--prefix=/usr"
 	doconfig
 }
 
@@ -30,7 +28,7 @@ pbs_build() {
 
 pbs_install() {
 	domkinstall
-	install -m755 -d "$destdir"/usr/share/{doc,man}/"$N-$V$R"
-	cp -a *.txt  "$destdir"/usr/share/doc/"$N-$V$R"
-	cp -av *.1  "$destdir"/usr/share/man/"$N-$V$R" 
+	dodoc *.txt
+	doman *.1
 }
+

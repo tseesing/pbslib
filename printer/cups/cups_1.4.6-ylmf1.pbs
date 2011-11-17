@@ -22,7 +22,7 @@ pbs_unpack() {
 }
 
 pbs_config() {
-	ypkg_groupadd -r "lp"
+	dogroupadd -r "lp"
 	dopatch cups-avahi.patch ylmfos-add-wheel-group-to-systemgroup.patch
 	
 	# Rebuild configure script for --enable-avahi.

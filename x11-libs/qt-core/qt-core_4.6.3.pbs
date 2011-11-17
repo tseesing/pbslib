@@ -6,16 +6,12 @@ DESCRIPTION="The Qt toolkit is a comprehensive C++ application development frame
 HOMEPAGE="http://qt.nokia.com/"
 LICENSE="GPL-2"
 PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
-REPO=""
 
 SRC_URI="ftp://ftp.trolltech.com/qt/source/qt-everywhere-opensource-src-"$V$R".tar.gz"
 
-RDEPEND="libpng freetype glib2 gdk-pixbuf libSM libICE libXrender fontconfig libXext libX11 zlib gcc 
-	 util-linux-ng expat libxcb libXau libXdmcp glibc gcc"
+RDEPEND="libpng freetype glib2 gdk-pixbuf libSM libICE libXrender fontconfig libXext libX11 zlib gcc util-linux-ng expat libxcb libXau libXdmcp glibc gcc"
 BDEPEND=""
 RECOMMENDED=""
-
-NOTES=""
 
 pbs_unpack() {
         dounpack

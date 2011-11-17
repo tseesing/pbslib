@@ -30,6 +30,5 @@ pbs_build() {
 pbs_install() {
 	domkinstall
 	sed -i '/#include "config.h"/d' "$destdir"/usr/include/FLAC/export.h
-	dodoc README
 }
 

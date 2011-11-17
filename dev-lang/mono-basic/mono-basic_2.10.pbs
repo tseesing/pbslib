@@ -29,11 +29,6 @@ pbs_build() {
 
 pbs_install() {
 	domkinstall libdir=/usr/lib
-
-	#
-	#cat <<EOF >%{buildroot}/%{_libdir}/pkgconfig/mono-basic.pc
-	#prefix=%{_prefix}
-	#exec_prefix=%{_prefix}
-	#libdir=%{_libdir}
 }
+
 

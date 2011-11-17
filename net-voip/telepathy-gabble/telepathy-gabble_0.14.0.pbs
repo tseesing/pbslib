@@ -1,0 +1,32 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="A Jabber/XMPP connection manager, this handles single and multi user chats and voice calls."
+HOMEPAGE="http://telepathy.freedesktop.org"
+LICENSE="GPLv2"
+PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
+
+SRC_URI="http://telepathy.freedesktop.org/releases/"$N"/"$N-$V".tar.gz"
+
+RDEPEND="dbus dbus-glib glib2 glibc gnutls libgcrypt libgpg-error libnice libsoup libtasn1 libxml2 openssl sqlite telepathy-glib zlib"
+BDEPEND=""
+RECOMMENDED=""
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_config() {
+	config+="--with-tls=openssl"
+	doconfig
+}
+
+pbs_build() {
+	domake
+}
+
+pbs_install() {
+	domkinstall
+}
+

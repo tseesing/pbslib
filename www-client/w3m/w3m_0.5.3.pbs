@@ -4,26 +4,38 @@
 
 DESCRIPTION="Text based WWW browser, supports tables and frames"
 HOMEPAGE="http://w3m.sourceforge.net/"
-REPO=""
-LICENSE="GPL"
+LICENSE="custom"
 PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 
-SRC_URI="http://nchc.dl.sourceforge.net/project/"$N"/"$N"/"$N-$V$R"/"$N-$V$R".tar.gz"
+SRC_URI="http://downloads.sourceforge.net/sourceforge/"$N"/"$N-$V".tar.gz"
 
-RDEPEND="atk cairo expat fontconfig freetype gc gcc glib2 gdk-pixbuf glibc gtk+ libpng libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libXrandr libXrender ncurses openssl pango pixman zlib"
+RDEPEND="freetype gc gcc glibc imlib2 libX11 libXau libxcb libXdmcp libXext ncurses openssl zlib"
 BDEPEND=""
 RECOMMENDED=""
 CONFLICT=""
-
-NOTES=""
 
 pbs_unpack() {
         dounpack
 }
 
 pbs_config() {
-	dopatch w3m-0.5.2-gc72.patch w3m-0.5.3-parallel-make.patch
-	config+=""
+	dopatch w3m-0.5.3-parallel-make.patch
+	dopatch w3m-0.5.2-gc72.patch
+	dopatch w3m-0.4.1-helpcharset.patch
+	dopatch	w3m-0.5.1-gcc4.patch  
+	dopatch	bug_566101_Fix-DSO-X11.patch 
+	dopatch	w3m-0.5.2-ssl_verify_server_on.patch 
+	dopatch	w3m-0.5.2-fix_gcc_error.patch 
+	dopatch	rh707994-fix-https-segfault.patch
+
+	config+="--enable-image=x11,fb
+	         --enable-m17n
+		 --enable-unicode
+		 --enable-nls
+		 --with-charset=UTF-8
+		 --with-gc
+		 --with-imagelib=imlib2 
+  		 --with-termlib=ncurses "
 	doconfig
 }
 
@@ -34,3 +46,4 @@ pbs_build() {
 pbs_install() {
 	domkinstall
 }
+

@@ -16,10 +16,10 @@ post_remove() {
 }
 	
 post_upgrade() {
-	/usr/lib/vlc/vlc-cache-gen -f /usr/lib/vlc/plugins
-	post_remove
+	post_install
 }
 
 post_downgrade() {	
 	post_upgrade
 }
+

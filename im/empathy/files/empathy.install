@@ -30,4 +30,3 @@ post_downgrade() {
         gnome2_gconfd_reload
 }
 
-

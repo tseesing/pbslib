@@ -18,9 +18,6 @@ pbs_unpack() {
 }
 
 pbs_config() {
-	export MONO_SHARED_DIR="${PWD}/.wabi"
-	mkdir -p "${MONO_SHARED_DIR}"
-	
 	config+=""
 	doconfig
 }

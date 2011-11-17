@@ -94,7 +94,7 @@ pbs_install() {
 														#create voices directory
 	install -dm755 "$destdir"/usr/share/festival/voices
 														#licenses
-	dodoc COPYING ../speech_tools/README 
+	doc COPYING ../speech_tools/README 
 
 	#################################################################
 	# Ok now some general cleanups

@@ -15,15 +15,14 @@ pbs_unpack() {
 }
 
 pbs_config() {
-	
-	patch -Np1 -i $filesdir/"$N-$V$R"-build_fix-1.patch
-	config+=" --prefix=/usr            \
-	              --sysconfdir=/etc        \
-	              --localstatedir=/var 	\
-	              --enable-threadsafe       \
-		      --enable-cross-thread-connections \
-		      --enable-tempstore=yes   \
-		      --enable-load-extension  \
+	dopatch "$N-$V$R"-build_fix-1.patch
+	config+=" --prefix=/usr            
+	              --sysconfdir=/etc        
+	              --localstatedir=/var 	
+	              --enable-threadsafe      
+		      --enable-cross-thread-connections
+		      --enable-tempstore=yes   
+		      --enable-load-extension 
 		      --enable-static=no "
 	if ! doconfig;then
 		autoconf
@@ -39,5 +38,6 @@ pbs_install() {
 	domkinstall
 	install -m755 -d           "$destdir"/usr/share/{man,doc}/"$N-$V$R"
 	install -m 0644 sqlite3.1  "$destdir"/usr/share/man/"$N-$V$R"
-	cp -a README* VERSION      "$destdir"/usr/share/doc/"$N-$V$R"
+	dodoc README* VERSION
 }
+

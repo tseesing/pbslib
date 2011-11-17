@@ -25,5 +25,5 @@ pbs_install() {
 	cd "$destdir"
 	docp $filesdir/qq.png     usr/share/tencent/qq
 	docp $filesdir/qq.desktop usr/share/applications
-	docp $filesdir/qq_doc	  usr/share/doc/"$N-$V$R"/qq
+	docp $filesdir/qq_dodoc	  usr/share/doc/"$N-$V$R"/qq
 }

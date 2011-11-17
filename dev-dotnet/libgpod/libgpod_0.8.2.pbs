@@ -9,8 +9,8 @@ PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 
 SRC_URI="http://downloads.sourceforge.net/sourceforge/gtkpod/"$N-$V".tar.bz2"
 
-RDEPEND=""
-BDEPEND="libplist"
+RDEPEND="gdk-pixbuf glib2 glibc libplist libpng libusb libxml2 sg3_utils sqlite zlib"
+BDEPEND=""
 RECOMMENDED=""
 CONFLICT=""
 
@@ -19,7 +19,7 @@ pbs_unpack() {
 }
 
 pbs_config() {
-	config+=""
+	config+="--enable-udev"
 	doconfig
 }
 

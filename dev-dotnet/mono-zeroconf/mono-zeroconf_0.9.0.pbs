@@ -4,33 +4,32 @@
 
 DESCRIPTION="a cross platform Zero Configuration Networking library for Mono and .NET."
 HOMEPAGE="http://www.mono-project.com/Mono.Zeroconf"
-REPO=""
 LICENSE="GPL"
-PRIORITY=""
 PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 
-SRC_URI="http://download.banshee-project.org/"$N"/"$N-$V$R".tar.bz2"
+SRC_URI="http://download.banshee-project.org/"$N"/"$N-$V".tar.bz2"
 
-RDEPEND=""
-BDEPEND="avahi-dev"
+RDEPEND="mono avahi"
+BDEPEND=""
 RECOMMENDED=""
 CONFLICT=""
 
-NOTES="avahi must build with mono "
+NOTES="build avahi with mono"
 
 pbs_unpack() {
         dounpack
 }
 
 pbs_config() {
-	config+=""
+	config+="--disable-docs --disable-mdnsresponder"
 	doconfig
 }
 
 pbs_build() {
-	make 
+	make hicolordir=/usr/share/icons/hicolor
 }
 
 pbs_install() {
-	domkinstall
+	domkinstall hicolordir=/usr/share/icons/hicolor GCONF_DISABLE_MAKEFILE_SCHEMA_INSTALL=1
 }
+

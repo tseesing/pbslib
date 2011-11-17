@@ -4,31 +4,38 @@
 
 DESCRIPTION="VHBA module provides Virtual (SCSI) Host Bus Adapter for the cdemu suite"
 HOMEPAGE="http://cdemu.org"
-REPO=""
 LICENSE="GPL"
-PRIORITY=""
 PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 
-SRC_URI="http://downloads.sourceforge.net/project/cdemu/vhba-module/vhba-module-20100822/vhba-module-20100822.tar.gz"
+SRC_URI="http://downloads.sourceforge.net/project/cdemu/"$N"/"$N-$V"/"$N-$V".tar.gz"
 
-RDEPEND=""
-BDEPEND=" "
-RECOMMENDED=""
-CONFLICT=""
-
-INSTALL="$N.install"
-
-NOTES=""
+PROVIDE="$N-source $N-driver"
 
 pbs_unpack() {
         dounpack
 }
 
-pbs_build() {
-	domake
+vhba-module-source_install() {
+	DESCRIPTION="VHBA module provides Virtual (SCSI) Host Bus Adapter for the cdemu suite (source)."
+	RECOMMENDED="build-essential"
+	OPINION="nodev"
+	YARCH="any"
+	
+	INSTALL="$N.install"
+
+	dosrc *
 }
 
-pbs_install() {
-	docp vhba.ko "$destdir"/lib/modules/"$(uname -r)"/extra/
+vhba-module-driver_install() {
+	DESCRIPTION="VHBA module provides Virtual (SCSI) Host Bus Adapter for the cdemu suite (kernel module)."
+	BDEPEND="gcc make linux-kernel-headers"
+	CONFLICT="vhba-module"
+
+	INSTALL="$N.install"
+	unset ARCH
+	
+	domake
+	domkinstall
+	#docp vhba.ko "$destdir"/lib/modules/"$(uname -r)"/extra/
 }
 

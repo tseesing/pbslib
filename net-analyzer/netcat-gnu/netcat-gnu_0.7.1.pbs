@@ -4,7 +4,6 @@
 
 DESCRIPTION="GNU rewrite of netcat, the network piping application"
 HOMEPAGE="http://netcat.sourceforge.net/"
-REPO=""
 LICENSE="GPL"
 PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 
@@ -13,11 +12,9 @@ SRC_URI="http://nchc.dl.sourceforge.net/project/netcat/netcat/"$V$R"/netcat-"$V$
 RDEPEND=""
 BDEPEND=""
 RECOMMENDED=""
-CONFLICT=""
+CONFLICT="gnu-netcat"
 
 INSTALL="$N.install"
-
-NOTES=""
 
 pbs_unpack() {
         dounpack
