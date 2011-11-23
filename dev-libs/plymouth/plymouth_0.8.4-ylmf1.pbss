@@ -21,17 +21,17 @@ pbs_unpack() {
 
 pbs_config() {
 	config+="--libdir=/lib 
-		     --datarootdir=/lib
-		     --enable-tracing --disable-tests
-  	             --with-background-start-color-stop=0x0073B3           
-		     --with-background-end-color-stop=0x00457E            
-                     --with-background-color=0x3391cd                      
-                     --disable-gdm-transition                              
-                     --enable-systemd-integration                          
-		     --with-system-root-install
-	             --with-rhgb-compat-link                               
-		     --without-log-viewer"
-		     #--with-logo=%{_datadir}/pixmaps/system-logo-white.png
+		 --datarootdir=/lib
+		 --enable-tracing --disable-tests
+  	         --with-background-start-color-stop=0x0073B3           
+		 --with-background-end-color-stop=0x00457E            
+                 --with-background-color=0x3391cd                      
+                 --disable-gdm-transition                              
+                 --enable-systemd-integration                          
+		 --with-system-root-install
+	         --with-rhgb-compat-link                               
+		 --without-log-viewer"
+		 #--with-logo=%{_datadir}/pixmaps/system-logo-white.png
 	doconfig
 }
 

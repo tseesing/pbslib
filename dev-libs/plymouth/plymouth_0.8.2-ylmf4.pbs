@@ -1,5 +1,5 @@
 #
-# YLmf_OS package build script
+# Ylmf OS package build script
 #
 
 DESCRIPTION="graphical boot animation and logger"
@@ -21,7 +21,7 @@ pbs_unpack() {
 
 pbs_config() {
 	# dopatch debian-changes.patch
-	docp $filesdir/ubuntu-logo/*.png themes/ubuntu-logo
+	docp "$filesdir"/ubuntu-logo/*.png themes/ubuntu-logo
 	patches=" ubuntu_details.patch
 		  details_removeSeparator.patch
 		  misc-changes.patch
@@ -41,11 +41,9 @@ pbs_config() {
 		  upstream-terminal-no-ISTRIP.patch
 		  autoreconf.patch "
 	dopatch $patches
-	pwd
-	exit
 	config+="--libdir=/lib 
-		     --enable-gdm-transition
-		     --datarootdir=/lib"
+		 --enable-gdm-transition
+		 --datarootdir=/lib"
 	doconfig
 }
 
@@ -55,16 +53,17 @@ pbs_build() {
 
 pbs_install() {
 	domkinstall
-	dodoc AUTHORS ChangeLog COPYING INSTALL NEWS README
 	
 	# For initramfs-tools
 	cd "$destdir" 
-	docp $filesdir/initramfs-tools usr/share/
-	docp $filesdir/ylmfos-logo.png lib/plymouth
+	docp "$filesdir"/initramfs-tools usr/share/
 	
 	#
-	rm -rf lib/plymouth/plymouthd.defaults lib/plymouth/themes/ubuntu-text \
-	       lib/plymouth/themes/ubuntu-logo lib/plymouth/themes/kubuntu-text lib/plymouth/ubuntu-text.so
+	rm -rf lib/plymouth/plymouthd.defaults  \
+	       lib/plymouth/themes/ubuntu-text  \
+	       lib/plymouth/themes/ubuntu-logo  \
+	       lib/plymouth/themes/kubuntu-text \
+	       lib/plymouth/ubuntu-text.so
 	doln /lib/plymouth/themes/text/text.plymouth  lib/plymouth/themes/text.plymouth
 }
 

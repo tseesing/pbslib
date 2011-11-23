@@ -1,0 +1,31 @@
+diff -ur likewise-open-6.0.0.53010/lwsm/Makefile.am likewise-open-6.0.0.53010.new//lwsm/Makefile.am
+--- likewise-open-6.0.0.53010/lwsm/Makefile.am	2010-11-23 03:55:16.000000000 +0800
++++ likewise-open-6.0.0.53010.new//lwsm/Makefile.am	2011-11-22 17:16:50.838039061 +0800
+@@ -33,7 +33,7 @@
+ client_liblwsm_la_SOURCES = \
+ 	client/client.c \
+ 	client/call.c
+-client_liblwsm_la_LIBADD = $(top_builddir)/common/liblwsmcommon.la @LIB_PTHREAD@
++client_liblwsm_la_LIBADD = $(top_builddir)/common/liblwsmcommon.la -llwmsg -llwmsg_nothr -llwadvapi_nothr @LIB_PTHREAD@
+ client_liblwsm_la_LDFLAGS = $(AM_LDFLAGS) -export-symbols $(top_srcdir)/client/liblwsm.sym
+ 
+ server_liblwsmloader_la_SOURCES = server/loader.c
+@@ -56,7 +56,8 @@
+ server_driver_la_LIBADD = \
+     $(top_builddir)/server/liblwsmloader.la \
+     $(top_builddir)/common/liblwsmcommon.la \
+-    @LIB_PTHREAD@
++    @LIB_PTHREAD@ \
++    -llwioclient -llwadvapi -llwadvapi_nothr
+ server_driver_la_LDFLAGS = $(AM_LDFLAGS) $(LOADER_LDFLAGS)
+ 
+ server_stub_la_SOURCES = server/stub.c
+@@ -90,7 +91,7 @@
+ client_lwsm_LDADD = \
+ 	$(top_builddir)/client/liblwsm.la \
+ 	$(top_builddir)/common/liblwsmcommon.la \
+-	-llwadvapi -llwadvapi_nothr @LIB_PTHREAD@
++	-llwadvapi -llwadvapi_nothr -llwmsg -llwmsg_nothr @LIB_PTHREAD@
+ 
+ # documentation
+ 

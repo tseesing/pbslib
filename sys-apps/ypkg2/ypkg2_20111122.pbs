@@ -1,5 +1,5 @@
 #
-# YLmf_OS package build script
+# Ylmf OS package build script
 #
 
 DESCRIPTION="Package management system for Ylmf_OS Linux, version2"
@@ -7,7 +7,6 @@ HOMEPAGE="www.ylmf.net"
 LICENSE="GPL"
 PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 PRIORITY="required"
-REPO="testing"
 
 INSTALL="$N.install"
 
@@ -22,6 +21,7 @@ pbs_unpack() {
 
 pbs_build() {
 	git checkout develop
+	git pull
 	make
 }
 

@@ -1,5 +1,5 @@
 #
-# YLmf_OS package build script
+# Ylmf OS package build script
 #
 
 DESCRIPTION="A Trivia Database similar to GDBM but allows simultaneous commits"
@@ -19,8 +19,8 @@ pbs_unpack() {
 
 pbs_config() {
 	config="--prefix=/usr 
-	            --localstatedir=/var
-		    --sysconfdir=/etc/samba"
+	        --localstatedir=/var
+		--sysconfdir=/etc/samba"
 	doconfig
 }
 

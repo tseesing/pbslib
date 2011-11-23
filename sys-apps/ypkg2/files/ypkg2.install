@@ -6,8 +6,8 @@ sql_file="/usr/share/ypkg/db_create.sql"
 post_install() {
 	if [ ! -f $db_dir ] && [ -f $sql_file ]; then
 		sqlite3 $db_dir ".read $sql_file"	
+	[	 -f $db_dir ] && ypkg2-import
 	fi
-	[ -f $db_dir ] && ypkg2-import
 }
 
 post_upgrade() {

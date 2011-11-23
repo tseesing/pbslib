@@ -1,0 +1,51 @@
+diff -ur likewise-open-6.0.0.53010/lsass/etc/lsassd.reg.in likewise-open-6.0.0.53010.new//lsass/etc/lsassd.reg.in
+--- likewise-open-6.0.0.53010/lsass/etc/lsassd.reg.in	2010-11-23 03:55:16.000000000 +0800
++++ likewise-open-6.0.0.53010.new//lsass/etc/lsassd.reg.in	2011-11-22 17:03:54.238359502 +0800
+@@ -38,9 +38,9 @@
+ "Id"="lsa-activedirectory-provider"
+ "Path"="@providerdir@/liblsass_auth_provider_ad_open@MOD_EXT@"
+ "LogNetworkConnectionEvents"=dword:00000001
+-"LoginShellTemplate"="/bin/sh"
++"LoginShellTemplate"="/bin/bash"
+ "HomeDirPrefix"="@default_homedir_prefix@"
+-"HomeDirTemplate"="%H/local/%D/%U"
++"HomeDirTemplate"="%H/likewise-open/%D/%U"
+ "LdapSignAndSeal"=dword:00000000
+ "CacheEntryExpiry"=dword:00003840
+ "MachinePasswordLifespan"=dword:00278D00
+@@ -68,9 +68,9 @@
+ [HKEY_THIS_MACHINE\Services\lsass\Parameters\Providers\Local]
+ "Id"="lsa-local-provider"
+ "Path"="@providerdir@/liblsass_auth_provider_local@MOD_EXT@"
+-"LoginShellTemplate"="/bin/sh"
++"LoginShellTemplate"="/bin/bash"
+ "HomeDirPrefix"="@default_homedir_prefix@"
+-"HomeDirTemplate"="%H/local/%D/%U"
++"HomeDirTemplate"="%H/likewise-open/%D/%U"
+ "CreateHomeDir"=dword:00000001
+ "HomeDirUmask"="022"
+ "SkeletonDirs"="@default_skeldirs@"
+@@ -100,9 +100,9 @@
+ [HKEY_THIS_MACHINE\Services\lsass\Parameters\RPCServers\samr]
+ "Path"="@rpcserverdir@/libsamr_srv@MOD_EXT@"
+ "LpcSocketPath"="@CACHEDIR@/rpc/lsass"
+-"LoginShellTemplate"="/bin/sh"
++"LoginShellTemplate"="/bin/bash"
+ "HomeDirPrefix"="@default_homedir_prefix@"
+-"HomeDirTemplate"="%H/local/%D/%U"
++"HomeDirTemplate"="%H/likewise-open/%D/%U"
+ "RegisterTcpIp"=dword:00000000
+ 
+ [HKEY_THIS_MACHINE\Services\lsass\Parameters\RPCServers\dssetup]
+diff -ur likewise-open-6.0.0.53010/lsass/server/auth-providers/ad-open-provider/addef.h likewise-open-6.0.0.53010.new//lsass/server/auth-providers/ad-open-provider/addef.h
+--- likewise-open-6.0.0.53010/lsass/server/auth-providers/ad-open-provider/addef.h	2010-11-23 03:55:16.000000000 +0800
++++ likewise-open-6.0.0.53010.new//lsass/server/auth-providers/ad-open-provider/addef.h	2011-11-22 17:04:18.532205619 +0800
+@@ -57,7 +57,7 @@
+ 
+ #define AD_DEFAULT_UMASK            022
+ 
+-#define AD_DEFAULT_HOMEDIR_TEMPLATE "%H/local/%D/%U"
++#define AD_DEFAULT_HOMEDIR_TEMPLATE "%H/likewise-open/%D/%U"
+ 
+ #define AD_CACHE_ENTRY_EXPIRY_MINIMUM_SECS   (0)
+ #define AD_CACHE_ENTRY_EXPIRY_DEFAULT_SECS   (4 * LSA_SECONDS_IN_HOUR)

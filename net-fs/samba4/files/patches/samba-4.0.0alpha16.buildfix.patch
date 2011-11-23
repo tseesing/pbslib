@@ -1,0 +1,24 @@
+diff -uPr samba-4.0.0alpha16/dynconfig/wscript samba-4.0.0alpha16.buildfix/dynconfig/wscript
+--- samba-4.0.0alpha16/dynconfig/wscript	2011-06-24 02:27:55.000000000 -0400
++++ samba-4.0.0alpha16.buildfix/dynconfig/wscript	2011-08-02 17:49:53.918594580 -0400
+@@ -37,7 +37,7 @@
+     'NCALRPCDIR'                     : '${SOCKETS_DIR}/ncalrpc',
+     'PYTHONDIR'                      : '${PYTHONDIR}',
+     'PYTHONARCHDIR'                  : '${PYTHONARCHDIR}',
+-    'MODULESDIR'                     : '${PREFIX}/modules',
++    'MODULESDIR'                     : '${MODULESDIR}',
+     'INCLUDEDIR'                     : '${PREFIX}/include',
+     'PKGCONFIGDIR'                   : '${LIBDIR}/pkgconfig',
+     'SWATDIR'                        : '${DATADIR}/swat',
+diff -uPr samba-4.0.0alpha16/dynconfig/wscript samba-4.0.0alpha16.buildfix/dynconfig/wscript
+--- samba-4.0.0alpha16/dynconfig/wscript	2011-08-03 10:22:53.949115202 -0400
++++ samba-4.0.0alpha16.buildfix/dynconfig/wscript	2011-08-03 10:23:23.637563597 -0400
+@@ -38,7 +38,7 @@
+     'PYTHONDIR'                      : '${PYTHONDIR}',
+     'PYTHONARCHDIR'                  : '${PYTHONARCHDIR}',
+     'MODULESDIR'                     : '${MODULESDIR}',
+-    'INCLUDEDIR'                     : '${PREFIX}/include',
++    'INCLUDEDIR'                     : '${PREFIX}/include/samba-4.0',
+     'PKGCONFIGDIR'                   : '${LIBDIR}/pkgconfig',
+     'SWATDIR'                        : '${DATADIR}/swat',
+     'CODEPAGEDIR'                    : '${DATADIR}/codepages',

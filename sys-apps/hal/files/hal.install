@@ -3,10 +3,12 @@
 post_install() {
 	dogroupadd -r "haldaemon"
 	douseradd -c "HAL Daemon User" -d "/dev/null" -s "/bin/false" -r -N "haldaemon"
+	return 0
 }
 
 pre_remove() {
 	systemctl disable hald.service
+	return 0
 }
 
 post_remove() {

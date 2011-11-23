@@ -1,5 +1,5 @@
 #
-# YLmf_OS package build script
+# Ylmf OS package build script
 #
 
 DESCRIPTION="Package management system for Ylmf_OS Linux"
@@ -21,7 +21,7 @@ pbs_unpack() {
 }
 
 pbs_build() {
-	git checkout develop
+	git checkout release-v1.0 
 	make
 }
 

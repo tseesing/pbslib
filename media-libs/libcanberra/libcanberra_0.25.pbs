@@ -1,5 +1,5 @@
 #
-# YLmf_OS package build script
+# Ylmf OS package build script
 #
 
 DESCRIPTION="A small and lightweight implementation of the XDG Sound Theme Specification"
@@ -21,14 +21,14 @@ pbs_unpack() {
 
 pbs_config() {
 	config+="--enable-gtk 
-		     --enable-gtk-doc-html=no
-		     --disable-static 
-		     --with-builtin=dso
-		     --enable-null 
-		     --disable-oss
-		     --enable-alsa 
-		     --enable-gstreamer 
-		     --enable-pulse"
+		 --enable-gtk-doc-html=no
+		 --disable-static 
+		 --with-builtin=dso
+		 --enable-null 
+		 --disable-oss
+		 --enable-alsa 
+		 --enable-gstreamer 
+		 --enable-pulse"
 	doconfig
 }
 

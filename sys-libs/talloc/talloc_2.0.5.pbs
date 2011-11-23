@@ -1,5 +1,5 @@
 #
-# YLmf_OS package build script
+# Ylmf OS package build script
 #
 
 DESCRIPTION="A hierarchical pool based memory allocator with destructors"
@@ -18,6 +18,7 @@ pbs_unpack() {
 }
 
 pbs_config() {
+	config+="--disable-rpath --bundled-libraries=NONE"
 	config=${config/--enable-shared/}
 	doconfig
 }
