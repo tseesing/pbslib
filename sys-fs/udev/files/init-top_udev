@@ -29,5 +29,5 @@ echo "" > /proc/sys/kernel/hotplug
 ( /sbin/udevadm trigger --subsystem-match=block; \
   /sbin/udevadm trigger --subsystem-nomatch=block; ) &
 
-# ylmf, vga16fb lost?
+# ylmfos, vga16fb lost?
 #modprobe -q vga16fb

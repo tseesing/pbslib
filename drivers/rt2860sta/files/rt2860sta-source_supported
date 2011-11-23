@@ -19,7 +19,7 @@ pci:v00001432d00007748sv*sd*bc*sc*i*
 pci:v00001432d00007768sv*sd*bc*sc*i*
 "
 
-
+echo "package rt2860sta-driver"
 echo "module rt2860sta.ko"
 echo "description Ralink PCI ABGN WLAN Card: RT2860PCI/mPCI/CB/PCIe(RT2760/RT2790/RT2860/RT2890)"
 

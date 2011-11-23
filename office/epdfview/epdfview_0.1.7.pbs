@@ -1,5 +1,5 @@
 #
-# YLmf_OS package build script
+# Ylmf OS package build script
 #
 
 DESCRIPTION="Lightweight PDF viewer using Poppler and GTK+ libraries."
@@ -11,19 +11,19 @@ RDEPEND="atk cairo cups e2fsprogs expat fontconfig freetype gcc glib2 gdk-pixbuf
 BDEPEND="                                    "
 
 pbs_unpack() {
-        ypkg_unpack
+        dounpack
 }
 
 pbs_config() {
-	ypkg_config
+	doconfig
 }
 
 pbs_build() {
-	ypkg_make
+	domake
 }
 
 pbs_install() {
-	ypkg_mkinstall
-	cd "$YPPATH_DEST"
-	ypkg_docp usr/share/epdfview/pixmaps/icon_epdfview-48.png usr/share/pixmaps
+	domkinstall
+	cd "$destdir"
+	docp usr/share/epdfview/pixmaps/icon_epdfview-48.png usr/share/pixmaps
 }

@@ -1,13 +1,12 @@
 #
-# YLmf_OS package build script
+# Ylmf OS package build script
 #
 
 DESCRIPTION="Gudev mono bindings"
 HOMEPAGE="http://github.com/mono/gudev-sharp"
-REPO=""
 LICENSE="LGPL"
-PRIORITY=""
 PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
+YARCH="any"
 
 SRC_URI="git://github.com/mono/gudev-sharp.git"
 
@@ -16,15 +15,13 @@ BDEPEND=""
 RECOMMENDED=""
 CONFLICT=""
 
-NOTES=""
-
 pbs_unpack() {
-        ypkg_unpack
+        dounpack
 }
 
 pbs_config() {
-	YPB_CONFIG+=""
-	ypkg_config
+	config+=""
+	doconfig
 }
 
 pbs_build() {
@@ -32,5 +29,6 @@ pbs_build() {
 }
 
 pbs_install() {
-	ypkg_mkinstall
+	domkinstall
 }
+

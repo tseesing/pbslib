@@ -1,5 +1,5 @@
 #
-# YLmf_OS package build script
+# Ylmf OS package build script
 #
 
 DESCRIPTION="The notorious fortune program"
@@ -17,7 +17,7 @@ RECOMMENDED=""
 NOTES=""
 
 pbs_unpack() {
-        ypkg_unpack
+        dounpack
 }
 
 pbs_build() {
@@ -28,11 +28,11 @@ pbs_build() {
 	        -e '/^all:/s:$: fortune/fortune.man:' \
 	        -e "/^OFFENSIVE=/s:=.*:=`use offensive && echo 1 || echo 0`:" \
 	 Makefile 
-	 ypkg_make
+	 domake
 }
 
 pbs_install() {
-	make prefix="$YPPATH_DEST" install
-	ypkg_dodoc ChangeLog INDEX Notes Offensive README TODO cookie-files
+	make prefix="$destdir" install
+	dodoc ChangeLog INDEX Notes Offensive README TODO cookie-files
 }
 

@@ -1,5 +1,5 @@
 #
-# YLmf_OS package build script
+# Ylmf OS package build script
 #
 
 DESCRIPTION="X.Org Adobe Utopia Type 1 fonts"
@@ -11,24 +11,24 @@ RDEPEND=""
 BDEPEND=" font-util mkfontdir mkfontscale"
 
 pbs_unpack() {	
-        ypkg_unpack
+        dounpack
 }
 
 pbs_config() {
 	
-	YPB_CONFIG+=" 
+	config+=" 
 	               
 		       
 	               
 		       
 		      --with-fontrootdir=/usr/share/fonts "
-	ypkg_config
+	doconfig
 }
 
 pbs_build() {
-	ypkg_make
+	domake
 }
 
 pbs_install() {
-	ypkg_mkinstall
+	domkinstall
 }

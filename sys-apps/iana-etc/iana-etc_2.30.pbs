@@ -1,5 +1,5 @@
 #
-# YLmf_OS package build script
+# Ylmf OS package build script
 #
 
 DESCRIPTION="Unix/Linux /etc/services and /etc/protocols files"
@@ -14,14 +14,14 @@ RDEPEND=""
 BDEPEND=""
 
 pbs_unpack() {
-        ypkg_unpack
+        dounpack
 }
 
 pbs_build() {
-	ypkg_make
+	domake
 }
 
 pbs_install() {
-	ypkg_mkinstall
+	domkinstall
 }
 

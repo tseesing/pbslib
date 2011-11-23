@@ -1,5 +1,5 @@
 #
-# YLmf_OS package build script
+# Ylmf OS package build script
 #
 
 DESCRIPTION="X.Org Xft library"
@@ -14,20 +14,20 @@ RDEPEND="fontconfig freetype libXrender libX11 expat libxcb libXau libXdmcp"
 BDEPEND=" media-libs/fontconfig"
 
 pbs_unpack() {
-        ypkg_unpack
+        dounpack
 }
 
 pbs_config() {
 	
-	ypkg_patch "$FILES_PATH"/files/"$N-$V$R"-ubuntu.patch
-	YPB_CONFIG+=" --prefix=/usr --sysconfdir=/etc --mandir=/usr/share/man --localstatedir=/var "
-	ypkg_config
+	dopatch $filesdir/"$N-$V$R"-ubuntu.patch
+	config+=" --prefix=/usr --sysconfdir=/etc --mandir=/usr/share/man --localstatedir=/var "
+	doconfig
 }
 
 pbs_build() {
-	ypkg_make
+	domake
 }
 
 pbs_install() {
-	ypkg_mkinstall
+	domkinstall
 }

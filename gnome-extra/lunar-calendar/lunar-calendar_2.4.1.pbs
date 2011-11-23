@@ -1,5 +1,5 @@
 #
-# YLmf_OS package build script
+# Ylmf OS package build script
 #
 
 DESCRIPTION="lunar-date gtk frondend"
@@ -15,22 +15,22 @@ RECOMMENDED=""
 CONFLICT=""
 
 pbs_unpack() {
-        ypkg_unpack
+        dounpack
 }
 
 pbs_config() {
-	YPB_CONFIG+="--enable-introspection=no"
-	ypkg_config
+	config+="--enable-introspection=no"
+	doconfig
 }
 
 pbs_build() {
-	ypkg_make
+	domake
 }
 
 pbs_install() {
-	ypkg_mkinstall
-	cd "$YPPATH_DEST"
-	ypkg_doln  /usr/lib/liblunar-calendar-preload-2.0.so  usr/lib/liblunar-calendar-preload.so
-	ypkg_docp "$FILES_PATH"/files/99-liblunar-preload etc/X11/Xsession.d
+	domkinstall
+	cd "$destdir"
+	doln  /usr/lib/liblunar-calendar-preload-2.0.so  usr/lib/liblunar-calendar-preload.so
+	docp $filesdir/99-liblunar-preload etc/X11/Xsession.d
 }
 

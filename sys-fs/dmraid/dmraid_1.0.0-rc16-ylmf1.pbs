@@ -1,5 +1,5 @@
 #
-# YLmf_OS package build script
+# Ylmf OS package build script
 #
 
 DESCRIPTION="Device-mapper RAID tool and library"
@@ -16,30 +16,30 @@ RECOMMENDED=""
 INSTALL="$N.install"
 
 pbs_unpack() {
-        ypkg_unpack
+        dounpack
 }
 
 pbs_config() {
 	cd "$V".rc16
-	ypkg_patch dmraid-destdir-fix.patch
-	ypkg_config
+	dopatch dmraid-destdir-fix.patch
+	doconfig
 }
 
 pbs_build() {
-	ypkg_make
+	domake
 }
 
 pbs_install() {
-	ypkg_mkinstall
-	ypkg_dodoc README 
+	domkinstall
+	dodoc README 
 
 	# For initramfs
-	cd "$YPPATH_DEST"
-	ypkg_docp_rename "$FILES_PATH"/files/hook_dmraid       usr/share/initramfs-tools/hooks/dmraid
-	ypkg_docp_rename "$FILES_PATH"/files/local-top_dmraid  usr/share/initramfs-tools/scripts/local-top/dmraid
-	ypkg_docp  "$FILES_PATH"/files/85-dmraid.rules         lib/udev/rules.d
-	ypkg_docp  "$FILES_PATH"/files/dmraid-activate         sbin
-	ypkg_doln /usr/lib/libdmraid-events-isw.so   usr/lib/libdmraid-events-isw.so."$V".rc16
-	ypkg_doln  /usr/lib/libdmraid.so             usr/lib/libdmraid.so."$V".rc16
+	cd "$destdir"
+	docp_rename $filesdir/hook_dmraid       usr/share/initramfs-tools/hooks/dmraid
+	docp_rename $filesdir/local-top_dmraid  usr/share/initramfs-tools/scripts/local-top/dmraid
+	docp  $filesdir/85-dmraid.rules         lib/udev/rules.d
+	docp  $filesdir/dmraid-activate         sbin
+	doln /usr/lib/libdmraid-events-isw.so   usr/lib/libdmraid-events-isw.so."$V".rc16
+	doln  /usr/lib/libdmraid.so             usr/lib/libdmraid.so."$V".rc16
 }
 

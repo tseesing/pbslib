@@ -1,5 +1,5 @@
 #
-# YLmf_OS package build script
+# Ylmf OS package build script
 #
 
 DESCRIPTION="Telepathy Logger is a session daemon that should be activated whenever telepathy is being used."
@@ -17,20 +17,20 @@ CONFLICT=""
 INSTALL="$N.install"
 
 pbs_unpack() {
-        ypkg_unpack
+        dounpack
 }
 
 pbs_config() {
-	YPB_CONFIG+=""
-	ypkg_config
+	config+=""
+	doconfig
 }
 
 pbs_build() {
-	ypkg_make
+	domake
 }
 
 pbs_install() {
-	ypkg_mkinstall
+	domkinstall
 }
 
 

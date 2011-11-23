@@ -1,5 +1,5 @@
 #
-# YLmf_OS package build script
+# Ylmf OS package build script
 #
 
 DESCRIPTION="a collection of sixteen small "five-minute" games in a variety of styles and genres for the GNOME desktop"
@@ -23,20 +23,20 @@ INSTALL="$N.install"
 DESKTOPFILE="sol.desktop"
 
 pbs_unpack() {
-        ypkg_unpack
+        dounpack
 }
 
 pbs_config() {
-	YPB_CONFIG+="--enable-games=aisleriot
+	config+="--enable-games=aisleriot
 	             --disable-schemas-install"
-	ypkg_config
+	doconfig
 }
 
 pbs_build() {
-	ypkg_make
+	domake
 }
 
 pbs_install() {
-	ypkg_mkinstall
+	domkinstall
 }
 

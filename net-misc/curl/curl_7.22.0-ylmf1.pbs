@@ -1,5 +1,5 @@
 #
-# YLmf_OS package build script
+# Ylmf OS package build script
 #
 
 DESCRIPTION="A Client that groks URLs"
@@ -13,21 +13,21 @@ RDEPEND="cyrus-sasl glibc libidn libssh2 openldap openssl rtmpdump zlib"
 BDEPEND=""
 
 pbs_unpack() {
-        ypkg_unpack
+        dounpack
 }
 
 pbs_config() {
-	ypkg_config
+	doconfig
 }
 
 pbs_build() {
-	ypkg_make
+	domake
 }
 
 pbs_install() {
-	ypkg_mkinstall
+	domkinstall
 
 	# types.h: fetch from curl_7.20, some app needs, e.g. firefox-7.0.1
-	ypkg_docp "$FILES_PATH"/files/types.h "$YPPATH_DEST"/usr/include/curl/
+	docp $filesdir/types.h "$destdir"/usr/include/curl/
 }
 

@@ -1,5 +1,5 @@
 #
-# YLmf_OS package build script
+# Ylmf OS package build script
 #
 
 DESCRIPTION="Alter a monitor's gamma correction through the X server"
@@ -13,18 +13,18 @@ RDEPEND="glibc libX11 libXau libxcb libXdmcp libXext libXxf86vm"
 BDEPEND=""
 
 pbs_unpack() {
-        ypkg_unpack
+        dounpack
 }
 
 pbs_config() {
-	ypkg_config
+	doconfig
 }
 
 pbs_build() {
-	ypkg_make
+	domake
 }
 
 pbs_install() {
-	ypkg_mkinstall
+	domkinstall
 }
 

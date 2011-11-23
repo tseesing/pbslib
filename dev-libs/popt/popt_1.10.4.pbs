@@ -1,5 +1,5 @@
 #
-# YLmf_OS package build script
+# Ylmf OS package build script
 #
 
 DESCRIPTION="Parse Options - Command line parser"
@@ -15,18 +15,18 @@ BDEPEND=""
 NOTES="sed ...: This fix taken backported from the development version of popt fixes a problem identified by the included testsuite."
 
 pbs_unpack() {
-        ypkg_unpack
+        dounpack
 }
 
 pbs_config() {
 	
 	sed -i -e "/*origOptString ==/c 0)" popt.c
-	YPB_CONFIG+="--prefix=/usr --infodir=/usr/share/info --mandir=/usr/share/man "
-	ypkg_config
+	config+="--prefix=/usr --infodir=/usr/share/info --mandir=/usr/share/man "
+	doconfig
 }
 
 pbs_build(){
-	ypkg_make
+	domake
 }
 
 pbs_check() {
@@ -34,5 +34,5 @@ pbs_check() {
 }
 
 pbs_install() {
-	ypkg_mkinstall
+	domkinstall
 }

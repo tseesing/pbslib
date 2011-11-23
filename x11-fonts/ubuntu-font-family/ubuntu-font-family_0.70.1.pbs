@@ -1,5 +1,5 @@
 #
-# YLmf_OS package build script
+# Ylmf OS package build script
 #
 
 DESCRIPTION="ubuntu gont family"
@@ -19,11 +19,11 @@ CONFLICT=""
 INSTALL="$N.install"
 
 pbs_unpack() {
-        ypkg_unpack
+        dounpack
 }
 
 pbs_install() {
-	ypkg_docp *.ttf "$YPPATH_DEST"/usr/share/fonts/truetype/"$N"
-	ypkg_dodoc *.txt 
+	docp *.ttf "$destdir"/usr/share/fonts/truetype/"$N"
+	dodoc *.txt 
 }
 

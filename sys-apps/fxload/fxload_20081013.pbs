@@ -1,5 +1,5 @@
 #
-# YLmf_OS package build script
+# Ylmf OS package build script
 #
 
 DESCRIPTION="USB firmware uploader"
@@ -16,15 +16,15 @@ RECOMMENDED=""
 CONFLICT=""
 
 pbs_unpack() {
-        ypkg_unpack
+        dounpack
 }
 
 pbs_build() {
-	ypkg_patch ylmfos-makefile.patch
-	ypkg_make
+	dopatch ylmfos-makefile.patch
+	domake
 }
 
 pbs_install() {
-	ypkg_mkinstall
+	domkinstall
 }
 

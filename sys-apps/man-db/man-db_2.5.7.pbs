@@ -1,5 +1,5 @@
 #
-# YLmf_OS package build script
+# Ylmf OS package build script
 #
 
 DESCRIPTION="Database-driven manual pager suite"
@@ -11,21 +11,21 @@ RDEPEND="gdbm zlib glibc"
 BDEPEND="  "
 
 pbs_unpack() {
-        ypkg_unpack
+        dounpack
 }
 
 pbs_config() {
-	YPB_CONFIG+="--disable-setuid 
+	config+="--disable-setuid 
 		     --with-browser=/usr/bin/links 
 		     --with-vgrind=/usr/bin/vgrind 
 		     --with-grap=/usr/bin/grap"
-	ypkg_config
+	doconfig
 }
 
 pbs_build() {
-	ypkg_make
+	domake
 }
 
 pbs_install() {
-	ypkg_mkinstall
+	domkinstall
 }

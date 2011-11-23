@@ -1,5 +1,5 @@
 #
-# YLmf_OS package build script
+# Ylmf OS package build script
 #
 
 DESCRIPTION="Sun's Java Development Kit"
@@ -23,21 +23,21 @@ pbs_unpack() {
 	cd unbundle-jdk
 	sh "$YPPATH_SOURCE"/jdk-6u25-linux-i586.bin --accept-license
 	cd ../
-	sh "$FILES_PATH"/files/construct.sh unbundle-jdk linux-jdk linux-jre
+	sh $filesdir/construct.sh unbundle-jdk linux-jdk linux-jre
 }
 
 pbs_install() {
-	# Make DESTDIR="$YPPATH_DEST" install
+	# Make DESTDIR="$destdir" install
 	# Copy icon
-	ypkg_docp_rename linux-jdk/jre/lib/desktop/icons/hicolor/48x48/apps/sun-java.png "$YPPATH_DEST"/usr/share/pixmaps/java.png
+	docp_rename linux-jdk/jre/lib/desktop/icons/hicolor/48x48/apps/sun-java.png "$destdir"/usr/share/pixmaps/java.png
 	rm -rf linux-jdk/jre
-	ypkg_docp linux-jdk/* "$YPPATH_DEST"/opt/java/
-	ypkg_docp_rename "$FILES_PATH"/files/jdk.profile    "$YPPATH_DEST"/etc/profile.d/jdk.sh
-	ypkg_docp_rename "$FILES_PATH"/files/jdk.profile.csh "$YPPATH_DEST"/etc/profile.d/jdk.csh
+	docp linux-jdk/* "$destdir"/opt/java/
+	docp_rename $filesdir/jdk.profile    "$destdir"/etc/profile.d/jdk.sh
+	docp_rename $filesdir/jdk.profile.csh "$destdir"/etc/profile.d/jdk.csh
 	
-	cd "$YPPATH_DEST"
-	ypkg_docp opt/java/{COPYRIGHT,LICENSE,THIRDPARTYLICENSEREADME.txt} usr/share/licenses/jdk/
+	cd "$destdir"
+	docp opt/java/{COPYRIGHT,LICENSE,THIRDPARTYLICENSEREADME.txt} usr/share/licenses/jdk/
 	# Desktop entries
-	ypkg_dodesktop java-control-panel.desktop java-monitoring-and-management-console.desktop java-policy-settings.desktop java-visualvm.desktop java-web-start.desktop
+	dodesktop java-control-panel.desktop java-monitoring-and-management-console.desktop java-policy-settings.desktop java-visualvm.desktop java-web-start.desktop
 }
 

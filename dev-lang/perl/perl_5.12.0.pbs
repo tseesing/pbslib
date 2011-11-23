@@ -1,5 +1,5 @@
 #
-# YLmf_OS package build script
+# Ylmf OS package build script
 #
 
 DESCRIPTION="Larry Wall's Practical Extraction and Report Language"
@@ -11,7 +11,7 @@ RDEPEND="berkeley-db gdbm glibc zlib"
 BDEPEND=""
 
 pbs_unpack() {
-        ypkg_unpack
+        dounpack
 }
 
 pbs_config() {
@@ -23,18 +23,18 @@ pbs_config() {
 	       -e "s|INCLUDE\s*= ./zlib-src|INCLUDE    = /usr/include|" \
 	       -e "s|LIB\s*= ./zlib-src|LIB        = /usr/lib|"         \
        		cpan/Compress-Raw-Zlib/config.in
-	YPB_CONFIG="-des -Dprefix=/usr 	      
+	config="-des -Dprefix=/usr 	      
 		    -Dvendorprefix=/usr       
   		    -Dman1dir=/usr/share/man/man1 
 		    -Dman3dir=/usr/share/man/man3 "
-	sh Configure $YPB_CONFIG -Dpager="/usr/bin/less -isR"
-	#YPB_CONFIG+=" -Dpager=\"/usr/bin/less -isR\""
+	sh Configure $config -Dpager="/usr/bin/less -isR"
+	#config+=" -Dpager=\"/usr/bin/less -isR\""
 }
 
 pbs_build() {
-	ypkg_make
+	domake
 }
 
 pbs_install() {
-	ypkg_mkinstall
+	domkinstall
 }

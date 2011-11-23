@@ -1,5 +1,5 @@
 #
-# YLmf_OS package build script
+# Ylmf OS package build script
 #
 
 DESCRIPTION="Help browser for GNOME"
@@ -18,20 +18,20 @@ INSTALL="$N.install"
 NOTES=""
 
 pbs_unpack() {
-        ypkg_unpack
+        dounpack
 }
 
 pbs_config() {
 	# Change from mozilla to webkit backend
-	ypkg_patch yelp.webkit.diff
-	YPB_CONFIG+="--disable-schemas-install --with-search=basic"
-	ypkg_config
+	dopatch yelp.webkit.diff
+	config+="--disable-schemas-install --with-search=basic"
+	doconfig
 }
 
 pbs_build() {
-	ypkg_make
+	domake
 }
 
 pbs_install() {
-	ypkg_mkinstall
+	domkinstall
 }

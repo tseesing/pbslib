@@ -1,5 +1,5 @@
 #
-# YLmf_OS package build script
+# Ylmf OS package build script
 #
 
 DESCRIPTION="Ultimate Music Player For GNU/Linux"
@@ -19,21 +19,21 @@ INSTALL="$N.install"
 NOTES=""
 
 pbs_unpack() {
-        ypkg_unpack
+        dounpack
 }
 
 pbs_config() {
-	ypkg_patch  ylmfos-deadbeef-0.5.1.patch
-	ypkg_config
+	dopatch  ylmfos-deadbeef-0.5.1.patch
+	doconfig
 }
 
 pbs_build() {
-	ypkg_make
+	domake
 }
  
 pbs_install() {
-	ypkg_mkinstall
-	cd "$YPPATH_DEST"
+	domkinstall
+	cd "$destdir"
 	sed -i 's/audio\/mp3;/audio\/mp3;audio\/x-ape;audio\/x-ms-wma;audio\/mp4;audio\/x-wavpack;/g' usr/share/applications/deadbeef.desktop
 }
 

@@ -1,5 +1,5 @@
 #
-# YLmf_OS package build script
+# Ylmf OS package build script
 #
 
 DESCRIPTION="ylmfos app store"
@@ -18,22 +18,22 @@ RECOMMENDED="ypkg"
 INSTALL="$N.install"
 
 pbs_unpack() {
-	ypkg_unpack
+	dounpack
 }
 
 pbs_config() {
-	ypkg_config
+	doconfig
 }
 
 pbs_build() {
-	ypkg_make
+	domake
 }
 
 pbs_install() {
-	ypkg_mkinstall
-	cd "$YPPATH_DEST"
-	#ypkg_docp "$FILES_PATH"/files/systemd/*  lib/systemd/system
+	domkinstall
+	cd "$destdir"
+	#docp $filesdir/systemd/*  lib/systemd/system
 	#for ymenu
-	ypkg_docp usr/share/icons/hicolor/24x24/apps/ycenter.png  usr/share/icons/titans/24x24/categories/
+	docp usr/share/icons/hicolor/24x24/apps/ycenter.png  usr/share/icons/titans/24x24/categories/
 }
 

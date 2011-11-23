@@ -1,5 +1,5 @@
 #
-# YLmf_OS package build script
+# Ylmf OS package build script
 #
 
 DESCRIPTION="SDL MPEG Player Library"
@@ -14,21 +14,21 @@ RECOMMENDED=""
 BDEPEND="gtk+-dev mesa-dev"
 
 pbs_unpack() {
-        ypkg_unpack
+        dounpack
 }
 
 pbs_config() {
-	ypkg_patch smpeg-0.4.4-gcc41.patch
-	ypkg_config
+	dopatch smpeg-0.4.4-gcc41.patch
+	doconfig
 }
 
 pbs_build() {
-	ypkg_make LDFLAGS+=-lstdc++
+	domake LDFLAGS+=-lstdc++
 }
 
 pbs_install() {
-	ypkg_mkinstall
-	cd "$YPPATH_DEST"
+	domkinstall
+	cd "$destdir"
 	
 	# Fix aclocal warnings
 	sed -i "s#(AM_PATH_SMPEG#([AM_PATH_SMPEG]#" usr/share/aclocal/smpeg.m4 

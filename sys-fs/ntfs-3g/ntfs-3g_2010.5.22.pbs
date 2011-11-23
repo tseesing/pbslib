@@ -1,5 +1,5 @@
 #
-# YLmf_OS package build script
+# Ylmf OS package build script
 #
 
 DESCRIPTION="Open source read-write NTFS driver that runs under FUSE"
@@ -15,23 +15,23 @@ BDEPEND="attr-dev  "
 NOTES=""
 
 pbs_unpack() {
-        ypkg_unpack
+        dounpack
 }
 
 pbs_config() {
-	ypkg_config
+	doconfig
 }
 
 pbs_build() {
-	ypkg_make
+	domake
 }
 
 pbs_install() {
-	ypkg_mkinstall
-	cd "$YPPATH_DEST"
-	ypkg_doln /sbin/mount.ntfs-3g                        sbin/mount.ntfs
-	ypkg_docp "$FILES_PATH"/files/ntfs_3g                usr/share/initramfs-tools/hooks
-	ypkg_docp "$FILES_PATH"/files/25-ntfs-3g-policy.fdi  usr/share/hal/fdi/policy/20thirdparty
-	ypkg_docp_rename "$FILES_PATH"/files/pre_ntfs_3g     usr/share/initramfs-tools/scripts/local-premount/ntfs_3g
-	ypkg_docp_rename "$FILES_PATH"/files/bot_ntfs_3g     usr/share/initramfs-tools/scripts/local-bottom/ntfs_3g
+	domkinstall
+	cd "$destdir"
+	doln /sbin/mount.ntfs-3g                        sbin/mount.ntfs
+	docp $filesdir/ntfs_3g                usr/share/initramfs-tools/hooks
+	docp $filesdir/25-ntfs-3g-policy.fdi  usr/share/hal/fdi/policy/20thirdparty
+	docp_rename $filesdir/pre_ntfs_3g     usr/share/initramfs-tools/scripts/local-premount/ntfs_3g
+	docp_rename $filesdir/bot_ntfs_3g     usr/share/initramfs-tools/scripts/local-bottom/ntfs_3g
 }

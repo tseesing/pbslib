@@ -1,5 +1,5 @@
 #
-# YLmf_OS package build script
+# Ylmf OS package build script
 #
 
 DESCRIPTION="IJ Printer Driver Ver. 2.70 for cannon ip1800series printers"
@@ -17,9 +17,9 @@ CONFLICT=""
 NOTES=""
 
 pbs_unpack() {
-        ypkg_unpack
+        dounpack
 }
 
 pbs_install() {
-	ypkg_docp data/*  "$YPPATH_DEST"
+	docp data/*  "$destdir"
 }

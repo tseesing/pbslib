@@ -1,5 +1,5 @@
 #
-# YLmf_OS package build script
+# Ylmf OS package build script
 #
 
 DESCRIPTION="Crypto++ is a C++ class library of cryptographic schemes"
@@ -13,16 +13,16 @@ RDEPEND="gcc glibc"
 BDEPEND="unzip"
 
 pbs_unpack() {
-	ypkg_unpack
+	dounpack
 }
 
 pbs_build() {
-	ypkg_patch "$N-$V"-fix_build_system.patch
-	ypkg_make 
+	dopatch "$N-$V"-fix_build_system.patch
+	domake 
 }
 
 pbs_install() {
-	ypkg_mkinstall
-	ypkg_docp "$FILES_PATH"/files/libcrypto++.pc "$YPPATH_DEST"/usr/lib/pkgconfig/
+	domkinstall
+	docp $filesdir/libcrypto++.pc "$destdir"/usr/lib/pkgconfig/
 }
 

@@ -1,5 +1,5 @@
 #
-# YLmf_OS package build script
+# Ylmf OS package build script
 #
 
 DESCRIPTION="Extended attributes tools"
@@ -13,19 +13,19 @@ RDEPEND="glibc"
 BDEPEND="gettext" 
 
 pbs_unpack() {
-        ypkg_unpack
+        dounpack
 }
 
 pbs_config() {
-	YPB_CONFIG+="--disable-static_link"
-	ypkg_config
+	config+="--disable-static_link"
+	doconfig
 }
 
 pbs_build() {
-	ypkg_make
+	domake
 }
 
 pbs_install() {
-	make DIST_ROOT="$YPPATH_DEST" install-dev install-lib 
+	make DIST_ROOT="$destdir" install-dev install-lib 
 }
 

@@ -1,5 +1,5 @@
 #
-# YLmf_OS package build script
+# Ylmf OS package build script
 #
 
 DESCRIPTION="Supports PC Card and Mini PCI devices with an ISL3877, ISL3880, ISL3886 or ISL3890 chipset"
@@ -16,6 +16,6 @@ RECOMMENDED=""
 CONFLICT=""
 
 pbs_install() {
-	ypkg_docp_rename "$YPPATH_SOURCE"/2.13.25.0.arm "$YPPATH_DEST"/lib/firmware/isl3886pci
+	docp_rename "$YPPATH_SOURCE"/2.13.25.0.arm "$destdir"/lib/firmware/isl3886pci
 }
 

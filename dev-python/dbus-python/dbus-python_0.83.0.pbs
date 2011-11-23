@@ -1,5 +1,5 @@
 #
-# YLmf_OS package build script
+# Ylmf OS package build script
 #
 
 DESCRIPTION="Python bindings for the D-Bus messagebus."
@@ -13,21 +13,21 @@ RDEPEND="dbus dbus-glib glib2 glibc"
 BDEPEND=""
 RECOMMENDED=""
 
-NOTES="docutils epydoc is required to Build Documentation"
+NOTES="dodocutils epydodoc is required to Build Documentation"
 
 pbs_unpack() {
-        ypkg_unpack
+        dounpack
 }
 
 pbs_config() {
-	ypkg_config
+	doconfig
 }
 
 pbs_build() {
-	ypkg_make
+	domake
 }
 
 pbs_install() {
-	ypkg_mkinstall
+	domkinstall
 }
 

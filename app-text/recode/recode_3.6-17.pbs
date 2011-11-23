@@ -1,5 +1,5 @@
 #
-# YLmf_OS package build script
+# Ylmf OS package build script
 #
 
 DESCRIPTION="Convert files between various character sets"
@@ -16,20 +16,20 @@ RECOMMENDED=""
 INSTALL="$N.install"
 
 pbs_unpack() {
-        ypkg_unpack
+        dounpack
 }
 
 pbs_config() {
-	YPB_CONFIG+="--without-included-gettext --enable-nls"
-	ypkg_config
+	config+="--without-included-gettext --enable-nls"
+	doconfig
 }
 
 pbs_build() {
-	ypkg_make
+	domake
 }
 
 pbs_install() {
-	ypkg_mkinstall
-	ypkg_dodoc AUTHORS BACKLOG ChangeLog NEWS README THANKS TODO
+	domkinstall
+	dodoc AUTHORS BACKLOG ChangeLog NEWS README THANKS TODO
 }
 

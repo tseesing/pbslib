@@ -1,5 +1,5 @@
 #
-# YLmf_OS package build script
+# Ylmf OS package build script
 #
 
 DESCRIPTION="Just another screensaver application for X"
@@ -15,25 +15,25 @@ BDEPEND=""
 INSTALL="$N.install"
 
 pbs_unpack() {
-        ypkg_unpack
+        dounpack
 }
 
 pbs_config() {
-	ypkg_config
+	doconfig
 }
 
 pbs_build() {
-	ypkg_make
+	domake
 }
 
 pbs_install() {
-	mkdir -p "$YPPATH_DEST"/usr
-	make prefix="$YPPATH_DEST"/usr install
+	mkdir -p "$destdir"/usr
+	make prefix="$destdir"/usr install
 	
 	# Copy resource
-	ypkg_docp pixmaps/s-lock.xpm "$YPPATH_DEST"/usr/share/icons/hicolor/32x32/apps/xlock.xpm
-	ypkg_docp pixmaps/m-lock.xpm "$YPPATH_DEST"/usr/share/icons/hicolor/48x48/apps/xlock.xpm
-	mkdir -p "$YPPATH_DEST"/etc/xg_launch/sys/
-	echo "+ Lock%/usr/share/icons/hicolor/32x32/apps/xlock.xpm%  Exec xlock -mode matrix" > "$YPPATH_DEST"/etc/xg_launch/sys/C05xlock
+	docp pixmaps/s-lock.xpm "$destdir"/usr/share/icons/hicolor/32x32/apps/xlock.xpm
+	docp pixmaps/m-lock.xpm "$destdir"/usr/share/icons/hicolor/48x48/apps/xlock.xpm
+	mkdir -p "$destdir"/etc/xg_launch/sys/
+	echo "+ Lock%/usr/share/icons/hicolor/32x32/apps/xlock.xpm%  Exec xlock -mode matrix" > "$destdir"/etc/xg_launch/sys/C05xlock
 }
 

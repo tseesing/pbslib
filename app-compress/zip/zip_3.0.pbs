@@ -1,5 +1,5 @@
 #
-# YLmf_OS package build script
+# Ylmf OS package build script
 #
 
 DESCRIPTION="Info ZIP (encryption support)"
@@ -13,7 +13,7 @@ RDEPEND="bzip2 glibc"
 BDEPEND=" "
 
 pbs_unpack() {
-        ypkg_unpack
+        dounpack
 }
 
 pbs_build() {
@@ -21,9 +21,9 @@ pbs_build() {
 }
 
 pbs_install() {
-	mkdir -p DESTDIR="$YPPATH_DEST"/usr
-	make prefix="$YPPATH_DEST"/usr -f unix/Makefile install
-	cd "$YPPATH_DEST"
-	ypkg_domv usr/man usr/share
+	mkdir -p DESTDIR="$destdir"/usr
+	make prefix="$destdir"/usr -f unix/Makefile install
+	cd "$destdir"
+	domv usr/man usr/share
 }
 

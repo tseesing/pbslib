@@ -1,0 +1,33 @@
+#
+# Ylmf OS package build script
+#
+
+DESCRIPTION="A link-local XMPP connection manager for Telepathy"
+HOMEPAGE="http://telepathy.freedesktop.org/wiki/Components"
+LICENSE="GPL"
+PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
+
+SRC_URI="http://telepathy.freedesktop.org/releases/"$N"/"$N-$V".tar.gz"
+
+RDEPEND="avahi dbus dbus-glib gcc glib2 glibc gnutls libgcrypt libgpg-error libsoup libtasn1 libxml2 openssl sqlite telepathy-glib util-linux-ng zlib"
+BDEPEND=""
+RECOMMENDED=""
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_config() {
+	config+="--disable-Werror
+	         --with-tls=openssl"
+	doconfig
+}
+
+pbs_build() {
+	domake
+}
+
+pbs_install() {
+	domkinstall
+}
+

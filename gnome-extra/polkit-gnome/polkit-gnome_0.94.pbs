@@ -1,5 +1,5 @@
 #
-# YLmf_OS package build script
+# Ylmf OS package build script
 #
 
 DESCRIPTION="PolicyKit policies and configurations for the GNOME desktop"
@@ -15,25 +15,25 @@ RECOMMENDED=""
 NOTES="http://wiki.linuxfromscratch.org/blfs/wiki/polkit-gnome"
 
 pbs_unpack() {
-        ypkg_unpack
+        dounpack
 }
 
 pbs_config() {
 	
-	YPB_CONFIG+=" --prefix=/usr \
+	config+=" --prefix=/usr \
 		      --sysconfdir=/etc \
 		      --docdir=/usr/share/doc  \
 		      --mandir=/usr/share/man \
 		       \
 		      --disable-static \
 		      --disable-introspection "
-	ypkg_config
+	doconfig
 }
 
 pbs_build() {
-	ypkg_make
+	domake
 }
 
 pbs_install() {
-	ypkg_mkinstall
+	domkinstall
 }

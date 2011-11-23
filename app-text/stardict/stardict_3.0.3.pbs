@@ -1,5 +1,5 @@
 #
-# YLmf_OS package build script
+# Ylmf OS package build script
 #
 
 DESCRIPTION="A GNOME2 international dictionary supporting fuzzy and glob style matching"
@@ -18,16 +18,16 @@ Or download from http://reciteword.cosoft.org.cn/stardict-iso/stardict-dic, then
 "
 
 pbs_unpack() {
-        ypkg_unpack
+        dounpack
 }
 
 pbs_config() {
 	# ugly hack to avoid crashing with empty dictionaries
-	ypkg_patch NetDictRequests.patch gcc46.patch
+	dopatch NetDictRequests.patch gcc46.patch
 
 	#
 	automake
-	YPB_CONFIG+=" PKG_CONFIG=/usr/bin/pkg-config
+	config+=" PKG_CONFIG=/usr/bin/pkg-config
 		      --datadir=/usr/share 
 	              --disable-gnome-support 
 		      --disable-gucharmap 
@@ -35,17 +35,17 @@ pbs_config() {
 		      --disable-espeak 
 		      --disable-festival 
 		      --disable-updateinfo"
-	ypkg_config
+	doconfig
 }
 
 pbs_build() {
-	ypkg_make
+	domake
 }
 
 pbs_install() {
-	ypkg_mkinstall
-	ypkg_dodoc AUTHORS ChangeLog INSTALL COPYING NEWS README 
+	domkinstall
+	dodoc AUTHORS ChangeLog INSTALL COPYING NEWS README 
 	# FIXME 
-	rm "$YPPATH_DEST"/usr/lib/stardict/plugins/stardict_spell.so
+	rm "$destdir"/usr/lib/stardict/plugins/stardict_spell.so
 }
 

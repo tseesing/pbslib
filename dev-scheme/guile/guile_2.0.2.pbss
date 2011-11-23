@@ -16,19 +16,19 @@ RECOMMENDED=""
 INSTALL="$N-$V.install"
 
 pbs_unpack() {
-        ypkg_unpack
+        dounpack
 }
 
 pbs_config() {
 	YPB_CONFIG+="--disable-static
 	             --disable-error-on-warning"
-	ypkg_config
+	doconfig
 }
 
 pbs_build() {
-	ypkg_make LDFLAGS+="-lpthread"
+	domake LDFLAGS+="-lpthread"
 }
 
 pbs_install() {
-	ypkg_mkinstall
+	domkinstall
 }

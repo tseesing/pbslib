@@ -1,5 +1,5 @@
 #
-# YLmf_OS package build script
+# Ylmf OS package build script
 #
 
 DESCRIPTION="A standards-compliant graphical Web browser"
@@ -23,11 +23,11 @@ INSTALL="$N.install"
 NOTES=""
 
 pbs_unpack() {
-        ypkg_unpack
+        dounpack
 }
 
 pbs_install() {
-	ypkg_patch ylmfos-desktop.patch
-	ypkg_docp data/*  "$YPPATH_DEST"/
+	dopatch ylmfos-desktop.patch
+	docp data/*  "$destdir"/
 }
 

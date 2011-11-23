@@ -1,5 +1,5 @@
 #
-# YLmf_OS package build script
+# Ylmf OS package build script
 #
 
 DESCRIPTION="An online music client from chinamobile"
@@ -10,17 +10,17 @@ PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 REPO="testing"
 SRC_URI="migumusic-2011-beta1.tar.bz2"
 
-RDEPEND="qt-core gst-ffmpeg gst-fluendo-mp3 gst-plugins-ugly gst-plugins-bad"
+RDEPEND="qt-core gst-ffmpeg gst-fluendo-mp3 gst-plugins-ugly"
 BDEPEND=" "
 RECOMMENDED=""
 CONFLICT=""
 
 pbs_unpack() {
-        ypkg_unpack
+        dounpack
 }
 
 pbs_install() {
-	ypkg_docp * "$YPPATH_DEST"
-	ypkg_docp "$FILES_PATH"/files/migumusic "$YPPATH_DEST"/usr/bin/
-	chmod +x "$YPPATH_DEST"/usr/bin/migumusic
+	docp * "$destdir"
+	docp $filesdir/migumusic "$destdir"/usr/bin/
+	chmod +x "$destdir"/usr/bin/migumusic
 }

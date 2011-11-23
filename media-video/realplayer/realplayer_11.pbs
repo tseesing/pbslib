@@ -1,5 +1,5 @@
 #
-# YLmf_OS package build script
+# Ylmf OS package build script
 #
 
 DESCRIPTION="real player"
@@ -17,23 +17,23 @@ RECOMMENDED=""
 INSTALL="$N.install"
 
 pbs_unpack() {
-	ypkg_unpack
+	dounpack
 }
 
 pbs_install() {
-	ypkg_docp data/*  "$YPPATH_DEST"
-	cd "$YPPATH_DEST"
-	#xdg-desktop-menu install --novendor "$FILES_PATH"/files/realplay.desktop
-	ypkg_dodesktop "$FILES_PATH"/files/realplay.desktop opt/real/RealPlayer/share/realplay.png
+	docp data/*  "$destdir"
+	cd "$destdir"
+	#xdg-desktop-menu install --novendor $filesdir/realplay.desktop
+	dodesktop $filesdir/realplay.desktop opt/real/RealPlayer/share/realplay.png
 	#
-	ypkg_docp_rename opt/real/RealPlayer/share/locale/zh_CN/player.mo usr/share/locale/zh_CN/LC_MESSAGES/realplay.mo
-	ypkg_docp_rename opt/real/RealPlayer/share/locale/zh_CN/widget.mo usr/share/locale/zh_CN/LC_MESSAGES/libgtkhx.mo
-	ypkg_docp_rename opt/real/RealPlayer/share/locale/zh_TW/player.mo usr/share/locale/zh_TW/LC_MESSAGES/realplay.mo
-	ypkg_docp_rename opt/real/RealPlayer/share/locale/zh_TW/widget.mo usr/share/locale/zh_TW/LC_MESSAGES/libgtkhx.mo
+	docp_rename opt/real/RealPlayer/share/locale/zh_CN/player.mo usr/share/locale/zh_CN/LC_MESSAGES/realplay.mo
+	docp_rename opt/real/RealPlayer/share/locale/zh_CN/widget.mo usr/share/locale/zh_CN/LC_MESSAGES/libgtkhx.mo
+	docp_rename opt/real/RealPlayer/share/locale/zh_TW/player.mo usr/share/locale/zh_TW/LC_MESSAGES/realplay.mo
+	docp_rename opt/real/RealPlayer/share/locale/zh_TW/widget.mo usr/share/locale/zh_TW/LC_MESSAGES/libgtkhx.mo
 	#
-	ypkg_doln /opt/real/RealPlayer/share    usr/share/realplay
-	ypkg_doln /opt/real/RealPlayer/realplay usr/bin/realplay
+	doln /opt/real/RealPlayer/share    usr/share/realplay
+	doln /opt/real/RealPlayer/realplay usr/bin/realplay
 	#
-	ypkg_doln /opt/real/RealPlayer/mozilla/nphelix.so  usr/lib/mozilla/plugins/nphelix.so
-	ypkg_doln /opt/real/RealPlayer/mozilla/nphelix.xpt usr/lib/mozilla/plugins/nphelix.xpt
+	doln /opt/real/RealPlayer/mozilla/nphelix.so  usr/lib/mozilla/plugins/nphelix.so
+	doln /opt/real/RealPlayer/mozilla/nphelix.xpt usr/lib/mozilla/plugins/nphelix.xpt
 }

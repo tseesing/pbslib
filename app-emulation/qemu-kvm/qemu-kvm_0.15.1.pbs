@@ -1,5 +1,5 @@
 #
-# YLmf_OS package build script
+# Ylmf OS package build script
 #
 
 DESCRIPTION="QEMU + Kernel-based Virtual Machine userland tools"
@@ -14,7 +14,7 @@ BDEPEND=""
 RECOMMENDED=""
 
 pbs_unpack() {
-        ypkg_unpack
+        dounpack
 }
 
 pbs_config() {
@@ -31,23 +31,23 @@ pbs_build() {
 }
 
 pbs_install() {
-	ypkg_mkinstall 
+	domkinstall 
 
-	cd "$YPPATH_DEST"
+	cd "$destdir"
 
 	# Symbolic link for backwards compatibility
-	ypkg_doln /usr/bin/qemu-system-x86_64 usr/bin/qemu-kvm
+	doln /usr/bin/qemu-system-x86_64 usr/bin/qemu-kvm
 	
 	# Symbolic link for to qemu binary for emulator apps
-	ypkg_doln /usr/bin/qemu-system-x86_64 usr/bin/qemu
+	doln /usr/bin/qemu-system-x86_64 usr/bin/qemu
 
 	# Symbolic link for to qemu binary for emulator apps
-	ypkg_doln /usr/bin/qemu-system-x86_64 usr/bin/kvm
+	doln /usr/bin/qemu-system-x86_64 usr/bin/kvm
 	
 	# Fix man page
 	mv usr/share/man/man1/qemu.1 usr/share/man/man1/qemu-kvm.1
 
 	# Install udev rules
-        install -D -m644 "$FILES_PATH"/files/65-kvm.rules lib/udev/rules.d/65-kvm.rules
+        install -D -m644 $filesdir/65-kvm.rules lib/udev/rules.d/65-kvm.rules
 }
 

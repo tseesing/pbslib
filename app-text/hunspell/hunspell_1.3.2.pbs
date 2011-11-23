@@ -1,5 +1,5 @@
 #
-# YLmf_OS package build script
+# Ylmf OS package build script
 #
 
 DESCRIPTION="Hunspell is the spell checker of LibreOffice, OpenOffice.org and Mozilla Firefox 3 & Thunderbird, Google Chrome, and it is also used by proprietary softwares, like Mac OS X, memoQ, Opera and SDL Trados."
@@ -18,18 +18,18 @@ CONFLICT=""
 NOTES=""
 
 pbs_unpack() {
-        ypkg_unpack
+        dounpack
 }
 
 pbs_config() {
-	YPB_CONFIG+=""
-	ypkg_config
+	config+=""
+	doconfig
 }
 
 pbs_build() {
-	ypkg_make
+	domake
 }
 
 pbs_install() {
-	ypkg_mkinstall
+	domkinstall
 }

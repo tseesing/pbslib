@@ -1,5 +1,5 @@
 #
-# YLmf_OS package build script
+# Ylmf OS package build script
 #
 
 DESCRIPTION="a strictly RFC 3986 compliant URI parsing library written in C"
@@ -13,19 +13,19 @@ RDEPEND="glibc"
 BDEPEND="cpptest"
 
 pbs_unpack() {
-        ypkg_unpack
+        dounpack
 }
 
 pbs_config() {
-	ypkg_config
+	doconfig
 }
 
 pbs_build() {
 	ln -sf "$PWD"/doc/Doxyfile.in doc/Doxyfile
-	ypkg_make
+	domake
 }
 
 pbs_install() {
-	ypkg_mkinstall
+	domkinstall
 }
 

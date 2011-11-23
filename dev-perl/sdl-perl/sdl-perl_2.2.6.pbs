@@ -1,5 +1,5 @@
 #
-# YLmf_OS package build script
+# Ylmf OS package build script
 #
 
 DESCRIPTION="A Perl wrapper for SDL"
@@ -18,12 +18,12 @@ CONFLICT=""
 NOTES=""
 
 pbs_unpack() {
-        ypkg_unpack
+        dounpack
 }
 
 pbs_config() {
 	# install module in vendor directories
-	perl Build.PL installdirs=vendor destdir="$YPPATH_DEST" \
+	perl Build.PL installdirs=vendor destdir="$destdir" \
 	      --config man1ext=1p --config man3ext=3pm 
 }	
 

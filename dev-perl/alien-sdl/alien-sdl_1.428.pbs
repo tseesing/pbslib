@@ -1,5 +1,5 @@
 #
-# YLmf_OS package build script
+# Ylmf OS package build script
 #
 
 DESCRIPTION="building, finding and using SDL binaries"
@@ -15,12 +15,12 @@ RECOMMENDED=""
 CONFLICT=""
 
 pbs_unpack() {
-        ypkg_unpack
+        dounpack
 }
 
 pbs_config() {
 	# install module in vendor directories
-	perl Build.PL installdirs=vendor destdir="$YPPATH_DEST" --with-sdl-config
+	perl Build.PL installdirs=vendor destdir="$destdir" --with-sdl-config
 }
 
 pbs_build() {

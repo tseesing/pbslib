@@ -1,5 +1,5 @@
 #
-# YLmf_OS package build script
+# Ylmf OS package build script
 #
 
 DESCRIPTION="Firmware for ZyDAS 1201 based USB 802.11b Network WiFi devices"
@@ -16,10 +16,10 @@ RECOMMENDED=""
 CONFLICT=""
 
 pbs_unpack() {
-        ypkg_unpack
+        dounpack
 }
 
 pbs_install() {
-	ypkg_docp zd1201.fw zd1201-ap.fw "$YPPATH_DEST"/lib/firmware/
+	docp zd1201.fw zd1201-ap.fw "$destdir"/lib/firmware/
 }
 

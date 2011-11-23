@@ -1,5 +1,5 @@
 #
-# YLmf_OS package build script
+# Ylmf OS package build script
 #
 
 DESCRIPTION="SIP is an extension module generator similar to SWIG but is specifically designed for creating Python modules"
@@ -16,7 +16,7 @@ RECOMMENDED=""
 CONFLICT=""
 
 pbs_unpack() {
-        ypkg_unpack
+        dounpack
 }
 
 pbs_config() {
@@ -24,10 +24,10 @@ pbs_config() {
 }
 
 pbs_build() {
-	ypkg_make
+	domake
 }
 
 pbs_install() {
-	ypkg_mkinstall
-	ypkg_dodoc LICENSE
+	domkinstall
+	dodoc LICENSE
 }

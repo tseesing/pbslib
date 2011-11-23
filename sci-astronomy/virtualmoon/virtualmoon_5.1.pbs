@@ -1,5 +1,5 @@
 #
-# YLmf_OS package build script
+# Ylmf OS package build script
 #
 
 DESCRIPTION="Free software for Moon observation or survey"
@@ -20,13 +20,13 @@ INSTALL="$N.install"
 NOTES=""
 
 pbs_unpack() {
-        ypkg_unpack
+        dounpack
 }
 
 pbs_install() {
-	mkdir -p "$YPPATH_DEST"/usr/
-	tar xf ../virtualmoon-5.1-linux_i386.tgz     -C "$YPPATH_DEST"/usr/
-	tar xf ../virtualmoon-data-5.1-linux_all.tgz -C "$YPPATH_DEST"/usr/
-	ypkg_dodoc ../licence
-	sed -i 's/\.\./\/usr\/share/g' "$YPPATH_DEST"/usr/share/applications/virtualmoon.desktop
+	mkdir -p "$destdir"/usr/
+	tar xf ../virtualmoon-5.1-linux_i386.tgz     -C "$destdir"/usr/
+	tar xf ../virtualmoon-data-5.1-linux_all.tgz -C "$destdir"/usr/
+	dodoc ../licence
+	sed -i 's/\.\./\/usr\/share/g' "$destdir"/usr/share/applications/virtualmoon.desktop
 }

@@ -1,5 +1,5 @@
 #
-# YLmf_OS package build script
+# Ylmf OS package build script
 #
 
 DESCRIPTION="Compatibility library for accessing secrets"
@@ -14,20 +14,20 @@ BDEPEND=""
 RECOMMENDED=""
 
 pbs_unpack() {
-        ypkg_unpack
+        dounpack
 }
 
 pbs_config() {
-	ypkg_patch default-keyring-name-must-en-2.32.0.patch
-	YPB_CONFIG+=""
-	ypkg_config
+	dopatch default-keyring-name-must-en-2.32.0.patch
+	config+=""
+	doconfig
 }
 
 pbs_build() {
-	ypkg_make
+	domake
 }
 
 pbs_install() {
-	ypkg_mkinstall
+	domkinstall
 }
 

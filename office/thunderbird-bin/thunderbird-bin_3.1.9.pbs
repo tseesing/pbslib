@@ -1,5 +1,5 @@
 #
-# YLmf_OS package build script
+# Ylmf OS package build script
 #
 
 DESCRIPTION="Thunderbird Mail Client"
@@ -19,19 +19,19 @@ CONFLICT=""
 NOTES=""
 
 pbs_unpack() {
-        ypkg_unpack
+        dounpack
 }
 
 pbs_install() {
-	ypkg_docp * "$YPPATH_DEST"/opt/"$N"
-	ypkg_docp_rename chrome/icons/default/default48.png "$YPPATH_DEST"/usr/share/pixmaps/"$N".png
-	ypkg_dodesktop "thunderbird-bin.desktop"
-	mkdir -p "$YPPATH_DEST"/usr/bin
-	cat >> "$YPPATH_DEST"/usr/bin/"$N" <<EOF
+	docp * "$destdir"/opt/"$N"
+	docp_rename chrome/icons/default/default48.png "$destdir"/usr/share/pixmaps/"$N".png
+	dodesktop "thunderbird-bin.desktop"
+	mkdir -p "$destdir"/usr/bin
+	cat >> "$destdir"/usr/bin/"$N" <<EOF
 #!/bin/sh
 cd /opt/"$N"
 exec ./thunderbird 
 EOF
-	chmod +x "$YPPATH_DEST"/usr/bin/"$N"
+	chmod +x "$destdir"/usr/bin/"$N"
 }
 

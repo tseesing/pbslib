@@ -1,5 +1,5 @@
 #
-# YLmf_OS package build script
+# Ylmf OS package build script
 #
 DESCRIPTION="userspace virtual filesystem designed to work with the i/o abstractions of gio"
 HOMEPAGE="www.gnome.com"
@@ -12,11 +12,11 @@ RDEPEND="acl attr avahi bluez bzip2 cyrus-sasl dbus dbus-glib expat fuse gcc gco
 BDEPEND=""
 
 pbs_unpack() {
-        ypkg_unpack
+        dounpack
 }
 
 pbs_config() {
-	YPB_CONFIG+=" --enable-http
+	config+=" --enable-http
 	              --enable-avahi
 		      --enable-udev
 		      --enable-fuse
@@ -32,15 +32,15 @@ pbs_config() {
 		      --enable-archive
 		      --enable-bash-completion
 		      --disable-hal"
-	ypkg_config
+	doconfig
 }
 
 pbs_build() {
-	ypkg_make
+	domake
 }
 
 pbs_install() {
-	ypkg_mkinstall
-	ypkg_dodoc COPYING README
+	domkinstall
+	dodoc COPYING README
 }
 

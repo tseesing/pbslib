@@ -1,5 +1,5 @@
 #
-# YLmf_OS package build script
+# Ylmf OS package build script
 #
 
 DESCRIPTION="Post-processor for scanned and photocopied book pages"
@@ -14,7 +14,7 @@ RECOMMENDED=""
 BDEPEND=""
 
 pbs_unpack() {
-        ypkg_unpack
+        dounpack
 }
 
 pbs_build() {
@@ -23,8 +23,8 @@ pbs_build() {
 }
 
 pbs_install() {
-	ypkg_docp unpaper "$YPPATH_DEST"/usr/bin/
-	chmod 755 "$YPPATH_DEST"/usr/bin/unpaper
-	ypkg_dodoc ../doc/* 
+	docp unpaper "$destdir"/usr/bin/
+	chmod 755 "$destdir"/usr/bin/unpaper
+	dodoc ../doc/* 
 }
 

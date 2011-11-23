@@ -1,5 +1,5 @@
 #
-# YLmf_OS package build script
+# Ylmf OS package build script
 #
 
 DESCRIPTION="Simple document viewer for GNOME"
@@ -16,26 +16,26 @@ RECOMMENDED=""
 INSTALL="$N-$V.install"
 
 pbs_unpack() {
-        ypkg_unpack
+        dounpack
 }
 
 pbs_config() {
-	YPB_CONFIG+=" --disable-schemas-install 
+	config+=" --disable-schemas-install 
 		      --enable-nautilus 
 		      --disable-scrollkeeper 
 		      --enable-introspection "
-	ypkg_config
+	doconfig
 }
 
 pbs_build() {
-	ypkg_make
+	domake
 }
 
 pbs_install() {
-	ypkg_mkinstall
-	ypkg_dodoc AUTHORS COPYING NEWS README
+	domkinstall
+	dodoc AUTHORS COPYING NEWS README
 	
-	cd "$YPPATH_DEST"
+	cd "$destdir"
 	# Keep clean for rarian
 	rm -fr var/lib/scrollkeeper var/lib/log
 }

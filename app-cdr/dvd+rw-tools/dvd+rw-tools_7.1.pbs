@@ -1,5 +1,5 @@
 #
-# YLmf_OS package build script
+# Ylmf OS package build script
 #
 
 DESCRIPTION="A set of tools for DVD+RW/-RW drives"
@@ -22,7 +22,7 @@ error message please run: ulimit -l unlimited
 "
 
 pbs_unpack() {
-        ypkg_unpack
+        dounpack
 }
 
 pbs_config() {
@@ -32,25 +32,25 @@ pbs_config() {
 	# Fix compilation when DFORTIFY_SOURCE=2
 	# https://bugs.gentoo.org/257360
 	# https://bugzilla.redhat.com/show_bug.cgi?id=426068
-	ypkg_patch "${N}"-7.0-wctomb.patch
-	ypkg_patch "${N}"-7.0-glibc2.6.90.patch
+	dopatch "${N}"-7.0-wctomb.patch
+	dopatch "${N}"-7.0-glibc2.6.90.patch
 	# Allow burning small images on dvd-dl media.
 	# Patch snatched from Fedora, obviously correct.
-	ypkg_patch "${N}"-7.0-dvddl.patch
+	dopatch "${N}"-7.0-dvddl.patch
 	# Exit with non-zero status when child process does.
 	# https://bugzilla.redhat.com/show_bug.cgi?id=243036
-	ypkg_patch "${N}"-7.0-wexit.patch
+	dopatch "${N}"-7.0-wexit.patch
 
-	YPB_CONFIG+=""
-	#Third, call configure with $YPB_CONFIG
-	#./configure $YPB_CONFIG
-	ypkg_config
+	config+=""
+	#Third, call configure with $config
+	#./configure $config
+	doconfig
 }
 
 pbs_build() {
-	ypkg_make SHELL=/bin/bash
+	domake SHELL=/bin/bash
 }
 
 pbs_install() {
-	ypkg_mkinstall SHELL=/bin/bash prefix="${YPPATH_DEST}/usr" install
+	domkinstall SHELL=/bin/bash prefix="${destdir}/usr" install
 }

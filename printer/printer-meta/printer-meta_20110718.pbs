@@ -1,5 +1,5 @@
 #
-# YLmf_OS package build script
+# Ylmf OS package build script
 #
 
 DESCRIPTION="meta package, install cups foomatces"
@@ -16,6 +16,6 @@ RECOMMENDED=""
 CONFLICT=""
 
 pbs_install() {
-	ypkg_dodesktop "$N.desktop" "printer.png"
+	dodesktop "$N.desktop" "printer.png"
 }
 

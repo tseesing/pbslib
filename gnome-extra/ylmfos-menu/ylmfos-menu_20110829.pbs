@@ -1,5 +1,5 @@
 #
-# YLmf_OS package build script
+# Ylmf OS package build script
 #
 
 DESCRIPTION="ylmfos start menu"
@@ -18,9 +18,9 @@ INSTALL="$N.install"
 NOTES=""
 
 pbs_unpack() {
-	ypkg_unpack
+	dounpack
 }
 
 pbs_install() {
-	ypkg_mkinstall
+	domkinstall
 }

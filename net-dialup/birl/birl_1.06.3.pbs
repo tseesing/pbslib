@@ -1,5 +1,5 @@
 #
-# YLmf_OS package build script
+# Ylmf OS package build script
 #
 
 DESCRIPTION="Birl Is Ruijie for Linux"
@@ -14,10 +14,10 @@ BDEPEND=""
 INSTALL="$N.install"
 
 pbs_unpack() {
-        ypkg_unpack
+        dounpack
 }
 
 pbs_install() {
-	ypkg_docp "$FILES_PATH"/files/{opt,usr} "$YPPATH_DEST"/
+	docp $filesdir/{opt,usr} "$destdir"/
 }
 

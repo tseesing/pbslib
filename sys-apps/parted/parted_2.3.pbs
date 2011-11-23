@@ -1,5 +1,5 @@
 #
-# YLmf_OS package build script
+# Ylmf OS package build script
 #
 
 DESCRIPTION="Create, destroy, resize, check, copy partitions and file systems"
@@ -16,7 +16,7 @@ RECOMMENDED=""
 INSTALL="$N.install"
 
 pbs_unpack() {
-        ypkg_unpack
+        dounpack
 }
 
 pbs_config() {
@@ -25,18 +25,18 @@ pbs_config() {
 	sed -i tests/Makefile.am -e '/t4100-msdos-partition-limits.sh/d' \
 	       -e '/t4100-dvh-partition-limits.sh/d' \
 	       -e '/t6000-dm.sh/d'
-	YPB_CONFIG+=" --disable-rpath
+	config+=" --disable-rpath
 		      --disable-Werror
 	              --enable-device-mapper=yes "
-	ypkg_config
+	doconfig
 }
 
 pbs_build() {
-	ypkg_make
+	domake
 }
 
 pbs_install() {
-	ypkg_mkinstall
-	ypkg_dodoc AUTHORS BUGS ChangeLog NEWS README THANKS TODO
+	domkinstall
+	dodoc AUTHORS BUGS ChangeLog NEWS README THANKS TODO
 }
 

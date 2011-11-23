@@ -1,5 +1,5 @@
 #
-# YLmf_OS package build script
+# Ylmf OS package build script
 #
 
 DESCRIPTION="In-circuit programming (ISP) tool for the NXP (Philips) ARM microcontrollers"
@@ -13,15 +13,15 @@ RDEPEND="glibc"
 BDEPEND=""
 
 pbs_unpack() {
-        ypkg_unpack
+        dounpack
 }
 
 pbs_build() {
-	ypkg_make
+	domake
 }
 
 pbs_install() {
-	ypkg_docp lpc21isp "$YPPATH_DEST"/usr/bin/
-	chmod 755 "$YPPATH_DEST"/usr/bin/lpc21isp
+	docp lpc21isp "$destdir"/usr/bin/
+	chmod 755 "$destdir"/usr/bin/lpc21isp
 }
 

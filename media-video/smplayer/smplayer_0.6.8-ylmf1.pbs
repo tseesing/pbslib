@@ -1,5 +1,5 @@
 #
-# YLmf_OS package build script
+# Ylmf OS package build script
 #
 
 DESCRIPTION="Great Qt4 GUI front-end for mplayer"
@@ -16,17 +16,17 @@ RECOMMENDED=""
 INSTALL="$N.install"
 
 pbs_unpack() {
-        ypkg_unpack
+        dounpack
 }
 
 pbs_build() {
-	ypkg_patch ylmfos_subcp_cp936.patch 
-	ypkg_make PREFIX=/usr
+	dopatch ylmfos_subcp_cp936.patch 
+	domake PREFIX=/usr
 }
 
 pbs_install() {
-	ypkg_mkinstall PREFIX=/usr
-	ypkg_dodesktop "$N".desktop
-	rm "$YPPATH_DEST"/usr/share/applications/smplayer_enqueue.desktop
+	domkinstall PREFIX=/usr
+	dodesktop "$N".desktop
+	rm "$destdir"/usr/share/applications/smplayer_enqueue.desktop
 }
 

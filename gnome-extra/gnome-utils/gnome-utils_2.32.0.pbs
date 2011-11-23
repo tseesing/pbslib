@@ -1,5 +1,5 @@
 #
-# YLmf_OS package build script
+# Ylmf OS package build script
 #
 
 DESCRIPTION="Utilities for the Gnome2 desktop"
@@ -16,7 +16,7 @@ RECOMMENDED=""
 INSTALL="$N.install"
 
 pbs_unpack() {
-        ypkg_unpack
+        dounpack
 }
 
 pbs_config() {
@@ -31,18 +31,18 @@ pbs_config() {
 	# Fix intltoolize broken file, see upstream #577133
 	sed "s:'\^\$\$lang\$\$':\^\$\$lang\$\$:g" -i po/Makefile.in.in 
 
-	YPB_CONFIG+="--disable-schemas-install 
+	config+="--disable-schemas-install 
 		     --disable-scrollkeeper "   
-	ypkg_config
+	doconfig
 }
 
 pbs_build() {
-	ypkg_make
+	domake
 }
 
 pbs_install() {
-	ypkg_mkinstall
-	cd "$YPPATH_DEST"
+	domkinstall
+	cd "$destdir"
 	
 	# Keep clean for rarian
 	rm -rf var/lib/{scrollkeeper,log}

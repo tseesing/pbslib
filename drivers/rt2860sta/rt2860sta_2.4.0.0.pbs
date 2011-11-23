@@ -1,5 +1,5 @@
 #
-# YLmf_OS package build script
+# Ylmf OS package build script
 #
 
 DESCRIPTION="driver for Ralink PCI ABGN WLAN Card: RT2860PCI/mPCI/CB/PCIe(RT2760/RT2790/RT2860/RT2890)"
@@ -12,11 +12,11 @@ SRC_URI="2010_07_16_RT2860_Linux_STA_v2.4.0.0.tar.bz2"
 PROVIDE="$N-source $N-driver"
 
 pbs_unpack() {
-        ypkg_unpack
+        dounpack
 }
 
 pbs_config() {
-	ypkg_patch ylmfos_makefile.patch
+	dopatch ylmfos_makefile.patch
 }
 
 rt2860sta-source_install() {
@@ -26,8 +26,8 @@ rt2860sta-source_install() {
 	OPINION="nodev"
         YARCH="any"
 
-	ypkg_dosrc *
-	ypkg_dosupported "$N"_supported
+	dosrc *
+	dosupported "$N"_supported
 }
 
 rt2860sta-driver_install() {
@@ -36,7 +36,7 @@ rt2860sta-driver_install() {
 	INSTALL="$N.install"
 
 	unset ARCH
-	ypkg_make
-	ypkg_mkinstall
+	domake
+	domkinstall
 }
 

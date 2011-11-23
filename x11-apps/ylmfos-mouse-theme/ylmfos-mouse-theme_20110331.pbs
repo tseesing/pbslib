@@ -1,5 +1,5 @@
 #
-# YLmf_OS package build script
+# Ylmf OS package build script
 #
 
 DESCRIPTION="ylmfos default mouse theme"
@@ -19,7 +19,7 @@ INSTALL="$N.install"
 NOTE="http://gnome-look.org/content/show.php/Shere+Khan+X?content=57588"
 
 pbs_unpack() {
-	ypkg_unpack
+	dounpack
 }
 
 pbs_build() {
@@ -29,6 +29,6 @@ pbs_build() {
 
 pbs_install() {
 	cd ..
-	ypkg_docp cursors "$YPPATH_DEST"/usr/share/icons/ylmfos
+	docp cursors "$destdir"/usr/share/icons/ylmfos
 }
 

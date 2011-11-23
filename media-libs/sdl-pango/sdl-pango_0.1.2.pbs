@@ -1,5 +1,5 @@
 #
-# YLmf_OS package build script
+# Ylmf OS package build script
 #
 
 DESCRIPTION="Pango SDL binding"
@@ -15,19 +15,19 @@ RECOMMENDED=""
 CONFLICT=""
 
 pbs_unpack() {
-        ypkg_unpack
+        dounpack
 }
 
 pbs_config() {
-	ypkg_patch SDL_Pango-0.1.2-API-adds.patch matrix_declarations.patch
-	ypkg_config
+	dopatch SDL_Pango-0.1.2-API-adds.patch matrix_declarations.patch
+	doconfig
 }
 
 pbs_build() {
-	ypkg_make
+	domake
 }
 
 pbs_install() {
-	ypkg_mkinstall
+	domkinstall
 }
 

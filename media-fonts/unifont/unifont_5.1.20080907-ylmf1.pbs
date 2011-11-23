@@ -1,5 +1,5 @@
 #
-# YLmf_OS package build script
+# Ylmf OS package build script
 #
 
 DESCRIPTION="GNU Unifont - a Pan-Unicode X11 bitmap iso10646 font"
@@ -17,6 +17,6 @@ INSTALL="$N.install"
 pbs_install() {
 	cp "$YPPATH_SOURCE"/"$N-$V".ttf.gz .
 	gunzip "$N-$V".ttf.gz
-	ypkg_docp_rename unifont-5.1.20080907.ttf "$YPPATH_DEST"/usr/share/fonts/unifont/unifont.ttf
+	docp_rename unifont-5.1.20080907.ttf "$destdir"/usr/share/fonts/unifont/unifont.ttf
 }
 

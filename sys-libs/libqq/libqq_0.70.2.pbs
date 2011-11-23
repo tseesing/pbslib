@@ -1,5 +1,5 @@
 #
-# YLmf_OS package build script
+# Ylmf OS package build script
 #
 
 DESCRIPTION="libqq is a protocol plug-in Pidgin, derived from the OPENQ project, equiped with the latest QQ 2010 protocol"
@@ -18,9 +18,9 @@ CONFLICT=""
 NOTES=""
 
 pbs_unpack() {
-        ypkg_unpack
+        dounpack
 }
 
 pbs_install() {
-	ypkg_docp data/*  "$YPPATH_DEST"
+	docp data/*  "$destdir"
 }

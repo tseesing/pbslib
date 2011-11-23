@@ -1,5 +1,5 @@
 #
-# YLmf_OS package build script
+# Ylmf OS package build script
 #
 
 DESCRIPTION="GNU libc6 (also called glibc2) C library"
@@ -17,7 +17,7 @@ BDEPEND=""
 INSTALL="$N.install"
 
 pbs_unpack() {
-        ypkg_unpack
+        dounpack
 }
 
 pbs_config() {
@@ -27,20 +27,20 @@ pbs_config() {
 	sed -i 's|@BASH@|/bin/bash|' elf/ldd.bash.in
 	mkdir -p glibc-build
 	cd glibc-build
-	YPB_CONFIG+="--disable-profile 
+	config+="--disable-profile 
 	             --enable-add-ons 
 		     --enable-kernel=2.6.18 
 		     --libexecdir=/usr/lib/glibc 
 		     --with-tls"
-	../configure $YPB_CONFIG
+	../configure $config
 }
 
 pbs_build() {
-	ypkg_make
+	domake
 }
 
 glibc_nsswitch_conf() {
-	cat > "$YPPATH_DEST"/etc/nsswitch.conf << "EOF"
+	cat > "$destdir"/etc/nsswitch.conf << "EOF"
 passwd: files
 group: files
 shadow: files
@@ -54,19 +54,19 @@ EOF
 }
 
 glibc_ld_so_conf() {
-	cat > "$YPPATH_DEST"/etc/ld.so.conf << "EOF"
+	cat > "$destdir"/etc/ld.so.conf << "EOF"
 /usr/local/lib
 /opt/lib
 EOF
 }
 
 pbs_install() {
-	make install_root="$YPPATH_DEST" install
+	make install_root="$destdir" install
 	#add nsswitch.conf / glibc.ld.so
 	glibc_nsswitch_conf
 	glibc_ld_so_conf
-	cd "$YPPATH_DEST"
-	ypkg_docp usr/share/zoneinfo/Asia/Shanghai etc/localtime
-	ypkg_docp "$FILES_PATH"/files/locale-gen   usr/sbin
-	ypkg_docp "$FILES_PATH"/files/SUPPORTED    usr/share/i18n
+	cd "$destdir"
+	docp usr/share/zoneinfo/Asia/Shanghai etc/localtime
+	docp $filesdir/locale-gen   usr/sbin
+	docp $filesdir/SUPPORTED    usr/share/i18n
 }

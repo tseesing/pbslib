@@ -1,5 +1,5 @@
 #
-# YLmf_OS package build script
+# Ylmf OS package build script
 #
 
 DESCRIPTION="GTK Instant Messenger client, split into finch and libpurple"
@@ -31,34 +31,34 @@ OPTIONAL="aspell: for spelling correction;
 INSTALL="$N.install"
 
 pbs_unpack() {
-        ypkg_unpack
+        dounpack
 }
 
 pbs_config() {
-	YPB_CONFIG+="--disable-schemas-install"
-	ypkg_config
+	config+="--disable-schemas-install"
+	doconfig
 }
 
 pbs_build() {
-	ypkg_make
+	domake
 }
 
 pbs_install() {
 	#for linking
-	make -C libpurple DESTDIR="$YPPATH_DEST" install-libLTLIBRARIES
-	ypkg_mkinstall -C pidgin 
-	ypkg_mkinstall -C doc 
+	make -C libpurple DESTDIR="$destdir" install-libLTLIBRARIES
+	domkinstall -C pidgin 
+	domkinstall -C doc 
         #clean up libpurple
-        make -C libpurple DESTDIR="$YPPATH_DEST" uninstall-libLTLIBRARIES
-	ypkg_dodesktop "$N.desktop"
-	rm -f "$YPPATH_DEST"/usr/share/man/man1/finch.1
+        make -C libpurple DESTDIR="$destdir" uninstall-libLTLIBRARIES
+	dodesktop "$N.desktop"
+	rm -f "$destdir"/usr/share/man/man1/finch.1
 }
 
 libpurple_install() {
 	DESCRIPTION="IM library extracted from Pidgin"
 	RDEPEND="farsight2 dbus-glib gnutls"
         for dir in libpurple share/sounds share/ca-certs m4macros po; do
-		ypkg_mkinstall -C "${dir}"
+		domkinstall -C "${dir}"
 	done
 }
 
@@ -67,11 +67,11 @@ finch_install() {
 	DESCRIPTION="A ncurses-based messaging client"
 	RDEPEND="libpurple python gstreamer"
 	#for linking
-	make -C libpurple DESTDIR="$YPPATH_DEST" install-libLTLIBRARIES
-	ypkg_mkinstall -C finch
-	ypkg_mkinstall -C doc 
+	make -C libpurple DESTDIR="$destdir" install-libLTLIBRARIES
+	domkinstall -C finch
+	domkinstall -C doc 
         #clean up libpurple
-        make -C libpurple DESTDIR="$YPPATH_DEST" uninstall-libLTLIBRARIES
-	rm -f "$YPPATH_DEST"/usr/share/man/man1/pidgin.1
+        make -C libpurple DESTDIR="$destdir" uninstall-libLTLIBRARIES
+	rm -f "$destdir"/usr/share/man/man1/pidgin.1
 }
 

@@ -1,5 +1,5 @@
 #
-# YLmf_OS package build script
+# Ylmf OS package build script
 #
 
 DESCRIPTION="A Python module to deal with freedesktop.org specifications"
@@ -15,16 +15,16 @@ BDEPEND=""
 RECOMMENDED=""
 
 pbs_unpack() {
-        ypkg_unpack
+        dounpack
 }
 
 pbs_build() {
-	ypkg_patch ylmfos-skip-parse-kdelegacydirs.patch
-	ypkg_make
+	dopatch ylmfos-skip-parse-kdelegacydirs.patch
+	domake
 }
 
 pbs_install() {
-	ypkg_mkinstall
-	ypkg_dodoc AUTHORS ChangeLog COPYING INSTALL PKG-INFO README TODO
+	domkinstall
+	dodoc AUTHORS ChangeLog COPYING INSTALL PKG-INFO README TODO
 }
 

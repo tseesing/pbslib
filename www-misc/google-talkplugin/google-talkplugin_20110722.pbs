@@ -1,5 +1,5 @@
 #
-# YLmf_OS package build script
+# Ylmf OS package build script
 #
 
 DESCRIPTION="google talkplugin"
@@ -18,11 +18,11 @@ CONFLICT=""
 NOTES=""
 
 pbs_unpack() {
-        ypkg_unpack
+        dounpack
 }
 
 pbs_install() {
-	ypkg_docp data/*  "$YPPATH_DEST"
+	docp data/*  "$destdir"
 }
 
 

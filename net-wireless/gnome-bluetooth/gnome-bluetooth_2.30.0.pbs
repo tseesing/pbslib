@@ -1,5 +1,5 @@
 #
-# YLmf_OS package build script
+# Ylmf OS package build script
 #
 
 DESCRIPTION="Fork of bluez-gnome focused on integration with GNOME"
@@ -18,22 +18,22 @@ INSTALL="$N.install"
 NOTES=""
 
 pbs_unpack() {
-        ypkg_unpack
+        dounpack
 }
 
 pbs_config() {
-	YPB_CONFIG+="--disable-schemas-install --enable-introspection=no"
-	ypkg_config
+	config+="--disable-schemas-install --enable-introspection=no"
+	doconfig
 }
 
 pbs_build() {
-	ypkg_make
+	domake
 }
 
 pbs_install() {
-	ypkg_mkinstall
-	ypkg_dodoc AUTHORS COPYING NEWS README
-	cd "$YPPATH_DEST"
+	domkinstall
+	dodoc AUTHORS COPYING NEWS README
+	cd "$destdir"
 	rm usr/share/applications/mimeinfo.cache usr/share/icons/hicolor/icon-theme.cache
 }
 

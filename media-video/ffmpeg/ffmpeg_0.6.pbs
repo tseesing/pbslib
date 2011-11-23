@@ -1,5 +1,5 @@
 #
-# YLmf_OS package build script
+# Ylmf OS package build script
 #
 
 DESCRIPTION="Complete solution to record, convert and stream audio and video. Includes libavcodec."
@@ -16,22 +16,22 @@ RECOMMENDED=""
 NOTES="http://wiki.linuxfromscratch.org/blfs/wiki/ffmpeg"
 
 pbs_unpack() {
-        ypkg_unpack
+        dounpack
 }
 
 pbs_config() {
-	YPB_CONFIG="--prefix=/usr --mandir=/usr/share/man --enable-pthreads"
-	ypkg_config
+	config="--prefix=/usr --mandir=/usr/share/man --enable-pthreads"
+	doconfig
 }
 
 pbs_build() {
 	sed -i 's|/man|/share/man|' config.mak
-	ypkg_make
+	domake
 	texi2html --version >/dev/null 2>&1 || make doc/ff{mpeg,play,server}.1
 }
 
 pbs_install() {
-	ypkg_mkinstall
-	ypkg_dodoc doc/*.txt
+	domkinstall
+	dodoc doc/*.txt
 	texi2html --version >/dev/null 2>&1 || make install-man
 }

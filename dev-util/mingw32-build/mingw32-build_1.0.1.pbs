@@ -1,5 +1,5 @@
 #
-# YLmf_OS package build script
+# Ylmf OS package build script
 #
 
 DESCRIPTION="mingw32 cross compile tools"
@@ -14,12 +14,12 @@ BDEPEND=""
 RECOMMENDED=""
 
 pbs_unpack() {
-	ypkg_unpack
+	dounpack
 }
 
 pbs_install() {
-	ypkg_patch ylmfos-change-target.patch
-	ypkg_docp * "$YPPATH_DEST"/usr/src/"$N"/
+	dopatch ylmfos-change-target.patch
+	docp * "$destdir"/usr/src/"$N"/
 }
 
 

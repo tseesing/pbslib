@@ -1,14 +1,14 @@
 . /usr/lib/ybs/funcs
 
 post_install() {
-	ypkg_install_catalog /etc/sgml/sgml-ent.cat /usr/share/sgml/sgml-iso-entities-8879.1986/catalog
-	ypkg_install_catalog /etc/sgml/sgml-docbook.cat /etc/sgml/sgml-ent.cat
+	doinstall_catalog /etc/sgml/sgml-ent.cat /usr/share/sgml/sgml-iso-entities-8879.1986/catalog
+	doinstall_catalog /etc/sgml/sgml-docbook.cat /etc/sgml/sgml-ent.cat
 	return 0
 }
 
 pre_remove() {
-	ypkg_remove_catalog /etc/sgml/sgml-ent.cat /usr/share/sgml/sgml-iso-entities-8879.1986/catalog
-	ypkg_remove_catalog /etc/sgml/sgml-docbook.cat /etc/sgml/sgml-ent.cat
+	doremove_catalog /etc/sgml/sgml-ent.cat /usr/share/sgml/sgml-iso-entities-8879.1986/catalog
+	doremove_catalog /etc/sgml/sgml-docbook.cat /etc/sgml/sgml-ent.cat
 	return 0
 }
 

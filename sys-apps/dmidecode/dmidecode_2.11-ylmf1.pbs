@@ -1,5 +1,5 @@
 #
-# YLmf_OS package build script
+# Ylmf OS package build script
 #
 
 DESCRIPTION="DMI (Desktop Management Interface) table related utilities"
@@ -15,14 +15,14 @@ RECOMMENDED=""
 CONFLICT=""
 
 pbs_unpack() {
-        ypkg_unpack
+        dounpack
 }
 
 pbs_build() {
-	ypkg_make prefix=/usr
+	domake prefix=/usr
 }
 
 pbs_install() {
-	ypkg_mkinstall prefix=/usr
+	domkinstall prefix=/usr
 }
 

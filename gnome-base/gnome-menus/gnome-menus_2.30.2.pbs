@@ -1,5 +1,5 @@
 #
-# YLmf_OS package build script
+# Ylmf OS package build script
 #
 
 DESCRIPTION="The GNOME menu system, implementing the F.D.O cross-desktop spec"
@@ -16,19 +16,19 @@ RECOMMENDED=""
 NOTES="http://wiki.linuxfromscratch.org/blfs/wiki/gnome-menus"
 
 pbs_unpack() {
-        ypkg_unpack
+        dounpack
 }
 
 pbs_config() {
-	YPB_CONFIG+="--enable-introspection=no --enable-python"
-	ypkg_config
+	config+="--enable-introspection=no --enable-python"
+	doconfig
 }
 
 pbs_build() {
-	ypkg_make
+	domake
 }
 
 pbs_install() {
-	ypkg_mkinstall
+	domkinstall
 	gnome2_desktop_database_update
 }

@@ -1,5 +1,5 @@
 #
-# YLmf_OS package build script
+# Ylmf OS package build script
 #
 
 DESCRIPTION="Aircrack-ng is an 802.11 WEP and WPA-PSK keys cracking program that can recover keys once enough data packets have been captured. "
@@ -18,16 +18,16 @@ CONFLICT=""
 NOTES=""
 
 pbs_unpack() {
-        ypkg_unpack
+        dounpack
 }
 
 pbs_build() {
-	ypkg_make SQLITE=true unstable=true 
+	domake SQLITE=true unstable=true 
 }
 
 pbs_install() {
-	#make DESTDIR="$YPPATH_DEST" install
-	ypkg_mkinstall SQLITE=true unstable=true bindir=/usr/bin \
+	#make DESTDIR="$destdir" install
+	domkinstall SQLITE=true unstable=true bindir=/usr/bin \
 		mandir=/usr/share/man/man1 sbindir=/usr/sbin
 }
 

@@ -1,5 +1,5 @@
 #
-# YLmf_OS package build script
+# Ylmf OS package build script
 #
 
 DESCRIPTION="an open-source implementation of the OpenGL specification - a system for rendering interactive 3D graphics."
@@ -31,7 +31,7 @@ pbs_unpack() {
 }
 
 pbs_config() {
-	YPB_CONFIG+="--enable-gallium-llvm
+	config+="--enable-gallium-llvm
 		     --enable-gallium-egl   
 		     --enable-gallium-svga
 		     --enable-gallium-i915
@@ -41,16 +41,16 @@ pbs_config() {
 		     --enable-gallium-swrast 
 		     --enable-gallium-nouveau 
 		     --enable-xcb"
-	ypkg_config
+	doconfig
 }
 
 pbs_build() {
-	ypkg_make
+	domake
 }
 
 pbs_install() {
-	ypkg_mkinstall
+	domkinstall
 	#radeon_drv.so from mesa is very experimental (and only concern r3xx,r4xx,r5xx
 	#aka radeon 9600 to radeon HD1950)
-	rm "$YPPATH_DEST"/usr/lib/xorg/modules/drivers/radeon_drv.so
+	rm "$destdir"/usr/lib/xorg/modules/drivers/radeon_drv.so
 }

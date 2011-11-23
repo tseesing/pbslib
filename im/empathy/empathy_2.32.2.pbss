@@ -16,21 +16,21 @@ RECOMMENDED="telepathy-gabble telepathy-salut telepathy-haze telepathy-butterfly
 INSTALL="$N.install"
 
 pbs_unpack() {
-        ypkg_unpack
+        dounpack
 }
 
 pbs_config() {
-	ypkg_patch empathy-2.32.2-libnotify-0.7.patch
-	YPB_CONFIG+="--disable-static --disable-scrollkeeper --disable-schemas-compile"
+	dopatch empathy-2.32.2-libnotify-0.7.patch
+	config+="--disable-static --disable-scrollkeeper --disable-schemas-compile"
 	#sed -i -e 's/ -shared / -Wl,-O1,--as-needed\0/g' libtool
-	ypkg_config
+	doconfig
 }
 
 pbs_build() {
-	ypkg_make
+	domake
 }
 
 pbs_install() {
-	ypkg_mkinstall
+	domkinstall
 }
 

@@ -1,5 +1,5 @@
 #
-# YLmf_OS package build script
+# Ylmf OS package build script
 #
 
 DESCRIPTION=" Apache Portable Runtime Utility Library "
@@ -22,19 +22,19 @@ Expat
 "
 
 pbs_unpack() {
-        ypkg_unpack
+        dounpack
 }
 
 pbs_config() {
-	YPB_CONFIG+="--with-apr=/usr/bin/apr-1-config "
-	ypkg_config
+	config+="--with-apr=/usr/bin/apr-1-config "
+	doconfig
 }
 
 pbs_build() {
-	ypkg_make
+	domake
 }
 
 pbs_install() {
-	ypkg_mkinstall
+	domkinstall
 }
 

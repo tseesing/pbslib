@@ -1,5 +1,5 @@
 #
-# YLmf_OS package build script
+# Ylmf OS package build script
 #
 
 DESCRIPTION="Image viewer and browser for Gnome"
@@ -24,21 +24,21 @@ INSTALL="$N.install"
 NOTES=""
 
 pbs_unpack() {
-        ypkg_unpack
+        dounpack
 }
 
 pbs_config() {
-	ypkg_patch gthumb-2.11.5-configure-exiv2.patch 
-	YPB_CONFIG+="--disable-schemas-install"
-	ypkg_config
+	dopatch gthumb-2.11.5-configure-exiv2.patch 
+	config+="--disable-schemas-install"
+	doconfig
 }
 
 pbs_build() {
-	ypkg_make
+	domake
 }
 
 pbs_install() {
-	ypkg_mkinstall
-	ypkg_dodoc AUTHORS COPYING NEWS README
+	domkinstall
+	dodoc AUTHORS COPYING NEWS README
 }
 

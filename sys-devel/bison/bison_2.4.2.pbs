@@ -1,5 +1,5 @@
 #
-# YLmf_OS package build script
+# Ylmf OS package build script
 #
 
 DESCRIPTION="A yacc-compatible parser generator"
@@ -13,11 +13,11 @@ BDEPEND=""
 INSTALL="$N.install"
 
 pbs_unpack() {
-        ypkg_unpack
+        dounpack
 }
 
 pbs_config() {
-	ypkg_config
+	doconfig
 }
 
 pbs_build() {
@@ -25,10 +25,10 @@ pbs_build() {
 	#support for internationalization of error messages if a 
 	#bison program is not already in $PATH
 	echo '#define YYENABLE_NLS 1' >> lib/config.h
-	ypkg_make
+	domake
 }
 
 pbs_install() {
-	ypkg_mkinstall
+	domkinstall
 }
 

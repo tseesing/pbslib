@@ -1,5 +1,5 @@
 #
-# YLmf_OS package build script
+# Ylmf OS package build script
 #
 
 DESCRIPTION="mingw32 run-time library"
@@ -18,7 +18,7 @@ CONFLICT=""
 OPINION="nodev nostrip"
 
 pbs_unpack() {
-        ypkg_unpack
+        dounpack
 	tar xf "$YPPATH_SOURCE"/w32api-3.14-mingw32-src.tar.gz
 	ln -sf w32api-3.14-mingw32 w32api
 }
@@ -29,7 +29,7 @@ pbs_config() {
 	INSTALL_DIR="/usr/mingw"
 
 	mkdir build && cd build
-	YPB_CONFIG="--prefix="$INSTALL_DIR"
+	config="--prefix="$INSTALL_DIR"
 	            --host="$TARGET"
 		    --build=${BUILD_PLATFORM="`../config.guess`"}"
 	unset CC
@@ -37,16 +37,16 @@ pbs_config() {
 	unset CFLAGS
 	unset CXXFLAGS
 	export PATH=$PATH:"$INSTALL_DIR"/bin
-	../configure $YPB_CONFIG
+	../configure $config
 }
 
 pbs_build() {
 	export CFLAGS="-O2 -mms-bitfields -march=${TARGET_CPU-i386}"
 	export LDFLAGS="-s"
-	ypkg_make
+	domake
 }
 
 pbs_install() {
-	ypkg_mkinstall
+	domkinstall
 }
 

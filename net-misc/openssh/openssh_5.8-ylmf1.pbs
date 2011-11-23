@@ -1,5 +1,5 @@
 #
-# YLmf_OS package build script
+# Ylmf OS package build script
 #
 
 DESCRIPTION="http://www.openssh.org/"
@@ -15,29 +15,29 @@ BDEPEND=""
 INSTALL="$N.install"
 
 pbs_unpack() {
-        ypkg_unpack
+        dounpack
 }
 
 pbs_config() {
-	YPB_CONFIG+=" --sysconfdir=/etc/ssh  
+	config+=" --sysconfdir=/etc/ssh  
 		      --datadir=/usr/share/sshd  
 		      --libexecdir=/usr/lib/openssh  
 		      --with-md5-passwords  
 		      --with-privsep-path=/var/lib/sshd "
-	ypkg_config
+	doconfig
 }
 
 pbs_build() {
-	ypkg_make
+	domake
 }
 
 pbs_install() {
-	ypkg_mkinstall
-	#ypkg_doinit "$FILES_PATH"/files/sshd
-	cd "$YPPATH_DEST"
+	domkinstall
+	#doinit $filesdir/sshd
+	cd "$destdir"
 	install -m700 -d var/lib/sshd
 	chown root:sys   var/lib/sshd
 	mkdir -p etc/ssh/
-	ypkg_docp "$FILES_PATH"/files/systemd/*  lib/systemd/system/
+	docp $filesdir/systemd/*  lib/systemd/system/
 }
 

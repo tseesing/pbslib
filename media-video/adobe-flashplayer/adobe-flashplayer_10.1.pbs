@@ -1,5 +1,5 @@
 #
-# YLmf_OS package build script
+# Ylmf OS package build script
 #
 
 DESCRIPTION="Adobe Flash Player"
@@ -18,10 +18,10 @@ INSTALL="$N.install"
 OPINION="upx"
 
 pbs_unpack() {
-        ypkg_unpack
+        dounpack
 }
 
 pbs_install() {
-	ypkg_docp flashplayer "$YPPATH_DEST"/usr/bin
-	ypkg_dodesktop "$FILES_PATH"/files/adobe-flashplayer.desktop "$FILES_PATH"/files/adobe-flashplayer.png
+	docp flashplayer "$destdir"/usr/bin
+	dodesktop $filesdir/adobe-flashplayer.desktop $filesdir/adobe-flashplayer.png
 }

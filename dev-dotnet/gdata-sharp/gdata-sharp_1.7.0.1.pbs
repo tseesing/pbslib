@@ -1,0 +1,30 @@
+#
+# Ylmf OS package build script
+#
+
+DESCRIPTION="Provide a simple protocol for reading and writing data on the web."
+HOMEPAGE="http://code.google.com/p/google-gdata/"
+LICENSE="apache"
+PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
+YARCH="any"
+
+SRC_URI="http://google-gdata.googlecode.com/files/libgoogle-data-mono-"$V".tar.gz"
+
+RDEPEND="mono"
+RECOMMENDED=""
+BDEPEND=""
+CONFLICT=""
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_build() {
+	sed -i '/PREFIX=/ s|/usr/local|/usr|' ./Makefile
+	domake
+}
+
+pbs_install() {
+	domkinstall
+}
+

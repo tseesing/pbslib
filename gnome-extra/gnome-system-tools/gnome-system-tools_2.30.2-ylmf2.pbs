@@ -1,5 +1,5 @@
 #
-# YLmf_OS package build script
+# Ylmf OS package build script
 #
 
 DESCRIPTION=" Tools aimed to make easy the administration of UNIX systems "
@@ -18,25 +18,25 @@ INSTALL="$N.install"
 NOTES=""
 
 pbs_unpack() {
-        ypkg_unpack
+        dounpack
 }
 
 pbs_config() {
 	#
-	ypkg_groupadd -r "dialout"
-	ypkg_patch user-settings-username.patch ylmfos-translate.patch change_network_png.patch
-	YPB_CONFIG+="--disable-schemas-install"
-	ypkg_config
+	dogroupadd -r "dialout"
+	dopatch user-settings-username.patch ylmfos-translate.patch change_network_png.patch
+	config+="--disable-schemas-install"
+	doconfig
 }
 
 pbs_build() {
-	ypkg_make
+	domake
 }
 
 pbs_install() {
-	ypkg_mkinstall
-	cd "$YPPATH_DEST"
-	ypkg_docp "$FILES_PATH"/files/network-setting.png  usr/share/pixmaps/
+	domkinstall
+	cd "$destdir"
+	docp $filesdir/network-setting.png  usr/share/pixmaps/
 	# keep clean for rarian
 	rm -fr var/lib/scrollkeeper
 	rm -fr var/lib/log

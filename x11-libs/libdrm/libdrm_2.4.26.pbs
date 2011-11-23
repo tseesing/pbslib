@@ -1,5 +1,5 @@
 #
-# YLmf_OS package build script
+# Ylmf OS package build script
 #
 
 DESCRIPTION="Userspace interface to kernel DRM services"
@@ -19,12 +19,12 @@ your video drivers in x11-drivers/*.
 "
 
 pbs_unpack() {
-        ypkg_unpack
+        dounpack
 }
 
 pbs_config() {
-	ypkg_patch no-pthread-stubs.patch
-	YPB_CONFIG+="--enable-udev
+	dopatch no-pthread-stubs.patch
+	config+="--enable-udev
 		     --enable-intel 
 		     --enable-radeon
 		     --enable-libkms
@@ -34,15 +34,15 @@ pbs_config() {
 		     --disable-static"
 	# libtoolize --force
 	autoreconf --force --install
-	ypkg_config
+	doconfig
 }
 
 pbs_build() {
-	ypkg_make
+	domake
 }
 
 pbs_install() {
-	ypkg_mkinstall
-	ypkg_doln /usr/include/libdrm  "$YPPATH_DEST"/usr/include/drm
+	domkinstall
+	doln /usr/include/libdrm  "$destdir"/usr/include/drm
 }
 

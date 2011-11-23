@@ -1,5 +1,5 @@
 #
-# YLmf_OS package build script
+# Ylmf OS package build script
 #
 
 DESCRIPTION="Python MSN IM protocol implementation forked from pymsn"
@@ -16,14 +16,14 @@ RECOMMENDED=""
 NOTES=""
 
 pbs_unpack() {
-        ypkg_unpack
+        dounpack
 }
 
 pbs_build() {
-	ypkg_make
+	domake
 }
 
 pbs_install() {
-	ypkg_mkinstall
-	ypkg_dodoc AUTHORS COPYING NEWS README
+	domkinstall
+	dodoc AUTHORS COPYING NEWS README
 }

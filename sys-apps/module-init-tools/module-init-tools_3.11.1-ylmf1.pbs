@@ -1,5 +1,5 @@
 #
-# YLmf_OS package build script
+# Ylmf OS package build script
 #
 
 DESCRIPTION="tools for managing linux kernel modules"
@@ -15,29 +15,29 @@ BDEPEND=" "
 INSTALL="$N.install"
 
 pbs_unpack() {
-        ypkg_unpack
+        dounpack
 }
 
 pbs_config() {
-	YPB_CONFIG="--prefix=/ --enable-zlib-dynamic --mandir=/usr/share/man" 
-	ypkg_config
+	config="--prefix=/ --enable-zlib-dynamic --mandir=/usr/share/man" 
+	doconfig
 }
 
 pbs_build() {
-	ypkg_make
+	domake
 }
 
 pbs_install() {
-	ypkg_mkinstall
-	ypkg_dodoc AUTHORS COPYING NEWS TODO CODING INSTALL
+	domkinstall
+	dodoc AUTHORS COPYING NEWS TODO CODING INSTALL
 	#
-	cd "$YPPATH_DEST"
-	ypkg_docp "$FILES_PATH"/files/modprobe.d/* etc/modprobe.d
-	ypkg_domv  bin/lsmod  sbin
+	cd "$destdir"
+	docp $filesdir/modprobe.d/* etc/modprobe.d
+	domv  bin/lsmod  sbin
 	rm -rf bin
 	#
-	ypkg_docp "$FILES_PATH"/files/module-init-tools sbin
-	ypkg_dounit "$N.service"
-	ypkg_doln /lib/systemd/system/module-init-tools.service \
+	docp $filesdir/module-init-tools sbin
+	dounit "$N.service"
+	doln /lib/systemd/system/module-init-tools.service \
 	          lib/systemd/system/sysinit.target.wants/module-init-tools.service
 }

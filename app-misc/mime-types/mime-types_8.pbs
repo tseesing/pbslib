@@ -1,5 +1,5 @@
 #
-# YLmf_OS package build script
+# Ylmf OS package build script
 #
 
 DESCRIPTION="Provides /etc/mime.types file"
@@ -15,6 +15,6 @@ BDEPEND=""
 RECOMMENDED=""
 
 pbs_install() {
-	ypkg_docp "$FILES_PATH"/files/mime.types  "$YPPATH_DEST"/etc
+	docp $filesdir/mime.types  "$destdir"/etc
 }
 

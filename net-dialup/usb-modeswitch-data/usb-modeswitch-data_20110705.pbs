@@ -1,5 +1,5 @@
 #
-# YLmf_OS package build script
+# Ylmf OS package build script
 #
 
 DESCRIPTION="handling mode-switching USB devices on linux, data package"
@@ -16,11 +16,11 @@ RECOMMENDED=""
 CONFLICT=""
 
 pbs_unpack() {
-        ypkg_unpack
+        dounpack
 }
 
 pbs_install() {
-	ypkg_mkinstall
-	ypkg_dodoc README COPYING
+	domkinstall
+	dodoc README COPYING
 }
 

@@ -1,5 +1,5 @@
 #
-# YLmf_OS package build script
+# Ylmf OS package build script
 #
 
 DESCRIPTION="DejaVu True Type Font (minimum)."
@@ -12,13 +12,13 @@ RDEPEND=""
 BDEPEND=" "
 
 pbs_unpack() {
-        ypkg_unpack
+        dounpack
 }
 
 pbs_install() {
 	
-	mkdir -p "$YPPATH_DEST"/usr/share/fonts/truetype/ttf-dejavu
-	cp -a ttf/DejaVuSans.ttf "$YPPATH_DEST"/usr/share/fonts/truetype/ttf-dejavu
-	cp -a ttf/DejaVuSans-Bold.ttf "$YPPATH_DEST"/usr/share/fonts/truetype/ttf-dejavu
-	cp -a ttf/DejaVuSansMono.ttf "$YPPATH_DEST"/usr/share/fonts/truetype/ttf-dejavu
+	mkdir -p "$destdir"/usr/share/fonts/truetype/ttf-dejavu
+	cp -a ttf/DejaVuSans.ttf "$destdir"/usr/share/fonts/truetype/ttf-dejavu
+	cp -a ttf/DejaVuSans-Bold.ttf "$destdir"/usr/share/fonts/truetype/ttf-dejavu
+	cp -a ttf/DejaVuSansMono.ttf "$destdir"/usr/share/fonts/truetype/ttf-dejavu
 }

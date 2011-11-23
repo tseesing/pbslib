@@ -4,6 +4,7 @@
 # make 
 # modinfo ./os/linux/rt3562sta.ko
 
+echo "package rt3562sta-driver"
 echo "module rt3562sta.ko"
 echo "description Ralink ABGN WLAN Card: RT3062PCI/mPCI/CB/PCIe(RT3060/RT3062/RT3562/RT3592)"
 echo "alias pci:v00001432d00007722sv*sd*bc*sc*i*

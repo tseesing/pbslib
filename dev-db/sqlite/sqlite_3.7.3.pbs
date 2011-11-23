@@ -1,5 +1,5 @@
 #
-# YLmf_OS package build script
+# Ylmf OS package build script
 #
 
 DESCRIPTION="A in-process library that implements SQL database engine"
@@ -13,32 +13,32 @@ RDEPEND="glibc ncurses readline"
 BDEPEND="tcl"
 
 pbs_unpack() {
-        ypkg_unpack
+        dounpack
 }
 
 pbs_config() {
-	ypkg_patch sqlite-3.6.22-build_fix-1.patch
+	dopatch sqlite-3.6.22-build_fix-1.patch
 	# For firefox 
 	export CFLAGS+=" -DSQLITE_SECURE_DELETE -DSQLITE_ENABLE_FTS3 
 	                 -DSQLITE_ENABLE_FTS3_PARENTHESIS 
 			 -DSQLITE_ENABLE_UNLOCK_NOTIFY 
 			 -DSQLITE_CHECK_PAGES 
 			 -DSQLITE_CORE"
-	YPB_CONFIG+=" --enable-threadsafe       
+	config+=" --enable-threadsafe       
 		      --enable-cross-thread-connections 
 		      --enable-tempstore=yes   
 		      --enable-load-extension  
 		      --enable-static=no "
-	ypkg_config
+	doconfig
 }
 
 pbs_build() {
-	ypkg_make
+	domake
 }
 
 pbs_install() {
-	ypkg_mkinstall
-	ypkg_doman sqlite3.1
+	domkinstall
+	doman sqlite3.1
 }
 
 

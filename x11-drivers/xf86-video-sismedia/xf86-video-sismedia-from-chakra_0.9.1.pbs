@@ -1,5 +1,5 @@
 #
-# YLmf_OS package build script
+# Ylmf OS package build script
 #
 
 DESCRIPTION="X.org video driver for SiS 670 / 671 cards"
@@ -18,7 +18,7 @@ CONFLICT=""
 NOTES=""
 
 pbs_unpack() {
-        ypkg_unpack
+        dounpack
 }
 
 pbs_config() {
@@ -33,18 +33,18 @@ pbs_config() {
 		  0009-update-for-rac-removal.patch
 		  0010-change-to-use-abi-version-check.patch
 		  0011-more-rac-removal.patch"
-	ypkg_patch $patches
+	dopatch $patches
 	pwd
 	exit
-	YPB_CONFIG+="--enable-dri"
-	ypkg_config
+	config+="--enable-dri"
+	doconfig
 }
 
 pbs_build() {
-	ypkg_make
+	domake
 }
 
 pbs_install() {
-	ypkg_mkinstall
-	ypkg_dodoc "$FILES_PATH"/files/LICENSE
+	domkinstall
+	dodoc $filesdir/LICENSE
 }

@@ -1,5 +1,5 @@
 #
-# YLmf_OS package build script
+# Ylmf OS package build script
 #
 
 DESCRIPTION="tarball tools"
@@ -15,25 +15,25 @@ BDEPEND=""
 INSTALL="$N.install"
 
 pbs_unpack() {
-        ypkg_unpack
+        dounpack
 }
 
 pbs_config() {
 	# Adds a man page for tar
-	ypkg_patch tar-1.26-man-1.patch
+	dopatch tar-1.26-man-1.patch
 	
 	# Run configure as root is not recommended, bypass this check. 
 	export FORCE_UNSAFE_CONFIGURE=1
 
-	YPB_CONFIG+=" --bindir=/bin --libexecdir=/usr/sbin "
-	ypkg_config
+	config+=" --bindir=/bin --libexecdir=/usr/sbin "
+	doconfig
 }
 
 pbs_build() {
-	ypkg_make
+	domake
 }
 
 pbs_install() {
-	ypkg_mkinstall
+	domkinstall
 }
 

@@ -1,5 +1,5 @@
 #
-# YLmf_OS package build script
+# Ylmf OS package build script
 #
 
 DESCRIPTION="aMule, the all-platform eMule p2p client"
@@ -12,12 +12,12 @@ RDEPEND="crypto++ geoip atk binutils cairo expat fontconfig freetype gd geoip gl
 BDEPEND="crypto++-dev"
 
 pbs_unpack() {
-        ypkg_unpack
+        dounpack
 }
 
 pbs_config() {
-	ypkg_patch desktop.patch
-	YPB_CONFIG+=" --enable-cas
+	dopatch desktop.patch
+	config+=" --enable-cas
 	              --enable-wxcas 
 		      --enable-amule-daemon
 		      --enable-amulecmd
@@ -30,13 +30,13 @@ pbs_config() {
 		      --enable-ccache 
 		      --enable-geoip 
 		      --enable-upnp "
-	ypkg_config
+	doconfig
 }
 
 pbs_build() {
-	ypkg_make
+	domake
 }
 
 pbs_install() {
-	ypkg_mkinstall
+	domkinstall
 }

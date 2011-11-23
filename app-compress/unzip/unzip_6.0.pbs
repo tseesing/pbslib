@@ -1,5 +1,5 @@
 #
-# YLmf_OS package build script
+# Ylmf OS package build script
 #
 
 DESCRIPTION="unzipper for pkzip-compressed files"
@@ -13,7 +13,7 @@ RDEPEND="glibc"
 BDEPEND=""
 
 pbs_unpack() {
-        ypkg_unpack
+        dounpack
 }
 
 pbs_build() {
@@ -21,10 +21,10 @@ pbs_build() {
 }
 
 pbs_install() {
-	mkdir -p "$YPPATH_DEST"/usr
-	make prefix="$YPPATH_DEST"/usr install
+	mkdir -p "$destdir"/usr
+	make prefix="$destdir"/usr install
 
-	cd "$YPPATH_DEST"
-	ypkg_domv usr/man usr/share
+	cd "$destdir"
+	domv usr/man usr/share
 }
 

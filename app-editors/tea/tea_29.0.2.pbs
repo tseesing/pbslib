@@ -1,5 +1,5 @@
 #
-# YLmf_OS package build script
+# Ylmf OS package build script
 #
 
 DESCRIPTION="TEA is the text editor for UNIX-like systems and Windows. With an ultimate small size TEA provides you hundreds of functions."
@@ -21,19 +21,19 @@ NOTES=""
 #ICONFILE="test.png"   or "/opt/test/test.png"
 
 pbs_unpack() {
-        ypkg_unpack
+        dounpack
 }
 
 pbs_config() {
-	ypkg_config "PREFIX="$YPPATH_DEST"/usr/bin/"
+	doconfig "PREFIX="$destdir"/usr/bin/"
 }
 
 pbs_build() {
-	ypkg_make
-	ypkg_docp_rename icons/tea_icon_v2.png  "$YPPATH_DEST"/usr/share/pixmaps/"$N".png
-	ypkg_dodesktop  "$FILES_PATH"/files/"$N".desktop
+	domake
+	docp_rename icons/tea_icon_v2.png  "$destdir"/usr/share/pixmaps/"$N".png
+	dodesktop  $filesdir/"$N".desktop
 }
 
 pbs_install() {
-	ypkg_mkinstall
+	domkinstall
 }

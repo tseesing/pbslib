@@ -1,5 +1,5 @@
 #
-# YLmf_OS package build script
+# Ylmf OS package build script
 #
 
 DESCRIPTION="The GLib library of C routines"
@@ -15,23 +15,23 @@ NOTES="Gamin requires GLib in order to compile; therefore, you must first instal
 --with-pcre=system: This parameter causes the build to use a system-provided version of the PCRE library instead of an internal version."
 
 pbs_unpack() {
-        ypkg_unpack
+        dounpack
 }
 
 pbs_config() {
 	
-	YPB_CONFIG+=" --prefix=/usr " #--with-pcre=system
-	ypkg_config
+	config+=" --prefix=/usr " #--with-pcre=system
+	doconfig
 }
 
 pbs_build() {
-	ypkg_make
+	domake
 }
 
 pbs_install() {
-	ypkg_mkinstall
-	install -d -m755 "$YPPATH_DEST"/etc/profile.d
-	cat > "$YPPATH_DEST"/etc/profile.d/glib2-locale.sh << "EOF"
+	domkinstall
+	install -d -m755 "$destdir"/etc/profile.d
+	cat > "$destdir"/etc/profile.d/glib2-locale.sh << "EOF"
 export G_FILENAME_ENCODING=@locale
 EOF
 }

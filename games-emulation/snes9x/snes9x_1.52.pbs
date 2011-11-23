@@ -1,5 +1,5 @@
 #
-# YLmf_OS package build script
+# Ylmf OS package build script
 #
 
 DESCRIPTION="Super Nintendo Entertainment System (SNES) emulator"
@@ -17,26 +17,26 @@ NOTES=""
 INSTALL="$N.install"
 
 pbs_unpack() {
-        ypkg_unpack
+        dounpack
 }
 
 pbs_config() {
-	ypkg_patch snes9x-1.52-build.patch
+	dopatch snes9x-1.52-build.patch
 	cd unix
 	autoreconf
-	ypkg_config
+	doconfig
 	cd ../gtk
-	ypkg_config 
+	doconfig 
 }
 
 pbs_build() {
 	cd ../unix
-	ypkg_make
+	domake
 	make -C ../gtk
 }
 
 pbs_install() {
-	ypkg_docp snes9x "$YPPATH_DEST"/usr/bin
+	docp snes9x "$destdir"/usr/bin
 	cd ../gtk
-	ypkg_mkinstall
+	domkinstall
 }

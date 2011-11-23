@@ -1,5 +1,5 @@
 #
-# YLmf_OS package build script
+# Ylmf OS package build script
 #
 
 DESCRIPTION="Cairo Composite Manager is a versatile and extensible composite manager which use cairo for rendering. "
@@ -9,7 +9,7 @@ PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 
 SRC_URI="http://download.tuxfamily.org/ccm/"$N"/"$N-$V".tar.gz"
 
-RDEPEND="atk binutils cairo expat fontconfig freetype gcc gconf gdk-pixbuf glib2 glibc gtk+ libgtop libICE libpng libSM libwnck libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libxml2 libXrandr libXrender libXres orbit pango pixman startup-notification util-linux-ng vala zlib"
+RDEPEND="atk cairo expat fontconfig freetype gcc gconf gdb gdk-pixbuf glade glib2 glibc gtk+ libgtop libICE libpng libSM libwnck libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libxml2 libXrandr libXrender libXres orbit pango pixman startup-notification util-linux-ng vala zlib"
 BDEPEND=""
 RECOMMENDED=""
 CONFLICT=""
@@ -17,20 +17,20 @@ CONFLICT=""
 INSTALL="$N.install"
 
 pbs_unpack() {
-        ypkg_unpack
+        dounpack
 }
 
 pbs_config() {
-	YPB_CONFIG+="--enable-gconf 
-	             --enable-perf-plugin"
-	ypkg_config
+	config+="--enable-gconf 
+	         --enable-perf-plugin"
+	doconfig
 }
 
 pbs_build() {
-	ypkg_make
+	domake
 }
 
 pbs_install() {
-	ypkg_mkinstall
+	domkinstall
 }
 

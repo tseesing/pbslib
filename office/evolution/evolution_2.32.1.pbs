@@ -1,5 +1,5 @@
 #
-# YLmf_OS package build script
+# Ylmf OS package build script
 #
 
 DESCRIPTION="Integrated mail, addressbook and calendaring functionality"
@@ -16,28 +16,28 @@ RECOMMENDED=""
 INSTALL="$N-$V.install"
 
 pbs_unpack() {
-        ypkg_unpack
+        dounpack
 }
 
 pbs_config() {
-	ypkg_docp_rename "$FILES_PATH"/files/evolution.svg data/icons/hicolor_apps_scalable_evolution.svg
-	YPB_CONFIG+=" --disable-schemas-install  
+	docp_rename $filesdir/evolution.svg data/icons/hicolor_apps_scalable_evolution.svg
+	config+=" --disable-schemas-install  
 		      --disable-nm 
 		      --with-openldap 
 		      --enable-python 
 		      --enable-pst-import 
 		      --with-krb5=/usr "
-	ypkg_config
+	doconfig
 }
 
 pbs_build() {
-	ypkg_make
+	domake
 }
 
 pbs_install() {
-	ypkg_mkinstall
+	domkinstall
 	# keep clean for rarian
-	rm -fr "$YPPATH_DEST"/var/lib/scrollkeeper
-	rm -fr "$YPPATH_DEST"/var/lib/log
+	rm -fr "$destdir"/var/lib/scrollkeeper
+	rm -fr "$destdir"/var/lib/log
 }
 

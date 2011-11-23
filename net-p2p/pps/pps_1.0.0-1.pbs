@@ -1,5 +1,5 @@
 #
-# YLmf_OS package build script
+# Ylmf OS package build script
 #
 
 DESCRIPTION="PPStream for Linux"
@@ -19,17 +19,17 @@ CONFLICT=""
 NOTES=""
 
 pbs_unpack() {
-        ypkg_unpack
+        dounpack
 }
 
 pbs_install() {
-	ypkg_patch desktop.patch
-	ypkg_docp data/*  "$YPPATH_DEST"
-	cd "$YPPATH_DEST"
-	ypkg_doln /opt/pps/bin/PPStream                usr/bin/PPStream
-	ypkg_doln /opt/pps/lib/libemscore.so.0.1.1676  usr/lib/libemscore.so
-	ypkg_doln /opt/pps/lib/libemsnet.so.0.1.1676   usr/lib/libemsnet.so
-	ypkg_doln /opt/pps/lib/libemscore.so.0.1.1676  usr/lib/libemscore.so.0
-	ypkg_doln /opt/pps/lib/libemsnet.so.0.1.1676   usr/lib/libemsnet.so.0
+	dopatch desktop.patch
+	docp data/*  "$destdir"
+	cd "$destdir"
+	doln /opt/pps/bin/PPStream                usr/bin/PPStream
+	doln /opt/pps/lib/libemscore.so.0.1.1676  usr/lib/libemscore.so
+	doln /opt/pps/lib/libemsnet.so.0.1.1676   usr/lib/libemsnet.so
+	doln /opt/pps/lib/libemscore.so.0.1.1676  usr/lib/libemscore.so.0
+	doln /opt/pps/lib/libemsnet.so.0.1.1676   usr/lib/libemsnet.so.0
 }
 

@@ -1,5 +1,5 @@
 #
-# YLmf_OS package build script
+# Ylmf OS package build script
 #
 
 DESCRIPTION="a lightweight and easy-to-use C library for programming with the XMPP protocol."
@@ -14,23 +14,23 @@ BDEPEND="gnutls-dev"
 RECOMMENDED=""
 
 pbs_unpack() {
-        ypkg_unpack
+        dounpack
 }
 
 pbs_config() {
-	YPB_CONFIG+="--disable-debug 
+	config+="--disable-debug 
 	             --without-asyncns 
 		     --with-ssl=gnutls 
 		     --without-asyncns 
 		     --with-ssl=openssl"
-	ypkg_config
+	doconfig
 }
 
 pbs_build() {
-	ypkg_make
+	domake
 }
 
 pbs_install() {
-	ypkg_mkinstall
+	domkinstall
 }
 

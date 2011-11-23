@@ -1,5 +1,5 @@
 #
-# YLmf_OS package build script
+# Ylmf OS package build script
 #
 
 DESCRIPTION="Jade is an implementation of DSSSL - an ISO standard for formatting SGML and XML documents"
@@ -16,30 +16,30 @@ RECOMMENDED=""
 INSTALL="$N.install"
 
 pbs_unpack() {
-        ypkg_unpack
+        dounpack
 }
 
 pbs_config() {
-	YPB_CONFIG+=" --enable-default-catalog=/etc/sgml/catalog 
+	config+=" --enable-default-catalog=/etc/sgml/catalog 
 	              --enable-default-search-path=/usr/share/sgml 
 		      --datadir=/usr/share/sgml/"$N-$V$R" "
-	ypkg_config
+	doconfig
 }
 
 pbs_build() {
-	ypkg_make
+	domake
 }
 
 pbs_install() {
-	ypkg_mkinstall
-	make DESTDIR="$YPPATH_DEST" install-man
-	ypkg_docp dsssl/catalog dsssl/*.{dtd,dsl,sgm} "$YPPATH_DEST"/usr/share/sgml/"$N-$V$R"
-	cd "$YPPATH_DEST"
-	ypkg_doln openjade       usr/bin/jade
-	ypkg_doln libogrove.so   usr/lib/libgrove.so
-	ypkg_doln libospgrove.so usr/lib/libspgrove.so
-	ypkg_doln libostyle.so   usr/lib/libstyle.so
+	domkinstall
+	make DESTDIR="$destdir" install-man
+	docp dsssl/catalog dsssl/*.{dtd,dsl,sgm} "$destdir"/usr/share/sgml/"$N-$V$R"
+	cd "$destdir"
+	doln openjade       usr/bin/jade
+	doln libogrove.so   usr/lib/libgrove.so
+	doln libospgrove.so usr/lib/libspgrove.so
+	doln libostyle.so   usr/lib/libstyle.so
 	echo "SYSTEM \"http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd\" \"/usr/share/xml/docbook/xml-dtd-4.5/docbookx.dtd\"" \
-	      >> "$YPPATH_DEST"/usr/share/sgml/"$N-$V$R"/catalog
+	      >> "$destdir"/usr/share/sgml/"$N-$V$R"/catalog
 }
 

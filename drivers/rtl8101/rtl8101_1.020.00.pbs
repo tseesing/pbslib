@@ -1,5 +1,5 @@
 #
-# YLmf_OS package build script
+# Ylmf OS package build script
 #
 
 DESCRIPTION="driver for RealTek RTL8101E, RTL8102E(L), RTL8103E(L) PCI-Express interface."
@@ -12,11 +12,11 @@ SRC_URI="ftp://WebUser:fh7SkVT4@210.51.181.211/cn/nic/r8101-1.020.00.tar.bz2"
 PROVIDE="rtl8101-source rtl8101-driver"
 
 pbs_unpack() {
-        ypkg_unpack
+        dounpack
 }
 
 pbs_build() {
-	ypkg_patch ylmfos-makefile.patch
+	dopatch ylmfos-makefile.patch
 }
 
 rtl8101-source_install() {
@@ -26,8 +26,8 @@ rtl8101-source_install() {
 	OPINION="nodev"
         YARCH="any"
 
-	ypkg_dosrc *
-	ypkg_dosupported "$N"_supported
+	dosrc *
+	dosupported "$N"_supported
 }
 
 rtl8101-driver_install() {
@@ -37,7 +37,7 @@ rtl8101-driver_install() {
 	INSTALL="$N.install"
 	
 	unset ARCH
-	ypkg_make modules
-	ypkg_mkinstall
+	domake modules
+	domkinstall
 }
 

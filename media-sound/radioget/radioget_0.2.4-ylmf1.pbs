@@ -1,0 +1,27 @@
+#
+# Ylmf OS package build script
+#
+
+DESCRIPTION="radio inline"
+HOMEPAGE="http://code.google.com/p/radioget/"
+LICENSE="GPLv3"
+PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
+
+SRC_URI="http://radioget.googlecode.com/files/"$N-$V"-i386.tar.bz2"
+
+RDEPEND="expat fontconfig freetype gcc glib2 glibc libICE libpng libSM libX11 libXau libxcb libXdmcp libXext libXrender util-linux-ng zlib"
+BDEPEND=""
+RECOMMENDED=""
+CONFLICT=""
+
+INSTALL="$N.install"
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_install() {
+	docp "$N" "$destdir"/usr/bin
+	dodesktop "$N".desktop "$N".png
+}
+

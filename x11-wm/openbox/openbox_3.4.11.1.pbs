@@ -1,5 +1,5 @@
 #
-# YLmf_OS package build script
+# Ylmf OS package build script
 #
 
 DESCRIPTION="Small-footprint and standard compliant Window Manager."
@@ -13,21 +13,21 @@ RDEPEND="expat fontconfig freetype gcc glib2 glibc libICE libSM libX11 libXau li
 BDEPEND=""
 
 pbs_unpack() {
-        ypkg_unpack
+        dounpack
 }
 
 pbs_config() {
 	chmod +x install-sh
-	ypkg_config
+	doconfig
 	# FIXME
 	sed -i 's/^mkdir_p = .*/mkdir_p = mkdir -p/' po/Makefile
 }
 
 pbs_build() {
-	ypkg_make
+	domake
 }
 
 pbs_install() {
-	ypkg_mkinstall
+	domkinstall
 }
 

@@ -1,5 +1,5 @@
 #
-# YLmf_OS package build script
+# Ylmf OS package build script
 #
 
 DESCRIPTION="A vector graphics library with cross-device output support"
@@ -13,20 +13,20 @@ RDEPEND="libpng pixman fontconfig"
 BDEPEND=" x11-libs/xcb-util directfb"
 
 pbs_unpack() {
-        ypkg_unpack
+        dounpack
 }
 
 pbs_config() {
-	ypkg_patch cairo-1.8.8-interix.patch
-	ypkg_patch cairo-1.10.0-buggy_gradients.patch
-	YPB_CONFIG+="--enable-xcb --enable-directfb"
-	ypkg_config
+	dopatch cairo-1.8.8-interix.patch
+	dopatch cairo-1.10.0-buggy_gradients.patch
+	config+="--enable-xcb --enable-directfb"
+	doconfig
 }
 
 pbs_build() {
-	ypkg_make
+	domake
 }
 
 pbs_install() {
-	ypkg_mkinstall
+	domkinstall
 }

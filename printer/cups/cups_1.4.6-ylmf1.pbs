@@ -1,5 +1,5 @@
 #
-# YLmf_OS package build script
+# Ylmf OS package build script
 #
 
 DESCRIPTION="The Common Unix Printing System."
@@ -18,17 +18,17 @@ INSTALL="$N.install"
 NOTES="lp group/user should be created automatically"
 
 pbs_unpack() {
-        ypkg_unpack
+        dounpack
 }
 
 pbs_config() {
-	ypkg_groupadd -r "lp"
-	ypkg_patch cups-avahi.patch ylmfos-add-wheel-group-to-systemgroup.patch
+	dogroupadd -r "lp"
+	dopatch cups-avahi.patch ylmfos-add-wheel-group-to-systemgroup.patch
 	
 	# Rebuild configure script for --enable-avahi.
 	aclocal -I config-scripts
 	autoconf -I config-scripts
-	YPB_CONFIG+=" --enable-dbus
+	config+=" --enable-dbus
 		      --enable-libusb
 		      --enable-ssl=yes
 		      --enable-pam=yes 
@@ -43,24 +43,24 @@ pbs_config() {
 		      --with-logdir=/var/log/cups
 		      --with-cups-group=lp "
 		      #--with-cups-user=daemon
-	ypkg_config
+	doconfig
 }
 
 pbs_build() {
-	ypkg_make
+	domake
 }
 
 pbs_install() {
-	make BUILDROOT="$YPPATH_DEST" install
-	cd "$YPPATH_DEST"
+	make BUILDROOT="$destdir" install
+	cd "$destdir"
 	
 	# Systemd
-	ypkg_dounit "$N".service
-	ypkg_doln /lib/systemd/system/"$N".service lib/systemd/system/multi-user.target.wants/"$N".service
+	dounit "$N".service
+	doln /lib/systemd/system/"$N".service lib/systemd/system/multi-user.target.wants/"$N".service
 	
 	#
-	ypkg_docp_rename  "$FILES_PATH"/files/cups.logrotate etc/logrotate.d/cups
-	ypkg_docp_rename  "$FILES_PATH"/files/cups.pam      etc/pam.d/cups	
+	docp_rename  $filesdir/cups.logrotate etc/logrotate.d/cups
+	docp_rename  $filesdir/cups.pam      etc/pam.d/cups	
 	
 	# Fix perms on /var/spool and /etc
 	chmod 755 var/spool
@@ -86,7 +86,7 @@ pbs_install() {
 	find usr/share/cups/model -name "*.ppd" | xargs gzip -n9f
 	
 	#
-	ypkg_docp "$FILES_PATH"/files/blacklist-cups.conf etc/modprobe.d/
+	docp $filesdir/blacklist-cups.conf etc/modprobe.d/
 	
 	# Clean
 	rm -rf etc/rc5.d/ etc/rc3.d/ etc/rc2.d/ etc/rc0.d/

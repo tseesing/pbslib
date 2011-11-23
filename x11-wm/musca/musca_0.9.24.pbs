@@ -1,5 +1,5 @@
 #
-# YLmf_OS package build script
+# Ylmf OS package build script
 #
 
 DESCRIPTION="A simple dynamic window manager for X, with features nicked from ratpoison and dwm"
@@ -18,20 +18,20 @@ CONFLICT=""
 NOTES=""
 
 pbs_unpack() {
-        ypkg_unpack
+        dounpack
 }
 
 pbs_config() {
-	ypkg_patch musca-0.9.24-make.patch
-	YPB_CONFIG+=""
-	ypkg_config
+	dopatch musca-0.9.24-make.patch
+	config+=""
+	doconfig
 }
 
 pbs_build() {
-	ypkg_make
+	domake
 }
 
 pbs_install() {
-	ypkg_docp apis musca xlisten "$YPPATH_DEST"/usr/bin/
-	ypkg_doman musca.1  
+	docp apis musca xlisten "$destdir"/usr/bin/
+	doman musca.1  
 }

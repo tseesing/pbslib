@@ -1,0 +1,65 @@
+#
+# Ylmf OS package build script
+#
+
+DESCRIPTION="Tools to access a server's filespace and printers via SMB"
+HOMEPAGE="http://www.samba.org"
+LICENSE="GPLv2"
+PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
+
+SRC_URI="https://ftp.samba.org/pub/samba/"$N"/samba-4.0.0alpha11.tar.gz"
+
+RDEPEND="acl attr avahi cups cyrus-sasl dbus gcc glibc gnutls keyutils krb5 ldb libcap libgcrypt libgpg-error libtasn1 ncurses openldap openssl pam popt python readline talloc tdb tevent util-linux-ng zlib"
+BDEPEND=""
+RECOMMENDED=""
+CONFLICT="samba"
+
+INSTALL="$N.install"
+
+NOTES="nobody and sambashare users and groups created automatically."
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_config() {
+	cd source4
+
+	config+="--with-piddir=/var/run
+ 	         --enable-fhs
+		 --with-pam
+		 --with-pammodulesdir=/lib/security"
+	config=${config/--enable-shared/}
+
+	./configure.developer $config
+}
+
+pbs_build() {
+	make
+}
+
+pbs_install() {
+	domkinstall 
+	dounit nmbd.service smbd.service winbind.service
+
+	cd "$destdir"
+
+	docp "$filesdir"/smb.conf etc/samba/
+	install -d -m 1770 -g sambashare var/lib/samba/usershares 
+	
+	# For cups share
+	doln /usr/bin/smbspool usr/lib/cups/backend/smb
+	
+	install -d -m777 var/spool/samba
+	install -d var/log/samba
+
+	#
+	find . -name "*.old" -type f -exec rm {} \; 2>/dev/null
+
+	#
+	doln /usr/lib/libsamba-hostconfig.so.0.0.1 usr/lib/libsamba-hostconfig.so.0
+	doln /usr/lib/libdcerpc.so.0.0.1           usr/lib/libdcerpc.so.0
+	doln /usr/lib/libldb.so.0.0.1              usr/lib/libldb.so.0
+	doln /usr/lib/libndr.so.0.0.1              usr/lib/libndr.so.0
+}
+

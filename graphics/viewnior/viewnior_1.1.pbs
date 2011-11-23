@@ -1,36 +1,35 @@
 #
-# YLmf_OS package build script
+# Ylmf OS package build script
 #
 
 DESCRIPTION="Fast and simple image viewer"
 HOMEPAGE="http://xsisqox.github.com/Viewnior/index.html"
-REPO=""
 LICENSE="GPL"
 PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 
 SRC_URI="http://cloud.github.com/downloads/xsisqox/Viewnior/"$N-$V$R".tar.gz"
 
 RDEPEND="atk cairo expat fontconfig freetype gcc glib2 gdk-pixbuf glibc gtk+ libpng libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libXrandr libXrender pango pixman zlib"
-BDEPEND=""
+BDEPEND="shared-mime-info-dev"
 RECOMMENDED=""
 CONFLICT=""
 
 INSTALL="$N.install"
 
 pbs_unpack() {
-        ypkg_unpack
+        dounpack
 }
 
 pbs_config() {
-	YPB_CONFIG+=""
-	ypkg_config
+	config+="--enable-wallpaper"
+	doconfig
 }
 
 pbs_build() {
-	ypkg_make
+	domake
 }
 
 pbs_install() {
-	ypkg_mkinstall
+	domkinstall
 }
 

@@ -1,5 +1,5 @@
 #
-# YLmf_OS package build script
+# Ylmf OS package build script
 #
 
 DESCRIPTION="Utility to detect other OSs on a set of drives"
@@ -20,29 +20,29 @@ NOTES="
 "
 
 pbs_unpack() {
-	ypkg_unpack
+	dounpack
 }
 
 pbs_build() {
-	ypkg_make
+	domake
 }
 
 pbs_install() {
-	ypkg_docp os-prober linux-boot-prober 	"$YPPATH_DEST"/usr/bin
-	ypkg_docp newns  			"$YPPATH_DEST"/usr/lib/os-prober
-	ypkg_docp common.sh		 	"$YPPATH_DEST"/usr/share/os-prober
-	ypkg_docp os-probes/* 			"$YPPATH_DEST"/usr/lib/os-probes
-	ypkg_docp linux-boot-probes/*           "$YPPATH_DEST"/usr/lib/linux-boot-probes
-	ypkg_dodoc README TODO 		
-	cd "$YPPATH_DEST"
-	ypkg_docp usr/lib/os-probes/mounted/powerpc/20macosx   usr/lib/os-probes/mounted
-	ypkg_domv usr/lib/os-probes/mounted/common/* 	       usr/lib/os-probes/mounted
-	ypkg_domv usr/lib/os-probes/common/* 		        usr/lib/os-probes/
-	ypkg_domv usr/lib/linux-boot-probes/common/*  	        usr/lib/linux-boot-probes
-	ypkg_domv usr/lib/linux-boot-probes/mounted/common/* 	usr/lib/linux-boot-probes/mounted
-	ypkg_domv usr/lib/os-probes/mounted/x86/*              usr/lib/os-probes/mounted
-	ypkg_domv usr/lib/linux-boot-probes/mounted/x86/*      usr/lib/linux-boot-probes/mounted
-	ypkg_domv usr/lib/os-probes/init/common/*		usr/lib/os-probes/init
+	docp os-prober linux-boot-prober 	"$destdir"/usr/bin
+	docp newns  			"$destdir"/usr/lib/os-prober
+	docp common.sh		 	"$destdir"/usr/share/os-prober
+	docp os-probes/* 			"$destdir"/usr/lib/os-probes
+	docp linux-boot-probes/*           "$destdir"/usr/lib/linux-boot-probes
+	dodoc README TODO 		
+	cd "$destdir"
+	docp usr/lib/os-probes/mounted/powerpc/20macosx   usr/lib/os-probes/mounted
+	domv usr/lib/os-probes/mounted/common/* 	       usr/lib/os-probes/mounted
+	domv usr/lib/os-probes/common/* 		        usr/lib/os-probes/
+	domv usr/lib/linux-boot-probes/common/*  	        usr/lib/linux-boot-probes
+	domv usr/lib/linux-boot-probes/mounted/common/* 	usr/lib/linux-boot-probes/mounted
+	domv usr/lib/os-probes/mounted/x86/*              usr/lib/os-probes/mounted
+	domv usr/lib/linux-boot-probes/mounted/x86/*      usr/lib/linux-boot-probes/mounted
+	domv usr/lib/os-probes/init/common/*		usr/lib/os-probes/init
 	#
 	rm -r usr/lib/linux-boot-probes/common usr/lib/linux-boot-probes/mounted/common \
 	      usr/lib/os-probes/init/common usr/lib/os-probes/mounted/common usr/lib/os-probes/common \

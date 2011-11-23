@@ -1,5 +1,5 @@
 #
-# YLmf_OS package build script
+# Ylmf OS package build script
 #
 
 DESCRIPTION="Complete solution to record, convert and stream audio and video. Includes libavcodec."
@@ -14,11 +14,11 @@ BDEPEND=""
 RECOMMENDED=""
 
 pbs_unpack() {
-        ypkg_unpack
+        dounpack
 }
 
 pbs_config() {
-	YPB_CONFIG="--prefix=/usr 
+	config="--prefix=/usr 
 	            --mandir=/usr/share/man
 		    --enable-shared 
 		    --enable-gpl
@@ -39,14 +39,14 @@ pbs_config() {
 		    --enable-version3 
 		    --enable-runtime-cpudetect 
 		    --disable-debug"
-	ypkg_config
+	doconfig
 }
 
 pbs_build() {
-	ypkg_make
+	domake
 }
 
 pbs_install() {
-	ypkg_mkinstall
+	domkinstall
 }
 

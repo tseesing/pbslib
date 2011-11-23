@@ -1,5 +1,5 @@
 #
-# YLmf_OS package build script
+# Ylmf OS package build script
 #
 
 DESCRIPTION="Tk Widget Set"
@@ -12,24 +12,24 @@ RDEPEND="tcl libX11 libXScrnSaver libXext libXft freetype fontconfig libXrender
 BDEPEND=" "
 
 pbs_unpack(){
-        ypkg_unpack
+        dounpack
 }
 
 pbs_config(){
 	cd unix
-	YPB_CONFIG+="--enable-threads"
-	ypkg_config
+	config+="--enable-threads"
+	doconfig
 }
 
 pbs_build() {
-	ypkg_make
+	domake
 }
 
 pbs_install() {
 	sed -i 	-e "s@^\(TK_SRC_DIR='\).*@\1/usr/include'@" \
 		-e "/TK_B/s@='\(-L\)\?.*unix@='\1/usr/lib@" \
 		tkConfig.sh
-	ypkg_mkinstall 
-	make DESTDIR="$YPPATH_DEST" install-private-headers
-	ypkg_doln wish8.5 "$YPPATH_DEST"/usr/bin/wish 
+	domkinstall 
+	make DESTDIR="$destdir" install-private-headers
+	doln wish8.5 "$destdir"/usr/bin/wish 
 }

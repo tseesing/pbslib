@@ -1,5 +1,5 @@
 #
-# YLmf_OS package build script
+# Ylmf OS package build script
 #
 
 DESCRIPTION="Next Generation driver for Atheros based IEEE 802.11a/b/g wireless LAN cards"
@@ -12,11 +12,11 @@ SRC_URI="http://snapshots.madwifi-project.org/madwifi-0.9.4-current.tar.gz"
 PROVIDE="$N-source $N-driver $N-utils"
 
 pbs_unpack() {
-        ypkg_unpack
+        dounpack
 }
 
 pbs_config() {
-	ypkg_patch madwifi-utils-install-dir.patch
+	dopatch madwifi-utils-install-dir.patch
 }
 
 madwifi-source_install() {
@@ -26,9 +26,9 @@ madwifi-source_install() {
 	OPINION="nodev"
         YARCH="any"
 	
-	ypkg_dosrc *
-	ypkg_doykms
-	ypkg_dosupported "${N}_supported"
+	dosrc *
+	doykms
+	dosupported "${N}_supported"
 }
 
 madwifi-driver_install() {
@@ -37,15 +37,15 @@ madwifi-driver_install() {
 	INSTALL="$N.install"
 	
 	unset ARCH
-	ypkg_make modules
-	make DESTDIR="$YPPATH_DEST" install-modules
+	domake modules
+	make DESTDIR="$destdir" install-modules
 }
 
 madwifi-utils_install() {
 	DESCRIPTION="Next Generation driver for Atheros based IEEE 802.11a/b/g wireless LAN cards (source)."
 	INSTALL=""
 
-	ypkg_make tools
-	make DESTDIR="$YPPATH_DEST" install-tools
+	domake tools
+	make DESTDIR="$destdir" install-tools
 }
 

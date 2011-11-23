@@ -1,5 +1,5 @@
 #
-# YLmf_OS package build script
+# Ylmf OS package build script
 #
 
 DESCRIPTION="yinst - modified from WUBI for installing Ylmf OS under Windows."
@@ -16,10 +16,10 @@ BDEPEND=""
 OPINION="nodev"
 
 pbs_unpack() {
-	ypkg_unpack
+	dounpack
 }
 
 pbs_install() {
-	ypkg_dosrc *
+	dosrc *
 }
 

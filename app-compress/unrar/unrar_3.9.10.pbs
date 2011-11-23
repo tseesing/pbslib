@@ -1,5 +1,5 @@
 #
-# YLmf_OS package build script
+# Ylmf OS package build script
 #
 
 DESCRIPTION="Uncompress rar files"
@@ -13,7 +13,7 @@ RDEPEND="gcc glibc"
 BDEPEND=""
 
 pbs_unpack() {
-	ypkg_unpack
+	dounpack
 }
 
 pbs_build() {
@@ -21,7 +21,7 @@ pbs_build() {
 }
 
 pbs_install() {
-	mkdir -p "$YPPATH_DEST"/usr/bin
-	make -f makefile.unix DESTDIR="$YPPATH_DEST"/usr install
+	mkdir -p "$destdir"/usr/bin
+	make -f makefile.unix DESTDIR="$destdir"/usr install
 }
 

@@ -1,5 +1,5 @@
 #
-# YLmf_OS package build script
+# Ylmf OS package build script
 #
 
 DESCRIPTION="Scanner Access Now Easy - Backends"
@@ -17,18 +17,18 @@ RECOMMENDED=""
 NOTES=""
 
 pbs_unpack() {
-        ypkg_unpack
+        dounpack
 }
 
 pbs_config() {
-	ypkg_config
+	doconfig
 }
 
 pbs_build() {
-	ypkg_make
+	domake
 }
 
 pbs_install() {
-	ypkg_mkinstall
-	ypkg_domv "$YPPATH_DEST"/usr/doc "$YPPATH_DEST"/usr/share/
+	domkinstall
+	domv "$destdir"/usr/doc "$destdir"/usr/share/
 }

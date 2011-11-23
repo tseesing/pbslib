@@ -1,5 +1,5 @@
 #
-# YLmf_OS package build script
+# Ylmf OS package build script
 #
 
 DESCRIPTION="The Common Unix Printing System."
@@ -18,25 +18,25 @@ INSTALL="$N.install"
 NOTES="lp group/user should be created automatically"
 
 pbs_unpack() {
-        ypkg_unpack
+        dounpack
 }
 
 pbs_config() {
-	ypkg_patch desktop-not-show.patch
-	YPB_CONFIG+=""
-	ypkg_config
+	dopatch desktop-not-show.patch
+	config+=""
+	doconfig
 }
 
 pbs_build() {
-	ypkg_make
+	domake
 }
 
 pbs_install() {
-	make BUILDROOT="$YPPATH_DEST" install
-	ypkg_dounit "$N".service
-	cd "$YPPATH_DEST"
+	make BUILDROOT="$destdir" install
+	dounit "$N".service
+	cd "$destdir"
 	mkdir -p lib/systemd/system/multi-user.target.wants/
-	ypkg_doln /lib/systemd/system/"$N".service "$N".service
+	doln /lib/systemd/system/"$N".service "$N".service
 	#clean
 	rm -rf etc/rc5.d/ etc/rc3.d/ etc/rc2.d/ etc/rc0.d/
 	rm -rf etc/init.d/cups

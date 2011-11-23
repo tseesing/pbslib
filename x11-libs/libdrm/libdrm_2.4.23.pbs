@@ -1,5 +1,5 @@
 #
-# YLmf_OS package build script
+# Ylmf OS package build script
 #
 
 DESCRIPTION="X.Org libdrm library"
@@ -19,11 +19,11 @@ your video drivers in x11-drivers/*.
 "
 
 pbs_unpack() {
-        ypkg_unpack
+        dounpack
 }
 
 pbs_config() {
-	YPB_CONFIG+=" --enable-udev
+	config+=" --enable-udev
 		      --enable-intel 
 		      --enable-radeon
 		      --enable-libkms
@@ -32,14 +32,14 @@ pbs_config() {
 		      --enable-libkms
 		      --disable-static "
 		      #--enable-radeon-experimental-api 
-	ypkg_config
+	doconfig
 }
 
 pbs_build() {
-	ypkg_make
+	domake
 }
 
 pbs_install() {
-	ypkg_mkinstall
-	ypkg_doln /usr/include/libdrm  "$YPPATH_DEST"/usr/include/drm
+	domkinstall
+	doln /usr/include/libdrm  "$destdir"/usr/include/drm
 }

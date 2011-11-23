@@ -1,5 +1,5 @@
 #
-# YLmf_OS package build script
+# Ylmf OS package build script
 #
 
 DESCRIPTION="easily lookup countries by IP addresses, even when Reverse DNS entries don't exist"
@@ -11,19 +11,19 @@ RDEPEND=""
 BDEPEND=""
 
 pbs_unpack() {
-        ypkg_unpack
+        dounpack
 }
 
 pbs_config() {
 	sed -e "s:usr local share GeoIP:usr share GeoIP:" \
 	                -e "s:usr local etc:etc:" -i apps/geoipupdate-pureperl.pl
-	ypkg_config
+	doconfig
 }
 
 pbs_build() {
-	ypkg_make
+	domake
 }
 
 pbs_install() {
-	ypkg_mkinstall
+	domkinstall
 }

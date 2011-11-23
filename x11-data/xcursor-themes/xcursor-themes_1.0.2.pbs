@@ -1,5 +1,5 @@
 #
-# YLmf_OS package build script
+# Ylmf OS package build script
 #
 
 DESCRIPTION="X.Org cursor themes: whiteglass, redglass and handhelds"
@@ -11,21 +11,21 @@ RDEPEND=""
 BDEPEND=""
 
 pbs_unpack() {
-        ypkg_unpack
+        dounpack
 }
 
 pbs_config() {
 	
-	YPB_CONFIG+=" --prefix=/usr --sysconfdir=/etc --mandir=/usr/share/man --localstatedir=/var "
-	ypkg_config
+	config+=" --prefix=/usr --sysconfdir=/etc --mandir=/usr/share/man --localstatedir=/var "
+	doconfig
 }
 
 pbs_build() {
-	ypkg_make
+	domake
 }
 
 pbs_install() {
-	ypkg_mkinstall
-	install -m755 -d "$YPPATH_DEST"/usr/share/doc/"$N-$V$R"
-	cp -a ChangeLog COPYING README   "$YPPATH_DEST"/usr/share/doc/"$N-$V$R"
+	domkinstall
+	install -m755 -d "$destdir"/usr/share/doc/"$N-$V$R"
+	cp -a ChangeLog COPYING README   "$destdir"/usr/share/doc/"$N-$V$R"
 }

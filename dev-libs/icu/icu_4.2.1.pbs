@@ -1,5 +1,5 @@
 #
-# YLmf_OS package build script
+# Ylmf OS package build script
 #
 
 DESCRIPTION=" International Components for Unicode"
@@ -14,7 +14,7 @@ BDEPEND=""
 RECOMMENDED=""
 
 pbs_unpack() {
-        ypkg_unpack
+        dounpack
 }
 
 pbs_config() {
@@ -22,15 +22,15 @@ pbs_config() {
 	for x in CFLAGS CXXFLAGS CPPFLAGS LDFLAGS; do
 		sed -i -e "/^${x} =.*/s:@${x}@::" config/Makefile.inc.in
         done
-	YPB_CONFIG+="--disable-debug --disable-samples"
-	ypkg_config
+	config+="--disable-debug --disable-samples"
+	doconfig
 }
 
 pbs_build() {
-	ypkg_make
+	domake
 }
 
 pbs_install() {
-	ypkg_mkinstall
+	domkinstall
 }
 

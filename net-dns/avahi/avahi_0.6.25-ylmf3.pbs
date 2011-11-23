@@ -1,5 +1,5 @@
 #
-# YLmf_OS package build script
+# Ylmf OS package build script
 #
 
 DESCRIPTION="System which facilitates service discovery on a local network"
@@ -14,17 +14,17 @@ BDEPEND="desktop-file-utils dbus-python-dev pygtk-dev dbus-glib-dev"
 RECOMMENDED=""
 
 pbs_unpack() {
-        ypkg_unpack
+        dounpack
 }
 
 pbs_config() {
 	#
-	ypkg_groupadd -r "avahi"
-	ypkg_useradd -c "avahi users" -d "/dev/null" -s "/bin/false" -r "avahi"
-	ypkg_useradd -c "avahi-autoipd users" -d "/dev/null" -s "/bin/false" -r "avahi-autoipd"
+	dogroupadd -r "avahi"
+	douseradd -c "avahi users" -d "/dev/null" -s "/bin/false" -r "avahi"
+	douseradd -c "avahi-autoipd users" -d "/dev/null" -s "/bin/false" -r "avahi-autoipd"
 	#
-	ypkg_patch desktop-not-show.patch
-	YPB_CONFIG+="--disable-qt3  
+	dopatch desktop-not-show.patch
+	config+="--disable-qt3  
 		     --disable-qt4  
 		     --disable-static
 		     --disable-monodoc 
@@ -45,23 +45,23 @@ pbs_config() {
 		     --with-distro=slackware 
 		     --program-prefix= 
 		     --program-suffix= "
-	ypkg_config
+	doconfig
 }
 
 pbs_build() {
-	ypkg_make
+	domake
 }
 
 pbs_install() {
-	ypkg_mkinstall
-	cd "$YPPATH_DEST"
-	#ypkg_domv_rename etc/rc.d/rc.avahidnsconfd  etc/init.d/avahidnsconfd
-	#ypkg_domv_rename etc/rc.d/rc.avahidaemon    etc/init.d/avahidaemon
+	domkinstall
+	cd "$destdir"
+	#domv_rename etc/rc.d/rc.avahidnsconfd  etc/init.d/avahidnsconfd
+	#domv_rename etc/rc.d/rc.avahidaemon    etc/init.d/avahidaemon
 	rm -rf etc/rc.d
 	rm -fr usr/share/applications/bssh.desktop
 	rm -fr usr/share/applications/bvnc.desktop
 	mkdir -p var/run/avahi-daemon var/run/avahi-autoipd 
 	#
-	ypkg_dounit avahi-dnsconfd.service avahi-daemon.service
+	dounit avahi-dnsconfd.service avahi-daemon.service
 }
 

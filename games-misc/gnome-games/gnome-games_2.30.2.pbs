@@ -1,5 +1,5 @@
 #
-# YLmf_OS package build script
+# Ylmf OS package build script
 #
 
 DESCRIPTION="a collection of sixteen small "five-minute" games in a variety of styles and genres for the GNOME desktop"
@@ -38,23 +38,23 @@ PROVIDE="gnome-games-aisleriot
 	 gnome-games-swell-foop"
 
 pbs_unpack() {
-        ypkg_unpack
+        dounpack
 }
 
 gnome-games-aisleriot_install() {
 	DESCRIPTION=""
-	YPB_CONFIG+="--enable-games=aisleriot
+	config+="--enable-games=aisleriot
 	             --disable-schemas-install"
-	ypkg_config
-	ypkg_make
-	ypkg_mkinstall
+	doconfig
+	domake
+	domkinstall
 }
 
 gnome-games-glchess_install() {
 	DESCRIPTION=""
-	YPB_CONFIG+="--enable-games=glchess
+	config+="--enable-games=glchess
 	             --disable-schemas-install"
-	ypkg_config
-	ypkg_make
-	ypkg_mkinstall
+	doconfig
+	domake
+	domkinstall
 }

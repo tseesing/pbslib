@@ -1,5 +1,5 @@
 #
-# YLmf_OS package build script
+# Ylmf OS package build script
 #
 
 DESCRIPTION="This program enables you to draw sky charts, making use of the data in 16 catalogs of stars and nebulae. In addition the position of planets, asteroids and comets are shown."
@@ -20,10 +20,10 @@ INSTALL="$N.install"
 NOTES=""
 
 pbs_unpack() {
-        ypkg_unpack
+        dounpack
 }
 
 pbs_install() {
-	ypkg_docp data/*  "$YPPATH_DEST"
-	sed -i 's/\.\./\/usr\/share/g' "$YPPATH_DEST"/usr/share/applications/skychart.desktop
+	docp data/*  "$destdir"
+	sed -i 's/\.\./\/usr\/share/g' "$destdir"/usr/share/applications/skychart.desktop
 }

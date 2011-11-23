@@ -1,5 +1,5 @@
 #
-# YLmf_OS package build script
+# Ylmf OS package build script
 #
 
 DESCRIPTION="NVIDIA binary Xorg driver, kernel module and VDPAU library"
@@ -33,7 +33,7 @@ pbs_config() {
 	cp README.txt kernel/
 
 	#
-	ypkg_patch ylmfos_makefile.patch
+	dopatch ylmfos_makefile.patch
 }
 
 nvidia-graphic-source_install () {
@@ -45,9 +45,9 @@ nvidia-graphic-source_install () {
 
 	INSTALL="$N.install"
 	
-	ypkg_dosrc kernel/* 
-	ypkg_doykms
-	ypkg_dosupported "${N}"_supported
+	dosrc kernel/* 
+	doykms
+	dosupported "${N}"_supported
 }
 
 nvidia-graphic-driver_install () {
@@ -60,8 +60,8 @@ nvidia-graphic-driver_install () {
 	unset ARCH
 	cd kernel
 	export IGNORE_CC_MISMATCH="1"
-	ypkg_make -f Makefile.kbuild module
-	make DESTDIR="$YPPATH_DEST" module-install
+	domake -f Makefile.kbuild module
+	make DESTDIR="$destdir" module-install
 
 	cd ../
 	rm -rf kernel
@@ -70,14 +70,13 @@ nvidia-graphic-driver_install () {
 nvidia-graphic-utils_install () {
 	DESCRIPTION="NVIDIA binary Xorg driver and VDPAU library (libs and utils)"
 	RDEPEND="nvidia-graphic-driver"
-	DESKTOPFILE="nvidia-settings.desktop"
 
 	INSTALL="$N.install"
 	OPINION="nodev"
 
 	#
-	ypkg_docp *  "$YPPATH_DEST"/usr/lib/
-	cd "$YPPATH_DEST"/usr/lib/
+	docp *  "$destdir"/usr/lib/
+	cd "$destdir"/usr/lib/
 
 	# Disable the stack markings of binaries for security reasons.
 	find . -name "*.so*" | xargs -n1 execstack -c
@@ -92,20 +91,20 @@ nvidia-graphic-utils_install () {
 	echo "libXvMCNVIDIA_dynamic.so.1" >XvMCConfig
 	
 	# Man files
-	ypkg_domv nvidia-installer.1.gz nvidia-xconfig.1.gz nvidia-settings.1.gz nvidia-smi.1.gz "$YPPATH_DEST"/usr/share/man/man1/
+	domv nvidia-installer.1.gz nvidia-xconfig.1.gz nvidia-settings.1.gz nvidia-smi.1.gz "$destdir"/usr/share/man/man1/
 
 	# Dev
-	ypkg_domv gl*.h   "$YPPATH_DEST"/usr/include/"$N"/GL
+	domv gl*.h   "$destdir"/usr/include/"$N"/GL
 
 	# OpenCL
-	ypkg_domv nvidia.icd "$YPPATH_DEST"/etc/OpenCL/vendors/
+	domv nvidia.icd "$destdir"/etc/OpenCL/vendors/
 
 	# Doc
-	ypkg_domv mkprecompiled LICENSE NVIDIA_Changelog README.txt html pkg-history.txt makeself.sh "$YPPATH_DEST"/usr/share/doc/"$N"/"$V$R"/
+	domv mkprecompiled LICENSE NVIDIA_Changelog README.txt html pkg-history.txt makeself.sh "$destdir"/usr/share/doc/"$N"/"$V$R"/
 
 	# 
-	mkdir -p "$YPPATH_DEST"/usr/share/grub-gfxpayload-lists/blacklist/
-	echo "# Blacklist cards here" >"$YPPATH_DEST"/usr/share/grub-gfxpayload-lists/blacklist/01_nvidia
+	mkdir -p "$destdir"/usr/share/grub-gfxpayload-lists/blacklist/
+	echo "# Blacklist cards here" >"$destdir"/usr/share/grub-gfxpayload-lists/blacklist/01_nvidia
 	
 	#
 	ln -sf libGL.so."$V" libGL.so.1
@@ -114,8 +113,8 @@ nvidia-graphic-utils_install () {
 	ln -sf libnvidia-cfg.so."$V" libnvidia-cfg.so.1
 	ln -sf libnvidia-cfg.so.1    libnvidia-cfg.so
 
-	ypkg_domv libglx.so."$V"      "$YPPATH_DEST"/usr/lib/xorg/modules/extensions/
-	cd "$YPPATH_DEST"/usr/lib/xorg/modules/extensions/
+	domv libglx.so."$V"      "$destdir"/usr/lib/xorg/modules/extensions/
+	cd "$destdir"/usr/lib/xorg/modules/extensions/
 	ln -sf libglx.so."$V" libglx.so
 	cd -
 
@@ -126,13 +125,13 @@ nvidia-graphic-utils_install () {
 	ln -sf libcuda.so."$V"  libcuda.so
 	ln -sf libcuda.so."$V"  libcuda.so.1
 
-	ypkg_domv libvdpau_nvidia.so."$V"    vdpau/
+	domv libvdpau_nvidia.so."$V"    vdpau/
 	ln -sf vdpau/libvdpau_nvidia.so."$V" libvdpau_nvidia.so.1
 	ln -sf libvdpau_nvidia.so.1          libvdpau_nvidia.so 
 	ln -sf vdpau/libvdpau_nvidia.so."$V" libvdpau_trace.so
 	
-	ypkg_domv libnvidia-wfb.so."$V"  "$YPPATH_DEST"/usr/lib/xorg/modules/  
-	cd "$YPPATH_DEST"/usr/lib/xorg/modules/
+	domv libnvidia-wfb.so."$V"  "$destdir"/usr/lib/xorg/modules/  
+	cd "$destdir"/usr/lib/xorg/modules/
 	ln -sf  libnvidia-wfb.so."$V" libnvidia-wfb.so.1
 	cd -
 
@@ -153,15 +152,15 @@ nvidia-graphic-utils_install () {
 
 
 	# Usr/bin
-	ypkg_domv nvidia-installer nvidia-xconfig nvidia-smi nvidia-bug-report.sh nvidia-settings "$YPPATH_DEST"/usr/bin/
+	domv nvidia-installer nvidia-xconfig nvidia-smi nvidia-bug-report.sh nvidia-settings "$destdir"/usr/bin/
 
 	#
 	sed -i 's/__UTILS_PATH__/\/usr\/bin/g' nvidia-settings.desktop
 	sed -i 's/__PIXMAP_PATH__\///g' nvidia-settings.desktop
-	ypkg_dodesktop nvidia-settings.desktop nvidia-settings.png
+	dodesktop nvidia-settings.desktop nvidia-settings.png
 	rm nvidia-settings.desktop nvidia-settings.png 
 	
 	# Xorg
-	ypkg_domv nvidia_drv.so "$YPPATH_DEST"/usr/lib/xorg/modules/drivers/
+	domv nvidia_drv.so "$destdir"/usr/lib/xorg/modules/drivers/
 }
 

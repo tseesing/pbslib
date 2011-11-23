@@ -1,5 +1,5 @@
 #
-# YLmf_OS package build script
+# Ylmf OS package build script
 #
 
 DESCRIPTION="Tools to access a server's filespace and printers via SMB"
@@ -12,43 +12,44 @@ SRC_URI="http://"$N".org/"$N"/ftp/stable/"$N-$V".tar.gz"
 RDEPEND="acl attr avahi cups cyrus-sasl dbus e2fsprogs gamin gcc glibc gnutls keyutils krb5 libcap libgcrypt libgpg-error libtasn1 ncurses openldap openssl pam popt readline talloc tdb zlib"
 BDEPEND=""
 RECOMMENDED=""
+CONFLICT="samba4"
 
 INSTALL="$N.install"
 
-NOTES="nobody/sambashare/users group created automatically."
+NOTES="nobody and sambashare users and groups created automatically."
 
 pbs_unpack() {
-        ypkg_unpack
+        dounpack
 }
 
 pbs_config() {
 	cd source3
-	YPB_CONFIG+=" --with-piddir=/var/run
-		      --with-fhs
-		      --with-cifsmount
-		      --with-pam
-		      --with-pammodulesdir=/lib/security "
-	ypkg_config
+	config+="--with-piddir=/var/run
+ 	          --with-fhs
+		  --with-cifsmount
+		  --with-pam
+		  --with-pammodulesdir=/lib/security"
+	doconfig
 }
 
 pbs_build() {
-	ypkg_make
+	domake
 }
 
 pbs_install() {
-	ypkg_mkinstall install-everything
-	ypkg_dounit nmbd.service smbd.service winbind.service
+	domkinstall install-everything
+	dounit nmbd.service smbd.service winbind.service
 
-	cd "$YPPATH_DEST"
+	cd "$destdir"
 
-	ypkg_docp "$FILES_PATH"/files/smb.conf etc/samba/
+	docp "$filesdir"/smb.conf etc/samba/
 	install -d -m 1770 -g sambashare var/lib/samba/usershares 
 	
 	# For cups share
-	ypkg_doln /usr/bin/smbspool usr/lib/cups/backend/smb
+	doln /usr/bin/smbspool usr/lib/cups/backend/smb
 	
 	install -d -m777 var/spool/samba
-	install -d  var/log/samba
+	install -d var/log/samba
 
 	#
 	find . -name "*.old" -type f -exec rm {} \; 2>/dev/null

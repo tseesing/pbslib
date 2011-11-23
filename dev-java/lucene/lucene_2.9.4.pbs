@@ -1,5 +1,5 @@
 #
-# YLmf_OS package build script
+# Ylmf OS package build script
 #
 
 DESCRIPTION="A high-performance, full-featured text search engine library written entirely in Java"
@@ -16,20 +16,20 @@ RECOMMENDED=""
 CONFLICT=""
 
 pbs_unpack() {
-        ypkg_unpack
+        dounpack
 }
 
 pbs_install() {
 	# install all *.jar files
-	ypkg_docp lucene-core-2.9.4.jar lucene-demos-2.9.4.jar lib/servlet-api-2.4.jar "$YPPATH_DEST"/opt/java/
+	docp lucene-core-2.9.4.jar lucene-demos-2.9.4.jar lib/servlet-api-2.4.jar "$destdir"/opt/java/
 
 	#
 	for i in `find contrib -name '*.jar'`; do
-	 	ypkg_docp "$i" "$YPPATH_DEST"/opt/java/lucene-contrib
+	 	docp "$i" "$destdir"/opt/java/lucene-contrib
 	done 
 	
 	# create symlinks
-	cd "$YPPATH_DEST"/opt/java/
+	cd "$destdir"/opt/java/
 	for i in `ls -1 *$V$R*.jar`; do
 		j=${i//-$V$R/}
 		ln -s $i $j
@@ -39,7 +39,7 @@ pbs_install() {
 	ln -s servlet-api-2.4.jar servlet-api.jar
 
 	#
-	cd "$YPPATH_DEST"/opt/java/lucene-contrib
+	cd "$destdir"/opt/java/lucene-contrib
 	for i in `ls -1 *$V$R*.jar`; do
 		j=${i//-$V$R/}
 	        ln -s $i $j

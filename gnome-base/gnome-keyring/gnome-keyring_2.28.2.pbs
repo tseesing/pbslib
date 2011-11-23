@@ -1,5 +1,5 @@
 #
-# YLmf_OS package build script
+# Ylmf OS package build script
 #
 
 DESCRIPTION="The gnome-keyring package contains a daemon that keeps passwords and other secrets for users."
@@ -12,23 +12,23 @@ RDEPEND=""
 BDEPEND=" gconf gtk+ intltool libgcrypt libtasn1"
 
 pbs_unpack() {
-        ypkg_unpack
+        dounpack
 }
 
 pbs_config() {
 	
-	YPB_CONFIG+="--prefix=$(pkg-config --variable=prefix ORBit-2.0) \
+	config+="--prefix=$(pkg-config --variable=prefix ORBit-2.0) \
 		     --libexecdir=$(pkg-config  --variable=prefix ORBit-2.0)/lib/gnome-keyring \
 	             --sysconfdir=/etc/gnome/2.28.2"
-	ypkg_config
+	doconfig
 }
 
 pbs_build() {
-	ypkg_make
+	domake
 }
 
 pbs_install() {
-	ypkg_mkinstall
-	install -m755 -d "$YPPATH_DEST"/$(pkg-config  --variable=prefix ORBit-2.0)/share/doc/"$N-$V$R"
-	install -m644 *.txt "$YPPATH_DEST"/$(pkg-config --variable=prefix ORBit-2.0)/share/doc/"$N-$V$R"
+	domkinstall
+	install -m755 -d "$destdir"/$(pkg-config  --variable=prefix ORBit-2.0)/share/doc/"$N-$V$R"
+	install -m644 *.txt "$destdir"/$(pkg-config --variable=prefix ORBit-2.0)/share/doc/"$N-$V$R"
 }

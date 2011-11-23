@@ -1,5 +1,5 @@
 #
-# YLmf_OS package build script
+# Ylmf OS package build script
 #
 
 DESCRIPTION="install build-essential packages"
@@ -14,8 +14,8 @@ RECOMMENDED=""
 CONFLICT=""
 
 pbs_install() {
-	mkdir -p "$YPPATH_DEST"/usr/share/doc/"$N"/
-	cat >>"$YPPATH_DEST"/usr/share/doc/"$N"/README << "EOF"
+	mkdir -p "$destdir"/usr/share/doc/"$N"/
+	cat >>"$destdir"/usr/share/doc/"$N"/README << "EOF"
 install build-essential packages
 EOF
 }

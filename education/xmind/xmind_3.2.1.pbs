@@ -1,5 +1,5 @@
 #
-# YLmf_OS package build script
+# Ylmf OS package build script
 #
 
 DESCRIPTION="The world's coolest brainstorming and mind mapping software and the best way to share ideas."
@@ -18,10 +18,10 @@ CONFLICT=""
 INSTALL="$N.install"
 
 pbs_unpack() {
-        ypkg_unpack
+        dounpack
 }
 
 pbs_install() {
-	ypkg_docp data/*  "$YPPATH_DEST"
+	docp data/*  "$destdir"
 }
 

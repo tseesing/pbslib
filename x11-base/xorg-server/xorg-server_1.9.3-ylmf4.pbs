@@ -1,5 +1,5 @@
 #
-# YLmf_OS package build script
+# Ylmf OS package build script
 #
 
 DESCRIPTION="X.Org X servers"
@@ -24,14 +24,14 @@ of module version mismatch errors, this is your problem.
 INSTALL="$N.install"
 
 pbs_unpack() {
-        ypkg_unpack
+        dounpack
 }
 
 pbs_config() {
-	ypkg_patch  "$N"-1.9-xinerama-crash-fix.patch
-	ypkg_patch  "$N"-1.9-nouveau-default.patch
-	#ypkg_patch   ylmfos-xserver_1.5.0_bg_none_root.patch
-	YPB_CONFIG+=" --sysconfdir=/etc/X11
+	dopatch  "$N"-1.9-xinerama-crash-fix.patch
+	dopatch  "$N"-1.9-nouveau-default.patch
+	#dopatch   ylmfos-xserver_1.5.0_bg_none_root.patch
+	config+=" --sysconfdir=/etc/X11
 		      --with-xkb-output=/var/lib/xkb 
 		      --enable-install-setuid 
 		      --enable-xcsecurity  
@@ -61,28 +61,28 @@ pbs_config() {
 		      --disable-static 
 		      --with-os-vendor=Ylmf_OS "
 		      #--with-module-dir=/usr/lib/X11/modules
-	ypkg_config
+	doconfig
 }
 
 pbs_build() {
-	ypkg_make
+	domake
 }
 
 pbs_install() {
-	ypkg_mkinstall
-	cd "$YPPATH_DEST"
+	domkinstall
+	cd "$destdir"
 	#
-	ypkg_docp "$FILES_PATH"/files/{10-evdev.conf,10-quirks.conf}  etc/X11/xorg.conf.d
+	docp $filesdir/{10-evdev.conf,10-quirks.conf}  etc/X11/xorg.conf.d
 	#
-	ypkg_docp "$FILES_PATH"/files/xorgconf-check usr/bin/
+	docp $filesdir/xorgconf-check usr/bin/
 	chmod +x usr/bin/xorgconf-check
 	#
-	ypkg_doln /usr/share/fonts usr/lib/X11/fonts
+	doln /usr/share/fonts usr/lib/X11/fonts
 	# backup libglx.so which should be overrided by other packages, e.g. nvidia-graphic-driver
 	cd usr/lib/xorg/modules/extensions/
 	mv libglx.so libglx.so-pkg."$N"
 	ln -sf /usr/lib/xorg/modules/extensions/libglx.so-pkg."$N" libglx.so
 	# 
-	ypkg_dounit "xorgconf-check.service"	
+	dounit "xorgconf-check.service"	
 }
 

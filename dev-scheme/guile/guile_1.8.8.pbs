@@ -1,5 +1,5 @@
 #
-# YLmf_OS package build script
+# Ylmf OS package build script
 #
 
 DESCRIPTION="Scheme interpreter"
@@ -16,23 +16,23 @@ RECOMMENDED=""
 INSTALL="$N.install"
 
 pbs_unpack() {
-        ypkg_unpack
+        dounpack
 }
 
 pbs_config() {
-	ypkg_patch guile-1.8.7-multilib.patch \
+	dopatch guile-1.8.7-multilib.patch \
 	           guile-1.8.7-testsuite.patch \
 		   guile-1.8.8-deplibs.patch
-	YPB_CONFIG+="--disable-static
+	config+="--disable-static
 	             --disable-error-on-warning"
-	ypkg_config
+	doconfig
 }
 
 pbs_build() {
-	ypkg_make LDFLAGS+="-lpthread"
+	domake LDFLAGS+="-lpthread"
 }
 
 pbs_install() {
-	ypkg_mkinstall
+	domkinstall
 }
 

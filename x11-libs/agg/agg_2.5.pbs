@@ -1,5 +1,5 @@
 #
-# YLmf_OS package build script
+# Ylmf OS package build script
 #
 
 DESCRIPTION="Anti-Grain Geometry - A High Quality Rendering Engine for C++"
@@ -19,20 +19,20 @@ CONFLICT=""
 NOTES=""
 
 pbs_unpack() {
-        ypkg_unpack
+        dounpack
 }
 
 pbs_config() {
-	ypkg_patch  02_maintainer_mode.patch 04_no_rpath.patch
+	dopatch  02_maintainer_mode.patch 04_no_rpath.patch
 	sed -r -i -e 's:^(.*)  -L@.*:\1:' src/platform/X11/Makefile.am
 	chmod +x autogen.sh
-	ypkg_config
+	doconfig
 }
 
 pbs_build() {
-	ypkg_make
+	domake
 }
 
 pbs_install() {
-	ypkg_mkinstall
+	domkinstall
 }

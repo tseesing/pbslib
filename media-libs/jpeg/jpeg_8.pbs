@@ -1,5 +1,5 @@
 #
-# YLmf_OS package build script
+# Ylmf OS package build script
 #
 
 DESCRIPTION="Library to load, handle and manipulate images in the JPEG format (replaced by libjpeg-turbo library which has same API/ABI but is at least twice faster on all primary architectures and about 25% faster on secondary architectures)"
@@ -15,22 +15,22 @@ BDEPEND=""
 CONFLICT="libjpeg-turbo"
 
 pbs_unpack() {
-        ypkg_unpack
+        dounpack
 }
 
 pbs_config() {
-	YPB_CONFIG+=" --enable-shared 
+	config+=" --enable-shared 
 		      --disable-static 
 		      --enable-maxmem=64 "
-	ypkg_config
+	doconfig
 }
 
 pbs_build() {
-	ypkg_make
+	domake
 }
 
 pbs_install() {
-	ypkg_mkinstall
-	ypkg_docp *.txt "$YPPATH_DEST"/usr/share/doc/"$N-$V$R"
-	ypkg_docp *.1   "$YPPATH_DEST"/usr/share/man/"$N-$V$R"
+	domkinstall
+	docp *.txt "$destdir"/usr/share/doc/"$N-$V$R"
+	docp *.1   "$destdir"/usr/share/man/"$N-$V$R"
 }

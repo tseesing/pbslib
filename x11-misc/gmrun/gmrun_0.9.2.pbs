@@ -1,5 +1,5 @@
 #
-# YLmf_OS package build script
+# Ylmf OS package build script
 #
 
 DESCRIPTION="A GTK-2 based launcher box with bash style auto completion"
@@ -18,19 +18,19 @@ CONFLICT=""
 NOTES=""
 
 pbs_unpack() {
-        ypkg_unpack
+        dounpack
 }
 
 pbs_config() {
-	ypkg_patch gmrun-0.9.2-gcc43.patch gmrun-0.9.2-glibc210.patch \
+	dopatch gmrun-0.9.2-gcc43.patch gmrun-0.9.2-glibc210.patch \
 	           gmrun-0.9.2-sysconfdir.patch
-	ypkg_config
+	doconfig
 }
 
 pbs_build() {
-	ypkg_make
+	domake
 }
 
 pbs_install() {
-	ypkg_mkinstall
+	domkinstall
 }

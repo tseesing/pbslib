@@ -1,5 +1,5 @@
 #
-# YLmf_OS package build script
+# Ylmf OS package build script
 #
 
 DESCRIPTION="Advanced version control system"
@@ -31,20 +31,20 @@ Neon
 "
 
 pbs_unpack() {
-        ypkg_unpack
+        dounpack
 }
 
 pbs_config() {
-	ypkg_patch "$N-$V$R"-build_fix-1.patch
-	YPB_CONFIG+="--enable-maintainer-mode --disable-shared --with-neon=/usr/bin/neon-config"
-	ypkg_config
+	dopatch "$N-$V$R"-build_fix-1.patch
+	config+="--enable-maintainer-mode --disable-shared --with-neon=/usr/bin/neon-config"
+	doconfig
 }
 
 pbs_build() {
-	ypkg_make
+	domake
 }
 
 pbs_install() {
-	ypkg_mkinstall
-	ypkg_dodoc doc/*
+	domkinstall
+	dodoc doc/*
 }

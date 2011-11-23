@@ -1,5 +1,5 @@
 #
-# YLmf_OS package build script
+# Ylmf OS package build script
 #
 
 DESCRIPTION="Policy framework for controlling privileges for system-wide services"
@@ -16,7 +16,7 @@ RECOMMENDED=""
 INSTALL="$N.install"
 
 pbs_unpack() {
-        ypkg_unpack
+        dounpack
 }
 
 pbs_config() {
@@ -25,8 +25,8 @@ pbs_config() {
 		  policykit-0.9-pam-headers.patch
 		  policykit-0.9-consolekit03.patch
 		  policykit-0.9-dbus-auth.patch "
-	ypkg_patch $patches
-	YPB_CONFIG+=" --datadir=/usr/share 
+	dopatch $patches
+	config+=" --datadir=/usr/share 
 		      --with-authdb=default 
 		      --with-authfw=pam 
 		      --with-pam-module-dir=/lib/security 
@@ -35,17 +35,17 @@ pbs_config() {
 		      --with-polkit-group=polkituser 
 		      --disable-selinux "
 		      #--with-os-type=gentoo \
-	ypkg_config	      
+	doconfig	      
 }
 
 pbs_build() {
-	ypkg_make
+	domake
 }
 
 pbs_install() {
-	ypkg_mkinstall
-	ypkg_dodoc doc/html
-	ypkg_docp "$FILES_PATH"/files/PolicyKit.conf "$YPPATH_DEST"/etc/PolicyKit
-	ypkg_dounit policykit-daemon.service
+	domkinstall
+	dodoc doc/html
+	docp $filesdir/PolicyKit.conf "$destdir"/etc/PolicyKit
+	dounit policykit-daemon.service
 }
 

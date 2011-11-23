@@ -1,5 +1,5 @@
 #
-# YLmf_OS package build script
+# Ylmf OS package build script
 #
 
 DESCRIPTION="The gnome-keyring package contains a daemon that keeps passwords and other secrets for users."
@@ -16,23 +16,23 @@ RECOMMENDED=""
 INSTALL="$N.install"
 
 pbs_unpack() {
-        ypkg_unpack
+        dounpack
 }
 
 pbs_config() {
 	git checkout gnome-2-30
-	ypkg_patch 90_git_keyring_encoding.patch ylmfos-i18n-zh.patch
-	YPB_CONFIG+=" --disable-schemas-install 
+	dopatch 90_git_keyring_encoding.patch ylmfos-i18n-zh.patch
+	config+=" --disable-schemas-install 
 		      --enable-pam 
 		      --with-pam-dir=/lib/security"
-	ypkg_config
+	doconfig
 }
 
 pbs_build() {
-	ypkg_make
+	domake
 }
 
 pbs_install() {
-	ypkg_mkinstall
+	domkinstall
 }
 

@@ -1,5 +1,5 @@
 #
-# YLmf_OS package build script
+# Ylmf OS package build script
 #
 
 DESCRIPTION="A fast, multi-threaded, multi-user SQL database server."
@@ -17,24 +17,24 @@ CONFLICT=""
 INSTALL="$N.install"
 
 pbs_unpack() {
-        ypkg_unpack
+        dounpack
 }
 
 pbs_config() {
-	YPB_CONFIG+=""
-	ypkg_config
+	config+=""
+	doconfig
 }
 
 pbs_build() {
-	ypkg_make
+	domake
 }
 
 pbs_install() {
-	ypkg_mkinstall
-	cd "$YPPATH_DEST"
-	ypkg_doln /usr/lib/mysql/libmysqlclient.so      usr/lib/libmysqlclient.so
-	ypkg_doln /usr/lib/mysql/libmysqlclient_r.so    usr/lib/libmysqlclient_r.so
-	ypkg_doln /usr/lib/mysql/libmysqlclient.so.16   usr/lib/libmysqlclient.so.16
-	ypkg_doln /usr/lib/mysql/libmysqlclient_r.so.16 usr/lib/libmysqlclient_r.so.16 
+	domkinstall
+	cd "$destdir"
+	doln /usr/lib/mysql/libmysqlclient.so      usr/lib/libmysqlclient.so
+	doln /usr/lib/mysql/libmysqlclient_r.so    usr/lib/libmysqlclient_r.so
+	doln /usr/lib/mysql/libmysqlclient.so.16   usr/lib/libmysqlclient.so.16
+	doln /usr/lib/mysql/libmysqlclient_r.so.16 usr/lib/libmysqlclient_r.so.16 
 }
 

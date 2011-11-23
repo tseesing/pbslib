@@ -1,0 +1,39 @@
+#
+# Ylmf OS package build script
+#
+
+DESCRIPTION="ldb is a LDAP-like embedded database."
+HOMEPAGE="http://ldb.samba.org/"
+LICENSE="GPLv"
+PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
+
+SRC_URI="http://www.samba.org/ftp/pub/"$N"/"$N-$V".tar.gz"
+
+RDEPEND="cyrus-sasl glibc openldap openssl popt python talloc tdb tevent zlib"
+RECOMMENDED=""
+BDEPEND=""
+CONFLICT=""
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_config() {
+	config+=" --disable-rpath 
+	          --disable-rpath-install 
+		  --bundled-libraries=NONE
+		  --with-modulesdir=/usr/lib/ldb/modules
+		  --with-privatelibdir=/usr/lib/ldb "
+	config=${config/--enable-shared/}
+
+	doconfig
+}
+
+pbs_build() {
+	domake
+}
+
+pbs_install() {
+	domkinstall
+}
+

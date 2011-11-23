@@ -1,5 +1,5 @@
 #
-# YLmf_OS package build script
+# Ylmf OS package build script
 #
 DaESCRIPTION="DOS filesystem tools - provides mkdosfs, mkfs.msdos, mkfs.vfa"
 HOMEPAGE="http://www.daniel-baumann.ch/software/dosfstools/"
@@ -13,15 +13,15 @@ BDEPEND=""
 RECOMMENDED=""
 
 pbs_unpack() {
-        ypkg_unpack
+        dounpack
 }
 
 pbs_build() {
 	sed -i -e '/^PREFIX/s:/local::' -e '/^OPTFLAGS/s:=.*:=:' Makefile
-	ypkg_make
+	domake
 }
 
 pbs_install() {
-	ypkg_mkinstall
+	domkinstall
 }
 

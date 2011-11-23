@@ -1,5 +1,5 @@
 #
-# YLmf_OS package build script
+# Ylmf OS package build script
 #
 
 DESCRIPTION="Netscape Portable Runtime"
@@ -12,21 +12,21 @@ RDEPEND=""
 BDEPEND=""
 
 pbs_unpack() {
-        ypkg_unpack
+        dounpack
 }
 
 pbs_config() {
-	ypkg_patch "$N-$V$R"-pkgconfig-1.patch
+	dopatch "$N-$V$R"-pkgconfig-1.patch
  	cd mozilla/nsprpub
-	YPB_CONFIG+="--with-mozilla --with-pthreads"
-	ypkg_config
+	config+="--with-mozilla --with-pthreads"
+	doconfig
 }
 
 pbs_build() {
-	ypkg_make
+	domake
 }
 
 pbs_install() {
-	ypkg_mkinstall
-	ypkg_docp -LR dist/include/nspr "$YPPATH_DEST"/usr/include
+	domkinstall
+	docp -LR dist/include/nspr "$destdir"/usr/include
 }

@@ -1,5 +1,5 @@
 #
-# YLmf_OS package build script
+# Ylmf OS package build script
 #
 
 DESCRIPTION="Library that implements support for numerous digital cameras"
@@ -13,18 +13,18 @@ RDEPEND="dbus expat fontconfig freetype gcc gd glibc hal libexif libjpeg-turbo l
 BDEPEND="libexif-gtk-dev"
 
 pbs_unpack(){
-        ypkg_unpack
+        dounpack
 }
 
 pbs_config() {
-	ypkg_config
+	doconfig
 }
 
 pbs_build() {
-	ypkg_make
+	domake
 }
 
 pbs_install() {
-	ypkg_mkinstall
+	domkinstall
 }
 

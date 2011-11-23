@@ -1,5 +1,5 @@
 #
-# YLmf_OS package build script
+# Ylmf OS package build script
 #
 
 DESCRIPTION="Network monitoring tools including ping and ping6"
@@ -17,19 +17,19 @@ CONFLICT=""
 INSTALL="$N.install"
 
 pbs_unpack() {
-        ypkg_unpack
+        dounpack
 }
 
 pbs_build() {
-	ypkg_patch iputils-s20101006-fixes-1.patch iputils-s20101006-doc-1.patch
+	dopatch iputils-s20101006-fixes-1.patch iputils-s20101006-doc-1.patch
 	make "$MAKEOPTS" CC="gcc ${BUILD64}" \
              IPV4_TARGETS="tracepath ping clockdiff rdisc" \
              IPV6_TARGETS="tracepath6 traceroute6"
 }
 
 pbs_install() {
-	ypkg_docp ping clockdiff rdisc tracepath trace{path,route}6 "$YPPATH_DEST"/usr/bin/
-	chmod +x "$YPPATH_DEST"/usr/bin/*
-	ypkg_doman doc/*.8
+	docp ping clockdiff rdisc tracepath trace{path,route}6 "$destdir"/usr/bin/
+	chmod +x "$destdir"/usr/bin/*
+	doman doc/*.8
 }
 

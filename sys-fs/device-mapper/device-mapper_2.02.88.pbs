@@ -1,5 +1,5 @@
 #
-# YLmf_OS package build script
+# Ylmf OS package build script
 #
 
 DESCRIPTION="Device mapper ioctl library for use with LVM2 utilities"
@@ -16,12 +16,12 @@ RECOMMENDED=""
 PROVIDE="lvm2"
 
 pbs_unpack() {
-        ypkg_unpack
+        dounpack
 }
 
 pbs_config() {
 	unset LDFLAGS
-	YPB_CONFIG=" --prefix= 
+	config=" --prefix= 
 	             --sysconfdir=/etc 
 		     --localstatedir=/var 
 		     --datarootdir=/usr/share 
@@ -35,27 +35,27 @@ pbs_config() {
 		     --with-udevdir=/lib/udev/rules.d/ 
 		     --enable-udev_sync 
 		     --enable-udev_rules"
-	ypkg_config
+	doconfig
 }
 
 pbs_build() {
-	ypkg_make 
+	domake 
 }
 
 pbs_install() {
 	DESCRIPTION="Device mapper userspace library and tools"
 	RDEPEND="glibc udev"
-	make DESTDIR="$YPPATH_DEST" install_device-mapper
-	#cd "$YPPATH_DEST"
-	#ypkg_doln /usr/lib/libdevmapper-event-lvm2snapshot.so  usr/lib/libdevmapper-event-lvm2snapshot.so.2.02
-	#ypkg_doln /usr/lib/libdevmapper-event-lvm2mirror.so    usr/lib/libdevmapper-event-lvm2mirror.so.2.02		
+	make DESTDIR="$destdir" install_device-mapper
+	#cd "$destdir"
+	#doln /usr/lib/libdevmapper-event-lvm2snapshot.so  usr/lib/libdevmapper-event-lvm2snapshot.so.2.02
+	#doln /usr/lib/libdevmapper-event-lvm2mirror.so    usr/lib/libdevmapper-event-lvm2mirror.so.2.02		
 }
 
 lvm2_install() {
 	DESCRIPTION="Logical Volume Manager 2 utilities"
 	RDEPEND="device-mapper glibc ncurses readline udev"
-	make DESTDIR="$YPPATH_DEST" install_lvm2
+	make DESTDIR="$destdir" install_lvm2
 	# Install applib
-	make -C liblvm DESTDIR="$YPPATH_DEST" install
+	make -C liblvm DESTDIR="$destdir" install
 }
 

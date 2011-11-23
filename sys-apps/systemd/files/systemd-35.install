@@ -13,7 +13,7 @@ setup_id () {
 }
 
 post_install() {
-	ypkg_groupadd -r "lock"  #used by var-lock.mount
+	dogroupadd -r "lock"  #used by var-lock.mount
 	setup_id
 	re_exec
 	systemctl enable rc-local.service
@@ -27,7 +27,7 @@ pre_remove() {
 }
 
 post_remove() {
-	ypkg_userdel "lock"
+	douserdel "lock"
 	return 0
 }
 
@@ -39,3 +39,4 @@ post_upgrade() {
 post_downgrade() {
 	post_install
 }
+

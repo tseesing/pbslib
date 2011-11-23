@@ -1,0 +1,11 @@
+--- likewise-open-6.1.0.48254.orig/build/components/eventlog.comp	2010-10-20 17:24:39.000000000 -0700
++++ likewise-open-6.1.0.48254/build/components/eventlog.comp.new	2010-10-20 17:24:56.000000000 -0700
+@@ -10,7 +10,7 @@
+     cd ${COMP_SOURCES}/.
+     exit_on_error $?
+ 
+-    CPPFLAGS="${_cppflags}"
++    CPPFLAGS="${_cppflags} -I/usr/include/libxml2"
+     CFLAGS="${_cflags}"
+     LDFLAGS="${_ldflags}"
+ 

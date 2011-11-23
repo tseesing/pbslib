@@ -1,0 +1,52 @@
+diff -ur likewise-open-6.0.0.53010/eventlog/server/main.c likewise-open-6.0.0.53010.new/eventlog/server/main.c
+--- likewise-open-6.0.0.53010/eventlog/server/main.c	2010-10-20 04:54:23.000000000 +0800
++++ likewise-open-6.0.0.53010.new/eventlog/server/main.c	2011-11-22 17:38:40.772409423 +0800
+@@ -1868,6 +1868,8 @@
+ 
+     EVTSetProcessExitCode(dwError);
+ 
++    unlink(PID_FILE);
++
+     exit (dwError);
+ 
+ error:
+diff -ur likewise-open-6.0.0.53010/lwio/server/lwiod/libmain.c likewise-open-6.0.0.53010.new/lwio/server/lwiod/libmain.c
+--- likewise-open-6.0.0.53010/lwio/server/lwiod/libmain.c	2010-10-20 05:03:01.000000000 +0800
++++ likewise-open-6.0.0.53010.new/lwio/server/lwiod/libmain.c	2011-11-22 17:38:56.836066388 +0800
+@@ -283,6 +283,9 @@
+     SMBSrvSetProcessExitCode(dwError);
+ 
+     SMBShutdownLogging_r();
++#ifdef ENABLE_PIDFILE
++	unlink(PID_FILE);
++#endif
+ 
+     return dwError;
+ 
+diff -ur likewise-open-6.0.0.53010/lwreg/server/lwregd/main.c likewise-open-6.0.0.53010.new/lwreg/server/lwregd/main.c
+--- likewise-open-6.0.0.53010/lwreg/server/lwregd/main.c	2010-10-20 05:03:01.000000000 +0800
++++ likewise-open-6.0.0.53010.new/lwreg/server/lwregd/main.c	2011-11-22 17:39:16.603131267 +0800
+@@ -143,6 +143,8 @@
+     RegSrvSetProcessExitCode(dwError);
+ 
+     RegShutdownLogging_r();
++	
++    unlink(PID_FILE);
+ 
+     return dwError;
+ 
+diff -ur likewise-open-6.0.0.53010/netlogon/server/netlogond/main.c likewise-open-6.0.0.53010.new/netlogon/server/netlogond/main.c
+--- likewise-open-6.0.0.53010/netlogon/server/netlogond/main.c	2010-10-20 04:54:31.000000000 +0800
++++ likewise-open-6.0.0.53010.new/netlogon/server/netlogond/main.c	2011-11-22 17:39:46.350397132 +0800
+@@ -136,7 +136,10 @@
+ 
+  cleanup:
+ 
+-    LWNET_LOG_VERBOSE("LWNet main cleaning up");
++#ifdef ENABLE_PIDFILE
++	// On successful exit, remove the pid file. Ignore errors
++	unlink(PID_FILE);
++#endif
+ 
+     // Post service stopped event to eventlog
+     LWNetSrvLogProcessStoppedEvent(dwError);

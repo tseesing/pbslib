@@ -1,5 +1,5 @@
 #
-# YLmf_OS package build script
+# Ylmf OS package build script
 #
 
 DESCRIPTION="A high-quality data compressor"
@@ -13,7 +13,7 @@ RDEPEND="glibc"
 BDEPEND=""
 
 pbs_unpack() {
-        ypkg_unpack
+        dounpack
 }
 
 pbs_config() {
@@ -27,23 +27,23 @@ pbs_config() {
 pbs_build() {
 	# Creates a dynamic libbz2.so library and links the Bzip2 
 	# utilities against it
-	ypkg_make -f Makefile-libbz2_so
+	domake -f Makefile-libbz2_so
 	make clean
-	ypkg_make 
+	domake 
 }
 
 pbs_install() {
-	mkdir -p "$YPPATH_DEST"/usr
-	ypkg_mkinstall PREFIX="$YPPATH_DEST"/usr
-	ypkg_docp_rename bzip2-shared "$YPPATH_DEST"/bin/bzip2
-	ypkg_docp libbz2.so* "$YPPATH_DEST"/lib"$LIBDIRSUFFIX"
+	mkdir -p "$destdir"/usr
+	domkinstall PREFIX="$destdir"/usr
+	docp_rename bzip2-shared "$destdir"/bin/bzip2
+	docp libbz2.so* "$destdir"/lib"$LIBDIRSUFFIX"
 	
-	cd "$YPPATH_DEST"
-	ypkg_doln /lib"$LIBDIRSUFFIX"/libbz2.so.1.0 usr/lib"$LIBDIRSUFFIX"/libbz2.so 
+	cd "$destdir"
+	doln /lib"$LIBDIRSUFFIX"/libbz2.so.1.0 usr/lib"$LIBDIRSUFFIX"/libbz2.so 
 
 	rm usr/bin/{bunzip2,bzcat,bzip2}
-	ypkg_doln /bin/bzip2 bin/bunzip2
-	ypkg_doln /bin/bzip2 bin/bzcat
-	ypkg_domv usr/man  usr/share
+	doln /bin/bzip2 bin/bunzip2
+	doln /bin/bzip2 bin/bzcat
+	domv usr/man  usr/share
 }
 

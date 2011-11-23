@@ -1,5 +1,5 @@
 #
-# YLmf_OS package build script
+# Ylmf OS package build script
 #
 
 DESCRIPTION="Chinese PinYin IMEngine for IBus Framework"
@@ -16,19 +16,19 @@ RECOMMENDED=""
 NOTES=""
 
 pbs_unpack() {
-        ypkg_unpack
+        dounpack
 }
 
 pbs_config() {
-	YPB_CONFIG+="--enable-nls --enable-db-open-phrase --disable-db-android"
-	ypkg_config
+	config+="--enable-nls --enable-db-open-phrase --disable-db-android"
+	doconfig
 }
 
 pbs_build() {
-	ypkg_make
+	domake
 }
 
 pbs_install() {
-	ypkg_mkinstall
-	ypkg_dodoc AUTHORS ChangeLog NEWS README
+	domkinstall
+	dodoc AUTHORS ChangeLog NEWS README
 }

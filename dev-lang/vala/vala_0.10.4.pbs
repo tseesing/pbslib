@@ -1,0 +1,37 @@
+#
+# Ylmf OS package build script
+#
+
+DESCRIPTION="Compiler for the GObject type system"
+HOMEPAGE="http://live.gnome.org/Vala"
+LICENSE="LGPL"
+PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
+
+SRC_URI="http://download.gnome.org/sources/"$N"/0.10/"$N-$V".tar.bz2"
+
+RDEPEND="glib2 glibc"
+BDEPEND=""
+RECOMMENDED=""
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_config() {
+	config+="--disable-unversioned --enable-vapigen"
+	doconfig
+}
+
+pbs_build() {
+	domake
+}
+
+pbs_install() {
+	domkinstall
+	cd "$destdir"
+	doln /usr/bin/valac-0.10    	  usr/bin/valac
+	doln /usr/bin/vapigen-0.10 	  usr/bin/vapigen
+	doln /usr/bin/vala-0.10    	  usr/bin/vala
+	doln /usr/lib/pkgconfig/vala-0.10.pc usr/lib/pkgconfig/vala-1.0.pc
+}
+

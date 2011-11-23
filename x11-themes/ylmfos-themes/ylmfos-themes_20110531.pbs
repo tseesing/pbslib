@@ -1,5 +1,5 @@
 #
-# YLmf_OS package build script
+# Ylmf OS package build script
 #
 
 DESCRIPTION="ylmfos default desktop theme"
@@ -17,9 +17,9 @@ RECOMMENDED=""
 INSTALL="$N.install"
 
 pbs_unpack() {
-	ypkg_unpack
+	dounpack
 }
 
 pbs_install() {
-	ypkg_docp ylmfos "$YPPATH_DEST"/usr/share/themes
+	docp ylmfos "$destdir"/usr/share/themes
 }

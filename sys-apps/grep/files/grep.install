@@ -3,11 +3,11 @@
 file="grep.info.gz"
 
 post_install() {
-        ypkg_install_info $file
+        doinstall_info $file
 }       
 
 pre_remove() {
-        ypkg_remove_info $file
+        doremove_info $file
 }
 
 post_upgrade() {

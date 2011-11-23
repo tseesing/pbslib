@@ -1,5 +1,5 @@
 #
-# YLmf_OS package build script
+# Ylmf OS package build script
 #
 
 DESCRIPTION="The Libee is an event expression library."
@@ -15,12 +15,12 @@ RECOMMENDED=""
 CONFLICT=""
 
 pbs_unpack() {
-        ypkg_unpack
+        dounpack
 }
 
 pbs_config() {
-	YPB_CONFIG+=""
-	ypkg_config
+	config+=""
+	doconfig
 }
 
 pbs_build() {
@@ -28,7 +28,7 @@ pbs_build() {
 }
 
 pbs_install() {
-	ypkg_mkinstall
+	domkinstall
 }
 
 

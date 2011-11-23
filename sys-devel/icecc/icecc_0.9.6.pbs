@@ -1,5 +1,5 @@
 #
-# YLmf_OS package build script
+# Ylmf OS package build script
 #
 
 DESCRIPTION="Icecream was created by SUSE based on distcc. Like distcc, Icecream takes compile jobs from a (KDE) build and distributes it among remote machines allowing a parallel build"
@@ -23,20 +23,20 @@ ln -s icecc /usr/bin/cc
 ln -s icecc /usr/bin/c++"
 
 pbs_unpack() {
-        ypkg_unpack
+        dounpack
 }
 
 pbs_config() {
-	YPB_CONFIG+=""
-	ypkg_config
+	config+=""
+	doconfig
 }
 
 pbs_build() {
-	ypkg_make
+	domake
 }
 
 pbs_install() {
-	ypkg_mkinstall
-	cd "$YPPATH_DEST"/usr/bin
+	domkinstall
+	cd "$destdir"/usr/bin
 	rm c++ cc g++ gcc
 }

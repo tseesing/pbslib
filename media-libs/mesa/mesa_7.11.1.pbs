@@ -1,0 +1,68 @@
+#
+# Ylmf OS package build script
+#
+
+DESCRIPTION="OpenGL-like graphic library for Linux"
+HOMEPAGE="http://www.mesa3d.org/"
+LICENSE="http://www.mesa3d.org/license.html"
+PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
+
+REPO="testing"
+
+SRC_URI="ftp://ftp.freedesktop.org/pub/mesa/"$V"/MesaLib-"$V".tar.bz2 
+         ftp://ftp.freedesktop.org/pub/mesa/"$V"/MesaGLUT-"$V".tar.bz2"
+
+RDEPEND="talloc expat gcc glibc libdrm libICE libpciaccess libSM libX11 libXau libxcb libXdamage libXdmcp libXext libXfixes libXi libXmu libXt libXxf86vm udev util-linux-ng"
+BDEPEND="dri2proto xorg-server-dev llvm-dev"
+
+INSTALL="$N.install"
+
+NOTES="
+ You have enabled gallium infrastructure.
+ This infrastructure currently support these drivers:
+ Intel: works only i915 and i965 somehow.
+ LLVMpipe: Software renderer.
+ Nouveau: Support for nVidia NV30 and later cards.
+ Radeon: Newest implementation of r300-r700 driver.
+ Svga: VMWare Virtual GPU driver.
+"
+
+pbs_unpack() {
+	tar xf "$YPPATH_SOURCE"/MesaLib-"$V".tar.bz2
+        tar xf "$YPPATH_SOURCE"/MesaGLUT-"$V".tar.bz2
+        mv Mesa-"$V"  "$N-$V$R"
+}
+
+pbs_config() {
+	# i915,i965 disable
+	config+="--with-gallium-drivers=nouveau,r300,r600,svga,swrast
+		 --enable-xcb"
+
+	# from mailing list
+	# I have verified building from the .tar.bz2 file by doing:
+	#
+	config+="--enable-dri 
+	         --with-dri-drivers=yes 
+		 --enable-gles1 
+		 --enable-gles2 
+		 --enable-glx-tls 
+		 --disable-glw 
+		 --disable-glu 
+		 --with-gallium-drivers
+		 --enable-gallium-llvm"
+	doconfig
+}
+
+pbs_build() {
+	make -j1
+}
+
+pbs_install() {
+	domkinstall
+	cd "$destdir"/usr/lib/
+	
+	# Backup /usr/lib/libGL.so.1.2 which would be overrided by ati-graphic-driver and so packages.
+	mv libGL.so.1.2 libGL.so.1.2-pkg."$N"
+	ln -sf /usr/lib/libGL.so.1.2-pkg."$N" libGL.so.1.2
+}
+

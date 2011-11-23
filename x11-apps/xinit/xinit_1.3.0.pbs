@@ -1,5 +1,5 @@
 #
-# YLmf_OS package build script
+# Ylmf OS package build script
 #
 
 DESCRIPTION="X Window System initializer"
@@ -13,22 +13,22 @@ RDEPEND="glibc libX11 libXau libxcb libXdmcp"
 BDEPEND=""
 
 pbs_unpack() {
-        ypkg_unpack
+        dounpack
 }
 
 pbs_config() {
-	ypkg_config
+	doconfig
 }
 
 pbs_build() {
-	ypkg_make
+	domake
 }
 
 pbs_install() {
-	ypkg_mkinstall
+	domkinstall
 	
-	cd "$YPPATH_DEST"
-	ypkg_domv usr/lib/X11/xinit etc/X11
-	ypkg_doln /etc/X11/xinit    usr/lib/X11
+	cd "$destdir"
+	domv usr/lib/X11/xinit etc/X11
+	doln /etc/X11/xinit    usr/lib/X11
 }
 

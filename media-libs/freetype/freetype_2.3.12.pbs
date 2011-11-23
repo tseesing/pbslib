@@ -1,5 +1,5 @@
 #
-# YLmf_OS package build script
+# Ylmf OS package build script
 #
 
 DESCRIPTION="A high-quality and portable font engine"
@@ -14,21 +14,21 @@ RDEPEND=""
 BDEPEND=""
 
 pbs_unpack(){
-        ypkg_unpack
+        dounpack
 }
 
 pbs_config() {
-	ypkg_patch freetype-2.3.12-ubuntu.patch
+	dopatch freetype-2.3.12-ubuntu.patch
 	sed -i -r -e 's:.*(#.*BYTE.*) .*:\1:' -e 's:.*(#.*SUBPIX.*) .*:\1:' \
             	include/freetype/config/ftoption.h
-	ypkg_config
+	doconfig
 }
 
 pbs_build() {
-	ypkg_make
+	domake
 }
 
 pbs_install() {
-	ypkg_mkinstall
-	ypkg_dodoc ChangeLog README
+	domkinstall
+	dodoc ChangeLog README
 }

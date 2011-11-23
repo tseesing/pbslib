@@ -1,5 +1,5 @@
 #
-# YLmf_OS package build script
+# Ylmf OS package build script
 #
 
 DESCRIPTION="Python bindings for libsexy."
@@ -14,20 +14,20 @@ BDEPEND="pygtk-dev"
 RECOMMENDED=""
 
 pbs_unpack() {
-        ypkg_unpack
+        dounpack
 }
 
 pbs_config() {
-	YPB_CONFIG+="--disable-static --enable-shared"
-	ypkg_config
+	config+="--disable-static --enable-shared"
+	doconfig
 }
 
 pbs_build() {
-	ypkg_make
+	domake
 }
 
 pbs_install() {
-	ypkg_mkinstall
-	ypkg_dodoc AUTHORS ChangeLog COPYING INSTALL NEWS README
+	domkinstall
+	dodoc AUTHORS ChangeLog COPYING INSTALL NEWS README
 }
 

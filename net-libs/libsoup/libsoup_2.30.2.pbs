@@ -1,5 +1,5 @@
 #
-# YLmf_OS package build script
+# Ylmf OS package build script
 #
 
 DESCRIPTION="The libsoup package contains an HTTP library implementation in C. This is useful for accessing HTTP servers in a completely asynchronous mode."
@@ -20,19 +20,19 @@ Pass \"--without-gnome\" to configure if you want to build libsoup without GNOME
 "
 
 pbs_unpack() {
-        ypkg_unpack
+        dounpack
 }
 
 pbs_config() {
-	YPB_CONFIG+="--enable-ssl --with-gnome"
-	ypkg_config
+	config+="--enable-ssl --with-gnome"
+	doconfig
 }
 
 pbs_build() {
-	ypkg_make
+	domake
 }
 
 pbs_install() {
-	ypkg_mkinstall
-	ypkg_dodoc AUTHORS COPYING NEWS README 
+	domkinstall
+	dodoc AUTHORS COPYING NEWS README 
 }

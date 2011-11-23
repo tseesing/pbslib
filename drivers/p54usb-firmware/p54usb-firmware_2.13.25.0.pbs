@@ -1,5 +1,5 @@
 #
-# YLmf_OS package build script
+# Ylmf OS package build script
 #
 
 DESCRIPTION="Supports USB first (ISL3886 chipset) and second (ISL3887 chipset) generation devices."
@@ -17,7 +17,7 @@ RECOMMENDED=""
 CONFLICT=""
 
 pbs_install() {
-	ypkg_docp_rename "$YPPATH_SOURCE"/"$V".lm87.arm "$YPPATH_DEST"/lib/firmware/isl3887usb
-	ypkg_docp_rename "$YPPATH_SOURCE"/"$V".lm86.arm "$YPPATH_DEST"/lib/firmware/isl3886usb
+	docp_rename "$YPPATH_SOURCE"/"$V".lm87.arm "$destdir"/lib/firmware/isl3887usb
+	docp_rename "$YPPATH_SOURCE"/"$V".lm86.arm "$destdir"/lib/firmware/isl3886usb
 }
 

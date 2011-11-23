@@ -1,5 +1,5 @@
 #
-# YLmf_OS package build script
+# Ylmf OS package build script
 #
 
 DESCRIPTION="Media Player for Linux"
@@ -13,14 +13,14 @@ RDEPEND="aalib alsa-lib attr audiofile cyrus-sasl directfb esound expat faac faa
 BDEPEND="libgsm-dev                                                           "
 
 pbs_unpack() {
-	ypkg_unpack
+	dounpack
 }
 
 pbs_config() {
-	#ypkg_patch configure-downlaod-ffmpeg.patch
+	#dopatch configure-downlaod-ffmpeg.patch
 	#It is important to unset CFLAGS. Otherwise build will fail! If it doesn't fail, it will most likely error when run.
 	unset CFLAGS
-	YPB_CONFIG="--prefix=/usr 
+	config="--prefix=/usr 
 	            --mandir=/usr/share/man 
 		    --confdir=/etc/mplayer
 		    --enable-runtime-cpudetection 
@@ -35,17 +35,17 @@ pbs_config() {
 		    #--disable-esd 
 		    #--disable-mga 
 		    #--enable-xvmc 
-	ypkg_config
+	doconfig
 }
 
 pbs_build() {
 	sed 's|-march=i486|-march=i686|g' -i config.mak
-	ypkg_make
+	domake
 }
 
 pbs_install() {
-	ypkg_mkinstall
-	ypkg_docp etc/{codecs.conf,input.conf,example.conf} "$YPPATH_DEST"/etc/mplayer
-	ypkg_doln /usr/share/fonts/truetype/ttf-dejavu/DejaVuSans.ttf  \
-		"$YPPATH_DEST"/usr/share/mplayer/subfont.ttf
+	domkinstall
+	docp etc/{codecs.conf,input.conf,example.conf} "$destdir"/etc/mplayer
+	doln /usr/share/fonts/truetype/ttf-dejavu/DejaVuSans.ttf  \
+		"$destdir"/usr/share/mplayer/subfont.ttf
 }

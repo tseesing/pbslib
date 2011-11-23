@@ -1,5 +1,5 @@
 #
-# YLmf_OS package build script
+# Ylmf OS package build script
 #
 
 DESCRIPTION="A net IM with voice, not free-ware"
@@ -13,15 +13,15 @@ BDEPEND=""
 INSTALL="$N.install"
 
 pbs_unpack() {
-	ypkg_unpack
+	dounpack
 }
 
 pbs_install() {
-	ypkg_docp * "$YPPATH_DEST"/opt/skype
-	cd "$YPPATH_DEST"
-	ypkg_docp         opt/skype/skype.desktop             usr/share/applications
-	ypkg_docp_rename  opt/skype/icons/SkypeBlue_48x48.png usr/share/pixmaps/skype.png
-	ypkg_doln         /opt/skype/skype                    usr/bin/skype
+	docp * "$destdir"/opt/skype
+	cd "$destdir"
+	docp         opt/skype/skype.desktop             usr/share/applications
+	docp_rename  opt/skype/icons/SkypeBlue_48x48.png usr/share/pixmaps/skype.png
+	doln         /opt/skype/skype                    usr/bin/skype
 	mkdir -p          etc/xg_launch/net 
 	echo "+ skype%/opt/skype/icons/SkypeBlue_32x32.png%   Exec /opt/skype/skype" >etc/xg_launch/net/C15skype
 }

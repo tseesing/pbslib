@@ -1,5 +1,5 @@
 #
-# YLmf_OS package build script
+# Ylmf OS package build script
 #
 
 DESCRIPTION="Adobe Flash Player plugin"
@@ -16,15 +16,15 @@ RECOMMENDED=""
 INSTALL="$N.install"
 
 pbs_unpack() {
-	ypkg_unpack
+	dounpack
 }
 
 pbs_install() {
-	ypkg_docp libflashplayer.so  "$YPPATH_DEST"/usr/lib/adobe-flashplugin
+	docp libflashplayer.so  "$destdir"/usr/lib/adobe-flashplugin
         for i in xulrunner mozilla iceape iceweasel firefox midbrowser xulrunner-addons; do
-	      ypkg_doln /usr/lib/adobe-flashplugin/libflashplayer.so "$YPPATH_DEST"/usr/lib/"${i}"/plugins/libflashplayer.so
+	      doln /usr/lib/adobe-flashplugin/libflashplayer.so "$destdir"/usr/lib/"${i}"/plugins/libflashplayer.so
 	done
-	ypkg_docp ../usr "$YPPATH_DEST"/
-	mkdir -p "$YPPATH_DEST"/etc/adobe
+	docp ../usr "$destdir"/
+	mkdir -p "$destdir"/etc/adobe
 }
 

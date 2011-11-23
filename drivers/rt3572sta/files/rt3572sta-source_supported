@@ -5,6 +5,7 @@
 # make 
 # modinfo ./os/linux/rt3572sta.ko
 
+echo "package rt3572sta-driver"
 echo "module rt3572sta.ko"
 echo "description RT2870 Wireless Lan Linux Driver"
 echo "alias usb:v0930p0A07d*dc*dsc*dp*ic*isc*ip*

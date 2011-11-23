@@ -7,7 +7,7 @@ post_install() {
 
 	# Make sure xfce thunar doesn't steal our job
 	if [ -f /usr/share/applications/Thunar-folder-handler.desktop ]; then
-		ypkg_domv_rename -f /usr/share/applications/Thunar-folder-handler.desktop{,.disabled}
+		domv_rename -f /usr/share/applications/Thunar-folder-handler.desktop{,.disabled}
 	fi
 	
 	# For nautilus to control ftp (otherwise annoying error box arises)

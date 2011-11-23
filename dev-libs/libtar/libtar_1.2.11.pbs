@@ -1,5 +1,5 @@
 #
-# YLmf_OS package build script
+# Ylmf OS package build script
 #
 
 DESCRIPTION="C library for manipulating tar archives"
@@ -15,21 +15,21 @@ RECOMMENDED=""
 CONFLICT=""
 
 pbs_unpack() {
-        ypkg_unpack
+        dounpack
 }
 
 pbs_config() {
-	ypkg_patch libtar-1.2.11-6-debian.patch
+	dopatch libtar-1.2.11-6-debian.patch
 	cp /usr/share/automake-1.11/config.* autoconf
 	autoreconf -f -v -i
-	ypkg_config
+	doconfig
 }
 
 pbs_build() {
-	ypkg_make
+	domake
 }
 
 pbs_install() {
-	ypkg_mkinstall
+	domkinstall
 }
 

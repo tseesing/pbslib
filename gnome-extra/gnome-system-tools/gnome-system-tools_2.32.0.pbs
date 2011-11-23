@@ -1,5 +1,5 @@
 #
-# YLmf_OS package build script
+# Ylmf OS package build script
 #
 
 DESCRIPTION=" Tools aimed to make easy the administration of UNIX systems "
@@ -16,27 +16,27 @@ RECOMMENDED="libgnomeui ylmfos-service-manager"
 INSTALL="$N-$V.install"
 
 pbs_unpack() {
-        ypkg_unpack
+        dounpack
 }
 
 pbs_config() {
 	#
-	ypkg_groupadd -r "dialout"
-	ypkg_patch ylmfos-translate-2.32.0.patch change_network_png-2.32.0.patch
+	dogroupadd -r "dialout"
+	dopatch ylmfos-translate-2.32.0.patch change_network_png-2.32.0.patch
 
 	# Disable services, replaced by ylmfos-service-manager
-	YPB_CONFIG+="--disable-schemas-install --disable-services"
-	ypkg_config
+	config+="--disable-schemas-install --disable-services"
+	doconfig
 }
 
 pbs_build() {
-	ypkg_make
+	domake
 }
 
 pbs_install() {
-	ypkg_mkinstall
-	cd "$YPPATH_DEST"
-	ypkg_docp "$FILES_PATH"/files/network-setting.png  usr/share/pixmaps/
+	domkinstall
+	cd "$destdir"
+	docp $filesdir/network-setting.png  usr/share/pixmaps/
 	
 	# keep clean for rarian
 	rm -fr var/lib/scrollkeeper

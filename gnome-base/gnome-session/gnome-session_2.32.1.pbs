@@ -1,5 +1,5 @@
 #
-# YLmf_OS package build script
+# Ylmf OS package build script
 #
 
 DESCRIPTION="The GNOME Session package contains the GNOME session manager."
@@ -16,55 +16,55 @@ RECOMMENDED="polkit-gnome"
 INSTALL="$N.install"
 
 pbs_unpack() {
-        ypkg_unpack
+        dounpack
 }
 
 pbs_config() {
 	for i in 24 48 22 16 32;do
-		convert -resize "${i}"x"${i}" "$FILES_PATH"/files/session-properties.png  data/icons/"${i}"x"${i}"/session-properties.png
+		convert -resize "${i}"x"${i}" $filesdir/session-properties.png  data/icons/"${i}"x"${i}"/session-properties.png
 	done
-	ypkg_docp "$FILES_PATH"/files/session-properties.svg data/icons/scalable
-	YPB_CONFIG+=" --disable-schemas-install 
+	docp $filesdir/session-properties.svg data/icons/scalable
+	config+=" --disable-schemas-install 
 		      --with-default-wm=gnome-wm "
-	ypkg_config
+	doconfig
 }
 
 pbs_build() {
-	ypkg_make
+	domake
 }
 
 pbs_install() {
-	ypkg_mkinstall
+	domkinstall
 	
-	cd "$YPPATH_DEST"
+	cd "$destdir"
 	
 	#Change gnome-wm to use compiz ccp if compiz selected
-	#ypkg_domv_rename usr/bin/gnome-wm usr/bin/gnome-wm.orig
-	#ypkg_docp_rename "$FILES_PATH"/files/gnome-wm.gsb  usr/bin/gnome-wm
+	#domv_rename usr/bin/gnome-wm usr/bin/gnome-wm.orig
+	#docp_rename $filesdir/gnome-wm.gsb  usr/bin/gnome-wm
 	#chmod +x usr/bin/gnome-wm
-	ypkg_docp "$FILES_PATH"/files/gnome-wm.desktop usr/share/applications
+	docp $filesdir/gnome-wm.desktop usr/share/applications
 	
 	# Add xinitrc script for gnome
 	mkdir -p etc/X11/xinit
-	cat "$FILES_PATH"/files/xinitrc.gnome | sed -e "s,@LIBDIR@,lib,g"   > etc/X11/xinit/xinitrc.gnome
+	cat $filesdir/xinitrc.gnome | sed -e "s,@LIBDIR@,lib,g"   > etc/X11/xinit/xinitrc.gnome
 	chmod 755 etc/X11/xinit/xinitrc.gnome
 	
 	# Install splash screen
-	ypkg_docp "$FILES_PATH"/files/gnome-splash.png  usr/share/pixmaps/splash
+	docp $filesdir/gnome-splash.png  usr/share/pixmaps/splash
 	
 	# Add default `gnome` for gnome-session
 	( cd usr/bin ; ln -s gnome-session gnome ); 
 	
 	# Replace of gnome-classic.desktop
 	[ -f usr/share/xsessions/gnome.desktop ] && rm usr/share/xsessions/gnome.desktop
-	ypkg_docp "$FILES_PATH"/files/gnome-classic.desktop  usr/share/xsessions
+	docp $filesdir/gnome-classic.desktop  usr/share/xsessions
 	
 	#
 	mkdir -p etc/X11/Xsession.d/
 	
 	# ylmfos misc
-	ypkg_docp "$FILES_PATH"/files/ylmfos-misc.desktop etc/xdg/autostart/
-	ypkg_docp "$FILES_PATH"/files/ylmfos-misc.sh      usr/bin/
+	docp $filesdir/ylmfos-misc.desktop etc/xdg/autostart/
+	docp $filesdir/ylmfos-misc.sh      usr/bin/
 	chmod +x usr/bin/ylmfos-misc.sh
 }
 

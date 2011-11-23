@@ -1,5 +1,5 @@
 #
-# YLmf_OS package build script
+# Ylmf OS package build script
 #
 
 DESCRIPTION="PolicyKit policies and configurations for the GNOME desktop"
@@ -14,21 +14,21 @@ BDEPEND=""
 RECOMMENDED=""
 
 pbs_unpack() {
-        ypkg_unpack
+        dounpack
 }
 
 pbs_config() {
-	ypkg_patch polkit-gnome-0.95-fix-make-check.patch
-	ypkg_patch polkit-gnome-0.95-parallel-build-failure.patch
-	YPB_CONFIG+="--disable-introspection"
-	ypkg_config
+	dopatch polkit-gnome-0.95-fix-make-check.patch
+	dopatch polkit-gnome-0.95-parallel-build-failure.patch
+	config+="--disable-introspection"
+	doconfig
 }
 
 pbs_build() {
-	ypkg_make
+	domake
 }
 
 pbs_install() {
-	ypkg_mkinstall
+	domkinstall
 }
 

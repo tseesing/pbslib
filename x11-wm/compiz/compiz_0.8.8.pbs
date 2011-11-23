@@ -1,5 +1,5 @@
 #
-# YLmf_OS package build script
+# Ylmf OS package build script
 #
 
 DESCRIPTION="OpenGL window and compositing manager"
@@ -20,11 +20,11 @@ RECOMMENDED=""
 INSTALL="$N.install"
 
 pbs_unpack() {
-        ypkg_unpack
+        dounpack
 }
 
 pbs_config() {
-	YPB_CONFIG+=" --disable-schemas-install 
+	config+=" --disable-schemas-install 
 		      --enable-kde4 
 		      --enable-kconfig 
 		      --enable-gnome 
@@ -37,20 +37,20 @@ pbs_config() {
 		      --enable-fuse 
 		      --enable-gconf 
 		      --enable-gnome-keybindings "
-	ypkg_config
+	doconfig
 }
 
 pbs_build() {
-	ypkg_make
+	domake
 }
 
 pbs_install() {
-	ypkg_mkinstall
-	mkdir -p "$YPPATH_DEST"/etc/X11/xinit 
-	cat "$FILES_PATH"/files/xinitrc.compiz-gnome |sed "s,@LIBDIR@,lib,g" > "$YPPATH_DEST"/etc/X11/xinit/xinitrc.compiz-gnome
-	chmod +x "$YPPATH_DEST"/etc/X11/xinit/xinitrc.compiz-gnome
-	ypkg_docp "$FILES_PATH"/files/compiz-gnome.desktop "$YPPATH_DEST"/usr/share/xsessions
-	ypkg_docp "$FILES_PATH"/files/compiz-decorator "$YPPATH_DEST"/usr/bin/
-	chmod +x "$YPPATH_DEST"/usr/bin/compiz-decorator
+	domkinstall
+	mkdir -p "$destdir"/etc/X11/xinit 
+	cat $filesdir/xinitrc.compiz-gnome |sed "s,@LIBDIR@,lib,g" > "$destdir"/etc/X11/xinit/xinitrc.compiz-gnome
+	chmod +x "$destdir"/etc/X11/xinit/xinitrc.compiz-gnome
+	docp $filesdir/compiz-gnome.desktop "$destdir"/usr/share/xsessions
+	docp $filesdir/compiz-decorator "$destdir"/usr/bin/
+	chmod +x "$destdir"/usr/bin/compiz-decorator
 }
 

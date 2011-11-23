@@ -1,5 +1,5 @@
 #
-# YLmf_OS package build script
+# Ylmf OS package build script
 #
 
 DESCRIPTION="View Your Mind, a mindmap tool"
@@ -21,20 +21,20 @@ INSTALL="$N.install"
 NOTES=""
 
 pbs_unpack() {
-        ypkg_unpack
+        dounpack
 }
 
 pbs_config() {
-	ypkg_patch pro-file.patch
-	#ypkg_config PREFIX="$YPPATH_DEST/${N}_$V$R"/usr
+	dopatch pro-file.patch
+	#doconfig PREFIX="$destdir/${N}_$V$R"/usr
 }
 
 pbs_build() {
 	qmake PREFIX=/usr
-	ypkg_make 
+	domake 
 }
 
 pbs_install() {
-	make INSTALL_ROOT="$YPPATH_DEST" install
-	ypkg_dodesktop "vym.desktop"  "vym.png"
+	make INSTALL_ROOT="$destdir" install
+	dodesktop "vym.desktop"  "vym.png"
 }

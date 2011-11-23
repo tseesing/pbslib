@@ -1,5 +1,5 @@
 #
-# YLmf_OS package build script
+# Ylmf OS package build script
 #
 
 DESCRIPTION="Linux-PAM (Pluggable Authentication Modules)"
@@ -13,32 +13,32 @@ RDEPEND="berkeley-db glibc"
 BDEPEND=""
 
 pbs_unpack() {
-        ypkg_unpack
+        dounpack
 }
 
 pbs_config() {
-	ypkg_patch  Linux-PAM-1.1.0-pam_console-1.patch
-	YPB_CONFIG+="--sbindir=/lib/security
+	dopatch  Linux-PAM-1.1.0-pam_console-1.patch
+	config+="--sbindir=/lib/security
 	             --enable-securedir=/lib/security 
 		     --docdir=/usr/share/doc/"$N"/"$V$R"
 		     --enable-read-both-confs "
-	ypkg_config
+	doconfig
 }
 
 pbs_build() {
-	ypkg_make
+	domake
 }
 
 pbs_install() {
-	ypkg_mkinstall
+	domkinstall
 	
-	cd "$YPPATH_DEST"
+	cd "$destdir"
 	chmod 4755 lib/security/unix_chkpwd
-	ypkg_domv  lib/security/pam_tally  sbin
-	ypkg_domv  usr/lib/libpam*.so.0*   lib
-	ypkg_doln  /lib/libpam.so.0 	   usr/lib/libpam.so
-	ypkg_doln  /lib/libpamc.so.0	   usr/lib/libpamc.so
-	ypkg_doln  /lib/libpam_misc.so.0   usr/lib/libpam_misc.so
+	domv  lib/security/pam_tally  sbin
+	domv  usr/lib/libpam*.so.0*   lib
+	doln  /lib/libpam.so.0 	   usr/lib/libpam.so
+	doln  /lib/libpamc.so.0	   usr/lib/libpamc.so
+	doln  /lib/libpam_misc.so.0   usr/lib/libpam_misc.so
 	[ -f "/etc/environment" ] && rm etc/environment
 	# The altering of device permissions is unnecessary. In this case, only the console locking actions are needed. Replace one of the pam_console configuration files to achieve this
 	cat > etc/security/console.handlers << "EOF"

@@ -1,5 +1,5 @@
 #
-# YLmf_OS package build script
+# Ylmf OS package build script
 #
 
 DESCRIPTION="Applets for the GNOME Desktop and Panel"
@@ -16,22 +16,22 @@ RECOMMENDED="gnome-python-desktop gnome-icon-theme"
 INSTALL="$N.install"
 
 pbs_unpack() {
-        ypkg_unpack
+        dounpack
 }
 
 pbs_config() {
-	ypkg_docp "$FILES_PATH"/files/cpufreq-*      cpufreq/pixmaps
-	YPB_CONFIG+="--disable-schemas-install
+	docp $filesdir/cpufreq-*      cpufreq/pixmaps
+	config+="--disable-schemas-install
 		     --disable-polkit
 		     --enable-mixer-applet "
-	ypkg_config
+	doconfig
 }
 
 pbs_build() {
-	ypkg_make
+	domake
 }
 
 pbs_install() {
-	ypkg_mkinstall
+	domkinstall
 	make -C man install-man
 }

@@ -3,11 +3,11 @@
 files="tar.info-2.gz tar.info-1.gz tar.info.gz"
 
 post_install() {
-	ypkg_install_info $files
+	doinstall_info $files
 }       
 
 pre_remove() {
-	ypkg_remove_info $files
+	doremove_info $files
 }
 
 post_upgrade() {

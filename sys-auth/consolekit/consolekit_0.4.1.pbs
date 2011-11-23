@@ -1,5 +1,5 @@
 #
-# YLmf_OS package build script
+# Ylmf OS package build script
 #
 
 DESCRIPTION="Framework for defining and tracking users, login sessions and seats."
@@ -16,17 +16,17 @@ RECOMMENDED="polkit"
 NOTES="http://wiki.linuxfromscratch.org/blfs/wiki/consolekit"
 
 pbs_unpack() {
-        ypkg_unpack
+        dounpack
 }
 
 pbs_config() {
 	
 	#
-	ypkg_patch  "$FILES_PATH"/files/consolekit-0.2.10-cleanup_console_tags.patch 
-	ypkg_patch  "$FILES_PATH"/files/consolekit-0.4.0-polkit-automagic.patch 
-	ypkg_patch  "$FILES_PATH"/files/consolekit-0.4.0-multilib.patch 	
-	ypkg_patch  "$FILES_PATH"/files/consolekit-0.4.1-shutdown-reboot-without-policies.patch
-	YPB_CONFIG+=" --prefix=/usr 
+	dopatch  $filesdir/consolekit-0.2.10-cleanup_console_tags.patch 
+	dopatch  $filesdir/consolekit-0.4.0-polkit-automagic.patch 
+	dopatch  $filesdir/consolekit-0.4.0-multilib.patch 	
+	dopatch  $filesdir/consolekit-0.4.1-shutdown-reboot-without-policies.patch
+	config+=" --prefix=/usr 
 		      --sysconfdir=/etc
 		      --localstatedir=/var
 		      --enable-pam-module 
@@ -37,13 +37,13 @@ pbs_config() {
 		      --with-pam-module-dir=/lib/security 
 		      --with-dbus-services=/usr/share/dbus-1/services/ 
 		      "
-	ypkg_config
+	doconfig
 }
 
 pbs_build() {
-	ypkg_make
+	domake
 }
 
 pbs_install() {
-	ypkg_mkinstall
+	domkinstall
 }

@@ -1,5 +1,5 @@
 #
-# YLmf_OS package build script
+# Ylmf OS package build script
 #
 
 DESCRIPTION="A graph based image processing framework"
@@ -12,26 +12,26 @@ RDEPEND="babl glib2 gdk-pixbuf gtk+ pango cairo libjpeg-turbo "
 BDEPEND=""
 
 pbs_unpack() {
-        ypkg_unpack
+        dounpack
 }
 
 pbs_config() {
 	# upstream bug report:
 	# https://bugzilla.gnome.org/show_bug.cgi?id=642494
-	ypkg_patch gegl-doubledestdir.diff
+	dopatch gegl-doubledestdir.diff
 
 	# new ffmpeg api
-	ypkg_patch 0.1.6-ffmpeg.patch
+	dopatch 0.1.6-ffmpeg.patch
 
-	YPB_CONFIG+="--with-gtk --with-pango --with-gdk-pixbuf --with-gio"
-	ypkg_config
+	config+="--with-gtk --with-pango --with-gdk-pixbuf --with-gio"
+	doconfig
 }
 
 pbs_build() {
-	ypkg_make
+	domake
 }
 
 pbs_install() {
-	ypkg_mkinstall
+	domkinstall
 }
 

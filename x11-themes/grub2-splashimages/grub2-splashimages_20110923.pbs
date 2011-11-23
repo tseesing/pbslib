@@ -1,5 +1,5 @@
 #
-# YLmf_OS package build script
+# Ylmf OS package build script
 #
 
 DESCRIPTION="grub2 background images"
@@ -17,10 +17,10 @@ RECOMMENDED=""
 INSTALL="$N.install"
 
 pbs_unpack() {
-	ypkg_unpack
+	dounpack
 }
 
 pbs_install() {
-	ypkg_docp usr "$YPPATH_DEST"/
+	docp usr "$destdir"/
 }
 

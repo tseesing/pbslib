@@ -1,5 +1,5 @@
 #
-# YLmf_OS package build script
+# Ylmf OS package build script
 #
 
 DESCRIPTION="The GLib library of C routines"
@@ -17,18 +17,18 @@ NOTES="Gamin requires GLib in order to compile; therefore, you must first instal
 
 pbs_unpack()
 {
-        ypkg_unpack
+        dounpack
 }
 
 pbs_config()
 {
 	cd glib-$V
-	ypkg_config
+	doconfig
 }
 
 pbs_build()
 {
-	ypkg_make
+	domake
 }
 
 pbs_check()
@@ -38,5 +38,5 @@ pbs_check()
 
 pbs_install()
 {
-	ypkg_mkinstall
+	domkinstall
 }

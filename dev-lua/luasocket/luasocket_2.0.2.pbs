@@ -1,5 +1,5 @@
 #
-# YLmf_OS package build script
+# Ylmf OS package build script
 #
 
 DESCRIPTION="Networking support library for the Lua language."
@@ -19,19 +19,19 @@ CONFLICT=""
 NOTES=""
 
 pbs_unpack() {
-        ypkg_unpack
+        dounpack
 }
 
 pbs_config() {
-	ypkg_patch luasocket-2.0.2-unixsocket.patch
-	YPB_CONFIG+=""
-	ypkg_config
+	dopatch luasocket-2.0.2-unixsocket.patch
+	config+=""
+	doconfig
 }
 
 pbs_build() {
-	ypkg_make
+	domake
 }
 
 pbs_install() {
-	ypkg_mkinstall INSTALL_TOP_SHARE="$YPPATH_DEST"/usr/share/lua/5.1 INSTALL_TOP_LIB="$YPPATH_DEST"/usr/lib/lua/5.1
+	domkinstall INSTALL_TOP_SHARE="$destdir"/usr/share/lua/5.1 INSTALL_TOP_LIB="$destdir"/usr/lib/lua/5.1
 }

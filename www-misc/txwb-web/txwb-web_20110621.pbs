@@ -1,5 +1,5 @@
 #
-# YLmf_OS package build script
+# Ylmf OS package build script
 #
 
 DESCRIPTION="tencent microblog"
@@ -13,5 +13,5 @@ RDEPEND=" xdg-utils"
 BDEPEND=""
 
 pbs_install() {
-	ypkg_dodesktop "$N.desktop" "$N.png"
+	dodesktop "$N.desktop" "$N.png"
 }

@@ -1,5 +1,5 @@
 #
-# YLmf_OS package build script
+# Ylmf OS package build script
 #
 
 DESCRIPTION="links is a fast lightweight text and graphic web-browser"
@@ -11,19 +11,19 @@ RDEPEND="libtiff libjpeg-turbo libpng zlib libX11 directfb glibc bzip2 openssl g
 BDEPEND=""
 
 pbs_unpack() {
-        ypkg_unpack
+        dounpack
 }
 
 pbs_config() {
-	YPB_CONFIG+="--enable-graphics --without-gpm --without-svgalib"
-	ypkg_config
+	config+="--enable-graphics --without-gpm --without-svgalib"
+	doconfig
 }
 
 pbs_build() {
-	ypkg_make
+	domake
 }
 
 pbs_install() {
-	ypkg_mkinstall
-	ypkg_docp_rename links_32x32.xpm "$YPPATH_DEST"/usr/share/icons/hicolor/32x32/apps/links.xpm
+	domkinstall
+	docp_rename links_32x32.xpm "$destdir"/usr/share/icons/hicolor/32x32/apps/links.xpm
 }

@@ -1,5 +1,5 @@
 #
-# YLmf_OS package build script
+# Ylmf OS package build script
 #
 
 DESCRIPTION="Audacious Player - Your music, your way, no exceptions"
@@ -14,27 +14,27 @@ BDEPEND=""
 RECOMMENDED=""
 
 pbs_unpack() {
-        ypkg_unpack
+        dounpack
 }
 
 pbs_config() {
-	ypkg_patch ylmfos_ffmpeg-0.8.patch
+	dopatch ylmfos_ffmpeg-0.8.patch
 
 	[[ ${ARCH} == x86_64 ]] && extraopts='' || extraopts='--disable-sse2'
 
-	YPB_CONFIG+="--enable-chardet 
+	config+="--enable-chardet 
 		     --enable-amidiplug
 		     --disable-adplug
 		     ${extraopts}"
-	YPB_CONFIG=${YPB_CONFIG/--enable-shared/}
-	ypkg_config
+	config=${config/--enable-shared/}
+	doconfig
 }
 
 pbs_build() {
-	ypkg_make
+	domake
 }
 
 pbs_install() {
-	ypkg_mkinstall
+	domkinstall
 }
 

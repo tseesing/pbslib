@@ -1,5 +1,5 @@
 #
-# YLmf_OS package build script
+# Ylmf OS package build script
 #
 
 DESCRIPTION="eio office suit"
@@ -21,15 +21,15 @@ DESKTOPFILE="eio.desktop"
 NOTES=""
 
 pbs_unpack() {
-        ypkg_unpack
+        dounpack
 }
 
 pbs_install() {
-	ypkg_patch eio.desktop.patch
-	ypkg_docp * "$YPPATH_DEST"
+	dopatch eio.desktop.patch
+	docp * "$destdir"
 	#
-	cd "$YPPATH_DEST"
-	ypkg_docp        "$FILES_PATH"/files/eioicon.png  usr/share/eiofileicon/
-	ypkg_docp_rename "$FILES_PATH"/files/eioicon.png  usr/share/eiofileicon/FileConvert.png
+	cd "$destdir"
+	docp        $filesdir/eioicon.png  usr/share/eiofileicon/
+	docp_rename $filesdir/eioicon.png  usr/share/eiofileicon/FileConvert.png
 	rm usr/share/applications/eiouninstall.desktop
 }

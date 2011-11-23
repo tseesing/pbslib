@@ -1,5 +1,5 @@
 #
-# YLmf_OS package build script
+# Ylmf OS package build script
 #
 
 DESCRIPTION="e-book reader for Unix/Windows computers"
@@ -19,28 +19,28 @@ INSTALL="$N.install"
 DESKTOPFILE="FBReader.desktop"
 
 pbs_unpack() {
-        ypkg_unpack
+        dounpack
 }
 
 pbs_config() {
-	ypkg_patch ylmfos_build-fix.patch
+	dopatch ylmfos_build-fix.patch
 
 	export CPPFLAGS="-I/usr/include/cairo"
 	export TARGET_ARCH=desktop
 	export UI_TYPE=gtk
 	export TARGET_STATUS=release
 	
-	YPB_CONFIG+=""
-	ypkg_config
+	config+=""
+	doconfig
 }
 
 pbs_build() {
 	sed -i 's#Library::Library &Library::Instance()#Library \&Library::Instance()#' fbreader/src/library/Library.cpp
-	ypkg_make INSTALLDIR=/usr
+	domake INSTALLDIR=/usr
 }
 
 pbs_install() {
-	ypkg_mkinstall INSTALLDIR=/usr
-	ypkg_doln /usr/bin/FBReader "$YPPATH_DEST"/usr/bin/fbreader
+	domkinstall INSTALLDIR=/usr
+	doln /usr/bin/FBReader "$destdir"/usr/bin/fbreader
 }
 

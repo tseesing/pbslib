@@ -1,5 +1,5 @@
 #
-# YLmf_OS package build script
+# Ylmf OS package build script
 #
 
 DESCRIPTION="Introspection infrastructure for gobject library bindings"
@@ -13,13 +13,13 @@ RDEPEND="glib2 libffi python"
 BDEPEND=""
 
 pbs_unpack() {
-        ypkg_unpack
+        dounpack
 }
 
 pbs_config() {
 	
-	YPB_CONFIG+=" --prefix=/usr   "
-	ypkg_config
+	config+=" --prefix=/usr   "
+	doconfig
 }
 
 pbs_build() {
@@ -31,5 +31,5 @@ pbs_check() {
 }
 
 pbs_install() {
-	ypkg_mkinstall
+	domkinstall
 }

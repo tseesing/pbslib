@@ -1,5 +1,5 @@
 #
-# YLmf_OS package build script
+# Ylmf OS package build script
 #
 
 DESCRIPTION="Driver for RealTek PCIE Wireless LAN NICs: RTL8188CE/RTL8192CE, RTL8191SE/RTL8192SE, RTL8192DE"
@@ -12,11 +12,11 @@ SRC_URI="ftp://WebUser:Lc9FuH5r@202.134.71.22/cn/wlan/92ce_se_de_linux_mac80211_
 PROVIDE="$N-source $N-driver $N-firmware"
 
 pbs_unpack() {
-        ypkg_unpack
+        dounpack
 }
 
 pbs_config() {
-	ypkg_patch ylmfos-makefile.patch
+	dopatch ylmfos-makefile.patch
 }
 
 rtl8192ce-source_install () {
@@ -26,8 +26,8 @@ rtl8192ce-source_install () {
 	OPINION="nodev"
         YARCH="any"
 	
-	ypkg_dosrc *
-	ypkg_dosupported "$N"_supported
+	dosrc *
+	dosupported "$N"_supported
 }
 
 rtl8192ce-firmware_install () {
@@ -35,7 +35,7 @@ rtl8192ce-firmware_install () {
 	INSTALL=""
 	YARCH="any"
 
-	ypkg_docp firmware/rtlwifi/*  "$YPPATH_DEST"/lib/firmware/rtlwifi/
+	docp firmware/rtlwifi/*  "$destdir"/lib/firmware/rtlwifi/
 }
 
 rtl8192ce-driver_install () {
@@ -45,7 +45,7 @@ rtl8192ce-driver_install () {
 	INSTALL="$N.install"
 	
 	unset ARCH
-	ypkg_make 
-	ypkg_mkinstall 
+	domake 
+	domkinstall 
 }
 

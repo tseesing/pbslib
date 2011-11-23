@@ -1,5 +1,5 @@
 #
-# YLmf_OS package build script
+# Ylmf OS package build script
 #
 
 DESCRIPTION="libreoffice draw pack"
@@ -24,16 +24,16 @@ pbs_install() {
 		echo ">>> Unpack $(basename $i)"
 		ar x "${i}"; tar xf data.tar.gz
 	done	
-	ypkg_docp opt/*   "$YPPATH_DEST"/opt
+	docp opt/*   "$destdir"/opt
 	#desktop
 	#
 	mkdir -p tmp
 	ar x LibO_3.3.2rc2_Linux_x86_install-deb_en-US/DEBS/libreoffice3_3.3.2-19_i386.deb; tar xf data.tar.gz -C tmp
 	ar x LibO_3.3.2rc2_Linux_x86_install-deb_en-US/DEBS/desktop-integration/libreoffice3.3-debian-menus_3.3-202_all.deb; tar xf data.tar.gz -C tmp
-	ypkg_docp "tmp/opt/libreoffice/share/xdg/draw.desktop"   "$YPPATH_DEST"/opt/libreoffice/share/xdg/
-	ypkg_docp_rename "tmp/opt/libreoffice/share/xdg/draw.desktop"   "$YPPATH_DEST"/usr/share/applications/libreoffice-draw.desktop
-	ypkg_dodesktop "libreoffice-draw.desktop" "tmp/usr/share/icons/gnome/48x48/apps/libreoffice-draw.png"
-	cd "$YPPATH_DEST"
-	ypkg_patch desktop-i18n.patch
+	docp "tmp/opt/libreoffice/share/xdg/draw.desktop"   "$destdir"/opt/libreoffice/share/xdg/
+	docp_rename "tmp/opt/libreoffice/share/xdg/draw.desktop"   "$destdir"/usr/share/applications/libreoffice-draw.desktop
+	dodesktop "libreoffice-draw.desktop" "tmp/usr/share/icons/gnome/48x48/apps/libreoffice-draw.png"
+	cd "$destdir"
+	dopatch desktop-i18n.patch
 }
 

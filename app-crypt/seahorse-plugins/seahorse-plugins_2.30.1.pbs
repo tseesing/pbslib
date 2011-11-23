@@ -1,5 +1,5 @@
 #
-# YLmf_OS package build script
+# Ylmf OS package build script
 #
 
 DESCRIPTION="A GNOME application for managing encryption keys"
@@ -16,13 +16,13 @@ RECOMMENDED=""
 INSTALL="$N.install"
 
 pbs_unpack() {
-        ypkg_unpack
+        dounpack
 }
 
 pbs_config() {
-	ypkg_patch 03_dont_crash_on_exit.patch
-	ypkg_patch 06_gpgme_check_version.patch
-	YPB_CONFIG+=" --disable-schemas-install 
+	dopatch 03_dont_crash_on_exit.patch
+	dopatch 06_gpgme_check_version.patch
+	config+=" --disable-schemas-install 
 		      --disable-scrollkeeper 
 		      --disable-static 
 		      --enable-shared 
@@ -32,14 +32,14 @@ pbs_config() {
 		      --enable-agent 
 		      --enable-nautilus 
 		      --disable-epiphany "
-	ypkg_config
+	doconfig
 }
 
 pbs_build() {
-	ypkg_make
+	domake
 }
 
 pbs_install() {
-	ypkg_mkinstall
+	domkinstall
 }
 

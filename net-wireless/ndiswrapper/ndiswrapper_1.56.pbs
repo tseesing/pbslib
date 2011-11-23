@@ -1,5 +1,5 @@
 #
-# YLmf_OS package build script
+# Ylmf OS package build script
 #
 
 DESCRIPTION="Wrapper for using Windows drivers for some wireless cards"
@@ -16,7 +16,7 @@ CONFLICT=""
 PROVIDE="$N-utils $N-driver $N-source"
 
 pbs_unpack() {
-        ypkg_unpack
+        dounpack
 }
 
 pbs_config() {
@@ -26,20 +26,20 @@ pbs_config() {
 		 ndiswrapper-1.56-2.6.36.patch
 		 ndiswrapper-1.56-2.6.38.patch
 		 ylmfos-makefile.patch "
-	ypkg_patch $patches
-	ypkg_config
+	dopatch $patches
+	doconfig
 }
 
 pbs_build() {
 	unset ARCH
-	ypkg_make utils
-	ypkg_make driver
+	domake utils
+	domake driver
 }
 
 
 ndiswrapper-utils_install () {
 	DESCRIPTION="Wrapper for using Windows drivers for some wireless cards, (utils)"
-	make DESTDIR="$YPPATH_DEST" install-utils	
+	make DESTDIR="$destdir" install-utils	
 }
 
 ndiswrapper-driver_install() {
@@ -47,7 +47,7 @@ ndiswrapper-driver_install() {
 	BDEPEND="make gcc linux-kernel-headers"
 	INSTALL="$N.install"
 
-	make DESTDIR="$YPPATH_DEST" install-driver
+	make DESTDIR="$destdir" install-driver
 }
 
 ndiswrapper-source_install() {
@@ -57,7 +57,7 @@ ndiswrapper-source_install() {
 	YARCH="any"
 	INSTALL="$N.install"
 
-	ypkg_doykms
-	ypkg_dosrc AUTHORS ChangeLog driver INSTALL Makefile ndiswrapper.spec README 
+	doykms
+	dosrc AUTHORS ChangeLog driver INSTALL Makefile ndiswrapper.spec README 
 }
 

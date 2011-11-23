@@ -1,5 +1,5 @@
 #
-# YLmf_OS package build script
+# Ylmf OS package build script
 #
 
 DESCRIPTION="Hardware Monitoring user-space utilities"
@@ -14,14 +14,14 @@ BDEPEND=" sysfsutils"
 RECOMMENDED=""
 
 pbs_unpack() {
-        ypkg_unpack
+        dounpack
 }
 
 pbs_build() {
-	ypkg_make
+	domake
 }
 
 pbs_install() {
-	ypkg_mkinstall PREFIX=/usr MANDIR=/usr/share/man LIBDIR=/usr/lib 
-	ypkg_dodoc COPYING INSTALL README
+	domkinstall PREFIX=/usr MANDIR=/usr/share/man LIBDIR=/usr/lib 
+	dodoc COPYING INSTALL README
 }

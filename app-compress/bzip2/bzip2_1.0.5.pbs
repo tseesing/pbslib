@@ -1,5 +1,5 @@
 #
-# YLmf_OS package build script
+# Ylmf OS package build script
 #
 
 DESCRIPTION="A high-quality data compressor"
@@ -10,11 +10,11 @@ RDEPEND="glibc"
 BDEPEND=""
 
 pbs_unpack() {
-        ypkg_unpack
+        dounpack
 }
 
 pbs_config() {
-	ypkg_patch bzip2-1.0.5-install_docs-1.patch
+	dopatch bzip2-1.0.5-install_docs-1.patch
 	#The following command ensures installation of symbolic links are relative
 	sed -i 's@\(ln -s -f \)$(PREFIX)/bin/@\1@' Makefile
 }
@@ -24,14 +24,14 @@ pbs_build() {
 	#utilities against it
 	make -f Makefile-libbz2_so
 	make clean
-	ypkg_make
+	domake
 }
 
 pbs_install() {
-	mkdir -p "$YPPATH_DEST"/usr
-	make PREFIX="$YPPATH_DEST"/usr install
-	ypkg_domv "$YPPATH_DEST"/usr/man  "$YPPATH_DEST"/usr/share
-	ypkg_docp libbz2.so* "$YPPATH_DEST"/lib
-	cd "$YPPATH_DEST"
-	ypkg_doln /usr/lib/libbz2.so.1.0 usr/lib/libbz2.so
+	mkdir -p "$destdir"/usr
+	make PREFIX="$destdir"/usr install
+	domv "$destdir"/usr/man  "$destdir"/usr/share
+	docp libbz2.so* "$destdir"/lib
+	cd "$destdir"
+	doln /usr/lib/libbz2.so.1.0 usr/lib/libbz2.so
 }

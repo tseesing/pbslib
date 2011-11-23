@@ -1,5 +1,5 @@
 #
-# YLmf_OS package build script
+# Ylmf OS package build script
 #
 
 DESCRIPTION="The swiss army knife of sound processing programs"
@@ -16,20 +16,20 @@ RECOMMENDED=""
 CONFLICT=""
 
 pbs_unpack() {
-        ypkg_unpack
+        dounpack
 }
 
 pbs_config() {
-	ypkg_patch sox-14.3.2-uclibc.patch sox-14.3.2-ffmpeg.patch
-	YPB_CONFIG+=""
-	ypkg_config
+	dopatch sox-14.3.2-uclibc.patch sox-14.3.2-ffmpeg.patch
+	config+=""
+	doconfig
 }
 
 pbs_build() {
-	ypkg_make
+	domake
 }
 
 pbs_install() {
-	ypkg_mkinstall
+	domkinstall
 }
 

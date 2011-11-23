@@ -1,5 +1,5 @@
 #
-# YLmf_OS package build script
+# Ylmf OS package build script
 #
 
 DESCRIPTION="Google's photo organizer"
@@ -18,15 +18,15 @@ CONFLICT=""
 NOTES=""
 
 pbs_unpack() {
-        ypkg_unpack
+        dounpack
 }
 
 pbs_install() {
-	ypkg_docp data/*  "$YPPATH_DEST"
-	cd "$YPPATH_DEST"
-	ypkg_dodesktop "$N.desktop" "opt/google/picasa/3.0/desktop/picasa32x32.xpm"
+	docp data/*  "$destdir"
+	cd "$destdir"
+	dodesktop "$N.desktop" "opt/google/picasa/3.0/desktop/picasa32x32.xpm"
 	for i in picasafontcfg showpicasascreensaver;do
-		ypkg_doln /usr/bin/"${i}" opt/google/picasa/3.0/bin/"${i}"
+		doln /usr/bin/"${i}" opt/google/picasa/3.0/bin/"${i}"
 	done
 	rm -rf opt/google/picasa/3.0/wine/lib/wine/wineesd.drv.so
 }

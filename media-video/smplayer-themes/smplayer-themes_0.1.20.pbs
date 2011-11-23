@@ -1,5 +1,5 @@
 #
-# YLmf_OS package build script
+# Ylmf OS package build script
 #
 
 DESCRIPTION="themes for smplayer"
@@ -15,15 +15,15 @@ BDEPEND=""
 RECOMMENDED=""
 
 pbs_unpack() {
-        ypkg_unpack
+        dounpack
 }
 
 pbs_build() {
-	ypkg_make PREFIX=/usr
+	domake PREFIX=/usr
 }
 
 pbs_install() {
-	ypkg_mkinstall PREFIX=/usr
+	domkinstall PREFIX=/usr
 }
 
 

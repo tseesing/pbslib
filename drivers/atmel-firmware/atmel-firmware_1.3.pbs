@@ -1,5 +1,5 @@
 #
-# YLmf_OS package build script
+# Ylmf OS package build script
 #
 
 DESCRIPTION="Firmware and config for atmel and atmel_cs wlan drivers included in linux 2.6"
@@ -17,13 +17,13 @@ CONFLICT=""
 OPINION="nodev"
 
 pbs_unpack() {
-        ypkg_unpack
+        dounpack
 }
 
 pbs_install() {
-	ypkg_patch ylmfos-install.patch
-	export DESTDIR="$YPPATH_DEST" 
+	dopatch ylmfos-install.patch
+	export DESTDIR="$destdir" 
 	bash install.sh
-	ypkg_dodoc COPYING README
+	dodoc COPYING README
 }
 

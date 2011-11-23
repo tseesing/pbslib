@@ -1,5 +1,5 @@
 #
-# YLmf_OS package build script
+# Ylmf OS package build script
 #
 
 DESCRIPTION="access control list utilities, libraries and headers"
@@ -13,20 +13,20 @@ RDEPEND="attr glibc"
 BDEPEND=""
 
 pbs_unpack() {
-        ypkg_unpack
+        dounpack
 }
 
 pbs_config() {
 	export INSTALL_USER=root INSTALL_GROUP=root 
-	YPB_CONFIG="--prefix=/usr --libdir=/lib --libexecdir=/usr/lib"
-	ypkg_config
+	config="--prefix=/usr --libdir=/lib --libexecdir=/usr/lib"
+	doconfig
 }
 
 pbs_build() {
-	ypkg_make
+	domake
 }
 
 pbs_install() {
-	make DIST_ROOT="$YPPATH_DEST" install install-lib install-dev
+	make DIST_ROOT="$destdir" install install-lib install-dev
 }
 

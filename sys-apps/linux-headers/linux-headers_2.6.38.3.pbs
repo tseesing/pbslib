@@ -1,5 +1,5 @@
 #
-# YLmf_OS package build script
+# Ylmf OS package build script
 #
 
 DESCRIPTION="Linux header files for glibc/eglibc"
@@ -17,7 +17,7 @@ CONFLICT="$N-dev"
 OPINION="nodev"
 
 pbs_unpack() {
-        ypkg_unpack
+        dounpack
 }
 
 pbs_build() {
@@ -28,8 +28,8 @@ pbs_build() {
 
 pbs_install() {
 	make INSTALL_HDR_PATH=dest headers_install
-	ypkg_docp dest/* "$YPPATH_DEST"/usr/
-	cd "$YPPATH_DEST"
+	docp dest/* "$destdir"/usr/
+	cd "$destdir"
 	find /usr/include -name .install -or -name ..install.cmd |xargs rm -f
 
         # provided by libdrm and glibc

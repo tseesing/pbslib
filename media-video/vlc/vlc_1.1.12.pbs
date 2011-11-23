@@ -1,5 +1,5 @@
 #
-# YLmf_OS package build script
+# Ylmf OS package build script
 #
 
 DESCRIPTION="A free and open source cross-platform multimedia player and framework that plays most multimedia files"
@@ -7,9 +7,9 @@ HOMEPAGE="http://www.videolan.org/"
 LICENSE="GPL"
 PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 
-SRC_URI="http://ncu.dl.sourceforge.net/project/"$N"/"$V"/"$N-$V".tar.xz"
+SRC_URI="http://download.videolan.org/pub/videolan/"$N"/"$V"/"$N-$V".tar.bz2"
 
-RDEPEND="a52dec alsa-lib atk attr audiofile avahi bzip2 cairo cyrus-sasl dbus dbus-glib directfb esound expat ffmpeg flac fontconfig freetype fribidi gcc gconf gdk-pixbuf glib2 glibc gnome-vfs gnutls gtk+ jack-audio-connection-kit json-c keyutils krb5 lame libcap libcddb libcroco libdrm libgcrypt libgpg-error libICE libmad libmodplug libmpcdec libmpeg2 libmtp libnotify libogg libpng libproxy librsvg libsamplerate libsdl libSM libsndfile libtasn1 libtheora libupnp libusb libusb-compat libva libvorbis libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libxml2 libXrandr libXrender libXt libXtst libXxf86vm mesa nas opencore-amr openldap openssl orbit orc pango pixman portaudio pulseaudio rtmpdump samba schroedinger sdl-image speex sqlite taglib talloc tdb udev util-linux-ng v4l-utils x264 xcb-util xvidcore zlib"
+RDEPEND="a52dec alsa-lib ati-graphic-utils atk attr audiofile avahi bzip2 cairo cyrus-sasl dbus dbus-glib directfb esound expat faad2 ffmpeg flac fontconfig freetype fribidi gcc gconf gdk-pixbuf glib2 glibc gnome-vfs gnutls gtk+ jack-audio-connection-kit json-c keyutils krb5 lame libav libcap libcddb libcroco libdrm libgcrypt libgpg-error libICE libmad libmodplug libmpcdec libmpeg2 libmtp libnotify libogg libpng libproxy librsvg libsamplerate libsdl libSM libsndfile libtasn1 libtheora libupnp libusb libusb-compat libva libvorbis libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libxml2 libXrandr libXrender libXt libXtst libXxf86vm lirc mesa nas ncurses opencore-amr openldap openssl orbit orc pango pixman portaudio pulseaudio rtmpdump samba schroedinger sdl-image speex sqlite taglib talloc tdb udev util-linux-ng v4l-utils x264 xcb-util xvidcore zlib"
 BDEPEND=""
 RECOMMENDED=""
 CONFLICT=""
@@ -17,19 +17,33 @@ CONFLICT=""
 INSTALL="$N.install"
 
 pbs_unpack() {
-        ypkg_unpack
+        dounpack
 }
 
 pbs_config() {
-	YPB_CONFIG+="--disable-qt4 --disable-skins2"
-	ypkg_config
+	config+="--disable-qt4 
+	         --disable-skins2
+		 --disable-postproc
+		 --disable-rpath 
+	         --enable-faad
+                 --enable-v4l 
+		 --enable-snapshot 
+                 --enable-dbus-control 
+		 --enable-nls 
+		 --enable-lirc 
+		 --enable-pvr 
+		 --enable-ncurses 
+		 --enable-upnp 
+		 --enable-realrtsp"
+		 #--with-live555-tree=/usr/lib/live 
+	doconfig
 }
 
 pbs_build() {
-	ypkg_make
+	domake
 }
 
 pbs_install() {
-	ypkg_mkinstall
+	domkinstall
 }
 

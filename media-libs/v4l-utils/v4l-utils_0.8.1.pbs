@@ -1,5 +1,5 @@
 #
-# YLmf_OS package build script
+# Ylmf OS package build script
 #
 
 DESCRIPTION="Userspace tools and conversion library for Video 4 Linux"
@@ -16,18 +16,18 @@ RECOMMENDED=""
 PROVIDE="qv4l2"
 
 pbs_unpack() {
-        ypkg_unpack
+        dounpack
 }
 
 pbs_build() {
-	ypkg_make
+	domake
 }
 
 pbs_install() {
-	make DESTDIR="$YPPATH_DEST" PREFIX="/usr" install
+	make DESTDIR="$destdir" PREFIX="/usr" install
 	
 	# Splite
-	rm "$YPPATH_DEST"/usr/bin/qv4l2	
+	rm "$destdir"/usr/bin/qv4l2	
 }
 
 qv4l2_install() {
@@ -37,7 +37,7 @@ qv4l2_install() {
 	PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 	RDEPEND="expat fontconfig freetype gcc glib2 glibc libdrm libICE libpng libSM libX11 libXau libxcb libXdmcp libXext libXrender mesa qt-core udev util-linux-ng v4l-utils zlib"
 
-	ypkg_docp utils/qv4l2/qv4l2 "$YPPATH_DEST"/usr/bin/
-	chmod 755 "$YPPATH_DEST"/usr/bin/qv4l2
+	docp utils/qv4l2/qv4l2 "$destdir"/usr/bin/
+	chmod 755 "$destdir"/usr/bin/qv4l2
 }
 

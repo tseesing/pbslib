@@ -1,5 +1,5 @@
 #
-# YLmf_OS package build script
+# Ylmf OS package build script
 #
 
 DESCRIPTION="The qBittorrent project aims to provide a Free Software alternative to µtorrent. "
@@ -21,39 +21,39 @@ INSTALL="$N.install"
 NOTES=""
 
 pbs_unpack() {
-        ypkg_unpack
+        dounpack
 }
 
 pbs_config() {
-	ypkg_patch ylmfos-desktop.patch
-	YPB_CONFIG=" --prefix=/usr"
-	ypkg_config
+	dopatch ylmfos-desktop.patch
+	config=" --prefix=/usr"
+	doconfig
 }
 
 pbs_build() {
-	ypkg_make
+	domake
 }
 
 pbs_install() {
 	#
-	ypkg_docp  src/menuicons/16x16/apps/qbittorrent.png   "$YPPATH_DEST"/usr/share/icons/hicolor/16x16/apps/
-	ypkg_docp  src/menuicons/22x22/apps/qbittorrent.png   "$YPPATH_DEST"/usr/share/icons/hicolor/22x22/apps/
-	ypkg_docp  src/menuicons/24x24/apps/qbittorrent.png   "$YPPATH_DEST"/usr/share/icons/hicolor/24x24/apps/
-	ypkg_docp  src/menuicons/32x32/apps/qbittorrent.png   "$YPPATH_DEST"/usr/share/icons/hicolor/32x32/apps/
-	ypkg_docp  src/menuicons/36x36/apps/qbittorrent.png   "$YPPATH_DEST"/usr/share/icons/hicolor/36x36/apps/
-	ypkg_docp  src/menuicons/48x48/apps/qbittorrent.png   "$YPPATH_DEST"/usr/share/icons/hicolor/48x48/apps/
-	ypkg_docp  src/menuicons/64x64/apps/qbittorrent.png   "$YPPATH_DEST"/usr/share/icons/hicolor/64x64/apps/
-	ypkg_docp  src/menuicons/72x72/apps/qbittorrent.png   "$YPPATH_DEST"/usr/share/icons/hicolor/72x72/apps/
-	ypkg_docp  src/menuicons/96x96/apps/qbittorrent.png   "$YPPATH_DEST"/usr/share/icons/hicolor/96x96/apps/
-	ypkg_docp  src/menuicons/128x128/apps/qbittorrent.png "$YPPATH_DEST"/usr/share/icons/hicolor/128x128/apps/
-	ypkg_docp  src/menuicons/192x192/apps/qbittorrent.png "$YPPATH_DEST"/usr/share/icons/hicolor/192x192/apps/
-	ypkg_docp  src/menuicons/48x48/apps/qbittorrent.png   "$YPPATH_DEST"/usr/share/pixmaps/
+	docp  src/menuicons/16x16/apps/qbittorrent.png   "$destdir"/usr/share/icons/hicolor/16x16/apps/
+	docp  src/menuicons/22x22/apps/qbittorrent.png   "$destdir"/usr/share/icons/hicolor/22x22/apps/
+	docp  src/menuicons/24x24/apps/qbittorrent.png   "$destdir"/usr/share/icons/hicolor/24x24/apps/
+	docp  src/menuicons/32x32/apps/qbittorrent.png   "$destdir"/usr/share/icons/hicolor/32x32/apps/
+	docp  src/menuicons/36x36/apps/qbittorrent.png   "$destdir"/usr/share/icons/hicolor/36x36/apps/
+	docp  src/menuicons/48x48/apps/qbittorrent.png   "$destdir"/usr/share/icons/hicolor/48x48/apps/
+	docp  src/menuicons/64x64/apps/qbittorrent.png   "$destdir"/usr/share/icons/hicolor/64x64/apps/
+	docp  src/menuicons/72x72/apps/qbittorrent.png   "$destdir"/usr/share/icons/hicolor/72x72/apps/
+	docp  src/menuicons/96x96/apps/qbittorrent.png   "$destdir"/usr/share/icons/hicolor/96x96/apps/
+	docp  src/menuicons/128x128/apps/qbittorrent.png "$destdir"/usr/share/icons/hicolor/128x128/apps/
+	docp  src/menuicons/192x192/apps/qbittorrent.png "$destdir"/usr/share/icons/hicolor/192x192/apps/
+	docp  src/menuicons/48x48/apps/qbittorrent.png   "$destdir"/usr/share/pixmaps/
 	#
-	ypkg_doman doc/qbittorrent.1
+	doman doc/qbittorrent.1
 	#
-	ypkg_docp  src/qbittorrent        	              "$YPPATH_DEST"/usr/bin/
+	docp  src/qbittorrent        	              "$destdir"/usr/bin/
 	#
-	ypkg_docp_rename  src/Icons/qBittorrent.desktop       "$YPPATH_DEST"/usr/share/applications/"$N".desktop
-	chmod 755 "$YPPATH_DEST"/usr/bin/qbittorrent
+	docp_rename  src/Icons/qBittorrent.desktop       "$destdir"/usr/share/applications/"$N".desktop
+	chmod 755 "$destdir"/usr/bin/qbittorrent
 }
 

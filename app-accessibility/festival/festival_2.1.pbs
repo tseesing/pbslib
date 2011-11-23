@@ -1,5 +1,5 @@
 #
-# YLmf_OS package build script
+# Ylmf OS package build script
 #
 
 DESCRIPTION="Festival Text to Speech engine"
@@ -20,7 +20,7 @@ RECOMMENDED=""
 CONFLICT=""
 
 pbs_unpack() {
-        ypkg_unpack
+        dounpack
 	tar xf "$YPPATH_SOURCE"/speech_tools-2.1-release.tar.gz
 }
 
@@ -34,13 +34,13 @@ pbs_build() {
 	#
 	# Build Speech Tools first
 	cd "../speech_tools/"
-	ypkg_patch speechconfig.patch
+	dopatch speechconfig.patch
 	./configure --prefix=/usr --sysconfdir=/etc
 	make OPTIMISE_CXXFLAGS="${CXXFLAGS}" OPTIMISE_CCFLAGS="${CFLAGS}"
 	cd -
 
 	# Build Festival itself
-	patch -Np1 -i "$FILES_PATH"/files/festconfig.patch
+	patch -Np1 -i $filesdir/festconfig.patch
 	
 	# Avoid make failure on making scripts and docs
 	sed -i "s#examples bin doc#examples#" Makefile
@@ -52,53 +52,53 @@ pbs_build() {
 pbs_install() {
 	# Install Speech Tools first
 	cd ../speech_tools
-	install -dm755 "$YPPATH_DEST"/usr/{bin,lib,include/speech_tools/{,instantiate,ling_class,rxp,sigpr,unix}}
+	install -dm755 "$destdir"/usr/{bin,lib,include/speech_tools/{,instantiate,ling_class,rxp,sigpr,unix}}
 	
 	#binaries
 	#move binaries over wrappers (FS#7864)
 	for i in $(grep -l 'EST shared script' bin/*); do
 		cp -f main/$(basename $i) bin;
 	done
-	install -m755 -t "$YPPATH_DEST"/usr/bin bin/[a-z]*
-	rm -f "$YPPATH_DEST"/usr/bin/{est_gdb,est_examples,est_program}
+	install -m755 -t "$destdir"/usr/bin bin/[a-z]*
+	rm -f "$destdir"/usr/bin/{est_gdb,est_examples,est_program}
 
 	#libraries
-	install -m755 -t "$YPPATH_DEST"/usr/lib lib/lib*.so.*
-	ypkg_doln /usr/lib/libestbase.so.2.1.1 "$YPPATH_DEST"/usr/lib/libestbase.so
-	ypkg_doln /usr/lib/libeststring.so.1.2 "$YPPATH_DEST"/usr/lib/libeststring.so
-	install -m644 -t "$YPPATH_DEST"/usr/lib lib/lib*.a
+	install -m755 -t "$destdir"/usr/lib lib/lib*.so.*
+	doln /usr/lib/libestbase.so.2.1.1 "$destdir"/usr/lib/libestbase.so
+	doln /usr/lib/libeststring.so.1.2 "$destdir"/usr/lib/libeststring.so
+	install -m644 -t "$destdir"/usr/lib lib/lib*.a
 
 	#headers
 	for dir in {.,instantiate,ling_class,rxp,sigpr,unix}; do
-		install -m644 -t "$YPPATH_DEST"/usr/include/speech_tools/$dir include/$dir/*.h
+		install -m644 -t "$destdir"/usr/include/speech_tools/$dir include/$dir/*.h
 	done
 
 	# Install Festival itself
 	cd -
 			
 	#binaries
-	ypkg_docp src/main/{festival,festival_client} "$YPPATH_DEST"/usr/bin/
-	ypkg_docp examples/{benchmark,dumpfeats,durmeanstd,latest,make_utts,powmeanstd,run-festival-script,saytime,scfg_parse_text,text2pos,text2wave} "$YPPATH_DEST"/usr/bin/
-	chmod 755 "$YPPATH_DEST"/usr/bin/*
+	docp src/main/{festival,festival_client} "$destdir"/usr/bin/
+	docp examples/{benchmark,dumpfeats,durmeanstd,latest,make_utts,powmeanstd,run-festival-script,saytime,scfg_parse_text,text2pos,text2wave} "$destdir"/usr/bin/
+	chmod 755 "$destdir"/usr/bin/*
 
 	#libraries
-	install -m644 src/lib/libFestival.a "$YPPATH_DEST"/usr/lib/
+	install -m644 src/lib/libFestival.a "$destdir"/usr/lib/
 
 	#headers
-	ypkg_docp src/include/*.h "$YPPATH_DEST"/usr/include/festival
+	docp src/include/*.h "$destdir"/usr/include/festival
 	
 	#
-	ypkg_docp lib/* "$YPPATH_DEST"/usr/share/festival
-	rm -f $(find "$YPPATH_DEST"/usr/share/festival -name Makefile)
-	rm -f $(find "$YPPATH_DEST"/usr/bin -name Makefile)
+	docp lib/* "$destdir"/usr/share/festival
+	rm -f $(find "$destdir"/usr/share/festival -name Makefile)
+	rm -f $(find "$destdir"/usr/bin -name Makefile)
 														#create voices directory
-	install -dm755 "$YPPATH_DEST"/usr/share/festival/voices
+	install -dm755 "$destdir"/usr/share/festival/voices
 														#licenses
-	ypkg_dodoc COPYING ../speech_tools/README 
+	doc COPYING ../speech_tools/README 
 
 	#################################################################
 	# Ok now some general cleanups
-	for i in $(find "$YPPATH_DEST"/usr/include/ -type f); do
+	for i in $(find "$destdir"/usr/include/ -type f); do
 		sed -i -e 's,"EST.*\.h",\<speech_tools/&\>,g' -e 's,speech_tools/\",speech_tools/,g' \
 		       -e 's,"siod.*\.h",\<speech_tools/&\>,g' -e 's,speech_tools/\",speech_tools/,g' \
 		       -e 's,"instantiate/.*\.h",\<speech_tools/&\>,g' -e 's,speech_tools/instantiate/\",speech_tools/instantiate/,g' -e 's,"instantiate,instantiate,g' \

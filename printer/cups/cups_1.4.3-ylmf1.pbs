@@ -1,5 +1,5 @@
 #
-# YLmf_OS package build script
+# Ylmf OS package build script
 #
 
 DESCRIPTION="The Common Unix Printing System."
@@ -19,19 +19,19 @@ NOTES="http://wiki.linuxfromscratch.org/blfs/wiki/cups
 lp group/user should be created automatically"
 
 pbs_unpack() {
-        ypkg_unpack
+        dounpack
 }
 
 pbs_config() {
-	ypkg_patch desktop-not-show.patch
-	ypkg_config
+	dopatch desktop-not-show.patch
+	doconfig
 }
 
 pbs_build() {
-	ypkg_make
+	domake
 }
 
 pbs_install() {
-	make BUILDROOT="$YPPATH_DEST" install
+	make BUILDROOT="$destdir" install
 }
 

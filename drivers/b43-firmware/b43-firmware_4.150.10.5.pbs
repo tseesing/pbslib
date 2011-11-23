@@ -1,5 +1,5 @@
 #
-# YLmf_OS package build script
+# Ylmf OS package build script
 #
 
 DESCRIPTION="broadcom firmware for b43 LP PHY and >=linux-2.6.32"
@@ -18,7 +18,7 @@ CONFLICT=""
 PINION="nodev"
 
 pbs_unpack() {
-        ypkg_unpack
+        dounpack
 }
 
 pbs_build() {
@@ -28,6 +28,6 @@ pbs_build() {
 }
 
 pbs_install() {
-	ypkg_docp build/* "$YPPATH_DEST"/lib/firmware
+	docp build/* "$destdir"/lib/firmware
 }
 

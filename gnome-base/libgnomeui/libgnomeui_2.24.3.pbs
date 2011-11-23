@@ -1,5 +1,5 @@
 #
-# YLmf_OS package build script
+# Ylmf OS package build script
 #
 
 DESCRIPTION="User Interface routines for Gnome"
@@ -15,18 +15,18 @@ BDEPEND="gnome-keyring-dev lsa-lib-dev       eggdbus                            
 RECOMMENDED=""
 
 pbs_unpack() {
-        ypkg_unpack
+        dounpack
 }
 
 pbs_config() {
-	ypkg_config
+	doconfig
 }
 
 pbs_build() {
-	ypkg_make
+	domake
 }
 
 pbs_install() {
-	ypkg_mkinstall
-	ypkg_doln /usr/include/libgnomeui-2.0/libgnomeui "$YPPATH_DEST"/usr/include/libgnomeui
+	domkinstall
+	doln /usr/include/libgnomeui-2.0/libgnomeui "$destdir"/usr/include/libgnomeui
 }

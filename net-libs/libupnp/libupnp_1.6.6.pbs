@@ -1,5 +1,5 @@
 #
-# YLmf_OS package build script
+# Ylmf OS package build script
 #
 
 DESCRIPTION="An Portable Open Source UPnP Development Kit"
@@ -15,21 +15,21 @@ BDEPEND=""
 NOTES=""
 
 pbs_unpack() {
-        ypkg_unpack
+        dounpack
 }
 
 pbs_config() {
-	ypkg_patch "$N-$V$R"-patch-statevar-query.patch
+	dopatch "$N-$V$R"-patch-statevar-query.patch
 	# fix tests
 	AT_M4DIR="m4" autoreconf
 	chmod +x ixml/test/test_document.sh
-	ypkg_config
+	doconfig
 }
 
 pbs_build() {
-	ypkg_make
+	domake
 }
 
 pbs_install() {
-	ypkg_mkinstall
+	domkinstall
 }

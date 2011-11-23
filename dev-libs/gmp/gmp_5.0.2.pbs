@@ -1,5 +1,5 @@
 #
-# YLmf_OS package build script
+# Ylmf OS package build script
 #
 
 DESCRIPTION="Library for arithmetic on arbitrary precision integers, rational numbers, and floating-point numbers"
@@ -15,7 +15,7 @@ BDEPEND=""
 INSTALL="$N.install"
 
 pbs_unpack() {
-        ypkg_unpack
+        dounpack
 }
 
 pbs_config() {
@@ -27,8 +27,8 @@ pbs_config() {
 	case $ARCH in
 		i?86) export ABI=32
 	esac	
-	YPB_CONFIG+="--enable-cxx --enable-mpbsd"
-	ypkg_config
+	config+="--enable-cxx --enable-mpbsd"
+	doconfig
 }
 
 pbs_build() {
@@ -36,13 +36,13 @@ pbs_build() {
 }
 
 pbs_install() {
-	ypkg_mkinstall
-	cd "$YPPATH_DEST"
+	domkinstall
+	cd "$destdir"
 
 	# FIXME compatible with old version
-	ypkg_doln /usr/lib/libgmp.so.10 usr/lib/libgmp.so.3
+	doln /usr/lib/libgmp.so.10 usr/lib/libgmp.so.3
 
-	#cd "$YPPATH_DEST"
+	#cd "$destdir"
 	#case $ARCH in 
 	#	i?86)	mv usr/include/gmp{,-32}.h ;;
 	#      x86_64)	mv usr/include/gmp{,-64}.h

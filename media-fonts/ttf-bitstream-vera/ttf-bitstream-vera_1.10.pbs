@@ -1,5 +1,5 @@
 #
-# YLmf_OS package build script
+# Ylmf OS package build script
 #
 
 DESCRIPTION="Bitstream Vera font family"
@@ -16,12 +16,12 @@ RECOMMENDED=""
 INSTALL="$N.install"
 
 pbs_unpack() {
-        ypkg_unpack
+        dounpack
 }
 
 pbs_install() {
-	ypkg_docp *ttf "$YPPATH_DEST"/usr/share/fonts/ttf-bitstream-vera
-	ypkg_docp_rename local.conf "$YPPATH_DEST"/etc/fonts/bitstream-vera.conf
-	ypkg_dodoc COPYRIGHT* README* RELEASE* 
+	docp *ttf "$destdir"/usr/share/fonts/ttf-bitstream-vera
+	docp_rename local.conf "$destdir"/etc/fonts/bitstream-vera.conf
+	dodoc COPYRIGHT* README* RELEASE* 
 }
 

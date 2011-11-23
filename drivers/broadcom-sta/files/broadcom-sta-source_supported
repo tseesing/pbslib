@@ -1,0 +1,17 @@
+#!/bin/bash
+#
+#
+
+device_id () {
+	ids=$(grep PCI_VENDOR_ID_BROADCOM, $1 |awk -F, '{print $2}' |xargs)	
+	for id in $ids; do
+		printf "alias pci:v%08Xd%08Xsv*sd*bc*sc*i* %s %s\n" 0x14E4 "$id"
+	done
+	return 0
+}
+
+#
+echo "package broadcom-sta-driver"
+echo "module wl.ko"
+echo "description Broadcom STA wireless network cards: BCM4311/BCM4312/BCM4313/BCM4321/BCM4322."
+device_id src/wl/sys/wl_linux.c

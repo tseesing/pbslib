@@ -3,7 +3,7 @@
 unit="NetworkManager.service"
 
 post_install() {
-	ypkg_groupadd -r "netdev"
+	dogroupadd -r "netdev"
 
 	# Systemd unit
 	systemctl enable $unit
@@ -12,7 +12,7 @@ post_install() {
 }
 
 post_remove() {
-	ypkg_groupdel "netdev"
+	dogroupdel "netdev"
 	stop $unit
 	systemctl disable $unit
 	return 0

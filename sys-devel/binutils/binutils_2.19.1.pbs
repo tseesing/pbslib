@@ -1,5 +1,5 @@
 #
-# YLmf_OS package build script
+# Ylmf OS package build script
 #
 
 DESCRIPTION="Tools necessary to build programs"
@@ -11,11 +11,11 @@ RDEPEND="glibc zlib"
 BDEPEND=" gcc-dev "
 
 pbs_unpack() {
-        ypkg_unpack
+        dounpack
 }
 
 pbs_config() {
-	ypkg_config
+	doconfig
 }
 
 pbs_build() {
@@ -23,6 +23,6 @@ pbs_build() {
 }
 
 pbs_install() {
-	ypkg_mkinstall tooldir=/usr
-	ypkg_docp include/libiberty.h "$YPPATH_DEST"/usr/include
+	domkinstall tooldir=/usr
+	docp include/libiberty.h "$destdir"/usr/include
 }

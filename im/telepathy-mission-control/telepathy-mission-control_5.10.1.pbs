@@ -1,0 +1,36 @@
+#
+# Ylmf OS package build script
+#
+
+DESCRIPTION="Telepathy Mission Control"
+HOMEPAGE="http://telepathy.freedesktop.org"
+LICENSE="GPL"
+PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
+
+SRC_URI="http://telepathy.freedesktop.org/releases/"$N"/"$N-$V".tar.gz"
+
+RDEPEND="dbus dbus-glib glib2 glibc libgcrypt libgnome-keyring libgpg-error networkmanager nspr nss telepathy-glib udev upower util-linux-ng zlib"
+BDEPEND=""
+RECOMMENDED=""
+
+INSTALL="$N.install"
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_config() {
+	config+="--enable-gnome-keyring  
+	         --disable-debug
+	         --disable-schemas-compile"
+	doconfig
+}
+
+pbs_build() {
+	domake
+}
+
+pbs_install() {
+	domkinstall
+}
+

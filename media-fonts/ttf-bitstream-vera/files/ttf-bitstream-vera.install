@@ -1,7 +1,7 @@
 . /usr/lib/ybs/funcs
 
 post_install() {
-	ypkg_dofont /usr/share/fonts/ttf-bitstream-vera
+	dofont /usr/share/fonts/ttf-bitstream-vera
 }
 
 post_remove() {

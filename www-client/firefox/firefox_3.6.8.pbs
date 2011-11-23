@@ -1,5 +1,5 @@
 #
-# YLmf_OS package build script
+# Ylmf OS package build script
 #
 
 DESCRIPTION="Firefox Web Browser"
@@ -12,14 +12,14 @@ BDEPEND=""
 
 pbs_unpack()
 {
-        ypkg_unpack
+        dounpack
 }
 
 pbs_config()
 {
 	cd mozilla-1.9.2
 	#cd mozilla-central
-	YPB_CONFIG+="   --prefix=/usr 	              \ 
+	config+="   --prefix=/usr 	              \ 
 	                --enable-application=browser  \
 			--libexecdir=/usr/lib/firefox  \
 			--sysconfdir=/etc  \
@@ -33,15 +33,15 @@ pbs_config()
 			--with-system-png  \
 			--with-system-zlib  \
 			--disable-gnomevfs"
-	ypkg_config
+	doconfig
 }
 
 pbs_build()
 {
-	ypkg_make
+	domake
 }
 
 pbs_install()
 {
-	ypkg_mkinstall
+	domkinstall
 }

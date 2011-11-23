@@ -1,5 +1,5 @@
 #
-# YLmf_OS package build script
+# Ylmf OS package build script
 #
 
 DESCRIPTION="The open-source project behind Google Chrome, an attempt at creating a safer, faster, and more stable browser."
@@ -15,26 +15,26 @@ BDEPEND="perl gperf pkgconfig flex renderproto-dev libXinerama-dev libvpx-dev sw
 INSTALL="$N.install"
 
 pbs_unpack() {
-        ypkg_unpack
+        dounpack
 } 
 
 pbs_config() {
-	#ypkg_patch chromium-13.0.772.0-gcc46.patch \
+	#dopatch chromium-13.0.772.0-gcc46.patch \
 	#           tcmalloc-prototypes-glibc-2.14.patch \
 
 	# Ylmf OS patches
-	ypkg_patch ylmfos-chrome-wrapper.patch ylmfos-baidu-tn.patch
+	dopatch ylmfos-chrome-wrapper.patch ylmfos-baidu-tn.patch
 
 	# Fix build with gcc 4.6
 	# http://code.google.com/p/chromium/issues/detail?id=80071
-	ypkg_patch gcc-4.6.patch
+	dopatch gcc-4.6.patch
 	
 	# Fix build with glibc 2.14
 	# http://code.google.com/p/chromium/issues/detail?id=86646
-	ypkg_patch tcmalloc-prototypes-glibc-2.14.patch 
+	dopatch tcmalloc-prototypes-glibc-2.14.patch 
 
 	# Fix build with Perl 5.14
-	ypkg_patch make-hash-tools-use-if-instead-of-switch.patch
+	dopatch make-hash-tools-use-if-instead-of-switch.patch
 
         # Fix build with CUPS 1.5
         sed -i '/#include <cups\/cups.h>/ a #include <cups/ppd.h>' \
@@ -44,14 +44,14 @@ pbs_config() {
 	# and uses massive amounts of power
 	# http://code.google.com/p/chromium/issues/detail?id=77625
 	# Patch from: http://code.google.com/p/v8/source/detail?r=8472
-	#ypkg_patch v8-r8472-crbug-77625-huge-number-of-cpu-wakeups.patch
+	#dopatch v8-r8472-crbug-77625-huge-number-of-cpu-wakeups.patch
 
 	#
-	ypkg_patch ffmpeg_deprecated.patch
+	dopatch ffmpeg_deprecated.patch
 
 	# Translation
 	ls -1d translations-patches/*.patch 2>/dev/null |while read i;do
-		ypkg_patch $(readlink -f "${i}")
+		dopatch $(readlink -f "${i}")
 	done
 	# see http://code.google.com/p/chromium/issues/detail?id=41887
 	export CXXFLAGS="${CXXFLAGS} -fno-ipa-cp"
@@ -95,34 +95,34 @@ pbs_config() {
 }
 
 pbs_build() {
-	ypkg_make ${MAKEFLAGS} BUILDTYPE=Release V=1 chrome chrome_sandbox || return 1
+	domake ${MAKEFLAGS} BUILDTYPE=Release V=1 chrome chrome_sandbox || return 1
 }
 
 pbs_install() {
-	mkdir -p "$YPPATH_DEST"
-	install -m 0755 -D  	           out/Release/chrome           "${YPPATH_DEST}"/usr/lib/chromium/chromium
-       	install -m 4555 -o root -g root -D out/Release/chrome_sandbox 	"${YPPATH_DEST}"/usr/lib/chromium/chromium-sandbox
-        install -m 0644 -D   		   out/Release/chrome.pak   	"${YPPATH_DEST}"/usr/lib/chromium/chrome.pak
-	install -m 0644 -D                 out/Release/resources.pak    "${YPPATH_DEST}"/usr/lib/chromium/resources.pak
-	ypkg_docp  out/Release/locales          "${YPPATH_DEST}"/usr/lib/chromium/
-	ypkg_docp  out/Release/resources        "${YPPATH_DEST}"/usr/lib/chromium/
-        ypkg_doln  /usr/lib/libavcodec.so.52    "${YPPATH_DEST}"/usr/lib/chromium/libavcodec.so.52
-	ypkg_doln  /usr/lib/libavformat.so.52   "${YPPATH_DEST}"/usr/lib/chromium/libavformat.so.52
-	ypkg_doln  /usr/lib/libavutil.so.50     "${YPPATH_DEST}"/usr/lib/chromium/libavutil.so.50
+	mkdir -p "$destdir"
+	install -m 0755 -D  	           out/Release/chrome           "${destdir}"/usr/lib/chromium/chromium
+       	install -m 4555 -o root -g root -D out/Release/chrome_sandbox 	"${destdir}"/usr/lib/chromium/chromium-sandbox
+        install -m 0644 -D   		   out/Release/chrome.pak   	"${destdir}"/usr/lib/chromium/chrome.pak
+	install -m 0644 -D                 out/Release/resources.pak    "${destdir}"/usr/lib/chromium/resources.pak
+	docp  out/Release/locales          "${destdir}"/usr/lib/chromium/
+	docp  out/Release/resources        "${destdir}"/usr/lib/chromium/
+        doln  /usr/lib/libavcodec.so.52    "${destdir}"/usr/lib/chromium/libavcodec.so.52
+	doln  /usr/lib/libavformat.so.52   "${destdir}"/usr/lib/chromium/libavformat.so.52
+	doln  /usr/lib/libavutil.so.50     "${destdir}"/usr/lib/chromium/libavutil.so.50
 	#     install -m 0755 -D \
 	#        out/Release/libffmpegsumo.so 
-	#        "${YPPATH_DEST}"/usr/lib/chromium/libffmpegsumo.so
-   	install -m 0644 -D   	           out/Release/chrome.1         "${YPPATH_DEST}"/usr/share/man/man1/chromium-browser.1
-        install -m 0644 -D                 LICENSE    	                "${YPPATH_DEST}"/usr/share/licenses/chromium/LICENSE
-	ypkg_dodesktop  "chromium.desktop" "chrome/app/theme/chromium/product_logo_48.png"  
+	#        "${destdir}"/usr/lib/chromium/libffmpegsumo.so
+   	install -m 0644 -D   	           out/Release/chrome.1         "${destdir}"/usr/share/man/man1/chromium-browser.1
+        install -m 0644 -D                 LICENSE    	                "${destdir}"/usr/share/licenses/chromium/LICENSE
+	dodesktop  "chromium.desktop" "chrome/app/theme/chromium/product_logo_48.png"  
 	for size in 16 22 24 32 48 64 128 256; do
-		ypkg_docp_rename chrome/app/theme/chromium/product_logo_"${size}".png "${YPPATH_DEST}"/usr/share/icons/hicolor/"${size}"x"${size}"/apps/chromium.png
+		docp_rename chrome/app/theme/chromium/product_logo_"${size}".png "${destdir}"/usr/share/icons/hicolor/"${size}"x"${size}"/apps/chromium.png
 	done
-        install -m 0755 -D chrome/tools/build/linux/chrome-wrapper "${YPPATH_DEST}"/usr/bin/chromium
+        install -m 0755 -D chrome/tools/build/linux/chrome-wrapper "${destdir}"/usr/bin/chromium
 	#
-        find "${YPPATH_DEST}"/usr/lib/chromium/ -name "*.d" -type f -delete
+        find "${destdir}"/usr/lib/chromium/ -name "*.d" -type f -delete
 	#
-	ypkg_docp "$FILES_PATH"/files/default-preferences/"$N".tar.bz2  "${YPPATH_DEST}"/usr/lib/chromium/
-	ypkg_docp "$FILES_PATH"/files/default-preferences/settings.sol  "${YPPATH_DEST}"/usr/lib/chromium/
+	docp $filesdir/default-preferences/"$N".tar.bz2  "${destdir}"/usr/lib/chromium/
+	docp $filesdir/default-preferences/settings.sol  "${destdir}"/usr/lib/chromium/
 }
 

@@ -1,5 +1,5 @@
 #
-# YLmf_OS package build script
+# Ylmf OS package build script
 #
 
 DESCRIPTION="a system and service manager for Linux, compatible with SysV and LSB init scripts."
@@ -21,27 +21,27 @@ To correct that, execute
 ln -sf /proc/self/mounts /etc/mtab"
 
 pbs_unpack() {
-        ypkg_unpack
+        dounpack
 }
 
 pbs_config() {
-	ypkg_patch ylmfos-gnome-ask-password-agent.patch ylmfos-configure-add-distro-"$V".patch ylmfos-shutdown.patch
-	YPB_CONFIG+="--with-distro=ylmfos 
+	dopatch ylmfos-gnome-ask-password-agent.patch ylmfos-configure-add-distro-"$V".patch ylmfos-shutdown.patch
+	config+="--with-distro=ylmfos 
 		     --with-rootdir=/
 		     --with-udevrulesdir=/lib/udev/rules.d
 		     --enable-gtk
 		     --enable-plymouth"
-	ypkg_config
+	doconfig
 }
 
 pbs_build() {
-	ypkg_make
+	domake
 }
 
 pbs_install() {
-	ypkg_mkinstall
-	ypkg_docp "$FILES_PATH"/files/{start,stop,status,restart,reload} "$YPPATH_DEST"/usr/bin/
-	cd "$YPPATH_DEST"
+	domkinstall
+	docp $filesdir/{start,stop,status,restart,reload} "$destdir"/usr/bin/
+	cd "$destdir"
 	
 	# Don't unset locale in getty
 	# https://bugzilla.redhat.com/show_bug.cgi?id=663900
@@ -54,18 +54,18 @@ pbs_install() {
 	rm lib/systemd/system/local-fs.target.wants/media.mount
 	
 	#
-	ypkg_doln /etc/modules etc/modules-load.d/modules.conf
+	doln /etc/modules etc/modules-load.d/modules.conf
 
 	# Add rc-local.service
-	ypkg_dounit rc-local.service
-	ypkg_docp "$FILES_PATH"/files/rc.local etc/rc.local
+	dounit rc-local.service
+	docp $filesdir/rc.local etc/rc.local
 	chmod +x etc/rc.local 
 	
 	#
 	mkdir -p run
-	ypkg_doln /bin/systemd sbin/init
+	doln /bin/systemd sbin/init
 	for i in halt poweroff reboot runlevel shutdown telinit; do
-		ypkg_doln  /bin/systemctl  sbin/"${i}" 	
+		doln  /bin/systemctl  sbin/"${i}" 	
 	done
 	ln -sf /proc/self/mounts etc/mtab
 }

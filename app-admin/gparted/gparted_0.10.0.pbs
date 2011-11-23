@@ -1,5 +1,5 @@
 #
-# YLmf_OS package build script
+# Ylmf OS package build script
 #
 
 DESCRIPTION="Gnome Partition Editor"
@@ -16,21 +16,21 @@ RECOMMENDED="dosfstools jfsutils ntfsprogs e2fsprogs reiserfsprogs xfsprogs"
 INSTALL="$N.install"
 
 pbs_unpack() {
-        ypkg_unpack
+        dounpack
 }
 
 pbs_config() {
-	ypkg_patch desktop-i18n.patch
-	YPB_CONFIG+="--disable-schemas-install  
+	dopatch desktop-i18n.patch
+	config+="--disable-schemas-install  
 		     --disable-scrollkeeper "
-	ypkg_config
+	doconfig
 }
 
 pbs_build() {
-	ypkg_make
+	domake
 }
 
 pbs_install() {
-	ypkg_mkinstall
+	domkinstall
 }
 

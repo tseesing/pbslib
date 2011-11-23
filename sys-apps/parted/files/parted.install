@@ -3,9 +3,9 @@
 files="parted.info.gz"
 
 post_install() {
-        ypkg_install_info $files
+        doinstall_info $files
 }       
 
 pre_remove() {
-        ypkg_remove_info $files
+        doremove_info $files
 }

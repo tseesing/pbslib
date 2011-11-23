@@ -1,5 +1,5 @@
 #
-# YLmf_OS package build script
+# Ylmf OS package build script
 #
 
 DESCRIPTION="TCP/IP swiss army knife. OpenBSD variant."
@@ -17,21 +17,21 @@ RECOMMENDED=""
 CONFLICT=""
 
 pbs_unpack() {
-        ypkg_unpack
+        dounpack
 
 }
 
 pbs_config() {
 	cp "$YPPATH_SOURCE"/netcat-openbsd_1.89-4.diff.gz .
 	gunzip netcat-openbsd_1.89-4.diff.gz
-	ypkg_patch netcat-openbsd_1.89-4.diff
+	dopatch netcat-openbsd_1.89-4.diff
 	
 	cat debian/patches/series|while read i; do
-		ypkg_patch debian/patches/"$i"
+		dopatch debian/patches/"$i"
 	done
 
-	YPB_CONFIG+=""
-	ypkg_config
+	config+=""
+	doconfig
 }
 
 pbs_build() {
@@ -40,7 +40,7 @@ pbs_build() {
 }
 
 pbs_install() {
-	ypkg_docp_rename nc "$YPPATH_DEST"/usr/bin/nc.openbsd
-	chmod +x "$YPPATH_DEST"/usr/bin/nc.openbsd
-	ypkg_doman nc.1
+	docp_rename nc "$destdir"/usr/bin/nc.openbsd
+	chmod +x "$destdir"/usr/bin/nc.openbsd
+	doman nc.1
 }

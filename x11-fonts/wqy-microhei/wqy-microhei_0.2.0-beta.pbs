@@ -1,5 +1,5 @@
 #
-# YLmf_OS package build script
+# Ylmf OS package build script
 #
 
 DESCRIPTION="A droid derived Sans-Serif style CJK font"
@@ -16,10 +16,10 @@ BDEPEND=""
 INSTALL="$N.install"
 
 pbs_unpack() {
-        ypkg_unpack
+        dounpack
 }
 
 pbs_install() {
-	ypkg_docp *.ttc "$YPPATH_DEST"/usr/share/fonts/wenquanyi/wqy-microhei
+	docp *.ttc "$destdir"/usr/share/fonts/wenquanyi/wqy-microhei
 }
 

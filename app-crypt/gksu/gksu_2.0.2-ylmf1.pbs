@@ -1,5 +1,5 @@
 #
-# YLmf_OS package build script
+# Ylmf OS package build script
 #
 
 DESCRIPTION="A gtk+ frontend for libgksu"
@@ -14,22 +14,22 @@ BDEPEND=""
 RECOMMENDED=""
 
 pbs_unpack() {
-        ypkg_unpack
+        dounpack
 }
 
 pbs_config() {
-	ypkg_docp "$FILES_PATH"/files/gksu-icon.png .
-	ypkg_patch 01_always_ask.patch \
+	docp $filesdir/gksu-icon.png .
+	dopatch 01_always_ask.patch \
 	           07_desktop_in_ship.patch \
 		   14_set_http_proxy_env.patch \
 		   21_strip_blank_space.patch \
 		   gksu.sudo_mode.patch 
 		   99_ylmfos.patch
-	ypkg_config
+	doconfig
 }
 
 pbs_build() {
-	ypkg_make
+	domake
 
 	#FIXME, creat mo
 	cd po
@@ -40,11 +40,11 @@ pbs_build() {
 }
 
 pbs_install() {
-	ypkg_mkinstall
+	domkinstall
 	cd po
 	for i in *.mo; do
-		ypkg_docp_rename $i "$YPPATH_DEST"/usr/share/locale/${i%*.mo}/LC_MESSAGES/gksu.mo
+		docp_rename $i "$destdir"/usr/share/locale/${i%*.mo}/LC_MESSAGES/gksu.mo
 	done
-	ypkg_doln /usr/bin/gnome-terminal.wrapper "$YPPATH_DEST"/usr/bin/x-terminal-emulator
+	doln /usr/bin/gnome-terminal.wrapper "$destdir"/usr/bin/x-terminal-emulator
 }
 

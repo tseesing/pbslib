@@ -1,5 +1,5 @@
 #
-# YLmf_OS package build script
+# Ylmf OS package build script
 #
 
 DESCRIPTION="GNOME default window manager"
@@ -18,7 +18,7 @@ OPIONAL="libcm: Required for composite manager support"
 INSTALL="$N.install"
 
 pbs_unpack() {
-        ypkg_unpack
+        dounpack
 }
 
 pbs_config() {
@@ -34,8 +34,8 @@ pbs_config() {
 	         13_better_support_for_button_layout.patch
 	         90_autotools.patch
 	         99_ltmain_as-needed.patch"
-	ypkg_patch $patches
-	YPB_CONFIG+=" --disable-schemas-install 
+	dopatch $patches
+	config+=" --disable-schemas-install 
 		      --enable-compositor 
 		      --enable-gconf 
 		      --enable-render 
@@ -44,15 +44,15 @@ pbs_config() {
 		      --enable-startup-notification 
 		      --enable-xsync 
 		      --disable-xinerama "
-	ypkg_config
+	doconfig
 }
 
 pbs_build() {
-	ypkg_make
+	domake
 }
 
 pbs_install() {
-	ypkg_mkinstall
-	ypkg_dodoc README rationales.txt doc/*.txt
+	domkinstall
+	dodoc README rationales.txt doc/*.txt
 }
 

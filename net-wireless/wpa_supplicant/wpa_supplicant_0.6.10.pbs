@@ -1,5 +1,5 @@
 #
-# YLmf_OS package build script
+# Ylmf OS package build script
 #
 
 DESCRIPTION=" IEEE 802.1X/WPA supplicant for secure wireless transfers"
@@ -22,34 +22,34 @@ An example configuration file is available for reference in
 "
 
 pbs_unpack() {
-        ypkg_unpack
+        dounpack
 }
 
 pbs_config() {
-	ypkg_patch 01_use_pkg-config_for_pcsc-lite_module.patch
-	ypkg_patch 02_dbus_group_policy.patch
-	ypkg_patch 06_wpa_gui_menu_exec_path.patch
-	ypkg_patch 07_dbus_service_syslog.patch
-	ypkg_patch 11_syslog.patch
-	ypkg_patch 18_wpa_gui_wps_ap_avail_annoyance.patch
-	ypkg_patch 20_wpa_msg_ctrl_wps.patch
-	ypkg_patch 21_kfreebsd.patch
-	ypkg_patch 30_cfg80211_association_optimisation.patch
+	dopatch 01_use_pkg-config_for_pcsc-lite_module.patch
+	dopatch 02_dbus_group_policy.patch
+	dopatch 06_wpa_gui_menu_exec_path.patch
+	dopatch 07_dbus_service_syslog.patch
+	dopatch 11_syslog.patch
+	dopatch 18_wpa_gui_wps_ap_avail_annoyance.patch
+	dopatch 20_wpa_msg_ctrl_wps.patch
+	dopatch 21_kfreebsd.patch
+	dopatch 30_cfg80211_association_optimisation.patch
 	cd "$N"
-	cp "$FILES_PATH"/files/linux .config
+	cp $filesdir/linux .config
 }
 
 pbs_build() {
-	ypkg_make
+	domake
 }
 
 pbs_install() {
 	for i in wpa_cli wpa_supplicant wpa_passphrase;do
-		ypkg_docp "${i}" "$YPPATH_DEST"/sbin
-		ypkg_doln /sbin/"${i}"  "$YPPATH_DEST"/usr/sbin/"${i}"
+		docp "${i}" "$destdir"/sbin
+		doln /sbin/"${i}"  "$destdir"/usr/sbin/"${i}"
 	done
-	ypkg_docp_rename dbus-wpa_supplicant.conf    "$YPPATH_DEST"/etc/dbus-1/system.d/wpa_supplicant.conf
-	ypkg_docp_rename dbus-wpa_supplicant.service "$YPPATH_DEST"/usr/share/dbus-1/system-services/fi.epitest.hostap.WPASupplicant.service
-	ypkg_dounit wpa_supplicant.service
+	docp_rename dbus-wpa_supplicant.conf    "$destdir"/etc/dbus-1/system.d/wpa_supplicant.conf
+	docp_rename dbus-wpa_supplicant.service "$destdir"/usr/share/dbus-1/system-services/fi.epitest.hostap.WPASupplicant.service
+	dounit wpa_supplicant.service
 }
 

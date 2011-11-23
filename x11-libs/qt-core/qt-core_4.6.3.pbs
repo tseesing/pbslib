@@ -1,28 +1,24 @@
 #
-# YLmf_OS package build script
+# Ylmf OS package build script
 #
 
 DESCRIPTION="The Qt toolkit is a comprehensive C++ application development framework"
 HOMEPAGE="http://qt.nokia.com/"
 LICENSE="GPL-2"
 PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
-REPO=""
 
 SRC_URI="ftp://ftp.trolltech.com/qt/source/qt-everywhere-opensource-src-"$V$R".tar.gz"
 
-RDEPEND="libpng freetype glib2 gdk-pixbuf libSM libICE libXrender fontconfig libXext libX11 zlib gcc 
-	 util-linux-ng expat libxcb libXau libXdmcp glibc gcc"
+RDEPEND="libpng freetype glib2 gdk-pixbuf libSM libICE libXrender fontconfig libXext libX11 zlib gcc util-linux-ng expat libxcb libXau libXdmcp glibc gcc"
 BDEPEND=""
 RECOMMENDED=""
 
-NOTES=""
-
 pbs_unpack() {
-        ypkg_unpack
+        dounpack
 }
 
 pbs_config() {
-	YPB_CONFIG=" -prefix         /usr 
+	config=" -prefix         /usr 
 	             -bindir         /usr/bin 
 		     -libdir         /usr/lib/qt4 
 		     -datadir        /usr/share/qt4 
@@ -38,17 +34,17 @@ pbs_config() {
 		     -qt3support 
 		     -confirm-license 
 		     -largefile"
-	#yes yes |ypkg_config
+	#yes yes |doconfig
 	#choose o for opensource license
-	yes o |ypkg_config
+	yes o |doconfig
 }
 
 pbs_build() {
-	ypkg_make
+	domake
 }
 
 pbs_install () {
-	make INSTALL_ROOT="$YPPATH_DEST" install
+	make INSTALL_ROOT="$destdir" install
 	#Sorry, doc is too large
-	rm -rf "$YPPATH_DEST"//usr/share/doc/qt-"$V$R"
+	rm -rf "$destdir"//usr/share/doc/qt-"$V$R"
 }

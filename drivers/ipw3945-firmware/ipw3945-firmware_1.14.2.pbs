@@ -1,5 +1,5 @@
 #
-# YLmf_OS package build script
+# Ylmf OS package build script
 #
 
 DESCRIPTION="Microcode for the Intel PRO/Wireless 3945ABG miniPCI express adapter"
@@ -16,11 +16,11 @@ RECOMMENDED=""
 CONFLICT=""
 
 pbs_unpack() {
-        ypkg_unpack
+        dounpack
 }
 
 pbs_install() {
-	ypkg_docp *.ucode "$YPPATH_DEST"/lib/firmware/
-	ypkg_dodoc README* LICENSE* 
+	docp *.ucode "$destdir"/lib/firmware/
+	dodoc README* LICENSE* 
 }
 

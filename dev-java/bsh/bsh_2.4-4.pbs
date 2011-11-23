@@ -1,5 +1,5 @@
 #
-# YLmf_OS package build script
+# Ylmf OS package build script
 #
 
 DESCRIPTION="BeanShell: A small embeddable Java source interpreter"
@@ -19,8 +19,8 @@ pbs_install() {
 	. /etc/profile.d/jdk.sh
 	. /etc/profile.d/jre.sh
 
-	ypkg_docp "$YPPATH_SOURCE"/bsh-2.0b4.jar "$YPPATH_DEST"/"$JAVA_HOME"/
+	docp "$YPPATH_SOURCE"/bsh-2.0b4.jar "$destdir"/"$JAVA_HOME"/
 
-	cd "$YPPATH_DEST"/"$JAVA_HOME"/
-	ypkg_doln bsh-2.0b4.jar bsh.jar
+	cd "$destdir"/"$JAVA_HOME"/
+	doln bsh-2.0b4.jar bsh.jar
 }

@@ -11,18 +11,18 @@ post_install() {
 	        grep -B1 '^ /usr/include' dummy.log
 	        rm dummy.c dummy.log a.out
 	fi
-	ypkg_install_info $files
+	doinstall_info $files
 }       
 
 post_remove() {
-	ypkg_remove_info $files
+	doremove_info $files
 }
 
 post_upgrade() {
-       ypkg_install_info $files
+       doinstall_info $files
 }
 
 post_downgrade() {
-       ypkg_install_info  $files
+       doinstall_info  $files
 }
 

@@ -1,5 +1,5 @@
 #
-# YLmf_OS package build script
+# Ylmf OS package build script
 #
 
 DESCRIPTION="ntdiskmap"
@@ -15,14 +15,14 @@ RDEPEND="dbus dbus-glib eggdbus glib2 glibc polkit zlib"
 BDEPEND=""
 
 pbs_unpack() {
-	ypkg_unpack
+	dounpack
 }
 
 pbs_build() {
-	ypkg_make
+	domake
 }
 
 pbs_install() {
-	ypkg_mkinstall
+	domkinstall
 }
 

@@ -13,6 +13,7 @@ main () {
 }
 
 #main
+echo "package rt3090sta-driver"
 echo "module rt3090sta.ko"
 echo "description Ralink RT3090 PCI WLAN adaptors"
 main include/chip/rt3090.h

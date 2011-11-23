@@ -1,5 +1,5 @@
 #
-# YLmf_OS package build script
+# Ylmf OS package build script
 #
 
 DESCRIPTION="A library that provides top functionality to applications"
@@ -15,21 +15,21 @@ RECOMMENDED=""
 NOTES="http://wiki.linuxfromscratch.org/blfs/wiki/libgtop"
 
 pbs_unpack() {
-        ypkg_unpack
+        dounpack
 }
 
 pbs_config() {
 	
-	YPB_CONFIG+=" --prefix=$(pkg-config  --variable=prefix ORBit-2.0) 
+	config+=" --prefix=$(pkg-config  --variable=prefix ORBit-2.0) 
 	              
 	              --infodir=$(pkg-config --variable=prefix ORBit-2.0)/share/info"
-	ypkg_config
+	doconfig
 }
 
 pbs_build() {
-	ypkg_make
+	domake
 }
 
 pbs_install() {
-	ypkg_mkinstall
+	domkinstall
 }

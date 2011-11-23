@@ -1,5 +1,5 @@
 #
-# YLmf_OS package build script
+# Ylmf OS package build script
 #
 
 DESCRIPTION="Windows 32-bit binary codecs for video and audio playback support"
@@ -13,9 +13,9 @@ RDEPEND="glibc"
 BDEPEND=""
 
 pbs_unpack() {
-        ypkg_unpack
+        dounpack
 }
 
 pbs_install() {
-	ypkg_docp * "$YPPATH_DEST"/usr/lib/win32
+	docp * "$destdir"/usr/lib/win32
 }

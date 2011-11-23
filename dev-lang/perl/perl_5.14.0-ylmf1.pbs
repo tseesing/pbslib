@@ -1,5 +1,5 @@
 #
-# YLmf_OS package build script
+# Ylmf OS package build script
 #
 
 DESCRIPTION="Larry Wall's Practical Extraction and Report Language"
@@ -13,7 +13,7 @@ RDEPEND="berkeley-db gdbm glibc zlib"
 BDEPEND=""
 
 pbs_unpack() {
-        ypkg_unpack
+        dounpack
 }
 
 pbs_config() {
@@ -60,13 +60,13 @@ pbs_config() {
 }
 
 pbs_build() {
-	ypkg_make
+	domake
 }
 
 pbs_install() {
-	ypkg_mkinstall
+	domkinstall
 	
-	cd "$YPPATH_DEST"
+	cd "$destdir"
 	
 	### CPAN Settings ###
 	# Set CPAN default config to use the site directories.
@@ -81,12 +81,12 @@ pbs_install() {
 	    -i usr/share/perl5/core_perl/CPANPLUS/Config.pm
 
 	# Profile script to set paths to perl scripts.
-	ypkg_docp "$FILES_PATH"/files/{perlbin.sh,perlbin.csh} etc/profile.d/
+	docp $filesdir/{perlbin.sh,perlbin.csh} etc/profile.d/
 
 	#
         mv usr/bin/perl"$V" usr/bin/perl
-	ypkg_doln /usr/bin/c2ph usr/bin/pstruct
-	ypkg_doln /usr/bin/s2p  usr/bin/psed
+	doln /usr/bin/c2ph usr/bin/pstruct
+	doln /usr/bin/s2p  usr/bin/psed
 
 	# Remove all pod files *except* those under /usr/share/perl5/core_perl/pod/
 	rm -f usr/share/perl5/core_perl/*.pod
@@ -107,8 +107,8 @@ pbs_install() {
 	#		mv usr/bin/perl5.14.0{,-32} ;;
 	#      x86_64)	mv usr/bin/perl{,-64}
 	#		mv usr/bin/perl5.14.0{,-64}
-	#		ypkg_doln /usr/bin/multiarch_wrapper usr/bin/perl
-	#		ypkg_doln /usr/bin/multiarch_wrapper usr/bin/perl5.14.0
+	#		doln /usr/bin/multiarch_wrapper usr/bin/perl
+	#		doln /usr/bin/multiarch_wrapper usr/bin/perl5.14.0
 	#esac
 }
 

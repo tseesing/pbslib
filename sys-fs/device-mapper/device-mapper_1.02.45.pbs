@@ -1,5 +1,5 @@
 #
-# YLmf_OS package build script
+# Ylmf OS package build script
 #
 
 DESCRIPTION="Device mapper ioctl library for use with LVM2 utilities"
@@ -14,21 +14,21 @@ BDEPEND="  "
 RECOMMENDED=""
 
 pbs_unpack() {
-        ypkg_unpack
+        dounpack
 }
 
 pbs_config() {
-	YPB_CONFIG+=" --enable-dmeventd 
+	config+=" --enable-dmeventd 
 		      --enable-cmdlib 
 	    	      --enable-pkgconfig 
 		      --disable-selinux "
-	ypkg_config
+	doconfig
 }
 
 pbs_build() {
-	ypkg_make device-mapper
+	domake device-mapper
 }
 
 pbs_install() {
-	ypkg_mkinstall device-mapper
+	domkinstall device-mapper
 }

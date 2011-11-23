@@ -1,5 +1,5 @@
 #
-# YLmf_OS package build script
+# Ylmf OS package build script
 #
 
 DESCRIPTION="A multi-platform programmer's library designed to allow a developer to create robust software"
@@ -15,20 +15,20 @@ RECOMMENDED=""
 CONFLICT=""
 
 pbs_unpack() {
-        ypkg_unpack
+        dounpack
 }
 
 pbs_config() {
-	YPB_CONFIG+=""
-	ypkg_config
+	config+=""
+	doconfig
 }
 
 pbs_build() {
-	#ypkg_make
+	#domake
 	make -j1
 }
 
 pbs_install() {
-	ypkg_mkinstall
+	domkinstall
 }
 

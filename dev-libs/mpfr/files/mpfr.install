@@ -1,11 +1,11 @@
 . /usr/lib/ybs/funcs
 
 post_install() {
-	ypkg_install_info mpfr.info.gz
+	doinstall_info mpfr.info.gz
 }
 
 pre_remove() {
-	ypkg_remove_info mpfr.info.gz
+	doremove_info mpfr.info.gz
 }
 
 post_upgrade()  {

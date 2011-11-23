@@ -1,11 +1,11 @@
 . /usr/lib/ybs/funcs
 
 post_install() {
-	ypkg_install_info netcat.info.gz
+	doinstall_info netcat.info.gz
 }
 
 pre_remove() {
-	ypkg_remove_info netcat.info.gz
+	doremove_info netcat.info.gz
 }
 
 post_upgrade()  {

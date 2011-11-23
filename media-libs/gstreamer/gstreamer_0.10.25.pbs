@@ -1,36 +1,34 @@
 #
-# YLmf_OS package build script
+# Ylmf OS package build script
 #
 
 DESCRIPTION="Streaming media framework"
 HOMEPAGE="http://gstreamer.sourceforge.net"
-LICENSE="GPL-2"
+LICENSE="GPL"
 PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
-SRC_URI="ftp://ftp.gnome.org/pub/gnome/sources/$N/0.10/$N-$V.tar.bz2"
 
-RDEPEND=""
-BDEPEND=" glib2 gdk-pixbuf libxml2"
+SRC_URI="ftp://ftp.gnome.org/pub/gnome/sources/"$N"/0.10/"$N-$V".tar.bz2"
+
+RDEPEND="glib2 gdk-pixbuf libxml2"
+BDEPEND=""
 RECOMMENDED=""
 
-NOTES="http://wiki.linuxfromscratch.org/blfs/wiki/gstreamer"
-
 pbs_unpack() {
-        ypkg_unpack
+        dounpack
 }
 
 pbs_config() {
-	
 	sed -i 's/\(.*gtkdoc-rebase --relative.* \)\(;.*\)/\1|| true\2/' docs/{gst,libs}/Makefile.in
-	YPB_CONFIG+=" --prefix=/usr  --disable-docbook "
-	ypkg_config
+	config+="--prefix=/usr --disable-docbook"
+	doconfig
 }
 
 pbs_build() {
-	ypkg_make
+	domake
 }
 
 pbs_install() {
-	ypkg_mkinstall
-	install -m755 -d "$YPPATH_DEST"/usr/share/doc/"$N-$V$R"/design
-	install -m644 docs/design/*.txt "$YPPATH_DEST"/usr/share/doc/"$N-$V$R"/design
+	domkinstall
+	dodoc docs/design/*.txt
 }
+

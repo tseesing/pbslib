@@ -1,5 +1,5 @@
 #
-# YLmf_OS package build script
+# Ylmf OS package build script
 #
 
 DESCRIPTION="Firefox Web Browser"
@@ -19,32 +19,32 @@ permission to use trademarks per
 http://www.mozilla.org/foundation/trademarks/"
 
 pbs_unpack() {
-        ypkg_unpack
+        dounpack
 }
 
 pbs_config() {
-	YPB_CONFIG+="--enable-application=browser
+	config+="--enable-application=browser
 		     --enable-official-branding
 		     --enable-optimize=-O2
 		     --enable-startup-notification 
 		     --with-distribution-id=ylmfos
 		     --disable-debug 
 		     --disable-tests"
-	ypkg_config
+	doconfig
 }
 
 pbs_build() {
-	ypkg_make
+	domake
 }
 
 pbs_install() {
-	ypkg_mkinstall
-	cd "$YPPATH_DEST"
+	domkinstall
+	cd "$destdir"
 	
 	# 
-	ypkg_dodesktop "firefox.desktop" "usr/lib/firefox-"$V"/icons/mozicon128.png"
+	dodesktop "firefox.desktop" "usr/lib/firefox-"$V"/icons/mozicon128.png"
 	
 	# Add extensions including langpack-zh-CN
-	ypkg_docp "$FILES_PATH"/files/extensions/* usr/lib/firefox-"$V"/extensions/
+	docp $filesdir/extensions/* usr/lib/firefox-"$V"/extensions/
 }
 

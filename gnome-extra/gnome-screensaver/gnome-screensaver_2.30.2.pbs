@@ -1,5 +1,5 @@
 #
-# YLmf_OS package build script
+# Ylmf OS package build script
 #
 
 DESCRIPTION="Replaces xscreensaver, integrating with the desktop."
@@ -16,23 +16,23 @@ RECOMMENDED=""
 INSTALL="$N.install"
 
 pbs_unpack() {
-        ypkg_unpack
+        dounpack
 }
 
 pbs_config() {
-	YPB_CONFIG+="--disable-schemas-install"
-	ypkg_config
+	config+="--disable-schemas-install"
+	doconfig
 }
 
 pbs_build() {
-	ypkg_make
+	domake
 }
 
 pbs_install() {
-	ypkg_mkinstall
+	domkinstall
 	
 	# keep clean for rarian
-	rm -fr "$YPPATH_DEST"/var/lib/scrollkeeper
-	rm -fr "$YPPATH_DEST"/var/lib/log
+	rm -fr "$destdir"/var/lib/scrollkeeper
+	rm -fr "$destdir"/var/lib/log
 }
 

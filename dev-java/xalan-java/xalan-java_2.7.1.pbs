@@ -1,5 +1,5 @@
 #
-# YLmf_OS package build script
+# Ylmf OS package build script
 #
 
 DESCRIPTION="XSLT processor for transforming XML documents into HTML, text, or other XML document types"
@@ -16,11 +16,11 @@ RECOMMENDED=""
 CONFLICT=""
 
 pbs_unpack() {
-        ypkg_unpack
+        dounpack
 }
 
 pbs_install() {
 	. /etc/profile.d/jdk.sh
-	ypkg_docp xalan.jar xsltc.jar "$YPPATH_DEST"/"$JAVA_HOME"/
+	docp xalan.jar xsltc.jar "$destdir"/"$JAVA_HOME"/
 }
 

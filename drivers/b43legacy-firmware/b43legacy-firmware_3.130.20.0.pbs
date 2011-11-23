@@ -1,5 +1,5 @@
 #
-# YLmf_OS package build script
+# Ylmf OS package build script
 #
 
 DESCRIPTION="broadcom firmware for b43 legacy"
@@ -20,6 +20,6 @@ pbs_build() {
 }
 
 pbs_install() {
-	ypkg_docp b43legacy "$YPPATH_DEST"/lib/firmware
+	docp b43legacy "$destdir"/lib/firmware
 }
 

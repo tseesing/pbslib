@@ -1,5 +1,5 @@
 #
-# YLmf_OS package build script
+# Ylmf OS package build script
 #
 
 DESCRIPTION="GL extensions for Gtk+ 2.0"
@@ -14,19 +14,19 @@ RDEPEND=""
 BDEPEND="mesa"
 
 pbs_unpack() {
-        ypkg_unpack
+        dounpack
 }
 
 pbs_config() {
-	ypkg_patch 01_fix_fontcache_nullderef.dpatch gtk2.20.patch 
-	YPB_CONFIG+="--with-x"
-	ypkg_config
+	dopatch 01_fix_fontcache_nullderef.dpatch gtk2.20.patch 
+	config+="--with-x"
+	doconfig
 }
 
 pbs_build() {
-	ypkg_make
+	domake
 }
 
 pbs_install() {
-	ypkg_mkinstall
+	domkinstall
 }

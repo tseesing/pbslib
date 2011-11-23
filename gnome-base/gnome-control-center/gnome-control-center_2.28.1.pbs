@@ -1,5 +1,5 @@
 #
-# YLmf_OS package build script
+# Ylmf OS package build script
 #
 
 DESCRIPTION="The gnome2 Desktop configuration tool"
@@ -15,22 +15,22 @@ RECOMMENDED="polkit-gnome gnome-screensaver xscreensaver"
 NOTES="http://wiki.linuxfromscratch.org/blfs/wiki/gnome-control-center"
 
 pbs_unpack() {
-        ypkg_unpack
+        dounpack
 }
 
 pbs_config() {
 	
-	YPB_CONFIG+=" --prefix=$(pkg-config --variable=prefix ORBit-2.0) 
+	config+=" --prefix=$(pkg-config --variable=prefix ORBit-2.0) 
 	              --sysconfdir=/etc/gnome/2.28.2 
 		      --localstatedir=/var 
 		      --libexecdir=$(pkg-config  --variable=prefix ORBit-2.0)/lib/gnome-control-center"
-	ypkg_config
+	doconfig
 }
 
 pbs_build() {
-	ypkg_make
+	domake
 }
 
 pbs_install() {
-	ypkg_mkinstall
+	domkinstall
 }

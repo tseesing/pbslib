@@ -100,13 +100,13 @@ symlink_grub_install() {
 }
 
 post_install() {
-        ypkg_install_info grub.info.gz 
+        doinstall_info grub.info.gz 
 	msg_install
 	symlink_grub_install
 }       
 
 pre_remove() {
-        ypkg_remove_info grub.info.gz
+        doremove_info grub.info.gz
 }
 
 pre_upgrade() {

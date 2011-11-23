@@ -1,5 +1,5 @@
 #
-# YLmf_OS package build script
+# Ylmf OS package build script
 #
 
 DESCRIPTION="Blog Tool and Publishing Platform"
@@ -25,13 +25,13 @@ NOTES=""
 
 
 pbs_unpack() {
- 	ypkg_unpack
+ 	dounpack
 }
 
 pbs_install() {
-	ypkg_docp * "$YPPATH_DEST"/srv/http/wordpress/
+	docp * "$destdir"/srv/http/wordpress/
 	# make uploads work
-	cd "$YPPATH_DEST"
+	cd "$destdir"
 	install -d -m775 srv/http/wordpress/wp-content/uploads
 	chown http:http  srv/http/wordpress/wp-content/uploads
 }

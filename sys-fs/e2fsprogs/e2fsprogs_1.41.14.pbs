@@ -1,5 +1,5 @@
 #
-# YLmf_OS package build script
+# Ylmf OS package build script
 #
 
 DESCRIPTION="Standard EXT2/EXT3/EXT4 filesystem utilities"
@@ -13,27 +13,27 @@ RDEPEND="glibc util-linux-ng"
 BDEPEND="pkgconfig"
 
 pbs_unpack() {
-        ypkg_unpack
+        dounpack
 }
 
 pbs_config() {
 	sed -i '/libdir.*=.*\/lib/s@/lib@/lib'"$LIBDIRSUFFIX"'@g' configure
-	YPB_CONFIG+="--enable-elf-shlibs 
+	config+="--enable-elf-shlibs 
 	             --disable-libblkid
 		     --disable-libuuid 
 		     --disable-uuidd
 		     --disable-fsck"
 	mkdir -p "$N"-build && cd "$N"-build && rm -rf *
-	../configure $YPB_CONFIG
+	../configure $config
 }
 
 pbs_build() {
-	ypkg_make
-	ypkg_make libs
+	domake
+	domake libs
 }
 
 pbs_install() {
-	ypkg_mkinstall
-	ypkg_mkinstall install-libs
+	domkinstall
+	domkinstall install-libs
 }
 

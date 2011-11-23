@@ -1,5 +1,5 @@
 #
-# YLmf_OS package build script
+# Ylmf OS package build script
 #
 
 DESCRIPTION="uu, xx, base64, binhex decoder"
@@ -19,7 +19,7 @@ CONFLICT=""
 NOTES=""
 
 pbs_unpack() {
-        ypkg_unpack
+        dounpack
 }
 
 pbs_config() {
@@ -28,16 +28,16 @@ pbs_config() {
 		uudeview-0.5.20-CVE-2008-2266.patch
 		uudeview-0.5.20-man.patch
 		uudeview-0.5.20-rename.patch"
-	ypkg_patch $patches
-	YPB_CONFIG+=""
-	ypkg_config
+	dopatch $patches
+	config+=""
+	doconfig
 }
 
 pbs_build() {
-	ypkg_make
+	domake
 }
 
 pbs_install() {
-	ypkg_mkinstall MANDIR="$YPPATH_DEST/usr/share/man/" BINDIR="$YPPATH_DEST/usr/bin/"
-	ypkg_dodoc  HISTORY INSTALL README
+	domkinstall MANDIR="$destdir/usr/share/man/" BINDIR="$destdir/usr/bin/"
+	dodoc  HISTORY INSTALL README
 }

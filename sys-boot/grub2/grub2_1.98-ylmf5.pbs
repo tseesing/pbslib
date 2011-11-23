@@ -1,5 +1,5 @@
 #
-# YLmf_OS package build script
+# Ylmf OS package build script
 #
 
 DESCRIPTION="GRand Unified Bootloader, version 2 with Ubuntu patchs"
@@ -22,7 +22,7 @@ INSTALL="$N.install"
 NOTES=""
 
 pbs_unpack() {
-        ypkg_unpack
+        dounpack
 }
 
 pbs_config() {
@@ -69,26 +69,26 @@ pbs_config() {
 		ylmfos_mkdevicemap.patch 
 		ylmfos_grub-probe-skip-fd.patch 
 		ylmfos_export_patch-1.98-ylmf4.patch "
-	ypkg_patch $patches
-	ypkg_config
+	dopatch $patches
+	doconfig
 	#FIXME 
 	sed -i 's/PACKAGE_VERSION = 0/PACKAGE_VERSION = '"$V$R"'/g' Makefile
 	sed -i 's/PACKAGE_STRING = GRUB 0/PACKAGE_STRING = GRUB '"$V$R"'/g' Makefile
 	sed -i 's/PACKAGE_VERSION=.*/PACKAGE_VERSION='"$V$R"'/g' configure
 	sed -i 's/ VERSION=.*/ VERSION='"$V$R"'/g' configure
-	./configure $YPB_CONFIG
+	./configure $config
 }
 
 pbs_build() {
-	ypkg_make
+	domake
 }
 
 pbs_install() {
-	ypkg_mkinstall
-	ypkg_dodoc AUTHORS ChangeLog COPYING INSTALL NEWS README
-	cd "$YPPATH_DEST"
-	ypkg_docp "$FILES_PATH"/files/{update-grub2,update-grub}  usr/sbin
-	ypkg_docp "$FILES_PATH"/files/grub  etc/default
+	domkinstall
+	dodoc AUTHORS ChangeLog COPYING INSTALL NEWS README
+	cd "$destdir"
+	docp $filesdir/{update-grub2,update-grub}  usr/sbin
+	docp $filesdir/grub  etc/default
 	mv usr/sbin/grub-install{,.real}
 }
 

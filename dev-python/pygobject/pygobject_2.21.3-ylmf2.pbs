@@ -1,5 +1,5 @@
 #
-# YLmf_OS package build script
+# Ylmf OS package build script
 #
 
 DESCRIPTION="GLib's GObject library bindings for Python"
@@ -14,19 +14,19 @@ BDEPEND="   "
 RECOMMENDED=""
 
 pbs_unpack() {
-        ypkg_unpack
+        dounpack
 }
 
 pbs_config() {
-	ypkg_patch ylmfos_disable-pygobject_register_sinkfunc-msg.patch
-	YPB_CONFIG+="--disable-static"
-	ypkg_config
+	dopatch ylmfos_disable-pygobject_register_sinkfunc-msg.patch
+	config+="--disable-static"
+	doconfig
 }
 
 pbs_build() {
-	ypkg_make make
+	domake make
 }
 
 pbs_install() {
-	ypkg_mkinstall make
+	domkinstall make
 }

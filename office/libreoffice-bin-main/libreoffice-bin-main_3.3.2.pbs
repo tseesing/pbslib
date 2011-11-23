@@ -1,5 +1,5 @@
 #
-# YLmf_OS package build script
+# Ylmf OS package build script
 #
 
 DESCRIPTION="libreoffice main packs"
@@ -52,17 +52,17 @@ pbs_install() {
 		echo ">>> Unpack $(basename $deb)"
 		ar x "${deb}"; tar xf data.tar.gz
 	done	
-	ypkg_patch desktop-i18n.patch
+	dopatch desktop-i18n.patch
 	for i in etc opt usr; do
-		ypkg_docp "${i}"/*   "$YPPATH_DEST"/"${i}"
+		docp "${i}"/*   "$destdir"/"${i}"
 	done
 	icons=" libreoffice-printeradmin.png
 		libreoffice-startcenter.png "
 	for i in $icons; do
-		ypkg_docp usr/share/icons/hicolor/48x48/apps/"${i}" "$YPPATH_DEST"/usr/share/pixmaps/
+		docp usr/share/icons/hicolor/48x48/apps/"${i}" "$destdir"/usr/share/pixmaps/
 	done
 	#
-	cd "$YPPATH_DEST"
+	cd "$destdir"
 	for i in writer math draw calc base impress;do 
 		rm opt/libreoffice/share/xdg/"${i}".desktop usr/share/applications/libreoffice-"${i}".desktop
 	done

@@ -1,5 +1,5 @@
 #
-# YLmf_OS package build script
+# Ylmf OS package build script
 #
 
 DESCRIPTION="Feature-rich screenshot program"
@@ -24,11 +24,11 @@ INSTALL="$N.install"
 NOTES=""
 
 pbs_unpack() {
-        ypkg_unpack
+        dounpack
 }
 
 pbs_install() {
-	ypkg_patch ylmfos-desktop-i18n.patch
-	ypkg_docp bin share "$YPPATH_DEST"/usr
+	dopatch ylmfos-desktop-i18n.patch
+	docp bin share "$destdir"/usr
 }
 

@@ -1,5 +1,5 @@
 #
-# YLmf_OS package build script
+# Ylmf OS package build script
 #
 
 DESCRIPTION="Tool Command Language"
@@ -13,25 +13,25 @@ RDEPEND=""
 BDEPEND=""
 
 pbs_unpack() {
-        ypkg_unpack
+        dounpack
 }
 
 pbs_config() {
 	cd unix
-	YPB_CONFIG+="--enable-threads" 
-	ypkg_config
+	config+="--enable-threads" 
+	doconfig
 }
 
 pbs_build() {
-	ypkg_make
+	domake
 }
 
 pbs_install() {
 	sed -i -e "s@^\(TCL_SRC_DIR='\).*@\1/usr/include'@" \
 	       -e "/TCL_B/s@='\(-L\)\?.*unix@='\1/usr/lib@" \
 	       tclConfig.sh
-	ypkg_mkinstall 
-	make DESTDIR="$YPPATH_DEST" install-private-headers
-	cd "$YPPATH_DEST"
-	ypkg_doln tclsh8.5 usr/bin/tclsh 
+	domkinstall 
+	make DESTDIR="$destdir" install-private-headers
+	cd "$destdir"
+	doln tclsh8.5 usr/bin/tclsh 
 }

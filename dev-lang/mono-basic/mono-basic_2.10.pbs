@@ -1,5 +1,5 @@
 #
-# YLmf_OS package build script
+# Ylmf OS package build script
 #
 
 DESCRIPTION="Visual Basic .NET Runtime and Class Libraries"
@@ -15,25 +15,20 @@ RECOMMENDED=""
 CONFLICT=""
 
 pbs_unpack() {
-        ypkg_unpack
+        dounpack
 }
 
 pbs_config() {
-	YPB_CONFIG="--prefix=/usr"
-	ypkg_config
+	config="--prefix=/usr"
+	doconfig
 }
 
 pbs_build() {
-	ypkg_make libdir=/usr/lib
+	domake libdir=/usr/lib
 }
 
 pbs_install() {
-	ypkg_mkinstall libdir=/usr/lib
-
-	#
-	#cat <<EOF >%{buildroot}/%{_libdir}/pkgconfig/mono-basic.pc
-	#prefix=%{_prefix}
-	#exec_prefix=%{_prefix}
-	#libdir=%{_libdir}
+	domkinstall libdir=/usr/lib
 }
+
 

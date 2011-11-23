@@ -1,5 +1,5 @@
 #
-# YLmf_OS package build script
+# Ylmf OS package build script
 #
 
 DESCRIPTION="Python bindings for the Qt toolkit"
@@ -18,7 +18,7 @@ CONFLICT=""
 NOTES=""
 
 pbs_unpack() {
-        ypkg_unpack
+        dounpack
 }
 
 pbs_config() {
@@ -31,11 +31,11 @@ pbs_config() {
 }
 
 pbs_build() {
-	ypkg_make
+	domake
 }
 
 pbs_install() {
 	#INSTALL_ROOT is needed for the QtDesigner module, the other Makefiles use DESTDIR
-	ypkg_mkinstall INSTALL_ROOT="$YPPATH_DEST"
+	domkinstall INSTALL_ROOT="$destdir"
 }
 

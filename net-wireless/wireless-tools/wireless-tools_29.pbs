@@ -1,5 +1,5 @@
 #
-# YLmf_OS package build script
+# Ylmf OS package build script
 #
 
 DESCRIPTION="A collection of tools to configure IEEE 802.11 wireless LAN cards"
@@ -13,17 +13,17 @@ RDEPEND="glibc"
 BDEPEND=""
 
 pbs_unpack() {
-        ypkg_unpack
+        dounpack
 }
 
 pbs_build() {
-	ypkg_make
+	domake
 }
 
 pbs_install() {
-	mkdir -p "$YPPATH_DEST"/usr
-	make PREFIX="$YPPATH_DEST"/usr install
-	cd "$YPPATH_DEST"
-	ypkg_domv usr/man usr/share
+	mkdir -p "$destdir"/usr
+	make PREFIX="$destdir"/usr install
+	cd "$destdir"
+	domv usr/man usr/share
 }
 

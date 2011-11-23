@@ -1,5 +1,5 @@
 #
-# YLmf_OS package build script
+# Ylmf OS package build script
 #
 
 DESCRIPTION="Shared library to access the contents of an iPod"
@@ -9,18 +9,18 @@ PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 
 SRC_URI="http://downloads.sourceforge.net/sourceforge/gtkpod/"$N-$V".tar.bz2"
 
-RDEPEND=""
-BDEPEND="libplist"
+RDEPEND="gdk-pixbuf glib2 glibc libplist libpng libusb libxml2 sg3_utils sqlite zlib"
+BDEPEND=""
 RECOMMENDED=""
 CONFLICT=""
 
 pbs_unpack() {
-        ypkg_unpack
+        dounpack
 }
 
 pbs_config() {
-	YPB_CONFIG+=""
-	ypkg_config
+	config+="--enable-udev"
+	doconfig
 }
 
 pbs_build() {
@@ -28,7 +28,7 @@ pbs_build() {
 }
 
 pbs_install() {
-	ypkg_mkinstall
-	[ -d "$YPPATH_DEST"/tmp ] && rm -rf "$YPPATH_DEST"/tmp
+	domkinstall
+	[ -d "$destdir"/tmp ] && rm -rf "$destdir"/tmp
 }
 

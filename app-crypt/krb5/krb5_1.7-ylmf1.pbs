@@ -1,5 +1,5 @@
 #
-# YLmf_OS package build script
+# Ylmf OS package build script
 #
 
 DESCRIPTION="MIT Kerberos V"
@@ -14,25 +14,25 @@ BDEPEND=""
 RECOMMENDED=""
 
 pbs_unpack() {
-        ypkg_unpack
+        dounpack
 }
 
 pbs_config() {
 	tar xf "$N-$V".tar.gz
 	cd "$N-$V"/src
-	YPB_CONFIG+=" --enable-dns-for-realm
+	config+=" --enable-dns-for-realm
 		      --mandir=/usr/share/man
 		      --disable-pkinit "
-	CPPFLAGS="-DEAI_NODATA=EAI_NONAME" ypkg_config
+	CPPFLAGS="-DEAI_NODATA=EAI_NONAME" doconfig
 }
 
 pbs_build() {
-	ypkg_make 
+	domake 
 }
 
 pbs_install() {
-	ypkg_mkinstall
-	cd "$YPPATH_DEST"
+	domkinstall
+	cd "$destdir"
 
 	# Create the db directory exists with the following command
 	install -d -m755 var/lib/krb5kdc etc/

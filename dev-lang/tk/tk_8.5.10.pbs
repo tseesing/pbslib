@@ -1,5 +1,5 @@
 #
-# YLmf_OS package build script
+# Ylmf OS package build script
 #
 
 DESCRIPTION="A windowing toolkit for use with tcl"
@@ -13,32 +13,32 @@ RDEPEND="expat fontconfig freetype glibc libX11 libXau libxcb libXdmcp libXext l
 BDEPEND=""
 
 pbs_unpack(){
-        ypkg_unpack
+        dounpack
 }
 
 pbs_config(){
 	cd unix
-	YPB_CONFIG+="--enable-threads --disable-64bit"
-	ypkg_config
+	config+="--enable-threads --disable-64bit"
+	doconfig
 }
 
 pbs_build() {
-	ypkg_make
+	domake
 }
 
 pbs_install() {
-	make INSTALL_ROOT="$YPPATH_DEST" install install-private-headers
-	ypkg_doln /usr/bin/wish8.5 "$YPPATH_DEST"/usr/bin/wish 
+	make INSTALL_ROOT="$destdir" install install-private-headers
+	doln /usr/bin/wish8.5 "$destdir"/usr/bin/wish 
 
 	# Install private headers
 	cd ../
 	for dir in compat generic generic/ttk unix; do
-		install -dm755 "$YPPATH_DEST"/usr/include/tk-private/"$dir"
-	        install -m644 -t "$YPPATH_DEST"/usr/include/tk-private/"$dir" "$dir"/*.h
+		install -dm755 "$destdir"/usr/include/tk-private/"$dir"
+	        install -m644 -t "$destdir"/usr/include/tk-private/"$dir" "$dir"/*.h
 	done
 
         # Install license
-	ypkg_dodoc license.terms
+	dodoc license.terms
 
         # Remove buildroot traces
         sed -i \
@@ -46,6 +46,6 @@ pbs_install() {
             -e "s,^TK_SRC_DIR='.*',TK_SRC_DIR='/usr/include'," \
             -e "s,^TK_BUILD_STUB_LIB_SPEC='-L.*/unix,TK_BUILD_STUB_LIB_SPEC='-L/usr/lib," \
             -e "s,^TK_BUILD_STUB_LIB_PATH='.*/unix,TK_BUILD_STUB_LIB_PATH='/usr/lib," \
-		      "$YPPATH_DEST"/usr/lib/tkConfig.sh
+		      "$destdir"/usr/lib/tkConfig.sh
 }
 

@@ -1,5 +1,5 @@
 #
-# YLmf_OS package build script
+# Ylmf OS package build script
 #
 
 DESCRIPTION="Keyboard and console utilities"
@@ -11,24 +11,24 @@ RDEPEND="glibc"
 BDEPEND=""
 
 pbs_unpack() {
-        ypkg_unpack
+        dounpack
 }
 
 pbs_config() {
-	ypkg_patch "$N-$V$R"-backspace-1.patch
-	YPB_CONFIG+="--datadir=/lib/kbd"
-	ypkg_config
+	dopatch "$N-$V$R"-backspace-1.patch
+	config+="--datadir=/lib/kbd"
+	doconfig
 }
 
 pbs_build() {
-	ypkg_make
+	domake
 }
 
 pbs_install() {
-	ypkg_mkinstall
-	ypkg_dodoc doc/*  AUTHORS ChangeLog COPYING CREDITS INSTALL NEWS README
-	cd "$YPPATH_DEST"
-	ypkg_domv usr/bin/{kbd_mode,loadkeys,openvt,setfont} bin
+	domkinstall
+	dodoc doc/*  AUTHORS ChangeLog COPYING CREDITS INSTALL NEWS README
+	cd "$destdir"
+	domv usr/bin/{kbd_mode,loadkeys,openvt,setfont} bin
 	#for initramfs-tools
-	ypkg_docp_rename "$FILES_PATH"/files/hook_kbd usr/share/initramfs-tools/hooks/kbd
+	docp_rename $filesdir/hook_kbd usr/share/initramfs-tools/hooks/kbd
 }

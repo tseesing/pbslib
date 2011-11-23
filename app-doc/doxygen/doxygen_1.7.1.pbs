@@ -1,5 +1,5 @@
 #
-# YLmf_OS package build script
+# Ylmf OS package build script
 #
 
 DESCRIPTION="documentation system for C++, C, Java, Objective-C, Python, IDL, and other languages"
@@ -14,7 +14,7 @@ BDEPEND=" "
 RECOMMENDED=""
 
 pbs_unpack() {
-        ypkg_unpack
+        dounpack
 }
 
 pbs_config() {
@@ -22,14 +22,14 @@ pbs_config() {
 }
 
 pbs_build() {
-	ypkg_make
+	domake
 }
 
 pbs_install() {
-	ypkg_mkinstall
-	ypkg_dodoc INSTALL README VERSION
+	domkinstall
+	dodoc INSTALL README VERSION
 
-	cd "$YPPATH_DEST"
-	ypkg_domv usr/man usr/share
+	cd "$destdir"
+	domv usr/man usr/share
 }
 

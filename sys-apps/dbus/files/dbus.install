@@ -1,13 +1,13 @@
 . /usr/lib/ybs/funcs
 
 post_install() {
-	ypkg_groupadd -r "messagebus"
-	ypkg_useradd -c "D-BUS Message Daemon User" -d "/dev/null" -s "/bin/false" -r "messagebus"
+	dogroupadd -r "messagebus"
+	douseradd -c "D-BUS Message Daemon User" -d "/dev/null" -s "/bin/false" -r "messagebus"
 	dbus-uuidgen --ensure
 }       
 
 post_remove() {
-	ypkg_userdel "messagebus"
-	ypkg_groupdel "messagebus"
+	douserdel "messagebus"
+	dogroupdel "messagebus"
 }
 

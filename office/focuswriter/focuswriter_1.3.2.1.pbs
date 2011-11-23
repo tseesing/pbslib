@@ -1,5 +1,5 @@
 #
-# YLmf_OS package build script
+# Ylmf OS package build script
 #
 
 DESCRIPTION="FocusWriter is a simple, distraction-free writing environment."
@@ -20,7 +20,7 @@ INSTALL="$N.install"
 NOTES=""
 
 pbs_unpack() {
-        ypkg_unpack
+        dounpack
 }
 
 pbs_config() {
@@ -28,10 +28,10 @@ pbs_config() {
 }
 
 pbs_build() {
-	ypkg_make
+	domake
 }
 
 pbs_install() {
-	make INSTALL_ROOT="$YPPATH_DEST/" install
+	make INSTALL_ROOT="$destdir/" install
 }
 

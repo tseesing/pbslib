@@ -1,5 +1,5 @@
 #
-# YLmf_OS package build script
+# Ylmf OS package build script
 #
 
 DESCRIPTION="Linux dynamic and persistent device naming support (aka userspace devfs)"
@@ -12,34 +12,34 @@ BDEPEND=" acl sys-libs/glibc gperf pciutils usbutils"
 
 pbs_unpack()
 {
-        ypkg_unpack
+        dounpack
 }
 
 pbs_config()
 {
 	
-	YPB_CONFIG+=" --prefix=/usr 
+	config+=" --prefix=/usr 
 	              --sysconfdir=/etc --sbindir=/sbin 
 	              --with-rootlibdir=/lib --libexecdir=/lib/udev 
 		      --docdir=/usr/share/doc/udev-145"
 	
-	ypkg_config
+	doconfig
 }
 
 pbs_build()
 {
-	ypkg_make
+	domake
 }
 
 pbs_install()
 {
-	ypkg_mkinstall
+	domkinstall
 	#install devices
-	install -dv "$YPPATH_DEST"/lib/{firmware,udev/devices/{pts,shm}}
-	mknod -m0666 "$YPPATH_DEST"/lib/udev/devices/null c 1 3
-	ln -sv /proc/self/fd "$YPPATH_DEST"/lib/udev/devices/fd
-	ln -sv /proc/self/fd/0 "$YPPATH_DEST"/lib/udev/devices/stdin
-	ln -sv /proc/self/fd/1 "$YPPATH_DEST"/lib/udev/devices/stdout
-	ln -sv /proc/self/fd/2 "$YPPATH_DEST"/lib/udev/devices/stderr
-	ln -sv /proc/kcore "$YPPATH_DEST"/lib/udev/devices/core
+	install -dv "$destdir"/lib/{firmware,udev/devices/{pts,shm}}
+	mknod -m0666 "$destdir"/lib/udev/devices/null c 1 3
+	ln -sv /proc/self/fd "$destdir"/lib/udev/devices/fd
+	ln -sv /proc/self/fd/0 "$destdir"/lib/udev/devices/stdin
+	ln -sv /proc/self/fd/1 "$destdir"/lib/udev/devices/stdout
+	ln -sv /proc/self/fd/2 "$destdir"/lib/udev/devices/stderr
+	ln -sv /proc/kcore "$destdir"/lib/udev/devices/core
 }

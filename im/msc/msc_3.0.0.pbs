@@ -1,5 +1,5 @@
 #
-# YLmf_OS package build script
+# Ylmf OS package build script
 #
 
 DESCRIPTION="misuland im app"
@@ -17,12 +17,12 @@ RECOMMENDED=""
 CONFLICT=""
 
 pbs_unpack() {
-        ypkg_unpack
+        dounpack
 }
 
 pbs_install() {
-	ypkg_docp * "$YPPATH_DEST"/opt/"$N-$V$R"
-	ypkg_dodesktop "msc.desktop" "msc.png"
-	ypkg_doln /opt/"$N-$V$R"/msc "$YPPATH_DEST"/usr/bin/msc
+	docp * "$destdir"/opt/"$N-$V$R"
+	dodesktop "msc.desktop" "msc.png"
+	doln /opt/"$N-$V$R"/msc "$destdir"/usr/bin/msc
 }
 

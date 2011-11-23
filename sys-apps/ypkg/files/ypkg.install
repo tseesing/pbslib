@@ -21,6 +21,7 @@ AUTO_INSTALL="yes"
 YPPATH_PACKAGE="/var/ypkg/packages"
 EOF
 	fi
+	return 0
 }
 
 post_upgrade() {
@@ -32,6 +33,6 @@ post_downgrade() {
 }
 
 post_remove() {
-	rm -r /etc/yget.conf /etc/ybs.conf
+	rm -r /etc/yget.conf /etc/ybs.conf || return 0
 }
 

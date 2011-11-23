@@ -1,5 +1,5 @@
 #
-# YLmf_OS package build script
+# Ylmf OS package build script
 #
 
 DESCRIPTION="Mozilla runtime package that can be used to bootstrap XUL+XPCOM applications"
@@ -17,22 +17,22 @@ RECOMMENDED=""
 NOTES=""
 
 pbs_unpack() {
-        ypkg_unpack
+        dounpack
 }
 
 pbs_config() {
-	YPB_CONFIG+="--enable-application=xulrunner --disable-javaxpcom"
-	ypkg_config
+	config+="--enable-application=xulrunner --disable-javaxpcom"
+	doconfig
 }
 
 pbs_build() {
-	ypkg_make
+	domake
 }
 
 pbs_install() {
-	ypkg_mkinstall
-	cd "$YPPATH_DEST"
+	domkinstall
+	cd "$destdir"
 	for i in libxul.so libxpcom.so libmozjs.so;do
-		ypkg_doln /usr/lib/xulrunner-1.9.2.13/"$i" usr/lib/"$i"
+		doln /usr/lib/xulrunner-1.9.2.13/"$i" usr/lib/"$i"
 	done
 }

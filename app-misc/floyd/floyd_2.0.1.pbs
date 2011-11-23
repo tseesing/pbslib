@@ -1,5 +1,5 @@
 #
-# YLmf_OS package build script
+# Ylmf OS package build script
 #
 
 DESCRIPTION="displays system load with pulse of keyboard LED"
@@ -15,16 +15,16 @@ BDEPEND=""
 CONFLICT=""
 
 pbs_unpack() {
-        ypkg_unpack
+        dounpack
 }
 
 pbs_build() {
 	sed -i "s#/usr/local#/usr#" Makefile
-	ypkg_make floyd
+	domake floyd
 }
 
 pbs_install() {
-	ypkg_docp floyd "$YPPATH_DEST"/usr/bin/
-	ypkg_doman floyd.1
+	docp floyd "$destdir"/usr/bin/
+	doman floyd.1
 }
 

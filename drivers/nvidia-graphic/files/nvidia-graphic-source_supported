@@ -53,6 +53,7 @@ device_ids() {
   done <"$symbols"
 
   if [ "$ret" -eq 0 ]; then
+    echo 'package nvidia-graphic-driver'
     echo 'module nvidia.ko'
     echo 'description Video driver for the NVIDIA graphics accelerators'
     while read id; do

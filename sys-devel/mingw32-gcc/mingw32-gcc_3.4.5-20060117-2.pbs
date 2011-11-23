@@ -1,5 +1,5 @@
 #
-# YLmf_OS package build script
+# Ylmf OS package build script
 #
 
 DESCRIPTION="A C cross-compiler for building Windows executables on Linux(stage 2)"
@@ -23,7 +23,7 @@ CONFLICT=""
 OPINION="nodev nostrip"
 
 pbs_unpack() {
-        ypkg_unpack
+        dounpack
 	for i in ada g%2B%2B g77 java objc; do
 		tar xf "$YPPATH_SOURCE"/gcc-"$i"-"$V$R"-src.tar.gz -C "$N-$V$R"	
 	done
@@ -38,7 +38,7 @@ pbs_config() {
 
 	mkdir build && cd build
 	
-	YPB_CONFIG=" --prefix="$INSTALL_DIR"
+	config=" --prefix="$INSTALL_DIR"
 		     --target="$TARGET"
 		     --with-gcc 
 		     --with-gnu-as 
@@ -63,18 +63,18 @@ pbs_config() {
 	unset CFLAGS 
 	unset CXXFLAGS
 	export PATH=$PATH:"$INSTALL_DIR"/bin
-	../configure $YPB_CONFIG
+	../configure $config
 }
 
 pbs_build() {
 	export CFLAGS="-O2 -fomit-frame-pointer"
 	export LDFLAGS="-s"
-	ypkg_make
+	domake
 }
 
 pbs_install() {
-	ypkg_mkinstall
-	ypkg_docp "$FILES_PATH"/files/mingw32-gcc.sh "$YPPATH_DEST"/etc/profile.d/
+	domkinstall
+	docp $filesdir/mingw32-gcc.sh "$destdir"/etc/profile.d/
 }
 
 

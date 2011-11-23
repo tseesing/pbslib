@@ -1,5 +1,5 @@
 #
-# YLmf_OS package build script
+# Ylmf OS package build script
 #
 
 DESCRIPTION="The open-source project behind Google Chrome, an attempt at creating a safer, faster, and more stable browser."
@@ -15,12 +15,12 @@ RDEPEND="libX11 libXrender libXScrnSaver libXext gtk+ atk pango cairo fontconfig
 BDEPEND=" perl gperf pkgconfig flex"
 
 pbs_unpack() {
-        ypkg_unpack
+        dounpack
 	cd "$YPPATH_UNPACK/"$N-$V$R""
 	### Patch
 	#patch -p1 -i $YPPATH_SOURCE/libpng-1.4.patch
 	# Allow supporting more media types.
-	#patch -p1 -i "${FILES_PATH}"/files/${N}-20100122-ubuntu-html5-video-mimetypes.patch
+	#patch -p1 -i "$filesdir/${N}-20100122-ubuntu-html5-video-mimetypes.patch
 	
 	# Fix build failure with libpng-1.4, bug 310959.
 	
@@ -65,39 +65,39 @@ pbs_config() {
         # Depending on GCC version the warnings are different and we don't want
         # the build to fail because of that.
         myconf="${myconf} -Dwerror="
-	YPB_CONFIG="${myconf}"
-        build/gyp_chromium -f make build/all.gyp $YPB_CONFIG --depth=.
+	config="${myconf}"
+        build/gyp_chromium -f make build/all.gyp $config --depth=.
 }
 
 pbs_build() {
-	#ypkg_make
+	#domake
 	make $MAKEOPTS chrome chrome_sandbox BUILDTYPE=Release
 }
 
 pbs_install()
 {
-	install -m 0755 -D out/Release/chrome "$YPPATH_DEST"/usr/lib/chromium/chromium
-	install -m 4555 -o root -g root -D out/Release/chrome_sandbox "$YPPATH_DEST"/usr/lib/chromium/chromium-sandbox
-	install -m 0644 -D out/Release/chrome.pak "$YPPATH_DEST"/usr/lib/chromium/chrome.pak
-        install -m 0755 -D out/Release/libffmpegsumo.so "$YPPATH_DEST"/usr/lib/chromium/libffmpegsumo.so
+	install -m 0755 -D out/Release/chrome "$destdir"/usr/lib/chromium/chromium
+	install -m 4555 -o root -g root -D out/Release/chrome_sandbox "$destdir"/usr/lib/chromium/chromium-sandbox
+	install -m 0644 -D out/Release/chrome.pak "$destdir"/usr/lib/chromium/chrome.pak
+        install -m 0755 -D out/Release/libffmpegsumo.so "$destdir"/usr/lib/chromium/libffmpegsumo.so
 	# these links are only needed when building with system ffmpeg
 	#  ln -s /usr/lib/libavcodec.so.52 ${pkgdir}/usr/lib/chromium/
 	#  ln -s /usr/lib/libavformat.so.52 ${pkgdir}/usr/lib/chromium/
 	#  ln -s /usr/lib/libavutil.so.50 ${pkgdir}/usr/lib/chromium/
  
- 	cp -a out/Release/locales out/Release/resources "$YPPATH_DEST"/usr/lib/chromium/
-	find "$YPPATH_DEST"/usr/lib/chromium/ -name '*.d' -type f -delete
-	install -m 0644 -D out/Release/chrome.1 "$YPPATH_DEST"/usr/share/man/man1/chromium.1
-	#install -m 0644 -D chromium.desktop "$YPPATH_DEST"/usr/share/applications/chromium.desktop
+ 	cp -a out/Release/locales out/Release/resources "$destdir"/usr/lib/chromium/
+	find "$destdir"/usr/lib/chromium/ -name '*.d' -type f -delete
+	install -m 0644 -D out/Release/chrome.1 "$destdir"/usr/share/man/man1/chromium.1
+	#install -m 0644 -D chromium.desktop "$destdir"/usr/share/applications/chromium.desktop
 	for size in 16 22 24 32 48 64 128 256; do
 		install -m 0644 -D  chrome/app/theme/chromium/product_logo_${size}.png \
-		"$YPPATH_DEST"/usr/share/icons/hicolor/${size}x${size}/apps/chromium.png
+		"$destdir"/usr/share/icons/hicolor/${size}x${size}/apps/chromium.png
 	done
-	#install -m 0755 -D chromium.sh "$YPPATH_DEST"/usr/bin/
-	install -m 0644 -D LICENSE "$YPPATH_DEST"/usr/share/licenses/chromium/LICENSE
+	#install -m 0755 -D chromium.sh "$destdir"/usr/bin/
+	install -m 0644 -D LICENSE "$destdir"/usr/share/licenses/chromium/LICENSE
 	##
-	mkdir -p  "$YPPATH_DEST"/usr/share/applications "$YPPATH_DEST"/usr/share/pixmaps "$YPPATH_DEST"/usr/bin/
-	install -m 0755 -D $FILES_PATH/files/chromium-chromium.desktop "$YPPATH_DEST"/usr/share/applications
-	install -m 0755 -D $FILES_PATH/files/chromium-browser.png "$YPPATH_DEST"/usr/share/pixmaps 
-	install -m 0755 -D $FILES_PATH/files/chromium "$YPPATH_DEST"/usr/bin/
+	mkdir -p  "$destdir"/usr/share/applications "$destdir"/usr/share/pixmaps "$destdir"/usr/bin/
+	install -m 0755 -D $filesdir/chromium-chromium.desktop "$destdir"/usr/share/applications
+	install -m 0755 -D $filesdir/chromium-browser.png "$destdir"/usr/share/pixmaps 
+	install -m 0755 -D $filesdir/chromium "$destdir"/usr/bin/
 }

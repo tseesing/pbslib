@@ -1,5 +1,5 @@
 #
-# YLmf_OS package build script
+# Ylmf OS package build script
 #
 
 DESCRIPTION="Library to load, handle and manipulate images in the JPEG format"
@@ -14,18 +14,18 @@ RDEPEND=""
 BDEPEND=""
 
 pbs_unpack() {
-        ypkg_unpack
+        dounpack
 }
 
 pbs_config() {
-	YPB_CONFIG+="--enable-shared --disable-static --enable-maxmem=64"
-	ypkg_config
+	config+="--enable-shared --disable-static --enable-maxmem=64"
+	doconfig
 }
 
 pbs_build() {
-	ypkg_make
+	domake
 }
 
 pbs_install() {
-	ypkg_docp .libs/{libjpeg.so.62,libjpeg.so.62.0.0}  "$YPPATH_DEST"/usr/lib
+	docp .libs/{libjpeg.so.62,libjpeg.so.62.0.0}  "$destdir"/usr/lib
 }

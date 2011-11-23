@@ -1,5 +1,5 @@
 #
-# YLmf_OS package build script
+# Ylmf OS package build script
 #
 
 DESCRIPTION="RTL8712/8188/8191/8192SU usb wireless chipset driver"
@@ -12,14 +12,14 @@ SRC_URI="ftp://WebUser:Lc9FuH5r@202.134.71.22/cn/wlan/RTL8192SU_usb_linux_v2.6.6
 PROVIDE="$N-source $N-driver"
 
 pbs_unpack() {
-        ypkg_unpack
+        dounpack
 }
 
 pbs_config() {
 	cd driver
 	tar xf rtl8712_8188_8191_8192SU_usb_linux_v2.6.6.0.20110401.tar.gz
 	cd rtl8712_8188_8191_8192SU_usb_linux_v2.6.6.0.20110401
-	ypkg_patch ylmfos_makefile.patch
+	dopatch ylmfos_makefile.patch
 }
 
 rtl8192su-source_install() {
@@ -29,8 +29,8 @@ rtl8192su-source_install() {
 	OPINION="nodev"
         YARCH="any"
 	
-	ypkg_dosrc *
-	ypkg_dosupported "$N"_supported
+	dosrc *
+	dosupported "$N"_supported
 }
 
 rtl8192su-driver_install() {
@@ -39,7 +39,7 @@ rtl8192su-driver_install() {
 	INSTALL="$N.install"
 	
 	unset ARCH
-	ypkg_make
-	ypkg_mkinstall
+	domake
+	domkinstall
 }
 

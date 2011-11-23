@@ -1,5 +1,5 @@
 #
-# YLmf_OS package build script
+# Ylmf OS package build script
 #
 
 DESCRIPTION="A Perl wrapper for SDL"
@@ -15,7 +15,7 @@ RECOMMENDED=""
 CONFLICT=""
 
 pbs_unpack() {
-        ypkg_unpack
+        dounpack
 }
 
 pbs_config() {
@@ -30,7 +30,7 @@ pbs_build() {
 }
 
 pbs_install() {
-	perl Build install destdir="$YPPATH_DEST"
+	perl Build install destdir="$destdir"
 	perl_cleanup
 }
 

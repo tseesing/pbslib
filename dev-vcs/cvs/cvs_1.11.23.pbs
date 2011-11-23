@@ -1,5 +1,5 @@
 #
-# YLmf_OS package build script
+# Ylmf OS package build script
 #
 
 DESCRIPTION="Concurrent Versions System - source code revision control tools"
@@ -20,19 +20,19 @@ If you want any CVS server functionality, you MUST parse server to congfigure.
 "
 
 pbs_unpack() {
-        ypkg_unpack
+        dounpack
 }
 
 pbs_config() {
-	ypkg_config
+	doconfig
 }
 
 pbs_build() {
-	ypkg_make
+	domake
 }
 
 pbs_install() {
-	ypkg_mkinstall
-	ypkg_dodoc FAQ README doc/*.pdf
+	domkinstall
+	dodoc FAQ README doc/*.pdf
 }
 

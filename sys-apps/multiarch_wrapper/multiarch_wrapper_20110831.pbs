@@ -1,5 +1,5 @@
 #
-# YLmf_OS package build script
+# Ylmf OS package build script
 #
 
 DESCRIPTION="The Multiarch Wrapper is used to wrap certain binaries that have hardcoded paths to libraries or are architecture specific."
@@ -15,7 +15,7 @@ CONFLICT=""
 INSTALL="$N.install"
 
 pbs_unpack() {
-        ypkg_unpack
+        dounpack
 }
 
 pbs_build() {
@@ -79,7 +79,7 @@ EOF
 }
 
 pbs_install() {
-	ypkg_docp multiarch_wrapper "$YPPATH_DEST"/usr/bin/
-	chmod +x "$YPPATH_DEST"/usr/bin/multiarch_wrapper
+	docp multiarch_wrapper "$destdir"/usr/bin/
+	chmod +x "$destdir"/usr/bin/multiarch_wrapper
 }
 

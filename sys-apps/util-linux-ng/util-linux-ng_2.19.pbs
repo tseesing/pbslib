@@ -1,5 +1,5 @@
 #
-# YLmf_OS package build script
+# Ylmf OS package build script
 #
 
 DESCRIPTION="util-linux is a random collection of Linux utilities"
@@ -11,24 +11,24 @@ RDEPEND="glibc ncurses zlib"
 BDEPEND="  "
 
 pbs_unpack() {
-        ypkg_unpack
+        dounpack
 }
 
 pbs_config() {
 	#fallocate will cause compile error.
-	YPB_CONFIG+="--enable-arch 
+	config+="--enable-arch 
 	             --enable-partx 
 		     --enable-write
 	             --disable-static 
 		     --disable-fallocate "
-	ypkg_config
+	doconfig
 }
 
 pbs_build() {
-	ypkg_make
+	domake
 }
 
 pbs_install() {
-	ypkg_mkinstall
-	ypkg_dodoc AUTHORS NEWS README* TODO 
+	domkinstall
+	dodoc AUTHORS NEWS README* TODO 
 }

@@ -1,5 +1,5 @@
 #
-# YLmf_OS package build script
+# Ylmf OS package build script
 #
 
 DESCRIPTION="The Qt toolkit is a comprehensive C++ application development framework"
@@ -14,38 +14,38 @@ BDEPEND=""
 RECOMMENDED=""
 
 pbs_unpack() {
-        ypkg_unpack
+        dounpack
 }
 
 pbs_config() {
-	YPB_CONFIG=" -prefix         /usr 
-	             -bindir         /usr/bin 
-		     -libdir         /usr/lib
-		     -datadir        /usr/share/qt4 
-		     -docdir         /usr/share/doc/qt-"$V" 
-	             -headerdir      /usr/include/qt4 
-		     -plugindir      /usr/lib/qt4/plugins 
-		     -sysconfdir     /etc/qt4 
-		     -translationdir /usr/share/qt4/translations 
-	             -examplesdir    /usr/share/qt4/examples 
-		     -demosdir       /usr/share/qt4/demos 
-		     -nomake         examples 
-		     -nomake         demos 
-		     -qt3support 
-		     -confirm-license 
-		     -largefile"
-	#yes yes |ypkg_config
+	config=" -prefix         /usr 
+                 -bindir         /usr/bin 
+   	         -libdir         /usr/lib
+		 -datadir        /usr/share/qt4 
+		 -docdir         /usr/share/doc/qt-"$V" 
+	         -headerdir      /usr/include/qt4 
+		 -plugindir      /usr/lib/qt4/plugins 
+		 -sysconfdir     /etc/qt4 
+		 -translationdir /usr/share/qt4/translations 
+	         -examplesdir    /usr/share/qt4/examples 
+		 -demosdir       /usr/share/qt4/demos 
+		 -nomake         examples 
+		 -nomake         demos 
+		 -qt3support 
+		 -confirm-license 
+		 -largefile"
+	#yes yes |doconfig
 	#choose o for opensource license
-	yes o |ypkg_config
+	yes o |doconfig
 }
 
 pbs_build() {
-	ypkg_make
+	domake
 }
 
 pbs_install () {
-	make INSTALL_ROOT="$YPPATH_DEST" install
+	make INSTALL_ROOT="$destdir" install
 	# Sorry, doc is too large
-	rm -rf "$YPPATH_DEST"//usr/share/doc/qt-"$V"
+	rm -rf "$destdir"/usr/share/doc/qt-"$V"
 }
 

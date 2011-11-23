@@ -1,5 +1,5 @@
 #
-# YLmf_OS package build script
+# Ylmf OS package build script
 #
 DESCRIPTION="Ghostscript Extra Fonts"
 HOMEPAGE="http://www.cups.org/"
@@ -14,10 +14,10 @@ BDEPEND=""
 RECOMMENDED=""
 
 pbs_unpack() {
-        ypkg_unpack
+        dounpack
 }
 
 pbs_install() {
-	ypkg_docp * "$YPPATH_DEST"/usr/share/fonts/ghostscript/
+	docp * "$destdir"/usr/share/fonts/ghostscript/
 }
 

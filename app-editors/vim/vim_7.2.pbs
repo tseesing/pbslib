@@ -1,5 +1,5 @@
 #
-# YLmf_OS package build script
+# Ylmf OS package build script
 #
 
 DESCRIPTION="Vim, an improved vi-style text editor"
@@ -16,25 +16,25 @@ RDEPEND="acl atk attr cairo directfb expat fontconfig freetype gtk+ libICE pango
 BDEPEND=""
 
 pbs_unpack() {
-        ypkg_unpack
+        dounpack
 }
 
 pbs_config() {
 	echo '#define SYS_VIMRC_FILE "/etc/vimrc"' >> src/feature.h
-	YPB_CONFIG+="--enable-multibyte"
-	ypkg_config
+	config+="--enable-multibyte"
+	doconfig
 }
 
 pbs_build() {
-	ypkg_make
+	domake
 }
 
 pbs_install(){
-	ypkg_mkinstall
-	cd "$YPPATH_DEST"
+	domkinstall
+	cd "$destdir"
 	#create vi
-	ypkg_doln /usr/bin/vim usr/bin/vi
-	ypkg_doln ../vim/vim72/doc usr/share/doc/vim-7.2
+	doln /usr/bin/vim usr/bin/vi
+	doln ../vim/vim72/doc usr/share/doc/vim-7.2
 	#write vimrc
 	mkdir -p etc
 	cat > etc/vimrc << "EOF"

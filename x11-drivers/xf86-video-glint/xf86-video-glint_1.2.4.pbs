@@ -1,5 +1,5 @@
 #
-# YLmf_OS package build script
+# Ylmf OS package build script
 #
 
 DESCRIPTION="GLINT/Permedia video driver"
@@ -12,19 +12,19 @@ RDEPEND="libdrm libXvMC libXv libXext libXfixes libX11 libxcb libXau libXdmcp pi
 BDEPEND=" x11-base/xorg-server"
 
 pbs_unpack() {
-        ypkg_unpack
+        dounpack
 }
 
 pbs_config() {
 	
-	ypkg_config
+	doconfig
 }
 
 pbs_build() {
-	ypkg_make
+	domake
 }
 
 pbs_install() {
-	ypkg_mkinstall
+	domkinstall
 	#
 }

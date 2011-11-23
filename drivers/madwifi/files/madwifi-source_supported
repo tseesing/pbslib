@@ -12,6 +12,7 @@ main() {
 }
 
 #
+echo "package madwifi-driver"
 echo "module ath_pci.ko"
 echo "description Support for Atheros 802.11 wireless LAN cards."
 main ath/if_ath_pci.c

@@ -1,5 +1,5 @@
 #
-# YLmf_OS package build script
+# Ylmf OS package build script
 #
 
 DESCRIPTION="A network programming library in C++"
@@ -16,27 +16,27 @@ RECOMMENDED=""
 CONFLICT=""
 
 pbs_unpack() {
-        ypkg_unpack
+        dounpack
 }
 
 pbs_config() {
-	ypkg_patch wvstreams-4.6.1-parallel-make.patch \
+	dopatch wvstreams-4.6.1-parallel-make.patch \
 	           wvstreams-4.6.1-openssl-1.0.0.patch \
 		   wvstreams-4.6.1-glibc212.patch
-	YPB_CONFIG+=""
+	config+=""
 	./autogen.sh
-	ypkg_config
+	doconfig
 	cd argp
-	ypkg_config
+	doconfig
 	cd -
 }
 
 pbs_build() {
-	ypkg_make
+	domake
 }
 
 pbs_install() {
-	ypkg_mkinstall
+	domkinstall
 }
 
 

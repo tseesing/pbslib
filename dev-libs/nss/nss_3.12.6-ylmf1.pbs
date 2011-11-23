@@ -1,5 +1,5 @@
 #
-# YLmf_OS package build script
+# Ylmf OS package build script
 #
 
 DESCRIPTION="Mozilla's Network Security Services library that implements PKI support"
@@ -12,7 +12,7 @@ RDEPEND="glibc nspr sqlite zlib"
 BDEPEND="   "
 
 pbs_unpack() {
-        ypkg_unpack
+        dounpack
 }
 
 pbs_build() {
@@ -21,7 +21,7 @@ pbs_build() {
 	export NSPR_INCLUDE_DIR=/usr/include/nspr 
 	export USE_SYSTEM_ZLIB=1 
 	export ZLIB_LIBS=-lz 
-	ypkg_patch "$N-$V"-standalone-1.patch 
+	dopatch "$N-$V"-standalone-1.patch 
 	make -C mozilla/security/nss nss_build_all
 }
 
@@ -29,20 +29,20 @@ pbs_install() {
 	NSS_LINUXDIR="Linux2.6_x86_glibc_PTH_OPT.OBJ"
 	cd mozilla/dist 
 	for i in $(ls "$NSS_LINUXDIR"/lib/*.so); do
-		ypkg_docp $(readlink -f "$i") "$YPPATH_DEST"/usr/lib 
+		docp $(readlink -f "$i") "$destdir"/usr/lib 
 	done
 	for i in $(ls "$NSS_LINUXDIR"/lib/{*.chk,libcrmf.a}); do
-		ypkg_docp $(readlink -f "$i") "$YPPATH_DEST"/usr/lib 
+		docp $(readlink -f "$i") "$destdir"/usr/lib 
 	done
 	for i in $(ls "$NSS_LINUXDIR"/bin/{certutil,nss-config,pk12util}); do
-		ypkg_docp $(readlink -f "$i") "$YPPATH_DEST"/usr/bin 
+		docp $(readlink -f "$i") "$destdir"/usr/bin 
 	done
 	for i in $(ls {public,private}/nss/*); do
-		ypkg_docp $(readlink -f "$i") "$YPPATH_DEST"/usr/include/nss
+		docp $(readlink -f "$i") "$destdir"/usr/include/nss
 	done
-	ypkg_docp "$(readlink -f "$NSS_LINUXDIR"/lib/pkgconfig/nss.pc)" "$YPPATH_DEST"/usr/lib/pkgconfig 	#
-	cd "$YPPATH_DEST"/
-	ypkg_doln /usr/lib/libnss3.so      usr/lib/libnss3.so.1d
-	ypkg_doln /usr/lib/libnssutil3.so  usr/lib/libnssutil3.so.1d
-	ypkg_doln /usr/lib/libsmime3.so    usr/lib/libsmime3.so.1d
+	docp "$(readlink -f "$NSS_LINUXDIR"/lib/pkgconfig/nss.pc)" "$destdir"/usr/lib/pkgconfig 	#
+	cd "$destdir"/
+	doln /usr/lib/libnss3.so      usr/lib/libnss3.so.1d
+	doln /usr/lib/libnssutil3.so  usr/lib/libnssutil3.so.1d
+	doln /usr/lib/libsmime3.so    usr/lib/libsmime3.so.1d
 }

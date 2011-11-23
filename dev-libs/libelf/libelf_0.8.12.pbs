@@ -1,5 +1,5 @@
 #
-# YLmf_OS package build script
+# Ylmf OS package build script
 #
 
 DESCRIPTION="A ELF object file access library"
@@ -14,21 +14,21 @@ BDEPEND=""
 RECOMMENDED=""
 
 pbs_unpack() {
-        ypkg_unpack
+        dounpack
 }
 
 pbs_config() {
-	ypkg_config
+	doconfig
 }
 
 pbs_build() {
-	ypkg_make
+	domake
 }
 
 pbs_install() {
-	make prefix="$YPPATH_DEST"/usr libdir="$YPPATH_DEST"/usr/lib  \
-             includedir="$YPPATH_DEST"/usr/include \
+	make prefix="$destdir"/usr libdir="$destdir"/usr/lib  \
+             includedir="$destdir"/usr/include \
 	     install  install-compat 
-	ypkg_dodoc ChangeLog VERSION README
+	dodoc ChangeLog VERSION README
 }
 

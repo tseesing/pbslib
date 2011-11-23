@@ -1,5 +1,5 @@
 #
-# YLmf_OS package build script
+# Ylmf OS package build script
 #
 
 DESCRIPTION="a library for getting and setting POSIX.1e"
@@ -14,19 +14,19 @@ BDEPEND="gperf"
 RECOMMENDED=""
 
 pbs_unpack() {
-        ypkg_unpack
+        dounpack
 }
 
 pbs_build() {
-	ypkg_make
+	domake
 }
 
 pbs_install() {
-	ypkg_mkinstall
-	ypkg_dodoc README
+	domkinstall
+	dodoc README
 
-	cd "$YPPATH_DEST"
-	ypkg_domv lib/libcap* usr/lib"$LIBDIRSUFFIX"/
+	cd "$destdir"
+	domv lib/libcap* usr/lib"$LIBDIRSUFFIX"/
 	rm -rf lib"$LIBDIRSUFFIX"
 }
 

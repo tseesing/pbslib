@@ -8,6 +8,7 @@ device_id () {
 }
 
 #
+echo "package rt5390sta-driver"
 echo "module rt5390sta.ko"
 echo "description RT5390 Wireless Lan Linux Driver"
 #

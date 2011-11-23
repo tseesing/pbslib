@@ -1,5 +1,5 @@
 #
-# YLmf_OS package build script
+# Ylmf OS package build script
 #
 
 DESCRIPTION="an open-source implementation of the OpenGL specification - a system for rendering interactive 3D graphics."
@@ -32,9 +32,9 @@ pbs_unpack() {
 
 pbs_config() {
 	# i915,i965 set disable
-	YPB_CONFIG+="--with-gallium-drivers=nouveau,r300,r600,svga,swrast
+	config+="--with-gallium-drivers=nouveau,r300,r600,svga,swrast
 		     --enable-xcb"
-	ypkg_config
+	doconfig
 }
 
 pbs_build() {
@@ -42,7 +42,7 @@ pbs_build() {
 }
 
 pbs_install() {
-	ypkg_mkinstall
+	domkinstall
 }
 
 

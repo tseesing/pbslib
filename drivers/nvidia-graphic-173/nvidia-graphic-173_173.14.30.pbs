@@ -1,5 +1,5 @@
 #
-# YLmf_OS package build script
+# Ylmf OS package build script
 #
 
 DESCRIPTION="NVIDIA binary Xorg driver, kernel module and VDPAU library"
@@ -28,7 +28,7 @@ pbs_install() {
 	cp usr/src/nv/Makefile.kbuild usr/src/nv/Makefile
 
 	#
-	ypkg_patch ylmfos_makefile.patch
+	dopatch ylmfos_makefile.patch
 }
 
 nvidia-graphic-173-source_install () {
@@ -40,9 +40,9 @@ nvidia-graphic-173-source_install () {
 
 	INSTALL="$N.install"
 
-	ypkg_dosrc usr/src/nv/*
-	ypkg_doykms
-	ypkg_dosupported "${N}"_supported
+	dosrc usr/src/nv/*
+	doykms
+	dosupported "${N}"_supported
 }
 
 nvidia-graphic-173-driver_install () {
@@ -56,8 +56,8 @@ nvidia-graphic-173-driver_install () {
 
 	cd usr/src/nv/
         export IGNORE_CC_MISMATCH="1"
-        ypkg_make -f Makefile.kbuild module
-        make DESTDIR="$YPPATH_DEST" module-install
+        domake -f Makefile.kbuild module
+        make DESTDIR="$destdir" module-install
         cd -
         rm -rf usr/src/nv/
 }
@@ -65,20 +65,19 @@ nvidia-graphic-173-driver_install () {
 nvidia-graphic-173-utils_install () {
 	DESCRIPTION="NVIDIA binary Xorg driver and VDPAU library (libs and utils)"
         RDEPEND="nvidia-graphic-173-driver"
-        DESKTOPFILE="nvidia-settings.desktop"
 
         INSTALL="$N.install"
         OPINION="nodev"
 
 	# License 
-	ypkg_dodoc LICENSE
+	dodoc LICENSE
 
 	# Headers
-	ypkg_domv usr/include/{cuda,GL} usr/include/nvidia-graphic-driver
+	domv usr/include/{cuda,GL} usr/include/nvidia-graphic-driver
 
 	# Xorg base-directory is /usr/lib/xorg
 	mv usr/X11R6/lib/libXvMCNVIDIA.* usr/lib/
-	ypkg_domv usr/X11R6/lib/modules usr/lib/xorg
+	domv usr/X11R6/lib/modules usr/lib/xorg
 	rm -r usr/X11R6/
 
 	#
@@ -123,6 +122,6 @@ nvidia-graphic-173-utils_install () {
 	cd - >/dev/null
 
 	#
-	ypkg_docp usr "$YPPATH_DEST"/
+	docp usr "$destdir"/
 }
 

@@ -1,5 +1,5 @@
 #
-# YLmf_OS package build script
+# Ylmf OS package build script
 #
 
 DESCRIPTION="eio office suit"
@@ -24,24 +24,24 @@ ICONFILE="/usr/share/eiofileicon/eioicon.png"
 NOTES=""
 
 pbs_unpack() {
-        ypkg_unpack
+        dounpack
 }
 
 pbs_install() {
-	ypkg_docp usr etc "$YPPATH_DEST"
-	cd "$YPPATH_DEST"
+	docp usr etc "$destdir"
+	cd "$destdir"
 	chmod -R 755 usr/local/Evermore/EIOffice
 	chmod -R 777 usr/local/Evermore/EIOffice/Config
 	chmod -R 777 usr/local/Evermore/EIOffice/System
 	# Register our X Desktop Group Shared MIME-info Database info
-	ypkg_doln /usr/share/eiofileicon/eio.ico       usr/share/icons/gnome/48x48/mimetypes/gnome-mime-application-x-eio.png 
-	ypkg_doln /usr/share/eiofileicon/eit.ico       usr/share/icons/gnome/48x48/mimetypes/gnome-mime-application-x-eit.png
-	ypkg_doln /usr/share/eiofileicon/eiw.ico       usr/share/icons/gnome/48x48/mimetypes/gnome-mime-application-x-eiw.png
-	ypkg_doln /usr/share/eiofileicon/ees.ico       usr/share/icons/gnome/48x48/mimetypes/gnome-mime-application-x-ees.png
-	ypkg_doln /usr/share/eiofileicon/ese.ico       usr/share/icons/gnome/48x48/mimetypes/gnome-mime-application-x-ese.png
-	ypkg_doln /usr/share/eiofileicon/uof.ico       usr/share/icons/gnome/48x48/mimetypes/gnome-mime-application-x-uof.png
-	ypkg_doln /usr/share/eiofileicon/msdocicon.ico usr/share/icons/gnome/48x48/mimetypes/gnome-mime-application-msword.png
-	ypkg_doln /usr/share/eiofileicon/msxlsicon.ico usr/share/icons/gnome/48x48/mimetypes/gnome-mime-application-vnd.ms-excel.png
-	ypkg_doln /usr/share/eiofileicon/msppticon.ico usr/share/icons/gnome/48x48/mimetypes/gnome-mime-application-vnd.ms-powerpoint.png
+	doln /usr/share/eiofileicon/eio.ico       usr/share/icons/gnome/48x48/mimetypes/gnome-mime-application-x-eio.png 
+	doln /usr/share/eiofileicon/eit.ico       usr/share/icons/gnome/48x48/mimetypes/gnome-mime-application-x-eit.png
+	doln /usr/share/eiofileicon/eiw.ico       usr/share/icons/gnome/48x48/mimetypes/gnome-mime-application-x-eiw.png
+	doln /usr/share/eiofileicon/ees.ico       usr/share/icons/gnome/48x48/mimetypes/gnome-mime-application-x-ees.png
+	doln /usr/share/eiofileicon/ese.ico       usr/share/icons/gnome/48x48/mimetypes/gnome-mime-application-x-ese.png
+	doln /usr/share/eiofileicon/uof.ico       usr/share/icons/gnome/48x48/mimetypes/gnome-mime-application-x-uof.png
+	doln /usr/share/eiofileicon/msdocicon.ico usr/share/icons/gnome/48x48/mimetypes/gnome-mime-application-msword.png
+	doln /usr/share/eiofileicon/msxlsicon.ico usr/share/icons/gnome/48x48/mimetypes/gnome-mime-application-vnd.ms-excel.png
+	doln /usr/share/eiofileicon/msppticon.ico usr/share/icons/gnome/48x48/mimetypes/gnome-mime-application-vnd.ms-powerpoint.png
 }
 

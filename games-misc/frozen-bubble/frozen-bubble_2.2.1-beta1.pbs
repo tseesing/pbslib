@@ -1,5 +1,5 @@
 #
-# YLmf_OS package build script
+# Ylmf OS package build script
 #
 
 DESCRIPTION="A game in which you throw colorful bubbles and build groups to destroy the bubbles"
@@ -17,7 +17,7 @@ CONFLICT=""
 INSTALL="$N.install"
 
 pbs_unpack() {
-        ypkg_unpack
+        dounpack
 }
 
 pbs_config() {
@@ -30,7 +30,7 @@ pbs_build() {
 }
 
 pbs_install() {
-	perl Build install destdir="$YPPATH_DEST"
-	ypkg_dodesktop "$N.desktop"  "$N.png"
+	perl Build install destdir="$destdir"
+	dodesktop "$N.desktop"  "$N.png"
 }
 

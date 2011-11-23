@@ -1,5 +1,5 @@
 #
-# YLmf_OS package build script
+# Ylmf OS package build script
 #
 
 DESCRIPTION="Hardware support for 3dfx Voodoo cards"
@@ -15,16 +15,16 @@ BDEPEND=" "
 RECOMMENDED=""
 
 pbs_unpack() {
-        ypkg_unpack
+        dounpack
 }
 
 pbs_build() {
-	ypkg_make
+	domake
 }
 
 pbs_install() {
-	ypkg_docp  h5/lib/libglide3.so h5/lib/libglide3.a  "$YPPATH_DEST"/usr/lib/
-        ypkg_docp swlibs/fxmisc/3dfx.h \
+	docp  h5/lib/libglide3.so h5/lib/libglide3.a  "$destdir"/usr/lib/
+        docp swlibs/fxmisc/3dfx.h \
 		   h5/glide3/src/g3ext.h \
 		   h5/glide3/src/glide.h \
 		   h5/glide3/src/glidesys.h \
@@ -32,6 +32,6 @@ pbs_install() {
 		   swlibs/fxmisc/linutil.h \
 		   h5/incsrc/sst1vid.h \
 		   swlibs/texus2/lib/texus.h \
-	 "$YPPATH_DEST"/usr/include/glide3
+	 "$destdir"/usr/include/glide3
 }
 

@@ -1,0 +1,13 @@
+Index: likewise-open-5.4.0.39949/lwio/configure.ac
+===================================================================
+--- likewise-open-5.4.0.39949.orig/lwio/configure.ac	2010-01-21 07:42:21.684988737 -0500
++++ likewise-open-5.4.0.39949/lwio/configure.ac	2010-01-21 07:42:46.074960228 -0500
+@@ -21,7 +21,7 @@
+ AC_USE_SYSTEM_EXTENSIONS
+ 
+ case "$host_os:$host_cpu" in
+-	linux*:i?86|linux*:x86_64|linux*:s390*)
++	linux*:*)
+ 		AC_DEFINE([__LWI_LINUX__], [], [Define if OS is Linux])
+ 		;;
+ 	solaris*:i?86|solaris*:sparc*)

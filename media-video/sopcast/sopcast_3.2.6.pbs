@@ -1,5 +1,5 @@
 #
-# YLmf_OS package build script
+# Ylmf OS package build script
 #
 
 DESCRIPTION="A simple, free way to broadcast video and audio over the Internet"
@@ -18,11 +18,11 @@ CONFLICT=""
 NOTES=""
 
 pbs_unpack() {
-        ypkg_unpack
+        dounpack
 }
 
 pbs_install() {
-	ypkg_docp sp-sc-auth "$YPPATH_DEST"/usr/bin/
-	chmod +x "$YPPATH_DEST"/usr/bin/sp-sc-auth
-	ypkg_dodoc Readme
+	docp sp-sc-auth "$destdir"/usr/bin/
+	chmod +x "$destdir"/usr/bin/sp-sc-auth
+	dodoc Readme
 }

@@ -1,5 +1,5 @@
 #
-# YLmf_OS package build script
+# Ylmf OS package build script
 #
 
 DESCRIPTION="A cataloging system for documentation. This is useful for managing documentation metadata and providing an API to help browsers find, sort and search the document catalog."
@@ -16,18 +16,18 @@ RECOMMENDED=""
 NOTES=""
 
 pbs_unpack() {
-        ypkg_unpack
+        dounpack
 }
 
 pbs_config() {
-	YPB_CONFIG+="--with-omfdirs=/usr/share/omf:/opt/gnome-1.4/share/omf:/opt/kde/share/omf:/opt/gnome/share/omf"
-	ypkg_config
+	config+="--with-omfdirs=/usr/share/omf:/opt/gnome-1.4/share/omf:/opt/kde/share/omf:/opt/gnome/share/omf"
+	doconfig
 }
 
 pbs_build() {
-	ypkg_make
+	domake
 }
 
 pbs_install() {
-	ypkg_mkinstall
+	domkinstall
 }

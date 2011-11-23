@@ -1,5 +1,5 @@
 #
-# YLmf_OS package build script
+# Ylmf OS package build script
 #
 
 DESCRIPTION="The Parma Polyhedra Library provides numerical abstractions for analysis of complex systems"
@@ -15,28 +15,28 @@ RECOMMENDED=""
 CONFLICT=""
 
 pbs_unpack() {
-        ypkg_unpack
+        dounpack
 }
 
 pbs_config() {
-	YPB_CONFIG+="--disable-optimization"
-	ypkg_config
+	config+="--disable-optimization"
+	doconfig
 }
 
 pbs_build() {
-	ypkg_make
+	domake
 }
 
 pbs_install() {
-	ypkg_mkinstall
-#		cd "$YPPATH_DEST"
+	domkinstall
+#		cd "$destdir"
 #		case $ARCH in
 #			i?86)	mv usr/bin/ppl-config{,-32} 
 #				mv usr/include/ppl{,-32}.hh ;;
 #		      x86_64) 
 #				# Prepare ppl-config to be wrapped by the multiarch wrapper and then wrap it
 #				mv usr/bin/ppl-config{,-64}
-#				ypkg_doln /usr/bin/multiarch_wrapper usr/bin/ppl-config
+#				doln /usr/bin/multiarch_wrapper usr/bin/ppl-config
 #			
 #				# Create the 64bit header file
 #				mv usr/include/ppl{,-64}.hh

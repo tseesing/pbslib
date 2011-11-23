@@ -1,5 +1,5 @@
 #
-# YLmf_OS package build script
+# Ylmf OS package build script
 #
 
 DESCRIPTION="The standard GNU Bourne again shell"
@@ -20,25 +20,25 @@ RDEPEND="glibc"
 BDEPEND="readline-dev ncurses-dev "
 
 pbs_unpack() {
-        ypkg_unpack
+        dounpack
 }
 
 pbs_config() {
 	for ((i=1; i<10; i++)); do
-		ypkg_patch "$YPPATH_SOURCE"/bash41-00"$i"
+		dopatch "$YPPATH_SOURCE"/bash41-00"$i"
 	done
-	YPB_CONFIG+=" --bindir=/bin 
+	config+=" --bindir=/bin 
 	    	      --htmldir=/usr/share/doc/bash-4.1 
 		      --without-bash-malloc 
 	              --with-installed-readline"
-	ypkg_config
+	doconfig
 }
 
 pbs_build() {
-	ypkg_make
+	domake
 }
 
 pbs_install() {
-	ypkg_mkinstall
-	ypkg_docp "$FILES_PATH"/files/skel ""$YPPATH_DEST""/etc
+	domkinstall
+	docp $filesdir/skel ""$destdir""/etc
 }

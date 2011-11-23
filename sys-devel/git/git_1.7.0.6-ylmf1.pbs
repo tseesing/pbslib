@@ -1,5 +1,5 @@
 #
-# YLmf_OS package build script
+# Ylmf OS package build script
 #
 
 DESCRIPTION="GIT - the stupid content tracker, the revision control system"
@@ -17,20 +17,20 @@ git config --system --add user.name ylmfos_user
 git config --system --add user.email ylmfos_user@115.com"
 
 pbs_unpack() {
-        ypkg_unpack
+        dounpack
 }
 
 pbs_config() {
-	YPB_CONFIG=${YPB_CONFIG/--enable-shared/}
-	ypkg_config
+	config=${config/--enable-shared/}
+	doconfig
 }
 
 pbs_build() {
-	ypkg_make
+	domake
 }
 
 pbs_install() {
-	ypkg_mkinstall
-	ypkg_dodoc contrib
+	domkinstall
+	dodoc contrib
 }
 

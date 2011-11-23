@@ -1,5 +1,5 @@
 #
-# YLmf_OS package build script
+# Ylmf OS package build script
 #
 
 DESCRIPTION="Port of 7-Zip archiver for Unix"
@@ -14,7 +14,7 @@ BDEPEND=" "
 RECOMMENDED=""
 
 pbs_unpack() {
-        ypkg_unpack
+        dounpack
 }
 
 pbs_config() { 	
@@ -22,17 +22,17 @@ pbs_config() {
 }
 
 pbs_build() {
-	ypkg_make all3
+	domake all3
 }
 
 pbs_install() {
 	make install
-	mkdir -p "$YPPATH_DEST" && cd "$YPPATH_DEST"
+	mkdir -p "$destdir" && cd "$destdir"
 
-	ypkg_domv /usr/local/share/doc/p7zip  usr/share/doc
-	ypkg_domv /usr/local/man/man1/7z*     usr/share/man/man1
-	ypkg_domv /usr/local/lib/p7zip        usr/lib
-	ypkg_domv /usr/local/bin/7z*          usr/bin
+	domv /usr/local/share/doc/p7zip  usr/share/doc
+	domv /usr/local/man/man1/7z*     usr/share/man/man1
+	domv /usr/local/lib/p7zip        usr/lib
+	domv /usr/local/bin/7z*          usr/bin
 	chmod 755  usr/bin/7z*
 	sed  -i 's/local\///g' usr/bin/7z*
 }

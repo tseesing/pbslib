@@ -1,5 +1,5 @@
 #
-# YLmf_OS package build script
+# Ylmf OS package build script
 #
 
 DESCRIPTION="Integrated mail, addressbook and calendaring functionality"
@@ -16,27 +16,27 @@ RECOMMENDED=""
 INSTALL="$N-$V.install"
 
 pbs_unpack() {
-        ypkg_unpack
+        dounpack
 }
 
 pbs_config() {
 	#
-	ypkg_patch "$N"-2.32.1-libnotify-0.7.patch
+	dopatch "$N"-2.32.1-libnotify-0.7.patch
 
 	#  Fix invalid use of la file in contact-editor, upstream bug #635002
-	ypkg_patch "$N"-2.32.0-wrong-lafile-usage.patch
+	dopatch "$N"-2.32.0-wrong-lafile-usage.patch
 
 	# Fix compilation with --disable-smime, bug #356471
-	ypkg_patch "$N"-2.32.2-smime-fix.patch
+	dopatch "$N"-2.32.2-smime-fix.patch
 	           
 	# Fix desktop file to work with latest glib
-	ypkg_patch "$N"-2.32.2-mime-handler.patch
+	dopatch "$N"-2.32.2-mime-handler.patch
 
 	# Fix compilation flags crazyness
 	sed -e 's/-D.*_DISABLE_DEPRECATED//' -i configure.ac configure
 
-	ypkg_docp_rename "$FILES_PATH"/files/evolution.svg data/icons/hicolor_apps_scalable_evolution.svg
-	YPB_CONFIG+=" --disable-schemas-install  
+	docp_rename $filesdir/evolution.svg data/icons/hicolor_apps_scalable_evolution.svg
+	config+=" --disable-schemas-install  
 	              --without-kde-applnk-path
 		      --enable-plugins=experimental
 		      --enable-image-inline
@@ -50,18 +50,18 @@ pbs_config() {
 		      --disable-gtk3
 		      --disable-connman"
 	intltoolize --force --copy --automake
-	ypkg_config
+	doconfig
 }
 
 pbs_build() {
-	ypkg_make
+	domake
 }
 
 pbs_install() {
-	ypkg_mkinstall
+	domkinstall
 	
 	# keep clean for rarian
-	rm -fr "$YPPATH_DEST"/var/lib/scrollkeeper
-	rm -fr "$YPPATH_DEST"/var/lib/log
+	rm -fr "$destdir"/var/lib/scrollkeeper
+	rm -fr "$destdir"/var/lib/log
 }
 

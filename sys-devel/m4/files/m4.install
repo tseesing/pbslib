@@ -3,10 +3,10 @@
 files="m4.info-2.gz m4.info-1.gz m4.info.gz"
 
 post_install() {
-        ypkg_install_info $files
+        doinstall_info $files
 }       
 
 pre_remove() {
-        ypkg_remove_info $files
+        doremove_info $files
 }
 

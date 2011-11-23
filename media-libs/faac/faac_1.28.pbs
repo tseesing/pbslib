@@ -1,5 +1,5 @@
 #
-# YLmf_OS package build script
+# Ylmf OS package build script
 #
 
 DESCRIPTION="Free MPEG-4 audio codecs by AudioCoding.com"
@@ -14,24 +14,24 @@ BDEPEND="mp4v2-dev"
 RECOMMENDED=""
 
 pbs_unpack() {
-        ypkg_unpack
+        dounpack
 }
 
 pbs_config() {
-	#ypkg_patch "$FILES_PATH"/files/faac-1.28-external-libmp4v2.patch
-	ypkg_patch "$FILES_PATH"/files/faac-1.28-glibc_fixes-1.patch
+	#dopatch $filesdir/faac-1.28-external-libmp4v2.patch
+	dopatch $filesdir/faac-1.28-glibc_fixes-1.patch
 	#
 	sed -i -e '/obj-type/d' -e '/Long Term/d' frontend/main.c
-	YPB_CONFIG+="--disable-dependency-tracking"
-	ypkg_config
+	config+="--disable-dependency-tracking"
+	doconfig
 }
 
 pbs_build() {
-	ypkg_make
+	domake
 }
 
 pbs_install() {
-	ypkg_mkinstall
-	ypkg_dodoc AUTHORS ChangeLog NEWS README TODO
+	domkinstall
+	dodoc AUTHORS ChangeLog NEWS README TODO
 }
 

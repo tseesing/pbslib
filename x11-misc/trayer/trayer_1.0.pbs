@@ -1,5 +1,5 @@
 #
-# YLmf_OS package build script
+# Ylmf OS package build script
 #
 
 DESCRIPTION="Lightweight GTK+ based systray for UNIX desktop"
@@ -12,19 +12,19 @@ RDEPEND=""
 BDEPEND=""
 
 pbs_unpack() {
-        ypkg_unpack
+        dounpack
 }
 
 pbs_config() {
 	sed -i "s/-DGTK_DISABLE_DEPRECATED//g" Makefile.common
-	ypkg_config
+	doconfig
 }
 
 pbs_build() {
-	ypkg_make PREFIX=/usr
+	domake PREFIX=/usr
 }
 
 pbs_install() {
-	mkdir -p "$YPPATH_DEST"/usr
-	make PREFIX="$YPPATH_DEST"/usr install
+	mkdir -p "$destdir"/usr
+	make PREFIX="$destdir"/usr install
 }

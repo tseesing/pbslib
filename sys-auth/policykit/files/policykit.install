@@ -1,13 +1,13 @@
 . /usr/lib/ybs/funcs
 
 post_install() {
-	ypkg_groupadd -r "polkituser"
-	ypkg_useradd -c "Policy Kit Daemon User" -d "/dev/null" -s "/bin/false" -r -N "polkituser"
+	dogroupadd -r "polkituser"
+	douseradd -c "Policy Kit Daemon User" -d "/dev/null" -s "/bin/false" -r -N "polkituser"
 }
 
 post_remove() {
-	ypkg_userdel "polkituser"
-	ypkg_groupdel "polkituser"
+	douserdel "polkituser"
+	dogroupdel "polkituser"
 }
 
 

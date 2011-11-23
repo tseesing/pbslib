@@ -1,5 +1,5 @@
 #
-# YLmf_OS package build script
+# Ylmf OS package build script
 #
 
 DESCRIPTION="Various utilities dealing with the PCI bus"
@@ -13,15 +13,15 @@ RDEPEND="glibc"
 BDEPEND=""
 
 pbs_unpack() {
-        ypkg_unpack
+        dounpack
 }
 
 pbs_build() {
-        ypkg_make PREFIX=/usr LIBDIR=/usr/lib"$LIBDIRSUFFIX" ZLIB=no SHARED=yes
+        domake PREFIX=/usr LIBDIR=/usr/lib"$LIBDIRSUFFIX" ZLIB=no SHARED=yes
 }
 
 pbs_install() {
-	ypkg_mkinstall PREFIX=/usr LIBDIR=/usr/lib"$LIBDIRSUFFIX" SHARED=yes install
-	ypkg_mkinstall PREFIX=/usr LIBDIR=/usr/lib"$LIBDIRSUFFIX" SHARED=yes install-lib
+	domkinstall PREFIX=/usr LIBDIR=/usr/lib"$LIBDIRSUFFIX" SHARED=yes install
+	domkinstall PREFIX=/usr LIBDIR=/usr/lib"$LIBDIRSUFFIX" SHARED=yes install-lib
 }
 

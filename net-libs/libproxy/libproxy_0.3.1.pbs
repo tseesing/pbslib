@@ -1,5 +1,5 @@
 #
-# YLmf_OS package build script
+# Ylmf OS package build script
 #
 
 DESCRIPTION="Proxy configuration library"
@@ -13,11 +13,11 @@ BDEPEND="atk cairo enchant expat fontconfig freetype gail gcc gdk-pixbuf glib2 g
 BDEPEND="cmake"
 
 pbs_unpack() {
-        ypkg_unpack
+        dounpack
 }
 
 pbs_config() {
-	YPB_CONFIG+=" --without-dotnet 
+	config+=" --without-dotnet 
 		      --without-networkmanager 
 		      --with-python 
 		      --without-mozjs 
@@ -26,15 +26,15 @@ pbs_config() {
 		      --with-gnu-ld 
 		      --with-direct 
 		      --with-envvar "
-	ypkg_config
+	doconfig
 }
 
 pbs_build() {
-	ypkg_make
+	domake
 }
 
 pbs_install() {
-	ypkg_mkinstall
-	ypkg_dodoc AUTHORS COPYING README
+	domkinstall
+	dodoc AUTHORS COPYING README
 }
 
