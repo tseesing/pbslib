@@ -1,0 +1,41 @@
+#
+# Ylmf OS package build script
+#
+
+DESCRIPTION="Multimedia plug-in for Gecko browsers"
+COMMENTS="Gecko Media Player is a browser plug-in that uses GNOME MPlayer
+          and Mplayer to play media in a browser.
+          It uses the NS4 API and is therefore compatible with all NS4 derived browsers:
+          Iceweasel, Firefox, Iceape, Epiphany, Galeon, Midbrowser, Xulrunner as well as
+          with Konqueror, Opera and Google Chromium.
+          It is the modern replacement for mplayerplug-in (from the same author)."
+HOMEPAGE="http://code.google.com/p/gecko-mediaplayer/"
+LICENSE="GPLv2"
+PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
+
+SRC_URI="http://gecko-mediaplayer.googlecode.com/files/"$N-$V".tar.gz"
+
+RDEPEND=""
+RECOMMENDED=""
+BDEPEND=""
+CONFLICT=""
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_config() {
+	config+="--with-plugin-dir=/usr/lib/mozilla/plugins
+	         --disable-schemas-install"
+	doconfig
+}
+
+pbs_build() {
+	domake
+}
+
+pbs_install() {
+	domkinstall
+}
+
+
