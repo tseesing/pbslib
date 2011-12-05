@@ -1,0 +1,34 @@
+#
+# Ylmf OS package build script
+#
+
+DESCRIPTION="Alipay Security Control"
+COMMENTS=""
+HOMEPAGE="www.alipay.com"
+LICENSE="custom"
+PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
+
+SRC_URI="aliedit32.tar.bz2"
+
+RDEPEND=""
+RECOMMENDED=""
+BDEPEND=""
+CONFLICT=""
+
+INSTALL="$N.install"
+
+OPINION="nostrip"
+
+NOTES="Author: Longda Feng
+       Date:   2010/07/29
+       Support: If you have any question, please feel free to rais it to 
+       zhongyan.feng@alipay.com"
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_install() {
+	docp libaliedit32.so "$destdir"/usr/lib/mozilla/plugins/
+}
+

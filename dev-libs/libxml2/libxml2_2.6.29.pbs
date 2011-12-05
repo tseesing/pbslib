@@ -1,0 +1,32 @@
+#
+# Ylmf OS package build script
+#
+
+DESCRIPTION="Version 2 of the library to manipulate XML files"
+HOMEPAGE="http://www.xmlsoft.org/"
+LICENSE="MIT License"
+PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
+
+SRC_URI="http://xmlsoft.org/sources/old/"$N-$V".tar.gz"
+
+RDEPEND="glibc python zlib"
+BDEPEND=""
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_config() {
+	doconfig
+}
+
+pbs_build() {
+	domake
+}
+
+pbs_install() {
+	domkinstall
+	cd "$destdir"
+	doln /usr/include/libxml2/libxml  usr/include/libxml
+}
+

@@ -1,0 +1,35 @@
+#
+# Ylmf OS package build script
+#
+
+DESCRIPTION="A GTK HTML editor for the experienced web designer or programmer."
+HOMEPAGE="http://bluefish.openoffice.nl/"
+LICENSE="GPL"
+PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
+
+SRC_URI="http://www.bennewitz.com/"$N"/stable/source/"$N-$V".tar.gz"
+
+RDEPEND="atk cairo enchant expat fontconfig freetype gcc glib2 gdk-pixbuf glibc gtk+ gucharmap libpng libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libxml2 libXrandr libXrender pango pixman zlib"
+BDEPEND=""
+RECOMMENDED=""
+CONFLICT=""
+
+INSTALL="$N.install"
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_config() {
+	config+=""
+	doconfig
+}
+
+pbs_build() {
+	domake
+}
+
+pbs_install() {
+	domkinstall
+}
+

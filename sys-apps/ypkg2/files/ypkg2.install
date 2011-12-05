@@ -1,12 +1,12 @@
 . /usr/lib/ybs/funcs
 
-db_file="/var/ypkg/db/package.db"
-sql_file="/usr/share/ypkg/db_create.sql"
+dbfile="/var/ypkg/db/package.db"
+sqlfile="/usr/share/ypkg/db_create.sql"
 
 post_install() {
-	if [ ! -f $db_dir ] && [ -f $sql_file ]; then
-		sqlite3 $db_dir ".read $sql_file"	
-	[	 -f $db_dir ] && ypkg2-import
+	if [ ! -f $dbfile ] && [ -f $sqlfile ]; then
+		sqlite3 $dbfile ".read $sqlfile"	
+		[ -f $dbfile ] && ypkg2-import
 	fi
 }
 

@@ -26,7 +26,8 @@ pbs_unpack() {
 
 pbs_config() {
 	config+="--with-plugin-dir=/usr/lib/mozilla/plugins
-	         --disable-schemas-install"
+	         --disable-schemas-install
+		 --with-gio"
 	doconfig
 }
 
@@ -36,6 +37,7 @@ pbs_build() {
 
 pbs_install() {
 	domkinstall
+	dodoc ChangeLog COPYING README NEWS
 }
 
 

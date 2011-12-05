@@ -1,0 +1,40 @@
+#
+# Ylmf OS package build script
+#
+
+DESCRIPTION="dillon's lightweight cron daemon"
+HOMEPAGE="http://www.jimpryor.net/linux/dcron"
+LICENSE="GPLv2+"
+PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
+
+SRC_URI="http://www.jimpryor.net/linux/releases/"$N-$V".tar.gz"
+
+RDEPEND="glibc"
+RECOMMENDED=""
+BDEPEND=""
+CONFLICT=""
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_build() {
+	# by default, any member of group "wheel" can edit their own crontab
+	domake PREFIX=/usr CRONTABS=/var/spool/cron CRONSTAMPS=/var/spool/cronstamps
+}
+
+pbs_install() {
+	domkinstall
+
+	# install standard configuration and scripts
+	install -d -m755 "$destdir/etc/cron."{hourly,daily,weekly,monthly} 
+
+	install -D -m755 extra/run-cron "$destdir/usr/sbin/run-cron"
+	install -D -m0600 extra/root.crontab "$destdir/var/spool/cron/root" 
+	install -D -m755 extra/crond.rc "$destdir/etc/rc.d/crond"
+	install -D -m0644 extra/crond.conf "$destdir/etc/conf.d/crond"
+	install -D -m644 extra/crontab.vim "$destdir/usr/share/vim/vimfiles/ftplugin/crontab.vim"
+	sed -i -e 's=/var/spool/cron/cronstamps=/var/spool/cronstamps=' extra/prune-cronstamps
+	install -D -m755 extra/prune-cronstamps "$destdir/etc/cron.d/prune-cronstamps"
+}
+

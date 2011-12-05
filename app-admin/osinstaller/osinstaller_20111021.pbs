@@ -2,7 +2,7 @@
 # Ylmf OS package build script
 #
 
-DESCRIPTION="livecd installer for Ylmf_OS Linux"
+DESCRIPTION="Ylmf OS installer in livecd"
 HOMEPAGE="http://www.ylmf.net"
 LICENSE="GPL"
 PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
@@ -28,9 +28,9 @@ pbs_build() {
 pbs_install() {
 	domkinstall
 	cd "$destdir"
-	docp $filesdir/installbg.png  usr/share/"$N"
-	docp $filesdir/"$N" etc/init.d
+	docp "$filesdir"/installbg.png  usr/share/"$N"
+	docp "$filesdir"/"$N" etc/init.d
 	dounit "$N".service
-	docp $filesdir/{pre_install,post_install} usr/share/"$N"
+	docp "$filesdir"/{pre_install,post_install} usr/share/"$N"
 }
 

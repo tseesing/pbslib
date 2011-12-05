@@ -2,7 +2,6 @@
 
 files="libc.info-9.gz libc.info-8.gz libc.info-7.gz libc.info-6.gz libc.info-5.gz libc.info-4.gz libc.info-3.gz libc.info-2.gz libc.info-11.gz libc.info-10.gz libc.info-1.gz libc.info.gz"
 
-
 nsswitch_conf() {
         cat >/etc/nsswitch.conf << "EOF"
 passwd: files

@@ -10,9 +10,8 @@ PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 SRC_URI="http://ftp.gnu.org/gnu/"$N"/"$N-$V"/"$N-$V".tar.bz2"
 
 RDEPEND="glibc gmp mpfr libelf"
-BDEPEND=""
 
-INSTALL="$N.install"
+PROVIDE="gcc-lib gcc"
 
 pbs_unpack() {
         dounpack
@@ -25,13 +24,17 @@ pbs_config() {
 	# Suppress the installation of libiberty.a. libiberty.a should be provided by Binutils
 	sed -i 's/install_to_$(INSTALL_DEST) //' libiberty/Makefile.in
 
-	config+=" --libexecdir=/usr/lib"$LIBDIRSUFFIX" 
-                      --enable-threads=posix
-  	              --enable-__cxa_atexit 
-    		      --enable-clocale=gnu 
-                      --enable-languages=c,c++"
+	case "$ARCH" in 
+	    i?86) CHOST="$ARCH"-pc-linux-gnu ;;
+	  x86_64) CHOST="$ARCH"-pc-linux-gnu
+	esac
+
+	config+=" --libexecdir=/usr/lib${LIBDIRSUFFIX}
+                  --enable-threads=posix
+  	          --enable-__cxa_atexit 
+    		  --enable-clocale=gnu 
+                  --enable-languages=c,c++"
 	
-	# 
 	mkdir -p gcc-build && cd gcc-build && rm * -rf
 	../configure $config
 }
@@ -40,12 +43,52 @@ pbs_build() {
 	domake
 }
 
-pbs_install() {
+gcc-lib_install() {
+	DESCRIPTION="Runtime libraries shipped by GCC"
+	RDEPEND="glibc"
+	BDEPEND=""
+	INSTALL="$N.install"
+	OPINION="nodev"
+
+	domake -C "$CHOST"/libgcc DESTDIR="${destdir}" install-shared
+	for lib in libmudflap libgomp libstdc++-v3/src libssp; do
+		domake -C "$CHOST"/"${lib}" DESTDIR="${destdir}" install-toolexeclibLTLIBRARIES
+	done
+	domake -C "$CHOST"/libstdc++-v3/po DESTDIR="${destdir}" install
+	domake -C "$CHOST"/libgomp DESTDIR="${destdir}" install-info
+
+	#domake DESTDIR="${destdir}" install-target-libquadmath  
+	#domake DESTDIR="${destdir}" install-target-libgfortran
+	#domake DESTDIR="${destdir}" install-target-libobjc
+
+	# Remove unnecessary files installed by install-target-{libquadmath,libgfortran,libobjc}
+	rm -rf "${destdir}"/usr/lib/{gcc/,libgfortran.spec}
+
+        # Remove static libraries
+	find "${destdir}" -name *.a -delete
+	find "${destdir}" -name *.la -delete
+				    
+	# Install Runtime Library Exception
+	dodoc ../COPYING.RUNTIME
+}
+
+gcc_install() {
+	DESCRIPTION="The GNU Compiler Collection - C and C++ frontends"
+	RDEPEND="glibc gmp mpfr libelf gcc-lib gcc-dev"
+	BDEPEND=""
+	INSTALL="$N.install"
+	
 	domkinstall
+	
 	cd "$destdir"
-	#
+
 	rm usr/lib/libstdc++.so.6.0.14-gdb.py
 
+	# Remove file in gcc-lib
+	find . -name "libstdc++.mo" -delete
+	rm usr/share/info/libgomp.info
+	rm usr/lib/lib*.so* 
+	
 	doln /usr/bin/gcc usr/bin/cc
 	doln /usr/bin/cpp lib/cpp
 }

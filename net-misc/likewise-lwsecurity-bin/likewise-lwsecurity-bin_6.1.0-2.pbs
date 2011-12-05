@@ -1,0 +1,28 @@
+#
+# Ylmf OS package build script
+#
+
+DESCRIPTION="Likewise Security Application Integration (binary)."
+HOMEPAGE="http://www.likewiseopen.org"
+LICENSE="custom"
+PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
+
+REPO="testing"
+
+SRC_URI="likewise-lwsecurity_6.1.0-1_i386.deb"
+
+RDEPEND=""
+RECOMMENDED=""
+BDEPEND=""
+CONFLICT=""
+
+NOTES="http://www.beyondtrust.com/Technical-Support/Downloads/PowerBroker-Identity-Services-open-edition/"
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_install() {
+	docp data/*  "$destdir"
+}
+

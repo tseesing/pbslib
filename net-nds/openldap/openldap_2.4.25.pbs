@@ -1,0 +1,60 @@
+#
+# Ylmf OS package build script
+#
+
+DESCRIPTION="an open source implementation of the Lightweight Directory Access Protocol."
+HOMEPAGE="http://www.OpenLDAP.org/"
+LICENSE="custom"
+PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
+
+SRC_URI="ftp://ftp.openldap.org/pub/OpenLDAP/"$N"-release/"$N-$V".tgz"
+
+RDEPEND="berkeley-db cyrus-sasl gcc glibc icu openssl util-linux-ng zlib"
+BDEPEND=""
+RECOMMENDED=""
+CONFLICT="openldap-client"
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_config() {
+	config+="--enable-debug
+		 --enable-dynamic
+		 --enable-syslog
+		 --enable-proctitle
+		 --enable-local
+		 --enable-slapd
+		 --enable-dynacl
+		 --enable-aci
+		 --enable-cleartext
+	 	 --enable-crypt
+		 --disable-lmpasswd
+		 --enable-spasswd
+		 --enable-modules
+		 --enable-rewrite
+		 --enable-rlookups
+		 --enable-slapi
+		 --enable-slp
+		 --enable-backends=mod
+		 --disable-ndb
+		 --enable-overlays=mod
+		 --with-subdir=ldap
+		 --with-cyrus-sasl
+		 --with-threads
+		 --enable-ipv6
+		 --with-tls=gnutls
+		 --with-odbc=unixodbc"
+		 #--enable-wrappers
+	 	 #--with-gssapi
+	doconfig
+}
+
+pbs_build() {
+	domake
+}
+
+pbs_install() {
+	domkinstall
+}
+

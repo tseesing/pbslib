@@ -1,0 +1,36 @@
+#
+# Ylmf OS package build script
+#
+
+DESCRIPTION="A fast and easy open-source graphics application for digital painters."
+COMMENTS="MyPaint is a fast and easy open-source graphics application for digital painters. It lets you focus on the art instead of the program. You work on your canvas with minimum distractions, bringing up the interface only when you need it."
+HOMEPAGE="http://mypaint.intilinux.com/"
+LICENSE="GPL"
+PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
+
+SRC_URI="http://download.gna.org/"$N"/"$N-$V".tar.bz2"
+
+RDEPEND="gcc glib2 gdk-pixbuf glibc libpng python zlib"
+BDEPEND="swig scons"
+RECOMMENDED=""
+CONFLICT=""
+
+INSTALL="$N.install"
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_config() {
+	config="prefix=/usr"
+	doconfig
+}
+
+pbs_build() {
+	domake
+}
+
+pbs_install() {
+	domkinstall prefix="$destdir"/usr
+}
+
