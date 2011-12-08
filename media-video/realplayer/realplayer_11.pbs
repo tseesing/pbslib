@@ -10,7 +10,7 @@ PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 
 SRC_URI="http://forms.real.com/real/player/download.html?f=unix/RealPlayer"$V$R"GOLD.deb"
 
-RDEPEND="alsa-lib atk cairo expat fontconfig freetype gcc glib2 gdk-pixbuf glibc gtk+ libpng libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXft libXi libXrandr libXrender libXv pango pixman zlib"
+RDEPEND="alsa-lib atk cairo expat fontconfig freetype gcc-lib glib2 gdk-pixbuf glibc gtk+ libpng libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXft libXi libXrandr libXrender libXv pango pixman zlib"
 BDEPEND=" "
 RECOMMENDED=""
 

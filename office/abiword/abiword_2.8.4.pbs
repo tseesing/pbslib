@@ -9,7 +9,7 @@ PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 
 SRC_URI="http://www.abisource.com/downloads/"$N"/"$V"/source/"$N-$V".tar.gz"
 
-RDEPEND="atk avahi bzip2 cairo dbus dbus-glib enchant expat fontconfig freetype fribidi gcc gconf gdk-pixbuf glib2 glibc gnome-vfs goffice gtk+ libbonobo libcroco libgsf libjpeg-turbo libpng librsvg libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libxml2 libXrandr libXrender openssl orbit pango pixman wv zlib"
+RDEPEND="atk avahi bzip2 cairo dbus dbus-glib enchant expat fontconfig freetype fribidi gcc-lib gconf gdk-pixbuf glib2 glibc gnome-vfs goffice gtk+ libbonobo libcroco libgsf libjpeg-turbo libpng librsvg libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libxml2 libXrandr libXrender openssl orbit pango pixman wv zlib"
 BDEPEND=""
 
 pbs_unpack() {

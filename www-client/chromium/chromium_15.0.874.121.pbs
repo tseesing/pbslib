@@ -1,0 +1,104 @@
+#
+# Ylmf OS package build script
+#
+
+DESCRIPTION="The open-source project behind Google Chrome, an attempt at creating a safer, faster, and more stable browser."
+HOMEPAGE="http://code.google.com/p/chromium/"
+LICENSE="Multiple Licenses"
+PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
+
+SRC_URI="http://commondatastorage.googleapis.com/chromium-browser-official/"$N-$V".tar.bz2"
+
+RDEPEND="alsa-lib atk avahi bzip2 cairo cups dbus dbus-glib e2fsprogs expat fontconfig freetype gcc-lib gconf gdk-pixbuf glib2 glibc gnutls gtk+ keyutils krb5 libevent libgcrypt libgpg-error libjpeg-turbo libpng libtasn1 libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libxml2 libXrandr libXrender libXScrnSaver libxslt nspr nss orbit pango pixman speex zlib"
+BDEPEND="perl gperf pkgconfig flex renderproto-dev libXinerama-dev libvpx-dev switch"
+
+INSTALL="$N.install"
+
+pbs_unpack() {
+        dounpack
+} 
+
+pbs_config() {
+	# Ylmf OS chromium wrapper
+	dopatch ylmfos-chrome-wrapper.patch 
+	
+	# Ylmf OS add baidu tn
+	dopatch ylmfos-baidu-tn.patch
+
+	# NaCL build remains faily
+	cp "$filesdir"/nacl.gypi chrome/
+
+	# Fix build with gcc 4.6
+	# http://code.google.com/p/chromium/issues/detail?id=80071
+	dopatch gcc-4.6-15.patch
+
+	# Fix downloading on NTFS partitions
+	# http://code.google.com/p/chromium/issues/detail?id=102200
+	dopatch fix-downloads-on-ntfs.patch
+
+	# We need to disable system_ssl until "next protocol negotiation" support is
+	# available in our nss package.
+	# (See https://bugzilla.mozilla.org/show_bug.cgi?id=547312)
+
+	build/gyp_chromium -f make build/all.gyp --depth=. \
+		-Dno_strict_aliasing=1 \
+		-Dwerror= \
+		-Dlinux_sandbox_path=/usr/lib/chromium/chromium-sandbox \
+		-Dlinux_strip_binary=1 \
+		-Drelease_extra_cflags="$CFLAGS" \
+		-Dffmpeg_branding=Chrome \
+		-Dproprietary_codecs=1 \
+		-Duse_system_bzip2=1 \
+		-Duse_system_ffmpeg=0 \
+		-Duse_system_libevent=1 \
+		-Duse_system_libjpeg=1 \
+		-Duse_system_libpng=1 \
+		-Duse_system_libxml=0 \
+		-Duse_system_ssl=0 \
+		-Duse_system_yasm=1 \
+		-Duse_system_zlib=1 \
+		-Duse_gconf=0 \
+		-Ddisable_nacl=1 \
+		$([[ $ARCH == i686 ]] && echo '-Ddisable_sse2=1')
+}
+
+pbs_build() {
+	domake chrome chrome_sandbox BUILDTYPE=Release
+}
+
+pbs_install() {
+	mkdir -p "$destdir"
+
+	install -D out/Release/chrome "${destdir}"/usr/lib/chromium/chromium
+ 	install -Dm4755 -o root -g root out/Release/chrome_sandbox "${destdir}"/usr/lib/chromium/chromium-sandbox
+	
+	# Add out/Release/{libppGoogleNaClPluginChrome.so,nacl_irt_x86_*.nexe} again
+	# when NaCl build is fixed
+	cp out/Release/{{chrome,resources}.pak,libffmpegsumo.so} "${destdir}"/usr/lib/chromium/
+
+	# These links are only needed when building with system ffmpeg
+        #ln -s /usr/lib/libavcodec.so.52 ${destdir}/usr/lib/chromium/
+        #ln -s /usr/lib/libavformat.so.52 ${destdir}/usr/lib/chromium/
+        #ln -s /usr/lib/libavutil.so.50 ${destdir}/usr/lib/chromium/
+
+	cp -a out/Release/locales out/Release/resources "${destdir}"/usr/lib/chromium/
+	
+	find "${destdir}"/usr/lib/chromium/ -name '*.d' -type f -delete
+
+	install -Dm644 out/Release/chrome.1 "${destdir}"/usr/share/man/man1/chromium.1
+
+	dodesktop "chromium.desktop" "chrome/app/theme/chromium/product_logo_48.png"
+
+        for size in 16 22 24 32 48 64 128 256; do
+	        install -Dm644 "chrome/app/theme/chromium/product_logo_${size}.png" \
+	        "${destdir}"/usr/share/icons/hicolor/"${size}"x"${size}"/apps/chromium.png
+	done
+
+	dodoc LICENSE 
+	
+        install -m 0755 -D chrome/tools/build/linux/chrome-wrapper "${destdir}"/usr/bin/chromium
+
+	docp_rename "$filesdir"/default-preferences/"$N"-15.tar.bz2 "${destdir}"/usr/lib/chromium/"$N".tar.bz2
+	docp        "$filesdir"/default-preferences/settings.sol  "${destdir}"/usr/lib/chromium/
+}
+

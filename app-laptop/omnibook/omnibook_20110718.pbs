@@ -30,7 +30,7 @@ omnibook-source_install() {
 
 omnibook-driver_install() {
 	DESCRIPTION="Linux kernel module for (but not limited to) HP Omnibook support (kernel module)."
-	BDEPEND="make gcc linux-kernel-headers"
+	BDEPEND="make gcc-lib linux-kernel-headers"
 	INSTALL="$N.install"
 
 	unset ARCH

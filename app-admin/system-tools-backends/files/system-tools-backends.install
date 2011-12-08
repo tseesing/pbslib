@@ -1,10 +1,10 @@
 . /usr/lib/ybs/funcs
 
 post_install() {
-	dogroupadd -r "wheel"
+	dogroupadd -r "wheel" ||true
 }
 
 post_remove() {
-	dogroupdel "wheel"
+	dogroupdel "wheel" ||true
 }
 

@@ -7,7 +7,7 @@ HOMEPAGE="http://www.amule.org/"
  
 SRC_URI="http://downloads.sourceforge.net/project/"$N"/aMule/"$V$R"/aMule-"$V$R".tar.bz2"
 
-RDEPEND="crypto++ geoip atk binutils cairo crypto++ expat fontconfig freetype gcc gd geoip glib2 gdk-pixbuf glibc gtk+ libICE libjpeg-turbo libpng libSM libtiff libupnp libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libXinerama libXpm libXrandr libXrender libXxf86vm ncurses pango pixman readline util-linux-ng wxGTK wxWidgets zlib"
+RDEPEND="crypto++ geoip atk binutils cairo crypto++ expat fontconfig freetype gcc-lib gd geoip glib2 gdk-pixbuf glibc gtk+ libICE libjpeg-turbo libpng libSM libtiff libupnp libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libXinerama libXpm libXrandr libXrender libXxf86vm ncurses pango pixman readline util-linux-ng wxGTK wxWidgets zlib"
 BDEPEND="                                           "
 
 pbs_unpack() {

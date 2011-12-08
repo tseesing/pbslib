@@ -9,7 +9,7 @@ PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 
 SRC_URI="ftp://ftp.freedesktop.org/pub/mesa/"$V"/MesaLib-"$V".tar.bz2 ftp://ftp.freedesktop.org/pub/mesa/"$V"/MesaGLUT-"$V".tar.bz2"
 
-RDEPEND="talloc expat gcc glibc libdrm libICE libpciaccess libSM libX11 libXau libxcb libXdamage libXdmcp libXext libXfixes libXi libXmu libXt libXxf86vm udev util-linux-ng"
+RDEPEND="talloc expat gcc-lib glibc libdrm libICE libpciaccess libSM libX11 libXau libxcb libXdamage libXdmcp libXext libXfixes libXi libXmu libXt libXxf86vm udev util-linux-ng"
 BDEPEND="dri2proto xorg-server-dev llvm-dev"
 
 INSTALL="$N.install"

@@ -9,7 +9,7 @@ PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 
 SRC_URI="http://releases.compiz.org/components/"$N"/"$N-$V".tar.bz2"
 
-RDEPEND="gcc glib2 glibc libcompizconfig libICE libSM libX11 libXau libxcb libXcomposite libXdamage libXdmcp libXext libXfixes libXinerama libxml2 libXrandr libXrender libxslt protobuf startup-notification util-linux-ng zlib"
+RDEPEND="gcc-lib glib2 glibc libcompizconfig libICE libSM libX11 libXau libxcb libXcomposite libXdamage libXdmcp libXext libXfixes libXinerama libxml2 libXrandr libXrender libxslt protobuf startup-notification util-linux-ng zlib"
 BDEPEND=""
 RECOMMENDED=""
 

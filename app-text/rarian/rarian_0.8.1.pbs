@@ -9,7 +9,7 @@ PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
  
 SRC_URI="ftp://ftp.gnome.org/pub/gnome/sources/"$N"/0.8/"$N-$V".tar.bz2"
 
-BDEPEND="gcc glibc"
+BDEPEND="gcc-lib glibc"
 RECOMMENDED=""
 
 INSTALL="$N.install"

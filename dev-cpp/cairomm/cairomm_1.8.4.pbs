@@ -9,7 +9,7 @@ PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 
 SRC_URI="http://cairographics.org/releases/"$N-$V".tar.gz"
 
-RDEPEND="cairo expat fontconfig freetype gcc glibc libpng libsigc++ libX11 libXau libxcb libXdmcp libXrender pixman zlib"
+RDEPEND="cairo expat fontconfig freetype gcc-lib glibc libpng libsigc++ libX11 libXau libxcb libXdmcp libXrender pixman zlib"
 BDEPEND=""
 RECOMMENDED=""
 

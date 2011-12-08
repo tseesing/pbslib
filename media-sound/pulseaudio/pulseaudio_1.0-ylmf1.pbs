@@ -9,7 +9,7 @@ PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 
 SRC_URI="http://freedesktop.org/software/"$N"/releases/"$N-$V".tar.xz"
 
-RDEPEND="alsa-lib attr avahi bluez dbus flac gcc gconf glib2 glibc jack-audio-connection-kit json-c libcap libICE libogg libsamplerate libSM libsndfile libtool libvorbis libX11 libXau libxcb libXdmcp libXext libXi libXtst lirc openssl orbit orc speex tdb udev util-linux-ng zlib"
+RDEPEND="alsa-lib attr avahi bluez dbus flac gcc-lib gconf glib2 glibc jack-audio-connection-kit json-c libcap libICE libogg libsamplerate libSM libsndfile libtool libvorbis libX11 libXau libxcb libXdmcp libXext libXi libXtst lirc openssl orbit orc speex tdb udev util-linux-ng zlib"
 RECOMMENDED=""
 BDEPEND=""
 CONFLICT=""

@@ -9,7 +9,7 @@ PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 
 SRC_URI="http://ftp.musicbrainz.org/pub/musicbrainz/"$N-$V".tar.gz "
 
-RDEPEND="e2fsprogs expat gcc glibc keyutils krb5 libproxy neon openssl zlib"
+RDEPEND="e2fsprogs expat gcc-lib glibc keyutils krb5 libproxy neon openssl zlib"
 BDEPEND=""
 RECOMMENDED=""
 

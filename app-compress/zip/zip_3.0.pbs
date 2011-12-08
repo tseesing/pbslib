@@ -17,7 +17,7 @@ pbs_unpack() {
 }
 
 pbs_build() {
-	make -f unix/Makefile generic_gcc
+	make -f unix/Makefile generic_gcc-lib
 }
 
 pbs_install() {

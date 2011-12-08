@@ -9,7 +9,7 @@ PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 
 SRC_URI="ftp://ftp.gnu.org/gnu/"$N"/"$N-$V".tar.gz"
 
-RDEPEND="gcc glibc ncurses"
+RDEPEND="gcc-lib glibc ncurses"
 BDEPEND=""
 
 INSTALL="$N.install"

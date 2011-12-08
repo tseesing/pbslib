@@ -8,7 +8,7 @@ LICENSE="GPLv2"
 
 SRC_URI="http://stardict-3.googlecode.com/files/"$N-$V$R".tar.bz2"
 
-RDEPEND="atk cairo enchant expat fontconfig freetype gcc glib2 gdk-pixbuf glibc gtk+ libICE libpng libsigc++ libSM libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libxml2 libXrandr libXrender pango pixman util-linux-ng zlib"
+RDEPEND="atk cairo enchant expat fontconfig freetype gcc-lib glib2 gdk-pixbuf glibc gtk+ libICE libpng libsigc++ libSM libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libxml2 libXrandr libXrender pango pixman util-linux-ng zlib"
 BDEPEND=""
 
 NOTES="

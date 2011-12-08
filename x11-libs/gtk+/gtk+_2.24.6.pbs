@@ -9,7 +9,7 @@ PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 
 SRC_URI="http://ftp.gnome.org/pub/gnome/sources/"$N"/2.24/"$N-$V".tar.xz"
 
-RDEPEND="atk avahi cairo cups dbus e2fsprogs expat fontconfig freetype gail gcc gdk-pixbuf glib2 glibc gnutls keyutils krb5 libgcrypt libgpg-error libpng libtasn1 libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libXrandr libXrender pango pixman zlib"
+RDEPEND="atk avahi cairo cups dbus e2fsprogs expat fontconfig freetype gail gcc-lib gdk-pixbuf glib2 glibc gnutls keyutils krb5 libgcrypt libgpg-error libpng libtasn1 libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libXrandr libXrender pango pixman zlib"
 BDEPEND="gtk-doc"
 RECOMMENDED=""
 

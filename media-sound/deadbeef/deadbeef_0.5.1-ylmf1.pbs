@@ -9,7 +9,7 @@ PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 
 SRC_URI="http://downloads.sourceforge.net/project/"$N"/"$N-$V".tar.bz2"
 
-RDEPEND="alsa-lib atk attr bzip2 cairo curl cyrus-sasl dbus expat faad2 ffmpeg flac fontconfig freetype gcc gdk-pixbuf glib2 glibc gtk+ imlib2 json-c lame libcap libcddb libcdio libICE libidn libmad libogg libpng libsamplerate libSM libsndfile libtheora libva libvorbis libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libXrandr libXrender libXtst libzip opencore-amr openldap openssl orc pango pixman pulseaudio rtmpdump schroedinger util-linux-ng wavpack x264 xvidcore zlib"
+RDEPEND="alsa-lib atk attr bzip2 cairo curl cyrus-sasl dbus expat faad2 ffmpeg flac fontconfig freetype gcc-lib gdk-pixbuf glib2 glibc gtk+ imlib2 json-c lame libcap libcddb libcdio libICE libidn libmad libogg libpng libsamplerate libSM libsndfile libtheora libva libvorbis libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libXrandr libXrender libXtst libzip opencore-amr openldap openssl orc pango pixman pulseaudio rtmpdump schroedinger util-linux-ng wavpack x264 xvidcore zlib"
 BDEPEND="imlib2-dev"
 RECOMMENDED=""
 

@@ -32,11 +32,14 @@ pbs_config() {
 } 
 
 pbs_build() {
-	make -j1
+	domake #-j1
 }
 
 pbs_install() {
 	domkinstall 
+	
+	# Doc
+	dodoc COPYING COPYING.LIB LICENSE MAINTAINERS README
 
 	cd "$destdir"
 
@@ -53,6 +56,6 @@ pbs_install() {
 	mv usr/share/man/man1/qemu.1 usr/share/man/man1/qemu-kvm.1
 
 	# Install udev rules
-        install -D -m644 $filesdir/65-kvm.rules lib/udev/rules.d/65-kvm.rules
+        install -D -m644 "$filesdir"/65-kvm.rules lib/udev/rules.d/65-kvm.rules
 }
 

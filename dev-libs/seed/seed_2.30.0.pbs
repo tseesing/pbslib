@@ -9,7 +9,7 @@ PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 
 SRC_URI="http://ftp.gnome.org/pub/gnome/sources/seed/2.30/"$N-$V$R".tar.bz2"
 
-RDEPEND="atk cairo dbus dbus-glib enchant expat fontconfig freetype gail gcc gdk-pixbuf glib2 glibc gmp gnutls gobject-introspection gst-plugins-base gstreamer gtk+ icu libffi libgcrypt libgpg-error libICE libjpeg-turbo libpng libSM libsoup libtasn1 libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libxml2 libXrandr libXrender libxslt libXt mpfr ncurses pango pixman readline sqlite util-linux-ng webkitgtk zlib"
+RDEPEND="atk cairo dbus dbus-glib enchant expat fontconfig freetype gail gcc-lib gdk-pixbuf glib2 glibc gmp gnutls gobject-introspection gst-plugins-base gstreamer gtk+ icu libffi libgcrypt libgpg-error libICE libjpeg-turbo libpng libSM libsoup libtasn1 libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libxml2 libXrandr libXrender libxslt libXt mpfr ncurses pango pixman readline sqlite util-linux-ng webkitgtk zlib"
 BDEPEND="gnome-js-common webkit-dev"
 RECOMMENDED=""
 CONFLICT=""

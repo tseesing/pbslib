@@ -12,7 +12,7 @@ REPO="testing"
 #SRC_URI="likewise-open-patched-6.1.0.406.tar.bz2"
 SRC_URI="likewise-open_6.1.0.406.orig.tar.gz"
 
-RDEPEND="atk cairo cyrus-sasl expat fontconfig freetype gcc gdk-pixbuf glib2 glibc gtk+ keyutils krb5 libglade libpng libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libxml2 libXrandr libXrender likewise-open ncurses openldap openssl pam pango pixman popt sqlite util-linux-ng zlib"
+RDEPEND="atk cairo cyrus-sasl expat fontconfig freetype gcc-lib gdk-pixbuf glib2 glibc gtk+ keyutils krb5 libglade libpng libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libxml2 libXrandr libXrender likewise-open ncurses openldap openssl pam pango pixman popt sqlite util-linux-ng zlib"
 RECOMMENDED=""
 BDEPEND=""
 CONFLICT=""

@@ -32,7 +32,7 @@ iscsitarget-source_install() {
 
 iscsitarget-driver_install() {
 	DESCRIPTION="Open Source iSCSI target with professional features (kernel module)."
-	BDEPEND="gcc make linux-kernel-headers"
+	BDEPEND="gcc-lib make linux-kernel-headers"
 	RECOMMENDED="iscsitarget-utils"
 	INSTALL="$N.install"
 

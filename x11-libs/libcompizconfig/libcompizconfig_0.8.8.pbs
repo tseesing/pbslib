@@ -9,7 +9,7 @@ PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 
 SRC_URI="http://releases.compiz-fusion.org/"$V"/"$N-$V".tar.bz2"
 
-RDEPEND="gcc glibc libX11 libXau libxcb libXdmcp libxml2 protobuf zlib"
+RDEPEND="gcc-lib glibc libX11 libXau libxcb libXdmcp libxml2 protobuf zlib"
 BDEPEND=""
 RECOMMENDED=""
 

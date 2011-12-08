@@ -35,7 +35,7 @@ rtl8192su-source_install() {
 
 rtl8192su-driver_install() {
 	DESCRIPTION="RTL8712/8188/8191/8192SU usb wireless chipset driver (kernel driver)."
-	BDEPEND="make gcc linux-kernel-headers"
+	BDEPEND="make gcc-lib linux-kernel-headers"
 	INSTALL="$N.install"
 	
 	unset ARCH

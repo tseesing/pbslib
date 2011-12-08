@@ -43,7 +43,7 @@ rt3090sta-source_install() {
 
 rt3090sta-driver_install() {
 	DESCRIPTION="Ralink RT3090 PCI WLAN adaptors (kernel module)"
-	BDEPEND="make gcc linux-kernel-headers"
+	BDEPEND="make gcc gcc-dev linux-kernel-headers"
 	INSTALL="$N.install"
 
 	unset ARCH

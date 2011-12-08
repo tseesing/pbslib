@@ -9,7 +9,7 @@ PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 
 SRC_URI="http://ftp.gnome.org/pub/gnome/mobile/2.32/2.32.1/sources/"$N-$V".tar.bz2"
 
-RDEPEND="cairo expat fontconfig freetype gcc glib2 glibc libpng libX11 libXau libxcb libXdmcp libXft libXrender pixman zlib"
+RDEPEND="cairo expat fontconfig freetype gcc-lib glib2 glibc libpng libX11 libXau libxcb libXdmcp libXft libXrender pixman zlib"
 BDEPEND=""
 
 INSTALL="$N.install"

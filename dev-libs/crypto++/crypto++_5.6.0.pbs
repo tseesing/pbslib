@@ -9,7 +9,7 @@ PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 
 SRC_URI="http://cryptopp.com/cryptopp560.zip"
 
-RDEPEND="gcc glibc"
+RDEPEND="gcc-lib glibc"
 BDEPEND="unzip"
 
 pbs_unpack() {

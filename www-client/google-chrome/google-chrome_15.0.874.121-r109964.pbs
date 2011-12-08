@@ -1,0 +1,29 @@
+#
+# Ylmf OS package build script
+#
+
+DESCRIPTION="A browser that combines a minimal design with sophisticated technology to make the web faster, safer, and easier."
+HOMEPAGE="http://www.google.com/chrome/"
+LICENSE="custom"
+PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
+
+SRC_URI="https://dl.google.com/linux/direct/google-chrome-stable_current_i386.deb"
+
+RDEPEND="nss nspr"
+BDEPEND=""
+RECOMMENDED=""
+CONFLICT=""
+
+INSTALL="$N.install"
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_install() {
+	dopatch ylmfos-desktop-13.patch
+	docp data/*  "$destdir"
+	cd "$destdir"
+	dodesktop "opt/google/chrome/google-chrome.desktop" "opt/google/chrome/product_logo_48.png"
+}
+

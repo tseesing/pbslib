@@ -74,7 +74,7 @@ gcc-lib_install() {
 
 gcc_install() {
 	DESCRIPTION="The GNU Compiler Collection - C and C++ frontends"
-	RDEPEND="glibc gmp mpfr libelf gcc-lib gcc-dev"
+	RDEPEND="glibc gmp mpfr libelf gcc-dev"
 	BDEPEND=""
 	INSTALL="$N.install"
 	

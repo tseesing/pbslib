@@ -9,7 +9,7 @@ PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 
 SRC_URI="http://openjpeg.googlecode.com/files/"${N}"_v1_3.tar.gz"
 
-RDEPEND="gcc glibc"
+RDEPEND="gcc-lib glibc"
 BDEPEND=""
 
 pbs_unpack() {

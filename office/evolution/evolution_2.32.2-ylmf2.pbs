@@ -9,7 +9,7 @@ PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 
 SRC_URI="http://ftp.gnome.org/pub/gnome/sources/evolution/2.32/"$N-$V".tar.bz2"
 
-RDEPEND="atk berkeley-db cairo dbus dbus-glib e2fsprogs enchant evolution-data-server expat fontconfig freetype gail gcc gconf gdk-pixbuf glib2 glibc gnome-desktop gnutls gstreamer gtk+ gtkhtml gtkimageview keyutils krb5 libcanberra libgcrypt libgdata libgnome-keyring libgpg-error libgweather libical libICE libnotify libogg libpng libproxy libSM libsoup libtasn1 libtool libunique libvorbis libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libxml2 libXrandr libXrender nspr nss orbit pango pixman sqlite startup-notification tdb util-linux-ng zlib"
+RDEPEND="atk berkeley-db cairo dbus dbus-glib e2fsprogs enchant evolution-data-server expat fontconfig freetype gail gcc-lib gconf gdk-pixbuf glib2 glibc gnome-desktop gnutls gstreamer gtk+ gtkhtml gtkimageview keyutils krb5 libcanberra libgcrypt libgdata libgnome-keyring libgpg-error libgweather libical libICE libnotify libogg libpng libproxy libSM libsoup libtasn1 libtool libunique libvorbis libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libxml2 libXrandr libXrender nspr nss orbit pango pixman sqlite startup-notification tdb util-linux-ng zlib"
 BDEPEND=""
 RECOMMENDED=""
 

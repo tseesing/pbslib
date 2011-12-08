@@ -10,7 +10,7 @@ PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 
 SRC_URI="http://mirror.bjtu.edu.cn/gnu/ddrescue/ddrescue-1.14.tar.gz"
 
-RDEPEND="gcc glibc"
+RDEPEND="gcc-lib glibc"
 BDEPEND=""
 RECOMMENDED=""
 CONFLICT=""

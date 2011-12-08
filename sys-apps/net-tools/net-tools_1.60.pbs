@@ -17,7 +17,7 @@ pbs_unpack() {
 }
 
 pbs_config() {
-	dopatch "$N-$V$R"-gcc34-3.patch 
+	dopatch "$N-$V$R"-gcc-lib34-3.patch 
 	dopatch "$N-$V$R"-kernel_headers-2.patch
 	dopatch "$N-$V$R"-mii_ioctl-1.patch
 	yes "" |make config 

@@ -9,7 +9,7 @@ PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 
 SRC_URI="http://ftp.acc.umu.se/pub/gnome/platform/2.32/2.32.1/sources/"$N-$V".tar.bz2"
 
-RDEPEND="avahi dbus dbus-glib gcc gconf glib2 glibc gnome-vfs libbonobo libcanberra libogg libtool libvorbis libxml2 openssl orbit popt tdb zlib"
+RDEPEND="avahi dbus dbus-glib gcc-lib gconf glib2 glibc gnome-vfs libbonobo libcanberra libogg libtool libvorbis libxml2 openssl orbit popt tdb zlib"
 BDEPEND="libxslt-dev intltool"
 RECOMMENDED=""
 

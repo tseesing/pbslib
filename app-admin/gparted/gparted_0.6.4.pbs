@@ -9,7 +9,7 @@ PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 
 SRC_URI="http://downloads.sourceforge.net/project/"$N"/"$N"/"$N-$V"/"$N-$V".tar.bz2"
 
-RDEPEND="atk atkmm cairo cairomm device-mapper expat fontconfig freetype gcc gdk-pixbuf glib2 glibc glibmm gtk+ gtkmm libpng libsigc++ libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libXrandr libXrender pango pangomm parted pixman udev util-linux-ng zlib"
+RDEPEND="atk atkmm cairo cairomm device-mapper expat fontconfig freetype gcc-lib gdk-pixbuf glib2 glibc glibmm gtk+ gtkmm libpng libsigc++ libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libXrandr libXrender pango pangomm parted pixman udev util-linux-ng zlib"
 BDEPEND=" "
 RECOMMENDED="dosfstools jfsutils ntfsprogs e2fsprogs reiserfsprogs xfsprogs"
 

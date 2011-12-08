@@ -17,7 +17,7 @@ RECOMMENDED=""
 CONFLICT=""
 
 NOTES="To use the symlinks method, do something like this:
-ln -s ccache /usr/bin/gcc
+ln -s ccache /usr/bin/gcc-lib
 ln -s ccache /usr/bin/g++
 ln -s ccache /usr/bin/cc
 ln -s ccache /usr/bin/c++"

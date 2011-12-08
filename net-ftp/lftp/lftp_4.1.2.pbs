@@ -9,7 +9,7 @@ PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 
 SRC_URI="http://ftp.yars.free.net/pub/source/"$N"/"$N-$V".tar.xz"
 
-RDEPEND="expat gcc glibc gnutls libgcrypt libgpg-error libtasn1 ncurses readline zlib"
+RDEPEND="expat gcc-lib glibc gnutls libgcrypt libgpg-error libtasn1 ncurses readline zlib"
 BDEPEND=""
 RECOMMENDED=""
 

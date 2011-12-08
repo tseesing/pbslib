@@ -46,7 +46,7 @@ nvidia-graphic-96-source_install () {
 
 nvidia-graphic-96-driver_install () {
 	DESCRIPTION="NVIDIA kernel module (kernel module)"
-	BDEPEND="make prelink gcc linux-kernel-headers"
+	BDEPEND="make prelink gcc-lib linux-kernel-headers"
 	RECOMMENDED="nvidia-graphic-96-utils"
 
 	INSTALL="$N.install"

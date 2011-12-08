@@ -9,7 +9,7 @@ PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 
 SRC_URI="http://www.x.org/releases/individual/xserver/"$N-$V".tar.bz2"
 
-RDEPEND="freetype gcc glibc libdrm libfontenc libgcrypt libgpg-error libpciaccess libX11 libXau libxcb libXdamage libXdmcp libXext libXfixes libXfont libXv libXxf86vm mesa pixman udev zlib"
+RDEPEND="freetype gcc-lib glibc libdrm libfontenc libgcrypt libgpg-error libpciaccess libX11 libXau libxcb libXdamage libXdmcp libXext libXfixes libXfont libXv libXxf86vm mesa pixman udev zlib"
 BDEPEND="xproto dri2proto libsdl-dev xtrans xextproto inputproto fontsproto bigreqsproto scrnsaverproto xf86vidmodeproto xf86dgaproto videoproto resourceproto xcmiscproto recordproto fixesproto damageproto compositeproto glproto xf86driproto xf86driproto dri2proto randrproto xineramaproto"
 
 NOTES="

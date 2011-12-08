@@ -18,7 +18,7 @@ pbs_unpack() {
 }
 
 pbs_config() {
-	dopatch smpeg-0.4.4-gcc41.patch
+	dopatch smpeg-0.4.4-gcc-lib41.patch
 	doconfig
 }
 

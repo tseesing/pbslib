@@ -22,7 +22,7 @@ pbs_unpack() {
 
 pbs_build() {
 	cd src/
-	[ -z "$CC" ] && CC=gcc
+	[ -z "$CC" ] && CC=gcc-lib
 	$CC $CFLAGS -Wall -o cups-pdf cups-pdf.c
 }
 

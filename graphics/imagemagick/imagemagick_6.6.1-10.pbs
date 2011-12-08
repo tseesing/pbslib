@@ -10,7 +10,7 @@ PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 
 SRC_URI="ftp://ftp.imagemagick.org/pub/ImageMagick/ImageMagick-"$V$R".tar.xz"
 
-RDEPEND="cairo expat fontconfig freetype gcc glib2 gdk-pixbuf glibc gtk+ lcms libcroco libgsf libICE libjpeg-turbo libpng librsvg libSM libtiff libtool libwmf libX11 libXau libxcb libXdmcp libXext libxml2 libXrender libXt pango pixman util-linux-ng zlib"
+RDEPEND="cairo expat fontconfig freetype gcc-lib glib2 gdk-pixbuf glibc gtk+ lcms libcroco libgsf libICE libjpeg-turbo libpng librsvg libSM libtiff libtool libwmf libX11 libXau libxcb libXdmcp libXext libxml2 libXrender libXt pango pixman util-linux-ng zlib"
 BDEPEND=""
 
 pbs_unpack() {

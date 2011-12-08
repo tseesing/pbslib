@@ -38,7 +38,7 @@ ati-graphic-source_install() {
 
 ati-graphic-driver_install() {
 	DESCRIPTION="Video driver for the ATI graphics accelerators (kernel module)"
-	BDEPEND="make gcc linux-kernel-headers"
+	BDEPEND="make gcc-lib linux-kernel-headers"
 	RECOMMENDED="ati-graphic-utils"
 
 	INSTALL="$N.install"

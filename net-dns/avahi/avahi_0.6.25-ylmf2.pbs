@@ -9,7 +9,7 @@ PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 
 SRC_URI="http://avahi.org/download/"$N-$V".tar.gz"
 
-RDEPEND="atk attr cairo dbus expat fontconfig freetype gcc gdbm gdk-pixbuf glib2 glibc gtk+ libcap libdaemon libpng libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libXrandr libXrender pango pixman qt-core zlib"
+RDEPEND="atk attr cairo dbus expat fontconfig freetype gcc-lib gdbm gdk-pixbuf glib2 glibc gtk+ libcap libdaemon libpng libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libXrandr libXrender pango pixman qt-core zlib"
 BDEPEND="desktop-file-utils dbus-python-dev pygtk-dev dbus-glib-dev"
 RECOMMENDED=""
 

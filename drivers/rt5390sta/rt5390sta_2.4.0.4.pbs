@@ -39,7 +39,7 @@ rt5390sta-source_install () {
 
 rt5390sta-driver_install () {
 	DESCRIPTION="Ralink RT5390 "Draft-n" PCI WLAN adaptors (kernel module)."
-	BDEPEND="gcc make linux-kernel-headers"
+	BDEPEND="gcc gcc-dev make linux-kernel-headers"
 	INSTALL="$N.install"
 	
 	unset ARCH

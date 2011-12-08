@@ -11,7 +11,7 @@ REPO="testing"
 
 SRC_URI="likewise-open-gui_6.1.0-2_i386.deb"
 
-RDEPEND="atk cairo expat fontconfig freetype gcc gdk-pixbuf glib2 glibc gtk+ libglade libpng libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXft libXi libXrandr libXrender likewise-open-bin pango pixman zlib"
+RDEPEND="atk cairo expat fontconfig freetype gcc-lib gdk-pixbuf glib2 glibc gtk+ libglade libpng libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXft libXi libXrandr libXrender likewise-open-bin pango pixman zlib"
 RECOMMENDED=""
 BDEPEND=""
 CONFLICT=""

@@ -10,7 +10,7 @@ YARCH="any"
 
 SRC_URI="git://git.ylmf.com/"$N".git"
 
-RDEPEND="python boost gcc glibc lm_sensors" 
+RDEPEND="python boost gcc-lib glibc lm_sensors" 
 RECOMMENDED=""
 BDEPEND=""
 CONFLICT=""

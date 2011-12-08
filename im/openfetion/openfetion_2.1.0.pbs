@@ -10,7 +10,7 @@ PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 
 SRC_URI="http://ofetion.googlecode.com/files/"$N-$V$R".tar.gz"
 
-RDEPEND="atk cairo dbus dbus-glib expat fontconfig freetype gcc glib2 gdk-pixbuf glibc gstreamer gtk+ libnotify libofetion libpng libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libxml2 libXrandr libXrender libXScrnSaver openssl pango pixman sqlite zlib"
+RDEPEND="atk cairo dbus dbus-glib expat fontconfig freetype gcc-lib glib2 gdk-pixbuf glibc gstreamer gtk+ libnotify libofetion libpng libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libxml2 libXrandr libXrender libXScrnSaver openssl pango pixman sqlite zlib"
 BDEPEND=" "
 RECOMMENDED=""
 

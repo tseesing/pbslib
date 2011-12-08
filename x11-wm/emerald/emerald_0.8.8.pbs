@@ -9,7 +9,7 @@ PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 
 SRC_URI="http://releases.compiz.org/"$V$R"/"$N-$V$R".tar.bz2"
 
-RDEPEND="atk cairo compiz expat fontconfig freetype gcc glibc gtk+ libICE libpng libSM libwnck libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libXrandr libXrender libXres pango pixman startup-notification util-linux-ng zlib"
+RDEPEND="atk cairo compiz expat fontconfig freetype gcc-lib glibc gtk+ libICE libpng libSM libwnck libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libXrandr libXrender libXres pango pixman startup-notification util-linux-ng zlib"
 BDEPEND=""
 RECOMMENDED=""
 CONFLICT=""

@@ -10,7 +10,7 @@ PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 
 SRC_URI=" http://ftp.gnome.org/pub/gnome/platform/2.30/2.30.2/sources/"$N-$V$R".tar.bz2"
 
-RDEPEND="alsa-lib audiofile avahi dbus dbus-glib esound gcc gconf glib2 gdk-pixbuf glibc gnome-vfs libbonobo libxml2 openssl orbit popt zlib"
+RDEPEND="alsa-lib audiofile avahi dbus dbus-glib esound gcc-lib gconf glib2 gdk-pixbuf glibc gnome-vfs libbonobo libxml2 openssl orbit popt zlib"
 BDEPEND="libxslt-dev intltool"
 RECOMMENDED=""
 

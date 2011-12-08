@@ -10,7 +10,7 @@ PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 
 SRC_URI="http://llvm.org/releases/"$V$R"/"$N-$V$R".tgz"
 
-RDEPEND="gcc glibc"
+RDEPEND="gcc-lib glibc"
 BDEPEND=""
 RECOMMENDED=""
 CONFLICT=""

@@ -35,12 +35,23 @@ pbs_config() {
 
 pbs_build() {
 	domake
+
+	# FIXME
+	cd po/
+	ls -1d *.po |while read i; do 
+		make ${i%%.po}.gmo
+	done
+	cd -
 }
 
 pbs_install() {
 	domkinstall
 	dodoc AUTHORS COPYING README
 	
+	# FIXME
+	cd po
+	domkinstall
+
 	cd "$destdir"
 	docp "$filesdir"/grub             etc/default/
 	docp "$filesdir"/05_debian_theme  etc/grub.d/

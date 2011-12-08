@@ -9,7 +9,7 @@ PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 
 SRC_URI="http://yorba.org/download/gexiv2/0.2/"$N-$V".tar.bz2"
 
-RDEPEND="exiv2 gcc glib2 glibc zlib"
+RDEPEND="exiv2 gcc-lib glib2 glibc zlib"
 BDEPEND=""
 RECOMMENDED=""
 

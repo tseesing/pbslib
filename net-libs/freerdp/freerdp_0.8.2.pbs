@@ -9,7 +9,7 @@ PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 
 SRC_URI="http://downloads.sourceforge.net/project/"$N"/0.8/"$N-$V".tar.gz "
 
-RDEPEND="alsa-lib avahi cups dbus e2fsprogs gcc glibc gnutls keyutils krb5 libgcrypt libgpg-error libtasn1 libX11 libXau libxcb libXcursor libXdmcp libXfixes libXrender openssl zlib"
+RDEPEND="alsa-lib avahi cups dbus e2fsprogs gcc-lib glibc gnutls keyutils krb5 libgcrypt libgpg-error libtasn1 libX11 libXau libxcb libXcursor libXdmcp libXfixes libXrender openssl zlib"
 BDEPEND=""
 RECOMMENDED=""
 

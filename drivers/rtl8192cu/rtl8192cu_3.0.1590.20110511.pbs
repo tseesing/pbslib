@@ -35,7 +35,7 @@ rtl8192cu-source_install() {
 
 rtl8192cu-driver_install() {
 	DESCRIPTION="rtl8192_8188CU_linux (kernel module)"
-	BDEPEND="gcc make linux-kernel"
+	BDEPEND="gcc-lib make linux-kernel"
 	INSTALL="$N.install"
 
 	unset ARCH

@@ -9,7 +9,7 @@ PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 
 SRC_URI="http://www.libimobiledevice.org/downloads/"$N-$V".tar.bz2"
 
-RDEPEND="gcc glib2 glibc libxml2 python zlib"
+RDEPEND="gcc-lib glib2 glibc libxml2 python zlib"
 BDEPEND="cmake"
 RECOMMENDED=""
 CONFLICT=""

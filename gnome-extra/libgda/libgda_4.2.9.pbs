@@ -9,7 +9,7 @@ PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 
 SRC_URI="http://ftp.gnome.org/pub/gnome/sources/libgda/4.2/"$N-$V".tar.xz"
 
-RDEPEND="atk cairo cyrus-sasl dbus dbus-glib expat fontconfig freetype gcc gdk-pixbuf glib2 glibc gnutls goocanvas gtk+ gtksourceview libgcrypt libgnome-keyring libgpg-error libpng libsoup libtasn1 libunique libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libxml2 libXrandr libXrender libxslt mysql ncurses openldap openssl pango pixman readline zlib readline"
+RDEPEND="atk cairo cyrus-sasl dbus dbus-glib expat fontconfig freetype gcc-lib gdk-pixbuf glib2 glibc gnutls goocanvas gtk+ gtksourceview libgcrypt libgnome-keyring libgpg-error libpng libsoup libtasn1 libunique libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libxml2 libXrandr libXrender libxslt mysql ncurses openldap openssl pango pixman readline zlib readline"
 RECOMMENDED=""
 BDEPEND=""
 

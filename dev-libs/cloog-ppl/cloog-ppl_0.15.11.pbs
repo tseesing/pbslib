@@ -7,7 +7,7 @@ HOMEPAGE="http://repo.or.cz/w/cloog-ppl.git"
 LICENSE="GPL"
 PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 
-SRC_URI="http://mirrors-us.seosue.com/gcc/infrastructure/"$N-$V$R".tar.gz"
+SRC_URI="http://mirrors-us.seosue.com/gcc-lib/infrastructure/"$N-$V$R".tar.gz"
 
 RDEPEND="ppl"
 BDEPEND=""

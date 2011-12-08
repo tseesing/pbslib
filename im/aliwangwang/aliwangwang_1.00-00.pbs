@@ -11,7 +11,7 @@ REPO="testing"
 
 SRC_URI="aliwangwang_1.00-00_i386.deb"
 
-RDEPEND="expat fontconfig freetype gcc glib2 glibc libdrm libICE libpng libSM libX11 libXau libxcb libXdmcp libXext libXrender mesa qt-core udev util-linux-ng zlib"
+RDEPEND="expat fontconfig freetype gcc-lib glib2 glibc libdrm libICE libpng libSM libX11 libXau libxcb libXdmcp libXext libXrender mesa qt-core udev util-linux-ng zlib"
 RECOMMENDED=""
 BDEPEND=""
 CONFLICT=""

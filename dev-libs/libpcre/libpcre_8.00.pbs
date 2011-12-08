@@ -9,7 +9,7 @@ PACKAGER="Ylmf OS Develpers <ylmfos@115.com>"
 
 SRC_URI="ftp://ftp.csx.cam.ac.uk/pub/software/programming/pcre/pcre-"$V".tar.bz2"
 
-RDEPEND="bzip2 gcc glibc zlib"
+RDEPEND="bzip2 gcc-lib glibc zlib"
 BDEPEND=""
 RECOMMENDED=""
 

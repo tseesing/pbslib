@@ -33,7 +33,7 @@ pbs_build() {
 
 pidgin_install() {
 	DESCRIPTION="GTK Instant Messenger client"
-	RDEPEND="atk cairo dbus dbus-glib enchant expat farsight2 fontconfig freetype gcc gdk-pixbuf glib2 glibc gst-plugins-base gstreamer gtk+ gtkspell libICE libidn libpng libpurple libSM libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libxml2 libXrandr libXrender libXScrnSaver pango pixman util-linux-ng zlib"
+	RDEPEND="atk cairo dbus dbus-glib enchant expat farsight2 fontconfig freetype gcc-lib gdk-pixbuf glib2 glibc gst-plugins-base gstreamer gtk+ gtkspell libICE libidn libpng libpurple libSM libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libxml2 libXrandr libXrender libXScrnSaver pango pixman util-linux-ng zlib"
 	RECOMMENDED="libpurple finch"
 	
 	INSTALL="$N.install"
@@ -50,7 +50,7 @@ pidgin_install() {
 
 libpurple_install() {
 	DESCRIPTION="IM library extracted from Pidgin"
-	RDEPEND="avahi dbus dbus-glib expat farsight2 fontconfig freetype gcc glib2 glibc gnutls gst-plugins-base gstreamer libgcrypt libgpg-error libidn libtasn1 libX11 libXau libxcb libXdmcp libXext libXft libxml2 libXrender libXScrnSaver meanwhile nspr nss perl tcl tk zlib"
+	RDEPEND="avahi dbus dbus-glib expat farsight2 fontconfig freetype gcc-lib glib2 glibc gnutls gst-plugins-base gstreamer libgcrypt libgpg-error libidn libtasn1 libX11 libXau libxcb libXdmcp libXext libXft libxml2 libXrender libXScrnSaver meanwhile nspr nss perl tcl tk zlib"
         for dir in libpurple share/sounds share/ca-certs m4macros po; do
 		domkinstall -C "${dir}"
 	done

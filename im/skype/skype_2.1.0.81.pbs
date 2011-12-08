@@ -7,7 +7,7 @@ HOMEPAGE="http://www.skype.com/"
  
 SRC_URI="http://download.skype.com/linux/"${N}"_static-"$V$R".tar.bz2"
 
-RDEPEND="alsa-lib expat fontconfig freetype gcc glib2 gdk-pixbuf glibc libICE libSM libX11 libXau libxcb libXdmcp libXext libXi libXrandr libXrender libXScrnSaver libXv util-linux-ng zlib"
+RDEPEND="alsa-lib expat fontconfig freetype gcc-lib glib2 gdk-pixbuf glibc libICE libSM libX11 libXau libxcb libXdmcp libXext libXi libXrandr libXrender libXScrnSaver libXv util-linux-ng zlib"
 BDEPEND=""
 
 INSTALL="$N.install"

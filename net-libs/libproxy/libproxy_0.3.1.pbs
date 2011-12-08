@@ -9,7 +9,7 @@ PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 
 SRC_URI="http://libproxy.googlecode.com/files/"$N-$V".tar.bz2"
 
-BDEPEND="atk cairo enchant expat fontconfig freetype gail gcc gdk-pixbuf glib2 glibc gnutls gst-plugins-base gstreamer gtk+ icu libgcrypt libgpg-error libICE libjpeg-turbo libpng libSM libsoup libtasn1 libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libxml2 libXmu libXrandr libXrender libxslt libXt pango pixman sqlite util-linux-ng webkit zlib"
+BDEPEND="atk cairo enchant expat fontconfig freetype gail gcc-lib gdk-pixbuf glib2 glibc gnutls gst-plugins-base gstreamer gtk+ icu libgcrypt libgpg-error libICE libjpeg-turbo libpng libSM libsoup libtasn1 libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libxml2 libXmu libXrandr libXrender libxslt libXt pango pixman sqlite util-linux-ng webkit zlib"
 BDEPEND="cmake"
 
 pbs_unpack() {

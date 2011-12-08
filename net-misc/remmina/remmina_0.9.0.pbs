@@ -8,7 +8,7 @@ PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 
 SRC_URI="http://downloads.sourceforge.net/project/"$N"/0.9/"$N-$V".tar.gz"
 
-RDEPEND="atk avahi cairo dbus dbus-glib expat fontconfig freetype gcc gdbm gdk-pixbuf glib2 glibc gtk+ libgcrypt libgpg-error libpng libssh libunique libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libXrandr libXrender ncurses openssl pango pixman vte zlib"
+RDEPEND="atk avahi cairo dbus dbus-glib expat fontconfig freetype gcc-lib gdbm gdk-pixbuf glib2 glibc gtk+ libgcrypt libgpg-error libpng libssh libunique libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libXrandr libXrender ncurses openssl pango pixman vte zlib"
 BDEPEND=""
 RECOMMENDED=""
 

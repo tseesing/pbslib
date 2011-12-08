@@ -9,7 +9,7 @@ PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 
 SRC_URI="ftp://ftp.openldap.org/pub/OpenLDAP/"$N"-release/"$N-$V".tgz"
 
-RDEPEND="berkeley-db cyrus-sasl gcc glibc icu openssl util-linux-ng zlib"
+RDEPEND="berkeley-db cyrus-sasl gcc-lib glibc icu openssl util-linux-ng zlib"
 BDEPEND=""
 RECOMMENDED=""
 CONFLICT="openldap-client"
