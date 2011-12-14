@@ -3,6 +3,7 @@
 pre_install() {
 	dogroupadd -r "apache"
 	douseradd -c "Apache Server" -d "/dev/null" -s "/bin/false" -r -N "apache"
+	return 0
 }
 
 post_install() {
@@ -12,4 +13,5 @@ post_install() {
 post_remove() {
 	douserdel  "apache"
 	dogroupdel "apache"
+	return 0
 }

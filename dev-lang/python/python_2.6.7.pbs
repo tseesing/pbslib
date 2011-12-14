@@ -18,17 +18,17 @@ pbs_unpack() {
 
 pbs_config(){
 	config+="--enable-shared 
-	             --with-threads 
-		     --with-system-expat 
-		     --with-system-ffi"
+	         --with-threads 
+		 --with-system-expat 
+		 --with-system-ffi"
 	doconfig
 }
 
 pbs_build() {
-	make $MAKEOPTS
+	make "$MAKEOPTS"
 }
 
 pbs_install() {
-	make $MAKEOPTS DESTDIR="$destdir" install
+	make "$MAKEOPTS" DESTDIR="$destdir" install
 }
 

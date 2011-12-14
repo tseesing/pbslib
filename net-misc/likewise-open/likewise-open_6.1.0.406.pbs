@@ -78,5 +78,11 @@ pbs_install() {
 
 	# For systemd
 	dounit likewise-open.service
+
+	#FIXME
+	domv likewise-open/libnss_lsass.so.2     usr/lib/
+	domv likewise-open/security/pam_lsass.so lib/security/
+	rmdir -p likewise-open/security/
 }
+
 

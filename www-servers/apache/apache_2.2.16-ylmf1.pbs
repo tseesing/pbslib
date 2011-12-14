@@ -4,7 +4,7 @@
 
 DESCRIPTION="The Apache Web Server."
 HOMEPAGE="http://httpd.apache.org/"
-LICENSE="GPL-2"
+LICENSE="GPL"
 PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 
 SRC_URI="http://labs.renren.com/apache-mirror/httpd/httpd-"$V".tar.bz2"
@@ -22,12 +22,12 @@ pbs_unpack() {
 }
 
 pbs_config() {
-	#Creat user and group 	
+	# Creat user and group 	
 	dogroupadd -r "apache"
 	douseradd -c "Apache Server" -d "/dev/null" -s "/bin/false" -r -N "apache"
 
-	#The following patch modifies the layout of destination directories and among them 
-	#the build directory at /usr/lib/apache/build. This will allow the modules added to Apache to be configured without errors
+	# The following patch modifies the layout of destination directories and among them 
+	# the build directory at /usr/lib/apache/build. This will allow the modules added to Apache to be configured without errors
 	dopatch httpd-2.2.15-config-1.patch
 	config+=" --sysconfdir=/etc/apache 
 		      --enable-ssl    

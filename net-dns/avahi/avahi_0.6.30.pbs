@@ -18,6 +18,8 @@ pbs_unpack() {
 }
 
 pbs_config() {
+	dopatch ylmfos_config-add-distro.patch
+	
 	#
 	dogroupadd -r "avahi"
 	douseradd -c "avahi users" -d "/dev/null" -s "/bin/false" -r "avahi"
@@ -43,7 +45,7 @@ pbs_config() {
 		 --with-avahi-group=avahi
 		 --with-autoipd-user=avahi-autoipd
 		 --with-autoipd-group=avahi-autoipd
-		 --with-distro=debian
+		 --with-distro=ylmfos
 		 --program-prefix= 
 		 --program-suffix=
 		 --with-systemdsystemunitdir=/lib/systemd/system"
@@ -56,8 +58,10 @@ pbs_build() {
 
 pbs_install() {
 	domkinstall
+	
 	cd "$destdir"
-	# howl and mdnsresponder compatability
+
+	# Howl and mdnsresponder compatability
 	(cd usr/include; ln -s avahi-compat-libdns_sd/dns_sd.h dns_sd.h; ln -s avahi-compat-howl howl)
 	(cd usr/lib/pkgconfig; ln -s avahi-compat-howl.pc howl.pc)
 }

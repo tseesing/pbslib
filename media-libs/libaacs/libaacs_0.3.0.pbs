@@ -1,0 +1,35 @@
+#
+# Ylmf OS package build script
+#
+
+DESCRIPTION="free-and-libre implementation of AACS"
+COMMENTS=""
+HOMEPAGE="http://www.videolan.org/developers/libaacs.html"
+LICENSE="GPL"
+PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
+
+SRC_URI="ftp://ftp.videolan.org/pub/videolan/"$N"/"$V"/"$N-$V".tar.bz2"
+
+RDEPEND="glibc libgcrypt libgpg-error"
+RECOMMENDED=""
+BDEPEND=""
+CONFLICT=""
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_config() {
+	config+=""
+	doconfig
+}
+
+pbs_build() {
+	domake
+}
+
+pbs_install() {
+	domkinstall
+}
+
+

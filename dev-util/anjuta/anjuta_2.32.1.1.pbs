@@ -22,7 +22,8 @@ pbs_unpack() {
 
 pbs_config() {
 	config+="--enable-introspection=no 
-	         --disable-schemas-install"
+	         --disable-schemas-install
+		 --disable-vala"
 	doconfig
 }
 

@@ -39,7 +39,7 @@ diff -ur grub2-1.99-ylmf1/util/grub.d/10_linux.in grub2-1.99-ylmf1.new//util/gru
 +     "recovery ${GRUB_CMDLINE_LINUX}"
    fi
  
-+    if [ "x${GRUB_DISABLE_LINUX_NOMODESET}" != "xtrue" ]; then
++    if [ "x${GRUB_DISABLE_LINUX_XFORCEVESA}" != "xtrue" ]; then
 +            linux_entry "${OS}" "${version}" nomodeset \
 +              "nomodeset xforcevesa ${GRUB_CMDLINE_LINUX} ${GRUB_CMDLINE_EXTRA} ${GRUB_CMDLINE_LINUX_DEFAULT}" \
 +             quiet

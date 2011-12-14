@@ -1,0 +1,36 @@
+#
+# Ylmf OS package build script
+#
+
+DESCRIPTION="Playlist handling library"
+COMMENTS="libxspf (formerly called libSpiff) brings XSPF playlist reading and writing support to your C++ application. Both version 0 and 1 are supported."
+HOMEPAGE="http://libspiff.sourceforge.net"
+LICENSE="GPLv2+"
+PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
+
+SRC_URI="http://downloads.xiph.org/releases/xspf/"$N-$V".tar.lzma"
+
+RDEPEND="expat gcc-lib glibc uriparser"
+RECOMMENDED=""
+BDEPEND=""
+CONFLICT=""
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_config() {
+	config+=""
+	doconfig
+}
+
+pbs_build() {
+	domake
+}
+
+pbs_install() {
+	domkinstall
+	dodoc COPYING README
+}
+
+

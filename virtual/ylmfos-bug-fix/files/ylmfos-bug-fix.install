@@ -1,9 +1,6 @@
 . /usr/lib/ybs/funcs
 
 post_install() {
-	# Install some missing libs and change mplayer version
-	#yget install -y libbluray enca lzo a52dec nas mplayer
-
 	# Fix permission of dirs
 	chmod -s /boot /home /media /mnt /srv /root
 
@@ -20,9 +17,6 @@ post_install() {
 
 	# Fix /etc/fstab
 	sed -i 's/\/isodevice\//\/host\//g' /etc/fstab
-
-	#
-	yget install systemd
 
 	return 0
 }

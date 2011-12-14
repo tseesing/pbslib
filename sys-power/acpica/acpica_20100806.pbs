@@ -30,7 +30,7 @@ pbs_build() {
 }
 
 pbs_install() {
-	docp compiler/iasl "$destdir"/usr/bin
+	#docp ../compiler/iasl "$destdir"/usr/bin
 	docp tools/{acpisrc/acpisrc,acpixtract/acpixtract,acpiexec/acpiexec} "$destdir"/usr/bin
 	dodoc changes.txt README
 }

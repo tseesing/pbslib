@@ -1,0 +1,35 @@
+#
+# Ylmf OS package build script
+#
+
+DESCRIPTION=" Free crossplatform audio editor"
+HOMEPAGE="http://audacity.sourceforge.net/"
+LICENSE="GPL"
+PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
+
+SRC_URI="http://audacity.googlecode.com/files/"$N"-fullsrc-"$V"-beta.tar.bz2"
+
+RDEPEND="alsa-lib atk cairo expat flac fontconfig freetype gcc-lib gdk-pixbuf glib2 glibc gtk+ jack-audio-connection-kit libICE libid3tag libmad libogg libpng libSM libsndfile libtiff libvorbis libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libXinerama libXrandr libXrender libXxf86vm pango pixman util-linux-ng wxGTK wxWidgets zlib libjpeg-turbo"
+BDEPEND=" "
+RECOMMENDED=""
+CONFLICT=""
+
+INSTALL="$N.install"
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_config() {
+	dopatch audacity-1.3.14-ffmpeg.patch
+	doconfig
+}
+
+pbs_build() {
+	domake
+}
+
+pbs_install() {
+	domkinstall
+}
+
