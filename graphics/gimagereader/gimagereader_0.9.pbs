@@ -4,7 +4,6 @@
 
 DESCRIPTION="A graphical GTK frontend to tesseract-ocr"
 HOMEPAGE="http://sourceforge.net/projects/gimagereader/"
-REPO=""
 LICENSE="GPLv3"
 PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 
@@ -14,8 +13,6 @@ RDEPEND="pypoppler pyenchant"
 BDEPEND=""
 RECOMMENDED=""
 CONFLICT=""
-
-NOTES=""
 
 pbs_unpack() {
         dounpack

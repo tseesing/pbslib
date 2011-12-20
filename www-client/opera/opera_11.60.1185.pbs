@@ -1,0 +1,29 @@
+#
+# Ylmf OS package build script
+#
+
+DESCRIPTION="A standards-compliant graphical Web browser"
+HOMEPAGE="http://www.opera.com/"
+LICENSE="custom"
+PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
+
+SRC_URI="http://get.opera.com/pub/opera/linux/1160/"$N"_"$V"_i386.deb"
+
+RDEPEND="libpng atk cairo expat fontconfig freetype gcc-lib gdk-pixbuf glib2 glibc gst-plugins-base gstreamer gtk+ libdrm libffi libICE libSM libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libxml2 libXrandr libXrender libXt linux-kernel-headers mesa pango pixman qt-core udev util-linux-ng zlib"
+BDEPEND=" "
+RECOMMENDED=""
+CONFLICT=""
+
+DESKTOPFILE="opera-browser.desktop"
+
+INSTALL="$N.install"
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_install() {
+	dopatch ylmfos-desktop.patch
+	docp data/*  "$destdir"/
+}
+

@@ -7,7 +7,7 @@ HOMEPAGE="http://cairographics.org/"
 LICENSE="GPL"
 PACKAGER="Ylmf developers <ylmfos@115.com>"
 
-SRC_URI="http://cairographics.org/releases/"$N-$V$R".tar.gz"
+SRC_URI="http://cairographics.org/releases/"$N-$V".tar.gz"
 
 RDEPEND="binutils expat fontconfig freetype glib2 glibc libpng libX11 libXau libxcb libXdmcp libXrender pixman zlib"
 BDEPEND="xcb-util-dev"
@@ -17,15 +17,11 @@ pbs_unpack() {
 }
 
 pbs_config() {
-	dopatch 01_build_perf_utils.patch
-	dopatch 02_am-maintainer-mode.patch
-	dopatch 03_export-symbols.patch
-	dopatch cairo-lp-680628.patch
-	dopatch server_side_gradients.patch
-	dopatch cairo-respect-fontconfig.patch
+	dopatch cairo-1.10.0-buggy_gradients.patch
+
 	config+="--enable-xcb=yes
-		     --enable-svg=yes
-		     --enable-tee=yes"
+		 --enable-svg=yes
+		 --enable-tee"
 	doconfig
 }
 

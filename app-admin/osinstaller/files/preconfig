@@ -12,6 +12,21 @@
 #lang=en_US.UTF-8
 
 #
+# 时区, 可以在 /usr/share/zoneinfo /找到系统支持的时区
+#
+#tzone=Asia/Chongqing
+
+#
+# 设置键盘布局
+#
+#kbd=us
+
+#
+# 快速模式安装 false/no/数字零 为假,否则为真
+#
+#quickly_mode=false
+
+#
 # 是否把 grub 安装到根分区, true/yes/非零数字 为真
 #
 #bldr_to_root_disk=False

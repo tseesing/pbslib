@@ -4,11 +4,10 @@
 
 DESCRIPTION="Simple framework to write repeatable tests"
 HOMEPAGE="http://www.junit.org/"
-REPO=""
-LICENSE="http://www.junit.org/license"
+LICENSE="custom"
 PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 
-SRC_URI="http://cloud.github.com/downloads/KentBeck/junit/junit4.9b3.zip"
+SRC_URI="http://cloud.github.com/downloads/KentBeck/"$N"/junit4.9b3.zip"
 
 RDEPEND=""
 BDEPEND="jdk jre apache-ant"
@@ -20,21 +19,24 @@ pbs_unpack() {
 }
 
 pbs_install() {
-	#
+	# Prepare
 	. /etc/profile.d/jdk.sh
-	
-	# prepare
 	jar xf junit-4.9b3-src.jar
-	rm -f junit-4.9b3-src.jar
-	cp $filesdir/build.xml .
+	cp "$filesdir"/build.xml .
 	find . -name \*.class -delete
 	find . -name \*.jar -delete
 	
-	# build
+	# Build
 	. /etc/profile.d/apache-ant.sh
 	ant dist
 
-	# install
+	# Install
 	docp junit4.4/junit.jar "$destdir"/"$JAVA_HOME"/
+
+	dodoc cpl-v10.html
+
+	cd "$destdir"
+	doln "$JAVA_HOME"/junit.jar usr/share/java/junit.jar
+	doln "$JAVA_HOME"/junit.jar usr/lib/junit.jar
 }
 

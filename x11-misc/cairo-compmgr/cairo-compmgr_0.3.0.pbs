@@ -7,6 +7,7 @@ HOMEPAGE="http://cairo-compmgr.tuxfamily.org/"
 LICENSE="GPL"
 PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 
+REPO="testing"
 SRC_URI="http://download.tuxfamily.org/ccm/"$N"/"$N-$V".tar.gz"
 
 RDEPEND="atk cairo expat fontconfig freetype gcc-lib gconf gdb gdk-pixbuf glade glib2 glibc gtk+ libgtop libICE libpng libSM libwnck libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libxml2 libXrandr libXrender libXres orbit pango pixman startup-notification util-linux-ng vala zlib"
@@ -15,6 +16,8 @@ RECOMMENDED=""
 CONFLICT=""
 
 INSTALL="$N.install"
+
+OPINION="nostrip"
 
 pbs_unpack() {
         dounpack

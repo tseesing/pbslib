@@ -1,0 +1,33 @@
+#
+# Ylmf OS package build script
+#
+
+DESCRIPTION="A proven industry-strength PDF generating solution"
+HOMEPAGE="http://www.chipx86.com/wiki/Libsexy"
+LICENSE="GPL"
+PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
+
+SRC_URI="http://www.reportlab.org/ftp/"$N-$V".tar.gz"
+
+RDEPEND="freetype python"
+BDEPEND=""
+RECOMMENDED=""
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_config() {
+	config+="--disable-static --enable-shared"
+	doconfig
+}
+
+pbs_build() {
+	domake
+}
+
+pbs_install() {
+	domkinstall
+	dodoc LICENSE.txt
+}
+

@@ -8,7 +8,7 @@ LICENSE="GPL"
 PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 YARCH="any"
 
-RDEPEND="ypkg make patch automake autoconf patch intltool pkgconfig gcc-lib-dev glibc-dev glib2-dev gdk-pixbuf-dev m4 linux-headers linux-kernel-headers"
+RDEPEND="ypkg make patch automake autoconf patch intltool pkgconfig gcc gcc-dev glibc-dev glib2-dev gdk-pixbuf-dev m4 linux-headers linux-kernel-headers"
 BDEPEND=""
 RECOMMENDED=""
 CONFLICT=""

@@ -1,0 +1,32 @@
+#
+# Ylmf OS package build script
+#
+
+DESCRIPTION="The GNU Privacy Guard, a GPL pgp replacement"
+HOMEPAGE="http://www.gnupg.org/"
+LICENSE="GPL"
+PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
+ 
+SRC_URI="ftp://ftp.gnupg.org/gcrypt/gnupg/gnupg-"$V".tar.bz2"
+
+RDEPEND="bzip2 curl cyrus-sasl glibc libassuan libgcrypt libgpg-error libidn libksba libusb libusb-compat ncurses openldap openssl pth readline zlib"
+BDEPEND=""
+
+INSTALL="$N.install"
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_config() {
+	doconfig
+}
+
+pbs_build() {
+	domake
+}
+
+pbs_install() {
+	domkinstall
+}
+

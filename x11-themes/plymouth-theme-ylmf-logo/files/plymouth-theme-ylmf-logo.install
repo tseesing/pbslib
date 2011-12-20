@@ -2,6 +2,7 @@
 
 post_install() {
 	update-initramfs -k "$(uname -r)" -c
+	update-grub ||true
 }
 
 post_remove() {

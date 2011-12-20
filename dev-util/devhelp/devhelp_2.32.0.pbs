@@ -8,7 +8,7 @@ HOMEPAGE="http://live.gnome.org/devhelp"
 LICENSE="GPL"
 PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 
-RDEPEND="atk cairo dbus dbus-glib enchant expat fontconfig freetype gail gcc-lib gconf gdk-pixbuf glib2 glibc gnutls gst-plugins-base gstreamer gtk+ icu libgcrypt libgpg-error libICE libjpeg-turbo libpng libSM libsoup libtasn1 libunique libwnck libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libxml2 libXrandr libXrender libXres libxslt libXt orbit pango pixman sqlite startup-notification util-linux-ng webkit zlib"
+RDEPEND="atk cairo dbus dbus-glib enchant expat fontconfig freetype gail gcc-lib gconf gdk-pixbuf glib2 glibc gnutls gst-plugins-base gstreamer gtk+ icu libgcrypt libgpg-error libICE libjpeg-turbo libpng libSM libsoup libtasn1 libunique libwnck libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libxml2 libXrandr libXrender libXres libxslt libXt orbit pango pixman sqlite startup-notification util-linux-ng webkitgtk zlib"
 RECOMMENDED=""
 BDEPEND=""
 CONFLICT=""

@@ -20,7 +20,11 @@ pbs_unpack() {
 }
 
 pbs_config() {
-	config+="--disable-schemas-install --with-search=basic"
+	dopatch yelp-2.30.2-port-to-xulrunner-2-r2.patch
+
+	config+="--disable-schemas-install 
+	         --with-search=basic
+		 --disable-lzma"
 	doconfig
 }
 

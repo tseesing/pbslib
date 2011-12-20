@@ -1,8 +1,8 @@
 CFLAGS+=-fPIC -Iinclude
 LDFLAGS+=-lpng -lGL
 SHAREDLIBFLAGS=-shared
-DESTDIR=/usr/local
-LIB=lib
+DESTDIR=
+LIB=/usr/lib
 
 all: libglpng.a libglpng.so.1.45
 
@@ -19,10 +19,9 @@ clean:
 	rm glpng.o libglpng.*
 
 install:
-	for i in include include/GL $(LIB); do \
-		install -m 755 -d $(DESTDIR)/$$i; \
-	done
-	install -p -m 644 include/GL/glpng.h $(DESTDIR)/include/GL
+	install -m 755 -d $(DESTDIR)/usr/include/GL
+	install -m 755 -d $(DESTDIR)/$(LIB)
+	install -p -m 644 include/GL/glpng.h $(DESTDIR)/usr/include/GL
 	install -m 755 libglpng.* $(DESTDIR)/$(LIB)
 	ln -s libglpng.so.1.45 $(DESTDIR)/$(LIB)/libglpng.so.1
 	ln -s libglpng.so.1.45 $(DESTDIR)/$(LIB)/libglpng.so

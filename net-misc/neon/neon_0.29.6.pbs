@@ -9,7 +9,7 @@ PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 
 SRC_URI="http://www.webdav.org/"$N"/"$N-$V".tar.gz"
 
-RDEPEND="expat glibc keyutils krb5 libproxy openssl zlib"
+RDEPEND="e2fsprogs expat glibc keyutils krb5 libproxy openssl zlib"
 BDEPEND=""
 RECOMMENDED=""
 
@@ -18,7 +18,8 @@ pbs_unpack() {
 }
 
 pbs_config() {
-	config+="--with-ssl"
+	config+="--with-ssl=openssl
+	         --with-ca-bundle=/etc/ssl/certs/ca-certificates.crt"
 	doconfig
 }
 

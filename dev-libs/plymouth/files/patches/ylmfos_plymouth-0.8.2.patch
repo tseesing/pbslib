@@ -1,0 +1,101 @@
+diff -ur plymouth-0.8.2-ylmf6/src/libply-splash-core/ply-text-progress-bar.c plymouth-0.8.2-ylmf6.new/src/libply-splash-core/ply-text-progress-bar.c
+--- plymouth-0.8.2-ylmf6/src/libply-splash-core/ply-text-progress-bar.c	2010-01-15 06:05:05.000000000 +0800
++++ plymouth-0.8.2-ylmf6.new/src/libply-splash-core/ply-text-progress-bar.c	2011-12-19 16:13:26.567533715 +0800
+@@ -50,6 +50,7 @@
+ #include "ply-utils.h"
+ 
+ #include <linux/kd.h>
++#include <sys/utsname.h>
+ 
+ #ifndef FRAMES_PER_SECOND
+ #define FRAMES_PER_SECOND 5
+@@ -102,10 +103,10 @@
+    char *buf, *pos, *pos2;
+    struct stat sbuf;
+    
++   buf = calloc (sbuf.st_size + 1, sizeof(char));
+    fd = open(RELEASE_FILE, O_RDONLY);
+-   if (fd == -1) return;
+-   if (fstat(fd, &sbuf) == -1) return;
+-   buf = calloc(sbuf.st_size + 1, sizeof(char));
++   if (fd == -1) goto out;
++   if (fstat(fd, &sbuf) == -1) goto out;
+    read(fd, buf, sbuf.st_size);
+    close(fd);
+    
+@@ -119,6 +120,23 @@
+    asprintf(&os_string," %s %s", buf, pos);
+ out:
+    free(buf);
++   if (strcmp(os_string, ""))
++                return;
++   struct  utsname str_uname;
++   int i, len;
++   if (uname(&str_uname))
++   	asprintf(&os_string, " %s", "Ylmf OS");
++   else
++     {   
++         len = strlen(str_uname.release);
++         for (i = 0; i < len; i++)
++         {   
++            if (islower(str_uname.release[i]))
++                str_uname.release[i] = toupper(str_uname.release[i]);
++         }    
++   
++         asprintf(&os_string, " %s", str_uname.release);
++   }
+ }
+ 
+ void
+diff -ur plymouth-0.8.2-ylmf6/src/plugins/splash/script/plugin.c plymouth-0.8.2-ylmf6.new/src/plugins/splash/script/plugin.c
+--- plymouth-0.8.2-ylmf6/src/plugins/splash/script/plugin.c	2011-12-19 16:10:29.640809604 +0800
++++ plymouth-0.8.2-ylmf6.new/src/plugins/splash/script/plugin.c	2011-12-19 16:15:12.629563803 +0800
+@@ -66,7 +66,8 @@
+ #include <linux/kd.h>
+ 
+ #ifndef FRAMES_PER_SECOND
+-#define FRAMES_PER_SECOND 50
++long int frames_per_second = 50;
++#define FRAMES_PER_SECOND frames_per_second
+ #endif
+ 
+ struct _ply_boot_splash_plugin
+@@ -141,6 +142,7 @@
+ static ply_boot_splash_plugin_t *
+ create_plugin (ply_key_file_t *key_file)
+ {
++  char *frame_freq = NULL;
+   ply_boot_splash_plugin_t *plugin;
+   plugin = calloc (1, sizeof (ply_boot_splash_plugin_t));
+   plugin->image_dir = ply_key_file_get_value (key_file, 
+@@ -149,6 +151,12 @@
+   plugin->script_filename = ply_key_file_get_value (key_file,
+                                                     "script",
+                                                     "ScriptFile");
++  frame_freq = ply_key_file_get_value (key_file,
++  				       "script",
++				       "FramesPerSecond");
++  if (frame_freq)
++      frames_per_second = strtol(frame_freq, NULL, 0);
++
+   plugin->displays = ply_list_new ();
+   return plugin;
+ }
+diff -ur plymouth-0.8.2-ylmf6/src/plymouthd.conf plymouth-0.8.2-ylmf6.new/src/plymouthd.conf
+--- plymouth-0.8.2-ylmf6/src/plymouthd.conf	2011-12-19 16:10:30.387490591 +0800
++++ plymouth-0.8.2-ylmf6.new/src/plymouthd.conf	2011-12-19 16:15:36.153347139 +0800
+@@ -1,3 +1,4 @@
+ # Administrator customizations go in this file
+ [Daemon]
+-Theme=ylmfos
++#Theme=animation
++
+diff -ur plymouth-0.8.2-ylmf6/src/plymouthd.defaults plymouth-0.8.2-ylmf6.new/src/plymouthd.defaults
+--- plymouth-0.8.2-ylmf6/src/plymouthd.defaults	2011-12-19 16:10:30.387490591 +0800
++++ plymouth-0.8.2-ylmf6.new/src/plymouthd.defaults	2011-12-19 16:15:49.633604971 +0800
+@@ -1,4 +1,4 @@
+ # Distribution defaults. Changes to this file will get overwritten during
+ # upgrades.
+ [Daemon]
+-Theme=ylmfos
++Theme=animation

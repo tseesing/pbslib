@@ -9,7 +9,7 @@ PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 
 SRC_URI="http://hal.freedesktop.org/releases/"$N-$V".tar.gz"
 
-RDEPEND="dbus dbus-glib eggdbus expat glib2 glibc pam policykit zlib"
+RDEPEND="dbus dbus-glib eggdbus expat glib2 glibc pam zlib"
 BDEPEND="" 
 
 INSTALL="$N.install"

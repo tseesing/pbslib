@@ -4,22 +4,21 @@
 
 DESCRIPTION="A vector graphics library with cross-device output support"
 HOMEPAGE="http://cairographics.org/"
-LICENSE="GPL-2"
+LICENSE="GPL"
 PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 SRC_URI="http://cairographics.org/releases/"$N-$V$R".tar.gz"
 
 RDEPEND="libpng pixman fontconfig"
-BDEPEND=" x11-libs/xcb-util directfb"
+BDEPEND="xcb-util directfb"
 
 pbs_unpack() {
         dounpack
 }
 
 pbs_config() {
-	
 	config+=" --prefix=/usr
-		      --enable-xcb
-		      --enable-directfb	"
+		  --enable-xcb
+		  --enable-directfb "
 	doconfig
 }
 
@@ -30,3 +29,4 @@ pbs_build() {
 pbs_install() {
 	domkinstall
 }
+

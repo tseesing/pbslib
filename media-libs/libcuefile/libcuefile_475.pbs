@@ -1,0 +1,36 @@
+#
+# Ylmf OS package build script
+#
+
+DESCRIPTION="A library to work with CUE files"
+COMMENTS=""
+HOMEPAGE="http://www.musepack.net/index.php?pg=src"
+LICENSE="GPLv2+"
+PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
+
+SRC_URI="http://files.musepack.net/source/"$N"_r"$V".tar.gz"
+
+RDEPEND="glibc"
+RECOMMENDED=""
+BDEPEND="cmake"
+CONFLICT=""
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_config() {
+	config+=""
+	doconfig
+}
+
+pbs_build() {
+	domake
+}
+
+pbs_install() {
+	domkinstall
+	docp ../include/cuetools/{cd,cdtext,cuefile}.h "${destdir}"/usr/include/cuetools
+}
+
+
