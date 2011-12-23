@@ -23,7 +23,7 @@ rtl8192ce-source_install () {
 	DESCRIPTION="Driver for RealTek PCIE Wireless LAN NICs: RTL8188CE/RTL8192CE, RTL8191SE/RTL8192SE, RTL8192DE (source)."
 	RECOMMENDED="build-essential rtl8192ce-firmware"
 	INSTALL="$N.install"
-	OPINION="nodev"
+	OPTIONS="nodev"
         YARCH="any"
 	
 	dosrc *

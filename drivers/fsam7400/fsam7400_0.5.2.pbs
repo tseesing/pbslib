@@ -23,7 +23,7 @@ fsam7400-source_install() {
 	DESCRIPTION="Software killswitch for F-S Amilo laptops and compatible (source)"
 	RECOMMENDED="build-essential"
 	INSTALL="$N.install"
-	OPINION="nodev"
+	OPTIONS="nodev"
         YARCH="any"
 
 	dosrc *

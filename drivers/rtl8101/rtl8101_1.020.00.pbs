@@ -23,7 +23,7 @@ rtl8101-source_install() {
 	DESCRIPTION="driver for RealTek RTL8101E, RTL8102E(L), RTL8103E(L) PCI-Express interface (source)."
 	RECOMMENDED="build-essential"
 	INSTALL="$N.install"
-	OPINION="nodev"
+	OPTIONS="nodev"
         YARCH="any"
 
 	dosrc *

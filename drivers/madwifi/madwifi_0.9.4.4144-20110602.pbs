@@ -23,7 +23,7 @@ madwifi-source_install() {
 	DESCRIPTION="Next Generation driver for Atheros based IEEE 802.11a/b/g wireless LAN cards (source)."
 	RECOMMENDED="build-essential"
 	INSTALL="$N.install"
-	OPINION="nodev"
+	OPTIONS="nodev"
         YARCH="any"
 	
 	dosrc *

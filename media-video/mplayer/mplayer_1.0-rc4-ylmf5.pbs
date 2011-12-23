@@ -14,7 +14,7 @@ BDEPEND="libgsm-dev"
 
 CONFLICT="mplayer-svn"
 
-OPINION="upx"
+OPTIONS="upx"
 
 pbs_unpack() {
 	dounpack

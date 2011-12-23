@@ -39,6 +39,7 @@ PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 #SRC_URI="$N-$V.tar.bz2" or
 #SRC_URI="/tmp/$N-$V.tar.bz2"
 SRC_URI=""
+MD5SUM=""
 
 # Dependencies 
 RDEPEND=""
@@ -49,8 +50,7 @@ OPTIONAL="a: support a
           b: support b"
 
 #do not spilte dev files
-OPINION="nodev nostrip upx"
-
+OPTIONS="nodev nostrip upx"
 
 #
 INSTALL="$N.install"

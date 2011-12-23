@@ -23,7 +23,7 @@ rtl8192se-source_install() {
 	DESCRIPTION="RTL8191SE/8192SE wireless chipset driver (source)."
 	RECOMMENDED="build-essential"
 	INSTALL="$N.install"
-	OPINION="nodev"
+	OPTIONS="nodev"
         YARCH="any"
 	
 	dosrc * 

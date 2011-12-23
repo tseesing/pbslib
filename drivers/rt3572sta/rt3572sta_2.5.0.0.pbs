@@ -23,7 +23,7 @@ rt3572sta-source_install() {
 	DESCRIPTION="driver for Ralink RT3572 PCI ABGN WLAN Card (source)."
 	RECOMMENDED="build-essential"
 	INSTALL="$N.install"
-	OPINION="nodev"
+	OPTIONS="nodev"
         YARCH="any"
 	
 	dosrc *

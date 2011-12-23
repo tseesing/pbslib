@@ -12,7 +12,7 @@ SRC_URI="http://cgit.freedesktop.org/xorg/proto/glproto/snapshot/glproto-1.4.14.
 
 RDEPEND=""
 BDEPEND=""
-OPINION="nodev"
+OPTIONS="nodev"
 
 pbs_unpack() {
         dounpack

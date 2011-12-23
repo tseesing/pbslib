@@ -13,7 +13,7 @@ RDEPEND="bin86 glibc"
 BDEPEND="gperf"
 RECOMMENDED=""
 
-OPINION="nostrip"
+OPTIONS="nostrip"
 
 pbs_unpack() {
         dounpack

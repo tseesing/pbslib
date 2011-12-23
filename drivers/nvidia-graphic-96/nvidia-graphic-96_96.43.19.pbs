@@ -35,7 +35,7 @@ nvidia-graphic-96-source_install () {
 	DESCRIPTION="NVIDIA Xorg driver, kernel module (source)"
 	BDEPEND="make prelink"
 	RECOMMENDED="build-essential nvidia-graphic-96-utils"
-	OPINION="nodev"
+	OPTIONS="nodev"
 	YARCH="any"
 	INSTALL="$N.install"
 
@@ -66,7 +66,7 @@ nvidia-graphic-96-utils_install () {
 	RDEPEND="nvidia-graphic-96-driver"
 
 	INSTALL="$N.install"
-	OPINION="nodev"
+	OPTIONS="nodev"
 
 	# License 
 	dodoc LICENSE

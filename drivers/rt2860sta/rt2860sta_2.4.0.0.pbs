@@ -23,7 +23,7 @@ rt2860sta-source_install() {
 	DESCRIPTION="driver for Ralink PCI ABGN WLAN Card: RT2860PCI/mPCI/CB/PCIe(RT2760/RT2790/RT2860/RT2890) (source)"
 	RECOMMENDED="build-essential"
 	INSTALL="$N.install"
-	OPINION="nodev"
+	OPTIONS="nodev"
         YARCH="any"
 
 	dosrc *

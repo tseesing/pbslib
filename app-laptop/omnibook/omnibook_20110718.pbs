@@ -23,7 +23,7 @@ omnibook-source_install() {
 	DESCRIPTION="Linux kernel module for (but not limited to) HP Omnibook support (source)."
 	RECOMMENDED="build-essential"
 	INSTALL="$N.install"
-	OPINION="nodev"
+	OPTIONS="nodev"
 
 	dosrc *
 }

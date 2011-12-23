@@ -1,0 +1,36 @@
+#
+# Ylmf OS package build script
+#
+
+DESCRIPTION="Chinese PinYin IMEngine for IBus Framework"
+HOMEPAGE="http://code.google.com/p/ibus/"
+LICENSE="GPL"
+PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
+ 
+SRC_URI="http://ibus.googlecode.com/files/"$N-$V".tar.gz"
+MD5SUM="2cef66bef079969689a7e0fdb7b7f767"
+
+RDEPEND="ibus sqlite gcc-lib glib2 glibc util-linux-ng zlib" 
+BDEPEND=""
+RECOMMENDED=""
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_config() {
+	config+="--enable-nls 
+	         --enable-db-open-phrase 
+		 --disable-db-android"
+	doconfig
+}
+
+pbs_build() {
+	domake
+}
+
+pbs_install() {
+	domkinstall
+	dodoc README COPYING
+}
+

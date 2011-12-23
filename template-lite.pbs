@@ -13,6 +13,7 @@ YARCH="any"
 
 REPO=""
 SRC_URI=""
+MD5SUM=
 
 RDEPEND=""
 RECOMMENDED=""
@@ -20,7 +21,7 @@ BDEPEND=""
 OPTIONAL="a: support a 
           b: support b"
 CONFLICT=""
-#OPINION="nodev nostrip upx"
+#OPTIONS="nodev nostrip upx"
 
 INSTALL="$N.install"
 
@@ -28,6 +29,8 @@ INSTALL="$N.install"
 #ICONFILE="test.png"   or "/opt/test/test.png"
 
 #PROVIDE="foo"
+
+NOTES=""
 
 pbs_unpack() {
 	#unpard file from $YPPATH_SOURCE to current directory.

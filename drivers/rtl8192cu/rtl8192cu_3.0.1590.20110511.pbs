@@ -26,7 +26,7 @@ rtl8192cu-source_install() {
 	DESCRIPTION="rtl8192_8188CU_linux (source)"
 	RECOMMENDED="build-essential"
 	INSTALL="$N.install"
-	OPINION="nodev"
+	OPTIONS="nodev"
         YARCH="any"
 	
 	dosrc *

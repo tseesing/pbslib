@@ -23,7 +23,7 @@ alsa-driver-source_install() {
 	DESCRIPTION="Advanced Linux Sound Architecture kernel module (source)"
 	RECOMMENDED="build-essential"
 	INSTALL="$N.install"
-	OPINION="nodev"
+	OPTIONS="nodev"
 	YARCH="any"
 
 	dosrc *
@@ -43,7 +43,7 @@ alsa-driver-module_install() {
 
 alsa-driver-headers_install() {
 	DESCRIPTION="Advanced Linux Sound Architecture kernel module (headers)"
-	OPINION="nodev"
+	OPTIONS="nodev"
 
 	make DESTDIR="$destdir" install-headers
 }

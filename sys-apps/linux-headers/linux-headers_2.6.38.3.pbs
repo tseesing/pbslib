@@ -14,7 +14,7 @@ RDEPEND=""
 BDEPEND=""
 CONFLICT="$N-dev"
 
-OPINION="nodev"
+OPTIONS="nodev"
 
 pbs_unpack() {
         dounpack

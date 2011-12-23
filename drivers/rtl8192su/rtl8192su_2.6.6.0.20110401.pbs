@@ -26,7 +26,7 @@ rtl8192su-source_install() {
 	DESCRIPTION="RTL8712/8188/8191/8192SU usb wireless chipset driver (source)."
 	RECOMMENDED="build-essential"
 	INSTALL="$N.install"
-	OPINION="nodev"
+	OPTIONS="nodev"
         YARCH="any"
 	
 	dosrc *

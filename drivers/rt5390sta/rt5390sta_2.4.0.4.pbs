@@ -30,7 +30,7 @@ rt5390sta-source_install () {
 	DESCRIPTION="Ralink RT5390 "Draft-n" PCI WLAN adaptors (source)."
 	RECOMMENDED="build-essential"
 	INSTALL="$N.install"
-	OPINION="nodev"
+	OPTIONS="nodev"
         YARCH="any"
 	
 	dosrc *

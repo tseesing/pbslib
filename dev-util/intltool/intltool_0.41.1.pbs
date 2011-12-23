@@ -11,7 +11,7 @@ RDEPEND="xml-parser"
 BDEPEND=""
 CONFLICT="intltool-dev"
 
-OPINION="nodev"
+OPTIONS="nodev"
 
 pbs_unpack() {
         dounpack

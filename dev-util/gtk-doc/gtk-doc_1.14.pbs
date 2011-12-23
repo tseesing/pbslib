@@ -13,7 +13,7 @@ RDEPEND=""
 BDEPEND=" docbook-xml docbook-xsl libxslt docbook"
 CONFLICT="gtk-doc-dev"
 
-OPINION="nodev"
+OPTIONS="nodev"
 
 pbs_unpack() {
         dounpack

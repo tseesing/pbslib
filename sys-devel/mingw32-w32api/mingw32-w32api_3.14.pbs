@@ -15,7 +15,7 @@ BDEPEND="mingw32-headers mingw32-binutils mingw32-gcc-lib-base"
 RECOMMENDED=""
 CONFLICT=""
 
-OPINION="nodev nostrip"
+OPTIONS="nodev nostrip"
 
 pbs_unpack() {
         dounpack

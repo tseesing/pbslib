@@ -48,7 +48,7 @@ gcc-lib_install() {
 	RDEPEND="glibc"
 	BDEPEND=""
 	INSTALL="$N.install"
-	OPINION="nodev"
+	OPTIONS="nodev"
 
 	domake -C "$CHOST"/libgcc DESTDIR="${destdir}" install-shared
 	for lib in libmudflap libgomp libstdc++-v3/src libssp; do

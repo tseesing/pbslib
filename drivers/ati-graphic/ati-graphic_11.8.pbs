@@ -24,7 +24,7 @@ pbs_config() {
 ati-graphic-source_install() {
 	DESCRIPTION="Video driver for the ATI graphics accelerators (source)"
 	RECOMMENDED="build-essential ati-graphic-utils"
-	OPINION="nodev"
+	OPTIONS="nodev"
 	YARCH="any"
    
 	INSTALL="$N.install"
@@ -54,7 +54,7 @@ ati-graphic-driver_install() {
 ati-graphic-utils_install () {
 	DESCRIPTION="Video driver for the ATI graphics accelerators (utils)"
 	RDEPEND="ati-graphic-driver"
-	OPINION="nodev"
+	OPTIONS="nodev"
 
 	INSTALL="$N.install"
 

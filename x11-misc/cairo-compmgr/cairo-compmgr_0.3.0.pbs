@@ -17,7 +17,7 @@ CONFLICT=""
 
 INSTALL="$N.install"
 
-OPINION="nostrip"
+OPTIONS="nostrip"
 
 pbs_unpack() {
         dounpack
