@@ -8,6 +8,7 @@ LICENSE="LGPL"
 PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 
 SRC_URI="http://ftp.gnome.org/pub/gnome/mobile/2.32/2.32.1/sources/"$N-$V".tar.bz2"
+CHECKSUM="e9a3e598f75c4db1af914f8b052dd9f7e89e920a96cc187c18eb06b8339cb16e"
 
 RDEPEND="glib2 glibc"
 BDEPEND=" "

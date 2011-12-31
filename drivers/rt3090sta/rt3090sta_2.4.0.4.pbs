@@ -9,7 +9,7 @@ PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 
 SRC_URI="2010_1217_RT3090_LinuxSTA_V2.4.0.4_WiFiBTCombo_DPO.zip"
 
-PROVIDE="$N-source $N-driver"
+PROVIDE="rt3090sta-source rt3090sta-driver"
 
 pbs_unpack() {
         dounpack

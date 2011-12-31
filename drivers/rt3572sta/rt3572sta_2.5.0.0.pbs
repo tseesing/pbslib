@@ -9,7 +9,7 @@ PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 
 SRC_URI="2011_0427_RT3572_Linux_STA_v2.5.0.0.DPO.bz2"
 
-PROVIDE="$N-source $N-driver"
+PROVIDE="rt3572sta-source rt3572sta-driver"
 
 pbs_unpack() {
         dounpack

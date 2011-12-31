@@ -3,7 +3,7 @@
 #
 
 DESCRIPTION="Birl Is Ruijie for Linux"
-HOMEPAGE="http://www.cnblogs.com/JessonChan"
+HOMEPAGE="http://www.cnblogs.com/JessonChan/archive/2011/03/04/1971339.html"
 LICENSE="GPLv2"
 PACKAGER="JessonChan,Ylmf OS Developers <ylmfos@115.com>"
 
@@ -18,6 +18,6 @@ pbs_unpack() {
 }
 
 pbs_install() {
-	docp $filesdir/{opt,usr} "$destdir"/
+	docp "$filesdir"/{opt,usr} "$destdir"/
 }
 

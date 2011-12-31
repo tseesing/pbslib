@@ -1,0 +1,35 @@
+#
+# Ylmf OS package build script
+#
+
+DESCRIPTION="Language pack for Thunderbird"
+HOMEPAGE="http://www.mozilla.com/en-US/thunderbird/"
+LICENSE="MPL GPL"
+PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
+
+SRC_URI="ftp://ftp.mozilla.org/pub/mozilla.org/thunderbird/releases/"$V"/linux-i686/xpi/zh-CN.xpi
+         ftp://ftp.mozilla.org/pub/mozilla.org/thunderbird/releases/"$V"/linux-i686/xpi/zh-TW.xpi"
+CHECKSUM="5e4118dfb95feb1e2a8de382e5e1a4aa 
+          e53576309bc9aa655f59344a2b78cbf8"
+
+RDEPEND="thunderbird(>=9.0.1)"
+PROVIDE="thunderbird-i18n-zh-CN thunderbird-i18n-zh-TW"
+
+thunderbird-i18n-zh-CN_install() {
+	DESCRIPTION="Language zh-CN pack for Thunderbird"
+	RDEPEND="thunderbird(>=9.0.1)"
+	YARCH="any"
+
+	local target="$destdir/usr/lib/thunderbird/extensions/langpack-zh-CN@thunderbird.mozilla.org.xpi"
+	docp_rename "$YPPATH_SOURCE"/zh-CN.xpi "$target"  
+}
+
+thunderbird-i18n-zh-TW_install() {
+	DESCRIPTION="Language zh-TW pack for Thunderbird"
+	RDEPEND="thunderbird(>=9.0.1)"
+	YARCH="any"
+
+	local target="$destdir/usr/lib/thunderbird/extensions/langpack-zh-TW@thunderbird.mozilla.org.xpi"
+	docp_rename "$YPPATH_SOURCE"/zh-TW.xpi "$target"  
+}
+

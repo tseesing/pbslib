@@ -9,7 +9,7 @@ PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 
 SRC_URI="http://us.download.nvidia.com/XFree86/Linux-x86/"$V"/NVIDIA-Linux-x86-"$V"-pkg1.run"
 
-PROVIDE="$N-source $N-driver $N-utils"
+PROVIDE="nvidia-graphic-173-source nvidia-graphic-173-driver nvidia-graphic-173-utils"
 
 pbs_install() {
 	# Extract-only

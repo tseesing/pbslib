@@ -8,7 +8,7 @@ LICENSE="GPL LGPL"
 PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 
 SRC_URI="http://jaist.dl.sourceforge.jp/"$N"/37536/"$N-$V"h.tar.gz"
-MD5SUM="1f558ff7ed296787b55bb1c6cf131108"
+CHECKSUM="1f558ff7ed296787b55bb1c6cf131108"
 
 RDEPEND="glibc"
 RECOMMENDED=""

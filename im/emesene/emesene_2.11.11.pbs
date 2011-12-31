@@ -17,11 +17,11 @@ CONFLICT=""
 OPTIONAL="gnome-python-extras: spell-check plugin
 	  gtkspell: spell-check plugin
 	  aspell: spell-check plugin (also need aspell dictionary)
-	  gstreamer0.10-python: webcam support
-	  gstreamer0.10-good-plugins: webcam support
+	  gst-python: webcam support
+	  gst-plugins-good: webcam support
 	  pywebkitgtk: for alternative conversation window
 	  xmpppy: for gtalk and facebook chat support
-	  pyqt: alternative qt4 interface (emesene -e main:qt4_main"
+	  pyqt4: alternative qt4 interface (emesene -e main:qt4_main)"
 
 INSTALL="$N.install"
 

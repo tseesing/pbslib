@@ -13,7 +13,7 @@ YARCH="any"
 
 REPO=""
 SRC_URI=""
-MD5SUM=
+CHECKSUM=""
 
 RDEPEND=""
 RECOMMENDED=""
@@ -35,6 +35,10 @@ NOTES=""
 pbs_unpack() {
 	#unpard file from $YPPATH_SOURCE to current directory.
         dounpack
+}
+
+pbs_patch() {
+	dopatch
 }
 
 pbs_config() {

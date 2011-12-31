@@ -9,7 +9,7 @@ PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 
 SRC_URI="http://www.nd.edu/~pbui/scratch/aur/rtl8192se_linux_2.6.0019.1207.2010.tar.gz"
 
-PROVIDE="$N-source $N-driver $N-firmware"
+PROVIDE="rtl8192se-source rtl8192se-driver rtl8192se-firmware"
 
 pbs_unpack() {
         dounpack

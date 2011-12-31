@@ -8,8 +8,9 @@ LICENSE="custom"
 PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 
 SRC_URI="http://www2.ati.com/drivers/linux/ati-driver-installer-11-8-x86.x86_64.run"
+CHECKSUM="f97a884c3b3c6263091a3035a7046318"
 
-PROVIDE="$N-source $N-driver $N-utils"
+PROVIDE="ati-graphic-source ati-graphic-driver ati-graphic-utils"
 
 pbs_unpack() {
 	# Extract-only

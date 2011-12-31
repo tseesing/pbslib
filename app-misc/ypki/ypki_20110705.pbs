@@ -21,6 +21,7 @@ pbs_unpack() {
 }
 
 pbs_build() {
+	git checkout ypki2
 	domake
 }
 

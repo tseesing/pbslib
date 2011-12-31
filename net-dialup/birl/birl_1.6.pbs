@@ -1,0 +1,79 @@
+#
+# Ylmf OS package build script
+#
+
+DESCRIPTION="Birl Is Ruijie for Linux"
+HOMEPAGE="http://www.cnblogs.com/JessonChan/archive/2011/03/04/1971339.html"
+LICENSE="GPL"
+PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
+
+# git@github.com:JessonChan/Birl.git
+SRC_URI="https://launchpadlibrarian.net/81159213/birl_1.6%2B20110927.orig.tar.xz"
+CHECKSUM=""
+
+RDEPEND=""
+RECOMMENDED=""
+BDEPEND=""
+OPTIONAL="a: support a 
+          b: support b"
+CONFLICT=""
+#OPTIONS="nodev nostrip upx"
+
+INSTALL="$N.install"
+
+#DESKTOPFILE="glchess.desktop" or "/opt/test/test.desktop"
+#ICONFILE="test.png"   or "/opt/test/test.png"
+
+#PROVIDE="foo"
+
+NOTES=""
+
+pbs_unpack() {
+	#unpard file from $YPPATH_SOURCE to current directory.
+        dounpack
+}
+
+pbs_patch() {
+	dopatch
+}
+
+pbs_config() {
+	#config+=" --prefix=/usr
+	#	      --sysconfdir=/etc
+	#	      --localstatedir=/var
+	#             --infodir=/usr/share/info
+	#	      --mandir=/usr/share/man
+	#              --disable-static
+	#	      --enable-shared "
+	config+=""
+	doconfig
+}
+
+pbs_build() {
+	domake
+}
+
+pbs_install() {
+	#make DESTDIR="$destdir" install
+	domkinstall
+	#doinit "$N"
+	#dounit "N".service
+	#dodesktop "*.desktop" "*.png"
+	#dodoc AUTHORS ChangeLog COPYING INSTALL NEWS README 
+	#docp "$filesdir/XXXX" "dirname"
+	#domv "$filesdir/XXXX" "dirname"
+	#docp_rename "$1" "$2"
+	#domv_rename "$1" "$2"
+	#doln "$1 "$2"
+	#doman a.1 b.2 c.3
+	#*****************
+	#when SRC_URI is deb or rpm package
+	#docp data/*  "$destdir"
+}
+
+#split package
+foo_install () {
+	:
+}
+
+

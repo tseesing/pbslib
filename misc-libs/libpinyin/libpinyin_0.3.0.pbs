@@ -9,7 +9,7 @@ LICENSE="GPL"
 PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 
 SRC_URI="http://cloud.github.com/downloads/"$N"/"$N"/"$N-$V".tar.gz"
-MD5SUM="fbb97e0a07eab0cc55aff067598a4d68"
+CHECKSUM="fbb97e0a07eab0cc55aff067598a4d68"
 
 RDEPEND="berkeley-db gcc-lib glibc"
 RECOMMENDED=""

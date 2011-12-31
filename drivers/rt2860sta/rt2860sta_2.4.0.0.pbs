@@ -9,7 +9,7 @@ PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 
 SRC_URI="2010_07_16_RT2860_Linux_STA_v2.4.0.0.tar.bz2"
 
-PROVIDE="$N-source $N-driver"
+PROVIDE="rt2860sta-source rt2860sta-driver"
 
 pbs_unpack() {
         dounpack

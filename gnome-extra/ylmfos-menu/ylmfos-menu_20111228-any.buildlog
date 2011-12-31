@@ -1,0 +1,15 @@
+[35;49m>>> make DESTDIR=/tmp/ybs/ylmfos-menu/ylmfos-menu_20111228  install[0m
+install -d /tmp/ybs/ylmfos-menu/ylmfos-menu_20111228/etc/ymenu /tmp/ybs/ylmfos-menu/ylmfos-menu_20111228/usr/bin/ /tmp/ybs/ylmfos-menu/ylmfos-menu_20111228/usr/lib \
+/tmp/ybs/ylmfos-menu/ylmfos-menu_20111228/usr/share /tmp/ybs/ylmfos-menu/ylmfos-menu_20111228/usr/lib/bonobo/servers 
+python -u local.py
+Preparing to install translation
+/tmp/ybs/ylmfos-menu/ylmfos-menu-20111228/po
+installing translations
+Creating language Binary for : ymenu-zh_TW
+Creating language Binary for : ymenu-zh_CN
+cp -r src/lib/ymenu /tmp/ybs/ylmfos-menu/ylmfos-menu_20111228/usr/lib
+cp -r src/share/ymenu /tmp/ybs/ylmfos-menu/ylmfos-menu_20111228/usr/share
+cp -r src/share/locale /tmp/ybs/ylmfos-menu/ylmfos-menu_20111228/usr/share
+install src/bin/ymenu /tmp/ybs/ylmfos-menu/ylmfos-menu_20111228/usr/bin/
+install src/lib/bonobo/ymenu.server /tmp/ybs/ylmfos-menu/ylmfos-menu_20111228/usr/lib/bonobo/servers
+Makefile: YMenu installed.

@@ -8,7 +8,7 @@ LICENSE="GPL"
 PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 
 SRC_URI="http://ibus.googlecode.com/files/"$N-$V".tar.gz"
-MD5SUM="894c7311f4d5c96b1fdb8b3795446ead"
+CHECKSUM="894c7311f4d5c96b1fdb8b3795446ead"
 
 RDEPEND="anthy python"
 RECOMMENDED=""

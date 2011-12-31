@@ -18,7 +18,7 @@ INSTALL="$N.install"
 
 DESKTOPFILE="virtualbox.desktop"
 
-PROVIDE="$N-kernel-source virtualbox-guest-additions"
+PROVIDE="virtualbox-bin-kernel-source virtualbox-guest-additions"
 
 pbs_config() {
 	runfile=""$(basename $SRC_URI)""

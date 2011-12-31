@@ -17,11 +17,14 @@ pbs_unpack() {
         dounpack
 }
 
-pbs_config() {
+pbs_patch() {
 	dopatch  consolekit-0.2.10-cleanup_console_tags.patch 
 	dopatch  consolekit-0.4.0-polkit-automagic.patch 
 	dopatch  consolekit-0.4.0-multilib.patch 	
 	dopatch  consolekit-0.4.1-shutdown-reboot-without-policies.patch
+}
+
+pbs_config() {
 	config+=" --enable-pam-module 
 		      XMLTO_FLAGS=--skip-validation 
 		      --disable-debug 

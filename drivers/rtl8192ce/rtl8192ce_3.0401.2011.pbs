@@ -9,7 +9,7 @@ PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 
 SRC_URI="ftp://WebUser:Lc9FuH5r@202.134.71.22/cn/wlan/92ce_se_de_linux_mac80211_0003.0401.2011.tar.gz"
 
-PROVIDE="$N-source $N-driver $N-firmware"
+PROVIDE="rtl8192ce-source rtl8192ce-driver rtl8192ce-firmware"
 
 pbs_unpack() {
         dounpack

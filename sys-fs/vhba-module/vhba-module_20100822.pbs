@@ -9,7 +9,7 @@ PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 
 SRC_URI="http://downloads.sourceforge.net/project/cdemu/"$N"/"$N-$V"/"$N-$V".tar.gz"
 
-PROVIDE="$N-source $N-driver"
+PROVIDE="vhba-module-source vhba-module-driver"
 
 pbs_unpack() {
         dounpack

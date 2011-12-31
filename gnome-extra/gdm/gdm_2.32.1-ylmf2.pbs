@@ -21,10 +21,7 @@ pbs_unpack() {
         dounpack
 }
 
-pbs_config() {	
-	# Add user and group
-	douseradd -c "gdm user" -d "/var/lib/gdm" -s "/bin/false" -r "gdm"
-
+pbs_patch() {
 	# Most of patches from ubuntu
 	patches="05_initial_server_on_vt7.patch
 	         09_gdmsetup.patch
@@ -51,18 +48,23 @@ pbs_config() {
 		 ylmfos-missing-panel-2.32.1.patch
 		 ylmfos-show-mouse-cursor.patch"
 	dopatch $patches
+}
+
+pbs_config() {	
+	# Add user and group
+	#douseradd -c "gdm user" -d "/var/lib/gdm" -s "/bin/false" -r "gdm"
 
 	config+=" --disable-scrollkeeper
-		      --enable-ipv6
-		      --enable-console-helper=no
-		      --with-xdmcp=yes
-		      --with-sysconfsubdir=gdm
-		      --with-dmconfdir=/usr/share/xsessions
-		      --with-log-dir=/var/log/gdm
-		      --with-pid-file=/var/run/gdm.pid
-		      --disable-schemas-install 
-		      --enable-console-helper
-		      --with-console-kit "
+		  --enable-ipv6
+		  --enable-console-helper=no
+		  --with-xdmcp=yes
+		  --with-sysconfsubdir=gdm
+		  --with-dmconfdir=/usr/share/xsessions
+		  --with-log-dir=/var/log/gdm
+		  --with-pid-file=/var/run/gdm.pid
+		  --disable-schemas-install 
+		  --enable-console-helper
+		  --with-console-kit "
 	doconfig
 }
 
@@ -78,27 +80,27 @@ pbs_install() {
 
 	# Ssh session
 	cd "$destdir"/
-	docp $filesdir/sessions/ssh.desktop usr/share/xsessions
+	docp "$filesdir"/sessions/ssh.desktop usr/share/xsessions
 	chown -R root:root usr/share/xsessions/*
 
 	# Preserve settings
 	install -m755 -d  etc/gdm
 	[ -f etc/gdm/custom.conf ] && rm etc/gdm/custom.conf
-	docp_rename $filesdir/custom.conf  etc/gdm/custom.conf.ori
+	docp_rename "$filesdir"/custom.conf                      etc/gdm/custom.conf.ori
 	domv        "$destdir"/etc/gdm/PostLogin/Default.sample  etc/gdm/PostLogin/Default
 
 	# FIXME! 
 	# gnome-session forgot to run /usr/share/gnome/shutdown/libcanberra-logout-sound.sh
 	# add libcanberra-logout-sound.sh to gdm logout script
-	docp $filesdir/Default  etc/gdm/PostSession
-	chown -R root:root  etc/gdm
+	docp "$filesdir"/Default  etc/gdm/PostSession
+	chown -R root:root        etc/gdm
 
 	# Gdm systemd unit
 	dounit "$N.service"
 
 	# Delete
 	rm -rf var/gdm
-	chown -R gdm:gdm var/lib/gdm
+	#chown -R gdm:gdm var/lib/gdm
 	
 	# For gdm screenshot
 	install -d -m755 var/run/"$N"/greeter/

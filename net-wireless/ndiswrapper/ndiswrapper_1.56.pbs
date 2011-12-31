@@ -13,7 +13,7 @@ RDEPEND=""
 BDEPEND=""
 CONFLICT=""
 
-PROVIDE="$N-utils $N-driver $N-source"
+PROVIDE="ndiswrapper-utils ndiswrapper-driver ndiswrapper-source"
 
 pbs_unpack() {
         dounpack

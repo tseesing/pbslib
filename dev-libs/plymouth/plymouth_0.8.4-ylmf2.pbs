@@ -19,9 +19,11 @@ pbs_unpack() {
         dounpack
 }
 
-pbs_config() {
+pbs_patch() {
 	dopatch plymouth-0.8.4-ylmf-theme.patch
+}
 
+pbs_config() {
 	config+="--libdir=/lib 
 		 --datarootdir=/lib
 		 --enable-tracing --disable-tests

@@ -8,7 +8,7 @@ LICENSE="GPL"
 PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 YARCH="any"
 
-SRC_URI="git://git.ylmf.com/"$N".git"
+SRC_URI="git://10.0.0.11/"$N".git"
 
 RDEPEND="python boost gcc-lib glibc lm_sensors" 
 RECOMMENDED=""
@@ -16,8 +16,11 @@ BDEPEND=""
 CONFLICT=""
 
 pbs_unpack() {
-	git checkout test
         dounpack
+}
+
+pbs_patch() {
+	dopatch ylmfos-tmp.patch
 }
 
 pbs_config() {

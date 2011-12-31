@@ -8,6 +8,7 @@ LICENSE="GPL, PerlArtistic"
 PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 
 SRC_URI="http://www.cpan.org/src/5.0/"$N-$V".tar.bz2"
+CHECKSUM="e7457deea78330c5f8eebb2fd2a45479"
 
 RDEPEND="berkeley-db gdbm glibc zlib"
 BDEPEND=""

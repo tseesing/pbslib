@@ -9,7 +9,7 @@ PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 
 SRC_URI="git://omnibook.git.sourceforge.net/gitroot/omnibook/omnibook"
 
-PROVIDE="$N-source $N-driver"
+PROVIDE="omnibook-source omnibook-driver"
 
 pbs_unpack() {
         dounpack

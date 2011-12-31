@@ -9,7 +9,7 @@ PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 
 SRC_URI="ftp://ftp.alsa-project.org/pub/driver/"$N-$V".tar.bz2"
 
-PROVIDE="$N-source $N-module $N-headers"
+PROVIDE="alsa-driver-source alsa-driver-module alsa-driver-headers"
 
 pbs_unpack() {
         dounpack

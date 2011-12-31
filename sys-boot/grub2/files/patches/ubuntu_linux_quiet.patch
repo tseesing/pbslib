@@ -18,7 +18,7 @@ Index: b/util/grub.d/10_linux.in
 +EOF
 +  fi
 +  cat << EOF
- 	linux	${rel_dirname}/${basename} root=${linux_root_device_thisversion} ro ${args}
+ 	linux	${rel_dirname}/${basename} root=${linux_root_device_thisversion} rw ${args}
  EOF
 -  if test -n "${initrd}" ; then
 +  if [ "x$5" != "xquiet" ]; then

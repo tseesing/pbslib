@@ -9,6 +9,7 @@ PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 PRIORITY="required"
 
 SRC_URI="grub2-1.99-ubuntu-11.10.tar.bz2"
+CHECKSUM="59b13c73ff8f2a3f1c6cdb08c2be693e"
 
 RDEPEND="freetype glibc zlib"
 BDEPEND="unifont"
@@ -21,9 +22,11 @@ pbs_unpack() {
         dounpack
 }
 
-pbs_config() {
+pbs_patch() {
 	dopatch ylmfos-series.patch
-	
+}
+
+pbs_config() {
 	config+="--enable-grub-mkfont 
 	         --enable-nls"
 	

@@ -9,7 +9,7 @@ PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 
 SRC_URI="https://api.opensuse.org/public/source/driver:wireless/rt5390sta/2010_1216_RT5390_LinuxSTA_V2.4.0.4_WiFiBTCombo_DPO.tar.bz2"
 
-PROVIDE="$N-source $N-driver"
+PROVIDE="rt5390sta-source rt5390sta-driver"
 
 pbs_unpack() {
         dounpack

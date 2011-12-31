@@ -9,7 +9,7 @@ PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 
 SRC_URI="http://www.iragan.com/linux/fsam7400/"$N-$V".tbz"
 
-PROVIDE="$N-source $N-driver"
+PROVIDE="fsam7400-source fsam7400-driver"
 
 pbs_unpack() {
         dounpack

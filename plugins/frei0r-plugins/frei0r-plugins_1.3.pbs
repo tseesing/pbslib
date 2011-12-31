@@ -29,5 +29,6 @@ pbs_build() {
 
 pbs_install() {
 	domkinstall htmldocsdir="$destdir"/usr/share/doc/"$N" docsdir="$destdir"/usr/share/doc/"$N"
+	dodoc AUTHORS COPYING NEWS README
 }
 

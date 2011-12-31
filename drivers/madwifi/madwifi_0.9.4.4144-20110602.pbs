@@ -9,7 +9,7 @@ PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 
 SRC_URI="http://snapshots.madwifi-project.org/madwifi-0.9.4-current.tar.gz"
 
-PROVIDE="$N-source $N-driver $N-utils"
+PROVIDE="madwifi-source madwifi-driver madwifi-utils"
 
 pbs_unpack() {
         dounpack

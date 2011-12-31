@@ -58,8 +58,11 @@ done
 #Update grub.cfg
 chroot "$TARGETDIR" /usr/sbin/update-grub
 
-#rm isodevice
+# Rm isodevice
 umount "$TARGETDIR/isodevice"
 rmdir "$TARGETDIR/isodevice"
+
+# Install date
+chroot "$TARGETDIR" python -c 'import time;print time.time()' >/etc/install_date
 
 exit 0
