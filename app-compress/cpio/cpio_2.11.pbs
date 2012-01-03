@@ -20,8 +20,8 @@ pbs_unpack() {
 
 pbs_config() {
 	config+="--bindir=/bin 
-	             --with-rmt=/usr/sbin/rmt
-		     --libexecdir=/lib/cpio"
+	         --with-rmt=/usr/sbin/rmt
+		 --libexecdir=/lib/cpio"
 	doconfig
 }
 

@@ -9,7 +9,7 @@ PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 
 SRC_URI="http://ftp.gnome.org/pub/gnome/desktop/2.32/2.32.1/sources/"$N-$V".tar.bz2"
 
-RDEPEND="atk cairo dbus dbus-glib evolution-data-server expat fontconfig freetype gcc gconf gdk-pixbuf glib2 glibc gnome-desktop gnome-menus gnutls gtk+ keyutils krb5 libcanberra libcroco libgcrypt libgnomekbd libgpg-error libgtop libICE libogg libpng librsvg libSM libsoup libtasn1 libtool libunique libvorbis libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXft libXi libxkbfile libxklavier libxml2 libXrandr libXrender libXScrnSaver metacity nspr nss orbit pango pixman sqlite startup-notification tdb util-linux-ng zlib"
+RDEPEND="atk cairo dbus dbus-glib evolution-data-server expat fontconfig freetype gcc-lib gconf gdk-pixbuf glib2 glibc gnome-desktop gnome-menus gnutls gtk+ keyutils krb5 libcanberra libcroco libgcrypt libgnomekbd libgpg-error libgtop libICE libogg libpng librsvg libSM libsoup libtasn1 libtool libunique libvorbis libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXft libXi libxkbfile libxklavier libxml2 libXrandr libXrender libXScrnSaver metacity nspr nss orbit pango pixman sqlite startup-notification tdb util-linux-ng zlib"
 BDEPEND=""
 RECOMMENDED=""
 

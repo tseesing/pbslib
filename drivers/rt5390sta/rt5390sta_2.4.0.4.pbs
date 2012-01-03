@@ -9,7 +9,7 @@ PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 
 SRC_URI="https://api.opensuse.org/public/source/driver:wireless/rt5390sta/2010_1216_RT5390_LinuxSTA_V2.4.0.4_WiFiBTCombo_DPO.tar.bz2"
 
-PROVIDE="$N-source $N-driver"
+PROVIDE="rt5390sta-source rt5390sta-driver"
 
 pbs_unpack() {
         dounpack
@@ -30,7 +30,7 @@ rt5390sta-source_install () {
 	DESCRIPTION="Ralink RT5390 "Draft-n" PCI WLAN adaptors (source)."
 	RECOMMENDED="build-essential"
 	INSTALL="$N.install"
-	OPINION="nodev"
+	OPTIONS="nodev"
         YARCH="any"
 	
 	dosrc *
@@ -39,7 +39,7 @@ rt5390sta-source_install () {
 
 rt5390sta-driver_install () {
 	DESCRIPTION="Ralink RT5390 "Draft-n" PCI WLAN adaptors (kernel module)."
-	BDEPEND="gcc make linux-kernel-headers"
+	BDEPEND="gcc gcc-dev make linux-kernel-headers"
 	INSTALL="$N.install"
 	
 	unset ARCH

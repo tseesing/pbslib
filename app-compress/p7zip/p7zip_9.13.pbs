@@ -9,7 +9,7 @@ PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 
 SRC_URI="http://downloads.sourceforge.net/project/"$N"/"$N"/"$V"/"${N}"_"$V"_src_all.tar.bz2"
 
-RDEPEND="gcc glibc"
+RDEPEND="gcc-lib glibc"
 BDEPEND=" "
 RECOMMENDED=""
 

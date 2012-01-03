@@ -1,0 +1,35 @@
+#
+# Ylmf OS package build script
+#
+
+DESCRIPTION="A power-packed free, libre and open source personal productivity suite (binary version)."
+HOMEPAGE="http://www.libreoffice.org/"
+LICENSE="LGPL"
+PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
+
+SRC_URI="http://mirrors.ustc.edu.cn/tdf/libreoffice/stable/"$V"/deb/x86/LibO_"$V"_Linux_x86_install-deb_en-US.tar.gz"
+
+RDEPEND="atk avahi cairo dbus dbus-glib expat fontconfig freetype gcc-lib gdk-pixbuf glib2 glibc gnome-vfs gst-plugins-base gstreamer gtk+ libdrm libICE libSM libX11 libXau libXaw libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXft libXi libXinerama libxml2 libXmu libXpm libXrandr libXrender libXt libXxf86vm linux-kernel-headers mesa ncurses nspr openssl pango pixman util-linux-ng zlib"
+BDEPEND=""
+RECOMMENDED="jre libreoffice-bin-langpack-zh-CN"
+
+INSTALL="$N.install"
+
+DESKTOPFILE="/opt/libreoffice3.4/share/xdg/startcenter.desktop"
+ICONFILE="/usr/share/icons/hicolor/48x48/apps/libreoffice34-startcenter.png"
+
+pbs_unpack() {
+	dounpack
+
+}
+
+pbs_install() {
+	find . -name "*.deb" |while read i; do
+		echo ">>> Unpacking $(basename $i)"
+		ar x "${i}"; tar xf data.tar.gz
+	done
+
+	docp etc opt usr "$destdir"
+	dodoc readmes
+}
+

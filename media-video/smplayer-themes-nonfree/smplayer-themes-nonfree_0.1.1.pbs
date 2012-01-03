@@ -4,11 +4,10 @@
 
 DESCRIPTION="nonfree themes for smplayer"
 HOMEPAGE="http://smplayer.berlios.de/"
-LICENSE="GPL-2"
+LICENSE="GPL"
 PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 
-REPO="testing"
-SRC_URI="http://download.berlios.de/smplayer/"$N-$V$R".tar.bz2"
+SRC_URI="http://download.berlios.de/smplayer/"$N-$V".tar.bz2"
 
 RDEPEND="smplayer"
 BDEPEND=""
@@ -25,5 +24,4 @@ pbs_build() {
 pbs_install() {
 	domkinstall PREFIX=/usr
 }
-
 

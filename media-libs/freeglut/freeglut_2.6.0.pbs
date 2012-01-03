@@ -9,7 +9,7 @@ PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 
 SRC_URI="http://downloads.sourceforge.net/project/"$N"/"$N"/"$N-$V".tar.gz"
 
-RDEPEND="gcc glibc libdrm libX11 libXau libxcb libXdamage libXdmcp libXext libXfixes libXi libXxf86vm mesa"
+RDEPEND="gcc-lib glibc libdrm libX11 libXau libxcb libXdamage libXdmcp libXext libXfixes libXi libXxf86vm mesa"
 BDEPEND=""
 
 pbs_unpack() {

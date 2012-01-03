@@ -9,7 +9,7 @@ PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 
 SRC_URI="http://source.clutter-project.org/sources/"$N"/1.6/"$N-$V".tar.bz2"
 
-RDEPEND="atk cairo expat fontconfig freetype gcc gdk-pixbuf glib2 glibc json-glib libdrm libpng libX11 libXau libxcb libXcomposite libXdamage libXdmcp libXext libXfixes libXi libXrender libXxf86vm mesa pango pixman zlib"
+RDEPEND="atk cairo expat fontconfig freetype gcc-lib gdk-pixbuf glib2 glibc json-glib libdrm libpng libX11 libXau libxcb libXcomposite libXdamage libXdmcp libXext libXfixes libXi libXrender libXxf86vm mesa pango pixman zlib"
 BDEPEND=""
 RECOMMENDED=""
 CONFLICT=""

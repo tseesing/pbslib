@@ -9,7 +9,7 @@ PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 
 SRC_URI="http://poppler.freedesktop.org/"$N-$V".tar.gz"
 
-RDEPEND="cairo expat fontconfig freetype gcc gdk-pixbuf glib2 glibc gtk+ lcms libjpeg-turbo libpng libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libxml2 libXrandr libXrender pango pixman zlib"
+RDEPEND="cairo expat fontconfig freetype gcc-lib gdk-pixbuf glib2 glibc gtk+ lcms libjpeg-turbo libpng libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libxml2 libXrandr libXrender pango pixman zlib"
 BDEPEND=""
 
 pbs_unpack() {

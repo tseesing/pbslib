@@ -9,7 +9,7 @@ PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 
 SRC_URI="http://www.x.org/releases/X11R7.6/src/app/"$N-$V".tar.bz2"
 
-RDEPEND="gcc glibc libdrm libX11 libXau libxcb libXdamage libXdmcp libXext libXfixes libXxf86vm mesa"
+RDEPEND="gcc-lib glibc libdrm libX11 libXau libxcb libXdamage libXdmcp libXext libXfixes libXxf86vm mesa"
 BDEPEND=""
 
 pbs_unpack() {

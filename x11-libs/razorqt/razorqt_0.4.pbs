@@ -1,0 +1,36 @@
+#
+# Ylmf OS package build script
+#
+
+DESCRIPTION="Razor is a toolbox-like desktop-environment"
+COMMENTS="Razor-qt is an advanced, easy-to-use, and fast desktop environment based on Qt technologies. It has been tailored for users who value simplicity, speed, and an intuitive interface. Unlike most desktop environments, Razor-qt also works fine with weak machines."
+HOMEPAGE="http://razor-qt.sf.net"
+LICENSE="GPL"
+PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
+
+SRC_URI="http://razor-qt.org/downloads/razorqt-0.4.0.tar.bz2"
+
+RDEPEND="expat file fontconfig freetype gcc-lib glib2 glibc libdrm libICE libSM libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXrender mesa qt-core udev util-linux-ng zlib libpng"
+RECOMMENDED=""
+BDEPEND="cmake"
+CONFLICT=""
+
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_config() {
+	config+=""
+	doconfig
+}
+
+pbs_build() {
+	domake
+}
+
+pbs_install() {
+	domkinstall
+}
+
+

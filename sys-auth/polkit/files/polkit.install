@@ -2,10 +2,10 @@
 
 post_install() {
 	dogroupadd -r "polkituser"
-	douseradd -c "Policy Kit Daemon User" -d "/dev/null" -s "/bin/false" -r "polkituser"
+	douseradd -c "Policy Kit Daemon User" -d "/dev/null" -s "/bin/false" -r "polkituser" ||true
 }
 
 post_remove() {
 	douserdel "polkituser"
-	dogroupdel "polkituser"
+	dogroupdel "polkituser" ||true
 }

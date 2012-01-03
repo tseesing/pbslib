@@ -9,7 +9,7 @@ PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 
 SRC_URI="http://download.softagency.net/MySQL/Downloads/MySQL-5.1/"$N-$V$R".tar.gz"
 
-RDEPEND="gcc glibc ncurses zlib"
+RDEPEND="gcc-lib glibc ncurses zlib"
 BDEPEND=""
 RECOMMENDED=""
 CONFLICT=""

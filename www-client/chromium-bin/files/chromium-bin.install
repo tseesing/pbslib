@@ -8,17 +8,25 @@ post_install() {
 	# Prevent user problems like bug 299777.
 	if ! grep -q /dev/shm <<< $(mount); then
 		echo "You don't have tmpfs mounted at /dev/shm."
-	        echo "${N} isn't going to work in that configuration."
+	        echo "$1 isn't going to work in that configuration."
 	        echo "Please uncomment the /dev/shm entry in /etc/fstab,"
 	        echo "run 'mount /dev/shm' and try again."
 	        echo "/dev/shm is not mounted"
 	fi
 	if [ `stat -c %a /dev/shm` -ne 1777 ]; then
 		echo "/dev/shm does not have correct permissions."
-	        echo "${N} isn't going to work in that configuration."
+	        echo "$1 isn't going to work in that configuration."
 	        echo "Please run chmod 1777 /dev/shm and try again."
 	        echo "/dev/shm has incorrect permissions"
 	fi
 	gnome2_desktop_database_update
-	 gnome2_mime_database_update
+	gnome2_mime_database_update
+}
+
+post_upgrade() {
+	post_install
+}
+
+post_downgrade() {
+	post_install
 }

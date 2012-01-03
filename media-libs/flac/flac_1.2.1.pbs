@@ -9,7 +9,7 @@ PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 
 SRC_URI="http://downloads.xiph.org/releases/"$N"/"$N-$V".tar.gz"
 
-RDEPEND="gcc glibc libogg"
+RDEPEND="gcc-lib glibc libogg"
 BDEPEND=""
 RECOMMENDED=""
 

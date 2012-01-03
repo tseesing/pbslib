@@ -1,8 +1,5 @@
-http://repos.archlinux.org/wsvn/packages/cairo/trunk/cairo-1.10.0-buggy_gradients.patch
-http://bugs.gentoo.org/336696
-
---- src/cairo-xlib-display.c
-+++ src/cairo-xlib-display.c
+--- src/cairo-xlib-display.c	2010-09-09 23:56:24.000000000 +0800
++++ src/cairo-xlib-display.c.new	2011-12-19 15:35:52.157543278 +0800
 @@ -353,11 +353,7 @@
      /* Prior to Render 0.10, there is no protocol support for gradients and
       * we call function stubs instead, which would silently consume the drawing.

@@ -9,7 +9,7 @@ PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 
 SRC_URI="http://downloads.sourceforge.net/project/"$N"/AdPlug%20core%20library/"$V"/"$N-$V".tar.bz2"
 
-RDEPEND="gcc glibc libbinio"
+RDEPEND="gcc-lib glibc libbinio"
 BDEPEND=""
 RECOMMENDED=""
 

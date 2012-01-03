@@ -26,7 +26,7 @@ diff -ur grub2-1.98-ylmf9/util/grub.d/10_linux.in grub2-1.98-ylmf9.new//util/gru
    printf "menuentry '${title}' ${CLASS} {\n" "${os}" "${version}"
    save_default_entry | sed -e "s/^/\t/"
  
-@@ -143,13 +148,20 @@
+@@ -143,13 +149,21 @@
      linux_root_device_thisversion=${GRUB_DEVICE}
    fi
  
@@ -38,12 +38,13 @@ diff -ur grub2-1.98-ylmf9/util/grub.d/10_linux.in grub2-1.98-ylmf9.new//util/gru
    if [ "x${GRUB_DISABLE_LINUX_RECOVERY}" != "xtrue" ]; then
 -    linux_entry "${OS}" "${version}" true \
 +    linux_entry "${OS}" "${version}" recovery \
- 	"single ${GRUB_CMDLINE_LINUX}"
+- 	"single ${GRUB_CMDLINE_LINUX}"
++ 	"recovery ${GRUB_CMDLINE_LINUX}"
    fi
  
-+   if [ "x${GRUB_DISABLE_LINUX_NOMODESET}" != "xtrue" ]; then
++   if [ "x${GRUB_DISABLE_LINUX_XFORCEVESA}" != "xtrue" ]; then
 +         linux_entry "${OS}" "${version}" nomodeset \
-+           "nomodeset ${GRUB_CMDLINE_LINUX} ${GRUB_CMDLINE_EXTRA} ${GRUB_CMDLINE_LINUX_DEFAULT}" \
++           "nomodeset xforcevesa ${GRUB_CMDLINE_LINUX} ${GRUB_CMDLINE_EXTRA} ${GRUB_CMDLINE_LINUX_DEFAULT}" \
 +	   quiet
 +   fi
 +

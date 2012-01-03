@@ -11,7 +11,7 @@ SRC_URI="http://dlc.sun.com.edgesuite.net/virtualbox/"$V"/VirtualBox-"$V"-73009-
 
 RDEPEND=""
 BDEPEND="bin86 dev86 acpica"
-OPINION="nodev"
+OPTIONS="nodev"
 RECOMMENDED=""
 
 INSTALL="$N.install"
@@ -121,7 +121,7 @@ pbs_install() {
 virtualbox-bin-kernel-source_install() {
 	DESCRIPTION="virutalbox kernel source"
 	RECOMMENDED="build-essential"
-	OPINION="nodev"
+	OPTIONS="nodev"
 	YARCH="any"
 
 	INSTALL="$N.install"

@@ -1,0 +1,37 @@
+#
+# Ylmf OS package build script
+#
+
+DESCRIPTION="A graph based image processing framework"
+HOMEPAGE="http://www.gegl.org/"
+LICENSE="GPLv2+"
+PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
+
+SRC_URI="ftp://ftp.gimp.org/pub/"$N"/0.1/"$N-$V".tar.bz2"
+
+RDEPEND="babl glib2 gdk-pixbuf gtk+ pango cairo libjpeg-turbo"
+BDEPEND=""
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_config() {
+	config+="--with-sdl 
+	         --with-openexr 
+		 --with-librsvg 
+		 --with-libavformat 
+		 --with-jasper 
+		 --disable-docs
+		 --enable-introspection=no"
+	doconfig
+}
+
+pbs_build() {
+	domake
+}
+
+pbs_install() {
+	domkinstall
+}
+

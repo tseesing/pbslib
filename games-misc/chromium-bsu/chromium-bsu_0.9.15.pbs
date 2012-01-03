@@ -4,7 +4,6 @@
 
 DESCRIPTION="Chromium B.S.U. is a fast paced, arcade-style, top-scrolling shooter. It uses OpenGL for graphics, and OpenAL for sound effects."
 HOMEPAGE="http://chromium-bsu.sourceforge.net/"
-REPO="testing"
 LICENSE="Artistic License, MIT License"
 PRIORITY=""
 PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
@@ -17,8 +16,6 @@ RECOMMENDED=""
 CONFLICT=""
 
 INSTALL="$N.install"
-
-NOTES=""
 
 pbs_unpack() {
         dounpack
@@ -36,3 +33,4 @@ pbs_build() {
 pbs_install() {
 	domkinstall
 }
+

@@ -9,7 +9,7 @@ PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 
 SRC_URI="2010_07_16_RT2860_Linux_STA_v2.4.0.0.tar.bz2"
 
-PROVIDE="$N-source $N-driver"
+PROVIDE="rt2860sta-source rt2860sta-driver"
 
 pbs_unpack() {
         dounpack
@@ -23,7 +23,7 @@ rt2860sta-source_install() {
 	DESCRIPTION="driver for Ralink PCI ABGN WLAN Card: RT2860PCI/mPCI/CB/PCIe(RT2760/RT2790/RT2860/RT2890) (source)"
 	RECOMMENDED="build-essential"
 	INSTALL="$N.install"
-	OPINION="nodev"
+	OPTIONS="nodev"
         YARCH="any"
 
 	dosrc *
@@ -32,7 +32,7 @@ rt2860sta-source_install() {
 
 rt2860sta-driver_install() {
 	DESCRIPTION="driver for Ralink PCI ABGN WLAN Card: RT2860PCI/mPCI/CB/PCIe(RT2760/RT2790/RT2860/RT2890) (kernel-module)"
-	BDEPEND="gcc make linux-kernel-headers"
+	BDEPEND="gcc-lib make linux-kernel-headers"
 	INSTALL="$N.install"
 
 	unset ARCH

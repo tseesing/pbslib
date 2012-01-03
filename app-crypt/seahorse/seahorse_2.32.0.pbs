@@ -4,7 +4,7 @@
 
 DESCRIPTION="A GNOME application for managing encryption keys"
 HOMEPAGE="http://www.gnome.org/projects/seahorse/index.html"
-LICENSE="GPL-2"
+LICENSE="GPLv2"
 PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 
 SRC_URI="http://ftp.gnome.org/pub/gnome/desktop/2.32/2.32.1/sources/"$N-$V".tar.bz2 "
@@ -26,15 +26,15 @@ pbs_unpack() {
 
 pbs_config() {
 	config+="--disable-schemas-install 
-		     --disable-tests 
-		     --enable-introspection=yes 
-        	     --enable-ssh 
-		     --enable-pkcs11 
-		     --enable-libnotify 
-		     --enable-sharing 
-		     --enable-ldap 
-		     --enable-hkp 
-		     --enable-pgp"
+		 --disable-tests 
+		 --enable-introspection=yes 
+        	 --enable-ssh 
+		 --enable-pkcs11 
+		 --enable-libnotify 
+		 --enable-sharing 
+		 --enable-ldap 
+		 --enable-hkp 
+		 --enable-pgp"
 	doconfig
 }
 

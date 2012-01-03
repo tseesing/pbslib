@@ -10,3 +10,11 @@ pre_remove() {
         doremove_info $files
 }
 
+post_upgrade() {
+	post_install
+}
+
+post_downgrade(){
+	post_install
+}
+

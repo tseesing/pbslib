@@ -1,0 +1,29 @@
+#
+# Ylmf OS package build script
+#
+
+DESCRIPTION="A net IM with voice, not free-ware"
+HOMEPAGE="http://www.skype.com/"
+LICENSE="custom"
+PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
+
+SRC_URI="http://skype.tom.com/download/linux/skype_static-"$V".tar.bz2"
+
+RDEPEND="alsa-lib expat fontconfig freetype gcc-lib glib2 glibc libICE libSM libX11 libXau libxcb libXdmcp libXext libXi libXrandr libXrender libXScrnSaver libXv util-linux-ng zlib"
+BDEPEND=""
+
+INSTALL="$N.install"
+
+pbs_unpack() {
+	dounpack
+}
+
+pbs_install() {
+	docp * "$destdir"/opt/skype
+	cd "$destdir"
+	dodesktop "opt/skype/skype.desktop" "opt/skype/icons/SkypeBlue_48x48.png"
+	doln      /opt/skype/skype          usr/bin/skype
+	mkdir -p  etc/xg_launch/net 
+	echo "+ skype%/opt/skype/icons/SkypeBlue_32x32.png%   Exec /opt/skype/skype" >etc/xg_launch/net/C15skype
+}
+

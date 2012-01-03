@@ -1,0 +1,40 @@
+#
+# Ylmf OS package build script
+#
+
+DESCRIPTION="VA-API implementation for Intel G45 chipsets and Intel HD Graphics for Intel Core processor family."
+HOMEPAGE="http://cgit.freedesktop.org/vaapi/intel-driver"
+LICENSE="MIT"
+PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
+
+SRC_URI="http://cgit.freedesktop.org/vaapi/"$N"/snapshot/"$N-$V".tar.bz2"
+CHECKSUM="9dbd642f18993335146480a3a2987874"
+
+RDEPEND="libva glibc libdrm libpciaccess libX11 libXau libxcb libXdmcp libXext libXfixes"
+RECOMMENDED=""
+BDEPEND=""
+OPTIONAL=""
+CONFLICT=""
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_patch() {
+	dopatch
+}
+
+pbs_config() {
+	config+=""
+	doconfig
+}
+
+pbs_build() {
+	domake
+}
+
+pbs_install() {
+	domkinstall
+	dodoc COPYING AUTHORS README NEWS
+} 
+

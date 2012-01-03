@@ -7,7 +7,7 @@ HOMEPAGE="http://librsvg.sourceforge.net/"
  
 SRC_URI=" http://ftp.gnome.org/pub/gnome/desktop/2.30/2.30.2/sources/"$N-$V$R".tar.bz2 "
 
-RDEPEND="atk cairo expat fontconfig freetype gcc glib2 gdk-pixbuf glibc gtk+ libcroco libgsf libpng libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libxml2 libXrandr libXrender pango pixman zlib"
+RDEPEND="atk cairo expat fontconfig freetype gcc-lib glib2 gdk-pixbuf glibc gtk+ libcroco libgsf libpng libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libxml2 libXrandr libXrender pango pixman zlib"
 BDEPEND="                           "
 
 pbs_unpack() {

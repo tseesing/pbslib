@@ -9,7 +9,7 @@ PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 
 SRC_URI="https://ftp.samba.org/pub/samba/"$N"/samba-4.0.0alpha11.tar.gz"
 
-RDEPEND="acl attr avahi cups cyrus-sasl dbus gcc glibc gnutls keyutils krb5 ldb libcap libgcrypt libgpg-error libtasn1 ncurses openldap openssl pam popt python readline talloc tdb tevent util-linux-ng zlib"
+RDEPEND="acl attr avahi cups cyrus-sasl dbus gcc-lib glibc gnutls keyutils krb5 ldb libcap libgcrypt libgpg-error libtasn1 ncurses openldap openssl pam popt python readline talloc tdb tevent util-linux-ng zlib"
 BDEPEND=""
 RECOMMENDED=""
 CONFLICT="samba"

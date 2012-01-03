@@ -10,7 +10,7 @@ PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 
 SRC_URI="http://nchc.dl.sourceforge.net/project/"$N"/"$N"/"$V$R"/"$N-$V$R".tar.gz"
 
-RDEPEND="expat fontconfig freetype gcc glibc imlib2 libICE libSM libX11 libXau libxcb libXdmcp libXext libXft libXinerama libXpm libXrandr libXrender util-linux-ng zlib"
+RDEPEND="expat fontconfig freetype gcc-lib glibc imlib2 libICE libSM libX11 libXau libxcb libXdmcp libXext libXft libXinerama libXpm libXrandr libXrender util-linux-ng zlib"
 BDEPEND=""
 RECOMMENDED=""
 CONFLICT=""

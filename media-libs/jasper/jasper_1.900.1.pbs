@@ -9,7 +9,7 @@ PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 
 SRC_URI="http://www.ece.uvic.ca/~mdadams/"$N"/software/"$N-$V".zip"
 
-RDEPEND="freeglut gcc glibc libdrm libICE libjpeg-turbo libSM libX11 libXau libxcb libXdamage libXdmcp libXext libXfixes libXi libXmu libXt libXxf86vm mesa util-linux-ng"
+RDEPEND="freeglut gcc-lib glibc libdrm libICE libjpeg-turbo libSM libX11 libXau libxcb libXdamage libXdmcp libXext libXfixes libXi libXmu libXt libXxf86vm mesa util-linux-ng"
 BDEPEND="unzip"
 RECOMMENDED=""
 

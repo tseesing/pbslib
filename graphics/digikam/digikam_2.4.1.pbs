@@ -1,0 +1,48 @@
+#
+# Ylmf OS package build script
+#
+
+DESCRIPTION="A digital photo management application for KDE."
+HOMEPAGE="http://www.digikam.org/"
+LICENSE="GPL"
+PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
+
+SRC_URI="http://sourceforge.net/projects/"$N"/files/"$N"/"$V"/"$N-$V".tar.bz2"
+
+RDEPEND=""
+BDEPEND=""
+RECOMMENDED=""
+CONFLICT=""
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_config() {
+	config+=""
+	doconfig
+}
+
+pbs_build() {
+	domake
+}
+
+pbs_install() {
+	#install everything to $destdir
+	#make DESTDIR="$destdir" install
+	domkinstall
+	#doinit "$N"
+	#doinit "N".service
+	#dodesktop "*.desktop" "*.png"
+	#dodoc AUTHORS ChangeLog COPYING INSTALL NEWS README 
+	#docp "$filesdir/XXXX" "dirname"
+	#domv "$filesdir/XXXX" "dirname"
+	#docp_rename "$1" "$2"
+	#domv_rename "$1" "$2"
+	#doln "$1 "$2"
+	#doman a.1 b.2 c.3
+	#*****************
+	#when SRC_URI is deb or rpm package
+	#docp data/*  "$destdir"
+}
+

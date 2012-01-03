@@ -7,7 +7,7 @@
 +# Check kernel command-line for inhibitors
 +for ARG in $(cat /proc/cmdline); do
 +	case "${ARG}" in
-+	       text|single)
++	       text|single|recovery)
 +	       plymouth quit || :  # We have the ball here
 +               exit 0 ;;
 +        esac

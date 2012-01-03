@@ -1,0 +1,33 @@
+#
+# Ylmf OS package build script
+#
+
+DESCRIPTION="C# bindings for gtkmozembed"
+HOMEPAGE="http://www.mono-project.com/"
+LICENSE="LGPL"
+PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
+
+SRC_URI="http://go-mono.com/sources/"$N"/"$N-$V".tar.bz2"
+
+RDEPEND="xulrunner gtk-sharp"
+RECOMMENDED=""
+BDEPEND="mono"
+CONFLICT=""
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_config() {
+	config+=""
+	doconfig
+}
+
+pbs_build() {
+	domake
+}
+
+pbs_install() {
+	domkinstall
+}
+

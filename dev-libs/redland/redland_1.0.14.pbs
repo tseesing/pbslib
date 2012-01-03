@@ -4,13 +4,12 @@
 
 DESCRIPTION="High-level interface for the Resource Description Framework"
 HOMEPAGE="http://librdf.org/"
-REPO=""
 LICENSE="http://librdf.org/LICENSE.html"
 PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 
-SRC_URI="http://download.librdf.org/source/redland-1.0.14.tar.gz"
+SRC_URI="http://download.librdf.org/source/"$N-$V".tar.gz"
 
-RDEPEND="berkeley-db curl cyrus-sasl glibc gmp libidn libiodbc libtool libxml2 libxslt mpfr mysql openldap openssl raptor2 rasqal sqlite zlib"
+RDEPEND="berkeley-db curl cyrus-sasl glibc gmp gnutls libgcrypt libgpg-error libidn libiodbc libssh2 libtasn1 libxml2 libxslt mpfr openssl raptor2 rasqal rtmpdump zlib openldap"
 BDEPEND=""
 RECOMMENDED=""
 CONFLICT=""

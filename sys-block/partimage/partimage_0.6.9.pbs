@@ -11,7 +11,7 @@ PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 
 SRC_URI="ftp://lug.mtu.edu/gentoo/distfiles/"$N-$V$R".tar.bz2"
 
-RDEPEND="bzip2 gcc glibc newt openssl slang zlib"
+RDEPEND="bzip2 gcc-lib glibc newt openssl slang zlib"
 BDEPEND="      "
 RECOMMENDED=""
 CONFLICT=""

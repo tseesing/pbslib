@@ -2,21 +2,17 @@
 # Ylmf OS package build script
 #
 
-DESCRIPTION="libEtPan ! is a mail purpose library. It will be used for low-level mail handlings"
+DESCRIPTION="libEtPan! is a mail purpose library. It will be used for low-level mail handlings"
 HOMEPAGE="http://libetpan.sourceforge.net/"
-REPO=""
-LICENSE="GPL"
-PRIORITY=""
+LICENSE="custom:etpan"
 PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 
-SRC_URI="http://downloads.sourceforge.net/project/"$N"/"$N"/"$V$R"/"$N-$V$R".tar.gz"
+SRC_URI="http://downloads.sourceforge.net/project/"$N"/"$N"/"$V"/"$N-$V".tar.gz"
 
-RDEPEND=""
-BDEPEND=" "
+RDEPEND="openldap berkeley-db curl cyrus-sasl expat gcc-lib glibc gnutls libgcrypt libgpg-error libidn libssh2 libtasn1 openssl rtmpdump zlib"
+BDEPEND=""
 RECOMMENDED=""
 CONFLICT=""
-
-NOTES=""
 
 pbs_unpack() {
         dounpack
@@ -33,4 +29,6 @@ pbs_build() {
 
 pbs_install() {
 	domkinstall
+	dodoc COPYRIGHT
 }
+

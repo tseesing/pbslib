@@ -9,7 +9,7 @@ PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 
 SRC_URI="http://liblunar.googlecode.com/files/"$N-$V".tar.gz"
 
-RDEPEND="atk cairo expat fontconfig freetype gcc gdk-pixbuf glib2 glibc gtk+ libpng libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libXrandr libXrender lunar-date pango pixman zlib"
+RDEPEND="atk cairo expat fontconfig freetype gcc-lib gdk-pixbuf glib2 glibc gtk+ libpng libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libXrandr libXrender lunar-date pango pixman zlib"
 BDEPEND=""
 RECOMMENDED=""
 CONFLICT=""

@@ -1,0 +1,34 @@
+#
+# Ylmf OS package build script
+#
+
+DESCRIPTION="free, open source software that joins Active Directory domains (binary)."
+COMMENTS="Likewise Open integrates Unix desktops and servers into an Active Directory
+          environment by joining hosts to the domain and lets Unix applications and
+          services authenticate Windows users and groups via the PAM and Name Service
+          Switch libraries."
+HOMEPAGE="http://www.likewiseopen.org"
+LICENSE="custom"
+PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
+
+REPO="testing"
+
+SRC_URI="likewise-open_6.1.0-2_i386.deb"
+
+RDEPEND="glibc ncurses pam"
+RECOMMENDED=""
+BDEPEND=""
+CONFLICT=""
+
+OPTIONS="nodev"
+
+NOTES="http://www.beyondtrust.com/Technical-Support/Downloads/PowerBroker-Identity-Services-open-edition/"
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_install() {
+	docp data/*  "$destdir"
+}
+

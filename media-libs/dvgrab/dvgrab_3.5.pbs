@@ -1,0 +1,39 @@
+#
+# Ylmf OS package build script
+#
+
+DESCRIPTION="Saves audio and video data from an IEEE (FireWire) digital source"
+HOMEPAGE="http://www.kinodv.org/"
+LICENSE="GPL"
+PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
+
+SRC_URI="http://downloads.sourceforge.net/kino/"$N-$V".tar.gz"
+CHECKSUM="b39a242ce63e80fc347ab59931f75649"
+
+RDEPEND="libraw1394(>=1.1.0) libavc1394(>=0.5.1) libiec61883(>=1.0.0) gcc-lib glibc libquicktime zlib"
+RECOMMENDED=""
+BDEPEND=""
+OPTIONAL=""
+CONFLICT=""
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_patch() {
+	dopatch
+}
+
+pbs_config() {
+	config+=""
+	doconfig
+}
+
+pbs_build() {
+	domake
+}
+
+pbs_install() {
+	domkinstall
+}
+

@@ -9,7 +9,7 @@ PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 
 SRC_URI="2011_0427_RT3572_Linux_STA_v2.5.0.0.DPO.bz2"
 
-PROVIDE="$N-source $N-driver"
+PROVIDE="rt3572sta-source rt3572sta-driver"
 
 pbs_unpack() {
         dounpack
@@ -23,7 +23,7 @@ rt3572sta-source_install() {
 	DESCRIPTION="driver for Ralink RT3572 PCI ABGN WLAN Card (source)."
 	RECOMMENDED="build-essential"
 	INSTALL="$N.install"
-	OPINION="nodev"
+	OPTIONS="nodev"
         YARCH="any"
 	
 	dosrc *
@@ -32,7 +32,7 @@ rt3572sta-source_install() {
 
 rt3572sta-driver_install() {
 	DESCRIPTION="driver for Ralink RT3572 PCI ABGN WLAN Card (source)."
-	BDEPEND="gcc make linux-kernel-headers"
+	BDEPEND="gcc-lib make linux-kernel-headers"
 	INSTALL="$N.install"
 	
 	unset ARCH

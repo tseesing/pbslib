@@ -9,7 +9,7 @@ PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 
 SRC_URI="http://www.libraw.org/data/LibRaw-"$V".tar.gz"
 
-RDEPEND="gcc glibc lcms"
+RDEPEND="gcc-lib glibc lcms"
 BDEPEND=""
 RECOMMENDED=""
 

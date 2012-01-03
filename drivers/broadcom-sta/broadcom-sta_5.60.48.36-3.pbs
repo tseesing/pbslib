@@ -22,7 +22,7 @@ broadcom-sta-source_install() {
 	DESCRIPTION="driver for BCM4311-, BCM4312-, BCM4313-, BCM4321-, and BCM4322-based hardware, (source)"
 	RECOMMENDED="build-essential"
 	INSTALL="broadcom-sta-source.install"
-	OPINION="nodev"
+	OPTIONS="nodev"
         YARCH="any"
 	
 	dopatch ylmfos-makeinstall.patch
@@ -33,7 +33,7 @@ broadcom-sta-source_install() {
 
 broadcom-sta-driver_install() {
 	DESCRIPTION="driver for BCM4311-, BCM4312-, BCM4313-, BCM4321-, and BCM4322-based hardware, (driver module)"
-	BDEPEND="make gcc linux-kernel-headers"
+	BDEPEND="make gcc-lib linux-kernel-headers"
 	CONFLICT="bcmwl-driver"
 	INSTALL="broadcom-sta-driver.install"
 

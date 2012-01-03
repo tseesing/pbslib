@@ -9,7 +9,7 @@ PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 
 SRC_URI="http://distfiles.atheme.org/"$N-$V".tgz"
 
-RDEPEND="alsa-lib atk attr audacious audiofile bzip2 cairo curl cyrus-sasl dbus dbus-glib directfb e2fsprogs esound expat faad2 ffmpeg flac fontconfig freetype gcc gdk-pixbuf glib2 glibc gtk+ jack-audio-connection-kit json-c keyutils krb5 lame libcap libcddb libcdio libICE libidn libmcs libmms libmowgli libmtp libnotify libogg libpng libproxy libsamplerate libsdl libSM libsndfile libtheora libusb libusb-compat libva libvorbis libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libxml2 libXrandr libXrender libXt libXtst lirc nas neon opencore-amr openldap openssl orc pango pixman pulseaudio rtmpdump schroedinger util-linux-ng wavpack x264 xvidcore zlib"
+RDEPEND="alsa-lib atk attr audacious audiofile bzip2 cairo curl cyrus-sasl dbus dbus-glib directfb e2fsprogs esound expat faad2 ffmpeg flac fontconfig freetype gcc-lib gdk-pixbuf glib2 glibc gtk+ jack-audio-connection-kit json-c keyutils krb5 lame libcap libcddb libcdio libICE libidn libmcs libmms libmowgli libmtp libnotify libogg libpng libproxy libsamplerate libsdl libSM libsndfile libtheora libusb libusb-compat libva libvorbis libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libxml2 libXrandr libXrender libXt libXtst lirc nas neon opencore-amr openldap openssl orc pango pixman pulseaudio rtmpdump schroedinger util-linux-ng wavpack x264 xvidcore zlib"
 BDEPEND=""
 RECOMMENDED=""
 

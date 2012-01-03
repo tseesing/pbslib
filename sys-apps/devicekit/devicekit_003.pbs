@@ -18,7 +18,7 @@ pbs_unpack() {
 }
 
 pbs_config() {
-	config+="--enable-man-pages"
+	config+="--enable-man-pages --disable-gtk-doc"
 	doconfig
 }
 

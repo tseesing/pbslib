@@ -1,0 +1,14 @@
+diff -ur ylmfos-driver-manager/src/lib/ydevicemanager/constant.py ylmfos-driver-manager.new//src/lib/ydevicemanager/constant.py
+--- ylmfos-driver-manager/src/lib/ydevicemanager/constant.py	2011-12-29 13:43:22.577652364 +0800
++++ ylmfos-driver-manager.new//src/lib/ydevicemanager/constant.py	2011-12-31 17:33:38.121616964 +0800
+@@ -4,8 +4,8 @@
+ DRI_ID = 1
+ TEST_ID = 2
+ DEVXML = "/var/ypkg/packages/device.xml"
+-ICON = "/home/hechao/Projects/YDeviceManager/src/share/ydevicemanager/"
+-LOGO = "/home/hechao/Projects/YDeviceManager/src/share/ydevicemanager/logo/"
++ICON = "/usr/share/ydevicemanager/"
++LOGO = "/usr/share/ydevicemanager/logo/"
+ 
+ DEFAULT_FONT = "WenQuanYi Micro Hei"
+ 

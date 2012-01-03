@@ -13,7 +13,7 @@ RDEPEND=""
 BDEPEND=""
 CONFLICT=""
 
-PROVIDE="$N-utils $N-driver $N-source"
+PROVIDE="ndiswrapper-utils ndiswrapper-driver ndiswrapper-source"
 
 pbs_unpack() {
         dounpack
@@ -44,7 +44,7 @@ ndiswrapper-utils_install () {
 
 ndiswrapper-driver_install() {
 	DESCRIPTION="Wrapper for using Windows drivers for some wireless cards, (kernel module)"
-	BDEPEND="make gcc linux-kernel-headers"
+	BDEPEND="make gcc-lib linux-kernel-headers"
 	INSTALL="$N.install"
 
 	make DESTDIR="$destdir" install-driver
@@ -53,7 +53,7 @@ ndiswrapper-driver_install() {
 ndiswrapper-source_install() {
 	DESCRIPTION="Wrapper for using Windows drivers for some wireless cards, (source)"
 	RECOMMENDED="build-essential"
-	OPINION="nodev"
+	OPTIONS="nodev"
 	YARCH="any"
 	INSTALL="$N.install"
 

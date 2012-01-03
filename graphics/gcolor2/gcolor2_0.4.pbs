@@ -4,14 +4,13 @@
 
 DESCRIPTION="a GTK+ color selector"
 HOMEPAGE="http://gcolor2.sourceforge.net"
-REPO=""
-LICENSE=""
+LICENSE="GPL"
 PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 
-SRC_URI="http://sourceforge.net/projects/"$N"/files/"$N"/"$V$R"/"$N-$V$R".tar.bz2"
+SRC_URI="http://sourceforge.net/projects/"$N"/files/"$N"/"$V"/"$N-$V".tar.bz2"
 
-RDEPEND=""
-BDEPEND=" "
+RDEPEND="gtk+"
+BDEPEND=""
 RECOMMENDED=""
 
 pbs_unpack() {
@@ -19,6 +18,10 @@ pbs_unpack() {
 }
 
 pbs_config() {
+	[ "$ARCH" == "x86_64" ] && dopatch gcolor2-0.4-amd64.patch
+
+	sed -i 's/\[:space:\]/[&]/g' configure
+
 	./configure --prefix=/usr
 }
 
@@ -28,6 +31,6 @@ pbs_build() {
 
 pbs_install() {
 	domkinstall
-	docp_rename "$destdir"/usr/share/pixmaps/gcolor2/icon.png "$destdir"/usr/share/pixmaps/"$N".png
-	docp        $filesdir/"$N".desktop  "$destdir"/usr/share/applications
+	dodesktop "$N".desktop "/usr/share/pixmaps/gcolor2/icon.png"
 }
+

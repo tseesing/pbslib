@@ -1,0 +1,48 @@
+#
+# Ylmf OS package build script
+#
+
+DESCRIPTION="Platform independent MSN Messenger client written in Python+GTK"
+HOMEPAGE="http://emesene.org/"
+LICENSE="custom:PSF GPL LGPL2.1"
+PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
+
+#https://nodeload.github.com/emesene/emesene/zipball/v2.11.11
+SRC_URI="emesene-emesene-v2.11.11-0-ge31d8f0.zip"
+
+RDEPEND="python pygtk papyon dbus-python imaging notify-python openssl dbus-python xdg-utils"
+BDEPEND="distribute"
+RECOMMENDED="gtkspell gnome-python-extras gst-python pywebkitgtk xmpppy"
+CONFLICT=""
+OPTIONAL="gnome-python-extras: spell-check plugin
+	  gtkspell: spell-check plugin
+	  aspell: spell-check plugin (also need aspell dictionary)
+	  gst-python: webcam support
+	  gst-plugins-good: webcam support
+	  pywebkitgtk: for alternative conversation window
+	  xmpppy: for gtalk and facebook chat support
+	  pyqt4: alternative qt4 interface (emesene -e main:qt4_main)"
+
+INSTALL="$N.install"
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_install() {
+	cd "$N"-"$N"-c1bfdeb
+	
+	export PYTHONPATH="${destdir}/usr/lib/python2.6/site-packages/"
+	install -d "${destdir}"/usr/lib/python2.6/site-packages/
+	python setup.py install --prefix="${destdir}"/usr
+
+	cd "${destdir}"
+
+	domv usr/lib/python2.6/site-packages/emesene-"$V"-py2.6.egg/share   usr
+	domv usr/lib/python2.6/site-packages/emesene-"$V"-py2.6.egg/emesene usr/share
+	rm -rf usr/lib
+
+	docp "$filesdir"/emesene usr/bin/
+	chmod +x usr/bin/emesene
+}
+

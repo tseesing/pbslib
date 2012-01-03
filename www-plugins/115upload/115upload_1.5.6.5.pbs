@@ -1,0 +1,25 @@
+#
+# Ylmf OS package build script
+#
+
+DESCRIPTION="115 upload plugin for firefox"
+COMMENTS=""
+HOMEPAGE="www.115.com"
+LICENSE="custom"
+PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
+
+SRC_URI="http://115.com/static/install/"${N}"_v"$V"_x86.tar.gz"
+
+RDEPEND=""
+RECOMMENDED=""
+BDEPEND=""
+CONFLICT=""
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_install() {
+	docp 115upload.so usr/lib/mozilla/plugins/
+}
+

@@ -13,7 +13,7 @@ RDEPEND=""
 BDEPEND=""
 CONFLICT="libpthread-stubs-dev"
 
-OPINION="nodev"
+OPTIONS="nodev"
 
 pbs_unpack() {
         dounpack

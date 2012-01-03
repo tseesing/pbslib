@@ -9,7 +9,7 @@ PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 
 SRC_URI="ftp://ftp.fvwm.org/pub/"$N"/version-2/"$N-$V".tar.bz2"
 
-RDEPEND="cairo expat fontconfig freetype fribidi gcc gdk-pixbuf glib2 glibc libcroco libICE libpng librsvg libSM libX11 libXau libxcb libXcursor libXdmcp libXext libXfixes libXft libXinerama libxml2 libXpm libXrender ncurses pango pixman readline util-linux-ng zlib"
+RDEPEND="cairo expat fontconfig freetype fribidi gcc-lib gdk-pixbuf glib2 glibc libcroco libICE libpng librsvg libSM libX11 libXau libxcb libXcursor libXdmcp libXext libXfixes libXft libXinerama libxml2 libXpm libXrender ncurses pango pixman readline util-linux-ng zlib"
 BDEPEND=""
 
 pbs_unpack() {

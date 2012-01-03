@@ -1,0 +1,76 @@
+#
+# Ylmf OS package build script
+#
+
+DESCRIPTION="Thunderbird Mail Client"
+HOMEPAGE="http://www.mozilla.com/en-US/thunderbird/"
+LICENSE="GPL MPL"
+PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
+
+SRC_URI="ftp://ftp.mozilla.org/pub/mozilla.org/"$N"/releases/"$V"/source/"$N-$V".source.tar.bz2"
+CHECKSUM="a5904751dbd33074682b438b732fdbab"
+
+RDEPEND="alsa-lib atk avahi cairo dbus dbus-glib expat fontconfig freetype gcc-lib gconf glib2 gdk-pixbuf glibc gnome-vfs gtk+ libICE libnotify libpng libSM libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libxml2 libXrandr libXrender libXt nspr nss openssl orbit pango pixman sqlite startup-notification util-linux-ng zlib"
+BDEPEND=""
+RECOMMENDED="thunderbird-i18n-zh-CN"
+
+OPTIONAL="libcanberra: for sound support"
+
+INSTALL="$N.install"
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_patch() {
+	dopatch thunderbird-install-dir.patch
+}
+
+pbs_config() {
+	#docp_rename "$filesdir"/mozconfig .mozconfig
+	config+=" --enable-application=mail
+	          --enable-official-branding
+		  --enable-startup-notification
+		  --enable-safe-browsing
+		  --enable-gio
+		  --enable-optimize
+		  --disable-gnomevfs
+		  --disable-crashreporter
+		  --disable-mochitest
+		  --disable-tests
+		  --disable-installer "
+
+	export MOZILLA_OFFICIAL=1
+	doconfig
+}
+
+pbs_build() {
+	export LDFLAGS="$LDFLAGS -Wl,-rpath,/usr/lib/thunderbird"
+	#domake -f client.mk build MOZ_MAKE_FLAGS="$MAKEFLAGS"
+	domake
+}
+
+pbs_install() {
+	cd comm-release
+	#domkinstall -j1 -f client.mk DESTDIR="$destdir"
+	domkinstall
+	
+	for i in 16x16 22x22 24x24 32x32 48x48 256x256; do
+		install -Dm644 other-licenses/branding/thunderbird/mailicon${i/x*/}.png \
+	         "$destdir/usr/share/icons/hicolor/${i}/apps/thunderbird.png"
+	done
+
+	cd "$destdir"
+
+	install -m644 "$filesdir"/vendor.js "usr/lib/thunderbird/defaults/pref/"
+
+	#rm -rf usr/lib/thunderbird/{dictionaries,hyphenation}
+	#doln /usr/share/hunspell usr/lib/thunderbird/dictionaries
+	#doln /usr/share/hyphen   usr/lib/thunderbird/hyphenation
+
+	# We don't want the development stuff
+	rm -r usr/{include,lib/thunderbird-devel,share/idl}
+
+	dodesktop "thunderbird.desktop" "usr/lib/"$N"/chrome/icons/default/default48.png"
+}
+

@@ -1,0 +1,29 @@
+#
+# Ylmf OS package build script
+#
+
+DESCRIPTION="MPlayer with Video Acceleration support"
+HOMEPAGE="http://www.splitted-desktop.com/~gbeauchesne/mplayer-vaapi/"
+LICENSE="GPL"
+PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
+
+SRC_URI="http://www.splitted-desktop.com/~gbeauchesne/"$N"/"$N"-latest-FULL.tar.bz2"
+CHECKSUM="eae1e1bf64f858a0d7e6ad0a6a445c86"
+
+RDEPEND=""
+BDEPEND=" "
+RECOMMENDED=""
+
+NOTES=""
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_build() {
+	./checkout-patch-build.sh 
+}
+
+pbs_install() {
+	:
+}

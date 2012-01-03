@@ -9,7 +9,7 @@ PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 
 SRC_URI="http://ftp.gnome.org/pub/gnome/sources/ptlib/2.10/"$N-$V".tar.bz2"
 
-RDEPEND="alsa-lib audiofile cyrus-sasl directfb esound expat gcc glibc libICE libsdl libSM libX11 libXau libxcb libXdmcp libXt nas openldap openssl util-linux-ng v4l-utils zlib"
+RDEPEND="alsa-lib audiofile cyrus-sasl directfb esound expat gcc-lib glibc libICE libsdl libSM libX11 libXau libxcb libXdmcp libXt nas openldap openssl util-linux-ng v4l-utils zlib"
 RECOMMENDED=""
 BDEPEND=""
 CONFLICT=""

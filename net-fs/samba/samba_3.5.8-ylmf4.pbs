@@ -9,7 +9,7 @@ PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 
 SRC_URI="http://"$N".org/"$N"/ftp/stable/"$N-$V".tar.gz"
 
-RDEPEND="acl attr avahi cups cyrus-sasl dbus e2fsprogs gamin gcc glibc gnutls keyutils krb5 libcap libgcrypt libgpg-error libtasn1 ncurses openldap openssl pam popt readline talloc tdb zlib"
+RDEPEND="acl attr avahi cups cyrus-sasl dbus e2fsprogs gamin gcc-lib glibc gnutls keyutils krb5 libcap libgcrypt libgpg-error libtasn1 ncurses openldap openssl pam popt readline talloc tdb zlib"
 BDEPEND=""
 RECOMMENDED=""
 CONFLICT="samba4"

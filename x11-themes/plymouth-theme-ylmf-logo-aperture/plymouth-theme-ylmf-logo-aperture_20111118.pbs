@@ -1,0 +1,27 @@
+#
+# Ylmf OS package build script
+#
+
+DESCRIPTION="ylmfos aperture theme for plymouth"
+HOMEPAGE="www.ylmf.net"
+LICENSE="GPLv2"
+YARCH="any"
+PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
+
+SRC_URI="git://git.ylmf.com/plymouth-theme-ylmf-logo.git"
+
+RDEPEND="plymouth"
+BDEPEND=""
+RECOMMENDED=""
+
+INSTALL="$N.install"
+
+pbs_unpack() {
+	dounpack
+}
+
+pbs_install() {
+	git checkout aperture
+	docp lib "$destdir"
+}
+

@@ -12,7 +12,7 @@ SRC_URI="http://nchc.dl.sourceforge.net/project/pidgin/Pidgin/"$V$R"/"$N-$V$R".t
 
 PROVIDE="libpurple finch"
 
-RDEPEND="atk cairo dbus dbus-glib expat farsight2 fontconfig freetype gcc 
+RDEPEND="atk cairo dbus dbus-glib expat farsight2 fontconfig freetype gcc-lib 
 	 glib2 gdk-pixbuf glibc gnutls gstreamer gtk+ libgcrypt libgpg-error libICE 
 	 libpng libSM libtasn1 libX11 libXau libxcb libXcomposite libXcursor 
 	 libXdamage libXdmcp libXext libXfixes libXi libxml2 libXrandr libXrender 

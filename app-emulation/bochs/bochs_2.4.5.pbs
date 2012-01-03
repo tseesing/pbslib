@@ -9,7 +9,7 @@ PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 
 SRC_URI="http://downloads.sourceforge.net/project/"$N"/"$N"/"$V"/"$N-$V".tar.gz"
 
-RDEPEND="alsa-lib atk cairo expat fontconfig freetype gcc gdk-pixbuf glib2 glibc gtk+ libICE libpng libSM libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libXpm libXrandr libXrender ncurses pango pixman readline util-linux-ng zlib"
+RDEPEND="alsa-lib atk cairo expat fontconfig freetype gcc-lib gdk-pixbuf glib2 glibc gtk+ libICE libpng libSM libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libXpm libXrandr libXrender ncurses pango pixman readline util-linux-ng zlib"
 BDEPEND=""
 
 pbs_unpack() {

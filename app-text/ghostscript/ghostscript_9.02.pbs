@@ -9,7 +9,7 @@ PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 
 SRC_URI="http://downloads.ghostscript.com/public/"$N-$V".tar.gz"
 
-RDEPEND="atk avahi cairo cups dbus e2fsprogs expat fontconfig freetype gcc gdk-pixbuf glib2 glibc gnutls gtk+ jasper keyutils krb5 libgcrypt libgpg-error libICE libidn libjpeg-turbo libpng libSM libtasn1 libtiff libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libXrandr libXrender libXt pango pixman util-linux-ng zlib"
+RDEPEND="atk avahi cairo cups dbus e2fsprogs expat fontconfig freetype gcc-lib gdk-pixbuf glib2 glibc gnutls gtk+ jasper keyutils krb5 libgcrypt libgpg-error libICE libidn libjpeg-turbo libpng libSM libtasn1 libtiff libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libXrandr libXrender libXt pango pixman util-linux-ng zlib"
 BDEPEND=""
 RECOMMENDED=""
 CONFLICT="gnu-ghostscript"

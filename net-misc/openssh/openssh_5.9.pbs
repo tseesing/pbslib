@@ -20,11 +20,11 @@ pbs_unpack() {
 
 pbs_config() {
 	config+=" --sysconfdir=/etc/ssh  
-		      --datadir=/usr/share/sshd  
-		      --libexecdir=/usr/lib/openssh  
-		      --with-md5-passwords  
-		      --with-pam
-		      --with-privsep-path=/var/lib/sshd "
+		  --datadir=/usr/share/sshd  
+		  --libexecdir=/usr/lib/openssh  
+		  --with-md5-passwords  
+		  --with-pam
+		  --with-privsep-path=/var/lib/sshd "
 	doconfig
 }
 
@@ -38,7 +38,7 @@ pbs_install() {
 
 	cd "$destdir"
 	mkdir -p etc/ssh/
-	docp $filesdir/systemd/*  lib/systemd/system/
-	docp_rename $filesdir/sshd.pam   etc/pam.d/sshd
+	docp "$filesdir"/systemd/*     lib/systemd/system/
+	docp_rename $filesdir/sshd.pam etc/pam.d/sshd
 }
 

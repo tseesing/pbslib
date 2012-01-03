@@ -9,7 +9,7 @@ PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 
 SRC_URI="http://ftp.acc.umu.se/pub/gnome/platform/2.32/2.32.1/sources/GConf-"$V".tar.bz2"
 
-RDEPEND="atk cairo cyrus-sasl dbus dbus-glib eggdbus expat fontconfig freetype gcc gdk-pixbuf glib2 glibc gtk+ libpng libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libxml2 libXrandr libXrender openldap openssl orbit pango pixman polkit zlib"
+RDEPEND="atk cairo cyrus-sasl dbus dbus-glib eggdbus expat fontconfig freetype gcc-lib gdk-pixbuf glib2 glibc gtk+ libpng libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libxml2 libXrandr libXrender openldap openssl orbit pango pixman polkit zlib"
 BDEPEND=""
 CONFLICT="gconf-dbus"
 

@@ -10,7 +10,7 @@ PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 SRC_URI="http://upx.sourceforge.net/download/"$N-$V"-src.tar.bz2 
          http://downloads.sourceforge.net/sevenzip/lzma465.tar.bz2"
 
-RDEPEND="gcc glibc ucl zlib"
+RDEPEND="gcc-lib glibc ucl zlib"
 RECOMMENDED=""
 BDEPEND=""
 CONFLICT=""

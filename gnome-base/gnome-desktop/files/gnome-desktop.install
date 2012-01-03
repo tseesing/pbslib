@@ -12,11 +12,11 @@ post_install() {
 	gnome2_install_defaut_gconf "float"  "/desktop/gnome/font_rendering/dpi"                "96.0"
 	
 	#
-	#gnome2_install_defaut_gconf "string" "/desktop/gnome/interface/font_name"              "Ubuntu 10"
-	gnome2_install_defaut_gconf  "string" "/desktop/gnome/interface/font_name"              "WenQuanYi Micro Hei 10"
-	gnome2_install_defaut_gconf  "string" "/desktop/gnome/interface/document_font_name"     "Sans 10"
-	#gnome2_install_defaut_gconf "string" "/desktop/gnome/interface/monospace_font_name"    "Monospace 10" 
-	gnome2_install_defaut_gconf  "string" "/desktop/gnome/interface/monospace_font_name"    "WenQuanYi Micro Hei Mono 10"
+	#gnome2_install_defaut_gconf "string" "/desktop/gnome/interface/font_name"              "Ubuntu 11"
+	gnome2_install_defaut_gconf  "string" "/desktop/gnome/interface/font_name"              "WenQuanYi Micro Hei 11"
+	gnome2_install_defaut_gconf  "string" "/desktop/gnome/interface/document_font_name"     "Sans 11"
+	#gnome2_install_defaut_gconf "string" "/desktop/gnome/interface/monospace_font_name"    "Monospace 11" 
+	gnome2_install_defaut_gconf  "string" "/desktop/gnome/interface/monospace_font_name"    "WenQuanYi Micro Hei Mono 11"
 
 	#
 	gnome2_install_defaut_gconf "bool" "/desktop/gnome/peripherals/keyboard/remember_numlock_state"  "True"

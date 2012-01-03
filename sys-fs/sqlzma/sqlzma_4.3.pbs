@@ -8,7 +8,7 @@ LICENSE="GPL-2"
 PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 SRC_URI=""
 
-RDEPEND="zlib glibc gcc"
+RDEPEND="zlib glibc gcc-lib"
 BDEPEND=" sys-apps/linux-kernel-ubuntu-source"
 RECOMMENDED=""
 

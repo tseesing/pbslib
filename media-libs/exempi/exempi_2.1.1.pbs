@@ -9,7 +9,7 @@ PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 
 SRC_URI="http://libopenraw.freedesktop.org/download/"$N-$V".tar.gz"
 
-RDEPEND="expat gcc glibc zlib"
+RDEPEND="expat gcc-lib glibc zlib"
 BDEPEND="boost-dev"
 RECOMMENDED=""
 

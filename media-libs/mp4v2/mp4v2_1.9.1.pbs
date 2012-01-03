@@ -9,7 +9,7 @@ PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 
 SRC_URI="http://mp4v2.googlecode.com/files/"$N-$V".tar.bz2"
 
-RDEPEND="gcc glibc"
+RDEPEND="gcc-lib glibc"
 BDEPEND=""
 RECOMMENDED=""
 

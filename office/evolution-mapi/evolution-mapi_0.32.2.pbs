@@ -9,7 +9,7 @@ PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 
 SRC_URI="http://ftp.gnome.org/pub/GNOME/sources/"$N"/0.32/"$N-$V".tar.bz2"
 
-RDEPEND="atk berkeley-db cairo cyrus-sasl dbus dbus-glib e2fsprogs enchant evolution evolution-data-server expat fontconfig freetype gail gcc gconf gdk-pixbuf glib2 glibc gnome-desktop gnutls gtk+ gtkhtml keyutils krb5 libgcrypt libgdata libgnome-keyring libgpg-error libical libICE libmapi libpng libproxy libSM libsoup libtasn1 libunique libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libxml2 libXrandr libXrender nspr nss orbit pango pixman samba4 sqlite startup-notification talloc tdb tevent util-linux-ng zlib"
+RDEPEND="atk berkeley-db cairo cyrus-sasl dbus dbus-glib e2fsprogs enchant evolution evolution-data-server expat fontconfig freetype gail gcc-lib gconf gdk-pixbuf glib2 glibc gnome-desktop gnutls gtk+ gtkhtml keyutils krb5 libgcrypt libgdata libgnome-keyring libgpg-error libical libICE libmapi libpng libproxy libSM libsoup libtasn1 libunique libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libxml2 libXrandr libXrender nspr nss orbit pango pixman samba4 sqlite startup-notification talloc tdb tevent util-linux-ng zlib"
 RECOMMENDED=""
 BDEPEND=""
 CONFLICT=""

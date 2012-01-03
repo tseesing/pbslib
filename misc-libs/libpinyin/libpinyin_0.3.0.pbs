@@ -1,0 +1,34 @@
+#
+# Ylmf OS package build script
+#
+
+DESCRIPTION="Library to deal with pinyin."
+COMMENTS="The libpinyin project aims to provide the algorithms core for intelligent sentence-based Chinese pinyin input methods."
+HOMEPAGE="https://github.com/libpinyin/libpinyin"
+LICENSE="GPL"
+PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
+
+SRC_URI="http://cloud.github.com/downloads/"$N"/"$N"/"$N-$V".tar.gz"
+CHECKSUM="fbb97e0a07eab0cc55aff067598a4d68"
+
+RDEPEND="berkeley-db gcc-lib glibc"
+RECOMMENDED=""
+BDEPEND=""
+CONFLICT=""
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_config() {
+	config+=""
+	doconfig
+}
+
+pbs_build() {
+	make
+}
+
+pbs_install() {
+	domkinstall
+}

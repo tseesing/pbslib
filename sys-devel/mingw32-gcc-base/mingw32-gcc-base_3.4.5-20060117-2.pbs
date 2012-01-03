@@ -20,7 +20,7 @@ BDEPEND="mingw32-headers mingw32-binutils"
 RECOMMENDED=""
 CONFLICT=""
 
-OPINION="nodev nostrip"
+OPTIONS="nodev nostrip"
 
 pbs_unpack() {
         dounpack

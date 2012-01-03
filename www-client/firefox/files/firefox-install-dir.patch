@@ -1,0 +1,28 @@
+diff -ur mozilla-release/config/autoconf.mk.in mozilla-release.new//config/autoconf.mk.in
+--- mozilla-release/config/autoconf.mk.in	2011-09-29 04:24:37.000000000 +0800
++++ mozilla-release.new//config/autoconf.mk.in	2011-12-27 17:51:19.888214286 +0800
+@@ -68,8 +68,8 @@
+ mandir		= @mandir@
+ idldir		= $(datadir)/idl/$(MOZ_APP_NAME)-$(MOZ_APP_VERSION)
+ 
+-installdir	= $(libdir)/$(MOZ_APP_NAME)-$(MOZ_APP_VERSION)
+-sdkdir		= $(libdir)/$(MOZ_APP_NAME)-devel-$(MOZ_APP_VERSION)
++installdir	= $(libdir)/$(MOZ_APP_NAME)
++sdkdir		= $(libdir)/$(MOZ_APP_NAME)-devel
+ 
+ DIST		= $(DEPTH)/dist
+ LIBXUL_SDK      = @LIBXUL_SDK@
+diff -ur mozilla-release/js/src/config/autoconf.mk.in mozilla-release.new//js/src/config/autoconf.mk.in
+--- mozilla-release/js/src/config/autoconf.mk.in	2011-09-29 04:24:49.000000000 +0800
++++ mozilla-release.new//js/src/config/autoconf.mk.in	2011-12-27 17:51:42.671972242 +0800
+@@ -61,8 +61,8 @@
+ datadir		= @datadir@
+ mandir		= @mandir@
+ 
+-installdir	= $(libdir)/$(MOZ_APP_NAME)-$(MOZ_APP_VERSION)
+-sdkdir		= $(libdir)/$(MOZ_APP_NAME)-devel-$(MOZ_APP_VERSION)
++installdir	= $(libdir)/$(MOZ_APP_NAME)
++sdkdir		= $(libdir)/$(MOZ_APP_NAME)-devel
+ 
+ TOP_DIST	= @TOP_DIST@
+ ifneq (,$(filter /%,$(TOP_DIST)))

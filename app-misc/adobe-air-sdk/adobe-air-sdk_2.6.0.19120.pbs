@@ -11,7 +11,7 @@ PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 
 SRC_URI="http://airdownload.adobe.com/air/lin/download/latest/AdobeAIRSDK.tbz2"
 
-RDEPEND="gcc glibc"
+RDEPEND="gcc-lib glibc"
 BDEPEND=""
 RECOMMENDED=""
 CONFLICT=""

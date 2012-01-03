@@ -6,11 +6,12 @@ DESCRIPTION="Tools to access a server's filespace and printers via SMB"
 HOMEPAGE="http://www.samba.org"
 LICENSE="GPLv2"
 PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
+
 REPO="testing"
 
 SRC_URI="https://ftp.samba.org/pub/samba/"$N"/samba-4.0.0alpha17.tar.gz"
 
-RDEPEND="acl attr avahi cups cyrus-sasl dbus gcc glibc gnutls keyutils krb5 ldb libcap libgcrypt libgpg-error libtasn1 ncurses openldap openssl pam popt python readline talloc tdb tevent util-linux-ng zlib"
+RDEPEND="acl attr avahi cups cyrus-sasl dbus gcc-lib glibc gnutls keyutils krb5 ldb libcap libgcrypt libgpg-error libtasn1 ncurses openldap openssl pam popt python readline talloc tdb tevent util-linux-ng zlib"
 BDEPEND=""
 RECOMMENDED=""
 CONFLICT="samba"

@@ -40,6 +40,9 @@ PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 #SRC_URI="/tmp/$N-$V.tar.bz2"
 SRC_URI=""
 
+#check value: md5sum/sha1sum/sha256sum, default is md5sum
+CHECKSUM=""
+
 # Dependencies 
 RDEPEND=""
 BDEPEND=""
@@ -49,8 +52,7 @@ OPTIONAL="a: support a
           b: support b"
 
 #do not spilte dev files
-OPINION="nodev nostrip upx"
-
+OPTIONS="nodev nostrip upx"
 
 #
 INSTALL="$N.install"
@@ -71,14 +73,15 @@ pbs_unpack() {
         dounpack
 }
 
-#config
-pbs_config() {
-	#fist, cd build directory
-	#cd "$N-$V$R"
+#patch
+pbs_patch() {
 	#dopatch $filesdir/patches/*.patch 
 	#XX.patch should be found under $filesdir or $filesdir/patches/
 	dopatch XX.patch
-	#second, add package specified config params to config
+}
+
+#config
+pbs_config() {
 	#default is :
 	#config+=" --prefix=/usr
 	#	      --sysconfdir=/etc
@@ -88,7 +91,6 @@ pbs_config() {
 	#              --disable-static
 	#	      --enable-shared "
 	config+=""
-	#Third, call configure with $config
 	#./configure $config
 	doconfig
 }

@@ -22,10 +22,10 @@ post_remove() {
 }
 
 post_upgrade() {
-	post_remove
+	post_install
 }
 
 post_downgrade() {
-	post_remove
+	post_install
 }
 

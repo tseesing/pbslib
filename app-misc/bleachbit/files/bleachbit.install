@@ -16,3 +16,4 @@ post_upgrade()  {
 post_downgrade() {
 	post_install
 }
+

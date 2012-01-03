@@ -9,7 +9,7 @@ PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
  
 SRC_URI="http://download.icu-project.org/files/"$N"4c/"$V"/"$N"4c-4_2_1-src.tgz"
 
-RDEPEND="gcc glibc"
+RDEPEND="gcc-lib glibc"
 BDEPEND=""
 RECOMMENDED=""
 

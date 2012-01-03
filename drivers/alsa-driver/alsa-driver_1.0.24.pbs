@@ -9,7 +9,7 @@ PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 
 SRC_URI="ftp://ftp.alsa-project.org/pub/driver/"$N-$V".tar.bz2"
 
-PROVIDE="$N-source $N-module $N-headers"
+PROVIDE="alsa-driver-source alsa-driver-module alsa-driver-headers"
 
 pbs_unpack() {
         dounpack
@@ -23,7 +23,7 @@ alsa-driver-source_install() {
 	DESCRIPTION="Advanced Linux Sound Architecture kernel module (source)"
 	RECOMMENDED="build-essential"
 	INSTALL="$N.install"
-	OPINION="nodev"
+	OPTIONS="nodev"
 	YARCH="any"
 
 	dosrc *
@@ -33,7 +33,7 @@ alsa-driver-source_install() {
 
 alsa-driver-module_install() {
 	DESCRIPTION="Advanced Linux Sound Architecture kernel module"
-	BDEPEND="gcc make linux-kernel-headers"
+	BDEPEND="gcc-lib make linux-kernel-headers"
 	INSTALL="$N.install"
 
 	unset ARCH
@@ -43,7 +43,7 @@ alsa-driver-module_install() {
 
 alsa-driver-headers_install() {
 	DESCRIPTION="Advanced Linux Sound Architecture kernel module (headers)"
-	OPINION="nodev"
+	OPTIONS="nodev"
 
 	make DESTDIR="$destdir" install-headers
 }

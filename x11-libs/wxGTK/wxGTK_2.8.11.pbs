@@ -9,7 +9,7 @@ PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 
 SRC_URI="http://downloads.sourceforge.net/project/wxwindows/"$V"/"$N-$V".tar.gz"
 
-RDEPEND="atk cairo expat fontconfig freetype gcc gdk-pixbuf glib2 glibc gtk+ libICE libjpeg-turbo libpng libSM libtiff libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libXinerama libXrandr libXrender libXxf86vm pango pixman util-linux-ng wxWidgets zlib"
+RDEPEND="atk cairo expat fontconfig freetype gcc-lib gdk-pixbuf glib2 glibc gtk+ libICE libjpeg-turbo libpng libSM libtiff libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libXinerama libXrandr libXrender libXxf86vm pango pixman util-linux-ng wxWidgets zlib"
 BDEPEND=""
 
 pbs_unpack() {

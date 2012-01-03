@@ -9,7 +9,7 @@ PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 
 SRC_URI=" http://nchc.dl.sourceforge.net/project/"$N"/"$N"/"$V$R"/"${N}"_1_42_0.tar.bz2 "
 
-RDEPEND="bzip2 gcc glibc zlib"
+RDEPEND="bzip2 gcc-lib glibc zlib"
 BDEPEND=""
 RECOMMENDED=""
 

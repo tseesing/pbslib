@@ -1,0 +1,41 @@
+#
+# Ylmf OS package build script
+#
+
+DESCRIPTION="VDPAU Backend for Video Acceleration (VA) API"
+HOMEPAGE="http://www.splitted-desktop.com/~gbeauchesne/vdpau-video/"
+LICENSE="GPL"
+PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
+
+SRC_URI="http://www.splitted-desktop.com/~gbeauchesne/"$N"/"$N-$V".tar.gz"
+CHECKSUM="18870e007ecdc50a528861fa55556364"
+
+RDEPEND="gcc-lib glibc libdrm libvdpau libX11 libXau libxcb libXdamage libXdmcp libXext libXfixes libXxf86vm mesa"
+RECOMMENDED=""
+BDEPEND=""
+OPTIONAL=""
+CONFLICT=""
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_patch() {
+	dopatch
+}
+
+pbs_config() {
+	config+="--disable-debug --enable-glx"
+	doconfig
+}
+
+pbs_build() {
+	domake
+}
+
+pbs_install() {
+	domkinstall
+	dodoc AUTHORS COPYING README
+}
+
+

@@ -14,7 +14,7 @@ BDEPEND=""
 RECOMMENDED=""
 CONFLICT=""
 
-OPINION="nodev"
+OPTIONS="nodev"
 
 pbs_unpack() {
         dounpack

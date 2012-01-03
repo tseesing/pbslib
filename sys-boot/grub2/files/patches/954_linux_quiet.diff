@@ -18,7 +18,7 @@ diff -ur grub2-1.98-ylmf2/util/grub.d/10_linux.in grub2-1.98-ylmf2.new/util/grub
 +EOF
 +  fi
 +    cat << EOF
- 	linux	${rel_dirname}/${basename} root=${linux_root_device_thisversion} ro ${args}
+ 	linux	${rel_dirname}/${basename} root=${linux_root_device_thisversion} rw ${args}
  EOF
 -  if test -n "${initrd}" ; then
 +  if [ "x$5" != "xquiet" ]; then

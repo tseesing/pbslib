@@ -9,7 +9,7 @@ PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 
 SRC_URI="http://nchc.dl.sourceforge.net/project/"$N"/"$N"/"$V"/"$N-$V".tar.gz"
 
-PROVIDE="$N-source $N-driver $N-utils"
+PROVIDE="iscsitarget-source iscsitarget-driver iscsitarget-utils"
 
 pbs_unpack() {
         dounpack
@@ -23,7 +23,7 @@ iscsitarget-source_install() {
 	DESCRIPTION="Open Source iSCSI target with professional features (source)."
 	RECOMMENDED="build-essential iscsitarget-utils"
 	INSTALL="$N.install"
-	OPINION="nodev"
+	OPTIONS="nodev"
 	YARCH="any"
 
 	dosrc include Makefile kernel
@@ -32,7 +32,7 @@ iscsitarget-source_install() {
 
 iscsitarget-driver_install() {
 	DESCRIPTION="Open Source iSCSI target with professional features (kernel module)."
-	BDEPEND="gcc make linux-kernel-headers"
+	BDEPEND="gcc-lib make linux-kernel-headers"
 	RECOMMENDED="iscsitarget-utils"
 	INSTALL="$N.install"
 
@@ -45,7 +45,7 @@ iscsitarget-utils_install() {
 	DESCRIPTION="Open Source iSCSI target with professional features (utils)."
 	RDEPEND="iscsitarget-driver"
 
-	OPINION="nodev"
+	OPTIONS="nodev"
 	domake usr
 	make DESTDIR="$destdir" install-usr install-etc install-doc
 }

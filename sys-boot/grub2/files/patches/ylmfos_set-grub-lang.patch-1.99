@@ -1,4 +1,3 @@
-文件 grub2-1.99/config.pipe 是fifo而文件 grub2-1.99.new//config.pipe 是fifo
 diff -ur grub2-1.99/util/grub.d/00_header.in grub2-1.99.new//util/grub.d/00_header.in
 --- grub2-1.99/util/grub.d/00_header.in	2011-10-10 10:30:00.742097330 +0800
 +++ grub2-1.99.new//util/grub.d/00_header.in	2011-10-10 10:31:49.551010928 +0800

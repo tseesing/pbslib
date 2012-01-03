@@ -2,13 +2,12 @@
 # Ylmf OS package build script
 #
 
-DESCRIPTION="Java-based build tool similar to 'make' that uses XML configuration files."
+DESCRIPTION="Java-based build tool similar to 'make' that uses XML configuration files.(binary version)"
 HOMEPAGE="http://ant.apache.org/"
-REPO=""
-LICENSE="http://www.apache.org/licenses/LICENSE-2.0.html"
+LICENSE="apache"
 PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 
-SRC_URI="http://archive.apache.org/dist/ant/binaries/apache-ant-1.8.2-bin.tar.bz2"
+SRC_URI="http://archive.apache.org/dist/ant/binaries/"$N-$V"-bin.tar.bz2"
 
 RDEPEND=""
 BDEPEND=""
@@ -17,18 +16,16 @@ CONFLICT=""
 
 INSTALL="$N.install"
 
-NOTES=""
-
 pbs_unpack() {
 	dounpack
 }
 
 pbs_install() {
-	# install profile.d script
-	docp $filesdir/apache-ant.{csh,sh} "$destdir"/etc/profile.d/
+	# Install profile.d script
+	docp "$filesdir"/apache-ant.{csh,sh} "$destdir"/etc/profile.d/
 
-	#Get the ANT_HOME env var
-	source $filesdir/apache-ant.sh
+	# Get the ANT_HOME env var
+	source "$filesdir"/apache-ant.sh
 
 	#
 	docp  lib/*.jar   "$destdir"/${ANT_HOME}/lib/
@@ -45,11 +42,9 @@ pbs_install() {
 	chmod 644 "$destdir"/${ANT_HOME}/lib/ -R
 	chmod 755 "$destdir"/${ANT_HOME}/bin/ -R     
 	
-	# fix python2 path
-	sed -i 's|/usr/bin/python|/usr/bin/python2|' "$destdir"/opt/java/apache-ant/bin/runant.py
-
 	#
 	# The license says the NOTICE file should be redistributed for derivative
 	# works, so lets supply it.
 	dodoc LICENSE NOTICE
 }
+

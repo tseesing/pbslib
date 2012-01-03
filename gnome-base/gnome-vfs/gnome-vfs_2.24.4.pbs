@@ -9,7 +9,7 @@ PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 
 SRC_URI="http://ftp.acc.umu.se/pub/gnome/platform/2.32/2.32.1/sources/"$N-$V".tar.bz2"
 
-RDEPEND="acl attr avahi bzip2 cyrus-sasl dbus dbus-glib e2fsprogs gamin gcc gconf glib2 glibc hal keyutils krb5 libcap libsmbios libxml2 openldap openssl orbit samba talloc tdb zlib"
+RDEPEND="acl attr avahi bzip2 cyrus-sasl dbus dbus-glib e2fsprogs gamin gcc-lib gconf glib2 glibc hal keyutils krb5 libcap libsmbios libxml2 openldap openssl orbit samba talloc tdb zlib"
 BDEPEND="libbonobo-dev neon-dev"
 RECOMMENDED=""
 

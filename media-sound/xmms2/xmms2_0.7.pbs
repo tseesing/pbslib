@@ -10,7 +10,7 @@ PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 
 SRC_URI="http://ncu.dl.sourceforge.net/project/xmms2/xmms2/0.7%20DrNo/"$N-$V$R"DrNo.tar.bz2"
 
-RDEPEND="alsa-lib attr avahi curl cyrus-sasl dbus faad2 ffmpeg flac gcc glib2 gdk-pixbuf glibc jack-audio-connection-kit keyutils krb5 libao libcap libidn libmad libmms libmodplug libmpcdec libogg libtool libva libvorbis libxml2 mpg123 ncurses openldap openssl python readline ruby samba speex sqlite talloc wavpack zlib"
+RDEPEND="alsa-lib attr avahi curl cyrus-sasl dbus faad2 ffmpeg flac gcc-lib glib2 gdk-pixbuf glibc jack-audio-connection-kit keyutils krb5 libao libcap libidn libmad libmms libmodplug libmpcdec libogg libtool libva libvorbis libxml2 mpg123 ncurses openldap openssl python readline ruby samba speex sqlite talloc wavpack zlib"
 BDEPEND=""
 RECOMMENDED=""
 CONFLICT=""

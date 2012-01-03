@@ -9,7 +9,7 @@ PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 
 SRC_URI="https://alioth.debian.org/frs/download.php/3082/"$N-$V".tar.bz2"
 
-RDEPEND="dbus gcc glibc hal libsmbios"
+RDEPEND="dbus gcc-lib glibc hal libsmbios"
 BDEPEND=""
 RECOMMENDED=""
 

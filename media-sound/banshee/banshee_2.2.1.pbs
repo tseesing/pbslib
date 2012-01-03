@@ -9,7 +9,7 @@ PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 
 SRC_URI="http://ftp.gnome.org/pub/GNOME/sources/"$N"/2.2/"$N-$V".tar.xz"
 
-RDEPEND="mono ndesk-dbus-glib mono-addins boo gdata-sharp gudev-sharp gkeyfile-sharp gtk-sharp-beans gio-sharp taglib-sharp gnome-sharp gtk-sharp gnome-desktop-sharp mono-zeroconf atk cairo dbus enchant expat fontconfig freetype gail gcc gconf gdk-pixbuf glib2 glibc gnutls gst-plugins-base gstreamer gtk+ icu libgcrypt libgnome-keyring libgpg-error libICE libjpeg-turbo libpng libproxy libSM libsoup libtasn1 libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libxml2 libXrandr libXrender libxslt libXt libXxf86vm orbit pango pixman sqlite util-linux-ng webkitgtk zlib"
+RDEPEND="mono ndesk-dbus-glib mono-addins boo gdata-sharp gudev-sharp gkeyfile-sharp gtk-sharp-beans gio-sharp taglib-sharp gnome-sharp gtk-sharp gnome-desktop-sharp mono-zeroconf atk cairo dbus enchant expat fontconfig freetype gail gcc-lib gconf gdk-pixbuf glib2 glibc gnutls gst-plugins-base gstreamer gtk+ icu libgcrypt libgnome-keyring libgpg-error libICE libjpeg-turbo libpng libproxy libSM libsoup libtasn1 libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libxml2 libXrandr libXrender libxslt libXt libXxf86vm orbit pango pixman sqlite util-linux-ng webkitgtk zlib"
 BDEPEND=""
 RECOMMENDED=""
 CONFLICT=""

@@ -8,11 +8,12 @@ LICENSE="GPL"
 PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 
 SRC_URI="http://savannah.nongnu.org/download/"$N"/"$N-$V".tar.gz"
+CHECKSUM="254a72fc67505e3aa52884c729cd7b97"
 
-RDEPEND="atk cairo expat fontconfig freetype gcc glib2 gdk-pixbuf glibc gtk+ libpng libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libXrandr libXrender pango pixman zlib"
+RDEPEND="atk cairo expat fontconfig freetype gcc-lib glib2 gdk-pixbuf glibc gtk+ libpng libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libXrandr libXrender pango pixman zlib"
 BDEPEND=""
 
-OPINION="upx"
+OPTIONS="upx"
 
 pbs_unpack() {
 	dounpack

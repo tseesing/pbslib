@@ -9,7 +9,7 @@ PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 
 SRC_URI="http://www.exiv2.org/"$N-$V".tar.gz"
 
-RDEPEND="gcc glibc zlib"
+RDEPEND="gcc-lib glibc zlib"
 BDEPEND=""
 RECOMMENDED=""
 

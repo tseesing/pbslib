@@ -9,7 +9,7 @@ PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 
 SRC_URI="http://ncu.dl.sourceforge.net/project/djvu/DjVuLibre/"$V"/"$N-$V".tar.gz"
 
-RDEPEND="gcc libtiff bash hicolor-icon-theme"
+RDEPEND="gcc-lib libtiff bash hicolor-icon-theme"
 RECOMMENDED="pkgconfig"
 BDEPEND=""
 

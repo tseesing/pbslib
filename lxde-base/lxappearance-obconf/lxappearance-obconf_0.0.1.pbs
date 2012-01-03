@@ -9,7 +9,7 @@ PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 
 SRC_URI="http://ncu.dl.sourceforge.net/project/lxde/LXAppearance%20Obconf/"$N-$V".tar.gz"
 
-RDEPEND="atk cairo expat fontconfig freetype gcc gdk-pixbuf glib2 glibc gtk+ libICE libpng libSM libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXft libXi libxml2 libXrandr libXrender openbox pango pixman util-linux-ng zlib"
+RDEPEND="atk cairo expat fontconfig freetype gcc-lib gdk-pixbuf glib2 glibc gtk+ libICE libpng libSM libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXft libXi libxml2 libXrandr libXrender openbox pango pixman util-linux-ng zlib"
 BDEPEND=""
 RECOMMENDED=""
 CONFLICT=""

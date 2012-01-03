@@ -9,7 +9,7 @@ PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 
 SRC_URI="http://cyberelk.net/tim/data/"$N"/1.3/"$N-$V".tar.xz"
 
-RDEPEND="avahi cups dbus e2fsprogs gcc glib2 glibc gnutls keyutils krb5 libgcrypt libgpg-error libtasn1 libusb libusb-compat udev zlib"
+RDEPEND="avahi cups dbus e2fsprogs gcc-lib glib2 glibc gnutls keyutils krb5 libgcrypt libgpg-error libtasn1 libusb libusb-compat udev zlib"
 BDEPEND="xmlto"
 RECOMMENDED=""
 

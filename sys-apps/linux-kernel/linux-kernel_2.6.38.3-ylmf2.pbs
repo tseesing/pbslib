@@ -4,7 +4,7 @@
 
 DESCRIPTION="Linux Kernel with ylmfos patches, split into linux-kernel-headers"
 HOMEPAGE="http://www.kernel.org"
-LICENSE="GPL"
+LICENSE="GPL2"
 PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 
 SRC_URI="ftp://ftp.kernel.org/pub/linux/kernel/v2.6/linux-"$V".tar.bz2"
@@ -17,7 +17,7 @@ PROVIDE="linux-kernel-headers"
 
 INSTALL="$N.install"
 
-OPINION="nodev"
+OPTIONS="nodev"
 
 pbs_unpack() {
         dounpack
@@ -73,7 +73,7 @@ pbs_install() {
 
 linux-kernel-headers_install() {
 	DESCRIPTION="linux kernel headers"
-	OPINION="nodev"
+	OPTIONS="nodev"
 	CONFLICT="linux-kernel-headers-dev"
 	INSTALL="linux-kernel-headers.install"
 	

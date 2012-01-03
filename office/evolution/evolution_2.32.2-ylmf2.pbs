@@ -1,0 +1,70 @@
+#
+# Ylmf OS package build script
+#
+
+DESCRIPTION="Integrated mail, addressbook and calendaring functionality"
+HOMEPAGE="http://www.gnome.org/projects/evolution/"
+LICENSE="GPLv2"
+PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
+
+SRC_URI="http://ftp.gnome.org/pub/gnome/sources/evolution/2.32/"$N-$V".tar.bz2"
+
+RDEPEND="atk berkeley-db cairo dbus dbus-glib e2fsprogs enchant evolution-data-server expat fontconfig freetype gail gcc-lib gconf gdk-pixbuf glib2 glibc gnome-desktop gnutls gstreamer gtk+ gtkhtml gtkimageview keyutils krb5 libcanberra libgcrypt libgdata libgnome-keyring libgpg-error libgweather libical libICE libnotify libogg libpng libproxy libSM libsoup libtasn1 libtool libunique libvorbis libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libxml2 libXrandr libXrender nspr nss orbit pango pixman sqlite startup-notification tdb util-linux-ng zlib"
+BDEPEND=""
+RECOMMENDED=""
+
+INSTALL="$N-$V.install"
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_config() {
+	#
+	dopatch "$N"-2.32.1-libnotify-0.7.patch
+
+	#  Fix invalid use of la file in contact-editor, upstream bug #635002
+	dopatch "$N"-2.32.0-wrong-lafile-usage.patch
+
+	# Fix compilation with --disable-smime, bug #356471
+	dopatch "$N"-2.32.2-smime-fix.patch
+	           
+	# Fix desktop file to work with latest glib
+	#dopatch "$N"-2.32.2-mime-handler.patch
+
+	# Fix compilation flags crazyness
+	sed -e 's/-D.*_DISABLE_DEPRECATED//' -i configure.ac configure
+
+	# Use my logo
+	docp_rename "$filesdir"/evolution.svg data/icons/hicolor_apps_scalable_evolution.svg
+
+	config+=" --disable-schemas-install  
+	          --without-kde-applnk-path
+		  --enable-plugins=experimental
+		  --enable-image-inline
+		  --enable-canberra
+		  --enable-weather
+		  --disable-profiling
+		  --disable-pst-import
+		  --disable-contacts-map
+		  --without-glade-catalog
+		  --disable-mono
+		  --disable-gtk3
+		  --disable-connman "
+
+	intltoolize --force --copy --automake
+	doconfig
+}
+
+pbs_build() {
+	domake
+}
+
+pbs_install() {
+	domkinstall
+	
+	# keep clean for rarian
+	rm -fr "$destdir"/var/lib/scrollkeeper
+	rm -fr "$destdir"/var/lib/log
+}
+

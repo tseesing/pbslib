@@ -11,7 +11,7 @@ RDEPEND="glibc"
 BDEPEND=""
 CONFLICT="pkgconfig-dev"
 
-OPINION="nodev"
+OPTIONS="nodev"
 
 pbs_unpack() {
         dounpack

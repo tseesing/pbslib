@@ -9,7 +9,7 @@ PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 
 SRC_URI="http://ftp.gnome.org/pub/gnome/sources/"$N"/2.32/"$N-$V".tar.bz2"
 
-RDEPEND="apr apr-util atk cairo cyrus-sasl dbus dbus-glib devhelp enchant expat fontconfig freetype gail gcc gconf gdk-pixbuf gdl glade glib2 glibc gnutls gst-plugins-base gstreamer gtk+ gtksourceview icu keyutils krb5 libgcrypt libgda libgnome-keyring libgpg-error libICE libjpeg-turbo libpng libproxy libSM libsoup libtasn1 libunique libwnck libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libxml2 libXrandr libXrender libXres libxslt libXt ncurses neon openssl orbit pango pixman python sqlite startup-notification util-linux-ng vte webkit webkitgtk zlib"
+RDEPEND="apr apr-util atk cairo cyrus-sasl dbus dbus-glib devhelp enchant expat fontconfig freetype gail gcc-lib gconf gdk-pixbuf gdl glade glib2 glibc gnutls gst-plugins-base gstreamer gtk+ gtksourceview icu keyutils krb5 libgcrypt libgda libgnome-keyring libgpg-error libICE libjpeg-turbo libpng libproxy libSM libsoup libtasn1 libunique libwnck libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libxml2 libXrandr libXrender libXres libxslt libXt ncurses neon openssl orbit pango pixman python sqlite startup-notification util-linux-ng vte webkitgtk zlib"
 RECOMMENDED=""
 BDEPEND=""
 CONFLICT=""
@@ -22,7 +22,8 @@ pbs_unpack() {
 
 pbs_config() {
 	config+="--enable-introspection=no 
-	         --disable-schemas-install"
+	         --disable-schemas-install
+		 --disable-vala"
 	doconfig
 }
 

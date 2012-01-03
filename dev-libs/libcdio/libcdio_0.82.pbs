@@ -9,7 +9,7 @@ PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
  
 SRC_URI="http://ftp.gnu.org/gnu/"$N"/"$N-$V".tar.gz"
 
-RDEPEND="gcc glibc libcddb ncurses"
+RDEPEND="gcc-lib glibc libcddb ncurses"
 BDEPEND=""
 RECOMMENDED=""
 

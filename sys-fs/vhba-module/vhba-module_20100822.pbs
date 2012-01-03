@@ -9,7 +9,7 @@ PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 
 SRC_URI="http://downloads.sourceforge.net/project/cdemu/"$N"/"$N-$V"/"$N-$V".tar.gz"
 
-PROVIDE="$N-source $N-driver"
+PROVIDE="vhba-module-source vhba-module-driver"
 
 pbs_unpack() {
         dounpack
@@ -18,7 +18,7 @@ pbs_unpack() {
 vhba-module-source_install() {
 	DESCRIPTION="VHBA module provides Virtual (SCSI) Host Bus Adapter for the cdemu suite (source)."
 	RECOMMENDED="build-essential"
-	OPINION="nodev"
+	OPTIONS="nodev"
 	YARCH="any"
 	
 	INSTALL="$N.install"
@@ -28,7 +28,7 @@ vhba-module-source_install() {
 
 vhba-module-driver_install() {
 	DESCRIPTION="VHBA module provides Virtual (SCSI) Host Bus Adapter for the cdemu suite (kernel module)."
-	BDEPEND="gcc make linux-kernel-headers"
+	BDEPEND="gcc-lib make linux-kernel-headers"
 	CONFLICT="vhba-module"
 
 	INSTALL="$N.install"

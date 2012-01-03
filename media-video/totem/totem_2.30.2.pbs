@@ -9,7 +9,7 @@ PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 
 SRC_URI="http://ftp.acc.umu.se/pub/GNOME/sources/totem/2.30/"$N-$V$R".tar.bz2"
 
-RDEPEND="libdvdcss atk bluez cairo dbus dbus-glib expat fontconfig freetype gcc gconf glib2 gdk-pixbuf glibc gmime gst-plugins-base gstreamer gtk+ libICE libpng libSM libunique libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libxml2 libXrandr libXrender libXtst libXxf86vm lirc nautilus orbit pango pixman python totem-pl-parser util-linux-ng zlib"
+RDEPEND="libdvdcss atk bluez cairo dbus dbus-glib expat fontconfig freetype gcc-lib gconf glib2 gdk-pixbuf glibc gmime gst-plugins-base gstreamer gtk+ libICE libpng libSM libunique libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libxml2 libXrandr libXrender libXtst libXxf86vm lirc nautilus orbit pango pixman python totem-pl-parser util-linux-ng zlib"
 BDEPEND="gnome-doc-utils-dev gst-plugins-good-dev shared-mime-info-dev  pygtk-dev                                             "
 RECOMMENDED="pygtk "
 

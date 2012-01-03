@@ -15,7 +15,7 @@ BDEPEND=""
 OPTIONAL="a: support a 
           b: support b"
 CONFLICT=""
-#OPINION="nodev nostrip"
+#OPTIONS="nodev nostrip"
 
 INSTALL="$N.install"
 

@@ -9,7 +9,7 @@ PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 
 SRC_URI="http://www.mplayerhq.hu/MPlayer/releases/MPlayer-1.0rc4.tar.gz"
 
-RDEPEND="aalib alsa-lib attr audiofile cyrus-sasl directfb esound expat faac faad2 fontconfig freetype fribidi gcc giflib glibc jack-audio-connection-kit keyutils krb5 lame lcms libcap libcdio libdrm libICE libjpeg-turbo libmad libmng libogg libpng libsdl libSM libtheora libtool libvdpau libX11 libXau libxcb libXdamage libXdmcp libXext libXfixes libXinerama libXScrnSaver libXv libXxf86dga libXxf86vm lirc mesa mpg123 ncurses openal openldap openssl samba speex talloc util-linux-ng zlib"
+RDEPEND="aalib alsa-lib attr audiofile cyrus-sasl directfb esound expat faac faad2 fontconfig freetype fribidi gcc-lib giflib glibc jack-audio-connection-kit keyutils krb5 lame lcms libcap libcdio libdrm libICE libjpeg-turbo libmad libmng libogg libpng libsdl libSM libtheora libtool libvdpau libX11 libXau libxcb libXdamage libXdmcp libXext libXfixes libXinerama libXScrnSaver libXv libXxf86dga libXxf86vm lirc mesa mpg123 ncurses openal openldap openssl samba speex talloc util-linux-ng zlib"
 BDEPEND="libgsm-dev                                                           "
 
 pbs_unpack() {

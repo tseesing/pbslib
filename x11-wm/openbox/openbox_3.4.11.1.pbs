@@ -9,7 +9,7 @@ PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 
 SRC_URI="http://offload2.icculus.org:9090/"$N"/releases/"$N-$V".tar.gz"
 
-RDEPEND="expat fontconfig freetype gcc glib2 glibc libICE libSM libX11 libXau libxcb libXcursor libXdmcp libXext libXfixes libXft libXinerama libxml2 libXrandr libXrender pango startup-notification util-linux-ng zlib"
+RDEPEND="expat fontconfig freetype gcc-lib glib2 glibc libICE libSM libX11 libXau libxcb libXcursor libXdmcp libXext libXfixes libXft libXinerama libxml2 libXrandr libXrender pango startup-notification util-linux-ng zlib"
 BDEPEND=""
 
 pbs_unpack() {

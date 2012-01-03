@@ -1,6 +1,6 @@
 . /usr/lib/ybs/funcs
 
-files="libgomp.info.gz gccint.info.gz gccinstall.info.gz gcc.info.gz cppinternals.info.gz cpp.info.gz"
+files="gccint.info.gz gccinstall.info.gz gcc.info.gz cppinternals.info.gz cpp.info.gz"
 
 post_install() {
 	if [ -d /tools ];then
@@ -19,10 +19,11 @@ post_remove() {
 }
 
 post_upgrade() {
-       doinstall_info $files
+	doinstall_info $files
 }
 
 post_downgrade() {
-       doinstall_info  $files
+	doinstall_info $files
 }
+
 

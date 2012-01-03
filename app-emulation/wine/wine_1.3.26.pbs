@@ -10,7 +10,7 @@ PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 REPO="testing"
 SRC_URI="http://ibiblio.org/pub/linux/system/emulators/"$N"/"$N-$V".tar.bz2"
 
-RDEPEND="alsa-lib audiofile cyrus-sasl esound gcc gettext glib2 gdk-pixbuf glibc gst-plugins-base gstreamer lcms libdrm libexif libgphoto2 libICE libSM libtool libX11 libXau libxcb libXdamage libXdmcp libXext libXfixes libxml2 libXxf86vm mesa mpg123 openal openldap openssl util-linux-ng zlib"
+RDEPEND="alsa-lib audiofile cyrus-sasl esound gcc-lib gettext glib2 gdk-pixbuf glibc gst-plugins-base gstreamer lcms libdrm libexif libgphoto2 libICE libSM libtool libX11 libXau libxcb libXdamage libXdmcp libXext libXfixes libxml2 libXxf86vm mesa mpg123 openal openldap openssl util-linux-ng zlib"
 BDEPEND="libgsm-dev sane-backends-dev v4l-utils-dev prelink"
 
 pbs_unpack() {

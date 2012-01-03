@@ -11,7 +11,7 @@ PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 
 SRC_URI="git://192.168.1.22/ylmfcenter.git"
 
-RDEPEND="python atk cairo dbus dbus-glib expat fontconfig freetype gcc glib2 gdk-pixbuf glibc gtk+ libpng libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libxml2 libXrandr libXrender pango pixman zlib"
+RDEPEND="python atk cairo dbus dbus-glib expat fontconfig freetype gcc-lib glib2 gdk-pixbuf glibc gtk+ libpng libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libxml2 libXrandr libXrender pango pixman zlib"
 BDEPEND=""
 RECOMMENDED="ypkg"
 

@@ -9,9 +9,9 @@ PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 
 SRC_URI="http://font-manager.googlecode.com/files/"$N-$V$R".tar.bz2"
 
-RDEPEND="gtk+"
-BDEPEND=" "
-RECOMMENDED=""
+RDEPEND="expat fontconfig freetype gcc-lib glib2 glibc pango zlib"
+BDEPEND=""
+RECOMMENDED="reportlab"
 
 pbs_unpack() {
         dounpack

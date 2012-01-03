@@ -12,10 +12,10 @@ SRC_URI="http://ncu.dl.sourceforge.net/project/mingw/MinGW/BaseSystem/RuntimeLib
 http://ncu.dl.sourceforge.net/project/mingw/MinGW/BaseSystem/RuntimeLibrary/Win32-API/w32api-3.14/w32api-3.14-mingw32-src.tar.gz"
 
 RDEPEND=""
-BDEPEND="mingw32-headers mingw32-binutils mingw32-gcc-base mingw32-w32api"
+BDEPEND="mingw32-headers mingw32-binutils mingw32-gcc-lib-base mingw32-w32api"
 RECOMMENDED=""
 CONFLICT=""
-OPINION="nodev nostrip"
+OPTIONS="nodev nostrip"
 
 pbs_unpack() {
         dounpack

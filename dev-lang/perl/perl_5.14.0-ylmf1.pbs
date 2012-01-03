@@ -8,6 +8,7 @@ LICENSE="GPL, PerlArtistic"
 PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 
 SRC_URI="http://www.cpan.org/src/5.0/"$N-$V".tar.bz2"
+CHECKSUM="e7457deea78330c5f8eebb2fd2a45479"
 
 RDEPEND="berkeley-db gdbm glibc zlib"
 BDEPEND=""
@@ -52,7 +53,7 @@ pbs_config() {
 		    -Dman1dir=/usr/share/man/man1 \
 		    -Dman3dir=/usr/share/man/man3 \
 		    -Dpager="/bin/less -isR" \
-		    -Dcc="gcc ${BUILD}"  \
+		    -Dcc="gcc-lib ${BUILD}"  \
 		    -Dusethreads -Duseshrplib
 		    #-Dscriptdir=/usr/bin/core_perl \
 		    #-Dsitescript=/usr/bin/site_perl \

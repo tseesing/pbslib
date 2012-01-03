@@ -9,7 +9,7 @@ PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 
 SRC_URI="http://ftp.gnome.org/pub/gnome/sources/"$N"/2.28/"$N-$V".tar.bz2"
 
-RDEPEND="alsa-lib atk audiofile avahi cairo dbus dbus-glib esound expat fontconfig freetype gail gcc gconf gdk-pixbuf glib2 glibc gnome-panel gnome-vfs gtk+ libart_lgpl libbonobo libbonoboui libcanberra libgnome libgnomecanvas libICE libogg libpng libSM libtool libvorbis libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libxml2 libXrandr libXrender openssl orbit pango pixman popt tdb util-linux-ng zlib"
+RDEPEND="alsa-lib atk audiofile avahi cairo dbus dbus-glib esound expat fontconfig freetype gail gcc-lib gconf gdk-pixbuf glib2 glibc gnome-panel gnome-vfs gtk+ libart_lgpl libbonobo libbonoboui libcanberra libgnome libgnomecanvas libICE libogg libpng libSM libtool libvorbis libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libxml2 libXrandr libXrender openssl orbit pango pixman popt tdb util-linux-ng zlib"
 BDEPEND="gnome-applets-dev"
 RECOMMENDED=""
 

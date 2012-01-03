@@ -9,7 +9,7 @@ PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
  
 SRC_URI="http://downloads.sourceforge.net/project/"$N"/"$N"/"$V"/"$N-$V".tar.gz"
 
-RDEPEND="gcc glibc opensp"
+RDEPEND="gcc-lib glibc opensp"
 BDEPEND=""
 RECOMMENDED=""
 

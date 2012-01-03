@@ -10,7 +10,7 @@ SRC_URI="http://xorg.freedesktop.org/archive/individual/proto/"$N-$V$R".tar.bz2"
 
 RDEPEND=""
 BDEPEND=""
-OPINION="nodev"
+OPTIONS="nodev"
 
 pbs_unpack() {
         dounpack

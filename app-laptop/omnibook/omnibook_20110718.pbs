@@ -9,7 +9,7 @@ PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 
 SRC_URI="git://omnibook.git.sourceforge.net/gitroot/omnibook/omnibook"
 
-PROVIDE="$N-source $N-driver"
+PROVIDE="omnibook-source omnibook-driver"
 
 pbs_unpack() {
         dounpack
@@ -23,14 +23,14 @@ omnibook-source_install() {
 	DESCRIPTION="Linux kernel module for (but not limited to) HP Omnibook support (source)."
 	RECOMMENDED="build-essential"
 	INSTALL="$N.install"
-	OPINION="nodev"
+	OPTIONS="nodev"
 
 	dosrc *
 }
 
 omnibook-driver_install() {
 	DESCRIPTION="Linux kernel module for (but not limited to) HP Omnibook support (kernel module)."
-	BDEPEND="make gcc linux-kernel-headers"
+	BDEPEND="make gcc-lib linux-kernel-headers"
 	INSTALL="$N.install"
 
 	unset ARCH

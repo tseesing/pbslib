@@ -8,7 +8,7 @@ PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 
 SRC_URI="http://downloads.sourceforge.net/project/remmina/0.9/"$N-$V".tar.gz "
 
-RDEPEND="atk cairo dbus dbus-glib expat fontconfig freerdp freetype gcc gdk-pixbuf glib2 glibc gnutls gtk+ libgcrypt libgpg-error libjpeg-turbo libpng libssh libtasn1 libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libxkbfile libXrandr libXrender openssl pango pixman telepathy-glib zlib"
+RDEPEND="atk cairo dbus dbus-glib expat fontconfig freerdp freetype gcc-lib gdk-pixbuf glib2 glibc gnutls gtk+ libgcrypt libgpg-error libjpeg-turbo libpng libssh libtasn1 libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libxkbfile libXrandr libXrender openssl pango pixman telepathy-glib zlib"
 BDEPEND=""
 RECOMMENDED=""
 

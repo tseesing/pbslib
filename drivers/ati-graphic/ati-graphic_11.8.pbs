@@ -8,8 +8,9 @@ LICENSE="custom"
 PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 
 SRC_URI="http://www2.ati.com/drivers/linux/ati-driver-installer-11-8-x86.x86_64.run"
+CHECKSUM="f97a884c3b3c6263091a3035a7046318"
 
-PROVIDE="$N-source $N-driver $N-utils"
+PROVIDE="ati-graphic-source ati-graphic-driver ati-graphic-utils"
 
 pbs_unpack() {
 	# Extract-only
@@ -24,7 +25,7 @@ pbs_config() {
 ati-graphic-source_install() {
 	DESCRIPTION="Video driver for the ATI graphics accelerators (source)"
 	RECOMMENDED="build-essential ati-graphic-utils"
-	OPINION="nodev"
+	OPTIONS="nodev"
 	YARCH="any"
    
 	INSTALL="$N.install"
@@ -38,7 +39,7 @@ ati-graphic-source_install() {
 
 ati-graphic-driver_install() {
 	DESCRIPTION="Video driver for the ATI graphics accelerators (kernel module)"
-	BDEPEND="make gcc linux-kernel-headers"
+	BDEPEND="make gcc-lib linux-kernel-headers"
 	RECOMMENDED="ati-graphic-utils"
 
 	INSTALL="$N.install"
@@ -54,7 +55,7 @@ ati-graphic-driver_install() {
 ati-graphic-utils_install () {
 	DESCRIPTION="Video driver for the ATI graphics accelerators (utils)"
 	RDEPEND="ati-graphic-driver"
-	OPINION="nodev"
+	OPTIONS="nodev"
 
 	INSTALL="$N.install"
 
@@ -98,7 +99,7 @@ ati-graphic-utils_install () {
 	chmod 755 "$destdir"/usr/bin/*
 
 	# Doc
-	doc common/usr/share/doc/*
+	dodoc common/usr/share/doc/*
 
 	# Etc
 	docp common/etc/* "$destdir"/etc/

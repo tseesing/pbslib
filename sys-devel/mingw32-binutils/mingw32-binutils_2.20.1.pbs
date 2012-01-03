@@ -15,7 +15,7 @@ BDEPEND="mingw32-headers"
 RECOMMENDED=""
 CONFLICT=""
 
-OPINION="nodev nostrip"
+OPTIONS="nodev nostrip"
 
 pbs_unpack() {
         dounpack
@@ -28,7 +28,7 @@ pbs_config() {
 
 	config="--prefix="$INSTALL_DIR"
 	            --target="$TARGET"
-		    --with-gcc
+		    --with-gcc-lib
 		    --with-gnu-as
 		    --with-gnu-ld
 		    --disable-nls

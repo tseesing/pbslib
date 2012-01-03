@@ -13,7 +13,7 @@ RDEPEND=""
 RECOMMENDED=""
 BDEPEND="spice-protocol"
 CONFLICT=""
-#OPINION="nodev nostrip upx"
+#OPTIONS="nodev nostrip upx"
 
 INSTALL="$N.install"
 

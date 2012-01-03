@@ -1,0 +1,41 @@
+#
+# Ylmf OS package build script
+#
+
+DESCRIPTION="Advanced version control system"
+HOMEPAGE="http://subversion.apache.org/"
+LICENSE="GPL"
+PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
+
+SRC_URI="http://mirror.bjtu.edu.cn/apache/"$N"/"$N-$V".tar.bz2"
+
+RDEPEND="sqlite neon apr apr-util cyrus-sasl dbus e2fsprogs expat file glib2 glibc keyutils krb5 libgcrypt libgnome-keyring libgpg-error libproxy openssl util-linux-ng zlib"
+BDEPEND=""
+RECOMMENDED=""
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_config() {
+	config+="--with-openssl 
+	         --with-apr=/usr 
+		 --with-apr-util=/usr 
+		 --with-zlib=/usr 
+		 --with-neon=/usr 
+		 --with-apxs 
+		 --with-sqlite=/usr 
+		 --with-gnome-keyring"
+		 #--with-berkeley-db=:/usr/include/:/usr/lib:db-5.2"
+	doconfig
+}
+
+pbs_build() {
+	domake
+}
+
+pbs_install() {
+	domkinstall
+	docp_rename tools/client-side/bash_completion "${destdir}"/etc/bash_completion.d/subversion
+}
+
