@@ -17,6 +17,9 @@ pbs_config() {
 	bash "$YPPATH_SOURCE"/NVIDIA-Linux-x86-"$V$R".run --extract-only
 	cd NVIDIA-Linux-x86-"$V$R"/
 
+	#
+	rm libGL.la
+
 	# Get around Xen checks
 	cp kernel/nv.c kernel/nv1.c
 	cp kernel/nv-linux.h kernel/nv-linux1.h

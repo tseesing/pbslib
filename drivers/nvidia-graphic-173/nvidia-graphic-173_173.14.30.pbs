@@ -11,12 +11,15 @@ SRC_URI="http://us.download.nvidia.com/XFree86/Linux-x86/"$V"/NVIDIA-Linux-x86-"
 
 PROVIDE="nvidia-graphic-173-source nvidia-graphic-173-driver nvidia-graphic-173-utils"
 
-pbs_install() {
+pbs_config() {
 	# Extract-only
 	[ -d NVIDIA-Linux-x86-173.14.30-pkg1 ] && rm -rf NVIDIA-Linux-x86-173.14.30-pkg1
 	bash "$YPPATH_SOURCE"/NVIDIA-Linux-x86-"$V"-pkg1.run --extract-only
 	cd NVIDIA-Linux-x86-173.14.30-pkg1
-	
+	rm usr/lib/libGL.la
+}
+
+pbs_install() {
 	# Kernel source
 	# Get around Xen checks
 	cp usr/src/nv/nv.c usr/src/nv/nv1.c

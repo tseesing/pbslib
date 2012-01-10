@@ -2,7 +2,7 @@
 # Ylmf OS package build script
 #
 
-DESCRIPTION="a system and service manager for Linux, compatible with SysV and LSB init scripts."
+DESCRIPTION="A system and service manager for Linux, compatible with SysV and LSB init scripts."
 HOMEPAGE="http://freedesktop.org/wiki/Software/systemd"
 LICENSE="GPL"
 PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
@@ -24,10 +24,11 @@ pbs_unpack() {
         dounpack
 }
 
-pbs_config() {
+pbs_patch() {
 	dopatch ylmfos-gnome-ask-password-agent.patch \
-	           ylmfos-configure-add-distro-"$V".patch \
-		   ylmfos-shutdown.patch 
+	        ylmfos-configure-add-distro-"$V".patch \
+		ylmfos-shutdown.patch 
+	
 	# FIXME 
 	# Clean /tmp should be part of systemd-tmpfiles-clean.service,
 	# but it did not works, so we add tmpfiles-clean.service modified 
@@ -37,7 +38,9 @@ pbs_config() {
 	
 	# FIXME
 	dopatch ylmfos_plymouth-start.patch
+}
 
+pbs_config() {
 	config+="--with-distro=ylmfos 
 		 --with-rootdir=/ 
 		 --with-udevrulesdir=/lib/udev/rules.d
@@ -52,7 +55,8 @@ pbs_build() {
 
 pbs_install() {
 	domkinstall
-	docp $filesdir/{start,stop,status,restart,reload} "$destdir"/usr/bin/
+	docp "$filesdir"/{start,stop,status,restart,reload} "$destdir"/usr/bin/
+
 	cd "$destdir"
 	
 	# Don't unset locale in getty
@@ -79,7 +83,7 @@ pbs_install() {
 
 	# Add rc-local.service
 	dounit rc-local.service
-	docp $filesdir/rc.local etc/
+	docp "$filesdir"/rc.local etc/
 	chmod +x etc/rc.local 
 	
 	#

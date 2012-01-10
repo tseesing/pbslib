@@ -7,7 +7,10 @@ HOMEPAGE="http://www.mesa3d.org/"
 LICENSE="http://www.mesa3d.org/license.html"
 PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 
-SRC_URI="ftp://ftp.freedesktop.org/pub/mesa/"$V"/MesaLib-"$V".tar.bz2 ftp://ftp.freedesktop.org/pub/mesa/"$V"/MesaGLUT-"$V".tar.bz2"
+SRC_URI="ftp://ftp.freedesktop.org/pub/mesa/"$V"/MesaLib-"$V".tar.bz2 
+         ftp://ftp.freedesktop.org/pub/mesa/"$V"/MesaGLUT-"$V".tar.bz2"
+CHECKSUM="a77307102cee844ff6544ffa8fafeac1
+          3f54e314290d4dacbab089839197080b"
 
 RDEPEND="talloc expat gcc-lib glibc libdrm libICE libpciaccess libSM libX11 libXau libxcb libXdamage libXdmcp libXext libXfixes libXi libXmu libXt libXxf86vm udev util-linux-ng"
 BDEPEND="dri2proto xorg-server-dev llvm-dev"
@@ -35,6 +38,8 @@ pbs_config() {
 		 --enable-gles2 
 		 --enable-glx-tls 
 		 --enable-xcb
+		 --enable-egl
+		 --enable-shared-glapi
 		 --enable-texture-float
 		 --enable-gallium-egl
 		 --enable-gallium-llvm

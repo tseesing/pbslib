@@ -18,21 +18,24 @@ pbs_unpack(){
         dounpack
 }
 
+pbs_patch() {
+	dopatch 10_dbus-1.0.1-generate-xml-docs.patch \
+	        20_system_conf_limit.patch \
+		81-session.conf-timeout.patch
+}
+
 pbs_config() {
-	dopatch  10_dbus-1.0.1-generate-xml-docs.patch \
-	            20_system_conf_limit.patch \
-		    81-session.conf-timeout.patch
 	config+=" --with-xml=expat  
-		      --with-dbus-user=messagebus 
-		      --disable-xml-docs 
-		      --with-x 
-		      --enable-inotify 
-		      --disable-kqueue 
-		      --disable-selinux 
-		      --disable-libaudit 
-		      --disable-verbose-mode 
-		      --disable-tests 
-		      --disable-asserts "
+		  --with-dbus-user=messagebus 
+		  --disable-xml-docs 
+		  --with-x 
+		  --enable-inotify 
+		  --disable-kqueue 
+		  --disable-selinux 
+		  --disable-libaudit 
+		  --disable-verbose-mode 
+		  --disable-tests 
+		  --disable-asserts "
 	doconfig
 }
 
@@ -42,5 +45,6 @@ pbs_build() {
 
 pbs_install() {
 	domkinstall
+	dodoc COPYING
 }
 

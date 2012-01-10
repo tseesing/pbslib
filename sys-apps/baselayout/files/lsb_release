@@ -1,33 +1,45 @@
 #!/bin/bash
 #
-if [ -f /etc/ylmfos-release ]; then 
-	. /etc/ylmfos-release
-fi
+
+file=/etc/ylmfos-release
+all=$(head -n1 /etc/ylmfos-release)
+DISTRIB_ID="${all[@]%%release*}"
+DISTRIB_CODENAME=${all##*(}
+DISTRIB_CODENAME=${DISTRIB_CODENAME%%)*}
+
+all=($all)
+
+for ((i=0; i<${#all[@]}; i++)); do
+	if [ "x${all[$i]}" = "xrelease" ]; then
+		let j=$i+1
+		DISTRIB_RELEASE="${all[$j]}"
+		break
+	fi
+done
 
 case "$1" in 
 	-i|--id)		echo $DISTRIB_ID ;;
 	-r|--release)		echo $DISTRIB_RELEASE ;;
 	-c|--codename)		echo $DISTRIB_CODENAME ;;
-	-d|--description)     	echo $DISTRIB_DESCRIPTION ;;
+	-a|--all)               echo ${all[@]}	       ;;
 	-h|--help)	
 cat <<OOO
 Usage: $0 [options]
 
 Options:	
 	-i, --id           show distributor ID
-        -d, --description  show description of this distribution
         -r, --release      show release number of this distribution
         -c, --codename     show code name of this distribution
         -a, --all          show all of the above information
 	-h, --help         show this help
 OOO
 		;;
-
 	*)
 cat <<OOO
 ID:$DISTRIB_ID
 Release:$DISTRIB_RELEASE
 Codename:$DISTRIB_CODENAME
-Description:$DISTRIB_DESCRIPTION
 OOO
 esac
+
+exit 0

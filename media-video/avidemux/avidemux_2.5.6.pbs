@@ -1,0 +1,39 @@
+#
+# Ylmf OS package build script
+#
+
+DESCRIPTION="Video editor designed for simple cutting, filtering and encoding tasks"
+COMMENTS="Avidemux is a free video editor designed for simple cutting, filtering and encoding tasks. It supports many file types, including AVI, DVD compatible MPEG files, MP4 and ASF, using a variety of codecs. Tasks can be automated using projects, job queue and powerful scripting capabilities."
+HOMEPAGE="http://fixounet.free.fr/avidemux/"
+LICENSE="GPL"
+PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
+
+SRC_URI="http://downloads.sourceforge.net/"$N"/"${N}_$V".tar.gz"
+CHECKSUM="00e479dd806b94a98d3f0f40639e88a9"
+
+RDEPEND="alsa-lib atk audiofile cairo directfb expat fontconfig freetype gcc-lib gdk-pixbuf glib2 glibc gtk+ libdrm libICE libsdl libSM libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libxml2 libXrandr libXrender libXt libXv libXxf86vm mesa nas pango pixman qt-core udev util-linux-ng zlib"
+RECOMMENDED=""
+BDEPEND="cmake"
+OPTIONAL=""
+
+INSTALL="$N.install"
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_config() {
+	config+=""
+	doconfig -D CMAKE_BUILD_TYPE=Release -D CMAKE_SKIP_RPATH=ON -D GTK=1 -D QT4=1
+}
+
+pbs_build() {
+	make
+}
+
+pbs_install() {
+	domkinstall
+	cd ..
+	dodesktop avidemux2-gtk.desktop avidemux_icon.png
+}
+

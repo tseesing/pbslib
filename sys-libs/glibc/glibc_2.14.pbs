@@ -13,13 +13,13 @@ SRC_URI="http://ftp.gnu.org/gnu/"$N"/"$N-$V".tar.xz"
 RDEPEND=""
 BDEPEND=""
 
-INSTALL="$N-$V$R.install"
+INSTALL="$N-$V.install"
 
 pbs_unpack() {
         dounpack
 }
 
-pbs_config() {
+pbs_patch() {
 	# http://sources.redhat.com/bugzilla/show_bug.cgi?id=4781
 	dopatch glibc-2.10-bz4781.patch
 	
@@ -54,7 +54,9 @@ pbs_config() {
 	
 	# http://sourceware.org/git/?p=glibc.git;a=commitdiff;h=bdd816a3 (only fedora branch...)
 	dopatch glibc-2.14-reinstall-nis-rpc-headers.patch
+}
 
+pbs_config() {
 	# Fix a potential issue : bash infinite loop. 
 	sed -i '/vi_VN.TCVN/d' localedata/SUPPORTED
 	
@@ -68,7 +70,7 @@ pbs_config() {
 
 	echo "slibdir=/lib" >> configparms
 
-	# remove hardening options from CFLAGS for building libraries
+	# Remove hardening options from CFLAGS for building libraries
 	CFLAGS=${CFLAGS/-fstack-protector/}
 	CFLAGS=${CFLAGS/-D_FORTIFY_SOURCE=2/}
 
@@ -108,16 +110,16 @@ pbs_build() {
 
 pbs_install() {
 	make install_root="$destdir" install
+	
 	cd "$destdir"
-	docp $filesdir/locale-gen   usr/sbin
-	docp $filesdir/SUPPORTED    usr/share/i18n
 
-	#
+	docp "$filesdir"/locale-gen usr/sbin
+	docp "$filesdir"/SUPPORTED  usr/share/i18n
+
 	doln /usr/include/utime.h usr/include/sys/utime.h
 
 	# Remove default localtime
 	# /etc/localtime -> ../usr/share/zoneinfo/Factory
 	rm -rf etc/localtime
 }
-
 
