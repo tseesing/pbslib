@@ -1,0 +1,35 @@
+#
+# Ylmf OS package build script
+#
+
+DESCRIPTION="openfetion plugin of pidgin"
+HOMEPAGE="http://code.google.com/p/ofetion/"
+LICENSE="GPL2"
+PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
+
+SRC_URI="http://ofetion.googlecode.com/files/"$N-$V".tar.gz"
+CHECKSUM="6a935eb4b4688a0d34fb7be4fe879684c6e7bd35"
+
+RDEPEND="dbus glibc libidn zlib libpurple"
+RECOMMENDED=""
+BDEPEND=""
+OPTIONAL=""
+CONFLICT=""
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_config() {
+	config+=""
+	doconfig
+}
+
+pbs_build() {
+	domake
+}
+
+pbs_install() {
+	domkinstall
+}
+
