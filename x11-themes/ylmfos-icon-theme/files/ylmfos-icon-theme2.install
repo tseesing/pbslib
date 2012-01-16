@@ -1,0 +1,15 @@
+. /usr/lib/ybs/funcs
+
+post_install() {
+	gnome2_install_defaut_gconf "string" "/desktop/gnome/interface/icon_theme" "ylmfos"
+	gnome2_icon_cache_update "ylmfos"
+}
+
+post_upgrade() {
+	post_install
+}
+
+post_downgrade() {
+	post_install
+}
+

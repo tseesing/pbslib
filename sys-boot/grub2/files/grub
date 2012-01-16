@@ -31,6 +31,6 @@ GRUB_CMDLINE_LINUX=""
 
 # Grub2 background image and color
 # Supports: *.jpg *.JPG *.jpeg *.JPEG *.png *.PNG *.tga *.TGA; 8/16/24bit; 640x480
-#WALLPAPER="/usr/share/images/grub/ylmfos-default-grub.png"
+WALLPAPER="/usr/share/images/grub/ylmfos-default-grub.jpg"
 COLOR_NORMAL="white/black"
 COLOR_HIGHLIGHT="black/light-gray"

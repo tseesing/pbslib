@@ -19,10 +19,6 @@ pbs_unpack() {
         dounpack
 }
 
-pbs_patch() {
-	dopatch ylmfos-tmp.patch
-}
-
 pbs_config() {
 	doconfig
 }

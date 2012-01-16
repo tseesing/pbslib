@@ -22,9 +22,9 @@ pbs_unpack() {
 pbs_config() {
 	docp $filesdir/cpufreq-*      cpufreq/pixmaps
 	config+="--disable-schemas-install
-		     --disable-polkit
-		     --enable-mixer-applet
-		     --without-hal"
+		 --disable-polkit
+		 --enable-mixer-applet
+		 --without-hal"
 	doconfig
 }
 

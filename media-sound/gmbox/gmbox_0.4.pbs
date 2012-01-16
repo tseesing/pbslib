@@ -4,18 +4,15 @@
 
 DESCRIPTION="A google music client"
 HOMEPAGE="http://code.google.com/p/gmbox/"
-REPO=""
 LICENSE="GPL"
 PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 
 SRC_URI="http://gmbox.googlecode.com/files/gmbox-0.4-alpha.zip"
 
-RDEPEND=""
+RDEPEND="python"
 BDEPEND=""
 RECOMMENDED=""
 CONFLICT=""
-
-NOTES=""
 
 INSTALL="$N.install"
 

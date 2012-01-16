@@ -10,9 +10,9 @@ PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 
 SRC_URI="git://10.0.0.11/ylmfcenter.git"
 
-RDEPEND="acl atk attr bzip2 cairo curl cyrus-sasl dbus dbus-glib enchant expat fontconfig freetype gail gcc-lib gdk-pixbuf glib2 glibc gnutls gst-plugins-base gstreamer gtk+ icu libarchive libgcrypt libgpg-error libICE libidn libjpeg-turbo libpcre libpng libSM libsoup libssh2 libtasn1 libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libxml2 libXrandr libXrender libxslt libXt openldap openssl pango pixman rtmpdump sqlite udev util-linux-ng webkitgtk xz-utils ypkg2 zlib"
+RDEPEND="acl atk attr bzip2 cairo curl cyrus-sasl dbus dbus-glib enchant expat fontconfig freetype gail gcc-lib gdk-pixbuf glib2 glibc gnutls gst-plugins-base gstreamer gtk+ icu json-glib libarchive libgcrypt libgpg-error libICE libidn libjpeg-turbo libpcre libpng libSM libsoup libssh2 libtasn1 libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libxml2 libXrandr libXrender libxslt libXt openldap openssl pango pixman rtmpdump sqlite udev util-linux-ng webkitgtk xz-utils ypkg2 zlib"
 BDEPEND=""
-RECOMMENDED="ypkg2"
+RECOMMENDED=""
 
 pbs_unpack() {
 	dounpack

@@ -19,13 +19,12 @@ pbs_unpack() {
 
 pbs_config() {
 	dopatch 0027_db5_support.patch
-
 	config+="--with-dbpath=/var/lib/sasl/sasldb2 --with-saslauthd=/var/run"
 	doconfig
 }
 
 pbs_build() {
-	domake 
+	make 
 }
 
 pbs_install() {

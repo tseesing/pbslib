@@ -24,14 +24,14 @@ pbs_unpack() {
 pbs_config() {
 	dopatch gnome-vfs.ftphandler.diff 07_trash_location.patch
 	config+="--enable-avahi 
-		     --enable-daemon 
-		     --enable-ipv6 
-	             --enable-fam
-		     --enable-openssl 
-		     --enable-samba 
-		     --disable-cdda 
-		     --disable-hal 
-		     --disable-schemas-install"
+		 --enable-daemon 
+		 --enable-ipv6 
+	         --enable-fam
+		 --enable-openssl 
+		 --enable-samba 
+		 --disable-cdda 
+		 --disable-hal 
+		 --disable-schemas-install"
 	doconfig
 }
 

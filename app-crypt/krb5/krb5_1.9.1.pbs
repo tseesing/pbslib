@@ -9,7 +9,7 @@ PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 
 SRC_URI="http://web.mit.edu/kerberos/www/dist/"$N"/1.9/"$N-$V"-signed.tar"
 
-RDEPEND="cyrus-sasl glibc keyutils openldap openssl zlib"
+RDEPEND="cyrus-sasl e2fsprogs glibc gnutls keyutils libgcrypt libgpg-error libtasn1 openldap openssl zlib"
 BDEPEND=""
 RECOMMENDED=""
 

@@ -19,9 +19,8 @@ pbs_unpack() {
 }
 
 pbs_config() {
-	config+=" --disable-mozilla-plugin 
-		      --with-svgz  
-		      --with-croco "
+	config+="--with-svgz  
+		 --with-croco"
 	doconfig
 }
 
