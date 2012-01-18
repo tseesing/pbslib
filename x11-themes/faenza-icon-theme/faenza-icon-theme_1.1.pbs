@@ -1,0 +1,29 @@
+#
+# Ylmf OS package build script
+#
+
+DESCRIPTION="A scalable icon theme called Faenza"
+HOMEPAGE="http://gnome-look.org/content/show.php/Faenza?content=128143 http://code.google.com/p/faenza-icon-theme/"
+LICENSE="GPLv3"
+PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
+YARCH="any"
+
+SRC_URI="http://faenza-icon-theme.googlecode.com/files/"$N"_"$V".tar.gz"
+CHECKSUM="a8852ef19823bdf1006f15c43479b6076dceed84"
+
+RDEPEND=""
+RECOMMENDED=""
+BDEPEND=""
+OPTIONAL=""
+CONFLICT=""
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_install() {
+	docp Faenza Faenza-Dark Faenza-Darker Faenza-Darkest "$destdir"/usr/share/icons
+	dodoc COPYING AUTHORS README ChangeLog
+}
+
+

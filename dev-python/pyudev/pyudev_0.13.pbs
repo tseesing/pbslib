@@ -1,0 +1,37 @@
+#
+# Ylmf OS package build script
+#
+
+DESCRIPTION="Python binding to libudev"
+HOMEPAGE="http://pypi.python.or"
+LICENSE="GPLv2.1"
+PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
+
+SRC_URI="http://pypi.python.org/packages/source/p/"$N"/"$N-$V".tar.gz"
+CHECKSUM="75f3b653aa2b9ea2a42b728c51fb0804"
+
+RDEPEND="python udev"
+RECOMMENDED=""
+BDEPEND=""
+OPTIONAL=""
+CONFLICT=""
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_config() {
+	config+=""
+	doconfig
+}
+
+pbs_build() {
+	domake
+}
+
+pbs_install() {
+	domkinstall
+}
+
+
+
