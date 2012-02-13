@@ -16,11 +16,7 @@ pbs_unpack() {
 }
 
 pbs_config() {	
-	
-
-	              
-		       
-		      
+	config+=""	
 	doconfig
 }
 
@@ -31,3 +27,4 @@ pbs_build() {
 pbs_install() {
 	domkinstall
 }
+

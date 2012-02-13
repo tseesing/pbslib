@@ -19,7 +19,6 @@ pbs_unpack() {
 
 pbs_config() {
 	git checkout stable
-
 	config+=""
 	doconfig
 }

@@ -1,0 +1,37 @@
+#
+# Ylmf OS package build script
+#
+
+DESCRIPTION="Free Software Implementation of the NX Server"
+HOMEPAGE="http://freenx.berlios.de/"
+LICENSE="GPL"
+PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
+
+SRC_URI="http://download.berlios.de/freenx/"$N-$V".tar.gz"
+CHECKSUM="856f597e139018f7ed62713c9d6c9ed5"
+
+RDEPEND="glibc"
+RECOMMENDED=""
+BDEPEND=""
+OPTIONAL=""
+CONFLICT=""
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_config() {
+	config+=""
+	doconfig
+}
+
+pbs_build() {
+	domake
+}
+
+pbs_install() {
+	domkinstall
+	dodoc AUTHORS COPYING 
+}
+
+

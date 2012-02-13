@@ -36,7 +36,6 @@ pbs_build() {
 	domake driver
 }
 
-
 ndiswrapper-utils_install () {
 	DESCRIPTION="Wrapper for using Windows drivers for some wireless cards, (utils)"
 	make DESTDIR="$destdir" install-utils	
@@ -44,6 +43,7 @@ ndiswrapper-utils_install () {
 
 ndiswrapper-driver_install() {
 	DESCRIPTION="Wrapper for using Windows drivers for some wireless cards, (kernel module)"
+	RDEPEND="linux-kernel(=3.0.20)"
 	BDEPEND="make gcc-lib linux-kernel-headers"
 	INSTALL="$N.install"
 

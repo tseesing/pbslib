@@ -1,0 +1,36 @@
+#
+# Ylmf OS package build script
+#
+
+DESCRIPTION="Advanced Linux Sound Architecture tools"
+HOMEPAGE="http://www.alsa-project.org/"
+LICENSE="GPL"
+PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
+
+SRC_URI="ftp://ftp.alsa-project.org/pub/tools/"$N-$V".tar.bz2"
+CHECKSUM="57bfec98a814d12e0f7ab379aaeccd87"
+
+RDEPEND="alsa-lib atk cairo expat fltk fontconfig freetype gcc-lib gdk-pixbuf glib2 glibc gtk+ libpng libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXft libXi libXinerama libXrandr libXrender pango pixman zlib"
+RECOMMENDED=""
+BDEPEND=""
+OPTIONAL=""
+CONFLICT=""
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_install() {
+	for f in $(find . -type f -name configure); do
+		[[ -x $f ]] || continue
+	        cd "${f%/*}"
+		[[ qlo10k1 = ${PWD##*/} ]] && continue
+		[[ hwmixvolume = ${PWD##*/} ]] && continue
+		ymsg ">> Building ${PWD##*/}"
+		./configure --prefix=/usr --x-libraries=/usr/lib ||break 1
+		domake	||break 1
+		domkinstall ||break 1
+		cd -
+        done
+}
+

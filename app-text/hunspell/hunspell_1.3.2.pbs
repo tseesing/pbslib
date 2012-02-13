@@ -11,7 +11,7 @@ PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 SRC_URI="http://nchc.dl.sourceforge.net/project/"$N"/Hunspell/"$V"/"$N-$V".tar.gz"
 CHECKSUM="3121aaf3e13e5d88dfff13fb4a5f1ab8"
 
-RDEPEND="gcc-libs readline"
+RDEPEND="gcc-lib readline"
 BDEPEND=""
 RECOMMENDED=""
 OPTIONAL="perl: for ispellaff2myspell"

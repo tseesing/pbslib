@@ -1,0 +1,35 @@
+#
+# Ylmf OS package build script
+#
+
+DESCRIPTION="A Flexible Input Method Framework."
+COMMENTS="Fcitx is a input method framework with extension support. Currently it supports linux and Unix system, like freebsd. It has three builtin Input Method Engine, Pinyin, QuWei and Table-based input methods."
+HOMEPAGE="http://code.google.com/p/fcitx/"
+LICENSE="GNU GPL v2"
+PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
+
+SRC_URI="http://fcitx.googlecode.com/files/"$N-$V"_all.tar.bz2"
+CHECKSUM="51f731a44ba72defcadcff18c79cbe665c43b1f1"
+
+RDEPEND="libXft libXrender fontconfig freetype libX11 glibc zlib expat libxcb glibc libXau libXdmcp"
+BDEPEND=""
+
+INSTALL="$N.install"
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_config() {
+	doconfig
+}
+
+pbs_build() {
+	domake
+}
+
+pbs_install() {
+	domkinstall
+}
+
+

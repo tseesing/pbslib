@@ -1,0 +1,25 @@
+#
+# Ylmf OS package build script
+#
+
+DESCRIPTION="application logo icon collection"
+HOMEPAGE="http://www.ylmf.org/"
+LICENSE="custom"
+PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
+YARCH="any"
+
+SRC_URI="git://git.ylmf.com/app-info.git"
+
+RDEPEND=""
+RECOMMENDED=""
+BDEPEND=""
+CONFLICT=""
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_install() {
+	docp icon "$destdir"/usr/share/app-info/
+}
+

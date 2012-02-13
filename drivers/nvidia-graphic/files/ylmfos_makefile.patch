@@ -1,7 +1,6 @@
-diff -ur kernel/Makefile.kbuild kernel.new//Makefile.kbuild
---- kernel/Makefile.kbuild	2011-04-19 05:54:36.000000000 +0800
-+++ kernel.new//Makefile.kbuild	2011-11-04 09:47:47.728249774 +0800
-@@ -248,8 +248,8 @@
+--- a/kernel/Makefile.kbuild	2011-07-28 07:55:54.000000000 +0800
++++ b/kernel/Makefile.kbuild.new	2012-02-11 09:57:34.181122292 +0800
+@@ -249,8 +249,8 @@
  #
  
  module-install: suser-sanity-check module
@@ -12,13 +11,12 @@ diff -ur kernel/Makefile.kbuild kernel.new//Makefile.kbuild
  	PATH="$(PATH):/bin:/sbin" depmod -ae;
  
  #
-@@ -258,8 +258,7 @@
- #
+@@ -260,7 +260,7 @@
  
  package-install: module-install rmmod-sanity-check
--	@PATH="$(PATH):/bin:/sbin" modprobe $(MODULE_NAME) && \
+ 	@PATH="$(PATH):/bin:/sbin" modprobe $(MODULE_NAME) && \
 -	echo "$(MODULE_OBJECT) installed successfully.";
-+	echo "$(MODULE_OBJECT) compiled successfully.";
++	echo "$(MODULE_OBJECT) compiled successfully.";	
  
  #
  # Build an object file suitable for further processing by the installer

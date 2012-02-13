@@ -32,7 +32,8 @@ rtl8101-source_install() {
 
 rtl8101-driver_install() {
 	DESCRIPTION="driver for RealTek RTL8101E, RTL8102E(L), RTL8103E(L) PCI-Express interface (kernel module)."
-	BDEPEND="gcc-lib make linux-kernel-headers"
+	RDEPEND="linux-kernel(=3.0.20)"	
+	BDEPEND="gcc make linux-kernel-headers"
 	
 	INSTALL="$N.install"
 	
@@ -40,4 +41,5 @@ rtl8101-driver_install() {
 	domake modules
 	domkinstall
 }
+
 

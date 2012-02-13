@@ -33,7 +33,8 @@ madwifi-source_install() {
 
 madwifi-driver_install() {
 	DESCRIPTION="Next Generation driver for Atheros based IEEE 802.11a/b/g wireless LAN cards (kernel module)."
-	BDEPEND=""
+	RDEPEND="linux-kernel(=3.0.20)"
+	BDEPEND="make gcc-lib linux-kernel-headers"
 	INSTALL="$N.install"
 	
 	unset ARCH

@@ -7,7 +7,8 @@ HOMEPAGE="http://www.sourceforge.net/projects/omnibook"
 LICENSE="GPL"
 PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 
-SRC_URI="git://omnibook.git.sourceforge.net/gitroot/omnibook/omnibook"
+#git://omnibook.git.sourceforge.net/gitroot/omnibook/omnibook
+SRC_URI="omnibook-20110718.tar.bz2"
 
 PROVIDE="omnibook-source omnibook-driver"
 
@@ -15,8 +16,8 @@ pbs_unpack() {
         dounpack
 }
 
-pbs_config() {
-	dopatch ylmfos_makefile.patch
+pbs_patch() {
+	dopatch ylmfos_makefile.patch		
 }
 
 omnibook-source_install() {
@@ -30,6 +31,7 @@ omnibook-source_install() {
 
 omnibook-driver_install() {
 	DESCRIPTION="Linux kernel module for (but not limited to) HP Omnibook support (kernel module)."
+	RDEPEND="linux-kernel(=3.0.20)"
 	BDEPEND="make gcc-lib linux-kernel-headers"
 	INSTALL="$N.install"
 

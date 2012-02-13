@@ -1,0 +1,40 @@
+diff -ur openssh-5.9-ylmf1/ssh_config openssh-5.9-ylmf1.new//ssh_config
+--- openssh-5.9-ylmf1/ssh_config	2010-01-12 16:40:27.000000000 +0800
++++ openssh-5.9-ylmf1.new//ssh_config	2012-02-06 11:28:56.346900343 +0800
+@@ -45,3 +45,7 @@
+ #   PermitLocalCommand no
+ #   VisualHostKey no
+ #   ProxyCommand ssh -q -W %h:%p gateway.example.com
++ForwardX11 yes
++ForwardX11Trusted yes
++SendEnv LANG LC_*
++
+diff -ur openssh-5.9-ylmf1/sshd_config openssh-5.9-ylmf1.new//sshd_config
+--- openssh-5.9-ylmf1/sshd_config	2011-05-29 19:39:39.000000000 +0800
++++ openssh-5.9-ylmf1.new//sshd_config	2012-02-06 11:28:39.683230772 +0800
+@@ -90,12 +90,12 @@
+ #AllowAgentForwarding yes
+ #AllowTcpForwarding yes
+ #GatewayPorts no
+-#X11Forwarding no
+-#X11DisplayOffset 10
++X11Forwarding yes
++X11DisplayOffset 10
+ #X11UseLocalhost yes
+ #PrintMotd yes
+ #PrintLastLog yes
+-#TCPKeepAlive yes
++TCPKeepAlive yes
+ #UseLogin no
+ #UsePrivilegeSeparation yes
+ #PermitUserEnvironment no
+@@ -114,6 +114,9 @@
+ # override default of no subsystems
+ Subsystem	sftp	/usr/libexec/sftp-server
+ 
++# Allow client to pass locale environment variables
++AcceptEnv LANG LC_*
++
+ # Example of overriding settings on a per-user basis
+ #Match User anoncvs
+ #	X11Forwarding no

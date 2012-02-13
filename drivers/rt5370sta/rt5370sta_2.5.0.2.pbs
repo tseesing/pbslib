@@ -33,7 +33,8 @@ rt5370sta-source_install() {
 
 rt5370sta-driver_install() {
 	DESCRIPTION="driver for Ralink PCI ABGN WLAN Card: RT8070/RT3070/RT3370/RT5370/RT5372 USB (kernel module)."
-	BDEPEND="gcc-lib make linux-kernel-headers"
+	RDEPEND="linux-kernel(=3.0.20)"	
+	BDEPEND="gcc make linux-kernel-headers"
 	INSTALL="$N.install"
 	
 	unset ARCH

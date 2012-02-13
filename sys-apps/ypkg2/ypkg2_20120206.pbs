@@ -1,0 +1,34 @@
+#
+# Ylmf OS package build script
+#
+
+DESCRIPTION="package management system for Ylmf OS, version2"
+HOMEPAGE="http://www.ylmf.org"
+LICENSE="GPL"
+PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
+PRIORITY="required"
+
+INSTALL="$N.install"
+
+SRC_URI="git://git.ylmf.com/"$N".git"
+
+RDEPEND="acl attr bzip2 curl cyrus-sasl glibc libarchive libidn libxml2 openldap openssl sqlite xz-utils zlib"
+BDEPEND=""
+
+pbs_unpack() {
+	dounpack
+}
+
+pbs_build() {
+	git checkout develop
+	git pull
+	make
+}
+
+pbs_install() {
+	domkinstall
+	cd "$destdir"
+	doln /usr/bin/ypkg2 usr/bin/ypkg
+	doln /usr/bin/yget2 usr/bin/yget
+}
+

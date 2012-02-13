@@ -32,7 +32,8 @@ rt3572sta-source_install() {
 
 rt3572sta-driver_install() {
 	DESCRIPTION="driver for Ralink RT3572 PCI ABGN WLAN Card (source)."
-	BDEPEND="gcc-lib make linux-kernel-headers"
+	RDEPEND="linux-kernel(=3.0.20)"
+	BDEPEND="gcc make linux-kernel-headers"
 	INSTALL="$N.install"
 	
 	unset ARCH

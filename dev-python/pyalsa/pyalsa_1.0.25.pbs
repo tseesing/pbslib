@@ -1,0 +1,36 @@
+#
+# Ylmf OS package build script
+#
+
+DESCRIPTION="Python Bindings for Alsa lib"
+HOMEPAGE="http://alsa-project.org/"
+LICENSE="GPL"
+PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
+
+SRC_URI="ftp://ftp.alsa-project.org/pub/"$N"/"$N-$V".tar.bz2"
+CHECKSUM="063efe545883f8b89005025460222ee3"
+
+RDEPEND="alsa-lib glibc python"
+RECOMMENDED=""
+BDEPEND=""
+OPTIONAL=""
+CONFLICT=""
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_config() {
+	config+=""
+	doconfig
+}
+
+pbs_build() {
+	domake
+}
+
+pbs_install() {
+	domkinstall
+}
+
+

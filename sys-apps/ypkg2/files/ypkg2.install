@@ -2,12 +2,27 @@
 
 dbfile="/var/ypkg/db/package.db"
 sqlfile="/usr/share/ypkg/db_create.sql"
+sqlite3="$(which sqlite3)"
 
 post_install() {
 	if [ ! -f $dbfile ] && [ -f $sqlfile ]; then
-		sqlite3 $dbfile ".read $sqlfile"	
+		$sqlite3 $dbfile ".read $sqlfile"	
 		[ -f $dbfile ] && ypkg2-import
 	fi
+
+	if [ ! -f /etc/yget.conf  ];then
+		cat >/etc/yget.conf <<"EOF"
+ACCEPT_REPO="stable"
+YPPATH_URI="http://pkg.ylmf.com/packages"
+YPPATH_PKGDEST="/var/ypkg/packages"
+EOF
+        fi
+	
+	return 0
+}
+
+post_remove() {
+	rm -f /etc/yget.conf 2>/dev/null ||true
 }
 
 post_upgrade() {

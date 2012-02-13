@@ -19,7 +19,7 @@ pbs_config() {
 	dopatch ylmfos_makefile.patch
 }
 
-pbs_install() {
+pbs_patch() {
 	patches=" rt3090sta-2.4.0.4-config.patch
 	          rt3090sta-2.4.0.4-convert-devicename-to-wlanX.patch
 		  rt3090sta-2.4.0.4-gcc-warnings-x86_64.patch
@@ -43,11 +43,13 @@ rt3090sta-source_install() {
 
 rt3090sta-driver_install() {
 	DESCRIPTION="Ralink RT3090 PCI WLAN adaptors (kernel module)"
-	BDEPEND="make gcc gcc-dev linux-kernel-headers"
+	RDEPEND="linux-kernel(=3.0.20)"
+	BDEPEND="make gcc linux-kernel-headers"
 	INSTALL="$N.install"
 
 	unset ARCH
 	domake
 	domkinstall
 }
+
 

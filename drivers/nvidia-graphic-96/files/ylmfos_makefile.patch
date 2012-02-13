@@ -1,6 +1,6 @@
---- usr/src/nv/Makefile.kbuild	2010-10-28 10:23:05.000000000 +0800
-+++ usr/src/nv/Makefile.kbuild.new	2011-11-04 13:38:34.762520116 +0800
-@@ -281,8 +281,8 @@
+--- a/usr/src/nv/Makefile.kbuild	2011-07-18 14:51:11.000000000 +0800
++++ b/usr/src/nv/Makefile.kbuild.new	2012-02-11 11:41:23.797743664 +0800
+@@ -282,8 +282,8 @@
  #
  
  module-install: suser-sanity-check module
@@ -11,11 +11,10 @@
  	PATH="$(PATH):/bin:/sbin" depmod -ae;
  
  #
-@@ -291,8 +291,7 @@
- #
+@@ -293,7 +293,7 @@
  
  package-install: module-install rmmod-sanity-check
--	PATH="$(PATH):/bin:/sbin" modprobe $(MODULE_NAME) && \
+ 	PATH="$(PATH):/bin:/sbin" modprobe $(MODULE_NAME) && \
 -	echo "$(MODULE_OBJECT) installed successfully.";
 +	echo "$(MODULE_OBJECT) compiled successfully.";
  

@@ -28,7 +28,8 @@ vhba-module-source_install() {
 
 vhba-module-driver_install() {
 	DESCRIPTION="VHBA module provides Virtual (SCSI) Host Bus Adapter for the cdemu suite (kernel module)."
-	BDEPEND="gcc-lib make linux-kernel-headers"
+	RDEPEND="linux-kernel(=3.0.20)"
+	BDEPEND="gcc make linux-kernel-headers"
 	CONFLICT="vhba-module"
 
 	INSTALL="$N.install"
@@ -36,6 +37,6 @@ vhba-module-driver_install() {
 	
 	domake
 	domkinstall
-	#docp vhba.ko "$destdir"/lib/modules/"$(uname -r)"/extra/
 }
+
 

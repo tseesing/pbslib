@@ -1,0 +1,37 @@
+#
+# Ylmf OS package build script
+#
+
+DESCRIPTION="Pure python memcached client"
+HOMEPAGE="http://pypi.python.org/pypi/python-memcached"
+LICENSE="python"
+PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
+
+SRC_URI="ftp://ftp.tummy.com/pub/"$N"/"$N-$V".tar.gz"
+CHECKSUM="58f8c328304df6aca1f8b60170e98932"
+
+RDEPEND="python"
+RECOMMENDED=""
+BDEPEND=""
+OPTIONAL=""
+CONFLICT=""
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_config() {
+	config+=""
+	doconfig
+}
+
+pbs_build() {
+	domake
+}
+
+pbs_install() {
+	domkinstall
+	dodoc README
+}
+
+

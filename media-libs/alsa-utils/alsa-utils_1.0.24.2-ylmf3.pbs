@@ -28,6 +28,6 @@ pbs_build() {
 
 pbs_install() {
 	domkinstall
-	docp $filesdir/alsa.conf "$destdir"/etc/modprobe.d
+	docp "$filesdir"/alsa.conf "$destdir"/etc/modprobe.d
 }
 

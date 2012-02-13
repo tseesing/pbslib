@@ -1,0 +1,38 @@
+#
+# Ylmf OS package build script
+#
+
+DESCRIPTION="An Apache module for running Python WSGI applications."
+COMMENTS="The aim of mod_wsgi is to implement a simple to use Apache module which can host any Python application which supports the Python WSGI interface. The module would be suitable for use in hosting high performance production web sites, as well as your average self managed personal sites running on web hosting services."
+HOMEPAGE="http://code.google.com/p/modwsgi/"
+LICENSE="Apache License 2.0"
+PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
+
+SRC_URI="http://modwsgi.googlecode.com/files/"$N-$V".tar.gz"
+CHECKSUM="f32d38e5d3ed5de1efd5abefb52678f833dc9166"
+
+RDEPEND="apache python"
+RECOMMENDED=""
+BDEPEND=""
+OPTIONAL=""
+CONFLICT=""
+
+INSTALL="$N.install"
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_config() {
+	config+=""
+	doconfig
+}
+
+pbs_build() {
+	domake
+}
+
+pbs_install() {
+	domkinstall
+}
+

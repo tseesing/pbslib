@@ -10,7 +10,7 @@ PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 SRC_URI="http://www.kernel.org/pub/linux/utils/kernel/"$N"/"$N-$V".tar.bz2"
 
 RDEPEND="glibc zlib"
-BDEPEND=" "
+BDEPEND=""
 
 INSTALL="$N.install"
 
@@ -30,15 +30,12 @@ pbs_build() {
 pbs_install() {
 	domkinstall
 	cd "$destdir"
-	
-	#
 	mkdir -p etc/modules-unload.d/
-	docp $filesdir/modprobe.d/* etc/modprobe.d
+	docp "$filesdir"/modprobe.d/* etc/modprobe.d
 	domv  bin/lsmod sbin
 	rm -rf bin
-
-	#
-	docp $filesdir/{module-init-tools,module-unload-tools} sbin
+	docp "$filesdir"/{module-init-tools,module-unload-tools} sbin
 	dounit "$N.service" "module-unload-tools.service"
 }
+
 

@@ -1,0 +1,36 @@
+#
+# Ylmf OS package build script
+#
+
+DESCRIPTION="Functions for fast computation of Levenshtein (edit) distance, and edit operations."
+HOMEPAGE="http://pypi.python.org/pypi/python-Levenshtein/"
+LICENSE="GPL"
+PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
+
+SRC_URI="http://pypi.python.org/packages/source/p/python-Levenshtein/python-Levenshtein-"$V".tar.gz"
+CHECKSUM="c8af7296dc640abdf511614ee677bbb8"
+
+RDEPEND="python"
+RECOMMENDED=""
+BDEPEND=""
+OPTIONAL=""
+CONFLICT=""
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_config() {
+	config+=""
+	doconfig
+}
+
+pbs_build() {
+	domake
+}
+
+pbs_install() {
+	domkinstall
+}
+
+
