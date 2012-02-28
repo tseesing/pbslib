@@ -6,7 +6,7 @@ DESCRIPTION="Mozilla runtime package that can be used to bootstrap XUL+XPCOM app
 HOMEPAGE="http://developer.mozilla.org/en/docs/XULRunner"
 REPO=""
 LICENSE=""
-PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
+PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
 
 SRC_URI="http://releases.mozilla.org/pub/mozilla.org/"$N"/releases/"$V"/source/"$N-$V$R".source.tar.bz2"
 

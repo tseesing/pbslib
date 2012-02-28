@@ -1,0 +1,43 @@
+#
+# Ylmf OS package build script
+#
+
+DESCRIPTION="Alvaro's Messenger client for MSN"
+HOMEPAGE="http://www.amsn-project.net"
+LICENSE="GPL"
+PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
+
+SRC_URI="http://ncu.dl.sourceforge.net/project/"$N"/"$N"/"$V"/"$N-$V"-src.tar.gz"
+
+RDEPEND="farsight2 gcc-lib glib2 gdk-pixbuf glibc gst-plugins-base gstreamer libICE libjpeg-turbo libpng libSM libX11 libXau libxcb libXdmcp libxml2 util-linux-ng v4l-utils zlib tk tls"
+BDEPEND=""
+RECOMMENDED=""
+CONFLICT=""
+OPIONAL="farsight2: for video conferencing"
+
+INSTALL="$N.install"
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_patch(){
+	dopatch ylmfos-langlist.patch
+	
+	# Patch for linux kernel(>3.0) header changes
+	dopatch amsn-0.98.4-v4l2.patch
+}
+
+pbs_config() {
+	config+=""
+	doconfig
+}
+
+pbs_build() {
+	domake
+}
+
+pbs_install() {
+	domkinstall
+}
+

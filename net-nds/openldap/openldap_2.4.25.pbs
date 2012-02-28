@@ -5,7 +5,7 @@
 DESCRIPTION="an open source implementation of the Lightweight Directory Access Protocol."
 HOMEPAGE="http://www.OpenLDAP.org/"
 LICENSE="custom"
-PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
+PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
 
 SRC_URI="ftp://ftp.openldap.org/pub/OpenLDAP/"$N"-release/"$N-$V".tgz"
 

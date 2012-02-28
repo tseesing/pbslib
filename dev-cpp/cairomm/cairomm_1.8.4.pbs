@@ -5,7 +5,7 @@
 DESCRIPTION="C++ bindings for the Cairo vector graphics library"
 HOMEPAGE="http://cairographics.org/cairomm"
 LICENSE="GPL"
-PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
+PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
 
 SRC_URI="http://cairographics.org/releases/"$N-$V".tar.gz"
 

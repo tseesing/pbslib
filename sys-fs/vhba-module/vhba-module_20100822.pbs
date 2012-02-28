@@ -5,7 +5,7 @@
 DESCRIPTION="VHBA module provides Virtual (SCSI) Host Bus Adapter for the cdemu suite"
 HOMEPAGE="http://cdemu.org"
 LICENSE="GPL"
-PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
+PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
 
 SRC_URI="http://downloads.sourceforge.net/project/cdemu/"$N"/"$N-$V"/"$N-$V".tar.gz"
 

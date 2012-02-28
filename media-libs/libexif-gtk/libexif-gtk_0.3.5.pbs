@@ -5,7 +5,7 @@
 DESCRIPTION="GTK+ frontend to the libexif library (parsing, editing, and saving EXIF data)"
 HOMEPAGE="http://libexif.sf.net"
 LICENSE="GPL"
-PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
+PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
 
 SRC_URI="http://downloads.sourceforge.net/project/libexif/"$N"/"$V"/"$N-$V".tar.bz2 "
 

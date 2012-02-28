@@ -5,7 +5,7 @@
 DESCRIPTION="Lists open files for running Unix processes"
 HOMEPAGE="http://people.freebsd.org/~abe/"
 LICENSE="custom"
-PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
+PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
 
 SRC_URI="ftp://lug.mtu.edu/gentoo/distfiles/"${N}_$V".tar.bz2"
 

@@ -5,7 +5,7 @@
 DESCRIPTION="A minimal libc subset for use with initramfs."
 HOMEPAGE="http://www.zytor.com/mailman/listinfo/klibc"
 LICENSE="GPL"
-PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
+PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
 
 SRC_URI="http://www.kernel.org/pub/linux/libs/"$N"/1.5/"$N-$V".tar.bz2"
 
@@ -25,8 +25,8 @@ pbs_build() {
 pbs_install() {
 	sed -i '/SHLIBDIR = \/lib/aINSTALLROOT = '"$destdir"'' scripts/Kbuild.install
 	domkinstall
-	docp $filesdir/klibc.m4 /usr/share/aclocal
 	cd "$destdir"
+	docp "$filesdir"/klibc.m4 /usr/share/aclocal
 	domv  usr/man usr/share/
 }
 

@@ -1,35 +1,41 @@
 . /usr/lib/ybs/funcs
 
+service="cups.service"
+
 post_install() {
 	dogroupadd -r "lp"
 	dogroupadd -r "lpadmin" -g 105
-	
-	#douseradd -c "Print Service User" -d "/dev/null" -s "/bin/false" -r "lp" -g "lp"
 	douseradd -c "Print Service User" -d "/var/spool/lpd" -s "/bin/false" -r "lp" -g "lp"
 	
 	#
-	chown root:lp   /etc/cups/cupsd.conf /etc/cups/cupsd.conf.*  /etc/cups/snmp.conf /etc/cups/snmp.conf.*
-	chown root:lp   /etc/cups/interfaces /etc/cups/ppd /etc/cups/ssl /var/run/cups/certs
-	chown root:lp   /etc/cups/{printers.conf,classes.conf,client.conf,subscriptions.conf}
-	chown root:lp   /var/spool/cups  /var/spool/cups/tmp
+	chown root:lp /etc/cups/cupsd.conf /etc/cups/cupsd.conf.* /etc/cups/snmp.conf /etc/cups/snmp.conf.*
+	chown root:lp /etc/cups/interfaces /etc/cups/ppd /etc/cups/ssl /var/run/cups/certs
+	chown root:lp /etc/cups/{printers.conf,classes.conf,client.conf,subscriptions.conf}
+	chown root:lp /var/spool/cups /var/spool/cups/tmp
 	
 	#
 	rmmod usblp
-	systemctl --system daemon-reload
-	start cups
-	return 0
+
+	# Systemd unit
+	systemctl enable "$service"
+	start cups || return 0
 }       
+
+pre_remove() {
+	systemctl disable "$service"
+}
 
 post_remove() {
 	douserdel  "lp"
 	dogroupdel "lp"
-	dogroupdel "lpadmin"
+	dogroupdel "lpadmin" ||true
 }
 
 post_upgrade() {
 	systemctl --system daemon-reload
 	rmmod usblp
-	restart cups
+	systemctl enable "$service"
+	restart cups ||true
 }
 
 post_downgrade() {

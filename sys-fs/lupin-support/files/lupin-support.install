@@ -2,12 +2,14 @@
 
 post_install() {
 	update-initramfs -k "$(uname -r)" -c
+	update-grub ||true
 }       
 
 post_remove() {
 	cd /usr/sbin/
 	[ -f grub-install.real ] && ln -svf grub-install.real grub-install
-	update-initramfs -k "$(uname -r)" -c
+	update-initramfs -k "$(uname -r)" -c 
+	update-grub ||true
 }
 
 post_upgrade() {

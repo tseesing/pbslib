@@ -5,7 +5,7 @@
 DESCRIPTION="A fully functional X client library for Python, written in Python"
 HOMEPAGE="http://python-xlib.sourceforge.net/"
 LICENSE="GPL"
-PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
+PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
 YARCH="any"
 
 SRC_URI="http://downloads.sourceforge.net/project/"$N"/"$N"/"$Vrc1"/"$N-$V"rc1.tar.bz2 "
@@ -24,6 +24,6 @@ pbs_build() {
 
 pbs_install() {
 	python setup.py install --prefix=/usr --root="$destdir"
-	dodoc COPYING NEWS README
+	dodoc COPYING
 }
 

@@ -5,7 +5,7 @@
 DESCRIPTION="A GTK volume control tool for PulseAudio"
 HOMEPAGE="http://0pointer.de/lennart/projects/pavucontrol"
 LICENSE="GPL"
-PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
+PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
 
 SRC_URI="http://freedesktop.org/software/pulseaudio/"$N"/"$N-$V".tar.xz"
 

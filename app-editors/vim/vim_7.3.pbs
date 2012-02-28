@@ -5,7 +5,7 @@
 DESCRIPTION="Vim, an improved vi-style text editor"
 HOMEPAGE="http://www.vim.org/"
 LICENSE="custom:vim"
-PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
+PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
 
 SRC_URI="ftp://ftp.vim.org/pub/vim/unix/"$N-$V$R".tar.bz2" 
 

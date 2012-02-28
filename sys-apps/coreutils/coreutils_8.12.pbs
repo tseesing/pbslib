@@ -5,7 +5,7 @@
 DESCRIPTION="Standard GNU utilities (chmod, cp, dd, dir, ls, who)"
 HOMEPAGE="http://www.gnu.org/software/coreutils"
 LICENSE="GPL"
-PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
+PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
 
 SRC_URI="http://ftp.gnu.org/gnu/"$N"/"$N-$V".tar.gz"
 

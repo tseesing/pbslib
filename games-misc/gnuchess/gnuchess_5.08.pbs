@@ -6,7 +6,7 @@ DESCRIPTION="Lets most modern computers play a full game of chess."
 HOMEPAGE="http://www.gnu.org/software/chess/chess.html"
 REPO=""
 LICENSE="GPL"
-PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
+PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
 
 SRC_URI="ftp://ftp.gnu.org/pub/gnu/chess/"$N-$V$R".tar.gz"
 

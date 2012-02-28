@@ -5,7 +5,7 @@
 DESCRIPTION="a library of document-centric objects and utilities building on top of GLib and Gtk+ and used by software such as Gnumeric."
 HOMEPAGE="http://freshmeat.net/projects/goffice/"
 LICENSE="GPL"
-PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
+PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
 
 SRC_URI="http://caesar.acc.umu.se/pub/GNOME/sources/"$N"/0.8/"$N-$V".tar.gz"
 

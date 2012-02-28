@@ -5,7 +5,7 @@
 DESCRIPTION="yong input method"
 HOMEPAGE="http://yong.uueasy.com/thread-htm-fid-2.html"
 LICENSE="GPL"
-PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
+PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
 
 SRC_URI="yong-lin-1.6.0-3.7z"
 
@@ -31,3 +31,4 @@ pbs_install() {
 	doln /usr/share/"$N"/yong-config  usr/bin/yong-config
 	doln /usr/share/"$N"/libl.so      usr/lib/libl.so
 }
+

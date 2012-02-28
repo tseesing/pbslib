@@ -6,7 +6,7 @@ DESCRIPTION="Modifies ELFs to avoid runtime symbol resolutions resulting in fast
 HOMEPAGE="http://people.redhat.com/jakub/prelink"
 REPO=""
 LICENSE=""
-PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
+PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
 
 SRC_URI="http://people.redhat.com/jakub/"$N"/"$N-$V$R".tar.bz2"
 

@@ -6,7 +6,7 @@ DESCRIPTION="Convert a .rpm file to a .tar.gz archive"
 HOMEPAGE="http://www.slackware.com/config/packages.php"
 REPO=""
 LICENSE=""
-PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
+PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
 
 SRC_URI="http://gentoo.osuosl.org/distfiles/"$N-$V$R".tar.lzma"
 

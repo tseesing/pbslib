@@ -5,7 +5,7 @@
 DESCRIPTION="pen source command-line RTMP client intended to stream audio or video flash content"
 HOMEPAGE="http://rtmpdump.mplayerhq.hu/"
 LICENSE="GPL"
-PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
+PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
 
 SRC_URI="ftp://ftp.archlinux.org/other/"$N"/"$N-$V".tar.xz"
 

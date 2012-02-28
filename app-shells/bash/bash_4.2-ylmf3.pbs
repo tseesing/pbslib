@@ -5,7 +5,7 @@
 DESCRIPTION="The standard GNU Bourne again shell"
 HOMEPAGE="http://tiswww.case.edu/php/chet/bash/bashtop.html"
 LICENSE="GPL"
-PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
+PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
 
 URL="ftp://ftp.cwru.edu/pub/"$N""
 SRC_URI="$URL/"$N-$V".tar.gz

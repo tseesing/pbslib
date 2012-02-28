@@ -5,7 +5,7 @@
 DESCRIPTION="Number 9 I128 video driver"
 HOMEPAGE="http://xorg.freedesktop.org/"
 LICENSE="GPL-2"
-PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
+PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
 SRC_URI="http://www.x.org/releases/X11R7.5/src/driver/"$N-$V$R".tar.bz2"
 
 RDEPEND="libdrm libXvMC libXv libXext libXfixes libX11 libxcb libXau libXdmcp pixman libpciaccess libXtst"

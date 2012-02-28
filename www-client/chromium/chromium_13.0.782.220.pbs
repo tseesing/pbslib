@@ -5,7 +5,7 @@
 DESCRIPTION="The open-source project behind Google Chrome, an attempt at creating a safer, faster, and more stable browser."
 HOMEPAGE="http://code.google.com/p/chromium/"
 LICENSE="Multiple Licenses"
-PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
+PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
 
 SRC_URI="http://build.chromium.org/buildbot/official/"$N-$V".tar.bz2"
 

@@ -5,7 +5,7 @@
 DESCRIPTION="Berkeley Data base library"
 HOMEPAGE="http://download-east.oracle.com/berkeley-db/"
 LICENSE="custom"
-PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
+PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
 
 SRC_URI="http://download.oracle.com/"$N"/db-"$V".tar.gz"
 

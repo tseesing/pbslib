@@ -5,7 +5,7 @@
 DESCRIPTION="The ASN.1 library used in GNUTLS"
 HOMEPAGE="http://www.gnu.org/software/libtasn1/"
 LICENSE="GPL"
-PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
+PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
 
 SRC_URI="http://mirrors.kernel.org/gnu/"$N"/"$N-$V".tar.gz"
 

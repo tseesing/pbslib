@@ -5,7 +5,7 @@
 DESCRIPTION="Change or delete the rpath or runpath in ELF files"
 HOMEPAGE="http://directory.fsf.org/project/chrpath/"
 LICENSE="GPLv2"
-PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
+PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
 
 SRC_URI="http://ftp.tux.org/pub/X-Windows/ftp.hungry.com/"$N"/"$N-$V".tar.gz"
 

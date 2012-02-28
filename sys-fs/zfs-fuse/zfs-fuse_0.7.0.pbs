@@ -7,7 +7,7 @@ HOMEPAGE="http://zfs-fuse.net/"
 REPO=""
 LICENSE="GPL"
 PRIORITY=""
-PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
+PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
 
 SRC_URI="http://zfs-fuse.net/releases/"$V$R"/"$N-$V$R".tar.bz2"
 

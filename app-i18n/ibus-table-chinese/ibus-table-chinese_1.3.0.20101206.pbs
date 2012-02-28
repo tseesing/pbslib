@@ -4,23 +4,22 @@
 
 DESCRIPTION="The Table Engine for IBus Framework"
 HOMEPAGE="http://code.google.com/p/ibus/"
-LICENSE="GPL-2"
-PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
+LICENSE="GPL"
+PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
 REPO="" 
 
 SRC_URI="http://ibus.googlecode.com/files/"$N-$V$R"-Source.tar.gz"
 
-RDEPEND="app-i18n/ibus dev-libs/boost app-i18n/ibus-table"
-BDEPEND=" "
+RDEPEND="ibus boost ibus-table"
+BDEPEND=""
 RECOMMENDED=""
-
-NOTES=""
 
 pbs_unpack() {
         dounpack
 }
 
-pbs_config() {
+pbs_config() {	
+	config+="--disable-yong"
 	doconfig
 }
 
@@ -30,6 +29,6 @@ pbs_build() {
 
 pbs_install() {
 	domkinstall
-	dodoc AUTHORS ChangeLog NEWS README
 }
+
 

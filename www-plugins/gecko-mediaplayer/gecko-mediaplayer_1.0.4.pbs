@@ -11,7 +11,7 @@ COMMENTS="Gecko Media Player is a browser plug-in that uses GNOME MPlayer
           It is the modern replacement for mplayerplug-in (from the same author)."
 HOMEPAGE="http://code.google.com/p/gecko-mediaplayer/"
 LICENSE="GPLv2"
-PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
+PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
 
 SRC_URI="http://gecko-mediaplayer.googlecode.com/files/"$N-$V".tar.gz"
 
@@ -39,7 +39,7 @@ pbs_build() {
 
 pbs_install() {
 	domkinstall
-	dodoc ChangeLog COPYING README NEWS
 }
+
 
 

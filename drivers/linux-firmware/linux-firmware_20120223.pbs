@@ -1,0 +1,34 @@
+#
+# Ylmf OS package build script
+#
+
+DESCRIPTION="Linux firmware files"
+HOMEPAGE="http://www.kernel.org/pub/linux/kernel/people/dwmw2/firmware"
+LICENSE="GPL,BSD,freedist"
+PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
+YARCH="any"
+
+SRC_URI="git://git.kernel.org/pub/scm/linux/kernel/git/dwmw2/linux-firmware.git"
+
+RDEPEND=""
+BDEPEND=""
+RECOMMENDED=""
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_install() {
+	docp * "$destdir"/lib/firmware
+	
+	# Added carl9170.fw for Atheros wireless AR9170 based devices.
+	cd "$destdir"/lib/firmware
+	docp "$filesdir"/carl9170-1.fw .
+	
+	#
+	docp "$filesdir"/{ar9170.fw,aic94xx-seq.fw,NPE-B,NPE-C} .
+	
+	# Check firmware
+	docp "$filesdir"/check_firmware script/
+}
+

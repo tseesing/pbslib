@@ -5,7 +5,7 @@
 DESCRIPTION="dbus-sharp-glib"
 HOMEPAGE="C# GLib implementation of D-Bus"
 LICENSE="custom"
-PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
+PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
 
 SRC_URI="https://github.com/downloads/mono/dbus-sharp/"$N-$V".tar.gz"
 

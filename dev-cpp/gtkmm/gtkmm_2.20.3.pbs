@@ -5,7 +5,7 @@
 DESCRIPTION="C++ interface for GTK+2"
 HOMEPAGE="http://www.gtkmm.org"
 LICENSE="LGPL"
-PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
+PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
  
 SRC_URI="http://ftp.gnome.org/pub/gnome/sources/"$N"/2.20/"$N-$V".tar.bz2 "
 
@@ -28,6 +28,6 @@ pbs_build() {
 
 pbs_install() {
 	domkinstall
-	dodoc NEWS README ChangeLog COPYING INSTALL
 }
+
 

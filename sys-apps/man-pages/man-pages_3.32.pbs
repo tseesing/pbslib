@@ -5,7 +5,7 @@
 DESCRIPTION="A somewhat comprehensive collection of Linux man pages"
 HOMEPAGE="http://www.kernel.org/doc/man-pages"
 YARCH="any"
-PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
+PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
 
 SRC_URI="http://www.kernel.org/pub/linux/docs/"$N"/Archive/"$N-$V".tar.bz2"
 

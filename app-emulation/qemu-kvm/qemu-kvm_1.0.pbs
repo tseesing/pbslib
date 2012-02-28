@@ -10,7 +10,7 @@ COMMENTS="KVM (for Kernel-based Virtual Machine) is a full virtualization soluti
 	  KVM also requires a modified QEMU although work is underway to get the required changes upstream."
 HOMEPAGE="http://www.linux-kvm.org"
 LICENSE="GPL"
-PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
+PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
 
 SRC_URI="http://downloads.sourceforge.net/kvm/"$N-$V".tar.gz"
 

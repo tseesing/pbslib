@@ -5,7 +5,7 @@
 DESCRIPTION="The GNOME Virtual File System package contains virtual file system libraries. This is used as one of the foundations of the Nautilus file manager."
 HOMEPAGE="http://www.gnome.org/"
 LICENSE="GPL-2"
-PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
+PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
 SRC_URI="ftp://ftp.gnome.org/pub/gnome/sources/gnome-vfs/2.24/"$N-$V$R".tar.bz2"
 
 RDEPEND=""

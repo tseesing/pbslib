@@ -5,7 +5,7 @@
 DESCRIPTION="libreoffice langpack for zh-TW"
 HOMEPAGE="http://www.libreoffice.org/"
 LICENSE="LGPL"
-PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
+PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
 
 SRC_URI="http://download.documentfoundation.org/libreoffice/stable/"$V"/deb/x86/LibO_"$V"_Linux_x86_langpack-deb_zh-TW.tar.gz"
 CHECKSUM="0eda6acdf8166dbcb421f47456e982a9"

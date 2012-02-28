@@ -6,7 +6,7 @@ DESCRIPTION="create an index of X font files in a directory"
 HOMEPAGE="http://www.x.org/wiki/"
 LICENSE="GPL"
 YARCH="any"
-PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
+PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
 
 SRC_URI="http://www.x.org/releases/X11R7.6/src/app/"$N-$V".tar.bz2"
 

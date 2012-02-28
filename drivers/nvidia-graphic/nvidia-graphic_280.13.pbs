@@ -5,7 +5,7 @@
 DESCRIPTION="NVIDIA binary Xorg driver, kernel module and VDPAU library"
 HOMEPAGE="http://www.nvidia.com/object/citizenship-report-home.html"
 LICENSE="custom"
-PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
+PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
 
 SRC_URI="ftp://download.nvidia.com/XFree86/Linux-x86/"$V"/NVIDIA-Linux-x86-"$V".run"
 CHECKSUM="c3992c8cef02b7773a398640d8830e77"

@@ -7,7 +7,7 @@ HOMEPAGE="http://www.rsyslog.com/"
 REPO=""
 LICENSE="GPL"
 PRIORITY=""
-PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
+PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
 
 SRC_URI="http://rsyslog.com/files/download/"$N"/"$N-$V$R".tar.gz"
 

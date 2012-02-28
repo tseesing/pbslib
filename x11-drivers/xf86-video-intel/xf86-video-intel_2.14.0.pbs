@@ -5,7 +5,7 @@
 DESCRIPTION="X.Org driver for Intel i8xx/i9xx cards"
 HOMEPAGE="http://xorg.freedesktop.org/"
 LICENSE="GPL-2"
-PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
+PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
 
 SRC_URI="http://xorg.freedesktop.org/archive/individual/driver/"$N-$V$R".tar.bz2"
 

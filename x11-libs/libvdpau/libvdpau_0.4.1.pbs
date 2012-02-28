@@ -5,7 +5,7 @@
 DESCRIPTION="VDPAU wrapper and trace libraries"
 HOMEPAGE="http://www.freedesktop.org/wiki/Software/VDPAU"
 LICENSE="custom"
-PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
+PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
 
 # git://anongit.freedesktop.org/~aplattner/libvdpau"
 SRC_URI="http://people.freedesktop.org/~aplattner/vdpau/"$N-$V".tar.gz"

@@ -5514,7 +5514,7 @@
       <key>toplevels/top_panel_screen0/background/color</key>
       <schema_key>/schemas/apps/panel/toplevels/background/color</schema_key>
       <value>
-        <string>#ffffff</string>
+        <string>#000000</string>
       </value>
     </entry>
     <entry>
@@ -5528,14 +5528,14 @@
       <key>toplevels/top_panel_screen0/background/image</key>
       <schema_key>/schemas/apps/panel/toplevels/background/image</schema_key>
       <value>
-        <string>/usr/share/themes/ylmfos/line-h.png</string>
+        <string></string>
       </value>
     </entry>
     <entry>
       <key>toplevels/top_panel_screen0/background/opacity</key>
       <schema_key>/schemas/apps/panel/toplevels/background/opacity</schema_key>
       <value>
-        <int>6000</int>
+        <int>39321</int>
       </value>
     </entry>
     <entry>
@@ -5556,7 +5556,7 @@
       <key>toplevels/top_panel_screen0/background/type</key>
       <schema_key>/schemas/apps/panel/toplevels/background/type</schema_key>
       <value>
-        <string>image</string>
+        <string>color</string>
       </value>
     </entry>
   </entrylist>

@@ -5,7 +5,7 @@
 DESCRIPTION="Cairo Composite Manager is a versatile and extensible composite manager which use cairo for rendering. "
 HOMEPAGE="http://cairo-compmgr.tuxfamily.org/"
 LICENSE="GPL"
-PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
+PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
 
 REPO="testing"
 SRC_URI="http://download.tuxfamily.org/ccm/"$N"/"$N-$V".tar.gz"

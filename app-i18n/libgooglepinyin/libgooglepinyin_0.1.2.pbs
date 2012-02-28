@@ -1,0 +1,34 @@
+#
+# Ylmf OS package build script
+#
+
+DESCRIPTION="A fork from google pinyin on android library"
+HOMEPAGE="http://code.google.com/p/libgooglepinyin"
+LICENSE="Apache License 2.0"
+PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
+
+SRC_URI="http://libgooglepinyin.googlecode.com/files/"$N-$V".tar.bz2"
+CHECKSUM="b58a0b9a3a885031ad105da176ac0fdb2cfb7676"
+
+RDEPEND="gcc-lib glibc"
+RECOMMENDED=""
+BDEPEND=""
+CONFLICT=""
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_config() {
+	config+=""
+	doconfig
+}
+
+pbs_build() {
+	domake
+}
+
+pbs_install() {
+	domkinstall
+}
+

@@ -1,0 +1,36 @@
+#
+# Ylmf OS package build script
+#
+
+DESCRIPTION="Small library for rendering Postscript documents"
+HOMEPAGE="http://libspectre.freedesktop.org/wiki/"
+LICENSE="GPL"
+PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
+
+SRC_URI="http://libspectre.freedesktop.org/releases/"$N-$V".tar.gz"
+CHECKSUM="819475c7e34a1e9bc2e876110fee530b42aecabd"
+
+RDEPEND="avahi cairo cups dbus e2fsprogs expat fontconfig freetype gcc-lib glibc gnu-ghostscript gnutls keyutils krb5 libgcrypt libgpg-error libICE libjpeg-turbo libpng libSM libtasn1 libtiff libX11 libXau libxcb libXdmcp libXext libXrender libXt pixman util-linux-ng zlib"
+RECOMMENDED=""
+BDEPEND=""
+OPTIONAL=""
+CONFLICT=""
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_config() {
+	config+=""
+	doconfig
+}
+
+pbs_build() {
+	domake
+}
+
+pbs_install() {
+	domkinstall
+}
+
+

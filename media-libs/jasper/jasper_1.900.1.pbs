@@ -5,7 +5,7 @@
 DESCRIPTION=" software-based implementation of the codec specified in the JPEG-2000 Part-1 standard"
 HOMEPAGE="http://www.ece.uvic.ca/~mdadams/jasper/"
 LICENSE="GPL"
-PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
+PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
 
 SRC_URI="http://www.ece.uvic.ca/~mdadams/"$N"/software/"$N-$V".zip"
 

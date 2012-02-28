@@ -39,30 +39,28 @@
 #ResultActive=yes
 #EOF
 
-#record locale
+# Record locale
 cat "$TARGETDIR"/etc/default/locale  >>"$TARGETDIR"/etc/environment
 
-#creat "well know" user dirs
+# Creat "well know" user dirs
 chroot "$TARGETDIR" su $INS_USERNAME -c "/usr/bin/xdg-user-dirs-update"
 
-#Remove unuseful apps
-#FILES="casper lupin-casper lupin-casper osinstaller"
-FILES="osinstaller osinstaller-i18n-zh_CN osinstaller-i18n-zh_HK osinstaller-i18n-zh_TW fvwm"
-for file in $FILES;do
-    chroot "$TARGETDIR" ypkg -C ${file}
+# Remove unuseful apps
+for file in osinstaller fvwm;do
+    chroot "$TARGETDIR" /usr/bin/ypkg -C ${file}
 done
 
-#Update initrd.img
+# Update initrd.img
 #chroot "$TARGETDIR" update-initramfs -d -u
 
-#Update grub.cfg
+# Update grub.cfg
 chroot "$TARGETDIR" /usr/sbin/update-grub
+
+# Install date
+/usr/bin/python -c 'import time;print time.time()' >"$TARGETDIR"/etc/install_date
 
 # Rm isodevice
 umount "$TARGETDIR/isodevice"
 rmdir "$TARGETDIR/isodevice"
-
-# Install date
-chroot "$TARGETDIR" python -c 'import time;print time.time()' >/etc/install_date
 
 exit 0

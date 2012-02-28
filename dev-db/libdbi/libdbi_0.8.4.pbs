@@ -5,7 +5,7 @@
 DESCRIPTION=" libdbi implements a database-independent abstraction layer in C, similar to the DBI/DBD layer in Perl."
 HOMEPAGE="http://libdbi.sourceforge.net/"
 LICENSE="GPL"
-PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
+PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
 
 SRC_URI="http://sourceforge.net/projects/libdbi/files/"$N"/"$N-$V"/"$N-$V".tar.gz"
 

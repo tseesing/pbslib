@@ -5,7 +5,7 @@
 DESCRIPTION="GNU awk pattern-matching language"
 HOMEPAGE="http://www.gnu.org/software/gawk/gawk.html"
 LICENSE="GPL"
-PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
+PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
 PRIORITY="required"
 
 SRC_URI="http://mirror.anl.gov/pub/gnu/"$N"/"$N-$V".tar.gz"

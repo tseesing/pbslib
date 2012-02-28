@@ -5,7 +5,7 @@
 DESCRIPTION="A ELF object file access library"
 HOMEPAGE="http://www.mr511.de/software/"
 LICENSE="GPL"
-PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
+PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
  
 SRC_URI="http://www.mr511.de/software/"$N-$V".tar.gz"
 
@@ -29,6 +29,6 @@ pbs_install() {
 	make prefix="$destdir"/usr libdir="$destdir"/usr/lib  \
              includedir="$destdir"/usr/include \
 	     install  install-compat 
-	dodoc ChangeLog VERSION README
 }
+
 

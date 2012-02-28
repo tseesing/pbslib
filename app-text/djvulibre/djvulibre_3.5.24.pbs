@@ -5,7 +5,7 @@
 DESCRIPTION="Suite to create, manipulate and view DjVu documents"
 HOMEPAGE="http://djvu.sourceforge.net/"
 LICENSE="GPL"
-PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
+PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
 
 SRC_URI="http://ncu.dl.sourceforge.net/project/djvu/DjVuLibre/"$V"/"$N-$V".tar.gz"
 

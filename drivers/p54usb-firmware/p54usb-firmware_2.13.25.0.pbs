@@ -6,7 +6,7 @@ DESCRIPTION="Supports USB first (ISL3886 chipset) and second (ISL3887 chipset) g
 HOMEPAGE="http://wireless.kernel.org/en/users/Drivers/p54#firmware"
 LICENSE="custom"
 YARCH="any"
-PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
+PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
 
 SRC_URI="http://daemonizer.de/prism54/prism54-fw/fw-usb/"$V".lm87.arm 
          http://daemonizer.de/prism54/prism54-fw/fw-usb/"$V".lm86.arm"

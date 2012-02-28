@@ -5,7 +5,7 @@
 DESCRIPTION="A ASCII-Graphics Library"
 HOMEPAGE="http://aa-project.sourceforge.net/aalib/"
 LICENSE="LGPL"
-MAINTAINER="Ylmf OS Developers <ylmfos@115.com>"
+MAINTAINER="Ylmf OS Developers <ylmfos@ylmf.com>"
 
 SRC_URI="http://downloads.sourceforge.net/aa-project/"$N-$V"rc5.tar.gz"
 
@@ -28,6 +28,5 @@ pbs_build() {
 
 pbs_install() {
 	domkinstall
-	dodoc AUTHORS ChangeLog COPYING INSTALL NEWS README 
 }
 

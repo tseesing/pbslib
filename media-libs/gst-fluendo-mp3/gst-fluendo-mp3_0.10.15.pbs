@@ -5,7 +5,7 @@
 DESCRIPTION="Fluendo mp3 decoder GStreamer plugin"
 HOMEPAGE="http://www.fluendo.com/resources/fluendo_mp3.php"
 LICENSE="GPL"
-PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
+PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
 
 SRC_URI="http://core.fluendo.com/gstreamer/src/"$N"/"$N-$V".tar.bz2"
 

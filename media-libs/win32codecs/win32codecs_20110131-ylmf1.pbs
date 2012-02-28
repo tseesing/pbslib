@@ -5,7 +5,7 @@
 DESCRIPTION="Windows 32-bit binary codecs for video and audio playback support"
 HOMEPAGE="http://www.mplayerhq.hu/"
 LICENSE="custom"
-PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
+PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
 YARCH="any"
 
 SRC_URI="http://www.mplayerhq.hu/MPlayer/releases/codecs/all-"$V".tar.bz2"
@@ -18,8 +18,9 @@ pbs_unpack() {
 }
 
 pbs_install() {
-	docp * "$destdir"/usr/lib/win32
+	docp * "$destdir"/usr/lib/win32/
+	
 	# DirectShow codec drvc.dll.
-	docp $filesdir/drvc.dll  "$destdir"/usr/lib/win32
+	docp "$filesdir"/drvc.dll  "$destdir"/usr/lib/win32/
 }
 

@@ -1,0 +1,32 @@
+#
+# Ylmf OS package build script
+#
+
+DESCRIPTION="sunpinyin ibus wrapper"
+HOMEPAGE="http://code.google.com/p/sunpinyin/"
+LICENSE="LGPL"
+PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
+
+SRC_URI="http://sunpinyin.googlecode.com/files/"$N-$V".tar.gz"
+CHECKSUM="86f34ca4ec60a1e30362aca82d89b529b4326c14"
+
+RDEPEND="ibus sunpinyin"
+BDEPEND=""
+RECOMMENDED=""
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_config() {
+	doconfig
+}
+
+pbs_build() {
+	domake
+}
+
+pbs_install() {
+	domkinstall
+}
+

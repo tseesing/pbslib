@@ -6,7 +6,7 @@ DESCRIPTION="A set of programs to assemble and manipulate binary and object file
 HOMEPAGE="http://sourceforge.net/projects/mingw/files/MinGW/BaseSystem/GNU-Binutils/"
 REPO=""
 LICENSE=""
-PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
+PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
 
 SRC_URI="http://ncu.dl.sourceforge.net/project/mingw/MinGW/BaseSystem/GNU-Binutils/binutils-2.20.1/binutils-"$V$R"-src.tar.gz"
 

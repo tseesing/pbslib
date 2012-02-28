@@ -1,0 +1,22 @@
+#
+# Ylmf OS package build script
+#
+
+DESCRIPTION="install build-essential packages"
+HOMEPAGE="www.ylmf.com"
+LICENSE="GPL"
+PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
+YARCH="any"
+
+RDEPEND="make automake autoconf patch intltool pkgconfig gcc gcc-dev glibc-dev glib2-dev gdk-pixbuf-dev m4 linux-headers linux-kernel-headers"
+BDEPEND=""
+RECOMMENDED=""
+CONFLICT=""
+
+pbs_install() {
+	mkdir -p "$destdir"/usr/share/doc/"$N"/
+	cat >>"$destdir"/usr/share/doc/"$N"/README << "EOF"
+install build-essential packages
+EOF
+}
+

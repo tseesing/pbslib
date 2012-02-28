@@ -6,7 +6,7 @@ DESCRIPTION="Lists directories recursively, and produces an indented listing of 
 HOMEPAGE="http://mama.indstate.edu/users/ice/tree/"
 REPO=""
 LICENSE=""
-PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
+PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
 
 SRC_URI="ftp://mama.indstate.edu/linux/"$N"/"$N-$V$R".tgz"
 

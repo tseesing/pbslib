@@ -5,7 +5,7 @@
 DESCRIPTION="Netscape Portable Runtime"
 HOMEPAGE="http://www.mozilla.org/projects/nspr/"
 LICENSE="MPL GPL"
-PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
+PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
 
 SRC_URI="http://ftp.mozilla.org/pub/mozilla.org/"$N"/releases/v"$V"/src/"$N-$V".tar.gz"
 

@@ -1,14 +1,14 @@
-2010-12-05 hzx <hzx@115.com>	
+2010-12-05 hzx <huangzhongxin@ylmf.com>	
 	* gdm 2.32.1-ylmf2
 	* ylmfos-gdm-2.30.2-locale.patch:
 	 - add "recovery" to not start gdm under recovery mode
 
-2010-10-11 hzx <hzx@115.com>, chenqixing <chenqixing@115.com>
+2010-10-11 hzx <huangzhongxin@ylmf.com>, chenqixing <chenqixing@115.com>
 	* gdm 2.32.1-ylmf1
 	* modified pam-gnome_keyring.patch: 
 	 - unlock gnome-keyring when logging
 
-2010-09-10 hzx <hzx@115.com>	
+2010-09-10 hzx <huangzhongxin@ylmf.com>	
 	* gdm 2.30.2-ylmf11
 	* disable ylmfos-spawn-x-at-vt1.patch: 
 	 - Xorg should be start at other vt when switching users.

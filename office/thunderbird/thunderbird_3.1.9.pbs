@@ -7,7 +7,7 @@ HOMEPAGE="http://www.mozilla.com/en-US/thunderbird/"
 REPO=""
 LICENSE="GPL,MPL"
 PRIORITY=""
-PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
+PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
 REPO="testing"
 
 SRC_URI="http://releases.mozilla.org/pub/mozilla.org/"$N"/releases/"$V$R"/source/"$N-$V$R".source.tar.bz2"

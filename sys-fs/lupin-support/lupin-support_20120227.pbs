@@ -1,0 +1,26 @@
+#
+# Ylmf OS package build script
+#
+
+DESCRIPTION="Support files for loop-mount installations"
+HOMEPAGE="www.ylmf.net"
+LICENSE="GPL"
+PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
+YARCH="any"
+
+SRC_URI="git://git.ylmf.com/"$N".git"
+
+RDEPEND=""
+BDEPEND="procps"
+RECOMMENDED=""
+
+INSTALL="$N.install"
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_install() {
+	docp etc usr "$destdir"
+}
+

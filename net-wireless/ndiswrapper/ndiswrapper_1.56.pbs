@@ -5,7 +5,7 @@
 DESCRIPTION="Wrapper for using Windows drivers for some wireless cards"
 HOMEPAGE="http://sourceforge.net/projects/ndiswrapper/files/stable/"
 LICENSE="GPL"
-PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
+PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
 
 SRC_URI="http://nchc.dl.sourceforge.net/project/"$N"/stable/"$V"/"$N-$V".tar.gz"
 

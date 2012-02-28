@@ -5,7 +5,7 @@
 DESCRIPTION="Utilities to deal with user accounts"
 HOMEPAGE="http://pkg-shadow.alioth.debian.org/"
 LICENSE="BSD"
-PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
+PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
 
 SRC_URI="ftp://pkg-shadow.alioth.debian.org/pub/pkg-shadow/"$N-$V".tar.bz2"
 

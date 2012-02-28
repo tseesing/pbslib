@@ -5,7 +5,7 @@
 DESCRIPTION="GIT - the stupid content tracker, the revision control system"
 HOMEPAGE="http://www.git-scm.com/"
 LICENSE="GPL"
-PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
+PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
 
 SRC_URI="http://git-core.googlecode.com/files/"$N-$V".tar.gz"
 CHECKSUM="ed51ef5ef250daaa6e98515cf2641820cd268d4c"

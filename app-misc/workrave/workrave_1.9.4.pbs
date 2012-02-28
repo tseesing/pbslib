@@ -6,7 +6,7 @@ DESCRIPTION="helpful utility to attack Repetitive Strain Injury (RSI)"
 COMMENTS="Workrave is a program that assists in the recovery and prevention of Repetitive Strain Injury (RSI)."
 HOMEPAGE="http://www.workrave.org/"
 LICENSE="GPL"
-PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
+PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
 
 SRC_URI="http://sourceforge.net/projects/"$N"/files/"$N"/"$V"/"$N-$V".tar.gz"
 CHECKSUM="d5eaf399b38b063053cff1a8527cba8e"

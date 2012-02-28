@@ -5,7 +5,7 @@
 DESCRIPTION="the virtual filesystem abstraction library used as the foundations for GNOME."
 HOMEPAGE=" http://developer.gnome.org/doc/API/gnome-vfs/"
 LICENSE="GPL"
-PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
+PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
 
 SRC_URI="http://ftp.acc.umu.se/pub/gnome/platform/2.32/2.32.1/sources/"$N-$V".tar.bz2"
 

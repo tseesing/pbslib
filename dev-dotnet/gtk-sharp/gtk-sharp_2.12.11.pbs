@@ -5,7 +5,7 @@
 DESCRIPTION="GtkSharp's gtk module of the gtk-sharp tarball"
 HOMEPAGE="http://www.mono-project.com/GtkSharp"
 LICENSE="GPL"
-PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
+PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
 
 SRC_URI="http://ftp.novell.com/pub/mono/sources/gtk-sharp212/"$N-$V".tar.bz2"
 

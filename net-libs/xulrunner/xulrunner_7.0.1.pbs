@@ -5,7 +5,7 @@
 DESCRIPTION="Mozilla Runtime Environment"
 HOMEPAGE="http://wiki.mozilla.org/XUL:Xul_Runner"
 LICENSE="Multi-licensing"
-PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
+PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
 
 SRC_URI="ftp://ftp.mozilla.org/pub/mozilla.org/firefox/releases/"$V"/source/firefox-"$V".source.tar.bz2"
 

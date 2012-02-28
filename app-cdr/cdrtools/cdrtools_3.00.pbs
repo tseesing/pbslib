@@ -5,7 +5,7 @@
 DESCRIPTION="A set of tools for CD/DVD reading and recording, including cdrecord"
 COMMENTS="http://cdrecord.berlios.de/private/cdrecord.html"
 LICENSE="GPL"
-PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
+PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
 
 SRC_URI="ftp://ftp.berlios.de/pub/cdrecord/"$N-$V".tar.bz2"
 

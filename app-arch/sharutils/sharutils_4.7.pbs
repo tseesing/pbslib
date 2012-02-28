@@ -5,7 +5,7 @@
 DESCRIPTION="Tools to deal with shar archives"
 HOMEPAGE="http://www.gnu.org/software/sharutils/"
 LICENSE="GPL"
-PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
+PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
  
 SRC_URI="ftp://ftp.gnu.org/gnu/"$N"/REL-4.7/"$N-$V".tar.bz2"
 

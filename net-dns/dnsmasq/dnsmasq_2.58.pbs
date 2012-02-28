@@ -5,7 +5,7 @@
 DESCRIPTION="Lightweight, easy to configure DNS forwarder and DHCP server"
 HOMEPAGE="http://www.thekelleys.org.uk/dnsmasq/doc.html"
 LICENSE="GPL"
-PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
+PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
 
 SRC_URI="http://www.thekelleys.org.uk/"$N"/"$N-$V".tar.gz"
 

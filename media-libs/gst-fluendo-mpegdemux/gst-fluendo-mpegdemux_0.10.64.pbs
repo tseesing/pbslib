@@ -5,7 +5,7 @@
 DESCRIPTION="GStreamer plugin for demuxing of MPEG2 streams"
 HOMEPAGE="http://core.fluendo.com/gstreamer/src/gst-fluendo-mpegdemux/"
 LICENSE="GPL"
-PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
+PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
 
 SRC_URI="http://core.fluendo.com/gstreamer/src/"$N"/"$N-$V".tar.bz2"
 

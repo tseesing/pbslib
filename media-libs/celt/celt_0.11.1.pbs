@@ -5,7 +5,7 @@
 DESCRIPTION="CELT is a very low delay audio codec designed for high-quality communications."
 HOMEPAGE="http://www.celt-codec.org/"
 LICENSE="GPL"
-PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
+PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
 
 SRC_URI="http://downloads.xiph.org/releases/"$N"/"$N-$V".tar.gz"
 

@@ -5,7 +5,7 @@
 DESCRIPTION="language packs for firefox"
 HOMEPAGE="http://www.mozilla.com/firefox"
 LICENSE="MPL GPL"
-PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
+PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
 YARCH="any"
 
 SRC_URI="ftp://ftp.mozilla.org/pub/mozilla.org/firefox/releases/"$V"/linux-i686/xpi/zh-CN.xpi

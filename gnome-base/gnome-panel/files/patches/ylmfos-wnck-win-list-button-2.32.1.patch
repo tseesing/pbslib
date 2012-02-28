@@ -1,0 +1,12 @@
+diff -ruN gnome-panel-2.32.1-ylmf1.orig/applets/wncklet/window-list.c gnome-panel-2.32.1-ylmf1/applets/wncklet/window-list.c
+--- gnome-panel-2.32.1-ylmf1.orig/applets/wncklet/window-list.c	2012-02-28 09:41:33.763322399 +0800
++++ gnome-panel-2.32.1-ylmf1/applets/wncklet/window-list.c	2012-02-28 09:47:33.366654565 +0800
+@@ -146,7 +146,7 @@
+ 	case PANEL_COLOR_BACKGROUND:
+ 	case PANEL_PIXMAP_BACKGROUND:
+ 		wnck_tasklist_set_button_relief (WNCK_TASKLIST (tasklist->tasklist),
+-						 GTK_RELIEF_NONE);
++						 GTK_RELIEF_NORMAL);/*GTK_RELIEF_NONE); */
+ 		break;
+ 	}
+ }

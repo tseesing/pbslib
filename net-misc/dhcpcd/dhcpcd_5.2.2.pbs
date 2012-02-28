@@ -5,7 +5,7 @@
 DESCRIPTION="A RFC 2131 compliant DHCP client"
 HOMEPAGE="http://roy.marples.name/projects/dhcpcd/"
 LICENSE="BSD"
-PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
+PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
 
 SRC_URI="http://roy.marples.name/downloads/"$N"/"$N-$V".tar.bz2"
 

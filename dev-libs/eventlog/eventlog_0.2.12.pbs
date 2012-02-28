@@ -6,7 +6,7 @@ DESCRIPTION="Support library for syslog-ng"
 HOMEPAGE="http://www.balabit.com/products/syslog_ng/"
 REPO=""
 LICENSE="GPL"
-PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
+PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
 
 SRC_URI="http://www.balabit.com/downloads/files?path=/syslog-ng/sources/3.2.2/source/"${N}_$V$R".tar.gz"
 

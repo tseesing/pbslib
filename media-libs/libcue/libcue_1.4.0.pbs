@@ -6,7 +6,7 @@ DESCRIPTION="CUE Sheet Parser Library"
 COMMENTS="Libcue is intended to parse a so called cue sheet from a char string or a file pointer. For handling of the parsed data a convenient API is available."
 HOMEPAGE="http://libcue.sourceforge.net"
 LICENSE="GPLv2+"
-PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
+PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
 
 SRC_URI="http://downloads.sourceforge.net/"$N"/"$N-$V".tar.bz2"
 

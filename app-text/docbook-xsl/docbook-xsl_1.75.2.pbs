@@ -5,7 +5,7 @@
 DESCRIPTION="XSL Stylesheets for Docbook"
 HOMEPAGE="http://wiki.docbook.org/topic/DocBookXslStylesheets"
 LICENSE="custom"
-PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
+PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
 
 SRC_URI="http://downloads.sourceforge.net/docbook/"$N-$V".tar.bz2 http://downloads.sourceforge.net/docbook/"$N"-doc-"$V".tar.bz2"
 

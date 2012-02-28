@@ -4,7 +4,7 @@
 DaESCRIPTION="DOS filesystem tools - provides mkdosfs, mkfs.msdos, mkfs.vfa"
 HOMEPAGE="http://www.daniel-baumann.ch/software/dosfstools/"
 LICENSE="GPL2"
-PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
+PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
 
 SRC_URI="http://www.daniel-baumann.ch/software/"$N"/"$N-$V".tar.bz2"
 

@@ -4,10 +4,10 @@
 
 DESCRIPTION="A powerful light-weight programming language designed for extending applications"
 HOMEPAGE="http://www.lua.org/docs.html"
-LICENSE="MIT license"
-PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
+LICENSE="MIT"
+PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
  
-SRC_URI="http://www.lua.org/ftp/"$N-$V$R".tar.gz"
+SRC_URI="http://www.lua.org/ftp/"$N-$V".tar.gz"
 
 RDEPEND="glibc readline ncurses"
 BDEPEND=""
@@ -16,12 +16,18 @@ pbs_unpack() {
         dounpack
 }
 
+pbs_patch () {
+	dopatch lua-arch.patch
+}
+
 pbs_build() {
+	[ "$ARCH" == "x86_64" ] && export CFLAGS="$CFLAGS -fPIC"
 	domake linux
 }
 
 pbs_install() {
-	make INSTALL_TOP="$destdir"/usr install
-	domv "$destdir"/usr/man  "$destdir"/usr/share
-	docp etc/*.pc "$destdir"/usr/lib/pkgconfig
+	domkinstall INSTALL_TOP="$destdir"/usr 
+	dodoc COPYRIGHT
 }
+
+

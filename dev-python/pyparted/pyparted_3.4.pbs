@@ -5,7 +5,7 @@
 DESCRIPTION="Python bindings for sys-apps/parted"
 HOMEPAGE="https://fedorahosted.org/pyparted/"
 LICENSE="GPL"
-PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
+PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
 
 SRC_URI="https://fedorahosted.org/releases/p/y/"$N"/"$N-$V".tar.gz"
 
@@ -28,5 +28,5 @@ pbs_build() {
 
 pbs_install() {
 	domkinstall
-	dodoc ChangeLog NEWS README TODO
 }
+

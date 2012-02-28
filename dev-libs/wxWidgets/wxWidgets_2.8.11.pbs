@@ -5,7 +5,7 @@
 DESCRIPTION="A C++ library that lets developers create applications."
 HOMEPAGE="http://wxwidgets.org/"
 LICENSE="GPL"
-PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
+PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
 
 SRC_URI="http://downloads.sourceforge.net/project/wxwindows/"$V"/"$N-$V".tar.bz2"
 

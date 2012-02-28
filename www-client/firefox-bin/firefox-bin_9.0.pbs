@@ -5,7 +5,7 @@
 DESCRIPTION="Firefox Web Browser (binary version)."
 HOMEPAGE="http://www.mozilla.com/firefox"
 LICENSE="custom"
-PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
+PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
 
 SRC_URI="ftp://ftp.mozilla.org/pub/mozilla.org/firefox/releases/"$V"/linux-i686/zh-CN/firefox-"$V".tar.bz2"
 

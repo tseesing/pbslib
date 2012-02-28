@@ -5,7 +5,7 @@
 DESCRIPTION="GRand Unified Bootloader, version 2 (with Ubuntu patches)."
 HOMEPAGE="http://www.gnu.org/software/grub/"
 LICENSE="GPL3"
-PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
+PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
 PRIORITY="required"
 
 SRC_URI="grub2-1.99-ubuntu-11.10.tar.bz2"
@@ -49,7 +49,6 @@ pbs_build() {
 
 pbs_install() {
 	domkinstall
-	dodoc AUTHORS COPYING README
 	
 	# FIXME
 	cd po

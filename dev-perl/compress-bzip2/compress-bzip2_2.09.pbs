@@ -5,7 +5,7 @@
 DESCRIPTION="Interface to Bzip2 compression library"
 HOMEPAGE="http://search.cpan.org/dist/$_realname"
 LICENSE="GPL PerlArtistic"
-PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
+PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
 
 SRC_URI="http://mirror.osqdu.org/CPAN/authors/id/A/AR/ARJAY/Compress-Bzip2-"$V".tar.gz"
 

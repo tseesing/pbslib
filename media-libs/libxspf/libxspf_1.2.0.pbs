@@ -6,7 +6,7 @@ DESCRIPTION="Playlist handling library"
 COMMENTS="libxspf (formerly called libSpiff) brings XSPF playlist reading and writing support to your C++ application. Both version 0 and 1 are supported."
 HOMEPAGE="http://libspiff.sourceforge.net"
 LICENSE="GPLv2+"
-PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
+PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
 
 SRC_URI="http://downloads.xiph.org/releases/xspf/"$N-$V".tar.lzma"
 

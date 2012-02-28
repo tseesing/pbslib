@@ -6,7 +6,7 @@ DESCRIPTION="Complete solution to record, convert and stream audio and video."
 COMMENTS="FFmpeg is the leading multimedia framework, able to decode, encode, transcode, mux, demux, stream, filter and play pretty much anything that humans and machines have created. "
 HOMEPAGE="http://ffmpeg.org/"
 LICENSE="GPL"
-PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
+PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
 
 SRC_URI="http://ffmpeg.org/releases/"$N-$V".tar.gz"
 CHECKSUM="a75f1c4c06dfebe6b0ec2a53f77f8624"

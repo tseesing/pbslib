@@ -5,7 +5,7 @@
 DESCRIPTION="GNU lexical analyser generator"
 HOMEPAGE="http://flex.sourceforge.net/"
 LICENSE="GPL"
-PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
+PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
 
 SRC_URI="http://prdownloads.sourceforge.net/"$N"/"$N-$V".tar.bz2"
 
@@ -31,7 +31,6 @@ pbs_build() {
 pbs_install() {
 	domkinstall
 	dodoc COPYING
-
 	cd "$destdir"
 	
 	# A few programs do not know about flex yet and try to run its predecessor, lex.
@@ -41,6 +40,6 @@ EOF
 	chmod 755 usr/bin/lex
 	
 	# Some packages that expect to find the lex library in /usr/lib.
-	doln /usr/lib/ibfl.a /usr/lib/libl.a
- }
+	doln /usr/lib/ibfl.a usr/lib/libl.a
+}
 

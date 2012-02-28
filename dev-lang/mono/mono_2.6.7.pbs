@@ -5,7 +5,7 @@
 DESCRIPTION="Free implementation of the .NET platform including runtime and compiler"
 HOMEPAGE="http://www.go-mono.com http://ftp.novell.com/pub/mono/sources-stable/"
 LICENSE="LGPLv2, MIT X11"
-PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
+PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
 
 SRC_URI="http://download.mono-project.com/sources/"$N"/"$N-$V".tar.bz2"
 

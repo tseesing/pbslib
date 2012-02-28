@@ -5,7 +5,7 @@
 DESCRIPTION="command line libofetion client implemention (CLI without libofetion)"
 HOMEPAGE="http://code.google.com/p/ofetion/"
 LICENSE="GPLv2"
-PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
+PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
 
 SRC_URI="http://ofetion.googlecode.com/files/"$N-$V".tar.gz"
 CHECKSUM="59581cdcd113a1e2b35d9d11c52e8fc06f20e207"

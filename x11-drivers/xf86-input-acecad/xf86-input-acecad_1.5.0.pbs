@@ -1,0 +1,30 @@
+#
+# Ylmf OS package build script
+#
+
+DESCRIPTION="Acecad Flair input driver"
+HOMEPAGE="http://xorg.freedesktop.org/"
+LICENSE="GPL"
+PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
+
+SRC_URI="http://xorg.freedesktop.org/archive/individual/driver/"$N-$V".tar.bz2"
+
+RDEPEND="glibc sysfsutils"
+BDEPEND="xorg-server-dev"
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_config() {
+	doconfig
+}
+
+pbs_build() {
+	domake
+}
+
+pbs_install() {
+	domkinstall
+}
+

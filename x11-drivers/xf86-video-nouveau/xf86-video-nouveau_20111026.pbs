@@ -5,9 +5,9 @@
 DESCRIPTION="Open Source 3D acceleration driver for nVidia cards (experimental)"
 HOMEPAGE="http://nouveau.freedesktop.org/"
 LICENSE="MIT"
-PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
+PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
 
-SRC_URI="git://anongit.freedesktop.org/git/nouveau/"$N"/"
+SRC_URI="git://anongit.freedesktop.org/git/nouveau/"$N".git"
 
 RDEPEND="glibc libdrm udev"
 BDEPEND="dri2proto fontsproto randrproto renderproto videoproto xextproto xf86driproto xproto"

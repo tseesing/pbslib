@@ -5,7 +5,7 @@
 DESCRIPTION="A in-process library that implements SQL database engine"
 HOMEPAGE="http://www.sqlite.org"
 LICENSE="custom"
-PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
+PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
 
 SRC_URI="http://www.sqlite.org/"$N-$V".tar.gz"
 

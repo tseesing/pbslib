@@ -5,7 +5,7 @@
 DESCRIPTION="Linux Kernel with ylmfos patches, split into linux-kernel-headers"
 HOMEPAGE="http://www.kernel.org"
 LICENSE="GPLv2"
-PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
+PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
 
 SRC_URI="http://www.kernel.org/pub/linux/kernel/v3.0/linux-"$V".tar.bz2"
 CHECKSUM="456e7deb700fb76f2c3c3af5c0ad643b"
@@ -91,8 +91,14 @@ linux-kernel-headers_install() {
 	docp arch/"$KARCH"/Makefile           "$KDIR"/arch/"$KARCH"/
 	docp .config 			      "$KDIR"/
 
+	# Copy base include files
 	for i in acpi asm-generic config crypto drm generated linux math-emu \
 	    media net pcmcia scsi sound trace video xen; do
+		docp include/"${i}" 	      "$KDIR"/include/
+	done
+
+	# For klibc compile
+	for i in mtd rdma; do
 		docp include/"${i}" 	      "$KDIR"/include/
 	done
 
@@ -144,9 +150,14 @@ linux-kernel-headers_install() {
 	# Add xfs and shmem for aufs building
 	docp fs/xfs/xfs_sb.h                   "$KDIR"/fs/xfs/
 
-	# Copy in Kconfig files
+	# Copy Kconfig files
 	for i in `find . -name "Kconfig*"`; do
-		docp "${i}" "$KDIR"/"$(dirname ${i})"
+		docp "${i}" 			"$KDIR"/"$(dirname ${i})"
+	done
+	
+	# Copy Kbuild files
+	for i in `find . -name "Kbuild*"`; do
+		docp "${i}" 			"$KDIR"/"$(dirname ${i})"
 	done
 
 	chown -R root.root "$KDIR"

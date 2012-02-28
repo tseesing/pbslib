@@ -5,7 +5,7 @@
 DESCRIPTION="Python Bindings for Alsa lib"
 HOMEPAGE="http://alsa-project.org/"
 LICENSE="GPL"
-PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
+PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
 
 SRC_URI="ftp://ftp.alsa-project.org/pub/"$N"/"$N-$V".tar.bz2"
 CHECKSUM="063efe545883f8b89005025460222ee3"

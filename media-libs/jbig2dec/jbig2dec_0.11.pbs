@@ -6,7 +6,7 @@ DESCRIPTION="A decoder implementation of the JBIG2 image compression format"
 COMMENTS="jbig2dec is a decoder implementation of the JBIG2 image compression format. JBIG2 is designed for lossy or lossless encoding of 'bilevel' (1-bit monochrome) images at moderately high resolution, and in particular scanned paper documents. In this domain it is very efficient, offering compression ratios on the order of 100:1."
 HOMEPAGE="http://jbig2dec.sourceforge.net/"
 LICENSE="GPLv2+"
-PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
+PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
 
 SRC_URI="http://ghostscript.com/~giles/jbig2/"$N"/"$N-$V".tar.gz"
 

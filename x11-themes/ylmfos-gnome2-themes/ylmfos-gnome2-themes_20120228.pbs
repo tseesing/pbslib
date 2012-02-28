@@ -1,0 +1,34 @@
+#
+# Ylmf OS package build script
+#
+
+DESCRIPTION="gnome2 desktop themes for Ylmf OS"
+HOMEPAGE="www.ylmf.com"
+LICENSE="GPL"
+PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
+YARCH="any"
+
+SRC_URI="git://git.ylmf.com/ylmfos-themes.git"
+
+PROVIDE="ylmfos-gnome2-themes-white ylmfos-gnome2-themes-black" 
+
+pbs_unpack() {
+	dounpack
+}
+
+ylmfos-gnome2-themes-white_install() {
+	DESCRIPTION="gnome2 desktop theme for Ylmf OS, while color"
+	RDEPEND="murrine"
+	INSTALL="$N.install"
+	
+	docp ylmfos-white/usr "$destdir"/
+}
+
+ylmfos-gnome2-themes-black_install() {
+	DESCRIPTION="gnome2 desktop theme for Ylmf OS, black color"
+	RDEPEND="murrine"
+	INSTALL="$N.install"
+	
+	docp ylmfos-black/usr "$destdir"/
+}
+

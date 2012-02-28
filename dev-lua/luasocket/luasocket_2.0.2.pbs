@@ -4,26 +4,26 @@
 
 DESCRIPTION="Networking support library for the Lua language."
 HOMEPAGE="http://www.tecgraf.puc-rio.br/~diego/professional/luasocket/"
-REPO=""
-LICENSE="GPL"
-PRIORITY=""
-PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
+LICENSE="MIT"
+PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
 
-SRC_URI="http://luaforge.net/frs/download.php/2664/"$N-$V$R".tar.gz"
+SRC_URI="http://luaforge.net/frs/download.php/2664/"$N-$V".tar.gz"
 
-RDEPEND=""
-BDEPEND=" lua"
+RDEPEND="lua"
+BDEPEND=""
 RECOMMENDED=""
 CONFLICT=""
-
-NOTES=""
 
 pbs_unpack() {
         dounpack
 }
 
+pbs_patch() {
+	dopatch luasocket-arch.patch
+	dopatch luasocket-unixsocket.patch
+}
+
 pbs_config() {
-	dopatch luasocket-2.0.2-unixsocket.patch
 	config+=""
 	doconfig
 }
@@ -33,5 +33,7 @@ pbs_build() {
 }
 
 pbs_install() {
-	domkinstall INSTALL_TOP_SHARE="$destdir"/usr/share/lua/5.1 INSTALL_TOP_LIB="$destdir"/usr/lib/lua/5.1
+	domkinstall 
+	dodoc LICENSE
 }
+

@@ -5,7 +5,7 @@
 DESCRIPTION="the backend of the LXDE default file manager PCManFM."
 HOMEPAGE="http://pcmanfm.sourceforge.net/"
 LICENSE="GPL"
-PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
+PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
 
 SRC_URI="http://sourceforge.net/projects/pcmanfm/files/PCManFM%20%2B%20Libfm%20%28tarball%20release%29/libfm%20%28required%20by%20PCManFM%29/"$N-$V".tar.gz"
 

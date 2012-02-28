@@ -5,9 +5,10 @@
 DESCRIPTION="Berkeley Data base library"
 HOMEPAGE="http://download-east.oracle.com/berkeley-db/"
 LICENSE="custom"
-PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
+PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
 
 SRC_URI="http://download.oracle.com/"$N"/db-"$V".tar.gz"
+CHECKSUM="88466dd6c13d5d8cddb406be8a1d4d92"
 
 RDEPEND="gcc-lib glibc"
 BDEPEND=""
@@ -31,6 +32,8 @@ pbs_build() {
 pbs_install() {
 	domkinstall docdir=/usr/share/doc/db/
 	dodoc ../LICENSE
-}
 
+	# Drop documents
+	rm -rf "$destdir"/usr/share/doc/db
+}
 

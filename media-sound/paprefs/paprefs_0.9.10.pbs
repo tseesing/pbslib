@@ -5,7 +5,7 @@
 DESCRIPTION="A simple GTK-based configuration dialog for PulseAudio"
 HOMEPAGE="http://0pointer.de/lennart/projects/paprefs"
 LICENSE="GPL"
-PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
+PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
 
 SRC_URI="http://freedesktop.org/software/pulseaudio/"$N"/"$N-$V".tar.xz"
 

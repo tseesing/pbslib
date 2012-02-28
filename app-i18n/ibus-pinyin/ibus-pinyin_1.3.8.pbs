@@ -5,7 +5,7 @@
 DESCRIPTION="Chinese PinYin IMEngine for IBus Framework"
 HOMEPAGE="http://code.google.com/p/ibus/"
 LICENSE="GPL"
-PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
+PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
  
 SRC_URI="ftp://lug.mtu.edu/gentoo/distfiles/"$N-$V".tar.gz 
 	 ftp://lug.mtu.edu/gentoo/distfiles/pinyin-database-1.2.99.tar.bz2 "

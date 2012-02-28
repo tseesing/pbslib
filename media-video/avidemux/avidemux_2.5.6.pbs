@@ -6,7 +6,7 @@ DESCRIPTION="Video editor designed for simple cutting, filtering and encoding ta
 COMMENTS="Avidemux is a free video editor designed for simple cutting, filtering and encoding tasks. It supports many file types, including AVI, DVD compatible MPEG files, MP4 and ASF, using a variety of codecs. Tasks can be automated using projects, job queue and powerful scripting capabilities."
 HOMEPAGE="http://fixounet.free.fr/avidemux/"
 LICENSE="GPL"
-PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
+PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
 
 SRC_URI="http://downloads.sourceforge.net/"$N"/"${N}_$V".tar.gz"
 CHECKSUM="00e479dd806b94a98d3f0f40639e88a9"

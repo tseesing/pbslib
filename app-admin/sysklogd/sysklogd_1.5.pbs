@@ -5,7 +5,7 @@
 DESCRIPTION="Kernel and system logging daemons"
 HOMEPAGE="http://www.infodrom.org/projects/sysklogd/index.php"
 LICENSE="GPL"
-PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
+PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
 
 SRC_URI="http://www.infodrom.org/projects/"$N"/download/"$N-$V".tar.gz"
 

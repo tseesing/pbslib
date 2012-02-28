@@ -5,7 +5,7 @@
 DESCRIPTION="AAC audio decoding library"
 HOMEPAGE="http://www.audiocoding.com/faad2.html"
 LICENSE="GPL"
-PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
+PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
 
 SRC_URI="http://downloads.sourceforge.net/project/faac/"$N"-src/"$N-$V"/"$N-$V".tar.bz2"
 
@@ -28,6 +28,6 @@ pbs_build() {
 
 pbs_install() {
 	domkinstall
-	dodoc AUTHORS ChangeLog NEWS README TODO
 }
+
 

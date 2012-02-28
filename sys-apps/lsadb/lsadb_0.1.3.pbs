@@ -6,7 +6,7 @@ DESCRIPTION="Prints out information on all devices attached to the ADB bus"
 COMMENTS="This tool is not very usefull on computers without an ADB-Bus. That are mostly Apple Macintosh Computers. So please don't try to use this utillity on an i386 machine."
 HOMEPAGE="http://pbbuttons.berlios.de/projects/lsadb/"
 LICENSE="GPL"
-PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
+PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
 
 SRC_URI="ftp://ftp.berlios.de/pub/pbbuttons/"$N-$V".tgz"
 CHECKSUM="eb832030a2d20871b7b55a01b871d395"

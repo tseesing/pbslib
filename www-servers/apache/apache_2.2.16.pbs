@@ -5,7 +5,7 @@
 DESCRIPTION="The Apache Web Server."
 HOMEPAGE="http://httpd.apache.org/"
 LICENSE="GPL-2"
-PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
+PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
 
 SRC_URI="http://labs.renren.com/apache-mirror/httpd/httpd-"$V$R".tar.bz2"
 

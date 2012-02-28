@@ -6,7 +6,7 @@ DESCRIPTION="Small but very powerful text-based mail client"
 COMMENTS="Mutt is a small but very powerful text-based mail client for Unix operating systems."
 HOMEPAGE="http://www.mutt.org/"
 LICENSE="GPL"
-PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
+PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
 
 SRC_URI="ftp://ftp.mutt.org/mutt/devel/"$N-$V".tar.gz"
 

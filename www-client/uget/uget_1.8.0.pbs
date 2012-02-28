@@ -5,7 +5,7 @@
 DESCRIPTION="Download manager using gtk+ and libcurl"
 HOMEPAGE="http://urlget.sourceforge.net/"
 LICENSE="GPL"
-PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
+PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
 
 SRC_URI="http://nchc.dl.sourceforge.net/project/urlget/uget%20%28stable%29/"$V"/"$N-$V".tar.gz"
 

@@ -5,7 +5,7 @@
 DESCRIPTION="nvidia opensource X driver - firmware needed for NV40 and above"
 HOMEPAGE="http://nouveau.freedesktop.org/"
 LICENSE="custom"
-PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
+PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
 YARCH="any"
 
 SRC_URI="http://people.freedesktop.org/~pq/nouveau-drm/"$N-$V".tar.gz"

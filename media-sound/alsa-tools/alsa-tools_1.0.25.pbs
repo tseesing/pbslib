@@ -5,7 +5,7 @@
 DESCRIPTION="Advanced Linux Sound Architecture tools"
 HOMEPAGE="http://www.alsa-project.org/"
 LICENSE="GPL"
-PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
+PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
 
 SRC_URI="ftp://ftp.alsa-project.org/pub/tools/"$N-$V".tar.bz2"
 CHECKSUM="57bfec98a814d12e0f7ab379aaeccd87"
@@ -32,5 +32,9 @@ pbs_install() {
 		domkinstall ||break 1
 		cd -
         done
+
+	# Cleanup
+	cd "$destdir"
+	rm -fr usr/share/applications/hdspmixer.desktop usr/share/applications/hdspconf.desktop
 }
 

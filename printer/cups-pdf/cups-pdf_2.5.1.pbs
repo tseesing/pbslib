@@ -5,7 +5,7 @@
 DESCRIPTION="PDF printer for cups"
 HOMEPAGE="http://www.cups-pdf.de/"
 LICENSE="GPL"
-PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
+PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
 
 SRC_URI="http://www.physik.uni-wuerzburg.de/~vrbehr/"$N"/src/"${N}_$V".tar.gz"
 
@@ -35,9 +35,5 @@ pbs_install() {
 	
 	# Install config file
 	install -D -m644 cups-pdf.conf "$destdir"/etc/cups/cups-pdf.conf
-
-	#
-	cd ../
-	dodoc ChangeLog COPYING README
 }
 

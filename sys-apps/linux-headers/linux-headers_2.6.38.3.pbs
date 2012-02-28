@@ -5,7 +5,7 @@
 DESCRIPTION="Linux header files for glibc/eglibc"
 HOMEPAGE="http://www.kernel.org"
 LICENSE="GPL2"
-PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
+PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
 YARCH="any"
 
 SRC_URI="http://www.kernel.org/pub/linux/kernel/v2.6/linux-"$V$R".tar.bz2"

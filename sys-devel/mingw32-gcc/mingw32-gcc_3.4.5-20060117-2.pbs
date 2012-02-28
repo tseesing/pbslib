@@ -6,7 +6,7 @@ DESCRIPTION="A C cross-compiler for building Windows executables on Linux(stage 
 HOMEPAGE="http://mingw.sf.net"
 REPO=""
 LICENSE="GPL/LGPL"
-PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
+PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
 
 SRC_URI="http://ncu.dl.sourceforge.net/project/mingw/MinGW/BaseSystem/GCC/Version3/Previous%20Release_%20gcc-3.4.5-20060117-2/gcc-core-"$V$R"-src.tar.gz
 http://ncu.dl.sourceforge.net/project/mingw/MinGW/BaseSystem/GCC/Version3/Previous%20Release_%20gcc-3.4.5-20060117-2/gcc-ada-"$V$R"-src.tar.gz

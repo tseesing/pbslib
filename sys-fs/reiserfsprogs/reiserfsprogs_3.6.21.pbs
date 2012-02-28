@@ -5,7 +5,7 @@
 DESCRIPTION="various utilities for use with the Reiser file system."
 HOMEPAGE="http://www.kernel.org/pub/linux/utils/fs/reiserfs"
 LICENSE="GPL"
-PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
+PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
 
 SRC_URI="http://www.kernel.org/pub/linux/utils/fs/reiserfs/"$N-$V".tar.bz2"
 

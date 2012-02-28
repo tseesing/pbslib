@@ -3,9 +3,9 @@
 DESCRIPTION="a media player aiming to be similar to AmaroK, but for GTK+"
 HOMEPAGE="http://www.exaile.org/"
 LICENSE="GPL"
-PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
+PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
 
-SRC_URI="http://launchpadlibrarian.net/75478776/"$N-$V$R".tar.gz"
+SRC_URI="http://launchpadlibrarian.net/75478776/"$N-$V".tar.gz"
 
 RDEPEND="mutagen"
 BDEPEND=""
@@ -13,8 +13,6 @@ RECOMMENDED=""
 CONFLICT=""
 
 INSTALL="$N.install"
-
-NOTES=""
 
 pbs_unpack() {
         dounpack

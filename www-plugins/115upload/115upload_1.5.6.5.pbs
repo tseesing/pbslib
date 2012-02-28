@@ -6,7 +6,7 @@ DESCRIPTION="115 upload plugin for firefox"
 COMMENTS=""
 HOMEPAGE="www.115.com"
 LICENSE="custom"
-PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
+PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
 
 SRC_URI="http://115.com/static/install/"${N}"_v"$V"_x86.tar.gz"
 
@@ -20,6 +20,6 @@ pbs_unpack() {
 }
 
 pbs_install() {
-	docp 115upload.so usr/lib/mozilla/plugins/
+	docp 115upload.so "$destdir"/usr/lib/mozilla/plugins/
 }
 

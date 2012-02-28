@@ -5,7 +5,7 @@
 DESCRIPTION="Tool for creating compressed filesystem type squashfs, with lzma support"
 HOMEPAGE="http://squashfs.sourceforge.net/"
 LICENSE="GPL"
-PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
+PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
 
 SRC_URI="http://downloads.sourceforge.net/project/squashfs/squashfs/squashfs"$V"/squashfs"$V".tar.gz"
 

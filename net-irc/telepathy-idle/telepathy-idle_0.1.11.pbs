@@ -5,7 +5,7 @@
 DESCRIPTION="Full-featured IRC connection manager for Telepathy."
 HOMEPAGE="http://telepathy.freedesktop.org/wiki/Components"
 LICENSE="GPL"
-PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
+PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
 
 SRC_URI="http://telepathy.freedesktop.org/releases/"$N"/"$N-$V".tar.gz"
 

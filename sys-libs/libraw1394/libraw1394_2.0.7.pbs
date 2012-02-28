@@ -5,7 +5,7 @@
 DESCRIPTION="Provides an API to the Linux IEEE1394 (FireWire) driver"
 HOMEPAGE="https://ieee1394.wiki.kernel.org/index.php/Main_Page"
 LICENSE="GPL"
-PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
+PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
 
 SRC_URI="http://mirror.nexcess.net/kernel.org/linux/libs/ieee1394/"$N-$V".tar.bz2"
 CHECKSUM="997ef18ab8e2e21f3966dff00e92be28"

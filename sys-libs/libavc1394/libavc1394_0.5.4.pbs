@@ -5,7 +5,7 @@
 DESCRIPTION="A library to control A/V devices using the 1394ta AV/C commands."
 HOMEPAGE="http://sourceforge.net/projects/libavc1394/"
 LICENSE="LGPL"
-PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
+PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
 
 SRC_URI="http://downloads.sourceforge.net/sourceforge/"$N"/"$N-$V".tar.gz"
 CHECKSUM="caf0db059d8b8d35d6f08e6c0e1c7dfe"

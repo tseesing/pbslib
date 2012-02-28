@@ -2,21 +2,21 @@
 # Ylmf OS package build script
 #
 
-DESCRIPTION="X11 Apps"
+DESCRIPTION="Tab Window Manager for the X Window System"
 HOMEPAGE="http://www.x.org/wiki/"
-LICENSE="GPL"
-PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
-SRC_URI="http://xorg.freedesktop.org/releases/individual/app/$N-$V.tar.bz2"
+LICENSE="custom"
+PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
+
+SRC_URI="http://xorg.freedesktop.org/releases/individual/app/"$N-$V".tar.bz2"
 
 RDEPEND="libXext libXmu libXt libX11 libSM libICE libxcb util-linux-ng libXau libXdmcp"
-BDEPEND=""
+BDEPEND="util-macros"
 
 pbs_unpack() {
         dounpack
 }
 
 pbs_config() {
-	
 	doconfig
 }
 
@@ -26,8 +26,8 @@ pbs_build() {
 
 pbs_install() {
 	domkinstall
-	#change config
-	mkdir -p "$destdir"/etc/X11 
-	mv "$destdir"/usr/share/X11/twm "$destdir"/etc/X11
-	ln -sf /etc/X11/twm "$destdir"/usr/share/X11
+	dodoc COPYING
+	docp src/system.twmrc "$destdir"/etc/X11/twm/
+	doln /etc/X11/twm     "$destdir"/usr/share/X11/twm
 }
+

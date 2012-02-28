@@ -5,7 +5,7 @@
 DESCRIPTION="Advanced Linux Sound Architecture Library"
 HOMEPAGE="http://www.alsa-project.org/"
 LICENSE="GPL"
-PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
+PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
 
 SRC_URI="ftp://ftp.alsa-project.org/pub/lib/"$N-$V".tar.bz2"
 CHECKSUM="06fe5819020c6684b991dcffc5471304"

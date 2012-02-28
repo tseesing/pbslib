@@ -5,7 +5,7 @@
 DESCRIPTION="English (US, British, Canadian) language dictionary for aspell"
 HOMEPAGE="http://aspell.net"
 LICENSE="GPLv2"
-PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
+PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
 
 SRC_URI="ftp://ftp.gnu.org/gnu/aspell/dict/en/aspell6-en-"$V$R".tar.bz2"
 

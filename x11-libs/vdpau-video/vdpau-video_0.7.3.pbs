@@ -5,7 +5,7 @@
 DESCRIPTION="VDPAU Backend for Video Acceleration (VA) API"
 HOMEPAGE="http://www.splitted-desktop.com/~gbeauchesne/vdpau-video/"
 LICENSE="GPL"
-PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
+PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
 
 SRC_URI="http://www.splitted-desktop.com/~gbeauchesne/"$N"/"$N-$V".tar.gz"
 CHECKSUM="18870e007ecdc50a528861fa55556364"

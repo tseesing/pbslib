@@ -2,10 +2,10 @@
 # Ylmf OS package build script
 #
 
-DESCRIPTION="Free CAD software * for your DWG files"
+DESCRIPTION="Free CAD software for your DWG files"
 HOMEPAGE="http://www.3ds.com/products/draftsight/free-cad-software/"
 LICENSE="custom"
-PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
+PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
 
 SRC_URI="http://dl-ak.solidworks.com/nonsecure/draftsight/beta2/DraftSight.deb"
 

@@ -5,7 +5,7 @@
 DESCRIPTION="C toolkit to manipulate virtual machines"
 HOMEPAGE="http://www.libvirt.org/index.html"
 LICENSE="LGPL"
-PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
+PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
 
 SRC_URI="http://libvirt.org/sources/"$N-$V".tar.gz"
 CHECKSUM="37c4bf8cdd4c76150bc0c1d249945d27"

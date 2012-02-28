@@ -5,7 +5,7 @@
 DESCRIPTION="Driver for ATI/AMD Radeon based video chips, everything from Radeon 7000 to Radeon HD 5890 series."
 HOMEPAGE="http://xorg.freedesktop.org/"
 LICENSE="MIT"
-PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
+PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
 
 SRC_URI="http://www.x.org/releases/X11R7.6/src/driver/"$N-$V$R".tar.bz2"
 

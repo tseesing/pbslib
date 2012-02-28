@@ -6,7 +6,7 @@ DESCRIPTION="Deletes unneeded files to free disk space and maintain privacy"
 HOMEPAGE="http://bleachbit.sourceforge.net/"
 LICENSE="GPL"
 YARCH="any"
-PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
+PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
 
 SRC_URI="http://sourceforge.net/projects/"$N"/files/"$N"/"$V"/"$N-$V".tar.bz2"
 

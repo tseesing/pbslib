@@ -2,6 +2,7 @@
 
 post_install() {
 	gnome2_install_defaut_gconf "string" "/apps/ymenu/orientation" "bottom"
+	gnome2_install_defaut_gconf "string" "/apps/ymenu/Y_Center" "ylmfos-software-center"
 	gnome2_install_defaut_gconf "int" "/apps/ymenu/IconSize" "32"
 }
 

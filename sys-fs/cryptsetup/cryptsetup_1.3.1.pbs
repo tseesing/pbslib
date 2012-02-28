@@ -5,7 +5,7 @@
 DESCRIPTION="Tool to setup encrypted devices with dm-crypt"
 HOMEPAGE="http://code.google.com/p/cryptsetup/"
 LICENSE="GPL"
-PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
+PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
 
 SRC_URI="http://cryptsetup.googlecode.com/files/"$N-$V".tar.bz2"
 
@@ -29,7 +29,6 @@ pbs_build() {
 
 pbs_install() {
 	domkinstall
-	dodoc AUTHORS COPYING NEWS README
 	
 	# For initramfs-tools
 	cd "$destdir"

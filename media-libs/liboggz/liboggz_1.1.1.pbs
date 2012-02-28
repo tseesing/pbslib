@@ -6,7 +6,7 @@ DESCRIPTION="Oggz provides a simple programming interface for reading and writin
 COMMENTS="liboggz is a C library for reading and writing Ogg files and streams. It offers various improvements over the reference libogg, including support for seeking, validation and timestamp interpretation"
 HOMEPAGE="http://www.xiph.org/oggz/"
 LICENSE="GPLv2+"
-PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
+PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
 
 SRC_URI="http://downloads.xiph.org/releases/"$N"/"$N-$V".tar.gz"
 

@@ -5,7 +5,7 @@
 DESCRIPTION="Proxy configuration library"
 HOMEPAGE="http://code.google.com/p/libproxy/"
 LICENSE="GPL"
-PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
+PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
 
 SRC_URI="http://libproxy.googlecode.com/files/"$N-$V".tar.bz2"
 
@@ -35,6 +35,6 @@ pbs_build() {
 
 pbs_install() {
 	domkinstall
-	dodoc AUTHORS COPYING README
 }
+
 

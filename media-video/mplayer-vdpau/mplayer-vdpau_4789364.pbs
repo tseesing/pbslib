@@ -6,7 +6,7 @@ DESCRIPTION="mplayer with vdpau support for nvidia video card"
 HOMEPAGE="ftp://download.nvidia.com/XFree86/vdpau/"
 REPO=""
 LICENSE="GPL"
-PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
+PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
 
 SRC_URI="ftp://download.nvidia.com/XFree86/vdpau/"$N-$V$R".tar.bz2"
 

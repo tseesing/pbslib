@@ -5,7 +5,7 @@
 DESCRIPTION="free implementation of Windows(tm) on Unix"
 HOMEPAGE="http://www.winehq.org/"
 LICENSE="GPL"
-PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
+PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
 
 REPO="testing"
 SRC_URI="http://ibiblio.org/pub/linux/system/emulators/"$N"/"$N-$V".tar.bz2"

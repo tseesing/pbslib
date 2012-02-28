@@ -5,7 +5,7 @@
 DESCRIPTION="Media Player for Linux (subversion snapshot and ffmpeg-git)"
 HOMEPAGE="http://www.mplayerhq.hu/"
 LICENSE="GPL"
-PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
+PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
 
 # svn checkout svn://svn.mplayerhq.hu/mplayer/trunk mplayer and packed by Ylmf OS.
 SRC_URI="$N-$V.tar.bz2"

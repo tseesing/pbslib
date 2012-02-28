@@ -5,7 +5,7 @@
 DESCRIPTION="ACPI is the ACPI Component Architecture tool suite from Intel."
 HOMEPAGE="http://www.intel.com/technology/iapc/acpi/downloads.htm"
 LICENSE="GPL"
-PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
+PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
 
 SRC_URI="http://www.acpica.org/download/acpica-unix-"$V".tar.gz"
 

@@ -5,9 +5,10 @@
 DESCRIPTION="Tools to access a server's filespace and printers via SMB"
 HOMEPAGE="http://www.samba.org"
 LICENSE="GPLv2"
-PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
+PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
 
-SRC_URI="http://"$N".org/"$N"/ftp/stable/"$N-$V".tar.gz"
+SRC_URI="http://samba.org/samba/ftp/stable/"$N-$V".tar.gz"
+CHECKSUM="355b4530c20997e94aebc74cd6ea5307"
 
 RDEPEND="acl attr avahi cups cyrus-sasl dbus e2fsprogs gamin gcc-lib glibc gnutls keyutils krb5 libcap libgcrypt libgpg-error libtasn1 ncurses openldap openssl pam popt readline talloc tdb zlib"
 BDEPEND=""
@@ -51,7 +52,7 @@ pbs_install() {
 	install -d -m777 var/spool/samba
 	install -d var/log/samba
 
-	#
+	# Clean up
 	find . -name "*.old" -type f -exec rm {} \; 2>/dev/null
 }
 

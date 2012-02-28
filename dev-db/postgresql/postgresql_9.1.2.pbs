@@ -5,7 +5,7 @@
 DESCRIPTION="A sophisticated object-relational DBMS"
 HOMEPAGE="http://www.postgresql.org/"
 LICENSE="custom:PostgreSQL"
-PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
+PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
 
 SRC_URI="ftp://ftp.postgresql.org/pub/source/v"$V"/"$N-$V".tar.bz2"
 CHECKSUM="7dbff52221954c46595313eb7f92c3e0"

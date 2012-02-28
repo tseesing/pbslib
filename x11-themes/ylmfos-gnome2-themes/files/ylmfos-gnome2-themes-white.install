@@ -1,0 +1,25 @@
+. /usr/lib/ybs/funcs
+
+post_install() {
+	#
+	gnome2_install_defaut_gconf "string" "/desktop/gnome/interface/toolbar_style" "icons"
+	
+	# Gnome panel
+	gnome2_install_defaut_gconf "string" "/apps/panel/toplevels/top_panel_screen0/background/image" ""
+	gnome2_install_defaut_gconf "string" "/apps/panel/toplevels/top_panel_screen0/background/type" "color"
+	gnome2_install_defaut_gconf "string" "/apps/panel/toplevels/top_panel_screen0/background/color" "#000000"
+	gnome2_install_defaut_gconf "string" "/apps/panel/toplevels/top_panel_screen0/background/opacity" "39321"
+	
+	#
+	gnome2_install_defaut_gconf "string" "/apps/metacity/general/theme"           "ylmfos-white"
+	gnome2_install_defaut_gconf "string" "/desktop/gnome/interface/gtk_theme"     "ylmfos-white"
+	gnome2_install_defaut_gconf "int"    "/apps/compiz/plugins/decoration/allscreens/options/shadow_x_offset" "0"
+	gnome2_install_defaut_gconf "int"    "/apps/compiz/plugins/decoration/allscreens/options/shadow_y_offset" "0"
+	gnome2_install_defaut_gconf "float"  "/apps/compiz/plugins/decoration/allscreens/options/shadow_radius"   "0.0"
+	gnome2_install_defaut_gconf "float"  "/apps/compiz/plugins/decoration/allscreens/options/shadow_opacity"  "1.0"
+}
+
+post_upgrade() {
+	post_install
+}
+

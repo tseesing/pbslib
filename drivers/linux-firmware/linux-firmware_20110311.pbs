@@ -5,7 +5,7 @@
 DESCRIPTION="Linux firmware files"
 HOMEPAGE="http://www.kernel.org/pub/linux/kernel/people/dwmw2/firmware"
 LICENSE="GPL-1 GPL-2 GPL-3 BSD freedist"
-PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
+PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
 
 SRC_URI="http://www.kernel.org/pub/linux/kernel/people/dwmw2/firmware/"$N-$V$R".tar.bz2"
 

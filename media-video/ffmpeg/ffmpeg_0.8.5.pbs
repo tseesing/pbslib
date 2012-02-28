@@ -5,7 +5,7 @@
 DESCRIPTION="Complete solution to record, convert and stream audio and video. Includes libavcodec."
 HOMEPAGE="http://ffmpeg.org/"
 LICENSE="GPLv2 and others depending on your choice of configuration options"
-PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
+PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
 
 SRC_URI="http://ffmpeg.org/releases/"$N-$V".tar.gz"
 

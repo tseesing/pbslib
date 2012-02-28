@@ -5,7 +5,7 @@
 DESCRIPTION=" Telepathy connection manager providing libpurple supported protocols. "
 HOMEPAGE=" http://developer.pidgin.im/wiki/Telepathy"
 LICENSE="GPL"
-PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
+PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
 
 SRC_URI="http://telepathy.freedesktop.org/releases/"$N"/"$N-$V".tar.gz"
 

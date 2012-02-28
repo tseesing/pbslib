@@ -5,7 +5,7 @@
 DESCRIPTION="Firmware for cards that require it"
 HOMEPAGE="http://www.alsa-project.org/"
 LICENSE="GPL"
-PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
+PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
 
 SRC_URI="ftp://ftp.alsa-project.org/pub/firmware/"$N-$V".tar.bz2"
 

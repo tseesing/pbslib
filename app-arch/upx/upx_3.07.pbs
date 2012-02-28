@@ -5,7 +5,7 @@
 DESCRIPTION="Ultimate executable compressor."
 HOMEPAGE="http://upx.sourceforge.net/"
 LICENSE="GPL"
-PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
+PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
 
 SRC_URI="http://upx.sourceforge.net/download/"$N-$V"-src.tar.bz2 
          http://downloads.sourceforge.net/sevenzip/lzma465.tar.bz2"

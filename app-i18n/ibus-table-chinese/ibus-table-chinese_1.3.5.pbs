@@ -1,0 +1,33 @@
+#
+# Ylmf OS package build script
+#
+
+DESCRIPTION="The Table Engine for IBus Framework"
+HOMEPAGE="http://code.google.com/p/ibus/"
+LICENSE="GPL"
+PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
+
+SRC_URI="http://ibus.googlecode.com/files/"$N-$V"-Source.tar.gz"
+CHECKSUM="910b68b6ed6939cd1b47501138e9b4cb015242bd"
+
+RDEPEND="ibus boost ibus-table"
+BDEPEND=""
+RECOMMENDED=""
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_config() {	
+	config+=""
+	doconfig
+}
+
+pbs_build() {
+	domake
+}
+
+pbs_install() {
+	domkinstall
+}
+

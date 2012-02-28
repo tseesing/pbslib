@@ -5,7 +5,7 @@
 DESCRIPTION="Softwarefamily of powerful x86 virtualizatio (binary version)"
 HOMEPAGE="http://www.virtualbox.org/"
 LICENSE="GPL"
-PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
+PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
 
 SRC_URI="http://download.virtualbox.org/virtualbox/"$V"/VirtualBox-"$V"-75467-Linux_x86.run"
 CHECKSUM="22426a818a4973fdf54ab91e4a692d85"
@@ -116,7 +116,7 @@ virtualbox-bin-kernel-module_install() {
 	cd src/vboxhost
 	unset ARCH
 	domake   ||exit 1
-	docp vboxdrv.ko vboxnetadp.ko vboxnetflt.ko vboxpci.ko "$destdir"/lib/modules/"$(uname -r)"/kernel/misc
+	docp vboxdrv.ko vboxnetadp.ko vboxnetflt.ko vboxpci.ko "$destdir"/lib/modules/"$(uname -r)"/misc
 	cd -
 }
 

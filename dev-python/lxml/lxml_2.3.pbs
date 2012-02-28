@@ -5,7 +5,7 @@
 DESCRIPTION="A Pythonic binding for the libxml2 and libxslt libraries"
 HOMEPAGE="http://codespeak.net/lxml/ http://pypi.python.org/pypi/lxml"
 LICENSE="BSD GPL custom"
-PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
+PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
 
 SRC_URI="http://lxml.de/files/"$N-$V".tgz"
 

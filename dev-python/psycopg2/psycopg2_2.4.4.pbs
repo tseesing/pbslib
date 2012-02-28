@@ -5,7 +5,7 @@
 DESCRIPTION="A PostgreSQL database adapter for the Python programming language."
 HOMEPAGE="http://pypi.python.org/pypi/psycopg2"
 LICENSE="LGPL"
-PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
+PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
 
 SRC_URI="http://pypi.python.org/packages/source/p/"$N"/"$N-$V".tar.gz"
 CHECKSUM="639e014ea9ce3aa3306724f12d16d79b"

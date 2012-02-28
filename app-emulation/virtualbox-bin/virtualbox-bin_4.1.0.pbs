@@ -6,7 +6,7 @@ DESCRIPTION="Softwarefamily of powerful x86 virtualizatio (binary version)"
 HOMEPAGE="http://www.virtualbox.org/"
 REPO=""
 LICENSE="GPL-2"
-PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
+PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
 
 SRC_URI="http://dlc.sun.com.edgesuite.net/virtualbox/"$V"/VirtualBox-"$V"-73009-Linux_x86.run"
 

@@ -5,7 +5,7 @@
 DESCRIPTION="Common CA certificates"
 HOMEPAGE="http://packages.debian.org/sid/ca-certificates"
 LICENSE="GPL MPL"
-PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
+PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
 YARCH="any"
 
 SRC_URI="http://ftp.debian.org/debian/pool/main/c/"$N"/"${N}_$V"+nmu1.tar.gz"

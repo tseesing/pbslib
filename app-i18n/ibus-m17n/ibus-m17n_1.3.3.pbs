@@ -1,0 +1,35 @@
+#
+# Ylmf OS package build script
+#
+
+DESCRIPTION="The M17N engine IMEngine for IBus Framework"
+HOMEPAGE="http://code.google.com/p/ibus/"
+LICENSE="LGPL"
+PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
+
+SRC_URI="http://ibus.googlecode.com/files/"$N-$V".tar.gz"
+CHECKSUM="923a3d6416e06c34b63b54c40deff6ab23c6211a"
+
+RDEPEND="m17n-db m17n-lib ibus pyenchant"
+RECOMMENDED=""
+BDEPEND=""
+OPTIONAL=""
+CONFLICT=""
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_config() {
+	config+=""
+	doconfig
+}
+
+pbs_build() {
+	domake
+}
+
+pbs_install() {
+	domkinstall
+}
+

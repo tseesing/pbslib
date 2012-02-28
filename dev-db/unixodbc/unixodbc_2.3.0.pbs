@@ -6,7 +6,7 @@ DESCRIPTION="an open specification for providing predictable API to access Data 
 COMMENTS="ODBC is an open specification for providing application developers with a predictable API with which to access Data Sources. Data Sources include SQL Servers and any Data Source with an ODBC Driver. "
 HOMEPAGE="http://www.unixodbc.org/"
 LICENSE="GPL2 LGPL2.1"
-PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
+PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
 
 SRC_URI="http://www.unixodbc.org/unixODBC-"$V".tar.gz"
 

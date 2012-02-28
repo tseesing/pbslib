@@ -5,11 +5,11 @@
 DESCRIPTION="an open source multimedia framework for television broadcasting."
 HOMEPAGE="http://www.mltframework.org/twiki/bin/view/MLT/"
 LICENSE="GPL"
-PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
+PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
 
 SRC_URI="http://downloads.sourceforge.net/project/"$N"/"$N"/"$N-$V".tar.gz"
 
-RDEPEND="alsa-lib audiofile bzip2 cairo directfb esound expat ffmpeg file flac fontconfig freetype gcc-lib gdk-pixbuf glib2 glibc gtk+ jack-audio-connection-kit lame libao libav libdrm libexif libgsm libICE libid3tag libmad libogg libpng libquicktime libsamplerate libsdl libSM libsndfile libtheora libtool libva libvorbis libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libxml2 libXrandr libXrender libXt mesa nas opencore-amr openssl orc pango pixman python qt-core rtmpdump schroedinger sdl-image sox udev util-linux-ng wavpack x264 xvidcore zlib"
+RDEPEND="alsa-lib audiofile bzip2 cairo directfb esound expat ffmpeg file flac fontconfig freetype gcc-lib gdk-pixbuf glib2 glibc gtk+ jack-audio-connection-kit lame libao ffmpeg libdrm libexif libgsm libICE libid3tag libmad libogg libpng libquicktime libsamplerate libsdl libSM libsndfile libtheora libtool libva libvorbis libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libxml2 libXrandr libXrender libXt mesa nas opencore-amr openssl orc pango pixman python qt-core rtmpdump schroedinger sdl-image sox udev util-linux-ng wavpack x264 xvidcore zlib"
 BDEPEND=""
 RECOMMENDED=""
 CONFLICT=""

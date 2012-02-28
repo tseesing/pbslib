@@ -5,7 +5,7 @@
 DESCRIPTION="A bash script for converting XML and DocBook formatted documents to a variety of output formats"
 HOMEPAGE="https://fedorahosted.org/xmlto/browser"
 LICENSE="GPL"
-PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
+PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
 
 SRC_URI="https://fedorahosted.org/releases/x/m/"$N"/"$N-$V".tar.bz2"
 

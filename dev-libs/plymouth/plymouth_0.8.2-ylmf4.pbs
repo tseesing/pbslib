@@ -5,7 +5,7 @@
 DESCRIPTION="graphical boot animation and logger"
 HOMEPAGE="http://cgit.freedesktop.org/plymouth/"
 LICENSE="GPL"
-PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
+PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
 
 SRC_URI="https://launchpad.net/ubuntu/lucid/+source/"$N"/"$V"-2ubuntu2/+files/"${N}_$V".orig.tar.bz2"
 

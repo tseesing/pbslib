@@ -4,8 +4,8 @@
 
 DESCRIPTION="a feature complete C++ bittorrent implementation focusing on efficiency and scalability"
 HOMEPAGE="http://www.rasterbar.com/products/libtorrent/"
-LICENSE="BSD-license"
-PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
+LICENSE="BSD"
+PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
 
 SRC_URI="http://libtorrent.googlecode.com/files/"$N-$V".tar.gz"
 

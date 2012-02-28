@@ -2,10 +2,10 @@
 
 post_install() {
 	dogroupadd -r "rsyncd"
-	douseradd -c "rsyncd Daemon" -d "/home/rsync" -s "/bin/false" -r -N -G "rsyncd" "rsyncd"
+	douseradd -c "rsyncd Daemon" -d "/home/rsync" -s "/bin/false" -r -N -G "rsyncd" "rsyncd" ||true
 }
 
 post_remove() {
 	douserdel -r "rsyncd"
-	dogroupdel "rsyncd"
+	dogroupdel "rsyncd" |true
 }

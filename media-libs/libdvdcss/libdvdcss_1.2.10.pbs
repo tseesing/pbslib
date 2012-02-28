@@ -5,7 +5,7 @@
 DESCRIPTION="A portable abstraction library for DVD decryption"
 HOMEPAGE="http://www.videolan.org/developers/libdvdcss.html"
 LICENSE="GPL"
-PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
+PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
 
 SRC_URI="http://download.videolan.org/pub/"$N"/"$V"/"$N-$V".tar.bz2"
 

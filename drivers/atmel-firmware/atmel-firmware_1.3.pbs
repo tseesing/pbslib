@@ -5,7 +5,7 @@
 DESCRIPTION="Firmware and config for atmel and atmel_cs wlan drivers included in linux 2.6"
 HOMEPAGE="http://www.thekelleys.org.uk/atmel/"
 LICENSE="custom"
-PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
+PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
 
 SRC_URI="http://www.thekelleys.org.uk/atmel/"$N-$V".tar.gz"
 

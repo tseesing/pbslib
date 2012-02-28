@@ -5,7 +5,7 @@
 DESCRIPTION="A GTK+ interface to MPlayer"
 HOMEPAGE="http://code.google.com/p/gnome-mplayer/"
 LICENSE="GPLv2"
-PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
+PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
 
 SRC_URI="http://gnome-mplayer.googlecode.com/files/"$N-$V".tar.gz"
 
@@ -20,19 +20,22 @@ pbs_unpack() {
         dounpack
 }
 
-pbs_config() {
+pbs_patch() {
 	dopatch ylmfos_strip-audio-mime-1.0.4.patch
-	config+="--with-gio 
-	         --with-dbus
-		 --with-libgpod
-	         --with-libnotify 
-	         --with-libmusicbrainz3 
-		 --with-gpm-new-method 
-		 --disable-schemas-install 
-		 --disable-nautilus 
-		 --with-alsa
-		 --with-pulseaudio
-		 --with-libnotify"
+}
+
+pbs_config() {
+	config+=" --with-gio 
+	          --with-dbus
+		  --with-libgpod
+	          --with-libnotify 
+	          --with-libmusicbrainz3 
+		  --with-gpm-new-method 
+		  --disable-schemas-install 
+		  --disable-nautilus 
+		  --with-alsa
+		  --with-pulseaudio
+		  --with-libnotify "
 	doconfig
 }
 

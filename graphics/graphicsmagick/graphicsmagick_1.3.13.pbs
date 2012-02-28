@@ -5,7 +5,7 @@
 DESCRIPTION="Image processing system"
 HOMEPAGE="http://www.graphicsmagick.org"
 LICENSE="MIT"
-PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
+PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
 
 SRC_URI="http://sourceforge.net/projects/"$N"/files/graphicsmagick/"$V"/GraphicsMagick-"$V".tar.bz2"
 CHECKSUM="1b5128e1868317ec7eb11a718f261a41"

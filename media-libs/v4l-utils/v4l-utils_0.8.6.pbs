@@ -1,0 +1,44 @@
+#
+# Ylmf OS package build script
+#
+
+DESCRIPTION="Userspace tools and conversion library for Video 4 Linux"
+HOMEPAGE="http://people.fedoraproject.org/~jwrdegoede/"
+LICENSE="GPL"
+PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
+
+SRC_URI="http://linuxtv.org/downloads/"$N"/"$N-$V".tar.bz2"
+
+RDEPEND="gcc-lib glibc libjpeg-turbo"
+BDEPEND=""
+RECOMMENDED=""
+
+PROVIDE="qv4l2"
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_build() {
+	domake
+}
+
+pbs_install() {
+	make DESTDIR="$destdir" PREFIX="/usr" install
+	
+	# Splite
+	rm "$destdir"/usr/bin/qv4l2 "$destdir"/usr/share/applications/qv4l2.desktop	
+}
+
+qv4l2_install() {
+	DESCRIPTION="qv4l2"
+	HOMEPAGE="http://people.fedoraproject.org/~jwrdegoede/"
+	LICENSE="GPL"
+	PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
+	RDEPEND="expat fontconfig freetype gcc-lib glib2 glibc libdrm libICE libjpeg-turbo libpng libSM libX11 libXau libxcb libXdmcp libXext libXrender mesa qt-core udev util-linux-ng v4l-utils zlib"
+
+	docp utils/qv4l2/qv4l2 "$destdir"/usr/bin/
+	dodesktop utils/qv4l2/qv4l2.desktop
+	chmod 755 "$destdir"/usr/bin/qv4l2
+}
+

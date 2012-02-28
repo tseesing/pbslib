@@ -5,7 +5,7 @@
 DESCRIPTION="An interpreter for the PostScript language"
 HOMEPAGE="http://www.ghostscript.com/"
 LICENSE="GPLv3 custom"
-PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
+PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
 
 SRC_URI="http://downloads.ghostscript.com/public/"$N-$V".tar.gz"
 

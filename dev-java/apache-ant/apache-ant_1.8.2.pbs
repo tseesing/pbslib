@@ -5,7 +5,7 @@
 DESCRIPTION="Java-based build tool similar to 'make' that uses XML configuration files.(binary version)"
 HOMEPAGE="http://ant.apache.org/"
 LICENSE="apache"
-PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
+PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
 
 SRC_URI="http://archive.apache.org/dist/ant/binaries/"$N-$V"-bin.tar.bz2"
 

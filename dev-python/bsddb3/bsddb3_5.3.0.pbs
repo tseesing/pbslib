@@ -1,0 +1,36 @@
+#
+# Ylmf OS package build script
+#
+
+DESCRIPTION="Python bindings for Berkeley DB"
+HOMEPAGE="http://pypi.python.org/pypi/bsddb3"
+LICENSE="MIT"
+PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
+
+SRC_URI="http://pypi.python.org/packages/source/b/"$N"/"$N-$V".tar.gz"
+CHECKSUM="d5aa4f293c4ea755e84383537f74be82"
+
+RDEPEND=""
+RECOMMENDED=""
+BDEPEND=""
+OPTIONAL=""
+CONFLICT=""
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_config() {
+	config+=""
+	doconfig
+}
+
+pbs_build() {
+	domake
+}
+
+pbs_install() {
+	domkinstall
+}
+
+

@@ -5,7 +5,7 @@
 DESCRIPTION="Linux Key Management Utilities"
 HOMEPAGE="http://www.kernel.org/"
 LICENSE="GPL"
-PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
+PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
 
 SRC_URI="http://people.redhat.com/dhowells/"$N"/"$N-$V".tar.bz2"
 
@@ -23,6 +23,6 @@ pbs_build() {
 
 pbs_install() {
 	domkinstall
-	dodoc README
 }
+
 

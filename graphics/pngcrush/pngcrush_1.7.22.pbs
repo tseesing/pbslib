@@ -5,7 +5,7 @@
 DESCRIPTION="Portable Network Graphics (PNG) optimizing utility."
 HOMEPAGE="http://pmt.sourceforge.net/pngcrush/"
 LICENSE="GPL"
-PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
+PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
 
 SRC_URI="http://sourceforge.net/projects/pmt/files/"$N"/"$V"/"$N-$V".tar.bz2"
 CHECKSUM="85bf51f20ed9c8d10c0d385d08452f1c"

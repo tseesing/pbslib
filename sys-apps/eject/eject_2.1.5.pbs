@@ -5,7 +5,7 @@
 DESCRIPTION="A command to eject a disc from the CD-ROM drive"
 HOMEPAGE="http://eject.sourceforge.net/"
 LICENSE="GPL"
-PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
+PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
 
 SRC_URI="http://tx-us.lunar-linux.org/lunar/mirrors/"$N-$V".tar.gz"
 
@@ -27,6 +27,6 @@ pbs_build() {
 
 pbs_install() {
 	domkinstall
-	dodoc AUTHORS ChangeLog COPYING INSTALL NEWS README
 }
+
 

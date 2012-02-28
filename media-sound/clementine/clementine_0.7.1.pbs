@@ -6,7 +6,7 @@ DESCRIPTION="A modern music player and library organizer based on Amarok 1.4 and
 COMMENTS="Clementine is a multiplatform music player. It is inspired by Amarok 1.4, focusing on a fast and easy-to-use interface for searching and playing your music."
 HOMEPAGE="http://code.google.com/p/clementine-player/"
 LICENSE="GPLv3"
-PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
+PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
 
 REPO="testing"
 SRC_URI="http://clementine-player.googlecode.com/files/"$N-$V".tar.gz"
