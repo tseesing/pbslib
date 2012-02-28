@@ -1,5 +1,0 @@
-. /usr/lib/ybs/funcs
-
-post_install() {
-	gnome2_mime_database_update
-}   

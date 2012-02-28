@@ -1,8 +1,0 @@
-. /usr/lib/ybs/funcs
-
-post_install() {
-  cat <<MES
-* Edit /etc/asound.conf to configure ALSA for PulseAudio.
-MES
-}
-

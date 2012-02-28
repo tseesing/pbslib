@@ -1,5 +1,0 @@
-. /usr/lib/ybs/funcs
-
-post_install() {
-	dofont /usr/share/fonts/truetype/ubuntu-font-family
-}

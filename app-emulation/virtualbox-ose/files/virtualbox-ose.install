@@ -1,9 +1,0 @@
-. /usr/lib/ybs/funcs
-
-post_install() {
-	dogroupadd "vboxusers"
-}       
-
-pre_remove() {
-	dogroupdel "vboxusers"
-}

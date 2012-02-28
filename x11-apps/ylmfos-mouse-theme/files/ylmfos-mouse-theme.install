@@ -1,9 +1,0 @@
-. /usr/lib/ybs/funcs
-
-post_install() {
-	gnome2_install_defaut_gconf "string" "/desktop/gnome/peripherals/mouse/cursor_theme" "ylmfos"
-}       
-
-post_remove() {
-	gnome2_install_defaut_gconf "string" "/desktop/gnome/peripherals/mouse/cursor_theme" "default"
-}

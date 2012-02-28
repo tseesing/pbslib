@@ -1,4 +1,0 @@
-#!/bin/sh
-export LD_LIBRARY_PATH=/usr/lib/webvbox/xulrunner-1.9.2.17:/usr/lib/webvbox:$LD_LIBRARY_PATH
-cd /usr/share/webvbox
-./webvbox

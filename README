@@ -1,0 +1,16 @@
+
+In this GIT repository, there are several GIT branches, run git-checkout to get the source files.
+
+
+$ git branch -a
+develop - regularly updates
+gnome3  - testing branch for developers
+master  - you are here
+
+For instance, when you are using develop, you should run
+$ git checkout develop
+
+To compile and install them, read the README file after "git checkout".
+
+Enjoy!
+

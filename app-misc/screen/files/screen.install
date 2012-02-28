@@ -1,9 +1,0 @@
-. /usr/lib/ybs/funcs
-
-post_install() {
-        doinstall_info screen.info-5.gz screen.info-4.gz screen.info-3.gz screen.info-2.gz screen.info-1.gz screen.info.gz  
-}       
-
-pre_remove() {
-        doremove_info screen.info-5.gz screen.info-4.gz screen.info-3.gz screen.info-2.gz screen.info-1.gz screen.info.gz
-}
