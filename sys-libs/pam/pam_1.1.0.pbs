@@ -16,12 +16,15 @@ pbs_unpack() {
         dounpack
 }
 
-pbs_config() {
+pbs_patch() {
 	dopatch  Linux-PAM-1.1.0-pam_console-1.patch
-	config+="--sbindir=/lib/security
-	             --enable-securedir=/lib/security 
-		     --docdir=/usr/share/doc/"$N"/"$V$R"
-		     --enable-read-both-confs "
+}
+
+pbs_config() {
+	config+=" --sbindir=/lib/security
+	          --enable-securedir=/lib/security 
+		  --docdir=/usr/share/doc/"$N"/"$V$R"
+		  --enable-read-both-confs "
 	doconfig
 }
 

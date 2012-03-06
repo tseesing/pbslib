@@ -28,8 +28,8 @@ restore() {
 
 pre_install() {
 	# Dual graphic cards
-	if lspci |grep VGA |grep "ATI Technologies"; then
-		if lspci |grep VGA |grep "Intel Corporation"; then
+	if lspci |grep VGA |grep -w "ATI"; then
+		if lspci |grep VGA |grep -w "Intel"; then
 			echo "* Error: ATI and Intel Dual-Video-Cards found!"
 			echo "* You MUSE select discrete grahpic at BIOS and reinstall manually."
 			restore
@@ -38,7 +38,7 @@ pre_install() {
 	else
 		# 
 		echo "* Error: ATI graphic card not found!"
-		echo "* You do not need this driver, please remove manually."
+		echo "* You do not need this driver, installation quit."
 		restore
 		return 1
 	fi

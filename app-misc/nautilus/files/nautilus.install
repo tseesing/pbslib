@@ -18,8 +18,8 @@ post_install() {
 	gnome2_install_defaut_gconf "bool"   "/apps/nautilus/preferences/always_use_location_entry" "True"
 	gnome2_install_defaut_gconf "bool"   "/apps/nautilus/desktop/volumes_visible" "false"
 	#
-	#gnome2_install_defaut_gconf "string" "/apps/nautilus/preferences/desktop_font"  "Ubuntu 11"
-	gnome2_install_defaut_gconf "string" "/apps/nautilus/preferences/desktop_font"  "WenQuanYi Micro Hei 11"
+	gnome2_install_defaut_gconf "string" "/apps/nautilus/preferences/desktop_font"  "Ubuntu 11"
+	#gnome2_install_defaut_gconf "string" "/apps/nautilus/preferences/desktop_font"  "WenQuanYi Micro Hei 11"
 	gnome2_rarian_sk_update
 	gnome2_desktop_database_update
 	gnome2_mime_database_update

@@ -1,7 +1,7 @@
 [Desktop Entry]
 Version=1.0
 Name=Firefox Web Browser (bin)
-Name[zh_CN]=Firefox(bin) 浏览器
+Name[zh_CN]=Firefox(Bin) 浏览器
 Name[ar]=متصفح الوِب فَيَرفُكْس
 Name[ca]=Navegador web Firefox
 Name[cs]=Firefox Webový prohlížeč
@@ -24,7 +24,7 @@ Name[pt_BR]=Navegador Web Firefox
 Name[sk]=Firefox - internetový prehliadač
 Name[sv]=Webbläsaren Firefox
 Comment=Browse the World Wide Web
-Comment[zh_CN]=firefox 浏览器, 官方预编译版
+Comment[zh_CN]=Firefox 浏览器, 官方预编译版
 Comment[ar]=تصفح الشبكة العنكبوتية العالمية
 Comment[ca]=Navegueu per el web
 Comment[cs]=Prohlížení stránek World Wide Webu
@@ -72,7 +72,7 @@ GenericName[sv]=Webbläsare
 Exec=firefox-bin.sh
 Terminal=false
 Type=Application
-Icon=firefox-bin
+Icon=firefox-bin.png
 Categories=Application;Internet;Network;WebBrowser;
 MimeType=text/html;text/xml;application/xhtml+xml;application/xml;application/vnd.mozilla.xul+xml;application/rss+xml;application/rdf+xml;image/gif;image/jpeg;image/png;
 StartupWMClass=Firefox

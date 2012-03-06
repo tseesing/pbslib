@@ -19,11 +19,11 @@ pbs_unpack() {
 }
 
 pbs_config() {
-	config+="--enable-arch 
-	             --enable-partx
-		     --enable-write
-	             --disable-static 
-		     --disable-fallocate "
+	config+=" --enable-arch 
+	          --enable-partx
+		  --enable-write
+	          --disable-static 
+		  --disable-fallocate "
 	doconfig
 }
 
@@ -33,8 +33,6 @@ pbs_build() {
 
 pbs_install() {
 	domkinstall
-	dodoc AUTHORS NEWS README* TODO
-	#
 	dounit hwclock-load.service hwclock-save.service
 }
 

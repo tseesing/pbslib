@@ -2,7 +2,8 @@
 
 pre_install() {
 	local file
-	# make all directorys.
+	
+	# Make all directorys.
 	#
 	mkdir -p /{bin,boot,etc,home,lib,mnt,opt}
 	mkdir -p /{media/{floppy,cdrom},sbin,srv,var}
@@ -14,17 +15,23 @@ pre_install() {
 	mkdir -p /usr/{,local/}share/man/man{1..8}
 	mkdir -p /var/{lock,log,mail,run,spool}
 	mkdir -p /var/{opt,cache,lib/{misc,locate},local}
-	#sysvinit compatibility
-	mkdir -p /etc/rc0.d /etc/rc1.d /etc/rc2.d /etc/rc3.d /etc/rc4.d /etc/rc5.d /etc/rc6.d
+	
+	# Sysvinit compatibility
+	for i in 0 1 2 3 4 5 6;do 
+		mkdir -p /etc/rc${i}.d 
+	done
+	mkdir -p /etc/rc.d
 	
 	mkdir -p /dev /proc /sys
 	[ -c /dev/null ] || mknod -m 666 /dev/null c 1 3
 	[ -c /dev/console ] || mknod -m 600 /dev/console c 5 1
-	#create symbol links 
+	
+	# Create symbol links 
 	for file in /bin/{bash,cat,echo,grep,pwd,stty};do
 	        test -f $file || ln -s /tools/bin/`basename $file` /bin
 	done
-	# for compatibility
+
+	# For compatibility
 	#
 	[ -f /usr/bin/perl ] || ln -sf /tools/bin/perl /usr/bin
 	[ -f /usr/lib/libgcc_s.so ] ||  ln -sf /tools/lib/libgcc_s.so /usr/lib
@@ -35,11 +42,11 @@ pre_install() {
 	[ -f /bin/sh ] || ln -sf bash /bin/sh
 	[ -f /etc/mtab ] || touch /etc/mtab
 	
-	#create symbal link /bin/sh for make.
+	# Create symbal link /bin/sh for make.
 	[ -d /bin ] || mkdir /bin
 	[ -f /bin/sh ] || ln -sf /tools/bin/bash /bin/sh
 	
-	# important default etc configs
+	# Important default etc configs
 	#
 	if [ ! -f /etc/environment ];then
 		cat >/etc/environment <<"EOF"
@@ -161,3 +168,4 @@ unset sh
 EOF
 	fi
 }
+

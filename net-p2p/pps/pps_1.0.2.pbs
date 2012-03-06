@@ -18,10 +18,13 @@ pbs_unpack() {
         dounpack
 }
 
-pbs_install() {
+pbs_patch() {
 	dopatch desktop.patch
+}
+
+pbs_install() {
 	docp data/*  "$destdir"
-	docp $filesdir/PPStream   "$destdir"/usr/bin/
+	docp "$filesdir"/PPStream "$destdir"/usr/bin/
 	cd "$destdir"
 	chmod +x usr/bin/PPStream
 	doln /usr/bin/PPStream usr/bin/pps

@@ -19,18 +19,15 @@ pbs_unpack() {
         dounpack
 }
 
+pbs_patch() {
+	dopatch 01_gnome-about-me.patch 
+	dopatch ylmfos-windows-resize.patch
+}
+
 pbs_config() {
-	if [ -x /usr/bin/convert ]; then
-		icon=$filesdir/gnome-display-properties.png
-		for i in 24x24 22x22 16x16 32x32; do
-			convert -resize "${i}" "$icon" capplets/display/icons/"${i}"/gnome-display-properties.png
-		done
-	fi
-	cp $filesdir/gnome-display-properties.svg  capplets/display/icons/scalable/gnome-display-properties.svg
-
-	dopatch 01_gnome-about-me.patch ylmfos-windows-resize.patch
-
-	config+="--enable-aboutme --disable-schemas-install --disable-update-mimedb "
+	config+=" --enable-aboutme 
+	          --disable-schemas-install 
+		  --disable-update-mimedb "
 	doconfig
 }
 
@@ -40,9 +37,9 @@ pbs_build() {
 
 pbs_install() {
 	domkinstall
-	
-	# clean up empty mime file
-	find "$destdir"/usr/share/mime -size 0 -type f -exec rm -v {} \;
-	rm -fr "$destdir"/usr/share/applications/mimeinfo.cache
+	cd "$destdir"	
+	# Clean up empty mime file
+	find usr/share/mime -size 0 -type f -exec rm -v {} \;
+	rm -fr usr/share/applications/mimeinfo.cache
 }
 

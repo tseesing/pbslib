@@ -10,7 +10,7 @@ PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
 
 SRC_URI="http://downloads.sourceforge.net/project/"$N"/Chromium%20B.S.U.%20source%20code/"$V$R"/"$N-$V$R".tar.gz"
 
-RDEPEND=""
+RDEPEND="alsa-lib audiofile directfb esound expat fontconfig freealut freetype ftgl gcc-lib glibc glpng libdrm libICE libpng libsdl libSM libX11 libXau libxcb libXdamage libXdmcp libXext libXfixes libXt libXxf86vm mesa nas openal sdl-image util-linux-ng zlib"
 BDEPEND=" "
 RECOMMENDED=""
 CONFLICT=""

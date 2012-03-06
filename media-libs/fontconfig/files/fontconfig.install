@@ -1,6 +1,14 @@
-. /usr/lib/ybs/funcs
 
 post_install() {
-	# Creating global font cache"
+	# Creating global font cache
 	fc-cache -srf
-}      
+}
+
+post_upgrade() {
+	post_install	
+}
+
+post_downgrade() {
+	post_install
+}
+

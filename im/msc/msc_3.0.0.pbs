@@ -4,12 +4,11 @@
 
 DESCRIPTION="misuland im app"
 HOMEPAGE="http://www.misuland.com/"
-REPO=""
-LICENSE=""
-PRIORITY=""
+LICENSE="custom"
 PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
 
 SRC_URI="http://download.misuland.com/"$N-$V$R".tar.gz"
+CHECKSUM="901b31b58273d3a22f4a1a8257462c36"
 
 RDEPEND="alsa-lib glibc libX11 libXau libxcb libXdmcp libXext libXi libXtst"
 BDEPEND=" "
@@ -21,8 +20,8 @@ pbs_unpack() {
 }
 
 pbs_install() {
-	docp * "$destdir"/opt/"$N-$V$R"
+	docp * "$destdir"/opt/"$N"
 	dodesktop "msc.desktop" "msc.png"
-	doln /opt/"$N-$V$R"/msc "$destdir"/usr/bin/msc
+	doln /opt/"$N"/msc "$destdir"/usr/bin/msc
 }
 

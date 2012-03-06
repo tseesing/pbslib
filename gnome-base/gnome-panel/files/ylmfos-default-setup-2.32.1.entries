@@ -5528,7 +5528,7 @@
       <key>toplevels/top_panel_screen0/background/image</key>
       <schema_key>/schemas/apps/panel/toplevels/background/image</schema_key>
       <value>
-        <string></string>
+        <string>/usr/share/themes/ylmfos-black/gtk-2.0/Panel/panel-bg.png</string>
       </value>
     </entry>
     <entry>
@@ -5556,7 +5556,7 @@
       <key>toplevels/top_panel_screen0/background/type</key>
       <schema_key>/schemas/apps/panel/toplevels/background/type</schema_key>
       <value>
-        <string>color</string>
+        <string>image</string>
       </value>
     </entry>
   </entrylist>

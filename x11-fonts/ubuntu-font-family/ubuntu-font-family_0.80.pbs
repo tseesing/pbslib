@@ -1,0 +1,29 @@
+#
+# Ylmf OS package build script
+#
+
+DESCRIPTION="ubuntu gont family"
+HOMEPAGE="http://font.ubuntu.com/"
+LICENSE="custom:Ubuntu Font Licence 1.0"
+PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
+YARCH="any"
+
+SRC_URI="http://font.ubuntu.com/download/"$N-$V".zip"
+CHECKSUM="a1fc70f5a5b1d096ab8310886cddaa1c"
+
+RDEPEND="fontconfig"
+BDEPEND=""
+RECOMMENDED=""
+CONFLICT=""
+
+INSTALL="$N.install"
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_install() {
+	docp *.ttf "$destdir"/usr/share/fonts/truetype/"$N"
+	dodoc copyright.txt LICENCE.txt  
+}
+

@@ -1,0 +1,20 @@
+
+[Desktop Entry]
+Version=1.0
+Encoding=UTF-8
+Name=coolnovo-bin
+Name[zh_CN]=枫树浏览器(Bin)
+Name[zh_TW]=楓樹瀏覽器(Bin)
+GenericName=Web Browser
+GenericName[zh_CN]=网页浏览器
+GenericName[zh_HK]=網頁瀏覽器
+GenericName[zh_TW]=網頁瀏覽器
+Comment[zh_CN]=访问互联网
+Comment[zh_HK]=連線到網際網路
+Comment[zh_TW]=連線到網際網路
+Exec=/opt/coolnovo-bin/chrome %U
+Terminal=false
+Icon=coolnovo-bin.png
+Type=Application
+Categories=Application;Network;WebBrowser;
+MimeType=text/html;text/xml;application/xhtml_xml;

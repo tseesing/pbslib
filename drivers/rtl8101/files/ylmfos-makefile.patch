@@ -1,15 +1,17 @@
-diff -ur r8101-1.020.00/src/Makefile r8101-1.020.00.new/src/Makefile
---- r8101-1.020.00/src/Makefile	2010-09-20 17:55:57.000000000 +0800
-+++ r8101-1.020.00.new/src/Makefile	2011-07-07 16:26:54.349555510 +0800
-@@ -31,7 +31,7 @@
+diff -ur rtl8101-1.020.00/src/Makefile rtl8101-1.020.00.new//src/Makefile
+--- rtl8101-1.020.00/src/Makefile	2010-09-20 17:55:57.000000000 +0800
++++ rtl8101-1.020.00.new//src/Makefile	2012-03-05 15:38:14.041463369 +0800
+@@ -31,8 +31,8 @@
  
  KVER		:= $(shell uname -r)
  KDIR		:= /lib/modules/$(KVER)/build
 -KMISC		:= /lib/modules/$(KVER)/kernel/drivers/net/
-+KMISC		:= $(DESTDIR)/lib/modules/$(KVER)/kernel/drivers/net/
- KEXT		:= $(shell echo $(KVER) | sed -ne 's/^2\.[567]\..*/k/p')o
+-KEXT		:= $(shell echo $(KVER) | sed -ne 's/^2\.[567]\..*/k/p')o
++KMISC          := $(DESTDIR)/lib/modules/$(KVER)/kernel/drivers/net/
++KEXT           := $(shell echo $(KVER) | sed -ne 's/^2\.[567]\..*/k/p')ko
  KFLAG		:= 2$(shell echo $(KVER) | sed -ne 's/^2\.[4]\..*/4/p')x
  
+ EXTRA_CFLAGS += -DCONFIG_R8101_NAPI
 @@ -51,6 +51,7 @@
  
  

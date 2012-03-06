@@ -1,0 +1,71 @@
+#
+# Ylmf OS package build script
+#
+
+DESCRIPTION="The GNOME Session package contains the GNOME session manager."
+HOMEPAGE="http://www.gnome.org/"
+LICENSE="GPL"
+PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
+
+SRC_URI="http://ftp.gnome.org/pub/gnome/desktop/2.32/2.32.1/sources/"$N-$V".tar.bz2"
+
+RDEPEND="atk cairo dbus dbus-glib expat fontconfig freetype gcc-lib gconf gdk-pixbuf glib2 glibc gtk+ libICE libpng libSM libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libXrandr libXrender libXtst orbit pango pixman upower util-linux-ng zlib"
+BDEPEND="metacity-dev esound-dev gnome-control-center-dev polkit-gnome-dev nspr-dev libpthread-stubs"
+RECOMMENDED="polkit-gnome"
+
+INSTALL="$N.install"
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_patch() {
+	dopatch gnome-session-2.32.1_fade-out-bug.patch
+}
+
+pbs_config() {
+	config+=" --disable-schemas-install 
+		  --with-default-wm=gnome-wm
+		  --disable-debug "
+	doconfig
+}
+
+pbs_build() {
+	domake
+}
+
+pbs_install() {
+	domkinstall
+	
+	cd "$destdir"
+	
+	#Change gnome-wm to use compiz ccp if compiz selected
+	#domv_rename usr/bin/gnome-wm usr/bin/gnome-wm.orig
+	#docp_rename $filesdir/gnome-wm.gsb  usr/bin/gnome-wm
+	#chmod +x usr/bin/gnome-wm
+	docp "$filesdir"/gnome-wm.desktop usr/share/applications
+	
+	# Add xinitrc script for gnome
+	mkdir -p etc/X11/xinit
+	cat "$filesdir"/xinitrc.gnome | sed -e "s,@LIBDIR@,lib,g"   > etc/X11/xinit/xinitrc.gnome
+	chmod 755 etc/X11/xinit/xinitrc.gnome
+	
+	# Install splash screen
+	docp "$filesdir"/gnome-splash.png  usr/share/pixmaps/splash
+	
+	# Add default `gnome` for gnome-session
+	( cd usr/bin ; ln -s gnome-session gnome ); 
+	
+	# Replace of gnome-classic.desktop
+	[ -f usr/share/xsessions/gnome.desktop ] && rm usr/share/xsessions/gnome.desktop
+	docp "$filesdir"/gnome-classic.desktop  usr/share/xsessions
+	
+	#
+	mkdir -p etc/X11/Xsession.d/
+	
+	# ylmfos misc
+	docp "$filesdir"/ylmfos-misc.desktop etc/xdg/autostart/
+	docp "$filesdir"/ylmfos-misc.sh      usr/bin/
+	chmod +x usr/bin/ylmfos-misc.sh
+}
+

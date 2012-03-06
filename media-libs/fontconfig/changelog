@@ -1,0 +1,10 @@
+2012-03-06 hzx <huangzhongxin@ylmf.com>
+	* fontconfig 2.8.0-ylmf1
+	* add patches from ubuntu:
+	 - 00_old_diff_gz.patch
+	 - 04_ubuntu_monospace_lcd_filter_conf.patch
+	 - 05_lcdfilterlegacy.patch
+	 - 05_ubuntu_add_hinting_and_antialiasing_confs.patch
+	 - 06_ubuntu_lcddefault.patch
+	 - 07_no_bitmaps.patch
+	*  

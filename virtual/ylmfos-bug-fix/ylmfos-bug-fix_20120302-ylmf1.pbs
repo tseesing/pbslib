@@ -1,0 +1,24 @@
+#
+# Ylmf OS package build script
+#
+
+DESCRIPTION="a collection of ylmfos bug fixed scripts"
+HOMEPAGE="www.ylmf.org"
+LICENSE="GPL"
+PRIORITY="required"
+PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
+YARCH="any"
+
+SRC_URI=""
+
+INSTALL="$N.install"
+
+RDEPEND=""
+BDEPEND=""
+RECOMMENDED="imagemagick app-logo app-desktop"
+CONFLICT=""
+
+pbs_install() {
+	dodoc "$filesdir"/readme
+}
+

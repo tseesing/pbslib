@@ -20,15 +20,18 @@ pbs_unpack() {
         dounpack
 }
 
-pbs_config() {
+pbs_patch() {
 	dopatch member-of-wheel-run-sudo.patch
+}
+
+pbs_config() {
 	config+=" --libexecdir=/usr/lib 
-		      --with-ignore-dot 
-	              --with-all-insults 
-		      --enable-shell-sets-home 
-		      --with-logfac=auth 
-		      --without-pam 
-		      --without-sendmail"
+		  --with-ignore-dot 
+	          --with-all-insults 
+		  --enable-shell-sets-home 
+		  --with-logfac=auth 
+		  --without-pam 
+		  --without-sendmail "
 	doconfig
 }
 
@@ -42,3 +45,4 @@ pbs_install() {
 	chmod 755 usr/lib/sudoers.so 
 	chmod 755 var/lib/
 }
+

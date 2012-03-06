@@ -1,8 +1,13 @@
-2010-12-05 chenqixing <chenqixing@ylmf.com>
+2012-03-06 hzx <huangzhongxin@ylmf.com>
+	* nautilus 2.32.1-ylmf2
+	* nautilus.install:
+	 - set default desktop_font "Ubuntu 11"
+
+2011-12-05 chenqixing <chenqixing@ylmf.com>
 	* nautilus 2.32.1-ylmf1
 	* add nautilus-2.32.1_toolbar_del_button.patch
 
-2010-12-05 hzx <huangzhongxin@ylmf.com>
+2011-12-05 hzx <huangzhongxin@ylmf.com>
 	* nautilus 2.30.1-ylmf7
 	* add ntdiskmap patch:
 	 - windows partition that mounted show windows label, like c, d, f. 

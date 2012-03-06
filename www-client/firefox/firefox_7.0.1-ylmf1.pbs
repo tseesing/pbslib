@@ -10,7 +10,7 @@ PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
 SRC_URI="ftp://ftp.mozilla.org/pub/mozilla.org/"$N"/releases/"$V"/source/"$N-$V".source.tar.bz2"
 CHECKSUM="5b212db48630ba93bb30ec63cca17f4d"
 
-RDEPEND="alsa-lib atk avahi cairo dbus dbus-glib expat fontconfig freetype gcc-lib gdk-pixbuf glib2 glibc gnome-vfs gtk+ libICE libnotify libSM libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libxml2 libXrandr libXrender libXt linux-kernel-headers nspr nss openssl pango pixman startup-notification util-linux-ng zlib"
+RDEPEND="alsa-lib atk avahi cairo dbus dbus-glib expat fontconfig freetype gcc-lib gdk-pixbuf glib2 glibc gnome-vfs gtk+ libICE libnotify libSM libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libxml2 libXrandr libXrender libXt nspr nss openssl pango pixman startup-notification util-linux-ng zlib"
 
 BDEPEND=""
 RECOMMENDED="firefox-i18n-zh-CN"
@@ -26,9 +26,8 @@ pbs_unpack() {
 }
 
 pbs_patch() {
-	# see bellow: vendor.js 
+	# See bellow: vendor.js 
 	#dopatch ylmfos_default-locale-zh-cn.patch
-
 	dopatch firefox-install-dir.patch
 }
 

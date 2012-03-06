@@ -26,15 +26,15 @@ restore() {
 }
 
 pre_install() {
-	if lspci |grep VGA |grep nVidia; then
-		if lspci |grep VGA |grep "Intel Corporation"; then
+	if lspci |grep VGA |grep -w nVidia; then
+		if lspci |grep VGA |grep -w "Intel"; then
 			echo "* Error: nVidia and Intel Dual-Video-Cards found!"
 			restore
 			return 1
 		fi
 	else
-		echo "* Error: nvidia graphic card not found!"
-		echo "* You do not need this driver, please remove manually."
+		echo "* Error: nVidia graphic card not found!"
+		echo "* You do not need this driver, installation quit."
 		restore
 		return 1
 	fi

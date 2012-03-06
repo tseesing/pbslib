@@ -1,0 +1,24 @@
+#
+# Ylmf OS package build script
+#
+
+DESCRIPTION="sina weibo client (AIR)"
+HOMEPAGE="http://airweibo.sinaapp.com/"
+LICENSE="custom"
+PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
+
+SRC_URI="http://airweibo-install.stor.sinaapp.com/AIRweibo(1.10.1).air"
+CHECKSUM="fed685f82270fa61f845e7697f2b2c89"
+
+RDEPEND="adobe-air-sdk"
+BDEPEND=""
+RECOMMENDED=""
+CONFLICT=""
+
+INSTALL="$N.install"
+
+pbs_install() {
+	docp_rename "$YPPATH_SOURCE"/"AIRweibo(1.10.1).air" "$destdir"/usr/lib/"$N"/airweibo.air
+	dodesktop   "sinaweibo-air.desktop"                 "sinaweibo-air.png"
+}
+

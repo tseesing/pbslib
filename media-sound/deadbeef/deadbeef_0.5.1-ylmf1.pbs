@@ -19,8 +19,11 @@ pbs_unpack() {
         dounpack
 }
 
-pbs_config() {
+pbs_patch() {
 	dopatch ylmfos-deadbeef-0.5.1.patch ylmfos_ffmpeg-0.8.patch
+}
+
+pbs_config() {
 	doconfig
 }
 

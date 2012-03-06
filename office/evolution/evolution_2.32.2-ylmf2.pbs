@@ -19,7 +19,7 @@ pbs_unpack() {
         dounpack
 }
 
-pbs_config() {
+pbs_patch() {
 	#
 	dopatch "$N"-2.32.1-libnotify-0.7.patch
 
@@ -34,10 +34,12 @@ pbs_config() {
 
 	# Fix compilation flags crazyness
 	sed -e 's/-D.*_DISABLE_DEPRECATED//' -i configure.ac configure
-
+	
 	# Use my logo
 	docp_rename "$filesdir"/evolution.svg data/icons/hicolor_apps_scalable_evolution.svg
+}
 
+pbs_config() {
 	config+=" --disable-schemas-install  
 	          --without-kde-applnk-path
 		  --enable-plugins=experimental
