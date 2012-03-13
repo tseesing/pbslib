@@ -24,7 +24,7 @@ pbs_unpack() {
 
 pbs_config() {
 	config+=""
-	doconfig -D CMAKE_BUILD_TYPE=Release -D CMAKE_SKIP_RPATH=ON -D GTK=1 -D QT4=1
+	doconfig -D CMAKE_BUILD_TYPE=Release -D CMAKE_SKIP_RPATH=ON -D GTK=1 -D QT4=0
 }
 
 pbs_build() {

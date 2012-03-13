@@ -1,0 +1,33 @@
+#
+# Ylmf OS package build script
+#
+
+DESCRIPTION="X.Org driver for dummy cards"
+HOMEPAGE="http://xorg.freedesktop.org/"
+LICENSE="custom"
+PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
+
+SRC_URI="http://xorg.freedesktop.org/archive/individual/driver/"$N-$V".tar.bz2"
+CHECKSUM="89701f372eed9ed541cf00d57c78e7ef"
+
+RDEPEND="glibc"
+BDEPEND="xorg-server-dev"
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_config() {
+	
+	doconfig
+}
+
+pbs_build() {
+	domake
+}
+
+pbs_install() {
+	domkinstall
+	dodoc COPYING
+}
+

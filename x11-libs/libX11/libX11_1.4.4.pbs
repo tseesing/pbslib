@@ -1,0 +1,32 @@
+#
+# Ylmf OS package build script
+#
+
+DESCRIPTION="X.Org X11 library"
+HOMEPAGE="http://www.x.org/wiki/"
+LICENSE="custom"
+PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
+
+SRC_URI="http://xorg.freedesktop.org/archive/individual/lib/"$N-$V".tar.bz2"
+CHECKSUM="ed7c382cbf8c13425b6a66bcac0ca5d9"
+
+RDEPEND="glibc libXau libxcb libXdmcp"
+BDEPEND=""
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_config() {
+	doconfig
+}
+
+pbs_build() {
+	domake
+}
+
+pbs_install() {	
+	domkinstall
+	dodoc COPYING
+}
+

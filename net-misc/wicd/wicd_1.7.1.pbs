@@ -1,0 +1,41 @@
+#
+# Ylmf OS package build script
+#
+
+DESCRIPTION="A lightweight wired and wireless network manager for Linux"
+HOMEPAGE="https://launchpad.net/wicd"
+LICENSE="GPL"
+PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
+YARCH="any"
+
+SRC_URI="https://launchpadlibrarian.net/91727655/"$N-$V".tar.gz"
+CHECKSUM="9c5664a0e850cddbe80942eabb10430a"
+
+RDEPEND="python"
+BDEPEND=""
+RECOMMENDED=""
+CONFLICT=""
+
+INSTALL="$N.install"
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_config() {
+	python setup.py configure \
+	       --no-install-init \
+	       --resume=/usr/share/wicd/scripts/ \
+	       --suspend=/usr/share/wicd/scripts/ \
+	       --verbose
+}
+
+pbs_install() {
+	python setup.py install --optimize=1 --root="$destdir"
+	cd build/lib/wicd
+	for i in *.py; do
+		install -Dm 755 "${i}" "$destdir"/usr/lib/wicd/"${i}"
+	done
+	dounit "$N".service
+}
+

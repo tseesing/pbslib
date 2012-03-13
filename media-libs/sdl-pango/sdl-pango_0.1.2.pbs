@@ -9,7 +9,7 @@ PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
 
 SRC_URI="http://downloads.sourceforge.net/sourceforge/sdlpango/SDL_Pango-"$V".tar.gz"
 
-RDEPEND="alsa-lib audiofile directfb esound expat fontconfig freetype gcc-lib glib2 glibc libICE libsdl libSM libX11 libXau libxcb libXdmcp libXt nas pango util-linux-ng zlib"
+RDEPEND="alsa-lib audiofile directfb expat fontconfig freetype gcc-lib glib2 glibc libICE libsdl libSM libX11 libXau libxcb libXdmcp libXt nas pango util-linux-ng zlib"
 BDEPEND=""
 RECOMMENDED=""
 CONFLICT=""

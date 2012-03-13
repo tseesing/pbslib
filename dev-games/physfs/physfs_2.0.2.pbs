@@ -1,0 +1,41 @@
+#
+# Ylmf OS package build script
+#
+
+DESCRIPTION="A library to provide abstract access to various archives"
+HOMEPAGE="http://icculus.org/physfs"
+LICENSE="ZLIB"
+PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
+
+SRC_URI="http://icculus.org/physfs/downloads/"$N-$V".tar.gz"
+CHECKSUM="4e8927c3d30279b03e2592106eb9184a"
+
+RDEPEND="glibc zlib"
+RECOMMENDED=""
+BDEPEND="cmake"
+OPTIONAL=""
+CONFLICT=""
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_config() {
+	sed -i 's/-Werror//' CMakeLists.txt
+	export CFLAGS="$CFLAGS -fno-strict-aliasing"
+	export CXXFLAGS="$CXXFLAGS -fno-strict-aliasing"
+	cmake . -DCMAKE_BUILD_TYPE=Release \
+	        -DCMAKE_INSTALL_PREFIX=/usr \
+	        -DPHYSFS_BUILD_TEST=OFF -DPHYSFS_BUILD_WX_TEST=OFF
+}
+
+pbs_build() {
+	domake all docs
+}
+
+pbs_install() {
+	domkinstall
+        install -m644 docs/man/man3/* "${destdir}/usr/share/man/man3"
+	dodoc LICENSE.txt
+}
+

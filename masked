@@ -1,0 +1,14 @@
+* hal 
+Upstream outdated
+
+* esound
+Upstream outdated
+
+* wxGTK wxpython 
+Provided by wxWidgets
+
+* ntfsprogs
+Replaced by USE="ntfsprogs" in sys-fs/ntfs-3g
+
+* libXt 1.1.2
+Breaks several X applications, use 1.1.1 instead

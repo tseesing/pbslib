@@ -7,7 +7,10 @@ HOMEPAGE="http://xorg.freedesktop.org/"
 LICENSE="GPL"
 PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
 
+REPO="testing"
+
 SRC_URI="http://xorg.freedesktop.org/archive/individual/driver/"$N-$V".tar.bz2"
+CHECKSUM="8231f6ce1c477eac653c9deb527fa3cb"
 
 RDEPEND="glibc"
 BDEPEND="xorg-server-dev libdrm-dev libXvMC-dev libXv-dev libXext-dev libXfixes-dev libX11-dev libxcb-dev libXau-dev libXdmcp-dev pixman-dev libpciaccess-dev libXtst-dev"
@@ -18,7 +21,6 @@ pbs_unpack() {
 }
 
 pbs_config() {
-	
 	doconfig
 }
 
@@ -28,5 +30,6 @@ pbs_build() {
 
 pbs_install() {
 	domkinstall
+	dodoc COPYING
 }
 

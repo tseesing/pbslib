@@ -1,0 +1,34 @@
+#
+# Ylmf OS package build script
+#
+
+DESCRIPTION="Matrox video driver"
+HOMEPAGE="http://xorg.freedesktop.org/"
+LICENSE="custom"
+PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
+
+REPO="testing"
+
+SRC_URI="http://xorg.freedesktop.org/archive/individual/driver/"$N-$V".tar.bz2"
+CHECKSUM="f967fb3e655f6f68aa3f495eaadcaac2"
+
+RDEPEND="glibc"
+BDEPEND="xorg-server-dev"
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_config() {
+	doconfig
+}
+
+pbs_build() {
+	domake
+}
+
+pbs_install() {
+	domkinstall
+	dodoc COPYING
+}
+

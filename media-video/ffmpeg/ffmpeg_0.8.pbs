@@ -7,11 +7,9 @@ HOMEPAGE="http://ffmpeg.org/"
 LICENSE="GPL-2 and others depending on your choice of configuration options"
 PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
 
-REPO=""
-
 SRC_URI="http://ffmpeg.org/releases/ffmpeg-0.8.tar.gz"
 
-RDEPEND="alsa-lib audiofile directfb esound glibc jack-audio-connection-kit libsdl libva zlib"
+RDEPEND="alsa-lib audiofile directfb glibc jack-audio-connection-kit libsdl libva zlib"
 BDEPEND="x264-dev" 
 RECOMMENDED=""
 

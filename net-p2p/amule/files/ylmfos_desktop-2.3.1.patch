@@ -1,0 +1,16 @@
+diff -ur amule-2.3.1/amule.desktop amule-2.3.1.new//amule.desktop
+--- amule-2.3.1/amule.desktop	2011-10-09 00:48:02.000000000 +0800
++++ amule-2.3.1.new//amule.desktop	2012-03-12 09:57:52.919239659 +0800
+@@ -1,5 +1,6 @@
+ [Desktop Entry]
+ Name=aMule
++Name[zh_CN]=aMule 电驴下载
+ Exec=amule
+ Icon=amule
+ Terminal=false
+@@ -8,3 +9,5 @@
+ Comment=A client for the eD2k network
+ Comment[fr]=Un client pour le réseau eD2k
+ Comment[tr]=eD2k ağı için istemci
++Comment[zh_CN]=一个开源免费的 P2P 文件共享软件
++

@@ -1,0 +1,35 @@
+#s
+# Ylmf OS package build script
+#
+
+DESCRIPTION="a free, open-source video editor for Linux."
+HOMEPAGE="http://www.openshot.org/"
+LICENSE="GPLv3"
+YARCH="any"
+PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
+
+SRC_URI="https://launchpadlibrarian.net/92043030/"$N-$V".tar.gz"
+CHECKSUM="16fea75be6b1fc9d31c6a30a81f85a38"
+
+RDEPEND="mlt httplib2 imaging goocanvas pygoocanvas"
+BDEPEND=""
+RECOMMENDED="frei0r-plugins"
+CONFLICT=""
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_config() {
+	config+=""
+	doconfig
+}
+
+pbs_build() {
+	domake
+}
+
+pbs_install() {
+	domkinstall
+}
+

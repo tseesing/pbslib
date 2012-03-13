@@ -1,0 +1,30 @@
+#
+# Ylmf OS package build script
+#
+
+DESCRIPTION="a realtime MPEG 1.0/2.0/2.5 audio player for layers 1, 2 and 3"
+HOMEPAGE="http://www.mpg123.org/"
+LICENSE="GPL"
+PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
+
+SRC_URI="http://www.mpg123.org/download/"$N-$V".tar.bz2"
+
+RDEPEND="alsa-lib attr dbus directfb flac glibc jack-audio-connection-kit json-c libcap libICE libogg libsamplerate libsdl libSM libsndfile libtool libvorbis libX11 libXau libxcb libXdmcp libXext libXi libXt libXtst nas openal portaudio pulseaudio util-linux-ng zlib"
+BDEPEND=""
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_config() {
+	doconfig
+}
+
+pbs_build() {
+	domake
+}
+
+pbs_install() {
+	domkinstall
+}
+

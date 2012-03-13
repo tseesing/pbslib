@@ -1,0 +1,35 @@
+#
+# Ylmf OS package build script
+#
+
+DESCRIPTION="X.Org driver for joystick input devices"
+HOMEPAGE="http://xorg.freedesktop.org/"
+LICENSE="custom"
+PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
+
+REPO="testing"
+
+SRC_URI="http://xorg.freedesktop.org/archive/individual/driver/"$N-$V".tar.bz2"
+CHECKSUM="19b55812b018a63e597d579d4cec9cdb"
+
+RDEPEND="glibc"
+BDEPEND="xorg-server-dev"
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_config() {
+	doconfig
+}
+
+pbs_build() {
+	domake
+}
+
+pbs_install() {
+	domkinstall
+	dodoc COPYING
+	docp "$filesdir"/50-joystick.conf "$destdi"/etc/X11/xorg.conf.d/
+}
+

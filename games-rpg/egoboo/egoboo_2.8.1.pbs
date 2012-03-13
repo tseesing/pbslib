@@ -1,0 +1,43 @@
+#
+# Ylmf OS package build script
+#
+
+DESCRIPTION="A 3d dungeon crawling adventure in the spirit of NetHack"
+HOMEPAGE="http://egoboo.sourceforge.net/"
+LICENSE="GPL"
+PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
+
+SRC_URI="http://downloads.sourceforge.net/"$N"/"$N-$V".tar.gz"
+CHECKSUM="e6f3130695d297dcd9fe74e50bd59b68"
+
+RDEPEND="alsa-lib audiofile directfb freetype gcc-lib glibc libdrm libICE libsdl libSM libX11 libXau libxcb libXdamage libXdmcp libXext libXfixes libXt libXxf86vm mesa nas physfs sdl-image sdl-mixer sdl-ttf util-linux-ng zlib egoboo-data(=2.8.1)"
+RECOMMENDED=""
+BDEPEND=""
+OPTIONAL=""
+CONFLICT=""
+
+INSTALL="$N.install"
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_build() {
+	cd src
+	# Fix data paths
+	sed -i -e 's#egoboo-2.x#egoboo#g' \
+	       -e 's#share/games#share#g' \
+	       -e 's#etc#share#g' \
+	       -e 's#games#bin#g' \
+	    game/platform/file_linux.c
+
+	domake all
+}
+
+pbs_install() {
+	cd ../
+	install -Dm755 src/game/egoboo-2.x "$destdir"/usr/bin/egoboo
+	dodoc doc
+	dodesktop "$N".desktop "$N".png
+}
+

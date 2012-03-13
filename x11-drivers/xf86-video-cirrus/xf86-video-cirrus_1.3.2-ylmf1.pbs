@@ -1,0 +1,35 @@
+#
+# Ylmf OS package build script
+#
+
+DESCRIPTION="Cirrus Logic video driver"
+HOMEPAGE="http://xorg.freedesktop.org/"
+LICENSE="custom"
+PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
+
+REPO="testing"
+
+SRC_URI="http://xorg.freedesktop.org/archive/individual/driver/"$N-$V".tar.bz2"
+CHECKSUM="8195d03ed0be0975c03441e66a9f53b3"
+
+RDEPEND="glibc"
+BDEPEND="xorg-server-dev"
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_config() {
+	
+	doconfig
+}
+
+pbs_build() {
+	domake
+}
+
+pbs_install() {
+	domkinstall
+	dodoc COPYING
+}
+

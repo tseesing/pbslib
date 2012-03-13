@@ -7,7 +7,7 @@ HOMEPAGE="http://cdrdao.sourceforge.net/"
 LICENSE="GPL"
 PACKAGER="Ylmf OS Developers, <ylmfos@ylmf.com>"
 
-SRC_URI="http://downloads.sourceforge.net/project/"$N"/"$N"/"$V$R"/"$N-$V$R".tar.bz2"
+SRC_URI="http://downloads.sourceforge.net/project/"$N"/"$N"/"$V"/"$N-$V".tar.bz2"
 
 PROVIDE="cdrdao gcdmaster"
 
@@ -15,14 +15,17 @@ pbs_unpack() {
         dounpack
 }
 
+pbs_patch() {
+	dopatch cdrdao-1.2.3-autoconf-update.patch
+	dopatch cdrdao-1.2.3-k3b.patch
+	dopatch cdrdao-1.2.3-stat.patch
+}
+
 pbs_config() {
-	dopatch cdrdao-1.2.3-autoconf-update.patch \
-	           cdrdao-1.2.3-k3b.patch \
-		   cdrdao-1.2.3-stat.patch
-	config+="--with-xdao
-	             --with-lame 
-		     --with-ogg-support 
-		     --with-mp3-support"
+	config+=" --with-xdao
+	          --with-lame 
+		  --with-ogg-support 
+		  --with-mp3-support "
 	doconfig
 }
 

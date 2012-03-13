@@ -1,0 +1,32 @@
+#
+# Ylmf OS package build script
+#
+
+DESCRIPTION="Basepack of plugins for gstreamer"
+HOMEPAGE="http://gstreamer.net/"
+LICENSE="GPL"
+PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
+
+SRC_URI="http://ftp.gnome.org/pub/gnome/sources/"$N"/0.10/"$N-$V".tar.xz"
+
+RDEPEND="aalib attr bzip2 cairo dbus expat flac fontconfig freetype gcc-lib gconf gdk-pixbuf glib2 glibc gnutls gst-plugins-base gstreamer jack-audio-connection-kit json-c libavc1394 libcap libgcrypt libgnome-keyring libgpg-error libICE libiec61883 libjpeg-turbo libogg libpng libproxy libraw1394 libsamplerate libSM libsndfile libsoup libtasn1 libvorbis libX11 libXau libxcb libXdamage libXdmcp libXext libXfixes libXi libxml2 libXrender libXtst libXv orbit orc pixman pulseaudio slang speex sqlite taglib udev util-linux-ng v4l-utils wavpack zlib"
+BDEPEND=""
+RECOMMENDED=""
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_config() {
+	config+="--disable-hal"
+	doconfig
+}
+
+pbs_build() {
+	domake
+}
+
+pbs_install() {
+	domkinstall
+}
+

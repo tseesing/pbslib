@@ -1,0 +1,41 @@
+diff -ur xorg-server-1.10.4/hw/xfree86/modes/xf86Crtc.c xorg-server-1.10.4.new//hw/xfree86/modes/xf86Crtc.c
+--- xorg-server-1.10.4/hw/xfree86/modes/xf86Crtc.c	2011-07-17 04:18:33.000000000 +0800
++++ xorg-server-1.10.4.new//hw/xfree86/modes/xf86Crtc.c	2012-03-07 15:27:47.736259995 +0800
+@@ -3089,6 +3089,8 @@
+     return (int) (box->x2 - box->x1) * (int) (box->y2 - box->y1);
+ }
+ 
++#ifdef XV
++
+ /*
+  * Return the crtc covering 'box'. If two crtcs cover a portion of
+  * 'box', then prefer 'desired'. If 'desired' is NULL, then prefer the crtc
+@@ -3177,6 +3179,7 @@
+ 
+     return ret;
+ }
++#endif
+ 
+ xf86_crtc_notify_proc_ptr
+ xf86_wrap_crtc_notify (ScreenPtr screen, xf86_crtc_notify_proc_ptr new)
+diff -ur xorg-server-1.10.4/hw/xfree86/modes/xf86Crtc.h xorg-server-1.10.4.new//hw/xfree86/modes/xf86Crtc.h
+--- xorg-server-1.10.4/hw/xfree86/modes/xf86Crtc.h	2011-07-17 04:18:33.000000000 +0800
++++ xorg-server-1.10.4.new//hw/xfree86/modes/xf86Crtc.h	2012-03-07 15:28:33.067138012 +0800
+@@ -934,6 +934,8 @@
+ extern _X_EXPORT void
+ xf86_cursors_fini (ScreenPtr screen);
+ 
++#ifdef XV
++
+ /*
+  * For overlay video, compute the relevant CRTC and
+  * clip video to that.
+@@ -952,7 +954,7 @@
+ 			    RegionPtr   reg,
+ 			    INT32	width,
+ 			    INT32	height);
+-    
++#endif
+ extern _X_EXPORT xf86_crtc_notify_proc_ptr
+ xf86_wrap_crtc_notify (ScreenPtr pScreen, xf86_crtc_notify_proc_ptr new);
+ 

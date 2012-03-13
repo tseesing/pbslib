@@ -1,0 +1,32 @@
+#
+# Ylmf OS package build script
+#
+
+DESCRIPTION="X.Org XvMC library"
+HOMEPAGE="http://www.x.org/wiki/"
+LICENSE="custom"
+PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
+
+SRC_URI="http://xorg.freedesktop.org/archive/individual/lib/"$N-$V".tar.bz2"
+CHECKSUM="bfc7524646f890dfc30dea1d676004a3"
+
+RDEPEND="glibc libX11 libXau libxcb libXdmcp libXext libXv"
+BDEPEND=""
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_config() {
+	doconfig
+}
+
+pbs_build() {
+	domake
+}
+
+pbs_install() {
+	domkinstall
+	dodoc COPYING
+}
+

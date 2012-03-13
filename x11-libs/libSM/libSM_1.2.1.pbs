@@ -1,0 +1,32 @@
+#
+# Ylmf OS package build script
+#
+
+DESCRIPTION=="X.Org SM library"
+HOMEPAGE="http://www.x.org/wiki/"
+LICENSE="custom"
+PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
+
+SRC_URI="http://xorg.freedesktop.org/archive/individual/lib/"$N-$V".tar.bz2"
+CHECKSUM="766de9d1e1ecf8bf74cebe2111d8e2bd"
+
+RDEPEND="glibc libICE util-linux-ng"
+BDEPEND=""
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_config() {
+	doconfig
+}
+
+pbs_build() {
+	domake
+}
+
+pbs_install() {
+	domkinstall
+	dodoc COPYING
+}
+

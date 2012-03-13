@@ -19,14 +19,14 @@ pbs_unpack() {
 }
 
 pbs_build() {
-	# by default, any member of group "wheel" can edit their own crontab
+	# By default, any member of group "wheel" can edit their own crontab
 	domake PREFIX=/usr CRONTABS=/var/spool/cron CRONSTAMPS=/var/spool/cronstamps
 }
 
 pbs_install() {
 	domkinstall
 
-	# install standard configuration and scripts
+	# Install standard configuration and scripts
 	install -d -m755 "$destdir/etc/cron."{hourly,daily,weekly,monthly} 
 
 	install -D -m755 extra/run-cron "$destdir/usr/sbin/run-cron"

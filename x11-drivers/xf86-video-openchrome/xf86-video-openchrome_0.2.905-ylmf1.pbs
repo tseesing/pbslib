@@ -1,0 +1,34 @@
+#
+# Ylmf OS package build script
+#
+
+DESCRIPTION="X.Org driver for VIA/S3G cards"
+HOMEPAGE="http://xorg.freedesktop.org/"
+LICENSE="custom"
+PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
+
+REPO="testing"
+
+SRC_URI="http://xorg.freedesktop.org/archive/individual/driver/"$N-$V".tar.bz2"
+CHECKSUM="51871431a4a9204ab8ec79335c0cc041"
+
+RDEPEND="glibc libdrm libX11 libXau libxcb libXdmcp libXext libXv libXvMC"
+BDEPEND=""
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_config() {
+	doconfig
+}
+
+pbs_build() {
+	domake
+}
+
+pbs_install() {
+	domkinstall
+	dodoc COPYING
+}
+

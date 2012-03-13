@@ -1,0 +1,32 @@
+#
+# Ylmf OS package build script
+#
+
+DESCRIPTION="Less plugins for GStreamer"
+HOMEPAGE="http://gstreamer.freedesktop.org/"
+LICENSE="GPL"
+PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
+
+SRC_URI="http://gstreamer.freedesktop.org/src/"$N"/"$N-$V".tar.bz2"
+
+RDEPEND="bzip2 cairo celt curl cyrus-sasl directfb enca expat faac faad2 flac fontconfig freetype fribidi gcc-lib gdk-pixbuf glib2 glibc gnutls gst-plugins-base gstreamer jasper keyutils krb5 libass libcroco libdca libgcrypt libgpg-error libICE libidn libjpeg-turbo libmms libmodplug libmpcdec libogg libpng libproxy librsvg libsdl libSM libsndfile libssh2 libtasn1 libvdpau libvorbis libX11 libXau libxcb libXdmcp libXext libxml2 libXrender libXt nas neon openldap openssl orc pango pixman rtmpdump schroedinger util-linux-ng xvidcore zlib"
+BDEPEND=""
+RECOMMENDED=""
+CONFLICT=""
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_config() {
+	doconfig
+}
+
+pbs_build() {
+	domake
+}
+
+pbs_install() {
+	domkinstall
+}
+

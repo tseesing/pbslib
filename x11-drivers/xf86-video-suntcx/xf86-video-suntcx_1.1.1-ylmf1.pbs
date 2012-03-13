@@ -1,0 +1,34 @@
+#
+# Ylmf OS package build script
+#
+
+DESCRIPTION="TCX video driver"
+HOMEPAGE="http://xorg.freedesktop.org/"
+LICENSE="custom"
+PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
+
+REPO="testing"
+
+SRC_URI="http://xorg.freedesktop.org/archive/individual/driver/"$N-$V".tar.bz2"
+CHECKSUM="b064a8d2f3d481ec36ef9ac17e13a77d"
+
+RDEPEND="glibc"
+BDEPEND="xorg-server-dev"
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_config() {
+	doconfig
+}
+
+pbs_build() {
+	domake
+}
+
+pbs_install() {
+	domkinstall
+	dodoc COPYING
+}
+

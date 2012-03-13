@@ -1,0 +1,34 @@
+#
+# Ylmf OS package build script
+#
+
+DESCRIPTION="X.Org xtrans library"
+HOMEPAGE="http://www.x.org/wiki/"
+LICENSE="custom"
+PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
+
+SRC_URI="http://xorg.freedesktop.org/archive/individual/lib/"$N-$V".tar.bz2"
+CHECKSUM="c66f9ffd2da4fb012220c6c40ebc7609"
+
+RDEPEND="glib2 gdk-pixbuf"
+BDEPEND=""
+
+OPTIONS="nodev"
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_config() {
+	doconfig
+}
+
+pbs_build() {
+	domake
+}
+
+pbs_install() {
+	domkinstall
+	dodoc COPYING
+}
+

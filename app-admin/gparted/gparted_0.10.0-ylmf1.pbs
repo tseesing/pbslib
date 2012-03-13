@@ -1,0 +1,39 @@
+#
+# Ylmf OS package build script
+#
+
+DESCRIPTION="Gnome Partition Editor"
+HOMEPAGE="http://gparted.sourceforge.net/"
+LICENSE="GPL"
+PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
+
+SRC_URI="http://downloads.sourceforge.net/project/"$N"/"$N"/"$N-$V"/"$N-$V".tar.bz2"
+
+RDEPEND="atk atkmm cairo cairomm device-mapper expat fontconfig freetype gcc-lib gdk-pixbuf glib2 glibc glibmm gtk+ gtkmm libpng libsigc++ libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libXrandr libXrender pango pangomm parted pixman udev util-linux-ng zlib"
+BDEPEND=" "
+RECOMMENDED="dosfstools jfsutils ntfs-3g e2fsprogs reiserfsprogs xfsprogs"
+
+INSTALL="$N.install"
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_patch() {
+	dopatch desktop-i18n.patch
+}
+
+pbs_config() {
+	config+=" --disable-schemas-install  
+		  --disable-scrollkeeper "
+	doconfig
+}
+
+pbs_build() {
+	domake
+}
+
+pbs_install() {
+	domkinstall
+}
+

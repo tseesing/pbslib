@@ -1,0 +1,32 @@
+#
+# Ylmf OS package build script
+#
+
+DESCRIPTION="X.Org Xfixes library"
+HOMEPAGE="http://www.x.org/wiki/"
+LICENSE="custom"
+PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
+
+SRC_URI="http://xorg.freedesktop.org/archive/individual/lib/"$N-$V".tar.bz2"
+CHECKSUM="678071bd7f9f7467e2fc712d81022318"
+
+RDEPEND="glibc libX11 libXau libxcb libXdmcp"
+BDEPEND="fixesproto(>=5.0)" 
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_config() {
+	doconfig
+}
+
+pbs_build() {
+	domake
+}
+
+pbs_install() {
+	domkinstall
+	dodoc COPYING
+}
+

@@ -12,9 +12,10 @@ post_remove() {
 }
 
 post_upgrade() {
-	gnome2_desktop_database_update
+	post_install
 }
 
-post_downgrade() {	
-	gnome2_desktop_database_update
+post_downgrade() {
+	post_install
 }
+

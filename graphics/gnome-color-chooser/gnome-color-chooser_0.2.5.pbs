@@ -4,19 +4,15 @@
 
 DESCRIPTION="GTK+/GNOME color customization tool."
 HOMEPAGE="http://gnomecc.sourceforge.net/"
-REPO=""
 LICENSE="GPL"
-PRIORITY=""
 PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
 
 SRC_URI="http://downloads.sourceforge.net/project/gnomecc/"$N"/"$V$R"/"$N-$V$R".tar.gz"
 
-RDEPEND="alsa-lib atk audiofile avahi cairo cairomm dbus dbus-glib eggdbus esound expat fontconfig freetype gail gcc-lib gconf glib2 gdk-pixbuf glibc glibmm gnome-vfs gtk+ gtkmm libart_lgpl libbonobo libbonoboui libgcrypt libglade libglademm libgnome libgnomecanvas libgnome-keyring libgnomeui libgpg-error libICE libpng libsigc++ libSM libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libxml2 libXrandr libXrender openssl orbit pango pangomm pixman popt util-linux-ng zlib"
-BDEPEND="        eggdbus                                                 "
+RDEPEND="alsa-lib atk audiofile avahi cairo cairomm dbus dbus-glib eggdbus expat fontconfig freetype gail gcc-lib gconf glib2 gdk-pixbuf glibc glibmm gnome-vfs gtk+ gtkmm libart_lgpl libbonobo libbonoboui libgcrypt libglade libglademm libgnome libgnomecanvas libgnome-keyring libgnomeui libgpg-error libICE libpng libsigc++ libSM libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libxml2 libXrandr libXrender openssl orbit pango pangomm pixman popt util-linux-ng zlib"
+BDEPEND=""
 RECOMMENDED=""
 CONFLICT=""
-
-NOTES=""
 
 pbs_unpack() {
         dounpack
@@ -34,3 +30,4 @@ pbs_build() {
 pbs_install() {
 	domkinstall
 }
+

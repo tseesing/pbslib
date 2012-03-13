@@ -28,13 +28,13 @@ NOTES="
 pbs_unpack() {
 	tar xf "$YPPATH_SOURCE"/MesaLib-"$V".tar.bz2
         tar xf "$YPPATH_SOURCE"/MesaGLUT-"$V".tar.bz2
-        mv Mesa-"$V"  "$N-$V$R"
+        mv Mesa-"$V" "$N-$V$R"
 }
 
 pbs_config() {
 	# i915,i965 disable
-	config+="--with-gallium-drivers=nouveau,r300,r600,svga,swrast
-		     --enable-xcb"
+	config+="--enable-xcb
+	         --with-gallium-drivers=nouveau,r300,r600,svga,swrast" 
 	doconfig
 }
 

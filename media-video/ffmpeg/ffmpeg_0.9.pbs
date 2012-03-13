@@ -9,7 +9,7 @@ PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
 
 SRC_URI="http://ffmpeg.org/releases/"$N-$V".tar.gz"
 
-RDEPEND="alsa-lib audiofile bzip2 directfb esound gcc-lib glibc jack-audio-connection-kit lame libICE libogg libsdl libSM libtheora libva libvorbis libX11 libXau libxcb libXdmcp libXext libXfixes libXt nas opencore-amr openssl orc rtmpdump schroedinger util-linux-ng x264 xvidcore zlib"
+RDEPEND="alsa-lib audiofile bzip2 directfb gcc-lib glibc jack-audio-connection-kit lame libICE libogg libsdl libSM libtheora libva libvorbis libX11 libXau libxcb libXdmcp libXext libXfixes libXt nas opencore-amr openssl orc rtmpdump schroedinger util-linux-ng x264 xvidcore zlib"
 BDEPEND="" 
 RECOMMENDED=""
 

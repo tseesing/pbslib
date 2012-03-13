@@ -1,0 +1,79 @@
+diff -ur xorg-server-1.10.4/configure.ac xorg-server-1.10.4.new//configure.ac
+--- xorg-server-1.10.4/configure.ac	2011-08-19 14:49:19.000000000 +0800
++++ xorg-server-1.10.4.new//configure.ac	2012-03-07 15:23:24.144490269 +0800
+@@ -1359,7 +1359,7 @@
+ 
+ # SHA1 hashing
+ AC_ARG_WITH([sha1],
+-            [AS_HELP_STRING([--with-sha1=libc|libmd|libgcrypt|libcrypto|libsha1|CommonCrypto],
++            [AS_HELP_STRING([--with-sha1=libc|libmd|libgcrypt|libcrypto|libsha1|CommonCrypto|nettle],
+                             [choose SHA1 implementation])])
+ AC_CHECK_FUNC([SHA1Init], [HAVE_SHA1_IN_LIBC=yes])
+ if test "x$with_sha1" = x && test "x$HAVE_SHA1_IN_LIBC" = xyes; then
+@@ -1442,6 +1442,18 @@
+ 		SHA1_CFLAGS="$OPENSSL_CFLAGS"
+ 	fi
+ fi
++
++AC_CHECK_LIB([nettle], [nettle_sha1_init], [HAVE_LIBNETTLE=yes])
++if test "x$with_sha1" = x && test "x$HAVE_LIBNETTLE" = xyes; then
++       with_sha1=nettle
++fi
++if test "x$with_sha1" = xnettle; then
++       AC_DEFINE([HAVE_SHA1_IN_LIBNETTLE], [1],
++                 [Use libnettle SHA1 functions])
++       # XXX hack for d-i: use the static lib
++       SHA1_LIBS=-l:libnettle.a
++fi
++
+ AC_MSG_CHECKING([for SHA1 implementation])
+ if test "x$with_sha1" = x; then
+ 	AC_MSG_ERROR([No suitable SHA1 implementation found])
+diff -ur xorg-server-1.10.4/include/dix-config.h.in xorg-server-1.10.4.new//include/dix-config.h.in
+--- xorg-server-1.10.4/include/dix-config.h.in	2011-08-05 13:59:03.000000000 +0800
++++ xorg-server-1.10.4.new//include/dix-config.h.in	2012-03-07 15:23:46.458255421 +0800
+@@ -175,6 +175,9 @@
+ /* Define to use libsha1 for SHA1 */
+ #undef HAVE_SHA1_IN_LIBSHA1
+ 
++/* Define to use libnettle SHA1 */
++#undef HAVE_SHA1_IN_LIBNETTLE
++
+ /* Define to 1 if you have the `shmctl64' function. */
+ #undef HAVE_SHMCTL64
+ 
+diff -ur xorg-server-1.10.4/os/xsha1.c xorg-server-1.10.4.new//os/xsha1.c
+--- xorg-server-1.10.4/os/xsha1.c	2011-07-17 04:18:37.000000000 +0800
++++ xorg-server-1.10.4.new//os/xsha1.c	2012-03-07 15:24:48.182783426 +0800
+@@ -127,6 +127,31 @@
+     return 1;
+ }
+ 
++#elif defined(HAVE_SHA1_IN_LIBNETTLE)
++
++# include <nettle/sha.h>
++
++void *x_sha1_init(void)
++{
++    struct sha1_ctx *ctx = xalloc(sizeof(*ctx));
++    if (!ctx)
++       return NULL;
++    sha1_init(ctx);
++    return ctx;
++}
++
++int x_sha1_update(void *ctx, void *data, int size)
++{
++    sha1_update(ctx, size, data);
++    return 1;
++}
++
++int x_sha1_final(void *ctx, unsigned char result[20])
++{
++    sha1_digest(ctx, 20, result);
++    return 1;
++}
++
+ #else /* Use OpenSSL's libcrypto */
+ 
+ # include <stddef.h>  /* buggy openssl/sha.h wants size_t */

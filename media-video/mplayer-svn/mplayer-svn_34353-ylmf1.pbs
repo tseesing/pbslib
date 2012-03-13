@@ -10,7 +10,7 @@ PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
 # svn checkout svn://svn.mplayerhq.hu/mplayer/trunk mplayer and packed by Ylmf OS.
 SRC_URI="$N-$V.tar.bz2"
 
-RDEPEND="a52dec aalib alsa-lib attr audiofile bzip2 cyrus-sasl dbus directfb e2fsprogs enca esound expat faac faad2 flac fontconfig freetype fribidi gcc-lib giflib glibc jack-audio-connection-kit json-c keyutils krb5 lame lcms libbluray libcap libcdio libdrm libICE libjpeg-turbo libmad libmng libogg libpng libsamplerate libsdl libSM libsndfile libtheora libtool libvdpau libvorbis libX11 libXau libxcb libXdamage libXdmcp libXext libXfixes libXi libXinerama libxml2 libXScrnSaver libXt libXtst libXv libXvMC libXxf86dga libXxf86vm lirc lzo mesa mpg123 nas ncurses openal opencore-amr openldap openssl orc pulseaudio rtmpdump samba schroedinger slang speex talloc tdb util-linux-ng x264 xvidcore zlib"
+RDEPEND="a52dec aalib alsa-lib attr audiofile bzip2 cyrus-sasl dbus directfb e2fsprogs enca expat faac faad2 flac fontconfig freetype fribidi gcc-lib giflib glibc jack-audio-connection-kit json-c keyutils krb5 lame lcms libbluray libcap libcdio libdrm libICE libjpeg-turbo libmad libmng libogg libpng libsamplerate libsdl libSM libsndfile libtheora libtool libvdpau libvorbis libX11 libXau libxcb libXdamage libXdmcp libXext libXfixes libXi libXinerama libxml2 libXScrnSaver libXt libXtst libXv libXvMC libXxf86dga libXxf86vm lirc lzo mesa mpg123 nas ncurses openal opencore-amr openldap openssl orc pulseaudio rtmpdump samba schroedinger slang speex talloc tdb util-linux-ng x264 xvidcore zlib"
 BDEPEND="libgsm-dev" 
 CONFLICT="mplayer"
 

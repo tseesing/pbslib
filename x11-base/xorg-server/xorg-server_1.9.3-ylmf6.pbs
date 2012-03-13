@@ -12,11 +12,9 @@ SRC_URI="http://www.x.org/releases/individual/xserver/"$N-$V".tar.bz2"
 RDEPEND="freetype gcc-lib glibc libdrm libfontenc libgcrypt libgpg-error libpciaccess libX11 libXau libxcb libXdamage libXdmcp libXext libXfixes libXfont libXv libXxf86vm mesa pixman udev zlib"
 BDEPEND="xproto dri2proto libsdl-dev xtrans xextproto inputproto fontsproto bigreqsproto scrnsaverproto xf86vidmodeproto xf86dgaproto videoproto resourceproto xcmiscproto recordproto fixesproto damageproto compositeproto glproto xf86driproto xf86driproto dri2proto randrproto xineramaproto"
 
-NOTES="
-You must rebuild all drivers if upgrading from xorg-server 1.6
+NOTES="You must rebuild all drivers if upgrading from xorg-server 1.6
 or earlier, because the ABI changed. If you cannot start X because
-of module version mismatch errors, this is your problem.
-"
+of module version mismatch errors, this is your problem."
 
 INSTALL="$N.install"
 
@@ -24,11 +22,14 @@ pbs_unpack() {
         dounpack
 }
 
+pbs_patch() {
+	dopatch "$N"-1.9-xinerama-crash-fix.patch 
+	dopatch "$N"-1.9-nouveau-default.patch 
+	dopatch debian_patches_204_fix-neg-sync-transition.patch 
+	dopatch ylmfos-xserver_1.5.0_bg_none_root.patch
+}
+
 pbs_config() {
-	dopatch "$N"-1.9-xinerama-crash-fix.patch \
-	        "$N"-1.9-nouveau-default.patch \
-		debian_patches_204_fix-neg-sync-transition.patch \
-		ylmfos-xserver_1.5.0_bg_none_root.patch
 	config+="--sysconfdir=/etc/X11
 		 --with-xkb-output=/var/lib/xkb 
 		 --enable-install-setuid 
@@ -87,6 +88,7 @@ pbs_install() {
 	cd usr/lib/xorg/modules/extensions/
 	mv libglx.so libglx.so-pkg."$N"
 	doln -sf /usr/lib/xorg/modules/extensions/libglx.so-pkg."$N" libglx.so
+	cd -
 	
 	# 
 	dounit "xorgconf-check.service"	

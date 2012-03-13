@@ -4,21 +4,17 @@
 
 DESCRIPTION="Gnome SSH Tunnel Manage"
 HOMEPAGE="http://sourceforge.net/projects/gstm/"
-REPO=""
 LICENSE="GPL"
-PRIORITY=""
 PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
 
 SRC_URI="http://downloads.sourceforge.net/project/gstm/gSTM/gSTM-1.2/"$N-$V$R".tar.gz"
 
-RDEPEND="alsa-lib atk audiofile avahi cairo dbus dbus-glib eggdbus esound expat fontconfig freetype gail gcc-lib gconf glib2 gdk-pixbuf glibc gnome-vfs gtk+ libart_lgpl libbonobo libbonoboui libgcrypt libgnome libgnomecanvas libgnome-keyring libgnomeui libgpg-error libICE libpng libSM libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libxml2 libXrandr libXrender openssl orbit pango pixman popt util-linux-ng zlib"
+RDEPEND="atk avahi cairo dbus dbus-glib expat fontconfig freetype gail gcc-lib gconf gdk-pixbuf glib2 glibc gnome-vfs gtk+ libart_lgpl libbonobo libbonoboui libcanberra libgcrypt libgnome libgnomecanvas libgnome-keyring libgnomeui libgpg-error libICE libogg libpng libSM libtool libvorbis libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libxml2 libXrandr libXrender openssl orbit pango pixman popt tdb util-linux-ng zlib"
 BDEPEND=""
 RECOMMENDED=""
 CONFLICT=""
 
 INSTALL="$N.install"
-
-NOTES=""
 
 pbs_unpack() {
         dounpack

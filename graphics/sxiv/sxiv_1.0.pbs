@@ -1,0 +1,38 @@
+#
+# Ylmf OS package build script
+#
+
+DESCRIPTION="Simple (or small or suckless) X Image Viewer"
+HOMEPAGE="https://github.com/muennich/sxiv/"
+LICENSE="GPL"
+PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
+
+SRC_URI="https://github.com/downloads/muennich/"$N"/"$N-$V".tar.gz"
+CHECKSUM="c887e0af1e4d5a101b285a46d288c419"
+
+RDEPEND="freetype glibc imlib2 libX11 libXau libxcb libXdmcp libXext zlib"
+RECOMMENDED=""
+BDEPEND=""
+OPTIONAL=""
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_patch() {
+	dopatch ylmfos_makefile.patch
+}
+
+pbs_config() {
+	config+=""
+	doconfig
+}
+
+pbs_build() {
+	domake
+}
+
+pbs_install() {
+	domkinstall
+}
+

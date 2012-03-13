@@ -7,7 +7,7 @@ HOMEPAGE="http://www.valgrind.org"
 LICENSE="GPL"
 PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
 
-SRC_URI="http://www.valgrind.org/downloads/"$N-$V$R".tar.bz2"
+SRC_URI="http://www.valgrind.org/downloads/"$N-$V".tar.bz2"
 
 RDEPEND="glibc"
 BDEPEND=""
@@ -15,6 +15,10 @@ RECOMMENDED=""
 
 pbs_unpack() {
         dounpack
+}
+
+pbs_patch() {
+	dopatch valgrind-3.7.0-glibc-2.15.patch
 }
 
 pbs_config() {

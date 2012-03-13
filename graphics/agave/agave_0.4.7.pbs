@@ -9,7 +9,7 @@ PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
 
 SRC_URI="http://download.gna.org/colorscheme/releases/"$N-$V".tar.bz2"
 
-RDEPEND="alsa-lib atk audiofile avahi cairo cairomm dbus dbus-glib eggdbus esound expat fontconfig freetype gail gcc-lib gconf gconfmm glib2 gdk-pixbuf glibc glibmm gnome-vfs gtk+ gtkmm libart_lgpl libbonobo libbonoboui libgcrypt libglade libglademm libgnome libgnomecanvas libgnome-keyring libgnomeui libgpg-error libICE libpng libsigc++ libSM libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libxml2 libXrandr libXrender openssl orbit pango pangomm pixman popt util-linux-ng zlib"
+RDEPEND="alsa-lib atk audiofile avahi cairo cairomm dbus dbus-glib eggdbus expat fontconfig freetype gail gcc-lib gconf gconfmm glib2 gdk-pixbuf glibc glibmm gnome-vfs gtk+ gtkmm libart_lgpl libbonobo libbonoboui libgcrypt libglade libglademm libgnome libgnomecanvas libgnome-keyring libgnomeui libgpg-error libICE libpng libsigc++ libSM libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libxml2 libXrandr libXrender openssl orbit pango pangomm pixman popt util-linux-ng zlib"
 BDEPEND="eggdbus"
 RECOMMENDED=""
 CONFLICT=""
@@ -20,14 +20,15 @@ pbs_unpack() {
         dounpack
 }
 
-pbs_config() {
+pbs_patch() {
 	# Fedora patch
 	dopatch agave-0.4.7-mdv-fix-str-fmt.patch
 	# gcs-schemebox patch
 	dopatch schemebox.patch
+}
 
+pbs_config() {
 	config+="--disable-scrollkeeper"
-
 	doconfig
 }
 

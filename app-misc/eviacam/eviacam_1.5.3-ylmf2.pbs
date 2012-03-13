@@ -1,0 +1,38 @@
+#
+# Ylmf OS package build script
+#
+
+DESCRIPTION="A mouse replacement software that moves the pointer as you move your head."
+HOMEPAGE="http://eviacam.sourceforge.net/eviacam.php"
+LICENSE="GPL"
+PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
+
+SRC_URI="http://sourceforge.net/projects/"$N"/files/"$N"/"$V"/"$N"_"$V".orig.tar.gz"
+CHECKSUM="883eb9c9e12bee67fc3a51396e37a961"
+
+RDEPEND="atk bzip2 cairo expat ffmpeg fontconfig freetype gcc-lib gdk-pixbuf glib2 glibc gst-plugins-base gstreamer gtk+ jasper lame libICE libjpeg-turbo libogg libpng libSM libtheora libtiff libva libvorbis libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libXinerama libxml2 libXrandr libXrender libXtst libXxf86vm opencore-amr opencv openssl orc pango pixman rtmpdump schroedinger util-linux-ng v4l-utils wxWidgets x264 xvidcore zlib"
+RECOMMENDED=""
+BDEPEND=""
+OPTIONAL=""
+CONFLICT=""
+
+INSTALL="$N.install"
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_config() {
+	config+=""
+	doconfig
+}
+
+pbs_build() {
+	domake
+}
+
+pbs_install() {
+	domkinstall
+}
+
+

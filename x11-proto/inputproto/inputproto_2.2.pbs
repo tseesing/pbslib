@@ -1,0 +1,33 @@
+#
+# Ylmf OS package build script
+#
+
+DESCRIPTION="X.Org Input protocol headers"
+HOMEPAGE="http://xorg.freedesktop.org/"
+LICENSE="custom"
+PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
+
+SRC_URI="http://xorg.freedesktop.org/archive/individual/proto/"$N-$V".tar.bz2"
+CHECKSUM="13c8aedaf98a92e282b7e456c0a5bed9"
+
+RDEPEND=""
+BDEPEND=""
+OPTIONS="nodev"
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_config() {	
+	doconfig
+}
+
+pbs_build() {
+	domake
+}
+
+pbs_install() {
+	domkinstall
+	dodoc COPYING
+}
+

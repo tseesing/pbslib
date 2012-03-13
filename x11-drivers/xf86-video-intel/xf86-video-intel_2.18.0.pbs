@@ -5,14 +5,15 @@
 DESCRIPTION="X.Org driver for Intel i8xx/i9xx cards"
 HOMEPAGE="http://xorg.freedesktop.org/"
 LICENSE="custom"
-REPO="testing"
 PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
+
+REPO="testing"
 
 SRC_URI="http://xorg.freedesktop.org/archive/individual/driver/"$N-$V".tar.bz2"
 CHECKSUM="34f3987ffe86e30c57abc33b7f8030e9"
 
 RDEPEND="glibc libdrm(>=2.4.29) libpciaccess libX11 libXau libxcb libXdmcp libXext libXfixes libXv libXvMC udev xcb-util"
-BDEPEND="util-macros xorg-server-dev"
+BDEPEND="util-macros xorg-server-dev pixman-dev(>=0.24)"
 
 pbs_unpack() {
         dounpack
