@@ -1,0 +1,51 @@
+#
+# Ylmf OS package build script
+#
+
+DESCRIPTION="A multi-platform toolkit for creating graphical user interfaces (v2)."
+COMMENTS="GTK+, or the GIMP Toolkit, is a multi-platform toolkit for creating graphical user interfaces. Offering a complete set of widgets, GTK+ is suitable for projects ranging from small one-off tools to complete application suites."
+HOMEPAGE="http://www.gtk.org/"
+LICENSE="LGPL"
+PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
+
+SRC_URI="http://ftp.gnome.org/pub/gnome/sources/"$N"/2.24/"$N-$V".tar.xz"
+CHECKSUM="7fdcb407dd174010a695b555bf9b65e2"
+
+RDEPEND="atk(>=1.29.2) cairo(>=1.6) cups dbus e2fsprogs expat fontconfig freetype gail gcc-lib gdk-pixbuf glib2 glibc gnutls keyutils krb5 libgcrypt libgpg-error libpng libtasn1 libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libXrandr libXrender pango pixman zlib"
+BDEPEND="gtk-doc"
+RECOMMENDED=""
+
+INSTALL="$N.install"
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_patch() {
+	dopatch "$N"-2.21.3-multilib.patch
+	dopatch "$N"-2.14.3-limit-gtksignal-includes.patch
+	dopatch "$N"-2.24.7-darwin-quartz-introspection.patch
+}
+
+pbs_config() {
+	config+="--with-xinput=yes"
+	doconfig
+}
+
+pbs_build() {
+	# https://bugzilla.gnome.org/show_bug.cgi?id=655517
+	sed -i -e 's/ -shared / -Wl,-O1,--as-needed\0/g' libtool
+	domake
+}
+
+pbs_install() {
+	domkinstall RUN_QUERY_IMMODULES_TEST=false RUN_QUERY_LOADER_TEST=false
+	cd "$destdir"
+	docp "$filesdir"/{update-gdk-pixbuf-loaders,update-gtk-immodules} usr/bin/
+	chmod 0755 usr/bin/update-*
+	docp "$filesdir"/profile.d/* etc/profile.d/
+	doln /usr/lib/gtk-2.0/include/gdkconfig.h usr/include/gdkconfig.h
+	doln /usr/include/gtk-2.0/gtk usr/include/gtk
+	doln /usr/include/gtk-2.0/gdk usr/include/gdk
+}
+

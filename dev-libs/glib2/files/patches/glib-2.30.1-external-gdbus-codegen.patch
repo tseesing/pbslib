@@ -1,0 +1,80 @@
+Use an external gdbus-codegen package
+
+diff -ur glib2-2.30.3/configure.ac glib2-2.30.3.new//configure.ac
+--- glib2-2.30.3/configure.ac	2012-03-12 07:36:03.000000000 +0800
++++ glib2-2.30.3.new//configure.ac	2012-03-13 14:46:14.496848875 +0800
+@@ -367,7 +367,7 @@
+ AC_SUBST(PERL_PATH)
+ 
+ # Need suitable python path for greport
+-AM_PATH_PYTHON(2.5,,PYTHON="/usr/bin/env python2.5")
++#AM_PATH_PYTHON(2.5,,PYTHON="/usr/bin/env python2.5")
+ 
+ 
+ dnl ***********************
+@@ -3881,8 +3881,6 @@
+ gthread/Makefile
+ gthread/tests/Makefile
+ gio/Makefile
+-gio/gdbus-2.0/codegen/Makefile
+-gio/gdbus-2.0/codegen/config.py
+ gio/xdgmime/Makefile
+ gio/inotify/Makefile
+ gio/libasyncns/Makefile
+diff -ur glib2-2.30.3/docs/reference/gio/Makefile.am glib2-2.30.3.new//docs/reference/gio/Makefile.am
+--- glib2-2.30.3/docs/reference/gio/Makefile.am	2012-03-12 05:43:28.000000000 +0800
++++ glib2-2.30.3.new//docs/reference/gio/Makefile.am	2012-03-13 14:47:15.688150266 +0800
+@@ -138,8 +138,7 @@
+ 	gio-querymodules.1	\
+ 	glib-compile-schemas.1	\
+ 	gsettings.1		\
+-	gdbus.1			\
+-	gdbus-codegen.1
++	gdbus.1	
+ 
+ if ENABLE_MAN
+ 
+diff -ur glib2-2.30.3/gio/Makefile.am glib2-2.30.3.new//gio/Makefile.am
+--- glib2-2.30.3/gio/Makefile.am	2012-03-12 05:44:19.000000000 +0800
++++ glib2-2.30.3.new//gio/Makefile.am	2012-03-13 14:47:52.338928602 +0800
+@@ -2,7 +2,7 @@
+ 
+ NULL =
+ 
+-SUBDIRS = gdbus-2.0/codegen
++SUBDIRS = 
+ 
+ if OS_UNIX
+ SUBDIRS += libasyncns xdgmime
+diff -ur glib2-2.30.3/gio/tests/gdbus-object-manager-example/Makefile.am glib2-2.30.3.new//gio/tests/gdbus-object-manager-example/Makefile.am
+--- glib2-2.30.3/gio/tests/gdbus-object-manager-example/Makefile.am	2011-10-14 11:48:11.000000000 +0800
++++ glib2-2.30.3.new//gio/tests/gdbus-object-manager-example/Makefile.am	2012-03-13 14:48:56.960298874 +0800
+@@ -21,10 +21,8 @@
+ 	gdbus-example-objectmanager-generated-org.gtk.GDBus.Example.ObjectManager.Cat.xml 	\
+ 	$(NULL)
+ 
+-$(GDBUS_GENERATED) : gdbus-example-objectmanager.xml Makefile $(top_builddir)/gio/gdbus-2.0/codegen/gdbus-codegen
+-	$(AM_V_GEN) UNINSTALLED_GLIB_SRCDIR=$(top_srcdir) \
+-		UNINSTALLED_GLIB_BUILDDIR=$(top_builddir) \
+-		$(PYTHON) $(top_builddir)/gio/gdbus-2.0/codegen/gdbus-codegen \
++$(GDBUS_GENERATED) : gdbus-example-objectmanager.xml Makefile
++	$(AM_V_GEN) gdbus-codegen \
+ 		--interface-prefix org.gtk.GDBus.Example.ObjectManager. \
+ 		--c-namespace Example \
+ 		--c-generate-object-manager \
+diff -ur glib2-2.30.3/gio/tests/Makefile.am glib2-2.30.3.new//gio/tests/Makefile.am
+--- glib2-2.30.3/gio/tests/Makefile.am	2012-03-12 05:44:19.000000000 +0800
++++ glib2-2.30.3.new//gio/tests/Makefile.am	2012-03-13 14:49:44.864646326 +0800
+@@ -268,10 +268,8 @@
+ gdbus_close_pending_LDADD = $(progs_ldadd)
+ 
+ if OS_UNIX
+-gdbus-test-codegen-generated.h gdbus-test-codegen-generated.c : test-codegen.xml Makefile $(top_builddir)/gio/gdbus-2.0/codegen/gdbus-codegen
+-	$(AM_V_GEN) UNINSTALLED_GLIB_SRCDIR=$(top_srcdir) \
+-		UNINSTALLED_GLIB_BUILDDIR=$(top_builddir) \
+-		$(PYTHON) $(top_builddir)/gio/gdbus-2.0/codegen/gdbus-codegen \
++gdbus-test-codegen-generated.h gdbus-test-codegen-generated.c : test-codegen.xml Makefile
++	$(AM_V_GEN) gdbus-codegen \
+ 		--interface-prefix org.project. \
+ 		--generate-c-code gdbus-test-codegen-generated \
+ 		--c-generate-object-manager \

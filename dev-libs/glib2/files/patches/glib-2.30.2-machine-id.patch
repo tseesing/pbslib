@@ -1,0 +1,25 @@
+From 1c9eceaccb6e6c4339cd6951cf53fbd60ae80b8b Mon Sep 17 00:00:00 2001
+From: Alexandre Rostovtsev <tetromino@gentoo.org>
+Date: Mon, 14 Nov 2011 01:43:22 -0500
+Subject: [PATCH] _g_dbus_get_machine_id(): check /etc/machine-id too
+
+machine-id can be in /etc or in /var/lib/dbus.
+
+https://bugzilla.gnome.org/show_bug.cgi?id=663928
+
+diff -ur glib2-2.30.3/gio/gdbusprivate.c glib2-2.30.3.new//gio/gdbusprivate.c
+--- glib2-2.30.3/gio/gdbusprivate.c	2012-03-12 05:43:28.000000000 +0800
++++ glib2-2.30.3.new//gio/gdbusprivate.c	2012-03-13 14:58:18.362098408 +0800
+@@ -2059,7 +2059,11 @@
+   gchar *ret;
+   /* TODO: use PACKAGE_LOCALSTATEDIR ? */
+   ret = NULL;
+-  if (!g_file_get_contents ("/var/lib/dbus/machine-id",
++  if (!g_file_get_contents ("/etc/machine-id",
++  		            &ret,
++                            NULL,
++			    NULL) &&
++	!g_file_get_contents ("/var/lib/dbus/machine-id",
+                             &ret,
+                             NULL,
+                             error))

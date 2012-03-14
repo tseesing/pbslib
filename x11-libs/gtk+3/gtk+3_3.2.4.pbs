@@ -1,0 +1,41 @@
+#
+# Ylmf OS package build script
+#
+
+DESCRIPTION="GTK+ is a multi-platform toolkit (v3)"
+HOMEPAGE="http://www.gtk.org/"
+LICENSE="LGPL"
+PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
+
+REPO="testing"
+
+SRC_URI="http://ftp.acc.umu.se/pub/gnome/sources/gtk+/3.2/gtk+-"$V".tar.xz"
+CHECKSUM="f981bf514858c00d7084bd6f6c34b3c60b8aebdb959e7aca6faa59ed67c136bd"
+
+RDEPEND="atk(>=2.2.0) pango(>1.29.0) glib2(>2.30.0) gobject-introspection(>0.10.1) avahi cairo cups dbus expat fontconfig freetype gcc-lib gdk-pixbuf glibc gnutls keyutils krb5 libffi libgcrypt libgpg-error libpng libtasn1 libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libXinerama libXrandr libXrender pixman zlib"
+RECOMMENDED=""
+BDEPEND=""
+OPTIONAL=""
+CONFLICT=""
+
+INSTALL="$N.install"
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_config() {
+	config+=" --enable-gtk2-dependency 
+	          --disable-schemas-compile "
+	doconfig
+}
+
+pbs_build() {
+	domake
+}
+
+pbs_install() {
+	domkinstall
+	docp "$filesdir"/settings.ini "$destdir"/etc/gtk-3.0/
+}
+

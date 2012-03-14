@@ -8,6 +8,7 @@ LICENSE="LGPL"
 PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
 
 SRC_URI="http://hal.freedesktop.org/releases/"$N-$V".tar.gz"
+CHECKSUM="e0a06da501b04ed3bab986a9df5b5aa2"
 
 RDEPEND="dbus dbus-glib eggdbus expat glib2 glibc pam zlib"
 BDEPEND="" 
@@ -22,21 +23,24 @@ pbs_unpack() {
         dounpack
 }
 
+pbs_patch() {
+	dopatch polkit-0.96-getcwd.patch 
+	dopatch 00git-pkexec-information-disclosure.patch 
+	dopatch 00git-fix-error-freeing.patch
+}
+
 pbs_config() {
-	dopatch polkit-0.96-getcwd.patch \
-	           00git-pkexec-information-disclosure.patch \
-		   00git-fix-error-freeing.patch
 	config+=" --with-authfw=pam 
-	              --with-pam-module-dir=/lib/security
-		      --disable-introspection
-		      --disable-ansi 
-		      --disable-examples 
-		      --enable-fast-install
-		      --enable-libtool-lock
-		      --enable-man-pages 
-		      --disable-dependency-tracking 	
-		      --disable-verbose-mode 
-		      --enable-nls "
+	          --with-pam-module-dir=/lib/security
+		  --disable-introspection
+		  --disable-ansi 
+		  --disable-examples 
+		  --enable-fast-install
+		  --enable-libtool-lock
+		  --enable-man-pages 
+		  --disable-dependency-tracking 	
+		  --disable-verbose-mode 
+		  --enable-nls "
 	doconfig
 }
 
@@ -56,7 +60,7 @@ pbs_install() {
 	# The file /usr/libexec/polkit-agent-helper-1 /usr/bin/pkexecmust be owned 
 	#     by root and have mode 4755 (setuid root binary)
 	# chmod 4755 /usr/libexec/polkit-agent-helper-1 /usr/bin/pkexecmust
-	docp $filesdir/51-ylmfos-admin.conf   etc/polkit-1/localauthority.conf.d
-	docp $filesdir/com.ylmfos-admin.pkla  var/lib/polkit-1/localauthority/10-vendor.d
+	docp "$filesdir"/51-ylmfos-admin.conf   etc/polkit-1/localauthority.conf.d
+	docp "$filesdir"/com.ylmfos-admin.pkla  var/lib/polkit-1/localauthority/10-vendor.d
 }
 

@@ -1,0 +1,45 @@
+#
+# Ylmf OS package build script
+#
+
+DESCRIPTION="Portable DjVu viewer and browser plugin"
+HOMEPAGE="http://djvu.sourceforge.net/djview4.html"
+LICENSE="GPL"
+PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
+
+SRC_URI="http://downloads.sourceforge.net/djvu/djview-"$V".tar.gz"
+CHECKSUM="70ef8f416c7d6892cc0cf012bfd0ae07"
+
+RDEPEND="djvulibre expat fontconfig freetype gcc-lib glib2 glibc libdrm libffi libICE libjpeg-turbo libpng libSM libtiff libX11 libXau libxcb libXdmcp libXext libXrender mesa qt-core udev util-linux-ng zlib"
+RECOMMENDED=""
+BDEPEND=""
+OPTIONAL=""
+CONFLICT=""
+
+DESKTOPFILE="djvulibre-djview4.desktop"
+
+INSTALL="$N.install"
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_config() {
+	config+=""
+	doconfig
+}
+
+pbs_build() {
+	sed 's/netscape/mozilla/g' -i nsdejavu/Makefile
+	sed 's/swap/rofl_swap/g' -i src/qdjvuwidget.cpp
+	domake
+}
+
+pbs_install() {
+	domake DESTDIR="${destdir}" install-djview install-nsdejavu
+	cd desktopfiles
+	install -Dm644 hi32-djview4.png "${destdir}"/usr/share/icons/hicolor/32x32/apps/djvulibre-djview4.png
+	install -Dm644 hi64-djview4.png "${destdir}"/usr/share/icons/hicolor/64x64/apps/djvulibre-djview4.png
+	dodesktop djvulibre-djview4.desktop hi64-djview4.png
+}
+

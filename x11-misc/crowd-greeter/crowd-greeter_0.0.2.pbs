@@ -1,0 +1,38 @@
+#
+# Ylmf OS package build script
+#
+
+DESCRIPTION="A 3D lightdm greeter"
+HOMEPAGE="https://launchpad.net/crowd-greeter"
+LICENSE="GPL"
+PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
+
+REPO="testing"
+
+SRC_URI="https://launchpad.net/~lightdm-team/+archive/crowd-greeter/+files/"${N}_$V".orig.tar.gz"
+CHECKSUM="c6c839d4fac957065c7e1cb326aa394e"
+
+RDEPEND="atk cairo expat fontconfig freetype gcc-lib gdk-pixbuf glib2 glibc gtk+3 libdrm libffi libpng libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libXinerama libxkbfile libxklavier libxml2 libXrandr libXrender libXxf86vm lightdm mesa pango pixman zlib"
+RECOMMENDED=""
+BDEPEND=""
+OPTIONAL=""
+CONFLICT=""
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_config() {
+	config+=""
+	doconfig
+}
+
+pbs_build() {
+	domake
+}
+
+pbs_install() {
+	domkinstall
+}
+
+

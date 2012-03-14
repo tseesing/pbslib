@@ -1,0 +1,35 @@
+#
+# Ylmf OS package build script
+#
+
+DESCRIPTION="A greeter for LightDM that uses Webkit for theming."
+HOMEPAGE="https://launchpad.net/lightdm-webkit-greeter"
+LICENSE="GPL"
+PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
+
+SRC_URI="https://launchpadlibrarian.net/89705596/"$N-$V".tar.gz"
+CHECKSUM="ff8247d5bbf3026140531061fbf1f51e"
+
+RDEPEND="atk cairo dbus dbus-glib enchant expat fontconfig freetype gail gcc-lib gdk-pixbuf glib2 glibc gnutls gst-plugins-base gstreamer gtk+ icu libffi libgcrypt libgpg-error libICE libjpeg-turbo libpng libSM libsoup libtasn1 libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libXinerama libxkbfile libxklavier libxml2 libXrandr libXrender libxslt libXt lightdm pango pixman sqlite util-linux-ng webkitgtk zlib"
+RECOMMENDED=""
+BDEPEND=""
+OPTIONAL=""
+CONFLICT=""
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_config() {
+	config+=""
+	doconfig
+}
+
+pbs_build() {
+	domake
+}
+
+pbs_install() {
+	domkinstall
+}
+

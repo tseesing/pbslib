@@ -1,0 +1,45 @@
+#
+# Ylmf OS package build script
+#
+
+DESCRIPTION="Cantarell font family for the GNOME desktop"
+HOMEPAGE="http://live.gnome.org/CantarellFonts"
+LICENSE="GPL"
+PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
+YARCH="any"
+
+SRC_URI="http://ftp.gnome.org/pub/GNOME/sources/"$N"/0.0/"$N-$V".tar.xz"
+CHECKSUM="6a21f841d28de444deee201a25e5cbc129fde14d633c547a7d36941437f72090"
+
+RDEPEND=""
+RECOMMENDED=""
+BDEPEND=""
+OPTIONAL=""
+CONFLICT=""
+
+INSTALL="$N.install"
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_config() {
+	config+=""
+	doconfig
+}
+
+pbs_build() {
+	domake
+}
+
+pbs_install() {
+	domkinstall
+	cd "$destdir"
+	domv usr/share/fontconfig/conf.avail    etc/fonts/
+	doln -s ../conf.avail/31-cantarell.conf etc/fonts/conf.d/31-cantarell.conf
+	rmdir usr/share/fontconfig
+}
+
+
+
+
