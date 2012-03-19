@@ -1,0 +1,35 @@
+#
+# Ylmf OS package build script
+#
+
+DESCRIPTION="A client-side library that implements a custom algorithm for extracting fingerprints"
+HOMEPAGE="http://acoustid.org/chromaprint"
+LICENSE="GPL"
+PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
+
+SRC_URI="https://github.com/downloads/lalinsky/"$N"/"$N-$V".tar.gz"
+CHECKSUM="e8bcc1d0d8dfec86aa648b87ba3f69b6d589eae0"
+
+RDEPEND="bzip2 ffmpeg gcc-lib glibc lame libogg libtheora libva libvorbis opencore-amr openssl orc rtmpdump schroedinger x264 xvidcore zlib"
+RECOMMENDED=""
+BDEPEND="cmake"
+OPTIONAL=""
+CONFLICT=""
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_config() {
+	cmake -DCMAKE_INSTALL_PREFIX=/usr -DBUILD_EXAMPLES=ON .
+}
+
+pbs_build() {
+	domake
+}
+
+pbs_install() {
+	domkinstall
+}
+
+

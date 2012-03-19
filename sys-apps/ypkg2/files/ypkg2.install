@@ -21,6 +21,21 @@ EOF
 	return 0
 }
 
+pre_upgrade() {
+	name=$1
+	version_new=$2
+	version_old=$3
+	
+	# version that less than 20120315 must do:
+	ypkg --compare-version $version_old 20120315
+	if [ $? -eq 2 ]; then	
+		sqlite3 "$dbfile" "alter table universe add column exec TEXT;"
+		sqlite3 "$dbfile" "alter table universe_history add column exec TEXT;"
+		sqlite3 "$dbfile" "alter table universe_testing add column exec TEXT;"
+		sqlite3 "$dbfile" "alter table world add column exec TEXT;"
+	fi
+}
+
 post_remove() {
 	rm -f /etc/yget.conf 2>/dev/null ||true
 }

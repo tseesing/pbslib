@@ -1,7 +1,9 @@
 . /usr/lib/ybs/funcs
 
 post_install() {
+	gnome2_desktop_database_update
 	gnome2_icon_cache_update 
+	gnome2_mime_database_update
 }
 
 post_upgrade() {
@@ -11,4 +13,3 @@ post_upgrade() {
 post_downgrade() {
 	post_install
 }
-

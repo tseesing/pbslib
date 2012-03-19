@@ -1,0 +1,34 @@
+#
+# Ylmf OS package build script
+#
+
+DESCRIPTION="a lightweight, Free Software, cross-platform BitTorrent client."
+HOMEPAGE="http://deluge-torrent.org/"
+LICENSE="GPL"
+PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
+
+SRC_URI="http://download.deluge-torrent.org/source/"$N-$V".tar.lzma"
+CHECKSUM="1e9412024e5fda26356c54c28617941d"
+
+RDEPEND="distribute chardet twisted zope-interface libtorrent libtorrent-rasterbar"
+BDEPEND=""
+RECOMMENDED=""
+CONFLICT=""
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_config() {
+	config+=""
+	doconfig
+}
+
+pbs_build() {
+	domake
+}
+
+pbs_install() {
+	domkinstall
+}
+

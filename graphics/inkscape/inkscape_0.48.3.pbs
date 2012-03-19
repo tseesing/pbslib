@@ -1,0 +1,36 @@
+#
+# Ylmf OS package build script
+#
+
+DESCRIPTION="A SVG based generic vector-drawing program"
+HOMEPAGE="http://www.inkscape.org/"
+LICENSE="GPL LGPL"
+PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
+
+SRC_URI="http://downloads.sourceforge.net/project/"$N"/"$N"/"$V"/"$N-$V".tar.bz2"
+CHECKSUM="9038961369c4f8b63e900ca4bfa4da61"
+
+RDEPEND="aspell atk atkmm avahi bzip2 cairo cairomm dbus dbus-glib djvulibre enchant expat fftw fontconfig freetype gc gcc-lib gconf gdk-pixbuf glib2 glibc glibmm gnome-vfs gsl gtk+ gtkmm gtkspell imagemagick jasper lcms libcroco libffi libICE libjpeg-turbo libpng librsvg libsigc++ libSM libtiff libtool libwpd libwpg libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libXinerama libxml2 libXrandr libXrender libxslt libXt openssl orbit pango pangomm perl pixman poppler popt util-linux-ng xz-utils zlib"
+BDEPEND=""
+RECOMMENDED=""
+
+INSTALL="$N.install"
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_config() {
+	config+="--with-python
+	         --with-perl"
+	doconfig
+}
+
+pbs_build() {
+	domake
+}
+
+pbs_install() {
+	domkinstall
+}
+

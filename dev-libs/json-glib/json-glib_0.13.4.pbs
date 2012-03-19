@@ -1,0 +1,32 @@
+#
+# Ylmf OS package build script
+#
+
+DESCRIPTION="A library providing GLib serialization and deserialization support for the JSON format"
+HOMEPAGE="http://live.gnome.org/JsonGlib"
+LICENSE="GPL"
+PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
+
+SRC_URI="http://ftp.gnome.org/pub/gnome/sources/"$N"/0.13/"$N-$V".tar.xz"
+CHECKSUM="29e4650aff3b9fb03d2531cd7257a86d21e6effd6e4edb1c83f7edb6be60369f"
+
+RDEPEND="glib2 glibc zlib"
+BDEPEND=""
+RECOMMENDED=""
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_config() {
+	doconfig
+}
+
+pbs_build() {
+	domake
+}
+
+pbs_install() {
+	domkinstall
+}
+
