@@ -20,7 +20,7 @@ pbs_config() {
 	#dopatch chromium-13.0.772.0-gcc46.patch \
 	#           tcmalloc-prototypes-glibc-2.14.patch \
 
-	# Ylmfos 
+	# Ylmf OS 
 	dopatch ylmfos-chrome-wrapper.patch ylmfos-baidu-tn.patch
 
 	# Fix build with gcc 4.6

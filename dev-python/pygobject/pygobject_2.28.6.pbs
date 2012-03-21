@@ -1,0 +1,33 @@
+#
+# Ylmf OS package build script
+#
+
+DESCRIPTION="GLib's GObject library bindings for Python"
+HOMEPAGE="http://www.pygtk.org/"
+LICENSE="GPL"
+PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
+
+SRC_URI="http://ftp.acc.umu.se/pub/gnome/sources/"$N"/2.28/"$N-$V".tar.xz"
+CHECKSUM="fb8a1d4f665130a125011659bd347c7339c944232163dbb9a34fd0686577adb8"
+
+RDEPEND="cairo expat fontconfig freetype glib2 glibc gobject-introspection libffi libpng libX11 libXau libxcb libXdmcp libXrender pixman zlib"
+BDEPEND=""
+RECOMMENDED=""
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_config() {
+	config+="--disable-static"
+	doconfig
+}
+
+pbs_build() {
+	make "$MAKEOPTS"
+}
+
+pbs_install() {
+	make DESTDIR="$destdir" install
+}
+

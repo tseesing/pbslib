@@ -1,0 +1,57 @@
+#
+# Ylmf OS package build script
+#
+
+DESCRIPTION="The Qt toolkit is a comprehensive C++ application development framework"
+HOMEPAGE="http://qt.nokia.com/"
+LICENSE="GPL"
+PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
+
+SRC_URI="ftp://ftp.trolltech.com/qt/source/qt-everywhere-opensource-src-"$V".tar.gz"
+CHECKSUM="9831cf1dfa8d0689a06c2c54c5c65aaf"
+
+RDEPEND="alsa-lib attr dbus expat flac fontconfig freetype gcc-lib glib2 glibc gst-plugins-base gstreamer json-c lcms libcap libdrm libffi libICE libjpeg-turbo libmng libogg libpng libSM libsndfile libtiff libtool libvorbis libX11 libXau libxcb libXdamage libXdmcp libXext libXfixes libXi libxml2 libXrender libXtst libXxf86vm mesa mysql openssl postgresql-libs pulseaudio unixodbc util-linux-ng zlib"
+BDEPEND=""
+RECOMMENDED=""
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_patch() {
+	dopatch blacklist-diginotar-certs.diff
+	dopatch qt-core-4.7.4-fix-libreoffice-crash.patch
+}
+
+pbs_config() {
+	config=" -prefix         /usr 
+                 -bindir         /usr/bin 
+   	         -libdir         /usr/lib
+		 -datadir        /usr/share/qt4 
+		 -docdir         /usr/share/doc/qt-"$V" 
+	         -headerdir      /usr/include/qt4 
+		 -plugindir      /usr/lib/qt4/plugins 
+		 -sysconfdir     /etc/qt4 
+		 -translationdir /usr/share/qt4/translations 
+	         -examplesdir    /usr/share/qt4/examples 
+		 -demosdir       /usr/share/qt4/demos 
+		 -nomake         examples 
+		 -nomake         demos 
+		 -qt3support 
+		 -confirm-license 
+		 -largefile"
+	#yes yes |doconfig
+	#choose o for opensource license
+	yes o |doconfig
+}
+
+pbs_build() {
+	domake
+}
+
+pbs_install () {
+	make INSTALL_ROOT="$destdir" install
+	# Sorry, doc is too large
+	rm -rf "$destdir"/usr/share/doc/qt-"$V"
+}
+

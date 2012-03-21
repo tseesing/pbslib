@@ -1,0 +1,39 @@
+#
+# Ylmf OS package build script
+#
+
+DESCRIPTION="free implementation of Windows(tm) on Unix"
+HOMEPAGE="http://www.winehq.org/"
+LICENSE="GPL"
+PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
+
+SRC_URI="http://sourceforge.net/projects/wine/files/Source/"$N-$V".tar.bz2"
+CHECKSUM="6594ab86a4b1fb2c09dadfb4ea7fc4af"
+
+RDEPEND="alsa-lib cyrus-sasl gcc-lib gettext glib2 glibc gnutls gst-plugins-base gstreamer lcms libdrm libexif libffi libgcrypt libgpg-error libgphoto2 libICE libSM libtasn1 libtool libunistring libX11 libXau libxcb libXdamage libXdmcp libXext libXfixes libxml2 libXxf86vm mesa mpg123 openal openldap util-linux-ng zlib"
+BDEPEND="prelink"
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_config() {
+	config+=""
+	doconfig
+}
+
+pbs_build() {
+	domake
+}
+
+pbs_install() {
+	domkinstall
+	#
+	cd "$destdir"
+	docp "$filesdir"/menu/wine.menu        etc/xdg/menus/applications-merged/
+	docp "$filesdir"/desktop/*.desktop     usr/share/applications/
+	docp "$filesdir"/desktop-directories/* usr/share/desktop-directories/
+	docp "$filesdir"/icon/*                usr/share/icons/hicolor/  
+	docp "$filesdir"/pixmaps/*             usr/share/pixmaps/
+}
+

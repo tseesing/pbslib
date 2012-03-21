@@ -1,0 +1,36 @@
+#
+# Ylmf OS package build script
+#
+
+DESCRIPTION="Object-oriented python bindings for subversion"
+HOMEPAGE="http://pysvn.tigris.org/"
+LICENSE="Apache-1.1"
+PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
+
+SRC_URI="http://pysvn.barrys-emacs.org/source_kits/"$N-$V".tar.gz"
+CHECKSUM="010a80f0058713209d62e96b20afbde9"
+
+RDEPEND="subversion"
+RECOMMENDED=""
+BDEPEND=""
+OPTIONAL=""
+CONFLICT=""
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_config() {
+	config+=""
+	doconfig
+}
+
+pbs_build() {
+	domake
+}
+
+pbs_install() {
+	domkinstall
+	dodoc LICENSE.txt
+}
+
