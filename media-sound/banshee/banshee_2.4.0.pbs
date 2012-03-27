@@ -1,0 +1,43 @@
+#
+# Ylmf OS package build script
+#
+
+DESCRIPTION="Music management and playback for GNOME"
+HOMEPAGE="http://banshee.fm/"
+LICENSE="MIT"
+PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
+
+SRC_URI="http://ftp.gnome.org/pub/GNOME/sources/"$N"/2.4/"$N-$V".tar.xz"
+CHECKSUM="a719717d02ed26cccf4e6432edd48a31"
+
+RDEPEND="mono mono-addins(>=0.6.2) mono-zeroconf atk cairo dbus enchant expat fontconfig freetype gail gcc-lib gconf gdk-pixbuf glib2 glibc gnutls gst-plugins-base gstreamer gtk+ icu libffi libgcrypt libgnome-keyring libgpg-error libICE libjpeg-turbo libpng libproxy libSM libsoup libtasn1 libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libXinerama libxml2 libXrandr libXrender libxslt libXt libXxf86vm orbit pango pixman sqlite util-linux-ng webkitgtk zlib"
+BDEPEND=""
+RECOMMENDED=""
+CONFLICT=""
+
+INSTALL="$N.install"
+
+NOTES="
+legacy iPod support: ipod-sharp
+libgpod-based iPod support: libgpod
+"
+pbs_unpack() {
+        dounpack
+}
+
+pbs_config() {
+	config+="--disable-appledevice
+	         --disable-scrollkeeper
+	         --disable-schemas-install
+	         --with-vendor-build-id=ylmfos"
+	doconfig
+}
+
+pbs_build() {
+	make
+}
+
+pbs_install() {
+	domkinstall
+}
+

@@ -1,0 +1,35 @@
+#
+# Ylmf OS package build script
+#
+
+DESCRIPTION="Contribution database for the m17n library"
+HOMEPAGE="http://www.m17n.org/m17n-lib/"
+LICENSE="GPL"
+PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
+
+SRC_URI="http://www.m17n.org/m17n-lib-download/"$N-$V".tar.gz"
+CHECKSUM="b4cae1ca81ec83d3d9c3f9dc45b0c12f"
+
+RDEPEND=""
+RECOMMENDED=""
+BDEPEND=""
+OPTIONAL=""
+CONFLICT=""
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_config() {
+	config+=""
+	doconfig
+}
+
+pbs_build() {
+	domake
+}
+
+pbs_install() {
+	domkinstall
+}
+

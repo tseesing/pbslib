@@ -1,0 +1,31 @@
+#
+# Ylmf OS package build script
+#
+
+DESCRIPTION="Introspection infrastructure for gobject library bindings"
+HOMEPAGE="http://live.gnome.org/GObjectIntrospection/"
+LICENSE="GPL"
+PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
+ 
+SRC_URI="http://ftp.gnome.org/pub/gnome/sources/"$N"/0.10/"$N-$V".tar.bz2"
+
+RDEPEND="glib2 glibc libffi zlib"
+BDEPEND=""
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_config() {
+	config+=""
+	doconfig
+}
+
+pbs_build(){
+	make
+}
+
+pbs_install() {
+	domkinstall
+}
+

@@ -1,0 +1,32 @@
+#
+# Ylmf OS package build script
+#
+
+DESCRIPTION="A set of symbols and convience functions that all indicators would like to use"
+HOMEPAGE="http://launchpad.net/libindicator/"
+LICENSE="GPL"
+PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
+
+SRC_URI="https://launchpad.net/libindicator/0.4/"$V"/+download/"$N-$V".tar.gz"
+CHECKSUM="c8f2900fa8e028bb2ea7511a0f368756"
+
+RDEPEND="atk cairo expat fontconfig freetype gcc-lib gdk-pixbuf glib2 glibc gtk+3 libffi libpng libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libXinerama libXrandr libXrender pango pixman zlib"
+BDEPEND=""
+RECOMMENDED=""
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_config() {
+	doconfig
+}
+
+pbs_build() {
+	domake
+}
+
+pbs_install() {
+	domkinstall
+}
+

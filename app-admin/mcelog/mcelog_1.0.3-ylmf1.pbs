@@ -1,0 +1,35 @@
+#
+# Ylmf OS package build script
+#
+
+DESCRIPTION="mcelog processes machine checks (in particular memory and CPU hardware errors) on modern x86 Linux systems."
+HOMEPAGE="http://freshmeat.net/projects/mcelog/"
+LICENSE="GPL"
+PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
+
+SRC_URI="ftp://ftp.kernel.org/pub/linux/utils/cpu/mce/"$N"-1.0pre3.tar.gz"
+CHECKSUM="b42f2214de6f4feb992556149edc67fa"
+
+RDEPEND="glibc"
+BDEPEND=""
+RECOMMENDED=""
+CONFLICT=""
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_build() {
+	make
+}
+
+pbs_install() {
+	mkdir -p "$destdir"/usr/share/doc/mcelog
+	make install prefix="$destdir"/usr etcprefix="$destdir" DOCDIR="$destdir"/usr/share/doc/mcelog
+	install -Dm0755 mcelog.cron "${destdir}/usr/sbin/mcelog.cron"
+	install -Dm0644 mcelog.logrotate "${destdir}/etc/logrotate.d/mcelog.logrotate"
+	install -Dm0644 README "${destdir}/usr/share/doc/mcelog/README"
+}
+
+
+

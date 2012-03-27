@@ -4,13 +4,13 @@
 
 DESCRIPTION="a portable, high level programming interface to various calling conventions."
 HOMEPAGE="http://sourceware.org/libffi/"
-LICENSE="GPL"
+LICENSE="custom"
 PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
  
 SRC_URI=" http://sources-redhat.mirrors.airband.net/"$N"/"$N-$V".tar.gz "
 
 RDEPEND="glibc"
-BDEPEND=""
+BDEPEND="188a4f79fdac2310044b44b7d3918ef9"
 
 INSTALL="$N.install"
 
@@ -28,5 +28,6 @@ pbs_build(){
 
 pbs_install() {
 	domkinstall
+	dodoc LICENSE
 }
 

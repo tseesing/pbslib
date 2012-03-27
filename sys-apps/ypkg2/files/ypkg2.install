@@ -27,12 +27,14 @@ pre_upgrade() {
 	version_old=$3
 	
 	# version that less than 20120315 must do:
+	dbs="universe universe_history universe_testing world"
 	ypkg --compare-version $version_old 20120315
 	if [ $? -eq 2 ]; then	
-		sqlite3 "$dbfile" "alter table universe add column exec TEXT;"
-		sqlite3 "$dbfile" "alter table universe_history add column exec TEXT;"
-		sqlite3 "$dbfile" "alter table universe_testing add column exec TEXT;"
-		sqlite3 "$dbfile" "alter table world add column exec TEXT;"
+		for i in $dbs; do
+			if ! sqlite3 "$dbfile" ".schema ${i}" |grep -q 'exec TEXT'; then
+				sqlite3 "$dbfile" "alter table ${i} add column exec TEXT;"
+			fi
+		done
 	fi
 }
 

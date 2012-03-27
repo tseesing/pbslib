@@ -1,0 +1,35 @@
+#
+# Ylmf OS package build script
+#
+
+DESCRIPTION="The Eye of GNOME image viewer"
+HOMEPAGE="http://www.gnome.org/projects/eog/"
+LICENSE="GPLv2"
+PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
+
+SRC_URI="http://ftp.gnome.org/pub/gnome/desktop/2.32/2.32.1/sources/"$N-$V".tar.bz2"
+
+RDEPEND="atk cairo dbus dbus-glib exempi expat fontconfig freetype gcc-lib gconf gdk-pixbuf glib2 glibc gnome-desktop gtk+ lcms libcroco libexif libffi libICE libjpeg-turbo libpng librsvg libSM libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libXinerama libxml2 libXrandr libXrender orbit pango pixman startup-notification util-linux-ng zlib"
+BDEPEND=""
+RECOMMENDED=""
+
+INSTALL="$N.install"
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_config() {
+	config+="--disable-schemas-install"
+	doconfig
+}
+
+pbs_build() {
+	domake
+}
+
+pbs_install() {
+	domkinstall
+}
+
+

@@ -1,0 +1,35 @@
+#
+# Ylmf OS package build script
+#
+
+DESCRIPTION="Image viewer and browser for Gnome"
+HOMEPAGE="http://gthumb.sourceforge.net"
+LICENSE="GPL"
+PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
+
+SRC_URI="http://ftp.gnome.org/pub/gnome/sources/"$N"/2.12/"$N-$V".tar.xz"
+CHECKSUM="b6e316ed8a7187ee58b388a44b1cef1ec3405b19a734cb07aaec311083761423"
+
+RDEPEND="atk brasero cairo clutter clutter-gtk dbus dbus-glib exiv2 expat fontconfig freetype gcc-lib gconf gdk-pixbuf glib2 glibc gmime gnutls gst-plugins-base gstreamer gtk+ json-glib libcanberra libdrm libffi libgcrypt libgnome-keyring libgpg-error libjpeg-turbo libogg libpng libproxy libsoup libtasn1 libtiff libtool libunique libvorbis libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libXinerama libxml2 libXrandr libXrender libXxf86vm mesa orbit pango pixman sqlite tdb totem-pl-parser zlib"
+BDEPEND=""
+RECOMMENDED=""
+
+INSTALL="$N.install"
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_config() {
+	config+="--disable-schemas-install"
+	doconfig
+}
+
+pbs_build() {
+	domake
+}
+
+pbs_install() {
+	domkinstall
+}
+

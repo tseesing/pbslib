@@ -4,11 +4,10 @@
 
 DESCRIPTION="The world's coolest brainstorming and mind mapping software and the best way to share ideas."
 HOMEPAGE="http://www.xmind.net/"
-REPO="testing"
 LICENSE="custom"
 PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
 
-SRC_URI="http://dl2.xmind.net/xmind-downloads/xmind-3.2.1.201011212218_i386.deb"
+SRC_URI="http://dl2.xmind.net/xmind-downloads/"$N-$V".201011212218_i386.deb"
 
 RDEPEND="glibc jre"
 BDEPEND=""

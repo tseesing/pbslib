@@ -32,7 +32,7 @@ pbs_install() {
 	domkinstall
 	dodoc COPYING
 
-	# Fixme, for compatibility with libarchive 2.x.x
+	# FIXME, for compatibility with libarchive 2.x.x
 	cd "$destdir"
 	doln /usr/lib/libarchive.so usr/lib/libarchive.so.2
 	doln /usr/lib/libarchive.so.12.0.3 usr/lib/libarchive.so.12

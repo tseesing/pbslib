@@ -1,0 +1,36 @@
+#
+# Ylmf OS package build script
+#
+
+DESCRIPTION="list resources in widgets"
+HOMEPAGE="http://xorg.freedesktop.org/"
+LICENSE="custom"
+PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
+
+SRC_URI="http://xorg.freedesktop.org/archive/individual/app/"$N-$V".tar.bz2"
+CHECKSUM="4e8edcc03001203c101e79d880d55762"
+
+RDEPEND="glibc libICE libSM libX11 libXau libXaw libxcb libXdmcp libXext libXmu libXpm libXt util-linux-ng"
+RECOMMENDED=""
+BDEPEND=""
+OPTIONAL=""
+CONFLICT=""
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_config() {
+	config+=""
+	doconfig
+}
+
+pbs_build() {
+	domake
+}
+
+pbs_install() {
+	domkinstall
+	dodoc COPYING
+}
+

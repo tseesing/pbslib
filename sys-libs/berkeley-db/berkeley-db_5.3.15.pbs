@@ -1,0 +1,41 @@
+#
+# Ylmf OS package build script
+#
+
+DESCRIPTION="Berkeley Data base library"
+HOMEPAGE="http://download-east.oracle.com/berkeley-db/"
+LICENSE="custom"
+PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
+
+SRC_URI="http://download.oracle.com/"$N"/db-"$V".tar.gz"
+CHECKSUM="7683b632a01ff3543c379a120809a942ec457738"
+
+RDEPEND="gcc-lib glibc"
+BDEPEND=""
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_config() {
+	cd build_unix
+	config+="--enable-compat185 
+	         --enable-cxx
+		 --enable-dbm
+		 --enable-shared 
+		 --enable-static"
+	../dist/configure $config
+}
+
+pbs_build() {
+	domake LIBSO_LIBS=-lpthread
+}
+
+pbs_install() {
+	domkinstall docdir=/usr/share/doc/db/
+	dodoc ../LICENSE
+
+	# Drop documents
+	rm -rf "$destdir"/usr/share/doc/db
+}
+

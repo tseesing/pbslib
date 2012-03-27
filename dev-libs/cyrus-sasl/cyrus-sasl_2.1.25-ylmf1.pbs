@@ -1,0 +1,38 @@
+#
+# Ylmf OS package build script
+#
+
+DESCRIPTION="The Cyrus SASL (Simple Authentication and Security Layer)."
+HOMEPAGE="http://asg.web.cmu.edu/sasl/"
+LICENSE="GPL"
+PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
+ 
+SRC_URI="ftp://ftp.andrew.cmu.edu/pub/cyrus-mail/"$N-$V".tar.gz"
+
+RDEPEND="berkeley-db glibc keyutils krb5 openssl pam zlib"
+BDEPEND=""
+RECOMMENDED=""
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_patch() {
+	dopatch 0027_db5_support.patch
+}
+
+pbs_config() {
+	config+="--with-dbpath=/var/lib/sasl/sasldb2 
+	         --with-saslauthd=/var/run"
+	doconfig
+}
+
+pbs_build() {
+	make 
+}
+
+pbs_install() {
+	domkinstall
+	install -m700 -d "$destdir"/var/lib/sasl
+}
+

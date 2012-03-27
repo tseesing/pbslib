@@ -1,0 +1,65 @@
+#
+# Ylmf OS package build script
+#
+
+DESCRIPTION="An interpreted, interactive, object-oriented programming language."
+HOMEPAGE="http://www.python.org/"
+LICENSE="PSF"
+PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
+
+SRC_URI="http://www.python.org/ftp/python/"$V"/Python-"$V".tar.bz2"
+CHECKSUM="ba7b2f11ffdbf195ee0d111b9455a5bd"
+
+RDEPEND="bzip2 expat fontconfig freetype gdbm glibc libffi libX11 libXau libxcb libXdmcp libXext libXft libXrender libXScrnSaver ncurses openssl readline sqlite tcl tk zlib"
+BDEPEND=""
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_patch() {
+	# gdbm has new magic that whichdb does not recognize
+	# http://bugs.python.org/issue13007
+	dopatch gdbm-magic-values.patch
+	
+	# http://bugs.python.org/issue13156
+	dopatch 13156-revert-tls-changeset-subinterpreter.patch
+
+	# Ensure that we are using the system copy of various libraries (expat, zlib and libffi),
+	# rather than copies shipped in the tarball
+	rm -r Modules/expat
+	rm -r Modules/zlib
+	rm -r Modules/_ctypes/{darwin,libffi}*
+
+	# 
+	dopatch ylmfos_add-platform-2.7.2.patch
+}
+
+pbs_config(){
+	export OPT="${CFLAGS}"
+	config+=" --enable-shared 
+	          --with-threads 
+		  --with-system-ffi
+		  --enable-unicode=ucs4
+		  --with-system-expat
+		  --with-dbmliborder=gdbm:ndbm "
+	doconfig
+}
+
+pbs_build() {
+	make "$MAKEOPTS"
+}
+
+pbs_install() {
+	make DESTDIR="$destdir" install
+	dodoc LICENSE
+
+	cd "$destdir"
+	mv usr/bin/{smtpd.py,smtpd-2.7.py}
+	mv usr/bin/{python-config,python-2.7-config}
+	mv usr/bin/{python,python-2.7}
+	mv usr/bin/{pydoc,pydoc-2.7}
+	mv usr/bin/{idle,idle-2.7}
+	mv usr/bin/{2to3,2to3-2.7}
+}
+

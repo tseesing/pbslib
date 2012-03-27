@@ -7,12 +7,10 @@ HOMEPAGE="http://xorg.freedesktop.org/"
 LICENSE="custom"
 PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
 
-REPO="testing"
-
 SRC_URI="http://xorg.freedesktop.org/archive/individual/driver/"$N-$V".tar.bz2"
 CHECKSUM="dc77181330f983c7d0ec1ea1592c2ca7"
 
-RDEPEND="glibc"
+RDEPEND="glibc xorg-server(>=1.10.4)"
 BDEPEND=""
 
 pbs_unpack() {

@@ -1,0 +1,39 @@
+#
+# Ylmf OS package build script
+#
+
+DESCRIPTION="An interpreted, interactive, object-oriented programming language."
+HOMEPAGE="http://www.python.org/"
+LICENSE="PSF"
+PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
+
+SRC_URI="http://www.python.org/ftp/"$N"/"$V"/Python-"$V".tar.bz2"
+CHECKSUM="d40ef58ed88438a870bbeb0ac5d4217b"
+
+RDEPEND="bzip2 expat fontconfig freetype gdbm glibc libX11 libXau libxcb libXdmcp libXext libXft libXrender libXScrnSaver ncurses openssl readline sqlite tcl tk zlib"
+BDEPEND=""
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_patch() {
+	dopatch ylmfos_add-platform.patch
+}
+
+pbs_config(){
+	config+="--enable-shared 
+	         --with-threads 
+		 --with-system-ffi"
+	doconfig
+}
+
+pbs_build() {
+	make "$MAKEOPTS"
+}
+
+pbs_install() {
+	make DESTDIR="$destdir" install
+	dodoc LICENSE
+}
+

@@ -1,0 +1,71 @@
+#
+# Ylmf OS package build script
+#
+
+DESCRIPTION="System which facilitates service discovery on a local network"
+HOMEPAGE="http://avahi.org/"
+LICENSE="GPL"
+PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
+
+SRC_URI="http://avahi.org/download/"$N-$V".tar.gz"
+CHECKSUM="e4db89a2a403ff4c47d66ac66fad1f43"
+
+RDEPEND="atk attr cairo dbus expat fontconfig freetype gcc-lib gdbm gdk-pixbuf glib2 glibc gtk+ libcap libdaemon libffi libpng libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libXinerama libXrandr libXrender pango pixman zlib"
+BDEPEND="desktop-file-utils dbus-python-dev pygtk-dev dbus-glib-dev"
+RECOMMENDED=""
+
+INSTALL="$N.install"
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_patch() {
+	dopatch ylmfos_config-add-distro.patch
+}
+
+pbs_config() {
+	dogroupadd -r "avahi"
+	douseradd -c "avahi users" -d "/dev/null" -s "/bin/false" -r "avahi"
+	douseradd -c "avahi-autoipd users" -d "/dev/null" -s "/bin/false" -r "avahi-autoipd"
+
+	config+="--disable-qt3  
+		 --disable-qt4  
+		 --disable-static
+		 --disable-monodoc 
+		 --enable-mono
+		 --enable-shared 
+		 --enable-python-dbus
+		 --enable-pygtk 
+		 --enable-glib
+		 --enable-dbus  
+		 --enable-gtk  
+		 --disable-gtk3
+		 --enable-core-docs
+		 --enable-compat-howl
+		 --enable-compat-libdns_sd
+		 --with-avahi-user=avahi
+		 --with-avahi-group=avahi
+		 --with-autoipd-user=avahi-autoipd
+		 --with-autoipd-group=avahi-autoipd
+		 --with-distro=ylmfos
+		 --program-prefix= 
+		 --program-suffix=
+		 --with-systemdsystemunitdir=/lib/systemd/system"
+	doconfig
+}
+
+pbs_build() {
+	domake
+}
+
+pbs_install() {
+	domkinstall
+	
+	cd "$destdir"
+
+	# Howl and mdnsresponder compatability
+	(cd usr/include; ln -s avahi-compat-libdns_sd/dns_sd.h dns_sd.h; ln -s avahi-compat-howl howl)
+	(cd usr/lib/pkgconfig; ln -s avahi-compat-howl.pc howl.pc)
+}
+

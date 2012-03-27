@@ -1,13 +1,13 @@
 . /usr/lib/ybs/funcs
 
-#daemon_restart="dbus-send --print-reply --system --dest=com.ylmf.ypkg.serviced /com/ylmf/ypkg com.ylmf.ypkg.Quit"
+daemon_restart="dbus-send --print-reply --system --dest=com.ylmf.ypkg.serviced /com/ylmf/ypkg com.ylmf.ypkg.Quit"
 
 post_install() {
 	gnome2_desktop_database_update
 	gnome2_icon_cache_update
-	#eval $daemon_restart ||return 0
+	
 	# Restart daemon
-	pkill ypkgserviced ||return 0
+	eval $daemon_restart ||return 0
 }
 
 post_upgrade() {

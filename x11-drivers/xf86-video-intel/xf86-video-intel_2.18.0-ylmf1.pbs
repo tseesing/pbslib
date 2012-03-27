@@ -1,0 +1,33 @@
+#
+# Ylmf OS package build script
+#
+
+DESCRIPTION="X.Org driver for Intel i8xx/i9xx cards"
+HOMEPAGE="http://xorg.freedesktop.org/"
+LICENSE="custom"
+PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
+
+SRC_URI="http://xorg.freedesktop.org/archive/individual/driver/"$N-$V".tar.bz2"
+CHECKSUM="34f3987ffe86e30c57abc33b7f8030e9"
+
+RDEPEND="glibc libdrm(>=2.4.29) libpciaccess xorg-server(>=1.10.4) libX11 libXau libxcb libXdmcp libXext libXfixes libXv libXvMC udev xcb-util"
+BDEPEND="util-macros pixman-dev(>=0.24)"
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_config() {
+	config+="--enable-dri"
+	doconfig
+}
+
+pbs_build() {
+	domake
+}
+
+pbs_install() {
+	domkinstall
+	dodoc COPYING
+}
+

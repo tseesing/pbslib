@@ -1,0 +1,33 @@
+#
+# Ylmf OS package build script
+#
+
+DESCRIPTION="X Compositing manager"
+HOMEPAGE="http://www.x.org/wiki/"
+LICENSE="custom"
+PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
+
+SRC_URI="http://xorg.freedesktop.org/releases/individual/app/"$N-$V".tar.bz2"
+CHECKSUM="d45afaf2a153e8a5dd93a92955060c9a"
+
+RDEPEND="glibc libX11 libXau libxcb libXcomposite libXdamage libXdmcp libXext libXfixes libXrender"
+BDEPEND=""
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_config() {
+	doconfig
+}
+
+pbs_build() {
+	domake
+}
+
+pbs_install() {
+	domkinstall
+	dodoc COPYING
+	docp "$filesdir"/xcompmgr.desktop "$destdir"/etc/xdg/autostart 
+}
+

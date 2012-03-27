@@ -1,0 +1,42 @@
+#
+# Ylmf OS package build script
+#
+
+DESCRIPTION="software center for Ylmf OS"
+HOMEPAGE="http://www.ylmf.org"
+LICENSE="custom"
+PRIORITY="required"
+PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
+
+SRC_URI="git://10.0.0.11/ylmfcenter.git"
+
+RDEPEND="acl atk attr bzip2 cairo curl cyrus-sasl dbus dbus-glib enchant expat fontconfig freetype gail gcc-lib gdk-pixbuf glib2 glibc gnutls gst-plugins-base gstreamer gtk+ icu json-glib libarchive libgcrypt libgpg-error libICE libidn libjpeg-turbo libpcre libpng libSM libsoup libssh2 libtasn1 libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libxml2 libXrandr libXrender libxslt libXt openldap openssl pango pixman rtmpdump sqlite udev util-linux-ng webkitgtk xz-utils ypkg2(>=20120322) zlib"
+BDEPEND=""
+RECOMMENDED="app-desktop app-logo"
+
+INSTALL="$N"2.install
+
+DESKTOPFILE="ylmfcenter.desktop"
+
+pbs_unpack() {
+	dounpack
+}
+
+pbs_config() {
+	git checkout ylmfcenter2
+	git pull
+	doconfig
+}
+
+pbs_build() {
+	domake
+}
+
+pbs_install() {
+	domkinstall
+	cd "$destdir"
+	docp "$filesdir"/ycenter.png usr/share/pixmaps/
+	doln /usr/bin/ylmfcenter2 usr/bin/"$N"
+	doln /usr/bin/ylmfcenter2 usr/bin/ycenter
+}
+

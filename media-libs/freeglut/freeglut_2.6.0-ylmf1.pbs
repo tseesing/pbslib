@@ -1,0 +1,30 @@
+#
+# Ylmf OS package build script
+#
+
+DESCRIPTION="A completely OpenSourced alternative to the OpenGL Utility Toolkit (GLUT) library"
+HOMEPAGE="http://freeglut.sourceforge.net/"
+LICENSE="GPL"
+PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
+
+SRC_URI="http://downloads.sourceforge.net/project/"$N"/"$N"/"$N-$V".tar.gz"
+
+RDEPEND="gcc-lib glibc libdrm libX11 libXau libxcb libXdamage libXdmcp libXext libXfixes libXi libXxf86vm mesa"
+BDEPEND=""
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_config() {
+	doconfig
+}
+
+pbs_build() {
+	domake
+}
+
+pbs_install() {
+	domkinstall
+}
+
