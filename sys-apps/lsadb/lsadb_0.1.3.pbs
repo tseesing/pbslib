@@ -1,6 +1,9 @@
 #
 # Ylmf OS package build script
 #
+# Copyright 2005-2012 Ylmf OS
+# Distributed under the terms of the GNU General Public License v2
+#
 
 DESCRIPTION="Prints out information on all devices attached to the ADB bus"
 COMMENTS="This tool is not very usefull on computers without an ADB-Bus. That are mostly Apple Macintosh Computers. So please don't try to use this utillity on an i386 machine."

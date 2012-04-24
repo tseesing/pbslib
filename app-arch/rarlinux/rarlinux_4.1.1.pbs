@@ -1,0 +1,32 @@
+#
+# Ylmf OS package build script
+#
+# Copyright 2005-2012 Ylmf OS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="RAR compressor/uncompressor"
+HOMEPAGE="http://www.rarlab.com/"
+LICENSE="custom"
+PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
+
+SRC_URI="http://www.rarlab.com/rar/"$N-$V".tar.gz"
+CHECKSUM="6bdc5e28f28adb783270723303567f93"
+
+RDEPEND="gcc-lib glibc"
+RECOMMENDED=""
+BDEPEND=""
+OPTIONAL=""
+CONFLICT="unrar"
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_install() {
+	docp rar unrar "$destdir"/usr/bin/
+	docp rarfiles.lst "$destdir"/etc/
+	docp default.sfx "$destdir"/usr/lib/
+	dodoc license.txt
+}
+

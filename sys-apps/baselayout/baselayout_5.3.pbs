@@ -1,0 +1,26 @@
+#
+# Ylmf OS package build script
+#
+# Copyright 2005-2012 Ylmf OS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="Base layout filesystem for Ylmf OS"
+HOMEPAGE="http://ylmf.net"
+LICENSE="GPL"
+PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
+YARCH="any"
+
+SRC_URI=""
+
+RDEPEND="bash coreutils procps grep findutils"
+BDEPEND=""
+
+INSTALL="$N.install"
+
+pbs_install() {
+	docp $filesdir/ylmfos-release  "$destdir"/etc
+	docp $filesdir/lsb_release  "$destdir"/usr/bin/
+	chmod +x  "$destdir"/usr/bin/lsb_release
+}
+

@@ -1,0 +1,38 @@
+#
+# Ylmf OS package build script
+#
+# Copyright 2005-2012 Ylmf OS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="Helper library for RESTful services"
+HOMEPAGE="http://git.gnome.org/browse/librest"
+LICENSE="GPL"
+PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
+
+SRC_URI="http://ftp.gnome.org/pub/GNOME/sources/"$N"/0.7/"$N-$V".tar.xz"
+CHECKSUM="dc14e0d89d38af5d8d544ce8f124d186"
+
+RDEPEND="dbus gconf glib2 glibc libffi libgcrypt libgnome-keyring libgpg-error libproxy libsoup libxml2 orbit sqlite zlib"
+RECOMMENDED=""
+BDEPEND=""
+OPTIONAL=""
+CONFLICT=""
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_config() {
+	config+=""
+	doconfig
+}
+
+pbs_build() {
+	domake
+}
+
+pbs_install() {
+	domkinstall
+}
+

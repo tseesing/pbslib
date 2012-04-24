@@ -1,0 +1,44 @@
+#
+# Ylmf OS package build script
+#
+# Copyright 2005-2012 Ylmf OS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="Fork of Glest, a 3D real-time strategy game in a fantastic world."
+HOMEPAGE="http://sourceforge.net/projects/megaglest/"
+LICENSE="GPL"
+PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
+
+SRC_URI="http://downloads.sourceforge.net/"$N"/"$N"-source-"$V".tar.xz"
+CHECKSUM="5a4a2429435031d9f9cc5d9535a9de9d"
+
+RDEPEND="atk cairo curl cyrus-sasl directfb expat fontconfig freetype ftgl gcc-lib gdk-pixbuf glew glib2 glibc gnutls gtk+ icu libdrm libffi libgcrypt libgpg-error libICE libidn libircclient libjpeg-turbo libogg libpng libsdl libSM libssh2 libtasn1 libtiff libvorbis libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libXinerama libXmu libXrandr libXrender libXt libXxf86vm lua mesa miniupnpc nas openal openldap openssl pango pixman rtmpdump util-linux-ng wxWidgets xerces-c zlib megaglest-data"
+RECOMMENDED=""
+BDEPEND="cmake"
+OPTIONAL=""
+CONFLICT=""
+
+INSTALL="$N.install"
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_config() {
+	[[ -d build ]] && rm -r build
+	mkdir build && cd build
+	cmake .. \
+		-DWANT_SVN_STAMP=OFF \
+		-DCMAKE_INSTALL_PREFIX=/usr \
+		-DCMAKE_BUILD_TYPE=Release
+}
+
+pbs_build() {
+	domake
+}
+
+pbs_install() {
+	domkinstall
+}
+

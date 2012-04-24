@@ -1,0 +1,29 @@
+#
+# Ylmf OS package build script
+#
+# Copyright 2005-2012 Ylmf OS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="Yunio Cloud Storage"
+HOMEPAGE="https://www.yun.io/"
+LICENSE="custom"
+PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
+
+SRC_URI="http://www.yun.io/downloads/"$N-$V"-generic-i386.tgz"
+CHECKSUM="4beed96161e8a4109cde2fec0b17358f"
+
+RDEPEND="expat fontconfig freetype gcc-lib glibc libX11 libXau libxcb libXdmcp libXext libXrender zlib"
+BDEPEND=""
+
+INSTALL="$N.install"
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_install() {
+	docp yunio "$destdir"/usr/bin/
+	dodesktop  "$N.desktop" "$N.png"
+}
+

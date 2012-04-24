@@ -1,0 +1,29 @@
+#
+# Ylmf OS package build script
+#
+# Copyright 2005-2012 Ylmf OS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="Ylmf OS default icon theme"
+HOMEPAGE="www.ylmf.com"
+LICENSE="GPL"
+PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
+YARCH="any"
+
+SRC_URI="git://git.ylmf.com/"$N".git"
+
+RDEPEND=""
+BDEPEND=""
+
+INSTALL="${N}2.install"
+
+pbs_unpack() {
+	dounpack
+}
+
+pbs_install() {
+	git pull
+	docp ylmfos "$destdir"/usr/share/icons
+}
+

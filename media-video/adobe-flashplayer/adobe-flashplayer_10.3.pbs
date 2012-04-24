@@ -1,0 +1,32 @@
+#
+# Ylmf OS package build script
+#
+# Copyright 2005-2012 Ylmf OS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="Adobe Flash Player"
+HOMEPAGE="http://www.adobe.com/"
+LICENSE="custom"
+PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
+
+SRC_URI="http://download.macromedia.com/pub/flashplayer/updaters/10/flashplayer_10_sa.tar.gz"
+CHECKSUM="ffcf837a281fd5aa722c5d39d0ae5c37"
+
+RDEPEND="atk cairo expat fontconfig freetype gcc-lib gdk-pixbuf glib2 glibc gtk+ libffi libICE libpng libSM libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libXinerama libXrandr libXrender libXt nspr nss pango pixman util-linux-ng zlib"
+BDEPEND=""
+RECOMMENDED=""
+
+OPTIONS="nostrip"
+
+INSTALL="$N.install"
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_install() {
+	docp_rename adobe-flashplayer-"$V$R" "$destdir"/usr/bin/flashplayer
+	dodesktop $filesdir/adobe-flashplayer.desktop $filesdir/adobe-flashplayer.png
+}
+

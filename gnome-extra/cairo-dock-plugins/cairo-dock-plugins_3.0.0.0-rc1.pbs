@@ -1,0 +1,38 @@
+#
+# Ylmf OS package build script
+#
+# Copyright 2005-2012 Ylmf OS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="This is the Plug-ins part of Cairo-Dock project. "
+HOMEPAGE="https://launchpad.net/cairo-dock-plug-ins"
+LICENSE="GPL"
+PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
+
+SRC_URI="https://launchpadlibrarian.net/97723566/"$N"-3.0.0.0rc1.tar.gz"
+CHECKSUM="f74d656e81790dea773189d55ab382a3"
+
+RDEPEND="alsa-lib atk attr berkeley-db cairo curl cyrus-sasl dbus dbus-glib enchant expat fftw flac fontconfig freetype gail gcc-lib gdk-pixbuf glib2 glibc gnome-menus gnutls gst-plugins-base gstreamer gtk+ icu json-c libcap libcroco libdbusmenu libetpan libexif libffi libgcrypt libgpg-error libical libICE libidn libjpeg-turbo libogg libpng librsvg libSM libsndfile libsoup libssh2 libtasn1 libvorbis libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libXinerama libxkbfile libxklavier libxml2 libXrandr libXrender libxslt libXt libXtst libXxf86vm lm_sensors ncurses openldap openssl pango pixman pulseaudio rtmpdump sqlite upower util-linux-ng vte webkitgtk zlib cairo-dock"
+RECOMMENDED=""
+BDEPEND="cmake"
+OPTIONAL=""
+CONFLICT=""
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_config() {
+	config+=""
+	doconfig
+}
+
+pbs_build() {
+	domake
+}
+
+pbs_install() {
+	domkinstall
+}
+

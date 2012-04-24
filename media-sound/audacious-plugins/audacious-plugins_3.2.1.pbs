@@ -1,0 +1,38 @@
+#
+# Ylmf OS package build script
+#
+# Copyright 2005-2012 Ylmf OS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="Plugins for Audacious"
+HOMEPAGE="http://audacious-media-player.org/"
+LICENSE="GPL2"
+PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
+
+SRC_URI="http://distfiles.audacious-media-player.org/"$N-$V".tar.bz2"
+CHECKSUM="d7ce63e2e1837e41334d60eef325a80e"
+
+RDEPEND="alsa-lib atk attr audacious(>=3.2.1) bzip2 cairo curl cyrus-sasl dbus dbus-glib directfb expat faad2 ffmpeg flac fontconfig freetype gcc-lib gdk-pixbuf glib2 glibc gnutls gtk+ jack-audio-connection-kit json-c keyutils krb5 lame libcap libcddb libcdio libcue libffi libgcrypt libgpg-error libICE libidn libmms libmodplug libmtp libnotify libogg libpng libproxy libsamplerate libsdl libSM libsndfile libssh2 libtasn1 libtheora libtool libusb libusb-compat libva libvorbis libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libXinerama libxml2 libXrandr libXrender libXt libXtst mpg123 nas neon opencore-amr openldap openssl orc pango pixman pulseaudio rtmpdump schroedinger util-linux-ng wavpack x264 xvidcore zlib"
+BDEPEND=""
+RECOMMENDED=""
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_config() {
+	config+="--disable-gtk3
+	         --disable-adplug
+		 --enable-amidiplug"
+	doconfig
+}
+
+pbs_build() {
+	domake
+}
+
+pbs_install() {
+	domkinstall
+}
+

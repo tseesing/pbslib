@@ -1,0 +1,10 @@
+--- sdk_tools/sdk_update.py	2012-03-22 07:29:01.000000000 +0800
++++ sdk_tools/sdk_update.py.new	2012-04-12 15:46:31.567656303 +0800
+@@ -195,6 +195,7 @@
+ def GetHostOS():
+   '''Returns the host_os value that corresponds to the current host OS'''
+   return {
++      'linux3': 'linux',	  	
+       'linux2': 'linux',
+       'darwin': 'mac',
+       'cygwin': 'win',

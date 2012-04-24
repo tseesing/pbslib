@@ -1,0 +1,36 @@
+#
+# Ylmf OS package build script
+#
+# Copyright 2005-2012 Ylmf OS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="An easy to use audio player looks like TTplayer"
+HOMEPAGE="http://ooplayer.org"
+LICENSE="custom"
+PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
+
+REPO="testing"
+
+SRC_URI="OOPlayer.tar.2012.04.22.gz"
+CHECKSUM="99ccadb4510900cec2cba39959a56a46"
+
+RDEPEND="atk cairo expat fontconfig freetype gcc-lib gdk-pixbuf glib2 glibc gtk+ libffi libICE libpng libSM libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libXinerama libXrandr libXrender pango pixman util-linux-ng zlib"
+RECOMMENDED=""
+BDEPEND=""
+OPTIONAL=""
+CONFLICT=""
+
+INSTALL="$N.install"
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_install() {
+	domv libfmodex.so  "$destdir"/usr/lib/
+	docp * "$destdir"/usr/share/"$N"/
+	dodesktop "$N".desktop App/OOPlayer.png
+	doln /usr/share/ooplayer/OOPlayer  "$destdir"/usr/bin/"$N"
+}
+

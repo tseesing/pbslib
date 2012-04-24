@@ -1,0 +1,30 @@
+#!/bin/bash
+#
+# Creat an empty database for YPK management system.
+#
+
+dbfile="/var/ypkg/db/package.db"
+sqlfile="/usr/share/ypkg/db_create.sql"
+sqlite3="$(which sqlite3)"
+
+if [ -f "$dbfile" ]; then
+	echo "* "$dbfile" is exist."  
+	exit 0 
+fi
+
+if [ ! -f "$sqlfile" ]; then
+	echo "* "$sqlfile" not found."
+	exit 1
+fi
+
+mkdir -p ${dbfile%/*}
+
+if [ ! -f "$dbfile" ] && [ -f "$sqlfile" ]; then
+	if "$sqlite3" "$dbfile" ".read $sqlfile"; then
+		echo "* "$dbfile" created sucessfully." 
+	else
+		echo "* Creating failed."
+	fi
+fi	
+
+exit 0

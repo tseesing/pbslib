@@ -1,6 +1,9 @@
 #
 # Ylmf OS package build script
 #
+# Copyright 2005-2012 Ylmf OS
+# Distributed under the terms of the GNU General Public License v2
+#
 
 DESCRIPTION="Icecream was created by SUSE based on distcc. Like distcc, Icecream takes compile jobs from a (KDE) build and distributes it among remote machines allowing a parallel build"
 HOMEPAGE="http://en.opensuse.org/Icecream"

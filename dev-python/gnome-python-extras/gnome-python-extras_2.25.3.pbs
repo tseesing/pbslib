@@ -1,32 +1,43 @@
 #
 # Ylmf OS package build script
 #
+# Copyright 2005-2012 Ylmf OS
+# Distributed under the terms of the GNU General Public License v2
+#
 
-DESCRIPTION="Meta build which provides python interfacing modules for some GNOME libraries"
-HOMEPAGE="http://pygtk.org/"
-LICENSE="GPL"
+DESCRIPTION="Gnome Python interfaces for libraries not part of the core platform"
+HOMEPAGE="http://www.daa.com.au/~james/pygtk/"
+LICENSE="GPL/LGPL"
 PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
 
-SRC_URI="http://ftp.gnome.org/pub/GNOME/sources/"$N"/2.25/"$N-$V$R".tar.bz2"
+SRC_URI="http://ftp.gnome.org/pub/gnome/sources/"$N"/2.25/"$N-$V".tar.bz2"
+CHECKSUM="e69e5288466c960ed6f985bb10c9969b21ed85a4"
 
-RDEPEND=""
-BDEPEND=""
+RDEPEND="atk avahi cairo dbus dbus-glib expat fontconfig freetype gail gcc-lib gconf gdk-pixbuf glib2 glibc gnome-vfs gtk+ libart_lgpl libbonobo libbonoboui libcanberra libffi libgcrypt libgnome libgnomecanvas libgnome-keyring libgnomeui libgpg-error libICE libogg libpng libSM libtool libvorbis libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libXinerama libxml2 libXrandr libXrender openssl orbit pango pixman popt python tdb util-linux-ng zlib"
 RECOMMENDED=""
+BDEPEND=""
+OPTIONAL=""
+CONFLICT=""
 
 pbs_unpack() {
         dounpack
 }
 
-pbs_config() {
+pbs_patch() {
 	dopatch gnome-python-extras-2.25.3-update-for-2.27.2.patch
+}
+
+pbs_config() {
+	config+=""
 	doconfig
 }
 
-pbs_build() {
-	domake
-}
-
 pbs_install() {
-	domkinstall
+	domake install-pkgconfigDATA DESTDIR="${destdir}"
+	
+	for i in egg gksu2 gtkhtml2 gtkspell;do 
+		domkinstall -C "${i}"
+	done
+
 }
 

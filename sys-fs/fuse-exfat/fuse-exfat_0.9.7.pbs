@@ -1,0 +1,30 @@
+#
+# Ylmf OS package build script
+#
+# Copyright 2005-2012 Ylmf OS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="exFAT filesystem FUSE module"
+HOMEPAGE="http://code.google.com/p/exfat/"
+LICENSE="GPL"
+PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
+
+SRC_URI="http://exfat.googlecode.com/files/"$N-$V".tar.gz"
+CHECKSUM="ea8eddcc68ec8881cb8a280086297e39"
+
+RDEPEND="fuse glibc"
+RECOMMENDED=""
+BDEPEND=""
+OPTIONAL=""
+CONFLICT=""
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_install() {
+	scons CCFLAGS="${CFLAGS}" LINKFLAGS="${LDFLAGS} " install DESTDIR="${destdir}/sbin"
+	doman fuse/mount.exfat-fuse.8
+}
+

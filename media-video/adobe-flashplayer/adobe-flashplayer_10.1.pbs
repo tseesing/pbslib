@@ -1,6 +1,9 @@
 #
 # Ylmf OS package build script
 #
+# Copyright 2005-2012 Ylmf OS
+# Distributed under the terms of the GNU General Public License v2
+#
 
 DESCRIPTION="Adobe Flash Player"
 HOMEPAGE="http://www.adobe.com/"
@@ -10,7 +13,7 @@ PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
 SRC_URI="http://download.macromedia.com/pub/flashplayer/updaters/10/flashplayer_10_sa.tar.gz"
 
 RDEPEND=""
-BDEPEND=" "
+BDEPEND=""
 RECOMMENDED=""
 
 INSTALL="$N.install"

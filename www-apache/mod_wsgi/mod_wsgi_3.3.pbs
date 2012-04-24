@@ -1,6 +1,9 @@
 #
 # Ylmf OS package build script
 #
+# Copyright 2005-2012 Ylmf OS
+# Distributed under the terms of the GNU General Public License v2
+#
 
 DESCRIPTION="An Apache module for running Python WSGI applications."
 COMMENTS="The aim of mod_wsgi is to implement a simple to use Apache module which can host any Python application which supports the Python WSGI interface. The module would be suitable for use in hosting high performance production web sites, as well as your average self managed personal sites running on web hosting services."

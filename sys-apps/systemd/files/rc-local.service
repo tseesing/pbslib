@@ -10,12 +10,3 @@ Description=/etc/rc.local Compatibility
 ConditionFileIsExecutable=/etc/rc.local
 
 [Service]
-Type=forking
-ExecStart=/etc/rc.local
-TimeoutSec=0
-StandardOutput=tty
-RemainAfterExit=yes
-SysVStartPriority=99
-
-[Install]
-WantedBy=multi-user.target

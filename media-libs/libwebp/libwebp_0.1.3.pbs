@@ -1,0 +1,39 @@
+#
+# Ylmf OS package build script
+#
+# Copyright 2005-2012 Ylmf OS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="WebP library and conversion tools"
+HOMEPAGE="http://code.google.com/p/webp/"
+LICENSE="BSD"
+PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
+
+SRC_URI="http://webp.googlecode.com/files/"$N-$V".tar.gz"
+CHECKSUM="40b18456e39b2822311b0ea161d6f09507cf5e8e937b02b9be3ee994ded67aba"
+
+RDEPEND="glibc libjpeg-turbo libpng zlib"
+RECOMMENDED=""
+BDEPEND=""
+OPTIONAL=""
+CONFLICT=""
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_config() {
+	config+=""
+	doconfig
+}
+
+pbs_build() {
+	domake
+}
+
+pbs_install() {
+	domkinstall
+	dodoc COPYING
+}
+

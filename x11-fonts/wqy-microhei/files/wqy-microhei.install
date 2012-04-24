@@ -1,11 +1,14 @@
 . /usr/lib/ybs/funcs
 
+fontdir="/usr/share/fonts/wenquanyi/wqy-microhei"
+
 post_install() {
-	dofont /usr/share/fonts/wenquanyi/wqy-microhei
+	dofont "$fontdir"
 }
 
 post_remove () {
-	post_install
+	rm -rf "$fontdir"
+	rmdir "$fontdir" ||return 0
 }
 
 post_upgrade() {
@@ -15,3 +18,4 @@ post_upgrade() {
 post_downgrade() {	
 	post_install
 }
+

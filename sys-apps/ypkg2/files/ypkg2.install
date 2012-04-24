@@ -6,7 +6,7 @@ sqlite3="$(which sqlite3)"
 
 post_install() {
 	if [ ! -f $dbfile ] && [ -f $sqlfile ]; then
-		$sqlite3 $dbfile ".read $sqlfile"	
+		"$sqlite3" $dbfile ".read $sqlfile"	
 		[ -f $dbfile ] && ypkg2-import
 	fi
 
@@ -18,6 +18,9 @@ YPPATH_PKGDEST="/var/ypkg/packages"
 EOF
         fi
 	
+	"$sqlite3" "$dbfile" 'CREATE INDEX world_file_name ON world_file ( name );' 2>/dev/null
+	#"$sqlite3" "$dbfile" 'drop index if exists world_file_name' 
+
 	return 0
 }
 
@@ -26,16 +29,19 @@ pre_upgrade() {
 	version_new=$2
 	version_old=$3
 	
-	# version that less than 20120315 must do:
+	# version that less than 20120315:
 	dbs="universe universe_history universe_testing world"
 	ypkg --compare-version $version_old 20120315
+	
 	if [ $? -eq 2 ]; then	
+		echo "* Fixing ypkg database, please wait.."
 		for i in $dbs; do
-			if ! sqlite3 "$dbfile" ".schema ${i}" |grep -q 'exec TEXT'; then
-				sqlite3 "$dbfile" "alter table ${i} add column exec TEXT;"
+			if ! "$sqlite3" "$dbfile" ".schema ${i}" |grep -q 'exec TEXT'; then
+				"$sqlite3" "$dbfile" "alter table ${i} add column exec TEXT;"
 			fi
 		done
 	fi
+
 }
 
 post_remove() {
@@ -43,7 +49,20 @@ post_remove() {
 }
 
 post_upgrade() {
-	post_install
+	name=$1
+	version_new=$2
+	version_old=$3
+
+	# version that less than 20120410
+	# add applications with desktop to world 
+	ypkg --compare-version $version_old 20120411
+		
+	if [ $? -eq 2 ]; then
+		echo "* Fixing ypkg database, please wait.."
+		/usr/share/ypkg/db_fix.pl
+	fi	
+
+	post_install $name $version_new
 }
 
 post_downgrade() {

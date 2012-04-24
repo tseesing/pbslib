@@ -1,0 +1,42 @@
+#
+# Ylmf OS package build script
+#
+# Copyright 2005-2012 Ylmf OS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="multiplayer strategy game (Civilization Clone)"
+HOMEPAGE="http://www.freeciv.org/"
+LICENSE="GPL"
+PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
+
+SRC_URI="http://downloads.sourceforge.net/sourceforge/"$N"/"$N-$V".tar.bz2"
+CHECKSUM="9d9ee9f48f4c945fc6525139d340443d5a25aac4"
+
+RDEPEND="atk bzip2 cairo directfb expat fontconfig freetype gcc-lib gdk-pixbuf glib2 glibc gtk+ libffi libICE libpng libsdl libSM libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libXinerama libXrandr libXrender libXt nas ncurses pango pixman readline sdl-mixer util-linux-ng zlib"
+RECOMMENDED=""
+BDEPEND=""
+OPTIONAL=""
+CONFLICT=""
+
+INSTALL="$N.install"
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_config() {
+	config+=" --enable-client=gtk 
+	          --enable-shared 
+		  --without-ggz-client "
+	doconfig
+}
+
+pbs_build() {
+	domake
+}
+
+pbs_install() {
+	domkinstall
+}
+

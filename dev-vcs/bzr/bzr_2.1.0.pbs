@@ -1,6 +1,9 @@
 #
 # Ylmf OS package build script
 #
+# Copyright 2005-2012 Ylmf OS
+# Distributed under the terms of the GNU General Public License v2
+#
 
 DESCRIPTION="Bazaar is a next generation distributed version control system."
 HOMEPAGE="http://bazaar-vcs.org/"
@@ -12,8 +15,6 @@ SRC_URI="http://launchpad.net/bzr/2.1/"$N"/+download/"$N-$V$R".tar.gz"
 RDEPEND=""
 BDEPEND=" "
 RECOMMENDED=""
-
-NOTES=""
 
 pbs_unpack() {
         dounpack

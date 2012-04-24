@@ -1,0 +1,42 @@
+#
+# Ylmf OS package build script
+#
+# Copyright 2005-2012 Ylmf OS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="Library for accessing Sybase and MS SQL Server databases"
+HOMEPAGE="http://www.freetds.org"
+LICENSE="LGPL"
+PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
+
+SRC_URI="ftp://ftp.ibiblio.org/pub/Linux/ALPHA/"$N"/stable/"$N-$V".tar.gz"
+CHECKSUM="b14db5823980a32f0643d1a84d3ec3ad"
+
+RDEPEND="glibc libiodbc ncurses readline"
+RECOMMENDED=""
+BDEPEND=""
+OPTIONAL=""
+CONFLICT=""
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_config() {
+	config=" --prefix=/usr 
+	         --sysconfdir=/etc/freetds 
+		 --mandir=/usr/share/man
+		 --enable-msdblib 
+		 --with-tdsver=7.0 "
+	doconfig
+}
+
+pbs_build() {
+	domake
+}
+
+pbs_install() {
+	domkinstall
+}
+

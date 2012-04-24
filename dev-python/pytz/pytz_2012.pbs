@@ -1,0 +1,40 @@
+#
+# Ylmf OS package build script
+#
+# Copyright 2005-2012 Ylmf OS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="pytz brings the Olson tz database into Python. "
+HOMEPAGE="http://pytz.sourceforge.net/"
+LICENSE="MIT"
+PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
+YARCH="any"
+
+SRC_URI="http://pypi.python.org/packages/source/p/"$N"/"$N-$V"b.tar.bz2"
+CHECKSUM="071855259574db4d87e29df673b98a12"
+
+RDEPEND="python"
+RECOMMENDED=""
+BDEPEND=""
+OPTIONAL=""
+CONFLICT=""
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_config() {
+	config+=""
+	doconfig
+}
+
+pbs_build() {
+	domake
+}
+
+pbs_install() {
+	domkinstall
+	dodoc LICENSE.txt
+}
+

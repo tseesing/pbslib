@@ -1,0 +1,33 @@
+#
+# Ylmf OS package build script
+#
+# Copyright 2005-2012 Ylmf OS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="An acrobatic racing game"
+HOMEPAGE="http://maniadrive.raydium.org/"
+LICENSE="GPL"
+PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
+
+SRC_URI="http://prdownloads.sourceforge.net/maniadrive/ManiaDrive-1.2-linux-i386.tar.gz"
+CHECKSUM="5592eaf4b8c4012edcd4f0fc6e54c09c"
+
+RDEPEND=""
+RECOMMENDED=""
+BDEPEND=""
+OPTIONAL=""
+CONFLICT=""
+
+INSTALL="$N.install"
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_install() {
+	docp * "${destdir}"/opt/"$N"
+	docp "$filesdir"/maniadrive  "$destdir"/usr/bin/
+	dodesktop "$N".desktop "$N".png
+}
+

@@ -41,7 +41,7 @@
  # Custom version string for this release. This can be used to add a downstream
  # vendor string or release channel information.
 -export CHROME_VERSION_EXTRA="custom"
-+export CHROME_VERSION_EXTRA="Ylmf OS 4.0"
++export CHROME_VERSION_EXTRA="Ylmf OS"
  
  exists_desktop_file || generate_desktop_file
  

@@ -1,0 +1,34 @@
+. /usr/lib/ybs/funcs
+
+systemd-machine-id-setup="/bin/systemd-machine-id-setup"
+systemd-random-seed="/lib/systemd/systemd-random-seed"
+systemctl="/bin/systemctl"
+
+post_install() {
+	dogroupadd -r "lock"  # used by var-lock.mount
+	
+	if [ ! -f /etc/machine-id ]; then
+		[ -x "$systemd-machine-id-setup" ] && "$systemd-machine-id-setup"
+	fi
+
+	if [ -x "$systemd-random-seed" ]; then
+		"$systemd-random-seed" save > /dev/null 
+	fi
+
+	if [ -e /sys/fs/cgroups/systemd ]; then
+		"$systemctl" daemon-reexec >/dev/null
+	fi
+}
+
+post_remove() {
+	douserdel "lock" || return 0
+}
+
+post_upgrade() {
+	post_install
+}
+
+post_downgrade() {
+	post_install
+}
+

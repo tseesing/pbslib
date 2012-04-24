@@ -1,0 +1,41 @@
+#
+# Ylmf OS package build script
+#
+# Copyright 2005-2012 Ylmf OS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="Set of libraries to write games and other realtime interactive applications"
+HOMEPAGE="http://plib.sourceforge.net/"
+LICENSE="LGPL/custom"
+PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
+OPTIONS="nodev"
+
+SRC_URI="http://plib.sourceforge.net/dist/"$N-$V".tar.gz"
+CHECKSUM="c2cf7e3e1e58f7b63dae4bb21e4fa82c3e4d4cfc"
+
+RDEPEND="mesa libXi libXmu"
+RECOMMENDED=""
+BDEPEND=""
+OPTIONAL=""
+CONFLICT=""
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_config() {
+	[ "$ARCH" = "x86_64" ] && export CXXFLAGS="$CXXFLAGS -fPIC"
+	config+=""
+	doconfig
+}
+
+pbs_build() {
+	domake
+}
+
+pbs_install() {
+	domkinstall
+	dodoc COPYING
+}
+

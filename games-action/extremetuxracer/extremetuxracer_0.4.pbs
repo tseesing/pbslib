@@ -1,0 +1,41 @@
+#
+# Ylmf OS package build script
+#
+# Copyright 2005-2012 Ylmf OS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="Downhill racing game starring Tux"
+HOMEPAGE="http://www.extremetuxracer.com"
+LICENSE="GPL"
+PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
+
+SRC_URI="http://downloads.sourceforge.net/"$N"/"$N-$V".tar.gz"
+CHECKSUM="5e4057f90e6854e774f251f189b0e676cfd7e2f15779c75544c9ac5b8e30273d"
+
+RDEPEND="directfb freetype gcc-lib glibc libdrm libICE libpng libsdl libSM libX11 libXau libxcb libXdamage libXdmcp libXext libXfixes libXi libXmu libXt libXxf86vm mesa nas sdl-mixer tcl util-linux-ng zlib"
+RECOMMENDED=""
+BDEPEND=""
+OPTIONAL=""
+CONFLICT=""
+
+INSTALL="$N.install"
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_config() {
+	config+=""
+	doconfig
+}
+
+pbs_build() {
+	domake
+}
+
+pbs_install() {
+	domkinstall
+	dodesktop "$N".desktop "$N".png
+}
+

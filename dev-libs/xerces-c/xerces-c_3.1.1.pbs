@@ -1,0 +1,38 @@
+#
+# Ylmf OS package build script
+#
+# Copyright 2005-2012 Ylmf OS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="A validating XML parser written in a portable subset of C++."
+HOMEPAGE="http://xerces.apache.org/xerces-c/"
+LICENSE="APACHE"
+PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
+
+SRC_URI="http://apache.osuosl.org/xerces/c/3/sources/"$N-$V".tar.gz"
+CHECKSUM="6a8ec45d83c8cfb1584c5a5345cb51ae"
+
+RDEPEND="curl cyrus-sasl gcc-lib glibc gnutls icu libgcrypt libgpg-error libidn libssh2 libtasn1 openldap openssl rtmpdump zlib"
+RECOMMENDED=""
+BDEPEND=""
+OPTIONAL=""
+CONFLICT=""
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_config() {
+	config+=""
+	doconfig
+}
+
+pbs_build() {
+	domake
+}
+
+pbs_install() {
+	domkinstall
+}
+

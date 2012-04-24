@@ -1,6 +1,9 @@
 #
 # Ylmf OS package build script
 #
+# Copyright 2005-2012 Ylmf OS
+# Distributed under the terms of the GNU General Public License v2
+#
 
 DESCRIPTION="EXIF and IPTC metadata C++ library and command line utility"
 HOMEPAGE="http://trac.yorba.org/wiki/gexiv2"
@@ -17,11 +20,14 @@ pbs_unpack() {
         dounpack
 }
 
-pbs_config() {
+pbs_patch() {
 	dopatch exiv2-0.21-xmp-fix.patch
+}
+
+pbs_config() {
 	config+="--infodir=/usr/share/info
-		     --enable-nls 
-		     --disable-xmp"
+		 --enable-nls 
+		 --disable-xmp"
 	doconfig
 }
 

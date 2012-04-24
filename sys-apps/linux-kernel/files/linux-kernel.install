@@ -4,8 +4,8 @@ post_install() {
 	# For initramfs
 	name="$1"
 	version="$2"
-	depmod -a "$version"-ylmfos
-	update-initramfs -c -k "$version"-ylmfos
+	depmod -a "$version"
+	update-initramfs -c -k "$version"
 
 	# For grub
 	update-grub
@@ -14,8 +14,8 @@ post_install() {
 post_remove() {
 	name="$1"
 	version="$2"
-	rm /boot/initrd.img-"$version"-ylmfos         2>/dev/null
-	rm /var/lib/initramfs-tools/"$version"-ylmfos 2>/dev/null
+	rm /boot/initrd.img-"$version"         2>/dev/null
+	rm /var/lib/initramfs-tools/"$version" 2>/dev/null
 
 	# For grub
 	update-grub

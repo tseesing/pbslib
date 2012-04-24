@@ -1,0 +1,39 @@
+#
+# Ylmf OS package build script
+#
+# Copyright 2005-2012 Ylmf OS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="Iptux is a ipmsg client in linux"
+HOMEPAGE="http://code.google.com/p/iptux/"
+LICENSE="GPL"
+PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
+
+SRC_URI="http://iptux.googlecode.com/files/"$N$V".tar.gz"
+CHECKSUM="e1f49b263c753cb6284383e175e60331"
+
+RDEPEND="atk cairo expat fontconfig freetype gcc-lib gconf gdk-pixbuf glib2 glibc gstreamer gtk+ libffi libpng libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libXinerama libxml2 libXrandr libXrender orbit pango pixman zlib"
+BDEPEND="" 
+RECOMMENDED=""
+CONFLICT=""
+
+INSTALL="$N.install"
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_config() {
+	config+=""
+	doconfig
+}
+
+pbs_build() {
+	domake
+}
+
+pbs_install() {
+	domkinstall
+}
+

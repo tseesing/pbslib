@@ -1,0 +1,32 @@
+#
+# Ylmf OS package build script
+#
+# Copyright 2005-2012 Ylmf OS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="A tool for reverse engineering 3rd party, closed, binary Android apps."
+HOMEPAGE="http://code.google.com/p/android-apktool/"
+LICENSE="Apache License 2.0"
+PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
+
+YARCH="any"
+
+SRC_URI="http://android-apktool.googlecode.com/files/"$N$V".tar.bz2"
+CHECKSUM="7c0b85882c1fab7660258ab344e3a43b17e10741"
+
+RDEPEND="jdk"
+RECOMMENDED=""
+BDEPEND=""
+OPTIONAL=""
+CONFLICT=""
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_install() {
+	docp_rename "$N-$V" "$destdir"/opt/"$N"/apktool.jar
+	docp "$filesdir"/apktool "$destdir"/usr/bin
+}
+

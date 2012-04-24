@@ -1,0 +1,32 @@
+#
+# Ylmf OS package build script
+#
+# Copyright 2005-2012 Ylmf OS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="Python Cryptography Toolkit"
+HOMEPAGE="http://www.dlitz.net/software/pycrypto"
+LICENSE="custom"
+PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
+
+SRC_URI="http://ftp.dlitz.net/pub/dlitz/crypto/"$N"/"$N-$V".tar.gz"
+CHECKSUM="e950a78184e2a7defccf5d45e0c29c1e9edeb29984433f0d110a21e9631e38de"
+
+RDEPEND="glibc gmp python"
+BDEPEND=""
+RECOMMENDED=""
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_build() {
+	domake
+}
+
+pbs_install() {
+	domkinstall
+	dodoc COPYRIGHT
+}
+

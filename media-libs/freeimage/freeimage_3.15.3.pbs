@@ -1,0 +1,45 @@
+#
+# Ylmf OS package build script
+#
+# Copyright 2005-2012 Ylmf OS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="Library project for developers who would like to support popular graphics image formats."
+HOMEPAGE="http://freeimage.sourceforge.net"
+LICENSE="GPL/custom:FIPL"
+PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
+
+SRC_URI="http://downloads.sourceforge.net/project/"$N"/Source%20Distribution/"$V"/FreeImage3153.zip"
+CHECKSUM="6c305b4086500ff8541c596ea6fc7cd7"
+
+RDEPEND="gcc-lib glibc"
+RECOMMENDED=""
+BDEPEND=""
+OPTIONAL=""
+CONFLICT=""
+
+pbs_unpack() {
+        dounpack
+	cp -r "$N-$V$R" "$N-$V$R"-fip
+	oridir="$PWD"
+}
+
+pbs_build() {
+	cd "$oridir"/"$N-$V$R" ||exit 1
+	domake
+
+	cd "$oridir"/"$N-$V$R"-fip ||exit 1
+	domake -f Makefile.fip 
+}
+
+pbs_install() {
+	cd "$oridir"/"$N-$V$R"
+	domkinstall || true
+
+	cd "$oridir"/"$N-$V$R"-fip
+	domkinstall -f Makefile.fip
+
+	dodoc license-fi.txt
+}
+

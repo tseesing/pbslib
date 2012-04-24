@@ -1,0 +1,41 @@
+#
+# Ylmf OS package build script
+#
+# Copyright 2005-2012 Ylmf OS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="A GTK2 client for MPD"
+HOMEPAGE="http://gmpclient.org/home"
+LICENSE="GPL"
+PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
+
+SRC_URI="http://download.sarine.nl/Programs/"$N"/11.8/"$N-$V".tar.gz"
+CHECKSUM="223aeb000e41697d8fdf54ccedee89d5"
+
+RDEPEND="atk cairo dbus dbus-glib expat fontconfig freetype gcc-lib gdk-pixbuf glib2 glibc gtk+ libffi libICE libmpd libpng libSM libsoup libunique libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libXinerama libxml2 libXrandr libXrender libxspf pango pixman sqlite uriparser util-linux-ng zlib"
+RECOMMENDED=""
+BDEPEND=""
+OPTIONAL=""
+CONFLICT=""
+
+INSTALL="$N.install"
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_config() {
+	config+=""
+	doconfig
+}
+
+pbs_build() {
+	domake
+}
+
+pbs_install() {
+	domkinstall
+}
+
+

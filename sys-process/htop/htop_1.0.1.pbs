@@ -1,0 +1,40 @@
+#
+# Ylmf OS package build script
+#
+# Copyright 2005-2012 Ylmf OS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="Interactive process viewer"
+HOMEPAGE="http://htop.sourceforge.net/"
+LICENSE="GPL"
+PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
+
+SRC_URI="http://downloads.sourceforge.net/"$N"/"$N-$V".tar.gz"
+CHECKSUM="d3b80d905a6bff03f13896870787f901"
+
+RDEPEND="glibc ncurses"
+RECOMMENDED="lsof strace"
+BDEPEND=""
+OPTIONAL=""
+CONFLICT=""
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_config() {
+	config+=" --enable-unicode
+	          --enable-openvz
+		  --enable-vserver
+		  --enable-cgroup "
+	doconfig
+}
+
+pbs_build() {
+	domake
+}
+
+pbs_install() {
+	domkinstall
+}

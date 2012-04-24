@@ -1,0 +1,44 @@
+#
+# Ylmf OS package build script
+#
+# Copyright 2005-2012 Ylmf OS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="Fast-paced multiplayer deathmatch game"
+HOMEPAGE="http://red.planetarena.org/"
+LICENSE="GPL"
+PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
+
+SRC_URI="http://icculus.org/alienarena/Files/"$N-$V"-linux20111227.tar.gz"
+CHECKSUM="2ccf9f1e2781c3bc005dbdb1b9954a33"
+
+RDEPEND="curl cyrus-sasl freetype gcc-lib glibc gnutls libgcrypt libgpg-error libidn libjpeg-turbo libogg libssh2 libtasn1 libvorbis libX11 libXau libxcb libXdmcp libXext libXxf86dga libXxf86vm openldap openssl rtmpdump zlib"
+RECOMMENDED=""
+BDEPEND=""
+OPTIONAL=""
+CONFLICT=""
+
+INSTALL="$N.install"
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_config() {
+	config+=""
+	doconfig
+}
+
+pbs_build() {
+	domake
+}
+
+pbs_install() {
+	domkinstall
+	dodesktop alienarena.desktop alienarena.png
+	cd "$destdir"
+	mv usr/bin/crx     usr/bin/"$N"
+	mv usr/bin/crx-ded usr/bin/"$N"-ded
+}
+

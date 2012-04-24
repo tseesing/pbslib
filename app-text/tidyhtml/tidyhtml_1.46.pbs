@@ -1,0 +1,41 @@
+#
+# Ylmf OS package build script
+#
+# Copyright 2005-2012 Ylmf OS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="A tool to tidy down your HTML code to a clean style."
+HOMEPAGE="http://tidy.sourceforge.net/"
+LICENSE="custom"
+PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
+
+SRC_URI="ftp://ftp.archlinux.org/other/"$N"/"$N-$V".tar.bz2"
+CHECKSUM="3d970d54be83c5ec985687e9976a2832"
+
+RDEPEND="glibc"
+RECOMMENDED=""
+BDEPEND=""
+OPTIONAL=""
+CONFLICT=""
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_config() {
+	cd tidy
+	source build/gnuauto/setup.sh
+	config+=""
+	doconfig
+}
+
+pbs_build() {
+	domake
+}
+
+pbs_install() {
+	domkinstall
+	dodoc htmldoc/license.html
+}
+

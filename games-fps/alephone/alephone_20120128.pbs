@@ -1,0 +1,46 @@
+#
+# Ylmf OS package build script
+#
+# Copyright 2005-2012 Ylmf OS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="An enhanced version of the game engine from the classic Mac game, Marathon"
+HOMEPAGE="http://source.bungie.org/"
+LICENSE="GPL/BitstreamVera"
+PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
+
+SRC_URI="http://sourceforge.net/projects/marathon/files/Aleph%20One/2012-01-28/AlephOne-"$V".tar.bz2"
+CHECKSUM="8693a36d29a5a1150b78554714bd9884"
+
+RDEPEND="alsa-lib directfb flac freetype gcc-lib glibc libdrm libICE libmad libogg libpng libsdl libSM libsndfile libvorbis libX11 libXau libxcb libXdamage libXdmcp libXext libXfixes libXt libXxf86vm mesa nas sdl-image sdl-net sdl-ttf smpeg speex util-linux-ng zlib zziplib"
+RECOMMENDED=""
+BDEPEND=""
+OPTIONAL=""
+CONFLICT=""
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_patch() {
+	dopatch
+}
+
+pbs_config() {
+	config+="--disable-dependency-tracking
+	         --enable-lua
+		 --enable-opengl"
+	doconfig
+}
+
+pbs_build() {
+	domake
+}
+
+pbs_install() {
+	domkinstall
+	docp "$filesdir"/"$N".sh "$destdir"/usr/bin/
+	doman docs/"$N".6
+}
+

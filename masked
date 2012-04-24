@@ -4,11 +4,18 @@ Upstream outdated
 * esound
 Upstream outdated
 
-* wxGTK wxpython 
+* wxGTK 
 Provided by wxWidgets
 
 * ntfsprogs
-Replaced by USE="ntfsprogs" in sys-fs/ntfs-3g
+Replaced by USE="ntfsprogs" in ntfs-3g
 
 * libXt 1.1.2
 Breaks several X applications, use 1.1.1 instead
+
+* module-init-tools
+Replaced by kmod and libkmod is required by systemd
+
+* libelf
+Replaced by elfutils
+

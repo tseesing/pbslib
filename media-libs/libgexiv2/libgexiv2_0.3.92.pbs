@@ -1,0 +1,35 @@
+#
+# Ylmf OS package build script
+#
+# Copyright 2005-2012 Ylmf OS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="GObject-based wrapper around the Exiv2 library"
+HOMEPAGE="http://trac.yorba.org/wiki/gexiv2"
+LICENSE="GPL"
+PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
+
+SRC_URI="http://yorba.org/download/gexiv2/stable/"$N-$V".tar.bz2"
+CHECKSUM="35696a9da49351cfec360147d34ae1ee"
+
+RDEPEND="exiv2 gcc-lib glib2 glibc libffi zlib"
+BDEPEND=""
+RECOMMENDED=""
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_config() {
+	doconfig
+}
+
+pbs_build() {
+	domake
+}
+
+pbs_install() {
+	domkinstall
+}
+

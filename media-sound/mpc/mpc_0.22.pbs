@@ -1,0 +1,39 @@
+#
+# Ylmf OS package build script
+#
+# Copyright 2005-2012 Ylmf OS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="Minimalist command line interface to MPD"
+HOMEPAGE="http://mpd.wikia.com/wiki/Client:Mpc"
+LICENSE="GPL"
+PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
+
+SRC_URI="http://downloads.sourceforge.net/musicpd/"$N-$V".tar.gz"
+CHECKSUM="e35414c1f5b25f4e500ceae125adb5bb9063b029"
+
+RDEPEND="glibc libmpdclient"
+RECOMMENDED=""
+BDEPEND=""
+OPTIONAL=""
+CONFLICT=""
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_config() {
+	config+=""
+	doconfig
+}
+
+pbs_build() {
+	domake
+}
+
+pbs_install() {
+	domkinstall
+	install -Dm644 doc/mpc-completion.bash "${destdir}"/usr/share/bash-completion/completions/mpc
+}
+

@@ -1,0 +1,20 @@
+#
+# Ylmf OS package build script
+#
+# Copyright 2005-2012 Ylmf OS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="1g1g music online"
+HOMEPAGE="www.ylmf.net"
+REPO="stable"
+LICENSE="GPL-2"
+YARCH="any"
+PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
+
+RDEPEND=" xdg-utils"
+BDEPEND=""
+
+pbs_install() {
+	dodesktop "$N.desktop" "$N.png"
+}

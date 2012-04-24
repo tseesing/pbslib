@@ -1,0 +1,26 @@
+#
+# Ylmf OS package build script
+#
+# Copyright 2005-2012 Ylmf OS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="Birl Is Ruijie for Linux"
+HOMEPAGE="http://www.cnblogs.com/JessonChan/archive/2011/03/04/1971339.html"
+LICENSE="GPLv2"
+PACKAGER="JessonChan,Ylmf OS Developers <ylmfos@ylmf.com>"
+
+RDEPEND="atk cairo expat fontconfig freetype gcc-lib gdk-pixbuf glib2 glibc gtk+ libpng libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libXrandr libXrender pango pixman zlib"
+RECOMMENDED=""
+BDEPEND=""
+
+INSTALL="$N.install"
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_install() {
+	docp "$filesdir"/{opt,usr} "$destdir"/
+}
+

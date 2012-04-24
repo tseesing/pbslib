@@ -1,0 +1,10 @@
+[Unit]
+Description=unload modules from /etc/modules-unload and /etc/modules-unload.d/*.conf
+DefaultDependencies=no
+Before=shutdown.target
+
+[Service]
+ExecStart=/sbin/kmod-unload
+
+[Install]
+WantedBy=shutdown.target

@@ -1,0 +1,33 @@
+#
+# Ylmf OS package build script
+#
+# Copyright 2005-2012 Ylmf OS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="Kingsoft Office is an office productivity suite."
+HOMEPAGE="http://www.wps.cn/"
+LICENSE="custom"
+PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
+
+SRC_URI="http://kad.www.wps.cn/wps/download/Linux/unstable/"$N"_"$V"+wpp~a1-0.1_i386.deb"
+CHECKSUM="cb3987333102ab25a0ead9ef5efaee03"
+
+RDEPEND="attr dbus expat flac fontconfig freetype gcc-lib glib2 glibc json-c lcms libcap libffi libICE libjpeg-turbo libmng libogg libpng libSM libsndfile libvorbis libX11 libXau libxcb libXdmcp libXext libXi libXrender libXtst pulseaudio qt-core util-linux-ng zlib"
+RECOMMENDED="mscorefonts"
+BDEPEND=""
+OPTIONAL=""
+CONFLICT=""
+
+DESKTOPFILE="wps-office-wpp.desktop"
+
+INSTALL="$N.install"
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_install() {
+	docp data/*  "$destdir"
+}
+

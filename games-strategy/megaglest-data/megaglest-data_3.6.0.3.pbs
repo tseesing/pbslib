@@ -1,0 +1,40 @@
+#
+# Ylmf OS package build script
+#
+# Copyright 2005-2012 Ylmf OS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="Fork of Glest, a 3D real-time strategy game in a fantastic world (data files)"
+HOMEPAGE="http://sourceforge.net/projects/megaglest/"
+LICENSE="custom:CCBYSA3.0"
+PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
+YARCH="any"
+
+SRC_URI="http://downloads.sourceforge.net/megaglest/"$N-$V".tar.xz"
+CHECKSUM="63f360b52ad000af3fc71c33fc52106a"
+
+RDEPEND="megaglest"
+RECOMMENDED=""
+BDEPEND="cmake"
+OPTIONAL=""
+CONFLICT=""
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_config() {
+	config+=""
+	doconfig
+}
+
+pbs_build() {
+	domake
+}
+
+pbs_install() {
+	domkinstall
+	dodoc ../docs/README.data-license.txt
+}
+

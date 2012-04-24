@@ -1,6 +1,9 @@
 #
 # Ylmf OS package build script
 #
+# Copyright 2005-2012 Ylmf OS
+# Distributed under the terms of the GNU General Public License v2
+#
 
 DESCRIPTION="A decoder implementation of the JBIG2 image compression format"
 COMMENTS="jbig2dec is a decoder implementation of the JBIG2 image compression format. JBIG2 is designed for lossy or lossless encoding of 'bilevel' (1-bit monochrome) images at moderately high resolution, and in particular scanned paper documents. In this domain it is very efficient, offering compression ratios on the order of 100:1."

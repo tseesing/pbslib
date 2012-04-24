@@ -1,0 +1,61 @@
+#
+# Ylmf OS package build script
+#
+# Copyright 2005-2012 Ylmf OS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="A kart racing game featuring Tux and his friends"
+HOMEPAGE="http://supertuxkart.sourceforge.net/"
+LICENSE="GPL"
+PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
+
+SRC_URI="http://downloads.sourceforge.net/"$N"/"$N-$V"-src.tar.bz2"
+CHECKSUM="502664b2ec9ad5ab88b1882fef4c074d"
+
+RDEPEND="curl cyrus-sasl fribidi gcc-lib glibc gnutls libdrm libgcrypt libgpg-error libICE libidn libogg libSM libssh2 libtasn1 libvorbis libX11 libXau libxcb libXdamage libXdmcp libXext libXfixes libXxf86vm mesa openal openldap openssl rtmpdump util-linux-ng zlib"
+RECOMMENDED=""
+BDEPEND="subversion cmake"
+OPTIONAL=""
+CONFLICT=""
+
+INSTALL="$N.install"
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_config() {
+	# Need irrlicht 1.8.
+	# While irrlicht 1.8 is not released, we recommend using version 3843 from irrlicht SVN trunk.
+	svn co -r 3900 https://irrlicht.svn.sourceforge.net/svnroot/irrlicht/trunk irrlicht
+	cd irrlicht/source/Irrlicht
+	export NDEBUG=1 
+	make || return 1
+	
+	cd "$srcdir"
+	sed -i "s|share/games|share|g" CMakeLists.txt
+
+	[[ -d build ]] && rm -r build
+	mkdir build && cd build
+
+	cmake -DIRRLICHT_DIR="$srcdir/irrlicht" \
+	      -DCMAKE_INSTALL_PREFIX=/usr \
+	      -DCMAKE_CXX_FLAGS="-lpthread -lm -ldl" \
+	      ..
+}
+
+pbs_build() {
+	domake
+}
+
+pbs_install() {
+	domkinstall
+	cd "$destdir"
+	
+	# Fix executable location...
+	install -Dm755 usr/games/supertuxkart usr/bin/supertuxkart
+	rm -r usr/games
+	sed -i "s#usr/games/supertuxkart#usr/bin/supertuxkart#" usr/share/applications/supertuxkart.desktop
+}
+

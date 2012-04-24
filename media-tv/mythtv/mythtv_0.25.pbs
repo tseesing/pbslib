@@ -1,0 +1,57 @@
+#
+# Ylmf OS package build script
+#
+# Copyright 2005-2012 Ylmf OS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="A Homebrew PVR project"
+HOMEPAGE="http://www.mythtv.org/"
+LICENSE="GPL"
+PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
+
+SRC_URI="ftp://ftp.osuosl.org/pub/"$N"/"$N-$V".tar.bz2"
+CHECKSUM="e49c81de40e279c83dcb1b2aa9a45748"
+
+RDEPEND=""
+RECOMMENDED=""
+BDEPEND=""
+OPTIONAL=""
+CONFLICT=""
+
+INSTALL="$N.install"
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_patch() {
+	dopatch mythtv_0.25_gcc_4.7.patch
+}
+
+pbs_config() {
+	./configure --prefix=/usr \
+	            --cpu="$ARCH" \
+		    --enable-libfftw3 \
+		    --enable-libmp3lame \
+		    --enable-libx264 \
+		    --enable-vaapi \
+		    --disable-ccache
+
+		    #--disable-altivec
+		    #--disable-audio-jack
+		    #--disable-distcc
+}
+
+pbs_build() {
+	domake
+}
+
+pbs_install() {
+	domkinstall INSTALL_ROOT="$destdir"
+	docp 'database/mc.sql' "$destdir"/usr/share/mythtv/mc.sql
+	docp 'contrib' "$destdir"/usr/share/mythtv
+	mkdir -p "$destdir"/var/log/mythtv
+}
+
+

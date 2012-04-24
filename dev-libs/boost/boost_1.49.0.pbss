@@ -1,0 +1,92 @@
+#
+# Ylmf OS package build script
+#
+# Copyright 2005-2012 Ylmf OS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="Boost Libraries for C++"
+HOMEPAGE="http://www.boost.org/"
+LICENSE="custom"
+PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
+
+SRC_URI="http://sourceforge.net/projects/"$N"/files/"$N"/"$V"/"$N"_1_49_0.tar.bz2"
+CHECKSUM="0d202cb811f934282dea64856a175698"
+
+RDEPEND="bzip2 gcc-lib glibc zlib"
+BDEPEND=""
+RECOMMENDED=""
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_patch() {
+	# https://svn.boost.org/trac/boost/ticket/5731
+	dopatch exceptions.patch
+}
+
+pbs_config() {
+	# Set python path for bjam
+	cd "${srcdir}/tools"
+	echo "using python : 2.7 : /usr/bin/python-2.7 ;" >> build/v2/user-config.jam
+	echo "using python : 2.6 : /usr/bin/python ;"     >> build/v2/user-config.jam
+	
+	# We don't have python3 now
+	#echo "using python : 3.2 : /usr/bin/python : /usr/include/python3.2mu : /usr/lib ;" >> build/v2/user-config.jam
+	echo "using mpi ;" >> build/v2/user-config.jam
+}
+
+pbs_build() {
+	_stagedir="${srcdir}/stagedir"
+	
+	# Build bjam
+	cd "${srcdir}/tools/build/v2/engine"
+	CC=gcc ./build.sh cc
+
+	_bindir="bin.linuxx86"
+	[ "${ARCH}" = "x86_64" ] && _bindir="bin.linuxx86_64"
+	
+	install -d "${_stagedir}"/usr/bin
+	install "${_bindir}"/bjam "${_stagedir}"/usr/bin/bjam
+
+	# Build tools
+	cd "${srcdir}/tools/"
+	"${_stagedir}"/usr/bin/bjam --toolset=gcc
+
+	# Copy the tools
+	cd "${srcdir}/dist/bin"
+	
+	for i in *;do
+		install -m755 "${i}" "${_stagedir}/usr/bin/${i}"
+	done
+	
+	# Boostbook needed by quickbook
+	cd "${srcdir}/dist/"
+	cp -r share "${_stagedir}"
+
+	# Build libs
+	cd "${srcdir}"
+
+	# default "minimal" install: "release link=shared,static
+	# runtime-link=shared threading=single,multi"
+	# --layout=tagged will add the "-mt" suffix for multithreaded libraries
+	# and installs includes in /usr/include/boost.
+	# --layout=system no longer adds the -mt suffix for multi-threaded libs.
+	# install to ${_stagedir} in preparation for split packaging
+	"${_stagedir}"/usr/bin/bjam \
+		release debug-symbols=off threading=multi \
+		runtime-link=shared link=shared,static \
+		cflags=-fno-strict-aliasing \
+		toolset=gcc \
+		--prefix="${_stagedir}" \
+		-sTOOLS=gcc \
+		--layout=system \
+		"${MAKEFLAGS}" \
+	install
+}
+
+pbs_install() {
+	:
+}
+

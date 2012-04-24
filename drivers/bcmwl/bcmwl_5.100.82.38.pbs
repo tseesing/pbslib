@@ -1,6 +1,9 @@
 #
 # Ylmf OS package build script
 #
+# Copyright 2005-2012 Ylmf OS
+# Distributed under the terms of the GNU General Public License v2
+#
 
 DESCRIPTION="driver for BCM4311/4312/4313 BCM4321/4322 BCM43224/43225/43227/43228."
 HOMEPAGE="http://www.broadcom.com/company/"
@@ -24,6 +27,7 @@ bcmwl-source_install() {
 	RECOMMENDED="build-essential"
 	INSTALL="$N.install"
 	OPTIONS="nodev"
+	YARCH="any"
 
 	dosrc *
 	dosupported "$N"_supported

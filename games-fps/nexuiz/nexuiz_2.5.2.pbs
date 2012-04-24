@@ -1,0 +1,70 @@
+#
+# Ylmf OS package build script
+#
+# Copyright 2005-2012 Ylmf OS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="Deathmatch FPS based on DarkPlaces, an advanced Quake 1 engine"
+HOMEPAGE="http://www.nexuiz.com/"
+LICENSE="GPL"
+PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
+
+SRC_URI="http://sourceforge.net/projects/nexuiz/files/NexuizRelease/Nexuiz%202.5.2/"$N"-252.zip"
+CHECKSUM=""
+
+RDEPEND=""
+RECOMMENDED=""
+BDEPEND=""
+OPTIONAL=""
+CONFLICT=""
+
+INSTALL="$N.install"
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_patch() {
+	dopatch
+}
+
+pbs_config() {
+	#config+=" --prefix=/usr
+	#	      --sysconfdir=/etc
+	#	      --localstatedir=/var
+	#             --infodir=/usr/share/info
+	#	      --mandir=/usr/share/man
+	#              --disable-static
+	#	      --enable-shared "
+	config+=""
+	doconfig
+}
+
+pbs_build() {
+	domake
+}
+
+pbs_install() {
+	#make DESTDIR="$destdir" install
+	domkinstall
+	#doinit "$N"
+	#dounit "N".service
+	#dodesktop "*.desktop" "*.png"
+	#dodoc AUTHORS ChangeLog COPYING INSTALL NEWS README 
+	#docp "$filesdir/XXXX" "dirname"
+	#domv "$filesdir/XXXX" "dirname"
+	#docp_rename "$1" "$2"
+	#domv_rename "$1" "$2"
+	#doln "$1 "$2"
+	#doman a.1 b.2 c.3
+	#*****************
+	#when SRC_URI is deb or rpm package
+	#docp data/*  "$destdir"
+}
+
+#split package
+foo_install () {
+	:
+}
+

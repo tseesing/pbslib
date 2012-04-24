@@ -11,3 +11,10 @@ post_remove() {
 	gnome2_gconfd_reload
 }
 
+post_upgrade() {
+	post_install
+}
+
+post_downgrade() {
+	post_install
+}

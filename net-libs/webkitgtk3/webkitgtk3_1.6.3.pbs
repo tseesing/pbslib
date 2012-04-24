@@ -1,0 +1,38 @@
+#
+# Ylmf OS package build script
+#
+# Copyright 2005-2012 Ylmf OS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="the port of the portable web rendering engine WebKit to the GTK+ platform (for GTK+3)."
+HOMEPAGE="http://www.webkitgtk.org/"
+LICENSE="custom"
+PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
+
+SRC_URI="http://webkitgtk.org/webkit-"$V".tar.xz"
+CHECKSUM="c476d9335419df061510d31e21175df1"
+
+RDEPEND="atk cairo enchant expat fontconfig freetype gcc-lib gdk-pixbuf glib2 glibc gst-plugins-base gstreamer gtk+3 icu libffi libICE libjpeg-turbo libpng libSM libsoup(>=2.33.6) libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libXinerama libxml2 libXrandr libXrender libxslt libXt pango pixman sqlite util-linux-ng zlib"
+BDEPEND=""
+RECOMMENDED=""
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_config() {
+	config+="--enable-introspection
+		 --with-gtk=3.0"
+	doconfig
+}
+
+pbs_build() {
+	domake
+}
+
+pbs_install() {
+	domkinstall
+	dodoc Source/WebKit/LICENSE
+}
+

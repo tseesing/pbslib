@@ -1,6 +1,9 @@
 #
 # Ylmf OS package build script
 #
+# Copyright 2005-2012 Ylmf OS
+# Distributed under the terms of the GNU General Public License v2
+#
 
 DESCRIPTION="Oggz provides a simple programming interface for reading and writing Ogg files and streams"
 COMMENTS="liboggz is a C library for reading and writing Ogg files and streams. It offers various improvements over the reference libogg, including support for seeking, validation and timestamp interpretation"
