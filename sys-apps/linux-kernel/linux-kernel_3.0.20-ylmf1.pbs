@@ -10,8 +10,6 @@ HOMEPAGE="http://www.kernel.org"
 LICENSE="GPLv2"
 PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
 
-REPO="testing"
-
 SRC_URI="http://www.kernel.org/pub/linux/kernel/v3.0/linux-"$V".tar.bz2"
 CHECKSUM="456e7deb700fb76f2c3c3af5c0ad643b"
 
@@ -25,13 +23,17 @@ pbs_unpack() {
 
 pbs_patch() {
 	PATCHES=" aufs3-kbuild.patch
-		  aufs3-base.patch 
-		  aufs3-proc_map.patch
+		  aufs3-base.patch
+		  aufs3-proc_map.patch  
 		  aufs3-standalone.patch "
 
+	# Aufs patches
 	for i in $PATCHES; do
 		dopatch "$filesdir"/aufs3.0/"$i"
 	done
+
+	# uksm from http://kerneldedup.org/
+	dopatch uksm-0.1.1-for-v3.0.20-final.patch
 
 	docp "$filesdir"/aufs3.0/fs/aufs                   fs/
 	docp "$filesdir"/aufs3.0/include/linux/aufs_type.h include/linux/
@@ -46,7 +48,8 @@ pbs_config() {
 
 pbs_build() {
 	unset ARCH
-	domake
+	domake prepare	
+	domake bzImage 
 	domake modules
 }
 
@@ -54,10 +57,11 @@ linux-kernel_install() {
 	DESCRIPTION="Linux kernel modules"
 	BDEPEND="ncurses-dev"
 	INSTALL="$N.install"
+	RIR="yes"
 	
 	make INSTALL_MOD_PATH="$destdir" modules_install
 	make INSTALL_MOD_PATH="$destdir" firmware_install
-	version="$V$R"
+	version="$(make kernelrelease)"
 
 	ARCH="$(uname -m)"
 
@@ -78,6 +82,10 @@ linux-kernel_install() {
 
 	# Gzip -9 all modules to safe 100MB of space
 	find "${destdir}" -name '*.ko' -exec gzip -9 {} \;
+
+	# For ykms
+	mkdir -p "${destdir}"/var/ypkg/modules/
+	echo "$version $ARCH" >"${destdir}"/var/ypkg/modules/kernel
 }
 
 linux-kernel-headers_install() {

@@ -1,23 +1,18 @@
-aufs3.0 standalone patch
-
-diff --git a/fs/file_table.c b/fs/file_table.c
-index 01e4c1e..0e800e2 100644
---- a/fs/file_table.c
-+++ b/fs/file_table.c
-@@ -443,6 +443,8 @@ void file_sb_list_del(struct file *file)
+diff -ur linux-kernel-3.0.20-ylmf1/fs/file_table.c linux-kernel-3.0.20-ylmf1.new//fs/file_table.c
+--- linux-kernel-3.0.20-ylmf1/fs/file_table.c	2012-02-07 01:31:45.000000000 +0800
++++ linux-kernel-3.0.20-ylmf1.new//fs/file_table.c	2012-04-25 14:19:23.182234005 +0800
+@@ -443,6 +443,7 @@
  	}
  }
  
 +EXPORT_SYMBOL(file_sb_list_del);
-+
  #ifdef CONFIG_SMP
  
  /*
-diff --git a/fs/inode.c b/fs/inode.c
-index 43566d1..4291eae 100644
---- a/fs/inode.c
-+++ b/fs/inode.c
-@@ -69,6 +69,7 @@ static DEFINE_SPINLOCK(inode_lru_lock);
+diff -ur linux-kernel-3.0.20-ylmf1/fs/inode.c linux-kernel-3.0.20-ylmf1.new//fs/inode.c
+--- linux-kernel-3.0.20-ylmf1/fs/inode.c	2012-02-07 01:31:45.000000000 +0800
++++ linux-kernel-3.0.20-ylmf1.new//fs/inode.c	2012-04-25 14:20:03.199725010 +0800
+@@ -69,6 +69,7 @@
  
  __cacheline_aligned_in_smp DEFINE_SPINLOCK(inode_sb_list_lock);
  __cacheline_aligned_in_smp DEFINE_SPINLOCK(inode_wb_list_lock);
@@ -25,42 +20,42 @@ index 43566d1..4291eae 100644
  
  /*
   * iprune_sem provides exclusion between the icache shrinking and the
-diff --git a/fs/namei.c b/fs/namei.c
-index eb4aef1..66d04c6 100644
---- a/fs/namei.c
-+++ b/fs/namei.c
-@@ -365,6 +365,7 @@ int deny_write_access(struct file * file)
- 
+diff -ur linux-kernel-3.0.20-ylmf1/fs/namei.c linux-kernel-3.0.20-ylmf1.new//fs/namei.c
+--- linux-kernel-3.0.20-ylmf1/fs/namei.c	2012-04-25 14:17:47.013592272 +0800
++++ linux-kernel-3.0.20-ylmf1.new//fs/namei.c	2012-04-25 14:20:47.983982579 +0800
+@@ -368,6 +368,8 @@
  	return 0;
  }
-+EXPORT_SYMBOL(deny_write_access);
  
++EXPORT_SYMBOL(deny_write_access);
++
  /**
   * path_get - get a reference to a path
-@@ -1701,6 +1702,7 @@ struct dentry *lookup_hash(struct nameidata *nd)
- {
+  * @path: path to get the reference to
+@@ -1710,6 +1712,8 @@
  	return __lookup_hash(&nd->last, nd->path.dentry, nd);
  }
-+EXPORT_SYMBOL(lookup_hash);
  
++EXPORT_SYMBOL(lookup_hash);
++
  /**
   * lookup_one_len - filesystem helper to lookup single pathname component
-diff --git a/fs/namespace.c b/fs/namespace.c
-index fe59bd1..7d3843f 100644
---- a/fs/namespace.c
-+++ b/fs/namespace.c
-@@ -1508,6 +1508,7 @@ int iterate_mounts(int (*f)(struct vfsmount *, void *), void *arg,
- 	}
+  * @name:	pathname component to lookup
+diff -ur linux-kernel-3.0.20-ylmf1/fs/namespace.c linux-kernel-3.0.20-ylmf1.new//fs/namespace.c
+--- linux-kernel-3.0.20-ylmf1/fs/namespace.c	2012-02-07 01:31:45.000000000 +0800
++++ linux-kernel-3.0.20-ylmf1.new//fs/namespace.c	2012-04-25 14:21:19.007957218 +0800
+@@ -1507,6 +1507,8 @@
  	return 0;
  }
-+EXPORT_SYMBOL(iterate_mounts);
  
++EXPORT_SYMBOL(iterate_mounts);
++
  static void cleanup_group_ids(struct vfsmount *mnt, struct vfsmount *end)
  {
-diff --git a/fs/notify/group.c b/fs/notify/group.c
-index d309f38..f0e9568 100644
---- a/fs/notify/group.c
-+++ b/fs/notify/group.c
+ 	struct vfsmount *p;
+diff -ur linux-kernel-3.0.20-ylmf1/fs/notify/group.c linux-kernel-3.0.20-ylmf1.new//fs/notify/group.c
+--- linux-kernel-3.0.20-ylmf1/fs/notify/group.c	2012-02-07 01:31:45.000000000 +0800
++++ linux-kernel-3.0.20-ylmf1.new//fs/notify/group.c	2012-04-25 14:22:46.386434633 +0800
 @@ -22,6 +22,7 @@
  #include <linux/srcu.h>
  #include <linux/rculist.h>
@@ -69,7 +64,7 @@ index d309f38..f0e9568 100644
  
  #include <linux/fsnotify_backend.h>
  #include "fsnotify.h"
-@@ -70,6 +71,7 @@ void fsnotify_put_group(struct fsnotify_group *group)
+@@ -70,6 +71,7 @@
  	if (atomic_dec_and_test(&group->refcnt))
  		fsnotify_destroy_group(group);
  }
@@ -77,16 +72,16 @@ index d309f38..f0e9568 100644
  
  /*
   * Create a new fsnotify_group and hold a reference for the group returned.
-@@ -102,3 +104,4 @@ struct fsnotify_group *fsnotify_alloc_group(const struct fsnotify_ops *ops)
+@@ -102,3 +104,5 @@
  
  	return group;
  }
 +EXPORT_SYMBOL(fsnotify_alloc_group);
-diff --git a/fs/notify/mark.c b/fs/notify/mark.c
-index 252ab1f..2199b9b 100644
---- a/fs/notify/mark.c
-+++ b/fs/notify/mark.c
-@@ -112,6 +112,7 @@ void fsnotify_put_mark(struct fsnotify_mark *mark)
++
+diff -ur linux-kernel-3.0.20-ylmf1/fs/notify/mark.c linux-kernel-3.0.20-ylmf1.new//fs/notify/mark.c
+--- linux-kernel-3.0.20-ylmf1/fs/notify/mark.c	2012-02-07 01:31:45.000000000 +0800
++++ linux-kernel-3.0.20-ylmf1.new//fs/notify/mark.c	2012-04-25 14:24:34.338680808 +0800
+@@ -112,6 +112,7 @@
  	if (atomic_dec_and_test(&mark->refcnt))
  		mark->free_mark(mark);
  }
@@ -94,7 +89,7 @@ index 252ab1f..2199b9b 100644
  
  /*
   * Any time a mark is getting freed we end up here.
-@@ -189,6 +190,7 @@ void fsnotify_destroy_mark(struct fsnotify_mark *mark)
+@@ -191,6 +192,7 @@
  	if (unlikely(atomic_dec_and_test(&group->num_marks)))
  		fsnotify_final_destroy_group(group);
  }
@@ -102,7 +97,7 @@ index 252ab1f..2199b9b 100644
  
  void fsnotify_set_mark_mask_locked(struct fsnotify_mark *mark, __u32 mask)
  {
-@@ -276,6 +278,7 @@ err:
+@@ -278,6 +280,7 @@
  
  	return ret;
  }
@@ -110,7 +105,7 @@ index 252ab1f..2199b9b 100644
  
  /*
   * clear any marks in a group in which mark->flags & flags is true
-@@ -331,6 +334,7 @@ void fsnotify_init_mark(struct fsnotify_mark *mark,
+@@ -333,6 +336,7 @@
  	atomic_set(&mark->refcnt, 1);
  	mark->free_mark = free_mark;
  }
@@ -118,11 +113,10 @@ index 252ab1f..2199b9b 100644
  
  static int fsnotify_mark_destroy(void *ignored)
  {
-diff --git a/fs/open.c b/fs/open.c
-index b52cf01..c1b341c 100644
---- a/fs/open.c
-+++ b/fs/open.c
-@@ -60,6 +60,7 @@ int do_truncate(struct dentry *dentry, loff_t length, unsigned int time_attrs,
+diff -ur linux-kernel-3.0.20-ylmf1/fs/open.c linux-kernel-3.0.20-ylmf1.new//fs/open.c
+--- linux-kernel-3.0.20-ylmf1/fs/open.c	2012-02-07 01:31:45.000000000 +0800
++++ linux-kernel-3.0.20-ylmf1.new//fs/open.c	2012-04-25 14:25:05.926006578 +0800
+@@ -60,6 +60,7 @@
  	mutex_unlock(&dentry->d_inode->i_mutex);
  	return ret;
  }
@@ -130,11 +124,10 @@ index b52cf01..c1b341c 100644
  
  static long do_sys_truncate(const char __user *pathname, loff_t length)
  {
-diff --git a/fs/splice.c b/fs/splice.c
-index 19afec6..11f07f86 100644
---- a/fs/splice.c
-+++ b/fs/splice.c
-@@ -1109,6 +1109,7 @@ long do_splice_from(struct pipe_inode_info *pipe, struct file *out,
+diff -ur linux-kernel-3.0.20-ylmf1/fs/splice.c linux-kernel-3.0.20-ylmf1.new//fs/splice.c
+--- linux-kernel-3.0.20-ylmf1/fs/splice.c	2012-04-25 14:17:47.016925674 +0800
++++ linux-kernel-3.0.20-ylmf1.new//fs/splice.c	2012-04-25 14:25:47.413540190 +0800
+@@ -1109,6 +1109,7 @@
  
  	return splice_write(pipe, out, ppos, len, flags);
  }
@@ -142,7 +135,7 @@ index 19afec6..11f07f86 100644
  
  /*
   * Attempt to initiate a splice from a file to a pipe.
-@@ -1135,6 +1136,7 @@ long do_splice_to(struct file *in, loff_t *ppos,
+@@ -1135,6 +1136,7 @@
  
  	return splice_read(in, ppos, pipe, len, flags);
  }
@@ -150,20 +143,20 @@ index 19afec6..11f07f86 100644
  
  /**
   * splice_direct_to_actor - splices data directly between two non-pipes
-diff --git a/security/commoncap.c b/security/commoncap.c
-index a93b3b7..024282c 100644
---- a/security/commoncap.c
-+++ b/security/commoncap.c
-@@ -971,3 +971,4 @@ int cap_file_mmap(struct file *file, unsigned long reqprot,
+diff -ur linux-kernel-3.0.20-ylmf1/security/commoncap.c linux-kernel-3.0.20-ylmf1.new//security/commoncap.c
+--- linux-kernel-3.0.20-ylmf1/security/commoncap.c	2012-02-07 01:31:45.000000000 +0800
++++ linux-kernel-3.0.20-ylmf1.new//security/commoncap.c	2012-04-25 14:26:20.327562319 +0800
+@@ -971,3 +971,6 @@
  	}
  	return ret;
  }
 +EXPORT_SYMBOL(cap_file_mmap);
-diff --git a/security/device_cgroup.c b/security/device_cgroup.c
-index 1be6826..215278c 100644
---- a/security/device_cgroup.c
-+++ b/security/device_cgroup.c
-@@ -508,6 +508,7 @@ found:
++
++
+diff -ur linux-kernel-3.0.20-ylmf1/security/device_cgroup.c linux-kernel-3.0.20-ylmf1.new//security/device_cgroup.c
+--- linux-kernel-3.0.20-ylmf1/security/device_cgroup.c	2012-02-07 01:31:45.000000000 +0800
++++ linux-kernel-3.0.20-ylmf1.new//security/device_cgroup.c	2012-04-25 14:26:56.278315677 +0800
+@@ -508,6 +508,7 @@
  
  	return -EPERM;
  }
@@ -171,11 +164,10 @@ index 1be6826..215278c 100644
  
  int devcgroup_inode_mknod(int mode, dev_t dev)
  {
-diff --git a/security/security.c b/security/security.c
-index 4ba6d4c..9f64bb8 100644
---- a/security/security.c
-+++ b/security/security.c
-@@ -373,6 +373,7 @@ int security_path_rmdir(struct path *dir, struct dentry *dentry)
+diff -ur linux-kernel-3.0.20-ylmf1/security/security.c linux-kernel-3.0.20-ylmf1.new//security/security.c
+--- linux-kernel-3.0.20-ylmf1/security/security.c	2012-02-07 01:31:45.000000000 +0800
++++ linux-kernel-3.0.20-ylmf1.new//security/security.c	2012-04-25 14:31:05.566901283 +0800
+@@ -373,6 +373,7 @@
  		return 0;
  	return security_ops->path_rmdir(dir, dentry);
  }
@@ -183,7 +175,7 @@ index 4ba6d4c..9f64bb8 100644
  
  int security_path_unlink(struct path *dir, struct dentry *dentry)
  {
-@@ -389,6 +390,7 @@ int security_path_symlink(struct path *dir, struct dentry *dentry,
+@@ -389,6 +390,7 @@
  		return 0;
  	return security_ops->path_symlink(dir, dentry, old_name);
  }
@@ -191,7 +183,7 @@ index 4ba6d4c..9f64bb8 100644
  
  int security_path_link(struct dentry *old_dentry, struct path *new_dir,
  		       struct dentry *new_dentry)
-@@ -397,6 +399,7 @@ int security_path_link(struct dentry *old_dentry, struct path *new_dir,
+@@ -397,6 +399,7 @@
  		return 0;
  	return security_ops->path_link(old_dentry, new_dir, new_dentry);
  }
@@ -199,7 +191,7 @@ index 4ba6d4c..9f64bb8 100644
  
  int security_path_rename(struct path *old_dir, struct dentry *old_dentry,
  			 struct path *new_dir, struct dentry *new_dentry)
-@@ -415,6 +418,7 @@ int security_path_truncate(struct path *path)
+@@ -415,6 +418,7 @@
  		return 0;
  	return security_ops->path_truncate(path);
  }
@@ -207,7 +199,7 @@ index 4ba6d4c..9f64bb8 100644
  
  int security_path_chmod(struct dentry *dentry, struct vfsmount *mnt,
  			mode_t mode)
-@@ -423,6 +427,7 @@ int security_path_chmod(struct dentry *dentry, struct vfsmount *mnt,
+@@ -423,6 +427,7 @@
  		return 0;
  	return security_ops->path_chmod(dentry, mnt, mode);
  }
@@ -215,7 +207,7 @@ index 4ba6d4c..9f64bb8 100644
  
  int security_path_chown(struct path *path, uid_t uid, gid_t gid)
  {
-@@ -430,6 +435,7 @@ int security_path_chown(struct path *path, uid_t uid, gid_t gid)
+@@ -430,6 +435,7 @@
  		return 0;
  	return security_ops->path_chown(path, uid, gid);
  }
@@ -223,7 +215,7 @@ index 4ba6d4c..9f64bb8 100644
  
  int security_path_chroot(struct path *path)
  {
-@@ -506,6 +512,7 @@ int security_inode_readlink(struct dentry *dentry)
+@@ -506,6 +512,7 @@
  		return 0;
  	return security_ops->inode_readlink(dentry);
  }
@@ -231,7 +223,7 @@ index 4ba6d4c..9f64bb8 100644
  
  int security_inode_follow_link(struct dentry *dentry, struct nameidata *nd)
  {
-@@ -520,6 +527,7 @@ int security_inode_permission(struct inode *inode, int mask)
+@@ -520,6 +527,7 @@
  		return 0;
  	return security_ops->inode_permission(inode, mask, 0);
  }
@@ -239,7 +231,7 @@ index 4ba6d4c..9f64bb8 100644
  
  int security_inode_exec_permission(struct inode *inode, unsigned int flags)
  {
-@@ -626,6 +634,7 @@ int security_file_permission(struct file *file, int mask)
+@@ -626,6 +634,7 @@
  
  	return fsnotify_perm(file, mask);
  }
@@ -247,7 +239,7 @@ index 4ba6d4c..9f64bb8 100644
  
  int security_file_alloc(struct file *file)
  {
-@@ -653,6 +662,7 @@ int security_file_mmap(struct file *file, unsigned long reqprot,
+@@ -653,6 +662,7 @@
  		return ret;
  	return ima_file_mmap(file, prot);
  }

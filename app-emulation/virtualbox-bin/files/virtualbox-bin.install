@@ -34,8 +34,6 @@ post_upgrade() {
 	gnome2_gconfd_reload
 
 	#
-
-	#
 	systemctl --system daemon-reload
 	restart virtualbox.service
 

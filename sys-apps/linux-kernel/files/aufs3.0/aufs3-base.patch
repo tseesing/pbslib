@@ -1,10 +1,7 @@
-aufs3.0 base patch
-
-diff --git a/fs/namei.c b/fs/namei.c
-index 14ab8d3..eb4aef1 100644
---- a/fs/namei.c
-+++ b/fs/namei.c
-@@ -1697,7 +1697,7 @@ static struct dentry *__lookup_hash(struct qstr *name,
+diff -ur linux-kernel-3.0.20-ylmf1/fs/namei.c linux-kernel-3.0.20-ylmf1.new//fs/namei.c
+--- linux-kernel-3.0.20-ylmf1/fs/namei.c	2012-02-07 01:31:45.000000000 +0800
++++ linux-kernel-3.0.20-ylmf1.new//fs/namei.c	2012-04-25 13:54:30.605457216 +0800
+@@ -1705,7 +1705,7 @@
   * needs parent already locked. Doesn't follow mounts.
   * SMP-safe.
   */
@@ -13,22 +10,21 @@ index 14ab8d3..eb4aef1 100644
  {
  	return __lookup_hash(&nd->last, nd->path.dentry, nd);
  }
-diff --git a/fs/splice.c b/fs/splice.c
-index aa866d3..19afec6 100644
---- a/fs/splice.c
-+++ b/fs/splice.c
-@@ -1085,8 +1085,8 @@ EXPORT_SYMBOL(generic_splice_sendpage);
+diff -ur linux-kernel-3.0.20-ylmf1/fs/splice.c linux-kernel-3.0.20-ylmf1.new//fs/splice.c
+--- linux-kernel-3.0.20-ylmf1/fs/splice.c	2012-02-07 01:31:45.000000000 +0800
++++ linux-kernel-3.0.20-ylmf1.new//fs/splice.c	2012-04-25 13:55:59.154099192 +0800
+@@ -1085,8 +1085,8 @@
  /*
   * Attempt to initiate a splice from pipe to file.
   */
 -static long do_splice_from(struct pipe_inode_info *pipe, struct file *out,
 -			   loff_t *ppos, size_t len, unsigned int flags)
 +long do_splice_from(struct pipe_inode_info *pipe, struct file *out,
-+		    loff_t *ppos, size_t len, unsigned int flags)
++	loff_t *ppos, size_t len, unsigned int flags)
  {
  	ssize_t (*splice_write)(struct pipe_inode_info *, struct file *,
  				loff_t *, size_t, unsigned int);
-@@ -1113,9 +1113,9 @@ static long do_splice_from(struct pipe_inode_info *pipe, struct file *out,
+@@ -1113,9 +1113,9 @@
  /*
   * Attempt to initiate a splice from a file to a pipe.
   */
@@ -36,16 +32,15 @@ index aa866d3..19afec6 100644
 -			 struct pipe_inode_info *pipe, size_t len,
 -			 unsigned int flags)
 +long do_splice_to(struct file *in, loff_t *ppos,
-+		  struct pipe_inode_info *pipe, size_t len,
-+		  unsigned int flags)
++	struct pipe_inode_info *pipe, size_t len,
++	unsigned int flags)
  {
  	ssize_t (*splice_read)(struct file *, loff_t *,
  			       struct pipe_inode_info *, size_t, unsigned int);
-diff --git a/include/linux/namei.h b/include/linux/namei.h
-index eba45ea..21ed6c9 100644
---- a/include/linux/namei.h
-+++ b/include/linux/namei.h
-@@ -82,6 +82,7 @@ extern int vfs_path_lookup(struct dentry *, struct vfsmount *,
+diff -ur linux-kernel-3.0.20-ylmf1/include/linux/namei.h linux-kernel-3.0.20-ylmf1.new//include/linux/namei.h
+--- linux-kernel-3.0.20-ylmf1/include/linux/namei.h	2012-02-07 01:31:45.000000000 +0800
++++ linux-kernel-3.0.20-ylmf1.new//include/linux/namei.h	2012-04-25 13:56:32.528178054 +0800
+@@ -84,6 +84,7 @@
  extern struct file *lookup_instantiate_filp(struct nameidata *nd, struct dentry *dentry,
  		int (*open)(struct inode *, struct file *));
  
@@ -53,18 +48,17 @@ index eba45ea..21ed6c9 100644
  extern struct dentry *lookup_one_len(const char *, struct dentry *, int);
  
  extern int follow_down_one(struct path *);
-diff --git a/include/linux/splice.h b/include/linux/splice.h
-index 997c3b4..be9a153 100644
---- a/include/linux/splice.h
-+++ b/include/linux/splice.h
-@@ -89,4 +89,10 @@ extern int splice_grow_spd(struct pipe_inode_info *, struct splice_pipe_desc *);
+diff -ur linux-kernel-3.0.20-ylmf1/include/linux/splice.h linux-kernel-3.0.20-ylmf1.new//include/linux/splice.h
+--- linux-kernel-3.0.20-ylmf1/include/linux/splice.h	2012-02-07 01:31:45.000000000 +0800
++++ linux-kernel-3.0.20-ylmf1.new//include/linux/splice.h	2012-04-25 13:57:13.312423179 +0800
+@@ -89,4 +89,10 @@
  extern void splice_shrink_spd(struct pipe_inode_info *,
  				struct splice_pipe_desc *);
  
 +extern long do_splice_from(struct pipe_inode_info *pipe, struct file *out,
-+			   loff_t *ppos, size_t len, unsigned int flags);
++                          loff_t *ppos, size_t len, unsigned int flags);
 +extern long do_splice_to(struct file *in, loff_t *ppos,
-+			 struct pipe_inode_info *pipe, size_t len,
-+			 unsigned int flags);
++                        struct pipe_inode_info *pipe, size_t len,
++                        unsigned int flags);
 +
  #endif

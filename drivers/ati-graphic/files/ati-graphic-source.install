@@ -1,18 +1,13 @@
-. /usr/lib/ybs/funcs
 
 post_install() {
 	# Build fglrx.ko
 	ykms install $1 $2	
-
 	echo "* Please install ati-graphic-utils further."
 }
 
 post_remove() {
 	# Delete fglrx.ko
-	ykms remove $1 $2
-
-	# Delete module source
-	rm -rf /usr/src/"$1-$2"
+	ykms remove $1 $2 ||true
 }
 
 post_upgrade()  {

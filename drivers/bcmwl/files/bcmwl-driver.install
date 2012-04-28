@@ -44,4 +44,3 @@ post_downgrade() {
 	post_install $1 $2
 }
 
-

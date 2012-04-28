@@ -1,17 +1,23 @@
 . /usr/lib/ybs/funcs
 
-daemon_restart="dbus-send --print-reply --system --dest=com.ylmf.ypkg.serviced /com/ylmf/ypkg com.ylmf.ypkg.Quit"
-
 post_install() {
 	gnome2_desktop_database_update
 	gnome2_icon_cache_update
-	
-	# Restart daemon
-	eval $daemon_restart ||return 0
 }
 
 post_upgrade() {
+	# Version that less than 20120328 MUST Restart daemon
+	version_old=$3
+	ypkg --compare-version $version_old 20120328
+	
+	if [ $? -eq 2 ]; then
+		echo "* Wait and restart daemon.."
+		/usr/bin/ycenter_daemon_restart.sh &
+	fi
+	
 	post_install
+	
+	return 0
 }
 
 post_downgrade() {

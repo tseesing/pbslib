@@ -1,4 +1,3 @@
-. /usr/lib/ybs/funcs
 
 post_install() {
         unset ARCH
@@ -18,10 +17,10 @@ post_remove() {
 }
 
 post_upgrade() {
-	post_install
+	post_install $1 $2
 }
 
 post_downgrade() {
-	post_install
+	post_install $1 $2
 }
 

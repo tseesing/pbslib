@@ -1,8 +1,7 @@
-. /usr/lib/ybs/funcs
 
 post_install() {
 	# Write vimrc
-	[ -f etc/vimrc ] && return 0
+	[ -f /etc/vimrc ] && return 0
         cat > /etc/vimrc << "EOF"
 " Begin /etc/vimrc
 set nocompatible

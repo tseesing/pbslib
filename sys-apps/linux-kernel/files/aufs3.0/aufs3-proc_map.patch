@@ -1,36 +1,32 @@
-aufs3.0 proc_map patch
-
-diff --git a/fs/proc/nommu.c b/fs/proc/nommu.c
-index b1822dd..8b29ab7 100644
---- a/fs/proc/nommu.c
-+++ b/fs/proc/nommu.c
-@@ -46,6 +46,10 @@ static int nommu_region_show(struct seq_file *m, struct vm_region *region)
+diff -ur linux-kernel-3.0.20-ylmf1/fs/proc/nommu.c linux-kernel-3.0.20-ylmf1.new//fs/proc/nommu.c
+--- linux-kernel-3.0.20-ylmf1/fs/proc/nommu.c	2012-02-07 01:31:45.000000000 +0800
++++ linux-kernel-3.0.20-ylmf1.new//fs/proc/nommu.c	2012-04-25 14:03:17.162809915 +0800
+@@ -46,6 +46,10 @@
  
  	if (file) {
  		struct inode *inode = region->vm_file->f_path.dentry->d_inode;
 +		if (region->vm_prfile) {
 +			file = region->vm_prfile;
 +			inode = file->f_path.dentry->d_inode;
-+		}
++		}	
  		dev = inode->i_sb->s_dev;
  		ino = inode->i_ino;
  	}
-diff --git a/fs/proc/task_mmu.c b/fs/proc/task_mmu.c
-index 25b6a88..47ed5d8 100644
---- a/fs/proc/task_mmu.c
-+++ b/fs/proc/task_mmu.c
-@@ -220,6 +220,10 @@ static void show_map_vma(struct seq_file *m, struct vm_area_struct *vma)
+diff -ur linux-kernel-3.0.20-ylmf1/fs/proc/task_mmu.c linux-kernel-3.0.20-ylmf1.new//fs/proc/task_mmu.c
+--- linux-kernel-3.0.20-ylmf1/fs/proc/task_mmu.c	2012-02-07 01:31:45.000000000 +0800
++++ linux-kernel-3.0.20-ylmf1.new//fs/proc/task_mmu.c	2012-04-25 14:04:26.057495915 +0800
+@@ -220,6 +220,10 @@
  
  	if (file) {
  		struct inode *inode = vma->vm_file->f_path.dentry->d_inode;
 +		if (vma->vm_prfile) {
 +			file = vma->vm_prfile;
-+			inode = file->f_path.dentry->d_inode;
++		        inode = file->f_path.dentry->d_inode;
 +		}
  		dev = inode->i_sb->s_dev;
  		ino = inode->i_ino;
  		pgoff = ((loff_t)vma->vm_pgoff) << PAGE_SHIFT;
-@@ -1001,6 +1005,8 @@ static int show_numa_map(struct seq_file *m, void *v)
+@@ -1034,6 +1038,8 @@
  
  	if (file) {
  		seq_printf(m, " file=");
@@ -39,46 +35,43 @@ index 25b6a88..47ed5d8 100644
  		seq_path(m, &file->f_path, "\n\t= ");
  	} else if (vma->vm_start <= mm->brk && vma->vm_end >= mm->start_brk) {
  		seq_printf(m, " heap");
-diff --git a/fs/proc/task_nommu.c b/fs/proc/task_nommu.c
-index 980de54..4ee031f 100644
---- a/fs/proc/task_nommu.c
-+++ b/fs/proc/task_nommu.c
-@@ -148,6 +148,10 @@ static int nommu_vma_show(struct seq_file *m, struct vm_area_struct *vma)
+diff -ur linux-kernel-3.0.20-ylmf1/fs/proc/task_nommu.c linux-kernel-3.0.20-ylmf1.new//fs/proc/task_nommu.c
+--- linux-kernel-3.0.20-ylmf1/fs/proc/task_nommu.c	2012-02-07 01:31:45.000000000 +0800
++++ linux-kernel-3.0.20-ylmf1.new//fs/proc/task_nommu.c	2012-04-25 14:04:58.988144361 +0800
+@@ -148,6 +148,10 @@
  
  	if (file) {
  		struct inode *inode = vma->vm_file->f_path.dentry->d_inode;
 +		if (vma->vm_prfile) {
 +			file = vma->vm_prfile;
 +			inode = file->f_path.dentry->d_inode;
-+		}
++		}	
  		dev = inode->i_sb->s_dev;
  		ino = inode->i_ino;
  		pgoff = (loff_t)vma->vm_pgoff << PAGE_SHIFT;
-diff --git a/include/linux/mm_types.h b/include/linux/mm_types.h
-index 027935c..0ade381 100644
---- a/include/linux/mm_types.h
-+++ b/include/linux/mm_types.h
-@@ -117,6 +117,7 @@ struct vm_region {
+diff -ur linux-kernel-3.0.20-ylmf1/include/linux/mm_types.h linux-kernel-3.0.20-ylmf1.new//include/linux/mm_types.h
+--- linux-kernel-3.0.20-ylmf1/include/linux/mm_types.h	2012-02-07 01:31:45.000000000 +0800
++++ linux-kernel-3.0.20-ylmf1.new//include/linux/mm_types.h	2012-04-25 14:05:41.915658152 +0800
+@@ -131,6 +131,7 @@
  	unsigned long	vm_top;		/* region allocated to here */
  	unsigned long	vm_pgoff;	/* the offset in vm_file corresponding to vm_start */
  	struct file	*vm_file;	/* the backing file or NULL */
-+	struct file	*vm_prfile;	/* the virtual backing file or NULL */
++	struct file     *vm_prfile;     /* the virtual backing file or NULL */
  
  	int		vm_usage;	/* region usage count (access under nommu_region_sem) */
  	bool		vm_icache_flushed : 1; /* true if the icache has been flushed for
-@@ -176,6 +177,7 @@ struct vm_area_struct {
+@@ -190,6 +191,7 @@
  	unsigned long vm_pgoff;		/* Offset (within vm_file) in PAGE_SIZE
  					   units, *not* PAGE_CACHE_SIZE */
  	struct file * vm_file;		/* File we map to (can be NULL). */
-+	struct file *vm_prfile;		/* shadow of vm_file */
++	struct file *vm_prfile;         /* shadow of vm_file */
  	void * vm_private_data;		/* was vm_pte (shared mem) */
  
  #ifndef CONFIG_MMU
-diff --git a/kernel/fork.c b/kernel/fork.c
-index 0276c30..39d8176 100644
---- a/kernel/fork.c
-+++ b/kernel/fork.c
-@@ -380,6 +380,8 @@ static int dup_mmap(struct mm_struct *mm, struct mm_struct *oldmm)
+diff -ur linux-kernel-3.0.20-ylmf1/kernel/fork.c linux-kernel-3.0.20-ylmf1.new//kernel/fork.c
+--- linux-kernel-3.0.20-ylmf1/kernel/fork.c	2012-02-07 01:31:45.000000000 +0800
++++ linux-kernel-3.0.20-ylmf1.new//kernel/fork.c	2012-04-25 14:06:23.966489952 +0800
+@@ -380,6 +380,8 @@
  			struct address_space *mapping = file->f_mapping;
  
  			get_file(file);
@@ -87,11 +80,10 @@ index 0276c30..39d8176 100644
  			if (tmp->vm_flags & VM_DENYWRITE)
  				atomic_dec(&inode->i_writecount);
  			mutex_lock(&mapping->i_mmap_mutex);
-diff --git a/mm/memory.c b/mm/memory.c
-index 9b8a01d..8902d06 100644
---- a/mm/memory.c
-+++ b/mm/memory.c
-@@ -2577,6 +2577,8 @@ reuse:
+diff -ur linux-kernel-3.0.20-ylmf1/mm/memory.c linux-kernel-3.0.20-ylmf1.new//mm/memory.c
+--- linux-kernel-3.0.20-ylmf1/mm/memory.c	2012-02-07 01:31:45.000000000 +0800
++++ linux-kernel-3.0.20-ylmf1.new//mm/memory.c	2012-04-25 14:07:08.670709691 +0800
+@@ -2633,6 +2633,8 @@
  		/* file_update_time outside page_lock */
  		if (vma->vm_file)
  			file_update_time(vma->vm_file);
@@ -100,7 +92,7 @@ index 9b8a01d..8902d06 100644
  
  		return ret;
  	}
-@@ -3257,6 +3259,8 @@ out:
+@@ -3313,6 +3315,8 @@
  		/* file_update_time outside page_lock */
  		if (vma->vm_file)
  			file_update_time(vma->vm_file);
@@ -109,11 +101,10 @@ index 9b8a01d..8902d06 100644
  	} else {
  		unlock_page(vmf.page);
  		if (anon)
-diff --git a/mm/mmap.c b/mm/mmap.c
-index d49736f..0290c8e 100644
---- a/mm/mmap.c
-+++ b/mm/mmap.c
-@@ -240,6 +240,8 @@ static struct vm_area_struct *remove_vma(struct vm_area_struct *vma)
+diff -ur linux-kernel-3.0.20-ylmf1/mm/mmap.c linux-kernel-3.0.20-ylmf1.new//mm/mmap.c
+--- linux-kernel-3.0.20-ylmf1/mm/mmap.c	2012-02-07 01:31:45.000000000 +0800
++++ linux-kernel-3.0.20-ylmf1.new//mm/mmap.c	2012-04-25 14:12:47.460829431 +0800
+@@ -240,6 +240,8 @@
  		vma->vm_ops->close(vma);
  	if (vma->vm_file) {
  		fput(vma->vm_file);
@@ -122,7 +113,7 @@ index d49736f..0290c8e 100644
  		if (vma->vm_flags & VM_EXECUTABLE)
  			removed_exe_file_vma(vma->vm_mm);
  	}
-@@ -627,6 +629,8 @@ again:			remove_next = 1 + (end > next->vm_end);
+@@ -627,6 +629,8 @@
  	if (remove_next) {
  		if (file) {
  			fput(file);
@@ -131,7 +122,7 @@ index d49736f..0290c8e 100644
  			if (next->vm_flags & VM_EXECUTABLE)
  				removed_exe_file_vma(mm);
  		}
-@@ -1973,6 +1977,8 @@ static int __split_vma(struct mm_struct * mm, struct vm_area_struct * vma,
+@@ -1973,6 +1977,8 @@
  
  	if (new->vm_file) {
  		get_file(new->vm_file);
@@ -140,7 +131,7 @@ index d49736f..0290c8e 100644
  		if (vma->vm_flags & VM_EXECUTABLE)
  			added_exe_file_vma(mm);
  	}
-@@ -1997,6 +2003,8 @@ static int __split_vma(struct mm_struct * mm, struct vm_area_struct * vma,
+@@ -1997,6 +2003,8 @@
  		if (vma->vm_flags & VM_EXECUTABLE)
  			removed_exe_file_vma(mm);
  		fput(new->vm_file);
@@ -149,7 +140,7 @@ index d49736f..0290c8e 100644
  	}
  	unlink_anon_vmas(new);
   out_free_mpol:
-@@ -2364,6 +2372,8 @@ struct vm_area_struct *copy_vma(struct vm_area_struct **vmap,
+@@ -2364,6 +2372,8 @@
  			new_vma->vm_pgoff = pgoff;
  			if (new_vma->vm_file) {
  				get_file(new_vma->vm_file);
@@ -158,20 +149,19 @@ index d49736f..0290c8e 100644
  				if (vma->vm_flags & VM_EXECUTABLE)
  					added_exe_file_vma(mm);
  			}
-diff --git a/mm/nommu.c b/mm/nommu.c
-index 9edc897..72631ebe 100644
---- a/mm/nommu.c
-+++ b/mm/nommu.c
-@@ -634,6 +634,8 @@ static void __put_nommu_region(struct vm_region *region)
+diff -ur linux-kernel-3.0.20-ylmf1/mm/nommu.c linux-kernel-3.0.20-ylmf1.new//mm/nommu.c
+--- linux-kernel-3.0.20-ylmf1/mm/nommu.c	2012-02-07 01:31:45.000000000 +0800
++++ linux-kernel-3.0.20-ylmf1.new//mm/nommu.c	2012-04-25 14:15:32.874185086 +0800
+@@ -634,6 +634,8 @@
  
  		if (region->vm_file)
  			fput(region->vm_file);
-+		if (region->vm_prfile)
++	        if (region->vm_prfile)
 +			fput(region->vm_prfile);
  
  		/* IO memory and memory shared directly out of the pagecache
  		 * from ramfs/tmpfs mustn't be released here */
-@@ -790,6 +792,8 @@ static void delete_vma(struct mm_struct *mm, struct vm_area_struct *vma)
+@@ -790,6 +792,8 @@
  		vma->vm_ops->close(vma);
  	if (vma->vm_file) {
  		fput(vma->vm_file);
@@ -180,16 +170,16 @@ index 9edc897..72631ebe 100644
  		if (vma->vm_flags & VM_EXECUTABLE)
  			removed_exe_file_vma(mm);
  	}
-@@ -1363,6 +1367,8 @@ unsigned long do_mmap_pgoff(struct file *file,
+@@ -1363,6 +1367,8 @@
  				}
  			}
  			fput(region->vm_file);
 +			if (region->vm_prfile)
-+				fput(region->vm_prfile);
++				 fput(region->vm_prfile);
  			kmem_cache_free(vm_region_jar, region);
  			region = pregion;
  			result = start;
-@@ -1439,9 +1445,13 @@ error_just_free:
+@@ -1439,9 +1445,13 @@
  error:
  	if (region->vm_file)
  		fput(region->vm_file);
