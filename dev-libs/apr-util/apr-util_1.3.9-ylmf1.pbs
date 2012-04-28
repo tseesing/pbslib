@@ -1,0 +1,43 @@
+#
+# Ylmf OS package build script
+#
+# Copyright 2005-2012 Ylmf OS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION=" Apache Portable Runtime Utility Library "
+HOMEPAGE="http://apr.apache.org/"
+LICENSE="APACHE"
+PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
+
+SRC_URI="ftp://ftp.oregonstate.edu/pub/apache/apr/"$N-$V".tar.bz2"
+
+RDEPEND="apr expat freetds glibc libtool openssl postgresql-libs sqlite unixodbc util-linux-ng zlib"
+BDEPEND=""
+RECOMMENDED=""
+
+NOTES="
+OpenLDAP -- Add --with-ldap to configure
+Berkeley DB -- Add --with-berkeley-db=/usr to configure
+SQLite3
+SQLite
+Expat
+"
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_config() {
+	config+="--with-apr=/usr/bin/apr-1-config "
+	doconfig
+}
+
+pbs_build() {
+	domake
+}
+
+pbs_install() {
+	domkinstall
+}
+

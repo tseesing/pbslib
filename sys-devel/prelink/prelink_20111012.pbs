@@ -1,0 +1,35 @@
+#
+# Ylmf OS package build script
+#
+# Copyright 2005-2012 Ylmf OS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="Modifies ELFs to avoid runtime symbol resolutions resulting in faster load times"
+HOMEPAGE="http://people.redhat.com/jakub/prelink"
+LICENSE="GPL"
+PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
+
+SRC_URI="http://people.redhat.com/jakub/"$N"/"$N-$V".tar.bz2"
+CHECKSUM="f5aaf347432d677c293e5e3399ba4fdf"
+
+RDEPEND="elfutils glibc"
+BDEPEND=""
+RECOMMENDED=""
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_config() {
+	doconfig
+}
+
+pbs_build() {
+	domake
+}
+
+pbs_install() {
+	domkinstall
+}
+

@@ -1,0 +1,41 @@
+#
+# Ylmf OS package build script
+#
+# Copyright 2005-2012 Ylmf OS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="YPK package management system, version2"
+HOMEPAGE="http://www.ylmf.org"
+LICENSE="GPL"
+PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
+PRIORITY="required"
+
+SRC_URI="git://git.ylmf.com/"$N".git"
+
+RDEPEND="acl attr bzip2 curl cyrus-sasl glibc libarchive(>=3.0.3-ylmf2) libidn libxml2 openldap openssl sqlite xz-utils zlib"
+BDEPEND=""
+
+INSTALL="$N.install"
+
+pbs_unpack() {
+	dounpack
+}
+
+pbs_build() {
+	git checkout develop
+	git pull
+	make
+}
+
+pbs_install() {
+	domkinstall
+	cd "$destdir"
+	doln /usr/bin/ypkg2            usr/bin/ypkg
+	doln /usr/bin/yget2            usr/bin/yget
+	doln /usr/bin/ypkg2-gencontrol usr/bin/ypkg-gencontrol
+	
+	docp "$filesdir"/ypkg-initdb   usr/bin/
+	docp "$filesdir"/db_fix.pl     usr/share/ypkg/
+}
+

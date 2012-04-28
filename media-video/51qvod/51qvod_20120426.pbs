@@ -1,0 +1,33 @@
+#
+# Ylmf OS package build script
+#
+# Copyright 2005-2012 Ylmf OS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="qvod for linux (wine)"
+HOMEPAGE="http://www.kuaibo.com/"
+LICENSE="custom"
+PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
+
+REPO="testing"
+
+SRC_URI="51qvod-20120426.tar.bz2"
+CHECKSUM="aca5be0131a26a38b9744c452d1a33ba"
+
+RDEPEND="wine gnome-mplayer"
+RECOMMENDED=""
+BDEPEND=""
+OPTIONAL=""
+CONFLICT=""
+
+INSTALL="$N.install"
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_install() {
+	docp opt usr "$destdir"/
+}
+

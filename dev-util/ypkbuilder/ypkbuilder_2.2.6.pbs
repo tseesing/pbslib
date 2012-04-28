@@ -1,0 +1,36 @@
+#
+# Ylmf OS package build script
+#
+# Copyright 2005-2012 Ylmf OS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="ypk package builder based on ypkg"
+HOMEPAGE="http://code.google.com/p/debbuilder-cn/"
+LICENSE="GPL"
+PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
+YARCH="any"
+
+SRC_URI="http://debbuilder-cn.googlecode.com/files/YpkBuilder"$V".tar.gz"
+CHECKSUM="ff98333cc4024cd69c50893dfc8537a9c47988c3"
+
+RDEPEND="jdk jre"
+RECOMMENDED=""
+BDEPEND=""
+OPTIONAL=""
+CONFLICT=""
+
+INSTALL="$N.install"
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_install() {
+	docp config-cn/* "$destdir"/etc/
+	docp AppFiles/*  "$destdir"/opt/debbuildercn
+	docp "$filesdir"/"$N" "$destdir"/usr/bin/
+	find "$destdir" -type f -name "*~" -exec rm {} \;
+	dodesktop "$N.desktop" "IconFiles/debbuilderico.png"
+}
+

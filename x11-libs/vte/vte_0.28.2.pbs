@@ -1,0 +1,45 @@
+#
+# Ylmf OS package build script
+#
+# Copyright 2005-2012 Ylmf OS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="Terminal emulator widget used by Ylmf_OS Linux"
+HOMEPAGE="http://library.gnome.org/devel/vte/"
+LICENSE="LGPL"
+PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
+
+SRC_URI="http://ftp.gnome.org/pub/GNOME/sources/"$N"/0.28/"$N-$V".tar.xz"
+CHECKSUM="86cf0b81aa023fa93ed415653d51c96767f20b2d7334c893caba71e42654b0ae"
+
+RDEPEND="atk cairo expat fontconfig freetype gcc-lib gdk-pixbuf glib2 glibc gtk+ libffi libpng libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libXinerama libXrandr libXrender ncurses pango pixman zlib"
+BDEPEND=""
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_patch() {
+	# Fixed The Home and End keys broken problem in the xterm termcap file
+	sed -i 's%\\177:%&kh=\\EOH:@7=\\EOF:%' termcaps/xterm 
+}
+
+pbs_config() {
+	# Warning: type-punning to incomplete type might break strict-aliasing rules
+	export CFLAGS="$CFLAGS -fno-strict-aliasing"
+	config+="--enable-introspection --with-gtk=2.0"
+	doconfig
+}
+
+pbs_build() {
+	domake
+}
+
+pbs_install() {
+	domkinstall
+	cd "$destdir"
+	doln /usr/include/vte-0.0/vte usr/include/vte
+	rm usr/libexec/gnome-pty-helper
+}
+

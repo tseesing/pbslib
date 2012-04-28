@@ -1,0 +1,45 @@
+#
+# Ylmf OS package build script
+#
+# Copyright 2005-2012 Ylmf OS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="A frontend for Gngeo in GTK"
+HOMEPAGE="http://xgngeo.choplair.org/"
+LICENSE="GPL"
+PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
+
+SRC_URI="http://sourceforge.net/projects/xgngeo/files/Program%20releases/XGngeo-"$V"_final.tar.bz2"
+CHECKSUM="741d8099b6560b1f82518dbff90bd08b"
+
+RDEPEND="python pygtk gngeo(=0.7)"
+RECOMMENDED=""
+BDEPEND=""
+OPTIONAL=""
+CONFLICT=""
+
+INSTALL="$N.install"
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_patch() {
+	dopatch fix-install-path.patch
+}
+
+pbs_config() {
+	config+=""
+	doconfig
+}
+
+pbs_build() {
+	domake
+}
+
+pbs_install() {
+	domkinstall
+	docp LICENSE.txt "$destdir"/usr/share/"$N"
+}
+
