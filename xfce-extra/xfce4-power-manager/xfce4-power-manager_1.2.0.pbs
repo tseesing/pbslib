@@ -1,0 +1,42 @@
+#
+# Ylmf OS package build script
+#
+# Copyright 2005-2012 Ylmf OS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="Power manager for Xfce desktop"
+HOMEPAGE="http://xfce.org"
+LICENSE="GPL"
+PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
+
+SRC_URI="http://archive.xfce.org/xfce/4.10/src/"$N-$V".tar.bz2"
+CHECKSUM="935599b7114b0a4b0e2c9a5d6c72524c"
+
+RDEPEND="atk cairo dbus dbus-glib expat fontconfig freetype gcc-lib gdk-pixbuf glib2 glibc gtk+ libffi libICE libnotify libpng libSM libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libxfce4ui libxfce4util libXfixes libXi libXinerama libXrandr libXrender pango pixman startup-notification util-linux-ng xfce4-panel xfconf zlib"
+RECOMMENDED=""
+BDEPEND=""
+OPTIONAL=""
+CONFLICT=""
+
+INSTALL="$N.install"
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_config() {
+	config+="--enable-polkit
+	         --enable-dpms
+		 --disable-debug"
+	doconfig
+}
+
+pbs_build() {
+	domake
+}
+
+pbs_install() {
+	domkinstall
+}
+

@@ -1,0 +1,43 @@
+#
+# Ylmf OS package build script
+#
+# Copyright 2005-2012 Ylmf OS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="Panel for the Xfce desktop environment"
+HOMEPAGE="http://www.xfce.org"
+LICENSE="GPLv2"
+PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
+
+SRC_URI="http://archive.xfce.org/xfce/4.10/src/"$N-$V".tar.bz2"
+CHECKSUM="cf7351a4b952dbe3fc5ff509c68def33"
+
+RDEPEND="atk cairo dbus dbus-glib exo expat fontconfig freetype garcon gcc-lib gdk-pixbuf glib2 glibc gtk+ libffi libICE libpng libSM libwnck libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libxfce4ui libxfce4util libXfixes libXi libXinerama libXrandr libXrender libXres pango pixman startup-notification util-linux-ng xfconf zlib"
+RECOMMENDED=""
+BDEPEND="gtk-doc"
+OPTIONAL=""
+CONFLICT=""
+
+INSTALL="$N.install"
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_config() {
+	config+="--disable-static 
+	         --enable-gio-unix 
+		 --enable-gtk-doc  
+		 --disable-debug"
+	doconfig
+}
+
+pbs_build() {
+	domake
+}
+
+pbs_install() {
+	domkinstall
+}
+

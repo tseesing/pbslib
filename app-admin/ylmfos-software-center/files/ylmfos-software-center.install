@@ -2,29 +2,23 @@
 
 post_install() {
 	gnome2_desktop_database_update
-	gnome2_icon_cache_update
+	# Version that less than 20120328 MUST Restart daemon
+	#version_old=$3
+	#ypkg --compare-version $version_old 20120328
 	#
-	systemctl enable ycenter.service
-	start ycenter
+	#if [ $? -eq 2 ]; then
+	echo "* Wait and restart daemon.."
+	/usr/bin/ycenter_daemon_restart.sh &
+	#fi
 	return 0
 }
 
 post_upgrade() {
-	systemctl --system daemon-reload	
-	restart ycenter
-	return 0
+	post_install
+	
 }
 
 post_downgrade() {
-	post_upgrade
-}
-
-pre_remove() {
-	systemctl disable ycenter.service
-}
-
-post_remove() {
-	gnome2_desktop_database_update
-	gnome2_icon_cache_update
+	post_install
 }
 

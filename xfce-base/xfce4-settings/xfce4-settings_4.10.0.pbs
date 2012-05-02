@@ -1,0 +1,53 @@
+#
+# Ylmf OS package build script
+#
+# Copyright 2005-2012 Ylmf OS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="Settings manager for xfce"
+HOMEPAGE="http://www.xfce.org/"
+LICENSE="GPLv2"
+PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
+
+SRC_URI="http://archive.xfce.org/xfce/4.10/src/"$N-$V".tar.bz2"
+CHECKSUM="cc4dd9179ead9046c056431f01a12000"
+
+RDEPEND="atk cairo dbus dbus-glib exo expat fontconfig freetype garcon gcc-lib gdk-pixbuf glib2 glibc gtk+ libffi libICE libnotify libpng libSM libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libxfce4ui libxfce4util libXfixes libXi libXinerama libxkbfile libxklavier libxml2 libXrandr libXrender pango pixman startup-notification util-linux-ng xfconf zlib"
+RECOMMENDED=""
+BDEPEND=""
+OPTIONAL=""
+CONFLICT=""
+
+INSTALL="$N.install"
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_patch() {
+	# enable gnome icon theme, clearlooks theme and font hinting by default
+	# (taken from Fedora)
+	dopatch xfce4-settings-xml-4.10.0.patch
+}
+
+pbs_config() {
+	config+="--disable-static
+	         --enable-xrandr 
+	         --enable-xcursor 
+		 --enable-libnotify 
+		 --enable-libxklavier 
+	         --enable-pluggable-dialogs
+	         --enable-sound-settings
+	         --disable-debug"
+	doconfig
+}
+
+pbs_build() {
+	domake
+}
+
+pbs_install() {
+	domkinstall
+}
+

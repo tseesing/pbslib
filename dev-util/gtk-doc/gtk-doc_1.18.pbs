@@ -1,0 +1,37 @@
+#
+# Ylmf OS package build script
+#
+# Copyright 2005-2012 Ylmf OS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="GTK+ Documentation Generator"
+HOMEPAGE="http://www.gtk.org/gtk-doc/"
+LICENSE="GPL"
+PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
+YARCH="any"
+
+SRC_URI="http://ftp.gnome.org/pub/GNOME/sources/"$N"/"$V"/"$N-$V".tar.xz"
+CHECKSUM="785b591c561be1c8206f0d2575dc63558ea6199c3afe49cbc4efde94a6629a20"
+
+RDEPEND="gnome-doc-utils perl"
+BDEPEND="docbook-xml docbook-xsl libxslt docbook"
+CONFLICT="gtk-doc-dev"
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_config() {
+	config+="--disable-scrollkeeper --disable-static"
+	doconfig
+}
+
+pbs_build() {
+	domake
+}
+
+pbs_install() {
+	domkinstall
+}
+
