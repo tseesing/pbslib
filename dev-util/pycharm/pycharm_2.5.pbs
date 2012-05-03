@@ -1,0 +1,34 @@
+#
+# Ylmf OS package build script
+#
+# Copyright 2005-2012 Ylmf OS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="Professional IDE (Integrated Development Environment) for Web and PHP developers."
+HOMEPAGE="http://www.jetbrains.com/products.html"
+LICENSE="custom"
+PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
+YARCH="any"
+
+SRC_URI="http://download-ln.jetbrains.com/python/"$N-$V".tar.gz"
+CHECKSUM="fe541eb8b3ed3c39236af9bd3ee50f50"
+
+RDEPEND="jdk jre"
+RECOMMENDED=""
+BDEPEND=""
+OPTIONAL=""
+CONFLICT=""
+
+INSTALL="$N.install"
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_install() {
+	docp * "$destdir"/usr/share/"$N"/
+	dodesktop "$N".desktop bin/pycharm.png
+	doln /usr/share/"$N"/bin/pycharm.sh "$destdir"/usr/bin/"$N"
+}
+

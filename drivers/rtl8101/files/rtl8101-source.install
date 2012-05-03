@@ -1,19 +1,23 @@
+. /usr/lib/ybs/funcs
+
+do_initramfs() {
+	depmod -A "$KERNEL_DIST"
+	update-initramfs -d -c -k "$KERNEL_DIST" ||true
+}
 
 post_install() {
         unset ARCH
 	ykms install $1 $2
 	
 	# Update initramfs
-	depmod -a
-	update-initramfs -d -u ||true
+	do_initramfs
 }
 
 post_remove() {
 	ykms remove $1 $2
 	
 	# Update initramfs
-	depmod -a
-	update-initramfs -d -u ||true
+	do_initramfs
 }
 
 post_upgrade() {

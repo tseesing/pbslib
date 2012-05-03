@@ -1,3 +1,9 @@
+. /usr/lib/ybs/funcs
+
+do_initramfs() {
+	depmod -A "$KERNEL_DIST"
+	update-initramfs -d -c -k "$KERNEL_DIST" ||return 0
+}
 
 restore() {
 	# restore mesa 
@@ -51,10 +57,9 @@ options nouveau modeset=0
 blacklist lbm-nouveau
 EOF
 	# Update initramfs
-        depmod -a
-	update-initramfs -d -u
-	
-	 #
+	do_initramfs	
+
+	#
 	gnome2_desktop_database_update
 
 	# License
@@ -80,9 +85,8 @@ post_remove() {
 	rm  -rf /usr/src/"$1-$2"
 
 	# Update initramfs
-        depmod -a
-	update-initramfs -d -u
-	
+	do_initramfs
+
 	# restore libGL and libglx.so
 	restore
 

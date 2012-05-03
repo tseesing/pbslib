@@ -1,6 +1,7 @@
+. /usr/lib/ybs/funcs
 
 post_install() {
-	depmod -a
+	depmod -A "$KERNEL_DIST"
 	# License
         echo '* By using this package you accept the NVIDIA license,'
         echo '* If you do not accept this license, you must remove the package immediately.'

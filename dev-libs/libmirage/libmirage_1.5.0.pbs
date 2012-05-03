@@ -1,0 +1,38 @@
+#
+# Ylmf OS package build script
+#
+# Copyright 2005-2012 Ylmf OS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="CD-ROM image (B6T/CCD/CDI/CUE/ISO/MDS/NRG/TOC) access library"
+HOMEPAGE="http://cdemu.sourceforge.net/"
+LICENSE="GPL"
+PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
+
+SRC_URI="http://sourceforge.net/projects/cdemu/files/"$N"/"$N-$V".tar.bz2"
+CHECKSUM="b60d9baa754efee6e0f6a584ec033fff"
+
+RDEPEND="flac glib2 glibc libffi libogg libsndfile libvorbis zlib"
+RECOMMENDED=""
+BDEPEND=""
+OPTIONAL=""
+CONFLICT=""
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_config() {
+	config+="--disable-static"
+	doconfig
+}
+
+pbs_build() {
+	domake
+}
+
+pbs_install() {
+	domkinstall
+}
+

@@ -1,6 +1,7 @@
+. /usr/lib/ybs/funcs
 
 post_install() {
-	depmod -a
+	depmod -A "$KERNEL_DIST"
         echo "* Please install ati-graphic-utils further."
 }
 

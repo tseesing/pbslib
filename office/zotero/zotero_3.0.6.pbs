@@ -1,0 +1,35 @@
+#
+# Ylmf OS package build script
+#
+# Copyright 2005-2012 Ylmf OS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="Zotero Standalone. Is a free, easy-to-use tool to help you collect, organize, cite, and share your research sources."
+HOMEPAGE="http://www.zotero.org/support/standalone"
+LICENSE="GPLv3"
+PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
+
+SRC_URI="http://download.zotero.org/standalone/"$V"/Zotero-"$V"_linux-i686.tar.bz2"
+CHECKSUM="6dc15431edce1cce50961ca3d0ed8fed"
+
+RDEPEND="alsa-lib atk avahi cairo dbus dbus-glib expat fontconfig freetype gcc-lib gconf gdk-pixbuf glib2 glibc gnome-vfs gtk+ libffi libICE libnotify libpng libSM libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libXinerama libxml2 libXrandr libXrender libXt nspr nss openssl orbit pango pixman util-linux-ng zlib"
+RECOMMENDED=""
+BDEPEND=""
+OPTIONAL=""
+CONFLICT=""
+
+INSTALL="$N.install"
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_install() {
+	docp * "$destdir"/usr/lib/zotero
+	cd "$destdir"
+	doln /usr/lib/zotero/run-zotero.sh usr/bin/zotero
+	sed -i -e 's/MOZ_APPRUNNER_NAME=".\/zotero"/MOZ_APPRUNNER_NAME="\/usr\/lib\/zotero\/zotero"/g' usr/lib/zotero/run-zotero.sh
+	dodesktop "$N".desktop usr/lib/zotero/chrome/icons/default/default48.png
+}
+

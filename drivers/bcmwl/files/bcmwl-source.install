@@ -1,3 +1,10 @@
+. /usr/lib/ybs/funcs
+
+do_initramfs() {
+        # Update initramfs
+        depmod -A "$KERNEL_DIST"
+	update-initramfs -d -c -k "$KERNEL_DIST" ||return 0
+}
 
 post_install() {
 	#
@@ -26,9 +33,7 @@ EOF
 fi
 	fi
 
-        # Update initramfs
-        depmod -a
-	update-initramfs -d -u
+	do_initramfs
 }
 
 post_remove () {
@@ -38,7 +43,6 @@ post_remove () {
 	#
 	BLACKLIST_FILE="/etc/modprobe.d/blacklist-bcm43.conf"
         rm -f "$BLACKLIST_FILE"
-        depmod -a
-        update-initramfs -d -u
+	do_initramfs
 }
 

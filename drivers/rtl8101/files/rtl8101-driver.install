@@ -1,8 +1,9 @@
+. /usr/lib/ybs/funcs
 
 post_install() {	
 	# Update initramfs
-	depmod -a
-	update-initramfs -d -u
+	depmod -A "$KERNEL_DIST"
+	update-initramfs -d -c -k "$KERNEL_DIST" ||return 0
 }       
 
 post_remove() {

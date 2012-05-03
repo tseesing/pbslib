@@ -1,0 +1,46 @@
+#
+# Ylmf OS package build script
+#
+# Copyright 2005-2012 Ylmf OS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="driver for RealTek RTL8101E, RTL8102E(L), RTL8103E(L) PCI-Express interface."
+HOMEPAGE="http://www.realtek.com.tw"
+LICENSE="GPL"
+PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
+
+SRC_URI="r8101-1.021.00.tar.bz2"
+CHECKSUM="01d8779bf9ad93fca4b99b0fa752f277"
+
+PROVIDE="rtl8101-source rtl8101-driver"
+
+pbs_unpack() {
+        dounpack
+}
+
+rtl8101-source_install() {
+	DESCRIPTION="driver for RealTek RTL8101E, RTL8102E(L), RTL8103E(L) PCI-Express interface (source)."
+	RECOMMENDED="build-essential"
+	INSTALL="$N.install"
+	OPTIONS="nodev"
+        YARCH="any"
+
+	dosrc *
+	dosupported "$N"_supported
+	docp "$filesdir"/blacklist-r8101.conf "$destdir"/etc/modprobe.d/
+}
+
+rtl8101-driver_install() {
+	DESCRIPTION="driver for RealTek RTL8101E, RTL8102E(L), RTL8103E(L) PCI-Express interface (kernel module)."
+	RDEPEND="linux-kernel(=3.0.20-ylmf2)"	
+	BDEPEND="linux-kernel-headers"
+	
+	INSTALL="$N.install"
+	
+	unset ARCH
+	domake modules
+	docp src/r8101.ko "$destdir"/lib/modules/"$(uname -r)"/kernel/drivers/net/
+	docp "$filesdir"/blacklist-r8101.conf  "$destdir"/etc/modprobe.d/
+}
+

@@ -4,7 +4,7 @@ post_install() {
 	name="$1"
 	version="$2"
 	depmod -a "$version"
-	update-initramfs -c -k "$version"
+	update-initramfs -d -c -k "$version"
 
 	# For grub
 	update-grub
