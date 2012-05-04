@@ -1,0 +1,45 @@
+#
+# Ylmf OS package build script
+#
+# Copyright 2005-2012 Ylmf OS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="Ultimate Music Player For GNU/Linux"
+HOMEPAGE="http://deadbeef.sourceforge.net/"
+LICENSE="GPL"
+PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
+
+SRC_URI="http://downloads.sourceforge.net/project/"$N"/"$N-$V".tar.bz2"
+CHECKSUM="be8359d1bd9cf7679cf2ca748996e726"
+
+RDEPEND="alsa-lib atk attr bzip2 cairo curl cyrus-sasl dbus expat faad2 ffmpeg flac fontconfig freetype gcc-lib gdk-pixbuf glib2 glibc gnutls gtk+ imlib2 json-c lame libcap libcddb libcdio libgcrypt libgpg-error libICE libidn libmad libogg libpng libsamplerate libSM libsndfile libssh2 libtasn1 libtheora libva libvorbis libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libXrandr libXrender libXtst libzip opencore-amr openldap openssl orc pango pixman pulseaudio rtmpdump schroedinger util-linux-ng wavpack x264 xvidcore zlib"
+BDEPEND=""
+RECOMMENDED="deadbeef-mpris-plugin"
+
+INSTALL="$N.install"
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_patch() {
+	dopatch ylmfos-deadbeef-0.5.1.patch 
+	dopatch deadbeef-0.5.1-ffmpeg-AV_VERSION_INT.patch
+	dopatch deadbeef-0.5.1-ffmpeg-version-check-fix.patch
+}	
+
+pbs_config() {
+	doconfig
+}
+
+pbs_build() {
+	domake
+}
+ 
+pbs_install() {
+	domkinstall
+	cd "$destdir"
+	sed -i 's/audio\/mp3;/audio\/mp3;audio\/x-ape;audio\/x-ms-wma;audio\/mp4;audio\/x-wavpack;audio\/x-wav;/g' usr/share/applications/deadbeef.desktop
+}
+

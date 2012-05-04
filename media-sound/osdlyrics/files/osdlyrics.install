@@ -1,11 +1,8 @@
 . /usr/lib/ybs/funcs
 
 post_install() {
-	update-initramfs -d -c -k "$KERNEL_DIST" ||true
-}       
-
-post_remove() {
-	post_install
+	gnome2_desktop_database_update
+	gnome2_icon_cache_update 
 }
 
 post_upgrade() {

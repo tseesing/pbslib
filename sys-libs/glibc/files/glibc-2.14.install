@@ -41,10 +41,8 @@ post_install() {
 	[ ! -f /etc/nsswitch.conf ] && nsswitch_conf
 	[ ! -f /etc/ld.so.conf ] && ld_so_conf
 	[ ! -f /etc/localtime ] && localtime_
-
-	update-initramfs -d -u
-
-	return 0
+	
+	update-initramfs -d -c -k "$KERNEL_DIST" ||true
 }
 
 pre_remove() {
@@ -53,7 +51,7 @@ pre_remove() {
 
 post_upgrade () {
 	doinstall_info $files
-	update-initramfs -d -u
+	update-initramfs -d -c -k "$KERNEL_DIST" ||true
 }
 
 post_downgrade() {

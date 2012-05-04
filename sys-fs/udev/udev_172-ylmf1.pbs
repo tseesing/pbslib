@@ -21,11 +21,14 @@ pbs_unpack() {
         dounpack
 }
 
-pbs_config() {
+pbs_patch() {
 	dopatch ylmfos-rules-"$V".patch
+}
+
+pbs_config() {
 	config+=" --sbindir=/sbin  
-	              --with-rootlibdir=/lib 
-		      --libexecdir=/lib/udev" 
+	          --with-rootlibdir=/lib 
+		  --libexecdir=/lib/udev" 
 	doconfig
 }
 

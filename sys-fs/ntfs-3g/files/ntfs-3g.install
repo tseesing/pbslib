@@ -1,7 +1,7 @@
 . /usr/lib/ybs/funcs
 
 post_install() {
-	update-initramfs -k "$(uname -r)" -c ||true
+	update-initramfs -d -c -k "$KERNEL_DIST" ||true
 }       
 
 post_remove() {
