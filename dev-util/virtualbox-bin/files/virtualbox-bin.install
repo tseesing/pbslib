@@ -8,11 +8,10 @@ post_install() {
 		/usr/sbin/usermod -aG "vboxusers"  "$user"
 	done
 	
-	#
 	gnome2_desktop_database_update
 	gnome2_gconfd_reload
 	
-	#
+	# 
 	rmmod vboxpci    2>/dev/null
 	rmmod vboxnetflt 2>/dev/null
 	rmmod vboxnetadp 2>/dev/null

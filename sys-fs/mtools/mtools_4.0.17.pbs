@@ -1,0 +1,45 @@
+#
+# Ylmf OS package build script
+#
+# Copyright 2005-2012 Ylmf OS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="utilities to access MS-DOS disks from Unix without mounting them"
+HOMEPAGE="http://mtools.linux.lu/"
+LICENSE="GPL"
+PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
+
+SRC_URI="ftp://ftp.gnu.org/gnu/"$N"/"$N-$V".tar.bz2"
+CHECKSUM="15571c615d8f75f5f6d294272f80c7fa"
+
+RDEPEND="glibc libX11 libXau libxcb libXdmcp"
+RECOMMENDED=""
+BDEPEND=""
+OPTIONAL=""
+CONFLICT=""
+
+INSTALL="$N.install"
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_patch() {
+	sed -i '/^SAMPLE FILE$/s:^:# :' mtools.conf
+}
+
+pbs_config() {
+	config+=""
+	doconfig
+}
+
+pbs_build() {
+	domake
+}
+
+pbs_install() {
+	domkinstall
+	docp mtools.conf "$destdir"/etc/
+}
+

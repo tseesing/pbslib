@@ -1,0 +1,62 @@
+#
+# Ylmf OS package build script
+#
+# Copyright 2005-2012 Ylmf OS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="A fork of the famous open racing car simulator TORCS"
+HOMEPAGE="http://speed-dreams.sourceforge.net/"
+LICENSE="GPLv2+"
+PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
+_RV="$V"-r4687
+
+SRC_URI=" http://downloads.sourceforge.net/sourceforge/"$N"/"$N"-src-base-"$_RV".tar.xz
+          http://downloads.sourceforge.net/sourceforge/"$N"/"$N"-src-unmaintained-"$_RV".tar.xz
+	  http://downloads.sourceforge.net/sourceforge/"$N"/"$N"-src-wip-cars-and-tracks-"$_RV".tar.xz
+	  http://downloads.sourceforge.net/sourceforge/"N"/"$N"-src-hq-cars-and-tracks-"$_RV".tar.xz
+	  http://downloads.sourceforge.net/sourceforge/"$N"/"$N"-src-more-hq-cars-and-tracks-"$_RV".tar.xz "
+CHECKSUM="a6842887fc289ed6057be2ba9d2afaa2 8505c46aae6ce56a43353b8899d40ce4 edcc842291737dbb13a3083252bf51d4 57cf5c475491294ce1fb249e2dc0273b c8ab7ef068fa3fbe67d2b3246b30ea8a"
+
+RDEPEND="directfb enet gcc-lib glibc libdrm libICE libjpeg-turbo libpng libsdl libSM libX11 libXau libxcb libXdamage libXdmcp libXext libXfixes libXrandr libXrender libXt libXxf86vm mesa nas openal util-linux-ng zlib"
+RECOMMENDED=""
+BDEPEND="cmake"
+OPTIONAL=""
+CONFLICT=""
+
+INSTALL="$N.install"
+
+pbs_unpack() {
+        dounpack
+	files=" "$N"-src-unmaintained-"$_RV".tar.xz "$N"-src-wip-cars-and-tracks-"$_RV".tar.xz "$N"-src-hq-cars-and-tracks-"$_RV".tar.xz "$N"-src-more-hq-cars-and-tracks-"$_RV".tar.xz"
+	
+	cd "$N-$V$R"
+	for file in $files; do
+		tar xf "$YPPATH_SOURCE"/"${file}"
+	done
+}
+
+pbs_config() {
+	cmake . \
+		-DCMAKE_BUILD_TYPE=Release \
+		-DCMAKE_INSTALL_PREFIX=/usr \
+		-DSD_BINDIR=/usr/bin \
+		-DSD_DATADIR=/usr/share/speed-dreams-2 \
+		-DSD_LIBDIR=/usr/lib/speed-dreams-2 \
+		-DOPTION_OFFICIAL_ONLY=ON
+}
+
+pbs_build() {
+	domake
+}
+
+pbs_install() {
+	domkinstall
+	dodesktop "$N".desktop "data/data/icons/icon.png"
+	dodoc doc/* 
+	
+	# Symlink
+	cd "$destdir"/
+	doln /usr/bin/speed-dreams-2 usr/bin/speed-dreams
+}
+

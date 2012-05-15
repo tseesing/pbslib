@@ -7,17 +7,14 @@
 
 DESCRIPTION="The Eazel Extentions Library"
 HOMEPAGE="http://www.gnome.org/"
-REPO="Testing"
-LICENSE="GPL-2"
+LICENSE="GPL"
 PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
 
-SRC_URI="http://ftp.gnome.org/pub/GNOME/sources/eel/2.26/"$N-$V$R".tar.bz2"
+SRC_URI="http://ftp.gnome.org/pub/GNOME/sources/eel/2.26/"$N-$V".tar.bz2"
 
 RDEPEND=""
-BDEPEND=" gnome-desktop gnome-menus gail"
+BDEPEND=""
 RECOMMENDED=""
-
-NOTES=""
 
 pbs_unpack() {
         dounpack
@@ -35,3 +32,4 @@ pbs_build() {
 pbs_install() {
 	domkinstall
 }
+

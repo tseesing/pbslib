@@ -1,0 +1,37 @@
+#
+# Ylmf OS package build script
+#
+# Copyright 2005-2012 Ylmf OS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="A Library for creating MusicBrainz DiscIDs"
+HOMEPAGE="http://musicbrainz.org/doc/libdiscid"
+LICENSE="GPL"
+PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
+
+SRC_URI="http://users.musicbrainz.org/~matt/"$N-$V".tar.gz"
+CHECKSUM="ee21ddbe696a3c60e14827a75f3bcf5b"
+
+RDEPEND="glibc"
+RECOMMENDED=""
+BDEPEND=""
+OPTIONAL=""
+CONFLICT=""
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_config() {
+	./configure --prefix=/usr
+}
+
+pbs_build() {
+	domake
+}
+
+pbs_install() {
+	make prefix="${destdir}"/usr install
+}
+

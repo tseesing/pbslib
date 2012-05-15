@@ -1,0 +1,40 @@
+#
+# Ylmf OS package build script
+#
+# Copyright 2005-2012 Ylmf OS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="cloudpinyin for fcitx"
+HOMEPAGE="http://code.google.com/p/fcitx/"
+LICENSE="GPL"
+PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
+
+SRC_URI="http://fcitx.googlecode.com/files/fcitx-cloudpinyin-0.2.1.tar.xz"
+CHECKSUM="6177441ededdaa1a16a31cc5db91499ac639e3f0"
+
+RDEPEND="fcitx curl cyrus-sasl glibc gnutls libgcrypt libgpg-error libidn libssh2 libtasn1 openldap openssl rtmpdump zlib"
+RECOMMENDED=""
+BDEPEND="cmake"
+OPTIONAL=""
+CONFLICT=""
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_config() {
+	config+=""
+	doconfig
+}
+
+pbs_build() {
+	domake
+}
+
+pbs_install() {
+	domkinstall
+}
+
+
+

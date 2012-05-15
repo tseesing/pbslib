@@ -1,0 +1,40 @@
+#
+# Ylmf OS package build script
+#
+# Copyright 2005-2012 Ylmf OS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="A versatile IDE for GNOME"
+HOMEPAGE="http://www.anjuta.org"
+LICENSE="GPL"
+PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
+
+SRC_URI="http://ftp.gnome.org/pub/gnome/sources/"$N"/2.32/"$N-$V".tar.bz2"
+
+RDEPEND="apr apr-util atk cairo cyrus-sasl dbus dbus-glib devhelp e2fsprogs enchant expat file fontconfig freetype gail gcc-lib gconf gdk-pixbuf gdl glade glib2 glibc gnutls graphviz gst-plugins-base gstreamer gtk+ gtksourceview icu keyutils krb5 libffi libgcrypt libgda libgnome-keyring libgpg-error libICE libjpeg-turbo libpng libproxy libSM libsoup libtasn1 libtool libunique libwnck libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libXinerama libxml2 libXrandr libXrender libXres libxslt libXt ncurses neon openssl orbit pango pixman python sqlite startup-notification subversion util-linux-ng vte webkitgtk zlib"
+RECOMMENDED=""
+BDEPEND=""
+CONFLICT=""
+
+INSTALL="$N.install"
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_config() {
+	config+="--enable-introspection=no
+	         --disable-schemas-install
+		 --disable-vala" # needs vala-1.10
+	doconfig
+}
+
+pbs_build() {
+	domake
+}
+
+pbs_install() {
+	domkinstall
+}
+

@@ -1,0 +1,61 @@
+#
+# Ylmf OS package build script
+#
+# Copyright 2005-2012 Ylmf OS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="A GTK+ interface to MPlayer"
+HOMEPAGE="http://code.google.com/p/gnome-mplayer/"
+LICENSE="GPLv2"
+PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
+
+SRC_URI="http://gnome-mplayer.googlecode.com/files/"$N-$V".tar.gz"
+CHECKSUM="780750f10b1b759bf638a34018ebb39bcd104bbb"
+
+RDEPEND="mplayer-svn(>=34894) alsa-lib atk attr cairo curl cyrus-sasl dbus dbus-glib expat flac fontconfig freetype gcc-lib gconf gdk-pixbuf glib2 glibc gmtk gnutls gtk+ json-c keyutils krb5 libcap libffi libgcrypt libgpg-error libgpod libICE libidn libimobiledevice libmusicbrainz libnotify libogg libplist libpng libproxy libsamplerate libSM libsndfile libssh2 libtasn1 libvorbis libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libXinerama libxml2 libXrandr libXrender libXScrnSaver libXtst neon openldap openssl orbit pango pixman pulseaudio rtmpdump sqlite usbmuxd util-linux-ng zlib"
+BDEPEND=""
+RECOMMENDED=""
+CONFLICT=""
+
+INSTALL="$N.install"
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_patch() {
+	dopatch ylmfos_strip-audio-mime-1.0.4.patch
+	dopatch ylmfos-keyshortcut-1.0.5.patch
+}
+
+pbs_config() {
+	config+=" --with-gio 
+	          --with-dbus
+		  --with-libgpod
+	          --with-libnotify 
+	          --with-libmusicbrainz3 
+		  --disable-schemas-install 
+		  --disable-nautilus 
+		  --disable-gtk3
+		  --with-alsa
+		  --with-pulseaudio
+		  --with-libnotify "
+	doconfig
+}
+
+pbs_build() {
+	domake
+}
+
+pbs_install() {
+	domkinstall
+
+	docp gnome-mplayer.schemas "$destdir"/etc/gconf/schemas/  
+
+	docp apps.gecko-mediaplayer.preferences.gschema.xml \
+	     apps.gnome-mplayer.preferences.enums.xml  \
+	     apps.gnome-mplayer.preferences.gschema.xml \
+	     "$destdir"/usr/share/glib-2.0/schemas/
+}
+

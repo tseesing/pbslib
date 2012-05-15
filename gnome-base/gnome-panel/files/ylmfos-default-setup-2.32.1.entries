@@ -2855,13 +2855,6 @@
       </value>
     </entry>
     <entry>
-      <key>default_setup/objects/browser_launcher/launcher_location</key>
-      <schema_key>/schemas/apps/panel/objects/launcher_location</schema_key>
-      <value>
-        <string>epiphany.desktop</string>
-      </value>
-    </entry>
-    <entry>
       <key>default_setup/objects/browser_launcher/locked</key>
       <schema_key>/schemas/apps/panel/objects/locked</schema_key>
       <value>
@@ -2950,13 +2943,6 @@
       <schema_key>/schemas/apps/panel/objects/custom_icon</schema_key>
       <value>
         <string></string>
-      </value>
-    </entry>
-    <entry>
-      <key>default_setup/objects/email_launcher/launcher_location</key>
-      <schema_key>/schemas/apps/panel/objects/launcher_location</schema_key>
-      <value>
-        <string>evolution.desktop</string>
       </value>
     </entry>
     <entry>
@@ -3146,13 +3132,6 @@
       <schema_key>/schemas/apps/panel/objects/custom_icon</schema_key>
       <value>
         <string></string>
-      </value>
-    </entry>
-    <entry>
-      <key>default_setup/objects/yelp_launcher/launcher_location</key>
-      <schema_key>/schemas/apps/panel/objects/launcher_location</schema_key>
-      <value>
-        <string>file:///usr/share/applications/yelp.desktop</string>
       </value>
     </entry>
     <entry>
@@ -3639,9 +3618,6 @@
       <value>
         <list type="string">
             <value>
-              <string>browser_launcher_screen0</string>
-            </value>
-            <value>
               <string>object_7</string>
             </value>
             <value>
@@ -3845,13 +3821,6 @@
       </value>
     </entry>
     <entry>
-      <key>objects/browser_launcher_screen0/launcher_location</key>
-      <schema_key>/schemas/apps/panel/objects/launcher_location</schema_key>
-      <value>
-        <string>epiphany.desktop</string>
-      </value>
-    </entry>
-    <entry>
       <key>objects/browser_launcher_screen0/locked</key>
       <schema_key>/schemas/apps/panel/objects/locked</schema_key>
       <value>
@@ -3940,13 +3909,6 @@
       <schema_key>/schemas/apps/panel/objects/custom_icon</schema_key>
       <value>
         <string></string>
-      </value>
-    </entry>
-    <entry>
-      <key>objects/email_launcher_screen0/launcher_location</key>
-      <schema_key>/schemas/apps/panel/objects/launcher_location</schema_key>
-      <value>
-        <string>evolution.desktop</string>
       </value>
     </entry>
     <entry>
@@ -4139,13 +4101,6 @@
       </value>
     </entry>
     <entry>
-      <key>objects/object_0/launcher_location</key>
-      <schema_key>/schemas/apps/panel/objects/launcher_location</schema_key>
-      <value>
-        <string>/usr/share/applications/gnome-terminal.desktop</string>
-      </value>
-    </entry>
-    <entry>
       <key>objects/object_0/locked</key>
       <schema_key>/schemas/apps/panel/objects/locked</schema_key>
       <value>
@@ -4234,13 +4189,6 @@
       <schema_key>/schemas/apps/panel/objects/custom_icon</schema_key>
       <value>
         <string></string>
-      </value>
-    </entry>
-    <entry>
-      <key>objects/object_1/launcher_location</key>
-      <schema_key>/schemas/apps/panel/objects/launcher_location</schema_key>
-      <value>
-        <string>/usr/share/applications/firefox.desktop</string>
       </value>
     </entry>
     <entry>
@@ -5112,13 +5060,6 @@
       </value>
     </entry>
     <entry>
-      <key>objects/object_8/launcher_location</key>
-      <schema_key>/schemas/apps/panel/objects/launcher_location</schema_key>
-      <value>
-        <string>chromium.desktop</string>
-      </value>
-    </entry>
-    <entry>
       <key>objects/object_8/locked</key>
       <schema_key>/schemas/apps/panel/objects/locked</schema_key>
       <value>
@@ -5458,7 +5399,7 @@
       <key>toplevels/top_panel_screen0/size</key>
       <schema_key>/schemas/apps/panel/toplevels/size</schema_key>
       <value>
-        <int>30</int>
+        <int>40</int>
       </value>
     </entry>
     <entry>

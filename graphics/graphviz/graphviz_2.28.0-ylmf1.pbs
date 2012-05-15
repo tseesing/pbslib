@@ -1,0 +1,46 @@
+#
+# Ylmf OS package build script
+#
+# Copyright 2005-2012 Ylmf OS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="Open Source Graph Visualization Software"
+HOMEPAGE="http://www.graphviz.org/"
+LICENSE="custom:EPL"
+PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
+
+SRC_URI="http://www.graphviz.org/pub/graphviz/stable/SOURCES/"$N-$V".tar.gz"
+CHECKSUM="4725d88a13e071ee22e632de551d4a55ca08ee7d"
+
+RDEPEND="atk avahi cairo cups dbus e2fsprogs expat fontconfig freetype gcc-lib gd gdk-pixbuf ghostscript glib2 glibc gnutls gtk+ jasper keyutils krb5 libcroco libffi libgcrypt libgpg-error libICE libidn libjpeg-turbo libpng librsvg libSM libtasn1 libtiff libtool libX11 libXau libXaw libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXft libXi libXinerama libxml2 libXmu libXpm libXrandr libXrender libXScrnSaver libXt lua pango perl pixman python qt-core ruby tk util-linux-ng zlib"
+RECOMMENDED=""
+BDEPEND=""
+OPTIONAL=""
+CONFLICT=""
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_patch() {
+	sed -e '/"archdir"/s:$:+" '"$(echo -I/usr/include/ruby-1.9.1/{$ARCH-linux,ruby/backward,})"'":' \
+	    -e '/CONFIG/s:site:vendor:' \
+	    -i config/config_ruby.rb
+
+	sed '/LIBPOSTFIX="64"/d' -i configure
+}
+
+pbs_config() {
+	config+=""
+	doconfig
+}
+
+pbs_build() {
+	domake
+}
+
+pbs_install() {
+	domkinstall
+}
+

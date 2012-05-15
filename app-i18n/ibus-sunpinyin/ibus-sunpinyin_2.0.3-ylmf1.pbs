@@ -1,0 +1,35 @@
+#
+# Ylmf OS package build script
+#
+# Copyright 2005-2012 Ylmf OS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="sunpinyin ibus wrapper"
+HOMEPAGE="http://code.google.com/p/sunpinyin/"
+LICENSE="LGPL"
+PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
+
+SRC_URI="http://sunpinyin.googlecode.com/files/"$N-$V".tar.gz"
+CHECKSUM="86f34ca4ec60a1e30362aca82d89b529b4326c14"
+
+RDEPEND="gcc-lib glib2 glibc ibus libffi sqlite sunpinyin zlib"
+BDEPEND="scons"
+RECOMMENDED=""
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_config() {
+	scons --prefix=/usr
+}
+
+pbs_build() {
+	domake
+}
+
+pbs_install() {
+	scons --prefix=/usr --install-sandbox="${destdir}" install
+}
+

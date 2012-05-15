@@ -1,0 +1,61 @@
+#
+# Ylmf OS package build script
+#
+# Copyright 2005-2012 Ylmf OS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="The Kerberos network authentication system"
+HOMEPAGE="http://web.mit.edu/kerberos/www/"
+LICENSE="custom"
+PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
+
+SRC_URI="http://web.mit.edu/kerberos/dist/"$N"/1.10/"$N-$V"-signed.tar"
+CHECKSUM="f9f3b77173f68b268b43e4f9c29bf7c9f3fd1f0e"
+
+RDEPEND="cyrus-sasl e2fsprogs glibc gnutls keyutils libgcrypt libgpg-error libtasn1 openldap openssl zlib"
+BDEPEND=""
+RECOMMENDED=""
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_config() {
+	tar xf "$N-$V".tar.gz
+	cd "$N-$V"/src
+
+	rm lib/krb5/krb/deltat.c
+	sed -i "/KRB5ROOT=/s/\/local//" util/ac_check_krb5.m4
+
+	export CFLAGS+=" -fPIC -fno-strict-aliasing -fstack-protector-all"
+	export CPPFLAGS+=" -I/usr/include/et"
+
+	config+=" --localstatedir=/var/lib  
+		  --with-system-et 
+                  --with-system-ss 
+                  --disable-rpath 
+                  --without-tcl 
+                  --enable-dns-for-realm 
+                  --with-ldap 
+                  --without-system-verto "
+	doconfig
+}
+
+pbs_build() {
+	domake 
+}
+
+pbs_install() {
+	domkinstall EXAMPLEDIR="/usr/share/doc/${N}/examples" 
+	
+	# Sample KDC config file
+	docp config-files/kdc.conf "${destdir}"/var/lib/krb5kdc/
+
+	# Default configuration file
+	docp config-files/krb5.conf "${destdir}"/etc/
+
+	docp util/ac_check_krb5.m4 "${destdir}"/usr/share/aclocal
+	dodoc ../NOTICE
+}
+

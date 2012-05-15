@@ -1,0 +1,41 @@
+#
+# Ylmf OS package build script
+#
+# Copyright 2005-2012 Ylmf OS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="A graphical bug reporting tool"
+HOMEPAGE="http://www.gnome.org/"
+LICENSE="GPLv2"
+PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
+
+SRC_URI="http://ftp.acc.umu.se/pub/gnome/desktop/2.32/2.32.1/sources/"$N-$V".tar.bz2"
+CHECKSUM="86a84389c206396eba680e93288d04c8"
+
+RDEPEND="atk cairo e2fsprogs elfutils evolution-data-server expat fontconfig freetype gcc-lib gconf gdk-pixbuf glib2 glibc gnutls gtk+ keyutils krb5 libbonobo libffi libgcrypt libgpg-error libgtop libpng libsoup libtasn1 libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libXinerama libxml2 libXrandr libXrender nspr nss orbit pango pixman sqlite zlib"
+BDEPEND=""
+RECOMMENDED=""
+
+INSTALL="$N.install"
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_config() {
+	config+="--disable-schemas-install
+		 --program-prefix=""  "
+	doconfig
+}
+
+pbs_build() {
+	domake
+}
+
+pbs_install() {
+	domkinstall
+	# Bugbuddy no longer interactive, so icon is pointless
+	rm -f "$destdir"/usr/share/applications/bug-buddy.desktop
+}
+

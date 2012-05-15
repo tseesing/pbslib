@@ -560,6 +560,12 @@
       </value>
     </entry>
     <entry>
+      <key>applets/applet_5/applet_iid</key>
+      <value>
+        <string>WnckletFactory::WindowListApplet</string>
+      </value>
+    </entry>
+    <entry>
       <key>applets/applet_5/attached_toplevel_id</key>
       <schema_key>/schemas/apps/panel/objects/attached_toplevel_id</schema_key>
       <value>
@@ -812,6 +818,12 @@
       </value>
     </entry>
     <entry>
+      <key>applets/applet_7/applet_iid</key>
+      <value>
+        <string>WnckletFactory::ShowDesktopApplet</string>
+      </value>
+    </entry>
+    <entry>
       <key>applets/applet_7/attached_toplevel_id</key>
       <schema_key>/schemas/apps/panel/objects/attached_toplevel_id</schema_key>
       <value>
@@ -1005,6 +1017,12 @@
       <schema_key>/schemas/apps/panel/objects/action_type</schema_key>
       <value>
         <string>lock</string>
+      </value>
+    </entry>
+    <entry>
+      <key>applets/clock_screen0/applet_iid</key>
+      <value>
+        <string>ClockAppletFactory::ClockApplet</string>
       </value>
     </entry>
     <entry>
@@ -1287,6 +1305,12 @@
       <schema_key>/schemas/apps/panel/objects/action_type</schema_key>
       <value>
         <string>lock</string>
+      </value>
+    </entry>
+    <entry>
+      <key>applets/notification_area_screen0/applet_iid</key>
+      <value>
+        <string>NotificationAreaAppletFactory::NotificationArea</string>
       </value>
     </entry>
     <entry>
@@ -1832,6 +1856,12 @@
       <key>applets/ymenu_screen0/action_type</key>
       <value>
         <string>lock</string>
+      </value>
+    </entry>
+    <entry>
+      <key>applets/ymenu_screen0/applet_iid</key>
+      <value>
+        <string>OAFIID:GNOME_YMenu</string>
       </value>
     </entry>
     <entry>
@@ -2916,13 +2946,6 @@
       </value>
     </entry>
     <entry>
-      <key>default_setup/objects/email_launcher/launcher_location</key>
-      <schema_key>/schemas/apps/panel/objects/launcher_location</schema_key>
-      <value>
-        <string>evolution.desktop</string>
-      </value>
-    </entry>
-    <entry>
       <key>default_setup/objects/email_launcher/locked</key>
       <schema_key>/schemas/apps/panel/objects/locked</schema_key>
       <value>
@@ -3109,13 +3132,6 @@
       <schema_key>/schemas/apps/panel/objects/custom_icon</schema_key>
       <value>
         <string></string>
-      </value>
-    </entry>
-    <entry>
-      <key>default_setup/objects/yelp_launcher/launcher_location</key>
-      <schema_key>/schemas/apps/panel/objects/launcher_location</schema_key>
-      <value>
-        <string>file:///usr/share/applications/yelp.desktop</string>
       </value>
     </entry>
     <entry>
@@ -3565,9 +3581,6 @@
       <value>
         <list type="string">
             <value>
-              <string>applet_0</string>
-            </value>
-            <value>
               <string>clock_screen0</string>
             </value>
             <value>
@@ -3604,9 +3617,6 @@
       <schema_key>/schemas/apps/panel/general/object_id_list</schema_key>
       <value>
         <list type="string">
-            <value>
-              <string>browser_launcher_screen0</string>
-            </value>
             <value>
               <string>object_7</string>
             </value>
@@ -3902,13 +3912,6 @@
       </value>
     </entry>
     <entry>
-      <key>objects/email_launcher_screen0/launcher_location</key>
-      <schema_key>/schemas/apps/panel/objects/launcher_location</schema_key>
-      <value>
-        <string>evolution.desktop</string>
-      </value>
-    </entry>
-    <entry>
       <key>objects/email_launcher_screen0/locked</key>
       <schema_key>/schemas/apps/panel/objects/locked</schema_key>
       <value>
@@ -4098,13 +4101,6 @@
       </value>
     </entry>
     <entry>
-      <key>objects/object_0/launcher_location</key>
-      <schema_key>/schemas/apps/panel/objects/launcher_location</schema_key>
-      <value>
-        <string>/usr/share/applications/gnome-terminal.desktop</string>
-      </value>
-    </entry>
-    <entry>
       <key>objects/object_0/locked</key>
       <schema_key>/schemas/apps/panel/objects/locked</schema_key>
       <value>
@@ -4196,13 +4192,6 @@
       </value>
     </entry>
     <entry>
-      <key>objects/object_1/launcher_location</key>
-      <schema_key>/schemas/apps/panel/objects/launcher_location</schema_key>
-      <value>
-        <string>/usr/share/applications/firefox.desktop</string>
-      </value>
-    </entry>
-    <entry>
       <key>objects/object_1/locked</key>
       <schema_key>/schemas/apps/panel/objects/locked</schema_key>
       <value>
@@ -4291,13 +4280,6 @@
       <schema_key>/schemas/apps/panel/objects/custom_icon</schema_key>
       <value>
         <string></string>
-      </value>
-    </entry>
-    <entry>
-      <key>objects/object_10/launcher_location</key>
-      <schema_key>/schemas/apps/panel/objects/launcher_location</schema_key>
-      <value>
-        <string>/usr/share/applications/chromium.desktop</string>
       </value>
     </entry>
     <entry>
@@ -4980,6 +4962,13 @@
       </value>
     </entry>
     <entry>
+      <key>objects/object_7/launcher_location</key>
+      <schema_key>/schemas/apps/panel/objects/launcher_location</schema_key>
+      <value>
+        <string>/usr/share/applications/chromium.desktop</string>
+      </value>
+    </entry>
+    <entry>
       <key>objects/object_7/locked</key>
       <schema_key>/schemas/apps/panel/objects/locked</schema_key>
       <value>
@@ -5068,13 +5057,6 @@
       <schema_key>/schemas/apps/panel/objects/custom_icon</schema_key>
       <value>
         <string></string>
-      </value>
-    </entry>
-    <entry>
-      <key>objects/object_8/launcher_location</key>
-      <schema_key>/schemas/apps/panel/objects/launcher_location</schema_key>
-      <value>
-        <string>chromium.desktop</string>
       </value>
     </entry>
     <entry>
@@ -5417,7 +5399,7 @@
       <key>toplevels/top_panel_screen0/size</key>
       <schema_key>/schemas/apps/panel/toplevels/size</schema_key>
       <value>
-        <int>30</int>
+        <int>40</int>
       </value>
     </entry>
     <entry>
@@ -5473,7 +5455,7 @@
       <key>toplevels/top_panel_screen0/background/color</key>
       <schema_key>/schemas/apps/panel/toplevels/background/color</schema_key>
       <value>
-        <string>#ffffff</string>
+        <string>#000000</string>
       </value>
     </entry>
     <entry>
@@ -5487,14 +5469,14 @@
       <key>toplevels/top_panel_screen0/background/image</key>
       <schema_key>/schemas/apps/panel/toplevels/background/image</schema_key>
       <value>
-        <string>/usr/share/themes/ylmfos/line-h.png</string>
+        <string>/usr/share/themes/ylmfos-black/gtk-2.0/Panel/panel-bg.png</string>
       </value>
     </entry>
     <entry>
       <key>toplevels/top_panel_screen0/background/opacity</key>
       <schema_key>/schemas/apps/panel/toplevels/background/opacity</schema_key>
       <value>
-        <int>6000</int>
+        <int>39321</int>
       </value>
     </entry>
     <entry>

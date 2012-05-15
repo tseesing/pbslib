@@ -1,0 +1,38 @@
+#
+# Ylmf OS package build script
+#
+# Copyright 2005-2012 Ylmf OS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="Utility libraries for XC Binding - Port of Xlib's XImage and XShmImage functions"
+HOMEPAGE="http://xcb.freedesktop.org/"
+LICENSE="GPL"
+PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
+
+SRC_URI="http://xcb.freedesktop.org/dist/"$N-$V".tar.bz2"
+CHECKSUM="245a96041f373b05764148e52d2e0211"
+
+RDEPEND="glibc libXau libxcb libXdmcp xcb-util(>=0.3.8)"
+RECOMMENDED=""
+BDEPEND=""
+OPTIONAL=""
+CONFLICT=""
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_config() {
+	config+=""
+	doconfig
+}
+
+pbs_build() {
+	domake
+}
+
+pbs_install() {
+	domkinstall
+}
+

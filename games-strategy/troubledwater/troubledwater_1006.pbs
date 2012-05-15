@@ -1,0 +1,35 @@
+#
+# Ylmf OS package build script
+#
+# Copyright 2005-2012 Ylmf OS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="TroubledWater online game"
+HOMEPAGE="http://113.105.223.84/bbs/index.php"
+LICENSE="custom"
+PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
+
+SRC_URI="http://113.105.223.84/download/TroubledWater.tar.gz"
+CHECKSUM="c26f14586d608871a342ca3f3602848b"
+
+RDEPEND="freeimage freetype gcc-lib glibc libdrm libICE libSM libX11 libXau libXaw libxcb libXdamage libXdmcp libXext libXfixes libXmu libXpm libXrandr libXrender libXt libXxf86vm mesa nvidia-cg-toolkit util-linux-ng zlib zziplib"
+RECOMMENDED=""
+BDEPEND=""
+OPTIONAL=""
+CONFLICT=""
+
+OPTIONS="nodev"
+
+INSTALL="$N.install"
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_install() {
+	docp * "$destdir"/opt/"$N"/
+	docp "$filesdir"/"$N"  "$destdir"/usr/bin/
+	dodesktop "$N.desktop" "$N.png"
+}
+

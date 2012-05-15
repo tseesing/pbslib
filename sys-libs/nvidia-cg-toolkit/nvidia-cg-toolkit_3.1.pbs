@@ -1,0 +1,31 @@
+#
+# Ylmf OS package build script
+#
+# Copyright 2005-2012 Ylmf OS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="NVIDIA Cg libraries"
+HOMEPAGE="http://developer.nvidia.com/cg-toolkit-download"
+LICENSE="custom"
+PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
+
+SRC_URI="http://developer.download.nvidia.com/cg/Cg_"$V"/Cg-"$V"_April2012_x86.tgz"
+CHECKSUM="9a9fc5108154808f3b10eafa54df1c74"
+
+RDEPEND="gcc-lib glibc libdrm libICE libSM libX11 libXau libxcb libXdamage libXdmcp libXext libXfixes libXi libXmu libXt libXxf86vm mesa util-linux-ng"
+RECOMMENDED=""
+BDEPEND=""
+OPTIONAL=""
+CONFLICT=""
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_install() {
+	docp usr/{bin,include,lib} "$destdir"/usr/
+	dodoc usr/local/Cg/docs/license.txt
+}
+
+

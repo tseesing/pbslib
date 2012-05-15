@@ -15,8 +15,6 @@ SRC_URI="http://skype.tom.com/download/linux/skype_static-"$V".tar.bz2"
 RDEPEND="alsa-lib expat fontconfig freetype gcc-lib glib2 glibc libICE libSM libX11 libXau libxcb libXdmcp libXext libXi libXrandr libXrender libXScrnSaver libXv util-linux-ng zlib"
 BDEPEND=""
 
-INSTALL="$N.install"
-
 pbs_unpack() {
 	dounpack
 }
