@@ -41,6 +41,5 @@ pbs_install() {
 	docp "$filesdir"/ycenter.png usr/share/pixmaps/
 	doln /usr/bin/ylmfcenter2 usr/bin/"$N"
 	doln /usr/bin/ylmfcenter2 usr/bin/ycenter
-	docp "$filesdir"/ycenter_daemon_restart.sh  usr/bin/
 }
 

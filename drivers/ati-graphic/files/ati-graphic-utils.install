@@ -57,7 +57,7 @@ post_install() {
 blacklist radeon
 EOF
 	# Update initramfs
-        depmod -A "$KERNEL_DIST"
+        depmod -a "$KERNEL_DIST"
 	update-initramfs -d -c -k "$KERNEL_DIST"
 	
 	#
@@ -85,7 +85,7 @@ post_remove() {
 	rm  -rf /usr/src/"$1-$2"
 	
 	# Update initramfs
-	depmod -A "$KERNEL_DIST"
+	depmod -a "$KERNEL_DIST"
 	update-initramfs -d -c -k "$KERNEL_DIST"
 
 	# Restore libGL and libglx

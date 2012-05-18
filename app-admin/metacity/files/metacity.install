@@ -12,7 +12,7 @@ post_install() {
         gnome2_install_defaut_gconf  "bool"    "/apps/metacity/general/compositing_manager"   "true"
         gnome2_install_defaut_gconf  "string"  "/apps/metacity/global_keybindings/show_desktop" "<Alt>d"
         gnome2_install_defaut_gconf  "string"  "/apps/metacity/global_keybindings/run_command_terminal" "<Alt>t"
-	gnome2_install_defaut_gconf "string" "/apps/metacity/general/button_layout" ":menu,minimize,maximize,close"
+	gnome2_install_defaut_gconf "string" "/apps/metacity/general/button_layout" ":minimize,maximize,close"
         gnome2_rarian_sk_update
         gnome2_desktop_database_update
         gnome2_gconfd_reload

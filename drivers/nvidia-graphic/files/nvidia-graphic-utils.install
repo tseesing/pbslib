@@ -1,7 +1,7 @@
 . /usr/lib/ybs/funcs
 
 do_initramfs() {
-	depmod -A "$KERNEL_DIST"
+	depmod -a "$KERNEL_DIST"
 	update-initramfs -d -c -k "$KERNEL_DIST" ||return 0
 }
 

@@ -4,6 +4,8 @@ files="/etc/gconf/schemas/notification-daemon.schemas"
 
 post_install() {
 	gnome2_install_schema "$files"
+	gnome2_install_defaut_gconf "string" "/apps/notification-daemon/popup_location" "bottom_right"
+	gnome2_install_defaut_gconf "string" "/apps/notification-daemon/theme" "standard"
 	gnome2_icon_cache_update
 	gnome2_gconfd_reload
 }
@@ -12,15 +14,11 @@ pre_remove() {
 	gnome2_uninstall_schema "$files"
 }
 
-post_remove() {
-	gnome2_icon_cache_update
-	gnome2_gconfd_reload
-}
-
 post_upgrade() {
-	post_remove
+	post_install
 }
 
 post_downgrade() {
-	post_remove
+	post_install
 }
+

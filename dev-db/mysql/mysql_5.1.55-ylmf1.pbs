@@ -10,7 +10,8 @@ HOMEPAGE="http://www.mysql.com/"
 LICENSE="GPL"
 PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
 
-SRC_URI="http://download.softagency.net/MySQL/Downloads/MySQL-5.1/"$N-$V$R".tar.gz"
+SRC_URI="http://download.softagency.net/MySQL/Downloads/MySQL-5.1/"$N-$V".tar.gz"
+CHECKSUM="e07e79edad557874d0870c914c9c81e1"
 
 RDEPEND="gcc-lib glibc ncurses zlib"
 BDEPEND=""

@@ -1,0 +1,39 @@
+#
+# Ylmf OS package build script
+#
+# Copyright 2005-2012 Ylmf OS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="Perl/CPAN Module Mail::Sendmail : Simple platform independent mailer"
+HOMEPAGE="http://search.cpan.org/~mivkovic/Mail-Sendmail/"
+PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
+LICENSE="GPL PerlArtistic"
+YARCH="any"
+
+SRC_URI="http://www.cpan.org/authors/id/M/MI/MIVKOVIC/Mail-Sendmail-"$V".tar.gz"
+CHECKSUM="038f261afd091d8fad347d6c66d2833d"
+
+RDEPEND="perl"
+BDEPEND=" "
+RECOMMENDED=""
+CONFLICT=""
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_config() {
+	export PERL_MM_USE_DEFAULT=1
+	doconfig INSTALLDIRS=vendor
+}
+
+pbs_build() {
+	domake
+}
+
+pbs_install() {
+	domkinstall
+        perl_cleanup
+}
+

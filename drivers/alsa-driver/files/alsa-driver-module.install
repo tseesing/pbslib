@@ -1,7 +1,7 @@
 . /usr/lib/ybs/funcs
 
 post_install() {
-	depmod -A "$KERNEL_DIST"
+	depmod -a "$KERNEL_DIST"
 }
 
 post_remove() {

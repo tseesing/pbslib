@@ -1,0 +1,36 @@
+#
+# Ylmf OS package build script
+#
+# Copyright 2005-2012 Ylmf OS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="A sophisticated text editor for code, html and prose. "
+HOMEPAGE="http://www.sublimetext.com/"
+LICENSE="custom"
+PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
+
+SRC_URI="SublimeText2Build"$V".tar.bz2"
+CHECKSUM="490a93e5fef9ffd1404915ba5ca1e9ed"
+
+RDEPEND="atk cairo expat fontconfig freetype gcc-lib gdk-pixbuf glib2 glibc gtk+ libffi libpng libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libXinerama libXrandr libXrender pango pixman zlib python"
+RECOMMENDED=""
+BDEPEND=""
+OPTIONAL=""
+CONFLICT=""
+
+INSTALL="$N.install"
+
+ICONFILE="Icon/48x48/sublime_text.png"
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_install() {
+	cd "Sublime Text 2"
+	docp * "$destdir"/opt/"$N"
+	dodesktop "$N".desktop "Icon/48x48/sublime_text.png"
+	docp "$filesdir"/"$N" "$destdir"/usr/bin/
+}
+

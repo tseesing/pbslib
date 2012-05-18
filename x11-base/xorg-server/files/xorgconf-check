@@ -5,6 +5,7 @@
 
 xorgfile="/etc/X11/xorg.conf"
 xorgfile_restore="/etc/X11/xorg.conf-"
+logfile="/var/log/xorgconf-check.log"
 
 card=""
 conflict=""
@@ -101,6 +102,20 @@ else
 		 nv) [ "$_driver" = "nvidia" ] && mv $xorgfile_restore $xorgfile 
 	esac
 
+fi
+
+#
+# Testing kernel module
+#
+
+if [ "$card" = "ati" ] && [ "$driver" = "fglrx" ]; then
+	modprobe fglrx || depmod -a
+	modprobe fglrx 2>$logfile || rm $xorgfile 
+fi
+
+if [ "$card" = "nv" ] && [ "$driver" = "nvidia" ]; then
+	modprobe nvidia || depmod -a
+	modprobe nvidia 2>$logfile || rm $xorgfile 
 fi
 
 exit 0 

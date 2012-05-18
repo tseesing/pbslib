@@ -7,7 +7,7 @@ post_install() {
 	# Gnome panel
 	gnome2_install_defaut_gconf "string" "/apps/panel/toplevels/top_panel_screen0/background/type" "image"
 	gnome2_install_defaut_gconf "string" "/apps/panel/toplevels/top_panel_screen0/background/image" "/usr/share/themes/ylmfos-white/gtk-2.0/Panel/panel-bg.png"
-	gnome2_install_defaut_gconf "int"    "/apps/panel/toplevels/top_panel_screen0/size" "40"
+	gnome2_install_defaut_gconf "int"    "/apps/panel/toplevels/top_panel_screen0/size" "35"
 	#gnome2_install_defaut_gconf "string" "/apps/panel/toplevels/top_panel_screen0/background/type" "color"
 	#gnome2_install_defaut_gconf "string" "/apps/panel/toplevels/top_panel_screen0/background/color" "#000000"
 	#gnome2_install_defaut_gconf "string" "/apps/panel/toplevels/top_panel_screen0/background/opacity" "39321"
