@@ -1,0 +1,39 @@
+#
+# Ylmf OS package build script
+#
+# Copyright 2005-2012 Ylmf OS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="CUPS backend for the canon printers using the proprietary USB over IP BJNP protocol."
+HOMEPAGE="http://sourceforge.net/projects/cups-bjnp/"
+LICENSE="GPL"
+PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
+
+SRC_URI="http://sourceforge.net/projects/"$N"/files/"$N"/"$V"/"$N-$V".tar.gz"
+CHECKSUM="e69104a23a2b7d7822a9f1ae372fd296"
+
+RDEPEND="avahi cups dbus e2fsprogs gcc-lib glibc gnutls keyutils krb5 libgcrypt libgpg-error libtasn1 zlib"
+RECOMMENDED=""
+BDEPEND=""
+OPTIONAL=""
+CONFLICT=""
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_config() {
+	config+=""
+	doconfig
+}
+
+pbs_build() {
+	domake
+}
+
+pbs_install() {
+	domkinstall
+}
+
+

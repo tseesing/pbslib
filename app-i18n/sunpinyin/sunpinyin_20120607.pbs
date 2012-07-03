@@ -1,0 +1,34 @@
+#
+# Ylmf OS package build script
+#
+# Copyright 2005-2012 Ylmf OS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="A statistical language model based Chinese input method, input method engine backend"
+HOMEPAGE="http://code.google.com/p/sunpinyin/"
+LICENSE="LGPL,CDDL"
+PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
+
+SRC_URI="git://github.com/sunpinyin/sunpinyin.git"
+
+RDEPEND="gcc-lib glibc python sqlite"
+BDEPEND="scons"
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_config(){
+	config="--prefix=/usr"
+	doconfig
+}
+
+pbs_build() {
+	domake
+}
+
+pbs_install() {
+	domkinstall
+}
+

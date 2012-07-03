@@ -1,0 +1,37 @@
+#
+# Ylmf OS package build script
+#
+# Copyright 2005-2012 Ylmf OS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="A software library for building UPnP devices"
+HOMEPAGE="http://www.herqq.org"
+LICENSE="GPL"
+PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
+
+SRC_URI="http://downloads.sourceforge.net/hupnp/"$N-$V".zip"
+CHECKSUM="45a0632f7c7b64bc0fdab852d36c1e61"
+
+RDEPEND="gcc-lib glib2 glibc openssl qt-core zlib"
+RECOMMENDED=""
+BDEPEND=""
+OPTIONAL=""
+CONFLICT=""
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_config() {
+	qmake PREFIX=/usr
+}
+
+pbs_build() {
+	domake
+}
+
+pbs_install() {
+	 make INSTALL_ROOT="${destdir}" install
+}
+

@@ -1,0 +1,42 @@
+#
+# Ylmf OS package build script
+#
+# Copyright 2005-2012 Ylmf OS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="Network Time Protocol suite/programs"
+HOMEPAGE="http://www.ntp.org/"
+LICENSE="GPL"
+PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
+
+SRC_URI="http://www.eecis.udel.edu/~ntp/ntp_spool/"$N"4/"$N"-4.2.6p5.tar.gz"
+CHECKSUM="4a5353a4791b6f4315a66c28d504ec6c7926b192"
+
+RDEPEND="attr avahi dbus gcc-lib glibc libcap net-snmp openssl pciutils perl zlib"
+BDEPEND=""
+RECOMMENDED=""
+CONFLICT=""
+
+INSTALL="$N.install"
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_config() {
+	config+="--enable-linuxcaps"
+	doconfig
+}
+
+pbs_build() {
+	domake
+}
+
+pbs_install() {
+	domkinstall
+	dounit "ntpd.service"
+	cd "$destdir"
+	docp "$filesdir"/ntp.conf etc/
+}
+

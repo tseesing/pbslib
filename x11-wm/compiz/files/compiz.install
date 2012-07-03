@@ -49,10 +49,6 @@ post_install() {
 	#gnome2_install_defaut_gconf "string" "/desktop/gnome/session/required_components/windowmanager" "compiz"
 
 	#
-	cd /usr/share/xsessions
-	[ -f gnome-compiz.desktop ] && ln -sf gnome-compiz.desktop gnome.desktop
-
-	#
 	gnome2_gconfd_reload
 }
 

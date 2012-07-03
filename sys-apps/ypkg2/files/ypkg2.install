@@ -34,7 +34,7 @@ pre_upgrade() {
 	ypkg --compare-version $version_old 20120315
 	
 	if [ $? -eq 2 ]; then	
-		echo "* Fixing ypkg database, please wait.."
+		echo "* Fixing ypkg database, please wait ..."
 		for i in $dbs; do
 			if ! "$sqlite3" "$dbfile" ".schema ${i}" |grep -q 'exec TEXT'; then
 				"$sqlite3" "$dbfile" "alter table ${i} add column exec TEXT;"
@@ -58,9 +58,19 @@ post_upgrade() {
 	ypkg --compare-version $version_old 20120411
 		
 	if [ $? -eq 2 ]; then
-		echo "* Fixing ypkg database, please wait.."
+		echo "* Fixing ypkg database, please wait ..."
 		/usr/share/ypkg/db_fix.pl
 	fi	
+
+	# version that less than 20120628-ylmf2
+	# add sql table for I10N
+	ypkg --compare-version $version_old 20120629
+	
+	if [ $? -eq 2 ]; then
+		echo "* Add sql table for I10N, please wait ..."
+		"$sqlite3" "$dbfile" "CREATE TABLE if not exists keywords (name TEXT, language TEXT, kw_name TEXT, kw_generic_name TEXT, kw_fullname TEXT, kw_comment , PRIMARY KEY(name,language) );"
+		"$sqlite3" "$dbfile" "update config set db_version='2012062801'"
+	fi
 
 	post_install $name $version_new
 }

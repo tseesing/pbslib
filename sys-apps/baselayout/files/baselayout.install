@@ -103,6 +103,7 @@ EOF
 		cat >/etc/passwd <<"EOF"
 root:x:0:0:root:/root:/bin/bash
 nobody:x:99:99:Unprivileged User:/dev/null:/bin/false
+games:x:36:35:games:/usr/games:/bin/sh
 EOF
 	fi
 
@@ -125,6 +126,7 @@ utmp:x:13:
 usb:x:14:
 cdrom:x:15:
 mail:x:34:
+games:x:35:
 nogroup:x:65533:
 nobody:x:65534:
 EOF

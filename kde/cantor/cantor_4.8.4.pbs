@@ -1,0 +1,39 @@
+#
+# Ylmf OS package build script
+#
+# Copyright 2005-2012 Ylmf OS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="KDE Frontend to Mathematical Software"
+HOMEPAGE="http://kde.org/"
+LICENSE="GPL,LGPL,FDL"
+PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
+
+SRC_URI="http://download.kde.org/stable/"$V"/src/"$N-$V".tar.xz"
+CHECKSUM="2fa186941e8e7ba5c17d706dacca21c3"
+
+RDEPEND="acl analitza attica attr avahi blas bzip2 cln cups dbus e2fsprogs expat fontconfig freetype gcc-lib ghostscript glib2 glibc gmp gnutls herqq icu jasper kdelibs keyutils krb5 libdbusmenu-qt libffi libgcrypt libgpg-error libICE libidn libjpeg-turbo libpng libqalculate libSM libspectre libtasn1 libtiff libX11 libXau libxcb libXcursor libXdmcp libXext libXfixes libXft libXi libxml2 libXpm libXrender libXtst ncurses openssl qca qt-core R readline soprano strigi udev util-linux-ng xz-utils zlib"
+RECOMMENDED=""
+BDEPEND="cmake"
+OPTIONAL=""
+CONFLICT=""
+
+INSTALL="$N.install"
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_config() {
+	doconfig -DCMAKE_BUILD_TYPE=Release
+}
+
+pbs_build() {
+	domake
+}
+
+pbs_install() {
+	domkinstall
+}
+

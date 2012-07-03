@@ -1,0 +1,43 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="Script generator for qt"
+HOMEPAGE="http://code.google.com/p/qtscriptgenerator/"
+LICENSE="GPL"
+PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
+
+SRC_URI="http://qtscriptgenerator.googlecode.com/files/$N-src-$V.tar.gz"
+
+RDEPEND=""
+BDEPEND="qt-core phonon"
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_config() {
+	cd generator
+	dopatch qtscriptgenerator-gcc44.patch phonon.patch
+	dopatch qtscriptgenerator-src-0.1.0-no_phonon.patch
+}
+
+pbs_build() {
+	cd -
+	cd generator
+	qmake
+	make
+	./generator
+	cd -
+	cd qtbindings
+	qmake
+	make
+	#domake
+}
+
+pbs_install() {
+	domkinstall
+ 	mkdir -p $destdir/usr/lib/qt/plugins/script
+  	mv plugins/script/* $destdir/usr/lib/qt/plugins/script/
+}
+

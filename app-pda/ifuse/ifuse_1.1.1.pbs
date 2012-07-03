@@ -1,0 +1,38 @@
+#
+# Ylmf OS package build script
+#
+# Copyright 2005-2012 Ylmf OS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="Mount Apple iPhone/iPod Touch file systems for backup purposes"
+HOMEPAGE="http://www.libimobiledevice.org/"
+LICENSE="LGPL"
+PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
+
+SRC_URI="http://www.libimobiledevice.org/downloads/"$N-$V".tar.bz2"
+CHECKSUM="8d528a79de024b91f12f8ac67965c37c"
+
+RDEPEND="fuse glibc libimobiledevice libplist libxml2 openssl usbmuxd zlib"
+RECOMMENDED=""
+BDEPEND=""
+OPTIONAL=""
+CONFLICT=""
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_config() {
+	config+=""
+	doconfig
+}
+
+pbs_build() {
+	domake
+}
+
+pbs_install() {
+	domkinstall
+}
+

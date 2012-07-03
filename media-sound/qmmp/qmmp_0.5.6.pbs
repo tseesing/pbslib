@@ -1,0 +1,40 @@
+#
+# Ylmf OS package build script
+#
+# Copyright 2005-2012 Ylmf OS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="Qt4 based audio-player"
+HOMEPAGE="http://qmmp.ylsoftware.com"
+LICENSE="GPL"
+PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
+
+SRC_URI="http://qmmp.ylsoftware.com/files/"$N-$V".tar.bz2"
+CHECKSUM="0291225447d9688fb6aa85734cda1b6e"
+
+RDEPEND="alsa-lib attr bzip2 curl cyrus-sasl dbus enca expat faad2 ffmpeg(>=0.11.1) flac fontconfig freetype gcc-lib glib2 glibc gnutls jack-audio-connection-kit json-c lame libcap libcddb libcdio libffi libgcrypt libgpg-error libgsm libICE libidn libmad libmms libmodplug libmpcdec libogg libpng libsamplerate libSM libsndfile libssh2 libtasn1 libtheora libva libvorbis libX11 libXau libxcb libXdmcp libXext libXi libXrender libXtst opencore-amr openldap openssl orc pulseaudio qt-core rtmpdump schroedinger speex taglib util-linux-ng wavpack x264 xvidcore zlib"
+RECOMMENDED=""
+BDEPEND="cmake"
+OPTIONAL=""
+CONFLICT=""
+
+INSTALL="$N.install"
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_config() {
+	config+=""
+	doconfig
+}
+
+pbs_build() {
+	domake
+}
+
+pbs_install() {
+	domkinstall
+}
+

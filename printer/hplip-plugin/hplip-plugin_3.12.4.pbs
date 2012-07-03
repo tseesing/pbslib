@@ -1,0 +1,55 @@
+#
+# Ylmf OS package build script
+#
+# Copyright 2005-2012 Ylmf OS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="Binary plugin for HPs hplip printer driver library"
+HOMEPAGE="http://hplipopensource.com"
+LICENSE="custom"
+PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
+
+SRC_URI="http://www.openprinting.org/download/printdriver/auxfiles/HP/plugins/hplip-"$V"-plugin.run"
+CHECKSUM="c5b8a9d7cdefe1666908e74ca23cc68c"
+
+RDEPEND="hplip(=3.12.4)"
+RECOMMENDED=""
+BDEPEND=""
+OPTIONAL=""
+CONFLICT=""
+
+pbs_unpack() {
+	rm -rf "$N-$V$R" 2>/dev/null
+	mkdir "$N-$V$R" && cd "$N-$V$R"
+	sh "$YPPATH_SOURCE"/hplip-"$V"-plugin.run --tar xf
+}
+
+pbs_patch() {
+	sed -i 's!$HOMEDIR!'$destdir'/usr/share/hplip!g' plugin.spec
+	sed -i 's!$RULESDIR!'$destdir'/etc/udev/rules.d!g' plugin.spec
+	sed -i 's!if mode == INTERACTIVE_MODE:!installPlugin()\nsys.exit(0)\n\0!' plugin_install.py
+	sed -i 's!sys.exit(1)!raise!' plugin_install.py
+}
+
+pbs_build() {
+	python plugin_install.py
+}
+
+pbs_install() {
+	cd "$destdir"
+
+	while IFS= read -r -d '' link; do
+		linkdir="`dirname $link`"
+		linkdir="`readlink -e $linkdir`"
+		linktarget="`readlink -e $link`"
+		relpath="`python -c 'import sys,os.path; print os.path.relpath(sys.argv[1],sys.argv[2])' $linktarget $linkdir`"
+		ln -sf "$relpath" "$link"
+	done < <(find . -type l -print0)
+
+	sed -i -e "s|SYSFS|ATTR|g" \
+  	       -e "s|sysfs|attr|g" \
+	       -e 's|"bin/sh|"/bin/sh|g' /etc/udev/rules.d/*.rules
+}
+
+

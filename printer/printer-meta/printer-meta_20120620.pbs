@@ -1,0 +1,23 @@
+#
+# Ylmf OS package build script
+#
+# Copyright 2005-2012 Ylmf OS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="meta package, install cups foomatces"
+HOMEPAGE="www.ylmf.com"
+LICENSE="GPL"
+PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
+
+SRC_URI=""
+
+RDEPEND="cups cups-pk-helper cups-pdf foomatic-db-engine foomatic-filters foomatic-db-nonfree foomatic-db foo2zjs gutenprint gnu-gs-fonts-std gnu-gs-fonts-other ghostscript hplip hplip-plugin"
+BDEPEND=""
+RECOMMENDED=""
+CONFLICT=""
+
+pbs_install() {
+	dodesktop "$N.desktop" "printer.png"
+}
+

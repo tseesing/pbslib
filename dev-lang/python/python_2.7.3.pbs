@@ -1,0 +1,65 @@
+#
+# Ylmf OS package build script
+#
+# Copyright 2005-2012 Ylmf OS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="An interpreted, interactive, object-oriented programming language."
+HOMEPAGE="http://www.python.org/"
+LICENSE="PSF"
+PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
+
+SRC_URI="http://www.python.org/ftp/python/"$V"/Python-"$V".tar.xz"
+CHECKSUM="b2b0ada7ebed4a8204a855193afbdb3aa3308357"
+
+RDEPEND="bzip2 expat fontconfig freetype gdbm glibc libffi libX11 libXau libxcb libXdmcp libXext libXft libXrender libXScrnSaver ncurses openssl readline sqlite tcl tk zlib"
+BDEPEND=""
+CONFLICT="python2.7"
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_patch() {
+	dopatch ylmfos_add-platform-2.7.2.patch
+	
+	# Temporary workaround for FS#22322
+	# See http://bugs.python.org/issue10835 for upstream report
+	sed -i "/progname =/s/python/python2.7/" Python/pythonrun.c
+
+	# Enable built-in SQLite module to load extensions (fix FS#22122)
+	sed -i "/SQLITE_OMIT_LOAD_EXTENSION/d" setup.py
+
+	# FS#23997
+	sed -i -e "s|^#.* /usr/local/bin/python|#!/usr/bin/python|" Lib/cgi.py
+
+        # Ensure that we are using the system copy of various libraries (expat, zlib and libffi),
+        # rather than copies shipped in the tarball
+        rm -r Modules/expat
+        rm -r Modules/zlib
+        rm -r Modules/_ctypes/{darwin,libffi}*
+}
+
+pbs_config(){
+	export OPT="${CFLAGS}"
+	config+=" --enable-shared 
+	          --with-threads 
+		  --enable-ipv6
+		  --with-system-ffi
+		  --enable-unicode=ucs4
+		  --with-system-expat
+		  --with-dbmliborder=gdbm:ndbm "
+	doconfig
+}
+
+pbs_build() {
+	make "$MAKEOPTS"
+}
+
+pbs_install() {
+	make DESTDIR="$destdir" install
+	dodoc LICENSE
+	doln /usr/lib/python2.7 "$destdir"/usr/lib/python
+}
+

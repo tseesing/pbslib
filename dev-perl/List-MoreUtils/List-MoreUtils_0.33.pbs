@@ -1,0 +1,42 @@
+#
+# Ylmf OS package build script
+#
+# Copyright 2005-2012 Ylmf OS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="Provide the stuff missing in List::Util"
+HOMEPAGE="http://search.cpan.org/dist/List-MoreUtils"
+LICENSE="GPL PerlArtistic"
+PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
+
+SRC_URI="http://search.cpan.org/CPAN/authors/id/A/AD/ADAMK/"$N-$V".tar.gz"
+CHECKSUM="8a33c84028cc2ff3e92c92434b326c0f"
+
+RDEPEND="perl"
+BDEPEND=""
+RECOMMENDED=""
+CONFLICT=""
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_config() {
+	export PERL_MM_USE_DEFAULT=1 PERL5LIB="" \
+	       PERL_AUTOINSTALL=--skipdeps                            \
+               PERL_MM_OPT="INSTALLDIRS=vendor DESTDIR='$destdir'"     \
+	       PERL_MB_OPT="--installdirs vendor --destdir '$destdir'"  \
+	       MODULEBUILDRC=/dev/null
+	 perl Makefile.PL
+}
+
+pbs_build() {
+	domake
+}
+
+pbs_install() {
+	domkinstall
+        perl_cleanup
+}
+

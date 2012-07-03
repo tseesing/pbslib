@@ -10,7 +10,7 @@ LICENSE="GPL"
 YARCH="any"
 PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
 
-SRC_URI="http://mirror.cs.wisc.edu/pub/mirrors/ghost/fonts/ghostscript-fonts-std-"$V".tar.gz"
+SRC_URI="http://sourceforge.net/projects/gs-fonts/files/gs-fonts/8.11%20%28base%2035%2C%20GPL%29/ghostscript-fonts-std-"$V".tar.gz"
 
 RDEPEND=""
 BDEPEND=""

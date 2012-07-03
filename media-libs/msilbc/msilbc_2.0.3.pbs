@@ -1,0 +1,38 @@
+#
+# Ylmf OS package build script
+#
+# Copyright 2005-2012 Ylmf OS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="iLBC is low bitrate audio codec - plugin for mediastreamer"
+HOMEPAGE="http://download.savannah.gnu.org/releases/linphone/plugins/sources/"
+LICENSE="GPL"
+PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
+
+SRC_URI="http://download.savannah.gnu.org/releases/linphone/plugins/sources/"$N-$V".tar.gz"
+CHECKSUM="9c8740345dd8ee9732604a8f6a4329e6"
+
+RDEPEND="alsa-lib attr dbus ffmpeg flac gcc-lib glibc ilbc json-c lame libcap libgsm libICE libjpeg-turbo libogg libSM libsndfile libtheora libva libvorbis libX11 libXau libxcb libXdmcp libXext libXi libXtst libXv mediastreamer opencore-amr orc ortp pulseaudio schroedinger speex util-linux-ng v4l-utils x264 xvidcore zlib"
+RECOMMENDED=""
+BDEPEND=""
+OPTIONAL=""
+CONFLICT=""
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_config() {
+	config+=""
+	doconfig
+}
+
+pbs_build() {
+	domake
+}
+
+pbs_install() {
+	domkinstall
+}
+

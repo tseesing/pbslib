@@ -1,0 +1,42 @@
+#
+# Ylmf OS package build script
+#
+# Copyright 2005-2012 Ylmf OS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="MediaInfo supplies technical and tag information about media files"
+HOMEPAGE="http://mediainfo.sourceforge.net"
+LICENSE="GPL"
+PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
+
+SRC_URI="http://downloads.sourceforge.net/mediainfo/mediainfo_"$V".tar.bz2"
+CHECKSUM="e0b0decf4a036fad431aa5149cc71d59"
+
+RDEPEND="atk cairo curl cyrus-sasl expat fontconfig freetype gcc-lib gdk-pixbuf glib2 glibc gnutls gtk+ libffi libgcrypt libgpg-error libICE libidn libjpeg-turbo libmediainfo libpng libSM libssh2 libtasn1 libtiff libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libXinerama libXrandr libXrender libXxf86vm libzen openldap openssl pango pixman rtmpdump util-linux-ng wxWidgets zlib"
+RECOMMENDED=""
+BDEPEND=""
+OPTIONAL=""
+CONFLICT=""
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_config() {
+	cd Project/GNU/GUI
+	sh ./autogen
+	config+=""
+	doconfig
+}
+
+pbs_build() {
+	domake
+}
+
+pbs_install() {
+	domkinstall
+	cd -
+	dodesktop Project/GNU/GUI/mediainfo-gui.desktop Source/Resource/Image/MediaInfo.png
+}
+

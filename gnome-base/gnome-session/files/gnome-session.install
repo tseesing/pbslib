@@ -10,11 +10,6 @@ post_install() {
 	gnome2_install_defaut_gconf "string"  "/desktop/gnome/session/required_components/windowmanager" "gnome-wm"
 	gnome2_install_defaut_gconf "string"  "/apps/gnome-session/options/splash_image" "splash/gnome-splash.png"
 	gnome2_install_defaut_gconf "boolean" "/apps/gnome-session/options/show_splash_screen" "false"
-
-	# Make link of gnome.desktop
-	cd /usr/share/xsessions	
-	[ -f gnome-classic.desktop ] && ln -sf gnome-classic.desktop gnome.desktop
-
 	gnome2_desktop_database_update
 	gnome2_icon_cache_update
 	gnome2_gconfd_reload

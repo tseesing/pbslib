@@ -1,0 +1,37 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="The multimedia framework for KDE"
+HOMEPAGE="http://phonon.kde.org"
+LICENSE="GPL"
+PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
+
+SRC_URI="ftp://ftp.kde.org/pub/kde/stable/$N/$V/src/"$N-$V".tar.xz"
+
+RDEPEND=""
+BDEPEND="pkgconfig cmake"
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_config() {
+	dopatch libqzeitgeist08.patch
+	mkdir ../build && cd ../build
+	  cmake ../$N-$V \
+    -DCMAKE_BUILD_TYPE=Release \
+    -DCMAKE_INSTALL_PREFIX=/usr \
+    -DCMAKE_SKIP_RPATH=ON
+}
+
+pbs_build() {
+	cd build
+	domake
+}
+
+pbs_install() {
+	cd build
+	domkinstall
+}
+

@@ -1,7 +1,18 @@
-2010-10-31 chenqixing <chenqixing@115.com>
-	* gvfs 1.6.7-ylmf2
+
+gvfs (1.8.2); urgency=high
+
+	* Update to 1.8.2 upstream.
+
+-- hzx <huangzhongxin@ylmf.com> 2012-06-14
+
+gvfs (1.6.7-ylmf2); urgency=low
+	
 	* add ylmfos_gvfs-1.6.7_fix_trash_show_files.patch
 
-2010-10-20 hzx <huangzhongxin@ylmf.com>
-	* gvfs 1.6.7-ylmf1
+-- chenqixing <chenqixing@115.com> 2011-10-31
+
+gvfs (1.6.7-ylmf1), urgency=high
+	
 	* disable hal in configure
+
+-- hzx <huangzhongxin@ylmf.com> 2010-10-20

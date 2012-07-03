@@ -1,0 +1,46 @@
+#
+# Ylmf OS package build script
+#
+# Copyright 2005-2012 Ylmf OS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="Basic Linear Algebra Subprograms"
+HOMEPAGE="http://www.netlib.org/blas"
+LICENSE="custom"
+PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
+
+SRC_URI="http://www.netlib.org/lapack/lapack-"$V".tgz"
+CHECKSUM="910109a931524f8dcc2734ce23fe927b00ca199f"
+
+RDEPEND="gcc-lib glibc"
+RECOMMENDED=""
+BDEPEND=""
+OPTIONAL=""
+CONFLICT=""
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_build() {
+	cp "${filesdir}"/Makefile.blas BLAS/SRC/Makefile 
+	cp -f INSTALL/make.inc.gfortran make.inc
+	export FC=gfortran
+	pushd BLAS/SRC
+	domake clean
+	FFLAGS="${CFLAGS/-O?/-O0}" domake dcabs1.o
+	FFLAGS="${CFLAGS} -fPIC" CFLAGS="${CFLAGS} -fPIC" domake shared
+	cp libblas.so."$V" "${srcdir}"/
+        popd
+	ln -s libblas.so."$V" libblas.so
+}
+
+pbs_install() {
+	docp libblas.so."$V" "${destdir}"/usr/lib/
+	dodoc "$filesdir"/LICENSE.blas
+	cd "$destdir"
+	doln /usr/lib/libblas.so."$V" usr/lib/libblas.so
+	doln /usr/lib/libblas.so."$V" usr/lib/libblas.so.3
+}
+

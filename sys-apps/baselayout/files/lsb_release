@@ -17,13 +17,21 @@ for ((i=0; i<${#all[@]}; i++)); do
 	fi
 done
 
-case "$1" in 
-	-i|--id)		echo $DISTRIB_ID ;;
-	-r|--release)		echo $DISTRIB_RELEASE ;;
-	-c|--codename)		echo $DISTRIB_CODENAME ;;
-	-a|--all)               echo ${all[@]}	       ;;
-	-h|--help)	
-cat <<OOO
+if [ "x$1" = "x" ] || [ "x$1" = "x-irc" ]; then
+	cat <<OOO
+ID:$DISTRIB_ID
+Release:$DISTRIB_RELEASE
+Codename:$DISTRIB_CODENAME
+OOO
+else
+	while [ "x$1" != "x" ]; do
+	case "$1" in 
+		-i|--id)		echo $DISTRIB_ID ;;
+		-r|--release)		echo $DISTRIB_RELEASE ;;
+		-c|--codename)		echo $DISTRIB_CODENAME ;;
+		-a|--all)               echo ${all[@]}	       ;;
+		-h|--help)	
+	cat <<OOO
 Usage: $0 [options]
 
 Options:	
@@ -35,11 +43,9 @@ Options:
 OOO
 		;;
 	*)
-cat <<OOO
-ID:$DISTRIB_ID
-Release:$DISTRIB_RELEASE
-Codename:$DISTRIB_CODENAME
-OOO
-esac
+	esac
+	shift
+	done
+fi
 
 exit 0

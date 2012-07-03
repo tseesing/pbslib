@@ -92,7 +92,7 @@ post_remove() {
 	restore
 
 	#
-	echo '* You must logout session for the changes to take effect.'
+	echo '* You must reboot for the changes to take effect.'
 
 	return 0
 }

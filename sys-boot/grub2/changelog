@@ -1,19 +1,24 @@
-2012-01-12 hzx <huangzhongxin@ylmf.com>
-	* grub2 1.99-ylmf4
+
+grub2 (1.99-ylmf4); urgency=low  
+
 	* change default background picture in files/grub
-	*
 
-2011-12-13 hzx <huangzhongxin@ylmf.com>
-	* grub2 1.99-ylmf3
+-- hzx <huangzhongxin@ylmf.com> 2012-01-12
+
+grub2 (1.99-ylmf3); urgency=low
+
 	* add vga=788 to default grub.cfg for plymouth
-	*
+	
+-- hzx <huangzhongxin@ylmf.com> 2011-12-13
 
-2011-12-05 hzx <huangzhongxin@ylmf.com>
-	* grub2 1.99-ylmf2
+grub2 (1.99-ylmf2); urgency=low
+
 	* bump to version grub2_1.99-12ubuntu5 (ubuntu 11.10) 
-	*  
+	  
+-- hzx <huangzhongxin@ylmf.com> 2011-12-05
 
-2011-12-05 hzx <huangzhongxin@ylmf.com>
-	* grub2 1.99-ylmf1
+grub2 (1.99-ylmf1); urgency=low
+
 	* support xforcevesa under nomodeset mode 
-	*  
+
+-- hzx <huangzhongxin@ylmf.com> 2011-12-05

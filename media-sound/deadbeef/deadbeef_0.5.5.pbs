@@ -1,0 +1,43 @@
+#
+# Ylmf OS package build script
+#
+# Copyright 2005-2012 Ylmf OS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="Ultimate Music Player For GNU/Linux"
+HOMEPAGE="http://deadbeef.sourceforge.net/"
+LICENSE="GPL"
+PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
+
+SRC_URI="http://sourceforge.net/projects/"$N"/files/"$N-$V".tar.bz2"
+CHECKSUM="7cc10cefda0f4044eea897893e4cc1a9"
+
+RDEPEND=""
+BDEPEND=""
+RECOMMENDED="deadbeef-mpris-plugin"
+
+INSTALL="$N.install"
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_patch() {
+	dopatch ylmfos-deadbeef-0.5.1.patch 
+}	
+
+pbs_config() {
+	doconfig
+}
+
+pbs_build() {
+	domake
+}
+ 
+pbs_install() {
+	domkinstall
+	cd "$destdir"
+	sed -i 's/audio\/mp3;/audio\/mp3;audio\/x-ape;audio\/x-ms-wma;audio\/mp4;audio\/x-wavpack;audio\/x-wav;/g' usr/share/applications/deadbeef.desktop
+}
+

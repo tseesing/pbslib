@@ -1,0 +1,36 @@
+#
+# Ylmf OS package build script
+#
+# Copyright 2005-2012 Ylmf OS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="Desktop Globe"
+HOMEPAGE="http://kde.org/applications/education/marble/"
+LICENSE="GPL,LGPL,FDL"
+PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
+
+SRC_URI="http://download.kde.org/stable/"$V"/src/"marble-$V".tar.xz"
+CHECKSUM="ec3cd41a1d333e9e3b34595adf6e4859315159b9"
+
+RDEPEND="acl attica attr bluez bzip2 dbus expat flac fontconfig freetype gcc-lib glib2 glibc gpsd gst-plugins-base gstreamer herqq json-c kdelibs libcap libdbusmenu-qt libdrm libffi libICE libogg libpng libqzeitgeist libSM libsndfile libvorbis libX11 libXau libxcb libXcursor libXdamage libXdmcp libXext libXfixes libXft libXi libxml2 libXpm libXrender libXScrnSaver libXtst libXxf86vm mesa openssl phonon pulseaudio qca qt-core soprano sqlite strigi udev util-linux-ng xz-utils zlib"
+BDEPEND="cmake automoc4"
+
+INSTALL="$N.install"
+
+pbs_unpack() {
+       dounpack
+}
+
+pbs_config() {
+	doconfig -DCMAKE_BUILD_TYPE=Release
+}
+
+pbs_build() {
+	domake
+}
+
+pbs_install() {
+	domkinstall
+}
+

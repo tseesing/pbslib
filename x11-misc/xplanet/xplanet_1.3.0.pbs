@@ -1,0 +1,38 @@
+#
+# Ylmf OS package build script
+#
+# Copyright 2005-2012 Ylmf OS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="Render images of the earth into the X root window"
+HOMEPAGE="http://xplanet.sourceforge.net"
+LICENSE="GPL"
+PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
+
+SRC_URI="http://downloads.sourceforge.net/project/"$N"/"$N"/"$V"/"$N-$V".tar.gz"
+CHECKSUM="41f7db2ccd1d8b4b989cacaf9adfe692"
+
+RDEPEND="expat fontconfig freetype gcc-lib giflib glib2 glibc libffi libICE libjpeg-turbo libpng libSM libtiff libX11 libXau libxcb libXdmcp libXext libXScrnSaver pango util-linux-ng zlib"
+RECOMMENDED=""
+BDEPEND=""
+OPTIONAL=""
+CONFLICT=""
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_config() {
+	config+="--with-freetype"
+	doconfig
+}
+
+pbs_build() {
+	domake
+}
+
+pbs_install() {
+	domkinstall
+}
+

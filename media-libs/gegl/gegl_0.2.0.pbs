@@ -20,8 +20,17 @@ pbs_unpack() {
         dounpack
 }
 
+pbs_patch() {
+	sed -e '274cerr = avformat_open_input (&p->ic, o->path, NULL, NULL);' -i operations/external/ff-load.c
+}
+
 pbs_config() {
-	config+=""
+	config+=" --with-sdl 
+	          --with-openexr 
+		  --with-librsvg 
+	          --with-libavformat 
+		  --with-jasper 
+		  --disable-docs "
 	doconfig
 }
 

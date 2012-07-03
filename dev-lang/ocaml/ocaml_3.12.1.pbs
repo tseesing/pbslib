@@ -1,0 +1,48 @@
+#
+# Ylmf OS package build script
+#
+# Copyright 2005-2012 Ylmf OS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="A functional language with OO extensions"
+HOMEPAGE="http://caml.inria.fr/"
+LICENSE="LGPL2,custom,QPL-1.0"
+PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
+
+SRC_URI="http://caml.inria.fr/distrib/"$N"-3.12/"$N-$V".tar.gz"
+CHECKSUM="814a047085f0f901ab7d8e3a4b7a9e65"
+
+RDEPEND="expat fontconfig freetype gdb gdbm glibc libX11 libXau libxcb libXdmcp libXext libXft libXrender libXScrnSaver ncurses tcl tk zlib"
+RECOMMENDED=""
+BDEPEND=""
+OPTIONAL=""
+CONFLICT=""
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_config() {
+	./configure -prefix /usr 
+}
+
+pbs_build() {
+	make world.opt
+}
+
+pbs_install() {
+	make PREFIX="${destdir}/usr" MANDIR="${destdir}/usr/share/man" install
+	dodoc LICENSE
+	
+	# Install compiler libraries
+	local compiler_libs="${destdir}/usr/lib/ocaml/compiler-libs"
+	mkdir -p "$compiler_libs"/{parsing,typing,utils}
+	cp parsing/*.{cmi,cmo,cmx,ml,mli,mll,o} "$compiler_libs"/parsing
+	cp typing/*.{cmi,cmo,cmx,ml,mli,o} "$compiler_libs"/typing
+	cp utils/*.{cmi,cmo,cmx,ml,mli,o} "$compiler_libs"/utils
+	
+	# Duplicated by installation
+	rm -f "$compiler_libs"/typing/outcometree.{cmi,mli}
+}
+

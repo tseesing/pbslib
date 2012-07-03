@@ -1,4 +1,12 @@
-2012-04-23 hzx <huangzhongxin@gmail.com>
-	* pygtk 2.22.0-ylmf1
-	* rebuild against python-2.7.2 
-	*  
+pygtk (2.22.0-ylmf3); urgency=low
+
+	* fix memory leak, patch from deepin linux
+	10_fix_create_layout_unref.patch
+
+-- hzx <huangzhongxin@gmail.com> 2012-06-26
+
+pygtk (2.22.0-ylmf1); urgency=low
+
+	* rebuild against python-2.7.2
+
+-- hzx <huangzhongxin@gmail.com> 2012-04-23

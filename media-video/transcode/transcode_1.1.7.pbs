@@ -1,0 +1,39 @@
+#
+# Ylmf OS package build script
+#
+# Copyright 2005-2012 Ylmf OS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="A suite of utilities for transcoding video and audio codecs in different containers"
+HOMEPAGE="http://tcforge.berlios.de/"
+LICENSE="GPL"
+PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
+
+SRC_URI="http://ftp.lfs-matrix.net/pub/blfs/svn/t/"$N-$V".tar.bz2"
+CHECKSUM="9bb25a796a8591fb764de46ee87ce505"
+
+RDEPEND=""
+RECOMMENDED=""
+BDEPEND=""
+OPTIONAL=""
+CONFLICT=""
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_config() {
+	config+=""
+	doconfig
+}
+
+pbs_build() {
+	domake
+}
+
+pbs_install() {
+	domkinstall
+	find "${destdir}"usr -name '*.la' -exec rm -f {} +
+}
+

@@ -3,7 +3,7 @@ Description=ntpd - Network Time Protocol daemon
 After=network.target
 
 [Service]
-ExecStart=/usr/sbin/ntpd -n -p /var/run/ntpd.pid -g 
+ExecStart=/usr/sbin/ntpd -n -p /run/ntpd.pid -g 
 
 [Install]
 WantedBy=multi-user.target

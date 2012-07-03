@@ -1,6 +1,6 @@
-diff -ur grub2-1.99-ylmf2.old/po/zh_CN.po grub2-1.99-ylmf2/po/zh_CN.po
---- grub2-1.99-ylmf2.old/po/zh_CN.po	2011-05-14 20:59:24.000000000 +0000
-+++ grub2-1.99-ylmf2/po/zh_CN.po	2011-12-05 07:29:01.890662656 +0000
+diff -ur grub2-1.99-ylmf5/po/zh_CN.po grub2-1.99-ylmf5.new//po/zh_CN.po
+--- grub2-1.99-ylmf5/po/zh_CN.po	2011-05-14 20:59:24.000000000 +0000
++++ grub2-1.99-ylmf5.new//po/zh_CN.po	2012-06-19 11:13:07.996216731 +0000
 @@ -2048,7 +2048,7 @@
  
  #: util/grub.d/10_kfreebsd.in:74
@@ -10,19 +10,24 @@ diff -ur grub2-1.99-ylmf2.old/po/zh_CN.po grub2-1.99-ylmf2/po/zh_CN.po
  
  #: util/grub.d/10_kfreebsd.in:76
  msgid "%s, with kFreeBSD %s"
-@@ -2060,7 +2060,11 @@
+@@ -2060,11 +2060,15 @@
  
  #: util/grub.d/10_linux.in:69
  msgid "%s, with Linux %s (recovery mode)"
 -msgstr "%s，Linux %s (恢复模式)"
-+msgstr "%s，Linux %s (修复模式)"
++msgstr "%s，内核 %s (修复模式)"
 +
 +#: util/grub.d/10_linux.in:61
 +msgid "%s, with Linux %s (xforcevesa mode)"
-+msgstr "%s，Linux %s (图形修复模式)"
++msgstr "%s，内核 %s (图形修复模式)"
  
  #: util/grub.d/10_linux.in:71
  msgid "%s, with Linux %s"
+-msgstr "%s，Linux %s"
++msgstr "%s，内核 %s"
+ 
+ #: util/grub.d/10_linux.in:116 util/grub.d/20_linux_xen.in:85
+ msgid "Loading Linux %s ..."
 @@ -2076,7 +2080,7 @@
  
  #: util/grub.d/10_netbsd.in:98
@@ -41,9 +46,9 @@ diff -ur grub2-1.99-ylmf2.old/po/zh_CN.po grub2-1.99-ylmf2/po/zh_CN.po
  
  #: util/grub.d/20_linux_xen.in:73
  msgid "%s, with Xen %s and Linux %s"
-diff -ur grub2-1.99-ylmf2.old/util/grub.d/00_header.in grub2-1.99-ylmf2/util/grub.d/00_header.in
---- grub2-1.99-ylmf2.old/util/grub.d/00_header.in	2011-12-05 14:43:45.000000000 +0000
-+++ grub2-1.99-ylmf2/util/grub.d/00_header.in	2011-12-05 15:26:48.547830269 +0000
+diff -ur grub2-1.99-ylmf5/util/grub.d/00_header.in grub2-1.99-ylmf5.new//util/grub.d/00_header.in
+--- grub2-1.99-ylmf5/util/grub.d/00_header.in	2011-12-05 14:43:45.000000000 +0000
++++ grub2-1.99-ylmf5.new//util/grub.d/00_header.in	2012-06-19 11:11:47.873882348 +0000
 @@ -17,6 +17,7 @@
  # You should have received a copy of the GNU General Public License
  # along with GRUB.  If not, see <http://www.gnu.org/licenses/>.
@@ -60,9 +65,18 @@ diff -ur grub2-1.99-ylmf2.old/util/grub.d/00_header.in grub2-1.99-ylmf2/util/gru
      prepare_grub_to_access_device $(${grub_probe} --target=device ${locale_dir}) | sed -e "s/^/  /"
    cat << EOF
    set locale_dir=(\$root)$(make_system_path_relative_to_its_root ${locale_dir})
-diff -ur grub2-1.99-ylmf2.old/util/grub.d/10_linux.in grub2-1.99-ylmf2/util/grub.d/10_linux.in
---- grub2-1.99-ylmf2.old/util/grub.d/10_linux.in	2011-12-05 14:43:45.000000000 +0000
-+++ grub2-1.99-ylmf2/util/grub.d/10_linux.in	2011-12-05 07:30:28.172154511 +0000
+@@ -233,7 +235,7 @@
+ {
+     cat << EOF
+ if [ "\${recordfail}" = 1 ]; then
+-  set timeout=-1
++  set timeout=10
+ else
+   set timeout=${2}
+ fi
+diff -ur grub2-1.99-ylmf5/util/grub.d/10_linux.in grub2-1.99-ylmf5.new//util/grub.d/10_linux.in
+--- grub2-1.99-ylmf5/util/grub.d/10_linux.in	2011-12-29 03:55:47.000000000 +0000
++++ grub2-1.99-ylmf5.new//util/grub.d/10_linux.in	2012-06-19 10:54:59.304678756 +0000
 @@ -17,6 +17,7 @@
  # You should have received a copy of the GNU General Public License
  # along with GRUB.  If not, see <http://www.gnu.org/licenses/>.
@@ -71,7 +85,7 @@ diff -ur grub2-1.99-ylmf2.old/util/grub.d/10_linux.in grub2-1.99-ylmf2/util/grub
  prefix=@prefix@
  exec_prefix=@exec_prefix@
  bindir=@bindir@
-@@ -80,17 +81,20 @@
+@@ -80,16 +81,19 @@
  {
    os="$1"
    version="$2"
@@ -92,15 +106,12 @@ diff -ur grub2-1.99-ylmf2.old/util/grub.d/10_linux.in grub2-1.99-ylmf2/util/grub
 +           title="$(gettext_quoted "%s, with Linux %s")"
 +  esac
    printf "menuentry '${title}' ${CLASS} {\n" "${os}" "${version}"
--  cat << EOF
+   cat << EOF
 -	recordfail
--EOF
-+  #cat << EOF
-+  #	recordfail
-+#EOF
++  	recordfail
+ EOF
    if ! ${recovery} ; then
        save_default_entry | sed -e "s/^/\t/"
- 
 @@ -228,19 +232,24 @@
      linux_root_device_thisversion=${GRUB_DEVICE}
    fi
@@ -134,9 +145,9 @@ diff -ur grub2-1.99-ylmf2.old/util/grub.d/10_linux.in grub2-1.99-ylmf2/util/grub
    list=`echo $list | tr ' ' '\n' | grep -vx $linux | tr '\n' ' '`
  
    if [ "$list" ] && ! $in_submenu; then
-diff -ur grub2-1.99-ylmf2.old/util/grub.d/30_os-prober.in grub2-1.99-ylmf2/util/grub.d/30_os-prober.in
---- grub2-1.99-ylmf2.old/util/grub.d/30_os-prober.in	2011-12-05 14:43:45.000000000 +0000
-+++ grub2-1.99-ylmf2/util/grub.d/30_os-prober.in	2011-12-05 15:26:48.547830269 +0000
+diff -ur grub2-1.99-ylmf5/util/grub.d/30_os-prober.in grub2-1.99-ylmf5.new//util/grub.d/30_os-prober.in
+--- grub2-1.99-ylmf5/util/grub.d/30_os-prober.in	2011-12-05 14:43:45.000000000 +0000
++++ grub2-1.99-ylmf5.new//util/grub.d/30_os-prober.in	2012-06-19 10:54:59.304678756 +0000
 @@ -17,6 +17,7 @@
  # You should have received a copy of the GNU General Public License
  # along with GRUB.  If not, see <http://www.gnu.org/licenses/>.
@@ -145,9 +156,9 @@ diff -ur grub2-1.99-ylmf2.old/util/grub.d/30_os-prober.in grub2-1.99-ylmf2/util/
  prefix=@prefix@
  exec_prefix=@exec_prefix@
  libdir=@libdir@
-diff -ur grub2-1.99-ylmf2.old/util/grub-mkconfig_lib.in grub2-1.99-ylmf2/util/grub-mkconfig_lib.in
---- grub2-1.99-ylmf2.old/util/grub-mkconfig_lib.in	2011-12-05 14:43:44.000000000 +0000
-+++ grub2-1.99-ylmf2/util/grub-mkconfig_lib.in	2011-12-05 15:26:48.547830269 +0000
+diff -ur grub2-1.99-ylmf5/util/grub-mkconfig_lib.in grub2-1.99-ylmf5.new//util/grub-mkconfig_lib.in
+--- grub2-1.99-ylmf5/util/grub-mkconfig_lib.in	2011-12-05 14:43:44.000000000 +0000
++++ grub2-1.99-ylmf5.new//util/grub-mkconfig_lib.in	2012-06-19 10:54:59.304678756 +0000
 @@ -24,6 +24,9 @@
  sbindir="@sbindir@"
  pkgdatadir="${datadir}/`echo "@PACKAGE_TARNAME@" | sed "${transform}"`"

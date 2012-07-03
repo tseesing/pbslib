@@ -1,5 +1,10 @@
+2012-06-13 hzx <huangzhongxin@ylmf.com>
+	* linux-kernel 3.0.20-ylmf3:
+	 -- enable CONFIG_USB_LIBUSUAL=y, USB device recognised as /dev/sdXX, not /dev/ubaX any more.
+	*  
+
 2012-04-26 hzx <huangzhongxin@ylmf.com>
 	* linux-kernel 3.0.20-ylmf1:
 	 -- rebuild against gcc_4.6.3 
-	 -- enable CONFIG_X86_PAE=y and CONFIG_HIGHMEM64G=y by default
+	 -- enable CONFIG_X86_PAE=y and CONFIG_HIGHMEM64G=y
 	*  

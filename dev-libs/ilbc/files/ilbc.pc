@@ -1,0 +1,14 @@
+prefix=/usr
+exec_prefix=/usr
+libdir=/usr/lib
+includedir=/usr/include
+
+Name: iLBC
+Description: Internet Low Bitrate Codec (iLBC) library
+Version: 0.0.0
+URL: http://www.ilbcfreeware.org
+Requires:
+Conflicts:
+Libs: -L${libdir} -lilbc
+Libs.private:
+Cflags: -I${includedir}/ilbc/

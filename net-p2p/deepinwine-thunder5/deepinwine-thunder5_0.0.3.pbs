@@ -1,0 +1,33 @@
+#
+# Ylmf OS package build script
+#
+# Copyright 2005-2012 Ylmf OS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="A p2sp download client running under wine."
+HOMEPAGE="http://www.linuxdeepin.com/"
+LICENSE="custom"
+PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
+
+SRC_URI="http://packages.linuxdeepin.com/deepin/pool/non-free/d/"$N"/"${N}_$V"_all.deb"
+CHECKSUM="d9327d9d5222743bbde5e92ce63d8084"
+
+RDEPEND="wine gzip tar"
+RECOMMENDED=""
+BDEPEND=""
+OPTIONAL=""
+CONFLICT=""
+
+DESKTOPFILE="thunder5.desktop"
+
+INSTALL="$N.install"
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_install() {
+	docp data/*  "$destdir"
+}
+

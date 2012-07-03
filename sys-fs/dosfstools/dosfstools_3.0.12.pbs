@@ -1,0 +1,30 @@
+#
+# Ylmf OS package build script
+#
+# Copyright 2005-2012 Ylmf OS
+# Distributed under the terms of the GNU General Public License v2
+#
+DaESCRIPTION="DOS filesystem tools - provides mkdosfs, mkfs.msdos, mkfs.vfa"
+HOMEPAGE="http://www.daniel-baumann.ch/software/dosfstools/"
+LICENSE="GPL2"
+PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
+
+SRC_URI="http://www.daniel-baumann.ch/software/"$N"/"$N-$V".tar.bz2"
+CHECKSUM="5c7c2adac9eae4afbe1f16443142b566"
+
+RDEPEND="glibc"
+BDEPEND=""
+RECOMMENDED=""
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_build() {
+	domake
+}
+
+pbs_install() {
+	make PREFIX="$destdir" MANDIR="$destdir"/usr/share/man DOCDIR="$destdir"/usr/share/doc install
+}
+

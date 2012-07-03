@@ -1,0 +1,40 @@
+#
+# Ylmf OS package build script
+#
+# Copyright 2005-2012 Ylmf OS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="High-level device independent layer for speech synthesis interface"
+HOMEPAGE="http://www.freebsoft.org/speechd"
+LICENSE="GPLv2,FDL"
+PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
+
+SRC_URI="http://www.freebsoft.org/pub/projects/speechd/"$N-$V".tar.gz"
+CHECKSUM="ccfc30ac006673d36b4223eb760ed696"
+
+RDEPEND="alsa-lib attr dbus dotconf espeak flac gcc-lib glib2 glibc jack-audio-connection-kit json-c libao libcap libICE libogg libSM libsndfile libvorbis libX11 libXau libxcb libXdmcp libXext libXi libXt libXtst nas portaudio pulseaudio util-linux-ng"
+RECOMMENDED=""
+BDEPEND=""
+OPTIONAL=""
+CONFLICT=""
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_config() {
+	config+="--without-flite"
+	doconfig
+}
+
+pbs_build() {
+	domake
+}
+
+pbs_install() {
+	domkinstall
+	# Remove conflicts with erlang (FS#21674)
+	rm -r "${destdir}"/usr/bin/run_test
+}
+

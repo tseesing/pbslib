@@ -1,0 +1,10 @@
+--- ./exrenvmap/blurImage.cpp	2012-05-22 10:52:51.973361879 +0000
++++ ./exrenvmap/blurImage.cpp.new	2012-05-22 10:52:45.369842412 +0000
+@@ -40,6 +40,7 @@
+ //-----------------------------------------------------------------------------
+ 
+ #include <blurImage.h>
++#include <string.h>
+ 
+ #include <resizeImage.h>
+ #include "Iex.h"

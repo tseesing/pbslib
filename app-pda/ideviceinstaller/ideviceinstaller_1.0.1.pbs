@@ -1,0 +1,38 @@
+#
+# Ylmf OS package build script
+#
+# Copyright 2005-2012 Ylmf OS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="A tool to interact with the installation_proxy of an Apple's iDevice"
+HOMEPAGE="http://www.libimobiledevice.org/"
+LICENSE="GPL"
+PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
+
+SRC_URI="http://www.libimobiledevice.org/downloads/"$N-$V".tar.bz2"
+CHECKSUM="749b2062e86a00c0903ca8d5f0acabc6"
+
+RDEPEND="glibc libimobiledevice libplist libxml2 libzip openssl usbmuxd zlib"
+RECOMMENDED=""
+BDEPEND=""
+OPTIONAL=""
+CONFLICT=""
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_config() {
+	config+=""
+	doconfig
+}
+
+pbs_build() {
+	domake
+}
+
+pbs_install() {
+	domkinstall
+}
+

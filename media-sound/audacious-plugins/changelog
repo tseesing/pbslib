@@ -1,3 +1,13 @@
-2010-10-14 hzx <huangzhongxin@ylmf.com>
-	* audacious-plugins 2.4.3.pbs
+audacious-plugins (3.2.3); urgency=low
+	
+	* upgrade to 3.2.3
+	* rebuild against ffmpeg-0.11.1
+
+-- hzx <huangzhongxin@ylmf.com> 2010-06-20
+
+audacious-plugins (2.4.3); urgency=low
+	
 	* add ylmfos_ffmpeg-0.8.patch
+
+-- hzx <huangzhongxin@ylmf.com> 2010-10-14
+

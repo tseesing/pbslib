@@ -1,0 +1,35 @@
+#
+# Ylmf OS package build script
+#
+# Copyright 2005-2012 Ylmf OS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="Awesome music player with brilliant and tweakful UI"
+HOMEPAGE="http://www.linuxdeepin.com/"
+LICENSE="GPL"
+PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
+
+SRC_URI="http://packages.linuxdeepin.com/deepin/pool/main/d/"$N"/"$N"_1+git"$V".orig.tar.gz"
+CHECKSUM="f4bab06a03f4d206d785f64d10ca90d3"
+
+RDEPEND="python deepin-ui mutagen gst-python pyquery scipy chardet cssselect imaging"
+RECOMMENDED="gst-plugins-ugly gst-ffmpeg"
+BDEPEND=""
+OPTIONAL=""
+CONFLICT=""
+
+INSTALL="$N.install"
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_install() {
+	docp app_theme skin src "$destdir"/usr/share/"$N"/
+	#sed -i '1s/python/python2.7/' $pkgdir/usr/share/deepin-music-player/src/main.py
+	docp "$filesdir"/"$N" "$destdir"/usr/bin
+	dodesktop debian/"$N".desktop debian/"$N".png
+	dodoc COPYING AUTHORS 
+}
+

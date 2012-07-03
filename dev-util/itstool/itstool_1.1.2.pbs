@@ -1,0 +1,40 @@
+#
+# Ylmf OS package build script
+#
+# Copyright 2005-2012 Ylmf OS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="Translation tool for XML documents that uses gettext files and ITS rules"
+HOMEPAGE="http://itstool.org/"
+LICENSE="GPLv3"
+PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
+YARCH="any"
+
+SRC_URI="http://files.itstool.org/"$N"/"$N-$V".tar.bz2"
+CHECKSUM="49235f63b536f95927e26d093bfe4513e2be042d0dd8be9c84a0d58c70262514"
+
+RDEPEND="python libxml2"
+RECOMMENDED=""
+BDEPEND=""
+OPTIONAL=""
+CONFLICT=""
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_config() {
+	config+=""
+	doconfig
+}
+
+pbs_build() {
+	domake
+}
+
+pbs_install() {
+	domkinstall
+}
+
+

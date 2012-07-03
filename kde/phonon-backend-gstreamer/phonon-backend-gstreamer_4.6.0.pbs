@@ -1,0 +1,39 @@
+#
+# Ylmf OS package build script
+#
+# Copyright 2005-2012 Ylmf OS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="Phonon GStreamer backend"
+HOMEPAGE="http://kde.org/"
+LICENSE="GPL,LGPL,FDL"
+PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
+
+SRC_URI="http://download.kde.org/stable/phonon/"$N"/"$V"/src/"$N-$V".tar.xz"
+CHECKSUM="cc380c7612aaaa87294185ded702f88a"
+
+RDEPEND="attr dbus expat flac fontconfig freetype gcc-lib glib2 glibc gst-plugins-base gstreamer json-c libcap libdrm libffi libICE libogg libpng libqzeitgeist libSM libsndfile libvorbis libX11 libXau libxcb libXdamage libXdmcp libXext libXfixes libXi libxml2 libXrender libXtst libXxf86vm mesa openssl phonon pulseaudio qt-core sqlite util-linux-ng zlib"
+RECOMMENDED=""
+BDEPEND="cmake automoc4"
+OPTIONAL=""
+CONFLICT=""
+
+INSTALL="$N.install"
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_config() {
+	doconfig -DCMAKE_BUILD_TYPE=Release -DCMAKE_SKIP_RPATH=ON
+}
+
+pbs_build() {
+	domake
+}
+
+pbs_install() {
+	domkinstall
+}
+

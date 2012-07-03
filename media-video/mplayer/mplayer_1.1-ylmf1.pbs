@@ -1,0 +1,47 @@
+#
+# Ylmf OS package build script
+#
+# Copyright 2005-2012 Ylmf OS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="Media Player for Linux (subversion snapshot and ffmpeg-git)"
+HOMEPAGE="http://www.mplayerhq.hu/"
+LICENSE="GPL"
+PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
+
+SRC_URI="http://www.mplayerhq.hu/MPlayer/releases/MPlayer-"$V".tar.xz"
+CHECKSUM="ac7bf1cfedc1c5c24bfc83107eefb1d9"
+
+RDEPEND="a52dec aalib alsa-lib attr bzip2 cyrus-sasl dbus directfb e2fsprogs enca expat faac faad2 flac fontconfig freetype fribidi gcc-lib giflib glibc gnutls jack-audio-connection-kit json-c keyutils krb5 lame lcms libass libbluray libcap libcdio libdca libdrm libdv libgcrypt libgpg-error libgsm libICE libjpeg-turbo libmad libmng libogg libpng libsdl libSM libsndfile libtasn1 libtheora libtool libvdpau libvorbis libX11 libXau libxcb libXdamage libXdmcp libXext libXfixes libXi libXinerama libxml2 libXScrnSaver libXt libXtst libXv libXxf86dga libXxf86vm lirc lzo mesa mpg123 nas ncurses openal opencore-amr openldap openssl orc pulseaudio rtmpdump samba schroedinger slang speex talloc tdb udev util-linux-ng x264(>=20120508) xvidcore zlib"
+RECOMMENDED="dejavu-fonts-ttf"
+BDEPEND="dejavu-fonts-ttf yasm"  
+CONFLICT="mplayer2 mplayer-svn"
+
+pbs_unpack() {
+	dounpack
+}
+
+pbs_config() {
+	# It is strongly recommended to let MPlayer choose the correct CFLAGS!
+	unset CFLAGS
+	config=" --prefix=/usr 
+	         --mandir=/usr/share/man 
+		 --confdir=/etc/mplayer
+		 --language=all
+		 --enable-runtime-cpudetection 
+		 --disable-gui" 
+	doconfig
+}
+
+pbs_build() {
+	[ "x$ARCH" = "xi686" ] && sed 's|-march=i486|-march=i686|g' -i config.mak
+	domake
+}
+
+pbs_install() {
+	domkinstall 
+	docp etc/{codecs.conf,input.conf,example.conf} "$filesdir"/mplayer.conf  "$destdir"/etc/mplayer/
+	doln /usr/share/fonts/truetype/ttf-dejavu/DejaVuSans.ttf  "$destdir"/usr/share/mplayer/subfont.ttf
+}
+

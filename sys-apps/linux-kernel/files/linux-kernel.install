@@ -21,10 +21,12 @@ post_remove() {
 }
 
 post_upgrade() {
+	old_ver="$2"
+	rm -rf /var/lib/initramfs-tools/"$old_ver" 2>/dev/null
 	post_install $1 $2
 }
 
 post_downgrade() {
-	post_install $1 $2
+	post_upgrade
 }
 

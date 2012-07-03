@@ -1,0 +1,39 @@
+. /usr/lib/ybs/funcs
+
+ldm=lightdm.service
+gdm=gdm.service
+files="$ldm $gdm"
+
+post_install() {
+	if systemctl enable $files 2>/dev/null; then
+		echo "* $files are exits, I choose $ldm."
+		systemctl disable $files
+		systemctl enable $ldm
+	fi
+	return 0
+}
+
+pre_remove() {
+	systemctl disable $ldm || true
+}
+
+post_remove() {
+	if ! systemctl enable $gdm 2>/dev/null; then
+		echo "* $ldm was removed, but $gdm is not found or broken"
+		echo "* You may launch desktop manually."
+	else
+		echo "* $ldm was removed, but $gdm is found"
+		echo "* use $gdm for display-manager."
+	fi
+	return 0
+}
+
+post_upgrade() {
+	systemctl --system daemon-reload
+	post_install
+}
+
+post_downgrade() {
+	post_upgrade
+}
+

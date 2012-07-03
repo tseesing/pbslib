@@ -1,0 +1,39 @@
+#
+# Ylmf OS package build script
+#
+# Copyright 2005-2012 Ylmf OS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="Xournal is an application for notetaking, sketching, and keeping a journal using a stylus."
+HOMEPAGE="http://xournal.sourceforge.net/"
+LICENSE="GPL"
+PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
+
+SRC_URI="http://sourceforge.net/projects/"$N"/files/"$N"/"$V"/"$N-$V".tar.gz"
+CHECKSUM="9ae03a88459799697144bcd2a404bc1b"
+
+RDEPEND="atk cairo expat fontconfig freetype gail gcc-lib gdk-pixbuf glib2 glibc gtk+ lcms libart_lgpl libffi libgnomecanvas libjpeg-turbo libpng libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libXinerama libxml2 libXrandr libXrender pango pixman poppler zlib"
+RECOMMENDED=""
+BDEPEND=""
+OPTIONAL=""
+CONFLICT=""
+
+INSTALL="$N.install"
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_config() {
+	./configure --prefix=/usr LIBS='-lm -lz'
+}
+
+pbs_build() {
+	domake
+}
+
+pbs_install() {
+	domkinstall desktop-install
+}
+

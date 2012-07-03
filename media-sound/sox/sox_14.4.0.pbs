@@ -1,0 +1,43 @@
+#
+# Ylmf OS package build script
+#
+# Copyright 2005-2012 Ylmf OS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="The swiss army knife of sound processing programs"
+HOMEPAGE="http://sourceforge.net/projects/sox"
+LICENSE="GPL"
+PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
+
+SRC_URI="http://downloads.sourceforge.net/"$N"/"$N-$V".tar.bz2"
+CHECKSUM="12dfc57e503ed4e18cedcac292cdae7982281978"
+
+RDEPEND="alsa-lib attr bzip2 dbus ffmpeg(>=0.11.1) file flac gcc-lib glibc json-c lame libao libcap libgsm libICE libid3tag libmad libogg libpng libSM libsndfile libtheora libtool libva libvorbis libX11 libXau libxcb libXdmcp libXext libXi libXtst opencore-amr openssl orc pulseaudio rtmpdump schroedinger speex util-linux-ng wavpack x264 xvidcore zlib"
+BDEPEND=""
+RECOMMENDED=""
+CONFLICT=""
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_patch() {
+	dopatch sox_default_audio_driver_fallback.patch
+	dopatch sox-ffmpeg0.11.patch
+}
+
+pbs_config() {
+	config+="--with-dyn-default"
+		#--with-distro="Arch Linux""
+	doconfig
+}
+
+pbs_build() {
+	domake
+}
+
+pbs_install() {
+	domkinstall
+}
+

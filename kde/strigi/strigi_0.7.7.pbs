@@ -1,0 +1,46 @@
+#
+# Ylmf OS package build script
+#
+# Copyright 2005-2012 Ylmf OS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="Fast crawling desktop search engine with Qt4 GUI"
+HOMEPAGE="http://www.vandenoever.info/software/strigi/"
+LICENSE="GPL"
+PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
+
+SRC_URI="ftp://ftp.archlinux.org/other/"$N"/"$N-$V".tar.bz2"
+CHECKSUM="ca0a0fd5c2b99879f6330837aeede996"
+
+RDEPEND="bzip2 dbus exiv2 expat fontconfig freetype gcc-lib glib2 glibc libffi libICE libpng libSM libX11 libXau libxcb libXdmcp libXext libxml2 libXrender qt-core util-linux-ng zlib"
+BDEPEND="cmake"
+
+INSTALL="$N.install"
+
+pbs_unpack() {
+       dounpack
+}
+
+pbs_patch() {
+	dopatch strigi-0.7.7-gcc47.patch
+}
+
+pbs_config() {
+	doconfig -DCMAKE_BUILD_TYPE=Release \
+   		 -DENABLE_INOTIFY=ON \
+    		 -DENABLE_LOG4CXX=OFF \
+    		 -DENABLE_FAM=OFF \
+    		 -DENABLE_CLUCENE=OFF \
+    		 -DENABLE_CLUCENE_NG=OFF \
+    		 -DENABLE_FFMPEG=OFF
+}
+
+pbs_build() {
+	domake
+}
+
+pbs_install() {
+	domkinstall
+}
+

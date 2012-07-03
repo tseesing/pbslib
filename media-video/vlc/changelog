@@ -1,4 +1,11 @@
-2012-03-01 hzx<huangzhongxin@ylmf.com>
-	* vlc 2.0.0-ylmf1
+vlc (2.0.1-ylmf1); urgency=high
+
+	* rebuild against ffmpeg-0.11.1
+
+-- hzx <huangzhongxin@ylmf.com> 2012-06-20
+
+vlc (2.0.0-ylmf1); urgency=low
+
 	* enable qt frondend and rebuild 
-	*  
+
+-- hzx <huangzhongxin@ylmf.com> 2012-03-01

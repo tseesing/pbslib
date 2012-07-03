@@ -13,7 +13,7 @@ PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
 SRC_URI="http://www.libimobiledevice.org/downloads/"$N-$V".tar.bz2"
 CHECKSUM="cdc13037e822d9ac2e109536701d153a"
 
-RDEPEND="glib2 glibc gnutls libgcrypt libgpg-error libplist libtasn1 libxml2 usbmuxd zlib"
+RDEPEND="gcc-lib glib2 glibc gnutls libgcrypt libgpg-error libplist libtasn1 libxml2 python usbmuxd zlib"
 RECOMMENDED=""
 BDEPEND=""
 OPTIONAL=""
@@ -23,8 +23,19 @@ pbs_unpack() {
         dounpack
 }
 
+pbs_patch() {
+	dopatch 00git_ios5_support.patch    \
+		01-libs.private.patch \
+		02-add-missing-linking.patch \
+		03_ac_pkg_swig_m4_fixed.patch \
+		04_libplist_DSO_linking.patch \
+		05_remove_gcry_need.patch \
+		06_git_ios5_handle_error.patch
+
+}
+
 pbs_config() {
-	config+=""
+	config+="--enable-dev-tools"
 	doconfig
 }
 

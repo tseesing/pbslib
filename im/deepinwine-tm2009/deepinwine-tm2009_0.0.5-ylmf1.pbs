@@ -10,7 +10,7 @@ HOMEPAGE="http://www.linuxdeepin.com/"
 LICENSE="custom"
 PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
 
-SRC_URI="http://packages.linuxdeepin.com/deepin/pool/non-free/d/deepinwine-tm2009/deepinwine-tm2009_0.0.5_i386.deb"
+SRC_URI="http://packages.linuxdeepin.com/deepin/pool/non-free/d/"$N"/"${N}_$V"_i386.deb"
 CHECKSUM="1768968a6ffe76d5bef5b997d4f2324c"
 
 RDEPEND="wine wqy-microhei gzip tar"

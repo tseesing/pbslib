@@ -1,0 +1,35 @@
+#
+# Ylmf OS package build script
+#
+# Copyright 2005-2012 Ylmf OS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="Multi-purpose desktop calculator"
+HOMEPAGE="http://qalculate.sourceforge.net/"
+LICENSE="GPL"
+PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
+
+SRC_URI="http://downloads.sourceforge.net/sourceforge/qalculate/"$N-$V".tar.gz"
+CHECKSUM="c15f7f3a97995decf62cc964956fc1e374ecd78c"
+
+RDEPEND="cln gcc-lib glib2 glibc gmp libxml2 ncurses readline zlib"
+BDEPEND=""
+
+pbs_unpack() {
+       dounpack
+}
+
+pbs_config() {
+	config+=""
+	doconfig
+}
+
+pbs_build() {
+	domake
+}
+
+pbs_install() {
+	domkinstall
+}
+
