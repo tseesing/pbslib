@@ -5,16 +5,18 @@
 # Distributed under the terms of the GNU General Public License v2
 #
 
-DESCRIPTION="Display a message or query in a window"
-HOMEPAGE="http://xorg.freedesktop.org/"
-LICENSE="custom"
+DESCRIPTION="kde configure module for fcitx"
+HOMEPAGE="http://code.google.com/p/fcitx/"
+LICENSE="GPL"
 PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
 
-SRC_URI="http://xorg.freedesktop.org/archive/individual/app/xmessage-$V.tar.bz2"
+SRC_URI="http://fcitx.googlecode.com/files/"$N-$V".tar.bz2"
+CHECKSUM="9be716e9fb851896b54cfa805bce064bfcbdc2cf"
 
-RDEPEND="lua"
-BDEPEND=""
+RDEPEND=""
 RECOMMENDED=""
+BDEPEND=""
+OPTIONAL=""
 CONFLICT=""
 
 pbs_unpack() {
@@ -31,7 +33,6 @@ pbs_build() {
 }
 
 pbs_install() {
-	domkinstall 
-	dodoc COPYING
+	domkinstall
 }
 

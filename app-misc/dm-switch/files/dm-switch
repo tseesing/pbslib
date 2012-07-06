@@ -1,0 +1,49 @@
+#!/bin/bash
+#
+# Copyright 2012-2013 startos
+# Distributed under the terms of the GNU General Public License v2
+#
+# dm-switch: DM (display manager) tools.
+
+[ -f /lib/systemd/system/gdm.service ] && gdm=gdm.service
+[ -f /lib/systemd/system/kdm.service ] && kdm=kdm.service
+[ -f /lib/systemd/system/xdm.service ] && xdm=xdm.service
+[ -f /lib/systemd/system/lxdm.service ] && lxdm=lxdm.service
+[ -f /lib/systemd/system/lightdm.service ] && lightdm=lightdm.service
+
+files="$lxdm $xdm $gdm $kdm $lightdm"
+
+case $1 in
+	list)
+		echo "* Display Managers: "
+		if [ "x$files" = "x" ]; then
+			echo "* No DM (display manager) found."
+			exit 1
+		fi
+
+		for i in $files; do
+			i=${i/.service/}
+			Description=$(grep -w Description /lib/systemd/system/${i}.service)
+			Description=${Description/Description=/}
+			status=$(systemctl is-enabled ${i}.service)
+			echo " ${i} --  $Description -- $status"
+		done	;;
+	
+	enable)
+		systemctl enable ${2/.service/}.service	;;
+	disable)
+		systemctl disable ${2/.service/}.service ;;
+	enable-all)
+		systemctl enable $files ;;
+	disable-all)
+		systemctl disable $files ;;
+	*)
+		echo "Usage: dm-switch [options] DM"
+		echo " list        - list available display managers"
+		echo " enable      - enable specifical display managers"
+		echo " disable     - enable specifical display managers"
+		echo " enable-all  - enable all display managers, but the last one is default"
+		echo " disable-all - disable all display managers"
+
+esac
+

@@ -5,6 +5,7 @@ unit="ntpd.service"
 post_install() {
 	douseradd -c "ntp user" -d "/dev/null" -s "/bin/false" -r "ntp"
 	dogroupadd -r "ntp"
+	
 	# Systemd unit 
 	systemctl enable $unit
 	start ntpd ||true

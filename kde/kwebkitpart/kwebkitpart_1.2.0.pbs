@@ -1,15 +1,19 @@
 #
-# YLmf_OS package build script
+# Ylmf OS package build script
+#
+# Copyright 2005-2012 Ylmf OS
+# Distributed under the terms of the GNU General Public License v2
 #
 
 DESCRIPTION="A WebKit browser component for KDE"
 HOMEPAGE="http://opendesktop.org/content/show.php?content=127960"
-LICENSE="GPL"
+LICENSE="LGPL"
 PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 
-SRC_URI="ftp://ftp.archlinux.org/other/$N/$N-$V.tar.xz"
+SRC_URI="ftp://ftp.archlinux.org/other/"$N"/"$N-$V".tar.xz"
+CHECKSUM="e736d7b26cf6e3c0eed837837b3f032b"
 
-RDEPEND="kdebase-runtime"
+RDEPEND="acl attica attr bzip2 dbus expat fontconfig freetype gcc-lib glib2 glibc gst-plugins-base gstreamer herqq kdelibs libdbusmenu-qt libffi libICE libpng libSM libX11 libXau libxcb libXcursor libXdmcp libXext libXfixes libXft libXi libxml2 libXpm libXrender libXtst openssl qca qt-core soprano sqlite strigi udev util-linux-ng xz-utils zlib"
 BDEPEND="cmake automoc4"
 
 INSTALL="$N.install"
@@ -19,9 +23,7 @@ pbs_unpack() {
 }
 
 pbs_config() {
-       mkdir -p ../build && cd ../build
-	cmake ../$N-$V -DCMAKE_BUILD_TYPE=Release \
-		-DCMAKE_INSTALL_PREFIX=/usr
+	doconfig -DCMAKE_BUILD_TYPE=Release 
 }
 
 pbs_build() {

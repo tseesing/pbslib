@@ -1,5 +1,8 @@
 #
-# YLmf_OS package build script
+# Ylmf OS package build script
+#
+# Copyright 2005-2012 Ylmf OS
+# Distributed under the terms of the GNU General Public License v2
 #
 
 DESCRIPTION="KDE Gtk Config"
@@ -7,21 +10,18 @@ HOMEPAGE="http://www.kde.org/"
 LICENSE="GPL"
 PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 
-SRC_URI="http://download.kde.org/stable/$N/$V/src/$N-$V.tar.bz2"
+SRC_URI="http://download.kde.org/stable/"$N"/"$V"/src/"$N-$V".tar.bz2"
+CHECKSUM=""
 
-RDEPEND=""
-BDEPEND="kdelibs cmake automoc4"
-
-INSTALL="$N.install"
+RDEPEND="acl atk attica attr bzip2 cairo dbus expat fontconfig freetype gcc-lib gdk-pixbuf glib2 glibc gtk+ gtk+3 herqq kdelibs libdbusmenu-qt libffi libICE libpng libSM libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXft libXi libXinerama libxml2 libXpm libXrandr libXrender libXtst openssl pango pixman qca qt-core soprano strigi udev util-linux-ng xz-utils zlib"
+BDEPEND="cmake automoc4"
 
 pbs_unpack() {
        dounpack
 }
 
 pbs_config() {
-       mkdir -p ../build && cd ../build
-	cmake ../$N-$V -DCMAKE_BUILD_TYPE=Release \
-		-DCMAKE_INSTALL_PREFIX=/usr
+	doconfig -DCMAKE_BUILD_TYPE=Release 
 }
 
 pbs_build() {

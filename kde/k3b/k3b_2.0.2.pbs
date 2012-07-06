@@ -7,14 +7,14 @@
 
 DESCRIPTION="Feature-rich and easy to handle CD burning application"
 HOMEPAGE="http://k3b.org/"
-LICENSE="GPLv2"
+LICENSE="GPL"
 PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
 
 SRC_URI="http://downloads.sourceforge.net/"$N"/"$N-$V".tar.bz2"
 CHECKSUM="c86113af31a2032e57fd2f302b5f637a"
 
-RDEPEND=""
-BDEPEND="cmake automoc4 docbook-xml"
+RDEPEND="acl attica attr bzip2 dbus e2fsprogs expat ffmpeg flac fontconfig freetype gcc-lib glib2 glibc gst-plugins-base gstreamer herqq json-c kdelibs kdemultimedia keyutils krb5 lame libcap libdbusmenu-qt libdiscid libdvdread libffi libgsm libICE libmad libmpcdec libmusicbrainz libogg libpng libproxy libqzeitgeist libsamplerate libSM libsndfile libtheora libva libvorbis libX11 libXau libxcb libXcursor libXdmcp libXext libXfixes libXft libXi libxml2 libXpm libXrender libXScrnSaver libXtst musicbrainz neon opencore-amr openssl orc phonon pulseaudio qca qt-core rtmpdump schroedinger soprano speex sqlite strigi taglib udev util-linux-ng x264 xvidcore xz-utils zlib"
+BDEPEND="cmake automoc4"
 RECOMMENDED=""
 
 INSTALL="$N.install"
@@ -24,7 +24,7 @@ pbs_unpack() {
 }
 
 pbs_patch() {
-	dopatch k3b-2.0.2-ffmpeg.patch disable-kcddb.patch
+	dopatch k3b-2.0.2-ffmpeg.patch k3b-2.0.2-libavformat54.patch
 }
 
 pbs_config() {

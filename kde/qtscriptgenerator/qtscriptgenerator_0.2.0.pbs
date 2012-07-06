@@ -1,0 +1,46 @@
+#
+# Ylmf OS package build script
+#
+# Copyright 2005-2012 Ylmf OS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="A tool that generates Qt bindings for Qt Scrip"
+HOMEPAGE="http://code.google.com/p/qtscriptgenerator/"
+LICENSE="GPL"
+PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
+
+SRC_URI="http://qtscriptgenerator.googlecode.com/files/"$N"-src-"$V".tar.gz"
+CHECKSUM="4c1078f26b196156e857c17c9d11a66cfea66f00"
+
+RDEPEND="expat fontconfig freetype gcc-lib glib2 glibc gst-plugins-base gstreamer libdrm libffi libICE libpng libSM libX11 libXau libxcb libXdamage libXdmcp libXext libXfixes libxml2 libXrender libXxf86vm mesa openssl qt-core sqlite util-linux-ng zlib"
+BDEPEND=""
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_patch() {
+	dopatch phonon.patch no-phonon.patch
+}
+
+pbs_build() {
+	# Prepare plugins
+	cd generator
+	qmake
+	domake
+	./generator --include-paths=/usr/include
+
+	# Build plugins
+	cd "${srcdir}"/qtbindings
+	qmake
+	domake
+}
+
+pbs_install() {
+	cd "${srcdir}"/qtbindings
+
+	# Move plugins to correct directory
+	docp "${srcdir}"/plugins/script/* "${destdir}"/usr/lib/qt/plugins/script/
+}
+

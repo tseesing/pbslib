@@ -13,7 +13,7 @@ PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
 SRC_URI="https://launchpadlibrarian.net/108078701/"$N-$V".tar.gz"
 CHECKSUM="802ca25e115cc81f844874df9a7288b9"
 
-RDEPEND="glib2 glibc libffi libX11 libXau libxcb libXdmcp libXext libXi libxkbfile libxklavier libxml2 pam zlib"
+RDEPEND="dm-switch glib2 glibc libffi libX11 libXau libxcb libXdmcp libXext libXi libxkbfile libxklavier libxml2 pam zlib"
 RECOMMENDED=""
 BDEPEND="itstool"
 OPTIONAL=""

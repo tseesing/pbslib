@@ -1,0 +1,24 @@
+#
+# Ylmf OS package build script
+#
+# Copyright 2005-2012 Ylmf OS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="dm-switch: dm (display manager) manage tool."
+HOMEPAGE="http://www.startos.com"
+LICENSE="GPLv2+"
+PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
+
+SRC_URI=""
+
+RDEPEND="bash"
+RECOMMENDED=""
+BDEPEND=""
+OPTIONAL=""
+CONFLICT=""
+
+pbs_install() {
+	docp "$filesdir"/"$N" "$destdir"/usr/bin/
+}
+

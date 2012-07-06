@@ -1,0 +1,26 @@
+#
+# Ylmf OS package build script
+#
+# Copyright 2005-2012 Ylmf OS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="KDE desktop environment"
+HOMEPAGE="http://www.kde.org"
+LICENSE="GPL"
+PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
+YARCH="any"
+
+SRC_URI=""
+
+RDEPEND="kdeadmin kdeartwork kde-baseapps kdegames kdegraphics-thumbnailers kde-l10n-zh_CN kdelibs kdemultimedia kdenetwork kdepim kdepimlibs kdepim-runtime kdeplasma-addons kde-runtime kdetoys kde-wallpapers kde-workspace oxygen-icons"
+RECOMMENDED=""
+BDEPEND=""
+OPTIONAL=""
+CONFLICT=""
+
+pbs_install() {
+	mkdir -p "$destdir"/usr/share/doc/"$N"/
+	touch "$destdir"/usr/share/doc/"$N"/readme
+}
+

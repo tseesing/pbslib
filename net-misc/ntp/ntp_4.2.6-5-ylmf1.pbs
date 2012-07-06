@@ -7,7 +7,7 @@
 
 DESCRIPTION="Network Time Protocol suite/programs"
 HOMEPAGE="http://www.ntp.org/"
-LICENSE="GPL"
+LICENSE="custom"
 PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
 
 SRC_URI="http://www.eecis.udel.edu/~ntp/ntp_spool/"$N"4/"$N"-4.2.6p5.tar.gz"
@@ -36,6 +36,7 @@ pbs_build() {
 pbs_install() {
 	domkinstall
 	dounit "ntpd.service"
+	dodoc COPYRIGHT
 	cd "$destdir"
 	docp "$filesdir"/ntp.conf etc/
 }

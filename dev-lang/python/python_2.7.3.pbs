@@ -22,8 +22,12 @@ pbs_unpack() {
 }
 
 pbs_patch() {
+	#
 	dopatch ylmfos_add-platform-2.7.2.patch
 	
+	#
+	dopatch python-2.7-010-change-pyconfig-h-location.patch
+
 	# Temporary workaround for FS#22322
 	# See http://bugs.python.org/issue10835 for upstream report
 	sed -i "/progname =/s/python/python2.7/" Python/pythonrun.c
