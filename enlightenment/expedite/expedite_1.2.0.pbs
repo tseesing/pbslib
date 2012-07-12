@@ -1,0 +1,39 @@
+#
+# Ylmf OS package build script
+#
+# Copyright 2005-2012 Ylmf OS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="Performance and correctness test suite for Evas."
+HOMEPAGE="http://www.enlightenment.org/"
+LICENSE="BSD"
+PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
+
+SRC_URI="http://download.enlightenment.org/releases/"$N-$V".tar.gz"
+CHECKSUM="e9dfdf3dc35fdbec189914e3960c9949"
+
+RDEPEND="directfb eet eina evas expat fontconfig freetype fribidi gcc-lib glibc gnutls libgcrypt libgpg-error libICE libjpeg-turbo libsdl libSM libtasn1 libX11 libXau libxcb libXdmcp libXt nas util-linux-ng zlib"
+RECOMMENDED=""
+BDEPEND=""
+OPTIONAL=""
+CONFLICT=""
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_config() {
+	config+=""
+	doconfig
+}
+
+pbs_build() {
+	domake
+}
+
+pbs_install() {
+	domkinstall
+	dodoc COPYING
+}
+

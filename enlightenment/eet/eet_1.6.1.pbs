@@ -1,0 +1,39 @@
+#
+# Ylmf OS package build script
+#
+# Copyright 2005-2012 Ylmf OS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="Data encode/decode and storage library."
+HOMEPAGE="http://www.enlightenment.org/"
+LICENSE="BSD"
+PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
+
+SRC_URI="http://download.enlightenment.org/releases/"$N-$V".tar.gz"
+CHECKSUM="eaa6c1088b60d2177b57554690507eb7"
+
+RDEPEND="eina gnutls libgcrypt libgpg-error libjpeg-turbo libtasn1"
+RECOMMENDED=""
+BDEPEND=""
+OPTIONAL=""
+CONFLICT=""
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_config() {
+	config+="--enable-amalgamation --enable-openssl"
+	doconfig
+}
+
+pbs_build() {
+	domake
+}
+
+pbs_install() {
+	domkinstall
+	dodoc COPYING
+}
+

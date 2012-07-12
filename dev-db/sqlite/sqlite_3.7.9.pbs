@@ -26,14 +26,12 @@ pbs_build() {
 	export CFLAGS="$CFLAGS -DSQLITE_ENABLE_FTS3=1 -DSQLITE_ENABLE_COLUMN_METADATA=1 -DSQLITE_ENABLE_UNLOCK_NOTIFY -DSQLITE_SECURE_DELETE"
 
 	# build sqlite
-	config+="--disable-static"
-	doconfig || return 1
+	./configure --prefix=/usr --disable-static || return 1
 	domake   || return 1 
 
 	# build the tcl extension    
 	cd tea
-	config+="--with-system-sqlite"
-	doconfig || return 1
+	./configure --prefix=/usr --with-system-sqlite || return 1
 	domake
 }
 

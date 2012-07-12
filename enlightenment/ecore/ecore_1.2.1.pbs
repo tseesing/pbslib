@@ -1,0 +1,39 @@
+#
+# Ylmf OS package build script
+#
+# Copyright 2005-2012 Ylmf OS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="Core mainloop, display abstraction and utility library."
+HOMEPAGE="http://www.enlightenment.org/"
+LICENSE="BSD"
+PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
+
+SRC_URI="http://download.enlightenment.org/releases/"$N-$V".tar.gz"
+CHECKSUM="557f8411d323b14ed7bf1be368ab302a"
+
+RDEPEND="curl cyrus-sasl eet eina evas expat fontconfig freetype fribidi glib2 glibc gnutls libgcrypt libgpg-error libidn libjpeg-turbo libssh2 libtasn1 libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libXinerama libXp libXrandr libXrender libXScrnSaver libXtst openldap openssl rtmpdump zlib"
+RECOMMENDED=""
+BDEPEND=""
+OPTIONAL=""
+CONFLICT=""
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_config() {
+	config+=""
+	doconfig
+}
+
+pbs_build() {
+	domake
+}
+
+pbs_install() {
+	domkinstall
+	dodoc COPYING
+}
+

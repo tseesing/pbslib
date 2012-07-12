@@ -1,0 +1,86 @@
+#
+# Ylmf OS package build script
+#
+# Copyright 2005-2012 Ylmf OS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="A lightweight display manager"
+HOMEPAGE="https://launchpad.net/lightdm"
+LICENSE="GPL"
+PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
+
+SRC_URI="https://launchpadlibrarian.net/108078701/"$N-$V".tar.gz"
+CHECKSUM="802ca25e115cc81f844874df9a7288b9"
+
+RDEPEND="dm-switch glib2 glibc libffi libX11 libXau libxcb libXdmcp libXext libXi libxkbfile libxklavier libxml2 pam zlib"
+RECOMMENDED=""
+BDEPEND="itstool"
+OPTIONAL=""
+CONFLICT=""
+
+NOTES="
+ Even though the default /etc/lightdm/lightdm.conf will work for
+ most users, make sure you configure it to suit your needs
+ before using lightdm for the first time.
+ You can test the configuration file using the following
+ command: lightdm --test-mode -c /etc/lightdm/lightdm.conf. This
+ requires xorg-server to be built with the 'kdrive' useflag.
+"
+
+INSTALL="$N.install"
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_patch() {
+	dopatch session-wrapper-lightdm.patch
+	dopatch ylmfos_gdmflexiserver-compatible-with-gdm.patch
+}
+
+pbs_config() {
+	# Maybe in the future, we can support some automatic session and user
+        # recognition. Until then, use default values
+        local default=gnome user=root greeter
+
+        # Default greeter is lightdm-ylmfos-greeter
+        greeter=lightdm-ylmfos-greeter
+
+	config+=" --disable-static
+	          --disable-tests
+	          --disable-liblightdm-qt
+		  --enable-introspection
+		  --with-user-session="${user}"
+		  --with-greeter-session="${greeter}"
+		  --with-greeter-user="${user}" "
+	doconfig
+}
+
+pbs_build() {
+	domake
+}
+
+pbs_install() {
+	domkinstall
+	docp data/{"${N}",users,keys}.conf "$destdir"/etc/"${N}"/
+	docp "$filesdir"/lightdm-session "$destdir"/usr/sbin/
+	
+	cd "$destdir"
+		
+	# Backup confile
+	cp etc/lightdm/lightdm.conf{,.ori}
+
+	# For systemd
+	dounit "$N".service
+
+	# Remove .la files
+	find . -name "*.la" -exec rm -rf {} +
+	
+	rm -rf etc/init
+	dopamd "$filesdir"/{lightdm,lightdm-autologin} 
+
+	#
+	doln /usr/libexec/lightdm/gdmflexiserver usr/bin/gdmflexiserver
+}
+

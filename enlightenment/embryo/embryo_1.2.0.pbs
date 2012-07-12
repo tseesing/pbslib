@@ -1,0 +1,39 @@
+#
+# Ylmf OS package build script
+#
+# Copyright 2005-2012 Ylmf OS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="Small Pawn based virtual machine and compiler."
+HOMEPAGE="http://www.enlightenment.org/"
+LICENSE="BSD"
+PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
+
+SRC_URI="http://download.enlightenment.org/releases/"$N-$V".tar.gz"
+CHECKSUM="6c070a16d61141d695397fc248e6176e"
+
+RDEPEND="eina"
+RECOMMENDED=""
+BDEPEND=""
+OPTIONAL=""
+CONFLICT=""
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_config() {
+	config+=""
+	doconfig
+}
+
+pbs_build() {
+	domake
+}
+
+pbs_install() {
+	domkinstall
+	dodoc COPYING
+}
+

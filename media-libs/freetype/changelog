@@ -1,5 +1,5 @@
-2012-03-06 hzx <huangzhongxin@ylmf.com>
-	* freetype 2.4.4-ylmf1
+freetype (2.4.4-ylmf1);
+
 	* add patches from ubuntu:
 	 - freetype-2.1.7-backwards.compat.patch
 	 - enable-subpixel-rendering.patch
@@ -7,5 +7,7 @@
 	 - CVE-2011-0226.patch
 	 - CVE-2011-3256.patch
 	 - CVE-2011-3439.patch
+
+-- hzx <huangzhongxin@ylmf.com> 2012-03-06
 
 

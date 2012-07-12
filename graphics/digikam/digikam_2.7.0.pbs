@@ -1,0 +1,38 @@
+#
+# Ylmf OS package build script
+#
+# Copyright 2005-2012 Ylmf OS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="A digital photo management application for KDE."
+HOMEPAGE="http://www.digikam.org/"
+LICENSE="GPL"
+PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
+
+SRC_URI="http://sourceforge.net/projects/"$N"/files/"$N"/"$V"/"$N-$V".tar.bz2"
+CHECKSUM="428e5234fa4daa6f154bf23c63787bdd"
+
+RDEPEND="acl atk attica attr avahi bzip2 cairo dbus exiv2 expat ffmpeg flac fontconfig freetype gcc-lib gdk-pixbuf giflib glib2 glibc gnutls gst-plugins-base gstreamer gtk+ herqq ilmbase jasper json-c kdelibs kdepimlibs lame lcms lensfun libcap libdbusmenu-qt libdrm libexif libffi libgcrypt libgpg-error libgphoto2 libgpod libgsm libical libICE libimobiledevice libjpeg-turbo libkdcraw libkexiv2 libkipi libksane liblqr libogg libpcre libpgf libplist libpng libqzeitgeist libSM libsndfile libtasn1 libtheora libtiff libtool libusb libusb-compat libva libvorbis libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXft libXi libXinerama libxml2 libXpm libXrandr libXrender libXScrnSaver libxslt libXtst libXxf86vm marble mesa opencore-amr opencv openexr openssl orc pango phonon pixman pulseaudio qca qjson qt-core rtmpdump sane-backends schroedinger soprano speex sqlite strigi udev usbmuxd util-linux-ng v4l-utils x264 xvidcore xz-utils zlib"
+BDEPEND="cmake"
+RECOMMENDED=""
+CONFLICT=""
+
+INSTALL="$N.install"
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_config() {
+	doconfig -DCMAKE_BUILD_TYPE=Release -DCMAKE_SKIP_RPATH=ON
+}
+
+pbs_build() {
+	domake
+}
+
+pbs_install() {
+	domkinstall
+}
+

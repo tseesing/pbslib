@@ -1,7 +1,7 @@
 http://bugs.cinelerra.org/ticket/949
 https://bugs.gentoo.org/show_bug.cgi?id=361709
 
-diff -Nru cinelerra.orig//cinelerra/channelpicker.C cinelerra/cinelerra/channelpicker.C
+diff -Nru cinelerra/channelpicker.C cinelerra/channelpicker.C
 --- cinelerra/channelpicker.C	2010-11-24 18:18:03.000000000 -0500
 +++ cinelerra/channelpicker.C	2011-02-17 13:31:30.147880002 -0500
 @@ -39,7 +39,7 @@
@@ -22,9 +22,9 @@ diff -Nru cinelerra.orig//cinelerra/channelpicker.C cinelerra/cinelerra/channelp
  }
 
  PrefsChannelPicker::~PrefsChannelPicker()
-diff -Nru cinelerra.orig//cinelerra/Makefile.am cinelerra/cinelerra/Makefile.am
+diff -Nru cinelerra/Makefile.am cinelerra/cinelerra/Makefile.am
 --- cinelerra/Makefile.am	2010-11-24 18:18:03.000000000 -0500
-+++ cinelerra/Makefile.am	2011-02-17 13:31:30.147880002 -0500
++++ cinelerra/cinelerra/Makefile.am	2011-02-17 13:31:30.147880002 -0500
 @@ -305,10 +305,8 @@
 		    vattachmentpoint.C \
 		    vautomation.C \
@@ -36,9 +36,9 @@ diff -Nru cinelerra.orig//cinelerra/Makefile.am cinelerra/cinelerra/Makefile.am
 		    vdevicev4l2.C \
 		    vdevicev4l2jpeg.C \
 		    vdevicex11.C \
-diff -Nru cinelerra.orig//cinelerra/reversemake cinelerra/cinelerra/reversemake
+diff -Nru cinelerra/reversemake cinelerra/cinelerra/reversemake
 --- cinelerra/reversemake	2010-11-24 18:18:03.000000000 -0500
-+++ cinelerra/reversemake	2011-02-17 13:31:30.151880002 -0500
++++ cinelerra/cinelerra/reversemake	2011-02-17 13:31:30.151880002 -0500
 @@ -32,10 +32,8 @@
  make $OBJDIR/vedits.o
  make $OBJDIR/vedit.o
@@ -50,9 +50,9 @@ diff -Nru cinelerra.orig//cinelerra/reversemake cinelerra/cinelerra/reversemake
  make $OBJDIR/vdevicebase.o
  make $OBJDIR/vdevice1394.o
  make $OBJDIR/vautomation.o
-diff -Nru cinelerra.orig//cinelerra/videodevice.C cinelerra/cinelerra/videodevice.C
+diff -Nru cinelerra/videodevice.C cinelerra/cinelerra/videodevice.C
 --- cinelerra/videodevice.C	2010-11-24 18:18:03.000000000 -0500
-+++ cinelerra/videodevice.C	2011-02-17 13:41:53.239880001 -0500
++++ cinelerra/cinelerra/videodevice.C	2011-02-17 13:41:53.239880001 -0500
 @@ -39,9 +39,9 @@
  #ifdef HAVE_FIREWIRE
  #include "vdevice1394.h"
@@ -108,9 +108,9 @@ diff -Nru cinelerra.orig//cinelerra/videodevice.C cinelerra/cinelerra/videodevic
 		case PLAYBACK_X11:
 		case PLAYBACK_X11_XV:
 		case PLAYBACK_X11_GL:
-diff -Nru cinelerra.orig//cinelerra/videodevice.h cinelerra/cinelerra/videodevice.h
+diff -Nru cinelerra/videodevice.h cinelerra/cinelerra/videodevice.h
 --- cinelerra/videodevice.h	2010-11-24 18:18:03.000000000 -0500
-+++ cinelerra/videodevice.h	2011-02-17 13:31:30.167880002 -0500
++++ cinelerra/cinelerra/videodevice.h	2011-02-17 13:31:30.167880002 -0500
 @@ -40,9 +40,9 @@
  #include "thread.h"
  #include "picture.inc"

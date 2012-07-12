@@ -1,0 +1,39 @@
+#
+# Ylmf OS package build script
+#
+# Copyright 2005-2012 Ylmf OS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="Canvas and scenegraph rendering library."
+HOMEPAGE="http://www.enlightenment.org/"
+LICENSE="BSD"
+PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
+
+SRC_URI="http://download.enlightenment.org/releases/"$N-$V".tar.gz"
+CHECKSUM="830161bd790c2c5f17aa47e3a1c3abe1"
+
+RDEPEND="cairo eet eina expat fontconfig freetype fribidi gcc-lib gdk-pixbuf giflib glib2 glibc gnutls libcroco libdrm libffi libgcrypt libgpg-error libICE libjpeg-turbo libpng librsvg libSM libtasn1 libtiff libX11 libXau libxcb libXdamage libXdmcp libXext libXfixes libxml2 libXrender libXxf86vm mesa pango pixman util-linux-ng zlib"
+RECOMMENDED=""
+BDEPEND=""
+OPTIONAL=""
+CONFLICT=""
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_config() {
+	config+=""
+	doconfig
+}
+
+pbs_build() {
+	domake
+}
+
+pbs_install() {
+	domkinstall
+	dodoc COPYING
+}
+

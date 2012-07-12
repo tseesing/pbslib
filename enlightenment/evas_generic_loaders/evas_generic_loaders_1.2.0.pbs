@@ -1,0 +1,39 @@
+#
+# Ylmf OS package build script
+#
+# Copyright 2005-2012 Ylmf OS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="Extra loaders for GPL loaders and unstable libraries."
+HOMEPAGE="http://www.enlightenment.org/"
+LICENSE="BSD"
+PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
+
+SRC_URI="http://download.enlightenment.org/releases/"$N-$V".tar.gz"
+CHECKSUM="340a8c2f42c82ecd10f0204cdb291a70"
+
+RDEPEND="avahi cups curl cyrus-sasl dbus e2fsprogs eina expat fontconfig freetype gcc-lib ghostscript glib2 glibc gnutls gstreamer jasper keyutils krb5 lcms libffi libgcrypt libgpg-error libidn libjpeg-turbo libpng libraw libspectre libssh2 libtasn1 libtiff libxml2 openldap openssl poppler rtmpdump zlib"
+RECOMMENDED=""
+BDEPEND=""
+OPTIONAL=""
+CONFLICT=""
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_config() {
+	config+=""
+	doconfig
+}
+
+pbs_build() {
+	domake
+}
+
+pbs_install() {
+	domkinstall
+	dodoc COPYING
+}
+

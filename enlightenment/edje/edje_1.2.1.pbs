@@ -1,0 +1,41 @@
+#
+# Ylmf OS package build script
+#
+# Copyright 2005-2012 Ylmf OS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="Abstract GUI layout and animation object library."
+HOMEPAGE="http://www.enlightenment.org/"
+LICENSE="BSD"
+PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
+
+SRC_URI="http://download.enlightenment.org/releases/"$N-$V".tar.gz"
+CHECKSUM="b9df053b327cb41d2de2485bd596bb44"
+
+RDEPEND="curl cyrus-sasl ecore eet eina embryo evas expat flac fontconfig freetype fribidi glib2 glibc gnutls libgcrypt libgpg-error libidn libjpeg-turbo libogg libsndfile libssh2 libtasn1 libvorbis libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libXinerama libXp libXrandr libXrender libXScrnSaver libXtst lua openldap openssl rtmpdump zlib"
+RECOMMENDED=""
+BDEPEND=""
+OPTIONAL=""
+CONFLICT=""
+
+INSTALL="$N.install"
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_config() {
+	config+="--enable-amalgamation"
+	doconfig
+}
+
+pbs_build() {
+	domake
+}
+
+pbs_install() {
+	domkinstall
+	dodoc COPYING
+}
+

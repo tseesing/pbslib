@@ -1,7 +1,8 @@
+
 pygtk (2.22.0-ylmf3); urgency=low
 
 	* fix memory leak, patch from deepin linux
-	10_fix_create_layout_unref.patch
+	 10_fix_create_layout_unref.patch
 
 -- hzx <huangzhongxin@gmail.com> 2012-06-26
 

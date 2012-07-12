@@ -1,0 +1,76 @@
+#
+# Ylmf OS package build script
+#
+# Copyright 2005-2012 Ylmf OS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="Netscape Portable Runtime"
+HOMEPAGE="http://www.mozilla.org/projects/nspr/"
+LICENSE="MPL,GPL"
+PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
+
+SRC_URI="http://ftp.mozilla.org/pub/mozilla.org/"$N"/releases/v"$V"/src/"$N-$V".tar.gz"
+CHECKSUM="d36d7b65a38f5b43ebd50ad3ad227120"
+
+RDEPEND="glibc"
+BDEPEND=""
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_config() {
+	case "$ARCH" in
+		x86_64) confflags="--enable-64bit" ;;
+		     *) confflags=""
+	esac
+
+	sed -e 's/\$(MKSHLIB) \$(OBJS)/\$(MKSHLIB) \$(LDFLAGS) \$(OBJS)/g' \
+	    -i mozilla/nsprpub/config/rules.mk
+
+	./mozilla/nsprpub/configure \
+		--prefix=/usr \
+	        --libdir=/usr/lib \
+		--includedir=/usr/include/nspr \
+		--enable-optimize \
+		--disable-debug ${confflags}
+}
+
+pbs_build() {
+	domake
+}
+
+pbs_install() {
+	domkinstall 
+
+	NSPR_LIBS=`./config/nspr-config --libs`
+	NSPR_CFLAGS=`./config/nspr-config --cflags`
+	NSPR_VERSION=`./config/nspr-config --version`
+
+	docp "$filesdir"/nspr.pc.in .
+	install -m755 -d "${destdir}/usr/lib/pkgconfig"
+	sed "nspr.pc.in" -e "s,%libdir%,/usr/lib," \
+		  	 -e "s,%prefix%,/usr," \
+			 -e "s,%exec_prefix%,/usr/bin," \
+			 -e "s,%includedir%,/usr/include/nspr," \
+			 -e "s,%NSPR_VERSION%,${NSPR_VERSION}," \
+			 -e "s,%FULL_NSPR_LIBS%,${NSPR_LIBS}," \
+			 -e "s,%FULL_NSPR_CFLAGS%,${NSPR_CFLAGS},"  \
+			 >"${destdir}/usr/lib/pkgconfig/nspr.pc"
+
+       cd "$destdir"
+       chmod 644 "usr/lib/pkgconfig/nspr.pc"
+       ln -sf /usr/lib/pkgconfig/nspr.pc "usr/lib/pkgconfig/mozilla-nspr.pc"
+
+       chmod 644 usr/lib/*.a
+ 
+       rm -rf "usr/bin/compile-et.pl" \
+      	      "usr/bin/prerr.properties" \
+	      "usr/share/aclocal/nspr.m4" \
+	      "usr/include/nspr/md"
+
+       doln /usr/lib/libplc4.so  usr/lib/libplc4.so.0d
+       doln /usr/lib/libnspr4.so usr/lib/libnspr4.so.0d
+}
+

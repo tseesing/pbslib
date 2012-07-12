@@ -1,0 +1,41 @@
+#
+# Ylmf OS package build script
+#
+# Copyright 2005-2012 Ylmf OS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="an open source multimedia framework for television broadcasting."
+HOMEPAGE="http://www.mltframework.org/twiki/bin/view/MLT/"
+LICENSE="LGPLv2.1"
+PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
+
+SRC_URI="http://downloads.sourceforge.net/project/"$N"/"$N"/"$N-$V".tar.gz"
+CHECKSUM="d56e0cdfba9c5b5608bf84493322615f"
+
+RDEPEND="alsa-lib attr bzip2 cairo dbus directfb expat ffmpeg(>=0.11.1) file flac fontconfig freetype gcc-lib gdk-pixbuf glib2 glibc gtk+ jack-audio-connection-kit json-c lame libcap libdv libexif libffi libgsm libICE libjpeg-turbo libogg libpng libsdl libSM libsndfile libtheora libtool libva libvorbis libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libXinerama libxml2 libXrandr libXrender libXt libXtst nas opencore-amr openssl orc pango pixman pulseaudio python rtmpdump schroedinger sdl-image sox speex util-linux-ng v4l-utils x264 xvidcore zlib"
+BDEPEND=""
+RECOMMENDED=""
+CONFLICT=""
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_config() {
+	config+=""
+	doconfig
+}
+
+pbs_build() {
+	domake
+	cd src/swig/python
+	./build
+}
+
+pbs_install() {
+	docp mlt.py _mlt.so mlt_wrap.o "$destdir"/usr/lib/python2.7/
+	cd "$srcdir"
+	domkinstall
+}
+

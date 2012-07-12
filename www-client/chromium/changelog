@@ -1,4 +1,5 @@
-2012-05-10 hzx <huangzhongxin@ylmf.com>
-	* chromium 18.0.1025.162-ylmf2
+chromium (18.0.1025.162-ylmf2);
+
 	* rebuild against krb5 upgraded (configure --with-system-et not provide /usr/lib/libcom_err any more).
-	*  
+
+-- hzx <huangzhongxin@ylmf.com> 2012-05-10

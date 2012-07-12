@@ -1,4 +1,6 @@
-2012-05-10 hzx <huangzhongxin@ylmf.com>
-	* gnome-panel 2.32.1-ylmf4
+
+gnome-panel (2.32.1-ylmf4);
+
 	* rebuild against krb5 upgraded (configure --with-system-et not provide /usr/lib/libcom_err any more).
-	*  
+
+-- hzx <huangzhongxin@ylmf.com> 2012-05-10

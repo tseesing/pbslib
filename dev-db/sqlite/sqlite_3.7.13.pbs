@@ -1,0 +1,47 @@
+#
+# Ylmf OS package build script
+#
+# Copyright 2005-2012 Ylmf OS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="A in-process library that implements SQL database engine"
+HOMEPAGE="http://www.sqlite.org"
+LICENSE="custom"
+PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
+
+# tarball containing the amalgamation for SQLite >= 3.7.5 together with a configure script and makefile for building it; includes now also the Tcl Extension Architecture (TEA)
+SRC_URI="http://www.sqlite.org/sqlite-autoconf-3071300.tar.gz"
+CHECKSUM="c97df403e8a3d5b67bb408fcd6aabd8e"
+
+RDEPEND="glibc ncurses readline"
+BDEPEND="tcl"
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_build() {
+	  export CFLAGS="$CFLAGS -DSQLITE_ENABLE_FTS3=1 -DSQLITE_ENABLE_COLUMN_METADATA=1 -DSQLITE_ENABLE_UNLOCK_NOTIFY -DSQLITE_SECURE_DELETE"
+
+	# build sqlite
+	./configure --prefix=/usr --disable-static || return 1
+	domake   || return 1 
+
+	# build the tcl extension    
+	cd tea
+	./configure --prefix=/usr --with-system-sqlite || return 1
+	domake
+}
+
+pbs_install() {
+	# Install the tcl extension
+	domkinstall
+
+	# Install sqlite
+	cd ../
+	domkinstall
+
+	dodoc "$filesdir"/license.txt
+}
+

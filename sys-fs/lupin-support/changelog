@@ -1,12 +1,18 @@
-2012-02-27 hzx <huangzhongxin@ylmf.com>
-	* lupin-support 20120227
+lupin-support (20120227);
+
 	* add xforcevesa mode
 
-2011-10-11 hzx <huangzhongxin@ylmf.com>
-	* lupin-support 20111011
+-- hzx <huangzhongxin@ylmf.com> 2012-02-27
+
+lupin-support (20111011);
+
 	* resynchronise with ubuntu 11.04
 	* make link grub-install -> grub-install.real post removing
 
-2011-10-10 hzx <huangzhongxin@ylmf.com>
-	* lupin-support 20111010
+-- hzx <huangzhongxin@ylmf.com> 2011-10-11
+
+lupin-support (20111010);
+
 	* add nomodeset mode entry for grub.cfg
+
+-- hzx <huangzhongxin@ylmf.com> 2011-10-10

@@ -1,0 +1,33 @@
+#
+# Ylmf OS package build script
+#
+# Copyright 2005-2012 Ylmf OS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="Ylmf OS Build System utilities"
+HOMEPAGE="http://www.ylmf.org"
+LICENSE="GPL"
+PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
+PRIORITY="required"
+
+INSTALL="$N.install"
+
+SRC_URI="git://git.ylmf.com/ypkg.git"
+
+RDEPEND="gawk cpio xz-utils sed coreutils findutils procps psmisc bash"
+BDEPEND=""
+RECOMMENDED="wget curl git sqlite"
+
+pbs_unpack() {
+	dounpack
+}
+
+pbs_build() {
+	make
+}
+
+pbs_install() {
+	domkinstall
+}
+

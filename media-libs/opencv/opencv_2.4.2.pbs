@@ -1,0 +1,43 @@
+#
+# Ylmf OS package build script
+#
+# Copyright 2005-2012 Ylmf OS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="A collection of algorithms and sample code for various computer vision problems."
+HOMEPAGE="http://opencv.willowgarage.com"
+LICENSE="BSD"
+PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
+
+SRC_URI="http://sourceforge.net/projects/opencvlibrary/files/opencv-unix/"$V"/OpenCV-"$V".tar.bz2"
+CHECKSUM="059ef86fc1724d69b75832a0d2929ff5"
+
+RDEPEND="atk bzip2 cairo expat ffmpeg(>=0.11.1) fontconfig freetype gcc-lib gdk-pixbuf glib2 glibc gst-plugins-base gstreamer gtk+ ilmbase jasper lame libffi libgsm libjpeg-turbo libogg libpng libtheora libtiff libva libvorbis libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libXinerama libxml2 libXrandr libXrender opencore-amr openexr openssl orc pango pixman python rtmpdump schroedinger speex v4l-utils x264(>=20120508) xvidcore zlib"
+RECOMMENDED=""
+BDEPEND="cmake"
+OPTIONAL=""
+CONFLICT=""
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_config() {
+	doconfig -D CMAKE_BUILD_TYPE=Release \
+		 -D CMAKE_SKIP_RPATH=ON \
+	         -D BUILD_TESTS=OFF \
+                 -D BUILD_EXAMPLES=OFF \
+		 -D INSTALL_C_EXAMPLES=OFF \
+		 -D INSTALL_PYTHON_EXAMPLES=OFF 
+}
+
+pbs_build() {
+	domake
+}
+
+pbs_install() {
+	domkinstall 
+	dodoc ../doc/license.txt
+}
+

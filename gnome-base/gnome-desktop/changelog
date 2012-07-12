@@ -1,23 +1,34 @@
-2012-03-21 hzx <huangzhongxin@ylmf.com>
-	* gnome-desktop 2.32.1-ylmf5
+
+gnome-desktop (2.32.1-ylmf5);
+
 	* default font is ubuntu, so add ubuntu-font-family to recommended depend
 
-2012-03-06 hzx <huangzhongxin@ylmf.com>
-	* gnome-desktop 2.32.1-ylmf4
+-- hzx <huangzhongxin@ylmf.com> 2012-03-21
+
+gnome-desktop (2.32.1-ylmf4);
+
 	* gnome-desktop.install:
 	 - set default fonts
 
-2010-12-05 hzx <huangzhongxin@ylmf.com>
-	* gnome-desktop 2.32.1-ylmf3
+-- hzx <huangzhongxin@ylmf.com> 2012-03-06
+
+gnome-desktop (2.32.1-ylmf3);
+
 	* change ylmfos-desktop.jpg
 
-2010-12-05 hzx <huangzhongxin@ylmf.com>
-	* gnome-desktop 2.32.1-ylmf2
+-- hzx <huangzhongxin@ylmf.com> 2010-12-05
+
+gnome-desktop (2.32.1-ylmf2);
+
 	* default font size 11
 
-2010-11-01 hzx <huangzhongxin@ylmf.com>
-	* gnome-desktop 2.32.1-ylmf1
+-- hzx <huangzhongxin@ylmf.com> 2010-12-05
+
+gnome-desktop (2.32.1-ylmf1);
+
 	* default desktop background - /usr/share/backgrounds/ylmfos-desktop-default.jpg 
+
+-- hzx <huangzhongxin@ylmf.com> 2010-11-01
 
 
 

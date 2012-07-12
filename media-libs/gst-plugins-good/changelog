@@ -1,9 +1,13 @@
-2012-03-08 hzx <huangzhongxin@ylmf.com>
-	* gst-plugins-good 0.10.30-ylmf2
-	* rebuild because removal of esound 
-	*  
 
-2010-11-02 hzx <huangzhongxin@ylmf.com>
-	* gst-plugins-good 0.10.30-ylmf1
+gst-plugins-good (0.10.30-ylmf2);
+
+	* rebuild because removal of esound 
+
+-- hzx <huangzhongxin@ylmf.com> 2012-03-08
+
+gst-plugins-good (0.10.30-ylmf1);
+
 	* --disable-hal
+
+-- hzx <huangzhongxin@ylmf.com> 2010-11-02
 

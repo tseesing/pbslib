@@ -1,0 +1,39 @@
+#
+# Ylmf OS package build script
+#
+# Copyright 2005-2012 Ylmf OS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="Bootsplash program able to render in Framebuffer, or X11 that is easy to integrate with existing boot setups (sysvinit or systemd) bia messaging (pipe or socket) as well as customise look and feel via Edje."
+HOMEPAGE="http://www.enlightenment.org/"
+LICENSE="BSD"
+PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
+
+SRC_URI="http://download.enlightenment.org/releases/"$N-$V".tar.gz"
+CHECKSUM="d017c5c905a71b8fbba5ded5095380e9"
+
+RDEPEND="curl cyrus-sasl ecore edje eet eina embryo evas expat flac fontconfig freetype fribidi glib2 glibc gnutls libgcrypt libgpg-error libidn libjpeg-turbo libogg libsndfile libssh2 libtasn1 libvorbis libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libXinerama libXp libXrandr libXrender libXScrnSaver libXtst lua openldap openssl rtmpdump zlib"
+RECOMMENDED=""
+BDEPEND=""
+OPTIONAL=""
+CONFLICT=""
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_config() {
+	config+=""
+	doconfig
+}
+
+pbs_build() {
+	domake
+}
+
+pbs_install() {
+	domkinstall
+	dodoc COPYING
+}
+
