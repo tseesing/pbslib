@@ -99,14 +99,23 @@ symlink_grub_install() {
 	return 0
 }
 
+cp_config() {
+	[ -f /etc/default/grub ] || cp /usr/share/grub/grub.sample /etc/default/grub
+}
+
 post_install() {
         doinstall_info grub.info.gz 
+	cp_config
 	msg_install
 	symlink_grub_install
 }       
 
 pre_remove() {
         doremove_info grub.info.gz
+}
+
+post_remove() {
+	rm -rf /etc/default/grub 2>/dev/null ||true
 }
 
 pre_upgrade() {
@@ -127,6 +136,7 @@ pre_downgrade() {
 }
 
 post_upgrade() {
+	cp_config
 	/usr/sbin/grub-mkdevicemap --no-floppy
 	devicemap_regenerated=1
 	update-grub2

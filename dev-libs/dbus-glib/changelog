@@ -1,3 +1,9 @@
+dbus-glib (0.100-r1);
+	
+	* syslink /usr/include/dbus-1.0/dbus /usr/include/dbus for development package
+
+-- hzx <huangzhongxin@ylmf.com> 2012-07-17
+
 dbus-glib (0.86-ylmf1);
 
 	* rebuild against glib2_2.30.3  

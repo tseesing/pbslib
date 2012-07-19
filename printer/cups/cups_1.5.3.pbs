@@ -1,0 +1,113 @@
+#
+# Ylmf OS package build script
+#
+# Copyright 2005-2012 Ylmf OS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="The Common Unix Printing System."
+HOMEPAGE="http://www.cups.org/"
+LICENSE="GPL"
+PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
+
+SRC_URI="http://ftp.easysw.com/pub/"$N"/"$V"/"$N-$V"-source.tar.bz2"
+CHECKSUM="e1ad15257aa6f162414ea3beae0c5df8"
+
+RDEPEND="acl attr avahi dbus e2fsprogs gcc-lib glibc gnutls keyutils krb5 libgcrypt libgpg-error libjpeg-turbo libpng libtasn1 libtiff libusb openslp openssl pam systemd zlib"
+BDEPEND="php-dev"
+RECOMMENDED="php"
+
+INSTALL="$N.install"
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_patch() {
+	# http://www.cups.org/str.php?L3066
+	# Avahi support in the dnssd backend. patches from upstream/FC RawHide
+	dopatch cups-avahi-1-config.patch
+	dopatch cups-avahi-2-backend.patch
+	dopatch cups-avahi-3-timeouts.patch
+	dopatch cups-avahi-4-poll.patch
+	dopatch cups-avahi-5-services.patch
+
+	# add systemd socket support - Fedora patch, also used in Gentoo
+	dopatch cups-systemd-socket.patch
+
+	# Do not export SSL libs in cups-config
+	dopatch cups-no-export-ssllibs.patch
+
+	dopatch cups-no-gcrypt.patch
+	
+	# don't zip man pages in make install, let makepkg do that / Fedora
+	dopatch cups-no-gzip-man.patch
+
+	#
+	dopatch ylmfos-add-wheel-group-to-systemgroup.patch
+}
+
+pbs_config() {
+	# Rebuild configure script for --enable-avahi.
+	aclocal -I config-scripts
+	autoconf -I config-scripts
+	config+=" --enable-dbus
+		  --enable-libusb
+		  --enable-pam=yes 
+		  --enable-threads 
+		  --enable-gnutls 
+		  --enable-avahi
+		  --enable-ssl=yes 
+		  --enable-raw-printing 
+		  --enable-use-network-default
+		  --disable-ldap
+		  --with-cups-group=lp
+		  --with-cups-user=daemon 
+	          --with-systemdsystemunitdir=/lib/systemd/system 
+		  --with-logdir=/var/log/cups 
+		  --with-docdir=/usr/share/cups/doc
+		  --with-php=/usr/bin/php-cgi 
+                  --with-pdftops=pdftops "
+	doconfig
+}
+
+pbs_build() {
+	domake
+}
+
+pbs_install() {
+	make BUILDROOT="${destdir}" install
+	
+	cd "$destdir"
+	
+	#
+	docp_rename  "$filesdir"/cups.logrotate etc/logrotate.d/cups
+	docp_rename  "$filesdir"/cups.pam       etc/pam.d/cups	
+	
+	# Fix perms on /var/spool and /etc
+	chmod 755 var/spool
+	chmod 755 etc
+	
+	# Serial backend needs to run as root (http://bugs.archlinux.org/task/20396)
+	chmod 700 usr/lib/cups/backend/serial
+	
+	# Install ssl directory where to store the certs, solves some samba issues
+	install -dm700 -g lp etc/cups/ssl
+	
+	# Install some more configuration files that will get filled by cupsd
+	touch etc/cups/{subscriptions.conf,printers.conf,classes.conf,client.conf}
+	echo "# see 'man client.conf'" >>etc/cups/client.conf
+	echo "ServerName /var/run/cups/cups.sock #  alternative: ServerName hostname-or-ip-address[:port] of a remote server" >>etc/cups/client.conf
+	chgrp lp etc/cups/{subscriptions.conf,printers.conf,classes.conf,client.conf}
+	
+	# Compress some driver files, adopted from Fedora
+	find usr/share/cups/model -name "*.ppd" | xargs gzip -n9f
+	
+	# fix .desktop file
+	sed -i 's|^Exec=htmlview http://localhost:631/|Exec=xdg-open http://localhost:631/|g' usr/share/applications/cups.desktop
+
+	# Clean
+	rm -rf etc/rc*.d/
+	rm -rf etc/init.d/
+}
+

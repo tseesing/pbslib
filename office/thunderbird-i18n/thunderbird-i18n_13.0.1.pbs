@@ -10,6 +10,8 @@ HOMEPAGE="http://www.mozilla.com/en-US/thunderbird/"
 LICENSE="MPL,GPL"
 PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
 
+#XXX Get xpi from ubuntu 12.04, upstream's seems not work.
+#
 SRC_URI="ftp://ftp.mozilla.org/pub/mozilla.org/thunderbird/releases/"$V"/linux-i686/xpi/zh-CN.xpi
          ftp://ftp.mozilla.org/pub/mozilla.org/thunderbird/releases/"$V"/linux-i686/xpi/zh-TW.xpi"
 CHECKSUM="f067a1c3ed1a5479cea19353bbdc67f8 bf01d773f5ce96e1ebefaff1f381199a"
@@ -22,8 +24,10 @@ thunderbird-i18n-zh-CN_install() {
 	RDEPEND="thunderbird(>=13.0.1)"
 	YARCH="any"
 
-	local target="$destdir/usr/lib/thunderbird/extensions/langpack-zh-CN@thunderbird.mozilla.org.xpi"
-	docp_rename "$YPPATH_SOURCE"/zh-CN.xpi "$target"  
+	#local target="$destdir/usr/lib/thunderbird/extensions/langpack-zh-CN@thunderbird.mozilla.org.xpi"
+	#docp_rename "$YPPATH_SOURCE"/zh-CN.xpi "$target" 
+
+	docp "$filesdir"/langpack-zh-CN@thunderbird.mozilla.org.xpi "$destdir"/usr/lib/thunderbird/extensions/
 }
 
 thunderbird-i18n-zh-TW_install() {
@@ -31,7 +35,9 @@ thunderbird-i18n-zh-TW_install() {
 	RDEPEND="thunderbird(>=13.0.1)"
 	YARCH="any"
 
-	local target="$destdir/usr/lib/thunderbird/extensions/langpack-zh-TW@thunderbird.mozilla.org.xpi"
-	docp_rename "$YPPATH_SOURCE"/zh-TW.xpi "$target"  
+	#local target="$destdir/usr/lib/thunderbird/extensions/langpack-zh-TW@thunderbird.mozilla.org.xpi"
+	#docp_rename "$YPPATH_SOURCE"/zh-TW.xpi "$target"  
+
+	docp "$filesdir"/langpack-zh-TW@thunderbird.mozilla.org.xpi "$destdir"/usr/lib/thunderbird/extensions/
 }
 

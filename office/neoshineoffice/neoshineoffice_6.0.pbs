@@ -1,0 +1,43 @@
+#
+# Ylmf OS package build script
+#
+# Copyright 2005-2012 Ylmf OS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="NeoShine Office"
+HOMEPAGE="http://www.cs2c.com.cn/"
+LICENSE="custom"
+PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
+
+SRC_URI="http://office.cs2c.com.cn/data/upload/downloadCenter/product/NeoShineOffice_"$V"_PER_Lin_B40-43.tar"
+CHECKSUM="26ab6833a91efea5af7acd5eba2a039a"
+
+RDEPEND="atk avahi cairo dbus dbus-glib expat fontconfig freetype gcc-lib gconf gdk-pixbuf glib2 glibc gnome-vfs gst-plugins-base gstreamer gtk+ libffi libICE libpng libSM libX11 libXau libXaw libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libXinerama libXmu libXpm libXrandr libXrender libXt ncurses openssl orbit pango pixman sqlite util-linux-ng zlib"
+RECOMMENDED=""
+BDEPEND=""
+OPTIONAL=""
+CONFLICT=""
+
+INSTALL="$N.install"
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_build() {
+	find . -type f -name "*.rpm" |while read i; do
+		echo ">>> Unpacking $(basename $i)"
+		rpm2tarbz2 ${i}
+		mkdir -p data
+		i=$(basename $i)
+		tar xf ${i%%.rpm}.tar.bz2 -C data && rm ${i%%.rpm}.tar.bz2
+	done	
+}
+
+pbs_install() {
+	docp data/{opt,usr} "$destdir"/
+	dodoc licenses productinfo.txt
+	doln /opt/neoshineoffice6 "$destdir"/opt/neoshineoffice6.0
+}
+

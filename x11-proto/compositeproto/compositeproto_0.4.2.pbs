@@ -7,10 +7,11 @@
 
 DESCRIPTION="X.Org Composite protocol headers"
 HOMEPAGE="http://xorg.freedesktop.org/"
-LICENSE="GPL-2"
+LICENSE="GPL"
 PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
 
-SRC_URI="http://www.x.org/releases/X11R7.6/src/proto/"$N-$V$R".tar.bz2"
+SRC_URI="http://www.x.org/releases/X11R7.7/src/proto/"$N-$V".tar.bz2"
+CHECKSUM="aa7b5abcfd5bbfad7cb681ce89dc1d6e381e3044"
 
 RDEPEND=""
 BDEPEND=""
@@ -21,11 +22,7 @@ pbs_unpack() {
 }
 
 pbs_config() {	
-	
-
-	               
-		       
-		      
+	config+=""
 	doconfig
 }
 
@@ -35,5 +32,5 @@ pbs_build() {
 
 pbs_install() {
 	domkinstall
-	
 }
+

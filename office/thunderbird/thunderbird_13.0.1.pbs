@@ -34,7 +34,7 @@ pbs_config() {
 pbs_build() {
 	export LDFLAGS="$LDFLAGS -Wl,-rpath,/usr/lib/thunderbird"
 	export PYTHON="/usr/bin/python"
-	domake -f client.mk build MOZ_MAKE_FLAGS="$MAKEFLAGS"
+	domake -f client.mk build 
 }
 
 pbs_install() {

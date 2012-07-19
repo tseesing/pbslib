@@ -1,0 +1,35 @@
+#
+# Ylmf OS package build script
+#
+# Copyright 2005-2012 Ylmf OS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="D-Bus bindings for glib"
+HOMEPAGE="http://dbus.freedesktop.org/"
+LICENSE="GPL"
+PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
+
+SRC_URI="http://dbus.freedesktop.org/releases/"$N"/"$N-$V".tar.gz"
+CHECKSUM="d33959a9c0c6a158f5ac6d640316e89e"
+
+RDEPEND="dbus expat glib2 glibc libffi zlib"
+BDEPEND=""
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_config() {
+	config+=" --enable-static=no 
+	          --enable-bash-completion=no "
+	doconfig
+}
+
+pbs_install() {
+	domkinstall
+	doln /usr/include/dbus-1.0/dbus "$destdir"/usr/include/dbus
+}
+
+
+

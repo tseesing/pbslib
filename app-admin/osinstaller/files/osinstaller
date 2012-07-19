@@ -2,14 +2,15 @@
 # Begin /etc/init.d/osinstaller
 #$LastChangedBy: hzx hzx@115.com
 
-export HOME=/root
+export MYHOME=/root
 #
 case "$1" in
 	start)
 	for x in $(cat /proc/cmdline); do
+
 		case $x in 
 		install-automatic)
-			cat >$HOME/.xinitrc <<"OOO"
+			cat >$MYHOME/.xinitrc <<"OOO"
 [ -f /etc/environment ] && . /etc/environment
 [ -f /etc/default/locale ] && . /etc/default/locale
 export LANGUAGE LANG
@@ -18,9 +19,10 @@ fvwm-root --retain-pixmap /usr/share/osinstaller/installbg.png &
 fvwm &
 osinstaller --wubi-dir=/isodevice/ylmfos-loop
 OOO
-			STARTX="y" &&  break	;;
+			STARTX="y" 
+			break		;;
 		install-nodesktop)
-			cat >$HOME/.xinitrc <<"EOF"
+			cat >$MYHOME/.xinitrc <<"EOF"
 [ -f /etc/environment ] && . /etc/environment
 [ -f /etc/default/locale ] && . /etc/default/locale
 export LANGUAGE LANG
@@ -29,20 +31,30 @@ fvwm-root --retain-pixmap /usr/share/osinstaller/installbg.png &
 fvwm &
 osinstaller 
 EOF
-			STARTX="y" &&  break
+			STARTX="y" 
+			break
 		esac
 	done
+	
 	if [ "x$STARTX" = "xy" ]; then
-		#creat fvwm default config, we use fvwm for dm now.
-		configdir="$HOME/.fvwm"	
+		#
+		# Creat fvwm default config, we use fvwm for dm now.
+		configdir="$MYHOME/.fvwm"	
 		mkdir -p $configdir
 		echo "EdgeScroll 0 0"       >$configdir/config
 		echo "Mouse 1 R  a  null"  >>$configdir/config
 		echo 'Style * Font "xft:sans-serif:Medium;-*-times-medium-r-*-*-16-*-*-*-*-*-*-*"'  >>$configdir/config
 		echo 'Style * !Title'								    >>$configdir/config
 		plymouth quit || :
+		#
+		# Disable display-manager.service in systemd
+		. /etc/dm-switch/default 2>/dev/null
+		[ "x$CURDM" != "x" ] && /bin/systemctl disable $CURDM
+		#
+		#
+		export HOME=/root
 		startx 
-		fi
+	fi
 		;;
 	*)
 		echo "Usage: $0 start"

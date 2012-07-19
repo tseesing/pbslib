@@ -1,0 +1,39 @@
+#
+# Ylmf OS package build script
+#
+# Copyright 2005-2012 Ylmf OS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="a multi-panel tabbed file manager"
+COMMENTS="SpaceFM is a multi-panel tabbed file manager for Linux with built-in VFS, udev-based device manager, customizable menu system, and bash integration."
+HOMEPAGE="http://ignorantguru.github.com/spacefm/"
+LICENSE="GPLv2+"
+PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
+
+SRC_URI="https://raw.github.com/IgnorantGuru/"$N"/master/packages/"$V"/"$N-$V".tar.xz"
+CHECKSUM="428739bc310d7010eca3f64caf2e7c1e"
+
+RDEPEND="atk cairo expat fontconfig freetype gcc-lib gdk-pixbuf glib2 glibc gtk+ libffi libpng libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libXinerama libXrandr libXrender pango pixman startup-notification udev xcb-util zlib"
+RECOMMENDED=""
+BDEPEND=""
+OPTIONAL=""
+CONFLICT=""
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_config() {
+	config+=""
+	doconfig
+}
+
+pbs_build() {
+	domake
+}
+
+pbs_install() {
+	domkinstall
+}
+

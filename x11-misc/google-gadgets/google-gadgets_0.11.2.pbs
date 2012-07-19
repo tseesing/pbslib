@@ -33,7 +33,7 @@ pbs_config() {
 	config+=" --disable-werror
 	          --disable-update-desktop-database 
                   --disable-update-mime-database 
-                  --with-oem-brand=StartOS
+                  --with-oem-brand=YlmfOS
 		  --with-ssl-ca-file=/etc/ssl/certs/ca-certificates.crt
                   --with-browser-plugins-dir=/usr/lib/mozilla/plugins
                   --disable-gtkmoz-browser-element

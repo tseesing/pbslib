@@ -7,22 +7,25 @@
 
 DESCRIPTION="Partimage is opensource disk backup software."
 HOMEPAGE="www.partimage.org"
-REPO=""
 LICENSE="GPLv2"
-PRIORITY=""
 PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
 
-SRC_URI="ftp://lug.mtu.edu/gentoo/distfiles/"$N-$V$R".tar.bz2"
+SRC_URI="http://downloads.sourceforge.net/"$N"/"$N-$V".tar.bz2"
+CHECKSUM="1bc046fd915c5debbafc85729464e513"
 
 RDEPEND="bzip2 gcc-lib glibc newt openssl slang zlib"
-BDEPEND="      "
+BDEPEND=""
 RECOMMENDED=""
 CONFLICT=""
 
-NOTES=""
+INSTALL="$N.install"
 
 pbs_unpack() {
         dounpack
+}
+
+pbs_patch() {
+	dopatch partimage-0.6.9-zlib-1.2.6.patch
 }
 
 pbs_config() {
@@ -36,4 +39,6 @@ pbs_build() {
 
 pbs_install() {
 	domkinstall
+	docp_rename "$filesdir"/partimaged.pam "${destdir}"/etc/pam.d/partimaged
 }
+

@@ -10,8 +10,7 @@ HOMEPAGE="http://www.x.org/wiki/"
 LICENSE="custom"
 PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
 
-SRC_URI="http://xorg.freedesktop.org/archive/individual/lib/"$N-$V".tar.bz2"
-CHECKSUM="6851da5dae0a6cf5f7c9b9e2b05dd3b4"
+SRC_URI="http://www.x.org/releases/X11R7.7/src/lib/"$N-$V".tar.bz2"
 
 RDEPEND="freetype glibc libfontenc zlib"
 BDEPEND=""
@@ -21,6 +20,7 @@ pbs_unpack() {
 }
 
 pbs_config() {
+	config+=""
 	doconfig
 }
 

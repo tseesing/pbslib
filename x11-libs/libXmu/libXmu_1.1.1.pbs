@@ -10,7 +10,7 @@ HOMEPAGE="http://www.x.org/wiki/"
 LICENSE="custom"
 PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
  
-SRC_URI="http://xorg.freedesktop.org/archive/individual/lib/"$N-$V".tar.bz2"
+SRC_URI="http://www.x.org/releases/X11R7.7/src/lib/"$N-$V".tar.bz2"
 CHECKSUM="a4efff8de85bd45dd3da124285d10c00"
 
 RDEPEND="glibc libICE libSM libX11 libXau libxcb libXdmcp libXext libXt util-linux-ng"
@@ -21,6 +21,7 @@ pbs_unpack() {
 }
 
 pbs_config() {
+	config+=""
 	doconfig
 }
 

@@ -1,0 +1,38 @@
+#
+# Ylmf OS package build script
+#
+# Copyright 2005-2012 Ylmf OS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="A text editor for the GNOME desktop"
+HOMEPAGE="http://www.gnome.org/"
+LICENSE="GPL"
+PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
+
+SRC_URI="http://ftp.gnome.org/pub/gnome/desktop/2.32/2.32.1/sources/"$N-$V".tar.bz2"
+CHECKSUM="e1eecb0a92a1a363b3d375ec5ac0fb3b"
+
+RDEPEND="atk cairo enchant expat fontconfig freetype gcc-lib gconf gdk-pixbuf glib2 glibc gtk+ gtksourceview libffi libICE libpng libSM libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libXinerama libxml2 libXrandr libXrender orbit pango pixman python(>=2.7.0) util-linux-ng zlib"
+BDEPEND=""
+RECOMMENDED="aspell aspell-en"
+
+INSTALL="$N-$V.install"
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_config() {
+	config+="--disable-schemas-install"
+	doconfig
+}
+
+pbs_build() {
+	domake
+}
+
+pbs_install() {
+	domkinstall
+}
+

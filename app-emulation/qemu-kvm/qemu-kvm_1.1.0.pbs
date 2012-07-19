@@ -1,0 +1,54 @@
+#
+# Ylmf OS package build script
+#
+# Copyright 2005-2012 Ylmf OS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="QEMU - Kernel-based Virtual Machine userland tools"
+COMMENTS="KVM (for Kernel-based Virtual Machine) is a full virtualization solution for Linux on x86 hardware containing virtualization extensions (Intel VT or AMD-V). It consists of a loadable kernel module, kvm.ko, that provides the core virtualization infrastructure and a processor specific module, kvm-intel.ko or kvm-amd.ko. KVM also requires a modified QEMU although work is underway to get the required changes upstream."
+HOMEPAGE="http://www.linux-kvm.org"
+LICENSE="GPL,LGPL"
+PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
+
+SRC_URI="http://downloads.sourceforge.net/kvm/"$N-$V".tar.gz"
+CHECKSUM="2e19185b7fdf4c144f4719a88a5bde31"
+
+RDEPEND="alsa-lib attr bluez curl cyrus-sasl directfb glib2 glibc gnutls libcap libgcrypt libgpg-error libidn libjpeg-turbo libpng libsdl libssh2 libtasn1 libX11 libXau libxcb libXdmcp ncurses openldap openssl rtmpdump util-linux-ng zlib"
+BDEPEND=""
+RECOMMENDED=""
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_config() {
+	./configure --prefix=/usr \
+		    --sysconfdir=/etc \
+		    --audio-drv-list=alsa,sdl,oss \
+		    --audio-card-list=ac97,sb16,es1370,hda \
+		    --enable-docs
+} 
+
+pbs_build() {
+	domake 
+}
+
+pbs_install() {
+	domkinstall 
+	
+	cd "$destdir"
+
+	# Symbolic link for backwards compatibility
+	local app
+	for app in qemu-kvm qemu kvm; do
+		doln /usr/bin/qemu-system-x86_64 usr/bin/"${app}"
+	done
+	
+	# Fix man page
+	mv usr/share/man/man1/qemu.1 usr/share/man/man1/qemu-kvm.1
+
+	# Install udev rules
+        install -D -m644 "$filesdir"/65-kvm.rules lib/udev/rules.d/65-kvm.rules
+}
+

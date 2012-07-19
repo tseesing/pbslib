@@ -43,8 +43,8 @@ pbs_config() {
 		  --with-udevrulesdir=/lib/udev/rules.d
 		  --with-pamlibdir=/lib/security
 		  --with-rootprefix=/
-		  --disable-gtk
-		  --enable-plymouth "
+		  --disable-gtk 
+		  --disable-plymouth "
 	doconfig
 }
 

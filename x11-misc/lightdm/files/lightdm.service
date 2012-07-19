@@ -4,7 +4,7 @@ After=syslog.target dbus.target
 
 [Service]
 Type=simple
-ExecStart=/usr/sbin/lightdm --pid-file=/run/lightdm.pid
+ExecStart=/usr/sbin/lightdm-wrapper --pid-file=/run/lightdm.pid
 #ExecStop=killall lightdm
 PIDFile=/run/lightdm.pid
 #Restart=always

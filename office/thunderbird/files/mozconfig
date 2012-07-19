@@ -1,4 +1,6 @@
 mk_add_options MOZ_CO_PROJECT=mail
+mk_add_options MOZ_MAKE_FLAGS=-j6
+
 ac_add_options --enable-application=mail
 
 ac_add_options --prefix=/usr
@@ -22,6 +24,7 @@ ac_add_options --with-pthreads
 
 # Features
 ac_add_options --enable-official-branding
+ac_add_options --with-distribution-id=ylmfos
 ac_add_options --enable-safe-browsing
 ac_add_options --enable-startup-notification
 ac_add_options --enable-gio

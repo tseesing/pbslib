@@ -10,7 +10,7 @@ HOMEPAGE="http://xorg.freedesktop.org/"
 LICENSE="custom"
 PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
 
-SRC_URI="http://xorg.freedesktop.org/archive/individual/proto/"$N-$V".tar.bz2"
+SRC_URI="http://www.x.org/releases/X11R7.7/src/proto/"$N-$V".tar.bz2"
 CHECKSUM="e7431ab84d37b2678af71e29355e101d"
 
 RDEPEND=""

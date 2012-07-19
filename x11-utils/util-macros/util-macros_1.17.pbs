@@ -1,0 +1,37 @@
+#
+# Ylmf OS package build script
+#
+# Copyright 2005-2012 Ylmf OS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="X.Org autotools utility macros"
+HOMEPAGE="http://xorg.freedesktop.org/"
+LICENSE="GPL"
+PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
+YARCH="any"
+
+SRC_URI="http://www.x.org/releases/X11R7.7/src/util/"$N-$V".tar.bz2"
+
+RDEPEND=""
+BDEPEND=""
+RECOMMENDED=""
+
+OPTIONS="nodev"
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_config() {
+	doconfig
+}
+
+pbs_build() {	
+	domake
+}
+
+pbs_install() {
+	domkinstall
+}
+

@@ -1,0 +1,38 @@
+#
+# Ylmf OS package build script
+#
+# Copyright 2005-2012 Ylmf OS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="free, redistributable digital camera software application"
+HOMEPAGE="http://www.gphoto.org/"
+LICENSE="GPL,LGPL"
+PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
+
+SRC_URI="http://downloads.sourceforge.net/gphoto/"$N-$V".tar.bz2"
+CHECKSUM="60fd6e44d89592f6172227be67227636"
+
+RDEPEND="glibc libexif libgphoto2 libjpeg-turbo libtool ncurses popt readline"
+RECOMMENDED=""
+BDEPEND=""
+OPTIONAL=""
+CONFLICT=""
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_config() {
+	config+=""
+	doconfig
+}
+
+pbs_build() {
+	domake
+}
+
+pbs_install() {
+	domkinstall
+}
+

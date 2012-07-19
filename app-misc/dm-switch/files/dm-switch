@@ -1,17 +1,20 @@
 #!/bin/bash
 #
-# Copyright 2012-2013 startos
+# Copyright 2012-2013 Ylmf OS
 # Distributed under the terms of the GNU General Public License v2
 #
 # dm-switch: DM (display manager) tools.
 
-[ -f /lib/systemd/system/gdm.service ] && gdm=gdm.service
-[ -f /lib/systemd/system/kdm.service ] && kdm=kdm.service
-[ -f /lib/systemd/system/xdm.service ] && xdm=xdm.service
-[ -f /lib/systemd/system/lxdm.service ] && lxdm=lxdm.service
-[ -f /lib/systemd/system/lightdm.service ] && lightdm=lightdm.service
+DMCONFIG="/etc/dm-switch/dm-switch.conf"
+DEFAULT="/etc/dm-switch/default"
 
-files="$lxdm $xdm $gdm $kdm $lightdm"
+. $DMCONFIG
+
+files=""
+
+for dm in $DMS; do
+	[ -f /lib/systemd/system/"${dm}".service ] && files+=""${dm}".service "
+done
 
 case $1 in
 	list)
@@ -30,7 +33,9 @@ case $1 in
 		done	;;
 	
 	enable)
-		systemctl enable ${2/.service/}.service	;;
+		systemctl enable ${2/.service/}.service	
+		echo CURDM="${2/.service/}.service" >$DEFAULT
+		;;
 	disable)
 		systemctl disable ${2/.service/}.service ;;
 	enable-all)
