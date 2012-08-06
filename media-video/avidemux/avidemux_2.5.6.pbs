@@ -1,7 +1,7 @@
 #
-# Ylmf OS package build script
+# StartOS package build script
 #
-# Copyright 2005-2012 Ylmf OS
+# Copyright 2012 StartOS
 # Distributed under the terms of the GNU General Public License v2
 #
 
@@ -9,7 +9,7 @@ DESCRIPTION="Video editor designed for simple cutting, filtering and encoding ta
 COMMENTS="Avidemux is a free video editor designed for simple cutting, filtering and encoding tasks. It supports many file types, including AVI, DVD compatible MPEG files, MP4 and ASF, using a variety of codecs. Tasks can be automated using projects, job queue and powerful scripting capabilities."
 HOMEPAGE="http://fixounet.free.fr/avidemux/"
 LICENSE="GPL"
-PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
+PACKAGER="StartOS Developers"
 
 SRC_URI="http://downloads.sourceforge.net/"$N"/"${N}_$V".tar.gz"
 CHECKSUM="00e479dd806b94a98d3f0f40639e88a9"

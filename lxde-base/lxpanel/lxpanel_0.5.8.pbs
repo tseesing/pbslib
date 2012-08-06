@@ -1,14 +1,14 @@
 #
-# Ylmf OS package build script
+# StartOS package build script
 #
-# Copyright 2005-2012 Ylmf OS
+# Copyright 2012 StartOS
 # Distributed under the terms of the GNU General Public License v2
 #
 
 DESCRIPTION="Standard compliant desktop panel."
 HOMEPAGE="http://www.lxde.org/"
 LICENSE="GPL"
-PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
+PACKAGER="StartOS Developers"
 
 SRC_URI="http://ncu.dl.sourceforge.net/project/lxde/LXPanel%20%28desktop%20panel%29/LXPanel%200.5.8/"$N-$V".tar.gz"
 

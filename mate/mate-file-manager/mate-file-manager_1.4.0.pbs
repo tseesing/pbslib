@@ -1,0 +1,47 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="The MATE shell and file manager"
+HOMEPAGE="http://mate-desktop.org"
+LICENSE="GPL"
+PACKAGER="StartOS Developers"
+
+SRC_URI="http://pub.mate-desktop.org/releases/1.4/"$N-$V".tar.xz"
+CHECKSUM="cc70fbc72614f068fd8dd2aa8d3d9fe68d3f45da17671e20b1dfe8f70c6a2132"
+
+RDEPEND="gtk+ mate-conf mate-corba mate-desktop"
+RECOMMENDED=""
+BDEPEND=""
+OPTIONAL=""
+CONFLICT=""
+REPLACE=""
+
+INSTALL="$N.install"
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_patch() {
+	dopatch
+}
+
+pbs_config() {
+	config+=" --disable-static
+		  --enable-unique
+		  --disable-update-mimedb "
+	doconfig
+}
+
+pbs_build() {
+	domake MATECONF_DISABLE_MAKEFILE_SCHEMA_INSTALL=1
+}
+
+pbs_install() {
+	domkinstall
+}
+

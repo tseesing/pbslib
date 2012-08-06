@@ -1,14 +1,14 @@
 #
-# Ylmf OS package build script
+# StartOS package build script
 #
-# Copyright 2005-2012 Ylmf OS
+# Copyright 2012 StartOS
 # Distributed under the terms of the GNU General Public License v2
 #
 
 DESCRIPTION="A ASCII-Graphics Library"
 HOMEPAGE="http://aa-project.sourceforge.net/aalib/"
 LICENSE="LGPL"
-MAINTAINER="Ylmf OS Developers <ylmfos@ylmf.com>"
+MAINTAINER="StartOS Developers"
 
 SRC_URI="http://downloads.sourceforge.net/aa-project/"$N-$V"rc5.tar.gz"
 

@@ -1,14 +1,14 @@
 #
-# Ylmf OS package build script
+# StartOS package build script
 #
-# Copyright 2005-2012 Ylmf OS
+# Copyright 2012 StartOS
 # Distributed under the terms of the GNU General Public License v2
 #
 
 DESCRIPTION="A library for integration of su into applications"
 HOMEPAGE="http://www.nongnu.org/gksu/"
 LICENSE="GPL"
-PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
+PACKAGER="StartOS Developers"
 
 SRC_URI="http://people.debian.org/~kov/gksu/"$N-$V".tar.gz"
 
@@ -25,12 +25,12 @@ pbs_unpack() {
 pbs_config() {
 	dopatch libgksu-2.0.12-revert-forkpty.patch
 
-	docp $filesdir/gksu.png  .
+	docp "$filesdir"/gksu.png  .
 	doconfig
 }
 
 pbs_build() {
-	dopatch ylmfos_makefile.patch
+	dopatch makefile.patch
 	domake
 
 	# FIXME, creat mo

@@ -1,14 +1,14 @@
 #
-# Ylmf OS package build script
+# StartOS package build script
 #
-# Copyright 2005-2012 Ylmf OS
+# Copyright 2012 StartOS
 # Distributed under the terms of the GNU General Public License v2
 #
 
 DESCRIPTION="libhangul is a generalized and portable library for processing hangul."
 HOMEPAGE="http://code.google.com/p/libhangul/"
 LICENSE="LGPL"
-PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
+PACKAGER="StartOS Developers"
 
 SRC_URI="http://libhangul.googlecode.com/files/"$N-$V".tar.gz"
 CHECKSUM="9c6f3a82f2d4068771215f1b9f13a0d4bdbbfc77"

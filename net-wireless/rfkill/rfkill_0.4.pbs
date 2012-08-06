@@ -1,7 +1,7 @@
 #
-# Ylmf OS package build script
+# StartOS package build script
 #
-# Copyright 2005-2012 Ylmf OS
+# Copyright 2012 StartOS
 # Distributed under the terms of the GNU General Public License v2
 #
 
@@ -9,7 +9,7 @@ DESCRIPTION="Tool to read and control rfkill status through /dev/rfkill"
 HOMEPAGE="http://wireless.kernel.org/en/users/Documentation/rfkill"
 REPO=""
 LICENSE="GPL"
-PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
+PACKAGER="StartOS Developers"
 
 SRC_URI="http://wireless.kernel.org/download/rfkill/rfkill-0.4.tar.bz2"
 

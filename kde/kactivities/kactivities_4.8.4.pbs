@@ -1,14 +1,14 @@
 #
-# Ylmf OS package build script
+# StartOS package build script
 #
-# Copyright 2005-2012 Ylmf OS
+# Copyright 2012 StartOS
 # Distributed under the terms of the GNU General Public License v2
 #
 
 DESCRIPTION="API for using and interacting with Activities"
 HOMEPAGE="http://www.kde.org"
 LICENSE="GPL,FDL"
-PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
+PACKAGER="StartOS Developers<>"
 
 SRC_URI="http://download.kde.org/stable/"$V"/src/"$N-$V".tar.xz"
 CHECKSUM="3f42c18bae5a1d6bbd7fca471d8b4f9755875e06"

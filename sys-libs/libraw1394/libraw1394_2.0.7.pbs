@@ -1,14 +1,14 @@
 #
-# Ylmf OS package build script
+# StartOS package build script
 #
-# Copyright 2005-2012 Ylmf OS
+# Copyright 2012 StartOS
 # Distributed under the terms of the GNU General Public License v2
 #
 
 DESCRIPTION="Provides an API to the Linux IEEE1394 (FireWire) driver"
 HOMEPAGE="https://ieee1394.wiki.kernel.org/index.php/Main_Page"
 LICENSE="GPL"
-PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
+PACKAGER="StartOS Developers"
 
 SRC_URI="http://mirror.nexcess.net/kernel.org/linux/libs/ieee1394/"$N-$V".tar.bz2"
 CHECKSUM="997ef18ab8e2e21f3966dff00e92be28"

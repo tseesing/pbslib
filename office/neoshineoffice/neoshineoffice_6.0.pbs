@@ -1,14 +1,14 @@
 #
-# Ylmf OS package build script
+# StartOS package build script
 #
-# Copyright 2005-2012 Ylmf OS
+# Copyright 2012 StartOS
 # Distributed under the terms of the GNU General Public License v2
 #
 
 DESCRIPTION="NeoShine Office"
 HOMEPAGE="http://www.cs2c.com.cn/"
 LICENSE="custom"
-PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
+PACKAGER="StartOS Developers"
 
 SRC_URI="http://office.cs2c.com.cn/data/upload/downloadCenter/product/NeoShineOffice_"$V"_PER_Lin_B40-43.tar"
 CHECKSUM="26ab6833a91efea5af7acd5eba2a039a"

@@ -1,14 +1,14 @@
 #
-# Ylmf OS package build script
+# StartOS package build script
 #
-# Copyright 2005-2012 Ylmf OS
+# Copyright 2012 StartOS
 # Distributed under the terms of the GNU General Public License v2
 #
 
 DESCRIPTION="Toolkit for SSL v2/v3 and TLS v1"
 HOMEPAGE="http://www.openssl.org/"
 LICENSE="custom:BSD"
-PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
+PACKAGER="StartOS Developers"
 
 SRC_URI="ftp://ftp.openssl.org/source/"$N-$V"e.tar.gz"
 
@@ -30,7 +30,7 @@ pbs_config() {
 	dopatch ca-dir.patch
 	
 	# 
-	dopatch ylmfos-makefile-dir.patch
+	dopatch makefile-dir.patch
 	
 	# Mark stack as non-executable: http://bugs.archlinux.org/task/12434
 	./config --prefix=/usr --openssldir=/usr/lib/ssl \

@@ -1,14 +1,14 @@
 #
-# Ylmf OS package build script
+# StartOS package build script
 #
-# Copyright 2005-2012 Ylmf OS
+# Copyright 2012 StartOS
 # Distributed under the terms of the GNU General Public License v2
 #
 
 DESCRIPTION="Hammer of Thyrion is based on the original Linux Hexen II project, Anvil of Thyrion"
 HOMEPAGE="http://uhexen2.sourceforge.net"
 LICENSE="GPL"
-PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
+PACKAGER="StartOS Developers"
 
 SRC_URI="http://downloads.sourceforge.net/uhexen2/hexen2source-"$V".tgz 
          http://downloads.sourceforge.net/uhexen2/hexen2source-gamecode-"$V".tgz

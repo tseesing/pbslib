@@ -1,14 +1,14 @@
 #
-# Ylmf OS package build script
+# StartOS package build script
 #
-# Copyright 2005-2012 Ylmf OS
+# Copyright 2012 StartOS
 # Distributed under the terms of the GNU General Public License v2
 #
 
 DESCRIPTION="NVIDIA Cg libraries"
 HOMEPAGE="http://developer.nvidia.com/cg-toolkit-download"
 LICENSE="custom"
-PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
+PACKAGER="StartOS Developers"
 
 SRC_URI="http://developer.download.nvidia.com/cg/Cg_"$V"/Cg-"$V"_April2012_x86.tgz"
 CHECKSUM="9a9fc5108154808f3b10eafa54df1c74"

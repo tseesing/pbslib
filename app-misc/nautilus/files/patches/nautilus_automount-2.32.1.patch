@@ -46,7 +46,7 @@ diff -ur nautilus-2.32.1/src/nautilus-application.c nautilus-2.32.1.new//src/nau
  	g_volume_mount_finish (G_VOLUME (source_object), res, NULL);
  }
  
-+/* add by Ylmf OS
++/* add by StartOS
 + * author wkt
 + * */
 +static gboolean

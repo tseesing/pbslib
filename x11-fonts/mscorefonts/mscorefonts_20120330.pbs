@@ -1,14 +1,14 @@
 #
-# Ylmf OS package build script
+# StartOS package build script
 #
-# Copyright 2005-2012 Ylmf OS
+# Copyright 2012 StartOS
 # Distributed under the terms of the GNU General Public License v2
 #
 
 DESCRIPTION="Microsoft TrueType core fonts"
 HOMEPAGE="http://sourceforge.net/projects/corefonts"
 LICENSE="mscorefonts-eula"
-PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
+PACKAGER="StartOS Developers"
 YARCH="any"
 
 SRC_URI="http://sourceforge.net/projects/corefonts/files/the%20fonts/final/wd97vwr32.exe

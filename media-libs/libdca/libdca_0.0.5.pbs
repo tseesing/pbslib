@@ -1,14 +1,14 @@
 #
-# Ylmf OS package build script
+# StartOS package build script
 #
-# Copyright 2005-2012 Ylmf OS
+# Copyright 2012 StartOS
 # Distributed under the terms of the GNU General Public License v2
 #
 
 DESCRIPTION="library for decoding DTS Coherent Acoustics streams used in DVD"
 HOMEPAGE="http://www.videolan.org/developers/libdca.html"
 LICENSE="GPL"
-PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
+PACKAGER="StartOS Developers"
 
 SRC_URI="http://download.videolan.org/pub/videolan/"$N"/"$V"/"$N-$V".tar.bz2"
 CHECKSUM="dab6b2795c66a82a6fcd4f8343343021"

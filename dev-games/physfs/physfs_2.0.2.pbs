@@ -1,14 +1,14 @@
 #
-# Ylmf OS package build script
+# StartOS package build script
 #
-# Copyright 2005-2012 Ylmf OS
+# Copyright 2012 StartOS
 # Distributed under the terms of the GNU General Public License v2
 #
 
 DESCRIPTION="A library to provide abstract access to various archives"
 HOMEPAGE="http://icculus.org/physfs"
 LICENSE="ZLIB"
-PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
+PACKAGER="StartOS Developers"
 
 SRC_URI="http://icculus.org/physfs/downloads/"$N-$V".tar.gz"
 CHECKSUM="4e8927c3d30279b03e2592106eb9184a"

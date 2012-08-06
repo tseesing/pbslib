@@ -1,14 +1,14 @@
 #
-# Ylmf OS package build script
+# StartOS package build script
 #
-# Copyright 2005-2012 Ylmf OS
+# Copyright 2012 StartOS
 # Distributed under the terms of the GNU General Public License v2
 #
 
 DESCRIPTION="Festival Text to Speech engine"
 HOMEPAGE="http://www.cstr.ed.ac.uk/projects/festival/"
 LICENSE="BSD/custom/GPL"
-PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
+PACKAGER="StartOS Developers"
 
 REPO=""
 SRC_URI="http://www.cstr.ed.ac.uk/downloads/"$N"/"$V$R"/"$N-$V$R"-release.tar.gz

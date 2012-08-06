@@ -1,14 +1,14 @@
 #
-# Ylmf OS package build script
+# StartOS package build script
 #
-# Copyright 2005-2012 Ylmf OS
+# Copyright 2012 StartOS
 # Distributed under the terms of the GNU General Public License v2
 #
 
 DESCRIPTION="linuxqq"
 HOMEPAGE="http://im.qq.com/qq/linux/download.shtml"
 LICENSE="custom"
-PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
+PACKAGER="StartOS Developers"
 
 SRC_URI="http://dl_dir.qq.com/linuxqq/linuxqq_v"$V${R}"_i386.tar.gz"
 

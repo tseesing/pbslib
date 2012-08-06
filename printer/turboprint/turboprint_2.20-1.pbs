@@ -1,14 +1,14 @@
 #
-# Ylmf OS package build script
+# StartOS package build script
 #
-# Copyright 2005-2012 Ylmf OS
+# Copyright 2012 StartOS
 # Distributed under the terms of the GNU General Public License v2
 #
 
 DESCRIPTION="The comfortable and powerful printing system for Linux"
 HOMEPAGE="http://www.turboprint.info/"
 LICENSE=""
-PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
+PACKAGER="StartOS Developers"
 
 SRC_URI="http://www.turboprint.info/tp2/turboprint_2.20-1_i386.deb"
 

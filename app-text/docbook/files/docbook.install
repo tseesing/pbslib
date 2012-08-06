@@ -1,0 +1,28 @@
+
+post_install() {
+	local name=$1
+	local version="$2"
+	install-catalog --add /etc/sgml/sgml-docbook-dtd-"$version".cat \
+		              /usr/share/sgml/docbook/sgml-dtd-"$version"/catalog
+
+        install-catalog --add /etc/sgml/sgml-docbook-dtd-"$version".cat \
+	                      /etc/sgml/sgml-docbook.cat
+
+        cat >>/usr/share/sgml/docbook/sgml-dtd-"$version"/catalog <<"EOF"
+-- Begin Single Major Version catalog changes --
+PUBLIC "-//OASIS//DTD DocBook V4.4//EN" "docbook.dtd"
+PUBLIC "-//OASIS//DTD DocBook V4.3//EN" "docbook.dtd"
+PUBLIC "-//OASIS//DTD DocBook V4.2//EN" "docbook.dtd"
+PUBLIC "-//OASIS//DTD DocBook V4.1//EN" "docbook.dtd"
+PUBLIC "-//OASIS//DTD DocBook V4.0//EN" "docbook.dtd"
+-- End Single Major Version catalog changes --
+EOF
+}
+
+post_upgrade() {
+	local name=$1
+	local old=$2
+	local new=$3
+	post_install $1 $3
+}
+

@@ -1,14 +1,14 @@
 #
-# Ylmf OS package build script
+# StartOS package build script
 #
-# Copyright 2005-2012 Ylmf OS
+# Copyright 2012 StartOS
 # Distributed under the terms of the GNU General Public License v2
 #
 
 DESCRIPTION="HTTP and WebDAV client library"
 HOMEPAGE="http://www.webdav.org/neon/"
 LICENSE="GPL-2"
-PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
+PACKAGER="StartOS Developers"
 
 SRC_URI="http://www.webdav.org/"$N"/"$N-$V$R".tar.gz"
 

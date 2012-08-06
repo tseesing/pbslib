@@ -1,7 +1,7 @@
 #
-# Ylmf OS package build script
+# StartOS package build script
 #
-# Copyright 2005-2012 Ylmf OS
+# Copyright 2012 StartOS
 # Distributed under the terms of the GNU General Public License v2
 #
 
@@ -10,7 +10,7 @@ HOMEPAGE="http://lha.sourceforge.jp"
 REPO=""
 LICENSE="GPL"
 PRIORITY=""
-PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
+PACKAGER="StartOS Developers"
 
 SRC_URI="http://jaist.dl.sourceforge.jp/lha/22231/"$N-$V$R"i-ac20050924p1.tar.gz"
 

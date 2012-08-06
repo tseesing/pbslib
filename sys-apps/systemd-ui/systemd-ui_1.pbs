@@ -1,14 +1,14 @@
 #
-# Ylmf OS package build script
+# StartOS package build script
 #
-# Copyright 2005-2012 Ylmf OS
+# Copyright 2012 StartOS
 # Distributed under the terms of the GNU General Public License v2
 #
 
 DESCRIPTION="Graphical front-end for systemd"
 HOMEPAGE="http://freedesktop.org/wiki/Software/systemd"
 LICENSE="GPL"
-PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
+PACKAGER="StartOS Developers"
 
 SRC_URI="http://www.freedesktop.org/software/systemd/"$N-$V".tar.xz"
 CHECKSUM="aa481542e39639ab2236344ad96038fe"

@@ -1,14 +1,14 @@
 #
-# Ylmf OS package build script
+# StartOS package build script
 #
-# Copyright 2005-2012 Ylmf OS
+# Copyright 2012 StartOS
 # Distributed under the terms of the GNU General Public License v2
 #
 
 DESCRIPTION="VDPAU Backend for Video Acceleration (VA) API"
 HOMEPAGE="http://www.splitted-desktop.com/~gbeauchesne/vdpau-video/"
 LICENSE="GPL"
-PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
+PACKAGER="StartOS Developers"
 
 SRC_URI="http://www.splitted-desktop.com/~gbeauchesne/"$N"/"$N-$V".tar.gz"
 CHECKSUM="18870e007ecdc50a528861fa55556364"
@@ -28,7 +28,7 @@ pbs_patch() {
 }
 
 pbs_config() {
-	config+="--disable-debug --enable-glx"
+	config+=""
 	doconfig
 }
 
@@ -38,7 +38,6 @@ pbs_build() {
 
 pbs_install() {
 	domkinstall
-	dodoc AUTHORS COPYING README
 }
 
 

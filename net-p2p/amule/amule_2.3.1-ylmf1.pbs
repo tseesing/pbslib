@@ -1,14 +1,14 @@
 #
-# Ylmf OS package build script
+# StartOS package build script
 #
-# Copyright 2005-2012 Ylmf OS
+# Copyright 2012 StartOS
 # Distributed under the terms of the GNU General Public License v2
 #
 
 DESCRIPTION="aMule, the all-platform eMule p2p client"
 HOMEPAGE="http://www.amule.org/"
 LICENSE="GPL"
-PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
+PACKAGER="StartOS Developers"
 
 SRC_URI="http://sourceforge.net/projects/amule/files/aMule/"$V"/aMule-"$V".tar.xz"
 CHECKSUM="5f5707ad2073d37100409870aa5d3f93"
@@ -23,7 +23,7 @@ pbs_unpack() {
 }
 
 pbs_patch() {
-	dopatch ylmfos_desktop-2.3.1.patch
+	dopatch desktop-2.3.1.patch
 }
 
 pbs_config() {

@@ -1,14 +1,14 @@
 #
-# Ylmf OS package build script
+# StartOS package build script
 #
-# Copyright 2005-2012 Ylmf OS
+# Copyright 2012 StartOS
 # Distributed under the terms of the GNU General Public License v2
 #
 
 DESCRIPTION="Glade-like GUI designer which can generate Python, Perl, C++ or XRC code"
 HOMEPAGE="http://wxglade.sourceforge.net/"
 LICENSE="MIT"
-PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
+PACKAGER="StartOS Developers"
 
 SRC_URI="http://sourceforge.net/projects/wxglade/files/"$N"/"$V"/wxGlade-"$V".tar.gz"
 CHECKSUM="983715e105e53a0d82efbe1fa8cf4361"
@@ -27,7 +27,7 @@ pbs_unpack() {
 
 pbs_patch() {
 	dopatch wxglade-0.6.3-wxversion.patch \
-	        ylmfos_modules-path.patch
+	        modules-path.patch
 }
 
 pbs_build() {

@@ -1,7 +1,7 @@
 #
-# Ylmf OS package build script
+# StartOS package build script
 #
-# Copyright 2005-2012 Ylmf OS
+# Copyright 2012 StartOS
 # Distributed under the terms of the GNU General Public License v2
 #
 
@@ -11,7 +11,7 @@ COMMENTS="The Droid family of fonts consists of Droid Sans (Regular and Bold),
           BoldItalic)"
 HOMEPAGE="http://code.google.com/android/"
 LICENSE="apache"
-PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
+PACKAGER="StartOS Developers"
 YARCH="any"
 
 SRC_URI=""

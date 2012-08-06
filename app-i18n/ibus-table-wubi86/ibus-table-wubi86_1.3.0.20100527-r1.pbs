@@ -1,0 +1,56 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="The Table Engine for IBus Framework"
+HOMEPAGE="http://code.google.com/p/ibus/"
+LICENSE="GPL"
+PACKAGER="StartOS Developers"
+ 
+SRC_URI="http://ibus.googlecode.com/files/ibus-table-chinese-"$V".tar.gz"
+
+RDEPEND="ibus-table"
+BDEPEND=" "
+RECOMMENDED=""
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_config() {
+	config+=" --disable-cangjie3
+	  	  --disable-cangjie5   
+	          --disable-cangjiebig  
+	          --disable-scj6           
+	          --disable-quick3  
+		  --disable-quick5   
+		  --disable-quickclassic   
+		  --disable-easybig  
+		  --disable-cantonese  
+		  --disable-cantonhk  
+		  --disable-jyutping   
+		  --disable-stroke5  
+		  --disable-xinhua 
+		  --disable-zhengma    
+		  --disable-erbi     
+		  --disable-erbiqs  
+		  --disable-wu       
+		  --disable-yong    
+		  --disable-zhuyin     
+		  --disable-zhuyinbig   
+		  --disable-ziranma  
+		  --disable-extra-phrases "
+	doconfig
+}
+
+pbs_build() {
+	domake
+}
+
+pbs_install() {
+	domkinstall
+}
+

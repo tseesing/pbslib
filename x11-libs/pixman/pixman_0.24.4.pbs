@@ -1,14 +1,14 @@
 #
-# Ylmf OS package build script
+# StartOS package build script
 #
-# Copyright 2005-2012 Ylmf OS
+# Copyright 2012 StartOS
 # Distributed under the terms of the GNU General Public License v2
 #
 
 DESCRIPTION="Low-level pixel manipulation routines"
 HOMEPAGE="http://xorg.freedesktop.org/"
 LICENSE="custom"
-PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
+PACKAGER="StartOS Developers"
 
 SRC_URI="http://cairographics.org/releases/"$N-$V".tar.gz"
 CHECKSUM="efaa09789128ebc42d17a11d2e350b7217a7cd05"

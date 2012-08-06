@@ -1,14 +1,14 @@
 #
-# Ylmf OS package build script
+# StartOS package build script
 #
-# Copyright 2005-2012 Ylmf OS
+# Copyright 2012 StartOS
 # Distributed under the terms of the GNU General Public License v2
 #
 
 DESCRIPTION="The VP8 Codec SDK"
 HOMEPAGE="http://www.webmproject.org/"
 LICENSE="BSD"
-PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
+PACKAGER="StartOS Developers"
 
 SRC_URI="http://webm.googlecode.com/files/"$N-v$V".tar.bz2"
 CHECKSUM="356af5f770c50cd021c60863203d8f30164f6021"

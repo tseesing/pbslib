@@ -1,14 +1,14 @@
 #
-# Ylmf OS package build script
+# StartOS package build script
 #
-# Copyright 2005-2012 Ylmf OS
+# Copyright 2012 StartOS
 # Distributed under the terms of the GNU General Public License v2
 #
 
 DESCRIPTION="Default freedesktop.org sound theme following the XDG theming specification"
 HOMEPAGE="http://www.freedesktop.org/wiki/Specifications/sound-theme-spec"
 LICENSE="GPL"
-PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
+PACKAGER="StartOS Developers"
 YARCH="any"
 
 SRC_URI="http://cgit.freedesktop.org/"$N"/snapshot/"$N-$V".tar.bz2"

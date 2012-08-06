@@ -1,7 +1,7 @@
 
 post_install() {
 	# Creating global font cache
-	fc-cache -srf
+	fc-cache -srf ||true
 }
 
 post_upgrade() {

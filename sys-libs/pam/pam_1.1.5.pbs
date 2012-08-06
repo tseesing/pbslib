@@ -1,14 +1,14 @@
 #
-# Ylmf OS package build script
+# StartOS package build script
 #
-# Copyright 2005-2012 Ylmf OS
+# Copyright 2012 StartOS
 # Distributed under the terms of the GNU General Public License v2
 #
 
 DESCRIPTION="Linux-PAM (Pluggable Authentication Modules)"
 HOMEPAGE="https://fedorahosted.org/linux-pam/"
 LICENSE="BSD/GPL"
-PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
+PACKAGER="StartOS Developers"
 
 SRC_URI="https://fedorahosted.org/releases/l/i/linux-pam/Linux-PAM-"$V".tar.bz2"
 CHECKSUM="927ee5585bdec5256c75117e9348aa47"

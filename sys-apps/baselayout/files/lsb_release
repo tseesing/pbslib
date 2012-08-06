@@ -1,8 +1,8 @@
 #!/bin/bash
 #
 
-file=/etc/ylmfos-release
-all=$(head -n1 /etc/ylmfos-release)
+file=/etc/startos-release
+all=$(head -n1 /etc/startos-release)
 DISTRIB_ID="${all[@]%%release*}"
 DISTRIB_CODENAME=${all##*(}
 DISTRIB_CODENAME=${DISTRIB_CODENAME%%)*}

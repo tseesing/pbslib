@@ -1,14 +1,14 @@
 #
-# Ylmf OS package build script
+# StartOS package build script
 #
-# Copyright 2005-2012 Ylmf OS
+# Copyright 2012 StartOS
 # Distributed under the terms of the GNU General Public License v2
 #
 
 DESCRIPTION="A standards-compliant graphical Web browser"
 HOMEPAGE="http://www.opera.com/"
 LICENSE="custom"
-PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
+PACKAGER="StartOS Developers"
 
 SRC_URI="http://get.geo.opera.com/pub/"$N"/linux/1200/"${N}_$V"_i386.deb"
 CHECKSUM="023f75125b6618cfb41dc0291790db56"

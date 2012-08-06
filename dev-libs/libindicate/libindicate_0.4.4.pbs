@@ -1,14 +1,14 @@
 #
-# Ylmf OS package build script
+# StartOS package build script
 #
-# Copyright 2005-2012 Ylmf OS
+# Copyright 2012 StartOS
 # Distributed under the terms of the GNU General Public License v2
 #
 
 DESCRIPTION="A library to raise flags on DBus for other components of the desktop to pick up and visualize"
 HOMEPAGE="http://launchpad.net/libindicate"
 LICENSE="GPL"
-PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
+PACKAGER="StartOS Developers"
 
 SRC_URI="https://launchpad.net/libindicate/0.4/0.4.4/+download/libindicate-0.4.4.tar.gz"
 CHECKSUM="6d42a710ddd5466263d244e05a273c45"

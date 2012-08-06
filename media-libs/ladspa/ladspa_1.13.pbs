@@ -1,14 +1,14 @@
 #
-# Ylmf OS package build script
+# StartOS package build script
 #
-# Copyright 2005-2012 Ylmf OS
+# Copyright 2012 StartOS
 # Distributed under the terms of the GNU General Public License v2
 #
 
 DESCRIPTION="Linux Audio Developer's Simple Plugin API (LADSPA)"
 HOMEPAGE="http://www.ladspa.org"
 LICENSE="LGPL"
-PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
+PACKAGER="StartOS Developers"
 
 SRC_URI="http://www.ladspa.org/download/"$N"_sdk_"$V".tgz"
 CHECKSUM="671be3e1021d0722cadc7fb27054628e"

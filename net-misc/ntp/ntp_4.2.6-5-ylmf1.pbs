@@ -1,14 +1,14 @@
 #
-# Ylmf OS package build script
+# StartOS package build script
 #
-# Copyright 2005-2012 Ylmf OS
+# Copyright 2012 StartOS
 # Distributed under the terms of the GNU General Public License v2
 #
 
 DESCRIPTION="Network Time Protocol suite/programs"
 HOMEPAGE="http://www.ntp.org/"
 LICENSE="custom"
-PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
+PACKAGER="StartOS Developers"
 
 SRC_URI="http://www.eecis.udel.edu/~ntp/ntp_spool/"$N"4/"$N"-4.2.6p5.tar.gz"
 CHECKSUM="4a5353a4791b6f4315a66c28d504ec6c7926b192"

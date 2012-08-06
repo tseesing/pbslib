@@ -1,14 +1,14 @@
 #
-# Ylmf OS package build script
+# StartOS package build script
 #
-# Copyright 2005-2012 Ylmf OS
+# Copyright 2012 StartOS
 # Distributed under the terms of the GNU General Public License v2
 #
 
 DESCRIPTION="A Three Dimensional Galactic Atlas"
 HOMEPAGE="http://www.thinkastronomy.com/M13/index.html"
 LICENSE="custom"
-PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
+PACKAGER="StartOS Developers"
 
 SRC_URI="http://www.thinkastronomy.com/M13/downloads/WhereIsM13_2.3.zip"
 CHECKSUM="b028484b559d903f820284435a137d7c"

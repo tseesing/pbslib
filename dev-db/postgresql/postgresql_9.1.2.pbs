@@ -1,14 +1,14 @@
 #
-# Ylmf OS package build script
+# StartOS package build script
 #
-# Copyright 2005-2012 Ylmf OS
+# Copyright 2012 StartOS
 # Distributed under the terms of the GNU General Public License v2
 #
 
 DESCRIPTION="A sophisticated object-relational DBMS"
 HOMEPAGE="http://www.postgresql.org/"
 LICENSE="custom:PostgreSQL"
-PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
+PACKAGER="StartOS Developers"
 
 SRC_URI="ftp://ftp.postgresql.org/pub/source/v"$V"/"$N-$V".tar.bz2"
 CHECKSUM="7dbff52221954c46595313eb7f92c3e0"

@@ -1,14 +1,14 @@
 #
-# Ylmf OS package build script
+# StartOS package build script
 #
-# Copyright 2005-2012 Ylmf OS
+# Copyright 2012 StartOS
 # Distributed under the terms of the GNU General Public License v2
 #
 
 DESCRIPTION="PIM layer, which provides an asynchronous API to access all kind of PIM data"
 HOMEPAGE="http://pim.kde.org/akonadi/"
 LICENSE="LGPL"
-PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
+PACKAGER="StartOS Developers<>"
 
 SRC_URI="http://download.kde.org/stable/"$N"/src/"$N-$V".tar.bz2"
 CHECKSUM="c73bb835057a3ee07d37a4f7daaf7ecf"

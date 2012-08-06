@@ -1,14 +1,14 @@
 #
-# Ylmf OS package build script
+# StartOS package build script
 #
-# Copyright 2005-2012 Ylmf OS
+# Copyright 2012 StartOS
 # Distributed under the terms of the GNU General Public License v2
 #
 
 DESCRIPTION="libmpd is a abstraction layer around libmpdclient. It provides a high level access to mpd."
 HOMEPAGE="http://gmpc.wikia.com/wiki/Libmpd"
 LICENSE="GPL"
-PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
+PACKAGER="StartOS Developers"
 
 SRC_URI="http://download.sarine.nl/Programs/gmpc/11.8/"$N-$V".tar.gz"
 CHECKSUM="5ae3d87467d52aef3345407adb0a2488"

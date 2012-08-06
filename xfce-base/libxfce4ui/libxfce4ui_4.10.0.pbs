@@ -1,14 +1,14 @@
 #
-# Ylmf OS package build script
+# StartOS package build script
 #
-# Copyright 2005-2012 Ylmf OS
+# Copyright 2012 StartOS
 # Distributed under the terms of the GNU General Public License v2
 #
 
 DESCRIPTION="Unified widgets and session management libraries for the Xfce desktop environment"
 HOMEPAGE="http://www.xfce.org/projects/libxfce4"
 LICENSE="GPL"
-PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
+PACKAGER="StartOS Developers"
 
 SRC_URI="http://archive.xfce.org/src/xfce/"$N"/4.10/"$N-$V".tar.bz2"
 CHECKSUM="a2b9fa288ccb5f16fa13264e507ba3f7b8da0176da259a11239f21538c0ea3e2"
@@ -29,7 +29,7 @@ pbs_config() {
 	config+=" --disable-static
 		  --enable-gtk-doc
 	          --disable-debug 
-		  --with-vendor-info=ylmfos "
+		  --with-vendor-info=startos "
 	doconfig
 }
 

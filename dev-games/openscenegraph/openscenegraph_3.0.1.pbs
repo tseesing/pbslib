@@ -1,14 +1,14 @@
 #
-# Ylmf OS package build script
+# StartOS package build script
 #
-# Copyright 2005-2012 Ylmf OS
+# Copyright 2012 StartOS
 # Distributed under the terms of the GNU General Public License v2
 #
 
 DESCRIPTION="An Open Source, high performance real-time graphics toolkit"
 HOMEPAGE="http://www.openscenegraph.org"
 LICENSE="custom/OSGPL"
-PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
+PACKAGER="StartOS Developers"
 
 SRC_URI="http://www.openscenegraph.org/downloads/stable_releases/OpenSceneGraph-"$V"/source/OpenSceneGraph-"$V".zip"
 CHECKSUM="c43a25d023e635c3566b2083d8e6d956"

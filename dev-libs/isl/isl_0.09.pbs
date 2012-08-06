@@ -1,14 +1,14 @@
 #
-# Ylmf OS package build script
+# StartOS package build script
 #
-# Copyright 2005-2012 Ylmf OS
+# Copyright 2012 StartOS
 # Distributed under the terms of the GNU General Public License v2
 #
 
 DESCRIPTION="A library for manipulating integer points bounded by affine constraints."
 HOMEPAGE="http://www.kotnet.org/~skimo/isl/"
 LICENSE="LGPL2.1"
-PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
+PACKAGER="StartOS Developers"
 
 SRC_URI="http://www.kotnet.org/~skimo/isl/"$N-$V".tar.bz2"
 CHECKSUM="6873f0b3c9f4d1fb8efae4aea53f2ab2"

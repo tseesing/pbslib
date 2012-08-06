@@ -1,7 +1,7 @@
 #
-# Ylmf OS package build script
+# StartOS package build script
 #
-# Copyright 2005-2012 Ylmf OS
+# Copyright 2012 StartOS
 # Distributed under the terms of the GNU General Public License v2
 #
 
@@ -9,7 +9,7 @@ DESCRIPTION="An IMAP/POP server"
 COMMENTS="IMAP (Internet Message Access Protocol) is a method of accessing electronic messages kept on a (possibly shared) mail server."
 HOMEPAGE="http://www.washington.edu/imap/"
 LICENSE="APACHE"
-PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
+PACKAGER="StartOS Developers"
 
 SRC_URI="ftp://ftp.cac.washington.edu/imap/"$N-$V"f.tar.gz"
 CHECKSUM="2126fd125ea26b73b20f01fcd5940369"

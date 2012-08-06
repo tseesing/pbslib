@@ -1,7 +1,7 @@
 #s
-# Ylmf OS package build script
+# StartOS package build script
 #
-# Copyright 2005-2012 Ylmf OS
+# Copyright 2012 StartOS
 # Distributed under the terms of the GNU General Public License v2
 #
 
@@ -9,7 +9,7 @@ DESCRIPTION="a free, open-source video editor for Linux."
 HOMEPAGE="http://www.openshot.org/"
 LICENSE="GPLv3"
 YARCH="any"
-PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
+PACKAGER="StartOS Developers"
 
 SRC_URI="https://launchpadlibrarian.net/92043030/"$N-$V".tar.gz"
 CHECKSUM="16fea75be6b1fc9d31c6a30a81f85a38"

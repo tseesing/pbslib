@@ -3,7 +3,7 @@
 DESCRIPTION="a media player aiming to be similar to AmaroK, but for GTK+"
 HOMEPAGE="http://www.exaile.org/"
 LICENSE="GPL"
-PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
+PACKAGER="StartOS Developers"
 
 SRC_URI="http://launchpadlibrarian.net/75478776/"$N-$V".tar.gz"
 
@@ -18,8 +18,11 @@ pbs_unpack() {
         dounpack
 }
 
+pbs_patch() {
+	dopatch makefile.patch
+}
+
 pbs_config() {
-	dopatch ylmfos-makefile.patch
 	config+=""
 	doconfig
 }

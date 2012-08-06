@@ -1,14 +1,14 @@
 #
-# Ylmf OS package build script
+# StartOS package build script
 #
-# Copyright 2005-2012 Ylmf OS
+# Copyright 2012 StartOS
 # Distributed under the terms of the GNU General Public License v2
 #
 
 DESCRIPTION="simple-lightdm-manager"
 HOMEPAGE="https://launchpad.net/~claudiocn"
 LICENSE="GPL"
-PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
+PACKAGER="StartOS Developers"
 
 SRC_URI="https://launchpadlibrarian.net/81977867/"${N}_$V"-public7.tar.gz"
 CHECKSUM="ba4abb4d194e98a1a3e1416ac9ffc7ea"

@@ -1,14 +1,14 @@
 #
-# Ylmf OS package build script
+# StartOS package build script
 #
-# Copyright 2005-2012 Ylmf OS
+# Copyright 2012 StartOS
 # Distributed under the terms of the GNU General Public License v2
 #
 
 DESCRIPTION="Uncompress rar files"
 HOMEPAGE="http://www.rarlab.com/rar_add.htm"
 LICENSE="custom"
-PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
+PACKAGER="StartOS Developers"
 
 SRC_URI="http://www.rarlab.com/rar/unrarsrc-"$V".tar.gz"
 CHECKSUM="808c92a661820a637ca1330cf40c18e4"

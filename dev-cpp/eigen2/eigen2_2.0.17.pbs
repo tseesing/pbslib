@@ -1,14 +1,14 @@
 #
-# Ylmf OS package build script
+# StartOS package build script
 #
-# Copyright 2005-2012 Ylmf OS
+# Copyright 2012 StartOS
 # Distributed under the terms of the GNU General Public License v2
 #
 
 DESCRIPTION="A lightweight C++ template library for vector and matrix math, a.k.a. linear algebra"
 HOMEPAGE="http://eigen.tuxfamily.org/index.php?title=Main_Page"
 LICENSE="GPL,LGPL"
-PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
+PACKAGER="StartOS Developers"
 
 SRC_URI="http://bitbucket.org/eigen/eigen/get/"$V".tar.bz2"
 CHECKSUM="2dfd1e2765d82c306adbfcd6a0eb324b"

@@ -1,14 +1,14 @@
 #
-# Ylmf OS package build script
+# StartOS package build script
 #
-# Copyright 2005-2012 Ylmf OS
+# Copyright 2012 StartOS
 # Distributed under the terms of the GNU General Public License v2
 #
 
 DESCRIPTION="HTML Help viewer for Unix/Linux"
 HOMEPAGE="http://code.google.com/p/chmsee/"
 LICENSE="GPLv2"
-PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
+PACKAGER="StartOS Developers"
 
 #https://nodeload.github.com/jungleji/chmsee/tarball/v1.99.06
 SRC_URI="jungleji-chmsee-v1.99.06-0-gad31e43.tar.gz"

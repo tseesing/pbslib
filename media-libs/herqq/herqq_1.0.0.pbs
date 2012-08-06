@@ -1,14 +1,14 @@
 #
-# Ylmf OS package build script
+# StartOS package build script
 #
-# Copyright 2005-2012 Ylmf OS
+# Copyright 2012 StartOS
 # Distributed under the terms of the GNU General Public License v2
 #
 
 DESCRIPTION="A software library for building UPnP devices"
 HOMEPAGE="http://www.herqq.org"
 LICENSE="GPL"
-PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
+PACKAGER="StartOS Developers"
 
 SRC_URI="http://downloads.sourceforge.net/hupnp/"$N-$V".zip"
 CHECKSUM="45a0632f7c7b64bc0fdab852d36c1e61"

@@ -1,14 +1,14 @@
 #
-# Ylmf OS package build script
+# StartOS package build script
 #
-# Copyright 2005-2012 Ylmf OS
+# Copyright 2012 StartOS
 # Distributed under the terms of the GNU General Public License v2
 #
 
 DESCRIPTION="A blending of the wxWindows C++ class library with Python"
 HOMEPAGE="http://www.wxpython.org/"
 LICENSE="custom:wxWindows"
-PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
+PACKAGER="StartOS Developers"
 
 SRC_URI="http://downloads.sourceforge.net/wxpython/wxPython-src-"$V".tar.bz2"
 CHECKSUM="402e0b81e06f596d849e221a7a76acc6"

@@ -1,14 +1,14 @@
 #
-# Ylmf OS package build script
+# StartOS package build script
 #
-# Copyright 2005-2012 Ylmf OS
+# Copyright 2012 StartOS
 # Distributed under the terms of the GNU General Public License v2
 #
 
 DESCRIPTION="MPlayer with Video Acceleration support"
 HOMEPAGE="http://www.splitted-desktop.com/~gbeauchesne/mplayer-vaapi/"
 LICENSE="GPL"
-PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
+PACKAGER="StartOS Developers"
 
 SRC_URI="http://www.splitted-desktop.com/~gbeauchesne/"$N"/"$N"-latest-FULL.tar.bz2"
 CHECKSUM="eae1e1bf64f858a0d7e6ad0a6a445c86"

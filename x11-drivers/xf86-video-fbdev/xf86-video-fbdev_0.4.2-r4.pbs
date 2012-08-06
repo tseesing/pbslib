@@ -1,0 +1,35 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="video driver for framebuffer device"
+HOMEPAGE="http://xorg.freedesktop.org/"
+LICENSE="custom"
+PACKAGER="StartOS Developers"
+
+SRC_URI="http://www.x.org/releases/X11R7.7/src/driver/"$N-$V".tar.bz2"
+CHECKSUM="53a533d9e0c2da50962282526bace074"
+
+RDEPEND="glibc xorg-server(>=1.12.2)"
+BDEPEND=""
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_config() {
+	doconfig
+}
+
+pbs_build() {
+	domake
+}
+
+pbs_install() {
+	domkinstall
+	dodoc COPYING
+}
+

@@ -1,0 +1,66 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="GNOME file manager."
+HOMEPAGE="http://www.gnome.org/projects/nautilus/"
+LICENSE="GPL"
+PACKAGER="StartOS Developers"
+
+SRC_URI="http://ftp.gnome.org/pub/gnome/desktop/2.32/2.32.1/sources/"$N-$V".tar.bz2"
+CHECKSUM="860ef74d3500afa91ef87df667e311b2"
+
+RDEPEND="atk cairo dbus dbus-glib exempi expat fontconfig freetype gail gcc-lib gconf gdk-pixbuf glib2 glibc gnome-desktop gtk+ libexif libICE libpng libSM libunique libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libxml2 libXrandr libXrender orbit pango pixman startup-notification util-linux-ng zlib"
+BDEPEND="bzip2-dev ntfs-3g-dev gamin-dev libpthread-stubs"
+RECOMMENDED="chntpw ntdiskmap"
+
+INSTALL="$N.install"
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_patch() {
+	#
+	dopatch 01_disable_move-to-home-desktop-2.32.1.patch 
+	
+	# Automount partitions when logging
+	dopatch nautilus_automount-2.32.1.patch  
+
+	#
+	dopatch startos-translate-2.32.1.patch 02_donot-show-menuitem-2.32.1.patch 
+
+	# Show harddisk label with Windows
+	dopatch startos-show-windows-hd-label-2.32.1.patch
+	
+	#
+	dopatch nautilus-2.32.1_toolbar_del_button.patch
+
+	#
+	dopatch startos_translation.patch
+
+	# Define the old glib macro G_CONST_RETURN to const
+	dopatch nautilus_2.32_g_const_return.patch
+}
+
+pbs_config() {
+	config+=" --disable-schemas-install 
+		  --disable-update-mimedb 
+		  --enable-packagekit "
+	doconfig
+}
+
+pbs_build() {
+	domake
+}
+
+pbs_install() {
+	domkinstall
+	
+	# Clean up empty mime files
+	find "$destdir"/usr/share/mime -size 0 -type f -exec rm {} \;
+}
+

@@ -1,0 +1,44 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="The GNOME Desktop package contains the gnome-about program, the libgnome-desktop-2 library and GNOME's core graphics files and icons."
+HOMEPAGE="http://www.gnome.org"
+LICENSE="GPL"
+PACKAGER="StartOS Developers"
+
+SRC_URI="http://ftp.gnome.org/pub/gnome/desktop/2.32/2.32.1/sources/"$N-$V".tar.bz2"
+
+RDEPEND="atk cairo expat fontconfig freetype gcc-lib gconf gdk-pixbuf glib2 glibc gtk+ libffi libpng libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libXinerama libXrandr libXrender orbit pango pixman startup-notification xcb-util zlib"
+BDEPEND="gnome-vfs-dev rarian-dev"
+RECOMMENDED="ubuntu-font-family" 
+
+INSTALL="$N.install"
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_config() {
+	./configure $config --with-gnome-distributor='StartOS'
+}
+
+pbs_build() {
+	domake
+}
+
+pbs_install() {
+	domkinstall
+
+	cd "$destdir"
+	
+	# Default desktop background name is startos-desktop.jpg provided by themes packages
+	doln /usr/share/backgrounds/startos-desktop.jpg usr/share/backgrounds/default.jpg
+
+	#
+	rm -fr var/lib/scrollkeeper var/lib/log
+}
+

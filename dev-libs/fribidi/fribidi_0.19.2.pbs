@@ -1,14 +1,14 @@
 #
-# Ylmf OS package build script
+# StartOS package build script
 #
-# Copyright 2005-2012 Ylmf OS
+# Copyright 2012 StartOS
 # Distributed under the terms of the GNU General Public License v2
 #
 
 DESCRIPTION="A free implementation of the unicode bidirectional algorithm"
 HOMEPAGE="http://fribidi.org/"
 LICENSE="LGPL"
-PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
+PACKAGER="StartOS Developers"
 
 SRC_URI="http://fribidi.org/download/"$N-$V".tar.gz"
 CHECKSUM="626db17d2d99b43615ad9d12500f568a"

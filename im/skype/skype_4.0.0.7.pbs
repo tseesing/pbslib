@@ -1,14 +1,14 @@
 #
-# Ylmf OS package build script
+# StartOS package build script
 #
-# Copyright 2005-2012 Ylmf OS
+# Copyright 2012 StartOS
 # Distributed under the terms of the GNU General Public License v2
 #
 
 DESCRIPTION="A net IM with voice, not free-ware"
 HOMEPAGE="http://www.skype.com/"
 LICENSE="custom"
-PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
+PACKAGER="StartOS Developers"
 
 SRC_URI="http://download.skype.com/linux/"$N-$V".tar.bz2"
 CHECKSUM="b57a3a5e178ae40fc96583b7c1851663"

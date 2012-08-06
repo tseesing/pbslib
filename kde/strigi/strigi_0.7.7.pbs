@@ -1,14 +1,14 @@
 #
-# Ylmf OS package build script
+# StartOS package build script
 #
-# Copyright 2005-2012 Ylmf OS
+# Copyright 2012 StartOS
 # Distributed under the terms of the GNU General Public License v2
 #
 
 DESCRIPTION="Fast crawling desktop search engine with Qt4 GUI"
 HOMEPAGE="http://www.vandenoever.info/software/strigi/"
 LICENSE="GPL"
-PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
+PACKAGER="StartOS Developers<>"
 
 SRC_URI="ftp://ftp.archlinux.org/other/"$N"/"$N-$V".tar.bz2"
 CHECKSUM="ca0a0fd5c2b99879f6330837aeede996"

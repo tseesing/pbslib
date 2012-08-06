@@ -1,14 +1,14 @@
 #
-# Ylmf OS package build script
+# StartOS package build script
 #
-# Copyright 2005-2012 Ylmf OS
+# Copyright 2012 StartOS
 # Distributed under the terms of the GNU General Public License v2
 #
 
 DESCRIPTION="Larry Wall's Practical Extraction and Report Language"
 HOMEPAGE="http://www.perl.org/"
 LICENSE="GPL, PerlArtistic"
-PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
+PACKAGER="StartOS Developers"
 
 SRC_URI="http://www.cpan.org/src/5.0/"$N-$V".tar.bz2"
 CHECKSUM="e7457deea78330c5f8eebb2fd2a45479"
@@ -22,9 +22,9 @@ pbs_unpack() {
 
 pbs_config() {
 	if [ "$ARCH" = "x86_64" ]; then
-	        ylmfos_opts="-Dcccdlflags='-fPIC'"
+	        extra_opts="-Dcccdlflags='-fPIC'"
 	else 
-		ylmfos_opts=""
+		extra_opts=""
 	fi
 
 	# Builds the Compress::Raw::Zlib module. 

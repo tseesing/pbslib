@@ -1,14 +1,14 @@
 #
-# Ylmf OS package build script
+# StartOS package build script
 #
-# Copyright 2005-2012 Ylmf OS
+# Copyright 2012 StartOS
 # Distributed under the terms of the GNU General Public License v2
 #
 
 DESCRIPTION="TunePimp is a library to create MusicBrainz enabled tagging applications."
 HOMEPAGE="http://www.musicbrainz.org/products/tunepimp"
 LICENSE="GPL,LGPL"
-PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
+PACKAGER="StartOS Developers"
 
 SRC_URI="ftp://ftp.musicbrainz.org/pub/musicbrainz/"$N-$V".tar.gz"
 CHECKSUM="09649f983acef679a548344ba7a9bb2f"

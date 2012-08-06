@@ -1,14 +1,14 @@
 
-# Ylmf OS package build script
+# StartOS package build script
 #
-# Copyright 2005-2012 Ylmf OS
+# Copyright 2012 StartOS
 # Distributed under the terms of the GNU General Public License v2
 #
 
 DESCRIPTION="Partition table rescue/guessing tool"
 HOMEPAGE="http://www.stud.uni-hannover.de/user/76201/gpart/"
 LICENSE="GPL"
-PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
+PACKAGER="StartOS Developers"
 
 SRC_URI="http://www.sfr-fresh.com/linux/misc/"$N-$V"h.tar.gz"
 CHECKSUM="ee3a2d2dde70bcf404eb354b3d1ee6d4"

@@ -1,14 +1,14 @@
 #
-# Ylmf OS package build script
+# StartOS package build script
 #
-# Copyright 2005-2012 Ylmf OS
+# Copyright 2012 StartOS
 # Distributed under the terms of the GNU General Public License v2
 #
 
 DESCRIPTION="FT Jam - an enhanced version of the Jam build tool"
 HOMEPAGE="http://freetype.org/jam/"
 LICENSE="custom"
-PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
+PACKAGER="StartOS Developers"
 
 SRC_URI="http://david.freetype.org/jam/"$N-$V"rc2.tar.bz2"
 CHECKSUM="911cc4191b3e7213905d107962b4529b"

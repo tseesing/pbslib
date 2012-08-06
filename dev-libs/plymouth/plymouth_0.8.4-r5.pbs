@@ -1,0 +1,56 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="graphical boot animation and logger"
+HOMEPAGE="http://cgit.freedesktop.org/plymouth/"
+LICENSE="GPL"
+PACKAGER="StartOS Developers"
+
+SRC_URI="http://freedesktop.org/software/plymouth/releases/"$N-$V".tar.bz2"
+
+RDEPEND="atk cairo expat fontconfig freetype gcc-lib gdk-pixbuf glib2 glibc gtk+ libdrm libpciaccess libpng libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libXrandr libXrender pango pixman zlib"
+BDEPEND=""
+RECOMMENDED="plymouth-theme-startos"
+
+INSTALL="$N.install"
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_patch() {
+	dopatch plymouth-0.8.4-startos-theme.patch
+}
+
+pbs_config() {
+	config+=" --libdir=/lib 
+		  --datarootdir=/lib
+		  --enable-tracing 
+		  --disable-tests
+  	          --with-background-start-color-stop=0x0073B3           
+		  --with-background-end-color-stop=0x00457E            
+                  --with-background-color=0x3391cd                      
+                  --disable-gdm-transition                              
+                  --enable-systemd-integration                          
+		  --with-system-root-install
+	          --with-rhgb-compat-link                               
+		  --without-log-viewer "
+	doconfig
+}
+
+pbs_build() {
+	domake
+}
+
+pbs_install() {
+	domkinstall
+	
+	# For initramfs-tools
+	cd "$destdir" 
+	docp $filesdir/initramfs-tools usr/share/
+
+	#
+	doln /lib/plymouth/themes/text/text.plymouth  lib/plymouth/themes/text.plymouth
+}
+

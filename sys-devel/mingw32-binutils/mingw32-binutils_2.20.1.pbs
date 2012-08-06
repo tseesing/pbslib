@@ -1,7 +1,7 @@
 #
-# Ylmf OS package build script
+# StartOS package build script
 #
-# Copyright 2005-2012 Ylmf OS
+# Copyright 2012 StartOS
 # Distributed under the terms of the GNU General Public License v2
 #
 
@@ -9,7 +9,7 @@ DESCRIPTION="A set of programs to assemble and manipulate binary and object file
 HOMEPAGE="http://sourceforge.net/projects/mingw/files/MinGW/BaseSystem/GNU-Binutils/"
 REPO=""
 LICENSE=""
-PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
+PACKAGER="StartOS Developers"
 
 SRC_URI="http://ncu.dl.sourceforge.net/project/mingw/MinGW/BaseSystem/GNU-Binutils/binutils-2.20.1/binutils-"$V$R"-src.tar.gz"
 

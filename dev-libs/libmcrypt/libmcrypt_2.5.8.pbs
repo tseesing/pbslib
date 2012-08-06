@@ -1,14 +1,14 @@
 #
-# Ylmf OS package build script
+# StartOS package build script
 #
-# Copyright 2005-2012 Ylmf OS
+# Copyright 2012 StartOS
 # Distributed under the terms of the GNU General Public License v2
 #
 
 DESCRIPTION="A library which provides a uniform interface to several symmetric encryption algorithms"
 HOMEPAGE="http://mcrypt.sourceforge.net"
 LICENSE="GPL"
-PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
+PACKAGER="StartOS Developers"
 
 SRC_URI="http://downloads.sourceforge.net/mcrypt/"$N-$V".tar.bz2"
 CHECKSUM="c4f491dd411a09e9de3b8702ea6f73eb"

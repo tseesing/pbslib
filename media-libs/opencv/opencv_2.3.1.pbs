@@ -1,14 +1,14 @@
 #
-# Ylmf OS package build script
+# StartOS package build script
 #
-# Copyright 2005-2012 Ylmf OS
+# Copyright 2012 StartOS
 # Distributed under the terms of the GNU General Public License v2
 #
 
 DESCRIPTION="A collection of algorithms and sample code for various computer vision problems"
 HOMEPAGE="http://opencv.willowgarage.com"
 LICENSE="BSD"
-PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
+PACKAGER="StartOS Developers"
 
 SRC_URI="http://sourceforge.net/projects/opencvlibrary/files/opencv-unix/"$V"/OpenCV-"$V"a.tar.bz2"
 CHECKSUM="82e4b6bfa349777233eea09b075e931e"

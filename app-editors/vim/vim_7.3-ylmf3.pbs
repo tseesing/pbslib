@@ -1,14 +1,14 @@
 #
-# Ylmf OS package build script
+# StartOS package build script
 #
-# Copyright 2005-2012 Ylmf OS
+# Copyright 2012 StartOS
 # Distributed under the terms of the GNU General Public License v2
 #
 
 DESCRIPTION="Vim, an improved vi-style text editor"
 HOMEPAGE="http://www.vim.org/"
 LICENSE="custom:vim"
-PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
+PACKAGER="StartOS Developers"
 
 SRC_URI="ftp://ftp.vim.org/pub/vim/unix/"$N-$V".tar.bz2" 
 CHECKSUM="5b9510a17074e2b37d8bb38ae09edbf2"
@@ -28,13 +28,13 @@ pbs_patch() {
 	dopatch vim-7.3-branch_update-2.patch
 
 	# Define the place for the global vimrc file (set to /etc/vimrc)
-   sed -i 's|^.*\(#define SYS_.*VIMRC_FILE.*"\) .*$|\1|' src/feature.h
-   sed -i 's|^.*\(#define VIMRC_FILE.*"\) .*$|\1|' src/feature.h
+	sed -i 's|^.*\(#define SYS_.*VIMRC_FILE.*"\) .*$|\1|' src/feature.h
+	sed -i 's|^.*\(#define VIMRC_FILE.*"\) .*$|\1|' src/feature.h
 }
 
 pbs_config() {
 	config+=" --with-features=big 
-	          --with-compiledby=Ylmf
+	          --with-compiledby=StartOS
 		  --enable-gpm 
 		  --enable-acl 
 		  --with-x=no

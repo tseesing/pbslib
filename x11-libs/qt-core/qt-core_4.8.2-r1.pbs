@@ -1,0 +1,95 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="Qt is a cross-platform application and UI framework for developers using C++ or QML, a CSS & JavaScript like language."
+HOMEPAGE="http://qt-project.org/"
+LICENSE="GPL,LGPL"
+PACKAGER="StartOS Developers"
+
+SRC_URI="http://releases.qt-project.org/qt4/source/qt-everywhere-opensource-src-"$V".tar.gz"
+CHECKSUM="3c1146ddf56247e16782f96910a8423b"
+
+RDEPEND="alsa-lib attr dbus expat flac fontconfig freetds freetype gcc-lib glib2 glibc gst-plugins-base gstreamer json-c lcms libcap libdrm libffi libICE libjpeg-turbo libmng libmysqlclient libogg libpng libSM libsndfile libtiff libtool libvorbis libX11 libXau libxcb libXdamage libXdmcp libXext libXfixes libXi libxml2 libXrender libXtst libXxf86vm mesa openssl postgresql-libs pulseaudio sqlite unixodbc util-linux-ng zlib"
+BDEPEND=""
+RECOMMENDED=""
+
+INSTALL="$N.install"
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_patch() {
+	dopatch improve-cups-support.patch
+}
+
+pbs_config() {
+	export QT4DIR="${srcdir}"
+	export LD_LIBRARY_PATH=${QT4DIR}/lib:${LD_LIBRARY_PATH}
+
+	sed -i "s|-O2|${CXXFLAGS}|" mkspecs/common/{g++,gcc}-base.conf
+	sed -i "/^QMAKE_LFLAGS_RPATH/s| -Wl,-rpath,||g" mkspecs/common/gcc-base-unix.conf
+	sed -i "/^QMAKE_LFLAGS\s/s|+=|+= ${LDFLAGS}|g" mkspecs/common/gcc-base.conf
+
+	config=" -confirm-license -opensource 
+	         -prefix         /usr 
+	         -docdir         /usr/share/doc/qt 
+		 -plugindir      /usr/lib/qt/plugins 
+		 -importdir      /usr/lib/qt/imports 
+		 -datadir        /usr/share/qt 
+		 -translationdir /usr/share/qt/translations 
+		 -sysconfdir     /etc/xdg \
+		 -examplesdir    /usr/share/doc/qt/examples 
+		 -demosdir       /usr/share/doc/qt/demos 
+		 -plugin-sql-{psql,mysql,sqlite,odbc} 
+		 -system-sqlite 
+		 -graphicssystem raster 
+		 -openssl-linked 
+		 -nomake demos 
+		 -nomake examples 
+		 -nomake docs 
+		 -silent 
+		 -optimized-qmake 
+		 -reduce-relocations 
+		 -dbus-linked 
+		 -reduce-exports "
+		 #-no-rpath 
+		 #-no-openvg
+		 #-no-phonon 
+		 #-no-phonon-backend 
+		 #-no-webkit
+	doconfig
+}
+
+pbs_build() {
+	domake
+}
+
+pbs_install () {
+	make INSTALL_ROOT="$destdir" install
+	
+	# Install missing icons and desktop files
+	for icon in tools/linguist/linguist/images/icons/linguist-*-32.png ; do
+		size=$(echo $(basename ${icon}) | cut -d- -f2)
+		docp_rename "${icon}" "${destdir}"/usr/share/icons/hicolor/"${size}"x"${size}"/apps/linguist.png
+	done
+	
+	docp_rename src/gui/dialogs/images/qtlogo-64.png "${destdir}"/usr/share/icons/hicolor/64x64/apps/qtlogo.png
+        docp tools/assistant/tools/assistant/images/assistant.png "${destdir}"/usr/share/icons/hicolor/32x32/apps/
+        docp tools/designer/src/designer/images/designer.png "${destdir}"/usr/share/icons/hicolor/128x128/apps/
+	dodoc LGPL_EXCEPTION.txt
+
+	cd "$destdir"
+	docp "${filesdir}"/{linguist,designer,assistant,qtconfig}.desktop usr/share/applications/
+
+	# Fix wrong path in pkgconfig files
+	find usr/lib/pkgconfig -type f -name '*.pc' -exec perl -pi -e "s, -L${QT4DIR}/?\S+,,g" {} \;
+
+	# Fix wrong path in prl files
+	find usr/lib -type f -name '*.prl' -exec sed -i -e '/^QMAKE_PRL_BUILD_DIR/d;s/\(QMAKE_PRL_LIBS =\).*/\1/' {} \;
+}
+

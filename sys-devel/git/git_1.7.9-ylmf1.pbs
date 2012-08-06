@@ -1,14 +1,14 @@
 #
-# Ylmf OS package build script
+# StartOS package build script
 #
-# Copyright 2005-2012 Ylmf OS
+# Copyright 2012 StartOS
 # Distributed under the terms of the GNU General Public License v2
 #
 
 DESCRIPTION="GIT - the stupid content tracker, the revision control system"
 HOMEPAGE="http://www.git-scm.com/"
 LICENSE="GPL"
-PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
+PACKAGER="StartOS Developers"
 
 SRC_URI="http://git-core.googlecode.com/files/"$N-$V".tar.gz"
 CHECKSUM="ed51ef5ef250daaa6e98515cf2641820cd268d4c"
@@ -26,8 +26,8 @@ OPTIONAL=" tk: gitk and git gui
 	   cvsps: git cvsimport"
 
 NOTES="add some info:
-git config --system --add user.name ylmfos_user
-git config --system --add user.email ylmfos_user@115.com"
+git config --system --add user.name startos_user
+git config --system --add user.email startos_user@startos.com"
 
 pbs_unpack() {
         dounpack

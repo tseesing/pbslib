@@ -1,14 +1,14 @@
 #
-# Ylmf OS package build script
+# StartOS package build script
 #
-# Copyright 2005-2012 Ylmf OS
+# Copyright 2012 StartOS
 # Distributed under the terms of the GNU General Public License v2
 #
 
 DESCRIPTION="Yunio Cloud Storage"
 HOMEPAGE="https://www.yun.io/"
 LICENSE="custom"
-PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
+PACKAGER="StartOS Developers"
 
 SRC_URI="http://www.yun.io/downloads/"$N-$V"-generic-i386.tgz"
 CHECKSUM="4beed96161e8a4109cde2fec0b17358f"

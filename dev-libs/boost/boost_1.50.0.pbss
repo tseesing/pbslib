@@ -1,0 +1,76 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="Boost Libraries for C++"
+HOMEPAGE="http://www.boost.org/"
+LICENSE="custom"
+PACKAGER="StartOS Developers"
+
+SRC_URI="http://sourceforge.net/projects/"$N"/files/"$N"/"$V"/"$N"_"${V//./_}".tar.gz"
+CHECKSUM="dbc07ab0254df3dda6300fd737b3f264"
+
+RDEPEND="bzip2 gcc-lib glibc zlib"
+BDEPEND=""
+RECOMMENDED=""
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_config() {
+	# Set python path for bjam
+	cd "${srcdir}/tools"
+	echo "using python : 2.7 : /usr/bin/python-2.7 ;" >> build/v2/user-config.jam
+	#echo "using mpi ;" >> build/v2/user-config.jam
+}
+
+pbs_build() {
+	_stagedir="${srcdir}/stagedir"
+	
+	echo "* Building bjam..."
+	cd "${srcdir}/tools/build/v2/engine"
+	unset CC CXX
+	./build.sh cc || return 1
+
+	_bindir="bin.linuxx86"
+	[ "${ARCH}" = "x86_64" ] && _bindir="bin.linuxx86_64"
+	
+	install -d "${_stagedir}"/usr/bin
+	install "${_bindir}"/bjam "${_stagedir}"/usr/bin/bjam
+
+	echo "* Building tools..."
+	cd "${srcdir}/tools/"
+	"${_stagedir}"/usr/bin/bjam --toolset=gcc || return 1
+
+	# Copy the tools
+	cd "${srcdir}/dist/bin"
+	
+	for i in *;do
+		install -m755 "${i}" "${_stagedir}/usr/bin/${i}"
+	done
+	
+	# Boostbook needed by quickbook
+	cd "${srcdir}/dist/"
+	cp -r share "${_stagedir}"
+
+	echo "* Building libs..."
+	cd "${srcdir}"
+	"${_stagedir}"/usr/bin/bjam \
+		release debug-symbols=off threading=multi \
+		runtime-link=shared link=shared,static \
+		cflags=-fno-strict-aliasing \
+		toolset=gcc \
+		--prefix="${_stagedir}" \
+		-sTOOLS=gcc \
+		--layout=system \
+	install
+}
+
+pbs_install() {
+	:
+}
+

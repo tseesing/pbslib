@@ -10,7 +10,7 @@ post_install() {
 
 post_remove() {
 	douserdel "messagebus"
-	dogroupdel "messagebus"
+	dogroupdel "messagebus" ||true
 }
 
 post_upgrade() {

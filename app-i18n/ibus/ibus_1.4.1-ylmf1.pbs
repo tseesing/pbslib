@@ -1,14 +1,14 @@
 #
-# Ylmf OS package build script
+# StartOS package build script
 #
-# Copyright 2005-2012 Ylmf OS
+# Copyright 2012 StartOS
 # Distributed under the terms of the GNU General Public License v2
 #
 
 DESCRIPTION="Intelligent Input Bus for Linux / Unix OS"
 HOMEPAGE="http://code.google.com/p/ibus/"
 LICENSE="GPL"
-PACKAGER="Ylmf OS developers <ylmfos@ylmf.com>"
+PACKAGER="StartOS developers"
 
 SRC_URI="http://ibus.googlecode.com/files/"$N-$V".tar.gz"
 CHECKSUM="4cc045553885d35a118ec4b44c2694910209509e"

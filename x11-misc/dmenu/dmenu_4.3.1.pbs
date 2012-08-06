@@ -1,7 +1,7 @@
 #
-# Ylmf OS package build script
+# StartOS package build script
 #
-# Copyright 2005-2012 Ylmf OS
+# Copyright 2012 StartOS
 # Distributed under the terms of the GNU General Public License v2
 #
 
@@ -9,7 +9,7 @@ DESCRIPTION="a generic, highly customizable, and efficient menu for the X Window
 HOMEPAGE="http://www.suckless.org/programs/dmenu.html"
 REPO=""
 LICENSE="GPL"
-PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
+PACKAGER="StartOS Developers"
 
 SRC_URI="http://dl.suckless.org/tools/dmenu-4.3.1.tar.gz"
 
@@ -23,7 +23,7 @@ pbs_unpack() {
 }
 
 pbs_config() {
-	dopatch ylmfos-makefile-prefix.patch
+	dopatch startos-makefile-prefix.patch
 	doconfig
 }
 

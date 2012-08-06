@@ -1,14 +1,14 @@
 #
-# Ylmf OS package build script
+# StartOS package build script
 #
-# Copyright 2005-2012 Ylmf OS
+# Copyright 2012 StartOS
 # Distributed under the terms of the GNU General Public License v2
 #
 
 DESCRIPTION="a library for font customization and configuration"
 HOMEPAGE="http://fontconfig.org/wiki/"
 LICENSE="custom"
-PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
+PACKAGER="StartOS Developers"
 
 SRC_URI="http://fontconfig.org/release/"$N-$V".tar.gz"
 CHECKSUM="77e15a92006ddc2adbb06f840d591c0e"

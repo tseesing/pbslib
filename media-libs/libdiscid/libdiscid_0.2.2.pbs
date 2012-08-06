@@ -1,14 +1,14 @@
 #
-# Ylmf OS package build script
+# StartOS package build script
 #
-# Copyright 2005-2012 Ylmf OS
+# Copyright 2012 StartOS
 # Distributed under the terms of the GNU General Public License v2
 #
 
 DESCRIPTION="A Library for creating MusicBrainz DiscIDs"
 HOMEPAGE="http://musicbrainz.org/doc/libdiscid"
 LICENSE="GPL"
-PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
+PACKAGER="StartOS Developers"
 
 SRC_URI="http://users.musicbrainz.org/~matt/"$N-$V".tar.gz"
 CHECKSUM="ee21ddbe696a3c60e14827a75f3bcf5b"

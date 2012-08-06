@@ -5,7 +5,7 @@
 DESCRIPTION="Chinese Simplified Localization for KDE"
 HOMEPAGE="http://www.kde.org"
 LICENSE="GPL"
-PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
+PACKAGER="StartOS Developers<>"
 YARCH="any"
 
 SRC_URI="http://download.kde.org/stable/"$V"/src/kde-l10n/"$N-$V".tar.xz"

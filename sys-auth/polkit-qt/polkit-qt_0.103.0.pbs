@@ -1,14 +1,14 @@
 #
-# Ylmf OS package build script
+# StartOS package build script
 #
-# Copyright 2005-2012 Ylmf OS
+# Copyright 2012 StartOS
 # Distributed under the terms of the GNU General Public License v2
 #
 
 DESCRIPTION="PolicyKit Qt4 API wrapper library."
 HOMEPAGE="http://www.kde.org/"
 LICENSE="LGPL"
-PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
+PACKAGER="StartOS Developers"
 
 SRC_URI="http://download.kde.org/stable/apps/KDE4.x/admin/"$N"-1-"$V".tar.bz2"
 CHECKSUM="a105e233e6733fb072c9080cd7ae1af2"

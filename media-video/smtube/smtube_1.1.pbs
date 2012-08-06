@@ -1,14 +1,14 @@
 #
-# Ylmf OS package build script
+# StartOS package build script
 #
-# Copyright 2005-2012 Ylmf OS
+# Copyright 2012 StartOS
 # Distributed under the terms of the GNU General Public License v2
 #
 
 DESCRIPTION="Allows to play and download videos from YouTube."
 HOMEPAGE="http://smplayer.berlios.de/"
 LICENSE="GPL"
-PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
+PACKAGER="StartOS Developers"
 
 SRC_URI="http://prdownload.berlios.de/smplayer/"$N-$V".tar.bz2"
 CHECKSUM="e5018fcd9ebdc08658136476ba4843d2"
@@ -26,7 +26,7 @@ pbs_unpack() {
 }
 
 pbs_patch() {
-	dopatch ylmfos_makefile.patch
+	dopatch startos_makefile.patch
 }
 
 pbs_config() {

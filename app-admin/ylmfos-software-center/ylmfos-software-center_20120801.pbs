@@ -1,0 +1,47 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="software center for StartOS"
+HOMEPAGE="http://www.startos.org"
+LICENSE="custom"
+PACKAGER="StartOS Developers"
+
+SRC_URI="git://192.168.1.11/ylmfcenter.git"
+
+RDEPEND="acl atk attr bzip2 cairo curl cyrus-sasl dbus dbus-glib eggdbus expat fontconfig freetype gcc-lib gdk-pixbuf glib2 glibc gnutls gtk+ json-glib libarchive libffi libgcrypt libgpg-error libidn libpcre libpng libssh2 libtasn1 libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libXinerama libxml2 libXrandr libXrender openldap openssl pango pixman polkit rtmpdump sqlite udev xz-utils ypkg2 zlib ypkg2(>=20120627)"
+BDEPEND=""
+RECOMMENDED="app-desktop app-logo startos-software-center"
+CONFLICT="startos-software-center"
+
+INSTALL="$N.install"
+
+DESKTOPFILE="softwarecenter.desktop"
+
+pbs_unpack() {
+	dounpack
+}
+
+pbs_config() {
+	git checkout ylmfcenter2
+	git pull
+	doconfig
+}
+
+pbs_build() {
+	domake
+}
+
+pbs_install() {
+	domkinstall
+	cd "$destdir"
+	docp usr/share/icons/hicolor/48x48/apps/softwarecenter.png usr/share/pixmaps/
+	
+	#XXX For compatible
+	doln /usr/bin/softwarecenter usr/bin/ycenter
+	doln /usr/bin/softwarecenter usr/bin/ylmfos-software-center
+}
+

@@ -1,14 +1,14 @@
 #
-# Ylmf OS package build script
+# StartOS package build script
 #
-# Copyright 2005-2012 Ylmf OS
+# Copyright 2012 StartOS
 # Distributed under the terms of the GNU General Public License v2
 #
 
 DESCRIPTION="Port of OpenBSD's free SSH release"
 HOMEPAGE="http://www.openssh.org/"
 LICENSE="custom:BSD"
-PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
+PACKAGER="StartOS Developers"
 
 SRC_URI="http://ftp.openbsd.org/pub/OpenBSD/OpenSSH/portable/"$N-$V"p1.tar.gz"
 
@@ -22,7 +22,7 @@ pbs_unpack() {
 }
 
 pbs_patch() {
-	dopatch ylmfos_ssh-default-conf.patch
+	dopatch ssh-default-conf.patch
 }
 
 pbs_config() {

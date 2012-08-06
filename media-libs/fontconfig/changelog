@@ -1,3 +1,16 @@
+fontconfig (2.8.0-r3);
+
+	* add 70-yes-bitmaps.conf
+
+-- hzx <zhongxin.huang@gmail.com> 2012-07-27
+
+fontconfig (2.8.0-r2);
+	
+	* add patches from ubuntu:
+	 - 00git_ughur_orthography.patch
+	 - 01_fonts_nanum.patch
+	
+-- hzx <zhongxin.huang@gmail.com> 2012-07-26
 
 fontconfig (2.8.0-ylmf1);
 
@@ -9,4 +22,4 @@ fontconfig (2.8.0-ylmf1);
 	 - 06_ubuntu_lcddefault.patch
 	 - 07_no_bitmaps.patch
 
--- hzx <huangzhongxin@ylmf.com> 2012-03-06
+-- hzx <zhongxin.huang@gmail.com> 2012-03-06

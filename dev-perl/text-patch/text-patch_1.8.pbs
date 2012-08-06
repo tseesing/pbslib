@@ -1,14 +1,14 @@
 #
-# Ylmf OS package build script
+# StartOS package build script
 #
-# Copyright 2005-2012 Ylmf OS
+# Copyright 2012 StartOS
 # Distributed under the terms of the GNU General Public License v2
 #
 
 DESCRIPTION="Patches text with given patch "
 HOMEPAGE="http://search.cpan.org/~cade/Text-Patch-1.8/"
 LICENSE="GPL PerlArtistic"
-PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
+PACKAGER="StartOS Developers"
 YARCH="any"
 
 SRC_URI="http://mirrors.xmu.edu.cn/CPAN/authors/id/C/CA/CADE/Text-Patch-"$V".tar.gz"

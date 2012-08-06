@@ -1,14 +1,14 @@
 #
-# Ylmf OS package build script
+# StartOS package build script
 #
-# Copyright 2005-2012 Ylmf OS
+# Copyright 2012 StartOS
 # Distributed under the terms of the GNU General Public License v2
 #
 
 DESCRIPTION="A C++ library that lets developers create applications."
 HOMEPAGE="http://wxwidgets.org/"
 LICENSE="custom"
-PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
+PACKAGER="StartOS Developers"
 
 SRC_URI="http://downloads.sourceforge.net/project/wxwindows/"$V"/"$N-$V".tar.bz2"
 CHECKSUM="4103e37e277abeb8aee607b990c215c4"

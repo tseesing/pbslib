@@ -1,14 +1,14 @@
 #
-# Ylmf OS package build script
+# StartOS package build script
 #
-# Copyright 2005-2012 Ylmf OS
+# Copyright 2012 StartOS
 # Distributed under the terms of the GNU General Public License v2
 #
 
 DESCRIPTION="PDF rendering library based on the xpdf-3.0"
 HOMEPAGE="http://poppler.freedesktop.org/"
 LICENSE="GPL"
-PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
+PACKAGER="StartOS Developers"
 
 SRC_URI="http://poppler.freedesktop.org/"$N-$V".tar.gz"
 CHECKSUM="1d27cb8a09aaa373660fd608b258022a"

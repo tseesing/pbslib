@@ -1,14 +1,14 @@
 #
-# Ylmf OS package build script
+# StartOS package build script
 #
-# Copyright 2005-2012 Ylmf OS
+# Copyright 2012 StartOS
 # Distributed under the terms of the GNU General Public License v2
 #
 
 DESCRIPTION="Modifies ELFs to avoid runtime symbol resolutions resulting in faster load times"
 HOMEPAGE="http://people.redhat.com/jakub/prelink"
 LICENSE="GPL"
-PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
+PACKAGER="StartOS Developers"
 
 SRC_URI="http://people.redhat.com/jakub/"$N"/"$N-$V".tar.bz2"
 CHECKSUM="f5aaf347432d677c293e5e3399ba4fdf"

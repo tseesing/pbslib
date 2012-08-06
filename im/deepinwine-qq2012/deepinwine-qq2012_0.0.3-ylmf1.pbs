@@ -1,14 +1,14 @@
 #
-# Ylmf OS package build script
+# StartOS package build script
 #
-# Copyright 2005-2012 Ylmf OS
+# Copyright 2012 StartOS
 # Distributed under the terms of the GNU General Public License v2
 #
 
 DESCRIPTION="QQ2012 for wine"
 HOMEPAGE="http://www.linuxdeepin.com/"
 LICENSE="custom"
-PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
+PACKAGER="StartOS Developers"
 
 SRC_URI="http://packages.linuxdeepin.com/deepin/pool/non-free/d/"$N"/"${N}_$V"_i386.deb"
 CHECKSUM="015cfeded79cf996a9362c2156ad3204"
@@ -30,7 +30,7 @@ pbs_unpack() {
 }
 
 pbs_patch() {
-	dopatch ylmfos_winebrowser-xdg-open.patch
+	dopatch winebrowser-xdg-open.patch
 }
 
 pbs_install() {

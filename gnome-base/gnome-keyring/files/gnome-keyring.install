@@ -1,20 +1,13 @@
 . /usr/lib/ybs/funcs
 
-files="/etc/gconf/schemas/gnome-keyring.schemas"
-
 post_install() {
-	gnome2_install_schema "$files"
-	gnome2_gconfd_reload
-}
-
-pre_remove() {
-	gnome2_uninstall_schema $files
+	glib_compile_schemas
 }
 
 post_upgrade() {
-	gnome2_gconfd_reload
+	post_install
 }
 
 post_downgrade() {
-	gnome2_gconfd_reload
+	post_install
 }

@@ -1,19 +1,19 @@
 #
-# Ylmf OS package build script
+# StartOS package build script
 #
-# Copyright 2005-2012 Ylmf OS
+# Copyright 2012 StartOS
 # Distributed under the terms of the GNU General Public License v2
 #
 
 DESCRIPTION="A SVG based generic vector-drawing program"
 HOMEPAGE="http://www.inkscape.org/"
-LICENSE="GPL LGPL"
-PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
+LICENSE="GPL,LGPL"
+PACKAGER="StartOS Developers"
 
 SRC_URI="http://downloads.sourceforge.net/project/"$N"/"$N"/"$V"/"$N-$V".tar.bz2"
 CHECKSUM="9038961369c4f8b63e900ca4bfa4da61"
 
-RDEPEND="aspell atk atkmm avahi bzip2 cairo cairomm dbus dbus-glib djvulibre enchant expat fftw fontconfig freetype gc gcc-lib gconf gdk-pixbuf glib2 glibc glibmm gnome-vfs gsl gtk+ gtkmm gtkspell imagemagick jasper lcms libcroco libffi libICE libjpeg-turbo libpng librsvg libsigc++ libSM libtiff libtool libwpd libwpg libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libXinerama libxml2 libXrandr libXrender libxslt libXt openssl orbit pango pangomm perl pixman poppler popt util-linux-ng xz-utils zlib"
+RDEPEND="aspell atk atkmm avahi bzip2 cairo cairomm dbus dbus-glib djvulibre enchant expat fftw fontconfig freetype gc gcc-lib gconf gdk-pixbuf glib2 glibc glibmm gnome-vfs gsl gtk+ gtkmm gtkspell imagemagick jasper lcms libcroco libffi libICE libjpeg-turbo libpng librsvg libsigc++ libSM libtiff libtool libwpd libwpg libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libXinerama libxml2 libXrandr libXrender libxslt libXt openssl orbit pango pangomm perl pixman poppler poppler-glib popt util-linux-ng xz-utils zlib"
 BDEPEND=""
 RECOMMENDED=""
 

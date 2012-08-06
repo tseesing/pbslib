@@ -1,7 +1,7 @@
 #
-# Ylmf OS package build script
+# StartOS package build script
 #
-# Copyright 2005-2012 Ylmf OS
+# Copyright 2012 StartOS
 # Distributed under the terms of the GNU General Public License v2
 #
 
@@ -9,7 +9,7 @@ DESCRIPTION="X C-language Bindings protocol headers"
 HOMEPAGE="http://xcb.freedesktop.org/"
 REPO=""
 LICENSE=""
-PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
+PACKAGER="StartOS Developers"
 
 SRC_URI="http://xcb.freedesktop.org/dist/"$N-$V$R".tar.bz2"
 

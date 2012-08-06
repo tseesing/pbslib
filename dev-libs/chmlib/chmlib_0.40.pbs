@@ -1,7 +1,7 @@
 #
-# Ylmf OS package build script
+# StartOS package build script
 #
-# Copyright 2005-2012 Ylmf OS
+# Copyright 2012 StartOS
 # Distributed under the terms of the GNU General Public License v2
 #
 
@@ -9,7 +9,7 @@ DESCRIPTION="Library for MS CHM (compressed html) file format plus extracting an
 HOMEPAGE="http://www.jedrea.com/chmlib/"
 REPO=""
 LICENSE=""
-PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
+PACKAGER="StartOS Developers"
 
 SRC_URI="http://www.jedrea.com/"$N"/"$N-$V$R".tar.bz2"
 

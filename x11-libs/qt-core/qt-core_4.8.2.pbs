@@ -1,14 +1,14 @@
 #
-# Ylmf OS package build script
+# StartOS package build script
 #
-# Copyright 2005-2012 Ylmf OS
+# Copyright 2012 StartOS
 # Distributed under the terms of the GNU General Public License v2
 #
 
 DESCRIPTION="Qt is a cross-platform application and UI framework for developers using C++ or QML, a CSS & JavaScript like language."
 HOMEPAGE="http://qt-project.org/"
 LICENSE="GPL,LGPL"
-PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
+PACKAGER="StartOS Developers"
 
 SRC_URI="http://releases.qt-project.org/qt4/source/qt-everywhere-opensource-src-"$V".tar.gz"
 CHECKSUM="3c1146ddf56247e16782f96910a8423b"

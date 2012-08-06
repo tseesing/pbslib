@@ -1,14 +1,14 @@
 #
-# Ylmf OS package build script
+# StartOS package build script
 #
-# Copyright 2005-2012 Ylmf OS
+# Copyright 2012 StartOS
 # Distributed under the terms of the GNU General Public License v2
 #
 
 DESCRIPTION="Fully Functional Office Suite"
 HOMEPAGE="http://www.yozosoft.com"
 LICENSE="custom"
-PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
+PACKAGER="StartOS Developers"
 
 SRC_URI="http://download.yozosoft.com/free/zh/2012/Yozo_Office_"${V}"ZH.deb"
 CHECKSUM="9ad8be00ee45a1a60ad52fac19a6a55a"

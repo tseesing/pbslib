@@ -1,7 +1,7 @@
 #
-# Ylmf OS package build script
+# StartOS package build script
 #
-# Copyright 2005-2012 Ylmf OS
+# Copyright 2012 StartOS
 # Distributed under the terms of the GNU General Public License v2
 #
 
@@ -9,7 +9,7 @@ DESCRIPTION="Prints out information on all devices attached to the ADB bus"
 COMMENTS="This tool is not very usefull on computers without an ADB-Bus. That are mostly Apple Macintosh Computers. So please don't try to use this utillity on an i386 machine."
 HOMEPAGE="http://pbbuttons.berlios.de/projects/lsadb/"
 LICENSE="GPL"
-PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
+PACKAGER="StartOS Developers"
 
 SRC_URI="ftp://ftp.berlios.de/pub/pbbuttons/"$N-$V".tgz"
 CHECKSUM="eb832030a2d20871b7b55a01b871d395"

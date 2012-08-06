@@ -1,14 +1,14 @@
 #
-# Ylmf OS package build script
+# StartOS package build script
 #
-# Copyright 2005-2012 Ylmf OS
+# Copyright 2012 StartOS
 # Distributed under the terms of the GNU General Public License v2
 #
 
 DESCRIPTION="A library to control A/V devices using the 1394ta AV/C commands."
 HOMEPAGE="http://sourceforge.net/projects/libavc1394/"
 LICENSE="LGPL"
-PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
+PACKAGER="StartOS Developers"
 
 SRC_URI="http://downloads.sourceforge.net/sourceforge/"$N"/"$N-$V".tar.gz"
 CHECKSUM="caf0db059d8b8d35d6f08e6c0e1c7dfe"

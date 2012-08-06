@@ -1,0 +1,19 @@
+. /usr/lib/ybs/funcs
+
+post_install() {
+	update-initramfs -d -c -k "$KERNEL_DIST"
+	update-grub ||true
+}
+
+post_remove() {
+	post_install
+}
+
+post_upgrade() {
+	post_install
+}
+
+post_downgrade() {
+	post_install
+}
+

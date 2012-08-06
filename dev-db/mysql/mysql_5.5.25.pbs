@@ -1,0 +1,132 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="A fast, multi-threaded, multi-user SQL database server."
+HOMEPAGE="http://www.mysql.com/"
+LICENSE="GPL"
+PACKAGER="StartOS Developers"
+
+SRC_URI="http://ftp.gwdg.de/pub/misc/mysql/Downloads/MySQL-5.5/"$N"-"$V"a.tar.gz"
+CHECKSUM="0841fbc79872c5f467d8c8842f45257a"
+
+PROVIDE="mysql mysql-clients libmysqlclient"
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_config() {
+	rm -rf build 2>/dev/null
+	mkdir build && cd build
+	# CFLAGS/CXXFLAGS as suggested upstream
+	
+	unset CC CXX
+
+	cmake .. \
+	      -DCMAKE_BUILD_TYPE=Release \
+	      -DCMAKE_INSTALL_PREFIX=/usr \
+	      -DSYSCONFDIR=/etc/mysql \
+	      -DMYSQL_DATADIR=/var/lib/mysql \
+	      -DMYSQL_UNIX_ADDR=/var/run/mysqld/mysqld.sock \
+	      -DDEFAULT_CHARSET=utf8 \
+	      -DDEFAULT_COLLATION=utf8_general_ci \
+	      -DENABLED_LOCAL_INFILE=ON \
+	      -DINSTALL_INFODIR=share/mysql/docs \
+	      -DINSTALL_MANDIR=share/man \
+	      -DINSTALL_PLUGINDIR=/usr/lib/mysql/plugin \
+	      -DINSTALL_SCRIPTDIR=bin \
+	      -DINSTALL_INCLUDEDIR=include/mysql \
+	      -DINSTALL_DOCREADMEDIR=share/mysql \
+	      -DINSTALL_SUPPORTFILESDIR=share/mysql \
+	      -DINSTALL_MYSQLSHAREDIR=share/mysql \
+	      -DINSTALL_DOCDIR=share/mysql/docs \
+	      -DINSTALL_SHAREDIR=share/mysql \
+	      -DWITH_READLINE=ON \
+	      -DWITH_ZLIB=system \
+	      -DWITH_SSL=system \
+	      -DWITH_LIBWRAP=OFF \
+	      -DWITH_MYSQLD_LDFLAGS="${LDFLAGS}" \
+	      -DWITH_EXTRA_CHARSETS=complex \
+	      -DWITH_EMBEDDED_SERVER=ON \
+	      -DWITH_INNOBASE_STORAGE_ENGINE=1 \
+	      -DWITH_PARTITION_STORAGE_ENGINE=1 \
+	      -DWITHOUT_EXAMPLE_STORAGE_ENGINE=1 \
+	      -DWITHOUT_ARCHIVE_STORAGE_ENGINE=1 \
+	      -DWITHOUT_BLACKHOLE_STORAGE_ENGINE=1 \
+	      -DWITHOUT_FEDERATED_STORAGE_ENGINE=1 \
+	      -DCMAKE_C_FLAGS="-fPIC ${CFLAGS} -fno-strict-aliasing -DBIG_JOINS=1 -fomit-frame-pointer" \
+	      -DCMAKE_CXX_FLAGS="-fPIC ${CXXFLAGS} -fno-strict-aliasing -DBIG_JOINS=1 -felide-constructors -fno-rtti"
+}
+
+pbs_build() {
+	domake
+}
+
+mysql_install() {
+	DESCRIPTION="A fast, multi-threaded, multi-user SQL database server."
+	RDEPEND="mysql-clients"
+	BDEPEND=""
+	
+	INSTALL="$N.install"
+
+	domkinstall || return 1
+	
+	cd "$destdir"
+
+	docp "${filesdir}"/my.cnf etc/mysql/
+
+	# Provided by libmysqlclient
+	rm usr/bin/{mysql_config,mysql_client_test_embedded,mysqltest_embedded}
+	rm usr/lib/libmysql*
+	rm -r usr/include/
+	rm usr/share/man/man1/{mysql_config,mysql_client_test_embedded,mysqltest_embedded}.1
+		        
+	# Provided by mysql-clients
+	rm usr/bin/{mysql,mysqladmin,mysqlcheck,mysqldump,mysqlimport,mysqlshow,mysqlslap}
+	rm usr/share/man/man1/{mysql,mysqladmin,mysqlcheck,mysqldump,mysqlimport,mysqlshow,mysqlslap}.1
+
+	# Not needed
+	rm -r usr/{data,mysql-test,sql-bench}
+	rm usr/share/man/man1/mysql-test-run.pl.1
+
+	install -dm700 var/lib/mysql
+
+	cd -
+}
+
+mysql-clients_install() {
+	DESCRIPTION="MySQL client tools"
+	RDEPEND="libmysqlclient"
+	BDEPEND=""
+
+	domkinstall -C client || return 1
+
+	# Install man pages
+	for man in mysql mysqladmin mysqlcheck mysqldump mysqlimport mysqlshow mysqlslap; do
+		docp ../man/"$man".1 "${destdir}"/usr/share/man/man1/
+	done
+
+	# Provided by mysql
+	rm "${destdir}"/usr/bin/{mysql_{plugin,upgrade},mysqlbinlog,mysqltest}
+}
+
+libmysqlclient_install() {
+	DESCRIPTION="MySQL client libraries"
+	RDEPEND="gcc-lib glibc openssl zlib"
+	BDEPEND=""
+
+	for dir in include libmysql libmysqld libservices; do
+		domkinstall -C "${dir}" || return 1
+	done
+
+	docp scripts/mysql_config "${destdir}"/usr/bin/
+	
+	for man in mysql_config mysql_client_test_embedded mysqltest_embedded; do
+		docp ..//man/"$man".1 "${destdir}"/usr/share/man/man1/
+	done
+}
+

@@ -1,14 +1,14 @@
 #
-# Ylmf OS package build script
+# StartOS package build script
 #
-# Copyright 2005-2012 Ylmf OS
+# Copyright 2012 StartOS
 # Distributed under the terms of the GNU General Public License v2
 #
 
 DESCRIPTION="Open source read-write NTFS driver that runs under FUSE"
 HOMEPAGE="http://www.tuxera.com/community/ntfs-3g-download/"
 LICENSE="GPL"
-PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
+PACKAGER="StartOS Developers"
 
 SRC_URI="http://tuxera.com/opensource/ntfs-3g_ntfsprogs-"$V".tgz"
 CHECKSUM="341acae00a290cab9b00464db65015cc"

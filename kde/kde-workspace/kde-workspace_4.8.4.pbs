@@ -1,14 +1,14 @@
 #
-# Ylmf OS package build script
+# StartOS package build script
 #
-# Copyright 2005-2012 Ylmf OS
+# Copyright 2012 StartOS
 # Distributed under the terms of the GNU General Public License v2
 #
 
 DESCRIPTION="KDE Base Workspace"
 HOMEPAGE="http://www.kde.org"
 LICENSE="GPL,LGPL,FDL"
-PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
+PACKAGER="StartOS Developers<>"
 
 SRC_URI="http://download.kde.org/stable/"$V"/src/"$N-$V".tar.xz"
 CHECKSUM="36c95ef05f33445e6c1f80817abe8cadb97c09e3fa6c54d6beb1e3654f08768b"

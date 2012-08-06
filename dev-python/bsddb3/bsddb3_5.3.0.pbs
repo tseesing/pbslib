@@ -1,14 +1,14 @@
 #
-# Ylmf OS package build script
+# StartOS package build script
 #
-# Copyright 2005-2012 Ylmf OS
+# Copyright 2012 StartOS
 # Distributed under the terms of the GNU General Public License v2
 #
 
 DESCRIPTION="Python bindings for Berkeley DB"
 HOMEPAGE="http://pypi.python.org/pypi/bsddb3"
 LICENSE="MIT"
-PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
+PACKAGER="StartOS Developers"
 
 SRC_URI="http://pypi.python.org/packages/source/b/"$N"/"$N-$V".tar.gz"
 CHECKSUM="d5aa4f293c4ea755e84383537f74be82"

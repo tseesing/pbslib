@@ -1,0 +1,43 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="A system monitor for MATE"
+HOMEPAGE="http://mate-desktop.org"
+LICENSE="GPL"
+PACKAGER="StartOS Developers"
+
+REPO="testing"
+
+SRC_URI="http://pub.mate-desktop.org/releases/1.4/"$N-$V".tar.xz"
+CHECKSUM="331919edb9049c14c96687edde16cec14b7f7815d422da15cd7f1ce6c9c287a9"
+
+RDEPEND="cairomm gtk+ glibmm gtkmm libcroco libgtop libmatewnck mate-conf mate-corba pangomm"
+RECOMMENDED=""
+BDEPEND="mate-doc-utils pkgconfig intltool"
+OPTIONAL=""
+CONFLICT=""
+REPLACE=""
+
+INSTALL="$N.install"
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_config() {
+	config+="--disable-static --disable-scrollkeeper --disable-schemas-install"
+	doconfig
+}
+
+pbs_build() {
+	domake
+}
+
+pbs_install() {
+	domkinstall MATECONF_DISABLE_MAKEFILE_SCHEMA_INSTALL=1
+}
+

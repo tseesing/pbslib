@@ -1,0 +1,40 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="Utilities for monitoring your system and processes (Debian, Fedora and openSUSE fork of procps)."
+HOMEPAGE="http://gitorious.org/procps"
+LICENSE="GPL,LGPL"
+PACKAGER="StartOS Developers"
+
+SRC_URI="git://gitorious.org/procps/procps.git"
+
+RDEPEND="glibc ncurses"
+BDEPEND=""
+
+REPLACE="procps"
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_config() {
+	git pull
+	git checkout v3.3.3
+
+	./autogen.sh
+	./configure --exec-prefix=/ --prefix=/usr --sysconfdir=/etc --libdir=/usr/lib
+}
+
+pbs_build() {
+	domake
+}
+
+pbs_install() {
+	domkinstall
+	docp "$filesdir"/sysctl.conf "$destdir"/etc/
+}
+

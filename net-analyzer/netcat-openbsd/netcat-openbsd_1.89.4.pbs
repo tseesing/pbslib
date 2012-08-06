@@ -1,7 +1,7 @@
 #
-# Ylmf OS package build script
+# StartOS package build script
 #
-# Copyright 2005-2012 Ylmf OS
+# Copyright 2012 StartOS
 # Distributed under the terms of the GNU General Public License v2
 #
 
@@ -9,7 +9,7 @@ DESCRIPTION="TCP/IP swiss army knife. OpenBSD variant."
 HOMEPAGE="http://packages.debian.org/sid/netcat-openbsd"
 REPO=""
 LICENSE="bsd"
-PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
+PACKAGER="StartOS Developers"
 
 SRC_URI="http://ftp.debian.org/debian/pool/main/n/netcat-openbsd/netcat-openbsd_1.89.orig.tar.gz
          http://ftp.debian.org/debian/pool/main/n/netcat-openbsd/netcat-openbsd_1.89-4.diff.gz"

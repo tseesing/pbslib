@@ -1,14 +1,14 @@
 #
-# Ylmf OS package build script
+# StartOS package build script
 #
-# Copyright 2005-2012 Ylmf OS
+# Copyright 2012 StartOS
 # Distributed under the terms of the GNU General Public License v2
 #
 
 DESCRIPTION="The MAD id3tag library"
 HOMEPAGE="http://www.underbit.com/products/mad/"
 LICENSE="GPL"
-PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
+PACKAGER="StartOS Developers"
 
 SRC_URI="http://downloads.sourceforge.net/project/mad/"$N"/"$V"b/"$N-$V"b.tar.gz "
 CHECKSUM="e5808ad997ba32c498803822078748c3"

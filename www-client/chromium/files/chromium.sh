@@ -17,9 +17,7 @@ usage () {
 	echo " See 'man chromium' for more details"
 }
 
-if [ -f /etc/$APPNAME/default ] ; then
-	. /etc/$APPNAME/default
-fi
+[ -f /etc/default/$APPNAME ] && . /etc/default/$APPNAME
 
 # Prefer user defined CHROMIUM_USER_FLAGS (fron env) over system
 # default CHROMIUM_FLAGS (from /etc/$APPNAME/default)
@@ -79,12 +77,12 @@ if [ $want_temp_profile -eq 1 ] ; then
 	CHROMIUM_FLAGS="$CHROMIUM_FLAGS --user-data-dir=$TEMP_PROFILE"
 fi
 
-# Ylmf OS
+# StartOS
 # cp default Preferences to HOME
 #     
 if [ ! -d $HOME/.config/chromium ]; then
        mkdir -p $HOME/.config
-       tar xf /usr/lib/chromium/chromium.tar.bz2 -C $HOME/.config/
+       tar xf /usr/lib/chromium/chromium.tar.bz2 -C $HOME/.config/ 2>/dev/null
        chown -R $USER:$USER $HOME/.config/chromium 
 fi
 

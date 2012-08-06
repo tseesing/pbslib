@@ -1,14 +1,14 @@
 #
-# Ylmf OS package build script
+# StartOS package build script
 #
-# Copyright 2005-2012 Ylmf OS
+# Copyright 2012 StartOS
 # Distributed under the terms of the GNU General Public License v2
 #
 
 DESCRIPTION="A software implementation of the OpenAL 3D audio API"
 HOMEPAGE="http://kcat.strangesoft.net/openal.html"
 LICENSE="GPL"
-PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
+PACKAGER="StartOS Developers"
 
 SRC_URI="http://kcat.strangesoft.net/"$N"-releases/"$N"-soft-"$V".tar.bz2"
 

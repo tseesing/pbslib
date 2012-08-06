@@ -9,3 +9,11 @@ post_remove() {
 	douserdel "polkituser"
 	dogroupdel "polkituser" ||true
 }
+
+post_upgrade() {
+	post_install
+}
+
+post_downgrade() {
+	post_install
+}

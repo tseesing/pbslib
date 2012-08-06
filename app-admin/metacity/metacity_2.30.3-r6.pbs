@@ -1,0 +1,104 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="GNOME default window manager"
+HOMEPAGE="http://blogs.gnome.org/metacity/"
+LICENSE="GPL"
+PACKAGER="StartOS Developers"
+
+SRC_URI="http://ftp.gnome.org/pub/gnome/desktop/2.32/2.32.1/sources/"$N-$V".tar.bz2"
+
+RDEPEND="atk cairo expat fontconfig freetype gcc-lib gconf gdk-pixbuf glib2 glibc gtk+ libcanberra libgtop libICE libogg libpng libSM libtool libvorbis libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libXrandr libXrender orbit pango pixman startup-notification tdb util-linux-ng zlib"
+BDEPEND="libcm-dev"
+RECOMMENDED=""
+OPIONAL="libcm: Required for composite manager support"
+
+INSTALL="$N.install"
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_config() {
+	# http://bugzilla.gnome.org/show_bug.cgi?id=558723
+	dopatch stop-spamming-xsession-errors.patch
+
+	# http://bugzilla.gnome.org/show_bug.cgi?id=135056
+	dopatch dnd-keynav.patch
+
+	# http://bugzilla.gnome.org/show_bug.cgi?id=588119
+	dopatch Should-set-RestartStyleHint-to-RestartIfRunning-when.patch
+	
+	# http://bugzilla.gnome.org/show_bug.cgi?id=336750
+	dopatch screenshot-forkbomb.patch
+
+	# fedora specific patches
+	#Patch11: workspaces.patch
+	#Patch12: fresh-tooltips.patch
+
+	# https://bugzilla.gnome.org/show_bug.cgi?id=567528
+	dopatch Allow-explicit-raises-from-same-client-not-just-sa.patch
+	
+	# https://bugzilla.gnome.org/show_bug.cgi?id=445447
+	dopatch Allow-applications-to-raise-windows-when-raise_on_cl.patch
+	
+	# https://bugzilla.gnome.org/show_bug.cgi?id=598995
+	dopatch Dont-focus-ancestor-window-on-a-different-workspac.patch
+	
+	# https://bugzilla.gnome.org/show_bug.cgi?id=599097
+	dopatch For-mouse-and-sloppy-focus-return-to-mouse-mode-on.patch
+	
+	# https://bugzilla.gnome.org/show_bug.cgi?id=599248
+	#dopatch Add-nofocuswindows-preference-to-list-windows-that.patch
+	dopatch Exclude-the-current-application-from-no_focus_window.patch
+	
+	# https://bugzilla.gnome.org/show_bug.cgi?id=599261
+	dopatch Add-a-newwindowsalwaysontop-preference.patch
+	dopatch Apply-new_windows_always_on_top-to-newly-raised-acti.patch
+	
+	# https://bugzilla.gnome.org/show_bug.cgi?id=559816
+	dopatch metacity-2.28-empty-keybindings.patch
+	
+	# https://bugzilla.gnome.org/show_bug.cgi?id=604319
+	dopatch metacity-2.28-xioerror-unknown-display.patch
+	
+	# https://bugzilla.gnome.org/show_bug.cgi?id=599181
+	dopatch Stop-confusing-GDK-s-grab-tracking.patch
+	
+	# https://bugzilla.gnome.org/show_bug.cgi?id=622517
+	#dopatch Allow-breaking-out-from-maximization-during-mouse.patch
+
+	# default window icon: https://bugzilla.gnome.org/show_bug.cgi?id=616246
+	#dopatch default-window-icon.patch
+
+	# allow keybindings ungrab: https://bugzilla.gnome.org/show_bug.cgi?id=643682
+	# already upstream
+	dopatch allow-keybindings-ungrab.patch
+
+	#
+	docp $filesdir/{mini-window.png,window.png} src/
+
+	config+=" --disable-schemas-install
+		      --enable-compositor
+		      --enable-gconf 
+		      --enable-render 
+		      --enable-shape 
+		      --enable-sm 
+		      --enable-startup-notification 
+		      --enable-xsync 
+		      --disable-xinerama "
+	doconfig
+}
+
+pbs_build() {
+	domake
+}
+
+pbs_install() {
+	domkinstall
+}
+

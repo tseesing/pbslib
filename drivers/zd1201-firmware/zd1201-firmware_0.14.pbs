@@ -1,14 +1,14 @@
 #
-# Ylmf OS package build script
+# StartOS package build script
 #
-# Copyright 2005-2012 Ylmf OS
+# Copyright 2012 StartOS
 # Distributed under the terms of the GNU General Public License v2
 #
 
 DESCRIPTION="Firmware for ZyDAS 1201 based USB 802.11b Network WiFi devices"
 HOMEPAGE="http://linux-lc100020.sourceforge.net/"
 LICENSE="GPL"
-PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
+PACKAGER="StartOS Developers"
 YARCH="any"
 
 SRC_URI="http://sourceforge.net/projects/linux-lc100020/files/%28NEW%29%20zd1201%20driver/zd1201.%20Version%200.14/zd1201-"$V"-fw.tar.gz"

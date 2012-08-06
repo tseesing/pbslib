@@ -1,14 +1,14 @@
 #
-# Ylmf OS package build script
+# StartOS package build script
 #
-# Copyright 2005-2012 Ylmf OS
+# Copyright 2012 StartOS
 # Distributed under the terms of the GNU General Public License v2
 #
 
 DESCRIPTION="A Python module to deal with freedesktop.org specifications"
 HOMEPAGE="http://pyxdg.freedesktop.org/ http://people.freedesktop.org/~lanius/"
 LICENSE="GPL"
-PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
+PACKAGER="StartOS Developers"
 YARCH="any"
 
 SRC_URI="http://www.freedesktop.org/~lanius/"$N-$V".tar.gz "
@@ -22,7 +22,7 @@ pbs_unpack() {
 }
 
 pbs_patch() {
-	dopatch ylmfos-skip-parse-kdelegacydirs.patch
+	dopatch startos-skip-parse-kdelegacydirs.patch
 }
 
 pbs_build() {

@@ -1,0 +1,36 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="Small but powerful ftp client"
+COMMENTS="LFTP is sophisticated ftp/http client, file transfer program supporting a number of network protocols. Like BASH, it has job control and uses readline library for input. It has bookmarks, built-in mirror, can transfer several files in parallel. It was designed with reliability in mind."
+HOMEPAGE="http://lftp.yar.ru/"
+LICENSE="GPL"
+PACKAGER="StartOS Developers"
+
+REPO="testing"
+SRC_URI="http://ftp.yars.free.net/pub/source/"$N"/"$N-$V".tar.xz"
+
+RDEPEND="expat gcc-lib glibc gnutls libgcrypt libgpg-error libtasn1 ncurses readline zlib"
+BDEPEND=""
+RECOMMENDED=""
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_config() {
+	doconfig
+}
+
+pbs_build() {
+	domake
+}
+
+pbs_install() {
+	domkinstall
+}
+

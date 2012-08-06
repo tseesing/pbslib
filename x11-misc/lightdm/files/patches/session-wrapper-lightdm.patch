@@ -6,7 +6,7 @@ diff -ur lightdm-1.3.1/data/lightdm.conf lightdm-1.3.1.new//data/lightdm.conf
  #xdmcp-port=177
  #xdmcp-key=
 -#greeter-session=example-gtk-gnome
-+greeter-session=lightdm-ylmfos-greeter
++greeter-session=lightdm-startos-greeter
  #greeter-hide-users=false
  #greeter-allow-guest=true
  #greeter-show-manual-login=false

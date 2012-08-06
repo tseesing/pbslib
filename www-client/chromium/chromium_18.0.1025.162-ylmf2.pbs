@@ -1,14 +1,14 @@
 #
-# Ylmf OS package build script
+# StartOS package build script
 #
-# Copyright 2005-2012 Ylmf OS
+# Copyright 2012 StartOS
 # Distributed under the terms of the GNU General Public License v2
 #
 
 DESCRIPTION="Open-source version of Google Chrome web browser"
 HOMEPAGE="http://www.chromium.org/"
 LICENSE="BSD"
-PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
+PACKAGER="StartOS Developers"
 
 SRC_URI="http://commondatastorage.googleapis.com/chromium-browser-official/"$N-$V".tar.bz2
          http://commondatastorage.googleapis.com/nativeclient-mirror/nacl/nacl_sdk/"$V"/naclsdk_linux.bz2"
@@ -28,8 +28,8 @@ pbs_unpack() {
 } 
 
 pbs_patch() {
-	# Ylmf OS add baidu tn
-	dopatch ylmfos-baidu-tn-18.0.1025.151.patch
+	# StartOS add baidu tn
+	dopatch startos-baidu-tn-18.0.1025.151.patch
 
 	# Remove unconditional use of SSE3 (patch from Gentoo)
 	dopatch chromium-media-no-sse-r0.patch
@@ -105,6 +105,7 @@ pbs_install() {
 	docp        "$filesdir"/default-preferences/settings.sol    usr/lib/chromium/
 
 	docp "$filesdir"/"$N".xml usr/share/gnome-control-center/default-apps/
-	docp "$filesdir"/default  etc/chromium/
+	docp_rename "$filesdir"/chromium-conf  etc/default/chromium
 }
+
 

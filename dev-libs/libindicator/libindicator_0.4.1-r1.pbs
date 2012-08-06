@@ -1,0 +1,45 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="A set of symbols and convience functions that all indicators would like to use"
+HOMEPAGE="http://launchpad.net/libindicator/"
+LICENSE="GPL"
+PACKAGER="StartOS Developers"
+
+SRC_URI="https://launchpad.net/libindicator/0.4/"$V"/+download/"$N-$V".tar.gz"
+CHECKSUM="c8f2900fa8e028bb2ea7511a0f368756"
+
+RDEPEND="atk cairo expat fontconfig freetype gcc-lib gdk-pixbuf glib2 glibc gtk+3 libffi libpng libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libXinerama libXrandr libXrender pango pixman zlib"
+BDEPEND=""
+RECOMMENDED=""
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_patch() {
+	# Use different location for header files for GTK+3
+	sed -i 's/libindicator-/libindicator3-/' libindicator/indicator3-0.4.pc.in.in
+	sed -i 's/libindicator-/libindicator$(VER)-/' libindicator/Makefile.in
+
+	# Disable building tests
+	sed -i '/tests/ d' Makefile.in
+}
+
+pbs_config() {
+	config+="--disable-static --with-gtk=2"
+	doconfig
+}
+
+pbs_build() {
+	domake
+}
+
+pbs_install() {
+	domkinstall
+}
+

@@ -1,14 +1,14 @@
 #
-# Ylmf OS package build script
+# StartOS package build script
 #
-# Copyright 2005-2012 Ylmf OS
+# Copyright 2012 StartOS
 # Distributed under the terms of the GNU General Public License v2
 #
 
 DESCRIPTION="The PHP language runtime engine: CLI, CGI, FPM/FastCGI, Apache2 and embed SAPIs."
 HOMEPAGE="http://www.php.net"
 LICENSE="PHP"
-PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
+PACKAGER="StartOS Developers"
 
 SRC_URI="http://www.php.net/distributions/"$N-$V".tar.bz2"
 CHECKSUM="816259e5ca7d0a7e943e56a3bb32b17f"

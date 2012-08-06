@@ -1,14 +1,14 @@
 #
-# Ylmf OS package build script
+# StartOS package build script
 #
-# Copyright 2005-2012 Ylmf OS
+# Copyright 2012 StartOS
 # Distributed under the terms of the GNU General Public License v2
 #
 
 DESCRIPTION="D-Bus service for applications to request thumbnails"
 HOMEPAGE="http://xfce.org"
 LICENSE="GPLv2 LGPL"
-PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
+PACKAGER="StartOS Developers"
 
 SRC_URI="http://archive.xfce.org/xfce/4.10/src/"$N-$V".tar.bz2"
 CHECKSUM="d4edc15c172714c7a3eaf3c719b8faf6"

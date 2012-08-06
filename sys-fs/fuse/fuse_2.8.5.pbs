@@ -1,14 +1,14 @@
 #
-# Ylmf OS package build script
+# StartOS package build script
 #
-# Copyright 2005-2012 Ylmf OS
+# Copyright 2012 StartOS
 # Distributed under the terms of the GNU General Public License v2
 #
 
 DESCRIPTION="This is File-System-In-User-Space implementation. Used for organising virtual file-systems. Well known user is ntfs-3g."
 HOMEPAGE="http://fuse.sourceforge.net/"
 LICENSE="GPL"
-PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
+PACKAGER="StartOS Developers"
 
 SRC_URI="http://downloads.sourceforge.net/project/"$N"/"$N"-2.X/"$V"/"$N-$V".tar.gz "
 
@@ -19,10 +19,13 @@ pbs_unpack() {
         dounpack
 }
 
+pbs_patch() {
+	dopatch GNU_SOURCE-defined.patch
+}
+
 pbs_config() {
-	dopatch ylmfos-GNU_SOURCE-defined.patch
 	config+="--enable-lib 
-	             --enable-util"
+	         --enable-util"
 	doconfig
 }
 

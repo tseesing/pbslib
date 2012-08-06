@@ -1,0 +1,30 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="StartOS sound theme"
+HOMEPAGE="http://www.startos.org"
+LICENSE="custom"
+PACKAGER="StartOS Developers"
+YARCH="any"
+
+SRC_URI="git://git.ylmf.com/"$N".git"
+
+RDEPEND=""
+BDEPEND=""
+RECOMMENDED="startos-sounds"
+CONFLICT="startos-sounds"
+
+INSTALL="$N.install"
+
+pbs_unpack() {
+	dounpack
+}
+
+pbs_install() {
+	docp src/* "$destdir"
+}
+

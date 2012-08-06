@@ -1,14 +1,14 @@
 #
-# Ylmf OS package build script
+# StartOS package build script
 #
-# Copyright 2005-2012 Ylmf OS
+# Copyright 2012 StartOS
 # Distributed under the terms of the GNU General Public License v2
 #
 
 DESCRIPTION="LXDE tool to edit desktop entry files"
 HOMEPAGE="http://sourceforge.net/projects/lxde/files/"
 LICENSE="GPL"
-PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
+PACKAGER="StartOS Developers"
 
 SRC_URI="http://ncu.dl.sourceforge.net/project/lxde/LXShortcut%20%28edit%20app%20shortcut%29/LXShortcut%200.1.2/"$N-$V".tar.gz"
 

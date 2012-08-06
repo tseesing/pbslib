@@ -1,14 +1,14 @@
 #
-# Ylmf OS package build script
+# StartOS package build script
 #
-# Copyright 2005-2012 Ylmf OS
+# Copyright 2012 StartOS
 # Distributed under the terms of the GNU General Public License v2
 #
 
 DESCRIPTION="Super Nintendo Entertainment System (SNES) emulator"
 HOMEPAGE="http://code.google.com/p/snes9x-gtk/"
 LICENSE=""
-PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
+PACKAGER="StartOS Developers"
 
 SRC_URI="http://snes9x-gtk.googlecode.com/files/$N-$V-src.tar.bz2 "
 

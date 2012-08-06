@@ -1,0 +1,12 @@
+diff -ur python-2.7.2/Lib/platform.py python-2.7.2.new//Lib/platform.py
+--- python-2.7.2/Lib/platform.py	2011-06-11 23:46:25.000000000 +0800
++++ python-2.7.2.new//Lib/platform.py	2012-03-23 09:45:11.875026294 +0800
+@@ -259,7 +259,7 @@
+ _supported_dists = (
+     'SuSE', 'debian', 'fedora', 'redhat', 'centos',
+     'mandrake', 'mandriva', 'rocks', 'slackware', 'yellowdog', 'gentoo',
+-    'UnitedLinux', 'turbolinux')
++    'UnitedLinux', 'turbolinux', 'startos', 'StartOS', 'Startos')
+ 
+ def _parse_release_file(firstline):
+ 

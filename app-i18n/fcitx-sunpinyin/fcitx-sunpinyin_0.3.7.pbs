@@ -1,14 +1,14 @@
 #
-# Ylmf OS package build script
+# StartOS package build script
 #
-# Copyright 2005-2012 Ylmf OS
+# Copyright 2012 StartOS
 # Distributed under the terms of the GNU General Public License v2
 #
 
 DESCRIPTION="sunpinin for fcitx"
 HOMEPAGE="http://code.google.com/p/fcitx/"
 LICENSE="GPL"
-PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
+PACKAGER="StartOS Developers"
 
 SRC_URI="http://fcitx.googlecode.com/files/"$N-$V".tar.xz"
 CHECKSUM="9ccf9fcb9171208bef5b47fb55c5b9bc84e897ab"

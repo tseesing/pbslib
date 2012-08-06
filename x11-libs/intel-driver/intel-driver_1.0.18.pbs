@@ -1,0 +1,40 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="VA-API implementation for Intel G45 chipsets and Intel HD Graphics for Intel Core processor family."
+HOMEPAGE="http://freedesktop.org/wiki/Software/vaapi"
+LICENSE="MIT"
+PACKAGER="StartOS Developers"
+
+SRC_URI="http://cgit.freedesktop.org/vaapi/intel-driver/snapshot/"$N-$V".tar.bz2"
+CHECKSUM="f65ebbcb1071188405178f3a85831ffc"
+
+RDEPEND="glibc libdrm libpciaccess libva(>=1.0.16) libX11 libXau libxcb libXdmcp libXext libXfixes"
+RECOMMENDED=""
+BDEPEND=""
+OPTIONAL=""
+CONFLICT=""
+REPLACE=""
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_config() {
+	config+=""
+	doconfig
+}
+
+pbs_build() {
+	domake
+}
+
+pbs_install() {
+	domkinstall
+	dodoc COPYING
+}
+

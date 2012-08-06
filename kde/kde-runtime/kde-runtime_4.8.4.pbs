@@ -5,7 +5,7 @@
 DESCRIPTION="KDE Base Runtime Environment"
 HOMEPAGE="http://www.kde.org"
 LICENSE="GPL,LGPL"
-PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
+PACKAGER="StartOS Developers<>"
 
 SRC_URI="http://download.kde.org/stable/"$V"/src/"$N-$V".tar.xz"
 CHECKSUM="b404fe2ab819b602041a0987a64432f8"

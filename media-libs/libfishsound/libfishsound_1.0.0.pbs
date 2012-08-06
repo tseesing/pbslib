@@ -1,7 +1,7 @@
 #
-# Ylmf OS package build script
+# StartOS package build script
 #
-# Copyright 2005-2012 Ylmf OS
+# Copyright 2012 StartOS
 # Distributed under the terms of the GNU General Public License v2
 #
 
@@ -9,7 +9,7 @@ DESCRIPTION="Simple programming interface for decoding and encoding audio data u
 COMMENTS="libfishsound is a wrapper around the existing codec libraries and provides a consistent, higher-level programming interface. It has been designed for use in a wide variety of applications; it has no direct dependencies on Ogg encapsulation, though it is most commonly used in conjunction with liboggz to decode or encode FLAC, Speex or Vorbis audio tracks in Ogg files, including Ogg Theora and Annodex."
 HOMEPAGE="http://www.xiph.org/fishsound/"
 LICENSE="GPLv2+"
-PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
+PACKAGER="StartOS Developers"
 
 SRC_URI="http://downloads.xiph.org/releases/"$N"/"$N-$V".tar.gz"
 

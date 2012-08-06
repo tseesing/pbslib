@@ -1,7 +1,7 @@
 #
-# Ylmf OS package build script
+# StartOS package build script
 #
-# Copyright 2005-2012 Ylmf OS
+# Copyright 2012 StartOS
 # Distributed under the terms of the GNU General Public License v2
 #
 
@@ -29,8 +29,11 @@ LICENSE="GPL"
 # reboot is required yes/no
 #RIR=""
 
+# alias names for searching
+#ALIAS=""
+
 #
-PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
+PACKAGER="StartOS Developers"
 
 # Point to any required sources; these will be automatically downloaded by ypkg. 
 # $N = package name, such as autoconf, x-org
@@ -56,6 +59,7 @@ RECOMMENDED=""
 CONFLICT=""
 OPTIONAL="a: support a 
           b: support b"
+REPLACE=""
 
 #do not spilte dev files
 OPTIONS="nodev nostrip upx"

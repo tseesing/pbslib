@@ -1,14 +1,14 @@
 #
-# Ylmf OS package build script
+# StartOS package build script
 #
-# Copyright 2005-2012 Ylmf OS
+# Copyright 2012 StartOS
 # Distributed under the terms of the GNU General Public License v2
 #
 
 DESCRIPTION="an advanced CDDA reader with error correction"
 HOMEPAGE="http://www.xiph.org/paranoia"
 LICENSE="GPL,LGPL"
-PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
+PACKAGER="StartOS Developers"
 
 SRC_URI="http://downloads.xiph.org/releases/"$N"/"$N"-III-"$V".src.tgz"
 CHECKSUM="b304bbe8ab63373924a744eac9ebc652"

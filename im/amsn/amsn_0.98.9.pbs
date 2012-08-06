@@ -1,14 +1,14 @@
 #
-# Ylmf OS package build script
+# StartOS package build script
 #
-# Copyright 2005-2012 Ylmf OS
+# Copyright 2012 StartOS
 # Distributed under the terms of the GNU General Public License v2
 #
 
 DESCRIPTION="Alvaro's Messenger client for MSN"
 HOMEPAGE="http://www.amsn-project.net"
 LICENSE="GPL"
-PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
+PACKAGER="StartOS Developers"
 
 SRC_URI="http://downloads.sourceforge.net/sourceforge/"$N"/"$N-$V"-src.tar.bz2"
 CHECKSUM="1fd2620489cc3627a841773a79cf28a7c9c438979c76d37f231a773a79e7f23e"
@@ -26,7 +26,7 @@ pbs_unpack() {
 }
 
 pbs_patch(){
-	dopatch ylmfos-langlist.patch
+	dopatch langlist.patch
 
 	# patch for linux kernel header changes
 	dopatch amsn-0.98.9-v4l2.patch

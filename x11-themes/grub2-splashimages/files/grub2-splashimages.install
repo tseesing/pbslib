@@ -1,7 +1,7 @@
 . /usr/lib/ybs/funcs
 
 post_install() {
-	update-grub
+	update-grub ||true
 }
 
 post_remove() {

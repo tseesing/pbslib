@@ -1,14 +1,14 @@
 #
-# Ylmf OS package build script
+# StartOS package build script
 #
-# Copyright 2005-2012 Ylmf OS
+# Copyright 2012 StartOS
 # Distributed under the terms of the GNU General Public License v2
 #
 
 DESCRIPTION="Extra loaders for GPL loaders and unstable libraries."
 HOMEPAGE="http://www.enlightenment.org/"
 LICENSE="BSD"
-PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
+PACKAGER="StartOS Developers"
 
 SRC_URI="http://download.enlightenment.org/releases/"$N-$V".tar.gz"
 CHECKSUM="340a8c2f42c82ecd10f0204cdb291a70"

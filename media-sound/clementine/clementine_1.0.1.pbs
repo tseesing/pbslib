@@ -1,7 +1,7 @@
 #
-# Ylmf OS package build script
+# StartOS package build script
 #
-# Copyright 2005-2012 Ylmf OS
+# Copyright 2012 StartOS
 # Distributed under the terms of the GNU General Public License v2
 #
 
@@ -9,7 +9,7 @@ DESCRIPTION="A modern music player and library organizer based on Amarok 1.4 and
 COMMENTS="Clementine is a multiplatform music player. It is inspired by Amarok 1.4, focusing on a fast and easy-to-use interface for searching and playing your music."
 HOMEPAGE="http://code.google.com/p/clementine-player/"
 LICENSE="GPLv3"
-PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
+PACKAGER="StartOS Developers"
 
 SRC_URI="http://clementine-player.googlecode.com/files/"$N-$V".tar.gz"
 CHECKSUM="e05320da689e2fad744fd3e68518bc4103ecf0fd"

@@ -1,7 +1,7 @@
 #
-# Ylmf OS package build script
+# StartOS package build script
 #
-# Copyright 2005-2012 Ylmf OS
+# Copyright 2012 StartOS
 # Distributed under the terms of the GNU General Public License v2
 #
 
@@ -9,7 +9,7 @@ DESCRIPTION="Supports USB first (ISL3886 chipset) and second (ISL3887 chipset) g
 HOMEPAGE="http://wireless.kernel.org/en/users/Drivers/p54#firmware"
 LICENSE="custom"
 YARCH="any"
-PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
+PACKAGER="StartOS Developers"
 
 SRC_URI="http://daemonizer.de/prism54/prism54-fw/fw-usb/"$V".lm87.arm 
          http://daemonizer.de/prism54/prism54-fw/fw-usb/"$V".lm86.arm"

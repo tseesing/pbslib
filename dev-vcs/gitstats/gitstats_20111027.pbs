@@ -1,7 +1,7 @@
 #
-# Ylmf OS package build script
+# StartOS package build script
 #
-# Copyright 2005-2012 Ylmf OS
+# Copyright 2012 StartOS
 # Distributed under the terms of the GNU General Public License v2
 #
 
@@ -9,7 +9,7 @@ DESCRIPTION="Statistics generator for git"
 HOMEPAGE="http://gitstats.sourceforge.net/"
 LICENSE="GPL"
 YARCH="any"
-PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
+PACKAGER="StartOS Developers"
 
 SRC_URI="git://repo.or.cz/gitstats.git"
 
@@ -22,8 +22,11 @@ pbs_unpack() {
         dounpack
 }
 
+pbs_patch() {
+	dopatch makefile.patch
+}
+
 pbs_config() {
-	dopatch ylmfos-makefile.patch
 	config+=""
 	doconfig
 }

@@ -1,14 +1,14 @@
 #
-# Ylmf OS package build script
+# StartOS package build script
 #
-# Copyright 2005-2012 Ylmf OS
+# Copyright 2012 StartOS
 # Distributed under the terms of the GNU General Public License v2
 #
 
 DESCRIPTION="Awesome music player with brilliant and tweakful UI"
 HOMEPAGE="http://www.linuxdeepin.com/"
 LICENSE="GPL"
-PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
+PACKAGER="StartOS Developers"
 
 SRC_URI="http://packages.linuxdeepin.com/deepin/pool/main/d/"$N"/"$N"_1+git"$V".orig.tar.gz"
 CHECKSUM="f4bab06a03f4d206d785f64d10ca90d3"

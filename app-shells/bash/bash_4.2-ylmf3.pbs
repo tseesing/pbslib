@@ -1,14 +1,14 @@
 #
-# Ylmf OS package build script
+# StartOS package build script
 #
-# Copyright 2005-2012 Ylmf OS
+# Copyright 2012 StartOS
 # Distributed under the terms of the GNU General Public License v2
 #
 
 DESCRIPTION="The standard GNU Bourne again shell"
 HOMEPAGE="http://tiswww.case.edu/php/chet/bash/bashtop.html"
 LICENSE="GPL"
-PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
+PACKAGER="StartOS Developers"
 
 URL="ftp://ftp.cwru.edu/pub/"$N""
 SRC_URI="$URL/"$N-$V".tar.gz
@@ -30,12 +30,14 @@ pbs_unpack() {
         dounpack
 }
 
-pbs_config() {
+pbs_patch() {
 	for ((i=1; i<9; i++)); do
 		dopatch "$YPPATH_SOURCE"/bash42-00"$i"
 	done
-	dopatch ylmfos-config-default-path.patch
-	
+	dopatch config-default-path.patch
+}
+
+pbs_config() {
 	## The following sed points configure towards the correct library directory while searching for Readline
 	#case $ARCH in
 	#	x86_64) sed -i "/ac_cv_rl_libdir/s@/lib@&64@" configure

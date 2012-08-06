@@ -8,6 +8,7 @@ pre_install() {
 post_install() {
 	ykms install $1 $2
 	gnome2_install_schema "$1"
+	mate_install_schema "$1"
 	gnome2_install_defaut_gconf "$1 $2 $3
 	gnome2_rarian_sk_update
 	gnome2_desktop_database_update
@@ -22,7 +23,7 @@ post_install() {
 }
 
 pre_remove() {
-	gnome2_uninstall_schema
+	mate_uninstall_schema
 	gnome2_uninstall_mine
 	doremove_info wget.info.gz
 }

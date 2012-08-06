@@ -18,19 +18,13 @@ restore() {
 			lspci |grep VGA |grep -q "Intel Corporation" ||	ln -sf libglx.so.27* libglx.so
 		fi
 	fi
+
 	return 0
 }
 
 post_install() {
 	dolibtool_finish /usr/lib/xorg/modules/extensions
-	systemctl enable xorgconf-check.service
 	restore
-}
-
-pre_remove() {
-	systemctl --system daemon-reload
-	systemctl disable xorgconf-check.service
-	return 0
 }
 
 post_upgrade() {

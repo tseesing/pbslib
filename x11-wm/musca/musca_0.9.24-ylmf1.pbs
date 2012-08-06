@@ -1,14 +1,14 @@
 #
-# Ylmf OS package build script
+# StartOS package build script
 #
-# Copyright 2005-2012 Ylmf OS
+# Copyright 2012 StartOS
 # Distributed under the terms of the GNU General Public License v2
 #
 
 DESCRIPTION="A simple dynamic window manager for X, with features nicked from ratpoison and dwm"
 HOMEPAGE="http://aerosuidae.net/musca.html"
 LICENSE="GPL"
-PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
+PACKAGER="StartOS Developers"
 
 SRC_URI="http://aerosuidae.net/"$N-$V".tgz"
 CHECKSUM="e067a8e39b1a97d62fc8e43800edee70"

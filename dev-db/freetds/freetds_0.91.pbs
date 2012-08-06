@@ -1,14 +1,14 @@
 #
-# Ylmf OS package build script
+# StartOS package build script
 #
-# Copyright 2005-2012 Ylmf OS
+# Copyright 2012 StartOS
 # Distributed under the terms of the GNU General Public License v2
 #
 
 DESCRIPTION="Library for accessing Sybase and MS SQL Server databases"
 HOMEPAGE="http://www.freetds.org"
 LICENSE="LGPL"
-PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
+PACKAGER="StartOS Developers"
 
 SRC_URI="ftp://ftp.ibiblio.org/pub/Linux/ALPHA/"$N"/stable/"$N-$V".tar.gz"
 CHECKSUM="b14db5823980a32f0643d1a84d3ec3ad"

@@ -1,13 +1,13 @@
 #
-# Ylmf OS package build script
+# StartOS package build script
 #
-# Copyright 2005-2012 Ylmf OS
+# Copyright 2012 StartOS
 # Distributed under the terms of the GNU General Public License v2
 #
 DESCRIPTION="userspace virtual filesystem designed to work with the i/o abstractions of gio"
 HOMEPAGE="www.gnome.com"
 LICENSE="GPL"
-PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
+PACKAGER="StartOS Developers"
 
 SRC_URI="http://ftp.gnome.org/pub/gnome/sources/"$N"/1.8/"$N-$V".tar.bz2"
 CHECKSUM="0895ac8f6d416e1b15433b6b6b68eb119c6e8b04fdb66db665d684355ef89345"
@@ -22,7 +22,7 @@ pbs_unpack() {
 }
 
 pbs_patch() {
-	dopatch ylmfos_gvfs-1.6.7_fix_trash_show_files.patch
+	dopatch gvfs-1.6.7_fix_trash_show_files.patch
 }
 
 pbs_config() {

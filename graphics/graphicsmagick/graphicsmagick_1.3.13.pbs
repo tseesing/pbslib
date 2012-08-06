@@ -1,14 +1,14 @@
 #
-# Ylmf OS package build script
+# StartOS package build script
 #
-# Copyright 2005-2012 Ylmf OS
+# Copyright 2012 StartOS
 # Distributed under the terms of the GNU General Public License v2
 #
 
 DESCRIPTION="Image processing system"
 HOMEPAGE="http://www.graphicsmagick.org"
 LICENSE="MIT"
-PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
+PACKAGER="StartOS Developers"
 
 SRC_URI="http://sourceforge.net/projects/"$N"/files/graphicsmagick/"$V"/GraphicsMagick-"$V".tar.bz2"
 CHECKSUM="1b5128e1868317ec7eb11a718f261a41"

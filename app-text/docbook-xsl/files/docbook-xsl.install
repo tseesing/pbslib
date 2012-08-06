@@ -1,25 +1,46 @@
-. /usr/lib/ybs/funcs
 
 post_install() {
-	# Create (or append) and populate the XML catalog file using the following commands as the root user:
-        mkdir -p /etc/xml
-        if [ ! -f /etc/xml/catalog ]; then
- 	       xmlcatalog --noout --create /etc/xml/catalog
+	local name=$1
+	local version=$2
+
+	if [ ! -f /etc/xml/catalog ]; then
+		xmlcatalog --noout --create /etc/xml/catalog
 	fi
+
 	xmlcatalog --noout --add "rewriteSystem" \
-	           "http://docbook.sourceforge.net/release/xsl/1.75.2" \
-	           "/usr/share/xml/docbook/xsl-stylesheets-1.75.2" \
-	           /etc/xml/catalog &&
+	          "http://docbook.sourceforge.net/release/xsl/$version" \
+	          "/usr/share/xml/docbook/xsl-stylesheets-$version" \
+	       /etc/xml/catalog
+
 	xmlcatalog --noout --add "rewriteURI" \
-	           "http://docbook.sourceforge.net/release/xsl/1.75.2" \
-	           "/usr/share/xml/docbook/xsl-stylesheets-1.75.2" \
-	           /etc/xml/catalog &&
+	          "http://docbook.sourceforge.net/release/xsl/$version" \
+	          "/usr/share/xml/docbook/xsl-stylesheets-$version" \
+  	       /etc/xml/catalog &&
+
 	xmlcatalog --noout --add "rewriteSystem" \
 	           "http://docbook.sourceforge.net/release/xsl/current" \
-	           "/usr/share/xml/docbook/xsl-stylesheets-1.75.2" \
-	           /etc/xml/catalog &&
+	           "/usr/share/xml/docbook/xsl-stylesheets-$version" \
+	        /etc/xml/catalog &&
+
 	xmlcatalog --noout --add "rewriteURI" \
 	           "http://docbook.sourceforge.net/release/xsl/current" \
-	           "/usr/share/xml/docbook/xsl-stylesheets-1.75.2" \
-	/etc/xml/catalog
-}     
+	           "/usr/share/xml/docbook/xsl-stylesheets-$version" \
+	        /etc/xml/catalog
+}
+
+post_upgrade() {
+	local name=$1
+	local old=$2
+	local new=$3
+
+	post_remove $1 $2
+	post_install $1 $3
+}
+
+post_remove() {
+	local name=$1
+	local version=$2
+
+	xmlcatalog --noout --del "/usr/share/xml/docbook/xsl-stylesheets-$version" /etc/xml/catalog
+}
+

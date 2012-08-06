@@ -1,14 +1,14 @@
 #
-# Ylmf OS package build script
+# StartOS package build script
 #
-# Copyright 2005-2012 Ylmf OS
+# Copyright 2012 StartOS
 # Distributed under the terms of the GNU General Public License v2
 #
 
 DESCRIPTION="Allows users or groups to run commands as other users"
 HOMEPAGE="http://www.sudo.ws/ http://www.gratisoft.us/sudo/"
 LICENSE=""
-PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
+PACKAGER="StartOS Developers"
 
 SRC_URI="http://www.gratisoft.us/sudo/dist/"$N-$V$R".tar.gz"
 

@@ -1,14 +1,14 @@
 #
-# Ylmf OS package build script
+# StartOS package build script
 #
-# Copyright 2005-2012 Ylmf OS
+# Copyright 2012 StartOS
 # Distributed under the terms of the GNU General Public License v2
 #
 
 DESCRIPTION="The Common Unix Printing System."
 HOMEPAGE="http://www.cups.org/"
 LICENSE="GPL"
-PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
+PACKAGER="StartOS Developers"
 
 SRC_URI="http://ftp.easysw.com/pub/"$N"/"$V"/"$N-$V"-source.tar.bz2"
 CHECKSUM="e1ad15257aa6f162414ea3beae0c5df8"
@@ -44,7 +44,7 @@ pbs_patch() {
 	dopatch cups-no-gzip-man.patch
 
 	#
-	dopatch ylmfos-add-wheel-group-to-systemgroup.patch
+	dopatch add-wheel-group-to-systemgroup.patch
 }
 
 pbs_config() {

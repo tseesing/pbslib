@@ -1,14 +1,14 @@
 #
-# Ylmf OS package build script
+# StartOS package build script
 #
-# Copyright 2005-2012 Ylmf OS
+# Copyright 2012 StartOS
 # Distributed under the terms of the GNU General Public License v2
 #
 
 DESCRIPTION="rtl8192_8188CU_linux"
 HOMEPAGE="http://122.146.118.42/default.aspx"
 LICENSE="GPL"
-PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
+PACKAGER="StartOS Developers"
 
 SRC_URI="ftp://WebUser:Lc9FuH5r@202.134.71.22/cn/wlan/RTL8192CU_linux_v3.0.1590.20110511.zip"
 
@@ -22,7 +22,7 @@ pbs_config() {
 	cd driver
 	tar xf rtl8192_8188CU_linux_v3.0.1590.20110511.tar.gz
 	cd rtl8192_8188CU_linux_v3.0.1590.20110511
-	dopatch ylmfos_makefile.patch
+	dopatch startos_makefile.patch
 }
 
 rtl8192cu-source_install() {

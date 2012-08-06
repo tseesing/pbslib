@@ -1,14 +1,14 @@
 #
-# Ylmf OS package build script
+# StartOS package build script
 #
-# Copyright 2005-2012 Ylmf OS
+# Copyright 2012 StartOS
 # Distributed under the terms of the GNU General Public License v2
 #
 
 DESCRIPTION="Platform independent MSN Messenger client written in Python+GTK"
 HOMEPAGE="http://emesene.org/"
 LICENSE="custom:PSF GPL LGPL2.1"
-PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
+PACKAGER="StartOS Developers"
 
 SRC_URI="emesene-emesene-v2.11.7-0-g701207a.tar.gz"
 

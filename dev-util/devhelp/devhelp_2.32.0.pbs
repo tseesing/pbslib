@@ -1,7 +1,7 @@
 #
-# Ylmf OS package build script
+# StartOS package build script
 #
-# Copyright 2005-2012 Ylmf OS
+# Copyright 2012 StartOS
 # Distributed under the terms of the GNU General Public License v2
 #
 
@@ -9,7 +9,7 @@ DESCRIPTION="An API documentation browser for GNOME 2"
 COMMENTS=""
 HOMEPAGE="http://live.gnome.org/devhelp"
 LICENSE="GPL"
-PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
+PACKAGER="StartOS Developers"
 
 RDEPEND="atk cairo dbus dbus-glib enchant expat fontconfig freetype gail gcc-lib gconf gdk-pixbuf glib2 glibc gnutls gst-plugins-base gstreamer gtk+ icu libgcrypt libgpg-error libICE libjpeg-turbo libpng libSM libsoup libtasn1 libunique libwnck libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libxml2 libXrandr libXrender libXres libxslt libXt orbit pango pixman sqlite startup-notification util-linux-ng webkitgtk zlib"
 RECOMMENDED=""

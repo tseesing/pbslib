@@ -5,7 +5,7 @@ GRUB_DEFAULT=0
 #GRUB_HIDDEN_TIMEOUT=0
 #GRUB_HIDDEN_TIMEOUT_QUIET=true
 GRUB_TIMEOUT=5
-GRUB_DISTRIBUTOR=`lsb_release -i -r 2>/dev/null |xargs || echo Ylmf OS`
+GRUB_DISTRIBUTOR=`lsb_release -i -r 2>/dev/null |xargs || echo StartOS`
 GRUB_CMDLINE_LINUX_DEFAULT="quiet splash vga=788"
 GRUB_CMDLINE_LINUX=""
 
@@ -31,6 +31,6 @@ GRUB_CMDLINE_LINUX=""
 
 # Grub2 background image and color
 # Supports: *.jpg *.JPG *.jpeg *.JPEG *.png *.PNG *.tga *.TGA; 8/16/24bit; 640x480
-#WALLPAPER="/usr/share/images/grub/ylmfos-default-grub.jpg"
+#WALLPAPER="/usr/share/images/grub/startos-default-grub.jpg"
 COLOR_NORMAL="white/black"
 COLOR_HIGHLIGHT="black/light-gray"

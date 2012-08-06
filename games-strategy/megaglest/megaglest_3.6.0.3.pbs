@@ -1,14 +1,14 @@
 #
-# Ylmf OS package build script
+# StartOS package build script
 #
-# Copyright 2005-2012 Ylmf OS
+# Copyright 2012 StartOS
 # Distributed under the terms of the GNU General Public License v2
 #
 
 DESCRIPTION="Fork of Glest, a 3D real-time strategy game in a fantastic world."
 HOMEPAGE="http://sourceforge.net/projects/megaglest/"
 LICENSE="GPL"
-PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
+PACKAGER="StartOS Developers"
 
 SRC_URI="http://downloads.sourceforge.net/"$N"/"$N"-source-"$V".tar.xz"
 CHECKSUM="5a4a2429435031d9f9cc5d9535a9de9d"

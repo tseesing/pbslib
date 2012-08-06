@@ -1,14 +1,14 @@
 #
-# Ylmf OS package build script
+# StartOS package build script
 #
-# Copyright 2005-2012 Ylmf OS
+# Copyright 2012 StartOS
 # Distributed under the terms of the GNU General Public License v2
 #
 
 DESCRIPTION="GLib bindings for the Telepathy D-Bus protocol."
 HOMEPAGE="http://telepathy.freedesktop.org"
 LICENSE="LGPL2.1"
-PACKAGER="Ylmf os Developers <ylmfos@ylmf.com>"
+PACKAGER="StartOS Developers"
 
 SRC_URI="http://telepathy.freedesktop.org/releases/"$N"/"$N-$V".tar.gz"
 CHECKSUM="461732739e3fbf8467991bbe661fb29a"

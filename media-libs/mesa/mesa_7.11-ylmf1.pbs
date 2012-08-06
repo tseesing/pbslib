@@ -1,7 +1,7 @@
 #
-# Ylmf OS package build script
+# StartOS package build script
 #
-# Copyright 2005-2012 Ylmf OS
+# Copyright 2012 StartOS
 # Distributed under the terms of the GNU General Public License v2
 #
 
@@ -9,7 +9,7 @@ DESCRIPTION="an open-source implementation of the OpenGL specification - a syste
 HOMEPAGE="http://www.mesa3d.org/"
 LICENSE="http://www.mesa3d.org/license.html"
 
-PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
+PACKAGER="StartOS Developers"
 
 SRC_URI="ftp://ftp.freedesktop.org/pub/mesa/"$V"/MesaLib-"$V".tar.bz2 
          ftp://ftp.freedesktop.org/pub/mesa/"$V"/MesaGLUT-"$V".tar.bz2"

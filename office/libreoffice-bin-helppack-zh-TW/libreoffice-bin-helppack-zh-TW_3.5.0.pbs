@@ -1,14 +1,14 @@
 #
-# Ylmf OS package build script
+# StartOS package build script
 #
-# Copyright 2005-2012 Ylmf OS
+# Copyright 2012 StartOS
 # Distributed under the terms of the GNU General Public License v2
 #
 
 DESCRIPTION="libreoffice help for zh-CN"
 HOMEPAGE="http://www.libreoffice.org/"
 LICENSE="LGPL"
-PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
+PACKAGER="StartOS Developers"
 
 SRC_URI="http://download.documentfoundation.org/libreoffice/stable/"$V"/deb/x86/LibO_"$V"_Linux_x86_helppack-deb_zh-TW.tar.gz"
 CHECKSUM="5a979f7cd4a9e555daff869ce16aca7847b0ab24"

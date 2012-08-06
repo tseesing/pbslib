@@ -1,14 +1,14 @@
 #
-# Ylmf OS package build script
+# StartOS package build script
 #
-# Copyright 2005-2012 Ylmf OS
+# Copyright 2012 StartOS
 # Distributed under the terms of the GNU General Public License v2
 #
 
 DESCRIPTION="Firefox Web Browser"
 HOMEPAGE="http://www.mozilla.com/firefox"
 LICENSE="Multi-licensing"
-PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
+PACKAGER="StartOS Developers"
 
 SRC_URI="ftp://ftp.mozilla.org/pub/mozilla.org/"$N"/releases/"$V"/source/"$N-$V".source.tar.bz2"
 CHECKSUM="5b212db48630ba93bb30ec63cca17f4d"
@@ -17,7 +17,6 @@ RDEPEND="alsa-lib atk avahi cairo dbus dbus-glib expat fontconfig freetype gcc-l
 
 BDEPEND=""
 RECOMMENDED="firefox-i18n-zh-CN"
-CONFLICT="ylmfox"
 
 NOTES="Do not distribute builds with
 --enable-official-branding unless you have
@@ -30,7 +29,6 @@ pbs_unpack() {
 
 pbs_patch() {
 	# See bellow: vendor.js 
-	#dopatch ylmfos_default-locale-zh-cn.patch
 	dopatch firefox-install-dir.patch
 }
 
@@ -39,7 +37,7 @@ pbs_config() {
 		 --enable-official-branding
 		 --enable-optimize=-O2
 		 --enable-startup-notification 
-		 --with-distribution-id=ylmfos
+		 --with-distribution-id=startos
 		 --disable-debug 
 		 --disable-tests"
 
@@ -67,7 +65,7 @@ pbs_install() {
 	# Desktop
 	dodesktop "firefox.desktop" "usr/lib/"$N"/icons/mozicon128.png"
 	
-	# Add extensions including langpack-zh-CN and ylmfox
+	# Add extensions 
 	docp "$filesdir"/extensions/* "usr/lib/"$N"/extensions"
 
 	# Add baidu searchplugin

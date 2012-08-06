@@ -1,14 +1,14 @@
 #
-# Ylmf OS package build script
+# StartOS package build script
 #
-# Copyright 2005-2012 Ylmf OS
+# Copyright 2012 StartOS
 # Distributed under the terms of the GNU General Public License v2
 #
 
 DESCRIPTION="PyPy is a fast, compliant alternative implementation of the Python language"
 HOMEPAGE="http://pypy.org/"
 LICENSE="custom/MIT"
-PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
+PACKAGER="StartOS Developers"
 
 SRC_URI="https://bitbucket.org/pypy/pypy/get/release-"$V".tar.bz2"
 CHECKSUM="661be06978fdc907d84f0ee1f1228c8b"

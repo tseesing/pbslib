@@ -1,7 +1,7 @@
 #
-# Ylmf OS package build script
+# StartOS package build script
 #
-# Copyright 2005-2012 Ylmf OS
+# Copyright 2012 StartOS
 # Distributed under the terms of the GNU General Public License v2
 #
 
@@ -9,7 +9,7 @@ DESCRIPTION="Copies data from one file or block device to another with read-erro
 HOMEPAGE="http://www.gnu.org/software/ddrescue/ddrescue.html"
 REPO=""
 LICENSE="GPL"
-PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
+PACKAGER="StartOS Developers"
 
 SRC_URI="http://mirror.bjtu.edu.cn/gnu/ddrescue/ddrescue-1.14.tar.gz"
 

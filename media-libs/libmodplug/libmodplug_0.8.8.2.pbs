@@ -1,7 +1,7 @@
 #
-# Ylmf OS package build script
+# StartOS package build script
 #
-# Copyright 2005-2012 Ylmf OS
+# Copyright 2012 StartOS
 # Distributed under the terms of the GNU General Public License v2
 #
 
@@ -10,7 +10,7 @@ HOMEPAGE="http://modplug-xmms.sourceforge.net/"
 REPO=""
 LICENSE="GPL"
 PRIORITY=""
-PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
+PACKAGER="StartOS Developers"
 
 SRC_URI="http://downloads.sourceforge.net/project/modplug-xmms/libmodplug/0.8.8.2/libmodplug-0.8.8.2.tar.gz"
 

@@ -1,14 +1,14 @@
 #
-# Ylmf OS package build script
+# StartOS package build script
 #
-# Copyright 2005-2012 Ylmf OS
+# Copyright 2012 StartOS
 # Distributed under the terms of the GNU General Public License v2
 #
 
 DESCRIPTION="Manages sets of integers"
 HOMEPAGE="http://search.cpan.org/~swmcd/Set-IntSpan-1.16/"
 LICENSE="GPL PerlArtistic"
-PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
+PACKAGER="StartOS Developers"
 YARCH="any"
 
 SRC_URI="http://mirrors.163.com/cpan/authors/id/S/SW/SWMCD/Set-IntSpan-"$V".tar.gz"

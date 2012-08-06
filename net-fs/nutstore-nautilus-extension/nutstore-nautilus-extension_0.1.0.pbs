@@ -1,14 +1,14 @@
 #
-# Ylmf OS package build script
+# StartOS package build script
 #
-# Copyright 2005-2012 Ylmf OS
+# Copyright 2012 StartOS
 # Distributed under the terms of the GNU General Public License v2
 #
 
 DESCRIPTION="Nutstore sync disk"
 HOMEPAGE="https://jianguoyun.com/"
 LICENSE="GPLv2+"
-PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
+PACKAGER="StartOS Developers"
 
 SRC_URI="http://jianguoyun.com/static/exe/installer/nutstore_linux_src_installer.tar.gz"
 CHECKSUM="6763679dfc0482d71bb37b70e5debc74"

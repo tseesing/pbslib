@@ -1,14 +1,14 @@
 #
-# Ylmf OS package build script
+# StartOS package build script
 #
-# Copyright 2005-2012 Ylmf OS
+# Copyright 2012 StartOS
 # Distributed under the terms of the GNU General Public License v2
 #
 
 DESCRIPTION="High-level device independent layer for speech synthesis interface"
 HOMEPAGE="http://www.freebsoft.org/speechd"
 LICENSE="GPLv2,FDL"
-PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
+PACKAGER="StartOS Developers"
 
 SRC_URI="http://www.freebsoft.org/pub/projects/speechd/"$N-$V".tar.gz"
 CHECKSUM="ccfc30ac006673d36b4223eb760ed696"

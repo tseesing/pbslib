@@ -1,7 +1,7 @@
 #
-# Ylmf OS package build script
+# StartOS package build script
 #
-# Copyright 2005-2012 Ylmf OS
+# Copyright 2012 StartOS
 # Distributed under the terms of the GNU General Public License v2
 #
 
@@ -9,7 +9,7 @@ DESCRIPTION="Integrated version control support for your desktop"
 COMMENTS="RabbitVCS is a set of graphical tools written to provide simple and straightforward access to the version control systems you use."
 HOMEPAGE="http://rabbitvcs.org"
 LICENSE="GPL"
-PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
+PACKAGER="StartOS Developers"
 
 SRC_URI="http://rabbitvcs.googlecode.com/files/"$N-$V".tar.bz2"
 CHECKSUM="a9e1e741a3e665e3ce2769b2730fafde26955b53"

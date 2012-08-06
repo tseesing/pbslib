@@ -1,14 +1,14 @@
 #
-# Ylmf OS package build script
+# StartOS package build script
 #
-# Copyright 2005-2012 Ylmf OS
+# Copyright 2012 StartOS
 # Distributed under the terms of the GNU General Public License v2
 #
 
 DESCRIPTION="use TCP or UDP to retrieve the current time of another machine"
 HOMEPAGE="http://www.apps.ietf.org/rfc/rfc868.html"
 LICENSE="GPL"
-PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
+PACKAGER="StartOS Developers"
 
 SRC_URI="ftp://lug.mtu.edu/gentoo/distfiles/"$N-$V".tar.gz"
 
@@ -21,7 +21,7 @@ pbs_unpack() {
 }
 
 pbs_build() {
-	dopatch ylmfos-makefile.patch
+	dopatch startos-makefile.patch
 	domake
 }
 

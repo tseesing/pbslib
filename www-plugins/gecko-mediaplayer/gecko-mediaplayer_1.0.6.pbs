@@ -1,7 +1,7 @@
 #
-# Ylmf OS package build script
+# StartOS package build script
 #
-# Copyright 2005-2012 Ylmf OS
+# Copyright 2012 StartOS
 # Distributed under the terms of the GNU General Public License v2
 #
 
@@ -14,7 +14,7 @@ COMMENTS="Gecko Media Player is a browser plug-in that uses GNOME MPlayer
           It is the modern replacement for mplayerplug-in (from the same author)."
 HOMEPAGE="http://code.google.com/p/gecko-mediaplayer/"
 LICENSE="GPLv2"
-PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
+PACKAGER="StartOS Developers"
 
 SRC_URI="http://gecko-mediaplayer.googlecode.com/files/"$N-$V".tar.gz"
 CHECKSUM="27896584a552721585a276f7a4825ecb79d2980c"

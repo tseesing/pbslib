@@ -1,14 +1,14 @@
 #
-# Ylmf OS package build script
+# StartOS package build script
 #
-# Copyright 2005-2012 Ylmf OS
+# Copyright 2012 StartOS
 # Distributed under the terms of the GNU General Public License v2
 #
 
 DESCRIPTION="A WebKit browser component for KDE"
 HOMEPAGE="http://opendesktop.org/content/show.php?content=127960"
 LICENSE="LGPL"
-PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
+PACKAGER="StartOS Developers<>"
 
 SRC_URI="ftp://ftp.archlinux.org/other/"$N"/"$N-$V".tar.xz"
 CHECKSUM="e736d7b26cf6e3c0eed837837b3f032b"

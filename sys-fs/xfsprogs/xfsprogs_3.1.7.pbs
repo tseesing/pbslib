@@ -1,14 +1,14 @@
 #
-# Ylmf OS package build script
+# StartOS package build script
 #
-# Copyright 2005-2012 Ylmf OS
+# Copyright 2012 StartOS
 # Distributed under the terms of the GNU General Public License v2
 #
 
 DESCRIPTION="xfs filesystem utilities"
 HOMEPAGE="http://oss.sgi.com/projects/xfs/"
 LICENSE="GPL"
-PACKAGER="YLmf OS Developers <ylmfos@ylmf.com>"
+PACKAGER="YLmf OS Developers "
 
 #git://oss.sgi.com/xfs/cmds/"$N".git
 SRC_URI="xfsprogs-3.1.7.tar.bz2"

@@ -5,7 +5,7 @@
 DESCRIPTION="KDE Terminal"
 HOMEPAGE="http://www.kde.org"
 LICENSE="GPL,LGPL,FDL"
-PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
+PACKAGER="StartOS Developers<>"
 
 SRC_URI="http://download.kde.org/stable/"$V"/src/"$N-$V".tar.xz"
 CHECKSUM="4a6e9477d3a2104853b2faceb7c2e352"

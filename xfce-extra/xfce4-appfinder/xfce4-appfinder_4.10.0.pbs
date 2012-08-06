@@ -1,14 +1,14 @@
 #
-# Ylmf OS package build script
+# StartOS package build script
 #
-# Copyright 2005-2012 Ylmf OS
+# Copyright 2012 StartOS
 # Distributed under the terms of the GNU General Public License v2
 #
 
 DESCRIPTION="An application finder for Xfce"
 HOMEPAGE="http://www.xfce.org/projects/xfce4-appfinder"
 LICENSE="GPL"
-PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
+PACKAGER="StartOS Developers"
 
 SRC_URI="http://archive.xfce.org/src/xfce/"$N"/4.10/"$N-$V".tar.bz2"
 CHECKSUM="042aae7e366428a6a92b6353b3f2727d64823076a7752b8e0a15f1f8f3645439"

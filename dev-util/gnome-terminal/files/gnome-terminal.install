@@ -9,7 +9,7 @@ post_install() {
 	gnome2_install_defaut_gconf "string" "/apps/gnome-terminal/profiles/Default/bold_color"          "#000000000000"
 	gnome2_install_defaut_gconf "string" "/apps/gnome-terminal/profiles/Default/foreground_color"    "#AAAAAAAAAAAA"
 	gnome2_install_defaut_gconf "string" "/apps/gnome-terminal/profiles/Default/cursor_shape"        "ibeam"
-	gnome2_install_defaut_gconf "string" "/apps/gnome-terminal/profiles/Default/font"                "Bitstream Vera Sans Mono 11"
+	gnome2_install_defaut_gconf "string" "/apps/gnome-terminal/profiles/Default/font"                "Bitstream Vera Sans Mono 10"
 	gnome2_install_defaut_gconf "bool"   "/apps/gnome-terminal/profiles/Default/use_system_font"     "true"
 	gnome2_install_defaut_gconf "bool"   "/apps/gnome-terminal/profiles/Default/use_theme_colors"    "false"
 	gnome2_rarian_sk_update

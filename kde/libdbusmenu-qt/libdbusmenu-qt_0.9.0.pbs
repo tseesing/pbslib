@@ -1,7 +1,7 @@
 #
-# Ylmf OS package build script
+# StartOS package build script
 #
-# Copyright 2005-2012 Ylmf OS
+# Copyright 2012 StartOS
 # Distributed under the terms of the GNU General Public License v2
 #
 
@@ -9,7 +9,7 @@
 DESCRIPTION="A library that provides a Qt implementation of the DBusMenu spec"
 HOMEPAGE="https://launchpad.net/libdbusmenu-qt"
 LICENSE="GPL"
-PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
+PACKAGER="StartOS Developers<>"
 
 SRC_URI="http://launchpad.net/"$N"/trunk/"$V"/+download/"$N-$V".tar.bz2"
 CHECKSUM="cc6b7b551377e2a07f6fa5afef0d29ff"

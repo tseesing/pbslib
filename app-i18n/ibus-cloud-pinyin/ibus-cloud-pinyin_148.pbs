@@ -1,7 +1,7 @@
 #
-# Ylmf OS package build script
+# StartOS package build script
 #
-# Copyright 2005-2012 Ylmf OS
+# Copyright 2012 StartOS
 # Distributed under the terms of the GNU General Public License v2
 #
 
@@ -9,7 +9,7 @@ DESCRIPTION="Pinyin input method based on web pinyin services and ibus"
 HOMEPAGE="http://code.google.com/p/ibus-cloud-pinyin/"
 LICENSE="GPL"
 PRIORITY=""
-PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
+PACKAGER="StartOS Developers"
 
 # svn checkout http://ibus-cloud-pinyin.googlecode.com/svn/trunk/ ibus-cloud-pinyin
 SRC_URI="ibus-cloud-pinyin-svn-148.tar.bz2"

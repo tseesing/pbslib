@@ -1,7 +1,7 @@
 #
-# Ylmf OS package build script
+# StartOS package build script
 #
-# Copyright 2005-2012 Ylmf OS
+# Copyright 2012 StartOS
 # Distributed under the terms of the GNU General Public License v2
 #
 
@@ -9,7 +9,7 @@ DESCRIPTION="XSLT processor for transforming XML documents into HTML, text, or o
 HOMEPAGE="http://xml.apache.org/xalan-j"
 REPO=""
 LICENSE="APACHE"
-PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
+PACKAGER="StartOS Developers"
 
 SRC_URI="http://www.apache.org/dist/xml/xalan-j/xalan-j_2_7_1-bin-2jars.tar.gz"
 

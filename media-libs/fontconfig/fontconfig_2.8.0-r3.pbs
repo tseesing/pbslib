@@ -1,0 +1,54 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="a library for font customization and configuration"
+HOMEPAGE="http://fontconfig.org/wiki/"
+LICENSE="custom"
+PACKAGER="StartOS Developers"
+
+SRC_URI="http://fontconfig.org/release/"$N-$V".tar.gz"
+CHECKSUM="77e15a92006ddc2adbb06f840d591c0e"
+
+RDEPEND="bzip2 expat freetype glibc zlib"
+BDEPEN=""
+
+INSTALL="$N.install"
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_patch() {
+	dopatch 00git_ughur_orthography.patch
+	dopatch 00_old_diff_gz.patch
+	dopatch	01_fonts_nanum.patch
+	dopatch 04_ubuntu_monospace_lcd_filter_conf.patch
+	dopatch 05_lcdfilterlegacy.patch
+	dopatch 05_ubuntu_add_hinting_and_antialiasing_confs.patch
+	dopatch 06_ubuntu_lcddefault.patch
+	dopatch 07_no_bitmaps.patch
+}
+
+pbs_config() {
+	# Enable Position Independent Code for prelinking
+	export CFLAGS="$CFLAGS -fPIC"
+	config+=""
+	doconfig
+}
+
+pbs_build() {
+	domake
+}
+
+pbs_install() {
+	domkinstall
+	dodoc COPYING
+	cd "$destdir"/etc/fonts/conf.avail
+	mv 70-yes-bitmaps.conf 70-force-bitmaps.conf
+	docp "$filesdir"/70-yes-bitmaps.conf .
+}
+

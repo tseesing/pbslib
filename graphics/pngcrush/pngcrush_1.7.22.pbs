@@ -1,14 +1,14 @@
 #
-# Ylmf OS package build script
+# StartOS package build script
 #
-# Copyright 2005-2012 Ylmf OS
+# Copyright 2012 StartOS
 # Distributed under the terms of the GNU General Public License v2
 #
 
 DESCRIPTION="Portable Network Graphics (PNG) optimizing utility."
 HOMEPAGE="http://pmt.sourceforge.net/pngcrush/"
 LICENSE="GPL"
-PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
+PACKAGER="StartOS Developers"
 
 SRC_URI="http://sourceforge.net/projects/pmt/files/"$N"/"$V"/"$N-$V".tar.bz2"
 CHECKSUM="85bf51f20ed9c8d10c0d385d08452f1c"

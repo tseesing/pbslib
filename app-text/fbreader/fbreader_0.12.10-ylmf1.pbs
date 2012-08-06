@@ -1,14 +1,14 @@
 #
-# Ylmf OS package build script
+# StartOS package build script
 #
-# Copyright 2005-2012 Ylmf OS
+# Copyright 2012 StartOS
 # Distributed under the terms of the GNU General Public License v2
 #
 
 DESCRIPTION="e-book reader for Unix/Windows computers"
 HOMEPAGE="http://www.fbreader.org/about.php"
 LICENSE="GPL"
-PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
+PACKAGER="StartOS Developers"
 
 SRC_URI="http://www.fbreader.org/"$N"-sources-"$V".tgz"
 CHECKSUM="da9ec4721efdb0ec0aaa182bff16ad82"
@@ -28,7 +28,7 @@ pbs_unpack() {
 }
 
 pbs_patch() {
-	dopatch ylmfos_build-fix.patch
+	dopatch startos_build-fix.patch
 }
 
 pbs_config() {

@@ -1,14 +1,14 @@
 #
-# Ylmf OS package build script
+# StartOS package build script
 #
-# Copyright 2005-2012 Ylmf OS
+# Copyright 2012 StartOS
 # Distributed under the terms of the GNU General Public License v2
 #
 
 DESCRIPTION="A unique scenario based upon the Aleph One (Marathon) engine."
 HOMEPAGE="http://excaliburworld.com/emr/emr3/index.html"
 LICENSE="GPL"
-PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
+PACKAGER="StartOS Developers"
 
 SRC_URI="http://downloads.sourceforge.net/emr3/"$N-$V"-0602.tgz"
 CHECKSUM="21afa8e5cca3ca474873f8cd45b8a6c1"
@@ -26,7 +26,7 @@ pbs_unpack() {
 }
 
 pbs_patch() {
-	dopatch ylmfos-add-destdir.patch
+	dopatch add-destdir.patch
 }
 
 pbs_install() {

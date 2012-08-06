@@ -1,14 +1,14 @@
 #
-# Ylmf OS package build script
+# StartOS package build script
 #
-# Copyright 2005-2012 Ylmf OS
+# Copyright 2012 StartOS
 # Distributed under the terms of the GNU General Public License v2
 #
 
 DESCRIPTION="A full-featured and high-performance event loop"
 HOMEPAGE="http://software.schmorp.de/pkg/libev.html"
 LICENSE="BSD"
-PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
+PACKAGER="StartOS Developers"
 
 SRC_URI="http://dist.schmorp.de/"$N"/"$N-$V".tar.gz"
 CHECKSUM="e7752a518742c0f8086a8005aa7efcc4dcf02ed9"

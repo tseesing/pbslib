@@ -1,14 +1,14 @@
 #
-# Ylmf OS package build script
+# StartOS package build script
 #
-# Copyright 2005-2012 Ylmf OS
+# Copyright 2012 StartOS
 # Distributed under the terms of the GNU General Public License v2
 #
 
 DESCRIPTION="Epson EPL-5x00L/EPL-6x00L Printer Driver"
 HOMEPAGE="http://sourceforge.net/projects/epsonepl/"
 LICENSE="GPL"
-PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
+PACKAGER="StartOS Developers"
 
 SRC_URI="http://sourceforge.net/projects/"$N"/files/"$N"/"$V"/"$N-$V".tgz"
 CHECKSUM="0840e15c6a96584138d9a1045c16997d"
@@ -24,7 +24,7 @@ pbs_unpack() {
 }
 
 pbs_patch() {
-	dopatch ylmfos_makefile.patch
+	dopatch makefile.patch
 }
 
 pbs_config() {

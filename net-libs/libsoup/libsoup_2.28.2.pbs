@@ -1,14 +1,14 @@
 #
-# Ylmf OS package build script
+# StartOS package build script
 #
-# Copyright 2005-2012 Ylmf OS
+# Copyright 2012 StartOS
 # Distributed under the terms of the GNU General Public License v2
 #
 
 DESCRIPTION="The libsoup package contains an HTTP library implementation in C. This is useful for accessing HTTP servers in a completely asynchronous mode."
 HOMEPAGE="http://www.gnome.org/"
 LICENSE="GPL-2"
-PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
+PACKAGER="StartOS Developers"
 SRC_URI="ftp://ftp.gnome.org/pub/gnome/sources/$N/2.28/$N-$V.tar.bz2"
 BDEPEND="glib2 gdk-pixbuf libxml2 net-libs/libproxy"
 RECOMMENDED="gnutls gnome-keyring libproxy "

@@ -1,7 +1,7 @@
 #
-# Ylmf OS package build script
+# StartOS package build script
 #
-# Copyright 2005-2012 Ylmf OS
+# Copyright 2012 StartOS
 # Distributed under the terms of the GNU General Public License v2
 #
 
@@ -9,7 +9,7 @@ DESCRIPTION="Cairo-Dock is a light and eye-candy dock to launch your programs ea
 COMMENTS="It uses Cairo / OpenGL to render nice graphics (many in correlation with Compiz) with hardware acceleration. It's fully configurable and customizable and can be a taskbar too. You can easily plug applets into it or in a desklet mode."
 HOMEPAGE="https://launchpad.net/cairo-dock-core"
 LICENSE="GPL"
-PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
+PACKAGER="StartOS Developers"
 
 SRC_URI="https://launchpadlibrarian.net/97723585/"$N"-3.0.0.0rc1.tar.gz"
 CHECKSUM="51a85048531e0f1e69b0472065384ace"
@@ -27,7 +27,7 @@ pbs_unpack() {
 }
 
 pbs_patch() {
-	dopatch ylmfos_force-use-gtk+-2.patch
+	dopatch startos_force-use-gtk+-2.patch
 }
 
 pbs_config() {

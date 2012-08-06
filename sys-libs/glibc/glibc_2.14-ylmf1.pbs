@@ -1,17 +1,18 @@
 #
-# Ylmf OS package build script
+# StartOS package build script
 #
-# Copyright 2005-2012 Ylmf OS
+# Copyright 2012 StartOS
 # Distributed under the terms of the GNU General Public License v2
 #
 
 DESCRIPTION="GNU libc6 (also called glibc2) C library"
 HOMEPAGE="http://www.gnu.org/software/libc/libc.html"
-LICENSE="GPL LGPL"
-PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
+LICENSE="GPL,LGPL"
+PACKAGER="StartOS Developers"
 PRIORITY="required"
 
 SRC_URI="http://ftp.gnu.org/gnu/"$N"/"$N-$V".tar.xz"
+CHECKSUM="8f5f6b09f98d17c630819b4845e31e65"
 
 RDEPEND=""
 BDEPEND=""
@@ -82,15 +83,15 @@ pbs_config() {
 	unset ARCH
 	
 	config+=" --with-headers=/usr/include 
-		      --enable-add-ons=nptl,libidn 
-		      --enable-kernel=2.6.27 
-		      --with-tls
-		      --with-__thread 
-		      --enable-bind-now 
-		      --without-gd 
-		      --without-cvs 
-		      --disable-profile
-		      --disable-multi-arch "
+		  --enable-add-ons=nptl,libidn 
+		  --enable-kernel=2.6.27 
+		  --with-tls
+		  --with-__thread 
+		  --enable-bind-now 
+		  --without-gd 
+		  --without-cvs 
+		  --disable-profile
+		  --disable-multi-arch "
 	../configure $config
 }
 

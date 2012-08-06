@@ -1,14 +1,14 @@
 #
-# Ylmf OS package build script
+# StartOS package build script
 #
-# Copyright 2005-2012 Ylmf OS
+# Copyright 2012 StartOS
 # Distributed under the terms of the GNU General Public License v2
 #
 
 DESCRIPTION="The Kerberos network authentication system"
 HOMEPAGE="http://web.mit.edu/kerberos/www/"
 LICENSE="custom"
-PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
+PACKAGER="StartOS Developers"
 
 SRC_URI="http://web.mit.edu/kerberos/dist/"$N"/1.10/"$N-$V"-signed.tar"
 CHECKSUM="f9f3b77173f68b268b43e4f9c29bf7c9f3fd1f0e"

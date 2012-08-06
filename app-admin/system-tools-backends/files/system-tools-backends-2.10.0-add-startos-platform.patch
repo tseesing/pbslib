@@ -1,0 +1,38 @@
+--- Utils/Platform.pm	2010-03-25 17:51:55.000000000 +0800
++++ Utils/Platform.pm.new	2010-11-09 16:54:58.768000098 +0800
+@@ -32,6 +32,7 @@
+ # --- System guessing --- #
+ 
+ my $PLATFORM_INFO = {
++  "startos"          => [ "StartOS" ],
+   "debian"          => [ "Debian GNU/Linux" ],
+   "redhat-5.2"      => [ "Red Hat Linux", "5.2", "Apollo" ],
+   "redhat-6.0"      => [ "Red Hat Linux", "6.0", "Hedwig" ],
+@@ -107,6 +108,7 @@
+   # behaves *exactly* like another, just specify it here
+   my %metamap =
+     (
++     "startos" 		=> "debian",
+      "blackpanther-4.0" => "mandrake-9.0",
+      "conectiva-10"     => "conectiva-9",
+      "mandrake-7.1"     => "redhat-6.2",
+@@ -352,6 +354,7 @@
+ 
+   my %platform_checks = (
+     "Linux"   => [[ \&check_lsb ],
++                  [ \&check_file_exists, "/etc/startos-release", "startos" ],
+                   [ \&check_file_exists, "/etc/debian_version", "debian" ],
+                   [ \&check_distro_file, "/etc/SuSE-release", "suse", "VERSION\\s*=\\s*(\\S+)" ],
+                   [ \&check_distro_file, "/etc/blackPanther-release", "blackpanther", "^Linux Black Panther release (\\S+)" ],
+	
+--- Users/Users.pm	2010-03-20 18:43:56.000000000 +0800
++++ Users/Users.pm.new	2010-11-10 10:54:03.533999794 +0800
+@@ -247,6 +247,7 @@
+   'pld-1.0'         => $rh_logindefs_defaults,
+   'fedora-1'        => $rh_logindefs_defaults,
+   'debian'          => $rh_logindefs_defaults,
++  'startos'          => $rh_logindefs_defaults,
+   'vine-3.0'        => $rh_logindefs_defaults,
+   'gentoo'	        => $gentoo_logindefs_defaults,
+   'archlinux'       => $gentoo_logindefs_defaults,
+		  

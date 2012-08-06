@@ -1,14 +1,14 @@
 #
-# Ylmf OS package build script
+# StartOS package build script
 #
-# Copyright 2005-2012 Ylmf OS
+# Copyright 2012 StartOS
 # Distributed under the terms of the GNU General Public License v2
 #
 
 DESCRIPTION="A browser that combines a minimal design with sophisticated technology to make the web faster, safer, and easier."
 HOMEPAGE="http://www.google.com/chrome/"
 LICENSE="custom"
-PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
+PACKAGER="StartOS Developers"
 
 SRC_URI="https://dl.google.com/linux/direct/"$N"-stable_current_i386.deb"
 CHECKSUM="62ceb62342393e3aa79f8c5c4aed5373"
@@ -25,7 +25,7 @@ pbs_unpack() {
 }
 
 pbs_install() {
-	dopatch ylmfos-desktop-13.patch
+	dopatch desktop-13.patch
 	docp data/*  "$destdir"
 	cd "$destdir"
 	dodesktop "opt/google/chrome/google-chrome.desktop" "opt/google/chrome/product_logo_48.png"

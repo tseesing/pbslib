@@ -1,14 +1,14 @@
 #
-# Ylmf OS package build script
+# StartOS package build script
 #
-# Copyright 2005-2012 Ylmf OS
+# Copyright 2012 StartOS
 # Distributed under the terms of the GNU General Public License v2
 #
 
 DESCRIPTION="Modern file manager for Xfce"
 HOMEPAGE="http://thunar.xfce.org"
 LICENSE="GPL/LGPL"
-PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
+PACKAGER="StartOS Developers"
 
 SRC_URI="http://archive.xfce.org/xfce/4.10/src/Thunar-"$V".tar.bz2"
 CHECKSUM="104b25b38130e008df2116e83e6ab20cd33e4561"

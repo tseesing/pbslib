@@ -1,14 +1,14 @@
 #
-# Ylmf OS package build script
+# StartOS package build script
 #
-# Copyright 2005-2012 Ylmf OS
+# Copyright 2012 StartOS
 # Distributed under the terms of the GNU General Public License v2
 #
 
 DESCRIPTION="Python Bindings for Alsa lib"
 HOMEPAGE="http://alsa-project.org/"
 LICENSE="GPL"
-PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
+PACKAGER="StartOS Developers"
 
 SRC_URI="ftp://ftp.alsa-project.org/pub/"$N"/"$N-$V".tar.bz2"
 CHECKSUM="063efe545883f8b89005025460222ee3"

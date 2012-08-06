@@ -1,14 +1,14 @@
 #
-# Ylmf OS package build script
+# StartOS package build script
 #
-# Copyright 2005-2012 Ylmf OS
+# Copyright 2012 StartOS
 # Distributed under the terms of the GNU General Public License v2
 #
 
 DESCRIPTION="A Homebrew PVR project"
 HOMEPAGE="http://www.mythtv.org/"
 LICENSE="GPL"
-PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
+PACKAGER="StartOS Developers"
 
 SRC_URI="ftp://ftp.osuosl.org/pub/"$N"/"$N-$V".tar.bz2"
 CHECKSUM="e49c81de40e279c83dcb1b2aa9a45748"

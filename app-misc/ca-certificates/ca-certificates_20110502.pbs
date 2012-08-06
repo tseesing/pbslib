@@ -1,14 +1,14 @@
 #
-# Ylmf OS package build script
+# StartOS package build script
 #
-# Copyright 2005-2012 Ylmf OS
+# Copyright 2012 StartOS
 # Distributed under the terms of the GNU General Public License v2
 #
 
 DESCRIPTION="Common CA certificates"
 HOMEPAGE="http://packages.debian.org/sid/ca-certificates"
 LICENSE="GPL MPL"
-PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
+PACKAGER="StartOS Developers"
 YARCH="any"
 
 SRC_URI="http://ftp.debian.org/debian/pool/main/c/"$N"/"${N}_$V"+nmu1.tar.gz"

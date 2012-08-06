@@ -1,14 +1,14 @@
 #
-# Ylmf OS package build script
+# StartOS package build script
 #
-# Copyright 2005-2012 Ylmf OS
+# Copyright 2012 StartOS
 # Distributed under the terms of the GNU General Public License v2
 #
 
 DESCRIPTION="mcelog processes machine checks (in particular memory and CPU hardware errors) on modern x86 Linux systems."
 HOMEPAGE="http://freshmeat.net/projects/mcelog/"
 LICENSE="GPL"
-PACKAGER="Ylmf OS Developers <ylmfos@ylmf.com>"
+PACKAGER="StartOS Developers"
 
 SRC_URI="ftp://ftp.kernel.org/pub/linux/utils/cpu/mce/"$N"-1.0pre3.tar.gz"
 CHECKSUM="b42f2214de6f4feb992556149edc67fa"

@@ -5,7 +5,7 @@
 DESCRIPTION="PIM layer, which provides an asynchronous API to access all kind of PIM data"
 HOMEPAGE="http://pim.kde.org/akonadi/"
 LICENSE="GPL"
-PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
+PACKAGER="StartOS Developers<>"
 
 SRC_URI="http://download.kde.org/stable/$N/src/"$N-$V".tar.bz2"
 

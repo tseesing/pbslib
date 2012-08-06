@@ -1,14 +1,14 @@
 #
-# Ylmf OS package build script
+# StartOS package build script
 #
-# Copyright 2005-2012 Ylmf OS
+# Copyright 2012 StartOS
 # Distributed under the terms of the GNU General Public License v2
 #
 
 DESCRIPTION="Desktop Globe"
 HOMEPAGE="http://kde.org/applications/education/marble/"
 LICENSE="GPL,LGPL,FDL"
-PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
+PACKAGER="StartOS Developers<>"
 
 SRC_URI="http://download.kde.org/stable/"$V"/src/"marble-$V".tar.xz"
 CHECKSUM="ec3cd41a1d333e9e3b34595adf6e4859315159b9"

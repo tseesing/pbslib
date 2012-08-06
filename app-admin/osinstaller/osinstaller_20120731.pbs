@@ -1,0 +1,42 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="StartOS installer in livecd"
+HOMEPAGE="http://www.startos.com"
+LICENSE="GPL"
+PACKAGER="StartOS Developers"
+
+SRC_URI="git://192.168.1.11/"$N".git"
+
+RDEPEND="pyparted(>=3.8) squashfs-tools atk cairo enchant expat fontconfig freetype gail gcc-lib gdk-pixbuf glib2 glibc gnutls gst-plugins-base gstreamer gtk+ icu libgcrypt libgpg-error libICE libjpeg-turbo libpng libSM libsoup libtasn1 libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libxml2 libXrandr libXrender libxslt libXt pango pixman python sqlite util-linux-ng webkitgtk zlib"
+BDEPEND=""
+RECOMMENDED="pywebkitgtk dosfstools jfsutils e2fsprogs reiserfsprogs xfsprogs"
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_config() {
+	git checkout osinstaller2
+	git pull
+	doconfig
+}
+
+pbs_build() {
+	domake
+}
+
+pbs_install() {
+	domkinstall
+	cd "$destdir"
+	docp "$filesdir"/installbg.png  usr/share/"$N"/
+	docp "$filesdir"/"$N" etc/init.d
+	dounit "$N".service
+	docp "$filesdir"/preconfig  etc/"$N"/
+}
+
+

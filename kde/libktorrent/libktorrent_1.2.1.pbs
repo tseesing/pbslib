@@ -1,14 +1,14 @@
 #
-# Ylmf OS package build script
+# StartOS package build script
 #
-# Copyright 2005-2012 Ylmf OS
+# Copyright 2012 StartOS
 # Distributed under the terms of the GNU General Public License v2
 #
 
 DESCRIPTION="A BitTorrent protocol implementation"
 HOMEPAGE="http://ktorrent.org"
 LICENSE="GPL"
-PACKAGER="Ylmf OS Developers <ylmfos@115.com>"
+PACKAGER="StartOS Developers<>"
 
 SRC_URI="http://ktorrent.org/downloads/4.2.1/"$N-$V"-2.tar.bz2"
 CHECKSUM="857e4227c4bba685755d66581d881f893f6311ae"
