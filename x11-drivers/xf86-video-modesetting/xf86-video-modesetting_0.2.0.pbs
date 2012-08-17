@@ -9,6 +9,7 @@ DESCRIPTION="xorg video modesetting"
 HOMEPAGE="http://xorg.freedesktop.org/"
 LICENSE="custom"
 PACKAGER="StartOS Developers"
+GROUP="x11-drivers"
 
 SRC_URI="http://xorg.freedesktop.org/archive/individual/driver/"$N-$V".tar.bz2"
 CHECKSUM="6a5e7ecfd8572ee1e5d9509ee3aa9d5a"

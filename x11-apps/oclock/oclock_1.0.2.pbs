@@ -7,6 +7,7 @@
 
 DESCRIPTION="round X clock"
 HOMEPAGE="http://xorg.freedesktop.org/"
+GROUP="x11-apps"
  
 SRC_URI="http://xorg.freedesktop.org/releases/individual/app/$N-$V$R.tar.bz2"
 

@@ -1,0 +1,40 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="USB enumeration utilities"
+HOMEPAGE="http://linux-usb.sourceforge.net/"
+LICENSE="GPL"
+PACKAGER="StartOS Developers"
+
+SRC_URI="http://downloads.sourceforge.net/linux-usb/"$N-$V".tar.gz"
+
+RDEPEND="glibc libusb-compat libusbx"
+BDEPEND=""
+
+INSTALL="$N.install"
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_config() {
+	config+="--disable-zlib"
+	doconfig
+}
+
+pbs_build() {
+	domake
+}
+
+pbs_install() {
+	domkinstall
+
+	# Rename tools
+	cd "$destdir"
+	domv_rename usr/sbin/update-usbids.sh usr/sbin/update-usbids
+}
+

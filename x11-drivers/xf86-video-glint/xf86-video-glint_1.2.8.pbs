@@ -9,6 +9,7 @@ DESCRIPTION="GLINT/Permedia video driver"
 HOMEPAGE="http://xorg.freedesktop.org/"
 LICENSE="custom"
 PACKAGER="StartOS Developers"
+GROUP="x11-drivers"
 
 SRC_URI="http://xorg.freedesktop.org/archive/individual/driver/"$N-$V".tar.bz2"
 CHECKSUM="657f883bb3a4e4278399eba73840862c3642706ae8b0a4798ec97a31b3524221"

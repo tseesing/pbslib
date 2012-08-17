@@ -9,6 +9,7 @@ DESCRIPTION="null input driver"
 HOMEPAGE="http://xorg.freedesktop.org/"
 LICENSE="custom"
 PACKAGER="StartOS Developers"
+GROUP="x11-drivers"
 
 SRC_URI="http://xorg.freedesktop.org/archive/individual/driver/"$N-$V".tar.bz2"
 CHECKSUM="93821f21e807260b05431c62437a8b32"

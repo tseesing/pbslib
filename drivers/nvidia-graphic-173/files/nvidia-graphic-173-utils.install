@@ -32,8 +32,8 @@ restore() {
 }
 
 pre_install() {
-	if lspci |grep VGA |grep -w nVidia; then
-		if lspci |grep VGA |grep -w "Intel"; then
+	if lspci |grep VGA |grep -w -i nvidia; then
+		if lspci |grep VGA |grep -w -i "intel"; then
 			echo "* Error: nVidia and Intel Dual-Video-Cards found!"
 			restore
 			return 1

@@ -5,6 +5,7 @@
 # Distributed under the terms of the GNU General Public License v2
 #
 HOMEPAGE="http://www.x.org/wiki/"
+GROUP="x11-lib"
  
 SRCURL="http://www.x.org/releases/X11R7.5/src/lib"
 SRC_URI="$SRCURL/libXi-1.3.tar.bz2"

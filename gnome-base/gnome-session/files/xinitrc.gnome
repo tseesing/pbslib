@@ -17,6 +17,16 @@ usermodmap=$HOME/.Xmodmap
 sysresources=/etc/X11/Xresources
 sysmodmap=/etc/X11/Xmodmap
 
+# dmrc
+DMRC=$HOME/.dmrc
+if [ -r "$DMRC" ]; then
+	. "$DMRC" 2>/dev/null
+	if [ "x$Language" != "x" ]; then
+		LANG=${Language%.*}.UTF-8
+		export LANG
+	fi
+fi
+
 # default session settings
 GNOME_SESSION_SETTINGS=""
 

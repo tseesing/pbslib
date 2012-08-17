@@ -9,6 +9,7 @@ DESCRIPTION="3Dfx video driver"
 HOMEPAGE="http://xorg.freedesktop.org/"
 LICENSE="custom"
 PACKAGER="StartOS Developers"
+GROUP="x11-drivers"
 
 SRC_URI="http://xorg.freedesktop.org/archive/individual/driver/"$N-$V".tar.bz2"
 CHECKSUM="890d6c96c12e91e22b4ceaa9ef93b442"

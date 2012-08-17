@@ -9,6 +9,7 @@ DESCRIPTION="Alliance ProMotion video driver"
 HOMEPAGE="http://xorg.freedesktop.org/"
 LICENSE="custom"
 PACKAGER="StartOS Developers"
+GROUP="x11-drivers"
 
 SRC_URI="http://www.x.org/releases/X11R7.6/src/driver/"$N-$V".tar.bz2"
 CHECKSUM="a4cdb587f94c0fd28bea92b2469ea1e55d6d6589"

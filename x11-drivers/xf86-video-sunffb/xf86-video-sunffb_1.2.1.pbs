@@ -9,6 +9,7 @@ DESCRIPTION="SUNFFB video driver"
 HOMEPAGE="http://xorg.freedesktop.org/"
 LICENSE="GPL"
 PACKAGER="StartOS Developers"
+GROUP="x11-drivers"
 
 SRC_URI="http://www.x.org/releases/X11R7.6/src/driver/"$N-$V".tar.bz2"
 

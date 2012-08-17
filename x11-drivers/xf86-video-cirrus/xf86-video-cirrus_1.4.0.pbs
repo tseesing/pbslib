@@ -9,6 +9,7 @@ DESCRIPTION="Cirrus Logic video driver"
 HOMEPAGE="http://xorg.freedesktop.org/"
 LICENSE="custom"
 PACKAGER="StartOS Developers"
+GROUP="x11-drivers"
 
 SRC_URI="http://xorg.freedesktop.org/archive/individual/driver/"$N-$V".tar.bz2"
 CHECKSUM="1e449789da866f974dbf6cbe3c8cc7bf"

@@ -9,6 +9,7 @@ DESCRIPTION="SiS USB video driver"
 HOMEPAGE="http://xorg.freedesktop.org/"
 LICENSE="custom"
 PACKAGER="StartOS Developers"
+GROUP="x11-drivers"
 
 SRC_URI="http://xorg.freedesktop.org/archive/individual/driver/"$N-$V".tar.bz2"
 CHECKSUM="acb96457a0f3f5631129841cb4477d61fd2707dd"

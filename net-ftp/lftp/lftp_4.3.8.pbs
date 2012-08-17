@@ -12,6 +12,7 @@ LICENSE="GPL"
 PACKAGER="StartOS Developers"
 
 REPO="testing"
+
 SRC_URI="http://ftp.yars.free.net/pub/source/"$N"/"$N-$V".tar.xz"
 
 RDEPEND="expat gcc-lib glibc gnutls libgcrypt libgpg-error libtasn1 ncurses readline zlib"

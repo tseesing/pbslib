@@ -1,6 +1,6 @@
 . /usr/lib/ybs/funcs
 
-files="gnupg1.info"
+files="gnupg.info.gz gnupg.info-2.gz gnupg.info-1.gz"
 
 post_install() {
 	doinstall_info $files

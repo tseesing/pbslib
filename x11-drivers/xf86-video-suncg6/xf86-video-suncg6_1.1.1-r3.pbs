@@ -9,6 +9,7 @@ DESCRIPTION="GX/Turbo GX video driver"
 HOMEPAGE="http://xorg.freedesktop.org/"
 LICENSE="custom"
 PACKAGER="StartOS Developers"
+GROUP="x11-drivers"
 
 SRC_URI="http://xorg.freedesktop.org/archive/individual/driver/"$N-$V".tar.bz2"
 CHECKSUM="bc9904a9129aaf73408568ae1e2fa65f"

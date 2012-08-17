@@ -9,6 +9,7 @@ DESCRIPTION="Number 9 I128 video driver"
 HOMEPAGE="http://xorg.freedesktop.org/"
 LICENSE="custom"
 PACKAGER="StartOS Developers"
+GROUP="x11-drivers"
 
 SRC_URI="http://xorg.freedesktop.org/archive/individual/driver/"$N-$V".tar.bz2"
 CHECKSUM="392c4ffd3c752af6f92e71e1efd68c66"

@@ -9,6 +9,7 @@ DESCRIPTION="Keyboard input driver"
 HOMEPAGE="http://xorg.freedesktop.org/"
 LICENSE="custom"
 PACKAGER="StartOS Developers"
+GROUP="x11-drivers"
 
 SRC_URI="http://xorg.freedesktop.org/archive/individual/driver/"$N-$V".tar.bz2"
 CHECKSUM="09744e8dc9a1fe5e61927c1073cd3428"

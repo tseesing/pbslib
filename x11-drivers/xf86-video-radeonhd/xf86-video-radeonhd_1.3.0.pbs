@@ -9,6 +9,7 @@ DESCRIPTION="An X.org video driver for codenamed R500-R700 graphics devices. It 
 HOMEPAGE="http://wiki.x.org/wiki/radeonhd"
 LICENSE="GPL"
 PACKAGER="StartOS Developers"
+GROUP="x11-drivers"
 
 SRC_URI="http://cgit.freedesktop.org/xorg/driver/"$N"/snapshot/"$N-$V".tar.bz2"
 

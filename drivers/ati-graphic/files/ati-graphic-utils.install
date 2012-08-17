@@ -28,8 +28,8 @@ restore() {
 
 pre_install() {
 	# Dual graphic cards
-	if lspci |grep VGA |grep -w "ATI"; then
-		if lspci |grep VGA |grep -w "Intel"; then
+	if lspci |grep VGA |grep -w -i "ati"; then
+		if lspci |grep VGA |grep -w -i "intel"; then
 			echo "* Error: ATI and Intel Dual-Video-Cards found!"
 			echo "* You MUSE select discrete grahpic at BIOS and reinstall manually."
 			restore

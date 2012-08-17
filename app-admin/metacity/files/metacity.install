@@ -6,12 +6,11 @@ post_install() {
 	gnome2_install_schema $files
         gnome2_install_defaut_gconf  "int"     "/apps/metacity/general/num_workspaces" "4"
         gnome2_install_defaut_gconf  "string"  "/apps/metacity/global_keybindings/switch_windows_backward" "<Shift><Alt>Tab"
-        gnome2_install_defaut_gconf  "string"  "/apps/metacity/global_keybindings/run_command_terminal"    "<Control><Alt>t"
+        gnome2_install_defaut_gconf  "string"  "/apps/metacity/global_keybindings/show_desktop" "<Alt>d"
+        gnome2_install_defaut_gconf  "string"  "/apps/metacity/global_keybindings/run_command_terminal" "<Alt>t"
         gnome2_install_defaut_gconf  "string"  "/apps/metacity/general/titlebar_font"   "Ubuntu Medium 10"
         #gnome2_install_defaut_gconf "string"  "/apps/metacity/general/titlebar_font"   "WenQuanYi Micro Hei Bold 10"
         gnome2_install_defaut_gconf  "bool"    "/apps/metacity/general/compositing_manager"   "true"
-        gnome2_install_defaut_gconf  "string"  "/apps/metacity/global_keybindings/show_desktop" "<Alt>d"
-        gnome2_install_defaut_gconf  "string"  "/apps/metacity/global_keybindings/run_command_terminal" "<Alt>t"
 	gnome2_install_defaut_gconf "string" "/apps/metacity/general/button_layout" ":minimize,maximize,close"
         gnome2_rarian_sk_update
         gnome2_desktop_database_update

@@ -1,0 +1,58 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="Mozilla Runtime Environment"
+HOMEPAGE="http://wiki.mozilla.org/XUL:Xul_Runner"
+LICENSE="MPL,GPL,LGPL"
+PACKAGER="StartOS Developers"
+
+SRC_URI="https://ftp.mozilla.org/pub/mozilla.org/firefox/releases/"$V"/source/firefox-"$V".source.tar.bz2"
+CHECKSUM="c2f884f0f6c41c65cf20f678a1ee7191"
+
+RDEPEND="alsa-lib atk bzip2 cairo dbus dbus-glib expat fontconfig freetype gcc-lib gdk-pixbuf glib2 glibc gtk+ hunspell libevent libffi libICE libjpeg-turbo libnotify libpng libSM libvpx libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libXinerama libXrandr libXrender libXt nspr nss pango pixman sqlite startup-notification util-linux-ng xcb-util zlib"
+BDEPEND=""
+RECOMMENDED=""
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_patch() {
+	# Fix libdir/sdkdir from Fedora
+	dopatch mozilla-pkgconfig-14.patch
+	dopatch shared-libs.patch
+	dopatch dir-of-run-mozilla-sh.patch
+}
+
+pbs_config() {
+	cp "$filesdir"/mozconfig .mozconfig
+}
+
+pbs_build() {
+	export LDFLAGS="$LDFLAGS -Wl,-rpath,/usr/lib/xulrunner-$V"
+	export MOZ_MAKE_FLAGS="$MAKEOPTS"
+	unset MAKEOPTS
+	domake -f client.mk build
+}
+
+pbs_install() {
+	domkinstall -f client.mk 
+	
+	cd "$destdir"
+	
+	# Add xulrunner library path to ld.so.conf
+	install -d etc/ld.so.conf.d
+	echo /usr/lib/xulrunner-"$V" >etc/ld.so.conf.d/xulrunner.conf
+	
+	chmod +x usr/lib/xulrunner-devel-"$V"/sdk/bin/xpt.py
+
+	# Use system-provided dictionaries
+	# rm -rf usr/lib/xulrunner-$V/{dictionaries,hyphenation}
+	# ln -sf /usr/share/hunspell lib/xulrunner-$V/dictionaries"
+	# ln -sf /usr/share/hyphen usr/lib/xulrunner-$V/hyphenation"
+}
+

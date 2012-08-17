@@ -1,10 +1,14 @@
 . /usr/lib/ybs/funcs
 
+#
+# args: $N $V
 pre_install() {
 	dogroupadd -r "apache"
 	douseradd -c "Apache Server" -d "/dev/null" -s "/bin/false" -r -N "apache"
 }
 
+#
+# args: $N $V
 post_install() {
 	ykms install $1 $2
 	gnome2_install_schema "$1"
@@ -22,22 +26,30 @@ post_install() {
 	doinstall_info wget.info.gz 
 }
 
+#
+# args: $N $V
 pre_remove() {
 	mate_uninstall_schema
 	gnome2_uninstall_mine
 	doremove_info wget.info.gz
 }
 
+#
+# args: $N $V
 post_remove() {
 	ykms remove $1 $2
 	douserdel -r "apache"
 	dogroupdel "apache"
 }
 
+#
+# args: $N $V $V_installed
 post_upgrade() {
 	:
 }
 
+#
+# args: $N $V $V_installed
 post_downgrade() {
 	:
 }

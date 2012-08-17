@@ -9,11 +9,6 @@ post_install() {
 	# License
 	echo '* By using this package you accept the NVIDIA license,'
 	echo '* If you do not accept this license, you must remove the package immediately.'
-	echo 
-	echo "* Please install nvidia-graphic-utils further."
-	echo 
-
-	return 0
 }
 
 post_remove() {

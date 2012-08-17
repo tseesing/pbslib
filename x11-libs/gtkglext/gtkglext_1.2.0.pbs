@@ -7,8 +7,7 @@
 
 DESCRIPTION="GL extensions for Gtk+ 2.0"
 HOMEPAGE="http://gtkglext.sourceforge.net/"
-REPO=""
-LICENSE=""
+LICENSE="GPL"
 PACKAGER="StartOS Developers"
 
 SRC_URI="http://downloads.sourceforge.net/project/"$N"/"$N"/"$V"/"$N-$V$R".tar.gz"

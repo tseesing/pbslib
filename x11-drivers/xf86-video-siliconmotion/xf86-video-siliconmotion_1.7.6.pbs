@@ -9,6 +9,7 @@ DESCRIPTION="Silicon Motion video driver"
 HOMEPAGE="http://xorg.freedesktop.org/"
 LICENSE="custom"
 PACKAGER="StartOS Developers"
+GROUP="x11-drivers"
 
 SRC_URI="http://xorg.freedesktop.org/archive/individual/driver/"$N-$V".tar.bz2"
 CHECKSUM="b5acd392d799e2bb67ea702a83feb4a0"

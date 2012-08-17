@@ -1,0 +1,49 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="A distributed C, C++, Obj C compiler"
+HOMEPAGE="http://code.google.com/p/distcc"
+LICENSE="GPL"
+PACKAGER="StartOS Developers"
+
+SRC_URI="http://distcc.googlecode.com/files/"$N-$V".tar.bz2"
+CHECKSUM="a1a9d3853df7133669fffec2a9aab9f3"
+
+RDEPEND="avahi dbus gcc-lib glibc popt python"
+RECOMMENDED=""
+BDEPEND=""
+OPTIONAL=""
+CONFLICT=""
+REPLACE=""
+
+INSTALL="$N.install"
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_config() {
+	config+=""
+	doconfig
+}
+
+pbs_build() {
+	domake WERROR_CFLAGS=
+}
+
+pbs_install() {
+	domkinstall
+	cd "$destdir"
+	for i in cc gcc g++ c++ cpp; do
+		doln /usr/bin/"$N" usr/lib/"$N"/bin/"$i"
+	done
+	rm etc/default/distcc
+	dounit "$N"d.service
+	docp "$filesdir"/distcc.conf.sample usr/share/"$N"/
+	docp "$filesdir"/distccd-wrapper usr/sbin/
+}
+

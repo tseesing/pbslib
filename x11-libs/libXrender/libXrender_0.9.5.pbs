@@ -7,6 +7,7 @@
 
 DESCRIPTION="X.Org Xrender library"
 HOMEPAGE="http://xorg.freedesktop.org"
+GROUP="x11-lib"
  
 SRCURL="http://www.x.org/releases/X11R7.5/src/lib"
 SRC_URI="$SRCURL/libXrender-0.9.5.tar.bz2"

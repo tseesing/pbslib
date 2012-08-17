@@ -1,5 +1,7 @@
 . /usr/lib/ybs/funcs
 
+_shares="/var/lib/samba/usershares"
+
 post_install() {
 	dogroupadd -r "nobody" -g 65534
 	douseradd -c "nobody users" -d "/dev/null" -s "/bin/false" -r -N "nobody"
@@ -11,8 +13,13 @@ post_install() {
 		systemctl enable ${i}
 	done
 
-	#
-	install -d -m 1770 -g sambashare /var/lib/samba/usershares
+	# For user shares
+	if [ -d "$_shares" ]; then
+		chmod 1770 "$_shares"
+		chown root:sambashare "$_shares"
+	else
+		install -d -m 1770 -g sambashare /var/lib/samba/usershares
+	fi
 
 	return 0
 }       
@@ -32,17 +39,12 @@ post_remove() {
 	dogroupdel "users"
 	dogroupdel "sambashare"  
 
-	return 0
+	rm -rf "$_shares" 2>/dev/null  || return 0
 }
 
 post_upgrade() {
-	# Systemd unit
 	systemctl --system daemon-reload
-	
-	# Systemd unit
-	for i in winbind.service smbd.service nmbd.service; do
-		systemctl enable ${i}
-	done
+	post_install
 
 	return 0
 }

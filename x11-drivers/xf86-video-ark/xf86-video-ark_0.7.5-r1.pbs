@@ -9,6 +9,7 @@ DESCRIPTION="X.Org driver for Ark Logic cards "
 HOMEPAGE="http://xorg.freedesktop.org/"
 LICENSE="custom"
 PACKAGER="StartOS Developers"
+GROUP="x11-drivers"
 
 SRC_URI="http://xorg.freedesktop.org/archive/individual/driver/"$N-$V".tar.bz2"
 CHECKSUM="c690e046f34a393aac1c8d9616b4790e93cda60a460b00b9597d322175dbe51e"

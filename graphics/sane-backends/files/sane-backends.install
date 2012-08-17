@@ -1,0 +1,20 @@
+. /usr/lib/ybs/funcs
+
+group="scanner"
+
+post_install() {
+	dogroupadd -r "$group"
+}
+
+post_remove() {
+	dogroupdel "$group"
+}
+
+post_upgrade() {
+	post_install
+}
+
+post_downgrade() {
+	post_install
+}
+

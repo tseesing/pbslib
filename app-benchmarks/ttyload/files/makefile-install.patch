@@ -1,0 +1,21 @@
+--- Makefile	2011-02-14 07:49:25.000000000 +0000
++++ Makefile.new	2012-08-14 14:25:47.902205896 +0000
+@@ -4,7 +4,7 @@
+ 
+ # change this if you want to use 'make install' and have it go
+ # somewhere else:
+-INSTALLDIR	= /usr/local/bin
++DESTDIR	= 
+ 
+ ARCH	= `uname -s | sed -e 's/ /-/g'`
+ LDFLAGS	= `./ldflags`
+@@ -82,7 +82,8 @@
+ 
+ # install, gently.  not much to it:
+ install:	$(PROGRAMS)
+-	/bin/cp ttyload ${INSTALLDIR}/ttyload
++	mkdir -p ${DESTDIR}/usr/bin/
++	/bin/cp ttyload ${DESTDIR}/usr/bin/ttyload
+ 
+ # because different systems' make have different behaviors on how they
+ # deal with building stuff in subdirectories, and because I don't feel

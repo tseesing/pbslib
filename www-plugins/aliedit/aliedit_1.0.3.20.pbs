@@ -28,7 +28,9 @@ NOTES="Author: Longda Feng
        zhongyan.feng@alipay.com"
 
 pbs_unpack() {
-        dounpack
+	rm "$N-$V$R" -rf 2>/dev/null
+	mkdir -p "$N-$V$R"
+	tar xf "$YPPATH_SOURCE"/aliedit32.tar.bz2 -C "$N-$V$R"
 }
 
 pbs_install() {

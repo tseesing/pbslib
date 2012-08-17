@@ -7,6 +7,7 @@
 
 DESCRIPTION="X.Org cursor themes: whiteglass, redglass and handhelds"
 HOMEPAGE="http://xorg.freedesktop.org/"
+GROUP="x11-data"
  
 SRC_URI="http://xorg.freedesktop.org/releases/individual/data/$N-$V$R.tar.bz2"
 

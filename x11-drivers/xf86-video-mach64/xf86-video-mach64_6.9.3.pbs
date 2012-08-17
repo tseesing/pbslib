@@ -9,6 +9,7 @@ DESCRIPTION="ATI Mach64 video driver"
 HOMEPAGE="http://xorg.freedesktop.org/"
 LICENSE="custom"
 PACKAGER="StartOS Developers"
+GROUP="x11-drivers"
 
 SRC_URI="http://xorg.freedesktop.org/archive/individual/driver/"$N-$V".tar.bz2"
 CHECKSUM="5473d0e7dfd7bcff3f759e9e6bd6794ab464958f2f647d9b6d3edf3c66c53218"

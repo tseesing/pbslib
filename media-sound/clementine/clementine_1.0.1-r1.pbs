@@ -1,0 +1,49 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="A modern music player and library organizer based on Amarok 1.4 and Qt4"
+COMMENTS="Clementine is a multiplatform music player. It is inspired by Amarok 1.4, focusing on a fast and easy-to-use interface for searching and playing your music."
+HOMEPAGE="http://code.google.com/p/clementine-player/"
+LICENSE="GPLv3"
+PACKAGER="StartOS Developers"
+
+SRC_URI="http://clementine-player.googlecode.com/files/"$N-$V".tar.gz"
+CHECKSUM="e05320da689e2fad744fd3e68518bc4103ecf0fd"
+
+RDEPEND="bzip2 chromaprint dbus expat ffmpeg fontconfig freetype gcc-lib gdk-pixbuf glew glib2 glibc gnutls gst-plugins-base gstreamer lame libcdio libdrm libdrm-old libffi libgcrypt libgpg-error libgpod libgsm libICE libimobiledevice libmtp libogg libplist libpng libSM libtasn1 libtheora libusb-compat libusbx libva libvorbis libX11 libXau libxcb libXdamage libXdmcp libXext libXfixes libXi libxml2 libXmu libXrender libXt libXxf86vm mesa opencore-amr openssl orc protobuf qca qjson qt-core schroedinger speex sqlite taglib usbmuxd util-linux-ng x264 xvidcore zlib"
+RECOMMENDED=""
+BDEPEND="cmake"
+CONFLICT=""
+
+OPTIONS="nostrip"
+
+INSTALL="$N.install"
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_patch() {
+	# https://bugs.gentoo.org/401713?id=401713
+	dopatch clementine-fresh-start.patch
+
+	# http://code.google.com/p/clementine-player/issues/detail?id=2752
+	dopatch clementine-fix-albumcoverfetch-crash.patch
+}
+
+pbs_config() {
+	cmake . -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=Release -DENABLE_REMOTE=OFF 
+}
+
+pbs_build() {
+	domake
+}
+
+pbs_install() {
+	domkinstall
+}
+

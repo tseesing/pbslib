@@ -9,6 +9,7 @@ DESCRIPTION="xorg video driver for qxl"
 HOMEPAGE="http://xorg.freedesktop.org/"
 LICENSE="custom"
 PACKAGER="StartOS Developers"
+GROUP="x11-drivers"
 
 SRC_URI="http://xorg.freedesktop.org/archive/individual/driver/"$N-$V".tar.bz2"
 CHECKSUM="c0ee45ce06654b9f2e6ddac478d5fbd6"

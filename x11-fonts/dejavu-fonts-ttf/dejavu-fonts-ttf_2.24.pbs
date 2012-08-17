@@ -7,6 +7,7 @@
 
 DESCRIPTION="DejaVu True Type Font (minimum)."
 HOMEPAGE="http://dejavu.sourceforge.net/"
+GROUP="fonts"
 LICENSE="GPL-2"
 PACKAGER="StartOS Developers"
 SRC_URI="http://downloads.sourceforge.net/project/dejavu/dejavu/2.24/"$N-$V$R".tar.bz2"

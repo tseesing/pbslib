@@ -21,6 +21,11 @@ OPTIONS="nostrip" # for backtraces, such as: valgrind will not work if glibc doe
 
 INSTALL="$N-$V.install"
 
+NOTES="
+1、linux-api-headers->glibc->binutils->gcc->binutils->glibc 
+2、valgrind requires rebuilt with each major glibc version
+"
+
 pbs_unpack() {
         dounpack
 }

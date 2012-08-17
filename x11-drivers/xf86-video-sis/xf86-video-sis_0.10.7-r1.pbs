@@ -9,6 +9,7 @@ DESCRIPTION="SiS and XGI video driver"
 HOMEPAGE="http://xorg.freedesktop.org/"
 LICENSE="custom"
 PACKAGER="StartOS Developers"
+GROUP="x11-drivers"
 
 SRC_URI="http://xorg.freedesktop.org/archive/individual/driver/"$N-$V".tar.bz2"
 CHECKSUM="8f8cd88fe7d3a85f6bf2b12a34fd55db35f186d7"

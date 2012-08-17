@@ -7,6 +7,7 @@
 
 DESCRIPTION="The libwnck package contains a Window Navigator Construction Kit."
 HOMEPAGE="http://www.gnome.org/"
+GROUP="x11-lib"
 LICENSE="GPL-2"
 PACKAGER="StartOS Developers"
 SRC_URI="ftp://ftp.gnome.org/pub/gnome/sources/$N/2.28/"$N-$V$R".tar.bz2"

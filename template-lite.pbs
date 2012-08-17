@@ -11,6 +11,7 @@ HOMEPAGE=""
 LICENSE="GPLv2+"
 #PRIORITY="required"
 PACKAGER="StartOS Developers"
+GROUP=""
 
 YARCH="any"
 
@@ -26,7 +27,7 @@ OPTIONAL="a: support a
 CONFLICT=""
 REPLACE=""
 
-#OPTIONS="nodev nostrip upx"
+#OPTIONS="nodev nostrip upx nolibtool distcc ccache"
 
 INSTALL="$N.install"
 

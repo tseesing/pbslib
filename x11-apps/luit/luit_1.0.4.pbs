@@ -7,6 +7,7 @@
 
 DESCRIPTION="Locale and ISO 2022 support for Unicode terminals"
 HOMEPAGE="http://xorg.freedesktop.org/"
+GROUP="x11-apps"
  
 SRC_URI="http://xorg.freedesktop.org/releases/individual/app/$N-$V.tar.bz2"
 

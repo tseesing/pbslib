@@ -1,0 +1,53 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="Userspace interface to kernel DRM services."
+HOMEPAGE="http://dri.freedesktop.org/"
+LICENSE="custom"
+PACKAGER="StartOS Developers"
+GROUP="base"
+
+SRC_URI="http://dri.freedesktop.org/"$N"/"$N-$V".tar.bz2"
+CHECKSUM="9765919c28d4a54887576db3680137cc"
+
+RDEPEND="glibc libpciaccess"
+BDEPEND=""
+REPLACE="libdrm-old"
+
+NOTES="libdrm's ABI may have changed without change in library name
+Please rebuild mesa, xorg-server and x11-drivers"
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_patch() {
+	dopatch no-pthread-stubs.patch
+}
+
+pbs_config() {
+	config+=" --enable-udev
+		  --enable-intel 
+		  --enable-radeon
+		  --enable-libkms
+		  --enable-nouveau
+		  --enable-vmwgfx-experimental-api 
+		  --disable-static "
+
+	# libtoolize --force
+	autoreconf --force --install
+	doconfig
+}
+
+pbs_build() {
+	domake
+}
+
+pbs_install() {
+	domkinstall
+}
+

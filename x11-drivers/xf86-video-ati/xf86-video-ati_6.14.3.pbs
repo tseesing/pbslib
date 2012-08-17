@@ -9,6 +9,7 @@ DESCRIPTION="Driver for ATI/AMD Radeon based video chips, everything from Radeon
 HOMEPAGE="http://xorg.freedesktop.org/"
 LICENSE="custom"
 PACKAGER="StartOS Developers"
+GROUP="x11-drivers"
 
 SRC_URI="http://xorg.freedesktop.org/archive/individual/driver/"$N-$V".tar.bz2"
 

@@ -7,6 +7,7 @@
 
 DESCRIPTION="High level XKB library"
 HOMEPAGE="http://www.freedesktop.org/Software/LibXklavier"
+GROUP="x11-lib"
 LICENSE="GPL-2"
 PACKAGER="StartOS Developers"
 SRC_URI="ftp://ftp.gnome.org/pub/gnome/sources/$N/$V/"$N-$V$R".tar.bz2"

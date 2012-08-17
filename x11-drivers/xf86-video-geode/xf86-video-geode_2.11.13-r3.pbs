@@ -9,6 +9,7 @@ DESCRIPTION="AMD Geode GX and LX video driver"
 HOMEPAGE="http://xorg.freedesktop.org/"
 LICENSE="custom"
 PACKAGER="StartOS Developers"
+GROUP="x11-drivers"
 
 SRC_URI="http://xorg.freedesktop.org/archive/individual/driver/"$N-$V".tar.bz2"
 CHECKSUM="0c5a3cac3531aec0eae7f5f6b3212eb4"

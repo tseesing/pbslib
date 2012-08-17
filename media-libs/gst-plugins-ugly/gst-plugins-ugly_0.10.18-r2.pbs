@@ -1,0 +1,36 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="Basepack of plugins for gstreamer"
+HOMEPAGE="http://gstreamer.sourceforge.net"
+LICENSE="GPL"
+PACKAGER="StartOS Developers"
+
+SRC_URI="http://gstreamer.freedesktop.org/src/"$N"/"$N-$V".tar.gz"
+CHECKSUM="3c1873ec8f743ade5064800720f18e69"
+
+RDEPEND="a52dec gcc-lib glib2 glibc gst-plugins-base gstreamer lame libcdio libdvdread libffi libid3tag libmad libmpeg2 libxml2 opencore-amr orc x264 zlib"
+BDEPEND=""
+RECOMMENDED=""
+CONFLICT=""
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_config() {
+	doconfig
+}
+
+pbs_build() {
+	domake
+}
+
+pbs_install() {
+	domkinstall
+}
+

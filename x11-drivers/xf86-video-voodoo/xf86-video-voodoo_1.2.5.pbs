@@ -9,6 +9,7 @@ DESCRIPTION="Voodoo video driver"
 HOMEPAGE="http://xorg.freedesktop.org/"
 LICENSE="custom"
 PACKAGER="StartOS Developers"
+GROUP="x11-drivers"
 
 SRC_URI="http://xorg.freedesktop.org/archive/individual/driver/"$N-$V".tar.bz2"
 CHECKSUM="7316df33814694ad2fb1617bcd92e6e42c3d184f"

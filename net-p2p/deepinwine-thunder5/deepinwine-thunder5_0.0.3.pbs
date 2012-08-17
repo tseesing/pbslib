@@ -6,9 +6,10 @@
 #
 
 DESCRIPTION="A p2sp download client running under wine."
-HOMEPAGE="http://www.linuxdeepin.com/"
+HOMEPAGE="http://www.xunlei.com/"
 LICENSE="custom"
 PACKAGER="StartOS Developers"
+
 REPO="testing"
 
 SRC_URI="http://packages.linuxdeepin.com/deepin/pool/non-free/d/"$N"/"${N}_$V"_all.deb"

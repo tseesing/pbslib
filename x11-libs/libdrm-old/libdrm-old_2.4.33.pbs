@@ -1,0 +1,65 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="Userspace interface to kernel DRM services."
+HOMEPAGE="http://dri.freedesktop.org/"
+LICENSE="custom"
+PACKAGER="StartOS Developers"
+
+SRC_URI="http://dri.freedesktop.org/libdrm/libdrm-"$V".tar.bz2"
+CHECKSUM="eb2a76720af5051b1687328a2240daed"
+
+OPTIONS="nodev nolibtool"
+
+PROVIDE="libdrm-old libdrm-nouveau1"
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_patch() {
+	dopatch no-pthread-stubs.patch
+}
+
+pbs_config() {
+	config+=" --disable-libkms 
+	          --disable-intel
+	          --disable-radeon 
+		  --enable-nouveau-experimental-api "
+
+	# libtoolize --force
+	autoreconf --force --install
+	doconfig
+}
+
+pbs_build() {
+	domake
+}
+
+libdrm-old_install() {
+	DESCRIPTION="Userspace interface to kernel DRM services - used as makedepends for nouveau-dri"
+	
+	RDEPEND="glibc libpciaccess"
+	BDEPEND=""
+	CONFLICT="libdrm"
+
+	domkinstall
+	rm "$destdir"/usr/lib/libdrm_nouveau.so.1*
+}
+
+libdrm-nouveau1_install() {
+	DESCRIPTION="Userspace interface to kernel DRM services for nouveau - used as depends for nouveau-dri"
+
+	RDEPEND="libdrm"
+	
+	make DESTDIR="$destdir" install-libdrm_laLTLIBRARIES
+	make -C nouveau DESTDIR="$destdir" install
+	make DESTDIR="$destdir" uninstall-libdrm_laLTLIBRARIES
+	cd "$destdir"
+	rm -rf usr/include/ usr/lib/pkgconfig/libdrm_nouveau.pc  usr/lib/libdrm_nouveau.so
+}
+

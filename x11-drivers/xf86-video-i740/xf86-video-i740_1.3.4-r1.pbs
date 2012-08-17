@@ -9,6 +9,7 @@ DESCRIPTION="Intel i740 video driver"
 HOMEPAGE="http://xorg.freedesktop.org/"
 LICENSE="custom"
 PACKAGER="StartOS Developers"
+GROUP="x11-drivers"
 
 SRC_URI="http://xorg.freedesktop.org/archive/individual/driver/"$N-$V".tar.bz2"
 CHECKSUM="1a24009bb2223b722fb41e1a2737a6e74bfecb0829e5583e270d267ee4ecca78"

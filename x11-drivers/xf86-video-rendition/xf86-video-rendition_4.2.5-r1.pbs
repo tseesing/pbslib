@@ -9,6 +9,7 @@ DESCRIPTION="Rendition video driver"
 HOMEPAGE="http://xorg.freedesktop.org/"
 LICENSE="custom"
 PACKAGER="StartOS Developers"
+GROUP="x11-drivers"
 
 SRC_URI="http://xorg.freedesktop.org/archive/individual/driver/"$N-$V".tar.bz2"
 CHECKSUM="39b5569338237de6e17b2a2c6be73ac6c405ee596079c41a7028cfd6e54134cb"

@@ -7,6 +7,7 @@
 
 DESCRIPTION="X11 Apps"
 HOMEPAGE="http://www.x.org/wiki/"
+GROUP="x11-apps"
  
 SRCURL="http://www.x.org/releases/X11R7.5/src/app"
 SRC_URI="$SRCURL/xwud-1.0.2.tar.bz2"
