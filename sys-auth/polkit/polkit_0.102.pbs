@@ -10,8 +10,6 @@ HOMEPAGE="http://www.freedesktop.org/wiki/Software/PolicyKit"
 LICENSE="LGPL"
 PACKAGER="StartOS Developers"
 
-REPO="testing"
-
 SRC_URI="http://hal.freedesktop.org/releases/"$N-$V".tar.gz"
 
 RDEPEND="dbus dbus-glib eggdbus expat glib2 glibc pam zlib"

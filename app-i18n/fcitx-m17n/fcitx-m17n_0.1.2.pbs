@@ -9,6 +9,7 @@ DESCRIPTION="The M17N engine IMEngine for fcitx"
 HOMEPAGE="http://code.google.com/p/fcitx/"
 LICENSE="GPL"
 PACKAGER="StartOS Developers"
+GROUP="fcitx"
 
 SRC_URI="http://fcitx.googlecode.com/files/"$N-$V".tar.xz"
 CHECKSUM="98ba1d134085e75c92e5303f0d3a1d132fefe8c4"

@@ -9,6 +9,7 @@ DESCRIPTION="configtool for fcitx"
 HOMEPAGE="http://code.google.com/p/fcitx/"
 LICENSE="GPL"
 PACKAGER="StartOS Developers"
+GROUP="fcitx"
 
 SRC_URI="http://fcitx.googlecode.com/files/"$N-$V".tar.xz"
 CHECKSUM="4f0305fca63b744664c23c2ec83e95bc09972ac0"

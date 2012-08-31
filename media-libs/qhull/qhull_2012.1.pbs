@@ -1,0 +1,38 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="A general dimension code for computing convex hulls and related structures"
+HOMEPAGE="http://www.qhull.org"
+LICENSE="custom"
+PACKAGER="StartOS Developers"
+
+SRC_URI="http://www.qhull.org/download/"$N-$V"-src.tgz"
+
+RDEPEND="glibc"
+RECOMMENDED=""
+BDEPEND="cmake"
+OPTIONAL=""
+CONFLICT=""
+REPLACE=""
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_config() {
+	doconfig 
+}
+
+pbs_build() {
+	domake
+}
+
+pbs_install() {
+	domkinstall
+	dodoc ../COPYING.txt
+}
+

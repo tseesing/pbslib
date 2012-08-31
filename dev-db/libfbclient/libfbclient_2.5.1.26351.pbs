@@ -1,0 +1,62 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="Client library for Firebird."
+HOMEPAGE="http://www.firebirdsql.org"
+LICENSE="custom"
+PACKAGER="StartOS Developers"
+
+SRC_URI="http://downloads.sourceforge.net/firebird/Firebird-"$V"-0.tar.bz2"
+CHECKSUM="1772fba4f09c8fc84d989282405f90fd"
+
+RDEPEND="gcc-lib glibc icu ncurses"
+RECOMMENDED=""
+BDEPEND=""
+OPTIONAL=""
+CONFLICT=""
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_config() {
+	./configure --prefix=/usr \
+		    --with-system-icu \
+		    --without-fbudf \
+		    --without-fbsbin \
+		    --without-fbconf \
+		    --without-fbdoc \
+		    --without-fbsample \
+		    --without-fbsample-db \
+		    --without-fbintl \
+		    --without-fbmisc \
+		    --without-fbhelp \
+		    --without-fbsecure-db \
+		    --with-fbmsg=/usr/share/firebird \
+		    --without-fblog \
+		    --without-fbglock \
+		    --without-fbplugins
+}
+
+pbs_build() {
+	make
+}
+
+pbs_install() {
+	docp -R gen/firebird/{lib,include} "$destdir"/usr
+	docp gen/firebird/*.msg "$destdir"/usr/share/firebird
+        docp gen/firebird/bin/fb_config "$destdir"/usr/bin
+	
+	cd "$destdir"
+	rm -f usr/lib/libedit.a
+
+	# Add libgds support
+	cd usr/lib
+	ln -sf libfbclient.so libgds.so.0
+	ln -sf libfbclient.so libgds.so
+}
+

@@ -10,7 +10,7 @@ Description: Debian does not use pam_console but uses group membership
                  <allow send_destination="fi.epitest.hostap.WPASupplicant"/>
                  <allow send_interface="fi.epitest.hostap.WPASupplicant"/>
          </policy>
-+        <policy group="netdev">
++        <policy group="wheel">
 +                <allow send_destination="fi.epitest.hostap.WPASupplicant"/>
 +                <allow send_interface="fi.epitest.hostap.WPASupplicant"/>
 +        </policy>

@@ -3,31 +3,22 @@
 unit="NetworkManager.service"
 
 post_install() {
-	dogroupadd -r "netdev"
-
-	# Systemd unit
 	systemctl enable $unit
-	start $unit
-	return 0
+	start $unit ||true
 }
 
 post_remove() {
-	dogroupdel "netdev"
 	stop $unit
-	systemctl disable $unit
-	return 0
+	systemctl disable $unit ||true
 }
 
 post_upgrade() {
-	# Systemd unit
 	systemctl --system daemon-reload
 	systemctl enable $unit
-	restart $unit
-	return 0
+	restart $unit ||true
 }
 
 pos_downgrade() {
 	post_upgrade
 }
-
 

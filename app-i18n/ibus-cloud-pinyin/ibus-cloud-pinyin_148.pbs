@@ -10,6 +10,7 @@ HOMEPAGE="http://code.google.com/p/ibus-cloud-pinyin/"
 LICENSE="GPL"
 PRIORITY=""
 PACKAGER="StartOS Developers"
+GROUP="ibus"
 
 # svn checkout http://ibus-cloud-pinyin.googlecode.com/svn/trunk/ ibus-cloud-pinyin
 SRC_URI="ibus-cloud-pinyin-svn-148.tar.bz2"

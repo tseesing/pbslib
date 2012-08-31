@@ -9,6 +9,7 @@ DESCRIPTION="cloudpinyin for fcitx"
 HOMEPAGE="http://code.google.com/p/fcitx/"
 LICENSE="GPL"
 PACKAGER="StartOS Developers"
+GROUP="fcitx"
 
 SRC_URI="http://fcitx.googlecode.com/files/"$N-$V".tar.xz"
 CHECKSUM="b3ef012eae404586a9923e803c677cfecb81ea89"

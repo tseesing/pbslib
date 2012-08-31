@@ -12,16 +12,34 @@ PACKAGER="StartOS Developers"
 
 SRC_URI="http://www.kernel.org/pub/linux/bluetooth/"$N-$V".tar.gz"
 
-RDEPEND="alsa-lib dbus glib2 glibc gst-plugins-base gstreamer libxml2 ncurses readline zlib"
+RDEPEND="alsa-lib dbus glib2 glibc gst-plugins-base gstreamer libffi libusb-compat libusbx libxml2 ncurses readline udev zlib"
 BDEPEND=""
 RECOMMENDED=""
+
+INSTALL="$N.install"
 
 pbs_unpack() {
         dounpack
 }
 
 pbs_config() {
-	doconfig
+	./configure --prefix=/usr \
+	            --sysconfdir=/etc \
+	            --localstatedir=/var \
+		    --libexecdir=/lib \
+		    --enable-gstreamer \
+	            --enable-alsa \
+	            --enable-usb \
+		    --enable-tools \
+		    --enable-bccmd \
+		    --enable-dfutool \
+		    --enable-hid2hci \
+		    --enable-hidd \
+		    --enable-pand \
+		    --enable-dund \
+		    --enable-cups \
+		    --enable-wiimote \
+		    --disable-test 
 }
 
 pbs_build() {
@@ -30,5 +48,14 @@ pbs_build() {
 
 pbs_install() {
 	domkinstall
-}
+	  
+	install -d "$destdir"/etc/bluetooth
+	install -m644 network/network.conf input/input.conf \
+		      audio/audio.conf serial/serial.conf \
+		      "$destdir"/etc/bluetooth/
+  
+	install -Dm755 test/simple-agent "$destdir"/usr/bin/bluez-simple-agent
+	install -Dm755 test/test-device "$destdir"/usr/bin/bluez-test-device
+	install -Dm755 test/test-input "$destdir"/usr/bin/bluez-test-input
+}	
 

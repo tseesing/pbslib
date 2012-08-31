@@ -10,8 +10,6 @@ HOMEPAGE="http://hal.freedesktop.org/docs/PolicyKit"
 LICENSE="LGPL"
 PACKAGER="StartOS Developers"
 
-REPO="testing"
-
 SRC_URI="http://hal.freedesktop.org/releases/"$N-$V".tar.bz2"
 
 RDEPEND="atk cairo dbus dbus-glib eggdbus expat fontconfig freetype gcc-lib gdk-pixbuf glib2 glibc gtk+ libpng libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libXrandr libXrender pango pixman polkit zlib"

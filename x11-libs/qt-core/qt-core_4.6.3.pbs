@@ -8,12 +8,12 @@
 DESCRIPTION="The Qt toolkit is a comprehensive C++ application development framework"
 HOMEPAGE="http://qt.nokia.com/"
 GROUP="x11-lib"
-LICENSE="GPL-2"
+LICENSE="GPL"
 PACKAGER="StartOS Developers"
 
-SRC_URI="ftp://ftp.trolltech.com/qt/source/qt-everywhere-opensource-src-"$V$R".tar.gz"
+SRC_URI="ftp://ftp.trolltech.com/qt/source/qt-everywhere-opensource-src-"$V".tar.gz"
 
-RDEPEND="libpng freetype glib2 gdk-pixbuf libSM libICE libXrender fontconfig libXext libX11 zlib gcc-lib util-linux-ng expat libxcb libXau libXdmcp glibc gcc-lib"
+RDEPEND="alsa-lib expat fontconfig freetype gcc-lib glib2 gdk-pixbuf glibc gst-plugins-base gstreamer lcms libdrm libICE libjpeg-turbo libmng libpng libSM libtiff libX11 libXau libxcb libXdamage libXdmcp libXext libXfixes libxml2 libXrender libXxf86vm mesa udev util-linux-ng zlib"
 BDEPEND=""
 RECOMMENDED=""
 
@@ -23,21 +23,21 @@ pbs_unpack() {
 
 pbs_config() {
 	config=" -prefix         /usr 
-	             -bindir         /usr/bin 
-		     -libdir         /usr/lib/qt4 
-		     -datadir        /usr/share/qt4 
-		     -docdir         /usr/share/doc/qt-$V$R 
-	             -headerdir      /usr/include/qt4 
-		     -plugindir      /usr/lib/qt4/plugins 
-		     -sysconfdir     /etc/qt4 
-		     -translationdir /usr/share/qt4/translations 
-	             -examplesdir    /usr/share/qt4/examples 
-		     -demosdir       /usr/share/qt4/demos 
-		     -nomake         examples 
-		     -nomake         demos 
-		     -qt3support 
-		     -confirm-license 
-		     -largefile"
+                 -bindir         /usr/bin 
+   	         -libdir         /usr/lib
+		 -datadir        /usr/share/qt4 
+		 -docdir         /usr/share/doc/qt-"$V" 
+	         -headerdir      /usr/include/qt4 
+		 -plugindir      /usr/lib/qt4/plugins 
+		 -sysconfdir     /etc/qt4 
+		 -translationdir /usr/share/qt4/translations 
+	         -examplesdir    /usr/share/qt4/examples 
+		 -demosdir       /usr/share/qt4/demos 
+		 -nomake         examples 
+		 -nomake         demos 
+		 -qt3support 
+		 -confirm-license 
+		 -largefile"
 	#yes yes |doconfig
 	#choose o for opensource license
 	yes o |doconfig
@@ -49,6 +49,7 @@ pbs_build() {
 
 pbs_install () {
 	make INSTALL_ROOT="$destdir" install
-	#Sorry, doc is too large
-	rm -rf "$destdir"//usr/share/doc/qt-"$V$R"
+	# Sorry, doc is too large
+	rm -rf "$destdir"/usr/share/doc/qt-"$V"
 }
+

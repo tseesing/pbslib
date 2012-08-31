@@ -13,8 +13,8 @@ PACKAGER="StartOS Developers<>"
 SRC_URI="http://downloads.sourceforge.net/"$N"/"$N-$V".tar.bz2"
 CHECKSUM="273c3403aeb6d8a43e78a4887f50a385"
 
-RDEPEND="berkeley-db curl cyrus-sasl dbus gcc-lib glib2 glibc gmp gnutls jre libgcrypt libgpg-error libidn libiodbc libssh2 libtasn1 libtool libxml2 libxslt mpfr openldap openssl qt-core raptor2 rasqal redland rtmpdump zlib"
-BDEPEND="cmake doxygen"
+RDEPEND="berkeley-db clucene curl cyrus-sasl dbus gcc-lib glib2 glibc gmp gnutls jre libgcrypt libgpg-error libidn libiodbc libssh2 libtasn1 libtool libxml2 libxslt mpfr openldap openssl qt-core raptor2 rasqal redland rtmpdump zlib"
+BDEPEND="cmake doxygen jdk"
 
 pbs_unpack() {
        dounpack
@@ -23,8 +23,7 @@ pbs_unpack() {
 pbs_config() {
 	. /etc/profile.d/jdk.sh
 	doconfig -DCMAKE_BUILD_TYPE=Release \
-		 -DCMAKE_SKIP_RPATH=OFF \
-		 -DSOPRANO_DISABLE_CLUCENE_INDEX=ON
+		 -DCMAKE_SKIP_RPATH=OFF 
 }
 
 pbs_build() {

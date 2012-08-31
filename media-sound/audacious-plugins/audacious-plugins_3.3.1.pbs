@@ -14,7 +14,7 @@ REPO="testing"
 
 SRC_URI="http://distfiles.audacious-media-player.org/"$N-$V".tar.bz2"
 
-RDEPEND="alsa-lib atk attr audacious(=3.2.4) bzip2 cairo curl cyrus-sasl dbus dbus-glib directfb e2fsprogs expat faad2 ffmpeg(>=0.11.1) flac fluidsynth fontconfig freetype gcc-lib gdk-pixbuf glib2 glibc gnutls gtk+ jack-audio-connection-kit json-c keyutils krb5 lame libbinio libcap libcddb libcdio libcue libffi libgcrypt libgpg-error libgsm libICE libidn libmms libmodplug libmtp libnotify libogg libpng libproxy libsamplerate libsdl libSM libsndfile libssh2 libtasn1 libtheora libtool libusb-compat libusbx libva libvorbis libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libXinerama libxml2 libXrandr libXrender libXtst mpg123 ncurses neon opencore-amr openldap openssl orc pango pixman pulseaudio readline rtmpdump schroedinger speex util-linux-ng wavpack x264 xvidcore zlib"
+RDEPEND="audacious(=3.3.1) ffmpeg(>=0.11.1) alsa-lib atk attr bzip2 cairo curl cyrus-sasl dbus dbus-glib directfb e2fsprogs expat faad2 flac fluidsynth fontconfig freetype gcc-lib gdk-pixbuf glib2 glibc gnutls gtk+3 jack-audio-connection-kit json-c keyutils krb5 lame libICE libSM libX11 libXau libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libXinerama libXrandr libXrender libXtst libbinio libcap libcddb libcdio libcue libffi libgcrypt libgpg-error libgsm libidn libmms libmodplug libogg libpng libproxy libsamplerate libsdl libsndfile libssh2 libtasn1 libtheora libtool libva libvorbis libxcb libxml2 lirc mpg123 ncurses neon opencore-amr openldap openssl orc pango pixman pulseaudio readline rtmpdump schroedinger speex util-linux-ng wavpack x264 xvidcore zlib"
 BDEPEND=""
 RECOMMENDED=""
 
@@ -23,7 +23,8 @@ pbs_unpack() {
 }
 
 pbs_config() {
-	config+=""
+	#XXX mpris2 cause compile failed, disable it temporary.
+	config+="--disable-mpris2" 
 	doconfig
 }
 

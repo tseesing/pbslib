@@ -1,0 +1,144 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="non-free ATI/AMD RadeonHD display driver"
+HOMEPAGE="http://support.amd.com/cn/gpudownload/linux/Pages/radeon_linux.aspx"
+LICENSE="custom"
+PACKAGER="StartOS Developers"
+
+SRC_URI="http://www2.ati.com/drivers/linux/amd-driver-installer-12.8-x86.x86_64.zip"
+
+PROVIDE="ati-graphic-source ati-graphic-driver ati-graphic-utils"
+
+pbs_unpack() {
+	unzip -o "$YPPATH_SOURCE"/"$(basename $SRC_URI)"
+	bash amd-driver-installer-8.982-x86.x86_64.run --extract "$N-$V$R"
+}
+
+pbs_patch() {
+        dopatch startos-makefile.patch
+}
+
+ati-graphic-source_install() {
+	DESCRIPTION="Video driver for the ATI graphics accelerators (source)"
+	RECOMMENDED="build-essential ati-graphic-utils"
+	OPTIONS="nodev"
+	YARCH="any"
+   
+	INSTALL="$N.install"
+
+	cp arch/x86/lib/modules/fglrx/build_mod/libfglrx_ip.a common/lib/modules/fglrx/build_mod/
+	cp common/lib/modules/fglrx/build_mod/2.6.x/Makefile  common/lib/modules/fglrx/build_mod/
+	cp common/usr/src/ati/fglrx_sample_source.tgz         common/lib/modules/fglrx/build_mod/
+	dosrc common/lib/modules/fglrx/build_mod/*
+	dosupported "$N"_supported
+}
+
+ati-graphic-driver_install() {
+	DESCRIPTION="Video driver for the ATI graphics accelerators (kernel module)"
+	RDEPEND="linux-kernel(=3.4.6-r2)"
+	GROUP="driver"
+	BDEPEND="linux-kernel-headers"
+	RECOMMENDED="ati-graphic-utils"
+
+	INSTALL="$N.install"
+
+	unset ARCH
+	cd common/lib/modules/fglrx/build_mod/
+	domake
+	domkinstall
+	cd -
+	rm -rf common/lib/
+}
+
+ati-graphic-utils_install () {
+	DESCRIPTION="Video driver for the ATI graphics accelerators (utils)"
+	RDEPEND="ati-graphic-driver xorg-server(>=1.12.2)"
+	OPTIONS="nodev"
+	RECOMMENDED="qt-core"
+
+	INSTALL="$N.install"
+
+	# Dev
+	docp common/usr/include/* "$destdir"/usr/include/
+
+	#
+	docp arch/x86/usr/lib/fglrx/* "$destdir"/usr/lib/fglrx/
+
+	# libGL
+	docp arch/x86/usr/X11R6/lib/fglrx/fglrx-libGL.so.1.2 "$destdir"/usr/lib/fglrx/
+	cd "$destdir"/usr/lib/
+	doln /usr/lib/libGL.so.1 libGL.so
+	doln /usr/lib/libGL.so.1.2 libGL.so.1
+	doln /usr/lib/fglrx/fglrx-libGL.so.1.2 libGL.so.1.2
+	cd - 
+
+	# 
+	docp arch/x86/usr/X11R6/lib/libfglrx_dm.so.1.0 \
+	          arch/x86/usr/X11R6/lib/libfglrx_dm.a "$destdir"/usr/lib/
+	doln /usr/lib/libfglrx_dm.so.1.0 "$destdir"/usr/lib/libfglrx_dm.so.1	  
+
+	# dri
+	docp arch/x86/usr/X11R6/lib/modules/dri/fglrx_dri.so "$destdir"/usr/lib/dri/
+
+	# glx
+	docp xpic/usr/X11R6/lib/modules/extensions/fglrx/fglrx-libglx.so "$destdir"/usr/lib/xorg/modules/extensions/fglrx/
+	cd "$destdir"/usr/lib/xorg/modules/extensions/
+	doln /usr/lib/xorg/modules/extensions/fglrx/fglrx-libglx.so libglx.so
+	cd -
+
+	# glesx
+	docp xpic/usr/X11R6/lib/modules/glesx.so "$destdir"/usr/lib/xorg/modules/
+
+	# amdxmm
+	docp xpic/usr/X11R6/lib/modules/amdxmm.so "$destdir"/usr/lib/xorg/modules/
+
+	# xorg
+	docp xpic/usr/X11R6/lib/modules/drivers/fglrx_drv.so "$destdir"/usr/lib/xorg/modules/drivers/
+	docp xpic/usr/X11R6/lib/modules/linux/libfglrxdrm.so "$destdir"/usr/lib/xorg/modules/linux/
+
+	# bin
+	docp arch/x86/usr/X11R6/bin/{amdcccle,fglrxinfo,atiode,atiodcli,fgl_glxgears,aticonfig} \
+	          arch/x86/usr/sbin/{amdnotifyui,atieventsd} \
+		  common/usr/sbin/atigetsysteminfo.sh \
+		  common/usr/X11R6/bin/{amdxdg-su,amdupdaterandrconfig}  "$destdir"/usr/bin/
+	chmod 755 "$destdir"/usr/bin/*
+
+	# Doc
+	dodoc common/usr/share/doc/*
+
+	# Etc
+	docp common/etc/* "$destdir"/etc/
+	docp common/usr/share/doc/fglrx/examples/etc/acpi/* "$destdir"/etc/acpi/
+	
+	# desktop
+	docp common/usr/share/* "$destdir"/usr/share/
+
+	#
+	docp arch/x86/usr/lib/libaticalcl.so \
+	          arch/x86/usr/lib/libaticaldd.so \
+		  arch/x86/usr/lib/libatiuki.so.1.0 \
+		  arch/x86/usr/lib/libaticalrt.so \
+		  arch/x86/usr/X11R6/lib/libfglrx_dm.a \
+		  arch/x86/usr/X11R6/lib/libAMDXvBA.cap \
+		  arch/x86/usr/X11R6/lib/libAMDXvBA.so.1.0 \
+		  arch/x86/usr/X11R6/lib/libXvBAW.so.1.0 \
+		  arch/x86/usr/X11R6/lib/libatiadlxx.so "$destdir"/usr/lib/
+ 	cd "$destdir"/usr/lib/
+	doln libatiuki.so.1.0 libatiuki.so.1
+	doln libatiuki.so.1 libatiuki.so
+	doln libAMDXvBA.so.1.0 libAMDXvBA.so.1
+	doln libAMDXvBA.so.1 libAMDXvBA.so
+	doln libXvBAW.so.1.0 libXvBAW.so.1
+	doln libXvBAW.so.1 libXvBAW.so
+	cd -
+
+ 	#
+	mkdir -p "$destdir"/usr/share/grub-gfxpayload-lists/blacklist
+	echo "# Blacklist cards here" >"$destdir"/usr/share/grub-gfxpayload-lists/blacklist/02_ati
+}
+

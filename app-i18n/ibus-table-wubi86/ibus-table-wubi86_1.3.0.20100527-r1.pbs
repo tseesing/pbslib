@@ -9,6 +9,7 @@ DESCRIPTION="The Table Engine for IBus Framework"
 HOMEPAGE="http://code.google.com/p/ibus/"
 LICENSE="GPL"
 PACKAGER="StartOS Developers"
+GROUP="ibus"
  
 SRC_URI="http://ibus.googlecode.com/files/ibus-table-chinese-"$V".tar.gz"
 

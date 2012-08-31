@@ -1,0 +1,31 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="Python bindings for Bluez Bluetooth Stack"
+HOMEPAGE="http://code.google.com/p/pybluez/"
+LICENSE="GPL"
+PACKAGER="StartOS Developers"
+
+SRC_URI="http://pybluez.googlecode.com/files/PyBluez-"$V".tar.gz"
+CHECKSUM="be8c8ce615c3189fda1aaf3d568314b2"
+
+RDEPEND="python bluez"
+RECOMMENDED=""
+BDEPEND=""
+OPTIONAL=""
+CONFLICT=""
+REPLACE=""
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_install() {
+	python setup.py install --root="$destdir"
+	ln -s bluetooth/_bluetooth.so "$destdir"/usr/lib/python2.7/site-packages/_bluetooth.so
+}
+

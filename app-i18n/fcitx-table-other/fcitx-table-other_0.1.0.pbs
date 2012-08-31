@@ -9,6 +9,7 @@ DESCRIPTION="table other for fcitx"
 HOMEPAGE="http://code.google.com"
 LICENSE="GPL"
 PACKAGER="StartOS Developers"
+GROUP="fcitx"
 
 SRC_URI="http://fcitx.googlecode.com/files/"$N-$V".tar.xz"
 CHECKSUM="e3deab3d66f87321c1b1e71762e5a529eb2b324b"

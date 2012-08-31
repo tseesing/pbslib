@@ -5,7 +5,6 @@ post_install() {
 	version="$2"
 	depmod -a "$version"
 	update-initramfs -d -c -k "$version"
-
 	# For grub
 	update-grub
 }       
@@ -25,6 +24,10 @@ post_upgrade() {
 	new_ver="$2"
 	old_ver="$3"
 	rm -rf /var/lib/initramfs-tools/"$old_ver" 2>/dev/null
+	#
+	mkdir -p /var/run/ypkg/
+	echo "reboot=yes" >/var/run/ypkg/event
+	#
 	post_install $name $new_ver
 }
 

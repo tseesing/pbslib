@@ -1,0 +1,59 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="Intelligent Input Bus for Linux / Unix OS"
+HOMEPAGE="http://code.google.com/p/ibus/"
+LICENSE="GPL"
+PACKAGER="StartOS developers"
+GROUP="ibus"
+
+SRC_URI="http://ibus.googlecode.com/files/"$N-$V".tar.gz"
+CHECKSUM="a2d11d8bb64761691df918e9e50f0b35c711760d"
+
+RDEPEND="atk bzip2 cairo dbus expat fontconfig freetype gcc-lib gconf gdk-pixbuf glib2 glibc gtk+ libffi libpng libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libXinerama libXrandr libXrender orbit pango pixman zlib"
+BDEPEND="notify-python-dev"
+RECOMMENDED="notify-python"
+
+NOTES="
+To use ibus, you should:
+1. Get input engines from sunrise overlay.
+2. Setup ibus:
+$ ibus-setup
+3. Set the following in your user startup scripts
+such as .xinitrc, .xsession or .xprofile:
+export XMODIFIERS=\"@im=ibus\"
+export GTK_IM_MODULE=\"ibus\"
+export QT_IM_MODULE=\"xim\"
+ibus-daemon -d -x
+"
+
+INSTALL="$N.install"
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_config() {
+	config+=" --enable-maintainer-mode 
+	          --disable-schemas-install
+		  --disable-schemas-compile
+		  --disable-gtk3"
+		  #--with-panel-icon-keyboard=icon_name
+		  #	Set the default panel icon (default:
+		  #	"input-keyboard-symbolic")
+	doconfig
+}
+
+pbs_build() {
+	domake
+}
+
+pbs_install() {
+	domkinstall
+	docp "$filesdir"/ibus.desktop "$destdir"/etc/xdg/autostart/
+}
+

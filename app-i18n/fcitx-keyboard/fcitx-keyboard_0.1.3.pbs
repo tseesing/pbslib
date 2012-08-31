@@ -9,6 +9,7 @@ DESCRIPTION="keyboard for fcitx"
 HOMEPAGE="http://code.google.com/p/fcitx/"
 LICENSE="GPL"
 PACKAGER="StartOS Developers"
+GROUP="fcitx"
 
 SRC_URI="http://fcitx.googlecode.com/files/"$N-$V".tar.xz"
 CHECKSUM="dddbacfd3f5f0a3fcb065321246655ed60488b1e"

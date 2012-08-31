@@ -9,6 +9,7 @@ DESCRIPTION="ui light for fcitx"
 HOMEPAGE="http://code.google.com/p/fcitx/"
 LICENSE="GPL"
 PACKAGER="StartOS Developers"
+GROUP="fcitx"
 
 SRC_URI="http://fcitx.googlecode.com/files/"$N-$V".tar.bz2"
 CHECKSUM="016c980866619019792d775be1fa0c9ca5278994"

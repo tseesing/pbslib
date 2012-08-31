@@ -14,7 +14,7 @@ PACKAGER="StartOS Developers"
 SRC_URI="http://clementine-player.googlecode.com/files/"$N-$V".tar.gz"
 CHECKSUM="e05320da689e2fad744fd3e68518bc4103ecf0fd"
 
-RDEPEND="bzip2 chromaprint dbus expat ffmpeg fontconfig freetype gcc-lib gdk-pixbuf glew glib2 glibc gnutls gst-plugins-base gstreamer lame libcdio libdrm libdrm-old libffi libgcrypt libgpg-error libgpod libgsm libICE libimobiledevice libmtp libogg libplist libpng libSM libtasn1 libtheora libusb-compat libusbx libva libvorbis libX11 libXau libxcb libXdamage libXdmcp libXext libXfixes libXi libxml2 libXmu libXrender libXt libXxf86vm mesa opencore-amr openssl orc protobuf qca qjson qt-core schroedinger speex sqlite taglib usbmuxd util-linux-ng x264 xvidcore zlib"
+RDEPEND="bzip2 chromaprint dbus expat ffmpeg fontconfig freetype gcc-lib gdk-pixbuf glew glib2 glibc gnutls gst-plugins-base gstreamer lame libcdio libdrm libffi libgcrypt libgpg-error libgpod libgsm libICE libimobiledevice libmtp libogg libplist libpng libSM libtasn1 libtheora libusb-compat libusbx libva libvorbis libX11 libXau libxcb libXdamage libXdmcp libXext libXfixes libXi libxml2 libXmu libXrender libXt libXxf86vm mesa opencore-amr openssl orc protobuf qca qjson qt-core schroedinger speex sqlite taglib usbmuxd util-linux-ng x264 xvidcore zlib"
 RECOMMENDED=""
 BDEPEND="cmake"
 CONFLICT=""

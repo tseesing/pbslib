@@ -9,9 +9,9 @@ DESCRIPTION="A graphical effect and filter library for KDE"
 HOMEPAGE="http://www.kde.org"
 LICENSE="GPL"
 PACKAGER="StartOS Developers<>"
+GROUP="kde"
 
 SRC_URI="http://download.kde.org/stable/"$N"/"$N-$V".tar.bz2"
-CHECKSUM="0ae2f7d4e0876764a97ca73799f61df4"
 
 RDEPEND="expat fontconfig freetype gcc-lib glib2 glibc libffi libICE libpng libSM libX11 libXau libxcb libXdmcp libXext libXrender qt-core util-linux-ng zlib"
 BDEPEND="cmake"

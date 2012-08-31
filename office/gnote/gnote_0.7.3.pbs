@@ -12,7 +12,7 @@ PACKAGER="StartOS Developers"
 
 SRC_URI="http://ftp.gnome.org/pub/GNOME/sources/"$N"/0.7/"$N-$V".tar.bz2"
 
-RDEPEND="atk atkmm boost cairo cairomm enchant expat fontconfig freetype gcc-lib gconf  gdk-pixbuf glib2 glibc glibmm gtk+ gtkmm gtkspell libpcre libpng libsigc++ libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libxml2 libXrandr libXrender libxslt orbit pango pangomm pixman util-linux-ng zlib"
+RDEPEND="atk atkmm boost-libs cairo cairomm enchant expat fontconfig freetype gcc-lib gconf  gdk-pixbuf glib2 glibc glibmm gtk+ gtkmm gtkspell libpcre libpng libsigc++ libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libxml2 libXrandr libXrender libxslt orbit pango pangomm pixman util-linux-ng zlib"
 BDEPEND=""
 RECOMMENDED=""
 CONFLICT=""

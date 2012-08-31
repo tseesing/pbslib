@@ -1,5 +1,5 @@
 [Unit]
-Description=unload modules from /etc/modules-unload and /etc/modules-unload.d/*.conf
+Description=Unload modules from /etc/modules-unload and /etc/modules-unload.d/*.conf
 DefaultDependencies=no
 Before=shutdown.target
 

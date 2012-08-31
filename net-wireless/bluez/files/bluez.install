@@ -1,0 +1,22 @@
+unit="bluetooth.service"
+
+post_install() {
+	systemctl enable $unit
+	start $unit ||true
+}
+
+post_upgrade() {
+	systemctl --system daemon-reload
+	systemctl enable $unit
+	restart $unit ||true
+}
+
+post_downgrade() {
+	post_upgrade
+}
+
+pre_remove() {
+	stop $unit
+	systemctl disable $unit ||true
+}
+

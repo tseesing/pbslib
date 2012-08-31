@@ -9,6 +9,7 @@ DESCRIPTION="libpinin for fcitx"
 HOMEPAGE="http://code.google.com/p/fcitx/"
 LICENSE="GPL"
 PACKAGER="StartOS Developers"
+GROUP="fcitx"
 
 SRC_URI="http://fcitx.googlecode.com/files/"$N-$V"_dict.tar.xz"
 CHECKSUM="d6c758d62bce2f9c69d3e0bfc12afc79bc0fd75c"

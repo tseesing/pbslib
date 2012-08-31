@@ -2,13 +2,11 @@
 
 post_install() {
 	gnome2_desktop_database_update
-	gnome2_icon_cache_update /usr/share/blueman/icons/hicolor
-	gnome2_gconfd_reload
+	gnome2_icon_cache_update 
 }
 
 post_remove() {
-	gnome2_desktop_database_update
-	gnome2_gconfd_reload
+	post_install
 }
 
 post_upgrade() {
@@ -18,3 +16,4 @@ post_upgrade() {
 post_downgrade() {
 	post_install
 }
+

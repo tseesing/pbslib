@@ -9,6 +9,7 @@ DESCRIPTION="chewing for fcitx"
 HOMEPAGE="http://code.google.com/p/fcitx/"
 LICENSE="GPL"
 PACKAGER="StartOS Developers"
+GROUP="fcitx"
 
 SRC_URI="http://fcitx.googlecode.com/files/"$N-$V".tar.xz"
 CHECKSUM="b2ed2df7e2a285144752fbdc92e14d4e8ea4ea14"

@@ -9,6 +9,7 @@ DESCRIPTION="A fork from google pinyin on android ibus wrapper"
 HOMEPAGE="http://code.google.com/p/libgooglepinyin"
 LICENSE="Apache License 2.0"
 PACKAGER="StartOS Developers"
+GROUP="ibus"
 
 SRC_URI="http://libgooglepinyin.googlecode.com/files/"$N-$V$R".tar.bz2"
 CHECKSUM="1f70fb7073fa3f9ce9052ac884d0d59fedc4c109"

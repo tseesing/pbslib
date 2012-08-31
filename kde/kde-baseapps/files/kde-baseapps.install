@@ -1,5 +1,6 @@
 post_install() {
 	xdg-icon-resource forceupdate --theme hicolor &> /dev/null
+	xdg-icon-resource forceupdate --theme oxygen &> /dev/null
 	update-desktop-database -q
 }
 
@@ -11,3 +12,6 @@ post_remove() {
 	post_install
 }
 
+post_downgrade() {
+	post_install
+}

@@ -7,7 +7,8 @@
 DESCRIPTION="KDE libraries needed by all KDE programs."
 HOMEPAGE="http://www.kde.org"
 LICENSE="GPL"
-PACKAGER="StartOS Developers<>"
+PACKAGER="StartOS Developers"
+GROUP="kde"
 
 SRC_URI="http://download.kde.org/stable/"$V"/src/"$N-$V".tar.xz"
 
@@ -19,6 +20,14 @@ INSTALL="$N.install"
 
 pbs_unpack() {
 	dounpack
+}
+
+pbs_patch() {
+	#
+	dopatch set-docbook-xml-4.5.patch
+
+	# avoid file conflict with gnome-menus
+	dopatch kde-applications-menu.patch
 }
 
 pbs_config() {

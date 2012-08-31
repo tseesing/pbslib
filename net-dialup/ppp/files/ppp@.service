@@ -1,0 +1,11 @@
+[Unit]
+Description=PPP link to %I
+After=network.target
+
+[Service]
+Type=forking
+PIDFile=/run/ppp-%i.pid
+ExecStart=/usr/sbin/pppd call %I linkname %i nodetach
+
+[Install]
+WantedBy=multi-user.target

@@ -7,18 +7,15 @@
 
 DESCRIPTION="Python bindings for the Qt toolkit"
 HOMEPAGE="http://pypi.python.org/pypi/PyQt"
-REPO=""
 LICENSE="GPL"
 PACKAGER="StartOS Developers"
 
-SRC_URI="http://www.riverbankcomputing.com/static/Downloads/PyQt4/PyQt-x11-gpl-4.8.4.tar.gz"
+SRC_URI="http://www.riverbankcomputing.com/static/Downloads/PyQt4/PyQt-x11-gpl-"$V".tar.gz"
 
 RDEPEND="sip"
 BDEPEND=""
 RECOMMENDED=""
 CONFLICT=""
-
-NOTES=""
 
 pbs_unpack() {
         dounpack

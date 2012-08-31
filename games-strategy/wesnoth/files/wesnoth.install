@@ -2,6 +2,13 @@
 
 post_install() {
 	gnome2_desktop_database_update
+	systemd-tmpfiles --create /usr/lib/tmpfiles.d/wesnoth.conf
+	cat << EOF
+Note:
+==> If you experience sound problems try setting your SDL_AUDIODRIVER environment variable to "dma"
+==> eg. export SDL_AUDIODRIVER="dma" ; wesnoth
+==> If "dma" doesn't work,other options are: dsp,alsa,artsc,esd,nas try to find the right output.
+EOF
 }
 
 post_upgrade() {
@@ -11,3 +18,4 @@ post_upgrade() {
 post_downgrade() {
 	post_install	
 }
+

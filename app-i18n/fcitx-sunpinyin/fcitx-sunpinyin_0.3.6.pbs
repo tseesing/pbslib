@@ -9,6 +9,7 @@ DESCRIPTION="sunpinin for fcitx"
 HOMEPAGE="http://code.google.com/p/fcitx/"
 LICENSE="GPL"
 PACKAGER="StartOS Developers"
+GROUP="fcitx"
 
 SRC_URI="http://fcitx.googlecode.com/files/"$N-$V".tar.xz"
 CHECKSUM="0a248aa1f286b3aed0676391ed26d3b8ddf912c3"

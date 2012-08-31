@@ -1,0 +1,39 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="Library for accessing a shoutcast/icecast server"
+HOMEPAGE="http://www.icecast.org"
+LICENSE="LGPL"
+PACKAGER="StartOS Developers"
+
+SRC_URI="http://downloads.xiph.org/releases/"$N"/"$N-$V".tar.gz"
+CHECKSUM="976a5979505f3de4026ae7fffb10754b"
+
+RDEPEND="glibc libogg libtheora libvorbis speex"
+RECOMMENDED=""
+BDEPEND=""
+OPTIONAL=""
+CONFLICT=""
+REPLACE=""
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_config() {
+	config+=""
+	doconfig
+}
+
+pbs_build() {
+	domake LDFLAGS+=-lspeex
+}
+
+pbs_install() {
+	domkinstall
+}
+

@@ -54,6 +54,9 @@ pbs_install() {
 	# Default blacklist.conf collections
 	docp "$filesdir"/modprobe.d/* etc/modprobe.d
 
+	#
+	mkdir -p etc/modules-unload.d
+		
 	# For systemd
 	docp "$filesdir"/kmod-unload sbin
 	dounit "kmod-unload.service"

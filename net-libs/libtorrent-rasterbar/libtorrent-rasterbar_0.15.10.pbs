@@ -13,7 +13,7 @@ PACKAGER="StartOS Developers"
 SRC_URI="http://libtorrent.googlecode.com/files/"$N-$V".tar.gz"
 CHECKSUM="3e461d9ede5fab3fb59be6a9f0cbc52121d536c4"
 
-RDEPEND="boost gcc-lib glibc openssl zlib"
+RDEPEND="boost-libs gcc-lib glibc openssl zlib"
 BDEPEND=""
 RECOMMENDED=""
 CONFLICT=""

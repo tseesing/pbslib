@@ -7,7 +7,7 @@
 
 DESCRIPTION="GNU debugger"
 HOMEPAGE="http://sources.redhat.com/gdb/"
-LICENSE="GPL-2"
+LICENSE="GPL"
 PACKAGER="StartOS Developers"
 
 SRC_URI="http://ftp.gnu.org/gnu/"$N"/"$N-$V".tar.bz2"

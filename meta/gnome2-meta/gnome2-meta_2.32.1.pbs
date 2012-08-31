@@ -13,7 +13,7 @@ YARCH="any"
 
 SRC_URI=""
 
-RDEPEND="gnome-common gnome-doc-utils gconf gnome-themes gnome-disk-utility gnome-icon-theme gnome-desktop gnome-mime-data gnome-menus gnome-panel gnome-session gnome-terminal gnome-applets zenity metacity nautilus gnome-bluetooth gnome-system-monitor gnome-disk-utility gnome-nettool gnome-mplayer gnome-media gnome-utils gnome-icon-theme gnome-backgrounds gnome-user-share"
+RDEPEND="gnome-common gnome-doc-utils gconf gnome-themes gnome-disk-utility gnome-icon-theme gnome-desktop gnome-mime-data gnome-menus gnome-panel gnome-session gnome-terminal gnome-applets zenity metacity nautilus gnome-system-monitor gnome-disk-utility gnome-nettool gnome-mplayer gnome-media gnome-utils gnome-icon-theme gnome-backgrounds"
 RECOMMENDED=""
 BDEPEND=""
 OPTIONAL=""

@@ -9,6 +9,7 @@ DESCRIPTION="The Hangul engine for IBus input platform"
 HOMEPAGE="http://code.google.com/p/ibus/"
 LICENSE="GPL"
 PACKAGER="StartOS Developers"
+GROUP="ibus"
 
 SRC_URI="http://ibus.googlecode.com/files/"$N-$V".tar.gz"
 CHECKSUM="421d7164a27eeedfea49d54b61e2a5edd4f7d3a7"

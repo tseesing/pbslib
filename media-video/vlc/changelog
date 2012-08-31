@@ -1,11 +1,17 @@
 
-vlc (2.0.1-ylmf1); urgency=high
+vlc (2.0.3); urgency=high
 
-	* rebuild against ffmpeg-0.11.1
+	* update upstream
+
+-- hzx <zhongxin.huang@gmail.com> 2012-08-29
+
+vlc (2.0.1); urgency=high
+
+	* build against ffmpeg-0.11.1
 
 -- hzx <zhongxin.huang@gmail.com> 2012-06-20
 
-vlc (2.0.0-ylmf1); urgency=low
+vlc (2.0.0); urgency=low
 
 	* enable qt frondend and rebuild 
 

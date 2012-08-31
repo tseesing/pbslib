@@ -22,13 +22,13 @@ pbs_unpack() {
 
 pbs_config() {
 	config+=" --disable-schemas-install 
-		      --enable-ipv6 
-		      --enable-smime=yes 
-		      --enable-gnome-keyring=yes 
-		      --enable-calendar=yes 
-		      --with-openldap 
-		      --with-krb5=/usr 
-		      --with-libdb=/usr"
+		  --enable-ipv6 
+		  --enable-smime=yes 
+		  --enable-gnome-keyring=yes 
+		  --enable-calendar=yes 
+		  --with-openldap 
+		  --with-krb5=/usr 
+		  --with-libdb=/usr "
 	doconfig
 }
 

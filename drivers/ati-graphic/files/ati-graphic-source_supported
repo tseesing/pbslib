@@ -9,6 +9,6 @@ device_ids() {
 
 echo "package ati-graphic-driver"
 echo "module fglrx.ko"
-echo "description ATI Fire GL"
+echo "description ATI Catalyst™ Proprietary Display Driver"
 device_ids fglrxko_pci_ids.h
 
