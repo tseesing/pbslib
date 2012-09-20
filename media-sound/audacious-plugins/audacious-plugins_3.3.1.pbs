@@ -14,7 +14,7 @@ REPO="testing"
 
 SRC_URI="http://distfiles.audacious-media-player.org/"$N-$V".tar.bz2"
 
-RDEPEND="audacious(=3.3.1) ffmpeg(>=0.11.1) alsa-lib atk attr bzip2 cairo curl cyrus-sasl dbus dbus-glib directfb e2fsprogs expat faad2 flac fluidsynth fontconfig freetype gcc-lib gdk-pixbuf glib2 glibc gnutls gtk+3 jack-audio-connection-kit json-c keyutils krb5 lame libICE libSM libX11 libXau libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libXinerama libXrandr libXrender libXtst libbinio libcap libcddb libcdio libcue libffi libgcrypt libgpg-error libgsm libidn libmms libmodplug libogg libpng libproxy libsamplerate libsdl libsndfile libssh2 libtasn1 libtheora libtool libva libvorbis libxcb libxml2 lirc mpg123 ncurses neon opencore-amr openldap openssl orc pango pixman pulseaudio readline rtmpdump schroedinger speex util-linux-ng wavpack x264 xvidcore zlib"
+RDEPEND="audacious(=3.3.1) ffmpeg(>=0.11.1) curl faad2 fluidsynth gtk+3 libbinio libcddb libcue libmms libmodplug lirc mpg123 neon wavpack"
 BDEPEND=""
 RECOMMENDED=""
 

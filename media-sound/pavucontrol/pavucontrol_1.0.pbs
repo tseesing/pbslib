@@ -12,7 +12,7 @@ PACKAGER="StartOS Developers"
 
 SRC_URI="http://freedesktop.org/software/pulseaudio/"$N"/"$N-$V".tar.xz"
 
-RDEPEND="atk atkmm attr cairo cairomm dbus expat flac fontconfig freetype gcc-lib gdk-pixbuf glib2 glibc glibmm gtk+ gtkmm json-c libcanberra libcap libICE libogg libpng libsamplerate libsigc++ libSM libsndfile libtool libvorbis libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libXrandr libXrender libXtst pango pangomm pixman pulseaudio samba tdb util-linux-ng zlib"
+RDEPEND="gtkmm libcanberra"
 RECOMMENDED=""
 BDEPEND=""
 CONFLICT=""

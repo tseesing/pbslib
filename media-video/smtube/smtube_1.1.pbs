@@ -13,7 +13,7 @@ PACKAGER="StartOS Developers"
 SRC_URI="http://prdownload.berlios.de/smplayer/"$N-$V".tar.bz2"
 CHECKSUM="e5018fcd9ebdc08658136476ba4843d2"
 
-RDEPEND="expat fontconfig freetype gcc-lib glib2 glibc libffi libICE libpng libSM libX11 libXau libxcb libXdmcp libXext libXrender qt-core util-linux-ng zlib"
+RDEPEND="qt-core"
 RECOMMENDED=""
 BDEPEND=""
 OPTIONAL=""

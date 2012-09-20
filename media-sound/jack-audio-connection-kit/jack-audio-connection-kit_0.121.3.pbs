@@ -12,7 +12,7 @@ PACKAGER="StartOS Developers"
 
 SRC_URI="http://jackaudio.org/downloads/"$N-$V".tar.gz"
 
-RDEPEND="alsa-lib flac glibc libogg libsamplerate libsndfile libvorbis ncurses readline"
+RDEPEND="alsa-lib celt libsamplerate readline"
 BDEPEND=""
 RECOMMENDED=""
 
@@ -30,6 +30,6 @@ pbs_build() {
 
 pbs_install() {
 	domkinstall
-	dodoc AUTHORS COPYING README
 }
+
 

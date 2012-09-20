@@ -12,7 +12,7 @@ PACKAGER="StartOS Developers"
 
 SRC_URI="http://cyberelk.net/tim/data/"$N"/"$N-$V".tar.bz2"
 
-RDEPEND="avahi cups dbus e2fsprogs gcc-lib glibc gnutls keyutils krb5 libgcrypt libgpg-error libtasn1 python zlib"
+RDEPEND="cups python"
 BDEPEND=""
 RECOMMENDED=""
 

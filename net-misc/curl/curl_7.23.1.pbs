@@ -12,7 +12,7 @@ PACKAGER="StartOS Developers"
 
 SRC_URI="http://curl.haxx.se/download/"$N-$V".tar.bz2"
 
-RDEPEND="cyrus-sasl glibc libidn libssh2 openldap openssl rtmpdump zlib"
+RDEPEND="libidn libssh2 openldap rtmpdump"
 BDEPEND=""
 
 pbs_unpack() {

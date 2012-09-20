@@ -10,11 +10,10 @@ HOMEPAGE="http://pupnp.sourceforge.net/"
 LICENSE="BSD"
 PACKAGER="StartOS Developers"
 
-SRC_URI="http://downloads.sourceforge.net/project/pupnp/pupnp/libUPnP%20$V$R/"$N-$V$R".tar.bz2"
+SRC_URI="http://downloads.sourceforge.net/project/pupnp/pupnp/libUPnP%20$V$R/"$N-$V".tar.bz2"
+
 RDEPEND=""
 BDEPEND=""
-
-NOTES=""
 
 pbs_unpack() {
         dounpack
@@ -31,3 +30,4 @@ pbs_build() {
 pbs_install() {
 	domkinstall
 }
+

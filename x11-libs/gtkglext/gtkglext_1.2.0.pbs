@@ -10,17 +10,20 @@ HOMEPAGE="http://gtkglext.sourceforge.net/"
 LICENSE="GPL"
 PACKAGER="StartOS Developers"
 
-SRC_URI="http://downloads.sourceforge.net/project/"$N"/"$N"/"$V"/"$N-$V$R".tar.gz"
+SRC_URI="http://downloads.sourceforge.net/project/"$N"/"$N"/"$V"/"$N-$V".tar.gz"
 
-RDEPEND=""
+RDEPEND="gtk+ libXmu mesa"
 BDEPEND="mesa"
 
 pbs_unpack() {
         dounpack
 }
 
-pbs_config() {
+pbs_patch() {
 	dopatch 01_fix_fontcache_nullderef.dpatch gtk2.20.patch 
+}
+
+pbs_config() {
 	config+="--with-x"
 	doconfig
 }

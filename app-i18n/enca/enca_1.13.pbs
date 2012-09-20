@@ -12,8 +12,8 @@ PACKAGER="StartOS Developers"
 
 SRC_URI="http://dl.cihar.com/"$N"/"$N-$V".tar.gz"
 
-RDEPEND="glibc recode"
-BDEPEND=" "
+RDEPEND="recode"
+BDEPEND=""
 RECOMMENDED=""
 CONFLICT=""
 

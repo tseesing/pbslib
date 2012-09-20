@@ -12,7 +12,7 @@ PACKAGER="StartOS Developers"
 
 SRC_URI="http://files.libburnia-project.org/releases/"$N-$V".tar.gz"
 
-RDEPEND="acl attr glibc"
+RDEPEND="acl"
 BDEPEND="libburn-dev"
 RECOMMENDED=""
 

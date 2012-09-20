@@ -13,7 +13,7 @@ PACKAGER="StartOS Developers"
 SRC_URI="http://yaml-cpp.googlecode.com/files/"$N-$V".tar.gz"
 CHECKSUM="9aa519205a543f9372bf4179071c8ac6"
 
-RDEPEND="gcc-lib glibc"
+RDEPEND="gcc-lib"
 RECOMMENDED=""
 BDEPEND="cmake"
 OPTIONAL=""

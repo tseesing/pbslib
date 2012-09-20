@@ -13,7 +13,7 @@ PACKAGER="StartOS Developers"
 SRC_URI="http://telepathy.freedesktop.org/releases/"$N"/"$N-$V".tar.gz"
 CHECKSUM="43639c23de33e8466540de02816d23bf"
 
-RDEPEND="avahi dbus dbus-glib gcc-lib glib2 glibc libffi libsoup libxml2 openssl sqlite telepathy-glib util-linux-ng zlib"
+RDEPEND="avahi libsoup openssl telepathy-glib util-linux-ng"
 BDEPEND=""
 RECOMMENDED=""
 
@@ -22,10 +22,10 @@ pbs_unpack() {
 }
 
 pbs_config() {
-	config+=" --disable-Werror
-	          --with-tls=openssl
-		  --enable-avahi-tests=no 
-	          --enable-static=no "
+	config+="--disable-Werror
+	         --with-tls=openssl
+		 --enable-avahi-tests=no 
+	         --enable-static=no"
 	doconfig
 }
 

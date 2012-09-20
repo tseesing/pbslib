@@ -7,13 +7,12 @@
 
 DESCRIPTION="a generic, highly customizable, and efficient menu for the X Window System"
 HOMEPAGE="http://www.suckless.org/programs/dmenu.html"
-REPO=""
 LICENSE="GPL"
 PACKAGER="StartOS Developers"
 
-SRC_URI="http://dl.suckless.org/tools/dmenu-4.3.1.tar.gz"
+SRC_URI="http://dl.suckless.org/tools/"$N-$V".tar.gz"
 
-RDEPEND=""
+RDEPEND="libXinerama"
 BDEPEND=""
 RECOMMENDED=""
 CONFLICT=""
@@ -22,8 +21,11 @@ pbs_unpack() {
         dounpack
 }
 
-pbs_config() {
+pbs_patch() {
 	dopatch startos-makefile-prefix.patch
+}
+
+pbs_config() {
 	doconfig
 }
 
@@ -33,5 +35,4 @@ pbs_build() {
 
 pbs_install() {
 	domkinstall
-	dodoc LICENSE README
 }

@@ -12,7 +12,7 @@ PACKAGER="StartOS Developers"
  
 SRC_URI="ftp://ftp.gnupg.org/gcrypt/"$N"/"$N-$V".tar.bz2"
 
-RDEPEND="glibc libgpg-error"
+RDEPEND="libgpg-error"
 BDEPEND=""
 RECOMMENDED=""
 
@@ -32,6 +32,5 @@ pbs_build() {
 
 pbs_install() {
 	domkinstall
-	dodoc AUTHORS ChangeLog COPYING INSTALL NEWS README
 }
 

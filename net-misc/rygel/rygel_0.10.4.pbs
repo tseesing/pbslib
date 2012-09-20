@@ -12,7 +12,7 @@ PACKAGER="StartOS Developers"
 
 SRC_URI="http://ftp.gnome.org/pub/gnome/sources/"$N"/0.10/"$N-$V".tar.xz"
 
-RDEPEND="glib2 glibc gnutls gssdp gst-plugins-base gstreamer gupnp gupnp-av gupnp-dlna libgcrypt libgee libgpg-error libsoup libtasn1 libxml2 sqlite util-linux-ng zlib"
+RDEPEND="gupnp-av gupnp-dlna libgee sqlite"
 RECOMMENDED=""
 BDEPEND=""
 

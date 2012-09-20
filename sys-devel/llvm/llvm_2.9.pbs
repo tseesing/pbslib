@@ -10,14 +10,12 @@ HOMEPAGE="http://llvm.org/"
 LICENSE="University of Illinois Open Source License, an OSI-approved license"
 PACKAGER="StartOS Developers"
 
-SRC_URI="http://llvm.org/releases/"$V$R"/"$N-$V$R".tgz"
+SRC_URI="http://llvm.org/releases/"$V"/"$N-$V".tgz"
 
-RDEPEND="gcc-lib glibc"
+RDEPEND="gcc-lib"
 BDEPEND=""
 RECOMMENDED=""
 CONFLICT=""
-
-NOTES=""
 
 pbs_unpack() {
         dounpack

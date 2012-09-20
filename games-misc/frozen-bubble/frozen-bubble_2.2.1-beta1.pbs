@@ -12,7 +12,7 @@ PACKAGER="StartOS Developers"
 
 SRC_URI="http://www.frozen-bubble.org/data/"$N-$V$R".tar.bz2"
 
-RDEPEND="sdl-perl alien-sdl ipc-system-simple file-which compress-bzip2 file-sharedir capture-tiny sdl-mixer class-inspector sdl-pango sdl-gfx tie-simple sdl-ttf"
+RDEPEND="sdl-mixer sdl-pango"
 BDEPEND="file-slurp locale-maketext-lexicon"
 RECOMMENDED=""
 CONFLICT=""

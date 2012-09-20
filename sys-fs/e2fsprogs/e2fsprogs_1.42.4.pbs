@@ -13,7 +13,7 @@ PACKAGER="StartOS Developers"
 SRC_URI="http://prdownloads.sourceforge.net/"$N"/"$N-$V".tar.gz"
 CHECKSUM="944002c1f8f1f87e7d2d53263346b001962bc1f9"
 
-RDEPEND="glibc util-linux-ng"
+RDEPEND="util-linux-ng"
 BDEPEND="pkgconfig"
 
 INSTALL="$N.install"

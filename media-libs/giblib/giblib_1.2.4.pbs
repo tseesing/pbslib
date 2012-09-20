@@ -12,7 +12,7 @@ PACKAGER="StartOS Developers"
 
 SRC_URI="http://linuxbrit.co.uk/downloads/"$N-$V".tar.gz"
 
-RDEPEND="freetype glibc imlib2 libX11 libXau libxcb libXdmcp libXext zlib"
+RDEPEND="imlib2"
 BDEPEND=""
 RECOMMENDED=""
 CONFLICT=""

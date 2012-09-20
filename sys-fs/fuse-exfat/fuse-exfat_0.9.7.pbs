@@ -13,7 +13,7 @@ PACKAGER="StartOS Developers"
 SRC_URI="http://exfat.googlecode.com/files/"$N-$V".tar.gz"
 CHECKSUM="ea8eddcc68ec8881cb8a280086297e39"
 
-RDEPEND="fuse glibc"
+RDEPEND="fuse"
 RECOMMENDED=""
 BDEPEND=""
 OPTIONAL=""

@@ -6,14 +6,13 @@
 #
 
 DESCRIPTION="free-and-libre implementation of AACS"
-COMMENTS=""
 HOMEPAGE="http://www.videolan.org/developers/libaacs.html"
 LICENSE="GPL"
 PACKAGER="StartOS Developers"
 
 SRC_URI="ftp://ftp.videolan.org/pub/videolan/"$N"/"$V"/"$N-$V".tar.bz2"
 
-RDEPEND="glibc libgcrypt libgpg-error"
+RDEPEND="libgcrypt"
 RECOMMENDED=""
 BDEPEND=""
 CONFLICT=""

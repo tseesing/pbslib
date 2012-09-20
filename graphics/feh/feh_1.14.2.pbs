@@ -12,7 +12,7 @@ PACKAGER="StartOS Developers"
 
 SRC_URI="http://feh.finalrewind.org/"$N-$V".tar.bz2"
 
-RDEPEND="curl cyrus-sasl freetype giblib glibc imlib2 libidn libpng libssh2 libX11 libXau libxcb libXdmcp libXext libXinerama openldap openssl rtmpdump zlib"
+RDEPEND="curl giblib libpng libXinerama"
 BDEPEND=""
 RECOMMENDED=""
 CONFLICT=""

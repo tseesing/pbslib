@@ -12,11 +12,7 @@ PACKAGER="StartOS Developers"
 
 SRC_URI="http://linuxtv.org/downloads/"$N"/"$N-$V".tar.bz2"
 
-RDEPEND="gcc-lib glibc libjpeg-turbo"
-BDEPEND=""
-RECOMMENDED=""
-
-PROVIDE="qv4l2"
+PROVIDE="v4l-utils qv4l2"
 
 pbs_unpack() {
         dounpack
@@ -26,7 +22,10 @@ pbs_build() {
 	domake
 }
 
-pbs_install() {
+v4l-utils_install() {
+	DESCRIPTION="Userspace tools and conversion library for Video 4 Linux"
+	RDEPEND="gcc-lib libjpeg-turbo"
+
 	make DESTDIR="$destdir" PREFIX="/usr" install
 	
 	# Splite
@@ -34,11 +33,8 @@ pbs_install() {
 }
 
 qv4l2_install() {
-	DESCRIPTION="qv4l2"
-	HOMEPAGE="http://people.fedoraproject.org/~jwrdegoede/"
-	LICENSE="GPL"
-	PACKAGER="StartOS Developers"
-	RDEPEND="expat fontconfig freetype gcc-lib glib2 glibc libdrm libICE libjpeg-turbo libpng libSM libX11 libXau libxcb libXdmcp libXext libXrender mesa qt-core udev util-linux-ng v4l-utils zlib"
+	DESCRIPTION="v4l2 for qt"
+	RDEPEND="qt-core v4l-utils"
 
 	docp utils/qv4l2/qv4l2 "$destdir"/usr/bin/
 	dodesktop utils/qv4l2/qv4l2.desktop

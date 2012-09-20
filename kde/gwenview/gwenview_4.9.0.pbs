@@ -12,7 +12,7 @@ PACKAGER="StartOS Developers"
 
 SRC_URI="http://download.kde.org/stable/"$V"/src/"$N-$V".tar.xz"
 
-RDEPEND="acl attica attr bzip2 dbus exiv2 expat flac fontconfig freetype gcc-lib glib2 glibc gst-plugins-base gstreamer herqq json-c kde-baseapps kdelibs libcap libdbusmenu-qt libdrm libffi libICE libjpeg-turbo libkipi libogg libpng libqzeitgeist libSM libsndfile libvorbis libX11 libXau libxcb libXcursor libXdamage libXdmcp libXext libXfixes libXft libXi libxml2 libXpm libXrender libXtst libXxf86vm mesa openssl phonon pulseaudio qca qt-core soprano sqlite strigi udev util-linux-ng xz-utils zlib"
+RDEPEND="exiv2 kde-baseapps libkipi"
 RECOMMENDED=""
 BDEPEND="cmake"
 OPTIONAL=""

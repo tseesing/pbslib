@@ -13,7 +13,7 @@ GROUP="x11-apps"
 
 SRC_URI="http://xorg.freedesktop.org/archive/individual/app/"$N-$V".tar.bz2"
 
-RDEPEND="glibc libXau libxcb libXdmcp"
+RDEPEND="libxcb"
 BDEPEND=""
 
 pbs_unpack() {

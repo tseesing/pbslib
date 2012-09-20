@@ -13,7 +13,7 @@ PACKAGER="StartOS Developers"
 SRC_URI="http://ftp.gnome.org/pub/gnome/sources/"$N"/2.25/"$N-$V".tar.bz2"
 CHECKSUM="e69e5288466c960ed6f985bb10c9969b21ed85a4"
 
-RDEPEND="atk avahi cairo dbus dbus-glib expat fontconfig freetype gail gcc-lib gconf gdk-pixbuf glib2 glibc gnome-vfs gtk+ libart_lgpl libbonobo libbonoboui libcanberra libffi libgcrypt libgnome libgnomecanvas libgnome-keyring libgnomeui libgpg-error libICE libogg libpng libSM libtool libvorbis libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libXinerama libxml2 libXrandr libXrender openssl orbit pango pixman popt python tdb util-linux-ng zlib"
+RDEPEND="gtkspell libgksu libgnomeui"
 RECOMMENDED=""
 BDEPEND=""
 OPTIONAL=""

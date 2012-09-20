@@ -10,11 +10,10 @@ HOMEPAGE="http://xorg.freedesktop.org/"
 LICENSE="custom"
 PACKAGER="StartOS Developers"
 GROUP="x11-drivers"
-GROUP="X11-drivers"
 
 SRC_URI="http://www.x.org/releases/individual/driver/"$N-$V".tar.bz2"
 
-RDEPEND="glibc libdrm(>=2.4.37) libpciaccess pixman udev xorg-server(>=1.12.2-r1)"
+RDEPEND="libdrm(>=2.4.37) xorg-server(>=1.12.2-r1) udev"
 BDEPEND=""
 
 pbs_unpack() {

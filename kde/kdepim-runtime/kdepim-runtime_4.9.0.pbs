@@ -12,7 +12,7 @@ GROUP="kde"
 
 SRC_URI="http://download.kde.org/stable/"$V"/src/"$N-$V".tar.xz"
 
-RDEPEND="acl akonadi attica attr bzip2 cyrus-sasl dbus expat flac fontconfig freetype gcc-lib glib2 glibc gst-plugins-base gstreamer herqq json-c kdelibs kdepimlibs libcap libdbusmenu-qt libdmtx libffi libical libICE libkgapi libogg libpng libqzeitgeist libSM libsndfile libvorbis libX11 libXau libxcb libXcursor libXdmcp libXext libXfixes libXft libXi libxml2 libXpm libXrender libXScrnSaver libXtst openssl phonon prison pulseaudio qca qjson qrencode qt-core soprano sqlite strigi udev util-linux-ng xz-utils zlib"
+RDEPEND="libkgapi"
 BDEPEND="cmake automoc4"
 
 INSTALL="$N.install"
@@ -20,7 +20,6 @@ INSTALL="$N.install"
 pbs_unpack() {
        dounpack
 }
-
 
 pbs_config() {
 	doconfig -DCMAKE_BUILD_TYPE=Release

@@ -7,13 +7,12 @@
 
 DESCRIPTION="A network programming library in C++"
 HOMEPAGE="http://code.google.com/p/wvstreams/"
-REPO=""
 LICENSE="GPL"
 PACKAGER="StartOS Developers"
 
-SRC_URI="http://wvstreams.googlecode.com/files/wvstreams-4.6.1.tar.gz"
+SRC_URI="http://wvstreams.googlecode.com/files/"$N-$V".tar.gz"
 
-RDEPEND=""
+RDEPEND="dbus gcc-lib openssl pam readline"
 BDEPEND=""
 RECOMMENDED=""
 CONFLICT=""
@@ -22,10 +21,11 @@ pbs_unpack() {
         dounpack
 }
 
+pbs_patch() {
+	dopatch wvstreams-4.6.1-parallel-make.patch wvstreams-4.6.1-openssl-1.0.0.patch wvstreams-4.6.1-glibc212.patch
+}
+
 pbs_config() {
-	dopatch wvstreams-4.6.1-parallel-make.patch \
-	           wvstreams-4.6.1-openssl-1.0.0.patch \
-		   wvstreams-4.6.1-glibc212.patch
 	config+=""
 	./autogen.sh
 	doconfig
@@ -41,5 +41,4 @@ pbs_build() {
 pbs_install() {
 	domkinstall
 }
-
 

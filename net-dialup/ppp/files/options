@@ -27,18 +27,18 @@
 # async character map -- 32-bit hex; each bit is a character
 # that needs to be escaped for pppd to receive it.  0x00000001
 # represents '\x01', and 0x80000000 represents '\x1f'.
-asyncmap 0
+#asyncmap 0
 
 # Require the peer to authenticate itself before allowing network
 # packets to be sent or received.
 # Please do not disable this setting. It is expected to be standard in
 # future releases of pppd. Use the call option (see manpage) to disable
 # authentication for specific peers.
-auth
+#auth
 
 # Use hardware flow control (i.e. RTS/CTS) to control the flow of data
 # on the serial port.
-crtscts
+#crtscts
 
 # Use software flow control (i.e. XON/XOFF) to control the flow of data
 # on the serial port.
@@ -59,11 +59,11 @@ crtscts
 
 # Specifies that pppd should use a UUCP-style lock on the serial device
 # to ensure exclusive access to the device.
-lock
+#lock
 
 # Don't show the passwords when logging the contents of PAP packets.
 # This is the default.
-hide-password
+#hide-password
 
 # When logging the contents of PAP packets, this option causes pppd to
 # show the password string in the log message.
@@ -72,7 +72,7 @@ hide-password
 # Use the modem control lines.  On Ultrix, this option implies hardware
 # flow control, as for the crtscts option.  (This option is not fully
 # implemented.)
-modem
+#modem
 
 # Set the MRU [Maximum Receive Unit] value to <n> for negotiation.  pppd
 # will ask the peer to send packets of no more than <n> bytes. The
@@ -206,7 +206,7 @@ modem
 # Add an entry to this system's ARP [Address Resolution Protocol]
 # table with the IP address of the peer and the Ethernet address of this
 # system.
-proxyarp
+#proxyarp
 
 # Use the system password database for authenticating the peer using
 # PAP. Note: mgetty already provides this option. If this is specified
@@ -217,7 +217,7 @@ proxyarp
 # peer every n seconds. Normally the peer should respond to the echo-request
 # by sending an echo-reply. This option can be used with the
 # lcp-echo-failure option to detect that the peer is no longer connected.
-lcp-echo-interval 30
+#lcp-echo-interval 30
 
 # If this option is given, pppd will presume the peer to be dead if n
 # LCP echo-requests are sent without receiving a valid LCP echo-reply.
@@ -226,7 +226,7 @@ lcp-echo-interval 30
 # This option can be used to enable pppd to terminate after the physical
 # connection has been broken (e.g., the modem has hung up) in
 # situations where no hardware modem control lines are available.
-lcp-echo-failure 4
+#lcp-echo-failure 4
 
 # Set the LCP restart interval (retransmission timeout) to <n> seconds
 # (default 3).
@@ -296,7 +296,7 @@ lcp-echo-failure 4
 # To let pppd pass IPX packets comment this out --- you'll probably also
 # want to install ipxripd, and have the Internal IPX Network option enabled
 # in your kernel.  /usr/doc/HOWTO/IPX-HOWTO.gz contains more info.
-noipx
+#noipx
 
 # Exit once a connection has been made and terminated. This is the default,
 # unless the `persist' or `demand' option has been specified.

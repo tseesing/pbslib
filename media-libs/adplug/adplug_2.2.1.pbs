@@ -12,7 +12,7 @@ PACKAGER="StartOS Developers"
 
 SRC_URI="http://downloads.sourceforge.net/project/"$N"/AdPlug%20core%20library/"$V"/"$N-$V".tar.bz2"
 
-RDEPEND="gcc-lib glibc libbinio"
+RDEPEND="libbinio"
 BDEPEND=""
 RECOMMENDED=""
 
@@ -30,6 +30,6 @@ pbs_build() {
 
 pbs_install() {
 	domkinstall
-	dodoc AUTHORS ChangeLog COPYING INSTALL NEWS README
 }
+
 

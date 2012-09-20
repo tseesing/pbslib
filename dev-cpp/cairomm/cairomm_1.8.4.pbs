@@ -12,7 +12,7 @@ PACKAGER="StartOS Developers"
 
 SRC_URI="http://cairographics.org/releases/"$N-$V".tar.gz"
 
-RDEPEND="cairo expat fontconfig freetype gcc-lib glibc libpng libsigc++ libX11 libXau libxcb libXdmcp libXrender pixman zlib"
+RDEPEND="cairo libsigc++"
 BDEPEND=""
 RECOMMENDED=""
 

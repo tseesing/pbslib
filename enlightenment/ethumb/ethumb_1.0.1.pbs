@@ -13,7 +13,7 @@ PACKAGER="StartOS Developers"
 SRC_URI="http://download.enlightenment.org/releases/"$N-$V".tar.gz"
 CHECKSUM="20bd55bfa05d0c20e985f1031a683677"
 
-RDEPEND="curl cyrus-sasl dbus ecore e_dbus edje eet eeze eina eio embryo emotion evas expat flac fontconfig freetype fribidi glib2 glibc gnutls libexif libgcrypt libgpg-error libidn libjpeg-turbo libogg libsndfile libssh2 libtasn1 libvorbis libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libXinerama libXp libXrandr libXrender libXScrnSaver libXtst lua openldap openssl rtmpdump udev util-linux-ng zlib"
+RDEPEND="e_dbus emotion libexif"
 RECOMMENDED=""
 BDEPEND=""
 OPTIONAL=""

@@ -14,7 +14,7 @@ PACKAGER="StartOS Developers"
 SRC_URI="http://www.sqlite.org/sqlite-autoconf-3071300.tar.gz"
 CHECKSUM="c97df403e8a3d5b67bb408fcd6aabd8e"
 
-RDEPEND="glibc ncurses readline"
+RDEPEND="readline"
 BDEPEND="tcl"
 
 pbs_unpack() {

@@ -12,7 +12,7 @@ PACKAGER="StartOS Developers"
 
 SRC_URI="http://ftp.gnome.org/pub/gnome/desktop/2.32/2.32.1/sources/"$N-$V".tar.bz2"
 
-RDEPEND="atk cairo dbus expat fontconfig freetype gcc-lib gdk-pixbuf glib2 glibc gtk+ libgcrypt libgpg-error libpng libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libXrandr libXrender pam pango pixman zlib"
+RDEPEND="gtk+ pam"
 BDEPEND=""
 RECOMMENDED=""
 
@@ -27,9 +27,9 @@ pbs_patch() {
 }
 
 pbs_config() {
-	config+=" --disable-schemas-install 
-		  --enable-pam 
-		  --with-pam-dir=/lib/security"
+	config+="--disable-schemas-install 
+		 --enable-pam 
+		 --with-pam-dir=/lib/security"
 	doconfig
 }
 

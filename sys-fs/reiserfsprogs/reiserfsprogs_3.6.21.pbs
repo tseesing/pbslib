@@ -13,7 +13,7 @@ PACKAGER="StartOS Developers"
 SRC_URI="http://www.kernel.org/pub/linux/utils/fs/reiserfs/"$N-$V".tar.bz2"
 CHECKSUM="0639cefac8f8150536cfa7531c2aa2d2"
 
-RDEPEND="glibc util-linux-ng"
+RDEPEND="util-linux-ng"
 BDEPEND=""
 
 pbs_unpack() {

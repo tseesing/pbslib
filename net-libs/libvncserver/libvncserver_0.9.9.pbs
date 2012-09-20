@@ -13,7 +13,7 @@ PACKAGER="StartOS Developers"
 SRC_URI="http://downloads.sourceforge.net/"$N"/LibVNCServer-"$V".tar.gz"
 CHECKSUM="70422169b122765693d2a294d13e3714"
 
-RDEPEND="glibc gnutls libgcrypt libgpg-error libjpeg-turbo libpng libtasn1 openssl zlib"
+RDEPEND="gnutls libjpeg-turbo libpng openssl"
 RECOMMENDED=""
 BDEPEND=""
 OPTIONAL=""

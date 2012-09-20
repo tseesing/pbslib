@@ -13,7 +13,7 @@ PACKAGER="StartOS Developers"
 SRC_URI="http://ftp.gnome.org/pub/GNOME/sources/"$N"/2.4/"$N-$V".tar.xz"
 CHECKSUM="a719717d02ed26cccf4e6432edd48a31"
 
-RDEPEND="mono mono-addins(>=0.6.2) mono-zeroconf atk cairo dbus enchant expat fontconfig freetype gail gcc-lib gconf gdk-pixbuf glib2 glibc gnutls gst-plugins-base gstreamer gtk+ icu libffi libgcrypt libgnome-keyring libgpg-error libICE libjpeg-turbo libpng libproxy libSM libsoup libtasn1 libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libXinerama libxml2 libXrandr libXrender libxslt libXt libXxf86vm orbit pango pixman sqlite util-linux-ng webkitgtk zlib"
+RDEPEND="mono mono-addins(>=0.6.2) mono-zeroconf gconf libgnome-keyring libproxy libXxf86vm"
 BDEPEND=""
 RECOMMENDED=""
 CONFLICT=""

@@ -13,7 +13,7 @@ PACKAGER="StartOS Developers"
 SRC_URI="http://ftp.gnome.org/pub/gnome/sources/"$N"/0.13/"$N-$V".tar.xz"
 CHECKSUM="29e4650aff3b9fb03d2531cd7257a86d21e6effd6e4edb1c83f7edb6be60369f"
 
-RDEPEND="glib2 glibc zlib"
+RDEPEND="glib2"
 BDEPEND=""
 RECOMMENDED=""
 

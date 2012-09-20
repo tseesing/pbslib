@@ -12,7 +12,7 @@ PACKAGER="StartOS Developers"
 
 SRC_URI="http://ftp.gnu.org/pub/gnu/"$N"/"$N-$V".tar.gz"
 
-RDEPEND="glibc gmp libtool ncurses readline"
+RDEPEND="gmp libtool readline"
 BDEPEND=""
 RECOMMENDED=""
 
@@ -22,12 +22,14 @@ pbs_unpack() {
         dounpack
 }
 
-pbs_config() {
+pbs_patch() {
 	dopatch guile-1.8.7-multilib.patch \
-	           guile-1.8.7-testsuite.patch \
-		   guile-1.8.8-deplibs.patch
-	config+="--disable-static
-	             --disable-error-on-warning"
+	        guile-1.8.7-testsuite.patch \
+		guile-1.8.8-deplibs.patch
+}
+
+pbs_config() {
+	config+="--disable-static --disable-error-on-warning"
 	doconfig
 }
 

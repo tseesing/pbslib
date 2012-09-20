@@ -14,7 +14,7 @@ GROUP="fcitx"
 SRC_URI="http://fcitx.googlecode.com/files/"$N-$V".tar.xz"
 CHECKSUM="4f0305fca63b744664c23c2ec83e95bc09972ac0"
 
-RDEPEND="fcitx(>=4.2.4) atk cairo dbus dbus-glib expat fontconfig freetype gcc-lib gdk-pixbuf glib2 glibc gtk+ libffi libpng libunique libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libXinerama libXrandr libXrender pango pixman zlib"
+RDEPEND="fcitx(>=4.2.4) libunique"
 RECOMMENDED=""
 BDEPEND="cmake"
 OPTIONAL=""

@@ -13,7 +13,7 @@ PACKAGER="StartOS Developers"
 SRC_URI="http://www.frogatto.com/files/"$N-$V".tar.bz2"
 CHECKSUM="bf5a2ee4c3254a424766895ff250758b"
 
-RDEPEND="boost-libs(=1.50.0) bzip2 directfb freetype gcc-lib glew glibc icu libdrm libICE libpng libsdl libSM libX11 libXau libxcb libXdamage libXdmcp libXext libXfixes libXi libXmu libXt libXxf86vm mesa nas sdl-image sdl-mixer sdl-ttf util-linux-ng zlib"
+RDEPEND="boost-libs(=1.50.0) glew sdl-image sdl-mixer sdl-ttf"
 RECOMMENDED=""
 BDEPEND=""
 OPTIONAL=""

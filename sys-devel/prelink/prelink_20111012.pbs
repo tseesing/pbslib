@@ -13,7 +13,7 @@ PACKAGER="StartOS Developers"
 SRC_URI="http://people.redhat.com/jakub/"$N"/"$N-$V".tar.bz2"
 CHECKSUM="f5aaf347432d677c293e5e3399ba4fdf"
 
-RDEPEND="elfutils glibc"
+RDEPEND="elfutils"
 BDEPEND=""
 RECOMMENDED=""
 

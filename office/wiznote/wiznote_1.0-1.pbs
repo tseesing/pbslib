@@ -14,7 +14,7 @@ PACKAGER="StartOS Developers"
 SRC_URI="http://uikb.com/cdn/"$N"-1.0-beta-i386.deb"
 CHECKSUM="b8fe25d6eceb747f2358f75c7d09c2a6"
 
-RDEPEND="attr dbus expat flac fontconfig freetype gcc-lib glib2 glibc json-c libcap libffi libICE libogg libpng libSM libsndfile libvorbis libX11 libXau libxcb libXdmcp libXext libXi libXrender libXtst pulseaudio qt-core util-linux-ng zlib"
+RDEPEND="qt-core"
 RECOMMENDED=""
 BDEPEND=""
 OPTIONAL=""

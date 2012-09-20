@@ -7,19 +7,15 @@
 
 DESCRIPTION="C++ bindings for libglade"
 HOMEPAGE="http://www.gtkmm.org"
-REPO=""
 LICENSE="GPL"
-PRIORITY=""
 PACKAGER="StartOS Developers"
 
-SRC_URI="ftp://lug.mtu.edu/gentoo/distfiles/"$N-$V$R".tar.bz2"
+SRC_URI="ftp://lug.mtu.edu/gentoo/distfiles/"$N-$V".tar.bz2"
 
-RDEPEND=""
+RDEPEND="gtkmm libglade"
 BDEPEND=" "
 RECOMMENDED=""
 CONFLICT=""
-
-NOTES=""
 
 pbs_unpack() {
         dounpack

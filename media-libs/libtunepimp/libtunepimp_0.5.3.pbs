@@ -13,7 +13,7 @@ PACKAGER="StartOS Developers"
 SRC_URI="ftp://ftp.musicbrainz.org/pub/musicbrainz/"$N-$V".tar.gz"
 CHECKSUM="09649f983acef679a548344ba7a9bb2f"
 
-RDEPEND="curl cyrus-sasl expat fftw flac gcc-lib glibc gnutls libgcrypt libgpg-error libidn libmad libmpcdec libofa libogg libssh2 libtasn1 libvorbis mp4v2 musicbrainz openldap openssl rtmpdump taglib zlib"
+RDEPEND="curl flac libmad libmpcdec libofa libvorbis mp4v2 musicbrainz taglib"
 RECOMMENDED=""
 BDEPEND=""
 OPTIONAL=""

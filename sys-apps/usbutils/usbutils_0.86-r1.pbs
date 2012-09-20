@@ -12,17 +12,15 @@ PACKAGER="StartOS Developers"
 
 SRC_URI="http://downloads.sourceforge.net/linux-usb/"$N-$V".tar.gz"
 
-RDEPEND="glibc libusb-compat libusbx"
+RDEPEND="libusb-compat hwids"
 BDEPEND=""
-
-INSTALL="$N.install"
 
 pbs_unpack() {
         dounpack
 }
 
 pbs_config() {
-	config+="--disable-zlib"
+	config+="--disable-zlib --datadir=/usr/share/hwdata"
 	doconfig
 }
 
@@ -33,8 +31,9 @@ pbs_build() {
 pbs_install() {
 	domkinstall
 
-	# Rename tools
 	cd "$destdir"
+	# This is in the hwids package
+	rm -rf usr/share/hwdata/
 	domv_rename usr/sbin/update-usbids.sh usr/sbin/update-usbids
 }
 

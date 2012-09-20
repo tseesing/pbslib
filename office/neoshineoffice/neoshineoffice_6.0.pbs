@@ -13,7 +13,7 @@ PACKAGER="StartOS Developers"
 SRC_URI="http://office.cs2c.com.cn/data/upload/downloadCenter/product/NeoShineOffice_"$V"_PER_Lin_B40-43.tar"
 CHECKSUM="26ab6833a91efea5af7acd5eba2a039a"
 
-RDEPEND="atk avahi cairo dbus dbus-glib expat fontconfig freetype gcc-lib gconf gdk-pixbuf glib2 glibc gnome-vfs gst-plugins-base gstreamer gtk+ libffi libICE libpng libSM libX11 libXau libXaw libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libXinerama libXmu libXpm libXrandr libXrender libXt ncurses openssl orbit pango pixman sqlite util-linux-ng zlib"
+RDEPEND="gnome-vfs gst-plugins-base libXaw sqlite"
 RECOMMENDED=""
 BDEPEND=""
 OPTIONAL=""

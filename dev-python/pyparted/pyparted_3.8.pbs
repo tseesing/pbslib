@@ -13,7 +13,7 @@ PACKAGER="StartOS Developers"
 SRC_URI="https://fedorahosted.org/releases/p/y/"$N"/"$N-$V".tar.gz"
 CHECKSUM="e9cd0c94c71ac17755f71a8e1561eac2"
 
-RDEPEND="device-mapper glibc parted(>=3.1) python udev util-linux-ng"
+RDEPEND="parted(>=3.1) python"
 BDEPEND=""
 RECOMMENDED=""
 

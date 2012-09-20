@@ -7,27 +7,27 @@
 
 DESCRIPTION="An emulator with builtin DOS for running DOS Games"
 HOMEPAGE="http://dosbox.sourceforge.net/"
-REPO=""
 LICENSE="GPL"
 PACKAGER="StartOS Developers"
 
-SRC_URI="http://downloads.sourceforge.net/project/dosbox/dosbox/0.74/dosbox-0.74.tar.gz"
+SRC_URI="http://downloads.sourceforge.net/project/"$N"/"$N"/"$V"/"$N-$V".tar.gz"
 
-RDEPEND="libsdl"
+RDEPEND="alsa-lib sdl-net"
 BDEPEND=""
 RECOMMENDED=""
 CONFLICT=""
 
 INSTALL="$N.install"
 
-NOTES=""
-
 pbs_unpack() {
         dounpack
 }
 
-pbs_config() {
+pbs_patch() {
 	sed -i 's/png_check_sig/png_sig_cmp/' configure
+}
+
+pbs_config() {
 	config+="--sysconfdir=/etc/dosbox"
 	doconfig
 }

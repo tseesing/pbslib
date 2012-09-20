@@ -12,7 +12,7 @@ PACKAGER="StartOS Developers"
 
 SRC_URI="git://git.ylmf.com/ylmfos-dbus-polkit.git"
 
-RDEPEND="dbus dbus-glib eggdbus glib2 glibc polkit zlib"
+RDEPEND="dbus-glib polkit ypkg2"
 BDEPEND=""
 REPLACE="ylmfos-dbus-polkit"
 

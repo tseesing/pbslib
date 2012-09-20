@@ -13,7 +13,7 @@ PACKAGER="StartOS Developers"
 SRC_URI="http://downloads.sourceforge.net/"$N"/"$N-$V".tar.gz"
 CHECKSUM="cabbd2ef9148a61ca5f6e60ca63e6045"
 
-RDEPEND="glibc libxml2 libzip zlib"
+RDEPEND="libxml2 libzip"
 RECOMMENDED=""
 BDEPEND="cmake"
 OPTIONAL=""

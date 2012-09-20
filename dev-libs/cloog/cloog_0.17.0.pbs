@@ -13,7 +13,7 @@ PACKAGER="StartOS Developers"
 SRC_URI="http://www.bastoul.net/cloog/pages/download/"$N-$V".tar.gz"
 CHECKSUM="0aa3302c81f65ca62c114e5264f8a802"
 
-RDEPEND="glibc gmp isl"
+RDEPEND="isl"
 RECOMMENDED=""
 BDEPEND=""
 OPTIONAL=""

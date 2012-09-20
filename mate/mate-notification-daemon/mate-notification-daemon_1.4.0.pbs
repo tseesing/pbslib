@@ -15,7 +15,7 @@ REPO="testing"
 SRC_URI="http://pub.mate-desktop.org/releases/1.4/"$N-$V".tar.xz"
 CHECKSUM="755855f3dbe0ff35d694ea35b651699c5c589f457c72f1fabc04d297b8285e9f"
 
-RDEPEND="libmatenotify libmatewnck mate-conf mate-corba gtk+" 
+RDEPEND="libcanberra libmatenotify libmatewnck mate-conf"
 RECOMMENDED=""
 BDEPEND=""
 OPTIONAL=""

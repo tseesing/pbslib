@@ -13,7 +13,7 @@ PACKAGER="StartOS Developers"
 SRC_URI="http://downloads.sourceforge.net/sourceforge/"$N"/"$N-$V".tar.gz"
 CHECKSUM="caf0db059d8b8d35d6f08e6c0e1c7dfe"
 
-RDEPEND="glibc libraw1394"
+RDEPEND="libraw1394"
 RECOMMENDED=""
 BDEPEND=""
 OPTIONAL=""

@@ -12,7 +12,7 @@ PACKAGER="StartOS Developers"
 
 SRC_URI="https://sourceforge.net/projects/pcmanfm/files/PCManFM%20%2B%20Libfm%20%28tarball%20release%29/PCManFM/"$N-$V".tar.gz"
 
-RDEPEND="atk cairo expat fontconfig freetype gcc-lib gdk-pixbuf glib2 glibc gtk+ libfm libpng libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libXrandr libXrender menu-cache pango pixman zlib"
+RDEPEND="libfm"
 BDEPEND=""
 
 pbs_unpack() {

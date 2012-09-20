@@ -13,7 +13,7 @@ PACKAGER="StartOS Developers<>"
 SRC_URI="http://qtscriptgenerator.googlecode.com/files/"$N"-src-"$V".tar.gz"
 CHECKSUM="4c1078f26b196156e857c17c9d11a66cfea66f00"
 
-RDEPEND="expat fontconfig freetype gcc-lib glib2 glibc gst-plugins-base gstreamer libdrm libffi libICE libpng libSM libX11 libXau libxcb libXdamage libXdmcp libXext libXfixes libxml2 libXrender libXxf86vm mesa openssl qt-core sqlite util-linux-ng zlib"
+RDEPEND="qt-core"
 BDEPEND=""
 
 pbs_unpack() {

@@ -2,11 +2,18 @@
 
 post_install() {
 	dogroupadd -r "ftpgroup"
-	douseradd -c "ftp user" -d "/var/ftp/public" -s "/bin/false" -r -N -G "ftpgroup" "ftp"
+	douseradd -c "ftp user" -d "/var/ftp/public" -s "/bin/false" -r -N -G "ftpgroup" "ftp" ||true
 }       
 
 post_remove() {
 	douserdel "ftp"
-	dogroupdel "ftpgroup"
+	dogroupdel "ftpgroup" ||true
 }
 
+post_upgrade() {
+	post_install
+}
+
+post_downgrade() {
+	post_install
+}

@@ -13,7 +13,7 @@ PACKAGER="StartOS Developers"
 SRC_URI="http://gnome-mplayer.googlecode.com/files/"$N-$V".tar.gz"
 CHECKSUM="36eb536a3656afab4564f835aa86bab667724129"
 
-RDEPEND="mplayer alsa-lib atk attr cairo curl cyrus-sasl dbus dbus-glib e2fsprogs expat flac fontconfig freetype gcc-lib gconf gdk-pixbuf glib2 glibc gmtk gnutls gtk+ json-c keyutils krb5 libcap libdiscid libffi libgcrypt libgpg-error libgpod libICE libidn libimobiledevice libmusicbrainz libnotify libogg libplist libpng libproxy libSM libsndfile libssh2 libtasn1 libvorbis libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libXinerama libxml2 libXrandr libXrender libXScrnSaver libXtst neon openldap openssl orbit pango pixman pulseaudio rtmpdump sqlite usbmuxd util-linux-ng zlib"
+RDEPEND="mplayer curl gmtk libgpod libmusicbrainz libnotify libXScrnSaver"
 BDEPEND=""
 RECOMMENDED=""
 CONFLICT=""

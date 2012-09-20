@@ -13,7 +13,7 @@ PACKAGER="StartOS Developers"
 SRC_URI="http://downloads.sourceforge.net/libxosd/"$N-$V".tar.gz"
 CHECKSUM="4b349fe930e4eee2f504d6c02673e24d"
 
-RDEPEND="glibc libX11 libXau libxcb libXdmcp libXext libXinerama"
+RDEPEND="libXinerama"
 RECOMMENDED=""
 BDEPEND=""
 OPTIONAL=""

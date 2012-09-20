@@ -12,7 +12,7 @@ PACKAGER="StartOS Developers"
 
 SRC_URI="http://ftp.gwdg.de/pub/misc/mysql/Downloads/Connector-C++/"$N-$V".tar.gz"
 
-RDEPEND=""
+RDEPEND="libmysqlclient"
 BDEPEND="cmake"
 RECOMMENDED=""
 CONFLICT=""

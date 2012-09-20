@@ -13,7 +13,7 @@ PACKAGER="StartOS Developers"
 SRC_URI="http://libopenraw.freedesktop.org/download/"$N-$V".tar.bz2"
 CHECKSUM="f46d96975613593ee17aaf48cd350228"
 
-RDEPEND="expat gcc-lib glibc zlib"
+RDEPEND="expat gcc-lib zlib"
 BDEPEND="boost-dev"
 RECOMMENDED=""
 

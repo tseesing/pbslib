@@ -1,0 +1,51 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="Port of OpenBSD's free SSH release"
+HOMEPAGE="http://www.openssh.org/"
+LICENSE="custom:BSD"
+PACKAGER="StartOS Developers"
+
+SRC_URI="http://ftp.openbsd.org/pub/OpenBSD/OpenSSH/portable/"$N-$V"p1.tar.gz"
+
+RDEPEND="openssl pam"
+BDEPEND=""
+
+INSTALL="$N.install"
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_patch() {
+	dopatch ssh-default-conf.patch
+}
+
+pbs_config() {
+	config+=" --sysconfdir=/etc/ssh  
+		  --datadir=/usr/share/sshd  
+		  --libexecdir=/usr/lib/openssh  
+		  --with-md5-passwords  
+		  --with-pam
+		  --with-privsep-path=/var/lib/sshd "
+	doconfig
+}
+
+pbs_build() {
+	domake
+}
+
+pbs_install() {
+	domkinstall
+	dodoc LICENCE 
+
+	cd "$destdir"
+	mkdir -p etc/ssh/
+	docp "$filesdir"/systemd/*     lib/systemd/system/
+	docp_rename "$filesdir"/sshd.pam etc/pam.d/sshd
+}
+

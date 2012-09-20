@@ -15,7 +15,7 @@ REPO="testing"
 SRC_URI="http://pub.mate-desktop.org/releases/1.4/"$N-$V".tar.xz"
 CHECKSUM="5e75cb59c0b5b5733de6852639ebc1551158df757dcf103a9711f95a86664370"
 
-RDEPEND="libmatekbd mate-desktop libmatenotify"
+RDEPEND="eggdbus gst-plugins-base libmatekbd libmatenotify mate-desktop nss polkit"
 RECOMMENDED=""
 BDEPEND="intltool pkgconfig"
 OPTIONAL=""

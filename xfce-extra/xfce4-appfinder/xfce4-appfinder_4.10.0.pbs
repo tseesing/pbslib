@@ -13,7 +13,7 @@ PACKAGER="StartOS Developers"
 SRC_URI="http://archive.xfce.org/src/xfce/"$N"/4.10/"$N-$V".tar.bz2"
 CHECKSUM="042aae7e366428a6a92b6353b3f2727d64823076a7752b8e0a15f1f8f3645439"
 
-RDEPEND="atk cairo dbus dbus-glib expat fontconfig freetype garcon gcc-lib gdk-pixbuf glib2 glibc gtk+ libffi libICE libpng libSM libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libxfce4ui libxfce4util libXfixes libXi libXinerama libXrandr libXrender pango pixman startup-notification util-linux-ng xfconf zlib"
+RDEPEND="garcon libxfce4ui"
 RECOMMENDED=""
 BDEPEND=""
 OPTIONAL=""

@@ -1,12 +1,10 @@
 . /usr/lib/ybs/funcs
 
+group="kvm"
+
 post_install() {
-	dogroupadd kvm -f -g 78
-	echo ">>> PLEASE READ FOR KVM USAGE!"
-	echo ">>>  Load the correct KVM module, you will need a KVM capable CPU!"
-	echo ">>>  Add yourself to the group 'kvm'."
-	echo ">>>  Use 'qemu-kvm -enable-kvm' to use KVM."
-	echo ""
+	dogroupadd -r $group
+	echo ">>>  Add yourself to the group $group."
 }
 
 post_upgrade() {
@@ -14,5 +12,6 @@ post_upgrade() {
 }
 
 post_remove() {
-	dogroupdel kvm
+	dogroupdel $group ||true
 }
+

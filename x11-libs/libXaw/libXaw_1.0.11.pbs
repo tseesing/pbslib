@@ -13,7 +13,7 @@ PACKAGER="StartOS Developers"
 
 SRC_URI="http://www.x.org/releases/X11R7.7/src/lib/"$N-$V".tar.bz2"
 
-RDEPEND="glibc libICE libSM libX11 libXau libxcb libXdmcp libXext libXmu libXpm libXt util-linux-ng"
+RDEPEND="libXmu libXpm"
 BDEPEND=""
 
 pbs_unpack() {

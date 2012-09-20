@@ -12,7 +12,7 @@ PACKAGER="StartOS Developers"
 
 SRC_URI="ftp://ftp.gnu.org/gnu/"$N"/"$N-$V".tar.gz"
 
-RDEPEND="gcc-lib glibc libICE libSM libX11 libXau libXaw libxcb libXdmcp libXext libXmu libXpm libXt util-linux-ng"
+RDEPEND="gcc-lib libXaw"
 BDEPEND=""
 
 INSTALL="$N.install"

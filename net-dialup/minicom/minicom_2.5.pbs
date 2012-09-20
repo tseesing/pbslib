@@ -7,10 +7,12 @@
 
 DESCRIPTION="Serial Communication Program"
 HOMEPAGE="http://alioth.debian.org/projects/minicom"
- 
-SRC_URI="http://alioth.debian.org/frs/download.php/3487/"$N-$V$R".tar.gz"
+LICENSE="GPL"
+PACKAGER="StartOS Developers"
 
-RDEPEND=""
+SRC_URI="http://alioth.debian.org/frs/download.php/3487/"$N-$V".tar.gz"
+
+RDEPEND="ncurses"
 BDEPEND=""
 
 pbs_unpack() {
@@ -28,3 +30,4 @@ pbs_build() {
 pbs_install() {
 	domkinstall
 }
+

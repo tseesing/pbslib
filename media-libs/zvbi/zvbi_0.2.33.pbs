@@ -13,7 +13,7 @@ PACKAGER="StartOS Developers"
 SRC_URI="http://downloads.sourceforge.net/sourceforge/zapping/"$N-$V".tar.bz2"
 CHECKSUM="1741a6045c3eedfb611d645f2da69ac8"
 
-RDEPEND="glibc libpng libX11 libXau libxcb libXdmcp zlib"
+RDEPEND="libpng libX11"
 RECOMMENDED=""
 BDEPEND=""
 OPTIONAL=""

@@ -13,7 +13,7 @@ PACKAGER="StartOS Developers"
 SRC_URI="http://downloads.sourceforge.net/"$N"/"$N-$V"-src.tar.bz2"
 CHECKSUM="502664b2ec9ad5ab88b1882fef4c074d"
 
-RDEPEND="curl cyrus-sasl fribidi gcc-lib glibc gnutls libdrm libgcrypt libgpg-error libICE libidn libogg libSM libssh2 libtasn1 libvorbis libX11 libXau libxcb libXdamage libXdmcp libXext libXfixes libXxf86vm mesa openal openldap openssl rtmpdump util-linux-ng zlib"
+RDEPEND="curl fribidi libSM libvorbis mesa openal"
 RECOMMENDED=""
 BDEPEND="subversion cmake"
 OPTIONAL=""

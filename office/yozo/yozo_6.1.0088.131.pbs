@@ -13,7 +13,7 @@ PACKAGER="StartOS Developers"
 SRC_URI="http://download2.yozosoft.com/free/zh/2012/Yozo_Office_"$V"ZH.deb"
 CHECKSUM="e8527cb5643f3c2f8a706e8a7188cd38"
 
-RDEPEND="alsa-lib glibc libtool libX11 libXau libxcb libXdmcp libXext libXi libXtst unixodbc"
+RDEPEND="alsa-lib libXtst unixodbc"
 RECOMMENDED=""
 BDEPEND=""
 OPTIONAL=""

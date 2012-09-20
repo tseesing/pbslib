@@ -7,21 +7,15 @@
 
 DESCRIPTION="TEA is the text editor for UNIX-like systems and Windows. With an ultimate small size TEA provides you hundreds of functions."
 HOMEPAGE="http://tea-editor.sourceforge.net/#about"
-REPO=""
 LICENSE="GPL"
 PACKAGER="StartOS Developers"
 
-SRC_URI="http://nchc.dl.sourceforge.net/project/tea-editor/tea-editor/"$V$R"/"$N-$V$R".tar.bz2"
+SRC_URI="http://nchc.dl.sourceforge.net/project/tea-editor/tea-editor/"$V"/"$N-$V".tar.bz2"
 
-RDEPEND="aspell expat fontconfig freetype gcc-lib glib2 gdk-pixbuf glibc libdrm libICE libpng libSM libX11 libXau libxcb libXdmcp libXext libXrender mesa qt-core udev util-linux-ng zlib"
-BDEPEND="                     "
+RDEPEND="aspell hunspell qt-core"
+BDEPEND=""
 RECOMMENDED=""
 CONFLICT=""
-
-NOTES=""
-
-#DESKTOPFILE="glchess.desktop" or "/opt/test/test.desktop"
-#ICONFILE="test.png"   or "/opt/test/test.png"
 
 pbs_unpack() {
         dounpack
@@ -40,3 +34,4 @@ pbs_build() {
 pbs_install() {
 	domkinstall
 }
+

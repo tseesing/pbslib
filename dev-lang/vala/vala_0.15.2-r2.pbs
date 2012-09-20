@@ -1,0 +1,36 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="Compiler for the GObject type system"
+HOMEPAGE="http://live.gnome.org/Vala"
+LICENSE="LGPL"
+PACKAGER="StartOS Developers"
+
+SRC_URI="http://download.gnome.org/sources/"$N"/0.15/"$N-$V".tar.xz"
+CHECKSUM="1cc5d62714c2e4297cb458d11372f581f0e65070ed3b0e88133ce3db0cfee13c"
+
+RDEPEND="glib2"
+BDEPEND=""
+RECOMMENDED=""
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_config() {
+	config+="--enable-vapigen"
+	doconfig
+}
+
+pbs_build() {
+	domake
+}
+
+pbs_install() {
+	domkinstall
+}
+

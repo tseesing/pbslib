@@ -10,9 +10,9 @@ HOMEPAGE="http://www.opalvoip.org/"
 LICENSE="GPLv2"
 PACKAGER="StartOS Developers"
 
-SRC_URI="http://ftp.gnome.org/pub/gnome/sources/ptlib/2.10/"$N-$V".tar.bz2"
+SRC_URI="http://ftp.gnome.org/pub/gnome/sources/"$N"/2.10/"$N-$V".tar.bz2"
 
-RDEPEND="alsa-lib audiofile cyrus-sasl directfb expat gcc-lib glibc libICE libsdl libSM libX11 libXau libxcb libXdmcp libXt nas openldap openssl util-linux-ng v4l-utils zlib"
+RDEPEND="libsdl lua openldap pulseaudio v4l-utils"
 RECOMMENDED=""
 BDEPEND=""
 CONFLICT=""
@@ -22,18 +22,18 @@ pbs_unpack() {
 }
 
 pbs_config() {
-	config+=" --enable-opal 
-	              --enable-plugins 
-	              --enable-oss
-		      --enable-v4l2 
-	              --disable-avc
-		      --enable-sdl 
-		      --enable-ipv6
-		      --enable-v4l 
-		      --enable-dc
-		      --disable-odbc 
-		      --enable-expat
-		      --enable-httpforms"
+	config+="--enable-opal 
+	         --enable-plugins 
+	         --enable-oss
+		 --enable-v4l2 
+	         --disable-avc
+		 --enable-sdl 
+		 --enable-ipv6
+		 --enable-v4l 
+		 --enable-dc
+		 --disable-odbc 
+		 --enable-expat
+		 --enable-httpforms"
 	doconfig
 }
 
@@ -44,6 +44,4 @@ pbs_build() {
 pbs_install() {
 	domkinstall
 }
-
-
 

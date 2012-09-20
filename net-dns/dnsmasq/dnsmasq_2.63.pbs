@@ -13,7 +13,7 @@ PACKAGER="StartOS Developers"
 SRC_URI="http://www.thekelleys.org.uk/"$N"/"$N-$V".tar.gz"
 CHECKSUM="43e771997615ebcd8f6c6ffa60c3e40b"
 
-RDEPEND="dbus glibc"
+RDEPEND="dbus"
 RECOMMENDED=""
 BDEPEND=""
 CONFLICT=""

@@ -12,7 +12,7 @@ PACKAGER="StartOS Developers"
 
 SRC_URI="http://ftp.acc.umu.se/pub/GNOME/sources/"$N"/0.1/"$N-$V".tar.bz2"
 
-RDEPEND="gcc-lib glib2 glibc libdrm libX11 libXau libxcb libXcomposite libXdamage libXdmcp libXext libXfixes libXi libXtst libXxf86vm mesa"
+RDEPEND="glib2 libXcomposite libXtst mesa"
 BDEPEND=""
 RECOMMENDED=""
 

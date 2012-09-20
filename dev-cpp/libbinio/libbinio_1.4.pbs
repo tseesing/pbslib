@@ -12,7 +12,7 @@ PACKAGER="StartOS Developers"
  
 SRC_URI="http://downloads.sourceforge.net/project/"$N"/"$N"/"$V"/"$N-$V".tar.bz2"
 
-RDEPEND="gcc-lib glibc"
+RDEPEND="gcc-lib"
 BDEPEND=""
 RECOMMENDED=""
 
@@ -22,8 +22,12 @@ pbs_unpack() {
         dounpack
 }
 
-pbs_config() {
+pbs_patch() {
 	dopatch libbinio-1.4-cstdio.patch
+}
+
+pbs_config() {
+	config+=""
 	doconfig
 }
 
@@ -33,6 +37,6 @@ pbs_build() {
 
 pbs_install() {
 	domkinstall
-	dodoc AUTHORS ChangeLog COPYING INSTALL NEWS README
 }
+
 

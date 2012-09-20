@@ -13,7 +13,7 @@ PACKAGER="StartOS Developers"
 SRC_URI="http://ftp.osuosl.org/pub/linux/bluetooth/"$N-$V".tar.bz2"
 CHECKSUM="fce1b82eafb74bde54fe117372393ba8"
 
-RDEPEND="bluez glibc libusb-compat libusbx"
+RDEPEND="bluez"
 BDEPEND=""
 RECOMMENDED=""
 CONFLICT=""

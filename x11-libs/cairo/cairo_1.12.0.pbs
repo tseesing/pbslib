@@ -13,7 +13,7 @@ PACKAGER="StartOS Developers "
 SRC_URI="http://cairographics.org/releases/"$N-$V".tar.gz"
 CHECKSUM="63e0d1372a7919956b6d959709dfdf35d3cecc02"
 
-RDEPEND="binutils expat fontconfig freetype glib2 glibc libffi libpng libX11 libXau libxcb libXdmcp libXrender pixman zlib"
+RDEPEND="fontconfig glib2 libpng libXrender pixman"
 BDEPEND="xcb-util-dev"
 
 pbs_unpack() {

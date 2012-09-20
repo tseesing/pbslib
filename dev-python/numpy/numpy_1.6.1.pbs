@@ -13,7 +13,7 @@ PACKAGER="StartOS Developers"
 SRC_URI="http://downloads.sourceforge.net/"$N"/"$N-$V".tar.gz"
 CHECKSUM="2bce18c08fc4fce461656f0f4dd9103e"
 
-RDEPEND="glibc python"
+RDEPEND="python"
 BDEPEND=" "
 RECOMMENDED=""
 

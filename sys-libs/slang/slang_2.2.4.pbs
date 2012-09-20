@@ -12,7 +12,7 @@ PACKAGER="StartOS Developers"
 
 SRC_URI="ftp://ftp.fu-berlin.de/pub/unix/misc/slang/v2.2/"$N-$V".tar.bz2"
 
-RDEPEND="glibc libpcre libpng zlib"
+RDEPEND="libpcre libpng"
 BDEPEND=""
 RECOMMENDED=""
 CONFLICT=""

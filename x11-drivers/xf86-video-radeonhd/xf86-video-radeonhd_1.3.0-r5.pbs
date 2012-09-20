@@ -14,7 +14,7 @@ GROUP="x11-drivers"
 SRC_URI="http://xorg.freedesktop.org/archive/individual/driver/"$N-$V".tar.bz2"
 CHECKSUM="0065ded259b92357c322c5fa0eacdd1e"
 
-RDEPEND="glibc libdrm(>=2.4.37) libpciaccess xorg-server(>=1.12.2)"
+RDEPEND="libdrm(>=2.4.37) xorg-server(>=1.12.2)"
 BDEPEND="xextproto xproto"
 RECOMMENDED=""
 

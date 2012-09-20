@@ -38,7 +38,7 @@ pbs_build() {
 
 postgresql_install() {
 	DESCRIPTION="A sophisticated object-relational DBMS"
-	RDEPEND="postgresql-libs libxml2 readline(>=6.0) openssl(>=1.0.0)"
+	RDEPEND="libxml2 pam perl postgresql-libs"
 	
 	INSTALL="$N".install
 
@@ -107,5 +107,4 @@ postgresql-docs_install() {
 	rm -rf usr/share/man
 	cd -
 }
-
 

@@ -7,12 +7,12 @@
 
 DESCRIPTION="Streaming media framework"
 HOMEPAGE="http://gstreamer.sourceforge.net"
-LICENSE="GPLv2"
+LICENSE="LGPL"
 PACKAGER="StartOS Developers"
 
-SRC_URI="http://ftp.gnome.org/pub/gnome/sources/gstreamer/0.10/"$N-$V".tar.xz"
+SRC_URI="http://gstreamer.freedesktop.org/src/"$N"/"$N-$V".tar.bz2"
 
-RDEPEND="glib2 glibc libxml2 zlib"
+RDEPEND="glib2 libxml2"
 BDEPEND=""
 RECOMMENDED=""
 
@@ -21,7 +21,7 @@ pbs_unpack() {
 }
 
 pbs_config() {
-	config+="--disable-docbook --disable-tests"
+	config+="--disable-docbook --disable-tests --disable-static"
 	doconfig
 }
 

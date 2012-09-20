@@ -13,7 +13,7 @@ PACKAGER="StartOS Developers"
 SRC_URI="https://dl.google.com/linux/direct/"$N"-stable_current_i386.deb"
 CHECKSUM="6437350d125cda1a321d641e68f69847"
 
-RDEPEND="alsa-lib atk avahi bzip2 cairo cups dbus e2fsprogs expat fontconfig freetype gcc-lib gconf gdk-pixbuf glib2 glibc gnutls gtk+ keyutils krb5 libffi libgcrypt libgpg-error libpng libtasn1 libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libXinerama libXrandr libXrender libXScrnSaver nspr nss orbit pango pixman udev zlib"
+RDEPEND="alsa-lib cups gconf libXScrnSaver nss udev"
 BDEPEND=""
 RECOMMENDED=""
 CONFLICT=""

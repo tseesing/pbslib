@@ -13,7 +13,7 @@ PACKAGER="StartOS Developers"
 SRC_URI="http://fontconfig.org/release/"$N-$V".tar.gz"
 CHECKSUM="77e15a92006ddc2adbb06f840d591c0e"
 
-RDEPEND="bzip2 expat freetype glibc zlib"
+RDEPEND="expat freetype"
 BDEPEN=""
 
 INSTALL="$N.install"

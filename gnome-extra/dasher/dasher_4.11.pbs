@@ -12,7 +12,7 @@ PACKAGER="StartOS Developers"
 
 SRC_URI="http://ftp.acc.umu.se/pub/gnome/desktop/2.32/2.32.1/sources/"$N-$V".tar.bz2"
 
-RDEPEND="atk at-spi avahi cairo dbus dbus-glib expat fontconfig freetype gail gcc-lib gconf gdk-pixbuf glib2 glibc gnome-vfs gtk+ libart_lgpl libbonobo libbonoboui libcanberra libgcrypt libgnome libgnomecanvas libgnome-keyring libgnomeui libgpg-error libICE libogg libpng libSM libtool libvorbis libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libxml2 libXrandr libXrender openssl orbit pango pixman popt tdb util-linux-ng zlib"
+RDEPEND="at-spi libgnomeui"
 BDEPEND="" 
 RECOMMENDED=""
 
@@ -33,6 +33,6 @@ pbs_build() {
 
 pbs_install() {
 	domkinstall
-	dodoc AUTHORS COPYING NEWS README
 }
+
 

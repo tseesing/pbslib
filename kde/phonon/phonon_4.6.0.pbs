@@ -9,7 +9,7 @@ PACKAGER="StartOS Developers<>"
 
 SRC_URI="http://download.kde.org/stable/"$N"/"$V"/src/"$N-$V".tar.xz"
 
-RDEPEND="attr bzip2 dbus expat flac fontconfig freetype gcc-lib glib2 glibc gst-plugins-base gstreamer json-c libcap libffi libICE libogg libpng libqzeitgeist libSM libsndfile libvorbis libX11 libXau libxcb libXdmcp libXext libXi libxml2 libXrender libXtst openssl pulseaudio qt-core sqlite util-linux-ng zlib"
+RDEPEND="libqzeitgeist pulseaudio"
 BDEPEND="cmake"
 
 pbs_unpack() {

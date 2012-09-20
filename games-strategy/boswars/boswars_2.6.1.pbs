@@ -13,7 +13,7 @@ PACKAGER="StartOS Developers"
 SRC_URI="http://www.boswars.org/dist/releases/"$N-$V"-src.tar.gz"
 CHECKSUM="7f0fcf440e8d765c484f09074f993b40"
 
-RDEPEND="directfb gcc-lib glibc libdrm libICE libogg libpng libsdl libSM libtheora libvorbis libX11 libXau libxcb libXdamage libXdmcp libXext libXfixes libXt libXxf86vm lua mesa nas util-linux-ng zlib"
+RDEPEND="libsdl libtheora libvorbis lua"
 RECOMMENDED=""
 BDEPEND=""
 OPTIONAL=""

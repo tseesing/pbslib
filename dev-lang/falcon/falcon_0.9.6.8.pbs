@@ -13,7 +13,7 @@ PACKAGER="StartOS Developers"
 SRC_URI="http://falconpl.org/project_dl/_official_rel/Falcon-"$V".tgz"
 CHECKSUM="8720096a8257e8bf370e3f0a072b5600d7575f64"
 
-RDEPEND="atk bzip2 cairo curl cyrus-sasl dbus directfb expat fontconfig freetype gcc-lib gd gdk-pixbuf glib2 glibc gnutls gtk+ libICE libSM libX11 libXau libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libXinerama libXpm libXrandr libXrender libXt libffi libgcrypt libgpg-error libidn libjpeg-turbo libmysqlclient libpcre libpng libsdl libssh2 libtasn1 libxcb nas openldap openssl pango pixman postgresql-libs rtmpdump sdl-image sdl-mixer sdl-ttf sqlite util-linux-ng zlib"
+RDEPEND="curl gd gtk+ libmysqlclient libpcre postgresql-libs sdl-image sdl-mixer sdl-ttf sqlite"
 RECOMMENDED=""
 BDEPEND="cmake"
 OPTIONAL=""

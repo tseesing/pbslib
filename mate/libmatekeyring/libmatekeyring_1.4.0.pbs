@@ -15,7 +15,7 @@ REPO="testing"
 SRC_URI="http://pub.mate-desktop.org/releases/1.4/"$N-$V".tar.xz"
 CHECKSUM="454c2c8ab6dc474314abced78c3ff97f57368e93a5231e71acbd3cec9354890b"
 
-RDEPEND="libgcrypt "
+RDEPEND="dbus glib2 libgcrypt"
 RECOMMENDED=""
 BDEPEND="intltool pkgconfig python"
 OPTIONAL=""

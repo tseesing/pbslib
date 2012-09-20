@@ -7,20 +7,17 @@
 
 DESCRIPTION="FocusWriter is a simple, distraction-free writing environment."
 HOMEPAGE="http://gottcode.org/focuswriter/"
-REPO=""
 LICENSE="GPL"
 PACKAGER="StartOS Developers"
 
 SRC_URI="http://gottcode.org/"$N"/"$N-$V$R"-src.tar.bz2"
 
-RDEPEND="libao hunspell libzip qt-core"
+RDEPEND="hunspell libao libzip qt-core"
 BDEPEND=""
 RECOMMENDED=""
 CONFLICT=""
 
 INSTALL="$N.install"
-
-NOTES=""
 
 pbs_unpack() {
         dounpack

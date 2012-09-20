@@ -7,12 +7,12 @@
 
 DESCRIPTION="A GNOME application for managing encryption keys"
 HOMEPAGE="http://www.gnome.org/projects/seahorse/index.html"
-LICENSE="GPL-2"
+LICENSE="GPL"
 PACKAGER="StartOS Developers"
  
 SRC_URI="http://ftp.gnome.org/pub/gnome/desktop/2.32/2.32.1/sources/"$N-$V".tar.bz2 "
 
-RDEPEND="seahorse"
+RDEPEND="gnome-panel gtksourceview nautilus seahorse"
 BDEPEND="nautilus-dev gedit-dev gnome-keyring-dev"
 RECOMMENDED=""
 
@@ -22,19 +22,21 @@ pbs_unpack() {
         dounpack
 }
 
+pbs_patch() {
+	dopatch 03_dont_crash_on_exit.patch 06_gpgme_check_version.patch
+}
+
 pbs_config() {
-	dopatch 03_dont_crash_on_exit.patch
-	dopatch 06_gpgme_check_version.patch
 	config+=" --disable-schemas-install 
-		      --disable-scrollkeeper 
-		      --disable-static 
-		      --enable-shared 
-		      --enable-applet 
-		      --enable-libnotify 
-		      --enable-gedit 
-		      --enable-agent 
-		      --enable-nautilus 
-		      --disable-epiphany "
+		  --disable-scrollkeeper 
+		  --disable-static 
+		  --enable-shared 
+		  --enable-applet 
+		  --enable-libnotify 
+		  --enable-gedit 
+		  --enable-agent 
+		  --enable-nautilus 
+		  --disable-epiphany "
 	doconfig
 }
 

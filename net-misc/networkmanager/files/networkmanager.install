@@ -14,11 +14,11 @@ post_remove() {
 
 post_upgrade() {
 	systemctl --system daemon-reload
-	systemctl enable $unit
-	restart $unit ||true
+	systemctl enable $unit ||true
 }
 
 pos_downgrade() {
 	post_upgrade
 }
+
 

@@ -13,7 +13,7 @@ PACKAGER="StartOS Developers"
 SRC_URI="http://download.savannah.nongnu.org/releases/"$N"/"$N-$V".tar.gz"
 CHECKSUM="27113284f7d26a58f853c346e0851d7a"
 
-RDEPEND="gcc-lib glibc ilmbase zlib"
+RDEPEND="ilmbase zlib"
 RECOMMENDED=""
 BDEPEND=""
 OPTIONAL=""

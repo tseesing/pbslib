@@ -12,7 +12,7 @@ PACKAGER="StartOS Developers"
 
 SRC_URI="http://gupnp.org/sites/all/files/sources/"$N-$V".tar.gz"
 
-RDEPEND="gssdp"
+RDEPEND="gnutls gssdp util-linux-ng"
 RECOMMENDED=""
 BDEPEND=""
 

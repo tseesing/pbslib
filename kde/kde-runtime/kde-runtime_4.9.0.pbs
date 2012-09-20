@@ -10,7 +10,7 @@ GROUP="kde"
 
 SRC_URI="http://download.kde.org/stable/"$V"/src/"$N-$V".tar.xz"
 
-RDEPEND="phonon(>=4.6.0) acl alsa-lib attica attr bzip2 cyrus-sasl dbus e2fsprogs exiv2 expat flac fontconfig freetype gcc-lib giflib glib2 glibc gnutls gst-plugins-base gstreamer herqq ilmbase json-c kactivities kdelibs kdepimlibs keyutils krb5 libcanberra libcap libdbusmenu-qt libdrm libffi libgcrypt libgpg-error libICE libjpeg-turbo libogg libpcre libpng libqzeitgeist libSM libsndfile libssh libtasn1 libtool libvorbis libX11 libXau libxcb libXcursor libXdamage libXdmcp libXext libXfixes libXft libXi libxml2 libXpm libXrender libXScrnSaver libXtst libXxf86vm mesa nepomuk-core openexr openldap openslp openssl pulseaudio qca qt-core samba soprano sqlite strigi talloc tdb udev util-linux-ng xz-utils zlib"
+RDEPEND="exiv2 giflib kactivities kdepimlibs libcanberra libjpeg-turbo libpcre libssh nepomuk-core openexr openslp samba"
 BDEPEND="pkgconfig cmake automoc4 doxygen"
 
 INSTALL="$N.install"

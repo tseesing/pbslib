@@ -8,12 +8,12 @@
 DESCRIPTION="Alter a monitor's gamma correction through the X server"
 HOMEPAGE="http://xorg.freedesktop.org/"
 GROUP="x11-apps"
-LICENSE="GPL"
+LICENSE="custom"
 PACKAGER="StartOS Developers"
  
 SRC_URI="http://www.x.org/releases/X11R7.7/src/app/"$N-$V".tar.bz2"
 
-RDEPEND="glibc libX11 libXau libxcb libXdmcp libXext libXxf86vm"
+RDEPEND="libXxf86vm"
 BDEPEND=""
 
 pbs_unpack() {
@@ -30,5 +30,6 @@ pbs_build() {
 
 pbs_install() {
 	domkinstall
+	dodoc COPYING
 }
 

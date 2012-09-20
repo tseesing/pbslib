@@ -7,21 +7,17 @@
 
 DESCRIPTION="GNU VCDimager"
 HOMEPAGE="http://www.gnu.org/software/vcdimager/"
-REPO=""
 LICENSE="GPL"
-PRIORITY=""
 PACKAGER="StartOS Developers"
 
-SRC_URI="ftp://ftp.gnu.org/gnu/"$N"/"$N-$V$R".tar.gz"
+SRC_URI="ftp://ftp.gnu.org/gnu/"$N"/"$N-$V".tar.gz"
 
-RDEPEND=""
-BDEPEND=" "
+RDEPEND="libcdio libxml2 popt"
+BDEPEND=""
 RECOMMENDED=""
 CONFLICT=""
 
 INSTALL="$N.install"
-
-NOTES=""
 
 pbs_unpack() {
         dounpack

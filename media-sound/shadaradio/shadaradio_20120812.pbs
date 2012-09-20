@@ -12,7 +12,7 @@ PACKAGER="StartOS Developers"
 
 SRC_URI="shadaradio-20120812.tar.bz2"
 
-RDEPEND="bzip2 expat fontconfig freetype gcc-lib glib2 glibc libffi libICE libpng libSM libX11 libXau libxcb libXdmcp libXext libXrender openssl qt-core util-linux-ng zlib"
+RDEPEND="qt-core"
 RECOMMENDED=""
 BDEPEND=""
 OPTIONAL=""

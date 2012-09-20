@@ -15,7 +15,7 @@ REPO="testing"
 SRC_URI="http://pub.mate-desktop.org/releases/1.4/"$N-$V".tar.xz"
 CHECKSUM="0e5e0c4cb607c13d6d356c59699de78d93f2b72e620b99244bf4fc329925dd9b"
 
-RDEPEND="mate-conf bzip2 mate-mime-data samba"
+RDEPEND="mate-conf samba"
 RECOMMENDED=""
 BDEPEND="pkgconfig intltool gtk-doc mate-common"
 OPTIONAL=""

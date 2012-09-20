@@ -51,8 +51,8 @@ pbs_patch() {
 
 pbs_config() {
 	case "${ARCH}" in 
-		x86_64) config+="--enable-only64bit" ;;
-		 i686)  config+="--enable-only32bit"
+		x86_64) config+="--enable-only64bit " ;;
+		 i686)  config+="--enable-only32bit "
 	esac
 	config+="--without-mpicc"
 	doconfig

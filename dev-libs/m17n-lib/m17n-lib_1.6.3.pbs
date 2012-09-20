@@ -13,7 +13,7 @@ PACKAGER="StartOS Developers"
 SRC_URI="http://www.m17n.org/m17n-lib-download/"$N-$V".tar.gz"
 CHECKSUM="24c8f0a2fb167e1a0e25815c8421a2a4"
 
-RDEPEND=""
+RDEPEND="anthy fribidi gd libXaw libXft libxml2"
 RECOMMENDED=""
 BDEPEND=""
 OPTIONAL=""

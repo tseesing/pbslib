@@ -13,7 +13,7 @@ PACKAGER="StartOS Developers"
 SRC_URI="http://download.kde.org/stable/apps/KDE4.x/admin/"$N"-1-"$V".tar.bz2"
 CHECKSUM="a105e233e6733fb072c9080cd7ae1af2"
 
-RDEPEND="dbus dbus-glib eggdbus expat fontconfig freetype gcc-lib glib2 glibc libffi libICE libpng libSM libX11 libXau libxcb libXdmcp libXext libXrender polkit qt-core util-linux-ng zlib"
+RDEPEND="polkit qt-core"
 RECOMMENDED=""
 BDEPEND="cmake"
 OPTIONAL=""

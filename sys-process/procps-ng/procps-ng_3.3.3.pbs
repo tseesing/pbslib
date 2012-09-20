@@ -12,7 +12,7 @@ PACKAGER="StartOS Developers"
 
 SRC_URI="git://gitorious.org/procps/procps.git"
 
-RDEPEND="glibc ncurses"
+RDEPEND="ncurses"
 BDEPEND=""
 
 REPLACE="procps"

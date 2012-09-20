@@ -7,10 +7,12 @@
 
 DESCRIPTION="VTE based terminator"
 HOMEPAGE="http://lilyterm.luna.com.tw/index_cht.html"
- 
-SRC_URI="http://lilyterm.luna.com.tw/file/lilyterm-$V.tar.gz"
+LICENSE="GPLv2+"
+PACKAGER="StartOS Developers"
 
-RDEPEND=""
+SRC_URI="http://lilyterm.luna.com.tw/file/"$N-$V".tar.gz"
+
+RDEPEND="vte"
 BDEPEND=""
 
 pbs_unpack() {

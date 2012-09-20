@@ -12,7 +12,7 @@ PACKAGER="StartOS Developers"
 
 SRC_URI="http://download.osgeo.org/"$N"/tiff-"$V".tar.gz"
 
-RDEPEND="freeglut gcc-lib glibc libdrm libICE libjpeg-turbo libSM libX11 libXau libxcb libXdamage libXdmcp libXext libXfixes libXi libXmu libXt libXxf86vm mesa util-linux-ng zlib"
+RDEPEND="freeglut libjpeg-turbo libXmu zlib"
 BDEPEND=""
 
 pbs_unpack() {

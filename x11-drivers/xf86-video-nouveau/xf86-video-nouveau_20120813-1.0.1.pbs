@@ -14,7 +14,7 @@ GROUP="x11-drivers"
 SRC_URI="http://nouveau.freedesktop.org/release/"$N$R".tar.bz2"
 CHECKSUM="d120bdd4ee9fc3581f3b93e3b31c4574"
 
-RDEPEND="glibc libdrm(>=2.4.37) udev xorg-server(>=1.12.2-r1)"
+RDEPEND="libdrm(>=2.4.37) udev xorg-server(>=1.12.2-r1)"
 BDEPEND="dri2proto fontsproto randrproto renderproto videoproto xextproto xf86driproto xproto"
 RECOMMENDED=""
 	

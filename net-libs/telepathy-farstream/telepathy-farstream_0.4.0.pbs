@@ -13,7 +13,7 @@ PACKAGER="StartOS Developers"
 SRC_URI="http://telepathy.freedesktop.org/releases/"$N"/"$N-$V".tar.gz"
 CHECKSUM="52d110f8a9f27bce0a6c2c07e18aee56"
 
-RDEPEND="dbus dbus-glib farstream glib2 glibc gstreamer libffi libxml2 telepathy-glib zlib"
+RDEPEND="farstream telepathy-glib"
 RECOMMENDED=""
 BDEPEND=""
 OPTIONAL=""

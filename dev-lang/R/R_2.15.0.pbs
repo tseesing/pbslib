@@ -13,7 +13,7 @@ PACKAGER="StartOS Developers"
 SRC_URI="http://cran.r-project.org/src/base/R-2/"$N-$V".tar.gz"
 CHECKSUM="a633f87fdbd22e8c371971c535ca815e63c297f6"
 
-RDEPEND="blas cairo expat fontconfig freetype gcc-lib glib2 glibc icu lapack libffi libICE libjpeg-turbo libpng libSM libtiff libX11 libXau libxcb libXdmcp libXext libXft libXmu libXrender libXScrnSaver libXt ncurses pango pixman readline tcl tk util-linux-ng xz-utils zlib"
+RDEPEND="icu lapack libtiff pango readline tk xz-utils"
 RECOMMENDED=""
 BDEPEND=""
 OPTIONAL=""

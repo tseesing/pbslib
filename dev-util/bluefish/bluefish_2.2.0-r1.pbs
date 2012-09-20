@@ -12,7 +12,7 @@ PACKAGER="StartOS Developers"
 
 SRC_URI="http://www.bennewitz.com/"$N"/stable/source/"$N-$V".tar.gz"
 
-RDEPEND="atk bzip2 cairo enchant expat fontconfig freetype gcc-lib gdk-pixbuf glib2 glibc gtk+ gucharmap libffi libpng libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libXinerama libxml2 libXrandr libXrender pango pixman zlib"
+RDEPEND="enchant gucharmap libxml2"
 BDEPEND=""
 RECOMMENDED=""
 CONFLICT=""

@@ -13,7 +13,7 @@ PACKAGER="StartOS Developers"
 SRC_URI="http://linux.avasys.jp/drivers/lsb/epson-inkjet/escpr/src/"$N-$V"-1lsb3.2.tar.gz"
 CHECKSUM="c769dfa08da4847409bb705c90ed7a74"
 
-RDEPEND="avahi cups dbus e2fsprogs gcc-lib glibc gnutls keyutils krb5 libgcrypt libgpg-error libjpeg-turbo libpng libtasn1 libtiff zlib"
+RDEPEND="cups"
 RECOMMENDED=""
 BDEPEND=""
 OPTIONAL=""

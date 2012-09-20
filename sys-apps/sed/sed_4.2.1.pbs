@@ -12,7 +12,7 @@ PACKAGER="StartOS Developers"
 
 SRC_URI="http://ftp.gnu.org/pub/gnu/"$N"/"$N-$V".tar.bz2"
 
-RDEPEND="acl attr glibc"
+RDEPEND="acl"
 BDEPEND=""
 
 INSTALL="$N.install"

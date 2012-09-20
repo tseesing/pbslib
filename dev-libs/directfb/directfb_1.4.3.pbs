@@ -12,7 +12,7 @@ PACKAGER="StartOS Developers"
  
 SRC_URI="http://www.directfb.org/downloads/Core/DirectFB-1.4/DirectFB-"$V".tar.gz"
 
-RDEPEND="freetype gcc-lib glibc libdrm libjpeg-turbo libpng libX11 libXau libxcb libXdamage libXdmcp libXext libXfixes libXxf86vm mesa sysfsutils zlib"
+RDEPEND="freetype libjpeg-turbo libpng mesa sysfsutils"
 BDEPEND="libsdl-dev"
 RECOMMENDED="libsdl"
 

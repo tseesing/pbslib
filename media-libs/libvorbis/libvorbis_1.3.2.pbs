@@ -12,7 +12,7 @@ PACKAGER="StartOS Developers"
 
 SRC_URI="http://downloads.xiph.org/releases/vorbis/"$N-$V".tar.bz2"
 
-RDEPEND="glibc libogg"
+RDEPEND="libogg"
 BDEPEND=""
 RECOMMENDED=""
 

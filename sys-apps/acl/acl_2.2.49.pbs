@@ -12,7 +12,7 @@ PACKAGER="StartOS Developers"
 
 SRC_URI="http://mirrors.zerg.biz/nongnu/"$N"/"$N-$V".src.tar.gz"
 
-RDEPEND="attr glibc"
+RDEPEND="attr"
 BDEPEND=""
 
 pbs_unpack() {

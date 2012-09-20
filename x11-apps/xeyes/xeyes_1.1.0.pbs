@@ -8,13 +8,12 @@
 DESCRIPTION="X.Org xeyes application"
 HOMEPAGE="http://xorg.freedesktop.org/"
 GROUP="x11-apps"
-REPO=""
-LICENSE=""
+LICENSE="custom"
 PACKAGER="StartOS Developers"
 
-SRC_URI="http://xorg.freedesktop.org/releases/individual/app/$N-$V$R.tar.bz2"
+SRC_URI="http://xorg.freedesktop.org/releases/individual/app/"$N-$V".tar.bz2"
 
-RDEPEND=""
+RDEPEND="libXmu libXrender"
 BDEPEND=""
 
 pbs_unpack() {
@@ -22,7 +21,7 @@ pbs_unpack() {
 }
 
 pbs_config() {
-	
+	config+=""
 	doconfig
 }
 
@@ -32,5 +31,6 @@ pbs_build() {
 
 pbs_install() {
 	domkinstall
-	dodoc ChangeLog COPYING INSTALL README 
+	dodoc COPYING
 }
+

@@ -10,9 +10,9 @@ HOMEPAGE="http://code.google.com/p/font-manager/"
 LICENSE="GPL"
 PACKAGER="StartOS Developers"
 
-SRC_URI="http://font-manager.googlecode.com/files/"$N-$V$R".tar.bz2"
+SRC_URI="http://font-manager.googlecode.com/files/"$N-$V".tar.bz2"
 
-RDEPEND="expat fontconfig freetype gcc-lib glib2 glibc pango zlib"
+RDEPEND="pango sqlite"
 BDEPEND=""
 RECOMMENDED="reportlab"
 

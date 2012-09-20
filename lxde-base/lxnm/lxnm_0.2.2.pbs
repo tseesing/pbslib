@@ -12,7 +12,7 @@ PACKAGER="StartOS Developers"
 
 SRC_URI="http://ncu.dl.sourceforge.net/project/lxde/LXNM%20%28network%20manager%29/LXNM%200.2.2/"$N-$V".tar.gz"
 
-RDEPEND="glib2 glibc"
+RDEPEND="glib2"
 BDEPEND=""
 RECOMMENDED=""
 CONFLICT=""

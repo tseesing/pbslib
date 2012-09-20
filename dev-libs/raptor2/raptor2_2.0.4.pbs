@@ -12,7 +12,7 @@ PACKAGER="StartOS Developers"
 
 SRC_URI="http://download.librdf.org/source/"$N-$V".tar.gz"
 
-RDEPEND="curl cyrus-sasl glibc libidn libxml2 libxslt openldap openssl zlib"
+RDEPEND="curl libxslt"
 BDEPEND=""
 RECOMMENDED=""
 

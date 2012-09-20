@@ -8,12 +8,12 @@
 DESCRIPTION="point and click selection of X11 font names"
 HOMEPAGE="http://xorg.freedesktop.org/"
 GROUP="x11-apps"
-LICENSE="GPL"
+LICENSE="custom"
 PACKAGER="StartOS Developers"
 
 SRC_URI="http://xorg.freedesktop.org/releases/individual/app/"$N-$V".tar.bz2"
 
-RDEPEND="glibc libICE libSM libX11 libXau libXaw libxcb libXdmcp libXext libXmu libXpm libXt util-linux-ng"
+RDEPEND="libXaw"
 BDEPEND=""
 
 pbs_unpack(){
@@ -30,6 +30,7 @@ pbs_build() {
 
 pbs_install() {
 	domkinstall
+	dodoc COPYING
 }
 
 

@@ -6,13 +6,13 @@
 #
 
 DESCRIPTION="nautilus share plugin"
-HOMEPAGE="www.ylmf.com"
+HOMEPAGE="http://www.startos.com"
 LICENSE="GPL"
 PACKAGER="StartOS Developers"
 
 SRC_URI="nautilus-share-0.7.2.tar.bz2"
 
-RDEPEND="atk cairo expat fontconfig freetype gcc-lib gdk-pixbuf glib2 glibc gtk+ libpng libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libXrandr libXrender nautilus pango pixman zlib"
+RDEPEND="nautilus"
 BDEPEND=""
 RECOMMENDED=""
 CONFLICT=""

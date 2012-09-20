@@ -14,7 +14,7 @@ GROUP="ibus"
 SRC_URI="http://ibus.googlecode.com/files/"$N-$V".tar.gz"
 CHECKSUM="cdfbc440d7a5069b99e565c3b6e8d9e8b62e7af6"
 
-RDEPEND="ibus anthy glibc python"
+RDEPEND="ibus anthy python"
 RECOMMENDED=""
 BDEPEND=""
 CONFLICT=""

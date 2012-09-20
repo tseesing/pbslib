@@ -12,7 +12,7 @@ PACKAGER="StartOS Developers"
 
 SRC_URI="http://www.physik.uni-wuerzburg.de/~vrbehr/"$N"/src/"${N}_$V".tar.gz"
 
-RDEPEND="glibc cups ghostscript"
+RDEPEND="glibc cups"
 BDEPEND=""
 RECOMMENDED=""
 CONFLICT=""

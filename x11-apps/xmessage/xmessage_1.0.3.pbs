@@ -14,7 +14,7 @@ PACKAGER="StartOS Developers"
 SRC_URI="http://xorg.freedesktop.org/archive/individual/app/"$N-$V".tar.bz2"
 CHECKSUM="a8bfefbbe7785fa0e58ed4f596f4d79ba0b4d9b2"
 
-RDEPEND="glibc libICE libSM libX11 libXau libXaw libxcb libXdmcp libXext libXmu libXpm libXt util-linux-ng"
+RDEPEND="libXaw"
 RECOMMENDED=""
 BDEPEND=""
 OPTIONAL=""

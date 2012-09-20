@@ -12,7 +12,7 @@ PACKAGER="StartOS Developers"
 
 SRC_URI="ftp://ftp2.sane-project.org/pub/sane/"$N-$V"/"$N-$V".tar.gz"
 
-RDEPEND="avahi dbus gcc-lib glibc libexif libgphoto2 libjpeg-turbo libtiff libtool libusb-compat libusbx net-snmp openssl v4l-utils zlib"
+RDEPEND="avahi libgphoto2 libieee1284 libtiff net-snmp v4l-utils"
 BDEPEND=""
 RECOMMENDED=""
 REPLACE=""
@@ -31,6 +31,8 @@ pbs_patch() {
 pbs_config() {
 	config+="--with-docdir=/usr/share/doc/sane
 	         --enable-avahi
+		 --enable-pthread
+		 --disable-rpath
 	         --disable-locking"
 
 	doconfig
@@ -54,5 +56,8 @@ pbs_install() {
 		        
 	# Install xinetd file
 	install -D -m644 "${filesdir}"/sane.xinetd "${destdir}"/etc/xinetd.d/sane
+
+	#
+	dounit saned@.service saned.socket
 }
 

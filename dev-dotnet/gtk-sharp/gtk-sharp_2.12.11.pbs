@@ -12,7 +12,7 @@ PACKAGER="StartOS Developers"
 
 SRC_URI="http://ftp.novell.com/pub/mono/sources/gtk-sharp212/"$N-$V".tar.bz2"
 
-RDEPEND="mono atk cairo expat fontconfig freetype gcc-lib gdk-pixbuf glib2 glibc gtk+ libglade libpng libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libxml2 libXrandr libXrender pango pixman zlib"
+RDEPEND="mono libglade"
 BDEPEND=""
 RECOMMENDED=""
 CONFLICT=""

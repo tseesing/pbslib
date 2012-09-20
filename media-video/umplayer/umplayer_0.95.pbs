@@ -7,20 +7,17 @@
 
 DESCRIPTION="UMPlayer is cross-platform and installer packages are available for the Windows, Mac and GNU / Linux operating systems."
 HOMEPAGE="http://www.umplayer.com/"
-REPO=""
 LICENSE="GPL"
 PACKAGER="StartOS Developers"
 
 SRC_URI="umplayer.tar.gz"
 
-RDEPEND="expat fontconfig freetype gcc-lib glib2 gdk-pixbuf glibc libdrm libICE libpng libSM libX11 libXau libxcb libXdmcp libXext libXrender mesa qt-core udev util-linux-ng zlib"
-BDEPEND="                    "
+RDEPEND="qt-core"
+BDEPEND=""
 RECOMMENDED=""
 CONFLICT=""
 
 INSTALL="$N.install"
-
-NOTES=""
 
 pbs_unpack() {
         dounpack

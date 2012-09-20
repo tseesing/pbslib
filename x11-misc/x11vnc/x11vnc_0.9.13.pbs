@@ -13,7 +13,7 @@ PACKAGER="StartOS Developers"
 SRC_URI="http://downloads.sourceforge.net/project/libvncserver/"$N"/"$V"/"$N-$V".tar.gz"
 CHECKSUM="f011d81488ac94dc8dce2d88739c23bd85a976fa"
 
-RDEPEND="avahi dbus gcc-lib glibc libjpeg-turbo libX11 libXau libxcb libXdamage libXdmcp libXext libXfixes libXi libXinerama libXrandr libXrender libXtst openssl zlib"
+RDEPEND="avahi libjpeg-turbo libXtst openssl"
 RECOMMENDED=""
 BDEPEND=""
 OPTIONAL=""

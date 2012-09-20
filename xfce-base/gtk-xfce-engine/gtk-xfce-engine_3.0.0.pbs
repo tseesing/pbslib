@@ -13,7 +13,7 @@ PACKAGER="StartOS Developers"
 SRC_URI="http://archive.xfce.org/xfce/4.10/src/"$N-$V".tar.bz2"
 CHECKSUM="c02dec13f063c285de44d5388902822a"
 
-RDEPEND="atk cairo expat fontconfig freetype gcc-lib gdk-pixbuf glib2 glibc gtk+ libffi libpng libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libXinerama libXrandr libXrender pango pixman zlib"
+RDEPEND="gtk+"
 RECOMMENDED=""
 BDEPEND=""
 OPTIONAL=""

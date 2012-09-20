@@ -13,7 +13,7 @@ PACKAGER="StartOS Developers"
 
 SRC_URI="http://downloads.sourceforge.net/sourceforge/"$N"/"$N-$V".tar.gz"
 
-RDEPEND=""
+RDEPEND="openssl"
 RECOMMENDED=""
 BDEPEND=""
 CONFLICT=""

@@ -14,7 +14,7 @@ GROUP="base"
 SRC_URI="http://dri.freedesktop.org/"$N"/"$N-$V".tar.bz2"
 CHECKSUM="9765919c28d4a54887576db3680137cc"
 
-RDEPEND="glibc libpciaccess"
+RDEPEND="libpciaccess"
 BDEPEND=""
 REPLACE="libdrm-old"
 

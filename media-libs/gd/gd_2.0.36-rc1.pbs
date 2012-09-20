@@ -12,7 +12,7 @@ PACKAGER="StartOS Developers"
 
 SRC_URI="http://www.libgd.org/releases/"$N-$V"RC1.tar.bz2"
 
-RDEPEND="expat fontconfig freetype glibc libjpeg-turbo libpng libX11 libXau libxcb libXdmcp libXpm zlib"
+RDEPEND="fontconfig libjpeg-turbo libpng libXpm"
 BDEPEND=""
 
 pbs_unpack() {

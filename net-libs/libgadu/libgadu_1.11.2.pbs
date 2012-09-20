@@ -13,7 +13,7 @@ PACKAGER="StartOS Developers"
 SRC_URI="http://toxygen.net/"$N"/files/"$N-$V".tar.gz"
 CHECKSUM="832432fef251f69f31e68574c17f0c51"
 
-RDEPEND="glibc gnutls libgcrypt libgpg-error libtasn1 zlib"
+RDEPEND="gnutls"
 RECOMMENDED=""
 BDEPEND=""
 OPTIONAL=""

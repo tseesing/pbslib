@@ -12,7 +12,7 @@ PACKAGER="StartOS Developers"
  
 SRC_URI="http://downloads.sourceforge.net/project/"$N"/"$N"/"$V"/"$N-$V".tar.gz"
 
-RDEPEND="gcc-lib glibc opensp"
+RDEPEND="opensp"
 BDEPEND=""
 RECOMMENDED=""
 
@@ -23,9 +23,9 @@ pbs_unpack() {
 }
 
 pbs_config() {
-	config+=" --enable-default-catalog=/etc/sgml/catalog 
-	              --enable-default-search-path=/usr/share/sgml 
-		      --datadir=/usr/share/sgml/"$N-$V$R" "
+	config+="--enable-default-catalog=/etc/sgml/catalog 
+	         --enable-default-search-path=/usr/share/sgml 
+		 --datadir=/usr/share/sgml/"$N-$V""
 	doconfig
 }
 
@@ -36,13 +36,13 @@ pbs_build() {
 pbs_install() {
 	domkinstall
 	make DESTDIR="$destdir" install-man
-	docp dsssl/catalog dsssl/*.{dtd,dsl,sgm} "$destdir"/usr/share/sgml/"$N-$V$R"
+	docp dsssl/catalog dsssl/*.{dtd,dsl,sgm} "$destdir"/usr/share/sgml/"$N-$V"
 	cd "$destdir"
 	doln openjade       usr/bin/jade
 	doln libogrove.so   usr/lib/libgrove.so
 	doln libospgrove.so usr/lib/libspgrove.so
 	doln libostyle.so   usr/lib/libstyle.so
 	echo "SYSTEM \"http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd\" \"/usr/share/xml/docbook/xml-dtd-4.5/docbookx.dtd\"" \
-	      >> "$destdir"/usr/share/sgml/"$N-$V$R"/catalog
+	      >> "$destdir"/usr/share/sgml/"$N-$V"/catalog
 }
 

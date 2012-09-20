@@ -14,7 +14,7 @@ SRC_URI="http://yorba.org/download/"$N"/0.11/"$N-$V".tar.bz2 http://ftp.gnome.or
 
 CHECKSUM="bbbf2843eb98b6f0ef1dfcfb934e15cf bf35262cc611de447147d01cbac33767"
 
-RDEPEND="exiv2(>=0.22) atk bzip2 cairo dbus dbus-glib enchant exiv2 expat fontconfig freetype gail gcc-lib gconf gdk-pixbuf glib2 glibc gnutls gst-plugins-base gstreamer gtk+ icu lcms libexif libffi libgcrypt libgee libgexiv2 libgpg-error libgphoto2 libICE libjpeg-turbo libpng libraw libSM libsoup libtasn1 libtool libunique libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libXinerama libxml2 libXrandr libXrender libxslt libXt orbit pango pixman sqlite udev util-linux-ng webkitgtk zlib"
+RDEPEND="libgee libgexiv2 libgphoto2 libraw libunique udev webkitgtk" 
 BDEPEND=""
 RECOMMENDED=""
 

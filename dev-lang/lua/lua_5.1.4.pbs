@@ -12,7 +12,7 @@ PACKAGER="StartOS Developers"
  
 SRC_URI="http://www.lua.org/ftp/"$N-$V".tar.gz"
 
-RDEPEND="glibc readline ncurses"
+RDEPEND="readline"
 BDEPEND=""
 
 pbs_unpack() {

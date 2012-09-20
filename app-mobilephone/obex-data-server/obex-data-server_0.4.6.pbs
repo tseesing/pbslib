@@ -13,7 +13,7 @@ PACKAGER="StartOS Developers"
 SRC_URI="http://tadas.dailyda.com/software/"$N-$V".tar.gz"
 CHECKSUM="961ca5db6fe9c97024e133cc6203cc4d"
 
-RDEPEND=""
+RDEPEND="dbus-glib imagemagick openobex"
 RECOMMENDED=""
 BDEPEND=""
 OPTIONAL=""

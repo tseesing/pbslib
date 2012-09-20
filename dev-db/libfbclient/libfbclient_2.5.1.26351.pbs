@@ -13,7 +13,7 @@ PACKAGER="StartOS Developers"
 SRC_URI="http://downloads.sourceforge.net/firebird/Firebird-"$V"-0.tar.bz2"
 CHECKSUM="1772fba4f09c8fc84d989282405f90fd"
 
-RDEPEND="gcc-lib glibc icu ncurses"
+RDEPEND="icu ncurses"
 RECOMMENDED=""
 BDEPEND=""
 OPTIONAL=""

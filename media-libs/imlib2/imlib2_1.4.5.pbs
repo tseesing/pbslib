@@ -13,7 +13,7 @@ PACKAGER="StartOS Developers"
 SRC_URI="http://sourceforge.net/projects/enlightenment/files/"$N"-src/"$V"/"$N-$V".tar.gz"
 CHECKSUM="8406786d3852b1b1322c2e4bee3c9e5c"
 
-RDEPEND="bzip2 freetype giflib glibc libICE libid3tag libjpeg-turbo libpng libSM libtiff libX11 libXau libxcb libXdmcp libXext util-linux-ng zlib"
+RDEPEND="freetype giflib libid3tag libpng libtiff"
 BDEPEND=""
 
 pbs_unpack() {

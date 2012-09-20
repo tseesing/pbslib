@@ -7,24 +7,24 @@
 
 DESCRIPTION="The OpenGL Extension Wrangler Library"
 HOMEPAGE="http://glew.sourceforge.net/"
-REPO=""
 LICENSE="GPL"
 PACKAGER="StartOS Developers"
 
-SRC_URI="http://downloads.sourceforge.net/project/"$N"/"$N"/"$V$R"/"$N-$V$R".tgz"
+SRC_URI="http://downloads.sourceforge.net/project/"$N"/"$N"/"$V"/"$N-$V".tgz"
 
-RDEPEND=""
-BDEPEND=" "
+RDEPEND="libXi libXmu mesa"
+BDEPEND=""
 RECOMMENDED=""
-
-NOTES=""
 
 pbs_unpack() {
         dounpack
 }
 
-pbs_config() {
+pbs_patch() {
 	dopatch glew-1.5.7-mkinstall.patch
+}
+
+pbs_config() {
 	doconfig
 }
 

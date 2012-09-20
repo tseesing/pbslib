@@ -12,7 +12,7 @@ PACKAGER="StartOS Developers"
 
 SRC_URI="http://download.librdf.org/source/"$N-$V".tar.gz"
 
-RDEPEND="curl cyrus-sasl glibc gmp libidn libssh2 libxml2 libxslt mpfr openldap openssl raptor2 rtmpdump zlib"
+RDEPEND="mpfr raptor2"
 BDEPEND=""
 RECOMMENDED=""
 CONFLICT=""

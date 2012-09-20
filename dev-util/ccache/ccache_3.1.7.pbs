@@ -13,7 +13,7 @@ PACKAGER="StartOS Developers"
 SRC_URI="http://samba.org/ftp/"$N"/"$N-$V".tar.xz"
 CHECKSUM="80a698c22d0b06b19c88ac58e8d8b632"
 
-RDEPEND="glibc zlib"
+RDEPEND="zlib"
 BDEPEND=""
 RECOMMENDED=""
 CONFLICT=""

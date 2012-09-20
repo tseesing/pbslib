@@ -12,7 +12,7 @@ PACKAGER="StartOS Developers"
 
 SRC_URI="http://hal.freedesktop.org/releases/"$N-$V".tar.gz"
 
-RDEPEND="dbus dbus-glib eggdbus expat glib2 glibc pam zlib"
+RDEPEND="expat glib2 pam"
 BDEPEND="" 
 
 INSTALL="$N.install"

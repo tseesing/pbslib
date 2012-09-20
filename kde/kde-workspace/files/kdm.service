@@ -5,8 +5,8 @@ After=syslog.target dbus.target
 [Service]
 ExecStart=/usr/bin/kdm -nodaemon
 #ExecStop=killall lightdm
-#Restart=always
-#RestartSec=0
+Restart=on-failure
+RestartSec=1s
 
 [Install]
 Alias=display-manager.service

@@ -14,19 +14,21 @@ REPO="testing"
 
 SRC_URI="http://ftp.gnome.org/pub/gnome/sources/NetworkManager/0.9/NetworkManager-"$V".tar.xz"
 
-RDEPEND="dbus dbus-glib glib2 glibc libffi libnl libsoup libxml2 nspr nss polkit udev util-linux-ng zlib"
+RDEPEND="dbus-glib libnl libsoup nss polkit udev"
 BDEPEND=""
 RECOMMENDED=""
 
-INSTALL="$N-$V.install"
+INSTALL="$N.install"
 
 pbs_unpack() {
         dounpack
 }
 
 pbs_patch() {
-	# user in wheel can use networkmanager
+	# User in netdev can use networkmanager
 	dopatch networkmanager-conf-0.9.patch
+
+	dopatch dnsmasq-path.patch
 }
 
 pbs_config() {
@@ -46,7 +48,6 @@ pbs_build() {
 pbs_install() {
 	domkinstall
 	docp "$filesdir"/nm-system-settings.conf etc/NetworkManager
-	# Cleanup
 	rm -rf etc/init.d/
 }
 

@@ -13,7 +13,7 @@ PACKAGER="StartOS Developers"
 SRC_URI="http://download.tuxfamily.org/"$N"/"$N"/"$V"/"$N-$V"-src.tar.gz"
 CHECKSUM="d8d6b7a405139530650b8a9ae2ea6df3"
 
-RDEPEND="bzip2 curl cyrus-sasl directfb freetype gcc-lib glibc gnutls libdrm libgcrypt libgpg-error libICE libidn libjpeg-turbo libpng libsdl libSM libssh2 libtasn1 libX11 libXau libxcb libXdamage libxdg-basedir libXdmcp libXext libXfixes libxml2 libXt libXxf86vm lua mesa nas ode openldap openssl rtmpdump sdl-mixer sdl-net sdl-ttf sqlite util-linux-ng zlib"
+RDEPEND="curl libxdg-basedir libxml2 lua ode sdl-mixer sdl-net sdl-ttf sqlite"
 RECOMMENDED=""
 BDEPEND=""
 OPTIONAL=""
@@ -26,9 +26,7 @@ pbs_unpack() {
 }
 
 pbs_config() {
-	./configure LDFLAGS="-L/usr/lib" \
-	            --prefix=/usr \
-		    --disable-sdltest
+	./configure LDFLAGS="-L/usr/lib" --prefix=/usr --disable-sdltest
 }
 
 pbs_build() {

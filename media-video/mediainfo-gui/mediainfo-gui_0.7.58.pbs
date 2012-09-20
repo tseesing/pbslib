@@ -13,7 +13,7 @@ PACKAGER="StartOS Developers"
 SRC_URI="http://downloads.sourceforge.net/mediainfo/mediainfo_"$V".tar.bz2"
 CHECKSUM="e0b0decf4a036fad431aa5149cc71d59"
 
-RDEPEND="atk cairo curl cyrus-sasl expat fontconfig freetype gcc-lib gdk-pixbuf glib2 glibc gnutls gtk+ libffi libgcrypt libgpg-error libICE libidn libjpeg-turbo libmediainfo libpng libSM libssh2 libtasn1 libtiff libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libXinerama libXrandr libXrender libXxf86vm libzen openldap openssl pango pixman rtmpdump util-linux-ng wxWidgets zlib"
+RDEPEND="libmediainfo wxWidgets"
 RECOMMENDED=""
 BDEPEND=""
 OPTIONAL=""

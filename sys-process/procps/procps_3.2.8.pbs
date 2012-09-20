@@ -12,7 +12,7 @@ PACKAGER="StartOS Developers"
 
 SRC_URI="http://procps.sourceforge.net/"$N-$V".tar.gz"
 
-RDEPEND="glibc ncurses"
+RDEPEND="procps-ng"
 BDEPEND=""
 
 pbs_unpack() {

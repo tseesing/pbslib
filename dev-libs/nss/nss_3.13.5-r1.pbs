@@ -13,7 +13,7 @@ PACKAGER="StartOS Developers"
 SRC_URI="ftp://ftp.mozilla.org/pub/security/nss/releases/NSS_${V//./_}_RTM/src/"$N-$V".tar.gz"
 CHECKSUM="22cfe2cbccc93189699e6eed283eca288b45f6cb"
 
-RDEPEND="glibc nspr(>=4.9.1) sqlite zlib"
+RDEPEND="nspr(>=4.9.1) sqlite zlib"
 BDEPEND=""
 
 pbs_unpack() {

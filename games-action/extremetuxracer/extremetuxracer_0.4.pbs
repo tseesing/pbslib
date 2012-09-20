@@ -13,7 +13,7 @@ PACKAGER="StartOS Developers"
 SRC_URI="http://downloads.sourceforge.net/"$N"/"$N-$V".tar.gz"
 CHECKSUM="5e4057f90e6854e774f251f189b0e676cfd7e2f15779c75544c9ac5b8e30273d"
 
-RDEPEND="directfb freetype gcc-lib glibc libdrm libICE libpng libsdl libSM libX11 libXau libxcb libXdamage libXdmcp libXext libXfixes libXi libXmu libXt libXxf86vm mesa nas sdl-mixer tcl util-linux-ng zlib"
+RDEPEND="libXi sdl-mixer tcl"
 RECOMMENDED=""
 BDEPEND=""
 OPTIONAL=""

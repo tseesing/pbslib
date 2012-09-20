@@ -13,7 +13,7 @@ PACKAGER="StartOS Developers"
 SRC_URI="http://sourceforge.net/projects/"$N"/files/"$N"/"$N-$V"/"$N-$V".tar.bz2"
 CHECKSUM="6977d89ade1c81ccb8310dae0a0d3509"
 
-RDEPEND="atk atkmm cairo cairomm device-mapper expat fontconfig freetype gcc-lib gdk-pixbuf glib2 glibc glibmm gtk+ gtkmm libffi libpng libsigc++ libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libXinerama libXrandr libXrender pango pangomm parted(>=3.1) pixman udev util-linux-ng zlib"
+RDEPEND="gtkmm parted(>=3.1)"
 BDEPEND=""
 RECOMMENDED="dosfstools jfsutils ntfs-3g e2fsprogs reiserfsprogs xfsprogs mtools"
 

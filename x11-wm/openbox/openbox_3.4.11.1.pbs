@@ -12,7 +12,7 @@ PACKAGER="StartOS Developers"
 
 SRC_URI="http://offload2.icculus.org:9090/"$N"/releases/"$N-$V".tar.gz"
 
-RDEPEND="expat fontconfig freetype gcc-lib glib2 glibc libICE libSM libX11 libXau libxcb libXcursor libXdmcp libXext libXfixes libXft libXinerama libxml2 libXrandr libXrender pango startup-notification util-linux-ng zlib"
+RDEPEND="libSM libXcursor libXinerama libxml2 libXrandr pango startup-notification"
 BDEPEND=""
 
 pbs_unpack() {

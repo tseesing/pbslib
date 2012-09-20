@@ -13,7 +13,7 @@ PACKAGER="StartOS Developers"
 SRC_URI="http://samba.org/samba/ftp/stable/"$N-$V".tar.gz"
 CHECKSUM="355b4530c20997e94aebc74cd6ea5307"
 
-RDEPEND="acl attr avahi cups cyrus-sasl dbus e2fsprogs gamin gcc-lib glibc gnutls keyutils krb5 libcap libgcrypt libgpg-error libtasn1 ncurses openldap openssl pam popt readline talloc tdb zlib"
+RDEPEND="cups gamin openldap popt readline talloc tdb"
 BDEPEND=""
 RECOMMENDED=""
 CONFLICT="samba4"

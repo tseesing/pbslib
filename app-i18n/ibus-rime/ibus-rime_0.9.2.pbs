@@ -14,7 +14,7 @@ GROUP="ibus"
 SRC_URI="http://rimeime.googlecode.com/files/"$N-$V".tar.gz"
 CHECKSUM="984cbfe74237effbe579aa6a4b7ae227"
 
-RDEPEND=""
+RDEPEND="ibus librime"
 RECOMMENDED=""
 BDEPEND=""
 OPTIONAL=""

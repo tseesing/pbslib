@@ -13,7 +13,7 @@ PACKAGER="StartOS Developers"
 SRC_URI="http://libtorrent.googlecode.com/files/"$N-$V".tar.gz"
 CHECKSUM="72788037bdf6a0a4796b4d74e543528cbfe9899b"
 
-RDEPEND="boost-libs gcc-lib geoip glibc openssl python zlib"
+RDEPEND="boost-libs geoip python"
 BDEPEND=""
 RECOMMENDED=""
 CONFLICT=""
@@ -23,8 +23,7 @@ pbs_unpack() {
 }
 
 pbs_config() {
-	config+=" --enable-python-binding
-	          --with-libgeoip=system "
+	config+="--enable-python-binding --with-libgeoip=system"
 	doconfig
 }
 

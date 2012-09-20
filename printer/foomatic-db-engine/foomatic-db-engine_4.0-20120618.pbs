@@ -13,7 +13,7 @@ PACKAGER="StartOS Developers"
 SRC_URI="http://www.openprinting.org/download/foomatic/"$N-$V$R".tar.gz"
 CHECKSUM="20a97361ac74fb8148bb78fc73eef37b"
 
-RDEPEND="libxml2 zlib glibc foomatic-filters"
+RDEPEND="libxml2 foomatic-filters"
 BDEPEND=""
 RECOMMENDED=""
 

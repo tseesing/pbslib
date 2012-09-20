@@ -6,7 +6,7 @@
 #
 
 DESCRIPTION="ntdiskmap"
-HOMEPAGE="www.ylmf.net"
+HOMEPAGE="http://www.startos.com"
 LICENSE="GPL"
 PACKAGER="StartOS Developers"
 
@@ -14,7 +14,7 @@ INSTALL="$N.install"
 
 SRC_URI="git://10.0.0.11/"$N".git"
 
-RDEPEND="dbus dbus-glib eggdbus glib2 glibc polkit zlib"
+RDEPEND="dbus-glib polkit"
 BDEPEND=""
 
 pbs_unpack() {

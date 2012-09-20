@@ -14,7 +14,7 @@ PACKAGER="StartOS Developers"
 SRC_URI="http://xorg.freedesktop.org/archive/individual/app/"$N-$V".tar.bz2"
 CHECKSUM="414fcb053418fb1418e3a39f4a37e0f7"
 
-RDEPEND="freetype glibc libfontenc zlib"
+RDEPEND="freetype libfontenc"
 BDEPEND=""
 
 pbs_unpack() {

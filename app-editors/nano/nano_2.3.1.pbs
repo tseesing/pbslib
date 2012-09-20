@@ -12,7 +12,7 @@ PACKAGER="StartOS Developers"
 
 SRC_URI="http://ftp.gnu.org/pub/gnu/nano/"$N-$V".tar.gz"
 
-RDEPEND="file glibc ncurses zlib"
+RDEPEND="file ncurses"
 BDEPEND=""
 RECOMMENDED=""
 CONFLICT=""

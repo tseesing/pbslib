@@ -13,7 +13,7 @@ PACKAGER="StartOS Developers"
 SRC_URI="http://freedesktop.org/software/"$N"/releases/"$N"/"$N-$V".tar.gz"
 CHECKSUM="5d6e561b3688d0d0c8906fec4f356df3"
 
-RDEPEND="glib2 glibc gst-plugins-base gstreamer libffi libnice libxml2 zlib"
+RDEPEND="gst-plugins-base libnice"
 RECOMMENDED=""
 BDEPEND=""
 OPTIONAL=""

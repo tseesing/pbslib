@@ -13,7 +13,7 @@ PACKAGER="StartOS Developers"
 SRC_URI="http://ftp.gnome.org/pub/gnome/sources/"$N"/0.5/"$N-$V".tar.xz"
 CHECKSUM="1de65d8ffa8c25a61a8e8c4b7e5963d4a826f4fcf7120d66ed027f5f70cc8f81"
 
-RDEPEND="atk attr cairo cyrus-sasl dbus expat flac fontconfig freetype gcc-lib gdk-pixbuf glib2 glibc gnutls gtk+ json-c libcap libffi libgcrypt libgpg-error libICE libogg libpng libSM libsndfile libtasn1 libvorbis libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libXinerama libXrandr libXrender libXtst pango pixman pulseaudio util-linux-ng zlib"
+RDEPEND="cyrus-sasl gtk+ pulseaudio"
 BDEPEND=""
 RECOMMENDED=""
 
@@ -22,9 +22,7 @@ pbs_unpack() {
 }
 
 pbs_config() {
-	config+=" --with-python 
-	          --disable-static 
-		  --with-gtk=2.0 "
+	config+="--with-python --disable-static --with-gtk=2.0"
 	doconfig
 }
 

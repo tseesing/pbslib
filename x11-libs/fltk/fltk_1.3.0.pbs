@@ -12,7 +12,8 @@ PACKAGER="StartOS Developers"
 
 SRC_URI="http://ftp.easysw.com/pub/"$N"/"$V"/"$N-$V"-source.tar.gz"
 
-RDEPEND="expat fontconfig freetype gcc-lib glibc libX11 libXau libxcb libXdmcp libXext libXft libXinerama libXrender zlib libjpeg-turbo"
+RDEPEND="gcc-lib libjpeg-turbo libpng libXft libXinerama"
+
 RECOMMENDED=""
 BDEPEND=""
 CONFLICT=""

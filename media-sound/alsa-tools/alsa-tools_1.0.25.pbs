@@ -13,7 +13,7 @@ PACKAGER="StartOS Developers"
 SRC_URI="ftp://ftp.alsa-project.org/pub/tools/"$N-$V".tar.bz2"
 CHECKSUM="57bfec98a814d12e0f7ab379aaeccd87"
 
-RDEPEND="alsa-lib atk cairo expat fltk fontconfig freetype gcc-lib gdk-pixbuf glib2 glibc gtk+ libpng libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXft libXi libXinerama libXrandr libXrender pango pixman zlib"
+RDEPEND="alsa-lib fltk gtk+"
 RECOMMENDED=""
 BDEPEND=""
 OPTIONAL=""

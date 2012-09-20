@@ -13,7 +13,7 @@ GROUP="kde"
 
 SRC_URI="http://download.kde.org/stable/"$V"/src/"$N-$V".tar.xz"
 
-RDEPEND="bzip2 dbus expat fontconfig freetype gcc-lib glib2 glibc kdelibs libffi libICE libpng libSM libX11 libXau libxcb libXdmcp libXext libXrender ncurses openssl qt-core readline util-linux-ng xz-utils zlib"
+RDEPEND="kdelibs readline"
 RECOMMENDED=""
 BDEPEND="cmake"
 OPTIONAL=""

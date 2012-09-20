@@ -14,7 +14,7 @@ PACKAGER="StartOS Developers"
 SRC_URI="http://xorg.freedesktop.org/archive/individual/app/"$N-$V".tar.bz2"
 CHECKSUM="08e3f6b523da8b0af179f22f339508b2"
 
-RDEPEND="glibc libICE"
+RDEPEND="libICE"
 BDEPEND=""
 
 pbs_unpack() {

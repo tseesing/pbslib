@@ -12,8 +12,8 @@ PACKAGER="StartOS Developers"
 
 SRC_URI="http://ftp.gnome.org/pub/gnome/desktop/2.32/2.32.1/sources/"$N-$V".tar.bz2"
 
-RDEPEND="atk bzip2 cairo dbus dbus-glib expat fontconfig freetype gcc-lib gconf gdk-pixbuf glib2 glibc gtk+ libgcrypt libgpg-error libICE libpng libSM libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libxml2 libXrandr libXrender libxslt orbit pango pixman rarian startup-notification util-linux-ng zlib"
-BDEPEND="gnome-doc-utils-dev"
+RDEPEND="gconf libxslt rarian startup-notification"
+BDEPEND=""
 RECOMMENDED=""
 
 INSTALL="$N.install"
@@ -22,11 +22,18 @@ pbs_unpack() {
         dounpack
 }
 
-pbs_config() {
-	dopatch yelp-2.30.2-port-to-xulrunner-2-r2.patch
+pbs_patch() {
+	dopatch yelp-2.30.2-uri-handler.patch
+	dopatch yelp-2.30.2-print-crash.patch
+	dopatch yelp-2.30.2-freeze-move.patch
+	dopatch yelp-2.30.2-xz-support.patch
 
-	config+="--disable-schemas-install 
-	         --with-search=basic "
+	sed -i -e '/CFLAGS/s:-pedantic -ansi::' configure.in || die
+}
+
+pbs_config() {
+	config+="--disable-schemas-install --with-gecko=libxul"
+	autoreconf
 	doconfig
 }
 

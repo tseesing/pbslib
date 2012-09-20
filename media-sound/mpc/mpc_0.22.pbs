@@ -13,7 +13,7 @@ PACKAGER="StartOS Developers"
 SRC_URI="http://downloads.sourceforge.net/musicpd/"$N-$V".tar.gz"
 CHECKSUM="e35414c1f5b25f4e500ceae125adb5bb9063b029"
 
-RDEPEND="glibc libmpdclient"
+RDEPEND="libmpdclient"
 RECOMMENDED=""
 BDEPEND=""
 OPTIONAL=""

@@ -6,14 +6,13 @@
 #
 
 DESCRIPTION="LFS packet manager"
-COMMENTS=""
 HOMEPAGE="http://paco.sourceforge.net/index.html"
 LICENSE="GPL"
 PACKAGER="StartOS Developers"
 
 SRC_URI="http://downloads.sourceforge.net/sourceforge/"$N"/"$N-$V".tar.bz2"
 
-RDEPEND=""
+RDEPEND="gcc-lib"
 RECOMMENDED=""
 BDEPEND=""
 CONFLICT=""
@@ -33,7 +32,7 @@ pbs_build() {
 
 pbs_install() {
 	domkinstall
-	dodoc ChangeLog COPYING README
 }
+
 
 

@@ -12,7 +12,7 @@ PACKAGER="StartOS Developers"
 
 SRC_URI="http://cryptopp.com/cryptopp560.zip"
 
-RDEPEND="gcc-lib glibc"
+RDEPEND="gcc-lib"
 BDEPEND="unzip"
 
 pbs_unpack() {

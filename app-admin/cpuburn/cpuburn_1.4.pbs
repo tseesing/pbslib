@@ -1,0 +1,41 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="CPU testing utilities in optimized assembler for maximum loading of CPUs"
+HOMEPAGE="https://launchpad.net/ubuntu/+source/cpuburn"
+LICENSE="GPL"
+PACKAGER="StartOS Developers"
+
+SRC_URI="https://launchpad.net/ubuntu/+archive/primary/+files/"$N"_"$V"a.orig.tar.gz"
+CHECKSUM="a9e1df40c660324eb08e91847cbc41b9"
+
+RDEPEND=""
+RECOMMENDED=""
+BDEPEND=""
+OPTIONAL=""
+CONFLICT=""
+REPLACE=""
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_patch() {
+	dopatch cpuburn.patch
+}
+
+pbs_build() {
+	domake
+}
+
+pbs_install() {
+	for i in burnBX burnK6 burnK7 burnMMX burnP5 burnP6; do
+		install -Dm755 "${i}" "$destdir"/usr/bin/"${i}"
+	done
+	dodoc README Design
+}
+

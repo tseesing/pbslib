@@ -12,7 +12,7 @@ PACKAGER="StartOS Developers"
 
 SRC_URI="http://ftp.gnu.org/gnu/"$N"/"$N-$V"a.tar.bz2"
 
-RDEPEND="glibc zlib"
+RDEPEND="zlib"
 BDEPEND=""
 
 pbs_unpack() {

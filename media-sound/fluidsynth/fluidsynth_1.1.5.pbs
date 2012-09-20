@@ -13,7 +13,7 @@ PACKAGER="StartOS Developers"
 SRC_URI="http://downloads.sourceforge.net/"$N"/"$N-$V".tar.gz"
 CHECKSUM="657e49e682b316432a4421dbb0313c3e"
 
-RDEPEND="alsa-lib attr dbus flac glib2 glibc jack-audio-connection-kit json-c libcap libICE libogg libSM libsndfile libvorbis libX11 libXau libxcb libXdmcp libXext libXi libXtst ncurses pulseaudio readline util-linux-ng"
+RDEPEND="pulseaudio"
 RECOMMENDED=""
 BDEPEND="cmake"
 OPTIONAL=""

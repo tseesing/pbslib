@@ -13,7 +13,7 @@ PACKAGER="StartOS Developers"
 SRC_URI="http://yorba.org/download/gexiv2/stable/"$N-$V".tar.bz2"
 CHECKSUM="35696a9da49351cfec360147d34ae1ee"
 
-RDEPEND="exiv2 gcc-lib glib2 glibc libffi zlib"
+RDEPEND="exiv2 glib2"
 BDEPEND=""
 RECOMMENDED=""
 

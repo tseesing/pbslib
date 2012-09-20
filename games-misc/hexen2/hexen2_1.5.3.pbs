@@ -17,7 +17,7 @@ SRC_URI="http://downloads.sourceforge.net/uhexen2/hexen2source-"$V".tgz
 CHECKSUM="ee79e00471acdbb28e793ae5e4c6404a 36bbd2eb1c2cef60890034e9606f9b6b 
           9ac598a80765daa0862893bd0aac765a 7284f2a331bad365f84f7d2112173f3d"
 
-RDEPEND="atk cairo directfb expat fontconfig freetype gcc-lib gdk-pixbuf glib2 glibc gtk+ libffi libICE libmad libogg libpng libsdl libSM libvorbis libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libXinerama libXrandr libXrender libXt nas pango pixman util-linux-ng zlib"
+RDEPEND="gtk+ libmad libsdl libvorbis"
 RECOMMENDED=""
 BDEPEND=""
 OPTIONAL=""

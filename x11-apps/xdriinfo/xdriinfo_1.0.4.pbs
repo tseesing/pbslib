@@ -8,12 +8,12 @@
 DESCRIPTION="query configuration information of DRI drivers"
 HOMEPAGE="http://xorg.freedesktop.org/"
 GROUP="x11-apps"
-LICENSE="GPL"
+LICENSE="custom"
 PACKAGER="StartOS Developers"
 
 SRC_URI="http://www.x.org/releases/X11R7.6/src/app/"$N-$V".tar.bz2"
 
-RDEPEND="gcc-lib glibc libdrm libX11 libXau libxcb libXdamage libXdmcp libXext libXfixes libXxf86vm mesa"
+RDEPEND="mesa"
 BDEPEND=""
 
 pbs_unpack() {
@@ -31,5 +31,6 @@ pbs_build() {
 
 pbs_install() {
 	domkinstall
+	dodoc COPYING
 }
 

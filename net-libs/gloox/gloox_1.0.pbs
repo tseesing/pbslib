@@ -14,7 +14,7 @@ PACKAGER="StartOS Developers"
 SRC_URI="http://camaya.net/download/"$N-$V".tar.bz2"
 CHECKSUM="f8eacf1c6476e0a309b453fd04f90e31"
 
-RDEPEND="gcc-lib glibc gnutls libgcrypt libgpg-error libidn libtasn1 zlib"
+RDEPEND="gnutls libidn"
 RECOMMENDED=""
 BDEPEND=""
 OPTIONAL=""

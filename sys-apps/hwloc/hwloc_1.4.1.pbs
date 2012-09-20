@@ -13,7 +13,7 @@ PACKAGER="StartOS Developers"
 SRC_URI="http://www.open-mpi.org/software/hwloc/v1.4/downloads/"$N-$V".tar.bz2"
 CHECKSUM="911d2ba77fa968c3c72caf75a9e21637f3677acc"
 
-RDEPEND="cairo expat fontconfig freetype glibc libpng libX11 libXau libxcb libXdmcp libxml2 libXrender ncurses pciutils pixman zlib"
+RDEPEND="cairo libxml2 ncurses pciutils"
 RECOMMENDED=""
 BDEPEND=""
 OPTIONAL=""

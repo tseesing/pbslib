@@ -13,7 +13,7 @@ PACKAGER="StartOS Developers"
 SRC_URI="http://prdownloads.sourceforge.net/"$N"/"$N-$V".tar.gz"
 CHECKSUM="f46860a9e16dac4b693bd05f16370b03"
 
-RDEPEND="atk avahi cairo dbus dbus-glib expat fontconfig freetype gail gcc-lib gconf gdk-pixbuf glib2 glibc gnome-vfs gtk+ libart_lgpl libbonobo libbonoboui libcanberra libffi libgcrypt libglade libgnome libgnomecanvas libgnome-keyring libgnomeui libgpg-error libICE libogg libpng libSM libtool libvorbis libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libXinerama libxml2 libXrandr libXrender openssl orbit pango pixman popt tdb util-linux-ng zlib"
+RDEPEND="libgnomeui"
 RECOMMENDED=""
 BDEPEND=""
 OPTIONAL=""

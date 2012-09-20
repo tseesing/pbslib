@@ -7,8 +7,10 @@
 
 DESCRIPTION="Package config system that manages compile/link flags"
 HOMEPAGE="http://pkgconfig.freedesktop.org/wiki/"
- 
-SRC_URI="http://pkgconfig.freedesktop.org/releases/pkg-config-"$V$R".tar.gz"
+LICENSE="GPL"
+PACKAGER="StartOS Developers"
+
+SRC_URI="http://pkgconfig.freedesktop.org/releases/pkg-config-"$V".tar.gz"
 
 RDEPEND="glibc"
 BDEPEND=""

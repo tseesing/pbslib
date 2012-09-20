@@ -14,7 +14,7 @@ GROUP="fcitx"
 SRC_URI="http://fcitx.googlecode.com/files/"$N-$V".tar.xz"
 CHECKSUM="98ba1d134085e75c92e5303f0d3a1d132fefe8c4"
 
-RDEPEND="fcitx glibc libxml2 m17n-lib zlib"
+RDEPEND="fcitx m17n-lib"
 RECOMMENDED=""
 BDEPEND="cmake"
 OPTIONAL=""

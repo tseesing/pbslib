@@ -15,7 +15,7 @@ REPO="testing"
 SRC_URI="http://pub.mate-desktop.org/releases/1.4/"$N-$V".tar.xz"
 CHECKSUM="46c31926108f8177f9162d2396ce681f198a3f31eafb1961dfac21b5b9e4e27e"
 
-RDEPEND="gtk+ mate-conf mate-corba"
+RDEPEND="libunique mate-conf startup-notification"
 RECOMMENDED=""
 BDEPEND="mate-doc-utils intltoolmate-common gtk-doc"
 OPTIONAL=""

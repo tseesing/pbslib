@@ -12,7 +12,7 @@ PACKAGER="StartOS Developers<>"
 SRC_URI="ftp://ftp.kde.org/pub/kde/stable/"$N"/"$V"/"$N-$V".tar.bz2"
 CHECKSUM="91bf517cb940109180ecd07bc90c69ec"
 
-RDEPEND="gcc-lib glib2 glibc qt-core zlib"
+RDEPEND="qt-core"
 BDEPEND="pkgconfig cmake"
 
 pbs_unpack() {

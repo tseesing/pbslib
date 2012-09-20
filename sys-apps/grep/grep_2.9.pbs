@@ -13,7 +13,7 @@ PACKAGER="StartOS Developers"
 SRC_URI="ftp://ftp.gnu.org/gnu/"$N"/"$N-$V".tar.xz"
 CHECKSUM="0395eddfbf23e8ef1475677fce7c19a631abea41"
 
-RDEPEND="glibc libpcre"
+RDEPEND="libpcre"
 BDEPEND=" "
 RECOMMENDED=""
 

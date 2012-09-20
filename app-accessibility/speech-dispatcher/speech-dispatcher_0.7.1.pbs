@@ -13,7 +13,7 @@ PACKAGER="StartOS Developers"
 SRC_URI="http://www.freebsoft.org/pub/projects/speechd/"$N-$V".tar.gz"
 CHECKSUM="ccfc30ac006673d36b4223eb760ed696"
 
-RDEPEND="alsa-lib attr dbus dotconf espeak flac gcc-lib glib2 glibc jack-audio-connection-kit json-c libao libcap libICE libogg libSM libsndfile libvorbis libX11 libXau libxcb libXdmcp libXext libXi libXt libXtst nas portaudio pulseaudio util-linux-ng"
+RDEPEND="dotconf espeak glib2 libao"
 RECOMMENDED=""
 BDEPEND=""
 OPTIONAL=""

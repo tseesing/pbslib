@@ -13,7 +13,7 @@ PACKAGER="StartOS Developers"
 
 SRC_URI="http://mupdf.googlecode.com/files/"$N-$V"-source.tar.gz"
 
-RDEPEND="freetype glibc jbig2dec libjpeg-turbo libpng libX11 libXau libxcb libXdmcp libXext zlib"
+RDEPEND="freetype jbig2dec libjpeg-turbo libXex"
 RECOMMENDED=""
 BDEPEND=""
 CONFLICT=""

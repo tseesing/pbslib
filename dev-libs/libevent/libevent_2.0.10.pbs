@@ -12,7 +12,7 @@ PACKAGER="StartOS Developers"
 
 SRC_URI="http://www.monkey.org/~provos/"$N-$V"-stable.tar.gz"
 
-RDEPEND="glibc openssl zlib"
+RDEPEND="openssl"
 BDEPEND=""
 RECOMMENDED=""
 

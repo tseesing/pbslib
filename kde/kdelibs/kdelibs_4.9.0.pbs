@@ -12,7 +12,7 @@ GROUP="kde"
 
 SRC_URI="http://download.kde.org/stable/"$V"/src/"$N-$V".tar.xz"
 
-RDEPEND="acl aspell attica attr bzip2 dbus dbus-glib e2fsprogs eggdbus enchant expat flac fontconfig freetype gcc-lib giflib glib2 glibc gst-plugins-base gstreamer herqq ilmbase jasper json-c keyutils krb5 libcap libdbusmenu-qt libdrm libffi libgcrypt libgpg-error libICE libjpeg-turbo libogg libpcre libpng libSM libsndfile libvorbis libX11 libXau libxcb libXcursor libXdamage libXdmcp libXext libXfixes libXft libXi libxml2 libXpm libXrender libXScrnSaver libxslt libXtst libXxf86vm mesa openexr openssl polkit polkit-qt pulseaudio qca qt-core soprano(>=2.7.56) sqlite strigi udev util-linux-ng xz-utils zlib shared-desktop-ontologies(>=0.10.0)"
+RDEPEND="attica enchant giflib herqq jasper krb5 libdbusmenu-qt libpcre libXcursor libXft libXpm libXScrnSaver openexr phonon polkit-qt qca soprano(>=2.7.56) strigi udev xz-utils"
 BDEPEND="pkgconfig cmake automoc4 docbook-xml(>=4.5-r1)"
 RECOMMENDED=""
 

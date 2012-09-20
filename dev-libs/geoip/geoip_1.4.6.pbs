@@ -7,10 +7,12 @@
 
 DESCRIPTION="easily lookup countries by IP addresses, even when Reverse DNS entries don't exist"
 HOMEPAGE="http://www.maxmind.com/geoip/api/c.shtml"
- 
-SRC_URI="http://geolite.maxmind.com/download/"$N"/api/c/GeoIP-"$V$R".tar.gz"
+LICENSE="GPLv2+"
+PACKAGER="StartOS Developers"
 
-RDEPEND=""
+SRC_URI="http://geolite.maxmind.com/download/"$N"/api/c/GeoIP-"$V".tar.gz"
+
+RDEPEND="zlib"
 BDEPEND=""
 
 pbs_unpack() {
@@ -18,8 +20,7 @@ pbs_unpack() {
 }
 
 pbs_config() {
-	sed -e "s:usr local share GeoIP:usr share GeoIP:" \
-	                -e "s:usr local etc:etc:" -i apps/geoipupdate-pureperl.pl
+	sed -e "s:usr local share GeoIP:usr share GeoIP:" -e "s:usr local etc:etc:" -i apps/geoipupdate-pureperl.pl
 	doconfig
 }
 
@@ -30,3 +31,4 @@ pbs_build() {
 pbs_install() {
 	domkinstall
 }
+

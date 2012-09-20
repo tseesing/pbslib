@@ -12,7 +12,7 @@ PACKAGER="StartOS Developers"
 
 SRC_URI="http://www.abisource.com/downloads/"$N"/"$V"/"$N-$V".tar.gz"
 
-RDEPEND="bzip2 glib2 glibc libgsf libpng libxml2 zlib"
+RDEPEND="libgsf"
 BDEPEND=""
 
 pbs_unpack() {

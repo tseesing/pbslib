@@ -14,7 +14,7 @@ GROUP="x11-drivers"
 SRC_URI="http://xorg.freedesktop.org/archive/individual/driver/"$N-$V".tar.bz2"
 CHECKSUM="f064477ef3a553634f3dcf6696d0f538"
 
-RDEPEND="glibc libX11 libXau libxcb libXdmcp libXext libXi libXtst xorg-server(>=1.12.2)"
+RDEPEND="xorg-server(>=1.12.2) libXtst"
 BDEPEND=""
 
 pbs_unpack() {

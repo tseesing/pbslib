@@ -12,7 +12,7 @@ PACKAGER="StartOS Developers"
 
 SRC_URI="http://download.pureftpd.org/pub/"$N"/releases/"$N-$V".tar.bz2"
 
-RDEPEND="cyrus-sasl glibc openldap openssl pam zlib"
+RDEPEND="openldap"
 BDEPEND=""
 RECOMMENDED=""
 
@@ -25,31 +25,31 @@ pbs_unpack() {
 }
 
 pbs_config() {
-	config+=" --with-altlog
-		      --with-cookie
-		      --with-diraliases
-		      --with-extauth
-		      --with-ftpwho
-		      --with-language=english
-		      --with-peruserlimits
-		      --with-privsep
-		      --with-puredb
-		      --with-quotas
-		      --with-ratios
-		      --with-throttling
-		      --with-uploadscript
-		      --with-virtualhosts
-		      --enable-largefile
-		      --without-capabilities
-		      --without-rfc2640
-		      --with-ldap
-		      --without-mysql
-		      --with-pam
-		      --without-paranoidmsg
-		      --without-pgsql
-		      --with-tls
-		      --without-virtualchroot
-		      --without-inetd "
+	config+="--with-altlog
+		 --with-cookie
+		 --with-diraliases
+		 --with-extauth
+		 --with-ftpwho
+		 --with-language=english
+		 --with-peruserlimits
+		 --with-privsep
+		 --with-puredb
+		 --with-quotas
+		 --with-ratios
+		 --with-throttling
+		 --with-uploadscript
+		 --with-virtualhosts
+		 --enable-largefile
+		 --without-capabilities
+		 --without-rfc2640
+		 --with-ldap
+		 --without-mysql
+		 --with-pam
+		 --without-paranoidmsg
+		 --without-pgsql
+		 --with-tls
+		 --without-virtualchroot
+		 --without-inetd" 
 	doconfig
 }
 
@@ -59,14 +59,10 @@ pbs_build() {
 
 pbs_install() {
 	domkinstall
-	dodoc AUTHORS ChangeLog COPYING INSTALL NEWS README
 
-	# For sysvinit
-	#doinit "$N"
-	
 	cd "$destdir"
-	docp $filesdir/ftpusers       etc
-	docp $filesdir/pure-ftpd.conf etc/pure-ftpd
+	docp "$filesdir"/ftpusers       etc
+	docp "$filesdir"/pure-ftpd.conf etc/pure-ftpd
 	
 	# For systemd
 	dounit "$N".service

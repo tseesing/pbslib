@@ -12,7 +12,7 @@ PACKAGER="StartOS Developers"
  
 SRC_URI="http://ftp.gnu.org/gnu/"$N"/"$N-$V".tar.gz"
 
-RDEPEND="gcc-lib glibc libcddb ncurses"
+RDEPEND="gcc-lib libcddb ncurses"
 BDEPEND=""
 RECOMMENDED=""
 
@@ -32,6 +32,6 @@ pbs_build() {
 
 pbs_install() {
 	domkinstall
-	dodoc AUTHORS ChangeLog COPYING INSTALL NEWS README
 }
+
 

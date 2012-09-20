@@ -13,8 +13,8 @@ PACKAGER="StartOS Developers"
 SRC_URI="http://ofetion.googlecode.com/files/"$N-$V".tar.gz"
 CHECKSUM="59581cdcd113a1e2b35d9d11c52e8fc06f20e207"
 
-RDEPEND="glibc libofetion libxml2 openssl sqlite zlib"
-BDEPEND="     "
+RDEPEND="libofetion"
+BDEPEND=""
 RECOMMENDED=""
 
 pbs_unpack() {

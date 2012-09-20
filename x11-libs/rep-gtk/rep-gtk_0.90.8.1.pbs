@@ -13,7 +13,7 @@ PACKAGER="StartOS Developers"
 SRC_URI="http://download.tuxfamily.org/librep/"$N"/"$N-$V".tar.xz"
 CHECKSUM="00c1d9d7fe1c4d8851a59efa0e5a0645"
 
-RDEPEND="atk bzip2 cairo expat fontconfig freetype gcc-lib gdk-pixbuf glib2 glibc gtk+ libffi libpng libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libXinerama libXrandr libXrender pango pixman zlib"
+RDEPEND="gtk+"
 RECOMMENDED=""
 BDEPEND=""
 OPTIONAL=""

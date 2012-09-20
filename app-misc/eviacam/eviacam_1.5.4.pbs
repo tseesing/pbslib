@@ -13,7 +13,7 @@ PACKAGER="StartOS Developers"
 SRC_URI="http://sourceforge.net/projects/"$N"/files/"$N"/"$V"/"$N"_"$V".orig.tar.gz"
 CHECKSUM="5574837560c41b7ebeb2be90007857a1"
 
-RDEPEND="atk bzip2 cairo expat ffmpeg(>=0.11.1) fontconfig freetype gcc-lib gdk-pixbuf glib2 glibc gst-plugins-base gstreamer gtk+ ilmbase jasper lame libffi libgsm libICE libjpeg-turbo libogg libpng libSM libtheora libtiff libva libvorbis libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libXinerama libxml2 libXrandr libXrender libXtst libXxf86vm opencore-amr opencv openexr openssl orc pango pixman rtmpdump schroedinger speex util-linux-ng v4l-utils wxWidgets x264 xvidcore zlib"
+RDEPEND="opencv wxWidgets"
 RECOMMENDED=""
 BDEPEND=""
 OPTIONAL=""

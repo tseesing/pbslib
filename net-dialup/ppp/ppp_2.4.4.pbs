@@ -7,20 +7,24 @@
 
 DESCRIPTION="Point-to-Point Protocol (PPP)"
 HOMEPAGE="http://www.samba.org/ppp"
-LICENSE="GPL"
+LICENSE="custom:GPL/BSD"
 PACKAGER="StartOS Developers"
 
 SRC_URI="http://samba.org/ftp/"$N"/"$N-$V".tar.gz"
+CHECKSUM="183800762e266132218b204dfb428d29"
 
-RDEPEND="glibc libpcap"
+RDEPEND="libpcap"
 BDEPEND=""
 RECOMMENDED=""
+
+INSTALL="$N.install"
 
 pbs_unpack() {
         dounpack
 }
 
 pbs_config() {
+	config+=""
 	doconfig
 }
 
@@ -31,5 +35,9 @@ pbs_build() {
 pbs_install() {
 	make DESTDIR="$destdir"/usr install
 	make DESTDIR="$destdir"/usr install-etcppp
+	dounit "$N"@.service
+	cd "$destdir"
+	docp "$filesdir"/options etc/ppp/
+	chmod 0755 usr/lib/pppd/"$V"/*.so
 }
 

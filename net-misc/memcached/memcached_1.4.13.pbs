@@ -14,7 +14,7 @@ PACKAGER="StartOS Developers"
 SRC_URI="http://memcached.googlecode.com/files/"$N-$V".tar.gz"
 CHECKSUM="d9a48d222de53a2603fbab6156d48d0e8936ee92"
 
-RDEPEND="glibc libevent"
+RDEPEND="libevent"
 RECOMMENDED="perl"
 BDEPEND=""
 

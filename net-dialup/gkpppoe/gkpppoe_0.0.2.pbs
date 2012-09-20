@@ -7,13 +7,12 @@
 
 DESCRIPTION="pppoe frontend"
 HOMEPAGE="www.ylmf.com"
-REPO=""
 LICENSE="GPL"
 PACKAGER="StartOS Developers"
 
 SRC_URI="gkpppoe_0.0.2_i386.deb"
 
-RDEPEND="atk cairo expat fontconfig freetype gcc-lib glib2 gdk-pixbuf glibc gtk+ libpng libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libXrandr libXrender pango pixman zlib ppp"
+RDEPEND="gtk+"
 BDEPEND=""
 RECOMMENDED=""
 CONFLICT=""

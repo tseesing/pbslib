@@ -13,7 +13,7 @@ PACKAGER="StartOS Developers"
 SRC_URI="http://telepathy.freedesktop.org/releases/"$N"/"$N-$V".tar.gz"
 CHECKSUM="f4e6ca551cc4603276f9acdc2b5d4db4"
 
-RDEPEND="dbus dbus-glib glib2 glibc libffi libnice libsoup libxml2 openssl sqlite telepathy-glib zlib"
+RDEPEND="libnice libsoup openssl telepathy-glib"
 BDEPEND=""
 RECOMMENDED=""
 

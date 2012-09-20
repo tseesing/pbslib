@@ -12,7 +12,7 @@ PACKAGER="StartOS Developers"
  
 SRC_URI="http://0pointer.de/public/"$N-$V".tar.gz"
 
-RDEPEND="glibc udev"
+RDEPEND="udev"
 BDEPEND=""
 RECOMMENDED=""
 

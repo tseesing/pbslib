@@ -13,7 +13,7 @@ PACKAGER="StartOS Developers"
 SRC_URI="http://telepathy.freedesktop.org/releases/"$N"/"$N-$V".tar.gz"
 CHECKSUM="f39dcfef785a37dc21efa9af06be2e61"
 
-RDEPEND="dbus dbus-glib glib2 glibc libffi libgcrypt libgnome-keyring libgpg-error networkmanager nspr nss telepathy-glib udev upower util-linux-ng zlib"
+RDEPEND="libgnome-keyring networkmanager telepathy-glib upower"
 BDEPEND=""
 RECOMMENDED=""
 

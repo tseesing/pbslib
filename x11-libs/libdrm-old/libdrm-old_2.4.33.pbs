@@ -43,7 +43,7 @@ pbs_build() {
 libdrm-old_install() {
 	DESCRIPTION="Userspace interface to kernel DRM services - used as makedepends for nouveau-dri"
 	
-	RDEPEND="glibc libpciaccess"
+	RDEPEND="libpciaccess"
 	BDEPEND=""
 	CONFLICT="libdrm"
 

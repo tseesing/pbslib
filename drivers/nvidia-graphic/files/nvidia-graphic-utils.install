@@ -68,6 +68,8 @@ EOF
 	echo '* If you do not accept this license, you must remove the package immediately.'
 	echo 
 	echo '* Reboot your computer for the changes to take effect.'
+	
+	flag_reboot
 
 	return 0
 }

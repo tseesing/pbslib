@@ -12,7 +12,7 @@ PACKAGER="StartOS Developers"
 
 SRC_URI="https://alioth.debian.org/frs/download.php/3082/"$N-$V".tar.bz2"
 
-RDEPEND="glibc libusb-compat libusbx"
+RDEPEND="libusb-compat"
 BDEPEND=""
 RECOMMENDED=""
 

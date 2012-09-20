@@ -13,7 +13,7 @@ PACKAGER="StartOS Developers"
 SRC_URI="ftp://ftp.alsa-project.org/pub/oss-lib/"$N-$V".tar.bz2"
 CHECKSUM="922ea177db15c72f1b5037181c73f934"
 
-RDEPEND="alsa-lib glibc"
+RDEPEND="alsa-lib"
 BDEPEND=" "
 RECOMMENDED=""
 CONFLICT=""

@@ -13,7 +13,7 @@ PACKAGER="StartOS Developers<>"
 SRC_URI="ftp://ftp.archlinux.org/other/"$N"/"$N-$V".tar.xz"
 CHECKSUM="e736d7b26cf6e3c0eed837837b3f032b"
 
-RDEPEND="acl attica attr bzip2 dbus expat fontconfig freetype gcc-lib glib2 glibc gst-plugins-base gstreamer herqq kdelibs libdbusmenu-qt libffi libICE libpng libSM libX11 libXau libxcb libXcursor libXdmcp libXext libXfixes libXft libXi libxml2 libXpm libXrender libXtst openssl qca qt-core soprano sqlite strigi udev util-linux-ng xz-utils zlib"
+RDEPEND="kdelibs"
 BDEPEND="cmake automoc4"
 
 INSTALL="$N.install"

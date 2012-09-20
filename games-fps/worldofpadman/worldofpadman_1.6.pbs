@@ -14,7 +14,7 @@ SRC_URI="http://sourceforge.net/projects/worldofpadman/files/wop-1.5-unified.zip
 	 http://sourceforge.net/projects/worldofpadman/files/wop-1.5.x-to-1.6-patch-unified.zip"
 CHECKSUM="8871affc2a36f23aa22044454c834923 86ab95804ec6b1f0c81078f083c0fcda"
 
-RDEPEND="directfb gcc-lib glibc libdrm libICE libogg libsdl libSM libtheora libvorbis libX11 libXau libxcb libXdamage libXdmcp libXext libXfixes libXt libXxf86vm mesa nas util-linux-ng zlib"
+RDEPEND="libsdl libtheora libvorbis"
 RECOMMENDED=""
 BDEPEND=""
 OPTIONAL=""

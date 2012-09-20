@@ -14,7 +14,7 @@ GROUP="fcitx"
 SRC_URI="http://fcitx.googlecode.com/files/"$N-$V".tar.xz"
 CHECKSUM="7998e8958299335b2c2bb489cc55d36921b15506"
 
-RDEPEND="anthy gcc-lib glibc fcitx"
+RDEPEND="anthy fcitx"
 BDEPEND="cmake"
 RECOMMENDED=""
 

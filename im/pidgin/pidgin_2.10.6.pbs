@@ -33,8 +33,8 @@ pbs_build() {
 
 pidgin_install() {
 	DESCRIPTION="GTK Instant Messenger client"
-	RDEPEND="atk cairo dbus dbus-glib enchant expat farsight2 fontconfig freetype gcc-lib gdk-pixbuf glib2 glibc gst-plugins-base gstreamer gtk+ gtkspell libffi libICE libidn libpng libpurple libSM libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libXinerama libxml2 libXrandr libXrender libXScrnSaver pango pixman util-linux-ng zlib"
-	RECOMMENDED="libpurple finch"
+	RDEPEND="gtkspell libpurple"
+	RECOMMENDED=""
 	
 	INSTALL="$N.install"
 
@@ -55,7 +55,7 @@ pidgin_install() {
 
 libpurple_install() {
 	DESCRIPTION="IM library extracted from Pidgin"
-	RDEPEND="avahi dbus dbus-glib expat farsight2 fontconfig freetype gcc-lib glib2 glibc gnutls gst-plugins-base gstreamer libffi libgadu libgcrypt libgpg-error libidn libtasn1 libX11 libXau libxcb libXdmcp libXext libXft libxml2 libXrender libXScrnSaver meanwhile nspr nss perl tcl tk zlib"
+	RDEPEND="avahi dbus-glib farsight2 libgadu libidn meanwhile nss perl tk"
 
         for dir in libpurple share/sounds share/ca-certs m4macros po; do
 		domkinstall -C "${dir}"
@@ -66,7 +66,7 @@ libpurple_install() {
 
 finch_install() {
 	DESCRIPTION="A ncurses-based messaging client"
-	RDEPEND="dbus dbus-glib farsight2 glib2 glibc gst-plugins-base gstreamer libffi libidn libpurple libX11 libXau libxcb libXdmcp libxml2 ncurses zlib"
+	RDEPEND="libpurple ncurses"
 
 	# For linking
 	make -C libpurple DESTDIR="$destdir" install-libLTLIBRARIES

@@ -15,7 +15,7 @@ REPO="testing"
 SRC_URI="http://pub.mate-desktop.org/releases/1.4/"$N-$V".tar.xz"
 CHECKSUM="866fff6037adeaa8355df21f4fcec8395b11a8d2"
 
-RDEPEND="gtk+ mate-file-manager mate-polkit wireless-tools"
+RDEPEND="liboobs mate-file-manager mate-polkit wireless-tools"
 RECOMMENDED=""
 BDEPEND=""
 OPTIONAL=""

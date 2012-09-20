@@ -14,7 +14,7 @@ PACKAGER="StartOS Developers"
 SRC_URI="jungleji-chmsee-v"$V"-0-g86d59bf.zip"
 CHECKSUM="0a21e3db14b2cb5251bc6f9d452b0ac2"
 
-RDEPEND="chmlib xulrunner(>=13.0) libpng sqlite alsa-lib atk cairo dbus expat fontconfig freetype gcc-lib gdk-pixbuf glib2 glibc gtk+ hunspell libevent libffi libICE libSM libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libXrandr libXrender libXt nspr nss pango pixman startup-notification util-linux-ng zlib"
+RDEPEND="chmlib xulrunner(>=14.0)"
 BDEPEND=""
 RECOMMENDED=""
 

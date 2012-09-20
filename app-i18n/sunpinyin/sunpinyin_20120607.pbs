@@ -12,7 +12,7 @@ PACKAGER="StartOS Developers"
 
 SRC_URI="git://github.com/sunpinyin/sunpinyin.git"
 
-RDEPEND="gcc-lib glibc python sqlite"
+RDEPEND="gcc-lib sqlite"
 BDEPEND="scons"
 
 pbs_unpack() {

@@ -13,7 +13,7 @@ PACKAGER="StartOS Developers"
 SRC_URI="http://ftp.gnome.org/pub/GNOME/sources/"$N"/0.28/"$N-$V".tar.xz"
 CHECKSUM="86cf0b81aa023fa93ed415653d51c96767f20b2d7334c893caba71e42654b0ae"
 
-RDEPEND="atk cairo expat fontconfig freetype gcc-lib gdk-pixbuf glib2 glibc gtk+ libffi libpng libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libXinerama libXrandr libXrender ncurses pango pixman zlib"
+RDEPEND="gtk+ ncurses"
 BDEPEND=""
 
 pbs_unpack() {

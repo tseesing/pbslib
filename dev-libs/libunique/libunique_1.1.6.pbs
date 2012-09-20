@@ -7,12 +7,12 @@
 
 DESCRIPTION="The libunique package contains a library for writing single instance applications."
 HOMEPAGE="http://live.gnome.org/LibUnique"
-LICENSE="GPL"
+LICENSE="LGPL"
 PACKAGER="StartOS Developers"
 
 SRC_URI="http://ftp.gnome.org/pub/GNOME/sources/"$N"/1.1/"$N-$V".tar.bz2"
 
-RDEPEND="atk cairo dbus dbus-glib expat fontconfig freetype gcc-lib gdk-pixbuf glib2 glibc gtk+ libpng libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libXrandr libXrender pango pixman zlib"
+RDEPEND="gtk+"
 BDEPEND="" 
 RECOMMENDED="" 
 
@@ -20,9 +20,13 @@ pbs_unpack() {
         dounpack
 }
 
+pbs_patch() {
+	dopatch unique-gdbus.patch remove_G_CONST_RETURN.patch
+}
+
 pbs_config() {
-	config+="--enable-introspection=no 
-	             --enable-silent-rules"
+	config+="--disable-dbus --disable-static"
+	autoreconf
 	doconfig
 }
 

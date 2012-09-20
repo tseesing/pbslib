@@ -12,7 +12,7 @@ PACKAGER="StartOS Developers"
  
 SRC_URI="http://downloads.sourceforge.net/project/"$N"/LIRC/0.8.6/"$N-$V".tar.bz2"
 
-RDEPEND="glibc libICE libSM libX11 libXau libxcb libXdmcp util-linux-ng"
+RDEPEND="libSM libX11"
 BDEPEND=""
 RECOMMENDED=""
 
@@ -22,11 +22,9 @@ pbs_unpack() {
 
 pbs_config() {
 	config+="--with-moduledir=/lib/modules/"$(uname -r)"/misc 
-	             --disable-debug 
-		     --with-x 
-		     --with-driver=none"
-		      #--with-driver=all
-		      #--with-kerneldir=/usr/src/linux
+	         --disable-debug 
+		 --with-x 
+		 --with-driver=none"
 	doconfig
 }
 
@@ -36,7 +34,6 @@ pbs_build() {
 
 pbs_install() {
 	domkinstall
-	dodoc AUTHORS ChangeLog COPYING INSTALL NEWS README
 	rm "$destdir"/var/run/lirc/*
 }
 

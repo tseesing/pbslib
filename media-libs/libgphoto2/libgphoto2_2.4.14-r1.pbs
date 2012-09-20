@@ -13,7 +13,7 @@ PACKAGER="StartOS Developers"
 SRC_URI="http://sourceforge.net/projects/gphoto/files/libgphoto/"$V"/"$N-$V".tar.bz2"
 CHECKSUM="c7fc6cafa6343f2457976dbe9f2d9d68"
 
-RDEPEND="bzip2 expat fontconfig freetype gd glibc libexif libjpeg-turbo libpng libtool libusb-compat libusbx libX11 libXau libxcb libXdmcp libXpm zlib"
+RDEPEND="gd libexif libtool libusb-compat"
 BDEPEND=""
 
 pbs_unpack(){

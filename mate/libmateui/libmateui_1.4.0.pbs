@@ -15,7 +15,7 @@ REPO="testing"
 SRC_URI="http://pub.mate-desktop.org/releases/1.4/"$N-$V".tar.xz"
 CHECKSUM="275ee6c9a9a00bb802de9f8d196493639a7e3f80d950b836bcc29dcb2a05c5ad"
 
-RDEPEND="libmatecomponentui libmatekeyring libSM"
+RDEPEND="libmatecomponentui libmatekeyring"
 RECOMMENDED=""
 BDEPEND="intltool pkgconfig"
 OPTIONAL=""

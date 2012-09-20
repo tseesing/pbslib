@@ -13,7 +13,7 @@ PACKAGER="StartOS Developers"
 SRC_URI="http://zhscript.googlecode.com/files/"$N"_"$V"-11.04_i386.deb"
 CHECKSUM="6d6b27835e0c647fdb65c0f7cf8e1c27ce958fbe"
 
-RDEPEND="atk atkmm cairo cairomm dbus dbus-glib enchant expat fontconfig freetype gail gcc-lib gdk-pixbuf glib2 glibc glibmm gnutls gst-plugins-base gstreamer gtk+ gtkmm gtksourceview gtksourceviewmm icu libffi libgcrypt libglade libglademm libgpg-error libICE libjpeg-turbo libpng libsigc++ libSM libsoup libtasn1 libunique libwnck libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libXinerama libxml2 libXrandr libXrender libXres libxslt libXt pango pangomm pixman sqlite startup-notification util-linux-ng webkitgtk zlib"
+RDEPEND="gtksourceviewmm libglademm libunique libwnck webkitgtk"
 RECOMMENDED=""
 BDEPEND=""
 OPTIONAL=""

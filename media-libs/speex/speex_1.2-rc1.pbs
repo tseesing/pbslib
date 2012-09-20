@@ -6,14 +6,14 @@
 #
 
 DESCRIPTION="Audio compression format designed for speech."
-HOMEPAGE=" http://www.speex.org"
+HOMEPAGE="http://www.speex.org"
 LICENSE="GPL"
 PACKAGER="StartOS Developers"
 
 SRC_URI="http://downloads.xiph.org/releases/"$N"/"$N-$V"rc1.tar.gz"
 
-RDEPEND="glibc libogg"
-BDEPEND=" "
+RDEPEND="libogg"
+BDEPEND=""
 RECOMMENDED=""
 CONFLICT=""
 

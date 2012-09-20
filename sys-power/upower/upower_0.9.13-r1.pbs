@@ -12,7 +12,7 @@ PACKAGER="StartOS Developers"
 
 SRC_URI="http://upower.freedesktop.org/releases/"$N-$V".tar.xz"
 
-RDEPEND="dbus dbus-glib eggdbus glib2 glibc gnutls libffi libgcrypt libgpg-error libimobiledevice libplist libtasn1 libusbx libxml2 polkit udev usbmuxd zlib"
+RDEPEND="dbus-glib libimobiledevice libusbx polkit udev"
 BDEPEND=""
 RECOMMENDED=""
 

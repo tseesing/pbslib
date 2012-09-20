@@ -13,7 +13,7 @@ PACKAGER="StartOS Developers"
 SRC_URI="http://download.zotero.org/standalone/"$V"/Zotero-"$V"_linux-i686.tar.bz2"
 CHECKSUM="6dc15431edce1cce50961ca3d0ed8fed"
 
-RDEPEND="alsa-lib atk avahi cairo dbus dbus-glib expat fontconfig freetype gcc-lib gconf gdk-pixbuf glib2 glibc gnome-vfs gtk+ libffi libICE libnotify libpng libSM libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libXinerama libxml2 libXrandr libXrender libXt nspr nss openssl orbit pango pixman util-linux-ng zlib"
+RDEPEND="alsa-lib gnome-vfs libnotify libXt nss"
 RECOMMENDED=""
 BDEPEND=""
 OPTIONAL=""

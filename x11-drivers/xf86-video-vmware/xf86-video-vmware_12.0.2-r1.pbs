@@ -14,7 +14,7 @@ GROUP="x11-drivers"
 SRC_URI="http://xorg.freedesktop.org/archive/individual/driver/"$N-$V".tar.bz2"
 CHECKSUM="0743ec7c479603fba60d118858fd5783"
 
-RDEPEND="glibc xorg-server(>=1.12.2)"
+RDEPEND="mesa xorg-server(>=1.12.2)"
 BDEPEND=""
 
 pbs_unpack() {

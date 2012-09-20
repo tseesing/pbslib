@@ -11,8 +11,6 @@ LICENSE="GPL2"
 PACKAGER="StartOS Developers"
 YARCH="any"
 
-REPO="testing"
-
 SRC_URI="http://www.kernel.org/pub/linux/kernel/v3.0/linux-"$V".tar.bz2"
 CHECKSUM="e81d235d91289e612f48718b459b9039"
 
@@ -33,13 +31,12 @@ pbs_build() {
 }
 
 pbs_install() {
-	make INSTALL_HDR_PATH=dest headers_install
-	docp dest/* "$destdir"/usr/
+	make INSTALL_HDR_PATH="$destdir"/usr headers_install
+	
 	cd "$destdir"
 	find /usr/include -name .install -or -name ..install.cmd |xargs rm -f
 
-        # Provided by libdrm and glibc
+        # Provided by libdrm
         rm -rf usr/include/drm
-        rm -rf usr/include/scsi
 }
 

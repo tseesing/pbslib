@@ -13,7 +13,7 @@ PACKAGER="StartOS Developers"
 SRC_URI="http://icculus.org/physfs/downloads/"$N-$V".tar.gz"
 CHECKSUM="4e8927c3d30279b03e2592106eb9184a"
 
-RDEPEND="glibc zlib"
+RDEPEND="zlib"
 RECOMMENDED=""
 BDEPEND="cmake"
 OPTIONAL=""

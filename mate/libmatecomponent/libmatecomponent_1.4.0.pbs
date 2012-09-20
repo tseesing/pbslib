@@ -13,7 +13,7 @@ PACKAGER="StartOS Developers"
 SRC_URI="http://pub.mate-desktop.org/releases/1.4/"$N-$V".tar.xz"
 CHECKSUM="c604056ec36fe23e2912e7fef2616ea9fe02b70f6638696c133cdb693e38ac13"
 
-RDEPEND="mate-corba libxml2 glib2"
+RDEPEND="libxml2 mate-corba"
 RECOMMENDED=""
 BDEPEND="intltool flex pkgconfig"
 OPTIONAL=""

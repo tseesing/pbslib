@@ -14,7 +14,7 @@ GROUP="ibus"
 SRC_URI="http://ibus.googlecode.com/files/"$N-$V".tar.gz"
 CHECKSUM="068de56caa87c002adeae0de9e908f47e3f9fde9"
 
-RDEPEND="atk cairo expat fontconfig freetype gcc-lib gdk-pixbuf glib2 glibc gtk+ ibus libffi libpng libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libXinerama libxml2 libXrandr libXrender m17n-lib pango pixman zlib"
+RDEPEND="ibus m17n-lib"
 RECOMMENDED=""
 BDEPEND=""
 OPTIONAL=""

@@ -97,7 +97,7 @@ boost_install() {
 
 boost-libs_install() {
 	DESCRIPTION="Boost Libraries for C++ - Runtime"
-	RDEPEND="bzip2 gcc-lib glibc icu zlib"
+	RDEPEND="bzip2 icu zlib"
 	BDEPEND=""
 	RECOMMENDED=""
 	

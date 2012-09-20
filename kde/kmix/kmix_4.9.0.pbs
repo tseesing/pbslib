@@ -13,7 +13,7 @@ GROUP="kde"
 
 SRC_URI="http://download.kde.org/stable/"$V"/src/"$N-$V".tar.xz"
 
-RDEPEND="acl alsa-lib attica attr bzip2 dbus expat flac fontconfig freetype gcc-lib glib2 glibc gst-plugins-base gstreamer herqq json-c kdelibs kdemultimedia libcanberra libcap libdbusmenu-qt libdrm libffi libICE libogg libpng libqzeitgeist libSM libsndfile libtool libvorbis libX11 libXau libxcb libXcursor libXdamage libXdmcp libXext libXfixes libXft libXi libxml2 libXpm libXrender libXScrnSaver libXtst libXxf86vm mesa openssl phonon pulseaudio qca qt-core soprano sqlite strigi tdb udev util-linux-ng xz-utils zlib"
+RDEPEND="kdelibs libcanberra"
 RECOMMENDED=""
 BDEPEND="cmake automoc4"
 OPTIONAL=""

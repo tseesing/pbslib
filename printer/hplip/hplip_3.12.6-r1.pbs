@@ -13,7 +13,7 @@ PACKAGER="StartOS Developers"
 SRC_URI="http://downloads.sourceforge.net/"$N"/"$N-$V".tar.gz"
 CHECKSUM="5303938e8630775ea6fb383af85775e5"
 
-RDEPEND="avahi cups dbus e2fsprogs gcc-lib glibc gnutls keyutils krb5 libexif libgcrypt libgpg-error libgphoto2 libjpeg-turbo libpng libtasn1 libtiff libtool libusb-compat libusbx net-snmp openssl sane-backends v4l-utils zlib qt-core pyqt4"
+RDEPEND="cups sane-backends qt-core pyqt4"
 BDEPEND=""
 RECOMMENDED="hplip-plugin(=3.12.6-r1)"
 CONFLICT=""

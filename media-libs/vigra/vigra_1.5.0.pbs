@@ -7,11 +7,10 @@
 
 DESCRIPTION="Computer vision library"
 HOMEPAGE="http://hci.iwr.uni-heidelberg.de/vigra/"
-REPO=""
 LICENSE="custom:MIT"
 PACKAGER="StartOS Developers"
 
-SRC_URI="http://hci.iwr.uni-heidelberg.de/vigra/vigra1.5.0.tar.gz"
+SRC_URI="http://hci.iwr.uni-heidelberg.de/"$N"/"$N$V".tar.gz"
 
 RDEPEND="libpng libtiff"
 BDEPEND=""
@@ -22,8 +21,11 @@ pbs_unpack() {
         dounpack
 }
 
-pbs_config() {
+pbs_patch() {
 	dopatch 1.5.0-makefile.patch
+}
+
+pbs_config() {
 	./configure --prefix=/usr --docdir=/usr/share/doc/"$N" --enable-shared
 }
 

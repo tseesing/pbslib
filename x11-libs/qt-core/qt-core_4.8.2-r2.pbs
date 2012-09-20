@@ -13,7 +13,7 @@ PACKAGER="StartOS Developers"
 SRC_URI="http://releases.qt-project.org/qt4/source/qt-everywhere-opensource-src-"$V".tar.gz"
 CHECKSUM="3c1146ddf56247e16782f96910a8423b"
 
-RDEPEND="alsa-lib bzip2 dbus expat fontconfig freetds freetype gcc-lib glib2 glibc gst-plugins-base gstreamer lcms libdrm libfbclient libffi libICE libjpeg-turbo libmng libmysqlclient libpng libSM libtiff libtool libX11 libXau libxcb libXdamage libXdmcp libXext libXfixes libxml2 libXrender libXxf86vm mesa ncurses openssl postgresql-libs sqlite unixodbc util-linux-ng zlib"
+RDEPEND="dbus freetds gst-plugins-base libfbclient libmng libmysqlclient mesa postgresql-libs sqlite unixodbc"
 BDEPEND=""
 RECOMMENDED=""
 

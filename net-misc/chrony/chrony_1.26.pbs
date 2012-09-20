@@ -7,13 +7,12 @@
 
 DESCRIPTION="NTP client and server programs"
 HOMEPAGE="http://chrony.tuxfamily.org/"
-REPO=""
 LICENSE="GPL"
 PACKAGER="StartOS Developers"
 
-SRC_URI="http://download.tuxfamily.org/"$N"/"$N-$V$R".tar.gz"
+SRC_URI="http://download.tuxfamily.org/"$N"/"$N-$V".tar.gz"
 
-RDEPEND="attr glibc libcap ncurses readline"
+RDEPEND="libcap readline"
 BDEPEND=""
 RECOMMENDED=""
 CONFLICT=""

@@ -13,7 +13,7 @@ PACKAGER="StartOS Developers"
 SRC_URI="http://musicip-libofa.googlecode.com/files/"$N-$V".tar.gz"
 CHECKSUM="51507d2c4b432bd2755f48d58471696e"
 
-RDEPEND="fftw gcc-lib glibc"
+RDEPEND="fftw gcc-lib"
 RECOMMENDED=""
 BDEPEND=""
 OPTIONAL=""

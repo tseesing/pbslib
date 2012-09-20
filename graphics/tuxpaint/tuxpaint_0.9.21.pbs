@@ -13,7 +13,7 @@ PACKAGER="StartOS Developers"
 SRC_URI="http://downloads.sourceforge.net/sourceforge/"$N"/"$N-$V".tar.gz"
 CHECKSUM="6d4f2b981643b5c937708e5e6cdaf318ae7b5562375327b4b1cb84611e65ede9"
 
-RDEPEND="libpaper cairo directfb expat fontconfig freetype fribidi gcc-lib gdk-pixbuf glib2 glibc libcroco libffi libICE libpng librsvg libsdl libSM libX11 libXau libxcb libXdmcp libxml2 libXrender libXt nas pango pixman sdl-image sdl-mixer sdl-pango sdl-ttf util-linux-ng zlib"
+RDEPEND="fribidi libpaper librsvg sdl-image sdl-mixer sdl-pango sdl-ttf"
 RECOMMENDED=""
 BDEPEND=""
 OPTIONAL=""

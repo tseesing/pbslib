@@ -13,7 +13,7 @@ PACKAGER="StartOS Developers"
 SRC_URI="http://archive.xfce.org/xfce/4.10/src/"$N-$V".tar.bz2"
 CHECKSUM="4768e1a41a0287af6aad18b329a0f230"
 
-RDEPEND="atk cairo dbus dbus-glib expat fontconfig freetype gcc-lib gdk-pixbuf glib2 glibc gtk+ libffi libgcrypt libgnome-keyring libgpg-error libICE libpng libSM libwnck libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libxfce4ui libxfce4util libXfixes libXi libXinerama libXrandr libXrender libXres pango pixman startup-notification util-linux-ng xfconf zlib"
+RDEPEND="libgnome-keyring libwnck libxfce4ui"
 RECOMMENDED=""
 BDEPEND=""
 OPTIONAL=""

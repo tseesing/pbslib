@@ -12,7 +12,7 @@ PACKAGER="StartOS Developers"
 
 SRC_URI="http://ftp.gnu.org/pub/gnu/"$N"/"$N-$V".tar.bz2"
 
-RDEPEND="gcc-lib glibc gmp guile libgcrypt libgpg-error libtasn1 libtool ncurses readline zlib"
+RDEPEND="guile libgcrypt libtasn1 zlib"
 BDEPEND=""
 
 INSTALL="$N.install"

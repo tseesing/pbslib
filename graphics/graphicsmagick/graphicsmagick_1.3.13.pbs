@@ -13,7 +13,7 @@ PACKAGER="StartOS Developers"
 SRC_URI="http://sourceforge.net/projects/"$N"/files/graphicsmagick/"$V"/GraphicsMagick-"$V".tar.bz2"
 CHECKSUM="1b5128e1868317ec7eb11a718f261a41"
 
-RDEPEND="libpng libjpeg-turbo bzip2 freetype gcc-lib glibc jasper lcms libICE libSM libtiff libwmf libX11 libXau libxcb libXdmcp libXext libxml2 util-linux-ng xz-utils zlib"
+RDEPEND="jasper lcms libtool libwmf libxml2 xz-utils"
 RECOMMENDED=""
 BDEPEND=""
 OPTIONAL=""

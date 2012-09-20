@@ -13,7 +13,7 @@ GROUP="kde"
 
 SRC_URI="http://download.kde.org/stable/"$V"/src/"$N-$V".tar.xz"
 
-RDEPEND="acl attica attr avahi bzip2 chmlib cups curl cyrus-sasl dbus djvulibre e2fsprogs ebook-tools expat flac fontconfig freetype gcc-lib ghostscript giflib glib2 glibc gnutls gst-plugins-base gstreamer herqq jasper json-c kdelibs keyutils krb5 lcms libcap libdbusmenu-qt libffi libgcrypt libgpg-error libICE libidn libjpeg-turbo libogg libpcre libpng libqzeitgeist libSM libsndfile libspectre libssh2 libtasn1 libtiff libvorbis libX11 libXau libxcb libXcursor libXdmcp libXext libXfixes libXft libXi libxml2 libXpm libXrender libXtst libzip openldap openssl phonon poppler poppler-qt pulseaudio qca qimageblitz qt-core rtmpdump soprano sqlite strigi udev util-linux-ng xz-utils zlib"
+RDEPEND="chmlib djvulibre ebook-tools kdelibs libspectre poppler-qt qimageblitz"
 RECOMMENDED=""
 BDEPEND="cmake automoc4"
 OPTIONAL=""

@@ -13,7 +13,7 @@ PACKAGER="StartOS Developers"
 SRC_URI="http://spiegl.de/qiv/download/"$N-$V".tgz"
 CHECKSUM="1425f89c90f9c045858fccf24d894c97"
 
-RDEPEND="cairo expat file fontconfig freetype gcc-lib gdk-pixbuf glib2 glibc gtk+ imlib2 libpng libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libXinerama libXrandr libXrender pango pixman zlib"
+RDEPEND="file gtk+ imlib2"
 RECOMMENDED=""
 BDEPEND=""
 OPTIONAL=""

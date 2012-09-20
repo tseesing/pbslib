@@ -13,7 +13,7 @@ PACKAGER="StartOS Developers"
 SRC_URI="http://downloads.sourceforge.net/sourceforge/"$N"/"$N-$V".tar.gz"
 CHECKSUM="fdd4aaf7340d6b8985469f300c12e41a"
 
-RDEPEND="atk cairo dbus dbus-glib enchant expat fontconfig freetype gail gcc-lib gconf gdk-pixbuf glib2 glibc gnutls gst-plugins-base gstreamer gtk+ icu json-glib libffi libgcrypt libgpg-error libICE libjpeg-turbo libnotify libpng libSM libsoup libtasn1 libunique libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libXinerama libxml2 libXrandr libXrender libxslt libXt orbit pango pixman sqlite util-linux-ng webkitgtk zlib"
+RDEPEND="json-glib libnotify libunique webkitgtk"
 BDEPEND=" "
 RECOMMENDED=""
 

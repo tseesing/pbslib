@@ -12,8 +12,8 @@ PACKAGER="StartOS Developers"
 
 SRC_URI="http://downloads.sourceforge.net/project/"$N"/"$N"/"$N-$V".tar.gz"
 
-RDEPEND="glibc ncurses"
-BDEPEND=" "
+RDEPEND="ncurses"
+BDEPEND=""
 
 pbs_unpack() {
         dounpack

@@ -13,7 +13,7 @@ PACKAGER="StartOS Developers"
 SRC_URI="http://ftp.gnome.org/pub/GNOME/sources/"$N"/2.10/"$N-$V".tar.xz"
 CHECKSUM="12faffd4b0d412a4ff08d0989fa136dfe4dec434a58447bfeffb93473b775cb7"
 
-RDEPEND="atk atkmm cairo cairomm expat fontconfig freetype gcc-lib gdk-pixbuf glib2 glibc glibmm gtk+ gtkmm gtksourceview libffi libpng libsigc++ libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libXinerama libxml2 libXrandr libXrender pango pangomm pixman zlib"
+RDEPEND="gtkmm gtksourceview"
 RECOMMENDED=""
 BDEPEND=""
 OPTIONAL=""

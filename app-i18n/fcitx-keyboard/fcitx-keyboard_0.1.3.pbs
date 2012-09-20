@@ -14,7 +14,7 @@ GROUP="fcitx"
 SRC_URI="http://fcitx.googlecode.com/files/"$N-$V".tar.xz"
 CHECKSUM="dddbacfd3f5f0a3fcb065321246655ed60488b1e"
 
-RDEPEND="fcitx enchant gcc-lib glib2 glibc icu libX11 libXau libxcb libXdmcp libxkbfile libxml2 zlib"
+RDEPEND="enchant icu libxkbfile libxml2 fcitx"
 RECOMMENDED=""
 BDEPEND=""
 OPTIONAL=""

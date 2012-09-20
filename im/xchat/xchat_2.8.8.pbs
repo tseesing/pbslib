@@ -13,7 +13,7 @@ PACKAGER="StartOS Developers"
 SRC_URI="http://xchat.org/files/source/2.8/"$N-$V".tar.xz"
 CHECKSUM="9a11f13121ff0af787bba3b014378e58"
 
-RDEPEND="atk cairo dbus dbus-glib expat fontconfig freetype gcc-lib gdk-pixbuf glib2 glibc gtk+ libpng libsexy libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libxml2 libXrandr libXrender openssl pango perl pixman tcl zlib"
+RDEPEND="dbus-glib libsexy openssl perl tcl"
 RECOMMENDED=""
 BDEPEND=""
 OPTIONAL=""

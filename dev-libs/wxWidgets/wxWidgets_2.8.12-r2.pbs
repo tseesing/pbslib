@@ -1,0 +1,52 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="A C++ library that lets developers create applications."
+HOMEPAGE="http://wxwidgets.org/"
+LICENSE="custom"
+PACKAGER="StartOS Developers"
+
+SRC_URI="http://downloads.sourceforge.net/project/wxwindows/"$V"/"$N-$V".tar.bz2"
+CHECKSUM="4103e37e277abeb8aee607b990c215c4"
+
+RDEPEND="gconf gst-plugins-base libtiff"
+BDEPEND=""
+RECOMMENDED=""
+CONFLICT=""
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_config() {
+	config+=" --enable-unicode
+	          --with-gtk=2 
+		  --with-opengl
+		  --enable-graphics_ctx
+		  --enable-mediactrl "
+	doconfig
+}
+
+pbs_build() {
+	domake
+	domake  -C locale allmo
+
+	# Build contrib
+	cd contrib/src
+	domake
+}
+
+pbs_install() {
+	# Install contrib
+	domkinstall
+
+	# Install 
+	cd "$srcdir"
+	domkinstall
+	dodoc docs/licence.txt
+}
+

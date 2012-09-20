@@ -13,7 +13,7 @@ PACKAGER="StartOS Developers"
 SRC_URI="http://downloads.sourceforge.net/sourceforge/"$N"/"$N-$V".tar.bz2"
 CHECKSUM="0319c996dac4480f1182c03d2331b14a"
 
-RDEPEND="torcs-data(=1.3.3) freealut freeglut gcc-lib glibc libdrm libICE libogg libpng libSM libvorbis libX11 libXau libxcb libXdamage libXdmcp libXext libXfixes libXi libXmu libXrandr libXrender libXt libXxf86vm mesa openal util-linux-ng zlib"
+RDEPEND="torcs-data(=1.3.3) freealut freeglut libpng libvorbis libXmu libXrandr"
 RECOMMENDED=""
 BDEPEND=""
 OPTIONAL=""

@@ -3,11 +3,11 @@
 group="scanner"
 
 post_install() {
-	dogroupadd -r "$group"
+	dogroupadd -r "$group" ||true
 }
 
 post_remove() {
-	dogroupdel "$group"
+	dogroupdel "$group" ||true
 }
 
 post_upgrade() {

@@ -12,7 +12,7 @@ PACKAGER="StartOS Developers"
 
 SRC_URI="http://download.mono-project.com/sources/"$N"/"$N-$V".tar.bz2"
 
-RDEPEND="zlib libgdiplus"
+RDEPEND="gcc-lib zlib"
 BDEPEND="bison pkgconfig"
 RECOMMENDED=""
 CONFLICT=""

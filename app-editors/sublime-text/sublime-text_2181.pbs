@@ -13,7 +13,7 @@ PACKAGER="StartOS Developers"
 SRC_URI="SublimeText2Build"$V".tar.bz2"
 CHECKSUM="490a93e5fef9ffd1404915ba5ca1e9ed"
 
-RDEPEND="atk cairo expat fontconfig freetype gcc-lib gdk-pixbuf glib2 glibc gtk+ libffi libpng libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libXinerama libXrandr libXrender pango pixman zlib python"
+RDEPEND="gtk+"
 RECOMMENDED=""
 BDEPEND=""
 OPTIONAL=""

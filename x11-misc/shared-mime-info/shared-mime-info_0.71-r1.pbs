@@ -12,7 +12,7 @@ PACKAGER="StartOS Developers"
  
 SRC_URI="http://people.freedesktop.org/~hadess/"$N-$V".tar.bz2 "
 
-RDEPEND="glib2 glibc libxml2 zlib"
+RDEPEND="glib2 libxml2"
 BDEPEND="intltool xml-parser"
 OPIONAL=""
 

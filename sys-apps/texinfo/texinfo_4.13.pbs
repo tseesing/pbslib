@@ -12,7 +12,7 @@ PACKAGER="StartOS Developers"
 
 SRC_URI="http://ftp.gnu.org/gnu/"$N"/"$N-$V"a.tar.gz"
 
-RDEPEND="glibc ncurses"
+RDEPEND="ncurses"
 BDEPEND=""
 
 INSTALL="$N.install"

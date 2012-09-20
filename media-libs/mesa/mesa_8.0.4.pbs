@@ -14,7 +14,7 @@ GROUP="base"
 SRC_URI="ftp://ftp.freedesktop.org/pub/mesa/"$V"/MesaLib-"$V".tar.bz2" 
 CHECKSUM="d546f988adfdf986cff45b1efa2d8a46"
 
-RDEPEND="expat gcc-lib glibc libdrm(>=2.4.37) libpciaccess libX11 libXau libxcb libXdamage libXdmcp libXext libXfixes libXxf86vm udev"
+RDEPEND="expat gcc-lib libdrm(>=2.4.37) libXdamage libXxf86vm udev"
 BDEPEND="dri2proto llvm-dev"
 RECOMMENDED="nouveau-dri"
 

@@ -12,7 +12,7 @@ PACKAGER="StartOS Developers"
 
 SRC_URI="http://downloads.sourceforge.net/project/"$N"/"$N"-src/"$N-$V"/"$N-$V".tar.bz2 "
 
-RDEPEND="gcc-lib glibc"
+RDEPEND="gcc-lib"
 BDEPEND="mp4v2-dev"
 RECOMMENDED=""
 

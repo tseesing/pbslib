@@ -15,7 +15,7 @@ REPO="testing"
 SRC_URI="http://pub.mate-desktop.org/releases/1.4/"$N-$V".tar.xz"
 CHECKSUM="331919edb9049c14c96687edde16cec14b7f7815d422da15cd7f1ce6c9c287a9"
 
-RDEPEND="cairomm gtk+ glibmm gtkmm libcroco libgtop libmatewnck mate-conf mate-corba pangomm"
+RDEPEND="gtkmm libgtop libmatewnck librsvg mate-conf"
 RECOMMENDED=""
 BDEPEND="mate-doc-utils pkgconfig intltool"
 OPTIONAL=""

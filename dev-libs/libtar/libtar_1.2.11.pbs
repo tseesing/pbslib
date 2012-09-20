@@ -12,7 +12,7 @@ PACKAGER="StartOS Developers"
 
 SRC_URI="ftp://ftp.feep.net/pub/software/"$N"/"$N-$V".tar.gz"
 
-RDEPEND="glibc zlib"
+RDEPEND="zlib"
 BDEPEND=""
 RECOMMENDED=""
 CONFLICT=""
@@ -21,8 +21,11 @@ pbs_unpack() {
         dounpack
 }
 
-pbs_config() {
+pbs_patch() {
 	dopatch libtar-1.2.11-6-debian.patch
+}
+
+pbs_config() {
 	cp /usr/share/automake-1.11/config.* autoconf
 	autoreconf -f -v -i
 	doconfig

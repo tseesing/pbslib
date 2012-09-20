@@ -13,7 +13,7 @@ PACKAGER="StartOS Developers"
 SRC_URI="http://libtiger.googlecode.com/files/"$N-$V".tar.gz"
 CHECKSUM="dc1dbeb658c95485ba10b9b2897b4ae2"
 
-RDEPEND="bzip2 cairo expat fontconfig freetype gcc-lib glib2 glibc libffi libkate libpng libX11 libXau libxcb libXdmcp libXrender pango pixman zlib"
+RDEPEND="libkate pango"
 RECOMMENDED=""
 BDEPEND=""
 OPTIONAL=""

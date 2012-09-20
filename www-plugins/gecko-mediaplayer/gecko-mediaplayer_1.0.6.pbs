@@ -19,7 +19,7 @@ PACKAGER="StartOS Developers"
 SRC_URI="http://gecko-mediaplayer.googlecode.com/files/"$N-$V".tar.gz"
 CHECKSUM="27896584a552721585a276f7a4825ecb79d2980c"
 
-RDEPEND=""
+RDEPEND="curl gmtk"
 RECOMMENDED=""
 BDEPEND=""
 CONFLICT=""

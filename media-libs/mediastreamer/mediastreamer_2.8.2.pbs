@@ -13,7 +13,7 @@ PACKAGER="StartOS Developers"
 SRC_URI="http://download-mirror.savannah.gnu.org/releases/linphone/"$N"/"$N-$V".tar.gz"
 CHECKSUM="e51ea9d5fce1396b374d10473dfbadec"
 
-RDEPEND="alsa-lib attr dbus ffmpeg flac gcc-lib glibc json-c lame libcap libgsm libICE libjpeg-turbo libogg libSM libsndfile libtheora libva libvorbis libX11 libXau libxcb libXdmcp libXext libXi libXtst libXv opencore-amr orc ortp pulseaudio schroedinger speex util-linux-ng v4l-utils x264 xvidcore zlib"
+RDEPEND="ffmpeg libXv ortp"
 RECOMMENDED=""
 BDEPEND=""
 OPTIONAL=""

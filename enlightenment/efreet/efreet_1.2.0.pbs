@@ -13,7 +13,7 @@ PACKAGER="StartOS Developers"
 SRC_URI="http://download.enlightenment.org/releases/"$N-$V".tar.gz"
 CHECKSUM="20fc8b8d364f518adf6d92c2e31650f9"
 
-RDEPEND="curl cyrus-sasl ecore eet eina glib2 glibc gnutls libgcrypt libgpg-error libidn libjpeg-turbo libssh2 libtasn1 openldap openssl rtmpdump zlib"
+RDEPEND="ecore"
 RECOMMENDED=""
 BDEPEND=""
 OPTIONAL=""

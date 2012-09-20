@@ -1,0 +1,47 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="Media Player for Linux (subversion snapshot and ffmpeg-git)"
+HOMEPAGE="http://www.mplayerhq.hu/"
+LICENSE="GPL"
+PACKAGER="StartOS Developers"
+
+SRC_URI="http://www.mplayerhq.hu/MPlayer/releases/MPlayer-"$V".tar.xz"
+CHECKSUM="ac7bf1cfedc1c5c24bfc83107eefb1d9"
+
+RDEPEND="a52dec aalib faac faad2 giflib libass libbluray libcaca libcdio libdca libdv libmad libmng libvdpau libXinerama libXScrnSaver libXv libXxf86dga lirc lzo mpg123 samba twolame udev x264"
+RECOMMENDED="dejavu-fonts-ttf"
+BDEPEND="dejavu-fonts-ttf yasm"  
+CONFLICT="mplayer2 mplayer-svn"
+
+pbs_unpack() {
+	dounpack
+}
+
+pbs_config() {
+	# It is strongly recommended to let MPlayer choose the correct CFLAGS!
+	unset CFLAGS
+	config=" --prefix=/usr 
+	         --mandir=/usr/share/man 
+		 --confdir=/etc/mplayer
+		 --language=all
+		 --enable-runtime-cpudetection 
+		 --disable-gui" 
+	doconfig
+}
+
+pbs_build() {
+	[ "x$ARCH" = "xi686" ] && sed 's|-march=i486|-march=i686|g' -i config.mak
+	domake
+}
+
+pbs_install() {
+	domkinstall 
+	docp etc/{codecs.conf,input.conf,example.conf} "$filesdir"/mplayer.conf  "$destdir"/etc/mplayer/
+	doln /usr/share/fonts/truetype/ttf-dejavu/DejaVuSans.ttf  "$destdir"/usr/share/mplayer/subfont.ttf
+}
+

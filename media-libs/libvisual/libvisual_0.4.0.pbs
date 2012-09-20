@@ -13,7 +13,7 @@ PACKAGER="StartOS Developers"
 SRC_URI="http://downloads.sourceforge.net/sourceforge/"$N"/"$N-$V".tar.gz"
 CHECKSUM="f4e78547c79ea8a8ad111cf8b85011bb"
 
-RDEPEND="glibc speex"
+RDEPEND="speex"
 RECOMMENDED=""
 BDEPEND=""
 OPTIONAL=""

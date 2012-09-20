@@ -13,7 +13,7 @@ PACKAGER="StartOS Developers"
 SRC_URI="http://archive.xfce.org/xfce/4.10/src/"$N-$V".tar.bz2"
 CHECKSUM="d4edc15c172714c7a3eaf3c719b8faf6"
 
-RDEPEND="bzip2 cairo dbus dbus-glib expat fontconfig freetype gcc-lib gdk-pixbuf glib2 glibc gstreamer gtk+ lcms libffi libgsf libjpeg-turbo libpng libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libXinerama libxml2 libXrandr libXrender pango pixman poppler zlib"
+RDEPEND="dbus-glib gstreamer libgsf poppler-glib"
 RECOMMENDED=""
 BDEPEND=""
 OPTIONAL=""

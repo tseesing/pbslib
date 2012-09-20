@@ -13,7 +13,7 @@ PACKAGER="StartOS Developers"
 SRC_URI="http://libkate.googlecode.com/files/"$N-$V".tar.gz"
 CHECKSUM="1dfdbdeb2fa5d07063cf5b8261111fca"
 
-RDEPEND="glibc libogg libpng zlib"
+RDEPEND="libogg libpng"
 RECOMMENDED=""
 BDEPEND=""
 OPTIONAL=""

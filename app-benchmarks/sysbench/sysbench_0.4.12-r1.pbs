@@ -13,7 +13,7 @@ PACKAGER="StartOS Developers"
 SRC_URI="http://sourceforge.net/projects/"$N"/files/"$N"/"$V"/"$N-$V".tar.gz"
 CHECKSUM="3a6d54fdd3fe002328e4458206392b9d"
 
-RDEPEND="gcc-lib glibc libmysqlclient openssl zlib"
+RDEPEND="libmysqlclient"
 RECOMMENDED=""
 BDEPEND="libtool"
 OPTIONAL=""

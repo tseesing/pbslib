@@ -15,7 +15,7 @@ REPO="testing"
 SRC_URI="http://pub.mate-desktop.org/releases/1.4/"$N-$V".tar.xz"
 CHECKSUM="251a773736bd07e84aac74e13c3b46cabc3fc0113efcd5dd4551594e5336f53b"
 
-RDEPEND="mate-window-manager mate-settings-daemon libmatekbd mate-menus"
+RDEPEND="evolution-data-server libmatekbd librsvg libXft libXScrnSaver mate-desktop mate-menus mate-window-manager"
 RECOMMENDED=""
 BDEPEND="mate-doc-utils pkgconfig"
 OPTIONAL=""

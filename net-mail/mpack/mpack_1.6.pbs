@@ -7,26 +7,25 @@
 
 DESCRIPTION="Command-line MIME encoding and decoding utilities"
 HOMEPAGE="ftp://ftp.andrew.cmu.edu/pub/mpack/"
-REPO=""
 LICENSE="GPL"
-PRIORITY=""
 PACKAGER="StartOS Developers"
 
-SRC_URI="ftp://ftp.andrew.cmu.edu/pub/"$N"/"$N-$V$R".tar.gz"
+SRC_URI="ftp://ftp.andrew.cmu.edu/pub/"$N"/"$N-$V".tar.gz"
 
 RDEPEND="glibc"
 BDEPEND=""
 RECOMMENDED=""
 CONFLICT=""
 
-NOTES=""
-
 pbs_unpack() {
         dounpack
 }
 
-pbs_config() {
+pbs_patch() {
 	dopatch mpack-1.6-gentoo.patch
+}
+
+pbs_config() {
 	config+=""
 	doconfig
 }
@@ -37,5 +36,5 @@ pbs_build() {
 
 pbs_install() {
 	domkinstall
-	dodoc README.* Changes
 }
+

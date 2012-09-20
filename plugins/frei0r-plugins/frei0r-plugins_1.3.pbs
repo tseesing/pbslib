@@ -12,7 +12,7 @@ PACKAGER="StartOS Developers"
 
 SRC_URI="http://ftp.dyne.org/frei0r/releases/"$N-$V".tar.gz"
 
-RDEPEND="gcc-lib glibc"
+RDEPEND="gcc-lib"
 RECOMMENDED=""
 BDEPEND=""
 CONFLICT=""
@@ -32,6 +32,6 @@ pbs_build() {
 
 pbs_install() {
 	domkinstall htmldocsdir="$destdir"/usr/share/doc/"$N" docsdir="$destdir"/usr/share/doc/"$N"
-	dodoc AUTHORS COPYING NEWS README
 }
+
 

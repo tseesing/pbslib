@@ -7,14 +7,13 @@
 
 DESCRIPTION="TCP/IP swiss army knife. OpenBSD variant."
 HOMEPAGE="http://packages.debian.org/sid/netcat-openbsd"
-REPO=""
 LICENSE="bsd"
 PACKAGER="StartOS Developers"
 
 SRC_URI="http://ftp.debian.org/debian/pool/main/n/netcat-openbsd/netcat-openbsd_1.89.orig.tar.gz
          http://ftp.debian.org/debian/pool/main/n/netcat-openbsd/netcat-openbsd_1.89-4.diff.gz"
 
-RDEPEND="glib2 gdk-pixbuf glibc"
+RDEPEND="glib2"
 BDEPEND=""
 RECOMMENDED=""
 CONFLICT=""

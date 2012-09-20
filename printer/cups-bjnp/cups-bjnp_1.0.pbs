@@ -13,7 +13,7 @@ PACKAGER="StartOS Developers"
 SRC_URI="http://sourceforge.net/projects/"$N"/files/"$N"/"$V"/"$N-$V".tar.gz"
 CHECKSUM="e69104a23a2b7d7822a9f1ae372fd296"
 
-RDEPEND="avahi cups dbus e2fsprogs gcc-lib glibc gnutls keyutils krb5 libgcrypt libgpg-error libtasn1 zlib"
+RDEPEND="cups"
 RECOMMENDED=""
 BDEPEND=""
 OPTIONAL=""

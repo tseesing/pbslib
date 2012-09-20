@@ -13,7 +13,7 @@ PACKAGER="StartOS Developers"
 SRC_URI="http://ftp.gnome.org/pub/gnome/desktop/2.32/2.32.1/sources/"$N-$V".tar.bz2"
 CHECKSUM="860ef74d3500afa91ef87df667e311b2"
 
-RDEPEND="atk cairo dbus dbus-glib exempi expat fontconfig freetype gail gcc-lib gconf gdk-pixbuf glib2 glibc gnome-desktop gtk+ libexif libICE libpng libSM libunique libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libxml2 libXrandr libXrender orbit pango pixman startup-notification util-linux-ng zlib"
+RDEPEND="exempi gail gnome-desktop libexif libunique"
 BDEPEND="bzip2-dev ntfs-3g-dev gamin-dev libpthread-stubs"
 RECOMMENDED="chntpw ntdiskmap nautilus-startos-extend"
 

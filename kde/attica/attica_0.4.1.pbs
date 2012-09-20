@@ -13,7 +13,7 @@ GROUP="kde"
 
 SRC_URI="http://download.kde.org/stable/"$N"/"$N-$V".tar.bz2"
 
-RDEPEND="gcc-lib glib2 glibc openssl qt-core zlib"
+RDEPEND="qt-core"
 BDEPEND="cmake"
 
 pbs_unpack() {

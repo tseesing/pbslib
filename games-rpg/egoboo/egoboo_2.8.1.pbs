@@ -13,7 +13,7 @@ PACKAGER="StartOS Developers"
 SRC_URI="http://downloads.sourceforge.net/"$N"/"$N-$V".tar.gz"
 CHECKSUM="e6f3130695d297dcd9fe74e50bd59b68"
 
-RDEPEND="alsa-lib audiofile directfb freetype gcc-lib glibc libdrm libICE libsdl libSM libX11 libXau libxcb libXdamage libXdmcp libXext libXfixes libXt libXxf86vm mesa nas physfs sdl-image sdl-mixer sdl-ttf util-linux-ng zlib egoboo-data(=2.8.1)"
+RDEPEND="egoboo-data(=2.8.1) physfs sdl-image sdl-mixer sdl-ttf"
 RECOMMENDED=""
 BDEPEND=""
 OPTIONAL=""

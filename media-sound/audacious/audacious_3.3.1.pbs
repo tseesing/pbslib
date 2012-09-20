@@ -14,7 +14,7 @@ REPO="testing"
 
 SRC_URI="http://distfiles.audacious-media-player.org/"$N-$V".tar.bz2"
 
-RDEPEND="atk bzip2 cairo dbus dbus-glib expat fontconfig freetype gcc-lib gdk-pixbuf glib2 glibc gtk+3 libffi libpng libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libXinerama libXrandr libXrender pango pixman zlib"
+RDEPEND="dbus-glib gtk+3"
 BDEPEND=""
 RECOMMENDED="audacious-plugins(=3.3.1)"
 

@@ -7,10 +7,12 @@
 
 DESCRIPTION="links is a fast lightweight text and graphic web-browser"
 HOMEPAGE="http://links.twibright.com/"
- 
-SRC_URI="http://links.twibright.com/download/"$N-$V$R".tar.bz2"
+LICENSE="GPL"
+PACKAGER="StartOS Developers"
 
-RDEPEND="libtiff libjpeg-turbo libpng zlib libX11 directfb glibc bzip2 openssl glibc libxcb libXau libXdmcp"
+SRC_URI="http://links.twibright.com/download/"$N-$V".tar.bz2"
+
+RDEPEND="directfb libtiff openssl"
 BDEPEND=""
 
 pbs_unpack() {

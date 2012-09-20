@@ -7,18 +7,15 @@
 
 DESCRIPTION="The PPTP Server for Linux"
 HOMEPAGE="http://poptop.sourceforge.net/dox/"
-REPO=""
 LICENSE="GPL"
 PACKAGER="StartOS Developers"
 
-SRC_URI="http://nchc.dl.sourceforge.net/project/poptop/pptpd/pptpd-1.3.4/pptpd-1.3.4.tar.gz"
+SRC_URI="http://nchc.dl.sourceforge.net/project/poptop/"$N"/"$N-$V"/"$N-$V".tar.gz"
 
-RDEPEND=""
+RDEPEND="glibc"
 BDEPEND=""
 RECOMMENDED=""
 CONFLICT=""
-
-NOTES=""
 
 pbs_unpack() {
         dounpack

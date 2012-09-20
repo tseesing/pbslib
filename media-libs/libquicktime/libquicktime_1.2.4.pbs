@@ -13,7 +13,7 @@ PACKAGER="StartOS Developers"
 SRC_URI="http://downloads.sourceforge.net/sourceforge/"$N"/"$N-$V".tar.gz"
 CHECKSUM="81cfcebad9b7ee7e7cfbefc861d6d61b"
 
-RDEPEND="alsa-lib atk cairo expat ffmpeg(>=0.11.1) fontconfig freetype gcc-lib gdk-pixbuf glib2 glibc gtk+ lame libdrm libffi libgsm libICE libjpeg-turbo libogg libpng libSM libtheora libva libvorbis libX11 libXau libXaw libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libXinerama libXmu libXpm libXrandr libXrender libXt libXv libXxf86vm mesa opencore-amr orc pango pixman schroedinger speex util-linux-ng x264 xvidcore zlib"
+RDEPEND="ffmpeg(>=0.11.1) gtk+ libXaw libXv mesa"
 RECOMMENDED=""
 BDEPEND=""
 OPTIONAL=""

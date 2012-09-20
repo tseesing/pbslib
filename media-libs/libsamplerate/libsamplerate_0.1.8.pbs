@@ -13,7 +13,7 @@ PACKAGER="StartOS Developers"
 SRC_URI="http://www.mega-nerd.com/SRC/"$N-$V".tar.gz"
 CHECKSUM="1c7fb25191b4e6e3628d198a66a84f47"
 
-RDEPEND="flac glibc libogg libsndfile libvorbis"
+RDEPEND="libsndfile"
 BDEPEND=""
 RECOMMENDED=""
 

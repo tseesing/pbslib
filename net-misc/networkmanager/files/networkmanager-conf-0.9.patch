@@ -6,7 +6,7 @@ diff -ur networkmanager-0.9.6.0/src/org.freedesktop.NetworkManager.conf networkm
                  <allow send_destination="org.freedesktop.NetworkManager.vpnc"/>
          </policy>
 +
-+	<policy group="wheel">
++	<policy group="netdev">
 +	            <allow send_destination="org.freedesktop.NetworkManager"/>
 +	            <allow send_interface="org.freedesktop.NetworkManager"/>
 +	</policy>

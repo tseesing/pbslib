@@ -13,7 +13,7 @@ PACKAGER="StartOS Developers"
 SRC_URI="http://gngeo.googlecode.com/files/"$N-$V".tar.gz"
 CHECKSUM="a91836e6762bbc28ad164ef94b2d00f8"
 
-RDEPEND="directfb glibc libICE libsdl libSM libX11 libXau libxcb libXdmcp libXt nas util-linux-ng zlib"
+RDEPEND="sdl-image"
 RECOMMENDED=""
 BDEPEND=""
 OPTIONAL=""

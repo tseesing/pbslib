@@ -14,7 +14,7 @@ PACKAGER="StartOS Developers"
 SRC_URI="http://xorg.freedesktop.org/archive/individual/app/"$N-$V".tar.bz2"
 CHECKSUM="9c0943cbd83e489ad1b05221b97efd44"
 
-RDEPEND="glibc libX11 libXau libxcb libXdmcp"
+RDEPEND="libX11"
 BDEPEND=""
 
 pbs_unpack() {
@@ -31,6 +31,8 @@ pbs_build() {
 
 pbs_install() {
 	domkinstall
+	dodoc COPYING
+
 	cd "$destdir"
 	domv usr/lib/X11/xinit etc/X11
 	doln /etc/X11/xinit    usr/lib/X11

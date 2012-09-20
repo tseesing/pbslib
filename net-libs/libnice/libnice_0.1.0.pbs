@@ -12,7 +12,7 @@ PACKAGER="StartOS Developers"
 
 SRC_URI="http://nice.freedesktop.org/releases/"$N-$V".tar.gz"
 
-RDEPEND="glib2 glibc gstreamer libxml2 zlib"
+RDEPEND="gstreamer"
 BDEPEND=""
 RECOMMENDED=""
 

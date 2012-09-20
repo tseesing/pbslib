@@ -13,7 +13,7 @@ GROUP="kde"
 
 SRC_URI="http://download.kde.org/stable/"$V"/src/"$N-$V".tar.xz"
 
-RDEPEND="attica avahi bzip2 dbus expat fontconfig freetype gcc-lib glib2 glibc kdelibs libdbusmenu-qt libexif libffi libgphoto2 libICE libjpeg-turbo libpng libSM libtiff libtool libusb-compat libusbx libX11 libXau libxcb libXcursor libXdmcp libXext libXfixes libXft libXi libXpm libXrender libXtst net-snmp openssl qca qt-core sane-backends util-linux-ng v4l-utils xz-utils zlib"
+RDEPEND="kdelibs sane-backends"
 RECOMMENDED=""
 BDEPEND="cmake automoc4"
 OPTIONAL=""

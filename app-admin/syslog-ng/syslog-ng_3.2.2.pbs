@@ -7,17 +7,14 @@
 
 DESCRIPTION="syslog replacement with advanced filtering features"
 HOMEPAGE="http://www.balabit.com/products/syslog_ng/"
-REPO=""
 LICENSE="GPL"
 PACKAGER="StartOS Developers"
 
-SRC_URI="http://www.balabit.com/downloads/files?path=/syslog-ng/sources/"$V$R"/source/"${N}_$V$R".tar.gz"
+SRC_URI="http://www.balabit.com/downloads/files?path=/syslog-ng/sources/"$V"/source/"${N}_$V".tar.gz"
 
-RDEPEND="eventlog"
-BDEPEND=" "
+RDEPEND="eventlog glib2 libcap libdbi libpcre openssl"
+BDEPEND=""
 RECOMMENDED=""
-
-NOTES=""
 
 pbs_unpack() {
         dounpack

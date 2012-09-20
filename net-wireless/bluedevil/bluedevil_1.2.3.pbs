@@ -13,7 +13,7 @@ PACKAGER="StartOS Developers"
 SRC_URI="http://download.kde.org/stable/"$N"/"$V"/src/"$N-$V".tar.bz2"
 CHECKSUM="e792576d34956d27cd0c3eb3c81a5923"
 
-RDEPEND="acl attica attr bzip2 dbus expat fontconfig freetype gcc-lib glib2 glibc herqq kdelibs libbluedevil libdbusmenu-qt libffi libICE libpng libSM libX11 libXau libxcb libXcursor libXdmcp libXext libXfixes libXft libXi libxml2 libXpm libXrender libXtst openssl qca qt-core soprano strigi udev util-linux-ng xz-utils zlib"
+RDEPEND="kdelibs libbluedevil"
 RECOMMENDED=""
 BDEPEND="cmake automoc4"
 OPTIONAL=""

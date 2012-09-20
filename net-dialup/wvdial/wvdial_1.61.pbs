@@ -7,13 +7,12 @@
 
 DESCRIPTION="Excellent program to automatically configure PPP sessions"
 HOMEPAGE="http://code.google.com/p/wvstreams/"
-REPO=""
 LICENSE="LGPL"
 PACKAGER="StartOS Developers"
 
-SRC_URI="http://wvstreams.googlecode.com/files/wvdial-1.61.tar.gz"
+SRC_URI="http://wvstreams.googlecode.com/files/"$N-$V".tar.gz"
 
-RDEPEND="wvstreams ppp"
+RDEPEND="wvstreams"
 BDEPEND=""
 RECOMMENDED=""
 CONFLICT=""
@@ -25,10 +24,13 @@ pbs_unpack() {
         dounpack
 }
 
-pbs_config() {
+pbs_patch() {
 	dopatch wvdial-1.61-destdir.patch \
-	           wvdial-1.61-as-needed.patch \
-		   wvdial-1.61-parallel-make.patch
+	        wvdial-1.61-as-needed.patch \
+		wvdial-1.61-parallel-make.patch
+}
+
+pbs_config() {
 	config+=""
 	doconfig
 }
@@ -40,5 +42,4 @@ pbs_build() {
 pbs_install() {
 	domkinstall
 }
-
 

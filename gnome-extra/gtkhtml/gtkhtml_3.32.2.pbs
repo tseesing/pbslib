@@ -12,7 +12,7 @@ PACKAGER="StartOS Developers"
 
 SRC_URI="http://ftp.gnome.org/pub/gnome/sources/"$N"/3.32/"$N-$V".tar.bz2"
 
-RDEPEND="atk cairo enchant expat fontconfig freetype gail gcc-lib gconf gdk-pixbuf glib2 glibc gtk+ libpng libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libXrandr libXrender orbit pango pixman zlib"
+RDEPEND="enchant gail gconf"
 BDEPEND=""
 RECOMMENDED=""
 

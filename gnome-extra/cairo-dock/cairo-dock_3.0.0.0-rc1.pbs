@@ -14,7 +14,7 @@ PACKAGER="StartOS Developers"
 SRC_URI="https://launchpadlibrarian.net/97723585/"$N"-3.0.0.0rc1.tar.gz"
 CHECKSUM="51a85048531e0f1e69b0472065384ace"
 
-RDEPEND="atk cairo curl cyrus-sasl dbus dbus-glib expat fontconfig freetype gcc-lib gdk-pixbuf glib2 glibc gnutls gtk+ libcroco libdrm libffi libgcrypt libgpg-error libidn libpng librsvg libssh2 libtasn1 libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libXinerama libxml2 libXrandr libXrender libXtst libXxf86vm mesa openldap openssl pango pixman rtmpdump zlib"
+RDEPEND="curl dbus-glib librsvg libXtst mesa"
 RECOMMENDED="cairo-dock-plugins"
 BDEPEND="cmake"
 OPTIONAL=""

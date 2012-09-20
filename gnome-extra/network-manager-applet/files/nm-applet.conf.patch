@@ -4,7 +4,7 @@
                  <allow send_destination="org.freedesktop.NetworkManagerUserSettings"
                         send_interface="org.freedesktop.NetworkManagerSettings.Connection.Secrets"/>
          </policy>
-+	<policy group="wheel">
++	<policy group="netdev">
 +	       <allow own="org.freedesktop.NetworkManagerUserSettings"/>
 +	       <allow send_destination="org.freedesktop.NetworkManagerUserSettings"/>
 +	       <allow send_interface="org.freedesktop.NetworkManagerUserSettings"/>

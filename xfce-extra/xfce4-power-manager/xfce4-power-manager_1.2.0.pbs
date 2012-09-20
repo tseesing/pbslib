@@ -13,7 +13,7 @@ PACKAGER="StartOS Developers"
 SRC_URI="http://archive.xfce.org/xfce/4.10/src/"$N-$V".tar.bz2"
 CHECKSUM="935599b7114b0a4b0e2c9a5d6c72524c"
 
-RDEPEND="atk cairo dbus dbus-glib expat fontconfig freetype gcc-lib gdk-pixbuf glib2 glibc gtk+ libffi libICE libnotify libpng libSM libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libxfce4ui libxfce4util libXfixes libXi libXinerama libXrandr libXrender pango pixman startup-notification util-linux-ng xfce4-panel xfconf zlib"
+RDEPEND="libnotify xfce4-panel"
 RECOMMENDED=""
 BDEPEND=""
 OPTIONAL=""

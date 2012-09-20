@@ -12,7 +12,7 @@ PACKAGER="StartOS Developers"
 
 SRC_URI="http://gupnp.org/sites/all/files/sources/"$N-$V".tar.gz"
 
-RDEPEND="gupnp"
+RDEPEND="gst-plugins-base"
 RECOMMENDED=""
 BDEPEND=""
 

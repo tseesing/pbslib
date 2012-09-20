@@ -7,19 +7,15 @@
 
 DESCRIPTION="a simple, small, C++ XML parser that can be easily integrating into other programs"
 HOMEPAGE="http://www.grinninglizard.com/tinyxml/index.html"
-REPO=""
 LICENSE="GPL"
-PRIORITY=""
 PACKAGER="StartOS Developers"
 
 SRC_URI="http://downloads.sourceforge.net/project/"$N"/"$N"/"$V$R"/${N}_2_6_1.zip"
 
-RDEPEND=""
-BDEPEND=" "
+RDEPEND="gcc-lib"
+BDEPEND=""
 RECOMMENDED=""
 CONFLICT=""
-
-NOTES=""
 
 pbs_unpack() {
         dounpack
@@ -32,7 +28,7 @@ pbs_config() {
 pbs_build() {
 	sed -i.orig -e 's/\(^TINYXML_USE_STL := \)NO/\1YES/' -e 's/^RELEASE_CFLAGS.*/& -fPIC/' Makefile
 	domake
-	g++ -fPIC -shared -o libtinyxml.so.0."$V$R" -Wl,-soname,libtinyxml.so.0 *.o
+	g++ -fPIC -shared -o libtinyxml.so.0."$V" -Wl,-soname,libtinyxml.so.0 *.o
 }
 
 pbs_install() {
@@ -40,6 +36,7 @@ pbs_install() {
         docp *.h "$destdir"/usr/include
         dodoc {changes,readme}.txt dodocs/*
 	cd "$destdir"/usr/lib/
-	doln libtinyxml.so.0."$V$R" libtinyxml.so.0
-	doln libtinyxml.so.0."$V$R" libtinyxml.so
+	doln libtinyxml.so.0."$V" libtinyxml.so.0
+	doln libtinyxml.so.0."$V" libtinyxml.so
 }
+

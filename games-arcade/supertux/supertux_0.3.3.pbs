@@ -14,7 +14,7 @@ PACKAGER="StartOS Developers"
 SRC_URI="http://download.berlios.de/supertux/"$N-$V".tar.bz2"
 CHECKSUM="f3f803e629ee51a9de0b366a036e393d"
 
-RDEPEND="curl cyrus-sasl directfb gcc-lib glew glibc gnutls libdrm libgcrypt libgpg-error libICE libidn libogg libsdl libSM libssh2 libtasn1 libvorbis libX11 libXau libxcb libXdamage libXdmcp libXext libXfixes libXi libXmu libXt libXxf86vm mesa nas openal openldap openssl physfs rtmpdump sdl-image util-linux-ng zlib"
+RDEPEND="curl glew libvorbis openal physfs sdl-image"
 RECOMMENDED=""
 BDEPEND="cmake"
 OPTIONAL=""

@@ -12,7 +12,7 @@ PACKAGER="StartOS Developers"
 
 SRC_URI="http://pub.risujin.org/"$N"/"$N-$V".tar.gz"
 
-RDEPEND="alsa-lib atk audiofile avahi cairo dbus dbus-glib expat fontconfig freetype gcc-lib gconf glib2 gdk-pixbuf glibc gnome-vfs gtk+ libbonobo libgnome libpng libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libxml2 libXrandr libXrender libXtst openssl orbit pango pixman popt zlib"
+RDEPEND="libgnome"
 BDEPEND=""
 RECOMMENDED=""
 CONFLICT=""

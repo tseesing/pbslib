@@ -13,7 +13,7 @@ PACKAGER="StartOS Developers"
 SRC_URI="http://dl-ak.solidworks.com/nonsecure/draftsight/beta4/draftSight.deb"
 CHECKSUM="6f737dfae32949e10b9eac873e24e1e8"
 
-RDEPEND="alsa-lib attr avahi cups dbus expat flac fontconfig freetype gcc-lib glib2 glibc gnutls json-c keyutils krb5 libcap libdrm libffi libgcrypt libgpg-error libICE libogg libpng libSM libsndfile libtasn1 libvorbis libX11 libXau libxcb libXdamage libXdmcp libXext libXfixes libXi libXrender libXt libXtst libXxf86vm mesa nas pulseaudio qt-core util-linux-ng zlib"
+RDEPEND="cups mesa nas phonon"
 BDEPEND=""
 RECOMMENDED=""
 CONFLICT=""

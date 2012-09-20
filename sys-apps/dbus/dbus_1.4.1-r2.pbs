@@ -12,7 +12,7 @@ PACKAGER="StartOS developers "
 
 SRC_URI="http://dbus.freedesktop.org/releases/"$N"/"$N-$V".tar.gz"
 
-RDEPEND="expat glibc libICE libSM libX11 libXau libxcb libXdmcp util-linux-ng"
+RDEPEND="expat libSM libX11"
 BDEPEND="libxml2-dev"
 
 INSTALL="$N.install"
@@ -28,17 +28,17 @@ pbs_patch() {
 }
 
 pbs_config() {
-	config+=" --with-xml=expat  
-		  --with-dbus-user=messagebus 
-		  --disable-xml-docs 
-		  --with-x 
-		  --enable-inotify 
-		  --disable-kqueue 
-		  --disable-selinux 
-		  --disable-libaudit 
-		  --disable-verbose-mode 
-		  --disable-tests 
-		  --disable-asserts "
+	config+="--with-xml=expat  
+		 --with-dbus-user=messagebus 
+		 --disable-xml-docs 
+		 --with-x 
+		 --enable-inotify 
+		 --disable-kqueue 
+		 --disable-selinux 
+		 --disable-libaudit 
+		 --disable-verbose-mode 
+		 --disable-tests 
+		 --disable-asserts"
 	doconfig
 }
 

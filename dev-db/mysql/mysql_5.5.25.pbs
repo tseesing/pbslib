@@ -68,7 +68,7 @@ pbs_build() {
 
 mysql_install() {
 	DESCRIPTION="A fast, multi-threaded, multi-user SQL database server."
-	RDEPEND="mysql-clients"
+	RDEPEND="mysql-clients gcc-lib ncurses openssl""
 	BDEPEND=""
 	
 	INSTALL="$N.install"
@@ -116,7 +116,7 @@ mysql-clients_install() {
 
 libmysqlclient_install() {
 	DESCRIPTION="MySQL client libraries"
-	RDEPEND="gcc-lib glibc openssl zlib"
+	RDEPEND="gcc-lib openssl"
 	BDEPEND=""
 
 	for dir in include libmysql libmysqld libservices; do

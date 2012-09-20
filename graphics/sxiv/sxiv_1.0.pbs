@@ -13,7 +13,7 @@ PACKAGER="StartOS Developers"
 SRC_URI="https://github.com/downloads/muennich/"$N"/"$N-$V".tar.gz"
 CHECKSUM="c887e0af1e4d5a101b285a46d288c419"
 
-RDEPEND="freetype glibc imlib2 libX11 libXau libxcb libXdmcp libXext zlib"
+RDEPEND="imlib2"
 RECOMMENDED=""
 BDEPEND=""
 OPTIONAL=""

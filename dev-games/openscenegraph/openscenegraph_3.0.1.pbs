@@ -7,15 +7,15 @@
 
 DESCRIPTION="An Open Source, high performance real-time graphics toolkit"
 HOMEPAGE="http://www.openscenegraph.org"
-LICENSE="custom/OSGPL"
+LICENSE="custom,OSGPL"
 PACKAGER="StartOS Developers"
 
 SRC_URI="http://www.openscenegraph.org/downloads/stable_releases/OpenSceneGraph-"$V"/source/OpenSceneGraph-"$V".zip"
 CHECKSUM="c43a25d023e635c3566b2083d8e6d956"
 
-RDEPEND="alsa-lib bzip2 cairo curl cyrus-sasl directfb expat ffmpeg fontconfig freetype gcc-lib gdk-pixbuf giflib glib2 glibc gnutls gtk+ jack-audio-connection-kit jasper lame lcms libcroco libdrm libffi libgcrypt libgpg-error libICE libidn libjpeg-turbo libogg libpng librsvg libsdl libSM libssh2 libtasn1 libtheora libtiff libva libvorbis libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libXinerama libxml2 libXrandr libXrender libXt libXxf86vm mesa nas opencore-amr openldap openssl orc pango pixman poppler qt-core rtmpdump schroedinger util-linux-ng x264 xvidcore zlib"
-RECOMMENDED=""
+RDEPEND="ffmpeg giflib librsvg poppler-glib qt-core"
 BDEPEND="cmake"
+RECOMMENDED=""
 OPTIONAL=""
 CONFLICT=""
 
@@ -24,12 +24,17 @@ pbs_unpack() {
 }
 
 pbs_config() {
-	cmake . -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=Release
+	rm -rf cmake-build 2>/dev/null
+	mkdir cmake-build && cd cmake-build
+	
+	CFLAGS="$CFLAGS -D__STDC_CONSTANT_MACROS"
+	CXXFLAGS="$CXXFLAGS -D__STDC_CONSTANT_MACROS"
+	cmake .. -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=Release
 }
 
 pbs_build() {
 	sed -i 's|#include <curl/types.h>|//#include <curl/types.h>|' src/osgPlugins/curl/ReaderWriterCURL.cpp
-	domake
+	make
 }
 
 pbs_install() {

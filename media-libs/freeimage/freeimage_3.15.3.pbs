@@ -13,7 +13,7 @@ PACKAGER="StartOS Developers"
 SRC_URI="http://downloads.sourceforge.net/project/"$N"/Source%20Distribution/"$V"/FreeImage3153.zip"
 CHECKSUM="6c305b4086500ff8541c596ea6fc7cd7"
 
-RDEPEND="gcc-lib glibc"
+RDEPEND="gcc-lib"
 RECOMMENDED=""
 BDEPEND=""
 OPTIONAL=""

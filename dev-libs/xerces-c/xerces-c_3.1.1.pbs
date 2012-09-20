@@ -13,7 +13,7 @@ PACKAGER="StartOS Developers"
 SRC_URI="http://apache.osuosl.org/xerces/c/3/sources/"$N-$V".tar.gz"
 CHECKSUM="6a8ec45d83c8cfb1584c5a5345cb51ae"
 
-RDEPEND="curl cyrus-sasl gcc-lib glibc gnutls icu libgcrypt libgpg-error libidn libssh2 libtasn1 openldap openssl rtmpdump zlib"
+RDEPEND="curl icu"
 RECOMMENDED=""
 BDEPEND=""
 OPTIONAL=""

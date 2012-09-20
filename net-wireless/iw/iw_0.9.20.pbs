@@ -7,18 +7,15 @@
 
 DESCRIPTION="nl80211 based CLI configuration utility for wireless devices"
 HOMEPAGE="http://wireless.kernel.org/en/users/Documentation/iw"
-REPO=""
 LICENSE="GPL"
 PACKAGER="StartOS Developers"
 
-SRC_URI="http://wireless.kernel.org/download/"$N"/"$N-$V$R".tar.bz2"
+SRC_URI="http://wireless.kernel.org/download/"$N"/"$N-$V".tar.bz2"
 
 RDEPEND="libnl"
 BDEPEND=""
 RECOMMENDED=""
 CONFLICT=""
-
-NOTES=""
 
 pbs_unpack() {
         dounpack

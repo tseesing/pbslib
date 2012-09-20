@@ -14,7 +14,7 @@ GROUP="fcitx"
 SRC_URI="http://fcitx.googlecode.com/files/"$N-$V".tar.xz"
 CHECKSUM="2b0e47b35c1c3354c4c4aa5accad5f7ab3d2d60d"
 
-RDEPEND="fcitx gcc-lib glibc libgooglepinyin"
+RDEPEND="fcitx libgooglepinyin"
 RECOMMENDED=""
 BDEPEND="cmake"
 OPTIONAL=""

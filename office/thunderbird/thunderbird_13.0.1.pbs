@@ -13,7 +13,7 @@ PACKAGER="StartOS Developers"
 SRC_URI="ftp://ftp.mozilla.org/pub/mozilla.org/"$N"/releases/"$V"/source/"$N-$V".source.tar.bz2"
 CHECKSUM="721088faf4bedfd8d7beb6f8295856d1"
 
-RDEPEND="alsa-lib atk cairo dbus dbus-glib expat fontconfig freetype gcc-lib gdk-pixbuf glib2 glibc gtk+ hunspell libevent libffi libICE libjpeg-turbo libnotify libpng libSM libvpx libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libXinerama libXrandr libXrender libXt nspr nss pango pixman sqlite startup-notification util-linux-ng xcb-util zlib"
+RDEPEND="alsa-lib hunspell libevent libnotify libvpx libXt nss startup-notification"
 BDEPEND=""
 RECOMMENDED="thunderbird-i18n-zh-CN(>=13.0.1)"
 

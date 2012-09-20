@@ -7,13 +7,12 @@
 
 DESCRIPTION="OpenSSL extension to Tcl"
 HOMEPAGE="http://tls.sourceforge.net/"
-REPO=""
 LICENSE="GPL"
 PACKAGER="StartOS Developers"
 
-SRC_URI="http://downloads.sourceforge.net/tls/tls"$V$R"-src.tar.gz"
+SRC_URI="http://downloads.sourceforge.net/tls/tls"$V"-src.tar.gz"
 
-RDEPEND="glibc openssl zlib"
+RDEPEND="openssl"
 BDEPEND=""
 RECOMMENDED=""
 CONFLICT=""

@@ -12,7 +12,7 @@ PACKAGER="StartOS Developers"
 
 SRC_URI="http://downloads.sourceforge.net/project/squashfs/squashfs/squashfs"$V"/squashfs"$V".tar.gz"
 
-RDEPEND="glibc xz-utils zlib"
+RDEPEND="xz-utils zlib"
 BDEPEND=""
 RECOMMENDED=""
 

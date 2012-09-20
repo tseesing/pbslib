@@ -13,7 +13,7 @@ PACKAGER="StartOS Developers"
 SRC_URI="http://ftp.gnome.org/pub/gnome/desktop/2.32/2.32.1/sources/"$N-$V".tar.bz2"
 CHECKSUM="e1eecb0a92a1a363b3d375ec5ac0fb3b"
 
-RDEPEND="atk cairo enchant expat fontconfig freetype gcc-lib gconf gdk-pixbuf glib2 glibc gtk+ gtksourceview libffi libICE libpng libSM libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libXinerama libxml2 libXrandr libXrender orbit pango pixman python(>=2.7.0) util-linux-ng zlib"
+RDEPEND="enchant gconf gtksourceview libSM python(>=2.7.0)"
 BDEPEND=""
 RECOMMENDED="aspell aspell-en"
 

@@ -13,7 +13,7 @@ PACKAGER="StartOS Developers"
 SRC_URI="https://github.com/downloads/lalinsky/"$N"/"$N-$V".tar.gz"
 CHECKSUM="e8bcc1d0d8dfec86aa648b87ba3f69b6d589eae0"
 
-RDEPEND="ffmpeg(>=0.11.1) gcc-lib glibc lame libgsm libogg libtheora libva libvorbis opencore-amr orc schroedinger speex x264 xvidcore zlib"
+RDEPEND="ffmpeg(>=0.11.1)"
 RECOMMENDED=""
 BDEPEND="cmake"
 OPTIONAL=""

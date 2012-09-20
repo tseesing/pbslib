@@ -12,7 +12,7 @@ PACKAGER="StartOS Developers"
 
 SRC_URI="http://ftp.acc.umu.se/pub/gnome/platform/2.32/2.32.1/sources/"$N-$V".tar.bz2"
 
-RDEPEND="atk cairo expat fontconfig freetype gail gcc-lib gdk-pixbuf glib2 glibc gtk+ libart_lgpl libpng libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libXrandr libXrender pango pixman zlib"
+RDEPEND="gail libart_lgpl"
 BDEPEND=""
 
 pbs_unpack() {

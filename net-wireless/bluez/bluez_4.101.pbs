@@ -13,7 +13,7 @@ PACKAGER="StartOS Developers"
 SRC_URI="http://www.kernel.org/pub/linux/bluetooth/"$N-$V".tar.gz"
 CHECKSUM="fb42cb7038c380eb0e2fa208987c96ad"
 
-RDEPEND="alsa-lib dbus glib2 glibc gst-plugins-base gstreamer libffi libusb-compat libusbx libxml2 ncurses readline udev zlib"
+RDEPEND="dbus gst-plugins-base libusb-compat readline udev"
 BDEPEND=""
 RECOMMENDED=""
 

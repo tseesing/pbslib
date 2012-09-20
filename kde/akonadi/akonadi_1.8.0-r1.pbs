@@ -13,7 +13,7 @@ GROUP="kde"
 
 SRC_URI="http://download.kde.org/stable/"$N"/src/"$N-$V".tar.bz2"
 
-RDEPEND="boost-libs(=1.50.0) bzip2 dbus expat fontconfig freetype gcc-lib glib2 glibc libffi libICE libpng libSM libX11 libXau libxcb libXdmcp libXext libXrender openssl qt-core soprano sqlite util-linux-ng zlib"
+RDEPEND="boost-libs(=1.50.0) soprano"
 BDEPEND="cmake"
 RECOMMENDED=""
 

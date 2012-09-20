@@ -13,7 +13,7 @@ PACKAGER="StartOS Developers"
 SRC_URI="http://caml.inria.fr/distrib/"$N"-3.12/"$N-$V".tar.gz"
 CHECKSUM="814a047085f0f901ab7d8e3a4b7a9e65"
 
-RDEPEND="expat fontconfig freetype gdb gdbm glibc libX11 libXau libxcb libXdmcp libXext libXft libXrender libXScrnSaver ncurses tcl tk zlib"
+RDEPEND="gdbm ncurses tk"
 RECOMMENDED=""
 BDEPEND=""
 OPTIONAL=""

@@ -13,7 +13,7 @@ PACKAGER="StartOS Developers"
 SRC_URI="http://downloads.sourceforge.net/openobex/"$N-$V".tar.bz2"
 CHECKSUM="f20762061b68bc921e80be4aebc349eb"
 
-RDEPEND="bluez glibc libusb-compat libusbx openobex python"
+RDEPEND="openobex python"
 RECOMMENDED=""
 BDEPEND=""
 OPTIONAL=""

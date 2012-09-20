@@ -13,7 +13,7 @@ GROUP="kde"
 
 SRC_URI="http://download.kde.org/stable/"$N"/"$N-$V".tar.bz2"
 
-RDEPEND="expat fontconfig freetype gcc-lib glib2 glibc libffi libICE libpng libSM libX11 libXau libxcb libXdmcp libXext libXrender qt-core util-linux-ng zlib"
+RDEPEND="qt-core"
 BDEPEND="cmake"
 
 pbs_unpack() {

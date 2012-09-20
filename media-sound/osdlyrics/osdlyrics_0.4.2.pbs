@@ -13,7 +13,7 @@ PACKAGER="StartOS Developers"
 SRC_URI="http://osd-lyrics.googlecode.com/files/"$N-$V".tar.gz"
 CHECKSUM="6fa9476f1409eff7d50de09f973e66edd315356e"
 
-RDEPEND="atk cairo curl cyrus-sasl dbus dbus-glib expat fontconfig freetype gcc-lib gdk-pixbuf glib2 glibc gnutls gtk+ libffi libgcrypt libgpg-error libidn libmpd libnotify libpng libssh2 libtasn1 libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libXinerama libXrandr libXrender openldap openssl pango pixman rtmpdump sqlite xmms2 zlib"
+RDEPEND="libmpd libnotify xmms2"
 RECOMMENDED=""
 BDEPEND=""
 OPTIONAL=""

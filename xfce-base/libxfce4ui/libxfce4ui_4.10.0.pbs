@@ -13,7 +13,7 @@ PACKAGER="StartOS Developers"
 SRC_URI="http://archive.xfce.org/src/xfce/"$N"/4.10/"$N-$V".tar.bz2"
 CHECKSUM="a2b9fa288ccb5f16fa13264e507ba3f7b8da0176da259a11239f21538c0ea3e2"
 
-RDEPEND="atk cairo dbus dbus-glib expat fontconfig freetype gcc-lib gdk-pixbuf glade glib2 glibc gtk+ libffi libICE libpng libSM libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libxfce4util libXfixes libXi libXinerama libxml2 libXrandr libXrender pango pixman startup-notification util-linux-ng xfconf zlib"
+RDEPEND="gtk+ startup-notification xfconf"
 RECOMMENDED=""
 BDEPEND="gtk-doc"
 OPTIONAL=""
@@ -27,9 +27,9 @@ pbs_unpack() {
 
 pbs_config() {
 	config+=" --disable-static
-		  --enable-gtk-doc
+	          --disable-gtk-doc
 	          --disable-debug 
-		  --with-vendor-info=startos "
+		  --with-vendor-info=StartOS "
 	doconfig
 }
 

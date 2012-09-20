@@ -12,7 +12,7 @@ PACKAGER="StartOS Developers"
  
 SRC_URI="http://download.icu-project.org/files/"$N"4c/"$V"/"$N"4c-4_2_1-src.tgz"
 
-RDEPEND="gcc-lib glibc"
+RDEPEND="gcc-lib"
 BDEPEND=""
 RECOMMENDED=""
 

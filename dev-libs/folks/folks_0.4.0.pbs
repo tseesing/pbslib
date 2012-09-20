@@ -12,7 +12,7 @@ PACKAGER="StartOS Developers"
 
 SRC_URI="http://ftp.acc.umu.se/pub/gnome/sources/"$N"/0.4/"$N-$V".tar.bz2"
 
-RDEPEND="dbus dbus-glib glib2 glibc libgee libxml2 telepathy-glib zlib"
+RDEPEND="libgee libxml2 telepathy-glib"
 RECOMMENDED=""
 BDEPEND=""
 CONFLICT=""

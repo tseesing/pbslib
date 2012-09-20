@@ -13,7 +13,7 @@ PACKAGER="StartOS Developers"
 
 SRC_URI="http://releases.chipx86.com/"$N"/"$N"/"$N-$V".tar.gz"
 
-RDEPEND="atk cairo expat fontconfig freetype gcc-lib gdk-pixbuf glib2 glibc gtk+ libpng libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libxml2 libXrandr libXrender pango pixman zlib"
+RDEPEND="gtk+ libxml2"
 BDEPEND="iso-codes perl"
 RECOMMENDED=""
 

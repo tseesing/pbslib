@@ -13,8 +13,8 @@ PACKAGER="StartOS Developers"
 SRC_URI="http://audacity.googlecode.com/files/"$N"-fullsrc-"$V".tar.bz2"
 CHECKSUM="286a66b162f5086241e3dc2da725b687"
 
-RDEPEND="alsa-lib atk cairo expat flac fontconfig freetype gcc-lib gdk-pixbuf glib2 glibc gtk+ jack-audio-connection-kit libffi libICE libid3tag libjpeg-turbo libmad libogg libpng libsamplerate libSM libsndfile libtiff libvorbis libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libXinerama libXrandr libXrender libXxf86vm pango pixman util-linux-ng wxWidgets zlib"
-BDEPEND=" "
+RDEPEND="jack-audio-connection-kit libid3tag libmad wxWidgets"
+BDEPEND=""
 RECOMMENDED=""
 CONFLICT=""
 

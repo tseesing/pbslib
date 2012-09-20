@@ -13,7 +13,7 @@ PACKAGER="StartOS Developers"
 SRC_URI="http://sourceforge.net/projects/opencvlibrary/files/opencv-unix/"$V"/OpenCV-"$V".tar.bz2"
 CHECKSUM="059ef86fc1724d69b75832a0d2929ff5"
 
-RDEPEND="atk bzip2 cairo expat ffmpeg(>=0.11.1) fontconfig freetype gcc-lib gdk-pixbuf glib2 glibc gst-plugins-base gstreamer gtk+ ilmbase jasper lame libffi libgsm libjpeg-turbo libogg libpng libtheora libtiff libva libvorbis libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libXinerama libxml2 libXrandr libXrender opencore-amr openexr openssl orc pango pixman python rtmpdump schroedinger speex v4l-utils x264(>=20120508) xvidcore zlib"
+RDEPEND="ffmpeg(>=0.11.1) gst-plugins-base gtk+ openexr python"
 RECOMMENDED=""
 BDEPEND="cmake"
 OPTIONAL=""

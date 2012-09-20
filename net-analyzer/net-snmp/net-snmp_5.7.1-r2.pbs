@@ -13,7 +13,7 @@ PACKAGER="StartOS Developers"
 SRC_URI="http://downloads.sourceforge.net/"$N"/"$N-$V".tar.gz"
 CHECKSUM="ddb82ce1112ef0642869d3c8d7c7e585f151849a"
 
-RDEPEND="glibc openssl pciutils perl zlib"
+RDEPEND="openssl pciutils perl"
 BDEPEND=""
 RECOMMENDED=""
 

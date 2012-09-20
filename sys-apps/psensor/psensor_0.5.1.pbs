@@ -10,9 +10,9 @@ HOMEPAGE="http://wpitchoune.net/blog/?page_id=109"
 LICENSE="GPL"
 PACKAGER="StartOS Developers"
 
-SRC_URI="http://wpitchoune.net/psensor/files/"$N-$V$R"-src.tar.gz"
+SRC_URI="http://wpitchoune.net/psensor/files/"$N-$V"-src.tar.gz"
 
-RDEPEND=""
+RDEPEND="gconf libnotify lm_sensors"
 BDEPEND=" "
 RECOMMENDED=""
 CONFLICT=""

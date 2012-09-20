@@ -14,7 +14,7 @@ GROUP="fcitx"
 SRC_URI="http://fcitx.googlecode.com/files/"$N-$V".tar.xz"
 CHECKSUM="127e7403da553272551ba376cd26149bd07edcc5"
 
-RDEPEND="fcitx curl cyrus-sasl glibc gnutls libgcrypt libgpg-error libidn libssh2 libtasn1 openldap openssl rtmpdump zlib"
+RDEPEND="fcitx curl"
 RECOMMENDED=""
 BDEPEND="cmake"
 OPTIONAL=""

@@ -14,7 +14,7 @@ PACKAGER="StartOS Developers"
 SRC_URI="https://raw.github.com/IgnorantGuru/"$N"/master/packages/"$V"/"$N-$V".tar.xz"
 CHECKSUM="428739bc310d7010eca3f64caf2e7c1e"
 
-RDEPEND="atk cairo expat fontconfig freetype gcc-lib gdk-pixbuf glib2 glibc gtk+ libffi libpng libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libXinerama libXrandr libXrender pango pixman startup-notification udev xcb-util zlib"
+RDEPEND="gtk+ startup-notification udev"
 RECOMMENDED=""
 BDEPEND=""
 OPTIONAL=""

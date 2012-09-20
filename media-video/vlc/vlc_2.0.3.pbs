@@ -14,7 +14,7 @@ PACKAGER="StartOS Developers"
 SRC_URI="http://download.videolan.org/pub/videolan/"$N"/"$V"/"$N-$V".tar.xz"
 CHECKSUM="a7e79565e3df07dcf9abc6cad3ac26bb"
  
-RDEPEND="ffmpeg(>=0.11.1) a52dec aalib alsa-lib atk attr avahi bzip2 cairo cyrus-sasl dbus dbus-glib directfb e2fsprogs enca expat faad2 flac fluidsynth fontconfig freetype fribidi gcc-lib gconf gdk-pixbuf glib2 glibc gnome-vfs gnutls gtk+ jack-audio-connection-kit json-c keyutils krb5 lame libass libavc1394 libbluray libcap libcddb libcdio libcroco libdca libdrm libdvbpsi libdvdnav libdvdread libebml libffi libgcrypt libgpg-error libgsm libICE libjpeg-turbo libkate libmad libmatroska libmodplug libmpcdec libmpeg2 libmtp libnotify libogg libpng libproxy libraw1394 librsvg libsamplerate libsdl libshout libSM libsndfile libtar libtasn1 libtheora libtiger libupnp libusb-compat libusbx libva libvorbis libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libXinerama libxml2 libXpm libXrandr libXrender libXt libXtst libXxf86vm lirc lua mesa nas ncurses opencore-amr openldap openssl orbit orc pango pixman portaudio pulseaudio qt-core readline rtmpdump samba schroedinger sdl-image slang speex taglib talloc tdb udev util-linux-ng v4l-utils vcdimager x264 xcb-util-keysyms xosd xvidcore zlib zvbi"
+RDEPEND="ffmpeg(>=0.11.1) a52dec aalib faad2 fluidsynth gnome-vfs libass libavc1394 libbluray libcddb libdca libdvbpsi libdvdnav libmad libmatroska libmodplug libmpcdec libmpeg2 libmtp libnotify libproxy librsvg libsamplerate libshout libtar libtiger libupnp lirc lua portaudio qt-core sdl-image taglib udev vcdimager xcb-util-keysyms xosd zvbi"
 BDEPEND=""
 RECOMMENDED=""
 CONFLICT=""

@@ -14,7 +14,7 @@ GROUP="ibus"
 SRC_URI="http://ibus.googlecode.com/files/"$N-$V".tar.gz"
 CHECKSUM="659899cf942a983fbd2ffbb4bd4f5ecd883f5c0a"
 
-RDEPEND="libhangul(>=0.1.0) glib2 glibc ibus libffi zlib ibus"
+RDEPEND="libhangul(>=0.1.0) ibus"
 RECOMMENDED=""
 BDEPEND=""
 OPTIONAL=""

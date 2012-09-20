@@ -13,7 +13,7 @@ PACKAGER="StartOS Developers"
 SRC_URI="http://get.geo.opera.com/pub/"$N"/linux/1200/"${N}_$V"_i386.deb"
 CHECKSUM="023f75125b6618cfb41dc0291790db56"
 
-RDEPEND="atk cairo expat fontconfig freetype gcc-lib gdk-pixbuf glib2 glibc gst-plugins-base gstreamer gtk+ libffi libICE libpng libSM libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXft libXi libXinerama libxml2 libXrandr libXrender libXt pango pixman qt-core util-linux-ng zlib"
+RDEPEND="libXt"
 BDEPEND=""
 RECOMMENDED=""
 CONFLICT=""

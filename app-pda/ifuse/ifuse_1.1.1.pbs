@@ -13,7 +13,7 @@ PACKAGER="StartOS Developers"
 SRC_URI="http://www.libimobiledevice.org/downloads/"$N-$V".tar.bz2"
 CHECKSUM="8d528a79de024b91f12f8ac67965c37c"
 
-RDEPEND="fuse glibc libimobiledevice libplist libxml2 openssl usbmuxd zlib"
+RDEPEND="fuse libimobiledevice"
 RECOMMENDED=""
 BDEPEND=""
 OPTIONAL=""

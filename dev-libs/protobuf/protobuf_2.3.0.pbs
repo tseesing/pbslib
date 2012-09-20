@@ -12,7 +12,7 @@ PACKAGER="StartOS Developers"
 
 SRC_URI="http://protobuf.googlecode.com/files/"$N-$V".tar.bz2"
 
-RDEPEND="gcc-lib glibc zlib"
+RDEPEND="gcc-lib zlib"
 BDEPEND=""
 RECOMMENDED=""
 

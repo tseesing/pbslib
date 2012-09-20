@@ -13,7 +13,7 @@ GROUP="kde"
 
 SRC_URI="http://download.kde.org/stable/"$V"/src/"$N-$V".tar.xz"
 
-RDEPEND="acl attica attr bzip2 cfitsio dbus expat fontconfig freetype gcc-lib glib2 glibc herqq kdelibs libdbusmenu-qt libdrm libffi libICE libindi libpng libSM libX11 libXau libxcb libXcursor libXdamage libXdmcp libXext libXfixes libXft libXi libxml2 libXpm libXrender libXtst libXxf86vm mesa openssl qca qt-core soprano strigi udev util-linux-ng xz-utils zlib"
+RDEPEND="kdelibs libindi"
 RECOMMENDED=""
 BDEPEND="cmake automoc4"
 OPTIONAL=""

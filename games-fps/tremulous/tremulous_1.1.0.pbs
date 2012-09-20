@@ -21,7 +21,7 @@ CHECKSUM=" 95e526b961f875ba66b6fdd4842c913b
 	   90343619d140557d0c481a61ffa5756c
 	   a0b8970b33a27798c125f9152049013c "
 
-RDEPEND="directfb freetype gcc-lib glibc libdrm libICE libsdl libSM libX11 libXau libxcb libXdamage libXdmcp libXext libXfixes libXt libXxf86vm mesa nas openal util-linux-ng zlib tremulous-data(=1.1.0)"
+RDEPEND="tremulous-data(=1.1.0) libsdl openal"
 RECOMMENDED=""
 BDEPEND=""
 OPTIONAL=""

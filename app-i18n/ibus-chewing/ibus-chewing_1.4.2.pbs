@@ -13,7 +13,7 @@ GROUP="ibus"
 
 SRC_URI="http://ibus.googlecode.com/files/"$N-$V"-Source.tar.gz"
 
-RDEPEND="ibus"
+RDEPEND="ibus libchewing libXtst"
 RECOMMENDED=""
 BDEPEND=""
 CONFLICT=""

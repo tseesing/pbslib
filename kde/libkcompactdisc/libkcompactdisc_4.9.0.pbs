@@ -13,7 +13,7 @@ GROUP="kde"
 
 SRC_URI="http://download.kde.org/stable/"$V"/src/"$N-$V".tar.xz"
 
-RDEPEND="alsa-lib attr bzip2 dbus expat flac fontconfig freetype gcc-lib glib2 glibc gst-plugins-base gstreamer herqq json-c kdelibs libcap libffi libICE libogg libpng libqzeitgeist libSM libsndfile libvorbis libX11 libXau libxcb libXdmcp libXext libXi libxml2 libXrender libXtst openssl phonon pulseaudio qt-core sqlite udev util-linux-ng xz-utils zlib"
+RDEPEND="kdelibs"
 BDEPEND="cmake automoc4"
 
 pbs_unpack() {

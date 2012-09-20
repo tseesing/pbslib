@@ -13,7 +13,7 @@ PACKAGER="StartOS Developers"
 SRC_URI="http://download.savannah.gnu.org/releases/linphone/plugins/sources/"$N-$V".tar.gz"
 CHECKSUM="9c8740345dd8ee9732604a8f6a4329e6"
 
-RDEPEND="alsa-lib attr dbus ffmpeg flac gcc-lib glibc ilbc json-c lame libcap libgsm libICE libjpeg-turbo libogg libSM libsndfile libtheora libva libvorbis libX11 libXau libxcb libXdmcp libXext libXi libXtst libXv mediastreamer opencore-amr orc ortp pulseaudio schroedinger speex util-linux-ng v4l-utils x264 xvidcore zlib"
+RDEPEND="ilbc mediastreamer"
 RECOMMENDED=""
 BDEPEND=""
 OPTIONAL=""

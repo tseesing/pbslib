@@ -69,8 +69,7 @@ EOF
 		echo 
 		echo '* You must reboot computer for the changes to take effect.'
 
-		mkdir -p /var/run/ypkg/
-		echo "reboot=yes" >/var/run/ypkg/event
+		flag_reboot
 	fi
 
 	return 0

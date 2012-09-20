@@ -13,7 +13,7 @@ PACKAGER="StartOS Developers"
 SRC_URI="http://web.mit.edu/kerberos/dist/"$N"/1.10/"$N-$V"-signed.tar"
 CHECKSUM="f9f3b77173f68b268b43e4f9c29bf7c9f3fd1f0e"
 
-RDEPEND="cyrus-sasl e2fsprogs glibc gnutls keyutils libgcrypt libgpg-error libtasn1 openldap openssl zlib"
+RDEPEND="openldap"
 BDEPEND=""
 RECOMMENDED=""
 

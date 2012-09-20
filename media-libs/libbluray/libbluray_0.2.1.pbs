@@ -12,7 +12,7 @@ PACKAGER="StartOS Developers"
 
 SRC_URI="ftp://ftp.videolan.org/pub/videolan/"$N"/"$V"/"$N-$V".tar.bz2"
 
-RDEPEND="glibc libxml2 zlib"
+RDEPEND="libxml2"
 BDEPEND=""
 RECOMMENDED=""
 CONFLICT=""

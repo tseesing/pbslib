@@ -10,10 +10,10 @@ HOMEPAGE="http://maniadrive.raydium.org/"
 LICENSE="GPL"
 PACKAGER="StartOS Developers"
 
-SRC_URI="http://prdownloads.sourceforge.net/maniadrive/ManiaDrive-1.2-linux-i386.tar.gz"
+SRC_URI="http://prdownloads.sourceforge.net/maniadrive/ManiaDrive-"$V"-linux-i386.tar.gz"
 CHECKSUM="5592eaf4b8c4012edcd4f0fc6e54c09c"
 
-RDEPEND=""
+RDEPEND="alsa-lib mesa"
 RECOMMENDED=""
 BDEPEND=""
 OPTIONAL=""

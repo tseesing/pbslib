@@ -13,7 +13,7 @@ PACKAGER="StartOS Developers"
 SRC_URI="http://sourceforge.net/projects/marathon/files/Aleph%20One/2012-01-28/AlephOne-"$V".tar.bz2"
 CHECKSUM="8693a36d29a5a1150b78554714bd9884"
 
-RDEPEND="alsa-lib directfb flac freetype gcc-lib glibc libdrm libICE libmad libogg libpng libsdl libSM libsndfile libvorbis libX11 libXau libxcb libXdamage libXdmcp libXext libXfixes libXt libXxf86vm mesa nas sdl-image sdl-net sdl-ttf smpeg speex util-linux-ng zlib zziplib"
+RDEPEND="libmad libsndfile sdl-image sdl-net sdl-ttf smpeg speex zziplib"
 RECOMMENDED=""
 BDEPEND=""
 OPTIONAL=""

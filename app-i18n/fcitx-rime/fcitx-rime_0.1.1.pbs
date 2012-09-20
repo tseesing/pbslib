@@ -14,11 +14,9 @@ GROUP="fcitx"
 SRC_URI="http://fcitx.googlecode.com/files/"$N-$V".tar.xz"
 CHECKSUM="e71a915f29b1c3ba23b8bbce6640ddaa7afb9b1c"
 
-RDEPEND=""
+RDEPEND="fcitx librime"
 BDEPEND="cmake"
 RECOMMENDED=""
-
-INSTALL="$N.install"
 
 pbs_unpack() {
         dounpack

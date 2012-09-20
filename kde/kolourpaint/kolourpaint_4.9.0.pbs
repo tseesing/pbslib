@@ -13,7 +13,7 @@ GROUP="kde"
 
 SRC_URI="http://download.kde.org/stable/"$V"/src/"$N-$V".tar.xz"
 
-RDEPEND="acl attica attr bzip2 dbus expat fontconfig freetype gcc-lib glib2 glibc herqq kdelibs libdbusmenu-qt libffi libICE libpng libSM libX11 libXau libxcb libXcursor libXdmcp libXext libXfixes libXft libXi libxml2 libXpm libXrender libXScrnSaver libXtst openssl qca qimageblitz qt-core soprano strigi udev util-linux-ng xz-utils zlib"
+RDEPEND="kdelibs qimageblitz"
 RECOMMENDED=""
 BDEPEND="cmake"
 OPTIONAL=""

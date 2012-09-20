@@ -12,7 +12,7 @@ PACKAGER="StartOS Developers<>"
 
 SRC_URI="http://download.kde.org/stable/"$V"/src/"$N-$V".tar.xz"
 
-RDEPEND="acl attica attr bzip2 cyrus-sasl dbus expat fontconfig freetype gcc-lib glib2 glibc gnutls herqq kdelibs kdepimlibs libdbusmenu-qt libffi libgcrypt libgpg-error libICE libpng libSM libtasn1 libX11 libXau libxcb libXcursor libXdmcp libXext libXfixes libXft libXi libxml2 libXpm libXrender libXtst openldap openssl qca qt-core soprano strigi udev util-linux-ng xz-utils zlib"
+RDEPEND="kdepimlibs"
 BDEPEND="cmake automoc4"
 
 INSTALL="$N.install"

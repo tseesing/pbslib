@@ -7,10 +7,12 @@
 
 DESCRIPTION="A simple but powerful tool to set desktop wallpaper"
 HOMEPAGE="http://gna.org/projects/fvwm-crystal/"
- 
-SRC_URI="http://download.gna.org/fvwm-crystal/"$N"/"$V$R"/"$N-$V$R".tar.gz"
+LICENSE="GPLv2+"
+PACKAGER="StartOS Developers"
 
-RDEPEND="imlib2 glibc libX11 freetype zlib libXext libxcb libXau libXdmcp"
+SRC_URI="http://download.gna.org/fvwm-crystal/"$N"/"$V"/"$N-$V".tar.gz"
+
+RDEPEND="imlib2"
 BDEPEND=""
 
 pbs_unpack() {
@@ -27,5 +29,5 @@ pbs_build() {
 
 pbs_install() {
 	docp ./habak "$destdir"/usr/bin
-	dodoc README
 }
+

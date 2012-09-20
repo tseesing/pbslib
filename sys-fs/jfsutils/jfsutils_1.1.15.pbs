@@ -13,7 +13,7 @@ PACKAGER="StartOS Developers"
 SRC_URI="http://jfs.sourceforge.net/project/pub/"$N-$V".tar.gz"
 CHECKSUM="291e8bd9d615cf3d27e4000117c81a3602484a50"
 
-RDEPEND="glibc util-linux-ng"
+RDEPEND="util-linux-ng"
 BDEPEND=""
 RECOMMENDED=""
 

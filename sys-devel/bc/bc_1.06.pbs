@@ -12,7 +12,7 @@ PACKAGER="StartOS Developers"
 
 SRC_URI="http://ftp.gnu.org/gnu/"$N"/"$N-$V".tar.gz"
 
-RDEPEND="glibc ncurses readline"
+RDEPEND="readline"
 BDEPEND=" "
 RECOMMENDED=""
 

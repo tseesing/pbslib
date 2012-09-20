@@ -12,7 +12,7 @@ PACKAGER="StartOS Developers"
 
 SRC_URI="http://www.libssh2.org/download/"$N-$V".tar.gz"
 
-RDEPEND="glibc openssl zlib"
+RDEPEND="openssl"
 RECOMMENDED=""
 BDEPEND=""
 CONFLICT=""

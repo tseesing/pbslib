@@ -12,7 +12,7 @@ PACKAGER="StartOS Developers"
 
 SRC_URI="ftp://ftp.gnupg.org/gcrypt/"$N"/"$N-$V".tar.bz2"
 
-RDEPEND="glibc libgpg-error"
+RDEPEND="libgpg-error"
 BDEPEND="pth-dev libcap"
 OPIONAL=""
 

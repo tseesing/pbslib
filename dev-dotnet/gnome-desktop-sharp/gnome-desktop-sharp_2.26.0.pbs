@@ -12,7 +12,7 @@ PACKAGER="StartOS Developers"
 
 SRC_URI="http://ftp.gnome.org/pub/gnome/desktop/2.32/2.32.1/sources/"$N-$V".tar.bz2"
 
-RDEPEND="gnome-sharp atk avahi cairo dbus dbus-glib enchant expat fontconfig freetype gail gcc-lib gconf gdk-pixbuf glib2 glibc gnome-panel gnome-vfs gtk+ gtkhtml gtksourceview libart_lgpl libbonobo libbonoboui libcanberra libgnome libgnomecanvas libICE libogg libpng libSM libtool libvorbis libwnck libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libxml2 libXrandr libXrender libXres ncurses openssl orbit pango pixman popt startup-notification tdb util-linux-ng vte zlib"
+RDEPEND="gnome-sharp gnome-panel gtkhtml gtksourceview vte"
 BDEPEND=""
 RECOMMENDED=""
 CONFLICT=""

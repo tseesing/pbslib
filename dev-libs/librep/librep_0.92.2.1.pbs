@@ -13,7 +13,7 @@ PACKAGER="StartOS Developers"
 SRC_URI="http://download.tuxfamily.org/"$N"/"$N-$V".tar.xz"
 CHECKSUM="45903b169d59d00f75a4b619b2b23f442e9146be"
 
-RDEPEND="gdbm glibc gmp libffi ncurses readline"
+RDEPEND="gdbm gmp libffi readline"
 RECOMMENDED=""
 BDEPEND=""
 OPTIONAL=""

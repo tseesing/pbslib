@@ -12,7 +12,7 @@ PACKAGER="StartOS Developers"
 
 SRC_URI="http://home.kde.org/~seli/"$N"/"$N-$V".tar.gz"
 
-RDEPEND="glibc libX11 libXau libxcb libXdmcp libXext libXi libXtst"
+RDEPEND="libXtst"
 BDEPEND=""
 RECOMMENDED=""
 CONFLICT=""

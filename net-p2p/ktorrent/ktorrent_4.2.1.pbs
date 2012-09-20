@@ -13,7 +13,7 @@ GROUP="kde"
 
 SRC_URI="http://ktorrent.org/downloads/"$V"/"$N-$V".tar.bz2"
 
-RDEPEND="acl attica attr bzip2 dbus expat flac fontconfig freetype gcc-lib glib2 glibc gmp gst-plugins-base gstreamer herqq json-c kdelibs kdepimlibs kde-workspace libcap libdbusmenu-qt libdrm libffi libgcrypt libgpg-error libICE libktorrent libogg libpng libqzeitgeist libSM libsndfile libvorbis libX11 libXau libxcb libXcursor libXdamage libXdmcp libXext libXfixes libXft libXi libxml2 libXpm libXrender libXScrnSaver libXtst libXxf86vm mesa openssl phonon pulseaudio qca qt-core soprano sqlite strigi taglib udev util-linux-ng xz-utils zlib"
+RDEPEND="kde-workspace libktorrent taglib"
 RECOMMENDED=""
 BDEPEND=""
 OPTIONAL=""

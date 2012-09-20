@@ -12,8 +12,8 @@ PACKAGER="StartOS Developers"
 
 SRC_URI="http://connect.creativelabs.com/openal/Downloads/ALUT/"$N-$V".tar.gz"
 
-RDEPEND="glibc openal"
-BDEPEND=" "
+RDEPEND="openal"
+BDEPEND=""
 
 pbs_unpack() {
         dounpack

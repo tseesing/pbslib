@@ -13,7 +13,7 @@ PACKAGER="StartOS Developers"
 SRC_URI="http://archive.xfce.org/xfce/4.10/src/Thunar-"$V".tar.bz2"
 CHECKSUM="104b25b38130e008df2116e83e6ab20cd33e4561"
 
-RDEPEND="atk cairo dbus dbus-glib exo expat fontconfig freetype gcc-lib gdk-pixbuf glib2 glibc gtk+ libexif libffi libICE libnotify libpcre libpng libSM libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libxfce4ui libxfce4util libXfixes libXi libXinerama libXrandr libXrender pango pixman startup-notification udev util-linux-ng xfce4-panel zlib"
+RDEPEND="libexif libnotify libpcre udev xfce4-panel"
 RECOMMENDED=""
 BDEPEND=""
 OPTIONAL=""
@@ -35,7 +35,7 @@ pbs_config() {
 		  --enable-notifications 
 		  --enable-exif 
 		  --enable-pcre 
-		  --enable-gtk-doc
+		  --disable-gtk-doc
 		  --disable-debug "
 	doconfig
 }

@@ -12,7 +12,7 @@ PACKAGER="StartOS Developers"
 
 SRC_URI="http://ftp.gnome.org/pub/gnome/bindings/2.32/2.32.1/sources/c++/"$N-$V".tar.bz2"
 
-RDEPEND="atk atkmm avahi cairo cairomm dbus dbus-glib expat fontconfig freetype gcc-lib gconf gdk-pixbuf glib2 glibc glibmm gnome-vfs gtk+ gtkmm libbonobo libcanberra libgnome libogg libpng libsigc++ libtool libvorbis libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libxml2 libXrandr libXrender openssl orbit pango pangomm pixman popt tdb zlib"
+RDEPEND="gtkmm libgnome"
 RECOMMENDED=""
 BDEPEND=""
 

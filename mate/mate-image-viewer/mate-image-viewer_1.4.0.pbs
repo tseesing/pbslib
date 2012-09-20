@@ -15,7 +15,7 @@ REPO="testing"
 SRC_URI="http://pub.mate-desktop.org/releases/1.4/"$N-$V".tar.xz"
 CHECKSUM="41d1df54b55e5e6efc0c98bb4e29fc7294b85cdef38ffbd2c7514f3556929c1f"
 
-RDEPEND="exempi gtk+ lcms libcroco libjpeg-turbo mate-conf mate-corba mate-desktop"
+RDEPEND="exempi lcms libexif librsvg mate-desktop"
 RECOMMENDED=""
 BDEPEND=""
 OPTIONAL=""

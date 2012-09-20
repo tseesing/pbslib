@@ -13,7 +13,7 @@ PACKAGER="StartOS Developers"
 SRC_URI="http://dvdnav.mplayerhq.hu/releases/"$N-$V".tar.bz2"
 CHECKSUM="8c971b08276c89ddcecd26fc44204460fd250dc57346f03476d3077188c47550"
 
-RDEPEND="glibc libdvdread"
+RDEPEND="libdvdread"
 RECOMMENDED=""
 BDEPEND=""
 OPTIONAL=""

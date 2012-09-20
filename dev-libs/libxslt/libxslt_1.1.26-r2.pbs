@@ -12,7 +12,7 @@ PACKAGER="StartOS Developers"
 
 SRC_URI="ftp://xmlsoft.org/libxml2/"$N-$V".tar.gz"
 
-RDEPEND="glibc libgcrypt libgpg-error libxml2 zlib"
+RDEPEND="libgcrypt libxml2"
 BDEPEND=""
 
 pbs_unpack() {

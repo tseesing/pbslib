@@ -15,7 +15,7 @@ REPO="testing"
 SRC_URI="http://pub.mate-desktop.org/releases/1.4/"$N-$V".tar.xz"
 CHECKSUM="ff0032d53409d1b6a4c029eb18c9d85efa44c5d1ea6ece535faa564b0c73a425"
 
-RDEPEND="libglade libmate"
+RDEPEND="gail libart_lgpl libglade"
 RECOMMENDED=""
 BDEPEND="pkgconfig intltool"
 OPTIONAL=""

@@ -13,7 +13,7 @@ GROUP="kde"
 
 SRC_URI="http://download.kde.org/stable/"$V"/src/"$N-$V".tar.xz"
 
-RDEPEND="acl attica attr bzip2 curl cyrus-sasl dbus expat fftw flac fontconfig freetype gcc-lib giflib glib2 glibc gnutls gst-plugins-base gstreamer herqq json-c kdelibs libcap libdbusmenu-qt libffi libgcrypt libgpg-error libICE libidn libjpeg-turbo libofa libogg libpcre libpng libqzeitgeist libSM libsndfile libssh2 libtasn1 libtunepimp libvorbis libX11 libXau libxcb libXcursor libXdmcp libXext libXfixes libXft libXi libxml2 libXpm libXrender libXtst musicbrainz openldap openssl phonon pulseaudio qca qt-core rtmpdump soprano sqlite strigi taglib udev util-linux-ng xz-utils zlib"
+RDEPEND="kdelibs libtunepimp"
 RECOMMENDED=""
 BDEPEND="cmake automoc4"
 OPTIONAL=""

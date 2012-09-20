@@ -12,7 +12,7 @@ PACKAGER="StartOS Developers"
  
 SRC_URI="http://www.freedesktop.org/software/ConsoleKit/dist/ConsoleKit-"$V".tar.bz2"
 
-RDEPEND="dbus dbus-glib eggdbus glib2 glibc libX11 libXau libxcb libXdmcp pam polkit zlib"
+RDEPEND="eggdbus polkit"
 BDEPEND=""
 RECOMMENDED=""
 
@@ -29,12 +29,12 @@ pbs_patch() {
 
 pbs_config() {
 	config+=" --enable-pam-module 
-		      XMLTO_FLAGS=--skip-validation 
-		      --disable-debug 
-		      --disable-docbook-docs 
-		      --enable-polkit 
-		      --with-pam-module-dir=/lib/security 
-		      --with-dbus-services=/usr/share/dbus-1/services/ "
+		  XMLTO_FLAGS=--skip-validation 
+		  --disable-debug 
+		  --disable-docbook-docs 
+		  --enable-polkit 
+		  --with-pam-module-dir=/lib/security 
+		  --with-dbus-services=/usr/share/dbus-1/services/ "
 	doconfig
 }
 
@@ -44,7 +44,6 @@ pbs_build() {
 
 pbs_install() {
 	domkinstall
-	docp $filesdir/90-consolekit "$destdir"/etc/X11/Xsession.d
-	#doinit $filesdir/consolekit
+	docp "$filesdir"/90-consolekit "$destdir"/etc/X11/Xsession.d
 }
 

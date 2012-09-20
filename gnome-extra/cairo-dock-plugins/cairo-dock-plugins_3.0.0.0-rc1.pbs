@@ -13,7 +13,7 @@ PACKAGER="StartOS Developers"
 SRC_URI="https://launchpadlibrarian.net/97723566/"$N"-3.0.0.0rc1.tar.gz"
 CHECKSUM="f74d656e81790dea773189d55ab382a3"
 
-RDEPEND="alsa-lib atk attr berkeley-db cairo curl cyrus-sasl dbus dbus-glib enchant expat fftw flac fontconfig freetype gail gcc-lib gdk-pixbuf glib2 glibc gnome-menus gnutls gst-plugins-base gstreamer gtk+ icu json-c libcap libcroco libdbusmenu libetpan libexif libffi libgcrypt libgpg-error libical libICE libidn libjpeg-turbo libogg libpng librsvg libSM libsndfile libsoup libssh2 libtasn1 libvorbis libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libXinerama libxkbfile libxklavier libxml2 libXrandr libXrender libxslt libXt libXtst libXxf86vm lm_sensors ncurses openldap openssl pango pixman pulseaudio rtmpdump sqlite upower util-linux-ng vte webkitgtk zlib cairo-dock"
+RDEPEND="gnome-menus libdbusmenu libetpan libexif libical librsvg libxklavier libXxf86vm lm_sensors pulseaudio upower vte webkitgtk"
 RECOMMENDED=""
 BDEPEND="cmake"
 OPTIONAL=""

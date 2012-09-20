@@ -13,7 +13,7 @@ PACKAGER="StartOS Developers"
 SRC_URI="http://www.libee.org/files/download/"$N-$V".tar.gz"
 CHECKSUM="257a23d5cc8f211fb99464a462bc92cd"
 
-RDEPEND="glibc libestr"
+RDEPEND="libestr"
 BDEPEND=""
 RECOMMENDED=""
 CONFLICT=""

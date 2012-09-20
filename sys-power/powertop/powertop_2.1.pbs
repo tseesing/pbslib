@@ -12,7 +12,7 @@ PACKAGER="StartOS Developers"
 
 SRC_URI="https://01.org/powertop/sites/default/files/downloads/"$N-$V".tar.gz"
 
-RDEPEND="gcc-lib glibc libnl ncurses pciutils python"
+RDEPEND="gcc-lib libnl ncurses pciutils"
 BDEPEND=""
 RECOMMENDED=""
 CONFLICT=""

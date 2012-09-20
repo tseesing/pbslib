@@ -12,7 +12,7 @@ PACKAGER="StartOS Developers"
 
 SRC_URI="http://www.x.org/releases/X11R7.7/src/xcb/"$N-$V".tar.bz2"
 
-RDEPEND="glibc libXau libXdmcp"
+RDEPEND="libXau libXdmcp"
 BDEPEND="xcb-proto libpthread-stubs"
 
 pbs_unpack() {
@@ -20,6 +20,7 @@ pbs_unpack() {
 }
 
 pbs_config() {
+	config+="--disable-build-docs"
 	doconfig
 }
 

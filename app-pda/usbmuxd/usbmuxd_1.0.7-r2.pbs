@@ -13,7 +13,7 @@ PACKAGER="StartOS Developers"
 SRC_URI="http://marcansoft.com/uploads/"$N"/"$N-$V".tar.bz2"
 CHECKSUM="6f431541f3177fa06aa6df9ceecb2da0"
 
-RDEPEND="glibc libplist libusbx libxml2 zlib"
+RDEPEND="libplist libusbx"
 RECOMMENDED=""
 BDEPEND="cmake"
 OPTIONAL=""

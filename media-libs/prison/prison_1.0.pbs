@@ -13,7 +13,7 @@ PACKAGER="StartOS Developers"
 SRC_URI="http://download.kde.org/stable/"$N"/"$V"/src/"$N-$V".tar.gz"
 CHECKSUM="8baac61506e37a31482a0df4a5d02cd2"
 
-RDEPEND="expat fontconfig freetype gcc-lib glib2 glibc libdmtx libffi libICE libpng libSM libX11 libXau libxcb libXdmcp libXext libXrender qrencode qt-core util-linux-ng zlib"
+RDEPEND="libdmtx qrencode qt-core"
 RECOMMENDED=""
 BDEPEND=""
 OPTIONAL=""

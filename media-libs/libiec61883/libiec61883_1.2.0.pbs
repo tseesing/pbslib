@@ -13,7 +13,7 @@ PACKAGER="StartOS Developers"
 SRC_URI="http://ftp.osuosl.org/pub/linux/libs/ieee1394/"$N-$V".tar.gz"
 CHECKSUM="8af39fff74988073c3ad53fbab147da9"
 
-RDEPEND="libraw1394 glibc"
+RDEPEND="libraw1394"
 RECOMMENDED=""
 BDEPEND=""
 OPTIONAL=""

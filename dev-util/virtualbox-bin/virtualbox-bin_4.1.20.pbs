@@ -29,7 +29,7 @@ pbs_unpack() {
 
 virtualbox-bin_install() {
 	DESCRIPTION="Softwarefamily of powerful x86 virtualizatio (binary version)"
-	RDEPEND="virtualbox-bin-kernel-module(=4.1.20)"
+	RDEPEND="virtualbox-bin-kernel-module(=4.1.20) glib2 libsdl libXcursor libXinerama libXmu python"
 	BDEPEND="bin86 dev86 acpica"
 	OPTIONS="nodev"
 	INSTALL="$N.install"

@@ -12,7 +12,7 @@ PACKAGER="StartOS Developers"
 
 SRC_URI="http://releases.compiz-fusion.org/"$V"/"$N-$V".tar.bz2"
 
-RDEPEND="gcc-lib glibc libX11 libXau libxcb libXdmcp libxml2 protobuf zlib"
+RDEPEND="libX11 libxml2 protobuf"
 BDEPEND=""
 RECOMMENDED=""
 

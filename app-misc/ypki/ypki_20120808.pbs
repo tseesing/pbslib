@@ -12,7 +12,7 @@ PACKAGER="StartOS Developers"
 
 SRC_URI="git://git.ylmf.com/"$N".git"
 
-RDEPEND="acl atk attr bzip2 cairo curl cyrus-sasl dbus dbus-glib expat fontconfig freetype gcc-lib gconf gdk-pixbuf glib2 glibc gnutls gtk+ json-glib libarchive libffi libgcrypt libgksu libgnome-keyring libgpg-error libgtop libICE libidn libpcre libpng libSM libssh2 libtar libtasn1 libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libXinerama libxml2 libXrandr libXrender ncurses openldap openssl orbit pango pixman rtmpdump sqlite startup-notification udev util-linux-ng vte xz-utils startos-software-center ypkg2 zlib"
+RDEPEND="libgksu libtar startos-software-center vte"
 BDEPEND=""
 RECOMMENDED="imagemagick" # for ypk-thumbnailer
 

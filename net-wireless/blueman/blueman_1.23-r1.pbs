@@ -13,7 +13,7 @@ PACKAGER="StartOS Developers"
 SRC_URI="http://download.tuxfamily.org/blueman/blueman-1.23.tar.gz"
 CHECKSUM="f0bee59589f4c23e35bf08c2ef8acaef"
 
-RDEPEND="atk bluez bzip2 cairo expat fontconfig freetype gcc-lib gdk-pixbuf glib2 glibc gtk+ libffi libpng libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libXinerama libXrandr libXrender pango pixman python startup-notification xcb-util zlib"
+RDEPEND="bluez gtk+ python startup-notification"
 BDEPEND=""
 RECOMMENDED=""
 CONFLICT=""

@@ -10,9 +10,9 @@ HOMEPAGE="http://ftgl.wiki.sourceforge.net/"
 LICENSE="GPL"
 PACKAGER="StartOS Developers"
 
-SRC_URI="http://downloads.sourceforge.net/project/"$N"/FTGL%20Source/2.1.3%7Erc5/"$N-$V$R".tar.gz"
+SRC_URI="http://sourceforge.net/projects/"$N"/files/FTGL%20Source/2.1.3~rc5/"$N-$V$R".tar.bz2"
 
-RDEPEND="freetype gcc-lib glibc libdrm libX11 libXau libxcb libXdamage libXdmcp libXext libXfixes libXxf86vm mesa zlib"
+RDEPEND="freetype mesa"
 BDEPEND=""
 
 pbs_unpack() {
@@ -20,6 +20,7 @@ pbs_unpack() {
 }
 
 pbs_config() {
+	config+=""
 	doconfig
 }
 

@@ -12,7 +12,7 @@ PACKAGER="StartOS Developers"
 
 SRC_URI="yong-lin-1.6.0-3.7z"
 
-RDEPEND="atk cairo expat fontconfig freetype gcc-lib gdk-pixbuf glib2 glibc gtk+ libpng libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libXrandr libXrender pango pixman zlib"
+RDEPEND="gtk+"
 BDEPEND=""
 RECOMMENDED=""
 CONFLICT=""

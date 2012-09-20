@@ -12,7 +12,7 @@ PACKAGER="StartOS Developers"
 
 SRC_URI="http://ncu.dl.sourceforge.net/project/djvu/DjVuLibre/"$V"/"$N-$V".tar.gz"
 
-RDEPEND="gcc-lib libtiff bash hicolor-icon-theme"
+RDEPEND="libtiff"
 RECOMMENDED="pkgconfig"
 BDEPEND=""
 

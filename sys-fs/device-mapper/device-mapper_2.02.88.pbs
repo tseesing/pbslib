@@ -12,11 +12,7 @@ PACKAGER="StartOS Developers"
 
 SRC_URI="ftp://sources.redhat.com/pub/lvm2/LVM2."$V$R".tgz"
 
-RDEPEND="glibc udev"
-BDEPEND="  "
-RECOMMENDED=""
-
-PROVIDE="lvm2"
+PROVIDE="device-mapper lvm2"
 
 pbs_unpack() {
         dounpack
@@ -24,20 +20,20 @@ pbs_unpack() {
 
 pbs_config() {
 	unset LDFLAGS
-	config=" --prefix= 
-	             --sysconfdir=/etc 
-		     --localstatedir=/var 
-		     --datarootdir=/usr/share 
-   	             --includedir=/usr/include 
-		     --with-usrlibdir=/usr/lib 
-	             --enable-pkgconfig 
-		     --enable-readline 
-		     --enable-dmeventd 
-		     --enable-cmdlib 
-		     --enable-applib 
-		     --with-udevdir=/lib/udev/rules.d/ 
-		     --enable-udev_sync 
-		     --enable-udev_rules"
+	config="--prefix= 
+	        --sysconfdir=/etc 
+		--localstatedir=/var 
+		--datarootdir=/usr/share 
+   	        --includedir=/usr/include 
+		--with-usrlibdir=/usr/lib 
+	        --enable-pkgconfig 
+		--enable-readline 
+		--enable-dmeventd 
+		--enable-cmdlib 
+		--enable-applib 
+		--with-udevdir=/lib/udev/rules.d/ 
+		--enable-udev_sync 
+		--enable-udev_rules"
 	doconfig
 }
 
@@ -45,18 +41,17 @@ pbs_build() {
 	domake 
 }
 
-pbs_install() {
+device-mapper_install() {
 	DESCRIPTION="Device mapper userspace library and tools"
-	RDEPEND="glibc udev"
+	RDEPEND="udev"
+	
 	make DESTDIR="$destdir" install_device-mapper
-	#cd "$destdir"
-	#doln /usr/lib/libdevmapper-event-lvm2snapshot.so  usr/lib/libdevmapper-event-lvm2snapshot.so.2.02
-	#doln /usr/lib/libdevmapper-event-lvm2mirror.so    usr/lib/libdevmapper-event-lvm2mirror.so.2.02		
 }
 
 lvm2_install() {
 	DESCRIPTION="Logical Volume Manager 2 utilities"
-	RDEPEND="device-mapper glibc ncurses readline udev"
+	RDEPEND="device-mapper readline"
+
 	make DESTDIR="$destdir" install_lvm2
 	# Install applib
 	make -C liblvm DESTDIR="$destdir" install

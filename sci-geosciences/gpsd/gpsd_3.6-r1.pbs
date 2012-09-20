@@ -13,7 +13,7 @@ PACKAGER="StartOS Developers"
 SRC_URI="http://download.savannah.gnu.org/releases/"$N"/"$N-$V".tar.gz"
 CHECKSUM="064a5ad75593f8c3ea3fe85010647832"
 
-RDEPEND="attr bluez gcc-lib glibc libcap libusbx ncurses"
+RDEPEND="bluez gcc-lib libcap"
 RECOMMENDED=""
 BDEPEND=""
 OPTIONAL=""

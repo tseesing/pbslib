@@ -7,8 +7,8 @@ Type=simple
 ExecStart=/usr/sbin/lightdm-wrapper --pid-file=/run/lightdm.pid
 #ExecStop=killall lightdm
 PIDFile=/run/lightdm.pid
-#Restart=always
-#RestartSec=0
+Restart=on-failure
+RestartSec=1s
 
 [Install]
 Alias=display-manager.service

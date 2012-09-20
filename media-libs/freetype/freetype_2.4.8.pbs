@@ -13,7 +13,7 @@ PACKAGER="StartOS Developers"
 SRC_URI="http://downloads.sourceforge.net/project/"$N"/"$N"2/"$V"/"$N-$V".tar.bz2"
 CHECKSUM="dbf2caca1d3afd410a29217a9809d397"
 
-RDEPEND="bzip2 glibc zlib"
+RDEPEND="bzip2 zlib"
 BDEPEND=""
 
 pbs_unpack(){

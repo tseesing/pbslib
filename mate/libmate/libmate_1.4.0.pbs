@@ -15,7 +15,7 @@ REPO="testing"
 SRC_URI="http://pub.mate-desktop.org/releases/1.4/"$N-$V".tar.xz"
 CHECKSUM="256d0132164cf8b19146354d2a03b409efb95dfb3c64ab7cc79b157e3feac662"
 
-RDEPEND="mate-conf mate-vfs"
+RDEPEND="libcanberra libmatecomponent mate-vfs popt"
 RECOMMENDED=""
 BDEPEND=""
 OPTIONAL=""

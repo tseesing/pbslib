@@ -13,7 +13,7 @@ GROUP="kde"
 
 SRC_URI="http://download.kde.org/stable/"$V"/src/"$N-$V".tar.xz"
 
-RDEPEND="acl analitza attica attr avahi blas bzip2 cln cups dbus e2fsprogs expat fontconfig freetype gcc-lib ghostscript glib2 glibc gmp gnutls herqq icu jasper kdelibs keyutils krb5 libdbusmenu-qt libffi libgcrypt libgpg-error libICE libidn libjpeg-turbo libpng libqalculate libSM libspectre libtasn1 libtiff libX11 libXau libxcb libXcursor libXdmcp libXext libXfixes libXft libXi libxml2 libXpm libXrender libXtst ncurses openssl qca qt-core R readline soprano strigi udev util-linux-ng xz-utils zlib"
+RDEPEND="analitza attica herqq libdbusmenu-qt libqalculate libspectre libXpm libXtst qca R soprano strigi udev"
 RECOMMENDED=""
 BDEPEND="cmake"
 OPTIONAL=""

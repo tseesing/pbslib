@@ -12,7 +12,7 @@ PACKAGER="StartOS Developers"
 
 SRC_URI="http://ftp.gnome.org/pub/gnome/sources/"$N"/1.3/"$N-$V".tar.xz"
 
-RDEPEND="atk cairo clutter expat fontconfig freetype gcc-lib gdk-pixbuf glib2 glibc gst-plugins-base gstreamer json-glib libdrm libpng libX11 libXau libxcb libXcomposite libXdamage libXdmcp libXext libXfixes libXi libxml2 libXrender libXxf86vm mesa pango pixman zlib"
+RDEPEND="clutter gst-plugins-base"
 RECOMMENDED=""
 BDEPEND=""
 CONFLICT=""

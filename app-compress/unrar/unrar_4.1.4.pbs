@@ -13,7 +13,7 @@ PACKAGER="StartOS Developers"
 SRC_URI="http://www.rarlab.com/rar/unrarsrc-"$V".tar.gz"
 CHECKSUM="808c92a661820a637ca1330cf40c18e4"
 
-RDEPEND="gcc-lib glibc"
+RDEPEND="gcc-lib"
 BDEPEND=""
 
 pbs_unpack() {

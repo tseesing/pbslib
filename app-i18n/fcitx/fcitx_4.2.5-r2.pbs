@@ -15,7 +15,7 @@ GROUP="fcitx"
 SRC_URI="http://fcitx.googlecode.com/files/"$N-$V"_dict.tar.xz"
 CHECKSUM="c783b740474ccac360c0fc018b5b42d2"
 
-RDEPEND="atk cairo dbus enchant expat fontconfig freetype gcc-lib gdk-pixbuf glib2 glibc gtk+ icu libffi libpng libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libXinerama libxkbfile libxml2 libXrandr libXrender opencc pango pixman zlib"
+RDEPEND="enchant gtk+ icu libxkbfile libxml2 opencc"
 BDEPEND="cmake"
 RECOMMENDED="fcitx-configtool"
 

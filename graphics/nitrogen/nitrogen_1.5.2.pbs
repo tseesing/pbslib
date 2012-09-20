@@ -7,20 +7,17 @@
 
 DESCRIPTION="A background browser and setter for X"
 HOMEPAGE="http://projects.l3ib.org/nitrogen/"
-REPO=""
 LICENSE="GPL"
 PACKAGER="StartOS Developers"
 
-SRC_URI="http://projects.l3ib.org/nitrogen/files/nitrogen-1.5.2.tar.gz"
+SRC_URI="http://projects.l3ib.org/"$N"/files/"$N-$V".tar.gz"
 
-RDEPEND=""
+RDEPEND="gtkmm"
 BDEPEND=""
 RECOMMENDED=""
 CONFLICT=""
 
 INSTALL="$N.install"
-
-NOTES=""
 
 pbs_unpack() {
         dounpack

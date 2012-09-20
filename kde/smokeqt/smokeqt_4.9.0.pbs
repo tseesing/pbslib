@@ -13,7 +13,7 @@ GROUP="kde"
 
 SRC_URI="http://download.kde.org/stable/"$V"/src/"$N-$V".tar.xz"
 
-RDEPEND="alsa-lib attr bzip2 dbus expat flac fontconfig freetype gcc-lib glib2 glibc gst-plugins-base gstreamer json-c libcap libdrm libffi libICE libogg libpng libqzeitgeist libSM libsndfile libvorbis libX11 libXau libxcb libXdamage libXdmcp libXext libXfixes libXi libxml2 libXrender libXtst libXxf86vm mesa openssl phonon pulseaudio qimageblitz qscintilla qt-core smokegen sqlite util-linux-ng zlib"
+RDEPEND="mesa phonon qimageblitz qscintilla smokegen"
 RECOMMENDED=""
 BDEPEND="cmake automoc4"
 OPTIONAL=""

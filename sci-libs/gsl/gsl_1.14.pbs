@@ -7,19 +7,16 @@
 
 DESCRIPTION="The GNU Scientific Library"
 HOMEPAGE="http://www.gnu.org/software/gsl/"
-REPO=""
-LICENSE=""
+LICENSE="GPL"
 PACKAGER="StartOS Developers"
 
-SRC_URI="ftp://ftp.gnu.org/gnu/"$N"/"$N-$V$R".tar.gz"
+SRC_URI="ftp://ftp.gnu.org/gnu/"$N"/"$N-$V".tar.gz"
 
-RDEPEND=""
-BDEPEND=" "
+RDEPEND="glibc"
+BDEPEND=""
 RECOMMENDED=""
 
 INSTALL="$N.install"
-
-NOTES=""
 
 pbs_unpack() {
         dounpack
@@ -35,6 +32,6 @@ pbs_build() {
 
 pbs_install() {
 	domkinstall
-	dodoc AUTHORS ChangeLog COPYING INSTALL NEWS README
 }
+
 

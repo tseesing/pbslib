@@ -12,7 +12,7 @@ PACKAGER="StartOS Developers"
 
 SRC_URI="http://www.portaudio.com/archives/pa_stable_v19_20110326.tgz"
 
-RDEPEND="alsa-lib glibc jack-audio-connection-kit"
+RDEPEND="jack-audio-connection-kit"
 BDEPEND=""
 RECOMMENDED=""
 CONFLICT=""

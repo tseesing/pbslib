@@ -11,7 +11,7 @@ LICENSE="GPLv2"
 
 SRC_URI="http://stardict-3.googlecode.com/files/"$N-$V$R".tar.bz2"
 
-RDEPEND="atk cairo enchant expat fontconfig freetype gcc-lib glib2 gdk-pixbuf glibc gtk+ libICE libpng libsigc++ libSM libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libxml2 libXrandr libXrender pango pixman util-linux-ng zlib"
+RDEPEND="gtk+ libsigc++ libSM libxml2"
 BDEPEND=""
 
 NOTES="
@@ -24,20 +24,21 @@ pbs_unpack() {
         dounpack
 }
 
-pbs_config() {
+pbs_patch() {
 	# ugly hack to avoid crashing with empty dictionaries
 	dopatch NetDictRequests.patch gcc46.patch
+}
 
-	#
+pbs_config() {
 	automake
-	config+=" PKG_CONFIG=/usr/bin/pkg-config
-		      --datadir=/usr/share 
-	              --disable-gnome-support 
-		      --disable-gucharmap 
-	              --disable-schemas-install 
-		      --disable-espeak 
-		      --disable-festival 
-		      --disable-updateinfo"
+	config+="PKG_CONFIG=/usr/bin/pkg-config
+		 --datadir=/usr/share 
+	         --disable-gnome-support 
+		 --disable-gucharmap 
+	         --disable-schemas-install 
+		 --disable-espeak 
+		 --disable-festival 
+		 --disable-updateinfo"
 	doconfig
 }
 
@@ -47,8 +48,7 @@ pbs_build() {
 
 pbs_install() {
 	domkinstall
-	dodoc AUTHORS ChangeLog INSTALL COPYING NEWS README 
-	# FIXME 
+	#FIXME 
 	rm "$destdir"/usr/lib/stardict/plugins/stardict_spell.so
 }
 

@@ -12,7 +12,7 @@ PACKAGER="StartOS Developers<>"
 
 SRC_URI="http://download.kde.org/stable/"$V"/src/"$N-$V".tar.xz"
 
-RDEPEND="acl akonadi(>=1.8.0) attica attr bzip2 cyrus-sasl dbus expat flac fontconfig freetype gcc-lib glib2 glibc gnutls gpgme gst-plugins-base gstreamer herqq json-c kdelibs libassuan libcap libdbusmenu-qt libdmtx libffi libgcrypt libgpg-error libical libICE libogg libpng libqzeitgeist libSM libsndfile libtasn1 libvorbis libX11 libXau libxcb libXcursor libXdmcp libXext libXfixes libXft libXi libxml2 libXpm libXrender libXtst openldap openssl phonon prison pth pulseaudio qca qrencode qt-core soprano sqlite strigi udev util-linux-ng xz-utils zlib"
+RDEPEND="akonadi(>=1.8.0) gpgme kdelibs libical openldap prison"
 BDEPEND=""
 
 INSTALL="$N.install"

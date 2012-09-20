@@ -10,9 +10,9 @@ HOMEPAGE="http://chromium-bsu.sourceforge.net/"
 LICENSE="Artistic/MIT"
 PACKAGER="StartOS Developers"
 
-SRC_URI="http://downloads.sourceforge.net/project/"$N"/Chromium%20B.S.U.%20source%20code/"$V$R"/"$N-$V$R".tar.gz"
+SRC_URI="http://downloads.sourceforge.net/project/"$N"/Chromium%20B.S.U.%20source%20code/"$V"/"$N-$V".tar.gz"
 
-RDEPEND="alsa-lib audiofile directfb expat fontconfig freealut freetype ftgl gcc-lib glibc glpng libdrm libICE libpng libsdl libSM libX11 libXau libxcb libXdamage libXdmcp libXext libXfixes libXt libXxf86vm mesa nas openal sdl-image util-linux-ng zlib"
+RDEPEND="fontconfig freealut ftgl glpng sdl-image"
 BDEPEND=" "
 RECOMMENDED=""
 CONFLICT=""

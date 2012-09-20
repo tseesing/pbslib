@@ -12,7 +12,7 @@ PACKAGER="StartOS Developers"
 
 SRC_URI="http://ftp.acc.umu.se/pub/gnome/platform/2.32/2.32.1/sources/"$N-$V".tar.bz2"
 
-RDEPEND="atk avahi cairo dbus dbus-glib expat fontconfig freetype gail gcc-lib gconf gdk-pixbuf glib2 glibc gnome-vfs gtk+ libart_lgpl libbonobo libbonoboui libcanberra libgcrypt libglade libgnome libgnomecanvas libgnome-keyring libgpg-error libICE libogg libpng libSM libtool libvorbis libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libxml2 libXrandr libXrender openssl orbit pango pixman popt tdb util-linux-ng zlib"
+RDEPEND="libbonoboui libgnome-keyring"
 BDEPEND=""
 RECOMMENDED=""
 

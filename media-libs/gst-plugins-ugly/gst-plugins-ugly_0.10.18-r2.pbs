@@ -5,15 +5,14 @@
 # Distributed under the terms of the GNU General Public License v2
 #
 
-DESCRIPTION="Basepack of plugins for gstreamer"
+DESCRIPTION="Ugly plugins for gstreamer"
 HOMEPAGE="http://gstreamer.sourceforge.net"
-LICENSE="GPL"
+LICENSE="LGPL"
 PACKAGER="StartOS Developers"
 
 SRC_URI="http://gstreamer.freedesktop.org/src/"$N"/"$N-$V".tar.gz"
-CHECKSUM="3c1873ec8f743ade5064800720f18e69"
 
-RDEPEND="a52dec gcc-lib glib2 glibc gst-plugins-base gstreamer lame libcdio libdvdread libffi libid3tag libmad libmpeg2 libxml2 opencore-amr orc x264 zlib"
+RDEPEND="a52dec gst-plugins-base libcdio libdvdread libid3tag libmad libmpeg2 libsidplay twolame x264"
 BDEPEND=""
 RECOMMENDED=""
 CONFLICT=""
@@ -23,6 +22,7 @@ pbs_unpack() {
 }
 
 pbs_config() {
+	config+="--disable-static --enable-experimental"
 	doconfig
 }
 

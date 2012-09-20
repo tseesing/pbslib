@@ -12,7 +12,7 @@ PACKAGER="StartOS Developers"
 
 SRC_URI="http://hal.freedesktop.org/releases/"$N-$V".tar.gz"
 
-RDEPEND="dbus dbus-glib glib2 glibc zlib"
+RDEPEND="dbus-glib"
 BDEPEND=""
 
 pbs_unpack() {

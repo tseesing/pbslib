@@ -14,7 +14,7 @@ PACKAGER="StartOS Developers"
 SRC_URI="http://cgit.freedesktop.org/vaapi/intel-driver/snapshot/"$N-$V".tar.bz2"
 CHECKSUM="f65ebbcb1071188405178f3a85831ffc"
 
-RDEPEND="glibc libdrm libpciaccess libva(>=1.0.16) libX11 libXau libxcb libXdmcp libXext libXfixes"
+RDEPEND="libva(>=1.0.16)"
 RECOMMENDED=""
 BDEPEND=""
 OPTIONAL=""

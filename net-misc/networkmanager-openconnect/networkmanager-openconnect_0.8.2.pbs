@@ -12,7 +12,7 @@ PACKAGER="StartOS Developers"
 
 SRC_URI="http://ftp.gnome.org/pub/gnome/sources/NetworkManager-openconnect/0.8/NetworkManager-openconnect-"$V".tar.bz2"
 
-RDEPEND="atk cairo dbus dbus-glib expat fontconfig freetype gcc-lib gconf gdk-pixbuf glib2 glibc gtk+ libglade libpng libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libxml2 libXrandr libXrender networkmanager nspr nss orbit pango pixman udev util-linux-ng zlib"
+RDEPEND="gconf libglade networkmanager"
 BDEPEND=""
 RECOMMENDED=""
 
@@ -21,6 +21,7 @@ pbs_unpack() {
 }
 
 pbs_config() {
+	sed -ie 's/-Werror//' configure
 	doconfig
 }
 

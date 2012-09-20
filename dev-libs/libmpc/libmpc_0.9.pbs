@@ -13,7 +13,7 @@ PACKAGER="StartOS Developers"
 SRC_URI="http://www.multiprecision.org/mpc/download/mpc-"$V".tar.gz"
 CHECKSUM="0d6acab8d214bd7d1fbbc593e83dd00d"
 
-RDEPEND="glibc gmp mpfr"
+RDEPEND="mpfr"
 BDEPEND=""
 RECOMMENDED=""
 

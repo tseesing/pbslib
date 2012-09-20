@@ -13,7 +13,7 @@ PACKAGER="StartOS Developers"
 SRC_URI="https://launchpad.net/libindicator/0.4/"$V"/+download/"$N-$V".tar.gz"
 CHECKSUM="c8f2900fa8e028bb2ea7511a0f368756"
 
-RDEPEND="atk cairo expat fontconfig freetype gcc-lib gdk-pixbuf glib2 glibc gtk+3 libffi libpng libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libXinerama libXrandr libXrender pango pixman zlib"
+RDEPEND="gtk+"
 BDEPEND=""
 RECOMMENDED=""
 

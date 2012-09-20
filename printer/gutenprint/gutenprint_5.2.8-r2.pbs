@@ -13,7 +13,7 @@ PACKAGER="StartOS Developers"
 SRC_URI="http://downloads.sourceforge.net/gimp-print/"$N-$V".tar.bz2"
 CHECKSUM="5ed64c0f994245852da8e9fa6a137060"
 
-RDEPEND="atk avahi cairo cups dbus e2fsprogs expat fontconfig freetype gcc-lib gdk-pixbuf ghostscript glib2 glibc gnutls gtk+ keyutils krb5 libffi libgcrypt libgpg-error libjpeg-turbo libpng libtasn1 libtiff libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libXinerama libXrandr libXrender ncurses pango pixman readline zlib"
+RDEPEND="readline cups"
 BDEPEND=""
 RECOMMENDED="gimp"
 CONFLICT=""

@@ -32,7 +32,7 @@ pbs_build() {
 
 virtuoso-base_install() {
 	DESCRIPTION="A scalable cross-platform server of virtuoso (very minimal installation)"
-	RDEPEND="cyrus-sasl glibc gnutls libgcrypt libgpg-error libtasn1 ncurses openldap openssl readline zlib"
+	RDEPEND="openldap"
 
 	# install server
 	cd "${srcdir}"/binsrc/virtuoso
@@ -51,7 +51,7 @@ virtuoso-base_install() {
 
 virtuoso_install() {
 	DESCRIPTION="A scalable cross-platform server that combines SQL/RDF/XML Data Management with Web Application Server and Web Services Platform functionalit"
-	RDEPEND="bzip2 cairo djvulibre expat fftw fontconfig freetype gcc-lib gdk-pixbuf glib2 glibc imagemagick jasper lcms libcroco libffi libICE libjpeg-turbo libpng librsvg libSM libtiff libtool libX11 libXau libxcb libXdmcp libXext libxml2 libXrender libXt openssl pango pixman util-linux-ng xz-utils zlib"
+	RDEPEND="imagemagick openssl"
 
 	cd "${srcdir}"
 	domkinstall

@@ -13,7 +13,7 @@ PACKAGER="StartOS Developers"
 SRC_URI="ftp://ftp.porcupine.org/mirrors/postfix-release/official/"$N-$V".tar.gz"
 CHECKSUM="fda7ec5ac79300577f61a68561171bd501b1b20c"
 
-RDEPEND="berkeley-db cyrus-sasl gcc-lib glibc gnutls libgcrypt libgpg-error libmysqlclient libpcre libtasn1 openldap openssl postgresql-libs sqlite zlib"
+RDEPEND="libmysqlclient libpcre openldap postgresql-libs sqlite"
 RECOMMENDED=""
 BDEPEND=""
 OPTIONAL=""

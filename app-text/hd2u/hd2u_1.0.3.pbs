@@ -13,7 +13,7 @@ PACKAGER="StartOS Developers"
 SRC_URI="http://hany.sk/~hany/_data/hd2u/"$N-$V".tgz"
 CHECKSUM="8f6668fafb279aa19f956ec0515717b6"
 
-RDEPEND="glibc popt"
+RDEPEND="popt"
 RECOMMENDED=""
 BDEPEND=""
 OPTIONAL=""

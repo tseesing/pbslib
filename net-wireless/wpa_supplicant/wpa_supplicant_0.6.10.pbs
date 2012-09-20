@@ -12,7 +12,7 @@ PACKAGER="StartOS Developers"
 
 SRC_URI="http://hostap.epitest.fi/releases/"$N-$V".tar.gz"
 
-RDEPEND="dbus glibc libnl ncurses openssl pcsc-lite readline zlib"
+RDEPEND="dbus libnl openssl pcsc-lite readline"
 BDEPEND=""
 RECOMMENDED=""
 

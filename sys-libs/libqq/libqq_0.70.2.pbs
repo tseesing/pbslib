@@ -7,18 +7,15 @@
 
 DESCRIPTION="libqq is a protocol plug-in Pidgin, derived from the OPENQ project, equiped with the latest QQ 2010 protocol"
 HOMEPAGE="http://code.google.com/p/libqq-pidgin/"
-REPO=""
 LICENSE="GNU GPL v3"
 PACKAGER="StartOS Developers"
 
 SRC_URI="http://libqq-pidgin.googlecode.com/files/libqq_0.70.2_i386.deb"
 
-RDEPEND=""
+RDEPEND="glibc"
 BDEPEND=""
 RECOMMENDED=""
 CONFLICT=""
-
-NOTES=""
 
 pbs_unpack() {
         dounpack

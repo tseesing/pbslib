@@ -12,7 +12,7 @@ PACKAGER="StartOS Developers"
 
 SRC_URI="http://downloads.sourceforge.net/"$N"/"$N-$V".tar.bz2"
 
-RDEPEND="glibc lcms libjpeg-turbo zlib"
+RDEPEND="lcms"
 BDEPEND=""
 
 pbs_unpack() {

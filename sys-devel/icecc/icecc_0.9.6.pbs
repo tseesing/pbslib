@@ -7,15 +7,13 @@
 
 DESCRIPTION="Icecream was created by SUSE based on distcc. Like distcc, Icecream takes compile jobs from a (KDE) build and distributes it among remote machines allowing a parallel build"
 HOMEPAGE="http://en.opensuse.org/Icecream"
-REPO=""
 LICENSE="GPL"
-PRIORITY=""
 PACKAGER="StartOS Developers"
 
-SRC_URI="ftp://ftp.suse.com/pub/projects/"$N"/"$N-$V$R".tar.bz2"
+SRC_URI="ftp://ftp.suse.com/pub/projects/"$N"/"$N-$V".tar.bz2"
 
-RDEPEND=""
-BDEPEND=" "
+RDEPEND="gcc-lib"
+BDEPEND=""
 RECOMMENDED=""
 CONFLICT=""
 

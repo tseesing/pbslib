@@ -13,7 +13,7 @@ PACKAGER="StartOS Developers"
 SRC_URI="http://sourceforge.net/projects/"$N"/files/sourcecode/"$N"-srcdata-0761.tar.gz"
 CHECKSUM="117745dd282f9904c2d641d7f19714f7"
 
-RDEPEND="directfb freealut gcc-lib glibc libdrm libICE libogg libsdl libSM libvorbis libX11 libXau libxcb libXdamage libXdmcp libXext libXfixes libXt libXxf86vm mesa nas openal sdl-image util-linux-ng zlib"
+RDEPEND="freealut libvorbis sdl-image"
 RECOMMENDED=""
 BDEPEND=""
 OPTIONAL=""
@@ -26,8 +26,7 @@ pbs_unpack() {
 }
 
 pbs_patch() {
-	sed -e "s/datadir = \/usr\/local\/share\/ultimatestunts\//datadir = \/usr\/share\/ultimatestunts\//" \
-		ultimatestunts.conf > ultimatestunts.conf.new
+	sed -e "s/datadir = \/usr\/local\/share\/ultimatestunts\//datadir = \/usr\/share\/ultimatestunts\//" ultimatestunts.conf >ultimatestunts.conf.new
 	mv ultimatestunts.conf.new ultimatestunts.conf
 }
 

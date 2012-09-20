@@ -12,7 +12,7 @@ PACKAGER="StartOS Developers"
 
 SRC_URI="http://ftp.gnu.org/gnu/"$N"/"$N-$V".tar.gz"
 
-RDEPEND="glibc ncurses readline"
+RDEPEND="readline"
 BDEPEND=""
 
 INSTALL="$N.install"
@@ -22,11 +22,10 @@ pbs_unpack() {
 }
 
 pbs_config() {
-	config+="--disable-ifconfig 
-		     --disable-syslogd 
-		     --disable-servers
-	             --disable-logger "
-		     #--disable-whois 
+	config+=" --disable-ifconfig 
+		  --disable-syslogd 
+		  --disable-servers
+	          --disable-logger "
 	doconfig
 }
 

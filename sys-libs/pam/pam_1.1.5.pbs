@@ -13,7 +13,7 @@ PACKAGER="StartOS Developers"
 SRC_URI="https://fedorahosted.org/releases/l/i/linux-pam/Linux-PAM-"$V".tar.bz2"
 CHECKSUM="927ee5585bdec5256c75117e9348aa47"
 
-RDEPEND="berkeley-db glibc"
+RDEPEND="berkeley-db"
 BDEPEND=""
 
 INSTALL="$N.install"

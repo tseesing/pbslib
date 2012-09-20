@@ -12,7 +12,7 @@ PACKAGER="StartOS Developers"
 
 SRC_URI="ftp://ftp.gnu.org/gnu/"$N"/"$N-$V".tar.gz"
 
-RDEPEND="glibc texinfo"
+RDEPEND="glibc"
 BDEPEND=""
 RECOMMENDED=""
 CONFLICT=""

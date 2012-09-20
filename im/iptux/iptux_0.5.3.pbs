@@ -13,7 +13,7 @@ PACKAGER="StartOS Developers"
 SRC_URI="http://iptux.googlecode.com/files/"$N$V".tar.gz"
 CHECKSUM="e1f49b263c753cb6284383e175e60331"
 
-RDEPEND="atk cairo expat fontconfig freetype gcc-lib gconf gdk-pixbuf glib2 glibc gstreamer gtk+ libffi libpng libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libXinerama libxml2 libXrandr libXrender orbit pango pixman zlib"
+RDEPEND="gconf gstreamer"
 BDEPEND="" 
 RECOMMENDED=""
 CONFLICT=""

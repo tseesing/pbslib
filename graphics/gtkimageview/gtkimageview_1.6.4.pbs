@@ -7,17 +7,14 @@
 
 DESCRIPTION="GtkImageView is a simple image viewer widget for GTK."
 HOMEPAGE="http://trac.bjourne.webfactional.com/wiki"
-LICENSE="GPL-2"
+LICENSE="GPL"
 PACKAGER="StartOS Developers"
 
-SRC_URI="http://trac.bjourne.webfactional.com/chrome/common/releases/"$N-$V$R".tar.gz"
+SRC_URI="http://trac.bjourne.webfactional.com/chrome/common/releases/"$N-$V".tar.gz"
 
-RDEPEND="gtk+ atk pango cairo freetype fontconfig libXi libXrandr libXcursor libXcomposite libXext
-	 libXdamage libXfixes pixman libxml2 directfb libpng libxcb libXau libXdmcp zlib expat "
-BDEPEND=" gtk+"
+RDEPEND="gtk+"
+BDEPEND=""
 RECOMMENDED=""
-
-NOTES=""
 
 pbs_unpack() {
         dounpack

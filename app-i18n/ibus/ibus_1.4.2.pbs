@@ -14,7 +14,7 @@ GROUP="ibus"
 SRC_URI="http://ibus.googlecode.com/files/"$N-$V".tar.gz"
 CHECKSUM="a2d11d8bb64761691df918e9e50f0b35c711760d"
 
-RDEPEND="atk bzip2 cairo dbus expat fontconfig freetype gcc-lib gconf gdk-pixbuf glib2 glibc gtk+ libffi libpng libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libXinerama libXrandr libXrender orbit pango pixman zlib"
+RDEPEND="gconf"
 BDEPEND="notify-python-dev"
 RECOMMENDED="notify-python"
 

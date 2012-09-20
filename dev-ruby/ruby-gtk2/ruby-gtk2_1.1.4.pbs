@@ -14,7 +14,7 @@ GROUP="ruby"
 SRC_URI="http://downloads.sourceforge.net/ruby-gnome2/"$N-$V".tar.gz"
 CHECKSUM="31c5da239bd1cb25daca026e453106f29503195c445d73a9cf1aceb22379d100"
 
-RDEPEND="ruby"
+RDEPEND="ruby gtk+"
 RECOMMENDED=""
 BDEPEND="ruby ruby-pkgconfig"
 OPTIONAL=""

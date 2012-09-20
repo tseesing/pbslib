@@ -13,7 +13,7 @@ PACKAGER="StartOS Developers"
 SRC_URI="http://downloads.sourceforge.net/project/"$N"/"$N"/"$N-$V".tar.gz"
 CHECKSUM="d56e0cdfba9c5b5608bf84493322615f"
 
-RDEPEND="alsa-lib attr bzip2 cairo dbus directfb expat ffmpeg(>=0.11.1) file flac fontconfig freetype gcc-lib gdk-pixbuf glib2 glibc gtk+ jack-audio-connection-kit json-c lame libcap libdv libexif libffi libgsm libICE libjpeg-turbo libogg libpng libsdl libSM libsndfile libtheora libtool libva libvorbis libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libXinerama libxml2 libXrandr libXrender libXt libXtst nas opencore-amr openssl orc pango pixman pulseaudio python rtmpdump schroedinger sdl-image sox speex util-linux-ng v4l-utils x264 xvidcore zlib"
+RDEPEND="ffmpeg gtk+ libdv libexif libxml2 sdl-image sox"
 BDEPEND=""
 RECOMMENDED=""
 CONFLICT=""

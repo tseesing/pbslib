@@ -14,7 +14,7 @@ PACKAGER="StartOS Developers"
 SRC_URI="ftp://ftp.cac.washington.edu/imap/"$N-$V"f.tar.gz"
 CHECKSUM="2126fd125ea26b73b20f01fcd5940369"
 
-RDEPEND="glibc openssl pam zlib"
+RDEPEND="openssl pam"
 RECOMMENDED=""
 BDEPEND=""
 OPTIONAL=""

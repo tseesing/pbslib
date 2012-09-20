@@ -12,7 +12,7 @@ PACKAGER="StartOS Developers"
 
 SRC_URI="http://download.librdf.org/source/"$N-$V".tar.gz"
 
-RDEPEND="berkeley-db curl cyrus-sasl gcc-lib glibc gmp gnutls libgcrypt libgpg-error libidn libiodbc libmysqlclient libssh2 libtasn1 libtool libxml2 libxslt mpfr openldap openssl postgresql-libs raptor2 rasqal rtmpdump sqlite zlib"
+RDEPEND="berkeley-db libiodbc libmysqlclient libtool postgresql-libs rasqal sqlite"
 BDEPEND=""
 RECOMMENDED=""
 CONFLICT=""

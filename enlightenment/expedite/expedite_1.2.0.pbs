@@ -13,7 +13,7 @@ PACKAGER="StartOS Developers"
 SRC_URI="http://download.enlightenment.org/releases/"$N-$V".tar.gz"
 CHECKSUM="e9dfdf3dc35fdbec189914e3960c9949"
 
-RDEPEND="directfb eet eina evas expat fontconfig freetype fribidi gcc-lib glibc gnutls libgcrypt libgpg-error libICE libjpeg-turbo libsdl libSM libtasn1 libX11 libXau libxcb libXdmcp libXt nas util-linux-ng zlib"
+RDEPEND="evas libsdl"
 RECOMMENDED=""
 BDEPEND=""
 OPTIONAL=""

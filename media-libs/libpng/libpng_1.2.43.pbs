@@ -12,15 +12,18 @@ PACKAGER="StartOS Developers"
 
 SRC_URI="http://prdownloads.sourceforge.net/"$N"/"$N-$V".tar.gz"
 
-RDEPEND="glibc zlib"
+RDEPEND="zlib"
 BDEPEND=""
 
 pbs_unpack() {
         dounpack
 }
 
-pbs_config() {
+pbs_patch() {
 	dopatch "$N-$V"-apng.patch
+}
+
+pbs_config() {
 	doconfig
 }
 

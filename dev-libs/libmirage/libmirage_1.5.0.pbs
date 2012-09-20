@@ -13,7 +13,7 @@ PACKAGER="StartOS Developers"
 SRC_URI="http://sourceforge.net/projects/cdemu/files/"$N"/"$N-$V".tar.bz2"
 CHECKSUM="b60d9baa754efee6e0f6a584ec033fff"
 
-RDEPEND="flac glib2 glibc libffi libogg libsndfile libvorbis zlib"
+RDEPEND="glib2 libsndfile"
 RECOMMENDED=""
 BDEPEND=""
 OPTIONAL=""

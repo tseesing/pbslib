@@ -12,7 +12,7 @@ PACKAGER="StartOS Developers"
 
 SRC_URI="http://www.x.org/releases/X11R7.7/src/lib/"$N-$V".tar.bz2"
 
-RDEPEND="bzip2 expat fontconfig freetype glibc libX11 libXau libxcb libXdmcp libXrender zlib"
+RDEPEND="fontconfig libXrender"
 BDEPEND=""
 
 pbs_unpack() {

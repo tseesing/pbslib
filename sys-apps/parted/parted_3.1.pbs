@@ -13,7 +13,7 @@ PACKAGER="StartOS Developers"
 SRC_URI="http://ftp.gnu.org/gnu/"$N"/"$N-$V".tar.xz"
 CHECKSUM="5d89d64d94bcfefa9ce8f59f4b81bdcb"
 
-RDEPEND="device-mapper glibc ncurses readline udev util-linux-ng"
+RDEPEND="device-mapper readline util-linux-ng"
 BDEPEND=""
 RECOMMENDED=""
 
@@ -24,8 +24,7 @@ pbs_unpack() {
 }
 
 pbs_config() {
-	config+="--disable-debug
-	         --disable-rpath"
+	config+="--disable-debug --disable-rpath"
 	doconfig
 }
 

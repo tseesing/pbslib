@@ -14,7 +14,7 @@ GROUP="fcitx"
 SRC_URI="http://fcitx.googlecode.com/files/"$N-$V".tar.xz"
 CHECKSUM="ec0e29314f32859ea1e58cbf2e86709a2687b8ef"
 
-RDEPEND="dbus dbus-glib fcitx glib2 glibc libffi zlib fcitx"
+RDEPEND="dbus-glib fcitx"
 RECOMMENDED=""
 BDEPEND="cmake"
 OPTIONAL=""

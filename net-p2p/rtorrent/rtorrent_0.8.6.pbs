@@ -12,7 +12,7 @@ PACKAGER="StartOS Developers"
 
 SRC_URI="http://libtorrent.rakshasa.no/downloads/"$N-$V".tar.gz"
 
-RDEPEND="curl cyrus-sasl gcc-lib glibc libidn libsigc++ libssh2 libtorrent ncurses openldap openssl rtmpdump zlib"
+RDEPEND="curl libtorrent ncurses"
 BDEPEND=""
 RECOMMENDED=""
 CONFLICT=""

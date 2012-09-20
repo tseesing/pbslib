@@ -13,7 +13,7 @@ PACKAGER="StartOS Developers"
 SRC_URI="http://www.php.net/distributions/"$N-$V".tar.bz2"
 CHECKSUM="816259e5ca7d0a7e943e56a3bb32b17f"
 
-RDEPEND="aspell berkeley-db bzip2 curl cyrus-sasl enchant freetds freetype gcc-lib gdbm glib2 glibc gmp gnutls icu libgcrypt libgpg-error libidn libjpeg-turbo libmcrypt libpcre libpng libssh2 libtasn1 libtool libxml2 libxslt net-snmp openldap openssl pam postgresql-libs rtmpdump sqlite tidyhtml unixodbc zlib"
+RDEPEND="curl enchant freetds freetype gdbm gmp icu libjpeg-turbo libmcrypt libpcre libpng libxslt net-snmp pam postgresql-libs sqlite tidyhtml unixodbc"
 RECOMMENDED=""
 BDEPEND=""
 OPTIONAL=""

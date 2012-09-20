@@ -7,13 +7,12 @@
 
 DESCRIPTION="C++ port of the famous JUnit framework for unit testing"
 HOMEPAGE="http://cppunit.sourceforge.net/"
-REPO=""
 LICENSE="GPL"
 PACKAGER="StartOS Developers"
 
-SRC_URI="http://nchc.dl.sourceforge.net/project/cppunit/cppunit/1.12.1/cppunit-1.12.1.tar.gz"
+SRC_URI="http://nchc.dl.sourceforge.net/project/"$N"/"$N"/"$V"/"$N-$V".tar.gz"
 
-RDEPEND=""
+RDEPEND="gcc-lib"
 BDEPEND=""
 RECOMMENDED=""
 CONFLICT=""

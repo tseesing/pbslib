@@ -12,16 +12,18 @@ PACKAGER="StartOS Developers"
 
 SRC_URI="http://downloads.sourceforge.net/project/libexif/"$N"/"$V"/"$N-$V".tar.bz2 "
 
-RDEPEND="atk cairo expat fontconfig freetype gcc-lib gdk-pixbuf glib2 glibc gtk+ libexif libpng libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libXrandr libXrender pango pixman zlib"
+RDEPEND="gtk+ libexif"
 BDEPEND=""
 
 pbs_unpack() {
         dounpack
 }
 
+pbs_patch() {
+	dopatch libexif-0.6.13.patch gtk212-fix.patch
+}
+
 pbs_config() {
-	dopatch libexif-0.6.13.patch
-	dopatch gtk212-fix.patch
 	autoreconf -f -i
 	doconfig
 }

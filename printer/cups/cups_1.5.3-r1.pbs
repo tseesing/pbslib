@@ -13,7 +13,7 @@ PACKAGER="StartOS Developers"
 SRC_URI="http://ftp.easysw.com/pub/"$N"/"$V"/"$N-$V"-source.tar.bz2"
 CHECKSUM="e1ad15257aa6f162414ea3beae0c5df8"
 
-RDEPEND="acl attr avahi dbus e2fsprogs gcc-lib glibc gnutls keyutils krb5 libgcrypt libgpg-error libjpeg-turbo libpng libtasn1 libtiff libusbx openslp openssl pam systemd zlib"
+RDEPEND="avahi krb5 libtiff libusbx openslp systemd"
 BDEPEND="php-dev"
 RECOMMENDED="php"
 

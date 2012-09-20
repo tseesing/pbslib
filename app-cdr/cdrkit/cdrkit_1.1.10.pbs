@@ -12,7 +12,7 @@ PACKAGER="StartOS Developers"
  
 SRC_URI="http://cdrkit.org/releases/"$N-$V".tar.gz"
 
-RDEPEND="attr bzip2 file glibc libcap zlib"
+RDEPEND="bzip2 file libcap"
 BDEPEND="cmake"
 RECOMMENDED=""
 

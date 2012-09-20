@@ -13,7 +13,7 @@ PACKAGER="StartOS Developers"
 SRC_URI="http://downloads.sourceforge.net/libusb/"$N-$V".tar.bz2"
 CHECKSUM="2ca521fffadd0c28fdf174e6ec73865b"
 
-RDEPEND="glibc libusbx"
+RDEPEND="libusbx"
 BDEPEND="pkgconfig"
 
 pbs_unpack() {

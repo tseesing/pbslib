@@ -13,7 +13,7 @@ PACKAGER="StartOS Developers"
 SRC_URI="http://download.enlightenment.org/releases/"$N-$V".tar.gz"
 CHECKSUM="557f8411d323b14ed7bf1be368ab302a"
 
-RDEPEND="curl cyrus-sasl eet eina evas expat fontconfig freetype fribidi glib2 glibc gnutls libgcrypt libgpg-error libidn libjpeg-turbo libssh2 libtasn1 libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libXinerama libXp libXrandr libXrender libXScrnSaver libXtst openldap openssl rtmpdump zlib"
+RDEPEND="curl evas libXcomposite libXcursor libXinerama libXp libXrandr libXScrnSaver libXtst"
 RECOMMENDED=""
 BDEPEND=""
 OPTIONAL=""

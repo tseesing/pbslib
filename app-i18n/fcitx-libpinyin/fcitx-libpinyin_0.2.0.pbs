@@ -14,7 +14,7 @@ GROUP="fcitx"
 SRC_URI="http://fcitx.googlecode.com/files/"$N-$V"_dict.tar.xz"
 CHECKSUM="d6c758d62bce2f9c69d3e0bfc12afc79bc0fd75c"
 
-RDEPEND="fcitx berkeley-db gcc-lib glib2 glibc libpinyin(>=0.6.92)"
+RDEPEND="fcitx libpinyin(>=0.6.92)"
 RECOMMENDED=""
 BDEPEND="cmake"
 OPTIONAL=""

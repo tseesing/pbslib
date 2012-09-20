@@ -12,7 +12,7 @@ PACKAGER="YLmf OS Developers "
  
 SRC_URI="ftp://ftp.gnupg.org/gcrypt/"$N"/"$N-$V".tar.bz2"
 
-RDEPEND="glibc libassuan libgpg-error pth"
+RDEPEND="libassuan pth"
 BDEPEND=""
 RECOMMENDED=""
 

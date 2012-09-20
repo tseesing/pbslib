@@ -12,7 +12,7 @@ PACKAGER="StartOS Developers"
 
 SRC_URI="http://rsync.samba.org/ftp/"$N"/"$N-$V".tar.gz"
 
-RDEPEND="acl attr glibc popt"
+RDEPEND="acl popt"
 BDEPEND=""
 
 INSTALL="$N.install"

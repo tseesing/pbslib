@@ -14,7 +14,7 @@ PACKAGER="StartOS Developers"
 SRC_URI="http://downloads.sourceforge.net/"$N"/"${N}_$V".tar.gz"
 CHECKSUM="00e479dd806b94a98d3f0f40639e88a9"
 
-RDEPEND="alsa-lib atk audiofile cairo directfb expat fontconfig freetype gcc-lib gdk-pixbuf glib2 glibc gtk+ libdrm libICE libsdl libSM libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libxml2 libXrandr libXrender libXt libXv libXxf86vm mesa nas pango pixman qt-core udev util-linux-ng zlib"
+RDEPEND="gtk+ libsdl libva libxml2 libXv"
 RECOMMENDED=""
 BDEPEND="cmake"
 OPTIONAL=""

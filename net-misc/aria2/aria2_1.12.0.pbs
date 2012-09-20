@@ -7,13 +7,12 @@
 
 DESCRIPTION="A download utility with resuming and segmented downloading with HTTP/HTTPS/FTP/BitTorrent support."
 HOMEPAGE="http://aria2.sourceforge.net/"
-REPO=""
 LICENSE="GPL"
 PACKAGER="StartOS Developers"
 
-SRC_URI="http://nchc.dl.sourceforge.net/project/aria2/stable/aria2-1.12.0/aria2-1.12.0.tar.bz2"
+SRC_URI="http://nchc.dl.sourceforge.net/project/"$N"/stable/"$N-$V"/"$N-$V".tar.bz2"
 
-RDEPEND="gcc-lib glibc gnutls libgcrypt libgpg-error libtasn1 libxml2 sqlite zlib"
+RDEPEND="gnutls libxml2 sqlite"
 BDEPEND=""
 RECOMMENDED=""
 CONFLICT=""

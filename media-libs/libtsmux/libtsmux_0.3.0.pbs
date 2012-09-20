@@ -7,17 +7,14 @@
 
 DESCRIPTION="MPEG2 transport stream muxing library"
 HOMEPAGE="http://core.fluendo.com/gstreamer/src/gst-fluendo-mpegmux/"
-REPO=""
 LICENSE="GPL-2"
 PACKAGER="StartOS Developers"
 
-SRC_URI="http://core.fluendo.com/gstreamer/src/gst-fluendo-mpegmux/"$N-$V$R".tar.bz2"
+SRC_URI="http://core.fluendo.com/gstreamer/src/gst-fluendo-mpegmux/"$N-$V".tar.bz2"
 
-RDEPEND=""
-BDEPEND=" "
+RDEPEND="glib2"
+BDEPEND=""
 RECOMMENDED=""
-
-NOTES=""
 
 pbs_unpack() {
         dounpack

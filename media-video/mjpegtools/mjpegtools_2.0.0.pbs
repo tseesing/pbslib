@@ -13,7 +13,7 @@ PACKAGER="StartOS Developers"
 SRC_URI="http://downloads.sourceforge.net/sourceforge/mjpeg/"$N-$V".tar.gz"
 CHECKSUM="903e1e3b967eebcc5fe5626d7517dc46"
 
-RDEPEND="atk cairo directfb expat fontconfig freetype gcc-lib gdk-pixbuf glib2 glibc gtk+ libffi libICE libjpeg-turbo libpng libquicktime libsdl libSM libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libXinerama libXrandr libXrender libXt nas pango pixman sdl-gfx util-linux-ng zlib"
+RDEPEND="libdv libquicktime nas sdl-gfx"
 RECOMMENDED=""
 BDEPEND=""
 OPTIONAL=""

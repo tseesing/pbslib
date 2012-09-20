@@ -13,7 +13,7 @@ PACKAGER="StartOS Developers"
 SRC_URI="http://xcb.freedesktop.org/dist/"$N-$V".tar.bz2"
 CHECKSUM="dda47289bc846a6a3e07824e9ec3aef8"
 
-RDEPEND="glibc libXau libxcb libXdmcp"
+RDEPEND="libxcb"
 RECOMMENDED=""
 BDEPEND=""
 OPTIONAL=""

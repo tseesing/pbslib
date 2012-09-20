@@ -13,7 +13,7 @@ PACKAGER="StartOS Developers<>"
 SRC_URI="http://downloads.sourceforge.net/"$N"/"$N-$V".tar.bz2"
 CHECKSUM="c86113af31a2032e57fd2f302b5f637a"
 
-RDEPEND="acl attica attr bzip2 dbus e2fsprogs expat ffmpeg flac fontconfig freetype gcc-lib glib2 glibc gst-plugins-base gstreamer herqq json-c kdelibs kdemultimedia keyutils krb5 lame libcap libdbusmenu-qt libdiscid libdvdread libffi libgsm libICE libmad libmpcdec libmusicbrainz libogg libpng libproxy libqzeitgeist libsamplerate libSM libsndfile libtheora libva libvorbis libX11 libXau libxcb libXcursor libXdmcp libXext libXfixes libXft libXi libxml2 libXpm libXrender libXScrnSaver libXtst musicbrainz neon opencore-amr openssl orc phonon pulseaudio qca qt-core rtmpdump schroedinger soprano speex sqlite strigi taglib udev util-linux-ng x264 xvidcore xz-utils zlib"
+RDEPEND="ffmpeg libdvdread libkcddb libmad libmpcdec libsamplerate musicbrainz taglib"
 BDEPEND="cmake automoc4"
 RECOMMENDED=""
 

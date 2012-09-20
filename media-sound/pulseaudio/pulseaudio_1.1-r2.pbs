@@ -13,7 +13,7 @@ PACKAGER="StartOS Developers"
 SRC_URI="http://freedesktop.org/software/"$N"/releases/"$N-$V".tar.xz"
 CHECKSUM="17d21df798cee407b769c6355fae397a"
 
-RDEPEND="alsa-lib attr avahi bluez dbus flac gcc-lib gconf glib2 glibc jack-audio-connection-kit json-c libcap libffi libICE libogg libsamplerate libSM libsndfile libtool libvorbis libX11 libXau libxcb libXdmcp libXext libXi libXtst lirc openssl orbit orc speex tdb udev util-linux-ng zlib"
+RDEPEND="avahi bluez fftw gconf jack-audio-connection-kit json-c libtool libXtst lirc openssl orc speex tdb"
 RECOMMENDED=""
 BDEPEND=""
 CONFLICT=""

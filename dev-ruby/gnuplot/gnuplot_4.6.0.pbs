@@ -13,7 +13,7 @@ PACKAGER="StartOS Developers"
 SRC_URI="http://downloads.sourceforge.net/sourceforge/"$N"/"$N-$V".tar.gz"
 CHECKSUM="9a43ae13546d97d4b174533ddac31a14e0edc9b2"
 
-RDEPEND="atk bzip2 cairo expat fontconfig freetype gcc-lib gd gdk-pixbuf glib2 glibc gtk+ libffi libICE libjpeg-turbo libpng libSM libtiff libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libXinerama libXpm libXrandr libXrender libXxf86vm lua ncurses pango pixman readline util-linux-ng wxWidgets zlib"
+RDEPEND="gd lua wxWidgets"
 RECOMMENDED=""
 BDEPEND=""
 OPTIONAL=""

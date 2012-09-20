@@ -12,7 +12,7 @@ PACKAGER="StartOS Developers"
 
 SRC_URI="http://fallabs.com/kyotocabinet/pkg/"$N-$V".tar.gz"
 
-RDEPEND="gcc-lib glibc zlib"
+RDEPEND="gcc-lib zlib"
 RECOMMENDED=""
 BDEPEND=""
 OPTIONAL=""

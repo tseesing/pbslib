@@ -13,7 +13,7 @@ PACKAGER="StartOS Developers"
 SRC_URI="http://avahi.org/download/"$N-$V".tar.gz"
 CHECKSUM="e4db89a2a403ff4c47d66ac66fad1f43"
 
-RDEPEND="atk attr cairo dbus expat fontconfig freetype gcc-lib gdbm gdk-pixbuf glib2 glibc gtk+ libcap libdaemon libffi libpng libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libXinerama libXrandr libXrender pango pixman zlib"
+RDEPEND="gdbm gtk+ libcap libdaemon" 
 BDEPEND="desktop-file-utils dbus-python-dev pygtk-dev dbus-glib-dev"
 RECOMMENDED=""
 

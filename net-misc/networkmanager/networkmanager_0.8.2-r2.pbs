@@ -12,7 +12,7 @@ PACKAGER="StartOS Develpers"
 
 SRC_URI="http://ftp.gnome.org/pub/gnome/sources/NetworkManager/0.8/NetworkManager-"$V".tar.bz2"
 
-RDEPEND="dbus dbus-glib eggdbus glib2 glibc libnl nspr nss polkit udev util-linux-ng zlib"
+RDEPEND="eggdbus libnl nss polkit udev"
 BDEPEND="libgcrypt-dev" 
 RECOMMENDED=""
 
@@ -23,16 +23,17 @@ pbs_unpack() {
 }
 
 pbs_patch() {
-	dopatch networkmanager.conf.patch
+	dopatch networkmanager.conf.patch \
+	        ppp-don-t-use-struct-ifpppstatsreq-that-was-removed.patch
 }
 
 pbs_config() {
-	config+=" --disable-more-warnings 
-	          --with-distro=gentoo 
-	          --with-dbus-sys-dir=/etc/dbus-1/system.d 
-	          --with-udev-dir=/etc/udev 
-		  --without-resolvconf 
-		  --with-crypto=nss "
+	config+="--disable-more-warnings 
+	         --with-distro=gentoo 
+	         --with-dbus-sys-dir=/etc/dbus-1/system.d 
+	         --with-udev-dir=/etc/udev 
+		 --without-resolvconf 
+		 --with-crypto=nss"
 	doconfig
 }
 

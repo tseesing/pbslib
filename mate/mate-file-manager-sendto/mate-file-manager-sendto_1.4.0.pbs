@@ -15,7 +15,7 @@ REPO="testing"
 SRC_URI="http://pub.mate-desktop.org/releases/1.4/"$N-$V".tar.xz"
 CHECKSUM="73f61ee1178efb9be2bfbd04e05e5f13252ebba1"
 
-RDEPEND="gtk+ gupnp mate-conf mate-corba mate-file-manager"
+RDEPEND="gupnp mate-file-manager"
 RECOMMENDED=""
 BDEPEND=""
 OPTIONAL=""

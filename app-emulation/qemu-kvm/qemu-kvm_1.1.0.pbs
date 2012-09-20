@@ -14,9 +14,11 @@ PACKAGER="StartOS Developers"
 SRC_URI="http://downloads.sourceforge.net/kvm/"$N-$V".tar.gz"
 CHECKSUM="2e19185b7fdf4c144f4719a88a5bde31"
 
-RDEPEND="alsa-lib attr bluez curl cyrus-sasl directfb glib2 glibc gnutls libcap libgcrypt libgpg-error libidn libjpeg-turbo libpng libsdl libssh2 libtasn1 libX11 libXau libxcb libXdmcp ncurses openldap openssl rtmpdump util-linux-ng zlib"
+RDEPEND="bluez curl libcap libsdl nss util-linux-ng"
 BDEPEND=""
 RECOMMENDED=""
+
+INSTALL="$N.install"
 
 pbs_unpack() {
         dounpack
@@ -40,9 +42,8 @@ pbs_install() {
 	cd "$destdir"
 
 	# Symbolic link for backwards compatibility
-	local app
 	for app in qemu-kvm qemu kvm; do
-		doln /usr/bin/qemu-system-x86_64 usr/bin/"${app}"
+		doln /usr/bin/qemu-system-x86_64 usr/bin/"$app"
 	done
 	
 	# Fix man page

@@ -15,7 +15,7 @@ REPO="testing"
 SRC_URI="http://pub.mate-desktop.org/releases/1.4/"$N-$V".tar.xz"
 CHECKSUM="957e9cc81c37f0640cc8e424b1a9b1dc3f109e8b64d716542554fedf40915e3e"
 
-RDEPEND="gdk-pixbuf"
+RDEPEND="dbus-glib gtk+"
 RECOMMENDED=""
 BDEPEND=""
 OPTIONAL=""

@@ -13,7 +13,7 @@ PACKAGER="StartOS Developers "
 SRC_URI="https://launchpadlibrarian.net/110010713/"$N-$V".tar.gz"
 CHECKSUM="694a59c9a4bf02fe174ec9676a3f374c"
 
-RDEPEND="dm-switch glib2 glibc libffi libX11 libXau libxcb libXdmcp libXext libXi libxkbfile libxklavier libxml2 pam zlib"
+RDEPEND="dm-switch libxklavier pam"
 RECOMMENDED=""
 BDEPEND="itstool"
 OPTIONAL=""

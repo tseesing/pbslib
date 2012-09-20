@@ -8,12 +8,12 @@
 DESCRIPTION="window information utility for X"
 HOMEPAGE="http://xorg.freedesktop.org/"
 GROUP="x11-apps"
-LICENSE="GPL"
+LICENSE="custom"
 PACKAGER="StartOS Developers"
 
 SRC_URI="http://www.x.org/releases/X11R7.6/src/app/"$N-$V".tar.bz2"
 
-RDEPEND="glibc libXau libxcb libXdmcp"
+RDEPEND="libxcb"
 BDEPEND=""
 
 pbs_unpack() {
@@ -30,4 +30,5 @@ pbs_build() {
 
 pbs_install() {
 	domkinstall
+	dodoc COPYING
 }

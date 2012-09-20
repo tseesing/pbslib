@@ -10,9 +10,9 @@ HOMEPAGE="http://cpptest.sourceforge.net/"
 LICENSE="GPL"
 PACKAGER="StartOS Developers"
 
-SRC_URI="http://downloads.sourceforge.net/project/"$N"/"$N"/"$N-$V$R"/"$N-$V$R".tar.gz"
+SRC_URI="http://downloads.sourceforge.net/project/"$N"/"$N"/"$N-$V"/"$N-$V".tar.gz"
 
-RDEPEND=""
+RDEPEND="gcc-lib"
 BDEPEND=""
 
 pbs_unpack() {

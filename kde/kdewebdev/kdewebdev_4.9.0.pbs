@@ -13,7 +13,7 @@ GROUP="kde"
 
 SRC_URI="http://download.kde.org/stable/"$V"/src/"$N-$V".tar.xz"
 
-RDEPEND="acl akonadi attica attr bzip2 dbus expat flac fontconfig freetype gcc-lib giflib glib2 glibc gst-plugins-base gstreamer herqq json-c kdelibs kdepimlibs libcap libdbusmenu-qt libffi libICE libjpeg-turbo libogg libpcre libpng libqzeitgeist libSM libsndfile libvorbis libX11 libXau libxcb libXcursor libXdmcp libXext libXfixes libXft libXi libxml2 libXpm libXrender libXScrnSaver libXtst openssl phonon pulseaudio qca qt-core soprano sqlite strigi tidyhtml udev util-linux-ng xz-utils zlib"
+RDEPEND="kdepimlibs tidyhtml"
 RECOMMENDED=""
 BDEPEND="cmake automoc4"
 OPTIONAL=""

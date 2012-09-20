@@ -13,7 +13,7 @@ PACKAGER="StartOS Developers"
 SRC_URI="http://ftp.acc.umu.se/pub/gnome/sources/"$N"/2.36/"$N-$V".tar.xz"
 CHECKSUM="786b95e1a091375c5ef2997a21c69ff24d7077afeff18197355f54d9dcbcd8c5"
 
-RDEPEND="atk cairo expat fontconfig freetype gcc-lib gdk-pixbuf glib2 glibc gtk+ libcroco libffi libpng libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libXinerama libxml2 libXrandr libXrender pango pixman zlib"
+RDEPEND="gtk+ libcroco"
 BDEPEND=""
 
 INSTALL="$N.install"
@@ -23,8 +23,7 @@ pbs_unpack() {
 }
 
 pbs_config() {
-	config+="--with-svgz  
-		 --with-croco"
+	config+="--with-svgz --with-croco"
 	doconfig
 }
 

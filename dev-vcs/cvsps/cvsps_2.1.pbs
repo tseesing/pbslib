@@ -12,7 +12,7 @@ PACKAGER="StartOS Developers"
 
 SRC_URI="http://www.cobite.com/"$N"/"$N-$V".tar.gz"
 
-RDEPEND="glibc zlib"
+RDEPEND="zlib"
 RECOMMENDED=""
 BDEPEND=""
 CONFLICT=""

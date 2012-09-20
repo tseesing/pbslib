@@ -12,7 +12,7 @@ PACKAGER="StartOS Developers"
 
 SRC_URI="http://downloads.sourceforge.net/"$N"/"$N-$V".tar.xz"
 
-RDEPEND="boost-libs(=1.50.0) bzip2 dbus expat fontconfig freetype gcc-lib geoip glib2 glibc libffi libICE libpng libSM libtorrent-rasterbar libX11 libXau libxcb libXdmcp libXext libXrender openssl qt-core util-linux-ng zlib"
+RDEPEND="libtorrent-rasterbar qt-core"
 BDEPEND=""
 RECOMMENDED=""
 CONFLICT=""

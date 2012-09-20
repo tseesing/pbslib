@@ -12,7 +12,7 @@ PACKAGER="StartOS Developers"
 
 SRC_URI="http://"$N".googlecode.com/files/"$N-$V".tar.bz2"
 
-RDEPEND="dbus dbus-glib farsight2 glib2 glibc gst-plugins-base gstreamer libidn libpurple libxml2 zlib"
+RDEPEND="libpurple"
 RECOMMENDED=""
 BDEPEND=""
 

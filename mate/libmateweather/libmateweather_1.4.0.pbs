@@ -15,7 +15,7 @@ REPO="testing"
 SRC_URI="http://pub.mate-desktop.org/releases/1.4/"$N-$V".tar.xz"
 CHECKSUM="5cdaf572db9aeb4c41506be976e3e745bcac03e878e0cc6abaab2241878c726e"
 
-RDEPEND="mate-conf"
+RDEPEND="gconf libgnome-keyring libproxy mate-conf"
 RECOMMENDED=""
 BDEPEND="pkgconfig intltool gtk-doc"
 OPTIONAL=""

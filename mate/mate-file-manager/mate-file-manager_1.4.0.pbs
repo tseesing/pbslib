@@ -13,7 +13,7 @@ PACKAGER="StartOS Developers"
 SRC_URI="http://pub.mate-desktop.org/releases/1.4/"$N-$V".tar.xz"
 CHECKSUM="cc70fbc72614f068fd8dd2aa8d3d9fe68d3f45da17671e20b1dfe8f70c6a2132"
 
-RDEPEND="gtk+ mate-conf mate-corba mate-desktop"
+RDEPEND="exempi gail libexif mate-desktop"
 RECOMMENDED=""
 BDEPEND=""
 OPTIONAL=""

@@ -7,18 +7,15 @@
 
 DESCRIPTION="Program and text file generation"
 HOMEPAGE="http://www.gnu.org/software/autogen/"
-REPO=""
 LICENSE="GPL"
 PACKAGER="StartOS Developers"
 
 SRC_URI="http://ftp.gnu.org/gnu/autogen/rel5.9.7/autogen-5.9.7.tar.bz2"
 
-RDEPEND=""
+RDEPEND="guile libxml2"
 BDEPEND=""
 RECOMMENDED=""
 CONFLICT=""
-
-NOTES=""
 
 pbs_unpack() {
         dounpack
@@ -34,7 +31,6 @@ pbs_build() {
 }
 
 pbs_install() {
-	#make DESTDIR="$destdir" install
 	domkinstall
 }
 

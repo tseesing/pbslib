@@ -7,11 +7,13 @@
 
 DESCRIPTION="A frontend for libgphoto2"
 HOMEPAGE="http://gphoto.org/proj/gtkam/"
- 
-SRC_URI="http://downloads.sourceforge.net/project/gphoto/"$N"/"$V"/"$N-$V$R".tar.bz2"
+LICENSE="GPL"
+PACKAGER="StartOS Developers"
 
-RDEPEND=""
-BDEPEND=" media-libs/libgphoto2"
+SRC_URI="http://downloads.sourceforge.net/project/gphoto/"$N"/"$V"/"$N-$V".tar.bz2"
+
+RDEPEND="libexif-gtk libgnomeui libgphoto2"
+BDEPEND=""
 
 pbs_unpack() {
         dounpack
@@ -28,3 +30,4 @@ pbs_build() {
 pbs_install() {
 	domkinstall
 }
+

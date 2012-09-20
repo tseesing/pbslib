@@ -13,7 +13,7 @@ PACKAGER="StartOS Developers"
 SRC_URI="http://qmmp.ylsoftware.com/files/"$N-$V".tar.bz2"
 CHECKSUM="0291225447d9688fb6aa85734cda1b6e"
 
-RDEPEND="alsa-lib attr bzip2 curl cyrus-sasl dbus enca expat faad2 ffmpeg(>=0.11.1) flac fontconfig freetype gcc-lib glib2 glibc gnutls jack-audio-connection-kit json-c lame libcap libcddb libcdio libffi libgcrypt libgpg-error libgsm libICE libidn libmad libmms libmodplug libmpcdec libogg libpng libsamplerate libSM libsndfile libssh2 libtasn1 libtheora libva libvorbis libX11 libXau libxcb libXdmcp libXext libXi libXrender libXtst opencore-amr openldap openssl orc pulseaudio qt-core rtmpdump schroedinger speex taglib util-linux-ng wavpack x264 xvidcore zlib"
+RDEPEND="ffmpeg(>=0.11.1) curl enca faad2 libcddb libmad libmms libmodplug libmpcdec libsamplerate qt-core taglib wavpack"
 RECOMMENDED=""
 BDEPEND="cmake"
 OPTIONAL=""

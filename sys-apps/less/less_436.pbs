@@ -12,7 +12,7 @@ PACKAGER="StartOS Developers"
 
 SRC_URI="http://www.greenwoodsoftware.com/less/"$N-$V".tar.gz"
 
-RDEPEND="ncurses glibc"
+RDEPEND="ncurses"
 BDEPEND=""
 
 pbs_unpack() {

@@ -13,7 +13,7 @@ PACKAGER="StartOS Developers"
 SRC_URI="http://abuse.zoy.org/raw-attachment/wiki/download/"$N-$V".tar.gz"
 CHECKSUM="ec678b8dc8d00e0382d8c805c6438489"
 
-RDEPEND="directfb gcc-lib glibc libdrm libICE libsdl libSM libX11 libXau libxcb libXdamage libXdmcp libXext libXfixes libXt libXxf86vm mesa nas sdl-mixer util-linux-ng zlib"
+RDEPEND="sdl-mixer"
 RECOMMENDED=""
 BDEPEND=""
 OPTIONAL=""

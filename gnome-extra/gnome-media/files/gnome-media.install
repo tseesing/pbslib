@@ -1,8 +1,6 @@
 . /usr/lib/ybs/funcs
 
-files="/etc/gconf/schemas/gnome-volume-control.schemas 
-       /etc/gconf/schemas/gnome-sound-recorder.schemas 
-       /etc/gconf/schemas/gnome-audio-profiles.schemas"
+files="/etc/gconf/schemas/gnome-sound-recorder.schemas /etc/gconf/schemas/gnome-audio-profiles.schemas"
 
 post_install() {
 	gnome2_install_schema "$files"

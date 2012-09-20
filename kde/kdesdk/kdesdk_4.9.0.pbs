@@ -13,7 +13,7 @@ GROUP="kde"
 
 SRC_URI="http://download.kde.org/stable/"$V"/src/"$N-$V".tar.xz"
 
-RDEPEND="acl apr apr-util attica attr bzip2 cyrus-sasl dbus e2fsprogs expat file fontconfig freetype gcc-lib gettext glib2 glibc herqq hunspell kde-baseapps kdelibs keyutils krb5 libdbusmenu-qt libffi libICE libpng libproxy libSM libunistring libX11 libXau libxcb libXcursor libXdmcp libXext libXfixes libXft libXi libxml2 libXpm libXrender libxslt libXtst neon openssl qca qt-core soprano sqlite strigi subversion udev util-linux-ng xz-utils zlib"
+RDEPEND="gettext hunspell kde-baseapps subversion"
 RECOMMENDED=""
 BDEPEND="cmake automoc4"
 OPTIONAL=""

@@ -8,12 +8,12 @@
 DESCRIPTION="X.Org xsetroot application"
 HOMEPAGE="http://xorg.freedesktop.org/"
 GROUP="x11-apps"
-LICENSE="GPL"
+LICENSE="custom"
 PACKAGER="StartOS Developers"
  
 SRC_URI="http://www.x.org/releases/X11R7.6/src/app/"$N-$V".tar.bz2"
 
-RDEPEND="glibc libX11 libXau libxcb libXcursor libXdmcp libXfixes libXmu libXrender"
+RDEPEND="libXcursor libXmu"
 BDEPEND=""
 
 pbs_unpack() {
@@ -30,5 +30,6 @@ pbs_build() {
 
 pbs_install() {
 	domkinstall
+	dodoc COPYING
 }
 

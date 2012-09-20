@@ -13,7 +13,7 @@ PACKAGER="StartOS Developers"
 SRC_URI="http://downloads.sourceforge.net/"$N"/"$N-$V".tar.bz2"
 CHECKSUM="1bc046fd915c5debbafc85729464e513"
 
-RDEPEND="bzip2 gcc-lib glibc newt openssl slang zlib"
+RDEPEND="bzip2 gcc-lib newt openssl"
 BDEPEND=""
 RECOMMENDED=""
 CONFLICT=""

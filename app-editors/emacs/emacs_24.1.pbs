@@ -13,7 +13,7 @@ PACKAGER="StartOS Developers"
 SRC_URI="ftp://ftp.gnu.org/gnu/emacs/"$N-$V".tar.bz2"
 CHECKSUM="8ba0932c498bc8fb10d7ddba52227e5b"
 
-RDEPEND="alsa-lib atk bzip2 cairo dbus djvulibre expat fftw fontconfig freetype gcc-lib gconf gdk-pixbuf giflib glib2 glibc gnutls gtk+ imagemagick jasper lcms libcroco libffi libgcrypt libgpg-error libICE libjpeg-turbo libpng librsvg libSM libtasn1 libtiff libtool libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXft libXi libXinerama libxml2 libXpm libXrandr libXrender libXt ncurses orbit pango pixman util-linux-ng xz-utils zlib"
+RDEPEND="alsa-lib gconf giflib imagemagick libXft libXpm ncurses"
 BDEPEND=""
 RECOMMENDED=""
 CONFLICT=""

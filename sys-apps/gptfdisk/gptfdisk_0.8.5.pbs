@@ -13,7 +13,7 @@ PACKAGER="StartOS Developers"
 SRC_URI="http://downloads.sourceforge.net/project/"$N"/"$N"/"$V"/"$N-$V".tar.gz"
 CHECKSUM="15cc691f28212c157e05315662ed6b76ffdcc8de6fc118fa21c81ef5aae84af9"
 
-RDEPEND="gcc-lib glibc icu ncurses popt util-linux-ng"
+RDEPEND="icu popt util-linux-ng"
 RECOMMENDED=""
 BDEPEND=""
 OPTIONAL=""

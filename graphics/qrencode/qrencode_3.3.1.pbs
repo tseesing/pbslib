@@ -13,7 +13,7 @@ PACKAGER="StartOS Developers"
 SRC_URI="http://megaui.net/fukuchi/works/"$N"/"$N-$V".tar.bz2"
 CHECKSUM="14920ba9d0515bddcaebfbd728229c5d"
 
-RDEPEND="glibc libpng zlib"
+RDEPEND="libpng"
 RECOMMENDED=""
 BDEPEND=""
 OPTIONAL=""

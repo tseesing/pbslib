@@ -12,7 +12,7 @@ PACKAGER="StartOS Developers"
 
 SRC_URI="http://downloads.sourceforge.net/project/"$N"/"$N"/"$V"/"$N-$V".tar.gz"
 
-RDEPEND="alsa-lib atk cairo expat fontconfig freetype gcc-lib gdk-pixbuf glib2 glibc gtk+ libICE libpng libSM libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libXpm libXrandr libXrender ncurses pango pixman readline util-linux-ng zlib"
+RDEPEND="alsa-lib gcc-lib libXpm"
 BDEPEND=""
 
 pbs_unpack() {
@@ -20,28 +20,27 @@ pbs_unpack() {
 }
 
 pbs_config() {
-	config+=" --with-x11
-		      --enable-repeat-speedups
-		      --enable-trace-cache
-   		      --enable-fast-function-calls
-		      --enable-disasm 
-		      --enable-logging 
-		      --enable-raw-serial 
-		      --enable-vbe 
-		      --enable-clgd54xx 
-		      --enable-fpu
-		      --enable-alignment-check 
-		      --enable-monitor-mwait 
-		      --enable-gameport 
-		      --enable-iodebug 
-		      --enable-ne2000 
-		      --enable-sb16=linux 
-		      --enable-plugins 
-		      --enable-cdrom 
-		      --enable-pci 
-		      --enable-pcidev 
-		      --enable-pnic "
-		      #--with-nogui "
+	config+="--with-x11
+		 --enable-repeat-speedups
+		 --enable-trace-cache
+   		 --enable-fast-function-calls
+		 --enable-disasm 
+		 --enable-logging 
+		 --enable-raw-serial 
+		 --enable-vbe 
+		 --enable-clgd54xx 
+		 --enable-fpu
+		 --enable-alignment-check 
+		 --enable-monitor-mwait 
+		 --enable-gameport 
+		 --enable-iodebug 
+		 --enable-ne2000 
+		 --enable-sb16=linux 
+		 --enable-plugins 
+		 --enable-cdrom 
+		 --enable-pci 
+		 --enable-pcidev 
+		 --enable-pnic"
 	doconfig
 }
 

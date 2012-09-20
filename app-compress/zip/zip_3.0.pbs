@@ -12,7 +12,7 @@ PACKAGER="StartOS Developers"
 
 SRC_URI="http://downloads.sourceforge.net/infozip/"$N"30.tar.gz"
 
-RDEPEND="bzip2 glibc"
+RDEPEND="bzip2"
 BDEPEND=" "
 
 pbs_unpack() {

@@ -7,19 +7,16 @@
 
 DESCRIPTION="The open source, cross platform, free C++ IDE."
 HOMEPAGE="http://www.codeblocks.org/"
-REPO=""
-LICENSE=""
+LICENSE="custom"
 PACKAGER="StartOS Developers"
 
-SRC_URI="http://download.berlios.de/codeblocks/"$N-$V$R"-src.tar.bz2"
+SRC_URI="http://download.berlios.de/codeblocks/"$N-$V"-src.tar.bz2"
 
-RDEPEND=""
-BDEPEND=" "
+RDEPEND="wxWidgets"
+BDEPEND=""
 RECOMMENDED=""
 
 INSTALL="$N.install"
-
-NOTES=""
 
 pbs_unpack() {
         dounpack

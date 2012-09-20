@@ -13,7 +13,7 @@ PACKAGER="StartOS Developers"
 SRC_URI="http://downloads.sourceforge.net/"$N"/"$N-$V".tar.bz2"
 CHECKSUM="12dfc57e503ed4e18cedcac292cdae7982281978"
 
-RDEPEND="alsa-lib attr bzip2 dbus ffmpeg(>=0.11.1) file flac gcc-lib glibc json-c lame libao libcap libgsm libICE libid3tag libmad libogg libpng libSM libsndfile libtheora libtool libva libvorbis libX11 libXau libxcb libXdmcp libXext libXi libXtst opencore-amr openssl orc pulseaudio rtmpdump schroedinger speex util-linux-ng wavpack x264 xvidcore zlib"
+RDEPEND="file lame libao libgsm libid3tag libmad libpng libtool opencore-amr wavpack"
 BDEPEND=""
 RECOMMENDED=""
 CONFLICT=""

@@ -12,7 +12,7 @@ PACKAGER="StartOS Developers"
 
 SRC_URI="git://github.com/kernelhcy/gtkqq.git"
 
-RDEPEND="atk cairo expat fontconfig freetype gcc-lib gdk-pixbuf glib2 glibc gst-plugins-base gstreamer gtk+ libffi libpng libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libXinerama libxml2 libXrandr libXrender pango pixman sqlite zlib"
+RDEPEND="gst-plugins-base gtk+ sqlite"
 RECOMMENDED=""
 BDEPEND=""
 OPTIONAL=""

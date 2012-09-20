@@ -13,7 +13,7 @@ GROUP="kde"
 
 SRC_URI="http://download.kde.org/stable/"$V"/src/"$N-$V".tar.xz"
 
-RDEPEND="acl akonadi attica attr bluez bzip2 cln consolekit dbus expat flac fontconfig freetype gcc-lib giflib glib2 glibc gmp google-gadgets gpsd gst-plugins-base gstreamer herqq json-c kactivities kdelibs kdepimlibs libcap libdbusmenu-qt libdmtx libdrm libffi libical libICE libjpeg-turbo libogg libpcre libpng libqalculate libqzeitgeist libraw1394 libSM libsndfile libtool libusb-compat libusbx libvorbis libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXft libXi libXinerama libxkbfile libxml2 libXpm libXrandr libXrender libXres libXScrnSaver libXtst libXxf86vm lm_sensors mesa openssl pam pciutils phonon prison pulseaudio qca qimageblitz qrencode qt-core soprano sqlite strigi udev util-linux-ng xz-utils zlib"
+RDEPEND="consolekit giflib google-gadgets gpsd kactivities kdepimlibs libpcre libqalculate libraw1394 libxkbfile libXres lm_sensors pciutils qimageblitz"
 BDEPEND="cmake automoc4"
 RECOMMENDED="dm-switch"
 

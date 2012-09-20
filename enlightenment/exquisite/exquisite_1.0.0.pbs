@@ -13,7 +13,7 @@ PACKAGER="StartOS Developers"
 SRC_URI="http://download.enlightenment.org/releases/"$N-$V".tar.gz"
 CHECKSUM="d017c5c905a71b8fbba5ded5095380e9"
 
-RDEPEND="curl cyrus-sasl ecore edje eet eina embryo evas expat flac fontconfig freetype fribidi glib2 glibc gnutls libgcrypt libgpg-error libidn libjpeg-turbo libogg libsndfile libssh2 libtasn1 libvorbis libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libXinerama libXp libXrandr libXrender libXScrnSaver libXtst lua openldap openssl rtmpdump zlib"
+RDEPEND="edje"
 RECOMMENDED=""
 BDEPEND=""
 OPTIONAL=""

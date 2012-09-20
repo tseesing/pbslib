@@ -7,19 +7,15 @@
 
 DESCRIPTION="a BitTorrent library written in C++ for *nix, with a focus on high performance and good code."
 HOMEPAGE="http://libtorrent.rakshasa.no/"
-REPO=""
 LICENSE="GPL"
-PRIORITY=""
 PACKAGER="StartOS Developers"
 
-SRC_URI="http://libtorrent.rakshasa.no/downloads/"$N-$V$R".tar.gz"
+SRC_URI="http://libtorrent.rakshasa.no/downloads/"$N-$V".tar.gz"
 
-RDEPEND="gcc-lib glibc libsigc++ openssl"
-BDEPEND="   "
+RDEPEND="libsigc++ openssl"
+BDEPEND=""
 RECOMMENDED=""
 CONFLICT=""
-
-NOTES=""
 
 pbs_unpack() {
         dounpack

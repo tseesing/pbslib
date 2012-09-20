@@ -12,7 +12,7 @@ MAINTAINER="StartOS Developers"
 
 SRC_URI="http://downloads.sourceforge.net/aa-project/"$N-$V"rc5.tar.gz"
 
-RDEPEND="glibc libX11 libXau libxcb libXdmcp slang"
+RDEPEND="libX11 slang"
 BDEPEND=""
 
 INSTALL="$N.install"

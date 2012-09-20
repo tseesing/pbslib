@@ -14,7 +14,7 @@ PRIORITY="required"
 SRC_URI="grub2-1.99-ubuntu-11.10.tar.bz2"
 CHECKSUM="59b13c73ff8f2a3f1c6cdb08c2be693e"
 
-RDEPEND="device-mapper freetype fuse glibc udev xz-utils zlib"
+RDEPEND="device-mapper freetype fuse xz-utils"
 BDEPEND="unifont"
 RECOMMENDED="grub2-splashimages"
 CONFLICT="grub"

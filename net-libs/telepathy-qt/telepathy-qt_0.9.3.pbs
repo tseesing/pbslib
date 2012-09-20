@@ -12,7 +12,7 @@ PACKAGER="StartOS Developers"
 
 SRC_URI="http://telepathy.freedesktop.org/releases/"$N"/"$N-$V".tar.gz"
 
-RDEPEND="dbus dbus-glib farstream gcc-lib glib2 glibc gstreamer libffi libxml2 openssl qt-core telepathy-farstream telepathy-glib zlib"
+RDEPEND="qt-core telepathy-farstream"
 RECOMMENDED=""
 BDEPEND=""
 OPTIONAL=""

@@ -12,7 +12,7 @@ PACKAGER="StartOS Developers"
 
 SRC_URI="http://hal.freedesktop.org/releases/"$N-$V".tar.gz"
 
-RDEPEND="dbus dbus-glib device-mapper eggdbus expat glib2 glibc libatasmart lvm2 parted polkit sg3_utils udev util-linux-ng zlib"
+RDEPEND="eggdbus libatasmart lvm2 parted polkit sg3_utils"
 BDEPEND=""
 RECOMMENDED=""
 

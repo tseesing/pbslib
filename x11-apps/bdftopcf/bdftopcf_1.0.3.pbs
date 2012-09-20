@@ -13,7 +13,7 @@ PACKAGER="StartOS Developers"
 
 SRC_URI="http://www.x.org/releases/X11R7.6/src/app/"$N-$V".tar.bz2"
 
-RDEPEND="freetype glibc libfontenc libXfont zlib"
+RDEPEND="libXfont"
 BDEPEND=""
 
 pbs_unpack() {

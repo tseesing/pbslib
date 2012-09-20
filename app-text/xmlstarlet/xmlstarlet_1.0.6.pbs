@@ -7,19 +7,15 @@
 
 DESCRIPTION="A set of tools to transform, query, validate, and edit XML documents"
 HOMEPAGE="http://xmlstar.sourceforge.net/"
-REPO=""
 LICENSE="GPL"
-PRIORITY=""
 PACKAGER="StartOS Developers"
 
-SRC_URI="http://downloads.sourceforge.net/project/xmlstar/"$N"/"$V$R"/"$N-$V$R".tar.gz"
+SRC_URI="http://downloads.sourceforge.net/project/xmlstar/"$N"/"$V"/"$N-$V".tar.gz"
 
-RDEPEND=""
+RDEPEND="libgcrypt zlib"
 BDEPEND=" "
 RECOMMENDED=""
 CONFLICT=""
-
-NOTES=""
 
 pbs_unpack() {
         dounpack

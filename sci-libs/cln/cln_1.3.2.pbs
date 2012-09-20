@@ -13,7 +13,7 @@ PACKAGER="StartOS Developers"
 SRC_URI="http://www.ginac.de/CLN/"$N-$V".tar.bz2"
 CHECKSUM="d897cce94d9c34d106575ed4ec865d71"
 
-RDEPEND="gcc-lib glibc gmp"
+RDEPEND="gmp"
 RECOMMENDED=""
 CONFLICT=""
 

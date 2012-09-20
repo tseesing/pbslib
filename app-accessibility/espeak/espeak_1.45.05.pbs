@@ -12,7 +12,7 @@ PACKAGER="StartOS Developers"
 
 SRC_URI="http://nchc.dl.sourceforge.net/project/espeak/espeak/espeak-1.45/espeak-1.45.05-source.zip"
 
-RDEPEND="alsa-lib gcc-lib glibc jack-audio-connection-kit portaudio"
+RDEPEND="gcc-lib portaudio"
 BDEPEND=""
 RECOMMENDED=""
 CONFLICT=""

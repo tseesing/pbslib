@@ -7,13 +7,12 @@
 
 DESCRIPTION="A tabbed, vte- (GTK+) based terminal emulator providing advanced features such as multiple tabs with a small footprint."
 HOMEPAGE="http://sourceforge.net/projects/roxterm/"
-REPO=""
 LICENSE="GPL"
 PACKAGER="StartOS Developers"
 
-SRC_URI="http://nchc.dl.sourceforge.net/project/"$N"/"$N"/"$V$R"/"$N-$V$R".tar.gz"
+SRC_URI="http://nchc.dl.sourceforge.net/project/"$N"/"$N"/"$V"/"$N-$V".tar.gz"
 
-RDEPEND="atk cairo dbus dbus-glib expat fontconfig freetype gcc-lib glib2 gdk-pixbuf glibc gtk+ libICE libpng libSM libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libXrandr libXrender ncurses pango pixman util-linux-ng vte zlib"
+RDEPEND="dbus-glib vte"
 BDEPEND=""
 RECOMMENDED=""
 CONFLICT=""

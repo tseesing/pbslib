@@ -12,7 +12,7 @@ PACKAGER="StartOS Developers"
 
 SRC_URI="http://www.libraw.org/data/LibRaw-"$V".tar.gz"
 
-RDEPEND="gcc-lib glibc lcms"
+RDEPEND="gcc-lib lcms"
 BDEPEND=""
 RECOMMENDED=""
 

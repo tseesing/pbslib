@@ -13,7 +13,7 @@ PACKAGER="StartOS Developers"
 SRC_URI="https://code.launchpad.net/"$N"/trunk/"$V"/+download/"$N-$V"dev.tar.gz"
 CHECKSUM="5842253b89a5943031b5a02bbd8fd4fb"
 
-RDEPEND="atk cairo expat fontconfig freetype gcc-lib gdk-pixbuf glib2 glibc gtk+ libffi libgtop libICE libpng libSM libwnck libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libXinerama libXpm libXrandr libXrender libXres pango pixman startup-notification util-linux-ng zlib"
+RDEPEND="libgtop libwnck libXpm"
 BDEPEND=""
 RECOMMENDED=""
 CONFLICT=""

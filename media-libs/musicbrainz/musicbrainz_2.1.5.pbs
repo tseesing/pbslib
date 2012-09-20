@@ -13,7 +13,7 @@ PACKAGER="StartOS Developers"
 SRC_URI="ftp://ftp.musicbrainz.org/pub/"$N"/libmusicbrainz-"$V".tar.gz"
 CHECKSUM="d5e19bb77edd6ea798ce206bd05ccc5f"
 
-RDEPEND="expat gcc-lib glibc"
+RDEPEND="expat gcc-lib"
 RECOMMENDED=""
 BDEPEND=""
 OPTIONAL=""

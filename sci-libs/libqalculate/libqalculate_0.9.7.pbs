@@ -13,7 +13,7 @@ PACKAGER="StartOS Developers<>"
 SRC_URI="http://downloads.sourceforge.net/sourceforge/qalculate/"$N-$V".tar.gz"
 CHECKSUM="c15f7f3a97995decf62cc964956fc1e374ecd78c"
 
-RDEPEND="cln gcc-lib glib2 glibc gmp libxml2 ncurses readline zlib"
+RDEPEND="cln glib2 libxml2 readline"
 BDEPEND=""
 
 pbs_unpack() {
