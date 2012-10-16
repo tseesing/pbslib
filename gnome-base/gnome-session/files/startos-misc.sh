@@ -11,7 +11,7 @@ fi
 #
 if [ -f $HOME/.config/user-dirs.dirs ] && [ ! -f $HOME/.flag ]; then
 	. $HOME/.config/user-dirs.dirs
-	for i in chromium.desktop softwarecenter.desktop; do
+	for i in chromium.desktop softwarecenter.desktop startos-tutorials.desktop; do
 		cp /usr/share/applications/${i}	$XDG_DESKTOP_DIR
 	done
 	touch $HOME/.flag

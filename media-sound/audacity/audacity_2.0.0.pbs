@@ -25,7 +25,7 @@ pbs_unpack() {
 }
 
 pbs_config() {
-	config+="--with-libsamplerate"
+	config+=""
 	doconfig
 }
 

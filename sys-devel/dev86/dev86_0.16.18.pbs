@@ -22,10 +22,11 @@ pbs_unpack() {
         dounpack
 }
 
-pbs_config() {
-	dopatch dev86-pic.patch
-	dopatch dev86-0.16.17-fortify.patch
+pbs_patch() {
+	dopatch dev86-pic.patch dev86-0.16.17-fortify.patch
+}
 
+pbs_config() {
 	if [ "${ARCH}" = "x86_64" ]; then
 		# x86_64 fix
 		sed -i.orig -e 's,alt-libs elksemu,alt-libs,' \

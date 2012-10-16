@@ -13,8 +13,8 @@ PACKAGER="StartOS Developers"
 SRC_URI="http://ftp.acc.umu.se/pub/GNOME/sources/"$N"/2.30/"$N-$V".tar.bz2"
 
 RDEPEND="evolution-data-server libcanberra libnotify libunique networkmanager telepathy-farsight webkitgtk"
-BDEPEND="nautilus-sendto-dev notification-daemon-dev telepathy-mission-control-dev"
-RECOMMENDED=" telepathy-gabble telepathy-salut telepathy-haze telepathy-butterfly nautilus-sendto notification-daemon telepathy-mission-control"
+BDEPEND=""
+RECOMMENDED="telepathy-gabble telepathy-salut telepathy-haze telepathy-butterfly nautilus-sendto notification-daemon telepathy-mission-control"
 
 INSTALL="$N.install"
 

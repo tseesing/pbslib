@@ -7,9 +7,7 @@
 
 DESCRIPTION="ipod-sharp provides high-level feature support for Apple's iPod and binds libipoddevice."
 HOMEPAGE="http://banshee-project.org/Ipod-sharp"
-REPO=""
 LICENSE="GPL"
-PRIORITY=""
 PACKAGER="StartOS Developers"
 
 SRC_URI="git://github.com/mono/ipod-sharp.git"
@@ -18,8 +16,6 @@ RDEPEND=""
 BDEPEND="podsleuth"
 RECOMMENDED=""
 CONFLICT=""
-
-NOTES=""
 
 pbs_unpack() {
         dounpack
@@ -31,9 +27,10 @@ pbs_config() {
 }
 
 pbs_build() {
-	make
+	domake
 }
 
 pbs_install() {
 	domkinstall
 }
+

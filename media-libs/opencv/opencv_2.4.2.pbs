@@ -13,7 +13,7 @@ PACKAGER="StartOS Developers"
 SRC_URI="http://sourceforge.net/projects/opencvlibrary/files/opencv-unix/"$V"/OpenCV-"$V".tar.bz2"
 CHECKSUM="059ef86fc1724d69b75832a0d2929ff5"
 
-RDEPEND="ffmpeg(>=0.11.1) gst-plugins-base gtk+ openexr python"
+RDEPEND="ffmpeg(>=0.11.1) gst-plugins-base gtk+ libdc1394 openexr python"
 RECOMMENDED=""
 BDEPEND="cmake"
 OPTIONAL=""

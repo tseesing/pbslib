@@ -56,6 +56,6 @@ pbs_install() {
 	docp_rename $filesdir/init-bottom_udev  usr/share/initramfs-tools/scripts/init-bottom/udev
 	
 	# 
-	docp $filesdir/{64-device-mapper.rules,78-graphics-card.rules} lib/udev/rules.d
+	docp "$filesdir"/{64-device-mapper.rules,78-graphics-card.rules} lib/udev/rules.d
 }
 

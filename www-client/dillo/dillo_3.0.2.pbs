@@ -22,9 +22,7 @@ pbs_unpack() {
 }
 
 pbs_config() {
-	config+="--enable-cookies
-	         --enable-dlgui
-		 --enable-ssl"
+	config+="--enable-cookies --enable-ssl"
 	doconfig
 }
 
@@ -35,5 +33,4 @@ pbs_build() {
 pbs_install() {
 	domkinstall
 }
-
 

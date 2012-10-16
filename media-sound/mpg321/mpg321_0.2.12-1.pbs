@@ -10,9 +10,9 @@ HOMEPAGE="http://mpg321.sourceforge.net/"
 LICENSE="GPL"
 PACKAGER="StartOS Developers"
 
-SRC_URI="http://downloads.sourceforge.net/project/"$N"/"$N"/"$V"/"$N-$V".tar.gz"
+SRC_URI="http://sourceforge.net/projects/"$N"/files/"$N"/0.2.12/""$N-$V$R.tar.gz"
 
-RDEPEND="libao libid3tag libmad mpg123"
+RDEPEND="libao libid3tag libmad"
 BDEPEND=""
 RECOMMENDED=""
 

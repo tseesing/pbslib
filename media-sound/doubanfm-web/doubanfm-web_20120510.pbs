@@ -6,11 +6,11 @@
 #
 
 DESCRIPTION="douban fm"
-HOMEPAGE="www.ylmf.net"
+HOMEPAGE="http://douban.fm/"
 REPO="stable"
 LICENSE="GPL"
-YARCH="any"
 PACKAGER="StartOS Developers"
+YARCH="any"
 
 RDEPEND="xdg-utils"
 BDEPEND=""

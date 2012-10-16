@@ -7,13 +7,12 @@
 
 DESCRIPTION="Copies data from one file or block device to another with read-error recovery"
 HOMEPAGE="http://www.gnu.org/software/ddrescue/ddrescue.html"
-REPO=""
 LICENSE="GPL"
 PACKAGER="StartOS Developers"
 
-SRC_URI="http://mirror.bjtu.edu.cn/gnu/ddrescue/ddrescue-1.14.tar.gz"
+SRC_URI="http://mirror.bjtu.edu.cn/gnu/"$N"/"$N-$V".tar.gz"
 
-RDEPEND="gcc-lib glibc"
+RDEPEND="gcc-lib"
 BDEPEND=""
 RECOMMENDED=""
 CONFLICT=""

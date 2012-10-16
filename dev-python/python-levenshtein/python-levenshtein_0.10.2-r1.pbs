@@ -13,7 +13,7 @@ PACKAGER="StartOS Developers"
 SRC_URI="http://pypi.python.org/packages/source/p/python-Levenshtein/python-Levenshtein-"$V".tar.gz"
 CHECKSUM="c8af7296dc640abdf511614ee677bbb8"
 
-RDEPEND="python glibc"
+RDEPEND="python"
 RECOMMENDED=""
 BDEPEND=""
 OPTIONAL=""

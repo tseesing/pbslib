@@ -6,15 +6,16 @@
 #
 
 DESCRIPTION="meitu web"
-HOMEPAGE="www.ylmf.net"
+HOMEPAGE="http://xiuxiu.web.meitu.com/main.html"
 REPO="stable"
-LICENSE="GPL-2"
-YARCH="any"
+LICENSE="GPL"
 PACKAGER="StartOS Developers"
+YARCH="any"
 
-RDEPEND=" xdg-utils"
+RDEPEND="xdg-utils"
 BDEPEND=""
 
 pbs_install() {
 	dodesktop "$N.desktop" "$N.png"
 }
+

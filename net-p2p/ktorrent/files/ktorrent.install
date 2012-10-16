@@ -1,5 +1,5 @@
 
-oost_install() {
+post_install() {
 	xdg-icon-resource forceupdate --theme hicolor &> /dev/null
 	update-mime-database /usr/share/mime &> /dev/null
 	update-desktop-database -q
@@ -16,3 +16,4 @@ post_remove() {
 post_downgrade() {
 	post_install
 }
+

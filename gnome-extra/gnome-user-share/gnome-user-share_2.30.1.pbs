@@ -12,7 +12,7 @@ PACKAGER="StartOS Developers"
 
 SRC_URI="http://ftp.gnome.org/pub/gnome/desktop/2.32/2.32.1/sources/"$N-$V".tar.bz2"
 
-RDEPEND="atk cairo dbus dbus-glib expat fontconfig freetype gcc-lib gconf gdk-pixbuf glib2 glibc gnome-bluetooth gtk+ libcanberra libICE libnotify libogg libpng libSM libtool libunique libvorbis libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libXrandr libXrender nautilus orbit pango pixman tdb util-linux-ng zlib"
+RDEPEND="gnome-bluetooth libcanberra nautilus"
 BDEPEND="gnome-desktop-dev"   
 RECOMMENDED=""
 
@@ -22,10 +22,11 @@ pbs_unpack() {
         dounpack
 }
 
+pbs_patch() {
+	sed -i 's/folder-remote/folder-publicshare/g' data/gnome-user-share-properties.desktop.in data/gnome-user-share.desktop.in.in
+}
+
 pbs_config() {
-	sed -i 's/folder-remote/folder-publicshare/g' \
-	        data/gnome-user-share-properties.desktop.in \
-		data/gnome-user-share.desktop.in.in
 	config+="--disable-schemas-install"
 	doconfig
 }

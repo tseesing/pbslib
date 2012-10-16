@@ -20,10 +20,8 @@ pbs_unpack() {
         dounpack
 }
 
-pbs_config() {
-	if [[ $ARCH = x86_64 ]]; then
-		dopatch bin86-0.16.17-x86_64-1.patch
-	fi
+pbs_patch() {
+	[ "$ARCH" = x86_64 ] && dopatch bin86-0.16.17-x86_64-1.patch ||true
 }
 
 pbs_build() {
@@ -33,7 +31,5 @@ pbs_build() {
 pbs_install() {
 	install -d -m755 "$destdir"/usr/bin "$destdir"/usr/share/man/man1
 	domkinstall PREFIX="$destdir"/usr "MANDIR=$destdir/usr/share/man/man1"
-
-	dodoc ChangeLog README
 }
 

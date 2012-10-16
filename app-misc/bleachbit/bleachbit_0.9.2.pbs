@@ -8,8 +8,8 @@
 DESCRIPTION="Deletes unneeded files to free disk space and maintain privacy"
 HOMEPAGE="http://bleachbit.sourceforge.net/"
 LICENSE="GPL"
-YARCH="any"
 PACKAGER="StartOS Developers"
+YARCH="any"
 
 SRC_URI="http://downloads.sourceforge.net/"$N"/"$N-$V".tar.bz2"
 CHECKSUM="3532268df1c069de46450f9967ba0efc"

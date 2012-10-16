@@ -7,7 +7,7 @@
 
 DESCRIPTION="Anthy -- free and secure Japanese input system"
 HOMEPAGE="http://sourceforge.jp/projects/anthy/"
-LICENSE="GPL LGPL"
+LICENSE="GPL,LGPL"
 PACKAGER="StartOS Developers"
 
 SRC_URI="http://jaist.dl.sourceforge.jp/"$N"/37536/"$N-$V"h.tar.gz"

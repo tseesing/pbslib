@@ -12,7 +12,7 @@ PACKAGER="StartOS Developers"
 
 SRC_URI="http://releases.compiz.org/components/"$N"/"$N-$V".tar.bz2"
 
-RDEPEND="gcc-lib glib2 glibc libcompizconfig libICE libSM libX11 libXau libxcb libXcomposite libXdamage libXdmcp libXext libXfixes libXinerama libxml2 libXrandr libXrender libxslt protobuf startup-notification util-linux-ng zlib"
+RDEPEND="glib2 libcompizconfig libSM libXcomposite libXdamage libXinerama libXrandr libxslt startup-notification"
 BDEPEND=""
 RECOMMENDED=""
 

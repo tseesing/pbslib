@@ -13,7 +13,7 @@ PACKAGER="StartOS Developers"
 SRC_URI="http://www.pyside.org/files/"$N"-qt4.8+"$V".tar.bz2"
 CHECKSUM="59c8653734b020b0128b82adc98ee704"
 
-RDEPEND="alsa-lib attr bzip2 dbus expat flac fontconfig freetype gcc-lib glib2 glibc gst-plugins-base gstreamer json-c libcap libdrm libffi libICE libogg libpng libqzeitgeist libSM libsndfile libvorbis libX11 libXau libxcb libXdamage libXdmcp libXext libXfixes libXi libxml2 libXrender libXtst libXxf86vm mesa openssl phonon pulseaudio python qt-core shiboken sqlite util-linux-ng zlib"
+RDEPEND="mesa phonon shiboken"
 RECOMMENDED=""
 BDEPEND="cmake"
 OPTIONAL=""

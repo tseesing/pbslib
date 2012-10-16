@@ -21,8 +21,11 @@ pbs_unpack() {
         dounpack
 }
 
-pbs_config() {
+pbs_patch() {
 	dopatch 01_openchange_compat 02_recurring_events
+}
+
+pbs_config() {
 	config+=""
 	doconfig
 }

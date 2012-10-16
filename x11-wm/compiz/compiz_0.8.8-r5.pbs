@@ -28,8 +28,8 @@ pbs_patch() {
 
 pbs_config() {
 	config+="--disable-schemas-install 
-	         --enable-kde4 
-	         --enable-kconfig 
+	         --disable-kde4 
+	         --disable-kconfig 
 	         --enable-gnome 
 	         --enable-gtk 
 	         --enable-metacity 

@@ -10,9 +10,11 @@ HOMEPAGE="https://github.com/kernelhcy/DeaDBeeF-MPRIS-plugin"
 LICENSE="GPL"
 PACKAGER="StartOS Developers"
 
+REPO="testing"
+
 SRC_URI="git://github.com/kernelhcy/DeaDBeeF-MPRIS-plugin.git"
 
-RDEPEND="deadbeef glib2""
+RDEPEND="deadbeef glib2"
 RECOMMENDED=""
 BDEPEND=""
 OPTIONAL=""

@@ -20,13 +20,15 @@ BDEPEND=""
 OPTIONAL=""
 CONFLICT=""
 
+INSTALL="$N.install"
+
 pbs_unpack() {
         dounpack
 }
 
 pbs_install() {
 	docp Faenza Faenza-Dark Faenza-Darker Faenza-Darkest "$destdir"/usr/share/icons
-	dodoc COPYING AUTHORS README ChangeLog
+	dodoc COPYING AUTHORS README 
 }
 
 

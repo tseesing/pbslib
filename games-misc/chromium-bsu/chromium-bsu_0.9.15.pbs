@@ -13,7 +13,7 @@ PACKAGER="StartOS Developers"
 SRC_URI="http://downloads.sourceforge.net/project/"$N"/Chromium%20B.S.U.%20source%20code/"$V"/"$N-$V".tar.gz"
 
 RDEPEND="fontconfig freealut ftgl glpng sdl-image"
-BDEPEND=" "
+BDEPEND=""
 RECOMMENDED=""
 CONFLICT=""
 

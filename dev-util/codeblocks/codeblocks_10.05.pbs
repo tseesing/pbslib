@@ -7,7 +7,7 @@
 
 DESCRIPTION="The open source, cross platform, free C++ IDE."
 HOMEPAGE="http://www.codeblocks.org/"
-LICENSE="custom"
+LICENSE="GPLv3"
 PACKAGER="StartOS Developers"
 
 SRC_URI="http://download.berlios.de/codeblocks/"$N-$V"-src.tar.bz2"
@@ -23,6 +23,8 @@ pbs_unpack() {
 }
 
 pbs_config() {
+	config+="--with-contrib-plugins=all"
+	./bootstrap
 	doconfig
 }
 

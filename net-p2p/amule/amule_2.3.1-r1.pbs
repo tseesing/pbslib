@@ -13,7 +13,7 @@ PACKAGER="StartOS Developers"
 SRC_URI="http://sourceforge.net/projects/amule/files/aMule/"$V"/aMule-"$V".tar.xz"
 CHECKSUM="5f5707ad2073d37100409870aa5d3f93"
 
-RDEPEND="binutils crypto++ gd geoip libupnp readline wxWidgets"
+RDEPEND="crypto++ gd geoip libupnp readline wxWidgets"
 BDEPEND=""
 
 INSTALL="$N.install"

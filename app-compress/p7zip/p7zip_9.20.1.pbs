@@ -1,0 +1,40 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="Port of 7-Zip archiver for Unix"
+HOMEPAGE="http://p7zip.sourceforge.net/"
+LICENSE="LGPL-2.1"
+PACKAGER="StartOS Developers"
+
+SRC_URI="http://downloads.sourceforge.net/project/"$N"/"$N"/"$V"/"${N}"_"$V"_src_all.tar.bz2"
+
+RDEPEND="gcc-lib"
+BDEPEND="nasm"
+RECOMMENDED=""
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_config() { 	
+	if [ "$ARCH" = x86_64 ]; then
+		cp makefile.linux_amd64_asm makefile.machine
+	else
+		cp makefile.linux_x86_asm_gcc_4.X makefile.machine
+	fi
+}
+
+pbs_build() {
+	# all4 include UI
+	domake all3
+}
+
+pbs_install() {
+	make install DEST_DIR="$destdir" DEST_HOME="/usr" DEST_MAN="/usr/share/man"
+	doln /usr/lib/p7zip/7zCon.sfx "$destdir"/usr/lib/p7zip/7z.sfx
+}
+

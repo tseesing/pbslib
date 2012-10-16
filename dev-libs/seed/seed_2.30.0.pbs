@@ -10,7 +10,7 @@ HOMEPAGE="http://live.gnome.org/Seed"
 LICENSE="LGPL"
 PACKAGER="StartOS Developers"
 
-SRC_URI="http://ftp.gnome.org/pub/gnome/sources/seed/2.30/"$N-$V$R".tar.bz2"
+SRC_URI="http://ftp.gnome.org/pub/gnome/sources/seed/2.30/"$N-$V".tar.bz2"
 
 RDEPEND="gobject-introspection mpfr webkitgtk"
 BDEPEND="gnome-js-common"

@@ -6,10 +6,10 @@
 #
 
 DESCRIPTION="Provides /etc/mime.types file"
-HOMEPAGE="www.ylmf.net"
+HOMEPAGE="http://www.startos.org"
 LICENSE="GPL"
-YARCH="any"
 PACKAGER="StartOS Developers"
+YARCH="any"
  
 SRC_URI=""
 
@@ -18,6 +18,6 @@ BDEPEND=""
 RECOMMENDED=""
 
 pbs_install() {
-	docp $filesdir/mime.types  "$destdir"/etc
+	docp "$filesdir"/mime.types  "$destdir"/etc
 }
 

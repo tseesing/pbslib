@@ -7,15 +7,13 @@
 
 DESCRIPTION="A set of tools for DVD+RW/-RW drives"
 HOMEPAGE="http://fy.chalmers.se/~appro/linux/DVD+RW/"
-REPO=""
 LICENSE="GPL"
-PRIORITY=""
 PACKAGER="StartOS Developers"
 
-SRC_URI="http://fy.chalmers.se/~appro/linux/DVD+RW/tools/"$N-$V$R".tar.gz"
+SRC_URI="http://fy.chalmers.se/~appro/linux/DVD+RW/tools/"$N-$V".tar.gz"
 
-RDEPEND=""
-BDEPEND=" m4"
+RDEPEND="glibc"
+BDEPEND="m4"
 RECOMMENDED=""
 CONFLICT=""
 
@@ -57,3 +55,4 @@ pbs_build() {
 pbs_install() {
 	domkinstall SHELL=/bin/bash prefix="${destdir}/usr" install
 }
+

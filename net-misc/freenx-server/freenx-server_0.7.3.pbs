@@ -34,7 +34,7 @@ pbs_build() {
 
 pbs_install() {
 	domkinstall
-	dodoc AUTHORS COPYING 
 }
+
 
 

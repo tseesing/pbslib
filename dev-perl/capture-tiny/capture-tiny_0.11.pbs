@@ -14,7 +14,7 @@ YARCH="any"
 SRC_URI="http://mirrors.xmu.edu.cn/CPAN/authors/id/D/DA/DAGOLDEN/Capture-Tiny-"$V".tar.gz"
 
 RDEPEND="perl"
-BDEPEND=" "
+BDEPEND=""
 RECOMMENDED=""
 CONFLICT=""
 

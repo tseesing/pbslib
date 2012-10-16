@@ -42,7 +42,7 @@ pbs_build() {
 	cd -
 
 	# Build Festival itself
-	patch -Np1 -i $filesdir/festconfig.patch
+	patch -Np1 -i "$filesdir"/festconfig.patch
 	
 	# Avoid make failure on making scripts and docs
 	sed -i "s#examples bin doc#examples#" Makefile
@@ -96,7 +96,7 @@ pbs_install() {
 														#create voices directory
 	install -dm755 "$destdir"/usr/share/festival/voices
 														#licenses
-	doc COPYING ../speech_tools/README 
+	dodoc COPYING ../speech_tools/README 
 
 	#################################################################
 	# Ok now some general cleanups

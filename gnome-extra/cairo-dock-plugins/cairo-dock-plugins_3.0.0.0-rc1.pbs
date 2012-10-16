@@ -13,7 +13,7 @@ PACKAGER="StartOS Developers"
 SRC_URI="https://launchpadlibrarian.net/97723566/"$N"-3.0.0.0rc1.tar.gz"
 CHECKSUM="f74d656e81790dea773189d55ab382a3"
 
-RDEPEND="gnome-menus libdbusmenu libetpan libexif libical librsvg libxklavier libXxf86vm lm_sensors pulseaudio upower vte webkitgtk"
+RDEPEND="gnome-menus libdbusmenu libetpan libexif libical libindicator librsvg libxklavier libXxf86vm lm_sensors pulseaudio upower vte webkitgtk"
 RECOMMENDED=""
 BDEPEND="cmake"
 OPTIONAL=""

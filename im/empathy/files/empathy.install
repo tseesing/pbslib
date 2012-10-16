@@ -6,27 +6,15 @@ post_install() {
 	gnome2_install_schema $files
 	gnome2_install_defaut_gconf "bool" "/apps/empathy/notifications/notifications_focus" "True"
 	gnome2_install_defaut_gconf "bool" "/apps/empathy/ui/show_offline" "True"
-	gnome2_rarian_sk_update
 	gnome2_desktop_database_update
-	gnome2_icon_cache_update "hicolor"
-	gnome2_gconfd_reload
+	gnome2_icon_cache_update
 }
 
 pre_remove() {
-        gnome2_uninstall_schema  $files
+        gnome2_uninstall_schema $files
 }
 
 post_upgrade() {
-	gnome2_rarian_sk_update
-        gnome2_desktop_database_update
-        gnome2_icon_cache_update
-        gnome2_gconfd_reload
-}
-
-post_downgrade() {
-        gnome2_rarian_sk_update
-        gnome2_desktop_database_update
-        gnome2_icon_cache_update
-        gnome2_gconfd_reload
+	post_install
 }
 

@@ -5,7 +5,7 @@
 # Distributed under the terms of the GNU General Public License v2
 #
 
-DESCRIPTION=" WLAN tools for breaking 802.11 WEP/WPA keys"
+DESCRIPTION="WLAN tools for breaking 802.11 WEP/WPA keys"
 HOMEPAGE="http://www.aircrack-ng.org/"
 LICENSE="GPL"
 PACKAGER="StartOS Developers"
@@ -23,8 +23,7 @@ pbs_unpack() {
 }
 
 pbs_build() {
-	domake SQLITE=true \
-	       unstable=true 
+	domake SQLITE=true unstable=true 
 }
 
 pbs_install() {
@@ -34,5 +33,4 @@ pbs_install() {
 		    mandir=/usr/share/man/man1 \
 		    sbindir=/usr/sbin
 }
-
 

@@ -12,7 +12,7 @@ PACKAGER="StartOS Developers"
 
 SRC_URI="http://ftp.dyne.org/frei0r/releases/"$N-$V".tar.gz"
 
-RDEPEND="gcc-lib"
+RDEPEND="gavl gcc-lib"
 RECOMMENDED=""
 BDEPEND=""
 CONFLICT=""

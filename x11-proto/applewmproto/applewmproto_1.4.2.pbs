@@ -7,14 +7,15 @@
 
 DESCRIPTION="X.org AppleWMProto protocol headers."
 HOMEPAGE="http://xorg.freedesktop.org/"
-GROUP="x11-proto"
 LICENSE="GPL"
 PACKAGER="StartOS Developers"
 
-SRC_URI="http://www.x.org/releases/X11R7.7/src/proto/"$N-$V$R".tar.bz2"
+GROUP="x11-proto"
+SRC_URI="http://www.x.org/releases/X11R7.7/src/proto/"$N-$V".tar.bz2"
 
 RDEPEND=""
 BDEPEND=""
+
 OPTIONS="nodev"
 
 pbs_unpack() {

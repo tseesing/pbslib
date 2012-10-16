@@ -1,0 +1,45 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="Back up and restore used-blocks of a partition"
+HOMEPAGE="http://partclone.org"
+LICENSE="GPL"
+PACKAGER="StartOS Developers"
+
+SRC_URI="https://downloads.sourceforge.net/project/"$N"/stable/"$V"/"$N"_"$V".tar.gz"
+CHECKSUM="c873588f26185d6ce8db7b4c5470aa00"
+
+RDEPEND="e2fsprogs ncurses ntfs-3g progsreiserfs"
+RECOMMENDED=""
+BDEPEND=""
+OPTIONAL=""
+CONFLICT=""
+REPLACE=""
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_config() {
+	config+="--enable-extfs 
+	         --enable-reiserfs 
+		 --enable-fat 
+		 --enable-hfsp 
+		 --enable-btrfs
+		 --enable-ncursesw
+		 --enable-ntfs"
+	doconfig
+}
+
+pbs_build() {
+	domake
+}
+
+pbs_install() {
+	domkinstall
+}
+

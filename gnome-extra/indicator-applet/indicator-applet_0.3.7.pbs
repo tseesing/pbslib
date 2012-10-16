@@ -7,14 +7,13 @@
 
 DESCRIPTION="A small applet to display information from various applications consistently in the panel"
 HOMEPAGE="http://launchpad.net/indicator-applet/"
-REPO=""
-LICENSE=""
+LICENSE="GPL"
 PACKAGER="StartOS Developers"
 
 SRC_URI="https://launchpad.net/ubuntu/+archive/primary/+files/"${N}_$V$R".orig.tar.gz"
 
 RDEPEND="libindicator"
-BDEPEND=" "
+BDEPEND=""
 RECOMMENDED=""
 
 NOTES=""

@@ -7,9 +7,9 @@
 
 DESCRIPTION="X.Org DRI2 protocol headers"
 HOMEPAGE="http://xorg.freedesktop.org/"
-GROUP="x11-proto"
 LICENSE="GPL"
 PACKAGER="StartOS Developers"
+GROUP="x11-proto"
 
 SRC_URI="http://www.x.org/releases/X11R7.7/src/proto/"$N-$V".tar.bz2"
 CHECKSUM="ba65fc53376fd6e6b41bf6ef1e2ea1ba4b12ca96"

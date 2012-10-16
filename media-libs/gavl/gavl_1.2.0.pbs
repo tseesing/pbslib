@@ -28,8 +28,7 @@ pbs_patch() {
 }
 
 pbs_config() {
-	config+="--without-doxygen
-		--with-cpuflags=none"
+	config+="--without-doxygen --with-cpuflags=none"
 	doconfig
 }
 

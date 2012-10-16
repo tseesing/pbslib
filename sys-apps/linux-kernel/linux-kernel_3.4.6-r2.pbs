@@ -171,6 +171,13 @@ linux-kernel-headers_install() {
 		docp "${i}" 		       "$KDIR"/"$(dirname ${i})"
 	done
 
+	# For klibc
+	docp arch/x86/include/generated/asm/unistd_32.h "$KDIR"/arch/x86/include/asm/ 
+	docp arch/x86/syscalls                          "$KDIR"/arch/x86/
+	docp arch/x86/tools                             "$KDIR"/arch/x86/
+	docp tools/include/tools                         "$KDIR"/tools/include/
+
+	#
 	chown -R root.root "$KDIR"
 	
 	cd "$KDIR"
@@ -182,7 +189,10 @@ linux-kernel-headers_install() {
 	rm -rf "$KDIR"/arch/{alpha,arm,arm26,avr32,blackfin,cris,frv,h8300,ia64,m32r,m68k,m68knommu,mips,microblaze,mn10300,parisc,powerpc,ppc,s390,sh,sh64,sparc,sparc64,um,v850,xtensa}
 
 	# Clean up
-	find . -name "*.install" -exec rm {} \;
-	find . -name "*.install.cmd" -exec rm {} \;
+	find . -name ".*install" -exec rm {} \;
+	find . -name ".*cmd" -exec rm {} \;
+	find . -name "*.awk" -exec rm {} \;
+	find . -name ".gitignore" -exec rm {} \;
 }
+
 

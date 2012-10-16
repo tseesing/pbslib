@@ -6,7 +6,6 @@
 #
 
 DESCRIPTION="Alipay Security Control"
-COMMENTS=""
 HOMEPAGE="www.alipay.com"
 LICENSE="custom"
 PACKAGER="StartOS Developers"
@@ -21,11 +20,6 @@ CONFLICT=""
 INSTALL="$N.install"
 
 OPTIONS="nostrip"
-
-NOTES="Author: Longda Feng
-       Date:   2010/07/29
-       Support: If you have any question, please feel free to rais it to 
-       zhongyan.feng@alipay.com"
 
 pbs_unpack() {
 	rm "$N-$V$R" -rf 2>/dev/null

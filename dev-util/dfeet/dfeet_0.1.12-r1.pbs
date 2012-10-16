@@ -12,7 +12,7 @@ PACKAGER="StartOS Developers"
 
 SRC_URI="http://ftp.gnome.org/pub/GNOME/sources/d-feet/0.1/d-feet-"$V".tar.bz2"
 
-RDEPEND=""
+RDEPEND="python"
 BDEPEND=""
 RECOMMENDED=""
 CONFLICT=""

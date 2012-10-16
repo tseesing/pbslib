@@ -10,9 +10,9 @@ HOMEPAGE="http://www.shatters.net/celestia/"
 LICENSE="GPL"
 PACKAGER="StartOS Developers"
 
-SRC_URI="http://nchc.dl.sourceforge.net/project/celestia/Celestia-source/"$V"/"$N-$V".tar.gz"
+SRC_URI="http://downloads.sourceforge.net/sourceforge/"$N"/"$N-$V".tar.gz"
 
-RDEPEND="gtkglext libtheora"
+RDEPEND="gtkglext libtheora lua"
 BDEPEND=""
 
 INSTALL="$N.install"
@@ -22,11 +22,18 @@ pbs_unpack() {
 }
 
 pbs_patch() {
-	dopatch celestia-1.5.0-desktop.patch
+	dopatch celestia-1.6.1-gcc46.patch \
+	        celestia-1.6.1-linking.patch
+	        #celestia-1.6.1-libpng15.patch \
 }
 
 pbs_config() {
-	config+="--with-gtk"
+	# This version of Celestia has a bug in the font rendering and requires -fsigned-char
+	export CFLAGS="$CFLAGS -fsigned-char"
+	export CXXFLAGS="$CXXFLAGS -fsigned-char"
+	
+	config+="--with-gtk --disable-rpath"
+	autoreconf
 	doconfig
 }
 
@@ -37,3 +44,4 @@ pbs_build() {
 pbs_install() {
 	domkinstall
 }
+

@@ -13,7 +13,7 @@ PACKAGER="StartOS Developers"
 SRC_URI="http://developer.download.nvidia.com/compute/cuda/4_1/rel/toolkit/cudatoolkit_"$V"_linux_32_fedora14.run"
 CHECKSUM="835d403e86f4b014b348c587ffb23c0d"
 
-RDEPEND="alsa-lib expat fontconfig freetype gcc-lib glibc libtool libX11 libXau libxcb libXdmcp libXext libXi libXrender libXtst ncurses unixodbc zlib"
+RDEPEND="alsa-lib fontconfig gcc-lib libXrender libXtst unixodbc"
 RECOMMENDED=""
 BDEPEND=""
 OPTIONAL=""
@@ -27,7 +27,7 @@ pbs_unpack() {
 pbs_install() {
 	sed -i "/unsupported GNU/d" include/host_config.h
 	sed -i "s|/build/pkg||g" bin/nvvp
-	docp * "$destdir"/"$N"
+	docp * "$destdir"/opt/"$N"
 	dodoc doc/EULA.txt
 	docp "$filesdir"/{cudatoolkit-bin.conf,cudatoolkit-bin.sh} "${destdir}"/etc/profile.d/
 	doln /usr/lib/libncurses.so.5 "${destdir}"/usr/lib/libtinfo.so.5

@@ -7,13 +7,13 @@
 
 DESCRIPTION="Interface to Bzip2 compression library"
 HOMEPAGE="http://search.cpan.org/dist/$_realname"
-LICENSE="GPL PerlArtistic"
+LICENSE="GPL,PerlArtistic"
 PACKAGER="StartOS Developers"
 
 SRC_URI="http://mirror.osqdu.org/CPAN/authors/id/A/AR/ARJAY/Compress-Bzip2-"$V".tar.gz"
 
 RDEPEND="perl bzip2"
-BDEPEND=" "
+BDEPEND=""
 RECOMMENDED=""
 CONFLICT=""
 

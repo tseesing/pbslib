@@ -13,7 +13,7 @@ PACKAGER="StartOS Developers"
 SRC_URI="http://download.gna.org/colorscheme/releases/"$N-$V".tar.bz2"
 
 RDEPEND="gconfmm libglademm libgnomeui"
-BDEPEND="eggdbus"
+BDEPEND=""
 RECOMMENDED=""
 CONFLICT=""
 

@@ -24,6 +24,7 @@ pbs_unpack() {
 }
 
 pbs_patch() {
+	dopatch gcc46.patch
 	sed -i 's/png_check_sig/png_sig_cmp/' configure
 }
 

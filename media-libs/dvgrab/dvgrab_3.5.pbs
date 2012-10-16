@@ -13,7 +13,7 @@ PACKAGER="StartOS Developers"
 SRC_URI="http://downloads.sourceforge.net/kino/"$N-$V".tar.gz"
 CHECKSUM="b39a242ce63e80fc347ab59931f75649"
 
-RDEPEND="libavc1394 libiec61883 libquicktime"
+RDEPEND="libavc1394 libdv libiec61883 libquicktime"
 RECOMMENDED=""
 BDEPEND=""
 OPTIONAL=""

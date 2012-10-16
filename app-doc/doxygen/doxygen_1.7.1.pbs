@@ -30,8 +30,6 @@ pbs_build() {
 
 pbs_install() {
 	domkinstall
-	dodoc INSTALL README VERSION
-
 	cd "$destdir"
 	domv usr/man usr/share
 }

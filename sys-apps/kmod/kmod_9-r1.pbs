@@ -17,7 +17,7 @@ RDEPEND="xz-utils zlib"
 RECOMMENDED=""
 BDEPEND=""
 OPTIONAL=""
-CONFLICT="module-init-tools"
+REPLACE="module-init-tools"
 
 pbs_unpack() {
         dounpack
@@ -52,5 +52,4 @@ pbs_install() {
 	# Default blacklist.conf collections
 	docp "$filesdir"/modprobe.d/* etc/modprobe.d
 }
-
 

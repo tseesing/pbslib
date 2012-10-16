@@ -6,13 +6,13 @@
 #
 
 DESCRIPTION="google mail"
-HOMEPAGE="www.ylmf.net"
+HOMEPAGE="https://mail.google.com/mail"
 REPO="stable"
-LICENSE="GPL-2"
-YARCH="any"
+LICENSE="GPL"
 PACKAGER="StartOS Developers"
+YARCH="any"
 
-RDEPEND=" xdg-utils"
+RDEPEND="xdg-utils"
 BDEPEND=""
 
 pbs_install() {

@@ -14,7 +14,7 @@ YARCH="any"
 SRC_URI="http://mirrors.163.com/cpan/authors/id/A/AD/ADAMK/Class-Inspector-"$V".tar.gz"
 
 RDEPEND="perl"
-BDEPEND=" "
+BDEPEND=""
 RECOMMENDED=""
 CONFLICT=""
 

@@ -7,17 +7,14 @@
 
 DESCRIPTION="Support library for syslog-ng"
 HOMEPAGE="http://www.balabit.com/products/syslog_ng/"
-REPO=""
 LICENSE="GPL"
 PACKAGER="StartOS Developers"
 
-SRC_URI="http://www.balabit.com/downloads/files?path=/syslog-ng/sources/3.2.2/source/"${N}_$V$R".tar.gz"
+SRC_URI="http://www.balabit.com/downloads/files?path=/syslog-ng/sources/3.2.2/source/"${N}_$V".tar.gz"
 
-RDEPEND=""
-BDEPEND=" "
+RDEPEND="glibc"
+BDEPEND=""
 RECOMMENDED=""
-
-NOTES=""
 
 pbs_unpack() {
         dounpack

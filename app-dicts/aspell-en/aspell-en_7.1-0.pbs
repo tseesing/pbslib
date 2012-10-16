@@ -11,6 +11,7 @@ LICENSE="GPLv2"
 PACKAGER="StartOS Developers"
 
 SRC_URI="ftp://ftp.gnu.org/gnu/aspell/dict/en/aspell6-en-"$V$R".tar.bz2"
+CHECKSUM="beba5e8f3afd3ed1644653bb685b2dfb"
 
 RDEPEND=""
 RECOMMENDED=""

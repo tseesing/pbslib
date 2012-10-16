@@ -29,7 +29,6 @@ pbs_patch() {
 
 pbs_config() {
 	config+="--with-dyn-default"
-		#--with-distro="Arch Linux""
 	doconfig
 }
 

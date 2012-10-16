@@ -23,8 +23,11 @@ pbs_unpack() {
         dounpack
 }
 
-pbs_install() {
+pbs_patch() {
 	dopatch startos-install.patch
+}
+
+pbs_install() {
 	export DESTDIR="$destdir" 
 	bash install.sh
 	dodoc COPYING README

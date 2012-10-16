@@ -19,6 +19,8 @@ BDEPEND=""
 OPTIONAL=""
 CONFLICT=""
 
+OPTIONS="nodev"
+
 pbs_unpack() {
         dounpack
 }

@@ -30,8 +30,7 @@ pbs_patch() {
 }
 
 pbs_config() {
-	config+=" --disable-examples
-	          --disable-csharp"
+	config+="--disable-examples --disable-csharp"
 	doconfig
 }
 

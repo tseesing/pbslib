@@ -13,7 +13,7 @@ PACKAGER="StartOS Developers"
 SRC_URI="http://david.freetype.org/jam/"$N-$V"rc2.tar.bz2"
 CHECKSUM="911cc4191b3e7213905d107962b4529b"
 
-RDEPEND=""
+RDEPEND="glibc"
 RECOMMENDED=""
 BDEPEND=""
 OPTIONAL=""

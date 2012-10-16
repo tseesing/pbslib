@@ -15,6 +15,7 @@ CHECKSUM="808c92a661820a637ca1330cf40c18e4"
 
 RDEPEND="gcc-lib"
 BDEPEND=""
+CONFLICT="rarlinux"
 
 pbs_unpack() {
 	dounpack

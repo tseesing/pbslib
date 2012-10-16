@@ -13,7 +13,7 @@ PACKAGER="StartOS Developers"
 SRC_URI="http://www.openscenegraph.org/downloads/stable_releases/OpenSceneGraph-"$V"/source/OpenSceneGraph-"$V".zip"
 CHECKSUM="c43a25d023e635c3566b2083d8e6d956"
 
-RDEPEND="ffmpeg giflib librsvg poppler-glib qt-core"
+RDEPEND="ffmpeg giflib librsvg libvncserver openexr poppler-glib qt-core"
 BDEPEND="cmake"
 RECOMMENDED=""
 OPTIONAL=""
@@ -24,21 +24,20 @@ pbs_unpack() {
 }
 
 pbs_config() {
-	rm -rf cmake-build 2>/dev/null
+        rm -rf cmake-build 2>/dev/null
 	mkdir cmake-build && cd cmake-build
-	
-	CFLAGS="$CFLAGS -D__STDC_CONSTANT_MACROS"
-	CXXFLAGS="$CXXFLAGS -D__STDC_CONSTANT_MACROS"
-	cmake .. -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=Release
+        CFLAGS="$CFLAGS -D__STDC_CONSTANT_MACROS"
+        CXXFLAGS="$CXXFLAGS -D__STDC_CONSTANT_MACROS"
+        cmake .. -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=Release
 }
 
 pbs_build() {
 	sed -i 's|#include <curl/types.h>|//#include <curl/types.h>|' src/osgPlugins/curl/ReaderWriterCURL.cpp
-	make
+	domake
 }
 
 pbs_install() {
 	domkinstall
-	dodoc LICENSE.txt 
+	dodoc ../LICENSE.txt 
 }
 

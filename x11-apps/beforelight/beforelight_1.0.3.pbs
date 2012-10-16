@@ -7,13 +7,13 @@
 
 DESCRIPTION="Sample implementation of screen saver"
 HOMEPAGE="http://xorg.freedesktop.org/"
-GROUP="x11-apps"
 LICENSE="GPL"
 PACKAGER="StartOS Developers"
+GROUP="x11-apps"
 
 SRC_URI="http://xorg.freedesktop.org/releases/individual/app/"$N-$V".tar.bz2"
 
-RDEPEND="glibc libICE libSM libX11 libXau libXaw libxcb libXdmcp libXext libXmu libXpm libXScrnSaver libXt util-linux-ng"
+RDEPEND="libXaw libXScrnSaver"
 BDEPEND=""
 
 pbs_unpack() {
@@ -30,6 +30,7 @@ pbs_build() {
 
 pbs_install() {
 	domkinstall
-	dodoc AUTHORS ChangeLog COPYING INSTALL NEWS README
+	dodoc COPYING
 }
+
 

@@ -30,8 +30,7 @@ pbs_build() {
 
 imagemagick_install() {
 	DESCRIPTION="A collection of tools and libraries for many image formats"
-	RDEPEND="djvulibre fftw lcms librsvg libtool libXt xz-utils"
-
+	RDEPEND="djvulibre fftw graphviz lcms2 liblqr libwebp openexr xz-utils"
 	domkinstall
 	dodoc LICENSE
 	rm -fr "$destdir"/usr/share/doc/ImageMagick/

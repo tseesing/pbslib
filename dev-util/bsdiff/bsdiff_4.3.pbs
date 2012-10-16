@@ -10,9 +10,9 @@ HOMEPAGE="http://www.daemonology.net/bsdiff/"
 LICENSE="GPL"
 PACKAGER="StartOS Developers"
 
-SRC_URI="http://www.daemonology.net/"$N"/"$N-$V$R".tar.gz"
+SRC_URI="http://www.daemonology.net/"$N"/"$N-$V".tar.gz"
 
-RDEPEND=""
+RDEPEND="bzip2"
 BDEPEND=""
 RECOMMENDED=""
 CONFLICT=""

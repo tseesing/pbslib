@@ -7,14 +7,15 @@
 
 DESCRIPTION="Perl/CPAN Module Authen::SASL : SASL authentication framework"
 HOMEPAGE="http://search.cpan.org/dist/Authen-SASL"
-LICENSE="GPL PerlArtistic"
+LICENSE="GPL,PerlArtistic"
 PACKAGER="StartOS Developers"
+
 YARCH="any"
 
 SRC_URI="http://cpan.communilink.net/authors/id/G/GB/GBARR/Authen-SASL-"$V".tar.gz"
 
 RDEPEND="perl"
-BDEPEND=" "
+BDEPEND=""
 RECOMMENDED=""
 CONFLICT=""
 

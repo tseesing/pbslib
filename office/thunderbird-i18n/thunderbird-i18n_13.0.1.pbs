@@ -12,9 +12,9 @@ PACKAGER="StartOS Developers"
 
 #XXX Get xpi from ubuntu 12.04, upstream's seems not work.
 #
-SRC_URI="ftp://ftp.mozilla.org/pub/mozilla.org/thunderbird/releases/"$V"/linux-i686/xpi/zh-CN.xpi
-         ftp://ftp.mozilla.org/pub/mozilla.org/thunderbird/releases/"$V"/linux-i686/xpi/zh-TW.xpi"
-CHECKSUM="f067a1c3ed1a5479cea19353bbdc67f8 bf01d773f5ce96e1ebefaff1f381199a"
+#SRC_URI="ftp://ftp.mozilla.org/pub/mozilla.org/thunderbird/releases/"$V"/linux-i686/xpi/zh-CN.xpi
+#         ftp://ftp.mozilla.org/pub/mozilla.org/thunderbird/releases/"$V"/linux-i686/xpi/zh-TW.xpi"
+#CHECKSUM="f067a1c3ed1a5479cea19353bbdc67f8 bf01d773f5ce96e1ebefaff1f381199a"
 
 RDEPEND="thunderbird(>=13.0.1)"
 PROVIDE="thunderbird-i18n-zh-CN thunderbird-i18n-zh-TW"

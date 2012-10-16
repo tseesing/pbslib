@@ -7,14 +7,14 @@
 
 DESCRIPTION="intel gpu userland tools"
 HOMEPAGE="http://xorg.freedesktop.org/"
-GROUP="x11-apps"
 LICENSE="custom"
 PACKAGER="StartOS Developers"
+GROUP="x11-apps"
 
 SRC_URI="http://xorg.freedesktop.org/archive/individual/app/"$N-$V".tar.bz2"
 CHECKSUM="08c860aa4d067c4ee10c5a672092f2d8"
 
-RDEPEND="glibc libdrm libpciaccess"
+RDEPEND="libdrm"
 BDEPEND=""
 
 pbs_unpack() {
@@ -22,7 +22,7 @@ pbs_unpack() {
 }
 
 pbs_config() {
-	
+	config+=""
 	doconfig
 }
 
@@ -34,3 +34,4 @@ pbs_install() {
 	domkinstall
 	dodoc COPYING
 }
+

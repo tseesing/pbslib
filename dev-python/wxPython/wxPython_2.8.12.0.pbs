@@ -13,7 +13,7 @@ PACKAGER="StartOS Developers"
 SRC_URI="http://downloads.sourceforge.net/wxpython/wxPython-src-"$V".tar.bz2"
 CHECKSUM="402e0b81e06f596d849e221a7a76acc6"
 
-RDEPEND="atk cairo expat fontconfig freetype gcc-lib gconf gdk-pixbuf glib2 glibc gst-plugins-base gstreamer gtk+ libdrm libffi libICE libjpeg-turbo libpng libSM libtiff libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libXinerama libxml2 libXrandr libXrender libXxf86vm mesa orbit pango pixman python util-linux-ng wxWidgets zlib"
+RDEPEND="python wxWidgets"
 RECOMMENDED=""
 BDEPEND=""
 OPTIONAL=""

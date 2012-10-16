@@ -31,4 +31,6 @@ pbs_build() {
 
 pbs_install() {
 	domkinstall
+	dodoc LICENSE
 }
+

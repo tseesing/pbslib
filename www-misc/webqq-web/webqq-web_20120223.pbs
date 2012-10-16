@@ -6,11 +6,11 @@
 #
 
 DESCRIPTION="webqq web"
-HOMEPAGE="www.ylmf.net"
+HOMEPAGE="http://web2.qq.com/"
 REPO="stable"
-LICENSE="GPL-2"
-YARCH="any"
+LICENSE="GPL"
 PACKAGER="StartOS Developers"
+YARCH="any"
 
 RDEPEND="xdg-utils"
 BDEPEND=""

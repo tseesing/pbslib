@@ -1,0 +1,9 @@
+diff -ur libgksu-2.0.12-r1/gksu-properties/gksu-properties.desktop.in libgksu-2.0.12-r1.new//gksu-properties/gksu-properties.desktop.in
+--- libgksu-2.0.12-r1/gksu-properties/gksu-properties.desktop.in	2008-05-09 17:39:55.000000000 +0000
++++ libgksu-2.0.12-r1.new//gksu-properties/gksu-properties.desktop.in	2012-10-10 12:37:58.093325218 +0000
+@@ -8,4 +8,4 @@
+ Terminal=false
+ Type=Application
+ Categories=GNOME;GTK;Application;Settings;AdvancedSettings;
+-OnlyShowIn=GNOME;XFCE;
++NoDisplay=true

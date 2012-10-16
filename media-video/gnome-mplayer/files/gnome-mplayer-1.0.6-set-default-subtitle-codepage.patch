@@ -1,0 +1,13 @@
+diff -ruN gnome-mplayer-1.0.6-r1.src/src/gui.c gnome-mplayer-1.0.6-r1/src/gui.c
+--- gnome-mplayer-1.0.6-r1.src/src/gui.c	2012-10-16 09:39:43.813317450 +0800
++++ gnome-mplayer-1.0.6-r1/src/gui.c	2012-10-16 09:40:34.946650577 +0800
+@@ -4981,7 +4981,8 @@
+ #else
+             gtk_combo_box_append_text(GTK_COMBO_BOX(config_subtitle_codepage), subtitle_codepage);
+ #endif
+-            gtk_combo_box_set_active(GTK_COMBO_BOX(config_subtitle_codepage), i);
++            /* gtk_combo_box_set_active(GTK_COMBO_BOX(config_subtitle_codepage), i); */
++            gtk_combo_box_set_active(GTK_COMBO_BOX(config_subtitle_codepage), 5);  /* Default "cp936" */
+         }
+     }
+ #ifdef GTK2_24_ENABLED

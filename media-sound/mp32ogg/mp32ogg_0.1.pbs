@@ -6,17 +6,16 @@
 #
 
 DESCRIPTION="mp32ogg script"
-HOMEPAGE="www.ylmf.com"
-REPO=""
-LICENSE=""
+HOMEPAGE="http://www.startos.org"
+LICENSE="GPL"
 
 PACKAGER="StartOS Developers"
 
 RDEPEND="mpg321 vorbis-tools"
-BDEPEND=" "
+BDEPEND=""
 RECOMMENDED=""
 
 pbs_install() {
-	docp $filesdir/mp32ogg "$destdir"/usr/bin
+	docp "$filesdir"/mp32ogg "$destdir"/usr/bin
 }
 

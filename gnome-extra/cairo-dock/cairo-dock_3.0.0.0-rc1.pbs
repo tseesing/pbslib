@@ -11,7 +11,7 @@ HOMEPAGE="https://launchpad.net/cairo-dock-core"
 LICENSE="GPL"
 PACKAGER="StartOS Developers"
 
-SRC_URI="https://launchpadlibrarian.net/97723585/"$N"-3.0.0.0rc1.tar.gz"
+SRC_URI="https://launchpadlibrarian.net/97723585/"$N-$V"rc1.tar.gz"
 CHECKSUM="51a85048531e0f1e69b0472065384ace"
 
 RDEPEND="curl dbus-glib librsvg libXtst mesa"

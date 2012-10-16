@@ -5,13 +5,12 @@
 # Distributed under the terms of the GNU General Public License v2
 #
 
-DESCRIPTION="BeanShell: A small embeddable Java source interpreter"
+DESCRIPTION="BeanShell - A small embeddable Java source interpreter"
 HOMEPAGE="http://www.beanshell.org"
-REPO=""
 LICENSE="GPL"
 PACKAGER="StartOS Developers"
 
-SRC_URI="http://www.beanshell.org/bsh-2.0b4.jar"
+SRC_URI="http://www.beanshell.org/"$N"-2.0b4.jar"
 
 RDEPEND="jre"
 BDEPEND=""
@@ -27,3 +26,4 @@ pbs_install() {
 	cd "$destdir"/"$JAVA_HOME"/
 	doln bsh-2.0b4.jar bsh.jar
 }
+

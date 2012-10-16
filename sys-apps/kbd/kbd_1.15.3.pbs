@@ -19,8 +19,11 @@ pbs_unpack() {
         dounpack
 }
 
-pbs_config() {
+pbs_patch() {
 	dopatch kbd-1.15.3-es.po_fix-1.patch
+}
+
+pbs_config() {
 	config+=""
 	doconfig
 }
@@ -31,11 +34,9 @@ pbs_build() {
 
 pbs_install() {
 	domkinstall
-	dodoc AUTHORS ChangeLog COPYING CREDITS README
 	cd "$destdir"
 	domv usr/bin/{kbd_mode,loadkeys,openvt,setfont} bin
-	
 	# For initramfs-tools
-	docp_rename $filesdir/hook_kbd usr/share/initramfs-tools/hooks/kbd
+	docp_rename "$filesdir"/hook_kbd usr/share/initramfs-tools/hooks/kbd
 }
 

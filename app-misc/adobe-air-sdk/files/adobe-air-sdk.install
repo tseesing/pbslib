@@ -1,4 +1,3 @@
-. /usr/lib/ybs/funcs
 
 post_install() {
         cat << EOF
@@ -9,4 +8,9 @@ To run Adobe Air apps directly from the .air file, running:
 'adobe-air *.air'
 The Adobe Air SDK is 32bit; if you're running x86_64, the appropriate lib32* are required
 EOF
-}   
+}
+
+post_upgrade() {
+	post_install
+}
+

@@ -40,4 +40,3 @@ pbs_install() {
 	doln /usr/share/"$N"/locale/en_US usr/share/"$N"/locale/default
 }
 
-

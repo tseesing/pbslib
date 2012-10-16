@@ -6,11 +6,11 @@
 #
 
 DESCRIPTION="cai jin tong stock market software"
-HOMEPAGE="www.ylmf.net"
+HOMEPAGE="https://mycjt.cn"
 REPO="stable"
-LICENSE="GPL-2"
-YARCH="any"
+LICENSE="GPL"
 PACKAGER="StartOS Developers"
+YARCH="any"
 
 RDEPEND="xdg-utils"
 BDEPEND=""
