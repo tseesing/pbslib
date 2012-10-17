@@ -20,8 +20,6 @@ pbs_unpack() {
 }
 
 pbs_config() {
-	git checkout fix_X_cursor
-	git pull
 	config+=""
 	doconfig
 }
