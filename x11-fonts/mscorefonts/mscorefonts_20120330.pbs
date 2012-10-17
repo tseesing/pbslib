@@ -1,0 +1,59 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="Microsoft TrueType core fonts"
+HOMEPAGE="http://sourceforge.net/projects/corefonts"
+GROUP="fonts"
+LICENSE="mscorefonts-eula"
+PACKAGER="StartOS Developers"
+YARCH="any"
+
+SRC_URI="http://sourceforge.net/projects/corefonts/files/the%20fonts/final/wd97vwr32.exe
+	 http://sourceforge.net/projects/corefonts/files/the%20fonts/final/webdin32.exe
+	 http://sourceforge.net/projects/corefonts/files/the%20fonts/final/verdan32.exe
+	 http://sourceforge.net/projects/corefonts/files/the%20fonts/final/trebuc32.exe
+	 http://sourceforge.net/projects/corefonts/files/the%20fonts/final/times32.exe
+	 http://sourceforge.net/projects/corefonts/files/the%20fonts/final/impact32.exe
+	 http://sourceforge.net/projects/corefonts/files/the%20fonts/final/georgi32.exe
+	 http://sourceforge.net/projects/corefonts/files/the%20fonts/final/courie32.exe
+	 http://sourceforge.net/projects/corefonts/files/the%20fonts/final/comic32.exe
+	 http://sourceforge.net/projects/corefonts/files/the%20fonts/final/arialb32.exe
+	 http://sourceforge.net/projects/corefonts/files/the%20fonts/final/arial32.exe
+	 http://sourceforge.net/projects/corefonts/files/the%20fonts/final/andale32.exe"
+CHECKSUM="efa72d3ed0120a07326ce02f051e9b42
+          230a1d13a365b22815f502eb24d9149b
+	  12d2a75f8156e10607be1eaa8e8ef120
+	  0d7ea16cac6261f8513a061fbfcdb2b5
+	  ed39c8ef91b9fb80f76f702568291bd5
+	  7907c7dd6684e9bade91cff82683d9d7
+	  4d90016026e2da447593b41a8d8fa8bd
+	  4e412c772294403ab62fb2d247d85c60
+	  2b30de40bb5e803a0452c7715fc835d1
+	  c9089ae0c3b3d0d8c4b0a95979bb9ff0
+	  9637df0e91703179f0723ec095a36cb5
+	  cbdc2fdd7d2ed0832795e86a8b9ee19a"
+
+RDEPEND=""
+RECOMMENDED=""
+BDEPEND="cabextract"
+OPTIONAL=""
+CONFLICT=""
+
+INSTALL="$N.install"
+
+pbs_unpack() {
+	mkdir -p "$N-$V$R" && cd ""$N-$V$R""
+	fonts="wd97vwr32.exe webdin32.exe verdan32.exe trebuc32.exe times32.exe impact32.exe georgi32.exe courie32.exe comic32.exe arialb32.exe arial32.exe andale32.exe"
+	for font in $fonts;do
+		cabextract "$YPPATH_SOURCE"/"${font}"
+	done
+}
+
+pbs_install() {
+	docp * "$destdir"/usr/share/fonts/truetype/mscorefonts
+}
+

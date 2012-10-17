@@ -1,0 +1,50 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="Free implementation of the .NET platform including runtime and compiler"
+HOMEPAGE="http://www.go-mono.com http://ftp.novell.com/pub/mono/sources-stable/"
+LICENSE="LGPLv2, MIT X11"
+PACKAGER="StartOS Developers"
+
+SRC_URI="http://download.mono-project.com/sources/"$N"/"$N-$V".tar.bz2"
+
+RDEPEND="zlib libgdiplus"
+BDEPEND=""
+RECOMMENDED=""
+CONFLICT=""
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_config() {
+	config+="--with-libgdiplus=installed"
+	doconfig
+}
+
+pbs_build() {
+	domake
+	
+	# Build jay
+	cd mcs/jay
+	domake
+	
+	cd -
+}
+
+pbs_install() {
+	domkinstall
+	dodoc mcs/MIT.X11
+	
+	# Install jay
+	cd mcs/jay
+	domkinstall prefix=/usr install=../../install-sh install
+
+	# Fix .pc file to be able to request mono on what it depends, fixes #go-oo build
+	sed -i -e "s:#Requires:Requires:" "$destdir"/usr/lib/pkgconfig/mono.pc
+}
+

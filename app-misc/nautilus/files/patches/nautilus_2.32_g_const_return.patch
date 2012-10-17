@@ -1,0 +1,112 @@
+diff -ruN nautilus-2.32.1-ylmf3-orig/eel/eel-editable-label.h nautilus-2.32.1-ylmf3/eel/eel-editable-label.h
+--- nautilus-2.32.1-ylmf3-orig/eel/eel-editable-label.h	2012-06-13 15:22:18.576573302 +0800
++++ nautilus-2.32.1-ylmf3/eel/eel-editable-label.h	2012-06-13 15:29:58.759904771 +0800
+@@ -30,6 +30,10 @@
+ #include <gdk/gdk.h>
+ #include <gtk/gtk.h>
+ 
++#if !defined(G_CONST_RETURN)
++#   define G_CONST_RETURN const
++#endif
++
+ #ifdef __cplusplus
+ extern "C" {
+ #endif /* __cplusplus */
+diff -ruN nautilus-2.32.1-ylmf3-orig/eel/eel-i18n.h nautilus-2.32.1-ylmf3/eel/eel-i18n.h
+--- nautilus-2.32.1-ylmf3-orig/eel/eel-i18n.h	2012-06-13 15:22:18.579906635 +0800
++++ nautilus-2.32.1-ylmf3/eel/eel-i18n.h	2012-06-13 15:28:33.003238451 +0800
+@@ -28,6 +28,10 @@
+ #ifdef ENABLE_NLS
+ #include <glib.h>
+ 
++#if !defined(G_CONST_RETURN)
++#   define G_CONST_RETURN const
++#endif
++
+ G_CONST_RETURN char *
+ _eel_gettext (const char *str) G_GNUC_FORMAT (1);
+ 
+diff -ruN nautilus-2.32.1-ylmf3-orig/eel/eel-labeled-image.c nautilus-2.32.1-ylmf3/eel/eel-labeled-image.c
+--- nautilus-2.32.1-ylmf3-orig/eel/eel-labeled-image.c	2012-06-13 15:22:18.576573302 +0800
++++ nautilus-2.32.1-ylmf3/eel/eel-labeled-image.c	2012-06-13 15:31:12.143237806 +0800
+@@ -42,6 +42,10 @@
+ #define DEFAULT_X_ALIGNMENT 0.5
+ #define DEFAULT_Y_ALIGNMENT 0.5
+ 
++#if !defined(G_CONST_RETURN)
++#   define G_CONST_RETURN const
++#endif
++
+ /* Signals */
+ enum
+ {
+diff -ruN nautilus-2.32.1-ylmf3-orig/libnautilus-private/nautilus-icon-canvas-item.c nautilus-2.32.1-ylmf3/libnautilus-private/nautilus-icon-canvas-item.c
+--- nautilus-2.32.1-ylmf3-orig/libnautilus-private/nautilus-icon-canvas-item.c	2012-06-13 15:22:18.559906635 +0800
++++ nautilus-2.32.1-ylmf3/libnautilus-private/nautilus-icon-canvas-item.c	2012-06-13 15:35:54.823236662 +0800
+@@ -52,6 +52,10 @@
+ #include <stdio.h>
+ #include <string.h>
+ 
++#if !defined(G_CONST_RETURN)
++#   define G_CONST_RETURN const
++#endif
++
+ #define EMBLEM_SPACING 2
+ 
+ /* gap between bottom of icon and start of text box */
+diff -ruN nautilus-2.32.1-ylmf3-orig/libnautilus-private/nautilus-icon-info.h nautilus-2.32.1-ylmf3/libnautilus-private/nautilus-icon-info.h
+--- nautilus-2.32.1-ylmf3-orig/libnautilus-private/nautilus-icon-info.h	2012-06-13 15:22:18.566573302 +0800
++++ nautilus-2.32.1-ylmf3/libnautilus-private/nautilus-icon-info.h	2012-06-13 15:35:20.043236801 +0800
+@@ -9,6 +9,10 @@
+ 
+ G_BEGIN_DECLS
+ 
++#if !defined(G_CONST_RETURN)
++#   define G_CONST_RETURN const
++#endif
++
+ /* Names for Nautilus's different zoom levels, from tiniest items to largest items */
+ typedef enum {
+ 	NAUTILUS_ZOOM_LEVEL_SMALLEST,
+diff -ruN nautilus-2.32.1-ylmf3-orig/libnautilus-private/nautilus-search-engine-beagle.c nautilus-2.32.1-ylmf3/libnautilus-private/nautilus-search-engine-beagle.c
+--- nautilus-2.32.1-ylmf3-orig/libnautilus-private/nautilus-search-engine-beagle.c	2012-06-13 15:22:18.559906635 +0800
++++ nautilus-2.32.1-ylmf3/libnautilus-private/nautilus-search-engine-beagle.c	2012-06-13 15:36:22.369903217 +0800
+@@ -28,6 +28,10 @@
+ #include <eel/eel-glib-extensions.h>
+ #include <gmodule.h>
+ 
++#if !defined(G_CONST_RETURN)
++#   define G_CONST_RETURN const
++#endif
++
+ typedef struct _BeagleHit BeagleHit;
+ typedef struct _BeagleQuery BeagleQuery;
+ typedef struct _BeagleClient BeagleClient;
+diff -ruN nautilus-2.32.1-ylmf3-orig/src/nautilus-application.h nautilus-2.32.1-ylmf3/src/nautilus-application.h
+--- nautilus-2.32.1-ylmf3-orig/src/nautilus-application.h	2012-06-13 15:22:18.573239968 +0800
++++ nautilus-2.32.1-ylmf3/src/nautilus-application.h	2012-06-13 15:57:32.213231408 +0800
+@@ -27,6 +27,10 @@
+ #ifndef NAUTILUS_APPLICATION_H
+ #define NAUTILUS_APPLICATION_H
+ 
++#if !defined(G_CONST_RETURN)
++#   define G_CONST_RETURN const
++#endif
++
+ #include <gdk/gdk.h>
+ #include <gio/gio.h>
+ #include <unique/unique.h>
+diff -ruN nautilus-2.32.1-ylmf3-orig/src/nautilus-zoom-control.c nautilus-2.32.1-ylmf3/src/nautilus-zoom-control.c
+--- nautilus-2.32.1-ylmf3-orig/src/nautilus-zoom-control.c	2012-06-13 15:22:18.569906635 +0800
++++ nautilus-2.32.1-ylmf3/src/nautilus-zoom-control.c	2012-06-13 15:36:50.096569772 +0800
+@@ -45,6 +45,10 @@
+ #include <stdlib.h>
+ #include <string.h>
+ 
++#if !defined(G_CONST_RETURN)
++#   define G_CONST_RETURN const
++#endif
++
+ enum {
+ 	ZOOM_IN,
+ 	ZOOM_OUT,

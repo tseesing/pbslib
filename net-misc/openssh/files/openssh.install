@@ -1,0 +1,37 @@
+. /usr/lib/ybs/funcs
+
+post_install() {
+	dogroupadd -r "sshd"
+	douseradd -c "sshd PrivSep" -d "/var/lib/sshd" -s "/bin/false" -r -N -G "sshd" "sshd"
+
+	install -m700 -d /var/lib/sshd
+	chown root:sys   /var/lib/sshd
+
+	yes y |ssh-keygen -t dsa -f /etc/ssh/ssh_host_dsa_key
+	yes y |ssh-keygen -t rsa -f /etc/ssh/ssh_host_rsa_key
+	
+	systemctl enable sshd.service
+
+	start sshd ||return 0
+}
+
+pre_remove() {
+	stop sshd
+	systemctl disable sshd.service ||true
+}
+
+post_remove() {
+	douserdel -r "sshd"
+	dogroupdel "sshd"
+	[ -d /var/lib/sshd ] && rm -r /var/lib/sshd ||return 0
+}
+
+post_upgrade() {
+	systemctl --system daemon-reload
+	post_install
+}
+
+post_downgrade() {
+	post_upgrade
+}
+

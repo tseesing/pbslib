@@ -1,0 +1,53 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="A message bus system, a simple way for applications to talk to each other"
+HOMEPAGE="http://dbus.freedesktop.org/"
+LICENSE="custom,GPL"
+PACKAGER="StartOS developers "
+
+SRC_URI="http://dbus.freedesktop.org/releases/"$N"/"$N-$V".tar.gz"
+
+RDEPEND="expat libSM libX11"
+BDEPEND="libxml2-dev"
+
+INSTALL="$N.install"
+
+pbs_unpack(){
+        dounpack
+}
+
+pbs_patch() {
+	dopatch 10_dbus-1.0.1-generate-xml-docs.patch 
+	dopatch 20_system_conf_limit.patch 
+	dopatch	81-session.conf-timeout.patch
+}
+
+pbs_config() {
+	config+="--with-xml=expat  
+		 --with-dbus-user=messagebus 
+		 --disable-xml-docs 
+		 --with-x 
+		 --enable-inotify 
+		 --disable-kqueue 
+		 --disable-selinux 
+		 --disable-libaudit 
+		 --disable-verbose-mode 
+		 --disable-tests 
+		 --disable-asserts"
+	doconfig
+}
+
+pbs_build() {
+	domake
+}
+
+pbs_install() {
+	domkinstall
+	dodoc COPYING
+}
+

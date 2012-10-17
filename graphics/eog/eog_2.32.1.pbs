@@ -1,0 +1,44 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="The Eye of GNOME image viewer"
+HOMEPAGE="http://www.gnome.org/projects/eog/"
+LICENSE="GPLv2"
+PACKAGER="StartOS Developers"
+
+SRC_URI="http://ftp.gnome.org/pub/gnome/desktop/2.32/2.32.1/sources/"$N-$V".tar.bz2"
+
+RDEPEND="glibc gnome-desktop libXrandr libXext startup-notification libSM util-linux-ng
+         libICE gconf orbit gtk+ atk glib2 gdk-pixbuf pango cairo pixman directfb libpng libxcb 
+	 libXrender fontconfig freetype libexif lcms dbus-glib dbus libjpeg-turbo libxml2 libX11
+	 libxcb libXau libXdmcp zlib expat libXi libXcursor libXcomposite libXdamage libXfixes"
+BDEPEND=""
+RECOMMENDED=""
+
+INSTALL="$N.install"
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_config() {
+	config+="--disable-schemas-install"
+	doconfig
+}
+
+pbs_build() {
+	domake
+}
+
+pbs_install() {
+	domkinstall
+	dodoc AUTHORS COPYING NEWS README
+	# keep clean for rarian
+	rm -fr "$destdir"/var/lib/scrollkeeper
+	rm -fr "$destdir"/var/lib/log
+}
+

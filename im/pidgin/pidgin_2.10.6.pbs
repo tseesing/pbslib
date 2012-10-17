@@ -1,0 +1,82 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="GTK Instant Messenger client, split into finch and libpurple"
+HOMEPAGE="http://pidgin.im/"
+LICENSE="GPL"
+PACKAGER="StartOS Developers"
+
+SRC_URI="http://sourceforge.net/projects/pidgin/files/Pidgin/"$V"/"$N-$V".tar.bz2"
+CHECKSUM="a0ebb55083e2dfc22a75c504acde6a07"
+
+PROVIDE="pidgin libpurple finch"
+
+OPTIONAL=""
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_config() {
+	config+=" --disable-schemas-install
+	          --with-system-ssl-certs=/etc/ssl/certs "
+	doconfig
+}
+
+pbs_build() {
+	domake
+}
+
+pidgin_install() {
+	DESCRIPTION="GTK Instant Messenger client"
+	RDEPEND="gtkspell libpurple"
+	RECOMMENDED=""
+	
+	INSTALL="$N.install"
+
+	# For linking
+	make -C libpurple DESTDIR="$destdir" install-libLTLIBRARIES
+	domkinstall -C pidgin 
+	domkinstall -C doc 
+
+        # Clean up libpurple
+        make -C libpurple DESTDIR="$destdir" uninstall-libLTLIBRARIES
+	rm -f "$destdir"/usr/share/man/man1/finch.1
+	
+	perl_cleanup
+
+	#
+	dodesktop "$N".desktop
+}
+
+libpurple_install() {
+	DESCRIPTION="IM library extracted from Pidgin"
+	RDEPEND="avahi dbus-glib farsight2 libgadu libidn meanwhile nss perl tk"
+
+        for dir in libpurple share/sounds share/ca-certs m4macros po; do
+		domkinstall -C "${dir}"
+	done
+
+	perl_cleanup
+}
+
+finch_install() {
+	DESCRIPTION="A ncurses-based messaging client"
+	RDEPEND="libpurple ncurses"
+
+	# For linking
+	make -C libpurple DESTDIR="$destdir" install-libLTLIBRARIES
+	domkinstall -C finch
+	domkinstall -C doc 
+
+        # Clean up libpurple
+        make -C libpurple DESTDIR="$destdir" uninstall-libLTLIBRARIES
+	rm -f "$destdir"/usr/share/man/man1/pidgin.1
+
+	perl_cleanup
+}
+

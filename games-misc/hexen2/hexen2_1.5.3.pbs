@@ -1,0 +1,94 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="Hammer of Thyrion is based on the original Linux Hexen II project, Anvil of Thyrion"
+HOMEPAGE="http://uhexen2.sourceforge.net"
+LICENSE="GPL"
+PACKAGER="StartOS Developers"
+
+SRC_URI="http://downloads.sourceforge.net/uhexen2/hexen2source-"$V".tgz 
+         http://downloads.sourceforge.net/uhexen2/hexen2source-gamecode-"$V".tgz
+	 http://downloads.sourceforge.net/uhexen2/hexenworld-pakfiles-0.15.tgz
+	 http://downloads.sourceforge.net/uhexen2/hexen2demo-pakfiles-1.11.tgz"
+CHECKSUM="ee79e00471acdbb28e793ae5e4c6404a 36bbd2eb1c2cef60890034e9606f9b6b 
+          9ac598a80765daa0862893bd0aac765a 7284f2a331bad365f84f7d2112173f3d"
+
+RDEPEND="gtk+ libmad libsdl libvorbis"
+RECOMMENDED=""
+BDEPEND=""
+OPTIONAL=""
+CONFLICT=""
+
+INSTALL="$N.install"
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_config() {
+	tar xf "$YPPATH_SOURCE"/hexen2source-gamecode-"$V".tgz
+	tar xf "$YPPATH_SOURCE"/hexenworld-pakfiles-0.15.tgz
+	tar xf "$YPPATH_SOURCE"/hexen2demo-pakfiles-1.11.tgz
+
+	if [ "$ARCH" = i686 ]; then
+		sed -i -e 's/i586/i686 -mtune=generic/' scripts/makefile.inc
+	fi
+}
+
+pbs_build() {
+	_dataver="1.25"
+	domake -s -C engine/hexen2 clean
+	domake -C engine/hexen2 glh2
+	domake -s -C engine/hexen2 clean
+	domake -C engine/hexen2 -f Makefile.sv
+	domake -C engine/hexenworld/server
+	domake -C hw_utils/hwmaster
+	domake -C engine/hexenworld/client glhw
+	domake -C h2patch
+	domake -C launcher
+	domake -C utils/hcc
+	utils/hcc/hcc -src gamecode-"$_dataver"/hc/h2
+	utils/hcc/hcc -src gamecode-"$_dataver"/hc/h2 -name progs2.src
+	utils/hcc/hcc -src gamecode-"$_dataver"/hc/portals -oi -on
+	utils/hcc/hcc -src gamecode-"$_dataver"/hc/hw -oi -on
+}
+
+pbs_install() {
+	mkdir -p "${destdir}"/opt/"$N"/
+	install -D -m755 engine/hexen2/h2ded             "${destdir}"/opt/"$N"/h2ded
+	install -D -m755 engine/hexen2/glhexen2          "${destdir}"/opt/"$N"/glhexen2
+	install -D -m755 engine/hexenworld/client/glhwcl "${destdir}"/opt/"$N"/glhwcl
+	install -D -m755 engine/hexenworld/server/hwsv   "${destdir}"/opt/"$N"/hwsv
+	install -D -m755 hw_utils/hwmaster/hwmaster      "${destdir}"/opt/"$N"/hwmaster
+	install -D -m755 launcher/h2launcher             "${destdir}"/opt/"$N"/h2launcher
+
+	# Make a symlink of the game-launcher
+	docp "$filesdir"/hexen2 "${destdir}"/usr/bin/
+
+	dodoc docs/COPYING docs/README.*
+
+	# Install data
+	docp gamecode-"$_dataver"/hc/h2/{progs.dat,progs2.dat} "${destdir}"/opt/"$N"/data1/
+	docp gamecode-"$_dataver"/txt/h2/{hexen.rc,strings.txt,default.cfg} "${destdir}"/opt/"$N"/data1/
+	
+	docp gamecode-"$_dataver"/hc/portals/progs.dat "${destdir}"/opt/"$N"/portals/
+	docp gamecode-"$_dataver"/txt/portals/{hexen.rc,strings.txt,infolist.txt,maplist.txt,puzzles.txt,default.cfg} \
+		"${destdir}"/opt/"$N"/portals/
+	
+	docp gamecode-"$_dataver"/hc/hw/hwprogs.dat "${destdir}"/opt/"$N"/hw/
+	docp gamecode-"$_dataver"/txt/hw/{strings.txt,default.cfg} "${destdir}"/opt/"$N"/hw/
+	
+	docp hw/pak4.pak     "${destdir}"/opt/"$N"/hw/
+	docp data1/pak0.pak  "${destdir}"/opt/"$N"/data1/
+
+	# Install the xdelta updates
+	docp h2patch/h2patch "${destdir}"/opt/"$N"/
+	docp gamecode-"$_dataver"/patch111/patchdat/data1/{data1pk0.xd3,data1pk1.xd3} "${destdir}"/opt/"$N"/patchdat/data1/
+
+	dodesktop "$N".desktop engine/resource/h2_32x32x4.png
+}
+

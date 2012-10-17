@@ -1,0 +1,41 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="The GLib library of C routines"
+HOMEPAGE="http://www.gtk.org/"
+LICENSE="GPL"
+PACKAGER="StartOS Developers"
+
+SRC_URI="http://ftp.gnome.org/pub/gnome/sources/glib/2.28/glib-"$V$R".tar.bz2"
+
+RDEPEND="gamin glibc zlib"
+BDEPEND="pkgconfig"
+
+NOTES="Gamin requires GLib in order to compile; therefore, you must first install GLib, then compile Gamin, and recompile GLib against it.
+--with-pcre=system: This parameter causes the build to use a system-provided version of the PCRE library instead of an internal version."
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_config() {
+	doconfig
+}
+
+pbs_build() {
+	domake
+}
+
+pbs_install() {
+	domkinstall
+	cd "$destdir"/
+	install -d -m755 etc/profile.d
+	cat > etc/profile.d/glib2-locale.sh << "EOF"
+export G_FILENAME_ENCODING=@locale
+EOF
+}
+

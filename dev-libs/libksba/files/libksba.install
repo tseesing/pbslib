@@ -1,0 +1,12 @@
+. /usr/lib/ybs/funcs
+
+files="ksba.info.gz"
+
+post_install() {
+        doinstall_info $files
+}       
+
+pre_remove() {
+        doremove_info $files
+}
+

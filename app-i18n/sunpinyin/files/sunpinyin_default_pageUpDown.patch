@@ -1,0 +1,27 @@
+--- wrapper/ibus/src/sunpinyin_config.orig.cpp	2011-03-14 13:49:31.661932003 +0800
++++ wrapper/ibus/src/sunpinyin_config.cpp	2011-03-14 13:49:02.952932003 +0800
+@@ -294,11 +294,22 @@
+ {
+     assert(m_config != NULL);
+     
+-    GValue v = {0};
+-    gboolean got;
++    GValue v = {0}, v2 = {0};
++    gboolean got, set;
+     ConfigItem item(key);
+     got = ibus_config_get_value(m_config, item.section.c_str(), item.name.c_str(), &v);
+     bool result = val;
++
++    if(!got)
++    {
++        g_value_init(&v2, G_TYPE_BOOLEAN);
++        g_value_set_boolean(&v2, TRUE);
++        if( ibus_config_set_value(m_config, item.section.c_str(), item.name.c_str(), &v2) )
++        {
++            got = ibus_config_get_value(m_config, item.section.c_str(), item.name.c_str(), &v);
++        }
++    }
++
+     if (got && G_VALUE_TYPE(&v) == G_TYPE_BOOLEAN) {
+         result = (g_value_get_boolean(&v) == TRUE);
+     }

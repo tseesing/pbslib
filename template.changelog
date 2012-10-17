@@ -1,0 +1,7 @@
+
+openssh (5.9-ylmf1); urgency=low  
+	
+	* add default configure
+	  - ylmfos_ssh-default-conf.patch
+
+-- hzx <zhongxin.huang@gmail.com> 2012-02-06

@@ -1,0 +1,23 @@
+. /usr/lib/ybs/funcs
+
+post_install() {
+	dogroupadd -r "messagebus"
+	douseradd -c "D-BUS Message Daemon User" -d "/dev/null" -s "/bin/false" -r "messagebus"
+	dbus-uuidgen --ensure
+	chown root:messagebus /usr/libexec/dbus-daemon-launch-helper
+	chmod 4755 /usr/libexec/dbus-daemon-launch-helper ||true
+}       
+
+post_remove() {
+	douserdel "messagebus"
+	dogroupdel "messagebus" ||true
+}
+
+post_upgrade() {
+	post_install
+}
+
+post_downgrade() {	
+	post_install
+}
+

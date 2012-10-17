@@ -1,0 +1,20 @@
+Submitted By: zippo zippo@oppiz.net
+Initial Package Version: 0.15.1b
+Date: 2008-10-24
+Upstream Status: unknown
+Origin: zippo@oppiz.net
+Description:Fixes Problem with GCC 4.3 removing options -fforce-mem and -fforce-addr
+diff -Naur libmad-0.15.1b.tmp/configure libmad-0.15.1b/configure
+--- libmad-0.15.1b.tmp/configure	2008-10-25 15:07:02.000000000 +0000
++++ libmad-0.15.1b/configure	2008-10-25 15:12:51.000000000 +0000
+@@ -19099,8 +19099,8 @@
+     case "$optimize" in
+ 	-O|"-O "*)
+ 	    optimize="-O"
+-	    optimize="$optimize -fforce-mem"
+-	    optimize="$optimize -fforce-addr"
++	    optimize="$optimize"
++	    optimize="$optimize"
+ 	    : #x optimize="$optimize -finline-functions"
+ 	    : #- optimize="$optimize -fstrength-reduce"
+ 	    optimize="$optimize -fthread-jumps"

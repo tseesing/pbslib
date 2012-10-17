@@ -1,0 +1,59 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="Burn CDs in disk-at-once mode -- with optional GUI frontend"
+HOMEPAGE="http://cdrdao.sourceforge.net/"
+LICENSE="GPL"
+PACKAGER="StartOS Developers"
+
+SRC_URI="http://downloads.sourceforge.net/project/"$N"/"$N"/"$V"/"$N-$V".tar.bz2"
+
+PROVIDE="cdrdao gcdmaster"
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_patch() {
+	dopatch cdrdao-1.2.3-autoconf-update.patch
+	dopatch cdrdao-1.2.3-k3b.patch
+	dopatch cdrdao-1.2.3-stat.patch
+}
+
+pbs_config() {
+	config+=" --with-xdao
+	          --with-lame 
+		  --with-ogg-support 
+		  --with-mp3-support "
+	doconfig
+}
+
+pbs_build() {
+	domake
+}
+
+cdrdao_install() {
+	DESCRIPTION="Burn CDs in disk-at-once mode"
+	RDEPEND="gcc-lib lame libao libmad"
+	for dir in trackdb utils paranoia dao; do
+		domkinstall -C "${dir}"
+	done
+}
+
+gcdmaster_install() {
+	DESCRIPTION="Burn CDs in disk-at-once mode GUI frontend"
+	RDEPEND="libao libgnomeuimm libmad"
+
+	INSTALL="$N.install"
+
+	domkinstall -C xdao GCONF_DISABLE_MAKEFILE_SCHEMA_INSTALL=1
+
+	cd "$destdir"
+	mv "etc/gconf" "usr/share/"
+	rmdir "etc"
+}
+

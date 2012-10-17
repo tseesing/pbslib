@@ -1,0 +1,36 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="Clutter is an open source library for creating fast, compelling, portable, and dynamic graphical user interfaces."
+HOMEPAGE="http://www.clutter-project.org/"
+LICENSE="GPL"
+PACKAGER="StartOS Developers"
+
+SRC_URI="http://source.clutter-project.org/sources/"$N"/1.6/"$N-$V".tar.bz2"
+
+RDEPEND="atk gdk-pixbuf json-glib libXcomposite libXi mesa pango"
+BDEPEND=""
+RECOMMENDED=""
+CONFLICT=""
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_config() {
+	config+=""
+	doconfig
+}
+
+pbs_build() {
+	domake
+}
+
+pbs_install() {
+	domkinstall
+}
+

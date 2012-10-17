@@ -1,0 +1,87 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION=" MIT Kerberos V"
+HOMEPAGE="http://web.mit.edu/kerberos/www/"
+REPO=""
+LICENSE="GPL-2"
+PACKAGER="StartOS Developers"
+
+SRC_URI="http://web.mit.edu/kerberos/www/dist/"$N"/"$V"/"$N-$V$R"-signed.tar"
+
+RDEPEND="glibc keyutils ncurses"
+BDEPEND="  "
+RECOMMENDED=""
+
+NOTES=""
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_config() {
+	tar xf "$N-$V$R".tar.gz
+	cd "$N-$V$R"/src
+	config+=" --enable-dns-for-realm
+		      --mandir=/usr/share/man
+		      --disable-pkinit "
+	CPPFLAGS="-DEAI_NODATA=EAI_NONAME" doconfig
+}
+
+pbs_build() {
+	domake 
+}
+
+pbs_install() {
+	domkinstall
+	doinit $filesdir/kerberos
+	#Create the db directory exists with the following command
+	cd "$destdir"
+	install -d -m755 var/lib/krb5kdc
+	#Create the Kerberos configuration with the following command. It's recommended that the Kerberos Realm be all uppercase.
+	cat > etc/krb5.conf << "EOF"
+[libdefaults]
+default_realm = <REALMNAME.COM>
+encrypt = true
+[kdc]
+profile = /var/lib/krb5kdc/kdc.conf
+[appdefaults]
+pam = {
+	<REALMNAME.COM> = {
+		minimum_uid = 5
+	}
+}
+[realms]
+<REALMNAME.COM> = {
+	kdc = <servername.realmname.com>
+	admin_server = <servername.realmname.com>
+	dict_file = /usr/share/dict/words
+}
+[domain_realm]
+.<realmname.com> = <REALMNAME.COM>
+<realmname.com> = <REALMNAME.COM>
+[logging]
+kdc = SYSLOG[:INFO[:AUTH]]
+admin_server = SYSLOG[INFO[:AUTH]]
+default = SYSLOG[[:SYS]]
+EOF
+	#On the Kerberos Server create the KDC Configuration File:
+	cat > var/lib/krb5kdc/kdc.conf << "EOF"
+[kdcdefaults]
+kdc_ports = 750,88
+[realms]
+<REALMNAME.COM> = {
+database_name = /var/lib/krb5kdc/principal
+admin_keytab = FILE:/var/lib/krb5kdc/kadm5.keytab
+acl_file = /var/lib/krb5kdc/krb5_adm.acl
+key_stash_file = /var/lib/krb5kdc/.k5.<REALMNAME.COM>
+kdc_ports = 750,88
+max_life = 10h 0m 0s
+max_renewable_life = 7d 0h 0m 0s
+}
+EOF
+}

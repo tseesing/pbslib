@@ -1,0 +1,25 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="install build-essential packages"
+HOMEPAGE="www.startos.org"
+LICENSE="GPL"
+PACKAGER="StartOS Developers"
+YARCH="any"
+
+RDEPEND="make automake autoconf patch intltool pkgconfig gcc gcc-dev glibc-dev glib2-dev gdk-pixbuf-dev m4 linux-headers linux-kernel-headers"
+BDEPEND=""
+RECOMMENDED=""
+CONFLICT=""
+
+pbs_install() {
+	mkdir -p "$destdir"/usr/share/doc/"$N"/
+	cat >>"$destdir"/usr/share/doc/"$N"/README << "EOF"
+install build-essential packages
+EOF
+}
+

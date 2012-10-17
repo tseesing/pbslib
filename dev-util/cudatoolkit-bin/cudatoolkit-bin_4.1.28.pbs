@@ -1,0 +1,35 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="NVIDIA CUDA Toolkit"
+HOMEPAGE="http://developer.nvidia.com/cuda"
+LICENSE="custom"
+PACKAGER="StartOS Developers"
+
+SRC_URI="http://developer.download.nvidia.com/compute/cuda/4_1/rel/toolkit/cudatoolkit_"$V"_linux_32_fedora14.run"
+CHECKSUM="835d403e86f4b014b348c587ffb23c0d"
+
+RDEPEND="alsa-lib fontconfig gcc-lib libXrender libXtst unixodbc"
+RECOMMENDED=""
+BDEPEND=""
+OPTIONAL=""
+CONFLICT=""
+
+pbs_unpack() {
+	mkdir -p "$N-$V$R"
+	sh "$YPPATH_SOURCE"/"cudatoolkit_"$V"_linux_32_fedora14.run" --keep -- --prefix="$srcdir"
+}
+
+pbs_install() {
+	sed -i "/unsupported GNU/d" include/host_config.h
+	sed -i "s|/build/pkg||g" bin/nvvp
+	docp * "$destdir"/opt/"$N"
+	dodoc doc/EULA.txt
+	docp "$filesdir"/{cudatoolkit-bin.conf,cudatoolkit-bin.sh} "${destdir}"/etc/profile.d/
+	doln /usr/lib/libncurses.so.5 "${destdir}"/usr/lib/libtinfo.so.5
+}
+

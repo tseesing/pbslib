@@ -1,0 +1,60 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="MIT Kerberos V"
+HOMEPAGE="http://web.mit.edu/kerberos/www/"
+LICENSE="custom"
+PACKAGER="StartOS Developers"
+
+SRC_URI="http://web.mit.edu/kerberos/www/dist/"$N"/1.9/"$N-$V"-signed.tar"
+
+RDEPEND="cyrus-sasl e2fsprogs glibc gnutls keyutils libgcrypt libgpg-error libtasn1 openldap openssl zlib"
+BDEPEND=""
+RECOMMENDED=""
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_config() {
+	tar xf "$N-$V".tar.gz
+	cd "$N-$V"/src
+
+	dopatch krb5-1.9.1-config-script.patch
+
+	#
+	sed -i "/KRB5ROOT=/s/\/local//" util/ac_check_krb5.m4
+
+	export CFLAGS+=" -fPIC -fno-strict-aliasing -fstack-protector-all"
+	export CPPFLAGS+=" -I/usr/include/et"
+
+	config+=" --disable-rpath 
+		  --enable-dns-for-realm 
+                  --with-ldap 
+		  --with-system-ss
+		  --without-tcl "
+		  # Use with-system-et will not provide /usr/lib/libcom_err.so.3 
+		  #--with-system-et
+	doconfig
+}
+
+pbs_build() {
+	domake 
+}
+
+pbs_install() {
+	domkinstall EXAMPLEDIR="/usr/share/doc/${N}/examples"
+
+	# Sample KDC config file
+	docp_rename config-files/kdc.conf "${destdir}"/var/lib/krb5kdc/kdc.conf
+
+	# Default configuration file
+	docp config-files/krb5.conf "${destdir}"/etc/
+
+	docp util/ac_check_krb5.m4 "${destdir}"/usr/share/aclocal
+}
+

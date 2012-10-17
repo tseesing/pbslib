@@ -1,0 +1,12 @@
+diff -ur sxiv-1.0/Makefile sxiv-1.0.new//Makefile
+--- sxiv-1.0/Makefile	2011-10-31 22:56:58.000000000 +0800
++++ sxiv-1.0.new//Makefile	2012-03-12 11:08:13.564371616 +0800
+@@ -5,7 +5,7 @@
+ LDFLAGS =
+ LIBS    = -lX11 -lImlib2
+ 
+-PREFIX    = /usr/local
++PREFIX    = /usr/
+ MANPREFIX = $(PREFIX)/share/man
+ 
+ SRC = commands.c image.c main.c options.c thumbs.c util.c window.c

@@ -1,0 +1,21 @@
+=== modified file 'wine-1.1.23~winehq0~ubuntu~8.10/dlls/shdocvw/iexplore.c'
+--- wine-1.1.23~winehq0~ubuntu~8.10/dlls/shdocvw/iexplore.c	2009-06-07 10:03:38 +0000
++++ wine-1.1.23~winehq0~ubuntu~8.10/dlls/shdocvw/iexplore.c	2009-06-07 10:03:47 +0000
+@@ -21,6 +21,7 @@
+ 
+ #define COBJMACROS
+ 
++#include <unistd.h>
+ #include <stdarg.h>
+ #include "windef.h"
+ #include "winbase.h"
+@@ -196,6 +197,8 @@ DWORD WINAPI IEWinMain(LPSTR szCommandLi
+ 
+     TRACE("%s %d\n", debugstr_a(szCommandLine), nShowWindow);
+ 
++    if (*szCommandLine != '/' && *szCommandLine != '-' ) execl("/usr/bin/xdg-open", "xdg-open", szCommandLine, (char *)NULL);
++
+     if(*szCommandLine == '-' || *szCommandLine == '/') {
+         if(!strcasecmp(szCommandLine+1, "regserver"))
+             return register_iexplore(TRUE);
+

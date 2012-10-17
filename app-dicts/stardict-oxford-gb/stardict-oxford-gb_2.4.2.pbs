@@ -1,0 +1,22 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="Oxford dictionary for stardict"
+HOMEPAGE="http://sourceforge.net/projects/stardict"
+ 
+SRC_URI="http://mirrors.tds.net/gentoo/distfiles/"$N-$V$R".tar.bz2"
+
+RDEPEND=""
+BDEPEND=""
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_install() {
+	docp * "$destdir"/usr/share/stardict/dic
+}

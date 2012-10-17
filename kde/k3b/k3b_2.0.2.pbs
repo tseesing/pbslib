@@ -1,0 +1,41 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="Feature-rich and easy to handle CD burning application"
+HOMEPAGE="http://k3b.org/"
+LICENSE="GPL"
+PACKAGER="StartOS Developers<>"
+
+SRC_URI="http://downloads.sourceforge.net/"$N"/"$N-$V".tar.bz2"
+CHECKSUM="c86113af31a2032e57fd2f302b5f637a"
+
+RDEPEND="ffmpeg libdvdread libkcddb libmad libmpcdec libsamplerate musicbrainz taglib"
+BDEPEND="cmake automoc4"
+RECOMMENDED=""
+
+INSTALL="$N.install"
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_patch() {
+	dopatch k3b-2.0.2-ffmpeg.patch k3b-2.0.2-libavformat54.patch
+}
+
+pbs_config() {
+	doconfig -DCMAKE_BUILD_TYPE=Release
+}
+
+pbs_build() {
+	domake
+}
+
+pbs_install() {
+	domkinstall
+}
+

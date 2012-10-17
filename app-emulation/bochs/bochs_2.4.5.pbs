@@ -1,0 +1,54 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="a LGPL-ed pc emulator"
+HOMEPAGE="http://bochs.sourceforge.net/"
+LICENSE="LGPL"
+PACKAGER="StartOS Developers"
+
+SRC_URI="http://downloads.sourceforge.net/project/"$N"/"$N"/"$V"/"$N-$V".tar.gz"
+
+RDEPEND="alsa-lib gcc-lib libXpm"
+BDEPEND=""
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_config() {
+	config+="--with-x11
+		 --enable-repeat-speedups
+		 --enable-trace-cache
+   		 --enable-fast-function-calls
+		 --enable-disasm 
+		 --enable-logging 
+		 --enable-raw-serial 
+		 --enable-vbe 
+		 --enable-clgd54xx 
+		 --enable-fpu
+		 --enable-alignment-check 
+		 --enable-monitor-mwait 
+		 --enable-gameport 
+		 --enable-iodebug 
+		 --enable-ne2000 
+		 --enable-sb16=linux 
+		 --enable-plugins 
+		 --enable-cdrom 
+		 --enable-pci 
+		 --enable-pcidev 
+		 --enable-pnic"
+	doconfig
+}
+
+pbs_build() {
+	domake
+}
+
+pbs_install() {
+	domkinstall
+}
+

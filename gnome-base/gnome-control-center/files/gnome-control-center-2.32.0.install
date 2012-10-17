@@ -1,0 +1,40 @@
+. /usr/lib/ybs/funcs
+
+files="/etc/gconf/schemas/gnome-control-center.schemas /etc/gconf/schemas/fontilus.schemas /etc/gconf/schemas/control-center.schemas"
+
+post_install() {
+        ## Allow users to modify the list of user-specified or Favorite applications
+        gnome2_install_defaut_gconf "string" "/desktop/gnome/applications/main-menu/lock-down/user_modifiable_apps" "True"
+        
+	## Enable mouse clicks with tochpad
+        gnome2_install_defaut_gconf "bool" "/desktop/gnome/peripherals/touchpad/tap_to_click"  "True"
+        gnome2_install_defaut_gconf "bool" "/desktop/gnome/peripherals/touchpad/disable_while_typing" "True"
+	
+	gnome2_install_schema $files
+        gnome2_icon_cache_update
+        gnome2_rarian_sk_update
+        gnome2_desktop_database_update
+        gnome2_mime_database_update
+        gnome2_gconfd_reload
+}
+
+pre_remove() {
+	gnome2_uninstall_schema $files
+}
+
+post_upgrade() {
+	gnome2_icon_cache_update
+	gnome2_rarian_sk_update
+	gnome2_desktop_database_update
+	gnome2_mime_database_update
+	gnome2_gconfd_reload
+}
+
+post_downgrade() {
+	post_upgrade
+}
+
+post_remove() {
+	post_upgrade
+}
+

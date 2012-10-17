@@ -1,0 +1,38 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="Oggz provides a simple programming interface for reading and writing Ogg files and streams"
+COMMENTS="liboggz is a C library for reading and writing Ogg files and streams. It offers various improvements over the reference libogg, including support for seeking, validation and timestamp interpretation"
+HOMEPAGE="http://www.xiph.org/oggz/"
+LICENSE="GPLv2+"
+PACKAGER="StartOS Developers"
+
+SRC_URI="http://downloads.xiph.org/releases/"$N"/"$N-$V".tar.gz"
+
+RDEPEND="libogg"
+RECOMMENDED=""
+BDEPEND=""
+CONFLICT=""
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_config() {
+	config+=""
+	doconfig
+}
+
+pbs_build() {
+	domake
+}
+
+pbs_install() {
+	domkinstall
+	dodoc COPYING README
+}
+

@@ -1,0 +1,80 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="GTK Instant Messenger client, split into finch and libpurple"
+HOMEPAGE="http://pidgin.im/"
+REPO=""
+LICENSE="GPL"
+PACKAGER="StartOS Developers"
+
+SRC_URI="http://nchc.dl.sourceforge.net/project/pidgin/Pidgin/"$V$R"/"$N-$V$R".tar.bz2"
+
+PROVIDE="libpurple finch"
+
+RDEPEND="atk cairo dbus dbus-glib expat farsight2 fontconfig freetype gcc-lib 
+	 glib2 gdk-pixbuf glibc gnutls gstreamer gtk+ libgcrypt libgpg-error libICE 
+	 libpng libSM libtasn1 libX11 libXau libxcb libXcomposite libXcursor 
+	 libXdamage libXdmcp libXext libXfixes libXi libxml2 libXrandr libXrender 
+	 libXScrnSaver ncurses nspr nss pango pixman startup-notification 
+	 util-linux-ng zlib gtkspell meanwhile"
+RECOMMENDED="libpurple finch"
+BDEPEND=""
+
+OPTIONAL="aspell: for spelling correction;
+          avahi: Bonjour protocol support;
+          ca-certificates: SSL CA certificates;
+          gstreamer0.10-good-plugins: video and voice support;
+          tk: Tcl/Tk scripting support;
+	  dbus-python: for purple-remote and purple-url-handler"
+
+INSTALL="$N.install"
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_config() {
+	config+="--disable-schemas-install"
+	doconfig
+}
+
+pbs_build() {
+	domake
+}
+
+pbs_install() {
+	#for linking
+	make -C libpurple DESTDIR="$destdir" install-libLTLIBRARIES
+	domkinstall -C pidgin 
+	domkinstall -C doc 
+        #clean up libpurple
+        make -C libpurple DESTDIR="$destdir" uninstall-libLTLIBRARIES
+	dodesktop "$N.desktop"
+	rm -f "$destdir"/usr/share/man/man1/finch.1
+}
+
+libpurple_install() {
+	DESCRIPTION="IM library extracted from Pidgin"
+	RDEPEND="farsight2 dbus-glib gnutls"
+        for dir in libpurple share/sounds share/ca-certs m4macros po; do
+		domkinstall -C "${dir}"
+	done
+}
+
+
+finch_install() {
+	DESCRIPTION="A ncurses-based messaging client"
+	RDEPEND="libpurple python gstreamer"
+	#for linking
+	make -C libpurple DESTDIR="$destdir" install-libLTLIBRARIES
+	domkinstall -C finch
+	domkinstall -C doc 
+        #clean up libpurple
+        make -C libpurple DESTDIR="$destdir" uninstall-libLTLIBRARIES
+	rm -f "$destdir"/usr/share/man/man1/pidgin.1
+}
+

@@ -1,0 +1,40 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="KDE games"
+HOMEPAGE="http://kde.org/"
+LICENSE="GPL,LGPL,FDL"
+PACKAGER="StartOS Developers"
+
+SRC_URI="http://download.kde.org/stable/"$V"/src/"$N-$V".tar.xz"
+CHECKSUM="5fba586e45493aa8000dd73c31e14d21"
+
+RDEPEND="acl attica attr bzip2 dbus expat flac fontconfig freetype gcc-lib glib2 glibc gst-plugins-base gstreamer herqq json-c kdelibs libcap libdbusmenu-qt libdrm libffi libICE libogg libpng libqzeitgeist libSM libsndfile libvorbis libX11 libXau libxcb libXcursor libXdamage libXdmcp libXext libXfixes libXft libXi libxml2 libXpm libXrender libXtst libXxf86vm mesa openal openssl phonon pulseaudio qca qt-core soprano sqlite strigi udev util-linux-ng xz-utils zlib"
+RECOMMENDED=""
+BDEPEND="cmake automoc4"
+OPTIONAL=""
+CONFLICT=""
+
+INSTALL="$N.install"
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_config() {
+	doconfig -DCMAKE_BUILD_TYPE=Release \
+	         -DCMAKE_SKIP_RPATH=ON
+}
+
+pbs_build() {
+	domake
+}
+
+pbs_install() {
+	domkinstall
+}
+

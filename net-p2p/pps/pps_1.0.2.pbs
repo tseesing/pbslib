@@ -1,0 +1,35 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="PPStream for Linux"
+HOMEPAGE="http://www.pps.tv/"
+LICENSE="custom"
+PACKAGER="StartOS Developers"
+
+SRC_URI="http://download.ppstream.com/linux/PPStream.deb"
+
+RDEPEND="qt-core expat fontconfig freetype fuse gcc-lib glib2 gdk-pixbuf glibc libdrm libICE libpng libSM libX11 libXau libxcb libXdmcp libXext libXrender mesa udev util-linux-ng zlib"
+BDEPEND=" "
+RECOMMENDED=""
+CONFLICT=""
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_patch() {
+	dopatch desktop.patch
+}
+
+pbs_install() {
+	docp data/*  "$destdir"
+	docp "$filesdir"/PPStream "$destdir"/usr/bin/
+	cd "$destdir"
+	chmod +x usr/bin/PPStream
+	doln /usr/bin/PPStream usr/bin/pps
+}
+

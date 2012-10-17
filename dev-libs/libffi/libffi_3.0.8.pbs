@@ -1,0 +1,36 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="a portable, high level programming interface to various calling conventions."
+HOMEPAGE="http://sourceware.org/libffi/"
+LICENSE="custom"
+PACKAGER="StartOS Developers"
+ 
+SRC_URI=" http://sources-redhat.mirrors.airband.net/"$N"/"$N-$V".tar.gz "
+
+RDEPEND="glibc"
+BDEPEND="188a4f79fdac2310044b44b7d3918ef9"
+
+INSTALL="$N.install"
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_config() {
+	doconfig
+}
+
+pbs_build(){
+	domake
+}
+
+pbs_install() {
+	domkinstall
+	dodoc LICENSE
+}
+

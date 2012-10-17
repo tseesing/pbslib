@@ -1,0 +1,37 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="Video Acceleration (VA) API for Linux"
+HOMEPAGE="http://www.freedesktop.org/wiki/Software/vaapi"
+GROUP="x11-lib"
+LICENSE="MIT"
+PACKAGER="StartOS Developers"
+
+SRC_URI="http://cgit.freedesktop.org/"$N"/snapshot/"$N-$V".tar.bz2"
+
+RDEPEND="gcc-lib glibc libdrm libX11 libXau libxcb libXdamage libXdmcp libXext libXfixes libXxf86vm mesa"
+BDEPEND=""
+RECOMMENDED=""
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_config() {
+	config+=""
+	doconfig
+}
+
+pbs_build() {
+	domake
+}
+
+pbs_install() {
+	domkinstall
+	dodoc COPYING
+}
+

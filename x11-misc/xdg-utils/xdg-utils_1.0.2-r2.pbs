@@ -1,0 +1,37 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="Portland utils for cross-platform/cross-toolkit/cross-desktop interoperability"
+HOMEPAGE="http://portland.freedesktop.org/"
+LICENSE="GPL"
+PACKAGER="StartOS Developers"
+YARCH="any"
+
+SRC_URI="http://portland.freedesktop.org/download/"$N-$V".tgz"
+
+RDEPEND="xprop xset shared-mime-info"
+BDEPEND="desktop-file-utils"
+RECOMMENDED=""
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_config() {
+	dopatch startos-xdg-open.patch
+	doconfig
+}
+
+pbs_build() {
+	domake
+}
+
+pbs_install() {
+	domkinstall
+	docp $filesdir/xdg-settings "$destdir"/usr/bin/
+}
+

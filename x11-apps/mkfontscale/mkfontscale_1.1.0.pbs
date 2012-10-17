@@ -1,0 +1,36 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="create an index of scalable font files for X"
+HOMEPAGE="http://xorg.freedesktop.org/"
+GROUP="x11-apps"
+LICENSE="custom"
+PACKAGER="StartOS Developers"
+
+SRC_URI="http://xorg.freedesktop.org/archive/individual/app/"$N-$V".tar.bz2"
+CHECKSUM="414fcb053418fb1418e3a39f4a37e0f7"
+
+RDEPEND="freetype libfontenc"
+BDEPEND=""
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_config() {
+	doconfig
+}
+
+pbs_build() {
+	domake
+}
+
+pbs_install() {
+	domkinstall
+	dodoc COPYING
+}
+

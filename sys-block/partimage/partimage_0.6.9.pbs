@@ -1,0 +1,44 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="Partimage is opensource disk backup software."
+HOMEPAGE="www.partimage.org"
+LICENSE="GPLv2"
+PACKAGER="StartOS Developers"
+
+SRC_URI="http://downloads.sourceforge.net/"$N"/"$N-$V".tar.bz2"
+CHECKSUM="1bc046fd915c5debbafc85729464e513"
+
+RDEPEND="bzip2 gcc-lib newt openssl"
+BDEPEND=""
+RECOMMENDED=""
+CONFLICT=""
+
+INSTALL="$N.install"
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_patch() {
+	dopatch partimage-0.6.9-zlib-1.2.6.patch
+}
+
+pbs_config() {
+	config+=""
+	doconfig
+}
+
+pbs_build() {
+	domake
+}
+
+pbs_install() {
+	domkinstall
+	docp_rename "$filesdir"/partimaged.pam "${destdir}"/etc/pam.d/partimaged
+}
+

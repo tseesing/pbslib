@@ -1,0 +1,41 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="Telepathy Logger is a session daemon that should be activated whenever telepathy is being used."
+HOMEPAGE="http://telepathy.freedesktop.org/wiki/Logger"
+LICENSE="LGPL2.1"
+PACKAGER="StartOS Developers"
+
+SRC_URI="http://telepathy.freedesktop.org/releases/"$N"/"$N-$V".tar.bz2"
+CHECKSUM="0b891b860c7f3a01926f5cc22fd26120"
+
+RDEPEND="libxml2 sqlite telepathy-glib"
+RECOMMENDED=""
+BDEPEND=""
+CONFLICT=""
+
+INSTALL="$N.install"
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_config() {
+	config+=" --disable-schemas-compile
+		  --disable-static
+		  --enable-introspection=no "
+	doconfig
+}
+
+pbs_build() {
+	domake
+}
+
+pbs_install() {
+	domkinstall
+}
+

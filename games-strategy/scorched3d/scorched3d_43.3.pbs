@@ -1,0 +1,45 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="Multi-player tank battle in 3D (OpenGL)"
+HOMEPAGE="http://www.scorched3d.co.uk/"
+LICENSE="GPL"
+PACKAGER="StartOS Developers"
+
+SRC_URI="http://downloads.sourceforge.net/scorched3d/Scorched3D-"$V"d-src.tar.gz"
+CHECKSUM="9c3043282a9e7451468ff325bef3b04c"
+
+RDEPEND="fftw(>=3.3.1) freealut libvorbis sdl-net wxWidgets"
+RECOMMENDED=""
+BDEPEND=""
+OPTIONAL=""
+CONFLICT=""
+
+INSTALL="$N.install"
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_config() {
+	cd scorched
+	WANT_WXGTK=gtk2
+	sh autogen.sh --prefix=/usr \
+	               --datadir=/usr/share/scorched3d \
+		       --disable-openaltest \
+		       --with-wx-config=wx-config
+}
+
+pbs_build() {
+	domake
+}
+
+pbs_install() {
+	domkinstall
+	dodesktop "$N".desktop "$N".png
+}
+

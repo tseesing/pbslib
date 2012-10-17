@@ -1,0 +1,42 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="tarball tools"
+HOMEPAGE="http://www.gnu.org/software/tar/"
+LICENSE="GPLv3"
+PACKAGER="StartOS Developers"
+
+SRC_URI="http://ftp.gnu.org/gnu/tar/"$N-$V".tar.bz2"
+
+RDEPEND="glibc"
+BDEPEND=""
+
+INSTALL="$N.install"
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_config() {
+	# Adds a man page for tar
+	dopatch tar-1.26-man-1.patch
+	
+	# Run configure as root is not recommended, bypass this check. 
+	export FORCE_UNSAFE_CONFIGURE=1
+
+	config+=" --bindir=/bin --libexecdir=/usr/sbin "
+	doconfig
+}
+
+pbs_build() {
+	domake
+}
+
+pbs_install() {
+	domkinstall
+}
+

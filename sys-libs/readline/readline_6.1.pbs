@@ -1,0 +1,40 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="Another cute console display library"
+HOMEPAGE="http://tiswww.case.edu/php/chet/readline/rltop.html"
+LICENSE=""
+PACKAGER="StartOS Developers"
+
+SRC_URI="ftp://ftp.gnu.org/gnu/"$N"/"$N-$V$R".tar.gz "
+
+RDEPEND="glibc ncurses"
+BDEPEND=" "
+
+INSTALL="$N.install"
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_config() {
+	dopatch readline61-001 readline61-002
+	doconfig
+}
+
+pbs_build() {
+	make SHLIB_LIBS=-lncurses
+}
+
+pbs_install() {
+	domkinstall
+	dodoc doc/*.{ps,pdf,html,dvi}
+	cd "$destdir"
+	doln libreadline.so.6  usr/lib/libreadline.so
+	doln libhistory.so.6   usr/lib/libhistory.so
+}
+

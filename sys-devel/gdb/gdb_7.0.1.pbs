@@ -1,0 +1,37 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="GNU debugger"
+HOMEPAGE="http://sources.redhat.com/gdb/"
+LICENSE="GPL-2"
+PACKAGER="StartOS Developers"
+
+SRC_URI="ftp://lug.mtu.edu/gentoo/distfiles/"$N-$V$R".tar.bz2 "
+
+RDEPEND="ncurses zlib glibc python expat "
+BDEPEND=""
+RECOMMENDED=""
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_config() {
+	dopatch 05_all_readline-headers.patch
+	dopatch 20_all_gdb-tdep-opcode-include-workaround.patch
+	dopatch 35_all_gdb-6.3-security-errata-20050610.patch
+	dopatch 80_all_gdb-6.5-dwarf-stack-overflow.patch
+	doconfig
+}
+
+pbs_build() {
+	domake
+}
+
+pbs_install() {
+	domkinstall
+}

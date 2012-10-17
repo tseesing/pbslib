@@ -1,0 +1,30 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="Adobe Flash Player plugin"
+HOMEPAGE="http://www.adobe.com/"
+LICENSE="http://www.adobe.com/cn/products/eulas/"
+PACKAGER="StartOS Developers"
+
+SRC_URI="http://fpdownload.macromedia.com/get/flashplayer/current/install_flash_player_10_linux.tar.gz"
+
+RDEPEND=""
+BDEPEND=" "
+RECOMMENDED=""
+
+NOTES=""
+
+pbs_unpack() {
+	dounpack
+}
+
+pbs_install() {
+	docp libflashplayer.so  "$destdir"/usr/lib/adobe-flashplugin
+        for i in xulrunner mozilla iceape iceweasel firefox midbrowser xulrunner-addons; do
+	      doln /usr/lib/adobe-flashplugin/libflashplayer.so "$destdir"/usr/lib/"${i}"/plugins/libflashplayer.so
+	done
+}

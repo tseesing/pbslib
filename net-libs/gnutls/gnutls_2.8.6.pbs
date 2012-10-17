@@ -1,0 +1,35 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="A TLS 1.0 and SSL 3.0 implementation for the GNU project"
+HOMEPAGE="http://www.gnutls.org/"
+LICENSE="GPLv3 LGPL"
+PACKAGER="StartOS Developers"
+
+SRC_URI="http://ftp.gnu.org/pub/gnu/"$N"/"$N-$V".tar.bz2"
+
+RDEPEND="guile libgcrypt libtasn1 zlib"
+BDEPEND=""
+
+INSTALL="$N.install"
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_config() {
+	doconfig
+}
+
+pbs_build() {
+	domake
+}
+
+pbs_install() {
+	domkinstall
+}
+

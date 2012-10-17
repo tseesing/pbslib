@@ -1,0 +1,39 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="decode and send infra-red signals of many commonly used remote controls"
+HOMEPAGE="http://www.lirc.org/"
+LICENSE="GPL"
+PACKAGER="StartOS Developers"
+ 
+SRC_URI="http://downloads.sourceforge.net/project/"$N"/LIRC/0.8.6/"$N-$V".tar.bz2"
+
+RDEPEND="libSM libX11"
+BDEPEND=""
+RECOMMENDED=""
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_config() {
+	config+="--with-moduledir=/lib/modules/"$(uname -r)"/misc 
+	         --disable-debug 
+		 --with-x 
+		 --with-driver=none"
+	doconfig
+}
+
+pbs_build() {
+	domake
+}
+
+pbs_install() {
+	domkinstall
+	rm "$destdir"/var/run/lirc/*
+}
+

@@ -1,0 +1,29 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="The world's coolest brainstorming and mind mapping software and the best way to share ideas."
+HOMEPAGE="http://www.xmind.net/"
+LICENSE="custom"
+PACKAGER="StartOS Developers"
+
+SRC_URI="http://dl2.xmind.net/xmind-downloads/"$N-$V".201011212218_i386.deb"
+
+RDEPEND="glibc jre"
+BDEPEND=""
+RECOMMENDED=""
+CONFLICT=""
+
+INSTALL="$N.install"
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_install() {
+	docp data/*  "$destdir"
+}
+

@@ -1,0 +1,34 @@
+From 157042db7612cfe76f3833637c784d461b39a6fb Mon Sep 17 00:00:00 2001
+From: Nai Xia <nai.xia@gmail.com>
+Date: Mon, 30 Apr 2012 14:29:30 +0800
+Subject: [PATCH] UKSM: let the default uksm_sleep_jiffies 10 msecs
+
+---
+ mm/uksm.c |    4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
+
+diff --git a/mm/uksm.c b/mm/uksm.c
+index 5c717a0..427b61d 100644
+--- a/mm/uksm.c
++++ b/mm/uksm.c
+@@ -378,7 +378,7 @@ static unsigned long uksm_pages_unshared;
+ static unsigned long uksm_scan_batch_pages = 60000;
+ 
+ /* Milliseconds ksmd should sleep between batches */
+-static unsigned int uksm_sleep_jiffies = 2;
++static unsigned int uksm_sleep_jiffies;
+ 
+ /*
+  * The threshold used to filter out thrashing areas,
+@@ -5269,6 +5269,8 @@ static int __init uksm_init(void)
+ 	int err;
+ 	unsigned int sr = uksm_min_scan_ratio;
+ 
++	uksm_sleep_jiffies = msecs_to_jiffies(10);
++
+ 	uksm_scan_ladder_size = 1;
+ 	while (sr < UKSM_SCAN_RATIO_MAX) {
+ 		sr *= uksm_scan_ratio_delta;
+-- 
+1.7.9.5
+

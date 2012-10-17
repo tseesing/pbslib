@@ -1,0 +1,37 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="FocusWriter is a simple, distraction-free writing environment."
+HOMEPAGE="http://gottcode.org/focuswriter/"
+LICENSE="GPL"
+PACKAGER="StartOS Developers"
+
+SRC_URI="http://gottcode.org/"$N"/"$N-$V$R"-src.tar.bz2"
+
+RDEPEND="hunspell libao libzip qt-core"
+BDEPEND=""
+RECOMMENDED=""
+CONFLICT=""
+
+INSTALL="$N.install"
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_config() {
+	qmake PREFIX=/usr
+}
+
+pbs_build() {
+	domake
+}
+
+pbs_install() {
+	make INSTALL_ROOT="$destdir/" install
+}
+

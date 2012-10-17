@@ -1,0 +1,8 @@
+#!/bin/sh
+#
+#
+
+[ -f /etc/profile.d/jdk.sh ] && . /etc/profile.d/jdk.sh
+
+java -jar /opt/debbuildercn/PkgBuilder.jar
+

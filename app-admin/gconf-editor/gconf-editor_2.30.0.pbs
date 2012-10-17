@@ -1,0 +1,35 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="An editor to the GNOME 2 config system"
+HOMEPAGE="http://www.gnome.org/"
+LICENSE="GPL-2"
+PACKAGER="StartOS Developers"
+
+SRC_URI="http://ftp.gnome.org/pub/GNOME/desktop/2.30/2.30.2/sources/"$N-$V$R".tar.bz2"
+
+RDEPEND="atk cairo dbus dbus-glib expat fontconfig freetype gcc-lib gconf glib2 gdk-pixbuf glibc gtk+ libpng libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libXrandr libXrender orbit pango pixman zlib"
+BDEPEND="                            "
+RECOMMENDED=""
+
+NOTES=""
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_config() {
+	doconfig
+}
+
+pbs_build() {
+	domake
+}
+
+pbs_install() {
+	domkinstall
+}

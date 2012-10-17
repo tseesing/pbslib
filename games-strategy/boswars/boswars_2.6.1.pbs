@@ -1,0 +1,44 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="Bos Wars is a futuristic real-time strategy game."
+HOMEPAGE="http://www.boswars.org/"
+LICENSE="GPL"
+PACKAGER="StartOS Developers"
+
+SRC_URI="http://www.boswars.org/dist/releases/"$N-$V"-src.tar.gz"
+CHECKSUM="7f0fcf440e8d765c484f09074f993b40"
+
+RDEPEND="libsdl libtheora libvorbis lua"
+RECOMMENDED=""
+BDEPEND=""
+OPTIONAL=""
+CONFLICT=""
+
+INSTALL="$N.install"
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_config() {
+	config=""
+	doconfig
+}
+
+pbs_build() {
+	domake
+}
+
+pbs_install() {
+	docp campaigns doc graphics intro languages maps scripts sounds units "$destdir"/opt/bos/
+	install -D -m 755 boswars "$destdir"/opt/bos/boswars
+	cd "$destdir"
+	install -D -m 755 "$filesdir"/boswars usr/bin/boswars
+	dodesktop "$N".desktop "$N".png 
+}
+

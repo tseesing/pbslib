@@ -1,0 +1,42 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="Keyboard and console utilities"
+HOMEPAGE="http://freshmeat.net/projects/kbd"
+LICENSE="GPL"
+PACKAGER="StartOS Developers"
+
+SRC_URI="ftp://ftp.kernel.org/pub/linux/utils/"$N"/"$N-$V".tar.bz2 "
+
+RDEPEND="glibc"
+BDEPEND=""
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_patch() {
+	dopatch kbd-1.15.3-es.po_fix-1.patch
+}
+
+pbs_config() {
+	config+=""
+	doconfig
+}
+
+pbs_build() {
+	domake
+}
+
+pbs_install() {
+	domkinstall
+	cd "$destdir"
+	domv usr/bin/{kbd_mode,loadkeys,openvt,setfont} bin
+	# For initramfs-tools
+	docp_rename "$filesdir"/hook_kbd usr/share/initramfs-tools/hooks/kbd
+}
+

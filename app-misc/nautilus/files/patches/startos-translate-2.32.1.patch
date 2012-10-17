@@ -1,0 +1,25 @@
+diff -ur nautilus-2.32.1/po/zh_CN.po nautilus-2.32.1.new//po/zh_CN.po
+--- nautilus-2.32.1/po/zh_CN.po	2011-09-14 10:28:07.114581547 +0800
++++ nautilus-2.32.1.new//po/zh_CN.po	2011-09-14 10:30:32.887819282 +0800
+@@ -734,6 +734,21 @@
+ msgid "Home icon visible on desktop"
+ msgstr "在桌面上显示主文件夹图标"
+ 
++#: ../src/file-manager/fm-directory-view.c:7342
++msgid "Ma_ke Link on desktop"
++msgstr "在桌面上创建链接"
++
++#. name, stock id, label
++#: ../src/file-manager/fm-directory-view.c:7225
++msgid "Copy to"
++msgstr "复制到"
++
++#. name, stock id, label
++#: ../src/file-manager/fm-directory-view.c:7226
++msgid "Move to"
++msgstr "移动到"
++
++
+ #: ../libnautilus-private/apps_nautilus_preferences.schemas.in.h:48
+ msgid ""
+ "If set to \"after_current_tab\", then new tabs are inserted after the "

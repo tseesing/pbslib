@@ -1,0 +1,37 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="Tools to make diffs and compare files"
+HOMEPAGE="http://www.gnu.org/software/diffutils/diffutils.html"
+LICENSE="GPL"
+PACKAGER="StartOS Developers"
+
+SRC_URI="http://ftp.gnu.org/pub/gnu/"$N"/"$N-$V".tar.gz"
+
+RDEPEND="glibc"
+BDEPEND=""
+
+INSTALL="$N.install"
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_config() {
+	doconfig
+}
+
+pbs_build() {
+	# Diffutils wants ed as the default editor. The following sed will change the default to vim
+	sed -i 's@\(^#define DEFAULT_EDITOR_PROGRAM \).*@\1"vi"@' lib/config.h
+	domake
+}
+
+pbs_install() {
+	domkinstall
+}
+

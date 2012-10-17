@@ -1,0 +1,43 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="An open-source, multi-platform flight simulator"
+HOMEPAGE="http://www.flightgear.org"
+LICENSE="GPL"
+PACKAGER="StartOS Developers"
+
+SRC_URI="http://mirrors.ibiblio.org/pub/mirrors/flightgear/ftp/Source/"$N-$V".tar.bz2"
+CHECKSUM="943f784f55c7e11ddce6082d2d1dbba4"
+
+RDEPEND="apr apr-util cyrus-sasl e2fsprogs expat file fltk fontconfig freealut freeglut freetype gcc-lib glibc keyutils krb5 libdrm libICE libjpeg-turbo libpng libproxy libSM libX11 libXau libxcb libXdamage libXdmcp libXext libXfixes libXft libXi libXinerama libXmu libXrandr libXrender libXt libXxf86vm mesa neon openal openscenegraph openssl sqlite subversion udev util-linux-ng zlib"
+RECOMMENDED=""
+BDEPEND="cmake"
+OPTIONAL=""
+CONFLICT=""
+
+INSTALL="$N.install"
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_config() {
+	cmake -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_INSTALL_LIBDIR=lib .
+}
+
+pbs_build() {
+	domake
+	sed -i 's|Exec=.*|Exec=fgfs --fg-root=/usr/share/flightgear/data|' package/flightgear.desktop
+}
+
+pbs_install() {
+	domkinstall
+	echo "Categories=Game;" >>package/flightgear.desktop
+	dodesktop package/flightgear.desktop package/RedHat/flightgear.48.png
+	ln -sf flightgear "$destdir"/usr/share/FlightGear
+}
+

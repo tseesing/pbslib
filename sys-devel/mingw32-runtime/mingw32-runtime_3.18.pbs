@@ -1,0 +1,55 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="mingw32 run-time library"
+HOMEPAGE="http://www.mingw.org/"
+REPO=""
+LICENSE="GPL"
+PACKAGER="StartOS Developers"
+
+SRC_URI="http://ncu.dl.sourceforge.net/project/mingw/MinGW/BaseSystem/RuntimeLibrary/MinGW-RT/mingwrt-3.18/mingwrt-3.18-mingw32-src.tar.gz 
+http://ncu.dl.sourceforge.net/project/mingw/MinGW/BaseSystem/RuntimeLibrary/Win32-API/w32api-3.14/w32api-3.14-mingw32-src.tar.gz"
+
+RDEPEND=""
+BDEPEND="mingw32-headers mingw32-binutils mingw32-gcc-lib-base mingw32-w32api"
+RECOMMENDED=""
+CONFLICT=""
+OPTIONS="nodev nostrip"
+
+pbs_unpack() {
+        dounpack
+	tar xf "$YPPATH_SOURCE"/w32api-3.14-mingw32-src.tar.gz
+	ln -sf w32api-3.14-mingw32 w32api
+}
+
+pbs_config() {
+	TARGET="i586-mingw32msvc"
+	TARGET_OS="mingw32"
+	INSTALL_DIR="/usr/mingw"
+
+	mkdir build && cd build
+	config="--prefix="$INSTALL_DIR"
+	            --host="$TARGET"
+		    --build=${BUILD_PLATFORM="`../config.guess`"}"
+	unset CC
+	unset CXX
+	unset CFLAGS
+	unset CXXFLAGS
+	export PATH=$PATH:"$INSTALL_DIR"/bin
+	../configure $config
+}
+
+pbs_build() {
+	export CFLAGS="-O2 -mms-bitfields -march=${TARGET_CPU-i386}"
+	export LDFLAGS="-s"
+	domake
+}
+
+pbs_install() {
+	domkinstall
+}
+

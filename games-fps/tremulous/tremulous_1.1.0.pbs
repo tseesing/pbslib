@@ -1,0 +1,74 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="A free team based FPS/RTS hybrid built on the ioq3 engine. Includes community updates."
+HOMEPAGE="http://tremulous.net"
+LICENSE="GPL"
+PACKAGER="StartOS Developers"
+
+SRC_URI=" http://releases.mercenariesguild.net/client/mgclient_source_Release_1.011.tar.gz
+          http://releases.mercenariesguild.net/client/mg-client-manual.txt
+	  http://releases.mercenariesguild.net/tremded/mg_tremded_source_1.01.tar.gz
+	  http://projects.mercenariesguild.net/attachments/download/109/game.qvm
+	  http://projects.mercenariesguild.net/attachments/download/111/lakitu7_qvm.txt "
+CHECKSUM=" 95e526b961f875ba66b6fdd4842c913b
+           e0e1b6e03e7596da00a77fe638560402
+	   938bdf944dff667b74e2132a87a49780
+	   90343619d140557d0c481a61ffa5756c
+	   a0b8970b33a27798c125f9152049013c "
+
+RDEPEND="tremulous-data(=1.1.0) libsdl openal"
+RECOMMENDED=""
+BDEPEND=""
+OPTIONAL=""
+CONFLICT=""
+
+INSTALL="$N.install"
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_patch() {
+	dopatch fix_fs26749.patch 
+}
+
+pbs_build() {
+	unset ARCH
+
+	# Build the server	
+	mkdir -p tremded
+	bsdtar -x -C tremded -f "$YPPATH_SOURCE"/mg_tremded_source_1.01.tar.gz
+	cd tremded
+	domake || return 1
+
+	# Build the client
+	cd "$srcdir"
+	domake
+}
+
+pbs_install() {
+	local _arch=x86
+	
+	# Install the client
+	install -Dm755 build/release-linux-"$_arch"/tremulous."$_arch" "$destdir"/opt/tremulous/tremulous."$_arch"
+	install -D -m755 "$filesdir"/tremulous.sh                      "$destdir"/usr/bin/tremulous
+
+	# Install the documentation
+	dodoc "$YPPATH_SOURCE"/{mg-client-manual.txt,lakitu7_qvm.txt}
+
+	# Install the .desktop and icon files
+	dodesktop tremulous.desktop tremulous.xpm
+
+	# Install the server
+	cd tremded
+	install -D -m755 build/release-linux-"$_arch"/tremded."$_arch" "$destdir"/opt/tremulous/tremded."$_arch"
+	install -D -m644 "$YPPATH_SOURCE"/game.qvm                     "$destdir"/opt/tremulous/game.qvm
+	install -D -m755 "$filesdir"/tremded.sh                        "$destdir"/usr/bin/tremded
+	#install -D -m644 "$filesdir"/tremdedrc                        "$destdir"/etc/tremdedrc
+}
+

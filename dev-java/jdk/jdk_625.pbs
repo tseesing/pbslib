@@ -1,0 +1,46 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="Sun's Java Development Kit"
+HOMEPAGE="http://java.sun.com"
+LICENSE="custom"
+PACKAGER="StartOS Developers"
+
+SRC_URI="http://download.oracle.com/auth/otn-pub/java/jdk/6u25-b06/jdk-6u25-linux-i586.bin"
+
+RDEPEND="glibc jre"
+BDEPEND=""
+RECOMMENDED=""
+CONFLICT="sun-jdk"
+
+INSTALL="$N.install"
+
+pbs_unpack() {
+	mkdir -p "$N-$V$R"
+	cd "$N-$V$R"
+	mkdir -p unbundle-jdk
+	cd unbundle-jdk
+	sh "$YPPATH_SOURCE"/jdk-6u25-linux-i586.bin --accept-license
+	cd ../
+	sh $filesdir/construct.sh unbundle-jdk linux-jdk linux-jre
+}
+
+pbs_install() {
+	# Make DESTDIR="$destdir" install
+	# Copy icon
+	docp_rename linux-jdk/jre/lib/desktop/icons/hicolor/48x48/apps/sun-java.png "$destdir"/usr/share/pixmaps/java.png
+	rm -rf linux-jdk/jre
+	docp linux-jdk/* "$destdir"/opt/java/
+	docp_rename $filesdir/jdk.profile    "$destdir"/etc/profile.d/jdk.sh
+	docp_rename $filesdir/jdk.profile.csh "$destdir"/etc/profile.d/jdk.csh
+	
+	cd "$destdir"
+	docp opt/java/{COPYRIGHT,LICENSE,THIRDPARTYLICENSEREADME.txt} usr/share/licenses/jdk/
+	# Desktop entries
+	dodesktop java-control-panel.desktop java-monitoring-and-management-console.desktop java-policy-settings.desktop java-visualvm.desktop java-web-start.desktop
+}
+

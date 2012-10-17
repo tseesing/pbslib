@@ -1,0 +1,37 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="Chinese Lunar Library"
+HOMEPAGE="http://code.google.com/p/liblunar/"
+LICENSE="GPL"
+PACKAGER="StartOS Developers"
+
+SRC_URI="http://liblunar.googlecode.com/files/"$N-$V".tar.gz"
+
+RDEPEND="glib2 glibc"
+BDEPEND=""
+RECOMMENDED=""
+CONFLICT=""
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_config() {
+	config+="--enable-introspection=no"
+	doconfig
+}
+
+pbs_build() {
+	domake
+}
+
+pbs_install() {
+	domkinstall
+	#docp $filesdir/holiday.zh_CN  "$destdir"/usr/share/liblunar/
+}
+

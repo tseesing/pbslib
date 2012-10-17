@@ -1,0 +1,42 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="Saves audio and video data from an IEEE (FireWire) digital source"
+HOMEPAGE="http://www.kinodv.org/"
+LICENSE="GPL"
+PACKAGER="StartOS Developers"
+
+SRC_URI="http://downloads.sourceforge.net/kino/"$N-$V".tar.gz"
+CHECKSUM="b39a242ce63e80fc347ab59931f75649"
+
+RDEPEND="libavc1394 libdv libiec61883 libquicktime"
+RECOMMENDED=""
+BDEPEND=""
+OPTIONAL=""
+CONFLICT=""
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_patch() {
+	dopatch
+}
+
+pbs_config() {
+	config+=""
+	doconfig
+}
+
+pbs_build() {
+	domake
+}
+
+pbs_install() {
+	domkinstall
+}
+

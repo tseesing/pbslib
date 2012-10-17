@@ -1,0 +1,63 @@
+diff -ur nautilus-2.32.1-ylmf3/po/zh_CN.po nautilus-2.32.1-ylmf3.new//po/zh_CN.po
+--- nautilus-2.32.1-ylmf3/po/zh_CN.po	2012-03-12 09:38:00.847245261 +0800
++++ nautilus-2.32.1-ylmf3.new//po/zh_CN.po	2012-03-12 09:41:31.107845382 +0800
+@@ -2081,7 +2081,7 @@
+ #: ../libnautilus-private/nautilus-file-operations.c:1312
+ #: ../libnautilus-private/nautilus-file-operations.c:1378
+ msgid "If you delete an item, it will be permanently lost."
+-msgstr "如果您删除了一个项目，则该项将永久丢失。"
++msgstr "如果您永久删除了一个项目，则该项将永久丢失。"
+ 
+ #: ../libnautilus-private/nautilus-file-operations.c:1332
+ msgid "Empty all items from Trash?"
+@@ -4187,7 +4187,7 @@
+ #: ../src/file-manager/fm-directory-view.c:8751
+ #: ../src/file-manager/fm-tree-view.c:1256
+ msgid "_Delete"
+-msgstr "删除(_D)"
++msgstr "永久删除(_D)"
+ 
+ #. tooltip
+ #: ../src/file-manager/fm-directory-view.c:7187
+diff -ur nautilus-2.32.1-ylmf3/po/zh_HK.po nautilus-2.32.1-ylmf3.new//po/zh_HK.po
+--- nautilus-2.32.1-ylmf3/po/zh_HK.po	2010-11-13 19:59:01.000000000 +0800
++++ nautilus-2.32.1-ylmf3.new//po/zh_HK.po	2012-03-12 09:44:16.794059680 +0800
+@@ -1986,7 +1986,7 @@
+ #: ../libnautilus-private/nautilus-file-operations.c:1312
+ #: ../libnautilus-private/nautilus-file-operations.c:1378
+ msgid "If you delete an item, it will be permanently lost."
+-msgstr "如果直接刪除本項目，它會無法還原。"
++msgstr "如果永久刪除本項目，它會無法還原。"
+ 
+ #: ../libnautilus-private/nautilus-file-operations.c:1332
+ msgid "Empty all items from Trash?"
+@@ -4121,7 +4121,7 @@
+ #: ../src/file-manager/fm-directory-view.c:8751
+ #: ../src/file-manager/fm-tree-view.c:1256
+ msgid "_Delete"
+-msgstr "刪除(_D)"
++msgstr "永久刪除(_D)"
+ 
+ #. tooltip
+ #: ../src/file-manager/fm-directory-view.c:7187
+diff -ur nautilus-2.32.1-ylmf3/po/zh_TW.po nautilus-2.32.1-ylmf3.new//po/zh_TW.po
+--- nautilus-2.32.1-ylmf3/po/zh_TW.po	2012-03-12 09:38:00.847245261 +0800
++++ nautilus-2.32.1-ylmf3.new//po/zh_TW.po	2012-03-12 09:45:01.681418110 +0800
+@@ -2093,7 +2093,7 @@
+ #: ../libnautilus-private/nautilus-file-operations.c:1312
+ #: ../libnautilus-private/nautilus-file-operations.c:1378
+ msgid "If you delete an item, it will be permanently lost."
+-msgstr "如果直接刪除本項目，它會無法還原。"
++msgstr "如果永久刪除本項目，它會無法還原。"
+ 
+ #: ../libnautilus-private/nautilus-file-operations.c:1332
+ msgid "Empty all items from Trash?"
+@@ -4244,7 +4244,7 @@
+ #: ../src/file-manager/fm-directory-view.c:8751
+ #: ../src/file-manager/fm-tree-view.c:1256
+ msgid "_Delete"
+-msgstr "刪除(_D)"
++msgstr "永久刪除(_D)"
+ 
+ #. tooltip
+ #: ../src/file-manager/fm-directory-view.c:7187

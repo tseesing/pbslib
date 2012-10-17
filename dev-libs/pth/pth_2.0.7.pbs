@@ -1,0 +1,36 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="GNU Portable Threads"
+HOMEPAGE="http://www.gnu.org/software/pth/"
+LICENSE="GPL"
+PACKAGER="StartOS Developers"
+
+SRC_URI="ftp://ftp.gnu.org/gnu/"$N"/"$N-$V".tar.gz"
+
+RDEPEND="glibc"
+BDEPEND=""
+RECOMMENDED=""
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_config() {
+	dopatch pth-2.0.5-parallelfix.patch
+	doconfig
+}
+
+pbs_build() {
+	domake
+}
+
+pbs_install() {
+	domkinstall
+	dodoc AUTHORS ChangeLog COPYING INSTALL NEWS README 
+}
+

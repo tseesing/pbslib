@@ -1,0 +1,11 @@
+. /usr/lib/ybs/funcs
+
+post_install() {
+	files="standards.info-gz stabs.info-gz gdbint.info-2-gz gdbint.info-1-gz gdbint.info-gz gdb.info-6-gz gdb.info-5-gz gdb.info-4-gz gdb.info-3-gz gdb.info-2-gz gdb.info-1-gz gdb.info-gz configure.info-gz bfd.info-gz annotate.info-gz"
+        doinstall_info $files
+}       
+
+pre_remove() {
+	files="standards.info-gz stabs.info-gz gdbint.info-2-gz gdbint.info-1-gz gdbint.info-gz gdb.info-6-gz gdb.info-5-gz gdb.info-4-gz gdb.info-3-gz gdb.info-2-gz gdb.info-1-gz gdb.info-gz configure.info-gz bfd.info-gz annotate.info-gz"
+        doremove_info $files
+}

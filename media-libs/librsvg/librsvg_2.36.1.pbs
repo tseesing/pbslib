@@ -1,0 +1,37 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="Scalable Vector Graphics (SVG) rendering library"
+HOMEPAGE="http://live.gnome.org/LibRsvg"
+LICENSE="GPL"
+PACKAGER="StartOS Developers"
+
+SRC_URI="http://ftp.acc.umu.se/pub/gnome/sources/"$N"/2.36/"$N-$V".tar.xz"
+CHECKSUM="786b95e1a091375c5ef2997a21c69ff24d7077afeff18197355f54d9dcbcd8c5"
+
+RDEPEND="gtk+ libcroco"
+BDEPEND=""
+
+INSTALL="$N.install"
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_config() {
+	config+="--with-svgz --with-croco"
+	doconfig
+}
+
+pbs_build() {
+	domake
+}
+
+pbs_install() {
+	domkinstall
+}
+

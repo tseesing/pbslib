@@ -1,0 +1,46 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="Standard GNU utilities (chmod, cp, dd, dir, ls, who)"
+HOMEPAGE="http://www.gnu.org/software/coreutils"
+LICENSE="GPL"
+PACKAGER="StartOS Developers"
+
+SRC_URI="http://ftp.gnu.org/gnu/"$N"/"$N-$V".tar.gz"
+
+RDEPEND="acl gmp libcap"
+BDEPEND=""
+RECOMMENDED=""
+
+INSTALL="$N.install"
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_config() {
+	# A known issue with the uname program from this package is that the -p switch always returns unknown.
+	dopatch coreutils-8.12-uname-1.patch
+	config+="--enable-no-install-program=kill,uptime"
+	doconfig
+}
+
+pbs_build() {
+	domake
+}
+
+pbs_install() {
+	domkinstall
+	# For FHS
+	cd "$destdir"
+	domv usr/bin/{cat,chgrp,chmod,chown,cp,date,dd,df,echo} bin
+	domv usr/bin/{false,ln,ls,mkdir,mknod,mv,pwd,rm}        bin
+	domv usr/bin/{rmdir,stty,sync,true,uname}  	     bin
+	domv usr/bin/chroot 				     usr/sbin
+	domv usr/bin/{head,sleep,nice} 	                     bin
+}
+

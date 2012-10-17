@@ -1,0 +1,11 @@
+[Unit]
+Description=LiveCD installer
+After=dbus.service
+Before=display-manager.service
+Conflicts=display-manager.service 
+
+[Service]
+ExecStart=/etc/init.d/osinstaller start
+
+[Install]
+WantedBy=graphical.target

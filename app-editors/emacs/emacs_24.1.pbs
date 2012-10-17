@@ -1,0 +1,55 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="The extensible, customizable, self-documenting real-time display editor"
+HOMEPAGE="http://www.gnu.org/software/emacs/"
+LICENSE="GPL"
+PACKAGER="StartOS Developers"
+
+SRC_URI="ftp://ftp.gnu.org/gnu/emacs/"$N-$V".tar.bz2"
+CHECKSUM="8ba0932c498bc8fb10d7ddba52227e5b"
+
+RDEPEND="alsa-lib gconf giflib imagemagick ncurses"
+BDEPEND=""
+RECOMMENDED=""
+CONFLICT=""
+
+INSTALL="$N.install"
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_config() {
+	config+="--with-x-toolkit=gtk --with-xft"
+	doconfig
+}
+
+pbs_build() {
+	domake
+}
+
+pbs_install() {
+	domkinstall
+	cd "$destdir"
+
+	# Remove conflict with ctags package
+	mv usr/bin/{ctags,ctags.emacs}
+	mv usr/share/man/man1/{ctags.1.gz,ctags.emacs.1}
+	
+	# Fix all the 777 perms on directories
+	find usr/share/emacs/"$V" -type d -exec chmod 755 {} \;
+	
+	# Fix user/root permissions on usr/share files
+	find usr/share/emacs/"$V" -exec chown root:root {} \;
+	
+	# Fix perms on /var/games
+	chmod 775 var/games
+	chmod 775 var/games/emacs
+	chmod 664 var/games/emacs/*
+}
+

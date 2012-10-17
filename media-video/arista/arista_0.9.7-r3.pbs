@@ -1,0 +1,37 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="An easy to use multimedia transcoder for the GNOME Desktop"
+HOMEPAGE="http://www.transcoder.org/"
+LICENSE="LGPL"
+PACKAGER="StartOS Developers"
+
+SRC_URI="http://programmer-art.org/media/releases/arista-transcoder/"$N-$V".tar.gz"
+CHECKSUM="cb6ce0b98a39fd9de33a2d307db8546f"
+
+RDEPEND="gtk+ pygtk pygobject py2cairo"
+BDEPEND=""
+RECOMMENDED=""
+CONFLICT=""
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_config() {
+	config+=""
+	doconfig
+}
+
+pbs_build() {
+	domake
+}
+
+pbs_install() {
+	domkinstall
+}
+

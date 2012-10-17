@@ -1,0 +1,36 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="A desktop session recorder producing Ogg video/audio files"
+HOMEPAGE="http://recordmydesktop.sourceforge.net/"
+LICENSE="GPL"
+PACKAGER="StartOS Developers"
+
+SRC_URI="http://downloads.sourceforge.net/project/recordmydesktop/gtk-recordMyDesktop/"$V$R"/"$N-$V".tar.gz"
+
+RDEPEND="recordmydesktop"
+BDEPEND=" "
+RECOMMENDED=""
+
+INSTALL="$N.install"
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_config() {
+	doconfig
+}
+
+pbs_build() {
+	domake
+}
+
+pbs_install() {
+	domkinstall
+}
+

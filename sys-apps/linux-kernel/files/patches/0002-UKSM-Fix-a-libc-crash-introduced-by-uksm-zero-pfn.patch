@@ -1,0 +1,27 @@
+From 96986fdf4e36aa9fe1279a45484d309e94bf6daa Mon Sep 17 00:00:00 2001
+From: Nai Xia <nai.xia@gmail.com>
+Date: Wed, 2 May 2012 21:41:43 +0800
+Subject: [PATCH 2/2] UKSM: Fix a libc crash introduced by uksm zero pfn
+
+---
+ mm/memory.c |    4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/mm/memory.c b/mm/memory.c
+index cd33a69..8253f66 100644
+--- a/mm/memory.c
++++ b/mm/memory.c
+@@ -1563,8 +1563,8 @@ split_fallthrough:
+ 	page = vm_normal_page(vma, address, pte);
+ 	if (unlikely(!page)) {
+ 		if ((flags & FOLL_DUMP) ||
+-		    !is_zero_pfn(pte_pfn(pte)) ||
+-		    !is_uksm_zero_pfn(pte_pfn(pte)))
++		    !(is_zero_pfn(pte_pfn(pte)) ||
++		      is_uksm_zero_pfn(pte_pfn(pte))))
+ 			goto bad_page;
+ 		page = pte_page(pte);
+ 	}
+-- 
+1.7.9.5
+

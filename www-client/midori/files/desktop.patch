@@ -1,0 +1,12 @@
+diff -ur midori-20110808/data/midori.desktop.in midori-20110808.new//data/midori.desktop.in
+--- midori-20110808/data/midori.desktop.in	2011-08-09 16:03:55.591914767 +0800
++++ midori-20110808.new//data/midori.desktop.in	2011-08-09 16:08:04.500693155 +0800
+@@ -5,7 +5,7 @@
+ _GenericName=Web Browser
+ _Comment=Lightweight web browser
+ Categories=GTK;Network;WebBrowser;
+-MimeType=text/html;application/xhtml+xml;x-scheme-handler/http;x-scheme-handler/https;x-scheme-handler/geo;image/svg+xml;
++MimeType=text/html;application/xhtml+xml;image/svg+xml;
+ Exec=midori %U
+ Icon=midori
+ Terminal=false

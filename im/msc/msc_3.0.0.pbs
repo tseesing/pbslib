@@ -1,0 +1,30 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="misuland im app"
+HOMEPAGE="http://www.misuland.com/"
+LICENSE="custom"
+PACKAGER="StartOS Developers"
+
+SRC_URI="http://download.misuland.com/"$N-$V".tar.gz"
+CHECKSUM="901b31b58273d3a22f4a1a8257462c36"
+
+RDEPEND="alsa-lib libXtst"
+BDEPEND=""
+RECOMMENDED=""
+CONFLICT=""
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_install() {
+	docp * "$destdir"/opt/"$N"
+	dodesktop "msc.desktop" "msc.png"
+	doln /opt/"$N"/msc "$destdir"/usr/bin/msc
+}
+

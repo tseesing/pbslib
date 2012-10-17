@@ -1,0 +1,38 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="Off-the-Record Messaging Library and Toolkit"
+HOMEPAGE="http://www.cypherpunks.ca/otr"
+LICENSE="GPL,LGPL"
+PACKAGER="StartOS Developers"
+
+SRC_URI="http://www.cypherpunks.ca/otr/"$N-$V".tar.gz"
+CHECKSUM="e5e10b8ddaf59b0ada6046d156d0431cd2790db9"
+
+RDEPEND="libgcrypt"
+RECOMMENDED=""
+BDEPEND=""
+OPTIONAL=""
+CONFLICT=""
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_config() {
+	config+="--disable-static"
+	doconfig
+}
+
+pbs_build() {
+	domake
+}
+
+pbs_install() {
+	domkinstall
+}
+

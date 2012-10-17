@@ -1,0 +1,38 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="SYSLINUX, PXELINUX, ISOLINUX, EXTLINUX and MEMDISK bootloaders"
+HOMEPAGE="http://syslinux.zytor.com/"
+REPO=""
+LICENSE="GPL"
+PRIORITY=""
+PACKAGER="StartOS Developers"
+
+SRC_URI="http://www.kernel.org/pub/linux/utils/boot/"$N"/"$N-$V$R".tar.bz2"
+
+RDEPEND=""
+BDEPEND=" "
+RECOMMENDED=""
+CONFLICT=""
+
+NOTES=""
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_config() {
+	doconfig
+}
+
+pbs_build() {
+	domake
+}
+
+pbs_install() {
+	domkinstall INSTALLROOT="$destdir"
+}

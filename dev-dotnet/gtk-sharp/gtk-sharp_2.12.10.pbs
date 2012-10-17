@@ -1,0 +1,36 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="GtkSharp's gtk module of the gtk-sharp tarball"
+HOMEPAGE="http://www.mono-project.com/GtkSharp"
+LICENSE="GPL"
+PACKAGER="StartOS Developers"
+
+SRC_URI="http://ftp.novell.com/pub/mono/sources/gtk-sharp212/"$N-$V".tar.bz2"
+
+RDEPEND="mono atk cairo expat fontconfig freetype gcc-lib gdk-pixbuf glib2 glibc gtk+ libglade libpng libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libxml2 libXrandr libXrender pango pixman zlib"
+BDEPEND=""
+RECOMMENDED=""
+CONFLICT=""
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_config() {
+	config+="--disable-static"
+	doconfig
+}
+
+pbs_build() {
+	domake
+}
+
+pbs_install() {
+	domkinstall
+}
+

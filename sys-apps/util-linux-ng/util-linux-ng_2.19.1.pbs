@@ -1,0 +1,39 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="util-linux is a random collection of Linux utilities"
+HOMEPAGE="http://git.kernel.org/?p=utils/util-linux-ng/util-linux-ng.git"
+
+SRC_URI="http://www.kernel.org/pub/linux/utils/"$N"/v2.19/util-linux-"$V".tar.bz2"
+
+RDEPEND="glibc ncurses zlib"
+BDEPEND=""
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_config() {
+	config+="--enable-arch 
+	             --enable-partx
+		     --enable-write
+	             --disable-static 
+		     --disable-fallocate "
+	doconfig
+}
+
+pbs_build() {
+	domake
+}
+
+pbs_install() {
+	domkinstall
+	dodoc AUTHORS NEWS README* TODO
+	#
+	dounit hwclock-load.service hwclock-save.service
+}
+

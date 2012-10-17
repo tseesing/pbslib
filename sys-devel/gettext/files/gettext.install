@@ -1,0 +1,9 @@
+. /usr/lib/ybs/funcs
+
+post_install() {
+        doinstall_info gettext.info.gz autosprintf.info.gz 
+}       
+
+pre_remove() {
+        doremove_info gettext.info.gz autosprintf.info.gz
+}

@@ -1,0 +1,25 @@
+. /usr/lib/ybs/funcs
+
+post_install() {
+	for GCONF_DIR in /etc/gconf/gconf.xml.mandatory /etc/gconf/gconf.xml.defaults;do
+		GCONF_TREE="$GCONF_DIR"/%gconf-tree.xml
+	        if [ ! -f "$GCONF_TREE" ]; then
+		        gconf-merge-tree "$GCONF_DIR"
+		        chmod 644 "$GCONF_TREE"
+		        find "$GCONF_DIR" -mindepth 1 -maxdepth 1 -type d -exec rm -rf {} \;
+		        rm -f "$GCONF_DIR/%gconf.xml"
+		        SIGNAL_DAEMONS=yes
+		 fi
+	 done
+         gnome2_gconfd_reload
+}
+
+post_upgrade() {
+	post_install
+}
+
+
+post_downgrade() {
+	post_upgrade
+}
+

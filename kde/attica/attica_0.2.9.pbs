@@ -1,0 +1,33 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="A library to access Open Collaboration Service providers"
+HOMEPAGE="http://www.kde.org/"
+LICENSE="GPL"
+PACKAGER="StartOS Developers<>"
+
+SRC_URI="http://download.kde.org/stable/$N/"$N-$V".tar.bz2"
+
+RDEPEND=""
+BDEPEND="cmake"
+
+#INSTALL="$N.install"
+
+pbs_unpack() {
+       dounpack
+}
+
+pbs_config() {
+	cmake .     -DCMAKE_BUILD_TYPE=Release \
+    			-DCMAKE_INSTALL_PREFIX=/usr
+}
+
+pbs_build() {
+	domake
+}
+
+pbs_install() {
+	domkinstall
+}
+

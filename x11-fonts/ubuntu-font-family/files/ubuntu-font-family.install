@@ -1,0 +1,15 @@
+. /usr/lib/ybs/funcs
+
+post_install() {
+	name="$1"
+	dofont /usr/share/fonts/truetype/"$name"
+}
+
+post_upgrade() {
+	post_install "$1"
+}
+
+post_downgrade() {
+	post_install "$1"
+}
+

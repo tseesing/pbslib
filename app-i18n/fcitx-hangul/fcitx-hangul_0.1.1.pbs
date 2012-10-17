@@ -1,0 +1,41 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="The Hangul engine for fcitx"
+HOMEPAGE="http://code.google.com/p/fcitx/"
+LICENSE="GPL"
+PACKAGER="StartOS Developers"
+GROUP="fcitx"
+
+SRC_URI="http://fcitx.googlecode.com/files/"$N-$V".tar.xz"
+CHECKSUM="45ce2f8ee5b9c1f7940bee5e0e424391602aa0e3"
+
+RDEPEND="fcitx libhangul"
+RECOMMENDED=""
+BDEPEND="cmake"
+OPTIONAL=""
+CONFLICT=""
+
+INSTALL="$N.install"
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_config() {
+	config+=""
+	doconfig
+}
+
+pbs_build() {
+	domake
+}
+
+pbs_install() {
+	domkinstall
+}
+

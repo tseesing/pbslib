@@ -1,0 +1,42 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="A high-quality data compressor"
+HOMEPAGE="http://www.bzip.org/"
+
+SRC_URI="http://www.bzip.org/$V/"$N-$V".tar.gz "
+
+RDEPEND="glibc"
+BDEPEND=""
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_config() {
+	dopatch bzip2-1.0.5-install_docs-1.patch
+	#The following command ensures installation of symbolic links are relative
+	sed -i 's@\(ln -s -f \)$(PREFIX)/bin/@\1@' Makefile
+}
+
+pbs_build() {
+	#creates a dynamic libbz2.so  library and links the Bzip2 
+	#utilities against it
+	make -f Makefile-libbz2_so
+	make clean
+	domake
+}
+
+pbs_install() {
+	mkdir -p "$destdir"/usr
+	make PREFIX="$destdir"/usr install
+	domv "$destdir"/usr/man  "$destdir"/usr/share
+	docp libbz2.so* "$destdir"/lib
+	cd "$destdir"
+	doln /lib/libbz2.so.1.0 lib/libbz2.so
+	doln /lib/libbz2.so.1.0 usr/lib/libbz2.so 
+}

@@ -1,0 +1,84 @@
+diff -ur systemd-44-r6/Makefile.am systemd-44-r6.new//Makefile.am
+--- systemd-44-r6/Makefile.am	2012-10-07 02:56:27.909178070 +0000
++++ systemd-44-r6.new//Makefile.am	2012-10-07 02:57:46.055846212 +0000
+@@ -372,6 +372,11 @@
+ 	src/99-systemd.rules.in \
+ 	man/custom-html.xsl
+ 
++if TARGET_STARTOS
++dist_systemunit_DATA += \
++	units/startos/rc-local.service 
++endif
++
+ if TARGET_FEDORA
+ dist_systemunit_DATA += \
+ 	units/fedora/prefdm.service \
+@@ -2452,6 +2457,11 @@
+ 		$(LN_S) multi-user.target runlevel5.target )
+ endif
+ 
++if TARGET_STARTOS
++	( cd $(DESTDIR)$(systemunitdir)/multi-user.target.wants && \
++		$(LN_S) $(systemunitdir)/rc-local.service rc-local.service )
++endif
++
+ if TARGET_SUSE
+ 	$(MKDIR_P) -m 0755 $(DESTDIR)$(systemunitdir)/final.target.wants
+ 	( cd $(DESTDIR)$(systemunitdir) && \
+diff -ur systemd-44-r6/Makefile.in systemd-44-r6.new//Makefile.in
+--- systemd-44-r6/Makefile.in	2012-10-07 02:56:27.909178070 +0000
++++ systemd-44-r6.new//Makefile.in	2012-10-07 02:57:46.055846212 +0000
+@@ -508,6 +508,9 @@
+ @HAVE_XSLTPROC_TRUE@	$(dist_man_MANS) \
+ @HAVE_XSLTPROC_TRUE@	${XML_FILES:.xml=.html}
+ 
++@TARGET_STARTOS_TRUE@am__append_12 = \
++@TARGET_STARTOS_TRUE@	units/startos/rc-local.service \
++
+ subdir = .
+ DIST_COMMON = README $(am__configure_deps) \
+ 	$(am__dist_dbuspolicy_DATA_DIST) \
+@@ -1493,6 +1496,7 @@
+ 	units/systemd-ask-password-console.path units/syslog.target \
+ 	units/var-lock.mount units/fedora/prefdm.service \
+ 	units/fedora/rc-local.service units/fedora/halt-local.service \
++	units/startos/rc-local.service \
+ 	units/mandriva/prefdm.service \
+ 	units/frugalware/display-manager.service \
+ 	units/suse/rc-local.service units/suse/halt-local.service \
+@@ -8433,6 +8437,9 @@
+ @TARGET_SUSE_TRUE@		rm -f halt-local.service && \
+ @TARGET_SUSE_TRUE@		$(LN_S) $(systemunitdir)/halt-local.service halt-local.service )
+ 
++@TARGET_STARTOS_TRUE@	( cd $(DESTDIR)$(systemunitdir)/multi-user.target.wants && \
++@TARGET_STARTOS_TRUE@		$(LN_S) $(systemunitdir)/rc-local.service rc-local.service )
++
+ @TARGET_MAGEIA_TRUE@	$(MKDIR_P) -m 0755 $(DESTDIR)$(systemunitdir)/final.target.wants
+ @TARGET_MAGEIA_TRUE@	( cd $(DESTDIR)$(systemunitdir)/final.target.wants && \
+ @TARGET_MAGEIA_TRUE@		rm -f halt-local.service && \
+--- /dev/null                                    2012-03-16 08:58:05.000000000 +0800
++++ systemd-44.new/units/startos/rc-local.service 2012-04-06 14:13:55.115273290 +0800
+@@ -0,0 +1,22 @@
++#  This file is part of systemd.
++#
++#  systemd is free software; you can redistribute it and/or modify it
++#  under the terms of the GNU General Public License as published by
++#  the Free Software Foundation; either version 2 of the License, or
++#  (at your option) any later version.
++
++[Unit]
++Description=/etc/rc.local Compatibility
++ConditionFileIsExecutable=/etc/rc.local
++
++[Service]
++Type=forking
++ExecStart=/etc/rc.local
++TimeoutSec=0
++StandardOutput=tty
++RemainAfterExit=yes
++SysVStartPriority=99
++
++[Install]
++WantedBy=multi-user.target
++
+

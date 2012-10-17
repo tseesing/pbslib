@@ -1,0 +1,37 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="Network status and configuration systray applet"
+HOMEPAGE="http://sourceforge.net/projects/lxde/files/"
+LICENSE="GPL"
+PACKAGER="StartOS Developers"
+
+SRC_URI="http://ncu.dl.sourceforge.net/project/lxde/LXNM%20%28network%20manager%29/LXNM%200.2.2/"$N-$V".tar.gz"
+
+RDEPEND="glib2"
+BDEPEND=""
+RECOMMENDED=""
+CONFLICT=""
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_config() {
+	config+=""
+	doconfig
+}
+
+pbs_build() {
+	domake
+}
+
+pbs_install() {
+	domkinstall
+}
+
+

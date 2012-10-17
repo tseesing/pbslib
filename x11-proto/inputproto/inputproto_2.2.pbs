@@ -1,0 +1,37 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="X.Org Input protocol headers"
+HOMEPAGE="http://xorg.freedesktop.org/"
+GROUP="x11-proto"
+LICENSE="custom"
+PACKAGER="StartOS Developers"
+
+SRC_URI="http://www.x.org/releases/X11R7.7/src/proto/"$N-$V".tar.bz2"
+CHECKSUM="13c8aedaf98a92e282b7e456c0a5bed9"
+
+RDEPEND=""
+BDEPEND=""
+OPTIONS="nodev"
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_config() {	
+	doconfig
+}
+
+pbs_build() {
+	domake
+}
+
+pbs_install() {
+	domkinstall
+	dodoc COPYING
+}
+

@@ -1,0 +1,6 @@
+#!/bin/bash
+
+. /etc/profile.d/jdk.sh
+. /etc/profile.d/jre.sh
+
+sh -c "(sleep 30 && nohup /usr/share/nutstore/bin/nutstore-pydaemon.py >/dev/null 2>&1) &"

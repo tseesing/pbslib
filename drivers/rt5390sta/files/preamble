@@ -1,0 +1,5 @@
+Enhances: kernel-%1  
+Requires: %{name}-common
+%if 0%{?suse_version} >= 1120
+Requires: kernel-%1
+%endif

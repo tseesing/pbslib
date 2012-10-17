@@ -1,0 +1,396 @@
+--- p7zip-9.20.1~dfsg.1.orig/CPP/7zip/Archive/Zip/ZipHandlerOut.cpp	2011-04-01 23:14:01.000000000 +0400
++++ p7zip-9.20.1~dfsg.1/CPP/7zip/Archive/Zip/ZipHandlerOut.cpp	2011-11-12 23:57:50.848940912 +0400
+@@ -198,8 +199,8 @@
+           MultiByteToUnicodeString(ui.Name, CP_OEMCP) != name));
+ #else
+ 	// FIXME
+-        ui.Name = UnicodeStringToMultiByte(name, CP_OEMCP);
+-        tryUtf8 = (!m_ForceLocal);
++        ui.Name = UnicodeStringToMultiByte(name, CP_OEMCP, true);
++        tryUtf8 = (!m_ForceLocal && !encoding_isavailable());
+ #endif
+       }
+ 
+--- p7zip-9.20.1~dfsg.1.orig/CPP/7zip/UI/Console/MainAr.cpp	2011-04-01 23:14:01.000000000 +0400
++++ p7zip-9.20.1~dfsg.1/CPP/7zip/UI/Console/MainAr.cpp	2011-11-12 23:46:44.205681865 +0400
+@@ -15,6 +15,9 @@
+ 
+ #include "ConsoleClose.h"
+ 
++#include <iconv.h>
++extern iconv_t encoding_descriptor(bool getreversedescriptor);
++
+ using namespace NWindows;
+ 
+ CStdOutStream *g_StdStream = 0;
+@@ -46,6 +49,8 @@
+ 
+   NConsoleClose::CCtrlHandlerSetter ctrlHandlerSetter;
+   int res = 0;
++  iconv_t iconv_descriptor = encoding_descriptor(FALSE);
++  iconv_t iconv_descriptor_reverse = encoding_descriptor(TRUE);
+   try
+   {
+     res = Main2(
+@@ -123,5 +128,9 @@
+     (*g_StdStream) << kUnknownExceptionMessage;
+     return (NExitCode::kFatalError);
+   }
++  if (iconv_descriptor != (iconv_t)-1)
++    iconv_close(iconv_descriptor);
++  if (iconv_descriptor_reverse != (iconv_t)-1)
++    iconv_close(iconv_descriptor_reverse);
+   return  res;
+ }
+--- p7zip-9.20.1~dfsg.1.orig/CPP/7zip/UI/Console/Main.cpp	2011-04-01 23:14:01.000000000 +0400
++++ p7zip-9.20.1~dfsg.1/CPP/7zip/UI/Console/Main.cpp	2011-11-12 18:39:13.055478000 +0400
+@@ -93,7 +93,8 @@
+     "  -p{Password}: set Password\n"
+     #endif
+     "  -r[-|0]: Recurse subdirectories\n"
+-    "  -scs{UTF-8 | WIN | DOS}: set charset for list files\n"
++    "  -scs{UTF-8 | WIN | DOS}: set charset for list files (not implemented);\n"
++    "   please set LC_DOS env to the desired codepage instead (e.g. =CP866)!\n"
+     "  -sfx[{name}]: Create SFX archive\n"
+     "  -si[{name}]: read data from stdin\n"
+     "  -slt: show technical information for l (List) command\n"
+--- p7zip-9.20.1~dfsg.1.orig/CPP/Common/StringConvert.h	2011-04-01 23:14:01.000000000 +0400
++++ p7zip-9.20.1~dfsg.1/CPP/Common/StringConvert.h	2011-11-12 23:04:41.813350508 +0400
+@@ -6,10 +6,11 @@
+ #include "MyWindows.h"
+ #include "MyString.h"
+ #include "Types.h"
++#include "iconv_prog.h"
+ 
+ UString MultiByteToUnicodeString(const AString &srcString, UINT codePage = CP_ACP);
+ AString UnicodeStringToMultiByte(const UString &srcString, UINT codePage, char defaultChar, bool &defaultCharWasUsed);
+-AString UnicodeStringToMultiByte(const UString &srcString, UINT codePage = CP_ACP);
++AString UnicodeStringToMultiByte(const UString &srcString, UINT codePage = CP_ACP, bool toLcDosCharset = false );
+ 
+ 
+ inline const wchar_t* GetUnicodeString(const wchar_t* unicodeString)
+--- p7zip-9.20.1~dfsg.1.orig/CPP/Common/StringConvert.cpp	2011-04-01 23:14:01.000000000 +0400
++++ p7zip-9.20.1~dfsg.1/CPP/Common/StringConvert.cpp	2011-11-12 23:46:07.989504805 +0400
+@@ -132,6 +132,7 @@
+ 
+ #else /* LOCALE_IS_UTF8 */
+ 
++#include "iconv_prog.cpp"
+ UString MultiByteToUnicodeString(const AString &srcString, UINT /* codePage */ )
+ {
+ #ifdef ENV_HAVE_MBSTOWCS
+@@ -145,16 +146,22 @@
+     }
+   }
+ #endif
+-
++  char *result;
++  if (encoding_isavailable())
++    if (encoding_convert(srcString, srcString.Length()*sizeof(char), &result, FALSE, FALSE) >= 0)
++      return (wchar_t*)result;
+   UString resultString;
+   for (int i = 0; i < srcString.Length(); i++)
+     resultString += wchar_t(srcString[i] & 255);
+-
+   return resultString;
+ }
+ 
+-AString UnicodeStringToMultiByte(const UString &srcString, UINT /* codePage */ )
++AString UnicodeStringToMultiByte(const UString &srcString, UINT /* codePage */, bool toLcDosCharset)
+ {
++  char *result;
++  if (encoding_isavailable() && toLcDosCharset)
++    if (encoding_convert((char*)(const wchar_t*)srcString, srcString.Length()*sizeof(wchar_t), &result, TRUE, FALSE) >= 0)
++      return result;
+ #ifdef ENV_HAVE_WCSTOMBS
+   if ((global_use_utf16_conversion) && (!srcString.IsEmpty()))
+   {
+@@ -167,7 +174,6 @@
+     }
+   }
+ #endif
+-
+   AString resultString;
+   for (int i = 0; i < srcString.Length(); i++)
+   {
+--- p7zip-9.20.1~dfsg.1.orig/CPP/Common/iconv_prog.h	1970-01-01 03:00:00.000000000 +0300
++++ p7zip-9.20.1~dfsg.1/CPP/Common/iconv_prog.h	2011-11-12 23:45:06.989206594 +0400
+@@ -0,0 +1,23 @@
++#ifndef __ICONV_PROG_H
++#define __ICONV_PROG_H
++
++#include <iconv.h>
++
++/* Prototypes for the functions doing the actual work.  */
++int process_block (iconv_t cd, const char *inbuf, size_t inlen, char *outbuf,
++                          size_t outlen, int omit_invalid);
++
++
++/* Code sets to convert from and to respectively.  An empty string as the
++   default causes the 'iconv_open' function to look up the charset of the
++   currently selected locale and use it.  */
++iconv_t encoding_descriptor(bool getreversedescriptor);
++
++int encoding_isavailable();
++
++/* Allocates the memory for *outbuf automaticaly.
++   omit_invalid: If nonzero omit invalid character from output.  */
++int
++encoding_convert (const char *inbuf, int actlen, char **outbuf, bool reverse, bool omit_invalid = FALSE);
++
++#endif
+\ В конце файла нет новой строки
+--- p7zip-9.20.1~dfsg.1.orig/CPP/Common/iconv_prog.cpp	1970-01-01 03:00:00.000000000 +0300
++++ p7zip-9.20.1~dfsg.1/CPP/Common/iconv_prog.cpp	2011-11-12 23:44:44.337095851 +0400
+@@ -0,0 +1,214 @@
++/* Convert text in given files from the specified from-set to the to-set.
++   Copyright (C) 1998-2008, 2009, 2010, 2011 Free Software Foundation, Inc.
++   This file is part of the GNU C Library.
++   Contributed by Ulrich Drepper <drepper@cygnus.com>, 1998.
++
++   This program is free software; you can redistribute it and/or modify
++   it under the terms of the GNU General Public License as published
++   by the Free Software Foundation; version 2 of the License, or
++   (at your option) any later version.
++
++   This program is distributed in the hope that it will be useful,
++   but WITHOUT ANY WARRANTY; without even the implied warranty of
++   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
++   GNU General Public License for more details.
++
++   You should have received a copy of the GNU General Public License
++   along with this program; if not, write to the Free Software Foundation,
++   Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
++
++   A bit cut version of iconv_prog.c from eglibc.
++  */
++
++#include <argp.h>
++#include <assert.h>
++#include <ctype.h>
++#include <errno.h>
++#include <error.h>
++#include <fcntl.h>
++#include <iconv.h>
++#include <langinfo.h>
++#include <locale.h>
++#include <search.h>
++#include <stdbool.h>
++#include <stdio.h>
++#include <stdlib.h>
++#include <string.h>
++#include <unistd.h>
++#include <libintl.h>
++#include <gnu/option-groups.h>
++#include "iconv_prog.h"
++
++
++/* Code sets to convert from and to respectively.  An empty string as the
++   default causes the 'iconv_open' function to look up the charset of the
++   currently selected locale and use it.  */
++iconv_t encoding_descriptor(bool getreversedescriptor)
++{
++  static iconv_t cd = (iconv_t)-1;
++  static iconv_t cd_reverse = (iconv_t)-1;
++  char *lc_dos = getenv("LC_DOS");
++  if (lc_dos)
++  {
++    cd = iconv_open ("wchar_t", lc_dos);
++    cd_reverse = iconv_open (lc_dos, "wchar_t");
++    if (cd == (iconv_t) -1 || cd_reverse == (iconv_t) -1)
++    {
++      if (errno == EINVAL)
++        error (0, 0, "iconv conversion to or from %s is not supported", lc_dos);
++      else
++	error (EXIT_FAILURE, errno, "failed to start iconv conversion processing");
++     }
++  }
++  if (getreversedescriptor)
++    return cd_reverse;
++  else
++    return cd;
++}
++
++
++int encoding_isavailable()
++{
++  return encoding_descriptor(0) != (iconv_t)-1;
++}
++
++
++
++/* Allocates the memory for *outbuf automaticaly.
++   omit_invalid: If nonzero omit invalid character from output.  */
++int
++encoding_convert (const char *inbuf, int actlen, char **outbuf, bool reverse, int omit_invalid = FALSE)
++{
++  iconv_t cd = encoding_descriptor(reverse);
++  int status = EXIT_SUCCESS;
++  //char *ctype_current;
++  size_t outlen;
++
++  if (actlen <= 0)
++    {
++      *outbuf = (char*)malloc (sizeof(wchar_t));
++      memset(*outbuf, 0, sizeof(wchar_t));
++      if (outbuf == NULL || actlen <= -1 || inbuf == NULL || cd == (iconv_t)-1)
++        return EINVAL;
++      return status;
++    }
++  /* One character may occupy from 1 to *6* bytes in UTF-8 representation + 2 starting bytes + 1 zero byte + 2 reserved. */
++  outlen = 6 * actlen + 5;
++  *outbuf = (char*)malloc (outlen);
++
++  /* Set locale.  */
++  //ctype_current = getenv("LC_CTYPE");
++  //if (ctype_current != NULL)
++  //  setlocale (LC_CTYPE, "");
++  
++  if (process_block (cd, inbuf, actlen, *outbuf, outlen, omit_invalid) != 0)
++    status = EXIT_FAILURE;
++
++  //if (ctype_current != NULL)
++  //  setlocale (LC_CTYPE, ctype_current);
++  return status;
++}
++
++
++
++int
++process_block (iconv_t cd, const char *inbuf, size_t inlen, char *outbuf,
++               size_t outlen, int omit_invalid)
++{
++  const char *start = inbuf;
++  char *inptr, *outptr, *finish;
++  size_t n;
++  int ret = 0;
++
++  inptr = (char*)inbuf;
++  while (inlen > 0)
++    {
++      outptr = outbuf;
++      n = iconv (cd, &inptr, &inlen, &outptr, &outlen);
++//fprintf(stderr, "converted %ld chars: inbuf=%s, inlen=%ld, outlen=%ld, outbuf=%s\n", n, inbuf, inlen, outlen, outbuf);
++
++      if (n == (size_t) -1 && omit_invalid && errno == EILSEQ)
++	{
++	  ret = 1;
++	  if (inlen == 0)
++	    n = 0;
++	  else
++	    errno = E2BIG;
++	}
++
++      if (n != (size_t) -1)
++	{
++	  /* All the input test is processed.  For state-dependent
++	     character sets we have to flush the state now.  */
++          finish = outptr;
++	  outptr = outbuf;
++	  n = iconv (cd, NULL, NULL, &outptr, &outlen);
++//fprintf(stderr, "terminating converted %ld chars: outbuf=%s\n", n, outbuf);
++	  /* Terminate the output string.  */
++	  //if (outlen >= sizeof (wchar_t))
++	  //  *((wchar_t *) outptr) = L'\0';
++	  if (outlen >= sizeof(wchar_t))
++	    *(wchar_t*)finish = L'\0';
++	  // TODO: Do terminate correctly. At now puts 0 at the beginning.
++
++	  if (n != (size_t) -1)
++	    break;
++
++	  if (omit_invalid && errno == EILSEQ)
++	    {
++	      ret = 1;
++	      break;
++	    }
++	}
++
++      if (errno != E2BIG)
++	{
++	  /* iconv() ran into a problem.  */
++	  switch (errno)
++	    {
++	    case EILSEQ:
++	      if (! omit_invalid)
++		error (0, 0, "illegal input sequence at position %ld",
++		       (long int) (inptr - start));
++	      break;
++	    case EINVAL:
++	      error (0, 0, "\
++incomplete character or shift sequence at end of buffer");
++	      break;
++	    case EBADF:
++	      error (0, 0, "internal error (illegal descriptor)");
++	      break;
++	    default:
++	      error (0, 0, "unknown iconv() error %d", errno);
++	      break;
++	    }
++
++	  return -1;
++	}
++    }
++
++  return ret;
++}
++
++/*
++int main(int argc, char **argv)
++{
++  const char *test =  "test";
++  char *inp, *res;
++  int ret;
++  iconv_t cd;
++
++  cd = encoding_iconv_open("UTF-8", "CP866");
++  inp = malloc (1000 * sizeof(char));
++  while ( (inp=fgets(inp, 1000, stdin)) != NULL )
++  {
++    ret = encoding_convert (cd, inp, strlen(inp), &res, 0);
++    if (ret <= -1)
++      break;
++    printf("%s",res);
++  }
++  puts("");
++  iconv_close(cd);
++  return ret;
++}
++*/
+--- p7zip-9.20.1~dfsg.1.orig/makefile	2011-04-01 23:14:01.000000000 +0400
++++ p7zip-9.20.1~dfsg.1/makefile	2011-11-12 19:57:43.026504655 +0400
+@@ -34,6 +34,7 @@
+ Client7z: common
+ 	$(MKDIR) bin/Codecs
+ 	$(MAKE) -C CPP/7zip/Bundles/Format7zFree all
++#	$(MAKE) -C CPP/7zip/Compress/Rar         all
+ 	$(MAKE) -C CPP/7zip/UI/Client7z          all
+ 
+ app: common 7zFM 7zG 7z sfx
+@@ -56,7 +57,7 @@
+ 	$(MAKE) -C CPP/7zip/UI/Client7z           depend
+ 	$(MAKE) -C CPP/7zip/UI/Console            depend
+ 	$(MAKE) -C CPP/7zip/Bundles/Format7zFree  depend
+-	$(MAKE) -C CPP/7zip/Compress/Rar          depend
++#	$(MAKE) -C CPP/7zip/Compress/Rar          depend
+ 	$(MAKE) -C CPP/7zip/UI/GUI                depend
+ 	$(MAKE) -C CPP/7zip/UI/FileManager        depend
+ 	$(MAKE) -C check/my_86_filter             depend
+@@ -68,7 +69,7 @@
+ common7z:common
+ 	$(MKDIR) bin/Codecs
+ 	$(MAKE) -C CPP/7zip/Bundles/Format7zFree all
+-	$(MAKE) -C CPP/7zip/Compress/Rar         all
++#	$(MAKE) -C CPP/7zip/Compress/Rar         all
+ 
+ 7z: common7z
+ 	$(MAKE) -C CPP/7zip/UI/Console           all
+@@ -93,7 +94,7 @@
+ 	$(MAKE) -C CPP/7zip/UI/FileManager       clean
+ 	$(MAKE) -C CPP/7zip/UI/GUI               clean
+ 	$(MAKE) -C CPP/7zip/Bundles/Format7zFree clean
+-	$(MAKE) -C CPP/7zip/Compress/Rar         clean
++#	$(MAKE) -C CPP/7zip/Compress/Rar         clean
+ 	$(MAKE) -C CPP/7zip/Compress/LZMA_Alone  clean
+ 	$(MAKE) -C CPP/7zip/Bundles/AloneGCOV    clean
+ 	$(MAKE) -C CPP/7zip/TEST/TestUI          clean

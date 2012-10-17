@@ -1,0 +1,39 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="Tools for accessing and converting various ebook file formats"
+HOMEPAGE="http://sourceforge.net/projects/ebook-tools/"
+LICENSE="custom"
+PACKAGER="StartOS Developers"
+
+SRC_URI="http://downloads.sourceforge.net/"$N"/"$N-$V".tar.gz"
+CHECKSUM="cabbd2ef9148a61ca5f6e60ca63e6045"
+
+RDEPEND="libxml2 libzip"
+RECOMMENDED=""
+BDEPEND="cmake"
+OPTIONAL=""
+CONFLICT=""
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_config() {
+	config+="-DCMAKE_BUILD_TYPE=Release"
+	doconfig
+}
+
+pbs_build() {
+	domake
+}
+
+pbs_install() {
+	domkinstall
+	dodoc ../LICENSE
+}
+

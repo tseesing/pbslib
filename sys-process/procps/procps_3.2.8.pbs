@@ -1,0 +1,42 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="Standard informational utilities and process-handling tools"
+HOMEPAGE="http://procps.sourceforge.net/"
+LICENSE="GPL LGPL"
+PACKAGER="StartOS Developers"
+
+SRC_URI="http://procps.sourceforge.net/"$N-$V".tar.gz"
+
+RDEPEND="procps-ng"
+BDEPEND=""
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_config() {
+	# The following patch adds process control group support to ps
+	dopatch procps-3.2.8-ps_cgroup-1.patch
+	
+	# The following fixes an issue with Make 3.82
+	sed -i -r '/^-include/s/\*(.*)/proc\1 ps\1/' Makefile
+	doconfig
+}
+
+pbs_build() {
+	case $ARCH in 
+		i?86) domake ;;
+      	      x86_64) domake m64=""
+	esac
+
+}
+
+pbs_install() {
+	domkinstall
+}
+

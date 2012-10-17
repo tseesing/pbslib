@@ -1,0 +1,37 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="Open Source 3D acceleration driver for nVidia cards (experimental)"
+HOMEPAGE="http://nouveau.freedesktop.org/"
+LICENSE="GPL"
+PACKAGER="StartOS Developers"
+GROUP="x11-drivers"
+
+SRC_URI="http://nouveau.freedesktop.org/release/"$N$R".tar.bz2"
+CHECKSUM="d120bdd4ee9fc3581f3b93e3b31c4574"
+
+RDEPEND="libdrm(>=2.4.37) udev xorg-server(>=1.12.2-r1)"
+BDEPEND="dri2proto fontsproto randrproto renderproto videoproto xextproto xf86driproto xproto"
+RECOMMENDED=""
+	
+pbs_unpack() {
+        dounpack
+}
+
+pbs_config() {
+        doconfig
+}
+
+pbs_build() {
+        domake
+}
+
+pbs_install() {
+       domkinstall
+       dodoc COPYING
+}
+

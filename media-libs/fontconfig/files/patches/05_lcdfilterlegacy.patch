@@ -1,0 +1,11 @@
+diff -ur fontconfig-2.8.0-ylmf1/src/fcname.c fontconfig-2.8.0-ylmf1.new//src/fcname.c
+--- fontconfig-2.8.0-ylmf1/src/fcname.c	2009-11-17 01:24:52.000000000 +0800
++++ fontconfig-2.8.0-ylmf1.new//src/fcname.c	2012-03-06 11:28:46.376932336 +0800
+@@ -454,6 +454,7 @@
+     { (FcChar8 *) "lcddefault",	    "lcdfilter",    FC_LCD_DEFAULT },
+     { (FcChar8 *) "lcdlight",	    "lcdfilter",    FC_LCD_LIGHT },
+     { (FcChar8 *) "lcdlegacy",	    "lcdfilter",    FC_LCD_LEGACY },
++    { (FcChar8 *) "lcdfilterlegacy",       "lcdfilter",    FC_LCD_LEGACY },
+ };
+ 
+ #define NUM_FC_CONSTANTS   (sizeof _FcBaseConstants/sizeof _FcBaseConstants[0])

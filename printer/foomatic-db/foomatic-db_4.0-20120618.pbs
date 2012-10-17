@@ -1,0 +1,37 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="The collected knowledge about printers, drivers, and driver options in XML files, used by foomatic-db-engine to generate PPD files."
+HOMEPAGE="http://www.linuxprinting.org/foomatic.html"
+LICENSE="GPL,custom"
+PACKAGER="StartOS Developers"
+
+SRC_URI="http://www.openprinting.org/download/foomatic/"$N-$V$R".tar.gz"
+CHECKSUM="a0a2c26c3164a710ae499cb52b286083"
+
+RDEPEND="perl libxml2"
+BDEPEND=""
+RECOMMENDED=""
+CONFLICT="foomatic-db-hpijs"
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_config() {
+	doconfig
+}
+
+pbs_build() {
+	domake
+}
+
+pbs_install() {
+	domkinstall
+	dodoc COPYING 
+}
+

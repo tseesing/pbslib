@@ -1,0 +1,37 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="free-and-libre implementation of AACS"
+HOMEPAGE="http://www.videolan.org/developers/libaacs.html"
+LICENSE="GPL"
+PACKAGER="StartOS Developers"
+
+SRC_URI="ftp://ftp.videolan.org/pub/videolan/"$N"/"$V"/"$N-$V".tar.bz2"
+
+RDEPEND="libgcrypt"
+RECOMMENDED=""
+BDEPEND=""
+CONFLICT=""
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_config() {
+	config+=""
+	doconfig
+}
+
+pbs_build() {
+	domake
+}
+
+pbs_install() {
+	domkinstall
+}
+
+

@@ -1,0 +1,12 @@
+. /usr/lib/ybs/funcs
+
+files="m4.info-2.gz m4.info-1.gz m4.info.gz"
+
+post_install() {
+        doinstall_info $files
+}       
+
+pre_remove() {
+        doremove_info $files
+}
+

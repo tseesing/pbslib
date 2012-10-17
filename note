@@ -1,0 +1,34 @@
+* hal 
+Removed, upstream outdated
+
+* esound
+Removed, upstream outdated
+
+* wxGTK 
+Provided by wxWidgets
+
+* ntfsprogs
+Replaced by USE="ntfsprogs" in ntfs-3g
+
+* module-init-tools
+Replaced by kmod and libkmod is required by systemd
+
+* libelf
+Replaced by elfutils
+
+* gnu-ghostscript
+Replaced by ghostscript
+
+* libusb
+Replaced by libusbx
+
+* plymouth_0.8.6 + consolekit_0.4.5
+标记为 testing，因为：
+会导致 Nvidia 卡机器登录时花屏，测试环境是：startos-5.0-20120919.iso，thinkpad t410
+
+* glib2_2.32.1
+标记为 testing，因为：
+导致 networkmanager_0.8.2 运行崩溃, /usr/sbin/NetworkManager --no-daemon, 但 0.9.6.0 的运行没问题.
+
+* cdrtools
+Replaced by cdrkit

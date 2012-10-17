@@ -1,0 +1,14 @@
+[Unit]
+Description=KDE Display Manager
+After=syslog.target dbus.target 
+
+[Service]
+ExecStart=/usr/bin/kdm -nodaemon
+#ExecStop=killall lightdm
+Restart=on-failure
+RestartSec=1s
+
+[Install]
+Alias=display-manager.service
+WantedBy=graphical.target
+

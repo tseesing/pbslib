@@ -1,0 +1,35 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="The Theora Video Compression Codec"
+HOMEPAGE="http://www.theora.org"
+LICENSE="GPL"
+PACKAGER="StartOS Developers"
+
+SRC_URI="http://downloads.xiph.org/releases/theora/"$N-$V".tar.bz2"
+
+RDEPEND="libogg"
+BDEPEND="libvorbis-dev libsdl-dev"
+RECOMMENDED="libvorbis libsdl"
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_config() {
+	doconfig
+}
+
+pbs_build() {
+	domake
+}
+
+pbs_install() {
+	make DESTDIR="$destdir" install
+}
+
+

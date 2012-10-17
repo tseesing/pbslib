@@ -1,0 +1,33 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="A free library for encoding X264/AVC streams"
+HOMEPAGE="http://www.videolan.org/developers/x264.html"
+LICENSE=""
+PACKAGER="StartOS Developers"
+
+SRC_URI="ftp://ftp.videolan.org/pub/videolan/"$N"/snapshots/"$N"-snapshot-"$V$R"-2245.tar.bz2"
+
+BDEPEND="dev-lang/yasm"
+RDEPEND="${BDEPEND}"
+RECOMMENDED="dev-lang/yasm"
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_config() {
+	doconfig
+}
+
+pbs_build() {
+	domake
+}
+
+pbs_install() {
+	domkinstall
+}

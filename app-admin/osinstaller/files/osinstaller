@@ -1,0 +1,44 @@
+#!/bin/sh
+# Begin /etc/init.d/osinstaller
+# LastChangedBy: hzx zhongxin.huang@gmail.com
+
+export MYHOME=/root
+#
+case "$1" in
+	start)
+	for x in $(cat /proc/cmdline); do
+		case $x in 
+		install-automatic|install-nodesktop)
+			cat >$MYHOME/.xinitrc <<"OOO"
+[ -f /etc/environment ] && . /etc/environment
+[ -f /etc/default/locale ] && . /etc/default/locale
+export LANGUAGE LANG
+fvwm-root --retain-pixmap /usr/share/osinstaller/installbg.png &
+/usr/libexec/gnome-settings-daemon
+/usr/bin/gconftool-2 --type "bool" --set "/apps/metacity/general/compositing_manager" "true" 
+metacity &
+OOO
+		[ "$x" = "install-automatic" ] && echo 'osinstaller --wubi-dir=/isodevice/startos-loop' >>$MYHOME/.xinitrc
+		[ "$x" = "install-nodesktop" ] && echo 'osinstaller' >>$MYHOME/.xinitrc
+		STARTX="y" 
+		break		
+	esac
+	done
+	
+	if [ "x$STARTX" = "xy" ]; then
+		# Disable display-manager.service in systemd
+		. /etc/dm-switch/default 2>/dev/null
+		[ "x$CURDM" != "x" ] && /bin/systemctl disable $CURDM
+		#
+		plymouth quit 
+		export HOME=/root
+		startx 
+	fi
+		;;
+	*)
+		echo "Usage: $0 start"
+		exit 1
+esac
+
+# End of file
+

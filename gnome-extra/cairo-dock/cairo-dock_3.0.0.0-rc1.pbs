@@ -1,0 +1,45 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="Cairo-Dock is a light and eye-candy dock to launch your programs easily."
+COMMENTS="It uses Cairo / OpenGL to render nice graphics (many in correlation with Compiz) with hardware acceleration. It's fully configurable and customizable and can be a taskbar too. You can easily plug applets into it or in a desklet mode."
+HOMEPAGE="https://launchpad.net/cairo-dock-core"
+LICENSE="GPL"
+PACKAGER="StartOS Developers"
+
+SRC_URI="https://launchpadlibrarian.net/97723585/"$N-$V"rc1.tar.gz"
+CHECKSUM="51a85048531e0f1e69b0472065384ace"
+
+RDEPEND="curl dbus-glib librsvg libXtst mesa"
+RECOMMENDED="cairo-dock-plugins"
+BDEPEND="cmake"
+OPTIONAL=""
+CONFLICT=""
+
+INSTALL="$N.install"
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_patch() {
+	dopatch startos_force-use-gtk+-2.patch
+}
+
+pbs_config() {
+	config+=""
+	doconfig
+}
+
+pbs_build() {
+	domake
+}
+
+pbs_install() {
+	domkinstall
+}
+

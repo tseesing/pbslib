@@ -1,0 +1,11 @@
+#!/usr/bin/env xdg-open
+
+[Desktop Entry]
+Name=cjt-web
+Name[zh_CN]=财金通
+Type=Application
+Exec=xdg-open --app="https://mycjt.cn/"
+TryExec=xdg-open
+Icon=cjt-web
+Comment[zh_CN]=云端、快速、易用的网页看盘系统
+Categories=Webapps;

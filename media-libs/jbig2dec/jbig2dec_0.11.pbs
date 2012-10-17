@@ -1,0 +1,37 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="A decoder implementation of the JBIG2 image compression format"
+COMMENTS="jbig2dec is a decoder implementation of the JBIG2 image compression format. JBIG2 is designed for lossy or lossless encoding of 'bilevel' (1-bit monochrome) images at moderately high resolution, and in particular scanned paper documents. In this domain it is very efficient, offering compression ratios on the order of 100:1."
+HOMEPAGE="http://jbig2dec.sourceforge.net/"
+LICENSE="GPLv2+"
+PACKAGER="StartOS Developers"
+
+SRC_URI="http://ghostscript.com/~giles/jbig2/"$N"/"$N-$V".tar.gz"
+
+RDEPEND="libpng"
+RECOMMENDED=""
+BDEPEND=""
+CONFLICT=""
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_config() {
+	config+=""
+	doconfig
+}
+
+pbs_build() {
+	domake
+}
+
+pbs_install() {
+	domkinstall
+}
+

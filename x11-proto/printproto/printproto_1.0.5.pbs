@@ -1,0 +1,40 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="X.Org Print protocol headers"
+HOMEPAGE="http://xorg.freedesktop.org/"
+GROUP="x11-proto"
+REPO=""
+LICENSE="GPL"
+PACKAGER="StartOS Developers"
+
+SRC_URI="http://xorg.freedesktop.org/releases/individual/proto/"$N-$V$R".tar.bz2"
+
+RDEPEND=""
+BDEPEND=""
+RECOMMENDED=""
+CONFLICT=""
+
+OPTIONS="nodev"
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_config() {
+	config+=""
+	doconfig
+}
+
+pbs_build() {
+	domake
+}
+
+pbs_install() {
+	domkinstall
+}
+

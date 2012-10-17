@@ -1,0 +1,14 @@
+. /usr/lib/ybs/funcs
+
+files="libffi.info.gz"
+
+post_install() {
+        doinstall_info $files
+}       
+
+pre_remove() {
+        doremove_info $files
+}
+
+
+

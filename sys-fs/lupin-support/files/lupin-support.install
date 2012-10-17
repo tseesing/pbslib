@@ -1,0 +1,25 @@
+. /usr/lib/ybs/funcs
+
+do_initramfs() {
+	update-initramfs -d -c -k "$KERNEL_DIST"
+	update-grub ||true
+}
+
+post_install() {
+	do_initramfs
+}       
+
+post_remove() {
+	cd /usr/sbin/
+	[ -f grub-install.real ] && ln -svf grub-install.real grub-install
+	do_initramfs
+}
+
+post_upgrade() {
+	post_install
+}
+
+post_downgrade() {
+	post_install
+}
+

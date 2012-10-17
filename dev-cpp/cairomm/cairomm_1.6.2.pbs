@@ -1,0 +1,37 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="C++ bindings for the Cairo vector graphics library"
+HOMEPAGE="http://cairographics.org/cairomm"
+LICENSE="GPL-2"
+PACKAGER="StartOS Developers"
+ 
+SRC_URI="http://cairographics.org/releases/$N-$V.tar.gz"
+
+RDEPEND=""
+BDEPEND=" cairo"
+RECOMMENDED=""
+
+NOTES="http://wiki.linuxfromscratch.org/blfs/wiki/cairomm"
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_config() {
+	
+	config+=" --prefix=/usr "
+	doconfig
+}
+
+pbs_build() {
+	domake
+}
+
+pbs_install() {
+	domkinstall
+}

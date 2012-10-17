@@ -1,0 +1,31 @@
+. /usr/lib/ybs/funcs
+
+files="/etc/gconf/schemas/gnome-sound-recorder.schemas /etc/gconf/schemas/gnome-audio-profiles.schemas"
+
+post_install() {
+	gnome2_install_schema "$files"
+        gnome2_rarian_sk_update
+        gnome2_desktop_database_update
+        gnome2_icon_cache_update
+        gnome2_gconfd_reload
+}     
+
+pre_remove() {
+	gnome2_uninstall_schema "$files"
+}
+
+post_remove() {
+	gnome2_rarian_sk_update
+	gnome2_desktop_database_update
+	gnome2_icon_cache_update
+	gnome2_gconfd_reload
+}
+
+post_upgrade() {
+	post_install
+}
+
+post_downgrade() {
+	post_install
+}
+

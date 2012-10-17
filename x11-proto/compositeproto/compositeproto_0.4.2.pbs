@@ -1,0 +1,37 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="X.Org Composite protocol headers"
+HOMEPAGE="http://xorg.freedesktop.org/"
+LICENSE="GPL"
+PACKAGER="StartOS Developers"
+GROUP="x11-proto"
+
+SRC_URI="http://www.x.org/releases/X11R7.7/src/proto/"$N-$V".tar.bz2"
+CHECKSUM="aa7b5abcfd5bbfad7cb681ce89dc1d6e381e3044"
+
+RDEPEND=""
+BDEPEND=""
+OPTIONS="nodev"
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_config() {	
+	config+=""
+	doconfig
+}
+
+pbs_build() {
+	domake
+}
+
+pbs_install() {
+	domkinstall
+}
+

@@ -1,0 +1,49 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="Utility for opening arj archives"
+HOMEPAGE="http://arj.sourceforge.net"
+REPO=""
+LICENSE="GPL"
+PRIORITY=""
+PACKAGER="StartOS Developers"
+
+SRC_URI="http://arj.sourceforge.net/files/"$N-$V$R".tar.gz"
+
+RDEPEND=""
+BDEPEND=""
+RECOMMENDED=""
+CONFLICT=""
+
+NOTES=""
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_config() {
+	#dopatch arj-3.10.22-darwin.patch arj-3.10.22-glibc2.10.patch
+	# patch for gcc-lib 4.x https://svn.uhulinux.hu/packages/dev/arj/patches/gcc-lib4.patch
+	# Thanks to Pedro Pinto (pnboy~AT~pinguix.com) http://users.zenwalk.org/user-accounts/pnboy/arj/ZENBUILD
+	sed -i -e 's/   return(POSTPROC_ERL_BAD_EXE);/   break; \/\/   return(POSTPROC_ERL_BAD_EXE);/g' postproc.c
+	cd gnu
+	config+=""
+	autoconf
+	doconfig
+	cd -
+}
+
+pbs_build() {
+	make prepare
+	make
+}
+
+pbs_install() {
+	#make DESTDIR="$destdir" install
+	domkinstall
+	dodoc ChangeLog
+}

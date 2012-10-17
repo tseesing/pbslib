@@ -1,0 +1,11 @@
+#! /bin/sh
+# Updates the immodules in /etc/gtk-2.0/$host
+
+umask 022
+
+FILE=/etc/gtk-2.0/gtk.immodules
+
+if [ -x /usr/bin/gtk-query-immodules-2.0 ]; then
+     /usr/bin/gtk-query-immodules-2.0 > $FILE
+fi
+

@@ -1,0 +1,37 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="The GNU info program and utilities"
+HOMEPAGE="http://www.gnu.org/software/texinfo/"
+LICENSE="GPLv3"
+PACKAGER="StartOS Developers"
+
+SRC_URI="http://ftp.gnu.org/gnu/"$N"/"$N-$V"a.tar.gz"
+
+RDEPEND="ncurses"
+BDEPEND=""
+
+INSTALL="$N.install"
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_config() {
+	# Support for new compressors like XZ Utils
+	dopatch texinfo-4.13a-new_compressors-1.patch
+	doconfig
+}
+
+pbs_build() {
+	domake
+}
+
+pbs_install() {
+	domkinstall
+}
+

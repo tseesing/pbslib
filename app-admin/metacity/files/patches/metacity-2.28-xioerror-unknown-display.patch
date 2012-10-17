@@ -1,0 +1,51 @@
+From 7c30ba2d034050e8e7d1776ea7541495bdf898b3 Mon Sep 17 00:00:00 2001
+From: Owen W. Taylor <otaylor@fishsoup.net>
+Date: Fri, 20 Nov 2009 10:42:07 -0500
+Subject: [PATCH] Handle XError and XIOError for unknown displays
+
+The atk-bridge GTK+ module opens its own display; if we get an
+XIOError on that display, we shouldn't abort with a meta_bug()
+but just exit normally. Also fix a segfault if we got an XError
+for that display.
+---
+diff -ur metacity-2.30.3-ylmf1/src/core/errors.c metacity-2.30.3-ylmf1.new//src/core/errors.c
+--- metacity-2.30.3-ylmf1/src/core/errors.c	2010-09-05 00:09:53.000000000 +0800
++++ metacity-2.30.3-ylmf1.new//src/core/errors.c	2011-09-30 09:33:51.179185536 +0800
+@@ -222,10 +222,10 @@
+ 
+   display = meta_display_for_x_display (xdisplay);
+ 
+-  /* Display can be NULL here because the compositing manager
+-   * has its own Display, but Xlib only has one global error handler
++  /* Display can be NULL here Xlib only has one global error handler; and
++   * there might be other displays open in the process.
+    */
+-  if (display->error_traps > 0)
++  if (display && display->error_traps > 0)
+     {
+       /* we're in an error trap, chain to the trap handler
+        * saved from GDK
+@@ -264,21 +264,18 @@
+ 
+   display = meta_display_for_x_display (xdisplay);
+ 
+-  if (display == NULL)
+-    meta_bug ("IO error received for unknown display?\n");
+-  
+   if (errno == EPIPE)
+     {
+       meta_warning (_("Lost connection to the display '%s';\n"
+                       "most likely the X server was shut down or you killed/destroyed\n"
+                       "the window manager.\n"),
+-                    display->name);
++		      display ? display->name : DisplayString (xdisplay));
+     }
+   else
+     {
+       meta_warning (_("Fatal IO error %d (%s) on display '%s'.\n"),
+                     errno, g_strerror (errno),
+-                    display->name);
++		    display ? display->name : DisplayString (xdisplay));
+     }
+ 
+   /* Xlib would force an exit anyhow */

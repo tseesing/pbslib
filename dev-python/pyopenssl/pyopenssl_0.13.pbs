@@ -1,0 +1,30 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="Python interface to the OpenSSL library"
+HOMEPAGE="http://pyopenssl.sourceforge.net/ http://pypi.python.org/pypi/pyOpenSSL"
+LICENSE="GPL"
+PACKAGER="StartOS Developers"
+
+SRC_URI="http://pypi.python.org/packages/source/p/pyOpenSSL/pyOpenSSL-"$V".tar.gz"
+
+RDEPEND="glibc openssl python zlib"
+BDEPEND=""
+RECOMMENDED=""
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_build() {
+	domake
+}
+
+pbs_install() {
+	domkinstall
+}
+

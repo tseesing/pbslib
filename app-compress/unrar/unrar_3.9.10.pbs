@@ -1,0 +1,30 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="Uncompress rar files"
+HOMEPAGE="http://www.rarlab.com/rar_add.htm"
+LICENSE="custom"
+PACKAGER="StartOS Developers"
+
+SRC_URI="http://www.rarlab.com/rar/unrarsrc-"$V".tar.gz"
+
+RDEPEND="gcc-lib glibc"
+BDEPEND=""
+
+pbs_unpack() {
+	dounpack
+}
+
+pbs_build() {
+	make -f makefile.unix CXXFLAGS="${CPPFLAGS}"
+}
+
+pbs_install() {
+	mkdir -p "$destdir"/usr/bin
+	make -f makefile.unix DESTDIR="$destdir"/usr install
+}
+

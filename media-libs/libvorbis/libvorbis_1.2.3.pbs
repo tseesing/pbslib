@@ -1,0 +1,36 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="a general purpose audio and music encoding format. This is useful for creating (encoding) and playing (decoding) sound in an open (patent free) format."
+HOMEPAGE="http://xiph.org/vorbis"
+LICENSE="GPL-2"
+PACKAGER="StartOS Developers"
+
+SRC_URI="http://downloads.xiph.org/releases/vorbis/"$N-$V$R".tar.bz2"
+
+BDEPEND="libogg"
+RECOMMENDED=""
+
+NOTES="http://wiki.linuxfromscratch.org/blfs/wiki/Libvorbis"
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_config() {
+	
+	config+="--prefix=/usr"
+	doconfig
+}
+
+pbs_build() {
+	domake
+}
+
+pbs_install() {
+	domkinstall
+}

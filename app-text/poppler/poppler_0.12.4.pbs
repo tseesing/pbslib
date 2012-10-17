@@ -1,0 +1,41 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="PDF rendering library based on the xpdf-3.0 code base"
+HOMEPAGE="http://poppler.freedesktop.org/"
+ 
+SRC_URI="http://poppler.freedesktop.org/poppler-$V.tar.gz"
+
+RDEPEND="poppler-data"
+BDEPEND=""
+
+pbs_unpack()
+{
+        dounpack
+}
+
+pbs_config()
+{
+	
+	config+=" --disable-poppler-qt --disable-poppler-qt4 "
+	doconfig
+}
+
+pbs_build()
+{
+	domake
+}
+
+pbs_check()
+{
+	make check
+}
+
+pbs_install()
+{
+	domkinstall
+}

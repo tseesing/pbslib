@@ -1,0 +1,40 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="Great Qt4 GUI front-end for mplayer"
+HOMEPAGE="http://smplayer.berlios.de/"
+LICENSE="GPLv2"
+PACKAGER="StartOS Developers "
+
+SRC_URI="http://download.berlios.de/"$N"/"$N-$V".tar.bz2"
+CHECKSUM="8f7d3a9c116e956c68976d0e5dbb83dd"
+
+RDEPEND="mplayer qt-core"
+BDEPEND=""
+RECOMMENDED=""
+
+INSTALL="$N.install"
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_patch() {
+	sed -i 's:#\(DEFINES += NO_DEBUG_ON_CONSOLE\):\1:' src/smplayer.pro
+	dopatch startos_subcp_cp936-0.8.0.patch
+}
+
+pbs_build() {
+	domake PREFIX=/usr
+}
+
+pbs_install() {
+	domkinstall PREFIX=/usr
+	dodesktop "$N".desktop
+	rm "$destdir"/usr/share/applications/smplayer_enqueue.desktop
+}
+

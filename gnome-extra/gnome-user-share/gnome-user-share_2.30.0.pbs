@@ -1,0 +1,40 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="Personal file sharing for the GNOME desktop"
+HOMEPAGE="http://www.gnome.org/"
+LICENSE="GPL-2"
+PACKAGER="StartOS Developers"
+
+SRC_URI="http://ftp.gnome.org/pub/gnome/desktop/2.30/2.30.2/sources/"$N-$V$R".tar.bz2"
+
+RDEPEND="atk cairo dbus dbus-glib expat fontconfig freetype gcc-lib gconf glib2 gdk-pixbuf glibc gnome-bluetooth gtk+ libcanberra libICE libnotify libogg libpng libSM libtool libunique libvorbis libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libXrandr libXrender nautilus orbit pango pixman util-linux-ng zlib"
+BDEPEND="gnome-desktop-dev                                        "   
+RECOMMENDED=""
+
+INSTALL="$N.install"
+
+NOTES=""
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_config() {
+	sed -i 's/folder-remote/folder-publicshare/g' data/gnome-user-share-properties.desktop.in data/gnome-user-share.desktop.in.in
+	config+="--disable-schemas-install"
+	doconfig
+}
+
+pbs_build() {
+	domake
+}
+
+pbs_install() {
+	domkinstall
+	dodoc AUTHORS COPYING NEWS README
+}

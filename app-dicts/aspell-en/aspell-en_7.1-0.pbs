@@ -1,0 +1,36 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="English (US, British, Canadian) language dictionary for aspell"
+HOMEPAGE="http://aspell.net"
+LICENSE="GPLv2"
+PACKAGER="StartOS Developers"
+
+SRC_URI="ftp://ftp.gnu.org/gnu/aspell/dict/en/aspell6-en-"$V$R".tar.bz2"
+CHECKSUM="beba5e8f3afd3ed1644653bb685b2dfb"
+
+RDEPEND=""
+RECOMMENDED=""
+BDEPEND=""
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_config() {
+	config=""
+	doconfig
+}
+
+pbs_build() {
+	domake
+}
+
+pbs_install() {
+	domkinstall
+}
+

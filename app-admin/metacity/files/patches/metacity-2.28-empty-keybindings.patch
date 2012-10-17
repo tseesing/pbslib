@@ -1,0 +1,32 @@
+From 599f25e51d967febddb4de3aa21db4258356a9f9 Mon Sep 17 00:00:00 2001
+From: Owen W. Taylor <otaylor@fishsoup.net>
+Date: Fri, 20 Nov 2009 10:19:03 -0500
+Subject: [PATCH] Accept an empty string as well as "disabled" for keybindings
+
+Treat the empty string the same as "disabled" for GConf keybinding
+keys. gnome-keybinding-properties was changed to write disabled
+keys as the empty string a year or so ago.
+
+https://bugzilla.gnome.org/show_bug.cgi?id=559816
+---
+diff -ur metacity-2.30.3-ylmf1/src/ui/ui.c metacity-2.30.3-ylmf1.new//src/ui/ui.c
+--- metacity-2.30.3-ylmf1/src/ui/ui.c	2010-09-15 23:58:28.000000000 +0800
++++ metacity-2.30.3-ylmf1.new//src/ui/ui.c	2011-09-30 09:30:33.549188156 +0800
+@@ -920,7 +920,7 @@
+   *keycode = 0;
+   *mask = 0;
+ 
+-  if (strcmp (accel, "disabled") == 0)
++  if (!accel[0] || strcmp (accel, "disabled") == 0)
+     return TRUE;
+   
+   meta_ui_accelerator_parse (accel, &gdk_sym, &gdk_code, &gdk_mask);
+@@ -1007,7 +1007,7 @@
+   
+   *mask = 0;
+ 
+-  if (accel == NULL || strcmp (accel, "disabled") == 0)
++   if (accel == NULL || !accel[0] || strcmp (accel, "disabled") == 0)
+     return TRUE;
+   
+   meta_ui_accelerator_parse (accel, &gdk_sym, &gdk_code, &gdk_mask);

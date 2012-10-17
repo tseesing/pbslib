@@ -1,0 +1,12 @@
+diff -Nur desktop-file-utils-0.16/src/mimeutils.c desktop-file-utils-0.16.ubuntu/src/mimeutils.c
+--- desktop-file-utils-0.16/src/mimeutils.c	2010-03-10 03:33:41.000000000 +0100
++++ desktop-file-utils-0.16.ubuntu/src/mimeutils.c	2010-04-07 17:49:06.000000000 +0200
+@@ -142,7 +142,7 @@
+     if (error)
+       *error = g_strdup_printf ("\"%s\" is an old media type that should be "
+                                 "replaced with a modern equivalent", media_type);
+-    return MU_DISCOURAGED;
++    return MU_VALID;
+   }
+ 
+   if (g_ascii_strncasecmp (media_type, "X-", 2) == 0) {

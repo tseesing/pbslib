@@ -1,0 +1,63 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="A fully integrated 3D graphics creation suite"
+HOMEPAGE="http://www.blender.org/"
+LICENSE="GPL"
+PACKAGER="StartOS Developers"
+
+SRC_URI="http://download.blender.org/source/"$N-$V".tar.gz"
+
+RDEPEND=""
+BDEPEND="cmake"
+RECOMMENDED=""
+CONFLICT=""
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_config() {
+	[[ "$ARCH" == "i686" ]] && ENABLESSE2="-DSUPPORT_SSE2_BUILD:BOOL=OFF"
+	rm -rf build 2>/dev/null
+	mkdir build && cd build
+	cmake .. \
+	        -DCMAKE_INSTALL_PREFIX=/usr \
+	        -DCMAKE_BUILD_TYPE=Release \
+		-DWITH_INSTALL_PORTABLE=OFF \
+		-DWITH_PYTHON_INSTALL=OFF \
+		-DWITH_OPENCOLLADA=ON \
+		-DOPENIMAGEIO_ROOT_DIR=/usr \
+		-DWITH_GAMEENGINE=ON \
+		-DWITH_JACK=ON \
+		-DWITH_PLAYER=ON \
+		-DWITH_BUILTIN_GLEW=OFF \
+		-DWITH_CODEC_FFMPEG=ON \
+		-DWITH_CODEC_SNDFILE=ON \
+		-DWITH_CYCLES=ON \
+		-DWITH_CYCLES_CUDA_BINARIES=ON \
+		-DCUDA_TOOLKIT_ROOT_DIR=/opt/cuda-toolkit/ \
+		-DWITH_FFTW3=ON \
+		-DWITH_MOD_OCEANSIM=ON \
+		-DPYTHON_VERSION=2.7 \
+		-DPYTHON_LIBPATH=/usr/lib/python2.7 \
+		-DPYTHON_LIBRARY=python2.7 \
+		-DPYTHON_INCLUDE_DIRS=/usr/include/python2.7 \
+		"$ENABLESSE2"
+
+}
+
+pbs_build() {
+	domake
+	make
+}	
+
+pbs_install() {
+	domkinstall
+	python -m compileall "${destdir}"/usr/share/blender
+}
+

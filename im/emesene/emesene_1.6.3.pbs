@@ -1,0 +1,38 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="Platform independent MSN Messenger client written in Python+GTK"
+HOMEPAGE="http://emesene.org/"
+REPO=""
+LICENSE="GPL"
+PRIORITY=""
+PACKAGER="StartOS Developers"
+
+SRC_URI="http://downloads.sourceforge.net/project/"$N"/"$N-$V$R"/"$N-$V$R".tar.gz"
+
+RDEPEND="python"
+BDEPEND=""
+RECOMMENDED=""
+CONFLICT=""
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_config() {
+	dopatch desktop.patch 20_dont_build_own_libmimic.patch 21_svn2451_fix_avatar.patch
+	config+=""
+	doconfig
+}
+
+pbs_build() {
+	domake
+}
+
+pbs_install() {
+	domkinstall
+}

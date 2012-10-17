@@ -1,0 +1,11 @@
+#!/usr/bin/env xdg-open
+
+[Desktop Entry]
+Name=meitu
+Name[zh_CN]=美图秀秀网页版
+Type=Application
+Exec=xdg-open --app="http://xiuxiu.web.meitu.com/main.html"
+TryExec=xdg-open
+Icon=meitu-web
+Comment[zh_CN]=美图秀秀网页版_在线制作图片及图片处理工具
+Categories=Webapps;

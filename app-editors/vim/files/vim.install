@@ -1,0 +1,39 @@
+
+post_install() {
+	# Write vimrc
+	[ -f /etc/vimrc ] && return 0
+        cat > /etc/vimrc << "EOF"
+" Begin /etc/vimrc
+set nocompatible
+set backspace=2
+set ruler
+set tags=tags
+set ai
+autocmd FileType python set omnifunc=pythoncomplete#Complete
+autocmd FileType javascript set omnifunc=javascriptcomplete#CompleteJS
+autocmd FileType html set omnifunc=htmlcomplete#CompleteTags
+autocmd FileType css set omnifunc=csscomplete#CompleteCSS
+autocmd FileType xml set omnifunc=xmlcomplete#CompleteTags
+autocmd FileType php set omnifunc=phpcomplete#CompletePHP
+autocmd FileType c set omnifunc=ccomplete#Complete
+set t_Co=256
+syntax on
+"if (&term == "iterm") || (&term == "putty")
+set background=dark
+"endif
+" End /etc/vimrc
+EOF
+}
+
+post_remove() {
+	rm /etc/vimrc 2>/dev/null || return 0
+}
+
+post_upgrade() {
+	post_install
+}
+
+post_downgrade() {
+	post_install
+}
+

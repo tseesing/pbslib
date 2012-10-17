@@ -1,0 +1,31 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="A droid derived Sans-Serif style CJK font"
+HOMEPAGE="http://wqy.sourceforge.net/"
+GROUP="fonts"
+LICENSE="Apache 2.0,GPL v3"
+PACKAGER="StartOS Developers"
+YARCH="any"
+
+SRC_URI="http://sourceforge.net/projects/wqy/files/"$N"/"$V"-beta/"$N-$V"-beta.tar.gz"
+
+RDEPEND=""
+BDEPEND=""
+
+INSTALL="$N.install"
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_install() {
+	docp *.ttc "$destdir"/usr/share/fonts/wenquanyi/wqy-microhei
+	doln /usr/share/fonts/wenquanyi/wqy-microhei/wqy-microhei.ttc \
+	    "$destdir"/usr/share/fonts/truetype/wqy/wqy-microhei.ttc
+}
+

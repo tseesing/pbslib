@@ -1,0 +1,45 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="Python XML parsing library"
+HOMEPAGE="http://sourceforge.net/projects/pyxml"
+LICENSE="custom"
+PACKAGER="StartOS Developers"
+
+REPO="testing"
+
+SRC_URI="http://downloads.sourceforge.net/sourceforge/"$N"/PyXML-"$V".tar.gz"
+CHECKSUM="1f7655050cebbb664db976405fdba209"
+
+RDEPEND="python"
+RECOMMENDED=""
+BDEPEND=""
+OPTIONAL=""
+CONFLICT=""
+REPLACE=""
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_patch() {
+	dopatch fix-python2.6.patch foreigncharsfix.patch
+}
+
+pbs_config() {
+	config+=""
+	doconfig
+}
+
+pbs_build() {
+	domake
+}
+
+pbs_install() {
+	domkinstall --optimize=1
+}
+

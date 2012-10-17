@@ -1,0 +1,28 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="webqq client (AIR)"
+HOMEPAGE="www.qq.com"
+REPO=""
+LICENSE=""
+PRIORITY=""
+PACKAGER="StartOS Developers"
+
+SRC_URI="http://dl_dir.qq.com/qqfile/web/webqq/WebQQ.air"
+
+RDEPEND="adobe-air-sdk"
+BDEPEND=""
+RECOMMENDED=""
+CONFLICT=""
+
+NOTES=""
+
+pbs_install() {
+	docp      "$YPPATH_SOURCE"/WebQQ.air  "$destdir"/usr/lib/"$N"
+	dodesktop "$N.desktop"      "$N.png"
+}
+

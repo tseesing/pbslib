@@ -1,0 +1,36 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="libfolks is a library that aggregates people from multiple sources"
+HOMEPAGE="http://telepathy.freedesktop.org/wiki/Folks"
+LICENSE="GPL"
+PACKAGER="StartOS Developers"
+
+SRC_URI="http://ftp.acc.umu.se/pub/gnome/sources/"$N"/0.3/"$N-$V".tar.bz2"
+
+RDEPEND="dbus dbus-glib glib2 glibc libgee libxml2 telepathy-glib zlib"
+RECOMMENDED=""
+BDEPEND=""
+CONFLICT=""
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_config() {
+	config+=""
+	doconfig
+}
+
+pbs_build() {
+	domake
+}
+
+pbs_install() {
+	domkinstall
+}
+

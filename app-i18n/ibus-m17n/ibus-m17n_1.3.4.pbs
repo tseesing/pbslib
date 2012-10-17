@@ -1,0 +1,39 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="The M17N engine IMEngine for IBus Framework"
+HOMEPAGE="http://code.google.com/p/ibus/"
+LICENSE="LGPL"
+PACKAGER="StartOS Developers"
+GROUP="ibus"
+
+SRC_URI="http://ibus.googlecode.com/files/"$N-$V".tar.gz"
+CHECKSUM="068de56caa87c002adeae0de9e908f47e3f9fde9"
+
+RDEPEND="ibus m17n-lib"
+RECOMMENDED=""
+BDEPEND=""
+OPTIONAL=""
+CONFLICT=""
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_config() {
+	config+=""
+	doconfig
+}
+
+pbs_build() {
+	domake
+}
+
+pbs_install() {
+	domkinstall
+}
+

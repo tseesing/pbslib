@@ -1,0 +1,10 @@
+#!/usr/bin/env xdg-open
+
+[Desktop Entry]
+Name=Gmail
+Name[zh_CN]=Gmail 邮件
+Type=Application
+Exec=xdg-open --app="https://mail.google.com/mail"
+TryExec=xdg-open
+Icon=gmail-web
+Categories=Webapps;

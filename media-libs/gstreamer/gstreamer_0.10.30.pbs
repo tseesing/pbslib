@@ -1,0 +1,35 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="Streaming media framework"
+HOMEPAGE="http://gstreamer.sourceforge.net"
+LICENSE="GPL-2"
+PACKAGER="StartOS Developers"
+
+SRC_URI="http://gstreamer.freedesktop.org/src/"$N"/"$N-$V$R".tar.bz2"
+
+RDEPEND="glib2 gdk-pixbuf glibc libxml2 zlib"
+BDEPEND=""
+RECOMMENDED=""
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_config() {
+	config+=" --disable-docbook --disable-tests"
+	doconfig
+}
+
+pbs_build() {
+	domake
+}
+
+pbs_install() {
+	domkinstall
+	dodoc dodocs/design/*.txt
+}

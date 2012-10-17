@@ -1,0 +1,41 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="The ASN.1 library used in GNUTLS"
+HOMEPAGE="http://www.gnu.org/software/libtasn1/"
+LICENSE="GPL"
+PACKAGER="StartOS Developers"
+
+SRC_URI="http://mirrors.kernel.org/gnu/"$N"/"$N-$V".tar.gz"
+
+RDEPEND="glibc"
+BDEPEND="gtk-doc"
+
+INSTALL="$N.install"
+
+NOTES="
+If you did not pass the --enable-gtk-doc parameter to the configure script, install the API documentation using the following command as the root user:
+make -C doc/reference install-data-local
+"
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_config() {
+	doconfig
+}
+
+pbs_build() {
+	domake
+}
+
+pbs_install() {
+	domkinstall
+}
+
+

@@ -1,0 +1,38 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="GnuPG Made Easy is a library for making GnuPG easier to use"
+HOMEPAGE="http://www.gnupg.org/related_software/gpgme"
+LICENSE="GPL"
+PACKAGER="YLmf OS Developers "
+ 
+SRC_URI="ftp://ftp.gnupg.org/gcrypt/"$N"/"$N-$V".tar.bz2"
+
+RDEPEND="libassuan pth"
+BDEPEND=""
+RECOMMENDED=""
+
+INSTALL="$N.install"
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_config() {
+	config+="--disable-static"
+	doconfig
+}
+
+pbs_build() {
+	domake
+}
+
+pbs_install() {
+	domkinstall
+	dodoc COPYING README
+}
+

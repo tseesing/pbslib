@@ -1,0 +1,116 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="Festival Text to Speech engine"
+HOMEPAGE="http://www.cstr.ed.ac.uk/projects/festival/"
+LICENSE="BSD/custom/GPL"
+PACKAGER="StartOS Developers"
+
+SRC_URI="http://www.cstr.ed.ac.uk/downloads/"$N"/"$V$R"/"$N-$V$R"-release.tar.gz
+         http://www.cstr.ed.ac.uk/downloads/festival/2.1/speech_tools-2.1-release.tar.gz
+	 http://www.cstr.ed.ac.uk/downloads/festival/2.1/festlex_CMU.tar.gz
+	 http://www.cstr.ed.ac.uk/downloads/festival/2.1/festlex_OALD.tar.gz
+	 http://www.cstr.ed.ac.uk/downloads/festival/2.1/festlex_POSLEX.tar.gz"
+
+RDEPEND="alsa-lib gcc-lib ncurses"
+BDEPEND=""
+RECOMMENDED=""
+CONFLICT=""
+
+pbs_unpack() {
+        dounpack
+	tar xf "$YPPATH_SOURCE"/speech_tools-2.1-release.tar.gz
+}
+
+pbs_build() {
+	#
+	tar xf "$YPPATH_SOURCE"/festlex_CMU.tar.gz
+	tar xf "$YPPATH_SOURCE"/festlex_OALD.tar.gz
+	tar xf "$YPPATH_SOURCE"/festlex_POSLEX.tar.gz
+	cp -r festival/* .
+
+	#
+	# Build Speech Tools first
+	cd "../speech_tools/"
+	dopatch speechconfig.patch
+	./configure --prefix=/usr --sysconfdir=/etc
+	make OPTIMISE_CXXFLAGS="${CXXFLAGS}" OPTIMISE_CCFLAGS="${CFLAGS}"
+	cd -
+
+	# Build Festival itself
+	patch -Np1 -i "$filesdir"/festconfig.patch
+	
+	# Avoid make failure on making scripts and docs
+	sed -i "s#examples bin doc#examples#" Makefile
+
+	./configure --prefix=/usr --sysconfdir=/etc
+	make OPTIMISE_CXXFLAGS="${CXXFLAGS}" OPTIMISE_CCFLAGS="${CFLAGS}"
+}
+
+pbs_install() {
+	# Install Speech Tools first
+	cd ../speech_tools
+	install -dm755 "$destdir"/usr/{bin,lib,include/speech_tools/{,instantiate,ling_class,rxp,sigpr,unix}}
+	
+	#binaries
+	#move binaries over wrappers (FS#7864)
+	for i in $(grep -l 'EST shared script' bin/*); do
+		cp -f main/$(basename $i) bin;
+	done
+	install -m755 -t "$destdir"/usr/bin bin/[a-z]*
+	rm -f "$destdir"/usr/bin/{est_gdb,est_examples,est_program}
+
+	#libraries
+	install -m755 -t "$destdir"/usr/lib lib/lib*.so.*
+	doln /usr/lib/libestbase.so.2.1.1 "$destdir"/usr/lib/libestbase.so
+	doln /usr/lib/libeststring.so.1.2 "$destdir"/usr/lib/libeststring.so
+	install -m644 -t "$destdir"/usr/lib lib/lib*.a
+
+	#headers
+	for dir in {.,instantiate,ling_class,rxp,sigpr,unix}; do
+		install -m644 -t "$destdir"/usr/include/speech_tools/$dir include/$dir/*.h
+	done
+
+	# Install Festival itself
+	cd -
+			
+	#binaries
+	docp src/main/{festival,festival_client} "$destdir"/usr/bin/
+	docp examples/{benchmark,dumpfeats,durmeanstd,latest,make_utts,powmeanstd,run-festival-script,saytime,scfg_parse_text,text2pos,text2wave} "$destdir"/usr/bin/
+	chmod 755 "$destdir"/usr/bin/*
+
+	#libraries
+	install -m644 src/lib/libFestival.a "$destdir"/usr/lib/
+
+	#headers
+	docp src/include/*.h "$destdir"/usr/include/festival
+	
+	#
+	docp lib/* "$destdir"/usr/share/festival
+	rm -f $(find "$destdir"/usr/share/festival -name Makefile)
+	rm -f $(find "$destdir"/usr/bin -name Makefile)
+														#create voices directory
+	install -dm755 "$destdir"/usr/share/festival/voices
+														#licenses
+	dodoc COPYING ../speech_tools/README 
+
+	#################################################################
+	# Ok now some general cleanups
+	for i in $(find "$destdir"/usr/include/ -type f); do
+		sed -i -e 's,"EST.*\.h",\<speech_tools/&\>,g' -e 's,speech_tools/\",speech_tools/,g' \
+		       -e 's,"siod.*\.h",\<speech_tools/&\>,g' -e 's,speech_tools/\",speech_tools/,g' \
+		       -e 's,"instantiate/.*\.h",\<speech_tools/&\>,g' -e 's,speech_tools/instantiate/\",speech_tools/instantiate/,g' -e 's,"instantiate,instantiate,g' \
+		       -e 's,"ling_class/.*\.h",\<speech_tools/&\>,g' -e 's,speech_tools/ling_class/\",speech_tools/ling_class/,g' -e 's,"ling_class,ling_class,g'\
+		       -e 's,"rxp/.*\.h",\<speech_tools/&\>,g' -e 's,speech_tools/rxp/\",speech_tools/rxp/,g' -e 's,"rxp,rxp,g' \
+		       -e 's,"sigpr/.*\.h",\<speech_tools/&\>,g' -e 's,speech_tools/sigpr/\",speech_tools/sigpr/,g' -e 's,"sigpr,sigpr,g' \
+		       -e 's,"unix/.*\.h",\<speech_tools/&\>,g' -e 's,speech_tools/unix/\",speech_tools/unix/,g' -e 's,\.h\">,.h\>,g' -e 's,"unix,unix,g' \
+		       -e 's,"festival\.h",\<festival/festival.h\>,g' \
+		       -e 's,"ModuleDescription\.h",\<festival/ModuleDescription.h\>,g' \
+		       -e 's,"Phone\.h",\<festival/Phone.h\>,g' $i
+	done
+}
+

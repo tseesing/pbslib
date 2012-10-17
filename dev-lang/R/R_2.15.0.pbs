@@ -1,0 +1,70 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="Language and environment for statistical computing and graphics"
+HOMEPAGE="http://www.r-project.org"
+LICENSE="GPL"
+PACKAGER="StartOS Developers"
+
+SRC_URI="http://cran.r-project.org/src/base/R-2/"$N-$V".tar.gz"
+CHECKSUM="a633f87fdbd22e8c371971c535ca815e63c297f6"
+
+RDEPEND="icu lapack libtiff pango readline tk xz-utils"
+RECOMMENDED=""
+BDEPEND=""
+OPTIONAL=""
+CONFLICT=""
+
+INSTALL="$N.install"
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_patch() {
+	sed -i 's|#define NeedFunctionPrototypes 0|#define NeedFunctionPrototypes 1|g' src/modules/X11/dataentry.c
+}
+
+pbs_config() {
+	config+=" --sysconfdir=/etc/R 
+	  	  --datarootdir=/usr/share 
+		  rsharedir=/usr/share/R/ 
+  	          rincludedir=/usr/include/R/ 
+		  rdocdir=/usr/share/doc/R/ 
+		  --with-x 
+		  --enable-R-shlib 
+	          --with-lapack 
+		  --with-blas 
+		  F77=gfortran 
+		  LIBnn=lib "
+	doconfig
+}
+
+pbs_build() {
+	domake
+}
+
+pbs_install() {
+	domkinstall
+	cd "$destdir"
+
+	#  Fixup R wrapper scripts.
+	sed -i "s|${destdir} ||" usr/bin/R
+	rm usr/lib/R/bin/R
+	ln -sf /usr/bin/R usr/lib/R/bin/R
+
+	# Install desktop
+	dodesktop R.desktop R.png
+
+	# Move the config directory to /etc and create symlinks
+	install -d etc/R && cd usr/lib/R/etc
+	for i in *; do
+		mv -f "${i}" "$destdir"/etc/R
+		ln -sf /etc/R/"${i}" "${i}"
+	done
+}
+

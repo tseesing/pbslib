@@ -1,0 +1,37 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="SDL Graphic Primitives"
+HOMEPAGE="http://www.ferzkopp.net/joomla/software-mainmenu-14/4-ferzkopps-linux-software/19-sdlgfx"
+LICENSE="LGPL"
+PACKAGER="StartOS Developers"
+
+SRC_URI="http://www.ferzkopp.net/Software/SDL_gfx-2.0/SDL_gfx-"$V".tar.gz"
+
+RDEPEND="libsdl"
+RECOMMENDED=""
+BDEPEND=""
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_config() {	
+	case $ARCH in 
+		x86_64) config+="--disable-mmx"
+	esac
+	doconfig
+}
+
+pbs_build() {
+	domake
+}
+
+pbs_install() {
+	domkinstall
+}
+

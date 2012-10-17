@@ -1,0 +1,38 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="Small event-driven (SAX-style) JSON parser"
+HOMEPAGE="http://lloyd.github.com/yajl/"
+LICENSE="ISC"
+PACKAGER="StartOS Developers"
+
+SRC_URI="https://github.com/lloyd/"$N"/tarball/"$V"/"$N-$V".tar.gz"
+CHECKSUM=""
+
+RDEPEND="glibc"
+RECOMMENDED=""
+BDEPEND="cmake"
+OPTIONAL=""
+CONFLICT=""
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_config() {
+	cmake -DCMAKE_INSTALL_PREFIX=/usr .
+}
+
+pbs_build() {
+	domake
+}
+
+pbs_install() {
+	domkinstall
+	dodoc COPYING
+}
+

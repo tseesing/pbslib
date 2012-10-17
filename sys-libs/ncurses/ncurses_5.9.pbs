@@ -1,0 +1,66 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="console display library"
+HOMEPAGE="http://www.gnu.org/software/ncurses/"
+LICENSE="GPL"
+PACKAGER="StartOS Developers"
+
+SRC_URI="http://ftp.gnu.org/pub/gnu/"$N"/"$N-$V".tar.gz"
+
+RDEPEND="gcc-lib glibc"
+BDEPEND=""
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_config() {
+	# Patch contains updates from the 5.9 branch by the Ncurses developers
+	dopatch ncurses-5.9-branch_update-2.patch
+	
+	config+="--with-shared
+		     --without-debug 
+                     --enable-widec
+                     --with-manpage-format=normal"
+	doconfig
+}
+
+pbs_build() {
+	domake
+}
+
+pbs_install() {
+	domkinstall
+
+        cd "$destdir"
+	
+	# Make ncurses compatible for older and non-widec compatible programs can build properly
+	for i in curses ncurses form panel menu ; do
+		echo "INPUT(-l${i}w)" >usr/lib"$LIBDIRSUFFIX"/lib"${i}".so
+		doln  /usr/lib"$LIBDIRSUFFIX"/lib"${i}"w.a usr/lib"$LIBDIRSUFFIX"/lib"${i}".a
+	done
+
+	doln /usr/lib"$LIBDIRSUFFIX"/libcurses.so        usr/lib"$LIBDIRSUFFIX"/libcursesw.so
+	doln /usr/lib"$LIBDIRSUFFIX"/libncurses.so       usr/lib"$LIBDIRSUFFIX"/libcurses.so
+	doln /usr/lib"$LIBDIRSUFFIX"/libncursesw.a       usr/lib"$LIBDIRSUFFIX"/libcursesw.a
+	doln /usr/lib"$LIBDIRSUFFIX"/libncurses.a        usr/lib"$LIBDIRSUFFIX"/libcurses.a
+	doln /usr/lib"$LIBDIRSUFFIX"/libncurses++w.a     usr/lib"$LIBDIRSUFFIX"/libncurses++.a
+
+	# Create a symlink for /usr/share/terminfo in /usr/lib for compatibility
+	doln /usr/share/terminfo usr/lib/terminfo
+
+#	case $ARCH in
+#		i?86) 
+#	# Prepare ncursesw5-config to be wrapped by the multiarch wrapper
+#	mv usr/bin/ncursesw5-config{,-32} ;;
+#		x86_64)
+#	mv usr/bin/ncursesw5-config{,-64}
+#	doln /usr/bin/multiarch_wrapper usr/bin/ncursesw5-config
+#	esac
+}
+

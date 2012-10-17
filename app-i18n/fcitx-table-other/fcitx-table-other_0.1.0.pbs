@@ -1,0 +1,41 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="table other for fcitx"
+HOMEPAGE="http://code.google.com"
+LICENSE="GPL"
+PACKAGER="StartOS Developers"
+GROUP="fcitx"
+
+SRC_URI="http://fcitx.googlecode.com/files/"$N-$V".tar.xz"
+CHECKSUM="e3deab3d66f87321c1b1e71762e5a529eb2b324b"
+
+RDEPEND="fcitx"
+RECOMMENDED=""
+BDEPEND="cmake"
+OPTIONAL=""
+CONFLICT=""
+
+INSTALL="$N.install"
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_config() {
+	config+=""
+	doconfig
+}
+
+pbs_build() {
+	domake
+}
+
+pbs_install() {
+	domkinstall
+}
+

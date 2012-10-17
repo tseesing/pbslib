@@ -1,0 +1,47 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="A in-process library that implements SQL database engine"
+HOMEPAGE="http://www.sqlite.org"
+LICENSE="custom"
+PACKAGER="StartOS Developers"
+
+SRC_URI="http://www.sqlite.org/"$N-$V".tar.gz"
+
+RDEPEND="glibc ncurses readline"
+BDEPEND="tcl"
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_config() {
+	dopatch sqlite-3.6.22-build_fix-1.patch
+	# For firefox 
+	export CFLAGS+=" -DSQLITE_SECURE_DELETE -DSQLITE_ENABLE_FTS3 
+	                 -DSQLITE_ENABLE_FTS3_PARENTHESIS 
+			 -DSQLITE_ENABLE_UNLOCK_NOTIFY 
+			 -DSQLITE_CHECK_PAGES 
+			 -DSQLITE_CORE"
+	config+=" --enable-threadsafe       
+		      --enable-cross-thread-connections 
+		      --enable-tempstore=yes   
+		      --enable-load-extension  
+		      --enable-static=no "
+	doconfig
+}
+
+pbs_build() {
+	domake
+}
+
+pbs_install() {
+	domkinstall
+	doman sqlite3.1
+}
+
+

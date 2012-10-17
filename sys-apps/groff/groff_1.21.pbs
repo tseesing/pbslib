@@ -1,0 +1,41 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="Text formatter used for man pages"
+HOMEPAGE="http://www.gnu.org/software/groff/groff.html"
+LICENSE="GPL"
+PACKAGER="StartOS Developers"
+
+SRC_URI="ftp://ftp.gnu.org/gnu/"$N"/"$N-$V".tar.gz"
+
+RDEPEND="gcc-lib libXaw"
+BDEPEND=""
+
+INSTALL="$N.install"
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_config() {
+	PAGE=A4 doconfig
+}
+
+pbs_build() {
+	domake
+}
+
+pbs_install() {
+	domkinstall 
+	# Some documentation programs, such as xman, will not work 
+	# properly without the following symlinks: 
+	cd "$destdir"
+	doln /usr/bin/soelim usr/bin/zsoelim
+	doln /usr/bin/eqn    usr/bin/geqn
+	doln /usr/bin/tbl    usr/bin/gtbl
+}
+

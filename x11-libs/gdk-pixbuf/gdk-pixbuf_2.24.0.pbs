@@ -1,0 +1,43 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="Image loading library for GTK+"
+HOMEPAGE="http://www.gtk.org/"
+GROUP="x11-lib"
+LICENSE="GPL"
+PACKAGER="StartOS Developers"
+
+SRC_URI="http://ftp.gnome.org/pub/GNOME/sources/"$N"/2.24/"$N-$V".tar.bz2"
+
+RDEPEND="glib2 glibc jasper libjpeg-turbo libpng libtiff libX11 libXau libxcb libXdmcp zlib"
+RECOMMENDED=""
+BDEPEND=""
+
+INSTALL="$N.install"
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_config() {
+	config+="--enable-modules 
+	             --with-libpng 
+		     --with-pic 
+		     --with-libjpeg 
+		     --with-libtiff 
+		     --with-libjasper"  
+	doconfig
+}
+
+pbs_build() {
+	domake
+}
+
+pbs_install() {
+	domkinstall
+}
+

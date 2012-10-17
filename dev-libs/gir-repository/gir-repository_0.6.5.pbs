@@ -1,0 +1,39 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="The gir-repository is a repository of GIR interface description files."
+HOMEPAGE="http://www.gnome.org"
+LICENSE="GPL-2"
+PACKAGER="StartOS Developers"
+SRC_URI=" http://ftp.gnome.org/pub/gnome/sources/$N/0.6/"$N-$V$R".tar.bz2"
+
+RDEPEND=""
+BDEPEND=" gobject-introspection babl"
+RECOMMENDED="gtk+"
+
+NOTES="http://wiki.linuxfromscratch.org/blfs/wiki/gir-repository"
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_config() {
+	
+	patch -Np1 -i $filesdir/"$N-$V$R"-dbus-glib-2.patch 
+	#FIXME!
+	sed -i 's/babl-0.0/babl-0.1/g' gir/Makefile.in
+	config+=" --prefix=/usr "
+	doconfig
+}
+
+pbs_build() {
+	domake
+}
+
+pbs_install() {
+	domkinstall
+}

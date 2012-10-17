@@ -1,0 +1,62 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="Fast, easy to administer, secure mail server"
+HOMEPAGE="http://www.postfix.org/"
+LICENSE="GPL"
+PACKAGER="StartOS Developers"
+
+SRC_URI="ftp://ftp.porcupine.org/mirrors/postfix-release/official/"$N-$V".tar.gz"
+CHECKSUM="fda7ec5ac79300577f61a68561171bd501b1b20c"
+
+RDEPEND="libmysqlclient libpcre openldap postgresql-libs sqlite"
+RECOMMENDED=""
+BDEPEND=""
+OPTIONAL=""
+CONFLICT=""
+
+INSTALL="$N.install"
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_config() {
+	make makefiles DEBUG='' CCARGS=' \
+		-DUSE_SASL_AUTH -DUSE_CYRUS_SASL -I/usr/include/sasl \
+		-DHAS_LDAP \
+		-DUSE_TLS \
+		-DHAS_MYSQL -I/usr/include/mysql \
+		-DHAS_PGSQL -I/usr/include/postgresql \
+		-DHAS_SQLITE \
+		' AUXLIBS=' \
+		-lsasl2 \
+		-lldap -llber \
+		-lssl -lcrypto \
+		-lmysqlclient -lz -lm \
+		-lpq \
+		-lsqlite3 -lpthread \
+		' OPT="${CFLAGS} ${LDFLAGS}"
+}
+
+pbs_build() {
+	domake
+}
+
+pbs_install() {
+	sh postfix-install -non-interactive \
+	   install_root="$destdir" \
+	   daemon_directory="/usr/lib/$N" \
+	   sample_directory="/etc/$N/sample" \
+	   manpage_directory="/usr/share/man"
+	   
+	dodoc LICENSE 
+	cd "$destdir"
+	sed 's/\(^\$manpage[^:]*\):/\1.gz:/' -i usr/lib/"$N"/postfix-files
+	dopatch aliases.patch
+}
+

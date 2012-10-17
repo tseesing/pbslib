@@ -1,0 +1,10 @@
+. /usr/lib/ybs/funcs
+
+post_install() {
+        doinstall_info libtasn1.info.gz  
+}       
+
+pre_remove() {
+        doremove_info libtasn1.info.gz
+}
+

@@ -1,0 +1,37 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="A vector graphics library with cross-device output support"
+HOMEPAGE="http://cairographics.org/"
+LICENSE="GPL/MPL"
+PACKAGER="StartOS Developers "
+
+SRC_URI="http://cairographics.org/releases/"$N-$V".tar.gz"
+CHECKSUM="63e0d1372a7919956b6d959709dfdf35d3cecc02"
+
+RDEPEND="fontconfig glib2 libpng libXrender pixman"
+BDEPEND="xcb-util-dev"
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_config() {
+	config+="--enable-xcb=yes
+		 --enable-svg=yes
+		 --enable-tee"
+	doconfig
+}
+
+pbs_build() {
+	domake
+}
+
+pbs_install() {
+	domkinstall
+}
+

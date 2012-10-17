@@ -1,0 +1,45 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="A collection of tools and libraries for many image formats"
+HOMEPAGE="http://www.imagemagick.org/"
+LICENSE="custom"
+PACKAGER="StartOS Developers"
+
+SRC_URI="ftp://ftp.imagemagick.org/pub/ImageMagick/ImageMagick-"$V$R".tar.xz"
+CHECKSUM="4b0ef20cf906bf03acc1cbcdfebd4c29"
+
+PROVIDE="imagemagick imagemagick-doc"
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_config() {
+	config+=""
+	doconfig
+}
+
+pbs_build() {
+	domake
+}
+
+imagemagick_install() {
+	DESCRIPTION="A collection of tools and libraries for many image formats"
+	RDEPEND="djvulibre fftw graphviz lcms2 liblqr libwebp openexr xz-utils"
+	domkinstall
+	dodoc LICENSE
+	rm -fr "$destdir"/usr/share/doc/ImageMagick/
+}
+
+imagemagick-doc_install() {
+	DESCRIPTION="The ImageMagick documentation (utilities manuals and libraries API)"
+	
+	RDEPEND=""
+	make DESTDIR="$destdir" install-data-html
+}
+

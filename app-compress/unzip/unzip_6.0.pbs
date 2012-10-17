@@ -1,0 +1,33 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="unzipper for pkzip-compressed files"
+HOMEPAGE="http://www.info-zip.org/UnZip.html"
+LICENSE="GPL"
+PACKAGER="StartOS Developers"
+
+SRC_URI="http://downloads.sourceforge.net/infozip/"$N"60.tar.gz"
+
+RDEPEND="glibc"
+BDEPEND=""
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_build() {
+	make -f unix/Makefile linux
+}
+
+pbs_install() {
+	mkdir -p "$destdir"/usr
+	make prefix="$destdir"/usr install
+
+	cd "$destdir"
+	domv usr/man usr/share
+}
+

@@ -1,0 +1,38 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="Convert files between various character sets"
+HOMEPAGE="http://recode.progiciels-bpi.ca/"
+LICENSE="GPL"
+PACKAGER="StartOS Developers"
+
+SRC_URI="$N-$V$R.tar.bz2"
+
+RDEPEND="glibc"
+BDEPEND="automake1.4"
+RECOMMENDED=""
+
+INSTALL="$N.install"
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_config() {
+	config+="--without-included-gettext --enable-nls"
+	doconfig
+}
+
+pbs_build() {
+	domake
+}
+
+pbs_install() {
+	domkinstall
+	dodoc AUTHORS BACKLOG ChangeLog NEWS README THANKS TODO
+}
+

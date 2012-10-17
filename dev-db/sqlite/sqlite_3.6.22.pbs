@@ -1,0 +1,46 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="A in-process library that implements SQL database engine"
+HOMEPAGE="http://www.sqlite.org"
+SRC_URI=" http://www.sqlite.org/"$N-$V$R".tar.gz "
+
+RDEPEND="readline ncurses"
+BDEPEND=" dev-lang/tcl"
+OPIONAL="dev-lang/tcl"
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_config() {
+	dopatch "$N-$V$R"-build_fix-1.patch
+	config+=" --prefix=/usr            
+	              --sysconfdir=/etc        
+	              --localstatedir=/var 	
+	              --enable-threadsafe      
+		      --enable-cross-thread-connections
+		      --enable-tempstore=yes   
+		      --enable-load-extension 
+		      --enable-static=no "
+	if ! doconfig;then
+		autoconf
+		doconfig
+	fi
+}
+
+pbs_build() {
+	domake
+}
+
+pbs_install() {
+	domkinstall
+	install -m755 -d           "$destdir"/usr/share/{man,doc}/"$N-$V$R"
+	install -m 0644 sqlite3.1  "$destdir"/usr/share/man/"$N-$V$R"
+	dodoc README* VERSION
+}
+
