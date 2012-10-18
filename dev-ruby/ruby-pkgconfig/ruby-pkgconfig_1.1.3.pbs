@@ -23,7 +23,7 @@ CONFLICT=""
 REPLACE=""
 
 pbs_config() {
-	cp "$YPPATH_SOURCE"/"$(basename $SRC_URI)" .
+	cp "$YBS_SOURCE"/"$(basename $SRC_URI)" .
 }
 
 pbs_install() {

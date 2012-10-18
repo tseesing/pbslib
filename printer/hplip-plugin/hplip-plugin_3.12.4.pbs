@@ -22,7 +22,7 @@ CONFLICT=""
 pbs_unpack() {
 	rm -rf "$N-$V$R" 2>/dev/null
 	mkdir "$N-$V$R" && cd "$N-$V$R"
-	sh "$YPPATH_SOURCE"/hplip-"$V"-plugin.run --tar xf
+	sh "$YBS_SOURCE"/hplip-"$V"-plugin.run --tar xf
 }
 
 pbs_patch() {

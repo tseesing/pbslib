@@ -22,7 +22,7 @@ OPTIONS="nodev nostrip"
 
 pbs_unpack() {
         dounpack
-	tar xf "$YPPATH_SOURCE"/w32api-3.14-mingw32-src.tar.gz
+	tar xf "$YBS_SOURCE"/w32api-3.14-mingw32-src.tar.gz
 	ln -sf w32api-3.14-mingw32 w32api
 }
 

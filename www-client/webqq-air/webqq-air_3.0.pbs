@@ -22,6 +22,6 @@ CONFLICT=""
 NOTES=""
 
 pbs_install() {
-	docp      "$YPPATH_SOURCE"/WebQQ.air  "$destdir"/usr/lib/"$N"
+	docp      "$YBS_SOURCE"/WebQQ.air  "$destdir"/usr/lib/"$N"
 	dodesktop "$N.desktop"      "$N.png"
 }

@@ -21,7 +21,7 @@ INSTALL="$N.install"
 
 pbs_unpack(){
 	mkdir -p "$N-$V$R" && cd "$N-$V$R"
-	cp "$YPPATH_SOURCE"/memtest86+-"$V".bin.gz .
+	cp "$YBS_SOURCE"/memtest86+-"$V".bin.gz .
 	gunzip memtest86+-"$V".bin.gz
 }
 

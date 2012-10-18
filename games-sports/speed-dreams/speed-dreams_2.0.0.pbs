@@ -32,7 +32,7 @@ pbs_unpack() {
 	
 	cd "$N-$V$R"
 	for file in $files; do
-		tar xf "$YPPATH_SOURCE"/"${file}"
+		tar xf "$YBS_SOURCE"/"${file}"
 	done
 }
 

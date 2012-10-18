@@ -24,7 +24,7 @@ pbs_unpack() {
 }
 
 pbs_config() {
-	cp "$YPPATH_SOURCE"/netcat-openbsd_1.89-4.diff.gz .
+	cp "$YBS_SOURCE"/netcat-openbsd_1.89-4.diff.gz .
 	gunzip netcat-openbsd_1.89-4.diff.gz
 	dopatch netcat-openbsd_1.89-4.diff
 	

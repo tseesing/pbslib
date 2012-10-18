@@ -24,7 +24,7 @@ pbs_unpack() {
 	cd "$N-$V$R"
 	mkdir -p unbundle-jdk
 	cd unbundle-jdk
-	sh "$YPPATH_SOURCE"/jdk-6u25-linux-i586.bin --accept-license
+	sh "$YBS_SOURCE"/jdk-6u25-linux-i586.bin --accept-license
 	cd ../
 	sh $filesdir/construct.sh unbundle-jdk linux-jdk linux-jre
 }

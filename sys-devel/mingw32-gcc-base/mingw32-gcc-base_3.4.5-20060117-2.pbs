@@ -28,7 +28,7 @@ OPTIONS="nodev nostrip"
 pbs_unpack() {
         dounpack
 	for i in ada g%2B%2B g77 java objc; do
-		tar xf "$YPPATH_SOURCE"/gcc-"$i"-"$V$R"-src.tar.gz -C "$N-$V$R"	
+		tar xf "$YBS_SOURCE"/gcc-"$i"-"$V$R"-src.tar.gz -C "$N-$V$R"	
 	done
 }
 

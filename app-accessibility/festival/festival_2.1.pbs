@@ -23,14 +23,14 @@ CONFLICT=""
 
 pbs_unpack() {
         dounpack
-	tar xf "$YPPATH_SOURCE"/speech_tools-2.1-release.tar.gz
+	tar xf "$YBS_SOURCE"/speech_tools-2.1-release.tar.gz
 }
 
 pbs_build() {
 	#
-	tar xf "$YPPATH_SOURCE"/festlex_CMU.tar.gz
-	tar xf "$YPPATH_SOURCE"/festlex_OALD.tar.gz
-	tar xf "$YPPATH_SOURCE"/festlex_POSLEX.tar.gz
+	tar xf "$YBS_SOURCE"/festlex_CMU.tar.gz
+	tar xf "$YBS_SOURCE"/festlex_OALD.tar.gz
+	tar xf "$YBS_SOURCE"/festlex_POSLEX.tar.gz
 	cp -r festival/* .
 
 	#

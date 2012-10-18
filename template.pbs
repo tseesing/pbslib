@@ -43,7 +43,7 @@ PACKAGER="StartOS Developers"
 #SRC_URI="http://foo.bar.com/$N.rpm"
 #SRC_URI="git://foo.bar.com/$N.git"
 #SRC_URI="git://foo.bar.com/$N"
-#if $N-$V.tar.bz2 is exist in $YPPATH_SOURCE, you can type: 
+#if $N-$V.tar.bz2 is exist in $YBS_SOURCE, you can type: 
 #SRC_URI="" or
 #SRC_URI="$N-$V.tar.bz2" or
 #SRC_URI="/tmp/$N-$V.tar.bz2"
@@ -79,7 +79,7 @@ NOTES=""
 
 #unpack
 pbs_unpack() {
-	#unpard file from $YPPATH_SOURCE to current directory.
+	#unpard file from $YBS_SOURCE to current directory.
         dounpack
 }
 

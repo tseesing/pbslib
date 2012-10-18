@@ -18,7 +18,7 @@ NOTES="http://wiki.linuxfromscratch.org/blfs/wiki/gnome-disk-utility"
 
 pbs_unpack() {
 	OLDDIR=$(pwd)
-	cd $YPPATH_SOURCE
+	cd $YBS_SOURCE
 	if [ -d gnome-disk-utility/.git ];then
 		cd gnome-disk-utility
 		git pull --rebase

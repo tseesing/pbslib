@@ -18,7 +18,7 @@ PROVIDE="nvidia-graphic-173-source nvidia-graphic-173-driver nvidia-graphic-173-
 pbs_unpack() {
 	# Extract-only
 	rm -rf NVIDIA-Linux-x86-"$V"-pkg1 "$N-$V"  2>/dev/null
-	bash "$YPPATH_SOURCE"/NVIDIA-Linux-x86-"$V"-pkg1.run --extract-only
+	bash "$YBS_SOURCE"/NVIDIA-Linux-x86-"$V"-pkg1.run --extract-only
 	mv NVIDIA-Linux-x86-"$V"-pkg1 "$N-$V$R"
 }
 

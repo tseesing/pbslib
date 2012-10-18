@@ -23,13 +23,13 @@ firefox-i18n-zh-CN_install() {
 	DESCRIPTION="chinese simplified language pack for firefox"
 
 	local target="$destdir/usr/lib/firefox/extensions/langpack-zh-CN@firefox.mozilla.org.xpi"
-	docp_rename "$YPPATH_SOURCE"/zh-CN.xpi "$target"  
+	docp_rename "$YBS_SOURCE"/zh-CN.xpi "$target"  
 }
 
 firefox-i18n-zh-TW_install() {
 	DESCRIPTION="chinese traditional language pack for firefox"
 
 	local target="$destdir/usr/lib/firefox/extensions/langpack-zh-TW@firefox.mozilla.org.xpi"
-	docp_rename "$YPPATH_SOURCE"/zh-TW.xpi "$target"  
+	docp_rename "$YBS_SOURCE"/zh-TW.xpi "$target"  
 }
 

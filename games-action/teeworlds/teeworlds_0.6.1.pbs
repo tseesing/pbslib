@@ -24,7 +24,7 @@ pbs_unpack() {
 }
 
 pbs_build() {
-	tar xf "$YPPATH_SOURCE"/bam-0.4.0.tar.bz2
+	tar xf "$YBS_SOURCE"/bam-0.4.0.tar.bz2
 	cd bam-0.4.0 && ./make_unix.sh 
 	cd ../
 	./bam-0.4.0/bam server_release client_release

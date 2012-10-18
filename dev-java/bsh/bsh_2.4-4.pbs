@@ -21,7 +21,7 @@ pbs_install() {
 	. /etc/profile.d/jdk.sh
 	. /etc/profile.d/jre.sh
 
-	docp "$YPPATH_SOURCE"/bsh-2.0b4.jar "$destdir"/"$JAVA_HOME"/
+	docp "$YBS_SOURCE"/bsh-2.0b4.jar "$destdir"/"$JAVA_HOME"/
 
 	cd "$destdir"/"$JAVA_HOME"/
 	doln bsh-2.0b4.jar bsh.jar

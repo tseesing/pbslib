@@ -19,7 +19,7 @@ RECOMMENDED=""
 
 pbs_install() {
 	mkdir -p "$N-$V$R" && cd "$N-$V$R"
-	tar xf "$YPPATH_SOURCE"/"$(basename $SRC_URI)"
+	tar xf "$YBS_SOURCE"/"$(basename $SRC_URI)"
 	find . -name "*.deb" |while read i; do
 		echo ">>> Unpack $(basename $i)"
 		ar x "${i}"; tar xf data.tar.gz

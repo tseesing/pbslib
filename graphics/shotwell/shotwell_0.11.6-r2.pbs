@@ -27,7 +27,7 @@ pbs_unpack() {
 pbs_config() {
 	# FIXME Shotwell cannot be built by Vala compiler 0.13.0 or greater. But we are running 0.15.2
 	# So we install it temporaryly.
-	tar xf "$YPPATH_SOURCE"/vala-0.12.1.tar.bz2
+	tar xf "$YBS_SOURCE"/vala-0.12.1.tar.bz2
 	cd vala-0.12.1
 	./configure --prefix="$srcdir"/vala --enable-vapigen
 	domake

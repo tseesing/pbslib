@@ -30,8 +30,8 @@ NOTES="
 "
 
 pbs_unpack() {
-	tar xf "$YPPATH_SOURCE"/MesaLib-"$V".tar.bz2
-        tar xf "$YPPATH_SOURCE"/MesaGLUT-"$V".tar.bz2
+	tar xf "$YBS_SOURCE"/MesaLib-"$V".tar.bz2
+        tar xf "$YBS_SOURCE"/MesaGLUT-"$V".tar.bz2
         mv Mesa-"$V"  "$N-$V$R"
 }
 

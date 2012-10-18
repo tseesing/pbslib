@@ -28,7 +28,7 @@ INSTALL="$N.install"
 #PROVIDE="foo"
 
 pbs_unpack() {
-	#unpard file from $YPPATH_SOURCE to current directory.
+	#unpard file from $YBS_SOURCE to current directory.
         dounpack
 }
 

@@ -24,7 +24,7 @@ OPTIONS="nostrip"
 pbs_unpack() {
 	rm "$N-$V$R" -rf 2>/dev/null
 	mkdir -p "$N-$V$R"
-	tar xf "$YPPATH_SOURCE"/aliedit32.tar.bz2 -C "$N-$V$R"
+	tar xf "$YBS_SOURCE"/aliedit32.tar.bz2 -C "$N-$V$R"
 }
 
 pbs_install() {

@@ -18,7 +18,7 @@ PROVIDE="nvidia-graphic-96-source nvidia-graphic-96-driver nvidia-graphic-96-uti
 pbs_unpack() {
 	# Extract-only
 	rm -fr NVIDIA-Linux-x86-"$V"-pkg1 "$N-$V$R"  2>/dev/null
-	bash "$YPPATH_SOURCE"/NVIDIA-Linux-x86-"$V"-pkg1.run --extract-only
+	bash "$YBS_SOURCE"/NVIDIA-Linux-x86-"$V"-pkg1.run --extract-only
 	mv NVIDIA-Linux-x86-"$V"-pkg1 "$N-$V$R"
 }
 

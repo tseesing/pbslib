@@ -33,7 +33,7 @@ pbs_install() {
 	for ver in 4.2 4.3 4.4 4.5; do
 		mkdir docbook-xml-${ver}
 		pushd docbook-xml-${ver}
-		bsdtar xf "${YPPATH_SOURCE}/docbook-xml-${ver}.zip"
+		bsdtar xf "${YBS_SOURCE}/docbook-xml-${ver}.zip"
 		mkdir -p "${destdir}/usr/share/xml/docbook/xml-dtd-${ver}"
 		cp -dRf docbook.cat *.dtd ent/ *.mod "${destdir}/usr/share/xml/docbook/xml-dtd-${ver}/"
 		popd
@@ -41,7 +41,7 @@ pbs_install() {
 
 	mkdir docbook-xml-4.1.2
 	pushd docbook-xml-4.1.2
-	bsdtar xf "${YPPATH_SOURCE}/docbkx412.zip"
+	bsdtar xf "${YBS_SOURCE}/docbkx412.zip"
 	mkdir -p "${destdir}/usr/share/xml/docbook/xml-dtd-4.1.2"
 	cp -dRf docbook.cat *.dtd ent/ *.mod  "${destdir}/usr/share/xml/docbook/xml-dtd-4.1.2/"
 	popd

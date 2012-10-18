@@ -23,7 +23,7 @@ pbs_unpack() {
 }
 
 pbs_build() {
-	tar xf "$YPPATH_SOURCE"/lzma465.tar.bz2
+	tar xf "$YBS_SOURCE"/lzma465.tar.bz2
 	make UPX_LZMA_VERSION=0x465 UPX_LZMADIR="$PWD" all
 }
 

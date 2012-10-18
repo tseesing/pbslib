@@ -26,7 +26,7 @@ pbs_unpack() {
 }
 
 pbs_build() {
-	unzip "$YPPATH_SOURCE"/ecjsrc-"$V".jar
+	unzip "$YBS_SOURCE"/ecjsrc-"$V".jar
 	. /etc/profile.d/jdk.sh
 	. /etc/profile.d/apache-ant.sh
 	ant build

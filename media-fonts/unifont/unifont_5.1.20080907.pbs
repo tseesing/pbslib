@@ -18,7 +18,7 @@ RECOMMENDED=""
 INSTALL="$N.install"
 
 pbs_install() {
-	cp "$YPPATH_SOURCE"/"$N-$V".ttf.gz .
+	cp "$YBS_SOURCE"/"$N-$V".ttf.gz .
 	gunzip "$N-$V".ttf.gz
 	docp unifont-5.1.20080907.ttf "$destdir"/usr/share/fonts/unifont
 }

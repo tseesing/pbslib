@@ -22,8 +22,8 @@ pbs_unpack() {
 	origin_dir="$PWD"
 
 	# Check and unpack the run package via sh
-	sh "$YPPATH_SOURCE"/"$runfile" --check ||exit 1
-	echo yes |sh "$YPPATH_SOURCE"/"$runfile" --target . --nox11 --noexec ||exit 1
+	sh "$YBS_SOURCE"/"$runfile" --check ||exit 1
+	echo yes |sh "$YBS_SOURCE"/"$runfile" --target . --nox11 --noexec ||exit 1
 }
 
 virtualbox-bin_install() {

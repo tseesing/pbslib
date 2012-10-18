@@ -21,7 +21,7 @@ CONFLICT=""
 
 pbs_unpack() {
 	mkdir -p "$N-$V$R"
-	sh "$YPPATH_SOURCE"/"cudatoolkit_"$V"_linux_32_fedora14.run" --keep -- --prefix="$srcdir"
+	sh "$YBS_SOURCE"/"cudatoolkit_"$V"_linux_32_fedora14.run" --keep -- --prefix="$srcdir"
 }
 
 pbs_install() {

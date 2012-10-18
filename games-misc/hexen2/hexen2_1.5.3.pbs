@@ -30,9 +30,9 @@ pbs_unpack() {
 }
 
 pbs_config() {
-	tar xf "$YPPATH_SOURCE"/hexen2source-gamecode-"$V".tgz
-	tar xf "$YPPATH_SOURCE"/hexenworld-pakfiles-0.15.tgz
-	tar xf "$YPPATH_SOURCE"/hexen2demo-pakfiles-1.11.tgz
+	tar xf "$YBS_SOURCE"/hexen2source-gamecode-"$V".tgz
+	tar xf "$YBS_SOURCE"/hexenworld-pakfiles-0.15.tgz
+	tar xf "$YBS_SOURCE"/hexen2demo-pakfiles-1.11.tgz
 
 	if [ "$ARCH" = i686 ]; then
 		sed -i -e 's/i586/i686 -mtune=generic/' scripts/makefile.inc

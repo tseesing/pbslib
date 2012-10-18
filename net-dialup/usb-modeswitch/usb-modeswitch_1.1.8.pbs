@@ -33,6 +33,6 @@ pbs_build() {
 
 pbs_install() {
 	domkinstall
-	dodoc COPYING "$YPPATH_SOURCE"/device_reference.txt
+	dodoc COPYING "$YBS_SOURCE"/device_reference.txt
 }
 

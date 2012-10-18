@@ -16,7 +16,7 @@ RECOMMENDED=""
 
 pbs_unpack() {
 	OLDDIR=$(pwd)
-	cd $YPPATH_SOURCE
+	cd $YBS_SOURCE
 	if [ -d $N/.git ];then
 		cd $N
 		git pull --rebase

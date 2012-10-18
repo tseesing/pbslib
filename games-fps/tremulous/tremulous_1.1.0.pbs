@@ -42,7 +42,7 @@ pbs_build() {
 
 	# Build the server	
 	mkdir -p tremded
-	bsdtar -x -C tremded -f "$YPPATH_SOURCE"/mg_tremded_source_1.01.tar.gz
+	bsdtar -x -C tremded -f "$YBS_SOURCE"/mg_tremded_source_1.01.tar.gz
 	cd tremded
 	domake || return 1
 
@@ -59,7 +59,7 @@ pbs_install() {
 	install -D -m755 "$filesdir"/tremulous.sh                      "$destdir"/usr/bin/tremulous
 
 	# Install the documentation
-	dodoc "$YPPATH_SOURCE"/{mg-client-manual.txt,lakitu7_qvm.txt}
+	dodoc "$YBS_SOURCE"/{mg-client-manual.txt,lakitu7_qvm.txt}
 
 	# Install the .desktop and icon files
 	dodesktop tremulous.desktop tremulous.xpm
@@ -67,7 +67,7 @@ pbs_install() {
 	# Install the server
 	cd tremded
 	install -D -m755 build/release-linux-"$_arch"/tremded."$_arch" "$destdir"/opt/tremulous/tremded."$_arch"
-	install -D -m644 "$YPPATH_SOURCE"/game.qvm                     "$destdir"/opt/tremulous/game.qvm
+	install -D -m644 "$YBS_SOURCE"/game.qvm                     "$destdir"/opt/tremulous/game.qvm
 	install -D -m755 "$filesdir"/tremded.sh                        "$destdir"/usr/bin/tremded
 	#install -D -m644 "$filesdir"/tremdedrc                        "$destdir"/etc/tremdedrc
 }

@@ -18,7 +18,7 @@ PROVIDE="nvidia-graphic-source nvidia-graphic-driver nvidia-graphic-utils"
 pbs_unpack() {
 	# Extract-only
 	rm -fr NVIDIA-Linux-x86-"$V" "$N-$V$R" 2 >/dev/null
-	bash "$YPPATH_SOURCE"/NVIDIA-Linux-x86-"$V".run --extract-only
+	bash "$YBS_SOURCE"/NVIDIA-Linux-x86-"$V".run --extract-only
 	mv NVIDIA-Linux-x86-"$V" "$N-$V$R"   
 }
 

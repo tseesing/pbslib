@@ -20,7 +20,7 @@ pbs_unpack() {
 }
 
 pbs_patch() {
-	cp "$YPPATH_SOURCE"/"$N-$V"-apng.patch.gz .
+	cp "$YBS_SOURCE"/"$N-$V"-apng.patch.gz .
 	gunzip "$N-$V"-apng.patch.gz
 	dopatch "$N-$V"-apng.patch
 }

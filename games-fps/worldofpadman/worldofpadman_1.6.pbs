@@ -24,7 +24,7 @@ INSTALL="$N.install"
 
 pbs_unpack() {
         dounpack
-	unzip -u -o "$YPPATH_SOURCE"/wop-1.5.x-to-1.6-patch-unified.zip -d "$N-$V$R"
+	unzip -u -o "$YBS_SOURCE"/wop-1.5.x-to-1.6-patch-unified.zip -d "$N-$V$R"
 }
 
 pbs_install() {

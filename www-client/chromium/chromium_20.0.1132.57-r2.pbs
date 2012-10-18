@@ -51,7 +51,7 @@ pbs_patch() {
 }
 
 pbs_config() {
-	tar xf "$YPPATH_SOURCE"/naclsdk_linux.bz2
+	tar xf "$YBS_SOURCE"/naclsdk_linux.bz2
 	ln -s "$PWD"/pepper_${V%%.*}/toolchain/linux_x86_newlib native_client/toolchain/linux_x86_newlib || return 1
 
 	# CFLAGS are passed through release_extra_cflags below

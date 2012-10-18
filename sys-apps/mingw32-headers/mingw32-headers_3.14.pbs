@@ -23,7 +23,7 @@ OPTIONS="nodev nostrip"
 
 pbs_unpack() {
         dounpack
-	tar xf "$YPPATH_SOURCE"/mingwrt-3.18-mingw32-src.tar.gz
+	tar xf "$YBS_SOURCE"/mingwrt-3.18-mingw32-src.tar.gz
 	cp -a mingwrt-3.18-mingw32/include/* mingw32-headers-3.14/include/
 }
 
