@@ -1,11 +1,23 @@
 . /usr/lib/ybs/funcs
 
+config="/etc/rsyncd.conf"
+sample="/usr/share/rsync/rsyncd.conf.sample"
+
 post_install() {
-	dogroupadd -r "rsyncd"
-	douseradd -c "rsyncd Daemon" -d "/home/rsync" -s "/bin/false" -r -N -G "rsyncd" "rsyncd" ||true
+	[ -e $config ] || cp $sample $config
+	return 0
 }
 
 post_remove() {
-	douserdel -r "rsyncd"
-	dogroupdel "rsyncd" |true
+	[ -e $config ] && rm $config
+	return 0
 }
+
+post_upgrade() {
+	post_install
+}
+
+post_downgrade() {
+	post_install
+}
+

@@ -6,8 +6,8 @@
 #
 
 DESCRIPTION="Python binding to libudev"
-HOMEPAGE="http://pypi.python.or"
-LICENSE="GPLv2.1"
+HOMEPAGE="http://pypi.python.org/pypi/pyudev"
+LICENSE="LGPL"
 PACKAGER="StartOS Developers"
 
 SRC_URI="http://pypi.python.org/packages/source/p/"$N"/"$N-$V".tar.gz"

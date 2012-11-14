@@ -12,14 +12,14 @@ post_install() {
 
 	if [ ! -f /etc/yget.conf  ];then
 		cat >/etc/yget.conf <<"EOF"
-ACCEPT_REPO="stable"
-YPPATH_URI="http://pkg.ylmf.com/packages"
+YPPATH_URI="http://pkg.startos.com/packages"
 YPPATH_PKGDEST="/var/ypkg/packages"
+ACCEPT_REPO="stable"
+USE="yes"
 EOF
         fi
 	
 	"$sqlite3" "$dbfile" 'CREATE INDEX world_file_name ON world_file ( name );' 2>/dev/null
-	#"$sqlite3" "$dbfile" 'drop index if exists world_file_name' 
 
 	return 0
 }
@@ -45,7 +45,7 @@ pre_upgrade() {
 }
 
 post_remove() {
-	rm -f /etc/yget.conf 2>/dev/null ||true
+	rm -f /etc/yget.conf* 2>/dev/null ||true
 }
 
 post_upgrade() {
@@ -73,6 +73,13 @@ post_upgrade() {
 	fi
 
 	post_install $name $version_new
+
+	# add USE
+	for i in $(ls /etc/yget.conf /etc/yget.conf.d/*.conf 2>/dev/null |xargs);do 
+		if ! grep -q USE= ${i}; then 
+			echo USE=\"yes\" >> ${i}
+		fi
+	done
 }
 
 post_downgrade() {

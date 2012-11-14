@@ -1,0 +1,30 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="binaries used by initramfs-tools "
+HOMEPAGE="http://www.startos.org"
+LICENSE="GPL"
+PACKAGER="StartOS Developers"
+
+SRC_URI="git://git.ylmf.com/"$N".git"
+
+RDEPEND="initramfs-tools glibc udev"
+BDEPEND=""
+RECOMMENDED=""
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_build() {
+	domake
+}
+
+pbs_install() {
+	docp wait-for-root rzscontrol "$destdir"/usr/lib/initramfs-tools/bin
+}
+

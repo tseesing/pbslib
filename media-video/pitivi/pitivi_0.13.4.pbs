@@ -7,9 +7,7 @@
 
 DESCRIPTION="A free, intuitive and featureful movie editor for the Linux desktop."
 HOMEPAGE="http://www.pitivi.org/"
-REPO=""
-LICENSE="GPL"
-PRIORITY=""
+LICENSE="LGPL"
 PACKAGER="StartOS Developers"
 
 SRC_URI="http://ftp.gnome.org/pub/GNOME/sources/"$N"/0.13/"$N-$V$R".tar.bz2"
@@ -17,7 +15,7 @@ SRC_URI="http://ftp.gnome.org/pub/GNOME/sources/"$N"/0.13/"$N-$V$R".tar.bz2"
 RDEPEND="distribute zope-interface pygoocanvas goocanvas gnonlin"
 BDEPEND=""
 RECOMMENDED=""
-CONFLICT="gst-fluendo-mp3 gst-fluendo-mpegdemux gst-fluendo-mpegmux"
+CONFLICT=""
 
 NOTES="Some people have been experiencing problems with PiTiVi and the fluendo plugins. 
 If you experience problems with MPEG or mp3 files in pitivi, make sure the following packages are not installed:
@@ -43,3 +41,4 @@ pbs_build() {
 pbs_install() {
 	domkinstall
 }
+

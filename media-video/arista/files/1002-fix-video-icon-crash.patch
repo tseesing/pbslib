@@ -1,0 +1,20 @@
+## Description: Fixes crash on nonexistant video camera icon
+## Origin/Author: Steffen Röcker <sroecker@gmail.com>
+## Bug: http://launchpad.net/bugs/814911
+Index: arista-0.9.7/arista-gtk
+===================================================================
+--- arista-0.9.7.orig/arista-gtk	2011-10-24 21:45:17.702477891 +0200
++++ arista-0.9.7/arista-gtk	2011-10-24 21:45:16.758477930 +0200
+@@ -1141,8 +1141,11 @@
+                 
+                 for device, capture in self.finder.capture_devices.items():
+                     iter = model.append()
+-                    model.set_value(iter, 0, theme.load_icon("camera-video",
++                    try:
++                        model.set_value(iter, 0, theme.load_icon("camera-video",
+                                                              size, 0))
++                    except:
++                        pass
+                     model.set_value(iter, 1, capture.nice_label)
+                     if capture.version == '1':
+                         model.set_value(iter, 2, ("v4l://" + device, True))

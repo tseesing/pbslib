@@ -1,6 +1,11 @@
 . /usr/lib/ybs/funcs
 
-st_install() {
+post_install() {
 	gnome2_desktop_database_update
 	gnome2_icon_cache_update
 }
+
+post_upgrade() {
+	post_install
+}
+

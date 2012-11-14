@@ -33,7 +33,7 @@ adobe-flashplugin_install() {
 
 flash-player-properties_install () {
 	DESCRIPTION="Adobe flash player properties"
-	RDEPEND="gtk+ kdelibs"
+	RDEPEND="gtk+"
 	RECOMMENDED="adobe-flashplugin"
 	INSTALL="flash-player-properties.install"
 

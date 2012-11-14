@@ -25,5 +25,7 @@ pbs_unpack() {
 
 pbs_install() {
 	docp etc usr "$destdir"
+	make -C newns
+	docp newns "$destdir"/usr/lib/lupin-support/
 }
 
