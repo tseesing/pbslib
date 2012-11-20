@@ -1,10 +1,11 @@
 
-conf="/etc/ybs.conf"
+conf="/etc/ybs.conf.d/pbslib.conf"
 comf_sample="/usr/share/ybs/ybs.conf.sample"
 
 post_install() {
 	if [ ! -f "$conf"  ];then
 		cp "$comf_sample" "$conf"
+		ln -sf "$conf" /etc/ybs.conf
 	fi
 	return 0
 }

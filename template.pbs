@@ -61,8 +61,8 @@ OPTIONAL="a: support a
           b: support b"
 REPLACE=""
 
-#do not spilte dev files
-OPTIONS="nodev nostrip upx"
+# OPTIONS
+OPTIONS="nodev/dev nostrip/strip upx/noupx nolibtool/libtool distcc/nodistcc ccache/noccache"
 
 #
 INSTALL="$N.install"

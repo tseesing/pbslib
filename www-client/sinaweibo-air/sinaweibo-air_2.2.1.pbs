@@ -10,7 +10,7 @@ HOMEPAGE="http://airweibo.sinaapp.com/"
 LICENSE="custom"
 PACKAGER="StartOS Developers"
 
-SRC_URI="http://airweibo-install.stor.sinaapp.com/AIRweibo(1.14.2).air"
+SRC_URI="http://airweibo-install.stor.sinaapp.com/AIRweibo($V).air"
 
 RDEPEND="adobe-air-sdk"
 BDEPEND=""
@@ -20,8 +20,8 @@ CONFLICT=""
 INSTALL="$N.install"
 
 pbs_install() {
-	docp_rename "$YBS_SOURCE"/"AIRweibo(1.14.2).air" "$destdir"/usr/lib/"$N"/airweibo.air
-	dodesktop   "sinaweibo-air.desktop"                 "sinaweibo-air.png"
+	docp_rename "$YBS_SOURCE"/"AIRweibo($V).air" "$destdir"/usr/lib/"$N"/airweibo.air
+	dodesktop "sinaweibo-air.desktop" "sinaweibo-air.png"
 	docp "$filesdir"/"$N" "$destdir"/usr/bin/
 }
 

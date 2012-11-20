@@ -87,8 +87,8 @@ pbs_config() {
 		--disable-expensive-checks \
 		--disable-debug-runtime \
 		--disable-assertions \
+		--with-binutils-include=/usr/include \
 		--"$_optimized_switch"-optimized
-		#--with-binutils-include=/usr/include \
 
 }
 
@@ -99,6 +99,7 @@ pbs_build() {
 llvm_install() {
 	DESCRIPTION="Low Level Virtual Machine"
 	RDEPEND="gcc-lib libffi"
+	BDEPEND="binutils-dev(>=2.22)"
 	RECOMMENDED=""
 
 	cd "$srcdir"

@@ -13,7 +13,7 @@ PACKAGER="StartOS Developers"
 SRC_URI="http://www.pyside.org/files/"$N"-qt4.8+"$V".tar.bz2"
 CHECKSUM="59c8653734b020b0128b82adc98ee704"
 
-RDEPEND="mesa phonon shiboken"
+RDEPEND="mesa shiboken"
 RECOMMENDED=""
 BDEPEND="cmake"
 OPTIONAL=""

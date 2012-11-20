@@ -13,7 +13,7 @@ PACKAGER="StartOS Developers"
 SRC_URI="http://dl-ak.solidworks.com/nonsecure/draftsight/V1R2.1/draftSight.deb"
 CHECKSUM="5dbb8148ba9df323d77a9dc5b8268fd9"
 
-RDEPEND="cups mesa nas phonon"
+RDEPEND="cups mesa nas"
 BDEPEND=""
 RECOMMENDED=""
 CONFLICT=""
