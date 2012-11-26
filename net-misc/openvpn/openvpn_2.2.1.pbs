@@ -1,0 +1,76 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="OpenVPN is a robust and highly flexible tunneling application compatible with many OSes."
+HOMEPAGE="http://openvpn.net/"
+LICENSE="custom"
+PACKAGER="StartOS Developers"
+
+SRC_URI="http://swupdate.openvpn.net/community/releases/"$N-$V".tar.gz"
+
+RDEPEND="lzo openssl pam"
+RECOMMENDED=""
+BDEPEND=""
+OPTIONAL=""
+CONFLICT=""
+REPLACE=""
+
+INSTALL="$N.install"
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_config() {
+	CFLAGS="$CFLAGS -DPLUGIN_LIBDIR=\\\"/usr/lib/openvpn\\\"" \
+	./configure --prefix=/usr --enable-password-save  --mandir=/usr/share/man 
+}
+
+pbs_build() {
+	domake
+
+	# Build plugins
+	for plug in auth-pam down-root; do
+		cd plugin/"$plug" && domake && cd "$srcdir"
+	done
+}
+
+pbs_install() {
+	domkinstall
+  	install -d -m755 "$destdir"/etc/openvpn
+ 	
+	# Install examples
+	install -d -m755 "$destdir"/usr/share/openvpn
+	cp -r sample-config-files "$destdir"/usr/share/openvpn/examples
+	
+	# Install license
+	dodoc COPYING
+
+	# Install plugins
+	for plug in auth-pam down-root; do
+		cd "$srcdir"/plugin/"$plug"
+		docp openvpn-"$plug".so "$destdir"/usr/lib/openvpn/
+		cd -
+	done
+	
+	# Install contrib
+	install -d -m755 "$destdir"/usr/share/openvpn/contrib
+	cp -r contrib "$destdir"/usr/share/openvpn
+
+	# Install easy-rsa
+	make -C easy-rsa/2.0 install DESTDIR="$destdir" PREFIX=usr/share/openvpn/easy-rsa
+	
+	# Install systemd unit
+	dounit "$filesdir"/openvpn@.service
+
+	# 
+	cd "$destdir"
+	find  usr/share/openvpn -type f -exec chmod 644 {} \;
+	find  usr/share/openvpn -type d -exec chmod 755 {} \;
+	rm -f usr/share/openvpn/easy-rsa/openssl-0.9.?.cnf
+}
+

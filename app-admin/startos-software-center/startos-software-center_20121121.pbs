@@ -13,12 +13,11 @@ PACKAGER="StartOS Developers"
 GROUP="base"
 
 SRC_URI="git://git.ylmf.com/software-center.git"
-#SRC_URI="git://gitcafe.com/StartOS/software-center.git"
 
-RDEPEND="polkit(>=0.102) ypkg2(>=20120820) dbus-glib gtk+ json-glib udev"
+RDEPEND="polkit(>=0.102) ypkg2(>=20121121) dbus-glib gtk+ json-glib udev"
 BDEPEND=""
 RECOMMENDED="app-desktop app-logo"
-REPLACE="ylmfos-software-center"
+REPLACE="ylmfos-software-center ypki"
 
 INSTALL="$N.install"
 
@@ -29,7 +28,7 @@ pbs_unpack() {
 }
 
 pbs_config() {
-	config+="--with-debug"
+	config+=""
 	doconfig
 }
 
@@ -41,5 +40,10 @@ pbs_install() {
 	domkinstall
 	cd "$destdir"
 	docp usr/share/icons/hicolor/48x48/apps/softwarecenter.png usr/share/pixmaps/
+	
+	#
+	docp "$filesdir"/ypk-thumbnailer usr/bin/
+	docp "$filesdir"/{ypk-package.xml,ypk-thumbnailer.schemas} usr/share/softwarecenter/
+	docp "$filesdir"/{default.png,template.png} usr/share/pixmaps/ypk-package-installer/
 }
 

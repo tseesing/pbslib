@@ -12,7 +12,7 @@ post_install() {
 	fi	
 
 	# Fix gdm permission
-	chown gdm:gdm /var/lib/gdm/ -R 
+	[ -d /var/lib/gdm/ ] && chown gdm:gdm /var/lib/gdm/ -R 
 
 	# Fix /etc/fstab
 	sed -i 's/\/isodevice\//\/host\//g' /etc/fstab
@@ -27,6 +27,12 @@ post_install() {
 
 	#
 	[ -e /usr/lib/libarchive.so.2 ] || ln -sf /usr/lib/libarchive.so /usr/lib/libarchive.so.2
+
+	# FIXME, https://bbs.archlinux.org/viewtopic.php?pid=1107433#p1107433
+	_confile="/etc/modprobe.d/rtl8192ce.conf"
+	if [ ! -f "$_confile" ]; then
+		echo 'options rtl8192ce ips=0 fwlps=0' >"$_confile"
+	fi	
 
 	#
 	update-grub

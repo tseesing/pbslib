@@ -6,12 +6,12 @@
 #
 
 DESCRIPTION="install build-essential packages"
-HOMEPAGE="www.startos.org"
+HOMEPAGE="http://www.startos.org"
 LICENSE="GPL"
 PACKAGER="StartOS Developers"
 YARCH="any"
 
-RDEPEND="make automake autoconf patch intltool pkgconfig gcc gcc-dev glibc-dev glib2-dev gdk-pixbuf-dev m4 linux-headers linux-kernel-headers"
+RDEPEND="make automake autoconf patch intltool pkgconfig binutils binutils-dev gcc gcc-dev glibc-dev glib2-dev gdk-pixbuf-dev m4 linux-headers linux-kernel-headers"
 BDEPEND=""
 RECOMMENDED=""
 CONFLICT=""

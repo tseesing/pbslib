@@ -1,0 +1,39 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="A BSD compatibility library"
+HOMEPAGE="http://libbsd.freedesktop.org/wiki/"
+LICENSE="custom"
+PACKAGER="StartOS Developers"
+
+SRC_URI="http://libbsd.freedesktop.org/releases/"$N-$V".tar.gz"
+CHECKSUM="591fc9de4ca22f78cf87a94e648a92f4"
+
+RDEPEND="glibc"
+RECOMMENDED=""
+BDEPEND=""
+OPTIONAL=""
+CONFLICT=""
+REPLACE=""
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_config() {
+	config+=""
+	doconfig
+}
+
+pbs_build() {
+	domake
+}
+
+pbs_install() {
+	domkinstall
+}
+

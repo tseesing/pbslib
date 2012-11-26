@@ -25,7 +25,7 @@ pbs_config() {
 	rm -fr "$N"-build 2>/dev/null
 	mkdir "$N"-build && cd "$N"-build
 
-	config+="--enable-plugins --enable-threads --enable-gold --enable-ld=default"
+	config+="--enable-plugins --enable-threads --enable-gold --enable-ld=default --disable-werror"
 
 	case $ARCH in 
 		i?86) config+=" " ;;
@@ -36,11 +36,11 @@ pbs_config() {
 
 pbs_build() {
 	domake configure-host
-	domake tooldir="$destdir"/usr
+	domake tooldir=/usr
 }
 
 pbs_install() {	
-	domkinstall tooldir="$destdir"/usr
+	domkinstall tooldir=/usr
 	
 	# Add some useful headers
 	docp ../include/{libiberty.h,demangle.h} "$destdir"/usr/include

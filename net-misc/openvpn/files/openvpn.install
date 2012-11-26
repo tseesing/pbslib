@@ -1,0 +1,16 @@
+. /usr/lib/ybs/funcs
+
+file="openvpn@.service"
+
+post_install() {
+	systemctl enable "$file" ||true
+}
+
+pre_remove() {
+	systemctl disable "$file" ||true
+}
+
+post_upgrade() {
+	post_install
+}
+
