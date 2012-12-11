@@ -10,8 +10,8 @@ post_install() {
         gnome2_gconfd_reload
 }
 
-post_remove() {
-	gnome2_uninstall_schema "$files"
+pre_remove() {
+	gnome2_uninstall_schema "$files" ||true
 }
 
 post_upgrade() {

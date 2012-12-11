@@ -1,0 +1,15 @@
+diff -ur gnome-system-tools-2.32.0-r2/src/users/user-profiles.conf.in gnome-system-tools-2.32.0-r2.new//src/users/user-profiles.conf.in
+--- gnome-system-tools-2.32.0-r2/src/users/user-profiles.conf.in	2010-01-12 03:26:31.000000000 +0800
++++ gnome-system-tools-2.32.0-r2.new//src/users/user-profiles.conf.in	2012-12-03 09:48:12.663126774 +0800
+@@ -2,9 +2,9 @@
+ _Name=Desktop user
+ _Description=Can perform common tasks. Can't install software or change settings affecting all users.
+ Default=1
+-Groups=cdrom,floppy,dialout,tape,dip,adm,plugdev,fax,audio,scanner,fuse,video
++Groups=cdrom,floppy,dialout,tape,dip,adm,plugdev,fax,audio,scanner,fuse,video,wheel,netdev,lpadmin,usb,sambashare
+ 
+ [Administrator]
+ _Name=Administrator
+ _Description=Can change anything on the system, including installing and upgrading software.
+-Groups=cdrom,floppy,dialout,tape,dip,adm,plugdev,fax,audio,scanner,fuse,admin,sambashare,lpadmin,video
++Groups=cdrom,floppy,dialout,tape,dip,adm,plugdev,fax,audio,scanner,fuse,video,wheel,netdev,admin,lpadmin,usb,sambashare

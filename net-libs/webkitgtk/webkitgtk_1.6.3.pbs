@@ -1,0 +1,40 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="the port of the portable web rendering engine WebKit to the GTK+ platform."
+HOMEPAGE="http://www.webkitgtk.org/"
+LICENSE="custom"
+PACKAGER="StartOS Developers"
+
+SRC_URI="http://webkitgtk.org/webkit-"$V".tar.xz"
+
+RDEPEND="enchant gail gst-plugins-base icu libjpeg-turbo libsoup libxslt libXt"
+BDEPEND=""
+RECOMMENDED=""
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_patch() {
+	dopatch bison26-1.4.patch
+}
+
+pbs_config() {
+	config+="--enable-introspection --with-gtk=2.0"
+	doconfig
+}
+
+pbs_build() {
+	domake
+}
+
+pbs_install() {
+	domkinstall
+	dodoc Source/{WebKit/LICENSE,WebCore/LICENSE-LGPL-2.1,WebCore/LICENSE-APPLE}
+}
+
