@@ -1,0 +1,38 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="X C-language Bindings protocol headers"
+HOMEPAGE="http://xcb.freedesktop.org/"
+LICENSE="custom"
+PACKAGER="StartOS Developers"
+YARCH="any"
+
+SRC_URI="http://xorg.freedesktop.org/releases/individual/xcb/"$N-$V".tar.bz2"
+
+RDEPEND=""
+BDEPEND=""
+
+OPTIONS="nodev"
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_config() {
+	config+=""
+	doconfig
+}
+
+pbs_build() {
+	domake
+}
+
+pbs_install() {
+	domkinstall
+	dodoc COPYING
+}
+

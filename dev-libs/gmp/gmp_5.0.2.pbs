@@ -1,0 +1,71 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="Library for arithmetic on arbitrary precision integers, rational numbers, and floating-point numbers"
+HOMEPAGE="http://gmplib.org/"
+LICENSE="GPL"
+PACKAGER="StartOS Developers"
+
+SRC_URI="ftp://ftp.gnu.org/gnu/"$N"/"$N-$V".tar.bz2"
+
+RDEPEND="gcc-lib"
+BDEPEND=""
+
+INSTALL="$N.install"
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_config() {
+	# Prevent GMP from optimizing for the current CPU 
+	mv config{fsf,}.guess
+	mv config{fsf,}.sub
+	
+	#
+	case $ARCH in
+		i?86) export ABI=32
+	esac	
+	config+="--enable-cxx --enable-mpbsd"
+	doconfig
+}
+
+pbs_build() {
+	make 
+}
+
+pbs_install() {
+	domkinstall
+	cd "$destdir"
+
+	# FIXME compatible with old version
+	doln /usr/lib/libgmp.so.10 usr/lib/libgmp.so.3
+
+	#cd "$destdir"
+	#case $ARCH in 
+	#	i?86)	mv usr/include/gmp{,-32}.h ;;
+	#      x86_64)	mv usr/include/gmp{,-64}.h
+	#		cat > usr/include/gmp.h << "EOF"
+#  /* gmp.h - Stub Header  */
+#  #ifndef __STUB__GMP_H__
+#  #define __STUB__GMP_H__
+#
+#  #if defined(__x86_64__) || \
+#     defined(__sparc64__) || \
+#     defined(__arch64__) || \
+#     defined(__powerpc64__) || \
+#     defined (__s390x__)
+#  # include "gmp-64.h"
+#  #else
+#  # include "gmp-32.h"
+#  #endif
+# 
+#  #endif /* __STUB__GMP_H__ */
+#  EOF
+#	esac
+}
+

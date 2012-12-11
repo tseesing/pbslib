@@ -1,0 +1,39 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="Internationalization Tool Collection"
+HOMEPAGE="http://edge.launchpad.net/intltool"
+LICENSE="GPL"
+PACKAGER="StartOS Developers"
+YARCH="any" 
+
+SRC_URI="http://edge.launchpad.net/intltool/trunk/"$V"/+download/"$N-$V".tar.gz"
+
+RDEPEND="xml-parser"
+BDEPEND=""
+CONFLICT=""
+
+OPTIONS="nodev"
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_config() {
+	config+=""
+	doconfig
+}
+
+pbs_build() {
+	domake
+}
+
+pbs_install() {
+	domkinstall
+	dodoc doc/I18N-HOWTO
+}
+

@@ -1,0 +1,37 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="A barcode API to produce QRCode barcodes and DataMatrix barcodes"
+HOMEPAGE="https://projects.kde.org/projects/kdesupport/prison"
+LICENSE="GPL"
+PACKAGER="StartOS Developers"
+
+SRC_URI="http://download.kde.org/stable/"$N"/"$V"/src/"$N-$V".tar.gz"
+CHECKSUM="8baac61506e37a31482a0df4a5d02cd2"
+
+RDEPEND="libdmtx qrencode qt-core"
+RECOMMENDED=""
+BDEPEND=""
+OPTIONAL=""
+CONFLICT=""
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_config() {
+	doconfig -DCMAKE_BUILD_TYPE=Release
+}
+
+pbs_build() {
+	domake
+}
+
+pbs_install() {
+	domkinstall
+}
+

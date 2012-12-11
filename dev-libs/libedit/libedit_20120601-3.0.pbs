@@ -1,0 +1,39 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="Command line editor library providing generic line editing, history, and tokenization functions"
+HOMEPAGE="http://www.thrysoee.dk/editline"
+LICENSE="BSD"
+PACKAGER="StartOS Developers"
+
+SRC_URI="http://www.thrysoee.dk/editline/"$N-$V$R".tar.gz"
+
+RDEPEND="ncurses"
+RECOMMENDED=""
+BDEPEND=""
+OPTIONAL=""
+CONFLICT=""
+REPLACE=""
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_config() {
+	config+="--enable-widec --enable-static=no"
+	doconfig
+}
+
+pbs_build() {
+	domake
+}
+
+pbs_install() {
+	domkinstall
+	dodoc COPYING
+}
+

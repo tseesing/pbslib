@@ -1,0 +1,19 @@
+. /usr/lib/ybs/funcs
+
+case "$ARCH" in
+	i?86) dir="/usr/lib/directfb-1.6-0/interfaces/IDirectFBWindow" ;;
+      x86_64) dir="/usr/lib64/directfb-1.6-0/interfaces/IDirectFBWindow"
+esac
+
+post_install() {
+	dolibtool_finish $dir
+}
+
+post_upgrade() {
+	post_install
+}
+
+post_downgrade() {
+	post_install
+}
+

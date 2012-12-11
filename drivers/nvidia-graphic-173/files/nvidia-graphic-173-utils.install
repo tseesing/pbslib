@@ -1,0 +1,113 @@
+. /usr/lib/ybs/funcs
+
+do_initramfs() {
+	# Update initramfs
+        depmod -a "$KERNEL_DIST"
+	update-initramfs -d -c -k "$KERNEL_DIST" ||return 0
+}
+
+restore() {
+	# restore mesa 
+	cd /usr/lib/
+	if [ -f libGL.so.1.2-pkg.mesa ]; then
+		rm libGL.so libGL.so.1 libGL.so.1.2
+		cp libGL.so.1.2-pkg.mesa libGL.so.1.2
+		ln -sf libGL.so.1.2 libGL.so.1
+		ln -sf libGL.so.1 libGL.so
+	fi
+
+	# restore xorg-server
+	cd /usr/lib/xorg/modules/extensions/
+	if [ -f libglx.so-pkg.xorg-server ]; then
+		rm libglx.so
+		cp libglx.so-pkg.xorg-server libglx.so 
+	fi
+
+	# restore xorg.conf
+	cd /etc/X11 
+	if [ -f xorg.conf.backup ]; then
+		grep -q nvidia-xconfig xorg.conf.backup >/dev/null || cp xorg.conf.backup xorg.conf
+	fi
+	return 0
+}
+
+pre_install() {
+	if lspci |grep VGA |grep -w -i nvidia; then
+		if lspci |grep VGA |grep -w -i "intel"; then
+			echo "* Error: nVidia and Intel Dual-Video-Cards found!"
+			restore
+			return 1
+		fi
+	else
+		echo "* Error: nVidia graphic card not found!"
+		echo "* You do not need this driver, installation quit."
+		restore
+		return 1
+	fi
+
+	return 0
+}
+
+post_install() {
+	# Setup xorg.conf
+	nvidia-xconfig
+	cat > /etc/modprobe.d/blacklist-nvidia.conf <<EOF
+blacklist nouveau
+options nouveau modeset=0
+
+blacklist lbm-nouveau
+EOF
+	do_initramfs
+	
+	#	
+	gnome2_desktop_database_update
+
+	# License
+	echo '* By using this package you accept the NVIDIA license,'
+	echo '* which has been installed in /usr/share/licenses/nvidia/LICENSE'
+	echo '* If you do not accept this license, you must remove the package immediately.'
+	echo 
+	echo '* Reboot your computer for the changes to take effect.'
+
+	return 0
+}
+
+post_remove() {
+	# Delete mopdrobe blacklist
+	[ -f /etc/modprobe.d/blacklist-nvidia.conf ] && rm /etc/modprobe.d/blacklist-nvidia.conf
+
+	# Delete xorg.conf
+	if [ -f /etc/X11/xorg.conf ]; then
+		grep -w Driver /etc/X11/xorg.conf |grep -w nvidia && rm /etc/X11/xorg.conf
+	fi
+
+	# Delete module source 
+	rm  -rf /usr/src/"$1-$2"
+
+	do_initramfs
+
+	# restore libGL and libglx.so
+	restore
+
+	# Mesassge
+	echo '* Re-login session for the changes to take effect.'
+
+	return 0
+}
+
+pre_upgrade() {
+	pre_install
+}
+
+pre_downgrade() {
+	pre_install
+}
+
+post_upgrade()  {
+	post_install $1 $2
+}
+
+post_downgrade() {
+	post_install $1 $2
+}
+

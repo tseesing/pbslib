@@ -1,0 +1,38 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="A library for portable low-level access to a video framebuffer, audio output, mouse, and keyboard"
+HOMEPAGE="http://www.libsdl.org/"
+LICENSE="LGPL"
+PACKAGER="StartOS Developers"
+
+SRC_URI="http://www.libsdl.org/release/SDL-"$V".tar.gz"
+CHECKSUM="9d96df8417572a2afb781a7c4c811a85"
+
+RDEPEND="directfb"
+BDEPEND=""
+RECOMMENDED=""
+OPTIONAL="alsa-lib: ALSA audio driver
+          libpulse: PulseAudio audio driver"
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_config() {
+	config+="--disable-nasm --enable-alsa --with-x --disable-rpath --disable-static"
+	doconfig
+}
+
+pbs_build() {
+	domake
+}
+
+pbs_install() {
+	domkinstall
+}
+

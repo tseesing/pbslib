@@ -1,0 +1,16 @@
+diff -ur networkmanager-0.9.6.0/src/org.freedesktop.NetworkManager.conf networkmanager-0.9.6.0.new//src/org.freedesktop.NetworkManager.conf
+--- networkmanager-0.9.6.0/src/org.freedesktop.NetworkManager.conf	2012-08-02 20:41:52.000000000 +0000
++++ networkmanager-0.9.6.0.new//src/org.freedesktop.NetworkManager.conf	2012-08-30 15:40:08.889751269 +0000
+@@ -24,6 +24,12 @@
+                 <allow send_destination="org.freedesktop.NetworkManager.pptp"/>
+                 <allow send_destination="org.freedesktop.NetworkManager.vpnc"/>
+         </policy>
++
++	<policy group="netdev">
++	            <allow send_destination="org.freedesktop.NetworkManager"/>
++	            <allow send_interface="org.freedesktop.NetworkManager"/>
++	</policy>
++
+         <policy at_console="true">
+                 <allow send_destination="org.freedesktop.NetworkManager"/>
+ 

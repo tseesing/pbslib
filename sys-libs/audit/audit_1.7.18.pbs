@@ -1,0 +1,37 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="Userspace utilities for storing and processing auditing records"
+HOMEPAGE="http://people.redhat.com/sgrubb/audit/"
+REPO=""
+LICENSE="GPL"
+PRIORITY=""
+PACKAGER="StartOS Developers"
+
+SRC_URI="http://people.redhat.com/sgrubb/"$N"/"$N-$V$R".tar.gz"
+
+RDEPEND=""
+BDEPEND=" swig"
+RECOMMENDED=""
+CONFLICT=""
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_config() {
+	config+=""
+	doconfig
+}
+
+pbs_build() {
+	domake
+}
+
+pbs_install() {
+	domkinstall
+}

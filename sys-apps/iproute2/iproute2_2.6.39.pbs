@@ -1,0 +1,44 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="kernel routing and traffic control utilities"
+HOMEPAGE="http://www.linuxfoundation.org/collaborate/workgroups/networking/iproute2"
+LICENSE="GPLv2"
+PACKAGER="StartOS Developers"
+
+SRC_URI="http://www.linuxgrill.com/anonymous/"$N"/NEW-OSDL/"$N-$V".tar.gz"
+
+RDEPEND="berkeley-db glibc iptables"
+BDEPEND=""
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_config () {
+	dopatch iproute2-fhs.patch
+	./configure
+}
+
+
+pbs_build() {
+	domake
+}
+
+pbs_install() {
+	domkinstall
+
+	# libnetlink isn't installed, install it FS#19385
+	docp include/libnetlink.h "$destdir"/usr/include/
+	docp lib/libnetlink.a "$destdir"/usr/lib/
+
+	# Allow loopback to be started before /usr is mounted, this may not be supported in the future
+	cd "$destdir"	
+	domv usr/sbin/ip sbin/
+	doln /sbin/ip usr/sbin/ip
+}
+

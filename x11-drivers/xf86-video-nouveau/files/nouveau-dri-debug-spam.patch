@@ -1,0 +1,37 @@
+From a9543e58a722d822ca3f2b262157d33e653408ab Mon Sep 17 00:00:00 2001
+From: Ben Skeggs <bskeggs@redhat.com>
+Date: Wed, 13 Jun 2012 22:24:37 +1000
+Subject: [PATCH] dri: drop some debug spam
+
+---
+ src/nouveau_dri2.c |    7 -------
+ 1 Datei geändert, 7 Zeilen entfernt(-)
+
+diff --git a/src/nouveau_dri2.c b/src/nouveau_dri2.c
+index 7878a5a..d121fc4 100644
+--- a/src/nouveau_dri2.c
++++ b/src/nouveau_dri2.c
+@@ -607,7 +607,6 @@ nouveau_dri2_flip_event_handler(unsigned int frame, unsigned int tv_sec,
+ 	ScreenPtr screen;
+ 	ScrnInfoPtr scrn;
+ 	int status;
+-	PixmapPtr pixmap;
+ 
+ 	status = dixLookupDrawable(&draw, flip->draw, serverClient,
+ 				   M_ANY, DixWriteAccess);
+@@ -619,12 +618,6 @@ nouveau_dri2_flip_event_handler(unsigned int frame, unsigned int tv_sec,
+ 	screen = draw->pScreen;
+ 	scrn = xf86Screens[screen->myNum];
+ 
+-	pixmap = screen->GetScreenPixmap(screen);
+-	xf86DrvMsgVerb(scrn->scrnIndex, X_INFO, 4,
+-		       "%s: flipevent : width %d x height %d : msc %d : ust = %d.%06d\n",
+-		       __func__, pixmap->drawable.width, pixmap->drawable.height,
+-		       frame, tv_sec, tv_usec);
+-
+ 	/* We assume our flips arrive in order, so we don't check the frame */
+ 	switch (flip->action) {
+ 	case SWAP:
+-- 
+1.7.10.2
+

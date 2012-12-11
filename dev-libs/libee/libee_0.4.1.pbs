@@ -1,0 +1,37 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="The Libee is an event expression library."
+HOMEPAGE="http://www.libee.org/"
+LICENSE="LGPL"
+PACKAGER="StartOS Developers"
+
+SRC_URI="http://www.libee.org/files/download/"$N-$V".tar.gz"
+CHECKSUM="7bbf4160876c12db6193c06e2badedb2"
+
+RDEPEND="libestr"
+BDEPEND=""
+RECOMMENDED=""
+CONFLICT=""
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_config() {
+	config+=""
+	doconfig
+}
+
+pbs_build() {
+	make
+}
+
+pbs_install() {
+	domkinstall
+}
+

@@ -1,0 +1,117 @@
+diff -u -r nautilus-2.30.1/libnautilus-private/nautilus-autorun.c nautilus-2.30.1.new/libnautilus-private/nautilus-autorun.c
+--- nautilus-2.30.1/libnautilus-private/nautilus-autorun.c	2009-12-08 17:50:42.000000000 +0800
++++ nautilus-2.30.1.new/libnautilus-private/nautilus-autorun.c	2011-03-11 13:26:24.861996000 +0800
+@@ -1087,10 +1087,10 @@
+ 				}
+ 			}
+ 			g_strfreev (guessed_content_type);
+-		} else {
+-			if (eel_preferences_get_boolean (NAUTILUS_PREFERENCES_MEDIA_AUTOMOUNT_OPEN))
+-				open_folder = TRUE;
+ 		}
++		///No matter what state it is,open_folder when NAUTILUS_PREFERENCES_MEDIA_AUTOMOUNT_OPEN == TRUE
++		if (eel_preferences_get_boolean (NAUTILUS_PREFERENCES_MEDIA_AUTOMOUNT_OPEN))
++			open_folder = TRUE;
+ 	}
+ 
+ 	/* only open the folder once.. */
+diff -u -r nautilus-2.30.1/po/zh_CN.po nautilus-2.30.1.new/po/zh_CN.po
+--- nautilus-2.30.1/po/zh_CN.po	2011-03-11 13:18:15.382996002 +0800
++++ nautilus-2.30.1.new/po/zh_CN.po	2011-03-11 13:31:49.530996000 +0800
+@@ -36,6 +36,10 @@
+ msgid "Starting %s"
+ msgstr "正在启动 %s"
+ 
++#
++msgid "_Automatic mount volumes" 
++msgstr "自动加载磁盘(_A)"
++
+ #: ../cut-n-paste-code/libegg/eggdesktopfile.c:1100
+ #, c-format
+ msgid "Application does not accept documents on command line"
+diff -u -r nautilus-2.30.1/po/zh_TW.po nautilus-2.30.1.new/po/zh_TW.po
+--- nautilus-2.30.1/po/zh_TW.po	2010-02-22 17:40:33.000000000 +0800
++++ nautilus-2.30.1.new/po/zh_TW.po	2011-03-11 13:32:25.202996000 +0800
+@@ -35,6 +35,10 @@
+ msgid "Starting %s"
+ msgstr "準備啟動 %s"
+ 
++#
++msgid "_Automatic mount volumes"
++msgstr "自動掛載磁盤(_A)"
++
+ #: ../cut-n-paste-code/libegg/eggdesktopfile.c:1100
+ #, c-format
+ msgid "Application does not accept documents on command line"
+diff -u -r nautilus-2.30.1/src/nautilus-application.c nautilus-2.30.1.new/src/nautilus-application.c
+--- nautilus-2.30.1/src/nautilus-application.c	2010-04-26 15:50:42.000000000 +0800
++++ nautilus-2.30.1.new/src/nautilus-application.c	2011-03-11 13:23:36.701996001 +0800
+@@ -238,7 +238,7 @@
+ 		for (l = volumes; l != NULL; l = l->next) {
+ 			volume = l->data;
+ 			
+-			if (!g_volume_should_automount (volume) ||
++			if (///!g_volume_should_automount (volume) ||
+ 			    !g_volume_can_mount (volume)) {
+ 				continue;
+ 			}
+@@ -1466,7 +1466,7 @@
+ 		       NautilusApplication *application)
+ {
+ 	if (eel_preferences_get_boolean (NAUTILUS_PREFERENCES_MEDIA_AUTOMOUNT) &&
+-	    g_volume_should_automount (volume) &&
++	    ///g_volume_should_automount (volume) &&
+ 	    g_volume_can_mount (volume)) {
+ 		nautilus_file_operations_mount_volume (NULL, volume, TRUE);
+ 	} else {
+diff -u -r nautilus-2.30.1/src/nautilus-file-management-properties.c nautilus-2.30.1.new/src/nautilus-file-management-properties.c
+--- nautilus-2.30.1/src/nautilus-file-management-properties.c	2009-12-17 23:45:13.000000000 +0800
++++ nautilus-2.30.1.new/src/nautilus-file-management-properties.c	2011-03-11 13:25:03.768996001 +0800
+@@ -69,6 +69,7 @@
+ #define NAUTILUS_FILE_MANAGEMENT_PROPERTIES_SHOW_HIDDEN_WIDGET "hidden_files_checkbutton"
+ #define NAUTILUS_FILE_MANAGEMENT_PROPERTIES_TREE_VIEW_FOLDERS_WIDGET "treeview_folders_checkbutton"
+ #define NAUTILUS_FILE_MANAGEMENT_PROPERTIES_MEDIA_AUTOMOUNT_OPEN "media_automount_open_checkbutton"
++#define NAUTILUS_FILE_MANAGEMENT_PROPERTIES_MEDIA_AUTOMOUNT "media_automount_checkbutton"
+ #define NAUTILUS_FILE_MANAGEMENT_PROPERTIES_MEDIA_AUTORUN_NEVER "media_autorun_never_checkbutton"
+ 
+ /* int enums */
+@@ -714,7 +715,10 @@
+ 	eel_preferences_builder_connect_bool (builder,
+ 					      NAUTILUS_FILE_MANAGEMENT_PROPERTIES_MEDIA_AUTORUN_NEVER,
+ 					      NAUTILUS_PREFERENCES_MEDIA_AUTORUN_NEVER);
+-
++	eel_preferences_builder_connect_bool (builder,
++	                                      NAUTILUS_FILE_MANAGEMENT_PROPERTIES_MEDIA_AUTOMOUNT,
++	                                      NAUTILUS_PREFERENCES_MEDIA_AUTOMOUNT);
++	
+ 	eel_preferences_builder_connect_bool (builder,
+ 					      NAUTILUS_FILE_MANAGEMENT_PROPERTIES_TRASH_CONFIRM_WIDGET,
+ 					      NAUTILUS_PREFERENCES_CONFIRM_TRASH);
+diff -u -r nautilus-2.30.1/src/nautilus-file-management-properties.ui nautilus-2.30.1.new/src/nautilus-file-management-properties.ui
+--- nautilus-2.30.1/src/nautilus-file-management-properties.ui	2009-12-17 23:46:37.000000000 +0800
++++ nautilus-2.30.1.new/src/nautilus-file-management-properties.ui	2011-03-11 13:30:17.786995986 +0800
+@@ -3038,6 +3038,24 @@
+                     <property name="fill">False</property>
+                   </packing>
+                 </child>
++		<child>
++		 <object class="GtkCheckButton" id="media_automount_checkbutton">
++			<property name="visible">True</property>
++			<property name="can_focus">True</property>
++			<property name="label" translatable="yes">_Automatic mount volumes</property>
++			<property name="use_underline">True</property>
++			<property name="relief">GTK_RELIEF_NORMAL</property>
++			<property name="focus_on_click">True</property>
++			<property name="active">False</property>
++			<property name="inconsistent">False</property>
++			<property name="draw_indicator">True</property>
++		 </object>
++		 <packing>
++			<property name="padding">0</property>
++			<property name="expand">False</property>
++			<property name="fill" >False</property>
++		 </packing>
++	       </child>
+               </object>
+               <packing>
+                 <property name="tab_expand">False</property>

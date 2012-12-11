@@ -1,0 +1,32 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="nutstore data sync, sharing and backup"
+HOMEPAGE="https://jianguoyun.com/"
+LICENSE="custom"
+PACKAGER="StartOS Developers"
+
+SRC_URI="http://jianguoyun.com/static/exe/installer/nutstore_linux_dist_x86.tar.gz"
+CHECKSUM="894a144c07360156c72411e004fd5338"
+
+RDEPEND="python pygtk jdk jre"
+RECOMMENDED="nutstore-nautilus-extension"
+BDEPEND=""
+OPTIONAL=""
+CONFLICT=""
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_install() {
+	docp app-icon bin conf gnome-config lib res "$destdir"/usr/share/"$N"
+	docp "$filesdir"/nutstore-daemon.desktop "$destdir"/etc/xdg/autostart/
+	docp "$filesdir"/{nutstore,nutstore-daemon} "$destdir"/usr/bin/
+	dodesktop "$N".desktop "$N".png
+}
+

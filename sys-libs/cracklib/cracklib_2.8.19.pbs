@@ -1,0 +1,41 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="Password Checking Library"
+HOMEPAGE="http://sourceforge.net/projects/cracklib"
+LICENSE="GPL"
+PACKAGER="StartOS Developers"
+
+SRC_URI="http://downloads.sourceforge.net/sourceforge/"$N"/"$N-$V".tar.gz"
+CHECKSUM=""
+
+RDEPEND="glibc zlib"
+RECOMMENDED=""
+BDEPEND=""
+OPTIONAL=""
+CONFLICT=""
+REPLACE=""
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_config() {
+	config+="--without-python"
+	doconfig
+}
+
+pbs_build() {
+	domake
+}
+
+pbs_install() {
+	domkinstall
+	install -Dm644 dicts/cracklib-small "$destdir"/usr/share/dict/cracklib-small
+	sh ./util/cracklib-format dicts/cracklib-small | sh ./util/cracklib-packer "$destdir"/usr/share/cracklib/pw_dict
+}
+

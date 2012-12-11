@@ -1,0 +1,36 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="Suspend and hibernation utilities"
+HOMEPAGE="http://pm-utils.freedesktop.org/"
+LICENSE="GPL-2"
+PACKAGER="StartOS Developers"
+SRC_URI="http://pm-utils.freedesktop.org/releases/"$N-$V$R".tar.gz"
+
+RDEPEND="sys-apps/hal"
+BDEPEND=""
+RECOMMENDED=""
+
+NOTES=""
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_config() {
+	
+	config+="--prefix=/usr --sysconfdir=/etc --docdir=/usr/share/doc/pm-utils-1.2.6 --libdir=/usr/lib"
+	doconfig
+}
+
+pbs_build() {
+	domake
+}
+
+pbs_install() {
+	domkinstall
+}

@@ -1,0 +1,13 @@
+. /usr/lib/ybs/funcs
+
+files="sharutils.info.gz"
+
+post_install() {
+        doinstall_info $files
+}       
+
+pre_remove() {
+        doremove_info $files
+}
+
+

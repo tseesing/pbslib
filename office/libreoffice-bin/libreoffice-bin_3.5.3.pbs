@@ -1,0 +1,41 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="A power-packed free, libre and open source personal productivity suite (binary version)."
+HOMEPAGE="http://www.libreoffice.org/"
+LICENSE="LGPL"
+PACKAGER="StartOS Developers"
+
+SRC_URI="http://download.documentfoundation.org/libreoffice/stable/"$V"/deb/x86/LibO_"$V"_Linux_x86_install-deb_en-US.tar.gz"
+CHECKSUM="850533f5dbf5fdfe0eaedcbfb264fda7"
+
+RDEPEND="atk avahi cairo dbus dbus-glib expat fontconfig freetype gcc-lib gdk-pixbuf glib2 glibc gnome-vfs gst-plugins-base gstreamer gtk+ libdrm libICE libSM libX11 libXau libXaw libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXft libXi libXinerama libxml2 libXmu libXpm libXrandr libXrender libXt libXxf86vm mesa ncurses nspr openssl pango pixman util-linux-ng zlib"
+BDEPEND=""
+RECOMMENDED="jre libreoffice-bin-langpack-zh-CN(=3.5.3)"
+
+INSTALL="$N.install"
+
+DESKTOPFILE="/opt/libreoffice3.5/share/xdg/startcenter.desktop"
+ICONFILE="/usr/share/icons/hicolor/48x48/apps/libreoffice3.5-startcenter.png"
+
+pbs_unpack() {
+	dounpack
+
+}
+
+pbs_build() {
+	find . -name "*.deb" |while read i; do
+		echo ">>> Unpacking $(basename $i)"
+		ar x "${i}"; tar xf data.tar.gz
+	done
+}
+
+pbs_install() {
+	docp etc opt usr "$destdir"
+	dodoc readmes
+}
+

@@ -1,0 +1,25 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="GNU Unifont - a Pan-Unicode X11 bitmap iso10646 font"
+HOMEPAGE="http://unifoundry.com/unifont.html"
+LICENSE="GPLv2"
+PACKAGER="StartOS Developers"
+
+SRC_URI="http://unifoundry.com/"$N-$V".ttf.gz"
+
+RDEPEND=""
+RECOMMENDED=""
+
+INSTALL="$N.install"
+
+pbs_install() {
+	cp "$YBS_SOURCE"/"$N-$V".ttf.gz .
+	gunzip "$N-$V".ttf.gz
+	docp_rename unifont-5.1.20080907.ttf "$destdir"/usr/share/fonts/unifont/unifont.ttf
+}
+

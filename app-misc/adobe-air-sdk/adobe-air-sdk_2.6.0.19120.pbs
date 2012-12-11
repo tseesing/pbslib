@@ -1,0 +1,31 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="Adobe Air Software Development Kit and Runtime Environment"
+HOMEPAGE="http://get.adobe.com/air/"
+LICENSE="custom"
+PACKAGER="StartOS Developers"
+
+SRC_URI="http://airdownload.adobe.com/air/lin/download/latest/AdobeAIRSDK.tbz2"
+
+RDEPEND="gtk+ libxslt libXt ncurses nss"
+BDEPEND=""
+RECOMMENDED=""
+CONFLICT=""
+
+INSTALL="$N.install"
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_install() {
+	docp * "$destdir"/opt/adobe-air-sdk
+	docp "$filesdir"/adobe-air  "$destdir"/usr/bin/
+	chmod +x "$destdir"/usr/bin/adobe-air
+}
+

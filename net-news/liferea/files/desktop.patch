@@ -1,0 +1,20 @@
+diff -u -r liferea-1.7.4/liferea.desktop liferea-1.7.4.new//liferea.desktop
+--- liferea-1.7.4/liferea.desktop	2010-02-17 02:28:35.000000000 +0800
++++ liferea-1.7.4.new//liferea.desktop	2011-04-18 20:51:38.887282420 +0800
+@@ -23,7 +23,7 @@
+ Name[sq]=Liferea
+ Name[sv]=Liferea
+ Name[tr]=Liferea
+-Name[zh_CN]=Liferea
++Name[zh_CN]=Liferea RSS阅读器
+ GenericName=Feed Reader
+ GenericName[ar]=قارئ تلقيمات
+ GenericName[be@latin]=Hartač RSS
+@@ -70,6 +70,7 @@
+ Comment[sq]=Shkarkoji dhe shfaqi prurjet
+ Comment[sv]=Hämta och visa kanaler
+ Comment[tr]=Haber kaynaklarını indir ve görüntüle
++Comment[zh_CN]=一款是一款轻量级的、反应迅速的桌面RSS阅读器
+ Exec=liferea
+ Icon=liferea
+ StartupNotify=true

@@ -1,0 +1,40 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="Free MPEG-4 audio codecs by AudioCoding.com"
+HOMEPAGE="http://www.audiocoding.com"
+LICENSE="GPL"
+PACKAGER="StartOS Developers"
+
+SRC_URI="http://downloads.sourceforge.net/project/"$N"/"$N"-src/"$N-$V"/"$N-$V".tar.bz2 "
+
+RDEPEND="gcc-lib"
+BDEPEND="mp4v2-dev"
+RECOMMENDED=""
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_config() {
+	#dopatch $filesdir/faac-1.28-external-libmp4v2.patch
+	dopatch $filesdir/faac-1.28-glibc_fixes-1.patch
+	#
+	sed -i -e '/obj-type/d' -e '/Long Term/d' frontend/main.c
+	config+="--disable-dependency-tracking"
+	doconfig
+}
+
+pbs_build() {
+	domake
+}
+
+pbs_install() {
+	domkinstall
+	dodoc AUTHORS ChangeLog NEWS README TODO
+}
+

@@ -1,0 +1,51 @@
+#!/bin/bash
+#
+
+file=/etc/startos-release
+all=$(head -n1 /etc/startos-release)
+DISTRIB_ID="${all[@]%%release*}"
+DISTRIB_CODENAME=${all##*(}
+DISTRIB_CODENAME=${DISTRIB_CODENAME%%)*}
+
+all=($all)
+
+for ((i=0; i<${#all[@]}; i++)); do
+	if [ "x${all[$i]}" = "xrelease" ]; then
+		let j=$i+1
+		DISTRIB_RELEASE="${all[$j]}"
+		break
+	fi
+done
+
+if [ "x$1" = "x" ] || [ "x$1" = "x-irc" ]; then
+	cat <<OOO
+ID:$DISTRIB_ID
+Release:$DISTRIB_RELEASE
+Codename:$DISTRIB_CODENAME
+OOO
+else
+	while [ "x$1" != "x" ]; do
+	case "$1" in 
+		-i|--id)		echo $DISTRIB_ID ;;
+		-r|--release)		echo $DISTRIB_RELEASE ;;
+		-c|--codename)		echo $DISTRIB_CODENAME ;;
+		-a|--all)               echo ${all[@]}	       ;;
+		-h|--help)	
+	cat <<OOO
+Usage: $0 [options]
+
+Options:	
+	-i, --id           show distributor ID
+        -r, --release      show release number of this distribution
+        -c, --codename     show code name of this distribution
+        -a, --all          show all of the above information
+	-h, --help         show this help
+OOO
+		;;
+	*)
+	esac
+	shift
+	done
+fi
+
+exit 0

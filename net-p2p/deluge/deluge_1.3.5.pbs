@@ -1,0 +1,37 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="a lightweight, Free Software, cross-platform BitTorrent client."
+HOMEPAGE="http://deluge-torrent.org/"
+LICENSE="GPL"
+PACKAGER="StartOS Developers"
+
+SRC_URI="http://download.deluge-torrent.org/source/"$N-$V".tar.lzma"
+CHECKSUM="872b45d200bbe16e49352fdf4586da1d"
+
+RDEPEND="distribute chardet twisted zope-interface libtorrent libtorrent-rasterbar"
+BDEPEND=""
+RECOMMENDED=""
+CONFLICT=""
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_config() {
+	config+=""
+	doconfig
+}
+
+pbs_build() {
+	domake
+}
+
+pbs_install() {
+	domkinstall
+}
+

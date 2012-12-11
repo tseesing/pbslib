@@ -1,0 +1,38 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="Playlist parsing library"
+HOMEPAGE="http://www.gnome.org/projects/totem/"
+LICENSE="GPL-2"
+PACKAGER="StartOS Developers"
+ 
+SRC_URI="http://ftp.gnome.org/pub/gnome/sources/totem-pl-parser/2.28/$N-$V.tar.bz2"
+
+RDEPEND=""
+BDEPEND=" gtk+ gmime"
+RECOMMENDED=""
+
+NOTES="http://wiki.linuxfromscratch.org/blfs/wiki/totem-pl-parser"
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_config() {
+	
+	config+=" --prefix=$(pkg-config --variable=prefix ORBit-2.0)
+		       "
+	doconfig
+}
+
+pbs_build() {
+	domake
+}
+
+pbs_install() {
+	domkinstall
+}

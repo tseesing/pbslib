@@ -1,0 +1,10 @@
+[Desktop Entry]
+Version=1.0
+Terminal=false
+Type=Application
+Categories=Office;
+Exec=openoffice.org3 -quickstart -nologo -nodefault
+NoDisplay=true
+Name=OpenOffice.org 3.2 Quickstarter
+Name[zh_CN]=OpenOffice.org 3.2 快速启动
+Comment=Hook for quickstarter startup

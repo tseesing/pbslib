@@ -1,0 +1,39 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="a feature complete C++ bittorrent implementation focusing on efficiency and scalability"
+HOMEPAGE="http://www.rasterbar.com/products/libtorrent/"
+LICENSE="BSD"
+PACKAGER="StartOS Developers"
+
+SRC_URI="http://libtorrent.googlecode.com/files/"$N-$V".tar.gz"
+CHECKSUM="3e461d9ede5fab3fb59be6a9f0cbc52121d536c4"
+
+RDEPEND="boost-libs gcc-lib glibc openssl zlib"
+BDEPEND=""
+RECOMMENDED=""
+CONFLICT=""
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_config() {
+	config+=" --enable-python-binding
+	          --with-libgeoip=system "
+	doconfig
+}
+
+pbs_build() {
+	domake
+}
+
+pbs_install() {
+	domkinstall
+	dodoc COPYING
+}
+

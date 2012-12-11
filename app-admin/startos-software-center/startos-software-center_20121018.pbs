@@ -1,0 +1,45 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="software center for StartOS"
+HOMEPAGE="http://www.startos.org"
+LICENSE="custom"
+PRIORITY="required"
+PACKAGER="StartOS Developers"
+GROUP="base"
+
+SRC_URI="git://git.ylmf.com/software-center.git"
+#SRC_URI="git://gitcafe.com/StartOS/software-center.git"
+
+RDEPEND="polkit(>=0.102) ypkg2(>=20120820) dbus-glib gtk+ json-glib udev"
+BDEPEND=""
+RECOMMENDED="app-desktop app-logo"
+REPLACE="ylmfos-software-center"
+
+INSTALL="$N.install"
+
+DESKTOPFILE="softwarecenter.desktop"
+
+pbs_unpack() {
+	dounpack
+}
+
+pbs_config() {
+	config+="--with-debug"
+	doconfig
+}
+
+pbs_build() {
+	make LDFLAGS=-lcurl 
+}
+
+pbs_install() {
+	domkinstall
+	cd "$destdir"
+	docp usr/share/icons/hicolor/48x48/apps/softwarecenter.png usr/share/pixmaps/
+}
+

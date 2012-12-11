@@ -1,0 +1,47 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="JavaScript interpreter and libraries"
+HOMEPAGE="https://developer.mozilla.org/En/SpiderMonkey/1.8.5"
+LICENSE="GPL2"
+PACKAGER="StartOS Developers"
+
+SRC_URI="http://ftp.mozilla.org/pub/mozilla.org/js/js185-1.0.0.tar.gz"
+CHECKSUM="a4574365938222adca0a6bd33329cb32"
+
+RDEPEND="nspr"
+RECOMMENDED=""
+BDEPEND=""
+OPTIONAL=""
+CONFLICT=""
+REPLACE=""
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_patch() {
+	cd js/src
+	dopatch js185-destdir.patch
+}
+
+pbs_config() {
+	config+="--with-system-nspr --enable-threadsafe"
+	doconfig
+}
+
+pbs_build() {
+	domake
+}
+
+pbs_install() {
+	domkinstall
+	install -m 0755 shell/js "$destdir"/usr/bin
+	# Cleanup
+	rm -f "$destdir"/usr/lib"$LIBDIRSUFFIX"/libmozjs185-1.0.a
+}
+

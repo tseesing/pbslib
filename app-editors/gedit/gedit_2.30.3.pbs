@@ -1,0 +1,50 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="A text editor for the GNOME desktop"
+HOMEPAGE="http://www.gnome.org/"
+LICENSE="GPL-2"
+PACKAGER="StartOS Developers"
+ 
+SRC_URI="http://ftp.gnome.org/pub/gnome/desktop/2.30/2.30.2/sources/$N-$V.tar.bz2"
+
+RDEPEND="gtksourceview gtk+ atk pango cairo pixman libxml2 directfb libpng libxcb libXrender fontconfig 
+	 freetype zlib expat gconf orbit dbus-glib dbus libX11 libxcb libXau libXdmcp libSM util-linux-ng libICE libXi 
+	 libXrandr libXcursor libXcomposite libXext libXdamage libXfixes aspell"
+BDEPEND=" gtksourceview libsoup enchant pygtksourceview python"
+RECOMMENDED=""
+
+INSTALL="$N.install"
+
+NOTES=""
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_config() {
+	config+=" --prefix=/usr --sysconfdir=/etc --localstatedir=/var \
+	              --mandir=/usr/share/man  \
+		      --disable-static  \
+		      --enable-shared  \
+		      --disable-schemas-install "
+	
+	doconfig
+}
+
+pbs_build() {
+	domake
+}
+
+pbs_install() {
+	domkinstall
+	dodoc AUTHORS COPYING NEWS README
+	# keep clean for rarian
+	rm -fr "$destdir"/var/lib/scrollkeeper
+	rm -fr "$destdir"/var/lib/log
+}
+

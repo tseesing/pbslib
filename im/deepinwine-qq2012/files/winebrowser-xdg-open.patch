@@ -1,0 +1,58 @@
+diff -ur data/usr/bin/wine-qq2012 data.new//usr/bin/wine-qq2012
+--- data/usr/bin/wine-qq2012	2012-03-05 02:30:33.000000000 +0000
++++ data.new//usr/bin/wine-qq2012	2012-07-06 08:54:39.798831851 +0000
+@@ -5,14 +5,17 @@
+ export QQ2012DIR=/usr/share/deepinwine/qq2012
+ 
+ if [ -e $WINEPREFIX ];then
+-echo "Wineprefix exists. If qq doesn't work, remove directory ~/.deepinwine/qq2012."
++	echo "Wineprefix exists. If qq doesn't work, remove directory ~/.deepinwine/qq2012."
+ else
+-echo "Wineprefix doesn't exist, now will create it."
+-mkdir $WINEPREFIX
+-tar -xzf $QQ2012DIR/wine.tar.gz -C $WINEPREFIX
+-tar -xzf $QQ2012DIR/QQ2012.tar.gz -C $WINEPREFIX/drive_c/Program\ Files/
+-ln -s /usr/share/fonts/truetype/wqy/wqy-microhei.ttc $WINEPREFIX/drive_c/windows/Fonts/
+-
+-echo "Creation finished, now will launch qq2012."
++	echo "Wineprefix doesn't exist, now will create it."
++	mkdir $WINEPREFIX
++	tar -xzf $QQ2012DIR/wine.tar.gz -C $WINEPREFIX
++	tar -xzf $QQ2012DIR/QQ2012.tar.gz -C $WINEPREFIX/drive_c/Program\ Files/
++	ln -s /usr/share/fonts/wenquanyi/wqy-microhei/wqy-microhei.ttc $WINEPREFIX/drive_c/windows/Fonts/
++	echo "Creation finished, now will launch qq2012."
+ fi
++
++# regedit import winebrowser.reg
++$QQ2012DIR/wine/bin/regedit $QQ2012DIR/winebrowser.reg
++# 
+ $QQ2012DIR/wine/bin/wine $WINEPREFIX/drive_c/Program\ Files/Tencent/QQ/Bin/QQ.exe
+diff -ur data/usr/share/deepinwine/qq2012/wine-qq2012 data.new//usr/share/deepinwine/qq2012/wine-qq2012
+--- data/usr/share/deepinwine/qq2012/wine-qq2012	2012-03-05 02:30:33.000000000 +0000
++++ data.new//usr/share/deepinwine/qq2012/wine-qq2012	2012-07-06 08:54:39.798831851 +0000
+@@ -5,14 +5,17 @@
+ export QQ2012DIR=/usr/share/deepinwine/qq2012
+ 
+ if [ -e $WINEPREFIX ];then
+-echo "Wineprefix exists. If qq doesn't work, remove directory ~/.deepinwine/qq2012."
++	echo "Wineprefix exists. If qq doesn't work, remove directory ~/.deepinwine/qq2012."
+ else
+-echo "Wineprefix doesn't exist, now will create it."
+-mkdir $WINEPREFIX
+-tar -xzf $QQ2012DIR/wine.tar.gz -C $WINEPREFIX
+-tar -xzf $QQ2012DIR/QQ2012.tar.gz -C $WINEPREFIX/drive_c/Program\ Files/
+-ln -s /usr/share/fonts/truetype/wqy/wqy-microhei.ttc $WINEPREFIX/drive_c/windows/Fonts/
+-
+-echo "Creation finished, now will launch qq2012."
++	echo "Wineprefix doesn't exist, now will create it."
++	mkdir $WINEPREFIX
++	tar -xzf $QQ2012DIR/wine.tar.gz -C $WINEPREFIX
++	tar -xzf $QQ2012DIR/QQ2012.tar.gz -C $WINEPREFIX/drive_c/Program\ Files/
++	ln -s /usr/share/fonts/wenquanyi/wqy-microhei/wqy-microhei.ttc $WINEPREFIX/drive_c/windows/Fonts/
++	echo "Creation finished, now will launch qq2012."
+ fi
++
++# regedit import winebrowser.reg
++$QQ2012DIR/wine/bin/regedit $QQ2012DIR/winebrowser.reg
++# 
+ $QQ2012DIR/wine/bin/wine $WINEPREFIX/drive_c/Program\ Files/Tencent/QQ/Bin/QQ.exe

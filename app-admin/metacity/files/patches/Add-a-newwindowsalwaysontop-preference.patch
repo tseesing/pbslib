@@ -1,0 +1,141 @@
+From c4fba8198bacc8ecf911cb15c9cd9314f3204a85 Mon Sep 17 00:00:00 2001
+From: Owen W. Taylor <otaylor@fishsoup.net>
+Date: Wed, 21 Oct 2009 19:22:35 -0400
+Subject: [PATCH] Add a new_windows_always_on_top preference
+
+Add a /apps/metacity/general/new_windows_always_on_top preference.
+When set, new windows are always placed on top, even if they are
+denied focus.
+
+This is useful on large screens and multihead setups where the
+tasklist can be hard to notice and difficult to mouse to, so the
+normal behavior of flashing in the tasklist is less effective.
+---
+diff -ur metacity-2.30.3-ylmf1/src/core/prefs.c metacity-2.30.3-ylmf1.new//src/core/prefs.c
+--- metacity-2.30.3-ylmf1/src/core/prefs.c	2011-09-30 09:17:40.912531726 +0800
++++ metacity-2.30.3-ylmf1.new//src/core/prefs.c	2011-09-30 09:20:09.545863090 +0800
+@@ -81,6 +81,7 @@
+ static MetaFocusNewWindows focus_new_windows = META_FOCUS_NEW_WINDOWS_SMART;
+ static GSList *no_focus_windows = NULL;
+ static gboolean raise_on_click = TRUE;
++static gboolean new_windows_always_on_top = TRUE;
+ static char* current_theme = NULL;
+ static int num_workspaces = 4;
+ static MetaActionTitlebar action_double_click_titlebar = META_ACTION_TITLEBAR_TOGGLE_MAXIMIZE;
+@@ -360,6 +361,11 @@
+       &raise_on_click,
+       TRUE,
+     },
++    { "/apps/metacity/general/new_windows_always_on_top",
++       META_PREF_NEW_WINDOWS_ALWAYS_ON_TOP,
++       &new_windows_always_on_top,
++       TRUE,
++     },
+     { "/apps/metacity/general/titlebar_uses_system_font",
+       META_PREF_TITLEBAR_FONT, /* note! shares a pref */
+       &use_system_font,
+@@ -1273,6 +1279,12 @@
+   return raise_on_click || focus_mode == META_FOCUS_MODE_CLICK;
+ }
+ 
++gboolean
++meta_prefs_get_new_windows_always_on_top (void)
++{
++  return new_windows_always_on_top;
++}
++
+ const char*
+ meta_prefs_get_theme (void)
+ {
+@@ -1712,7 +1724,10 @@
+ 
+     case META_PREF_RAISE_ON_CLICK:
+       return "RAISE_ON_CLICK";
+-      
++  
++    case META_PREF_NEW_WINDOWS_ALWAYS_ON_TOP:
++      return "NEW_WINDOWS_ALWAYS_ON_TOP";
++    
+     case META_PREF_THEME:
+       return "THEME";
+ 
+diff -ur metacity-2.30.3-ylmf1/src/core/window.c metacity-2.30.3-ylmf1.new//src/core/window.c
+--- metacity-2.30.3-ylmf1/src/core/window.c	2011-09-30 09:17:40.949198393 +0800
++++ metacity-2.30.3-ylmf1.new//src/core/window.c	2011-09-30 09:20:58.925862435 +0800
+@@ -2005,7 +2005,7 @@
+   if (!(window->input || window->take_focus))
+     {
+       *takes_focus = FALSE;
+-      return;
++       goto out;
+     }
+ 
+   /* Terminal usage may be different; some users intend to launch
+@@ -2052,6 +2052,9 @@
+       /* The default is correct for these */
+       break;
+     }
++    out:
++     if (meta_prefs_get_new_windows_always_on_top ())
++       *places_on_top = TRUE;
+ }
+ 
+ static gboolean
+diff -ur metacity-2.30.3-ylmf1/src/include/prefs.h metacity-2.30.3-ylmf1.new//src/include/prefs.h
+--- metacity-2.30.3-ylmf1/src/include/prefs.h	2011-09-30 09:17:40.915865059 +0800
++++ metacity-2.30.3-ylmf1.new//src/include/prefs.h	2011-09-30 09:21:56.835861668 +0800
+@@ -35,6 +35,7 @@
+   META_PREF_FOCUS_MODE,
+   META_PREF_FOCUS_NEW_WINDOWS,
+   META_PREF_RAISE_ON_CLICK,
++  META_PREF_NEW_WINDOWS_ALWAYS_ON_TOP,
+   META_PREF_ACTION_DOUBLE_CLICK_TITLEBAR,
+   META_PREF_ACTION_MIDDLE_CLICK_TITLEBAR,
+   META_PREF_ACTION_RIGHT_CLICK_TITLEBAR,
+@@ -81,6 +82,7 @@
+ MetaFocusMode               meta_prefs_get_focus_mode         (void);
+ MetaFocusNewWindows         meta_prefs_get_focus_new_windows  (void);
+ gboolean                    meta_prefs_get_raise_on_click     (void);
++gboolean                    meta_prefs_get_new_windows_always_on_top (void);
+ const char*                 meta_prefs_get_theme              (void);
+ /* returns NULL if GTK default should be used */
+ const PangoFontDescription* meta_prefs_get_titlebar_font      (void);
+diff -ur metacity-2.30.3-ylmf1/src/metacity.schemas.in.in metacity-2.30.3-ylmf1.new//src/metacity.schemas.in.in
+--- metacity-2.30.3-ylmf1/src/metacity.schemas.in.in	2011-09-30 09:17:40.949198393 +0800
++++ metacity-2.30.3-ylmf1.new//src/metacity.schemas.in.in	2011-09-30 09:22:51.422527612 +0800
+@@ -168,6 +168,35 @@
+     </schema>
+ 
+     <schema>
++      <key>/schemas/apps/metacity/general/new_windows_always_on_top</key>
++      <applyto>/apps/metacity/general/new_windows_always_on_top</applyto>
++      <owner>metacity</owner>
++      <type>bool</type>
++      <default>false</default>
++      <locale name="C">
++         <short>Whether new windows should always be placed on top</short>
++         <long>
++           The normal behavior is that if a new window is not given the
++          focus (since, for example, the user has interacted with another
++          window after launching an application), then if the window would
++          be stacked on top of the focus window, the window is instead
++          stacked beneath and flashed in the taskbar. This behavior can
++          be annoying on large screens and multihead setups where the
++          taskbar is hard to notice and difficult to get to, so this option,
++          if set, disables this behavior, and new windows are always placed
++          on top, whether or not they get focus.
++
++           Note that if this option is set, a new window may completely hide
++          the focus window but not get focus itself, which can be quite confusing
++          to users. Also, note that setting this option breaks the normal
++          invariant in the 'click' focus mode that the topmost window always
++          has focus, so its most suitable for use with the 'mouse' and
++          'sloppy' focus modes.
++         </long>
++      </locale>
++    </schema>
++
++    <schema>
+       <key>/schemas/apps/metacity/general/action_double_click_titlebar</key>
+       <applyto>/apps/metacity/general/action_double_click_titlebar</applyto>
+       <owner>metacity</owner>

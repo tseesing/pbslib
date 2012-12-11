@@ -1,0 +1,43 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="GNU locale utilities"
+HOMEPAGE="http://www.gnu.org/software/gettext/gettext.html"
+LICENSE="GPL"
+PACKAGER="StartOS Developers"
+GROUP="base"
+
+SRC_URI="http://ftp.gnu.org/pub/gnu/"$N"/"$N-$V".tar.gz"
+
+RDEPEND="acl gcc-lib libcroco libunistring ncurses"
+BDEPEND=""
+
+INSTALL="$N.install"
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_patch() {
+	sed -i -e 's/libexpat.so.0/libexpat.so.1/' gettext-tools/src/x-glade.c
+	# fix build issue with glibc-2.16
+	sed -i -e '/gets is a/d' gettext-*/*/stdio.in.h	
+}
+
+pbs_config() {
+	config+="--enable-csharp"
+	doconfig
+}
+
+pbs_build() {
+	domake
+}
+
+pbs_install() {
+	domkinstall
+}
+

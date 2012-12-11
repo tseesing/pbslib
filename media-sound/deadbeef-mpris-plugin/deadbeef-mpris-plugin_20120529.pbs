@@ -1,0 +1,39 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="the MPRIS plugin of DeaDBeeF music player."
+HOMEPAGE="https://github.com/kernelhcy/DeaDBeeF-MPRIS-plugin"
+LICENSE="GPL"
+PACKAGER="StartOS Developers"
+
+REPO="testing"
+
+SRC_URI="git://github.com/kernelhcy/DeaDBeeF-MPRIS-plugin.git"
+
+RDEPEND="deadbeef glib2"
+RECOMMENDED=""
+BDEPEND=""
+OPTIONAL=""
+CONFLICT=""
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_config() {
+	config+=""
+	doconfig
+}
+
+pbs_build() {
+	domake
+}
+
+pbs_install() {
+	domkinstall
+}
+

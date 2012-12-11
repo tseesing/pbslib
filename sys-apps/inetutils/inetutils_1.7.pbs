@@ -1,0 +1,42 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="a collection of common network programs"
+HOMEPAGE="http://www.gnu.org/software/inetutils/"
+LICENSE="GPL"
+PACKAGER="StartOS Developers"
+
+SRC_URI="http://ftp.gnu.org/gnu/"$N"/"$N-$V".tar.gz"
+
+RDEPEND="readline"
+BDEPEND=""
+
+INSTALL="$N.install"
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_config() {
+	config+=" --disable-ifconfig 
+		  --disable-syslogd 
+		  --disable-servers
+	          --disable-logger "
+	doconfig
+}
+
+pbs_build() {
+	domake
+}
+
+pbs_install() {
+	domkinstall
+	cd "$destdir"
+	domv usr/bin/{hostname,ping,ping6} bin
+	domv usr/bin/traceroute            sbin
+}
+

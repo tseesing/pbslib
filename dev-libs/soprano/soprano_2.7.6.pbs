@@ -1,0 +1,37 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="A library which provides a highly usable object-oriented C++/Qt4 framework for RDF data"
+HOMEPAGE="http://soprano.sourceforge.net/"
+LICENSE="GPL"
+PACKAGER="StartOS Developers<>"
+
+SRC_URI="http://downloads.sourceforge.net/"$N"/"$N-$V".tar.bz2"
+CHECKSUM="8eee947956134ea4aa2d1e94ddbd551e"
+
+RDEPEND="berkeley-db curl cyrus-sasl dbus gcc-lib glib2 glibc gmp gnutls jre libgcrypt libgpg-error libidn libiodbc libssh2 libtasn1 libtool libxml2 libxslt mpfr openldap openssl qt-core raptor2 rasqal redland rtmpdump zlib"
+BDEPEND="cmake doxygen"
+
+pbs_unpack() {
+       dounpack
+}
+
+pbs_config() {
+	. /etc/profile.d/jdk.sh
+	doconfig -DCMAKE_BUILD_TYPE=Release \
+		 -DCMAKE_SKIP_RPATH=OFF \
+		 -DSOPRANO_DISABLE_CLUCENE_INDEX=ON
+}
+
+pbs_build() {
+	domake
+}
+
+pbs_install() {
+	domkinstall
+}
+

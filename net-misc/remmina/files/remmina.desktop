@@ -1,0 +1,14 @@
+[Desktop Entry]
+Version=1.0
+Name=Remmina Remote Desktop Client
+Name[zh_CN]=Remmina
+Comment=Connect to remote desktops
+Comment[zh_CN]=远程桌面客户端
+TryExec=remmina
+Exec=remmina
+Icon=remmina
+Terminal=false
+Type=Application
+Actions=
+Categories=GTK;GNOME;X-GNOME-NetworkSettings;Network;
+

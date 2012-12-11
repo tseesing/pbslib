@@ -1,0 +1,44 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="An emulator with builtin DOS for running DOS Games"
+HOMEPAGE="http://dosbox.sourceforge.net/"
+LICENSE="GPL"
+PACKAGER="StartOS Developers"
+
+SRC_URI="http://downloads.sourceforge.net/project/"$N"/"$N"/"$V"/"$N-$V".tar.gz"
+
+RDEPEND="alsa-lib sdl-net"
+BDEPEND=""
+RECOMMENDED=""
+CONFLICT=""
+
+INSTALL="$N.install"
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_patch() {
+	dopatch gcc46.patch
+	sed -i 's/png_check_sig/png_sig_cmp/' configure
+}
+
+pbs_config() {
+	config+="--sysconfdir=/etc/dosbox"
+	doconfig
+}
+
+pbs_build() {
+	domake
+}
+
+pbs_install() {
+	domkinstall
+	dodesktop "$N.desktop" "$N.png"
+}
+

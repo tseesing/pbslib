@@ -1,0 +1,55 @@
+diff -ur deadbeef-0.5.1/deadbeef.desktop deadbeef-0.5.1.new/deadbeef.desktop
+--- deadbeef-0.5.1/deadbeef.desktop	2011-05-23 02:51:17.000000000 +0800
++++ deadbeef-0.5.1.new/deadbeef.desktop	2011-05-24 16:27:01.244804719 +0800
+@@ -1,5 +1,7 @@
+ [Desktop Entry]
+ Name=DeaDBeeF
++Name[zh_CN]=DeaDBeeF 音乐播放器
++Name[zh_TW]=DeaDBeeF 音樂播放器
+ GenericName=Audio Player
+ GenericName[pt_BR]=Reprodutor de áudio
+ GenericName[ru]=Аудио плеер
+diff -ur deadbeef-0.5.1/deadbeef.desktop.in deadbeef-0.5.1.new/deadbeef.desktop.in
+--- deadbeef-0.5.1/deadbeef.desktop.in	2011-05-23 00:52:27.000000000 +0800
++++ deadbeef-0.5.1.new/deadbeef.desktop.in	2011-05-24 16:27:23.084804430 +0800
+@@ -1,5 +1,7 @@
+ [Desktop Entry]
+ Name=DeaDBeeF
++Name[zh_CN]=DeaDBeeF 音乐播放器
++Name[zh_TW]=DeaDBeeF 音樂播放器
+ GenericName=Audio Player
+ GenericName[pt_BR]=Reprodutor de áudio
+ GenericName[ru]=Аудио плеер
+diff -ur deadbeef-0.5.1/junklib.c deadbeef-0.5.1.new/junklib.c
+--- deadbeef-0.5.1/junklib.c	2011-05-23 01:50:49.000000000 +0800
++++ deadbeef-0.5.1.new/junklib.c	2011-05-24 16:25:30.504805920 +0800
+@@ -682,9 +682,9 @@
+         enc = UTF8_STR;
+     }
+     else if (encoding == 0) {
+-        // hack to add limited cp1251 recoding support
++    	// hack to add limited gbk recoding support
+         if (can_be_russian (str)) {
+-            enc = "cp1251";
++            enc = "gbk";
+         }
+         else {
+             enc = "iso8859-1";
+@@ -766,7 +766,7 @@
+     }
+     const char *enc = "iso8859-1";
+     if (can_be_russian (str)) {
+-        enc = "cp1251";
++        enc = "gbk";
+     }
+ 
+     int len = junk_iconv (str, sz, out, sizeof (out), enc, UTF8_STR);
+@@ -3385,7 +3385,7 @@
+     }
+     // check if that could be non-latin1 (too many nonascii chars)
+     if (can_be_russian (s)) {
+-        return "cp1251";
++        return "gbk";
+     }
+     return "cp1252";
+ }

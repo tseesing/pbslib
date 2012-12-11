@@ -1,0 +1,34 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="library to use arbitrary fonts in OpenGL applications"
+HOMEPAGE="http://ftgl.wiki.sourceforge.net/"
+LICENSE="GPL"
+PACKAGER="StartOS Developers"
+
+SRC_URI="http://sourceforge.net/projects/"$N"/files/FTGL%20Source/2.1.3~rc5/"$N-$V$R".tar.bz2"
+
+RDEPEND="freetype mesa"
+BDEPEND=""
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_config() {
+	config+=""
+	doconfig
+}
+
+pbs_build() {
+	domake
+}
+
+pbs_install() {
+	domkinstall
+}
+

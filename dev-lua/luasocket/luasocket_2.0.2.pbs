@@ -1,0 +1,42 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="Networking support library for the Lua language."
+HOMEPAGE="http://www.tecgraf.puc-rio.br/~diego/professional/luasocket/"
+LICENSE="MIT"
+PACKAGER="StartOS Developers"
+
+SRC_URI="http://luaforge.net/frs/download.php/2664/"$N-$V".tar.gz"
+
+RDEPEND="lua"
+BDEPEND=""
+RECOMMENDED=""
+CONFLICT=""
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_patch() {
+	dopatch luasocket-arch.patch
+	dopatch luasocket-unixsocket.patch
+}
+
+pbs_config() {
+	config+=""
+	doconfig
+}
+
+pbs_build() {
+	domake
+}
+
+pbs_install() {
+	domkinstall 
+	dodoc LICENSE
+}
+

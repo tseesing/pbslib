@@ -1,0 +1,36 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="A set of GNOME themes, with sets for users with limited or low vision"
+HOMEPAGE="http://www.gnome.org/"
+LICENSE="GPL-2"
+PACKAGER="StartOS Developers"
+SRC_URI="ftp://ftp.gnome.org/pub/gnome/sources/$N/2.28/"$N-$V$R".tar.bz2"
+
+RDEPEND=""
+BDEPEND=" icon-naming-utils gtk-engines"
+RECOMMENDED=""
+
+NOTES="http://wiki.linuxfromscratch.org/blfs/wiki/gnome-themes"
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_config() {
+	
+	config+=" --prefix=/usr --enable-all-themes "
+	doconfig
+}
+
+pbs_build() {
+	domake
+}
+
+pbs_install() {
+	domkinstall
+}

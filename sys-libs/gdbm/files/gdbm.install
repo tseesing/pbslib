@@ -1,0 +1,15 @@
+. /usr/lib/ybs/funcs
+
+files="gdbm.info.gz"
+
+post_install() {
+        doinstall_info $files
+}       
+
+pre_remove() {
+	doremove_info $files
+}
+
+post_upgrade() {
+	post_install
+}

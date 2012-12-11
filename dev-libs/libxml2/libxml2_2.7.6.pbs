@@ -1,0 +1,41 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="Version 2 of the library to manipulate XML files"
+HOMEPAGE="http://www.xmlsoft.org/"
+ 
+SRC_URI="ftp://xmlsoft.org/libxml2/$N-$V.tar.gz"
+
+RDEPEND=""
+BDEPEND=""
+
+pbs_unpack()
+{
+        dounpack
+}
+
+pbs_config()
+{
+	
+	config+=" --prefix=/usr "
+	doconfig
+}
+
+pbs_build()
+{
+	domake
+}
+
+pbs_check()
+{
+	make check
+}
+
+pbs_install()
+{
+	domkinstall
+}

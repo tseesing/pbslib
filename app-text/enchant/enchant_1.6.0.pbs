@@ -1,0 +1,35 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="A wrapper library for generic spell checking"
+HOMEPAGE="http://www.abisource.com/enchant/"
+LICENSE="LGPL"
+PACKAGER="StartOS Developers"
+ 
+SRC_URI="http://www.abisource.com/downloads/"$N"/"$V"/"$N-$V".tar.gz"
+
+RDEPEND="aspell dbus-glib hunspell hspell"
+BDEPEND=""
+RECOMMENDED=""
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_config() {
+	config+="--disable-static --disable-ispell"
+	doconfig
+}
+
+pbs_build() {
+	domake
+}
+
+pbs_install() {
+	domkinstall
+}
+

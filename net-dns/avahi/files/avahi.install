@@ -1,0 +1,35 @@
+. /usr/lib/ybs/funcs
+
+gname="avahi"
+
+post_install() {
+	dogroupadd -g 84 "$gname"
+	douseradd -r -u 84 -g "$gname" -d / -s /bin/false -c "$gname" "$gname" 
+	
+	# Systemd unit
+	#systemctl enable avahi-daemon.service
+	#systemctl enable avahi-dnsconfd.service
+	
+	#start avahi-daemon
+	#start avahi-dnsconfd
+
+	return 0
+}
+
+pre_remove() {
+	# Systemd unit
+	#systemctl disable avahi-daemon.service
+	#systemctl disable avahi-dnsconfd.service
+
+	return 0
+}
+
+post_remove() {
+	douserdel "$gname"
+	dogroupdel "$gname"
+}
+
+post_upgrade() {
+	post_install		
+}
+

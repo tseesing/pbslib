@@ -1,0 +1,15 @@
+--- a/nm-applet-dbus-126.conf	2010-05-01 02:39:15.000000000 +0800
++++ b/nm-applet.conf	2010-10-11 20:33:47.618976691 +0800
+@@ -23,6 +23,12 @@
+                 <allow send_destination="org.freedesktop.NetworkManagerUserSettings"
+                        send_interface="org.freedesktop.NetworkManagerSettings.Connection.Secrets"/>
+         </policy>
++	<policy group="netdev">
++	       <allow own="org.freedesktop.NetworkManagerUserSettings"/>
++	       <allow send_destination="org.freedesktop.NetworkManagerUserSettings"/>
++	       <allow send_interface="org.freedesktop.NetworkManagerUserSettings"/>
++	        <deny send_interface="org.freedesktop.NetworkManagerSetting.Secrets"/>
++	</policy>
+         <policy at_console="true">
+                 <allow own="org.freedesktop.NetworkManagerUserSettings"/>
+ 

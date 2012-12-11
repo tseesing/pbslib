@@ -1,0 +1,26 @@
+diff -ur shutter-0.87.2/share/applications/shutter.desktop shutter-0.87.2.new//share/applications/shutter.desktop
+--- shutter-0.87.2/share/applications/shutter.desktop	2011-03-25 18:55:50.000000000 +0800
++++ shutter-0.87.2.new//share/applications/shutter.desktop	2011-04-01 13:26:15.569421003 +0800
+@@ -1,19 +1,21 @@
+ [Desktop Entry]
+ Version=1.0
+ Name=Shutter
++Name[zh_CN]=Shutter 截图工具
+ Name[de_DE]=Shutter
+ Name[pt_BR]=Shutter
+ GenericName=Screenshot Tool
+ GenericName[de_DE]=Anwendung für Bildschirmfotos
+ GenericName[pt_BR]=Captura de tela
+ Comment=Capture, edit and share screenshots
++Comment[zh_CN]=强大的截图工具
+ Comment[de_DE]=Bildschirmfotos aufnehmen, bearbeiten und mit Anderen teilen
+ Comment[pt_BR]=Aplicativo avançado para capturar imagens da tela
+ Exec=shutter %F
+ Icon=shutter
+ Terminal=false
+ Type=Application
+-Categories=Utility;Application;
++Categories=Graphics;
+ MimeType=image/bmp;image/jpeg;image/gif;image/png;image/tiff;image/x-bmp;image/x-ico;image/x-png;image/x-pcx;image/x-tga;image/xpm;image/svg+xml;
+ X-Ayatana-Desktop-Shortcuts=Select;Screen;Window;Active
+ 

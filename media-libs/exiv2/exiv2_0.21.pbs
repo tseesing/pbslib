@@ -1,0 +1,41 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="EXIF and IPTC metadata C++ library and command line utility"
+HOMEPAGE="http://trac.yorba.org/wiki/gexiv2"
+LICENSE="GPL"
+PACKAGER="StartOS Developers"
+
+SRC_URI="http://www.exiv2.org/"$N-$V".tar.gz"
+
+RDEPEND="gcc-lib glibc zlib"
+BDEPEND=""
+RECOMMENDED=""
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_patch() {
+	dopatch exiv2-0.21-xmp-fix.patch
+}
+
+pbs_config() {
+	config+="--infodir=/usr/share/info
+		 --enable-nls 
+		 --disable-xmp"
+	doconfig
+}
+
+pbs_build() {
+	domake
+}
+
+pbs_install() {
+	domkinstall
+}
+

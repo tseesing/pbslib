@@ -1,0 +1,28 @@
+Description: Run /etc/X11/Xsession.d/.
+Author: Martin Pitt <martin.pitt@ubuntu.com>
+Origin: Ubuntu; /etc/X11/Xsession.d is a Debianism/Ubuntuism
+
+Index: gdm-2.32.0/data/Xsession.in
+===================================================================
+--- gdm-2.32.0.orig/data/Xsession.in	2010-08-27 23:45:29.000000000 +0200
++++ gdm-2.32.0/data/Xsession.in	2010-12-07 15:10:12.177502001 +0100
+@@ -162,6 +162,19 @@
+     done
+ fi
+ 
++# run /etc/X11/Xsession.d/
++OPTIONFILE=/etc/X11/Xsession.options
++USERXSESSION=$HOME/.xsession
++USERXSESSIONRC=$HOME/.xsessionrc
++ALTUSERXSESSION=$HOME/.Xsession
++if [ -d /etc/X11/Xsession.d ]; then
++    for i in `ls /etc/X11/Xsession.d/` ; do
++        if [ -r "/etc/X11/Xsession.d/$i"  -a -f "/etc/X11/Xsession.d/$i" ] && expr "$i" : '^[[:alnum:]_-]\+$' > /dev/null; then
++	    . "/etc/X11/Xsession.d/$i"
++        fi
++    done
++fi
++
+ if [ "x$command" = "xcustom" ] ; then
+   if [ -x "$HOME/.xsession" ]; then
+     command="$HOME/.xsession"

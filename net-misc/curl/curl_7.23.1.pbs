@@ -1,0 +1,37 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="A Client that groks URLs"
+HOMEPAGE="http://curl.haxx.se/"
+LICENSE="MIT"
+PACKAGER="StartOS Developers"
+
+SRC_URI="http://curl.haxx.se/download/"$N-$V".tar.bz2"
+
+RDEPEND="libidn libssh2 openldap rtmpdump"
+BDEPEND=""
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_config() {
+	config+=""
+	doconfig
+}
+
+pbs_build() {
+	domake
+}
+
+pbs_install() {
+	domkinstall
+	
+	# types.h: fetch from curl_7.20, some app needs, e.g. firefox-7.0.1
+	docp "$filesdir"/types.h "$destdir"/usr/include/curl/
+}
+

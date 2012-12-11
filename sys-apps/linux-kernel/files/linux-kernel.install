@@ -1,0 +1,37 @@
+
+post_install() {
+	# For initramfs
+	name="$1"
+	version="$2"
+	depmod -a "$version"
+	update-initramfs -d -c -k "$version"
+	# For grub
+	update-grub
+}       
+
+post_remove() {
+	name="$1"
+	version="$2"
+	rm /boot/initrd.img-"$version"         2>/dev/null
+	rm /var/lib/initramfs-tools/"$version" 2>/dev/null
+
+	# For grub
+	update-grub
+}
+
+post_upgrade() {
+	name=$1
+	new_ver="$2"
+	old_ver="$3"
+	rm -rf /var/lib/initramfs-tools/"$old_ver" 2>/dev/null
+	#
+	mkdir -p /var/run/ypkg/
+	echo "reboot=yes" >/var/run/ypkg/event
+	#
+	post_install $name $new_ver
+}
+
+post_downgrade() {
+	post_upgrade
+}
+

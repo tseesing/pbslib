@@ -1,0 +1,41 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="A free, object-oriented toolkit for SGML parsing and entity management"
+HOMEPAGE="http://openjade.sourceforge.net/"
+LICENSE="GPL"
+PACKAGER="StartOS Developers"
+ 
+SRC_URI="http://downloads.sourceforge.net/"$N"/OpenSP-"$V".tar.gz"
+
+RDEPEND="gcc-lib"
+BDEPEND="sgml-common"
+RECOMMENDED=""
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_config() {
+	#These seds prevent some annoying messages that may otherwise appear while running openjade
+	sed -i 's:32,:253,:' lib/Syntax.cxx 
+	sed -i 's:LITLEN          240 :LITLEN          8092:' unicode/{gensyntax.pl,unicode.syn} 
+	config+=" --disable-doc-build  
+	              --enable-default-catalog=/etc/sgml/catalog 
+		      --enable-http 
+	              --enable-default-search-path=/usr/share/sgml "
+	doconfig
+}
+
+pbs_build() {
+	domake
+}
+
+pbs_install() {
+	domkinstall
+}
+

@@ -1,0 +1,42 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="The libunique package contains a library for writing single instance applications."
+HOMEPAGE="http://live.gnome.org/LibUnique"
+LICENSE="LGPL"
+PACKAGER="StartOS Developers"
+
+SRC_URI="http://ftp.gnome.org/pub/GNOME/sources/"$N"/1.1/"$N-$V".tar.bz2"
+
+RDEPEND="gtk+"
+BDEPEND="" 
+RECOMMENDED="" 
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_patch() {
+	dopatch unique-gdbus.patch remove_G_CONST_RETURN.patch
+}
+
+pbs_config() {
+	config+="--disable-dbus --disable-static"
+	autoreconf
+	doconfig
+}
+
+pbs_build() {
+	domake
+}
+
+pbs_install() {
+	domkinstall
+	cd "$destdir"/usr/include
+	ln -sf  /usr/include/unique-1.0/unique unique
+}
+

@@ -1,0 +1,50 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="Tools aimed to make easy the administration of UNIX systems "
+HOMEPAGE="http://www.gnome.org/projects/gst/"
+LICENSE="GPL"
+PACKAGER="StartOS Developers"
+
+SRC_URI="http://ftp.gnome.org/pub/gnome/desktop/2.32/2.32.1/sources/"$N-$V".tar.bz2"
+
+RDEPEND="liboobs polkit-gnome wireless-tools"
+BDEPEND="system-tools-backends-dev xml-twig libgnomeui-dev eggdbus"
+RECOMMENDED="libgnomeui startos-service-manager"
+
+INSTALL="$N-$V.install"
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_patch() {
+	dopatch startos-translate-2.32.0.patch change_network_png-2.32.0.patch
+}
+
+pbs_config() {
+	# Disable services, replaced by startos-service-manager
+	# Disable shares, replaced by nautilus-share
+	# 
+	config+="--disable-schemas-install --disable-services --disable-shares"
+	doconfig
+}
+
+pbs_build() {
+	domake
+}
+
+pbs_install() {
+	domkinstall
+	cd "$destdir"
+	docp "$filesdir"/network-setting.png  usr/share/pixmaps/
+	
+	# Keep clean for rarian
+	rm -fr var/lib/scrollkeeper
+	rm -fr var/lib/log
+}
+

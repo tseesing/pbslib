@@ -1,0 +1,38 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="X keyboard configuration databas"
+HOMEPAGE="http://www.freedesktop.org/wiki/Software/XKeyboardConfig"
+GROUP="x11-data"
+LICENSE="custom"
+PACKAGER="StartOS Developers"
+YARCH="any"
+
+SRC_URI="http://xorg.freedesktop.org/releases/individual/data/"$N"/"$N-$V".tar.bz2"
+
+RDEPEND="libX11 libXau libxcb libXdmcp libxkbfile"
+BDEPEND="intltool"
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_config() {
+	config+=" --with-xkb-rules-symlink=xorg
+	          --enable-compat-rules=yes "
+	doconfig
+}
+
+pbs_build() {
+	domake
+}
+
+pbs_install() {
+	domkinstall
+	dodoc COPYING
+}
+

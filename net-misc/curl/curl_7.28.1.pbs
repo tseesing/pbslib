@@ -1,0 +1,53 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="A Client that groks URLs"
+HOMEPAGE="http://curl.haxx.se/"
+LICENSE="MIT"
+PACKAGER="StartOS Developers"
+
+SRC_URI="http://curl.haxx.se/download/"$N-$V".tar.bz2"
+
+RDEPEND="libidn libssh2 openldap rtmpdump ca-certificates"
+BDEPEND=""
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_config() {
+	ptrsize=$(cpp <<<'__SIZEOF_POINTER__' | sed '/^#/d')
+	case "$ptrsize" in
+	  8) _curlbuild=curlbuild-64.h ;;
+	  4) _curlbuild=curlbuild-32.h ;;
+	  *) die "unknown pointer size for architecture: $ptrsize bytes"
+	esac
+
+	config+="--disable-dependency-tracking
+	         --enable-ipv6 \
+		 --enable-manual \
+ 		 --enable-versioned-symbols 
+		 --enable-threaded-resolver 
+		 --with-random=/dev/urandom 
+		 --with-ca-bundle=/etc/ssl/certs/ca-certificates.crt"
+	doconfig
+}
+
+pbs_build() {
+	domake
+}
+
+pbs_install() {
+	domkinstall
+	dodoc COPYING
+	# devel files
+	docp docs/libcurl/libcurl.m4 "$destdir"/usr/share/aclocal/
+	cd "$destdir"
+	mv usr/include/curl/curlbuild.h usr/include/curl/"$_curlbuild"
+	docp "$filesdir"/curlbuild.h    usr/include/curl/
+}
+

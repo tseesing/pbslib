@@ -1,0 +1,45 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="Allows users or groups to run commands as other users"
+HOMEPAGE="http://www.sudo.ws/ http://www.gratisoft.us/sudo/"
+LICENSE="custom"
+PACKAGER="StartOS Developers"
+
+SRC_URI="http://www.sudo.ws/sudo/dist/"$N-$V"p3.tar.gz"
+
+RDEPEND="glibc pam"
+BDEPEND=""
+
+NOTES="defaut sudoer group is wheel"
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_patch() {
+	dopatch member-of-wheel-run-sudo.patch
+}
+
+pbs_config() {
+	config+=" --with-logfac=auth 
+    		  --with-pam 
+   		  --with-env-editor 
+    		  --with-all-insults "
+	doconfig --with-passprompt=\"[sudo] password for %p: \"
+}
+
+pbs_build() {
+	domake
+}
+
+pbs_install() {
+	domkinstall
+	dodoc doc/LICENSE
+	dopamd sudo
+}
+

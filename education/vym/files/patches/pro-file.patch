@@ -1,0 +1,11 @@
+--- vym.pro	2010-03-06 04:16:45.000000000 +0800
++++ vym.pro.new	2011-03-09 15:31:43.850138004 +0800
+@@ -147,7 +147,7 @@
+ QT += xml
+ TARGET = vym
+ isEmpty( PREFIX ) { 
+-    PREFIX = /usr/local
++    PREFIX = /usr
+     count( INSTALLDIR, 1 ) { 
+         PREFIX = $${INSTALLDIR}
+         message( "Please use PREFIX instead of INSTALLDIR" )

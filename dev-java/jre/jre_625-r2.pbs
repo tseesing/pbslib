@@ -1,0 +1,51 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="Sun's java runtime environment"
+HOMEPAGE="http://java.sun.com"
+LICENSE="custom"
+PACKAGER="StartOS Developers"
+
+SRC_URI="http://download.java.net/dlj/binaries/jdk-6u25-dlj-linux-i586.bin"
+
+RDEPEND="alsa-lib libXtst unixodbc"
+BDEPEND=""
+RECOMMENDED=""
+CONFLICT="sun-jre"
+
+INSTALL="$N.install"
+
+pbs_unpack() {
+	rm -f "$N-$V$R" 2>/dev/null
+	mkdir -p "$N-$V$R" && cd "$N-$V$R"
+	mkdir -p unbundle && cd unbundle
+	sh "$YBS_SOURCE"/jdk-6u25-dlj-linux-i586.bin --accept-license
+	cd ../ && sh "$filesdir"/construct.sh unbundle linux-jdk linux-jre
+}
+
+pbs_install() {
+	docp linux-jdk/jre "$destdir"/opt/java/
+	install -Dm755 "$filesdir"/jre.profile "$destdir"/etc/profile.d/jre.sh
+
+	cd "$destdir"
+
+	if [ "$ARCH" = "i686" ]; then
+		doln /opt/java/jre/lib/i386/libnpjp2.so usr/lib/mozilla/plugins/libnpjp2.so
+	else 
+		doln /opt/java/jre/lib/amd64/libnpjp2.so usr/lib/mozilla/plugins/libnpjp2.so
+	fi
+	
+	docp opt/java/jre/{COPYRIGHT,LICENSE,THIRDPARTYLICENSEREADME.txt}  usr/share/licenses/jre/
+	
+	# Fix system prefs folder (FS#18872)
+	install -dm755 etc/.java/.systemPrefs
+	
+	#
+	dodesktop "opt/java/jre/lib/desktop/applications/sun-java.desktop" \
+	          "opt/java/jre/lib/images/icons/sun-java.png"
+}
+

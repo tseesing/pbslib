@@ -1,0 +1,117 @@
+diff -ur gnome-mplayer-1.0.6/DOCS/keyboard_shortcuts.txt gnome-mplayer-1.0.6.new//DOCS/keyboard_shortcuts.txt
+--- gnome-mplayer-1.0.6/DOCS/keyboard_shortcuts.txt	2008-04-28 21:13:23.000000000 +0000
++++ gnome-mplayer-1.0.6.new//DOCS/keyboard_shortcuts.txt	2012-06-18 10:47:45.863383425 +0000
+@@ -4,8 +4,8 @@
+ Left Arrow - Fast Reverse
+ Page Up - Seek 10min forward
+ Page Down - Seek 10min backward
+-Up Arrow - Seek 1 min forward
+-Down Arrow - Seek 1 min backward
++Up Arrow - Volume down 10
++Down Arrow - Volume up 10
+ Space - Pause
+ p - Pause
+ m - Mute
+@@ -24,8 +24,8 @@
+ { - Half speed playback
+ } - Double speed playback
+ 
+-9 - Volume down 10
+-0 - Volume up 10
++9 - Seek 1 min forward
++0 - Seek 1 min backward
+ 
+ # - Switch Audio Track
+ j - Subtitle select
+diff -ur gnome-mplayer-1.0.6/src/gui.c gnome-mplayer-1.0.6.new//src/gui.c
+--- gnome-mplayer-1.0.6/src/gui.c	2012-04-06 13:19:25.000000000 +0000
++++ gnome-mplayer-1.0.6.new//src/gui.c	2012-06-18 10:52:37.140989322 +0000
+@@ -1819,16 +1819,12 @@
+             if (title_is_menu) {
+                 return gmtk_media_player_send_key_press_event(GMTK_MEDIA_PLAYER(media), event, data);
+             } else {
+-                if (gmtk_media_player_get_state(GMTK_MEDIA_PLAYER(media)) != MEDIA_STATE_STOP
+-                    && !gtk_check_menu_item_get_active(GTK_CHECK_MENU_ITEM(menuitem_view_playlist)))
+-                    gmtk_media_player_seek(GMTK_MEDIA_PLAYER(media), 60.0, SEEK_RELATIVE);
+-                if (gmtk_media_player_get_state(GMTK_MEDIA_PLAYER(media)) == MEDIA_STATE_PAUSE) {
+-                    gmtk_media_player_seek(GMTK_MEDIA_PLAYER(media), 0.0, SEEK_RELATIVE);
+-                    idledata->position += 60;
+-                    if (idledata->position > idledata->length)
+-                        idledata->position = 0;
+-                    gmtk_media_tracker_set_percentage(tracker, idledata->position / idledata->length);
+-                }
++	#ifdef GTK2_12_ENABLED
++	            gtk_scale_button_set_value(GTK_SCALE_BUTTON(vol_slider),
++	                                       gtk_scale_button_get_value(GTK_SCALE_BUTTON(vol_slider)) + 0.10);
++	#else
++	            gtk_range_set_value(GTK_RANGE(vol_slider), gtk_range_get_value(GTK_RANGE(vol_slider)) + 0.10);
++	#endif
+             }
+ 
+             return FALSE;
+@@ -1836,17 +1832,13 @@
+             if (title_is_menu) {
+                 return gmtk_media_player_send_key_press_event(GMTK_MEDIA_PLAYER(media), event, data);
+             } else {
+-                if (gmtk_media_player_get_state(GMTK_MEDIA_PLAYER(media)) != MEDIA_STATE_STOP
+-                    && !gtk_check_menu_item_get_active(GTK_CHECK_MENU_ITEM(menuitem_view_playlist)))
+-                    gmtk_media_player_seek(GMTK_MEDIA_PLAYER(media), -60.0, SEEK_RELATIVE);
+-                if (gmtk_media_player_get_state(GMTK_MEDIA_PLAYER(media)) == MEDIA_STATE_PAUSE) {
+-                    gmtk_media_player_seek(GMTK_MEDIA_PLAYER(media), 0.0, SEEK_RELATIVE);
+-                    idledata->position -= 60;
+-                    if (idledata->position < 0)
+-                        idledata->position = 0;
+-                    gmtk_media_tracker_set_percentage(tracker, idledata->position / idledata->length);
+-                }
+-            }
++	#ifdef GTK2_12_ENABLED
++	                gtk_scale_button_set_value(GTK_SCALE_BUTTON(vol_slider),
++	                        gtk_scale_button_get_value(GTK_SCALE_BUTTON(vol_slider)) - 0.10);
++	#else
++	                gtk_range_set_value(GTK_RANGE(vol_slider), gtk_range_get_value(GTK_RANGE(vol_slider)) - 0.10);
++	#endif
++           }
+             return FALSE;
+         case GDK_Return:
+         case GDK_KP_Enter:
+@@ -1926,20 +1918,28 @@
+             gmtk_media_player_set_attribute_double(GMTK_MEDIA_PLAYER(media), ATTRIBUTE_SPEED_SET, 1.0);
+             return FALSE;
+         case GDK_9:
+-#ifdef GTK2_12_ENABLED
+-            gtk_scale_button_set_value(GTK_SCALE_BUTTON(vol_slider),
+-                                       gtk_scale_button_get_value(GTK_SCALE_BUTTON(vol_slider)) - 0.01);
+-#else
+-            gtk_range_set_value(GTK_RANGE(vol_slider), gtk_range_get_value(GTK_RANGE(vol_slider)) - 0.01);
+-#endif
++            if (gmtk_media_player_get_state(GMTK_MEDIA_PLAYER(media)) != MEDIA_STATE_STOP
++                    && !gtk_check_menu_item_get_active(GTK_CHECK_MENU_ITEM(menuitem_view_playlist)))
++                gmtk_media_player_seek(GMTK_MEDIA_PLAYER(media), -60.0, SEEK_RELATIVE);
++            if (gmtk_media_player_get_state(GMTK_MEDIA_PLAYER(media)) == MEDIA_STATE_PAUSE) {
++                gmtk_media_player_seek(GMTK_MEDIA_PLAYER(media), 0.0, SEEK_RELATIVE);
++                idledata->position -= 60;
++                if (idledata->position < 0)
++                    idledata->position = 0;
++                gmtk_media_tracker_set_percentage(tracker, idledata->position / idledata->length);
++            }
+             return FALSE;
+         case GDK_0:
+-#ifdef GTK2_12_ENABLED
+-            gtk_scale_button_set_value(GTK_SCALE_BUTTON(vol_slider),
+-                                       gtk_scale_button_get_value(GTK_SCALE_BUTTON(vol_slider)) + 0.01);
+-#else
+-            gtk_range_set_value(GTK_RANGE(vol_slider), gtk_range_get_value(GTK_RANGE(vol_slider)) + 0.01);
+-#endif
++	if (gmtk_media_player_get_state(GMTK_MEDIA_PLAYER(media)) != MEDIA_STATE_STOP
++	                    && !gtk_check_menu_item_get_active(GTK_CHECK_MENU_ITEM(menuitem_view_playlist)))
++	                gmtk_media_player_seek(GMTK_MEDIA_PLAYER(media), 60.0, SEEK_RELATIVE);
++	if (gmtk_media_player_get_state(GMTK_MEDIA_PLAYER(media)) == MEDIA_STATE_PAUSE) {
++	                gmtk_media_player_seek(GMTK_MEDIA_PLAYER(media), 0.0, SEEK_RELATIVE);
++	                idledata->position += 60;
++	if (idledata->position > idledata->length)
++	                    idledata->position = 0;
++	                gmtk_media_tracker_set_percentage(tracker, idledata->position / idledata->length);
++	            }
+             return FALSE;
+         case GDK_numbersign:
+             gmtk_media_player_send_command(GMTK_MEDIA_PLAYER(media), COMMAND_SWITCH_AUDIO);

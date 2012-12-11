@@ -1,0 +1,45 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="Lightweight, easy to configure DNS forwarder and DHCP server"
+HOMEPAGE="http://www.thekelleys.org.uk/dnsmasq/doc.html"
+LICENSE="GPL"
+PACKAGER="StartOS Developers"
+
+SRC_URI="http://www.thekelleys.org.uk/"$N"/"$N-$V".tar.gz"
+
+RDEPEND="dbus glibc"
+RECOMMENDED=""
+BDEPEND=""
+CONFLICT=""
+
+INSTALL="$N.install"
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_build() {
+	# link against dbus
+	echo '#define HAVE_DBUS' >> src/config.h
+	
+	domake
+}
+
+pbs_install() {
+	domkinstall PREFIX=/usr
+	
+	# For systemd unit
+	dounit "$N".service
+
+	# For dbus
+	docp "dbus/dnsmasq.conf" "$destdir"/etc/dbus-1/system.d/
+
+	#
+	install -Dm644 "dnsmasq.conf.example" "$destdir"/etc/dnsmasq.conf
+}
+

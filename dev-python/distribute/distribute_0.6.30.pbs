@@ -1,0 +1,37 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="The pkg_resources module provides an API for Python libraries to access their resource files"
+HOMEPAGE="http://packages.python.org/distribute"
+LICENSE="PSF"
+PACKAGER="StartOS Developers"
+YARCH="any"
+
+SRC_URI="http://pypi.python.org/packages/source/d/"$N"/"$N-$V".tar.gz"
+
+RDEPEND="python(>=2.7.3)"
+BDEPEND=" "
+RECOMMENDED=""
+CONFLICT=""
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_config() {
+	config+=""
+	doconfig
+}
+
+pbs_build() {
+	domake
+}
+
+pbs_install() {
+	domkinstall --optimize=1 --skip-build
+}
+

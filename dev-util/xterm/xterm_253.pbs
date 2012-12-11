@@ -1,0 +1,36 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="Terminal Emulator for X Windows"
+HOMEPAGE="http://invisible-island.net/xterm/xterm.html"
+ 
+SRC_URI="ftp://invisible-island.net/"$N"/"$N-$V$R".tgz"
+
+RDEPEND="libXft libXaw ncurses fontconfig libX11 libXmu libXt libICE freetype libXrender
+	 libXext libSM libXpm zlib expat libxcb util-linux-ng libXau libXdmcp "
+BDEPEND=""
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_config() {
+	sed -i '/v0/,+1s/new:/new:kb=^?:/' termcap 
+	echo -e '\tkbs=\\177,' >>terminfo 
+	config+="--enable-luit 
+	             --enable-wide-chars"
+	TERMINFO=/usr/lib/terminfo doconfig
+}
+
+pbs_build() {
+	domake
+}
+
+pbs_install() {
+	domkinstall
+	domkinstall install-ti
+}

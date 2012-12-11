@@ -1,0 +1,66 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="the port of the portable web rendering engine WebKit to the GTK+ platform."
+HOMEPAGE="http://www.webkitgtk.org/"
+LICENSE="custom"
+PACKAGER="StartOS Developers"
+
+SRC_URI="http://webkitgtk.org/releases/"$N-$V".tar.xz"
+
+PROVIDE="webkitgtk2 webkitgtk3"
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_patch() {
+	mkdir -p build-gtk2 build-gtk3
+}
+
+pbs_config() {
+	cd "$srcdir"/build-gtk2
+	config+="--enable-introspection --disable-silent-rules --with-gstreamer=0.10 --with-gtk=2.0 --disable-webkit2"
+	../configure $config || die  
+	
+	config=$DEFAULT_CONFIG
+
+	cd "$srcdir"/build-gtk3
+	config+="--enable-introspection --disable-silent-rules --with-gstreamer=1.0"
+	../configure $config
+}
+
+pbs_build() {
+	cd "$srcdir"/build-gtk2
+	domake all stamp-po || die
+	
+	cd "$srcdir"/build-gtk3
+	domake all stamp-po
+}
+
+webkitgtk2_install() {
+	DESCRIPTION="GTK+ Web content engine library for GTK+ 2.0"
+	RDEPEND=""
+	BDEPEND="ruby"
+	RECOMMENDED=""
+	
+	cd "$srcdir"/build-gtk2
+	domkinstall
+	dodoc ../Source/WebKit/LICENSE
+}
+
+webkitgtk3_install() {
+	DESCRIPTION="GTK+ Web content engine library for GTK+ 3.0"
+	RDEPEND=""
+	BDEPEND="ruby"
+	RECOMMENDED=""
+	
+	cd "$srcdir"/build-gtk3
+	domkinstall
+	dodoc ../Source/WebKit/LICENSE
+}
+

@@ -1,0 +1,51 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="Standard tool to compile source trees"
+HOMEPAGE="http://www.gnu.org/software/make/make.html"
+LICENSE="GPLv3"
+PACKAGER="StartOS Developers"
+
+SRC_URI="http://ftp.gnu.org/pub/gnu/"$N"/"$N-$V".tar.bz2"
+
+RDEPEND="glibc"
+BDEPEND=""
+
+INSTALL="$N.install"
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_patch() {
+	# http://savannah.gnu.org/bugs/?30612
+	dopatch make-3.82-bug30612.patch
+	# http://savannah.gnu.org/bugs/?30723
+	dopatch make-3.82-bug30723.patch
+	# https://bugs.archlinux.org/task/22733 (fix from Fedora)
+	dopatch make-3.82-sort-blank.patch
+	# https://savannah.gnu.org/bugs/?33873
+	dopatch make-3.82-makeflags.patch
+	# http://lists.gnu.org/archive/html/bug-make/2011-04/msg00002.html
+	dopatch make-3.82-expensive_glob.patch
+	# https://savannah.gnu.org/bugs/?30653
+	dopatch make-3.82-dont-prune-intermediate.patch
+}
+
+pbs_config() {
+	config+=""
+	doconfig
+}
+
+pbs_build() {
+	domake
+}
+
+pbs_install() {
+	domkinstall
+}
+

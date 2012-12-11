@@ -1,0 +1,36 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="Alternative HTML::Parser interface "
+HOMEPAGE="http://search.cpan.org/~gaas/HTML-Parser-3.68/lib/HTML/TokeParser.pm"
+PACKAGER="StartOS Developers"
+LICENSE="GPL PerlArtistic"
+
+SRC_URI="http://search.cpan.org/CPAN/authors/id/G/GA/GAAS/HTML-Parser-"$V".tar.gz"
+
+RDEPEND="perl html-tagset-perl"
+BDEPEND=" "
+RECOMMENDED=""
+CONFLICT=""
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_config() {
+	doconfig INSTALLDIRS=vendor
+}
+
+pbs_build() {
+	domake
+}
+
+pbs_install() {
+	domkinstall
+        perl_cleanup
+}
+

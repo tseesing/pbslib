@@ -1,0 +1,37 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="data tables useful in parsing HTML "
+HOMEPAGE="http://search.cpan.org/~petdance/HTML-Tagset-3.20/Tagset.pm"
+PACKAGER="StartOS Developers"
+LICENSE="GPL PerlArtistic"
+YARCH="any"
+
+SRC_URI="http://search.cpan.org/CPAN/authors/id/P/PE/PETDANCE/HTML-Tagset-"$V".tar.gz"
+
+RDEPEND="perl"
+BDEPEND=" "
+RECOMMENDED=""
+CONFLICT=""
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_config() {
+	doconfig INSTALLDIRS=vendor
+}
+
+pbs_build() {
+	domake
+}
+
+pbs_install() {
+	domkinstall
+        perl_cleanup
+}
+

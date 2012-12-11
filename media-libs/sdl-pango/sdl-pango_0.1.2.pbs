@@ -1,0 +1,36 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="Pango SDL binding"
+HOMEPAGE="http://sdlpango.sourceforge.net/"
+LICENSE="LGPL"
+PACKAGER="StartOS Developers"
+
+SRC_URI="http://downloads.sourceforge.net/sourceforge/sdlpango/SDL_Pango-"$V".tar.gz"
+
+RDEPEND="libsdl pango"
+BDEPEND=""
+RECOMMENDED=""
+CONFLICT=""
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_config() {
+	dopatch SDL_Pango-0.1.2-API-adds.patch matrix_declarations.patch
+	doconfig
+}
+
+pbs_build() {
+	domake
+}
+
+pbs_install() {
+	domkinstall
+}
+

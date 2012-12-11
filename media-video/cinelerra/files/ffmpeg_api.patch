@@ -1,0 +1,159 @@
+diff -ur cinelerra-2.2.0-r1/cinelerra/ffmpeg.C cinelerra-2.2.0-r1.new//cinelerra/ffmpeg.C
+--- cinelerra-2.2.0-r1/cinelerra/ffmpeg.C	2012-05-22 09:35:50.329343836 +0000
++++ cinelerra-2.2.0-r1.new//cinelerra/ffmpeg.C	2012-07-12 12:12:52.875977880 +0000
+@@ -23,7 +23,6 @@
+ 
+ int FFMPEG::init(char *codec_string) {
+ 
+-	avcodec_init();
+ 	avcodec_register_all();
+ 
+ 	CodecID id = codec_id(codec_string);
+@@ -364,12 +363,15 @@
+ 
+ 	// NOTE: frame must already have data space allocated
+ 	
++	AVPacket pkt;
+ 	got_picture = 0;
+-	int length = avcodec_decode_video(context,
++	av_init_packet( &pkt );
++	pkt.data = data;
++	pkt.size = data_size;
++	int length = avcodec_decode_video2(context,
+ 					  picture,
+ 					  &got_picture,
+-					  data,
+-					  data_size);
++					  &pkt);
+ 	
+ 	if (length < 0) {
+ 		printf("FFMPEG::decode error decoding frame\n");
+diff -ur cinelerra-2.2.0-r1/cinelerra/fileac3.C cinelerra-2.2.0-r1.new//cinelerra/fileac3.C
+--- cinelerra-2.2.0-r1/cinelerra/fileac3.C	2012-05-22 09:35:50.329343836 +0000
++++ cinelerra-2.2.0-r1.new//cinelerra/fileac3.C	2012-07-12 12:13:12.409310155 +0000
+@@ -84,7 +84,6 @@
+ 
+ 	if(wr)
+ 	{
+-  		avcodec_init();
+ 		avcodec_register_all();
+ 		codec = avcodec_find_encoder(CODEC_ID_AC3);
+ 		if(!codec)
+diff -ur cinelerra-2.2.0-r1/quicktime/mpeg4.c cinelerra-2.2.0-r1.new//quicktime/mpeg4.c
+--- cinelerra-2.2.0-r1/quicktime/mpeg4.c	2012-05-22 09:35:51.482127760 +0000
++++ cinelerra-2.2.0-r1.new//quicktime/mpeg4.c	2012-07-12 12:14:37.129305571 +0000
+@@ -629,7 +629,6 @@
+ 			if(!ffmpeg_initialized)
+ 			{
+ 				ffmpeg_initialized = 1;
+-  				avcodec_init();
+ 				avcodec_register_all();
+ 			}
+ 
+@@ -674,7 +673,7 @@
+ #if LIBAVCODEC_VERSION_INT < ((52<<16)+(0<<8)+0)
+ 			context->error_resilience = FF_ER_CAREFUL;
+ #else
+-			context->error_recognition = FF_ER_CAREFUL;
++			context->err_recognition = AV_EF_CRCCHECK;
+ #endif
+ 			context->error_concealment = 3;
+ 			context->frame_skip_cmp = FF_CMP_DCTMAX;
+@@ -699,7 +698,6 @@
+         	context->profile= FF_PROFILE_UNKNOWN;
+ 			context->rc_buffer_aggressivity = 1.0;
+         	context->level= FF_LEVEL_UNKNOWN;
+-			context->flags |= CODEC_FLAG_H263P_UMV;
+ 			context->flags |= CODEC_FLAG_AC_PRED;
+ 
+ // All the forbidden settings can be extracted from libavcodec/mpegvideo.c of ffmpeg...
+@@ -717,10 +715,8 @@
+ 				(codec->ffmpeg_id == CODEC_ID_MPEG4 ||
+ 			         codec->ffmpeg_id == CODEC_ID_MPEG1VIDEO ||
+ 			         codec->ffmpeg_id == CODEC_ID_MPEG2VIDEO ||
+-			         codec->ffmpeg_id == CODEC_ID_H263P || 
+-			         codec->ffmpeg_id == CODEC_FLAG_H263P_SLICE_STRUCT))
++				 codec->ffmpeg_id == CODEC_ID_H263P))
+ 			{
+-				avcodec_thread_init(context, file->cpus);
+ 				context->thread_count = file->cpus;
+ 			}
+ 
+diff -ur cinelerra-2.2.0-r1/quicktime/qtffmpeg.c cinelerra-2.2.0-r1.new//quicktime/qtffmpeg.c
+--- cinelerra-2.2.0-r1/quicktime/qtffmpeg.c	2012-05-22 09:35:51.482127760 +0000
++++ cinelerra-2.2.0-r1.new//quicktime/qtffmpeg.c	2012-07-12 12:16:42.619298779 +0000
+@@ -54,7 +54,6 @@
+ 	if(!ffmpeg_initialized)
+ 	{
+ 		ffmpeg_initialized = 1;
+-  		avcodec_init();
+ 		avcodec_register_all();
+ 	}
+ 
+@@ -90,10 +89,8 @@
+ 				(ffmpeg_id == CODEC_ID_MPEG4 ||
+ 			         ffmpeg_id == CODEC_ID_MPEG1VIDEO ||
+ 			         ffmpeg_id == CODEC_ID_MPEG2VIDEO ||
+-			         ffmpeg_id == CODEC_ID_H263P || 
+-			         ffmpeg_id == CODEC_FLAG_H263P_SLICE_STRUCT))
++				 ffmpeg_id == CODEC_ID_H263P))
+ 		{
+-			avcodec_thread_init(context, cpus);
+ 			context->thread_count = cpus;
+ 		}
+ 		if(avcodec_open(context, 
+@@ -182,6 +179,7 @@
+ 	if(!result) 
+ 	{ 
+ 
++	       AVPacket pkt;
+ 
+ // No way to determine if there was an error based on nonzero status.
+ // Need to test row pointers to determine if an error occurred.
+@@ -189,12 +187,13 @@
+ 			ffmpeg->decoder_context[current_field]->skip_frame = AVDISCARD_NONREF /* AVDISCARD_BIDIR */;
+ 		else
+ 			ffmpeg->decoder_context[current_field]->skip_frame = AVDISCARD_DEFAULT;
+-		result = avcodec_decode_video(ffmpeg->decoder_context[current_field], 
++		av_init_packet( &pkt );
++		pkt.data = ffmpeg->work_buffer;
++		pkt.size = bytes + header_bytes;
++		result = avcodec_decode_video2(ffmpeg->decoder_context[current_field],
+ 			&ffmpeg->picture[current_field], 
+ 			&got_picture, 
+-			ffmpeg->work_buffer, 
+-			bytes + header_bytes);
+-
++			&pkt);
+ 
+ 
+ 		if(ffmpeg->picture[current_field].data[0])
+diff -ur cinelerra-2.2.0-r1/quicktime/wma.c cinelerra-2.2.0-r1.new//quicktime/wma.c
+--- cinelerra-2.2.0-r1/quicktime/wma.c	2012-05-22 09:35:51.488791251 +0000
++++ cinelerra-2.2.0-r1.new//quicktime/wma.c	2012-07-12 12:17:39.915962345 +0000
+@@ -67,7 +67,6 @@
+ 		if(!ffmpeg_initialized)
+ 		{
+ 			ffmpeg_initialized = 1;
+-			avcodec_init();
+ 			avcodec_register_all();
+ 		}
+ 
+@@ -195,11 +194,14 @@
+ 			chunk_size);
+ #else
+ 		bytes_decoded = AVCODEC_MAX_AUDIO_FRAME_SIZE;
+-		result = avcodec_decode_audio2(codec->decoder_context,
++		AVPacket pkt;
++		av_init_packet( &pkt );
++		pkt.data = codec->packet_buffer;
++		pkt.size = chunk_size;
++		result = avcodec_decode_audio3(codec->decoder_context,
+ 			(int16_t*)(codec->work_buffer + codec->output_size * sample_size),
+ 			&bytes_decoded,
+-			codec->packet_buffer,
+-			chunk_size);
++			&pkt);
+ #endif
+ 
+ 		pthread_mutex_unlock(&ffmpeg_lock);

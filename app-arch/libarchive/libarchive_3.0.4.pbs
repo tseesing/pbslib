@@ -1,0 +1,37 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="library that can create and read several streaming archive formats"
+HOMEPAGE="http://code.google.com/p/libarchive/"
+LICENSE="BSD"
+PACKAGER="StartOS Developers"
+
+SRC_URI="https://github.com/downloads/libarchive/libarchive/"$N-$V".tar.gz"
+CHECKSUM="76e8d7c7b100ec4071e48c1b7d3f3ea1d22b39db3e45b7189f75b5ff4df90fac"
+
+RDEPEND="acl bzip2 libxml2 openssl xz"
+BDEPEND="sharutils"
+RECOMMENDED=""
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_config() {
+	config+=""
+	doconfig
+}
+
+pbs_build() {
+	domake
+}
+
+pbs_install() {
+	domkinstall
+	dodoc COPYING
+}
+

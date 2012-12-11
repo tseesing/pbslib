@@ -1,0 +1,33 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="A collection of tools to configure IEEE 802.11 wireless LAN cards"
+HOMEPAGE="http://www.hpl.hp.com/personal/Jean_Tourrilhes/Linux/Tools.html"
+LICENSE="GPL"
+PACKAGER="StartOS Developers"
+
+SRC_URI="http://www.hpl.hp.com/personal/Jean_Tourrilhes/Linux/wireless_tools."$V".tar.gz"
+
+RDEPEND="glibc"
+BDEPEND=""
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_build() {
+	domake
+}
+
+pbs_install() {
+	mkdir -p "$destdir"/usr
+	make PREFIX="$destdir"/usr install
+	cd "$destdir"
+	mv usr/lib usr/lib"$LIBDIRSUFFIX"
+	domv usr/man usr/share
+}
+

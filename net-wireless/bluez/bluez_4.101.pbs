@@ -1,0 +1,67 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="Bluetooth Tools and System Daemons for Linux"
+HOMEPAGE="http://bluez.sourceforge.net/"
+LICENSE="GPL"
+PACKAGER="StartOS Developers"
+
+SRC_URI="http://www.kernel.org/pub/linux/bluetooth/"$N-$V".tar.gz"
+CHECKSUM="fb42cb7038c380eb0e2fa208987c96ad"
+
+RDEPEND="dbus gst-plugins-base libusb-compat readline udev"
+BDEPEND=""
+RECOMMENDED=""
+
+INSTALL="$N.install"
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_patch() {
+	# allow users of wheel group to communicate with bluetoothd
+	dopatch add-wheel-group-to-confile.patch
+}
+
+pbs_config() {
+	./configure --prefix=/usr \
+	            --sysconfdir=/etc \
+	            --localstatedir=/var \
+		    --libexecdir=/lib \
+		    --enable-gstreamer \
+	            --enable-alsa \
+	            --enable-usb \
+		    --enable-tools \
+		    --enable-bccmd \
+		    --enable-dfutool \
+		    --enable-hid2hci \
+		    --enable-hidd \
+		    --enable-pand \
+		    --enable-dund \
+		    --enable-cups \
+		    --enable-wiimote \
+		    --disable-test 
+}
+
+pbs_build() {
+	domake
+}
+
+pbs_install() {
+	domkinstall
+	  
+	install -d "$destdir"/etc/bluetooth
+	install -m644 network/network.conf input/input.conf \
+		      audio/audio.conf serial/serial.conf \
+		      "$destdir"/etc/bluetooth/
+  
+	install -Dm755 test/simple-agent "$destdir"/usr/bin/bluez-simple-agent
+	install -Dm755 test/test-device "$destdir"/usr/bin/bluez-test-device
+	install -Dm755 test/test-input "$destdir"/usr/bin/bluez-test-input
+}	
+

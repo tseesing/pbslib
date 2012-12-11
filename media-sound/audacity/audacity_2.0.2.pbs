@@ -1,0 +1,40 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="Free crossplatform audio editor"
+HOMEPAGE="http://audacity.sourceforge.net/"
+LICENSE="GPL"
+PACKAGER="StartOS Developers"
+
+SRC_URI="http://audacity.googlecode.com/files/"$N"-minsrc-"$V".tar.bz2"
+CHECKSUM="c5e4058346c96713a0d39fcd6b33f27137589b06"
+
+RDEPEND="jack-audio-connection-kit libid3tag libmad soundtouch twolame wxWidgets"
+BDEPEND="ffmpeg-old"
+RECOMMENDED=""
+CONFLICT=""
+
+INSTALL="$N.install"
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_config() {
+	config+=""
+	WX_CONFIG=/usr/bin/wx-config PKG_CONFIG_PATH+="/usr/lib/ffmpeg-old/pkgconfig" \
+	doconfig
+}
+
+pbs_build() {
+	domake
+}
+
+pbs_install() {
+	domkinstall
+}
+

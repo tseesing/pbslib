@@ -1,0 +1,38 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="The GNOME Virtual File System package contains virtual file system libraries. This is used as one of the foundations of the Nautilus file manager."
+HOMEPAGE="http://www.gnome.org/"
+LICENSE="GPL-2"
+PACKAGER="StartOS Developers"
+SRC_URI="ftp://ftp.gnome.org/pub/gnome/sources/gnome-vfs/2.24/"$N-$V$R".tar.bz2"
+
+RDEPEND=""
+BDEPEND=" dbus-glib gconf gnome-mime-data"
+RECOMMENDED=""
+
+NOTES="http://wiki.linuxfromscratch.org/blfs/wiki/gnome-vfs"
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_config() {
+	
+	config+=" --prefix=$(pkg-config --variable=prefix ORBit-2.0) \
+	              --sysconfdir=/etc/gnome/2.28.2 
+		      --libexecdir=$(pkg-config --variable=prefix ORBit-2.0)/lib/gnome-vfs-2.0"
+	doconfig
+}
+
+pbs_build() {
+	domake
+}
+
+pbs_install() {
+	domkinstall
+}

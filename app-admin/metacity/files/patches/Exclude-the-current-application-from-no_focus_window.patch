@@ -1,0 +1,60 @@
+From 10c92eeae2fb4130cade27e1c2d631ef00019a2c Mon Sep 17 00:00:00 2001
+From: Owen W. Taylor <otaylor@fishsoup.net>
+Date: Wed, 23 Jun 2010 16:49:37 -0400
+Subject: [PATCH 1/2] Exclude the current application from no_focus_windows setting
+
+The idea of the no_focus_windows setting is to allow identifying
+legacy application windows that are stealing focus from other
+applications and suppress that behavior. Sometimes its not possible to
+identify specific problem windows of an application and its
+necessary to blanket add all windows of the application. In this
+case no_focus_windows can disrupt the internal flow of focus
+within the application.
+
+On the assumption that apps internally handle focus correctly
+and have been tested not to steal focus from themselves at
+annoying times, we exclude windows of the the current application
+from no_focus_windows.
+
+https://bugzilla.gnome.org/show_bug.cgi?id=599248
+---
+diff -ur metacity-2.30.3-ylmf1/src/core/window.c metacity-2.30.3-ylmf1.new//src/core/window.c
+--- metacity-2.30.3-ylmf1/src/core/window.c	2011-09-30 09:14:03.175867944 +0800
++++ metacity-2.30.3-ylmf1.new//src/core/window.c	2011-09-30 09:16:02.409199698 +0800
+@@ -1977,13 +1977,22 @@
+                      gboolean *places_on_top)
+ {
+   gboolean intervening_events;
++  MetaWindow *focus_window;
+ 
+   /* A 'no focus' window is a window that has been configured in GConf
+    * to never take focus on map; typically it will be a notification
+    * window from a legacy app that doesn't support _NET_WM_USER_TIME.
++   *
++   * This doesn't apply to applications taking focus from themselves;
++   * the assumption is applications have been properly tested to internally
++   * handle focus properly.
+    */
+-  if (meta_prefs_window_is_no_focus (window->title, window->res_class))
+-      intervening_events = TRUE;
++  focus_window = window->display->focus_window;
++   if (focus_window &&
++       !meta_window_same_application (window, focus_window) &&
++       !meta_window_same_client (window, focus_window) &&
++       meta_prefs_window_is_no_focus (window->title, window->res_class))
++       intervening_events = TRUE;
+    else
+       intervening_events = intervening_user_event_occurred (window);
+ 
+diff -ur metacity-2.30.3-ylmf1/src/metacity.schemas.in.in metacity-2.30.3-ylmf1.new//src/metacity.schemas.in.in
+--- metacity-2.30.3-ylmf1/src/metacity.schemas.in.in	2011-09-30 09:14:03.175867944 +0800
++++ metacity-2.30.3-ylmf1.new//src/metacity.schemas.in.in	2011-09-30 09:16:36.819199243 +0800
+@@ -123,6 +123,8 @@
+            WM_CLASS matches the shell-style glob pattern &lt;glob&gt;.
+            (and &lt;expr&gt; &lt;expr&gt;) (or &lt;expr&gt; &lt;expr&gt;) (not &lt;expr): Boolean combinations
+            of expressions.
++	   New windows from the current active application are unaffected by
++	   this setting.
+          </long>
+       </locale>
+     </schema>

@@ -1,0 +1,44 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="the GNU SWF Player based on GameSWF."
+HOMEPAGE="http://www.gnu.org/software/gnash/"
+LICENSE="GPL"
+PACKAGER="StartOS Developers"
+
+SRC_URI="ftp://ftp.gnu.org/gnu/"$N"/"$V"/"$N-$V".tar.bz2"
+CHECKSUM="63e9f79c41d93d48c5a2fa94856548c4"
+
+RDEPEND="agg boost-libs curl giflib gst-plugins-base gtkglext libtool"
+BDEPEND=""
+RECOMMENDED=""
+CONFLICT=""
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_patch() {
+	dopatch nodebug.patch
+	dopatch gnash-0.8.10-boost-1.50.patch
+}
+
+pbs_config() {
+	config+="--with-plugins-install=system --enable-gui=sdl,gtk,dump --enable-media=gst --enable-renderer=all --enable-device=x11"
+	./autogen.sh
+	doconfig
+}
+
+pbs_build() {
+	sed -i -e 's/ -shared / -Wl,-O1,--as-needed\0 /g' -e 's/    if test "$export_dynamic" = yes && test -n "$export_dynamic_flag_spec"; then/      func_append compile_command " -Wl,-O1,--as-needed"\n      func_append finalize_command " -Wl,-O1,--as-needed"\n\0/' libtool
+	domake
+}
+
+pbs_install() {
+	domkinstall GCONF_DISABLE_MAKEFILE_SCHEMA_INSTALL=1
+}
+

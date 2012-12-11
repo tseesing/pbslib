@@ -1,0 +1,33 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="Version 2 of an advanced replacement library for libraries like libXpm"
+HOMEPAGE="http://docs.enlightenment.org/api/imlib2/html/"
+LICENSE="GPL"
+PACKAGER="StartOS Developers"
+
+SRC_URI="http://downloads.sourceforge.net/enlightenment/"$N-$V".tar.gz"
+
+RDEPEND="bzip2 freetype giflib glibc libICE libid3tag libjpeg-turbo libpng libSM libtiff libX11 libXau libxcb libXdmcp libXext util-linux-ng zlib"
+BDEPEND=""
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_config() {
+	doconfig
+}
+
+pbs_build() {
+	domake
+}
+
+pbs_install() {
+	domkinstall
+}
+

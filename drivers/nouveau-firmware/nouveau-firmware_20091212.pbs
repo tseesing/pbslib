@@ -1,0 +1,28 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="nvidia opensource X driver - firmware needed for NV40 and above"
+HOMEPAGE="http://nouveau.freedesktop.org/"
+LICENSE="custom"
+PACKAGER="StartOS Developers"
+YARCH="any"
+
+SRC_URI="http://people.freedesktop.org/~pq/nouveau-drm/"$N-$V".tar.gz"
+
+RDEPEND=""
+BDEPEND=""
+RECOMMENDED=""
+CONFLICT=""
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_install() {
+	docp *  "$destdir"/lib/firmware/nouveau/
+}
+

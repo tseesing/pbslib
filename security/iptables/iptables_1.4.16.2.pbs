@@ -1,0 +1,52 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="Linux kernel packet control tool"
+HOMEPAGE="http://www.iptables.org/"
+LICENSE="GPL2"
+PACKAGER="StartOS Developers"
+
+SRC_URI="http://www.iptables.org/projects/"$N"/files/"$N-$V".tar.bz2"
+
+RDEPEND="glibc bash libnfnetlink"
+BDEPEND=""
+RECOMMENDED=""
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_patch() {
+	# use system
+	rm include/linux/types.h
+	dopatch 0503-extension_cppflags.patch
+}
+
+pbs_config() {
+	./configure --prefix=/usr \
+     		    --libexecdir=/usr/lib"$LIBDIRSUFFIX"/iptables \
+		    --sysconfdir=/etc \
+     		    --with-xtlibdir=/usr/lib"$LIBDIRSUFFIX"/iptables \
+     		    --enable-devel  \
+		    --enable-libipq \
+     		    --enable-shared
+}
+
+pbs_build() {
+	domake
+}
+
+pbs_install() {
+	domkinstall
+	cd "$destdir"
+	docp "$filesdir"/{empty.rules,simple_firewall.rules} etc/iptables/
+	docp "$filesdir"/empty-{filter,mangle,nat,raw,security}.rules var/lib/iptables
+
+	# install systemd files
+	dounit iptables.service ip6tables.service iptables-flush
+}
+

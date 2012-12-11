@@ -1,0 +1,38 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="Locate per-dist and per-module shared files  "
+HOMEPAGE="http://search.cpan.org/~adamk/File-ShareDir-1.03/"
+LICENSE="GPL PerlArtistic"
+PACKAGER="StartOS Developers"
+YARCH="any"
+
+SRC_URI="http://mirrors.sohu.com/CPAN/authors/id/A/AD/ADAMK/File-ShareDir-"$V".tar.gz"
+
+RDEPEND="perl"
+BDEPEND=" "
+RECOMMENDED=""
+CONFLICT=""
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_config() {
+	export PERL_MM_USE_DEFAULT=1
+	doconfig INSTALLDIRS=vendor
+}
+
+pbs_build() {
+	domake
+}
+
+pbs_install() {
+	domkinstall
+        perl_cleanup
+}
+

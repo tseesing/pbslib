@@ -1,0 +1,44 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="Media player for GNOME"
+HOMEPAGE="http://gnome.org/projects/totem/"
+LICENSE="GPL-2"
+PACKAGER="StartOS Developers"
+SRC_URI="http://ftp.gnome.org/pub/gnome/sources/$N/2.28/"$N-$V$R".tar.bz2"
+
+RDEPEND=""
+BDEPEND=" gconf gnome-doc-utils gst-plugins-good libunique shared-mime-info totem-pl-parser"
+RECOMMENDED="pygtk"
+
+NOTES="
+Ensure you built GStreamer Good Plugins with gconf support or the configure script will fail.
+libdvdcss-1.2.10 is a run-time requirement if you wish to play encrypted DVDs
+http://wiki.linuxfromscratch.org/blfs/wiki/totem
+"
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_config() {
+	
+	config+=" --prefix=$(pkg-config --variable=prefix ORBit-2.0) 
+	              --sysconfdir=/etc/gnome/2.28.2 
+		      --localstatedir=/var 
+		      --libexecdir=$(pkg-config --variable=prefix ORBit-2.0)/lib/totem 
+		      --mandir=$(pkg-config --variable=prefix ORBit-2.0)/share/man "
+	doconfig
+}
+
+pbs_build() {
+	domake
+}
+
+pbs_install() {
+	domkinstall
+}

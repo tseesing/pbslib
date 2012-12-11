@@ -1,0 +1,126 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="Linux-PAM (Pluggable Authentication Modules)"
+HOMEPAGE="https://fedorahosted.org/linux-pam/"
+LICENSE="BSD/GPL"
+PACKAGER="StartOS Developers"
+
+SRC_URI="https://fedorahosted.org/releases/l/i/linux-pam/Linux-PAM-"$V".tar.bz2"
+CHECKSUM="927ee5585bdec5256c75117e9348aa47"
+
+RDEPEND="berkeley-db"
+BDEPEND=""
+
+INSTALL="$N.install"
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_config() {
+	config=" --sysconfdir=/etc
+	         --libdir=/lib
+		 --enable-read-both-confs "
+	doconfig
+}
+
+pbs_build() {
+	domake
+}
+
+pbs_install() {
+	domkinstall
+	
+	cd "$destdir"
+	
+	# Delete files
+	rm -rf etc/environment var/run/ 2>/dev/null
+
+	# Need to be suid
+	chmod +s sbin/unix_chkpwd 
+	
+	# Create extra symlinks just in case something depends on them
+	doln  /lib/libpam.so.0 	    usr/lib/libpam.so
+	doln  /lib/libpamc.so.0	    usr/lib/libpamc.so
+	doln  /lib/libpam_misc.so.0 usr/lib/libpam_misc.so
+	
+	# Fix some missing symlinks from old pam for compatibility
+	cd lib/security
+	ln -s pam_unix.so pam_unix_acct.so
+	ln -s pam_unix.so pam_unix_auth.so
+	ln -s pam_unix.so pam_unix_passwd.so
+	ln -s pam_unix.so pam_unix_session.so
+	cd -
+
+	#
+	cat > etc/securetty << "EOF"
+console
+tty0
+tty1
+tty2
+tty3
+tty4
+tty5
+tty6
+tty7
+tty8
+tty9
+tty10
+tty11
+tty12
+ttyp0
+ttyp1
+ttyp2
+ttyp3
+ttyp4
+ttyp5
+ttyp6
+ttyp7
+ttyp8
+ttyp9
+ttyp10
+ttyp11
+ttyp12
+ttyS0
+EOF
+	# Pam will only let users login if their shell appears in /etc/shells.
+	cat > etc/shells << "EOF"
+/bin/sh
+/bin/bash
+EOF
+	#
+	install -d etc/pam.d
+
+	# 
+	cat > etc/pam.d/system-auth << "EOF"
+auth		required	pam_env.so 
+auth		required	pam_unix.so try_first_pass likeauth nullok 
+auth		optional	pam_permit.so
+ 
+account		required	pam_unix.so 
+account		optional	pam_permit.so
+   
+password	required	pam_unix.so try_first_pass nullok sha512 shadow 
+password	optional	pam_permit.so
+     
+session		required	pam_limits.so 
+session		required	pam_env.so 
+session		required	pam_unix.so 
+session		optional	pam_permit.so
+EOF
+	
+      #	 This is file explicitiy denies access to a program that is PAM aware.
+	cat > etc/pam.d/other << "EOF"
+#%PAM-1.0
+auth		required	pam_unix.so
+account		required	pam_unix.so
+password	required	pam_unix.so
+session		required	pam_unix.so
+EOF
+}
+

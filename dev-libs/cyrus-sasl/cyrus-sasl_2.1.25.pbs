@@ -1,0 +1,42 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="The Cyrus SASL (Simple Authentication and Security Layer)."
+HOMEPAGE="http://asg.web.cmu.edu/sasl/"
+LICENSE="GPL"
+PACKAGER="StartOS Developers"
+ 
+SRC_URI="ftp://ftp.andrew.cmu.edu/pub/cyrus-mail/"$N-$V".tar.gz"
+
+RDEPEND="krb5 pam"
+BDEPEND=""
+RECOMMENDED=""
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_patch() {
+	dopatch 0027_db5_support.patch
+}
+
+pbs_config() {
+	config+=" --with-plugindir=/usr/lib$LIBDIRSUFFIX
+                  --with-configdir=/usr/lib$LIBDIRSUFFIX
+		  --disable-static
+	          --with-saslauthd=/run "
+	doconfig
+}
+
+pbs_build() {
+	make 
+}
+
+pbs_install() {
+	domkinstall
+}
+

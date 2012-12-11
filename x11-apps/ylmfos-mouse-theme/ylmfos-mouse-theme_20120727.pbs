@@ -1,0 +1,39 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="StartOS default mouse theme"
+HOMEPAGE="http://www.gnome-look.org"
+LICENSE="GPL"
+PACKAGER="StartOS Developers"
+YARCH="any"
+
+SRC_URI="git://git.ylmf.com/"$N".git"
+
+RDEPEND=""
+BDEPEND="xcursorgen"
+RECOMMENDED="startos-mouse-theme"
+CONFLICT="startos-mouse-theme"
+
+INSTALL="$N.install"
+
+pbs_unpack() {
+	dounpack
+}
+
+pbs_build() {
+	git pull
+	git checkout startos
+	cd source
+	./make.sh
+}
+
+pbs_install() {
+	cd ..
+	docp cursors "$destdir"/usr/share/icons/startos
+	docp "$filesdir"/index.theme "$destdir"/usr/share/icons/startos/cursors
+}
+

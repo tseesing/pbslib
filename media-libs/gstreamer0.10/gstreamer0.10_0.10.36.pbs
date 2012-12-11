@@ -1,0 +1,40 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="GStreamer Multimedia Framework"
+HOMEPAGE="http://gstreamer.sourceforge.net"
+LICENSE="LGPL"
+PACKAGER="StartOS Developers"
+
+SRC_URI="http://gstreamer.freedesktop.org/src/gstreamer/gstreamer-"$V".tar.bz2"
+
+RDEPEND="glib2 libxml2"
+BDEPEND="gobject-introspection"
+RECOMMENDED=""
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_config() {
+	config+="--disable-static"
+	doconfig
+}
+
+pbs_build() {
+	domake
+}
+
+pbs_install() {
+	domkinstall
+	# Remove unversioned gst-* binaries to get rid of conflicts
+	cd "$destdir"/usr/bin
+	for bins in `ls *-0.10`; do
+		rm -f ${bins/-0.10/}
+	done
+}
+

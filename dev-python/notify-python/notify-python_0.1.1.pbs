@@ -1,0 +1,36 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="Python bindings for libnotify"
+HOMEPAGE="http://www.galago-project.org"
+LICENSE="GPL"
+PACKAGER="StartOS Developers"
+
+SRC_URI="http://www.galago-project.org/files/releases/source/"$N"/"$N-$V".tar.gz"
+
+RDEPEND="atk cairo dbus dbus-glib expat fontconfig freetype gcc-lib gdk-pixbuf glib2 glibc gtk+ libnotify libpng libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libXrandr libXrender pango pixman zlib"
+BDEPEND=""
+RECOMMENDED=""
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_config() {
+	# Remove the old pynotify.c to ensure it's properly regenerated #212128.
+	rm -f src/pynotify.c
+	doconfig
+}
+
+pbs_build() {
+	domake
+}
+
+pbs_install() {
+	domkinstall
+}
+

@@ -1,0 +1,10 @@
+. /usr/lib/ybs/funcs
+
+post_install() {
+	gnome2_install_schema "/etc/gconf/schemas/gedit-file-browser.schemas" "/etc/gconf/schemas/gedit.schemas"
+	gnome2_rarian_sk_update
+	gnome2_desktop_database_update
+	gnome2_icon_cache_update
+	gnome2_gconfd_reload
+}
+

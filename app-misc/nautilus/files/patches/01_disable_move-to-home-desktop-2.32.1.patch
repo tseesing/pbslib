@@ -1,0 +1,31 @@
+diff -ur nautilus-2.32.1/src/file-manager/nautilus-directory-view-ui.xml nautilus-2.32.1.new//src/file-manager/nautilus-directory-view-ui.xml
+--- nautilus-2.32.1/src/file-manager/nautilus-directory-view-ui.xml	2010-08-25 23:39:02.000000000 +0800
++++ nautilus-2.32.1.new//src/file-manager/nautilus-directory-view-ui.xml	2011-09-14 09:21:19.879038339 +0800
+@@ -69,13 +69,9 @@
+ 			<menuitem name="Rename" action="Rename"/>
+ 			<menu action="CopyToMenu">
+ 				<menuitem name="Copy to next pane" action="Copy to next pane"/>
+-				<menuitem name="Copy to Home" action="Copy to Home"/>
+-				<menuitem name="Copy to Desktop" action="Copy to Desktop"/>
+ 			</menu>
+ 			<menu action="MoveToMenu">
+ 				<menuitem name="Move to next pane" action="Move to next pane"/>
+-				<menuitem name="Copy to Home" action="Move to Home"/>
+-				<menuitem name="Copy to Desktop" action="Move to Desktop"/>
+ 			</menu>
+ 		</placeholder>
+ 		<placeholder name="Dangerous File Items Placeholder">
+@@ -165,13 +161,9 @@
+ 		<menuitem name="Rename" action="Rename"/>
+ 		<menu action="CopyToMenu">
+ 			<menuitem name="Copy to next pane" action="Copy to next pane"/>
+-			<menuitem name="Copy to Home" action="Copy to Home"/>
+-			<menuitem name="Copy to Desktop" action="Copy to Desktop"/>
+ 		</menu>
+ 		<menu action="MoveToMenu">
+ 			<menuitem name="Move to next pane" action="Move to next pane"/>
+-			<menuitem name="Copy to Home" action="Move to Home"/>
+-			<menuitem name="Copy to Desktop" action="Move to Desktop"/>
+ 		</menu>
+ 	</placeholder>
+ 	<separator name="Dangerous separator"/>

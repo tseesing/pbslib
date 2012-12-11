@@ -1,0 +1,37 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="Mesa OpenGL Utility library"
+HOMEPAGE="http://cgit.freedesktop.org/mesa/glu"
+LICENSE="LGPL"
+PACKAGER="StartOS Developers"
+
+SRC_URI="ftp://ftp.freedesktop.org/pub/mesa/"$N"/"$N-$V".tar.bz2"
+
+RDEPEND="mesa"
+RECOMMENDED=""
+BDEPEND=""
+OPTIONAL=""
+CONFLICT=""
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_config() {
+	config+="--disable-static"
+	doconfig
+}
+
+pbs_build() {
+	domake
+}
+
+pbs_install() {
+	domkinstall
+}
+

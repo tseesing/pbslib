@@ -1,0 +1,48 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="Utilities for rescue and embedded systems"
+HOMEPAGE="http://www.busybox.net/"
+LICENSE="GPL"
+PACKAGER="StartOS Developers"
+
+SRC_URI="http://busybox.net/downloads/busybox-"$V".tar.bz2"
+
+PROVIDE="busybox busybox-initramfs"
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_patch() {
+	dopatch glibc-2.16.patch
+}
+
+busybox_install() {
+	DESCRIPTION="Utilities for rescue and embedded systems (static version)."
+	RDEPEND="glibc"
+	INSTALL="$N.install"	
+
+	docp_rename "$filesdir"/config-static-"$V" .config
+	sed '1,1i#include <sys/resource.h>' -i include/libbb.h
+	
+	domake clean
+	domake
+	docp busybox "$destdir"/bin/
+}
+
+busybox-initramfs_install() {
+	DESCRIPTION="Utilities for rescue and embedded systems (for the initramfs)."
+	RDEPEND="glibc"
+	
+	docp_rename "$filesdir"/config-initramfs-"$V" .config
+	
+	domake clean
+	domake
+	docp busybox "$destdir"/usr/lib/initramfs-tools/bin/
+}
+

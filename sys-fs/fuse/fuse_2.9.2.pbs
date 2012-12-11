@@ -1,0 +1,44 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="A library that makes it possible to implement a filesystem in a userspace program."
+HOMEPAGE="http://fuse.sourceforge.net/"
+LICENSE="GPL2"
+PACKAGER="StartOS Developers"
+
+SRC_URI="http://downloads.sourceforge.net/"$N"/"$N-$V".tar.gz"
+
+RDEPEND="glibc"
+BDEPEND="pkgconfig"
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_patch() {
+	# Fix building with glibc-2.14
+	sed -i '1i#define _GNU_SOURCE' util/fusermount.c
+}
+
+pbs_config() {
+	config+="--enable-lib --enable-util"
+	doconfig
+}
+
+pbs_build() {
+	domake
+}
+
+pbs_install() {
+	domkinstall
+	cd "$destdir"
+	# For initramfs-tools
+	docp_rename "$filesdir"/hook_fuse usr/share/initramfs-tools/hooks/fuse
+	# Cleanup 
+	rm -rf etc/init.d/ dev || return 0
+}
+

@@ -1,0 +1,40 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="OpenType text shaping engine."
+HOMEPAGE="http://www.freedesktop.org/wiki/Software/HarfBuzz"
+LICENSE="MIT"
+PACKAGER="StartOS Developers"
+
+SRC_URI="http://www.freedesktop.org/software/"$N"/release/"$N-$V".tar.bz2"
+CHECKSUM="3d8dd4ebbc38da011485ef181f8ff072b4b0d7e305bbda19b355f217d25169cf"
+
+RDEPEND="gcc-lib graphite2"
+RECOMMENDED=""
+BDEPEND=""
+OPTIONAL=""
+CONFLICT=""
+REPLACE=""
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_config() {
+	config+=""
+	doconfig
+}
+
+pbs_build() {
+	domake
+}
+
+pbs_install() {
+	domkinstall
+	dodoc COPYING
+}
+

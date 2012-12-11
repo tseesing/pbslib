@@ -1,0 +1,48 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="Evolution groupware backend"
+HOMEPAGE="http://www.gnome.org/projects/evolution/"
+LICENSE="GPL-2"
+PACKAGER="StartOS Developers"
+SRC_URI="http://ftp.osuosl.org/pub/gsb/gsb-2.30_slackware-13.1/source/a/$N/"$N-$V$R".tar.bz2"
+
+RDEPEND=""
+BDEPEND=" libsoup gnome-keyring libgweather dev-libs/libical app-crypt/krb5 openldap dev-libs/nspr dev-libs/nss"
+RECOMMENDED=""
+
+NOTES=""
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_config() {
+	
+	config+=" --prefix=/usr --sysconfdir=/etc --localstatedir=/var \
+	              --mandir=/usr/share/man  \
+		       \
+		      --disable-schemas-install \
+		      --enable-ipv6 \
+		      --enable-smime=yes \
+		      --enable-gnome-keyring=yes \
+		      --enable-calendar=yes \
+		      --with-openldap \
+		      --with-krb5=/usr \
+		      --with-libdb=/usr	
+		      --with-nspr-includes=/usr/include/nspr 
+		      --with-nss-includes=/usr/include/nss "
+	doconfig
+}
+
+pbs_build() {
+	domake
+}
+
+pbs_install() {
+	domkinstall
+}

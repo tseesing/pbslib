@@ -1,0 +1,40 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="Qt4 based audio-player"
+HOMEPAGE="http://qmmp.ylsoftware.com"
+LICENSE="GPL"
+PACKAGER="StartOS Developers"
+
+SRC_URI="http://qmmp.ylsoftware.com/files/"$N-$V".tar.bz2"
+CHECKSUM="0291225447d9688fb6aa85734cda1b6e"
+
+RDEPEND="ffmpeg(>=0.11.1) curl enca faad2 libcddb libmad libmms libmodplug libmpcdec libsamplerate qt-core taglib wavpack"
+RECOMMENDED=""
+BDEPEND="cmake"
+OPTIONAL=""
+CONFLICT=""
+
+INSTALL="$N.install"
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_config() {
+	config+=""
+	doconfig
+}
+
+pbs_build() {
+	domake
+}
+
+pbs_install() {
+	domkinstall
+}
+

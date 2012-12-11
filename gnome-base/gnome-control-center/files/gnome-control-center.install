@@ -1,0 +1,17 @@
+. /usr/lib/ybs/funcs
+
+post_install() {
+	gnome2_install_schema "/etc/gconf/schemas/gnome-control-center.schemas"
+        gnome2_install_schema "/etc/gconf/schemas/control-center.schemas"
+        gnome2_install_schema "/etc/gconf/schemas/fontilus.schemas"
+        gnome2_rarian_sk_update
+        gnome2_desktop_database_update
+        gnome2_mime_database_update
+        ## Allow users to modify the list of user-specified or Favorite applications
+        gnome2_install_defaut_gconf "string" "/desktop/gnome/applications/main-menu/lock-down/user_modifiable_apps" "True"
+        ## Enable mouse clicks with tochpad
+        gnome2_install_defaut_gconf "bool" "/desktop/gnome/peripherals/touchpad/tap_to_click"  "True"
+        gnome2_install_defaut_gconf "bool" "/desktop/gnome/peripherals/touchpad/disable_while_typing" "True"
+        gnome2_icon_cache_update "hicolor"
+        gnome2_gconfd_reload
+}

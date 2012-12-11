@@ -1,0 +1,12 @@
+diff -ur smplayer-0.8.0/src/preferences.cpp smplayer-0.8.0.new//src/preferences.cpp
+--- smplayer-0.8.0/src/preferences.cpp	2012-03-19 09:49:58.000000000 +0800
++++ smplayer-0.8.0.new//src/preferences.cpp	2012-04-09 09:05:51.254764845 +0800
+@@ -203,7 +203,7 @@
+ 	font_file = "";
+ 	font_name = "";
+ 	use_fontconfig = false;
+-	subcp = "ISO-8859-1";
++	subcp = "CP936";
+ 	use_enca = false;
+ 	enca_lang = QString(QLocale::system().name()).section("_",0,0);
+ 	font_autoscale = 1;

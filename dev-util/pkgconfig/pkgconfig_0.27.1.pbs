@@ -1,0 +1,37 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="Package config system that manages compile/link flags"
+HOMEPAGE="http://pkgconfig.freedesktop.org/wiki/"
+LICENSE="GPL"
+PACKAGER="StartOS Developers"
+
+SRC_URI="http://pkgconfig.freedesktop.org/releases/pkg-config-"$V".tar.gz"
+
+RDEPEND="glibc"
+BDEPEND=""
+CONFLICT=""
+
+OPTIONS="nodev"
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_config() {
+	config+=""
+	doconfig
+}
+
+pbs_build() {
+	domake
+}
+
+pbs_install() {
+	domkinstall
+}
+

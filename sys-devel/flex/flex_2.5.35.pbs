@@ -1,0 +1,48 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="GNU lexical analyser generator"
+HOMEPAGE="http://flex.sourceforge.net/"
+LICENSE="GPL"
+PACKAGER="StartOS Developers"
+
+SRC_URI="http://prdownloads.sourceforge.net/"$N"/"$N-$V".tar.bz2"
+
+RDEPEND="glibc"
+BDEPEND=""
+
+INSTALL="$N.install"
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_config() {
+	# The following patch contains fixes to Generate proper GCC 4.4.x code
+	dopatch flex-2.5.35-gcc44-1.patch
+	doconfig
+}
+
+pbs_build() {
+	domake
+}
+
+pbs_install() {
+	domkinstall
+	dodoc COPYING
+	cd "$destdir"
+	
+	# A few programs do not know about flex yet and try to run its predecessor, lex.
+	cat >usr/bin/lex << "EOF"
+exec /usr/bin/flex -l "$@"
+EOF
+	chmod 755 usr/bin/lex
+	
+	# Some packages that expect to find the lex library in /usr/lib.
+	doln /usr/lib/ibfl.a usr/lib/libl.a
+}
+

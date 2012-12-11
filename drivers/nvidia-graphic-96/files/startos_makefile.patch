@@ -1,0 +1,22 @@
+--- a/usr/src/nv/Makefile.kbuild	2011-07-18 14:51:11.000000000 +0800
++++ b/usr/src/nv/Makefile.kbuild.new	2012-02-11 11:41:23.797743664 +0800
+@@ -282,8 +282,8 @@
+ #
+ 
+ module-install: suser-sanity-check module
+-	@mkdir -p $(MODULE_ROOT)/video; \
+-	install -m 0664 -o root -g root $(MODULE_OBJECT) $(MODULE_ROOT)/video; \
++	@mkdir -p $(DESTDIR)/$(MODULE_ROOT)/video; \
++	install -m 0664 -o root -g root $(MODULE_OBJECT) $(DESTDIR)/$(MODULE_ROOT)/video; \
+ 	PATH="$(PATH):/bin:/sbin" depmod -ae;
+ 
+ #
+@@ -293,7 +293,7 @@
+ 
+ package-install: module-install rmmod-sanity-check
+ 	PATH="$(PATH):/bin:/sbin" modprobe $(MODULE_NAME) && \
+-	echo "$(MODULE_OBJECT) installed successfully.";
++	echo "$(MODULE_OBJECT) compiled successfully.";
+ 
+ #
+ # Build an object file suitable for further processing by the installer and

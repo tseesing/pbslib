@@ -1,0 +1,36 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="A RFC 2131 compliant DHCP client"
+HOMEPAGE="http://roy.marples.name/projects/dhcpcd/"
+LICENSE="BSD"
+PACKAGER="StartOS Developers"
+
+SRC_URI="http://roy.marples.name/downloads/"$N"/"$N-$V".tar.bz2"
+
+RDEPEND="glibc"
+BDEPEND=""
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_config() {
+	config+="--dbdir=/var/lib/dhcpcd"
+	doconfig
+}
+
+pbs_build() {
+	domake
+}
+
+pbs_install() {
+	domkinstall
+	domv "$destdir"/usr/sbin "$destdir"/
+	dounit "dhcpcd.service"
+}
+

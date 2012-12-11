@@ -1,0 +1,43 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="Linux Audio Developer's Simple Plugin API (LADSPA)"
+HOMEPAGE="http://www.ladspa.org"
+LICENSE="LGPL"
+PACKAGER="StartOS Developers"
+
+SRC_URI="http://www.ladspa.org/download/"$N"_sdk_"$V".tgz"
+CHECKSUM="671be3e1021d0722cadc7fb27054628e"
+
+RDEPEND="gcc-lib"
+RECOMMENDED=""
+BDEPEND=""
+OPTIONAL=""
+CONFLICT=""
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_patch() {
+	cd src
+	dopatch hardcode-path.patch
+	sed -e 's/mkdirhier/mkdir -p/' \
+	    -e "s#-O3#${CFLAGS} ${LDFLAGS/,--as-needed/}#" \
+	    -i makefile
+}
+
+pbs_build() {
+	domake targets
+}
+
+pbs_install() {
+	domkinstall INSTALL_PLUGINS_DIR="${destdir}/usr/lib/ladspa/" \
+	            INSTALL_INCLUDE_DIR="${destdir}/usr/include/" \
+	            INSTALL_BINARY_DIR="${destdir}/usr/bin/"
+}
+

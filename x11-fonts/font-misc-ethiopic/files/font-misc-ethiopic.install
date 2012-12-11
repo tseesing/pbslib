@@ -1,0 +1,16 @@
+. /usr/lib/ybs/funcs
+
+dir="/usr/share/fonts/OTF /usr/share/fonts/TTF"
+
+post_install() {
+	dofont "$dir" 
+}
+
+post_upgrade() {
+	post_install
+}
+
+post_downgrade() {
+	post_install
+}
+

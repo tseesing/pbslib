@@ -1,0 +1,91 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="console display library"
+HOMEPAGE="http://www.gnu.org/software/ncurses/"
+LICENSE="MIT"
+PACKAGER="StartOS Developers"
+
+SRC_URI="http://ftp.gnu.org/pub/gnu/"$N"/"$N-$V".tar.gz"
+
+RDEPEND="glibc"
+BDEPEND=""
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_patch() {
+	# Patch contains updates from the 5.9 branch by the Ncurses developers
+	dopatch ncurses-5.9-branch_update-2.patch
+}
+
+pbs_config() {
+	config=" --prefix=/usr  
+                 --sysconfdir=/etc 
+                 --libdir=/usr/lib"$LIBDIRSUFFIX" 
+                 --libexecdir=/usr/lib"$LIBDIRSUFFIX" 
+                 --localstatedir=/var 
+                 --infodir=/usr/share/info 
+                 --enable-shared 
+                 --with-shared 
+                 --with-normal 
+                 --without-debug 
+                 --without-ada "
+
+	mkdir -p "$N"w-build && pushd "$N"w-build 
+	../configure $config --enable-widec	
+	domake
+	popd
+
+	# libncurses.so.5 for external binary support 
+	mkdir -p "$N"-build &&  pushd "$N"-build 
+	[ "$ARCH" = "x86_64" ] && CONFIGFLAG="--with-chtype=long"
+	../configure $config "$CONFIGFLAG"     	    
+	domake
+	popd
+}
+
+pbs_install() {
+	# Install license, rip it from the readme
+	grep -B 100 '$Id' README >license.txt
+	dodoc license.txt
+	
+	pushd "$N"w-build
+	domkinstall
+	doln /usr/lib"$LIBDIRSUFFIX"/libncursesw.so.5 "$destdir"/usr/lib"$LIBDIRSUFFIX"/libncursesw.so
+	popd
+
+	# non-widec compatibility library
+	pushd "$N"-build
+	docp lib/libncurses.so."$V"      "$destdir"/usr/lib"$LIBDIRSUFFIX"/
+	doln /usr/lib"$LIBDIRSUFFIX"/libncurses.so."$V" "$destdir"/usr/lib"$LIBDIRSUFFIX"/libncurses.so.5
+
+	cd  "$destdir"
+
+ 	# move libraries needed for boot to /lib (we call tput in initscripts)
+        doln /usr/lib"$LIBDIRSUFFIX"/libncursesw.so.5 usr/lib"$LIBDIRSUFFIX"/libncursesw.so
+
+        # Fool packages looking to link to non-wide-character ncurses libraries
+	for lib in curses ncurses form panel menu; do
+		rm -f usr/lib"$LIBDIRSUFFIX"/lib"${lib}".so
+	        echo "INPUT(-l${lib}w)" >usr/lib"$LIBDIRSUFFIX"/lib"${lib}".so
+  	        doln /usr/lib"$LIBDIRSUFFIX"/lib"${lib}"w.a usr/lib"$LIBDIRSUFFIX"/lib"${lib}".a
+	done
+	doln /usr/lib"$LIBDIRSUFFIX"/libncurses++w.a usr/lib"$LIBDIRSUFFIX"/libncurses++.a
+
+	# Some packages look for -lcurses during build
+	rm -f usr/lib"$LIBDIRSUFFIX"/libcursesw.so
+	echo "INPUT(-lncursesw)" >usr/lib"$LIBDIRSUFFIX"/libcursesw.so
+	doln /usr/lib"$LIBDIRSUFFIX"/libncurses.so usr/lib"$LIBDIRSUFFIX"/libcurses.so
+	doln /usr/lib"$LIBDIRSUFFIX"/libncursesw.a usr/lib"$LIBDIRSUFFIX"/libcursesw.a
+	doln /usr/lib"$LIBDIRSUFFIX"/libncurses.a  usr/lib"$LIBDIRSUFFIX"/libcurses.a
+
+	# Create a symlink for /usr/share/terminfo in /usr/lib for compatibility
+	doln /usr/share/terminfo usr/lib"$LIBDIRSUFFIX"/terminfo
+}
+

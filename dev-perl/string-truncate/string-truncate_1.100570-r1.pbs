@@ -1,0 +1,35 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="perl module"
+HOMEPAGE="http://search.cpan.org/~rjbs/String-Truncate-1.100570/"
+PACKAGER="StartOS Developers"
+LICENSE="GPL PerlArtistic"
+YARCH="any"
+
+SRC_URI="http://search.cpan.org/CPAN/authors/id/R/RJ/RJBS/String-Truncate-"$V".tar.gz"
+
+RDEPEND=""
+BDEPEND="sub-exporter"
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_config() {
+	doconfig
+}
+
+pbs_build() {
+	domake
+}
+
+pbs_install() {
+	domkinstall
+        perl_cleanup
+}
+

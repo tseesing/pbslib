@@ -1,0 +1,15 @@
+. /usr/lib/ybs/funcs
+
+post_install() {
+	install-catalog --add /etc/sgml/"$1-$2".cat      /usr/share/sgml/"$1-$2"/catalog
+	install-catalog --add /etc/sgml/sgml-docbook.cat /etc/sgml/"$1-$2".cat
+}
+
+post_upgraade() {
+	post_install
+}
+
+post_downgrade() {
+	post_install
+}
+

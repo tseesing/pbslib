@@ -1,0 +1,48 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="TCP/IP swiss army knife. OpenBSD variant."
+HOMEPAGE="http://packages.debian.org/sid/netcat-openbsd"
+LICENSE="bsd"
+PACKAGER="StartOS Developers"
+
+SRC_URI="http://ftp.debian.org/debian/pool/main/n/netcat-openbsd/netcat-openbsd_1.89.orig.tar.gz
+         http://ftp.debian.org/debian/pool/main/n/netcat-openbsd/netcat-openbsd_1.89-4.diff.gz"
+
+RDEPEND="glib2"
+BDEPEND=""
+RECOMMENDED=""
+CONFLICT=""
+
+pbs_unpack() {
+        dounpack
+
+}
+
+pbs_config() {
+	cp "$YBS_SOURCE"/netcat-openbsd_1.89-4.diff.gz .
+	gunzip netcat-openbsd_1.89-4.diff.gz
+	dopatch netcat-openbsd_1.89-4.diff
+	
+	cat debian/patches/series|while read i; do
+		dopatch debian/patches/"$i"
+	done
+
+	config+=""
+	doconfig
+}
+
+pbs_build() {
+	pkgrel=4
+	make CFLAGS="$CFLAGS -DDEBIAN_VERSION=\"\\\"${pkgrel}\\\"\""
+}
+
+pbs_install() {
+	docp_rename nc "$destdir"/usr/bin/nc.openbsd
+	chmod +x "$destdir"/usr/bin/nc.openbsd
+	doman nc.1
+}

@@ -1,0 +1,41 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="The GNOME menu system, implementing the F.D.O cross-desktop spec"
+HOMEPAGE="http://www.gnome.org"
+LICENSE="GPL-2"
+PACKAGER="StartOS Developers"
+ 
+SRC_URI=" http://ftp.gnome.org/pub/gnome/desktop/2.30/2.30.2/sources/"$N-$V".tar.bz2 "
+
+RDEPEND="glib2 gdk-pixbuf glibc python zlib"
+BDEPEND="gamin-dev  gnome-desktop-dev"
+RECOMMENDED=""
+
+INSTALL="$N.install"
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_config() {
+	config+="--enable-introspection=no --enable-python"
+	doconfig
+}
+
+pbs_build() {
+	domake
+}
+
+pbs_install() {
+	domkinstall
+	# Add webapps
+	cd "$destdir"
+	dodesktop "webapps.desktop" "webapps.png"
+	docp $filesdir/webapps.directory usr/share/desktop-directories/
+	docp $filesdir/webapps.menu      etc/xdg/menus/applications-merged/
+}

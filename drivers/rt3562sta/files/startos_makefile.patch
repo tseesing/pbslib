@@ -1,0 +1,21 @@
+diff -ur rt3562sta-2.4.1.1/os/linux/Makefile.6 rt3562sta-2.4.1.1.new//os/linux/Makefile.6
+--- rt3562sta-2.4.1.1/os/linux/Makefile.6	2010-12-17 19:44:47.000000000 +0800
++++ rt3562sta-2.4.1.1.new//os/linux/Makefile.6	2011-11-03 14:39:01.278951488 +0800
+@@ -255,12 +255,11 @@
+ endif
+ 
+ install:
+-	rm -rf $(DAT_PATH)
+-	$(shell [ ! -f /etc/Wireless ] && mkdir /etc/Wireless)
+-	mkdir $(DAT_PATH)
+-	cp $(RT28xx_DIR)/$(DAT_FILE_NAME) $(DAT_PATH)/.
+-	install -d $(LINUX_SRC_MODULE)
+-	install -m 644 -c $(addsuffix .ko,$(MOD_NAME)) $(LINUX_SRC_MODULE)
++	mkdir -p $(DESTDIR)/etc/Wireless
++	mkdir -p $(DESTDIR)/$(DAT_PATH)
++	cp $(RT28xx_DIR)/$(DAT_FILE_NAME) $(DESTDIR)/$(DAT_PATH)/.
++	install -d $(DESTDIR)/$(LINUX_SRC_MODULE)
++	install -m 644 -c $(addsuffix .ko,$(MOD_NAME)) $(DESTDIR)/$(LINUX_SRC_MODULE)
+ 	/sbin/depmod -a ${shell uname -r}
+ 
+ uninstall:

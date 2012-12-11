@@ -1,0 +1,58 @@
+    - Use webbrowser module instead of desktop.py from emesene to open
+      local html files, as desktop.py will use gnome-open for GNOME which
+      uses gnome-vfs, which since 1:2.22.0-4 makes text/* a subgroup of
+      text/plain, making them being opened with a text editor instead of
+      the browser. LP: #241765.
+      For Lenny+1, if upstream doesn't change this code, it could be
+      possible to just switch desktop.py to use gvfs-open.
+
+
+--- a/plugins_base/LibNotify.py
++++ b/plugins_base/LibNotify.py
+@@ -21,6 +21,7 @@
+ 
+ import Plugin
+ import desktop
++import webbrowser
+ from emesenelib.common import escape
+ from emesenelib.common import unescape
+ from Parser import PangoDataType
+@@ -221,7 +222,7 @@
+ 
+         elif execute == 'mail':
+             def openMail(notification, action):
+-                desktop.open(self.controller.hotmail.getLoginPage\
++                webbrowser.open(self.controller.hotmail.getLoginPage\
+                     (data[0], data[1], data[2]))
+             notification.add_action('default', 'Open Mail', openMail)
+ 
+--- a/plugins_base/Notification.py
++++ b/plugins_base/Notification.py
+@@ -696,7 +696,7 @@
+         self.controller.newConversation(None, params[0], params[1], True)
+ 
+     def openMail(self, params):
+-        desktop.open(self.controller.hotmail.getLoginPage\
++        webbrowser.open(self.controller.hotmail.getLoginPage\
+                 (params[0], params[1], params[2]))
+ 
+     def start(self):
+--- a/UserPanel.py
++++ b/UserPanel.py
+@@ -22,6 +22,7 @@
+ import pango
+ 
+ import desktop
++import webbrowser
+ import Widgets
+ import FancyLabel
+ import StatusMenu
+@@ -320,7 +321,7 @@
+             self.controller.setMediaEnabled(False)
+             
+     def onMaiButtonClicked(self, *args):
+-        desktop.open(self.controller.hotmail.getLoginPage())
++        webbrowser.open(self.controller.hotmail.getLoginPage())
+         
+ class BaseImageButton:
+     def __init__(self, icon, string=None):

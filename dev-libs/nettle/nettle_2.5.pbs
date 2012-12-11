@@ -1,0 +1,39 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="Low-level cryptographic library"
+HOMEPAGE="http://www.lysator.liu.se/~nisse/nettle"
+LICENSE="GPL2"
+PACKAGER="StartOS Developers"
+
+SRC_URI="ftp://ftp.lysator.liu.se/pub/security/lsh/"$N-$V".tar.gz"
+CHECKSUM="d66882e6ad31a9f651b73d7a1a93bd4c"
+
+RDEPEND="gmp"
+BDEPEND=""
+
+INSTALL="$N.install"
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_config() {
+	config+=""
+	doconfig
+}
+
+pbs_build() {
+	domake
+}
+
+pbs_install() {
+	domkinstall
+	# Remove static libs
+	rm -f "$destdir"/usr/lib/{libhogweed,libnettle}.a
+}
+

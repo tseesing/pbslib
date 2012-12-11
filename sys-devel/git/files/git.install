@@ -1,0 +1,16 @@
+. /usr/lib/ybs/funcs
+
+post_install() {
+	getent group git >/dev/null || groupadd --system git
+	getent passwd git >/dev/null || useradd --system -c 'git daemon user' -g git -d / -s /bin/bash git
+}
+
+post_remove() {
+	getent passwd git >/dev/null && userdel git
+  	getent group git >/dev/null && groupdel git || true
+}
+
+post_upgrade() {
+	post_install
+}
+

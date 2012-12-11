@@ -1,0 +1,36 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="Library that provides generic access to USB device, replace libusb"
+HOMEPAGE="http://libusb.org/"
+LICENSE="LGPL"
+PACKAGER="StartOS Developers"
+
+SRC_URI="http://downloads.sourceforge.net/"$N"/"$N-$V".tar.bz2"
+CHECKSUM="0a6a75edb4b4eae7dc82c1dd71ddc470"
+
+RDEPEND="glibc"
+BDEPEND=""
+REPLACE="libusb"
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_config() {
+	config+="--disable-static"
+	doconfig
+}
+
+pbs_build() {
+	domake
+}
+
+pbs_install() {
+	domkinstall
+}
+

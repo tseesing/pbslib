@@ -1,0 +1,40 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="Multitouch Protocol Translation Library"
+HOMEPAGE="http://bitmath.org/code/mtdev"
+LICENSE="custom:MIT"
+PACKAGER="StartOS Developers"
+
+SRC_URI="http://bitmath.org/code/"$N"/"$N-$V".tar.bz2"
+CHECKSUM=""
+
+RDEPEND="glibc"
+RECOMMENDED=""
+BDEPEND=""
+OPTIONAL=""
+CONFLICT=""
+REPLACE=""
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_config() {
+	config+="--disable-static"
+	doconfig
+}
+
+pbs_build() {
+	domake
+}
+
+pbs_install() {
+	domkinstall
+	dodoc COPYING
+}
+

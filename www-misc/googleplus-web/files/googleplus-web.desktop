@@ -1,0 +1,11 @@
+#!/usr/bin/env xdg-open
+
+[Desktop Entry]
+Name=googleplus-web
+Name[zh_CN]=Google+
+Type=Application
+Exec=xdg-open --app="https://plus.google.com/"
+TryExec=xdg-open
+Icon=googleplus-web
+Comment[zh_CN]=在线演绎现实生活
+Categories=Network;

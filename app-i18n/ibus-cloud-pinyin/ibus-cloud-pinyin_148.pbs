@@ -1,0 +1,40 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="Pinyin input method based on web pinyin services and ibus"
+HOMEPAGE="http://code.google.com/p/ibus-cloud-pinyin/"
+LICENSE="GPL"
+PRIORITY=""
+PACKAGER="StartOS Developers"
+GROUP="ibus"
+
+# svn checkout http://ibus-cloud-pinyin.googlecode.com/svn/trunk/ ibus-cloud-pinyin
+SRC_URI="ibus-cloud-pinyin-svn-148.tar.bz2"
+CHECKSUM="9b2feaaa4e5ffd2266f2db841fabc516"
+
+RDEPEND="lua ibus luasocket atk sqlite libnotify libgee"
+BDEPEND=""
+RECOMMENDED=""
+CONFLICT=""
+
+pbs_unpack() {
+	dounpack
+}
+
+pbs_config() {
+	config+=""
+	doconfig
+}
+
+pbs_build() {
+	domake
+}
+
+pbs_install() {
+	domkinstall
+}
+

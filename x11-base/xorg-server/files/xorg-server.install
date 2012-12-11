@@ -1,0 +1,42 @@
+. /usr/lib/ybs/funcs
+
+case "$ARCH" in
+    i?86) dir="/usr/lib/xorg/modules/extensions/" ;;
+  x86_64) dir="/usr/lib64/xorg/modules/extensions/"
+esac
+
+# restore libglx for nvidia/ati graphic cards drivers
+# 
+restore() {
+	cd "$dir"
+	# Classic libglx
+	[ -f libglx.so-pkg.xorg-server ] && ln -sf libglx.so-pkg.xorg-server libglx.so
+	# ATI
+	if [ -f fglrx/fglrx-libglx.so ]; then
+		if lspci |grep VGA |grep -q "ATI Technologies"; then
+			lspci |grep VGA |grep -q "Intel Corporation" || ln -sf fglrx/fglrx-libglx.so libglx.so
+		fi	
+	fi
+	# nVidia
+	if [ -f libglx.so.27* ]; then
+		if lspci |grep VGA |grep -q "nVidia"; then
+			lspci |grep VGA |grep -q "Intel Corporation" ||	ln -sf libglx.so.27* libglx.so
+		fi
+	fi
+
+	return 0
+}
+
+post_install() {
+	dolibtool_finish "$dir"
+	restore
+}
+
+post_upgrade() {
+	post_install
+}
+
+post_downgrade() {
+	post_install
+}
+

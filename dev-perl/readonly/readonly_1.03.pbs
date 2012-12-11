@@ -1,0 +1,38 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="Facility for creating read-only scalars, arrays, hashes."
+HOMEPAGE="http://search.cpan.org/~roode/Readonly-1.03/"
+LICENSE="GPL PerlArtistic"
+PACKAGER="StartOS Developers"
+YARCH="any"
+
+SRC_URI="http://cpan.communilink.net/authors/id/R/RO/ROODE/Readonly-"$V".tar.gz"
+
+RDEPEND="perl"
+BDEPEND=" "
+RECOMMENDED=""
+CONFLICT=""
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_config() {
+	export PERL_MM_USE_DEFAULT=1
+	doconfig INSTALLDIRS=vendor
+}
+
+pbs_build() {
+	domake
+}
+
+pbs_install() {
+	domkinstall
+        perl_cleanup
+}
+

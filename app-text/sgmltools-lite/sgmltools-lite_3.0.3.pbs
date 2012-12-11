@@ -1,0 +1,44 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="Python interface to SGML software in a DocBook/OpenJade env"
+HOMEPAGE="http://sgmltools-lite.sourceforge.net/"
+LICENSE="GPL"
+PACKAGER="StartOS Developers"
+YARCH="any"
+ 
+SRC_URI="http://downloads.sourceforge.net/project/"$N"/"$N"/"$V"/"$N-$V".tar.gz"
+
+RDEPEND=""
+BDEPEND="openjade"
+RECOMMENDED=""
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_config() {
+	find . -name CVS | xargs rm -rf
+	doconfig
+}
+
+pbs_build() {
+	domake
+}
+
+pbs_install() {
+	make install
+        docp bin/sgmltools bin/buildcat bin/gensgmlenv bin/sgmlwhich "$destdir"/usr/bin
+	docp dsssl/*.dsl dsssl/*.cat "$destdir"/usr/share/sgml/stylesheets/sgmltools
+	docp dtd/[a-z]*  "$destdir"/usr/share/sgml/dtd/sgmltools
+	docp man/sgmltools-lite.1 "$destdir"/usr/share/man/man1
+	docp python/*.py "$destdir"/usr/share/sgml/misc/sgmltools/python
+	docp python/backends/*.py "$destdir"/usr/share/sgml/misc/sgmltools/python/backends
+	docp catalog.rh62 catalog.suse aliases "$destdir"/etc/sgml
+	docp VERSION "$destdir"/usr/share/sgml/misc/sgmltools
+}
+

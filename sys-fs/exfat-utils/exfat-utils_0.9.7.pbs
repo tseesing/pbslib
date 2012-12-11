@@ -1,0 +1,30 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="Utilities for exFAT file system"
+HOMEPAGE="http://code.google.com/p/exfat/"
+LICENSE="GPL"
+PACKAGER="StartOS Developers"
+
+SRC_URI="http://exfat.googlecode.com/files/"$N-$V".tar.gz"
+CHECKSUM="1bd94db19fc556701b16a66f6291b4ca"
+
+RDEPEND="glibc"
+RECOMMENDED=""
+BDEPEND="scons"
+OPTIONAL=""
+CONFLICT=""
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_install() {
+	scons CCFLAGS="${CFLAGS}" LINKFLAGS="${LDFLAGS} " install DESTDIR="${destdir}/sbin"
+	doman dump/dumpexfat.8 fsck/exfatfsck.8 mkfs/mkexfatfs.8 label/exfatlabel.8 
+}
+

@@ -1,0 +1,38 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="the globally-shared menu bar of all applications launched in your desktop session."
+HOMEPAGE="http://code.google.com/p/gnome2-globalmenu/"
+LICENSE="GPL"
+PACKAGER="StartOS Developers"
+
+SRC_URI="http://gnome2-globalmenu.googlecode.com/files/"$N-$V".tar.bz2"
+
+RDEPEND="gnome-panel"
+BDEPEND=""
+RECOMMENDED=""
+CONFLICT=""
+
+INSTALL="$N.install"
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_config() {
+	config+="--without-xfce4-panel --disable-schemas-install"
+	doconfig
+}
+
+pbs_build() {
+	domake
+}
+
+pbs_install() {
+	domkinstall
+}
+

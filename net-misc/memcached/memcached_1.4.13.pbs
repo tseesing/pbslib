@@ -1,0 +1,38 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="High-performance, distributed memory object caching system"
+COMMENTS="memcached is a high-performance, distributed memory object caching system, generic in nature, but intended for use in speeding up dynamic web applications by alleviating database load."
+HOMEPAGE="http://code.google.com/p/memcached/"
+LICENSE="New BSD License"
+PACKAGER="StartOS Developers"
+
+SRC_URI="http://memcached.googlecode.com/files/"$N-$V".tar.gz"
+CHECKSUM="d9a48d222de53a2603fbab6156d48d0e8936ee92"
+
+RDEPEND="libevent"
+RECOMMENDED="perl"
+BDEPEND=""
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_config() {
+	config+=""
+	doconfig
+}
+
+pbs_build() {
+	domake
+}
+
+pbs_install() {
+	domkinstall
+	docp scripts/memcached-tool "$destdir"/usr/bin/
+}
+

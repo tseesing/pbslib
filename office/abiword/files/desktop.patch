@@ -1,0 +1,9 @@
+diff -u -r abiword-2.8.4/abiword.desktop abiword-2.8.4.new/abiword.desktop
+--- abiword-2.8.4/abiword.desktop	2010-04-15 05:50:18.000000000 +0800
++++ abiword-2.8.4.new/abiword.desktop	2011-04-18 19:40:34.937284358 +0800
+@@ -32,3 +32,5 @@
+ Comment[pl]=Edytor tekstu AbiWord
+ Name[ja]=AbiWord ワードプロセッサ
+ Comment[ja]=AbiWord ワードプロセッサ
++Name[zh_CN]=AbiWord 文字处理
++Comment[zh_CN]=一个免费且快速的全功能文字处理程序,界面与MS Word非常的相似.

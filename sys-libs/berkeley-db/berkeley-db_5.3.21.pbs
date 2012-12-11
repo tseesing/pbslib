@@ -1,0 +1,43 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="Berkeley Data base library"
+HOMEPAGE="http://www.oracle.com/technology/software/products/berkeley-db/index.html"
+LICENSE="custom"
+PACKAGER="StartOS Developers"
+
+SRC_URI="http://download.oracle.com/"$N"/db-"$V".tar.gz"
+CHECKSUM="32e43c4898c8996750c958a90c174bd116fcba83"
+
+RDEPEND="gcc-lib"
+BDEPEND=""
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_config() {
+	cd build_unix
+	config+=" --enable-compat185 
+	          --enable-cxx
+		  --enable-dbm
+		  --enable-shared 
+		  --enable-static"
+	../dist/configure $config
+}
+
+pbs_build() {
+	domake LIBSO_LIBS=-lpthread
+}
+
+pbs_install() {
+	domkinstall docdir=/usr/share/doc/db/
+	dodoc ../LICENSE
+	rm -rf "$destdir"/usr/share/doc/db/
+}
+
+

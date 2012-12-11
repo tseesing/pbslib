@@ -1,0 +1,49 @@
+Description: Revert and change some avatar roaming code.
+ This seems to fix a bug in roaming profile: avatars were not stored.
+ http://emesene.svn.sourceforge.net/viewvc/emesene?view=revision&revision=2451
+Index: emesene-1.6.3/Controller.py
+===================================================================
+--- emesene-1.6.3.orig/Controller.py	2010-07-18 04:23:03.166283000 +0200
++++ emesene-1.6.3/Controller.py	2010-07-18 04:23:39.890283000 +0200
+@@ -382,9 +382,9 @@
+         sys.excepthook = self.except_hook_dialog
+ 
+         # FIXME: strange issue with avatars
+-        self.changeAvatar(self.config.user['avatarPath'],initial=True)
++        self.changeAvatar(self.config.user['avatarPath'],initial=False)
+         self.mainWindow.buildInterface('userlist')
+-        self.changeAvatar(self.config.user['avatarPath'],initial=True)
++        self.changeAvatar(self.config.user['avatarPath'],initial=False)
+         
+         layout = self.config.user['conversationLayout']
+         if not self.conversationLayoutManager.load(layout):
+Index: emesene-1.6.3/emesenelib/ProfileManager.py
+===================================================================
+--- emesene-1.6.3.orig/emesenelib/ProfileManager.py	2010-07-18 04:24:00.574283000 +0200
++++ emesene-1.6.3/emesenelib/ProfileManager.py	2010-07-18 04:25:54.710283000 +0200
+@@ -187,7 +187,7 @@
+                     delta = date2 - date1
+                 else:
+                     delta = date1 - date2
+-                newAvatar = (delta.seconds > 10 or delta.seconds < -10)
++                newAvatar = (delta.seconds > 25 or delta.seconds < -25)
+             except:
+                 newAvatar = True
+ 
+@@ -270,7 +270,7 @@
+         #print "DP:", len(data), stat, reas
+         fd, fn = tempfile.mkstemp(prefix='emsnpic')
+         os.write(fd, data)
+-        initial = True
++        initial = False
+         self.emit('self-dp-changed', fn, initial)
+         
+         return False
+@@ -340,7 +340,6 @@
+                 seconds = str(date.second)
+ 
+             self.config.user['avatarDate'] = "".join((year,"-",month,"-",day,"T",hour,":",minutes,":",seconds))
+-
+             try:
+                 document_rid = response.body.split('</CreateDocumentResult>')[0].split('<CreateDocumentResult>')[1]
+                 soap.requests.create_relationships(self.proxy, self.affinityCache, self.rid, \

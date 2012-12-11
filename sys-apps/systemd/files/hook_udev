@@ -1,0 +1,44 @@
+#!/bin/sh -e
+# initramfs hook for udev
+
+MINKVER="2.6.24"
+PREREQ=""
+
+# Output pre-requisites
+prereqs()
+{
+	echo "$PREREQ"
+}
+
+case "$1" in
+    prereqs)
+	prereqs
+	exit 0
+	;;
+esac
+
+
+. /usr/share/initramfs-tools/hook-functions
+
+# We use pkill
+copy_exec /usr/bin/pkill /sbin
+
+# Copy across the udev binaries
+copy_exec /usr/bin/udevadm /usr/bin/
+copy_exec /usr/bin/udevd  /usr/bin/
+
+# Copy udev configuration
+mkdir -p ${DESTDIR}/etc/udev
+cp -p /etc/udev/udev.conf ${DESTDIR}/etc/udev
+
+# Only copy across relevant rules
+mkdir -p ${DESTDIR}/usr/lib/udev/rules.d
+for rules in 50-udev-default.rules 60-persistent-storage.rules \
+          64-device-mapper.rules 80-drivers.rules \
+          95-udev-late.rules; do
+	cp -p /usr/lib/udev/rules.d/$rules ${DESTDIR}/usr/lib/udev/rules.d
+done
+
+copy_exec /usr/lib/udev/ata_id /usr/lib/udev
+copy_exec /usr/lib/udev/scsi_id /usr/lib/udev
+

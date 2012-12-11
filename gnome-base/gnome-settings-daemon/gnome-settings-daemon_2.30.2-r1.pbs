@@ -1,0 +1,50 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="Gnome Settings Daemon"
+HOMEPAGE="http://www.gnome.org"
+REPO="stable"
+LICENSE="GPL-2"
+PACKAGER="StartOS Developers"
+
+SRC_URI="http://ftp.gnome.org/pub/gnome/desktop/2.30/2.30.2/sources/"$N-$V".tar.bz2" 
+
+RDEPEND="atk cairo dbus dbus-glib expat fontconfig freetype gcc-lib gconf glib2 gdk-pixbuf glibc gnome-desktop gtk+ libgnomekbd libICE libnotify libpng libSM libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libxkbfile libxklavier libxml2 libXrandr libXrender orbit pango pixman startup-notification util-linux-ng zlib"
+BDEPEND="kbproto"
+RECOMMENDED=""
+
+INSTALL="$N.install"
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_config() {
+	patches="01_xrdb.patch
+		 02_missing_libs.patch
+		 03_maintainer_mode.patch
+		 10_clipboard_crash.patch
+		 11_retry-startup.patch
+		 12_monitor_network_fs.patch
+		 13_monitor_kfreebsd.patch
+		 20_gstreamer.patch
+		 30_pkgconfig-path.patch
+		 70_relibtoolize.patch
+		 99_ltmain_as-needed.patch"
+	dopatch $patches
+	config+="--disable-schemas-install 
+		     --with-dbus-sys=/etc/dbus-1/system.d"
+	doconfig
+}
+
+pbs_build() {
+	domake
+}
+
+pbs_install() {
+	domkinstall
+}

@@ -1,0 +1,35 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="Python bindings for sys-apps/parted"
+HOMEPAGE="https://fedorahosted.org/pyparted/"
+LICENSE="GPL"
+PACKAGER="StartOS Developers"
+
+SRC_URI="https://fedorahosted.org/releases/p/y/"$N"/"$N-$V".tar.gz"
+
+RDEPEND="device-mapper glibc parted python udev util-linux-ng"
+BDEPEND="decorator"
+RECOMMENDED=""
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_config() {
+	sed -i -e 's/-avoid-version/& -shared /' src/Makefile.am 
+	doconfig
+}
+
+pbs_build() {
+	domake
+}
+
+pbs_install() {
+	domkinstall
+}
+

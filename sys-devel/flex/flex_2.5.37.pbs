@@ -1,0 +1,38 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="A tool for generating text-scanning programs"
+HOMEPAGE="http://flex.sourceforge.net/"
+LICENSE="custom"
+PACKAGER="StartOS Developers"
+
+SRC_URI="http://downloads.sourceforge.net/sourceforge/"$N"/"$N-$V".tar.bz2"
+
+RDEPEND="glibc m4"
+BDEPEND=""
+
+INSTALL="$N.install"
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_config() {
+	config+=""
+	doconfig
+}
+
+pbs_build() {
+	domake
+}
+
+pbs_install() {
+	domkinstall
+	dodoc COPYING
+	docp "$filesdir"/lex "$destdir"/usr/bin/
+}
+

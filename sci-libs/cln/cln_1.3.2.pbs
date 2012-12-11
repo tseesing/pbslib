@@ -1,0 +1,36 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="Class library for numbers"
+HOMEPAGE="http://www.ginac.de/CLN/"
+LICENSE="GPL"
+PACKAGER="StartOS Developers"
+
+SRC_URI="http://www.ginac.de/CLN/"$N-$V".tar.bz2"
+CHECKSUM="d897cce94d9c34d106575ed4ec865d71"
+
+RDEPEND="gmp"
+RECOMMENDED=""
+CONFLICT=""
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_config() {
+	config+=""
+	doconfig
+}
+
+pbs_build() {
+	domake all html #pdf
+}
+
+pbs_install() {
+	domkinstall install-html #install-pdf
+}
+

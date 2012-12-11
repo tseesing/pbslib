@@ -1,0 +1,36 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="A powerful light-weight programming language designed for extending applications"
+HOMEPAGE="http://www.lua.org/docs.html"
+LICENSE="MIT"
+PACKAGER="StartOS Developers"
+ 
+SRC_URI="http://www.lua.org/ftp/"$N-$V".tar.gz"
+
+RDEPEND="readline"
+BDEPEND=""
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_patch () {
+	dopatch lua-arch.patch
+}
+
+pbs_build() {
+	[ "$ARCH" == "x86_64" ] && export CFLAGS="$CFLAGS -fPIC"
+	domake linux
+}
+
+pbs_install() {
+	domkinstall INSTALL_TOP="$destdir"/usr 
+	dodoc COPYRIGHT
+}
+
+

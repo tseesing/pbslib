@@ -1,0 +1,38 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="A Functional Constraint Library"
+HOMEPAGE="http://www.recherche.enac.fr/opti/facile"
+LICENSE="LGPL"
+PACKAGER="StartOS Developers"
+
+SRC_URI="http://www.recherche.enac.fr/opti/"$N"/distrib/"$N-$V".tar.gz"
+CHECKSUM="ab673e1fc0859a42bcb639a02c2d7e9e"
+
+RDEPEND=""
+RECOMMENDED=""
+BDEPEND="ocaml"
+OPTIONAL=""
+CONFLICT=""
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_config() {
+	./configure
+}
+
+pbs_build() {
+	make
+}
+
+pbs_install() {
+	cd src
+	docp facile.cmxa facile.cmi facile.cma facile.a "$destdir"/usr/lib/ocaml/facile
+}
+

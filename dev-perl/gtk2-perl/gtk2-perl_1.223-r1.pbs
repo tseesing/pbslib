@@ -1,0 +1,37 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="Perl interface to the 2.x series of the Gimp Toolkit library"
+HOMEPAGE="http://search.cpan.org/~flora/Gtk2-1.223/Gtk2.pm"
+PACKAGER="StartOS Developers"
+LICENSE="GPL PerlArtistic"
+
+SRC_URI="http://search.cpan.org/CPAN/authors/id/F/FL/FLORA/Gtk2-"$V".tar.gz"
+
+RDEPEND="pango-perl"
+BDEPEND="extutils-depends extutils-pkgconfig"
+RECOMMENDED=""
+CONFLICT=""
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_config() {
+	export PERL_MM_USE_DEFAULT=1
+	doconfig INSTALLDIRS=vendor
+}
+
+pbs_build() {
+	domake
+}
+
+pbs_install() {
+	domkinstall
+        perl_cleanup
+}
+

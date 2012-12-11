@@ -1,0 +1,33 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="an application for users to find and set wallpaper for their desktop"
+HOMEPAGE="http://www.lovebizhi.com/linux.html"
+LICENSE="custom"
+PACKAGER="StartOS Developers"
+
+SRC_URI="http://s.qdcdn.com/lovebizhi/LoveWallpaper4Linux.deb"
+CHECKSUM="add60be6cb39a6aaafb401affb60c83a"
+
+RDEPEND="pyside xdotool notify-python python"
+RECOMMENDED=""
+BDEPEND=""
+OPTIONAL=""
+CONFLICT=""
+REPLACE=""
+
+DESKTOPFILE="love-wallpaper.desktop"
+ICONFILE="love-wallpaper.png"
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_install() {
+	docp data/*  "$destdir"
+}
+

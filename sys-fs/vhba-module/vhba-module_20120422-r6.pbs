@@ -1,0 +1,46 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="VHBA module provides Virtual (SCSI) Host Bus Adapter for the cdemu suite"
+HOMEPAGE="http://cdemu.org"
+LICENSE="GPL"
+PACKAGER="StartOS Developers"
+
+SRC_URI="http://sourceforge.net/projects/cdemu/files/"$N"/"$N-$V".tar.bz2"
+CHECKSUM="d97372da1d270d1605742b2995fb6678"
+
+PROVIDE="vhba-module-source vhba-module-driver"
+
+pbs_unpack() {
+        dounpack
+}
+
+vhba-module-source_install() {
+	DESCRIPTION="VHBA module provides Virtual (SCSI) Host Bus Adapter for the cdemu suite (source)."
+	RECOMMENDED="build-essential"
+	OPTIONS="nodev"
+	YARCH="any"
+	
+	INSTALL="$N.install"
+
+	dosrc *
+}
+
+vhba-module-driver_install() {
+	DESCRIPTION="VHBA module provides Virtual (SCSI) Host Bus Adapter for the cdemu suite (kernel module)."
+	RDEPEND="linux-kernel(=3.4.6-r2)"
+	BDEPEND="linux-kernel-headers"
+	GROUP="driver"
+	CONFLICT="vhba-module"
+
+	INSTALL="$N.install"
+	unset ARCH
+	
+	domake
+	docp vhba.ko "$destdir"/lib/modules/"3.4.6-r2"/extra/
+}
+

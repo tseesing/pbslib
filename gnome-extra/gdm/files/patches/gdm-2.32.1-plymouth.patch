@@ -1,0 +1,145 @@
+diff -ruN gdm-2.32.1.orig/daemon/gdm-server.c gdm-2.32.1/daemon/gdm-server.c
+--- gdm-2.32.1.orig/daemon/gdm-server.c	2011-02-18 11:27:53.000000000 +0800
++++ gdm-2.32.1/daemon/gdm-server.c	2011-11-16 10:23:56.944013457 +0800
+@@ -38,7 +38,13 @@
+ #include <sys/prctl.h>
+ #endif
+ 
++#include <sys/ioctl.h>
++#include <linux/vt.h>
++#include <sys/types.h>
++#include <pwd.h>
++
+ #include <glib.h>
++#include <errno.h>
+ #include <glib/gi18n.h>
+ #include <glib/gstdio.h>
+ #include <glib-object.h>
+@@ -256,7 +262,7 @@
+ 
+ static gboolean
+ gdm_server_resolve_command_line (GdmServer  *server,
+-                                 const char *vtarg,
++                                 const char *vtarg, // 终端号, 可为null
+                                  int        *argcp,
+                                  char     ***argvp)
+ {
+@@ -673,6 +679,99 @@
+         return ret;
+ }
+ 
++/* -------------- for plymouth  smoothly translate to gdm ------start------ */
++/* the function below copy from fedora's gdm plymouth.patch */
++static gboolean
++plymouth_is_running (void)
++{
++        int      status;
++        gboolean res;
++        GError  *error;
++
++        error = NULL;
++        res = g_spawn_command_line_sync ("/bin/plymouth --ping",
++                                         NULL, NULL, &status, &error);
++        if (! res) {
++                g_debug ("Could not ping plymouth: %s", error->message);
++                g_error_free (error);
++                return FALSE;
++        }
++
++        return WIFEXITED (status) && WEXITSTATUS (status) == 0;
++}
++
++static gboolean
++gdm_first_running (void)
++{
++	int file_fd;
++	struct passwd *gdm_user_stru;
++
++	if ((file_fd = open("/var/run/gdm/firstrun.pid", O_RDWR | O_CREAT | O_EXCL)) < 0)
++	{
++	  if( errno == EEXIST || errno == EACCES )/* 这样判断似乎欠佳 */
++	      return 0; /* 文件存在, 非首次运行, 返回1 */
++	}
++	else
++	{
++	    if( (gdm_user_stru = getpwnam("gdm")) )
++	      {
++	        fchown(file_fd, gdm_user_stru->pw_uid, gdm_user_stru->pw_gid);
++	      }
++	    close(file_fd);
++	    return 1;
++	}
++	return 0; /* 对抗脾气火爆的gcc, 抑制警告 */
++
++}
++
++static char * get_active_vt(void)
++{
++  struct vt_stat vt_st_info;
++  int vt_no, vt_fd;
++
++  if ((vt_fd = open("/dev/tty0", O_RDONLY | O_NOCTTY)) < 0)
++    {
++      perror("open tty0 ");
++      fprintf(stderr, "Use default tty7\n");
++      vt_no = 7;
++    }
++  else
++    {
++      if (ioctl(vt_fd, VT_GETSTATE, &vt_st_info) == -1)
++        {
++          perror("ioctl() get VTSTATE ");
++          fprintf(stderr, "Use default tty7\n");
++          vt_no = 7;
++        }
++      else
++        vt_no = vt_st_info.v_active;
++
++      close(vt_fd);
++    }
++
++  return g_strdup_printf("vt%d", vt_no);
++
++}
++
++/* the function below is copy from fedora's gdm plymouth.patch */
++static void
++plymouth_quit_with_transition (GdmServer *server)
++{
++        gboolean res;
++        GError  *error;
++
++        error = NULL;
++        res = g_spawn_command_line_sync ("/bin/plymouth quit --retain-splash",
++                                         NULL, NULL, NULL, &error);
++        if ( !res ) {
++                g_warning ("Could not quit plymouth: %s", error->message);
++                g_error_free (error);
++        }
++      server->priv->command = g_strdup (X_SERVER " -nr -verbose");
++}
++
++/*   ----------for plymouth --> gdm smooth transition----end---------  */
++
+ /**
+  * gdm_server_start:
+  * @disp: Pointer to a GdmDisplay structure
+@@ -684,9 +783,17 @@
+ gdm_server_start (GdmServer *server)
+ {
+         gboolean res;
++        gboolean how_gdm_do;
++
++        how_gdm_do = plymouth_is_running();
++        if(how_gdm_do)
++          {
++            plymouth_quit_with_transition(server);
++          }
++        how_gdm_do = gdm_first_running() && how_gdm_do;
+ 
+         /* fork X server process */
+-        res = gdm_server_spawn (server, NULL);
++        res = gdm_server_spawn (server, how_gdm_do ? get_active_vt() : NULL);
+ 
+         return res;
+ }

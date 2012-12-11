@@ -1,0 +1,17 @@
+diff -u -r claws-mail-3.7.8/claws-mail.desktop claws-mail-3.7.8.new/claws-mail.desktop
+--- claws-mail-3.7.8/claws-mail.desktop	2007-03-22 05:03:15.000000000 +0800
++++ claws-mail-3.7.8.new/claws-mail.desktop	2011-04-18 19:55:01.665283964 +0800
+@@ -1,11 +1,13 @@
+ [Desktop Entry]
+ Encoding=UTF-8
+ Name=Claws Mail
++Name[zh_CN]=Claws 邮件客户端
+ Exec=claws-mail
+ Icon=claws-mail
+ Info="Claws Mail"
+ Categories=GTK;Network;Email;
+ Comment="Gtk+ based Mail Client"
++Comment=基于 gtk+ 的邮件客户端
+ Terminal=false
+ Type=Application
+ StartupNotify=true
