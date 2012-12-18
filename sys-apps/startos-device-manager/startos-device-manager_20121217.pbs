@@ -24,11 +24,14 @@ DESKTOPFILE="ydm.desktop"
 INSTALL="$N.install"
 
 pbs_unpack() {
-        dounpack
+	dounpack
+}
+
+pbs_patch() {
+	git pull
 }
 
 pbs_config() {
-	git pull
 	doconfig
 }
 

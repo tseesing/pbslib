@@ -14,7 +14,7 @@ GROUP="base"
 
 SRC_URI="git://git.ylmf.com/software-center.git"
 
-RDEPEND="polkit(>=0.102) ypkg2(>=20121121) dbus-glib gtk+ json-glib udev"
+RDEPEND="polkit(>=0.102) ypkg2(>=20121207) dbus-glib gtk+ json-glib udev webkitgtk(>=1.6.3)"
 BDEPEND=""
 RECOMMENDED="app-desktop app-logo"
 REPLACE="ylmfos-software-center ypki"
@@ -27,21 +27,26 @@ pbs_unpack() {
 	dounpack
 }
 
+pbs_patch() {
+	#git checkout NoComments
+	#git pull
+	git checkout master
+	git pull
+}	
+
 pbs_config() {
 	config+=""
 	doconfig
 }
 
 pbs_build() {
-	make LDFLAGS=-lcurl 
+	make #LDFLAGS=-lcurl 
 }
 
 pbs_install() {
 	domkinstall
 	cd "$destdir"
 	docp usr/share/icons/hicolor/48x48/apps/softwarecenter.png usr/share/pixmaps/
-	
-	#
 	docp "$filesdir"/ypk-thumbnailer usr/bin/
 	docp "$filesdir"/{ypk-package.xml,ypk-thumbnailer.schemas} usr/share/softwarecenter/
 	docp "$filesdir"/{default.png,template.png} usr/share/pixmaps/ypk-package-installer/

@@ -1,0 +1,31 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="New multimedia player with brilliant and tweakful UI."
+HOMEPAGE="http://www.linuxdeepin.com/"
+LICENSE="GPL"
+PACKAGER="StartOS Developers"
+
+SRC_URI="http://packages.linuxdeepin.com/deepin/pool/main/d/"$N"/"$N"_1+git"$V"_all.deb"
+CHECKSUM=""
+
+RDEPEND="python deepin-ui(>=201211141021) mplayer scipy qhull chardet formencode gst-python pyquery"
+RECOMMENDED=""
+BDEPEND=""
+OPTIONAL=""
+CONFLICT=""
+
+INSTALL="$N.install"
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_install() {
+	docp data/* "$destdir"/
+}
+

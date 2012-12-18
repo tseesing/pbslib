@@ -13,6 +13,7 @@ PRIORITY="required"
 GROUP="base"
 
 SRC_URI="git://git.ylmf.com/"$N".git"
+#SRC_URI="file:///root/gits-ylmf.com/ypkg2"
 
 RDEPEND="libarchive(>=3.0.4) curl libpcre sqlite" 
 BDEPEND=""

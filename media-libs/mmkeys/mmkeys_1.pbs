@@ -1,0 +1,43 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="Multimedia key support as a PyGTK object"
+HOMEPAGE="http://sacredchao.net/~piman/software/python.shtml"
+LICENSE="GPL"
+PACKAGER="StartOS Developers"
+
+SRC_URI="http://sacredchao.net/~piman/software/"$N-$V".tar.gz"
+CHECKSUM="f3a377523d2f3d7129af2c48e4c20716"
+
+RDEPEND="pygtk"
+RECOMMENDED=""
+BDEPEND=""
+OPTIONAL=""
+CONFLICT=""
+REPLACE=""
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_build() {
+	# fix python path and cflags
+	PYTHON_INCLUDE_PATH=`python2-config --includes | awk '{print $2}' | sed 's!-I!!'`
+	sed -i -e "s!/usr/include/python2.3/!${PYTHON_INCLUDE_PATH}!g" \
+	       -e "s!\(CFLAGS = .*\)!\1 -fPIC!g" Makefile
+	make mmkeys.so
+}
+
+pbs_install() {
+	# install module
+	PYTHON_LIBS_VERSION=`python2-config --libs | awk '{print $5}' | sed 's!-l!!'`
+	docp mmkeys.so "$destdir"/usr/lib/"$PYTHON_LIBS_VERSION"/site-packages/
+}
+
+
+
+
