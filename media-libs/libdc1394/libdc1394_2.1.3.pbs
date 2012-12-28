@@ -8,7 +8,7 @@
 DESCRIPTION="Library to interface with IEEE 1394 cameras following the IIDC specification"
 HOMEPAGE="http://sourceforge.net/projects/libdc1394/"
 LICENSE="LGPL"
-PACKAGER="StartOS Developers"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
 SRC_URI="http://downloads.sourceforge.net/"$N"/"$N-$V".tar.gz"
 CHECKSUM="d8b2cbfae1b329fdeaa638da80427334"
@@ -21,7 +21,7 @@ CONFLICT=""
 REPLACE=""
 
 pbs_unpack() {
-        dounpack
+    dounpack
 }
 
 pbs_patch() {

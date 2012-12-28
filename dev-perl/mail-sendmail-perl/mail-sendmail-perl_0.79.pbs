@@ -7,8 +7,8 @@
 
 DESCRIPTION="Perl/CPAN Module Mail::Sendmail : Simple platform independent mailer"
 HOMEPAGE="http://search.cpan.org/~mivkovic/Mail-Sendmail/"
-PACKAGER="StartOS Developers"
-LICENSE="GPL PerlArtistic"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
+LICENSE="GPL,PerlArtistic"
 YARCH="any"
 
 SRC_URI="http://www.cpan.org/authors/id/M/MI/MIVKOVIC/Mail-Sendmail-"$V".tar.gz"

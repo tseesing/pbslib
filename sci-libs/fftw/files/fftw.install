@@ -1,6 +1,6 @@
 . /usr/lib/ybs/funcs
 
-files="fftw3.info"
+files="fftw3.info.gz"
 
 post_install() {
 	doinstall_info $files 
@@ -14,6 +14,3 @@ post_upgrade() {
 	post_install
 }
 
-post_downgrade() {
-	post_install
-}

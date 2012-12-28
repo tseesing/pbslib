@@ -1,12 +1,9 @@
 . /usr/lib/ybs/funcs
 
-_shares="/var/lib/samba/usershares"
+_shares="/var/lib${LIBDIRSUFFIX}/samba/usershares"
 
 post_install() {
-	dogroupadd -r "nobody" -g 65534
-	douseradd -c "nobody users" -d "/dev/null" -s "/bin/false" -r -N "nobody"
-	dogroupadd -r "sambashare"
-	dogroupadd -r "users"
+	dogroupadd -r "sambashare" -g 124
 	
 	# Systemd unit
 	for i in winbind.service smbd.service nmbd.service; do
@@ -34,9 +31,6 @@ pre_remove() {
 }
 
 post_remove() {
-	douserdel  "nobody"
-	dogroupdel "nobody"
-	dogroupdel "users"
 	dogroupdel "sambashare"  
 
 	rm -rf "$_shares" 2>/dev/null  || return 0

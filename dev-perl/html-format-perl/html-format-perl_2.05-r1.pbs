@@ -7,8 +7,8 @@
 
 DESCRIPTION="HTML Formatter"
 HOMEPAGE="http://search.cpan.org/~nigelm/HTML-Format-2.05/"
-PACKAGER="StartOS Developers"
-LICENSE="GPL PerlArtistic"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
+LICENSE="GPL,PerlArtistic"
 
 SRC_URI="http://search.cpan.org/CPAN/authors/id/N/NI/NIGELM/HTML-Format-"$V".tar.gz"
 

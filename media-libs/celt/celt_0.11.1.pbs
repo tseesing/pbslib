@@ -7,8 +7,8 @@
 
 DESCRIPTION="CELT is a very low delay audio codec designed for high-quality communications."
 HOMEPAGE="http://www.celt-codec.org/"
-LICENSE="GPL"
-PACKAGER="StartOS Developers"
+LICENSE="BSD"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
 SRC_URI="http://downloads.xiph.org/releases/"$N"/"$N-$V".tar.gz"
 
@@ -18,11 +18,11 @@ BDEPEND=""
 CONFLICT=""
 
 pbs_unpack() {
-        dounpack
+    dounpack
 }
 
 pbs_config() {
-	config+=""
+	config+="--enable-custom-modes"
 	doconfig
 }
 
@@ -32,5 +32,6 @@ pbs_build() {
 
 pbs_install() {
 	domkinstall
+    dodoc COPYING
 }
 

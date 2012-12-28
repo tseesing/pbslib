@@ -7,8 +7,8 @@
 
 DESCRIPTION="Audio compression format designed for speech."
 HOMEPAGE="http://www.speex.org"
-LICENSE="GPL"
-PACKAGER="StartOS Developers"
+LICENSE="BSD"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
 SRC_URI="http://downloads.xiph.org/releases/"$N"/"$N-$V"rc1.tar.gz"
 
@@ -18,7 +18,7 @@ RECOMMENDED=""
 CONFLICT=""
 
 pbs_unpack() {
-        dounpack
+    dounpack
 }
 
 pbs_config() {
@@ -32,5 +32,6 @@ pbs_build() {
 
 pbs_install() {
 	domkinstall
+    dodoc COPYING
 }
 

@@ -13,11 +13,17 @@ YARCH="any"
 
 SRC_URI="http://tango.freedesktop.org/releases/"$N-$V".tar.gz"
 
+OPTIONS="nodev"
+
 RDEPEND="xml-simple"
 BDEPEND=""
 
 pbs_unpack() {
-        dounpack
+    dounpack
+}
+
+pbs_patch() {
+    dopatch remove-legacy-calc.patch
 }
 
 pbs_config() {

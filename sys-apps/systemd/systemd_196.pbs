@@ -6,11 +6,6 @@
 #
 
 DESCRIPTION="A system and service manager for Linux, compatible with SysV and LSB init scripts."
-COMMENTS="Systemd provides aggressive parallelization capabilities, uses socket and D-Bus 
-activation for starting services, offers on-demand starting of daemons, keeps track of processes 
-using Linux cgroups, supports snapshotting and restoring of the system state, maintains mount 
-and automount points and implements an elaborate transactional dependency-based service control 
-logic. It can work as a drop-in replacement for sysvinit."
 HOMEPAGE="http://freedesktop.org/wiki/Software/systemd"
 LICENSE="GPL2,LGPL2.1,MIT"
 PACKAGER="StartOS Developers "
@@ -24,18 +19,15 @@ RECOMMENDED=""
 INSTALL="$N-$V.install"
 
 pbs_unpack() {
-        dounpack
-}
-
-pbs_patch() {
-	:
-	#dopatch configure-add-distro-44.patch
-	#dopatch add-rc-local.patch
+    dounpack
 }
 
 pbs_config() {
-	config+="--with-distro=arch"
-		#--with-rootprefix=/ "
+	config+="--enable-introspection 
+             --enable-gtk-doc 
+             --disable-audit 
+             --disable-ima 
+             --with-distro=arch"
 	doconfig
 }
 
@@ -45,20 +37,21 @@ pbs_build() {
 
 pbs_install() {
 	domkinstall
+    # add back tmpfiles.d/legacy.conf
+    install -m644 tmpfiles.d/legacy.conf "$destdir"/usr/lib/tmpfiles.d/
 	cd "$destdir"
 	#
 	mkdir -p run
-
 	# Wrapper of systemctl scripts
 	docp "$filesdir"/{start,stop,status,restart,reload} usr/bin/
-
+    #
+    printf "d /run/console 0755 root root\n" >usr/lib/tmpfiles.d/console.conf
 	# Default modules.conf
 	cat > etc/modules-load.d/modules.conf <<"EOF"
 # This file contains the names of kernel modules that should be loaded
 # at boot time, one per line. Lines beginning with "#" are ignored.
 
 EOF
-
 	# Make systemlink 
 	doln /usr/lib/systemd/systemd bin/systemd
 	doln /usr/lib/systemd/systemd sbin/init
@@ -66,16 +59,13 @@ EOF
 	for i in halt poweroff reboot runlevel shutdown telinit; do
 		doln  /usr/bin/systemctl  sbin/"${i}" 	
 	done
-	
 	# For initramfs
 	docp_rename "$filesdir"/hook_udev        usr/share/initramfs-tools/hooks/udev
 	docp_rename "$filesdir"/init-top_udev    usr/share/initramfs-tools/scripts/init-top/udev
 	docp_rename "$filesdir"/nfs-top_udev     usr/share/initramfs-tools/scripts/nfs-top/udev
 	docp_rename "$filesdir"/init-bottom_udev usr/share/initramfs-tools/scripts/init-bottom/udev
-
 	# Extra rules for udev
 	docp "$filesdir"/{64-device-mapper.rules,78-graphics-card.rules} usr/lib/udev/rules.d
-
 	# Install devices dirs for udev
 	UDEVDHOME="usr/lib/udev/devices"
 	install -d "$UDEVDHOME"/{pts,shm}}
@@ -85,10 +75,10 @@ EOF
 	doln /proc/self/fd/1 "$UDEVDHOME"/stdout
 	doln /proc/self/fd/2 "$UDEVDHOME"/stderr
 	doln /proc/kcore     "$UDEVDHOME"/core
-
 	# Make systemlink for udev	
 	doln /usr/lib/systemd/systemd-udevd usr/bin/udevd
-	
+    # get rid of RPM macros
+    rm -r etc/rpm
 	# Misc
 	docp "$filesdir"/udlfb.conf etc/modprobe.d/
 	ln -sf /proc/self/mounts etc/mtab

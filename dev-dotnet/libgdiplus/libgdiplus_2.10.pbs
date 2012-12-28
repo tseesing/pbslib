@@ -8,9 +8,10 @@
 DESCRIPTION="An Open Source Implementation of the GDI+ API"
 HOMEPAGE="http://www.mono-project.com"
 LICENSE="MPL,LGPL"
-PACKAGER="StartOS Developers"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
-SRC_URI="http://ftp.novell.com/pub/mono/sources/"$N"/"$N-$V".tar.bz2"
+SRC_URI="http://download.mono-project.com/sources/$N/$N-$V.tar.bz2"
+CHECKSUM="451966e8f637e3a1f02d1d30f900255d"
 
 RDEPEND="cairo giflib libexif libtiff"
 BDEPEND=""
@@ -18,7 +19,11 @@ RECOMMENDED=""
 CONFLICT=""
 
 pbs_unpack() {
-        dounpack
+    dounpack
+}
+
+pbs_patch() {
+    dopatch libpng15.patch
 }
 
 pbs_config() {

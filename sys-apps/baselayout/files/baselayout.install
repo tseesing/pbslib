@@ -1,4 +1,3 @@
-. /usr/lib/ybs/funcs
 
 pre_install() {
 	local file
@@ -104,6 +103,18 @@ EOF
 root:x:0:0:root:/root:/bin/bash
 nobody:x:99:99:Unprivileged User:/dev/null:/bin/false
 games:x:36:35:games:/usr/games:/bin/sh
+EOF
+	fi
+
+	if [ ! -f /etc/ld.so.conf ];then
+		cat >/etc/ld.so.conf <<"EOF"
+#
+# /etc/ld.so.conf
+#
+
+include /etc/ld.so.conf.d/*.conf
+
+# End of file
 EOF
 	fi
 

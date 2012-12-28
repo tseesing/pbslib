@@ -41,6 +41,6 @@ pbs_install() {
 	domkinstall
 	doman tar.1
 	# Conflict against cpio
-	mv "$destdir"/usr/lib"$LIBDIRSUFFIX"/rmt{,-tar}
+	mv "$destdir"/usr/libexec/rmt{,-tar}
 }
 

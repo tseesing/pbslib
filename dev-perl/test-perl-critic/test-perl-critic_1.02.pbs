@@ -7,8 +7,8 @@
 
 DESCRIPTION="Use Perl::Critic in test programs"
 HOMEPAGE="http://search.cpan.org/~thaljef/Test-Perl-Critic-1.02/"
-LICENSE="GPL PerlArtistic"
-PACKAGER="StartOS Developers"
+LICENSE="GPL,PerlArtistic"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 YARCH="any"
 
 SRC_URI="http://mirrors.sohu.com/CPAN/authors/id/T/TH/THALJEF/Test-Perl-Critic-"$V".tar.gz"

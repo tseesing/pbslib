@@ -7,8 +7,8 @@
 
 DESCRIPTION="Class that represents an HTML form element "
 HOMEPAGE="http://search.cpan.org/~gaas/HTML-Form-6.00/lib/HTML/Form.pm"
-PACKAGER="StartOS Developers"
-LICENSE="GPL PerlArtistic"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
+LICENSE="GPL,PerlArtistic"
 
 SRC_URI="http://search.cpan.org/CPAN/authors/id/G/GA/GAAS/HTML-Form-"$V".tar.gz"
 

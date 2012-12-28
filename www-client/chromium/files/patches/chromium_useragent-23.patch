@@ -1,0 +1,11 @@
+--- webkit/user_agent/user_agent_util.cc	2012-12-05 10:01:16.000000000 +0800
++++ webkit/user_agent/user_agent_util.cc.new	2012-12-26 00:33:48.640896819 +0800
+@@ -169,7 +169,7 @@
+   std::string user_agent;
+   base::StringAppendF(
+       &user_agent,
+-      "Mozilla/5.0 (%s) AppleWebKit/%d.%d (KHTML, like Gecko) %s Safari/%d.%d",
++      "Mozilla/5.0 (%s) AppleWebKit/%d.%d (KHTML, like Gecko) StartOS/6.0 %s Safari/%d.%d",
+       os_info.c_str(),
+       WEBKIT_VERSION_MAJOR,
+       WEBKIT_VERSION_MINOR,

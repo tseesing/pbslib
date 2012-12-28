@@ -1,0 +1,61 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="Terminal Emulator for X Windows"
+HOMEPAGE="http://invisible-island.net/xterm/xterm.html"
+LICENSE="custom"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
+
+SRC_URI="ftp://invisible-island.net/"$N"/"$N-$V".tgz"
+CHECKSUM="0e4385e66d40b5dd6017d02c3db2a4af"
+
+RDEPEND="libXaw libXft ncurses"
+BDEPEND=""
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_config() {
+	config+="--with-app-defaults=/usr/share/X11/app-defaults
+             --with-x 
+             --disable-full-tgetent 
+             --disable-imake 
+             --enable-ansi-color 
+             --enable-88-color 
+             --enable-256-color 
+             --enable-broken-osc 
+             --enable-broken-st 
+             --enable-load-vt-fonts 
+             --enable-i18n 
+             --enable-wide-chars
+             --enable-doublechars 
+             --enable-warnings 
+             --enable-tcap-query 
+             --enable-logging 
+             --enable-dabbrev 
+             --enable-freetype 
+             --enable-luit 
+             --enable-mini-luit 
+             --enable-narrowproto 
+             --enable-exec-xterm 
+             --with-tty-group=tty 
+             --with-utempter"
+	doconfig
+}
+
+pbs_build() {
+	domake
+}
+
+pbs_install() {
+	domkinstall
+    docp {xterm,uxterm}.desktop "$destdir"/usr/share/applications/
+    chmod 0755 "$destdir"/usr/bin/xterm
+}
+
+

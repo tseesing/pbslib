@@ -1,0 +1,38 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="Geocode Helper library"
+HOMEPAGE="http://www.gnome.org"
+LICENSE="LGPLv2"
+PACKAGER="chenqixing@ivali.com"
+
+SRC_URI="http://ftp.acc.umu.se/pub/GNOME/sources/$N/${V%.*}/${N}-${V}.tar.bz2"
+CHECKSUM="a14a64491d2e542f708aa0a4fd4467799c300d4caa10b958fa6b6bbe8e84c36e"
+
+RDEPEND="json-glib libsoup"
+BDEPEND=""
+RECOMMENDED=""
+
+INSTALL="$N.install"
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_config() {
+	config+=""
+	doconfig
+}
+
+pbs_build() {
+	domake
+}
+
+pbs_install() {
+	domkinstall
+    dodoc COPYING.LIB AUTHORS ChangeLog NEWS README
+} 

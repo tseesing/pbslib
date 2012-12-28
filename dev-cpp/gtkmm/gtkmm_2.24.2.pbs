@@ -1,0 +1,36 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="C++ interface for GTK+2"
+HOMEPAGE="http://www.gtkmm.org"
+LICENSE="LGPL"
+PACKAGER="StartOS Developers"
+ 
+SRC_URI="http://ftp.gnome.org/pub/gnome/sources/"$N"/${V%.*}/"$N-$V".tar.xz"
+
+RDEPEND="atkmm gtk2 pangomm"
+BDEPEND="" 
+RECOMMENDED=""
+ALIAS="gtkmm2"
+
+pbs_unpack() {
+    dounpack
+}
+
+pbs_config() {
+	config+="--disable-documentation"
+	doconfig
+}
+
+pbs_build() {
+	domake
+}
+
+pbs_install() {
+	domkinstall
+}
+

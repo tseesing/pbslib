@@ -7,8 +7,8 @@
 
 DESCRIPTION="Patches text with given patch "
 HOMEPAGE="http://search.cpan.org/~cade/Text-Patch-1.8/"
-LICENSE="GPL PerlArtistic"
-PACKAGER="StartOS Developers"
+LICENSE="GPL,PerlArtistic"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 YARCH="any"
 
 SRC_URI="http://mirrors.xmu.edu.cn/CPAN/authors/id/C/CA/CADE/Text-Patch-"$V".tar.gz"

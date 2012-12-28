@@ -1,0 +1,76 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="Tools to access a server's filespace and printers via SMB"
+HOMEPAGE="http://www.samba.org"
+LICENSE="GPLv3"
+PACKAGER="chenqixing@ivali.com
+          Zhongxin Huang <huangzhongxin@ivali.com>"
+
+SRC_URI="http://us1.samba.org/$N/ftp/stable/${N}-${V}.tar.gz"
+
+RDEPEND="glibc cups berkeley-db popt acl libcap pam gamin openldap readline talloc tdb popt krb5 e2fsprogs openldap gnutls(>=2.4.1)"
+
+BDEPEND="gnutls(>=2.4.1) cups acl openldap libcap krb5 pam gamin talloc tdb"
+RECOMMENDED=""
+CONFLICT=""
+
+INSTALL="$N.install"
+
+NOTES="nobody and sambashare users and groups created automatically."
+
+pbs_unpack() {
+    dounpack
+}
+
+pbs_config() {
+	cd source3
+	config+=" --with-piddir=/var/run/samba
+              --with-configdir=/etc/samba
+ 	          --with-fhs
+              --with-ads
+              --with-automount
+              --with-quotas
+              --with-pam
+              --with-pam_smbpass
+              --with-libsmbclient
+              --with-automount
+              --enable-cups
+              --disable-dnssd
+              --disable-avahi
+              --with-acl-support
+              --with-syslog
+              --enable-external-libtalloc
+              --with-codepagedir=/usr/lib${LIBDIRSUFFIX}/samba
+              --with-pammodulesdir=/usr/lib${LIBDIRSUFFIX}/security
+              --with-shared-modules=idmap_ad,idmap_adex,idmap_rid,idmap_hash,idmap_tdb2
+              --enable-external-libtdb"
+	doconfig
+}
+
+pbs_build() {
+	domake
+}
+
+pbs_install() {
+	domkinstall install-everything
+	dounit nmbd.service smbd.service winbind.service
+
+	cd "$destdir"
+
+	docp "$filesdir"/smb.conf etc/samba/
+	
+	# For cups share
+	doln /usr/bin/smbspool usr/lib${LIBDIRSUFFIX}/cups/backend/smb
+	
+	install -d -m777 var/spool/samba
+	install -d var/log/samba
+
+	# Clean up
+	find . -name "*.old" -type f -exec rm {} \; 2>/dev/null
+}
+

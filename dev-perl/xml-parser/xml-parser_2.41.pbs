@@ -7,7 +7,7 @@
 
 DESCRIPTION="A Perl extension interface to James Clark's XML parser, expat"
 HOMEPAGE="http://search.cpan.org/~msergeant/"
-PACKAGER="StartOS Developers"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 LICENSE="GPL,PerlArtistic"
 
 SRC_URI="http://search.cpan.org/CPAN/authors/id/T/TO/TODDR/XML-Parser-"$V".tar.gz"
@@ -16,7 +16,7 @@ RDEPEND="perl expat"
 BDEPEND=""
 
 pbs_unpack() {
-        dounpack
+    dounpack
 }
 
 pbs_config() {
@@ -29,6 +29,6 @@ pbs_build() {
 
 pbs_install() {
 	domkinstall
-        perl_cleanup
+    perl_cleanup
 }
 

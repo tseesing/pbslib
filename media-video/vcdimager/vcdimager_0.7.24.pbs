@@ -8,7 +8,7 @@
 DESCRIPTION="GNU VCDimager"
 HOMEPAGE="http://www.gnu.org/software/vcdimager/"
 LICENSE="GPL"
-PACKAGER="StartOS Developers"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
 SRC_URI="ftp://ftp.gnu.org/gnu/"$N"/"$N-$V".tar.gz"
 
@@ -20,7 +20,11 @@ CONFLICT=""
 INSTALL="$N.install"
 
 pbs_unpack() {
-        dounpack
+    dounpack
+}
+
+pbs_patch() {
+    dopatch vcdimager-0.7.24-libcdio-0.83.patch
 }
 
 pbs_config() {
@@ -35,3 +39,4 @@ pbs_build() {
 pbs_install() {
 	domkinstall
 }
+

@@ -1,0 +1,54 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="IEEE 802.1X/WPA supplicant for secure wireless transfers"
+HOMEPAGE="http://hostap.epitest.fi/wpa_supplicant/"
+LICENSE="GPL"
+PACKAGER="StartOS Developers"
+
+SRC_URI="http://w1.fi/releases/"$N-$V".tar.gz"
+
+RDEPEND="dbus libnl openssl readline"
+BDEPEND=""
+RECOMMENDED=""
+
+NOTES="
+If this is a clean installation of wpa_supplicant, you
+have to create a configuration file named
+/etc/wpa_supplicant/wpa_supplicant.conf
+An example configuration file is available for reference in
+/usr/share/doc/"$N"
+"
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_patch() {
+    # From Archlinux: Patch for libnl3
+	dopatch hostap_allow-linking-with-libnl-3.2.patch
+}
+
+pbs_config() {
+    cd "$N"
+	cp "$filesdir"/config .config
+    sed -i 's/\/usr\/local/$(PREFIX)/g' Makefile
+}
+
+pbs_build() {
+    domake  PREFIX=/usr
+}
+
+pbs_install() {
+    make PREFIX=/usr DESTDIR="$destdir" install
+    docp wpa_supplicant.conf "$destdir"/etc/"$N"/
+    doman doc/docbook/*.5 doc/docbook/*.8 
+    docp dbus/{fi.epitest.hostap.WPASupplicant.service,fi.w1.wpa_supplicant1.service} "$destdir"/usr/share/dbus-1/system-services/
+	docp_rename dbus/dbus-wpa_supplicant.conf "$destdir"/etc/dbus-1/system.d/wpa_supplicant.conf
+	dounit systemd/*.service
+}
+

@@ -6,7 +6,7 @@
 #
 
 DESCRIPTION=" Telepathy connection manager providing libpurple supported protocols. "
-HOMEPAGE=" http://developer.pidgin.im/wiki/Telepathy"
+HOMEPAGE="http://developer.pidgin.im/wiki/Telepathy"
 LICENSE="GPL"
 PACKAGER="StartOS Developers"
 
@@ -18,7 +18,7 @@ BDEPEND=""
 RECOMMENDED=""
 
 pbs_unpack() {
-        dounpack
+    dounpack
 }
 
 pbs_config() {

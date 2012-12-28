@@ -1,7 +1,6 @@
-. /usr/lib/ybs/funcs
 
 post_install() {
-	gnome2_icon_cache_update
+    gtk-update-icon-cache -q -f /usr/share/icons/hicolor
 }
 
 post_upgrade() {

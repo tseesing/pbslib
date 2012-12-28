@@ -8,7 +8,7 @@
 DESCRIPTION="An open-source audio fingerprint by MusicIP"
 HOMEPAGE="http://code.google.com/p/musicip-libofa/"
 LICENSE="GPL,custom"
-PACKAGER="StartOS Developers"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
 SRC_URI="http://musicip-libofa.googlecode.com/files/"$N-$V".tar.gz"
 CHECKSUM="51507d2c4b432bd2755f48d58471696e"
@@ -20,12 +20,13 @@ OPTIONAL=""
 CONFLICT=""
 
 pbs_unpack() {
-        dounpack
+    dounpack
 }
 
 pbs_patch() {
-	dopatch gcc-4.patch gcc4.3.patch gcc4.5.patch
-	dopatch libofa-0.9.3-curl-7.21.patch
+	dopatch gcc-4.patch gcc4.3.patch gcc4.5.patch \
+            libofa-0.9.3-curl-7.21.patch \
+            libofa-0.9.3-gcc-4.7.patch
 }
 
 pbs_config() {

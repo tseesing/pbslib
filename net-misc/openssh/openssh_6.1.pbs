@@ -18,18 +18,18 @@ BDEPEND=""
 INSTALL="$N.install"
 
 pbs_unpack() {
-        dounpack
+    dounpack
 }
 
 pbs_config() {
-	config+=" --sysconfdir=/etc/ssh
-		  --with-ldns
-		  --with-libedit 
-		  --with-ssl-engine 
-		  --with-pam 
-		  --with-privsep-user=nobody 
-		  --with-md5-passwords 
-		  --with-pid-dir=/run "
+	config+="--sysconfdir=/etc/ssh
+	   	     --with-ldns
+		     --with-libedit 
+		     --with-ssl-engine 
+		     --with-pam 
+		     --with-privsep-user=nobody 
+		     --with-md5-passwords 
+		     --with-pid-dir=/run"
 	doconfig
 }
 
@@ -43,7 +43,7 @@ pbs_install() {
 	docp contrib/{findssl.sh,ssh-copy-id} "$destdir"/usr/bin/
 	doman contrib/ssh-copy-id.1
 	cd "$destdir"
-	docp_rename "$filesdir"/sshd.pam etc/pam.d/sshd
+	docp "$filesdir"/sshd etc/pam.d/
 	dounit sshdgenkeys.service sshd.service sshd.socket sshd@.service
 	sed -e '/^#ChallengeResponseAuthentication yes$/c ChallengeResponseAuthentication no' \
 	    -e '/^#UsePAM no$/c UsePAM yes' \

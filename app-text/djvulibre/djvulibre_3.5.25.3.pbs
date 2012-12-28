@@ -8,7 +8,7 @@
 DESCRIPTION="Suite to create, manipulate and view DjVu documents"
 HOMEPAGE="http://djvu.sourceforge.net/"
 LICENSE="GPL"
-PACKAGER="StartOS Developers"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
 SRC_URI="http://downloads.sourceforge.net/project/djvu/DjVuLibre/3.5.25/"$N-$V".tar.gz"
 
@@ -19,7 +19,7 @@ BDEPEND=""
 INSTALL="$N.install"
 
 pbs_unpack() {
-        dounpack
+    dounpack
 }
 
 pbs_config() {

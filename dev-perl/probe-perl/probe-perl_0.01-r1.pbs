@@ -7,8 +7,8 @@
 
 DESCRIPTION="Perl module Probe-Perl"
 HOMEPAGE="http://search.cpan.org/~kwilliams/Probe-Perl-0.01/"
-PACKAGER="StartOS Developers"
-LICENSE="GPL PerlArtistic"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
+LICENSE="GPL,PerlArtistic"
 YARCH="any"
 
 SRC_URI="http://search.cpan.org/CPAN/authors/id/K/KW/KWILLIAMS/Probe-Perl-"$V".tar.gz"

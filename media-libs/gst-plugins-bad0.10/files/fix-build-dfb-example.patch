@@ -1,0 +1,25 @@
+diff -ur gst-plugins-bad0.10-0.10.23/ext/directfb/dfb-example.c gst-plugins-bad0.10-0.10.23.new/ext/directfb/dfb-example.c
+--- gst-plugins-bad0.10-0.10.23/ext/directfb/dfb-example.c	2011-12-12 02:49:11.000000000 +0800
++++ gst-plugins-bad0.10-0.10.23.new/ext/directfb/dfb-example.c	2012-12-17 13:51:05.918682547 +0800
+@@ -1,7 +1,7 @@
+ 
+-#include <directfb.h>
+ #include <stdio.h>
+ #include <gst/gst.h>
++#include <directfb.h>
+ 
+ static IDirectFB *dfb = NULL;
+ static IDirectFBSurface *primary = NULL;
+diff -ur gst-plugins-bad0.10-0.10.23/tests/examples/directfb/gstdfb.c gst-plugins-bad0.10-0.10.23.new/tests/examples/directfb/gstdfb.c
+--- gst-plugins-bad0.10-0.10.23/tests/examples/directfb/gstdfb.c	2011-12-12 02:49:22.000000000 +0800
++++ gst-plugins-bad0.10-0.10.23.new/tests/examples/directfb/gstdfb.c	2012-12-17 13:51:23.094681838 +0800
+@@ -35,8 +35,8 @@
+ #include <math.h>
+ #include <time.h>
+ 
+-#include <directfb.h>
+ #include <gst/gst.h>
++#include <directfb.h>
+ #include <string.h>
+ 
+ /* macro for a safe call to DirectFB functions */

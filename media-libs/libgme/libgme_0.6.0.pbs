@@ -21,8 +21,13 @@ CONFLICT=""
 REPLACE=""
 
 pbs_unpack() {
-        dounpack
+    dounpack
 }
+
+pbs_patch() {
+    sed -i 's/DESTINATION lib/DESTINATION lib'"$LIBDIRSUFFIX"'/g' gme/CMakeLists.txt
+}
+
 
 pbs_config() {
 	config+=""

@@ -7,8 +7,8 @@
 
 DESCRIPTION="SSL support for Net::SMTP"
 HOMEPAGE="http://search.cpan.org/dist/Net-SMTP-SSL/"
-LICENSE="GPL PerlArtistic"
-PACKAGER="StartOS Developers"
+LICENSE="GPL,PerlArtistic"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 YARCH="any"
 
 SRC_URI="http://cpan.communilink.net/authors/id/C/CW/CWEST/Net-SMTP-SSL-"$V".tar.gz"

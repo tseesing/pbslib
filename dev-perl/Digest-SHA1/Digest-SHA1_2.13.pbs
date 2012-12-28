@@ -6,11 +6,12 @@
 #
 
 DESCRIPTION="Perl interface to the SHA-1 Algorithm"
-HOMEPAGE="http://search.cpan.org/dist/Digest-SHA1"
+HOMEPAGE="http://search.cpan.org/dist/$N"
 LICENSE="GPL,PerlArtistic"
-PACKAGER="StartOS Developers"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
 SRC_URI="http://www.cpan.org/authors/id/G/GA/GAAS/"$N-$V".tar.gz"
+CHECKSUM="bd22388f268434f2b24f64e28bf1aa35"
 
 RDEPEND="perl"
 BDEPEND=""
@@ -18,7 +19,7 @@ RECOMMENDED=""
 CONFLICT=""
 
 pbs_unpack() {
-        dounpack
+    dounpack
 }
 
 pbs_config() {
@@ -31,6 +32,6 @@ pbs_build() {
 
 pbs_install() {
 	domkinstall
-        perl_cleanup
+    perl_cleanup
 }
 

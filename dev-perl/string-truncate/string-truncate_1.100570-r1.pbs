@@ -7,8 +7,8 @@
 
 DESCRIPTION="perl module"
 HOMEPAGE="http://search.cpan.org/~rjbs/String-Truncate-1.100570/"
-PACKAGER="StartOS Developers"
-LICENSE="GPL PerlArtistic"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
+LICENSE="GPL,PerlArtistic"
 YARCH="any"
 
 SRC_URI="http://search.cpan.org/CPAN/authors/id/R/RJ/RJBS/String-Truncate-"$V".tar.gz"

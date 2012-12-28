@@ -9,7 +9,7 @@ DESCRIPTION="Interface to zlib compression library  "
 HOMEPAGE="http://search.cpan.org/~pmqs/Compress-Zlib/"
 REPO=""
 LICENSE="GPL"
-PACKAGER="StartOS Developers"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
 SRC_URI="http://mirrors.sohu.com/CPAN/authors/id/P/PM/PMQS/Compress-Zlib-"$V$R".tar.gz"
 

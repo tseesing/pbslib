@@ -8,17 +8,21 @@
 DESCRIPTION="A ASCII-Graphics Library"
 HOMEPAGE="http://aa-project.sourceforge.net/aalib/"
 LICENSE="LGPL"
-MAINTAINER="StartOS Developers"
+MAINTAINER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
 SRC_URI="http://downloads.sourceforge.net/aa-project/"$N-$V"rc5.tar.gz"
 
-RDEPEND="libX11 slang"
+RDEPEND="libX11 gpm"
 BDEPEND=""
 
 INSTALL="$N.install"
 
 pbs_unpack(){
-        dounpack
+    dounpack
+}
+
+pbs_patch() {
+    dopatch aclocal-fixes.patch
 }
 
 pbs_config() {

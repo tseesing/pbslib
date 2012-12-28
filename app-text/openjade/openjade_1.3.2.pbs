@@ -25,7 +25,7 @@ pbs_unpack() {
 pbs_config() {
 	config+="--enable-default-catalog=/etc/sgml/catalog 
 	         --enable-default-search-path=/usr/share/sgml 
-		 --datadir=/usr/share/sgml/"$N-$V""
+	     	 --datadir=/usr/share/sgml/"$N-$V""
 	doconfig
 }
 

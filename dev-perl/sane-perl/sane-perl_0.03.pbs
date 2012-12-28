@@ -7,8 +7,8 @@
 
 DESCRIPTION="Perl extension for the SANE (Scanner Access Now Easy) Project"
 HOMEPAGE="http://search.cpan.org/~ratcliffe/Sane-0.03/"
-LICENSE="GPL PerlArtistic"
-PACKAGER="StartOS Developers"
+LICENSE="GPL,PerlArtistic"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 YARCH="any"
 
 SRC_URI="http://mirrors.ustc.edu.cn/CPAN/authors/id/R/RA/RATCLIFFE/Sane-"$V".tar.gz"

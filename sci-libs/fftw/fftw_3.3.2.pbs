@@ -1,0 +1,50 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="Fast C library for the Discrete Fourier Transform"
+HOMEPAGE="http://www.fftw.org/"
+LICENSE="GPL2"
+PACKAGER="StartOS Developers"
+
+SRC_URI="http://www.fftw.org/"$N-$V".tar.gz"
+CHECKSUM="11a8c31186ff5a7d686a79a3f21b2530888e0dc2"
+
+RDEPEND="glibc bash"
+BDEPEND=""
+RECOMMENDED=""
+CONFLICT=""
+
+INSTALL="$N.install"
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_install() {
+	# use upstream default CFLAGS while keeping our -march/-mtune
+	CFLAGS+=" -O3 -fomit-frame-pointer -malign-double -fstrict-aliasing -ffast-math"
+
+	CONFIGURE="./configure F77=gfortran $DEFAULT_CONFIG --enable-threads"
+
+	# build & install double precision
+	$CONFIGURE --enable-sse2
+	domake
+	domkinstall
+	make clean 
+
+	# build & install long double precission
+	$CONFIGURE --enable-long-double
+	domake
+	domkinstall
+    make clean
+
+	# build & install single precision
+	$CONFIGURE --enable-float --enable-sse
+	domake
+	domkinstall
+}
+

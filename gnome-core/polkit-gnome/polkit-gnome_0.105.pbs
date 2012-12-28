@@ -1,0 +1,38 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="PolicyKit policies and configurations for the GNOME desktop"
+HOMEPAGE="http://www.freedesktop.org/wiki/Software/polkit"
+LICENSE="LGPL"
+PACKAGER="chenqixing@ivali.com
+          Zhongxin Huang <huangzhongxin@ivali.com>"
+
+SRC_URI="http://ftp.acc.umu.se/pub/gnome/sources/$N/$V/$N-$V.tar.xz"
+CHECKSUM="1784494963b8bf9a00eedc6cd3a2868fb123b8a5e516e66c5eda48df17ab9369"
+
+RDEPEND="gtk3 polkit"
+BDEPEND="intltool gobject-introspection"
+RECOMMENDED=""
+
+pbs_unpack() {
+    dounpack
+}
+
+pbs_config() {
+	config+="--disable-static"
+	doconfig
+}
+
+pbs_build() {
+	domake
+}
+
+pbs_install() {
+	domkinstall
+    docp "$filesdir"/polkit-gnome-authentication-agent-1.desktop "$destdir"/etc/xdg/autostart/
+}
+

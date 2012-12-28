@@ -7,27 +7,25 @@
 
 DESCRIPTION="A free, object-oriented toolkit for SGML parsing and entity management"
 HOMEPAGE="http://openjade.sourceforge.net/"
-LICENSE="GPL"
-PACKAGER="StartOS Developers"
+LICENSE="BSD"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
  
-SRC_URI="http://downloads.sourceforge.net/"$N"/OpenSP-"$V".tar.gz"
+SRC_URI="http://download.sourceforge.net/openjade/OpenSP-"$V".tar.gz"
 
 RDEPEND="gcc-lib"
-BDEPEND="sgml-common"
+BDEPEND="xmlto docbook-xsl"
 RECOMMENDED=""
 
 pbs_unpack() {
-        dounpack
+    dounpack
 }
 
 pbs_config() {
-	#These seds prevent some annoying messages that may otherwise appear while running openjade
-	sed -i 's:32,:253,:' lib/Syntax.cxx 
-	sed -i 's:LITLEN          240 :LITLEN          8092:' unicode/{gensyntax.pl,unicode.syn} 
-	config+=" --disable-doc-build  
-	              --enable-default-catalog=/etc/sgml/catalog 
-		      --enable-http 
-	              --enable-default-search-path=/usr/share/sgml "
+	config+="--disable-nls 
+		     --enable-http 
+             --enable-default-catalog=/etc/sgml/catalog:/etc/xml/catalog
+             --enable-default-search-path=/usr/share/sgml:/usr/share/xml
+             --enable-xml-messages"
 	doconfig
 }
 
@@ -37,5 +35,6 @@ pbs_build() {
 
 pbs_install() {
 	domkinstall
+    dodoc COPYING
 }
 

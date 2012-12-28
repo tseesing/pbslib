@@ -7,8 +7,8 @@
 
 DESCRIPTION="message handling functions"
 HOMEPAGE="http://search.cpan.org/~pvandry/gettext-1.05/gettext.pm"
-PACKAGER="StartOS Developers"
-LICENSE="GPL PerlArtistic"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
+LICENSE="GPL,PerlArtistic"
 YARCH="any"
 
 SRC_URI="http://search.cpan.org/CPAN/authors/id/P/PV/PVANDRY/gettext-"$V".tar.gz"

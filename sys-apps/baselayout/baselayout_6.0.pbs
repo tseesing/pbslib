@@ -8,18 +8,21 @@
 DESCRIPTION="Base layout filesystem for StartOS"
 HOMEPAGE="http://www.startos.com"
 LICENSE="GPL"
-PACKAGER="StartOS Developers"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 YARCH="any"
 
 SRC_URI=""
 
-RDEPEND="bash coreutils procps-ng grep findutils"
+RDEPEND="bash coreutils procps grep findutils"
 BDEPEND=""
 
 INSTALL="$N"6.install
 
 pbs_install() {
 	docp "$filesdir"/lsb_release      "$destdir"/usr/bin/
-	docp_rename "$filesdir"/startos-release  "$destdir"/etc/startos-release
+	docp "$filesdir"/startos-release  "$destdir"/etc/
+    docp "$filesdir"/usb-load-ehci-first "$destdir"/usr/lib/modules-load.d/
 }
+
+
 

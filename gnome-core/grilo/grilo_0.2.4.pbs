@@ -1,0 +1,38 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="Grilo is a framework that provides access to various sources of multimedia content, using a pluggable system."
+HOMEPAGE="https://live.gnome.org/Grilo"
+LICENSE="LGPL"
+PACKAGER="chenqixing@ivali.com 
+          Zhongxin Huang <huangzhongxin@ivali.com>"
+
+SRC_URI="http://ftp.gnome.org/pub/gnome/sources/"$N"/"${V%.*}"/"$N-$V".tar.xz"
+CHECKSUM="20fa8a5d1b89419c44f9b590a5a793e33d43a5e959ec8686111e631a724644fe"
+
+RDEPEND="gtk3 libxml2 libsoup"
+BDEPEND="gobject-introspection gtk-doc vala"
+RECOMMENDED="grilo-plugins"
+OPTIONAL="grilo-plugins: plugins"
+
+pbs_unpack() {
+    dounpack
+}
+
+pbs_config() {
+	config+="--disable-static --disable-debug"
+	doconfig
+}
+
+pbs_build() {
+	domake
+}
+
+pbs_install() {
+	domkinstall
+} 
+

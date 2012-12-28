@@ -1,0 +1,37 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="GStreamer Integration library for Clutter"
+HOMEPAGE="http://www.clutter-project.org/"
+LICENSE="LGPL"
+PACKAGER="chenqixing@ivali.com"
+
+SRC_URI="http://ftp.gnome.org/pub/gnome/sources/"$N"/${V%.*}/"$N-$V".tar.xz"
+CHECKSUM="5c09dce218f711a44bd4d741e2dd10ffc47e7fcd7b0cf514ca0e92b825c76c45"
+
+RDEPEND="clutter gst-plugins-base libXdamage"
+RECOMMENDED=""
+BDEPEND="gobject-introspection"
+CONFLICT=""
+
+pbs_unpack() {
+    dounpack
+}
+
+pbs_config() {
+	config+=""
+	doconfig
+}
+
+pbs_build() {
+	domake
+}
+
+pbs_install() {
+	domkinstall
+}
+

@@ -7,8 +7,8 @@
 
 DESCRIPTION="simplistic interface to pkg-config "
 HOMEPAGE="http://search.cpan.org/~tsch/ExtUtils-PkgConfig-1.12/lib/ExtUtils/PkgConfig.pm"
-PACKAGER="StartOS Developers"
-LICENSE="GPL PerlArtistic"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
+LICENSE="GPL,PerlArtistic"
 YARCH="any"
 
 SRC_URI="http://search.cpan.org/CPAN/authors/id/T/TS/TSCH/ExtUtils-PkgConfig-"$V".tar.gz"

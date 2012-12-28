@@ -7,8 +7,8 @@
 
 DESCRIPTION="perl module interface to ZIP archive files"
 HOMEPAGE="http://search.cpan.org/~adamk/Archive-Zip/"
-LICENSE="GPL PerlArtistic"
-PACKAGER="StartOS Developers"
+LICENSE="GPL,PerlArtistic"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 YARCH="any"
 
 SRC_URI="http://search.cpan.org/CPAN/authors/id/A/AD/ADAMK/Archive-Zip-"$V".tar.gz"

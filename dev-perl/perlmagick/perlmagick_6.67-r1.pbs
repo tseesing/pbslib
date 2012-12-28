@@ -7,8 +7,8 @@
 
 DESCRIPTION="objected-oriented Perl interface to ImageMagick. Use it to read, manipulate, or write an image or image sequence from within a Perl script. "
 HOMEPAGE="http://search.cpan.org/~jcristy/PerlMagick-6.67/Magick.pm"
-PACKAGER="StartOS Developers"
-LICENSE="GPL PerlArtistic"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
+LICENSE="GPL,PerlArtistic"
 
 SRC_URI="http://search.cpan.org/CPAN/authors/id/J/JC/JCRISTY/PerlMagick-"$V".tar.gz"
 

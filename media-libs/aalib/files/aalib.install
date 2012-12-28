@@ -1,20 +1,16 @@
 . /usr/lib/ybs/funcs
 
-files="aalib.info-3.gz aalib.info-2.gz aalib.info-1.gz aalib.info.gz"
+files="aalib.info.gz"
 
 post_install() {
-        doinstall_info $files
+    doinstall_info $files
 }       
 
 pre_remove() {
-        doremove_info $files
+    doremove_info $files
 }
 
 pre_upgrade() {
-	post_install
-}
-
-post_downgrade() {
 	post_install
 }
 

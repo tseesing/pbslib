@@ -1,0 +1,39 @@
+. /usr/lib/ybs/funcs
+
+files="/etc/gconf/schemas/gnome-settings-daemon.schemas 
+       /etc/gconf/schemas/desktop_gnome_peripherals_touchpad.schemas
+       /etc/gconf/schemas/desktop_gnome_peripherals_smartcard.schemas
+       /etc/gconf/schemas/desktop_gnome_keybindings.schemas
+       /etc/gconf/schemas/desktop_gnome_font_rendering.schemas
+       /etc/gconf/schemas/apps_gnome_settings_daemon_xrandr.schemas
+       /etc/gconf/schemas/apps_gnome_settings_daemon_keybindings.schemas
+       /etc/gconf/schemas/apps_gnome_settings_daemon_housekeeping.schemas"
+
+post_install() {
+	gnome2_install_schema $files
+	gnome2_install_defaut_gconf "string" "/apps/gnome_settings_daemon/keybindings/calculator" "<Alt>c"
+	gnome2_install_defaut_gconf "string" "/apps/gnome_settings_daemon/keybindings/email" "<Alt>m"
+	gnome2_install_defaut_gconf "string" "/apps/gnome_settings_daemon/keybindings/home" "<Alt>h"
+	gnome2_install_defaut_gconf "string" "/apps/gnome_settings_daemon/keybindings/search" "<Alt>f"
+	gnome2_install_defaut_gconf "string" "/apps/gnome_settings_daemon/keybindings/www" "<Alt>w"
+	gnome2_icon_cache_update 
+	gnome2_gconfd_reload
+}
+
+pre_remove() {
+	gnome2_uninstall_schema $files
+}
+
+post_remove() {
+	gnome2_icon_cache_update
+	gnome2_gconfd_reload
+}
+
+post_upgrade() {
+	post_remove
+}
+
+post_downgrade() {
+	post_remove
+}
+

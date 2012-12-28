@@ -1,0 +1,41 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="Interface for terminal emulators such as screen and xterm to record user sessions to utmp and wtmp files"
+HOMEPAGE="ftp://ftp.altlinux.org/pub/people/ldv/utempter"
+LICENSE="LGPL"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
+
+SRC_URI="ftp://ftp.altlinux.org/pub/people/ldv/utempter/"$N-$V".tar.bz2"
+CHECKSUM="b43827806923903aba2bc7cd3a2d45b7"
+
+RDEPEND="glibc"
+RECOMMENDED=""
+BDEPEND=""
+OPTIONAL=""
+CONFLICT=""
+REPLACE=""
+
+pbs_unpack() {
+    dounpack
+}
+
+pbs_patch() {
+    sed -i 's/\/usr\/lib/\/usr\/lib'"$LIBDIRSUFFIX"'/g' Makefile
+}
+
+pbs_build() {
+	domake
+}
+
+pbs_install() {
+	domkinstall
+    cd "$destdir"/usr/lib"$LIBDIRSUFFIX"
+    chown root:utmp utempter/utempter
+    chmod 2755 utempter/utempter
+}
+

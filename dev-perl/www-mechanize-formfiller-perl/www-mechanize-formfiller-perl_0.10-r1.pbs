@@ -7,8 +7,8 @@
 
 DESCRIPTION="Framework to automate HTML forms"
 HOMEPAGE="http://search.cpan.org/dist/WWW-Mechanize-FormFiller/"
-PACKAGER="StartOS Developers"
-LICENSE="GPL PerlArtistic"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
+LICENSE="GPL,PerlArtistic"
 
 SRC_URI="http://search.cpan.org/CPAN/authors/id/C/CO/CORION/WWW-Mechanize-FormFiller-"$V".tar.gz"
 

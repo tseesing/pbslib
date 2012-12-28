@@ -1,0 +1,40 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="YAML 1.1 library"
+HOMEPAGE="http://pyyaml.org/wiki/LibYAML"
+LICENSE="MIT"
+PACKAGER="StartOS Developers"
+
+SRC_URI="http://pyyaml.org/download/"$N"/yaml-"$V".tar.gz"
+CHECKSUM="36c852831d02cf90508c29852361d01b"
+
+RDEPEND=""
+RECOMMENDED=""
+BDEPEND=""
+OPTIONAL=""
+CONFLICT=""
+REPLACE=""
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_config() {
+	config+=""
+	doconfig
+}
+
+pbs_build() {
+	domake
+}
+
+pbs_install() {
+	domkinstall
+	dodoc LICENSE
+}
+

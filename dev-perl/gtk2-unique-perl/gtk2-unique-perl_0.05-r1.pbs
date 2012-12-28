@@ -7,8 +7,8 @@
 
 DESCRIPTION="Use single instance applications"
 HOMEPAGE="http://search.cpan.org/~potyl/Gtk2-Unique-0.05/lib/Gtk2/Unique.pm"
-PACKAGER="StartOS Developers"
-LICENSE="GPL PerlArtistic"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
+LICENSE="GPL,PerlArtistic"
 
 SRC_URI="http://search.cpan.org/CPAN/authors/id/P/PO/POTYL/Gtk2-Unique-"$V".tar.gz"
 

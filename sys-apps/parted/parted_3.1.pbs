@@ -13,14 +13,14 @@ PACKAGER="StartOS Developers"
 SRC_URI="http://ftp.gnu.org/gnu/"$N"/"$N-$V".tar.xz"
 CHECKSUM="5d89d64d94bcfefa9ce8f59f4b81bdcb"
 
-RDEPEND="device-mapper readline util-linux-ng"
+RDEPEND="device-mapper readline util-linux"
 BDEPEND=""
 RECOMMENDED=""
 
 INSTALL="$N.install"
 
 pbs_unpack() {
-        dounpack
+    dounpack
 }
 
 pbs_config() {

@@ -7,21 +7,23 @@
 
 DESCRIPTION="text based web browser."
 HOMEPAGE="http://lynx.isc.org/"
-LICENSE="GPL-2"
-PACKAGER="StartOS Developers"
+LICENSE="GPL"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
 SRC_URI="http://lynx.isc.org/release/"$N$V".tar.bz2"
 
-RDEPEND=""
-BDEPEND=" "
+RDEPEND="ncurses openssl"
+BDEPEND=""
 RECOMMENDED=""
 
 pbs_unpack() {
-        dounpack
+    dounpack
 }
 
 pbs_config() {
-	config+="--with-zlib --with-bzlib"
+	config+="--with-ssl 
+             --enable-nls 
+             --enable-ipv6"
 	doconfig
 }
 
@@ -31,4 +33,9 @@ pbs_build() {
 
 pbs_install() {
 	domkinstall
+    dodoc lynx_help
+    cd "$destdir"
+    # FS#20404 - points to local help
+    sed -i -e "s|^HELPFILE.*$|HELPFILE:file:///usr/share/doc/lynx/lynx_help/lynx_help_main.html|" etc/lynx.cfg
 }
+

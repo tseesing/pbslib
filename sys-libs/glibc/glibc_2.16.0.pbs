@@ -8,7 +8,7 @@
 DESCRIPTION="GNU libc6 (also called glibc2) C library"
 HOMEPAGE="http://www.gnu.org/software/libc/libc.html"
 LICENSE="GPL,LGPL"
-PACKAGER="StartOS Developers"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 PRIORITY="required"
 
 SRC_URI="http://ftp.gnu.org/gnu/libc/"$N-$V".tar.xz"
@@ -25,7 +25,7 @@ NOTES="1.linux-headers->glibc->binutils->gcc->binutils->glibc
        2. valgrind requires rebuilt with each major glibc version"
 
 pbs_unpack() {
-        dounpack
+    dounpack
 }
 
 pbs_config() {
@@ -43,14 +43,14 @@ pbs_config() {
 
 	unset ARCH
 	
-	config+=" --with-headers=/usr/include 
-		  --enable-add-ons=nptl,libidn 
-		  --enable-obsolete-rpc 
-		  --enable-kernel=2.6.32 
-		  --enable-bind-now 
-      		  --enable-stackguard-randomization
-  		  --enable-multi-arch		  
-		  --disable-profile "
+	config+="--with-headers=/usr/include 
+		     --enable-add-ons=nptl,libidn 
+		     --enable-obsolete-rpc 
+		     --enable-kernel=2.6.32 
+		     --enable-bind-now 
+      		 --enable-stackguard-randomization
+  		     --enable-multi-arch		  
+		     --disable-profile"
 	../configure $config
 }
 
@@ -71,17 +71,13 @@ pbs_build() {
 
 pbs_install() {
 	make install_root="$destdir" install
-	
 	cd "$destdir"
-
 	docp "$filesdir"/locale-gen usr/sbin
 	docp "$filesdir"/SUPPORTED  usr/share/i18n
-
 	doln /usr/include/utime.h usr/include/sys/utime.h
-
+    doln /usr/share/locale usr/lib/locale
 	# Remove default localtime 
 	rm -rf etc/localtime
-
 	# 
 	rm -rf etc/ld.so.cache
 }

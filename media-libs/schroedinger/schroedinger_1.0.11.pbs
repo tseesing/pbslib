@@ -1,0 +1,37 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="An implemenation of the Dirac video codec in ANSI C code"
+HOMEPAGE="http://www.diracvideo.org/"
+LICENSE="GPL2,LGPL2,MPL,MIT"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
+
+SRC_URI="http://www.diracvideo.org/download/"$N"/"$N-$V".tar.gz"
+
+RDEPEND="gcc-lib orc"
+RECOMMENDED=""
+BDEPEND=""
+CONFLICT=""
+
+pbs_unpack() {
+    dounpack
+}
+
+pbs_config() {
+	config+=""
+	doconfig
+}
+
+pbs_build() {
+	domake
+}
+
+pbs_install() {
+	domkinstall
+    dodoc COPYING.MIT
+}
+

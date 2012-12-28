@@ -7,23 +7,33 @@
 
 DESCRIPTION="Convert files between various character sets"
 HOMEPAGE="http://recode.progiciels-bpi.ca/"
-LICENSE="GPL"
-PACKAGER="StartOS Developers"
+LICENSE="GPL,LGPL"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
-SRC_URI="$N-$V$R.tar.bz2"
+SRC_URI="http://ftp.de.debian.org/debian/pool/main/r/"$N"/"$N"_3.6.orig.tar.gz"
 
 RDEPEND="glibc"
-BDEPEND="automake1.4"
+BDEPEND=""
 RECOMMENDED=""
 
 INSTALL="$N.install"
 
 pbs_unpack() {
-        dounpack
+    dounpack
+}
+
+pbs_patch() {
+    dopatch recode-3.6-gettextfix.diff recode-3.6-as-if.patch
+    dopatch recode_3.6-17.diff
+    sed -i '1i#include <stdlib.h>' src/argmatch.c
+    # Remove old libtool macros
+    rm acinclude.m4
 }
 
 pbs_config() {
-	config+="--without-included-gettext --enable-nls"
+	config+="--without-included-gettext"
+    autoreconf -fi
+    libtoolize
 	doconfig
 }
 
@@ -33,6 +43,6 @@ pbs_build() {
 
 pbs_install() {
 	domkinstall
-	dodoc AUTHORS BACKLOG ChangeLog NEWS README THANKS TODO
+    rm "$destdir"/usr/lib/charset.alias
 }
 

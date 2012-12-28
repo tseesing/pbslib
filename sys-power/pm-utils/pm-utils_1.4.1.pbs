@@ -8,16 +8,21 @@
 DESCRIPTION="Suspend and hibernation utilities"
 HOMEPAGE="http://pm-utils.freedesktop.org/"
 LICENSE="GPL"
-PACKAGER="StartOS Developers"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
 SRC_URI="http://pm-utils.freedesktop.org/releases/"$N-$V".tar.gz"
 
-RDEPEND="glibc"
+RDEPEND="glibc procps pm-quirks"
 BDEPEND=""
 RECOMMENDED=""
 
 pbs_unpack() {
-        dounpack
+    dounpack
+}
+
+pbs_patch() {
+    dopatch 02-logging-append.patch 12-fix-intel-audio-powersave-hook.patch \
+            13-49bluetooth-sync.patch 14-disable-sata-alpm.patch
 }
 
 pbs_config() {
@@ -30,5 +35,10 @@ pbs_build() {
 
 pbs_install() {
 	domkinstall
+    cd "$destdir"
+    # nm >=0.8.2 has native udev suspend/resume support
+    rm -f usr/lib/pm-utils/sleep.d/55NetworkManager
+    # Remove hooks that cause hardware failure or don't make sense at all
+    rm -f usr/lib/pm-utils/power.d/{harddrive,disable_wol}
 }
 

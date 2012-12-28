@@ -8,7 +8,7 @@
 DESCRIPTION="Boost Libraries for C++"
 HOMEPAGE="http://www.boost.org/"
 LICENSE="custom"
-PACKAGER="StartOS Developers"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
 SRC_URI="http://sourceforge.net/projects/boost/files/"$N"/"$V"/"$N"_"${V//./_}".tar.bz2"
 CHECKSUM="52dd00be775e689f55a987baebccc462"
@@ -29,7 +29,7 @@ pbs_build() {
 
 	# Step 1、Build bjam
 	cd "$srcdir"/tools/build/v2/engine
-	./build.sh cc || die "Step 1: build bjam failed."
+	/bin/bash ./build.sh gcc || die "Step 1: build bjam failed."
 
 	_bindir="bin.linuxx86"
 	[ "$ARCH" = "x86_64" ] && _bindir="bin.linuxx86_64"
@@ -64,7 +64,9 @@ pbs_build() {
 		runtime-link=shared link=shared,static \
 		cflags=-fno-strict-aliasing \
 		toolset=gcc \
-		--prefix="$_stagedir" \
+		--prefix="$_stagedir"/usr \
+		--libdir="$_stagedir"/usr/lib"${LIBDIRSUFFIX}" \
+		--includedir="$_stagedir"/usr/include \
 		-sTOOLS=gcc \
 		--layout=system \
 		"$MAKEOPTS" \
@@ -80,10 +82,10 @@ boost_install() {
 	cd "$_stagedir"
 	
 	# Headers/source files
-	docp include "$destdir"/usr/
+	docp usr/include "$destdir"/usr/
 
 	# Static libs
-	docp lib/*.a "$destdir"/usr/lib/
+	docp usr/lib"$LIBDIRSUFFIX"/*.a "$destdir"/usr/lib"$LIBDIRSUFFIX"/
 
 	# Utilities (bjam, bcp, pyste)
 	docp usr/* "$destdir"/usr/
@@ -104,7 +106,7 @@ boost-libs_install() {
 	cd "$_stagedir"
 
 	# Shared libs
-	docp lib/*.so{,.*} "$destdir"/usr/lib/
+	docp usr/lib"$LIBDIRSUFFIX"/*.so{,.*} "$destdir"/usr/lib"$LIBDIRSUFFIX"/
 	
 	# License
 	dodoc "$srcdir"/LICENSE_1_0.txt

@@ -7,8 +7,8 @@
 
 DESCRIPTION="Handy web browsing in a Perl object "
 HOMEPAGE="http://search.cpan.org/~petdance/WWW-Mechanize-1.66/lib/WWW/Mechanize.pm"
-PACKAGER="StartOS Developers"
-LICENSE="GPL PerlArtistic"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
+LICENSE="GPL,PerlArtistic"
 YARCH="any"
 
 SRC_URI="http://search.cpan.org/CPAN/authors/id/P/PE/PETDANCE/WWW-Mechanize-"$V".tar.gz"

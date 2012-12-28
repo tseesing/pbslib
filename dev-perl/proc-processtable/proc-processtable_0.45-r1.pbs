@@ -7,8 +7,8 @@
 
 DESCRIPTION="kill a list of pids, and all their sub-children "
 HOMEPAGE="http://search.cpan.org/~durist/Proc-ProcessTable-0.45/Killfam.pm"
-PACKAGER="StartOS Developers"
-LICENSE="GPL PerlArtistic"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
+LICENSE="GPL,PerlArtistic"
 
 SRC_URI="http://search.cpan.org/CPAN/authors/id/D/DU/DURIST/Proc-ProcessTable-"$V".tar.gz"
 

@@ -18,12 +18,14 @@ PROVIDE="pidgin libpurple finch"
 OPTIONAL=""
 
 pbs_unpack() {
-        dounpack
+    dounpack
 }
 
 pbs_config() {
-	config+=" --disable-schemas-install
-	          --with-system-ssl-certs=/etc/ssl/certs "
+	config+="--disable-schemas-install 
+             --with-system-ssl-certs=/etc/ssl/certs 
+             --disable-meanwhile
+             --disable-vv"
 	doconfig
 }
 
@@ -35,32 +37,26 @@ pidgin_install() {
 	DESCRIPTION="GTK Instant Messenger client"
 	RDEPEND="gtkspell libpurple"
 	RECOMMENDED=""
-	
 	INSTALL="$N.install"
 
 	# For linking
 	make -C libpurple DESTDIR="$destdir" install-libLTLIBRARIES
 	domkinstall -C pidgin 
 	domkinstall -C doc 
-
-        # Clean up libpurple
-        make -C libpurple DESTDIR="$destdir" uninstall-libLTLIBRARIES
+    # Clean up libpurple
+    make -C libpurple DESTDIR="$destdir" uninstall-libLTLIBRARIES
 	rm -f "$destdir"/usr/share/man/man1/finch.1
-	
 	perl_cleanup
-
-	#
 	dodesktop "$N".desktop
 }
 
 libpurple_install() {
 	DESCRIPTION="IM library extracted from Pidgin"
-	RDEPEND="avahi dbus-glib farsight2 libgadu libidn meanwhile nss perl tk"
+	RDEPEND="avahi dbus-glib farsight2 libgadu libidn nss perl tk"
 
-        for dir in libpurple share/sounds share/ca-certs m4macros po; do
+    for dir in libpurple share/sounds share/ca-certs m4macros po; do
 		domkinstall -C "${dir}"
 	done
-
 	perl_cleanup
 }
 
@@ -72,11 +68,9 @@ finch_install() {
 	make -C libpurple DESTDIR="$destdir" install-libLTLIBRARIES
 	domkinstall -C finch
 	domkinstall -C doc 
-
-        # Clean up libpurple
-        make -C libpurple DESTDIR="$destdir" uninstall-libLTLIBRARIES
+    # Clean up libpurple
+    make -C libpurple DESTDIR="$destdir" uninstall-libLTLIBRARIES
 	rm -f "$destdir"/usr/share/man/man1/pidgin.1
-
 	perl_cleanup
 }
 

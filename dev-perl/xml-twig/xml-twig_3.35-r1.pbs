@@ -7,8 +7,8 @@
 
 DESCRIPTION="This module provides a way to process XML documents. It is build on top of XML::Parser"
 HOMEPAGE="http://search.cpan.org/dist/XML-Twig/"
-PACKAGER="StartOS Developers"
-LICENSE="GPL PerlArtistic"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
+LICENSE="GPL,PerlArtistic"
 YARCH="any"
 
 SRC_URI="ftp://lug.mtu.edu/gentoo/distfiles/XML-Twig-"$V".tar.gz"

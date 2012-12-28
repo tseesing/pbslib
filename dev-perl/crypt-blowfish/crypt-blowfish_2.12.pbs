@@ -9,7 +9,7 @@ DESCRIPTION="Perl Blowfish encryption module  "
 HOMEPAGE="http://search.cpan.org/~dparis/Crypt-Blowfish-2.12/"
 REPO=""
 LICENSE="GPL"
-PACKAGER="StartOS Developers"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
 SRC_URI="http://mirror.osqdu.org/CPAN/authors/id/D/DP/DPARIS/Crypt-Blowfish-"$V$R".tar.gz"
 

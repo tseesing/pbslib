@@ -30,12 +30,12 @@ pbs_patch() {
 pbs_config() {
 	config+=" --enable-static 
 	          --enable-zlib 
-		  --enable-x11 
-		  --enable-sdl 
-		  --disable-vnc 
-		  --disable-osx 
-		  --enable-video4linux2 
-		  --enable-voodoo "
+		      --enable-x11 
+		      --enable-sdl 
+		      --disable-vnc 
+		      --disable-osx 
+		      --enable-video4linux2 
+		      --enable-voodoo "
 	doconfig
 }
 

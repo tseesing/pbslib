@@ -7,8 +7,8 @@
 
 DESCRIPTION="Most commonly needed test functions and features."
 HOMEPAGE="http://search.cpan.org/dist/Test-Most"
-LICENSE="GPL PerlArtistic"
-PACKAGER="StartOS Developers"
+LICENSE="GPL,PerlArtistic"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 YARCH="any"
 
 SRC_URI="http://cpan.communilink.net/authors/id/O/OV/OVID/Test-Most-"$V".tar.gz"

@@ -7,8 +7,8 @@
 
 DESCRIPTION="Facility for creating read-only scalars, arrays, hashes."
 HOMEPAGE="http://search.cpan.org/~roode/Readonly-1.03/"
-LICENSE="GPL PerlArtistic"
-PACKAGER="StartOS Developers"
+LICENSE="GPL,PerlArtistic"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 YARCH="any"
 
 SRC_URI="http://cpan.communilink.net/authors/id/R/RO/ROODE/Readonly-"$V".tar.gz"

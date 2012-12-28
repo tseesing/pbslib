@@ -1,0 +1,51 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="Good plugins for gstreamer"
+HOMEPAGE="http://gstreamer.net/"
+LICENSE="LGPLv2.1"
+PACKAGER="chenqixing@ivali.com"
+
+SRC_URI="http://gstreamer.freedesktop.org/src/"${N%%0*}"/"${N%%0*}-$V".tar.xz"
+CHECKSUM="555845ceab722e517040bab57f9ace95"
+
+RDEPEND="aalib libavc1394 libcaca libdv libgnome-keyring libiec61883 libproxy libshout pulseaudio taglib v4l-utils wavpack gdk-pixbuf2"
+BDEPEND="pkgconfig"
+RECOMMENDED=""
+
+OPTIONAL="When not set --disable-gst_v4l2 option, compiler 
+          always report ERROR and I don't know why, but seems 
+          that is syntax error, I am sorry about that. When 
+          somebody knows it, please help to fix that"
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_config() {
+	config+=" --enable-experimental 
+		  --disable-schemas-install 
+		  --disable-hal 
+		  --disable-gconf
+		  --disable-esd 
+		  --disable-esdtest 
+		  --disable-oss
+		  --disable-oss4
+          --disable-gst_v4l2
+          --enable-pulse"
+	doconfig
+}
+
+pbs_build() {
+	domake
+}
+
+pbs_install() {
+	domkinstall
+    dodoc AUTHORS ChangeLog README NEWS COPYING
+}
+

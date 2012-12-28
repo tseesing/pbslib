@@ -1,0 +1,40 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="Less plugins for GStreamer"
+HOMEPAGE="http://gstreamer.freedesktop.org/"
+LICENSE="LGPL"
+PACKAGER="StartOS Developers"
+
+SRC_URI="http://gstreamer.freedesktop.org/src/"$N"/"$N-$V".tar.xz"
+CHECKSUM="2eae746be0b4c7fa2f1e057c91bd36940d7c25593ab612b707904461360031f0"
+
+RDEPEND="gst-plugins-base celt faac faad2 libass libcdaudio libdc1394 libdca libdvdnav libgme gsm liblrdf libmms libmodplug libmpcdec libofa librsvg libsndfile libtiger libvdpau libvpx mjpegtools musicbrainz neon schroedinger soundtouch wildmidi xvidcore"
+BDEPEND=""
+RECOMMENDED=""
+CONFLICT=""
+
+pbs_unpack() {
+    dounpack
+}
+
+pbs_config() {
+	config+="--enable-experimental
+             --with-gtk=3.0
+             --disable-schemas-compile
+             --disable-static"
+	doconfig
+}
+
+pbs_build() {
+	domake
+}
+
+pbs_install() {
+	domkinstall
+}
+

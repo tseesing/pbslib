@@ -21,7 +21,7 @@ pbs_unpack() {
 }
 
 pbs_config() {
-	# disable optimizations, they cause problems (e.g. FS#12268)
+	# disable optimizations, they cause problems
 	[ "$ARCH" = "i686" ] && EXTRAOPTS="--disable-mmx"
 	[ "$ARCH" = "x86_64" ] && EXTRAOPTS="--disable-amd64"
 	config+="$EXTRAOPTS"

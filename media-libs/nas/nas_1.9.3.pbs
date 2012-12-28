@@ -27,6 +27,6 @@ pbs_build() {
 }
 
 pbs_install() {
-	domkinstall USRLIBDIR=/usr/lib
+	domkinstall USRLIBDIR=/usr/lib${LIBDIRSUFFIX}
 }
 

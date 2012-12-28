@@ -1,0 +1,38 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="GNOME default icon themes"
+HOMEPAGE="http://www.gnome.org/"
+LICENSE="GPL"
+YARCH="any"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
+
+SRC_URI="http://ftp.gnome.org/pub/gnome/core/3.6/3.6.2/sources/"$N-$V".tar.xz"
+
+RDEPEND="hicolor-icon-theme icon-naming-utils gtk-update-icon-cache gnome-icon-theme-symbolic"
+BDEPEND=""
+
+INSTALL="$N.install"
+
+pbs_unpack() {
+    dounpack
+}
+
+pbs_config() {
+	config+=""
+	doconfig
+}
+
+pbs_build() {
+	domake
+}
+
+pbs_install() {
+	domkinstall
+    rm "$destdir"/usr/share/icons/gnome/icon-theme.cache
+}
+

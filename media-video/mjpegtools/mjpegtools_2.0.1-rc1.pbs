@@ -1,0 +1,39 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="Set of tools that can do recording of videos and playback, simple cut-and-paste editing and the MPEG compression of audio and video"
+HOMEPAGE="http://mjpeg.sourceforge.net/"
+LICENSE="GPL"
+PACKAGER="StartOS Developers"
+
+SRC_URI="http://sourceforge.net/projects/mjpeg/files/"$N"/2.0.1rc1/"$N"-2.0.1RC1.tar.gz"
+
+RDEPEND="libjpeg-turbo libpng libsdl libdv"
+RECOMMENDED=""
+BDEPEND=""
+OPTIONAL=""
+CONFLICT=""
+
+INSTALL="$N.install"
+
+pbs_unpack() {
+    dounpack
+}
+
+pbs_config() {
+	config+="--enable-largefile"
+	doconfig
+}
+
+pbs_build() {
+	domake
+}
+
+pbs_install() {
+	domkinstall
+}
+

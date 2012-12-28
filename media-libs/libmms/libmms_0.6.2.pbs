@@ -8,7 +8,7 @@
 DESCRIPTION="Common library for accessing Microsoft Media Server (MMS) media streaming protocol"
 HOMEPAGE="http://sourceforge.net/projects/libmms/ http://launchpad.net/libmms/"
 LICENSE="LGPL"
-PACKAGER="StartOS Developers"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
 SRC_URI="http://sourceforge.net/projects/"$N"/files/"$N"/"$V"/"$N-$V".tar.gz"
 CHECKSUM="9f63aa363deb4874e072a45850161bff"
@@ -18,10 +18,11 @@ BDEPEND=""
 RECOMMENDED=""
 
 pbs_unpack() {
-        dounpack
+    dounpack
 }
 
 pbs_config() {
+    config+="--disable-static"
 	doconfig
 }
 

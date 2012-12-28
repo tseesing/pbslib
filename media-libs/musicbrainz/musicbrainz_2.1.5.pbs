@@ -7,8 +7,8 @@
 
 DESCRIPTION="Client library to access metadata of mp3/vorbis/CD media"
 HOMEPAGE="http://musicbrainz.org/"
-LICENSE="GPL"
-PACKAGER="StartOS Developers"
+LICENSE="LGPL"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
 SRC_URI="ftp://ftp.musicbrainz.org/pub/"$N"/libmusicbrainz-"$V".tar.gz"
 CHECKSUM="d5e19bb77edd6ea798ce206bd05ccc5f"
@@ -20,7 +20,7 @@ OPTIONAL=""
 CONFLICT=""
 
 pbs_unpack() {
-        dounpack
+    dounpack
 }
 
 pbs_patch() {
@@ -38,5 +38,8 @@ pbs_build() {
 
 pbs_install() {
 	domkinstall
+    cd python
+	domkinstall
 }
+
 

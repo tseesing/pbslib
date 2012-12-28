@@ -4,7 +4,7 @@ Description=smbd daemon
 [Service]
 Type=forking
 ExecStart=/usr/sbin/smbd -D
-PIDFile=/var/run/smbd.pid
+PIDFile=/run/smbd.pid
 
 [Install]
 WantedBy=multi-user.target

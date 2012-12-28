@@ -7,20 +7,23 @@
 
 DESCRIPTION="A low-latency audio server"
 HOMEPAGE="http://jackaudio.org/"
-LICENSE="GPL"
-PACKAGER="StartOS Developers"
+LICENSE="GPL,LGPL"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
 SRC_URI="http://jackaudio.org/downloads/"$N-$V".tar.gz"
 
-RDEPEND="alsa-lib celt libsamplerate readline"
+RDEPEND="libsamplerate readline"
 BDEPEND=""
-RECOMMENDED=""
+RECOMMENDED="libffado celt"
+OPTIONAL="libffado: FireWire support
+          celt: NetJACK driver"
 
 pbs_unpack() {
-        dounpack
+    dounpack
 }
 
 pbs_config() {
+    config+=""
 	doconfig
 }
 
@@ -30,6 +33,10 @@ pbs_build() {
 
 pbs_install() {
 	domkinstall
+    docp jack/jslist.h "$destdir"/usr/include/jack/
+    cd "$destdir"
+    # configure realtime access/scheduling
+    docp "$filesdir"/99-audio.conf etc/security/limits.d/
+    docp "$filesdir"/40-hpet-permissions.rules usr/lib/udev/rules.d/
 }
-
 

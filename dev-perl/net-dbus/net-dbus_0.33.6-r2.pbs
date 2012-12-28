@@ -7,8 +7,8 @@
 
 DESCRIPTION="Perl extension for the DBus message system"
 HOMEPAGE="http://search.cpan.org/dist/Net-DBus/"
-PACKAGER="StartOS Developers"
-LICENSE="GPL PerlArtistic"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
+LICENSE="GPL,PerlArtistic"
 
 SRC_URI="http://search.cpan.org/CPAN/authors/id/D/DA/DANBERR/Net-DBus-"$V".tar.gz"
 

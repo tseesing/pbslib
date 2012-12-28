@@ -8,16 +8,20 @@
 DESCRIPTION="ALSA extra plugins"
 HOMEPAGE="http://www.alsa-project.org/"
 LICENSE="GPL"
-PACKAGER="StartOS Developers"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
 SRC_URI="ftp://ftp.alsa-project.org/pub/plugins/"$N-$V".tar.bz2"
-CHECKSUM=""
 
-RDEPEND="ffmpeg(>=0.11.1) libsamplerate"
+RDEPEND="alsa-lib"
 BDEPEND=""
+OPTIONAL="pulseaudio: PulseAudio plugin
+          jack-audio-connection-kit: Jack plugin
+          ffmpeg: libavcodec resampling plugin
+          libsamplerate: libsamplerate resampling plugin
+          speex: libspeexdsp resampling plugin"
 
 pbs_unpack() {
-        dounpack
+    dounpack
 }
 
 pbs_patch() {
@@ -35,5 +39,6 @@ pbs_build() {
 
 pbs_install() {
 	domkinstall
+    dodoc doc/README* doc/*.txt
 }
 

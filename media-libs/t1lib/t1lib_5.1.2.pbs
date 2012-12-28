@@ -6,11 +6,11 @@
 #
 
 DESCRIPTION="A Type 1 Font Rasterizer Library for UNIX/X11"
-HOMEPAGE="ftp://metalab.unc.edu/pub/Linux/libs/graphics/"
+HOMEPAGE="http://www.ibiblio.org/pub/Linux/libs/graphics/!INDEX.html"
 LICENSE="GPL"
-PACKAGER="StartOS Developers"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
-SRC_URI="ftp://metalab.unc.edu/pub/Linux/libs/graphics/t1lib-5.1.2.tar.gz"
+SRC_URI="ftp://metalab.unc.edu/pub/Linux/libs/graphics/"$N-$V".tar.gz"
 
 RDEPEND="libXaw"
 BDEPEND=""
@@ -18,11 +18,7 @@ RECOMMENDED=""
 CONFLICT=""
 
 pbs_unpack() {
-        dounpack
-}
-
-pbs_patch() {
-	dopatch t1lib-5.1.1-parallel.patch t1lib-do-not-install-t1lib_doc.patch
+    dounpack
 }
 
 pbs_config() {
@@ -31,11 +27,10 @@ pbs_config() {
 }
 
 pbs_build() {
-	make without_doc
+	domake without_doc
 }
 
 pbs_install() {
 	domkinstall
 }
-
 

@@ -7,32 +7,44 @@
 
 DESCRIPTION="Python Imaging Library (PIL)"
 HOMEPAGE="http://www.pythonware.com/products/pil/index.htm"
-REPO=""
-LICENSE="GPL"
-PRIORITY=""
-PACKAGER="StartOS Developers"
+LICENSE="custom,pil"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
-SRC_URI="http://effbot.org/media/downloads/Imaging-"$V$R".tar.gz"
+SRC_URI="http://effbot.org/media/downloads/Imaging-"$V".tar.gz"
+CHECKSUM="fc14a54e1ce02a0225be8854bfba478e"
 
 RDEPEND=""
-BDEPEND=" "
+BDEPEND=""
 RECOMMENDED=""
 CONFLICT=""
 
-NOTES=""
-
 pbs_unpack() {
-        dounpack
-}
-
-pbs_config() {
-	doconfig
+    dounpack
 }
 
 pbs_build() {
-	domake
+	python setup.py build_ext
+	
+	#cd Sane
+	#python setup.py build_ext
 }
 
 pbs_install() {
-	domkinstall
+	cd "$srcdir"/
+	python setup.py install --root="$destdir" --optimize=1
+
+	#pushd Sane
+	#python setup.py install --root="$destdir" --optimize=1
+	#popd
+	
+	install -dm755 "$destdir"/usr/include/python2.7/
+	install -m644 -t "$destdir"/usr/include/python2.7/ libImaging/*.h 
+
+	# do not have files ending in .py in /usr/bin
+	for f in pildriver pilprint pilconvert pilfile pilfont; do
+		mv "$destdir"/usr/bin/${f}{.py,}
+	done
+
+	dodoc README
 }
+

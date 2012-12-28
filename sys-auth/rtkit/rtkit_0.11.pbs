@@ -1,0 +1,40 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="Realtime Policy and Watchdog Daemon"
+HOMEPAGE="http://git.0pointer.de/?p=rtkit.git"
+LICENSE="GPL,custom:BSD"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
+
+SRC_URI="http://0pointer.de/public/"$N-$V".tar.xz"
+
+RDEPEND="dbus polkit"
+BDEPEND="" 
+
+INSTALL="$N.install"
+
+pbs_unpack() {
+    dounpack
+}
+
+pbs_config() {
+	config+="--with-systemdsystemunitdir=/usr/lib/systemd/system"
+	doconfig
+}
+
+pbs_build() {
+	domake
+}
+
+pbs_install() {
+	domkinstall
+    dodoc LICENSE
+    # DBus configuration
+    mkdir -p "$destdir"/usr/share/dbus-1/interfaces
+    ./rtkit-daemon --introspect > "$destdir"/usr/share/dbus-1/interfaces/org.freedesktop.RealtimeKit1.xml
+}
+

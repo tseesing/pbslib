@@ -8,7 +8,7 @@
 DESCRIPTION="An easy to use C/C++ seam carving library"
 HOMEPAGE="http://liblqr.wikidot.com/"
 LICENSE="GPL"
-PACKAGER="StartOS Developers"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
 SRC_URI="http://liblqr.wikidot.com/local--files/en:download-page/"$N"-1-"$V".tar.bz2"
 CHECKSUM="0e24ed3c9fcdcb111062640764d7b87a"
@@ -20,7 +20,7 @@ OPTIONAL=""
 CONFLICT=""
 
 pbs_unpack() {
-        dounpack
+    dounpack
 }
 
 pbs_config() {

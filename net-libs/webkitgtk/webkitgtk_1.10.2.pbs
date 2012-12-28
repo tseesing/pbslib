@@ -25,7 +25,7 @@ pbs_patch() {
 pbs_config() {
 	cd "$srcdir"/build-gtk2
 	config+="--enable-introspection --disable-silent-rules --with-gstreamer=0.10 --with-gtk=2.0 --disable-webkit2"
-	../configure $config || die  
+	../configure $config || die "webkitgtk2 configure failed."  
 	
 	config=$DEFAULT_CONFIG
 
@@ -36,7 +36,7 @@ pbs_config() {
 
 pbs_build() {
 	cd "$srcdir"/build-gtk2
-	domake all stamp-po || die
+	domake all stamp-po || die "webkitgtk2 make failed."
 	
 	cd "$srcdir"/build-gtk3
 	domake all stamp-po
@@ -44,8 +44,8 @@ pbs_build() {
 
 webkitgtk2_install() {
 	DESCRIPTION="GTK+ Web content engine library for GTK+ 2.0"
-	RDEPEND=""
-	BDEPEND="ruby"
+	RDEPEND="gst-plugins-base0.10 gtk2"
+	BDEPEND="ruby gobject-introspection perl"
 	RECOMMENDED=""
 	
 	cd "$srcdir"/build-gtk2
@@ -55,8 +55,8 @@ webkitgtk2_install() {
 
 webkitgtk3_install() {
 	DESCRIPTION="GTK+ Web content engine library for GTK+ 3.0"
-	RDEPEND=""
-	BDEPEND="ruby"
+	RDEPEND="gst-plugins-base gtk3"
+	BDEPEND="ruby gobject-introspection perl"
 	RECOMMENDED=""
 	
 	cd "$srcdir"/build-gtk3

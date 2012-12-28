@@ -7,7 +7,7 @@
 
 DESCRIPTION="free lossless audio encoder and decoder"
 HOMEPAGE="http://flac.sourceforge.net"
-LICENSE="GPL"
+LICENSE="GPL,BSD"
 PACKAGER="StartOS Developers"
 
 SRC_URI="http://downloads.xiph.org/releases/"$N"/"$N-$V".tar.gz"
@@ -17,21 +17,24 @@ BDEPEND=""
 RECOMMENDED=""
 
 pbs_unpack() {
-        dounpack
+    dounpack
+}
+
+pbs_patch() {
+    dopatch flac-1.2.1-gcc-4.3-includes.patch
 }
 
 pbs_config() {
-	config+=""
-	LIBS=-lm doconfig
+	config+="--disable-sse --disable-rpath --with-pic"
+    doconfig
 }
 
 pbs_build() {
-	sed -i "33i\#include <string.h>" examples/cpp/encode/file/main.cpp
 	domake
 }
 
 pbs_install() {
 	domkinstall
-	sed -i '/#include "config.h"/d' "$destdir"/usr/include/FLAC/export.h
+    dodoc COPYING.Xiph
 }
 

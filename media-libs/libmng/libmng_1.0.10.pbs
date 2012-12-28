@@ -7,20 +7,17 @@
 
 DESCRIPTION="Multiple Image Networkgraphics lib (animated png's)"
 HOMEPAGE="http://www.libmng.com/"
-LICENSE="GPL"
-PACKAGER="StartOS Developers"
+LICENSE="custom"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
 SRC_URI="http://downloads.sourceforge.net/"$N"/"$N-$V".tar.bz2"
+CHECKSUM="eaf1476a3bb29f6190bca660e6abef16"
 
 RDEPEND="lcms"
 BDEPEND=""
 
 pbs_unpack() {
-        dounpack
-}
-
-pbs_config() {
-	doconfig
+    dounpack
 }
 
 pbs_build() {

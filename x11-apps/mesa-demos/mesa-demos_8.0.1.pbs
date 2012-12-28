@@ -7,8 +7,8 @@
 
 DESCRIPTION="Mesa's OpenGL utility and demo programs (glxgears and glxinfo)"
 HOMEPAGE="http://mesa3d.sourceforge.net/"
-LICENSE="GPL"
-PACKAGER="StartOS Developers"
+LICENSE="custom"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
 SRC_URI="ftp://ftp.freedesktop.org/pub/mesa/demos/"$V"/"$N-$V".tar.bz2"
 
@@ -17,7 +17,7 @@ BDEPEND=""
 RECOMMENDED=""
 
 pbs_unpack() {
-        dounpack
+    dounpack
 }
 
 pbs_config() {
@@ -25,10 +25,10 @@ pbs_config() {
 }
 
 pbs_build() {
-	cd src/xdemos
 	domake
 }
 
 pbs_install() {
 	domkinstall
 }
+

@@ -1,0 +1,3 @@
+softdep ohci_hcd pre: ehci_hcd
+softdep uhci_hcd pre: ehci_hcd
+

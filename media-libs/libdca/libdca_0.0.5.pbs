@@ -8,7 +8,7 @@
 DESCRIPTION="library for decoding DTS Coherent Acoustics streams used in DVD"
 HOMEPAGE="http://www.videolan.org/developers/libdca.html"
 LICENSE="GPL"
-PACKAGER="StartOS Developers"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
 SRC_URI="http://download.videolan.org/pub/videolan/"$N"/"$V"/"$N-$V".tar.bz2"
 CHECKSUM="dab6b2795c66a82a6fcd4f8343343021"
@@ -20,7 +20,7 @@ OPTIONAL=""
 CONFLICT=""
 
 pbs_unpack() {
-        dounpack
+    dounpack
 }
 
 pbs_config() {
@@ -36,11 +36,10 @@ pbs_install() {
 	domkinstall
 	cd "$destdir" 
 	rm -f usr/share/man/man1/{extract_dts,dtsdec}.1
-	ln -s dcadec.1.gz      usr/share/man/man1/dtsdec.1.gz
-	ln -s extract_dca.1.gz usr/share/man/man1/extract_dts.1.gz
-	
+	doln dcadec.1.gz      usr/share/man/man1/dtsdec.1.gz
+	doln extract_dca.1.gz usr/share/man/man1/extract_dts.1.gz
 	# remove dangling symlink
-        rm usr/lib/libdts.a
+    rm usr/lib"$LIBDIRSUFFIX"/libdts.a
 }
 
 

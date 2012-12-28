@@ -8,17 +8,17 @@
 DESCRIPTION="XviD is an open source MPEG-4 video codec"
 HOMEPAGE="http://www.xvid.org/"
 LICENSE="GPL"
-PACKAGER="StartOS Developers"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
 SRC_URI="http://downloads.xvid.org/downloads/"$N-$V".tar.bz2"
 
 RDEPEND="glibc"
 RECOMMENDED=""
-BDEPEND=""
+BDEPEND="nasm"
 CONFLICT=""
 
 pbs_unpack() {
-        dounpack
+    dounpack
 }
 
 pbs_config() {
@@ -33,9 +33,9 @@ pbs_build() {
 
 pbs_install() {
 	domkinstall
-	cd "$destdir"
-	lib=$(basename usr/lib/libxvidcore.so.*)
-	doln /usr/lib/$lib             usr/lib/libxvidcore.so.4
-	doln /usr/lib/libxvidcore.so.4 usr/lib/libxvidcore.so
+	cd "$destdir"/usr/lib"$LIBDIRSUFFIX"
+	_lib="$(basename libxvidcore.so.*)"
+	doln "$_lib"             libxvidcore.so.4
+	doln libxvidcore.so.4 libxvidcore.so
 }
 

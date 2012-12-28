@@ -7,8 +7,8 @@
 
 DESCRIPTION="Python bindings for the D-Bus messagebus."
 HOMEPAGE="http://www.freedesktop.org/wiki/Software/DBusBindings"
-LICENSE="LGPL"
-PACKAGER="StartOS Developers"
+LICENSE="LGPL,GPL"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
 SRC_URI="http://dbus.freedesktop.org/releases/"$N"/"$N-$V".tar.gz"
 CHECKSUM="742c7432ad0f7c3f98291d58fa2e35dc"
@@ -17,10 +17,8 @@ RDEPEND="dbus-glib"
 BDEPEND=""
 RECOMMENDED=""
 
-NOTES="dodocutils epydodoc is required to Build Documentation"
-
 pbs_unpack() {
-        dounpack
+    dounpack
 }
 
 pbs_config() {

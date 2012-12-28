@@ -5,18 +5,22 @@
 # Distributed under the terms of the GNU General Public License v2
 #
 
-DESCRIPTION=" library for converting WMF files"
-HOMEPAGE="http://wvware.sourceforge.net/"
-LICENSE="GPL"
-PACKAGER="StartOS Developers"
+DESCRIPTION="library for converting WMF files"
+HOMEPAGE="http://wvware.sourceforge.net/libwmf.html"
+LICENSE="LGPL"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
 SRC_URI="http://downloads.sourceforge.net/project/wvware/"$N"/"$V"/"$N-$V".tar.gz"
 
-RDEPEND="expat freetype gdk-pixbuf libX11"
+RDEPEND="expat freetype gdk-pixbuf2 libX11"
 BDEPEND=""
 
 pbs_unpack() {
-        dounpack
+    dounpack
+}
+
+pbs_patch() {
+    dopatch libwmf-0.2.8.4-libpng-1.5.patch libwmf-0.2.8.4-useafterfree.patch
 }
 
 pbs_config() {

@@ -8,7 +8,7 @@
 DESCRIPTION="Midi processing library and a midi player using the gus patch set"
 HOMEPAGE="http://wildmidi.sourceforge.net/"
 LICENSE="LGPL"
-PACKAGER="StartOS Developers"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
 SRC_URI="http://sourceforge.net/projects/wildmidi/files/"$N"/"$N-$V".tar.gz"
 CHECKSUM="44583c95fd67761f8cd6275fd1c312f2"
@@ -21,11 +21,12 @@ CONFLICT=""
 REPLACE=""
 
 pbs_unpack() {
-        dounpack
+    dounpack
 }
 
 pbs_config() {
-	./configure --prefix=/usr --disable-werror
+    config+="--disable-werror"
+    doconfig
 }
 
 pbs_build() {

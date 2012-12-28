@@ -1,26 +1,19 @@
 . /usr/lib/ybs/funcs
 
-post_install() {
-	# Creating plugdev group if he isn't already there
-	if ! getent group plugdev >/dev/null; then
-		addgroup --system plugdev
-	fi
+gname="usbmux"
 
-	# Creating usbmux user if he isn't already there
-	if ! getent passwd usbmux >/dev/null; then
-		adduser --system --ingroup plugdev --no-create-home --gecos "usbmux daemon" usbmux || true
-	fi
+post_install() {
+    dogroupadd -g 140 $gname &>/dev/null
+    douseradd -c 'usbmux user' -u 140 -g $gname -d / -s /sbin/nologin $gname &>/dev/null
+    passwd -l $gname &>/dev/null
 }
 
 post_remove() {
-	douserdel usbmux ||true
+	douserdel -f $gname
+    dogroupdel $gname || true
 }
 
 post_upgrade() {
-	post_install
-}
-
-post_downgrade() {
 	post_install
 }
 

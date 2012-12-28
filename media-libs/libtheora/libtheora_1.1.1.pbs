@@ -30,7 +30,7 @@ pbs_build() {
 }
 
 pbs_install() {
-	domkinstall
+    make DESTDIR="$destdir" install
 	dodoc LICENSE COPYING
 }
 

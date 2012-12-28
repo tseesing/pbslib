@@ -1,0 +1,41 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="Disk Management Utility for GNOME"
+HOMEPAGE="http://www.gnome.org"
+LICENSE="GPL"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
+
+SRC_URI="http://ftp.gnome.org/pub/GNOME/sources/"$N"/"${V%.*}"/"$N-$V".tar.xz"
+CHECKSUM="e848bd0a5787a654e3421c904718c587e1a953fc1b43a21401ca65b329988c32"
+
+RDEPEND="gtk3 udisks2 libsecret libpwquality desktop-file-utils"
+RECOMMENDED=""
+BDEPEND="intltool docbook-xsl"
+OPTIONAL=""
+CONFLICT=""
+REPLACE=""
+
+INSTALL="$N.install"
+
+pbs_unpack() {
+    dounpack
+}
+
+pbs_config() {
+	config+=""
+	doconfig
+}
+
+pbs_build() {
+	domake
+}
+
+pbs_install() {
+	domkinstall
+}
+

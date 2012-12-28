@@ -7,20 +7,20 @@
 
 DESCRIPTION="Library for SSA/ASS subtitles rendering"
 HOMEPAGE="http://code.google.com/p/libass/"
-LICENSE="New BSD"
-PACKAGER="StartOS Developers"
+LICENSE="BSD"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
 SRC_URI="http://libass.googlecode.com/files/"$N-$V".tar.xz"
 CHECKSUM="7a0ea048f687421f3e1314988ca02f04861fc5f0"
 
-RDEPEND="fribidi(>=0.19.0) enca fontconfig"
+RDEPEND="fribidi enca fontconfig"
 RECOMMENDED=""
 BDEPEND=""
 OPTIONAL=""
 CONFLICT=""
 
 pbs_unpack() {
-        dounpack
+    dounpack
 }
 
 pbs_config() {
@@ -36,3 +36,4 @@ pbs_install() {
 	domkinstall
 	dodoc COPYING
 }
+

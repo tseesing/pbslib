@@ -7,8 +7,8 @@
 
 DESCRIPTION="Provide the stuff missing in List::Util"
 HOMEPAGE="http://search.cpan.org/dist/List-MoreUtils"
-LICENSE="GPL PerlArtistic"
-PACKAGER="StartOS Developers"
+LICENSE="GPL,PerlArtistic"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
 SRC_URI="http://search.cpan.org/CPAN/authors/id/A/AD/ADAMK/"$N-$V".tar.gz"
 CHECKSUM="8a33c84028cc2ff3e92c92434b326c0f"

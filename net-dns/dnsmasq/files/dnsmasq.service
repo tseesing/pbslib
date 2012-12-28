@@ -1,5 +1,7 @@
 [Unit]
 Description=A lightweight DHCP and caching DNS server
+After=network.target
+Documentation=man:dnsmasq(8)
 
 [Service]
 Type=dbus
@@ -11,3 +13,4 @@ ExecReload=/bin/kill -HUP $MAINPID
 [Install]
 WantedBy=multi-user.target
 Alias=dbus-uk.org.thekelleys.dnsmasq
+

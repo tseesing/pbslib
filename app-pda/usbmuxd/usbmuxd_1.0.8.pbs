@@ -1,0 +1,52 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="USB multiplex daemon for use with Apple iPhone/iPod Touch devices"
+HOMEPAGE="http://marcansoft.com/blog/iphonelinux/usbmuxd/"
+LICENSE="GPL,LGPL"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
+
+SRC_URI="http://cgit.sukimashita.com/"$N".git/snapshot/"$N-$V".tar.bz2"
+CHECKSUM="87fd27773a84e97ac6e2dc28b08d682e"
+
+RDEPEND="libplist libusbx"
+RECOMMENDED=""
+BDEPEND="cmake"
+OPTIONAL=""
+CONFLICT=""
+
+INSTALL="$N.install"
+
+pbs_unpack() {
+    dounpack
+}
+
+pbs_patch() {
+    echo "$V" >version.tag    
+}
+
+pbs_config() {
+	config+=""
+	doconfig
+}
+
+pbs_build() {
+	domake
+}
+
+pbs_install() {
+	domkinstall
+    cd "$destdir"
+    # fix udev dir being hardcoded
+    mv lib/udev usr/lib/
+    rmdir lib/
+    # install systemd service file
+    dounit usbmuxd.service
+    # use udev rule that works with systemd
+    docp "$filesdir"/85-usbmuxd.rules usr/lib/udev/rules.d/
+}
+

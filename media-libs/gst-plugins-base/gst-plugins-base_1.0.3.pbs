@@ -1,0 +1,40 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="Basepack of plugins for gstreamer"
+HOMEPAGE="http://gstreamer.sourceforge.net"
+LICENSE="LGPL"
+PACKAGER="StartOS Developers"
+
+SRC_URI="http://gstreamer.freedesktop.org/src/gst-plugins-base/gst-plugins-base-"$V".tar.xz"
+
+RDEPEND="alsa-lib cdparanoia gstreamer libSM libtheora libvisual libvorbis libXv orc pango"
+BDEPEND=""
+RECOMMENDED=""
+
+pbs_unpack() {
+    dounpack
+}
+
+pbs_patch() {
+	sed -i '/AC_PATH_XTRA/d' configure.ac
+}
+
+pbs_config() {
+	config+="--disable-static --enable-experimental"
+	autoreconf	
+	doconfig
+}
+
+pbs_build() {
+	domake
+}
+
+pbs_install() {
+	domkinstall
+}
+

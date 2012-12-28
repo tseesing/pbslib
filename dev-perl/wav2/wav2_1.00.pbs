@@ -9,7 +9,7 @@ DESCRIPTION="wav2mp3 wav2ogg utils"
 HOMEPAGE="http://wav2mp3.sourceforge.net/"
 REPO=""
 LICENSE="GPL-2"
-PACKAGER="StartOS Developers"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
 SRC_URI="http://downloads.sourceforge.net/project/wav2mp3/wav2mp3_wav2ogg/"$V"/WAV2-"$V$R".tar.gz"
 

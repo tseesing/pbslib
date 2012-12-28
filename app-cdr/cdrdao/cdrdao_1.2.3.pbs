@@ -5,30 +5,32 @@
 # Distributed under the terms of the GNU General Public License v2
 #
 
-DESCRIPTION="Burn CDs in disk-at-once mode -- with optional GUI frontend"
+DESCRIPTION="Burn CDs in disk-at-once mode"
 HOMEPAGE="http://cdrdao.sourceforge.net/"
 LICENSE="GPL"
 PACKAGER="StartOS Developers"
 
 SRC_URI="http://downloads.sourceforge.net/project/"$N"/"$N"/"$V"/"$N-$V".tar.bz2"
+CHECKSUM="8d15ba6280bb7ba2f4d6be31d28b3c0c"
 
-PROVIDE="cdrdao gcdmaster"
+RDEPEND="gcc-lib lame libao libmad libvorbis"
+BDEPEND="gtkmm"
 
 pbs_unpack() {
         dounpack
 }
 
 pbs_patch() {
-	dopatch cdrdao-1.2.3-autoconf-update.patch
-	dopatch cdrdao-1.2.3-k3b.patch
-	dopatch cdrdao-1.2.3-stat.patch
+	dopatch cdrdao-1.2.3-autoconf-update.patch \
+	        cdrdao-1.2.3-k3b.patch \
+	        cdrdao-1.2.3-stat.patch
 }
 
 pbs_config() {
-	config+=" --with-xdao
-	          --with-lame 
-		  --with-ogg-support 
-		  --with-mp3-support "
+	config+="--with-xdao
+	         --with-lame 
+		     --with-ogg-support 
+		     --with-mp3-support"
 	doconfig
 }
 
@@ -36,24 +38,9 @@ pbs_build() {
 	domake
 }
 
-cdrdao_install() {
-	DESCRIPTION="Burn CDs in disk-at-once mode"
-	RDEPEND="gcc-lib glibc lame libao libmad libogg libvorbis"
+pbs_install() {
 	for dir in trackdb utils paranoia dao; do
 		domkinstall -C "${dir}"
 	done
-}
-
-gcdmaster_install() {
-	DESCRIPTION="Burn CDs in disk-at-once mode GUI frontend"
-	RDEPEND="atk atkmm avahi cairo cairomm dbus dbus-glib expat fontconfig freetype gail gcc-lib gconf gconfmm gdk-pixbuf glib2 glibc glibmm gnome-vfs gnome-vfsmm gtk+ gtkmm libao libart_lgpl libbonobo libbonoboui libcanberra libgcrypt libglade libglademm libgnome libgnomecanvas libgnomecanvasmm libgnome-keyring libgnomemm libgnomeui libgnomeuimm libgpg-error libICE libmad libogg libpng libsigc++ libSM libtool libvorbis libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libxml2 libXrandr libXrender openssl orbit pango pangomm pixman popt tdb util-linux-ng zlib"
-
-	INSTALL="$N.install"
-
-	domkinstall -C xdao GCONF_DISABLE_MAKEFILE_SCHEMA_INSTALL=1
-
-	cd "$destdir"
-	mv "etc/gconf" "usr/share/"
-	rmdir "etc"
 }
 

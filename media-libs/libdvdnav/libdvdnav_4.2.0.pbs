@@ -8,7 +8,7 @@
 DESCRIPTION="Library for DVD navigation tools"
 HOMEPAGE="http://dvdnav.mplayerhq.hu"
 LICENSE="GPL"
-PACKAGER="StartOS Developers"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
 SRC_URI="http://dvdnav.mplayerhq.hu/releases/"$N-$V".tar.bz2"
 CHECKSUM="8c971b08276c89ddcecd26fc44204460fd250dc57346f03476d3077188c47550"
@@ -21,7 +21,7 @@ CONFLICT=""
 REPLACE=""
 
 pbs_unpack() {
-        dounpack
+    dounpack
 }
 
 pbs_config() {
@@ -36,5 +36,4 @@ pbs_build() {
 pbs_install() {
 	domkinstall
 }
-
 

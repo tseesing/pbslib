@@ -8,20 +8,21 @@
 DESCRIPTION="Lightweight HTML Rendering/Printing/Editing Engine"
 HOMEPAGE="http://www.gnome.org/"
 LICENSE="GPL"
-PACKAGER="StartOS Developers"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
 SRC_URI="http://ftp.gnome.org/pub/gnome/sources/"$N"/3.32/"$N-$V".tar.bz2"
+CHECKSUM="8746053cf709e1de37c7ac775ab1364ddda4b75167660ed7f98a237b3797e39f"
 
-RDEPEND="enchant gail gconf"
-BDEPEND=""
+RDEPEND="gconf gtk2 enchant iso-codes libsoup"
+BDEPEND="intltool"
 RECOMMENDED=""
 
 pbs_unpack() {
-        dounpack
+    dounpack
 }
 
 pbs_config() {
-	config+="--disable-deprecated-warning-flags"
+	config+="--disable-static --disable-deprecated-warning-flags"
 	doconfig
 }
 
@@ -31,5 +32,6 @@ pbs_build() {
 
 pbs_install() {
 	domkinstall
+    rm -f "$destdir"/usr/bin/gtkhtml-editor-test
 }
 

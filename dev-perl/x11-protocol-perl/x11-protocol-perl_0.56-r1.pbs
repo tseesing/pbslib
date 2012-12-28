@@ -7,8 +7,8 @@
 
 DESCRIPTION="Perl module for the X Window System Protocol, version 11 "
 HOMEPAGE="http://search.cpan.org/~smccam/X11-Protocol-0.56/Protocol.pm"
-PACKAGER="StartOS Developers"
-LICENSE="GPL PerlArtistic"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
+LICENSE="GPL,PerlArtistic"
 YARCH="any"
 
 SRC_URI="http://search.cpan.org/CPAN/authors/id/S/SM/SMCCAM/X11-Protocol-"$V".tar.gz"

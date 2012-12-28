@@ -7,8 +7,8 @@
 
 DESCRIPTION="Layout and render international text "
 HOMEPAGE="http://search.cpan.org/~tsch/Pango-1.221/lib/Pango.pm"
-PACKAGER="StartOS Developers"
-LICENSE="GPL PerlArtistic"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
+LICENSE="GPL,PerlArtistic"
 
 SRC_URI="http://search.cpan.org/CPAN/authors/id/T/TS/TSCH/Pango-"$V".tar.gz"
 

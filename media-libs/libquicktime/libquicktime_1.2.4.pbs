@@ -8,23 +8,26 @@
 DESCRIPTION="A library based on quicktime4linux with extensions"
 HOMEPAGE="http://libquicktime.sourceforge.net/"
 LICENSE="GPL"
-PACKAGER="StartOS Developers"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
 SRC_URI="http://downloads.sourceforge.net/sourceforge/"$N"/"$N-$V".tar.gz"
 CHECKSUM="81cfcebad9b7ee7e7cfbefc861d6d61b"
 
-RDEPEND="ffmpeg(>=0.11.1) gtk+ libXaw libXv mesa"
+RDEPEND="ffmpeg gtk2 libXaw libXv mesa"
 RECOMMENDED=""
 BDEPEND=""
 OPTIONAL=""
 CONFLICT=""
 
 pbs_unpack() {
-        dounpack
+    dounpack
 }
 
 pbs_config() {
-	config+=""
+	config+="--enable-gpl
+             --with-ffmpeg 
+             --with-x264 
+             --without-doxygen"
 	doconfig
 }
 

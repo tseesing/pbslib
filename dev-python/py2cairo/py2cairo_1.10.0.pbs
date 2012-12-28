@@ -7,18 +7,18 @@
 
 DESCRIPTION="Python wrapper for cairo vector graphics library for python 2.x (>=2.6)"
 HOMEPAGE="http://cairographics.org/pycairo/"
-LICENSE="GPL/MPL"
-PACKAGER="StartOS Developers"
+LICENSE="GPL,MPL"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
 SRC_URI="http://cairographics.org/releases/"$N-$V".tar.bz2"
 CHECKSUM="20337132c4ab06c1146ad384d55372c5"
 
-RDEPEND="cairo(>=1.10.0) expat fontconfig freetype glibc libpng libX11 libXau libxcb libXdmcp libXrender pixman python zlib"
+RDEPEND="cairo(>=1.10.0) python"
 BDEPEND=""
 RECOMMENDED=""
 
 pbs_unpack() {
-        dounpack
+    dounpack
 }
 
 pbs_config() {	

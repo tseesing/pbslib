@@ -1,6 +1,10 @@
 
 post_install() {
-	 update-desktop-database -q
+    if [[ -x /usr/bin/mktexlsr ]]; then
+        echo ">>> updating the filename database for texlive..."
+        mktexlsr --quiet /usr/share/texmf
+    fi
+    update-desktop-database -q
 }
 
 post_upgrade() {
@@ -10,3 +14,4 @@ post_upgrade() {
 post_downgrade() {
 	post_install
 }
+

@@ -7,12 +7,12 @@
 
 DESCRIPTION=" software-based implementation of the codec specified in the JPEG-2000 Part-1 standard"
 HOMEPAGE="http://www.ece.uvic.ca/~mdadams/jasper/"
-LICENSE="GPL"
+LICENSE="JasPer2.0"
 PACKAGER="StartOS Developers"
 
 SRC_URI="http://www.ece.uvic.ca/~mdadams/"$N"/software/"$N-$V".zip"
 
-RDEPEND="freeglut libjpeg-turbo libXmu"
+RDEPEND="freeglut libjpeg-turbo libXmu glu"
 BDEPEND="unzip"
 RECOMMENDED=""
 
@@ -21,10 +21,13 @@ pbs_unpack() {
 }
 
 pbs_patch() {
-	dopatch "$N-$V"-security_fixes-1.patch
+	dopatch jpc_dec.c.patch patch-libjasper-stepsizes-overflow.diff \
+            jasper-1.900.1-CVE-2008-3520.patch \
+            jasper-1.900.1-CVE-2008-3522.patch 
 }
 
 pbs_config() {
+    config+=""
 	doconfig
 }
 
@@ -34,5 +37,6 @@ pbs_build() {
 
 pbs_install() {
 	domkinstall
+    dodoc LICENSE
 }
 

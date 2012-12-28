@@ -8,10 +8,9 @@
 DESCRIPTION="An object-oriented language for quick and easy programming"
 HOMEPAGE="http://www.ruby-lang.org/en/"
 LICENSE="custom,BSD"
-PACKAGER="StartOS Developers"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
-SRC_URI="ftp://ftp.ruby-lang.org/pub/"$N"/1.9/"$N-$V"-p194.tar.bz2"
-CHECKSUM="2278eff4cfed3cbc0653bc73085caa34"
+SRC_URI="ftp://ftp.ruby-lang.org/pub/"$N"/1.9/"$N-$V"-p327.tar.bz2"
 
 RDEPEND="berkeley-db gdbm libffi openssl readline tk"
 BDEPEND=""
@@ -23,10 +22,9 @@ pbs_unpack() {
 }
 
 pbs_config() {
-	config+=" --enable-shared
-	          --enable-pthread 
-	          --disable-rpath 
-		  --disable-install-doc "
+	config+="--enable-shared
+	         --enable-pthread 
+	         --disable-rpath"
 	doconfig
 }
 
@@ -36,7 +34,7 @@ pbs_build() {
 
 pbs_install() {
 	make DESTDIR="${destdir}" install-nodoc
-	docp "${filesdir}"/gemrc "${destdir}"/etc/
 	dodoc COPYING BSDL
+	docp "$filesdir"/gemrc "$destdir"/etc/
 }
 

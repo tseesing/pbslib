@@ -8,7 +8,7 @@
 DESCRIPTION="Provides a crypt()-compatible interface to new MD5-based crypt()"
 HOMEPAGE="http://search.cpan.org/dist/Crypt-PasswdMD5"
 LICENSE="GPL,PerlArtistic"
-PACKAGER="StartOS Developers"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 YARCH="any"
 
 SRC_URI="http://search.cpan.org/CPAN/authors/id/L/LU/LUISMUNOZ/"$N-$V".tar.gz"

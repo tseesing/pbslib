@@ -1,0 +1,39 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="C library implementing OAuth Core RFC 5849"
+HOMEPAGE="http://liboauth.sourceforge.net"
+LICENSE="MIT"
+PACKAGER="StartOS Developers"
+
+SRC_URI="http://liboauth.sourceforge.net/pool/"$N-$V".tar.gz"
+
+RDEPEND="curl"
+RECOMMENDED=""
+BDEPEND=""
+OPTIONAL=""
+CONFLICT=""
+REPLACE=""
+
+pbs_unpack() {
+    dounpack
+}
+
+pbs_config() {
+	config+="--disable-static"
+	doconfig
+}
+
+pbs_build() {
+	domake
+}
+
+pbs_install() {
+	domkinstall
+    dodoc COPYING.MIT 
+}
+

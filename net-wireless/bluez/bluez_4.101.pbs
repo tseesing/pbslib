@@ -7,45 +7,41 @@
 
 DESCRIPTION="Bluetooth Tools and System Daemons for Linux"
 HOMEPAGE="http://bluez.sourceforge.net/"
-LICENSE="GPL"
-PACKAGER="StartOS Developers"
+LICENSE="GPL2"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
-SRC_URI="http://www.kernel.org/pub/linux/bluetooth/"$N-$V".tar.gz"
-CHECKSUM="fb42cb7038c380eb0e2fa208987c96ad"
+SRC_URI="http://www.kernel.org/pub/linux/bluetooth/"$N-$V".tar.bz2"
 
-RDEPEND="dbus gst-plugins-base libusb-compat readline udev"
+RDEPEND="dbus systemd python"
 BDEPEND=""
 RECOMMENDED=""
-
-INSTALL="$N.install"
+OPTIONAL="gstreamer0.10-base: bluetooth GStreamer support
+          alsa-lib: Audio bluetooth devices support
+          python2-dbus: to run bluez-simple-agent
+          python2-gobject: to run bluez-simple-agent
+          libusb-compat: USB adapters support
+          cups: CUPS backend"
 
 pbs_unpack() {
-        dounpack
-}
-
-pbs_patch() {
-	# allow users of wheel group to communicate with bluetoothd
-	dopatch add-wheel-group-to-confile.patch
+    dounpack
 }
 
 pbs_config() {
-	./configure --prefix=/usr \
-	            --sysconfdir=/etc \
-	            --localstatedir=/var \
-		    --libexecdir=/lib \
-		    --enable-gstreamer \
-	            --enable-alsa \
-	            --enable-usb \
-		    --enable-tools \
-		    --enable-bccmd \
-		    --enable-dfutool \
-		    --enable-hid2hci \
-		    --enable-hidd \
-		    --enable-pand \
-		    --enable-dund \
-		    --enable-cups \
-		    --enable-wiimote \
-		    --disable-test 
+    config+="--enable-gstreamer 
+             --enable-alsa 
+             --enable-usb 
+             --enable-tools 
+             --enable-bccmd
+             --enable-dfutool 
+             --enable-hid2hci 
+             --enable-hidd 
+             --enable-pand 
+             --enable-dund 
+             --enable-cups 
+             --enable-wiimote 
+             --disable-test 
+             --with-systemdunitdir=/usr/lib/systemd/system"
+    doconfig
 }
 
 pbs_build() {
@@ -54,14 +50,10 @@ pbs_build() {
 
 pbs_install() {
 	domkinstall
-	  
-	install -d "$destdir"/etc/bluetooth
-	install -m644 network/network.conf input/input.conf \
-		      audio/audio.conf serial/serial.conf \
-		      "$destdir"/etc/bluetooth/
-  
-	install -Dm755 test/simple-agent "$destdir"/usr/bin/bluez-simple-agent
-	install -Dm755 test/test-device "$destdir"/usr/bin/bluez-test-device
-	install -Dm755 test/test-input "$destdir"/usr/bin/bluez-test-input
-}	
+    docp network/network.conf input/input.conf audio/audio.conf serial/serial.conf \
+         "$destdir"/etc/bluetooth/
+    install -Dm755 test/simple-agent "$destdir"/usr/bin/bluez-simple-agent
+    install -Dm755 test/test-device "$destdir"/usr/bin/bluez-test-device
+    install -Dm755 test/test-input "$destdir"/usr/bin/bluez-test-input
+}
 

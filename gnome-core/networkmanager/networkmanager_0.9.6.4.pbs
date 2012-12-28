@@ -8,21 +8,31 @@
 DESCRIPTION="Network configuration and management in an easy way. Desktop environment independent"
 HOMEPAGE="http://www.gnome.org/projects/NetworkManager/"
 LICENSE="GPL"
-PACKAGER="StartOS Develpers"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
 SRC_URI="http://ftp.gnome.org/pub/gnome/core/3.6/3.6.2/sources/NetworkManager-"$V".tar.xz"
 
 RDEPEND="dbus-glib libnl libsoup nss ppp polkit systemd"
-BDEPEND=""
+BDEPEND="intltool dhcpcd iptables gobject-introspection"
 RECOMMENDED=""
 
+OPTIONAL="modemmanager: for modem management service
+          dhcpcd: alternative DHCP client; does not support DHCPv6
+          iptables: Connection sharing
+          dnsmasq: Connection sharing
+          bluez: Bluetooth support"
+
+INSTALL="$N.install"
+
 pbs_unpack() {
-        dounpack
+    dounpack
 }
 
 pbs_patch() {	
-	dopatch disable_set_hostname.patch dnsmasq-path.patch \
-	        nm-polkit-permissive.patch repair-signals.patch \
+	dopatch disable_set_hostname.patch \
+            dnsmasq-path.patch \
+            nm-polkit-permissive.patch \
+            repair-signals.patch \
 	        systemd-sleep.patch
 }
 
@@ -30,15 +40,15 @@ pbs_config() {
 	config+=" --with-crypto=nss
 	          --with-distro=arch 
 	          --with-dhclient=/usr/sbin/dhclient 
-		  --with-dhcpcd=/usr/sbin/dhcpcd 
-		  --with-iptables=/usr/sbin/iptables 
-		  --with-systemdsystemunitdir=/usr/lib/systemd/system 
-		  --with-udev-dir=/usr/lib/udev 
-		  --with-resolvconf=/usr/sbin/resolvconf 
-		  --with-session-tracking=systemd 
-		  --disable-static 
-		  --enable-more-warnings=no 
-		  --disable-wimax " 
+		      --with-dhcpcd=/usr/sbin/dhcpcd 
+		      --with-iptables=/usr/sbin/iptables 
+		      --with-systemdsystemunitdir=/usr/lib/systemd/system 
+		      --with-udev-dir=/usr/lib/udev 
+		      --with-resolvconf=/usr/sbin/resolvconf 
+		      --with-session-tracking=systemd 
+		      --disable-static 
+		      --enable-more-warnings=no 
+		      --disable-wimax " 
 	AUTOPOINT="intltoolize -f -c --automake" autoreconf -fi
 	doconfig
 }

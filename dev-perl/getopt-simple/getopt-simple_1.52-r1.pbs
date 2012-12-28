@@ -7,9 +7,9 @@
 
 DESCRIPTION="Perl module Provide a simple wrapper around Getopt::Long"
 HOMEPAGE="http://search.cpan.org/~rsavage/Getopt-Simple-1.52/"
-LICENSE="GPL PerlArtistic"
+LICENSE="GPL,PerlArtistic"
 YARCH="any"
-PACKAGER="StartOS Developers"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
 SRC_URI="http://search.cpan.org/CPAN/authors/id/R/RS/RSAVAGE/Getopt-Simple-"$V".tgz"
 

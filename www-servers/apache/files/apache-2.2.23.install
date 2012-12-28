@@ -1,0 +1,5 @@
+
+post_install() {
+    systemd-tmpfiles --create /usr/lib/tmpfiles.d/apache.conf || true
+}
+

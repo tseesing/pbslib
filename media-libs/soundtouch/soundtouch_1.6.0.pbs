@@ -8,7 +8,7 @@
 DESCRIPTION="Audio processing library for changing tempo, pitch and playback rates."
 HOMEPAGE="http://www.surina.net/soundtouch/"
 LICENSE="LGPL"
-PACKAGER="StartOS Developers"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
 SRC_URI="http://www.surina.net/"$N"/"$N-$V".tar.gz"
 CHECKSUM="aa1c63d4d67b033f044a6a48d2be5bdd"
@@ -21,7 +21,7 @@ CONFLICT=""
 REPLACE=""
 
 pbs_unpack() {
-        dounpack
+    dounpack
 }
 
 pbs_patch() {
@@ -29,9 +29,9 @@ pbs_patch() {
 }
 
 pbs_config() {
-	[ "$ARCH" = "x86_64" ] && CONFIGFLAG="--with-pic"
+	[ "$ARCH" = "x86_64" ] && EXTA_CONFIG="--with-pic" || EXTA_CONFIG=""
 	./bootstrap
-	./configure --prefix=/usr --enable-shared ${CONFIGFLAG}
+    doconfig ${EXTR_CONFIG}
 }
 
 pbs_build() {

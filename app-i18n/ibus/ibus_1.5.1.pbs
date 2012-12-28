@@ -1,0 +1,57 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="Intelligent Input Bus for Linux / Unix OS"
+HOMEPAGE="http://code.google.com/p/ibus/"
+LICENSE="LGPL"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
+
+SRC_URI="http://ibus.googlecode.com/files/"$N-$V".tar.gz"
+CHECKSUM="31d732c17d0a103565fa29995c5610e8be8b2dca"
+
+RDEPEND="gtk2 gtk3 pygobject pyxdg"
+BDEPEND=""
+RECOMMENDED=""
+
+NOTES="
+To use ibus, you should:
+1. Get input engines from sunrise overlay.
+2. Setup ibus:
+$ ibus-setup
+3. Set the following in your user startup scripts
+such as .xinitrc, .xsession or .xprofile:
+export XMODIFIERS=\"@im=ibus\"
+export GTK_IM_MODULE=\"ibus\"
+export QT_IM_MODULE=\"xim\"
+ibus-daemon -d -x
+"
+
+INSTALL="$N.install"
+
+pbs_unpack() {
+    dounpack
+}
+
+pbs_config() {
+	config+="--disable-gconf 
+             --disable-engine 
+             --disable-memconf 
+             --enable-dconf 
+             --enable-python-library
+             --disable-ui
+             --enable-introspection" 
+	doconfig
+}
+
+pbs_build() {
+	domake
+}
+
+pbs_install() {
+	domkinstall
+}
+

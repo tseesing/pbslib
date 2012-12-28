@@ -1,0 +1,63 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="Linear Algebra PACKage"
+HOMEPAGE="http://www.netlib.org/lapack"
+LICENSE="custom"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
+
+SRC_URI="http://www.netlib.org/"$N"/"$N-$V".tgz"
+CHECKSUM="93a6e4e6639aaf00571d53a580ddc415416e868b"
+
+BDEPEND="cmake"
+
+PROVIDE="lapack blas"
+
+pbs_unpack() {
+    dounpack
+}
+
+pbs_config() {
+    doconfig -DCMAKE_BUILD_TYPE=Release \
+             -DCMAKE_SKIP_RPATH=ON \
+             -DBUILD_SHARED_LIBS=ON \
+             -DCMAKE_Fortran_COMPILER=gfortran
+}
+
+pbs_build() {
+    domake
+}
+
+lapack_install() {
+    DESCRIPTION="Linear Algebra PACKage"
+    RDEPEND="blas=$V"
+    
+    cd "$srcdir"
+
+    for libname in liblapack libtmglib; do
+        docp build/lib/"${libname}".so "$destdir"/usr/lib/
+        ln -sf liblapack.so "$destdir"/usr/lib/"${libname}".so."$V"
+        ln -sf liblapack.so "$destdir"/usr/lib/"${libname}".so.3
+    done
+
+    docp build/bin/* "$destdir"/usr/bin/
+    chmod 755 "$destdir"/usr/bin/*
+    dodoc LICENSE 
+}
+
+blas_install() {
+    DESCRIPTION="Basic Linear Algebra Subprograms"
+    RDEPEND=""
+    
+    cd "$srcdir"
+
+    docp build/lib/libblas.so "${destdir}"/usr/lib/
+    ln -sf libblas.so "${destdir}"/usr/lib/libblas.so."$V"
+    ln -sf libblas.so "${destdir}"/usr/lib/libblas.so.3
+    dodoc LICENSE
+}
+

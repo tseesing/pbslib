@@ -8,7 +8,7 @@
 DESCRIPTION="C64 SID player library"
 HOMEPAGE="http://critical.ch/distfiles"
 LICENSE="GPL"
-PACKAGER="StartOS Developers"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
 SRC_URI="http://critical.ch/distfiles/"$N-$V".tgz"
 CHECKSUM="37c51ba4bd57164b1b0bb7b43b9adece"
@@ -21,7 +21,7 @@ CONFLICT=""
 REPLACE=""
 
 pbs_unpack() {
-        dounpack
+    dounpack
 }
 
 pbs_patch() {

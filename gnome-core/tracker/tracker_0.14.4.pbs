@@ -1,0 +1,49 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="All-in-one indexer, search tool and metadata database"
+HOMEPAGE="http://www.gnome.org"
+LICENSE="GPL"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
+
+SRC_URI="http://ftp.gnome.org/pub/gnome/core/3.6/3.6.2/sources/"$N-$V".tar.xz"
+CHECKSUM="b818ee42b9007a94b2f8046edc4706bb2036187d5fd304e7ae23e5d2fcf85918"
+
+RDEPEND="sqlite icu glib2 libffi libpcre util-linux libgee libgnome-keyring upower libexif exempi poppler-glib libgsf enca networkmanager gtk3 desktop-file-utils hicolor-icon-theme"
+RECOMMENDED=""
+BDEPEND=""
+OPTIONAL="giflib: extractor for GIF data
+          gst-plugins-base0.10: video extractor
+          totem-pl-parser: playlist support
+          nautilus: nautilus-extension
+          libvorbis: Vorbis metadata extractor
+          flac: FLAC metadata extractor
+          taglib: writeback for audio files
+          gnome-panel: tracker-search-bar
+          libgxps: XPS extractor"
+CONFLICT=""
+REPLACE=""
+
+INSTALL="$N.install"
+
+pbs_unpack() {
+    dounpack
+}
+
+pbs_config() {
+	config+="--disable-unit-tests --enable-libflac --enable-libvorbis"
+	doconfig
+}
+
+pbs_build() {
+	domake
+}
+
+pbs_install() {
+	domkinstall
+}
+

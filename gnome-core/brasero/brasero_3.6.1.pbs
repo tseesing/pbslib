@@ -1,0 +1,42 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="A disc burning application for Gnome."
+HOMEPAGE="http://www.gnome.org/projects/brasero"
+LICENSE="GPL"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
+
+SRC_URI="http://ftp.gnome.org/pub/gnome/core/3.6/3.6.2/sources/"$N-$V".tar.xz"
+
+RDEPEND="gtk3 gst-plugins-base totem-pl-parser cdrkit cdrdao desktop-file-utils hicolor-icon-theme shared-mime-info libcanberra dvd+rw-tools dconf tracker"
+BDEPEND="gtk-doc intltool gobject-introspection docbook-xsl"
+RECOMMENDED=""
+OPTIONAL="dvdauthor: video project
+          gst-plugins-bad0.10: video project
+          libburn: alternative back-end
+          libisofs: libburn back-end
+          vcdimager: video project"
+
+INSTALL="$N.install"
+
+pbs_unpack() {
+    dounpack
+}
+
+pbs_config() {
+	config+="--disable-schemas-compile --disable-caches" 
+	doconfig
+}
+
+pbs_build() {
+	domake
+}
+
+pbs_install() {
+	domkinstall
+}
+

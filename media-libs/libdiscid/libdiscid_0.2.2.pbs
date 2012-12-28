@@ -24,7 +24,8 @@ pbs_unpack() {
 }
 
 pbs_config() {
-	./configure --prefix=/usr
+     config+=""
+     doconfig
 }
 
 pbs_build() {
@@ -32,6 +33,6 @@ pbs_build() {
 }
 
 pbs_install() {
-	make prefix="${destdir}"/usr install
+    domkinstall
 }
 

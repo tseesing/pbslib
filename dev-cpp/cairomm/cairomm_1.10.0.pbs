@@ -1,0 +1,35 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="A C++ API for cairo"
+HOMEPAGE="http://cairographics.org/cairomm"
+LICENSE="LGPL,MPL"
+PACKAGER="StartOS Developers"
+
+SRC_URI="http://cairographics.org/releases/"$N-$V".tar.gz"
+CHECKSUM="f08bf8a331067f0d1e876523f07238fba6b26b99"
+
+RDEPEND="cairo libsigc++"
+BDEPEND=""
+RECOMMENDED=""
+
+pbs_unpack() {
+    dounpack
+}
+
+pbs_config() {
+	doconfig
+}
+
+pbs_build() {
+	domake
+}
+
+pbs_install() {
+	domkinstall
+}
+

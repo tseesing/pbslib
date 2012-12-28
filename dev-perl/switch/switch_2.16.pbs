@@ -7,8 +7,8 @@
 
 DESCRIPTION="A switch statement for Perl"
 HOMEPAGE="http://search.cpan.org/dist/Switch"
-LICENSE="GPL PerlArtistic"
-PACKAGER="StartOS Developers"
+LICENSE="GPL,PerlArtistic"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 YARCH="any"
 
 SRC_URI="http://cpan.communilink.net/authors/id/R/RG/RGARCIA/Switch-"$V".tar.gz"

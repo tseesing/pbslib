@@ -7,8 +7,8 @@
 
 DESCRIPTION="A software implementation of the OpenAL 3D audio API"
 HOMEPAGE="http://kcat.strangesoft.net/openal.html"
-LICENSE="GPL"
-PACKAGER="StartOS Developers"
+LICENSE="LGPL"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
 SRC_URI="http://kcat.strangesoft.net/"$N"-releases/"$N"-soft-"$V".tar.bz2"
 
@@ -16,7 +16,7 @@ RDEPEND="glibc"
 BDEPEND=""
 
 pbs_unpack() {
-        dounpack
+    dounpack
 }
 
 pbs_config() {
@@ -30,3 +30,4 @@ pbs_build() {
 pbs_install() {
 	domkinstall
 }
+

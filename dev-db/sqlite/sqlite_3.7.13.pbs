@@ -27,19 +27,19 @@ pbs_build() {
 	# build sqlite
 	#./configure --prefix=/usr --disable-static || return 1
 	config+="--disable-static" 
-	doconfig || die "build sqlite failed"
-	domake   || die
+	doconfig || die "sqlite configure failed."
+	domake   || die "sqlite make failed."
 
 	# build the tcl extension    
 	cd tea
 	config+=" --with-system-sqlite" 
-	doconfig || die "build tea failed"
-	domake
+	doconfig || die "tcl extension configure failed."
+	domake  || die "tcl extension make failed."
 }
 
 pbs_install() {
 	# Install the tcl extension
-	domkinstall || die "make install tea failed"
+	domkinstall || die "tcl extension make install failed."
 
 	# Install sqlite
 	cd ../

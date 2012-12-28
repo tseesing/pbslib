@@ -14,7 +14,7 @@ SRC_URI="ftp://ftp.freedesktop.org/pub/mesa/"$V"/MesaLib-"$V".tar.bz2"
 CHECKSUM="97d6554c05ea7449398afe3a0ede7018"
 
 RDEPEND="expat gcc-lib libdrm(>=2.4.37) libXdamage libXxf86vm systemd libvdpau"
-BDEPEND="dri2proto llvm-dev makedepend"
+BDEPEND="dri2proto llvm makedepend"
 RECOMMENDED=""
 
 pbs_unpack() {
@@ -25,24 +25,24 @@ pbs_config() {
 	case "$ARCH" in
 	  x86_64) extra_conf="--enable-64-bit"
 	esac
-	config+=" --with-gallium-drivers=r300,r600,radeonsi,nouveau,svga,swrast 
-	          --with-dri-drivers=i915,i965,r200,radeon,nouveau,swrast
-	          --enable-gallium-llvm 
-                  --enable-egl 
-                  --enable-gallium-egl 
-                  --with-egl-platforms=x11,drm 
-                  --enable-shared-glapi 
-                  --enable-gbm 
-                  --enable-glx-tls 
-                  --enable-dri 
-                  --enable-glx 
-                  --enable-osmesa 
-                  --enable-gles1 
-                  --enable-gles2 
-                  --enable-texture-float 
-                  --enable-xa 
-                  --enable-vdpau 
-		  "$extra_conf" "	
+	config+="--with-gallium-drivers=r300,r600,radeonsi,nouveau,svga,swrast 
+	         --with-dri-drivers=i915,i965,r200,radeon,nouveau,swrast
+	         --enable-gallium-llvm 
+             --enable-egl 
+             --enable-gallium-egl 
+             --with-egl-platforms=x11,drm 
+             --enable-shared-glapi 
+             --enable-gbm 
+             --enable-glx-tls 
+             --enable-dri 
+             --enable-glx 
+             --enable-osmesa 
+             --enable-gles1 
+             --enable-gles2 
+             --enable-texture-float 
+             --enable-xa 
+             --enable-vdpau 
+		     "$extra_conf""	
 	autoreconf -vfi	 
 	doconfig
 }

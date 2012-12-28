@@ -8,17 +8,17 @@
 DESCRIPTION="A set of tools for CD/DVD reading and recording, including cdrecord"
 HOMEPAGE="http://cdrkit.org"
 LICENSE="GPL"
-PACKAGER="StartOS Developers"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
  
 SRC_URI="http://cdrkit.org/releases/"$N-$V".tar.gz"
 
 RDEPEND="bzip2 file libcap"
 BDEPEND="cmake"
-RECOMMENDED=""
+RECOMMENDED="perl"
 REPLACE="cdrtools"
 
 pbs_unpack() {
-        dounpack
+    dounpack
 }
 
 pbs_build() {

@@ -7,10 +7,10 @@
 
 DESCRIPTION="Musepack decoding library"
 HOMEPAGE="http://musepack.net/"
-LICENSE="GPL"
-PACKAGER="StartOS Developers"
+LICENSE="custom"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
-SRC_URI="http://files.musepack.net/source/"$N-$V$R".tar.bz2"
+SRC_URI="http://files.musepack.net/source/"$N-$V".tar.bz2"
 
 RDEPEND="glibc"
 BDEPEND=""
@@ -18,11 +18,11 @@ RECOMMENDED=""
 CONFLICT=""
 
 pbs_unpack() {
-        dounpack
+    dounpack
 }
 
 pbs_config() {
-	config+=""
+	config+="--disable-static"
 	doconfig
 }
 

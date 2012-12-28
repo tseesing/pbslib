@@ -8,19 +8,19 @@
 DESCRIPTION="A tool for generating C-based recognizers from regular expressions."
 HOMEPAGE="http://re2c.sourceforge.net/"
 LICENSE="GPL"
-PACKAGER="StartOS Developers"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
 SRC_URI="http://downloads.sourceforge.net/"$N"/"$N-$V".tar.gz"
 CHECKSUM="4a97d8f77ed6d2c76c8bd840a43f5633"
 
-RDEPEND="gcc-lib"
+RDEPEND="gcc-libs"
 RECOMMENDED=""
 BDEPEND=""
 OPTIONAL=""
 CONFLICT=""
 
 pbs_unpack() {
-        dounpack
+    dounpack
 }
 
 pbs_config() {

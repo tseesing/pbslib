@@ -1,0 +1,19 @@
+. /usr/lib/ybs/funcs
+
+gname="rtkit"
+
+post_install() {
+	dogroupadd -g 133 $gname
+	 douseradd -u 133 -g $gname -c 'RealtimeKit' -s /sbin/nologin -d /proc "gname"
+    dbus-send --system --type=method_call --dest=org.freedesktop.DBus / org.freedesktop.DBus.ReloadConfig >/dev/null 2>&1 || true
+}
+
+post_remove() {
+	douserdel -f $gname
+	dogroupdel $gname ||true
+}
+
+post_upgrade() {
+	post_install
+}
+

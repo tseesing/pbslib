@@ -7,8 +7,8 @@
 
 DESCRIPTION="Perl/CPAN Error module - Error/exception handling in an OO-ish way"
 HOMEPAGE="http://search.cpan.org/dist/Error/"
-LICENSE="GPL PerlArtistic"
-PACKAGER="StartOS Developers"
+LICENSE="GPL,PerlArtistic"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 YARCH="any"
 
 SRC_URI="http://mirrors.sohu.com/CPAN/authors/id/S/SH/SHLOMIF/Error-"$V".tar.gz"

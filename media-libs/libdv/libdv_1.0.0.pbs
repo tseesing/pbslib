@@ -8,7 +8,7 @@
 DESCRIPTION="The Quasar DV codec (libdv) is a software codec for DV video"
 HOMEPAGE="http://libdv.sourceforge.net"
 LICENSE="LGPL"
-PACKAGER="StartOS Developers"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
 SRC_URI="http://downloads.sourceforge.net/"$N"/"$N-$V".tar.gz"
 CHECKSUM="f895162161cfa4bb4a94c070a7caa6c7"
@@ -20,7 +20,7 @@ OPTIONAL=""
 CONFLICT=""
 
 pbs_unpack() {
-        dounpack
+    dounpack
 }
 
 pbs_config() {
@@ -35,5 +35,4 @@ pbs_build() {
 pbs_install() {
 	domkinstall
 }
-
 

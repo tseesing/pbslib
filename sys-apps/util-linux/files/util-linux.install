@@ -1,11 +1,7 @@
-. /usr/lib/ybs/funcs
 
 post_install() {
-	if [ ! -d /run/uuidd ]; then
-    		# refer to uid/gid by number to avoid dependency on filesystem
-		install -o 68 -g 68 -dm755 /run/uuidd
-	fi
-	return 0
+    # refer to uid/gid by number to avoid dependency on filesystem
+	[ ! -d /run/uuidd ] &&  install -o 68 -g 68 -dm755 /run/uuidd || true
 }
 
 post_upgrade() {

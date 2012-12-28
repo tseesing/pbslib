@@ -1,0 +1,73 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="PDF rendering library based on the xpdf-3.0"
+HOMEPAGE="http://poppler.freedesktop.org/"
+LICENSE="GPL"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
+
+SRC_URI="http://poppler.freedesktop.org/"$N-$V".tar.gz"
+
+PROVIDE="poppler poppler-glib" # poppler-qt"
+
+pbs_unpack() {
+    dounpack
+}
+
+pbs_config() {
+	config+=" --disable-static 
+              --enable-cairo-output 
+              --enable-xpdf-headers 
+              --enable-libjpeg 
+              --enable-zlib 
+              --disable-poppler-qt4 
+              --enable-poppler-glib "
+    sed -i -e '/AC_PATH_XTRA/d' configure.ac                                  
+    autoreconf -fi
+	doconfig
+}
+
+pbs_build() {
+	domake
+}
+
+poppler_install() {
+	DESCRIPTION="PDF rendering library based on the xpdf-3.0"
+	RDEPEND="fontconfig gcc-lib lcms libpng libxml2 cairo poppler-data"
+	
+    sed -e 's/^glib_subdir =.*/glib_subdir =/' -e 's/^qt4_subdir =.*/qt4_subdir =/' -i Makefile
+    domkinstall
+	#rm -f "${destdir}"/usr/lib/pkgconfig/poppler-{glib,qt4}.pc
+}
+
+poppler-glib_install(){
+	DESCRIPTION="Poppler glib bindings"
+	RDEPEND="glib2 poppler"
+	
+	cd poppler
+	make DESTDIR="${destdir}" install-libLTLIBRARIES
+	cd "${srcdir}/glib"
+	make DESTDIR="${destdir}" install
+	install -m755 -d "${destdir}/usr/lib/pkgconfig"
+	install -m644 ../poppler-glib.pc "${destdir}/usr/lib/pkgconfig/"
+	rm -f "${destdir}"/usr/lib/libpoppler.*
+	rm -f "${destdir}"/usr/bin/poppler-glib-demo
+}
+
+#poppler-qt_install() {
+#	DESCRIPTION="Poppler Qt bindings"
+#	RDEPEND="poppler qt-core"
+#
+#	cd "${srcdir}/poppler"
+#	make DESTDIR="${destdir}" install-libLTLIBRARIES
+#	cd "${srcdir}/qt4"
+#	domkinstall
+#	install -m755 -d "${destdir}/usr/lib/pkgconfig"
+#	install -m644 ../poppler-qt4.pc "${destdir}/usr/lib/pkgconfig/"
+#	rm -f "${destdir}"/usr/lib/libpoppler.*
+#}
+

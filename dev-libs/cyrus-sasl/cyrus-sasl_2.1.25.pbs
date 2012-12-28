@@ -25,9 +25,9 @@ pbs_patch() {
 }
 
 pbs_config() {
-	config+=" --with-plugindir=/usr/lib$LIBDIRSUFFIX
-                  --with-configdir=/usr/lib$LIBDIRSUFFIX
-		  --disable-static
+	config+=" --with-plugindir=/usr/lib"$LIBDIRSUFFIX"
+              --with-configdir=/usr/lib"$LIBDIRSUFFIX"
+		      --disable-static
 	          --with-saslauthd=/run "
 	doconfig
 }

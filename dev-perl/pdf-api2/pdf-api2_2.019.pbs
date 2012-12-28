@@ -7,8 +7,8 @@
 
 DESCRIPTION="Facilitates the creation and modification of PDF files"
 HOMEPAGE="http://search.cpan.org/~ssimms/PDF-API2-2.019/"
-LICENSE="GPL PerlArtistic"
-PACKAGER="StartOS Developers"
+LICENSE="GPL,PerlArtistic"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 YARCH="any"
 
 SRC_URI="http://mirrors.xmu.edu.cn/CPAN/authors/id/S/SS/SSIMMS/PDF-API2-"$V".tar.gz"

@@ -7,8 +7,8 @@
 
 DESCRIPTION="Interface to zlib compression library  "
 HOMEPAGE="http://search.cpan.org/~pmqs/Compress-Zlib/"
-PACKAGER="StartOS Developers"
-LICENSE="GPL PerlArtistic"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
+LICENSE="GPL,PerlArtistic"
 YARCH="any"
 
 SRC_URI="http://mirrors.sohu.com/CPAN/authors/id/P/PM/PMQS/Compress-Zlib-"$V".tar.gz"

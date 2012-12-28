@@ -7,8 +7,8 @@
 
 DESCRIPTION="wav2mp3 wav2ogg utils"
 HOMEPAGE="http://wav2mp3.sourceforge.net/"
-PACKAGER="StartOS Developers"
-LICENSE="GPL PerlArtistic"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
+LICENSE="GPL,PerlArtistic"
 YARCH="any"
 
 SRC_URI="http://downloads.sourceforge.net/project/wav2mp3/wav2mp3_wav2ogg/"$V"/WAV2-"$V".tar.gz"

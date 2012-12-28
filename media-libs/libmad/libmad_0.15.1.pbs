@@ -5,10 +5,10 @@
 # Distributed under the terms of the GNU General Public License v2
 #
 
-DESCRIPTION=" a high-quality MPEG audio decoder capable of 24-bit output."
+DESCRIPTION="a high-quality MPEG audio decoder capable of 24-bit output."
 HOMEPAGE="http://www.underbit.com/products/mad/"
 LICENSE="GPL"
-PACKAGER="StartOS Developers"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
 SRC_URI="http://prdownloads.sourceforge.net/mad/"$N-$V"b.tar.gz"
 
@@ -17,11 +17,16 @@ BDEPEND=""
 RECOMMENDED=""
 
 pbs_unpack() {
-        dounpack
+    dounpack
+}
+
+pbs_patch() {
+    dopatch libmad.patch amd64-64bit.diff frame_length.diff optimize.diff
 }
 
 pbs_config() {
-	dopatch "$N-$V$R"-fforce-2.patch
+    CFLAGS="$CFLAGS -ftree-vectorize -ftree-vectorizer-verbose=1"
+    autoconf
 	doconfig
 }
 
@@ -30,19 +35,7 @@ pbs_build() {
 }
 
 pbs_install() {
-	cat > mad.pc << "EOF"
-prefix=/usr
-exec_prefix=${prefix}
-libdir=${exec_prefix}/lib
-includedir=${prefix}/include
-Name: mad
-Description: MPEG audio decoder
-Version: 0.15.1b
-Libs: -L${libdir} -lmad
-Cflags: -I${includedir}
-EOF
 	domkinstall
-	docp mad.pc "$destdir"/usr/lib/pkgconfig
-	dodoc COPYING INSTALL README 
 }
+
 

@@ -8,7 +8,7 @@
 DESCRIPTION="GNOME HTTP Library - base library"
 HOMEPAGE="http://live.gnome.org/LibSoup/"
 LICENSE="LGPL"
-PACKAGER="StartOS Developers"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
 SRC_URI="http://ftp.gnome.org/pub/gnome/core/3.6/3.6.2/sources/"$N-$V".tar.xz"
 
@@ -17,7 +17,7 @@ BDEPEND="gobject-introspection"
 RECOMMENDED=""
 
 pbs_unpack() {
-        dounpack
+    dounpack
 }
 
 pbs_config() {

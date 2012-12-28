@@ -7,8 +7,8 @@
 
 DESCRIPTION="Perl interface to the cairo library "
 HOMEPAGE="http://search.cpan.org/~tsch/Cairo-1.061/lib/Cairo.pm"
-PACKAGER="StartOS Developers"
-LICENSE="GPL PerlArtistic"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
+LICENSE="GPL,PerlArtistic"
 YARCH="any"
 
 SRC_URI="http://search.cpan.org/CPAN/authors/id/T/TS/TSCH/Cairo-"$V".tar.gz"

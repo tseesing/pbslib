@@ -7,8 +7,8 @@
 
 DESCRIPTION="Simple and Efficient Reading/Writing/Modifying of Complete Files"
 HOMEPAGE="http://search.cpan.org/~uri/File-Slurp-9999.19/"
-LICENSE="GPL PerlArtistic"
-PACKAGER="StartOS Developers"
+LICENSE="GPL,PerlArtistic"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 YARCH="any"
 
 SRC_URI="http://cpan.wenzk.com/authors/id/U/UR/URI/File-Slurp-"$V".tar.gz"

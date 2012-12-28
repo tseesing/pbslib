@@ -28,7 +28,7 @@ pbs_config() {
 }
 
 pbs_build() {
-	domake
+	make
 }
 
 pbs_install() {

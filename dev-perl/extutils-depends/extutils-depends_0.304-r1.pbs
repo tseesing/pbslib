@@ -7,8 +7,8 @@
 
 DESCRIPTION="Easily build XS extensions that depend on XS extensions"
 HOMEPAGE="http://search.cpan.org/~flora/ExtUtils-Depends-0.304/lib/ExtUtils/Depends.pm"
-PACKAGER="StartOS Developers"
-LICENSE="GPL PerlArtistic"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
+LICENSE="GPL,PerlArtistic"
 YARCH="any"
 
 SRC_URI="http://search.cpan.org/CPAN/authors/id/F/FL/FLORA/ExtUtils-Depends-"$V".tar.gz"

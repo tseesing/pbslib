@@ -1,0 +1,37 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="Standard Themes for GNOME Applications"
+HOMEPAGE="http://www.gnome.org/"
+LICENSE="GPL"
+PACKAGER="chenqixing@ivali.com"
+
+SRC_URI="http://ftp.acc.umu.se/pub/gnome/sources/$N/${V%.*}/$N-$V.tar.xz"
+CHECKSUM="c41503d0e18e17188c4fd1be5f6a7e90b08564e2a19d9a318b145a56d4455352"
+
+RDEPEND="librsvg gtk-engines gtk3 cantarell-fonts dejavu-fonts-ttf"
+BDEPEND="intltool itstool"
+RECOMMENDED=""
+GROUP="gnome"
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_config() {
+	config+="--enable-all-themes"
+	doconfig
+}
+
+pbs_build() {
+	domake
+}
+
+pbs_install() {
+	domkinstall
+}
+

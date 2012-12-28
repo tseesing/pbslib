@@ -8,31 +8,31 @@
 DESCRIPTION="A message bus system, a simple way for applications to talk to each other"
 HOMEPAGE="http://dbus.freedesktop.org/"
 LICENSE="custom,GPL"
-PACKAGER="StartOS developers "
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
 SRC_URI="http://dbus.freedesktop.org/releases/"$N"/"$N-$V".tar.gz"
 
 RDEPEND="expat coreutils"
 BDEPEND=""
 
-INSTALL="$N-$V.install"
+INSTALL="$N.install"
 
 pbs_unpack(){
-        dounpack
+    dounpack
 }
 
 pbs_config() {
 	config+=" --with-system-pid-file=/run/dbus/pid
 	      	  --with-system-socket=/run/dbus/system_bus_socket 
 	          --with-console-auth-dir=/run/console/ 
-		  --with-dbus-user=81
-		  --enable-inotify 
-		  --disable-dnotify 
-		  --disable-verbose-mode 
-		  --disable-static 
-		  --disable-tests 
-		  --disable-asserts  
-                  --with-systemdsystemunitdir=/usr/lib/systemd/system 
+		      --with-dbus-user=81
+		      --enable-inotify 
+		      --disable-dnotify 
+		      --disable-verbose-mode 
+		      --disable-static 
+		      --disable-tests 
+		      --disable-asserts  
+              --with-systemdsystemunitdir=/usr/lib/systemd/system 
  	          --enable-systemd "
 		  # NOTE: dbus MUST compile two times，order is:
 		  # 1、set --disable-systemd -> build dbus 

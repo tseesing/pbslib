@@ -7,8 +7,11 @@ post_install() {
 	start $unit ||true
 }
 
+pre_remove() {
+	stop $unit ||true
+}
+
 post_remove() {
-	stop $unit
 	systemctl disable $unit ||true
 }
 
@@ -20,5 +23,4 @@ post_upgrade() {
 pos_downgrade() {
 	post_upgrade
 }
-
 

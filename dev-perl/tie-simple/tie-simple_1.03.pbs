@@ -7,8 +7,8 @@
 
 DESCRIPTION="Variable ties made easier: much, much, much easier... "
 HOMEPAGE="http://search.cpan.org/~hanenkamp/Tie-Simple-1.03/"
-LICENSE="GPL PerlArtistic"
-PACKAGER="StartOS Developers"
+LICENSE="GPL,PerlArtistic"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 YARCH="any"
 
 SRC_URI="http://cpan.wenzk.com/authors/id/H/HA/HANENKAMP/Tie-Simple-"$V".tar.gz"

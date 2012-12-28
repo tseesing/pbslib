@@ -7,8 +7,8 @@
 
 DESCRIPTION="Perl wrappers for the GLib utility and Object libraries "
 HOMEPAGE="http://search.cpan.org/~tsch/Glib-1.223/Glib.pm"
-LICENSE="GPL PerlArtistic"
-PACKAGER="StartOS Developers"
+LICENSE="GPL,PerlArtistic"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
 SRC_URI="http://search.cpan.org/CPAN/authors/id/T/TS/TSCH/Glib-"$V".tar.gz"
 

@@ -7,8 +7,8 @@
 
 DESCRIPTION="building, finding and using SDL binaries"
 HOMEPAGE="http://search.cpan.org/~froggs/Alien-SDL-1.428/"
-LICENSE="GPL PerlArtistic"
-PACKAGER="StartOS Developers"
+LICENSE="GPL,PerlArtistic"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
 SRC_URI="http://mirrors.ustc.edu.cn/CPAN/authors/id/F/FR/FROGGS/Alien-SDL-"$V".tar.gz"
 

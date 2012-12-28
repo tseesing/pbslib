@@ -7,30 +7,33 @@
 
 DESCRIPTION="GNU Portable Threads"
 HOMEPAGE="http://www.gnu.org/software/pth/"
-LICENSE="GPL"
-PACKAGER="StartOS Developers"
+LICENSE="LGPL"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
 SRC_URI="ftp://ftp.gnu.org/gnu/"$N"/"$N-$V".tar.gz"
+CHECKSUM="9a71915c89ff2414de69fe104ae1016d513afeee"
 
-RDEPEND="glibc"
+RDEPEND="gawk"
 BDEPEND=""
 RECOMMENDED=""
 
 pbs_unpack() {
-        dounpack
+    dounpack
 }
 
 pbs_config() {
-	dopatch pth-2.0.5-parallelfix.patch
+    config+="--disable-static 
+             --enable-shared 
+             --with-pic"
 	doconfig
 }
 
 pbs_build() {
-	domake
+	make
 }
 
 pbs_install() {
 	domkinstall
-	dodoc AUTHORS ChangeLog COPYING INSTALL NEWS README 
 }
+
 

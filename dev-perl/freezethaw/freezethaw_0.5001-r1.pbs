@@ -7,8 +7,8 @@
 
 DESCRIPTION="converting Perl structures to strings and back.  "
 HOMEPAGE="http://search.cpan.org/~ilyaz/FreezeThaw-0.5001/"
-PACKAGER="StartOS Developers"
-LICENSE="GPL PerlArtistic"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
+LICENSE="GPL,PerlArtistic"
 YARCH="any"
 
 SRC_URI="http://mirrors.163.com/cpan/authors/id/I/IL/ILYAZ/modules/FreezeThaw-"$V".tar.gz"

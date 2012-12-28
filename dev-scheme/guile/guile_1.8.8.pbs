@@ -5,10 +5,10 @@
 # Distributed under the terms of the GNU General Public License v2
 #
 
-DESCRIPTION="Scheme interpreter"
+DESCRIPTION="a portable, embeddable Scheme implementation written in C"
 HOMEPAGE="http://www.gnu.org/software/guile/"
-LICENSE="GPLv2"
-PACKAGER="StartOS Developers"
+LICENSE="GPL"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com"
 
 SRC_URI="http://ftp.gnu.org/pub/gnu/"$N"/"$N-$V".tar.gz"
 
@@ -20,12 +20,6 @@ INSTALL="$N.install"
 
 pbs_unpack() {
         dounpack
-}
-
-pbs_patch() {
-	dopatch guile-1.8.7-multilib.patch \
-	        guile-1.8.7-testsuite.patch \
-		guile-1.8.8-deplibs.patch
 }
 
 pbs_config() {

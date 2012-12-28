@@ -1,0 +1,44 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="Keeps encryption passwords and other secrets for users."
+HOMEPAGE="http://www.gnome.org"
+LICENSE="GPLv2 LGPLv2"
+PACKAGER="chenqixing@ivali.com"
+GROUP="gnome"
+
+SRC_URI="http://ftp.acc.umu.se/pub/gnome/sources/$N/${V%.*}/$N-$V.tar.xz"
+CHECKSUM="ae60558d60171325ddd90603328393d35d7b560a70b7ab45c4d2718d01130cd6"
+
+
+RDEPEND="gtk3 gcr libcap"
+BDEPEND=""
+RECOMMENDED=""
+
+INSTALL="$N.install"
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_config() {
+	config+="--disable-schemas-compile
+		 --enable-pam 
+		 --with-pam-dir=/usr/lib${LIBDIRSUFFIX}/security
+         --with-ca-certificates=/etc/ssl/certs"
+	doconfig
+}
+
+pbs_build() {
+	domake
+}
+
+pbs_install() {
+	domkinstall
+    dodoc COPYING COPYING.LIB ChangeLog AUTHORS README
+}
+
