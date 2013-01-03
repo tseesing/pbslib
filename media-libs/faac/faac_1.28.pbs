@@ -8,11 +8,12 @@
 DESCRIPTION="An AAC audio encoder"
 HOMEPAGE="http://www.audiocoding.com"
 LICENSE="GPL,custom"
-PACKAGER="StartOS Developers"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
 SRC_URI="http://downloads.sourceforge.net/"$N"/"$N-$V".tar.gz"
+CHECKSUM="80763728d392c7d789cde25614c878f6"
 
-RDEPEND="mp4v2"
+RDEPEND="mp4v2 glibc"
 BDEPEND=""
 RECOMMENDED=""
 
@@ -26,8 +27,8 @@ pbs_patch() {
 }
 
 pbs_config() {
-	config+=""
     ./bootstrap
+	config+=""
 	doconfig
 }
 

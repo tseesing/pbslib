@@ -7,17 +7,18 @@
 
 DESCRIPTION="generate BDF font from X font server"
 HOMEPAGE="http://xorg.freedesktop.org/"
-LICENSE="GPL"
-PACKAGER="StartOS Developers"
+LICENSE="custom"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 GROUP="x11-apps"
 
 SRC_URI="http://xorg.freedesktop.org/releases/individual/app/"$N-$V".tar.bz2"
+CHECKSUM="c536ac53e51df0a28e764a7cf7ef4924"
 
 RDEPEND="libXaw"
 BDEPEND="xbitmaps"
 
 pbs_unpack() {
-        dounpack
+    dounpack
 }
 
 pbs_config() {

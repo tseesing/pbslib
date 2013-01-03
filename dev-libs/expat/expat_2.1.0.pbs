@@ -8,15 +8,16 @@
 DESCRIPTION="XML parsing libraries"
 HOMEPAGE="http://expat.sourceforge.net/"
 LICENSE="custom"
-PACKAGER="StartOS Developers"
+PACKAGER="Zhnogxin Huang <huangzhongxin@ivali.com>"
 
 SRC_URI="http://downloads.sourceforge.net/"$N"/"$N-$V".tar.gz"
+CHECKSUM="dd7dab7a5fea97d2a6a43f511449b7cd"
 
 RDEPEND="glibc"
 BDEPEND=""
 
 pbs_unpack() {
-        dounpack
+    dounpack
 }
 
 pbs_config() {

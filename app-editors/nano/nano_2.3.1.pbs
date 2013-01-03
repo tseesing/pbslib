@@ -8,9 +8,10 @@
 DESCRIPTION="GNU GPL'd Pico clone with more functionality"
 HOMEPAGE="http://www.nano-editor.org/"
 LICENSE="GPL"
-PACKAGER="StartOS Developers"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
 SRC_URI="http://ftp.gnu.org/pub/gnu/nano/"$N-$V".tar.gz"
+CHECKSUM="af09f8828744b0ea0808d6c19a2b4bfd"
 
 RDEPEND="file ncurses"
 BDEPEND=""
@@ -18,10 +19,14 @@ RECOMMENDED=""
 CONFLICT=""
 
 pbs_unpack() {
-        dounpack
+    dounpack
 }
 
 pbs_config() {
+    config+="--enable-color
+             --enable-nanorc 
+             --enable-multibuffer 
+             --disable-wrapping-as-root"
 	doconfig
 }
 
@@ -31,5 +36,6 @@ pbs_build() {
 
 pbs_install() {
 	domkinstall
+    install -DTm644 doc/nanorc.sample "$destdir"/etc/nanorc
 }
 

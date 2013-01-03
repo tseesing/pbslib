@@ -8,28 +8,28 @@
 DESCRIPTION="Database-driven manual pager suite"
 HOMEPAGE="http://savannah.nongnu.org/projects/man-db"
 LICENSE="GPL,LGPL"
-PACKAGER="StartOS Developers"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
 SRC_URI="http://savannah.nongnu.org/download/"$N"/"$N-$V".tar.xz"
+CHECKSUM="a593a095599ae97bcacf8d038659a146"
 
-RDEPEND="gdbm glibc zlib libpipeline"
+RDEPEND="bash gdbm zlib groff libpipeline"
 BDEPEND=""
 RECOMMENDED="groff"
+OPTIONAL="less:
+          less: "
 
 pbs_unpack() {
-        dounpack
+    dounpack
 }
 
 pbs_config() {
-	./configure --prefix=/usr --sysconfdir=/etc \
-		    --libdir=/usr/lib"$LIBDIRSUFFIX" \
-                    --libexecdir=/usr/lib"$LIBDIRSUFFIX" \
-		    --with-db=gdbm --disable-setuid --enable-mandirs=GNU \
-		    --with-sections="1 n l 8 3 0 2 5 4 9 6 7"
+    config+="--with-db=gdbm --disable-setuid --enable-mandirs=GNU"
+    doconfig --with-sections=\"1 n l 8 3 0 2 5 4 9 6 7\"
 }
 
 pbs_build() {
-	domake -lpipeline
+	domake
 }
 
 pbs_install() {

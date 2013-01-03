@@ -5,19 +5,20 @@
 # Distributed under the terms of the GNU General Public License v2
 #
 
-DESCRIPTION="Support library for syslog-ng"
-HOMEPAGE="http://www.balabit.com/products/syslog_ng/"
-LICENSE="GPL"
-PACKAGER="StartOS Developers"
+DESCRIPTION="API to format and send structured log messages"
+HOMEPAGE="http://www.balabit.com/support/community/products"
+LICENSE="BSD"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
-SRC_URI="http://www.balabit.com/downloads/files?path=/syslog-ng/sources/3.2.2/source/"${N}_$V".tar.gz"
+SRC_URI="http://www.balabit.com/downloads/files/$N/${V%.*}/${N}_$V.tar.gz"
+CHECKSUM="3e35a634e7de029ab9d36995a085bfcb00ed6a4d"
 
 RDEPEND="glibc"
 BDEPEND=""
 RECOMMENDED=""
 
 pbs_unpack() {
-        dounpack
+    dounpack
 }
 
 pbs_config() {
@@ -31,3 +32,4 @@ pbs_build() {
 pbs_install() {
 	domkinstall
 }
+

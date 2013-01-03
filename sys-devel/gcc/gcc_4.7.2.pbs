@@ -8,7 +8,7 @@
 DESCRIPTION="The GNU Compiler Collection"
 HOMEPAGE="http://gcc.gnu.org/"
 LICENSE="GPL,LGPL,FDL,custom"
-PACKAGER="StartOS Developers"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
 SRC_URI="http://ftp.gnu.org/gnu/"$N"/"$N-$V"/"$N-$V".tar.bz2"
 CHECKSUM="cc308a0891e778cfda7a151ab8a6e762"

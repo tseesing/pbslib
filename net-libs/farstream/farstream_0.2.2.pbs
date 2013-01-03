@@ -8,7 +8,8 @@
 DESCRIPTION="Audio/Video Communications Framework"
 HOMEPAGE="http://www.freedesktop.org/wiki/Software/Farstream"
 LICENSE="LGPLv2.1"
-PACKAGER="chenqixing@ivali.com"
+PACKAGER="chenqixing@ivali.com
+          Zhongxin Huang <huangzhongxin@ivali.com>"
 
 SRC_URI="http://freedesktop.org/software/"$N"/releases/"$N"/"$N-$V".tar.gz"
 CHECKSUM="01c20c1ed014ad4e18e55f1f6caf7877"
@@ -16,7 +17,8 @@ CHECKSUM="01c20c1ed014ad4e18e55f1f6caf7877"
 RDEPEND="gst-plugins-base libnice"
 RECOMMENDED=""
 BDEPEND="gobject-introspection"
-OPTIONAL=""
+OPTIONAL="gst-plugins-good: 
+          gst-plugins-bad: "
 CONFLICT="farsight2"
 REPLACE="farsight2"
 

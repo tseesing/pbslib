@@ -8,7 +8,8 @@
 DESCRIPTION="D-Bus abstraction for enumerating power devices and querying history and statistics"
 HOMEPAGE="http://upower.freedesktop.org/"
 LICENSE="GPL"
-PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>
+          chenqixing@ivali.com"
 
 SRC_URI="http://upower.freedesktop.org/releases/"$N-$V".tar.xz"
 
@@ -28,7 +29,9 @@ pbs_patch() {
 }
 
 pbs_config() {
-	config+="--disable-static"
+	config+="--disable-static 
+             --enable-systemd
+             --with-systemdsystemunitdir=/usr/lib/systemd/system"
 	doconfig
 }
 

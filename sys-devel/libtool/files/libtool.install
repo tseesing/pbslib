@@ -3,13 +3,14 @@
 files="libtool.info-2.gz libtool.info-1.gz libtool.info.gz"
 
 post_install() {
-        doinstall_info $files
+    doinstall_info $files
 }       
 
 pre_remove() {
-        doremove_info $files
+    doremove_info $files
 }
 
 post_upgrade() {
 	post_install
 }
+

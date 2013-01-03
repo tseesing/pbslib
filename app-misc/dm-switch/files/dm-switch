@@ -13,7 +13,7 @@ DEFAULT="/etc/dm-switch/default"
 files=""
 
 for dm in $DMS; do
-	[ -f /lib/systemd/system/"${dm}".service ] && files+=""${dm}".service "
+	[ -f /usr/lib/systemd/system/"${dm}".service ] && files+=""${dm}".service "
 done
 
 case $1 in

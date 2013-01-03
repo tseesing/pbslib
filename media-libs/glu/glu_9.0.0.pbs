@@ -8,9 +8,10 @@
 DESCRIPTION="Mesa OpenGL Utility library"
 HOMEPAGE="http://cgit.freedesktop.org/mesa/glu"
 LICENSE="LGPL"
-PACKAGER="StartOS Developers"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
 SRC_URI="ftp://ftp.freedesktop.org/pub/mesa/"$N"/"$N-$V".tar.bz2"
+CHECKSUM="1f7ad0d379a722fcbd303aa5650c6d7d5544fde83196b42a73d1193568a4df12"
 
 RDEPEND="mesa"
 RECOMMENDED=""
@@ -19,7 +20,7 @@ OPTIONAL=""
 CONFLICT=""
 
 pbs_unpack() {
-        dounpack
+    dounpack
 }
 
 pbs_config() {

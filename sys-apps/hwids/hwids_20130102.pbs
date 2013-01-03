@@ -1,0 +1,35 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="hardware identification databases"
+HOMEPAGE="https://github.com/gentoo/hwids"
+LICENSE="GPL"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
+YARCH="any"
+
+# Also download from http://pci-ids.ucw.cz/v2.2/pci.ids.bz2, http://www.linux-usb.org/usb.ids.bz2 direactly.
+SRC_URI="git://github.com/gentoo/hwids.git"
+
+RDEPEND=""
+RECOMMENDED=""
+BDEPEND=""
+OPTIONAL=""
+CONFLICT=""
+REPLACE=""
+
+pbs_unpack() {
+    dounpack
+}
+
+pbs_build() {
+	domake
+}
+
+pbs_install() {
+	docp usb.ids pci.ids "$destdir"/usr/share/hwdata/
+}
+

@@ -8,9 +8,10 @@
 DESCRIPTION="Library for some string essentials"
 HOMEPAGE="http://libestr.adiscon.com/"
 LICENSE="LGPL"
-PACKAGER="StartOS Developers"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
-SRC_URI="http://libestr.adiscon.com/files/download/"$N-$V$R".tar.gz"
+SRC_URI="http://libestr.adiscon.com/files/download/"$N-$V".tar.gz"
+CHECKSUM="ee3ff39f421f47b2a9551a7f9011d084"
 
 RDEPEND=""
 BDEPEND=""
@@ -18,7 +19,7 @@ RECOMMENDED=""
 CONFLICT=""
 
 pbs_unpack() {
-        dounpack
+    dounpack
 }
 
 pbs_config() {

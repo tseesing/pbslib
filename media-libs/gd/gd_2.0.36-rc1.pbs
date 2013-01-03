@@ -7,19 +7,22 @@
 
 DESCRIPTION="A graphics library for fast image creation"
 HOMEPAGE="http://libgd.org/"
-LICENSE="GPL"
-PACKAGER="StartOS Developers"
+LICENSE="custom"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
 SRC_URI="http://www.libgd.org/releases/"$N-$V"RC1.tar.bz2"
+CHECKSUM="e876979ca3130623a4e7866d9579171a"
 
-RDEPEND="fontconfig libjpeg-turbo libpng libXpm"
+RDEPEND="libjpeg-turbo libpng fontconfig"
 BDEPEND=""
+OPTIONAL="'perl: bdftogd script"
 
 pbs_unpack() {
-        dounpack
+    dounpack
 }
 
 pbs_config() {
+    config+="--without-xpm"
 	doconfig
 }
 
@@ -29,5 +32,6 @@ pbs_build() {
 
 pbs_install() {
 	domkinstall
+    dodoc COPYING
 }
 

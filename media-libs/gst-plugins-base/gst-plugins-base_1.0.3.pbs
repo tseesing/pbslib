@@ -8,12 +8,13 @@
 DESCRIPTION="Basepack of plugins for gstreamer"
 HOMEPAGE="http://gstreamer.sourceforge.net"
 LICENSE="LGPL"
-PACKAGER="StartOS Developers"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
 SRC_URI="http://gstreamer.freedesktop.org/src/gst-plugins-base/gst-plugins-base-"$V".tar.xz"
+CHECKSUM="de7f38c4baa6b7022578f06710e1ebf9"
 
-RDEPEND="alsa-lib cdparanoia gstreamer libSM libtheora libvisual libvorbis libXv orc pango"
-BDEPEND=""
+RDEPEND="gstreamer orc libXv alsa-lib cdparanoia libvisual libvorbis libtheora pango"
+BDEPEND="pkgconfig gobject-introspection"
 RECOMMENDED=""
 
 pbs_unpack() {

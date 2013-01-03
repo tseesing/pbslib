@@ -8,13 +8,14 @@
 DESCRIPTION="The server implementation of the freedesktop.org desktop notification specification"
 HOMEPAGE="http://www.galago-project.org/"
 LICENSE="GPL"
-PACKAGER="chenqixing@ivali.com"
+PACKAGER="chenqixing@ivali.com
+          Zhongxin Huang <huangzhongxin@ivali.com>"
 
 SRC_URI="http://ftp.gnome.org/pub/gnome/sources/"$N"/${V%.*}/"$N-$V".tar.xz"
 CHECKSUM="64d0ce6fb12c94c3b73b701502c804c408cb5a94580bcae5ac37607639f7a0b3"  
 
 RDEPEND="gtk3 libcanberra"
-BDEPEND="intltool"
+BDEPEND="intltool pkgconfig"
 RECOMMENDED=""
 
 pbs_unpack() {

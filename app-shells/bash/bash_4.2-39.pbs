@@ -8,7 +8,7 @@
 DESCRIPTION="The standard GNU Bourne again shell"
 HOMEPAGE="http://tiswww.case.edu/php/chet/bash/bashtop.html"
 LICENSE="GPL"
-PACKAGER="StartOS Developers"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
 URL="http://ftp.gnu.org/gnu/"$N"/"$N-$V"-patches"
 SRC_URI="http://ftp.gnu.org/gnu/"$N"/"$N-$V".tar.gz
@@ -58,7 +58,7 @@ BDEPEND=""
 INSTALL="$N.install"
 
 pbs_unpack() {
-        dounpack
+    dounpack
 }
 
 pbs_patch() {
@@ -68,20 +68,14 @@ pbs_patch() {
 	for ((i=10; i<=39; i++)); do
 		dopatch "$YBS_SOURCE"/bash42-0"$i"
 	done
-	
 	dopatch config-default-path.patch
 }
 
 pbs_config() {
-	## The following sed points configure towards the correct library directory while searching for Readline
-	#case $ARCH in
-	#	x86_64) sed -i "/ac_cv_rl_libdir/s@/lib@&64@" configure
-	#esac
-
-	config+=" --bindir=/bin 
-	    	  --htmldir=/usr/share/doc/bash 
-		  --without-bash-malloc 
-	          --with-installed-readline"
+	config+="--bindir=/bin 
+	    	 --htmldir=/usr/share/doc/bash 
+		     --without-bash-malloc 
+	         --with-installed-readline"
 	doconfig
 }
 

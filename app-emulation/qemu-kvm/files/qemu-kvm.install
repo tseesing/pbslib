@@ -1,9 +1,9 @@
 . /usr/lib/ybs/funcs
 
-group="kvm"
+gname="kvm"
 
 post_install() {
-	dogroupadd -r $group
+    dogroupadd $gname -f -g 78
 	echo ">>>  Add yourself to the group $group."
 }
 
@@ -12,6 +12,6 @@ post_upgrade() {
 }
 
 post_remove() {
-	dogroupdel $group ||true
+    dogroupdel $gname
 }
 

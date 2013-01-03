@@ -8,20 +8,21 @@
 DESCRIPTION="Common CA certificates"
 HOMEPAGE="http://packages.debian.org/sid/ca-certificates"
 LICENSE="GPL,MPL"
-PACKAGER="StartOS Developers"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 YARCH="any"
 
 SRC_URI="http://ftp.debian.org/debian/pool/main/c/"$N"/"${N}_$V".tar.gz"
+CHECKSUM="9f5eed928cab9b71242d77dda9bed25b"
 
-RDEPEND="openssl findutils coreutils sed"
-BDEPEND=""
+RDEPEND="bash openssl findutils coreutils sed"
+BDEPEND="python"
 RECOMMENDED=""
 CONFLICT=""
 
 INSTALL="$N.install"
 
 pbs_unpack() {
-        dounpack
+    dounpack
 }
 
 pbs_build() {

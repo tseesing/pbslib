@@ -8,10 +8,11 @@
 DESCRIPTION="Cantarell font family"
 HOMEPAGE="http://live.gnome.org/CantarellFonts"
 LICENSE="GPL"
-PACKAGER="StartOS Developers"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 YARCH="any"
 
 SRC_URI="http://ftp.gnome.org/pub/gnome/core/3.6/3.6.2/sources/"$N-$V".tar.xz"
+CHECKSUM="73b0f2cae582245f3cb63288e394372e"
 
 RDEPEND="fontconfig"
 RECOMMENDED=""

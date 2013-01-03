@@ -7,34 +7,54 @@
 
 DESCRIPTION="Port of 7-Zip archiver for Unix"
 HOMEPAGE="http://p7zip.sourceforge.net/"
-LICENSE="LGPL-2.1"
-PACKAGER="StartOS Developers"
+LICENSE="GPL,custom"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
 SRC_URI="http://downloads.sourceforge.net/project/"$N"/"$N"/"$V"/"${N}"_"$V"_src_all.tar.bz2"
+CHECKSUM="1cd567e043ee054bf08244ce15f32cb3258306b7"
 
-RDEPEND="gcc-lib"
-BDEPEND="nasm"
+RDEPEND="gcc-libs bash"
+BDEPEND="yasm nasm wxgtk"
+OPTIONAL="wxgtk: GUI
+          desktop-file-utils: desktop entries"
 RECOMMENDED=""
 
 pbs_unpack() {
-        dounpack
+    dounpack
 }
 
-pbs_config() { 	
-	if [ "$ARCH" = x86_64 ]; then
-		cp makefile.linux_amd64_asm makefile.machine
-	else
-		cp makefile.linux_x86_asm_gcc_4.X makefile.machine
-	fi
+pbs_config() {
+    case "$ARCH" in
+        x86_64) 
+            cp makefile.linux_amd64_asm makefile.machine 
+            find -name "makefile.depend" -type f |xargs sed -i 's/usr\/lib/usr\/lib'"$LIBDIRSUFFIX"'/g' ;;
+        i?86)
+            cp makefile.linux_x86_asm_gcc_4.X makefile.machine
+    esac
 }
 
 pbs_build() {
 	# all4 include UI
-	domake all3
+	domake all4 OPTFLAGS=\"${CXXFLAGS}\"
+    # FIXME
+    # must run twice?
+	domake all4 OPTFLAGS=\"${CXXFLAGS}\"
 }
 
 pbs_install() {
-	make install DEST_DIR="$destdir" DEST_HOME="/usr" DEST_MAN="/usr/share/man"
-	doln /usr/lib/p7zip/7zCon.sfx "$destdir"/usr/lib/p7zip/7z.sfx
+	make install DEST_DIR="$destdir" DEST_HOME="/usr" DEST_SHARE=/usr/lib"$LIBDIRSUFFIX"  DEST_MAN="/usr/share/man"
+    # desktop
+    dodesktop "p7zip.desktop" GUI/p7zip_32.png
+    # kde
+    docp GUI/kde4/* "$destdir"/usr/share/kde4/services/ServiceMenus/
+    # help
+    find GUI/help -type d -exec chmod 755 {} \;
+    docp -r GUI/help "$destdir"/usr/lib"$LIBDIRSUFFIX"/p7zip/
+    # misc
+    cd "$destdir"
+    chmod -R u+w usr
+    # link
+    cd usr/lib"$LIBDIRSUFFIX"/p7zip
+	doln 7zCon.sfx 7z.sfx
 }
 

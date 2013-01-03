@@ -8,9 +8,10 @@
 DESCRIPTION="WavPack audio compression tools"
 HOMEPAGE="http://www.wavpack.com"
 LICENSE="custom"
-PACKAGER="StartOS Developers"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
 SRC_URI="http://www.wavpack.com/"$N-$V".tar.bz2"
+CHECKSUM="7bb1528f910e4d0003426c02db856063"
 
 RDEPEND="glibc"
 BDEPEND=""

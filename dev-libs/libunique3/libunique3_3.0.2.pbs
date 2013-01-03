@@ -8,21 +8,21 @@
 DESCRIPTION="The libunique package contains a library for writing single instance applications (for GTK+3)"
 HOMEPAGE="http://live.gnome.org/LibUnique"
 LICENSE="LGPL"
-PACKAGER="StartOS Developers"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
 SRC_URI="http://ftp.gnome.org/pub/gnome/sources/libunique/3.0/libunique-"$V".tar.xz"
 CHECKSUM="a8f02ce073e2b920cca8ac45d418e7cb64438ad0814780c5912c6d63f8a4e038"
 
-RDEPEND="atk cairo dbus dbus-glib expat fontconfig freetype gcc-lib gdk-pixbuf glib2 glibc gtk+3 libffi libpng libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libXinerama libXrandr libXrender pango pixman zlib"
-BDEPEND="" 
+RDEPEND="gtk3"
+BDEPEND="gtk-doc gobject-introspection" 
 RECOMMENDED="" 
 
 pbs_unpack() {
-        dounpack
+    dounpack
 }
 
 pbs_config() {
-	config+=""
+	config+="--disable-static --disable-dbus"
 	doconfig
 }
 

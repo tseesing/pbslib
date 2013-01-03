@@ -8,7 +8,7 @@
 DESCRIPTION="Library to enable user space application programs to communicate with USB devices"
 HOMEPAGE="http://libusb.sourceforge.net/"
 LICENSE="LGPL"
-PACKAGER="StartOS Developers"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
 SRC_URI="http://downloads.sourceforge.net/libusb/"$N-$V".tar.bz2"
 CHECKSUM="2ca521fffadd0c28fdf174e6ec73865b"

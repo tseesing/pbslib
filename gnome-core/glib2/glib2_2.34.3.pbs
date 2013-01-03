@@ -12,7 +12,7 @@ PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
 SRC_URI="http://ftp.gnome.org/pub/GNOME/sources/glib/"${V%.*}"/glib-"$V".tar.xz"
 
-RDEPEND="libffi zlib libpcre"
+RDEPEND="libffi zlib pcre"
 BDEPEND="pkgconfig"
 
 pbs_unpack() {

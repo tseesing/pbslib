@@ -13,7 +13,7 @@ PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 SRC_URI="http://ftp.gnome.org/pub/gnome/core/3.6/3.6.2/sources/"$N-$V".tar.xz"
 CHECKSUM="606aaaba9cc7f51035702aead46c8bb595917a09cb947b396a579ea443328cdc"
 
-RDEPEND="dconf gnome-desktop gsettings-desktop-schemas libcanberra libnotify systemd libwacom nss pulseaudio upower"
+RDEPEND="dconf gnome-desktop gsettings-desktop-schemas libcanberra libnotify systemd libwacom nss pulseaudio upower libibus"
 BDEPEND="intltool docbook-xsl xf86-input-wacom"
 RECOMMENDED=""
 
@@ -30,7 +30,8 @@ pbs_patch() {
 pbs_config() {
 	config+="--disable-static 
              --enable-systemd 
-             --disable-ibus"
+             --enable-ibus"
+             #--disable-ibus"
     aclocal
     automake
 	doconfig

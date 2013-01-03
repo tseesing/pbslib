@@ -3,7 +3,7 @@
 files="gnutls.info-4.gz gnutls.info-3.gz gnutls.info-2.gz gnutls.info-1.gz gnutls.info.gz"
 
 post_install() {
-        doinstall_info $files
+    doinstall_info $files
 }       
 
 pre_remove() {

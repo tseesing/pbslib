@@ -8,15 +8,16 @@
 DESCRIPTION="Small-footprint color management engine, version 2"
 HOMEPAGE="http://www.littlecms.com/"
 LICENSE="MIT"
-PACKAGER="StartOS Developers"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
 SRC_URI="http://downloads.sourceforge.net/sourceforge/lcms/"$N-$V".tar.gz"
+CHECKSUM="9944902864283af49e4e21a1ca456db4e04ea7c2"
 
 RDEPEND="libtiff"
 BDEPEND=""
 
 pbs_unpack() {
-        dounpack
+    dounpack
 }
 
 pbs_config() {

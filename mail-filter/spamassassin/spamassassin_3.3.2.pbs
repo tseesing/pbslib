@@ -8,7 +8,7 @@
 DESCRIPTION="SpamAssassin is an extensible email filter which is used to identify spam"
 HOMEPAGE="http://spamassassin.apache.org"
 LICENSE="APACHE"
-PACKAGER="StartOS Developers"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
 SRC_URI="http://mirrors.devlib.org/apache/$N/source/Mail-SpamAssassin-$V.tar.gz"
 CHECKSUM="d1d62cc5c6eac57e88c4006d9633b81e"

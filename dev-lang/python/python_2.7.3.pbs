@@ -8,26 +8,24 @@
 DESCRIPTION="An interpreted, interactive, object-oriented programming language."
 HOMEPAGE="http://www.python.org/"
 LICENSE="PSF"
-PACKAGER="StartOS Developers"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
 SRC_URI="http://www.python.org/ftp/python/"$V"/Python-"$V".tar.xz"
 CHECKSUM="b2b0ada7ebed4a8204a855193afbdb3aa3308357"
 
-RDEPEND="bzip2 gdbm libffi openssl sqlite expat zlib"
-BDEPEND=""
+RDEPEND="bzip2 gdbm openssl zlib expat sqlite libffi"
+BDEPEND="tk"
 OPTIONAL="tk: for IDLE" 
 
 pbs_unpack() {
-        dounpack
+    dounpack
 }
 
 pbs_patch() {
 	#
 	dopatch startos_add-platform-2.7.2.patch
-
 	#
 	dopatch python-2.7-010-change-pyconfig-h-location.patch
-	
 	# Change the libdir that Python is going to use to lib64:
 	dopatch python-2.7.3-multilib.patch
 	sed -i -e "s|@@MULTILIB_DIR@@|lib"$LIBDIRSUFFIX"|g" Lib/distutils/command/install.py \
@@ -41,32 +39,29 @@ pbs_patch() {
       	       Makefile.pre.in \
       	       Modules/getpath.c \
       	       setup.py
-	
 	# Temporary workaround for 
 	# See http://bugs.python.org/issue10835 for upstream report
 	sed -i "/progname =/s/python/python2.7/" Python/pythonrun.c
-	
 	# Enable built-in SQLite module to load extensions
 	sed -i "/SQLITE_OMIT_LOAD_EXTENSION/d" setup.py
-
 	# FS#23997
 	sed -i -e "s|^#.* /usr/local/bin/python|#!/usr/bin/python|" Lib/cgi.py
 
-        # Ensure that we are using the system libraries (expat, zlib and libffi), rather than copies shipped in the tarball.
-        rm -r Modules/expat
-        rm -r Modules/zlib
-        rm -r Modules/_ctypes/{darwin,libffi}*
+    # Ensure that we are using the system libraries (expat, zlib and libffi), rather than copies shipped in the tarball.
+    rm -r Modules/expat
+    rm -r Modules/zlib
+    rm -r Modules/_ctypes/{darwin,libffi}*
 }
 
 pbs_config(){
 	export OPT="${CFLAGS}"
-	config+=" --enable-shared 
-	          --with-threads 
-		  --enable-ipv6
-		  --enable-unicode=ucs4
-		  --with-system-expat
-		  --with-system-ffi
-		  --with-dbmliborder=gdbm:ndbm "
+	config+="--enable-shared 
+	         --with-threads 
+		     --enable-ipv6
+		     --enable-unicode=ucs4
+		     --with-system-expat
+		     --with-system-ffi
+		     --with-dbmliborder=gdbm:ndbm"
 	doconfig
 }
 
@@ -80,5 +75,4 @@ pbs_install() {
 	cd "$destdir"/usr/lib"$LIBDIRSUFFIX"/	
 	doln python2.7 python  
 }
-
 

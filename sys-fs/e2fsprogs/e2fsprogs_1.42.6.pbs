@@ -8,17 +8,18 @@
 DESCRIPTION="Standard EXT2/EXT3/EXT4 filesystem utilities"
 HOMEPAGE="http://e2fsprogs.sourceforge.net/"
 LICENSE="GPL,LGPL,MIT"
-PACKAGER="StartOS Developers"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
 SRC_URI="http://prdownloads.sourceforge.net/"$N"/"$N-$V".tar.gz"
+CHECKSUM="9e444c240c1001b3292d108fbad0f49c"
 
 RDEPEND="util-linux"
-BDEPEND="pkgconfig"
+BDEPEND="pkgconfig bc"
 
 INSTALL="$N.install"
 
 pbs_unpack() {
-        dounpack
+    dounpack
 }
 
 pbs_patch() {
@@ -27,12 +28,12 @@ pbs_patch() {
 }
 
 pbs_config() {
-	config+=" --with-root-prefix="" 
-	          --enable-elf-shlibs 
-		  --disable-fsck 
-		  --disable-uuidd
-		  --disable-libuuid 
-		  --disable-libblkid "
+	config+="--with-root-prefix="" 
+	         --enable-elf-shlibs 
+		     --disable-fsck 
+		     --disable-uuidd
+		     --disable-libuuid 
+		     --disable-libblkid"
 	doconfig
 }
 
@@ -43,7 +44,6 @@ pbs_build() {
 pbs_install() {
 	domkinstall install-libs
 	sed -i -e 's/^AWK=.*/AWK=awk/' "${destdir}"/usr/bin/compile_et
-	   
 	# remove references to build directory
 	sed -i -e 's#^SS_DIR=.*#SS_DIR="/usr/share/ss"#' "${destdir}"/usr/bin/mk_cmds
 	sed -i -e 's#^ET_DIR=.*#ET_DIR="/usr/share/et"#' "${destdir}"/usr/bin/compile_et

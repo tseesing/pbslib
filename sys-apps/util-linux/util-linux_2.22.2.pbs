@@ -55,5 +55,12 @@ pbs_install() {
 	install -m644  "$filesdir"/pam-login   etc/pam.d/login
 	install -m644  "$filesdir"/pam-su      etc/pam.d/su
 	install -m644  "$filesdir"/pam-su      etc/pam.d/su-l
+    # include tmpfiles fragment for uuidd
+    docp "$filesdir"/uuidd.conf usr/lib/tmpfiles.d/
+    #FIXME
+    # gnome complain
+    for i in mount umount; do
+        doln /bin/"$i" usr/bin/"$i"
+    done
 }
 

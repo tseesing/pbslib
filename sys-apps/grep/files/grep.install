@@ -3,18 +3,14 @@
 file="grep.info.gz"
 
 post_install() {
-        doinstall_info $file
+    doinstall_info $file
 }       
 
 pre_remove() {
-        doremove_info $file
+    doremove_info $file
 }
 
 post_upgrade() {
-       post_install
-}
-
-post_downgrade() {
-       post_install
+    post_install
 }
 

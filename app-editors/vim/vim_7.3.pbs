@@ -8,39 +8,38 @@
 DESCRIPTION="Vim, an improved vi-style text editor"
 HOMEPAGE="http://www.vim.org/"
 LICENSE="custom:vim"
-PACKAGER="StartOS Developers"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
 SRC_URI="ftp://ftp.vim.org/pub/vim/unix/"$N-$V".tar.bz2" 
 CHECKSUM="5b9510a17074e2b37d8bb38ae09edbf2"
 
-RDEPEND="acl ncurses"
+RDEPEND="acl ncurses gpm"
 BDEPEND=""
 CONFLICT="gvim"
 
 INSTALL="$N.install"
 
 pbs_unpack() {
-        dounpack
+    dounpack
 }
 
 pbs_patch() {
 	# The following patch merges all updates from the 7.3 Branch from the Vim developers
 	dopatch vim-7.3-branch_update-2.patch
-
 	# Define the place for the global vimrc file (set to /etc/vimrc)
 	sed -i 's|^.*\(#define SYS_.*VIMRC_FILE.*"\) .*$|\1|' src/feature.h
 	sed -i 's|^.*\(#define VIMRC_FILE.*"\) .*$|\1|' src/feature.h
 }
 
 pbs_config() {
-	config+=" --with-features=big 
-	          --with-compiledby=StartOS
-		  --enable-gpm 
-		  --enable-acl 
-		  --with-x=no
-		  --disable-gui 
-		  --enable-multibyte 
-		  --enable-cscope "
+	config+="--with-features=big 
+	         --with-compiledby=StartOS
+		     --enable-gpm 
+		     --enable-acl 
+		     --with-x=no
+		     --disable-gui 
+		     --enable-multibyte 
+		     --enable-cscope"
 	doconfig
 }
 

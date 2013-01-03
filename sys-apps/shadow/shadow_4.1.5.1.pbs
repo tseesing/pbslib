@@ -8,7 +8,7 @@
 DESCRIPTION="Utilities to deal with user accounts"
 HOMEPAGE="http://pkg-shadow.alioth.debian.org/"
 LICENSE="BSD"
-PACKAGER="StartOS Developers"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
 SRC_URI="http://pkg-shadow.alioth.debian.org/releases/"$N-$V".tar.bz2"
 CHECKSUM="81f38720b953ef9c2c100c43d02dfe19cafd6c30"
@@ -19,16 +19,14 @@ BDEPEND=""
 INSTALL="$N.install"
 
 pbs_unpack() {
-        dounpack
+    dounpack
 }
 
 pbs_patch() {
 	# Avoid transitive linking issues with binutils 2.22
 	sed -i '/^user\(mod\|add\)_LDADD/s|$| -lattr|' src/Makefile.am
-	
 	# Need to offer these upstream
 	dopatch xstrdup.patch shadow-strncpy-usage.patch
-	
 	# Supress etc/pam.d/*, we provide our own
 	sed -i '/^SUBDIRS/s/pam.d//' etc/Makefile.in
 }
@@ -36,7 +34,6 @@ pbs_patch() {
 pbs_config() {
 	# link to glibc's crypt(3)
 	LDFLAGS+=" -lcrypt"
-	
 	config+="--with-libpam --without-selinux"
 	doconfig
 }
@@ -47,35 +44,25 @@ pbs_build() {
 
 pbs_install() {
 	domkinstall
-	
 	cd "$destdir"
-	
 	# useradd defaults
-	docp "$filesdir"/useradd    etc/default/
-	
+	docp "$filesdir"/useradd etc/default/
 	# Cron job
-	docp "$filesdir"/shadow  etc/cron.daily/
-	
+	docp "$filesdir"/shadow etc/cron.daily/
 	# login.defs
 	docp "$filesdir"/login.defs etc	
-	
 	# PAM config - custom
 	dopamd passwd chgpasswd chpasswd newusers "$srcdir"/etc/pam.d/groupmems 
-	
 	# we use the 'useradd' PAM file for other similar utilities
 	for file in chage groupadd groupdel groupmod shadow useradd usermod userdel; do
-    		install -Dm644 "$filesdir"/defaults.pam etc/pam.d/"${file}"
+        install -Dm644 "$filesdir"/defaults.pam etc/pam.d/"${file}"
   	done
-	
 	# Remove evil/broken tools
 	rm usr/sbin/logoutd
-
 	# Remove utilities provided by util-linux
 	rm usr/bin/{chsh,chfn,sg} bin/{login,su} usr/sbin/{vipw,vigr}
-
   	# but we keep newgrp, as sg is really an alias to it
   	mv usr/bin/{newgrp,sg}
-
   	# ...and their many man pages
   	find usr/share/man \
   	    '(' -name 'chsh.1'  -o \

@@ -8,7 +8,8 @@
 DESCRIPTION="Raptor RDF parser and serializer utilities"
 HOMEPAGE="http://librdf.org/raptor/"
 LICENSE="LGPL"
-PACKAGER="chenqixing@ivali.com"
+PACKAGER="chenqixing@ivali.com
+          Zhongxin Huang <huangzhongxin@ivali.com>"
 
 SRC_URI="http://librdf.org/dist/source/"$N-$V".tar.gz"
 CHECKSUM="ac60858b875aab8fa7917f21a1237aa9"
@@ -18,11 +19,11 @@ BDEPEND=""
 RECOMMENDED=""
 
 pbs_unpack() {
-        dounpack
+    dounpack
 }
 
 pbs_config() {
-    confit+=" --with-yajl=no"
+    confit+="--with-yajl=no --disable-static"
 	doconfig
 }
 

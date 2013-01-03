@@ -12,6 +12,7 @@ YARCH="any"
 PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
 SRC_URI="http://www.freedesktop.org/~takluyver/"$N-$V".tar.gz"
+CHECKSUM="1272ee62b8c3909ac4844a34a95f8b1fb3398af2"
 
 RDEPEND="python"
 BDEPEND=""
@@ -26,7 +27,6 @@ pbs_build() {
 }
 
 pbs_install() {
-	domkinstall
+	domkinstall 
 }
-
 

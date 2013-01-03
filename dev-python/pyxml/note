@@ -1,5 +1,0 @@
-标记为 testing
-
-如果安装，会导致 startos-device-manager 启动不正常。因为 python 会用 pyxml 的 expat.py 。
-
-如果不安装，python 会用自身的 expat.py，这个正常工作。

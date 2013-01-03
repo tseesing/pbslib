@@ -8,7 +8,7 @@
 DESCRIPTION="an advanced CDDA reader with error correction"
 HOMEPAGE="http://www.xiph.org/paranoia"
 LICENSE="GPL,LGPL"
-PACKAGER="StartOS Developers"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
 SRC_URI="http://downloads.xiph.org/releases/"$N"/"$N"-III-"$V".src.tgz"
 CHECKSUM="b304bbe8ab63373924a744eac9ebc652"
@@ -18,7 +18,7 @@ BDEPEND=""
 RECOMMENDED=""
 
 pbs_unpack() {
-        dounpack
+    dounpack
 }
 
 pbs_patch() {

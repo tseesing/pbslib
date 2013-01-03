@@ -8,7 +8,7 @@
 DESCRIPTION="Lossy speech compression library and tool."
 HOMEPAGE="http://packages.qa.debian.org/libg/libgsm.html"
 LICENSE="custom"
-PACKAGER="StartOS Developers"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
 SRC_URI="http://www.quut.com/"$N"/"$N-$V".tar.gz"
 CHECKSUM="c1ba392ce61dc4aff1c29ea4e92f6df4"

@@ -8,16 +8,17 @@
 DESCRIPTION="Ogg bitstream and framing library"
 HOMEPAGE="http://www.annodex.net/software/liboggz"
 LICENSE="BSD"
-PACKAGER="StartOS Developers"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
-SRC_URI="http://downloads.xiph.org/releases/ogg/"$N-$V".tar.gz"
+SRC_URI="http://downloads.xiph.org/releases/ogg/"$N-$V".tar.xz"
+CHECKSUM="84a35715170f2cd4c77a4448772b95d5"
 
 RDEPEND="glibc"
 BDEPEND=""
 RECOMMENDED=""
 
 pbs_unpack() {
-        dounpack
+    dounpack
 }
 
 pbs_config() {
@@ -35,7 +36,7 @@ pbs_install() {
 	cd "$destdir"
 	if [[ "$ARCH" == "x86_64" ]]; then
 		mv usr/include/ogg/config_types{,-64}.h
-	        docp "$filesdir"/config_types.h usr/include/ogg/
+	    docp "$filesdir"/config_types.h usr/include/ogg/
 	fi
 }
 

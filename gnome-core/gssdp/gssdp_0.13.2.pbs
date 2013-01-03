@@ -7,23 +7,25 @@
 
 DESCRIPTION="A GObject-based API for handling resource discovery and announcement over SSDP."
 HOMEPAGE="http://gupnp.org/"
-LICENSE="LGPLv2"
-PACKAGER="chenqixing@ivali.com"
+LICENSE="LGPL"
+PACKAGER="chenqixing@ivali.com
+          Zhongxin Huang <huangzhongxin@ivali.com"
 
 SRC_URI="http://ftp.acc.umu.se/pub/gnome/sources/$N/${V%.*}/$N-$V.tar.xz"
 CHECKSUM="8f663f8a72b66254f5c20a3610ff853ac8d00bf6f253828e37e51579caa34dce"
 
-RDEPEND="gtk2 libsoup gobject-introspection gtk-doc"
+RDEPEND="libsoup"
 RECOMMENDED=""
-BDEPEND=""
+BDEPEND="gobject-introspection gtk2 gtk-doc"
 CONFLICT=""
+OPTIONAL="gtk2: gssdp-device-sniffer"
 
 pbs_unpack() {
-        dounpack
+    dounpack
 }
 
 pbs_config() {
-	config+=""
+	config+="--disable-static"
 	doconfig
 }
 
@@ -33,7 +35,5 @@ pbs_build() {
 
 pbs_install() {
 	domkinstall
-    dodoc AUTHORS COPYING ChangeLog README
 }
-
 

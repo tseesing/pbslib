@@ -12,7 +12,7 @@ PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
 SRC_URI="http://labs.renren.com/apache-mirror/httpd/httpd-"$V".tar.bz2"
 
-RDEPEND="apr-util openssl zlib libpcre"
+RDEPEND="apr-util openssl zlib pcre"
 BDEPEND=""
 RECOMMENDED=""
 OPTIONAL="lynx: apachectl status"

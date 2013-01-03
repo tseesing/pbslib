@@ -1,0 +1,16 @@
+. /usr/lib/ybs/funcs
+
+files="docbook2X.info.gz docbook2man-xslt.info.gz docbook2texi-xslt.info.gz"
+
+post_install() {
+	doinstall_info $files
+}
+
+pre_remove() {
+	doremove_info $files
+}
+
+post_upgrade() {
+    post_install
+}
+

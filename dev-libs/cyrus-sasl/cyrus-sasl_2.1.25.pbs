@@ -7,17 +7,18 @@
 
 DESCRIPTION="The Cyrus SASL (Simple Authentication and Security Layer)."
 HOMEPAGE="http://asg.web.cmu.edu/sasl/"
-LICENSE="GPL"
-PACKAGER="StartOS Developers"
+LICENSE="custom"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
  
 SRC_URI="ftp://ftp.andrew.cmu.edu/pub/cyrus-mail/"$N-$V".tar.gz"
+CHECKSUM="341cffe829a4d71f2a6503d669d5a946"
 
-RDEPEND="krb5 pam"
-BDEPEND=""
+RDEPEND="krb5 pam openldap"
+BDEPEND="postgresql-libs libmysqlclient openldap krb5 openssl"
 RECOMMENDED=""
 
 pbs_unpack() {
-        dounpack
+    dounpack
 }
 
 pbs_patch() {
@@ -25,10 +26,13 @@ pbs_patch() {
 }
 
 pbs_config() {
-	config+=" --with-plugindir=/usr/lib"$LIBDIRSUFFIX"
-              --with-configdir=/usr/lib"$LIBDIRSUFFIX"
-		      --disable-static
-	          --with-saslauthd=/run "
+	config+="--with-plugindir=/usr/lib"$LIBDIRSUFFIX"
+             --with-configdir=/usr/lib"$LIBDIRSUFFIX"
+		     --disable-static
+             --with-pam
+             --disable-static
+             --with-saslauthd=/run/saslauthd
+             --with-devrandom=/dev/urandom"
 	doconfig
 }
 
@@ -38,5 +42,9 @@ pbs_build() {
 
 pbs_install() {
 	domkinstall
+    cd "$destdir"    
+    dounit saslauthd.service
+    docp "$filesdir"/saslauthd etc/default/
+    docp "$filesdir"/saslauthd.conf usr/lib/tmpfiles.d/
 }
 

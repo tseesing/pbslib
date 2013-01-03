@@ -8,7 +8,7 @@
 DESCRIPTION="a fast C/C++ compiler cache"
 HOMEPAGE="http://ccache.samba.org/"
 LICENSE="GPL"
-PACKAGER="StartOS Developers"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
 SRC_URI="http://samba.org/ftp/"$N"/"$N-$V".tar.bz2"
 CHECKSUM="0e0f25fb342dcb1196d9c2986a7323cf"
@@ -19,7 +19,7 @@ RECOMMENDED=""
 CONFLICT=""
 
 pbs_unpack() {
-        dounpack
+    dounpack
 }
 
 pbs_config() {

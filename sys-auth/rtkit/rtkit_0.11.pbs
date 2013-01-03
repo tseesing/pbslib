@@ -11,6 +11,7 @@ LICENSE="GPL,custom:BSD"
 PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
 SRC_URI="http://0pointer.de/public/"$N-$V".tar.xz"
+CHECKSUM="a96c33b9827de66033d2311f82d79a5d"
 
 RDEPEND="dbus polkit"
 BDEPEND="" 

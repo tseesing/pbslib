@@ -1,0 +1,43 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="An implementation of the OBEX protocol used for transferring data to mobile devices"
+HOMEPAGE="http://dev.zuckschwerdt.org/openobex"
+LICENSE="GPL,LGPL"
+PACKAGER="chenqixing@ivali.com
+          Zhongxin Huang <huangzhongxin@ivali.com>"
+
+SRC_URI="http://ftp.osuosl.org/pub/linux/bluetooth/"$N-$V".tar.bz2"
+CHECKSUM="fce1b82eafb74bde54fe117372393ba8"
+
+RDEPEND="bluez libusb-compat"
+BDEPEND=""
+RECOMMENDED=""
+CONFLICT=""
+
+pbs_unpack() {
+    dounpack
+}
+
+pbs_config() {
+	[ "${ARCH}" = "x86_64" ] && export CFLAGS="${CFLAGS} -fPIC"
+    config+="--enable-apps
+		     --enable-irda
+		     --enable-bluetooth
+		     --enable-usb"
+
+    doconfig
+}
+
+pbs_build() {
+	domake
+}
+
+pbs_install() {
+	domkinstall
+}
+

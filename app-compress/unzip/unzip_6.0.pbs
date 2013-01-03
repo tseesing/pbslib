@@ -8,15 +8,16 @@
 DESCRIPTION="unzipper for pkzip-compressed files"
 HOMEPAGE="http://www.info-zip.org/UnZip.html"
 LICENSE="custom"
-PACKAGER="StartOS Developers"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
 SRC_URI="http://downloads.sourceforge.net/infozip/"$N"60.tar.gz"
+CHECKSUM="62b490407489521db863b523a7f86375"
 
 RDEPEND="bzip2 libnatspec"
 BDEPEND=""
 
 pbs_unpack() {
-        dounpack
+    dounpack
 }
 
 pbs_patch() {

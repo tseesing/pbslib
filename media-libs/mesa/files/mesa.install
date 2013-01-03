@@ -7,13 +7,13 @@ post_install() {
 	# ATI
 	if [ -f fglrx/fglrx-libGL.so.1.2 ]; then
 		if lspci |grep VGA |grep -q "ATI Technologies"; then
-			lspci |grep VGA |grep -q "Intel Corporation" || ln -sf fglrx/fglrx-libGL.so.1.2 libGL.so.1.2
+		   lspci |grep VGA |grep -q "Intel Corporation" || ln -sf fglrx/fglrx-libGL.so.1.2 libGL.so.1.2
 		fi
 	fi
 	# nVidia
 	if [ -f libGL.so.27* ]; then
 		if lspci |grep VGA |grep -q "nVidia"; then
-			lspci |grep VGA |grep -q "Intel Corporation" || ln -sf libGL.so.27* libGL.so.1.2
+		   lspci |grep VGA |grep -q "Intel Corporation" || ln -sf libGL.so.27* libGL.so.1.2
 		fi
 	fi	
 	return 0
@@ -26,3 +26,4 @@ post_upgrade()  {
 post_downgrade() {
 	post_install
 }
+

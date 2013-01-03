@@ -8,7 +8,7 @@
 DESCRIPTION="Low-level cryptographic library"
 HOMEPAGE="http://www.lysator.liu.se/~nisse/nettle"
 LICENSE="GPL2"
-PACKAGER="StartOS Developers"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
 SRC_URI="ftp://ftp.lysator.liu.se/pub/security/lsh/"$N-$V".tar.gz"
 CHECKSUM="d66882e6ad31a9f651b73d7a1a93bd4c"
@@ -19,7 +19,7 @@ BDEPEND=""
 INSTALL="$N.install"
 
 pbs_unpack() {
-        dounpack
+    dounpack
 }
 
 pbs_config() {
@@ -34,6 +34,6 @@ pbs_build() {
 pbs_install() {
 	domkinstall
 	# Remove static libs
-	rm -f "$destdir"/usr/lib/{libhogweed,libnettle}.a
+	rm -f "$destdir"/usr/lib"$LIBDIRSUFFIX"/{libhogweed,libnettle}.a
 }
 

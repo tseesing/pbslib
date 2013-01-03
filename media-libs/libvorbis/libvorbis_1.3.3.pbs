@@ -8,9 +8,10 @@
 DESCRIPTION="Vorbis codec library"
 HOMEPAGE="http://xiph.org/vorbis"
 LICENSE="BSD"
-PACKAGER="StartOS Developers"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
 SRC_URI="http://downloads.xiph.org/releases/vorbis/"$N-$V".tar.gz"
+CHECKSUM="6b1a36f0d72332fae5130688e65efe1f"
 
 RDEPEND="libogg"
 BDEPEND=""

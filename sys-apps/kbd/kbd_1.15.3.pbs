@@ -8,20 +8,20 @@
 DESCRIPTION="Keyboard and console utilities"
 HOMEPAGE="http://freshmeat.net/projects/kbd"
 LICENSE="GPL"
-PACKAGER="StartOS Developers"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
 SRC_URI="ftp://ftp.altlinux.org/pub/people/legion/"$N"/"$N-$V".tar.gz"
+CHECKSUM="8143e179a0f3c25646ce5085e8777200"
 
 RDEPEND="glibc"
 BDEPEND=""
 
 pbs_unpack() {
-        dounpack
+    dounpack
 }
 
 pbs_patch() {
 	dopatch fix-es.po.patch
-	
 	# rename keymap files with the same names
 	# this is needed because when only name of keymap is specified
 	# loadkeys loads the first keymap it can find, which is bad (see FS#13837)

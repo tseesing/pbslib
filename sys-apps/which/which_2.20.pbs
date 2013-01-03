@@ -8,9 +8,10 @@
 DESCRIPTION="Prints out location of specified executables"
 HOMEPAGE="http://www.xs4all.nl/~carlo17/which/"
 LICENSE="GPL"
-PACKAGER="StartOS Developers"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
 SRC_URI="http://ftp.gnu.org/gnu/"$N"/"$N-$V".tar.gz"
+CHECKSUM="95be0501a466e515422cde4af46b2744"
 
 RDEPEND="glibc"
 BDEPEND=""
@@ -18,7 +19,7 @@ BDEPEND=""
 INSTALL="$N.install"
 
 pbs_unpack() {
-        dounpack
+    dounpack
 }
 
 pbs_config() {

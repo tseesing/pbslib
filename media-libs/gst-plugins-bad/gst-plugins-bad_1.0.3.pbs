@@ -8,13 +8,13 @@
 DESCRIPTION="Less plugins for GStreamer"
 HOMEPAGE="http://gstreamer.freedesktop.org/"
 LICENSE="LGPL"
-PACKAGER="StartOS Developers"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
 SRC_URI="http://gstreamer.freedesktop.org/src/"$N"/"$N-$V".tar.xz"
 CHECKSUM="2eae746be0b4c7fa2f1e057c91bd36940d7c25593ab612b707904461360031f0"
 
-RDEPEND="gst-plugins-base celt faac faad2 libass libcdaudio libdc1394 libdca libdvdnav libgme gsm liblrdf libmms libmodplug libmpcdec libofa librsvg libsndfile libtiger libvdpau libvpx mjpegtools musicbrainz neon schroedinger soundtouch wildmidi xvidcore"
-BDEPEND=""
+RDEPEND="gst-plugins-base mjpegtools curl chromaprint libmms faad2 mpg123 faac celt libdca soundtouch spandsp libdvdnav libmodplug libgme opus"
+BDEPEND="schroedinger libexif libdvdread libvdpau libmpeg2"
 RECOMMENDED=""
 CONFLICT=""
 

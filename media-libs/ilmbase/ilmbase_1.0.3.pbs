@@ -8,11 +8,12 @@
 DESCRIPTION="Base libraries from ILM for OpenEXR"
 HOMEPAGE="http://www.openexr.com"
 LICENSE="custom"
-PACKAGER="StartOS Developers"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
 SRC_URI="https://github.com/downloads/openexr/openexr/"$N-$V".tar.gz"
+CHECKSUM="d99962ec7e2bfac0647aaabf6b91d5de"
 
-RDEPEND="gcc-lib"
+RDEPEND="gcc-libs"
 RECOMMENDED=""
 BDEPEND=""
 OPTIONAL=""
@@ -39,4 +40,3 @@ pbs_install() {
 	domkinstall
 	dodoc COPYING
 }
-

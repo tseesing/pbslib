@@ -8,7 +8,8 @@
 DESCRIPTION="A small library for rendering Postscript documents"
 HOMEPAGE="http://www.freedesktop.org/wiki/Software/libspectre"
 LICENSE="GPLv2"
-PACKAGER="chenqixing@ivali.com"
+PACKAGER="chenqixing@ivali.com
+          Zhongxin Huang <huangzhongxin@ivali.com>"
 
 SRC_URI="http://libspectre.freedesktop.org/releases/"$N-$V".tar.gz"
 CHECKSUM="a7efd97b82b84ff1bb7a0d88c7e35ad10cc84ea8"
@@ -20,11 +21,11 @@ OPTIONAL=""
 CONFLICT=""
 
 pbs_unpack() {
-        dounpack
+    dounpack
 }
 
 pbs_config() {
-	config+=""
+    config+="--disable-static"
 	doconfig
 }
 

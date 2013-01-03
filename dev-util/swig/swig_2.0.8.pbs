@@ -12,7 +12,7 @@ PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
 SRC_URI="http://prdownloads.sourceforge.net/"$N"/"$N-$V".tar.gz"
 
-RDEPEND="libpcre"
+RDEPEND="pcre"
 BDEPEND=""
 RECOMMENDED=""
 CONFLICT=""

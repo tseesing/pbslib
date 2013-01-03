@@ -8,20 +8,21 @@
 DESCRIPTION="Unix/Linux /etc/services and /etc/protocols files provided by IANA"
 HOMEPAGE="http://sethwklein.net/iana-etc"
 LICENSE="custom"
-PACKAGER="StartOS Developers"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 YARCH="any"
 
 SRC_URI="http://lfs.vlsm.org/lfs/conglomeration/"$N"/"$N-$V".tar.bz2"
+CHECKSUM="218593bcb9264014c4e397d838b2c218eac9df06"
 
 RDEPEND=""
 BDEPEND=""
 
-pbs_patch() {
-	dopatch newer.patch
+pbs_unpack() {
+    dounpack
 }
 
-pbs_unpack() {
-        dounpack
+pbs_patch() {
+	dopatch newer.patch
 }
 
 pbs_build() {
@@ -34,5 +35,4 @@ pbs_install() {
 	dodoc COPYING
 	docp port-numbers.iana protocol-numbers.iana "${destdir}"/usr/share/iana-etc/
 }
-
 

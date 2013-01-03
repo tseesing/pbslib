@@ -7,20 +7,20 @@
 
 DESCRIPTION="An open source client for Windows Remote Desktop Services"
 HOMEPAGE="http://www.rdesktop.org/"
-LICENSE="GPLv3"
-PACKAGER="StartOS Developers"
+LICENSE="GPL"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
 SRC_URI="http://downloads.sourceforge.net/"$N"/"$N-$V".tar.gz"
 CHECKSUM="c4b39115951c4a6d74f511c99b18fcf9"
 
-RDEPEND="alsa-lib glibc libao libsamplerate libX11 libXau libxcb libXdmcp libXext libXrandr libXrender openssl pcsc-lite zlib"
+RDEPEND="libX11 openssl libao libsamplerate"
 RECOMMENDED=""
 BDEPEND=""
 OPTIONAL=""
 CONFLICT=""
 
 pbs_unpack() {
-        dounpack
+    dounpack
 }
 
 pbs_patch() {

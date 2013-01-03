@@ -8,19 +8,19 @@
 DESCRIPTION="Standard GNU utilities (chmod, cp, dd, dir, ls, who)"
 HOMEPAGE="http://www.gnu.org/software/coreutils"
 LICENSE="GPLv3"
-PACKAGER="StartOS Developers"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
 SRC_URI="http://ftp.gnu.org/gnu/"$N"/"$N-$V".tar.xz"
 CHECKSUM="3d69af8f561fce512538a9fe85f147ff"
 
-RDEPEND="acl gmp libcap"
+RDEPEND="acl gmp libcap pam"
 BDEPEND=""
 RECOMMENDED=""
 
 INSTALL="$N.install"
 
 pbs_unpack() {
-        dounpack
+    dounpack
 }
 
 pbs_config() {

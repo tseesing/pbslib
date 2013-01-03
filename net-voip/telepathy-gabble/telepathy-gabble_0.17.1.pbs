@@ -8,13 +8,13 @@
 DESCRIPTION="A Jabber/XMPP connection manager, this handles single and multi user chats and voice calls."
 HOMEPAGE="http://telepathy.freedesktop.org"
 LICENSE="LGPL2.1"
-PACKAGER="StartOS Developers"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
 SRC_URI="http://telepathy.freedesktop.org/releases/"$N"/"$N-$V".tar.gz"
 CHECKSUM="42e01fdc4117255080883495411e7318"
 
 RDEPEND="libnice libsoup openssl telepathy-glib"
-BDEPEND=""
+BDEPEND="libxslt python"
 RECOMMENDED=""
 
 pbs_unpack() {

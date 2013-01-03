@@ -5,18 +5,18 @@
 # Distributed under the terms of the GNU General Public License v2
 #
 
-DESCRIPTION="Version 2 of the library to manipulate XML files"
+DESCRIPTION="XML parsing library, version 2"
 HOMEPAGE="http://www.xmlsoft.org/"
-LICENSE="MIT"
-PACKAGER="StartOS Developers"
+LICENSE="custom"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
 SRC_URI="ftp://xmlsoft.org/"$N"/"$N-$V".tar.gz"
 
-RDEPEND="python"
-BDEPEND=""
+RDEPEND="zlib readline ncurses xz"
+BDEPEND="python"
 
 pbs_unpack() {
-        dounpack
+    dounpack
 }
 
 pbs_config() {
@@ -30,7 +30,6 @@ pbs_build() {
 
 pbs_install() {
 	domkinstall
-	#cd "$destdir"
-	#doln /usr/include/libxml2/libxml  usr/include/libxml
+    dodoc COPYING
 }
 

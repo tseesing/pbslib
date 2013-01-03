@@ -8,7 +8,7 @@
 DESCRIPTION="The Parma Polyhedra Library provides numerical abstractions for analysis of complex systems"
 HOMEPAGE="http://www.cs.unipr.it/ppl/"
 LICENSE="GPL"
-PACKAGER="StartOS Developers"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
 SRC_URI="ftp://ftp.cs.unipr.it/pub/"$N"/releases/"$V"/"$N-$V".tar.bz2"
 CHECKSUM="8da3ab9de18e669b7af8c4707817d468"
@@ -19,7 +19,7 @@ RECOMMENDED=""
 CONFLICT=""
 
 pbs_unpack() {
-        dounpack
+    dounpack
 }
 
 pbs_config() {

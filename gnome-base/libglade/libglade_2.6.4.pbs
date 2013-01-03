@@ -8,17 +8,19 @@
 DESCRIPTION="Allows you to load glade interface files in a program at runtime"
 HOMEPAGE="http://www.gnome.org/"
 LICENSE="LGPL"
-PACKAGER="StartOS Developers"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
 SRC_URI="http://ftp.gnome.org/pub/gnome/sources/"$N"/2.6/"$N-$V".tar.bz2"
+CHECKSUM="d1776b40f4e166b5e9c107f1c8fe4139"
 
-RDEPEND="libxml2"
-BDEPEND=""
+RDEPEND="libxml2 gtk2"
+BDEPEND="python pkgconfig"
+OPTIONAL="python: libglade-convert script"
 
 INSTALL="$N.install"
 
 pbs_unpack() {
-        dounpack
+    dounpack
 }
 
 pbs_patch() {

@@ -8,7 +8,7 @@
 DESCRIPTION="Mozilla's Network Security Services library that implements PKI support"
 HOMEPAGE="http://www.mozilla.org/projects/security/pki/nss/"
 LICENSE="GPL,MPL"
-PACKAGER="StartOS Developers"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
 SRC_URI="ftp://ftp.mozilla.org/pub/security/nss/releases/NSS_${V//./_}_RTM/src/"$N-$V".tar.gz"
 CHECKSUM="ace3642fb2ca67854ea7075d053ca01a6d81e616"
@@ -17,17 +17,15 @@ RDEPEND="nspr(>=4.9.3) sqlite zlib"
 BDEPEND=""
 
 pbs_unpack() {
-        dounpack
+    dounpack
 }
 
 pbs_patch() {
 	# Add CAcert and spi-inc.org CA certificates.
 	# See http://wiki.cacert.org/NSSLib for how to generate
 	dopatch add_spi+cacert_ca_certs.patch
-
 	# Adds transitional SSL renegotiate support - patch from Debian
 	dopatch ssl-renegotiate-transitional.patch
-	
 	# Respect LDFLAGS
 	sed -e 's/\$(MKSHLIB) -o/\$(MKSHLIB) \$(LDFLAGS) -o/g' \
 	    -i mozilla/security/coreconf/rules.mk

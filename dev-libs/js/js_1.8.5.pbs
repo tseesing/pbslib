@@ -8,20 +8,20 @@
 DESCRIPTION="JavaScript interpreter and libraries"
 HOMEPAGE="https://developer.mozilla.org/En/SpiderMonkey/1.8.5"
 LICENSE="GPL2"
-PACKAGER="StartOS Developers"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
-SRC_URI="http://ftp.mozilla.org/pub/mozilla.org/js/js185-1.0.0.tar.gz"
+SRC_URI="http://ftp.mozilla.org/pub/mozilla.org/$N/"$N"185-1.0.0.tar.gz"
 CHECKSUM="a4574365938222adca0a6bd33329cb32"
 
-RDEPEND="nspr"
+RDEPEND="nspr gcc-libs"
 RECOMMENDED=""
-BDEPEND=""
+BDEPEND="python zip"
 OPTIONAL=""
 CONFLICT=""
-REPLACE=""
+REPLACE="spidermonkey"
 
 pbs_unpack() {
-        dounpack
+    dounpack
 }
 
 pbs_patch() {

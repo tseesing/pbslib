@@ -5,12 +5,13 @@
 # Distributed under the terms of the GNU General Public License v2
 #
 
-DESCRIPTION="tarball tools"
+DESCRIPTION="Utility used to store, backup, and transport files"
 HOMEPAGE="http://www.gnu.org/software/tar/"
 LICENSE="GPLv3"
-PACKAGER="StartOS Developers"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
-SRC_URI="http://ftp.gnu.org/gnu/tar/"$N-$V".tar.bz2"
+SRC_URI="http://ftp.gnu.org/gnu/tar/"$N-$V".tar.xz"
+CHECKSUM="0ced6f20b9fa1bea588005b5ad4b52c1"
 
 RDEPEND="glibc"
 BDEPEND=""
@@ -18,7 +19,7 @@ BDEPEND=""
 INSTALL="$N.install"
 
 pbs_unpack() {
-        dounpack
+    dounpack
 }
 
 pbs_patch() {

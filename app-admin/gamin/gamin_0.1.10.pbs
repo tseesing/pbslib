@@ -8,19 +8,27 @@
 DESCRIPTION="Meta package providing the File Alteration Monitor API & Server"
 HOMEPAGE="http://www.gnome.org/~veillard/gamin/"
 LICENSE="GPL"
-PACKAGER="StartOS Developers"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
-SRC_URI="http://download.gnome.org/sources/"$N"/0.1/"$N-$V".tar.bz2"
+SRC_URI="http://www.gnome.org/~veillard/$N/sources/$N-$V.tar.gz"
+CHECKSUM="b4ec549e57da470c04edd5ec2876a028"
 
-RDEPEND="glib2 glibc"
-BDEPEND=""
+RDEPEND="glib2"
+BDEPEND="python"
+OPTIONAL="python: for the python module"
 
 pbs_unpack() {
-        dounpack
+    dounpack
+}
+
+pbs_patch() {
+	dopatch fix-deprecated-const.patch
 }
 
 pbs_config() {
-	config+=""
+	config+="--with-threads 
+	         --disable-debug-api 
+	   	     --disable-debug "
 	doconfig
 }
 

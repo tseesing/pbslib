@@ -21,9 +21,10 @@ pre_install() {
     install -d -m1777 /var/{tmp,spool/mail}
     # allow setgid games to write scores
     install -d -m775 -g games /var/games
-    ln -sf /var/spool/mail /var/mail
-    ln -sf /run /var/run
-    ln -sf /run/lock /var/lock
+    [ -h /var/mail ] || ln -sf /var/spool/mail /var/mail
+    [ -h /var/run ] || ln -sf /run /var/run
+    [ -h /var/lock ] || ln -sf /run/lock /var/lock
+    [ -h /var/sys ] || ln -sf /sys /var/sys
     # setup /usr
     for d in bin include lib sbin share/misc src; do
         install -d -m755 /usr/${d}

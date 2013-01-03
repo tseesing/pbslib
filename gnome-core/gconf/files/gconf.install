@@ -1,7 +1,7 @@
 . /usr/lib/ybs/funcs
 
 post_install() {
-    ldconfig -r .
+    ldconfig -r /
     chmod 755 /etc/gconf/gconf.xml.system
     gio-querymodules /usr/lib"$LIBDIRSUFFIX"/gio/modules
 }

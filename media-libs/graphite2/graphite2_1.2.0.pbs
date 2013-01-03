@@ -7,20 +7,21 @@
 
 DESCRIPTION="Font rendering engine for Complex Scripts"
 HOMEPAGE="http://graphite.sil.org/"
-LICENSE="custom"
-PACKAGER="StartOS Developers"
+LICENSE="LGPL,GPL,custom"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
 SRC_URI="http://sourceforge.net/projects/silgraphite/files/"$N"/"$N-$V".tgz"
+CHECKSUM="f5ef3f7f10fa8c3542c6a085a233080b"
 
-RDEPEND="glibc"
-BDEPEND="cmake"
+RDEPEND="gcc-libs"
+BDEPEND="cmake freetype python"
 RECOMMENDED=""
 CONFLICT=""
 
 OPTIONS="noccache"
 
 pbs_unpack() {
-        dounpack
+    dounpack
 }
 
 pbs_patch() {

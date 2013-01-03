@@ -4,7 +4,7 @@ Description=Git Daemon Instance
 [Service]
 User=git
 # The '-' is to ignore non-zero exit statuses
-ExecStart=-/usr/lib64/git-core/git-daemon --inetd --export-all --base-path=/srv/git
+ExecStart=-/usr/libexec/git-core/git-daemon --inetd --export-all --base-path=/srv/git
 StandardInput=socket
 StandardOutput=inherit
 StandardError=journal

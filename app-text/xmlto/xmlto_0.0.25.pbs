@@ -8,15 +8,16 @@
 DESCRIPTION="A bash script for converting XML and DocBook formatted documents to a variety of output formats"
 HOMEPAGE="https://fedorahosted.org/xmlto/browser"
 LICENSE="GPL"
-PACKAGER="StartOS Developers"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
 SRC_URI="https://fedorahosted.org/releases/x/m/"$N"/"$N-$V".tar.bz2"
+CHECKSUM="6b6267b1470f8571fe5f63a128970364"
 
-RDEPEND="glibc"
-BDEPEND="docbook-xml docbook-xsl libxslt-dev"
+RDEPEND="libxslt YAML-Syck Test-Pod"
+BDEPEND=""
 
 pbs_unpack() {
-        dounpack
+    dounpack
 }
 
 pbs_config() {

@@ -8,7 +8,7 @@
 DESCRIPTION="Library that provides generic access to USB device, replace libusb"
 HOMEPAGE="http://libusb.org/"
 LICENSE="LGPL"
-PACKAGER="StartOS Developers"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
 SRC_URI="http://downloads.sourceforge.net/"$N"/"$N-$V".tar.bz2"
 CHECKSUM="0a6a75edb4b4eae7dc82c1dd71ddc470"
@@ -18,7 +18,7 @@ BDEPEND=""
 REPLACE="libusb"
 
 pbs_unpack() {
-        dounpack
+    dounpack
 }
 
 pbs_config() {

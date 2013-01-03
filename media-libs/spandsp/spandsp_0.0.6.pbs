@@ -8,7 +8,7 @@
 DESCRIPTION="A DSP library for telephony"
 HOMEPAGE="http://www.soft-switch.org"
 LICENSE="GPL"
-PACKAGER="StartOS Developers"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
 SRC_URI="http://www.soft-switch.org/downloads/"$N"/"$N-$V"pre21.tgz"
 CHECKSUM="492f3790439891c07d8c06e97ccbfcf1"
@@ -36,5 +36,4 @@ pbs_build() {
 pbs_install() {
 	domkinstall
 }
-
 

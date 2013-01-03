@@ -7,27 +7,25 @@
 
 DESCRIPTION="Unicode character map viewer"
 HOMEPAGE="http://www.gnome.org/"
-LICENSE="GPLv3"
-PACKAGER="chenqixing@ivali.com"
+LICENSE="GPL"
+PACKAGER="chenqixing@ivali.com
+          Zhongxin Huang <huangzhongxin@ivali.com>"
 
 SRC_URI="http://ftp.acc.umu.se/pub/gnome/sources/$N/${V%.*}/$N-$V.tar.xz"
-
 CHECKSUM="c3aad2990010ab66225b748e6ac5402cad9f21e908cddf728e57d755c54cc6b2"
 
-RDEPEND="dconf gtk3 hicolor-icon-theme gobject-introspection"
-BDEPEND="intltool docbook-xsl"
+RDEPEND="dconf gtk3"
+BDEPEND="gtk-doc intltool gobject-introspection itstool docbook-xsl"
 RECOMMENDED=""
 
 INSTALL="$N.install"
 
 pbs_unpack() {
-        dounpack
+    dounpack
 }
 
 pbs_config() {
-	config+="--disable-schemas-compile 
-             --enable-unihan
-             --with-gtk=3.0 "
+	config+="--disable-static --disable-schemas-compile  --enable-introspection"
 	doconfig
 }
 

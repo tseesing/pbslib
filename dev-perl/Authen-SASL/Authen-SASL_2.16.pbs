@@ -1,0 +1,39 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="Perl/CPAN Module Authen::SASL : SASL authentication framework"
+HOMEPAGE="http://search.cpan.org/dist/Authen-SASL"
+LICENSE="GPL,PerlArtistic"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
+YARCH="any"
+
+SRC_URI="http://www.cpan.org/authors/id/G/GB/GBARR/"$N-$V".tar.gz"
+CHECKSUM="7c03a689d4c689e5a9e2f18a1c586b2f"
+
+RDEPEND="perl"
+BDEPEND=""
+RECOMMENDED=""
+CONFLICT=""
+
+pbs_unpack() {
+    dounpack
+}
+
+pbs_config() {
+	export PERL_MM_USE_DEFAULT=1
+	doconfig INSTALLDIRS=vendor
+}
+
+pbs_build() {
+	domake
+}
+
+pbs_install() {
+    make pure_install doc_install DESTDIR="$destdir"
+    perl_cleanup
+}
+

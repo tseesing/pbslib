@@ -8,7 +8,8 @@
 DESCRIPTION="Mercurial is a free, distributed source control management tool"
 HOMEPAGE="http://mercurial.selenic.com/"
 LICENSE="GPL"
-PACKAGER="chenqixing@ivali.com"
+PACKAGER="chenqixing@ivali.com
+          Zhongxin Huang <huangzhongxin@ivali.com>"
 
 SRC_URI="http://mercurial.selenic.com/release/"$N-$V".tar.gz"
 CHECKSUM="31b328679951158a05f22c3323644b51"
@@ -16,10 +17,11 @@ CHECKSUM="31b328679951158a05f22c3323644b51"
 RDEPEND="python"
 BDEPEND=""
 RECOMMENDED=""
+OPTIONAL="tk: for the hgk GUI"
 CONFLICT=""
 
 pbs_unpack() {
-        dounpack
+    dounpack
 }
 
 pbs_config() {
@@ -33,5 +35,19 @@ pbs_build() {
 
 pbs_install() {
 	domkinstall
+    doman doc/hg.1 doc/{hgrc.5,hgignore.5}
+    install -m755 contrib/hgk "$destdir"/usr/bin/
+    # zsh
+    docp_rename contrib/zsh_completion  "$destdir"/usr/share/zsh/site-functions/_hg
+    # bash
+    docp_rename contrib/bash_completion "$destdir"/usr/share/bash-completion/completions/hg
+    # emacs
+    docp contrib/{mq.el,mercurial.el}   "$destdir"/usr/share/emacs/site-lisp
+    # vim
+    docp_rename contrib/vim/HGAnnotate.vim "$destdir"/usr/share/vim/vimfiles/syntax/HGAnnotate.vim   
+    # profile.d
+    docp "$filesdir"/mercurial.sh "$destdir"/etc/profile.d/
+    # hgrc
+    docp_rename contrib/sample.hgrc "$destdir"/etc/mercurial/hgrc
 }
 

@@ -1,13 +1,15 @@
 . /usr/lib/ybs/funcs
 
+gname="git"
+
 post_install() {
-	getent group git >/dev/null || groupadd --system git
-	getent passwd git >/dev/null || useradd --system -c 'git daemon user' -g git -d / -s /bin/bash git
+	dogroupadd --system $gname
+	douseradd --system -c 'git daemon user' -g $gname -d / -s /bin/bash $gname || true  
 }
 
 post_remove() {
-	getent passwd git >/dev/null && userdel git
-  	getent group git >/dev/null && groupdel git || true
+    douserdel $gname
+  	dogroupdel $gname || true
 }
 
 post_upgrade() {

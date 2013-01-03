@@ -8,14 +8,15 @@
 DESCRIPTION="An integrated VNC server for GNOME"
 HOMEPAGE="http://www.gnome.org/"
 LICENSE="GPL"
-PACKAGER="chenqixing@ivali.com"
+PACKAGER="chenqixing@ivali.com
+          Zhongxin Huang <huangzhongxin@ivali.com>"
 
 SRC_URI="http://ftp.gnome.org/pub/gnome/sources/"$N"/${V%.*}/"$N-$V".tar.xz"
 CHECKSUM="c24907542c5ea086293dc852edfeb6b6d02d63e210a3ff715c18d04e130857e4"
 
-RDEPEND="avahi libjpeg-turbo libnotify libSM libsoup libsecret libXtst telepathy-glib"
+RDEPEND="libnotify libXtst libSM libsoup telepathy-glib gtk3 libsecret avahi desktop-file-utils"
 RECOMMENDED=""
-BDEPEND=""
+BDEPEND="intltool networkmanager gnome-common"
 CONFLICT=""
 
 INSTALL="$N.install"

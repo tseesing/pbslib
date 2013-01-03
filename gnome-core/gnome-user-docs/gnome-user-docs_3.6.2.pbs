@@ -8,17 +8,19 @@
 DESCRIPTION="User, system administration, and accessibility help documentation"
 HOMEPAGE="http://www.gnome.org"
 LICENSE="FDL"
-PACKAGER="chenqixing@ivali.com"
+PACKAGER="chenqixing@ivali.com
+          Zhongxin Huang <huangzhongxin@ivali.com>"
 YARCH="any"
 
 SRC_URI="http://ftp.acc.umu.se/pub/gnome/sources/$N/${V%.*}/$N-$V.tar.xz"
+CHECKSUM="9c13bda8d2690760699456d5d91d241455af51e21a732689d68f15cbf3664152"
 
 RDEPEND="yelp"
-BDEPEND=""
+BDEPEND="yelp-tools"
 RECOMMENDED=""
 
 pbs_unpack() {
-        dounpack
+    dounpack
 }
 
 pbs_config() {
@@ -31,6 +33,5 @@ pbs_build() {
 
 pbs_install() {
 	domkinstall
-    dodoc AUTHORS COPYING ChangeLog README
 }
 

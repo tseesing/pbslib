@@ -8,7 +8,7 @@
 DESCRIPTION="XML stylesheets for Docbook-xml transformations"
 HOMEPAGE="http://docbook.sourceforge.net/"
 LICENSE="custom"
-PACKAGER="StartOS Developers"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 YARCH="any"
 
 SRC_URI="http://downloads.sourceforge.net/docbook/"$N-$V".tar.bz2"
@@ -21,7 +21,7 @@ RECOMMENDED=""
 INSTALL="$N.install"
 
 pbs_unpack() {
-        dounpack
+    dounpack
 }
 
 pbs_install() {

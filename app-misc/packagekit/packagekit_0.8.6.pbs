@@ -12,7 +12,6 @@ PACKAGER="chenqixing@ivali.com"
 
 SRC_URI="http://www.packagekit.org/releases/PackageKit-$V.tar.xz"
 
-
 RDEPEND="python dbus-glib systemd"
 BDEPEND="gobject-introspection"
 RECOMMENDED=""
@@ -20,7 +19,7 @@ RECOMMENDED=""
 INSTALL="$N.install"
 
 pbs_unpack() {
-        dounpack
+    dounpack
 }
 
 pbs_config() {
@@ -42,6 +41,6 @@ pbs_build() {
 
 pbs_install() {
 	domkinstall
-    dodoc COPYING NEWS ChangeLog AUTHORS README
 }
+
 

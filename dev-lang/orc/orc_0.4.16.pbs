@@ -8,9 +8,10 @@
 DESCRIPTION="The Oild Runtime Compiler"
 HOMEPAGE="http://code.entropywave.com/projects/orc"
 LICENSE="custom"
-PACKAGER="StartOS Developers"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
 SRC_URI="http://code.entropywave.com/download/"$N"/"$N-$V".tar.gz"
+CHECKSUM="e482932e544c847761449b106ecbc483"
 
 RDEPEND="glibc"
 RECOMMENDED=""

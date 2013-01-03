@@ -11,9 +11,10 @@ LICENSE="LGPL"
 PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
 SRC_URI="http://ftp.gnome.org/pub/gnome/core/3.6/3.6.2/sources/libwnck-"$V".tar.xz"
+CHECKSUM="a545a23ea7681fafae033b4f68b69ef022d446a9325286291bb8882b9016a130"
 
 RDEPEND="libXres gtk3 startup-notification"
-BDEPEND="gobject-introspection"
+BDEPEND="gobject-introspection intltool"
 RECOMMENDED=""
 
 pbs_unpack() {

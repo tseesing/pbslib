@@ -8,23 +8,27 @@
 DESCRIPTION="Cross platform Make"
 HOMEPAGE="http://www.cmake.org"
 LICENSE="custom"
-PACKAGER="StartOS Developers"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
 SRC_URI="http://www.cmake.org/files/v2.8/"$N-$V".tar.gz"
+CHECKSUM="097278785da7182ec0aea8769d06860c"
 
-RDEPEND="ncurses gcc-lib"
+RDEPEND="curl libarchive shared-mime-info"
 BDEPEND=""
+OPTIONAL="qt: cmake-gui
+          emacs: "
 
 pbs_unpack() {
-        dounpack
+    dounpack
 }
 
 pbs_config() {
 	./bootstrap --prefix=/usr \
-		    --mandir=/share/man \
+		        --mandir=/share/man \
 	            --docdir=/share/doc/cmake \
 	            --system-libs \
 	            --parallel=$(getconf _NPROCESSORS_ONLN)
+                # --qt-gui
 }
 
 pbs_build() {
@@ -36,5 +40,8 @@ pbs_install() {
 	docp Docs/cmake-indent.vim "$destdir"/usr/share/vim/vimfiles/indent/
 	docp Docs/cmake-syntax.vim "$destdir"/usr/share/vim/vimfiles/syntax/
 	dodoc Copyright.txt
+    #For emacs
+    #install -Dm644 Docs/cmake-mode.el "${destdir}"/usr/share/emacs/site-lisp/cmake-mode.el
+    #emacs -batch -f batch-byte-compile "${destdir}"/usr/share/emacs/site-lisp/cmake-mode.el
 }
 

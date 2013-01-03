@@ -8,15 +8,16 @@
 DESCRIPTION="Hebrew spell-checker"
 HOMEPAGE="http://www.ivrix.org.il/projects/spell-checker"
 LICENSE="GPL"
-PACKAGER="StartOS Developers"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
 SRC_URI="http://hspell.ivrix.org.il/"$N-$V".tar.gz"
+CHECKSUM="32fbc1a71e86ab46bf7870c6eec9a6be"
 
 RDEPEND="glibc zlib perl"
-BDEPEND="perl"
+BDEPEND="perl hunspell gawk"
 
 pbs_unpack() {
-        dounpack
+    dounpack
 }
 
 pbs_config() {

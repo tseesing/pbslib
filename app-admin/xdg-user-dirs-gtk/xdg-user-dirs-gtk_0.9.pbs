@@ -5,20 +5,21 @@
 # Distributed under the terms of the GNU General Public License v2
 #
 
-DESCRIPTION="Gtk UI for xdg-user-dirs"
+DESCRIPTION="Creates user dirs and asks to relocalize them"
 HOMEPAGE="http://www.gnome.org"
 LICENSE="GPLv2"
-PACKAGER="chenqixing@ivali.com"
+PACKAGER="chenqixing@ivali.com
+          Zhongxin Huang <huangzhongxin@ivali.com>"
 
 SRC_URI="http://ftp.acc.umu.se/pub/gnome/sources/$N/${V}/$N-$V.tar.xz"
 CHECKSUM="4b908252515eb95b27427ef7c6b0e096febde716c0c89e8f03a79d23882b79c8"
 
 RDEPEND="gtk3 xdg-user-dirs"
-BDEPEND=""
+BDEPEND="intltool"
 RECOMMENDED=""
 
 pbs_unpack() {
-        dounpack
+    dounpack
 }
 
 pbs_config() {
@@ -32,6 +33,6 @@ pbs_build() {
 
 pbs_install() {
 	domkinstall
-    dodoc COPYING AUTHORS ChangeLog NEWS
 }
+
 

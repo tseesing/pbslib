@@ -8,7 +8,7 @@
 DESCRIPTION="Irman driver lcd library"
 HOMEPAGE="http://www.lirc.org"
 LICENSE="LGPL"
-PACKAGER="StartOS Developers"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
 SRC_URI="http://downloads.sourceforge.net/lirc/"$N-$V".tar.bz2"
 CHECKSUM="4a2708d53b6c79659c073cfefed57f78"
@@ -36,5 +36,4 @@ pbs_build() {
 pbs_install() {
 	domkinstall
 }
-
 

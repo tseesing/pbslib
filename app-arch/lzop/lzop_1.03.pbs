@@ -8,7 +8,7 @@
 DESCRIPTION="File compressor using lzo lib"
 HOMEPAGE="http://www.lzop.org"
 LICENSE="GPL"
-PACKAGER="StartOS Developers"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
 SRC_URI="http://www.lzop.org/download/"$N-$V".tar.gz"
 CHECKSUM="006c5e27fb78cdd14a628fdfa5aa1905"
@@ -21,7 +21,7 @@ CONFLICT=""
 REPLACE=""
 
 pbs_unpack() {
-        dounpack
+    dounpack
 }
 
 pbs_config() {

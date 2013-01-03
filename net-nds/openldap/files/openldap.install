@@ -1,14 +1,16 @@
 . /usr/lib/ybs/funcs
 
+gname="ldap"
+
 post_install() {
-	groupadd -g 439 ldap &>/dev/null
-	useradd -u 439 -g ldap -d /var/lib/openldap -s /bin/false ldap &>/dev/null
-	chown -R ldap:ldap /var/lib/openldap &>/dev/null
+	groupadd -g 439 $gname &>/dev/null
+	useradd -u 439 -g $gname -d /var/lib/openldap -s /bin/false $gname &>/dev/null
+	chown -R $gname:$gname /var/lib/openldap &>/dev/null
 }
 
 post_remove() {
-	douserdel "ldap"
-	dogroupdel "ldap"
+	douserdel $gname
+	dogroupdel $gname
 }
 
 post_upgrade() {

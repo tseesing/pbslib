@@ -14,7 +14,7 @@ PACKAGER="chenqixing@ivali.com
 SRC_URI="http://ftp.gnome.org/pub/gnome/core/3.6/3.6.2/sources/"$N-$V".tar.xz"
 CHECKSUM="22fba681b3e6041494ac4fa41b8286957bade0cc6158c110fe8f3c980af6913d"
 
-RDEPEND="at-spi2-atk gtk3 clutter dconf pyatspi gtk2"
+RDEPEND="at-spi2-atk gtk3 clutter dconf pyatspi"
 RECOMMENDED="pygobject3"
 BDEPEND=""
 OPTIONAL=""
@@ -27,7 +27,7 @@ pbs_unpack() {
 }
 
 pbs_config() {
-	config+="--enable-gtk2-module --disable-schemas-compile --disable-static"
+	config+="--disable-gtk2-module --enable-gtk3-module --disable-schemas-compile --disable-static"
 	doconfig
 }
 

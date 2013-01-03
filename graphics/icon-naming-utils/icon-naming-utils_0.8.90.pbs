@@ -8,15 +8,16 @@
 DESCRIPTION="Utils to help with the transition to the new freedesktop.org naming scheme."
 HOMEPAGE="http://tango.freedesktop.org"
 LICENSE="GPL"
-PACKAGER="StartOS Developers"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 YARCH="any"
 
 SRC_URI="http://tango.freedesktop.org/releases/"$N-$V".tar.gz"
-
-OPTIONS="nodev"
+CHECKSUM="2c5c7a418e5eb3268f65e21993277fba"
 
 RDEPEND="xml-simple"
 BDEPEND=""
+
+OPTIONS="nodev"
 
 pbs_unpack() {
     dounpack
@@ -36,6 +37,8 @@ pbs_build() {
 }
 
 pbs_install() {
-	domkinstall
+    domkinstall
+    cd "$destdir"
+    domv usr/share/pkgconfig usr/lib"$LIBDIRSUFFIX"/
 }
 

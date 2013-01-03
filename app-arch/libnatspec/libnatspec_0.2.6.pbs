@@ -8,7 +8,7 @@
 DESCRIPTION="library to smooth charset/localization issues"
 HOMEPAGE="http://natspec.sourceforge.net/"
 LICENSE="GPL"
-PACKAGER="StartOS Developers"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
 SRC_URI="http://sourceforge.net/projects/natspec/files/natspec/"$N"/"$N-$V".tar.bz2"
 CHECKSUM="b57683f2e7be837992bffead1a6d3733"
@@ -21,7 +21,7 @@ CONFLICT=""
 REPLACE=""
 
 pbs_unpack() {
-        dounpack
+    dounpack
 }
 
 pbs_patch() {

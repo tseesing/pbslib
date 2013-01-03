@@ -8,7 +8,7 @@
 DESCRIPTION="A C++ API for cairo"
 HOMEPAGE="http://cairographics.org/cairomm"
 LICENSE="LGPL,MPL"
-PACKAGER="StartOS Developers"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
 SRC_URI="http://cairographics.org/releases/"$N-$V".tar.gz"
 CHECKSUM="f08bf8a331067f0d1e876523f07238fba6b26b99"

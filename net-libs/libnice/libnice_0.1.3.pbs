@@ -7,23 +7,27 @@
 
 DESCRIPTION="An implementation of the Interactice Connectivity Establishment standard (ICE)"
 HOMEPAGE="http://nice.freedesktop.org/wiki/"
-LICENSE="GPL"
-PACKAGER="StartOS Developers"
+LICENSE="LGPL"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
 SRC_URI="http://nice.freedesktop.org/releases/"$N-$V".tar.gz"
+CHECKSUM="1a0907605f852dcda32a3b3daf38d36c"
 
-RDEPEND="gstreamer"
+RDEPEND="glib2"
 BDEPEND=""
 RECOMMENDED=""
+OPTIONAL="gstreamer:
+          gstreamer0.10: "
 
 pbs_unpack() {
-        dounpack
+    dounpack
 }
 
 pbs_config() {
+    config+="--disable-static"
 	doconfig
 }
-
+    
 pbs_build() {
 	domake
 }

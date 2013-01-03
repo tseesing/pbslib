@@ -8,19 +8,21 @@
 DESCRIPTION="High-level device independent layer for speech synthesis interface"
 HOMEPAGE="http://www.freebsoft.org/speechd"
 LICENSE="GPLv2,FDL"
-PACKAGER="StartOS Developers"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
 SRC_URI="http://www.freebsoft.org/pub/projects/speechd/"$N-$V".tar.gz"
 CHECKSUM="ccfc30ac006673d36b4223eb760ed696"
 
-RDEPEND="dotconf espeak glib2 libao"
+RDEPEND="glib2 python dotconf texinfo pulseaudio"
 RECOMMENDED=""
-BDEPEND=""
-OPTIONAL=""
+BDEPEND="pkgconfig espeak"
+OPTIONAL="festival: Speech output using Festival
+          espeak: Speech output using ESpeak
+          pulseaudio: PulseAudio support"
 CONFLICT=""
 
 pbs_unpack() {
-        dounpack
+    dounpack
 }
 
 pbs_config() {
@@ -34,7 +36,12 @@ pbs_build() {
 
 pbs_install() {
 	domkinstall
+    cd "$destdir"
+    # For systemd
+    dounit speech-dispatcherd.service
 	# Remove conflicts with erlang (FS#21674)
 	rm -r "${destdir}"/usr/bin/run_test
+    # Misc
+    mkdir -p var/log/speech-dispatcher
 }
 

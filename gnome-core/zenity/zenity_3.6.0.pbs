@@ -8,13 +8,14 @@
 DESCRIPTION="Tool to display dialogs from the commandline and shell scripts"
 HOMEPAGE="http://www.gnome.org/"
 LICENSE="LGPL"
-PACKAGER="chenqixing@live.cn"
+PACKAGER="<chenqixing@ivali.com>
+          Zhongxin Huang <huangzhongxin@ivali.com>"
 
 SRC_URI="http://ftp.gnome.org/pub/gnome/sources/$N/${V%.*}/"$N-$V".tar.xz"
 CHECKSUM="5de4ebbb6888ad4928fa9eebcd42dbe5bb282bee9dd7dd21475d9eaa854c74be"
 
 RDEPEND="gtk3 libnotify"
-BDEPEND="intltool gtk-doc itstool"
+BDEPEND="intltool gtk-doc itstool docbook-xsl"
 RECOMMENDED=""
 
 pbs_unpack() {
@@ -33,3 +34,4 @@ pbs_build() {
 pbs_install() {
 	domkinstall
 }
+

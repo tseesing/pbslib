@@ -8,20 +8,21 @@
 DESCRIPTION="Linux Key Management Utilities"
 HOMEPAGE="http://www.kernel.org/"
 LICENSE="GPL,LGPL"
-PACKAGER="StartOS Developers"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
 SRC_URI="http://people.redhat.com/dhowells/"$N"/"$N-$V".tar.bz2"
+CHECKSUM="d759680b2f23c99af95938f5026f25fb"
 
 RDEPEND="glibc"
 BDEPEND=""
 RECOMMENDED=""
 
 pbs_unpack() {
-        dounpack
+    dounpack
 }
 
 pbs_build() {
-	domake
+	domake CFLAGS=\"${CFLAGS}\" LDFLAGS=\"${LDFLAGS}\"
 }
 
 pbs_install() {

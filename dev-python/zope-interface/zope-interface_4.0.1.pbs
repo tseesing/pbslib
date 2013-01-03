@@ -1,0 +1,40 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="Zope Interfaces for Python"
+HOMEPAGE="http://pypi.python.org/pypi/zope.interface"
+LICENSE="ZPL"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
+YARCH="any"
+
+SRC_URI="http://pypi.python.org/packages/source/z/zope.interface/zope.interface-$V.tar.gz"
+CHECKSUM="d171f8f8a6997409c7680f1dbb3b7e45"
+
+RDEPEND="python"
+BDEPEND="distribute" 
+RECOMMENDED=""
+CONFLICT=""
+
+pbs_unpack() {
+    dounpack
+}
+
+pbs_config() {
+	doconfig
+}
+
+pbs_build() {
+	domake
+}
+
+pbs_install() {
+	domkinstall --optimize=1
+    docp src/zope/__init__.py "$destdir"/usr/lib"$LIBDIRSUFFIX"/python2.7/site-packages/zope/
+    #delete debug
+    rm "$destdir"/usr/lib"$LIBDIRSUFFIX"/python2.7/site-packages/zope/interface/_zope_interface_coptimizations.so
+}
+

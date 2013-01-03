@@ -8,16 +8,17 @@
 DESCRIPTION="Simple library for creating daemon processes in C"
 HOMEPAGE="http://0pointer.de/lennart/projects/libdaemon/"
 LICENSE="LGPL"
-PACKAGER="StartOS Developers"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
 SRC_URI="http://0pointer.de/lennart/projects/"$N"/"$N-$V".tar.gz"
+CHECKSUM="78a4db58cf3a7a8906c35592434e37680ca83b8f"
 
 RDEPEND="glibc"
 BDEPEND=""
 RECOMMENDED=""
 
 pbs_unpack() {
-        dounpack
+    dounpack
 }
 
 pbs_config() {

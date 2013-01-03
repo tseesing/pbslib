@@ -8,17 +8,18 @@
 DESCRIPTION="a collection of common network programs"
 HOMEPAGE="http://www.gnu.org/software/inetutils/"
 LICENSE="GPL"
-PACKAGER="StartOS Developers"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
 SRC_URI="http://ftp.gnu.org/gnu/"$N"/"$N-$V".tar.gz"
+CHECKSUM="86b7eb11cfdaefb1d4e9bfc10620beaf8f09bc90"
 
-RDEPEND="readline pam"
+RDEPEND="readline pam ncurses"
 BDEPEND=""
 
 INSTALL="$N.install"
 
 pbs_unpack() {
-        dounpack
+    dounpack
 }
 
 pbs_patch() {
@@ -26,21 +27,34 @@ pbs_patch() {
 }
 
 pbs_config() {
-	config+=" --libexec=/usr/sbin
-                  --without-wrap --with-pam 
-    		  --enable-ftp   --enable-ftpd
-    		  --enable-telnet --enable-telnetd
-    		  --enable-talk --enable-talkd
-    		  --enable-rlogin --enable-rlogind
-                  --enable-rsh --enable-rshd 
-    		  --enable-rcp --enable-hostname 
-    		  --disable-rexec --disable-rexecd 
-    		  --disable-tftp --disable-tftpd 
-    		  --disable-ping --disable-ping6
-    		  --disable-logger --disable-syslogd 
-    		  --disable-inetd --disable-whois 
-    		  --disable-uucpd --disable-ifconfig 
-		  --disable-traceroute "
+	config+="--libexec=/usr/sbin
+             --without-wrap 
+             --with-pam 
+             --enable-ftp   
+             --enable-ftpd
+             --enable-telnet 
+             --enable-telnetd
+             --enable-talk 
+             --enable-talkd
+             --enable-rlogin 
+             --enable-rlogind
+             --enable-rsh 
+             --enable-rshd 
+             --enable-rcp 
+             --enable-hostname 
+             --disable-rexec
+             --disable-rexecd 
+    		 --disable-tftp 
+             --disable-tftpd 
+    		 --disable-ping 
+             --disable-ping6
+    		 --disable-logger 
+             --disable-syslogd 
+    		 --disable-inetd
+             --disable-whois 
+    		 --disable-uucpd 
+             --disable-ifconfig 
+		     --disable-traceroute"
 	doconfig
 }
 
@@ -60,6 +74,4 @@ pbs_install() {
   	install -D -m644 "${filesdir}"/rsh.xinetd etc/xinetd.d/rsh
   	dounit ftpd.service 
 }
-
-
 

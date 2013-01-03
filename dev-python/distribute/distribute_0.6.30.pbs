@@ -8,18 +8,19 @@
 DESCRIPTION="The pkg_resources module provides an API for Python libraries to access their resource files"
 HOMEPAGE="http://packages.python.org/distribute"
 LICENSE="PSF"
-PACKAGER="StartOS Developers"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 YARCH="any"
 
 SRC_URI="http://pypi.python.org/packages/source/d/"$N"/"$N-$V".tar.gz"
+CHECKSUM="d239a2c7d40e126274dab3e2aa89d591"
 
 RDEPEND="python(>=2.7.3)"
-BDEPEND=" "
+BDEPEND=""
 RECOMMENDED=""
 CONFLICT=""
 
 pbs_unpack() {
-        dounpack
+    dounpack
 }
 
 pbs_config() {

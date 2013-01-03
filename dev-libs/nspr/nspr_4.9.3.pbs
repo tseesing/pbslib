@@ -8,7 +8,7 @@
 DESCRIPTION="Netscape Portable Runtime"
 HOMEPAGE="http://www.mozilla.org/projects/nspr/"
 LICENSE="MPL,GPL"
-PACKAGER="StartOS Developers"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
 SRC_URI="http://ftp.mozilla.org/pub/mozilla.org/"$N"/releases/v"$V"/src/"$N-$V".tar.gz"
 CHECKSUM="8a21b3b6766bde3b5ed2a6a7b725e4aa"
@@ -17,7 +17,7 @@ RDEPEND="glibc"
 BDEPEND=""
 
 pbs_unpack() {
-        dounpack
+    dounpack
 }
 
 pbs_config() {
@@ -30,11 +30,11 @@ pbs_config() {
 	    -i mozilla/nsprpub/config/rules.mk
 
 	./mozilla/nsprpub/configure \
-		--prefix=/usr \
+	    	--prefix=/usr \
 	        --libdir=/usr/lib"$LIBDIRSUFFIX" \
-		--includedir=/usr/include/nspr \
-		--enable-optimize \
-		--disable-debug "$confflags"
+		    --includedir=/usr/include/nspr \
+		    --enable-optimize \
+		    --disable-debug "$confflags"
 }
 
 pbs_build() {
@@ -58,9 +58,9 @@ pbs_install() {
 			 -e "s,%FULL_NSPR_CFLAGS%,${NSPR_CFLAGS},"  \
 			 >"${destdir}"/usr/lib"$LIBDIRSUFFIX"/pkgconfig/nspr.pc
 
-       cd "$destdir"
-       chmod 644 usr/lib"$LIBDIRSUFFIX"/{*.a,pkgconfig/nspr.pc}
-       doln /usr/lib"$LIBDIRSUFFIX"/pkgconfig/nspr.pc usr/lib"$LIBDIRSUFFIX"/pkgconfig/mozilla-nspr.pc
-       rm -rf usr/bin/{compile-et.pl,prerr.properties} usr/share/aclocal/nspr.m4 usr/include/nspr/md
+    cd "$destdir"
+    chmod 644 usr/lib"$LIBDIRSUFFIX"/{*.a,pkgconfig/nspr.pc}
+    doln /usr/lib"$LIBDIRSUFFIX"/pkgconfig/nspr.pc usr/lib"$LIBDIRSUFFIX"/pkgconfig/mozilla-nspr.pc
+    rm -rf usr/bin/{compile-et.pl,prerr.properties} usr/share/aclocal/nspr.m4 usr/include/nspr/md
 }
 

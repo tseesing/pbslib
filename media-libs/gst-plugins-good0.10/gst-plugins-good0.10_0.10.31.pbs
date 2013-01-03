@@ -7,14 +7,15 @@
 
 DESCRIPTION="Good plugins for gstreamer"
 HOMEPAGE="http://gstreamer.net/"
-LICENSE="LGPLv2.1"
-PACKAGER="chenqixing@ivali.com"
+LICENSE="LGPL"
+PACKAGER="chenqixing@ivali.com
+          Zhongxin Huang <huangzhongxin@ivali.com>"
 
 SRC_URI="http://gstreamer.freedesktop.org/src/"${N%%0*}"/"${N%%0*}-$V".tar.xz"
 CHECKSUM="555845ceab722e517040bab57f9ace95"
 
-RDEPEND="aalib libavc1394 libcaca libdv libgnome-keyring libiec61883 libproxy libshout pulseaudio taglib v4l-utils wavpack gdk-pixbuf2"
-BDEPEND="pkgconfig"
+RDEPEND="gst-plugins-base0.10 bzip2 libavc1394 libiec61883 aalib libshout libdv flac gconf wavpack taglib libsoup libcaca libpng libjpeg-turbo jack-audio-connection-kit pulseaudio systemd"
+BDEPEND="pkgconfig intltool gdk-pixbuf2"
 RECOMMENDED=""
 
 OPTIONAL="When not set --disable-gst_v4l2 option, compiler 
@@ -23,20 +24,16 @@ OPTIONAL="When not set --disable-gst_v4l2 option, compiler
           somebody knows it, please help to fix that"
 
 pbs_unpack() {
-        dounpack
+    dounpack
 }
 
 pbs_config() {
-	config+=" --enable-experimental 
-		  --disable-schemas-install 
-		  --disable-hal 
-		  --disable-gconf
-		  --disable-esd 
-		  --disable-esdtest 
-		  --disable-oss
-		  --disable-oss4
-          --disable-gst_v4l2
-          --enable-pulse"
+	config+="--disable-static 
+             --enable-experimental 
+             --disable-schemas-install 
+             --disable-hal 
+             --disable-esd
+             --disable-gst_v4l2"
 	doconfig
 }
 
@@ -45,7 +42,6 @@ pbs_build() {
 }
 
 pbs_install() {
-	domkinstall
-    dodoc AUTHORS ChangeLog README NEWS COPYING
+	domkinstall GCONF_DISABLE_MAKEFILE_SCHEMA_INSTALL=1
 }
 

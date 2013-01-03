@@ -8,9 +8,10 @@
 DESCRIPTION="C library implementing OAuth Core RFC 5849"
 HOMEPAGE="http://liboauth.sourceforge.net"
 LICENSE="MIT"
-PACKAGER="StartOS Developers"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
 SRC_URI="http://liboauth.sourceforge.net/pool/"$N-$V".tar.gz"
+CHECKSUM="9fa0f9d86ac4fbdd8c17d4c242ceef33096e8cf3b1834d9198ccc0cbf8b0f207"
 
 RDEPEND="curl"
 RECOMMENDED=""

@@ -8,16 +8,17 @@
 DESCRIPTION="Provides a standard configuration setup for installing PKCS#11."
 HOMEPAGE="http://p11-glue.freedesktop.org"
 LICENSE="BSD"
-PACKAGER="StartOS Developers"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
  
 SRC_URI="http://p11-glue.freedesktop.org/releases/"$N-$V".tar.gz"
+CHECKSUM="3892bc07ff54b1b391aad4628911801d"
 
 RDEPEND="glibc"
 BDEPEND=""
 RECOMMENDED=""
 
 pbs_unpack() {
-        dounpack
+    dounpack
 }
 
 pbs_config() {

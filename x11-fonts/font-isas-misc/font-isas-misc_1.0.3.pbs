@@ -7,12 +7,13 @@
 
 DESCRIPTION="X.Org the Institute of Software, Academia Sinica (chinese) fonts"
 HOMEPAGE="http://www.x.org/wiki/"
-PACKAGER="StartOS Developers"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 GROUP="x11-fonts"
 YARCH="any" 
 LICENSE="custom" 
 
 SRC_URI="http://xorg.freedesktop.org/releases/individual/font/"$N-$V".tar.bz2"
+CHECKSUM="a2401caccbdcf5698e001784dbd43f1a"
 
 RDEPEND=""
 BDEPEND="font-util mkfontdir mkfontscale"
@@ -20,7 +21,7 @@ BDEPEND="font-util mkfontdir mkfontscale"
 INSTALL="$N.install"
 
 pbs_unpack() {	
-        dounpack
+    dounpack
 }
 
 pbs_config() {

@@ -8,18 +8,19 @@
 DESCRIPTION="Standard Themes for GNOME Applications"
 HOMEPAGE="http://www.gnome.org/"
 LICENSE="GPL"
-PACKAGER="chenqixing@ivali.com"
+PACKAGER="chenqixing@ivali.com
+          Zhongxin Huang <huangzhongxin@ivali.com>"
 
 SRC_URI="http://ftp.acc.umu.se/pub/gnome/sources/$N/${V%.*}/$N-$V.tar.xz"
 CHECKSUM="c41503d0e18e17188c4fd1be5f6a7e90b08564e2a19d9a318b145a56d4455352"
 
-RDEPEND="librsvg gtk-engines gtk3 cantarell-fonts dejavu-fonts-ttf"
-BDEPEND="intltool itstool"
+RDEPEND="librsvg gtk3"
+BDEPEND="intltool"
 RECOMMENDED=""
-GROUP="gnome"
+OPTIONAL="gtk-engines: HighContrast GTK2 theme"
 
 pbs_unpack() {
-        dounpack
+    dounpack
 }
 
 pbs_config() {

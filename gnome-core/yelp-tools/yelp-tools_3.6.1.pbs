@@ -8,13 +8,14 @@
 DESCRIPTION="A set of command-line tools to build and check yelp documentation"
 HOMEPAGE="http://projects.gnome.org/yelp"
 LICENSE="GPL"
-PACKAGER="chenqixing@ivali.com"
+PACKAGER="chenqixing@ivali.com
+          Zhongxin Huang <huangzhongxin@ivali.com>"
 YARCH="any"
 
 SRC_URI="http://ftp.gnome.org/pub/gnome/sources/$N/${V%.*}/"$N-$V".tar.xz"
 CHECKSUM="5226e8245bb87f10e485aa65f5bf18d9e4fb5ef82f2e3c3734dd91bdf6f5c19a"
 
-RDEPEND="yelp-xsl"
+RDEPEND="yelp-xsl libXslt libxml2 itstool"
 BDEPEND=""
 RECOMMENDED=""
 

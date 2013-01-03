@@ -8,10 +8,11 @@
 DESCRIPTION="Common files for development of Gnome package"
 HOMEPAGE="http://www.gnome.org/"
 LICENSE="GPL"
-PACKAGER="StartOS Developers"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 YARCH="any"
 
 SRC_URI="http://download.gnome.org/sources/"$N"/"${V:0:3}"/"$N-$V".tar.xz"
+CHECKSUM="e10f09de06bddcc8f980422e3bfdcd8185eee7f1eae11543a765ec8e764b8d95"
 
 RDEPEND=""
 BDEPEND=""

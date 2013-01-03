@@ -8,10 +8,11 @@
 DESCRIPTION="Internationalization Tool Collection"
 HOMEPAGE="http://edge.launchpad.net/intltool"
 LICENSE="GPL"
-PACKAGER="StartOS Developers"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 YARCH="any" 
 
-SRC_URI="http://edge.launchpad.net/intltool/trunk/"$V"/+download/"$N-$V".tar.gz"
+SRC_URI="http://edge.launchpad.net/"$N"/trunk/"$V"/+download/"$N-$V".tar.gz"
+CHECKSUM="7fddbd8e1bf94adbf1bc947cbf3b8ddc2453f8ad"
 
 RDEPEND="xml-parser"
 BDEPEND=""
@@ -20,7 +21,7 @@ CONFLICT=""
 OPTIONS="nodev"
 
 pbs_unpack() {
-        dounpack
+    dounpack
 }
 
 pbs_config() {

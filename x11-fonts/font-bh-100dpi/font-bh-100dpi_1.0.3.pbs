@@ -7,12 +7,13 @@
 
 DESCRIPTION="X.Org Bigelow & Holmes bitmap fonts"
 HOMEPAGE="http://www.x.org/wiki/"
-PACKAGER="StartOS Developers"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 GROUP="x11-fonts"
 LICENSE="custom"
 YARCH="any"
 
 SRC_URI="http://xorg.freedesktop.org/releases/individual/font/"$N-$V".tar.bz2"
+CHECKSUM="9f11ade089d689b9d59e0f47d26f39cd"
 
 RDEPEND=""
 BDEPEND="mkfontdir mkfontscale"
@@ -20,7 +21,7 @@ BDEPEND="mkfontdir mkfontscale"
 INSTALL="$N.install"
 
 pbs_unpack() {	
-        dounpack
+    dounpack
 }
 
 pbs_config() {

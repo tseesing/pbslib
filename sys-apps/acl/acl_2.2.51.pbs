@@ -8,15 +8,16 @@
 DESCRIPTION="access control list utilities, libraries and headers"
 HOMEPAGE="http://savannah.nongnu.org/projects/acl"
 LICENSE="LGPL"
-PACKAGER="StartOS Developers"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
 SRC_URI="http://mirrors.zerg.biz/nongnu/"$N"/"$N-$V".src.tar.gz"
+CHECKSUM="06854521cf5d396801af7e54b9636680edf8064355e51c07657ec7442a185225"
 
 RDEPEND="attr(>=2.4.46)"
 BDEPEND=""
 
 pbs_unpack() {
-        dounpack
+    dounpack
 }
 
 pbs_config() {
@@ -31,6 +32,8 @@ pbs_build() {
 
 pbs_install() {
 	make DIST_ROOT="$destdir" install install-lib install-dev
+    cd "$destdir"/usr/lib"$LIBDIRSUFFIX"
+    rm -f libacl.a
+    chmod 0755 libacl.so.*.*.*
 }
-
 

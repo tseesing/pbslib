@@ -1,21 +1,17 @@
 . /usr/lib/ybs/funcs
 
 post_install() {
-	glib_compile_schemas
+    glib-compile-schemas /usr/share/glib-2.0/schemas
     gio-querymodules /usr/lib${LIBDIRSUFFIX}/gio/modules
     killall -USR1 gvfsd > /dev/null 2>&1 ||true
 }
 
 post_remove() {
-	glib_compile_schemas
+    glib-compile-schemas /usr/share/glib-2.0/schemas
     gio-querymodules /usr/lib${LIBDIRSUFFIX}/gio/modules ||true
 }
 
 post_upgrade() {
-	post_install
-}
-
-post_downgrade() {
 	post_install
 }
 

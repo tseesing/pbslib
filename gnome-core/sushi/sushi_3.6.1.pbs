@@ -7,8 +7,9 @@
 
 DESCRIPTION="A quick previewer for Nautilus"
 HOMEPAGE="https://www.gnome.org"
-LICENSE="GPLv2"
-PACKAGER="chenqixing@ivali.com"
+LICENSE="GPL"
+PACKAGER="chenqixing@ivali.com
+          Zhongxin Huang <huangzhongxin@ivali.com>"
 
 SRC_URI="http://ftp.acc.umu.se/pub/gnome/core/3.6/3.6.2/sources/${N}-${V}.tar.xz"
 CHECKSUM="ddcfa4fd8ad6a8a7ff2da10a5190a031df9e9debf217cb1fcdeec2a181222af8"
@@ -16,10 +17,9 @@ CHECKSUM="ddcfa4fd8ad6a8a7ff2da10a5190a031df9e9debf217cb1fcdeec2a181222af8"
 RDEPEND="clutter-gtk clutter-gst gjs libmusicbrainz5 gtksourceview3 evince webkitgtk3"
 BDEPEND="gobject-introspection intltool"
 RECOMMENDED=""
+OPTIONAL=""
 
-OPTIONAL="grilo-plugins: plugins"
-
-INSTALL=$N.install
+INSTALL="$N".install
 
 pbs_unpack() {
     dounpack

@@ -13,7 +13,7 @@ PACKAGER="StartOS Developers"
 SRC_URI="http://reaver-wps.googlecode.com/files/"$N-$V".tar.gz"
 CHECKSUM="2ebec75c3979daa7b576bc54adedc60eb0e27a21"
 
-RDEPEND="libpcap sqlite"
+RDEPEND="libpcre sqlite"
 RECOMMENDED=""
 BDEPEND=""
 OPTIONAL=""

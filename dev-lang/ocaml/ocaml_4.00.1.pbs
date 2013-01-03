@@ -8,19 +8,20 @@
 DESCRIPTION="A functional language with OO extensions"
 HOMEPAGE="http://caml.inria.fr/"
 LICENSE="LGPL2,custom,QPL-1.0"
-PACKAGER="StartOS Developers"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
 SRC_URI="http://caml.inria.fr/distrib/"$N-${V%.?}"/"$N-$V".tar.gz"
 CHECKSUM="91124a8eb12a57f1e56c02fe3db0f9e7"
 
 RDEPEND="gdbm ncurses tk"
 RECOMMENDED=""
-BDEPEND=""
-OPTIONAL=""
+BDEPEND="tk ncurses libx11"
+OPTIONAL="ncurses: advanced ncurses features
+          tk: advanced tk features"
 CONFLICT=""
 
 pbs_unpack() {
-        dounpack
+    dounpack
 }
 
 pbs_config() {

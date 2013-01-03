@@ -8,7 +8,7 @@
 DESCRIPTION="Burn CDs in disk-at-once mode"
 HOMEPAGE="http://cdrdao.sourceforge.net/"
 LICENSE="GPL"
-PACKAGER="StartOS Developers"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
 SRC_URI="http://downloads.sourceforge.net/project/"$N"/"$N"/"$V"/"$N-$V".tar.bz2"
 CHECKSUM="8d15ba6280bb7ba2f4d6be31d28b3c0c"
@@ -17,7 +17,7 @@ RDEPEND="gcc-lib lame libao libmad libvorbis"
 BDEPEND="gtkmm"
 
 pbs_unpack() {
-        dounpack
+    dounpack
 }
 
 pbs_patch() {

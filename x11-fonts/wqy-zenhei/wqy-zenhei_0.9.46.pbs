@@ -7,12 +7,13 @@
 
 DESCRIPTION="Wenquanyi ZenHei Chinese font"
 HOMEPAGE="http://wenq.org/"
-PACKAGER="StartOS Developers"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 LICENSE="GPL"
 GROUP="fonts"
 YARCH="any" 
  
 SRC_URI="http://sourceforge.net/projects/wqy/files/"$N"-snapshot/"$V"-May/"$N-$V"-May.tar.bz2"
+CHECKSUM="5277e2c6394af48eb76fc9e22b35f013"
 
 RDEPEND=""
 BDEPEND=""

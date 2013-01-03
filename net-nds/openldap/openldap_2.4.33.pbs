@@ -8,19 +8,20 @@
 DESCRIPTION="an open source implementation of the Lightweight Directory Access Protocol."
 HOMEPAGE="http://www.OpenLDAP.org/"
 LICENSE="custom"
-PACKAGER="StartOS Developers"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
 SRC_URI="ftp://ftp.openldap.org/pub/OpenLDAP/"$N"-release/"$N-$V".tgz"
+CHECKSUM="0cea642ba2dae1eb719da41bfedb9eba72ad504d"
 
-RDEPEND="gnutls icu openslp perl unixodbc util-linux"
+RDEPEND="e2fsprogs cyrus-sasl util-linux libtool"
 BDEPEND=""
 RECOMMENDED=""
-CONFLICT="openldap-client"
+CONFLICT=""
 
 INSTALL="$N.install"
 
 pbs_unpack() {
-        dounpack
+    dounpack
 }
 
 pbs_patch() {
@@ -32,7 +33,21 @@ pbs_patch() {
 }
 
 pbs_config() {
-	config+="--with-threads --enable-modules=yes" 
+	config+="--localstatedir=/var/lib/openldap 
+             --enable-ipv6 
+             --enable-syslog 
+             --enable-local 
+             --enable-bdb 
+             --enable-hdb 
+             --enable-crypt 
+             --enable-dynamic 
+             --with-threads 
+             --disable-wrappers 
+             --without-fetch 
+             --enable-spasswd 
+             --with-cyrus-sasl 
+             --enable-overlays=mod 
+             --enable-modules=yes" 
 	doconfig
 }
 
@@ -43,9 +58,22 @@ pbs_build() {
 pbs_install() {
 	domkinstall
 	dodoc LICENSE
-	dounit slapd.service
 	cd "$destdir"
-	rm -rf run 2>/dev/null
+    # systemd stuff    
+	dounit slapd.service
 	docp "$filesdir"/slapd.conf usr/lib/tmpfiles.d/
+    # get rid of duplicate default conf files
+    rm etc/openldap/*.default
+    # required dirs    
+    chown root:439 etc/openldap/{slapd.conf,DB_CONFIG.example}
+    chmod 640 etc/openldap/{slapd.conf,DB_CONFIG.example}
+    install -dm700 -o 439 -g 439 var/lib/openldap
+    install -dm700 -o 439 -g 439 etc/openldap/slapd.d
+    # cleanup
+	rm -rf run
+    # 
+    cd usr/lib"$LIBDIRSUFFIX"/
+    doln liblber.so liblber.so.2
+    doln libldap.so libldap.so.2
 }
 

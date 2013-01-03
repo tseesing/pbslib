@@ -5,18 +5,19 @@
 # Distributed under the terms of the GNU General Public License v2
 #
 
-DESCRIPTION="sysvinit utils"
+DESCRIPTION="Linux System V Init Tools"
 HOMEPAGE="http://freshmeat.net/projects/sysvinit/"
 LICENSE="GPL"
-PACKAGER="StartOS Developers"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
-SRC_URI="http://download.savannah.gnu.org/releases/sysvinit/sysvinit-2.88dsf.tar.bz2"
+SRC_URI="http://download.savannah.gnu.org/releases/sysvinit/sysvinit-"$V"dsf.tar.bz2"
+CHECKSUM="f2ca149df1314a91f3007cccd7a0aa47d990de26"
 
-RDEPEND="glibc"
+RDEPEND="glibc util-linux coreutils gawk"
 BDEPEND=""
 
 pbs_unpack() {
-        dounpack
+    dounpack
 }
 
 pbs_patch() {
@@ -30,7 +31,6 @@ pbs_build() {
 
 pbs_install() {
 	make ROOT="$destdir" install
-	
 	# Provided by util-linux
 	cd "$destdir"
 	rm bin/mountpoint
@@ -39,12 +39,10 @@ pbs_install() {
 	rm usr/share/man/man1/{mesg,utmpdump,wall}.1
 	rm sbin/sulogin
 	rm usr/share/man/man8/sulogin.8
-	
 	# Provided by systemd
 	for i in telinit shutdown runlevel reboot poweroff init halt; do
 		rm sbin/"${i}"
 		rm usr/share/man/man8/"${i}".8 
 	done
 }
-
 

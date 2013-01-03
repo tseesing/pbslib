@@ -8,15 +8,16 @@
 DESCRIPTION="utils for managing LZMA compressed files"
 HOMEPAGE="http://tukaani.org/xz/"
 LICENSE="GPL,LGPL,custom"
-PACKAGER="StartOS Developers"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
 SRC_URI="http://tukaani.org/"$N"/"$N-$V".tar.xz"
+CHECKSUM="161015c4a65b1f293d31810e1df93090"
 
 RDEPEND="glibc"
 BDEPEND=""
 
 pbs_unpack() {
-        dounpack
+    dounpack
 }
 
 pbs_config() {

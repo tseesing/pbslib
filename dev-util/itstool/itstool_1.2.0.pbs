@@ -8,7 +8,7 @@
 DESCRIPTION="Translation tool for XML documents that uses gettext files and ITS rules"
 HOMEPAGE="http://itstool.org/"
 LICENSE="GPLv3"
-PACKAGER="StartOS Developers"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 YARCH="any"
 
 SRC_URI="http://files.itstool.org/"$N"/"$N-$V".tar.bz2"
@@ -21,7 +21,7 @@ OPTIONAL=""
 CONFLICT=""
 
 pbs_unpack() {
-        dounpack
+    dounpack
 }
 
 pbs_config() {
@@ -36,5 +36,4 @@ pbs_build() {
 pbs_install() {
 	domkinstall
 }
-
 

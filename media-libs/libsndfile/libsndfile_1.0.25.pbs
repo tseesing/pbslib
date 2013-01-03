@@ -8,7 +8,7 @@
 DESCRIPTION="A C library for reading and writing files containing sampled sound"
 HOMEPAGE="http://www.mega-nerd.com/libsndfile"
 LICENSE="LGPL"
-PACKAGER="StartOS Developers"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
  
 SRC_URI="http://www.mega-nerd.com/"$N"/files/"$N-$V".tar.gz"
 CHECKSUM="e95d9fca57f7ddace9f197071cbcfb92fa16748e"
@@ -22,7 +22,7 @@ pbs_unpack() {
 }
 
 pbs_config() {
-    config+=" --disable-sqlite"
+    config+="--disable-sqlite"
 	doconfig
 }
 

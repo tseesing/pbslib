@@ -7,12 +7,13 @@
 
 DESCRIPTION="Network utility to retrieve files from the WWW"
 HOMEPAGE="http://www.gnu.org/software/wget/"
-LICENSE="GPL3"
-PACKAGER="StartOS Developers"
+LICENSE="GPLv3"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
 SRC_URI="http://ftp.gnu.org/gnu/"$N"/"$N-$V".tar.xz"
+CHECKSUM="316f6f59292c9098ad81fd54f658c579"
 
-RDEPEND="libidn openssl"
+RDEPEND="libidn openssl pcre util-linux"
 BDEPEND=""
 RECOMMENDED="ca-certificates"
 OPTIONAL="ca-certificates: HTTPS downloads"
@@ -20,7 +21,7 @@ OPTIONAL="ca-certificates: HTTPS downloads"
 INSTALL="$N.install"
 
 pbs_unpack() {
-        dounpack
+    dounpack
 }
 
 pbs_config() {

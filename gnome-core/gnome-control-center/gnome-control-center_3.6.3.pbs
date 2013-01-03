@@ -13,7 +13,7 @@ PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 SRC_URI="http://download.gnome.org/sources/"$N"/"${V%.*}"/"$N-$V".tar.xz"
 CHECKSUM="2ae23972bc64f62b4facd12dd5adce212bda02491eb6e56bbf195332157d21fb"
 
-RDEPEND="accountsservice cups-pk-helper gnome-bluetooth gnome-desktop gnome-menus gnome-online-accounts gnome-settings-daemon gsettings-desktop-schemas gtk3 libgtop libsocialweb network-manager-applet sound-theme-freedesktop upower libpwquality systemd"
+RDEPEND="accountsservice cups-pk-helper gnome-bluetooth gnome-desktop gnome-menus gnome-online-accounts gnome-settings-daemon gsettings-desktop-schemas gtk3 libgtop libsocialweb network-manager-applet sound-theme-freedesktop upower libpwquality systemd" #libibus
 BDEPEND="gnome-doc-utils intltool docbook-xsl"
 RECOMMENDED="mesa-demos gnome-color-manager"
 OPTIONAL="mesa-demos: provides glxinfo for graphics information
@@ -30,8 +30,9 @@ pbs_config() {
              --enable-systemd 
              --with-libsocialweb 
              --disable-update-mimedb 
-             --without-cheese 
-             --disable-ibus"
+             --without-cheese
+             --enable-ibus"
+             #--disable-ibus"
 	doconfig
 }
 

@@ -8,19 +8,19 @@
 DESCRIPTION="Spell checker and morphological analyzer library and program"
 HOMEPAGE="http://hunspell.sourceforge.net/"
 LICENSE="GPL,LGPL,MPL"
-PACKAGER="StartOS Developers"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
 SRC_URI="http://downloads.sourceforge.net/"$N"/"$N-$V".tar.gz"
 CHECKSUM="3121aaf3e13e5d88dfff13fb4a5f1ab8"
 
-RDEPEND="gcc-lib readline"
+RDEPEND="gcc-libs readline"
 BDEPEND=""
 RECOMMENDED=""
 OPTIONAL="perl: for ispellaff2myspell"
 CONFLICT=""
 
 pbs_unpack() {
-        dounpack
+    dounpack
 }
 
 pbs_config() {

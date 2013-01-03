@@ -8,26 +8,25 @@
 DESCRIPTION="D-Bus bindings for glib"
 HOMEPAGE="http://dbus.freedesktop.org/"
 LICENSE="GPL"
-PACKAGER="StartOS Developers"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
 SRC_URI="http://dbus.freedesktop.org/releases/"$N"/"$N-$V".tar.gz"
 CHECKSUM="d33959a9c0c6a158f5ac6d640316e89e"
 
 RDEPEND="dbus glib2"
-BDEPEND=""
+BDEPEND="pkgconfig"
 
 pbs_unpack() {
-        dounpack
+    dounpack
 }
 
 pbs_config() {
-	config+=" --enable-static=no 
-	          --enable-bash-completion=no "
+	config+="--enable-static=no --enable-bash-completion=no"
 	doconfig
 }
 
 pbs_install() {
 	domkinstall
-	doln /usr/include/dbus-1.0/dbus "$destdir"/usr/include/dbus
 }
+
 

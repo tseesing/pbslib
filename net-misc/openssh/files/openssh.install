@@ -1,8 +1,10 @@
 . /usr/lib/ybs/funcs
 
+gname="sshd"
+
 post_install() {
-	dogroupadd -r "sshd"
-	douseradd -c "sshd PrivSep" -d "/var/lib/sshd" -s "/bin/false" -r -N -G "sshd" "sshd"
+	dogroupadd -r $gname
+	douseradd -c "sshd PrivSep" -d "/var/lib/sshd" -s "/bin/false" -r -N -G $gname $gname
 	install -m700 -d /var/lib/sshd
 	chown root:sys   /var/lib/sshd
 	yes y |ssh-keygen -t dsa -f /etc/ssh/ssh_host_dsa_key
@@ -10,8 +12,8 @@ post_install() {
 }
 
 post_remove() {
-	douserdel -r "sshd"
-	dogroupdel "sshd"
+	douserdel $gname
+	dogroupdel $gname
 	rm -r /var/lib/sshd 2>/dev/null ||return 0
 }
 

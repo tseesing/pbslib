@@ -8,11 +8,12 @@
 DESCRIPTION="A droid derived Sans-Serif style CJK font"
 HOMEPAGE="http://wqy.sourceforge.net/"
 GROUP="fonts"
-LICENSE="Apache2.0,GPLv3"
-PACKAGER="StartOS Developers"
+LICENSE="Apache,GPL"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 YARCH="any"
 
 SRC_URI="http://sourceforge.net/projects/wqy/files/"$N"/"$V"-beta/"$N-$V"-beta.tar.gz"
+CHECKSUM="a124c5c6606f4f3b733d3477380e9d2f"
 
 RDEPEND=""
 BDEPEND=""
@@ -20,12 +21,11 @@ BDEPEND=""
 INSTALL="$N.install"
 
 pbs_unpack() {
-        dounpack
+    dounpack
 }
 
 pbs_install() {
 	docp *.ttc "$destdir"/usr/share/fonts/wenquanyi/wqy-microhei
-	doln /usr/share/fonts/wenquanyi/wqy-microhei/wqy-microhei.ttc \
-	    "$destdir"/usr/share/fonts/truetype/wqy/wqy-microhei.ttc
+	doln /usr/share/fonts/wenquanyi/wqy-microhei/wqy-microhei.ttc "$destdir"/usr/share/fonts/truetype/wqy/wqy-microhei.ttc
 }
 

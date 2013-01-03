@@ -7,11 +7,11 @@
 
 DESCRIPTION="Standard GNU compressor"
 HOMEPAGE="http://www.gnu.org/software/gzip/"
-LICENSE="GPL3"
-PACKAGER="StartOS Developers"
-GROUP="base"
+LICENSE="GPLv3"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
 SRC_URI="ftp://ftp.gnu.org/pub/gnu/"$N"/"$N-$V".tar.xz"
+CHECKSUM="2a431e169b6f62f7332ef6d47cc53bae"
 
 RDEPEND="glibc"
 BDEPEND=""
@@ -19,7 +19,7 @@ BDEPEND=""
 INSTALL="$N.install"
 
 pbs_unpack() {
-        dounpack
+    dounpack
 }
 
 pbs_config() {

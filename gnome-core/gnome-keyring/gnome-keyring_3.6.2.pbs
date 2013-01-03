@@ -7,29 +7,29 @@
 
 DESCRIPTION="Keeps encryption passwords and other secrets for users."
 HOMEPAGE="http://www.gnome.org"
-LICENSE="GPLv2 LGPLv2"
-PACKAGER="chenqixing@ivali.com"
-GROUP="gnome"
+LICENSE="GPL,LGPL"
+PACKAGER="chenqixing@ivali.com
+          Zhongxin Huang <huangzhongxin@ivali.com>"
 
 SRC_URI="http://ftp.acc.umu.se/pub/gnome/sources/$N/${V%.*}/$N-$V.tar.xz"
 CHECKSUM="ae60558d60171325ddd90603328393d35d7b560a70b7ab45c4d2718d01130cd6"
 
-
 RDEPEND="gtk3 gcr libcap"
-BDEPEND=""
+BDEPEND="intltool"
 RECOMMENDED=""
 
 INSTALL="$N.install"
 
 pbs_unpack() {
-        dounpack
+    dounpack
 }
 
 pbs_config() {
-	config+="--disable-schemas-compile
-		 --enable-pam 
-		 --with-pam-dir=/usr/lib${LIBDIRSUFFIX}/security
-         --with-ca-certificates=/etc/ssl/certs"
+	config+="--disable-static
+             --disable-schemas-compile
+             --with-root-certs=/etc/ssl/certs 
+		     --enable-pam
+             --with-pam-dir=/usr/lib"$LIBDIRSUFFIX"/security" 
 	doconfig
 }
 
@@ -39,6 +39,5 @@ pbs_build() {
 
 pbs_install() {
 	domkinstall
-    dodoc COPYING COPYING.LIB ChangeLog AUTHORS README
 }
 

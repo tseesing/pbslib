@@ -8,30 +8,30 @@
 DESCRIPTION="System which facilitates service discovery on a local network"
 HOMEPAGE="http://avahi.org/"
 LICENSE="LGPL"
-PACKAGER="StartOS Developers"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
 SRC_URI="http://avahi.org/download/"$N-$V".tar.gz"
 CHECKSUM="7e05bd78572c9088b03b1207a0ad5aba38490684"
 
-RDEPEND="gdbm libcap libdaemon" 
-BDEPEND=""
+RDEPEND="expat libdaemon glib2 libcap gdbm" 
+BDEPEND="qt pygtk mono intltool dbus-python gobject-introspection gtk3 xmltoman"
 RECOMMENDED=""
 
-OPTIONAL=" dbus: communicating with client applications
-           gtk3: avahi-discover-standalone, bshell, bssh, bvnc
-	   gtk2: gtk2 bindings
-	   qt3: qt3 bindings
-	   qt: qt bindings
-	   pygtk: avahi-bookmarks, avahi-discover
-	   twisted: avahi-bookmarks
-	   mono: mono bindings
-	   python2-dbus: avahi-discover
-	   nss-mdns: NSS support for mDNS"
+OPTIONAL="dbus: communicating with client applications
+          gtk3: avahi-discover-standalone, bshell, bssh, bvnc
+	      gtk2: gtk2 bindings
+	      qt3: qt3 bindings
+	      qt: qt bindings
+	      pygtk: avahi-bookmarks, avahi-discover
+	      twisted: avahi-bookmarks
+	      mono: mono bindings
+	      dbus-python: avahi-discover
+	      nss-mdns: NSS support for mDNS"
 
 INSTALL="$N.install"
 
 pbs_unpack() {
-        dounpack
+    dounpack
 }
 
 pbs_patch() {
@@ -39,21 +39,17 @@ pbs_patch() {
 }
 
 pbs_config() {
-	config+=" --disable-static 
-		  --disable-qt3
-		  --disable-qt4
-		  --disable-pygtk
-		  --disable-mono
-	          --disable-monodoc 
-		  --enable-compat-libdns_sd 
-		  --enable-compat-howl 
-		  --with-distro=archlinux 
-		  --with-avahi-priv-access-group=network 
-		  --with-autoipd-user=avahi 
-		  --with-autoipd-group=avahi 
-		  --with-systemdsystemunitdir=/usr/lib/systemd/system "
-		  #--disable-gtk
-		  #--disable-gtk3
+	config+="--disable-qt3
+             --disable-static
+             --disable-mono
+             --disable-monodoc
+             --enable-compat-libdns_sd 
+             --enable-compat-howl 
+             --with-distro=archlinux 
+             --with-avahi-priv-access-group=network 
+             --with-autoipd-user=avahi 
+             --with-autoipd-group=avahi 
+             --with-systemdsystemunitdir=/usr/lib/systemd/system"
 	doconfig
 }
 
@@ -66,6 +62,7 @@ pbs_install() {
 	cd "$destdir"
 	# cleanup 
 	rm -rf var/run/ 
+    rm -rf etc/rc.d
 	# howl and mdnsresponder compatability
 	(cd usr/include; ln -s avahi-compat-libdns_sd/dns_sd.h dns_sd.h; ln -s avahi-compat-howl howl)
 	(cd usr/lib"$LIBDIRSUFFIX"/pkgconfig; ln -s avahi-compat-howl.pc howl.pc)

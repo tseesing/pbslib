@@ -26,7 +26,7 @@ pre_remove() {
 
 post_remove() {
 	douserdel "$gname"
-	dogroupdel "$gname"
+	dogroupdel "$gname" ||true
 }
 
 post_upgrade() {

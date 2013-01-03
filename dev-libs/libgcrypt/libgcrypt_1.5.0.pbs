@@ -8,18 +8,19 @@
 DESCRIPTION="general purpose crypto library based on the code used in GnuPG"
 HOMEPAGE="http://www.gnupg.org/"
 LICENSE="LGPL"
-PACKAGER="StartOS Developers"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
 SRC_URI="ftp://ftp.gnupg.org/gcrypt/"$N"/"$N-$V".tar.bz2"
+CHECKSUM="3e776d44375dc1a710560b98ae8437d5da6e32cf"
 
 RDEPEND="libgpg-error"
-BDEPEND="pth-dev libcap"
+BDEPEND=""
 OPIONAL=""
 
 INSTALL="$N.install"
 
 pbs_unpack() {
-        dounpack
+    dounpack
 }
 
 pbs_config() {

@@ -1,20 +1,9 @@
-. /usr/lib/ybs/funcs
 
 post_install() {
-    gconfpkg --install "$N"
-    gtk-update-icon-cache -q -t -f /usr/share/icons/hicolor
-}
-
-pre_remove() {
-    gconfpkg --uninstall "$N"
     gtk-update-icon-cache -q -t -f /usr/share/icons/hicolor
 }
 
 post_upgrade() {
-    post_install
-}
-
-post_downgrade() {
     post_install
 }
 

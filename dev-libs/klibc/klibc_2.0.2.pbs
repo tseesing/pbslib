@@ -8,13 +8,16 @@
 DESCRIPTION="A minimal libc subset for use with initramfs."
 HOMEPAGE="http://www.zytor.com/mailman/listinfo/klibc"
 LICENSE="GPL"
-PACKAGER="StartOS Developers"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
 SRC_URI="http://www.kernel.org/pub/linux/libs/"$N"/2.0/"$N-$V".tar.xz"
+CHECKSUM="59af2c01dc1b0fc1edaed0a9c470adf4"
 
 RDEPEND=""
 BDEPEND="linux-kernel-headers"
 RECOMMENDED=""
+
+INSTALL="$N.install"
 
 pbs_unpack() {
 	dounpack
@@ -29,12 +32,16 @@ pbs_build() {
 }
 
 pbs_install() {
-	domake INSTALLROOT="$destdir" install
+    make prefix="$destdir"/usr \
+         mandir="$destdir"/usr/share/man \
+         INSTALLDIR="$destdir"/usr/lib"$LIBDIRSUFFIX"/klibc \
+         install
 	cd "$destdir"
 	find -type f -name "..install.cmd" -exec rm -f {} \;
 	find -type f -name ".install.cmd" -exec rm -f {} \;
 	find -type f -name ".install" -exec rm -f {} \;
 	docp "$filesdir"/klibc.m4 usr/share/aclocal
-	domv  usr/man usr/share/
+    # For initramfs-tools
+    docp "$filesdir"/klibc usr/share/initramfs-tools/hooks/
 }
 

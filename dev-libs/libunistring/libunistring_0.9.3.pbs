@@ -8,9 +8,10 @@
 DESCRIPTION="Library for manipulating Unicode strings and C strings according to the Unicode standard"
 HOMEPAGE="http://www.gnu.org/software/libunistring/"
 LICENSE="GPL"
-PACKAGER="StartOS Developers"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
 SRC_URI="http://ftp.gnu.org/gnu/"$N"/"$N-$V".tar.gz"
+CHECKSUM="db8eca3b64163abadf8c40e5cecc261f"
 
 RDEPEND="glibc"
 BDEPEND=""
@@ -20,7 +21,7 @@ CONFLICT=""
 INSTALL="$N.install"
 
 pbs_unpack() {
-        dounpack
+    dounpack
 }
 
 pbs_config() {

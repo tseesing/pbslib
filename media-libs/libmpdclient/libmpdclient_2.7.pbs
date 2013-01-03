@@ -8,7 +8,7 @@
 DESCRIPTION="Asynchronous API library for interfacing MPD in the C, C++ & Objective C languages"
 HOMEPAGE="http://mpd.wikia.com/wiki/ClientLib:libmpdclient"
 LICENSE="custom:BSD"
-PACKAGER="StartOS Developers"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
 SRC_URI="http://downloads.sourceforge.net/project/musicpd/"$N"/"$V"/"$N-$V".tar.gz"
 CHECKSUM="f97e35525851eb192d3799f0dabe32915c56b96b"
@@ -20,7 +20,7 @@ OPTIONAL=""
 CONFLICT=""
 
 pbs_unpack() {
-        dounpack
+    dounpack
 }
 
 pbs_patch() {

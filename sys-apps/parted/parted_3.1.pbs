@@ -8,13 +8,13 @@
 DESCRIPTION="Create, destroy, resize, check, copy partitions and file systems"
 HOMEPAGE="http://www.gnu.org/software/parted"
 LICENSE="GPLv3"
-PACKAGER="StartOS Developers"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
 SRC_URI="http://ftp.gnu.org/gnu/"$N"/"$N-$V".tar.xz"
 CHECKSUM="5d89d64d94bcfefa9ce8f59f4b81bdcb"
 
 RDEPEND="device-mapper readline util-linux"
-BDEPEND=""
+BDEPEND="pkgconfig"
 RECOMMENDED=""
 
 INSTALL="$N.install"

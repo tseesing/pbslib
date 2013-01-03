@@ -8,23 +8,27 @@
 DESCRIPTION="ldns is a library with the aim to simplify DNS programing in C"
 HOMEPAGE="http://www.nlnetlabs.nl/projects/ldns/"
 LICENSE="custom:BSD"
-PACKAGER="StartOS Developers"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
 SRC_URI="http://www.nlnetlabs.nl/downloads/"$N"/"$N-$V".tar.gz"
+CHECKSUM="5b4fc6c5c3078cd061905c47178478cb1015c62a"
 
-RDEPEND=""
+RDEPEND="openssl dnssec-anchors"
 RECOMMENDED=""
-BDEPEND=""
-OPTIONAL=""
+BDEPEND="libpcap"
+OPTIONAL="libpcap: ldns-dpa tool"
 CONFLICT=""
 REPLACE=""
 
 pbs_unpack() {
-        dounpack
+    dounpack
 }
 
 pbs_config() {
-	config+=""
+	config+="--enable-static=no 
+             --disable-rpath 
+             --with-drill 
+             --with-examples"
 	doconfig
 }
 

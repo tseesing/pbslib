@@ -5,18 +5,19 @@
 # Distributed under the terms of the GNU General Public License v2
 #
 
-DESCRIPTION="A Client that groks URLs"
+DESCRIPTION="An URL retrieval utility and library"
 HOMEPAGE="http://curl.haxx.se/"
 LICENSE="MIT"
-PACKAGER="StartOS Developers"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
 SRC_URI="http://curl.haxx.se/download/"$N-$V".tar.bz2"
+CHECKSUM="26eb081c999b0e203770869427e9a93d"
 
-RDEPEND="libidn libssh2 openldap rtmpdump ca-certificates"
-BDEPEND=""
+RDEPEND="ca-certificates libssh2 openssl zlib"
+BDEPEND="sed"
 
 pbs_unpack() {
-        dounpack
+    dounpack
 }
 
 pbs_config() {
@@ -28,12 +29,16 @@ pbs_config() {
 	esac
 
 	config+="--disable-dependency-tracking
-	         --enable-ipv6 \
-		 --enable-manual \
- 		 --enable-versioned-symbols 
-		 --enable-threaded-resolver 
-		 --with-random=/dev/urandom 
-		 --with-ca-bundle=/etc/ssl/certs/ca-certificates.crt"
+	         --enable-ipv6
+		     --enable-manual
+             --disable-dependency-tracking
+             --disable-ldap
+             --disable-ldaps
+             --without-libidn
+ 		     --enable-versioned-symbols 
+		     --enable-threaded-resolver 
+		     --with-random=/dev/urandom 
+		     --with-ca-bundle=/etc/ssl/certs/ca-certificates.crt"
 	doconfig
 }
 

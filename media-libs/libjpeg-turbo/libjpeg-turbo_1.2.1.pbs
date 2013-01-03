@@ -8,7 +8,7 @@
 DESCRIPTION="MMX, SSE, and SSE2 SIMD accellerated jpeg library (fork of the original jpeg, replace of jpeg)"
 HOMEPAGE="http://sourceforge.net/projects/libjpeg-turbo/"
 LICENSE="GPL,custom"
-PACKAGER="StartOS Developers"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
 SRC_URI="http://sourceforge.net/projects/"$N"/files/"$V"/"$N-$V".tar.gz"
 CHECKSUM="a4992e102c6d88146709e8e6ce5896d5d0b5a361"
@@ -16,10 +16,11 @@ CHECKSUM="a4992e102c6d88146709e8e6ce5896d5d0b5a361"
 RDEPEND="glibc"
 BDEPEND="nasm"
 RECOMMENDED=""
-CONFLICT="jpeg jpeg6"
+CONFLICT="jpeg8"
+REPLACE="libjpeg"
 
 pbs_unpack() {
-        dounpack
+    dounpack
 }
 
 pbs_patch() {
@@ -42,12 +43,10 @@ pbs_install() {
 	# Provide jpegint.h as it is required by various software
 	docp jpegint.h "$destdir"/usr/include/
 	dodoc README README-turbo.txt
-	
 	# Do not distributre libturbojpeg as it is unversioned
 	cd "$destdir"
 	rm usr/lib"$LIBDIRSUFFIX"/libturbojpeg.{so,a}
 	rm usr/include/turbojpeg.h
 	rm usr/bin/tjbench
 }
-
 

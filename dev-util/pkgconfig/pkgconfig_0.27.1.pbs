@@ -8,18 +8,19 @@
 DESCRIPTION="Package config system that manages compile/link flags"
 HOMEPAGE="http://pkgconfig.freedesktop.org/wiki/"
 LICENSE="GPL"
-PACKAGER="StartOS Developers"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
 SRC_URI="http://pkgconfig.freedesktop.org/releases/pkg-config-"$V".tar.gz"
+CHECKSUM="5392b4e3372879c5bf856173b418d6a2"
 
-RDEPEND="glibc"
+RDEPEND="glib2"
 BDEPEND=""
 CONFLICT=""
 
 OPTIONS="nodev"
 
 pbs_unpack() {
-        dounpack
+    dounpack
 }
 
 pbs_config() {

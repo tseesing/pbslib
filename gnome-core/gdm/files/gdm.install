@@ -1,30 +1,43 @@
 . /usr/lib/ybs/funcs
 
+gname="gdm"
+
 post_install() {
-    # Creat gdm groups
-    dogroupadd -g 120 gdm
-    douseradd -c 'Gnome Display Manager' -u 120 -g gdm -d /var/lib/gdm -s /sbin/nologin gdm
-    passwd -l gdm > /dev/null
-    chown -R gdm:gdm /var/lib/gdm > /dev/null
+    dogroupadd -g 120 $gname
+    douseradd -c 'Gnome Display Manager' -u 120 -g $gname -d /var/lib/gdm -s /sbin/nologin $gname
+    passwd -l $gname 
+    chown -R $gname:$gname /var/lib/gdm 
 
     glib-compile-schemas /usr/share/glib-2.0/schemas
     gtk-update-icon-cache -q -t -f /usr/share/icons/hicolor
     dconf update
+
+	dm-switch disable-all
+	dm-switch enable gdm || return 0
 }
 
 post_upgrade() {
+	systemctl --system daemon-reload
     post_install
-}
-
-post_downgrade() {
-	post_upgrade
 }
 
 post_remove() {
     glib-compile-schemas /usr/share/glib-2.0/schemas
     dconf update
     gtk-update-icon-cache -q -t -f /usr/share/icons/hicolor
-    douserdel gdm
-    dogroupdel gdm ||true
+    douserdel $gname
+    dogroupdel $gname ||true
+	
+    for i in lightdm kdm xdm lxdm; do
+		if dm-switch enable $i 2>/dev/null; then
+			echo "* gdm was removed, but $i is found, use $i for display-manager."
+			echo "* You can choose other DM by running dm-switch"
+			return 0
+		fi
+	done ||true
+}
+
+pre_remove() {
+	dm-switch disable gdm ||true
 }
 

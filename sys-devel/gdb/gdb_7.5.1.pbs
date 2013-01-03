@@ -8,19 +8,19 @@
 DESCRIPTION="GNU debugger"
 HOMEPAGE="http://sources.redhat.com/gdb/"
 LICENSE="GPL3"
-PACKAGER="StartOS Developers"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com"
 
 SRC_URI="http://ftp.gnu.org/gnu/"$N"/"$N-$V".tar.bz2"
 CHECKSUM="3f48f468b24447cf24820054ff6e85b1"
 
 RDEPEND="python expat ncurses"
-BDEPEND=""
+BDEPEND="texinfo"
 RECOMMENDED=""
 
 INSTALL="$N.install"
 
 pbs_unpack() {
-        dounpack
+    dounpack
 }
 
 pbs_config() {
@@ -28,7 +28,7 @@ pbs_config() {
 	        --libdir=/usr/lib"$LIBDIRSUFFIX"
 	        --disable-nls
 	        --with-system-readline
-		--with-system-gdbinit=/etc/gdb/gdbinit"
+		    --with-system-gdbinit=/etc/gdb/gdbinit"
 	doconfig
 }
 

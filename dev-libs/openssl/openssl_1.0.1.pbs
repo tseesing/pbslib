@@ -8,22 +8,21 @@
 DESCRIPTION="Toolkit for SSL v2/v3 and TLS v1"
 HOMEPAGE="http://www.openssl.org/"
 LICENSE="custom:BSD"
-PACKAGER="StartOS Developers"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
 SRC_URI="ftp://ftp.openssl.org/source/"$N-$V"c.tar.gz"
 CHECKSUM="ae412727c8c15b67880aef7bd2999b2e"
 
-RDEPEND="zlib"
+RDEPEND="zlib perl"
 BDEPEND=""
+OPTIONAL="ca-certificates"
 
 pbs_unpack() {
-        dounpack
+    dounpack
 }
 
 pbs_patch() {
-	dopatch fix-manpages.patch
-	dopatch no-rpath.patch
-	dopatch ca-dir.patch
+	dopatch fix-manpages.patch no-rpath.patch ca-dir.patch
 }
 
 pbs_config() {

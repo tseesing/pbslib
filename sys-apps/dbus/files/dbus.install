@@ -2,18 +2,20 @@
 
 execfile="/usr/libexec/dbus-daemon-launch-helper"
 
+gname="dbus"
+
 post_install() {
-	dogroupadd -g 81 dbus
-	douseradd -c 'System message bus' -u 81 -g dbus -d '/' -s /bin/false dbus
-	passwd -l dbus &>/dev/null
+	dogroupadd -g 81 $gname
+    douseradd -c 'System message bus' -u 81 -g $gname -d '/' -s /bin/false $gname
+	passwd -l $gname
 	dbus-uuidgen --ensure
-	chown root:dbus $execfile
+	chown root:$gname $execfile
 	chmod 4755 $execfile ||true
 }       
 
 post_remove() {
-	douserdel "dbus"
-	dogroupdel "dbus" ||true
+	douserdel $gname
+	dogroupdel $gname ||true
 }
 
 post_upgrade() {

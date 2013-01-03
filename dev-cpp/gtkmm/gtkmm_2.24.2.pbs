@@ -8,12 +8,13 @@
 DESCRIPTION="C++ interface for GTK+2"
 HOMEPAGE="http://www.gtkmm.org"
 LICENSE="LGPL"
-PACKAGER="StartOS Developers"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
  
 SRC_URI="http://ftp.gnome.org/pub/gnome/sources/"$N"/${V%.*}/"$N-$V".tar.xz"
+CHECKSUM="c90c7a29c20dd6d795925bd66ad1ff40be07cea0e4c03f4d6105a8c07448953d"
 
 RDEPEND="atkmm gtk2 pangomm"
-BDEPEND="" 
+BDEPEND="gtk2 pangomm atkmm" 
 RECOMMENDED=""
 ALIAS="gtkmm2"
 
@@ -22,7 +23,7 @@ pbs_unpack() {
 }
 
 pbs_config() {
-	config+="--disable-documentation"
+	config+=""
 	doconfig
 }
 

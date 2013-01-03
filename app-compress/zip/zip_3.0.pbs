@@ -8,15 +8,16 @@
 DESCRIPTION="Info ZIP (encryption support)"
 HOMEPAGE="http://www.info-zip.org/Zip.html"
 LICENSE="BSD"
-PACKAGER="StartOS Developers"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
 SRC_URI="http://downloads.sourceforge.net/infozip/"$N"30.tar.gz"
+CHECKSUM="7b74551e63f8ee6aab6fbc86676c0d37"
 
 RDEPEND="bzip2"
 BDEPEND=""
 
 pbs_unpack() {
-        dounpack
+    dounpack
 }
 
 pbs_build() {
@@ -27,5 +28,4 @@ pbs_install() {
 	make -f unix/Makefile INSTALL=/bin/install prefix="$destdir"/usr MANDIR="$destdir"/usr/share/man/man1 install
 	dodoc LICENSE
 }
-
 

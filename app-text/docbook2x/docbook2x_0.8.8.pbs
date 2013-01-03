@@ -1,0 +1,47 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="A software package that converts DocBook documents into the traditional Unix man page format and the GNU Texinfo format."
+HOMEPAGE="http://docbook2x.sourceforge.net"
+LICENSE="MIT"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
+
+SRC_URI="http://downloads.sourceforge.net/$N/docbook2X-$V.tar.gz"
+CHECKSUM="b9b76a6af198c4f44574cfd17a322f01"
+
+RDEPEND="glibc libxslt jade SGMLSpm xml-parser XML-SAX"
+RECOMMENDED=""
+BDEPEND="texinfo"
+OPTIONAL=""
+CONFLICT=""
+REPLACE=""
+
+INSTALL="$N.install"
+
+pbs_unpack() {
+    dounpack
+}
+
+pbs_patch() {
+	dopatch datadir.diff
+}
+
+pbs_config() {
+    autoreconf
+	config+=""
+	doconfig --program-transform-name \'s,2x-,2,\'
+}
+
+pbs_build() {
+	domake
+}
+
+pbs_install() {
+	domkinstall
+    dodoc COPYING
+    sed -i 's|http://docbook2x.sf.net/latest|/usr/share/docbook2X|g' "$destdir"/usr/bin/db2x_xsltproc
+}

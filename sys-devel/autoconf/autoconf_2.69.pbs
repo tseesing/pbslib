@@ -8,18 +8,19 @@
 DESCRIPTION="Used to create autoconfiguration files"
 HOMEPAGE="http://www.gnu.org/software/autoconf/autoconf.html"
 LICENSE="GPLv2,GPLv3,custom"
-PACKAGER="StartOS Developers"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 YARCH="any"
 
 SRC_URI="ftp://ftp.gnu.org/pub/gnu/"$N"/"$N-$V".tar.xz"
+CHECKSUM="50f97f4159805e374639a73e2636f22e"
 
-RDEPEND="m4"
+RDEPEND="m4 gawk diffutils bash"
 BDEPEND=""
 
 INSTALL="$N.install"
 
 pbs_unpack() {
-        dounpack
+    dounpack
 }
 
 pbs_config() {

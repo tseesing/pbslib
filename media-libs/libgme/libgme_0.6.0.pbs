@@ -8,14 +8,14 @@
 DESCRIPTION="Video game music file emulation/playback library"
 HOMEPAGE="http://game-music-emu.googlecode.com"
 LICENSE="LGPL"
-PACKAGER="StartOS Developers"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
 SRC_URI="ftp://ftp.archlinux.org/other/game-music-emu/game-music-emu-"$V".tar.xz"
 CHECKSUM="b72bc337ea4bd6dab7f0288ed4cd598e"
 
-RDEPEND="gcc-lib"
+RDEPEND="gcc-libs"
 RECOMMENDED=""
-BDEPEND=""
+BDEPEND="cmake"
 OPTIONAL=""
 CONFLICT=""
 REPLACE=""
@@ -27,7 +27,6 @@ pbs_unpack() {
 pbs_patch() {
     sed -i 's/DESTINATION lib/DESTINATION lib'"$LIBDIRSUFFIX"'/g' gme/CMakeLists.txt
 }
-
 
 pbs_config() {
 	config+=""

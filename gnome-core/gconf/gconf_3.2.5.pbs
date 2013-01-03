@@ -8,18 +8,19 @@
 DESCRIPTION="The gconf package contains a configuration database system"
 HOMEPAGE="http://www.gnome.org/projects/gconf/"
 LICENSE="LGPL"
-PACKAGER="StartOS Developers"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
 SRC_URI="http://ftp.gnome.org/pub/gnome/core/3.6/3.6.2/sources/GConf-"$V".tar.xz"
+CHECKSUM="4ddea9503a212ee126c5b46a0a958fd5484574c3cb6ef2baf38db02e819e58c6"
 
 RDEPEND="gtk3 libxml2 openldap dbus-glib dbus polkit"
 BDEPEND="intltool gtk-doc gobject-introspection"
-CONFLICT="gconf-dbus"
+CONFLICT=""
 
 INSTALL="$N.install"
 
 pbs_unpack() {
-        dounpack
+    dounpack
 }
 
 pbs_patch() {

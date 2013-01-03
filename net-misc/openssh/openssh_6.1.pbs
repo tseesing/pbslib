@@ -8,12 +8,15 @@
 DESCRIPTION="Port of OpenBSD's free SSH release"
 HOMEPAGE="http://www.openssh.org/"
 LICENSE="custom:BSD"
-PACKAGER="StartOS Developers"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
 SRC_URI="ftp://ftp.openbsd.org/pub/OpenBSD/OpenSSH/portable/"$N-$V"p1.tar.gz"
+CHECKSUM="751c92c912310c3aa9cadc113e14458f843fc7b3"
 
-RDEPEND="openssl pam"
+RDEPEND="krb5 openssl libedit ldns"
 BDEPEND=""
+OPTIONAL="xauth: X11 forwarding
+          x11-ssh-askpass: input passphrase in X"
 
 INSTALL="$N.install"
 
@@ -23,14 +26,15 @@ pbs_unpack() {
 
 pbs_config() {
 	config+="--sysconfdir=/etc/ssh
-	   	     --with-ldns
-		     --with-libedit 
-		     --with-ssl-engine 
-		     --with-pam 
-		     --with-privsep-user=nobody 
-		     --with-md5-passwords 
-		     --with-pid-dir=/run"
-	doconfig
+             --with-ldns 
+             --with-libedit 
+             --with-ssl-engine 
+             --with-pam 
+             --with-privsep-user=nobody 
+             --with-mantype=man 
+             --with-md5-passwords 
+             --with-pid-dir=/run" 
+    doconfig
 }
 
 pbs_build() {

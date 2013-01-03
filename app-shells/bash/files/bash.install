@@ -3,10 +3,14 @@
 files="bash.info.gz"
 
 post_install() {
-        doinstall_info $files
+    doinstall_info $files
 }       
 
 pre_remove() {
-        doremove_info $files
+    doremove_info $files
+}
+
+post_upgrade() {
+    post_install
 }
 

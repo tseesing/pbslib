@@ -7,21 +7,22 @@
 
 DESCRIPTION="Personal file sharing for the GNOME desktop"
 HOMEPAGE="http://www.gnome.org/"
-LICENSE="GPLv2"
-PACKAGER="chenqixing@ivali.com"
+LICENSE="GPL"
+PACKAGER="chenqixing@ivali.com
+          Zhongxin Huang <huangzhongxin@ivali.com>"
 
 SRC_URI="http://ftp.acc.umu.se/pub/gnome/sources/$N/${V%.*}/$N-$V.tar.xz"
 CHECKSUM="e1c8ca73163bf77ce7ca1b92db94cd9c4680a24b940d620996c9331ab79edeb8"
 
-
-RDEPEND="libcanberra libnotify gtk3 dconf gnome-bluetooth hicolor-icon-theme"
-BDEPEND="intltool itstool docbook-xsl"
-RECOMMENDED="nautilus: as its extensions"
+RDEPEND="mod_dnssd dconf gtk3 libnotify gnome-bluetooth libcanberra"
+BDEPEND="intltool itstool docbook-xsl nautilus"
+RECOMMENDED="nautilus"
+OPTIONAL="nautilus: as its extensions"
 
 INSTALL="$N.install"
 
 pbs_unpack() {
-        dounpack
+    dounpack
 }
 
 pbs_config() {
@@ -35,6 +36,5 @@ pbs_build() {
 
 pbs_install() {
 	domkinstall
-    dodoc COPYING AUTHORS ChangeLog NEWS README
 }
 

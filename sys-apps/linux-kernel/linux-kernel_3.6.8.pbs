@@ -8,8 +8,7 @@
 DESCRIPTION="Linux Kernel with StartOS patches, split into linux-kernel-headers"
 HOMEPAGE="http://www.kernel.org"
 LICENSE="GPLv2"
-PACKAGER="StartOS Developers"
-GROUP="core"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
 SRC_URI="http://www.kernel.org/pub/linux/kernel/v3.0/linux-"$V".tar.xz"
 CHECKSUM="e3405cc8f9e4f18c516e55a8eb625803"
@@ -19,7 +18,7 @@ PROVIDE="linux-kernel linux-kernel-headers"
 OPTIONS="nodev nostrip"
 
 pbs_unpack() {
-        dounpack
+    dounpack
 }
 
 pbs_patch() {
@@ -51,7 +50,7 @@ pbs_build() {
 
 linux-kernel_install() {
 	DESCRIPTION="Linux kernel modules" 
-	BDEPEND="ncurses-dev"
+	BDEPEND="ncurses"
 	INSTALL="$N.install"
 	RIR="yes"
 	
@@ -85,7 +84,7 @@ linux-kernel_install() {
 linux-kernel-headers_install() {
 	DESCRIPTION="linux kernel headers"
 	INSTALL="$N.install"
-	CONFLICT="linux-kernel-headers-dev"
+	CONFLICT=""
 	
 	# Headers
 	KARCH=x86

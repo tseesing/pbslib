@@ -8,7 +8,7 @@
 DESCRIPTION="a C library for manipulating pipelines of subprocesses in a flexible and convenient way"
 HOMEPAGE="http://libpipeline.nongnu.org"
 LICENSE="GPL"
-PACKAGER="StartOS Developers"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
 SRC_URI="http://download.savannah.gnu.org/releases/"$N"/"$N-$V".tar.gz"
 CHECKSUM="4367a3f598d171fd43dfa8620ed16d55"
@@ -21,7 +21,7 @@ CONFLICT=""
 REPLACE=""
 
 pbs_unpack() {
-        dounpack
+    dounpack
 }
 
 pbs_config() {
@@ -36,5 +36,4 @@ pbs_build() {
 pbs_install() {
 	domkinstall
 }
-
 

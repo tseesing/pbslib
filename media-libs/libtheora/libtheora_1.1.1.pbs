@@ -8,16 +8,17 @@
 DESCRIPTION="The Theora Video Compression Codec"
 HOMEPAGE="http://www.theora.org"
 LICENSE="BSD"
-PACKAGER="StartOS Developers"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
 SRC_URI="http://downloads.xiph.org/releases/theora/"$N-$V".tar.bz2"
+CHECKSUM="292ab65cedd5021d6b7ddd117e07cd8e"
 
 RDEPEND="libogg"
-BDEPEND=""
+BDEPEND="libvorbis"
 RECOMMENDED=""
 
 pbs_unpack() {
-        dounpack
+    dounpack
 }
 
 pbs_config() {
@@ -33,5 +34,4 @@ pbs_install() {
     make DESTDIR="$destdir" install
 	dodoc LICENSE COPYING
 }
-
 

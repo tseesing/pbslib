@@ -13,7 +13,7 @@ PACKAGER="StartOS Developers"
 SRC_URI="http://mirrors.xbmc.org/releases/source/"$N-$V".tar.gz"
 CHECKSUM="9e8a26ee25173c7268abea7f1d82d428"
 
-RDEPEND="fribidi glew jasper libcdio libmicrohttpd libmysqlclient libpcre libplist libssh libtiff libva lzo pulseaudio samba sdl-image sdl-mixer sqlite yajl"
+RDEPEND="fribidi glew jasper libcdio libmicrohttpd libmysqlclient pcre libplist libssh libtiff libva lzo pulseaudio samba sdl-image sdl-mixer sqlite yajl"
 BDEPEND=""
 RECOMMENDED=""
 CONFLICT=""

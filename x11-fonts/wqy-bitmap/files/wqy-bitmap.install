@@ -3,7 +3,7 @@
 dir="/usr/share/fonts/wenquanyi/wqy-bitmap"
 
 post_install() {
-	 dofont "$dir"
+    dofont "$dir"
 }
 
 post_remove() {

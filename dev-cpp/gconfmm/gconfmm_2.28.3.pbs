@@ -8,18 +8,18 @@
 DESCRIPTION="C++ bindings for GConf"
 HOMEPAGE="http://gtkmm.sourceforge.net"
 LICENSE="LGPL"
-PACKAGER="StartOS Developers"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
 SRC_URI="http://ftp.gnome.org/pub/gnome/sources/$N/${V%.*}/"$N-$V".tar.xz"
 CHECKSUM="d7bd2d29c1a87b85329547fb29a0eca52d944e60699982152775002e24c09228"
 
 RDEPEND="gconf glibmm"
-BDEPEND=""
+BDEPEND="pkgconfig gtkmm gconf glibmm"
 RECOMMENDED=""
 CONFLICT=""
 
 pbs_unpack() {
-        dounpack
+    dounpack
 }
 
 pbs_config() {
@@ -34,3 +34,4 @@ pbs_build() {
 pbs_install() {
 	domkinstall
 }
+

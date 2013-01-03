@@ -7,15 +7,15 @@
 
 DESCRIPTION="Library for applications that want to interact with the Zeitgeist daemon"
 HOMEPAGE="https://launchpad.net/libzeitgeist"
-LICENSE="LGPLv2.1"
-PACKAGER="chenqixing@ivali.com"
+LICENSE="LGPL"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
 SRC_URI="https://launchpad.net/$N/${V%.*}/$V/+download/${N}-${V}.tar.gz"
 CHECKSUM="d63a37295d01a58086d0d4ae26e604c2"
 
 RDEPEND="glib2"
 BDEPEND=""
-RECOMMENDED="zeitgeist"
+RECOMMENDED=""
 OPTIONS="zeitgeist: zeitgeist framework"
 
 pbs_unpack() {

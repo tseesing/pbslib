@@ -8,7 +8,7 @@
 DESCRIPTION="Color AsCii Art library"
 HOMEPAGE="http://caca.zoy.org/wiki/libcaca"
 LICENSE="LGPL"
-PACKAGER="StartOS Developers"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
 SRC_URI="http://libcaca.zoy.org/files/"$N"/"$N-$V".beta18.tar.gz"
 CHECKSUM="93d35dbdb0527d4c94df3e9a02e865cc"

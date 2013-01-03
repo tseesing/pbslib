@@ -8,14 +8,14 @@
 DESCRIPTION="Utilities for rescue and embedded systems"
 HOMEPAGE="http://www.busybox.net/"
 LICENSE="GPL"
-PACKAGER="StartOS Developers"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
 SRC_URI="http://busybox.net/downloads/busybox-"$V".tar.bz2"
 
 PROVIDE="busybox busybox-initramfs"
 
 pbs_unpack() {
-        dounpack
+    dounpack
 }
 
 pbs_patch() {

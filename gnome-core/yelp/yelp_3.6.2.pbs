@@ -8,19 +8,20 @@
 DESCRIPTION="Help browser for GNOME"
 HOMEPAGE="http://projects.gnome.org/yelp"
 LICENSE="GPL"
-PACKAGER="chenqixing@ivali.com"
+PACKAGER="chenqixing@ivali.com
+          Zhongxin Huang <huangzhongxin@ivali.com>"
 
 SRC_URI="http://ftp.gnome.org/pub/gnome/sources/$N/${V%.*}/"$N-$V".tar.xz"
 CHECKSUM="f83d10cb6dfbbaa7d3d5a9ff930edd4a0eef657de0e8aeeaaef0b187038681e1"
 
-RDEPEND="dconf libXslt desktop-file-utils startup-notification xz bzip2 hicolor-icon-theme yelp-xsl webkitgtk3"
-BDEPEND="intltool itstool "
+RDEPEND="webkitgtk3 yelp-xsl libXslt xz bzip2 desktop-file-utils dconf"
+BDEPEND="intltool itstool gtk-doc"
 RECOMMENDED=""
 
 INSTALL="$N.install"
 
 pbs_unpack() {
-        dounpack
+    dounpack
 }
 
 pbs_config() {

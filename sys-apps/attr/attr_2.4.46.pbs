@@ -8,15 +8,16 @@
 DESCRIPTION="Extended attribute support library for ACL support"
 HOMEPAGE="http://oss.sgi.com/projects/xfs/"
 LICENSE="LGPL"
-PACKAGER="StartOS Developers"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
 SRC_URI="http://download.savannah.gnu.org/releases/"$N"/"$N-$V".src.tar.gz"
+CHECKSUM="dcd69bdca7ff166bc45141eddbcf21967999a6b66b0544be12a1cc2fd6340e1f"
 
 RDEPEND="glibc"
 BDEPEND="gettext" 
 
 pbs_unpack() {
-        dounpack
+    dounpack
 }
 
 pbs_config() {
@@ -31,8 +32,12 @@ pbs_build() {
 
 pbs_install() {
 	make DIST_ROOT="$destdir" install-dev install-lib 
+    cd "$destdir"
 	# remove conflicting manpages
-	rm -rf "$destdir"/usr/share/man/man2
+	rm -rf usr/share/man/man2
+    # tidy up
+    cd usr/lib"$LIBDIRSUFFIX"
+    rm -f libattr.a
+    chmod 0755 libattr.so.*.*.*
 }
-
 

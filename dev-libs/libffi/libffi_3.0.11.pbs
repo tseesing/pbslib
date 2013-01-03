@@ -11,6 +11,7 @@ LICENSE="MIT"
 PACKAGER="StartOS Developers"
  
 SRC_URI="ftp://sourceware.org/pub//"$N"/"$N-$V".tar.gz"
+CHECKSUM="f69b9693227d976835b4857b1ba7d0e3"
 
 RDEPEND="glibc"
 BDEPEND=""
@@ -18,7 +19,7 @@ BDEPEND=""
 INSTALL="$N.install"
 
 pbs_unpack() {
-        dounpack
+    dounpack
 }
 
 pbs_config() {

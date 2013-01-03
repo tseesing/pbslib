@@ -8,9 +8,10 @@
 DESCRIPTION="Tools necessary to build programs"
 HOMEPAGE="http://www.gnu.org/software/binutils/"
 LICENSE="GPL"
-PACKAGER="StartOS Developers"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
 SRC_URI="http://ftp.gnu.org/gnu/"$N"/"$N-$V".tar.bz2"
+CHECKSUM="ee0f10756c84979622b992a4a61ea3f5"
 
 RDEPEND="zlib"
 BDEPEND=""
@@ -18,18 +19,16 @@ BDEPEND=""
 INSTALL="$N.install"
 
 pbs_unpack() {
-        dounpack
+    dounpack
 }
 
 pbs_config() {
 	rm -fr "$N"-build 2>/dev/null
 	mkdir "$N"-build && cd "$N"-build
-
 	config+="--enable-plugins --enable-threads --enable-ld=default --enable-gold --disable-werror"
-
 	case "$ARCH" in 
 		i?86) config+="" ;;
-              x86_64) config+=" --enable-64-bit-bfd"	
+      x86_64) config+=" --enable-64-bit-bfd"	
 	esac
 	../configure $config
 }
@@ -41,7 +40,6 @@ pbs_build() {
 
 pbs_install() {	
 	domkinstall tooldir=/usr
-	
 	# Add some useful headers
 	docp ../include/{libiberty.h,demangle.h} "$destdir"/usr/include
 }

@@ -8,34 +8,32 @@
 DESCRIPTION="A thin library that provides hardware graphics acceleration, input device handling and abstraction, integrated windowing system on top of the Linux Framebuffer Device"
 HOMEPAGE="http://www.directfb.org/"
 LICENSE="LGPL"
-PACKAGER="StartOS Developers"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
  
 SRC_URI="http://www.directfb.org/downloads/Core/DirectFB-"${V%.*}"/DirectFB-"$V".tar.gz"
 CHECKSUM="a393a53130e6a80369b7081371cd23dd1cd5e192"
 
-RDEPEND="freetype libjpeg-turbo libpng mesa sysfsutils"
-BDEPEND="libsdl-dev"
-RECOMMENDED="libsdl"
-
-INSTALL="$N.install"
+RDEPEND="freetype libjpeg-turbo libpng gcc-libs libsdl"
+BDEPEND=""
+RECOMMENDED=""
 
 pbs_unpack() {
-        dounpack
+    dounpack
 }
 
 pbs_patch() {
-	dopatch remove-werror-from-cflags.patch
+    dopatch remove-werror-from-cflags.patch
 }
 
 pbs_config() {
-	config+=" --enable-static 
-	          --enable-zlib 
-		      --enable-x11 
-		      --enable-sdl 
-		      --disable-vnc 
-		      --disable-osx 
-		      --enable-video4linux2 
-		      --enable-voodoo "
+	config+="--enable-static 
+	         --enable-zlib 
+		     --enable-x11 
+		     --enable-sdl 
+		     --disable-vnc 
+		     --disable-osx 
+		     --enable-video4linux2 
+		     --enable-voodoo"
 	doconfig
 }
 

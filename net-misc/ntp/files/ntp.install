@@ -1,32 +1,14 @@
 . /usr/lib/ybs/funcs
 
-unit="ntpd.service"
+gname="ntp"
 
 post_install() {
-	douseradd -c "ntp user" -d "/dev/null" -s "/bin/false" -r "ntp"
-	dogroupadd -r "ntp"
-	
-	# Systemd unit 
-	systemctl enable $unit
-	start ntpd ||true
-}
-
-pre_remove() {
-	stop ntpd
-	systemctl disable $unit
+    dogroupadd -g 87 $gname
+    douseradd -u 87 -g $gname -d /var/lib/ntp -c 'Network Time Protocol' -s /bin/false $gname ||true
 }
 
 post_remove() {
-	douserdel -r "ntp"
-	dogroupdel "ntp" ||true
-}
-
-post_upgrade()  {
-	systemctl --system daemon-reload
-	restart ntpd ||true
-}
-
-post_downgrade() {
-	post_upgrade
+    douserdel $gname
+    dogroupdel $gname ||true
 }
 

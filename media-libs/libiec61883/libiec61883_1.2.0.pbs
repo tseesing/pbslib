@@ -8,7 +8,7 @@
 DESCRIPTION="library for capturing video (dv or mpeg2) over the IEEE 1394 bus"
 HOMEPAGE="http://www.kernel.org/pub/linux/libs/ieee1394/"
 LICENSE="LGPL"
-PACKAGER="StartOS Developers"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
 SRC_URI="http://ftp.osuosl.org/pub/linux/libs/ieee1394/"$N-$V".tar.gz"
 CHECKSUM="8af39fff74988073c3ad53fbab147da9"

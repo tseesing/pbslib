@@ -5,13 +5,13 @@
 # Distributed under the terms of the GNU General Public License v2
 #
 
-DESCRIPTION="Small event-driven (SAX-style) JSON parser"
+DESCRIPTION="Yet Another JSON Library"
 HOMEPAGE="http://lloyd.github.com/yajl/"
 LICENSE="ISC"
-PACKAGER="StartOS Developers"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
 SRC_URI="https://github.com/lloyd/"$N"/tarball/"$V"/"$N-$V".tar.gz"
-CHECKSUM=""
+CHECKSUM="ee6208e697c43dcccf798ce80d370379"
 
 RDEPEND="glibc"
 RECOMMENDED=""
@@ -20,11 +20,11 @@ OPTIONAL=""
 CONFLICT=""
 
 pbs_unpack() {
-        dounpack
+    dounpack
 }
 
 pbs_config() {
-	cmake -DCMAKE_INSTALL_PREFIX=/usr .
+	doconfig
 }
 
 pbs_build() {
@@ -33,6 +33,6 @@ pbs_build() {
 
 pbs_install() {
 	domkinstall
-	dodoc COPYING
+	dodoc ../COPYING
 }
 

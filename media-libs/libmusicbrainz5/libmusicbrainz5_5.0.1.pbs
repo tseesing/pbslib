@@ -8,31 +8,33 @@
 DESCRIPTION="Client library to access to the MusicBrainz Server"
 HOMEPAGE="http://musicbrainz.org/"
 LICENSE="LGPL2.1"
-PACKAGER="chenqixing@ivali.com"
+PACKAGER="chenqixing@ivali.com
+          Zhongxin Huang <huangzhongxin@ivali.com>"
 
 SRC_URI="https://github.com/downloads/metabrainz/${N%5}/${N%5}-$V.tar.gz"
+CHECKSUM="a0406b94c341c2b52ec0fe98f57cadf3"
 
-RDEPEND="libdiscid neon"
+RDEPEND="neon"
 BDEPEND="cmake"
 RECOMMENDED=""
 
 pbs_unpack() {
-        dounpack
+    dounpack
 }
 
 pbs_patch() {
     dopatch support-out-of-source-build.patch
 }
 
+pbs_config() {
+    doconfig -DCMAKE_BUILD_TYPE=Release
+}
+
 pbs_build() {
-    cmake -DCMAKE_INSTALL_PREFIX:PATH=/usr \
-          -DCMAKE_BUILD_TYPE=Release \
-          -DLIB_SUFFIX:STRING=${LIBDIRSUFFIX}
 	domake
 }
 
 pbs_install() {
 	domkinstall
-    dodoc INSTALL.txt COPYING.txt
 }
 

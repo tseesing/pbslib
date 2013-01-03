@@ -8,10 +8,11 @@
 DESCRIPTION="Provides the list of country and language names"
 HOMEPAGE="http://alioth.debian.org/projects/pkg-isocodes/"
 LICENSE="LGPL"
-PACKAGER="StartOS Developers"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 YARCH="any"
 
 SRC_URI="http://pkg-isocodes.alioth.debian.org/downloads/"$N-$V".tar.xz"
+CHECKSUM="df8dacc718116dae3db453a4d85c018a"
 
 OPTIONS="nodev"
 

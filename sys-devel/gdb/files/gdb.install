@@ -3,11 +3,11 @@
 files="annotate.info.gz gdb.info.gz gdb.info-1.gz gdb.info-2.gz gdb.info-3.gz gdb.info-4.gz gdbint.info.gz gdbint.info-1.gz gdbint.info-2.gz stabs.info.gz"
 
 post_install() {
-        doinstall_info $files
+    doinstall_info $files
 }       
 
 pre_remove() {
-        doremove_info $files
+    doremove_info $files
 }
 
 post_upgrade() {

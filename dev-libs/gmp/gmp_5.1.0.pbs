@@ -1,0 +1,40 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="Library for arithmetic on arbitrary precision integers, rational numbers, and floating-point numbers"
+HOMEPAGE="http://gmplib.org/"
+LICENSE="LGPL"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
+
+SRC_URI="ftp://ftp.gmplib.org/pub/$N-$V/$N-$V.tar.xz"
+CHECKSUM="69fd511e435f81a0334f14f00c7d77b3"
+
+RDEPEND="gcc-libs"
+BDEPEND=""
+
+INSTALL="$N.install"
+
+pbs_unpack() {
+    dounpack
+}
+
+pbs_config() {
+    case "$ARCH" in
+        i?86) export ABI=32
+	esac	
+	config+="--enable-cxx"
+	doconfig
+}
+
+pbs_build() {
+	domake 
+}
+
+pbs_install() {
+	domkinstall
+}
+

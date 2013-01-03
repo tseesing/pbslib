@@ -8,9 +8,10 @@
 DESCRIPTION="GNU utilities for finding files"
 HOMEPAGE="http://www.gnu.org/software/findutils/"
 LICENSE="GPLv3"
-PACKAGER="StartOS Developers"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
 SRC_URI="http://ftp.gnu.org/pub/gnu/"$N"/"$N-$V".tar.gz"
+CHECKSUM="e8dd88fa2cc58abffd0bfc1eddab9020231bb024"
 
 RDEPEND="glibc"
 BDEPEND=""

@@ -8,18 +8,19 @@
 DESCRIPTION="An open-source memory debugger for GNU/Linux"
 HOMEPAGE="http://www.valgrind.org"
 LICENSE="GPL"
-PACKAGER="StartOS Developers"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
 SRC_URI="http://valgrind.org/downloads/"$N-$V".tar.bz2"
+CHECKSUM="288758010b271119a0ffc0183f1d6e38"
 
 RDEPEND="glibc perl"
-BDEPEND=""
+BDEPEND="gdb"
 RECOMMENDED=""
 
 NOTES="Valgrind will not work if glibc does not have debug symbols."
 
 pbs_unpack() {
-        dounpack
+    dounpack
 }
 
 pbs_config() {

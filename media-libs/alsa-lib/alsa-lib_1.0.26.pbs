@@ -8,15 +8,17 @@
 DESCRIPTION="Advanced Linux Sound Architecture Library"
 HOMEPAGE="http://www.alsa-project.org/"
 LICENSE="GPL"
-PACKAGER="StartOS Developers"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
 SRC_URI="ftp://ftp.alsa-project.org/pub/lib/"$N-$V".tar.bz2"
+CHECKSUM="2dfa35d28471d721e592b616beedf965"
 
-RDEPEND="glibc python"
-BDEPEND=""
+RDEPEND="glibc"
+BDEPEND="python"
+OPTIONAL="python: for python smixer plugin"
 
 pbs_unpack() {
-        dounpack
+    dounpack
 }
 
 pbs_config() {

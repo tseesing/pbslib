@@ -8,7 +8,7 @@
 DESCRIPTION="Abstraction library that comes between applications and audio visualisation plugins"
 HOMEPAGE="http://sourceforge.net/projects/libvisual"
 LICENSE="LGPL"
-PACKAGER="StartOS Developers"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
 SRC_URI="http://downloads.sourceforge.net/sourceforge/"$N"/"$N-$V".tar.gz"
 CHECKSUM="f4e78547c79ea8a8ad111cf8b85011bb"
@@ -21,7 +21,7 @@ CONFLICT=""
 REPLACE=""
 
 pbs_unpack() {
-        dounpack
+    dounpack
 }
 
 pbs_config() {

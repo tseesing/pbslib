@@ -8,16 +8,17 @@
 DESCRIPTION="The libunique package contains a library for writing single instance applications."
 HOMEPAGE="http://live.gnome.org/LibUnique"
 LICENSE="LGPL"
-PACKAGER="StartOS Developers"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
 SRC_URI="http://ftp.gnome.org/pub/GNOME/sources/"$N"/1.1/"$N-$V".tar.bz2"
+CHECKSUM="e5c8041cef8e33c55732f06a292381cb345db946cf792a4ae18aa5c66cdd4fbb"
 
-RDEPEND="gtk+"
-BDEPEND="" 
+RDEPEND="gtk2"
+BDEPEND="gtk-doc gobject-introspection" 
 RECOMMENDED="" 
 
 pbs_unpack() {
-        dounpack
+    dounpack
 }
 
 pbs_patch() {
@@ -36,7 +37,7 @@ pbs_build() {
 
 pbs_install() {
 	domkinstall
-	cd "$destdir"/usr/include
-	ln -sf  /usr/include/unique-1.0/unique unique
+    # Remove documentation, provided by libunique3
+    rm -r "$destdir"/usr/share/gtk-doc
 }
 

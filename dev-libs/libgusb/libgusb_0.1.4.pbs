@@ -5,20 +5,20 @@
 # Distributed under the terms of the GNU General Public License v2
 #
 
-DESCRIPTION="GObject wrapper for libusb1"
+DESCRIPTION="GLib wrapper around libusb1"
 HOMEPAGE="https://gitorious.org/gusb/"
 LICENSE="LGPL"
-PACKAGER="StartOS Developers"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
 SRC_URI="http://people.freedesktop.org/~hughsient/releases/"$N-$V".tar.xz"
 CHECKSUM="64294a649e54df2009545f47577f41438ec50c2fc571dd7b08cf32cb14de37b9"
 
-RDEPEND="glibc systemd libusbx"
-BDEPEND=""
+RDEPEND="systemd libusbx"
+BDEPEND="gobject-introspection"
 REPLACE=""
 
 pbs_unpack() {
-        dounpack
+    dounpack
 }
 
 pbs_config() {

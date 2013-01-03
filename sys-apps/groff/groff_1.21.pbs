@@ -8,17 +8,18 @@
 DESCRIPTION="Text formatter used for man pages"
 HOMEPAGE="http://www.gnu.org/software/groff/groff.html"
 LICENSE="GPL"
-PACKAGER="StartOS Developers"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
 SRC_URI="ftp://ftp.gnu.org/gnu/"$N"/"$N-$V".tar.gz"
+CHECKSUM="8b8cd29385b97616a0f0d96d0951c5bf"
 
-RDEPEND="gcc-lib"
+RDEPEND="gcc-libs perl texinfo"
 BDEPEND=""
 
 INSTALL="$N.install"
 
 pbs_unpack() {
-        dounpack
+    dounpack
 }
 
 pbs_config() {
@@ -37,10 +38,9 @@ pbs_install() {
 	doln /usr/bin/eqn    usr/bin/geqn
 	doln /usr/bin/tbl    usr/bin/gtbl
 	doln /usr/bin/soelim usr/bin/zsoelim
- 
   	# Fix some issues when encoding to utf8 man pages
   	# The output chars don't match keyboard chars...
-	rm -rf usr/lib/groff/site-tmac
+	rm -rf usr/lib"$LIBDIRSUFFIX"/groff/site-tmac
   	cat "$filesdir"/site.tmac >>usr/share/groff/site-tmac/man.local
 	cat "$filesdir"/site.tmac >>usr/share/groff/site-tmac/mdoc.local
 }

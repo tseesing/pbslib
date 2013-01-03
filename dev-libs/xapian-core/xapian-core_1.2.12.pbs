@@ -8,12 +8,13 @@
 DESCRIPTION="Open Source Search Engine Library"
 HOMEPAGE="http://xapian.org"
 LICENSE="GPL"
-PACKAGER="chenqixing@ivali.com"
+PACKAGER="chenqixing@ivali.com
+          Zhongxin Huang <huangzhongxin@ivali.com>"
 
 SRC_URI="http://oligarchy.co.uk/${N%-*}/$V/${N}-${V}.tar.gz"
 CHECKSUM="faf33a3945edbe4c848627750856cbeb"
 
-RDEPEND="gcc-lib zlib util-linux"
+RDEPEND="gcc-libs zlib util-linux"
 BDEPEND=""
 RECOMMENDED=""
 

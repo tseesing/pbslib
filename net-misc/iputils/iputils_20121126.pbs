@@ -6,33 +6,52 @@
 #
 
 DESCRIPTION="Network monitoring tools including ping and ping6"
-HOMEPAGE="http://www.linux-foundation.org/en/Net:Iputils"
+HOMEPAGE="http://www.skbuff.net/iputils"
 LICENSE="GPL,BSD"
-PACKAGER="StartOS Developers"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
-SRC_URI="http://www.skbuff.net/"$N"/"$N-s$V".tar.bz2"
+SRC_URI="http://www.skbuff.net/$N/$N-s$V.tar.bz2"
+CHECKSUM="3e46391f53381080d5e1961f1b2b0ccd9a158ab2"
 
-RDEPEND="openssl libcap"
-BDEPEND=""
+RDEPEND="openssl libcap sysfsutils"
+BDEPEND="docbook2x opensp"
 RECOMMENDED=""
-CONFLICT=""
+CONFLICT="arping"
+OPTIONAL="xinetd: for tftpd"
 
 INSTALL="$N.install"
 
 pbs_unpack() {
-        dounpack
+    dounpack
 }
 
 pbs_patch() {
-	# Use our CFLAGS
-	sed -i -e "/^CCOPT=/s|-O2|${CFLAGS}|" Makefile
+    # Use our CFLAGS
+    sed -i -e "/^CCOPT=/s|-O2|${CFLAGS}|" Makefile
 }
 
 pbs_build() {
 	domake
+    cd doc
+    for file in *.sgml; do
+        xf=${file/.sgml/.xml}
+        osx -xlower -xno-nl-in-tag $file > $xf || true
+        sed -i "s|<refname>\(.*\), \(.*\)</refname>|<refname>\1</refname>, <refname>\2</refname>|g" $xf
+        docbook2man $xf
+    done
 }
 
 pbs_install() {
-	docp arping clockdiff ipg ping ping6 rarpd rdisc tftpd tracepath tracepath6 traceroute6 "$destdir"/usr/bin/
+    cd ../
+	docp arping clockdiff rarpd rdisc tftpd tracepath tracepath6 "$destdir"/usr/sbin/
+    docp ping{,6} "$destdir"/usr/bin/
+    doman doc/{arping,clockdiff,ping,rarpd,rdisc,tftpd,tracepath}.8
+    cd "$destdir"
+    docp_rename "$filesdir"/tftp.xinetd etc/xinetd.d/tftp
+    doln /usr/bin/ping  bin/ping
+    doln /usr/bin/ping6 bin/ping6
+    cd usr/share/man/man8
+    doln ping.8.gz  ping6.8.gz
+    doln tracepath.8.gz tracepath6.8.gz
 }
 

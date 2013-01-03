@@ -8,20 +8,20 @@
 DESCRIPTION="OpenType text shaping engine."
 HOMEPAGE="http://www.freedesktop.org/wiki/Software/HarfBuzz"
 LICENSE="MIT"
-PACKAGER="StartOS Developers"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
 SRC_URI="http://www.freedesktop.org/software/"$N"/release/"$N-$V".tar.bz2"
 CHECKSUM="3d8dd4ebbc38da011485ef181f8ff072b4b0d7e305bbda19b355f217d25169cf"
 
-RDEPEND="gcc-lib graphite2"
+RDEPEND="icu glib2 freetype graphite2"
 RECOMMENDED=""
-BDEPEND=""
-OPTIONAL=""
+BDEPEND="icu cairo glib2 freetype"
+OPTIONAL="cairo: hb-view program"
 CONFLICT=""
 REPLACE=""
 
 pbs_unpack() {
-        dounpack
+    dounpack
 }
 
 pbs_config() {

@@ -8,7 +8,7 @@
 DESCRIPTION="A file archival tool which can also read and write tar files"
 HOMEPAGE="http://www.gnu.org/software/cpio/cpio.html"
 LICENSE="GPL"
-PACKAGER="StartOS Developers"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
 SRC_URI="http://ftp.gnu.org/gnu/"$N"/"$N-$V".tar.gz"
 CHECKSUM="1112bb6c45863468b5496ba128792f6c"
@@ -19,11 +19,11 @@ BDEPEND=""
 INSTALL="$N.install"
 
 pbs_unpack() {
-        dounpack
+    dounpack
 }
 
 pbs_patch() {
-	dopatch cpio-2.11-fgets.patch
+    dopatch cpio-2.11-fgets.patch
 }
 
 pbs_config() {

@@ -23,9 +23,3 @@ post_upgrade() {
 	doinstall_info $files
 }
 
-post_downgrade() {
-	doinstall_info $files
-}
-
-
-

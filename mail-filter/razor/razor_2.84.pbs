@@ -8,7 +8,7 @@
 DESCRIPTION="Vipul's Razor is a distributed, collaborative spam detection and filtering network"
 HOMEPAGE="http://razor.sourceforge.net"
 LICENSE="PerlArtistic"
-PACKAGER="StartOS Developers"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 GROUP="perl"
 
 SRC_URI="http://downloads.sourceforge.net/$N/$N-agents-$V.tar.bz2"
@@ -36,5 +36,4 @@ pbs_build() {
 pbs_install() {
 	domkinstall
 }
-
 

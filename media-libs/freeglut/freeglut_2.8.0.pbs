@@ -8,15 +8,16 @@
 DESCRIPTION="A completely OpenSourced alternative to the OpenGL Utility Toolkit (GLUT) library"
 HOMEPAGE="http://freeglut.sourceforge.net/"
 LICENSE="MIT"
-PACKAGER="StartOS Developers"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
 SRC_URI="http://downloads.sourceforge.net/"$N"/"$N-$V".tar.gz"
+CHECKSUM="5db8651af306bc403fbfd36934a20e1d"
 
-RDEPEND="libXi mesa"
-BDEPEND=""
+RDEPEND="libXi mesa libXrandr"
+BDEPEND="mesa glu libXxf86vm"
 
 pbs_unpack() {
-        dounpack
+    dounpack
 }
 
 pbs_patch() {
