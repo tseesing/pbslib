@@ -9,7 +9,7 @@ DESCRIPTION="image displayer for X"
 HOMEPAGE="http://xorg.freedesktop.org/"
 GROUP="x11-apps"
 LICENSE="custom"
-PACKAGER="StartOS Developers"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
 SRC_URI="http://xorg.freedesktop.org/releases/individual/app/"$N-$V".tar.bz2"
 

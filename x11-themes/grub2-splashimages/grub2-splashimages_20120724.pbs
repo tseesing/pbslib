@@ -8,12 +8,12 @@
 DESCRIPTION="grub2 background images"
 HOMEPAGE="http://www.startos.com"
 LICENSE="GPL"
-PACKAGER="StartOS Developers"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 YARCH="any"
 
 SRC_URI="git://git.ylmf.com/"$N".git"
 
-RDEPEND="grub2"
+RDEPEND="grub-common"
 BDEPEND=""
 RECOMMENDED=""
 
@@ -25,5 +25,6 @@ pbs_unpack() {
 
 pbs_install() {
 	docp usr "$destdir"/
+    docp "$filesdir"/05_debian_theme "$destdir"/etc/grub.d/
 }
 

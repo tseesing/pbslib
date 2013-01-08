@@ -13,11 +13,11 @@ PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 SRC_URI="ftp://invisible-island.net/"$N"/"$N-$V".tgz"
 CHECKSUM="0e4385e66d40b5dd6017d02c3db2a4af"
 
-RDEPEND="libXaw libXft ncurses"
+RDEPEND="libutempter libXaw libXft ncurses"
 BDEPEND=""
 
 pbs_unpack() {
-        dounpack
+    dounpack
 }
 
 pbs_config() {

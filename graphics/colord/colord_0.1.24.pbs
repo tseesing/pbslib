@@ -14,7 +14,7 @@ SRC_URI="http://www.freedesktop.org/software/colord/releases/"$N-$V".tar.xz"
 CHECKSUM="52089b72d79cd4358a86b7e646c42d23157bbcf9"
 
 RDEPEND="lcms2 libgusb polkit shared-color-profiles sqlite systemd"
-BDEPEND="intltool gobject-introspection vala docbook2x"
+BDEPEND="intltool gobject-introspection vala"
 
 pbs_unpack() {
     dounpack

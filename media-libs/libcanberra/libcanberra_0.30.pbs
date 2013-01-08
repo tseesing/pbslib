@@ -12,7 +12,7 @@ PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
 SRC_URI="http://0pointer.de/lennart/projects/"$N"/"$N-$V".tar.xz"
 
-RDEPEND="gstreamer pulseaudio libvorbis alsa-lib tdb sound-theme-freedesktop"
+RDEPEND="gstreamer pulseaudio libvorbis alsa-lib tdb"
 BDEPEND=""
 RECOMMENDED=""
 

@@ -8,9 +8,10 @@
 DESCRIPTION="Another cute console display library"
 HOMEPAGE="http://tiswww.case.edu/php/chet/readline/rltop.html"
 LICENSE="GPL"
-PACKAGER="StartOS Developers"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
 SRC_URI="ftp://ftp.gnu.org/gnu/"$N"/"$N-$V".tar.gz "
+CHECKSUM="67948acb2ca081f23359d0256e9a271c"
 
 RDEPEND="ncurses"
 BDEPEND=""
@@ -18,7 +19,7 @@ BDEPEND=""
 INSTALL="$N.install"
 
 pbs_unpack() {
-        dounpack
+    dounpack
 }
 
 pbs_patch() {
@@ -30,7 +31,6 @@ pbs_patch() {
 pbs_config() {
 	# build with -fPIC for x86_64
 	[ "$ARCH" == "x86_64" ] && CFLAGS="$CFLAGS -fPIC"
-
 	config+=""
 	doconfig
 }

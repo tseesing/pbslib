@@ -8,7 +8,7 @@
 DESCRIPTION="Library to identify Wacom tablets and their features"
 HOMEPAGE="http://sourceforge.net/apps/mediawiki/linuxwacom/index.php?title=Libwacom"
 LICENSE="MIT"
-PACKAGER="StartOS Developers"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
 SRC_URI="http://sourceforge.net/projects/linuxwacom/files/"$N"/"$N-$V".tar.bz2"
 CHECKSUM="7115690698edc87deec482f0b2526567b858475d2135b5f8ccc946e5e76ec01d"
@@ -37,5 +37,4 @@ pbs_install() {
 	domkinstall
     dodoc COPYING
 }
-
 

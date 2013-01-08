@@ -12,6 +12,7 @@ PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 YARCH="any"
 
 SRC_URI="http://search.cpan.org/CPAN/authors/id/L/LU/LUISMUNOZ/"$N-$V".tar.gz"
+CHECKSUM="368205b1be8c0d4f807afe25d6fbd1ad"
 
 RDEPEND="perl"
 BDEPEND=" "
@@ -19,7 +20,7 @@ RECOMMENDED=""
 CONFLICT=""
 
 pbs_unpack() {
-        dounpack
+    dounpack
 }
 
 pbs_config() {
@@ -33,6 +34,6 @@ pbs_build() {
 
 pbs_install() {
 	domkinstall
-        perl_cleanup
+    perl_cleanup
 }
 

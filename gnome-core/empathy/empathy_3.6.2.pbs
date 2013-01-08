@@ -15,8 +15,9 @@ SRC_URI="http://ftp.acc.umu.se/pub/GNOME/sources/"$N"/${V%.*}/"$N-$V".tar.xz"
 CHECKSUM="707bf283f37e8b91816c78742d9ebf9e3effc4206a3ecc3e4c0cfbbf8ce0fd26"
 
 RDEPEND="clutter-gst clutter-gtk folks gcr iso-codes libcanberra pulseaudio webkitgtk3 telepathy-farstream telepathy-logger telepathy-mission-control"      
+
 BDEPEND="itstool"
-RECOMMENDED="telepathy-gabble telepathy-salut telepathy-haze telepathy-butterfly nautilus-sendto notification-daemon"
+RECOMMENDED="telepathy-gabble telepathy-salut telepathy-haze telepathy-butterfly nautilus-sendto notification-daemon geocode-glib gnome-online-accounts gnutls libchamplain"
 OPTIONAL="telepathy-gabble: XMPP/Jabber support
           telepathy-idle: IRC support
           telepathy-salut: Link-local XMPP support

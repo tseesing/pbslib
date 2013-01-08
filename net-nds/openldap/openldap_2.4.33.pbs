@@ -13,7 +13,7 @@ PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 SRC_URI="ftp://ftp.openldap.org/pub/OpenLDAP/"$N"-release/"$N-$V".tgz"
 CHECKSUM="0cea642ba2dae1eb719da41bfedb9eba72ad504d"
 
-RDEPEND="e2fsprogs cyrus-sasl util-linux libtool"
+RDEPEND="cyrus-sasl icu libtool util-linux"
 BDEPEND=""
 RECOMMENDED=""
 CONFLICT=""

@@ -15,7 +15,7 @@ SRC_URI="http://telepathy.freedesktop.org/releases/"$N"/"$N-$V".tar.gz"
 CHECKSUM="483fa8860891815a540ecf1bb9155122"
 
 RDEPEND="libgnome-keyring networkmanager telepathy-glib upower dconf"
-BDEPEND="python libXslt"
+BDEPEND="python libxslt"
 RECOMMENDED=""
 
 INSTALL="$N.install"

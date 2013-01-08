@@ -16,7 +16,7 @@ SRC_URI="http://ftp.gnome.org/pub/gnome/sources/$N/${V%.*}/"$N-$V".tar.xz"
 CHECKSUM="9cac9770d6ace354f3e56a2e60933bb0cd894a4263a3bf1db6e8900f86f8cdd6"
 
 RDEPEND=""
-BDEPEND="intltool itstool libXslt libxml2"
+BDEPEND="intltool itstool libxslt libxml2"
 RECOMMENDED=""
 
 pbs_unpack() {

@@ -23,7 +23,7 @@ pbs_unpack() {
 pbs_config() {
 	# Warning: type-punning to incomplete type might break strict-aliasing rules
 	export CFLAGS="$CFLAGS -fno-strict-aliasing"
-	config+="--enable-introspection --with-gtk=2.0 --enable-introspection"
+	config+="--enable-introspection --with-gtk=2.0 --enable-introspection --enable-python"
 	doconfig
 }
 

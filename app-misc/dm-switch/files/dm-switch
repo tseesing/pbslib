@@ -7,13 +7,18 @@
 
 DMCONFIG="/etc/dm-switch/dm-switch.conf"
 DEFAULT="/etc/dm-switch/default"
+if [ $(systemctl --version |head -n1 |awk '{print $2}') -ge 196 ]; then
+    UNITDIR="/usr/lib/systemd/system"
+else
+    UNITDIR="/lib/systemd/system"
+fi
 
 . $DMCONFIG
 
 files=""
 
 for dm in $DMS; do
-	[ -f /usr/lib/systemd/system/"${dm}".service ] && files+=""${dm}".service "
+	[ -f "$UNITDIR"/"${dm}".service ] && files+=""${dm}".service "
 done
 
 case $1 in
@@ -26,7 +31,7 @@ case $1 in
 
 		for i in $files; do
 			i=${i/.service/}
-			Description=$(grep -w Description /lib/systemd/system/${i}.service)
+			Description=$(grep -w Description "$UNITDIR"/${i}.service)
 			Description=${Description/Description=/}
 			status=$(systemctl is-enabled ${i}.service)
 			echo " ${i} --  $Description -- $status"

@@ -15,7 +15,7 @@ CHECKSUM="a0ebb55083e2dfc22a75c504acde6a07"
 
 PROVIDE="pidgin libpurple finch"
 
-OPTIONAL=""
+BDEPEND="startup-notification gtkspell libXScrnSaver nss libSM libidn python gstreamer0.10 avahi tk intltool networkmanager"
 
 pbs_unpack() {
     dounpack
@@ -25,7 +25,8 @@ pbs_config() {
 	config+="--disable-schemas-install 
              --with-system-ssl-certs=/etc/ssl/certs 
              --disable-meanwhile
-             --disable-vv"
+             --disable-vv
+             --enable-nm"
 	doconfig
 }
 
@@ -36,7 +37,8 @@ pbs_build() {
 pidgin_install() {
 	DESCRIPTION="GTK Instant Messenger client"
 	RDEPEND="gtkspell libpurple"
-	RECOMMENDED=""
+	RECOMMENDED="aspell"
+    OPTIONAL="aspell: for spelling correction"
 
 	# For linking
 	make -C libpurple DESTDIR="$destdir" install-libLTLIBRARIES
@@ -51,7 +53,7 @@ pidgin_install() {
 
 libpurple_install() {
 	DESCRIPTION="IM library extracted from Pidgin"
-	RDEPEND="avahi dbus-glib farsight2 libgadu libidn nss perl tk"
+	RDEPEND="avahi dbus-glib gst-plugins-base0.10 libgadu libgcrypt nss perl tk"
 
     for dir in libpurple share/sounds share/ca-certs m4macros po; do
 		domkinstall -C "${dir}"

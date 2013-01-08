@@ -12,7 +12,7 @@ PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
 SRC_URI="https://github.com/downloads/"$N"/"$N"/"$N-$V".tar.gz"
 
-RDEPEND="gcc-lib zlib"
+RDEPEND="gcc-libs zlib"
 BDEPEND="cmake"
 RECOMMENDED=""
 

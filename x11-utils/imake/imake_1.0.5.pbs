@@ -8,7 +8,7 @@
 DESCRIPTION="C preprocessor interface to the make utility"
 HOMEPAGE="http://xorg.freedesktop.org/"
 LICENSE="custom"
-PACKAGER="StartOS Developers"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
 SRC_URI="http://xorg.freedesktop.org/releases/individual/util/"$N-$V".tar.bz2"
 

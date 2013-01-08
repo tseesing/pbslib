@@ -8,9 +8,10 @@
 DESCRIPTION="frontend for libraries libburn and libisofs"
 HOMEPAGE="http://libburnia-project.org/"
 LICENSE="GPLv2"
-PACKAGER="StartOS Developers"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
 SRC_URI="http://files.libburnia-project.org/releases/"$N-$V".tar.gz"
+CHECKSUM="d5d78ec840a8bbc7df6582f65a28ca1e"
 
 RDEPEND="libburn(>=1.2.4) libisofs(>=1.2.4) readline"
 RECOMMENDED=""
@@ -22,7 +23,7 @@ REPLACE=""
 INSTALL="$N.install"
 
 pbs_unpack() {
-        dounpack
+    dounpack
 }
 
 pbs_config() {

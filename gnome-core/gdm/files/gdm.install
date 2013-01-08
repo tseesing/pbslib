@@ -1,6 +1,7 @@
 . /usr/lib/ybs/funcs
 
 gname="gdm"
+unit="gdm.service"
 
 post_install() {
     dogroupadd -g 120 $gname
@@ -12,8 +13,7 @@ post_install() {
     gtk-update-icon-cache -q -t -f /usr/share/icons/hicolor
     dconf update
 
-	dm-switch disable-all
-	dm-switch enable gdm || return 0
+	systemctl enable $unit || return 0
 }
 
 post_upgrade() {
@@ -38,6 +38,6 @@ post_remove() {
 }
 
 pre_remove() {
-	dm-switch disable gdm ||true
+	systemctl disable $unit ||true
 }
 

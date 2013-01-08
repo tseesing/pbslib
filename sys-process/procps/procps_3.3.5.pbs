@@ -8,7 +8,7 @@
 DESCRIPTION="Debian, Fedora and openSUSE fork of procps."
 HOMEPAGE="http://procps.sourceforge.net/"
 LICENSE="GPL,LGPL"
-PACKAGER="StartOS Developers"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
 SRC_URI="git://gitorious.org/procps/procps.git"
 
@@ -16,7 +16,7 @@ RDEPEND="ncurses"
 BDEPEND=""
 
 pbs_unpack() {
-        dounpack
+    dounpack
 }
 
 pbs_config() {
@@ -26,7 +26,6 @@ pbs_config() {
 
 pbs_build() {
 	domake 
-
 }
 
 pbs_install() {

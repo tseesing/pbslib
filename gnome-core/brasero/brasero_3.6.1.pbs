@@ -13,8 +13,8 @@ PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 SRC_URI="http://ftp.gnome.org/pub/gnome/core/3.6/3.6.2/sources/"$N-$V".tar.xz"
 
 RDEPEND="gtk3 gst-plugins-base totem-pl-parser cdrkit cdrdao desktop-file-utils hicolor-icon-theme shared-mime-info libcanberra dvd+rw-tools dconf tracker"
-BDEPEND="gtk-doc intltool gobject-introspection docbook-xsl"
-RECOMMENDED=""
+BDEPEND="gtk-doc intltool gobject-introspection docbook-xsl libburn libisofs"
+RECOMMENDED="libburn libisofs"
 OPTIONAL="dvdauthor: video project
           gst-plugins-bad0.10: video project
           libburn: alternative back-end

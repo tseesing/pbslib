@@ -24,7 +24,6 @@ pbs_unpack() {
 
 pbs_config() {
 	doconfig -DCMAKE_BUILD_TYPE=Release \
-             -DCMAKE_LIB_INSTALL_DIR=/usr/lib"$LIBDIRSUFFIX" \
              -DENABLE_OPENCC=OFF \
              -DFORCE_PRESAGE=ON \
              -DENABLE_TEST=ON \

@@ -8,7 +8,7 @@
 DESCRIPTION="Standard GNU database libraries"
 HOMEPAGE="http://www.gnu.org/software/gdbm/gdbm.html"
 LICENSE="GPL"
-PACKAGER="StartOS Developers"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
 SRC_URI="ftp://ftp.gnu.org/gnu/"$N"/"$N-$V".tar.gz"
 CHECKSUM="88770493c2559dc80b561293e39d3570"
@@ -19,7 +19,7 @@ BDEPEND=""
 INSTALL="$N.install"
 
 pbs_unpack(){
-        dounpack
+    dounpack
 }
 
 pbs_patch() {
@@ -43,7 +43,6 @@ pbs_build() {
 
 pbs_install() {
 	domkinstall 
-	
 	# Create symlinks for compatibility
 	cd "${destdir}"
 	install -dm755   usr/include/gdbm

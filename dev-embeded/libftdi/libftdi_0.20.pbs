@@ -13,7 +13,7 @@ PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 SRC_URI="http://www.intra2net.com/en/developer/"$N"/download/"$N-$V".tar.gz"
 CHECKSUM="4bc6ce70c98a170ada303fbd00b8428d8a2c1aa2"
 
-RDEPEND="libusb-compat gcc-lib"
+RDEPEND="libusb-compat gcc-libs"
 RECOMMENDED=""
 BDEPEND=""
 OPTIONAL=""

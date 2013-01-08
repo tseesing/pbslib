@@ -8,12 +8,13 @@
 DESCRIPTION="tools for generating an initramfs"
 HOMEPAGE="http://www.startos.org"
 LICENSE="GPL"
-PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>
+               chenqixing@ivali.com"
 YARCH="any"
 
 SRC_URI="git://git.ylmf.com/"$N".git"
 
-RDEPEND="busybox-initramfs cpio kmod systemd findutils util-linux"
+RDEPEND="busybox-initramfs cpio kmod systemd findutils util-linux linux-kernel gawk sed e2fsprogs"
 BDEPEND=""
 RECOMMENDED="fuse ntfs-3g plymouth kbd dejavu-fonts-ttf"
 

@@ -8,21 +8,23 @@
 DESCRIPTION="Tool for creating compressed filesystem type squashfs, with lzma support"
 HOMEPAGE="http://squashfs.sourceforge.net/"
 LICENSE="GPL"
-PACKAGER="StartOS Developers"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
-SRC_URI="http://downloads.sourceforge.net/project/squashfs/squashfs/squashfs"$V"/squashfs"$V".tar.gz"
+SRC_URI="http://downloads.sourceforge.net/sourceforge/squashfs/squashfs"$V".tar.gz"
+CHECKSUM="1b7a781fb4cf8938842279bd3e8ee852"
 
-RDEPEND="xz zlib"
+RDEPEND="xz zlib lzo"
 BDEPEND=""
 RECOMMENDED=""
 
 pbs_unpack() {
-        dounpack
+    dounpack
 }
 
-pbs_config() {
-	cd squashfs-tools
-	dopatch enable-xz.patch
+pbs_patch() {
+    cd "$N"
+    sed -i 's|^#XZ_SUPPORT = 1|XZ_SUPPORT = 1|' Makefile
+    sed -i 's|^#LZO_SUPPORT = 1|LZO_SUPPORT = 1|' Makefile
 }
 
 pbs_build() {

@@ -1,10 +1,10 @@
 [Unit]
-Description=winbind daemon
+Description=Samba Winbind daemon
+After=network.target
 
 [Service]
-Type=forking
-ExecStart=/usr/sbin/winbindd -D
-PIDFile=/run/winbindd.pid
+ExecStart=/usr/sbin/winbindd -F
+ExecReload=/bin/kill -HUP $MAINPID
 
 [Install]
 WantedBy=multi-user.target

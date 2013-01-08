@@ -2,7 +2,11 @@
 #
 
 APPNAME=chromium
-LIBDIR=/usr/lib/chromium
+case "$(uname -m)" in
+    i?86) LIBDIRSUFFIX="" ;;
+  x86_64) LIBDIRSUFFIX="64"
+esac
+LIBDIR=/usr/lib"$LIBDIRSUFFIX"/chromium
 GDB=/usr/bin/gdb
 
 usage () {
@@ -82,16 +86,8 @@ fi
 #     
 if [ ! -d $HOME/.config/chromium ]; then
        mkdir -p $HOME/.config
-       tar xf /usr/lib/chromium/chromium.tar.bz2 -C $HOME/.config/ 2>/dev/null
+       tar xf $LIBDIR/chromium.tar.bz2 -C $HOME/.config/ 2>/dev/null
        chown -R $USER:$USER $HOME/.config/chromium 
-fi
-
-flash_setting_dir="$HOME/.macromedia/Flash_Player/macromedia.com/support/flashplayer/sys"
-
-if [ ! -d $flash_setting_dir ]; then
-       mkdir -p $flash_setting_dir
-       cp -a /usr/lib/chromium/settings.sol $flash_setting_dir
-       chown -R $USER:$USER $flash_setting_dir/settings.sol
 fi
 
 if [ $want_debug -eq 1 ] ; then

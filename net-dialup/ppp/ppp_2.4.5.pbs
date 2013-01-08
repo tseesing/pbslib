@@ -13,7 +13,7 @@ PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 SRC_URI="http://samba.org/ftp/"$N"/"$N-$V".tar.gz"
 CHECKSUM="4621bc56167b6953ec4071043fe0ec57"
 
-RDEPEND="libpcre"
+RDEPEND="pcre"
 BDEPEND=""
 RECOMMENDED=""
 

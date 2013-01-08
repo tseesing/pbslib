@@ -1,10 +1,10 @@
 [Unit]
-Description=smbd daemon
+Description=Samba SMB/CIFS server
+After=network.target
 
 [Service]
-Type=forking
-ExecStart=/usr/sbin/smbd -D
-PIDFile=/run/smbd.pid
+ExecStart=/usr/sbin/smbd -F
+ExecReload=/bin/kill -HUP $MAINPID
 
 [Install]
 WantedBy=multi-user.target

@@ -9,7 +9,7 @@ DESCRIPTION="Library providing generic access to the PCI bus and devices"
 HOMEPAGE="http://www.x.org/wiki/"
 GROUP="x11-lib"
 LICENSE="custom"
-PACKAGER="StartOS Developers"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
 SRC_URI="http://xorg.freedesktop.org/releases/individual/lib/"$N-$V".tar.bz2"
 

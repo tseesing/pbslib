@@ -26,7 +26,8 @@ pbs_unpack() {
 }
 
 pbs_config() {
-    config+=" --enable-sytemd
+    config+=" --with-module-dir=/usr/lib$LIBDIRSUFFIX/syslog-ng
+              --enable-sytemd
               --with-systemdsystemunitdir=/usr/lib/systemd/system
               --with-pidfile-dir=/run
               --disable-spoof-source"

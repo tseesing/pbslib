@@ -8,7 +8,8 @@
 DESCRIPTION="A fork of GNOME Shell with layout similar to GNOME "
 HOMEPAGE="http://cinnamon.linuxmint.com"
 LICENSE="GPL2"
-PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>
+          chenqixing@ivali.com"
 
 SRC_URI="https://github.com/linuxmint/Cinnamon/archive/"$V".tar.gz"
 CHECKSUM="932f3e99ae050b351ee515a355638777"
@@ -28,6 +29,7 @@ pbs_unpack() {
 }
 
 pbs_patch() {
+    sed -i -e '/^IsRun/s@\(.*lib\)\/.*\(\/.*\)@\1exec\2@'  files/usr/share/gnome-session/sessions/cinnamon.session
     sed -i 's/\ --warn-all\ --warn-error//' src/Makefile.am
 }
 

@@ -116,7 +116,7 @@ mysql-clients_install() {
 
 libmysqlclient_install() {
 	DESCRIPTION="MySQL client libraries"
-	RDEPEND="gcc-lib openssl"
+	RDEPEND="gcc-libs openssl"
 
     cd "$srcdir"/build
 	for dir in include libmysql libmysqld libservices; do

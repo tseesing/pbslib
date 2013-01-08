@@ -9,7 +9,7 @@ DESCRIPTION="X.Org Adobe bitmap fonts"
 HOMEPAGE="http://www.x.org/wiki/"
 LICENSE="custom"
 GROUP="x11-fonts"
-PACKAGER="StartOS Developers"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 YARCH="any"
 
 SRC_URI="http://xorg.freedesktop.org/releases/individual/font/"$N-$V".tar.bz2"

@@ -8,16 +8,16 @@
 DESCRIPTION="Small utilities that use the /proc filesystem"
 HOMEPAGE="http://psmisc.sourceforge.net/"
 LICENSE="GPL"
-PACKAGER="StartOS Developers" 
-GROUP="base"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>" 
 
 SRC_URI="http://downloads.sourceforge.net/"$N"/"$N-$V".tar.gz"
+CHECKSUM="4c8fb774449f966f78c4c6e1d77d1a24b4187410"
 
 RDEPEND="ncurses"
 BDEPEND=""
 
 pbs_unpack() {
-        dounpack
+    dounpack
 }
 
 pbs_config() {

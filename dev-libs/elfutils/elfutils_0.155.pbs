@@ -13,7 +13,7 @@ PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 SRC_URI="https://fedorahosted.org/releases/e/l/"$N"/"$V"/"$N-$V".tar.bz2"
 CHECKSUM="1b96084cd9fe037c1c0bd2c280aaa701f913462b"
 
-RDEPEND="bzip2 gcc-lib glibc xz zlib"
+RDEPEND="bzip2 gcc-libs glibc xz zlib"
 RECOMMENDED=""
 BDEPEND=""
 OPTIONAL=""

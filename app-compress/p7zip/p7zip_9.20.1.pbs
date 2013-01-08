@@ -14,7 +14,7 @@ SRC_URI="http://downloads.sourceforge.net/project/"$N"/"$N"/"$V"/"${N}"_"$V"_src
 CHECKSUM="1cd567e043ee054bf08244ce15f32cb3258306b7"
 
 RDEPEND="gcc-libs bash"
-BDEPEND="yasm nasm wxgtk"
+BDEPEND="yasm nasm"
 OPTIONAL="wxgtk: GUI
           desktop-file-utils: desktop entries"
 RECOMMENDED=""
@@ -35,26 +35,12 @@ pbs_config() {
 
 pbs_build() {
 	# all4 include UI
-	domake all4 OPTFLAGS=\"${CXXFLAGS}\"
-    # FIXME
-    # must run twice?
-	domake all4 OPTFLAGS=\"${CXXFLAGS}\"
+	domake all3
 }
 
 pbs_install() {
-	make install DEST_DIR="$destdir" DEST_HOME="/usr" DEST_SHARE=/usr/lib"$LIBDIRSUFFIX"  DEST_MAN="/usr/share/man"
-    # desktop
-    dodesktop "p7zip.desktop" GUI/p7zip_32.png
-    # kde
-    docp GUI/kde4/* "$destdir"/usr/share/kde4/services/ServiceMenus/
-    # help
-    find GUI/help -type d -exec chmod 755 {} \;
-    docp -r GUI/help "$destdir"/usr/lib"$LIBDIRSUFFIX"/p7zip/
-    # misc
-    cd "$destdir"
-    chmod -R u+w usr
-    # link
-    cd usr/lib"$LIBDIRSUFFIX"/p7zip
+	make install DEST_DIR="$destdir" DEST_HOME="/usr" DEST_SHARE=/usr/lib"$LIBDIRSUFFIX"/p7zip  DEST_MAN="/usr/share/man"
+    cd "$destdir"/usr/lib"$LIBDIRSUFFIX"/p7zip
 	doln 7zCon.sfx 7z.sfx
 }
 

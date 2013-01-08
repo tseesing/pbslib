@@ -17,7 +17,8 @@ CHECKSUM="80b181b02ab249524ec92822c0174cf7"
 RDEPEND=""
 BDEPEND=""
 
-OPTIONS="nostrip" # for backtraces, such as: valgrind will not work if glibc does not have debug symbols.
+# for backtraces, such as: valgrind will not work if glibc does not have debug symbols.
+OPTIONS="nostrip"
 
 INSTALL="$N-$V.install"
 

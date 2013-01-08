@@ -14,7 +14,7 @@ PACKAGER="chenqixing@ivali.com
 SRC_URI="http://librdf.org/dist/source/"$N-$V".tar.gz"
 CHECKSUM="ac60858b875aab8fa7917f21a1237aa9"
 
-RDEPEND="curl libxslt icu"
+RDEPEND="curl libxslt yajl"
 BDEPEND=""
 RECOMMENDED=""
 
@@ -23,7 +23,7 @@ pbs_unpack() {
 }
 
 pbs_config() {
-    confit+="--with-yajl=no --disable-static"
+    confit+="--disable-static"
 	doconfig
 }
 

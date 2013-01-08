@@ -11,12 +11,13 @@ LICENSE="LGPL"
 PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
 SRC_URI="http://ftp.gnome.org/pub/GNOME/sources/glib/"${V%.*}"/glib-"$V".tar.xz"
+CHECKSUM="a4ca31e258273c3761e3de2edd607661"
 
-RDEPEND="libffi zlib pcre"
+RDEPEND="elfutils libffi pcre"
 BDEPEND="pkgconfig"
 
 pbs_unpack() {
-        dounpack
+    dounpack
 }
 
 pbs_patch() {

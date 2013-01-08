@@ -3,7 +3,7 @@
 files="rluserman.info.gz readline.info.gz history.info.gz"
 
 post_install() {
-        doinstall_info $files
+    doinstall_info $files
 }       
 
 pre_remove() {

@@ -11,16 +11,19 @@ LICENSE="GPL2"
 PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
 SRC_URI="http://www.kernel.org/pub/linux/bluetooth/"$N-$V".tar.bz2"
+CHECKSUM="902b390af95c6c5d6d1a17d94c8344ab"
 
 RDEPEND="dbus systemd python"
 BDEPEND=""
 RECOMMENDED=""
 OPTIONAL="gstreamer0.10-base: bluetooth GStreamer support
           alsa-lib: Audio bluetooth devices support
-          python2-dbus: to run bluez-simple-agent
+          dbus-python: to run bluez-simple-agent
           python2-gobject: to run bluez-simple-agent
           libusb-compat: USB adapters support
           cups: CUPS backend"
+
+INSTALL="$N.install"
 
 pbs_unpack() {
     dounpack

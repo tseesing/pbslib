@@ -13,7 +13,7 @@ PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 SRC_URI="http://downloads.sourceforge.net/project/"$N"/"$N"/"$V"/"$N-$V".tar.bz2"
 CHECKSUM="8d15ba6280bb7ba2f4d6be31d28b3c0c"
 
-RDEPEND="gcc-lib lame libao libmad libvorbis"
+RDEPEND="gcc-libs lame libao libmad libvorbis"
 BDEPEND="gtkmm"
 
 pbs_unpack() {

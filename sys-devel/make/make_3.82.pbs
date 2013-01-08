@@ -8,9 +8,10 @@
 DESCRIPTION="Standard tool to compile source trees"
 HOMEPAGE="http://www.gnu.org/software/make/make.html"
 LICENSE="GPLv3"
-PACKAGER="StartOS Developers"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
 SRC_URI="http://ftp.gnu.org/pub/gnu/"$N"/"$N-$V".tar.bz2"
+CHECKSUM="1a11100f3c63fcf5753818e59d63088f"
 
 RDEPEND="glibc"
 BDEPEND=""
@@ -18,7 +19,7 @@ BDEPEND=""
 INSTALL="$N.install"
 
 pbs_unpack() {
-        dounpack
+    dounpack
 }
 
 pbs_patch() {

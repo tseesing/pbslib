@@ -45,8 +45,10 @@ pbs_config() {
 pbs_build() {
 	domake
     # default config
-    sed -i 's|/etc/sysconfig/libvirtd|/etc/default/libvirtd|' daemon/libvirtd.service
+    sed -i 's|/etc/sysconfig/libvirtd|/etc/default/libvirtd|' daemon/libvirtd.service 
     sed -i 's|/etc/sysconfig/libvirt-guests|/etc/default/libvirtd-guests|' tools/libvirt-guests.service
+    sed -i 's|/etc/sysconfig/virtlockd|/etc/default/virtlockd|' src/virtlockd.service
+    sed -i 's|@sbindir@|/usr/sbin|'  src/virtlockd.service
 }
 
 pbs_install() {

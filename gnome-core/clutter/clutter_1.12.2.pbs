@@ -11,14 +11,15 @@ LICENSE="LGPL"
 PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
 SRC_URI="http://ftp.gnome.org/pub/gnome/core/3.6/3.6.2/sources/"$N-$V".tar.xz"
+CHECKSUM="dce7b3bf85b39ca822d068470e5f5abb"
 
-RDEPEND="atk gdk-pixbuf json-glib libXcomposite libXi mesa pango"
+RDEPEND="atk gdk-pixbuf2 json-glib libXcomposite libXi mesa pango"
 BDEPEND="gobject-introspection"
 RECOMMENDED=""
 CONFLICT=""
 
 pbs_unpack() {
-        dounpack
+    dounpack
 }
 
 pbs_config() {

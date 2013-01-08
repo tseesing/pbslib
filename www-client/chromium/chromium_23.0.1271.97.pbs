@@ -51,9 +51,11 @@ pbs_config() {
     # Silence "identifier 'nullptr' is a keyword in C++11" warnings
     CFLAGS+=' -Wno-c++0x-compat'
     
+    chromiumdir=/usr/lib"$LIBDIRSUFFIX"/chromium
+    
     build/gyp_chromium --depth=. \
         -Dwerror= \
-        -Dlinux_sandbox_path=/usr/lib/chromium/chromium-sandbox \
+        -Dlinux_sandbox_path="$chromiumdir"/chromium-sandbox \
         -Dlinux_strip_binary=1 \
         -Dlinux_use_gold_binary=0 \
         -Dlinux_use_gold_flags=0 \
@@ -82,10 +84,10 @@ pbs_build() {
 pbs_install() {
 	mkdir -p "$destdir"
     # core 
-	install -D out/Release/chrome "${destdir}"/usr/lib/chromium/chromium
- 	install -Dm4755 -o root -g root out/Release/chrome_sandbox "${destdir}"/usr/lib/chromium/chromium-sandbox
-    cp out/Release/{*.pak,libffmpegsumo.so,nacl_helper{,_bootstrap}} out/Release/{libppGoogleNaClPluginChrome.so,nacl_irt_*.nexe} "$destdir"/usr/lib/chromium/
-	cp -a out/Release/locales "${destdir}"/usr/lib/chromium/
+	install -D out/Release/chrome "${destdir}"/"$chromiumdir"/chromium
+ 	install -Dm4755 -o root -g root out/Release/chrome_sandbox "${destdir}"/"$chromiumdir"/chromium-sandbox
+    cp out/Release/{*.pak,libffmpegsumo.so,nacl_helper{,_bootstrap}} out/Release/{libppGoogleNaClPluginChrome.so,nacl_irt_*.nexe} "$destdir"/"$chromiumdir"/
+	cp -a out/Release/locales "${destdir}"/"$chromiumdir"/
 	# man
 	dodoc LICENSE 
     install -Dm644 out/Release/chrome.1 "${destdir}"/usr/share/man/man1/chromium.1
@@ -99,10 +101,9 @@ pbs_install() {
     done
     # custom
 	cd "$destdir"
-    [[ $CARCH == i686 ]] && rm usr/lib/chromium/nacl_irt_x86_64.nexe
+    [[ $ARCH == i686 ]] && rm "$chromiumdir"/nacl_irt_x86_64.nexe
     install -m 0755 -D "$filesdir"/chromium.sh usr/bin/chromium
-	docp        "$filesdir"/default-preferences/settings.sol    usr/lib/chromium/
-	docp_rename "$filesdir"/default-preferences/"$N"-20.tar.bz2 usr/lib/chromium/"$N".tar.bz2
+	docp_rename "$filesdir"/default-preferences/"$N"-23.tar.bz2 "$chromiumdir"/"$N".tar.bz2
 	docp_rename "$filesdir"/chromium-conf  etc/default/chromium
 }
 

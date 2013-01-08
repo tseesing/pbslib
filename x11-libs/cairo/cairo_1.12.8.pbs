@@ -8,7 +8,7 @@
 DESCRIPTION="A vector graphics library with cross-device output support"
 HOMEPAGE="http://cairographics.org/"
 LICENSE="LGPL,MPL"
-PACKAGER="StartOS Developers "
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com> "
 
 SRC_URI="http://cairographics.org/releases/"$N-$V".tar.xz"
 

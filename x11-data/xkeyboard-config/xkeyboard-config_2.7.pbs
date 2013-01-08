@@ -9,7 +9,7 @@ DESCRIPTION="X keyboard configuration databas"
 HOMEPAGE="http://www.freedesktop.org/wiki/Software/XKeyboardConfig"
 GROUP="x11-data"
 LICENSE="custom"
-PACKAGER="StartOS Developers"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 YARCH="any"
 
 SRC_URI="http://xorg.freedesktop.org/releases/individual/data/"$N"/"$N-$V".tar.bz2"

@@ -4,19 +4,28 @@ post_install() {
 	name="$1"
 	version="$2"
 	depmod -a "$version"
-	update-initramfs -d -c -k "$version"
+    URAMFS_CMD=$(type -p update-initramfs)
+    if [ -n $URAMFS_CMD -a -x $URAMFS_CMD ]; then
+        ${URAMFS_CMD} -d -c -k "$version"
+    else
+        echo "Note: you should install \"initramfs-tools\" to generate the \"initrd.img\" file."
+    fi
+    unset URAMFS_CMD
 	# For grub
-	update-grub
+    UGRUB_CMD=$(type -p update-grub)
+    if [ -n ${UGRUB_CMD} -a -x ${UGRUB_CMD} ]; then
+            ${UGRUB_CMD}
+    else
+        echo "Note: you should install \"grub2\" , and executing command \"update-grub\" to update the grub2 configuration file."
+    fi
+    unset UGRUB_CMD 
 }       
 
 post_remove() {
 	name="$1"
 	version="$2"
 	rm /boot/initrd.img-"$version"         2>/dev/null
-	rm /var/lib/initramfs-tools/"$version" 2>/dev/null
-
-	# For grub
-	update-grub
+	rm /var/lib/initramfs-tools/"$version" 2>/dev/null ||true
 }
 
 post_upgrade() {

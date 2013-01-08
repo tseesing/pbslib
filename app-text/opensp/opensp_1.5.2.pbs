@@ -12,7 +12,7 @@ PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
  
 SRC_URI="http://download.sourceforge.net/openjade/OpenSP-"$V".tar.gz"
 
-RDEPEND="gcc-lib"
+RDEPEND="gcc-libs"
 BDEPEND="xmlto docbook-xsl"
 RECOMMENDED=""
 

@@ -1,0 +1,41 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="A tool to customize advanced GNOME 3 options."
+HOMEPAGE="https://live.gnome.org/GnomeTweakTool"
+LICENSE="GPL"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
+YARCH="any"
+
+SRC_URI="http://download.gnome.org/sources/$N/${V:0:3}/$N-$V.tar.xz"
+CHECKSUM="8ce5fe961f14bd886f3d23b49797bdabf3577507576e0bd004dfb962a2f1afa8"
+
+RDEPEND="gnome-settings-daemon pygobject3"
+RECOMMENDED=""
+BDEPEND="intltool"
+OPTIONAL=""
+CONFLICT=""
+REPLACE=""
+
+INSTALL="$N.install"
+
+pbs_unpack() {
+    dounpack
+}
+
+pbs_config() {
+	config+=""
+	doconfig
+}
+
+pbs_build() {
+	domake
+}
+
+pbs_install() {
+	domkinstall
+}

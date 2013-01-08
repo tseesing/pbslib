@@ -13,7 +13,7 @@ PACKAGER="chenqixing@ivali.com"
 SRC_URI="http://switch.dl.sourceforge.net/sourceforge/freeassociation/"$N-$V".tar.gz"
 CHECKSUM="e549f434d5fbf9cd156c60ed4943618f"
 
-RDEPEND="gcc-lib"
+RDEPEND="gcc-libs"
 BDEPEND=""
 RECOMMENDED=""
 

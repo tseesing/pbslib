@@ -17,12 +17,12 @@ RDEPEND="glibc"
 BDEPEND=""
 
 pbs_unpack() {
-        dounpack
+    dounpack
 }
 
 pbs_config() {
 	config="--prefix=/usr --libdir=/usr/lib"$LIBDIRSUFFIX""
-	doconfig
+    doconfig
 }
 
 pbs_build() {

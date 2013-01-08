@@ -8,7 +8,7 @@
 DESCRIPTION="Fallback theme for the freedesktop icon theme specification"
 HOMEPAGE="http://icon-theme.freedesktop.org/wiki/HicolorTheme"
 LICENSE="GPL"
-PACKAGER="StartOS Developers"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 YARCH="any"
  
 SRC_URI="http://icon-theme.freedesktop.org/releases/"$N-$V".tar.gz"

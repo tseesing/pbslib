@@ -39,9 +39,9 @@ lapack_install() {
     cd "$srcdir"
 
     for libname in liblapack libtmglib; do
-        docp build/lib/"${libname}".so "$destdir"/usr/lib/
-        ln -sf liblapack.so "$destdir"/usr/lib/"${libname}".so."$V"
-        ln -sf liblapack.so "$destdir"/usr/lib/"${libname}".so.3
+        docp build/lib/"${libname}".so "$destdir"/usr/lib"$LIBDIRSUFFIX"/
+        ln -sf liblapack.so "$destdir"/usr/lib"$LIBDIRSUFFIX"/"${libname}".so."$V"
+        ln -sf liblapack.so "$destdir"/usr/lib"$LIBDIRSUFFIX"/"${libname}".so.3
     done
 
     docp build/bin/* "$destdir"/usr/bin/
@@ -55,9 +55,9 @@ blas_install() {
     
     cd "$srcdir"
 
-    docp build/lib/libblas.so "${destdir}"/usr/lib/
-    ln -sf libblas.so "${destdir}"/usr/lib/libblas.so."$V"
-    ln -sf libblas.so "${destdir}"/usr/lib/libblas.so.3
+    docp build/lib/libblas.so "${destdir}"/usr/lib"$LIBDIRSUFFIX"/
+    ln -sf libblas.so "${destdir}"/usr/lib"$LIBDIRSUFFIX"/libblas.so."$V"
+    ln -sf libblas.so "${destdir}"/usr/lib"$LIBDIRSUFFIX"/libblas.so.3
     dodoc LICENSE
 }
 

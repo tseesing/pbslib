@@ -8,9 +8,10 @@
 DESCRIPTION="GNU Unifont - a Pan-Unicode X11 bitmap iso10646 font"
 HOMEPAGE="http://unifoundry.com/unifont.html"
 LICENSE="GPLv2"
-PACKAGER="StartOS Developers"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
 SRC_URI="http://unifoundry.com/"$N-$V".ttf.gz"
+CHECKSUM="708a693e340902779ec9ad13acae279a"
 
 RDEPEND=""
 RECOMMENDED=""
@@ -20,6 +21,6 @@ INSTALL="$N.install"
 pbs_install() {
 	cp "$YBS_SOURCE"/"$N-$V".ttf.gz .
 	gunzip "$N-$V".ttf.gz
-	docp unifont-5.1.20080907.ttf "$destdir"/usr/share/fonts/unifont
+	docp_rename unifont-5.1.20080907.ttf "$destdir"/usr/share/fonts/unifont/unifont.ttf
 }
 

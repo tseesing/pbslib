@@ -9,7 +9,7 @@ DESCRIPTION="X.Org XF86DGA protocol headers"
 HOMEPAGE="http://xorg.freedesktop.org/"
 GROUP="x11-proto"
 LICENSE="custom"
-PACKAGER="StartOS Developers"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 YARCH="any"
 
 SRC_URI="http://xorg.freedesktop.org/releases/individual/proto/"$N-$V".tar.bz2"

@@ -11,7 +11,7 @@ LICENSE="GPL"
 PACKAGER="StartOS Developers"
 YARCH="any"
 
-RDEPEND="make automake autoconf patch intltool pkgconfig gcc gcc-dev glibc-dev glib2-dev gdk-pixbuf-dev m4 linux-headers linux-kernel-headers"
+RDEPEND="make automake autoconf patch intltool pkgconfig gcc m4 linux-headers linux-kernel-headers gettext"
 BDEPEND=""
 RECOMMENDED=""
 CONFLICT=""

@@ -13,7 +13,7 @@ PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 SRC_URI="http://nmap.org/dist/$N-$V.tar.bz2"
 CHECKSUM="769943a1a5c10f67bf9738e26da42b3312db752f"
 
-RDEPEND="pcre openssl libpcre lua"
+RDEPEND="pcre openssl pcre lua"
 RECOMMENDED=""
 BDEPEND="pygtk"
 OPTIONAL="pygtk: zenmap" 

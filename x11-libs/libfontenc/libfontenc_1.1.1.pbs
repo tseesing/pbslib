@@ -8,7 +8,7 @@
 DESCRIPTION="X11 font encoding library"
 HOMEPAGE="http://www.x.org/wiki/"
 LICENSE="custom"
-PACKAGER="StartOS Developers"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 GROUP="x11-lib"
  
 SRC_URI="http://xorg.freedesktop.org/releases/individual/lib/"$N-$V".tar.bz2"

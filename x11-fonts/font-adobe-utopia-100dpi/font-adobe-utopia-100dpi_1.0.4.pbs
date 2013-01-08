@@ -10,7 +10,7 @@ HOMEPAGE="http://www.x.org/wiki/"
 GROUP="x11-fonts"
 YARCH="any" 
 LICENSE="custom"
-PACKAGER="StartOS Developers"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
 SRC_URI="http://xorg.freedesktop.org/releases/individual/font/"$N-$V".tar.bz2"
 

@@ -12,7 +12,8 @@ PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
 SRC_URI="http://linuxtv.org/downloads/"$N"/"$N-$V".tar.bz2"
 
-RDEPEND="gcc-lib libjpeg-turbo"
+RDEPEND="gcc-libs libjpeg-turbo sysfsutils"
+OPTIONAL="qt"
 
 pbs_unpack() {
     dounpack
@@ -24,7 +25,9 @@ pbs_build() {
 
 pbs_install() {
     domkinstall PREFIX=/usr LIBDIR=/usr/lib"$LIBDIRSUFFIX"
-	#rm "$destdir"/usr/bin/qv4l2 "$destdir"/usr/share/applications/qv4l2.desktop	
+    cd "$destdir"
+	rm usr/bin/qv4l2 usr/share/applications/qv4l2.desktop	
+    rm usr/bin/ivtv-ctl
+    domv lib/udev usr/lib/
 }
-
 

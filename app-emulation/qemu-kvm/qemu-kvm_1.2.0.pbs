@@ -50,7 +50,7 @@ pbs_install() {
 	# Fix man page
 	mv usr/share/man/man1/qemu.1 usr/share/man/man1/qemu-kvm.1
 	# Install udev rules
-    install -D -m644 "$filesdir"/65-kvm.rules lib/udev/rules.d/65-kvm.rules
+    docp "$filesdir"/65-kvm.rules usr/lib/udev/rules.d/
     # strip scripts directory
     find usr/bin -type f -perm -u+w 2>/dev/null | while read binary ; do
         case "$(file -bi "$binary")" in

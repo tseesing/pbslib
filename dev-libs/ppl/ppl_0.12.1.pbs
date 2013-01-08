@@ -24,7 +24,7 @@ pbs_unpack() {
 
 pbs_config() {
 	config+=""
-	doconfig
+	doconfig --enable-interfaces=\"c,cxx\"
 }
 
 pbs_build() {

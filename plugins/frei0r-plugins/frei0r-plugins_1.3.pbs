@@ -12,7 +12,7 @@ PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
 SRC_URI="http://ftp.dyne.org/frei0r/releases/"$N-$V".tar.gz"
 
-RDEPEND="gavl gcc-lib"
+RDEPEND="gavl gcc-libs"
 RECOMMENDED=""
 BDEPEND=""
 CONFLICT=""

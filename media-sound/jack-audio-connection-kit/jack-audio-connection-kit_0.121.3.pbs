@@ -14,9 +14,8 @@ SRC_URI="http://jackaudio.org/downloads/"$N-$V".tar.gz"
 
 RDEPEND="libsamplerate readline"
 BDEPEND=""
-RECOMMENDED="libffado celt"
-OPTIONAL="libffado: FireWire support
-          celt: NetJACK driver"
+RECOMMENDED="celt"
+OPTIONAL="celt: NetJACK driver"
 
 pbs_unpack() {
     dounpack

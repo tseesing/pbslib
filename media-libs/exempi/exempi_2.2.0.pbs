@@ -13,8 +13,8 @@ PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 SRC_URI="http://libopenraw.freedesktop.org/download/"$N-$V".tar.bz2"
 CHECKSUM="f46d96975613593ee17aaf48cd350228"
 
-RDEPEND="expat gcc-lib zlib"
-BDEPEND="boost-dev"
+RDEPEND="expat gcc-libs zlib"
+BDEPEND="boost"
 RECOMMENDED=""
 
 pbs_unpack() {

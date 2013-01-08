@@ -11,9 +11,10 @@ LICENSE="GPL2"
 PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
 SRC_URI="http://www.iptables.org/projects/"$N"/files/"$N-$V".tar.bz2"
+CHECKSUM="57220bb26866a713073e5614f88071fc"
 
-RDEPEND="glibc bash libnfnetlink"
-BDEPEND=""
+RDEPEND="glibc bash"
+BDEPEND="linux-kernel-headers"
 RECOMMENDED=""
 
 pbs_unpack() {
@@ -41,6 +42,7 @@ pbs_install() {
 	docp "$filesdir"/{empty.rules,simple_firewall.rules} etc/iptables/
 	docp "$filesdir"/empty-{filter,mangle,nat,raw,security}.rules var/lib/iptables
 	# install systemd files
-	dounit iptables.service ip6tables.service iptables-flush
+	dounit iptables.service ip6tables.service 
+    docp "$filesdir"/iptables-flush usr/lib/systemd/system/scripts
 }
 

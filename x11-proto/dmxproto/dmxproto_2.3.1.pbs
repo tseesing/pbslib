@@ -9,7 +9,7 @@ DESCRIPTION="X.Org DMX protocol headers"
 HOMEPAGE="http://xorg.freedesktop.org/"
 LICENSE="custom"
 GROUP="x11-proto"
-PACKAGER="StartOS Developers"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 YARCH="any"
 
 SRC_URI="http://xorg.freedesktop.org/releases/individual/proto/"$N-$V".tar.bz2"

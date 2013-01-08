@@ -13,7 +13,7 @@ PRIORITY="required"
 
 SRC_URI="git://git.ylmf.com/"$N".git"
 
-RDEPEND="libarchive(>=3.0.4) curl pcre sqlite" 
+RDEPEND="libarchive(>=3.0.4) curl pcre sqlite rtmpdump nettle"  
 BDEPEND=""
 
 INSTALL="$N.install"

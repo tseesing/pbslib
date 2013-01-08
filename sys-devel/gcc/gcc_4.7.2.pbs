@@ -15,6 +15,8 @@ CHECKSUM="cc308a0891e778cfda7a151ab8a6e762"
 
 PROVIDE="gcc-libs gcc"
 
+BDEPEND="glibc gmp libmpc mpfr ppl cloog zlib"
+
 pbs_unpack() {
     dounpack
 }
@@ -56,7 +58,7 @@ pbs_config() {
              --disable-build-with-cxx 	
              --disable-build-poststage1-with-cxx
              --enable-checking=release 
-             --disable-multilib "
+             --disable-multilib"
 	
 	case "$ARCH" in 
 	    i?86) CHOST="$ARCH"-pc-linux-gnu ;;
@@ -75,7 +77,6 @@ pbs_build() {
 gcc-libs_install() {
 	DESCRIPTION="Runtime libraries shipped by GCC"
 	RDEPEND="glibc"
-	BDEPEND=""
 	INSTALL="$N.install"
 	OPTIONS="nodev"
 	
@@ -105,7 +106,6 @@ gcc-libs_install() {
 gcc_install() {
 	DESCRIPTION="The GNU Compiler Collection frontends C C++, etc."
 	RDEPEND="gcc-libs glibc gmp libmpc mpfr ppl cloog zlib"
-	BDEPEND=""
 	INSTALL="$N.install"
 	
 	domkinstall || die "make install failed."

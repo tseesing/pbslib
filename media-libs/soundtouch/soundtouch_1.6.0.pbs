@@ -13,7 +13,7 @@ PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 SRC_URI="http://www.surina.net/"$N"/"$N-$V".tar.gz"
 CHECKSUM="aa1c63d4d67b033f044a6a48d2be5bdd"
 
-RDEPEND="gcc-lib"
+RDEPEND="gcc-libs"
 RECOMMENDED=""
 BDEPEND=""
 OPTIONAL=""

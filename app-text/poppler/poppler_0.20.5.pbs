@@ -37,7 +37,7 @@ pbs_build() {
 
 poppler_install() {
 	DESCRIPTION="PDF rendering library based on the xpdf-3.0"
-	RDEPEND="fontconfig gcc-lib lcms libpng libxml2 cairo poppler-data"
+	RDEPEND="fontconfig gcc-libs lcms libpng libxml2 cairo poppler-data"
 	
     sed -e 's/^glib_subdir =.*/glib_subdir =/' -e 's/^qt4_subdir =.*/qt4_subdir =/' -i Makefile
     domkinstall
