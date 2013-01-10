@@ -9,16 +9,18 @@ DESCRIPTION="Small but powerful ftp client"
 COMMENTS="LFTP is sophisticated ftp/http client, file transfer program supporting a number of network protocols. Like BASH, it has job control and uses readline library for input. It has bookmarks, built-in mirror, can transfer several files in parallel. It was designed with reliability in mind."
 HOMEPAGE="http://lftp.yar.ru/"
 LICENSE="GPL"
-PACKAGER="StartOS Developers"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
 SRC_URI="http://ftp.yars.free.net/pub/source/"$N"/"$N-$V".tar.xz"
+CHECKSUM="b057e3e01686a200c35753c3496c2130"
 
-RDEPEND="expat gnutls"
+RDEPEND="expat gnutls readline"
 BDEPEND=""
 RECOMMENDED=""
+OPITIONAL="perl: needed for convert-netscape-cookies and verify-file"
 
 pbs_unpack() {
-        dounpack
+    dounpack
 }
 
 pbs_patch() {
@@ -26,7 +28,7 @@ pbs_patch() {
 }
 
 pbs_config() {
-	config+=""
+	config+="--disable-static"
 	doconfig
 }
 

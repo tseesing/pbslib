@@ -1,6 +1,6 @@
 . /usr/lib/ybs/funcs
 
-dir="/usr/share/fonts/75dpi"
+dir="/usr/share/fonts/X11/75dpi"
 
 post_install() {
 	dofont "$dir"

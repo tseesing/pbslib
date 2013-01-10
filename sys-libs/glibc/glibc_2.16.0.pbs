@@ -77,6 +77,7 @@ pbs_install() {
 	docp "$filesdir"/SUPPORTED  usr/share/i18n
 	doln /usr/include/utime.h usr/include/sys/utime.h
     doln /usr/share/locale usr/lib/locale
+    doln /usr/share/locale usr/lib"$LIBDIRSUFFIX"/locale
 	# Remove default localtime 
 	rm -rf etc/localtime
 	# 

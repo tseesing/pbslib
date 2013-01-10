@@ -4,7 +4,7 @@ pre_install() {
     #
 	# Make required directories.
     #
-    for d in boot dev etc home mnt usr var opt srv/http run; do
+    for d in boot dev etc home media mnt usr var opt srv/http run; do
         install -d -m755 /${d}
     done
     install -d -m555 /proc
@@ -34,7 +34,7 @@ pre_install() {
     done
     # setup /usr/local hierarchy
     for d in bin etc games include lib man sbin share src; do
-        install -d -m755 usr/local/${d}
+        install -d -m755 /usr/local/${d}
     done
     ln -sf ../man /usr/local/share/man
     #

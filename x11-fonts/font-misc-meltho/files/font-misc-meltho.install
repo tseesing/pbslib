@@ -1,6 +1,6 @@
 . /usr/lib/ybs/funcs
 
-dir="/usr/share/fonts/OTF"
+dir="/usr/share/fonts/X11/OTF"
 
 post_install() {
 	dofont "$dir" 

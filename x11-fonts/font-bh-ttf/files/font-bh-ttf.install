@@ -1,6 +1,6 @@
 . /usr/lib/ybs/funcs
 
-dir="/usr/share/fonts/TTF"
+dir="/usr/share/fonts/X11/TTF"
 
 post_install() {
 	dofont "$dir"

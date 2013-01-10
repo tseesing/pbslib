@@ -1,6 +1,6 @@
 . /usr/lib/ybs/funcs
 
-dir="/usr/share/fonts/misc"
+dir="/usr/share/fonts/X11/misc"
 
 post_install() {
 	dofont "$dir"

@@ -23,7 +23,7 @@ OPTIONAL="cryptsetup: required for encrypted block devices
           py2cairo: systemd-analyze
           pygobject3: systemd-analyze"
 
-INSTALL="$N-$V.install"
+INSTALL="$N.install"
 
 pbs_unpack() {
     dounpack

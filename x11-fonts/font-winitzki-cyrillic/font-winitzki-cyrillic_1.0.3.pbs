@@ -20,11 +20,11 @@ BDEPEND="font-util mkfontdir mkfontscale"
 INSTALL="$N.install"
 
 pbs_unpack() {	
-        dounpack
+    dounpack
 }
 
 pbs_config() {
-	config+="--with-fontrootdir=/usr/share/fonts"
+	config+=""
 	doconfig
 }
 

@@ -1,42 +1,26 @@
 . /usr/lib/ybs/funcs
 
+gname="vboxusers"
+unit="virtualbox.service"
+
 post_install() {
-	dogroupadd -r "vboxusers"
-	
-	# add users to vboxusers
-	for user in $(who |awk '{print $1}' |sort -u |xargs); do
-		/usr/sbin/usermod -aG "vboxusers"  "$user"
+	dogroupadd -r $gname
+	# Add users to vboxusers group
+	for user in $(who |awk '{print $1}' |grep -v ^root$ |sort -u |xargs); do
+		usermod -aG $gname $user
 	done
-	
-	gnome2_desktop_database_update
-	gnome2_gconfd_reload
-	
 	# 
-	rmmod vboxpci    2>/dev/null
-	rmmod vboxnetflt 2>/dev/null
-	rmmod vboxnetadp 2>/dev/null
-	rmmod vboxdrv    2>/dev/null
-	modprobe vboxdrv
-	modprobe vboxnetflt
-	modprobe vboxnetadp
-	modprobe vboxpci
-
+    for ko in vboxpci vboxnetflt vboxnetadp vboxdrv; do
+	    rmmod $ko 2>/dev/null
+	    modprobe $ko
+    done
 	#
-	systemctl enable virtualbox.service
-
-	return 0
+	systemctl enable $unit || true
 }       
 
 post_upgrade() {
-	#
-	gnome2_desktop_database_update
-	gnome2_gconfd_reload
-
-	#
 	systemctl --system daemon-reload
-	restart virtualbox.service
-
-	return 0
+	restart $unit ||return 0
 }
 
 post_downgrade() {
@@ -44,12 +28,11 @@ post_downgrade() {
 }
 
 pre_remove() {
-	#
-	systemctl disable virtualbox.service
+	systemctl disable $unit
+	stop $unit ||return 0
+}
 
-	#
-	stop virtualbox.service
-
-	return 0
+post_remove() {
+    dogroupdel $gname ||true
 }
 

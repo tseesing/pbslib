@@ -13,11 +13,11 @@ PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
 SRC_URI="http://xorg.freedesktop.org/releases/individual/app/"$N-$V".tar.bz2"
 
-RDEPEND="libX11"
+RDEPEND="libX11 xauth"
 BDEPEND=""
 
 pbs_unpack() {
-        dounpack
+    dounpack
 }
 
 pbs_config() {
@@ -31,7 +31,6 @@ pbs_build() {
 pbs_install() {
 	domkinstall
 	dodoc COPYING
-
 	cd "$destdir"
 	domv usr/lib"$LIBDIRSUFFIX"/X11/xinit etc/X11
 	doln /etc/X11/xinit    usr/lib"$LIBDIRSUFFIX"/X11

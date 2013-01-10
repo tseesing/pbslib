@@ -8,10 +8,10 @@
 DESCRIPTION="install build-essential packages"
 HOMEPAGE="www.startos.org"
 LICENSE="GPL"
-PACKAGER="StartOS Developers"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 YARCH="any"
 
-RDEPEND="make automake autoconf patch intltool pkgconfig gcc m4 linux-headers linux-kernel-headers gettext"
+RDEPEND="binutils make automake autoconf patch intltool pkgconfig gcc m4 linux-headers linux-kernel-headers gettext autogen"
 BDEPEND=""
 RECOMMENDED=""
 CONFLICT=""

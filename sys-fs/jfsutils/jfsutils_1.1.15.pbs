@@ -8,17 +8,17 @@
 DESCRIPTION="IBM's Journaling Filesystem (JFS) Utilities"
 HOMEPAGE="http://jfs.sourceforge.net/"
 LICENSE="GPL"
-PACKAGER="StartOS Developers"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
 SRC_URI="http://jfs.sourceforge.net/project/pub/"$N-$V".tar.gz"
 CHECKSUM="291e8bd9d615cf3d27e4000117c81a3602484a50"
 
-RDEPEND="util-linux-ng"
+RDEPEND="util-linux"
 BDEPEND=""
 RECOMMENDED=""
 
 pbs_unpack() {
-        dounpack
+    dounpack
 }
 
 pbs_config() {

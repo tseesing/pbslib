@@ -51,11 +51,11 @@ pbs_config() {
     # Silence "identifier 'nullptr' is a keyword in C++11" warnings
     CFLAGS+=' -Wno-c++0x-compat'
     
-    chromiumdir=/usr/lib"$LIBDIRSUFFIX"/chromium
+    chromiumdir=usr/lib"$LIBDIRSUFFIX"/chromium
     
     build/gyp_chromium --depth=. \
         -Dwerror= \
-        -Dlinux_sandbox_path="$chromiumdir"/chromium-sandbox \
+        -Dlinux_sandbox_path=/"$chromiumdir"/chromium-sandbox \
         -Dlinux_strip_binary=1 \
         -Dlinux_use_gold_binary=0 \
         -Dlinux_use_gold_flags=0 \

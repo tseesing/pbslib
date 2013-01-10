@@ -30,6 +30,5 @@ pbs_build() {
 
 pbs_install() {
 	domkinstall
-	mkdir -p "$destdir"/etc/ybs.conf.d/
 }
 

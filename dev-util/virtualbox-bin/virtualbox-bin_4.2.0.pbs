@@ -8,12 +8,14 @@
 DESCRIPTION="Softwarefamily of powerful x86 virtualizatio (binary version)"
 HOMEPAGE="http://www.virtualbox.org/"
 LICENSE="GPL"
-PACKAGER="StartOS Developers"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
 SRC_URI="http://download.virtualbox.org/virtualbox/"$V"/VirtualBox-"$V"-80737-Linux_x86.run"
 CHECKSUM="61425335a2c07ea59dd9acfc53cae101"
 
 PROVIDE="virtualbox-bin virtualbox-bin-kernel-source virtualbox-bin-kernel-module virtualbox-guest-additions"
+
+BDEPEND="bin86 dev86 acpica linux-kernel-headers"
 
 pbs_unpack() {
 	runfile=""$(basename $SRC_URI)""
@@ -30,7 +32,6 @@ pbs_unpack() {
 virtualbox-bin_install() {
 	DESCRIPTION="Softwarefamily of powerful x86 virtualizatio (binary version)"
 	RDEPEND="virtualbox-bin-kernel-module(=4.2.0) glib2 libsdl libXcursor libXinerama libXmu python"
-	BDEPEND="bin86 dev86 acpica"
 	OPTIONS="nodev"
 	INSTALL="$N.install"
 	DESKTOPFILE="virtualbox.desktop"
@@ -104,7 +105,6 @@ virtualbox-bin_install() {
 virtualbox-bin-kernel-module_install() {
 	DESCRIPTION="virutalbox kernel modules"
 	RDEPEND="linux-kernel(=3.4.6-r2)"
-	BDEPEND="linux-kernel-headers"
 	GROUP="driver"
 	INSTALL="$N.install"
 

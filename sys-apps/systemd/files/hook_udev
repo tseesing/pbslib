@@ -29,7 +29,7 @@ copy_exec /usr/bin/udevd  /usr/bin/
 
 # Copy udev configuration
 mkdir -p ${DESTDIR}/etc/udev
-cp -p /etc/udev/udev.conf ${DESTDIR}/etc/udev
+cp -p /etc/udev/{udev.conf,hwdb.bin} ${DESTDIR}/etc/udev
 
 # Only copy across relevant rules
 mkdir -p ${DESTDIR}/usr/lib/udev/rules.d

@@ -160,7 +160,7 @@ pbs_build() {
 
 grub-common_install() {
     DESCRIPTION="GNU GRand Unified Bootloader - Utilities and Common Files"
-    RDEPEND="xz freetype gettext device-mapper fuse"
+    RDEPEND="xz freetype device-mapper fuse"
     BDEPEND=""
     RECOMMENDED=""
     INSTALL="$N.install"

@@ -1,0 +1,42 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="A session manager for Xfce"
+HOMEPAGE="http://xfce.org"
+LICENSE="GPLv2"
+PACKAGER="StartOS Developers"
+
+SRC_URI="http://archive.xfce.org/xfce/4.10/src/"$N-$V".tar.bz2"
+CHECKSUM="4768e1a41a0287af6aad18b329a0f230"
+
+RDEPEND="libgnome-keyring libwnck libxfce4ui"
+RECOMMENDED=""
+BDEPEND=""
+OPTIONAL=""
+CONFLICT=""
+
+INSTALL="$N.install"
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_config() {
+	config+="--disable-static 
+	         --enable-libgnome-keyring
+	         --disable-debug"
+	doconfig
+}
+
+pbs_build() {
+	domake
+}
+
+pbs_install() {
+	domkinstall
+}
+

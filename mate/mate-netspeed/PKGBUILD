@@ -1,0 +1,39 @@
+# Maintainer: Giovanni "Talorno" Ricciardi <kar98k.sniper@gmail.com>
+pkgname=mate-netspeed
+pkgver=1.4.0
+pkgrel=1
+pkgdesc=""
+arch=('i686' 'x86_64')
+url="http://mate-desktop.org"
+license=('GPL')
+groups=()
+depends=(	'mate-panel'
+               'expat'
+               'libgtop>=2'
+               'gtk2'
+               'libmate'
+               'mate-conf'
+               'libmatecomponent'
+               'libmatecomponentui'
+               'libmatecanvas'
+               'mate-doc-utils'
+               'gnome-doc-utils'
+               'wireless_tools'
+               'mate-common')
+               
+install=$pkgname.install
+source=(http://pub.mate-desktop.org/releases/1.4/$pkgname-$pkgver.tar.xz)
+sha256sums=('e78a189cbd95664a90bee428ce7fdb3dfeb7b3bf141f94b4061a98b990a89549') 
+
+build() {
+cd $srcdir/$pkgname-$pkgver
+ 
+  ./autogen.sh LDFLAGS="-lm" --prefix=/usr --sysconfdir=/etc --localstatedir=/var --libexecdir=/usr/lib/$pkgname \
+  --disable-static --disable-scrollkeeper
+  make
+}
+
+package() {
+  cd "$srcdir/$pkgname-$pkgver"
+  make DESTDIR="$pkgdir/" install
+}

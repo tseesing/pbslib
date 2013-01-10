@@ -1,6 +1,6 @@
 . /usr/lib/ybs/funcs
 
-dir="/usr/share/fonts/cyrillic"
+dir="/usr/share/fonts/X11/cyrillic"
 
 post_install() {
 	dofont "$dir"
