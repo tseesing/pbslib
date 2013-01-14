@@ -7,10 +7,13 @@ post_install() {
 	douseradd -r -u 84 -g "$gname" -d / -s /bin/false -c "$gname" "$gname" 
 	
 	# Systemd unit
-	#systemctl enable avahi-daemon.service
+    # Note: avahi-daemon starts at boot time 
+    # remount desktop (e.g. vinagre) requires.
+    #
+	systemctl enable avahi-daemon.service
 	#systemctl enable avahi-dnsconfd.service
 	
-	#start avahi-daemon
+	start avahi-daemon
 	#start avahi-dnsconfd
 
 	return 0
@@ -18,9 +21,8 @@ post_install() {
 
 pre_remove() {
 	# Systemd unit
-	#systemctl disable avahi-daemon.service
+	systemctl disable avahi-daemon.service
 	#systemctl disable avahi-dnsconfd.service
-
 	return 0
 }
 

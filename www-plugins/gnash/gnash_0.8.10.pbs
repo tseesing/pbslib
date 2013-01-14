@@ -8,18 +8,18 @@
 DESCRIPTION="the GNU SWF Player based on GameSWF."
 HOMEPAGE="http://www.gnu.org/software/gnash/"
 LICENSE="GPL"
-PACKAGER="StartOS Developers"
+PACKAGER="Zhongxin Huang <huangzhonxin@ivali.com>"
 
 SRC_URI="ftp://ftp.gnu.org/gnu/"$N"/"$V"/"$N-$V".tar.bz2"
 CHECKSUM="63e9f79c41d93d48c5a2fa94856548c4"
 
-RDEPEND="agg boost-libs curl giflib gst-plugins-base gtkglext libtool"
-BDEPEND=""
+RDEPEND="agg boost-libs curl giflib gst-plugins-base0.10 gtkglext libtool"
+BDEPEND="libtool mesa glu speex gtk2 pkgconfig boost"
 RECOMMENDED=""
 CONFLICT=""
 
 pbs_unpack() {
-        dounpack
+    dounpack
 }
 
 pbs_patch() {
@@ -28,7 +28,11 @@ pbs_patch() {
 }
 
 pbs_config() {
-	config+="--with-plugins-install=system --enable-gui=sdl,gtk,dump --enable-media=gst --enable-renderer=all --enable-device=x11"
+	config+="--with-plugins-install=system 
+             --enable-gui=sdl,gtk,dump 
+             --enable-media=gst 
+             --enable-renderer=all 
+             --enable-device=x11"
 	./autogen.sh
 	doconfig
 }

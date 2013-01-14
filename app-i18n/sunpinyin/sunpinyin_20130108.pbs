@@ -8,19 +8,19 @@
 DESCRIPTION="A statistical language model based Chinese input method, input method engine backend"
 HOMEPAGE="http://code.google.com/p/sunpinyin/"
 LICENSE="LGPL,CDDL"
-PACKAGER="StartOS Developers"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
 SRC_URI="git://github.com/sunpinyin/sunpinyin.git"
 
-RDEPEND="gcc-lib glibc python sqlite"
-BDEPEND="scons"
+RDEPEND="gcc-libs sqlite"
+BDEPEND="scons git intltool"
 
 pbs_unpack() {
-        dounpack
+    dounpack
 }
 
 pbs_config(){
-	config="--prefix=/usr"
+	config="--prefix=/usr --libdir=/usr/lib$LIBDIRSUFFIX"
 	doconfig
 }
 
@@ -29,6 +29,6 @@ pbs_build() {
 }
 
 pbs_install() {
-	domkinstall
+	domkinstall 
 }
 

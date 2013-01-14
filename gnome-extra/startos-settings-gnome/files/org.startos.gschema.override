@@ -1,0 +1,34 @@
+# This file is part of the 'startos-settings-gnome' packaging and should not be changed.
+# 
+# StartOS defaut settings for Gnome3
+#
+
+[org.gnome.desktop.background]
+# Desktop backgound file
+picture-uri='file:///usr/share/backgrounds/startos-desktop.jpg'
+# File manager handle the desktop  
+#show-desktop-icons=true
+
+[org.gnome.shell]
+favorite-apps=['chromium.desktop', 'nautilus.desktop', 'gnome-terminal.desktop', 'gedit.desktop']
+always-show-log-out=true
+enabled-extensions=['drive-menu@gnome-shell-extensions.gcampax.github.com', 'windowlist@startos.org', 'advancedvolumemixer@startos.org']
+
+[org.gnome.desktop.interface]
+# Whether the clock displays in 24h or 12h format
+clock-format='24h'
+# Show date in clock
+clock-show-date=true
+
+[org.gnome.desktop.wm.keybindings]
+# Hide all normal windows shotcut: Ctrl+Alt+d
+show-desktop=['<Primary><Alt>d']
+
+[org.gnome.desktop.input-sources]
+show-all-sources=true
+sources=[('xkb', 'us'), ('ibus', 'pinyin')]
+
+[org.gnome.system.smb]
+# SMB workgroup
+workgroup='StartOS'
+

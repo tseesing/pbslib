@@ -5,23 +5,23 @@
 # Distributed under the terms of the GNU General Public License v2
 #
 
-DESCRIPTION="Light pictures viewer."
-HOMEPAGE="www.lxde.org"
+DESCRIPTION="Light pictures viewer"
+HOMEPAGE="http://sourceforge.net/projects/lxde/"
 LICENSE="GPL"
-PACKAGER="StartOS Developers"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
 SRC_URI="http://sourceforge.net/projects/lxde/files/GPicView%20%28image%20Viewer%29/GpicView%20"$V"/"$N-$V".tar.gz"
+CHECKSUM="bca9ffe1d283ed3dbb13bada7feb7e89"
 
-RDEPEND="gtk+"
+RDEPEND="gtk2"
 BDEPEND="m4"
-
-INSTALL="$N.install"
 
 pbs_unpack() {
 	dounpack
 }
 
 pbs_config() {
+    config+=""
 	doconfig
 }
 
@@ -34,5 +34,4 @@ pbs_install() {
 	## FIXME!
 	sed -i 's/Utility;//g' "$destdir"/usr/share/applications/gpicview.desktop
 }
-
 

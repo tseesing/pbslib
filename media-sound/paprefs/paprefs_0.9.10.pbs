@@ -8,18 +8,21 @@
 DESCRIPTION="A simple GTK-based configuration dialog for PulseAudio"
 HOMEPAGE="http://0pointer.de/lennart/projects/paprefs"
 LICENSE="GPL"
-PACKAGER="StartOS Developers"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
 SRC_URI="http://freedesktop.org/software/pulseaudio/"$N"/"$N-$V".tar.xz"
+CHECKSUM="261c5a67543f2d0c019894fb933949f6ee7c5e181808e1e9565f0784961eabb0"
 
-RDEPEND="gconfmm libglademm pulseaudio"
+RDEPEND="gconfmm libglademm pulseaudio pulseaudio libsigc++"
 RECOMMENDED=""
-BDEPEND=""
-
-INSTALL="$N.install"
+BDEPEND="intltool"
 
 pbs_unpack() {
-        dounpack
+    dounpack
+}
+
+pbs_patch() {
+    dopatch do-not-require-recompile.patch
 }
 
 pbs_config() {
@@ -34,5 +37,4 @@ pbs_build() {
 pbs_install() {
 	domkinstall
 }
-
 

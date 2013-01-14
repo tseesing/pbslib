@@ -7,24 +7,27 @@
 
 DESCRIPTION="GL extensions for Gtk+ 2.0"
 HOMEPAGE="http://gtkglext.sourceforge.net/"
-LICENSE="GPL"
-PACKAGER="StartOS Developers"
+LICENSE="LGPL"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
-SRC_URI="http://downloads.sourceforge.net/project/"$N"/"$N"/"$V"/"$N-$V".tar.gz"
+SRC_URI="http://downloads.sourceforge.net/sourceforge/$N/$N-$V.tar.bz2"
+CHECKSUM="ed7ba24ce06a8630c07f2d0ee5f04ab4"
 
-RDEPEND="gtk+ libXmu mesa"
+RDEPEND="gtk2 libXmu glu pangox-compat"
 BDEPEND="mesa"
 
 pbs_unpack() {
-        dounpack
+    dounpack
 }
 
 pbs_patch() {
-	dopatch 01_fix_fontcache_nullderef.dpatch gtk2.20.patch 
+	dopatch gtk2.20.patch 
+    sed '/AC_PATH_XTRA/d' -i configure.in
 }
 
 pbs_config() {
-	config+="--with-x"
+    autoreconf --force --install
+	config+="--disable-static"
 	doconfig
 }
 
@@ -35,3 +38,4 @@ pbs_build() {
 pbs_install() {
 	domkinstall
 }
+

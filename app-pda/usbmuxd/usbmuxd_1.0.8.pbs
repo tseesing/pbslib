@@ -41,12 +41,10 @@ pbs_build() {
 pbs_install() {
 	domkinstall
     cd "$destdir"
-    # fix udev dir being hardcoded
-    mv lib/udev usr/lib/
-    rmdir lib/
     # install systemd service file
     dounit usbmuxd.service
-    # use udev rule that works with systemd
-    docp "$filesdir"/85-usbmuxd.rules usr/lib/udev/rules.d/
+    # 
+    mkdir -p usr/lib/
+    mv lib/udev/ usr/lib/
 }
 

@@ -5,18 +5,18 @@
 # Distributed under the terms of the GNU General Public License v2
 #
 
-DESCRIPTION="C++ bindings for libglade"
-HOMEPAGE="http://gtkmm.sourceforge.net"
+DESCRIPTION="Intelligent Pinyin engine based on libpinyin for IBus"
+HOMEPAGE="https://github.com/libpinyin"
 LICENSE="LGPL"
 PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
+GROUP="ibus" 
 
-SRC_URI="http://ftp.gnome.org/pub/gnome/sources/$N/2.6/$N-$V.tar.bz2"
-CHECKSUM="f9ca5b67f6c551ea98790ab5f21c19d0"
+SRC_URI="https://github.com/downloads/libpinyin/"$N"/"$N-$V".tar.gz"
+CHECKSUM="95f6143323deddaf6d82020dcc14a1af"
 
-RDEPEND="gtkmm libglade"
-BDEPEND="pkgconfig"
+RDEPEND="ibus libpinyin"
+BDEPEND="intltool gnome-common"
 RECOMMENDED=""
-CONFLICT=""
 
 pbs_unpack() {
     dounpack
@@ -32,6 +32,6 @@ pbs_build() {
 }
 
 pbs_install() {
-	domkinstall
+	domkinstall NO_INDEX=true
 }
 

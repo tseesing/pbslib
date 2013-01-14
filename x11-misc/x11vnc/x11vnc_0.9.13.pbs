@@ -8,7 +8,7 @@
 DESCRIPTION="VNC server for real X displays"
 HOMEPAGE="http://www.karlrunge.com/x11vnc"
 LICENSE="GPLv2"
-PACKAGER="StartOS Developers"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
 SRC_URI="http://downloads.sourceforge.net/project/libvncserver/"$N"/"$V"/"$N-$V".tar.gz"
 CHECKSUM="f011d81488ac94dc8dce2d88739c23bd85a976fa"
@@ -16,11 +16,11 @@ CHECKSUM="f011d81488ac94dc8dce2d88739c23bd85a976fa"
 RDEPEND="avahi libjpeg-turbo libXtst openssl"
 RECOMMENDED=""
 BDEPEND=""
-OPTIONAL=""
+OPTIONAL="tk: for GUI support"
 CONFLICT=""
 
 pbs_unpack() {
-        dounpack
+    dounpack
 }
 
 pbs_config() {
@@ -35,8 +35,9 @@ pbs_build() {
 pbs_install() {
 	domkinstall
 	cd "$destdir"
-	
 	# Provided by libvncserver
 	rm -fr usr/include/rfb
+    # systemd
+    dounit x11vnc.service
 }
 

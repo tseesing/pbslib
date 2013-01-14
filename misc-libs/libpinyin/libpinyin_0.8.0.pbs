@@ -9,17 +9,22 @@ DESCRIPTION="Library to deal with pinyin."
 COMMENTS="The libpinyin project aims to provide the algorithms core for intelligent sentence-based Chinese pinyin input methods."
 HOMEPAGE="https://github.com/libpinyin/libpinyin"
 LICENSE="GPL"
-PACKAGER="StartOS Developers"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
 SRC_URI="git://github.com/epico/libpinyin.git"
 
-RDEPEND="berkeley-db gcc-lib glib2 glibc"
+RDEPEND="berkeley-db glib2"
 RECOMMENDED=""
 BDEPEND=""
 CONFLICT=""
 
 pbs_unpack() {
-        dounpack
+    dounpack
+}
+
+pbs_patch() {
+    git checkout 0.8.x
+    git pull
 }
 
 pbs_config() {

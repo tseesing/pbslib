@@ -34,5 +34,7 @@ pbs_build() {
 
 pbs_install() {
 	domkinstall
+    # Note: make gdm use Adwaita rather than X11 cursors
+    docp "$filesdir"/index.theme "$destdir"/usr/share/icons/default/  
 }
 
