@@ -1,0 +1,55 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="Java-based build tool similar to 'make' that uses XML configuration files.(binary version)"
+HOMEPAGE="http://ant.apache.org/"
+LICENSE="apache"
+PACKAGER="StartOS Developers"
+YARCH="any"
+
+SRC_URI="http://archive.apache.org/dist/ant/binaries/"$N-$V"-bin.tar.bz2"
+CHECKSUM="9e9ae9fc7352960191489a1286fb0928"
+
+RDEPEND="jdk"
+BDEPEND=""
+RECOMMENDED=""
+CONFLICT=""
+
+INSTALL="$N.install"
+
+pbs_unpack() {
+	dounpack
+}
+
+pbs_install() {
+	# Install profile.d script
+	docp "$filesdir"/apache-ant.{csh,sh} "$destdir"/etc/profile.d/
+
+	# Get the ANT_HOME env var
+	source "$filesdir"/apache-ant.sh
+
+	#
+	docp  lib/*.jar   "$destdir"/"$ANT_HOME"/lib/
+	docp  lib/README  "$destdir"/"$ANT_HOME"/lib/
+	docp  bin/*       "$destdir"/"$ANT_HOME"/bin/
+	docp  etc/*       "$destdir"/"$ANT_HOME"/etc/
+
+	# Do not copy Windows .bat/.cmd files
+	find bin -type f -a ! -name \*.bat -a ! -name \*.cmd |while read i; do
+		docp "${i}" "$destdir"/"$ANT_HOME"/bin/
+	done
+
+	#
+	chmod 644 "$destdir"/"$ANT_HOME"/lib/ -R
+	chmod 755 "$destdir"/"$ANT_HOME"/bin/ -R     
+	
+	#
+	# The license says the NOTICE file should be redistributed for derivative
+	# works, so lets supply it.
+	dodoc LICENSE NOTICE
+}
+

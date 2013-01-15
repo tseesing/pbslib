@@ -1,0 +1,52 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="Platform independent MSN Messenger client written in Python+GTK"
+HOMEPAGE="http://emesene.org/"
+LICENSE="custom:PSF GPL LGPL2.1"
+PACKAGER="StartOS Developers"
+
+SRC_URI="emesene-emesene-v2.11.7-0-g701207a.tar.gz"
+
+RDEPEND="python pygtk papyon dbus-python imaging notify-python openssl dbus-python xdg-utils"
+BDEPEND="distribute"
+RECOMMENDED="gtkspell gnome-python-extras  gst-python pywebkitgtk xmpppy"
+CONFLICT=""
+OPTIONAL="gnome-python-extras: spell-check plugin
+	  gtkspell: spell-check plugin
+	  aspell: spell-check plugin (also need aspell dictionary)
+	  gstreamer0.10-python: webcam support
+	  gstreamer0.10-good-plugins: webcam support
+	  pywebkitgtk: for alternative conversation window
+	  xmpppy: for gtalk and facebook chat support
+	  pyqt: alternative qt4 interface (emesene -e main:qt4_main"
+
+INSTALL="$N.install"
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_install() {
+	# install files
+	export PYTHONPATH=""$destdir"/usr/lib/python2.6/site-packages/"
+	install -d "$destdir"/usr/lib/python2.6/site-packages/
+	python setup.py install --prefix="$destdir"/usr
+
+	#
+	cd "$destdir"
+	domv usr/lib/python2.6/site-packages/emesene-2.0-py2.6.egg/share usr/
+	domv usr/lib/python2.6/site-packages/emesene-2.0-py2.6.egg/emesene usr/share/
+
+	#
+	docp $filesdir/emesene usr/bin/
+	chmod +x  usr/bin/emesene
+
+	#
+	rm usr/lib/ -rf
+}
+

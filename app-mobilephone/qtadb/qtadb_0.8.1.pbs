@@ -1,0 +1,37 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="Android phone manager via ADB"
+HOMEPAGE="http://qtadb.wordpress.com"
+LICENSE="custom"
+PACKAGER="StartOS Developers"
+
+SRC_URI="http://motyczko.pl/qtadb/QtADB_"$V"_src.zip"
+CHECKSUM="732eb8736c2fadddc80c37b47a91589c02e474cf5b0b68393411ffd4611cdb5f"
+
+RDEPEND="qt-core android-sdk-platform-tools"
+RECOMMENDED=""
+BDEPEND=""
+OPTIONAL=""
+CONFLICT=""
+REPLACE=""
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_build() {
+	qmake
+	domake
+}
+
+pbs_install() {
+	install -Dm755 QtADB "$destdir"/usr/bin/qtadb
+	install -Dm644 otherFiles/qtadb.apk "$destdir"/usr/share/qtadb/qtadb.apk
+	dodesktop qtadb.desktop qtadb.png
+}
+

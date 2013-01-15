@@ -1,0 +1,77 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="A collection of tools and libraries for many image formats"
+HOMEPAGE="http://www.imagemagick.org/"
+LICENSE="custom"
+PACKAGER="Zhongxinhuang <huangzhongxin@ivali.com>"
+
+SRC_URI="ftp://ftp.sunet.se/pub/multimedia/graphics/ImageMagick/ImageMagick-"${V%.*}"-"${V##*.}".tar.xz"
+
+PROVIDE="imagemagick imagemagick-doc"
+
+pbs_unpack() {
+    dounpack
+}
+
+pbs_patch() {
+    sed '/AC_PATH_XTRA/d' -i configure.ac
+    autoreconf --force --install
+    dopatch perlmagick.rpath.patch
+}
+
+pbs_config() {
+	config+="--with-modules 
+             --disable-static 
+             --disable-openmp 
+             --with-wmf 
+             --with-openexr 
+             --with-xml
+             --with-lcms2
+             --with-jp2 
+             --with-gslib 
+             --with-perl
+             --with-lqr 
+             --with-rsvg 
+             --without-gvc 
+             --without-djvu 
+             --without-autotrace 
+             --without-webp 
+             --without-jbig 
+             --without-fpx 
+             --without-dps 
+             --without-fftw"
+	doconfig --with-perl-options=\"INSTALLDIRS=vendor\"
+}
+
+pbs_build() {
+	domake
+}
+
+imagemagick_install() {
+	DESCRIPTION="A collection of tools and libraries for many image formats"
+	RDEPEND="fontconfig lcms2 liblqr perl"
+    OPTIONAL="ghostscript: for Ghostscript support
+              openexr: for OpenEXR support
+              libwmf: for WMF support
+              librsvg: for SVG support
+              libxml2: for XML support
+              jasper: for JPEG-2000 support
+              libpng: for PNG support"
+
+	domkinstall
+	dodoc LICENSE
+	rm -fr "$destdir"/usr/share/doc/ImageMagick/
+}
+
+imagemagick-doc_install() {
+	DESCRIPTION="The ImageMagick documentation (utilities manuals and libraries API)"
+	RDEPEND=""
+
+	make DESTDIR="$destdir" install-data-html
+}
+

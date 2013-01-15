@@ -1,0 +1,45 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="Client library to access metadata of mp3/vorbis/CD media"
+HOMEPAGE="http://musicbrainz.org/"
+LICENSE="LGPL"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
+
+SRC_URI="ftp://ftp.musicbrainz.org/pub/"$N"/libmusicbrainz-"$V".tar.gz"
+CHECKSUM="d5e19bb77edd6ea798ce206bd05ccc5f"
+
+RDEPEND="expat gcc-libs"
+RECOMMENDED=""
+BDEPEND=""
+OPTIONAL=""
+CONFLICT=""
+
+pbs_unpack() {
+    dounpack
+}
+
+pbs_patch() {
+	dopatch gcc4.3.patch
+}
+
+pbs_config() {
+	config+=""
+	doconfig
+}
+
+pbs_build() {
+	domake
+}
+
+pbs_install() {
+	domkinstall
+    cd python
+	domkinstall
+}
+
+

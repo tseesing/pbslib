@@ -1,0 +1,24 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="Supports PC Card and Mini PCI devices with an ISL3877, ISL3880, ISL3886 or ISL3890 chipset"
+HOMEPAGE="http://wireless.kernel.org/en/users/Drivers/p54#firmware"
+LICENSE="custom"
+PACKAGER="StartOS Developers"
+YARCH="any"
+
+SRC_URI="http://daemonizer.de/prism54/prism54-fw/fw-softmac/"$V".arm"
+
+RDEPEND=""
+BDEPEND=""
+RECOMMENDED=""
+CONFLICT=""
+
+pbs_install() {
+	docp_rename "$YBS_SOURCE"/2.13.25.0.arm "$destdir"/lib/firmware/isl3886pci
+}
+

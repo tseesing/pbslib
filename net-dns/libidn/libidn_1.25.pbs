@@ -1,0 +1,39 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="Internationalized Domain Names (IDN) implementation"
+HOMEPAGE="http://www.gnu.org/software/libidn/"
+LICENSE="GPLv3,LGPL"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
+
+SRC_URI="ftp://ftp.gnu.org/gnu/"$N"/"$N-$V".tar.gz"
+CHECKSUM="92e64fd5a6428bda6ade2c3cde475b76455cd7dd"
+
+RDEPEND="glibc texinfo"
+BDEPEND="pkgconfig"
+RECOMMENDED=""
+CONFLICT=""
+
+INSTALL="$N.install"
+
+pbs_unpack() {
+    dounpack
+}
+
+pbs_config() {
+	config+=""
+	doconfig
+}
+
+pbs_build() {
+	domake
+}
+
+pbs_install() {
+	domkinstall
+}
+

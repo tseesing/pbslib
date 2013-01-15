@@ -1,0 +1,32 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="Extensible Python-based build utility"
+HOMEPAGE="http://www.scons.org/"
+LICENSE="MIT"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
+YARCH="any"
+
+SRC_URI="http://downloads.sourceforge.net/sourceforge/"$N"/"$N-$V".tar.gz"
+
+RDEPEND="python"
+BDEPEND=""
+RECOMMENDED=""
+
+pbs_unpack() {
+    dounpack
+}
+
+pbs_build() {
+	domake 
+}
+
+pbs_install() {
+	domkinstall --optimize=1 --standard-lib --install-data=/usr/share
+    dodoc LICENSE.txt
+}
+

@@ -1,0 +1,40 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="A telepathy-backend to use stream engine."
+HOMEPAGE="http://telepathy.freedesktop.org"
+LICENSE="LGPL2.1"
+PACKAGER="chenqixing@ivali.com
+          Zhongxin Huang <huangzhongxin@ivali.com>"
+
+SRC_URI="http://telepathy.freedesktop.org/releases/"$N"/"$N-$V".tar.gz"
+CHECKSUM="d154350f9f1e3bdba87617c0668481a5"
+
+RDEPEND="farstream telepathy-glib"
+RECOMMENDED=""
+BDEPEND="dbus-glib gobject-introspection"
+OPTIONAL=""
+CONFLICT="telepathy-farsight"
+REPLACE="telepathy-farsight"
+
+pbs_unpack() {
+    dounpack
+}
+
+pbs_config() {
+	config+="--disable-static"
+	doconfig
+}
+
+pbs_build() {
+	domake
+}
+
+pbs_install() {
+	domkinstall
+}
+

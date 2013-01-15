@@ -1,0 +1,24 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="Windows 32-bit binary codecs for video and audio playback support"
+HOMEPAGE="http://www.mplayerhq.hu/"
+LICENSE=""
+PACKAGER="StartOS Developers"
+
+SRC_URI="http://www.mplayerhq.hu/MPlayer/releases/codecs/all-"$V$R".tar.bz2"
+
+RDEPEND="glibc"
+BDEPEND=""
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_install() {
+	docp * "$destdir"/usr/lib/win32
+}

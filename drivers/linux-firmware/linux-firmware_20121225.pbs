@@ -1,0 +1,36 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="Linux firmware files"
+HOMEPAGE="http://www.kernel.org/pub/linux/kernel/people/dwmw2/firmware"
+LICENSE="GPL,BSD,custom"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
+YARCH="any"
+
+SRC_URI="git://git.kernel.org/pub/scm/linux/kernel/git/dwmw2/linux-firmware.git"
+
+OPTIONS="nodev nostrip"
+
+RDEPEND=""
+BDEPEND=""
+RECOMMENDED=""
+
+pbs_unpack() {
+    dounpack
+}
+
+pbs_install() {
+	docp * "$destdir"/lib/firmware
+	# Added carl9170.fw for Atheros wireless AR9170 based devices.
+	cd "$destdir"/lib/firmware
+	docp "$filesdir"/carl9170-1.fw .
+	#
+	docp "$filesdir"/{ar9170.fw,aic94xx-seq.fw,NPE-B,NPE-C} .
+	# Check firmware script
+	docp "$filesdir"/check_firmware script/
+}
+

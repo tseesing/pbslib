@@ -1,0 +1,39 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="Object-oriented python bindings for subversion"
+HOMEPAGE="http://pysvn.tigris.org/"
+LICENSE="Apache"
+PACKAGER="StartOS Developers"
+
+SRC_URI="http://pysvn.barrys-emacs.org/source_kits/"$N-$V".tar.gz"
+CHECKSUM="010a80f0058713209d62e96b20afbde9"
+
+RDEPEND="python(>=2.7.2) subversion expat openssl"
+RECOMMENDED=""
+BDEPEND=""
+OPTIONAL=""
+CONFLICT=""
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_config() {
+	cd Source
+	python setup.py configure
+}
+
+pbs_build() {
+	domake
+}
+
+pbs_install() {
+	docp pysvn/__init__.py pysvn/_pysvn_2_7.so "$destdir"/usr/lib/python2.7/site-packages/pysvn/
+	dodoc ../LICENSE.txt
+}
+

@@ -1,0 +1,11 @@
+[Unit]
+Description=winbind daemon
+
+[Service]
+Type=forking
+ExecStart=/usr/sbin/winbindd -D
+PIDFile=/var/run/winbindd.pid
+
+[Install]
+WantedBy=multi-user.target
+

@@ -1,0 +1,41 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="Modular geoinformation service built on the D-Bus messaging system."
+HOMEPAGE="http://geoclue.freedesktop.org"
+LICENSE="LGPL"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
+
+SRC_URI="http://freedesktop.org/~hadess/$N-$V.tar.gz"
+CHECKSUM="779245045bfeeec4853da8baaa3a18e6"
+
+RDEPEND="dbus-glib libxml2"
+RECOMMENDED=""
+BDEPEND="gconf"
+OPTIONAL="networkmanager: geolocation
+          gconf: geolocation
+          libsoup: Skyhook location provider"
+CONFLICT=""
+REPLACE=""
+
+pbs_unpack() {
+    dounpack
+}
+
+pbs_config() {
+	config+="--disable-static"
+	doconfig
+}
+
+pbs_build() {
+	domake
+}
+
+pbs_install() {
+	domkinstall
+}
+

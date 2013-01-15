@@ -1,0 +1,36 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="A small UPnP client library/tool to access Internet Gateway Devices"
+HOMEPAGE="http://miniupnp.free.fr"
+LICENSE="BSD"
+PACKAGER="StartOS Developers"
+
+SRC_URI="http://miniupnp.free.fr/files/"$N-$V".tar.gz"
+CHECKSUM="88055f2d4a061cfd4cfe25a9eae22f67"
+
+RDEPEND="glibc"
+RECOMMENDED=""
+BDEPEND=""
+OPTIONAL=""
+CONFLICT=""
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_build() {
+	domake
+}
+
+pbs_install() {
+	make PREFIX="$destdir" install
+	doman man3/miniupnpc.3
+	dodoc LICENSE
+}
+
+

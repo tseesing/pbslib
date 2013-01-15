@@ -1,0 +1,45 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="Hebrew spell-checker"
+HOMEPAGE="http://www.ivrix.org.il/projects/spell-checker"
+LICENSE="GPL"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
+
+SRC_URI="http://hspell.ivrix.org.il/"$N-$V".tar.gz"
+CHECKSUM="32fbc1a71e86ab46bf7870c6eec9a6be"
+
+RDEPEND="glibc zlib perl"
+BDEPEND="perl hunspell gawk"
+
+pbs_unpack() {
+    dounpack
+}
+
+pbs_config() {
+	config+="--enable-linginfo --enable-fatverb --enable-shared"
+	doconfig
+}
+
+pbs_build() {
+	make
+	make hunspell
+}
+
+pbs_install() {
+	domkinstall
+	install -dm755 "$destdir"/usr/share/hunspell
+	install -m644 he.dic "$destdir"/usr/share/hunspell/he_IL.dic
+	install -m644 he.aff "$destdir"/usr/share/hunspell/he_IL.aff
+	cd "$destdir"
+	install -dm755 usr/share/myspell/dicts
+	cd usr/share/myspell/dicts
+	for file in usr/share/hunspell/*; do
+		doln /usr/share/hunspell/"$(basename $file)" .
+	done
+}
+

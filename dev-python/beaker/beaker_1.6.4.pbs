@@ -1,0 +1,33 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="Caching and sessions WSGI middleware for use with web applications and stand-alone Python scripts and applications"
+HOMEPAGE="http://beaker.groovie.org"
+LICENSE="custom"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
+YARCH="any"
+
+SRC_URI="http://cheeseshop.python.org/packages/source/B/Beaker/Beaker-"$V".tar.gz"
+CHECKSUM="c2e102870ed4c53104dec48ceadf8e9d"
+
+RDEPEND="python"
+BDEPEND="distribute"
+RECOMMENDED=""
+
+pbs_unpack() {
+    dounpack
+}
+
+pbs_build() {
+	domake
+}
+
+pbs_install() {
+	domkinstall --optimize=1
+	dodoc LICENSE
+}
+

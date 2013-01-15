@@ -1,0 +1,14 @@
+#!/usr/bin/env xdg-open
+
+[Desktop Entry]
+Name=wasu live
+Name[zh_CN]=华数直播
+Name[zh_TW]=華數直播
+Type=Application
+Exec=xdg-open --app="http://live.wasu.cn/"
+TryExec=xdg-open
+Icon=wasu-web
+Comment=wasu live show
+Comment[zh_CN]=华数在线影视直播
+Comment[zh_TW]=華數在线影视直播
+Categories=AudioVideo;

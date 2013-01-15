@@ -1,0 +1,50 @@
+Author: Chris Coulson <chrisccoulson@ubuntu.com>
+Description: Fix a crash on exit
+
+Only clean up the socket dir on exit. Calling GConf functions
+in the atexit handler is bad, as it conflicts with a handler
+registered inside liborbit, leading to a crash
+
+Bug-Ubuntu: https://launchpad.net/bugs/429322
+Bug: http://bugzilla.gnome.org/show_bug.cgi?id=579738
+Forwarded: yes
+
+Index: seahorse-plugins-2.28.1/agent/seahorse-agent-main.c
+===================================================================
+--- seahorse-plugins-2.28.1.orig/agent/seahorse-agent-main.c	2009-11-09 22:24:42.000000000 +0000
++++ seahorse-plugins-2.28.1/agent/seahorse-agent-main.c	2009-11-09 22:24:59.000000000 +0000
+@@ -253,7 +253,7 @@
+      */
+     daemonize (seahorse_agent_execvars ? agent_exec_args : NULL);
+ 
+-    atexit (seahorse_agent_exit);
++    atexit (seahorse_agent_io_uninit);
+ 
+     g_strfreev (agent_exec_args);
+     agent_exec_args = NULL;
+Index: seahorse-plugins-2.28.1/agent/seahorse-agent.c
+===================================================================
+--- seahorse-plugins-2.28.1.orig/agent/seahorse-agent.c	2009-11-09 22:19:28.000000000 +0000
++++ seahorse-plugins-2.28.1/agent/seahorse-agent.c	2009-11-09 22:19:35.000000000 +0000
+@@ -160,9 +160,3 @@
+     
+     return FALSE;
+ }
+-
+-void
+-seahorse_agent_exit ()
+-{
+-    seahorse_agent_uninit (NULL);
+-}
+Index: seahorse-plugins-2.28.1/agent/seahorse-agent.h
+===================================================================
+--- seahorse-plugins-2.28.1.orig/agent/seahorse-agent.h	2009-11-09 22:19:42.000000000 +0000
++++ seahorse-plugins-2.28.1/agent/seahorse-agent.h	2009-11-09 22:19:56.000000000 +0000
+@@ -55,7 +55,6 @@
+ /* Called in the new child process */
+ gboolean seahorse_agent_init ();
+ gboolean seahorse_agent_uninit (gpointer *data);
+-void     seahorse_agent_exit ();
+ 
+ /* Global options to set from the command line */
+ extern gboolean seahorse_agent_cshell;

@@ -1,0 +1,146 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="The LLVM Project is a collection of modular and reusable compiler and toolchain technologies."
+HOMEPAGE="http://llvm.org/"
+LICENSE="custom:University of Illinois/NCSA Open Source License"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
+
+SRC_URI="http://llvm.org/releases/"$V"/"$N-$V".src.tar.gz 
+         http://llvm.org/releases/"$V"/clang-"$V".src.tar.gz 
+	     http://dev.archlinux.org/~foutrelis/sources/compiler-rt/compiler-rt-"$V".src.tar.xz"
+CHECKSUM="16eaa7679f84113f65b12760fdfe4ee1 59bf2d3120a3805f27cafda3823caaf8 8effe0d4f6124e7e2b0c0479960ea99d"
+
+PROVIDE="llvm clang"
+
+OPTIONS="nostrip"
+
+BDEPEND="binutils(>=2.22) ocaml perl python" 
+
+pbs_unpack() {
+    dounpack
+}
+
+pbs_patch() {
+	docp "$filesdir"/{llvm-Config-config.h,llvm-Config-llvm-config.h} .
+	# At the present, clang must reside inside the LLVM source code tree to build
+	# See http://llvm.org/bugs/show_bug.cgi?id=4840
+	rm -rf tools/clang
+	tar xf "$YBS_SOURCE"/clang-"$V".src.tar.gz && cp -r clang-"$V".src tools/clang
+
+	rm -rf projects/compiler-rt
+	tar xf "$YBS_SOURCE"/compiler-rt-"$V".src.tar.xz && cp -r compiler-rt-"$V".src projects/compiler-rt
+	# Fix symbolic links from OCaml bindings to LLVM libraries
+	sed -i 's:\$(PROJ_libdir):/usr/lib'"$LIBDIRSUFFIX"'/llvm:' bindings/ocaml/Makefile.ocaml
+	# Fix installation directories, ./configure doesn't seem to set them right
+	sed -i -e 's:\$(PROJ_prefix)/etc/llvm:/etc/llvm:' \
+	       -e 's:\$(PROJ_prefix)/lib:$(PROJ_prefix)/lib'"$LIBDIRSUFFIX"'/llvm:' \
+	       -e 's:\$(PROJ_prefix)/docs/llvm:$(PROJ_prefix)/share/doc/llvm:' \
+	     Makefile.config.in
+	sed -i '/ActiveLibDir = ActivePrefix/s:lib:lib'"$LIBDIRSUFFIX"'/llvm:' tools/llvm-config/llvm-config.cpp
+        sed -i 's:LLVM_LIBDIR="${prefix}/lib":LLVM_LIBDIR="${prefix}/lib'"$LIBDIRSUFFIX"'/llvm":' autoconf/configure.ac configure
+	# Fix insecure rpath (http://bugs.archlinux.org/task/14017)
+	sed -i 's:$(RPATH) -Wl,$(\(ToolDir\|LibDir\|ExmplDir\))::g' Makefile.rules
+	# Fix clang path in CIndexer.cpp (https://bugs.archlinux.org/task/22799)
+	dopatch cindexer-clang-path.patch
+	# Make -flto work
+	# Use gold instead of default linker, and always use the plugin
+	dopatch enable-lto.patch
+	# Fix FS#29984: [clang] -coverage is broken
+	dopatch clang-3.1-fix-libprofile_rt.a-location.patch
+	# Fix FS#31098: LLVM 3.1 produces invalid debug information
+	# http://llvm.org/bugs/show_bug.cgi?id=13211
+	dopatch llvm-3.1-fix-debug-line-info.patch
+	# Apply strip option to configure
+	_optimized_switch="enable"
+	# Include location of libffi headers in CPPFLAGS
+	export CPPFLAGS="$CPPFLAGS $(pkg-config --cflags libffi)"
+}
+
+
+pbs_config() {
+	# Force the use of GCC instead of clang
+	CC=gcc CXX=g++ \
+	./configure \
+        	--prefix=/usr \
+	    	--libdir=/usr/lib"$LIBDIRSUFFIX" \
+	        --sysconfdir=/etc \
+		    --enable-shared \
+		    --enable-libffi \
+    		--enable-targets=all \
+	    	--disable-expensive-checks \
+	    	--disable-debug-runtime \
+	    	--disable-assertions \
+	    	--with-binutils-include=/usr/include \
+	    	--"$_optimized_switch"-optimized
+
+}
+
+pbs_build() {
+	domake REQUIRES_RTTI=1
+}
+
+llvm_install() {
+	DESCRIPTION="Low Level Virtual Machine"
+	RDEPEND="gcc-libs libffi"
+	RECOMMENDED=""
+	cd "$srcdir"
+	# We move the clang directory out of the tree so it won't get installed and
+	# then we bring it back in for the clang package
+	mv tools/clang .
+	# -j1 is due to race conditions during the installation of the OCaml bindings
+	make -j1 DESTDIR="$destdir" install
+	mv clang tools
+	# doc
+	dodoc LICENSE.TXT
+	cd "$destdir"
+	# Fix permissions of static libs
+	chmod -x usr/lib"$LIBDIRSUFFIX"/llvm/*.a
+	# Get rid of example Hello transformation
+	rm usr/lib"$LIBDIRSUFFIX"/llvm/*LLVMHello.*
+	# Add ld.so.conf.d entry
+	install -d etc/ld.so.conf.d
+	echo /usr/lib"$LIBDIRSUFFIX"/llvm > etc/ld.so.conf.d/llvm.conf
+	# Symlink LLVMgold.so into /usr/lib"$LIBDIRSUFFIX"/bfd-plugins
+	# (https://bugs.archlinux.org/task/28479)
+	install -d usr/lib"$LIBDIRSUFFIX"/bfd-plugins
+	ln -s ../llvm/LLVMgold.so usr/lib"$LIBDIRSUFFIX"/bfd-plugins/LLVMgold.so
+	if [[ $ARCH == x86_64 ]]; then
+		# Needed for multilib (https://bugs.archlinux.org/task/29951)
+		# Header stubs are taken from Fedora
+		for _header in config llvm-config; do
+			mv usr/include/llvm/Config/$_header{,-64}.h
+			cp "$srcdir"/llvm-Config-$_header.h usr/include/llvm/Config/$_header.h
+	        done
+	fi
+	#
+	doln /usr/lib"$LIBDIRSUFFIX"/llvm/libLLVM-3.1.so usr/lib"$LIBDIRSUFFIX"/
+}
+
+clang_install() {
+	DESCRIPTION="C language family frontend for LLVM"
+	RDEPEND="llvm"
+	RECOMMENDED=""
+	cd "$srcdir"
+	dodoc LICENSE.TXT
+	# Fix installation path for clang docs
+	sed -i 's:$(PROJ_prefix)/share/doc/llvm:$(PROJ_prefix)/share/doc/clang:' Makefile.config
+	cd tools/clang
+	domkinstall
+	# Fix permissions of static libs
+	chmod -x "$destdir"/usr/lib"$LIBDIRSUFFIX"/llvm/*.a
+	# Revert the path change in case we want to do a repackage later
+	sed -i 's:$(PROJ_prefix)/share/doc/clang:$(PROJ_prefix)/share/doc/llvm:' "$srcdir"/Makefile.config
+	for _tool in scan-{build,view}; do
+		docp tools/$_tool "$destdir"/usr/lib"$LIBDIRSUFFIX"/clang-analyzer/
+		doln /usr/lib"$LIBDIRSUFFIX"/clang-analyzer/$_tool/$_tool "$destdir"/usr/bin/$_tool
+	done
+	# Compile Python scripts
+	python -m compileall "$destdir"/usr/lib"$LIBDIRSUFFIX"/clang-analyzer
+	python -O -m compileall "$destdir"/usr/lib"$LIBDIRSUFFIX"/clang-analyzer
+}
+

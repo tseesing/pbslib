@@ -1,0 +1,35 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="An OpenGL png image library"
+HOMEPAGE="http://www.fifi.org/doc/libglpng-dev/glpng.html"
+LICENSE="GPL"
+PACKAGER="StartOS Developers"
+
+SRC_URI="http://ftp.de.debian.org/debian/pool/main/libg/libglpng/libglpng_"$V".orig.tar.gz"
+
+RDEPEND="libpng mesa"
+BDEPEND="cmake"
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_patch() {
+	dopatch libglpng-1.45-debian.patch libpng14.patch
+}
+
+pbs_build() {
+	docp "$filesdir"/{Makefile,license} .
+	domake libglpng.so.1.45
+}
+
+pbs_install() {
+	domkinstall
+	dodoc license
+}
+

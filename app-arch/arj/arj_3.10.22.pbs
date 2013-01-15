@@ -1,0 +1,51 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="Utility for opening arj archives"
+HOMEPAGE="http://arj.sourceforge.net"
+LICENSE="GPL"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
+
+SRC_URI="http://arj.sourceforge.net/files/"$N-$V$R".tar.gz"
+CHECKSUM="f263bf3cf6d42a8b7e85b4fb514336d3"
+
+RDEPEND="glibc"
+BDEPEND=""
+RECOMMENDED=""
+CONFLICT=""
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_patch() {
+    # patches from gentoo
+    dopatch 001_arches_align.patch 002_no_remove_static_const.patch \
+            003_64_bit_clean.patch arj-3.10.22-custom-printf.patch
+}
+
+
+pbs_config() {
+    cd gnu
+    aclocal
+    autoconf
+    rm -f config.{guess,sub}
+    cp /usr/share/automake-1.12/config.{guess,sub} .
+    
+    doconfig
+    cd ..
+}
+
+pbs_build() {
+	make prepare
+	make
+}
+
+pbs_install() {
+	domkinstall
+}
+

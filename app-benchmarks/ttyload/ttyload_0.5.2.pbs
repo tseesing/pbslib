@@ -1,0 +1,38 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="a color-coded graph of load averages over time."
+HOMEPAGE="http://www.daveltd.com/src/util/ttyload/"
+LICENSE="GPL"
+PACKAGER="StartOS Developers"
+
+SRC_URI="http://www.daveltd.com/src/util/"$N"/"$N-$V".tar.bz2"
+CHECKSUM="0eae93834914f307cb4295de7b9448b5"
+
+RDEPEND="glibc"
+RECOMMENDED=""
+BDEPEND=""
+OPTIONAL=""
+CONFLICT=""
+REPLACE=""
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_patch() {
+	dopatch makefile-install.patch
+}
+
+pbs_build() {
+	domake
+}
+
+pbs_install() {
+	domkinstall
+}
+

@@ -1,0 +1,42 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="An open source client for Windows Remote Desktop Services"
+HOMEPAGE="http://www.rdesktop.org/"
+LICENSE="GPL"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
+
+SRC_URI="http://downloads.sourceforge.net/"$N"/"$N-$V".tar.gz"
+CHECKSUM="c4b39115951c4a6d74f511c99b18fcf9"
+
+RDEPEND="libX11 openssl libao libsamplerate"
+RECOMMENDED=""
+BDEPEND=""
+OPTIONAL=""
+CONFLICT=""
+
+pbs_unpack() {
+    dounpack
+}
+
+pbs_patch() {
+	dopatch rdesktop-send_physical_buttons.diff
+	dopatch rdesktop-libao.patch
+}
+
+pbs_config() {
+	config+="--enable-smartcard"
+	doconfig
+}
+
+pbs_build() {
+	domake
+}
+
+pbs_install() {
+	domkinstall
+}

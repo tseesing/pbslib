@@ -1,0 +1,32 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="Wenquanyi Chinese bitmap font"
+HOMEPAGE="http://wenq.org/"
+GROUP="fonts"
+LICENSE="custom"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
+YARCH="any"
+
+SRC_URI="http://downloads.sourceforge.net/project/wqy/wqy-bitmapfont/1.0.0-RC1/wqy-bitmapsong-pcf-"$V"-RC1.tar.gz"
+
+RDEPEND=""
+BDEPEND=""
+
+INSTALL="$N.install"
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_install() {
+	docp *.pcf "$destdir"/usr/share/fonts/wenquanyi/wqy-bitmap
+	docp *.conf "$destdir"/etc/fonts/conf.avail
+	dodoc COPYING
+	doln /etc/fonts/conf.avail/85-wqy-bitmapsong.conf "$destdir"/etc/fonts/conf.d/85-wqy-bitmapsong.conf
+}
+

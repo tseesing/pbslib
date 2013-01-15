@@ -1,0 +1,49 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="Fully featured yet light and fast cross platform word processor"
+HOMEPAGE="http://www.abisource.com/"
+LICENSE="GPL"
+PACKAGER="StartOS Developers"
+
+SRC_URI="http://www.abisource.com/downloads/"$N"/"$V"/source/"$N-$V".tar.gz"
+CHECKSUM="f883b0a7f26229a9c66fd6a1a94381aa"
+
+RDEPEND="enchant fribidi goffice librsvg libwmf libwpg libwps libxslt loudmouth readline wv"
+BDEPEND=""
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_patch() {
+	dopatch compat_libwpg_0_9.patch
+	dopatch abiword-2.8.6-no-undefined.patch
+}
+
+pbs_config() {
+	libtoolize --force
+	autoreconf
+	config+=" --enable-clipart 
+	          --enable-templates 
+		  --enable-plugins 
+		  --without-gnomevfs 
+		  --with-gio 
+		  --with-goffice 
+		  --disable-static 
+		  --with-psiconv-config=/nothere "
+	doconfig
+}
+
+pbs_build() {
+	domake
+}
+
+pbs_install() {
+	domkinstall
+}
+

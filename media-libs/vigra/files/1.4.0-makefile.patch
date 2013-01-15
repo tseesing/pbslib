@@ -1,0 +1,26 @@
+--- vigra-1.4.0/config/Makefile.include.in	2005-12-21 12:53:28.000000000 +0800
++++ vigra-1.4.0.new/config/Makefile.include.in	2011-07-28 11:21:59.932000172 +0800
+@@ -4,6 +4,8 @@
+ MICRO_VERSION = @MICRO_VERSION@
+ VIGRA_VERSION = @MAJOR_VERSION@.@MINOR_VERSION@.@MICRO_VERSION@
+ 
++DESTDIR=""
++
+ vigra_builddir = @vigra_builddir@
+ vigra_srcdir = @vigra_srcdir@
+ vigra_testdir = $(vigra_srcdir)/test
+@@ -11,10 +13,10 @@
+ exec_prefix = @exec_prefix@
+ pymoddir = @PYTHON_INSTALLDIR@
+ python_sitedir = @python_sitedir@
+-includedir = @includedir@
+-libdir = @libdir@
+-bindir = @bindir@
+-docdir = @docdir@
++includedir = $(DESTDIR)/@includedir@
++libdir = $(DESTDIR)/@libdir@
++bindir = $(DESTDIR)/@bindir@
++docdir = $(DESTDIR)/@docdir@
+ 
+ LIBS = @LIBS@
+ PNG_LIB = @PNG_LIB@

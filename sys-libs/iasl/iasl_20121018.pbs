@@ -1,0 +1,42 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="Intel ACPI Source Language compiler"
+HOMEPAGE="http://acpica.org"
+LICENSE="custom"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
+
+SRC_URI="http://acpica.org/download/acpica-unix-"$V".tar.gz"
+CHECKSUM="07b8137a6870e3dad862e5752c87de75"
+
+RDEPEND="glibc"
+RECOMMENDED=""
+BDEPEND="flex bison"
+OPTIONAL=""
+CONFLICT=""
+REPLACE=""
+
+pbs_unpack() {
+    dounpack
+}
+
+pbs_patch() {
+    cd generate/unix
+    sed -i -e 's/_CYGWIN/_LINUX/g' -e 's/-Werror//g' Makefile.config
+}
+
+pbs_build() {
+    case "$ARCH" in
+        i?86) domake BITS=32 ;;
+      x86_64) domake BITS=64
+    esac
+}
+
+pbs_install() {
+	domkinstall
+}
+

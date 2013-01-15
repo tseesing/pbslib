@@ -1,0 +1,41 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="The official image viewer for the GNOME Desktop environment"
+HOMEPAGE="http://www.gnome.org/projects/eog/"
+LICENSE="GPL"
+PACKAGER="chenqixing@ivali.com
+          Zhongxin Huang <huangzhongxin@ivali.com>"
+
+SRC_URI="http://ftp.acc.umu.se/pub/GNOME/sources/$N/${V%.*}/"$N-$V".tar.xz"
+CHECKSUM="5879f26a11fa7cd2fa4038e5c51d31e4959456be4fba570dcde89ed0d966ffda"
+
+RDEPEND="exempi gnome-desktop lcms2 libexif librsvg gnome-icon-theme dconf"
+BDEPEND="itstool intltool gobject-introspection"
+RECOMMENDED=""
+
+INSTALL="$N.install"
+
+pbs_unpack() {
+    dounpack
+}
+
+pbs_config() {
+	config+="--disable-schemas-compile"
+	doconfig
+}
+
+pbs_build() {
+	domake
+}
+
+pbs_install() {
+	domkinstall
+    # remove it from Xfce menu that ships its own thingy
+    echo "NotShowIn=XFCE" >>"$destdir"/usr/share/applications/eog.desktop
+}
+

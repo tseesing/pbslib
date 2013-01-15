@@ -1,0 +1,61 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="A parser generator for C++, C#, Java, and Python"
+HOMEPAGE="http://www.antlr2.org"
+LICENSE="custom"
+PACKAGER="StartOS Developers"
+
+SRC_URI="http://www.antlr2.org/download/"$N-$V".tar.gz"
+CHECKSUM="01cc9a2a454dd33dcd8c856ec89af090"
+
+PROVIDE="antlr pyantlr"
+
+RDEPEND=""
+RECOMMENDED=""
+BDEPEND=""
+OPTIONAL=""
+CONFLICT=""
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_patch() {
+	dopatch gcc4.4.patch
+}
+
+pbs_config() {
+	config+="--disable-examples --disable-csharp"
+	doconfig
+}
+
+pbs_build() {
+	make
+}
+
+antlr_install() {
+	DESCRIPTION="A parser generator for C++, C#, Java"
+	RDEPEND="jre jdk"
+	BDEPEND=""
+	
+	cd lib/cpp
+	make prefix="${destdir}/usr" install
+	install -Dm644 "${srcdir}"/antlr.jar "${destdir}"/usr/share/java/antlr.jar ||return 1
+	install -Dm755 "${filesdir}"/runantlr.sh "${destdir}"/usr/bin/runantlr || return 1
+	dodoc "${srcdir}"/LICENSE.txt
+}
+
+pyantlr_install () {
+	DESCRIPTION="A parser generator for python"
+	RDEPEND="antlr python"
+	BDEPEND=""
+
+	cd "${srcdir}"/lib/python
+	python setup.py install --root="${destdir}" --optimize=1
+}
+

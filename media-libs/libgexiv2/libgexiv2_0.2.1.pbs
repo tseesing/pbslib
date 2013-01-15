@@ -1,0 +1,45 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="a GObject-based wrapper around the  Exiv2 library. It makes the basic features of Exiv2 available to GNOME applications."
+HOMEPAGE="http://trac.yorba.org/wiki/gexiv2"
+REPO=""
+LICENSE=""
+PACKAGER="StartOS Developers"
+
+SRC_URI="http://yorba.org/download/gexiv2/0.2/"$N-$V$R".tar.bz2"
+
+RDEPEND="exiv2"
+BDEPEND=" "
+RECOMMENDED=""
+
+NOTES=""
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_config() {
+	
+	dopatch $filesdir/gexiv2-0.2.1-new-exiv2.patch
+	config+=" --prefix=/usr
+		      --sysconfdir=/etc
+		      --localstatedir=/var
+	              --infodir=/usr/share/info
+		      --mandir=/usr/share/man
+	              --disable-static
+		      --enable-shared "
+	doconfig
+}
+
+pbs_build() {
+	domake
+}
+
+pbs_install() {
+	domkinstall
+}

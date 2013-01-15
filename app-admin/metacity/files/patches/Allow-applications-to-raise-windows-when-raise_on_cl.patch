@@ -1,0 +1,26 @@
+From 55d4c4cc9455f348b5bc455675004a0e035ea31d Mon Sep 17 00:00:00 2001
+From: Owen W. Taylor <otaylor@fishsoup.net>
+Date: Tue, 17 Nov 2009 17:24:53 -0500
+Subject: [PATCH] Allow applications to raise windows when raise_on_click is off
+
+Whether Metacity honors a raise request from an application should
+not be affected by the raise_on_click setting; remove a check that
+seems to have been added in error.
+
+https://bugzilla.gnome.org/show_bug.cgi?id=445447
+---
+diff -ur metacity-2.30.3-ylmf1/src/core/window.c metacity-2.30.3-ylmf1.new//src/core/window.c
+--- metacity-2.30.3-ylmf1/src/core/window.c	2011-09-29 17:38:35.726611636 +0800
++++ metacity-2.30.3-ylmf1.new//src/core/window.c	2011-09-29 17:39:27.349944287 +0800
+@@ -4735,9 +4735,8 @@
+     {
+       MetaWindow *active_window;
+       active_window = window->display->expected_focus_window;
+-      if (meta_prefs_get_disable_workarounds () ||
+-          !meta_prefs_get_raise_on_click ())
+-        {
++      if (meta_prefs_get_disable_workarounds ())
++	{
+           meta_topic (META_DEBUG_STACK,
+                       "%s sent an xconfigure stacking request; this is "
+                       "broken behavior and the request is being ignored.\n",

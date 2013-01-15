@@ -1,0 +1,43 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="Gnome Python interfaces for libraries not part of the core platform"
+HOMEPAGE="http://www.daa.com.au/~james/pygtk/"
+LICENSE="GPL/LGPL"
+PACKAGER="StartOS Developers"
+
+SRC_URI="http://ftp.gnome.org/pub/gnome/sources/"$N"/2.25/"$N-$V".tar.bz2"
+CHECKSUM="e69e5288466c960ed6f985bb10c9969b21ed85a4"
+
+RDEPEND="gtkspell libgksu libgnomeui"
+RECOMMENDED=""
+BDEPEND=""
+OPTIONAL=""
+CONFLICT=""
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_patch() {
+	dopatch gnome-python-extras-2.25.3-update-for-2.27.2.patch
+}
+
+pbs_config() {
+	config+=""
+	doconfig
+}
+
+pbs_install() {
+	domake install-pkgconfigDATA DESTDIR="${destdir}"
+	
+	for i in egg gksu2 gtkhtml2 gtkspell;do 
+		domkinstall -C "${i}"
+	done
+
+}
+

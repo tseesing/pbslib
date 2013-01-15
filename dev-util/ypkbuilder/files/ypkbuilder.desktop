@@ -1,0 +1,14 @@
+#!/usr/bin/env xdg-open
+[Desktop Entry]
+Name=ypkbuilder
+Name[zh_CN]=YPK 软件包生成器
+GenericName=YPK package builder
+GenericName[zh_CN]=YPK 软件包生成器
+Comment=YPK package builder
+Comment[zh_CN]=YPK 软件包生成器
+Exec=ypkbuilder
+Terminal=false
+Type=Application
+StartupNotify=true
+Icon=ypkbuilder
+Categories=Development;

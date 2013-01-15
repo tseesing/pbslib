@@ -1,0 +1,45 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="A system-independent library for user-level network packet capture"
+HOMEPAGE="http://www.tcpdump.org/"
+LICENSE="BSD"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
+
+SRC_URI="http://www.tcpdump.org/release/"$N-$V".tar.gz"
+CHECKSUM="41cbd9ed68383afd9f1fda279cb78427d36879d9e34ee707e31a16a1afd872b9"
+
+RDEPEND="glibc libnl libusbx"
+BDEPEND="flex"
+RECOMMENDED=""
+
+pbs_unpack() {
+    dounpack
+}
+
+pbs_patch() {
+    dopatch libnl32.patch
+}
+
+pbs_config() {
+    autoreconf -f -i
+    config+="--enable-ipv6 --with-libnl"
+	doconfig
+}
+
+pbs_build() {
+	domake
+}
+
+pbs_install() {
+	domkinstall
+    dodoc LICENSE
+    cd "$destdir"
+    # backwards compatibility, programs often look for net/bpf.h
+    doln /usr/include/pcre-bpf.h usr/include/net/bpf.h
+}
+

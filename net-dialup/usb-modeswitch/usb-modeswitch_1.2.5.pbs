@@ -1,0 +1,45 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="Handling Mode-Switching USB Devices on Linux"
+HOMEPAGE="http://www.draisberghof.de/usb_modeswitch/"
+LICENSE="GPL"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
+
+SRC_URI="http://www.draisberghof.de/usb_modeswitch/"$N-$V".tar.bz2 
+         http://www.draisberghof.de/usb_modeswitch/usb-modeswitch-data-20121109.tar.bz2
+         http://www.draisberghof.de/usb_modeswitch/device_reference.txt"
+CHECKSUM="c393603908eceab95444c5bde790f6f0 a7d23a03157871013a0d708ab2b1b6df 9918bbdc0f68873410688604c80d25c4"
+
+RDEPEND="libusb-compat tcl"
+BDEPEND=""
+RECOMMENDED=""
+CONFLICT=""
+
+pbs_unpack() {
+    dounpack
+}
+
+pbs_patch() {
+    tar xvf "$YBS_SOURCE"/usb-modeswitch-data-20121109.tar.bz2
+    cp "$YBS_SOURCE"/device_reference.txt .
+}
+
+pbs_build() {
+    domake clean
+	domake
+}
+
+pbs_install() {
+    mkdir -p "$destdir"/{usr/lib/udev,etc,usr/share/man/man1}
+    domkinstall UDEVDIR=${pkgdir}/usr/lib/udev
+    docp_rename device_reference.txt "$destdir"/etc/usb_modeswitch.setup
+    # Install data
+    cd usb-modeswitch-data-20121109
+    domkinstall RULESDIR="$destdir"/usr/lib/udev/rules.d
+}
+

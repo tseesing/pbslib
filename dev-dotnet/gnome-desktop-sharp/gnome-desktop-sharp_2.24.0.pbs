@@ -1,0 +1,39 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="GtkSharp's gnome-desktop module of the gnome-desktop-sharp tarball"
+HOMEPAGE="http://www.mono-project.com/GtkSharp"
+REPO=""
+LICENSE="GPL"
+PRIORITY=""
+PACKAGER="StartOS Developers"
+
+SRC_URI="http://ftp.novell.com/pub/mono/sources/gnome-desktop-sharp2/gnome-desktop-sharp-2.24.0.tar.bz2"
+
+RDEPEND=""
+BDEPEND="gnome-sharp"
+RECOMMENDED=""
+CONFLICT=""
+
+NOTES=""
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_config() {
+	config+=""
+	doconfig
+}
+
+pbs_build() {
+	domake
+}
+
+pbs_install() {
+	domkinstall
+}

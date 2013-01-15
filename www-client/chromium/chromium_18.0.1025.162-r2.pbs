@@ -1,0 +1,111 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="Open-source version of Google Chrome web browser"
+HOMEPAGE="http://www.chromium.org/"
+LICENSE="BSD"
+PACKAGER="StartOS Developers"
+
+SRC_URI="http://commondatastorage.googleapis.com/chromium-browser-official/"$N-$V".tar.bz2
+         http://commondatastorage.googleapis.com/nativeclient-mirror/nacl/nacl_sdk/"$V"/naclsdk_linux.bz2"
+
+CHECKSUM="2df8c72b29411dbbc66a95abf8d2a80f
+          811f6cc6c99a73cbd864d551c1254aa4c943da05454165e8963966a07d30c4ef"
+
+RDEPEND="alsa-lib atk avahi bzip2 cairo cups dbus e2fsprogs expat fontconfig freetype gcc-lib gdk-pixbuf glib2 glibc gnutls gtk+ keyutils krb5 libevent libffi libgcrypt libgpg-error libjpeg-turbo libpng libtasn1 libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libXinerama libXrandr libXrender libXScrnSaver nspr nss pango pixman udev zlib"
+BDEPEND="perl gperf pkgconfig flex renderproto libXinerama-dev libvpx-dev switch"
+
+INSTALL="$N.install"
+
+OPTIONS="nostrip"
+
+pbs_unpack() {
+        dounpack
+} 
+
+pbs_patch() {
+	# StartOS add baidu tn
+	dopatch startos-baidu-tn-18.0.1025.151.patch
+
+	# Remove unconditional use of SSE3 (patch from Gentoo)
+	dopatch chromium-media-no-sse-r0.patch
+
+	# Fix JPEG image rendering problem (patch from Gentoo bug #393471)
+	dopatch chromium-revert-jpeg-swizzle-r2.patch
+}
+
+pbs_config() {
+	tar xf "$YBS_SOURCE"/naclsdk_linux.bz2
+	ln -s "$PWD"/pepper_18/toolchain/linux_x86_newlib native_client/toolchain/linux_x86_newlib || return 1
+
+	# We need to disable system_ssl until "next protocol negotiation" support is
+	# available in our nss package.
+	# (See https://bugzilla.mozilla.org/show_bug.cgi?id=547312)
+
+	# CFLAGS are passed through release_extra_cflags below
+        export -n CFLAGS CXXFLAGS
+
+	build/gyp_chromium -f make build/all.gyp --depth=. \
+		-Dwerror= \
+	        -Dlinux_sandbox_path=/usr/lib/chromium/chromium-sandbox \
+	        -Dlinux_strip_binary=1 \
+	        -Drelease_extra_cflags="$CFLAGS" \
+	        -Dffmpeg_branding=Chrome \
+	        -Dproprietary_codecs=1 \
+	        -Duse_system_bzip2=1 \
+	        -Duse_system_ffmpeg=0 \
+	        -Duse_system_libevent=1 \
+	        -Duse_system_libjpeg=1 \
+	        -Duse_system_libpng=1 \
+	        -Duse_system_libxml=0 \
+	        -Duse_system_ssl=0 \
+	        -Duse_system_yasm=1 \
+	        -Duse_system_zlib=1 \
+	        -Duse_gconf=0 \
+		$([[ "$ARCH" == i686 ]] && echo '-Ddisable_sse2=1')
+}
+
+pbs_build() {
+	domake chrome chrome_sandbox BUILDTYPE=Release
+}
+
+pbs_install() {
+	mkdir -p "$destdir"
+
+	install -D out/Release/chrome "${destdir}"/usr/lib/chromium/chromium
+ 	install -Dm4755 -o root -g root out/Release/chrome_sandbox "${destdir}"/usr/lib/chromium/chromium-sandbox
+	
+	cp out/Release/{{chrome,resources}.pak,libffmpegsumo.so} \
+	   out/Release/nacl_helper{,_bootstrap} \
+	   out/Release/{libppGoogleNaClPluginChrome.so,nacl_irt_x86_*.nexe} \
+	   "${destdir}"/usr/lib/chromium/
+
+	cp -a out/Release/locales out/Release/resources "${destdir}"/usr/lib/chromium/
+
+	find "${destdir}"/usr/lib/chromium/ -name '*.d' -type f -delete
+
+	install -Dm644 out/Release/chrome.1 "${destdir}"/usr/share/man/man1/chromium.1
+
+	dodesktop "chromium.desktop" "chrome/app/theme/chromium/product_logo_48.png"
+
+        for size in 16 22 24 32 48 64 128 256; do
+	        install -Dm644 "chrome/app/theme/chromium/product_logo_${size}.png" \
+	        "${destdir}"/usr/share/icons/hicolor/"${size}"x"${size}"/apps/chromium.png
+	done
+
+	dodoc LICENSE 
+	
+	cd "$destdir"
+        install -m 0755 -D "$filesdir"/chromium.sh usr/bin/chromium
+	docp_rename "$filesdir"/default-preferences/"$N"-18.tar.bz2 usr/lib/chromium/"$N".tar.bz2
+	docp        "$filesdir"/default-preferences/settings.sol    usr/lib/chromium/
+
+	docp "$filesdir"/"$N".xml usr/share/gnome-control-center/default-apps/
+	docp_rename "$filesdir"/chromium-conf  etc/default/chromium
+}
+
+

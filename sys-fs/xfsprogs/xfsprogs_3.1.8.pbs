@@ -1,0 +1,37 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="xfs filesystem utilities"
+HOMEPAGE="http://oss.sgi.com/projects/xfs/"
+LICENSE="LGPL"
+PACKAGER="YLmf OS Developers "
+
+SRC_URI="git://oss.sgi.com/xfs/cmds/"$N".git"
+
+RDEPEND="readline util-linux-ng"
+BDEPEND=""
+RECOMMENDED=""
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_config() {
+	git checkout v3.1.8
+	export DEBUG=-DNDEBUG \
+	       INSTALL_USER=root INSTALL_GROUP=root \
+	       LOCAL_CONFIGURE_OPTIONS="--enable-readline=yes --enable-blkid=yes --enable-gettext=yes"
+}
+
+pbs_build() {
+	domake
+}
+
+pbs_install() {
+	make DIST_ROOT="$destdir" install install-dev
+}
+

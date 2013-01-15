@@ -1,0 +1,35 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="X C-language Bindings library"
+HOMEPAGE="http://xcb.freedesktop.org/"
+LICENSE="GPL"
+PACKAGER="StartOS Developers"
+
+SRC_URI="http://xcb.freedesktop.org/dist/"$N-$V$R".tar.bz2"
+
+RDEPEND="libxslt libXau libXdmcp"
+BDEPEND="xcb-proto libXau libpthread-stubs"
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_config() {
+	config+="--prefix=/usr --docdir=/usr/share/$N-$V$R"
+	doconfig
+}
+
+pbs_build() {
+	domake
+}
+
+pbs_install() {
+	domkinstall
+	#
+	find "$destdir" -name "*.la" -delete
+}

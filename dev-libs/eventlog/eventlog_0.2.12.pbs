@@ -1,0 +1,35 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="API to format and send structured log messages"
+HOMEPAGE="http://www.balabit.com/support/community/products"
+LICENSE="BSD"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
+
+SRC_URI="http://www.balabit.com/downloads/files/$N/${V%.*}/${N}_$V.tar.gz"
+CHECKSUM="3e35a634e7de029ab9d36995a085bfcb00ed6a4d"
+
+RDEPEND="glibc"
+BDEPEND=""
+RECOMMENDED=""
+
+pbs_unpack() {
+    dounpack
+}
+
+pbs_config() {
+	doconfig
+}
+
+pbs_build() {
+	domake
+}
+
+pbs_install() {
+	domkinstall
+}
+

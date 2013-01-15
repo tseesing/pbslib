@@ -1,0 +1,41 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="File transfer program to keep remote files into sync"
+HOMEPAGE="http://rsync.samba.org/"
+LICENSE="GPL"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
+
+SRC_URI="http://rsync.samba.org/ftp/"$N"/"$N-$V".tar.gz"
+
+RDEPEND="acl popt perl"
+BDEPEND=""
+
+INSTALL="$N.install"
+
+pbs_unpack() {
+    dounpack
+}
+
+pbs_config() {
+	config+=""
+	doconfig
+}
+
+pbs_build() {
+	domake
+}
+
+pbs_install() {
+	domkinstall
+	install -Dm755 support/rrsync "$destdir"/usr/lib/rsync/rrsync
+	cd "$destdir"
+	docp "$filesdir"/rsyncd.conf.sample  usr/share/rsync/
+	docp "$filesdir"/rsync.xinetd etc/xinetd.d/rsync
+	dounit "$filesdir"/{rsyncd.service,rsyncd.socket,rsyncd@.service}
+}
+

@@ -1,0 +1,21 @@
+diff -ur udev-172/rules/rules.d/50-udev-default.rules udev-172.new//rules/rules.d/50-udev-default.rules
+--- udev-172/rules/rules.d/50-udev-default.rules	2011-07-05 11:36:41.505650963 +0800
++++ udev-172.new//rules/rules.d/50-udev-default.rules	2011-07-21 16:55:35.852236158 +0800
+@@ -36,6 +36,7 @@
+ KERNEL=="nvidia*|nvidiactl*",	GROUP="video"
+ SUBSYSTEM=="graphics",		GROUP="video"
+ SUBSYSTEM=="drm",		GROUP="video"
++SUBSYSTEM=="lbm-drm",           GROUP="video"
+ 
+ # sound
+ SUBSYSTEM=="sound",		GROUP="audio", \
+diff -ur udev-172/rules/rules.d/80-drivers.rules udev-172.new//rules/rules.d/80-drivers.rules
+--- udev-172/rules/rules.d/80-drivers.rules	2010-05-28 00:51:51.000000000 +0800
++++ udev-172.new//rules/rules.d/80-drivers.rules	2011-07-21 16:55:55.115866567 +0800
+@@ -9,5 +9,6 @@
+ SUBSYSTEM=="i2o", RUN+="/sbin/modprobe -bv i2o_block"
+ SUBSYSTEM=="scsi", ENV{DEVTYPE}=="scsi_device", TEST!="[module/sg]", RUN+="/sbin/modprobe -bv sg"
+ SUBSYSTEM=="module", KERNEL=="parport_pc", RUN+="/sbin/modprobe -bv ppdev"
++SUBSYSTEM=="graphics", RUN+="/sbin/modprobe -q fbcon"
+ 
+ LABEL="drivers_end"

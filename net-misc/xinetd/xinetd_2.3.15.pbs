@@ -1,0 +1,46 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="A secure replacement for inetd"
+HOMEPAGE="http://www.xinetd.org"
+LICENSE="custom"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
+
+SRC_URI="http://www.xinetd.org/"$N-$V".tar.gz"
+CHECKSUM="77358478fd58efa6366accae99b8b04c"
+
+RDEPEND=""
+RECOMMENDED=""
+BDEPEND=""
+OPTIONAL="perl: for xconv.pl script"
+CONFLICT=""
+REPLACE=""
+
+pbs_unpack() {
+    dounpack
+}
+
+pbs_patch() {
+    sed -i "s#${prefix}/man#${prefix}/share/man#" configure
+}
+
+pbs_config() {
+	config+="--without-libwrap"
+	doconfig
+}
+
+pbs_build() {
+	domake
+}
+
+pbs_install() {
+    make prefix="$destdir"/usr install
+    docp "$filesdir"/{servers,services} "$destdir"/etc/xinetd.d/
+    dounit xinetd.service
+    dodoc COPYRIGHT
+}
+

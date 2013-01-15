@@ -1,0 +1,26 @@
+diff -ur gdm-2.32.1-ylmf1/daemon/gdm-simple-slave.c gdm-2.32.1-ylmf1.new//daemon/gdm-simple-slave.c
+--- gdm-2.32.1-ylmf1/daemon/gdm-simple-slave.c	2011-09-30 10:34:24.305804064 +0800
++++ gdm-2.32.1-ylmf1.new//daemon/gdm-simple-slave.c	2011-09-30 10:35:14.949136726 +0800
+@@ -1136,6 +1136,10 @@
+ static void
+ setup_server (GdmSimpleSlave *slave)
+ {
++
++	/* Set the busy cursor */
++	gdm_slave_set_busy_cursor (GDM_SLAVE (slave));
++
+         /* The root window has a background that may be useful
+          * to cross fade or transition from when setting the
+          * login screen background.  We read it here, and stuff
+diff -ur gdm-2.32.1-ylmf1/gui/simple-greeter/gdm-greeter-login-window.c gdm-2.32.1-ylmf1.new//gui/simple-greeter/gdm-greeter-login-window.c
+--- gdm-2.32.1-ylmf1/gui/simple-greeter/gdm-greeter-login-window.c	2011-09-30 10:34:24.129137399 +0800
++++ gdm-2.32.1-ylmf1.new//gui/simple-greeter/gdm-greeter-login-window.c	2011-09-30 10:35:48.019136287 +0800
+@@ -171,7 +171,7 @@
+ {
+         GdkCursor *cursor;
+ 
+-        cursor = gdk_cursor_new (GDK_BLANK_CURSOR);
++	cursor = gdk_cursor_new (GDK_WATCH);
+         gdk_window_set_cursor (gtk_widget_get_window (GTK_WIDGET (login_window)), cursor);
+         gdk_cursor_unref (cursor);
+ }

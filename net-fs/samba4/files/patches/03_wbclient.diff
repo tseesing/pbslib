@@ -1,0 +1,102 @@
+Description: Use Samba3-packaged libwbclient rather than repackaging it in Samba 4
+  As Samba 3 is a bit behind this requires disabling the "dc-info" subcommand in
+  wbinfo.
+Author: Jelmer Vernooij <jelmer@samba.org>
+Origin: vendor
+Bug-Debian: http://bugs.debian.org/611214
+
+=== modified file 'nsswitch/wbinfo.c'
+--- old/nsswitch/wbinfo.c	2011-02-10 12:57:32 +0000
++++ new/nsswitch/wbinfo.c	2011-02-23 00:43:08 +0000
+@@ -787,31 +787,6 @@
+ 	return true;
+ }
+ 
+-/* Find the currently connected DCs */
+-
+-static bool wbinfo_dc_info(const char *domain_name)
+-{
+-	wbcErr wbc_status = WBC_ERR_UNKNOWN_FAILURE;
+-	size_t i, num_dcs;
+-	const char **dc_names, **dc_ips;
+-
+-	wbc_status = wbcDcInfo(domain_name, &num_dcs,
+-			       &dc_names, &dc_ips);
+-	if (!WBC_ERROR_IS_OK(wbc_status)) {
+-		printf("Could not find dc info %s\n",
+-		       domain_name ? domain_name : "our domain");
+-		return false;
+-	}
+-
+-	for (i=0; i<num_dcs; i++) {
+-		printf("%s (%s)\n", dc_names[i], dc_ips[i]);
+-	}
+-	wbcFreeMemory(dc_names);
+-	wbcFreeMemory(dc_ips);
+-
+-	return true;
+-}
+-
+ /* Change trust account password */
+ 
+ static bool wbinfo_change_secret(const char *domain)
+@@ -1946,7 +1921,6 @@
+ 	OPT_SEQUENCE,
+ 	OPT_GETDCNAME,
+ 	OPT_DSGETDCNAME,
+-	OPT_DC_INFO,
+ 	OPT_USERDOMGROUPS,
+ 	OPT_SIDALIASES,
+ 	OPT_USERSIDS,
+@@ -2056,8 +2030,6 @@
+ 		{ "getdcname", 0, POPT_ARG_STRING, &string_arg, OPT_GETDCNAME,
+ 		  "Get a DC name for a foreign domain", "domainname" },
+ 		{ "dsgetdcname", 0, POPT_ARG_STRING, &string_arg, OPT_DSGETDCNAME, "Find a DC for a domain", "domainname" },
+-		{ "dc-info", 0, POPT_ARG_STRING, &string_arg, OPT_DC_INFO,
+-		  "Find the currently known DCs", "domainname" },
+ 		{ "get-auth-user", 0, POPT_ARG_NONE, NULL, OPT_GET_AUTH_USER, "Retrieve user and password used by winbindd (root only)", NULL },
+ 		{ "ping", 'p', POPT_ARG_NONE, 0, 'p', "Ping winbindd to see if it is alive" },
+ 		{ "domain", 0, POPT_ARG_STRING, &opt_domain_name, OPT_DOMAIN_NAME, "Define to the domain to restrict operation", "domain" },
+@@ -2471,11 +2443,6 @@
+ 				goto done;
+ 			}
+ 			break;
+-		case OPT_DC_INFO:
+-			if (!wbinfo_dc_info(string_arg)) {
+-				goto done;
+-			}
+-			break;
+ 		case OPT_SEPARATOR: {
+ 			const char sep = winbind_separator();
+ 			if ( !sep ) {
+
+=== modified file 'nsswitch/wscript_configure'
+--- old/nsswitch/wscript_configure	2010-04-06 10:27:11 +0000
++++ new/nsswitch/wscript_configure	2011-02-23 00:29:08 +0000
+@@ -4,3 +4,13 @@
+ 
+ conf.CHECK_HEADERS('security/pam_appl.h security/pam_modules.h pam/pam_modules.h', together=True)
+ conf.CHECK_FUNCS_IN('pam_start', 'pam', checklibc=True, headers='security/pam_appl.h')
++
++import os
++link_target = os.path.join(conf.env["BUILD_DIRECTORY"], "shared", "libwbclient.so")
++if not os.path.exists(link_target):
++    os.symlink("/usr/lib/libwbclient.so.0", link_target)
++conf.SET_TARGET_TYPE("wbclient", "SYSLIB")
++conf.define('HAVE_LIBWBCLIENT', 1)
++conf.env["FOUND_SYSTEMLIB_wbclient"] = True
++conf.env['LIBPATH_WBCLIENT'] = [os.path.dirname(link_target)]
++conf.env['LIB_WBCLIENT'] = "wbclient"
+
+=== modified file 'wscript_build'
+--- old/source4/wscript_build	2011-02-22 01:51:10 +0000
++++ new/source4/wscript_build	2011-02-22 23:19:36 +0000
+@@ -41,7 +41,6 @@
+ bld.RECURSE('auth')
+ bld.RECURSE('../lib/iniparser/src')
+ bld.RECURSE('../nsswitch')
+-bld.RECURSE('../nsswitch/libwbclient')
+ bld.RECURSE('lib/samba3')
+ bld.RECURSE('lib/socket')
+ bld.RECURSE('lib/ldb-samba')
+

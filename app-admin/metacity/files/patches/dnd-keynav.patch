@@ -1,0 +1,14 @@
+diff -ur metacity-2.30.3-ylmf1/src/core/display.c metacity-2.30.3-ylmf1.new//src/core/display.c
+--- metacity-2.30.3-ylmf1/src/core/display.c	2011-09-29 17:22:53.986624115 +0800
++++ metacity-2.30.3-ylmf1.new//src/core/display.c	2011-09-29 17:23:54.706623311 +0800
+@@ -3306,8 +3306,8 @@
+   
+   meta_display_set_grab_op_cursor (display, screen, op, FALSE, grab_xwindow,
+                                    timestamp);
+-
+-  if (!display->grab_have_pointer)
++  
++  if (!display->grab_have_pointer && !grab_op_is_keyboard (op))
+     {
+       meta_topic (META_DEBUG_WINDOW_OPS,
+                   "XGrabPointer() failed\n");

@@ -1,0 +1,36 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="XML parsing libraries"
+HOMEPAGE="http://expat.sourceforge.net/"
+LICENSE="custom"
+PACKAGER="Zhnogxin Huang <huangzhongxin@ivali.com>"
+
+SRC_URI="http://downloads.sourceforge.net/"$N"/"$N-$V".tar.gz"
+CHECKSUM="dd7dab7a5fea97d2a6a43f511449b7cd"
+
+RDEPEND="glibc"
+BDEPEND=""
+
+pbs_unpack() {
+    dounpack
+}
+
+pbs_config() {
+	config+=""
+	doconfig
+}
+
+pbs_build() {
+	domake
+}
+
+pbs_install() {
+	domkinstall
+	dodoc COPYING
+}
+

@@ -1,0 +1,56 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="Professional video editing and compositing environment"
+HOMEPAGE="http://cinelerra.org/"
+LICENSE="GPL"
+PACKAGER="StartOS Developers"
+
+SRC_URI="git://git.cinelerra.org/CinelerraCV.git"
+
+RDEPEND="ffmpeg(>=0.11.1) a52dec faac faad2 fftw libavc1394 libiec61883 libtiff libXv mjpegtools openexr"
+RECOMMENDED=""
+BDEPEND=""
+OPTIONAL=""
+CONFLICT=""
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_patch() {
+	git checkout rel2.2.0
+	
+	dopatch v4l1_removal.patch
+	dopatch ffmpeg_api.patch
+	
+	sed -i -e '/Debian/d' admin/nasm
+}
+
+pbs_config() {
+	[ "$ARCH" = 'x86_64' ] && config_extra='--disable-mmx' || config_extra='--enable-mmx'
+	
+	config+="--with-buildinfo=git/recompile
+	         --with-external-ffmpeg
+		 --enable-opengl
+		 --disable-esd $config_extra"
+	
+	export CFLAGS="$CFLAGS -Wwrite-strings"
+	unset LDFLAGS
+	export CPPFLAGS="-D__STDC_CONSTANT_MACROS"
+	
+	doconfig
+}
+
+pbs_build() {
+	domake
+}
+
+pbs_install() {
+	domkinstall
+}
+

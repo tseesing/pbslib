@@ -1,0 +1,32 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="Python Cryptography Toolkit"
+HOMEPAGE="http://www.dlitz.net/software/pycrypto"
+LICENSE="custom"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
+
+SRC_URI="http://ftp.dlitz.net/pub/dlitz/crypto/"$N"/"$N-$V".tar.gz"
+CHECKSUM="7293c9d7e8af2e44a82f86eb9c3b058880f4bcc884bf3ad6c8a34b64986edde8"
+
+RDEPEND="python"
+BDEPEND=""
+RECOMMENDED=""
+
+pbs_unpack() {
+    dounpack
+}
+
+pbs_build() {
+	domake
+}
+
+pbs_install() {
+	domkinstall --optimize=1
+	dodoc COPYRIGHT
+}
+

@@ -1,0 +1,41 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="A simple binary editor for the Gnome desktop"
+HOMEPAGE="http://live.gnome.org/Ghex"
+LICENSE="GPL"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
+
+SRC_URI="http://ftp.gnome.org/pub/GNOME/sources/$N/${V:0:3}/$N-$V.tar.xz"
+CHECKSUM="ef74fc5a5a67736391b3fb7fb14f588f3a4441b1aa48d1a6eaa1adb6c0427544"
+
+RDEPEND="gtk3"
+RECOMMENDED="intltool gnome-doc-utils"
+BDEPEND=""
+OPTIONAL=""
+CONFLICT=""
+REPLACE=""
+
+INSTALL="$N.install"
+
+pbs_unpack() {
+    dounpack
+}
+
+pbs_config() {
+	config+="--disable-schemas-compile --disable-scrollkeeper"
+	doconfig
+}
+
+pbs_build() {
+	domake
+}
+
+pbs_install() {
+	domkinstall
+}
+

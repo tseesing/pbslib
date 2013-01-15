@@ -1,0 +1,130 @@
+Submitted By: DJ Lucas
+Date: 2010-02-18
+Initial Package Version: 2.28.2
+Origin: Wayne Blaszczyk and self
+Upstream Status: Submitted (partially - dbus fixes submitted)
+Description: Removes hardcoded /etc/gconf paths.  Removes hardcoded /usr/lib
+             path from polkit-gnome-authentication-agent-1.desktop.in*. Adds
+             pkg-config autodetection for dbus-daemon-directory and eliminates
+             associated hardcoded path.
+
+diff -Naur gdm-2.28.2-orig/configure.ac gdm-2.28.2/configure.ac
+--- gdm-2.28.2-orig/configure.ac	2009-12-16 16:51:14.000000000 -0600
++++ gdm-2.28.2/configure.ac	2010-02-05 20:40:48.000000000 -0600
+@@ -878,12 +878,21 @@
+ dnl ---------------------------------------------------------------------------
+ 
+ dnl - Are we specifying a different dbus root ?
++AC_ARG_WITH(dbus-daemon-dir,
++            AS_HELP_STRING([--with-dbus-daemon-dir=<dir>],
++                           [where D-BUS daemon directory is]))
+ AC_ARG_WITH(dbus-sys,
+             AS_HELP_STRING([--with-dbus-sys=<dir>],
+ 	                   [where D-BUS system.d directory is]))
+ AC_ARG_WITH(dbus-services,
+             AS_HELP_STRING([--with-dbus-services=<dir>],
+ 	                   [where D-BUS services directory is]))
++if ! test -z "$with_dbus_daemon_dir" ; then
++        DBUS_DAEMON_DIR="$with_dbus_daemon_dir"
++else
++        DBUS_DAEMON_DIR=`$PKG_CONFIG --variable=daemondir dbus-1`
++fi
++AC_SUBST(DBUS_DAEMON_DIR)
+ 
+ if ! test -z "$with_dbus_sys" ; then
+         DBUS_SYS_DIR="$with_dbus_sys"
+@@ -1408,6 +1417,7 @@
+         user:                     ${GDM_USERNAME}
+         group:                    ${GDM_GROUPNAME}
+ 
++        dbus-1 daemon dir:        ${DBUS_DAEMON_DIR}
+         dbus-1 system.d dir:      ${DBUS_SYS_DIR}
+         PAM prefix:               ${PAM_PREFIX}
+         X server:                 ${X_SERVER}
+diff -Naur gdm-2.28.2-orig/daemon/gdm-welcome-session.c gdm-2.28.2/daemon/gdm-welcome-session.c
+--- gdm-2.28.2-orig/daemon/gdm-welcome-session.c	2009-12-16 16:51:14.000000000 -0600
++++ gdm-2.28.2/daemon/gdm-welcome-session.c	2010-02-05 20:40:48.000000000 -0600
+@@ -46,7 +46,7 @@
+ 
+ #include "gdm-welcome-session.h"
+ 
+-#define DBUS_LAUNCH_COMMAND BINDIR "/dbus-launch --exit-with-session"
++#define DBUS_LAUNCH_COMMAND DBUS_DAEMON_DIR "/dbus-launch --exit-with-session"
+ 
+ #define MAX_LOGS 5
+ 
+diff -Naur gdm-2.28.2-orig/daemon/Makefile.am gdm-2.28.2/daemon/Makefile.am
+--- gdm-2.28.2-orig/daemon/Makefile.am	2009-12-16 16:51:14.000000000 -0600
++++ gdm-2.28.2/daemon/Makefile.am	2010-02-05 20:40:48.000000000 -0600
+@@ -7,6 +7,7 @@
+ 	-DAUTHDIR=\"$(authdir)\"			\
+ 	-DBINDIR=\"$(bindir)\"				\
+ 	-DDATADIR=\"$(datadir)\"			\
++	-DDBUS_DAEMON_DIR=\"$(DBUS_DAEMON_DIR)\"	\
+ 	-DDMCONFDIR=\"$(dmconfdir)\"			\
+ 	-DGDMCONFDIR=\"$(gdmconfdir)\"			\
+ 	-DLIBDIR=\"$(libdir)\"				\
+diff -Naur gdm-2.28.2-orig/daemon/Makefile.in gdm-2.28.2/daemon/Makefile.in
+--- gdm-2.28.2-orig/daemon/Makefile.in	2009-12-16 17:07:10.000000000 -0600
++++ gdm-2.28.2/daemon/Makefile.in	2010-02-05 20:40:48.000000000 -0600
+@@ -253,6 +253,7 @@
+ DAEMON_LIBS = @DAEMON_LIBS@
+ DATADIR = @DATADIR@
+ DATADIRNAME = @DATADIRNAME@
++DBUS_DAEMON_DIR = @DBUS_DAEMON_DIR@
+ DBUS_SYS_DIR = @DBUS_SYS_DIR@
+ DEBUG_CFLAGS = @DEBUG_CFLAGS@
+ DEFS = @DEFS@
+@@ -455,6 +456,7 @@
+ 	-DAUTHDIR=\"$(authdir)\"			\
+ 	-DBINDIR=\"$(bindir)\"				\
+ 	-DDATADIR=\"$(datadir)\"			\
++	-DDBUS_DAEMON_DIR=\"$(DBUS_DAEMON_DIR)\"	\
+ 	-DDMCONFDIR=\"$(dmconfdir)\"			\
+ 	-DGDMCONFDIR=\"$(gdmconfdir)\"			\
+ 	-DLIBDIR=\"$(libdir)\"				\
+diff -Naur gdm-2.28.2-orig/data/gconf.path gdm-2.28.2/data/gconf.path
+--- gdm-2.28.2-orig/data/gconf.path	2009-12-16 16:46:13.000000000 -0600
++++ gdm-2.28.2/data/gconf.path	2010-02-05 20:40:41.000000000 -0600
+@@ -1,5 +1,5 @@
+ # treat system-wide settings as mandatory
+-xml:readonly:/etc/gconf/gconf.xml.system
++xml:readonly:@sysconfdir@/gconf/gconf.xml.system
+ 
+ # override some settings
+ # we treat settings in this location as
+diff -Naur gdm-2.28.2-orig/data/Makefile.am gdm-2.28.2/data/Makefile.am
+--- gdm-2.28.2-orig/data/Makefile.am	2009-12-16 16:51:14.000000000 -0600
++++ gdm-2.28.2/data/Makefile.am	2010-02-05 20:40:41.000000000 -0600
+@@ -216,7 +216,7 @@
+ 		chown root:gdm $(DESTDIR)$(cachedir) || : ; \
+ 	fi
+ 
+-	$(INSTALL_DATA) $(srcdir)/gconf.path $(DESTDIR)$(workingdir)/.gconf.path
++	sed -e 's,[@]sysconfdir[@],$(sysconfdir),g' < $(srcdir)/gconf.path > $(DESTDIR)$(workingdir)/.gconf.path
+ 	gconftool-2 --direct --config-source=xml:merged:$(DESTDIR)$(workingdir)/.gconf.mandatory --recursive-unset /
+ 	gconftool-2 --direct --config-source=xml:merged:$(DESTDIR)$(workingdir)/.gconf.mandatory --load $(srcdir)/session-setup.entries
+ 	chown -R root:gdm $(DESTDIR)$(workingdir)/.gconf.mandatory || :
+diff -Naur gdm-2.28.2-orig/data/Makefile.in gdm-2.28.2/data/Makefile.in
+--- gdm-2.28.2-orig/data/Makefile.in	2009-12-16 17:07:10.000000000 -0600
++++ gdm-2.28.2/data/Makefile.in	2010-02-05 20:40:41.000000000 -0600
+@@ -872,7 +872,7 @@
+ 		chown root:gdm $(DESTDIR)$(cachedir) || : ; \
+ 	fi
+ 
+-	$(INSTALL_DATA) $(srcdir)/gconf.path $(DESTDIR)$(workingdir)/.gconf.path
++	sed -e 's,[@]sysconfdir[@],$(sysconfdir),g' < $(srcdir)/gconf.path > $(DESTDIR)$(workingdir)/.gconf.path
+ 	gconftool-2 --direct --config-source=xml:merged:$(DESTDIR)$(workingdir)/.gconf.mandatory --recursive-unset /
+ 	gconftool-2 --direct --config-source=xml:merged:$(DESTDIR)$(workingdir)/.gconf.mandatory --load $(srcdir)/session-setup.entries
+ 	chown -R root:gdm $(DESTDIR)$(workingdir)/.gconf.mandatory || :
+diff -Naur gdm-2.28.2-orig/Makefile.in gdm-2.28.2/Makefile.in
+--- gdm-2.28.2-orig/Makefile.in	2009-12-16 17:07:12.000000000 -0600
++++ gdm-2.28.2/Makefile.in	2010-02-05 20:40:48.000000000 -0600
+@@ -107,6 +107,7 @@
+ DAEMON_LIBS = @DAEMON_LIBS@
+ DATADIR = @DATADIR@
+ DATADIRNAME = @DATADIRNAME@
++DBUS_DAEMON_DIR = @DBUS_DAEMON_DIR@
+ DBUS_SYS_DIR = @DBUS_SYS_DIR@
+ DEBUG_CFLAGS = @DEBUG_CFLAGS@
+ DEFS = @DEFS@

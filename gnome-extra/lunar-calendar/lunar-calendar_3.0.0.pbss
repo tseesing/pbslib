@@ -1,0 +1,40 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="lunar-date gtk frondend"
+HOMEPAGE="http://code.google.com/p/liblunar/"
+LICENSE="GPL"
+PACKAGER="StartOS Developers"
+
+REPO="testing"
+
+SRC_URI="http://liblunar.googlecode.com/files/"$N-$V".tar.gz"
+CHECKSUM="c59a410a76f495a425edd0ecbeda530141b84eb5"
+
+RDEPEND=""
+BDEPEND=""
+RECOMMENDED=""
+CONFLICT=""
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_config() {
+	config+="--enable-introspection=no"
+	doconfig
+}
+
+pbs_build() {
+	domake
+}
+
+pbs_install() {
+	domkinstall
+	docp "$filesdir"/99-liblunar-preload-gtk3 "$destdir"/etc/X11/Xsession.d
+}
+

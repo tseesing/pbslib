@@ -1,0 +1,36 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="Advanced Linux Sound Architecture Utils (alsactl, alsamixer, etc.)"
+HOMEPAGE="http://www.alsa-project.org/"
+LICENSE="GPL"
+PACKAGER="StartOS Developers"
+
+SRC_URI="ftp://ftp.alsa-project.org/pub/utils/"$N-$V".tar.bz2"
+CHECKSUM="f81f9dcb9a014fd32cb3a70066a5b9a9"
+
+RDEPEND="alsa-lib libsamplerate ncurses"
+BDEPEND=""
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_config() {
+	config+=""
+	doconfig
+}
+
+pbs_build() {
+	domake
+}
+
+pbs_install() {
+	domkinstall
+	docp "$filesdir"/alsa.conf "$destdir"/etc/modprobe.d
+}
+

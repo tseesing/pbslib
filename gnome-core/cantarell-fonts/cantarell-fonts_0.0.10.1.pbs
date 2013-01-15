@@ -1,0 +1,45 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="Cantarell font family"
+HOMEPAGE="http://live.gnome.org/CantarellFonts"
+LICENSE="GPL"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
+YARCH="any"
+
+SRC_URI="http://ftp.gnome.org/pub/gnome/core/3.6/3.6.2/sources/"$N-$V".tar.xz"
+CHECKSUM="73b0f2cae582245f3cb63288e394372e"
+
+RDEPEND="fontconfig"
+RECOMMENDED=""
+BDEPEND=""
+OPTIONAL=""
+CONFLICT=""
+
+INSTALL="$N.install"
+
+pbs_unpack() {
+    dounpack
+}
+
+pbs_config() {
+	config+="--with-configdir=/etc/fonts/conf.avail"
+	doconfig
+}
+
+pbs_build() {
+	domake
+}
+
+pbs_install() {
+	domkinstall
+	cd "$destdir"
+    docp "$filesdir"/21-cantarell-hinting.conf etc/fonts/conf.avail/
+    doln ../conf.avail/21-cantarell-hinting.conf etc/fonts/conf.d/21-cantarell-hinting.conf
+    doln ../conf.avail/31-cantarell.conf etc/fonts/conf.d/31-cantarell.conf
+}
+

@@ -1,0 +1,47 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="Standard GNU utilities (chmod, cp, dd, dir, ls, who)"
+HOMEPAGE="http://www.gnu.org/software/coreutils"
+LICENSE="GPLv3"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
+
+SRC_URI="http://ftp.gnu.org/gnu/"$N"/"$N-$V".tar.xz"
+CHECKSUM="3d69af8f561fce512538a9fe85f147ff"
+
+RDEPEND="acl gmp libcap pam"
+BDEPEND=""
+RECOMMENDED=""
+
+INSTALL="$N.install"
+
+pbs_unpack() {
+    dounpack
+}
+
+pbs_config() {
+	# FORCE_UNSAFE_CONFIGURE=1 bypass run configure as root checking
+	config+="FORCE_UNSAFE_CONFIGURE=1 --enable-no-install-program=groups,hostname,kill,uptime"
+	doconfig
+}
+
+pbs_build() {
+	domake
+}
+
+pbs_install() {
+	domkinstall
+	# For FHS
+	cd "$destdir"
+	_fhs=('cat' 'chgrp' 'chmod' 'chown' 'cp' 'date' 'dd' 'df' 'echo' 'false'
+	      'ln' 'ls' 'mkdir' 'mknod' 'mv' 'pwd' 'rm' 'rmdir' 'stty' 'sync'
+	      'true' 'uname')
+	for i in ${_fhs[@]}; do
+		doln /usr/bin/"${i}" bin/"${i}"
+	done
+}
+

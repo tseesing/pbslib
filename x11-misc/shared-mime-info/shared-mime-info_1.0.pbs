@@ -1,0 +1,38 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="Freedesktop.org Shared MIME Info"
+HOMEPAGE="http://freedesktop.org/Software/shared-mime-info"
+LICENSE="GPL"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
+ 
+SRC_URI="http://freedesktop.org/~hadess/"$N-$V".tar.xz"
+
+RDEPEND="glib2 libxml2"
+BDEPEND="intltool xml-parser"
+OPIONAL=""
+
+INSTALL="$N.install"
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_config() {
+	config+="--disable-update-mimedb"
+	doconfig
+}
+
+pbs_build() {
+	make
+}
+
+pbs_install() {
+	domkinstall
+}
+
+

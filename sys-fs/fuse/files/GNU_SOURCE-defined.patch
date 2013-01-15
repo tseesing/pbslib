@@ -1,0 +1,11 @@
+--- util/fusermount.c	2011-09-20 10:44:20.005722130 +0800
++++ util/fusermount.c.new	2011-09-20 10:43:43.182389286 +0800
+@@ -9,6 +9,8 @@
+ 
+ #include <config.h>
+ 
++#define _GNU_SOURCE
++
+ #include "mount_util.h"
+ #include <stdio.h>
+ #include <stdlib.h>

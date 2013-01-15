@@ -1,0 +1,40 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="Script to test whether computer is running on AC power"
+HOMEPAGE="http://packages.debian.org/testing/utils/powermgmt-base"
+LICENSE="GPL"
+PACKAGER="StartOS Developers"
+
+SRC_URI="http://ftp.de.debian.org/debian/pool/main/p/"$N"/"${N}_$V$R".tar.gz"
+CHECKSUM="6e57e71d0cd2ef3fbeb7b031c7f24f52"
+
+RDEPEND="glibc"
+RECOMMENDED=""
+BDEPEND=""
+OPTIONAL=""
+CONFLICT=""
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_config() {
+	config+=""
+	doconfig
+}
+
+pbs_build() {
+	domake
+}
+
+pbs_install() {
+	mkdir -p "$destdir"/sbin/
+	domkinstall
+}
+
+

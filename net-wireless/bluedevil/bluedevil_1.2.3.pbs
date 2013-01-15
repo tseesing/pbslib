@@ -1,0 +1,41 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="KDE bluetooth framework"
+HOMEPAGE="https://projects.kde.org/projects/extragear/base/bluedevil"
+LICENSE="GPL"
+PACKAGER="StartOS Developers"
+
+SRC_URI="http://download.kde.org/stable/"$N"/"$V"/src/"$N-$V".tar.bz2"
+CHECKSUM="e792576d34956d27cd0c3eb3c81a5923"
+
+RDEPEND="kdelibs libbluedevil"
+RECOMMENDED=""
+BDEPEND="cmake automoc4"
+OPTIONAL=""
+CONFLICT=""
+REPLACE=""
+
+INSTALL="$N.install"
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_config() {
+	doconfig -DCMAKE_BUILD_TYPE=Release
+}
+
+pbs_build() {
+	domake
+}
+
+pbs_install() {
+	domkinstall
+}
+
+

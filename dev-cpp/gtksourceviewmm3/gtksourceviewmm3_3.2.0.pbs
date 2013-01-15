@@ -1,0 +1,40 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="A C++ API for gtksourceview3"
+HOMEPAGE="http://www.gnome.org"
+LICENSE="LGPLv2.1"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>
+          chenqixing@ivali.com"
+
+SRC_URI="http://ftp.gnome.org/pub/GNOME/sources/"${N%3}"/${V::3}/"${N%3}-$V".tar.xz"
+CHECKSUM="9dc0c44f00627e434a36ac7c3a34d9c30ebe45eb6dc682dc733a85dcead2ba66"
+
+RDEPEND="gtkmm3 gtksourceview3 glibmm"
+RECOMMENDED=""
+BDEPEND="gtksourceview3(>=3.2.0) glibmm(>=2.28.0) gtkmm3(>=3.2.0)"
+OPTIONAL=""
+CONFLICT=""
+
+pbs_unpack() {
+    dounpack
+}
+
+pbs_config() {
+	config+=""
+	doconfig
+}
+
+pbs_build() {
+	domake
+}
+
+pbs_install() {
+	domkinstall
+    dodoc AUTHORS COPYING README ChangeLog NEWS
+}
+

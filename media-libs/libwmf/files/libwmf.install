@@ -1,0 +1,13 @@
+
+post_install() {
+    gdk-pixbuf-query-loaders >/etc/gtk-2.0/gdk-pixbuf.loaders
+}
+
+post_remove() {
+    post_install
+}
+
+post_upgrade() {
+    post_install
+}
+

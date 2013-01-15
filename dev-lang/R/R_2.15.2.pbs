@@ -1,0 +1,71 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="Language and environment for statistical computing and graphics"
+HOMEPAGE="http://www.r-project.org"
+LICENSE="GPL"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
+
+SRC_URI="http://cran.r-project.org/src/base/R-2/"$N-$V".tar.gz"
+CHECKSUM="c80da687d66ee88d1e34fc1ae5c1bd525f9513dd"
+
+RDEPEND="blas lapack bzip2 libpng libjpeg-turbo libtiff ncurses pcre readline zlib perl gcc-libs libXt libXmu pango xz desktop-file-utils"
+RECOMMENDED=""
+BDEPEND="tk"
+OPTIONAL="tk: tcl/tk interface
+          texlive-bin: latex sty files"
+CONFLICT=""
+
+INSTALL="$N.install"
+
+pbs_unpack() {
+    dounpack
+}
+
+pbs_patch() {
+    sed -i 's|#define NeedFunctionPrototypes 0|#define NeedFunctionPrototypes 1|g' src/modules/X11/dataentry.c
+    sed -i 's|$(rsharedir)/texmf|${datarootdir}/texmf|' share/Makefile.in
+}
+
+pbs_config() {
+	config+="--sysconfdir=/etc/R 
+             --datarootdir=/usr/share 
+             --with-x 
+             --enable-R-shlib 
+             --with-lapack 
+             --with-blas 
+             rsharedir=/usr/share/R/ 
+             rincludedir=/usr/include/R/ 
+             rdocdir=/usr/share/doc/R/
+             F77=gfortran 
+             LIBnn=lib"  
+	doconfig
+}
+
+pbs_build() {
+	domake
+}
+
+pbs_install() {
+	domkinstall
+	cd "$destdir"
+    #  Fixup R wrapper scripts.
+    sed -i "s|${destdir} ||" usr/bin/R
+    rm usr/lib"$LIBDIRSUFFIX"/R/bin/R
+    doln /usr/bin/bin/R usr/lib"$LIBDIRSUFFIX"/R/bin/R
+
+    # install some freedesktop.org compatibility
+    dodesktop R.desktop R.png
+
+    # move the config directory to /etc and create symlinks
+    cd "${destdir}"/usr/lib"$LIBDIRSUFFIX"/R/etc
+    for i in *; do
+        domv "${i}" "${destdir}"/etc/R/
+        doln /etc/R/"${i}" "${i}"
+    done
+}
+

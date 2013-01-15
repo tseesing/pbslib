@@ -1,0 +1,58 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="GTK+ implementation of wxWidgets API for GUI"
+HOMEPAGE="http://wxwidgets.org/"
+LICENSE="custom,wxWindows"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
+
+SRC_URI="http://downloads.sourceforge.net/wxpython/wxPython-src-$V.tar.bz2"
+CHECKSUM="05688dc03d61631750f5904273122bb40a2115f5"
+
+RDEPEND="gtk2 gst-plugins-base0.10 mesa libXxf86vm libSM libsdl"
+BDEPEND="gconf gst-plugins-bad0.10 glu libXt"
+RECOMMENDED=""
+CONFLICT=""
+
+pbs_unpack() {
+    dounpack
+}
+
+pbs_config() {
+	config+="--with-gtk=2 
+             --with-opengl 
+             --enable-unicode 
+             --enable-graphics_ctx  
+             --disable-optimize
+             --enable-mediactrl
+             --with-regex=builtin 
+             --with-libpng=sys 
+             --with-libxpm=sys 
+             --with-libjpeg=sys 
+             --with-libtiff=sys 
+             --with-sdl 
+             --disable-precomp-headers"
+	doconfig
+}
+
+pbs_build() {
+	domake
+	domake  -C locale allmo
+	#Build contrib
+	cd contrib/src
+	domake
+}
+
+pbs_install() {
+    cd "$srcdir"
+	domkinstall
+    dodoc docs/licence.txt
+	#Install contrib
+    cd contrib/src
+	domkinstall
+}
+

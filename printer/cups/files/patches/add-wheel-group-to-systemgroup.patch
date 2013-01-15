@@ -1,0 +1,12 @@
+diff -ur cups-1.4.6/conf/cupsd.conf.in cups-1.4.6.new/conf/cupsd.conf.in
+--- cups-1.4.6/conf/cupsd.conf.in	2010-09-22 06:34:57.000000000 +0800
++++ cups-1.4.6.new/conf/cupsd.conf.in	2011-06-21 20:15:30.533328246 +0800
+@@ -10,7 +10,7 @@
+ LogLevel @CUPS_LOG_LEVEL@
+ 
+ # Administrator user group...
+-SystemGroup @CUPS_SYSTEM_GROUPS@
++SystemGroup @CUPS_SYSTEM_GROUPS@  wheel
+ @CUPS_SYSTEM_AUTHKEY@
+ 
+ # Only listen for connections from the local machine.

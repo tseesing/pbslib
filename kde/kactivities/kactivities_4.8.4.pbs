@@ -1,0 +1,34 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="API for using and interacting with Activities"
+HOMEPAGE="http://www.kde.org"
+LICENSE="GPL,FDL"
+PACKAGER="StartOS Developers<>"
+
+SRC_URI="http://download.kde.org/stable/"$V"/src/"$N-$V".tar.xz"
+CHECKSUM="3f42c18bae5a1d6bbd7fca471d8b4f9755875e06"
+
+RDEPEND="attica bzip2 dbus expat fontconfig freetype gcc-lib glib2 glibc kdelibs libdbusmenu-qt libffi libICE libpng libSM libX11 libXau libxcb libXcursor libXdmcp libXext libXfixes libXft libXi libXpm libXrender libXtst openssl qca qt-core soprano util-linux-ng xz-utils zlib"
+BDEPEND="cmake automoc4"
+
+pbs_unpack() {
+       dounpack
+}
+
+pbs_config() {
+	doconfig -DCMAKE_BUILD_TYPE=Release 
+}
+
+pbs_build() {
+	domake
+}
+
+pbs_install() {
+	domkinstall
+}
+

@@ -1,0 +1,27 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="Base layout filesystem for StartOS"
+HOMEPAGE="http://www.startos.com"
+LICENSE="GPL"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>
+          chenqixing@ivali.com"
+YARCH="any"
+
+SRC_URI=""
+
+RDEPEND="bash coreutils procps grep findutils shadow"
+BDEPEND=""
+
+INSTALL="$N"6.install
+
+pbs_install() {
+	docp "$filesdir"/lsb_release      "$destdir"/usr/bin/
+	docp "$filesdir"/startos-release  "$destdir"/etc/
+    docp "$filesdir"/usb-load-ehci-first "$destdir"/usr/lib/modules-load.d/
+}
+

@@ -1,0 +1,50 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="A fork of GNOME Shell with layout similar to GNOME "
+HOMEPAGE="http://cinnamon.linuxmint.com"
+LICENSE="GPL2"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>
+          chenqixing@ivali.com"
+
+SRC_URI="https://github.com/linuxmint/Cinnamon/archive/"$V".tar.gz"
+CHECKSUM="932f3e99ae050b351ee515a355638777"
+
+RDEPEND="caribou gjs gnome-bluetooth gnome-control-center gnome-panel gnome-session gnome-settings-daemon gnome-themes-standard gstreamer0.10 libgnomekbd notification-daemon muffin gnome-python-gconf lxml imaging"
+RECOMMENDED="nemo"
+BDEPEND="gnome-common intltool"
+OPTIONAL="muffin: window manager fork of mutter
+          nemo: file manager fork of nautilus"
+CONFLICT=""
+REPLACE=""
+
+INSTALL="$N.install"
+
+pbs_unpack() {
+    dounpack
+}
+
+pbs_patch() {
+    sed -i -e '/^IsRun/s@\(.*lib\)\/.*\(\/.*\)@\1exec\2@'  files/usr/share/gnome-session/sessions/cinnamon.session
+    sed -i 's/\ --warn-all\ --warn-error//' src/Makefile.am
+}
+
+pbs_config() {
+	config+="--disable-static 
+             --disable-schemas-compile 
+             --enable-compile-warnings=yes" 
+	doconfig
+}
+
+pbs_build() {
+	domake
+}
+
+pbs_install() {
+	domkinstall
+}
+

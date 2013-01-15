@@ -1,0 +1,41 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="gksu support for mate-file-manager"
+HOMEPAGE="http://mate-desktop.org"
+LICENSE="GPL"
+PACKAGER="StartOS Developers"
+
+REPO="testing"
+
+SRC_URI="http://pub.mate-desktop.org/releases/1.4/"$N-$V".tar.xz"
+CHECKSUM="d91788fce1cdca0294ea9d0a8bca0d0dee91c544"
+
+RDEPEND="libgksu mate-file-manager"
+RECOMMENDED=""
+BDEPEND=""
+OPTIONAL=""
+CONFLICT=""
+REPLACE=""
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_config() {
+	config+=""
+	doconfig
+}
+
+pbs_build() {
+	domake
+}
+
+pbs_install() {
+	domkinstall 
+}
+

@@ -1,0 +1,92 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="The standard GNU Bourne again shell"
+HOMEPAGE="http://tiswww.case.edu/php/chet/bash/bashtop.html"
+LICENSE="GPL"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
+
+URL="http://ftp.gnu.org/gnu/"$N"/"$N-$V"-patches"
+SRC_URI="http://ftp.gnu.org/gnu/"$N"/"$N-$V".tar.gz
+	 "$URL"/bash42-001
+	 "$URL"/bash42-002
+	 "$URL"/bash42-003
+	 "$URL"/bash42-004
+	 "$URL"/bash42-005
+	 "$URL"/bash42-006
+	 "$URL"/bash42-007
+	 "$URL"/bash42-008
+	 "$URL"/bash42-009
+	 "$URL"/bash42-010
+	 "$URL"/bash42-011
+	 "$URL"/bash42-012
+	 "$URL"/bash42-013
+	 "$URL"/bash42-014
+	 "$URL"/bash42-015
+	 "$URL"/bash42-016
+	 "$URL"/bash42-017
+	 "$URL"/bash42-018
+	 "$URL"/bash42-019
+	 "$URL"/bash42-020
+	 "$URL"/bash42-021
+	 "$URL"/bash42-022
+	 "$URL"/bash42-023
+	 "$URL"/bash42-024
+	 "$URL"/bash42-025
+	 "$URL"/bash42-026
+	 "$URL"/bash42-027
+	 "$URL"/bash42-028
+	 "$URL"/bash42-029
+	 "$URL"/bash42-030
+	 "$URL"/bash42-031
+	 "$URL"/bash42-032
+	 "$URL"/bash42-033
+	 "$URL"/bash42-034
+	 "$URL"/bash42-035
+	 "$URL"/bash42-036
+	 "$URL"/bash42-037
+	 "$URL"/bash42-038
+	 "$URL"/bash42-039"
+
+RDEPEND="readline"
+BDEPEND=""
+
+INSTALL="$N.install"
+
+pbs_unpack() {
+    dounpack
+}
+
+pbs_patch() {
+	for ((i=1; i<=9; i++)); do
+		dopatch "$YBS_SOURCE"/bash42-00"$i"
+	done
+	for ((i=10; i<=39; i++)); do
+		dopatch "$YBS_SOURCE"/bash42-0"$i"
+	done
+	dopatch config-default-path.patch
+}
+
+pbs_config() {
+	config+="--bindir=/bin 
+	    	 --htmldir=/usr/share/doc/bash 
+		     --without-bash-malloc 
+	         --with-installed-readline"
+	doconfig
+}
+
+pbs_build() {
+	domake
+}
+
+pbs_install() {
+	domkinstall
+	cd "$destdir"
+	doln /bin/bash bin/sh
+	docp "$filesdir"/skel etc
+}
+

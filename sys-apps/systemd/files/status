@@ -1,0 +1,19 @@
+#!/bin/bash
+#
+# wrapper of systemctl start
+#
+if [ "x$@" = "x" ]; then
+        echo "* Error, please specify a systemd unit."
+        exit 1
+else
+	echo "* This is a wrapper of systemctl, try to status $1."
+	echo
+
+	if [ "x$1" != "x" ]; then
+		dm=${1%%.service}
+		systemctl status "$(basename $dm)".service
+	fi
+fi
+
+exit 0
+

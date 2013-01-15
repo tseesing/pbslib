@@ -1,0 +1,39 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="A D-Bus service providing high-level OBEX client and server side functionality"
+HOMEPAGE="http://wiki.muiline.com/obex-data-serve"
+LICENSE="GPL"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
+
+SRC_URI="http://tadas.dailyda.com/software/"$N-$V".tar.gz"
+CHECKSUM="961ca5db6fe9c97024e133cc6203cc4d"
+
+RDEPEND="dbus-glib imagemagick openobex"
+RECOMMENDED=""
+BDEPEND=""
+OPTIONAL=""
+CONFLICT=""
+REPLACE=""
+
+pbs_unpack() {
+    dounpack
+}
+
+pbs_config() {
+	./configure --prefix=/usr --sysconfdir=/etc
+}
+
+pbs_build() {
+	domake
+}
+
+pbs_install() {
+	domkinstall
+}
+
+

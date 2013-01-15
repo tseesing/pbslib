@@ -1,0 +1,24 @@
+. /usr/lib/ybs/funcs
+
+gname="postgres"
+
+post_install() {
+    [ ! -d '/var/lib/postgres' ] && mkdir -p '/var/lib/postgres'
+    dogroupadd -g 88 $gname
+    douseradd -c 'PostgreSQL user' -u 88 -g $gname -d '/var/lib/postgres' -s /bin/bash $gname
+    passwd -l $gname >/dev/null
+    systemd-tmpfiles --create postgresql.conf ||true
+}
+
+post_remove() {
+    douserdel $gname
+    dogroupdel $gname ||true
+}
+
+post_upgrade() {
+    post_install
+    # fix postgres user shell issue
+    postgres_shell=$(getent passwd $gname | cut -d: -f7)
+    [ "$postgres_shell" = "/sbin/nologin" ] && chsh -s /bin/bash $gname || true
+}
+

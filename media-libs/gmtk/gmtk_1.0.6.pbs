@@ -1,0 +1,38 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="GTK+ widget and function libraries for gnome-mplayer"
+HOMEPAGE="http://code.google.com/p/gmtk/"
+LICENSE="GPLv2+"
+PACKAGER="StartOS Developers"
+
+SRC_URI="http://gmtk.googlecode.com/files/"$N-$V".tar.gz"
+CHECKSUM="cbf3a8620327cd06f325e05b68c7d7858c070455"
+
+RDEPEND="pulseaudio"
+RECOMMENDED=""
+BDEPEND=""
+OPTIONAL=""
+CONFLICT=""
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_config() {
+	config+=""
+	doconfig
+}
+
+pbs_build() {
+	domake
+}
+
+pbs_install() {
+	domkinstall
+}
+

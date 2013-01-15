@@ -1,0 +1,37 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="Perl/CPAN Error module - Error/exception handling in an OO-ish way"
+HOMEPAGE="http://search.cpan.org/dist/$N"
+LICENSE="GPL,PerlArtistic"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
+YARCH="any"
+
+SRC_URI="http://search.cpan.org/CPAN/authors/id/S/SH/SHLOMIF/${N#perl-}-$V.tar.gz"
+CHECKSUM="1137a7bbb94c9508a2268c467583207f"
+
+RDEPEND="perl"
+BDEPEND=""
+RECOMMENDED=""
+CONFLICT=""
+
+pbs_unpack() {
+    dounpack
+}
+
+pbs_config() {
+	doconfig INSTALLDIRS=vendor
+}
+
+pbs_build() {
+	domake
+}
+
+pbs_install() {
+	domkinstall
+}
+

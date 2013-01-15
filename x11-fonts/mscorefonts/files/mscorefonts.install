@@ -1,0 +1,25 @@
+. /usr/lib/ybs/funcs
+
+fontdir="/usr/share/fonts/truetype/mscorefonts"
+
+post_install() {
+	echo "
+* These fonts were provided by Microsoft in the interest of cross-platform compatibility. 
+* If you do not accept mscorefonts-eula, please remove the package immediately.
+"
+	dofont "$fontdir"
+}
+
+post_remove() {
+	rm -rf "$fontdir"/{fonts.dir,fonts.scale}	
+	rmdir "$fontdir" ||return 0
+}
+
+post_upgrade() {
+	post_install
+}
+
+post_downgrade() {
+	post_install
+}
+

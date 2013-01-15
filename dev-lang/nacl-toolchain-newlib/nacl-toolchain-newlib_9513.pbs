@@ -1,0 +1,77 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="Native Client newlib-based toolchain (only for compiling IRT)"
+HOMEPAGE="http://code.google.com/chrome/nativeclient/"
+LICENSE="BSD,GPL3,LGPL3,FDL,custom"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
+
+_binutilsver=2.20.1
+_newlibver=1.20.0
+_gccver=4.4.3
+
+SRC_URI="http://ftp.gnu.org/gnu/binutils/binutils-"$_binutilsver".tar.bz2
+         ftp://sources.redhat.com/pub/newlib/newlib-"$_newlibver".tar.gz
+         http://ftp.gnu.org/gnu/gcc/gcc-$_gccver/gcc-"$_gccver".tar.bz2
+         http://commondatastorage.googleapis.com/nativeclient-archive2/x86_toolchain/r"$V"/nacltoolchain-buildscripts-r"$V".tar.gz
+         http://commondatastorage.googleapis.com/nativeclient-archive2/x86_toolchain/r"$V"/naclbinutils-"$_binutilsver"-r"$V".patch.bz2
+         http://commondatastorage.googleapis.com/nativeclient-archive2/x86_toolchain/r"$V"/naclnewlib-"$_newlibver"-r"$V".patch.bz2
+         http://commondatastorage.googleapis.com/nativeclient-archive2/x86_toolchain/r"$V"/naclgcc-"$_gccver"-r"$V".patch.bz2"
+CHECKSUM="71d37c96451333c5c0b84b170169fdcb138bbb27397dc06281905d9717c8ed64
+          c644b2847244278c57bec2ddda69d8fab5a7c767f3b9af69aa7aa3da823ff692
+          97ed664694b02b4d58ac2cafe443d02a388f9cb3645e7778843b5086a5fec040
+          3c3d6e63ef8caec24a9e368b72e6c94a28edc8c016da5fef73a312b4a3514909
+          caaefc2bf90325f152bd0998a29fcad425522a22c6ce373366c4dde2b76c5338
+          be9e48f8714eaadfc3349ac6d8b077050b719d16a3e7592573670cee7a3c4934
+          ccbc83627bc7c36f7bbe994ccffe4d51584d8812f2ed62f08528c173e06dcf85"
+
+RDEPEND="zlib mpfr"
+RECOMMENDED=""
+BDEPEND=""
+OPTIONAL="" 
+CONFLICT=""
+REPLACE=""
+
+OPTIONS="nostrip"
+
+pbs_unpack() {
+    mkdir "$N-$V$R" && cd "$N-$V$R"
+    for i in binutils-"$_binutilsver".tar.bz2 \
+             newlib-"$_newlibver".tar.gz \
+             gcc-"$_gccver".tar.bz2 \
+             nacltoolchain-buildscripts-r"$V".tar.gz; do 
+             echo "* decompressing "$YBS_SOURCE"/"${i}" "
+             tar xf "$YBS_SOURCE"/"${i}" || die "decompress "$YBS_SOURCE"/"${i}" failed."
+    done
+}
+
+pbs_patch() {
+    mkdir SRC
+    mv binutils-"$_binutilsver" SRC/binutils
+    mv newlib-"$_newlibver" SRC/newlib
+    mv gcc-"$_gccver" SRC/gcc
+    
+    for i in naclbinutils-"$_binutilsver"-r"$V".patch.bz2 \
+              naclnewlib-"$_newlibver"-r"$V".patch.bz2 \
+              naclgcc-"$_gccver"-r"$V".patch.bz2; do
+              cp "$YBS_SOURCE"/"${i}" .
+              bunzip2 "${i}"
+    done
+    
+    for _patch in *.patch; do
+        patch -d SRC -Np0 -i "$PWD"/"$_patch" || die " patch "$PWD"/"$_patch" failed."
+    done
+}
+
+pbs_build() {
+	domake PREFIX="$srcdir"/"$N" CANNED_REVISION="yes" build-with-newlib
+}
+
+pbs_install() {
+    docp "$N" "$destdir"/usr/lib/
+}
+

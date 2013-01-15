@@ -1,0 +1,38 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="encrypt stuff simply "
+HOMEPAGE="http://search.cpan.org/~kasei/Crypt-Simple-0.06/"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
+LICENSE="GPL,PerlArtistic"
+YARCH="any"
+
+SRC_URI="http://mirrors.xmu.edu.cn/CPAN/authors/id/K/KA/KASEI/Crypt-Simple-"$V".tar.gz"
+
+RDEPEND="perl"
+BDEPEND=""
+RECOMMENDED=""
+CONFLICT=""
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_config() {
+        export PERL_MM_USE_DEFAULT=1
+	doconfig INSTALLDIRS=vendor
+}
+
+pbs_build() {
+	domake
+}
+
+pbs_install() {
+	domkinstall
+        perl_cleanup
+}
+

@@ -1,0 +1,50 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="The Control Center for GNOME"
+HOMEPAGE="http://www.gnome.org/"
+LICENSE="GPL"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
+
+SRC_URI="http://download.gnome.org/sources/"$N"/"${V%.*}"/"$N-$V".tar.xz"
+CHECKSUM="2ae23972bc64f62b4facd12dd5adce212bda02491eb6e56bbf195332157d21fb"
+
+RDEPEND="accountsservice cups-pk-helper gnome-bluetooth gnome-desktop gnome-menus gnome-online-accounts gnome-settings-daemon gsettings-desktop-schemas gtk3 libgtop libsocialweb network-manager-applet sound-theme-freedesktop upower libpwquality systemd" #libibus
+BDEPEND="gnome-doc-utils intltool docbook-xsl"
+RECOMMENDED="mesa-demos gnome-color-manager"
+OPTIONAL="mesa-demos: provides glxinfo for graphics information
+          gnome-color-manager: for color management tasks"
+
+INSTALL="$N.install"
+
+pbs_unpack() {
+    dounpack
+}
+
+pbs_config() {
+	config+="--disable-static 
+             --enable-systemd 
+             --with-libsocialweb 
+             --disable-update-mimedb 
+             --without-cheese
+             --enable-ibus"
+             #--disable-ibus"
+	doconfig
+}
+
+pbs_build() {
+	domake
+}
+
+pbs_install() {
+	domkinstall
+    # Fix a warning
+    cd "$destdir"
+    chown 102:0 usr/share/polkit-1/rules.d
+    chmod 700  usr/share/polkit-1/rules.d
+}
+

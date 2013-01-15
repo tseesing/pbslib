@@ -1,0 +1,41 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="Telepathy Mission Control"
+HOMEPAGE="http://telepathy.freedesktop.org/wiki/Mission%20Control"
+LICENSE="LGPLv2.1"
+PACKAGER="chenqixing@ivali.com
+          Zhongxin Huang <huangzhongxin@ivali.com>"
+
+SRC_URI="http://telepathy.freedesktop.org/releases/"$N"/"$N-$V".tar.gz"
+CHECKSUM="483fa8860891815a540ecf1bb9155122"
+
+RDEPEND="libgnome-keyring networkmanager telepathy-glib upower dconf"
+BDEPEND="python libxslt"
+RECOMMENDED=""
+
+INSTALL="$N.install"
+
+pbs_unpack() {
+    dounpack
+}
+
+pbs_config() {
+	config+="--enable-gnome-keyring  
+	         --disable-debug
+	         --disable-schemas-compile"
+	doconfig
+}
+
+pbs_build() {
+	domake
+}
+
+pbs_install() {
+	domkinstall
+}
+

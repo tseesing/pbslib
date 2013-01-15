@@ -1,0 +1,46 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="Database-driven manual pager suite"
+HOMEPAGE="http://savannah.nongnu.org/projects/man-db"
+LICENSE="GPL,LGPL"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
+
+SRC_URI="http://savannah.nongnu.org/download/"$N"/"$N-$V".tar.xz"
+CHECKSUM="a593a095599ae97bcacf8d038659a146"
+
+RDEPEND="bash gdbm zlib groff libpipeline"
+BDEPEND=""
+RECOMMENDED="groff"
+OPTIONAL="less:
+          less: "
+
+pbs_unpack() {
+    dounpack
+}
+
+pbs_config() {
+    config+="--with-db=gdbm --disable-setuid --enable-mandirs=GNU"
+    doconfig --with-sections=\"1 n l 8 3 0 2 5 4 9 6 7\"
+}
+
+pbs_build() {
+	domake
+}
+
+pbs_install() {
+	domkinstall
+	cd "$destdir"
+	# part of groff pkg
+	rm -f usr/bin/zsoelim
+	# script from LFS to convert manpages, see
+	# http://www.linuxfromscratch.org/lfs/view/6.4/chapter06/man-db.html
+	docp "$filesdir"/convert-mans usr/bin/
+	#install whatis cron script
+	docp "$filesdir"/man-db etc/cron.daily/
+}
+

@@ -1,0 +1,37 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="The Parma Polyhedra Library provides numerical abstractions for analysis of complex systems"
+HOMEPAGE="http://www.cs.unipr.it/ppl/"
+LICENSE="GPL"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
+
+SRC_URI="ftp://ftp.cs.unipr.it/pub/"$N"/releases/"$V"/"$N-$V".tar.bz2"
+CHECKSUM="8da3ab9de18e669b7af8c4707817d468"
+
+RDEPEND="gmp"
+BDEPEND=""
+RECOMMENDED=""
+CONFLICT=""
+
+pbs_unpack() {
+    dounpack
+}
+
+pbs_config() {
+	config+=""
+	doconfig --enable-interfaces=\"c,cxx\"
+}
+
+pbs_build() {
+	domake
+}
+
+pbs_install() {
+	domkinstall
+}
+

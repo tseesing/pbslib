@@ -1,0 +1,37 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION=" libdbi implements a database-independent abstraction layer in C, similar to the DBI/DBD layer in Perl."
+HOMEPAGE="http://libdbi.sourceforge.net/"
+LICENSE="LGPL"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
+
+SRC_URI="http://sourceforge.net/projects/"$N"/files/"$N"/"$N-$V"/"$N-$V".tar.gz"
+CHECKSUM="c5f15407ef7b07ba854cd8c9b15b88ff"
+
+RDEPEND="glibc"
+RECOMMENDED=""
+BDEPEND=""
+CONFLICT=""
+
+pbs_unpack() {
+    dounpack
+}
+
+pbs_config() {
+	config+=""
+	doconfig
+}
+
+pbs_build() {
+	domake CFLAGS=\"-fno-fast-math\"
+}
+
+pbs_install() {
+	domkinstall
+}
+

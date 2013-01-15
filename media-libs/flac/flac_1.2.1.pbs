@@ -1,0 +1,41 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="free lossless audio encoder and decoder"
+HOMEPAGE="http://flac.sourceforge.net"
+LICENSE="GPL,BSD"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
+
+SRC_URI="http://downloads.xiph.org/releases/"$N"/"$N-$V".tar.gz"
+CHECKSUM="153c8b15a54da428d1f0fadc756c22c7"
+
+RDEPEND="gcc-libs libogg"
+BDEPEND=""
+RECOMMENDED=""
+
+pbs_unpack() {
+    dounpack
+}
+
+pbs_patch() {
+    dopatch flac-1.2.1-gcc-4.3-includes.patch
+}
+
+pbs_config() {
+	config+="--disable-sse --disable-rpath --with-pic"
+    doconfig
+}
+
+pbs_build() {
+	domake
+}
+
+pbs_install() {
+	domkinstall
+    dodoc COPYING.Xiph
+}
+

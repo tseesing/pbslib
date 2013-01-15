@@ -1,0 +1,36 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="Plugins for Audacious"
+HOMEPAGE="http://audacious-media-player.org/"
+LICENSE="GPL"
+PACKAGER="StartOS Developers"
+
+SRC_URI="http://distfiles.audacious-media-player.org/"$N-$V".tar.bz2"
+CHECKSUM="9645637fb108f4d5cc47e72d194c5574"
+
+RDEPEND="alsa-lib atk attr audacious(=3.2.3) bzip2 cairo curl cyrus-sasl dbus dbus-glib directfb e2fsprogs expat faad2 ffmpeg(>=0.11.1) flac fluidsynth fontconfig freetype gcc-lib gdk-pixbuf glib2 glibc gnutls gtk+ jack-audio-connection-kit json-c keyutils krb5 lame libbinio libcap libcddb libcdio libcue libffi libgcrypt libgpg-error libgsm libICE libidn libmms libmodplug libmtp libnotify libogg libpng libproxy libsamplerate libsdl libSM libsndfile libssh2 libtasn1 libtheora libtool libusb libusb-compat libva libvorbis libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libXinerama libxml2 libXrandr libXrender libXt libXtst mpg123 nas ncurses neon opencore-amr openldap openssl orc pango pixman pulseaudio readline rtmpdump schroedinger speex util-linux-ng wavpack x264 xvidcore zlib"
+BDEPEND=""
+RECOMMENDED=""
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_config() {
+	config+="--disable-gtk3"
+	doconfig
+}
+
+pbs_build() {
+	domake
+}
+
+pbs_install() {
+	domkinstall
+}
+

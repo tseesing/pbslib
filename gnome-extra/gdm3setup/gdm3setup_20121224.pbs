@@ -1,0 +1,44 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="A GUI to setting GDM3"
+HOMEPAGE="http://github.com/Nano77/gdm3setup"
+LICENSE="GPL"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
+YARCH="any"
+
+SRC_URI="git://github.com/Nano77/gdm3setup.git"
+
+RDEPEND="gdm gnome-shell dbus-python"
+RECOMMENDED=""
+BDEPEND=""
+OPTIONAL=""
+CONFLICT=""
+REPLACE=""
+
+pbs_unpack() {
+    dounpack
+}
+
+pbs_build() {
+    cd po
+    ./make-mo
+    cd -
+}
+
+pbs_install() {
+    docp gdm3setup.py gdm3setup-daemon.py start-gdm3setup-daemon gdmlogin.py get_gdm.sh set_gdm.sh "$destdir"/usr/bin/
+    chmod 755 "$destdir"/usr/bin/*
+    dodesktop gdm3setup.desktop
+    docp apps.nano77.gdm3setup.service "$destdir"/usr/share/dbus-1/system-services/
+    docp apps.nano77.gdm3setup.service "$destdir"/usr/share/dbus-1/services/
+    docp apps.nano77.gdm3setup.conf "$destdir"/etc/dbus-1/system.d/
+    docp apps.nano77.gdm3setup.policy "$destdir"/usr/share/polkit-1/actions/
+    docp gdm3setup.ui "$destdir"/usr/share/gdm3setup/ui/
+    docp -r locale "$destdir"/usr/share/
+}
+

@@ -1,0 +1,33 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="Implementation of pkg-config in ruby"
+HOMEPAGE="http://github.com/rcairo/pkg-config"
+LICENSE="LGPL"
+PACKAGER="StartOS Developers"
+GROUP="ruby"
+YARCH="any"
+
+SRC_URI="http://gems.rubyforge.org/gems/pkg-config-"$V".gem"
+CHECKSUM="4a71fb7e9750bca9e6c2690ce785427201c9b68c5d44fd2dfb2c814caca934ec"
+
+RDEPEND="ruby"
+RECOMMENDED=""
+BDEPEND="ruby"
+OPTIONAL=""
+CONFLICT=""
+REPLACE=""
+
+pbs_config() {
+	cp "$YBS_SOURCE"/"$(basename $SRC_URI)" .
+}
+
+pbs_install() {
+	_gemdir="$(ruby -rubygems -e'puts Gem.default_dir')"
+	gem install --no-user-install --ignore-dependencies -i "$destdir$_gemdir" "$(basename $SRC_URI)"
+}
+

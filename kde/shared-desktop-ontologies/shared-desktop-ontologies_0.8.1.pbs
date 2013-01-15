@@ -1,0 +1,36 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="Provide RDF vocabularies for the Semantic Desktop"
+HOMEPAGE="http://sourceforge.net/apps/trac/oscaf/"
+LICENSE="GPL"
+PACKAGER="StartOS Developers<>"
+YARCH="any"
+OPTIONS="nodev"
+
+SRC_URI="http://downloads.sourceforge.net/oscaf/"$N-$V".tar.bz2"
+CHECKSUM="de4132e722a5efeed7b5405a70fbc6c3"
+
+RDEPEND=""
+BDEPEND="cmake"
+
+pbs_unpack() {
+       dounpack
+}
+
+pbs_config() {
+	doconfig -DCMAKE_BUILD_TYPE=Release 
+}
+
+pbs_build() {
+	domake
+}
+
+pbs_install() {
+	domkinstall
+}
+

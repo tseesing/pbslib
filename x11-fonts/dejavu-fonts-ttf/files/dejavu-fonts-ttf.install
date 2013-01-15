@@ -1,0 +1,11 @@
+. /usr/lib/ybs/funcs
+
+dir="/usr/share/fonts/truetype/ttf-dejavu"
+
+post_install() {
+	dofont /usr/share/fonts/truetype/ttf-dejavu
+}
+
+post_upgrade() {
+	post_install
+}

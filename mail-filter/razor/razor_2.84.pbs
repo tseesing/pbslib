@@ -1,0 +1,39 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="Vipul's Razor is a distributed, collaborative spam detection and filtering network"
+HOMEPAGE="http://razor.sourceforge.net"
+LICENSE="PerlArtistic"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
+GROUP="perl"
+
+SRC_URI="http://downloads.sourceforge.net/$N/$N-agents-$V.tar.bz2"
+CHECKSUM="8b9a11a6ce020383c32c45d1530d77c2"
+
+RDEPEND="perl-Net-DNS Digest-SHA1 URI Digest-Nilsimsa"
+RECOMMENDED=""
+BDEPEND=""
+OPTIONAL="" 
+CONFLICT=""
+REPLACE=""
+
+pbs_unpack() {
+    dounpack
+}
+
+pbs_config() {
+    doconfig INSTALLDIRS=vendor
+}
+
+pbs_build() {
+	domake
+}
+
+pbs_install() {
+	domkinstall
+}
+

@@ -1,0 +1,50 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="Adobe Flash Player plugin"
+HOMEPAGE="http://www.adobe.com/"
+LICENSE="custom"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
+
+case $ARCH in 
+  i?86) 
+    SRC_URI="http://fpdownload.macromedia.com/get/flashplayer/pdc/"$V"/install_flash_player_11_linux.i386.tar.gz"
+    CHECKSUM="b265e871269f9b3b5cebb559d58c2332" ;;
+  x86_64) 
+    SRC_URI="http://fpdownload.macromedia.com/get/flashplayer/pdc/"$V"/install_flash_player_11_linux."$ARCH".tar.gz"
+    CHECKSUM="e4948cfd8a7687fc0d4dd3e6e81777b8"
+esac
+
+PROVIDE="adobe-flashplugin flash-player-properties"
+
+pbs_unpack() {
+	dounpack
+}
+
+adobe-flashplugin_install() {
+	DESCRIPTION="Adobe Flash Player plugin"
+	RDEPEND="gtk2 libXt nss"
+	
+    docp libflashplayer.so  "$destdir"/usr/lib"$LIBDIRSUFFIX"/adobe-flashplugin
+	dodoc readme.txt
+	cd "$destdir"
+    for i in xulrunner mozilla iceape iceweasel firefox midbrowser xulrunner-addons; do
+	    doln /usr/lib"$LIBDIRSUFFIX"/adobe-flashplugin/libflashplayer.so usr/lib"$LIBDIRSUFFIX"/"${i}"/plugins/libflashplayer.so
+	done
+}
+
+flash-player-properties_install () {
+	DESCRIPTION="Adobe flash player properties"
+	RDEPEND="gtk2 libXft libXpm"
+	RECOMMENDED="adobe-flashplugin"
+	INSTALL="$N.install"
+
+    cd "$srcdir"
+	docp usr "$destdir"/
+	mkdir -p "$destdir"/etc/adobe
+}
+

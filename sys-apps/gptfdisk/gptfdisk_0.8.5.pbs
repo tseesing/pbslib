@@ -1,0 +1,36 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="gdisk - GPT partition table manipulator for Linux"
+HOMEPAGE="http://www.rodsbooks.com/gdisk"
+LICENSE="GPL"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
+
+SRC_URI="http://downloads.sourceforge.net/project/"$N"/"$N"/"$V"/"$N-$V".tar.gz"
+CHECKSUM="15cc691f28212c157e05315662ed6b76ffdcc8de6fc118fa21c81ef5aae84af9"
+
+RDEPEND="icu popt util-linux"
+RECOMMENDED=""
+BDEPEND=""
+OPTIONAL=""
+CONFLICT=""
+
+pbs_unpack() {
+    dounpack
+}
+
+pbs_build() {
+	domake
+}
+
+pbs_install() {
+	install -d "$destdir"/usr/{bin,share/{doc/gdisk,man/man8}}
+	install -t "$destdir"/usr/bin {,c,s}gdisk fixparts
+	install -m644 -t "$destdir"/usr/share/man/man8 {{,c,s}gdisk,fixparts}.8
+	install -m644 -t "$destdir"/usr/share/doc/gdisk README NEWS
+}
+

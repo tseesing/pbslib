@@ -1,0 +1,52 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="Library that implements support for numerous digital cameras"
+HOMEPAGE="http://www.gphoto.org/"
+LICENSE="LGPL"
+PACKAGER="chenqixing@ivali.com
+          Zhongxin Huang <huangzhongxin@ivali.com>"
+
+SRC_URI="http://downloads.sourceforge.net/gphoto/$N-$V.tar.gz"
+CHECKSUM="ea9b3b07a3738c0a77958d6fe13ae524"
+
+OPTIONS="nolibtool"
+
+RDEPEND="libexif libtool libusb-compat libjpeg-turbo libusbx"
+BDEPEND=""
+OPTIONAL=""
+NOTE="Since gd's offical website has down now, 
+      We use '--without-gd' option in this configure,
+      if the other applications that depend on 'libgph-oto2' 
+      work un-well, then check this packages"
+
+pbs_unpack(){
+    dounpack
+}
+
+pbs_config() {
+	config+="--disable-rpath --without-gd"
+	doconfig
+}
+
+pbs_build() {
+	domake
+}
+
+pbs_install() {
+	domkinstall
+    cd "$destdir"
+    # Remove unused udev helper
+    rm -rf usr/lib"$LIBDIRSUFFIX"/udev
+    install -m755 -d usr/lib/udev/rules.d
+    LD_LIBRARY_PATH="${destdir}/usr/lib${LD_LIBRARY_PATH:+:}$LD_LIBRARY_PATH" \
+    CAMLIBS="${destdir}/usr/lib/libgphoto2/${pkgver}" \
+    usr/lib"$LIBDIRSUFFIX"/libgphoto2/print-camera-list udev-rules version 175 >usr/lib/udev/rules.d/40-gphoto.rules
+    # Remove recursive symlink
+    rm -f usr/include/gphoto2/gphoto2
+}
+

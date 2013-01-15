@@ -1,0 +1,36 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="An elegant API for accessing audio files"
+HOMEPAGE="http://www.68k.org/~michael/audiofile/"
+LICENSE="GPL-2"
+PACKAGER="StartOS Developers"
+SRC_URI="http://www.68k.org/~michael/$N/"$N-$V$R".tar.gz"
+
+RDEPEND=""
+BDEPEND=" "
+RECOMMENDED=""
+
+NOTES="http://wiki.linuxfromscratch.org/blfs/wiki/audiofile"
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_config() {
+	
+	config+=" --prefix=/usr "
+	doconfig
+}
+
+pbs_build() {
+	domake
+}
+
+pbs_install() {
+	domkinstall
+}
