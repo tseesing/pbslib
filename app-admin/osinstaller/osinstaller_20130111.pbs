@@ -14,7 +14,8 @@ SRC_URI="git://git.ylmf.com/"$N".git"
 
 RDEPEND="pyparted(>=3.8) squashfs-tools python e2fsprogs pygtk"
 BDEPEND=""
-RECOMMENDED="pywebkitgtk dosfstools jfsutils reiserfsprogs xfsprogs"
+RECOMMENDED="pywebkitgtk dosfstools jfsutils reiserfsprogs xfsprogs laptop-detect"
+OPTIONAL="laptop-detect: detect laptop"
 
 pbs_unpack() {
     dounpack

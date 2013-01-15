@@ -4,7 +4,9 @@ gname="polkitd"
 
 post_install() {
 	dogroupadd -g 102 $gname
-	douseradd -c 'Policy Kit Daemon' -u 102 -g $gname -d '/' -s /bin/false $gname
+	douseradd -c 'Policy Kit Daemon' -u 102 -g $gname -d '/var/lib/polkit-1' -s /bin/false $gname
+    chown -R $gname:root   /{etc,usr/share}/polkit-1/rules.d
+    chown -R $gname:$gname /var/lib/polkit-1
 	passwd -l $gname &>/dev/null ||true
 }
 

@@ -6,19 +6,20 @@
 #
 
 DESCRIPTION="laptop detect tool"
-HOMEPAGE="www.startos.org"
-LICENSE="GPL"
-PACKAGER="StartOS Developers"
+HOMEPAGE="http://packages.qa.debian.org/l/laptop-detect.html"
+LICENSE="BSD"
+PACKAGER="Zhongxin Huang <huanzhongxin@ivali.com>"
 YARCH="any"
 
-SRC_URI="http://ftp.debian.org/debian/pool/main/l/"$N"/"${N}_$V".tar.gz"
+SRC_URI="http://ftp.debian.org/debian/pool/main/l/$N/${N}_${V}.tar.gz"
+CHECKSUM="b5b3dab84ca03b66c8501dc8a98f9c91"
 
-RDEPEND=""
+RDEPEND="dmidecode"
 BDEPEND=""
 RECOMMENDED=""
 
 pbs_unpack() {
-        dounpack
+    dounpack
 }
 
 pbs_build() {
@@ -28,8 +29,6 @@ pbs_build() {
 
 pbs_install() {
 	docp laptop-detect "$destdir"/usr/sbin
-	dodoc README
 	doman laptop-detect.8
 }
-
 
