@@ -8,12 +8,12 @@
 DESCRIPTION="TwoLAME is an optimised MPEG Audio Layer 2 (MP2) encoder"
 HOMEPAGE="http://www.twolame.org"
 LICENSE="LGPL"
-PACKAGER="StartOS Developers"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
 SRC_URI="http://downloads.sourceforge.net/"$N"/"$N-$V".tar.gz"
 CHECKSUM="4113d8aa80194459b45b83d4dbde8ddb"
 
-RDEPEND="libsndfile"
+RDEPEND="flac libogg libsndfile libvorbis"
 RECOMMENDED=""
 BDEPEND=""
 OPTIONAL=""

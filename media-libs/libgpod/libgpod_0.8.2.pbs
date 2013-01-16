@@ -8,21 +8,24 @@
 DESCRIPTION="Shared library to access the contents of an iPod"
 HOMEPAGE="http://www.gtkpod.org/libgpod/"
 LICENSE="LGPL"
-PACKAGER="StartOS Developers"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
 SRC_URI="http://downloads.sourceforge.net/sourceforge/gtkpod/"$N-$V".tar.bz2"
+CHECKSUM="ff0fd875fa08f2a6a49dec57ce3367ab"
 
-RDEPEND="gdk-pixbuf glib2 glibc libplist libpng libusb libxml2 sg3_utils sqlite zlib"
-BDEPEND=""
+RDEPEND="gdk-pixbuf2 libimobiledevice libusbx sg3_utils sqlite"
+BDEPEND="intltool swig docbook-xsl pygobject"
 RECOMMENDED=""
 CONFLICT=""
+OPTIONAL="pygobject: python bindings"
 
 pbs_unpack() {
         dounpack
 }
 
 pbs_config() {
-	config+="--enable-udev"
+	config+="--with-udev-dir=/usr/lib/udev 
+	         --enable-udev"
 	doconfig
 }
 
@@ -32,6 +35,5 @@ pbs_build() {
 
 pbs_install() {
 	domkinstall
-	[ -d "$destdir"/tmp ] && rm -rf "$destdir"/tmp
 }
 

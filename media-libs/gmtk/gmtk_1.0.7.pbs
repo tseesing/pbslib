@@ -5,17 +5,17 @@
 # Distributed under the terms of the GNU General Public License v2
 #
 
-DESCRIPTION="GTK+ widget and function libraries for gnome-mplayer"
+DESCRIPTION="Common functions for gnome-mplayer and gecko-mediaplayer."
 HOMEPAGE="http://code.google.com/p/gmtk/"
-LICENSE="GPLv2+"
-PACKAGER="StartOS Developers"
+LICENSE="GPL"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
 SRC_URI="http://gmtk.googlecode.com/files/"$N-$V".tar.gz"
-CHECKSUM="cbf3a8620327cd06f325e05b68c7d7858c070455"
+CHECKSUM="919ea155b755a33ab052dacbbc6e7f03"
 
-RDEPEND="pulseaudio"
+RDEPEND="gtk2 pulseaudio"
 RECOMMENDED=""
-BDEPEND=""
+BDEPEND="intltool pkgconfig"
 OPTIONAL=""
 CONFLICT=""
 
@@ -29,7 +29,7 @@ pbs_config() {
 }
 
 pbs_build() {
-	domake
+	make
 }
 
 pbs_install() {

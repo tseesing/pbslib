@@ -5,7 +5,7 @@
 # Distributed under the terms of the GNU General Public License v2
 #
 
-DESCRIPTION="Multiple Image Networkgraphics lib (animated png's)"
+DESCRIPTION="A collection of routines used to create and manipulate MNG format graphics files"
 HOMEPAGE="http://www.libmng.com/"
 LICENSE="custom"
 PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
@@ -13,23 +13,26 @@ PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 SRC_URI="http://downloads.sourceforge.net/"$N"/"$N-$V".tar.bz2"
 CHECKSUM="eaf1476a3bb29f6190bca660e6abef16"
 
-RDEPEND="lcms"
+RDEPEND="lcms libjpeg-turbo zlib"
 BDEPEND=""
 
 pbs_unpack() {
-    dounpack
+	dounpack
 }
 
 pbs_build() {
 	cp makefiles/makefile.linux Makefile
+	case "$ARCH" in
+		x86_64) 
+		# Add -fPIC to CFLAG
+		sed -i 's/-funroll-loops/-funroll-loops -fPIC/g' Makefile
+	esac
 	domake
 }
 
 pbs_install() {
-	mkdir -p "$destdir"/usr
-	make prefix="$destdir"/usr install
-	docp doc/man/*.3 "$destdir"/usr/share/man/man3
-	docp doc/man/*.5 "$destdir"/usr/share/man/man5
-	dodoc doc/*.{png,txt}
+	mkdir -p "$destdir"/usr 
+	make prefix="$destdir"/usr LIBPATH="$destdir"/usr/lib"$LIBDIRSUFFIX"  install
+	doman doc/man/*.3 doc/man/*.5
 }
 

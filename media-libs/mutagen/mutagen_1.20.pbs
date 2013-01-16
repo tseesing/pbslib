@@ -5,15 +5,16 @@
 # Distributed under the terms of the GNU General Public License v2
 #
 
-DESCRIPTION="Mutagen is a Python module to handle audio metadata. "
+DESCRIPTION="Mutagen is a Python module to handle audio metadata."
 HOMEPAGE="http://code.google.com/p/mutagen/"
-REPO=""
 LICENSE="GPL"
-PACKAGER="StartOS Developers"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
+ARCH="any"
 
-SRC_URI="http://mutagen.googlecode.com/files/mutagen-1.20.tar.gz"
+SRC_URI="http://mutagen.googlecode.com/files/"$N-$V".tar.gz"
+CHECKSUM="7a8c1918160e6b5d24acd146f57c08ed942a2fa8"
 
-RDEPEND=""
+RDEPEND="python"
 BDEPEND=""
 RECOMMENDED=""
 CONFLICT=""

@@ -7,10 +7,11 @@
 
 DESCRIPTION="Apps for querying the sg SCSI interface"
 HOMEPAGE="http://sg.danny.cz/sg/"
-LICENSE="GPL"
-PACKAGER="StartOS Developers"
+LICENSE="GPL,BSD"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
 SRC_URI="http://sg.danny.cz/sg/p/"$N-$V".tgz"
+CHECKSUM="261e39f7161337330ba6bd57999be801"
 
 RDEPEND="glibc"
 BDEPEND=""
@@ -30,5 +31,6 @@ pbs_build() {
 
 pbs_install() {
 	domkinstall
+	dodoc COPYING
 }
 
