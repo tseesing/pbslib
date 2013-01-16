@@ -1,0 +1,27 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="applications collection of LXDE"
+COMMENTS="LXDE is a GPL licensed open source desktop environment for Unix and other POSIX compliant platforms, such as Linux. The name LXDE stands for Lightweight X11 Desktop Environment."
+HOMEPAGE="http://http://lxde.org"
+LICENSE="LGPL"
+PACKAGER="StartOS Developers"
+YARCH="any"
+
+SRC_URI=""
+
+RDEPEND="lxappearance lxde-common lxdm lxinput lxpanel lxterminal lxsession lxpolkit lxlauncher lxmenu-data lxshortcut lxappearance-obconf lxrandr gpicview lxsession-edit lxtask lxmusic menu-cache lxde-icon-theme lxnm gtknetcat "
+RECOMMENDED=""
+BDEPEND=""
+OPTIONAL=""
+CONFLICT=""
+
+pbs_install() {
+	mkdir -p "$destdir"/usr/share/doc/"$N"/
+	touch "$destdir"/usr/share/doc/"$N"/readme
+}
+

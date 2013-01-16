@@ -1,0 +1,50 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="KDE Base Workspace"
+HOMEPAGE="http://www.kde.org"
+LICENSE="GPL,LGPL,FDL"
+PACKAGER="StartOS Developers<>"
+GROUP="kde"
+
+SRC_URI="http://download.kde.org/stable/"$V"/src/"$N-$V".tar.xz"
+
+RDEPEND="consolekit giflib google-gadgets gpsd kactivities kdepimlibs libpcre libqalculate libraw1394 libxkbfile libXres lm_sensors pciutils qimageblitz"
+BDEPEND="cmake automoc4"
+RECOMMENDED="dm-switch"
+
+INSTALL="$N.install"
+
+pbs_unpack() {
+       dounpack
+}
+
+pbs_patch() {
+       dopatch kdm-xinitrd.patch fixpath.patch terminate-server.patch
+}
+
+pbs_config() {
+	doconfig -DCMAKE_BUILD_TYPE=Release -DCMAKE_SKIP_RPATH=ON -DWITH_OpenGLES=ON
+}
+
+pbs_build() {
+	domake
+}
+
+pbs_install() {
+	domkinstall
+	cd "$destdir"
+	dounit kdm.service
+	install -D -m644 "${filesdir}"/kde.pam          etc/pam.d/kde
+	install -D -m644 "${filesdir}"/kde-np.pam       etc/pam.d/kde-np
+	install -D -m644 "${filesdir}"/kscreensaver.pam etc/pam.d/kscreensaver
+	install -d -m755 usr/share/xsessions/
+	ln -sf /usr/share/apps/kdm/sessions/kde-plasma{,-safe}.desktop usr/share/xsessions/
+	install -d -m755 etc/kde/{env,shutdown}
+	install -d -g 135 -o 135 var/lib/kdm
+}
+

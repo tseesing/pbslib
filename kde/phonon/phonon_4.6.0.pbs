@@ -1,0 +1,37 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="The multimedia framework for KDE"
+HOMEPAGE="http://phonon.kde.org"
+LICENSE="LGPL"
+PACKAGER="StartOS Developers<>"
+
+SRC_URI="http://download.kde.org/stable/"$N"/"$V"/src/"$N-$V".tar.xz"
+
+RDEPEND="libqzeitgeist pulseaudio"
+BDEPEND="cmake"
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_patch() {
+	dopatch fix-plugindir-for-qt-app.patch
+}
+
+pbs_config() {
+	doconfig -DCMAKE_BUILD_TYPE=Release \
+		 -DCMAKE_SKIP_RPATH=ON \
+		 -DPHONON_QT_MKSPECS_INSTALL_DIR=/usr/share/qt4/mkspecs/modules \
+		 -DPHONON_QT_PLUGIN_INSTALL_DIR=/usr/lib/qt4/plugins/designer
+}
+
+pbs_build() {
+	domake
+}
+
+pbs_install() {
+	domkinstall
+}
+

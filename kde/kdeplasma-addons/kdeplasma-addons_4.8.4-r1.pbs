@@ -1,0 +1,38 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="Extra Plasma applets and engines."
+HOMEPAGE="http://www.ginac.de/CLN/"
+LICENSE="GPL,LGPL"
+PACKAGER="StartOS Developers"
+
+SRC_URI="http://download.kde.org/stable/"$V"/src/"$N-$V".tar.xz"
+CHECKSUM="3b290c368e8000c2c6d40a8cc2244480"
+
+RDEPEND="acl akonadi attica attr bzip2 cln dbus exiv2 expat flac fontconfig freetype gcc-lib glib2 glibc gmp gst-plugins-base gstreamer herqq json-c kactivities kdelibs kdepimlibs kde-workspace libcap libdbusmenu-qt libdmtx libdrm libffi libical libICE libkexiv2 libogg libpng libqalculate libqzeitgeist libSM libsndfile libvorbis libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXft libXi libxml2 libXpm libXrender libXScrnSaver libXtst libXxf86vm marble mesa openssl phonon prison pulseaudio qca qimageblitz qrencode qt-core qwt soprano sqlite strigi udev util-linux-ng xz-utils zlib"
+BDEPEND="cmake automoc4"
+RECOMMENDED=""
+CONFLICT=""
+
+INSTALL="$N.install"
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_config() {
+	doconfig -DCMAKE_BUILD_TYPE=Release 
+}
+
+pbs_build() {
+	domake
+}
+
+pbs_install() {
+	domkinstall
+}
+

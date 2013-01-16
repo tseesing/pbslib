@@ -1,0 +1,37 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="broadcom firmware for b43 LP PHY and >=linux-3.2"
+HOMEPAGE="http://linuxwireless.org/en/users/Drivers/b43#Install_b43-fwcutter"
+LICENSE="GPL"
+PACKAGER="StartOS Developers"
+YARCH="any"
+
+SRC_URI="http://www.lwfinger.com/b43-firmware/broadcom-wl-"$V".tar.bz2"
+CHECKSUM="f4e357b09eaf5d8b1f1920cf3493a555"
+
+RDEPEND=""
+BDEPEND="b43-fwcutter"
+RECOMMENDED=""
+CONFLICT=""
+
+PINION="nodev"
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_build() {
+	: ${B43_FIRMWARE_SRC_OBJ:=wl_apsta.o}
+	mkdir build
+	b43-fwcutter -w build $(find -name ${B43_FIRMWARE_SRC_OBJ})
+}
+
+pbs_install() {
+	docp build/* "$destdir"/lib/firmware
+}
+

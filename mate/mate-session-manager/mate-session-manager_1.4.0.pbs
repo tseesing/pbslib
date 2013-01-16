@@ -1,0 +1,43 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="The MATE Session Handler"
+HOMEPAGE="http://mate-desktop.org"
+LICENSE="LGPL"
+PACKAGER="StartOS Developers"
+
+REPO="testing"
+
+SRC_URI="http://pub.mate-desktop.org/releases/1.4/"$N-$V".tar.xz"
+CHECKSUM="92637eb6935a4cbe11c3a3195c965c8df87112ad0a62bb367488a979773f3305"
+
+RDEPEND="libXtst mate-conf upower"
+RECOMMENDED=""
+BDEPEND="pkgconfig intltool"
+OPTIONAL=""
+CONFLICT=""
+REPLACE=""
+
+INSTALL="$N.install"
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_config() {
+	config+="--disable-schemas-install --enable-docbook-docs"
+	doconfig
+}
+
+pbs_build() {
+	domake
+}
+
+pbs_install() {
+	domkinstall MATECONF_DISABLE_MAKEFILE_SCHEMA_INSTALL=1
+}
+

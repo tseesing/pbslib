@@ -86,14 +86,6 @@ if [ ! -d $HOME/.config/chromium ]; then
        chown -R $USER:$USER $HOME/.config/chromium 
 fi
 
-flash_setting_dir="$HOME/.macromedia/Flash_Player/macromedia.com/support/flashplayer/sys"
-
-if [ ! -d $flash_setting_dir ]; then
-       mkdir -p $flash_setting_dir
-       cp -a /usr/lib/chromium/settings.sol $flash_setting_dir
-       chown -R $USER:$USER $flash_setting_dir/settings.sol
-fi
-
 if [ $want_debug -eq 1 ] ; then
 	
 	if [ ! -x $GDB ] ; then

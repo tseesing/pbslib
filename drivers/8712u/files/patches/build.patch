@@ -1,0 +1,34 @@
+diff -ur rtl8712_8188_8191_8192SU_usb_linux_v2.6.6.0.20120405/include/wifi.h rtl8712_8188_8191_8192SU_usb_linux_v2.6.6.0.20120405.new//include/wifi.h
+--- rtl8712_8188_8191_8192SU_usb_linux_v2.6.6.0.20120405/include/wifi.h	2012-04-05 10:42:17.000000000 +0800
++++ rtl8712_8188_8191_8192SU_usb_linux_v2.6.6.0.20120405.new//include/wifi.h	2012-12-20 16:01:53.551816982 +0800
+@@ -20,6 +20,7 @@
+ #ifndef _WIFI_H_
+ #define _WIFI_H_
+ 
++#include <linux/interrupt.h>
+ #include <rtl871x_byteorder.h>
+ 
+ #ifdef BIT
+diff -ur rtl8712_8188_8191_8192SU_usb_linux_v2.6.6.0.20120405/os_intf/linux/os_intfs.c rtl8712_8188_8191_8192SU_usb_linux_v2.6.6.0.20120405.new//os_intf/linux/os_intfs.c
+--- rtl8712_8188_8191_8192SU_usb_linux_v2.6.6.0.20120405/os_intf/linux/os_intfs.c	2012-04-05 10:42:12.000000000 +0800
++++ rtl8712_8188_8191_8192SU_usb_linux_v2.6.6.0.20120405.new//os_intf/linux/os_intfs.c	2012-12-20 16:02:33.251814874 +0800
+@@ -50,7 +50,7 @@
+ 
+ MODULE_LICENSE("GPL");
+ MODULE_DESCRIPTION("rtl871x wireless lan driver");
+-MODULE_AUTHOR("...");
++MODULE_AUTHOR("hechao hechao@ivali.com");
+ 
+ /* module param defaults */
+ int chip_version =RTL8712_2ndCUT;
+diff -ur rtl8712_8188_8191_8192SU_usb_linux_v2.6.6.0.20120405/os_intf/linux/usb_intf.c rtl8712_8188_8191_8192SU_usb_linux_v2.6.6.0.20120405.new//os_intf/linux/usb_intf.c
+--- rtl8712_8188_8191_8192SU_usb_linux_v2.6.6.0.20120405/os_intf/linux/usb_intf.c	2012-04-05 10:42:12.000000000 +0800
++++ rtl8712_8188_8191_8192SU_usb_linux_v2.6.6.0.20120405.new//os_intf/linux/usb_intf.c	2012-12-20 16:02:51.207814358 +0800
+@@ -19,6 +19,7 @@
+  ******************************************************************************/ 
+ #define _HCI_INTF_C_
+ 
++#include <linux/module.h>
+ #include <drv_conf.h>
+ #include <osdep_service.h>
+ #include <drv_types.h>
