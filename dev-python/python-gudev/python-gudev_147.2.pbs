@@ -5,14 +5,14 @@
 # Distributed under the terms of the GNU General Public License v2
 #
 
-DESCRIPTION="Python binding to the GUDev udev helper library"
-HOMEPAGE="http://github.com/nzjrs/python-gudev"
+DESCRIPTION="Python binding to the GUDev systemd helper library"
+HOMEPAGE="http://github.com/nzjrs/python-gsystemd"
 LICENSE="GPL"
 PACKAGER="StartOS Developers"
 
-SRC_URI="git://git.debian.org/collab-maint/python-gudev.git"
+SRC_URI="git://git.debian.org/collab-maint/python-gsystemd.git"
 
-RDEPEND="udev"
+RDEPEND="systemd"
 RECOMMENDED=""
 BDEPEND=""
 OPTIONAL=""

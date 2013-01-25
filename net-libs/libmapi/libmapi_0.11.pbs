@@ -14,7 +14,7 @@ REPO="testing"
 
 SRC_URI="openchange-0.11-TRANSPORTER.tar.gz"
 
-RDEPEND="attr cyrus-sasl file gcc-lib glibc gnutls ldb libgcrypt libgpg-error libical libtasn1 pam popt samba4 talloc tdb tevent zlib"
+RDEPEND="attr cyrus-sasl file gcc-libs glibc gnutls ldb libgcrypt libgpg-error libical libtasn1 pam popt samba4 talloc tdb tevent zlib"
 RECOMMENDED=""
 BDEPEND=""
 CONFLICT=""

@@ -36,8 +36,6 @@ pbs_install() {
 	domkinstall
 	cd "$destdir"
     dopamd "$filesdir"/polkit-1
-    mkdir -p var/lib/polkit-1
 	chown 102 {etc,usr/share}/polkit-1/rules.d
-    chown -R 102:102 var/lib/polkit-1
 }
 

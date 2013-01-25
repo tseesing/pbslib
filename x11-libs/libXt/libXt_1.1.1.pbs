@@ -14,7 +14,7 @@ PACKAGER="StartOS Developers"
 SRC_URI="http://xorg.freedesktop.org/archive/individual/lib/"$N-$V".tar.bz2"
 CHECKSUM="eb22c0a1f172b06b97a3f5ae89768412"
 
-RDEPEND="glibc libICE libSM libX11 libXau libxcb libXdmcp util-linux-ng"
+RDEPEND="glibc libICE libSM libX11 libXau libxcb libXdmcp util-linux"
 BDEPEND=""
 
 pbs_unpack() {

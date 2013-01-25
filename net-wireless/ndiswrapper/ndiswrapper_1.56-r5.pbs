@@ -50,7 +50,7 @@ ndiswrapper-utils_install () {
 ndiswrapper-driver_install() {
 	DESCRIPTION="Wrapper for using Windows drivers for some wireless cards, (kernel module)"
 	RDEPEND="linux-kernel(=3.0.20-r4)"
-	BDEPEND="gcc-lib linux-kernel-headers"
+	BDEPEND="gcc-libs linux-kernel-headers"
 	INSTALL="$N.install"
 
 	make DESTDIR="$destdir" install-driver

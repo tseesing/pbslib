@@ -12,7 +12,7 @@ PACKAGER="StartOS Developers"
 
 SRC_URI="http://www.rarlab.com/rar/"$N-$V".tar.gz"
 
-RDEPEND="gcc-lib"
+RDEPEND="gcc-libs"
 RECOMMENDED=""
 BDEPEND=""
 OPTIONAL=""

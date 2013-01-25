@@ -13,7 +13,7 @@ PACKAGER="StartOS Developers"
 SRC_URI="https://launchpad.net/ntrack/main/"$V"/+download/"$N-$V".tar.gz"
 CHECKSUM="21691dac43460a6791cba3decbc68242"
 
-RDEPEND="libnl qt-core"
+RDEPEND="libnl qt"
 RECOMMENDED=""
 BDEPEND=""
 OPTIONAL=""

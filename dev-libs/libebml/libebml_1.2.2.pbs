@@ -13,7 +13,7 @@ PACKAGER="StartOS Developers"
 SRC_URI="http://dl.matroska.org/downloads/"$N"/"$N-$V".tar.bz2"
 CHECKSUM="726cc2bd1a525929ff35ff9854c0ebab"
 
-RDEPEND="gcc-lib"
+RDEPEND="gcc-libs"
 RECOMMENDED=""
 BDEPEND=""
 OPTIONAL=""

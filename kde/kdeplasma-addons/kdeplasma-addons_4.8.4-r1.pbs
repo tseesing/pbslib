@@ -13,7 +13,7 @@ PACKAGER="StartOS Developers"
 SRC_URI="http://download.kde.org/stable/"$V"/src/"$N-$V".tar.xz"
 CHECKSUM="3b290c368e8000c2c6d40a8cc2244480"
 
-RDEPEND="acl akonadi attica attr bzip2 cln dbus exiv2 expat flac fontconfig freetype gcc-lib glib2 glibc gmp gst-plugins-base gstreamer herqq json-c kactivities kdelibs kdepimlibs kde-workspace libcap libdbusmenu-qt libdmtx libdrm libffi libical libICE libkexiv2 libogg libpng libqalculate libqzeitgeist libSM libsndfile libvorbis libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXft libXi libxml2 libXpm libXrender libXScrnSaver libXtst libXxf86vm marble mesa openssl phonon prison pulseaudio qca qimageblitz qrencode qt-core qwt soprano sqlite strigi udev util-linux-ng xz-utils zlib"
+RDEPEND="acl akonadi attica attr bzip2 cln dbus exiv2 expat flac fontconfig freetype gcc-libs glib2 glibc gmp gst-plugins-base gstreamer herqq json-c kactivities kdelibs kdepimlibs kde-workspace libcap libdbusmenu-qt libdmtx libdrm libffi libical libICE libkexiv2 libogg libpng libqalculate libqzeitgeist libSM libsndfile libvorbis libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXft libXi libxml2 libXpm libXrender libXScrnSaver libXtst libXxf86vm marble mesa openssl phonon prison pulseaudio qca qimageblitz qrencode qt qwt soprano sqlite strigi systemd util-linux xz zlib"
 BDEPEND="cmake automoc4"
 RECOMMENDED=""
 CONFLICT=""

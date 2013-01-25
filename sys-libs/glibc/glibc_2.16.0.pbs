@@ -82,5 +82,9 @@ pbs_install() {
 	rm -rf etc/localtime
 	# 
 	rm -rf etc/ld.so.cache
+    # NOTE:
+    # these binary need libz, libgd 
+    # makes circular dependency happend.
+    rm usr/bin/{memusagestat,memusage}
 }
 

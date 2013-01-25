@@ -49,7 +49,7 @@ pbs_config() {
 		     --enable-kdrive-kbd 
 		     --enable-kdrive-mouse 
 		     --enable-install-setuid 
-		     --enable-config-udev 
+		     --enable-config-systemd 
 		     --disable-config-dbus 
 		     --enable-record 
 		     --disable-xfbdev 

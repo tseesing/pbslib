@@ -4,9 +4,6 @@ Removed, upstream outdated
 * esound
 Removed, upstream outdated
 
-* wxGTK 
-Provided by wxWidgets
-
 * ntfsprogs
 Replaced by USE="ntfsprogs" in ntfs-3g
 
@@ -31,5 +28,8 @@ Provided by util-linux
 * xz-utils
 Rename xz
 
-* consolekit
+* consolekit, udev
 Removed, Any package that previously depended on it now relies on systemd instead.
+
+* farsight2
+Replaced by farstream

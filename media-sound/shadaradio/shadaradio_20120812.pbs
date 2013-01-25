@@ -12,7 +12,7 @@ PACKAGER="StartOS Developers"
 
 SRC_URI="shadaradio-20120812.tar.bz2"
 
-RDEPEND="qt-core"
+RDEPEND="qt"
 RECOMMENDED=""
 BDEPEND=""
 OPTIONAL=""

@@ -13,7 +13,7 @@ PACKAGER="StartOS Developers"
 SRC_URI="http://www.pyside.org/files/"$N-$V".tar.bz2"
 CHECKSUM="0a37b5011b3a7276bf4584317412a4b6"
 
-RDEPEND="gcc-lib glib2 glibc libxml2 libxslt openssl python qt-core zlib"
+RDEPEND="gcc-libs glib2 glibc libxml2 libxslt openssl python qt zlib"
 RECOMMENDED=""
 BDEPEND="cmake"
 OPTIONAL=""

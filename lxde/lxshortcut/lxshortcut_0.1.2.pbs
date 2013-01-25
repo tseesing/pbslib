@@ -12,7 +12,7 @@ PACKAGER="StartOS Developers"
 
 SRC_URI="http://sourceforge.net/projects/lxde/files/LXShortcut%20%28edit%20app%20shortcut%29/LXShortcut%20"$V"/"$N-$V".tar.gz"
 
-RDEPEND="gtk+"
+RDEPEND="gtk2"
 BDEPEND=""
 RECOMMENDED=""
 CONFLICT=""

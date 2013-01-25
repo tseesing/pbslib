@@ -12,7 +12,7 @@ GROUP="x11-lib"
 SRCURL="http://www.x.org/releases/X11R7.5/src/lib"
 SRC_URI="$SRCURL/libXmu-1.0.5.tar.bz2"
 
-RDEPEND="libXt libSM libICE libXext libX11 util-linux-ng libxcb libXau libXdmcp"
+RDEPEND="libXt libSM libICE libXext libX11 util-linux libxcb libXau libXdmcp"
 BDEPEND=" x11-libs/libXt"
 
 pbs_unpack()

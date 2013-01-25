@@ -13,7 +13,7 @@ PACKAGER="StartOS Developers"
 SRC_URI="http://download.macromedia.com/pub/flashplayer/updaters/10/flashplayer_10_sa.tar.gz"
 CHECKSUM="ffcf837a281fd5aa722c5d39d0ae5c37"
 
-RDEPEND="gtk+ libXt nss"
+RDEPEND="gtk2 libXt nss"
 BDEPEND=""
 RECOMMENDED=""
 

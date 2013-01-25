@@ -14,7 +14,7 @@ REPO="testing"
 
 SRC_URI="http://distfiles.audacious-media-player.org/"$N-$V".tar.bz2"
 
-RDEPEND="dbus-glib gtk+3"
+RDEPEND="dbus-glib gtk3"
 BDEPEND=""
 RECOMMENDED="audacious-plugins(=3.3.1)"
 

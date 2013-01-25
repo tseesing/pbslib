@@ -13,7 +13,7 @@ GROUP="kde"
 
 SRC_URI="http://download.kde.org/stable/"$V"/src/"$N-$V".tar.xz"
 
-RDEPEND="analitza attica herqq libdbusmenu-qt libqalculate libspectre libXpm libXtst qca R soprano strigi udev"
+RDEPEND="analitza attica herqq libdbusmenu-qt libqalculate libspectre libXpm libXtst qca R soprano strigi systemd"
 RECOMMENDED=""
 BDEPEND="cmake"
 OPTIONAL=""

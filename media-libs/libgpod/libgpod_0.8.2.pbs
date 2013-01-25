@@ -24,8 +24,8 @@ pbs_unpack() {
 }
 
 pbs_config() {
-	config+="--with-udev-dir=/usr/lib/udev 
-	         --enable-udev"
+	config+="--with-systemd-dir=/usr/lib/systemd 
+	         --enable-systemd"
 	doconfig
 }
 

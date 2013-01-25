@@ -13,7 +13,7 @@ PACKAGER="StartOS Developers"
 SRC_URI="http://download.kde.org/stable/"$V"/src/"$N-$V".tar.xz"
 CHECKSUM="34ff243a4fa77400631aa44b31cbe54910f8091e"
 
-RDEPEND="acl attica attr avahi bzip2 chmlib cups curl cyrus-sasl dbus djvulibre e2fsprogs ebook-tools expat flac fontconfig freetype gcc-lib ghostscript giflib glib2 glibc gnutls gst-plugins-base gstreamer herqq jasper json-c kdelibs keyutils krb5 lcms libcap libdbusmenu-qt libffi libgcrypt libgpg-error libICE libidn libjpeg-turbo libogg libpcre libpng libqzeitgeist libSM libsndfile libspectre libssh2 libtasn1 libtiff libvorbis libX11 libXau libxcb libXcursor libXdmcp libXext libXfixes libXft libXi libxml2 libXpm libXrender libXtst libzip openldap openssl phonon poppler poppler-qt pulseaudio qca qimageblitz qt-core rtmpdump soprano sqlite strigi udev util-linux-ng xz-utils zlib"
+RDEPEND="acl attica attr avahi bzip2 chmlib cups curl cyrus-sasl dbus djvulibre e2fsprogs ebook-tools expat flac fontconfig freetype gcc-libs ghostscript giflib glib2 glibc gnutls gst-plugins-base gstreamer herqq jasper json-c kdelibs keyutils krb5 lcms libcap libdbusmenu-qt libffi libgcrypt libgpg-error libICE libidn libjpeg-turbo libogg pcre libpng libqzeitgeist libSM libsndfile libspectre libssh2 libtasn1 libtiff libvorbis libX11 libXau libxcb libXcursor libXdmcp libXext libXfixes libXft libXi libxml2 libXpm libXrender libXtst libzip openldap openssl phonon poppler poppler-qt pulseaudio qca qimageblitz qt rtmpdump soprano sqlite strigi systemd util-linux xz zlib"
 RECOMMENDED=""
 BDEPEND="cmake automoc4"
 OPTIONAL=""

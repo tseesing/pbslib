@@ -12,7 +12,7 @@ PACKAGER="StartOS Developers"
 
 SRC_URI="http://mirrors.xbmc.org/releases/source/"$N-$V".tar.gz"
 
-RDEPEND="alsa-lib attr audiofile avahi bzip2 curl cyrus-sasl dbus directfb enca expat faac faad2 flac fontconfig freetype fribidi gcc-lib glew glib2 glibc gnutls hal jasper json-c keyutils krb5 libcap libcdio libdrm libgcrypt libgpg-error libICE libidn libjpeg-turbo libmad libmicrohttpd libmms libmodplug libmpeg2 libogg pcre libpng libsamplerate libsdl libSM libsmbios libsndfile libssh libssh2 libtasn1 libtiff libva libvorbis libX11 libXau libxcb libXdamage libXdmcp libXext libXfixes libXi libXinerama libXmu libXrandr libXrender libXt libXtst libXxf86vm lzo mesa mysql nas openldap openssl pulseaudio rtmpdump samba sdl-image sdl-mixer sqlite talloc tdb util-linux-ng wavpack zlib"
+RDEPEND="alsa-lib attr audiofile avahi bzip2 curl cyrus-sasl dbus directfb enca expat faac faad2 flac fontconfig freetype fribidi gcc-libs glew glib2 glibc gnutls hal jasper json-c keyutils krb5 libcap libcdio libdrm libgcrypt libgpg-error libICE libidn libjpeg-turbo libmad libmicrohttpd libmms libmodplug libmpeg2 libogg pcre libpng libsamplerate libsdl libSM libsmbios libsndfile libssh libssh2 libtasn1 libtiff libva libvorbis libX11 libXau libxcb libXdamage libXdmcp libXext libXfixes libXi libXinerama libXmu libXrandr libXrender libXt libXtst libXxf86vm lzo mesa mysql nas openldap openssl pulseaudio rtmpdump samba sdl-image sdl-mixer sqlite talloc tdb util-linux wavpack zlib"
 BDEPEND=""
 RECOMMENDED=""
 CONFLICT=""

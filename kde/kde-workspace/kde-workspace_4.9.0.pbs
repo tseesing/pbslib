@@ -13,7 +13,7 @@ GROUP="kde"
 
 SRC_URI="http://download.kde.org/stable/"$V"/src/"$N-$V".tar.xz"
 
-RDEPEND="consolekit giflib google-gadgets gpsd kactivities kdepimlibs libpcre libqalculate libraw1394 libxkbfile libXres lm_sensors pciutils qimageblitz"
+RDEPEND="consolekit giflib google-gadgets gpsd kactivities kdepimlibs pcre libqalculate libraw1394 libxkbfile libXres lm_sensors pciutils qimageblitz"
 BDEPEND="cmake automoc4"
 RECOMMENDED="dm-switch"
 

@@ -12,7 +12,7 @@ PACKAGER="StartOS Developers"
 
 SRC_URI="http://launchpad.net/"$N"/trunk/"$V$R"/+download/"$N-$V$R".tar.gz"
 
-RDEPEND="gtk+ sane-backends"
+RDEPEND="gtk2 sane-backends"
 BDEPEND=" "
 RECOMMENDED=""
 

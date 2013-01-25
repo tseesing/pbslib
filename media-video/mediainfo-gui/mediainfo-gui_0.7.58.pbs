@@ -13,7 +13,7 @@ PACKAGER="StartOS Developers"
 SRC_URI="http://downloads.sourceforge.net/mediainfo/mediainfo_"$V".tar.bz2"
 CHECKSUM="e0b0decf4a036fad431aa5149cc71d59"
 
-RDEPEND="libmediainfo wxWidgets"
+RDEPEND="libmediainfo wxgtk"
 RECOMMENDED=""
 BDEPEND=""
 OPTIONAL=""

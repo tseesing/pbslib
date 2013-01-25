@@ -12,7 +12,7 @@ PACKAGER="StartOS Developers"
 
 SRC_URI="http://downloads.sourceforge.net/project/"$N"/"$N"/"$N-$V"/"$N-$V".tar.gz"
 
-RDEPEND="gcc-lib"
+RDEPEND="gcc-libs"
 BDEPEND=""
 
 pbs_unpack() {

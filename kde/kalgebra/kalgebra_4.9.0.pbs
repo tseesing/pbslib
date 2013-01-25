@@ -12,7 +12,7 @@ PACKAGER="StartOS Developers"
 
 SRC_URI="http://download.kde.org/stable/"$V"/src/"$N-$V".tar.xz"
 
-RDEPEND="acl analitza attica giflib herqq libdbusmenu-qt libjpeg-turbo libpcre libXcursor libXft libXpm libXScrnSaver mesa phonon qca soprano strigi"
+RDEPEND="acl analitza attica giflib herqq libdbusmenu-qt libjpeg-turbo pcre libXcursor libXft libXpm libXScrnSaver mesa phonon qca soprano strigi"
 RECOMMENDED=""
 BDEPEND="cmake automoc4"
 OPTIONAL=""

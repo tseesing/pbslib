@@ -12,7 +12,7 @@ PACKAGER="StartOS Developers"
 
 SRC_URI="http://downloads.sourceforge.net/project/"$N"/"$N"/"$V$R"/${N}_2_6_1.zip"
 
-RDEPEND="gcc-lib"
+RDEPEND="gcc-libs"
 BDEPEND=""
 RECOMMENDED=""
 CONFLICT=""

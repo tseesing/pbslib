@@ -10,12 +10,11 @@ HOMEPAGE="http://mate-desktop.org"
 LICENSE="LGPL"
 PACKAGER="StartOS Developers"
 
-REPO="testing"
 
 SRC_URI="http://pub.mate-desktop.org/releases/1.4/"$N-$V".tar.xz"
 CHECKSUM="1c26282da13fca4abb6b523bfb02aa4e42b35210ba44e76c4099490671f09482"
 
-RDEPEND="gtk+ libXres startup-notification"
+RDEPEND="gtk2 libXres startup-notification"
 RECOMMENDED=""
 BDEPEND=""
 OPTIONAL=""

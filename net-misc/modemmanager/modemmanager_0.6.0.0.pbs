@@ -25,7 +25,7 @@ pbs_unpack() {
 }
 
 pbs_config() {
-    config+="--with-udev-base-dir=/usr/lib/udev 
+    config+="--with-systemd-base-dir=/usr/lib/systemd 
              --disable-static"
     doconfig
 }

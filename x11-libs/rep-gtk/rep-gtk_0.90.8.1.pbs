@@ -13,7 +13,7 @@ PACKAGER="StartOS Developers"
 SRC_URI="http://download.tuxfamily.org/librep/"$N"/"$N-$V".tar.xz"
 CHECKSUM="00c1d9d7fe1c4d8851a59efa0e5a0645"
 
-RDEPEND="gtk+"
+RDEPEND="gtk2"
 RECOMMENDED=""
 BDEPEND=""
 OPTIONAL=""

@@ -13,7 +13,7 @@ PACKAGER="StartOS Developers<>"
 SRC_URI="http://download.kde.org/stable/"$N"/src/"$N-$V".tar.bz2"
 CHECKSUM="c73bb835057a3ee07d37a4f7daaf7ecf"
 
-RDEPEND="boost-libs dbus expat fontconfig freetype gcc-lib glib2 glibc libffi libICE libpng libSM libX11 libXau libxcb libXdmcp libXext libXrender openssl qt-core soprano sqlite util-linux-ng zlib"
+RDEPEND="boost-libs dbus expat fontconfig freetype gcc-libs glib2 glibc libffi libICE libpng libSM libX11 libXau libxcb libXdmcp libXext libXrender openssl qt soprano sqlite util-linux zlib"
 BDEPEND="cmake"
 RECOMMENDED=""
 

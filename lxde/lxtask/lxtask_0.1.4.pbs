@@ -12,7 +12,7 @@ PACKAGER="StartOS Developers"
 
 SRC_URI="http://sourceforge.net/projects/lxde/files/LXTask%20%28task%20manager%29/LXTask%20"$V"/"$N-$V".tar.gz"
 
-RDEPEND="gtk+"
+RDEPEND="gtk2"
 BDEPEND=""
 
 INSTALL="$N.install"

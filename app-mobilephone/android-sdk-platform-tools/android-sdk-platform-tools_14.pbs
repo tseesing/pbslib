@@ -14,7 +14,7 @@ YARCH="any"
 SRC_URI="http://dl-ssl.google.com/android/repository/platform-tools_r"$V"-linux.zip"
 CHECKSUM="502602cf5af50f6cbaa9d034e00db513e31e2c27a0d729dafb35c6eee9ee2926"
 
-RDEPEND="gcc-lib ncurses zlib"
+RDEPEND="gcc-libs ncurses zlib"
 RECOMMENDED=""
 BDEPEND=""
 OPTIONAL=""

@@ -12,7 +12,7 @@ PACKAGER="StartOS Developers"
 
 SRC_URI="http://downloads.sourceforge.net/project/"$N"/"$N"/"$V"/"$N-$V".tar.gz"
 
-RDEPEND="openldap berkeley-db curl cyrus-sasl expat gcc-lib glibc gnutls libgcrypt libgpg-error libidn libssh2 libtasn1 openssl rtmpdump zlib"
+RDEPEND="openldap berkeley-db curl cyrus-sasl expat gcc-libs glibc gnutls libgcrypt libgpg-error libidn libssh2 libtasn1 openssl rtmpdump zlib"
 BDEPEND=""
 RECOMMENDED=""
 CONFLICT=""

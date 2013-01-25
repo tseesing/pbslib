@@ -13,7 +13,7 @@ PACKAGER="StartOS Developers"
 SRC_URI="http://download.tuxfamily.org/blueman/blueman-1.23.tar.gz"
 CHECKSUM="f0bee59589f4c23e35bf08c2ef8acaef"
 
-RDEPEND="bluez gtk+ python startup-notification"
+RDEPEND="bluez gtk2 python startup-notification"
 BDEPEND=""
 RECOMMENDED=""
 CONFLICT=""

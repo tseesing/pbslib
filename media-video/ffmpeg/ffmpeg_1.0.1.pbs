@@ -33,7 +33,7 @@ pbs_config() {
             --enable-libx264 
             --enable-libvpx 
             --enable-libtheora 
-            --enable-libgsm 
+            --enable-gsm 
             --enable-libspeex 
             --enable-postproc 
             --enable-shared 

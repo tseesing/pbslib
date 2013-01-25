@@ -44,7 +44,7 @@ pbs_config() {
 		--enable-librtmp 
     	        --enable-libpulse
 		--enable-libv4l2
-		--enable-libgsm
+		--enable-gsm
 		--enable-libspeex
 		--enable-version3 
 		--enable-runtime-cpudetect 

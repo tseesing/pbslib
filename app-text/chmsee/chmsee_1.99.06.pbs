@@ -13,7 +13,7 @@ PACKAGER="StartOS Developers"
 #https://nodeload.github.com/jungleji/chmsee/tarball/v1.99.06
 SRC_URI="jungleji-chmsee-v1.99.06-0-gad31e43.tar.gz"
 
-RDEPEND="chmlib xulrunner libpng sqlite alsa-lib atk cairo dbus expat fontconfig freetype gcc-lib gdk-pixbuf glib2 glibc gtk+ hunspell libevent libffi libICE libSM libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libXrandr libXrender libXt nspr nss pango pixman startup-notification util-linux-ng zlib"
+RDEPEND="chmlib xulrunner libpng sqlite alsa-lib atk cairo dbus expat fontconfig freetype gcc-libs gdk-pixbuf2 glib2 glibc gtk2 hunspell libevent libffi libICE libSM libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libXrandr libXrender libXt nspr nss pango pixman startup-notification util-linux zlib"
 BDEPEND=""
 RECOMMENDED=""
 

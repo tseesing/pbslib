@@ -12,7 +12,7 @@ PACKAGER="StartOS Developers"
 
 SRC_URI="http://downloads.sourceforge.net/project/"$N"/CMMusic_src/"$N-$V"/"$N-$V".tar.gz"
 
-RDEPEND="mplayer gcc-lib ncurses"
+RDEPEND="mplayer gcc-libs ncurses"
 BDEPEND=""
 RECOMMENDED=""
 CONFLICT=""

@@ -6,7 +6,7 @@
 #
 
 DESCRIPTION="a multi-panel tabbed file manager"
-COMMENTS="SpaceFM is a multi-panel tabbed file manager for Linux with built-in VFS, udev-based device manager, customizable menu system, and bash integration."
+COMMENTS="SpaceFM is a multi-panel tabbed file manager for Linux with built-in VFS, systemd-based device manager, customizable menu system, and bash integration."
 HOMEPAGE="http://ignorantguru.github.com/spacefm/"
 LICENSE="GPLv2+"
 PACKAGER="StartOS Developers"
@@ -14,7 +14,7 @@ PACKAGER="StartOS Developers"
 SRC_URI="https://raw.github.com/IgnorantGuru/"$N"/master/packages/"$V"/"$N-$V".tar.xz"
 CHECKSUM="428739bc310d7010eca3f64caf2e7c1e"
 
-RDEPEND="gtk+ startup-notification udev"
+RDEPEND="gtk2 startup-notification systemd"
 RECOMMENDED=""
 BDEPEND=""
 OPTIONAL=""

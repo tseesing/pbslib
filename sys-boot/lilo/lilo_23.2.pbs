@@ -13,7 +13,7 @@ PACKAGER="StartOS Developers"
 SRC_URI="http://lilo.alioth.debian.org/ftp/sources/"$N-$V".tar.gz"
 CHECKSUM="51b9b9db665d3b8724919e3d46054d12"
 
-RDEPEND="device-mapper glibc udev"
+RDEPEND="device-mapper glibc systemd"
 RECOMMENDED=""
 BDEPEND=""
 OPTIONAL=""

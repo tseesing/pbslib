@@ -12,7 +12,7 @@ PACKAGER="StartOS Developers"
 
 SRC_URI="ftp://ftp.suse.com/pub/projects/"$N"/"$N-$V".tar.bz2"
 
-RDEPEND="gcc-lib"
+RDEPEND="gcc-libs"
 BDEPEND=""
 RECOMMENDED=""
 CONFLICT=""

@@ -13,7 +13,7 @@ PACKAGER="StartOS Developers"
 
 SRC_URI="http://nchc.dl.sourceforge.net/project/sox/sox/14.3.2/sox-14.3.2.tar.gz"
 
-RDEPEND="alsa-lib bzip2 ffmpeg file flac gcc-lib glibc lame libao libgsm libid3tag libmad libogg libpng libsndfile libtool libva libvorbis wavpack zlib"
+RDEPEND="alsa-lib bzip2 ffmpeg file flac gcc-libs glibc lame libao gsm libid3tag libmad libogg libpng libsndfile libtool libva libvorbis wavpack zlib"
 BDEPEND=""
 RECOMMENDED=""
 CONFLICT=""

@@ -5,23 +5,24 @@
 # Distributed under the terms of the GNU General Public License v2
 #
 
-DESCRIPTION="GTK+2 bindings for Python"
+DESCRIPTION="GTK bindings for Python"
 HOMEPAGE="http://www.pygtk.org/"
 LICENSE="GPL"
-PACKAGER="StartOS Developers"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
-SRC_URI="http://ftp.gnome.org/pub/gnome/desktop/2.32/2.32.1/sources/"$N-$V".tar.bz2"
+SRC_URI="http://ftp.gnome.org/pub/gnome/sources/$N/2.10/$N-$V.tar.bz2"
+CHECKSUM="b4b47c5aeb67a26141cb03663091dfdf5c15c8a8aae4d69c46a6a943ca4c5974"
 
-RDEPEND="atk cairo expat fontconfig freetype gcc-lib gdk-pixbuf glib2 glibc gtk+ gtksourceview libpng libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libxml2 libXrandr libXrender pango pixman zlib"
-BDEPEND="pygtk-dev"
-RECOMMENDED="docbook-xml"
+RDEPEND="gtksourceview2 pygtk"
+BDEPEND="intltool pkgconfig"
+RECOMMENDED=""
 
 pbs_unpack() {
-        dounpack
+    dounpack
 }
 
 pbs_config() {
-	config+=" "
+	config+="--disable-static --disable-docs"
 	doconfig
 }
 

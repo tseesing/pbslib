@@ -14,7 +14,7 @@ PACKAGER="StartOS Developers"
 SRC_URI="http://sourceforge.net/projects/"$N"/files/"$N"/"$V"/"$N-$V".tar.gz"
 CHECKSUM="d5eaf399b38b063053cff1a8527cba8e"
 
-RDEPEND="atk atkmm attr cairo cairomm dbus dbus-glib expat flac fontconfig freetype gcc-lib gconf gdk-pixbuf glib2 glibc glibmm gnome-panel gstreamer gtk+ gtkmm json-c libcap libICE libogg libpng libsamplerate libsigc++ libSM libsndfile libvorbis libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libxml2 libXrandr libXrender libXtst orbit pango pangomm pixman pulseaudio util-linux-ng zlib"
+RDEPEND="atk atkmm attr cairo cairomm dbus dbus-glib expat flac fontconfig freetype gcc-libs gconf gdk-pixbuf2 glib2 glibc glibmm gnome-panel gstreamer gtk2 gtk2mm json-c libcap libICE libogg libpng libsamplerate libsigc++ libSM libsndfile libvorbis libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libxml2 libXrandr libXrender libXtst orbit pango pangomm pixman pulseaudio util-linux zlib"
 RECOMMENDED=""
 BDEPEND=""
 OPTIONAL=""

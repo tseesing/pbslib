@@ -11,7 +11,7 @@ LICENSE="GPL-2"
 PACKAGER="StartOS Developers"
 SRC_URI=""
 
-RDEPEND="zlib glibc gcc-lib"
+RDEPEND="zlib glibc gcc-libs"
 BDEPEND=" sys-apps/linux-kernel-ubuntu-source"
 RECOMMENDED=""
 

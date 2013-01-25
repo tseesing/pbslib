@@ -13,7 +13,7 @@ PACKAGER="StartOS Developers<>"
 SRC_URI="http://download.kde.org/stable/"$N"/"$N-$V".tar.bz2"
 CHECKSUM="5a77f678422e7a52e3a3abb2d7ad0499"
 
-RDEPEND="gcc-lib glib2 glibc openssl qt-core zlib"
+RDEPEND="gcc-libs glib2 glibc openssl qt zlib"
 BDEPEND="cmake"
 
 pbs_unpack() {

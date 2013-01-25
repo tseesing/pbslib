@@ -13,7 +13,7 @@ PACKAGER="StartOS Developers"
 SRC_URI="http://teamspeak.gameserver.gamed.de/ts3/releases/"$V"/TeamSpeak3-Client-linux_x86-"$V".run"
 CHECKSUM="b9ca1362f6f79644357c5558ee5ddfd2"
 
-RDEPEND="libXcursor libXinerama libXrandr pulseaudio qt-core"
+RDEPEND="libXcursor libXinerama libXrandr pulseaudio qt"
 RECOMMENDED=""
 BDEPEND=""
 OPTIONAL=""
@@ -26,7 +26,7 @@ pbs_unpack() {
 }
 
 pbs_install() {
-	# Remove Bundled Qt Libraries, use system qt-core libs
+	# Remove Bundled Qt Libraries, use system qt libs
 	rm libQt*
 	
 	docp * "$destdir"/usr/share/"$N"

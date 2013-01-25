@@ -14,7 +14,7 @@ GROUP="fcitx"
 SRC_URI="http://fcitx.googlecode.com/files/"$N-$V".tar.xz"
 CHECKSUM="9ccf9fcb9171208bef5b47fb55c5b9bc84e897ab"
 
-RDEPEND="fcitx(>4.2.4) gcc-lib glibc python sqlite sunpinyin(>=20120607)"
+RDEPEND="fcitx(>4.2.4) gcc-libs glibc python sqlite sunpinyin(>=20120607)"
 RECOMMENDED=""
 BDEPEND="cmake"
 OPTIONAL=""

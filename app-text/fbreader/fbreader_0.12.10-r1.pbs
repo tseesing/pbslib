@@ -13,7 +13,7 @@ PACKAGER="StartOS Developers"
 SRC_URI="http://www.fbreader.org/"$N"-sources-"$V".tgz"
 CHECKSUM="da9ec4721efdb0ec0aaa182bff16ad82"
 
-RDEPEND="curl fribidi gtk+ liblinebreak sqlite"
+RDEPEND="curl fribidi gtk2 liblinebreak sqlite"
 BDEPEND=""
 RECOMMENDED=""
 CONFLICT=""
@@ -34,7 +34,7 @@ pbs_patch() {
 pbs_config() {
 	export CPPFLAGS="-I/usr/include/cairo"
 	export TARGET_ARCH=desktop
-	export UI_TYPE=gtk
+	export UI_TYPE=gtk2
 	export TARGET_STATUS=release
 	
 	config+=""

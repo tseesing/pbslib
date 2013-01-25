@@ -13,7 +13,7 @@ PACKAGER="StartOS Developers"
 SRC_URI="http://downloads.sourceforge.net/"$N"/"$N-$V".tar.gz"
 CHECKSUM="a063f76aa47edab55a3f31ff2558df07"
 
-RDEPEND="qt-core pyqt4 avahi cups dbus e2fsprogs gcc-lib glibc gnutls keyutils krb5 libexif libgcrypt libgpg-error libgphoto2 libjpeg-turbo libpng libtasn1 libtiff libtool libusb libusb-compat net-snmp openssl sane-backends v4l-utils zlib"
+RDEPEND="qt pyqt4 avahi cups dbus e2fsprogs gcc-libs glibc gnutls keyutils krb5 libexif libgcrypt libgpg-error libgphoto2 libjpeg-turbo libpng libtasn1 libtiff libtool libusb libusb-compat net-snmp openssl sane-backends v4l-utils zlib"
 BDEPEND=""
 RECOMMENDED="hplip-plugin"
 CONFLICT=""
@@ -50,7 +50,7 @@ pbs_config() {
                   --enable-hpijs-install 
                   --enable-foomatic-drv-install 
                   --enable-pp-build 
-                  --enable-udev-acl-rules "
+                  --enable-systemd-acl-rules "
 	doconfig
 }
 
@@ -59,7 +59,7 @@ pbs_build() {
 }
 
 pbs_install() {
-	make rulesdir=/lib/udev/rules.d DESTDIR="$destdir/" install
+	make rulesdir=/lib/systemd/rules.d DESTDIR="$destdir/" install
 	cd "$destdir"
 		
 	# Remove config provided by sane 

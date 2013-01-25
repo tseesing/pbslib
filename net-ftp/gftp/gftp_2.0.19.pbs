@@ -12,7 +12,7 @@ PACKAGER="StartOS Developers"
 
 SRC_URI="http://www.gftp.org/"$N-$V".tar.bz2"
 
-RDEPEND="gtk+ openssl readline"
+RDEPEND="gtk2 openssl readline"
 BDEPEND=""
 RECOMMENDED=""
 CONFLICT=""

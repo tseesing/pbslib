@@ -13,7 +13,7 @@ PACKAGER="StartOS Developers"
 SRC_URI="https://www.yun.io/downloads/"$N-$V"-generic-i386.tgz"
 CHECKSUM="10c9399ad0c0bbd354d72dcbe1323449"
 
-RDEPEND="expat fontconfig freetype gcc-lib glibc libX11 libXau libxcb libXdmcp libXext libXrender zlib"
+RDEPEND="expat fontconfig freetype gcc-libs glibc libX11 libXau libxcb libXdmcp libXext libXrender zlib"
 BDEPEND=""
 
 INSTALL="$N.install"

@@ -12,7 +12,7 @@ PACKAGER="StartOS Developers"
 
 SRC_URI="http://gstreamer.freedesktop.org/src/"$N"/"$N-$V".tar.bz2"
 
-RDEPEND="qt-core"
+RDEPEND="qt"
 RECOMMENDED=""
 BDEPEND=""
 OPTIONAL=""

@@ -30,7 +30,7 @@ pbs_config() {
 
 	config="--prefix="$INSTALL_DIR"
 	            --target="$TARGET"
-		    --with-gcc-lib
+		    --with-gcc-libs
 		    --with-gnu-as
 		    --with-gnu-ld
 		    --disable-nls

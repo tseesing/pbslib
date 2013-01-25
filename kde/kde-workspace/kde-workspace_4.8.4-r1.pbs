@@ -13,7 +13,7 @@ PACKAGER="StartOS Developers<>"
 SRC_URI="http://download.kde.org/stable/"$V"/src/"$N-$V".tar.xz"
 CHECKSUM="36c95ef05f33445e6c1f80817abe8cadb97c09e3fa6c54d6beb1e3654f08768b"
 
-RDEPEND="dm-switch acl akonadi attica attr bluez bzip2 cln consolekit dbus expat flac fontconfig freetype gcc-lib giflib glib2 glibc gmp google-gadgets gpsd gst-plugins-base gstreamer herqq json-c kactivities kdelibs kdepimlibs libcap libdbusmenu-qt libdmtx libdrm libffi libical libICE libjpeg-turbo libogg libpcre libpng libqalculate libqzeitgeist libraw1394 libSM libsndfile libtool libusbx libusb-compat libvorbis libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXft libXi libXinerama libxkbfile libxml2 libXpm libXrandr libXrender libXres libXScrnSaver libXtst libXxf86vm lm_sensors mesa openssl pam pciutils phonon prison pulseaudio qca qimageblitz qrencode qt-core soprano sqlite strigi udev util-linux-ng xz-utils zlib"
+RDEPEND="dm-switch acl akonadi attica attr bluez bzip2 cln consolekit dbus expat flac fontconfig freetype gcc-libs giflib glib2 glibc gmp google-gadgets gpsd gst-plugins-base gstreamer herqq json-c kactivities kdelibs kdepimlibs libcap libdbusmenu-qt libdmtx libdrm libffi libical libICE libjpeg-turbo libogg pcre libpng libqalculate libqzeitgeist libraw1394 libSM libsndfile libtool libusbx libusb-compat libvorbis libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXft libXi libXinerama libxkbfile libxml2 libXpm libXrandr libXrender libXres libXScrnSaver libXtst libXxf86vm lm_sensors mesa openssl pam pciutils phonon prison pulseaudio qca qimageblitz qrencode qt soprano sqlite strigi systemd util-linux xz zlib"
 BDEPEND="cmake automoc4"
 
 INSTALL="$N.install"

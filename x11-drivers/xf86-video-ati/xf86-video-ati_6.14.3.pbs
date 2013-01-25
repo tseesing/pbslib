@@ -13,7 +13,7 @@ GROUP="x11-drivers"
 
 SRC_URI="http://xorg.freedesktop.org/archive/individual/driver/"$N-$V".tar.bz2"
 
-RDEPEND="glibc libdrm libpciaccess pixman udev"
+RDEPEND="glibc libdrm libpciaccess pixman systemd"
 BDEPEND="xorg-server-dev"
 
 pbs_unpack() {

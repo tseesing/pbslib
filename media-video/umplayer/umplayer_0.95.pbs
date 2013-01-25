@@ -12,7 +12,7 @@ PACKAGER="StartOS Developers"
 
 SRC_URI="umplayer.tar.gz"
 
-RDEPEND="qt-core"
+RDEPEND="qt"
 BDEPEND=""
 RECOMMENDED=""
 CONFLICT=""

@@ -12,7 +12,7 @@ PACKAGER="StartOS Developers"
 
 SRC_URI="http://wvstreams.googlecode.com/files/"$N-$V".tar.gz"
 
-RDEPEND="dbus gcc-lib openssl pam readline"
+RDEPEND="dbus gcc-libs openssl pam readline"
 BDEPEND=""
 RECOMMENDED=""
 CONFLICT=""

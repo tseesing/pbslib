@@ -13,7 +13,7 @@ PACKAGER="StartOS Developers"
 SRC_URI="http://download.kde.org/stable/"$V"/src/"$N-$V".tar.xz"
 CHECKSUM="40c24efddc30441a8de2ec315e1933ca429da14b"
 
-RDEPEND="attica bzip2 dbus expat fontconfig freetype gcc-lib glib2 glibc kdelibs libdbusmenu-qt libffi libICE libpng libSM libX11 libXau libxcb libXcursor libXdmcp libXext libXfixes libXft libXi libXpm libXrender libXtst openssl qca qt-core util-linux-ng xz-utils zlib"
+RDEPEND="attica bzip2 dbus expat fontconfig freetype gcc-libs glib2 glibc kdelibs libdbusmenu-qt libffi libICE libpng libSM libX11 libXau libxcb libXcursor libXdmcp libXext libXfixes libXft libXi libXpm libXrender libXtst openssl qca qt util-linux xz zlib"
 RECOMMENDED=""
 BDEPEND="cmake automoc4"
 OPTIONAL=""

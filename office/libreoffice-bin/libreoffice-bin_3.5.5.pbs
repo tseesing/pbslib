@@ -12,7 +12,7 @@ PACKAGER="StartOS Developers"
 
 SRC_URI="http://download.documentfoundation.org/libreoffice/stable/"$V"/deb/x86/LibO_"$V"_Linux_x86_install-deb_en-US.tar.gz"
 
-RDEPEND="atk avahi cairo dbus dbus-glib expat fontconfig freetype gcc-lib gdk-pixbuf glib2 glibc gnome-vfs gst-plugins-base gstreamer gtk+ libdrm libICE libSM libX11 libXau libXaw libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXft libXi libXinerama libxml2 libXmu libXpm libXrandr libXrender libXt libXxf86vm mesa ncurses nspr openssl pango pixman util-linux-ng zlib"
+RDEPEND="atk avahi cairo dbus dbus-glib expat fontconfig freetype gcc-libs gdk-pixbuf2 glib2 glibc gnome-vfs gst-plugins-base gstreamer gtk2 libdrm libICE libSM libX11 libXau libXaw libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXft libXi libXinerama libxml2 libXmu libXpm libXrandr libXrender libXt libXxf86vm mesa ncurses nspr openssl pango pixman util-linux zlib"
 BDEPEND=""
 RECOMMENDED="jre libreoffice-bin-langpack-zh-CN(=3.5.5)"
 

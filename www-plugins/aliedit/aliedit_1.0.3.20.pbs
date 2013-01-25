@@ -12,7 +12,7 @@ PACKAGER="StartOS Developers"
 
 SRC_URI="aliedit32.tar.bz2"
 
-RDEPEND="gtk+ libXt"
+RDEPEND="gtk2 libXt"
 RECOMMENDED=""
 BDEPEND=""
 CONFLICT=""

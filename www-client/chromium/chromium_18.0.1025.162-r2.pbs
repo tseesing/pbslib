@@ -16,7 +16,7 @@ SRC_URI="http://commondatastorage.googleapis.com/chromium-browser-official/"$N-$
 CHECKSUM="2df8c72b29411dbbc66a95abf8d2a80f
           811f6cc6c99a73cbd864d551c1254aa4c943da05454165e8963966a07d30c4ef"
 
-RDEPEND="alsa-lib atk avahi bzip2 cairo cups dbus e2fsprogs expat fontconfig freetype gcc-lib gdk-pixbuf glib2 glibc gnutls gtk+ keyutils krb5 libevent libffi libgcrypt libgpg-error libjpeg-turbo libpng libtasn1 libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libXinerama libXrandr libXrender libXScrnSaver nspr nss pango pixman udev zlib"
+RDEPEND="alsa-lib atk avahi bzip2 cairo cups dbus e2fsprogs expat fontconfig freetype gcc-libs gdk-pixbuf2 glib2 glibc gnutls gtk2 keyutils krb5 libevent libffi libgcrypt libgpg-error libjpeg-turbo libpng libtasn1 libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libXinerama libXrandr libXrender libXScrnSaver nspr nss pango pixman systemd zlib"
 BDEPEND="perl gperf pkgconfig flex renderproto libXinerama-dev libvpx-dev switch"
 
 INSTALL="$N.install"

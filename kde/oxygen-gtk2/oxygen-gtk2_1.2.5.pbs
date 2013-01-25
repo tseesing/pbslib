@@ -3,14 +3,14 @@
 #
 
 DESCRIPTION="Port of the default KDE widget theme (Oxygen) to GTK2"
-HOMEPAGE="https://projects.kde.org/projects/playground/artwork/oxygen-gtk/"
+HOMEPAGE="https://projects.kde.org/projects/playground/artwork/oxygen-gtk2/"
 LICENSE="LGPL"
 PACKAGER="StartOS Developers<>"
 
 SRC_URI="http://download.kde.org/stable/"$N"/"$V"/src/"$N-$V".tar.bz2"
 CHECKSUM="ae01b5b42f6d8b9d58c938bb9a61a3ae"
 
-RDEPEND="gtk+"
+RDEPEND="gtk2"
 BDEPEND="cmake"
 
 pbs_unpack() {

@@ -10,7 +10,7 @@ GROUP="kde"
 
 SRC_URI="http://download.kde.org/stable/"$V"/src/"$N-$V".tar.xz"
 
-RDEPEND="exiv2 giflib kactivities kdepimlibs libcanberra libjpeg-turbo libpcre libssh nepomuk-core openexr openslp samba"
+RDEPEND="exiv2 giflib kactivities kdepimlibs libcanberra libjpeg-turbo pcre libssh nepomuk-core openexr openslp samba"
 BDEPEND="pkgconfig cmake automoc4 doxygen"
 
 INSTALL="$N.install"

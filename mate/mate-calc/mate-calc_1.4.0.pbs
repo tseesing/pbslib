@@ -10,7 +10,6 @@ HOMEPAGE="http://mate-desktop.org"
 LICENSE="GPL,LGPL"
 PACKAGER="StartOS Developers"
 
-REPO="testing"
 
 SRC_URI="http://pub.mate-desktop.org/releases/1.4/"$N-$V".tar.xz"
 CHECKSUM="186e578e449925c83993afaadabfb08533e6c614bf4925d185980627996227b6"

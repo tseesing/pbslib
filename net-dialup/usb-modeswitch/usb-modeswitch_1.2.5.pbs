@@ -35,11 +35,11 @@ pbs_build() {
 }
 
 pbs_install() {
-    mkdir -p "$destdir"/{usr/lib/udev,etc,usr/share/man/man1}
-    domkinstall UDEVDIR=${pkgdir}/usr/lib/udev
+    mkdir -p "$destdir"/{usr/lib/systemd,etc,usr/share/man/man1}
+    domkinstall UDEVDIR=${pkgdir}/usr/lib/systemd
     docp_rename device_reference.txt "$destdir"/etc/usb_modeswitch.setup
     # Install data
     cd usb-modeswitch-data-20121109
-    domkinstall RULESDIR="$destdir"/usr/lib/udev/rules.d
+    domkinstall RULESDIR="$destdir"/usr/lib/systemd/rules.d
 }
 

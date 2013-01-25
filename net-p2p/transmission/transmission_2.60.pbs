@@ -13,13 +13,13 @@ PACKAGER="StartOS Developers"
 SRC_URI="http://download.transmissionbt.com/files/"$N-$V".tar.xz"
 CHECKSUM="2aff84c29a3c4b51ac5682a89d96bda5"
 
-RDEPEND="curl gtk+ libevent miniupnpc"
+RDEPEND="curl gtk2 libevent miniupnpc"
 BDEPEND=""
 RECOMMENDED=""
 
 INSTALL="$N.install"
 
-DESKTOPFILE="transmission-gtk.desktop"
+DESKTOPFILE="transmission-gtk2.desktop"
 
 pbs_unpack() {
         dounpack

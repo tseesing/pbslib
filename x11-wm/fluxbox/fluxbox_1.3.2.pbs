@@ -13,7 +13,7 @@ PACKAGER="StartOS Developers"
 SRC_URI="http://downloads.sourceforge.net/sourceforge/"$N"/"$N-$V".tar.gz"
 CHECKSUM="15ba1b9eaaf170d87fa647b7118a63c05f093b5c"
 
-RDEPEND="fribidi gcc-lib imlib2 libXft libXinerama libXpm libXrandr"
+RDEPEND="fribidi gcc-libs imlib2 libXft libXinerama libXpm libXrandr"
 BDEPEND=""
 RECOMMENDED=""
 CONFLICT=""

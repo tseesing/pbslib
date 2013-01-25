@@ -13,7 +13,7 @@ PACKAGER="StartOS Developers<>"
 SRC_URI="http://qtscriptgenerator.googlecode.com/files/"$N"-src-"$V".tar.gz"
 CHECKSUM="4c1078f26b196156e857c17c9d11a66cfea66f00"
 
-RDEPEND="qt-core"
+RDEPEND="qt"
 BDEPEND=""
 
 pbs_unpack() {

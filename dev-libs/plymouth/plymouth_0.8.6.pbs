@@ -11,7 +11,7 @@ REPO="testing"
 
 SRC_URI="http://freedesktop.org/software/plymouth/releases/"$N-$V".tar.bz2"
 
-RDEPEND="libdrm gtk+"
+RDEPEND="libdrm gtk2"
 BDEPEND=""
 RECOMMENDED="plymouth-theme-startos"
 

@@ -11,12 +11,11 @@ LICENSE="GPL"
 PACKAGER="StartOS Developers"
 YARCH="any"
 
-REPO="testing"
 
 SRC_URI="http://pub.mate-desktop.org/releases/1.4/"$N-$V".tar.xz"
 CHECKSUM="a9168894fa3361f61102b2e18ad22a1f5c381866cce953af46dc7356c2abd097"
 
-RDEPEND="gtk+ gtk-engines"
+RDEPEND="gtk2 gtk-engines"
 RECOMMENDED=""
 BDEPEND=""
 OPTIONAL=""

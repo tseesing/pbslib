@@ -13,7 +13,7 @@ PACKAGER="StartOS Developers"
 SRC_URI="http://downloads.sourceforge.net/sourceforge/"$N"/"$N-$V"-src.tar.bz2"
 CHECKSUM="1fd2620489cc3627a841773a79cf28a7c9c438979c76d37f231a773a79e7f23e"
 
-RDEPEND="farstream gcc-lib libjpeg-turbo libpng libSM libX11"
+RDEPEND="farstream gcc-libs libjpeg-turbo libpng libSM libX11"
 BDEPEND=""
 RECOMMENDED=""
 CONFLICT=""

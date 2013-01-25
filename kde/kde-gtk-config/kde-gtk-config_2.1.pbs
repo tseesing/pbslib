@@ -13,7 +13,7 @@ GROUP="kde"
 
 SRC_URI="http://download.kde.org/stable/"$N"/"$V"/src/"$N-$V".tar.bz2"
 
-RDEPEND="gtk+ gtk+3 kdelibs"
+RDEPEND="gtk2 gtk3 kdelibs"
 BDEPEND="cmake automoc4"
 
 pbs_unpack() {

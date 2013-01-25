@@ -22,7 +22,7 @@ pbs_unpack() {
 pbs_config() {
 	unset LDFLAGS
     ./configure $DEFAULT_CONFIG \
-                --with-udev-prefix=/usr \
+                --with-systemd-prefix=/usr \
                 --with-systemdsystemunitdir=/usr/lib/systemd/system \
                 --with-default-pid-dir=/run \
                 --with-default-dm-run-dir=/run \
@@ -32,8 +32,8 @@ pbs_config() {
                 --enable-dmeventd \
                 --enable-cmdlib \
                 --enable-applib \
-                --enable-udev_sync \
-                --enable-udev_rules \
+                --enable-systemd_sync \
+                --enable-systemd_rules \
                 --with-default-locking-dir=/run/lock/lvm \
                 --enable-lvmetad
 }

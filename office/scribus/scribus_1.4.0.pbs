@@ -13,7 +13,7 @@ PACKAGER="StartOS Developers"
 SRC_URI="http://sourceforge.net/projects/scribus/files/"$N"/"$V"/"$N-$V".tar.xz"
 CHECKSUM="ae19e62399941fb8e868d8e762caf494"
 
-RDEPEND="aspell avahi cairo cups dbus expat fontconfig freetype gcc-lib glib2 glibc gnutls hyphen keyutils krb5 lcms libdrm libffi libgcrypt libgpg-error libICE libjpeg-turbo libpng libSM libtasn1 libtiff libX11 libXau libxcb libXdmcp libXext libxml2 libXrender mesa pixman python qt-core udev util-linux-ng zlib"
+RDEPEND="aspell avahi cairo cups dbus expat fontconfig freetype gcc-libs glib2 glibc gnutls hyphen keyutils krb5 lcms libdrm libffi libgcrypt libgpg-error libICE libjpeg-turbo libpng libSM libtasn1 libtiff libX11 libXau libxcb libXdmcp libXext libxml2 libXrender mesa pixman python qt systemd util-linux zlib"
 BDEPEND="cmake"
 RECOMMENDED=""
 CONFLICT=""

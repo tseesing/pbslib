@@ -13,7 +13,7 @@ PACKAGER="StartOS Developers"
 
 SRC_URI="http://downloads.xiph.org/releases/xspf/"$N-$V".tar.lzma"
 
-RDEPEND="expat gcc-lib glibc uriparser"
+RDEPEND="expat gcc-libs glibc uriparser"
 RECOMMENDED=""
 BDEPEND=""
 CONFLICT=""

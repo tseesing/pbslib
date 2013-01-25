@@ -13,7 +13,7 @@ PACKAGER="StartOS Developers"
 SRC_URI="https://dl.google.com/linux/direct/"$N"-stable_current_i386.deb"
 CHECKSUM="6437350d125cda1a321d641e68f69847"
 
-RDEPEND="alsa-lib cups gconf libXScrnSaver nss udev"
+RDEPEND="alsa-lib cups gconf libXScrnSaver nss systemd"
 BDEPEND=""
 RECOMMENDED=""
 CONFLICT=""

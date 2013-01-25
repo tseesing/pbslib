@@ -12,7 +12,7 @@ PACKAGER="StartOS Developers"
 
 SRC_URI="https://alioth.debian.org/frs/download.php/3082/"$N-$V".tar.bz2"
 
-RDEPEND="dbus gcc-lib glibc hal libsmbios"
+RDEPEND="dbus gcc-libs glibc hal libsmbios"
 BDEPEND=""
 RECOMMENDED=""
 

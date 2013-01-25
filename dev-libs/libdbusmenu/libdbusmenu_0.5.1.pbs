@@ -13,7 +13,7 @@ PACKAGER="StartOS Developers"
 SRC_URI="https://launchpadlibrarian.net/82686310/libdbusmenu-0.5.1.tar.gz"
 CHECKSUM="9742c8b4e04d99f2d187041272052b53"
 
-RDEPEND="gtk+ json-glib"
+RDEPEND="gtk2 json-glib"
 RECOMMENDED=""
 BDEPEND=""
 OPTIONAL=""
@@ -24,7 +24,7 @@ pbs_unpack() {
 }
 
 pbs_config() {
-	config+="--with-gtk=2"
+	config+="--with-gtk2=2"
 	doconfig
 }
 

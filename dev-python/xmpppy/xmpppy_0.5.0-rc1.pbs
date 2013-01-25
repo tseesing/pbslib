@@ -8,18 +8,19 @@
 DESCRIPTION="A Python library to provide easy scripting with Jabber"
 HOMEPAGE="http://xmpppy.sourceforge.net/"
 LICENSE="GPL"
-PACKAGER="StartOS Developers"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
+YARCH="any"
 
-SRC_URI="http://downloads.sourceforge.net/project/"$N"/"$N"/"$V"/"$N"-0.5.0rc1.tar.gz"
+SRC_URI="http://downloads.sourceforge.net/project/$N/$N/$V$R/"$N-$V"rc1.tar.gz"
 CHECKSUM="e0d2b3f9e4a278c163431e64adb0c861"
 
 RDEPEND="python"
-BDEPEND=""
+BDEPEND="distribute"
 RECOMMENDED=""
 CONFLICT=""
 
 pbs_unpack() {
-        dounpack
+    dounpack
 }
 
 pbs_config() {

@@ -12,7 +12,7 @@ PACKAGER="StartOS Developers"
 
 SRC_URI="http://sourceforge.net/projects/lxde/files/LXLauncher%20%28for%20Asus%20EeePC%29/LXLauncher%20"$V"/"$N-$V".tar.gz"
 
-RDEPEND="gtk+ menu-cache startup-notification"
+RDEPEND="gtk2 menu-cache startup-notification"
 BDEPEND=""
 RECOMMENDED=""
 CONFLICT=""
@@ -20,7 +20,7 @@ CONFLICT=""
 INSTLL="$N.install"
 
 pbs_unpack() {
-        dounpack
+    dounpack
 }
 
 pbs_config() {

@@ -12,7 +12,7 @@ PACKAGER="StartOS Developers"
 
 SRC_URI="gkpppoe_0.0.2_i386.deb"
 
-RDEPEND="gtk+"
+RDEPEND="gtk2"
 BDEPEND=""
 RECOMMENDED=""
 CONFLICT=""

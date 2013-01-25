@@ -13,7 +13,7 @@ PACKAGER="StartOS Developers"
 SRC_URI="http://download.kde.org/stable/"$V"/src/"$N-$V".tar.xz"
 CHECKSUM="aae8f027ab1ef75283d6e4b2bdf76c91d04087ea"
 
-RDEPEND="acl akonadi attica attr bzip2 cyrus-sasl dbus expat flac fontconfig freetype gcc-lib giflib glib2 glibc gnutls gpgme grantlee gst-plugins-base gstreamer herqq json-c kdelibs kdepimlibs libassuan libcap libdbusmenu-qt libdmtx libdrm libffi libgcrypt libgpg-error libical libICE libjpeg-turbo libogg libpcre libpng libqzeitgeist libSM libsndfile libtasn1 libvorbis libX11 libXau libxcb libXcursor libXdamage libXdmcp libXext libXfixes libXft libXi libxml2 libXpm libXrender libXScrnSaver libXtst libXxf86vm mesa openldap openssl phonon prison pulseaudio qca qrencode qt-core soprano sqlite strigi udev util-linux-ng xz-utils zlib"
+RDEPEND="acl akonadi attica attr bzip2 cyrus-sasl dbus expat flac fontconfig freetype gcc-libs giflib glib2 glibc gnutls gpgme grantlee gst-plugins-base gstreamer herqq json-c kdelibs kdepimlibs libassuan libcap libdbusmenu-qt libdmtx libdrm libffi libgcrypt libgpg-error libical libICE libjpeg-turbo libogg pcre libpng libqzeitgeist libSM libsndfile libtasn1 libvorbis libX11 libXau libxcb libXcursor libXdamage libXdmcp libXext libXfixes libXft libXi libxml2 libXpm libXrender libXScrnSaver libXtst libXxf86vm mesa openldap openssl phonon prison pulseaudio qca qrencode qt soprano sqlite strigi systemd util-linux xz zlib"
 RECOMMENDED=""
 BDEPEND="cmake automoc4"
 OPTIONAL=""

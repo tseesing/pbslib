@@ -40,7 +40,7 @@ pbs_patch() {
 
 pbs_config() {
 	config+=" --with-distro=startos 
-		  --with-udevrulesdir=/lib/udev/rules.d
+		  --with-systemdrulesdir=/lib/systemd/rules.d
 		  --with-pamlibdir=/lib/security
 		  --with-rootprefix=/
 		  --disable-gtk 

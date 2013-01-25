@@ -13,7 +13,7 @@ PACKAGER="StartOS Developers<>"
 SRC_URI="http://downloads.sourceforge.net/"$N"/"$N-$V".tar.bz2"
 CHECKSUM="273c3403aeb6d8a43e78a4887f50a385"
 
-RDEPEND="berkeley-db clucene curl cyrus-sasl dbus gcc-lib glib2 glibc gmp gnutls jre libgcrypt libgpg-error libidn libiodbc libssh2 libtasn1 libtool libxml2 libxslt mpfr openldap openssl qt-core raptor2 rasqal redland rtmpdump zlib"
+RDEPEND="berkeley-db clucene curl cyrus-sasl dbus gcc-libs glib2 glibc gmp gnutls jre libgcrypt libgpg-error libidn libiodbc libssh2 libtasn1 libtool libxml2 libxslt mpfr openldap openssl qt raptor2 rasqal redland rtmpdump zlib"
 BDEPEND="cmake doxygen jdk"
 
 pbs_unpack() {

@@ -13,7 +13,7 @@ PACKAGER="StartOS Developers<>"
 SRC_URI="http://download.kde.org/stable/"$V"/src/"$N-$V".tar.xz"
 CHECKSUM="b825e40b29b4ae684265cb13b7935737d7ae6d68"
 
-RDEPEND="pykde4 system-config-printer acl attica attr bzip2 cyrus-sasl dbus expat fontconfig freetype gcc-lib glib2 glibc gnutls herqq kdelibs kdepimlibs libdbusmenu-qt libffi libgcrypt libgpg-error libICE libpng libSM libtasn1 libX11 libXau libxcb libXcursor libXdmcp libXext libXfixes libXft libXi libxml2 libXpm libXrender libXtst openldap openssl qca qt-core soprano strigi udev util-linux-ng xz-utils zlib"
+RDEPEND="pykde4 system-config-printer acl attica attr bzip2 cyrus-sasl dbus expat fontconfig freetype gcc-libs glib2 glibc gnutls herqq kdelibs kdepimlibs libdbusmenu-qt libffi libgcrypt libgpg-error libICE libpng libSM libtasn1 libX11 libXau libxcb libXcursor libXdmcp libXext libXfixes libXft libXi libxml2 libXpm libXrender libXtst openldap openssl qca qt soprano strigi systemd util-linux xz zlib"
 BDEPEND="cmake automoc4"
 
 INSTALL="$N.install"

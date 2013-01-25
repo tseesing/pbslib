@@ -12,7 +12,7 @@ PACKAGER="StartOS Developers"
  
 SRC_URI="http://switch.dl.sourceforge.net/sourceforge/freeassociation/"$N-$V".tar.gz"
 
-RDEPEND="gcc-lib"
+RDEPEND="gcc-libs"
 BDEPEND=""
 RECOMMENDED=""
 

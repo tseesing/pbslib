@@ -6,11 +6,11 @@
 #
 
 DESCRIPTION="A free, object-oriented toolkit for SGML parsing and entity management"
-HOMEPAGE="http://openjade.sourceforge.net/"
+HOMEPAGE="http://jade.sourceforge.net/"
 LICENSE="BSD"
 PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
  
-SRC_URI="http://download.sourceforge.net/openjade/OpenSP-"$V".tar.gz"
+SRC_URI="http://download.sourceforge.net/jade/OpenSP-"$V".tar.gz"
 
 RDEPEND="gcc-libs"
 BDEPEND="xmlto docbook-xsl"

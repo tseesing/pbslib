@@ -12,7 +12,7 @@ PACKAGER="StartOS Developers"
 
 SRC_URI="http://www.hpl.hp.com/personal/Hans_Boehm/"$N"/"${N}"_source/"$N-$V".tar.gz"
 
-RDEPEND="gcc-lib"
+RDEPEND="gcc-libs"
 BDEPEND=""
 RECOMMENDED=""
 

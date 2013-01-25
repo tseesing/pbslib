@@ -12,7 +12,7 @@ PACKAGER="StartOS Developers"
 
 SRC_URI="http://download.skype.com/linux/"$N-$V".tar.bz2"
 
-RDEPEND="libXScrnSaver libXv qt-core"
+RDEPEND="libXScrnSaver libXv qt"
 BDEPEND=""
 
 OPTIONS="nostrip"

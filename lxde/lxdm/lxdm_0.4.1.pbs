@@ -12,7 +12,7 @@ PACKAGER="StartOS Developers"
 
 SRC_URI="http://nchc.dl.sourceforge.net/project/"$N"/"$N"/LXDM%200.4.1/"$N-$V".tar.gz"
 
-RDEPEND="consolekit gtk+"
+RDEPEND="consolekit gtk2"
 BDEPEND=""
 
 pbs_unpack() {

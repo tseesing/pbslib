@@ -35,7 +35,7 @@ pbs_unpack() {
 }
 
 pbs_config() {	
-	config+="--with-udev-rules-dir=/usr/lib/udev/rules.d 
+	config+="--with-systemd-rules-dir=/usr/lib/systemd/rules.d 
              --with-database=tdb 
              --disable-tcpwrap 
              --disable-rpath 

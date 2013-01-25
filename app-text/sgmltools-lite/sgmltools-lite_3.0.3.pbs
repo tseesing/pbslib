@@ -14,7 +14,7 @@ YARCH="any"
 SRC_URI="http://downloads.sourceforge.net/project/"$N"/"$N"/"$V"/"$N-$V".tar.gz"
 
 RDEPEND=""
-BDEPEND="openjade"
+BDEPEND="jade"
 RECOMMENDED=""
 
 pbs_unpack() {

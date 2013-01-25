@@ -13,7 +13,7 @@ YARCH="any"
 
 SRC_URI="http://search.cpan.org/CPAN/authors/id/P/PE/PETDANCE/WWW-Mechanize-"$V".tar.gz"
 
-RDEPEND="libwww-perl html-parser-perl uri-perl html-form-perl"
+RDEPEND="libwww-perl HTML-Parser URI HTML-Form"
 BDEPEND=" "
 RECOMMENDED=""
 CONFLICT=""

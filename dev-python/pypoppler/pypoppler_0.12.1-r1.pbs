@@ -12,7 +12,7 @@ PACKAGER="StartOS Developers"
 
 SRC_URI="http://launchpadlibrarian.net/32515721/"$N-$V".tar.gz"
 
-RDEPEND="atk cairo expat fontconfig freetype gcc-lib gdk-pixbuf glib2 glibc gtk+ lcms libffi libjpeg-turbo libpng libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libXinerama libxml2 libXrandr libXrender pango pixman poppler zlib"
+RDEPEND="atk cairo expat fontconfig freetype gcc-libs gdk-pixbuf2 glib2 glibc gtk2 lcms libffi libjpeg-turbo libpng libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libXinerama libxml2 libXrandr libXrender pango pixman poppler zlib"
 BDEPEND=""
 RECOMMENDED=""
 CONFLICT=""

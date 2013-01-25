@@ -40,12 +40,12 @@ pbs_build() {
 pbs_install() {
 	domkinstall
     cd "$destdir"
-    # Remove unused udev helper
-    rm -rf usr/lib"$LIBDIRSUFFIX"/udev
-    install -m755 -d usr/lib/udev/rules.d
+    # Remove unused systemd helper
+    rm -rf usr/lib"$LIBDIRSUFFIX"/systemd
+    install -m755 -d usr/lib/systemd/rules.d
     LD_LIBRARY_PATH="${destdir}/usr/lib${LD_LIBRARY_PATH:+:}$LD_LIBRARY_PATH" \
     CAMLIBS="${destdir}/usr/lib/libgphoto2/${pkgver}" \
-    usr/lib"$LIBDIRSUFFIX"/libgphoto2/print-camera-list udev-rules version 175 >usr/lib/udev/rules.d/40-gphoto.rules
+    usr/lib"$LIBDIRSUFFIX"/libgphoto2/print-camera-list systemd-rules version 175 >usr/lib/systemd/rules.d/40-gphoto.rules
     # Remove recursive symlink
     rm -f usr/include/gphoto2/gphoto2
 }

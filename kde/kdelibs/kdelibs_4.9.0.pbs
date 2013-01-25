@@ -12,7 +12,7 @@ GROUP="kde"
 
 SRC_URI="http://download.kde.org/stable/"$V"/src/"$N-$V".tar.xz"
 
-RDEPEND="attica enchant giflib herqq jasper krb5 libdbusmenu-qt libpcre libXcursor libXft libXpm libXScrnSaver openexr phonon polkit-qt qca soprano(>=2.7.56) strigi udev xz-utils"
+RDEPEND="attica enchant giflib herqq jasper krb5 libdbusmenu-qt pcre libXcursor libXft libXpm libXScrnSaver openexr phonon polkit-qt qca soprano(>=2.7.56) strigi systemd xz"
 BDEPEND="pkgconfig cmake automoc4 docbook-xml(>=4.5-r1)"
 RECOMMENDED=""
 

@@ -12,7 +12,7 @@ LICENSE="GPL,PerlArtistic"
 
 SRC_URI="http://mirrors.xmu.edu.cn/CPAN/authors/id/F/FL/FLORA/Gtk2-Sexy-"$V".tar.gz"
 
-RDEPEND="gtk+ libsexy"
+RDEPEND="gtk2 libsexy"
 BDEPEND="extutils-depends extutils-pkgconfig gtk2-perl"
 RECOMMENDED=""
 CONFLICT=""

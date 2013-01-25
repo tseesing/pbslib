@@ -12,7 +12,7 @@ PACKAGER="StartOS Developers"
 
 SRC_URI="yong-lin-1.6.0-3.7z"
 
-RDEPEND="gtk+"
+RDEPEND="gtk2"
 BDEPEND=""
 RECOMMENDED=""
 CONFLICT=""

@@ -12,7 +12,7 @@ PACKAGER="StartOS Developers"
 
 SRC_URI="http://sourceforge.net/projects/lxde/files/LXSession%20Edit/lxsession-edit%20"$V"/"$N-$V".tar.gz"
 
-RDEPEND="gtk+"
+RDEPEND="gtk2"
 BDEPEND=""
 RECOMMENDED=""
 CONFLICT=""

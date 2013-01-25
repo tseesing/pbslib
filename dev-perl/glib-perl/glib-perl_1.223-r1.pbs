@@ -12,7 +12,7 @@ PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
 SRC_URI="http://search.cpan.org/CPAN/authors/id/T/TS/TSCH/Glib-"$V".tar.gz"
 
-RDEPEND="perl glib2 gdk-pixbuf"
+RDEPEND="perl glib2 gdk-pixbuf2"
 BDEPEND="extutils-depends extutils-pkgconfig"
 RECOMMENDED=""
 CONFLICT=""

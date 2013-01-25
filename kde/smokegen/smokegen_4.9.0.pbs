@@ -13,7 +13,7 @@ GROUP="kde"
 
 SRC_URI="http://download.kde.org/stable/"$V"/src/"$N-$V".tar.xz"
 
-RDEPEND="qt-core"
+RDEPEND="qt"
 RECOMMENDED=""
 BDEPEND="cmake automoc4"
 OPTIONAL=""

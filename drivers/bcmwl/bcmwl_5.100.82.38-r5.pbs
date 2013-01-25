@@ -36,7 +36,7 @@ bcmwl-source_install() {
 bcmwl-driver_install() {
 	DESCRIPTION="driver for BCM4311/4312/4313 BCM4321/4322 BCM43224/43225/43227/43228 (kernel module)"
 	RDEPEND="linux-kernel(=3.0.20-r4)"
-	BDEPEND="gcc-lib linux-kernel-headers"
+	BDEPEND="gcc-libs linux-kernel-headers"
 	CONFLICT="broadcom-sta-driver"
 	
 	INSTALL="$N.install"

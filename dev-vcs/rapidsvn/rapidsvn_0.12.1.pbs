@@ -5,7 +5,7 @@
 # Distributed under the terms of the GNU General Public License v2
 #
 
-DESCRIPTION="A cross-platform GUI front-end for the Subversion revision system written in C++ using the wxWidgets framework."
+DESCRIPTION="A cross-platform GUI front-end for the Subversion revision system written in C++ using the wxgtk framework."
 HOMEPAGE="http://rapidsvn.tigris.org"
 LICENSE="GPL"
 PACKAGER="StartOS Developers"
@@ -13,7 +13,7 @@ PACKAGER="StartOS Developers"
 SRC_URI="http://www.rapidsvn.org/download/release/"$V"/"$N-$V".tar.gz"
 CHECKSUM="8de3ca6da3ef6a27d59f959d1bbcd96b"
 
-RDEPEND="subversion wxWidgets"
+RDEPEND="subversion wxgtk"
 RECOMMENDED=""
 BDEPEND=""
 OPTIONAL=""

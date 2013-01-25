@@ -13,7 +13,7 @@ PACKAGER="StartOS Developers"
 SRC_URI="ftp://ftp.gimp.org/pub/"$N"/0.2/"$N-$V".tar.bz2"
 CHECKSUM="32b00002f1f1e316115c4ed922e1dec8"
 
-RDEPEND="babl bzip2 cairo directfb expat ffmpeg fontconfig freetype gcc-lib gdk-pixbuf glib2 glibc jasper lame libcroco libffi libICE libjpeg-turbo libogg libpng librsvg libsdl libSM libtheora libva libvorbis libX11 libXau libxcb libXdmcp libxml2 libXrender libXt nas opencore-amr openssl orc pango pixman rtmpdump schroedinger util-linux-ng x264 xvidcore zlib"
+RDEPEND="babl bzip2 cairo directfb expat ffmpeg fontconfig freetype gcc-libs gdk-pixbuf2 glib2 glibc jasper lame libcroco libffi libICE libjpeg-turbo libogg libpng librsvg libsdl libSM libtheora libva libvorbis libX11 libXau libxcb libXdmcp libxml2 libXrender libXt nas opencore-amr openssl orc pango pixman rtmpdump schroedinger util-linux x264 xvidcore zlib"
 BDEPEND=""
 
 pbs_unpack() {

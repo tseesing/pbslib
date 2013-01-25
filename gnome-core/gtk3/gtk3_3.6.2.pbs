@@ -6,11 +6,11 @@
 #
 
 DESCRIPTION="GTK+ is a multi-platform toolkit (v3)"
-HOMEPAGE="http://www.gtk.org/"
+HOMEPAGE="http://www.gtk2.org/"
 LICENSE="LGPL"
 PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
-SRC_URI="http://ftp.gnome.org/pub/gnome/core/3.6/3.6.2/sources/gtk+-"$V".tar.xz"
+SRC_URI="http://ftp.gnome.org/pub/gnome/core/3.6/3.6.2/sources/gtk2-"$V".tar.xz"
 
 RDEPEND="cups"
 RECOMMENDED=""
@@ -37,6 +37,6 @@ pbs_build() {
 
 pbs_install() {
 	domkinstall
-	docp "$filesdir"/settings.ini "$destdir"/etc/gtk-3.0/
+	docp "$filesdir"/settings.ini "$destdir"/etc/gtk2-3.0/
 }
 

@@ -13,7 +13,7 @@ PACKAGER="StartOS Developers<>"
 SRC_URI="http://download.kde.org/stable/"$N"/"$V"/src/"$N-$V".tar.bz2"
 CHECKSUM=""
 
-RDEPEND="acl atk attica attr bzip2 cairo dbus expat fontconfig freetype gcc-lib gdk-pixbuf glib2 glibc gtk+ gtk+3 herqq kdelibs libdbusmenu-qt libffi libICE libpng libSM libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXft libXi libXinerama libxml2 libXpm libXrandr libXrender libXtst openssl pango pixman qca qt-core soprano strigi udev util-linux-ng xz-utils zlib"
+RDEPEND="acl atk attica attr bzip2 cairo dbus expat fontconfig freetype gcc-libs gdk-pixbuf2 glib2 glibc gtk2 gtk3 herqq kdelibs libdbusmenu-qt libffi libICE libpng libSM libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXft libXi libXinerama libxml2 libXpm libXrandr libXrender libXtst openssl pango pixman qca qt soprano strigi systemd util-linux xz zlib"
 BDEPEND="cmake automoc4"
 
 pbs_unpack() {

@@ -59,7 +59,7 @@ ati-graphic-legacy-utils_install () {
 	DESCRIPTION="Video driver for the ATI graphics accelerators (utils)"
 	RDEPEND="ati-graphic-legacy-driver xorg-server(>=1.12.2)"
 	OPTIONS="nodev"
-	RECOMMENDED="qt-core"
+	RECOMMENDED="qt"
 
 	INSTALL="$N.install"
 

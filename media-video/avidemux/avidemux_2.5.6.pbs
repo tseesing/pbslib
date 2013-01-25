@@ -14,12 +14,12 @@ PACKAGER="StartOS Developers"
 SRC_URI="http://downloads.sourceforge.net/"$N"/"${N}_$V".tar.gz"
 CHECKSUM="00e479dd806b94a98d3f0f40639e88a9"
 
-RDEPEND="gtk+ libsdl libva libvpx libxml2 libXv"
+RDEPEND="gtk2 libsdl libva libvpx libxml2 libXv"
 RECOMMENDED=""
 BDEPEND="cmake"
 OPTIONAL=""
 
-DESKTOPFILE="avidemux2-gtk.desktop"
+DESKTOPFILE="avidemux2-gtk2.desktop"
 
 INSTALL="$N.install"
 
@@ -39,6 +39,6 @@ pbs_build() {
 pbs_install() {
 	domkinstall
 	cd ..
-	dodesktop avidemux2-gtk.desktop avidemux_icon.png
+	dodesktop avidemux2-gtk2.desktop avidemux_icon.png
 }
 

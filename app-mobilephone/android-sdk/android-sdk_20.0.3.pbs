@@ -14,7 +14,7 @@ SRC_URI="http://dl.google.com/android/"$N"_r"$V"-linux.tgz"
 CHECKSUM="919ea464007c2c4d04d5b366b4f64e916d99995e"
 
 RDEPEND="jdk jre fontconfig libXrender mesa"
-RECOMMENDED="android-sdk-platform-tools android-udev-rules"
+RECOMMENDED="android-sdk-platform-tools android-systemd-rules"
 BDEPEND=""
 OPTIONAL=""
 CONFLICT=""

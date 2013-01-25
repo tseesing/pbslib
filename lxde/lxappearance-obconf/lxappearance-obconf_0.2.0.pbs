@@ -12,7 +12,7 @@ PACKAGER="StartOS Developers"
 
 SRC_URI="http://sourceforge.net/projects/lxde/files/LXAppearance%20Obconf/"$N-$V".tar.gz"
 
-RDEPEND="gtk+ openbox"
+RDEPEND="gtk2 openbox"
 BDEPEND=""
 RECOMMENDED=""
 CONFLICT=""

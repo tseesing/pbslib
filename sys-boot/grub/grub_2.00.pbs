@@ -34,7 +34,31 @@ pbs_unpack() {
 }
 
 pbs_patch() {
-    dopatch build-glibc-2.16.patch
+    dopatch build-glibc-2.16.patch 
+    # patches from Ubuntu 12.10
+    dopatch fetch_latest_po.patch  
+    dopatch disable_floppies.patch 
+    dopatch gfxpayload_keep_default.patch  
+    dopatch mkconfig_skip_dmcrypt.patch 
+    dopatch mkconfig_loopback.patch 
+    dopatch gettext_quiet.patch 
+    dopatch mkconfig_overescaping.patch 
+    dopatch mkconfig_ubuntu_recovery.patch 
+    dopatch mkconfig_stderr_handling.patch 
+    dopatch mkconfig_nonexistent_loopback.patch 
+    dopatch ubuntu_grub_standards.patch
+    dopatch ubuntu_vt_handoff.patch 
+    dopatch ubuntu_blacklist_1440x900x32.patch 
+    dopatch ubuntu_recovery_nomodeset.patch
+    dopatch ubuntu_wubi_no_windows.patch 
+    dopatch ubuntu_probe_dmraid.patch 
+    dopatch ubuntu_mount_readdir_symlink_failures.patch 
+    dopatch ubuntu_initrd_addr_min.patch 
+    dopatch ubuntu_really_quiet.patch
+
+    # Fetch latest po, rsync is required
+    bash linguas.sh
+
     cd ../
     cp -a "$N-$V$R" grub_bios
     cp -a "$N-$V$R" grub_EFI_86

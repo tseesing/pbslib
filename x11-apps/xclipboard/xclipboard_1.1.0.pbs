@@ -13,7 +13,7 @@ PACKAGER="StartOS Developers"
 
 SRC_URI="http://xorg.freedesktop.org/releases/individual/app/"$N-$V".tar.bz2"
 
-RDEPEND="glibc libICE libSM libX11 libXau libXaw libxcb libXdmcp libXext libxkbfile libXmu libXpm libXt util-linux-ng"
+RDEPEND="glibc libICE libSM libX11 libXau libXaw libxcb libXdmcp libXext libxkbfile libXmu libXpm libXt util-linux"
 BDEPEND=""
 
 pbs_unpack() {

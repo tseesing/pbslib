@@ -12,7 +12,7 @@ PACKAGER="StartOS Developers"
 
 SRC_URI="http://download.berlios.de/"$N"/"$N-$V".tar.gz"
 
-RDEPEND="consolekit gcc-lib libjpeg-turbo libpng libXft libXmu"
+RDEPEND="consolekit gcc-libs libjpeg-turbo libpng libXft libXmu"
 BDEPEND=""
 
 pbs_unpack() {

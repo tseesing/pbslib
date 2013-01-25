@@ -13,7 +13,7 @@ PACKAGER="StartOS Developers"
 SRC_URI="http://delta.affinix.com/download/"$N"/2.0/"$N-$V".tar.bz2"
 CHECKSUM="fc15bd4da22b8096c51fcfe52d2fa309"
 
-RDEPEND="qt-core"
+RDEPEND="qt"
 RECOMMENDED=""
 BDEPEND=""
 OPTIONAL=""

@@ -13,7 +13,7 @@ PACKAGER="StartOS Developers"
 SRC_URI="http://www.open-mpi.org/software/ompi/v1.6/downloads/"$N-$V".tar.bz2"
 CHECKSUM="1ccff71e3775c80c5a553f30104d663e1226baab"
 
-RDEPEND="gcc-lib hwloc libtool lksctp-tools"
+RDEPEND="gcc-libs hwloc libtool lksctp-tools"
 RECOMMENDED=""
 BDEPEND=""
 OPTIONAL=""

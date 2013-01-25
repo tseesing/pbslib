@@ -12,11 +12,11 @@ PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
 SRC_URI="http://ftp.stack.nl/pub/users/dimitri/"$N-$V".src.tar.gz"
 
-RDEPEND="gcc-lib"
-BDEPEND="qt-core"
+RDEPEND="gcc-libs"
+BDEPEND="qt"
 RECOMMENDED=""
 OPTIONAL="graphviz: for caller/callee graph generation
-          qt-core: for doxywizard"
+          qt: for doxywizard"
 
 pbs_unpack() {
     dounpack

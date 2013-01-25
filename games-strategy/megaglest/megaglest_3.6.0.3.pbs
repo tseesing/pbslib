@@ -13,7 +13,7 @@ PACKAGER="StartOS Developers"
 SRC_URI="http://downloads.sourceforge.net/"$N"/"$N"-source-"$V".tar.xz"
 CHECKSUM="5a4a2429435031d9f9cc5d9535a9de9d"
 
-RDEPEND="ftgl glew libircclient libsdl libvorbis lua miniupnpc openal wxWidgets xerces-c"
+RDEPEND="ftgl glew libircclient libsdl libvorbis lua miniupnpc openal wxgtk xerces-c"
 RECOMMENDED=""
 BDEPEND="cmake"
 OPTIONAL=""

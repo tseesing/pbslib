@@ -12,7 +12,7 @@ PACKAGER="StartOS Developers"
 
 SRC_URI="http://linux.dell.com/libsmbios/download/"$N"/"$N-$V"/"$N-$V".tar.bz2"
 
-RDEPEND="gcc-lib glibc"
+RDEPEND="gcc-libs glibc"
 BDEPEND=""
 RECOMMENDED=""
 CONFLICT=""

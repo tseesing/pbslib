@@ -13,7 +13,7 @@ PACKAGER="YLmf OS Developers "
 #git://oss.sgi.com/xfs/cmds/"$N".git
 SRC_URI="xfsprogs-3.1.7.tar.bz2"
 
-RDEPEND="glibc util-linux-ng"
+RDEPEND="glibc util-linux"
 BDEPEND=""
 RECOMMENDED=""
 

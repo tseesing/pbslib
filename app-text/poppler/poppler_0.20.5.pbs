@@ -60,7 +60,7 @@ poppler-glib_install(){
 
 #poppler-qt_install() {
 #	DESCRIPTION="Poppler Qt bindings"
-#	RDEPEND="poppler qt-core"
+#	RDEPEND="poppler qt"
 #
 #	cd "${srcdir}/poppler"
 #	make DESTDIR="${destdir}" install-libLTLIBRARIES

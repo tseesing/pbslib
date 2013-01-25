@@ -13,7 +13,7 @@ PACKAGER="StartOS Developers"
 SRC_URI="http://download.kde.org/stable/"$V"/src/"$N-$V".tar.xz"
 CHECKSUM="e629d7a1d7d1aa1d1dd24769dc5412a60b6ac256"
 
-RDEPEND="acl akonadi attica attr bzip2 dbus expat flac fontconfig freetype gcc-lib giflib glib2 glibc gst-plugins-base gstreamer herqq json-c kdelibs kdepimlibs libcap libdbusmenu-qt libdrm libffi libICE libjpeg-turbo libogg libpcre libpng libqzeitgeist libSM libsndfile libvorbis libX11 libXau libxcb libXcursor libXdamage libXdmcp libXext libXfixes libXft libXi libxml2 libXpm libXrender libXScrnSaver libXtst libXxf86vm mesa openssl phonon pulseaudio python qca qt-core soprano sqlite strigi udev util-linux-ng xz-utils zlib"
+RDEPEND="acl akonadi attica attr bzip2 dbus expat flac fontconfig freetype gcc-libs giflib glib2 glibc gst-plugins-base gstreamer herqq json-c kdelibs kdepimlibs libcap libdbusmenu-qt libdrm libffi libICE libjpeg-turbo libogg pcre libpng libqzeitgeist libSM libsndfile libvorbis libX11 libXau libxcb libXcursor libXdamage libXdmcp libXext libXfixes libXft libXi libxml2 libXpm libXrender libXScrnSaver libXtst libXxf86vm mesa openssl phonon pulseaudio python qca qt soprano sqlite strigi systemd util-linux xz zlib"
 RECOMMENDED=""
 BDEPEND="cmake automoc4"
 OPTIONAL=""

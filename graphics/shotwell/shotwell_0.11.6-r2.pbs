@@ -14,7 +14,7 @@ SRC_URI="http://yorba.org/download/"$N"/0.11/"$N-$V".tar.bz2 http://ftp.gnome.or
 
 CHECKSUM="bbbf2843eb98b6f0ef1dfcfb934e15cf bf35262cc611de447147d01cbac33767"
 
-RDEPEND="libgee libgexiv2 libgphoto2 libraw libunique udev webkitgtk" 
+RDEPEND="libgee libgexiv2 libgphoto2 libraw libunique systemd webkitgtk" 
 BDEPEND=""
 RECOMMENDED=""
 

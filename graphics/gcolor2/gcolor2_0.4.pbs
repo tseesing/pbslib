@@ -12,7 +12,7 @@ PACKAGER="StartOS Developers"
 
 SRC_URI="http://sourceforge.net/projects/"$N"/files/"$N"/"$V"/"$N-$V".tar.bz2"
 
-RDEPEND="gtk+"
+RDEPEND="gtk2"
 BDEPEND=""
 RECOMMENDED=""
 

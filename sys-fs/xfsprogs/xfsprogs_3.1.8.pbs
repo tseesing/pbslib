@@ -12,7 +12,7 @@ PACKAGER="YLmf OS Developers "
 
 SRC_URI="git://oss.sgi.com/xfs/cmds/"$N".git"
 
-RDEPEND="readline util-linux-ng"
+RDEPEND="readline util-linux"
 BDEPEND=""
 RECOMMENDED=""
 

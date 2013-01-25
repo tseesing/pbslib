@@ -12,7 +12,7 @@ PACKAGER="StartOS Developers"
 
 SRC_URI="http://sourceforge.net/projects/lxde/files/LXRandR%20%28monitor%20config%20tool%29/LXRandR%20"$V"/"$N-$V".tar.gz"
 
-RDEPEND="gtk+"
+RDEPEND="gtk2"
 BDEPEND=""
 RECOMMENDED=""
 CONFLICT=""

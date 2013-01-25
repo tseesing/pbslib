@@ -12,7 +12,7 @@ PACKAGER="StartOS Developers"
 
 SRC_URI="http://www.tux.org/~bagleyd/xlock/"$N-$V"/"$N-$V".tar.bz2"
 
-RDEPEND="gtk+"
+RDEPEND="gtk2"
 BDEPEND=""
 
 INSTALL="$N.install"

@@ -17,7 +17,7 @@ CHECKSUM="4239670ca6b578bff68b8c2e7cd1225f 6c9c0109e3b6d283cb7a18ec8a672575"
 RDEPEND="gcc-libs"
 BDEPEND=""
 RECOMMENDED=""
-REPLACE="openjade"
+REPLACE="jade"
 
 pbs_unpack() {
     dounpack

@@ -12,7 +12,7 @@ PACKAGER="StartOS Developers"
 
 SRC_URI="http://ftp.acc.umu.se/pub/gnome/platform/2.32/2.32.1/sources/"$N-$V".tar.bz2"
 
-RDEPEND="gail libart_lgpl"
+RDEPEND=" libart_lgpl"
 BDEPEND=""
 
 pbs_unpack() {

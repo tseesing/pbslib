@@ -13,7 +13,7 @@ PACKAGER="StartOS Developers"
 SRC_URI="http://downloads.sourceforge.net/hunspell/"$N-$V".tar.gz"
 CHECKSUM="46e92b68e31e858512b680b3b61dc4c1"
 
-RDEPEND="gcc-lib"
+RDEPEND="gcc-libs"
 BDEPEND="hunspell"
 RECOMMENDED=""
 CONFLICT=""

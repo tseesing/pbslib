@@ -13,7 +13,7 @@ PACKAGER="StartOS Developers"
 
 SRC_URI=" http://ftp.gnome.org/pub/gnome/platform/2.30/2.30.2/sources/"$N-$V$R".tar.bz2 "
 
-RDEPEND="atk cairo expat fontconfig freetype gail gcc-lib glib2 gdk-pixbuf glibc gtk+ libart_lgpl libpng libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libXrandr libXrender pango pixman zlib"
+RDEPEND="atk cairo expat fontconfig freetype  gcc-libs glib2 gdk-pixbuf2 glibc gtk2 libart_lgpl libpng libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libXrandr libXrender pango pixman zlib"
 BDEPEND="                          "
 
 pbs_unpack() {

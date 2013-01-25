@@ -12,7 +12,7 @@ PACKAGER="StartOS Developers"
 SRC_URI="http://downloads.sourceforge.net/project/"$N"/1.0/"$N-$V".tar.gz"
 CHECKSUM="701c540acaab961bc3adf130a2ddb8b1"
 
-RDEPEND="atk cairo dbus dbus-glib expat fontconfig freerdp(>=1.0) freetype gcc-lib gdk-pixbuf glib2 glibc gtk+ libgcrypt libgnome-keyring libgpg-error libjpeg-turbo libpng libssh libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libxkbfile libXrandr libXrender ncurses openssl pango pixman telepathy-glib vte zlib"
+RDEPEND="atk cairo dbus dbus-glib expat fontconfig freerdp(>=1.0) freetype gcc-libs gdk-pixbuf2 glib2 glibc gtk2 libgcrypt libgnome-keyring libgpg-error libjpeg-turbo libpng libssh libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libxkbfile libXrandr libXrender ncurses openssl pango pixman telepathy-glib vte zlib"
 BDEPEND="cmake"
 RECOMMENDED=""
 CONFLICT="remmina-plugins"

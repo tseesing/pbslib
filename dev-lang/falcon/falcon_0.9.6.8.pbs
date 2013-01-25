@@ -13,7 +13,7 @@ PACKAGER="StartOS Developers"
 SRC_URI="http://falconpl.org/project_dl/_official_rel/Falcon-"$V".tgz"
 CHECKSUM="8720096a8257e8bf370e3f0a072b5600d7575f64"
 
-RDEPEND="curl gd gtk+ libmysqlclient pcre postgresql-libs sdl-image sdl-mixer sdl-ttf sqlite"
+RDEPEND="curl gd gtk2 libmysqlclient pcre postgresql-libs sdl-image sdl-mixer sdl-ttf sqlite"
 RECOMMENDED=""
 BDEPEND="cmake"
 OPTIONAL=""

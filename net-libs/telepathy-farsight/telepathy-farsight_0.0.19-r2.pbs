@@ -12,7 +12,7 @@ PACKAGER="StartOS Developers"
 
 SRC_URI="http://telepathy.freedesktop.org/releases/"$N"/"$N-$V".tar.gz"
 
-RDEPEND="farsight2 telepathy-glib"
+RDEPEND="farstream telepathy-glib"
 BDEPEND=""
 RECOMMENDED=""
 

@@ -12,7 +12,7 @@ PACKAGER="StartOS Developers"
 
 SRC_URI="ftp://ftp.alsa-project.org/pub/tools/"$N-$V".tar.bz2"
 
-RDEPEND="alsa-lib fltk gtk+"
+RDEPEND="alsa-lib fltk gtk2"
 RECOMMENDED=""
 BDEPEND=""
 OPTIONAL=""

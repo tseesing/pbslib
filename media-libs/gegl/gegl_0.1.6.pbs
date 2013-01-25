@@ -10,7 +10,7 @@ HOMEPAGE="http://www.gegl.org/"
 
 SRC_URI="ftp://ftp.gimp.org/pub/"$N"/0.1/"$N-$V$R".tar.bz2"
 
-RDEPEND="babl glib2 gdk-pixbuf gtk+ pango cairo libjpeg-turbo "
+RDEPEND="babl glib2 gdk-pixbuf22 gtk2 pango cairo libjpeg-turbo "
 BDEPEND=""
 
 pbs_unpack() {
@@ -25,7 +25,7 @@ pbs_config() {
 	# new ffmpeg api
 	dopatch 0.1.6-ffmpeg.patch
 
-	config+="--with-gtk --with-pango --with-gdk-pixbuf --with-gio"
+	config+="--with-gtk2 --with-pango --with-gdk-pixbuf22 --with-gio"
 	doconfig
 }
 

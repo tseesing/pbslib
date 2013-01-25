@@ -12,7 +12,7 @@ LICENSE="GPL,PerlArtistic"
 
 SRC_URI="http://search.cpan.org/CPAN/authors/id/T/TS/TSCH/Gnome2-GConf-"$V".tar.gz"
 
-RDEPEND="perl pango-perl gtk+"
+RDEPEND="perl pango-perl gtk2"
 BDEPEND="extutils-depends extutils-pkgconfig"
 RECOMMENDED=""
 CONFLICT=""

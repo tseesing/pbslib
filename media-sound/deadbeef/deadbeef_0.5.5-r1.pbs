@@ -13,7 +13,7 @@ PACKAGER="StartOS Developers"
 SRC_URI="http://sourceforge.net/projects/"$N"/files/"$N-$V".tar.bz2"
 CHECKSUM="7cc10cefda0f4044eea897893e4cc1a9"
 
-RDEPEND="curl faad2 gtk+ imlib2 libcddb libmad libzip pulseaudio wavpack"
+RDEPEND="curl faad2 gtk2 imlib2 libcddb libmad libzip pulseaudio wavpack"
 BDEPEND=""
 RECOMMENDED=""
 

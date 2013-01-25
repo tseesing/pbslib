@@ -13,7 +13,7 @@ PACKAGER="StartOS Developers"
 SRC_URI="http://sourceforge.net/projects/filezilla/files/FileZilla_Client/"$V"/FileZilla_"$V"_src.tar.bz2"
 CHECKSUM="a1a2848db0c5c8f3321ebe4ee3842e31"
 
-RDEPEND="libidn sqlite wxWidgets" 
+RDEPEND="libidn sqlite wxgtk" 
 BDEPEND=""
 RECOMMENDED=""
 CONFLICT=""

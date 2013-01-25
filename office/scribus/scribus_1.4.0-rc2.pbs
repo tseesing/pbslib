@@ -14,7 +14,7 @@ PACKAGER="StartOS Developers"
 
 SRC_URI="http://downloads.sourceforge.net/project/"$N"/"$N"-devel/"$V".rc2/"$N-$V".rc2.tar.bz2"
 
-RDEPEND="cairo qt-core"
+RDEPEND="cairo qt"
 BDEPEND=" "
 RECOMMENDED=""
 CONFLICT=""

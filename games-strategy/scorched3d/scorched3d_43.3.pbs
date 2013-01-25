@@ -13,7 +13,7 @@ PACKAGER="StartOS Developers"
 SRC_URI="http://downloads.sourceforge.net/scorched3d/Scorched3D-"$V"d-src.tar.gz"
 CHECKSUM="9c3043282a9e7451468ff325bef3b04c"
 
-RDEPEND="fftw(>=3.3.1) freealut libvorbis sdl-net wxWidgets"
+RDEPEND="fftw(>=3.3.1) freealut libvorbis sdl-net wxgtk"
 RECOMMENDED=""
 BDEPEND=""
 OPTIONAL=""

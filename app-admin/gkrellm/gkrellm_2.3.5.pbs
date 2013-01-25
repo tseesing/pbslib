@@ -14,7 +14,7 @@ PACKAGER="StartOS Developers"
 SRC_URI="http://members.dslextreme.com/users/billw/"$N"/"$N-$V".tar.bz2"
 CHECKSUM="e43a9416a6975e3be63d591bdeb33b04"
 
-RDEPEND="gtk+ libSM lm_sensors openssl"
+RDEPEND="gtk2 libSM lm_sensors openssl"
 RECOMMENDED=""
 BDEPEND=""
 OPTIONAL=""

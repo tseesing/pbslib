@@ -37,7 +37,7 @@ rt2860sta-driver_install() {
 	DESCRIPTION="driver for Ralink PCI ABGN WLAN Card: RT2860PCI/mPCI/CB/PCIe(RT2760/RT2790/RT2860/RT2890) (kernel-module)"
 	RDEPEND="linux-kernel(=3.4.6-r2)"
 	GROUP="driver"
-	BDEPEND="gcc-lib linux-kernel-headers"
+	BDEPEND="gcc-libs linux-kernel-headers"
 	INSTALL="$N.install"
 
 	unset ARCH

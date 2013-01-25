@@ -13,7 +13,7 @@ PACKAGER="StartOS Developers"
 SRC_URI="http://dl.google.com/linux/direct/google-talkplugin_current_i386.deb"
 CHECKSUM="067aabe52054174066ce6e78466b8e53"
 
-RDEPEND="atk cairo expat fontconfig freetype gcc-lib gdk-pixbuf glib2 glibc gtk+ libdrm libICE libpng libSM libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libXrandr libXrender libXt libXxf86vm mesa pango pixman util-linux-ng zlib"
+RDEPEND="atk cairo expat fontconfig freetype gcc-libs gdk-pixbuf2 glib2 glibc gtk2 libdrm libICE libpng libSM libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libXrandr libXrender libXt libXxf86vm mesa pango pixman util-linux zlib"
 BDEPEND=""
 RECOMMENDED=""
 CONFLICT=""

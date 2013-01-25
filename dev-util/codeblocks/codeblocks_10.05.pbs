@@ -12,7 +12,7 @@ PACKAGER="StartOS Developers"
 
 SRC_URI="http://download.berlios.de/codeblocks/"$N-$V"-src.tar.bz2"
 
-RDEPEND="wxWidgets"
+RDEPEND="wxgtk"
 BDEPEND=""
 RECOMMENDED=""
 

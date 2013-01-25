@@ -13,7 +13,7 @@ PACKAGER="StartOS Developers"
 SRC_URI="http://downloads.sourceforge.net/project/sylpheed-claws/Claws%20Mail/"$V"/"$N-$V".tar.bz2"
 CHECKSUM="df9f1657d7f34959a2205344d952c2e3"
 
-RDEPEND="enchant gpgme gtk+ libetpan startup-notification"
+RDEPEND="enchant gpgme gtk2 libetpan startup-notification"
 BDEPEND=""
 RECOMMENDED=""
 CONFLICT=""

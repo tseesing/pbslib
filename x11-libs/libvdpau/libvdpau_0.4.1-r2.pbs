@@ -14,7 +14,7 @@ PACKAGER="StartOS Developers"
 # git://anongit.freedesktop.org/~aplattner/libvdpau"
 SRC_URI="http://people.freedesktop.org/~aplattner/vdpau/"$N-$V".tar.gz"
 
-RDEPEND="gcc-lib libXext"
+RDEPEND="gcc-libs libXext"
 BDEPEND=""
 RECOMMENDED=""
 

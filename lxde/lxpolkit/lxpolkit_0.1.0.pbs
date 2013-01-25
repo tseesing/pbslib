@@ -12,7 +12,7 @@ PACKAGER="StartOS Developers"
 
 SRC_URI="http://sourceforge.net/projects/lxde/files/LXPolkit/"$N-$V".tar.gz"
 
-RDEPEND="gtk+ polkit"
+RDEPEND="gtk2 polkit"
 BDEPEND=""
 RECOMMENDED=""
 CONFLICT=""

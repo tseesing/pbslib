@@ -13,7 +13,7 @@ PACKAGER="StartOS Developers"
 SRC_URI="http://www.yun.io/downloads/"$N-$V"-generic-i386.tgz"
 CHECKSUM="4beed96161e8a4109cde2fec0b17358f"
 
-RDEPEND="fontconfig gcc-lib libXext libXrender"
+RDEPEND="fontconfig gcc-libs libXext libXrender"
 BDEPEND=""
 
 INSTALL="$N.install"

@@ -12,7 +12,7 @@ PACKAGER="StartOS Developers"
 
 SRC_URI="http://google-perftools.googlecode.com/files/"$N-$V".tar.gz"
 
-RDEPEND="gcc-lib"
+RDEPEND="gcc-libs"
 RECOMMENDED=""
 BDEPEND=""
 

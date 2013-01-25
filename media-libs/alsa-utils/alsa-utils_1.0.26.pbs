@@ -8,20 +8,22 @@
 DESCRIPTION="Advanced Linux Sound Architecture Utils (alsactl, alsamixer, etc.)"
 HOMEPAGE="http://www.alsa-project.org/"
 LICENSE="GPL"
-PACKAGER="StartOS Developers"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
 SRC_URI="ftp://ftp.alsa-project.org/pub/utils/"$N-$V".tar.bz2"
-CHECKSUM=""
+CHECKSUM="4dcf1017fafc91603af96705c073eca9"
 
 RDEPEND="alsa-lib libsamplerate ncurses"
-BDEPEND=""
+BDEPEND="xmlto"
 
 pbs_unpack() {
-        dounpack
+    dounpack
 }
 
 pbs_config() {
-	config+=""
+	config+="--disable-alsaconf
+             --with-systemd-rules-dir=/usr/lib/systemd/rules.d
+             --with-systemdsystemunitdir=/usr/lib/systemd/system"
 	doconfig
 }
 
@@ -31,9 +33,8 @@ pbs_build() {
 
 pbs_install() {
 	domkinstall
-	docp "$filesdir"/alsa.conf "$destdir"/etc/modprobe.d
-	docp "$filesdir"/90alsa    "$destdir"/etc/pm/sleep.d
-	# Dir where to save ALSA state
-	install -d "$destdir"/var/lib/alsa
+    cd "$destdir"
+	docp "$filesdir"/90alsa etc/pm/sleep.d/
+	install -d var/lib/alsa/
 }
 

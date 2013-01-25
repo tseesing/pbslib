@@ -14,7 +14,7 @@ REPO="testing"
 
 SRC_URI="http://distfiles.audacious-media-player.org/"$N-$V".tar.bz2"
 
-RDEPEND="audacious(=3.3.1) ffmpeg(>=0.11.1) curl faad2 fluidsynth gtk+3 libbinio libcddb libcue libmms libmodplug lirc mpg123 neon wavpack"
+RDEPEND="audacious(=3.3.1) ffmpeg(>=0.11.1) curl faad2 fluidsynth gtk3 libbinio libcddb libcue libmms libmodplug lirc mpg123 neon wavpack"
 BDEPEND=""
 RECOMMENDED=""
 

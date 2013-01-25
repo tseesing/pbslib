@@ -13,7 +13,7 @@ PACKAGER="StartOS Developers<>"
 SRC_URI="http://download.kde.org/stable/"$V"/src/"$N-$V".tar.xz"
 CHECKSUM="52295cc1545520c42ea9642b03de4f3b"
 
-RDEPEND="acl attica attr bzip2 dbus expat flac fontconfig freetype gcc-lib giflib glib2 glibc gst-plugins-base gstreamer herqq json-c kdelibs libcap libdbusmenu-qt libdrm libffi libICE libjpeg-turbo libogg libpcre libpng libqzeitgeist libSM libsndfile libvorbis libX11 libXau libxcb libXcursor libXdamage libXdmcp libXext libXfixes libXft libXi libxml2 libXpm libXrender libXScrnSaver libXt libXtst libXxf86vm mesa openssl phonon pulseaudio qca qt-core soprano sqlite strigi tidyhtml udev util-linux-ng xz-utils zlib"
+RDEPEND="acl attica attr bzip2 dbus expat flac fontconfig freetype gcc-libs giflib glib2 glibc gst-plugins-base gstreamer herqq json-c kdelibs libcap libdbusmenu-qt libdrm libffi libICE libjpeg-turbo libogg pcre libpng libqzeitgeist libSM libsndfile libvorbis libX11 libXau libxcb libXcursor libXdamage libXdmcp libXext libXfixes libXft libXi libxml2 libXpm libXrender libXScrnSaver libXt libXtst libXxf86vm mesa openssl phonon pulseaudio qca qt soprano sqlite strigi tidyhtml systemd util-linux xz zlib"
 BDEPEND="cmake automoc4"
 
 INSTALL="$N.install"

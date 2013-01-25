@@ -13,7 +13,7 @@ PACKAGER="StartOS Developers"
 SRC_URI="http://sourceforge.net/projects/"$N"/files/"$N"/"$V"/"$N-$V".tar.gz"
 CHECKSUM="9ae03a88459799697144bcd2a404bc1b"
 
-RDEPEND="atk cairo expat fontconfig freetype gail gcc-lib gdk-pixbuf glib2 glibc gtk+ lcms libart_lgpl libffi libgnomecanvas libjpeg-turbo libpng libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libXinerama libxml2 libXrandr libXrender pango pixman poppler zlib"
+RDEPEND="atk cairo expat fontconfig freetype  gcc-libs gdk-pixbuf2 glib2 glibc gtk2 lcms libart_lgpl libffi libgnomecanvas libjpeg-turbo libpng libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libXinerama libxml2 libXrandr libXrender pango pixman poppler zlib"
 RECOMMENDED=""
 BDEPEND=""
 OPTIONAL=""

@@ -13,7 +13,7 @@ PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 SRC_URI="http://downloads.sourceforge.net/vde/$N-$V.tar.bz2"
 CHECKSUM="46fbc5f97f03dc517aa3b2c9d9ea6628"
 
-RDEPEND="bash libpcre openssl"
+RDEPEND="bash pcre openssl"
 RECOMMENDED="python"
 BDEPEND=""
 OPTIONAL=""

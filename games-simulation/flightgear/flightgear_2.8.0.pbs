@@ -13,7 +13,7 @@ PACKAGER="StartOS Developers"
 SRC_URI="http://mirrors.ibiblio.org/pub/mirrors/flightgear/ftp/Source/"$N-$V".tar.bz2"
 CHECKSUM="9499194146f414323efef8cb3451b750"
 
-RDEPEND="flightgear-data fltk freealut freeglut openscenegraph subversion udev mesa"
+RDEPEND="flightgear-data fltk freealut freeglut openscenegraph subversion systemd mesa"
 RECOMMENDED=""
 BDEPEND="cmake"
 OPTIONAL=""

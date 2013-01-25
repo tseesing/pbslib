@@ -12,7 +12,7 @@ PACKAGER="StartOS Developers"
 
 SRC_URI="ftp://ftp.gimp.org/pub/"$N"/0.1/"$N-$V".tar.bz2"
 
-RDEPEND="babl glib2 gdk-pixbuf gtk+ pango cairo libjpeg-turbo"
+RDEPEND="babl glib2 gdk-pixbuf2 gtk2 pango cairo libjpeg-turbo"
 BDEPEND=""
 
 pbs_unpack() {

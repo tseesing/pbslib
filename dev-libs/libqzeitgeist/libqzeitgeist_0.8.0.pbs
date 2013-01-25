@@ -13,7 +13,7 @@ PACKAGER="StartOS Developers"
 SRC_URI="http://download.kde.org/stable/"$N"/"$V"/src/"$N-$V".tar.bz2"
 CHECKSUM="97bdea6a1865db7d5f29c93e3a492f24"
 
-RDEPEND="qt-core"
+RDEPEND="qt"
 RECOMMENDED=""
 BDEPEND="cmake zeitgeist-dev"
 OPTIONAL=""

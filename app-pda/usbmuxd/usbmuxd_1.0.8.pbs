@@ -45,6 +45,6 @@ pbs_install() {
     dounit usbmuxd.service
     # 
     mkdir -p usr/lib/
-    mv lib/udev/ usr/lib/
+    mv lib/systemd/ usr/lib/
 }
 

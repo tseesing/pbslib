@@ -27,6 +27,11 @@ pbs_unpack() {
     dounpack
 }
 
+pbs_patch() {
+    # StartOS default locale is /etc/default/locale, not /etc/sysconfig/language
+    dopatch default_locale_file.patch
+}
+
 pbs_config() {	
 	config+="--disable-static 
              --disable-schemas-compile 

@@ -27,7 +27,7 @@ pbs_unpack() {
 }
 
 pbs_patch() {
-	dopatch startos_force-use-gtk+-2.patch
+	dopatch startos_force-use-gtk2-2.patch
 }
 
 pbs_config() {

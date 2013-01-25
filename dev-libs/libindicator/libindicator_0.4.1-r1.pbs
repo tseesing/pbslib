@@ -13,7 +13,7 @@ PACKAGER="StartOS Developers"
 SRC_URI="https://launchpad.net/libindicator/0.4/"$V"/+download/"$N-$V".tar.gz"
 CHECKSUM="c8f2900fa8e028bb2ea7511a0f368756"
 
-RDEPEND="gtk+"
+RDEPEND="gtk2"
 BDEPEND=""
 RECOMMENDED=""
 
@@ -31,7 +31,7 @@ pbs_patch() {
 }
 
 pbs_config() {
-	config+="--disable-static --with-gtk=2"
+	config+="--disable-static --with-gtk2=2"
 	doconfig
 }
 

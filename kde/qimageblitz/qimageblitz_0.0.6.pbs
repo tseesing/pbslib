@@ -13,7 +13,7 @@ GROUP="kde"
 
 SRC_URI="http://download.kde.org/stable/"$N"/"$N-$V".tar.bz2"
 
-RDEPEND="qt-core"
+RDEPEND="qt"
 BDEPEND="cmake"
 
 pbs_unpack() {

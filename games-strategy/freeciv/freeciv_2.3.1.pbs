@@ -13,7 +13,7 @@ PACKAGER="StartOS Developers"
 SRC_URI="http://downloads.sourceforge.net/sourceforge/"$N"/"$N-$V".tar.bz2"
 CHECKSUM="9d9ee9f48f4c945fc6525139d340443d5a25aac4"
 
-RDEPEND="gtk+ readline sdl-mixer"
+RDEPEND="gtk2 readline sdl-mixer"
 RECOMMENDED=""
 BDEPEND=""
 OPTIONAL=""
@@ -26,7 +26,7 @@ pbs_unpack() {
 }
 
 pbs_config() {
-	config+=" --enable-client=gtk 
+	config+=" --enable-client=gtk2 
 	          --enable-shared 
 		  --without-ggz-client "
 	doconfig

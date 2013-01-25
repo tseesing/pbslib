@@ -13,7 +13,7 @@ PACKAGER="StartOS Developers"
 SRC_URI="http://programmer-art.org/media/releases/arista-transcoder/"$N-$V".tar.gz"
 CHECKSUM="cb6ce0b98a39fd9de33a2d307db8546f"
 
-RDEPEND="gtk+ pygtk pygobject py2cairo python-gudev"
+RDEPEND="gtk2 pygtk pygobject py2cairo python-gudev"
 BDEPEND=""
 RECOMMENDED=""
 CONFLICT=""

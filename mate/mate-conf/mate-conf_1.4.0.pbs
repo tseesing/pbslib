@@ -13,7 +13,7 @@ PACKAGER="StartOS Developers"
 SRC_URI="http://pub.mate-desktop.org/releases/1.4/"$N-$V".tar.xz"
 CHECKSUM="b4336139b2c776b022c7a6738b5f8813dbfb4f10ce8539dded5b2be56b0b9b77"
 
-RDEPEND="eggdbus gtk+ libxml2 mate-corba openldap polkit"
+RDEPEND="eggdbus gtk2 libxml2 mate-corba openldap polkit"
 RECOMMENDED=""
 BDEPEND="pkgconfig intltool gtk-doc"
 OPTIONAL=""

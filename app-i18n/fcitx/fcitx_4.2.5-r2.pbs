@@ -15,7 +15,7 @@ GROUP="fcitx"
 SRC_URI="http://fcitx.googlecode.com/files/"$N-$V"_dict.tar.xz"
 CHECKSUM="c783b740474ccac360c0fc018b5b42d2"
 
-RDEPEND="enchant gtk+ icu libxkbfile libxml2 opencc"
+RDEPEND="enchant gtk2 icu libxkbfile libxml2 opencc"
 BDEPEND="cmake"
 RECOMMENDED="fcitx-configtool"
 

@@ -12,7 +12,7 @@ GROUP="x11-lib"
 SRCURL="http://www.x.org/releases/X11R7.5/src/lib"
 SRC_URI="$SRCURL/libXpm-3.5.8.tar.bz2"
 
-RDEPEND="libXt libSM util-linux-ng libICE libXext libXpm libX11 libxcb libXau libXdmcp"
+RDEPEND="libXt libSM util-linux libICE libXext libXpm libX11 libxcb libXau libXdmcp"
 BDEPEND=""
 
 pbs_unpack()

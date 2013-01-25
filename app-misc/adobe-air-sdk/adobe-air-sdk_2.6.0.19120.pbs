@@ -12,7 +12,7 @@ PACKAGER="StartOS Developers"
 
 SRC_URI="http://airdownload.adobe.com/air/lin/download/latest/AdobeAIRSDK.tbz2"
 
-RDEPEND="gtk+ libxslt libXt ncurses nss"
+RDEPEND="gtk2 libxslt libXt ncurses nss"
 BDEPEND=""
 RECOMMENDED=""
 CONFLICT=""

@@ -48,11 +48,11 @@ pbs_install() {
 	# Fix hp officejets
 	echo "#hpaio" >> "${destdir}"/etc/sane.d/dll.conf
 	
-	# Install udev files
-	install -D -m0644 tools/udev/libsane.rules "${destdir}"/lib/udev/rules.d/53-sane.rules
+	# Install systemd files
+	install -D -m0644 tools/systemd/libsane.rules "${destdir}"/lib/systemd/rules.d/53-sane.rules
 	
-	# Fix udev rules
-	sed -i 's|NAME="%k", ||g' "${destdir}"/lib/udev/rules.d/53-sane.rules
+	# Fix systemd rules
+	sed -i 's|NAME="%k", ||g' "${destdir}"/lib/systemd/rules.d/53-sane.rules
 		        
 	# Install xinetd file
 	install -D -m644 "${filesdir}"/sane.xinetd "${destdir}"/etc/xinetd.d/sane

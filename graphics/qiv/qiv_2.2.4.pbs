@@ -13,7 +13,7 @@ PACKAGER="StartOS Developers"
 SRC_URI="http://spiegl.de/qiv/download/"$N-$V".tgz"
 CHECKSUM="1425f89c90f9c045858fccf24d894c97"
 
-RDEPEND="file gtk+ imlib2"
+RDEPEND="file gtk2 imlib2"
 RECOMMENDED=""
 BDEPEND=""
 OPTIONAL=""

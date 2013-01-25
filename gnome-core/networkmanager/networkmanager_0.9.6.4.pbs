@@ -43,7 +43,7 @@ pbs_config() {
 		      --with-dhcpcd=/usr/sbin/dhcpcd 
 		      --with-iptables=/usr/sbin/iptables 
 		      --with-systemdsystemunitdir=/usr/lib/systemd/system 
-		      --with-udev-dir=/usr/lib/udev 
+		      --with-systemd-dir=/usr/lib/systemd 
 		      --with-resolvconf=/usr/sbin/resolvconf 
 		      --with-session-tracking=systemd 
 		      --disable-static 

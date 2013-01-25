@@ -59,7 +59,7 @@ virtualbox-bin_install() {
 	chmod 4511 VBoxNetAdpCtl
 
 	# Replace VirtualBox built-in Qt by system Qt libraries 
-	# depends on qt-core
+	# depends on qt
 	# for lib in libQt{Core,Gui,Network,OpenGL}; do
 	#	rm "${lib}VBox.so.4"
 	#	doln "/usr/lib/${lib}.so.4" "${lib}VBox.so.4"
@@ -78,8 +78,8 @@ virtualbox-bin_install() {
 	sed -i -e 's,sudo /etc/init.d/vboxdrv setup,/etc/rc.d/vboxdrv setup,g' VBox.sh
 	sed -i -e 's,sudo /etc/init.d/vboxdrv restart,modprobe vboxdrv,g' VBox.sh
 
-	# Install udev rules
-	docp "$filesdir"/10-vboxdrv.rules "$destdir"/etc/udev/rules.d
+	# Install systemd rules
+	docp "$filesdir"/10-vboxdrv.rules "$destdir"/etc/systemd/rules.d
 
 	for bin in VirtualBox VBox{Headless,Manage,SDL,SVC,Tunctl,NetAdpCtl} rdesktop-vrdp; do
 		doln "/opt/VirtualBox/${bin}" "${destdir}/usr/bin/${bin}"

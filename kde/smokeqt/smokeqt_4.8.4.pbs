@@ -13,7 +13,7 @@ PACKAGER="StartOS Developers"
 SRC_URI="http://download.kde.org/stable/"$V"/src/"$N-$V".tar.xz"
 CHECKSUM="bf2be3e7ccf8d451f001fd2f08c306fb7f72169a"
 
-RDEPEND="alsa-lib attr dbus expat flac fontconfig freetype gcc-lib glib2 glibc gst-plugins-base gstreamer json-c libcap libdrm libffi libICE libogg libpng libqzeitgeist libSM libsndfile libvorbis libX11 libXau libxcb libXdamage libXdmcp libXext libXfixes libXi libxml2 libXrender libXtst libXxf86vm mesa openssl phonon pulseaudio qimageblitz qt-core smokegen sqlite util-linux-ng zlib"
+RDEPEND="alsa-lib attr dbus expat flac fontconfig freetype gcc-libs glib2 glibc gst-plugins-base gstreamer json-c libcap libdrm libffi libICE libogg libpng libqzeitgeist libSM libsndfile libvorbis libX11 libXau libxcb libXdamage libXdmcp libXext libXfixes libXi libxml2 libXrender libXtst libXxf86vm mesa openssl phonon pulseaudio qimageblitz qt smokegen sqlite util-linux zlib"
 RECOMMENDED=""
 BDEPEND="cmake automoc4"
 OPTIONAL=""

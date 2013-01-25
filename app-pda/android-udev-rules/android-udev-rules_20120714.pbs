@@ -6,14 +6,14 @@
 #
 
 DESCRIPTION="Udev rules to connect Android devices"
-HOMEPAGE="https://github.com/M0Rf30/android-udev-rules"
+HOMEPAGE="https://github.com/M0Rf30/android-systemd-rules"
 LICENSE="custom"
 PACKAGER="StartOS Developers"
 YARCH="any"
 
-SRC_URI="git://github.com/M0Rf30/android-udev-rules.git"
+SRC_URI="git://github.com/M0Rf30/android-systemd-rules.git"
 
-RDEPEND="libmtp udev"
+RDEPEND="libmtp systemd"
 RECOMMENDED=""
 BDEPEND=""
 OPTIONAL=""
@@ -28,7 +28,7 @@ pbs_unpack() {
 
 pbs_install() {
 	chmod a+r 51-android.rules
-	docp 51-android.rules "$destdir"/lib/udev/rules.d/
+	docp 51-android.rules "$destdir"/lib/systemd/rules.d/
 	dodoc README
 }
 

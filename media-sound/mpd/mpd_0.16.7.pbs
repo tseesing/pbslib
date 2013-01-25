@@ -13,7 +13,7 @@ PACKAGER="StartOS Developers"
 SRC_URI="http://downloads.sourceforge.net/musicpd/"$N-$V".tar.bz2"
 CHECKSUM="878f3ce82d4f00f6cbad63a625b2c0274c4a704a"
 
-RDEPEND="alsa-lib attr audiofile avahi bzip2 curl cyrus-sasl dbus faad2 ffmpeg flac gcc-lib glib2 glibc gnutls jack-audio-connection-kit json-c lame libao libcap libcue libgcrypt libgpg-error libICE libid3tag libidn libmad libmms libmodplug libmpcdec libogg libsamplerate libSM libsndfile libssh2 libtasn1 libtheora libtool libva libvorbis libX11 libXau libxcb libXdmcp libXext libXi libXtst mpg123 opencore-amr openldap openssl orc pulseaudio rtmpdump schroedinger sqlite util-linux-ng wavpack x264 xvidcore zlib"
+RDEPEND="alsa-lib attr audiofile avahi bzip2 curl cyrus-sasl dbus faad2 ffmpeg flac gcc-libs glib2 glibc gnutls jack-audio-connection-kit json-c lame libao libcap libcue libgcrypt libgpg-error libICE libid3tag libidn libmad libmms libmodplug libmpcdec libogg libsamplerate libSM libsndfile libssh2 libtasn1 libtheora libtool libva libvorbis libX11 libXau libxcb libXdmcp libXext libXi libXtst mpg123 opencore-amr openldap openssl orc pulseaudio rtmpdump schroedinger sqlite util-linux wavpack x264 xvidcore zlib"
 RECOMMENDED=""
 BDEPEND=""
 OPTIONAL=""

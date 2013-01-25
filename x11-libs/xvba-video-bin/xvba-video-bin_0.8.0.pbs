@@ -13,7 +13,7 @@ PACKAGER="StartOS Developers"
 SRC_URI="http://www.splitted-desktop.com/static/libva/xvba-video/xvba-video-"$V".i686.tar.gz"
 CHECKSUM="7d2c7bda38d9a18ac3a1d363af46e01d"
 
-RDEPEND="ati-graphic-utils gcc-lib glibc libdrm libX11 libXau libxcb libXdamage libXdmcp libXext libXfixes libXxf86vm mesa"
+RDEPEND="ati-graphic-utils gcc-libs glibc libdrm libX11 libXau libxcb libXdamage libXdmcp libXext libXfixes libXxf86vm mesa"
 RECOMMENDED=""
 BDEPEND=""
 OPTIONAL=""

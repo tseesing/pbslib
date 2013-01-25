@@ -12,7 +12,7 @@ PACKAGER="StartOS Developers"
 
 SRC_URI="http://distfiles.audacious-media-player.org/"$N-$V".tar.bz2"
 
-RDEPEND="dbus-glib gtk+"
+RDEPEND="dbus-glib gtk2"
 BDEPEND=""
 RECOMMENDED="audacious-plugins(=3.2.4)"
 

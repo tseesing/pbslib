@@ -13,7 +13,7 @@ PACKAGER="StartOS Developers"
 SRC_URI="http://packages.linuxdeepin.com/deepin/pool/main/d/"$N"/"$N"_1+git"$V".orig.tar.gz"
 CHECKSUM="46e32f768fe600104de7a5e95486b47e"
 
-RDEPEND="python gtk+ cairo pygtk imaging"
+RDEPEND="python gtk2 cairo pygtk imaging"
 RECOMMENDED=""
 BDEPEND=""
 OPTIONAL=""

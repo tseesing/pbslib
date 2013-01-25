@@ -12,7 +12,7 @@ PACKAGER="StartOS Developers"
 
 SRC_URI="http://downloads.sourceforge.net/project/sylpheed-claws/Claws%20Mail/"$V"/"$N-$V".tar.gz"
 
-RDEPEND="atk berkeley-db cairo curl cyrus-sasl dbus dbus-glib enchant expat fontconfig freetype gcc-lib gdk-pixbuf glib2 glibc gnutls gpgme gtk+ libassuan libetpan libgcrypt libgpg-error libICE libidn libpng libSM libssh2 libtasn1 libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libXrandr libXrender openldap openssl pango pixman rtmpdump startup-notification util-linux-ng zlib"
+RDEPEND="atk berkeley-db cairo curl cyrus-sasl dbus dbus-glib enchant expat fontconfig freetype gcc-libs gdk-pixbuf2 glib2 glibc gnutls gpgme gtk2 libassuan libetpan libgcrypt libgpg-error libICE libidn libpng libSM libssh2 libtasn1 libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libXrandr libXrender openldap openssl pango pixman rtmpdump startup-notification util-linux zlib"
 BDEPEND=""
 RECOMMENDED=""
 CONFLICT=""

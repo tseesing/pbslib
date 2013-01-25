@@ -13,7 +13,7 @@ PACKAGER="StartOS Developers"
 SRC_URI="http://downloads.sourceforge.net/"$N"/"$N-$V".tar.gz"
 CHECKSUM="5303938e8630775ea6fb383af85775e5"
 
-RDEPEND="cups sane-backends qt-core pyqt4"
+RDEPEND="cups sane-backends qt pyqt4"
 BDEPEND=""
 RECOMMENDED="hplip-plugin(=3.12.6-r1)"
 CONFLICT=""
@@ -50,7 +50,7 @@ pbs_config() {
                   --enable-hpijs-install 
                   --enable-foomatic-drv-install 
                   --enable-pp-build 
-                  --enable-udev-acl-rules "
+                  --enable-systemd-acl-rules "
 	doconfig
 }
 
@@ -59,7 +59,7 @@ pbs_build() {
 }
 
 pbs_install() {
-	make rulesdir=/lib/udev/rules.d DESTDIR="$destdir/" install
+	make rulesdir=/lib/systemd/rules.d DESTDIR="$destdir/" install
 	cd "$destdir"
 		
 	# Remove config provided by sane 

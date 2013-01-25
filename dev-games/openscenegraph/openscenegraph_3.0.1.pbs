@@ -13,7 +13,7 @@ PACKAGER="StartOS Developers"
 SRC_URI="http://www.openscenegraph.org/downloads/stable_releases/OpenSceneGraph-"$V"/source/OpenSceneGraph-"$V".zip"
 CHECKSUM="c43a25d023e635c3566b2083d8e6d956"
 
-RDEPEND="ffmpeg giflib librsvg libvncserver openexr poppler-glib qt-core"
+RDEPEND="ffmpeg giflib librsvg libvncserver openexr poppler-glib qt"
 BDEPEND="cmake"
 RECOMMENDED=""
 OPTIONAL=""

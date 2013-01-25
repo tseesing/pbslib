@@ -12,7 +12,7 @@ PACKAGER="StartOS Developers"
 
 SRC_URI="http://downloads.sourceforge.net/project/"$N"/UNetbootin/"$V"/"$N"-source-"$V".tar.gz"
 
-RDEPEND="syslinux p7zip qt-core mtools gksu"
+RDEPEND="syslinux p7zip qt mtools gksu"
 RECOMMENDED=""
 BDEPEND=""
 OPTIONAL=""

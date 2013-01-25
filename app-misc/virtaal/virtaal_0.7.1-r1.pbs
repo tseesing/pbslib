@@ -14,7 +14,7 @@ PACKAGER="StartOS Developers"
 SRC_URI="http://sourceforge.net/projects/translate/files/Virtaal/"$V"/"$N-$V".tar.bz2"
 CHECKSUM="e931c5b477da4bb44e00c24c2247a1ad"
 
-RDEPEND="gtk+ lxml pygtk"
+RDEPEND="gtk2 lxml pygtk"
 RECOMMENDED="psycopg2 python-levenshtein"
 BDEPEND=""
 OPTIONAL=""

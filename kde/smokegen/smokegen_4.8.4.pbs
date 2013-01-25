@@ -13,7 +13,7 @@ PACKAGER="StartOS Developers"
 SRC_URI="http://download.kde.org/stable/"$V"/src/"$N-$V".tar.xz"
 CHECKSUM="5ff7d15ed1cdea07f455fbf1189885518cf43cb6"
 
-RDEPEND="gcc-lib glib2 glibc qt-core zlib"
+RDEPEND="gcc-libs glib2 glibc qt zlib"
 RECOMMENDED=""
 BDEPEND="cmake automoc4"
 OPTIONAL=""

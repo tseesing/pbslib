@@ -31,7 +31,7 @@ pbs_build() {
 
 pbs_install() {
 	domkinstall
-    docp "$filesdir"/70-wacom.rules "$destdir"/usr/lib/udev/rules.d/
+    docp "$filesdir"/70-wacom.rules "$destdir"/usr/lib/systemd/rules.d/
 }
 
 

@@ -12,7 +12,7 @@ PACKAGER="StartOS Developers"
 
 SRC_URI="http://ncu.dl.sourceforge.net/project/lxde/LXPanel%20%28desktop%20panel%29/LXPanel%200.5.8/"$N-$V".tar.gz"
 
-RDEPEND="alsa-lib gtk+ menu-cache"
+RDEPEND="alsa-lib gtk2 menu-cache"
 BDEPEND=""
 
 pbs_unpack() {

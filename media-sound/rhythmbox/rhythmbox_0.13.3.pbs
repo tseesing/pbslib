@@ -13,7 +13,7 @@ PACKAGER="StartOS Developers"
 SRC_URI="http://ftp.acc.umu.se/pub/gnome/sources/"$N"/0.13/"$N-$V".tar.bz2"
 CHECKSUM="ad6532864bb4df30f1014ec81ddc0d2d3f69241235627f46abe5578cf629052a"
 
-RDEPEND="atk brasero cairo dbus dbus-glib enchant expat fontconfig freetype gail gcc-lib gconf gdk-pixbuf glib2 glibc gmime gnome-media gnutls gst-plugins-base gstreamer gtk+ icu json-glib keyutils krb5 libgcrypt libgnome-keyring libgpg-error libgpod libICE libjpeg-turbo libmtp libmusicbrainz libnotify libplist libpng libproxy libSM libsoup libtasn1 libusb libusb-compat libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libxml2 libXrandr libXrender libxslt libXt lirc neon openssl orbit pango pixman python sqlite totem-pl-parser udev util-linux-ng webkitgtk zlib"
+RDEPEND="atk brasero cairo dbus dbus-glib enchant expat fontconfig freetype  gcc-libs gconf gdk-pixbuf2 glib2 glibc gmime gnome-media gnutls gst-plugins-base gstreamer gtk2 icu json-glib keyutils krb5 libgcrypt libgnome-keyring libgpg-error libgpod libICE libjpeg-turbo libmtp libmusicbrainz libnotify libplist libpng libproxy libSM libsoup libtasn1 libusb libusb-compat libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libxml2 libXrandr libXrender libxslt libXt lirc neon openssl orbit pango pixman python sqlite totem-pl-parser systemd util-linux webkitgtk2 zlib"
 BDEPEND=""
 RECOMMENDED=""
 CONFLICT=""

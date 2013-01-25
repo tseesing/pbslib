@@ -14,7 +14,7 @@ SRC_URI="http://mirrors.dotsrc.org/lokigames/open-source/smpeg/smpeg-"$V".tar.gz
 
 RDEPEND="libsdl"
 RECOMMENDED=""
-BDEPEND="gtk+-dev mesa-dev"
+BDEPEND="gtk2-dev mesa-dev"
 
 pbs_unpack() {
         dounpack

@@ -13,7 +13,7 @@ PACKAGER="StartOS Developers"
 SRC_URI="http://releases.wildfiregames.com/"$N"-"$V"-alpha-unix-build.tar.xz"
 CHECKSUM="0feedd076ea441ca821073b4b7014946"
 
-RDEPEND="boost-libs curl enet libsdl libvorbis openal wxWidgets 0ad-data"
+RDEPEND="boost-libs curl enet libsdl libvorbis openal wxgtk 0ad-data"
 RECOMMENDED=""
 BDEPEND=""
 OPTIONAL=""

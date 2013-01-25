@@ -36,6 +36,6 @@ pbs_install() {
     cd "$destdir"
     # configure realtime access/scheduling
     docp "$filesdir"/99-audio.conf etc/security/limits.d/
-    docp "$filesdir"/40-hpet-permissions.rules usr/lib/udev/rules.d/
+    docp "$filesdir"/40-hpet-permissions.rules usr/lib/systemd/rules.d/
 }
 

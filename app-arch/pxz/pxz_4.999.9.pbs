@@ -13,7 +13,7 @@ PACKAGER="StartOS Developers"
 SRC_URI="http://jnovy.fedorapeople.org/"$N"/"$N-$V"beta.20091201git.tar.xz"
 CHECKSUM="4ae3926185978f5c95c9414dc4634451"
 
-RDEPEND="gcc-lib xz"
+RDEPEND="gcc-libs xz"
 RECOMMENDED=""
 BDEPEND=""
 OPTIONAL=""

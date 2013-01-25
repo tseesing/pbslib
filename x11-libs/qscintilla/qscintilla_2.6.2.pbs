@@ -9,7 +9,7 @@ PACKAGER="StartOS Developers<>"
 
 SRC_URI="http://riverbankcomputing.com/static/Downloads/QScintilla2/QScintilla-gpl-"$V".tar.gz"
 
-RDEPEND="bzip2 expat fontconfig freetype gcc-lib glib2 glibc libffi libICE libpng libSM libX11 libXau libxcb libXdmcp libXext libXrender qt-core util-linux-ng zlib"
+RDEPEND="bzip2 expat fontconfig freetype gcc-libs glib2 glibc libffi libICE libpng libSM libX11 libXau libxcb libXdmcp libXext libXrender qt util-linux zlib"
 BDEPEND="chrpath pyqt4"
 
 pbs_unpack() {

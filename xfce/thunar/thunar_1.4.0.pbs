@@ -13,7 +13,7 @@ PACKAGER="StartOS Developers"
 SRC_URI="http://archive.xfce.org/xfce/4.10/src/Thunar-"$V".tar.bz2"
 CHECKSUM="104b25b38130e008df2116e83e6ab20cd33e4561"
 
-RDEPEND="libexif libnotify libpcre udev xfce4-panel"
+RDEPEND="libexif libnotify pcre systemd xfce4-panel"
 RECOMMENDED=""
 BDEPEND=""
 OPTIONAL=""
@@ -31,7 +31,7 @@ pbs_config() {
 	config+=" --enable-gio-unix
   	          --enable-dbus 
 	          --enable-startup-notification
-		  --enable-gudev 
+		  --enable-gsystemd 
 		  --enable-notifications 
 		  --enable-exif 
 		  --enable-pcre 

@@ -12,7 +12,7 @@ PACKAGER="StartOS Developers"
 
 SRC_URI="http://download.enlightenment.org/releases/"$N-$V".tar.gz"
 
-RDEPEND="ecore udev util-linux-ng"
+RDEPEND="ecore systemd util-linux"
 RECOMMENDED=""
 BDEPEND=""
 OPTIONAL=""

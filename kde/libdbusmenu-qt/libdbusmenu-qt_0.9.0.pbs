@@ -14,7 +14,7 @@ PACKAGER="StartOS Developers<>"
 SRC_URI="http://launchpad.net/"$N"/trunk/"$V"/+download/"$N-$V".tar.bz2"
 CHECKSUM="cc6b7b551377e2a07f6fa5afef0d29ff"
 
-RDEPEND="dbus expat fontconfig freetype gcc-lib glib2 glibc libffi libICE libpng libSM libX11 libXau libxcb libXdmcp libXext libXrender qt-core util-linux-ng zlib"
+RDEPEND="dbus expat fontconfig freetype gcc-libs glib2 glibc libffi libICE libpng libSM libX11 libXau libxcb libXdmcp libXext libXrender qt util-linux zlib"
 BDEPEND="cmake"
 
 pbs_unpack() {

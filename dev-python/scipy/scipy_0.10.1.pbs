@@ -13,7 +13,7 @@ PACKAGER="StartOS Developers"
 SRC_URI="http://sourceforge.net/projects/"$N"/files/"$N"/"$V"/"$N-$V".tar.gz"
 CHECKSUM="6ad976549e22e04ca93e70cf55b70a22"
 
-RDEPEND="blas gcc-lib glibc lapack python"
+RDEPEND="blas gcc-libs glibc lapack python"
 RECOMMENDED=""
 BDEPEND=""
 OPTIONAL=""

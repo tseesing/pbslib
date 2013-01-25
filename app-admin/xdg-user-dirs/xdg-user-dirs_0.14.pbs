@@ -33,7 +33,6 @@ pbs_build() {
 
 pbs_install() {
 	domkinstall
-	docp $filesdir/60xdg-user-dirs-update "$destdir"/etc/X11/Xsession.d
+	docp "$filesdir"/60xdg-user-dirs-update "$destdir"/etc/X11/Xsession.d
 }
-
 

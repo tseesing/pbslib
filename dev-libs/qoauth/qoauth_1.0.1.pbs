@@ -12,7 +12,7 @@ PACKAGER="StartOS Developers"
 
 SRC_URI="http://files.ayoy.net/qoauth/release/current/src/"$N-$V"-src.tar.bz2"
 
-RDEPEND="gcc-lib glib2 glibc openssl qca qt-core zlib"
+RDEPEND="gcc-libs glib2 glibc openssl qca qt zlib"
 RECOMMENDED=""
 BDEPEND=""
 OPTIONAL=""

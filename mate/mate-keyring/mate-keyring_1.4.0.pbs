@@ -10,12 +10,11 @@ HOMEPAGE="http://mate-desktop.org"
 LICENSE="GPL,LGPL"
 PACKAGER="StartOS Developers"
 
-REPO="testing"
 
 SRC_URI="http://pub.mate-desktop.org/releases/1.4/"$N-$V".tar.xz"
 CHECKSUM="295d0e9969e614afd0616425dacb3921b7fd16626985278c88d6cbe36f4efd6a"
 
-RDEPEND="gtk+ libcap pam"
+RDEPEND="gtk2 libcap pam"
 RECOMMENDED=""
 BDEPEND="intltool pkgconfig"
 OPTIONAL=""

@@ -29,7 +29,7 @@ pbs_patch() {
 }
 
 pbs_config() {
-	config+="--enable-udev 
+	config+="--enable-systemd 
       	         --enable-omap-experimental-api 
 	         --enable-exynos-experimental-api"
 

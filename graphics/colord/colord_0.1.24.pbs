@@ -21,7 +21,7 @@ pbs_unpack() {
 }
 
 pbs_patch() {
-	# put udev files in /usr/lib
+	# put systemd files in /usr/lib
 	sed -i "/slashlibdir=/s#/lib#/usr/lib#" configure
 }
 

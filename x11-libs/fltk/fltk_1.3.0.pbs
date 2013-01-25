@@ -12,7 +12,7 @@ PACKAGER="StartOS Developers"
 
 SRC_URI="http://ftp.easysw.com/pub/"$N"/"$V"/"$N-$V"-source.tar.gz"
 
-RDEPEND="gcc-lib libjpeg-turbo libpng libXft libXinerama"
+RDEPEND="gcc-libs libjpeg-turbo libpng libXft libXinerama"
 
 RECOMMENDED=""
 BDEPEND=""

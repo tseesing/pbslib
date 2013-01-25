@@ -119,10 +119,6 @@ EOF
 #
 # <file system> <dir>   <type>  <options>   <dump>  <pass>
 
-#/dev/sda5       /               ext4    defaults        1       1
-proc            /proc           proc    defaults        0       0
-sysfs           /sys            sysfs   defaults        0       0
-devpts          /dev/pts        devpts  gid=4,mode=620  0       0
 EOF
 	fi
     #
@@ -136,8 +132,6 @@ EOF
 # Each mapped device will be created in /dev/mapper, so your /etc/fstab
 # should use the /dev/mapper/<name> paths for encrypted devices.
 #
-# The Arch specific syntax has been deprecated, see crypttab(5) for the
-# new supported syntax.
 #
 # NOTE: Do not list your root (/) partition here, it must be set up
 #       beforehand by the initramfs (/etc/mkinitcpio.conf).
@@ -219,14 +213,22 @@ EOF
     #
     _file="/etc/hosts"
 	if [ ! -f $_file ];then
-		cat >$_file <<"OOO"
+		cat >$_file <<OOO
 #
 # /etc/hosts: static lookup table for host names
 #
 
-#<ip-address>   <hostname.domain.org>   <hostname>
+#   <ip-address>   <hostname.domain.org>   <hostname>
 127.0.0.1   localhost.localdomain   localhost
 ::1     localhost.localdomain   localhost
+
+# The following lines are desirable for IPv6 capable hosts
+::1     ip6-localhost ip6-loopback
+fe00::0 ip6-localnet
+ff00::0 ip6-mcastprefix
+ff02::1 ip6-allnodes
+ff02::2 ip6-allrouters
+ff02::3 ip6-allhosts
 
 # End of file
 OOO

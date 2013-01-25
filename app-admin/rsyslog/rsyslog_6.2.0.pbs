@@ -13,7 +13,7 @@ PACKAGER="StartOS Developers"
 SRC_URI="http://www.rsyslog.com/files/download/"$N"/"$N-$V".tar.gz"
 CHECKSUM="03e237abaa5d47f92c6e655f92f22532"
 
-RDEPEND="glibc zlib libestr(>=0.1.0) libee(>=0.3.1) gcc-lib glibc gnutls libgcrypt libgpg-error libmysqlclient libtasn1 openssl postgresql-libs zlib"
+RDEPEND="glibc zlib libestr(>=0.1.0) libee(>=0.3.1) gcc-libs glibc gnutls libgcrypt libgpg-error libmysqlclient libtasn1 openssl postgresql-libs zlib"
 BDEPEND=" "
 RECOMMENDED=""
 CONFLICT=""

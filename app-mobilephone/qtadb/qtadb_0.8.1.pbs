@@ -13,7 +13,7 @@ PACKAGER="StartOS Developers"
 SRC_URI="http://motyczko.pl/qtadb/QtADB_"$V"_src.zip"
 CHECKSUM="732eb8736c2fadddc80c37b47a91589c02e474cf5b0b68393411ffd4611cdb5f"
 
-RDEPEND="qt-core android-sdk-platform-tools"
+RDEPEND="qt android-sdk-platform-tools"
 RECOMMENDED=""
 BDEPEND=""
 OPTIONAL=""

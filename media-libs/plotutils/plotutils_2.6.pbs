@@ -13,7 +13,7 @@ PACKAGER="StartOS Developers"
 SRC_URI="http://ftp.gnu.org/pub/gnu/"$N"/"$N-$V".tar.gz"
 CHECKSUM="7921301d9dfe8991e3df2829bd733df6b2a70838"
 
-RDEPEND="gcc-lib libpng libXaw"
+RDEPEND="gcc-libs libpng libXaw"
 RECOMMENDED=""
 BDEPEND=""
 OPTIONAL=""

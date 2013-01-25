@@ -14,7 +14,7 @@ PACKAGER="StartOS Developers"
 SRC_URI="http://download.videolan.org/pub/videolan/"$N"/"$V"/"$N-$V".tar.xz"
 CHECKSUM="a7e79565e3df07dcf9abc6cad3ac26bb"
  
-RDEPEND="ffmpeg(>=0.11.1) a52dec aalib faad2 fluidsynth gnome-vfs libass libavc1394 libbluray libcddb libdca libdvbpsi libdvdnav libmad libmatroska libmodplug libmpcdec libmpeg2 libmtp libnotify libproxy librsvg libsamplerate libshout libtar libtiger libupnp lirc lua portaudio qt-core sdl-image taglib udev vcdimager xcb-util-keysyms xosd zvbi"
+RDEPEND="ffmpeg(>=0.11.1) a52dec aalib faad2 fluidsynth gnome-vfs libass libavc1394 libbluray libcddb libdca libdvbpsi libdvdnav libmad libmatroska libmodplug libmpcdec libmpeg2 libmtp libnotify libproxy librsvg libsamplerate libshout libtar libtiger libupnp lirc lua portaudio qt sdl-image taglib systemd vcdimager xcb-util-keysyms xosd zvbi"
 BDEPEND=""
 RECOMMENDED=""
 CONFLICT=""

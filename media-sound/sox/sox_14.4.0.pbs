@@ -13,7 +13,7 @@ PACKAGER="StartOS Developers"
 SRC_URI="http://downloads.sourceforge.net/"$N"/"$N-$V".tar.bz2"
 CHECKSUM="12dfc57e503ed4e18cedcac292cdae7982281978"
 
-RDEPEND="file lame libao libgsm libid3tag libmad libpng libtool opencore-amr wavpack"
+RDEPEND="file lame libao gsm libid3tag libmad libpng libtool opencore-amr wavpack"
 BDEPEND=""
 RECOMMENDED=""
 CONFLICT=""

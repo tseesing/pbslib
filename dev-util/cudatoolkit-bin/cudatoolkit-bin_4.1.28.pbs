@@ -13,7 +13,7 @@ PACKAGER="StartOS Developers"
 SRC_URI="http://developer.download.nvidia.com/compute/cuda/4_1/rel/toolkit/cudatoolkit_"$V"_linux_32_fedora14.run"
 CHECKSUM="835d403e86f4b014b348c587ffb23c0d"
 
-RDEPEND="alsa-lib fontconfig gcc-lib libXrender libXtst unixodbc"
+RDEPEND="alsa-lib fontconfig gcc-libs libXrender libXtst unixodbc"
 RECOMMENDED=""
 BDEPEND=""
 OPTIONAL=""

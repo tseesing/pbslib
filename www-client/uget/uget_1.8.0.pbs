@@ -5,7 +5,7 @@
 # Distributed under the terms of the GNU General Public License v2
 #
 
-DESCRIPTION="Download manager using gtk+ and libcurl"
+DESCRIPTION="Download manager using gtk2 and libcurl"
 HOMEPAGE="http://urlget.sourceforge.net/"
 LICENSE="GPL"
 PACKAGER="StartOS Developers"
@@ -19,7 +19,7 @@ CONFLICT=""
 
 INSTALL="$N.install"
 
-DESKTOPFILE="uget-gtk.desktop"
+DESKTOPFILE="uget-gtk2.desktop"
 
 pbs_unpack() {
         dounpack

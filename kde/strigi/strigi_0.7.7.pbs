@@ -13,7 +13,7 @@ PACKAGER="StartOS Developers<>"
 SRC_URI="ftp://ftp.archlinux.org/other/"$N"/"$N-$V".tar.bz2"
 CHECKSUM="ca0a0fd5c2b99879f6330837aeede996"
 
-RDEPEND="exiv2 qt-core"
+RDEPEND="exiv2 qt"
 BDEPEND="cmake"
 
 INSTALL="$N.install"

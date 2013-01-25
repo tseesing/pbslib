@@ -13,7 +13,7 @@ PACKAGER="StartOS Developers"
 
 SRC_URI="http://sourceforge.net/projects/pcmanfm/files/PCManFM%20%2B%20Libfm%20%28tarball%20release%29/libfm%20%28required%20by%20PCManFM%29/"$N-$V".tar.gz"
 
-RDEPEND="gtk+ menu-cache"
+RDEPEND="gtk2 menu-cache"
 RECOMMENDED=""
 BDEPEND=""
 CONFLICT=""

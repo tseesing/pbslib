@@ -13,7 +13,7 @@ PACKAGER="StartOS Developers"
 SRC_URI="http://audacity.googlecode.com/files/"$N"-fullsrc-"$V".tar.bz2"
 CHECKSUM="286a66b162f5086241e3dc2da725b687"
 
-RDEPEND="jack-audio-connection-kit libid3tag libmad wxWidgets"
+RDEPEND="jack-audio-connection-kit libid3tag libmad wxgtk"
 BDEPEND=""
 RECOMMENDED=""
 CONFLICT=""

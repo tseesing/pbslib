@@ -13,7 +13,7 @@ PACKAGER="StartOS Developers"
 SRC_URI="http://download.savannah.gnu.org/releases/"$N"/"$N-$V".tar.gz"
 CHECKSUM="064a5ad75593f8c3ea3fe85010647832"
 
-RDEPEND="bluez gcc-lib libcap"
+RDEPEND="bluez gcc-libs libcap"
 RECOMMENDED=""
 BDEPEND=""
 OPTIONAL=""
@@ -38,8 +38,8 @@ pbs_install() {
 
 	export DESTDIR="${destdir}"
 	scons install
-	install -D -m644 "gpsd.rules" "${destdir}"/lib/udev/rules.d/99-gpsd-usb.rules
-	install -D -m755 gpsd.hotplug "${destdir}"/lib/udev/gpsd.hotplug
+	install -D -m644 "gpsd.rules" "${destdir}"/lib/systemd/rules.d/99-gpsd-usb.rules
+	install -D -m755 gpsd.hotplug "${destdir}"/lib/systemd/gpsd.hotplug
 
 	# GPSD needs RPATH
 	chrpath -r /usr/lib/ "${destdir}"/usr/lib/libgps{,d}.so.20.0.0

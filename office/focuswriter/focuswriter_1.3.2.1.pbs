@@ -12,7 +12,7 @@ PACKAGER="StartOS Developers"
 
 SRC_URI="http://gottcode.org/"$N"/"$N-$V$R"-src.tar.bz2"
 
-RDEPEND="hunspell libao libzip qt-core"
+RDEPEND="hunspell libao libzip qt"
 BDEPEND=""
 RECOMMENDED=""
 CONFLICT=""

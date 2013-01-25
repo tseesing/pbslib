@@ -12,7 +12,7 @@ PACKAGER="StartOS Developers"
 
 SRC_URI="http://www.jwz.org/"$N"/"$N-$V".tar.gz"
 
-RDEPEND="atk cairo expat fontconfig freetype gcc-lib gdk-pixbuf glib2 glibc gtk+ libdrm libglade libICE libjpeg-turbo libpng libSM libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libXinerama libxml2 libXmu libXpm libXrandr libXrender libXt libXxf86vm mesa pam pango pixman util-linux-ng zlib"
+RDEPEND="atk cairo expat fontconfig freetype gcc-libs gdk-pixbuf2 glib2 glibc gtk2 libdrm libglade libICE libjpeg-turbo libpng libSM libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libXinerama libxml2 libXmu libXpm libXrandr libXrender libXt libXxf86vm mesa pam pango pixman util-linux zlib"
 BDEPEND="bc"
 RECOMMENDED=""
 

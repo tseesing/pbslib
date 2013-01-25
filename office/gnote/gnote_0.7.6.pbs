@@ -12,7 +12,7 @@ PACKAGER="StartOS Developers"
 
 SRC_URI="http://ftp.gnome.org/pub/GNOME/sources/"$N"/0.7/"$N-$V".tar.bz2"
 
-RDEPEND="gconf gtkmm gtkspell pcre libxslt util-linux-ng"
+RDEPEND="gconf gtkmm gtkspell pcre libxslt util-linux"
 BDEPEND=""
 RECOMMENDED=""
 CONFLICT=""

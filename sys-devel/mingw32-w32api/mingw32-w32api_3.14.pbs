@@ -14,7 +14,7 @@ PACKAGER="StartOS Developers"
 SRC_URI="http://ncu.dl.sourceforge.net/project/mingw/MinGW/BaseSystem/RuntimeLibrary/Win32-API/w32api-3.14/w32api-3.14-mingw32-src.tar.gz"
 
 RDEPEND=""
-BDEPEND="mingw32-headers mingw32-binutils mingw32-gcc-lib-base"
+BDEPEND="mingw32-headers mingw32-binutils mingw32-gcc-libs-base"
 RECOMMENDED=""
 CONFLICT=""
 

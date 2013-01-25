@@ -13,7 +13,7 @@ PACKAGER="StartOS Developers"
 SRC_URI="http://audacity.googlecode.com/files/"$N"-minsrc-"$V".tar.bz2"
 CHECKSUM="c5e4058346c96713a0d39fcd6b33f27137589b06"
 
-RDEPEND="jack-audio-connection-kit libid3tag libmad soundtouch twolame wxWidgets"
+RDEPEND="jack-audio-connection-kit libid3tag libmad soundtouch twolame wxgtk"
 BDEPEND="ffmpeg-old"
 RECOMMENDED=""
 CONFLICT=""

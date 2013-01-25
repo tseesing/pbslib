@@ -10,7 +10,7 @@ GROUP="x11-lib"
 SRCURL="http://www.x.org/releases/X11R7.5/src/lib"
 SRC_URI="$SRCURL/libXt-1.0.7.tar.bz2"
 
-RDEPEND="libSM libICE libX11 util-linux-ng libxcb libXau libXdmcp"
+RDEPEND="libSM libICE libX11 util-linux libxcb libXau libXdmcp"
 BDEPEND=" x11-libs/libSM"
 
 pbs_unpack()

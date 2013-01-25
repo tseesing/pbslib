@@ -13,7 +13,7 @@ PACKAGER="StartOS Developers"
 
 SRC_URI="http://releases.chipx86.com/"$N"/"$N"/"$N-$V".tar.gz"
 
-RDEPEND="gtk+ libxml2"
+RDEPEND="gtk2 libxml2"
 BDEPEND="iso-codes perl"
 RECOMMENDED=""
 

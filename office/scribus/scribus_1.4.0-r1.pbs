@@ -13,7 +13,7 @@ PACKAGER="StartOS Developers"
 SRC_URI="http://sourceforge.net/projects/scribus/files/"$N"/"$V"/"$N-$V".tar.xz"
 CHECKSUM="ae19e62399941fb8e868d8e762caf494"
 
-RDEPEND="aspell cups hyphen qt-core"
+RDEPEND="aspell cups hyphen qt"
 BDEPEND="cmake"
 RECOMMENDED=""
 CONFLICT=""

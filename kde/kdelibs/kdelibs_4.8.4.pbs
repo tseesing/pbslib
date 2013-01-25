@@ -12,7 +12,7 @@ PACKAGER="StartOS Developers<>"
 SRC_URI="http://download.kde.org/stable/"$V"/src/"$N-$V".tar.xz"
 CHECKSUM="83e0de7d22d07503da9cf2e2ff7cea43"
 
-RDEPEND="acl aspell attica attr bzip2 dbus dbus-glib e2fsprogs eggdbus enchant expat flac fontconfig freetype gcc-lib giflib glib2 glibc gst-plugins-base gstreamer herqq ilmbase jasper json-c keyutils krb5 libcap libdbusmenu-qt libdrm libffi libgcrypt libgpg-error libICE libjpeg-turbo libogg libpcre libpng libSM libsndfile libvorbis libX11 libXau libxcb libXcursor libXdamage libXdmcp libXext libXfixes libXft libXi libxml2 libXpm libXrender libXScrnSaver libxslt libXtst libXxf86vm mesa openexr openssl polkit polkit-qt pulseaudio qca qt-core soprano sqlite strigi udev util-linux-ng xz-utils zlib"
+RDEPEND="acl aspell attica attr bzip2 dbus dbus-glib e2fsprogs eggdbus enchant expat flac fontconfig freetype gcc-libs giflib glib2 glibc gst-plugins-base gstreamer herqq ilmbase jasper json-c keyutils krb5 libcap libdbusmenu-qt libdrm libffi libgcrypt libgpg-error libICE libjpeg-turbo libogg pcre libpng libSM libsndfile libvorbis libX11 libXau libxcb libXcursor libXdamage libXdmcp libXext libXfixes libXft libXi libxml2 libXpm libXrender libXScrnSaver libxslt libXtst libXxf86vm mesa openexr openssl polkit polkit-qt pulseaudio qca qt soprano sqlite strigi systemd util-linux xz zlib"
 BDEPEND="pkgconfig cmake automoc4"
 RECOMMENDED="shared-desktop-ontologies"
 
