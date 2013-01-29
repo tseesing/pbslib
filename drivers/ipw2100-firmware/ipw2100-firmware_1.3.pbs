@@ -1,0 +1,29 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="Firmware for the Intel PRO/Wireless 2100 3B miniPCI adapter"
+HOMEPAGE="http://ipw2100.sourceforge.net/"
+LICENSE="custom"
+PACKAGER="StartOS Developers"
+YARCH="any"
+
+SRC_URI="http://bughost.org/firmware/ipw2100-fw-"$V".tgz"
+
+RDEPEND=""
+BDEPEND=""
+RECOMMENDED=""
+CONFLICT=""
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_install() {
+    docp ../*.fw "$destdir"/lib/firmware/
+    dodoc LICENSE
+}
+

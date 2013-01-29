@@ -1,0 +1,37 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="KDE PIM Libraries"
+HOMEPAGE="http://www.kde.org/"
+LICENSE="GPL,LGPL"
+PACKAGER="StartOS Developers<>"
+
+SRC_URI="http://download.kde.org/stable/"$V"/src/"$N-$V".tar.xz"
+CHECKSUM="34f693ac71896d0d8653fc2a81323d1e91531bb2"
+
+RDEPEND="acl akonadi attica attr bzip2 cyrus-sasl dbus expat flac fontconfig freetype gcc-libs glib2 glibc gnutls gpgme gst-plugins-base gstreamer herqq json-c kdelibs libassuan libcap libdbusmenu-qt libdmtx libffi libgcrypt libgpg-error libical libICE libogg libpng libqzeitgeist libSM libsndfile libtasn1 libvorbis libX11 libXau libxcb libXcursor libXdmcp libXext libXfixes libXft libXi libxml2 libXpm libXrender libXtst openldap openssl phonon prison pth pulseaudio qca qrencode qt soprano sqlite strigi systemd util-linux xz zlib"
+BDEPEND=""
+
+INSTALL="$N.install"
+
+pbs_unpack() {
+       dounpack
+}
+
+pbs_config() {
+    doconfig -DCMAKE_BUILD_TYPE=Release \
+         -DCMAKE_SKIP_RPATH=ON
+}
+
+pbs_build() {
+    domake
+}
+
+pbs_install() {
+    domkinstall
+}
+

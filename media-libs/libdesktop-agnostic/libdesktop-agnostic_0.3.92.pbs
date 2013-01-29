@@ -1,0 +1,44 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="Provides an extensible config API, a unified virtual fs API, and a desktop item editor for GLib-based projects."
+HOMEPAGE="https://launchpad.net/libdesktop-agnostic"
+REPO=""
+LICENSE="GPL/LGPL"
+PACKAGER="StartOS Developers"
+
+SRC_URI="http://launchpadlibrarian.net/66283962/"$N-$V$R".tar.gz"
+
+RDEPEND="atk cairo dbus dbus-glib expat fontconfig freetype gcc-libs gconf glib2 gdk-pixbuf2 glibc gtk2 libpng libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libXrandr libXrender orbit pango pixman python zlib"
+BDEPEND=""
+RECOMMENDED=""
+CONFLICT=""
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_config() {
+    # Force source regeneration
+    rm -r gen_src
+    config="--config-backends=gconf,keyfile 
+                --vfs-backends=gio
+                --desktop-entry-backends=gio,glib 
+            --prefix=/usr 
+            --sysconfdir=/etc"
+    doconfig
+}
+
+pbs_build() {
+    domake
+}
+
+pbs_install() {
+    domkinstall
+}
+
+

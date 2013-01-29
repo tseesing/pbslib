@@ -1,0 +1,55 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="Cross-platform, 3D and historically-based real-time strategy game"
+HOMEPAGE="http://wildfiregames.com/0ad"
+LICENSE="GPL,CCPL"
+PACKAGER="StartOS Developers"
+
+SRC_URI="http://releases.wildfiregames.com/"$N"-"$V"-alpha-unix-build.tar.xz"
+CHECKSUM="0feedd076ea441ca821073b4b7014946"
+
+RDEPEND="boost-libs curl enet libsdl libvorbis openal wxgtk 0ad-data"
+RECOMMENDED=""
+BDEPEND=""
+OPTIONAL=""
+CONFLICT=""
+REPLACE=""
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_patch() {
+    sed -i 's/unix_names = { "boost_filesystem-mt", "boost_system-mt" },/unix_names = { "boost_filesystem", "boost_system" },/g' build/premake/extern_libs4.lua
+    sed -i 's/unix_names = { "boost_signals-mt" },/unix_names = { "boost_signals" },/g' build/premake/extern_libs4.lua
+}
+
+pbs_config() {
+    cd build/workspaces
+    ./update-workspaces.sh \
+        --with-system-enet \
+        --bindir=/usr/bin \
+            --libdir=/usr/lib \
+        --datadir=/usr/share/"$N"/data
+}
+
+pbs_build() {
+    cd gcc
+    domake CONFIG=Release
+}
+
+pbs_install() {
+    cd "$srcdir"
+    install -d "$destdir"/usr/{bin,lib}
+    install -Dm755 binaries/system/pyrogenesis "$destdir"/usr/bin
+    install -Dm755 binaries/system/*.so{,.1.0} "$destdir"/usr/lib
+
+    install -Dm755 build/resources/"$N".sh "$destdir"/usr/bin/"$N"
+    dodesktop build/resources/"$N".desktop build/resources/"$N".png
+}
+

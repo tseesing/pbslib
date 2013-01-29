@@ -1,0 +1,39 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="Advanced Drum Machine"
+HOMEPAGE="http://www.hydrogen-music.org"
+LICENSE="GPL"
+PACKAGER="StartOS Developers"
+
+SRC_URI="http://downloads.sourceforge.net/"$N"/"$N-$V".tar.gz"
+CHECKSUM="e96f291d60e58f5d62fe616cee577dc0"
+
+RDEPEND=""
+RECOMMENDED=""
+BDEPEND=""
+OPTIONAL=""
+CONFLICT=""
+REPLACE=""
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_patch() {
+    export QTDIR=/usr
+    dopatch lrdf_raptor2.patch install.patch
+}
+
+pbs_config() {
+    scons prefix=/usr libarchive=1
+}
+
+pbs_install() {
+    scons DESTDIR="$destdir" install
+}
+

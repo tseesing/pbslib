@@ -1,0 +1,33 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="Free CAD software for your DWG files"
+HOMEPAGE="http://www.3ds.com/products/draftsight/free-cad-software/"
+LICENSE="custom"
+PACKAGER="StartOS Developers"
+
+SRC_URI="http://dl-ak.solidworks.com/nonsecure/draftsight/V1R2.1/draftSight.deb"
+CHECKSUM="5dbb8148ba9df323d77a9dc5b8268fd9"
+
+RDEPEND="cups mesa nas"
+BDEPEND=""
+RECOMMENDED=""
+CONFLICT=""
+
+DESKTOPFILE="opt/dassault-systemes/draftsight/mime/dassault-systemes_draftsight.desktop"
+ICONFILE="opt/dassault-systemes/draftsight/mime/pixmaps/32x32/dassault-systemes_draftsight.png"
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_install() {
+    docp data/*  "$destdir"
+    cd "$destdir"
+    dodesktop "$DESKTOPFILE" "$ICONFILE"
+}
+

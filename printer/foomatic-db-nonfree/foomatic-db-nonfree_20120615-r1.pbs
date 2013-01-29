@@ -1,0 +1,36 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="database extension consisting of manufacturer-supplied PPD files released under non-free licenses"
+HOMEPAGE="http://www.linuxprinting.org/foomatic.html"
+LICENSE="custom"
+PACKAGER="StartOS Developers"
+
+SRC_URI="http://www.openprinting.org/download/foomatic/"$N-$V".tar.gz"
+CHECKSUM="e0e405f9fdf40e0eb5555ade80b3b63b"
+
+RDEPEND="foomatic-db-engine foomatic-db"
+BDEPEND=""
+RECOMMENDED=""
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_config() {
+    doconfig
+}
+
+pbs_build() {
+    domake
+}
+
+pbs_install() {
+    domkinstall
+    dodoc COPYING
+}
+

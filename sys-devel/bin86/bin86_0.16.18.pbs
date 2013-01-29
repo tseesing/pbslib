@@ -1,0 +1,35 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="Assembler and loader used to create kernel bootsector"
+HOMEPAGE="http://www.debath.co.uk/"
+LICENSE="GPL"
+PACKAGER="StartOS Developers"
+
+SRC_URI="http://www.debath.co.uk/dev86/"$N-$V".tar.gz"
+
+RDEPEND="glibc"
+BDEPEND=""
+RECOMMENDED=""
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_patch() {
+    [ "$ARCH" = x86_64 ] && dopatch bin86-0.16.17-x86_64-1.patch ||true
+}
+
+pbs_build() {
+    domake PREFIX=/usr
+}
+
+pbs_install() {
+    install -d -m755 "$destdir"/usr/bin "$destdir"/usr/share/man/man1
+    domkinstall PREFIX="$destdir"/usr "MANDIR=$destdir/usr/share/man/man1"
+}
+

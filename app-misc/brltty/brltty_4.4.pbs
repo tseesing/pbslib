@@ -1,0 +1,43 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="For accessing to the Linux/Unix console (when in text mode) for a blind person using a refreshable braille display."
+HOMEPAGE="http://http://mielke.cc/brltty"
+LICENSE="GPL,LGPL"
+PACKAGER="chenqixing@ivali.com
+          Zhongxin Huang <huangzhongxin@ivali.com>"
+
+SRC_URI="http://mielke.cc/brltty/releases/$N-$V.tar.gz"
+CHECKSUM="8ebe96efe679f5f6ccff08928fec5b26"
+
+RDEPEND="libXaw at-spi2-core gpm icu tcl atk pyrex"
+RECOMMENDED=""
+BDEPEND="bluez"
+OPTIONAL="bluez: bluetooth support"
+
+INSTALL="$N.install"
+
+pbs_unpack() {
+    dounpack
+}
+
+pbs_config() {
+    config+="--enable-gpm --disable-java-bindings --with-screen-driver=a2"
+    doconfig
+}
+
+pbs_build() {
+    domake
+}
+
+pbs_install() {
+    make INSTALL_ROOT="$destdir" install 
+    dodoc LICENSE-GPL 
+    dounit brltty.service
+}
+
+

@@ -1,0 +1,36 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="Apache Portable Runtime Library"
+HOMEPAGE="http://apr.apache.org/"
+LICENSE="APACHE"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
+ 
+SRC_URI="http://www.apache.org/dist/"$N"/"$N-$V".tar.bz2"
+CHECKSUM="ffee70a111fd07372982b0550bbb14b7"
+
+RDEPEND="util-linux"
+BDEPEND=""
+RECOMMENDED=""
+
+pbs_unpack() {
+    dounpack
+}
+
+pbs_config() {
+    config+="--enable-nonportable-atomics --with-devrandom=/dev/urandom --with-installbuilddir=/usr/share/apr-1/build"
+    doconfig
+}
+
+pbs_build() {
+    domake
+}
+
+pbs_install() {
+    domkinstall
+}
+

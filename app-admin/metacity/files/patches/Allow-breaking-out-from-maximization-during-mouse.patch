@@ -1,0 +1,35 @@
+From 339710e884cfbab810382a63fafb3cdab8ee51e9 Mon Sep 17 00:00:00 2001
+From: Owen W. Taylor <otaylor@fishsoup.net>
+Date: Wed, 23 Jun 2010 15:08:38 -0400
+Subject: [PATCH] Allow breaking out from maximization during a mouse resize
+
+A maximized window can't be resized from the screen edges (preserves
+Fitts law goodness for the application), but it's still possible
+to start a resize drag with alt-middle-button. Currently we just
+don't let the user resize the window, while showing drag feedback;
+it's more useful to let the user "break" out from the resize.
+
+This provides a fast way to get a window partially aligned with
+the screen edges - maximize, then alt-drag it out from one edge.
+
+Behavior choices in this patch:
+
+ - You can drag out a window out of maximization in both directions -
+   smaller and larger. This can be potentilaly useful in multihead.
+
+ - Dragging a window in only one direction unmaximizes the window
+   fully, rather than leaving it in a horizontally/vertically
+   maximized state. This is done because the horizontally/vertically
+   maximzed states don't have clear visual representation and can
+   be confusing to the user.
+
+ - If you drag back to the maximized state after breaking out,
+   maximization is restored, but you can't maximize a window by
+   dragging to the full size if it didn't start out that way.
+
+A new internal function meta_window_unmaximize_with_gravity() is
+added for implementing this; it's a hybrid of
+meta_window_unmaximize() and meta_window_resize_with_gravity().
+
+https://bugzilla.gnome.org/show_bug.cgi?id=622517
+---

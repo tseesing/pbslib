@@ -1,0 +1,26 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+DESCRIPTION="Ghostscript Extra Fonts"
+HOMEPAGE="http://www.cups.org/"
+LICENSE="GPL"
+YARCH="any"
+PACKAGER="StartOS Developers"
+
+SRC_URI="http://ftp.gnu.org/pub/gnu/ghostscript/"$N-$V".tar.gz"
+
+RDEPEND=""
+BDEPEND=""
+RECOMMENDED=""
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_install() {
+    docp * "$destdir"/usr/share/fonts/ghostscript/
+}
+

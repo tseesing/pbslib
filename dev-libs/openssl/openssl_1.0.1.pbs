@@ -1,0 +1,56 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="Toolkit for SSL v2/v3 and TLS v1"
+HOMEPAGE="http://www.openssl.org/"
+LICENSE="custom:BSD"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
+
+SRC_URI="ftp://ftp.openssl.org/source/"$N-$V"c.tar.gz"
+CHECKSUM="ae412727c8c15b67880aef7bd2999b2e"
+
+RDEPEND="zlib perl"
+BDEPEND=""
+OPTIONAL="ca-certificates"
+
+pbs_unpack() {
+    dounpack
+}
+
+pbs_patch() {
+    dopatch fix-manpages.patch no-rpath.patch ca-dir.patch
+}
+
+pbs_config() {
+    case "$ARCH" in
+        x86_64)    
+        openssltarget='linux-x86_64' optflags='enable-ec_nistp_64_gcc_128' ;;
+      i?86)    
+        openssltarget='linux-elf' optflags=''
+    esac
+    
+    ./Configure \
+        --prefix=/usr \
+        --openssldir=/etc/ssl \
+        --libdir=lib"$LIBDIRSUFFIX" \
+        shared zlib enable-md2 ${optflags} \
+        "${openssltarget}" \
+        -Wa,--noexecstack \
+        -DOPENSSL_NO_TLS1_2_CLIENT
+
+}
+
+pbs_build() {
+    make depend
+    make 
+}
+
+pbs_install() {
+    make INSTALL_PREFIX="$destdir" MANDIR=/usr/share/man install
+    dodoc LICENSE
+}
+

@@ -1,0 +1,56 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="A set of programs to assemble and manipulate binary and object files (mingw)"
+HOMEPAGE="https://sourceforge.net/projects/mingw/files/MinGW/Base/binutils"
+LICENSE="GPL"
+PACKAGER="StartOS Developers"
+
+SRC_URI="http://ncu.dl.sourceforge.net/project/mingw/MinGW/BaseSystem/GNU-Binutils/binutils-2.20.1/binutils-"$V$R"-src.tar.gz"
+
+RDEPEND=""
+BDEPEND="mingw32-headers"
+RECOMMENDED=""
+CONFLICT=""
+
+OPTIONS="nodev nostrip"
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_config() {
+    local TARGET="i586-mingw32msvc"
+    local TARGET_OS="mingw32"
+    local INSTALL_DIR="/usr/mingw"
+
+    config="--prefix="$INSTALL_DIR"
+            --target="$TARGET"
+            --with-gcc-libs
+            --with-gnu-as
+            --with-gnu-ld
+            --disable-nls
+            --disable-debug
+            --with-sysroot="$INSTALL_DIR""
+    mkdir build && cd build
+    unset CC
+    unset CXX
+    unset CFLAGS 
+    unset CXXFLAGS
+    ../configure $config
+}
+
+pbs_build() {
+    export CFLAGS="-O2 -fno-exceptions"
+    export LDFLAGS="-s"
+    domake 
+}
+
+pbs_install() {
+    make DESTDIR="$destdir" install
+}
+

@@ -1,0 +1,40 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="GNOME webbrowser based on Webkit"
+HOMEPAGE="http://www.gnome.org/projects/epiphany/"
+LICENSE="GPL"
+PACKAGER="chenqixing@ivali.com
+          Zhongxin Huang <huangzhongxin@ivali.com>"
+
+SRC_URI="http://ftp.gnome.org/pub/gnome/sources/$N/${V%.*}/"$N-$V".tar.xz"
+CHECKSUM="1b4e33e02f7653489be9c49d182be84da13348b4ad3cb4c09c643898586a6008"
+
+RDEPEND="avahi dconf libgnome-keyring gsettings-desktop-schemas libnotify libproxy nss startup-notification gnome-desktop webkitgtk3"
+RECOMMENDED=""
+BDEPEND="intltool gnome-doc-utils startup-notification"
+CONFLICT=""
+
+INSTALL="$N.install"
+
+pbs_unpack() {
+    dounpack
+}
+
+pbs_config() {
+    config+=""
+    doconfig
+}
+
+pbs_build() {
+    domake
+}
+
+pbs_install() {
+    domkinstall
+}
+

@@ -1,0 +1,37 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="Database of photographic lenses and a library that allows advanced access to the database"
+HOMEPAGE="http://lensfun.berlios.de"
+LICENSE="LGPL"
+PACKAGER="StartOS Developers"
+
+SRC_URI="http://download.berlios.de/"$N"/"$N-$V".tar.bz2"
+CHECKSUM="740e4749db04da0a597630dd6339b966"
+
+RDEPEND="gcc-libs glib2"
+RECOMMENDED=""
+BDEPEND=""
+OPTIONAL=""
+CONFLICT=""
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_config() {
+    ./configure --prefix=/usr --libdir=/usr/lib
+}
+
+pbs_build() {
+    domake all
+}
+
+pbs_install() {
+    make INSTALL_PREFIX="$destdir" install
+}
+

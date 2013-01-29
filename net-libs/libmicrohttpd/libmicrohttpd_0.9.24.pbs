@@ -1,0 +1,46 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="A small C library that makes it easy to run an HTTP server as part of another application."
+HOMEPAGE="http://gnunet.org/libmicrohttpd/"
+LICENSE="LGPL"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
+
+SRC_URI="ftp://ftp.gnu.org/gnu/$N/$N-$V.tar.gz"
+CHECKSUM="2891c82cc85a92e6944cacf9ae413f7c"
+
+RDEPEND="gnutls libgcrypt"
+BDEPEND=""
+RECOMMENDED=""
+CONFLICT=""
+
+INSTALL="$N.install"
+
+pbs_unpack() {
+    dounpack
+}
+
+pbs_config() {
+    config+="--disable-dependency-tracking 
+             --enable-largefile 
+             --enable-curl 
+             --enable-messages 
+             --with-pic"
+    doconfig
+}
+
+pbs_build() {
+    domake
+}
+
+pbs_install() {
+    domkinstall
+    docp src/include/platform.h src/include/plibc/plibc.h "$destdir"/usr/include/"$N"/
+    sed -i 's#Cflags: -I${includedir}#Cflags: -I${includedir} -I{includedir}/libmicrohttpd#' \
+        "$destdir"/usr/lib"$LIBDIRSUFFIX"/pkgconfig/libmicrohttpd.pc
+}
+

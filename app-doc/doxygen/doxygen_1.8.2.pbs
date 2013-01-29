@@ -1,0 +1,36 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="documentation system for C++, C, Java, Objective-C, Python, IDL, and other languages"
+HOMEPAGE="http://www.doxygen.org/"
+LICENSE="GPL"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
+
+SRC_URI="http://ftp.stack.nl/pub/users/dimitri/"$N-$V".src.tar.gz"
+
+RDEPEND="gcc-libs"
+BDEPEND="qt"
+RECOMMENDED=""
+OPTIONAL="graphviz: for caller/callee graph generation
+          qt: for doxywizard"
+
+pbs_unpack() {
+    dounpack
+}
+
+pbs_config() {
+    ./configure --prefix /usr --docdir /usr/share/doc --with-doxywizard
+}
+
+pbs_build() {
+    domake
+}
+
+pbs_install() {
+    domkinstall MAN1DIR=share/man/man1
+}
+

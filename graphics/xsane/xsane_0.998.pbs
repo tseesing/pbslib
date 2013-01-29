@@ -1,0 +1,54 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="A GTK-based X11 frontend for SANE and plugin for Gimp."
+HOMEPAGE="http://www.xsane.org"
+LICENSE="GPL"
+PACKAGER="StartOS Developers"
+
+SRC_URI="http://www.xsane.org/download/"$N-$V".tar.gz"
+CHECKSUM="936f1cc76b37caa8f285e1e15ac7e0aa"
+
+PROVIDE="xsane xsane-gimp"
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_patch() {
+    dopatch xsane-0.995-xdg-open.patch
+    sed -i -e 's:png_ptr->jmpbuf:png_jmpbuf(png_ptr):' src/xsane-save.c
+}
+
+pbs_build() {
+    ./configure --prefix=/usr --mandir=/usr/share/man --enable-gimp
+    domake ||die "Compile $N with --enable-gimp failed"
+    mv src/xsane src/xsane-gimp
+
+    # Build again with gimp enabled
+    domake clean
+    ./configure --prefix=/usr --mandir=/usr/share/man --disable-gimp
+    domake
+}
+
+xsane_install() {
+    DESCRIPTION="A GTK-based X11 frontend for SANE"
+    RDEPEND="lcms sane-backends"
+    
+    domkinstall
+}
+
+xsane-gimp_install () {
+    DESCRIPTION="XSane Gimp plugi"
+    RDEPEND="sane-backends gimp"
+
+    install -D -m755 src/xsane-gimp "$destdir"/usr/bin/xsane-gimp
+    
+    ## For making Gimp Plugin available 
+    doln /usr/bin/xsane-gimp "$destdir"/usr/lib/gimp/2.0/plug-ins/xsane
+}
+

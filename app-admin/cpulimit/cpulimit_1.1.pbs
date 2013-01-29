@@ -1,0 +1,34 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="Limit cpu usage in %. Actualy sends SIGSTOP/SIGCONT"
+HOMEPAGE="http://cpulimit.sourceforge.net"
+LICENSE="GPL"
+PACKAGER="StartOS Developers"
+
+SRC_URI="http://downloads.sourceforge.net/sourceforge/"$N"/"$N-$V".tar.gz"
+CHECKSUM="f4ff6d4bfaef1258e8f5cd2041e2e2a3"
+
+RDEPEND="glibc"
+RECOMMENDED=""
+BDEPEND=""
+OPTIONAL=""
+CONFLICT=""
+REPLACE=""
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_build() {
+    domake
+}
+
+pbs_install() {
+    install -D -m0755 cpulimit "$destdir"/usr/bin/cpulimit
+}
+

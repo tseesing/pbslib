@@ -1,0 +1,45 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="Probably the simplest and fastest audio player for Linux."
+HOMEPAGE="https://launchpad.net/pogo"
+LICENSE="GPL"
+PACKAGER="StartOS Developers"
+
+SRC_URI="https://launchpadlibrarian.net/98441572/"$N-$V".tar.gz"
+CHECKSUM="79c4fda0d242fa380b6e8dfd37506a2a"
+
+RDEPEND="python"
+RECOMMENDED=""
+BDEPEND=""
+OPTIONAL=""
+CONFLICT=""
+
+INSTALL="$N.install"
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_patch() {
+    dopatch
+}
+
+pbs_config() {
+    config+=""
+    doconfig
+}
+
+pbs_build() {
+    domake
+}
+
+pbs_install() {
+    domkinstall
+}
+
+

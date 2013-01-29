@@ -1,0 +1,31 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="Cross platform cloud note-taking application"
+COMMENTS="wiznote is a cross platform note-taking application."
+HOMEPAGE="http://www.wiz.cn."
+LICENSE="custom"
+PACKAGER="StartOS Developers"
+
+SRC_URI="http://uikb.com/cdn/"$N"-1.0-beta-i386.deb"
+CHECKSUM="b8fe25d6eceb747f2358f75c7d09c2a6"
+
+RDEPEND="qt"
+RECOMMENDED=""
+BDEPEND=""
+OPTIONAL=""
+
+INSTALL="$N.install"
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_install() {
+    docp data/*  "$destdir"
+}
+

@@ -1,0 +1,34 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="Free software for Moon observation or survey"
+HOMEPAGE="http://ap-i.net/avl/en/start"
+LICENSE="custom"
+PACKAGER="StartOS Developers"
+
+SRC_URI="http://nchc.dl.sourceforge.net/project/virtualmoon/1-%20virtualmoon/Version%205.1/Linux/"$N-$V"-linux.tar"
+CHECKSUM="6d1b1f2903a1f6304e6b6440160711fb"
+
+RDEPEND="gtk2 mesa"
+BDEPEND=""
+RECOMMENDED=""
+CONFLICT=""
+
+INSTALL="$N.install"
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_install() {
+    mkdir -p "$destdir"/usr/
+    tar xf virtualmoon-5.1-linux_i386.tgz     -C "$destdir"/usr/
+    tar xf virtualmoon-data-5.1-linux_all.tgz -C "$destdir"/usr/
+    dodoc licence
+    sed -i 's/\.\./\/usr\/share/g' "$destdir"/usr/share/applications/virtualmoon.desktop
+}
+

@@ -1,0 +1,37 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="A JSON implementation in C"
+HOMEPAGE="http://oss.metaparadigm.com/json-c/"
+LICENSE="MIT"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
+
+SRC_URI="http://oss.metaparadigm.com/"$N"/"$N-$V".tar.gz"
+CHECKSUM="3a13d264528dcbaf3931b0cede24abae"
+
+RDEPEND="glibc"
+RECOMMENDED=""
+BDEPEND=""
+
+pbs_unpack() {
+    dounpack
+}
+
+pbs_config() {
+    config+=""
+    doconfig
+}
+
+pbs_build() {
+    domake
+}
+
+pbs_install() {
+    domkinstall
+    dodoc COPYING
+}
+

@@ -1,0 +1,13 @@
+Index: gdm-2.32.1/data/Init.in
+===================================================================
+--- gdm-2.32.1.orig/data/Init.in	2011-04-08 16:33:58.721921358 +1000
++++ gdm-2.32.1/data/Init.in	2011-04-08 16:34:20.841921370 +1000
+@@ -55,7 +55,7 @@
+   UNAME=`gdmwhich uname`
+   PROCESSOR=`$UNAME -p`
+   if [ "x$PROCESSOR" = "xsparc" ]; then
+-    if $XMODMAP | /usr/bin/grep mod4 | /usr/bin/grep Alt > /dev/null 2>/dev/null
++    if $XMODMAP | grep mod4 | grep Alt > /dev/null 2>/dev/null
+     then
+       $XMODMAP -e "clear Mod1" \
+                -e "clear Mod4" \

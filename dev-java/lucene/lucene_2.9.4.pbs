@@ -1,0 +1,51 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="A high-performance, full-featured text search engine library written entirely in Java"
+HOMEPAGE="http://lucene.apache.org/java/docs/index.html"
+REPO=""
+LICENSE="APACHE"
+PACKAGER="StartOS Developers"
+
+SRC_URI="http://mirror.bjtu.edu.cn/apache/lucene/java/2.9.4/lucene-2.9.4.tar.gz"
+
+RDEPEND="jre"
+BDEPEND=""
+RECOMMENDED=""
+CONFLICT=""
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_install() {
+    # install all *.jar files
+    docp lucene-core-2.9.4.jar lucene-demos-2.9.4.jar lib/servlet-api-2.4.jar "$destdir"/opt/java/
+
+    #
+    for i in `find contrib -name '*.jar'`; do
+         docp "$i" "$destdir"/opt/java/lucene-contrib
+    done 
+    
+    # create symlinks
+    cd "$destdir"/opt/java/
+    for i in `ls -1 *$V$R*.jar`; do
+        j=${i//-$V$R/}
+        ln -s $i $j
+    done
+
+    # and one with different version numbering
+    ln -s servlet-api-2.4.jar servlet-api.jar
+
+    #
+    cd "$destdir"/opt/java/lucene-contrib
+    for i in `ls -1 *$V$R*.jar`; do
+        j=${i//-$V$R/}
+            ln -s $i $j
+    done
+}
+

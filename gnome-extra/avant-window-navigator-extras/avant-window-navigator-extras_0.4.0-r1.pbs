@@ -1,0 +1,39 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="Applets for Avant Window Navigator"
+HOMEPAGE="https://launchpad.net/awn-extras"
+LICENSE="GPL"
+PACKAGER="StartOS Developers"
+
+SRC_URI="http://launchpadlibrarian.net/43836074/awn-extras-"$V".tar.gz"
+
+RDEPEND="avant-window-navigator gconf gnome-menus gstreamer libnotify vte"
+BDEPEND=""
+RECOMMENDED=""
+CONFLICT=""
+
+INSTALL="$N.install"
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_config() {
+    config+="--disable-pymod-checks --disable-schemas-install"
+    doconfig
+}
+
+pbs_build() {
+    domake
+}
+
+pbs_install() {
+    domkinstall
+}
+
+

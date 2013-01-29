@@ -1,0 +1,41 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="A Qt interface to the Zeitgeist event tracking system"
+HOMEPAGE="https://projects.kde.org/projects/kdesupport/libqzeitgeist"
+LICENSE="GPL"
+PACKAGER="StartOS Developers"
+
+SRC_URI="http://download.kde.org/stable/"$N"/"$V"/src/"$N-$V".tar.bz2"
+CHECKSUM="97bdea6a1865db7d5f29c93e3a492f24"
+
+RDEPEND="qt"
+RECOMMENDED=""
+BDEPEND="cmake zeitgeist-dev"
+OPTIONAL=""
+CONFLICT=""
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_patch() {
+    dopatch set-declarative-installation-dir.patch
+}
+
+pbs_config() {
+    doconfig -DCMAKE_BUILD_TYPE=Release -DDECLARATIVE_IMPORT_PREFIX=/usr/lib/qt/imports/
+}
+
+pbs_build() {
+    domake
+}
+
+pbs_install() {
+    domkinstall
+}
+

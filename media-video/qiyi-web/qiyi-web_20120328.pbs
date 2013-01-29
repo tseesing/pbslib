@@ -1,0 +1,21 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="iqiyi web"
+HOMEPAGE="http://www.iqiyi.com/"
+REPO="stable"
+LICENSE="GPL"
+YARCH="any"
+PACKAGER="StartOS Developers"
+
+RDEPEND="xdg-utils"
+BDEPEND=""
+
+pbs_install() {
+    dodesktop "$N.desktop" "$N.png"
+}
+

@@ -1,0 +1,11 @@
+#!/usr/bin/env xdg-open
+
+[Desktop Entry]
+Name=doubanfm
+Name[zh_CN]=豆瓣电台
+Type=Application
+Exec=xdg-open --app="http://douban.fm/"
+TryExec=xdg-open
+Icon=doubanfm-web
+Comment[zh_CN]=豆瓣在线电台
+Categories=AudioVideo;

@@ -1,0 +1,38 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="parallel LZMA compressor (no parallel decompression!)"
+HOMEPAGE="http://jnovy.fedorapeople.org/pxz/"
+LICENSE="GPL"
+PACKAGER="StartOS Developers"
+
+SRC_URI="http://jnovy.fedorapeople.org/"$N"/"$N-$V"beta.20091201git.tar.xz"
+CHECKSUM="4ae3926185978f5c95c9414dc4634451"
+
+RDEPEND="gcc-libs xz"
+RECOMMENDED=""
+BDEPEND=""
+OPTIONAL=""
+CONFLICT=""
+REPLACE=""
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_patch() {
+    dopatch Makefile.patch
+}
+
+pbs_build() {
+    domake
+}
+
+pbs_install() {
+    domkinstall
+}
+

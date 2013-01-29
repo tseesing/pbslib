@@ -1,0 +1,38 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="FT Jam - an enhanced version of the Jam build tool"
+HOMEPAGE="http://freetype.org/jam/"
+LICENSE="custom"
+PACKAGER="StartOS Developers"
+
+SRC_URI="http://david.freetype.org/jam/"$N-$V"rc2.tar.bz2"
+CHECKSUM="911cc4191b3e7213905d107962b4529b"
+
+RDEPEND="glibc"
+RECOMMENDED=""
+BDEPEND=""
+OPTIONAL=""
+CONFLICT=""
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_config() {
+    config+=""
+    doconfig
+}
+
+pbs_build() {
+    domake
+}
+
+pbs_install() {
+    domkinstall
+}
+

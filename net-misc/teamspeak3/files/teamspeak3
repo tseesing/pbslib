@@ -1,0 +1,7 @@
+#!/bin/bash
+
+cd /usr/share/teamspeak3
+
+./ts3client_runscript.sh $@
+
+exit $?

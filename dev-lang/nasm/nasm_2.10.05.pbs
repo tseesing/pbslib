@@ -1,0 +1,38 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="An 80x86 assembler designed for portability and modularity"
+HOMEPAGE="http://nasm.sourceforge.net/"
+LICENSE="BSD"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
+
+SRC_URI="http://www.nasm.us/pub/"$N"/releasebuilds/"$V"/"$N-$V".tar.bz2"
+CHECKSUM="d3c50875fd923b782749f883294336ed"
+
+RDEPEND="glibc"
+BDEPEND="perl"
+
+pbs_unpack() {
+    dounpack
+}
+
+pbs_config() {
+    config+=""
+    doconfig
+}
+
+pbs_build() {
+    domake
+    domake -C doc info
+}
+
+pbs_install() {
+    make INSTALLROOT="$destdir" install
+    docp doc/info/* "$destdir"/usr/share/info/
+    dodoc LICENSE
+}
+

@@ -1,0 +1,10 @@
+. /usr/lib/ybs/funcs
+
+post_install() {
+    douseradd -c "syslog user" -d "/dev/null" -s "/bin/false" -r "syslog"  
+}       
+
+post_remove() {
+    douserdel "syslog"
+}
+

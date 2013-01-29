@@ -1,0 +1,35 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="Excellent text file viewer"
+HOMEPAGE="http://www.greenwoodsoftware.com/less/"
+LICENSE="GPLv3"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
+
+SRC_URI="http://www.greenwoodsoftware.com/"$N"/"$N-$V".tar.gz"
+CHECKSUM="765f082658002b2b46b86af4a0da1842"
+
+RDEPEND="ncurses pcre"
+BDEPEND=""
+
+pbs_unpack() {
+    dounpack
+}
+
+pbs_config() {
+    config+="--with-regex=pcre"
+    doconfig
+}
+
+pbs_build() {
+    domake
+}
+
+pbs_install() {
+    domkinstall
+}
+

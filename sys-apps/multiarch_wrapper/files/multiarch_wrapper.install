@@ -1,0 +1,21 @@
+. /usr/lib/ybs/funcs
+
+post_install() {
+    cd /tmp
+    echo 'echo "32bit Version"' >$1-32
+    echo 'echo "64bit Version"' >$1-64
+    chmod 755 $1-32 $1-64
+    ln -sf /usr/bin/multiarch_wrapper $1
+    USE_ARCH=32 ./$1
+    USE_ARCH=64 ./$1
+    rm $1 $1-32 $1-64
+}
+
+post_upgrade() {
+    post_install
+}
+
+post_downgrade() {
+    post_install
+}
+

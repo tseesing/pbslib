@@ -1,0 +1,39 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="A QQ client based on gtk2 uses WebQQ protocol."
+HOMEPAGE="http://code.google.com/p/gtk2-qq/"
+LICENSE="GPL"
+PACKAGER="StartOS Developers"
+
+SRC_URI="git://github.com/kernelhcy/gtk2qq.git"
+
+RDEPEND="gst-plugins-base gtk2 sqlite"
+RECOMMENDED=""
+BDEPEND=""
+OPTIONAL=""
+CONFLICT=""
+
+INSTALL="$N.install"
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_config() {
+    config+=""
+    doconfig
+}
+
+pbs_build() {
+    domake
+}
+
+pbs_install() {
+    domkinstall
+}
+

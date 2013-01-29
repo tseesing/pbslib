@@ -1,0 +1,30 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="Bitstream Vera font family"
+HOMEPAGE="http://www.gnome.org/fonts/"
+LICENSE="Copyright (c) 2003 by Bitstream, Inc."
+PACKAGER="StartOS Developers"
+
+SRC_URI="http://ftp.osuosl.org/pub/gsb/gsb-2.30_slackware-13.1/source/t/"$N"/"$N-$V".tar.bz2"
+
+RDEPEND="mkfontdir fontconfig"
+BDEPEND=""
+RECOMMENDED=""
+
+INSTALL="$N.install"
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_install() {
+    docp *ttf "$destdir"/usr/share/fonts/ttf-bitstream-vera
+    docp_rename local.conf "$destdir"/etc/fonts/bitstream-vera.conf
+    dodoc COPYRIGHT* README* RELEASE* 
+}
+

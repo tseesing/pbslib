@@ -1,0 +1,45 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="A small and lightweight implementation of the XDG Sound Theme Specification"
+HOMEPAGE="http://0pointer.de/lennart/projects/libcanberra/"
+LICENSE="LGPL"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
+
+SRC_URI="http://0pointer.de/lennart/projects/"$N"/"$N-$V".tar.xz"
+
+RDEPEND="gstreamer pulseaudio libvorbis alsa-lib tdb"
+BDEPEND=""
+RECOMMENDED=""
+
+pbs_unpack() {
+    dounpack
+}
+
+pbs_config() {
+    config+="--disable-static 
+             --with-builtin=dso 
+             --enable-null 
+             --disable-oss 
+             --enable-alsa 
+             --enable-gstreamer 
+             --enable-pulse 
+             --with-systemdsystemunitdir=/usr/lib/systemd/system"
+    doconfig
+}
+
+pbs_build() {
+    # Fight unused direct deps
+    sed -i -e 's/ -shared / -Wl,-O1,--as-needed\0 /g' -e 's/    if test "$export_dynamic" = yes && test -n "$export_dynamic_flag_spec"; then/      func_append compile_command " -Wl,-O1,--as-needed"\n      func_append finalize_command " -Wl,-O1,--as-needed"\n\0/' libtool
+    domake
+}
+
+pbs_install() {
+    domkinstall
+    docp "$filesdir"/libcanberra "$destdir"/etc/X11/Xsession.d/
+}
+

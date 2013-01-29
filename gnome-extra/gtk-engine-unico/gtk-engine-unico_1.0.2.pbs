@@ -1,0 +1,36 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="Unico GTK3 theme engine"
+HOMEPAGE="https://launchpad.net/unico"
+LICENSE="GPL"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
+
+SRC_URI="https://launchpadlibrarian.net/98881788/unico-$V.tar.gz"
+CHECKSUM="19fb3ecc36d4d13b4a76e26a4ebd6412"
+
+RDEPEND="gtk3"
+BDEPEND="gnome-common"
+RECOMMENDED=""
+
+pbs_unpack() {
+    dounpack
+}
+
+pbs_config() {
+    config+="--disable-static"
+    doconfig
+}
+
+pbs_build() {
+    domake
+}
+
+pbs_install() {
+    domkinstall
+}
+

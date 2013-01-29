@@ -1,0 +1,55 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="Mesa classic DRI + Gallium3D drivers for Nouveau"
+HOMEPAGE="http://www.mesa3d.org/"
+LICENSE="custom"
+PACKAGER="StartOS Developers"
+GROUP="base"
+
+SRC_URI="ftp://ftp.freedesktop.org/pub/mesa/"$V"/MesaLib-"$V".tar.bz2" 
+CHECKSUM="d546f988adfdf986cff45b1efa2d8a46"
+
+RDEPEND="mesa(>=8.0.4) libdrm-nouveau1"
+BDEPEND="libdrm-old"
+
+pbs_unpack() {
+    dounpack
+}
+
+pbs_config() {
+    config+=" --with-gallium-drivers=nouveau
+              --with-dri-drivers=nouveau 
+          --enable-gallium-llvm 
+          --enable-gallium-egl 
+          --enable-shared-glapi 
+          --enable-gbm 
+          --enable-glx-tls 
+          --enable-dri 
+          --enable-glx 
+          --enable-osmesa 
+          --enable-gles1 
+          --enable-gles2 
+          --enable-egl 
+          --enable-texture-float 
+          --enable-xa 
+          --enable-shared-dricore "
+    autoreconf -vfi     
+    doconfig
+}
+
+pbs_build() {
+    make "$MAKEOPTS"
+}
+
+pbs_install() {
+    # classic mesa driver for nv10 , nv20 nouveau_vieux_dri.so
+    make -C src/mesa/drivers/dri/nouveau DESTDIR="${destdir}" install
+    # gallium3D driver for nv30 - nv40 - nv50 nouveau_dri.so
+    make -C src/gallium/targets/dri-nouveau DESTDIR="${destdir}" install
+}
+

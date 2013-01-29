@@ -1,0 +1,39 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="IBus module for Vietnamese Keyboard"
+HOMEPAGE="http://code.google.com/p/ibus-unikey/"
+LICENSE="GPL"
+PACKAGER="StartOS Developers"
+GROUP="ibus"
+
+SRC_URI="http://ibus-unikey.googlecode.com/files/"$N-$V".tar.gz"
+CHECKSUM="3bae6df0d4609a8c438c246030b9a61e"
+
+RDEPEND="ibus"
+RECOMMENDED=""
+BDEPEND=""
+OPTIONAL=""
+CONFLICT=""
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_config() {
+    config+=""
+    doconfig
+}
+
+pbs_build() {
+    domake
+}
+
+pbs_install() {
+    domkinstall
+}
+

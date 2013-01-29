@@ -1,0 +1,41 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="A Perl wrapper for SDL"
+HOMEPAGE="http://search.cpan.org/"
+REPO=""
+LICENSE="GPL"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
+
+SRC_URI="http://cpan.communilink.net/authors/id/K/KT/KTHAKORE/SDL_Perl-v2.2.6.tar.gz"
+
+RDEPEND=""
+BDEPEND="yaml-perl"
+RECOMMENDED=""
+CONFLICT=""
+
+NOTES=""
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_config() {
+    # install module in vendor directories
+    perl Build.PL installdirs=vendor destdir="$destdir" \
+          --config man1ext=1p --config man3ext=3pm 
+}    
+
+pbs_build() {
+    perl Build
+}
+
+pbs_install() {
+    perl Build install
+    perl_cleanup
+}
+

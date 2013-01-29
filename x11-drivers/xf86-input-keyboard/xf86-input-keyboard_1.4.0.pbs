@@ -1,0 +1,34 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="Keyboard input driver"
+HOMEPAGE="http://xorg.freedesktop.org/"
+LICENSE="GPL-2"
+PACKAGER="StartOS Developers"
+GROUP="x11-drivers"
+SRC_URI="http://www.x.org/releases/X11R7.5/src/driver/"$N-$V$R".tar.bz2"
+
+RDEPEND="libdrm libXvMC libXv libXext libXfixes libX11 libxcb libXau libXdmcp pixman libpciaccess libXtst"
+BDEPEND=" x11-base/xorg-server"
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_config() {
+    
+    doconfig
+}
+
+pbs_build() {
+    domake
+}
+
+pbs_install() {
+    domkinstall
+    #
+}

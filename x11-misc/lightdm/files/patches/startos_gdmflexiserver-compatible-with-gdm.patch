@@ -1,0 +1,46 @@
+diff -ur lightdm-1.3.2/utils/gdmflexiserver lightdm-1.3.2.new//utils/gdmflexiserver
+--- lightdm-1.3.2/utils/gdmflexiserver	2011-12-09 01:51:23.000000000 +0000
++++ lightdm-1.3.2.new//utils/gdmflexiserver	2012-07-16 16:51:12.679899082 +0000
+@@ -9,9 +9,39 @@
+ #
+ # See http://www.gnu.org/copyleft/gpl.html for the full text of the license.
+ 
++export LIGHTDMRUN=0
++export GDMRUN=0
++
++pid_match() {
++	local pid
++	for pid in $@; do
++		[[ $pid = $LPIDF ]] && return 0
++	done
++	return 1
++}
++
++if [ -e "/var/run/lightdm.pid" ]; then
++	PID=$(cat /var/run/lightdm.pid) 
++	pid_match $(pidof lightdm) || LIGHTDMRUN=1
++fi
++
++if [ -e "/var/run/gdm.pid" ]; then
++	PID=$(cat /var/run/gdm.pid)
++	pid_match $(pidof gdm-binary) || GDMRUN=1
++fi
++
+ if [ -z "$XDG_SEAT_PATH" ]; then
+-  # something went wrong
+-  exit 1
++	exit 1
++fi
++
++if [[ $LIGHTDMRUN -eq 1 ]]; then
++	echo "lightdm is running..."
++	dbus-send --system --type=method_call --print-reply --dest=org.freedesktop.DisplayManager $XDG_SEAT_PATH org.freedesktop.DisplayManager.Seat.SwitchToGreeter
++elif [[ $GDMRUN -eq 1 ]]; then
++	echo "gdm is running..."
++	dbus-send --system --type=method_call --print-reply --dest=org.gnome.DisplayManager /org/gnome/DisplayManager/LocalDisplayFactory  org.gnome.DisplayManager.LocalDisplayFactory.CreateTransientDisplay
++else
++    exit 2
+ fi
+ 
+-dbus-send --system --type=method_call --print-reply --dest=org.freedesktop.DisplayManager $XDG_SEAT_PATH org.freedesktop.DisplayManager.Seat.SwitchToGreeter
++exit 0

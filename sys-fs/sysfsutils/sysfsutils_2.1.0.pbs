@@ -1,0 +1,37 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="System Utilities Based on Sysfs"
+HOMEPAGE="http://linux-diag.sourceforge.net/Sysfsutils.html"
+LICENSE="GPL,LGPL"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
+
+SRC_URI="http://downloads.sourceforge.net/linux-diag/"$N-$V".tar.gz"
+CHECKSUM="14e7dcd0436d2f49aa403f67e1ef7ddc"
+
+RDEPEND="glibc"
+BDEPEND=""
+RECOMMENDED=""
+
+pbs_unpack() {
+    dounpack
+}
+
+pbs_config() {
+    config+=""
+    doconfig
+}
+
+pbs_build() {
+    domake
+}
+
+pbs_install() {
+    domkinstall
+    rm "$destdir"/usr/lib"$LIBDIRSUFFIX"/libsysfs.a
+}
+

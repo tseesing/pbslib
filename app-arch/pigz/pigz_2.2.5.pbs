@@ -1,0 +1,37 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="A parallel implementation of gzip"
+HOMEPAGE="http://www.zlib.net/pigz"
+LICENSE="custom"
+PACKAGER="StartOS Developers"
+
+SRC_URI="http://www.zlib.net/"$N"/"$N-$V".tar.gz"
+CHECKSUM="188f769ccedc403893d03049ad31e969"
+
+RDEPEND="zlib"
+RECOMMENDED=""
+BDEPEND=""
+OPTIONAL=""
+CONFLICT=""
+REPLACE=""
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_build() {
+    domake
+}
+
+pbs_install() {
+    install -Dm755 "$N" "$destdir"/usr/bin/"$N"
+    doman "$N".1
+    dodoc "$N".pdf README
+    doln /usr/bin/pigz "$destdir"/usr/bin/unpigz
+}
+

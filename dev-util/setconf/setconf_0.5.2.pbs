@@ -1,0 +1,32 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="Utility to easily change settings in configuration files or Makefiles"
+HOMEPAGE="http://setconf.roboticoverlords.org"
+LICENSE="any"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
+YARCH="any"
+
+SRC_URI="http://setconf.roboticoverlords.org/$N-$V.tbz2"
+CHECKSUM="3225a5392becbe6d679075be9ddd78e2c737d8158920c2f242f95d0765cfb250"
+
+RDEPEND="python"
+RECOMMENDED=""
+BDEPEND=""
+OPTIONAL=""
+CONFLICT=""
+REPLACE=""
+
+pbs_unpack() {
+    dounpack
+}
+
+pbs_install() {
+    install -Dm755 "$N".py "$destdir"/usr/bin/"$N"
+    install -Dm644 "$N".1.gz "$destdir"/usr/share/man/man1/"$N".1.gz
+}
+

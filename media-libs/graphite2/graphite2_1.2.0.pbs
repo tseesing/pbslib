@@ -1,0 +1,44 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="Font rendering engine for Complex Scripts"
+HOMEPAGE="http://graphite.sil.org/"
+LICENSE="LGPL,GPL,custom"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
+
+SRC_URI="http://sourceforge.net/projects/silgraphite/files/"$N"/"$N-$V".tgz"
+CHECKSUM="f5ef3f7f10fa8c3542c6a085a233080b"
+
+RDEPEND="gcc-libs"
+BDEPEND="cmake freetype python"
+RECOMMENDED=""
+CONFLICT=""
+
+OPTIONS="noccache"
+
+pbs_unpack() {
+    dounpack
+}
+
+pbs_patch() {
+    sed -i 's/${LIB_SUFFIX}/'"$LIBDIRSUFFIX"'/g' CMakeLists.txt src/CMakeLists.txt
+}
+
+pbs_config() {
+    config+=""
+    doconfig -G \"Unix Makefiles\"
+}
+
+pbs_build() {
+    domake
+}
+
+pbs_install() {
+    domkinstall
+    dodoc ../COPYING
+}
+

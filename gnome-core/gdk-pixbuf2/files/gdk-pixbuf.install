@@ -1,0 +1,16 @@
+. /usr//lib/ybs/func
+
+cachefile=/usr/lib"$LIBDIRSUFFIX"/gdk-pixbuf-2.0/2.10.0/loaders.cache
+
+post_install() {
+    gdk-pixbuf-query-loaders >$cachefile
+}
+
+post_remove() {
+    rm $cachefile || true
+}
+
+post_upgrade() {
+    post_install
+}
+

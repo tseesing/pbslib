@@ -1,0 +1,46 @@
+
+post_install() {
+    # For initramfs
+    name="$1"
+    version="$2"
+    depmod -a "$version"
+    URAMFS_CMD=$(type -p update-initramfs)
+    if [ -n $URAMFS_CMD -a -x $URAMFS_CMD ]; then
+        ${URAMFS_CMD} -d -c -k "$version"
+    else
+        echo "Note: you should install \"initramfs-tools\" to generate the \"initrd.img\" file."
+    fi
+    unset URAMFS_CMD
+    # For grub
+    UGRUB_CMD=$(type -p update-grub)
+    if [ -n ${UGRUB_CMD} -a -x ${UGRUB_CMD} ]; then
+            ${UGRUB_CMD}
+    else
+        echo "Note: you should install \"grub2\" , and executing command \"update-grub\" to update the grub2 configuration file."
+    fi
+    unset UGRUB_CMD 
+}       
+
+post_remove() {
+    name="$1"
+    version="$2"
+    rm /boot/initrd.img-"$version"         2>/dev/null
+    rm /var/lib/initramfs-tools/"$version" 2>/dev/null ||true
+}
+
+post_upgrade() {
+    name=$1
+    new_ver="$2"
+    old_ver="$3"
+    rm -rf /var/lib/initramfs-tools/"$old_ver" 2>/dev/null
+    #
+    mkdir -p /var/run/ypkg/
+    echo "reboot=yes" >/var/run/ypkg/event
+    #
+    post_install $name $new_ver
+}
+
+post_downgrade() {
+    post_upgrade
+}
+

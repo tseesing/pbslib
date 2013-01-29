@@ -1,0 +1,34 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="Free, open source software for digital DJing."
+HOMEPAGE="http://www.mixxx.org/"
+LICENSE="GPL"
+PACKAGER="StartOS Developers"
+
+SRC_URI="http://downloads.mixxx.org/"$N-$V"/"$N-$V"-src.tar.gz"
+CHECKSUM="765bc5216ec8102c2186dd3ea80187a9"
+
+RDEPEND=""
+RECOMMENDED=""
+BDEPEND=""
+OPTIONAL=""
+CONFLICT=""
+REPLACE=""
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_build() {
+    scons prefix=/usr install_root="$destdir"/usr
+}
+
+pbs_install() {
+    scons prefix=/usr install_root="$destdir"/usr install
+}
+

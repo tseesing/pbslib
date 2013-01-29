@@ -1,0 +1,42 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="An open-source, multi-platform flight simulator"
+HOMEPAGE="http://www.flightgear.org"
+LICENSE="GPL"
+PACKAGER="StartOS Developers"
+
+SRC_URI="http://mirrors.ibiblio.org/pub/mirrors/flightgear/ftp/Source/"$N-$V".tar.bz2"
+CHECKSUM="9499194146f414323efef8cb3451b750"
+
+RDEPEND="flightgear-data fltk freealut freeglut openscenegraph subversion systemd mesa"
+RECOMMENDED=""
+BDEPEND="cmake"
+OPTIONAL=""
+CONFLICT=""
+
+INSTALL="$N.install"
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_config() {
+    cmake . -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_INSTALL_LIBDIR=lib -DFG_DATA_DIR:STRING="/usr/share/flightgear/data"
+}
+
+pbs_build() {
+    domake
+    sed -i 's|Exec=.*|Exec=fgfs --fg-root=/usr/share/flightgear/data|' package/flightgear.desktop
+}
+
+pbs_install() {
+    domkinstall
+    dodesktop package/flightgear.desktop package/flightgear.ico
+    ln -sf flightgear "$destdir"/usr/share/FlightGear
+}
+

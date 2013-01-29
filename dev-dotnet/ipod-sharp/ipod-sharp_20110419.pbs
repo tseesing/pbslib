@@ -1,0 +1,36 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="ipod-sharp provides high-level feature support for Apple's iPod and binds libipoddevice."
+HOMEPAGE="http://banshee-project.org/Ipod-sharp"
+LICENSE="GPL"
+PACKAGER="StartOS Developers"
+
+SRC_URI="git://github.com/mono/ipod-sharp.git"
+
+RDEPEND=""
+BDEPEND="podsleuth"
+RECOMMENDED=""
+CONFLICT=""
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_config() {
+    config+=""
+    doconfig
+}
+
+pbs_build() {
+    domake
+}
+
+pbs_install() {
+    domkinstall
+}
+

@@ -1,0 +1,7 @@
+
+* 2013-01-28 Tseesing <chenqixing@ivali.com> - 3.6.2
+-   Set RDEPEND from "libcanberra gnome-session gnome-settings-daemon 
+-       metacity upower accountsservice systemd nss polkit-gnome xorg-server"
+-     TO: "accountsservice libcanberra upower"
+
+

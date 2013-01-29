@@ -1,0 +1,43 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="guess media type for a file or a URL"
+HOMEPAGE="https://metacpan.org/release/$N"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
+LICENSE="GPL,PerlArtistic"
+YARCH="any"
+
+SRC_URI="http://cpan.communilink.net/authors/id/G/GA/GAAS/"$N-$V".tar.gz"
+CHECKSUM="8c5f25fb64b974d22aff424476ba13c9"
+
+RDEPEND="perl"
+BDEPEND=""
+RECOMMENDED=""
+CONFLICT=""
+
+pbs_unpack() {
+    dounpack
+}
+
+pbs_config() {
+    export PERL_MM_USE_DEFAULT=1 PERL5LIB="" \
+           PERL_AUTOINSTALL=--skipdeps \
+           PERL_MM_OPT="INSTALLDIRS=vendor DESTDIR='$destdir'"     \
+           PERL_MB_OPT="--installdirs vendor --destdir '$destdir'" \
+           MODULEBUILDRC=/dev/null
+    doconfig
+}
+
+pbs_build() {
+    domake
+}
+
+pbs_install() {
+    domkinstall
+    perl_cleanup
+}
+

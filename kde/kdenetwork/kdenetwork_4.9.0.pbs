@@ -1,0 +1,39 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="KDE Network"
+HOMEPAGE="http://www.kde.org"
+LICENSE="GPL,LGPL,FDL"
+PACKAGER="StartOS Developers<>"
+GROUP="kde"
+
+SRC_URI="http://download.kde.org/stable/"$V"/src/"$N-$V".tar.xz"
+
+RDEPEND="jasper kde-baseapps kde-workspace libgadu libidn libktorrent libmms libmsn libotr libvncserver libxslt meanwhile mediastreamer telepathy-qt"
+BDEPEND="cmake automoc4"
+
+INSTALL="$N.install"
+
+pbs_unpack() {
+       dounpack
+}
+
+pbs_config() {
+    doconfig -DCMAKE_BUILD_TYPE=Release \
+         -DCMAKE_SKIP_RPATH=ON \
+         -DMOZPLUGIN_INSTALL_DIR=/usr/lib/mozilla/plugins/  \
+         -DWITH_Xmms=OFF 
+}
+
+pbs_build() {
+    domake
+}
+
+pbs_install() {
+    domkinstall
+}
+

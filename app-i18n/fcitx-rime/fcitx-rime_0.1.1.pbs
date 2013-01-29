@@ -1,0 +1,37 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="rime wrapper for Fcitx."
+HOMEPAGE="http://code.google.com/p/fcitx/"
+LICENSE="GPLv2"
+PACKAGER="StartOS Developers"
+GROUP="fcitx"
+
+SRC_URI="http://fcitx.googlecode.com/files/"$N-$V".tar.xz"
+CHECKSUM="e71a915f29b1c3ba23b8bbce6640ddaa7afb9b1c"
+
+RDEPEND="fcitx librime"
+BDEPEND="cmake"
+RECOMMENDED=""
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_config() {
+    config+="-DCMAKE_BUILD_TYPE=Release"
+    doconfig
+}
+
+pbs_build() {
+    domake
+}
+
+pbs_install() {
+    domkinstall
+}
+

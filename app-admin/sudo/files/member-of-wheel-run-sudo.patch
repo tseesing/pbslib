@@ -1,0 +1,11 @@
+--- ./plugins/sudoers/sudoers.in	2010-08-18 19:45:38.000000000 +0800
++++ ./plugins/sudoers/sudoers.in.new	2011-03-02 14:41:24.428608957 +0800
+@@ -72,7 +72,7 @@
+ root ALL=(ALL) ALL
+ 
+ ## Uncomment to allow members of group wheel to execute any command
+-# %wheel ALL=(ALL) ALL
++%wheel ALL=(ALL) ALL
+ 
+ ## Same thing without a password
+ # %wheel ALL=(ALL) NOPASSWD: ALL

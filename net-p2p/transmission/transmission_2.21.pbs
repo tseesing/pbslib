@@ -1,0 +1,36 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="A Fast, Easy and Free BitTorrent client"
+HOMEPAGE="http://www.transmissionbt.com/"
+LICENSE="GPL"
+PACKAGER="StartOS Developers"
+
+SRC_URI="http://download.transmissionbt.com/files/"$N-$V".tar.bz2"
+
+RDEPEND="atk cairo curl cyrus-sasl dbus dbus-glib expat fontconfig freetype gcc-libs gconf glib2 gdk-pixbuf2 glibc gtk2 libcanberra libevent libnotify libogg libpng libtool libvorbis libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libXrandr libXrender openldap openssl orbit pango pixman zlib"
+BDEPEND=""
+RECOMMENDED=""
+
+INSTALL="$N.install"
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_config() {
+    doconfig
+}
+
+pbs_build() {
+    domake
+}
+
+pbs_install() {
+    domkinstall
+}
+

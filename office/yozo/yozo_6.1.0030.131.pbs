@@ -1,0 +1,31 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="Fully Functional Office Suite"
+HOMEPAGE="http://www.yozosoft.com"
+LICENSE="custom"
+PACKAGER="StartOS Developers"
+
+SRC_URI="http://download.yozosoft.com/free/zh/2012/Yozo_Office_"${V}"ZH.deb"
+CHECKSUM="9ad8be00ee45a1a60ad52fac19a6a55a"
+
+RDEPEND="alsa-lib glibc libtool libX11 libXau libxcb libXdmcp libXext libXi libXtst unixodbc"
+RECOMMENDED=""
+BDEPEND=""
+OPTIONAL=""
+CONFLICT="eio"
+
+INSTALL="$N.install"
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_install() {
+    docp data/*  "$destdir"
+}
+

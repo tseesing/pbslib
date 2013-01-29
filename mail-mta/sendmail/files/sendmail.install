@@ -1,0 +1,28 @@
+. /usr/lib/ybs/funcs
+
+post_install() {
+    dogroupadd -r -g 209 smmsp
+    douseradd -r -c smmsp -u 209 -d /var/spool/mqueue smmsp
+            
+    chown root:smmsp /usr/sbin/sendmail
+    chown smmsp:smmsp /var/spool/clientmqueue
+    chmod 2555 /usr/sbin/sendmail
+    chmod 770 /var/spool/clientmqueue
+    chmod 700 /var/spool/mqueue
+    
+    doln /usr/sbin/makemap /usr/bin/makemap
+}
+
+pre_remove() {
+    douserdel -r smmsp
+    dogroupdel smmsp
+}
+
+post_upgrade() {
+    post_install
+}
+
+post_downgrade() {
+    post_install
+}
+

@@ -1,0 +1,38 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="Libraries/utilities to handle ELF objects (drop in replacement for libelf)"
+HOMEPAGE="https://fedorahosted.org/elfutils/"
+LICENSE="GPL,LGPL"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
+
+SRC_URI="https://fedorahosted.org/releases/e/l/"$N"/"$V"/"$N-$V".tar.bz2"
+CHECKSUM="1b96084cd9fe037c1c0bd2c280aaa701f913462b"
+
+RDEPEND="bzip2 gcc-libs glibc xz zlib"
+RECOMMENDED=""
+BDEPEND=""
+OPTIONAL=""
+REPLACE="libelf"
+
+pbs_unpack() {
+    dounpack
+}
+
+pbs_config() {
+    config+="--program-prefix="eu-""
+    doconfig
+}
+
+pbs_build() {
+    domake
+}
+
+pbs_install() {
+    domkinstall
+}
+

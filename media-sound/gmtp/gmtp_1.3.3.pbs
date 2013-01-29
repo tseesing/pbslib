@@ -1,0 +1,44 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="simple MP3 player client for MTP based devices"
+HOMEPAGE="http://gmtp.sourceforge.net/"
+LICENSE="GPL"
+PACKAGER="StartOS Developers"
+
+SRC_URI="http://sourceforge.net/projects/"$N"/files/gMTP-"$V"/"$N-$V"-i386.tar.gz"
+CHECKSUM="c1390fd53a5ee0e5a0407c47480e2341"
+
+RDEPEND="flac gconf libid3tag libmtp libvorbis"
+RECOMMENDED=""
+BDEPEND=""
+OPTIONAL=""
+CONFLICT=""
+REPLACE=""
+
+INSTALL="$N.install"
+
+DESKTOPFILE="gMTP.desktop"
+ICONFILE="gMTPicon.png"
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_config() {
+    config+=""
+    doconfig
+}
+
+pbs_build() {
+    domake
+}
+
+pbs_install() {
+    domkinstall PREFIX=/usr
+}
+

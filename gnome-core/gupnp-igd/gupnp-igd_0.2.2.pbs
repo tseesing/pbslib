@@ -1,0 +1,37 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="An object-oriented framework for creating UPnP devs and control points."
+HOMEPAGE="http://gupnp.org/"
+LICENSE="LGPL"
+PACKAGER="chenqixing@ivali.com
+          Zhongxin Huang <huangzhongxin@ivali.com>"
+
+SRC_URI="http://ftp.acc.umu.se/pub/gnome/sources/$N/${V%.*}/$N-$V.tar.xz"
+CHECKSUM="73b6a98a0f13b29b34c3bfc07f99f78b1319211cb95a8585752873af2b9067d3"
+
+RDEPEND="gupnp"
+RECOMMENDED=""
+BDEPEND="gettext"
+
+pbs_unpack() {
+    dounpack
+}
+
+pbs_config() {
+    config+=""
+    doconfig
+}
+
+pbs_build() {
+    domake
+}
+
+pbs_install() {
+    domkinstall
+}
+

@@ -1,0 +1,38 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="A log-structured file system supporting continuous snapshotting (userspace utils)"
+HOMEPAGE="http://www.nilfs.org/"
+LICENSE="GPL,LGPL"
+PACKAGER="StartOS Developers"
+
+SRC_URI="http://www.nilfs.org/download/"$N-$V".tar.bz2"
+CHECKSUM="a32e25413ad3e2183e23569e9d621e8f"
+
+RDEPEND=""
+RECOMMENDED=""
+BDEPEND=""
+OPTIONAL=""
+CONFLICT=""
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_config() {
+    config+="--enable-libmount=yes"
+    doconfig
+}
+
+pbs_build() {
+    domake
+}
+
+pbs_install() {
+    domkinstall LDCONFIG=/bin/true
+}
+

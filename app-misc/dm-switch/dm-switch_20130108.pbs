@@ -1,0 +1,25 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="dm-switch: dm (display manager) manage tool."
+HOMEPAGE="http://www.startos.org"
+LICENSE="GPL"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
+
+SRC_URI=""
+
+RDEPEND="bash systemd"
+RECOMMENDED=""
+BDEPEND=""
+OPTIONAL=""
+CONFLICT=""
+
+pbs_install() {
+    docp "$filesdir"/"$N" "$destdir"/usr/bin/
+    docp "$filesdir"/"$N".conf "$destdir"/etc/"$N"/
+}
+

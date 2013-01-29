@@ -1,0 +1,47 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="Utility used to store, backup, and transport files"
+HOMEPAGE="http://www.gnu.org/software/tar/"
+LICENSE="GPLv3"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
+
+SRC_URI="http://ftp.gnu.org/gnu/tar/"$N-$V".tar.xz"
+CHECKSUM="0ced6f20b9fa1bea588005b5ad4b52c1"
+
+RDEPEND="glibc"
+BDEPEND=""
+
+INSTALL="$N.install"
+
+pbs_unpack() {
+    dounpack
+}
+
+pbs_patch() {
+    # fix build failure with glibc-2.16
+    sed -i -e '/gets is a/d' gnu/stdio.in.h
+}
+
+pbs_config() {
+    # Run configure as root is not recommended, bypass this check. 
+    export FORCE_UNSAFE_CONFIGURE=1
+    config+=""
+    doconfig
+}
+
+pbs_build() {
+    domake
+}
+
+pbs_install() {
+    domkinstall
+    doman tar.1
+    # Conflict against cpio
+    mv "$destdir"/usr/libexec/rmt{,-tar}
+}
+

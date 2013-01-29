@@ -1,0 +1,37 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="Anthy -- free and secure Japanese input system"
+HOMEPAGE="http://sourceforge.jp/projects/anthy/"
+LICENSE="GPL,LGPL"
+PACKAGER="StartOS Developers"
+
+SRC_URI="http://jaist.dl.sourceforge.jp/"$N"/37536/"$N-$V"h.tar.gz"
+CHECKSUM="1f558ff7ed296787b55bb1c6cf131108"
+
+RDEPEND="glibc"
+RECOMMENDED=""
+BDEPEND=""
+CONFLICT=""
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_config() {
+    config+=""
+    doconfig
+}
+
+pbs_build() {
+    domake
+}
+
+pbs_install() {
+    domkinstall
+}
+

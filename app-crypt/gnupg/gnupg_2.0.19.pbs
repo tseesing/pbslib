@@ -1,0 +1,44 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="Complete and free implementation of the OpenPGP standard"
+HOMEPAGE="http://www.gnupg.org/"
+LICENSE="GPL"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
+ 
+SRC_URI="ftp://ftp.gnupg.org/gcrypt/"$N"/"$N-$V".tar.bz2"
+CHECKSUM="190c09e6688f688fb0a5cf884d01e240d957ac1f"
+
+RDEPEND="bzip2 libksba libgcrypt pth libassuan readline pinentry dirmngr"
+BDEPEND="curl openldap libusb-compat"
+REPLACE="gnupg2"
+OPTIONAL="curl: gpg2keys_curl
+          libldap: gpg2keys_ldap
+          libusb-compat: scdaemon"
+
+INSTALL="$N.install"
+
+pbs_unpack() {
+    dounpack
+}
+
+pbs_config() {
+    doconfig
+}
+
+pbs_build() {
+    domake
+}
+
+pbs_install() {
+    domkinstall
+    cd "$destdir"
+    doln /usr/bin/gpg2 usr/bin/gpg
+    doln /usr/bin/gpg2 usr/bin/gpgv
+    doln /usr/share/man/man1/gpg2.1.gz usr/share/man/man1/gpg.1.gz
+}
+

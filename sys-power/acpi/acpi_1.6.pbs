@@ -1,0 +1,40 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="Attempts to replicate the functionality of the 'old' apm command on ACPI systems"
+HOMEPAGE="http://sourceforge.net/projects/acpiclient"
+LICENSE="GPL"
+PACKAGER="StartOS Developers"
+
+SRC_URI="http://downloads.sourceforge.net/acpiclient/"$N-$V".tar.gz"
+CHECKSUM="ed61d20400c4fd3965dde9b49ab3ac74da02f8eca1a55454f7a1ac3fa1fd5c31"
+
+RDEPEND="glibc"
+RECOMMENDED=""
+BDEPEND=""
+OPTIONAL=""
+CONFLICT=""
+REPLACE=""
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_config() {
+    config+=""
+    doconfig
+}
+
+pbs_build() {
+    domake
+}
+
+pbs_install() {
+    domkinstall
+}
+
+

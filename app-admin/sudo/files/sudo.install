@@ -1,0 +1,19 @@
+. /usr/lib/ybs/funcs 
+
+post_install() {
+    # Add wheel group for sudo
+    dogroupadd -r "wheel"
+    #
+    chmod 755 /var/db/sudo/
+    chown root:root /var/db/sudo/
+}
+
+post_remove () {
+    dogroupdel "wheel"
+    rm -rf /var/db/sudo/ ||return 0
+}
+
+post_upgrade() {
+    post_install
+}
+

@@ -1,0 +1,47 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="A game similar to Super Mario Bros."
+COMMENTS="SuperTux is a classic 2D jump'n run sidescroller game in a style similar to the original Super Mario games covered under the GPL."
+HOMEPAGE="http://super-tux.sourceforge.net"
+LICENSE="GPL"
+PACKAGER="StartOS Developers"
+
+SRC_URI="http://download.berlios.de/supertux/"$N-$V".tar.bz2"
+CHECKSUM="f3f803e629ee51a9de0b366a036e393d"
+
+RDEPEND="curl glew libvorbis openal physfs sdl-image"
+RECOMMENDED=""
+BDEPEND="cmake"
+OPTIONAL=""
+CONFLICT=""
+
+INSTALL="$N.install"
+
+DESKTOPFILE="supertux2.desktop"
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_patch() {
+    sed -i '1i#include <cstddef>' src/supertux/screen_manager.hpp
+    sed -i '/types\.h/d' src/addon/addon_manager.cpp
+}
+
+pbs_config() {
+    cmake -D CMAKE_INSTALL_PREFIX=/usr -D INSTALL_SUBDIR_BIN=bin .
+}
+
+pbs_build() {
+    domake
+}
+
+pbs_install() {
+    domkinstall
+}
+

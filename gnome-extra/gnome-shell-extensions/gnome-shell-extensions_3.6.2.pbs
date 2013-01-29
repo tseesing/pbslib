@@ -1,0 +1,43 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="User-created extensions for the GNOME Shell environment"
+HOMEPAGE="http://git.gnome.org/browse/gnome-shell-extensions"
+LICENSE="GPL+"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
+
+SRC_URI="git://git.gnome.org/gnome-shell-extensions.git"
+
+RDEPEND="gnome-shell"
+RECOMMENDED=""
+BDEPEND="git gnome-common intltool"
+OPTIONAL=""
+CONFLICT=""
+REPLACE=""
+
+INSTALL="$N.install"
+
+pbs_unpack() {
+    dounpack
+}
+
+pbs_patch() {
+    git checkout "$V"
+}
+
+pbs_config() {
+    config+="--disable-schemas-compile --enable-extensions=all"
+    doconfig
+}
+
+pbs_build() {
+    domake
+}
+
+pbs_install() {
+    domkinstall
+}

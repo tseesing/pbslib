@@ -1,0 +1,47 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="latest member of the clearlooks family"
+HOMEPAGE="http://www.gnome-look.org/content/show.php/Aurora+Gtk+Engine?content=56438"
+LICENSE="GPL"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
+
+SRC_URI="http://www.gnome-look.org/CONTENT/content-files/56438-aurora-$V.tar.bz2"
+CHECKSUM="5eeea57c5938306ad7ccfc7cd71d009d"
+
+RDEPEND="gtk2"
+RECOMMENDED=""
+BDEPEND="pkgconfig"
+OPTIONAL=""
+CONFLICT=""
+REPLACE=""
+
+pbs_unpack() {
+    dounpack
+}
+
+pbs_patch() {
+    tar xzf aurora-gtk-engine-1.5.tar.gz 
+    cd aurora-1.5
+}
+
+pbs_config() {
+    config+="--enable-animation"
+    doconfig
+}
+
+pbs_build() {
+    make
+}
+
+pbs_install() {
+    domkinstall
+    tar xf ../Aurora.tar.bz2
+    docp Aurora "$destdir"/usr/share/themes
+    chown -R root:root "$destdir"/usr/share/themes
+}
+

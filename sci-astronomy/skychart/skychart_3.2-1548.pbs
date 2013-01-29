@@ -1,0 +1,30 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="This program enables you to draw sky charts, making use of the data in 16 catalogs of stars and nebulae. In addition the position of planets, asteroids and comets are shown."
+HOMEPAGE="http://www.ap-i.net/skychart/"
+LICENSE="GPL"
+PACKAGER="StartOS Developers"
+
+SRC_URI="http://nchc.dl.sourceforge.net/project/skychart/1-%20cdc-skychart/version%203.2/"${N}_$V${R}"_i386.deb"
+
+RDEPEND="gtk2"
+BDEPEND=""
+RECOMMENDED=""
+CONFLICT=""
+
+INSTALL="$N.install"
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_install() {
+    docp data/*  "$destdir"
+    sed -i 's/\.\./\/usr\/share/g' "$destdir"/usr/share/applications/skychart.desktop
+}
+

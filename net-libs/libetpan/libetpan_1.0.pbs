@@ -1,0 +1,37 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="libEtPan! is a mail purpose library. It will be used for low-level mail handlings"
+HOMEPAGE="http://libetpan.sourceforge.net/"
+LICENSE="custom:etpan"
+PACKAGER="StartOS Developers"
+
+SRC_URI="http://downloads.sourceforge.net/project/"$N"/"$N"/"$V"/"$N-$V".tar.gz"
+
+RDEPEND="openldap berkeley-db curl cyrus-sasl expat gcc-libs glibc gnutls libgcrypt libgpg-error libidn libssh2 libtasn1 openssl rtmpdump zlib"
+BDEPEND=""
+RECOMMENDED=""
+CONFLICT=""
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_config() {
+    config+=""
+    doconfig
+}
+
+pbs_build() {
+    domake
+}
+
+pbs_install() {
+    domkinstall
+    dodoc COPYRIGHT
+}
+

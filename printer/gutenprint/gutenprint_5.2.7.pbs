@@ -1,0 +1,60 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="High quality drivers for Canon, Epson, Lexmark, Sony, Olympus, and PCL printers for use with CUPS, Ghostscript, Foomatic, and GIMP."
+HOMEPAGE="http://gimp-print.sourceforge.net/"
+REPO=""
+LICENSE="GPL"
+PACKAGER="StartOS Developers"
+
+SRC_URI="http://nchc.dl.sourceforge.net/project/gimp-print/"$N"-5.2/"$V"/"$N-$V".tar.bz2"
+
+RDEPEND="readline gnutls"
+BDEPEND="cups-dev ghostscript-dev gimp-dev"
+RECOMMENDED=""
+CONFLICT=""
+
+OPIONAL="cups:          to use cups printer spooler(recommended)
+         foomatic-db-engine:    to use foomatic spooler
+     ghostscript: adds postscript support for ijsgutenprint
+     gimp:          adds gutenprint plugin to gimp"
+
+INSTALL="$N.install"
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_config() {
+    config+="--disable-samples
+                 --with-cups
+             --with-gimp2
+             --disable-translated-cups-ppds
+             --with-gimp2-as-gutenprint
+             --disable-libgutenprintui
+             --enable-libgutenprintui2
+             --disable-gtktest
+             --enable-cups-ppds
+             --enable-cups-ppds-at-top-level
+             --with-foomatic
+             --with-foomatic3
+             --with-ghostscript
+             --disable-static
+             --disable-static-genppd
+             --with-ijs
+             --disable-globalized-cups-ppds"
+    doconfig
+}
+
+pbs_build() {
+    domake
+}
+
+pbs_install() {
+    domkinstall
+}
+

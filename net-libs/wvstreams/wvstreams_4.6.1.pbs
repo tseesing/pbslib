@@ -1,0 +1,44 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="A network programming library in C++"
+HOMEPAGE="http://code.google.com/p/wvstreams/"
+LICENSE="GPL"
+PACKAGER="StartOS Developers"
+
+SRC_URI="http://wvstreams.googlecode.com/files/"$N-$V".tar.gz"
+
+RDEPEND="dbus gcc-libs openssl pam readline"
+BDEPEND=""
+RECOMMENDED=""
+CONFLICT=""
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_patch() {
+    dopatch wvstreams-4.6.1-parallel-make.patch wvstreams-4.6.1-openssl-1.0.0.patch wvstreams-4.6.1-glibc212.patch
+}
+
+pbs_config() {
+    config+=""
+    ./autogen.sh
+    doconfig
+    cd argp
+    doconfig
+    cd -
+}
+
+pbs_build() {
+    domake
+}
+
+pbs_install() {
+    domkinstall
+}
+

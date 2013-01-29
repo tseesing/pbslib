@@ -1,0 +1,44 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="Library to interface with IEEE 1394 cameras following the IIDC specification"
+HOMEPAGE="http://sourceforge.net/projects/libdc1394/"
+LICENSE="LGPL"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
+
+SRC_URI="http://downloads.sourceforge.net/"$N"/"$N-$V".tar.gz"
+CHECKSUM="d8b2cbfae1b329fdeaa638da80427334"
+
+RDEPEND="libraw1394 libusbx"
+RECOMMENDED=""
+BDEPEND=""
+OPTIONAL=""
+CONFLICT=""
+REPLACE=""
+
+pbs_unpack() {
+    dounpack
+}
+
+pbs_patch() {
+    dopatch rename-usb_init.patch videodev-compile-fix.patch
+}
+
+pbs_config() {
+    config+=""
+    autoreconf -i
+    doconfig
+}
+
+pbs_build() {
+    domake
+}
+
+pbs_install() {
+    domkinstall
+}
+

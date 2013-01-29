@@ -1,0 +1,45 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="A collection of routines used to create PNG format graphics files"
+HOMEPAGE="http://www.libpng.org/"
+LICENSE="custom"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
+
+SRC_URI="http://downloads.sourceforge.net/sourceforge/"$N"/"$N-$V".tar.xz 
+         http://downloads.sourceforge.net/sourceforge/libpng-apng/"$N-$V"-apng.patch.gz"
+
+RDEPEND="zlib"
+BDEPEND=""
+
+pbs_unpack() {
+    dounpack
+}
+
+pbs_patch() {
+    cp "$YBS_SOURCE"/"$N-$V"-apng.patch.gz .
+    gunzip "$N-$V"-apng.patch.gz
+    dopatch "$N-$V"-apng.patch
+}
+
+pbs_config() {
+    config+=""
+    doconfig
+}
+
+pbs_build() {
+    domake
+}
+
+pbs_install() {
+    domkinstall
+    dodoc LICENSE
+    cd contrib/pngminus
+    make PNGLIB="-L$destdir/usr/lib$LIBDIRSUFFIX -lpng" -f makefile.std png2pnm pnm2png
+    install -m755 png2pnm pnm2png "$destdir"/usr/bin/
+}
+

@@ -1,0 +1,37 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="Perl interface to the cairo library "
+HOMEPAGE="http://search.cpan.org/~tsch/Cairo-1.061/lib/Cairo.pm"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
+LICENSE="GPL,PerlArtistic"
+YARCH="any"
+
+SRC_URI="http://search.cpan.org/CPAN/authors/id/T/TS/TSCH/Cairo-"$V".tar.gz"
+
+RDEPEND="perl cairo"
+BDEPEND="extutils-depends extutils-pkgconfig"
+RECOMMENDED=""
+CONFLICT="cairo_perl"
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_config() {
+    doconfig INSTALLDIRS=vendor
+}
+
+pbs_build() {
+    domake
+}
+
+pbs_install() {
+    domkinstall
+        perl_cleanup
+}
+

@@ -1,0 +1,497 @@
+#!/bin/bash
+
+pre_install() {
+    #
+    # Make required directories.
+    #
+    for d in boot dev etc home media mnt usr var opt srv/http run; do
+        install -d -m755 /${d}
+    done
+    install -d -m555 /proc
+    install -d -m555 /sys
+    install -d -m0750 /root
+    install -d -m1777 /tmp 
+    # vsftpd won't run with write perms on /srv/ftp
+    install -d -m555 -g ftp /srv/ftp
+    ln -sf /proc/self/mounts /etc/mtab
+    # setup /var
+    for d in cache/man local opt log/old lib/misc empty; do
+        install -d -m755 /var/${d}
+    done
+    install -d -m1777 /var/{tmp,spool/mail}
+    # allow setgid games to write scores
+    install -d -m775 -g games /var/games
+    [ -h /var/mail ] || ln -sf /var/spool/mail /var/mail
+    [ -h /var/run ] || ln -sf /run /var/run
+    [ -h /var/lock ] || ln -sf /run/lock /var/lock
+    [ -h /var/sys ] || ln -sf /sys /var/sys
+    # setup /usr
+    for d in bin include lib sbin share/misc src; do
+        install -d -m755 /usr/${d}
+    done
+    for d in $(seq 8); do
+        install -d -m755 /usr/share/man/man${d}
+    done
+    # setup /usr/local hierarchy
+    for d in bin etc games include lib man sbin share src; do
+        install -d -m755 /usr/local/${d}
+    done
+    ln -sf ../man /usr/local/share/man
+    #
+    # Sysvinit compatibility
+    #
+    mkdir -p /etc/rc.d
+    for i in 0 1 2 3 4 5 6;do 
+        mkdir -p /etc/rc${i}.d 
+    done
+    #
+    # udev
+    #
+    mkdir -p /dev /proc /sys
+    [ -c /dev/null ] || mknod -m 666 /dev/null c 1 3
+    [ -c /dev/console ] || mknod -m 600 /dev/console c 5 1
+    #
+    # For compatibility
+    #
+    [ -f /bin/sh ] || ln -sf bash /bin/sh
+    #
+    # Important default etc config files
+    #
+    #
+    # /etc/environment
+    #
+    _file="/etc/environment"
+    if [ ! -f $_file ];then
+        cat >$_file <<"EOF"
+PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/opt/bin"
+EOF
+    fi
+    #
+    # /etc/default/locale
+    #
+    _file="/etc/default/locale"
+    mkdir -p $(dirname $_file)
+    [ ! -f $_file ] && touch $_file
+    #
+    # /etc/DIRCOLORS
+    #
+    _file="/etc/DIRCOLORS"
+    if [ ! -f $_file ];then
+        cat >$_file <<"EOF"
+LS_COLORS='rs=0:di=01;36:ln=02;36:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arj=01;31:*.taz=01;31:*.lzh=01;31:*.lzma=01;31:*.zip=01;31:*.z=01;31:*.Z=01;31:*.dz=01;31:*.gz=01;31:*.bz2=01;31:*.bz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.rar=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.jpg=01;35:*.jpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.axv=01;35:*.anx=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.axa=00;36:*.oga=00;36:*.spx=00;36:*.xspf=00;36:';
+export LS_COLORS
+EOF
+    fi
+    #
+    # /etc/inputrc
+    #
+    _file="/etc/inputrc"
+    if [ ! -f $_file ];then
+        cat >$_file <<"EOF"
+set horizontal-scroll-mode Off
+set meta-flag On
+set input-meta On
+set convert-meta Off
+set output-meta On
+set bell-style none
+"\eOd": backward-word
+"\eOc": forward-word
+"\e[1~": beginning-of-line
+"\e[4~": end-of-line
+"\e[5~": beginning-of-history
+"\e[6~": end-of-history
+"\e[3~": delete-char
+"\e[2~": quoted-insert
+"\eOH": beginning-of-line
+"\eOF": end-of-line
+"\e[H": beginning-of-line
+"\e[F": end-of-line
+EOF
+    fi
+    #
+    # /etc/fstab
+    #
+    _file="/etc/fstab"
+    if [ ! -f $_file ];then
+        cat >$_file <<"EOF"
+#
+# /etc/fstab: static file system information
+#
+# <file system> <dir>   <type>  <options>   <dump>  <pass>
+
+EOF
+    fi
+    #
+    # /etc/crypttab
+    #
+    _file="/etc/crypttab"
+    if [ ! -f $_file ];then
+        cat >$_file <<"EOF"
+# crypttab: mappings for encrypted partitions
+#
+# Each mapped device will be created in /dev/mapper, so your /etc/fstab
+# should use the /dev/mapper/<name> paths for encrypted devices.
+#
+#
+# NOTE: Do not list your root (/) partition here, it must be set up
+#       beforehand by the initramfs (/etc/mkinitcpio.conf).
+
+# <name>       <device>         <password>              <options>
+# home         /dev/hda4        /etc/mypassword1
+# data1        /dev/hda3        /etc/mypassword2
+# data2        /dev/hda5        /etc/cryptfs.key
+# swap         /dev/hdx4        /dev/urandom            swap,cipher=aes-cbc-essiv:sha256,size=256
+# vol          /dev/hdb7        none
+EOF
+    fi
+    #
+    # /etc/motd
+    #
+    _file="/etc/motd"
+    [ ! -f $_file ] && touch $_file
+    #
+    # /etc/passwd
+    #
+    _file="/etc/passwd"
+    if [ ! -f $_file ];then
+        cat >$_file <<"EOF"
+root:x:0:0:root:/root:/bin/bash
+bin:x:1:1:bin:/bin:/bin/false
+daemon:x:2:2:daemon:/sbin:/bin/false
+mail:x:8:12:mail:/var/spool/mail:/bin/false
+ftp:x:14:11:ftp:/srv/ftp:/bin/false
+http:x:33:33:http:/srv/http:/bin/false
+uuidd:x:68:68:uuidd:/:/sbin/nologin
+dbus:x:81:81:dbus:/:/sbin/nologin
+nobody:x:99:99:nobody:/:/bin/false
+EOF
+    fi
+    #
+    # /etc/group
+    #
+    _file="/etc/group"
+    if [ ! -f $_file ];then
+        cat >$_file <<"EOF"
+root:x:0:root
+bin:x:1:root,bin,daemon
+daemon:x:2:root,bin,daemon
+sys:x:3:root,bin
+adm:x:4:root,daemon
+tty:x:5:
+disk:x:6:root
+lp:x:7:daemon
+mem:x:8:
+kmem:x:9:
+wheel:x:10:root
+ftp:x:11:
+mail:x:12:
+uucp:x:14:
+log:x:19:root
+utmp:x:20:
+locate:x:21:
+rfkill:x:24:
+smmsp:x:25:
+http:x:33:
+games:x:50:
+lock:x:54:
+uuidd:x:68:
+dbus:x:81:
+network:x:90:
+video:x:91:
+audio:x:92:
+optical:x:93:
+floppy:x:94:
+storage:x:95:
+scanner:x:96:
+power:x:98:
+nobody:x:99:
+users:x:100:
+EOF
+    fi
+    #
+    # /etc/hosts
+    #
+    _file="/etc/hosts"
+    if [ ! -f $_file ];then
+        cat >$_file <<OOO
+#
+# /etc/hosts: static lookup table for host names
+#
+
+#   <ip-address>   <hostname.domain.org>   <hostname>
+127.0.0.1   localhost.localdomain   localhost
+::1     localhost.localdomain   localhost
+
+# The following lines are desirable for IPv6 capable hosts
+::1     ip6-localhost ip6-loopback
+fe00::0 ip6-localnet
+ff00::0 ip6-mcastprefix
+ff02::1 ip6-allnodes
+ff02::2 ip6-allrouters
+ff02::3 ip6-allhosts
+
+# End of file
+OOO
+    fi
+    #
+    # /etc/host.conf
+    #
+    _file="/etc/host.conf"
+    if [ ! -f $_file ];then
+        cat >$_file <<"OOO"
+#
+# /etc/host.conf
+#
+
+order hosts,bind
+multi on
+
+# End of file
+OOO
+    fi
+    #
+    # /etc/ld.so.conf
+    #
+    _file="/etc/ld.so.conf"
+    if [ ! -f $_file ];then
+        cat >$_file <<"OOO"
+#
+# /etc/ld.so.conf
+#
+
+include /etc/ld.so.conf.d/*.conf
+
+# End of file
+OOO
+    fi
+    #
+    # /etc/shells
+    #
+    _file="/etc/shells"
+    if [ ! -f $_file ];then
+        cat >$_file <<"OOO"
+#
+# /etc/shells
+#
+
+/bin/sh
+/bin/bash
+
+# End of file
+OOO
+    fi
+    #
+    # /etc/securetty
+    #
+    _file="/etc/securetty"
+    if [ ! -f $_file ];then
+        cat >$_file <<"OOO"
+#
+# /etc/securetty
+#
+
+console
+tty1
+tty2
+tty3
+tty4
+tty5
+tty6
+ttyS0
+hvc0
+
+# End of file
+OOO
+    fi
+    #
+    # /etc/shadow
+    #
+    _file="/etc/shadow"
+    if [ ! -f $_file ];then
+        cat >$_file <<"OOO"
+root::14871::::::
+bin:x:14871::::::
+daemon:x:14871::::::
+mail:x:14871::::::
+ftp:x:14871::::::
+http:x:14871::::::
+uuidd:x:14871::::::
+dbus:x:14871::::::
+nobody:x:14871::::::
+OOO
+    fi
+    #
+    # /etc/gshadow
+    #
+    _file="/etc/gshadow"
+    if [ ! -f $_file ];then
+        cat >$_file <<"OOO"
+root:::root
+bin:::root,bin,daemon
+daemon:::root,bin,daemon
+sys:::root,bin
+adm:::root,daemon
+tty:::
+disk:::root
+lp:::daemon
+mem:::
+kmem:::
+wheel:::root
+ftp:::
+mail:::
+uucp:::
+log:::root
+utmp:x::
+locate:::
+rfkill:x::
+smmsp:::
+http:::
+games:::
+lock:::
+uuidd:!::
+dbus:x::
+network:x::
+video:x::
+audio:::
+optical:::
+floppy:x::
+storage:x::
+scanner:x::
+power:x::
+nobody:::
+users:::
+OOO
+    fi
+    #
+    # /etc/nsswitch.conf
+    #
+    _file="/etc/nsswitch.conf"
+    if [ ! -f $_file ];then
+        cat >$_file <<"OOO"
+# Begin /etc/nsswitch.conf
+
+passwd: files
+group: files
+shadow: files
+
+publickey: files
+
+hosts: files dns myhostname
+networks: files
+
+protocols: files
+services: files
+ethers: files
+rpc: files
+
+netgroup: files
+
+# End /etc/nsswitch.conf
+OOO
+    fi
+    #
+    # /etc/profile
+    #
+    _file="/etc/profile"
+    if [ ! -f $_file ];then
+        cat >$_file <<"EOF"
+umask 022
+PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/opt/bin"
+export PATH
+
+if [ ${UID} == 0 ]; then
+        PS1='\[\033[01;31m\]\h\[\033[01;36m\] \W #\[\033[00m\]'
+else
+        PS1='\[\033[01;32m\]\u@\h\[\033[01;36m\] \w \$\[\033[00m\]'
+fi
+
+export PS1
+alias ls="ls --color"
+alias grep="grep --colour=auto"
+alias su="su -l"
+alias less="less -r"
+. /etc/DIRCOLORS
+
+# Load profiles from /etc/profile.d
+for sh in /etc/profile.d/*.sh; do
+        [ -r "$sh" ] &&  . "$sh"
+done
+
+# Source global bash config
+if test -r /etc/bash.bashrc; then
+    . /etc/bash.bashrc
+fi
+
+# Termcap is outdated, old, and crusty, kill it.
+unset TERMCAP
+
+# Man is much better than us at figuring this out
+unset MANPATH
+
+unset sh
+EOF
+    fi
+}
+
+post_install() {
+    [ -f /var/log/lastlog ] ||   : >/var/log/lastlog
+    [ -f /var/log/wtmp ]    ||   : >/var/log/wtmp
+    [ -f /var/log/btmp ]    || { : >/var/log/btmp && chmod 600 /var/log/btmp; }
+    chmod 1777 /var/spool/mail /tmp /var/tmp
+
+    chmod 644 /etc/{fstab,group,host.conf,hosts,ld.so.conf,motd,nsswitch.conf,passwd,securetty,shells,profile}
+    chmod 600 /etc/{gshadow,shadow,crypttab}
+    chmod 755 /etc/profile.d/*.sh
+}
+
+# args: <group> [options]
+_addgroup() {
+    if ! getent group "$1" >/dev/null; then
+        groupadd "$@" >/dev/null
+    fi
+}
+
+# args: <group> [options]
+_adduser() {
+if ! getent passwd "$1" >/dev/null; then
+    useradd "$@" >/dev/null
+fi
+}
+
+post_upgrade() {
+    post_install
+    _addgroup optical -g 93
+    _addgroup audio   -g 92
+    _addgroup video   -g 91
+    _addgroup floppy  -g 94
+    _addgroup storage -g 95
+    _addgroup log     -g 19
+    _addgroup utmp    -g 20
+    _addgroup power   -g 98
+    _addgroup network -g 90
+    _addgroup games   -g 50
+    _addgroup uucp    -g 14
+    _addgroup http    -g 33
+    _adduser  http    -u 33 -d /srv/http -g http -s /bin/false
+    _addgroup scanner -g 96
+    _addgroup rfkill  -g 24
+    _addgroup lock    -g 54
+    _addgroup uuidd   -g 68
+    _adduser uuidd    -u 68 -d / -g uuidd -s /sbin/nologin
+    _addgroup dbus    -g 81
+    _adduser dbus     -u 81 -d / -g dbus -s /sbin/nologin
+    # sync gshadow to group
+    if ! grep -q '^lock:' /etc/gshadow; then
+        grpconv >/dev/null
+    fi
+    if ! grep -q '^include /etc/ld.so.conf.d/\*.conf$' /etc/ld.so.conf; then
+        echo 'include /etc/ld.so.conf.d/*.conf' >> /etc/ld.so.conf
+    fi
+    # set "Last password change" > 0; otherwise su $user wont work
+    for user in bin daemon mail ftp http nobody; do
+        if LANG=C chage -l ${user} | grep -q 'password must be changed'; then
+            chage -d 14871 ${user}
+        fi
+    done
+}
+

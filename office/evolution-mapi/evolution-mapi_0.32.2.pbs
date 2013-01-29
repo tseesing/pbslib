@@ -1,0 +1,40 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="A provider for Evolution that can connect to Exchange 2007 servers and also to Exchange 2003, 2000 and 5.5."
+HOMEPAGE="http://www.go-evolution.org/MAPIProvider"
+LICENSE="GPL"
+PACKAGER="StartOS Developers"
+
+SRC_URI="http://ftp.gnome.org/pub/GNOME/sources/"$N"/0.32/"$N-$V".tar.bz2"
+
+RDEPEND="atk berkeley-db cairo cyrus-sasl dbus dbus-glib e2fsprogs enchant evolution evolution-data-server expat fontconfig freetype  gcc-libs gconf gdk-pixbuf2 glib2 glibc gnome-desktop gnutls gtk2 gtkhtml keyutils krb5 libgcrypt libgdata libgnome-keyring libgpg-error libical libICE libmapi libpng libproxy libSM libsoup libtasn1 libunique libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libxml2 libXrandr libXrender nspr nss orbit pango pixman samba4 sqlite startup-notification talloc tdb tevent util-linux zlib"
+RECOMMENDED=""
+BDEPEND=""
+CONFLICT=""
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_patch() {
+    dopatch 01_openchange_compat 02_recurring_events
+}
+
+pbs_config() {
+    config+=""
+    doconfig
+}
+
+pbs_build() {
+    domake
+}
+
+pbs_install() {
+    domkinstall
+}
+

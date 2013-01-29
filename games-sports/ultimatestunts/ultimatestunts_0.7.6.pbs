@@ -1,0 +1,47 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="Remake of the famous Stunts game"
+HOMEPAGE="http://www.ultimatestunts.nl/"
+LICENSE="GPL"
+PACKAGER="StartOS Developers"
+
+SRC_URI="http://sourceforge.net/projects/"$N"/files/sourcecode/"$N"-srcdata-0761.tar.gz"
+CHECKSUM="117745dd282f9904c2d641d7f19714f7"
+
+RDEPEND="freealut libvorbis sdl-image"
+RECOMMENDED=""
+BDEPEND=""
+OPTIONAL=""
+CONFLICT=""
+
+INSTALL="$N.install"
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_patch() {
+    sed -e "s/datadir = \/usr\/local\/share\/ultimatestunts\//datadir = \/usr\/share\/ultimatestunts\//" ultimatestunts.conf >ultimatestunts.conf.new
+    mv ultimatestunts.conf.new ultimatestunts.conf
+}
+
+pbs_config() {
+    config+="--disable-dependency-tracking"
+    doconfig
+}
+
+pbs_build() {
+    make -C trackedit libtrackedit.a
+    make
+}
+
+pbs_install() {
+    make sysconfdir="${destdir}"/etc prefix="${destdir}"/usr install
+    dodesktop "$N".desktop "$N".png
+}
+

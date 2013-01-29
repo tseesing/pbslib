@@ -1,0 +1,42 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="Eclipse java bytecode compiler"
+HOMEPAGE="http://www.eclipse.org/cdt"
+LICENSE="EPL"
+PACKAGER="StartOS Developers"
+YARCH="any"
+
+SRC_URI="http://mirror.bit.edu.cn/eclipse/eclipse/downloads/drops/R-"$V"-201202080800/ecjsrc-"$V".jar"
+CHECKSUM="7b6f54e1fc33bb9adc304d8063109d0d"
+
+RDEPEND="jdk"
+RECOMMENDED=""
+BDEPEND="apache-ant unzip jdk"
+OPTIONAL=""
+CONFLICT=""
+REPLACE=""
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_build() {
+    unzip "$YBS_SOURCE"/ecjsrc-"$V".jar
+    . /etc/profile.d/jdk.sh
+    . /etc/profile.d/apache-ant.sh
+    ant build
+}
+
+pbs_install() {
+    docp_rename ecj.jar "$destdir"/usr/share/java/eclipse-ecj-"$V".jar
+    cd "$destdir"
+    ln -sf eclipse-ecj-"$V".jar usr/share/java/ecj.jar
+    ln -sf eclipse-ecj-"$V".jar usr/share/java/eclipse-ecj.jar
+    docp "$filesdir"/ecj usr/bin/
+}
+

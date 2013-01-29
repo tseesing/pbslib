@@ -1,0 +1,36 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="yong input method"
+HOMEPAGE="http://yong.uueasy.com/thread-htm-fid-2.html"
+LICENSE="GPL"
+PACKAGER="StartOS Developers"
+
+SRC_URI="yong-lin-1.6.0-3.7z"
+
+RDEPEND="gtk2"
+BDEPEND=""
+RECOMMENDED=""
+CONFLICT=""
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_install() {
+    docp * "$destdir"/usr/share/"$N"
+    cd "$destdir"
+    dodesktop "$N.desktop"               usr/share/"$N"/skin/logo.png
+    docp "$filesdir"/mb/*                usr/share/"$N"/mb
+    docp "$filesdir"/skin/*              usr/share/"$N"/skin
+    docp "$filesdir"/{yong.ini,yong.xml} usr/share/"$N"
+    docp usr/share/"$N"/yong.xml         usr/share/ibus/component
+    doln /usr/share/"$N"/yong            usr/bin/yong
+    doln /usr/share/"$N"/yong-config     usr/bin/yong-config
+    doln /usr/share/"$N"/libl.so         usr/lib/libl.so
+}
+

@@ -1,0 +1,47 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="Portable lossless data compression library"
+HOMEPAGE="http://www.oberhumer.com/opensource/lzo"
+LICENSE="GPL"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
+
+SRC_URI="http://www.oberhumer.com/opensource/"$N"/download/"$N-$V".tar.gz"
+CHECKSUM="95380bd4081f85ef08c5209f4107e9f8"
+
+RDEPEND="glibc"
+RECOMMENDED=""
+BDEPEND=""
+OPTIONAL=""
+CONFLICT=""
+REPLACE=""
+
+pbs_unpack() {
+    dounpack
+}
+
+pbs_config() {
+    config+="--enable-shared"
+    doconfig
+}
+
+pbs_build() {
+    domake || die "lzo make failed."
+    # Build minilzo
+    gcc $CFLAGS -fpic -Iinclude/lzo -o minilzo/minilzo.o -c minilzo/minilzo.c
+    gcc $LDFLAGS -shared -o libminilzo.so.0 -Wl,-soname,libminilzo.so.0 minilzo/minilzo.o
+}
+
+pbs_install() {
+    domkinstall
+    # Install minilzo
+    install -m 755 libminilzo.so.0 "$destdir"/usr/lib"$LIBDIRSUFFIX"
+    install -p -m 644 minilzo/minilzo.h "$destdir"/usr/include/lzo
+    cd /usr/lib"$LIBDIRSUFFIX"/
+    doln libminilzo.so.0 libminilzo.so
+}
+

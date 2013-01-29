@@ -1,0 +1,36 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="A bootloader for Linux"
+HOMEPAGE="https://alioth.debian.org/projects/lilo/"
+LICENSE="BSD"
+PACKAGER="StartOS Developers"
+
+SRC_URI="http://lilo.alioth.debian.org/ftp/sources/"$N-$V".tar.gz"
+CHECKSUM="51b9b9db665d3b8724919e3d46054d12"
+
+RDEPEND="device-mapper glibc systemd"
+RECOMMENDED=""
+BDEPEND=""
+OPTIONAL=""
+CONFLICT=""
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_build() {
+    export LC_ALL=C
+    domake all
+}
+
+pbs_install() {
+    domkinstall
+    dodoc COPYING
+    docp "$filesdir"/lilo.conf "$destdir"/etc/
+}
+

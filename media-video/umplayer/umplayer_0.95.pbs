@@ -1,0 +1,39 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="UMPlayer is cross-platform and installer packages are available for the Windows, Mac and GNU / Linux operating systems."
+HOMEPAGE="http://www.umplayer.com/"
+LICENSE="GPL"
+PACKAGER="StartOS Developers"
+
+SRC_URI="umplayer.tar.gz"
+
+RDEPEND="qt"
+BDEPEND=""
+RECOMMENDED=""
+CONFLICT=""
+
+INSTALL="$N.install"
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_config() {
+    cd umplayer/trunk
+    dopatch makefile-prefix.patch
+    config+=""
+    doconfig
+}
+
+pbs_build() {
+    domake
+}
+
+pbs_install() {
+    domkinstall
+}

@@ -1,0 +1,39 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="a multi-panel tabbed file manager"
+COMMENTS="SpaceFM is a multi-panel tabbed file manager for Linux with built-in VFS, systemd-based device manager, customizable menu system, and bash integration."
+HOMEPAGE="http://ignorantguru.github.com/spacefm/"
+LICENSE="GPLv2+"
+PACKAGER="StartOS Developers"
+
+SRC_URI="https://raw.github.com/IgnorantGuru/"$N"/master/packages/"$V"/"$N-$V".tar.xz"
+CHECKSUM="428739bc310d7010eca3f64caf2e7c1e"
+
+RDEPEND="gtk2 startup-notification systemd"
+RECOMMENDED=""
+BDEPEND=""
+OPTIONAL=""
+CONFLICT=""
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_config() {
+    config+=""
+    doconfig
+}
+
+pbs_build() {
+    domake
+}
+
+pbs_install() {
+    domkinstall
+}
+

@@ -1,0 +1,40 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="QQ2012 for wine"
+HOMEPAGE="http://www.qq.com/"
+LICENSE="custom"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
+
+case "$ARCH" in
+    i?86)
+        SRC_URI="http://packages.linuxdeepin.com/deepin/pool/non-free/d/"$N"/"${N}_$V"_i386.deb"
+        CHECKSUM="ab59a733cca0e1e8e3e24290b9aea1db" ;;
+    x86_64)
+        SRC_URI="http://packages.linuxdeepin.com/deepin/pool/non-free/d/"$N"/"${N}_$V"_amd64.deb"
+        CHECKSUM=""
+esac
+
+RDEPEND="gzip tar"
+RECOMMENDED="wqy-microhei"
+BDEPEND=""
+OPTIONAL=""
+CONFLICT=""
+
+DESKTOPFILE="qq2012.desktop"
+
+INSTALL="$N.install"
+
+pbs_unpack() {
+    dounpack
+}
+
+pbs_install() {
+    docp data/*  "$destdir"
+}
+
+

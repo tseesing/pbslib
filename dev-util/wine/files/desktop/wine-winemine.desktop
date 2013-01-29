@@ -1,0 +1,15 @@
+[Desktop Entry]
+Name=Winemine
+Name[fi]=Winemiina
+Name[ca]=Buscamines del Wine
+Name[zh_CN]=扫雷
+Comment=Wine Minesweeper
+Comment[fi]=Winen Miinaharava
+Comment[ca]=Jugueu a un clon del buscamines del Windows
+Comment[zh_CN]=Wine 扫雷游戏
+NoDisplay=false
+Exec=winemine
+Terminal=false
+Type=Application
+Icon=wine
+Categories=Wine;

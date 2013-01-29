@@ -1,0 +1,38 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="Driver for Synaptics touchpads"
+HOMEPAGE="http://cgit.freedesktop.org/xorg/driver/xf86-input-synaptics/"
+LICENSE="custom"
+PACKAGER="StartOS Developers"
+GROUP="x11-drivers"
+
+SRC_URI="http://xorg.freedesktop.org/archive/individual/driver/"$N-$V".tar.bz2"
+CHECKSUM="f064477ef3a553634f3dcf6696d0f538"
+
+RDEPEND="xorg-server(>=1.12.2) libXtst"
+BDEPEND=""
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_config() {
+    autoreconf -fi
+    doconfig
+}
+
+pbs_build() {
+    domake
+}
+
+pbs_install() {
+    domkinstall
+    dodoc COPYING
+    docp "$filesdir"/10-synaptics.conf  "$destdir"/etc/X11/xorg.conf.d/
+}    
+

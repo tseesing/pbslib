@@ -1,0 +1,38 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="building, finding and using SDL binaries"
+HOMEPAGE="http://search.cpan.org/~froggs/Alien-SDL-1.428/"
+LICENSE="GPL,PerlArtistic"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
+
+SRC_URI="http://mirrors.ustc.edu.cn/CPAN/authors/id/F/FR/FROGGS/Alien-SDL-"$V".tar.gz"
+
+RDEPEND="perl libsdl file-sharedir file-sharedir class-inspector text-patch capture-tiny"
+BDEPEND=" "
+RECOMMENDED=""
+CONFLICT=""
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_config() {
+    # install module in vendor directories
+    perl Build.PL installdirs=vendor destdir="$destdir" --with-sdl-config
+}
+
+pbs_build() {
+    perl Build
+}
+
+pbs_install() {
+    perl Build install
+        perl_cleanup
+}
+
+

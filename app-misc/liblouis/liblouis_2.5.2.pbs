@@ -1,0 +1,44 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION=" an open-source braille translator and back-translator"
+HOMEPAGE="http://code.google.com/p/liblouis/"
+LICENSE="LGPLv3"
+PACKAGER="chenqixing@ivali.com
+          Zhongxin Huang <huangzhongxin@ivali.com>"
+
+SRC_URI="http://liblouis.googlecode.com/files/$N-$V.tar.gz"
+CHECKSUM="93437f3c3a9a178ad08bdf6daca2a82cf3df2cc2"
+
+RDEPEND="glibc"
+RECOMMENDED=""
+BDEPEND="python"
+OPTIONAL="python2: for python bindings"
+
+INSTALL="$N.install"
+
+pbs_unpack() {
+    dounpack
+}
+
+pbs_config() {
+    config+=""
+    doconfig
+}
+
+pbs_build() {
+    domake
+}
+
+pbs_install() {
+    domkinstall
+    dodoc COPYING.LIB 
+    cd python
+    LD_PRELOAD+=":$srcdir/liblouis/.libs/liblouis.so"
+    python setup.py install --root="$destdir" --prefix="/usr" --optimize=1
+}
+

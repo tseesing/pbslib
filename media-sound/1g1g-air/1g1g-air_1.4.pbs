@@ -1,0 +1,30 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="1g1g online music (AIR)"
+HOMEPAGE="http://www.ruochi.com/main/1g1g-air/"
+REPO=""
+LICENSE=""
+PRIORITY=""
+PACKAGER="StartOS Developers"
+
+SRC_URI="http://1g1g.ruochi.com/updates/1g1g.air"
+
+RDEPEND="adobe-air-sdk"
+BDEPEND=""
+RECOMMENDED=""
+CONFLICT=""
+
+INSTALL="$N.install"
+
+NOTES=""
+
+pbs_install() {
+    docp "$YBS_SOURCE"/1g1g.air  "$destdir"/usr/lib/1g1g-air/
+    dodesktop "1g1g-air.desktop" "1g1g-air.png"
+}
+

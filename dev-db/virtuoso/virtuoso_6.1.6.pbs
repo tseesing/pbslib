@@ -1,0 +1,64 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="A scalable cross-platform server that combines SQL/RDF/XML Data Management with Web Application Server and Web Services Platform functionality"
+HOMEPAGE="http://sourceforge.net/projects/virtuoso"
+LICENSE="GPL"
+PACKAGER="StartOS Developers"
+
+SRC_URI="http://sourceforge.net/projects/"$N"/files/"$N"/"$V"/"$N"-opensource-"$V".tar.gz"
+CHECKSUM="3991149c570f3738c3e819ce603e487f"
+
+PROVIDE="virtuoso-base virtuoso"
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_config() {
+    ./autogen.sh
+    ./configure --with-layout=debian \
+            --program-transform-name='s/isql$$/isql-vt/;s/isqlw/isqlw-vt/' \
+                --with-readline
+}
+
+pbs_build() {
+    domake
+}
+
+virtuoso-base_install() {
+    DESCRIPTION="A scalable cross-platform server of virtuoso (very minimal installation)"
+    RDEPEND="openldap"
+
+    # install server
+    cd "${srcdir}"/binsrc/virtuoso
+    domkinstall
+
+    # install driver
+    cd "${srcdir}"/binsrc/driver
+    domkinstall
+
+    # Install some useful tools; rename to avoid conflicts with unixodbc
+    cd "${srcdir}"
+    for bin in isql isqlw; do
+        install -Dm755 binsrc/tests/"$bin" "$destdir"/usr/bin/"$bin"-vt
+    done
+}
+
+virtuoso_install() {
+    DESCRIPTION="A scalable cross-platform server that combines SQL/RDF/XML Data Management with Web Application Server and Web Services Platform functionalit"
+    RDEPEND="imagemagick openssl"
+
+    cd "${srcdir}"
+    domkinstall
+    
+    # remove conflicts with virtuoso-base
+    cd "$destdir"
+    rm usr/bin/{isql{,w-vt},virtuoso-t}
+    rm usr/lib/{libvirtuoso-t.a,virtodbc.{a,so},virtodbc_r.{a,so},virtodbcu.{a,so},virtodbcu_r.{a,so}}
+}
+

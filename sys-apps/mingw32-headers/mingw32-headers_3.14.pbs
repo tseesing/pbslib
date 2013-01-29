@@ -1,0 +1,38 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="Windows header files fro mingw32 C cross-compiler"
+HOMEPAGE="http://www.mingw.org/"
+REPO=""
+LICENSE="LGPL"
+PACKAGER="StartOS Developers"
+
+SRC_URI="http://ncu.dl.sourceforge.net/project/mingw/MinGW/BaseSystem/RuntimeLibrary/Win32-API/w32api-3.14/w32api-3.14-mingw32-src.tar.gz
+http://ncu.dl.sourceforge.net/project/mingw/MinGW/BaseSystem/RuntimeLibrary/MinGW-RT/mingwrt-3.18/mingwrt-3.18-mingw32-src.tar.gz"
+
+RDEPEND=""
+BDEPEND=""
+RECOMMENDED=""
+CONFLICT=""
+
+OPTIONS="nodev nostrip"
+
+pbs_unpack() {
+        dounpack
+    tar xf "$YBS_SOURCE"/mingwrt-3.18-mingw32-src.tar.gz
+    cp -a mingwrt-3.18-mingw32/include/* mingw32-headers-3.14/include/
+}
+
+pbs_install() {
+    INSTALL_DIR="/usr/mingw"
+    docp include "$destdir"/"$INSTALL_DIR"
+    cd "$destdir"/"$INSTALL_DIR"
+    ln -sf . usr
+    mkdir mingw
+    ln -sf /usr/mingw/include mingw/include
+}
+

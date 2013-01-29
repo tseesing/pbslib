@@ -1,0 +1,38 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="Library to pass menu structure across DBus"
+HOMEPAGE="https://launchpad.net/dbusmenu"
+LICENSE="GPL"
+PACKAGER="StartOS Developers"
+
+SRC_URI="https://launchpadlibrarian.net/82686310/libdbusmenu-0.5.1.tar.gz"
+CHECKSUM="9742c8b4e04d99f2d187041272052b53"
+
+RDEPEND="gtk2 json-glib"
+RECOMMENDED=""
+BDEPEND=""
+OPTIONAL=""
+CONFLICT=""
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_config() {
+    config+="--with-gtk2=2"
+    doconfig
+}
+
+pbs_build() {
+    domake
+}
+
+pbs_install() {
+    domkinstall
+}
+

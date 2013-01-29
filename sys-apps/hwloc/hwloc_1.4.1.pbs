@@ -1,0 +1,39 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="displays the hardware topology in convenient formats"
+HOMEPAGE="http://www.open-mpi.org/projects/hwloc/"
+LICENSE="BSD"
+PACKAGER="StartOS Developers"
+
+SRC_URI="http://www.open-mpi.org/software/hwloc/v1.4/downloads/"$N-$V".tar.bz2"
+CHECKSUM="911d2ba77fa968c3c72caf75a9e21637f3677acc"
+
+RDEPEND="cairo libxml2 ncurses pciutils"
+RECOMMENDED=""
+BDEPEND=""
+OPTIONAL=""
+CONFLICT=""
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_config() {
+    config+=""
+    doconfig
+}
+
+pbs_build() {
+    domake
+}
+
+pbs_install() {
+    domkinstall
+    dodoc COPYING
+}
+

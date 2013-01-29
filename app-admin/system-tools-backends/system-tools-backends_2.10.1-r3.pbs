@@ -1,0 +1,43 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="Tools aimed to make easy the administration of UNIX systems"
+HOMEPAGE="http://www.gnome.org/projects/gst/"
+LICENSE="GPL"
+PACKAGER="StartOS Developers"
+
+SRC_URI="http://ftp.gnome.org/pub/GNOME/sources/"$N"/2.10/"$N-$V".tar.bz2"
+
+RDEPEND="dbus-glib polkit"
+BDEPEND=""
+RECOMMENDED=""
+
+INSTALL="$N.install"
+
+NOTES="Group for system-tools-backends is wheel"
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_config() {
+    #
+    dogroupadd -r "wheel"
+        dopatch "$N"-2.8.2-default-permissions.patch
+        dopatch "$N"-2.10.0-add-startos-platform.patch
+    config+="--with-stb-group=wheel"
+    doconfig
+}
+
+pbs_build() {
+    domake
+}
+
+pbs_install() {
+    domkinstall
+}
+

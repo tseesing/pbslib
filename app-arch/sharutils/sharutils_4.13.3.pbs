@@ -1,0 +1,37 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="Makes so-called shell archives out of many files"
+HOMEPAGE="http://www.gnu.org/software/sharutils/"
+LICENSE="GPL"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
+ 
+SRC_URI="ftp://ftp.gnu.org/gnu/$N/$N-$V.tar.xz"
+CHECKSUM="50582fcededd1891c47ec1caa98491e280950cbd"
+
+RDEPEND="perl glibc"
+BDEPEND=""
+RECOMMENDED=""
+
+INSTALL="$N.install"
+
+pbs_unpack() {
+    dounpack
+}
+
+pbs_config() {
+    doconfig
+}
+
+pbs_build() {
+    domake
+}
+
+pbs_install() {
+    domkinstall
+}
+

@@ -1,0 +1,31 @@
+. /usr/lib/ybs/funcs
+
+POOTLE_USER=pootle
+POOTLE_GROUP=pootle
+POOTLE_HOME=/var/lib/pootle
+
+post_install() {
+    addgroup --system $POOTLE_GROUP
+    adduser --quiet --system --gecos "Pootle daemon" --ingroup $POOTLE_GROUP --no-create-home --home $POOTLE_HOME $POOTLE_USER
+    chmod 755 $POOTLE_HOME
+    chown $POOTLE_USER:$POOTLE_GROUP $POOTLE_HOME
+    chmod -R 755 $POOTLE_HOME/po
+    chown -R $POOTLE_USER:$POOTLE_GROUP $POOTLE_HOME/po
+    chmod -R 755 $POOTLE_HOME/dbs/
+    chown -R $POOTLE_USER:$POOTLE_GROUP $POOTLE_HOME/dbs/
+    chown -R $POOTLE_USER:root /etc/pootle/localsettings.py
+}
+
+post_upgrade() {
+    post_install
+}
+
+post_downgrade() {
+    post_install
+}
+
+post_remove() {
+    douserdel  $POOTLE_USER
+    dogroupdel $POOTLE_GROUP || return 0
+}
+

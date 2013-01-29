@@ -1,0 +1,9 @@
+. /usr/lib/ybs/funcs
+
+post_install() {
+        #/opt/real/RealPlayer/postinst/postinst.sh
+    gnome2_install_defaut_gconf "string" "/desktop/gnome/url-handlers/rtsp/command" "realplay %s"
+    gnome2_install_defaut_gconf "boolean" "/desktop/gnome/url-handlers/rtsp/need-terminal" "false"
+    gnome2_install_defaut_gconf "boolean" "/desktop/gnome/url-handlers/rtsp/enabled" "true"
+}
+

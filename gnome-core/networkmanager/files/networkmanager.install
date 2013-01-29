@@ -1,0 +1,26 @@
+. /usr/lib/ybs/funcs
+
+unit="NetworkManager.service"
+
+post_install() {
+    systemctl enable $unit
+    start $unit ||true
+}
+
+pre_remove() {
+    stop $unit ||true
+}
+
+post_remove() {
+    systemctl disable $unit ||true
+}
+
+post_upgrade() {
+    systemctl --system daemon-reload
+    systemctl enable $unit ||true
+}
+
+pos_downgrade() {
+    post_upgrade
+}
+

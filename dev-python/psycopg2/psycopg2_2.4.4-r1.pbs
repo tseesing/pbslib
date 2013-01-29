@@ -1,0 +1,38 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="A PostgreSQL database adapter for the Python programming language."
+HOMEPAGE="http://pypi.python.org/pypi/psycopg2"
+LICENSE="LGPL"
+PACKAGER="StartOS Developers"
+
+SRC_URI="http://pypi.python.org/packages/source/p/"$N"/"$N-$V".tar.gz"
+CHECKSUM="639e014ea9ce3aa3306724f12d16d79b"
+
+RDEPEND="python"
+RECOMMENDED=""
+BDEPEND="postgresql-libs"
+OPTIONAL=""
+CONFLICT=""
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_config() {
+    sed -i 's/,PSYCOPG_DEBUG$//' setup.cfg
+}
+
+pbs_build() {
+    domake
+}
+
+pbs_install() {
+    domkinstall
+}
+
+

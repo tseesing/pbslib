@@ -1,0 +1,30 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="115backup"
+HOMEPAGE="http://pc.115.com"
+LICENSE="custom"
+PACKAGER="StartOS Developers"
+
+SRC_URI="http://pc.115.com/download/linux/"$N"_v"$V"_gtk2_32.deb"
+CHECKSUM="178656718fb5278eac7f1441e40ddfcf"
+
+RDEPEND="gtkmm"
+RECOMMENDED=""
+BDEPEND=""
+OPTIONAL=""
+CONFLICT=""
+REPLACE=""
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_install() {
+    docp data/*  "$destdir"
+}
+

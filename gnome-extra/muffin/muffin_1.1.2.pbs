@@ -1,0 +1,46 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="Cinnamon window manager based on Mutter"
+HOMEPAGE="https://github.com/linuxmint/muffin"
+LICENSE="GPL"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
+
+SRC_URI="https://github.com/linuxmint/muffin/archive/"$V".tar.gz"
+CHECKSUM="996342e12ca8525415239e9398e4b192"
+
+RDEPEND="clutter gobject-introspection gsettings-desktop-schemas libcanberra startup-notification zenity dconf"
+RECOMMENDED=""
+BDEPEND="intltool gnome-doc-utils"
+OPTIONAL=""
+CONFLICT=""
+REPLACE=""
+
+INSTALL="$N.install"
+
+pbs_unpack() {
+    dounpack
+}
+
+pbs_patch() {
+    sed -i 's/\ --warn-all\ --warn-error//' src/Makefile.{am,in}
+}
+
+pbs_config() {
+    config+="--disable-static --disable-schemas-compile"
+    autoreconf -vfi
+    doconfig
+}
+
+pbs_build() {
+    domake
+}
+
+pbs_install() {
+    domkinstall
+}
+

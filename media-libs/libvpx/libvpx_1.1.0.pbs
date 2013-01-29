@@ -1,0 +1,46 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="The VP8 Codec SDK"
+HOMEPAGE="http://www.webmproject.org/"
+LICENSE="BSD"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
+
+SRC_URI="http://webm.googlecode.com/files/"$N-v$V".tar.bz2"
+CHECKSUM="356af5f770c50cd021c60863203d8f30164f6021"
+
+RDEPEND="glibc"
+BDEPEND="yasm"
+RECOMMENDED=""
+CONFLICT=""
+
+pbs_unpack() {
+    dounpack
+}
+
+pbs_config() {
+    config=" --prefix=/usr 
+             --libdir=/usr/lib"$LIBDIRSUFFIX"
+             --enable-vp8 
+             --enable-runtime-cpu-detect 
+             --enable-shared 
+             --enable-postproc 
+             --enable-pic 
+             --disable-install-docs
+             --disable-install-srcs "
+    doconfig
+}
+
+pbs_build() {
+    domake
+}
+
+pbs_install() {
+    make DIST_DIR="$destdir"/usr install
+    dodoc LICENSE
+}
+

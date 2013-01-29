@@ -1,0 +1,86 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="Linux-PAM (Pluggable Authentication Modules)"
+HOMEPAGE="https://fedorahosted.org/linux-pam/"
+LICENSE="GPL2"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
+
+# pam_unix2 module
+# source ftp://ftp.suse.com/pub/people/kukuk/pam/pam_unix2
+SRC_URI="http://fedorahosted.org/releases/l/i/linux-pam/Linux-PAM-"$V".tar.bz2
+         ftp://ftp.archlinux.org/other/pam_unix2/pam_unix2-2.9.1.tar.bz2"
+CHECKSUM="7b73e58b7ce79ffa321d408de06db2c4 da6a46e5f8cd3eaa7cbc4fc3a7e2b555"
+
+RDEPEND="berkeley-db cracklib libtirpc pambase"
+BDEPEND="flex docbook-xml docbook-xsl"
+
+INSTALL="$N.install"
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_config() {
+    # pam
+    config="--sysconfdir=/etc --libdir=/usr/lib"$LIBDIRSUFFIX""
+    doconfig || die "pam configure failed."
+
+    # pam_unix2
+    tar xf "$YBS_SOURCE"/pam_unix2-2.9.1.tar.bz2
+    cd pam_unix2-2.9.1
+    dopatch pam_unix2-glibc216.patch
+    config="--sysconfdir=/etc --libdir=/usr/lib"$LIBDIRSUFFIX""
+    doconfig
+}
+
+pbs_build() {
+    # pam
+    cd "$srcdir"/
+    dopatch pam_namespace-build-1.1.6.patch
+    domake  || die "pam make failed."
+
+    # pam_unix2
+    cd "$srcdir"/pam_unix2-2.9.1
+    domake
+}
+
+pbs_install() {
+    # pam
+    cd "$srcdir"/
+    domkinstall SCONFIGDIR=/etc/security || die "pam make install failed."
+
+    # pam_unix2
+    cd "$srcdir"/pam_unix2-2.9.1
+    domake
+
+    cd "$destdir"
+    
+    # add the realtime permissions for audio users
+    sed -i 's|# End of file||' etc/security/limits.conf
+    cat >> etc/security/limits.conf <<_EOT
+*               -       rtprio          0
+*               -       nice            0
+@audio          -       rtprio          65
+@audio          -       nice           -10
+@audio          -       memlock         40000
+_EOT
+    
+    #
+    rm -rf etc/environment
+
+    # Need to be suid
+    chmod +s sbin/unix_chkpwd 
+    
+    # Fix some missing symlinks from old pam for compatibility
+    cd usr/lib"$LIBDIRSUFFIX"/security
+    doln pam_unix.so pam_unix_acct.so
+    doln pam_unix.so pam_unix_auth.so
+    doln pam_unix.so pam_unix_passwd.so
+    doln pam_unix.so pam_unix_session.so
+}
+

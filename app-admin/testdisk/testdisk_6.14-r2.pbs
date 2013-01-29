@@ -1,0 +1,37 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="Checks and undeletes partitions, PhotoRec, signature based recovery tool"
+HOMEPAGE="http://www.cgsecurity.org/wiki/TestDisk"
+LICENSE="GPL"
+PACKAGER="StartOS Developers"
+
+SRC_URI="http://www.cgsecurity.org/"$N-$V"-WIP.tar.bz2"
+CHECKSUM="208700a885965abd262df8dcdb942452"
+
+RDEPEND="e2fsprogs libjpeg-turbo ncurses ntfs-3g zlib"
+BDEPEND=""
+RECOMMENDED=""
+CONFLICT=""
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_config() {
+    config+=""
+    doconfig
+}
+
+pbs_build() {
+    domake
+}
+
+pbs_install() {
+    domkinstall
+}
+

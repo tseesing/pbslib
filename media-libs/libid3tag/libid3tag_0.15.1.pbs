@@ -1,0 +1,41 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="The MAD id3tag library"
+HOMEPAGE="http://www.underbit.com/products/mad/"
+LICENSE="GPL"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
+
+SRC_URI="http://downloads.sourceforge.net/project/mad/"$N"/"$V"b/"$N-$V"b.tar.gz "
+CHECKSUM="e5808ad997ba32c498803822078748c3"
+
+RDEPEND="zlib"
+BDEPEND="gperf"
+RECOMMENDED=""
+
+pbs_unpack() {
+    dounpack
+}
+
+pbs_patch() {
+    dopatch 10_utf16.diff 11_unknown_encoding.diff CVE-2008-2109.patch
+}
+
+pbs_config() {
+    doconfig
+}
+
+pbs_build() {
+    domake
+}
+
+pbs_install() {
+    domkinstall
+    mkdir -p "$destdir"/usr/lib"$LIBDIRSUFFIX"/pkgconfig/
+    sed 's/LIBDIRSUFFIX/'"$LIBDIRSUFFIX"'/g' "$filesdir"/id3tag.pc >"$destdir"/usr/lib"$LIBDIRSUFFIX"/pkgconfig/id3tag.pc
+}
+

@@ -1,0 +1,19 @@
+. /usr/lib/ybs/funcs
+
+files="cvs.info-2.gz cvs.info-1.gz cvs.info.gz cvsclient.info.gz"
+
+post_install() {
+    doinstall_info $files 
+}
+
+pre_remove() {
+    doremove_info $files 
+}
+
+post_upgrade() {
+    post_install
+}
+
+post_downgrade() {
+    post_install
+}

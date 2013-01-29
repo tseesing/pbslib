@@ -1,0 +1,39 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="A Perl wrapper for SDL"
+HOMEPAGE="http://search.cpan.org/"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
+LICENSE="LGPL"
+
+SRC_URI="http://mirror.osqdu.org/CPAN/authors/id/K/KT/KTHAKORE/SDL-"$V".tar.gz"
+
+RDEPEND="mesa perl sdl-ttf sdl-mixer sdl-pango alien-sdl tie-simple sdl-gfx sdl-image sdl-net smpeg"
+BDEPEND="yaml-perl test-most"
+RECOMMENDED=""
+CONFLICT=""
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_config() {
+    # Perl selects the proper CFLAGS set for binary modules
+    unset CFLAGS
+    # install module in vendor directories
+    perl Build.PL installdirs=vendor
+}    
+
+pbs_build() {
+    perl Build
+}
+
+pbs_install() {
+    perl Build install destdir="$destdir"
+    perl_cleanup
+}
+

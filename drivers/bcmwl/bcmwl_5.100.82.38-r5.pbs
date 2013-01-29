@@ -1,0 +1,48 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="driver for BCM4311/4312/4313 BCM4321/4322 BCM43224/43225/43227/43228."
+HOMEPAGE="http://www.broadcom.com/company/"
+LICENSE="GPL"
+PACKAGER="StartOS Developers"
+
+SRC_URI="bcmwl-5.100.82.38.tar.bz2"
+
+PROVIDE="bcmwl-source bcmwl-driver"
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_config() {
+    dopatch startos-missing-init_MUTEX.patch
+}
+
+bcmwl-source_install() {
+    DESCRIPTION="driver for BCM4311/4312/4313 BCM4321/4322 BCM43224/43225/43227/43228 (source)."
+    RECOMMENDED="build-essential"
+    INSTALL="$N.install"
+    OPTIONS="nodev"
+    YARCH="any"
+
+    dosrc *
+    dosupported "$N"_supported
+}
+
+bcmwl-driver_install() {
+    DESCRIPTION="driver for BCM4311/4312/4313 BCM4321/4322 BCM43224/43225/43227/43228 (kernel module)"
+    RDEPEND="linux-kernel(=3.0.20-r4)"
+    BDEPEND="gcc-libs linux-kernel-headers"
+    CONFLICT="broadcom-sta-driver"
+    
+    INSTALL="$N.install"
+    
+    unset ARCH
+    domake
+    domkinstall
+}
+

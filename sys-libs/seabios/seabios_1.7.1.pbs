@@ -1,0 +1,37 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="A 16-bit x86 bios"
+HOMEPAGE="http://www.coreboot.org/SeaBIOS"
+LICENSE="GPL,LGPL"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
+YARCH="any"
+
+SRC_URI="http://code.coreboot.org/p/seabios/downloads/get/$N-$V.tar.gz"
+CHECKSUM="06e5ac85b6e4e3dc078cef5bde481039"
+
+RDEPEND=""
+RECOMMENDED=""
+BDEPEND="iasl python"
+OPTIONAL=""
+CONFLICT=""
+REPLACE=""
+
+OPTIONS="nostrip"
+
+pbs_unpack() {
+    dounpack
+}
+
+pbs_build() {
+    domake
+}
+
+pbs_install() {
+    docp out/bios.bin "$destdir"/usr/share/qemu/
+}
+

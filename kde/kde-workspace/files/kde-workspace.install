@@ -1,0 +1,44 @@
+
+post_install() {
+    groupadd -g 135 kdm &>/dev/null
+    useradd -u 135 -g kdm -d /var/lib/kdm -s /bin/false -r -M kdm &>/dev/null
+    chown -R 135:135 var/lib/kdm &>/dev/null
+    xdg-icon-resource forceupdate --theme hicolor &>/dev/null
+    update-desktop-database -q
+    
+    dm-switch disable-all
+    dm-switch enable kdm || true
+}
+
+post_upgrade() {
+    getent group kdm >/dev/null 2>&1 || groupadd -g 135 kdm &>/dev/null
+    getent passwd kdm >/dev/null 2>&1 || useradd -u 135 -g kdm -d /var/lib/kdm -s /bin/false -r -M kdm &>/dev/null
+    chown -R 135:135 var/lib/kdm &>/dev/null
+    xdg-icon-resource forceupdate --theme hicolor &> /dev/null
+    update-desktop-database -q
+}
+
+pre_remove() {
+    dm-switch disable kdm ||  true
+}
+
+post_remove() {
+    if getent passwd kdm >/dev/null 2>&1; then
+        userdel kdm
+    fi
+
+    if getent group kdm >/dev/null 2>&1; then
+      groupdel kdm
+    fi
+
+    xdg-icon-resource forceupdate --theme hicolor &> /dev/null
+
+    for i in lightdm gdm xdm lxdm; do
+        if dm-switch enable $i 2>/dev/null; then
+                echo "* kdm was removed, but $i is found, use $i for display-manager."
+            echo "* You can choose other DM by running dm-switch"
+                        return 0
+            fi
+    done ||true
+}
+

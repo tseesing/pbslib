@@ -1,0 +1,38 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="objected-oriented Perl interface to ImageMagick."
+HOMEPAGE="http://search.cpan.org/~jcristy/PerlMagick-6.74/"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
+LICENSE="GPL,PerlArtistic"
+
+SRC_URI="http://search.cpan.org/CPAN/authors/id/J/JC/JCRISTY/PerlMagick-"$V".tar.gz"
+CHECKSUM="9b3654bc89abfe9457610fd880025f10"
+
+RDEPEND="bzip2 cairo djvulibre expat fftw fontconfig freetype gcc-libs gdk-pixbuf2 glib2 glibc imagemagick jasper lcms libcroco libffi libICE libjpeg-turbo libpng librsvg libSM libtiff libtool libX11 libXau libxcb libXdmcp libXext libxml2 libXrender libXt pango pixman util-linux xz zlib perl"
+BDEPEND=""
+RECOMMENDED=""
+CONFLICT=""
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_config() {
+    export PERL_MM_USE_DEFAULT=1
+    doconfig INSTALLDIRS=vendor
+}
+
+pbs_build() {
+    domake
+}
+
+pbs_install() {
+    domkinstall
+        perl_cleanup
+}
+

@@ -1,0 +1,43 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="A tool to query or alter a process' scheduling policy."
+HOMEPAGE="http://freequaos.host.sk/schedtool"
+LICENSE="GPL"
+PACKAGER="StartOS Developers"
+
+SRC_URI="http://freequaos.host.sk/schedtool/"$N-$V".tar.bz2"
+CHECKSUM="0d968f05d3ad7675f1f33ef1f6d0a3fb"
+
+RDEPEND="glibc"
+RECOMMENDED=""
+BDEPEND=""
+OPTIONAL=""
+CONFLICT=""
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_patch() {
+    dopatch
+}
+
+pbs_config() {
+    config+=""
+    doconfig
+}
+
+pbs_build() {
+    domake
+}
+
+pbs_install() {
+    domkinstall
+}
+
+

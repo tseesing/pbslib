@@ -1,0 +1,30 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="the All-In-One Solution for Remote Access and Support over the Internet"
+HOMEPAGE="http://www.teamviewer.com/en/index.aspx"
+LICENSE="custom"
+PACKAGER="StartOS Developers"
+
+SRC_URI="http://www.teamviewer.com/download/teamviewer_linux.deb"
+CHECKSUM="ab13157b1f68234e1887332cda93786a"
+
+RDEPEND="libXtst"
+BDEPEND=""
+RECOMMENDED=""
+CONFLICT=""
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_install() {
+    docp data/*  "$destdir"
+    dodesktop "$N.desktop" "$N.png"
+    doln /usr/bin/teamviewer7 "$destdir"/usr/bin/teamviewer
+}
+

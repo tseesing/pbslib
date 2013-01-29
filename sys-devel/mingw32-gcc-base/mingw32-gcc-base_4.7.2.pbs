@@ -1,0 +1,92 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="A C cross-compiler for building Windows executables on Linux (stage1)"
+HOMEPAGE="http://sourceforge.net/projects/mingw/files/MinGW/Base/gcc/Version4/"
+LICENSE="GPL,LGPL"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
+
+_w32apiver="3.17"
+_runtimever="3.20"
+_uprel="1"
+_upw32rel="1"
+
+SRC_URI="http://downloads.sourceforge.net/project/mingw/MinGW/Base/gcc/Version4/gcc-"$V"-"${_uprel}"/gcc-"$V"-"${_uprel}"-mingw32-src.tar.lzma
+         http://downloads.sourceforge.net/project/mingw/MinGW/Base/w32api/w32api-"${_w32apiver}"/w32api-"${_w32apiver}"-"${_upw32rel}"-mingw32-src.tar.lzma
+         http://downloads.sourceforge.net/project/mingw/MinGW/Base/mingw-rt/mingwrt-"${_runtimever}"/mingwrt-"${_runtimever}"-mingw32-src.tar.gz"
+
+CHECKSUM="bc2d1828dd6c53683600545ca6a901e1
+          89e5800096aa334009f98e7c1743d825
+          26c0886cc60729b94956cc6d81cd076c"
+
+RDEPEND=""
+BDEPEND="mingw32-binutils"
+RECOMMENDED=""
+CONFLICT="mingw32-gcc"
+
+OPTIONS="nostrip"
+
+pbs_unpack() {
+    dounpack
+}
+
+pbs_patch() {
+    # Prepare headers
+    tar xf "$YBS_SOURCE"/w32api-"${_w32apiver}"-"${_upw32rel}"-mingw32-src.tar.lzma
+    tar xf "$YBS_SOURCE"/mingwrt-"${_runtimever}"-mingw32-src.tar.gz
+
+    mkdir -p mingw/include/
+    cp -r w32api-"${_w32apiver}"-"${_upw32rel}"-mingw32/include/* \
+          mingwrt-"${_runtimever}"-mingw32/include/* mingw/include/
+    
+    unset CFLAGS CXXFLAGS
+    tar xf gcc-"$V".tar.bz2
+    
+    cd gcc-"$V"
+    dopatch gcc-1-mingw-float.patch
+    chmod ugo+x configure
+    chmod ugo+x move-if-change
+}
+
+pbs_config() {
+    mkdir build && cd build
+    
+    TARGET="i586-mingw32msvc"
+
+    config="--target="$TARGET"
+            --prefix=/usr 
+            --libdir=/usr/lib"$LIBDIRSUFFIX"
+            --libexecdir=/usr/libexec
+            --enable-languages=c 
+            --enable-sjlj-exceptions 
+            --enable-hash-synchronization 
+            --disable-nls 
+            --disable-shared 
+            --disable-libssp 
+            --disable-libgomp 
+            --with-build-sysroot="$srcdir" 
+            --with-headers="$srcdir"/mingw/include"
+    ../configure $config
+}
+
+pbs_build() {
+    domake
+}
+
+pbs_install() {
+    domkinstall
+    cd "$destdir"
+    rm -rf usr/bin/"$TARGET"-{gcov,gccbug,gcc-*} \
+           usr/{include,lib"$LIBDIRSUFFIX"/libiberty.a} \
+           usr/"$TARGET" \
+           usr/share/{info,man} \
+           usr/"$TARGET" 
+    strip usr/bin/* 
+    strip usr/libexec/gcc/"$TARGET"/"$V"/{cc1*,collect2}
+    "$TARGET"-strip -g usr/lib"$LIBDIRSUFFIX"/gcc/"$TARGET"/"$V"/*.a
+}
+

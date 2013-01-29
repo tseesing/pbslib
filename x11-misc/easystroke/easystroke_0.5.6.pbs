@@ -1,0 +1,42 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="Use mouse gestures to initiate commands and hotkeys."
+HOMEPAGE="http://easystroke.sourceforge.net"
+LICENSE="ISC"
+PACKAGER="StartOS Developers"
+
+SRC_URI="http://downloads.sourceforge.net/"$N"/"$N-$V".tar.gz"
+CHECKSUM="a9f06576a47deaf6f612bb993685af0f"
+
+RDEPEND="boost-libs dbus-glib gtkmm libXtst"
+RECOMMENDED=""
+BDEPEND="help2man"
+OPTIONAL=""
+CONFLICT=""
+REPLACE=""
+
+INSTALL="$N.install"
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_build() {
+    domake
+    domake man
+}
+
+pbs_install() {
+    domkinstall PREFIX=/usr
+    doman "$N".1
+    dodoc LICENSE
+}
+
+
+
+

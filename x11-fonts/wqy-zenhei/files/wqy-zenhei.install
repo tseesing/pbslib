@@ -1,0 +1,16 @@
+. /usr/lib/ybs/funcs
+
+dir="/usr/share/fonts/wenquanyi/wqy-zenhei"
+
+post_install() {
+    dofont "$dir"
+}
+
+post_remove () {
+    rmdir "$dir" ||return 0
+}
+
+post_upgrade() {
+    post_install
+}
+

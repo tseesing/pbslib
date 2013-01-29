@@ -1,0 +1,14 @@
+
+post_install() {
+    # Creating global font cache
+    fc-cache -srf ||true
+}
+
+post_upgrade() {
+    post_install    
+}
+
+post_downgrade() {
+    post_install
+}
+

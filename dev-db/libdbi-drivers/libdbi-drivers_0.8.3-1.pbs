@@ -1,0 +1,61 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="The libdbi-drivers project maintains drivers for libdbi."
+HOMEPAGE="http://libdbi-drivers.sourceforge.net/"
+LICENSE="GPL"
+PACKAGER="StartOS Developers"
+
+SRC_URI="http://sourceforge.net/projects/"$N"/files/"$N"/"$N-$V"/"$N-$V".tar.gz"
+
+RDEPEND=""
+RECOMMENDED=""
+BDEPEND=""
+CONFLICT=""
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_config() {
+    config+="--disable-docs
+               --with-libdbi" 
+             #--with-sqlite
+             #--with-sqlite3
+             #--with-pgsql
+             #--with-mysql
+    doconfig
+}
+
+pbs_build() {
+    domake
+}
+
+pbs_install() {
+    #make DESTDIR="$destdir" install
+    domkinstall
+    #doinit "$N"
+    #dounit "N".service
+    #dodesktop "*.desktop" "*.png"
+    #dodoc AUTHORS ChangeLog COPYING INSTALL NEWS README 
+    #docp "$filesdir/XXXX" "dirname"
+    #domv "$filesdir/XXXX" "dirname"
+    #docp_rename "$1" "$2"
+    #domv_rename "$1" "$2"
+    #doln "$1 "$2"
+    #doman a.1 b.2 c.3
+    #*****************
+    #when SRC_URI is deb or rpm package
+    #docp data/*  "$destdir"
+}
+
+#split package
+foo_install () {
+    :
+}
+
+

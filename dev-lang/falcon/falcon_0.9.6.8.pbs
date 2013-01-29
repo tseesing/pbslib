@@ -1,0 +1,39 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="An open source general purpose untyped language written in C++"
+HOMEPAGE="http://falconpl.org/"
+LICENSE="GPL"
+PACKAGER="StartOS Developers"
+
+SRC_URI="http://falconpl.org/project_dl/_official_rel/Falcon-"$V".tgz"
+CHECKSUM="8720096a8257e8bf370e3f0a072b5600d7575f64"
+
+RDEPEND="curl gd gtk2 libmysqlclient pcre postgresql-libs sdl-image sdl-mixer sdl-ttf sqlite"
+RECOMMENDED=""
+BDEPEND="cmake"
+OPTIONAL=""
+CONFLICT=""
+REPLACE=""
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_config() {
+    doconfig -DCMAKE_BUILD_TYPE=Release
+}
+
+pbs_build() {
+    domake
+}
+
+pbs_install() {
+    domkinstall
+    doln /usr/include/falcon0.9.6/falcon "$destdir"/usr/include/falcon
+}
+

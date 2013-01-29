@@ -1,0 +1,49 @@
+diff -ruN gnome-panel-2.32.1-r2/applets/clock/calendar-window.c gnome-panel-2.32.1-r2/applets/clock/calendar-window.c
+--- gnome-panel-2.32.1-r2/applets/clock/calendar-window.c	2012-03-02 13:29:40.663266928 +0800
++++ gnome-panel-2.32.1-r2/applets/clock/calendar-window.c	2012-03-02 13:31:15.173267035 +0800
+@@ -1930,7 +1930,9 @@
+ 	calwin->priv = CALENDAR_WINDOW_GET_PRIVATE (calwin);
+ 
+ 	window = GTK_WINDOW (calwin);
+-	gtk_window_set_type_hint (window, GDK_WINDOW_TYPE_HINT_DOCK);
++	//gtk_window_set_type_hint (window, GDK_WINDOW_TYPE_HINT_DOCK);
++	gtk_window_set_skip_taskbar_hint (window, TRUE);
++	gtk_window_set_keep_above (window, TRUE);
+ 	gtk_window_set_decorated (window, FALSE);
+ 	gtk_window_set_resizable (window, FALSE);
+ 	gtk_window_stick (window);
+diff -ruN gnome-panel-2.32.1-r2/applets/clock/clock.c gnome-panel-2.32.1-r2/applets/clock/clock.c
+--- gnome-panel-2.32.1-r2/applets/clock/clock.c	2012-03-02 13:29:40.663266928 +0800
++++ gnome-panel-2.32.1-r2/applets/clock/clock.c	2012-03-02 13:32:04.186600001 +0800
+@@ -856,6 +856,8 @@
+ 
+ 	g_signal_connect (window, "delete_event",
+ 			  G_CALLBACK (delete_event), cd->panel_button);
++	g_signal_connect (window, "focus_out_event",
++			  G_CALLBACK (delete_event), cd->panel_button);
+ 	g_signal_connect (window, "key_press_event",
+ 			  G_CALLBACK (close_on_escape), cd->panel_button);
+ 
+diff -ruN gnome-panel-2.32.1-r2/applets/wncklet/window-list.c gnome-panel-2.32.1-r2/applets/wncklet/window-list.c
+--- gnome-panel-2.32.1-r2/applets/wncklet/window-list.c	2012-03-02 13:29:40.663266928 +0800
++++ gnome-panel-2.32.1-r2/applets/wncklet/window-list.c	2012-03-02 13:34:45.826599457 +0800
+@@ -138,7 +138,9 @@
+ 			  GdkPixmap                 *pixmap,
+ 			  TasklistData              *tasklist)
+ {
+-	switch (type) {
++	wnck_tasklist_set_button_relief (WNCK_TASKLIST (tasklist->tasklist),
++					 GTK_RELIEF_NORMAL);
++	/*switch (type) {
+ 	case PANEL_NO_BACKGROUND:
+ 		wnck_tasklist_set_button_relief (WNCK_TASKLIST (tasklist->tasklist),
+ 						 GTK_RELIEF_NORMAL);
+@@ -148,7 +150,7 @@
+ 		wnck_tasklist_set_button_relief (WNCK_TASKLIST (tasklist->tasklist),
+ 						 GTK_RELIEF_NONE);
+ 		break;
+-	}
++	}*/
+ }
+ 
+ static void

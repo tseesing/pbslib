@@ -1,0 +1,38 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="Common functions for gnome-mplayer and gecko-mediaplayer."
+HOMEPAGE="http://code.google.com/p/gmtk/"
+LICENSE="GPL"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
+
+SRC_URI="http://gmtk.googlecode.com/files/"$N-$V".tar.gz"
+CHECKSUM="919ea155b755a33ab052dacbbc6e7f03"
+
+RDEPEND="gtk2 pulseaudio"
+RECOMMENDED=""
+BDEPEND="intltool pkgconfig"
+OPTIONAL=""
+CONFLICT=""
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_config() {
+    config+=""
+    doconfig
+}
+
+pbs_build() {
+    make
+}
+
+pbs_install() {
+    domkinstall
+}
+

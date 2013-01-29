@@ -1,0 +1,35 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="KDE PIM Libraries"
+HOMEPAGE="http://www.kde.org/"
+LICENSE="GPL,LGPL"
+PACKAGER="StartOS Developers<>"
+
+SRC_URI="http://download.kde.org/stable/"$V"/src/"$N-$V".tar.xz"
+
+RDEPEND="akonadi(>=1.8.0) gpgme kdelibs libical openldap prison"
+BDEPEND=""
+
+INSTALL="$N.install"
+
+pbs_unpack() {
+       dounpack
+}
+
+pbs_config() {
+    doconfig -DCMAKE_BUILD_TYPE=Release -DCMAKE_SKIP_RPATH=ON
+}
+
+pbs_build() {
+    domake
+}
+
+pbs_install() {
+    domkinstall
+}
+

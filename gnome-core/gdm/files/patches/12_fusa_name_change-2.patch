@@ -1,0 +1,20 @@
+--- a/gui/user-switch-applet/GNOME_FastUserSwitchApplet.server.in.in	2010-03-18 05:27:16.000000000 +0800
++++ b/gui/user-switch-applet/GNOME_FastUserSwitchApplet.server.in.in.new	2010-11-24 15:21:43.912000055 +0800
+@@ -1,5 +1,5 @@
+ <oaf_info>
+-  <oaf_server iid="OAFIID:GNOME_FastUserSwitchApplet_Factory" type="exe"
++  <oaf_server iid="OAFIID:GNOME_FastUserSwitchAppletGdm_Factory" type="exe"
+               location="@LIBEXECDIR@/gdm-user-switch-applet">
+ 
+     <oaf_attribute name="repo_ids" type="stringv">
+@@ -18,8 +18,8 @@
+     </oaf_attribute>
+   </oaf_server>
+ 
+-  <oaf_server iid="OAFIID:GNOME_FastUserSwitchApplet" type="factory"
+-              location="OAFIID:GNOME_FastUserSwitchApplet_Factory">
++  <oaf_server iid="OAFIID:GNOME_FastUserSwitchAppletGdm" type="factory"
++              location="OAFIID:GNOME_FastUserSwitchAppletGdm_Factory">
+ 
+     <oaf_attribute name="repo_ids" type="stringv">
+       <item value="IDL:GNOME/Vertigo/PanelAppletShell:1.0"/>

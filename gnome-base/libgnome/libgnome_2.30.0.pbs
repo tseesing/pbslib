@@ -1,0 +1,38 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="Libgnome is one of the core GNOME libraries."
+HOMEPAGE="http://www.gnome.org"
+REPO=""
+LICENSE="GPL-2"
+PACKAGER="StartOS Developers"
+
+SRC_URI=" http://ftp.gnome.org/pub/gnome/platform/2.30/2.30.2/sources/"$N-$V$R".tar.bz2"
+
+RDEPEND="alsa-lib audiofile avahi dbus dbus-glib gcc-libs gconf glib2 gdk-pixbuf2 glibc gnome-vfs libbonobo libxml2 openssl orbit popt zlib"
+BDEPEND="libxslt-dev intltool"
+RECOMMENDED=""
+
+INSTALL="$N.install"
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_config() {
+    config+="--disable-schemas-install"
+    doconfig
+}
+
+pbs_build() {
+    domake
+}
+
+pbs_install() {
+    domkinstall
+}
+

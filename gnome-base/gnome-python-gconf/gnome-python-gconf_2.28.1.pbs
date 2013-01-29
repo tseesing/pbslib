@@ -1,0 +1,44 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="gnome-python (GNOME Python Bindings)"
+HOMEPAGE="http://www.gnome.org"
+LICENSE="GPL"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
+
+SRC_URI="http://ftp.gnome.org/pub/gnome/sources/gnome-python/2.28/gnome-python-"$V".tar.bz2"
+
+RDEPEND="python gconf"
+BDEPEND=""
+RECOMMENDED=""
+
+pbs_unpack() {
+    dounpack
+}
+
+pbs_config() {
+    config+="--disable-gnome 
+             --disable-gnomeui 
+             --disable-gnomecanvas 
+             --disable-gnomevfs 
+             --disable-gnomevfsbonobo
+             --disable-pyvfsmodule 
+             --enable-gconf  
+             --disable-bonobo_activation
+             --disable-bonobo 
+             --disable-bonoboui"
+    doconfig
+}
+
+pbs_build() {
+    domake
+}
+
+pbs_install() {
+    domkinstall
+}
+

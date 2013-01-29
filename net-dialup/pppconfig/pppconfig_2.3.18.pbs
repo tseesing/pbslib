@@ -1,0 +1,30 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="A text menu based utility for configuring ppp."
+HOMEPAGE="http://http.us.debian.org/debian/pool/main/p/pppconfig/"
+REPO=""
+LICENSE="GPL"
+PACKAGER="StartOS Developers"
+
+SRC_URI="http://http.us.debian.org/debian/pool/main/p/pppconfig/pppconfig_2.3.18_all.deb"
+
+RDEPEND=""
+BDEPEND=""
+RECOMMENDED=""
+CONFLICT=""
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_install() {
+    docp data/*  "$destdir"
+    cd "$destdir"
+    mkdir -p etc/ppp/{peers,resolv} etc/chatscripts
+}
+

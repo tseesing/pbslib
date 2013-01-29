@@ -1,0 +1,40 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="A cheesy program to take pictures and videos from your webcam"
+HOMEPAGE="http://www.gnome.org/projects/cheese/"
+LICENSE="GPL"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
+
+SRC_URI="http://ftp.gnome.org/pub/gnome/sources/"$N"/"${V%.*}"/"$N-$V".tar.xz"
+CHECKSUM="745262a0db7d0dbe973497a4f36dd4d85b8a42426d8f431e4b6898351ad6459e"
+
+RDEPEND="gtk3 gstreamer gst-plugins-bad gst-plugins-base gst-plugins-good clutter-gst clutter-gtk libcanberra libgee gnome-video-effects librsvg gnome-desktop"
+BDEPEND="pkgconfig intltool gobject-introspection itstool vala nautilus-sendto"
+OPTIONAL="nautilus-sendto: Send snapshots
+          frei0r-plugins: More camera effects"
+RECOMMENDED=""
+
+INSTALL="$N.install"
+
+pbs_unpack() {
+    dounpack
+}
+
+pbs_config() {
+    config+="--disable-static --disable-schemas-compile"
+    doconfig
+}
+
+pbs_build() {
+    domake
+}
+
+pbs_install() {
+    domkinstall
+}
+

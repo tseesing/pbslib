@@ -1,0 +1,52 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="Windows header files for mingw32 C cross-compiler"
+HOMEPAGE="http://sourceforge.net/projects/mingw/files/MinGW/Base/w32api/"
+LICENSE="LGPL"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
+YARCH="any"
+
+_runtimever="3.20"
+_uprel="1"
+
+SRC_URI="http://downloads.sourceforge.net/project/mingw/MinGW/Base/w32api/w32api-"$V"/w32api-"$V"-"${_uprel}"-mingw32-src.tar.lzma
+        http://downloads.sourceforge.net/mingw/mingwrt-"${_runtimever}"-mingw32-src.tar.gz"
+CHECKSUM="89e5800096aa334009f98e7c1743d825 26c0886cc60729b94956cc6d81cd076c"
+
+RDEPEND=""
+BDEPEND="mingw32-gcc-base"
+RECOMMENDED=""
+CONFLICT=""
+
+OPTIONS="nostrip"
+
+pbs_unpack() {
+    dounpack
+}
+
+pbs_patch() {
+    tar xf "$YBS_SOURCE"/mingwrt-"${_runtimever}"-mingw32-src.tar.gz
+}
+
+pbs_config() {
+    TARGET="i586-mingw32msvc"
+    export CFLAGS="-mms-bitfields -I$srcdir/mingwrt-"${_runtimever}"-mingw32/include -I$srcdir/include -I/root/mingw-w64-v2.0.7/mingw-w64-headers/include"
+    
+    config="--prefix=/usr/$TARGET --target=$TARGET --host=$TARGET"
+    doconfig            
+}
+
+pbs_build() {
+    domake
+}
+
+pbs_install() {
+    make install prefix="$destdir"/usr/"$TARGET"
+    find "$destdir" -name '*.a' | xargs -rtl1 "$TARGET"-strip -g
+}
+

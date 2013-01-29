@@ -1,0 +1,36 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="KDE control panel and widget network connections"
+HOMEPAGE="http://www.kde.org"
+LICENSE="GPL"
+PACKAGER="StartOS Developers<>"
+
+SRC_URI="http://download.kde.org/unstable/"$N"/"$V"/src/"$N-$V".tar.bz2"
+CHECKSUM="be89971692f5b353c1e2bf5d67f3a046"
+
+RDEPEND="networkmanager"
+BDEPEND="cmake automoc4"
+
+INSTALL="$N.install"
+
+pbs_unpack() {
+       dounpack
+}
+
+pbs_config() {
+    doconfig -DCMAKE_BUILD_TYPE=Release 
+}
+
+pbs_build() {
+    domake
+}
+
+pbs_install() {
+    domkinstall
+}
+

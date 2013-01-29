@@ -1,0 +1,77 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="a collection of common network programs"
+HOMEPAGE="http://www.gnu.org/software/inetutils/"
+LICENSE="GPL"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
+
+SRC_URI="http://ftp.gnu.org/gnu/"$N"/"$N-$V".tar.gz"
+CHECKSUM="86b7eb11cfdaefb1d4e9bfc10620beaf8f09bc90"
+
+RDEPEND="readline pam ncurses"
+BDEPEND=""
+
+INSTALL="$N.install"
+
+pbs_unpack() {
+    dounpack
+}
+
+pbs_patch() {
+    sed -i 's|_GL_WARN_ON_USE (gets|//_GL_WARN_ON_USE (gets|' lib/stdio.in.h
+}
+
+pbs_config() {
+    config+="--libexec=/usr/sbin
+             --without-wrap 
+             --with-pam 
+             --enable-ftp   
+             --enable-ftpd
+             --enable-telnet 
+             --enable-telnetd
+             --enable-talk 
+             --enable-talkd
+             --enable-rlogin 
+             --enable-rlogind
+             --enable-rsh 
+             --enable-rshd 
+             --enable-rcp 
+             --enable-hostname 
+             --disable-rexec
+             --disable-rexecd 
+             --disable-tftp 
+             --disable-tftpd 
+             --disable-ping 
+             --disable-ping6
+             --disable-logger 
+             --disable-syslogd 
+             --disable-inetd
+             --disable-whois 
+             --disable-uucpd 
+             --disable-ifconfig 
+             --disable-traceroute"
+    doconfig
+}
+
+pbs_build() {
+    domake
+}
+
+pbs_install() {
+    domkinstall
+    cd "$destdir"
+    doln /usr/bin/hostname bin/hostname
+      docp "$filesdir"/dnsdomainname bin/
+      echo ".so man1/hostname.1" > usr/share/man/man1/dnsdomainname.1
+      install -D -m644 "${filesdir}"/telnet.xinetd etc/xinetd.d/telnet
+      install -D -m644 "${filesdir}"/talk.xinetd etc/xinetd.d/talk
+      install -D -m644 "${filesdir}"/rlogin.xinetd etc/xinetd.d/rlogin
+      install -D -m644 "${filesdir}"/rsh.xinetd etc/xinetd.d/rsh
+      dounit ftpd.service 
+}
+

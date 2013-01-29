@@ -1,0 +1,39 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="Development library for simulation games"
+HOMEPAGE="https://gitorious.org/fg"
+LICENSE="GPL"
+PACKAGER="StartOS Developers"
+
+SRC_URI="http://mirrors.ibiblio.org/pub/mirrors/simgear/ftp/Source/"$N-$V".tar.bz2"
+CHECKSUM="24a368754d10e50d7f3ec00f93891a89"
+
+RDEPEND="freealut openscenegraph"
+RECOMMENDED=""
+BDEPEND="cmake"
+OPTIONAL=""
+CONFLICT=""
+
+OPTIONS="nodev"
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_config() {
+    cmake -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_INSTALL_LIBDIR=lib .
+}
+
+pbs_build() {
+    domake
+}
+
+pbs_install() {
+    domkinstall
+}
+

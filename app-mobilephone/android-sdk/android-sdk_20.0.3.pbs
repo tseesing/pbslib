@@ -1,0 +1,48 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="Google Android SDK"
+HOMEPAGE="http://developer.android.com/sdk/index.html"
+LICENSE="custom"
+PACKAGER="StartOS Developers"
+
+SRC_URI="http://dl.google.com/android/"$N"_r"$V"-linux.tgz"
+CHECKSUM="919ea464007c2c4d04d5b366b4f64e916d99995e"
+
+RDEPEND="jdk jre fontconfig libXrender mesa"
+RECOMMENDED="android-sdk-platform-tools android-systemd-rules"
+BDEPEND=""
+OPTIONAL=""
+CONFLICT=""
+REPLACE=""
+
+OPTIONS="nostrip"
+
+INSTALL="$N.install"
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_install() {
+    docp * "$destdir"/opt/"$N"
+    
+    dodesktop "$N".desktop "$N".png
+    dodoc "$filesdir"/license.html
+    dounit adb.service
+    
+    cd "$destdir"
+    
+    docp "$filesdir"/"$N"                             usr/bin/
+    docp "$filesdir"/"$N".conf                        etc/ld.so.conf.d/
+    docp "$filesdir"/{android-sdk.sh,android-sdk.csh} etc/profile.d/
+    chmod 0755 etc/profile.d/{android-sdk.sh,android-sdk.csh} usr/bin/"$N"
+    
+    [[ "$ARCH" = "i686" ]] && rm -rf opt/"$N"/tools/lib/{monitor-,}x86_64
+    chmod -R o=g opt/"$N"
+}
+

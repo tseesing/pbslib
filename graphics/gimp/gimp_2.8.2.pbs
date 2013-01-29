@@ -1,0 +1,37 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="GNU Image Manipulation Program"
+HOMEPAGE="http://www.gimp.org/"
+LICENSE="GPLv3/LGPL"
+PACKAGER="StartOS Developers"
+
+SRC_URI="ftp://ftp.gimp.org/pub/"$N"/v2.8/"$N-$V".tar.bz2"
+CHECKSUM="b542138820ca3a41cbd63fc331907955"
+
+RDEPEND="gegl(>=0.2.0) aalib alsa-lib dbus-glib gegl ghostscript libexif libmng libwmf libXmu libXpm poppler-glib systemd"
+BDEPEND=""
+
+INSTALL="$N.install"
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_config() {
+    config+=" --enable-mp 
+              --enable-gimp-console 
+          --enable-python 
+          --with-gif-compression=lzw 
+          --with-libcurl"
+    doconfig
+}
+
+pbs_install() {
+    domkinstall
+}
+

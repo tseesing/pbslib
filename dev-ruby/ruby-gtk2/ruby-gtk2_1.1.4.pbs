@@ -1,0 +1,39 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="Ruby Gtk2 bindings"
+HOMEPAGE="http://sourceforge.net/projects/ruby-gnome2"
+LICENSE="LGPL"
+PACKAGER="StartOS Developers"
+GROUP="ruby"
+
+SRC_URI="http://downloads.sourceforge.net/ruby-gnome2/"$N-$V".tar.gz"
+CHECKSUM="31c5da239bd1cb25daca026e453106f29503195c445d73a9cf1aceb22379d100"
+
+RDEPEND="ruby gtk2"
+RECOMMENDED=""
+BDEPEND="ruby ruby-pkgconfig"
+OPTIONAL=""
+CONFLICT=""
+REPLACE=""
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_config() {
+    LANG="en_US.UTF-8" ruby extconf.rb atk gdk_pixbuf2 gio2 glib2 gtk2 pango --topdir="$pkgdir" --vendor
+}
+
+pbs_build() {
+    domake
+}
+
+pbs_install() {
+    domkinstall
+}
+

@@ -1,0 +1,40 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="Redhat's Newt windowing toolkit development files"
+HOMEPAGE="https://fedorahosted.org/newt/"
+REPO=""
+LICENSE="GPL"
+PRIORITY=""
+PACKAGER="StartOS Developers"
+
+SRC_URI="https://fedorahosted.org/releases/n/e/"$N"/"$N-$V$R".tar.gz"
+
+RDEPEND=""
+BDEPEND="slang"
+RECOMMENDED=""
+CONFLICT=""
+
+NOTES=""
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_config() {
+    config+="--without-tcl"
+    doconfig
+}
+
+pbs_build() {
+    domake
+}
+
+pbs_install() {
+    #make DESTDIR="$destdir" install
+    domkinstall instroot="$destdir" install
+}

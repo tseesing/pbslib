@@ -1,0 +1,5 @@
+
+* 2013-01-28 Tseesing <chenqixing@ivali.com> - 0.18.0
+-   Remove "glibc" from $RDEPEND
+-   Add "libXi libXinerama libXrandr" to $RDEPEND
+

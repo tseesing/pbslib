@@ -1,0 +1,41 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="An application finder for Xfce"
+HOMEPAGE="http://www.xfce.org/projects/xfce4-appfinder"
+LICENSE="GPL"
+PACKAGER="StartOS Developers"
+
+SRC_URI="http://archive.xfce.org/src/xfce/"$N"/4.10/"$N-$V".tar.bz2"
+CHECKSUM="042aae7e366428a6a92b6353b3f2727d64823076a7752b8e0a15f1f8f3645439"
+
+RDEPEND="garcon libxfce4ui"
+RECOMMENDED=""
+BDEPEND=""
+OPTIONAL=""
+CONFLICT=""
+
+INSTALL="$N.install"
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_config() {
+    config+="--disable-static
+             --disable-debug"
+    doconfig
+}
+
+pbs_build() {
+    domake
+}
+
+pbs_install() {
+    domkinstall
+}
+

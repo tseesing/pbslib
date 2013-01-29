@@ -1,0 +1,44 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="A command-line NeoGeo Emulator."
+HOMEPAGE="http://gngeo.googlecode.com"
+LICENSE="custom"
+PACKAGER="StartOS Developers"
+
+SRC_URI="http://gngeo.googlecode.com/files/"$N-$V".tar.gz"
+CHECKSUM="a91836e6762bbc28ad164ef94b2d00f8"
+
+RDEPEND="sdl-image"
+RECOMMENDED=""
+BDEPEND=""
+OPTIONAL=""
+CONFLICT=""
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_patch() {
+    sed -i 's#games/lib#share#' sample_gngeorc
+}
+
+pbs_config() {
+    config+=""
+    doconfig
+}
+
+pbs_build() {
+    domake
+}
+
+pbs_install() {
+    domkinstall
+    install -Dm644 sample_gngeorc "${destdir}"/usr/share/"$N"/sample_gngeorc
+    dodoc COPYING
+}
+

@@ -1,0 +1,63 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="Intelligent Input Bus for Linux / Unix OS"
+HOMEPAGE="http://code.google.com/p/ibus/"
+LICENSE="LGPL"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
+
+SRC_URI="http://ibus.googlecode.com/files/"$N-$V".tar.gz"
+CHECKSUM="31d732c17d0a103565fa29995c5610e8be8b2dca"
+
+PROVIDE="ibus libibus"
+
+BDEPEND="gobject-introspection dconf iso-codes intltool gtk2 gtk3"
+
+INSTALL="$N.install"
+
+pbs_unpack() {
+    dounpack
+}
+
+pbs_config() {
+    config+="--disable-gconf 
+             --disable-ui
+             --disable-memconf 
+             --enable-dconf 
+             --enable-python-library
+             --enable-introspection" 
+    doconfig
+}
+
+pbs_build() {
+    domake
+}
+
+ibus_install() {
+    DESCRIPTION="Intelligent Input Bus for Linux / Unix OS"
+    RDEPEND="gtk2 gtk3 pygobject pyxdg"
+    INSTALL="$N.install"    
+    
+    domkinstall
+
+    # remove file that will contain in libibus
+    make DESTDIR="$destdir" uninstall-pkgconfigDATA
+    cd src
+    make DESTDIR="$destdir" uninstall
+    rmdir -p --ignore-fail-on-non-empty "$destdir"/usr/include/ibus-1.0 "$destdir"/usr/lib"$LIBDIRSUFFIX"/pkgconfig
+}
+
+libibus_install() {
+    DESCRIPTION="Library for ibus"
+    RDEPEND="glib2"
+
+    cd "$srcdir"
+    make DESTDIR="$destdir" install-pkgconfigDATA
+    cd src
+    make DESTDIR="$destdir" install
+}
+

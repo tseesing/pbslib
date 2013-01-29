@@ -1,0 +1,44 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="library for accessing and manipulating reiserfs partitions"
+HOMEPAGE="http://www.namesys.com"
+LICENSE="GPL"
+PACKAGER="StartOS Developers"
+
+SRC_URI="ftp://mirrors.kernel.org/archlinux/other/"$N"/"$N-$V".tar.gz"
+
+RDEPEND="glibc e2fsprogs"
+RECOMMENDED=""
+BDEPEND=""
+OPTIONAL=""
+CONFLICT=""
+REPLACE=""
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_patch() {
+    dopatch fix-underquoted-definition.patch
+}
+
+pbs_config() {
+    config+=""
+    doconfig
+}
+
+pbs_build() {
+    domake
+}
+
+pbs_install() {
+    domkinstall
+    # Only provide lib and includes files
+    rm -r "$destdir"/usr{/sbin,/share/man}
+}
+

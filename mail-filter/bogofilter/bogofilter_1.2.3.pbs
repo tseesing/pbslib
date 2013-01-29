@@ -1,0 +1,42 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="A fast Bayesian spam filtering tool"
+HOMEPAGE="http://bogofilter.sourceforge.net"
+LICENSE="GPLv3"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
+
+SRC_URI="http://sourceforge.net/projects/$N/files/$N-current/$N-$V/$N-$V.tar.bz2"
+CHECKSUM=""
+
+RDEPEND="berkeley-db perl gsl"
+RECOMMENDED=""
+BDEPEND=""
+OPTIONAL=""
+CONFLICT=""
+REPLACE=""
+
+pbs_unpack() {
+    dounpack
+}
+
+pbs_config() {
+    config+="--enable-transactions"
+    doconfig
+}
+
+pbs_build() {
+    domake
+}
+
+pbs_install() {
+    domkinstall
+    docp contrib "${destdir}"/usr/share/"$N"/
+    cd "$destdir"
+    mv etc/bogofilter.cf.example etc/bogofilter.cf
+}
+

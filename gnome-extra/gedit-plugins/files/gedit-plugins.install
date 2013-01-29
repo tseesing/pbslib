@@ -1,0 +1,7 @@
+. /usr/lib/ybs/funcs
+
+post_install() {
+    gnome2_install_schema "/etc/gconf/schemas/gedit-show-tabbar-plugin.schemas"
+    gnome2_install_schema "/etc/gconf/schemas/gedit-drawspaces.schemas"
+    gnome2_gconfd_reload
+}   

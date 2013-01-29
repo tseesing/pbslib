@@ -1,0 +1,80 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="GnuCash is personal and small-business financial-accounting software"
+HOMEPAGE="http://www.gnucash.org/"
+LICENSE="GPL"
+PACKAGER="StartOS Developers"
+
+SRC_URI="http://sourceforge.net/projects/gnucash/files/gnucash%20%28stable%29/"$V"/"$N-$V".tar.bz2"
+
+RDEPEND=""
+BDEPEND=""
+RECOMMENDED=""
+CONFLICT=""
+
+NOTES=""
+
+#DESKTOPFILE="glchess.desktop" or "/opt/test/test.desktop"
+#ICONFILE="test.png"   or "/opt/test/test.png"
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_config() {
+    #dopatch $filesdir/patches/*.patch 
+    #XX.patch should be found under $filesdir or $filesdir/patches/
+    #second, add package specified config params to config
+    #default is :
+    #config+=" --prefix=/usr
+    #          --sysconfdir=/etc
+    #          --localstatedir=/var
+    #             --infodir=/usr/share/info
+    #          --mandir=/usr/share/man
+    #              --disable-static
+    #          --enable-shared "
+    config+=""
+    #Third, call configure with $config
+    #./configure $config
+    doconfig
+}
+
+pbs_build() {
+    #make "$MAKEOPTS"
+    domake
+}
+
+pbs_check() {
+    make check
+}
+
+pbs_install() {
+    #install everything to $destdir
+    #make DESTDIR="$destdir" install
+    domkinstall
+    #doinit "$N"
+    #doinit "N".service
+    #dodesktop "*.desktop" "*.png"
+    #dodoc AUTHORS ChangeLog COPYING INSTALL NEWS README 
+    #docp "$filesdir/XXXX" "dirname"
+    #domv "$filesdir/XXXX" "dirname"
+    #docp_rename "$1" "$2"
+    #domv_rename "$1" "$2"
+    #doln "$1 "$2"
+    #*****************
+    #when SRC_URI is deb or rpm package
+    #docp data/*  "$destdir"
+}
+
+pbs_prerm() {
+    :
+}
+
+pbs_postrm() {
+    :
+}

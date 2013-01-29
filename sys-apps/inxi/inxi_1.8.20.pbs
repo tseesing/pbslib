@@ -1,0 +1,32 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="script to get system information"
+HOMEPAGE="https://code.google.com/p/inxi/"
+LICENSE="GPL"
+PACKAGER="StartOS Developers"
+YARCH="any"
+
+SRC_URI="http://inxi.googlecode.com/svn/trunk/inxi.tar.gz"
+CHECKSUM="5a99a91ad6643f6d68b293f9d451c379"
+
+RDEPEND="bash coreutils gawk grep pciutils sed"
+RECOMMENDED="mesa-demos xdpyinfo xrandr"
+BDEPEND=""
+OPTIONAL=""
+CONFLICT=""
+REPLACE=""
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_install() {
+    docp inxi "$destdir"/usr/bin/
+    doman inxi.1.gz
+}
+

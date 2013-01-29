@@ -1,0 +1,42 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="MATE keyboard library"
+HOMEPAGE="http://mate-desktop.org"
+LICENSE="LGPL"
+PACKAGER="StartOS Developers"
+
+
+SRC_URI="http://pub.mate-desktop.org/releases/1.4/"$N-$V".tar.xz"
+CHECKSUM="b01e2fbd09657232c909078682134665d24bb287c2606b3759d6b6d339b51cb1"
+
+RDEPEND="libxklavier mate-conf"
+RECOMMENDED=""
+BDEPEND="intltool pkgconfig"
+OPTIONAL=""
+CONFLICT=""
+REPLACE=""
+
+INSTALL="$N.install"
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_config() {
+    config+="--disable-static --disable-schemas-install"
+    doconfig
+}
+
+pbs_build() {
+    domake
+}
+
+pbs_install() {
+    domkinstall MATECONF_DISABLE_MAKEFILE_SCHEMA_INSTALL=1
+}
+

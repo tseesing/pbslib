@@ -1,0 +1,41 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="Suite to create, manipulate and view DjVu documents"
+HOMEPAGE="http://djvu.sourceforge.net/"
+LICENSE="GPL"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
+
+SRC_URI="http://downloads.sourceforge.net/project/djvu/DjVuLibre/3.5.25/"$N-$V".tar.gz"
+
+RDEPEND="libtiff"
+RECOMMENDED="pkgconfig"
+BDEPEND=""
+
+INSTALL="$N.install"
+
+pbs_unpack() {
+    dounpack
+}
+
+pbs_config() {
+    config+="--disable-desktopfiles"
+    doconfig
+}
+
+pbs_build() {
+    make
+}
+
+pbs_install() {
+    domkinstall
+    for sz in 22 32 48 64; do
+        install -Dm644 desktopfiles/prebuilt-hi"${sz}"-djvu.png \
+                "${destdir}"/usr/share/icons/hicolor/"${sz}"x"${sz}"/mimetypes/image-vnd.djvu.mime.png
+    done
+}
+

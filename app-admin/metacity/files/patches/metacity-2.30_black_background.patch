@@ -1,0 +1,16 @@
+diff -ruN metacity-2.30.3-r6-orig/src/compositor/compositor-xrender.c metacity-2.30.3-r6/src/compositor/compositor-xrender.c
+--- metacity-2.30.3-r6-orig/src/compositor/compositor-xrender.c	2012-08-16 10:39:19.763311095 +0800
++++ metacity-2.30.3-r6/src/compositor/compositor-xrender.c	2012-08-16 10:39:43.013311001 +0800
+@@ -812,9 +812,9 @@
+       XRenderColor c;
+ 
+       /* Background default to just plain ugly grey */
+-      c.red = 0x8080;
+-      c.green = 0x8080;
+-      c.blue = 0x8080;
++      c.red = 0x0;
++      c.green = 0x0;
++      c.blue = 0x0;
+       c.alpha = 0xffff;
+       
+       XRenderFillRectangle (xdisplay, PictOpSrc, picture, &c, 0, 0, 1, 1);

@@ -1,0 +1,44 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="Displays text on your screen. On-Screen-Display-libs for some tools"
+HOMEPAGE="http://www.ignavus.net/software.html"
+LICENSE="GPLv2"
+PACKAGER="StartOS Developers"
+
+SRC_URI="http://downloads.sourceforge.net/libxosd/"$N-$V".tar.gz"
+CHECKSUM="4b349fe930e4eee2f504d6c02673e24d"
+
+RDEPEND="libXinerama"
+RECOMMENDED=""
+BDEPEND=""
+OPTIONAL=""
+CONFLICT=""
+REPLACE=""
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_patch() {
+    dopatch 25_fix_mangapges.diff 328676.diff
+}
+
+pbs_config() {
+    config+=""
+    doconfig
+}
+
+pbs_build() {
+    domake
+}
+
+pbs_install() {
+    domkinstall
+    sed -i 's/AC_DEFUN(AM_PATH_LIBXOSD,/AC_DEFUN([AM_PATH_LIBXOSD],/' "$destdir"/usr/share/aclocal/libxosd.m4
+}
+

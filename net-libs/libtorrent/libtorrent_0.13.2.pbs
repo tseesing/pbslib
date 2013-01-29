@@ -1,0 +1,37 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="a BitTorrent library written in C++ for *nix, with a focus on high performance and good code."
+HOMEPAGE="http://libtorrent.rakshasa.no/"
+LICENSE="GPL"
+PACKAGER="StartOS Developers"
+
+SRC_URI="http://libtorrent.rakshasa.no/downloads/"$N-$V".tar.gz"
+
+RDEPEND="libsigc++ openssl"
+BDEPEND=""
+RECOMMENDED=""
+CONFLICT=""
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_config() {
+    export CXXFLAGS="${CXXFLAGS} -fno-strict-aliasing"
+    config+="--disable-debug"
+    doconfig
+}
+
+pbs_build() {
+    domake
+}
+
+pbs_install() {
+    domkinstall
+}
+

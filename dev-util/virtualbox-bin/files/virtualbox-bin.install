@@ -1,0 +1,38 @@
+. /usr/lib/ybs/funcs
+
+gname="vboxusers"
+unit="virtualbox.service"
+
+post_install() {
+    dogroupadd -r $gname
+    # Add users to vboxusers group
+    for user in $(who |awk '{print $1}' |grep -v ^root$ |sort -u |xargs); do
+        usermod -aG $gname $user
+    done
+    # 
+    for ko in vboxpci vboxnetflt vboxnetadp vboxdrv; do
+        rmmod $ko 2>/dev/null
+        modprobe $ko
+    done
+    #
+    systemctl enable $unit || true
+}       
+
+post_upgrade() {
+    systemctl --system daemon-reload
+    restart $unit ||return 0
+}
+
+post_downgrade() {
+    post_upgrade $1 $2
+}
+
+pre_remove() {
+    systemctl disable $unit
+    stop $unit ||return 0
+}
+
+post_remove() {
+    dogroupdel $gname ||true
+}
+

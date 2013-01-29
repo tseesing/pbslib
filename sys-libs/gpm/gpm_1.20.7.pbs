@@ -1,0 +1,44 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="A mouse server for the console and xterm"
+HOMEPAGE="http://www.nico.schottelius.org/software/gpm"
+LICENSE="GPL"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
+
+SRC_URI="http://www.nico.schottelius.org/software/"$N"/archives/"$N-$V".tar.lzma"
+CHECKSUM="8d9f3655c80ce7667d31ede2a100b44986480369"
+
+RDEPEND="ncurses bash"
+RECOMMENDED=""
+BDEPEND=""
+OPTIONAL=""
+CONFLICT=""
+REPLACE=""
+
+pbs_unpack() {
+    dounpack
+}
+
+pbs_config() {
+    config+=""
+    doconfig
+}
+
+pbs_build() {
+    domake
+}
+
+pbs_install() {
+    domkinstall
+    cd "$destdir"
+    docp "$filesdir"/gpm.sh etc/profile.d/
+    dounit gpm.service
+    cd usr/lib"$LIBDIRSUFFIX"/
+    doln libgpm.so.2.* libgpm.so
+}
+

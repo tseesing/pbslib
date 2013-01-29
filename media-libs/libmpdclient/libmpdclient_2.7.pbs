@@ -1,0 +1,43 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="Asynchronous API library for interfacing MPD in the C, C++ & Objective C languages"
+HOMEPAGE="http://mpd.wikia.com/wiki/ClientLib:libmpdclient"
+LICENSE="custom:BSD"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
+
+SRC_URI="http://downloads.sourceforge.net/project/musicpd/"$N"/"$V"/"$N-$V".tar.gz"
+CHECKSUM="f97e35525851eb192d3799f0dabe32915c56b96b"
+
+RDEPEND="glibc"
+RECOMMENDED=""
+BDEPEND=""
+OPTIONAL=""
+CONFLICT=""
+
+pbs_unpack() {
+    dounpack
+}
+
+pbs_patch() {
+    dopatch
+}
+
+pbs_config() {
+    config+="--disable-static"
+    doconfig
+}
+
+pbs_build() {
+    domake
+}
+
+pbs_install() {
+    domkinstall
+    dodoc COPYING
+}
+

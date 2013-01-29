@@ -1,0 +1,31 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="A scalable icon theme for Equinox GTK called Faenza"
+HOMEPAGE="http://gnome-look.org/content/show.php/Faenza?content=128143"
+LICENSE="GPLv3"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
+YARCH="any"
+
+SRC_URI="http://ppa.launchpad.net/tiheum/equinox/ubuntu/pool/main/f/$N/${N}_$V.tar.gz"
+CHECKSUM="b5339b70cbb821b583499e725957b150"
+
+RDEPEND=""
+RECOMMENDED=""
+BDEPEND=""
+OPTIONAL=""
+CONFLICT=""
+
+pbs_unpack() {
+    dounpack
+}
+
+pbs_install() {
+    docp Faenza{,-Dark,-Darkest,-Darker,-Ambiance,-Radiance} "$destdir"/usr/share/icons
+    docp emesene "$destdir"/usr/share/
+}
+

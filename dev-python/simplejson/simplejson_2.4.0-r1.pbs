@@ -1,0 +1,40 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="Simple, fast, extensible JSON encoder/decoder for Python"
+HOMEPAGE="http://pypi.python.org/pypi/simplejson"
+LICENSE="MIT"
+PACKAGER="StartOS Developers"
+YARCH="any"
+
+SRC_URI="http://pypi.python.org/packages/source/s/"$N"/"$N-$V".tar.gz"
+CHECKSUM="0020e2b33ee8a9b156e0652a96d9eeba"
+
+RDEPEND="python glibc"
+RECOMMENDED=""
+BDEPEND=""
+OPTIONAL=""
+CONFLICT=""
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_config() {
+    config+=""
+    doconfig
+}
+
+pbs_build() {
+    domake
+}
+
+pbs_install() {
+    domkinstall
+    dodoc LICENSE.txt
+}
+

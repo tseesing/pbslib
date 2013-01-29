@@ -1,0 +1,36 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="a small utility library that aims to ease the handling UPnP A/V profiles."
+HOMEPAGE="http://gupnp.org/"
+LICENSE="LGPL"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
+
+SRC_URI="http://ftp.gnome.org/pub/gnome/sources/"$N"/"${V%.*}"/"$N-$V".tar.xz"
+CHECKSUM="d0dbb727d87bc9f2dc834455d14a30700b16b41a57e9dcde2e822b378ca8f1e2"
+
+RDEPEND="gupnp"
+RECOMMENDED=""
+BDEPEND="gobject-introspection gtk-doc"
+
+pbs_unpack() {
+    dounpack
+}
+
+pbs_config() {
+    config+="--disable-static"
+    doconfig
+}
+
+pbs_build() {
+    domake
+}
+
+pbs_install() {
+    domkinstall
+}
+

@@ -1,0 +1,39 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="A GObject-based API for handling resource discovery and announcement over SSDP."
+HOMEPAGE="http://gupnp.org/"
+LICENSE="LGPL"
+PACKAGER="chenqixing@ivali.com
+          Zhongxin Huang <huangzhongxin@ivali.com"
+
+SRC_URI="http://ftp.acc.umu.se/pub/gnome/sources/$N/${V%.*}/$N-$V.tar.xz"
+CHECKSUM="8f663f8a72b66254f5c20a3610ff853ac8d00bf6f253828e37e51579caa34dce"
+
+RDEPEND="libsoup"
+RECOMMENDED=""
+BDEPEND="gobject-introspection gtk2 gtk-doc"
+CONFLICT=""
+OPTIONAL="gtk2: gssdp-device-sniffer"
+
+pbs_unpack() {
+    dounpack
+}
+
+pbs_config() {
+    config+="--disable-static"
+    doconfig
+}
+
+pbs_build() {
+    domake
+}
+
+pbs_install() {
+    domkinstall
+}
+

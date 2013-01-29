@@ -1,0 +1,32 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="Memory tester based on memtest86"
+HOMEPAGE="http://www.memtest.org/"
+LICENSE="GPL"
+PACKAGER="StartOS Developers"
+
+SRC_URI="http://www.memtest.org/download/"$V"/memtest86+-"$V".bin.gz"
+
+RDEPEND=""
+RECOMMENDED=""
+BDEPEND=""
+CONFLICT=""
+
+INSTALL="$N.install"
+
+pbs_unpack(){
+    mkdir -p "$N-$V$R" && cd "$N-$V$R"
+    cp "$YBS_SOURCE"/memtest86+-"$V".bin.gz .
+    gunzip memtest86+-"$V".bin.gz
+}
+
+pbs_install() {
+    docp_rename memtest86+-"$V".bin "$destdir"/boot/memtest86+.bin
+    docp $filesdir/20_memtest86+ "$destdir"/etc/grub.d/
+}
+

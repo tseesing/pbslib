@@ -1,0 +1,41 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="UI toolkit for Linux Deepin"
+HOMEPAGE="http://www.linuxdeepin.com/"
+LICENSE="GPLv2"
+PACKAGER="StartOS Developers"
+
+SRC_URI="http://packages.linuxdeepin.com/deepin/pool/main/d/"$N"/"$N"_1+git"$V".tar.gz"
+CHECKSUM="c9622ef02dd5aa207e409dde1b65e12b"
+
+RDEPEND="pygtk imaging webkitgtk"
+RECOMMENDED=""
+BDEPEND=""
+OPTIONAL=""
+CONFLICT=""
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_build() {
+    domake
+}
+
+pbs_install() {
+    domkinstall
+    dodoc COPYING README
+    # demos
+    for i in demo browser_demo fullscreen_demo mplayer_demo; do
+        docp $i.py usr/share/dtk/demos/
+    done
+    cd "$destdir"
+    domv usr/dtk/theme usr/lib/python2.7/site-packages/dtk/
+    rm -rf usr/dtk
+}
+

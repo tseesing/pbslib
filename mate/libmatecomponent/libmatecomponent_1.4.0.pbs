@@ -1,0 +1,42 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="A set of language and system independant CORBA interfaces for creating reusable components"
+HOMEPAGE="http://mate-desktop.org"
+LICENSE="GPL,LGPL"
+PACKAGER="StartOS Developers"
+
+SRC_URI="http://pub.mate-desktop.org/releases/1.4/"$N-$V".tar.xz"
+CHECKSUM="c604056ec36fe23e2912e7fef2616ea9fe02b70f6638696c133cdb693e38ac13"
+
+RDEPEND="libxml2 mate-corba"
+RECOMMENDED=""
+BDEPEND="intltool flex pkgconfig"
+OPTIONAL=""
+CONFLICT=""
+REPLACE=""
+
+INSTALL="$N.install"
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_config() {
+    config+="--disable-static"
+    doconfig
+}
+
+pbs_build() {
+    domake
+}
+
+pbs_install() {
+    domkinstall
+    install -m644 "$filesdir"/matecomponent-activation-config.xml "$destdir"/etc/matecomponent-activation/
+}
+

@@ -1,0 +1,46 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="A 3d dungeon crawling adventure in the spirit of NetHack"
+HOMEPAGE="http://egoboo.sourceforge.net/"
+LICENSE="GPL"
+PACKAGER="StartOS Developers"
+
+SRC_URI="http://downloads.sourceforge.net/"$N"/"$N-$V".tar.gz"
+CHECKSUM="e6f3130695d297dcd9fe74e50bd59b68"
+
+RDEPEND="egoboo-data(=2.8.1) physfs sdl-image sdl-mixer sdl-ttf"
+RECOMMENDED=""
+BDEPEND=""
+OPTIONAL=""
+CONFLICT=""
+
+INSTALL="$N.install"
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_build() {
+    cd src
+    # Fix data paths
+    sed -i -e 's#egoboo-2.x#egoboo#g' \
+           -e 's#share/games#share#g' \
+           -e 's#etc#share#g' \
+           -e 's#games#bin#g' \
+        game/platform/file_linux.c
+
+    domake all
+}
+
+pbs_install() {
+    cd ../
+    install -Dm755 src/game/egoboo-2.x "$destdir"/usr/bin/egoboo
+    dodoc doc
+    dodesktop "$N".desktop "$N".png
+}
+

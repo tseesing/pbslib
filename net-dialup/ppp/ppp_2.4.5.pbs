@@ -1,0 +1,70 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="Point-to-Point Protocol (PPP)"
+HOMEPAGE="http://www.samba.org/ppp"
+LICENSE="custom:GPL/BSD"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
+
+SRC_URI="http://samba.org/ftp/"$N"/"$N-$V".tar.gz"
+CHECKSUM="4621bc56167b6953ec4071043fe0ec57"
+
+RDEPEND="pcre"
+BDEPEND=""
+RECOMMENDED=""
+
+INSTALL="$N.install"
+
+pbs_unpack() {
+    dounpack
+}
+
+pbs_patch() {
+    # fix CFLAGS
+    # -D_GNU_SOURCE is needed for IPv6 to work apparently
+    export CFLAGS="$CFLAGS -D_GNU_SOURCE"
+    sed -i "s:-O2 -pipe -Wall -g:${CFLAGS}:" pppd/Makefile.linux
+    sed -i "s:-g -O2:${CFLAGS}:" pppd/plugins/Makefile.linux
+    sed -i "s:-O2:${CFLAGS}:" pppstats/Makefile.linux
+    sed -i "s:-O2 -g -pipe:${CFLAGS}:" chat/Makefile.linux
+    sed -i "s:-O:${CFLAGS}:" pppdump/Makefile.linux
+    # enable active filter
+    sed -i "s:^#FILTER=y:FILTER=y:" pppd/Makefile.linux
+    # enable ipv6 support
+    sed -i "s:^#HAVE_INET6=y:HAVE_INET6=y:" pppd/Makefile.linux
+    # Enable Microsoft proprietary Callback Control Protocol
+    sed -i "s:^#CBCP=y:CBCP=y:" pppd/Makefile.linux 
+    # Fix build error with recent kernels
+    rm include/linux/if_pppol2tp.h 
+    # For multilib
+    sed -i "/LIBDIR =/s:/lib:&'"$LIBDIRSUFFIX"':g" $(grep -lr "LIBDIR =" *)
+}
+
+pbs_config() {
+    config+=""
+    doconfig
+}
+
+pbs_build() {
+    domake
+}
+
+pbs_install() {
+    make DESTDIR="$destdir"/usr install
+    docp etc.ppp/{pap-secrets,chap-secrets} "$destdir"/etc/ppp/
+    cd "$destdir"
+    docp "$filesdir"/{options,ip-up,ip-down,ipv6-up,ipv6-down} etc/ppp/
+    docp "$filesdir"/00-dns.sh etc/ppp/ip-up.d/
+    docp "$filesdir"/00-dns.sh etc/ppp/ip-down.d/
+    docp "$filesdir"/00-iface-config.sh etc/ppp/ipv6-up.d/
+    docp "$filesdir"/{pon,poff,plog} usr/bin/
+    doman "$filesdir"/pon.1
+    install -d -m755 etc/ppp/peers 
+    chmod 0755 usr/lib"$LIBDIRSUFFIX"/pppd/"$V"/*.so
+    dounit ppp@.service
+}
+

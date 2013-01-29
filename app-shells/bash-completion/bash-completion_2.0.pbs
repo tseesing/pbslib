@@ -1,0 +1,47 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="Programmable completion for the bash shell"
+HOMEPAGE="http://bash-completion.alioth.debian.org"
+LICENSE="GPL"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
+YARCH="any"
+
+SRC_URI="http://bash-completion.alioth.debian.org/files/"$N-$V".tar.bz2"
+CHECKSUM="0d903f398be8c8f24bc5ffa6f86127f8"
+
+RDEPEND="bash"
+RECOMMENDED=""
+BDEPEND=""
+OPTIONAL=""
+CONFLICT=""
+REPLACE=""
+
+pbs_unpack() {
+    dounpack
+}
+
+pbs_config() {
+    config+=""
+    doconfig
+}
+
+pbs_build() {
+    domake
+}
+
+pbs_install() {
+    domkinstall
+    cd "$destdir"
+    # bash-completion is sourced in /etc/bash.bashrc so that non-bash shell don't source it
+    rm etc/profile.d/bash_completion.sh
+    # remove Slackware's makepkg completion
+    rm usr/share/bash-completion/completions/makepkg
+    # now provided by systemd
+    rm usr/share/bash-completion/completions/udevadm
+}
+

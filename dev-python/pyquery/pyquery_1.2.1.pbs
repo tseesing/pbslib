@@ -1,0 +1,38 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="A jquery-like library for python"
+HOMEPAGE="http://pypi.python.org/pypi/pyquery"
+LICENSE="BSD"
+PACKAGER="StartOS Developers"
+
+SRC_URI="http://pypi.python.org/packages/source/p/"$N"/"$N-$V".tar.gz"
+CHECKSUM="f4564c372e3905772d0fe094bc00baf6"
+
+RDEPEND="python"
+RECOMMENDED=""
+BDEPEND=""
+OPTIONAL=""
+CONFLICT=""
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_config() {
+    config+=""
+    doconfig
+}
+
+pbs_build() {
+    domake
+}
+
+pbs_install() {
+    domkinstall
+}
+

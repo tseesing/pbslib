@@ -1,0 +1,40 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="A python tool that figures out the differences between two similar XML files, in the same way the diff utility does it"
+HOMEPAGE="http://www.logilab.org/project/xmldiff"
+LICENSE="GPLv2"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
+
+SRC_URI="http://arch.p5n.pp.ru/~sergej/dl/2012/"$N-$V".tar.gz"
+CHECKSUM="a61e6e95a130e3bd53f5ea5616cc5314"
+
+RDEPEND="python"
+RECOMMENDED=""
+BDEPEND=""
+OPTIONAL=""
+CONFLICT=""
+REPLACE=""
+
+pbs_unpack() {
+    dounpack
+}
+
+pbs_config() {
+    config+=""
+    doconfig
+}
+
+pbs_build() {
+    domake
+}
+
+pbs_install() {
+    domkinstall --optimize=1
+    doman man/*.1
+}
+

@@ -1,0 +1,22 @@
+. /usr/lib/ybs/funcs
+
+post_install() {
+    gnome2_desktop_database_update
+}
+
+post_upgrade() {
+    name=$1
+    version_new=$2
+    version_old=$3
+
+    # version that less than 5.0-ylmf3 muse restart dbus service
+    ypkg --compare-version $version_old 5.0-ylmf3
+
+    if [ $? -eq 2 ]; then    
+        echo "* Restart dbus service for ydm ..."
+        killall ydaemon
+    fi
+    
+    gnome2_desktop_database_update
+}
+

@@ -1,0 +1,40 @@
+
+post_install() {
+    # Fix permission of dirs
+    chmod -s /boot /home /media /mnt /srv /root
+
+    # Fix grub
+    if [ -f /boot/grub/grubenv ]; then
+        . /boot/grub/grubenv || return 0
+        if [ "x$recordfail" != "x0" ]; then
+            sed -i 's/recordfail=1/recordfail=0/g' /boot/grub/grubenv
+        fi
+    fi    
+
+    # Fix gdm permission
+    chown gdm:gdm /var/lib/gdm/ -R 
+
+    # Fix /etc/fstab
+    sed -i 's/\/isodevice\//\/host\//g' /etc/fstab
+
+    # For Sysvinit compatibility
+    mkdir -p /etc/rc.d
+
+    # For ypk packages thumbnails
+    if [ "x$SUDO_USER" != "x" ]; then
+        [ -d /home/"$SUDO_USER"/.thumbnails ] && rm -rf /home/"$SUDO_USER"/.thumbnails/
+    fi
+
+    #
+    [ -e /usr/lib/libarchive.so.2 ] || ln -sf /usr/lib/libarchive.so /usr/lib/libarchive.so.2
+
+    #
+    update-grub
+
+    return 0
+}
+
+post_upgrade() {
+    post_install
+}
+

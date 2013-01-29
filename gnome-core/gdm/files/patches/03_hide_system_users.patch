@@ -1,0 +1,29 @@
+--- a/gui/simple-greeter/gdm-user-manager.c	2010-04-27 01:08:42.000000000 +0800
++++ b/gui/simple-greeter/gdm-user-manager.c.new	2010-11-24 15:12:05.260000054 +0800
+@@ -1218,6 +1218,7 @@
+         gboolean res;
+         char    *username;
+         gulong   frequency;
++	struct passwd *pwent;
+         GdmUser *user;
+ 
+         frequency = 0;
+@@ -1233,6 +1234,18 @@
+                 return;
+         }
+ 
++	/* do not show system users; we cannot use gdm_user_manager_get_user()
++         * here since this creates/signals users as a side effect */
++        pwent = getpwnam (username);
++        if (pwent == NULL) {
++                g_warning ("Unable to lookup user name %s: %s", username, g_strerror (errno));
++	        return;
++        }
++        if (pwent->pw_uid < DEFAULT_MINIMAL_UID) {
++                g_debug ("GdmUserManager: excluding user '%s'", username);
++                return;
++        }
++
+         user = gdm_user_manager_get_user (manager, username);
+         if (user == NULL) {
+                 g_debug ("GdmUserManager: unable to lookup user '%s'", username);

@@ -1,0 +1,32 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="SVG and PNG icon theme from the Tango project"
+HOMEPAGE="http://tango.freedesktop.org"
+ 
+SRC_URI="http://tango.freedesktop.org/releases/"$N-$V$R".tar.gz"
+
+RDEPEND=""
+BDEPEND="imagemagick"
+
+INSTALL="$N.install"
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_config() {
+    doconfig
+}
+
+pbs_build() {
+    domake
+}
+
+pbs_install() {
+    domkinstall
+}

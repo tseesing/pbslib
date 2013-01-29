@@ -1,0 +1,35 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="nl80211 based CLI configuration utility for wireless devices"
+HOMEPAGE="http://wireless.kernel.org/en/users/Documentation/iw"
+LICENSE="GPL"
+PACKAGER="StartOS Developers"
+
+SRC_URI="http://wireless.kernel.org/download/"$N"/"$N-$V".tar.bz2"
+
+RDEPEND="libnl"
+BDEPEND=""
+RECOMMENDED=""
+CONFLICT=""
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_config() {
+    dopatch version-sh.patch
+    doconfig
+}
+
+pbs_build() {
+    domake
+}
+
+pbs_install() {
+    domkinstall
+}

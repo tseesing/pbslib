@@ -1,0 +1,55 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="A library that provides automatic proxy configuration management"
+HOMEPAGE="http://code.google.com/p/libproxy/"
+LICENSE="LGPL"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com> 
+          chenqixing@ivali.com"
+
+SRC_URI="http://libproxy.googlecode.com/files/"$N-$V".tar.gz"
+CHECKSUM="509e03a488a61cd62bfbaf3ab6a2a7a5"
+
+RDEPEND="gcc-libs dbus"
+BDEPEND="cmake"
+OPTIONAL="kdelibs: KDE configuration module
+          networkmanager: NetworkManager configuration module
+          perl: Perl bindings
+          python: Python bindings"
+
+pbs_unpack() {
+    dounpack
+}
+
+pbs_patch() {
+    dopatch libproxy-0.4.7-unistd.patch
+}
+
+pbs_config() {
+    mkdir build
+    cd build
+    cmake .. \
+            -DCMAKE_INSTALL_PREFIX=/usr \
+            -DLIB_INSTALL_DIR=/usr/lib"$LIBDIRSUFFIX" \
+            -DLIBEXEC_INSTALL_DIR=/usr/lib"$LIBDIRSUFFIX" \
+            -DCMAKE_SKIP_RPATH=ON \
+            -DPERL_VENDORINSTALL=yes \
+            -DCMAKE_BUILD_TYPE=Release \
+            -DWITH_WEBKIT=OFF \
+            -DCMAKE_CXX_FLAGS="$CXXFLAGS" \
+            -DCMAKE_C_FLAGS="$CFLAGS"
+
+}
+
+pbs_build() {
+    domake
+}
+
+pbs_install() {
+    domkinstall
+}
+

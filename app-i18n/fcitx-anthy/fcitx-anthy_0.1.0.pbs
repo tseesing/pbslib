@@ -1,0 +1,40 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="Anthy Wrapper for Fcitx."
+HOMEPAGE="http://code.google.com/p/fcitx/"
+LICENSE="GNU GPL v2"
+PACKAGER="StartOS Developers"
+GROUP="fcitx"
+
+SRC_URI="http://fcitx.googlecode.com/files/"$N-$V".tar.xz"
+CHECKSUM="7998e8958299335b2c2bb489cc55d36921b15506"
+
+RDEPEND="anthy fcitx"
+BDEPEND="cmake"
+RECOMMENDED=""
+
+INSTALL="$N.install"
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_config() {
+    config+="-DCMAKE_BUILD_TYPE=Release"
+    doconfig
+}
+
+pbs_build() {
+    domake
+}
+
+pbs_install() {
+    domkinstall
+}
+
+

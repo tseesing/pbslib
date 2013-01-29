@@ -1,0 +1,21 @@
+diff -u -r gnome-sharp-2.24.1/Makefile.am gnome-sharp-2.24.1.new//Makefile.am
+--- gnome-sharp-2.24.1/Makefile.am	2008-03-07 10:32:21.000000000 +0800
++++ gnome-sharp-2.24.1.new//Makefile.am	2011-04-20 09:05:35.012223182 +0800
+@@ -1,4 +1,4 @@
+-SUBDIRS = sources art gnomevfs gnome gconf sample 
++SUBDIRS = sources art gnomevfs gnome gconf  
+ 
+ EXTRA_DIST = 			\
+ 	gtk-sharp.snk		\
+diff -u -r gnome-sharp-2.24.1/Makefile.in gnome-sharp-2.24.1.new//Makefile.in
+--- gnome-sharp-2.24.1/Makefile.in	2009-03-04 00:09:52.000000000 +0800
++++ gnome-sharp-2.24.1.new//Makefile.in	2011-04-20 09:05:43.363223172 +0800
+@@ -227,7 +227,7 @@
+ top_build_prefix = @top_build_prefix@
+ top_builddir = @top_builddir@
+ top_srcdir = @top_srcdir@
+-SUBDIRS = sources art gnomevfs gnome gconf sample 
++SUBDIRS = sources art gnomevfs gnome gconf  
+ EXTRA_DIST = \
+ 	gtk-sharp.snk		\
+ 	gapi-cdecl-insert	\

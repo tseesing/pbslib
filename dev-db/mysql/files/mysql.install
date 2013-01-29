@@ -1,0 +1,22 @@
+. /usr/lib/ybs/funcs
+
+group_name="mysql"
+
+post_install(){
+    dogroupadd -g 89 $group_name
+    douseradd -u 89 -g $group_name -d /var/lib/mysql -s /bin/false $group_name 
+    mysql_install_db --user=$group_name --basedir=/usr
+    chown -R $group_name:$group_name /var/lib/mysql 
+    systemd-tmpfiles --create mysqld.conf
+}
+
+post_upgrade(){
+  dogroupadd -g 89 $group_name 
+  douseradd -u 89 -g $group_name -d /var/lib/mysql -s /bin/false $group_name
+}
+
+post_remove(){
+    douserdel $group_name
+    dogroupdel $group_name
+}
+

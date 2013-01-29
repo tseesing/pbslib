@@ -1,0 +1,37 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="A library for registering global keyboard shortcuts"
+HOMEPAGE="http://kaizer.se/wiki/keybinder/"
+LICENSE="GPL"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
+
+SRC_URI="http://kaizer.se/publicfiles/"$N"/"$N-$V".tar.gz"
+CHECKSUM="42863ca0174d568a8c02c6fb243fee1681823825e8bcb1718c51611d8e9793bb"
+
+RDEPEND="gtk2 pygtk"
+RECOMMENDED=""
+BDEPEND=""
+CONFLICT=""
+
+pbs_unpack() {
+    dounpack
+}
+
+pbs_config() {
+    config+=""
+    doconfig
+}
+
+pbs_build() {
+    domake
+}
+
+pbs_install() {
+    domkinstall
+}
+

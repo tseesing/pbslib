@@ -1,0 +1,38 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="Unix/Linux /etc/services and /etc/protocols files provided by IANA"
+HOMEPAGE="http://sethwklein.net/iana-etc"
+LICENSE="custom"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
+YARCH="any"
+
+SRC_URI="http://lfs.vlsm.org/lfs/conglomeration/"$N"/"$N-$V".tar.bz2"
+CHECKSUM="218593bcb9264014c4e397d838b2c218eac9df06"
+
+RDEPEND=""
+BDEPEND=""
+
+pbs_unpack() {
+    dounpack
+}
+
+pbs_patch() {
+    dopatch newer.patch
+}
+
+pbs_build() {
+    domake get
+    domake
+}
+
+pbs_install() {
+    domkinstall
+    dodoc COPYING
+    docp port-numbers.iana protocol-numbers.iana "${destdir}"/usr/share/iana-etc/
+}
+

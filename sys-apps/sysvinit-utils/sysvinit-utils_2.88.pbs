@@ -1,0 +1,48 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="Linux System V Init Tools"
+HOMEPAGE="http://freshmeat.net/projects/sysvinit/"
+LICENSE="GPL"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
+
+SRC_URI="http://download.savannah.gnu.org/releases/sysvinit/sysvinit-"$V"dsf.tar.bz2"
+CHECKSUM="f2ca149df1314a91f3007cccd7a0aa47d990de26"
+
+RDEPEND="glibc util-linux coreutils gawk"
+BDEPEND=""
+
+pbs_unpack() {
+    dounpack
+}
+
+pbs_patch() {
+    dopatch 0001-simplify-writelog.patch
+    dopatch 0002-remove-ansi-escape-codes-from-log-file.patch
+}
+
+pbs_build() {
+    domake
+}
+
+pbs_install() {
+    make ROOT="$destdir" install
+    # Provided by util-linux
+    cd "$destdir"
+    rm bin/mountpoint
+    rm usr/share/man/man1/mountpoint.1
+    rm usr/bin/{mesg,utmpdump,wall}
+    rm usr/share/man/man1/{mesg,utmpdump,wall}.1
+    rm sbin/sulogin
+    rm usr/share/man/man8/sulogin.8
+    # Provided by systemd
+    for i in telinit shutdown runlevel reboot poweroff init halt; do
+        rm sbin/"${i}"
+        rm usr/share/man/man8/"${i}".8 
+    done
+}
+

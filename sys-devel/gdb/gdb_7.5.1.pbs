@@ -1,0 +1,50 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="GNU debugger"
+HOMEPAGE="http://sources.redhat.com/gdb/"
+LICENSE="GPL3"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com"
+
+SRC_URI="http://ftp.gnu.org/gnu/"$N"/"$N-$V".tar.bz2"
+CHECKSUM="3f48f468b24447cf24820054ff6e85b1"
+
+RDEPEND="python expat ncurses"
+BDEPEND="texinfo"
+RECOMMENDED=""
+
+INSTALL="$N.install"
+
+pbs_unpack() {
+    dounpack
+}
+
+pbs_config() {
+    config="--prefix=/usr
+            --libdir=/usr/lib"$LIBDIRSUFFIX"
+            --disable-nls
+            --with-system-readline
+            --with-system-gdbinit=/etc/gdb/gdbinit"
+    doconfig
+}
+
+pbs_build() {
+    domake
+}
+
+pbs_install() {
+    domkinstall
+    cd "$destdir"
+    # Install "custom" system gdbinit
+    install -dm755 etc/gdb
+    touch etc/gdb/gdbinit
+    # resolve conflicts with binutils
+    rm usr/include/{ansidecl,bfd,bfdlink,dis-asm,symcat}.h
+    rm usr/lib"$LIBDIRSUFFIX"/{libbfd,libiberty,libopcodes}.a
+    rm usr/share/info/{bfd,configure,standards}.info
+}
+

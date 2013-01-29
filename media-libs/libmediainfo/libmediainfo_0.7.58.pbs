@@ -1,0 +1,49 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="MediaInfo libraries"
+HOMEPAGE="http://mediainfo.sourceforge.net/"
+LICENSE="GPL"
+PACKAGER="StartOS Developers"
+
+SRC_URI="http://downloads.sourceforge.net/mediainfo/"${N}_$V".tar.bz2"
+CHECKSUM="a87a32f243052fb1eca3918c519f64b6"
+
+RDEPEND="curl libzen"
+RECOMMENDED=""
+BDEPEND=""
+OPTIONAL=""
+CONFLICT=""
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_config() {
+    cd Project/GNU/Library
+    sh ./autogen
+    config+="--with-libcurl" # --with-libmms
+    doconfig
+}
+
+pbs_build() {
+    domake clean
+    domake 
+}
+
+pbs_install() {
+    domkinstall
+    cd -
+
+    for i in MediaInfo MediaInfoDLL; do
+        docp Source/"${i}"/*.h "$destdir"/usr/include/"${i}"
+    done
+    
+    docp Project/GNU/Library/libmediainfo.pc "$destdir"/usr/lib/pkgconfig
+    sed -i -e 's|Version: |Version: '$V'|g' "$destdir"/usr/lib/pkgconfig/libmediainfo.pc
+}
+

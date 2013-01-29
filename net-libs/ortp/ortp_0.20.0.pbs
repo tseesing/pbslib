@@ -1,0 +1,38 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="Open Real-time Transport Protocol (RTP, RFC3550) stack"
+HOMEPAGE="http://www.linphone.org/"
+LICENSE="GPLv2+"
+PACKAGER="StartOS Developers"
+
+SRC_URI="http://download.savannah.gnu.org/releases/linphone/ortp/sources/"$N-$V".tar.gz"
+CHECKSUM="b3f2f02fc5b7ba7e294806c81d419f3c"
+
+RDEPEND="glibc"
+RECOMMENDED=""
+BDEPEND=""
+OPTIONAL=""
+CONFLICT=""
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_config() {
+    config+=""
+    doconfig
+}
+
+pbs_build() {
+    domake
+}
+
+pbs_install() {
+    domkinstall
+}
+

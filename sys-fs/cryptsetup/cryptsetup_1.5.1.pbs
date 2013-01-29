@@ -1,0 +1,46 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="Tool to setup encrypted devices with dm-crypt"
+HOMEPAGE="http://code.google.com/p/cryptsetup/"
+LICENSE="GPL"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com
+          chenqixing@ivali.com"
+
+SRC_URI="http://cryptsetup.googlecode.com/files/"$N-$V".tar.bz2"
+
+RDEPEND="device-mapper libgcrypt popt util-linux"
+BDEPEND=""
+RECOMMENDED=""
+
+INSTALL="$N.install"
+
+pbs_unpack() {
+    dounpack
+}
+
+pbs_config() {
+    doconfig
+}
+
+pbs_build() {
+    domake
+}
+
+pbs_install() {
+    domkinstall
+    
+    # For initramfs-tools
+    cd "$destdir"
+    docp "$filesdir"/cryptsetup                      lib
+    docp "$filesdir"/hooks/*                         usr/share/initramfs-tools/hooks
+    docp "$filesdir"/conf-hooks.d_cryptsetup         usr/share/initramfs-tools/conf-hooks.d
+    docp_rename "$filesdir"/local-top_cryptroot      usr/share/initramfs-tools/scripts/local-top/cryptroot
+    docp_rename "$filesdir"/local-top_cryptopensc    usr/share/initramfs-tools/scripts/cryptopensc
+    docp_rename "$filesdir"/local-bottom_cryptopensc usr/share/initramfs-tools/scripts/local-bottom/cryptopensc
+}
+

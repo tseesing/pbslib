@@ -1,0 +1,38 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="An implementation of the Interactice Connectivity Establishment standard (ICE)"
+HOMEPAGE="http://nice.freedesktop.org/wiki/"
+LICENSE="LGPL"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
+
+SRC_URI="http://nice.freedesktop.org/releases/"$N-$V".tar.gz"
+CHECKSUM="1a0907605f852dcda32a3b3daf38d36c"
+
+RDEPEND="glib2"
+BDEPEND=""
+RECOMMENDED=""
+OPTIONAL="gstreamer:
+          gstreamer0.10: "
+
+pbs_unpack() {
+    dounpack
+}
+
+pbs_config() {
+    config+="--disable-static"
+    doconfig
+}
+    
+pbs_build() {
+    domake
+}
+
+pbs_install() {
+    domkinstall
+}
+

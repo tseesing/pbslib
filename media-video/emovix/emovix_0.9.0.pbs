@@ -1,0 +1,40 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="Micro Linux distro to boot from a CD and play every video file localized in the CD root."
+HOMEPAGE="http://movix.sourceforge.net"
+LICENSE="GPL"
+PACKAGER="StartOS Developers"
+YARCH="any"
+
+SRC_URI="http://downloads.sourceforge.net/sourceforge/movix/"$N-$V".tar.gz"
+CHECKSUM="a96492f338824b24c5a9e714c57eddcf"
+
+RDEPEND="perl"
+RECOMMENDED=""
+BDEPEND=""
+OPTIONAL=""
+CONFLICT=""
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_config() {
+    config+=""
+    doconfig
+}
+
+pbs_build() {
+    domake
+}
+
+pbs_install() {
+    domkinstall
+    find "$destdir"/usr/share/emovix -type d -exec chmod 755 {} \;
+}
+

@@ -1,0 +1,36 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="Small-footprint and standard compliant Window Manager."
+HOMEPAGE="http://icculus.org/openbox/"
+LICENSE="GPL"
+PACKAGER="StartOS Developers"
+
+SRC_URI="http://offload2.icculus.org:9090/"$N"/releases/"$N-$V".tar.gz"
+
+RDEPEND="libSM libXcursor libXinerama libxml2 libXrandr pango startup-notification"
+BDEPEND=""
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_config() {
+    chmod +x install-sh
+    doconfig
+    # FIXME
+    sed -i 's/^mkdir_p = .*/mkdir_p = mkdir -p/' po/Makefile
+}
+
+pbs_build() {
+    domake
+}
+
+pbs_install() {
+    domkinstall
+}
+

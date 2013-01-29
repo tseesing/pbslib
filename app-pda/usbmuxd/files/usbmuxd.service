@@ -1,0 +1,6 @@
+[Unit]
+Description=iOS USB Muxer
+
+[Service]
+ExecStart=/usr/sbin/usbmuxd -u -f -U usbmux
+

@@ -1,0 +1,42 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="Yerase's TNEF Stream Reader library (decode winmail.dat)"
+HOMEPAGE="http://freshmeat.net/projects/ytnef/"
+LICENSE="GPL"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
+
+SRC_URI="http://downloads.sourceforge.net/ytnef/$N-$V.tar.gz"
+CHECKSUM="6c44b955f33cf714c75a7bbe895cc352"
+
+RDEPEND="glibc"
+RECOMMENDED=""
+BDEPEND=""
+OPTIONAL=""
+CONFLICT=""
+REPLACE=""
+
+pbs_unpack() {
+    dounpack
+}
+
+pbs_config() {
+    config+="--disable-static"
+    doconfig
+}
+
+pbs_build() {
+    domake
+}
+
+pbs_install() {
+    domkinstall
+    rm -f "$destdir"/usr/lib"$LIBDIRSUFFIX"/libytnef.a
+}
+
+
+

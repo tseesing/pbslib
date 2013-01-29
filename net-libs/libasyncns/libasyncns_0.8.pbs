@@ -1,0 +1,36 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="libasyncns is a C library for Linux/Unix for executing name service queries asynchronously."
+HOMEPAGE="http://0pointer.de/lennart/projects/${N}"
+LICENSE="LGPL"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
+
+SRC_URI="http://0pointer.de/lennart/projects/${N}/${N}-${V}.tar.gz"
+CHECKSUM="1f553d6ce1ad255bc83b3d8e9384f515"
+
+RDEPEND="glibc"
+BDEPEND=""
+RECOMMENDED=""
+
+pbs_unpack() {
+    dounpack
+}
+
+pbs_config() {
+    config+=" --disable-lynx"
+    doconfig
+}
+
+pbs_build() {
+    domake
+}
+
+pbs_install() {
+    domkinstall
+}
+

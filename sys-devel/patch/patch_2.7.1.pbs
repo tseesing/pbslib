@@ -1,0 +1,40 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="Utility to apply diffs to files"
+HOMEPAGE="http://savannah.gnu.org/projects/patch"
+LICENSE="GPL"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
+
+SRC_URI="ftp://ftp.gnu.org/gnu/"$N"/"$N-$V".tar.xz"
+CHECKSUM="e9ae5393426d3ad783a300a338c09b72"
+
+RDEPEND="glibc"
+BDEPEND="ed"
+OPTIONAL="ed: for patch -e functionality"
+
+pbs_unpack() {
+    dounpack
+}
+
+pbs_patch() {
+    dopatch patch-2.7.1-initialize-data-structures-early-enough.patch
+}
+
+pbs_config() {
+    config+=""
+    doconfig
+}
+
+pbs_build() {
+    domake
+}
+
+pbs_install() {
+    domkinstall
+}
+

@@ -1,0 +1,41 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="a high-quality MPEG audio decoder capable of 24-bit output."
+HOMEPAGE="http://www.underbit.com/products/mad/"
+LICENSE="GPL"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
+
+SRC_URI="http://prdownloads.sourceforge.net/mad/"$N-$V"b.tar.gz"
+
+RDEPEND="glibc"
+BDEPEND=""
+RECOMMENDED=""
+
+pbs_unpack() {
+    dounpack
+}
+
+pbs_patch() {
+    dopatch libmad.patch amd64-64bit.diff frame_length.diff optimize.diff
+}
+
+pbs_config() {
+    CFLAGS="$CFLAGS -ftree-vectorize -ftree-vectorizer-verbose=1"
+    autoconf
+    doconfig
+}
+
+pbs_build() {
+    domake
+}
+
+pbs_install() {
+    domkinstall
+}
+
+

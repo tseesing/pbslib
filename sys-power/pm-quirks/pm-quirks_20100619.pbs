@@ -1,0 +1,27 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="Quirks data for pm-utils"
+HOMEPAGE="http://pm-utils.freedesktop.org/wiki"
+LICENSE="GPL"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
+YARCH="any"
+
+SRC_URI="http://pm-utils.freedesktop.org/releases/"$N-$V".tar.gz"
+
+RDEPEND=""
+BDEPEND=""
+RECOMMENDED=""
+
+pbs_unpack() {
+    dounpack
+}
+
+pbs_install() {
+    docp *.quirkdb "$destdir"/usr/lib/pm-utils/video-quirks/
+}
+

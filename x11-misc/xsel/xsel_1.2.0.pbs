@@ -1,0 +1,33 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="XSel is a command-line program for getting and setting the contents of the X selection."
+HOMEPAGE="http://www.vergenet.net/~conrad/software/xsel"
+LICENSE="GPLv2+"
+PACKAGER="StartOS Developers"
+
+SRC_URI="http://www.vergenet.net/~conrad/software/"$N"/download/"$N-$V".tar.gz"
+
+RDEPEND="libX11"
+BDEPEND=""
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_config() {
+    doconfig
+}
+
+pbs_build()  {
+    domake
+}
+
+pbs_install() {
+    domkinstall
+}
+

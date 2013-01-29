@@ -1,0 +1,54 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="Utility to detect other OSs on a set of drives"
+HOMEPAGE="http://packages.debian.org/source/sid/os-prober"
+LICENSE="GPL"
+PACKAGER="StartOS Developers"
+
+SRC_URI="http://ftp.de.debian.org/debian/pool/main/o/"$N"/"${N}_$V".tar.gz"
+
+RDEPEND="glibc"
+BDEPEND=""
+RECOMMENDED=""
+
+NOTES="
+* If you intend for os-prober to detect versions of Windows installed on
+* NTFS-formatted partitions, your system must be capable of reading the
+* NTFS filesystem. One way to do this is by installing sys-fs/ntfs3g
+"
+
+pbs_unpack() {
+    dounpack
+}
+
+pbs_build() {
+    domake
+}
+
+pbs_install() {
+    docp os-prober linux-boot-prober     "$destdir"/usr/bin
+    docp newns              "$destdir"/usr/lib/os-prober
+    docp common.sh             "$destdir"/usr/share/os-prober
+    docp os-probes/*             "$destdir"/usr/lib/os-probes
+    docp linux-boot-probes/*           "$destdir"/usr/lib/linux-boot-probes
+    dodoc README TODO         
+    cd "$destdir"
+    docp usr/lib/os-probes/mounted/powerpc/20macosx   usr/lib/os-probes/mounted
+    domv usr/lib/os-probes/mounted/common/*            usr/lib/os-probes/mounted
+    domv usr/lib/os-probes/common/*                 usr/lib/os-probes/
+    domv usr/lib/linux-boot-probes/common/*              usr/lib/linux-boot-probes
+    domv usr/lib/linux-boot-probes/mounted/common/*     usr/lib/linux-boot-probes/mounted
+    domv usr/lib/os-probes/mounted/x86/*              usr/lib/os-probes/mounted
+    domv usr/lib/linux-boot-probes/mounted/x86/*      usr/lib/linux-boot-probes/mounted
+    domv usr/lib/os-probes/init/common/*        usr/lib/os-probes/init
+    #
+    rm -r usr/lib/linux-boot-probes/common usr/lib/linux-boot-probes/mounted/common \
+          usr/lib/os-probes/init/common usr/lib/os-probes/mounted/common usr/lib/os-probes/common \
+          usr/lib/os-probes/mounted/x86 usr/lib/linux-boot-probes/mounted/x86
+}
+

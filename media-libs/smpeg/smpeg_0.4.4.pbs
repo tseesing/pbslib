@@ -1,0 +1,39 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="SDL MPEG Player Library"
+HOMEPAGE="http://icculus.org/smpeg"
+LICENSE="GPL"
+PACKAGER="StartOS Developers"
+
+SRC_URI="http://mirrors.dotsrc.org/lokigames/open-source/smpeg/smpeg-"$V".tar.gz"
+
+RDEPEND="libsdl"
+RECOMMENDED=""
+BDEPEND="gtk2-dev mesa-dev"
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_config() {
+    dopatch smpeg-0.4.4-gcc41.patch
+    doconfig
+}
+
+pbs_build() {
+    domake LDFLAGS+=-lstdc++
+}
+
+pbs_install() {
+    domkinstall
+    cd "$destdir"
+    
+    # Fix aclocal warnings
+    sed -i "s#(AM_PATH_SMPEG#([AM_PATH_SMPEG]#" usr/share/aclocal/smpeg.m4 
+}
+

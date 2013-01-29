@@ -1,0 +1,33 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="A simple but powerful tool to set desktop wallpaper"
+HOMEPAGE="http://gna.org/projects/fvwm-crystal/"
+LICENSE="GPLv2+"
+PACKAGER="StartOS Developers"
+
+SRC_URI="http://download.gna.org/fvwm-crystal/"$N"/"$V"/"$N-$V".tar.gz"
+
+RDEPEND="imlib2"
+BDEPEND=""
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_config() {
+    doconfig
+}
+
+pbs_build() {
+    domake
+}
+
+pbs_install() {
+    docp ./habak "$destdir"/usr/bin
+}
+

@@ -1,0 +1,40 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="libfolks is a library that aggregates people from multiple sources"
+HOMEPAGE="http://telepathy.freedesktop.org/wiki/Folks"
+LICENSE="LGPLv2.1"
+PACKAGER="chenqixing@ivali.com
+          Zhongxin Huang <huangzhongxin@ivali.com>"
+
+SRC_URI="http://ftp.acc.umu.se/pub/gnome/sources/"$N"/${V%.*}/"$N-$V".tar.xz"
+CHECKSUM="8c56c7594dd502ef5877e93181136e41f4ea03de4971372a7a04e7f1492eed9d"
+
+RDEPEND="libgee libxml2 telepathy-glib zeitgeist(>=0.3.14) libzeitgeist evolution-data-server libsocialweb"
+RECOMMENDED=""
+BDEPEND="libzeitgeist"
+CONFLICT=""
+
+INSTALL="$N.install"
+
+pbs_unpack() {
+    dounpack
+}
+
+pbs_config() {
+    config+=""
+    doconfig
+}
+
+pbs_build() {
+    domake
+}
+
+pbs_install() {
+    domkinstall
+}
+

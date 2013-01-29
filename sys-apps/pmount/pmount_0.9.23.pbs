@@ -1,0 +1,39 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="mount removable devices as normal user"
+COMMENTS="pmount is a wrapper around the standard mount program which permits normal users to mount removable devices without a matching /etc/fstab entry."
+HOMEPAGE="http://pmount.alioth.debian.org/"
+LICENSE="GPL"
+PACKAGER="StartOS Developers"
+
+SRC_URI="https://alioth.debian.org/frs/download.php/3310/"$N-$V".tar.bz2"
+CHECKSUM="db19f5bf3151b1b41705ec7bafa439d3"
+
+RDEPEND="util-linux"
+RECOMMENDED=""
+BDEPEND=""
+OPTIONAL=""
+CONFLICT=""
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_config() {
+    config+="--disable-hal"
+    doconfig
+}
+
+pbs_build() {
+    domake
+}
+
+pbs_install() {
+    domkinstall
+}
+

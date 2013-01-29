@@ -1,0 +1,38 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="A loop generator for scanning polyhedra"
+HOMEPAGE="http://www.bastoul.net/cloog/"
+LICENSE="GPL"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
+
+SRC_URI="http://www.bastoul.net/cloog/pages/download/"$N-$V".tar.gz"
+CHECKSUM="0aa3302c81f65ca62c114e5264f8a802"
+
+RDEPEND="isl gmp"
+RECOMMENDED=""
+BDEPEND=""
+OPTIONAL=""
+CONFLICT=""
+
+pbs_unpack() {
+    dounpack
+}
+
+pbs_config() {
+    config+="--with-isl=system --with-gmp=system"
+    doconfig
+}
+
+pbs_build() {
+    domake
+}
+
+pbs_install() {
+    domkinstall
+}
+

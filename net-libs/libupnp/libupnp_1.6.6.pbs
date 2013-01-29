@@ -1,0 +1,38 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="An Portable Open Source UPnP Development Kit"
+HOMEPAGE="http://pupnp.sourceforge.net/"
+LICENSE="BSD"
+PACKAGER="StartOS Developers"
+
+SRC_URI="http://downloads.sourceforge.net/project/pupnp/pupnp/LibUPnP%20$V/"$N-$V$R".tar.bz2 "
+
+RDEPEND=""
+BDEPEND=""
+
+NOTES=""
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_config() {
+    dopatch "$N-$V$R"-patch-statevar-query.patch
+    # fix tests
+    AT_M4DIR="m4" autoreconf
+    chmod +x ixml/test/test_document.sh
+    doconfig
+}
+
+pbs_build() {
+    domake
+}
+
+pbs_install() {
+    domkinstall
+}

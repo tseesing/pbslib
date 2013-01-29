@@ -1,0 +1,40 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="Desktop publishing (DTP) and layout program"
+HOMEPAGE="http://www.scribus.net/"
+LICENSE="GPL"
+PACKAGER="StartOS Developers"
+
+SRC_URI="http://sourceforge.net/projects/scribus/files/"$N"/"$V"/"$N-$V".tar.xz"
+CHECKSUM="ae19e62399941fb8e868d8e762caf494"
+
+RDEPEND="aspell cups hyphen qt"
+BDEPEND="cmake"
+RECOMMENDED=""
+CONFLICT=""
+
+INSTALL="$N.install"
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_config() {
+    mkdir -p build
+    cd build
+    cmake ../ -DCMAKE_INSTALL_PREFIX=/usr
+}
+
+pbs_build() {
+    domake
+}
+
+pbs_install() {
+    domkinstall
+}
+

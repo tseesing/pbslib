@@ -1,0 +1,39 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="xfs filesystem utilities"
+HOMEPAGE="http://oss.sgi.com/projects/xfs/"
+LICENSE="GPL"
+PACKAGER="YLmf OS Developers "
+
+#git://oss.sgi.com/xfs/cmds/"$N".git
+SRC_URI="xfsprogs-3.1.7.tar.bz2"
+
+RDEPEND="glibc util-linux"
+BDEPEND=""
+RECOMMENDED=""
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_config() {
+    export DEBUG=-DNDEBUG
+    config+="--enable-gettext"
+    doconfig
+}
+
+pbs_build() {
+    domake
+}
+
+pbs_install() {
+    make DIST_ROOT="$destdir" install install-dev
+    chown -R root "$destdir"
+    chgrp -R root "$destdir"
+}
+

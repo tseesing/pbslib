@@ -1,0 +1,46 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="Create bootable Live USB drives"
+HOMEPAGE="http://unetbootin.sourceforge.net"
+LICENSE="GPL"
+PACKAGER="StartOS Developers"
+
+SRC_URI="http://downloads.sourceforge.net/project/"$N"/UNetbootin/"$V"/"$N"-source-"$V".tar.gz"
+
+RDEPEND="syslinux p7zip qt mtools gksu"
+RECOMMENDED=""
+BDEPEND=""
+OPTIONAL=""
+CONFLICT=""
+REPLACE=""
+
+INSTALL="$N.install"
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_build() {
+    lupdate "$N.pro"
+    lrelease "$N.pro"
+    qmake
+    domake
+}
+
+pbs_install() {
+    docp "$N"_*.qm "$destdir"/usr/share/$pkgname/
+    install -Dm755 "$N" "$destdir"/usr/bin/"$N".elf
+    dodesktop "$N".desktop
+    
+    for i in 16 22 24 32 48 256; do
+        install -D "${N}_${i}.png" "$destdir"/usr/share/icons/hicolor/"${i}"x"${i}"/apps/"$N".png
+    done
+    
+    install -Dm755 "$filesdir"/"$N".sh "$destdir"/usr/bin/"$N"
+}
+

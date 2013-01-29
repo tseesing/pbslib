@@ -1,0 +1,52 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="MMX, SSE, and SSE2 SIMD accellerated jpeg library (fork of the original jpeg, replace of jpeg)"
+HOMEPAGE="http://sourceforge.net/projects/libjpeg-turbo/"
+LICENSE="GPL,custom"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
+
+SRC_URI="http://sourceforge.net/projects/"$N"/files/"$V"/"$N-$V".tar.gz"
+CHECKSUM="a4992e102c6d88146709e8e6ce5896d5d0b5a361"
+
+RDEPEND="glibc"
+BDEPEND="nasm"
+RECOMMENDED=""
+CONFLICT="jpeg8"
+REPLACE="libjpeg"
+
+pbs_unpack() {
+    dounpack
+}
+
+pbs_patch() {
+    # put documentation in a reasonable directory...
+    sed -i "/docdir = /s#/doc#/doc/libjpeg-turbo#" Makefile.in
+    sed -i "/exampledir = /s#/doc#/doc/libjpeg-turbo#" Makefile.in
+}
+
+pbs_config() {
+    config+="--with-jpeg8"
+    doconfig
+}
+
+pbs_build() {
+    domake
+}
+
+pbs_install() {
+    domkinstall
+    # Provide jpegint.h as it is required by various software
+    docp jpegint.h "$destdir"/usr/include/
+    dodoc README README-turbo.txt
+    # Do not distributre libturbojpeg as it is unversioned
+    cd "$destdir"
+    rm usr/lib"$LIBDIRSUFFIX"/libturbojpeg.{so,a}
+    rm usr/include/turbojpeg.h
+    rm usr/bin/tjbench
+}
+

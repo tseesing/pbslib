@@ -1,0 +1,32 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="C/C++ Plugin for Eclipse"
+HOMEPAGE="http://www.eclipse.org/cdt"
+LICENSE="EPL"
+PACKAGER="StartOS Developers"
+YARCH="any"
+
+SRC_URI="http://download.eclipse.org/tools/cdt/releases/juno/r/cdt-master-"$V".zip"
+CHECKSUM="fd86678d9f8dea2ac6c2a0a8db329fc5129af551c644b070dcbbc163132e480c"
+
+RDEPEND="eclipse(=4.2)"
+RECOMMENDED=""
+BDEPEND=""
+OPTIONAL=""
+CONFLICT=""
+REPLACE=""
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_install() {
+    _installdir="$destdir"/usr/share/eclipse/dropins/cdt
+    docp features plugins "$_installdir"/eclipse
+}
+

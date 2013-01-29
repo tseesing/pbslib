@@ -1,0 +1,9 @@
+
+post_install() {
+    [ ! -f /etc/adobe/mms.cfg ] && touch /etc/adobe/mms.cfg || return 0
+}
+
+post_upgrade() {
+    post_install
+}
+

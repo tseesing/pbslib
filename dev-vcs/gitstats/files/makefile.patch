@@ -1,0 +1,9 @@
+diff -ur gitstats-20111027/Makefile gitstats-20111027.new//Makefile
+--- gitstats-20111027/Makefile	2011-10-28 15:36:25.197309843 +0800
++++ gitstats-20111027.new//Makefile	2011-10-28 15:42:59.074928842 +0800
+@@ -1,4 +1,4 @@
+-PREFIX=/usr/local
++PREFIX=$(DESTDIR)/usr/
+ BINDIR=$(PREFIX)/bin
+ RESOURCEDIR=$(PREFIX)/share/gitstats
+ RESOURCES=gitstats.css sortable.js *.gif

@@ -1,0 +1,80 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="console display library"
+HOMEPAGE="http://www.gnu.org/software/ncurses/"
+LICENSE="MIT"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
+
+SRC_URI="http://ftp.gnu.org/pub/gnu/"$N"/"$N-$V".tar.gz"
+CHECKSUM="8cb9c412e5f2d96bc6f459aa8c6282a1"
+
+RDEPEND="glibc"
+BDEPEND=""
+
+pbs_unpack() {
+    dounpack
+}
+
+pbs_patch() {
+    # Patch contains updates from the 5.9 branch by the Ncurses developers
+    dopatch ncurses-5.9-branch_update-2.patch
+}
+
+pbs_config() {
+    config="$DEFAULT_CONFIG
+            --with-shared 
+            --with-normal 
+            --without-debug 
+            --without-ada"
+    #
+    mkdir "$N"w-build 
+    cd "$N"w-build 
+    ../configure $config --enable-widec    || die ""$N"w-build configure failed."
+    domake || die ""$N"w-build make failed."
+
+    # libncurses.so.5 for external binary support 
+    cd "$srcdir"
+    mkdir "$N"-build 
+    cd "$N"-build 
+    [ "$ARCH" = "x86_64" ] && CONFIGFLAG="--with-chtype=long"
+    ../configure $config "$CONFIGFLAG"             
+    domake
+}
+
+pbs_install() {
+    # Install license, rip it from the readme
+    grep -B 100 '$Id' README >license.txt
+    dodoc license.txt
+
+    cd "$srcdir"/"$N"w-build
+    domkinstall || die ""$N"w-build make install failed."
+    cd "$destdir"/usr/lib"$LIBDIRSUFFIX"/
+    doln libncursesw.so.5 libncursesw.so
+    
+    # non-widec compatibility library
+    cd "$srcdir"/"$N"-build
+    docp lib/libncurses.so."$V" "$destdir"/usr/lib"$LIBDIRSUFFIX"/
+    cd "$destdir"/usr/lib"$LIBDIRSUFFIX"/
+    doln libncurses.so."$V" libncurses.so.5
+    # move libraries needed for boot to /lib (we call tput in initscripts)
+    doln libncursesw.so.5 libncursesw.so
+    # Fool packages looking to link to non-wide-character ncurses libraries
+    for lib in curses ncurses form panel menu; do
+        rm -f lib"${lib}".so
+        echo "INPUT(-l${lib}w)" >lib"${lib}".so
+          doln lib"${lib}"w.a lib"${lib}".a
+    done
+    doln libncurses++w.a libncurses++.a
+    # Some packages look for -lcurses during build
+    rm -f libcursesw.so
+    echo "INPUT(-lncursesw)" >libcursesw.so
+    doln libncurses.so libcurses.so
+    doln libncursesw.a libcursesw.a
+    doln libncurses.a  libcurses.a
+}
+

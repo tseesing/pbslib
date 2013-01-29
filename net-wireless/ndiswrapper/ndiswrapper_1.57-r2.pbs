@@ -1,0 +1,62 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="Wrapper for using Windows drivers for some wireless cards"
+HOMEPAGE="http://sourceforge.net/projects/ndiswrapper/files/stable/"
+LICENSE="GPL"
+PACKAGER="StartOS Developers"
+
+SRC_URI="http://sourceforge.net/projects/ndiswrapper/files/stable/"$N-$V".tar.gz"
+
+PROVIDE="ndiswrapper-utils ndiswrapper-driver ndiswrapper-source"
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_patch() {
+    dopatch linux33.patch
+    dopatch makefile-1.57.patch
+}
+
+pbs_config() {
+    doconfig
+}
+
+pbs_build() {
+    unset ARCH
+    domake utils
+    domake driver
+}
+
+ndiswrapper-utils_install () {
+    DESCRIPTION="Wrapper for using Windows drivers for some wireless cards, (utils)"
+    RDEPEND=""
+    make DESTDIR="$destdir" install-utils    
+}
+
+ndiswrapper-driver_install() {
+    DESCRIPTION="Wrapper for using Windows drivers for some wireless cards, (kernel module)"
+    RDEPEND="linux-kernel(=3.4.6-r2)"
+    BDEPEND="gcc-libs linux-kernel-headers"
+    GROUP="driver"
+    INSTALL="$N.install"
+
+    make DESTDIR="$destdir" install-driver
+}
+
+ndiswrapper-source_install() {
+    DESCRIPTION="Wrapper for using Windows drivers for some wireless cards, (source)"
+    RECOMMENDED="build-essential"
+    OPTIONS="nodev"
+    YARCH="any"
+    INSTALL="$N.install"
+
+    doykms
+    dosrc AUTHORS ChangeLog driver INSTALL Makefile ndiswrapper.spec README 
+}
+

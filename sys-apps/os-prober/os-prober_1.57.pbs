@@ -1,0 +1,62 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="Utility to detect other OSs on a set of drives"
+HOMEPAGE="http://packages.debian.org/source/sid/os-prober"
+LICENSE="GPLv3"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
+
+SRC_URI="ftp://ftp.debian.org/debian/pool/main/o/$N/${N}_$V.tar.gz"
+CHECKSUM="67548b17d55cc32c1168bb5a4061170d"
+
+RDEPEND="glibc"
+BDEPEND=""
+RECOMMENDED="ntfs-3g"
+
+NOTES="
+* If you intend for os-prober to detect versions of Windows installed on
+* NTFS-formatted partitions, your system must be capable of reading the
+* NTFS filesystem. One way to do this is by installing sys-fs/ntfs-3g
+"
+
+pbs_unpack() {
+    dounpack
+}
+
+pbs_patch() {
+    # adjust lib dir to allow detection of 64-bit distros
+    sed -i -e "s:/lib/ld\*\.so\*:/lib*/ld*.so*:g" os-probes/mounted/common/90linux-distro
+    # 
+    dopatch add_startos_distro.patch
+    rm -f Makefile
+}
+
+pbs_build() {
+    domake newns
+}
+
+pbs_install() {
+    install -Dm755 linux-boot-prober "$destdir"/usr/bin/linux-boot-prober
+    install -Dm755 os-prober "$destdir"/usr/bin/os-prober
+    install -Dm755 newns "$destdir"/usr/lib/os-prober/newns
+    install -Dm755 common.sh "$destdir"/usr/share/os-prober/common.sh  
+
+    for dir in os-probes os-probes/mounted os-probes/init linux-boot-probes linux-boot-probes/mounted; do
+        install -dm755 "$destdir"/usr/lib/"$dir"
+        install -m755 -t "$destdir"/usr/lib/"$dir" "$dir"/common/*
+        [[ -d "$dir"/x86 ]] && install -m755 -t "$destdir"/usr/lib/"$dir" "$dir"/x86/*
+    done
+
+    install -Dm755 os-probes/mounted/powerpc/20macosx $pkgdir/usr/lib/os-probes/mounted/20macosx
+                              
+    # create a empty labels file, will be used by os-prober at execution
+    cd "$destdir"
+    mkdir -p var/lib/os-prober
+    touch var/lib/os-prober/labels 
+    chmod 644 var/lib/os-prober/labels
+}
+

@@ -1,0 +1,42 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="A GNU tool for automatically configuring source code (Legacy 2.1x version)"
+HOMEPAGE="http://www.gnu.org/software/autoconf/"
+LICENSE="GPL"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
+YARCH="any"
+
+SRC_URI="http://ftpmirror.gnu.org/autoconf/autoconf-"$V".tar.gz"
+
+RDEPEND="perl"
+RECOMMENDED=""
+BDEPEND=""
+CONFLICT=""
+
+INSTALL="$N.install"
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_config() {
+    config+="--program-suffix=-2.13"
+    doconfig
+}
+
+pbs_build() {
+    domake
+}
+
+pbs_install() {
+    domkinstall prefix="${destdir}/usr" infodir="${destdir}/usr/share/info"
+    cd "$destdir"
+    mv usr/share/info/autoconf{,-2.13}.info
+    mv usr/share/info/standards{,-2.13}.info
+}
+

@@ -1,0 +1,37 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="Compiz Fusion Window Decorator Plugins"
+HOMEPAGE="http://www.compiz.org/"
+LICENSE="GPL"
+PACKAGER="StartOS Developers"
+
+SRC_URI="http://releases.compiz.org/"$V"/"$N-$V".tar.bz2"
+
+RDEPEND="libjpeg-turbo libSM libXcomposite libXinerama libXrandr libxslt mesa pango startup-notification"
+BDEPEND=""
+RECOMMENDED=""
+
+INSTALL="$N.install"
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_config() {
+    config+="--enable-schemas --disable-schemas-install"
+    doconfig
+}
+
+pbs_build() {
+    domake
+}
+
+pbs_install() {
+    domkinstall
+}
+

@@ -1,0 +1,76 @@
+. /usr/lib/ybs/funcs
+
+post_install() {
+    unpackP=/usr/local/Yozosoft/Yozo_Office/Jre/bin/unpack200 
+    libP=/usr/local/Yozosoft/Yozo_Office/Jre/lib
+    
+    echo "unpack jar packages, wait a while."
+    
+    $unpackP -r $libP/rt.pack.gz $libP/rt.jar
+    $unpackP -r $libP/jsse.pack.gz $libP/jsse.jar
+    $unpackP -r $libP/charsets.pack.gz $libP/charsets.jar
+    $unpackP -r $libP/plugin.pack.gz $libP/plugin.jar
+    $unpackP -r $libP/javaws.pack.gz $libP/javaws.jar
+    $unpackP -r $libP/deploy.pack.gz $libP/deploy.jar
+    $unpackP -r $libP/resources.pack.gz $libP/resources.jar
+    $unpackP -r $libP/ext/localedata.pack.gz $libP/ext/localedata.jar
+    $unpackP -r $libP/ext/bcprov-jdk14-124.pack.gz $libP/ext/bcprov-jdk14-124.jar
+    $unpackP -r $libP/ext/jai_core.pack.gz $libP/ext/jai_core.jar
+    $unpackP -r $libP/ext/tools.pack.gz $libP/ext/tools.jar
+    $unpackP -r $libP/ext/ojdbc14.pack.gz $libP/ext/ojdbc14.jar
+    $unpackP -r $libP/ext/mysql-connector-java-5.1.18-bin.pack.gz $libP/ext/mysql-connector-java-5.1.18-bin.jar
+    $unpackP -r $libP/ext/swt.pack.gz $libP/ext/swt.jar
+    $unpackP -r $libP/ext/DJNativeSwing-SWT.pack.gz $libP/ext/DJNativeSwing-SWT.jar
+    $unpackP -r $libP/ext/jhall.pack.gz $libP/ext/jhall.jar
+    $unpackP -r $libP/ext/bcel-5.1.pack.gz $libP/ext/bcel-5.1.jar
+    $unpackP -r /usr/local/Yozosoft/Yozo_Office/Yozo_Office.pack.gz /usr/local/Yozosoft/Yozo_Office/Yozo_Office.jar 
+    
+    if [ -z "$2" -a "$1" = "configure" ]; then
+        echo "handling file association, waiting a while..."
+        /usr/local/Yozosoft/Yozo_Office/Jre/bin/java -client -jar /usr/local/Yozosoft/Yozo_Office/Mimelnk/fileAssociate.jar -i
+    fi
+}
+
+pre_remove() {
+    echo "cancelling file association, waiting a while..."
+
+    if [ -f /usr/local/Yozosoft/Yozo_Office/System/unpatch.ini ]; then
+        while read line; do
+            truncate=${line#*=}
+            if [ -f $truncate ]; then
+                      rm -f $truncate
+              fi
+        done < /usr/local/Yozosoft/Yozo_Office/System/unpatch.ini
+    fi
+
+    /usr/local/Yozosoft/Yozo_Office/Jre/bin/java -client -jar /usr/local/Yozosoft/Yozo_Office/Mimelnk/fileAssociate.jar -u
+    rm -f /home/$SUDO_USER/Yozo_Office/UserConfig/BarData /home/$SUDO_USER/Yozo_Office/UserConfig/system.dll
+    
+    if [ -f /usr/local/Yozosoft/Yozo_Office/patcheio.log ] ; then
+        rm -f /usr/local/Yozosoft/Yozo_Office/patcheio.log
+    fi
+    
+    rm -rf /usr/local/Yozosoft/Yozo_Office/System
+    
+    if [ -d /home/$SUDO_USER/Yozo_Office/CustomizedSEImages ]; then
+        rm -rf /home/$SUDO_USER/Yozo_Office/CustomizedSEImages
+    fi
+    
+    if [ -f /usr/local/Yozosoft/Yozo_Office/ScienceEditorImages/logicalData ]; then
+        rm -f /usr/local/Yozosoft/Yozo_Office/ScienceEditorImages/logicalData
+    fi
+    
+    rm -rf /usr/local/Yozosoft/Yozo_Office/Upgrade/Patch
+    rm -f /usr/local/Yozosoft/Yozo_Office/Yozo_Office.jar 
+    libP=/usr/local/Yozosoft/Yozo_Office/Jre/lib
+    rm -rf $libP
+}
+
+post_upgrade() {
+    post_install 
+}
+
+post_downgrade() {
+    post_install
+}
+

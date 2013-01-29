@@ -1,0 +1,36 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="Perl module Test-Script"
+HOMEPAGE="http://search.cpan.org/~adamk/Test-Script-1.07/"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
+LICENSE="GPL,PerlArtistic"
+YARCH="any"
+
+SRC_URI="http://search.cpan.org/CPAN/authors/id/A/AD/ADAMK/Test-Script-"$V".tar.gz"
+
+RDEPEND="perl"
+BDEPEND="ipc-run3 probe-perl"
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_config() {
+    export PERL_MM_USE_DEFAULT=1
+    doconfig INSTALLDIRS=vendor
+}
+
+pbs_build() {
+    domake
+}
+
+pbs_install() {
+    domkinstall
+        perl_cleanup
+}
+

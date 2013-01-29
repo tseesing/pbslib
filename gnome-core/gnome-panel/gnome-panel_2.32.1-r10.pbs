@@ -1,0 +1,51 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="The GNOME Panel package contains hooks to the menu sub-system and the applet sub-system."
+HOMEPAGE="http://www.gnome.org/"
+LICENSE="GPL"
+PACKAGER="StartOS Developers"
+
+SRC_URI="http://ftp.gnome.org/pub/gnome/desktop/2.32/2.32.1/sources/"$N-$V".tar.bz2 "
+
+RDEPEND="evolution-data-server gnome-desktop gnome-menus libbonoboui librsvg libwnck"
+BDEPEND="gstreamer-dev polkit-gnome-dev consolekit-dev gnome-python-dev"     
+RECOMMENDED=""
+
+INSTALL="$N.install"
+
+NOTES="The libxml2 Python module must have been built during the installation of libxml2 else the GNOME Panel build will fail"
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_patch() {
+    dopatch autohide-signal-2.32.1.patch
+    dopatch wnck-and-calendar-2.32.1.patch
+}
+
+pbs_config() {
+    config+=" --disable-schemas-install  
+          --disable-scrollkeeper  
+          --enable-network-manager 
+          --enable-shared  
+          --with-in-process-applets=clock,notification-area,wncklet "
+    doconfig
+}
+
+pbs_build() {
+    domake
+}
+
+pbs_install() {
+    domkinstall
+
+    # Replace our gnome-panel default configure
+    docp_rename "$filesdir"/default-setup-"$V".entries   "$destdir"/etc/gconf/schemas/panel-default-setup.entries
+}
+

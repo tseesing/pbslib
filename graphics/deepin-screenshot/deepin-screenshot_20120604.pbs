@@ -1,0 +1,42 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="a screen snapshot tool from deepin linux"
+HOMEPAGE="http://www.linuxdeepin.com"
+LICENSE="LGPLv3"
+PACKAGER="StartOS Developers"
+
+SRC_URI="git://github.com/lovesnow/"$N".git"
+
+RDEPEND="python pygtk python-xlib"
+RECOMMENDED=""
+BDEPEND=""
+OPTIONAL=""
+CONFLICT=""
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_install() {
+    # locale
+    for pofile in po/*.po; do 
+        lang=`basename $pofile .po`
+        dest="$destdir/usr/share/$N/locale/$lang/LC_MESSAGES"
+        mkdir -p $dest
+        msgfmt -o $dest/deepin-screenshot.mo $pofile
+    done
+
+    docp -r src "$destdir"/usr/share/"$N"
+    docp -r theme "$destdir"/usr/share/"$N"
+    dodoc AUTHORS ChangeLog README
+    
+    cd "$destdir"
+    doln /usr/share/"$N"/src/"$N" usr/bin/"$N"
+    doln /usr/share/"$N"/locale/en_US usr/share/"$N"/locale/default
+}
+

@@ -1,0 +1,12 @@
+--- capplets/about-me/gnome-about-me.c	2010-03-29 22:22:56.000000000 +0800
++++ capplets/about-me/gnome-about-me.c.new	2011-02-22 14:47:19.279495010 +0800
+@@ -917,7 +917,8 @@
+ 	}
+ 
+ 	me->login = g_strdup (g_get_user_name ());
+-	me->username = g_strdup (g_get_real_name ());
++	//me->username = g_strdup (g_get_real_name ());
++	me->username = g_strdup (g_get_user_name ());
+ 
+ 	/* Contact Tab */
+ 	about_me_load_photo (me, me->contact);

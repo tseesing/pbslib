@@ -1,0 +1,42 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="Extensible screen reader that provides access to the desktop"
+HOMEPAGE="http://www.gnome.org/projects/orca/"
+LICENSE="LGPL"
+PACKAGER="chenqixing@ivali.com
+          Zhongxin Huang <huangzhongxin@ivali.com>"
+YARCH="any"
+
+SRC_URI="http://ftp.gnome.org/pub/gnome/sources/$N/${V::3}/$N-$V.tar.xz"
+CHECKSUM="3148f8f0749f842afd8c05334777e95a72d5d32ee5f5693d04773b5f95411ff6"
+
+RDEPEND="pygobject3 gtk3 pyatspi dbus-python pyxdg speech-dispatcher liblouis xmodmap at-spi2-atk brltty"
+BDEPEND="itstool intltool gnome-doc-utils"
+RECOMMENDED=""
+
+INSTALL="$N.install"
+
+pbs_unpack() {
+    dounpack
+}
+
+pbs_config() {
+    doconfig
+}
+
+pbs_build() {
+    domake
+}
+
+pbs_install() {
+    domkinstall
+    dodoc COPYING
+}
+
+
+

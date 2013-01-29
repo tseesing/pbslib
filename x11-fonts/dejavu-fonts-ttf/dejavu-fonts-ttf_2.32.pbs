@@ -1,0 +1,29 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="DejaVu True Type Font (minimum)."
+HOMEPAGE="http://dejavu.sourceforge.net/"
+GROUP="fonts"
+LICENSE="GPL-2"
+PACKAGER="StartOS Developers"
+
+SRC_URI="http://downloads.sourceforge.net/project/dejavu/dejavu/2.32/"$N-$V$R".tar.bz2"
+
+RDEPEND=""
+BDEPEND=" "
+
+INSTALL="$N.install"
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_install() {
+    docp ttf/*.ttf "$destdir"/usr/share/fonts/truetype/ttf-dejavu    
+    dodoc AUTHORS BUGS langcover.txt LICENSE NEWS README status.txt unicover.txt
+}
+

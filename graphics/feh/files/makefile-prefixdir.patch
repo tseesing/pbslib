@@ -1,0 +1,12 @@
+diff -ur feh-1.14.2/config.mk feh-1.14.2.new//config.mk
+--- feh-1.14.2/config.mk	2011-07-04 20:49:17.000000000 +0800
++++ feh-1.14.2.new//config.mk	2011-07-05 09:36:25.792884339 +0800
+@@ -2,7 +2,7 @@
+ VERSION ?= 1.14.2
+ 
+ # Prefix for all installed files
+-PREFIX ?= /usr/local
++PREFIX ?= /usr/
+ 
+ # Directories for manuals, executables, docs, data, etc.
+ main_dir = ${DESTDIR}${PREFIX}

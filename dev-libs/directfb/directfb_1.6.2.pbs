@@ -1,0 +1,47 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="A thin library that provides hardware graphics acceleration, input device handling and abstraction, integrated windowing system on top of the Linux Framebuffer Device"
+HOMEPAGE="http://www.directfb.org/"
+LICENSE="LGPL"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
+ 
+SRC_URI="http://www.directfb.org/downloads/Core/DirectFB-"${V%.*}"/DirectFB-"$V".tar.gz"
+CHECKSUM="a393a53130e6a80369b7081371cd23dd1cd5e192"
+
+RDEPEND="freetype libjpeg-turbo libpng gcc-libs libsdl"
+BDEPEND=""
+RECOMMENDED=""
+
+pbs_unpack() {
+    dounpack
+}
+
+pbs_patch() {
+    dopatch remove-werror-from-cflags.patch
+}
+
+pbs_config() {
+    config+="--enable-static 
+             --enable-zlib 
+             --enable-x11 
+             --enable-sdl 
+             --disable-vnc 
+             --disable-osx 
+             --enable-video4linux2 
+             --enable-voodoo"
+    doconfig
+}
+
+pbs_build() {
+    domake
+}
+
+pbs_install() {
+    domkinstall
+}
+

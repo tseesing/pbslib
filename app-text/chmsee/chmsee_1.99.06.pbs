@@ -1,0 +1,48 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="HTML Help viewer for Unix/Linux"
+HOMEPAGE="http://code.google.com/p/chmsee/"
+LICENSE="GPLv2"
+PACKAGER="StartOS Developers"
+
+#https://nodeload.github.com/jungleji/chmsee/tarball/v1.99.06
+SRC_URI="jungleji-chmsee-v1.99.06-0-gad31e43.tar.gz"
+
+RDEPEND="chmlib xulrunner libpng sqlite alsa-lib atk cairo dbus expat fontconfig freetype gcc-libs gdk-pixbuf2 glib2 glibc gtk2 hunspell libevent libffi libICE libSM libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libXrandr libXrender libXt nspr nss pango pixman startup-notification util-linux zlib"
+BDEPEND=""
+RECOMMENDED=""
+
+INSTALL="$N.install"
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_build() {
+    cd src
+    cp Makefile.debian Makefile
+    domake
+}
+
+pbs_install() {
+    cd ../
+    docp * "$destdir"/usr/share/chmsee 
+
+    docp "$filesdir"/chmsee "$destdir"/usr/bin
+    chmod 0755 "$destdir"/usr/bin/chmsee
+
+    cd "$destdir"/usr/share/chmsee
+    docp_rename data/chmsee.desktop.in "$destdir"/usr/share/applications/chmsee.desktop
+    sed -i -e 's/_//g'                 "$destdir"/usr/share/applications/chmsee.desktop
+    docp data/chmsee-icon.png          "$destdir"/usr/share/pixmaps
+    
+    rm -rf "$destdir"/usr/share/chmsee/src
+
+    domv AUTHORS ChangeLog COPYING HACKING NEWS README "$destdir"/usr/share/doc/"$N"
+}
+

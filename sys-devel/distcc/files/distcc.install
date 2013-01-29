@@ -1,0 +1,25 @@
+
+CONFFILE="/etc/default/distcc"
+CONFFILE_EXAMPLE="/usr/share/distcc/distcc.conf.sample"
+
+post_install() {
+    if [ ! -f "$CONFFILE" ]; then 
+        cp $CONFFILE_EXAMPLE $CONFFILE
+    fi
+    
+    return 0
+}
+
+post_remove() {
+    [ -f $CONFFILE ] && rm -f $CONFFILE ||true
+}
+
+post_upgrade() {
+    systemctl --system daemon-reload
+    post_install
+}
+
+post_downgrade() {
+    post_upgrade
+}
+

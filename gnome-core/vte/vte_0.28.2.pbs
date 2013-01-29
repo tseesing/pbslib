@@ -1,0 +1,43 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="Terminal emulator widget"
+HOMEPAGE="http://library.gnome.org/devel/vte/"
+LICENSE="LGPL"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
+
+SRC_URI="http://ftp.gnome.org/pub/GNOME/sources/"$N"/0.28/"$N-$V".tar.xz"
+CHECKSUM="86cf0b81aa023fa93ed415653d51c96767f20b2d7334c893caba71e42654b0ae"
+
+RDEPEND="gtk2 vte-common"
+BDEPEND="pygtk intltool gobject-introspection"
+
+pbs_unpack() {
+    dounpack
+}
+
+pbs_patch() {
+    dopatch 02_meta.patch
+}
+
+pbs_config() {
+    # Warning: type-punning to incomplete type might break strict-aliasing rules
+    export CFLAGS="$CFLAGS -fno-strict-aliasing"
+    config+="--enable-introspection --with-gtk=2.0 --enable-introspection --enable-python --disable-static"
+    doconfig
+}
+
+pbs_build() {
+    domake
+}
+
+pbs_install() {
+    domkinstall
+    # Provided by vte-common (vte3 splite)
+    rm "$destdir"/usr/libexec/gnome-pty-helper
+}
+

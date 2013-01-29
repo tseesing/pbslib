@@ -1,0 +1,37 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="GTK standard engines and themes"
+HOMEPAGE="http://www.gtk.org/"
+LICENSE="GPL,LGPL"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
+
+SRC_URI="http://ftp.gnome.org/pub/gnome/core/3.6/3.6.2/sources/"$N-$V".tar.bz2"
+CHECKSUM="5deb287bc6075dc21812130604c7dc4f"
+
+RDEPEND="gtk2"
+BDEPEND="pkgconfig intltool" 
+RECOMMENDED=""
+
+pbs_unpack() {
+    dounpack
+}
+
+pbs_config() {    
+    config+="--enable-animation"
+    doconfig
+}
+
+pbs_build() {
+    sed  -i -e '31s/glib\/gtimer.h/glib-2.0\/glib.h/g' engines/clearlooks/src/animation.c 
+    domake
+}
+
+pbs_install() {
+    domkinstall
+}
+

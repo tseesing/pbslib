@@ -1,0 +1,43 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="Language pack for Thunderbird"
+HOMEPAGE="http://www.mozilla.com/en-US/thunderbird/"
+LICENSE="MPL,GPL"
+PACKAGER="StartOS Developers"
+
+#XXX Get xpi from ubuntu 12.04, upstream's seems not work.
+#
+#SRC_URI="ftp://ftp.mozilla.org/pub/mozilla.org/thunderbird/releases/"$V"/linux-i686/xpi/zh-CN.xpi
+#         ftp://ftp.mozilla.org/pub/mozilla.org/thunderbird/releases/"$V"/linux-i686/xpi/zh-TW.xpi"
+#CHECKSUM="f067a1c3ed1a5479cea19353bbdc67f8 bf01d773f5ce96e1ebefaff1f381199a"
+
+RDEPEND="thunderbird(>=13.0.1)"
+PROVIDE="thunderbird-i18n-zh-CN thunderbird-i18n-zh-TW"
+
+thunderbird-i18n-zh-CN_install() {
+    DESCRIPTION="Language zh-CN pack for Thunderbird"
+    RDEPEND="thunderbird(>=13.0.1)"
+    YARCH="any"
+
+    #local target="$destdir/usr/lib/thunderbird/extensions/langpack-zh-CN@thunderbird.mozilla.org.xpi"
+    #docp_rename "$YBS_SOURCE"/zh-CN.xpi "$target" 
+
+    docp "$filesdir"/langpack-zh-CN@thunderbird.mozilla.org.xpi "$destdir"/usr/lib/thunderbird/extensions/
+}
+
+thunderbird-i18n-zh-TW_install() {
+    DESCRIPTION="Language zh-TW pack for Thunderbird"
+    RDEPEND="thunderbird(>=13.0.1)"
+    YARCH="any"
+
+    #local target="$destdir/usr/lib/thunderbird/extensions/langpack-zh-TW@thunderbird.mozilla.org.xpi"
+    #docp_rename "$YBS_SOURCE"/zh-TW.xpi "$target"  
+
+    docp "$filesdir"/langpack-zh-TW@thunderbird.mozilla.org.xpi "$destdir"/usr/lib/thunderbird/extensions/
+}
+

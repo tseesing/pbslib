@@ -1,0 +1,60 @@
+. /usr/lib/ybs/funcs
+
+files="libc.info-9.gz libc.info-8.gz libc.info-7.gz libc.info-6.gz libc.info-5.gz libc.info-4.gz libc.info-3.gz libc.info-2.gz libc.info-11.gz libc.info-10.gz libc.info-1.gz libc.info.gz"
+
+nsswitch_conf() {
+        cat >/etc/nsswitch.conf << "EOF"
+passwd: files
+group: files
+shadow: files
+hosts: files dns
+networks: files
+protocols: files
+services: files
+ethers: files
+rpc: files
+EOF
+}
+
+ld_so_conf() {
+    cat >/etc/ld.so.conf << "EOF"
+/usr/local/lib
+/opt/lib
+EOF
+}
+
+localtime_ () {
+    ln -sf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
+}
+
+post_install() {
+    # Install info
+    doinstall_info $files
+    
+    # Install locale
+    mkdir -p /usr/lib/locale
+    localedef -i en_US -f ISO-8859-1 en_US
+    localedef -i en_US -f UTF-8 en_US.UTF-8
+    localedef -i zh_CN -f GB2312 zh_CN.GB2312
+    localedef -i zh_CN -f UTF-8 zh_CN.UTF-8
+    
+    [ ! -f /etc/nsswitch.conf ] && nsswitch_conf
+    [ ! -f /etc/ld.so.conf ] && ld_so_conf
+    [ ! -f /etc/localtime ] && localtime_
+    
+    #update-initramfs -d -c -k "$KERNEL_DIST" ||true
+}
+
+pre_remove() {
+    doremove_info $files
+}
+
+post_upgrade () {
+    doinstall_info $files
+    #update-initramfs -d -c -k "$KERNEL_DIST" ||true
+}
+
+post_downgrade() {
+    post_upgrade
+}
+

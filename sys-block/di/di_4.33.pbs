@@ -1,0 +1,39 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="A disk information utility, displaying everything (and more) that your df command does"
+HOMEPAGE="http://www.gentoo.com/di"
+LICENSE="ZLIB"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
+
+SRC_URI="http://www.gentoo.com/$N/$N-$V.tar.gz"
+
+RDEPEND="glibc"
+RECOMMENDED=""
+BDEPEND=""
+OPTIONAL=""
+CONFLICT=""
+REPLACE=""
+
+pbs_unpack() {
+    dounpack
+}
+
+pbs_patch() {
+    sed -i 's|error|//error|' C/di.h
+    sed -i '11i\#include <string.h>' C/di.h
+}
+
+pbs_build() {
+    domake CC="cc"
+}
+
+pbs_install() {
+    make INSTALL_DIR="$destdir"/usr install
+    dodoc LICENSE
+}
+

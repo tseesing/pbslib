@@ -1,0 +1,36 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="Perl interface to the 2.x series of the GNOME VFS library"
+HOMEPAGE="http://search.cpan.org/~tsch/Gnome2-VFS-1.081/VFS.pm"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
+LICENSE="GPL,PerlArtistic"
+
+SRC_URI="http://search.cpan.org/CPAN/authors/id/T/TS/TSCH/Gnome2-VFS-"$V".tar.gz"
+
+RDEPEND="gtk2-perl perl gnome-vfs"
+BDEPEND="extutils-depends extutils-pkgconfig"
+RECOMMENDED=""
+CONFLICT=""
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_config() {
+    doconfig INSTALLDIRS=vendor
+}
+
+pbs_build() {
+    domake
+}
+
+pbs_install() {
+    domkinstall
+        perl_cleanup
+}
+

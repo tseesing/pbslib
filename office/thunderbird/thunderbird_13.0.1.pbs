@@ -1,0 +1,63 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="Thunderbird Mail Client"
+HOMEPAGE="http://www.mozilla.com/en-US/thunderbird/"
+LICENSE="GPL,MPL"
+PACKAGER="StartOS Developers"
+
+SRC_URI="ftp://ftp.mozilla.org/pub/mozilla.org/"$N"/releases/"$V"/source/"$N-$V".source.tar.bz2"
+CHECKSUM="721088faf4bedfd8d7beb6f8295856d1"
+
+RDEPEND="alsa-lib hunspell libevent libnotify libvpx libXt nss startup-notification"
+BDEPEND=""
+RECOMMENDED="thunderbird-i18n-zh-CN(>=13.0.1)"
+
+INSTALL="$N.install"
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_patch() {
+    dopatch thunderbird-install-dir.patch
+}
+
+pbs_config() {
+    docp_rename "$filesdir"/mozconfig .mozconfig
+}
+
+pbs_build() {
+    export LDFLAGS="$LDFLAGS -Wl,-rpath,/usr/lib/thunderbird"
+    export PYTHON="/usr/bin/python"
+    domake -f client.mk build 
+}
+
+pbs_install() {
+    domkinstall -f client.mk DESTDIR="$destdir"
+    
+    # icons
+    for i in 16x16 22x22 24x24 32x32 48x48 256x256; do
+        docp_rename other-licenses/branding/thunderbird/mailicon"${i/x*/}".png \
+             "$destdir"/usr/share/icons/hicolor/"${i}"/apps/thunderbird.png
+    done
+    
+    cd "$destdir"
+
+    docp "$filesdir"/vendor.js usr/lib/thunderbird/defaults/pref/
+    
+    #rm -rf usr/lib/thunderbird/{dictionaries,hyphenation}
+    #ln -sf /usr/share/hunspell usr/lib/thunderbird/dictionaries
+    #ln -sf /usr/share/hyphen   usr/lib/thunderbird/hyphenation
+
+    # We don't want the development stuff
+    rm -r usr/{include,lib/thunderbird-devel,share/idl}
+
+    #
+    dodesktop "thunderbird.desktop" "usr/lib/"$N"/chrome/icons/default/default48.png"
+}
+

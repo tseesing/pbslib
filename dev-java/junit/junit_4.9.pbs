@@ -1,0 +1,45 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="Simple framework to write repeatable tests"
+HOMEPAGE="http://www.junit.org/"
+LICENSE="custom"
+PACKAGER="StartOS Developers"
+
+SRC_URI="http://cloud.github.com/downloads/KentBeck/"$N"/junit4.9b3.zip"
+
+RDEPEND=""
+BDEPEND="jdk jre apache-ant"
+RECOMMENDED=""
+CONFLICT=""
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_install() {
+    # Prepare
+    . /etc/profile.d/jdk.sh
+    jar xf junit-4.9b3-src.jar
+    cp "$filesdir"/build.xml .
+    find . -name \*.class -delete
+    find . -name \*.jar -delete
+    
+    # Build
+    . /etc/profile.d/apache-ant.sh
+    ant dist
+
+    # Install
+    docp junit4.4/junit.jar "$destdir"/"$JAVA_HOME"/
+
+    dodoc cpl-v10.html
+
+    cd "$destdir"
+    doln "$JAVA_HOME"/junit.jar usr/share/java/junit.jar
+    doln "$JAVA_HOME"/junit.jar usr/lib/junit.jar
+}
+

@@ -1,0 +1,52 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="James Clark's DSSSL Engine"
+HOMEPAGE="http://www.jclark.com/jade"
+LICENSE="custom"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
+ 
+SRC_URI="ftp://ftp.jclark.com/pub/$N/$N-$V.tar.gz 
+         http://ftp.debian.org/debian/pool/main/j/$N/"$N"_$V-47.1.diff.gz"
+CHECKSUM="4239670ca6b578bff68b8c2e7cd1225f 6c9c0109e3b6d283cb7a18ec8a672575"
+
+RDEPEND="gcc-libs"
+BDEPEND=""
+RECOMMENDED=""
+REPLACE="jade"
+
+pbs_unpack() {
+    dounpack
+}
+
+pbs_patch() {
+    patchfile="$N"_$V-47.1.diff.gz
+    cp "$YBS_SOURCE"/$patchfile .
+    gunzip $patchfile
+    dopatch ${patchfile%.gz}
+
+    chmod 755 configure
+}
+
+pbs_config() {
+    export CXXFLAGS="$CXXFLAGS -fpermissive"
+    config+="--enable-default-catalog=/usr/share/sgml/catalog"
+    doconfig
+}
+
+pbs_build() {
+    make
+}
+
+pbs_install() {
+    install -d -m755 "$destdir"/usr/{bin,lib"$LIBDIRSUFFIX"}
+    make prefix="$destdir"/usr libdir="$destdir"/usr/lib"$LIBDIRSUFFIX" install
+    dodoc COPYING
+    cd "$destdir"
+    mv usr/bin/sx usr/bin/sgml2xml
+}
+

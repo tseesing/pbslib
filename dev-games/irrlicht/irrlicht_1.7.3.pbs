@@ -1,0 +1,70 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="open source high performance realtime 3D engine written in C++"
+HOMEPAGE="http://irrlicht.sourceforge.net/"
+LICENSE="ZLIB"
+PACKAGER="StartOS Developers"
+
+SRC_URI="http://downloads.sourceforge.net/irrlicht/"$N-$V".zip"
+CHECKSUM="cfbdc8c68fbca544c7c8dfb3623ae086"
+
+RDEPEND="mesa"
+RECOMMENDED=""
+BDEPEND=""
+OPTIONAL=""
+CONFLICT=""
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_patch() {
+    sed -i -e '/^#.*NON_SYSTEM_ZLIB/d' \
+           -e '/^#.*NON_SYSTEM_JPEG/d' \
+           -e '/^#.*NON_SYSTEM_LIB_PNG/d' \
+           -e '/^#.*NON_SYSTEM_BZLIB/d' \
+        include/IrrCompileConfig.h
+}
+
+pbs_build() {
+    cd source/Irrlicht
+    sed -i "/^INSTALL_DIR/s:=.*:=$destdir/usr/lib:" Makefile
+    make sharedlib 
+    make
+}
+
+pbs_install() {
+    make install
+
+    cd "$srcdir"/
+    dodoc readme.txt
+
+    # Install static library and fix headers permissions
+    docp lib/Linux/libIrrlicht.a "$destdir"/usr/lib
+    chmod 644 "$destdir"/usr/include/"$N"/*
+
+    # Install media files for examples
+    docp -r media "$destdir"/usr/share/"$N"
+
+    # Install documentation
+    dodoc doc/* 
+
+    cd "$destdir"/usr/lib
+    ln -s libIrrlicht.so."$V" libIrrlicht.so.1
+
+    # Just a helper for examples compilation
+    ln -s libIrrlicht.so."$V" "$srcdir"/lib/Linux/libIrrlicht.so
+
+    # Edit, build and install the examples
+    cd "$srcdir"/examples
+    sed -i '/define USE_IRRKLANG/s:.*://&:' ./Demo/CDemo.h
+    sed -i '/^CXXFLAGS/d' $(grep -Rl "^CXXFLAGS =" *)
+    make
+    docp ../bin/Linux/* "$destdir"/usr/share/"$N"/examples/bin/
+}
+

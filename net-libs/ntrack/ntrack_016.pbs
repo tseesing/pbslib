@@ -1,0 +1,38 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="Network Connectivity Tracking library for Desktop Applications"
+HOMEPAGE="https://launchpad.net/ntrack"
+LICENSE="GPL,LGPL"
+PACKAGER="StartOS Developers"
+
+SRC_URI="https://launchpad.net/ntrack/main/"$V"/+download/"$N-$V".tar.gz"
+CHECKSUM="21691dac43460a6791cba3decbc68242"
+
+RDEPEND="libnl qt"
+RECOMMENDED=""
+BDEPEND=""
+OPTIONAL=""
+CONFLICT=""
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_config() {
+    config+=""
+    doconfig
+}
+
+pbs_build() {
+    domake
+}
+
+pbs_install() {
+    domkinstall
+}
+

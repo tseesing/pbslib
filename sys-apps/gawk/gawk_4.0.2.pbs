@@ -1,0 +1,38 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="GNU awk pattern-matching language"
+HOMEPAGE="http://www.gnu.org/software/gawk/gawk.html"
+LICENSE="GPL"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
+ALIAS="awk"
+
+SRC_URI="ftp://ftp.gnu.org/pub/gnu/"$N"/"$N-$V".tar.gz"
+CHECKSUM="4d505dc2c9f1eb3e9f8d6cac87d4bd1a"
+
+RDEPEND="glibc"
+BDEPEND=""
+
+INSTALL="$N.install"
+
+pbs_unpack() {
+    dounpack
+}
+
+pbs_config() {
+    config+=""
+    doconfig
+}
+
+pbs_build() {
+    domake
+}
+
+pbs_install() {
+    domkinstall
+}
+

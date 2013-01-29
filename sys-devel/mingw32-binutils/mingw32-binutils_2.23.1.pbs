@@ -1,0 +1,49 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="A set of programs to assemble and manipulate binary and object files (mingw)"
+HOMEPAGE="https://sourceforge.net/projects/mingw/files/MinGW/Base/binutils"
+LICENSE="GPL"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
+
+SRC_URI="http://sourceforge.net/projects/mingw/files/MinGW/Base/binutils/binutils-"$V"/binutils-"$V"-1-mingw32-src.tar.lzma"
+CHECKSUM="5d76604f545b151230d1c86e1b8cfab3"
+
+RDEPEND="glibc zlib"
+BDEPEND=""
+RECOMMENDED=""
+CONFLICT=""
+
+pbs_unpack() {
+    dounpack
+}
+
+pbs_patch() {
+    tar xf binutils-"$V".tar.bz2
+}
+
+pbs_config() {
+    cd binutils-"$V"
+    local TARGET="i586-mingw32msvc"
+
+    config="--target="$TARGET" 
+            --prefix=/usr
+            --disable-nls 
+            --enable-shared"
+    doconfig
+}
+
+pbs_build() {
+    domake 
+}
+
+pbs_install() {
+    domkinstall
+    cd "$destdir"
+    rm -rf usr/lib"$LIBDIRSUFFIX" usr/share/{info,man}
+}
+

@@ -1,0 +1,83 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="A C cross-compiler for building Windows executables on Linux(stage 2)"
+HOMEPAGE="http://mingw.sf.net"
+REPO=""
+LICENSE="GPL/LGPL"
+PACKAGER="StartOS Developers"
+
+SRC_URI="http://ncu.dl.sourceforge.net/project/mingw/MinGW/BaseSystem/GCC/Version3/Previous%20Release_%20gcc-3.4.5-20060117-2/gcc-core-"$V$R"-src.tar.gz
+http://ncu.dl.sourceforge.net/project/mingw/MinGW/BaseSystem/GCC/Version3/Previous%20Release_%20gcc-3.4.5-20060117-2/gcc-ada-"$V$R"-src.tar.gz
+http://ncu.dl.sourceforge.net/project/mingw/MinGW/BaseSystem/GCC/Version3/Previous%20Release_%20gcc-3.4.5-20060117-2/gcc-g%2B%2B-"$V$R"-src.tar.gz
+http://ncu.dl.sourceforge.net/project/mingw/MinGW/BaseSystem/GCC/Version3/Previous%20Release_%20gcc-3.4.5-20060117-2/gcc-g77-"$V$R"-src.tar.gz
+http://ncu.dl.sourceforge.net/project/mingw/MinGW/BaseSystem/GCC/Version3/Previous%20Release_%20gcc-3.4.5-20060117-2/gcc-java-"$V$R"-src.tar.gz
+http://ncu.dl.sourceforge.net/project/mingw/MinGW/BaseSystem/GCC/Version3/Previous%20Release_%20gcc-3.4.5-20060117-2/gcc-objc-"$V$R"-src.tar.gz"
+
+RDEPEND=""
+BDEPEND="mingw32-headers mingw32-binutils mingw32-gcc-base mingw32-w32api mingw32-runtime"
+RECOMMENDED=""
+CONFLICT=""
+
+OPTIONS="nodev nostrip"
+
+pbs_unpack() {
+        dounpack
+    for i in ada g%2B%2B g77 java objc; do
+        tar xf "$YBS_SOURCE"/gcc-"$i"-"$V$R"-src.tar.gz -C "$N-$V$R"    
+    done
+}
+
+pbs_config() {
+    TARGET="i586-mingw32msvc"
+    TARGET_OS="mingw32"
+    INSTALL_DIR="/usr/mingw"
+
+    cp -r gcc-3.4.5-20060117-2/* .
+
+    mkdir build && cd build
+    
+    config=" --prefix="$INSTALL_DIR"
+             --target="$TARGET"
+             --with-gcc 
+             --with-gnu-as 
+             --with-gnu-ld 
+             --disable-nls 
+             --disable-debug 
+             --enable-threads=win32 
+             --disable-win32-registry 
+             --enable-libgcj 
+             --disable-libgcj-debug
+             --disable-java-awt 
+             --enable-java-gc=boehm 
+             --enable-interpreter 
+             --enable-hash-synchronization 
+             --without-x
+             --enable-sjlj-exceptions 
+             --enable-languages=c,c++
+             --with-sysroot="$INSTALL_DIR""
+             #,ada,f77,java,objc
+    unset CC
+    unset CXX
+    unset CFLAGS 
+    unset CXXFLAGS
+    export PATH=$PATH:"$INSTALL_DIR"/bin
+    ../configure $config
+}
+
+pbs_build() {
+    export CFLAGS="-O2 -fomit-frame-pointer"
+    export LDFLAGS="-s"
+    domake
+}
+
+pbs_install() {
+    domkinstall
+    docp $filesdir/mingw32-gcc.sh "$destdir"/etc/profile.d/
+}
+
+

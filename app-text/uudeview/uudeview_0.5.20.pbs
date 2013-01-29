@@ -1,0 +1,46 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="uu, xx, base64, binhex decoder"
+HOMEPAGE="http://www.fpx.de/fp/Software/UUDeview/"
+REPO=""
+LICENSE="GPL"
+PRIORITY=""
+PACKAGER="StartOS Developers"
+
+SRC_URI="http://www.fpx.de/fp/Software/UUDeview/download/uudeview-0.5.20.tar.gz"
+
+RDEPEND="expat fontconfig freetype glibc libX11 libXau libxcb libXdmcp libXext libXft libXrender libXScrnSaver tcl tk zlib"
+BDEPEND="              "
+RECOMMENDED=""
+CONFLICT=""
+
+NOTES=""
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_config() {
+    patches="uudeview-0.5.20-bugfixes.patch
+            uudeview-0.5.20-CVE-2004-2265.patch
+        uudeview-0.5.20-CVE-2008-2266.patch
+        uudeview-0.5.20-man.patch
+        uudeview-0.5.20-rename.patch"
+    dopatch $patches
+    config+=""
+    doconfig
+}
+
+pbs_build() {
+    domake
+}
+
+pbs_install() {
+    domkinstall MANDIR="$destdir/usr/share/man/" BINDIR="$destdir/usr/bin/"
+    dodoc  HISTORY INSTALL README
+}

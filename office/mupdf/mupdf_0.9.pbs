@@ -1,0 +1,46 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="a lightweight PDF and XPS viewer"
+COMMENTS="The renderer in MuPDF is tailored for high quality anti-aliased graphics. It renders text with metrics and spacing accurate to within fractions of a pixel for the highest fidelity in reproducing the look of a printed page on screen."
+HOMEPAGE="http://code.google.com/p/mupdf/"
+LICENSE="GPLv3"
+PACKAGER="StartOS Developers"
+
+SRC_URI="http://mupdf.googlecode.com/files/"$N-$V"-source.tar.gz"
+
+RDEPEND="freetype jbig2dec libjpeg-turbo libXext"
+RECOMMENDED=""
+BDEPEND=""
+CONFLICT=""
+
+INSTALL="$N.install"
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_build() {
+    domake build=release prefix="$destdir/usr"
+}
+
+pbs_install() {
+    domkinstall build=release prefix="${destdir}/usr"
+    
+    # Fix mupdf.desktop
+    sed -i "s/mupdf.xpm/mupdf/" debian/mupdf.desktop
+    sed -i "s/application\/x-pdf/application\/x-pdf/" debian/mupdf.desktop
+
+    dodesktop debian/mupdf.desktop debian/mupdf.xpm
+
+    # Rename executables
+    cd "${destdir}/usr/bin"
+    for i in pdf*; do 
+        mv "$i" "$i-mupdf";
+    done
+}
+

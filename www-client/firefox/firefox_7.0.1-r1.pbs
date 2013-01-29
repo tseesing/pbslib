@@ -1,0 +1,81 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="Firefox Web Browser"
+HOMEPAGE="http://www.mozilla.com/firefox"
+LICENSE="Multi-licensing"
+PACKAGER="StartOS Developers"
+
+SRC_URI="ftp://ftp.mozilla.org/pub/mozilla.org/"$N"/releases/"$V"/source/"$N-$V".source.tar.bz2"
+CHECKSUM="5b212db48630ba93bb30ec63cca17f4d"
+
+RDEPEND="alsa-lib atk avahi cairo dbus dbus-glib expat fontconfig freetype gcc-libs gdk-pixbuf2 glib2 glibc gnome-vfs gtk2 libICE libnotify libSM libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libxml2 libXrandr libXrender libXt nspr nss openssl pango pixman startup-notification util-linux zlib"
+
+BDEPEND=""
+RECOMMENDED="firefox-i18n-zh-CN"
+
+NOTES="Do not distribute builds with
+--enable-official-branding unless you have
+permission to use trademarks 
+http://www.mozilla.org/foundation/trademarks/"
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_patch() {
+    # See bellow: vendor.js 
+    dopatch firefox-install-dir.patch
+}
+
+pbs_config() {
+    config+="--enable-application=browser
+         --enable-official-branding
+         --enable-optimize=-O2
+         --enable-startup-notification 
+         --with-distribution-id=startos
+         --disable-debug 
+         --disable-tests"
+
+    export LDFLAGS="$LDFLAGS -Wl,-rpath,/usr/lib/firefox"         
+    doconfig
+}
+
+pbs_build() {
+    domake
+}
+
+pbs_install() {
+    domkinstall
+
+    for i in 16x16 22x22 24x24 32x32 48x48 256x256; do
+          install -Dm644 browser/branding/official/default${i/x*/}.png \
+                  "$destdir/usr/share/icons/hicolor/${i}/apps/firefox.png"
+        done
+
+    cd "$destdir"
+    
+    # Default configure
+    install -m644 "$filesdir"/vendor.js "usr/lib/firefox/defaults/pref"
+
+    # Desktop
+    dodesktop "firefox.desktop" "usr/lib/"$N"/icons/mozicon128.png"
+    
+    # Add extensions 
+    docp "$filesdir"/extensions/* "usr/lib/"$N"/extensions"
+
+    # Add baidu searchplugin
+    docp "$filesdir"/baidu.xml  "usr/lib/"$N"/searchplugins/"
+
+    # We don't want the development stuff
+    rm -r usr/{include,lib/firefox-devel,share/idl}
+
+    # rm -rf usr/lib/firefox/{dictionaries,hyphenation}
+    # doln /usr/share/hunspell "usr/lib/firefox/dictionaries"
+    # doln /usr/share/hyphen  "usr/lib/firefox/hyphenation"
+}
+

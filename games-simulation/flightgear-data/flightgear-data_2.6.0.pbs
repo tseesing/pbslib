@@ -1,0 +1,31 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="Base-Data for the opensource flight-simulator."
+HOMEPAGE="http://www.flightgear.org"
+LICENSE="GPL"
+PACKAGER="StartOS Developers"
+YARCH="any"
+
+SRC_URI="http://mirrors.ibiblio.org/pub/mirrors/flightgear/ftp/Shared/FlightGear-data-"$V".tar.bz2"
+CHECKSUM="4c5b3489fa60b6512616c408162bd56e"
+
+RDEPEND="flightgear"
+RECOMMENDED=""
+BDEPEND=""
+OPTIONAL=""
+CONFLICT=""
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_install() {
+    docp * "$destdir"/usr/share/flightgear/data/
+    chown root:root "$destdir"/usr/share/flightgear/data
+}
+

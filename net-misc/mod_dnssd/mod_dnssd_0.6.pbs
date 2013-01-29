@@ -1,0 +1,40 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="Zeroconf module for Apache2"
+HOMEPAGE="http://0pointer.de/lennart/projects/mod_dnssd"
+LICENSE="APACHE"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>
+          chenqixing@ivali.com"
+
+SRC_URI="http://0pointer.de/lennart/projects/$N/$N-$V.tar.gz"
+CHECKSUM="bed3d95a98168bf0515922d1c05020c5"
+
+RDEPEND="avahi apache apr"
+RECOMMENDED=""
+BDEPEND=""
+OPTIONAL=""
+CONFLICT=""
+REPLACE=""
+
+pbs_unpack() {
+    dounpack
+}
+
+pbs_config() {
+    config+="--disable-lynx"
+    doconfig
+}
+
+pbs_build() {
+    domake
+}
+
+pbs_install() {
+    docp src/.libs/mod_dnssd.so "$destdir"/usr/lib"$LIBDIRSUFFIX"/httpd/modules/
+}
+

@@ -1,0 +1,36 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="X.Org Xinerama library"
+HOMEPAGE="http://www.x.org/wiki/"
+GROUP="x11-lib"
+LICENSE="custom"
+PACKAGER="StartOS Developers" 
+ 
+SRC_URI="http://xorg.freedesktop.org/archive/individual/lib/"$N-$V".tar.bz2"
+CHECKSUM="ecd4839ad01f6f637c6fb5327207f89b"
+
+RDEPEND="glibc libX11 libXau libxcb libXdmcp libXext"
+BDEPEND=""
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_config() {
+    doconfig
+}
+
+pbs_build() {
+    domake
+}
+
+pbs_install() {
+    domkinstall
+    dodoc COPYING
+}
+

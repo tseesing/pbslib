@@ -1,0 +1,38 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="BitTorrent Client using libtorrent"
+HOMEPAGE="http://libtorrent.rakshasa.no/"
+LICENSE="GPL"
+PACKAGER="StartOS Developers"
+
+SRC_URI="http://libtorrent.rakshasa.no/downloads/"$N-$V".tar.gz"
+
+RDEPEND="curl libtorrent(>=0.13.2) ncurses"
+BDEPEND=""
+RECOMMENDED=""
+CONFLICT=""
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_config() {
+    export CXXFLAGS="${CXXFLAGS} -fno-strict-aliasing"
+    config+="--disable-debug"
+    doconfig
+}
+
+pbs_build() {
+    domake
+}
+
+pbs_install() {
+    domkinstall
+    dodoc doc/faq.xml doc/rtorrent.rc
+    doman doc/rtorrent.1
+}

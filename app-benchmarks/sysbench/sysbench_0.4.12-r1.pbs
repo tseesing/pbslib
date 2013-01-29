@@ -1,0 +1,44 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="System performance benchmark"
+HOMEPAGE="http://sysbench.sourceforge.net/"
+LICENSE="GPLv2"
+PACKAGER="StartOS Developers"
+
+SRC_URI="http://sourceforge.net/projects/"$N"/files/"$N"/"$V"/"$N-$V".tar.gz"
+CHECKSUM="3a6d54fdd3fe002328e4458206392b9d"
+
+RDEPEND="libmysqlclient"
+RECOMMENDED=""
+BDEPEND="libtool"
+OPTIONAL=""
+CONFLICT=""
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_patch() {
+    sed -e 's/SUBDIRS \= doc sysbench/SUBDIRS \= sysbench/' -i Makefile.am
+}
+
+pbs_config() {
+    config+=""
+    ./autogen.sh
+    doconfig
+}
+
+pbs_build() {    
+    cp /usr/bin/libtool .
+    domake
+}
+
+pbs_install() {
+    domkinstall
+}
+
