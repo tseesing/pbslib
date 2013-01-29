@@ -1,0 +1,29 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="Microcode for the Intel PRO/Wireless 3945ABG miniPCI express adapter"
+HOMEPAGE="http://www.bughost.org/ipw3945/"
+LICENSE="custom"
+PACKAGER="StartOS Developers"
+YARCH="any"
+
+SRC_URI="http://www.bughost.org/ipw3945/ucode/ipw3945-ucode-"$V".tgz"
+
+RDEPEND=""
+BDEPEND=""
+RECOMMENDED=""
+CONFLICT=""
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_install() {
+	docp *.ucode "$destdir"/lib/firmware/
+	dodoc LICENSE* 
+}
+

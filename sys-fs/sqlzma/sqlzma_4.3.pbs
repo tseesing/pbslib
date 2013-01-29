@@ -1,0 +1,42 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="squashfs filesystem with lzma patch kernel module and tools"
+HOMEPAGE="http://www.squashfs-lzma.org"
+LICENSE="GPL-2"
+PACKAGER="StartOS Developers"
+SRC_URI=""
+
+RDEPEND="zlib glibc gcc-libs"
+BDEPEND=" sys-apps/linux-kernel-ubuntu-source"
+RECOMMENDED=""
+
+INSTALL="$N.install"
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_build() {
+	cd /usr/src/linux 
+	#make defconfig
+	make prepare
+	cd -
+	
+	domake
+}
+
+pbs_install() {
+	kodir=/lib/modules/$(uname -r)/kernel/fs/squashfs
+	tooldir=/usr/bin
+	install -d -m755 "$destdir"/$kodir  "$destdir"/usr/bin
+	cp -a ./C/Compress/Lzma/kmod/unlzma.ko  ./C/Compress/Lzma/kmod/sqlzma.ko  ./squashfs/squashfs.ko "$destdir"/$kodir
+        for i in mksquashfs unsquashfs; do
+		cp -a squashfs3.4/squashfs-tools/$i "$destdir"/usr/bin/"$i"-lzma
+	done
+}
+

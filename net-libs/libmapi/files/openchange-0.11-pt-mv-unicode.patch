@@ -1,0 +1,324 @@
+diff -up openchange-0.11-TRANSPORTER/exchange.idl.pt-mv-unicode openchange-0.11-TRANSPORTER/exchange.idl
+--- openchange-0.11-TRANSPORTER/exchange.idl.pt-mv-unicode	2011-06-06 01:11:36.000000000 +0200
++++ openchange-0.11-TRANSPORTER/exchange.idl	2011-08-11 12:12:13.328593914 +0200
+@@ -275,12 +275,12 @@ System Attendant Private Interface
+ 	typedef struct {
+ 		[range(0,100000)] uint32			cValues;
+ 		[string,size_is(cValues),charset(UTF16)] uint16	**lppszW;
+-	} WStringArray_r;
++	} StringArrayW_r;
+ 
+ 	typedef struct {
+ 		[range(0,100000)] uint32		       	Count;
+ 		[string,size_is(Count),charset(UTF16)] uint16  	*Strings[];
+-	} WStringsArray_r;
++	} StringsArrayW_r;
+ 
+ 	typedef struct {
+ 		[range(0,100001)] uint32       				cValues;
+@@ -340,7 +340,7 @@ System Attendant Private Interface
+ 		[case(PT_MV_STRING8)]		StringArray_r		MVszA;
+ 		[case(PT_MV_BINARY)]		BinaryArray_r		MVbin;
+ 		[case(PT_MV_CLSID)]		FlatUIDArray_r		MVguid;
+-		[case(PT_MV_UNICODE)]		WStringArray_r		MVszW;
++		[case(PT_MV_UNICODE)]		StringArrayW_r		MVszW;
+ 		[case(PT_MV_SYSTIME)]		DateTimeArray_r		MVft;
+ 		[case(PT_NULL)]			uint32			null;
+ 		[case(PT_OBJECT)]		uint32			object;
+@@ -694,7 +694,7 @@ System Attendant Private Interface
+ 		[in] uint32			Reserved,
+ 		[in] STAT			*pStat,
+ 		[in,unique] SPropTagArray      	*pPropTags,
+-		[in] WStringsArray_r       	*paWStr,
++		[in] StringsArrayW_r       	*paWStr,
+ 		[out] PropertyTagArray_r	**ppMIds,
+ 		[out] SRowSet			**ppRows
+ 		);
+@@ -936,7 +936,7 @@ System Attendant Private Interface
+ 		uint32 lpl[cValues]; 
+ 	} mapi_MV_LONG_STRUCT;
+ 
+-	typedef [public] struct {
++	typedef struct {
+ 		raw8string lppszA;
+ 	} mapi_LPSTR;
+ 
+@@ -949,10 +949,10 @@ System Attendant Private Interface
+ 		[flag(STR_NULLTERM)] string lppszW;
+ 	} mapi_LPWSTR;
+ 
+-	typedef struct {
++	typedef [public] struct {
+ 		uint32 cValues;
+ 		mapi_LPWSTR strings[cValues];
+-	} mapi_SPLSTRArrayW;
++	} mapi_SLPSTRArrayW;
+ 	
+ 	typedef [public] struct {
+ 		uint32		cValues;
+@@ -1068,7 +1068,7 @@ System Attendant Private Interface
+ 		[case(PT_SVREID)]      	SBinary_short		bin;
+ 		[case(PT_MV_LONG)]	mapi_MV_LONG_STRUCT	MVl;	
+ 		[case(PT_MV_STRING8)]	mapi_SLPSTRArray	MVszA;
+-		[case(PT_MV_UNICODE)]	mapi_SPLSTRArrayW	MVszW;
++		[case(PT_MV_UNICODE)]	mapi_SLPSTRArrayW	MVszW;
+ 		[case(PT_MV_CLSID)]	mapi_SGuidArray		MVguid;
+ 		[case(PT_MV_BINARY)]	mapi_SBinaryArray      	MVbin;
+ 	} mapi_SPropValue_CTR;
+diff -up openchange-0.11-TRANSPORTER/libmapi/emsmdb.c.pt-mv-unicode openchange-0.11-TRANSPORTER/libmapi/emsmdb.c
+--- openchange-0.11-TRANSPORTER/libmapi/emsmdb.c.pt-mv-unicode	2011-06-06 01:11:36.000000000 +0200
++++ openchange-0.11-TRANSPORTER/libmapi/emsmdb.c	2011-08-11 12:12:13.316593772 +0200
+@@ -814,6 +814,8 @@ const void *pull_emsmdb_property(TALLOC_
+ 	struct Binary_r			*sbin = NULL;
+ 	struct mapi_SLPSTRArray		pt_slpstr;
+ 	struct StringArray_r		*slpstr = NULL;
++	struct mapi_SLPSTRArrayW	pt_slpstrw;
++	struct StringArrayW_r		*slpstrw = NULL;
+ 	struct mapi_MV_LONG_STRUCT	pt_MVl;
+ 	struct LongArray_r		*MVl = NULL;
+ 	struct mapi_SBinaryArray	pt_MVbin;
+@@ -913,6 +915,17 @@ const void *pull_emsmdb_property(TALLOC_
+ 		}
+ 		talloc_free(ndr);
+ 		return (const void *) slpstr;
++	case PT_MV_UNICODE:
++		ndr_pull_mapi_SLPSTRArrayW(ndr, NDR_SCALARS, &pt_slpstrw);
++		*offset = ndr->offset;
++		slpstrw = talloc_zero(mem_ctx, struct StringArrayW_r);
++		slpstrw->cValues = pt_slpstrw.cValues;
++		slpstrw->lppszW = talloc_array(mem_ctx, const char *, pt_slpstrw.cValues);
++		for (i = 0; i < slpstrw->cValues; i++) {
++			slpstrw->lppszW[i] = talloc_strdup(mem_ctx, pt_slpstrw.strings[i].lppszW);
++		}
++		talloc_free(ndr);
++		return (const void *) slpstrw;
+ 	case PT_MV_BINARY:
+ 		ndr_pull_mapi_SBinaryArray(ndr, NDR_SCALARS, &pt_MVbin);
+ 		*offset = ndr->offset;
+diff -up openchange-0.11-TRANSPORTER/libmapi/mapidump.c.pt-mv-unicode openchange-0.11-TRANSPORTER/libmapi/mapidump.c
+--- openchange-0.11-TRANSPORTER/libmapi/mapidump.c.pt-mv-unicode	2011-06-19 02:47:21.000000000 +0200
++++ openchange-0.11-TRANSPORTER/libmapi/mapidump.c	2011-08-11 12:12:13.319593808 +0200
+@@ -47,7 +47,7 @@ _PUBLIC_ void mapidump_SPropValue(struct
+ 	const void			*data;
+ 	TALLOC_CTX			*mem_ctx = NULL;
+ 	const struct StringArray_r	*StringArray_r = NULL;
+-	const struct WStringArray_r	*WStringArray_r = NULL;
++	const struct StringArrayW_r	*StringArrayW_r = NULL;
+ 	const struct BinaryArray_r	*BinaryArray_r = NULL;
+ 	const struct LongArray_r	*LongArray_r = NULL;
+ 	uint32_t			i;
+@@ -140,12 +140,12 @@ _PUBLIC_ void mapidump_SPropValue(struct
+ 		printf("%s\n", StringArray_r->lppszA[i]);
+ 		break;
+ 	case PT_MV_UNICODE:
+-		WStringArray_r = (const struct WStringArray_r *) get_SPropValue_data(&lpProp);
++		StringArrayW_r = (const struct StringArrayW_r *) get_SPropValue_data(&lpProp);
+ 		printf("%s%s: ", sep?sep:"", proptag);
+-		for (i = 0; i < WStringArray_r->cValues - 1; i++) {
+-			printf("%s, ", WStringArray_r->lppszW[i]);
++		for (i = 0; i < StringArrayW_r->cValues - 1; i++) {
++			printf("%s, ", StringArrayW_r->lppszW[i]);
+ 		}
+-		printf("%s\n", WStringArray_r->lppszW[i]);
++		printf("%s\n", StringArrayW_r->lppszW[i]);
+ 		break;
+ 	case PT_MV_BINARY:
+ 		BinaryArray_r = (const struct BinaryArray_r *) get_SPropValue_data(&lpProp);
+diff -up openchange-0.11-TRANSPORTER/libmapi/nspi.c.pt-mv-unicode openchange-0.11-TRANSPORTER/libmapi/nspi.c
+--- openchange-0.11-TRANSPORTER/libmapi/nspi.c.pt-mv-unicode	2011-06-19 02:47:21.000000000 +0200
++++ openchange-0.11-TRANSPORTER/libmapi/nspi.c	2011-08-11 12:12:13.317593784 +0200
+@@ -1140,7 +1140,7 @@ _PUBLIC_ enum MAPISTATUS nspi_ResolveNam
+ 					    struct PropertyTagArray_r ***pppMIds)
+ {
+ 	struct NspiResolveNamesW	r;
+-	struct WStringsArray_r		*paWStr;
++	struct StringsArrayW_r		*paWStr;
+ 	NTSTATUS			status;
+ 	enum MAPISTATUS			retval;
+ 	uint32_t			count;
+@@ -1160,7 +1160,7 @@ _PUBLIC_ enum MAPISTATUS nspi_ResolveNam
+ 	r.in.Reserved = 0;
+ 	r.in.pPropTags = pPropTags;
+ 
+-	paWStr = talloc(mem_ctx, struct WStringsArray_r);
++	paWStr = talloc(mem_ctx, struct StringsArrayW_r);
+ 	paWStr->Count = count;
+ 	paWStr->Strings = usernames;
+ 	r.in.paWStr = paWStr;
+diff -up openchange-0.11-TRANSPORTER/libmapi/property.c.pt-mv-unicode openchange-0.11-TRANSPORTER/libmapi/property.c
+--- openchange-0.11-TRANSPORTER/libmapi/property.c.pt-mv-unicode	2011-01-23 01:02:36.000000000 +0100
++++ openchange-0.11-TRANSPORTER/libmapi/property.c	2011-08-11 12:12:13.318593796 +0200
+@@ -298,6 +298,8 @@ _PUBLIC_ const void *get_mapi_SPropValue
+ 		return (const void *)(struct mapi_MV_LONG_STRUCT *)&lpProp->value.MVl;
+ 	case PT_MV_STRING8:
+ 		return (const void *)(struct mapi_SLPSTRArray *)&lpProp->value.MVszA;
++	case PT_MV_UNICODE:
++		return (const void *)(struct mapi_SLPSTRArrayW *)&lpProp->value.MVszW;
+ 	case PT_MV_BINARY:
+ 		return (const void *)(struct mapi_SBinaryArray *)&lpProp->value.MVbin;
+ 	default:
+@@ -343,7 +345,7 @@ _PUBLIC_ const void *get_SPropValue_data
+ 	case PT_MV_STRING8:
+ 		return (const void *)(struct StringArray_r *)&lpProps->value.MVszA;
+ 	case PT_MV_UNICODE:
+-		return (const void *)(struct WStringArray_r *)&lpProps->value.MVszW;
++		return (const void *)(struct StringArrayW_r *)&lpProps->value.MVszW;
+ 	case PT_MV_BINARY:
+ 		return (const void *)(struct BinaryArray_r *)&lpProps->value.MVbin;
+ 	case PT_MV_SYSTIME:
+@@ -435,7 +437,7 @@ _PUBLIC_ bool set_SPropValue(struct SPro
+ 		lpProps->value.MVguid = *((const struct FlatUIDArray_r *)data);
+ 		break;
+ 	case PT_MV_UNICODE:
+-		lpProps->value.MVszW = *((const struct WStringArray_r *)data);
++		lpProps->value.MVszW = *((const struct StringArrayW_r *)data);
+ 		break;
+ 	case PT_MV_SYSTIME:
+ 		lpProps->value.MVft = *((const struct DateTimeArray_r *)data);
+@@ -574,7 +576,7 @@ _PUBLIC_ uint32_t cast_mapi_SPropValue(T
+ 							       mapi_sprop->value.MVszW.cValues);
+ 		for (i = 0; i < mapi_sprop->value.MVszW.cValues; i++) {
+ 			mapi_sprop->value.MVszW.strings[i].lppszW = sprop->value.MVszW.lppszW[i];
+-			size += strlen(mapi_sprop->value.MVszW.strings[i].lppszW) + 1;
++			size += get_utf8_utf16_conv_length(mapi_sprop->value.MVszW.strings[i].lppszW);
+ 		}
+ 		return size;
+ 	}
+@@ -721,7 +723,7 @@ _PUBLIC_ uint32_t cast_SPropValue(TALLOC
+ 		sprop->value.MVszW.lppszW = talloc_array(mem_ctx, const char*, sprop->value.MVszW.cValues);
+ 		for (i = 0; i < sprop->value.MVszW.cValues; i++) {
+ 			sprop->value.MVszW.lppszW[i] = mapi_sprop->value.MVszW.strings[i].lppszW;
+-			size += 2 * (strlen(sprop->value.MVszW.lppszW[i]) + 1);
++			size += get_utf8_utf16_conv_length(sprop->value.MVszW.lppszW[i]);
+ 		}
+ 		return size;
+ 	}
+diff -up openchange-0.11-TRANSPORTER/libocpf/ocpf_api.c.pt-mv-unicode openchange-0.11-TRANSPORTER/libocpf/ocpf_api.c
+--- openchange-0.11-TRANSPORTER/libocpf/ocpf_api.c.pt-mv-unicode	2011-02-28 19:02:34.000000000 +0100
++++ openchange-0.11-TRANSPORTER/libocpf/ocpf_api.c	2011-08-11 12:12:13.324593868 +0200
+@@ -235,9 +235,9 @@ int ocpf_set_propvalue(TALLOC_CTX *mem_c
+ 		}
+ 		return OCPF_SUCCESS;
+ 	case PT_MV_UNICODE:
+-		*value = (const void *)talloc_zero(ctx, struct WStringArray_r);
+-		((struct WStringArray_r *)*value)->cValues = lpProp.MVszW.cValues;
+-		((struct WStringArray_r *)*value)->lppszW = talloc_array(ctx, const char *, lpProp.MVszW.cValues);
++		*value = (const void *)talloc_zero(ctx, struct StringArrayW_r);
++		((struct StringArrayW_r *)*value)->cValues = lpProp.MVszW.cValues;
++		((struct StringArrayW_r *)*value)->lppszW = talloc_array(ctx, const char *, lpProp.MVszW.cValues);
+ 		{
+ 			uint32_t	i;
+ 
+@@ -247,7 +247,7 @@ int ocpf_set_propvalue(TALLOC_CTX *mem_c
+ 				} else {
+ 					str = (char *)lpProp.MVszW.lppszW[i];
+ 				}
+-				((struct WStringArray_r *)*value)->lppszW[i] = talloc_strdup(ctx, str);
++				((struct StringArrayW_r *)*value)->lppszW[i] = talloc_strdup(ctx, str);
+ 				talloc_free(str);
+ 			}
+ 		}
+diff -up openchange-0.11-TRANSPORTER/libocpf/ocpf.tab.c.pt-mv-unicode openchange-0.11-TRANSPORTER/libocpf/ocpf.tab.c
+--- openchange-0.11-TRANSPORTER/libocpf/ocpf.tab.c.pt-mv-unicode	2011-07-07 11:42:50.000000000 +0200
++++ openchange-0.11-TRANSPORTER/libocpf/ocpf.tab.c	2011-08-11 12:15:43.021072359 +0200
+@@ -185,7 +185,7 @@ typedef union YYSTYPE
+ 	char				*var;
+ 	struct LongArray_r		MVl;
+ 	struct StringArray_r		MVszA;
+-	struct WStringArray_r		MVszW;
++	struct StringArrayW_r		MVszW;
+ 	struct BinaryArray_r		MVbin;
+ 
+ 
+diff -up openchange-0.11-TRANSPORTER/libocpf/ocpf.tab.h.pt-mv-unicode openchange-0.11-TRANSPORTER/libocpf/ocpf.tab.h
+--- openchange-0.11-TRANSPORTER/libocpf/ocpf.tab.h.pt-mv-unicode	2011-07-07 11:42:50.000000000 +0200
++++ openchange-0.11-TRANSPORTER/libocpf/ocpf.tab.h	2011-08-11 12:15:35.900988313 +0200
+@@ -108,7 +108,7 @@ typedef union YYSTYPE
+ 	char				*var;
+ 	struct LongArray_r		MVl;
+ 	struct StringArray_r		MVszA;
+-	struct WStringArray_r		MVszW;
++	struct StringArrayW_r		MVszW;
+ 	struct BinaryArray_r		MVbin;
+ 
+ 
+diff -up openchange-0.11-TRANSPORTER/libocpf/ocpf_write.c.pt-mv-unicode openchange-0.11-TRANSPORTER/libocpf/ocpf_write.c
+--- openchange-0.11-TRANSPORTER/libocpf/ocpf_write.c.pt-mv-unicode	2011-03-01 18:10:55.000000000 +0100
++++ openchange-0.11-TRANSPORTER/libocpf/ocpf_write.c	2011-08-11 12:12:13.321593832 +0200
+@@ -323,7 +323,7 @@ static char *ocpf_write_mv_string8(struc
+ }
+ 
+ 
+-static char *ocpf_write_mv_unicode(struct ocpf_context *ctx, const struct WStringArray_r *value)
++static char *ocpf_write_mv_unicode(struct ocpf_context *ctx, const struct StringArrayW_r *value)
+ {
+ 	char		*str = NULL;
+ 	char		*tmp = NULL;
+@@ -398,7 +398,7 @@ static char *ocpf_write_property(struct 
+ 		*found = true;
+ 		break;
+ 	case PT_MV_UNICODE:
+-		line = ocpf_write_mv_unicode(ctx, (const struct WStringArray_r *)value);
++		line = ocpf_write_mv_unicode(ctx, (const struct StringArrayW_r *)value);
+ 		*found = true;
+ 		break;
+ 	case PT_MV_BINARY:
+diff -up openchange-0.11-TRANSPORTER/libocpf/ocpf.y.pt-mv-unicode openchange-0.11-TRANSPORTER/libocpf/ocpf.y
+--- openchange-0.11-TRANSPORTER/libocpf/ocpf.y.pt-mv-unicode	2011-02-28 19:02:34.000000000 +0100
++++ openchange-0.11-TRANSPORTER/libocpf/ocpf.y	2011-08-11 12:12:13.323593856 +0200
+@@ -47,7 +47,7 @@ void yyerror(struct ocpf_context *, void
+ 	char				*var;
+ 	struct LongArray_r		MVl;
+ 	struct StringArray_r		MVszA;
+-	struct WStringArray_r		MVszW;
++	struct StringArrayW_r		MVszW;
+ 	struct BinaryArray_r		MVbin;
+ }
+ 
+diff -up openchange-0.11-TRANSPORTER/mapiproxy/servers/default/nspi/dcesrv_exchange_nsp.c.pt-mv-unicode openchange-0.11-TRANSPORTER/mapiproxy/servers/default/nspi/dcesrv_exchange_nsp.c
+--- openchange-0.11-TRANSPORTER/mapiproxy/servers/default/nspi/dcesrv_exchange_nsp.c.pt-mv-unicode	2011-03-17 03:02:22.000000000 +0100
++++ openchange-0.11-TRANSPORTER/mapiproxy/servers/default/nspi/dcesrv_exchange_nsp.c	2011-08-11 12:12:13.326593892 +0200
+@@ -884,7 +884,7 @@ static enum MAPISTATUS dcesrv_NspiResolv
+ 	const char			*purportedSearch;
+ 	struct PropertyTagArray_r	*pMIds = NULL;
+ 	struct SRowSet			*pRows = NULL;
+-	struct WStringsArray_r		*paWStr;
++	struct StringsArrayW_r		*paWStr;
+ 	uint32_t			i;
+ 	int				ret;
+ 	bool				found = false;
+diff -up openchange-0.11-TRANSPORTER/utils/mapitest/modules/module_mapidump.c.pt-mv-unicode openchange-0.11-TRANSPORTER/utils/mapitest/modules/module_mapidump.c
+--- openchange-0.11-TRANSPORTER/utils/mapitest/modules/module_mapidump.c.pt-mv-unicode	2011-02-13 10:31:45.000000000 +0100
++++ openchange-0.11-TRANSPORTER/utils/mapitest/modules/module_mapidump.c	2011-08-11 12:12:13.333593974 +0200
+@@ -118,7 +118,7 @@ _PUBLIC_ bool mapitest_mapidump_spropval
+ 	// struct LongArray_r MVl;/* [case(0x1003)] */
+ 	// struct BinaryArray_r MVbin;/* [case(0x1102)] */
+ 	// struct FlatUIDArray_r MVguid;/* [case(0x1048)] */
+-	// struct WStringArray_r MVszW;/* [case(0x101f)] */
++	// struct StringArrayW_r MVszW;/* [case(0x101f)] */
+ 	// struct DateTimeArray_r MVft;/* [case(0x1040)] */
+ 	// uint32_t object;/* [case(0x000d)] */
+ #endif
+diff -up openchange-0.11-TRANSPORTER/utils/mapitest/modules/module_noserver.c.pt-mv-unicode openchange-0.11-TRANSPORTER/utils/mapitest/modules/module_noserver.c
+--- openchange-0.11-TRANSPORTER/utils/mapitest/modules/module_noserver.c.pt-mv-unicode	2011-02-01 11:28:22.000000000 +0100
++++ openchange-0.11-TRANSPORTER/utils/mapitest/modules/module_noserver.c	2011-08-11 12:12:13.332593962 +0200
+@@ -913,8 +913,8 @@ static bool mapitest_no_server_props_mv_
+ {
+ 	bool res;
+ 	struct SPropValue propvalue;
+-	struct WStringArray_r unicodearray;
+-	const struct WStringArray_r *unicodearrayget;
++	struct StringArrayW_r unicodearray;
++	const struct StringArrayW_r *unicodearrayget;
+ 
+ 	// create and initialise unicodearray
+ 	unicodearray.cValues = 4;
+@@ -930,7 +930,7 @@ static bool mapitest_no_server_props_mv_
+ 		mapitest_print(mt, "* %-40s: [FAILURE]\n", "SPropValue set with PT_MV_UNICODE");
+ 		return false;
+ 	}
+-	unicodearrayget = (const struct WStringArray_r *)get_SPropValue_data(&propvalue);
++	unicodearrayget = (const struct StringArrayW_r *)get_SPropValue_data(&propvalue);
+ 	if (!unicodearrayget || (unicodearray.cValues != unicodearrayget->cValues) || (unicodearray.lppszW != unicodearrayget->lppszW)) {
+ 		/* failure */
+ 		mapitest_print(mt, "* %-40s: [FAILURE]\n", "SPropValue get/set with PT_MV_UNICODE");

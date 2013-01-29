@@ -1,0 +1,46 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="Music management and playback for GNOME"
+HOMEPAGE="http://banshee.fm/"
+LICENSE="MIT"
+PACKAGER="StartOS Developers"
+
+SRC_URI="http://ftp.gnome.org/pub/GNOME/sources/"$N"/2.4/"$N-$V".tar.xz"
+CHECKSUM="a719717d02ed26cccf4e6432edd48a31"
+
+RDEPEND="mono mono-addins(>=0.6.2) mono-zeroconf gconf libgnome-keyring libproxy libXxf86vm"
+BDEPEND=""
+RECOMMENDED=""
+CONFLICT=""
+
+INSTALL="$N.install"
+
+NOTES="
+legacy iPod support: ipod-sharp
+libgpod-based iPod support: libgpod
+"
+pbs_unpack() {
+        dounpack
+}
+
+pbs_config() {
+	config+="--disable-appledevice
+	         --disable-scrollkeeper
+	         --disable-schemas-install
+	         --with-vendor-build-id=StartOS"
+	doconfig
+}
+
+pbs_build() {
+	make
+}
+
+pbs_install() {
+	domkinstall
+}
+

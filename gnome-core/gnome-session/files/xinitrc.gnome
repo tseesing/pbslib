@@ -1,0 +1,88 @@
+#!/bin/sh
+#
+# GNOME SlackBuild xinitrc GNOME Session script.
+#
+# Changelog: 
+#
+#  Added seahorse-agent again, found in seahorse-plugins. (2010-04-10) stevek
+#  Removed seahorse-agent, now in /etc/gnome/xdg/autostart (2009-30-07) stevek
+#  Added ConsoleKit support (2008-10-30) stevek
+#  Remove unneeded user started dbus session (2008-03-28) stevek
+#  Add export to XDG_CONFIG_DIRS (2008-03-19) stevek
+#  Inital version (2008-01-17) stevek
+#
+
+userresources=$HOME/.Xresources
+usermodmap=$HOME/.Xmodmap
+sysresources=/etc/X11/Xresources
+sysmodmap=/etc/X11/Xmodmap
+
+# dmrc
+DMRC=$HOME/.dmrc
+if [ -r "$DMRC" ]; then
+	. "$DMRC" 2>/dev/null
+	if [ "x$Language" != "x" ]; then
+		LANG=${Language%.*}.UTF-8
+		export LANG
+	fi
+fi
+
+# default session settings
+GNOME_SESSION_SETTINGS=""
+
+# Gnome XDG Menu Path
+#
+# We keep the GNOME menu templates separate from KDE so the two 
+# don't interfere with each other. This path may be extended to 
+# include the KDE menu path /etc/kde/xdg if the user wishes.
+export XDG_CONFIG_DIRS=/etc/xdg:/etc/gnome/xdg
+#
+GNOMERC=$HOME/.gnomerc
+if [ -r "$GNOMERC" ]; then
+	. "$GNOMERC"
+fi
+# We prepend /usr/share/gnome since its defaults.list actually points 
+# to /etc so it is configurable.
+if [ -z "$XDG_DATA_DIRS" ]; then
+	XDG_DATA_DIRS=/usr/share/gnome:/usr/local/share/:/usr/share/
+else
+	XDG_DATA_DIRS=/usr/share/gnome:"$XDG_DATA_DIRS"
+fi
+export XDG_DATA_DIRS
+
+#source etc/X11/Xsession.d/ scripts
+for i in $(ls /etc/X11/Xsession.d/[0-9]*);do
+	. "${i}"
+done
+
+# Merge in defaults and keymaps
+if [ -f $sysresources ]; then
+    xrdb -merge $sysresources
+fi
+if [ -f $sysmodmap ]; then
+    xmodmap $sysmodmap
+fi
+if [ -f $userresources ]; then
+    xrdb -merge $userresources
+fi
+if [ -f $usermodmap ]; then
+    xmodmap $usermodmap
+fi
+
+# Use ssh-agent if available
+if [ -x /usr/bin/ssh-agent ]; then
+  GNOME_SESSION_SETTINGS="$GNOME_SESSION_SETTINGS /usr/bin/ssh-agent"
+fi;
+
+# Use seahorse-agent if available from seahorse-plugins
+if [ -x /usr/bin/seahorse-agent ]; then
+  GNOME_SESSION_SETTINGS="$GNOME_SESSION_SETTINGS /usr/bin/seahorse-agent --execute"
+fi;
+
+# Use ConsoleKit if available
+if [ -z "${XDG_SESSION_COOKIE}" -a -x /usr/bin/ck-launch-session ]; then
+  CK_SESSION="/usr/bin/ck-launch-session"
+fi;
+
+# Start the window manager
+exec $GNOME_SESSION_SETTINGS $CK_SESSION gnome-session

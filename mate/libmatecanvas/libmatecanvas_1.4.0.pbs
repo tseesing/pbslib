@@ -1,0 +1,44 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="The MATE Canvas library"
+HOMEPAGE="http://mate-desktop.org"
+LICENSE="LGPL"
+PACKAGER="StartOS Developers"
+
+
+SRC_URI="http://pub.mate-desktop.org/releases/1.4/"$N-$V".tar.xz"
+CHECKSUM="ff0032d53409d1b6a4c029eb18c9d85efa44c5d1ea6ece535faa564b0c73a425"
+
+RDEPEND=" libart_lgpl libglade"
+RECOMMENDED=""
+BDEPEND="pkgconfig intltool"
+OPTIONAL=""
+CONFLICT=""
+REPLACE=""
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_patch() {
+	dopatch
+}
+
+pbs_config() {
+	config+="--disable-static --enable-glade"
+	doconfig
+}
+
+pbs_build() {
+	domake
+}
+
+pbs_install() {
+	domkinstall
+}
+

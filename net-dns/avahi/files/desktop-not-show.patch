@@ -1,0 +1,11 @@
+diff -ur avahi-0.6.25/avahi-python/avahi-discover/avahi-discover.desktop.in.in avahi-0.6.25.new//avahi-python/avahi-discover/avahi-discover.desktop.in.in
+--- avahi-0.6.25/avahi-python/avahi-discover/avahi-discover.desktop.in.in	2009-04-14 09:36:31.000000000 +0800
++++ avahi-0.6.25.new//avahi-python/avahi-discover/avahi-discover.desktop.in.in	2011-05-17 14:49:45.605973603 +0800
+@@ -4,6 +4,7 @@
+ _Comment=Browse for Zeroconf services available on your network
+ Exec=@bindir@/avahi-discover
+ Terminal=false
++NoDisplay=true
+ Type=Application
+ Icon=network-wired
+ Categories=GNOME;System;

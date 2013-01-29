@@ -1,0 +1,40 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="ACPI is the ACPI Component Architecture tool suite from Intel."
+HOMEPAGE="http://www.intel.com/technology/iapc/acpi/downloads.htm"
+LICENSE="GPL"
+PACKAGER="StartOS Developers"
+
+SRC_URI="http://www.acpica.org/download/acpica-unix-"$V".tar.gz"
+
+RDEPEND="glibc"
+BDEPEND="systemd-dev"
+RECOMMENDED=""
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_build() {
+	cd compiler 
+	make 
+	cd ../tools/acpisrc 
+	make 
+	cd ../acpixtract 
+	make 
+	cd ../acpiexec 
+	make 
+	cd ../../
+}
+
+pbs_install() {
+	#docp ../compiler/iasl "$destdir"/usr/bin
+	docp tools/{acpisrc/acpisrc,acpixtract/acpixtract,acpiexec/acpiexec} "$destdir"/usr/bin
+	dodoc changes.txt README
+}
+

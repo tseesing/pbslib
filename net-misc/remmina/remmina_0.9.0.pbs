@@ -1,0 +1,35 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+DESCRIPTION="a remote desktop client written in GTK+"
+HOMEPAGE="http://remmina.sourceforge.net/"
+LICENSE="GPL"
+PACKAGER="StartOS Developers"
+
+SRC_URI="http://downloads.sourceforge.net/project/"$N"/0.9/"$N-$V".tar.gz"
+
+RDEPEND="atk avahi cairo dbus dbus-glib expat fontconfig freetype gcc-libs gdbm gdk-pixbuf2 glib2 glibc gtk2 libgcrypt libgpg-error libpng libssh libunique libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libXrandr libXrender ncurses openssl pango pixman vte zlib"
+BDEPEND=""
+RECOMMENDED=""
+
+INSTALL="$N.install"
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_config() {
+	doconfig
+}
+
+pbs_build() {
+	domake
+}
+
+pbs_install() {
+	domkinstall
+}
+

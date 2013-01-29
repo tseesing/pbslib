@@ -1,0 +1,38 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="Library to load, handle and manipulate images in the PGF format"
+HOMEPAGE="http://www.libpgf.org/"
+LICENSE="GPL"
+PACKAGER="StartOS Developers"
+
+SRC_URI="http://sourceforge.net/projects/"$N"/files/"$N"/"$V"-latest/"$N-$V"-src.tar.gz"
+CHECKSUM="49ae25a63804273f0c6875f477b5f6d2"
+
+RDEPEND="gcc-libs"
+RECOMMENDED=""
+BDEPEND=""
+OPTIONAL=""
+CONFLICT=""
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_config() {
+	config+=""
+	doconfig
+}
+
+pbs_build() {
+	domake
+}
+
+pbs_install() {
+	domkinstall
+}
+

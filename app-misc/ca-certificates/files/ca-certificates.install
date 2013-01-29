@@ -1,0 +1,25 @@
+. /usr/lib/ybs/funcs
+
+post_install() {
+	/usr/sbin/update-ca-certificates --fresh >/dev/null 2>&1
+}
+
+pre_remove() {
+	# clean up certificates
+	local _backup=$(mktemp)
+	mv /etc/ca-certificates.conf ${_backup}
+	echo >/etc/ca-certificates.conf
+	/usr/sbin/update-ca-certificates --fresh >/dev/null 2>&1
+	mv ${_backup} /etc/ca-certificates.conf
+}
+
+post_remove() {
+	# remove the cert file if it is empty
+	[[ -s /etc/ssl/certs/ca-certificates.crt ]] || rm -f /etc/ssl/certs/ca-certificates.crt
+	return 0
+}
+
+post_upgrade() {
+	post_install
+}
+

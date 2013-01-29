@@ -1,0 +1,45 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="An open-source audio fingerprint by MusicIP"
+HOMEPAGE="http://code.google.com/p/musicip-libofa/"
+LICENSE="GPL,custom"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
+
+SRC_URI="http://musicip-libofa.googlecode.com/files/"$N-$V".tar.gz"
+CHECKSUM="51507d2c4b432bd2755f48d58471696e"
+
+RDEPEND="fftw gcc-libs"
+RECOMMENDED=""
+BDEPEND=""
+OPTIONAL=""
+CONFLICT=""
+
+pbs_unpack() {
+    dounpack
+}
+
+pbs_patch() {
+	dopatch gcc-4.patch gcc4.3.patch gcc4.5.patch \
+            libofa-0.9.3-curl-7.21.patch \
+            libofa-0.9.3-gcc-4.7.patch
+}
+
+pbs_config() {
+	config+=""
+	doconfig
+}
+
+pbs_build() {
+	domake
+}
+
+pbs_install() {
+	domkinstall
+	dodoc COPYING
+}
+

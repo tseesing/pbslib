@@ -1,0 +1,36 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="A text widget implementing syntax highlighting and other features"
+HOMEPAGE="http://www.gnome.org/"
+LICENSE="GPL"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
+
+SRC_URI="http://ftp.gnome.org/pub/gnome/sources/${N%?}/2.10/"${N%?}-$V".tar.bz2"
+CHECKSUM="c585773743b1df8a04b1be7f7d90eecdf22681490d6810be54c81a7ae152191e"
+
+RDEPEND="gtk2 libxml2"
+BDEPEND="intltool xml-parser"
+RECOMMENDED=""
+
+pbs_unpack() {
+    dounpack
+}
+
+pbs_config() {
+	config+="--disable-static"
+	doconfig
+}
+
+pbs_build() {
+	domake
+}
+
+pbs_install() {
+	domkinstall
+}
+

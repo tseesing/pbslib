@@ -1,0 +1,40 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="Sources for time zone and daylight saving time data"
+HOMEPAGE="http://www.iana.org/time-zones"
+LICENSE="GPL"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
+YARCH="any"
+
+SRC_URI="http://www.iana.org/time-zones/repository/releases/"$N$V"j.tar.gz"
+CHECKSUM="69a5c9866612792b010f521c0f7b9a34c4e57192"
+
+RDEPEND=""
+RECOMMENDED=""
+BDEPEND=""
+OPTIONAL=""
+CONFLICT=""
+REPLACE=""
+
+pbs_unpack() {
+    dounpack
+}
+
+pbs_install() {
+    timezones=('africa' 'antarctica' 'asia' 'australasia'
+               'europe' 'northamerica' 'southamerica'
+               'pacificnew' 'etcetera' 'backward'
+               'systemv' 'factory'
+               'solar87' 'solar88' 'solar89')
+    zic -y ./yearistype -d "$destdir"/usr/share/zoneinfo ${timezones[@]}
+    zic -y ./yearistype -d "$destdir"/usr/share/zoneinfo/posix ${timezones[@]}
+    zic -y ./yearistype -d "$destdir"/usr/share/zoneinfo/right -L leapseconds ${timezones[@]}
+    zic -y ./yearistype -d "$destdir"/usr/share/zoneinfo -p America/New_York
+    install -m444 -t "$destdir"/usr/share/zoneinfo iso3166.tab zone.tab
+}
+

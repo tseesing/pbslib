@@ -1,0 +1,46 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="Port of 7-Zip archiver for Unix"
+HOMEPAGE="http://p7zip.sourceforge.net/"
+LICENSE="GPL,custom"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
+
+SRC_URI="http://downloads.sourceforge.net/project/"$N"/"$N"/"$V"/"${N}"_"$V"_src_all.tar.bz2"
+CHECKSUM="1cd567e043ee054bf08244ce15f32cb3258306b7"
+
+RDEPEND="gcc-libs bash"
+BDEPEND="yasm nasm"
+OPTIONAL="wxgtk: GUI
+          desktop-file-utils: desktop entries"
+RECOMMENDED=""
+
+pbs_unpack() {
+    dounpack
+}
+
+pbs_config() {
+    case "$ARCH" in
+        x86_64) 
+            cp makefile.linux_amd64_asm makefile.machine 
+            find -name "makefile.depend" -type f |xargs sed -i 's/usr\/lib/usr\/lib'"$LIBDIRSUFFIX"'/g' ;;
+        i?86)
+            cp makefile.linux_x86_asm_gcc_4.X makefile.machine
+    esac
+}
+
+pbs_build() {
+	# all4 include UI
+	domake all3
+}
+
+pbs_install() {
+	make install DEST_DIR="$destdir" DEST_HOME="/usr" DEST_SHARE=/usr/lib"$LIBDIRSUFFIX"/p7zip  DEST_MAN="/usr/share/man"
+    cd "$destdir"/usr/lib"$LIBDIRSUFFIX"/p7zip
+	doln 7zCon.sfx 7z.sfx
+}
+

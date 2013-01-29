@@ -1,0 +1,42 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="Meta package providing the File Alteration Monitor API & Server"
+HOMEPAGE="http://www.gnome.org/~veillard/gamin/"
+LICENSE="GPL"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
+
+SRC_URI="http://www.gnome.org/~veillard/$N/sources/$N-$V.tar.gz"
+CHECKSUM="b4ec549e57da470c04edd5ec2876a028"
+
+RDEPEND="glib2"
+BDEPEND="python"
+OPTIONAL="python: for the python module"
+
+pbs_unpack() {
+    dounpack
+}
+
+pbs_patch() {
+	dopatch fix-deprecated-const.patch
+}
+
+pbs_config() {
+	config+="--with-threads 
+	         --disable-debug-api 
+	   	     --disable-debug "
+	doconfig
+}
+
+pbs_build() {
+	domake
+}
+
+pbs_install() {
+	domkinstall
+}
+

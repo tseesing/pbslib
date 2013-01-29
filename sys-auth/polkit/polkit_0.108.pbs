@@ -1,0 +1,41 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="Application development toolkit for controlling system-wide privileges"
+HOMEPAGE="http://www.freedesktop.org/wiki/Software/PolicyKit"
+LICENSE="LGPL"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
+
+SRC_URI="http://www.freedesktop.org/software/"$N"/releases/"$N-$V".tar.gz"
+
+RDEPEND="expat glib2 pam js systemd"
+BDEPEND="gobject-introspection" 
+
+INSTALL="$N.install"
+
+pbs_unpack() {
+    dounpack
+}
+
+pbs_config() {
+	config+="--with-systemdsystemunitdir=/usr/lib/systemd/system 
+             --disable-static
+             --enable-libsystemd-login=yes"
+	doconfig
+}
+
+pbs_build() {
+	domake
+}
+
+pbs_install() {
+	domkinstall
+	cd "$destdir"
+    dopamd "$filesdir"/polkit-1
+	chown 102 {etc,usr/share}/polkit-1/rules.d
+}
+

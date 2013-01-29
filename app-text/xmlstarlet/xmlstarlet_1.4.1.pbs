@@ -1,0 +1,39 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="A set of tools to transform, query, validate, and edit XML documents"
+HOMEPAGE="http://xmlstar.sourceforge.net/"
+LICENSE="MIT"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
+
+SRC_URI="http://downloads.sourceforge.net/project/xmlstar/"$N"/"$V"/"$N-$V".tar.gz"
+CHECKSUM="fd78564417634583692b04193bc0bbc6"
+
+RDEPEND="libxslt"
+BDEPEND=""
+RECOMMENDED=""
+CONFLICT=""
+
+pbs_unpack() {
+    dounpack
+}
+
+pbs_config() {
+	config+=""
+	doconfig
+}
+
+pbs_build() {
+	domake
+}
+
+pbs_install() {
+	domkinstall
+    dodoc Copyright
+    doln -sf xml "${destdir}"/usr/bin/xmlstarlet
+}
+

@@ -1,0 +1,38 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="A set of Python bindings for KDE"
+HOMEPAGE="http://kde.org/"
+LICENSE="GPL,LGPL,FDL"
+PACKAGER="StartOS Developers"
+
+SRC_URI="http://download.kde.org/stable/"$V"/src/"$N-$V".tar.xz"
+CHECKSUM="e629d7a1d7d1aa1d1dd24769dc5412a60b6ac256"
+
+RDEPEND="acl akonadi attica attr bzip2 dbus expat flac fontconfig freetype gcc-libs giflib glib2 glibc gst-plugins-base gstreamer herqq json-c kdelibs kdepimlibs libcap libdbusmenu-qt libdrm libffi libICE libjpeg-turbo libogg pcre libpng libqzeitgeist libSM libsndfile libvorbis libX11 libXau libxcb libXcursor libXdamage libXdmcp libXext libXfixes libXft libXi libxml2 libXpm libXrender libXScrnSaver libXtst libXxf86vm mesa openssl phonon pulseaudio python qca qt soprano sqlite strigi systemd util-linux xz zlib"
+RECOMMENDED=""
+BDEPEND="cmake automoc4"
+OPTIONAL=""
+CONFLICT=""
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_config() {
+	export PYTHONDONTWRITEBYTECODE="TRUE"
+	doconfig -DCMAKE_BUILD_TYPE=Release
+}
+
+pbs_build() {
+	domake
+}
+
+pbs_install() {
+	domkinstall
+}
+

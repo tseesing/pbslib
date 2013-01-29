@@ -1,0 +1,41 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="GNU GPL'd Pico clone with more functionality"
+HOMEPAGE="http://www.nano-editor.org/"
+LICENSE="GPL"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
+
+SRC_URI="http://ftp.gnu.org/pub/gnu/nano/"$N-$V".tar.gz"
+CHECKSUM="af09f8828744b0ea0808d6c19a2b4bfd"
+
+RDEPEND="file ncurses"
+BDEPEND=""
+RECOMMENDED=""
+CONFLICT=""
+
+pbs_unpack() {
+    dounpack
+}
+
+pbs_config() {
+    config+="--enable-color
+             --enable-nanorc 
+             --enable-multibuffer 
+             --disable-wrapping-as-root"
+	doconfig
+}
+
+pbs_build() {
+	domake
+}
+
+pbs_install() {
+	domkinstall
+    install -DTm644 doc/nanorc.sample "$destdir"/etc/nanorc
+}
+

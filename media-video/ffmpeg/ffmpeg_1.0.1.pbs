@@ -1,0 +1,65 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="Complete solution to record, convert and stream audio and video."
+HOMEPAGE="http://ffmpeg.org/"
+LICENSE="GPL"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
+
+SRC_URI="http://ffmpeg.org/releases/"$N-$V".tar.bz2"
+CHECKSUM="dbbb88ce5525dea22b24aaa098a9bcc2"
+
+RDEPEND="alsa-lib bzip2 gsm pulseaudio lame libva libvorbis libvpx opencore-amr openjpeg rtmpdump schroedinger libsdl speex v4l-utils x264 xvidcore zlib"
+BDEPEND="yasm" 
+RECOMMENDED=""
+CONFLICT="libav"
+REPLACE="libav"
+
+pbs_unpack() {
+    dounpack
+}
+
+pbs_config() {
+	config="--prefix=/usr 
+            --libdir=/usr/lib"$LIBDIRSUFFIX"
+            --shlibdir=/usr/lib"$LIBDIRSUFFIX"
+            --enable-libmp3lame 
+            --enable-libvorbis 
+            --enable-libxvid 
+            --enable-libx264 
+            --enable-libvpx 
+            --enable-libtheora 
+            --enable-gsm 
+            --enable-libspeex 
+            --enable-postproc 
+            --enable-shared 
+            --enable-x11grab 
+            --enable-libopencore_amrnb 
+            --enable-libopencore_amrwb 
+            --enable-libschroedinger 
+            --enable-libopenjpeg 
+            --enable-librtmp 
+            --enable-libpulse 
+            --enable-libv4l2 
+            --enable-gpl 
+            --enable-version3 
+            --enable-runtime-cpudetect 
+            --disable-debug 
+            --disable-static"
+	doconfig
+}
+
+pbs_build() {
+	domake
+	domake tools/qt-faststart
+}
+
+pbs_install() {
+	domkinstall install install-man
+	install -D -m755 tools/qt-faststart "$destdir"/usr/bin/
+}
+

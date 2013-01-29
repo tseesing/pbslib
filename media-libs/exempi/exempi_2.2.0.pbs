@@ -1,0 +1,37 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="Exempi is a port of the Adobe XMP SDK to work on UNIX"
+HOMEPAGE="http://libopenraw.freedesktop.org/wiki/Exempi"
+LICENSE="custom:BSD"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
+
+SRC_URI="http://libopenraw.freedesktop.org/download/"$N-$V".tar.bz2"
+CHECKSUM="f46d96975613593ee17aaf48cd350228"
+
+RDEPEND="expat gcc-libs zlib"
+BDEPEND="boost"
+RECOMMENDED=""
+
+pbs_unpack() {
+    dounpack
+}
+
+pbs_config() {
+    config+=""
+	doconfig
+}
+
+pbs_build() {
+	domake
+}
+
+pbs_install() {
+	domkinstall
+	dodoc COPYING
+}
+

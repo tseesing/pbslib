@@ -1,0 +1,33 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="an engine for structured graphics based on the Tk canvas widget and is an essential GNOME library.."
+HOMEPAGE="http://developer.gnome.org/doc/API/2.0/libgnomecanvas/"
+REPO=""
+LICENSE="GPL-2"
+PACKAGER="StartOS Developers"
+
+SRC_URI=" http://ftp.gnome.org/pub/gnome/platform/2.30/2.30.2/sources/"$N-$V$R".tar.bz2 "
+
+RDEPEND="atk cairo expat fontconfig freetype  gcc-libs glib2 gdk-pixbuf2 glibc gtk2 libart_lgpl libpng libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libXrandr libXrender pango pixman zlib"
+BDEPEND="                          "
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_config() {
+	doconfig
+}
+
+pbs_build() {
+	domake
+}
+
+pbs_install() {
+	domkinstall
+}

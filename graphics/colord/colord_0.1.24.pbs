@@ -1,0 +1,40 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="System daemon for managing color devices"
+HOMEPAGE="http://www.freedesktop.org/software/colord"
+LICENSE="GPL"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
+
+SRC_URI="http://www.freedesktop.org/software/colord/releases/"$N-$V".tar.xz"
+CHECKSUM="52089b72d79cd4358a86b7e646c42d23157bbcf9"
+
+RDEPEND="lcms2 libgusb polkit shared-color-profiles sqlite systemd"
+BDEPEND="intltool gobject-introspection vala"
+
+pbs_unpack() {
+    dounpack
+}
+
+pbs_patch() {
+	# put systemd files in /usr/lib
+	sed -i "/slashlibdir=/s#/lib#/usr/lib#" configure
+}
+
+pbs_config() {
+	config+="--disable-static --with-systemdsystemunitdir=/usr/lib/systemd/system --enable-vala"
+	doconfig
+}
+
+pbs_build()  {
+	domake
+}
+
+pbs_install() {
+	domkinstall bashcompletiondir=/usr/share/bash-completion/completions
+}
+

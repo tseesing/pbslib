@@ -1,0 +1,41 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="HTTP and WebDAV client library with a C interface"
+HOMEPAGE="http://www.webdav.org/neon/"
+LICENSE="GPL,LGPL"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
+
+SRC_URI="http://www.webdav.org/"$N"/"$N-$V".tar.gz"
+
+RDEPEND="krb5 expat ca-certificates"
+BDEPEND=""
+RECOMMENDED=""
+
+pbs_unpack() {
+    dounpack
+}
+
+pbs_config() {
+	config+="--with-expat 
+             --enable-shared 
+             --disable-static 
+             --with-ssl=openssl 
+             --with-ca-bundle=/etc/ssl/certs/ca-certificates.crt"
+	doconfig
+}
+
+pbs_build() {
+	domake
+    # fix invalid .so links in man pages
+    sed -i '/^\.so/s|\.so \([^.]\+\)\.\([[:digit:]]\)|.so man\2/\1.\2|' doc/man/*
+}
+
+pbs_install() {
+	domkinstall
+}
+

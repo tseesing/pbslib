@@ -1,0 +1,17 @@
+#!/bin/bash
+#
+
+device_id () {
+	grep DEVICE_ID $1 |awk '{print $3}' |while read id; do
+		printf "alias pci:v%08Xd%08Xsv*sd*bc*sc*i* %s %s\n" 0x1814 "$id"
+	done
+}
+
+#
+echo "package rt5390sta-driver"
+echo "module rt5390sta.ko"
+echo "description RT5390 Wireless Lan Linux Driver"
+#
+device_id include/chip/rt5390.h
+
+exit 0

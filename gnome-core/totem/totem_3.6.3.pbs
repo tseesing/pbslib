@@ -1,0 +1,61 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="Movie player for the GNOME3 desktop based on GStreamer"
+HOMEPAGE="http://gnome.org/projects/totem/"
+LICENSE="GPL,custom"
+PACKAGER="chenqixing@ivali.com
+          Zhongxin Huang <huangzhongxin@ivali.com>"
+
+SRC_URI="http://ftp.acc.umu.se/pub/GNOME/sources/$N/${V%.*}/${N}-${V}.tar.xz"
+CHECKSUM="ad9f2ff207c8a965975670e262394953b37b2dc25cff7ee59f138f961f88ce60"
+
+RDEPEND="gst-plugins-base gst-plugins-good totem-pl-parser desktop-file-utils iso-codes libpeas gnome-icon-theme-symbolic gsettings-desktop-schemas dconf clutter-gst clutter-gtk pygobject gst-plugins-bad libdvdcss"
+BDEPEND="intltool gnome-doc-utils nautilus vala grilo pylint dbus-glib libzeitgeist"
+RECOMMENDED=""
+OPTIONAL=" gst-plugins-base: the basic and essential plug-ins for GStreamer
+           gst-plugins-good: the plug-ins for most Open formats
+           gst-plugins-ugly: good-quality plug-ins that might pose distribution problems, needed for DVD playback
+           gst-plugins-bad: a set of plug-ins that need more work, needed for DVD playback as well
+           gst-ffmpeg: FFmpeg-based plug-in, contains all the basic decoders for popular codecs, such as DivX and WMV 
+           lirc-utils: Infrared Remote Control plugin
+           grilo-plugins: Browse sidebar (remote media)
+           pyxdg: opensubtitles plugin
+           libzeitgeist: Zeitgeist plugin"
+
+INSTALL="$N.install"
+
+NOTES="
+1. Ensure built gst-plugins-good with gconf support or the configure script will fail.
+2. libdvdcss-1.2.10 is a run-time requirement if you wish to play encrypted DVDs"
+
+pbs_unpack() {
+    dounpack
+}
+
+pbs_config() {
+	config+=" --disable-scrollkeeper
+              --disable-schemas-compile
+              --with-plugins=all
+              --enable-browser-plugins
+              --disable-static 
+              --enable-python 
+              --enable-nautius"
+	doconfig
+}
+
+pbs_build() {
+	domake
+}
+
+pbs_install() {
+	domkinstall
+    dodoc COPYING
+    docp "$filesdir"/browser-plugins.ini "$destdir"/etc/totem/
+}
+
+

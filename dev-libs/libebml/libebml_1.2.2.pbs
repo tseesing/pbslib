@@ -1,0 +1,35 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="Extensible Binary Meta Language library"
+HOMEPAGE="http://dl.matroska.org/downloads/libebml"
+LICENSE="LGPL"
+PACKAGER="StartOS Developers"
+
+SRC_URI="http://dl.matroska.org/downloads/"$N"/"$N-$V".tar.bz2"
+CHECKSUM="726cc2bd1a525929ff35ff9854c0ebab"
+
+RDEPEND="gcc-libs"
+RECOMMENDED=""
+BDEPEND=""
+OPTIONAL=""
+CONFLICT=""
+REPLACE=""
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_build() {
+	cd make/linux
+	domake
+}
+
+pbs_install() {
+	make prefix="$destdir"/usr install
+}
+

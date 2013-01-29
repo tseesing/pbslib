@@ -1,0 +1,40 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="kill a list of pids, and all their sub-children "
+HOMEPAGE="http://search.cpan.org/~durist/Proc-ProcessTable-0.45/Killfam.pm"
+REPO=""
+LICENSE="GPL"
+PRIORITY=""
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
+
+SRC_URI="http://search.cpan.org/CPAN/authors/id/D/DU/DURIST/Proc-ProcessTable-"$V$R".tar.gz"
+
+RDEPEND=""
+BDEPEND=" "
+RECOMMENDED=""
+CONFLICT=""
+
+NOTES=""
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_config() {
+	config+=""
+	doconfig
+}
+
+pbs_build() {
+	domake
+}
+
+pbs_install() {
+	domkinstall
+        perl_cleanup
+}

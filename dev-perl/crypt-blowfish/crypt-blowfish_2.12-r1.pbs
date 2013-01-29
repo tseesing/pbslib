@@ -1,0 +1,37 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="Perl Blowfish encryption module  "
+HOMEPAGE="http://search.cpan.org/~dparis/Crypt-Blowfish-2.12/"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
+LICENSE="GPL,PerlArtistic"
+YARCH="any"
+
+SRC_URI="http://mirror.osqdu.org/CPAN/authors/id/D/DP/DPARIS/Crypt-Blowfish-"$V".tar.gz"
+
+RDEPEND="perl"
+BDEPEND=""
+RECOMMENDED=""
+CONFLICT=""
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_config() {
+	export PERL_MM_USE_DEFAULT=1
+	doconfig INSTALLDIRS=vendor 
+}
+
+pbs_build() {
+	domake
+}
+
+pbs_install() {
+	domkinstall
+        perl_cleanup
+}

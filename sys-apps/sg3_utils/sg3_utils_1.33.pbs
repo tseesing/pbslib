@@ -1,0 +1,36 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="Apps for querying the sg SCSI interface"
+HOMEPAGE="http://sg.danny.cz/sg/"
+LICENSE="GPL,BSD"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
+
+SRC_URI="http://sg.danny.cz/sg/p/"$N-$V".tgz"
+CHECKSUM="261e39f7161337330ba6bd57999be801"
+
+RDEPEND="glibc"
+BDEPEND=""
+RECOMMENDED=""
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_config() {
+	doconfig
+}
+
+pbs_build() {
+	domake
+}
+
+pbs_install() {
+	domkinstall
+	dodoc COPYING
+}
+

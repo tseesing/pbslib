@@ -1,0 +1,51 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="Ralink RT5390 "Draft-n" PCI WLAN adaptors"
+HOMEPAGE="https://build.opensuse.org/project/list_public"
+LICENSE="GPL"
+PACKAGER="StartOS Developers"
+
+SRC_URI="https://api.opensuse.org/public/source/driver:wireless/rt5390sta/2010_1216_RT5390_LinuxSTA_V2.4.0.4_WiFiBTCombo_DPO.tar.bz2"
+
+PROVIDE="rt5390sta-source rt5390sta-driver"
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_config() {
+	patches="rt5390sta-2.4.0.4-config.patch 
+	         rt5390sta-2.4.0.4-convert-devicename-to-wlanX.patch
+		 rt5390sta-2.4.0.4-gcc-warnings-x86_64.patch
+		 rt5390sta-2.4.0.4-remove-potential-conflicts-with-rt2860sta.patch
+		 rt5390sta-2.4.0.4-return_nonvoid_function.patch
+		 rt5390sta-2.4.0.4-WPA-mixed.patch
+		 startos_makefile.patch"
+	dopatch $patches
+}
+
+rt5390sta-source_install () {
+	DESCRIPTION="Ralink RT5390 "Draft-n" PCI WLAN adaptors (source)."
+	RECOMMENDED="build-essential"
+	INSTALL="$N.install"
+	OPTIONS="nodev"
+        YARCH="any"
+	
+	dosrc *
+	dosupported "$N"_supported
+}
+
+rt5390sta-driver_install () {
+	DESCRIPTION="Ralink RT5390 "Draft-n" PCI WLAN adaptors (kernel module)."
+	BDEPEND="gcc gcc-dev make linux-kernel-headers"
+	INSTALL="$N.install"
+	
+	unset ARCH
+	domake
+	domkinstall
+}

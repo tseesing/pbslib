@@ -1,0 +1,12 @@
+diff -ur rapidsvn-0.12.1/src/utils.cpp rapidsvn-0.12.1.new//src/utils.cpp
+--- rapidsvn-0.12.1/src/utils.cpp	2012-06-28 06:39:35.000000000 +0000
++++ rapidsvn-0.12.1.new//src/utils.cpp	2012-11-08 07:04:46.295466145 +0000
+@@ -579,7 +579,7 @@
+ #else
+   // Well, maybe we can run Firefox?
+   wxString args;
+-  args.Printf(wxT("firefox \"%s\""), url.c_str());
++  args.Printf(wxT("xdg-open \"%s\""), url.c_str());
+   wxExecute(args, wxEXEC_ASYNC | wxEXEC_NOHIDE);
+ #endif
+ }

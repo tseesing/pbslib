@@ -1,0 +1,42 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="an open source multimedia framework for television broadcasting."
+HOMEPAGE="http://www.mltframework.org/twiki/bin/view/MLT/"
+LICENSE="GPL"
+PACKAGER="StartOS Developers"
+
+SRC_URI="http://downloads.sourceforge.net/project/"$N"/"$N"/"$N-$V".tar.gz"
+
+RDEPEND="alsa-lib attr bzip2 cairo dbus directfb expat ffmpeg file flac fontconfig freetype gcc-libs gdk-pixbuf2 glib2 glibc gtk2 jack-audio-connection-kit json-c lame libao libcap libdrm libexif gsm libICE libid3tag libmad libogg libpng libquicktime libsamplerate libsdl libSM libsndfile libtheora libtool libva libvorbis libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libxml2 libXrandr libXrender libXt libXtst mesa nas opencore-amr openssl orc pango pixman pulseaudio python qt rtmpdump schroedinger sdl-image sox systemd util-linux wavpack x264 xvidcore zlib"
+BDEPEND=""
+RECOMMENDED=""
+CONFLICT=""
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_config() {
+	config+="--enable-gpl 
+	         --swig-languages=python
+		 --avformat-vdpau
+		 --avformat-swscale
+		 --disable-sse2"
+	doconfig
+}
+
+pbs_build() {
+	domake
+}
+
+pbs_install() {
+	domkinstall
+	cd src/swig/python/
+	docp mlt.py _mlt.so mlt_wrap.o "$destdir"/usr/lib/python/site-packages/
+}
+

@@ -1,0 +1,34 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="Udev rules to connect Android devices"
+HOMEPAGE="https://github.com/M0Rf30/android-systemd-rules"
+LICENSE="custom"
+PACKAGER="StartOS Developers"
+YARCH="any"
+
+SRC_URI="git://github.com/M0Rf30/android-systemd-rules.git"
+
+RDEPEND="libmtp systemd"
+RECOMMENDED=""
+BDEPEND=""
+OPTIONAL=""
+CONFLICT=""
+REPLACE=""
+
+INSTALL="$N.install"
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_install() {
+	chmod a+r 51-android.rules
+	docp 51-android.rules "$destdir"/lib/systemd/rules.d/
+	dodoc README
+}
+

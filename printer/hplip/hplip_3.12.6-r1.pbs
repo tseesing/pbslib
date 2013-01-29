@@ -1,0 +1,74 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="Drivers for HP DeskJet, OfficeJet, Photosmart, Business Inkjet and some LaserJet"
+HOMEPAGE="http://hplipopensource.com"
+LICENSE="GPL"
+PACKAGER="StartOS Developers"
+
+SRC_URI="http://downloads.sourceforge.net/"$N"/"$N-$V".tar.gz"
+CHECKSUM="5303938e8630775ea6fb383af85775e5"
+
+RDEPEND="cups sane-backends qt pyqt4"
+BDEPEND=""
+RECOMMENDED="hplip-plugin(=3.12.6-r1)"
+CONFLICT=""
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_patch() {
+	# https://bugs.archlinux.org/task/30085 - hack found in Gentoo
+	# Use system foomatic-rip for hpijs driver instead of foomatic-rip-hplip
+	# The hpcups driver does not use foomatic-rip
+	local i
+	for i in ppd/hpijs/*.ppd.gz ; do
+		rm -f ${i}.temp
+		gunzip -c ${i} | sed 's/foomatic-rip-hplip/foomatic-rip/g' | \
+		gzip > ${i}.temp || return 1
+		mv ${i}.temp ${i}
+	done
+}
+
+pbs_config() {
+	export PYTHON=`which python`
+	export AUTOMAKE='automake --foreign'
+	autoreconf --force --install
+
+	config+=" --enable-qt4 
+	          --disable-foomatic-rip-hplip-install 
+	          --enable-foomatic-ppd-install 
+                  --enable-hpcups-install 
+                  --enable-new-hpcups 
+                  --enable-cups-ppd-install 
+                  --enable-cups-drv-install 
+                  --enable-hpijs-install 
+                  --enable-foomatic-drv-install 
+                  --enable-pp-build 
+                  --enable-systemd-acl-rules "
+	doconfig
+}
+
+pbs_build() {
+	make "$MAKEOPTS"
+}
+
+pbs_install() {
+	make rulesdir=/lib/systemd/rules.d DESTDIR="$destdir/" install
+	cd "$destdir"
+		
+	# Remove config provided by sane 
+	rm -rf etc/sane.d
+
+	# Remove HAL .fdi file because HAL is no longer used
+	rm -rf usr/share/hal
+
+	# Remove autostart ?
+	#rm -rf etc/xdg/autostart
+}
+

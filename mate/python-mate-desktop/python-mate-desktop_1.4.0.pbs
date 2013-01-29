@@ -1,0 +1,43 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="python bings for MATE"
+HOMEPAGE="http://mate-desktop.org"
+LICENSE="GPL"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
+
+SRC_URI="http://pub.mate-desktop.org/releases/1.4/$N-$V.tar.xz"
+CHECKSUM="d9629eb2b589d3a65246625ddca2f568ce78c782335fb48537e3f9d37cc32a5e"
+
+RDEPEND="python"
+BDEPEND=""
+
+pbs_unpack() {
+    dounpack
+}    
+
+pbs_config() {
+    config+="--disable-static 
+             --enable-applet 
+             --enable-cajaburn 
+             --enable-matekeyring 
+             --enable-matedesktop 
+             --enable-mateprint 
+             --enable-mateprintui 
+             --enable-marco"
+    doconfig
+}
+
+pbs_build() {
+    domake
+}
+
+pbs_install() {
+    domkinstall
+}
+
+

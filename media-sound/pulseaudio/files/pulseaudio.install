@@ -1,0 +1,18 @@
+
+post_install() {
+  file="/usr/libexec/pulse/proximity-helper"
+  setcap cap_net_raw=ep $file 2>/dev/null || chmod +s $file      
+  cat <<MES
+* Edit /etc/asound.conf to configure ALSA for PulseAudio.
+* See the wiki at http://wiki.archlinux.org/index.php/PulseAudio for details on configuring your system for PulseAudio.
+MES
+}
+
+post_upgrade() {
+	post_install
+}
+
+post_downgrade() {
+	post_install
+}
+

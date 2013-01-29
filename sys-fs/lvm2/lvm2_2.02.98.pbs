@@ -1,0 +1,70 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="Device mapper ioctl library for use with LVM2 utilities"
+HOMEPAGE="http://sources.redhat.com/dm/"
+LICENSE="GPL,LGPL"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
+
+SRC_URI="ftp://sources.redhat.com/pub/lvm2/LVM2."$V".tgz"
+CHECKSUM="077425115b164c335a9930df745943e9ea666a8a"
+
+PROVIDE="device-mapper lvm2"
+
+pbs_unpack() {
+    dounpack
+}
+
+pbs_config() {
+	unset LDFLAGS
+    ./configure $DEFAULT_CONFIG \
+                --with-systemd-prefix=/usr \
+                --with-systemdsystemunitdir=/usr/lib/systemd/system \
+                --with-default-pid-dir=/run \
+                --with-default-dm-run-dir=/run \
+                --with-default-run-dir=/run/lvm \
+                --enable-pkgconfig \
+                --enable-readline \
+                --enable-dmeventd \
+                --enable-cmdlib \
+                --enable-applib \
+                --enable-systemd_sync \
+                --enable-systemd_rules \
+                --with-default-locking-dir=/run/lock/lvm \
+                --enable-lvmetad
+}
+
+pbs_build() {
+	domake 
+}
+
+device-mapper_install() {
+	DESCRIPTION="Device mapper userspace library and tools"
+	RDEPEND="systemd"
+	
+	make DESTDIR="$destdir" install_device-mapper
+    # Install dmeventd socket and service
+    dounit dmeventd.service dmeventd.socket
+}
+
+lvm2_install() {
+	DESCRIPTION="Logical Volume Manager 2 utilities"
+	RDEPEND="device-mapper readline"
+ 
+    make DESTDIR="$destdir" install_lvm2
+    # install applib
+    domkinstall -C liblvm
+    # /etc directories
+    cd "$destdir"
+    install -d etc/lvm/{archive,backup}
+    # systemd support
+    docp "$filesdir"/lvm2.conf usr/lib/tmpfiles.d/
+    dounit lvm-monitoring.service lvmetad.service lvmetad.socket 
+    # enable lvmetad
+    sed 's|use_lvmetad = 0|use_lvmetad = 1|' -i etc/lvm/lvm.conf
+}
+

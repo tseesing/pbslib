@@ -1,0 +1,22 @@
+diff -ur xorg-server-1.12.2/os/utils.c xorg-server-1.12.2.new//os/utils.c
+--- xorg-server-1.12.2/os/utils.c	2012-05-17 17:09:04.000000000 +0000
++++ xorg-server-1.12.2.new//os/utils.c	2012-07-19 11:20:41.392838054 +0000
+@@ -506,6 +506,7 @@
+     ErrorF("-nolisten string       don't listen on protocol\n");
+     ErrorF("-noreset               don't reset after last client exists\n");
+     ErrorF("-background [none]     create root window with no background\n");
++    ErrorF("-nr                    synonym for -background none\n");
+     ErrorF("-reset                 reset after last client exists\n");
+     ErrorF("-p #                   screen-saver pattern duration (minutes)\n");
+     ErrorF("-pn                    accept failure to listen on all ports\n");
+@@ -825,7 +826,9 @@
+                     UseMsg();
+             }
+         }
+-        else if (strcmp(argv[i], "-maxbigreqsize") == 0) {
++	else if ( strcmp( argv[i], "-nr") == 0)
++		bgNoneRoot = TRUE;
++	 else if (strcmp(argv[i], "-maxbigreqsize") == 0) {
+             if (++i < argc) {
+                 long reqSizeArg = atol(argv[i]);
+ 

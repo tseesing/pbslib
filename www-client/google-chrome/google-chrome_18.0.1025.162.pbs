@@ -1,0 +1,33 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="A browser that combines a minimal design with sophisticated technology to make the web faster, safer, and easier."
+HOMEPAGE="http://www.google.com/chrome/"
+LICENSE="custom"
+PACKAGER="StartOS Developers"
+
+SRC_URI="https://dl.google.com/linux/direct/"$N"-stable_current_i386.deb"
+CHECKSUM="62ceb62342393e3aa79f8c5c4aed5373"
+
+RDEPEND="alsa-lib atk avahi bzip2 cairo cups dbus expat fontconfig freetype gcc-libs gconf gdk-pixbuf2 glib2 glibc gnutls gtk2 keyutils krb5 libffi libgcrypt libgpg-error libICE libpng libSM libtasn1 libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libXinerama libXrandr libXrender libXScrnSaver libXt nspr nss orbit pango pixman systemd util-linux zlib"
+BDEPEND=""
+RECOMMENDED=""
+CONFLICT=""
+
+INSTALL="$N.install"
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_install() {
+	dopatch desktop-13.patch
+	docp data/*  "$destdir"
+	cd "$destdir"
+	dodesktop "opt/google/chrome/google-chrome.desktop" "opt/google/chrome/product_logo_48.png"
+}
+

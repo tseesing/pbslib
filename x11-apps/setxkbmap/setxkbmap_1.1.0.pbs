@@ -1,0 +1,37 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="X11 Apps"
+HOMEPAGE="http://www.x.org/wiki/"
+GROUP="x11-apps"
+ 
+SRCURL="http://www.x.org/releases/X11R7.5/src/app"
+SRC_URI="$SRCURL/setxkbmap-1.1.0.tar.bz2"
+
+RDEPEND="libxkbfile libX11 libxcb libXau libXdmcp"
+BDEPEND=""
+
+pbs_unpack()
+{
+        dounpack
+}
+
+pbs_config()
+{
+	
+	doconfig
+}
+
+pbs_build()
+{
+	domake
+}
+
+pbs_install()
+{
+	domkinstall
+}

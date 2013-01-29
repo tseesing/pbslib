@@ -1,0 +1,39 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="A rendering library for Kate streams using Pango and Cairo"
+HOMEPAGE="http://libtiger.googlecode.com"
+LICENSE="GPL"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
+
+SRC_URI="http://libtiger.googlecode.com/files/"$N-$V".tar.gz"
+CHECKSUM="dc1dbeb658c95485ba10b9b2897b4ae2"
+
+RDEPEND="libkate pango"
+RECOMMENDED=""
+BDEPEND="pkgconfig"
+OPTIONAL=""
+CONFLICT=""
+REPLACE=""
+
+pbs_unpack() {
+    dounpack
+}
+
+pbs_config() {
+	config+="--enable-static=no --disable-doc"
+	doconfig
+}
+
+pbs_build() {
+	domake
+}
+
+pbs_install() {
+	domkinstall
+}
+

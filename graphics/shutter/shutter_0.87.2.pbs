@@ -1,0 +1,27 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="Feature-rich screenshot program"
+HOMEPAGE="http://shutter-project.org/"
+LICENSE="GPLv3"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
+
+SRC_URI="http://shutter-project.org/wp-content/uploads/releases/tars/"$N-$V".tar.gz"
+
+RDEPEND="gnome2-perl gnome2-gconf-perl gnome2-wnck-perl gtk2-imageview-perl gtk2-unique-perl HTTP-Message gettext-perl proc-processtable www-mechanize-perl URI libwww-perl HTTP-Date HTML-Form HTML-Parser HTML-Tagset HTTP-Cookies gtk2-perl glib-perl pango-perl gnome2-canvas-perl gnome2-vfs-perl goocanvas gtkimageview imagemagick net-dbus proc-processtable"
+BDEPEND=""
+RECOMMENDED="perlmagick goo-canvas-perl net-dbus-glib-perl image-exiftool-perl x11-protocol-perl cairo-perl gnome-web-photo"
+CONFLICT=""
+
+pbs_unpack() {
+    dounpack
+}
+
+pbs_install() {
+	docp bin share "$destdir"/usr
+}
+

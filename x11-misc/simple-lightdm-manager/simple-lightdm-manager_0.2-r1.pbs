@@ -1,0 +1,38 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="simple-lightdm-manager"
+HOMEPAGE="https://launchpad.net/~claudiocn"
+LICENSE="GPL"
+PACKAGER="StartOS Developers"
+
+SRC_URI="https://launchpadlibrarian.net/81977867/"${N}_$V"-public7.tar.gz"
+CHECKSUM="ba4abb4d194e98a1a3e1416ac9ffc7ea"
+
+RDEPEND="gksu lightdm"
+RECOMMENDED=""
+BDEPEND=""
+OPTIONAL=""
+CONFLICT=""
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_config() {
+	config+=""
+	doconfig
+}
+
+pbs_build() {
+	domake
+}
+
+pbs_install() {
+	domkinstall
+}
+

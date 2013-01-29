@@ -1,0 +1,57 @@
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="KDE libraries needed by all KDE programs."
+HOMEPAGE="http://www.kde.org"
+LICENSE="GPL"
+PACKAGER="StartOS Developers"
+GROUP="kde"
+
+SRC_URI="http://download.kde.org/stable/"$V"/src/"$N-$V".tar.xz"
+
+RDEPEND="attica enchant giflib herqq jasper krb5 libdbusmenu-qt pcre libXcursor libXft libXpm libXScrnSaver openexr phonon polkit-qt qca soprano(>=2.7.56) strigi systemd xz"
+BDEPEND="pkgconfig cmake automoc4 docbook-xml(>=4.5-r1)"
+RECOMMENDED=""
+
+INSTALL="$N.install"
+
+pbs_unpack() {
+	dounpack
+}
+
+pbs_patch() {
+	#
+	dopatch set-docbook-xml-4.5.patch
+
+	# avoid file conflict with gnome-menus
+	dopatch kde-applications-menu.patch
+}
+
+pbs_config() {
+	rm -rf build 2>/dev/null
+	mkdir -p build && cd build
+	cmake .. \
+	     -DCMAKE_BUILD_TYPE=Release \
+             -DCMAKE_SKIP_RPATH=ON \
+             -DCMAKE_INSTALL_PREFIX=/usr \
+             -DSYSCONF_INSTALL_DIR=/etc \
+             -DHTML_INSTALL_DIR=/usr/share/doc/kde/html \
+             -DKDE_DEFAULT_HOME='.kde4' \
+             -DWITH_FAM=OFF
+}
+
+pbs_build() {
+	domake
+}
+
+pbs_install() {
+	domkinstall
+	# cert bundle seems to be hardcoded
+	# link it to the one from ca-certificates
+	rm -f usr/share/apps/kssl/ca-bundle.crt
+	doln  /etc/ssl/certs/ca-certificates.crt "$destdir"/usr/share/apps/kssl/ca-bundle.crt
+}
+

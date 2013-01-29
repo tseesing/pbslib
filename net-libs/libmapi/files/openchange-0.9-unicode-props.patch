@@ -1,0 +1,177 @@
+diff -up openchange-0.9-COCHRANE/libmapi/IMAPIFolder.c.unicode-props openchange-0.9-COCHRANE/libmapi/IMAPIFolder.c
+--- openchange-0.9-COCHRANE/libmapi/IMAPIFolder.c.unicode-props	2009-12-21 12:27:45.000000000 +0100
++++ openchange-0.9-COCHRANE/libmapi/IMAPIFolder.c	2011-04-26 15:00:27.482938629 +0200
+@@ -673,7 +673,7 @@ _PUBLIC_ enum MAPISTATUS CreateFolder(ma
+ 		break;
+ 	case MAPI_FOLDER_UNICODE:
+ 		request.FolderName.lpszW = name;
+-		size += strlen(name) * 2 + 2;
++		size += get_utf8_utf16_conv_length(name);
+ 		break;
+ 	}
+ 
+@@ -685,7 +685,7 @@ _PUBLIC_ enum MAPISTATUS CreateFolder(ma
+ 			break;
+ 		case MAPI_FOLDER_UNICODE:
+ 			request.FolderComment.lpszW = comment;
+-			size += strlen(comment) * 2 + 2;
++			size +=  get_utf8_utf16_conv_length(comment);
+ 			break;
+ 		}
+ 	} else {
+@@ -993,7 +993,7 @@ _PUBLIC_ enum MAPISTATUS MoveFolder(mapi
+ 		size += strlen(NewFolderName) + 1;
+ 	} else {
+ 		request.NewFolderName.lpszW = NewFolderName;
+-		size += strlen(NewFolderName) * 2 + 2;
++		size += get_utf8_utf16_conv_length(NewFolderName);
+ 	}
+ 
+ 
+@@ -1110,7 +1110,7 @@ _PUBLIC_ enum MAPISTATUS CopyFolder(mapi
+ 		size += strlen(NewFolderName) + 1;
+ 	} else {
+ 		request.NewFolderName.lpszW = NewFolderName;
+-		size += strlen(NewFolderName) * 2 + 2;
++		size += get_utf8_utf16_conv_length(NewFolderName);
+ 	}
+ 
+ 	/* Fill the MAPI_REQ request */
+diff -up openchange-0.9-COCHRANE/libmapi/IMAPIProp.c.unicode-props openchange-0.9-COCHRANE/libmapi/IMAPIProp.c
+--- openchange-0.9-COCHRANE/libmapi/IMAPIProp.c.unicode-props	2009-12-21 12:35:02.000000000 +0100
++++ openchange-0.9-COCHRANE/libmapi/IMAPIProp.c	2011-04-26 15:00:27.483938640 +0200
+@@ -1007,7 +1007,7 @@ _PUBLIC_ enum MAPISTATUS GetIDsFromNames
+ 			size += sizeof (request.nameid[i].kind.lid);
+ 			break;
+ 		case MNID_STRING:
+-			size += strlen(request.nameid[i].kind.lpwstr.Name) * 2 + 2;
++		  size +=  get_utf8_utf16_conv_length(request.nameid[i].kind.lpwstr.Name);
+ 			size += sizeof (uint8_t);
+ 			break;
+ 		default:
+diff -up openchange-0.9-COCHRANE/libmapi/IMessage.c.unicode-props openchange-0.9-COCHRANE/libmapi/IMessage.c
+--- openchange-0.9-COCHRANE/libmapi/IMessage.c.unicode-props	2011-04-26 15:00:27.476938563 +0200
++++ openchange-0.9-COCHRANE/libmapi/IMessage.c	2011-04-26 15:00:27.485938661 +0200
+@@ -806,7 +806,7 @@ _PUBLIC_ enum MAPISTATUS ModifyRecipient
+ 			break;
+ 		case (0x208):
+ 			RecipientRow->EmailAddress.lpszW = (const char *) find_SPropValue_data(aRow, PR_SMTP_ADDRESS_UNICODE);
+-			size += strlen(RecipientRow->EmailAddress.lpszW) * 2 + 2;
++			size += get_utf8_utf16_conv_length(RecipientRow->EmailAddress.lpszW);
+ 			break;
+ 		default:
+ 			break;
+@@ -820,7 +820,7 @@ _PUBLIC_ enum MAPISTATUS ModifyRecipient
+ 			break;
+ 		case (0x210):
+ 			RecipientRow->DisplayName.lpszW = (const char *) find_SPropValue_data(aRow, PR_DISPLAY_NAME_UNICODE);
+-			size += strlen(RecipientRow->DisplayName.lpszW) * 2 + 2;
++			size += get_utf8_utf16_conv_length(RecipientRow->DisplayName.lpszW);
+ 			break;
+ 		default:
+ 			break;
+@@ -834,7 +834,7 @@ _PUBLIC_ enum MAPISTATUS ModifyRecipient
+ 			break;
+ 		case (0x220):
+ 			RecipientRow->TransmittableDisplayName.lpszW = (const char *) find_SPropValue_data(aRow, PR_TRANSMITTABLE_DISPLAY_NAME_UNICODE);
+-			size += strlen(RecipientRow->TransmittableDisplayName.lpszW) * 2 + 2;
++			size += get_utf8_utf16_conv_length(RecipientRow->TransmittableDisplayName.lpszW);
+ 			break;
+ 		default:
+ 			break;
+@@ -849,7 +849,7 @@ _PUBLIC_ enum MAPISTATUS ModifyRecipient
+ 			break;
+ 		case (0x600):
+ 			RecipientRow->SimpleDisplayName.lpszW = (const char *) find_SPropValue_data(aRow, PR_7BIT_DISPLAY_NAME_UNICODE);
+-			size += strlen(RecipientRow->SimpleDisplayName.lpszW) * 2 + 2;
++			size += get_utf8_utf16_conv_length(RecipientRow->SimpleDisplayName.lpszW);
+ 			break;
+ 		default:
+ 			break;
+diff -up openchange-0.9-COCHRANE/libmapi/mapi_nameid.c.unicode-props openchange-0.9-COCHRANE/libmapi/mapi_nameid.c
+--- openchange-0.9-COCHRANE/libmapi/mapi_nameid.c.unicode-props	2009-09-12 10:25:09.000000000 +0200
++++ openchange-0.9-COCHRANE/libmapi/mapi_nameid.c	2011-04-26 15:00:27.487938682 +0200
+@@ -112,7 +112,7 @@ _PUBLIC_ enum MAPISTATUS mapi_nameid_OOM
+ 				break;
+ 			case MNID_STRING:
+ 				mapi_nameid->nameid[count].kind.lpwstr.Name = mapi_nameid_tags[i].Name;
+-				mapi_nameid->nameid[count].kind.lpwstr.NameSize = strlen(mapi_nameid_tags[i].Name) * 2 + 2;
++				mapi_nameid->nameid[count].kind.lpwstr.NameSize = get_utf8_utf16_conv_length(mapi_nameid_tags[i].Name);
+ 				break;
+ 			}
+ 			mapi_nameid->count++;
+@@ -177,7 +177,7 @@ _PUBLIC_ enum MAPISTATUS mapi_nameid_lid
+ 				break;
+ 			case MNID_STRING:
+ 				mapi_nameid->nameid[count].kind.lpwstr.Name = mapi_nameid_tags[i].Name;
+-				mapi_nameid->nameid[count].kind.lpwstr.NameSize = strlen(mapi_nameid_tags[i].Name) * 2 + 2;
++				mapi_nameid->nameid[count].kind.lpwstr.NameSize = get_utf8_utf16_conv_length(mapi_nameid_tags[i].Name);
+ 				break;
+ 			}
+ 			mapi_nameid->count++;
+@@ -244,7 +244,7 @@ _PUBLIC_ enum MAPISTATUS mapi_nameid_str
+ 				break;
+ 			case MNID_STRING:
+ 				mapi_nameid->nameid[count].kind.lpwstr.Name = mapi_nameid_tags[i].Name;
+-				mapi_nameid->nameid[count].kind.lpwstr.NameSize = strlen(mapi_nameid_tags[i].Name) * 2 + 2;
++				mapi_nameid->nameid[count].kind.lpwstr.NameSize = get_utf8_utf16_conv_length(mapi_nameid_tags[i].Name);
+ 				break;
+ 			}
+ 			mapi_nameid->count++;
+@@ -353,7 +353,7 @@ _PUBLIC_ enum MAPISTATUS mapi_nameid_cus
+ 	mapi_nameid->nameid[count].ulKind = MNID_STRING;
+ 	GUID_from_string(OLEGUID, &(mapi_nameid->nameid[count].lpguid));
+ 	mapi_nameid->nameid[count].kind.lpwstr.Name = Name;
+-	mapi_nameid->nameid[count].kind.lpwstr.NameSize = strlen(Name) * 2 + 2;
++	mapi_nameid->nameid[count].kind.lpwstr.NameSize = get_utf8_utf16_conv_length(Name);
+ 
+ 	mapi_nameid->count++;
+ 	return MAPI_E_SUCCESS;
+@@ -408,7 +408,7 @@ _PUBLIC_ enum MAPISTATUS mapi_nameid_can
+ 				break;
+ 			case MNID_STRING:
+ 				mapi_nameid->nameid[count].kind.lpwstr.Name = mapi_nameid_tags[i].Name;
+-				mapi_nameid->nameid[count].kind.lpwstr.NameSize = strlen(mapi_nameid_tags[i].Name) * 2 + 2;
++				mapi_nameid->nameid[count].kind.lpwstr.NameSize = get_utf8_utf16_conv_length(mapi_nameid_tags[i].Name);
+ 				break;
+ 			}
+ 			mapi_nameid->count++;
+diff -up openchange-0.9-COCHRANE/libmapi/property.c.unicode-props openchange-0.9-COCHRANE/libmapi/property.c
+--- openchange-0.9-COCHRANE/libmapi/property.c.unicode-props	2011-04-26 15:00:27.476938563 +0200
++++ openchange-0.9-COCHRANE/libmapi/property.c	2011-04-26 15:01:03.481335307 +0200
+@@ -456,7 +456,7 @@ _PUBLIC_ uint32_t get_mapi_property_size
+ 	case PT_STRING8:
+ 		return strlen(lpProp->value.lpszA) + 1;
+ 	case PT_UNICODE:
+-		return strlen(lpProp->value.lpszW) * 2 + 2;
++		return get_utf8_utf16_conv_length(lpProp->value.lpszW);
+ 	case PT_SYSTIME:
+ 		return sizeof (struct FILETIME);
+ 	case PT_BINARY:
+@@ -476,7 +476,7 @@ _PUBLIC_ uint32_t get_mapi_property_size
+    \note This routine is based upon utf8_pull() function from
+    samba4/lib/util/charset/iconv.c
+  */
+-static size_t get_utf8_utf16_conv_length(const char *inbuf)
++size_t get_utf8_utf16_conv_length(const char *inbuf)
+ {
+ 	size_t		in_left;
+ 	size_t		out_left;
+@@ -596,7 +596,7 @@ _PUBLIC_ uint32_t cast_mapi_SPropValue(s
+ 	case PT_UNICODE:
+ 		mapi_sprop->value.lpszW = sprop->value.lpszW;
+ 		if (!mapi_sprop->value.lpszW) return 0;
+-		return get_utf8_utf16_conv_length(mapi_sprop->value.lpszW);
++		return (get_utf8_utf16_conv_length(mapi_sprop->value.lpszW));
+ 	case PT_SYSTIME:
+ 		mapi_sprop->value.ft.dwLowDateTime = sprop->value.ft.dwLowDateTime;
+ 		mapi_sprop->value.ft.dwHighDateTime = sprop->value.ft.dwHighDateTime;
+@@ -703,7 +703,7 @@ _PUBLIC_ uint32_t cast_SPropValue(struct
+ 	case PT_UNICODE:
+ 		sprop->value.lpszW = mapi_sprop->value.lpszW;
+ 		if (!sprop->value.lpszW) return 0;
+-		return (strlen(mapi_sprop->value.lpszW) * 2 + 2);
++		return (get_utf8_utf16_conv_length(mapi_sprop->value.lpszW));
+ 	case PT_SYSTIME:
+ 		sprop->value.ft.dwLowDateTime = mapi_sprop->value.ft.dwLowDateTime;
+ 		sprop->value.ft.dwHighDateTime = mapi_sprop->value.ft.dwHighDateTime;

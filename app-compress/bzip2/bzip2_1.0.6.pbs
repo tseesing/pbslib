@@ -1,0 +1,61 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="A high-quality data compressor"
+HOMEPAGE="http://www.bzip.org/"
+LICENSE="custom"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
+
+SRC_URI="http://www.bzip.org/"$V"/"$N-$V".tar.gz"
+CHECKSUM="3f89f861209ce81a6bab1fd1998c0ef311712002"
+
+RDEPEND="glibc"
+BDEPEND=""
+
+pbs_unpack() {
+    dounpack
+}
+
+pbs_patch() {
+	# add large-file support
+	sed -e 's/^CFLAGS=\(.*\)$/CFLAGS=\1 \$(BIGFILES)/' -i ./Makefile-libbz2_so
+	# use our optimization
+	sed -i "s|-O2|${CFLAGS}|g" Makefile
+	sed -i "s|-O2|${CFLAGS}|g" Makefile-libbz2_so
+	#
+    dopatch bzip2-1.0.4-bzip2recover.patch
+}	
+
+pbs_build() {
+	domake -f Makefile-libbz2_so || die "make -f Makefile-libbz2_so failed."
+  	domake bzip2 bzip2recover libbz2.a
+}
+
+pbs_install() {
+	dodoc LICENSE
+	install -dm755 "$destdir"/usr/{bin,lib"$LIBDIRSUFFIX",include,share/man/man1}
+	install -m755 bzip2-shared "$destdir"/usr/bin/bzip2
+  	install -m755 bzip2recover bzdiff bzgrep bzmore "$destdir"/usr/bin
+  	install -m755 libbz2.so.1.0.6 "$destdir"/usr/lib"$LIBDIRSUFFIX"
+	install -m644 libbz2.a "$destdir"/usr/lib"$LIBDIRSUFFIX"/libbz2.a
+	install -m644 bzlib.h "$destdir"/usr/include/
+  	doman bzip2.1
+	cd "$destdir"
+	for i in bunzip2 bzcat; do
+		doln bzip2 usr/bin/"$i"
+	done
+	doln bzgrep usr/bin/bzegrep
+	doln bzgrep usr/bin/bzfgrep
+	doln bzmore usr/bin/bzless
+	for i in libbz2.so libbz2.so.1 libbz2.so.1.0; do
+  		doln libbz2.so.1.0.6 usr/lib"$LIBDIRSUFFIX"/"$i"
+	done  	
+	for i in bunzip2.1 bzcat.1 bzip2recover.1; do
+  		doln bzip2.1 usr/share/man/man1/"$i"
+	done
+}
+

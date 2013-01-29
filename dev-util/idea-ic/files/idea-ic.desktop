@@ -1,0 +1,14 @@
+[Desktop Entry]
+Type=Application
+Version=1.0
+Name=ideaIC
+Name[zh_CN]=ideaIC
+GenericName=Integrated Development Environment For JAVA
+GenericName[zh_CN]=JAVA 集成开发环境
+Comment=Integrated Development Environment For JAVA
+Comment[zh_CN]=JAVA 集成开发环境
+Exec=idea-ic %F
+Icon=idea-ic
+Terminal=false
+Categories=Development;IDE;
+StartupNotify=true

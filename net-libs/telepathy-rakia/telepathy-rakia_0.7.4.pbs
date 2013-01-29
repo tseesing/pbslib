@@ -1,0 +1,45 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="SIP connection manager for Telepathy"
+HOMEPAGE="http://telepathy.freedesktop.org"
+LICENSE="LGPL"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
+
+SRC_URI="http://telepathy.freedesktop.org/releases/"$N"/"$N-$V".tar.gz"
+CHECKSUM="f9f47f18db033afe29fd6963c7748e37"
+
+RDEPEND="telepathy-glib sofia-sip"
+RECOMMENDED=""
+BDEPEND=""
+OPTIONAL=""
+CONFLICT=""
+REPLACE=""
+
+pbs_unpack() {
+    dounpack
+}
+
+pbs_patch() {
+    dopatch 0001-Check-for-gio-to-avoid-linking-issue.patch
+}
+
+pbs_config() {
+	config+=""
+    autoreconf -fi
+	doconfig
+}
+
+pbs_build() {
+	domake
+}
+
+pbs_install() {
+	domkinstall
+}
+
+

@@ -1,0 +1,52 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="GNU Image Manipulation Program"
+HOMEPAGE="http://www.gimp.org/"
+LICENSE="GPL LGPL"
+PACKAGER="StartOS Developers"
+
+SRC_URI="ftp://ftp.gimp.org/pub/"$N"/v2.6/"$N-$V$R".tar.bz2"
+CHECKSUM="9f876ee63a0c4a4c83f50f32fb3bbe63"
+
+RDEPEND="aalib alsa-lib atk babl cairo dbus dbus-glib enchant expat fontconfig freetype  gcc-libs gdk-pixbuf2 gegl glib2 glibc gnutls gst-plugins-base gstreamer gtk2 icu lcms libcroco libexif libgcrypt libgpg-error libICE libjpeg-turbo libmng libpng librsvg libSM libsoup libtasn1 libtiff libwmf libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libxml2 libXmu libXpm libXrandr libXrender libxslt libXt pango pixman poppler slang sqlite util-linux webkitgtk2 zlib"
+BDEPEND=""
+
+OPTIONAL="gutenprint: for sophisticated printing only as gimp has built-in cups print support
+          webkitgtk2: for the help browser
+	  poppler: for pdf support
+	  alsa-lib: for MIDI event controller module
+	  curl: for URI support"
+
+INSTALL="$N.install"
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_patch() {
+	dopatch uri-backend-libcurl.patch
+}
+
+pbs_config() {
+	config+=" --enable-mp 
+	          --enable-gimp-console 
+		  --enable-gimp-remote 
+		  --enable-python 
+		  --with-gif-compression=lzw 
+		  --with-libcurl
+		  --without-hal 
+		  --without-gnomevfs "
+	doconfig
+}
+
+pbs_install() {
+	domkinstall
+	cd "$destdir"
+	docp "$filesdir"/Linux.gpl usr/share/gimp/2.0/palettes/
+}
+

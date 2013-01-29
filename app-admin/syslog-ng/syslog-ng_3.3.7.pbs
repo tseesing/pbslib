@@ -1,0 +1,45 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="Syslog replacement with advanced filtering features"
+HOMEPAGE="http://www.balabit.com/products/syslog_ng/"
+LICENSE="GPLv2"
+PACKAGER="chenqixing@ivali.com
+          Zhongxin Huang <huangzhongxin@ivali.com>"
+
+SRC_URI="http://www.balabit.com/downloads/files/$N/sources/$V/source/${N}_$V.tar.gz"
+CHECKSUM="06f09057c3dfb84eba381e0141f92565673ec0c8"
+
+RDEPEND="eventlog glib2 libcap libdbi pcre openssl systemd"
+BDEPEND="flex pkgconfig"
+RECOMMENDED=""
+OPTIONAL="logrotate: for rotating log files"
+
+INSTALL=$N.install
+
+pbs_unpack() {
+    dounpack
+}
+
+pbs_config() {
+    config+=" --with-module-dir=/usr/lib$LIBDIRSUFFIX/syslog-ng
+              --enable-sytemd
+              --with-systemdsystemunitdir=/usr/lib/systemd/system
+              --with-pidfile-dir=/run
+              --disable-spoof-source"
+	doconfig
+}
+
+pbs_build() {
+	domake
+}
+
+pbs_install() {
+	domkinstall
+    docp_rename "$filesdir"/syslog-ng.logrotate "$destdir"/etc/logrotate.d/syslog-ng
+}
+

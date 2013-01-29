@@ -1,0 +1,37 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="the backend of the LXDE default file manager PCManFM."
+HOMEPAGE="http://pcmanfm.sourceforge.net/"
+GROUP="x11-lib"
+LICENSE="GPL"
+PACKAGER="StartOS Developers"
+
+SRC_URI="http://sourceforge.net/projects/pcmanfm/files/PCManFM%20%2B%20Libfm%20%28tarball%20release%29/libfm%20%28required%20by%20PCManFM%29/"$N-$V".tar.gz"
+
+RDEPEND="gtk2 menu-cache"
+RECOMMENDED=""
+BDEPEND=""
+CONFLICT=""
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_config() {
+	config+=""
+	doconfig
+}
+
+pbs_build() {
+	domake
+}
+
+pbs_install() {
+	domkinstall
+}
+

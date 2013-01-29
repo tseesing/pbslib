@@ -1,0 +1,45 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="A daemon for delivering ACPI power management events with netlink support"
+HOMEPAGE="http://tedfelix.com/linux/acpid-netlink.html"
+LICENSE="GPL"
+PACKAGER="StartOS Developers"
+
+SRC_URI="http://www.tedfelix.com/linux/"$N-$V".tar.xz"
+CHECKSUM="d59fc02c9c34f0d5c137495302e2c074"
+
+RDEPEND="glibc"
+RECOMMENDED=""
+BDEPEND=""
+OPTIONAL=""
+CONFLICT=""
+REPLACE=""
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_config() {
+	config+=""
+	doconfig
+}
+
+pbs_build() {
+	domake
+}
+
+pbs_install() {
+	domkinstall
+	cd "$destdir"
+	# Default config
+	install -Dm644 "$filesdir"/anything   etc/acpi/events/anything
+	install -Dm755 "$filesdir"/handler.sh etc/acpi/handler.sh
+	
+	dounit acpid.socket acpid.service
+	chmod 755  usr/sbin/acpid
+}

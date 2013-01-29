@@ -1,0 +1,43 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="An Open Source, high performance real-time graphics toolkit"
+HOMEPAGE="http://www.openscenegraph.org"
+LICENSE="custom,OSGPL"
+PACKAGER="StartOS Developers"
+
+SRC_URI="http://www.openscenegraph.org/downloads/stable_releases/OpenSceneGraph-"$V"/source/OpenSceneGraph-"$V".zip"
+CHECKSUM="c43a25d023e635c3566b2083d8e6d956"
+
+RDEPEND="ffmpeg giflib librsvg libvncserver openexr poppler-glib qt"
+BDEPEND="cmake"
+RECOMMENDED=""
+OPTIONAL=""
+CONFLICT=""
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_config() {
+        rm -rf cmake-build 2>/dev/null
+	mkdir cmake-build && cd cmake-build
+        CFLAGS="$CFLAGS -D__STDC_CONSTANT_MACROS"
+        CXXFLAGS="$CXXFLAGS -D__STDC_CONSTANT_MACROS"
+        cmake .. -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=Release
+}
+
+pbs_build() {
+	sed -i 's|#include <curl/types.h>|//#include <curl/types.h>|' src/osgPlugins/curl/ReaderWriterCURL.cpp
+	domake
+}
+
+pbs_install() {
+	domkinstall
+	dodoc ../LICENSE.txt 
+}
+

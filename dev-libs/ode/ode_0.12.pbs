@@ -1,0 +1,39 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="An open source, high performance library for simulating rigid body dynamics."
+HOMEPAGE="http://www.ode.org"
+LICENSE="LGPL/BSD"
+PACKAGER="StartOS Developers"
+
+SRC_URI="http://downloads.sourceforge.net/sourceforge/opende/"$N-$V".tar.bz2"
+CHECKSUM="83766cae59692c2843d9afccc1768988"
+
+RDEPEND="gcc-libs"
+RECOMMENDED=""
+BDEPEND=""
+OPTIONAL=""
+CONFLICT=""
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_config() {
+	config+="--enable-libccd"
+	doconfig
+}
+
+pbs_build() {
+	domake
+}
+
+pbs_install() {
+	domkinstall
+	dodoc ou/LICENSE-BSD.TXT
+}
+

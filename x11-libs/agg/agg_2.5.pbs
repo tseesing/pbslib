@@ -1,0 +1,46 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="Anti-Grain Geometry - A High Quality Rendering Engine for C++"
+HOMEPAGE="http://antigrain.com/"
+LICENSE="GPL"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
+
+SRC_URI="http://www.antigrain.com/"$N-$V".tar.gz"
+CHECKSUM="0229a488bc47be10a2fee6cf0b2febd6"
+
+RDEPEND="gcc-libs libsdl freetype"
+BDEPEND=""
+RECOMMENDED=""
+CONFLICT=""
+
+pbs_unpack() {
+    dounpack
+}
+
+pbs_patch() {
+    dopatch 02_maintainer_mode.patch 04_no_rpath.patch
+    sed -r -i -e 's:^(.*)  -L@.*:\1:' src/platform/X11/Makefile.am
+    # Fix building against automake-1.12
+    sed -i '/^AM_C_PROTOTYPES/d' configure.in                     
+    #
+    chmod +x autogen.sh
+}
+
+pbs_config() {
+    config+="--disable-examples --disable-dependency-tracking"
+    doconfig
+}
+
+pbs_build() {
+	domake
+}
+
+pbs_install() {
+	domkinstall
+}
+

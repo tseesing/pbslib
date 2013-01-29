@@ -1,0 +1,42 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="Context menu for sending files on MATE File Manager"
+HOMEPAGE="http://mate-desktop.org"
+LICENSE="GPL"
+PACKAGER="StartOS Developers"
+
+
+SRC_URI="http://pub.mate-desktop.org/releases/1.4/"$N-$V".tar.xz"
+CHECKSUM="73f61ee1178efb9be2bfbd04e05e5f13252ebba1"
+
+RDEPEND="gupnp mate-file-manager"
+RECOMMENDED=""
+BDEPEND=""
+OPTIONAL=""
+CONFLICT=""
+REPLACE=""
+
+INSTALL="$N.install"
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_config() {
+	config+=""
+	doconfig
+}
+
+pbs_build() {
+	domake
+}
+
+pbs_install() {
+	domkinstall MATECONF_DISABLE_MAKEFILE_SCHEMA_INSTALL=1 
+}
+

@@ -1,0 +1,39 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="KDE toys - merge this to pull in all kdetoys-derived packages"
+HOMEPAGE="http://kde.org/"
+LICENSE="GPL,LGPL,FDL"
+PACKAGER="StartOS Developers"
+
+SRC_URI="http://download.kde.org/stable/"$V"/src/"$N-$V".tar.xz"
+CHECKSUM="dd5f63f0e833135bac73a2e12692b1e6dd412f67"
+
+RDEPEND="acl attica attr bzip2 dbus expat flac fontconfig freetype gcc-libs glib2 glibc gst-plugins-base gstreamer herqq json-c kdelibs kde-workspace libcap libdbusmenu-qt libffi libICE libogg libpng libqzeitgeist libSM libsndfile libvorbis libX11 libXau libxcb libXcursor libXdmcp libXext libXfixes libXft libXi libxml2 libXpm libXrender libXtst openssl phonon pulseaudio qca qt soprano sqlite strigi systemd util-linux xz zlib"
+RECOMMENDED=""
+BDEPEND="cmake automoc4"
+OPTIONAL=""
+CONFLICT=""
+
+INSTALL="$N.install"
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_config() {
+	doconfig -DCMAKE_BUILD_TYPE=Release -DCMAKE_SKIP_RPATH=ON
+}
+
+pbs_build() {
+	domake
+}
+
+pbs_install() {
+	domkinstall
+}
+

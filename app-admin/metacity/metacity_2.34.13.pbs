@@ -1,0 +1,45 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="A window manager for GNOME"
+HOMEPAGE="http://www.gnome.org"
+LICENSE="GPL"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>
+          chenqixing@ivali.com"
+
+SRC_URI="http://ftp.gnome.org/pub/gnome/sources/"$N"/"${V%.*}"/"$N-$V".tar.xz"
+CHECKSUM="8cf4dbf0da0a6f36357ce7db7f829ec685908a7792453c662fb8184572b91075"
+
+RDEPEND="dconf gtk2 gsettings-desktop-schemas libcanberra libgtop startup-notification zenity"
+BDEPEND="intltool yelp-tools"
+RECOMMENDED=""
+OPIONAL=""
+
+INSTALL="$N.install"
+
+pbs_unpack() {
+    dounpack
+}
+
+pbs_patch() {
+    dopatch fix_compositing_startup.patch
+}
+
+pbs_config() {
+	config+="--disable-static 
+             --disable-schemas-compile"
+	doconfig
+}
+
+pbs_build() {
+	domake
+}
+
+pbs_install() {
+	domkinstall
+}
+

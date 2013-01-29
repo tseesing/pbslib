@@ -1,0 +1,14 @@
+[Desktop Entry]
+Name=Wine RegEdit
+Name[fi]=Wine RegEdit
+Name[ca]=Editor del registre del Wine
+Name[zh_CN]=注册表编辑器
+Comment=Wine Registry Editor
+Comment[fi]=Wine-rekisterieditori
+Comment[ca]=Editeu les entrades del registre del Wine
+Comment[zh_CN]=编辑 Wine 运行环境注册表
+Exec=regedit
+Terminal=false
+Type=Application
+Icon=wine.xpm
+Categories=Wine;

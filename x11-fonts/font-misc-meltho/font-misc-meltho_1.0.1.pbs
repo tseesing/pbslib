@@ -1,0 +1,36 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="X.Org Syriac fonts"
+HOMEPAGE="http://www.x.org/wiki/"
+GROUP="x11-fonts"
+SRC_URI="http://www.x.org/releases/X11R7.5/src/font/"$N-$V$R".tar.bz2"
+
+RDEPEND=""
+BDEPEND=" font-util mkfontdir mkfontscale"
+
+pbs_unpack() {	
+        dounpack
+}
+
+pbs_config() {
+	
+	config+="    \
+	                \
+		      --with-fontrootdir=/usr/share/fonts "
+	doconfig
+}
+
+pbs_build() {
+	domake
+}
+
+pbs_install() {
+	domkinstall
+	mkdir -p "$destdir"/usr/lib/X11
+	ln -s /usr/share/fonts "$destdir"/usr/lib/X11
+}

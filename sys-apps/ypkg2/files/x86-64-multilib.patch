@@ -1,0 +1,80 @@
+diff -ur ypkg2-20121109/Makefile ypkg2-20121109.new/Makefile
+--- ypkg2-20121109/Makefile	2012-12-06 10:58:12.547788464 +0800
++++ ypkg2-20121109.new/Makefile	2012-12-06 10:59:01.739786431 +0800
+@@ -13,7 +13,7 @@
+ O= -O2
+ DESTDIR=
+ BINDIR= $(DESTDIR)/usr/bin
+-LIBDIR= $(DESTDIR)/usr/lib
++LIBDIR= $(DESTDIR)/usr/lib64
+ INCDIR= $(DESTDIR)/usr/include
+ LANGDIR= $(DESTDIR)/usr/share/locale/zh_CN/LC_MESSAGES
+ DBDIR= $(DESTDIR)/var/ypkg/db
+diff -ur ypkg2-20121109/yget.c ypkg2-20121109.new/yget.c
+--- ypkg2-20121109/yget.c	2012-12-06 10:58:12.547788464 +0800
++++ ypkg2-20121109.new/yget.c	2012-12-06 10:59:37.579784951 +0800
+@@ -193,12 +193,12 @@
+     if( util_mkdir( "/tmp/ypkg2_backup" ) != 0 )
+         return -1;
+ 
+-    lstat( "/usr/lib/libypk.so", &sb );
++    lstat( "/usr/lib64/libypk.so", &sb );
+     if( sb.st_mode & S_IFLNK )
+     {
+         memset( lib_path, 0, 32 );
+-        strncpy( lib_path, "/usr/lib/", 9 );
+-        if( readlink( "/usr/lib/libypk.so", lib_path+9, 23 ) == -1 )
++        strncpy( lib_path, "/usr/lib64/", 9 );
++        if( readlink( "/usr/lib64/libypk.so", lib_path+9, 23 ) == -1 )
+             goto failed;
+ 
+         if( util_copy_file( lib_path, "/tmp/ypkg2_backup/libypk.so" ) != 0 )
+@@ -208,7 +208,7 @@
+     }
+     else
+     {
+-        if( util_copy_file( "/usr/lib/libypk.so", "/tmp/ypkg2_backup/libypk.so" ) != 0 )
++        if( util_copy_file( "/usr/lib64/libypk.so", "/tmp/ypkg2_backup/libypk.so" ) != 0 )
+             goto failed;
+         else
+             chmod( "/tmp/ypkg2_backup/libypk.so", 0755 );
+diff -ur ypkg2-20121109/ypkg.c ypkg2-20121109.new/ypkg.c
+--- ypkg2-20121109/ypkg.c	2012-12-06 10:58:12.547788464 +0800
++++ ypkg2-20121109.new/ypkg.c	2012-12-06 11:00:03.627783873 +0800
+@@ -126,12 +126,12 @@
+     if( util_mkdir( "/tmp/ypkg2_backup" ) != 0 )
+         return -1;
+ 
+-    lstat( "/usr/lib/libypk.so", &sb );
++    lstat( "/usr/lib64/libypk.so", &sb );
+     if( sb.st_mode & S_IFLNK )
+     {
+         memset( lib_path, 0, 32 );
+-        strncpy( lib_path, "/usr/lib/", 9 );
+-        if( readlink( "/usr/lib/libypk.so", lib_path+9, 23 ) == -1 )
++        strncpy( lib_path, "/usr/lib64/", 9 );
++        if( readlink( "/usr/lib64/libypk.so", lib_path+9, 23 ) == -1 )
+             goto failed;
+ 
+         if( util_copy_file( lib_path, "/tmp/ypkg2_backup/libypk.so" ) != 0 )
+@@ -141,7 +141,7 @@
+     }
+     else
+     {
+-        if( util_copy_file( "/usr/lib/libypk.so", "/tmp/ypkg2_backup/libypk.so" ) != 0 )
++        if( util_copy_file( "/usr/lib64/libypk.so", "/tmp/ypkg2_backup/libypk.so" ) != 0 )
+             goto failed;
+         else
+             chmod( "/tmp/ypkg2_backup/libypk.so", 0755 );
+diff -ur ypkg2-20121109/ypkg-upgrade.c ypkg2-20121109.new/ypkg-upgrade.c
+--- ypkg2-20121109/ypkg-upgrade.c	2012-12-06 10:58:12.547788464 +0800
++++ ypkg2-20121109.new/ypkg-upgrade.c	2012-12-06 11:00:17.227783312 +0800
+@@ -144,7 +144,7 @@
+ exception_handler:
+     if( ret == 5 )
+     {
+-        system( "cp libypk.so /usr/lib/libypk.so" );
++        system( "cp libypk.so /usr/lib64/libypk.so" );
+         system( "cp ypkg2 /usr/bin/ypkg2" );
+         system( "cp yget2 /usr/bin/yget2" );
+         system( "cp ypkg2-upgrade /usr/bin/ypkg2-upgrade" );

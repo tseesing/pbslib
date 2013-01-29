@@ -1,0 +1,54 @@
+Description: Fix location of external programs.
+
+Index: gdm-2.30.4/daemon/gdm-server.c
+===================================================================
+--- gdm-2.30.4.orig/daemon/gdm-server.c	2010-06-30 12:29:43.000000000 +0200
++++ gdm-2.30.4/daemon/gdm-server.c	2010-06-30 12:30:03.000000000 +0200
+@@ -131,7 +131,7 @@
+         g_return_val_if_fail (GDM_IS_SERVER (server), NULL);
+ 
+         error = NULL;
+-        command = g_strdup_printf (LIBEXECDIR "/ck-get-x11-display-device --display %s",
++        command = g_strdup_printf ("/usr/lib/ConsoleKit/ck-get-x11-display-device --display %s",
+                                    server->priv->display_name);
+ 
+         g_debug ("GdmServer: Running helper %s", command);
+Index: gdm-2.30.4/data/greeter-autostart/gnome-settings-daemon.desktop.in.in
+===================================================================
+--- gdm-2.30.4.orig/data/greeter-autostart/gnome-settings-daemon.desktop.in.in	2010-06-30 12:29:43.000000000 +0200
++++ gdm-2.30.4/data/greeter-autostart/gnome-settings-daemon.desktop.in.in	2010-06-30 12:30:03.000000000 +0200
+@@ -1,8 +1,8 @@
+ [Desktop Entry]
+ Type=Application
+ _Name=GNOME Settings Daemon
+-TryExec=@LIBEXECDIR@/gnome-settings-daemon
+-Exec=@LIBEXECDIR@/gnome-settings-daemon --gconf-prefix=/apps/gdm/simple-greeter/settings-manager-plugins
++TryExec=/usr/lib/gnome-settings-daemon/gnome-settings-daemon
++Exec=/usr/lib/gnome-settings-daemon/gnome-settings-daemon --gconf-prefix=/apps/gdm/simple-greeter/settings-manager-plugins
+ OnlyShowIn=GNOME;
+ X-GNOME-Autostart-Phase=Initialization
+ X-GNOME-Autostart-Notify=true
+Index: gdm-2.30.4/data/greeter-autostart/polkit-gnome-authentication-agent-1.desktop.in.in
+===================================================================
+--- gdm-2.30.4.orig/data/greeter-autostart/polkit-gnome-authentication-agent-1.desktop.in.in	2010-06-16 18:32:38.000000000 +0200
++++ gdm-2.30.4/data/greeter-autostart/polkit-gnome-authentication-agent-1.desktop.in.in	2010-06-30 12:30:03.000000000 +0200
+@@ -1,5 +1,5 @@
+ [Desktop Entry]
+ Type=Application
+ _Name=PolicyKit Authentication Agent
+-Exec=@LIBEXECDIR@/polkit-gnome-authentication-agent-1
++Exec=/usr/lib/policykit-1-gnome/polkit-gnome-authentication-agent-1
+ OnlyShowIn=GNOME;
+Index: gdm-2.30.4/gui/simple-chooser/gdm-chooser-session.c
+===================================================================
+--- gdm-2.30.4.orig/gui/simple-chooser/gdm-chooser-session.c	2010-06-30 12:29:43.000000000 +0200
++++ gdm-2.30.4/gui/simple-chooser/gdm-chooser-session.c	2010-06-30 12:30:03.000000000 +0200
+@@ -131,7 +131,7 @@
+         ret = FALSE;
+ 
+         error = NULL;
+-        g_spawn_command_line_async (LIBEXECDIR "/gnome-settings-daemon --gconf-prefix=/apps/gdm/simple-chooser/settings-manager-plugins", &error);
++        g_spawn_command_line_async ("/usr/lib/gnome-settings-daemon/gnome-settings-daemon --gconf-prefix=/apps/gdm/simple-chooser/settings-manager-plugins", &error);
+         if (error != NULL) {
+                 g_warning ("Error starting settings daemon: %s", error->message);
+                 g_error_free (error);

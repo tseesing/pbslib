@@ -1,0 +1,37 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="A Graphical Temperature Monitor"
+HOMEPAGE="http://wpitchoune.net/blog/?page_id=109"
+LICENSE="GPL"
+PACKAGER="StartOS Developers"
+
+SRC_URI="http://wpitchoune.net/psensor/files/"$N-$V"-src.tar.gz"
+
+RDEPEND="gconf libnotify lm_sensors"
+BDEPEND=" "
+RECOMMENDED=""
+CONFLICT=""
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_config() {
+	dopatch make_destdir.patch
+	config+=""
+	doconfig
+}
+
+pbs_build() {
+	domake
+}
+
+pbs_install() {
+	domkinstall
+}
+

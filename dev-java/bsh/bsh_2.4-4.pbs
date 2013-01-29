@@ -1,0 +1,29 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="BeanShell - A small embeddable Java source interpreter"
+HOMEPAGE="http://www.beanshell.org"
+LICENSE="GPL"
+PACKAGER="StartOS Developers"
+
+SRC_URI="http://www.beanshell.org/"$N"-2.0b4.jar"
+
+RDEPEND="jre"
+BDEPEND=""
+RECOMMENDED=""
+CONFLICT=""
+
+pbs_install() {
+	. /etc/profile.d/jdk.sh
+	. /etc/profile.d/jre.sh
+
+	docp "$YBS_SOURCE"/bsh-2.0b4.jar "$destdir"/"$JAVA_HOME"/
+
+	cd "$destdir"/"$JAVA_HOME"/
+	doln bsh-2.0b4.jar bsh.jar
+}
+

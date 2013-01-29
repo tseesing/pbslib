@@ -1,0 +1,24 @@
+. /usr/lib/ybs/funcs
+
+execfile="/usr/libexec/dbus-daemon-launch-helper"
+
+gname="dbus"
+
+post_install() {
+	dogroupadd -g 81 $gname
+    douseradd -c 'System message bus' -u 81 -g $gname -d '/' -s /bin/false $gname
+	passwd -l $gname
+	dbus-uuidgen --ensure
+	chown root:$gname $execfile
+	chmod 4755 $execfile ||true
+}       
+
+post_remove() {
+	douserdel $gname
+	dogroupdel $gname ||true
+}
+
+post_upgrade() {
+	post_install
+}
+

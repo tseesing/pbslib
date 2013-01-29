@@ -1,0 +1,59 @@
+#!/bin/bash
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+# dm-switch: DM (display manager) tools.
+
+DMCONFIG="/etc/dm-switch/dm-switch.conf"
+DEFAULT="/etc/dm-switch/default"
+if [ $(systemctl --version |head -n1 |awk '{print $2}') -ge 196 ]; then
+    UNITDIR="/usr/lib/systemd/system"
+else
+    UNITDIR="/lib/systemd/system"
+fi
+
+. $DMCONFIG
+
+files=""
+
+for dm in $DMS; do
+	[ -f "$UNITDIR"/"${dm}".service ] && files+=""${dm}".service "
+done
+
+case $1 in
+	list)
+		echo "* Display Managers: "
+		if [ "x$files" = "x" ]; then
+			echo "* No DM (display manager) found."
+			exit 1
+		fi
+
+		for i in $files; do
+			i=${i/.service/}
+			Description=$(grep -w Description "$UNITDIR"/${i}.service)
+			Description=${Description/Description=/}
+			status=$(systemctl is-enabled ${i}.service)
+			echo " ${i} --  $Description -- $status"
+		done	;;
+	
+	enable)
+		systemctl enable ${2/.service/}.service	
+		echo CURDM="${2/.service/}.service" >$DEFAULT
+		;;
+	disable)
+		systemctl disable ${2/.service/}.service ;;
+	enable-all)
+		systemctl enable $files ;;
+	disable-all)
+		systemctl disable $files ;;
+	*)
+		echo "Usage: dm-switch [options] DM"
+		echo " list        - list available display managers"
+		echo " enable      - enable specifical display managers"
+		echo " disable     - enable specifical display managers"
+		echo " enable-all  - enable all display managers, but the last one is default"
+		echo " disable-all - disable all display managers"
+
+esac
+

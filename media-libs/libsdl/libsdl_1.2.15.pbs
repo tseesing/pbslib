@@ -1,0 +1,49 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="A library for portable low-level access to a video framebuffer, audio output, mouse, and keyboard"
+HOMEPAGE="http://www.libsdl.org/"
+LICENSE="LGPL"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
+
+SRC_URI="http://www.libsdl.org/release/SDL-"$V".tar.gz"
+CHECKSUM="9d96df8417572a2afb781a7c4c811a85"
+
+RDEPEND="glibc libXext libXrender libX11"
+BDEPEND="alsa-lib mesa pulseaudio"
+RECOMMENDED=""
+OPTIONAL="alsa-lib: ALSA audio driver
+          pulseaudio: PulseAudio audio driver"
+
+pbs_unpack() {
+    dounpack
+}
+
+pbs_patch() {
+    dopatch sdl-1.2.14-fix-mouse-clicking.patch \
+            sdl-1.2.14-disable-mmx.patch \
+            fix_joystick_misc_axes.diff \
+            libsdl-1.2.15-resizing.patch
+}
+
+pbs_config() {
+	config+="--disable-nasm 
+             --enable-alsa 
+             --with-x 
+             --disable-rpath 
+             --disable-static"
+	doconfig
+}
+
+pbs_build() {
+	domake
+}
+
+pbs_install() {
+	domkinstall
+}
+

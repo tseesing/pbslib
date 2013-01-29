@@ -1,0 +1,42 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="PDF printer for cups"
+HOMEPAGE="http://www.cups-pdf.de/"
+LICENSE="GPL"
+PACKAGER="StartOS Developers"
+
+SRC_URI="http://www.physik.uni-wuerzburg.de/~vrbehr/"$N"/src/"${N}_$V".tar.gz"
+
+RDEPEND="glibc cups"
+BDEPEND=""
+RECOMMENDED=""
+CONFLICT=""
+
+INSTALL="$N.install"
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_build() {
+	cd src/
+	[ -z "$CC" ] && CC=gcc-libs
+	$CC $CFLAGS -Wall -o cups-pdf cups-pdf.c
+}
+
+pbs_install() {
+	install -D -m700  cups-pdf     "$destdir"/usr/lib/cups/backend/cups-pdf
+
+	# Install Postscript Color printer
+	cd ../extra
+	install -D -m644 CUPS-PDF.ppd  "$destdir"/usr/share/cups/model/CUPS-PDF.ppd
+	
+	# Install config file
+	install -D -m644 cups-pdf.conf "$destdir"/etc/cups/cups-pdf.conf
+}
+

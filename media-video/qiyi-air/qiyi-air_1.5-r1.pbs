@@ -1,0 +1,28 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="qiyi client (AIR)"
+HOMEPAGE="www.qiyi.com"
+LICENSE="custom"
+PACKAGER="StartOS Developers"
+
+SRC_URI="http://static.qiyi.com/ext/app/AirPlayer.air"
+CHECKSUM="d5b1a33361592fe96ea2a39661006b7b"
+
+RDEPEND="adobe-air-sdk"
+BDEPEND=""
+RECOMMENDED=""
+CONFLICT=""
+
+INSTALL="$N.install"
+
+pbs_install() {
+	docp_rename "$YBS_SOURCE"/AirPlayer.air "$destdir"/usr/lib/"$N"/qiyi.air
+	dodesktop   "$N.desktop"      "$N.png"
+	docp "$filesdir"/"$N" "$destdir"/usr/bin/
+}
+

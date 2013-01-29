@@ -1,0 +1,36 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="A Jabber/XMPP connection manager, this handles single and multi user chats and voice calls."
+HOMEPAGE="http://telepathy.freedesktop.org"
+LICENSE="LGPL2.1"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
+
+SRC_URI="http://telepathy.freedesktop.org/releases/"$N"/"$N-$V".tar.gz"
+CHECKSUM="42e01fdc4117255080883495411e7318"
+
+RDEPEND="libnice libsoup openssl telepathy-glib"
+BDEPEND="libxslt python"
+RECOMMENDED=""
+
+pbs_unpack() {
+    dounpack
+}
+
+pbs_config() {
+	config+="--with-tls=openssl"
+	doconfig
+}
+
+pbs_build() {
+	domake
+}
+
+pbs_install() {
+	domkinstall
+}
+

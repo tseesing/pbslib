@@ -1,0 +1,33 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="aliwangwang"
+HOMEPAGE="http://www.taobao.com/wangwang"
+LICENSE="custom"
+PACKAGER="StartOS Developers"
+
+#http://64.120.245.17/repo/bin/aliwangwang_1.00-00_amd64.deb
+SRC_URI="http://64.120.245.17/repo/bin/aliwangwang_1.00-00_i386.deb"
+CHECKSUM="8da2c5d2cfa9e37a0d681a93f9bab53b"
+
+RDEPEND="qt(>=4.7.0)"
+RECOMMENDED=""
+BDEPEND=""
+OPTIONAL=""
+CONFLICT=""
+
+INSTALL="$N.install"
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_install() {
+	docp data/*  "$destdir"
+	doln /usr/bin/AliWangWang "$destdir"/usr/bin/"$N"
+}
+

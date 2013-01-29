@@ -1,0 +1,37 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="Strigi analyzers for various graphics file formats"
+HOMEPAGE="http://kde.org/"
+LICENSE="GPL,LGPL,FDL"
+PACKAGER="StartOS Developers"
+
+SRC_URI="http://download.kde.org/stable/"$V"/src/"$N-$V".tar.xz"
+CHECKSUM="208dd945c1ecfaee97457585dc7a52916dd2318f"
+
+RDEPEND="bzip2 gcc-libs glibc libjpeg-turbo libtiff libxml2 strigi zlib"
+RECOMMENDED=""
+BDEPEND="cmake automoc4"
+OPTIONAL=""
+CONFLICT=""
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_config() {
+	doconfig -DCMAKE_BUILD_TYPE=Release
+}
+
+pbs_build() {
+	domake
+}
+
+pbs_install() {
+	domkinstall
+}
+

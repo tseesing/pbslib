@@ -1,0 +1,79 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="an open source implementation of the Lightweight Directory Access Protocol."
+HOMEPAGE="http://www.OpenLDAP.org/"
+LICENSE="custom"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
+
+SRC_URI="ftp://ftp.openldap.org/pub/OpenLDAP/"$N"-release/"$N-$V".tgz"
+CHECKSUM="0cea642ba2dae1eb719da41bfedb9eba72ad504d"
+
+RDEPEND="cyrus-sasl icu libtool util-linux"
+BDEPEND=""
+RECOMMENDED=""
+CONFLICT=""
+
+INSTALL="$N.install"
+
+pbs_unpack() {
+    dounpack
+}
+
+pbs_patch() {
+	dopatch ntlm.patch
+	sed -i 's|-m 644 $(LIBRARY)|-m 755 $(LIBRARY)|' libraries/{liblber,libldap,libldap_r}/Makefile.in
+	sed -i 's|#define LDAPI_SOCK LDAP_RUNDIR LDAP_DIRSEP "run" LDAP_DIRSEP "ldapi"|#define LDAPI_SOCK LDAP_DIRSEP "run" LDAP_DIRSEP "openldap" LDAP_DIRSEP "ldapi"|' include/ldap_defaults.h
+	sed -i 's|%LOCALSTATEDIR%/run|/run/openldap|' servers/slapd/slapd.conf
+	sed -i 's|-$(MKDIR) $(DESTDIR)$(localstatedir)/run|-$(MKDIR) $(DESTDIR)/run/openldap|' servers/slapd/Makefile.in
+}
+
+pbs_config() {
+	config+="--localstatedir=/var/lib/openldap 
+             --enable-ipv6 
+             --enable-syslog 
+             --enable-local 
+             --enable-bdb 
+             --enable-hdb 
+             --enable-crypt 
+             --enable-dynamic 
+             --with-threads 
+             --disable-wrappers 
+             --without-fetch 
+             --enable-spasswd 
+             --with-cyrus-sasl 
+             --enable-overlays=mod 
+             --enable-modules=yes" 
+	doconfig
+}
+
+pbs_build() {
+	domake
+}
+
+pbs_install() {
+	domkinstall
+	dodoc LICENSE
+	cd "$destdir"
+    # systemd stuff    
+	dounit slapd.service
+	docp "$filesdir"/slapd.conf usr/lib/tmpfiles.d/
+    # get rid of duplicate default conf files
+    rm etc/openldap/*.default
+    # required dirs    
+    chown root:439 etc/openldap/{slapd.conf,DB_CONFIG.example}
+    chmod 640 etc/openldap/{slapd.conf,DB_CONFIG.example}
+    install -dm700 -o 439 -g 439 var/lib/openldap
+    install -dm700 -o 439 -g 439 etc/openldap/slapd.d
+    # cleanup
+	rm -rf run
+    # 
+    cd usr/lib"$LIBDIRSUFFIX"/
+    doln liblber.so liblber.so.2
+    doln libldap.so libldap.so.2
+}
+

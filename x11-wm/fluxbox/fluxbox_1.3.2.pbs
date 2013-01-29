@@ -1,0 +1,42 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="Fluxbox is a windowmanager for X that was based on the Blackbox 0.61.1 code."
+HOMEPAGE="http://www.fluxbox.org/"
+LICENSE="MIT"
+PACKAGER="StartOS Developers"
+
+SRC_URI="http://downloads.sourceforge.net/sourceforge/"$N"/"$N-$V".tar.gz"
+CHECKSUM="15ba1b9eaaf170d87fa647b7118a63c05f093b5c"
+
+RDEPEND="fribidi gcc-libs imlib2 libXft libXinerama libXpm libXrandr"
+BDEPEND=""
+RECOMMENDED=""
+CONFLICT=""
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_config() {
+	config+=" --enable-xft 
+	          --enable-xinerama 
+		  --enable-imlib2 
+		  --enable-nls "
+	doconfig
+}
+
+pbs_build() {
+	domake
+}
+
+pbs_install() {
+	domkinstall
+	dodoc COPYING
+	docp "$filesdir"/fluxbox.desktop "$destdir"/usr/share/xsessions/
+}
+

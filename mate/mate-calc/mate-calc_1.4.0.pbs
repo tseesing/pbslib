@@ -1,0 +1,40 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="Calculator for the Mate desktop environment"
+HOMEPAGE="http://mate-desktop.org"
+LICENSE="GPL,LGPL"
+PACKAGER="StartOS Developers"
+
+
+SRC_URI="http://pub.mate-desktop.org/releases/1.4/"$N-$V".tar.xz"
+CHECKSUM="186e578e449925c83993afaadabfb08533e6c614bf4925d185980627996227b6"
+
+RDEPEND=""
+RECOMMENDED=""
+BDEPEND="pkgconfig"
+OPTIONAL=""
+CONFLICT=""
+REPLACE=""
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_config() {
+	config+=""
+	doconfig
+}
+
+pbs_build() {
+	domake
+}
+
+pbs_install() {
+	domkinstall
+}
+

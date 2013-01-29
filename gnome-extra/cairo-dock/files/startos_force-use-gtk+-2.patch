@@ -1,0 +1,15 @@
+diff -ur cairo-dock-3.0.0.0-rc1/CMakeLists.txt cairo-dock-3.0.0.0-rc1.new//CMakeLists.txt
+--- cairo-dock-3.0.0.0-rc1/CMakeLists.txt	2012-03-21 19:14:59.000000000 +0800
++++ cairo-dock-3.0.0.0-rc1.new//CMakeLists.txt	2012-03-31 09:33:15.611904291 +0800
+@@ -79,11 +79,6 @@
+ 	set (xextend_required)
+ endif()
+ 
+-if (NOT "${force-gtk2}" STREQUAL "yes")  # by default, we use GTK+3 except if we force the use of GTK+2
+-	set (gtk_required "gtk+-3.0")  # for the .pc
+-	pkg_check_modules ("GTK" "${gtk_required}")  # the check is not set as 'required' because we can use GTK+2 if GTK+3 isn't available
+-endif()
+-
+ if (NOT "${GTK_FOUND}")
+ 	set (gtk_required "gtk+-2.0")  # for the .pc
+ 	pkg_check_modules ("GTK" REQUIRED "${gtk_required}")  # the check is requiered this time because we need GTK anyway.

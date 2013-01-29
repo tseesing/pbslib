@@ -1,0 +1,32 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="Adobe Flash Player"
+HOMEPAGE="http://www.adobe.com/"
+LICENSE="custom"
+PACKAGER="StartOS Developers"
+
+SRC_URI="http://download.macromedia.com/pub/flashplayer/updaters/10/flashplayer_10_sa.tar.gz"
+CHECKSUM="ffcf837a281fd5aa722c5d39d0ae5c37"
+
+RDEPEND="gtk2 libXt nss"
+BDEPEND=""
+RECOMMENDED=""
+
+OPTIONS="nostrip"
+
+INSTALL="$N.install"
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_install() {
+	docp_rename adobe-flashplayer-"$V$R" "$destdir"/usr/bin/flashplayer
+	dodesktop adobe-flashplayer.desktop adobe-flashplayer.png
+}
+

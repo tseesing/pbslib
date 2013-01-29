@@ -1,0 +1,42 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="Tools to make diffs and compare files"
+HOMEPAGE="http://www.gnu.org/software/diffutils/diffutils.html"
+LICENSE="GPL3"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
+
+SRC_URI="ftp://ftp.gnu.org/gnu/"$N"/"$N-$V".tar.xz"
+CHECKSUM="26ff64c332429c830c154be46b393382"
+
+RDEPEND="glibc"
+BDEPEND=""
+
+INSTALL="$N.install"
+
+pbs_unpack() {
+dounpack
+}
+
+pbs_patch() {
+	# Fix glibc-2.16 build issue
+	sed -i -e '/gets is a/d' lib/stdio.in.h
+}
+
+pbs_config() {
+	config+=""
+	doconfig
+}
+
+pbs_build() {
+	domake
+}
+
+pbs_install() {
+	domkinstall
+}
+

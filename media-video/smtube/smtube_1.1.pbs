@@ -1,0 +1,44 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="Allows to play and download videos from YouTube."
+HOMEPAGE="http://smplayer.berlios.de/"
+LICENSE="GPL"
+PACKAGER="StartOS Developers"
+
+SRC_URI="http://prdownload.berlios.de/smplayer/"$N-$V".tar.bz2"
+CHECKSUM="e5018fcd9ebdc08658136476ba4843d2"
+
+RDEPEND="qt"
+RECOMMENDED=""
+BDEPEND=""
+OPTIONAL=""
+CONFLICT=""
+
+INSTALL="$N.install"
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_patch() {
+	dopatch startos_makefile.patch
+}
+
+pbs_config() {
+	config+=""
+	doconfig
+}
+
+pbs_build() {
+	domake
+}
+
+pbs_install() {
+	domkinstall
+}
+

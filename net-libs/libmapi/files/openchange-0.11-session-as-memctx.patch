@@ -1,0 +1,24 @@
+diff -up ./libmapi/cdo_mapi.c.mem_ctx ./libmapi/cdo_mapi.c
+--- ./libmapi/cdo_mapi.c.mem_ctx	2011-08-05 18:26:05.070128887 +0200
++++ ./libmapi/cdo_mapi.c	2011-08-05 18:26:25.964381868 +0200
+@@ -131,7 +131,7 @@ _PUBLIC_ enum MAPISTATUS MapiLogonProvid
+ 	
+ 	/* If the session doesn't exist, create a new one */
+ 	if (!*session) {
+-		el = talloc_zero((TALLOC_CTX *)mapi_ctx->session, struct mapi_session);
++		el = talloc_zero(mapi_ctx->mem_ctx, struct mapi_session);
+ 		memset(el->logon_ids, 0, 255);
+ 		el->mapi_ctx = mapi_ctx;
+ 		OPENCHANGE_RETVAL_IF(!el, MAPI_E_NOT_ENOUGH_RESOURCES, NULL);
+diff -up ./libmapi/IProfAdmin.c.mem_ctx ./libmapi/IProfAdmin.c
+--- ./libmapi/IProfAdmin.c.mem_ctx	2011-08-05 18:26:22.452339353 +0200
++++ ./libmapi/IProfAdmin.c	2011-08-05 18:26:28.813416329 +0200
+@@ -748,7 +748,7 @@ _PUBLIC_ enum MAPISTATUS LoadProfile(str
+ 	OPENCHANGE_RETVAL_IF(!mapi_ctx->session, MAPI_E_NOT_INITIALIZED, NULL);
+ 	OPENCHANGE_RETVAL_IF(!profile, MAPI_E_INVALID_PARAMETER, NULL);
+ 
+-	mem_ctx = (TALLOC_CTX *) mapi_ctx->session;
++	mem_ctx = mapi_ctx->mem_ctx;
+ 
+ 	profile->credentials = cli_credentials_init(mem_ctx);
+ 	OPENCHANGE_RETVAL_IF(!profile->credentials, MAPI_E_NOT_ENOUGH_RESOURCES, NULL);

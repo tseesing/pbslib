@@ -1,0 +1,40 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="Contacts Manager for GNOME"
+HOMEPAGE="http://www.gnome.org"
+LICENSE="GPLv2"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
+
+SRC_URI="http://ftp.gnome.org/pub/gnome/core/3.6/3.6.2/sources/"$N-$V".tar.xz"
+CHECKSUM="7d1b6a8e395b15bf150062f332348549cf9deb38dfa3aad9994f70e71d8449fa"
+
+RDEPEND="gtk3 folks libnotify gnome-desktop dconf gnome-online-accounts libgee telepathy-glib"
+RECOMMENDED=""
+BDEPEND="intltool vala"
+OPTIONAL=""
+CONFLICT=""
+REPLACE=""
+
+pbs_unpack() {
+    dounpack
+}
+
+pbs_config() {
+	config+=""
+	doconfig
+}
+
+pbs_build() {
+	domake
+}
+
+pbs_install() {
+	domkinstall
+}
+
+

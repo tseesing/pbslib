@@ -1,0 +1,37 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="GLib bindings for the Telepathy D-Bus protocol."
+HOMEPAGE="http://telepathy.freedesktop.org"
+LICENSE="LGPL2.1"
+PACKAGER="chenqixing@ivali.com
+          Zhongxin Huang <huangzhongxin@ivali.com>"
+
+SRC_URI="http://telepathy.freedesktop.org/releases/"$N"/"$N-$V".tar.gz"
+CHECKSUM="780034ff7433f33e6577b02fd7a2cb0a"
+
+RDEPEND="dbus-glib"
+BDEPEND="gobject-introspection"
+RECOMMENDED=""
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_config() {
+	config+="--disable-vala-bindings -enable-static=no"
+	doconfig
+}
+
+pbs_build() {
+	domake
+}
+
+pbs_install() {
+	domkinstall
+}
+

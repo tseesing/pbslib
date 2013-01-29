@@ -1,0 +1,42 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="real player"
+HOMEPAGE="http://real.com/"
+REPO=""
+LICENSE=""
+PACKAGER="StartOS Developers"
+
+SRC_URI="http://forms.real.com/real/player/download.html?f=unix/RealPlayer"$V$R"GOLD.deb"
+
+RDEPEND="alsa-lib atk cairo expat fontconfig freetype gcc-libs glib2 gdk-pixbuf2 glibc gtk2 libpng libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXft libXi libXrandr libXrender libXv pango pixman zlib"
+BDEPEND=" "
+RECOMMENDED=""
+
+INSTALL="$N.install"
+
+pbs_unpack() {
+	dounpack
+}
+
+pbs_install() {
+	docp data/*  "$destdir"
+	cd "$destdir"
+	#xdg-desktop-menu install --novendor $filesdir/realplay.desktop
+	dodesktop $filesdir/realplay.desktop opt/real/RealPlayer/share/realplay.png
+	#
+	docp_rename opt/real/RealPlayer/share/locale/zh_CN/player.mo usr/share/locale/zh_CN/LC_MESSAGES/realplay.mo
+	docp_rename opt/real/RealPlayer/share/locale/zh_CN/widget.mo usr/share/locale/zh_CN/LC_MESSAGES/libgtk2hx.mo
+	docp_rename opt/real/RealPlayer/share/locale/zh_TW/player.mo usr/share/locale/zh_TW/LC_MESSAGES/realplay.mo
+	docp_rename opt/real/RealPlayer/share/locale/zh_TW/widget.mo usr/share/locale/zh_TW/LC_MESSAGES/libgtk2hx.mo
+	#
+	doln /opt/real/RealPlayer/share    usr/share/realplay
+	doln /opt/real/RealPlayer/realplay usr/bin/realplay
+	#
+	doln /opt/real/RealPlayer/mozilla/nphelix.so  usr/lib/mozilla/plugins/nphelix.so
+	doln /opt/real/RealPlayer/mozilla/nphelix.xpt usr/lib/mozilla/plugins/nphelix.xpt
+}

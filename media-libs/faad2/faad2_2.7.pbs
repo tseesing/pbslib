@@ -1,0 +1,37 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="AAC audio decoding library"
+HOMEPAGE="http://www.audiocoding.com/faad2.html"
+LICENSE="GPL,custom"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
+
+SRC_URI="http://downloads.sourceforge.net/sourceforge/faac/"$N-$V".tar.bz2"
+
+RDEPEND="glibc"
+BDEPEND=""
+RECOMMENDED=""
+
+pbs_unpack() {
+    dounpack
+}
+
+pbs_config() {
+	config+=""
+	doconfig
+}
+
+pbs_build() {
+	domake CFLAGS=\"${CFLAGS} -fPIC\"
+}
+
+pbs_install() {
+	domkinstall
+    docp common/mp4ff/mp4ff_int_types.h "$destdir"/usr/include/
+}
+
+

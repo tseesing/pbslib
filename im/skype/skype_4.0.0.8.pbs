@@ -1,0 +1,41 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="A net IM with voice, not free-ware"
+HOMEPAGE="http://www.skype.com/"
+LICENSE="custom"
+PACKAGER="StartOS Developers"
+
+SRC_URI="http://download.skype.com/linux/"$N-$V".tar.bz2"
+
+RDEPEND="libXScrnSaver libXv qt"
+BDEPEND=""
+
+OPTIONS="nostrip"
+
+INSTALL="$N.install"
+
+pbs_unpack() {
+	dounpack
+}
+
+pbs_install() {
+	docp "$filesdir"/skype         "$destdir"/usr/bin/
+	docp skype avatars lang sounds "$destdir"/usr/share/skype/
+
+	# DBus Service
+	install -Dm 644 skype.conf "$destdir"/etc/dbus-1/system.d/skype.conf
+
+	# Icons
+	for _i in 16 32 48; do
+		install -Dm 644 icons/SkypeBlue_${_i}x${_i}.png "$destdir"/usr/share/icons/hicolor/${_i}x${_i}/skype.png
+	done
+	
+	dodesktop skype.desktop icons/SkypeBlue_48x48.png
+	dodoc LICENSE
+}
+

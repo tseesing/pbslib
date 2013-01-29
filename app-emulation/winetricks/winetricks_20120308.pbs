@@ -1,0 +1,27 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="Script to install various redistributable runtime libraries in Wine."
+HOMEPAGE="http://winetricks.org/winetricks"
+LICENSE="LGPL"
+PACKAGER="StartOS Developers"
+
+SRC_URI=""
+
+RDEPEND="zenity wine unzip cabextract"
+RECOMMENDED=""
+BDEPEND=""
+OPTIONAL=""
+CONFLICT=""
+
+pbs_install() {
+	wget http://winetricks.org/winetricks ||return 1
+	chmod +x winetricks
+	docp winetricks "$destdir"/usr/bin/
+	dodesktop "$N.desktop" "$N.svg"
+}
+

@@ -1,0 +1,42 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="Set of tools for processing plaintext docs into formats such as HTML, XML, or LaTeX"
+HOMEPAGE="http://docutils.sourceforge.net"
+LICENSE="custom"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
+YARCH="any"
+
+SRC_URI="http://downloads.sourceforge.net/$N/$N-$V.tar.gz"
+CHECKSUM="d8d4660c08302c791b2d71a155a2f4bc"
+
+RDEPEND="python"
+BDEPEND=""
+RECOMMENDED=""
+CONFLICT=""
+
+pbs_unpack() {
+    dounpack
+}
+
+pbs_config() {
+	doconfig
+}
+
+pbs_build() {
+	domake
+}
+
+pbs_install() {
+	domkinstall --optimize=1
+    dodoc COPYING.txt
+    cd "$destdir"/usr/bin/
+    for i in $(ls *.py); do
+        doln ${i} ${i%.py}
+    done
+}
+

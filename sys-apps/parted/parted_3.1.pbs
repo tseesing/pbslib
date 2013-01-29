@@ -1,0 +1,38 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="Create, destroy, resize, check, copy partitions and file systems"
+HOMEPAGE="http://www.gnu.org/software/parted"
+LICENSE="GPLv3"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
+
+SRC_URI="http://ftp.gnu.org/gnu/"$N"/"$N-$V".tar.xz"
+CHECKSUM="5d89d64d94bcfefa9ce8f59f4b81bdcb"
+
+RDEPEND="device-mapper readline util-linux"
+BDEPEND="pkgconfig"
+RECOMMENDED=""
+
+INSTALL="$N.install"
+
+pbs_unpack() {
+    dounpack
+}
+
+pbs_config() {
+	config+="--disable-debug --disable-rpath"
+	doconfig
+}
+
+pbs_build() {
+	domake
+}
+
+pbs_install() {
+	domkinstall
+}
+

@@ -1,0 +1,53 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="Gnome Settings Daemon"
+HOMEPAGE="http://www.gnome.org"
+LICENSE="GPL"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
+
+SRC_URI="http://ftp.gnome.org/pub/gnome/core/3.6/3.6.2/sources/"$N-$V".tar.xz"
+CHECKSUM="606aaaba9cc7f51035702aead46c8bb595917a09cb947b396a579ea443328cdc"
+
+RDEPEND="dconf gnome-desktop gsettings-desktop-schemas libcanberra libnotify systemd libwacom nss pulseaudio upower libibus"
+BDEPEND="intltool docbook-xsl xf86-input-wacom"
+RECOMMENDED=""
+
+INSTALL="$N.install"
+
+pbs_unpack() {
+    dounpack
+}
+
+pbs_patch() {
+    dopatch 0001-power-and-media-keys-Use-logind-for-suspending-and-r.patch
+}
+
+pbs_config() {
+	config+="--disable-static 
+             --enable-systemd 
+             --enable-ibus"
+             #--disable-ibus"
+    aclocal
+    automake
+	doconfig
+}
+
+pbs_build() {
+    #https://bugzilla.gnome.org/show_bug.cgi?id=656231
+    sed -i -e 's/ -shared / -Wl,-O1,--as-needed\0/g' libtool
+	domake
+}
+
+pbs_install() {
+	domkinstall
+    # Plugins that aren't installed still have schema references
+    # and cause gsettings errors - remove the references we're not using
+    sed -i '/org\.gnome\.settings-daemon\.plugins\.updates/d' \
+           "$destdir"/usr/share/glib-2.0/schemas/org.gnome.settings-daemon.plugins.gschema.xml
+}
+

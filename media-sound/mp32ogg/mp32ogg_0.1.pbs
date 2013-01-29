@@ -1,0 +1,21 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="mp32ogg script"
+HOMEPAGE="http://www.startos.org"
+LICENSE="GPL"
+
+PACKAGER="StartOS Developers"
+
+RDEPEND="mpg321 vorbis-tools"
+BDEPEND=""
+RECOMMENDED=""
+
+pbs_install() {
+	docp "$filesdir"/mp32ogg "$destdir"/usr/bin
+}
+

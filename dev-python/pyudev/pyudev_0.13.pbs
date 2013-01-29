@@ -1,0 +1,40 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="Python binding to libsystemd"
+HOMEPAGE="http://pypi.python.or"
+LICENSE="GPLv2.1"
+PACKAGER="StartOS Developers"
+
+SRC_URI="http://pypi.python.org/packages/source/p/"$N"/"$N-$V".tar.gz"
+CHECKSUM="75f3b653aa2b9ea2a42b728c51fb0804"
+
+RDEPEND="python systemd"
+RECOMMENDED=""
+BDEPEND=""
+OPTIONAL=""
+CONFLICT=""
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_config() {
+	config+=""
+	doconfig
+}
+
+pbs_build() {
+	domake
+}
+
+pbs_install() {
+	domkinstall
+}
+
+
+

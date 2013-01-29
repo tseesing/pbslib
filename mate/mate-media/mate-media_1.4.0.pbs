@@ -1,0 +1,44 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="MATE Media Tools"
+HOMEPAGE="http://mate-desktop.org"
+LICENSE="GPL"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
+
+SRC_URI="http://pub.mate-desktop.org/releases/1.4/$N-$V.tar.xz"
+CHECKSUM="1cdf0d44a775839a75439c5cac6e0b1f6aba222580748aefe1ee0fa8daa0df60"
+
+RDEPEND="mate-panel libmatenotify pulseaudio"
+BDEPEND="mate-doc-utils pkgconfig mate-settings-daemon intltool mate-icon-theme"
+
+INSTALL="$N.install"
+
+pbs_unpack() {
+    dounpack
+}
+
+pbs_config() {
+    config+="--disable-static 
+             --disable-schemas-install 
+             --disable-scrollkeeper 
+             --enable-pulseaudio 
+             --enable-profiles 
+             --enable-grecord 
+             --enable-gstprops 
+             --enable-gstmix"
+    doconfig   
+}
+
+pbs_build() {
+    domake
+}    
+
+pbs_install() {
+	domkinstall MATECONF_DISABLE_MAKEFILE_SCHEMA_INSTALL=1
+}
+

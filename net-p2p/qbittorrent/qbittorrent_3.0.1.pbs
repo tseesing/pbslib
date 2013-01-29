@@ -1,0 +1,61 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="The qBittorrent project aims to provide a Free Software alternative to µtorrent. "
+HOMEPAGE="http://qbittorrent.sourceforge.net/index.php"
+LICENSE="GPL"
+PACKAGER="StartOS Developers"
+
+SRC_URI="http://downloads.sourceforge.net/"$N"/"$N-$V".tar.xz"
+
+RDEPEND="libtorrent-rasterbar qt"
+BDEPEND=""
+RECOMMENDED=""
+CONFLICT=""
+
+INSTALL="$N.install"
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_patch() {
+	dopatch desktop.patch
+}
+
+pbs_config() {
+	config="--prefix=/usr"
+	doconfig
+}
+
+pbs_build() {
+	domake
+}
+
+pbs_install() {
+	#
+	docp  src/menuicons/16x16/apps/qbittorrent.png   "$destdir"/usr/share/icons/hicolor/16x16/apps/
+	docp  src/menuicons/22x22/apps/qbittorrent.png   "$destdir"/usr/share/icons/hicolor/22x22/apps/
+	docp  src/menuicons/24x24/apps/qbittorrent.png   "$destdir"/usr/share/icons/hicolor/24x24/apps/
+	docp  src/menuicons/32x32/apps/qbittorrent.png   "$destdir"/usr/share/icons/hicolor/32x32/apps/
+	docp  src/menuicons/36x36/apps/qbittorrent.png   "$destdir"/usr/share/icons/hicolor/36x36/apps/
+	docp  src/menuicons/48x48/apps/qbittorrent.png   "$destdir"/usr/share/icons/hicolor/48x48/apps/
+	docp  src/menuicons/64x64/apps/qbittorrent.png   "$destdir"/usr/share/icons/hicolor/64x64/apps/
+	docp  src/menuicons/72x72/apps/qbittorrent.png   "$destdir"/usr/share/icons/hicolor/72x72/apps/
+	docp  src/menuicons/96x96/apps/qbittorrent.png   "$destdir"/usr/share/icons/hicolor/96x96/apps/
+	docp  src/menuicons/128x128/apps/qbittorrent.png "$destdir"/usr/share/icons/hicolor/128x128/apps/
+	docp  src/menuicons/192x192/apps/qbittorrent.png "$destdir"/usr/share/icons/hicolor/192x192/apps/
+	docp  src/menuicons/48x48/apps/qbittorrent.png   "$destdir"/usr/share/pixmaps/
+	#
+	doman doc/qbittorrent.1
+	#
+	docp  src/qbittorrent        	              "$destdir"/usr/bin/
+	#
+	docp_rename  src/Icons/qBittorrent.desktop       "$destdir"/usr/share/applications/"$N".desktop
+	chmod 755 "$destdir"/usr/bin/qbittorrent
+}
+

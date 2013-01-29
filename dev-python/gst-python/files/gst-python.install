@@ -1,0 +1,14 @@
+. /usr/lib/ybs/funcs
+
+post_install() {
+	 dolibtool_finish /usr/lib/python2.7/site-packages /usr/lib/gstreamer-0.10
+}
+
+post_upgrade() {
+	post_install
+}
+
+post_downgrade() {
+	post_install
+}
+

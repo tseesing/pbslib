@@ -1,0 +1,28 @@
+#!/bin/bash
+
+# make 
+# modinfo os/linux/rt2860sta.ko
+#
+
+alias="
+pci:v00001814d00000601sv*sd*bc*sc*i*
+pci:v00001814d00000681sv*sd*bc*sc*i*
+pci:v00001814d00000701sv*sd*bc*sc*i*
+pci:v00001814d00000781sv*sd*bc*sc*i*
+pci:v00001A3Bd00001059sv*sd*bc*sc*i*
+pci:v00001432d00007708sv*sd*bc*sc*i*
+pci:v00001432d00007728sv*sd*bc*sc*i*
+pci:v00001432d00007758sv*sd*bc*sc*i*
+pci:v00001432d00007727sv*sd*bc*sc*i*
+pci:v00001432d00007738sv*sd*bc*sc*i*
+pci:v00001432d00007748sv*sd*bc*sc*i*
+pci:v00001432d00007768sv*sd*bc*sc*i*
+"
+
+echo "package rt2860sta-driver"
+echo "module rt2860sta.ko"
+echo "description Ralink PCI ABGN WLAN Card: RT2860PCI/mPCI/CB/PCIe(RT2760/RT2790/RT2860/RT2890)"
+
+for i in $alias; do
+	echo "alias $i"
+done

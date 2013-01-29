@@ -1,0 +1,41 @@
+# # StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="GNOME Bluetooth Subsystem"
+HOMEPAGE="http://live.gnome.org/GnomeBluetooth"
+LICENSE="GPL,LGPL"
+PACKAGER="chenqixing@ivali.com
+          Zhongxin Huang <huangzhongxin@ivali.com>"
+
+SRC_URI="http://ftp.acc.umu.se/pub/gnome/sources/$N/${V%.*}/$N-$V.tar.xz"
+CHECKSUM="71d72a4637916450987f69c71d374c5bc1102be6dd9d9d7f923aa924659f768a"
+
+RDEPEND="gtk3 gvfs dconf libnotify obexd"
+BDEPEND="gobject-introspection itstool docbook-xsl"
+RECOMMENDED=""
+
+INSTALL="$N.install"
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_config() {
+	config+="--disable-desktop-update 
+             --disable-icon-update 
+             --disable-schemas-compile"
+	doconfig
+}
+
+pbs_build() {
+	domake
+}
+
+pbs_install() {
+	domkinstall
+    docp "$filesdir"/61-gnome-bluetooth-rfkill.rules "$destdir"/usr/lib/systemd/rules.d/
+}
+

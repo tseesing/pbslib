@@ -1,0 +1,49 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="Framework for defining and tracking users, login sessions and seats."
+HOMEPAGE="http://www.freedesktop.org/wiki/Software/ConsoleKit"
+LICENSE="GPL"
+PACKAGER="StartOS Developers"
+ 
+SRC_URI="http://www.freedesktop.org/software/ConsoleKit/dist/ConsoleKit-"$V".tar.bz2"
+
+RDEPEND="eggdbus polkit"
+BDEPEND=""
+RECOMMENDED=""
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_patch() {
+	dopatch  consolekit-0.2.10-cleanup_console_tags.patch 
+	dopatch  consolekit-0.4.0-polkit-automagic.patch 
+	dopatch  consolekit-0.4.0-multilib.patch 	
+	dopatch  consolekit-0.4.1-shutdown-reboot-without-policies.patch
+}
+
+pbs_config() {
+	config+=" --enable-pam-module 
+		  XMLTO_FLAGS=--skip-validation 
+		  --disable-debug 
+		  --disable-docbook-docs 
+		  --enable-polkit 
+		  --with-pam-module-dir=/lib/security 
+		  --with-dbus-services=/usr/share/dbus-1/services/ "
+	doconfig
+}
+
+pbs_build() {
+	domake
+}
+
+pbs_install() {
+	domkinstall
+	docp "$filesdir"/90-consolekit "$destdir"/etc/X11/Xsession.d
+}
+

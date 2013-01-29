@@ -1,0 +1,42 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="Provides a unified backend for programs that work with contacts, tasks, and calendar information"
+HOMEPAGE="http://www.gnome.org/"
+LICENSE="GPL"
+PACKAGER="chenqixing@ivali.com
+          Zhongxin Huang <huangzhongxin@ivali.com>"
+
+SRC_URI="http://ftp.gnome.org/pub/gnome/sources/$N/${V%.*}/"$N-$V".tar.xz"
+CHECKSUM="bc94d8b9f1a6fb81a630cf38abec303b87a87ce2fd880f9519c23e5de2ce88f0"
+
+RDEPEND="libgweather libical berkeley-db nss gnome-online-accounts krb5 libgdata"
+BDEPEND="vala gobject-introspection intltool gperf"
+RECOMMENDED=""
+
+INSTALL="$N.install"
+
+pbs_unpack() {
+    dounpack
+}
+
+pbs_config() {
+	config+=" --disable-schemas-compile
+              --with-krb5=/usr 
+              --with-libdb=/usr 
+              --enable-vala-bindings"
+	doconfig
+}
+
+pbs_build() {
+	domake
+}
+
+pbs_install() {
+	domkinstall
+}
+

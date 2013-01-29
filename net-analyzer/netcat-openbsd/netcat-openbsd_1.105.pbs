@@ -1,0 +1,48 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="TCP/IP swiss army knife. OpenBSD variant."
+HOMEPAGE="http://packages.debian.org/sid/netcat-openbsd"
+LICENSE="BSD"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
+
+SRC_URI="http://ftp.debian.org/debian/pool/main/n/$N/${N}_$V.orig.tar.gz
+         http://ftp.debian.org/debian/pool/main/n/$N/${N}_$V-7.debian.tar.gz"
+CHECKSUM="7e67b22f1ad41a1b7effbb59ff28fca1 e914f8eb7eda5c75c679dd77787ac76b"
+
+RDEPEND="libbsd"
+BDEPEND="gcc make"
+RECOMMENDED=""
+CONFLICT="netcat-gnu"
+
+pbs_unpack() {
+    dounpack
+}
+
+pbs_patch() {
+    tar xf "$YBS_SOURCE"/${N}_$V-7.debian.tar.gz
+    for i in `cat debian/patches/series`; do
+        dopatch debian/patches/"${i}"
+    done 
+}
+
+pbs_config() {
+	config+=""
+	doconfig
+}
+
+pbs_build() {
+	pkgrel=5
+    make CFLAGS="$CFLAGS -DDEBIAN_VERSION=\"\\\"${pkgrel}\\\"\" -I/usr/include/libbsd" LDFLAGS="$LDFLAGS -lbsd"
+}
+
+pbs_install() {
+	docp nc "$destdir"/usr/bin/
+	doln /usr/bin/nc "$destdir"/usr/bin/netcat
+    doman nc.1
+}
+

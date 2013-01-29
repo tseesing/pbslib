@@ -1,0 +1,27 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="Base PAM configuration for services"
+HOMEPAGE="http://www.startos.org"
+LICENSE="GPL"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
+YARCH="any"
+
+SRC_URI=""
+
+RDEPEND=""
+RECOMMENDED=""
+BDEPEND=""
+OPTIONAL=""
+CONFLICT=""
+REPLACE=""
+
+pbs_install() {
+    docp "$filesdir"/{system-auth,system-local-login,system-login,system-remote-login,system-services,other} \
+          "$destdir"/etc/pam.d
+}
+

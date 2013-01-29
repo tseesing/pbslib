@@ -1,0 +1,36 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="Simple library for creating daemon processes in C"
+HOMEPAGE="http://0pointer.de/lennart/projects/libdaemon/"
+LICENSE="LGPL"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
+
+SRC_URI="http://0pointer.de/lennart/projects/"$N"/"$N-$V".tar.gz"
+CHECKSUM="78a4db58cf3a7a8906c35592434e37680ca83b8f"
+
+RDEPEND="glibc"
+BDEPEND=""
+RECOMMENDED=""
+
+pbs_unpack() {
+    dounpack
+}
+
+pbs_config() {
+	config+="--disable-lynx --disable-static"
+	doconfig
+}
+
+pbs_build() {
+	domake
+}
+
+pbs_install() {
+	domkinstall
+}
+

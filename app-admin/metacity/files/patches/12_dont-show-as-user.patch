@@ -1,0 +1,145 @@
+Index: metacity-2.30.0/configure.in
+===================================================================
+--- metacity-2.30.0.orig/configure.in	2010-04-01 09:46:27.215651202 +0200
++++ metacity-2.30.0/configure.in	2010-04-01 09:46:59.526652311 +0200
+@@ -279,20 +279,6 @@
+   AC_DEFINE(HAVE_XCURSOR, , [Building with Xcursor support]) 
+ fi
+ 
+-AC_MSG_CHECKING([libgtop])
+-if $PKG_CONFIG libgtop-2.0; then
+-     have_gtop=yes
+-  else
+-     have_gtop=no
+-  fi
+-  AC_MSG_RESULT($have_gtop)
+-
+-if test x$have_gtop = xyes; then
+-  echo "Building with libgtop"
+-  METACITY_PC_MODULES="$METACITY_PC_MODULES libgtop-2.0"
+-  AC_DEFINE(HAVE_GTOP, , [Building with libgtop]) 
+-fi
+-
+ PKG_CHECK_MODULES(METACITY, $METACITY_PC_MODULES)
+ 
+ AC_PATH_XTRA
+Index: metacity-2.30.0/src/core/window-props.c
+===================================================================
+--- metacity-2.30.0.orig/src/core/window-props.c	2010-03-30 16:35:40.000000000 +0200
++++ metacity-2.30.0/src/core/window-props.c	2010-04-01 09:48:11.670652184 +0200
+@@ -47,15 +47,6 @@
+ #include <X11/Xatom.h>
+ #include <unistd.h>
+ #include <string.h>
+-#include <errno.h>
+-#include <sys/types.h>
+-#include <pwd.h>
+-
+-#ifdef HAVE_GTOP
+-#include <glibtop/procuid.h>
+-#include <errno.h>
+-#include <pwd.h>
+-#endif /* HAVE_GTOP */
+ 
+ #ifndef HOST_NAME_MAX
+ /* Solaris headers apparently don't define this so do so manually; #326745 */
+@@ -321,32 +312,6 @@
+     }
+ }
+ 
+-/**
+- * Finds who owns a particular process, if we can.
+- *
+- * \param process  The process's ID.
+- * \result         Set to the ID of the user, if we returned true.
+- *
+- * \result  True if we could tell.
+- */
+-static gboolean
+-owner_of_process (pid_t process, uid_t *result)
+-{
+-#ifdef HAVE_GTOP
+-  glibtop_proc_uid process_details;
+-      
+-  glibtop_get_proc_uid (&process_details, process);
+-
+-  *result = process_details.uid;
+-  return TRUE;
+-#else
+-  /* I don't know, maybe we could do something hairy like see whether
+-   * /proc/$PID exists and who owns it, in case they have procfs.
+-   */
+-  return FALSE;
+-#endif /* HAVE_GTOP */
+-}
+-
+ #define MAX_TITLE_LENGTH 512
+ 
+ /**
+@@ -389,66 +354,6 @@
+                       title, window->wm_client_machine);
+       modified = TRUE;
+     }
+-  else if (window->net_wm_pid != -1)
+-    {
+-      /* We know the process which owns this window; perhaps we can
+-       * find out the name of its owner (if it's not us).
+-       */
+-
+-      char *found_name = NULL;
+-
+-      uid_t window_owner = 0;
+-      gboolean window_owner_known =
+-              owner_of_process (window->net_wm_pid, &window_owner);
+-
+-      /* Assume a window with unknown ownership is ours (call it usufruct!) */
+-      gboolean window_owner_is_us =
+-              !window_owner_known || window_owner==getuid ();
+-      
+-      if (window_owner_is_us)
+-        {
+-          /* we own it, so fall back to the simple case */
+-          *target = g_strdup (title);
+-        }
+-      else
+-        {
+-          /* it belongs to window_owner.  So what's their name? */
+-
+-          if (window_owner==0)
+-            {
+-              /* Simple case-- don't bother to look it up.  It's root. */
+-              *target = g_strdup_printf (_("%s (as superuser)"),
+-                                         title);
+-            }
+-          else
+-            {
+-              /* Okay, let's look up the name. */
+-              struct passwd *pwd;
+-
+-              errno = 0;
+-              pwd = getpwuid (window_owner);
+-              if (errno==0 && pwd!=NULL)
+-                {
+-                  found_name = pwd->pw_name;
+-                }
+-            
+-              if (found_name)
+-                /* Translators: the title of a window owned by another user
+-                 * on this machine */
+-                *target = g_strdup_printf (_("%s (as %s)"),
+-                                           title,
+-                                           found_name);
+-              else
+-                /* Translators: the title of a window owned by another user
+-                 * on this machine, whose name we don't know */
+-                *target = g_strdup_printf (_("%s (as another user)"),
+-                                           title);
+-            }
+-          /* either way we changed it */
+-          modified = TRUE;
+-              
+-        }
+-    }
+   else
+     *target = g_strdup (title);
+ 

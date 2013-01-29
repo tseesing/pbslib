@@ -1,0 +1,41 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="A low-latency audio server"
+HOMEPAGE="http://jackaudio.org/"
+LICENSE="GPL,LGPL"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
+
+SRC_URI="http://jackaudio.org/downloads/"$N-$V".tar.gz"
+
+RDEPEND="libsamplerate readline"
+BDEPEND=""
+RECOMMENDED="celt"
+OPTIONAL="celt: NetJACK driver"
+
+pbs_unpack() {
+    dounpack
+}
+
+pbs_config() {
+    config+=""
+	doconfig
+}
+
+pbs_build() {
+	domake
+}
+
+pbs_install() {
+	domkinstall
+    docp jack/jslist.h "$destdir"/usr/include/jack/
+    cd "$destdir"
+    # configure realtime access/scheduling
+    docp "$filesdir"/99-audio.conf etc/security/limits.d/
+    docp "$filesdir"/40-hpet-permissions.rules usr/lib/systemd/rules.d/
+}
+

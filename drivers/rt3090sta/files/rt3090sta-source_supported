@@ -1,0 +1,19 @@
+#!/bin/sh
+#
+
+main () {
+	local id
+	grep DEVICE_ID $1 |awk '{print $3}' |while read id; do
+		id=${id#0x}
+		printf "alias pci:v%08Xd%08Xsv*sd*bc*sc*i* %s %s\n" 0x1814 "0x$id" 
+	done
+	# add 3390
+	id=3390
+	printf "alias pci:v%08Xd%08Xsv*sd*bc*sc*i* %s %s\n" 0x1814 "0x$id"
+}
+
+#main
+echo "package rt3090sta-driver"
+echo "module rt3090sta.ko"
+echo "description Ralink RT3090 PCI WLAN adaptors"
+main include/chip/rt3090.h

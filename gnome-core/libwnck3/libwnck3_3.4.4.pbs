@@ -1,0 +1,36 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="Window Navigator Construction Kit (GTK+3)"
+HOMEPAGE="http://www.gnome.org/"
+LICENSE="LGPL"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
+
+SRC_URI="http://ftp.gnome.org/pub/gnome/core/3.6/3.6.2/sources/libwnck-"$V".tar.xz"
+CHECKSUM="a545a23ea7681fafae033b4f68b69ef022d446a9325286291bb8882b9016a130"
+
+RDEPEND="libXres gtk3 startup-notification"
+BDEPEND="gobject-introspection intltool"
+RECOMMENDED=""
+
+pbs_unpack() {
+    dounpack
+}
+
+pbs_config() {
+	config+="--disable-static"
+	doconfig
+}
+
+pbs_build() {
+	domake
+}
+
+pbs_install() {
+	domkinstall
+}
+

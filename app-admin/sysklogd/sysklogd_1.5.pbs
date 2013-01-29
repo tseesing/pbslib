@@ -1,0 +1,40 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="Kernel and system logging daemons"
+HOMEPAGE="http://www.infodrom.org/projects/sysklogd/index.php"
+LICENSE="GPL"
+PACKAGER="StartOS Developers"
+
+SRC_URI="http://www.infodrom.org/projects/"$N"/download/"$N-$V".tar.gz"
+
+RDEPEND="glibc"
+BDEPEND=""
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_build() {
+	domake
+}
+
+pbs_install() {
+	mkdir -p "$destdir"/usr/share/man/man8 "$destdir"/usr/share/man/man5 "$destdir"/{sbin,etc}
+	make prefix="$destdir" BINDIR="$destdir"/sbin install
+	cd "$destdir"
+	cat > etc/syslog.conf << "EOF"
+auth,authpriv.* -/var/log/auth.log
+*.*;auth,authpriv.none -/var/log/sys.log
+daemon.* -/var/log/daemon.log
+kern.* -/var/log/kern.log
+mail.* -/var/log/mail.log
+user.* -/var/log/user.log
+*.emerg *
+EOF
+}
+

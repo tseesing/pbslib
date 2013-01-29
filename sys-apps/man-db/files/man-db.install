@@ -1,0 +1,15 @@
+
+post_install() {
+	echo "* create an initial database..."
+	mandb --quiet ||true
+}
+
+post_upgrade() {
+	echo "* (re)building database..."
+	mandb -c --quiet ||true
+}
+
+post_remove() {
+	[ -d /var/cache/man ] && rm -rf /var/cache/man || true
+}
+

@@ -1,0 +1,32 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="Cross-platform, 3D and historically-based real-time strategy game (data files)"
+HOMEPAGE="http://wildfiregames.com/0ad"
+LICENSE="GPL,CCPL"
+PACKAGER="StartOS Developers"
+
+YARCH="any"
+
+SRC_URI="http://releases.wildfiregames.com/0ad-"$V"-alpha-unix-data.tar.xz"
+CHECKSUM="5900e406e6bdf761239e8af183a6a6c1"
+
+RDEPEND=""
+RECOMMENDED=""
+BDEPEND=""
+OPTIONAL=""
+CONFLICT=""
+REPLACE=""
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_install() {
+	docp binaries/data "$destdir"/usr/share/0ad/
+}
+

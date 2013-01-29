@@ -1,0 +1,41 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="Scientific algorithms library for Python"
+HOMEPAGE="http://www.scipy.org/"
+LICENSE="BSD"
+PACKAGER="StartOS Developers"
+
+SRC_URI="http://sourceforge.net/projects/"$N"/files/"$N"/"$V"/"$N-$V".tar.gz"
+CHECKSUM="6ad976549e22e04ca93e70cf55b70a22"
+
+RDEPEND="blas gcc-libs glibc lapack python"
+RECOMMENDED=""
+BDEPEND=""
+OPTIONAL=""
+CONFLICT=""
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_patch() {
+	# Changing the arithmetic parameter (Thanks to Fabrizio Castellano)
+	sed -i "s/\#define\ UNK\ 1/\#define\ IBMPC\ 1/" scipy/special/cephes/mconf.h
+}
+
+pbs_build() {
+	unset LDFLAGS
+	unset FFLAGS
+	domake config_fc --fcompiler=gnu95
+}
+
+pbs_install() {
+	domkinstall config_fc --fcompiler=gnu95
+	dodoc LICENSE.txt
+}
+

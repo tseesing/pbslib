@@ -1,0 +1,33 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="115 upload plugin for firefox"
+HOMEPAGE="www.115.com"
+LICENSE="custom"
+PACKAGER="StartOS Developers"
+
+SRC_URI="http://115.com/static/install/"$N"_v"$V"_x86.tar.gz"
+CHECKSUM="685fda7920c1df3d22ca7430949a8a77"
+
+RDEPEND="gcc-libs"
+RECOMMENDED=""
+BDEPEND=""
+CONFLICT=""
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_install() {
+	docp 115upload.so "$destdir"/usr/lib/115u/
+	cd "$destdir"
+	for i in xulrunner mozilla iceape iceweasel firefox midbrowser xulrunner-addons; do
+		doln /usr/lib/115u/115upload.so usr/lib/"${i}"/plugins/115upload.so
+	done
+}
+
+

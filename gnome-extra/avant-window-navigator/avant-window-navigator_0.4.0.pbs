@@ -1,0 +1,42 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="Fully customisable dock-like window navigator."
+HOMEPAGE="https://launchpad.net/awn"
+REPO=""
+LICENSE="GPL"
+PACKAGER="StartOS Developers"
+
+SRC_URI="http://launchpadlibrarian.net/43821484/"$N-$V$R".tar.gz"
+
+RDEPEND="atk cairo dbus dbus-glib expat fontconfig freetype gcc-libs glib2 gdk-pixbuf2 glibc gtk2 libdesktop-agnostic libgtop libICE libpng libSM libwnck libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libXrandr libXrender libXres pango pixman python startup-notification util-linux zlib"
+BDEPEND=""
+RECOMMENDED=""
+CONFLICT=""
+
+INSTALL="$N.install"
+
+NOTES=""
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_config() {
+	dopatch awn-applet-simple.patch
+	config+=""
+	doconfig
+}
+
+pbs_build() {
+	domake
+}
+
+pbs_install() {
+	domkinstall
+}
+

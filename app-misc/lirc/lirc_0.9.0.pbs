@@ -1,0 +1,74 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="decode and send infra-red signals of many commonly used remote controls"
+HOMEPAGE="http://www.lirc.org/"
+LICENSE="GPL"
+PACKAGER="chenqixing@ivali.com
+          Zhongxin Huang <huangzhongxin@ivali.com>"
+ 
+SRC_URI="http://downloads.sourceforge.net/project/$N/LIRC/$V/${N}-${V}.tar.bz2"
+CHECKSUM="b232aef26f23fe33ea8305d276637086"
+
+RDEPEND="alsa-lib libX11 libftdi libirman"
+BDEPEND="linux-kernel-headers(>=3.6) python"
+RECOMMENDED=""
+OPTIONAL="python: pronto2lirc utility"
+
+pbs_unpack() {
+    dounpack
+}
+
+pbs_patch() {
+    dopatch lirc_wpc8769l.patch \
+            lircd-handle-large-config.patch  \
+            lirc_atiusb-kfifo.patch \
+            kernel-2.6.39.patch
+    sed -i '/AC_PATH_XTRA/d' configure.ac
+    sed -e 's/@X_CFLAGS@//g' \
+        -e 's/@X_LIBS@//g' \
+        -e 's/@X_PRE_LIBS@//g' \
+        -e 's/@X_EXTRA_LIBS@//g' -i Makefile.am tools/Makefile.am
+    libtoolize
+    autoreconf
+}
+
+pbs_config() {
+	config+="--enable-sandboxed
+             --with-driver=all 
+             --with-kerneldir=/usr/src/linux
+             --with-moduledir=/usr/lib/modules/"$KERNEL_DIST"/kernel/drivers/misc \
+             --with-transmitter"
+	doconfig
+    # Remove drivers already in kernel
+    sed -e "s:lirc_dev::" -e "s:lirc_bt829::" -e "s:lirc_igorplugusb::" \
+        -e "s:lirc_imon::" -e "s:lirc_parallel::" -e "s:lirc_sasem::" \
+        -e "s:lirc_serial::" -e "s:lirc_sir::" -e "s:lirc_ttusbir::" \
+        -i Makefile drivers/Makefile drivers/*/Makefile tools/Makefile 
+}
+
+pbs_build() {
+	domake
+}
+
+pbs_install() {
+	domkinstall
+    docp -rp remotes "$destdir"/usr/share/lirc
+    cd "$destdir"
+    # gzip -9 modules
+    find -name '*.ko' -exec gzip -9 {} \;
+    # systemd
+    dounit irexec.service  lircm.service  lirc.service
+    docp_rename "$filesdir"/lirc.tmpfiles usr/lib/tmpfiles.d/lirc.conf
+    #
+    chmod -R go-w usr/share/lirc/
+    # install the logrotate config
+    docp_rename "$filesdir"/lirc.logrotate etc/logrotate.d/lirc
+    # 
+    mkdir -p etc/lirc
+}
+

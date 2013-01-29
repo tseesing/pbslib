@@ -1,0 +1,40 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="Client library to access to the MusicBrainz Server"
+HOMEPAGE="http://musicbrainz.org/"
+LICENSE="LGPL2.1"
+PACKAGER="chenqixing@ivali.com
+          Zhongxin Huang <huangzhongxin@ivali.com>"
+
+SRC_URI="https://github.com/downloads/metabrainz/${N%5}/${N%5}-$V.tar.gz"
+CHECKSUM="a0406b94c341c2b52ec0fe98f57cadf3"
+
+RDEPEND="neon"
+BDEPEND="cmake"
+RECOMMENDED=""
+
+pbs_unpack() {
+    dounpack
+}
+
+pbs_patch() {
+    dopatch support-out-of-source-build.patch
+}
+
+pbs_config() {
+    doconfig -DCMAKE_BUILD_TYPE=Release
+}
+
+pbs_build() {
+	domake
+}
+
+pbs_install() {
+	domkinstall
+}
+

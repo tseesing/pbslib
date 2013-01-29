@@ -1,0 +1,40 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="X.Org autotools utility macros"
+HOMEPAGE="http://xorg.freedesktop.org/"
+REPO=""
+LICENSE=""
+PACKAGER="StartOS Developers"
+SRC_URI="http://www.x.org/releases/individual/util/"$N-$V$R".tar.bz2"
+
+RDEPEND=""
+BDEPEND=" "
+RECOMMENDED=""
+
+NOTES=""
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_config() {
+	
+	config+=" --prefix=/usr --sysconfdir=/etc --localstatedir=/var \
+	              --infodir=/usr/share/info --mandir=/usr/share/man"
+	doconfig
+}
+
+pbs_build() {	
+	domake
+}
+
+pbs_install() {
+	domkinstall
+	install -m755 -d "$destdir"/usr/share/doc/"$N-$V$R"
+	cp -a ChangeLog COPYING INSTALL README   "$destdir"/usr/share/doc/"$N-$V$R"
+}

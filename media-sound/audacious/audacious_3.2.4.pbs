@@ -1,0 +1,37 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="a Gtk+ based audio player. "
+HOMEPAGE="http://audacious-media-player.org/"
+LICENSE="GPLv3"
+PACKAGER="StartOS Developers"
+
+SRC_URI="http://distfiles.audacious-media-player.org/"$N-$V".tar.bz2"
+
+RDEPEND="dbus-glib gtk2"
+BDEPEND=""
+RECOMMENDED="audacious-plugins(=3.2.4)"
+
+INSTALL="$N.install"
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_config() {
+	config+="--disable-gtk3"
+	doconfig
+}
+
+pbs_build() {
+	domake
+}
+
+pbs_install() {
+	domkinstall
+}
+

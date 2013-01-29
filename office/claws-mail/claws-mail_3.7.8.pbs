@@ -1,0 +1,39 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="Claws Mail is an email client (and news reader), based on GTK+"
+HOMEPAGE="http://www.claws-mail.org/"
+LICENSE="GPL"
+PACKAGER="StartOS Developers"
+
+SRC_URI="http://downloads.sourceforge.net/project/sylpheed-claws/Claws%20Mail/"$V"/"$N-$V".tar.gz"
+
+RDEPEND="atk berkeley-db cairo curl cyrus-sasl dbus dbus-glib enchant expat fontconfig freetype gcc-libs gdk-pixbuf2 glib2 glibc gnutls gpgme gtk2 libassuan libetpan libgcrypt libgpg-error libICE libidn libpng libSM libssh2 libtasn1 libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libXrandr libXrender openldap openssl pango pixman rtmpdump startup-notification util-linux zlib"
+BDEPEND=""
+RECOMMENDED=""
+CONFLICT=""
+
+INSTALL="$N.install"
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_config() {
+	dopatch desktop.patch
+	config+=""
+	doconfig
+}
+
+pbs_build() {
+	domake
+}
+
+pbs_install() {
+	domkinstall
+}
+

@@ -1,0 +1,44 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="Video editor designed for simple cutting, filtering and encoding tasks"
+COMMENTS="Avidemux is a free video editor designed for simple cutting, filtering and encoding tasks. It supports many file types, including AVI, DVD compatible MPEG files, MP4 and ASF, using a variety of codecs. Tasks can be automated using projects, job queue and powerful scripting capabilities."
+HOMEPAGE="http://fixounet.free.fr/avidemux/"
+LICENSE="GPL"
+PACKAGER="StartOS Developers"
+
+SRC_URI="http://downloads.sourceforge.net/"$N"/"${N}_$V".tar.gz"
+CHECKSUM="00e479dd806b94a98d3f0f40639e88a9"
+
+RDEPEND="gtk2 libsdl libva libvpx libxml2 libXv"
+RECOMMENDED=""
+BDEPEND="cmake"
+OPTIONAL=""
+
+DESKTOPFILE="avidemux2-gtk2.desktop"
+
+INSTALL="$N.install"
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_config() {
+	config+=""
+	doconfig -D CMAKE_BUILD_TYPE=Release -D CMAKE_SKIP_RPATH=ON -D GTK=1 -D QT4=0
+}
+
+pbs_build() {
+	make
+}
+
+pbs_install() {
+	domkinstall
+	cd ..
+	dodesktop avidemux2-gtk2.desktop avidemux_icon.png
+}
+

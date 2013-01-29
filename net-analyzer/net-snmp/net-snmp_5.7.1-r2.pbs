@@ -1,0 +1,54 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="A suite of applications used to implement SNMP v1, SNMP v2c and SNMP v3 using both IPv4 and IPv6"
+HOMEPAGE="http://www.net-snmp.org/"
+LICENSE="BSD"
+PACKAGER="StartOS Developers"
+
+SRC_URI="http://downloads.sourceforge.net/"$N"/"$N-$V".tar.gz"
+CHECKSUM="ddb82ce1112ef0642869d3c8d7c7e585f151849a"
+
+RDEPEND="openssl pciutils perl"
+BDEPEND=""
+RECOMMENDED=""
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_patch() {
+	# http://sourceforge.net/tracker/index.php?func=detail&aid=3250304&group_id=12694&atid=112694
+	dopatch libnl32.patch
+}
+
+pbs_config() {
+	autoreconf -f -i
+	./configure --prefix=/usr \
+	            --sysconfdir=/etc \
+	            --mandir=/usr/share/man \
+		    --enable-ucd-snmp-compatibility \
+		    --enable-ipv6 \
+		    --with-python-modules \
+		    --with-default-snmp-version="3" \
+		    --with-sys-contact="root@localhost" \
+		    --with-sys-location="Unknown" \
+		    --with-logfile="/var/log/snmpd.log" \
+		    --with-mib-modules="host misc/ipfwacc ucd-snmp/diskio tunnel ucd-snmp/dlmod" \
+		    --with-persistent-directory="/var/net-snmp" \
+		    --disable-static
+}
+
+pbs_build() {
+	domake NETSNMP_DONT_CHECK_VERSION=1
+}
+
+pbs_install() {
+	domkinstall INSTALL_PREFIX="${destdir}" INSTALLDIRS=vendor
+	dodoc COPYING
+}
+

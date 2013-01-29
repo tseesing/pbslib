@@ -1,0 +1,35 @@
+* hal 
+Removed, upstream outdated
+
+* esound
+Removed, upstream outdated
+
+* ntfsprogs
+Replaced by USE="ntfsprogs" in ntfs-3g
+
+* module-init-tools
+Replaced by kmod and libkmod is required by systemd
+
+* libelf
+Replaced by elfutils
+
+* gnu-ghostscript
+Replaced by ghostscript
+
+* libusb
+Replaced by libusbx
+
+* cdrtools
+Replaced by cdrkit
+
+* eject
+Provided by util-linux
+
+* xz-utils
+Rename xz
+
+* consolekit, udev
+Removed, Any package that previously depended on it now relies on systemd instead.
+
+* farsight2
+Replaced by farstream

@@ -1,0 +1,36 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="X authority file utility"
+HOMEPAGE="http://xorg.freedesktop.org/"
+GROUP="x11-apps"
+LICENSE="custom"
+PACKAGER="StartOS Developers"
+
+SRC_URI="http://xorg.freedesktop.org/archive/individual/app/"$N-$V".tar.bz2"
+CHECKSUM="105f5b00bb9293b3db36f7e500d4f950"
+
+RDEPEND="glibc libX11 libXau libxcb libXdmcp libXext libXmu"
+BDEPEND=""
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_config() {
+	doconfig
+}
+
+pbs_build() {
+	domake
+}
+
+pbs_install() {
+	domkinstall
+	dodoc COPYING
+}
+
