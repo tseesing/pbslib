@@ -2,12 +2,12 @@
 In this GIT repository, there are several GIT branches, run git-checkout to get the source files.
 
 $ git branch -a
-develop - regularly updates
-staratos-5.x  - StartOS 5.x series pbs tree
 master  - you are here
+staratos-5.x  - StartOS 5.x series pbs tree
+staratos-6.x  - StartOS 6.x series pbs tree
 
-For instance, when you are using develop, you should run
-$ git checkout develop
+For instance, when you are using staratos-5.x, you should run
+$ git checkout staratos-5.x
 
 To compile and install them, read the README file after "git checkout".
 
