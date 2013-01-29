@@ -16,7 +16,7 @@ INSTALL="$N.install"
 
 SRC_URI="git://github.com/StartOS/ybs.git"
 
-RDEPEND="gawk cpio xz sed coreutils findutils procps psmisc bash"
+RDEPEND="gawk cpio xz-utils sed coreutils findutils procps psmisc bash"
 BDEPEND=""
 RECOMMENDED="wget curl git ypkg2"
 

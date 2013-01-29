@@ -1,0 +1,91 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="the printer driver modules for Canon CAPT printers"
+HOMEPAGE="http://download.driverscollection.com/"
+LICENSE="custom"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
+
+SRC_URI="cndrvcups-capt-2.20-1.tar.gz"
+CHECKSUM=""
+
+RDEPEND="cndrvcups-common cups libglade"
+RECOMMENDED=""
+BDEPEND=""
+OPTIONAL=""
+CONFLICT=""
+REPLACE=""
+
+pbs_unpack() {
+    dounpack
+}
+
+pbs_patch() {
+    dopatch fix_configure.patch
+}
+
+pbs_config() {
+    local d
+    for d in driver ppd backend pstocapt pstocapt2 pstocapt3 statusui; do 
+        (cd "$d" && ./autogen.sh --prefix=/usr --enable-progpath=/usr/bin --disable-static)
+    done
+
+    (cd cngplp && ./autogen.sh --prefix=/usr --libdir=/usr/lib)
+    (cd cngplp/files && ./autogen.sh)
+}
+
+pbs_build() {
+    local d
+    for d in driver ppd backend pstocapt pstocapt2 pstocapt3 statusui cngplp; do
+        (cd "$d" && domake ) 
+    done
+}
+
+pbs_install() {
+    local d
+    for d in driver ppd backend pstocapt pstocapt2 pstocapt3 statusui; do 
+        (cd "$d" && domkinstall)
+    done
+                                    
+    for d in cngplp; do 
+        (cd "$d" && domkinstall)
+    done
+
+    # Libs 
+    docp libs/{libcaptfilter.so.1.0.0,libcaiocaptnet.so.1.0.0,libcncaptnpm.so.2.0.0,libcnaccm.so.1.0} "$destdir"/usr/lib"$LIBDIRSUFFIX"/
+    # Binary
+    docp libs/{captdrv,captfilter,captmon/captmon,captmon2/captmon2,captemon/captmon*} \
+    	 "$destdir"/usr/bin/
+    docp libs/{ccpd,ccpdadmin} "$destdir"/usr/sbin/
+    # etc files
+    docp samples/ccpd.conf "$destdir"/etc
+    chmod +x samples/ccpd
+    docp samples/ccpd "$destdir"/etc/init.d
+    # firmware
+    docp libs/{ccpddata/CNA*L.BIN,ccpddata/cnab6cl.bin,captemon/CNAC*.BIN} \
+    	 "$destdir"/usr/share/ccpd/
+    docp libs/CnAC*INK.DAT "$destdir"/usr/share/captfilter/
+    # 
+    docp libs/captmon/msgtable.xml "$destdir"/usr/share/captmon/
+    docp libs/captmon2/msgtable2.xml "$destdir"/usr/share/captmon2/
+    docp libs/captemon/{msgtablelbp*,msgtablecn*} "$destdir"/usr/share/captemon/
+    #
+    docp data/C* "$destdir"/usr/share/caepcm/
+    #
+    dodoc *capt*.txt
+    # links
+    cd "$destdir"/usr/lib"$LIBDIRSUFFIX"/
+    doln libcaptfilter.so.1.0.0 libcaptfilter.so.1
+    doln libcaptfilter.so.1.0.0 libcaptfilter.so
+    doln libcaiocaptnet.so.1.0.0 libcaiocaptnet.so.1
+    doln libcaiocaptnet.so.1.0.0 libcaiocaptnet.so
+    doln libcncaptnpm.so.2.0.0 libcncaptnpm.so.2
+    doln libcncaptnpm.so.2.0.0 libcncaptnpm.so
+    doln libcnaccm.so.1.0 libcnaccm.so.1
+    doln libcnaccm.so.1.0 libcnaccm.so
+}
+

@@ -9,7 +9,7 @@ DESCRIPTION="software center for StartOS"
 HOMEPAGE="http://www.startos.org"
 LICENSE="custom"
 PRIORITY="required"
-PACKAGER="StartOS Developers"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 GROUP="base"
 
 SRC_URI="git://git.ylmf.com/software-center.git"
@@ -26,13 +26,6 @@ DESKTOPFILE="softwarecenter.desktop"
 pbs_unpack() {
 	dounpack
 }
-
-pbs_patch() {
-	#git checkout NoComments
-	#git pull
-	git checkout master
-	git pull
-}	
 
 pbs_config() {
 	config+=""

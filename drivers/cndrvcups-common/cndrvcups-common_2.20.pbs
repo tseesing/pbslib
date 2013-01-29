@@ -1,0 +1,72 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="common printer driver modules for Canon printers"
+HOMEPAGE="http://download.driverscollection.com/"
+LICENSE="custom"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
+
+SRC_URI="cndrvcups-common-2.20-1.tar.gz"
+CHECKSUM=""
+
+RDEPEND="cups libglade"
+RECOMMENDED=""
+BDEPEND=""
+OPTIONAL=""
+CONFLICT=""
+REPLACE=""
+
+pbs_unpack() {
+    dounpack
+}
+
+pbs_config() {
+    (cd buftool && ./autogen.sh --prefix=/usr)
+    (cd cngplp && ./autogen.sh --prefix=/usr --libdir=/usr/local/lib)
+}
+
+pbs_build() {
+    local d
+    for d in buftool cngplp; do 
+    	(cd "$d" && domake) 
+    done
+    for d in c3plmod_ipc; do
+    	(cd "$d" && domake)
+     done
+}
+
+pbs_install() {
+    local d
+    for d in buftool cngplp; do 
+    	(cd "$d" && domkinstall)
+    done
+    for d in c3plmod_ipc; do 
+    	(cd "$d" && domkinstall prefix=/usr LIBDIR=/usr/lib"$LIBDIRSUFFIX")
+    done
+    # bin
+    docp libs/c3pldrv "$destdir"/usr/bin/
+    # libs
+    docp libs/{libcaiowrap.so.1.0.0,libcaiousb.so.1.0.0,libc3pl.so.0.0.1,libcaepcm.so.1.0,libcanon_slim.so.1.0.0} \
+    	"$destdir"/usr/lib"$LIBDIRSUFFIX"/
+     #
+     docp data/{CA*,CNZ0*} "$destdir"/usr/share/caepcm/
+     # links
+     cd "$destdir"/usr/lib"$LIBDIRSUFFIX"/
+     doln libc3pl.so.0.0.1 libc3pl.so.0
+     doln libc3pl.so.0.0.1 libc3pl.so
+     doln libcaepcm.so.1.0 libcaepcm.so.1
+     doln libcaepcm.so.1.0 libcaepcm.so
+     doln libcaiowrap.so.1.0.0 libcaiowrap.so.1
+     doln libcaiowrap.so.1.0.0 libcaiowrap.so
+     doln libcaiousb.so.1.0.0 libcaiousb.so.1
+     doln libcaiousb.so.1.0.0 libcaiousb.so
+     doln libcanonc3pl.so.1.0.0 libcanonc3pl.so.1
+     doln libcanonc3pl.so.1.0.0 libcanonc3pl.so
+     doln libcanon_slim.so.1.0.0 libcanon_slim.so.1
+     doln libcanon_slim.so.1.0.0 libcanon_slim.so
+}
+
