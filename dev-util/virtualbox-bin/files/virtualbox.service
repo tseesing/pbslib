@@ -1,8 +1,0 @@
-[Unit]
-Description=VirtualBox Linux kernel module
-
-[Service]
-ExecStart=/etc/init.d/vboxdrv start
-
-[Install]
-WantedBy=multi-user.target

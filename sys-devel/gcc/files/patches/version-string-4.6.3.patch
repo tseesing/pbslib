@@ -1,8 +1,0 @@
---- gcc/version.c	2009-04-22 03:03:23.000000000 +0800
-+++ gcc/version.c.new	2012-11-20 20:25:06.156279355 +0800
-@@ -33,4 +33,4 @@
-    Makefile.  */
- 
- const char version_string[] = BASEVER DATESTAMP DEVPHASE REVISION;
--const char pkgversion_string[] = PKGVERSION;
-+const char pkgversion_string[] = "(GCC for StartOS)";

@@ -1,6 +1,0 @@
-#!/bin/bash
-
-. /etc/profile.d/jdk.sh	
-. /etc/profile.d/jre.sh
-
-sh -c "nohup /usr/share/nutstore/bin/nutstore-pydaemon.py >/dev/null 2>&1 &"

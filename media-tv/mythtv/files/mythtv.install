@@ -1,5 +1,0 @@
-
-post_remove() {
-	echo -e "NOTE: mysql database was not removed. To remove run:\nmysql -u root -e 'drop database mythconverg;'"
-}
-

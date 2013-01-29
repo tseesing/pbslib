@@ -1,5 +1,0 @@
-[HKEY_CLASSES_ROOT\http\shell\open\command]
-@="C:\\windows\\system32\\winebrowser.exe -nohome \"%1\""
-
-[HKEY_CURRENT_USER\Software\Wine\WineBrowser]
-"Browsers"="xdg-open"

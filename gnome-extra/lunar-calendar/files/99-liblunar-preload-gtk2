@@ -1,3 +1,0 @@
-#!/bin/sh
-LD_PRELOAD="/usr/lib/liblunar-calendar-preload-2.0.so"
-export LD_PRELOAD

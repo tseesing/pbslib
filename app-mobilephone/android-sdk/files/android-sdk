@@ -1,7 +1,0 @@
-#!/bin/sh
-#
-
-. /etc/profile.d/jdk.sh
-. /etc/profile.d/android-sdk.sh
-
-exec android $@

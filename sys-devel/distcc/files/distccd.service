@@ -1,9 +1,0 @@
-[Unit]
-Description=Distributed Compiler Daemon
-
-[Service]
-Type=forking
-ExecStart=/usr/sbin/distccd-wrapper
-
-[Install]
-WantedBy=multi-user.target
