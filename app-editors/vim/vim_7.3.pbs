@@ -8,7 +8,8 @@
 DESCRIPTION="Vim, an improved vi-style text editor"
 HOMEPAGE="http://www.vim.org/"
 LICENSE="custom:vim"
-PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>
+          chenqixing@ivali.com"
 
 SRC_URI="ftp://ftp.vim.org/pub/vim/unix/"$N-$V".tar.bz2" 
 CHECKSUM="5b9510a17074e2b37d8bb38ae09edbf2"
@@ -16,6 +17,7 @@ CHECKSUM="5b9510a17074e2b37d8bb38ae09edbf2"
 RDEPEND="acl ncurses gpm"
 BDEPEND=""
 CONFLICT="gvim"
+OPTIONAL="python: for using plugins \"python.vim python3complete.vim pythoncomplete.vim\""
 
 INSTALL="$N.install"
 

@@ -1,0 +1,43 @@
+
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="A GTK Text Editor"
+COMMENTS=""
+HOMEPAGE="http://medit.bitbucket.org"
+LICENSE="GPLv2.1"
+ALIAS="mooedit"
+
+PACKAGER="chenqixing@ivali.com"
+SRC_URI="http://downloads.sourceforge.net/mooedit/"$N"-"$V".tar.bz2"
+CHECKSUM="9ea0d396a3bf3ee6ce220365bffb7358"
+
+RDEPEND="pygtk libxml2 harfbuzz gtk2"
+BDEPEND="xml-parser intltool"
+RECOMMENDED=""
+OPTIONAL="ctags: looking source code conveniently.
+          vte:  terminal emulator."
+
+INSTALL="$N.install"
+NOTES=""
+pbs_unpack() {
+        dounpack
+}
+
+pbs_config() {
+    config+=""
+    doconfig
+}
+
+pbs_build() {
+    domake
+}
+
+pbs_install() {
+    domkinstall
+    dodoc AUTHORS COPYING README
+}

@@ -8,12 +8,13 @@
 DESCRIPTION="X11 EvIE extension library"
 HOMEPAGE="http://www.x.org/wiki/"
 LICENSE="custom"
-PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>
+          chenqixing@ivali.com"
 GROUP="x11-lib"
 
 SRC_URI="http://xorg.freedesktop.org/releases/individual/lib/"$N-$V".tar.bz2"
 
-RDEPEND="libX11"
+RDEPEND="libXext"
 BDEPEND="evieext"
 
 pbs_unpack() {

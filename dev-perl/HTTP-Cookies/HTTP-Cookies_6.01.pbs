@@ -14,7 +14,7 @@ YARCH="any"
 SRC_URI="http://search.cpan.org/CPAN/authors/id/G/GA/GAAS/"$N-$V".tar.gz"
 CHECKSUM=""
 
-RDEPEND="HTTP-Date HTTP-Message"
+RDEPEND="HTTP-Date HTTP-Message perl"
 BDEPEND=""
 RECOMMENDED=""
 CONFLICT=""

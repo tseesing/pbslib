@@ -14,7 +14,7 @@ PACKAGER="chenqixing@ivali.com
 SRC_URI="http://ftp.acc.umu.se/pub/GNOME/sources/$N/${V%.*}/${N}-${V}.tar.xz"
 CHECKSUM="ad9f2ff207c8a965975670e262394953b37b2dc25cff7ee59f138f961f88ce60"
 
-RDEPEND="gst-plugins-base gst-plugins-good totem-pl-parser desktop-file-utils iso-codes libpeas gnome-icon-theme-symbolic gsettings-desktop-schemas dconf clutter-gst clutter-gtk pygobject gst-plugins-bad libdvdcss"
+RDEPEND="gst-plugins-base gst-plugins-good totem-pl-parser desktop-file-utils iso-codes libpeas gnome-icon-theme-symbolic gsettings-desktop-schemas dconf clutter-gst clutter-gtk pygobject gst-plugins-bad libdvdcss dbus-glib"
 BDEPEND="intltool gnome-doc-utils nautilus vala grilo pylint dbus-glib libzeitgeist"
 RECOMMENDED=""
 OPTIONAL=" gst-plugins-base: the basic and essential plug-ins for GStreamer
@@ -22,7 +22,7 @@ OPTIONAL=" gst-plugins-base: the basic and essential plug-ins for GStreamer
            gst-plugins-ugly: good-quality plug-ins that might pose distribution problems, needed for DVD playback
            gst-plugins-bad: a set of plug-ins that need more work, needed for DVD playback as well
            gst-ffmpeg: FFmpeg-based plug-in, contains all the basic decoders for popular codecs, such as DivX and WMV 
-           lirc-utils: Infrared Remote Control plugin
+           lirc: Infrared Remote Control plugin
            grilo-plugins: Browse sidebar (remote media)
            pyxdg: opensubtitles plugin
            libzeitgeist: Zeitgeist plugin"

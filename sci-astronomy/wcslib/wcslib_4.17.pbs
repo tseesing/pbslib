@@ -1,0 +1,43 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="A C library that implements the 'World Coordinate System' (WCS) standard in FITS"
+HOMEPAGE="http://www.atnf.csiro.au/people/Mark.Calabretta/WCS/"
+LICENSE="GPL"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
+
+SRC_URI="ftp://ftp.atnf.csiro.au/pub/software/$N/$N-$V.tar.bz2"
+CHECKSUM=""
+
+RDEPEND="cfitsio"
+RECOMMENDED=""
+BDEPEND=""
+OPTIONAL=""
+CONFLICT=""
+REPLACE=""
+
+pbs_unpack() {
+    dounpack
+}
+
+pbs_config() {
+    config+="--without-pgplot"
+    doconfig
+}
+
+pbs_build() {
+    domake
+}
+
+pbs_install() {
+    domkinstall
+    cd "$destdir"
+    # Fix wrong permissions
+    chmod g=rx,-s usr/{bin/,/lib"$LIBDIRSUFFIX"/{,pkgconfig},share/man/man1/}
+    chmod -s usr/{include/wcslib-"$V"/,share/doc/wcslib-"$V"/{,html/}}
+}
+

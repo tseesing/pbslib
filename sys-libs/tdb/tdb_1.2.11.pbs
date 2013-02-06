@@ -16,7 +16,7 @@ SRC_URI="http://samba.org/ftp/"$N"/"$N-$V".tar.gz"
 RDEPEND="attr libbsd"
 RECOMMENDED=""
 BDEPEND="python: for python bindings"
-OPTIONAL="py
+OPTIONAL=""
 
 pbs_unpack() {
     dounpack

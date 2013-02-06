@@ -1,0 +1,47 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="Kolab XML Format Schema Definitions Library"
+HOMEPAGE="http://git.kolab.org/libkolabxml"
+LICENSE="GPL"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
+
+SRC_URI="http://mirror.kolabsys.com/pub/releases/$N-$V.tar.gz"
+CHECKSUM="a02541b35153334c69ee1845dfe464c6"
+
+RDEPEND="xerces-c boost-libs"
+RECOMMENDED=""
+BDEPEND="cmake boost xsd"
+OPTIONAL=""
+CONFLICT=""
+REPLACE=""
+
+pbs_unpack() {
+    dounpack
+}
+
+pbs_config() {
+    mkdir build && cd build
+    cmake .. \
+        -DCMAKE_BUILD_TYPE=Release \
+        -DCMAKE_INSTALL_PREFIX=/usr \
+        -DLIB_INSTALL_DIR=/usr/lib"$LIBDIRSUFFIX" 
+}
+
+pbs_build() {
+    domake
+}
+
+pbs_install() {
+    domkinstall
+    cd "$destdir"/usr/include/kolabxml/
+    local i
+    for i in *.h; do
+        doln /usr/include/kolabxml/"${i}" "$destdir"/usr/include/"${i}"
+    done
+}
+

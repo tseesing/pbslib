@@ -51,7 +51,7 @@ lapack_install() {
 
 blas_install() {
     DESCRIPTION="Basic Linear Algebra Subprograms"
-    RDEPEND=""
+    RDEPEND="glibc"
     
     cd "$srcdir"
 

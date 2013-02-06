@@ -13,7 +13,7 @@ PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 SRC_URI="http://www.mplayerhq.hu/MPlayer/releases/MPlayer-"$V".tar.xz"
 CHECKSUM="ac7bf1cfedc1c5c24bfc83107eefb1d9"
 
-RDEPEND="xvidcore x264 samba libsdl schroedinger opencore-amr mpg123 lirc libXxf86vm libXxf86dga libXvMC libXScrnSaver libXinerama libvpx libvorbis libvdpau libtheora pulseaudio libpng libmng libmad libjpeg-turbo mesa libdca libcaca libbluray libass lame jack-audio-connection-kit giflib fribidi fontconfig faad2 faac enca cdparanoia bzip2 alsa-lib aalib a52dec"
+RDEPEND="xvidcore x264 samba libsdl schroedinger opencore-amr mpg123 lirc libXxf86vm libXxf86dga libXvMC libXScrnSaver libXinerama libvpx libvorbis libvdpau libtheora pulseaudio libpng libmng libmad libjpeg-turbo mesa libdca libcaca libbluray libass lame jack-audio-connection-kit giflib fribidi fontconfig faad2 faac enca cdparanoia bzip2 alsa-lib aalib a52dec libcdio libdv lzo openal"
 RECOMMENDED="dejavu-fonts-ttf"
 BDEPEND="dejavu-fonts-ttf yasm xextproto"  
 CONFLICT="mplayer2 mplayer-svn"

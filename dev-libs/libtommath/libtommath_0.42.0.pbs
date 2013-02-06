@@ -1,0 +1,39 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="Highly optimized and portable routines for integer based number theoretic applications"
+HOMEPAGE="http://www.libtom.org"
+LICENSE="custom"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
+
+SRC_URI="http://libtom.org/files/ltm-$V.tar.bz2"
+CHECKSUM="7380da904b020301be7045cb3a89039b"
+
+RDEPEND=""
+RECOMMENDED=""
+BDEPEND=""
+OPTIONAL=""
+CONFLICT=""
+REPLACE=""
+
+pbs_unpack() {
+    dounpack
+}
+
+pbs_patch() {
+    dopatch libtommath-0.42.0-makefile.patch
+}
+
+pbs_build() {
+    domake -f makefile.shared IGNORE_SPEED=1
+}
+
+pbs_install() {
+    domkinstall INSTALL_GROUP=root
+    dodoc LICENSE
+}
+

@@ -1,0 +1,4 @@
+
+* 2013-02-01 Tseesing <chenqixing@ivali.com> - 
+-   Remove "bash" from $RDEPEND, since "fftw" not running on 
+-       specific shell.

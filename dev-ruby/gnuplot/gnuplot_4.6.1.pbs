@@ -1,0 +1,63 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="Plotting package which outputs to X11, PostScript, PNG, GIF, and others"
+HOMEPAGE="http://www.gnuplot.info"
+LICENSE="custom"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
+
+SRC_URI="http://downloads.sourceforge.net/sourceforge/"$N"/"$N-$V".tar.gz"
+CHECKSUM="1ea21a628223159b0297ae65fe8293afd5aab3c0"
+
+RDEPEND="gd lua wxgtk"
+RECOMMENDED=""
+BDEPEND=""
+OPTIONAL=""
+CONFLICT=""
+REPLACE=""
+
+INSTALL="$N.install"
+
+pbs_unpack() {
+    dounpack
+}
+
+pbs_patch() {
+    # Fix default x11 font location
+    sed -i 's|/usr/X11R6/lib/X11/fonts/truetype|/usr/share/fonts/X11/TTF|' src/variable.c
+    sed -i -e 's|/usr/X11R6/lib/X11/fonts/Type1|/usr/share/fonts/X11/Type1|' \
+        -e 's|$(X11ROOT)/X11R6/lib/X11/fonts/Type1|$(X11ROOT)/usr/share/fonts/X11/Type1|' \
+             src/variable.c
+}
+
+pbs_config() {
+    config+="--libexecdir=/usr/bin 
+             --with-gihdir=/usr/share/gnuplot 
+             --datadir=/usr/share 
+             --with-readline=gnu 
+             --with-texdir="$destdir"/usr/share/texmf/tex/latex/gnuplot "
+    doconfig
+}
+
+pbs_build() {
+    domake pkglibexecdir=/usr/bin
+}
+
+pbs_install() {
+    make prefix="$destdir"/usr \
+         libexecdir="$destdir"/usr/bin \
+         mandir="$destdir"/usr/share/man \
+         infodir="$destdir"/usr/share/info \
+         pkglibexecdir="$destdir"/usr/bin \
+         GIHDIR="$destdir"/usr/share/gnuplot \
+         datadir="$destdir"/usr/share install
+
+    dodoc Copyright
+    install -Dm644 lisp/dotemacs "$destdir"/usr/share/emacs/site-lisp/dotemacs
+    rm -f "$destdir"/usr/share/texmf-dist/ls-R
+}
+

@@ -13,7 +13,7 @@ PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
 SRC_URI="http://xorg.freedesktop.org/releases/individual/app/"$N-$V".tar.bz2"
 
-RDEPEND=""
+RDEPEND="glibc"
 RECOMMENDED=""
 BDEPEND=""
 OPTIONAL=""

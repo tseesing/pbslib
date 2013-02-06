@@ -8,11 +8,12 @@
 DESCRIPTION="A library for accessing a CDDB server"
 HOMEPAGE="http://libcddb.sourceforge.net"
 LICENSE="GPL"
-PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>
+          chenqixing@ivali.com"
 
 SRC_URI="http://downloads.sourceforge.net/project/"$N"/"$N"/"$V"/"$N-$V".tar.bz2"
 
-RDEPEND="glibc"
+RDEPEND="glibc libcdio"
 BDEPEND=""
 RECOMMENDED=""
 

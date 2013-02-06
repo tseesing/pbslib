@@ -1,0 +1,35 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="API for using and interacting with Activities"
+HOMEPAGE="https://projects.kde.org/projects/kde/kdelibs/kactivities"
+LICENSE="GPL,FDL"
+PACKAGER="StartOS Developers<>"
+
+SRC_URI="http://download.kde.org/stable/"$V"/src/"$N-$V".tar.xz"
+CHECKSUM=""
+
+RDEPEND="nepomuk-core"
+BDEPEND="cmake automoc4 mesa"
+
+pbs_unpack() {
+    dounpack
+}
+
+pbs_config() {
+    doconfig -DCMAKE_BUILD_TYPE=Release  \
+        -DKDE4_BUILD_TESTS=OFF          
+}
+
+pbs_build() {
+    domake
+}
+
+pbs_install() {
+    domkinstall
+}
+

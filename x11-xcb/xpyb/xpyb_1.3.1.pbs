@@ -15,11 +15,11 @@ SRC_URI="http://xorg.freedesktop.org/releases/individual/xcb/"$N-$V".tar.bz2"
 RDEPEND="libxcb"
 RECOMMENDED=""
 BDEPEND=""
-OPTIONAL=""
+OPTIONAL="python: for python bindings"
 CONFLICT=""
 
 pbs_unpack() {
-        dounpack
+    dounpack
 }
 
 pbs_config() {
@@ -34,5 +34,4 @@ pbs_build() {
 pbs_install() {
     domkinstall
 }
-
 

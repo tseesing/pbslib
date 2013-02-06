@@ -17,7 +17,7 @@ RDEPEND="bzip2 libksba libgcrypt pth libassuan readline pinentry dirmngr"
 BDEPEND="curl openldap libusb-compat"
 REPLACE="gnupg2"
 OPTIONAL="curl: gpg2keys_curl
-          libldap: gpg2keys_ldap
+          openldap: gpg2keys_ldap
           libusb-compat: scdaemon"
 
 INSTALL="$N.install"

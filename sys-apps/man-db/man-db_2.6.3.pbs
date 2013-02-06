@@ -13,7 +13,7 @@ PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 SRC_URI="http://savannah.nongnu.org/download/"$N"/"$N-$V".tar.xz"
 CHECKSUM="a593a095599ae97bcacf8d038659a146"
 
-RDEPEND="bash gdbm zlib groff libpipeline"
+RDEPEND="gdbm zlib groff libpipeline"
 BDEPEND=""
 RECOMMENDED="groff"
 OPTIONAL="less:

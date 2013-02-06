@@ -8,13 +8,14 @@
 DESCRIPTION="list fonts served by X font server"
 HOMEPAGE="http://xorg.freedesktop.org/"
 LICENSE="custom"
-PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>
+          chenqixing@ivali.com"
 GROUP="x11-apps"
 
 SRC_URI="http://xorg.freedesktop.org/releases/individual/app/"$N-$V".tar.bz2"
 CHECKSUM="3e2d206f500a9615ec65dbb6b1e4b487"
 
-RDEPEND="libXaw"
+RDEPEND="libFS"
 BDEPEND="xbitmaps"
 
 pbs_unpack() {

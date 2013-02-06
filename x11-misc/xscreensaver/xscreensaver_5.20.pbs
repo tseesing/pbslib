@@ -1,0 +1,50 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="A modular screen saver and locker for the X Window System"
+HOMEPAGE="http://www.jwz.org/xscreensaver"
+LICENSE="BSD"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
+
+SRC_URI="http://www.jwz.org/"$N"/"$N-$V".tar.gz"
+CHECKSUM="052cc6676fe7818ec4131f41942266c237acdced"
+
+RDEPEND="libjpeg-turbo libXi libXinerama libXmu libXpm libXrandr mesa pam"
+BDEPEND="bc"
+RECOMMENDED=""
+
+pbs_unpack() {
+    dounpack
+}
+
+pbs_patch() {
+    dopatch --localstatedir=/var
+}
+
+pbs_config() {
+    config+="--with-x-app-defaults=/usr/share/X11/app-defaults
+             --with-pam 
+             --with-login-manager 
+             --with-gtk 
+             --with-gl
+             --without-gle 
+             --with-pixbuf 
+             --with-jpeg"
+    doconfig
+}
+
+pbs_build() {
+    domake
+}
+
+pbs_install() {
+    make install_prefix="$destdir" install
+    dodoc "$filesdir"/LICENSE
+    dopamd xscreensaver.pam
+    #echo "NoDisplay=true" >> "${destdir}"/usr/share/applications/xscreensaver-properties.desktop
+}
+

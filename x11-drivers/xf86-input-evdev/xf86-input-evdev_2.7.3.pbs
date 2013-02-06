@@ -14,7 +14,7 @@ GROUP="x11-drivers"
 SRC_URI="http://xorg.freedesktop.org/releases/individual/driver/"$N-$V".tar.bz2"
 CHECKSUM=""
 
-RDEPEND="glibc xorg-server(>=1.13.0)"
+RDEPEND="glibc xorg-server(>=1.13.0) mtdev systemd"
 BDEPEND="util-macros"
 
 pbs_unpack() {

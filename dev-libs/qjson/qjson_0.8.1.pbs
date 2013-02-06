@@ -1,0 +1,40 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="A qt-based library that maps JSON data to QVariant objects"
+HOMEPAGE="http://qjson.sourceforge.net"
+LICENSE="GPL"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
+
+SRC_URI="git://github.com/flavio/qjson.git"
+
+RDEPEND="qt"
+RECOMMENDED=""
+BDEPEND="cmake git"
+OPTIONAL=""
+CONFLICT=""
+
+pbs_unpack() {
+    dounpack
+}
+
+pbs_patch() {
+    git checkout 0.8.1
+}
+
+pbs_config() {
+    doconfig -DCMAKE_BUILD_TYPE=Release
+}
+
+pbs_build() {
+    domake
+}
+
+pbs_install() {
+    domkinstall
+}
+

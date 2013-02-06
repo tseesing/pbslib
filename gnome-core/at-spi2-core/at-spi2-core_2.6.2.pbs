@@ -13,7 +13,7 @@ PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 SRC_URI="http://ftp.gnome.org/pub/gnome/core/3.6/3.6.2/sources/"$N-$V".tar.xz"
 CHECKSUM="0d5321ce9fdd7d036b072ef28cba14088394606e1687183ec5d0ae6adea8c87e"
 
-RDEPEND="glib2"
+RDEPEND="glib2 dbus libXtst"
 RECOMMENDED=""
 BDEPEND=""
 OPTIONAL=""

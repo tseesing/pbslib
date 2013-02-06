@@ -8,19 +8,19 @@
 DESCRIPTION="iLBC is low bitrate audio codec - plugin for mediastreamer"
 HOMEPAGE="http://download.savannah.gnu.org/releases/linphone/plugins/sources/"
 LICENSE="GPL"
-PACKAGER="StartOS Developers"
+PACKAGER="Zhongxin Huang <huangzhognxin@ivali.com>"
 
 SRC_URI="http://download.savannah.gnu.org/releases/linphone/plugins/sources/"$N-$V".tar.gz"
 CHECKSUM="9c8740345dd8ee9732604a8f6a4329e6"
 
-RDEPEND="ilbc mediastreamer"
+RDEPEND="mediastreamer"
 RECOMMENDED=""
 BDEPEND=""
 OPTIONAL=""
 CONFLICT=""
 
 pbs_unpack() {
-        dounpack
+    dounpack
 }
 
 pbs_config() {

@@ -1,0 +1,42 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="High-level interface for the Resource Description Framework"
+HOMEPAGE="http://librdf.org/"
+LICENSE="GPL"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>
+          chenqixing@ivali.com"
+
+SRC_URI="http://download.librdf.org/source/"$N-$V".tar.gz"
+CHECKSUM="d9a274fc086e61119d5c9beafb8d05527e040ec86f4c0961276ca8de0a049dbd"
+
+RDEPEND="berkeley-db rasqal raptor2 libtool libmysqlclient postgresql-libs unixodbc sqlite libiodbc"
+BDEPEND=""
+RECOMMENDED=""
+CONFLICT=""
+
+pbs_unpack() {
+    dounpack
+}
+
+pbs_config() {
+    config+="--enable-release 
+        --disable-static 
+        --with-raptor=system 
+        --with-rasqal=system 
+        --with-sqlite=3"
+    doconfig
+}
+
+pbs_build() {
+    domake
+}
+
+pbs_install() {
+    domkinstall
+}
+

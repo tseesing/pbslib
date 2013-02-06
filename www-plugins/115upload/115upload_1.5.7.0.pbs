@@ -6,27 +6,33 @@
 #
 
 DESCRIPTION="115 upload plugin for firefox"
-HOMEPAGE="www.115.com"
+HOMEPAGE="http://www.115.com"
 LICENSE="custom"
-PACKAGER="StartOS Developers"
+PACKAGER="Zhongxin Huang <huangzhonxin@ivali.com>"
 
-SRC_URI="http://115.com/static/install/"$N"_v"$V"_x86.tar.gz"
-CHECKSUM="685fda7920c1df3d22ca7430949a8a77"
-
+case "$ARCH" in
+    i?86)
+      SRC_URI="http://115.com/static/install/"$N"_v"$V"_x86.tar.gz"
+      CHECKSUM="685fda7920c1df3d22ca7430949a8a77" ;;
+    x86_64)
+      SRC_URI="http://115.com/static/install/"$N"_v"$V"_x64.tar.gz"
+      CHECKSUM="9a41b7c596353ed01393a987bc4f9dab"
+esac
+       
 RDEPEND="gcc-libs"
 RECOMMENDED=""
 BDEPEND=""
 CONFLICT=""
 
 pbs_unpack() {
-        dounpack
+    dounpack
 }
 
 pbs_install() {
-    docp 115upload.so "$destdir"/usr/lib/115u/
+    docp 115upload.so "$destdir"/usr/lib"$LIBDIRSUFFIX"/115u/
     cd "$destdir"
     for i in xulrunner mozilla iceape iceweasel firefox midbrowser xulrunner-addons; do
-        doln /usr/lib/115u/115upload.so usr/lib/"${i}"/plugins/115upload.so
+        doln /usr/lib"$LIBDIRSUFFIX"/115u/115upload.so usr/lib"$LIBDIRSUFFIX"/"${i}"/plugins/115upload.so
     done
 }
 

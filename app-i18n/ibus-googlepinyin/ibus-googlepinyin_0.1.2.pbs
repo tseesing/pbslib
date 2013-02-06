@@ -15,7 +15,7 @@ YARCH="any"
 SRC_URI="http://libgooglepinyin.googlecode.com/files/"$N-$V".tar.bz2"
 CHECKSUM="0b4783942163007a40ca200c81f9150247a26484"
 
-RDEPEND="ibus libgooglepinyin iso-codes"
+RDEPEND="ibus libgooglepinyin iso-codes python"
 RECOMMENDED=""
 BDEPEND="cmake"
 CONFLICT=""

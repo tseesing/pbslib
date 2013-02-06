@@ -1,0 +1,40 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="A general purpose, double precision, celestial mechanics, astrometry and astrodynamics library."
+HOMEPAGE="http://libnova.sourceforge.net/"
+LICENSE="GPL"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
+
+SRC_URI="http://downloads.sourceforge.net/sourceforge/$N/$N-$V.tar.gz"
+CHECKSUM="4ea7034a907d0578646b0d12fc4a095de8b23f51"
+
+RDEPEND="glibc"
+RECOMMENDED=""
+BDEPEND="pkgconfig"
+OPTIONAL=""
+CONFLICT=""
+REPLACE=""
+
+pbs_unpack() {
+    dounpack
+}
+
+pbs_config() {
+    config+=""
+    doconfig
+}
+
+pbs_build() {
+    domake
+}
+
+pbs_install() {
+    domkinstall
+}
+
+

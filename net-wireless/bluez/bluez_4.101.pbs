@@ -8,7 +8,8 @@
 DESCRIPTION="Bluetooth Tools and System Daemons for Linux"
 HOMEPAGE="http://bluez.sourceforge.net/"
 LICENSE="GPL2"
-PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>
+          chenqixing@ivali.com"
 
 SRC_URI="http://www.kernel.org/pub/linux/bluetooth/"$N-$V".tar.bz2"
 CHECKSUM="902b390af95c6c5d6d1a17d94c8344ab"
@@ -16,10 +17,10 @@ CHECKSUM="902b390af95c6c5d6d1a17d94c8344ab"
 RDEPEND="dbus systemd python"
 BDEPEND=""
 RECOMMENDED=""
-OPTIONAL="gstreamer0.10-base: bluetooth GStreamer support
+OPTIONAL="gst-plugins-base0.10: bluetooth GStreamer support
           alsa-lib: Audio bluetooth devices support
           dbus-python: to run bluez-simple-agent
-          python2-gobject: to run bluez-simple-agent
+          pygobject: to run bluez-simple-agent
           libusb-compat: USB adapters support
           cups: CUPS backend"
 

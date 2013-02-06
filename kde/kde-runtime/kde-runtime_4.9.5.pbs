@@ -1,0 +1,43 @@
+#
+# StartOS package build script
+#
+
+DESCRIPTION="Plugins and applications necessary for the running of KDE applications"
+HOMEPAGE="https://projects.kde.org/projects/kde/kde-runtime"
+LICENSE="GPL,LGPL"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
+GROUP="kde"
+
+SRC_URI="http://download.kde.org/stable/"$V"/src/"$N-$V".tar.xz"
+
+RDEPEND="kactivities samba libssh libcanberra xauth"
+BDEPEND="pkgconfig cmake automoc4 kdepimlibs openslp networkmanager"
+OPTIONAL="kdepimlibs: to generate drkonqi reports
+          htdig: to build the search index in khelpcenter
+          rarian: needed by khelpcenter
+          gdb: drkonq crash handler"
+
+INSTALL="$N.install"
+
+pbs_unpack() {
+    dounpack
+}
+
+pbs_config() {
+    doconfig -DCMAKE_BUILD_TYPE=Release \
+         -DCMAKE_SKIP_RPATH=ON  \
+         -DKDE4_BUILD_TESTS=OFF \
+         -DWITH_QNtrack=OFF
+}
+
+pbs_build() {
+    domake
+}
+
+pbs_install() {
+    domkinstall
+    cd "$destdir"
+    rm -rf usr/share/icons/hicolor/index.theme
+    doln -sf /usr/lib"$LIBDIRSUFFIX"/kde4/libexec/kdesu usr/bin/kdesu
+}
+

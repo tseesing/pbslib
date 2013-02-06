@@ -1,0 +1,47 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="Python bindings for the Qt toolkit"
+HOMEPAGE="http://pypi.python.org/pypi/PyQt"
+LICENSE="GPL"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
+
+SRC_URI="http://downloads.sourceforge.net/$N/PyQt-x11-gpl-$V.tar.gz"
+CHECKSUM="514e1f9597771dc732ba75ba9fa5c6b6"
+
+RDEPEND="sip qtwebkit dbus-python"
+BDEPEND="qt phonon mesa"
+RECOMMENDED=""
+CONFLICT=""
+OPTIONAL="'phonon: enable audio and video in PyQt applications
+           python-opengl: enable OpenGL 3D graphics in PyQt applications
+           qscintilla: QScintilla API
+           qt-assistant-compat: add PyQt online help in Qt Assistant"
+
+pbs_unpack() {
+    dounpack
+}
+
+pbs_config() {
+    python configure.py \
+           --confirm-license \
+           -v /usr/share/sip \
+           --qsci-api
+
+    # rpath fix
+    find -name 'Makefile' | xargs sed -i 's|-Wl,-rpath,/usr/lib||g;s|-Wl,-rpath,.* ||g'
+}
+
+pbs_build() {
+    domake
+}
+
+pbs_install() {
+    # INSTALL_ROOT is needed for the QtDesigner module, the other Makefiles use DESTDIR
+    domkinstall INSTALL_ROOT="$destdir"
+}
+

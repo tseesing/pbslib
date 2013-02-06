@@ -8,13 +8,14 @@
 DESCRIPTION="Used to create autoconfiguration files"
 HOMEPAGE="http://www.gnu.org/software/autoconf/autoconf.html"
 LICENSE="GPLv2,GPLv3,custom"
-PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>
+          chenqixing@ivali.com"
 YARCH="any"
 
 SRC_URI="ftp://ftp.gnu.org/pub/gnu/"$N"/"$N-$V".tar.xz"
 CHECKSUM="50f97f4159805e374639a73e2636f22e"
 
-RDEPEND="m4 gawk diffutils bash"
+RDEPEND="m4 gawk diffutils perl"
 BDEPEND=""
 
 INSTALL="$N.install"

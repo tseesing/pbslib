@@ -13,7 +13,7 @@ PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 SRC_URI="http://effbot.org/media/downloads/Imaging-"$V".tar.gz"
 CHECKSUM="fc14a54e1ce02a0225be8854bfba478e"
 
-RDEPEND=""
+RDEPEND="lcms"
 BDEPEND=""
 RECOMMENDED=""
 CONFLICT=""

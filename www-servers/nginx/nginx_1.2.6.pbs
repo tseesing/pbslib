@@ -1,0 +1,86 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="A famous HTTP and reverse proxy server."
+HOMEPAGE="http://enginx.org/"
+LICENSE="Custom"
+PACKAGER="chenqixing@ivali.com"
+
+SRC_URI="http://nginx.org/download/$N-$V.tar.gz"
+CHECK_SUM="1350d26eb9b66364d9143fb3c4366ab6"
+
+RDEPEND="geoip zlib gd geoip libpng openssl pcre"
+BDEPEND="geoip"
+RECOMMENDED=""
+OPTIONAL=""
+
+pbs_unpack() {
+    dounpack
+}
+
+pbs_config() {
+    config="  --prefix=/usr/share/nginx 
+              --sbin-path=/usr/sbin/nginx
+              --conf-path=/etc/nginx/nginx.conf
+              --error-log-path=/var/log/nginx/error.log
+              --http-log-path=/var/log/nginx/access.log
+              --pid-path=/var/run/nginx.pid
+              --lock-path=/var/lock/nginx/nginx.lock
+              --user=http 
+              --group=http 
+              --with-rtsig_module
+              --with-select_module
+              --with-poll_module
+              --with-file-aio
+              --with-ipv6
+              --with-pcre                       
+              --with-pcre-jit                   
+              --with-http_ssl_module                 
+              --with-http_realip_module
+              --with-http_addition_module
+              --with-http_image_filter_module   
+              --with-http_geoip_module          
+              --with-http_gzip_static_module    
+              --http-client-body-temp-path=/var/lib/nginx/client-body
+              --http-proxy-temp-path=/var/lib/nginx/proxy
+              --http-fastcgi-temp-path=/var/lib/nginx/fastcgi
+              --http-uwsgi-temp-path=/var/lib/nginx/uwsgi
+              --http-scgi-temp-path=/var/lib/nginx/scgi "
+
+             #    --with-mail                       
+             #    --with-mail_ssl_module            
+             #    --with-http_xslt_module
+             #    --with-http_sub_module            
+             #    --with-http_dav_module            
+             #    --with-http_flv_module            
+             #    --with-http_mp4_module            
+             #    --with-http_random_index_module   
+             #    --with-http_secure_link_module    
+             #    --with-http_degradation_module    
+             #    --with-http_stub_status_module    
+             #    --with-google_perftools_module    
+             #    --with-md5-asm                    
+             #    --with-sha1-asm                   
+             #    --with-libatomic "
+
+   ./configure $config
+              
+}
+
+pbs_build() {
+    domake
+}
+
+pbs_install() {
+    domkinstall
+    dodoc LICENSE CHANGES
+    dounit nginx.service
+
+    install -dm700  "$destdir"/var/lib/nginx
+    install -dm700  "$destdir"/var/lib/nginx/{client-body,proxy,fastcgi,uwsgi,scgi}
+}
+

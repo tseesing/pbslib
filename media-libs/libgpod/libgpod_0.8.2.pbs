@@ -20,11 +20,11 @@ CONFLICT=""
 OPTIONAL="pygobject: python bindings"
 
 pbs_unpack() {
-        dounpack
+    dounpack
 }
 
 pbs_config() {
-    config+="--with-systemd-dir=/usr/lib/systemd 
+    config+="--with-udev-dir=/usr/lib/udev 
              --enable-systemd"
     doconfig
 }

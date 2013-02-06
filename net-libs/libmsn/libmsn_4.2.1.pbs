@@ -8,7 +8,7 @@
 DESCRIPTION="A reusable, open-source, fully documented library for connecting to Microsoft's MSN"
 HOMEPAGE="http://sourceforge.net/projects/libmsn"
 LICENSE="GPL"
-PACKAGER="StartOS Developers"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
 SRC_URI="http://downloads.sourceforge.net/"$N"/"$N-$V".tar.bz2"
 CHECKSUM="38e46e589720eefd71f92b6b76993bf0"
@@ -20,7 +20,11 @@ OPTIONAL=""
 CONFLICT=""
 
 pbs_unpack() {
-        dounpack
+    dounpack
+}
+
+pbs_patch() {
+    dopatch libmsn-4.2.1-gcc47.patch
 }
 
 pbs_config() {

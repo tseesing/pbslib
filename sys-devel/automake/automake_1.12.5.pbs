@@ -8,12 +8,13 @@
 DESCRIPTION="Used to generate Makefile.in from Makefile.am"
 HOMEPAGE="http://www.gnu.org/software/automake/"
 LICENSE="GPL"
-PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>
+          chenqixing@ivali.com"
 YARCH="any"
 
 SRC_URI="ftp://ftp.gnu.org/gnu/"$N"/"$N-$V".tar.xz"
 
-RDEPEND="autoconf"
+RDEPEND="autoconf perl"
 BDEPEND=""
 
 OPTIONS="nodev"

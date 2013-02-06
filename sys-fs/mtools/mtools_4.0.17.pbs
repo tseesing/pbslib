@@ -13,7 +13,7 @@ PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 SRC_URI="ftp://ftp.gnu.org/gnu/"$N"/"$N-$V".tar.bz2"
 CHECKSUM="15571c615d8f75f5f6d294272f80c7fa"
 
-RDEPEND=""
+RDEPEND="libbsd"
 RECOMMENDED=""
 BDEPEND="libX11 libSM texinfo"
 OPTIONAL="libX11: required by floppyd

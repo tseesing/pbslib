@@ -7,24 +7,24 @@
 
 DESCRIPTION="Open Real-time Transport Protocol (RTP, RFC3550) stack"
 HOMEPAGE="http://www.linphone.org/"
-LICENSE="GPLv2+"
-PACKAGER="StartOS Developers"
+LICENSE="GPL"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
 SRC_URI="http://download.savannah.gnu.org/releases/linphone/ortp/sources/"$N-$V".tar.gz"
 CHECKSUM="b3f2f02fc5b7ba7e294806c81d419f3c"
 
-RDEPEND="glibc"
+RDEPEND="libzrtpcpp libsrtp"
 RECOMMENDED=""
 BDEPEND=""
 OPTIONAL=""
 CONFLICT=""
 
 pbs_unpack() {
-        dounpack
+    dounpack
 }
 
 pbs_config() {
-    config+=""
+    config+="--enable-zrtp --disable-strict"
     doconfig
 }
 

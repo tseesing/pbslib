@@ -54,7 +54,7 @@ device-mapper_install() {
 
 lvm2_install() {
     DESCRIPTION="Logical Volume Manager 2 utilities"
-    RDEPEND="device-mapper readline systemd"
+    RDEPEND="device-mapper readline systemd ncurses"
  
     make DESTDIR="$destdir" install_lvm2
     # install applib

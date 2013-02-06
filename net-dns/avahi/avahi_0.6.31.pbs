@@ -20,13 +20,14 @@ RECOMMENDED=""
 OPTIONAL="dbus: communicating with client applications
           gtk3: avahi-discover-standalone, bshell, bssh, bvnc
           gtk2: gtk2 bindings
-          qt3: qt3 bindings
           qt: qt bindings
           pygtk: avahi-bookmarks, avahi-discover
           twisted: avahi-bookmarks
           mono: mono bindings
           dbus-python: avahi-discover
           nss-mdns: NSS support for mDNS"
+#         qt3: qt3 bindings"
+#    Note: We have no qt3 now.
 
 INSTALL="$N.install"
 

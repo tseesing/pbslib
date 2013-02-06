@@ -14,7 +14,7 @@ PACKAGER="chenqixing@ivali.com
 SRC_URI="http://www.balabit.com/downloads/files/$N/sources/$V/source/${N}_$V.tar.gz"
 CHECKSUM="06f09057c3dfb84eba381e0141f92565673ec0c8"
 
-RDEPEND="eventlog glib2 libcap libdbi pcre openssl systemd"
+RDEPEND="eventlog glib2 libcap libdbi pcre openssl systemd json-c"
 BDEPEND="flex pkgconfig"
 RECOMMENDED=""
 OPTIONAL="logrotate: for rotating log files"

@@ -8,7 +8,7 @@
 DESCRIPTION="A software for reading and writing Data Matrix 2D barcodes"
 HOMEPAGE="http://www.libdmtx.org/"
 LICENSE="GPL"
-PACKAGER="StartOS Developers"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
 SRC_URI="http://downloads.sourceforge.net/"$N"/"$N-$V".tar.bz2"
 CHECKSUM="d3a4c0becd92895eb606dbdb78b023e2"
@@ -20,7 +20,7 @@ OPTIONAL=""
 CONFLICT=""
 
 pbs_unpack() {
-        dounpack
+    dounpack
 }
 
 pbs_config() {

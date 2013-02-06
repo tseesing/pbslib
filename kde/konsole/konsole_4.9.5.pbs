@@ -1,0 +1,34 @@
+#
+# YLmf_OS package build script
+#
+
+DESCRIPTION="KDE Terminal"
+HOMEPAGE="http://kde.org/applications/system/konsole"
+LICENSE="GPL,LGPL,FDL"
+PACKAGER="Zhongxin Huang <huangzhongxin@@ivali.com>"
+GROUP="kde"
+
+SRC_URI="http://download.kde.org/stable/"$V"/src/"$N-$V".tar.xz"
+
+RDEPEND="kde-runtime kdelibs"
+BDEPEND="cmake automoc4"
+
+INSTALL="$N.install"
+
+pbs_unpack() {
+    dounpack
+}
+
+pbs_config() {
+    doconfig -DCMAKE_BUILD_TYPE=Release \
+             -DKDE4_BUILD_TESTS=OFF
+}
+
+pbs_build() {
+    domake
+}
+
+pbs_install() {
+    domkinstall
+}
+

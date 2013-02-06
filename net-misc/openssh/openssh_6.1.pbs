@@ -8,12 +8,13 @@
 DESCRIPTION="Port of OpenBSD's free SSH release"
 HOMEPAGE="http://www.openssh.org/"
 LICENSE="custom:BSD"
-PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>
+          chenqixing@ivali.com"
 
 SRC_URI="ftp://ftp.openbsd.org/pub/OpenBSD/OpenSSH/portable/"$N-$V"p1.tar.gz"
 CHECKSUM="751c92c912310c3aa9cadc113e14458f843fc7b3"
 
-RDEPEND="krb5 openssl libedit ldns"
+RDEPEND="krb5 openssl libedit ldns pam"
 BDEPEND=""
 OPTIONAL="xauth: X11 forwarding
           x11-ssh-askpass: input passphrase in X"

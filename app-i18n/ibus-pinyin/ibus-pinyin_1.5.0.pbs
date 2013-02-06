@@ -14,7 +14,7 @@ GROUP="ibus"
 SRC_URI="http://ibus.googlecode.com/files/"$N-$V".tar.gz"
 CHECKSUM="f7728b5b785fae58e2b4de8dfda45612"
 
-RDEPEND="ibus lua sqlite util-linux pyzy"
+RDEPEND="ibus lua sqlite util-linux pyzy libibus"
 BDEPEND="intltool"
 RECOMMENDED=""
 

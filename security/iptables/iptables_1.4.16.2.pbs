@@ -13,7 +13,7 @@ PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 SRC_URI="http://www.iptables.org/projects/"$N"/files/"$N-$V".tar.bz2"
 CHECKSUM="57220bb26866a713073e5614f88071fc"
 
-RDEPEND="glibc bash"
+RDEPEND="glibc"
 BDEPEND="linux-kernel-headers"
 RECOMMENDED=""
 

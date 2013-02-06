@@ -1,6 +1,6 @@
 
 post_install() {
-    if [ ! -e etc/xml/catalog ]; then
+    if [ ! -e /etc/xml/catalog ]; then
         xmlcatalog --noout --create /etc/xml/catalog
     fi
     
@@ -21,7 +21,7 @@ post_install() {
     
     xmlcatalog --noout --add "delegateURI" \
         "http://www.oasis-open.org/docbook/" \
-            "file:///etc/xml/docbook-xml" \
+         "file:///etc/xml/docbook-xml" \
         /etc/xml/catalog
 }
 

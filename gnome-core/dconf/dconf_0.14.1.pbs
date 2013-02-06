@@ -8,13 +8,15 @@
 DESCRIPTION="Simple low-level configuration system"
 HOMEPAGE="http://live.gnome.org/dconf"
 LICENSE="LGPL"
-PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>
+          chenqixing@ivali.com"
 
 SRC_URI="http://ftp.gnome.org/pub/gnome/core/3.6/3.6.2/sources/"$N-$V".tar.xz"
 
 RDEPEND="libxml2"
 BDEPEND=""
 RECOMMENDED=""
+OPTIONAL="gtk3: for using dconf-editor"
 
 INSTALL="$N.install"
 

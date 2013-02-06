@@ -8,12 +8,13 @@
 DESCRIPTION="A GTK+ module that bridges ATK to D-Bus at-spi"
 HOMEPAGE="http://www.gnome.org"
 LICENSE="GPL2"
-PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>
+          chenqixing@ivali.com"
 
 SRC_URI="http://ftp.gnome.org/pub/gnome/core/3.6/3.6.2/sources/"$N-$V".tar.xz"
 CHECKSUM="496c8432e8ab82735145f9af5d45209e9b708bf3c94e527ee091d08641a9bcfa"
 
-RDEPEND="glib2"
+RDEPEND="glib2 at-spi2-core atk"
 RECOMMENDED=""
 BDEPEND=""
 OPTIONAL=""

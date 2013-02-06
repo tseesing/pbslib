@@ -8,11 +8,12 @@
 DESCRIPTION="Video Acceleration (VA) API for Linux"
 HOMEPAGE="http://www.freedesktop.org/wiki/Software/vaapi"
 LICENSE="MIT"
-PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>
+          chenqixing@ivali.com"
 
 SRC_URI="http://www.freedesktop.org/software/vaapi/releases/"$N"/"$N-$V".tar.bz2"
 
-RDEPEND="mesa libdrm"
+RDEPEND="mesa libdrm glibc systemd"
 BDEPEND=""
 RECOMMENDED="libva-vdpau-driver libva-intel-driver"
 OPTIONAL="libva-vdpau-driver: vdpau back-end for nvidia

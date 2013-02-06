@@ -8,19 +8,19 @@
 DESCRIPTION="A Qt interface to the Zeitgeist event tracking system"
 HOMEPAGE="https://projects.kde.org/projects/kdesupport/libqzeitgeist"
 LICENSE="GPL"
-PACKAGER="StartOS Developers"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
 SRC_URI="http://download.kde.org/stable/"$N"/"$V"/src/"$N-$V".tar.bz2"
 CHECKSUM="97bdea6a1865db7d5f29c93e3a492f24"
 
 RDEPEND="qt"
 RECOMMENDED=""
-BDEPEND="cmake zeitgeist-dev"
+BDEPEND="cmake zeitgeist automoc4"
 OPTIONAL=""
 CONFLICT=""
 
 pbs_unpack() {
-        dounpack
+    dounpack
 }
 
 pbs_patch() {
@@ -28,7 +28,7 @@ pbs_patch() {
 }
 
 pbs_config() {
-    doconfig -DCMAKE_BUILD_TYPE=Release -DDECLARATIVE_IMPORT_PREFIX=/usr/lib/qt/imports/
+    doconfig -DCMAKE_BUILD_TYPE=Release -DDECLARATIVE_IMPORT_PREFIX=/usr/lib"$LIBDIRSUFFIX"/qt/imports/
 }
 
 pbs_build() {

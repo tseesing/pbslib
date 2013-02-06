@@ -26,6 +26,7 @@ pbs_build() {
 
 pbs_install() {
     domkinstall
-    dodoc ChangeLog COPYING NEWS README 
+    dodoc COPYING
 }
+
 

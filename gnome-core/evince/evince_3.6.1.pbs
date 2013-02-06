@@ -16,8 +16,9 @@ CHECKSUM="1b87b2579d438a126391f9044611b472e9f7b5b712e40b5645b0810164bc41b5"
 
 RDEPEND="gtk3 libgxps libspectre poppler-glib djvulibre gnome-icon-theme t1lib libgnome-keyring desktop-file-utils dconf gsettings-desktop-schemas"
 BDEPEND="itstool intltool gobject-introspection gtk-doc nautilus gobject-introspection docbook-xsl"
-OPTIONAL="texlive-bin: DVI support
+OPTIONAL="texlive-bin: DVI support 
           gvfs: bookmark support and session saving"
+#         Note: We have no texlive-bin yet.
 RECOMMENDED=""
 
 INSTALL="$N.install"

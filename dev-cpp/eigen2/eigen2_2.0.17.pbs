@@ -8,21 +8,19 @@
 DESCRIPTION="A lightweight C++ template library for vector and matrix math, a.k.a. linear algebra"
 HOMEPAGE="http://eigen.tuxfamily.org/index.php?title=Main_Page"
 LICENSE="GPL,LGPL"
-PACKAGER="StartOS Developers"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
 SRC_URI="http://bitbucket.org/eigen/eigen/get/"$V".tar.bz2"
 CHECKSUM="2dfd1e2765d82c306adbfcd6a0eb324b"
 
 RDEPEND=""
 RECOMMENDED=""
-BDEPEND=""
+BDEPaEND="cmake pkgconfig"
 OPTIONAL=""
 CONFLICT=""
 
-OPTIONS="nodev"
-
 pbs_unpack() {
-        dounpack
+    dounpack
 }
 
 pbs_config() {

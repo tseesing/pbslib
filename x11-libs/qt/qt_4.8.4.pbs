@@ -8,13 +8,17 @@
 DESCRIPTION="Qt is a cross-platform application and UI framework for developers using C++ or QML, a CSS & JavaScript like language."
 HOMEPAGE="http://qt-project.org/"
 LICENSE="GPL,LGPL"
-PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>
+          chenqixing@ivali.com"
 
 SRC_URI="http://releases.qt-project.org/qt4/source/qt-everywhere-opensource-src-"$V".tar.gz"
 
-RDEPEND=""
+RDEPEND="alsa-lib libpng libtiff ca-certificates mesa libXv xdg-utils hicolor-icon-theme  desktop-file-utils libmng"
 BDEPEND=""
 RECOMMENDED=""
+OPTIONAL="unixodbc: ODBC driver
+          postgresql-libs: PostgreSQL driver
+          libmysqlclient: MySQL driver"
 
 INSTALL="$N.install"
 

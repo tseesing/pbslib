@@ -8,12 +8,13 @@
 DESCRIPTION="A library for portable low-level access to a video framebuffer, audio output, mouse, and keyboard"
 HOMEPAGE="http://www.libsdl.org/"
 LICENSE="LGPL"
-PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>
+          chenqixing@ivali.com"
 
 SRC_URI="http://www.libsdl.org/release/SDL-"$V".tar.gz"
 CHECKSUM="9d96df8417572a2afb781a7c4c811a85"
 
-RDEPEND="glibc libXext libXrender libX11"
+RDEPEND="glibc libXext libXrender libX11 directfb"
 BDEPEND="alsa-lib mesa pulseaudio"
 RECOMMENDED=""
 OPTIONAL="alsa-lib: ALSA audio driver

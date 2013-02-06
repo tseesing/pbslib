@@ -1,0 +1,53 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="OpenPrinting CUPS Filters"
+HOMEPAGE="http://www.linuxfoundation.org/collaborate/workgroups/openprinting"
+LICENSE="GPL"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
+
+SRC_URI="http://www.openprinting.org/download/$N/$N-$V.tar.gz"
+CHECKSUM="0640a02a3fb88d3dbdb224e3becd400d"
+
+RDEPEND="lcms2 poppler qpdf poppler-glib"
+RECOMMENDED=""
+BDEPEND="ghostscript"
+OPTIONAL="ghostscript: for non-PostScript printers to print with CUPS to convert PostScript to raster images
+          foomatic-db: drivers use Ghostscript to convert PostScript to a printable form directly
+          foomatic-db-engine: drivers use Ghostscript to convert PostScript to a printable form directly
+          foomatic-db-nonfree: drivers use Ghostscript to convert PostScript to a printable form directly"
+CONFLICT=""
+REPLACE=""
+
+pbs_unpack() {
+    dounpack
+}
+
+pbs_patch() {
+    # fix build with poppler 0.22
+    dopatch poppler_buildfix.diff
+}
+
+pbs_config() {
+    config+="--enable-avahi --with-rcdir=no"
+    doconfig
+}
+
+pbs_build() {
+    domake
+}
+
+pbs_install() {
+    domkinstall
+    cd "$destdir"
+    # drop static lib
+    rm -f usr/lib"$LIBDIRSUFFIX"/*.a
+    # add missing systemd support
+    rm -rf etc/rc.d
+    dounit cups-browsed.service
+}
+

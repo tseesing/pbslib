@@ -1,0 +1,56 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="A port to Qt4 of Neil Hodgson's Scintilla C++ editor class"
+HOMEPAGE="http://www.riverbankcomputing.co.uk/software/qscintilla/intro"
+LICENSE="GPL"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
+
+SRC_URI="http://downloads.sourceforge.net/pyqt/QScintilla-gpl-$V.tar.gz"
+CHECKSUM="a3857d75a2b332e0460131e0aa4cc4b5"
+
+RDEPEND="qt pyqt"
+BDEPEND="chrpath"
+
+pbs_unpack() {
+    dounpack
+}
+
+pbs_patch() {
+    dopatch configure.py-objdir-support.diff
+}
+
+pbs_config() {
+    config+=""
+    doconfig
+}
+
+pbs_build() {
+    cd Qt4Qt5    
+    qmake qscintilla.pro
+    domake
+    
+    cd ../designer-Qt4
+    qmake designer.pro INCLUDEPATH+=../Qt4Qt5 QMAKE_LIBDIR+=../Qt4Qt5
+    domake
+
+    cd ../Python
+    python configure.py -n ../Qt4Qt5/ -o ../Qt4Qt5/ -c -p 4
+    domake    
+}
+
+pbs_install() {
+    cd "$srcdir"/Qt4Qt5
+    domkinstall INSTALL_ROOT="$destdir"
+    
+    cd "$srcdir"/designer-Qt4
+    domkinstall INSTALL_ROOT="$destdir"
+
+    cd "$srcdir"/Python
+    domkinstall INSTALL_ROOT="$destdir"
+}
+

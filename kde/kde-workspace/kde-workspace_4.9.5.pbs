@@ -1,0 +1,59 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="Provides the interface and basic tools for the KDE workspace"
+HOMEPAGE="http://www.kde.org"
+LICENSE="GPL,LGPL,FDL"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
+GROUP="kde"
+
+SRC_URI="http://download.kde.org/stable/"$V"/src/"$N-$V".tar.xz"
+
+RDEPEND="kdepimlibs libqalculate libraw1394 libxkbfile libXres lm_sensors pciutils qimageblitz"
+BDEPEND="cmake automoc4 boost networkmanager mesa"
+RECOMMENDED=""
+OPTIONAL="kde-wallpapers: wallpapers for KDE Plasma Workspaces
+          appmenu-qt: menu applications over dbus"
+
+INSTALL="$N.install"
+
+pbs_unpack() {
+    dounpack
+}
+
+pbs_patch() {
+    dopatch etc-scripts.patch kdm-xinitrd.patch terminate-server.patch
+}
+
+pbs_config() {
+    doconfig -DCMAKE_BUILD_TYPE=Release \
+             -DCMAKE_SKIP_RPATH=ON  \
+             -DWITH_OpenGLES=ON \
+             -DWITH_Xmms=OFF \
+             -DWITH_Googlegadgets=OFF \
+             -DWITH_libgps=OFF \
+             -DWITH_CkConnector=OFF
+}
+
+pbs_build() {
+    domake
+}
+
+pbs_install() {
+    domkinstall
+    cd "$destdir"
+    dounit kdm.service
+    install -D -m644 "${filesdir}"/kde.pam          etc/pam.d/kde
+    install -D -m644 "${filesdir}"/kde-np.pam       etc/pam.d/kde-np
+    install -D -m644 "${filesdir}"/kscreensaver.pam etc/pam.d/kscreensaver
+    install -d -m755 usr/share/xsessions/
+    doln /usr/share/apps/kdm/sessions/kde-plasma{,-safe}.desktop usr/share/xsessions/
+    install -d -m755 etc/kde/{env,shutdown}
+    install -d -g 135 -o 135 var/lib/kdm
+    install -Dm644 "$filesdir"/kdm.logrotate etc/logrotate.d/kdm
+}
+

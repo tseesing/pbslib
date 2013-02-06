@@ -14,7 +14,7 @@ PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>
 SRC_URI="http://ftp.gnome.org/pub/GNOME/sources/$N/${V::3}/$N-$V.tar.xz"
 CHECKSUM="82a1e75c398379567a5a5db9acd19bd01334b4f0053c8a166a77bc09bf0ca047"
 
-RDEPEND="gst-plugins-base"
+RDEPEND="gst-plugins-base0.10"
 RECOMMENDED=""
 BDEPEND="gobject-introspection"
 

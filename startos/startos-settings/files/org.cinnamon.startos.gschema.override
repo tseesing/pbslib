@@ -1,0 +1,71 @@
+# This file is part of the 'startos-settings-gnome' packaging and should not be changed.
+# 
+# StartOS defaut settings for Gnome3
+#
+
+[org.gnome.desktop.background]
+# Desktop backgound file
+# default is a link
+picture-uri='file:///usr/share/backgrounds/default'
+# Possible values are "none", "wallpaper", "centered", "scaled", "stretched", "zoom", "spanned"
+picture-options='zoom'
+# File manager handle the desktop  
+show-desktop-icons=true
+
+#[org.gnome.shell]
+#favorite-apps=['osinstaller.desktop', 'chromium.desktop', 'softwarecenter.desktop', 'nautilus.desktop', 'gnome-terminal.desktop', 'gedit.desktop']
+#always-show-log-out=true
+#enabled-extensions=['drive-menu@gnome-shell-extensions.gcampax.github.com', 'windowlist@startos.org', 'advancedvolumemixer@startos.org', 'user-theme@gnome-shell-extensions.gcampax.github.com']
+
+[org.gnome.desktop.interface]
+# Whether the clock displays in 24h or 12h format
+clock-format='24h'
+# Show date in clock
+clock-show-date=true
+# Cursor theme
+cursor-theme='startos'
+# Icon Theme
+icon-theme='Faenza'
+# Gtk+ Keybinding Theme
+gtk-key-theme='Default'
+# Gtk+ Theme
+gtk-theme='Adwaita'
+
+#[org.gnome.shell.extensions.user-theme]
+# gnome-shell theme name
+# NOTE!
+# default is empty.
+#name='Faience'
+#name=''
+
+[org.gnome.desktop.wm.keybindings]
+# Hide all normal windows shotcut: Ctrl+Alt+d
+show-desktop=['<Primary><Alt>d']
+
+[org.gnome.desktop.input-sources]
+# Show all installed input sources
+show-all-sources=true
+# List of input sources
+sources=[('xkb', 'us'), ('ibus', 'libpinyin')]
+# Current input source
+current=0
+
+[org.gnome.settings-daemon.plugins.media-keys]
+# Binding to select the next input source
+switch-input-source='<Primary>space'
+# Binding to select the previous input source
+#switch-input-source-backward='<Primary>space'
+
+[org.gnome.system.smb]
+# SMB workgroup
+workgroup='StartOS'
+
+#[org.gnome.nautilus.preferences]
+# Always use the location entry, instead of the pathbar
+# NOTE!
+# default is 'false', type 'Ctrl_L' for switching temporarily
+# if set 'true', 'Ctrl_L' is invalid
+#always-use-location-entry=true
+# Whether to enable immediate deletion
+#enable-delete=true
+

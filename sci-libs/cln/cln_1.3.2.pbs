@@ -8,7 +8,7 @@
 DESCRIPTION="Class library for numbers"
 HOMEPAGE="http://www.ginac.de/CLN/"
 LICENSE="GPL"
-PACKAGER="StartOS Developers"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
 SRC_URI="http://www.ginac.de/CLN/"$N-$V".tar.bz2"
 CHECKSUM="d897cce94d9c34d106575ed4ec865d71"
@@ -18,7 +18,7 @@ RECOMMENDED=""
 CONFLICT=""
 
 pbs_unpack() {
-        dounpack
+    dounpack
 }
 
 pbs_config() {

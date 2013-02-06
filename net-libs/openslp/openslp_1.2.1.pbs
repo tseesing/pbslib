@@ -6,12 +6,12 @@
 #
 
 DESCRIPTION="Open-source implementation of Service Location Protocol"
-COMMENTS="Service Location Protocol (SLP) is an Internet Engineering Task Force (IETF) standards track protocol that provides a framework to allow networking applications to discover the existence, location, and configuration of networked services in enterprise networks."
 HOMEPAGE="http://www.openslp.org"
 LICENSE="BSD"
-PACKAGER="StartOS Developers"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
 SRC_URI="http://downloads.sourceforge.net/sourceforge/"$N"/"$N-$V".tar.gz"
+CHECKSUM="ff9999d1b44017281dd00ed2c4d32330"
 
 RDEPEND="openssl"
 RECOMMENDED=""
@@ -19,11 +19,13 @@ BDEPEND=""
 CONFLICT=""
 
 pbs_unpack() {
-        dounpack
+    dounpack
 }
 
 pbs_config() {
-    config+=""
+    config+="--disable-static
+             --enable-slpv1 
+             --enable-slpv2-security"
     doconfig
 }
 
@@ -34,5 +36,6 @@ pbs_build() {
 pbs_install() {
     domkinstall DOC_DIR=/usr/share/doc/"$N"
     dodoc COPYING
+    dounit openslp.service
 }
 

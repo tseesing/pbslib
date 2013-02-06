@@ -8,12 +8,13 @@
 DESCRIPTION="The GNOME Session package contains the GNOME session manager."
 HOMEPAGE="http://www.gnome.org/"
 LICENSE="GPL,LGPL"
-PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>
+          chenqixing@ivali.com"
 
 SRC_URI="http://ftp.gnome.org/pub/gnome/core/3.6/3.6.2/sources/"$N-$V".tar.xz"
 CHECKSUM="2e3a3466eed4136826e150b639c63beb5c93710346dea2e538adfe5e18d701b4"
 
-RDEPEND="systemd dconf gsettings-desktop-schemas gtk3 json-glib mesa polkit-gnome upower"
+RDEPEND="systemd dconf gsettings-desktop-schemas gtk3 json-glib mesa polkit-gnome upower gconf"
 BDEPEND="intltool mesa xtrans"
 RECOMMENDED=""
 

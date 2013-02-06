@@ -8,13 +8,14 @@
 DESCRIPTION="GNU awk pattern-matching language"
 HOMEPAGE="http://www.gnu.org/software/gawk/gawk.html"
 LICENSE="GPL"
-PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>
+          chenqixing@ivali.com"
 ALIAS="awk"
 
 SRC_URI="ftp://ftp.gnu.org/pub/gnu/"$N"/"$N-$V".tar.gz"
 CHECKSUM="4d505dc2c9f1eb3e9f8d6cac87d4bd1a"
 
-RDEPEND="glibc"
+RDEPEND="readline glibc"
 BDEPEND=""
 
 INSTALL="$N.install"

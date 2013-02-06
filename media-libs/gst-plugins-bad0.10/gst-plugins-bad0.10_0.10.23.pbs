@@ -8,11 +8,12 @@
 DESCRIPTION="Less plugins for GStreamer"
 HOMEPAGE="http://gstreamer.freedesktop.org/"
 LICENSE="LGPL"
-PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>
+          chenqixing@ivali.com"
 
 SRC_URI="http://gstreamer.freedesktop.org/src/gst-plugins-bad/gst-plugins-bad-"$V".tar.bz2"
 
-RDEPEND="gstreamer0.10 xvidcore libdca bzip2 libdc1394 neon faac musicbrainz faad2 libmms libcdaudio libmpcdec mjpegtools libdvdnav libmodplug jasper libofa libvdpau soundtouch libass schroedinger libvpx gsm rtmpdump libgme libsndfile librsvg wildmidi opus"
+RDEPEND="gstreamer0.10(>=${V%.*}) xvidcore libdca bzip2 libdc1394 neon faac musicbrainz faad2 libmms libcdaudio libmpcdec mjpegtools libdvdnav libmodplug jasper libofa libvdpau soundtouch libass schroedinger libvpx gsm rtmpdump libgme libsndfile librsvg wildmidi opus liblrdf libtiger openal spandsp"
 BDEPEND=""
 RECOMMENDED=""
 CONFLICT=""

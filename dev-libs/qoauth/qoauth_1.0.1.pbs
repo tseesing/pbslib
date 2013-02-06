@@ -8,24 +8,20 @@
 DESCRIPTION="A Qt-based library for OAuth support"
 HOMEPAGE="http://github.com/ayoy/qoauth"
 LICENSE="GPL"
-PACKAGER="StartOS Developers"
+PACKAGER="Zhongxin Huang <huangzhognxin@ivali.com>"
 
 SRC_URI="http://files.ayoy.net/qoauth/release/current/src/"$N-$V"-src.tar.bz2"
+CHECKSUM="bcb6d01e6c9a6fb22099c9e0f5889578"
 
-RDEPEND="gcc-libs glib2 glibc openssl qca qt zlib"
+RDEPEND="qca"
 RECOMMENDED=""
-BDEPEND=""
+BDEPEND="cmake automoc4"
 OPTIONAL=""
 CONFLICT=""
 REPLACE=""
 
 pbs_unpack() {
-        dounpack
-}
-
-pbs_patch() {
-    # Install libraries in /usr/lib/
-    sed -i 's|lib64|lib|' src/src.pro
+    dounpack
 }
 
 pbs_config() {
@@ -39,5 +35,4 @@ pbs_build() {
 pbs_install() {
     make INSTALL_ROOT="$destdir" install
 }
-
 

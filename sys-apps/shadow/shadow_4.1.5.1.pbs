@@ -8,12 +8,13 @@
 DESCRIPTION="Utilities to deal with user accounts"
 HOMEPAGE="http://pkg-shadow.alioth.debian.org/"
 LICENSE="BSD"
-PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>
+          chenqixing@ivali.com"
 
 SRC_URI="http://pkg-shadow.alioth.debian.org/releases/"$N-$V".tar.bz2"
 CHECKSUM="81f38720b953ef9c2c100c43d02dfe19cafd6c30"
 
-RDEPEND="pam"
+RDEPEND="pam acl"
 BDEPEND=""
 
 INSTALL="$N.install"

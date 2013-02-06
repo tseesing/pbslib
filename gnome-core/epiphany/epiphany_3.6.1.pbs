@@ -14,7 +14,7 @@ PACKAGER="chenqixing@ivali.com
 SRC_URI="http://ftp.gnome.org/pub/gnome/sources/$N/${V%.*}/"$N-$V".tar.xz"
 CHECKSUM="1b4e33e02f7653489be9c49d182be84da13348b4ad3cb4c09c643898586a6008"
 
-RDEPEND="avahi dconf libgnome-keyring gsettings-desktop-schemas libnotify libproxy nss startup-notification gnome-desktop webkitgtk3"
+RDEPEND="avahi dconf libgnome-keyring gsettings-desktop-schemas libnotify libproxy nss gnome-desktop webkitgtk3 gcr gobject-introspection"
 RECOMMENDED=""
 BDEPEND="intltool gnome-doc-utils startup-notification"
 CONFLICT=""

@@ -1,0 +1,38 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="easily lookup countries by IP addresses, even when Reverse DNS entries don't exist"
+HOMEPAGE="http://www.maxmind.com/app/c"
+LICENSE="LGPLv2.1"
+PACKAGER="chenqixing@ivali.com"
+
+SRC_URI="http://geolite.maxmind.com/download/"$N"/api/c/GeoIP-"$V".tar.gz"
+
+RDEPEND="zlib"
+BDEPEND=""
+
+pbs_unpack() {
+        dounpack
+}
+
+pbs_config() {
+    cd "GeoIP-$V"
+    config+=""
+    doconfig
+}
+
+pbs_build() {
+    cd "GeoIP-$V"
+    domake
+}
+
+pbs_install() {
+    cd "GeoIP-$V"
+    domkinstall
+    dodoc AUTHORS ChangeLog COPYING
+}
+

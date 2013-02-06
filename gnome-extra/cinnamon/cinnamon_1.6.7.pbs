@@ -14,7 +14,7 @@ PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>
 SRC_URI="https://github.com/linuxmint/Cinnamon/archive/"$V".tar.gz"
 CHECKSUM="932f3e99ae050b351ee515a355638777"
 
-RDEPEND="caribou gjs gnome-bluetooth gnome-control-center gnome-panel gnome-session gnome-settings-daemon gnome-themes-standard gstreamer0.10 libgnomekbd notification-daemon muffin gnome-python-gconf lxml imaging"
+RDEPEND="caribou gjs gnome-bluetooth gnome-control-center gnome-panel gnome-session gnome-settings-daemon gnome-themes-standard gstreamer0.10 libgnomekbd notification-daemon muffin gnome-python-gconf lxml imaging gnome-desktop gnome-menus libcroco networkmanager"
 RECOMMENDED="nemo"
 BDEPEND="gnome-common intltool"
 OPTIONAL="muffin: window manager fork of mutter

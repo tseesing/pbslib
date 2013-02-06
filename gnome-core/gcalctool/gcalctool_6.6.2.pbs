@@ -8,14 +8,16 @@
 DESCRIPTION="A calculator application for GNOME"
 HOMEPAGE="http://calctool.sourceforge.net/"
 LICENSE="GPL"
-PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>
+          chenqixing@ivali.com"
 
 SRC_URI="http://ftp.gnome.org/pub/gnome/core/3.6/3.6.2/sources/"$N-$V".tar.xz"
 CHECKSUM="e708a16cc758c3a9fcb07e9c3e45989f7d9d64e2993f440e99707fcea3e1b76c"
 
 RDEPEND="gtk3 dconf"
 BDEPEND="intltool"
-RECOMMENDED=""
+RECOMMENDED="libxml2"
+OPTIONAL="libxml2: many help documents in xml format need to be resolved"
 
 INSTALL="$N.install"
 

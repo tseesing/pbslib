@@ -29,6 +29,6 @@ pbs_install() {
     cd "$destdir"
     rm usr/bin/qv4l2 usr/share/applications/qv4l2.desktop    
     rm usr/bin/ivtv-ctl
-    domv lib/systemd usr/lib/
+    domv lib/udev usr/lib/
 }
 

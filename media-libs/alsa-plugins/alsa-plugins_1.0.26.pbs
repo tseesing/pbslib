@@ -8,11 +8,12 @@
 DESCRIPTION="ALSA extra plugins"
 HOMEPAGE="http://www.alsa-project.org/"
 LICENSE="GPL"
-PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>
+          chenqixing@ivali.com"
 
 SRC_URI="ftp://ftp.alsa-project.org/pub/plugins/"$N-$V".tar.bz2"
 
-RDEPEND="alsa-lib"
+RDEPEND="alsa-lib x264"
 BDEPEND=""
 OPTIONAL="pulseaudio: PulseAudio plugin
           jack-audio-connection-kit: Jack plugin

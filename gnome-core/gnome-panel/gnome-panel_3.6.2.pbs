@@ -8,11 +8,12 @@
 DESCRIPTION="The GNOME Panel"
 HOMEPAGE="http://www.gnome.org/"
 LICENSE="GPL"
-PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>
+          chenqixing@ivali.com"
 
 SRC_URI="http://ftp.gnome.org/pub/gnome/core/3.6/3.6.2/sources/"$N-$V".tar.xz"
 
-RDEPEND="gnome-menus gnome-desktop evolution-data-server librsvg libwnck3 dconf telepathy-glib"
+RDEPEND="gnome-menus gnome-desktop evolution-data-server librsvg libwnck3 dconf telepathy-glib gconf"
 BDEPEND="intltool gobject-introspection networkmanager libcanberra"     
 RECOMMENDED=""
 

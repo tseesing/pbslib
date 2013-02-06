@@ -8,7 +8,7 @@
 DESCRIPTION="A graphical effect and filter library for KDE"
 HOMEPAGE="http://www.kde.org"
 LICENSE="GPL"
-PACKAGER="StartOS Developers<>"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 GROUP="kde"
 
 SRC_URI="http://download.kde.org/stable/"$N"/"$N-$V".tar.bz2"
@@ -17,7 +17,7 @@ RDEPEND="qt"
 BDEPEND="cmake"
 
 pbs_unpack() {
-       dounpack
+    dounpack
 }
 
 pbs_config() {

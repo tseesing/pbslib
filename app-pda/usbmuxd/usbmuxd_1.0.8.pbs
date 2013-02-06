@@ -43,8 +43,7 @@ pbs_install() {
     cd "$destdir"
     # install systemd service file
     dounit usbmuxd.service
-    # 
-    mkdir -p usr/lib/
-    mv lib/systemd/ usr/lib/
+    #
+    domv lib/udev/ usr/lib/
 }
 

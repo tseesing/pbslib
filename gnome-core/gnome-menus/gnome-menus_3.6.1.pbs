@@ -13,9 +13,11 @@ PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 SRC_URI="http://ftp.gnome.org/pub/gnome/sources/"$N"/"${V%.*}"/"$N-$V".tar.xz"
 CHECKSUM="1615f6852280a161cd137d5b8b59f35519a3a7ba89738f55c578325b0512043e"
 
-RDEPEND="glib2 pygobject"
+RDEPEND="glib2"
 BDEPEND="gobject-introspection"
 RECOMMENDED=""
+OPTIONAL="python:
+          pygobject: for bindings"
 
 pbs_unpack() {
     dounpack

@@ -1,0 +1,51 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="Scripts and HTML code needed for using ht://Dig as a web search engine"
+HOMEPAGE="http://www.htdig.org"
+LICENSE="GPL"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com"
+
+SRC_URI="http://downloads.sourceforge.net/$N/$N-$V${R#-}.tar.bz2"
+CHECKSUM="8b9b9587a411ac7dd278fa5413428960"
+
+RDEPEND="openssl"
+RECOMMENDED=""
+BDEPEND=""
+OPTIONAL=""
+CONFLICT=""
+REPLACE=""
+
+pbs_unpack() {
+    dounpack
+}
+
+pbs_patch() {
+    dopatch gcc4.3.patch CVE-2007-6110.patch
+}
+
+pbs_config() {
+    config+="--with-config-dir=/etc/htdig
+             --with-default-config-file=/etc/htdig/htdig.conf
+             --with-database-dir=/var/lib/htdig/db
+             --with-cgi-bin-dir=/usr/bin
+             --with-common-dir=/usr/share/doc/htdig
+             --with-search-dir=/usr/share/doc/htdig
+             --with-image-dir=/usr/share/doc/htdig
+             --localstatedir=/var/lib/htdig
+             --with-ssl"
+    doconfig
+}
+
+pbs_build() {
+    domake
+}
+
+pbs_install() {
+    domkinstall
+}
+

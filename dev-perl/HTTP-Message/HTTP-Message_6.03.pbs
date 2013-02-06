@@ -14,7 +14,7 @@ YARCH="any"
 SRC_URI="http://search.cpan.org/CPAN/authors/id/G/GA/GAAS/"$N-$V".tar.gz"
 CHECKSUM="d41b22c7c01b974f2b4e85d401a6b552"
 
-RDEPEND="Encode-Locale HTML-Parser HTTP-Date LWP-MediaTypes URI"
+RDEPEND="Encode-Locale HTML-Parser HTTP-Date LWP-MediaTypes URI perl"
 BDEPEND=""
 RECOMMENDED=""
 CONFLICT=""

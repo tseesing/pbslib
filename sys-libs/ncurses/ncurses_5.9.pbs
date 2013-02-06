@@ -13,7 +13,7 @@ PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 SRC_URI="http://ftp.gnu.org/pub/gnu/"$N"/"$N-$V".tar.gz"
 CHECKSUM="8cb9c412e5f2d96bc6f459aa8c6282a1"
 
-RDEPEND="glibc"
+RDEPEND="glibc glew"
 BDEPEND=""
 
 pbs_unpack() {

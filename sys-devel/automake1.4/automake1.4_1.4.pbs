@@ -12,7 +12,7 @@ PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
 SRC_URI="http://ftp.gnu.org/gnu/automake/automake-"$V"-p6.tar.gz"
 
-RDEPEND="autoconf"
+RDEPEND="autoconf perl"
 BDEPEND=""
 
 INSTALL="$N.install"

@@ -14,9 +14,10 @@ PACKAGER="chenqixing@ivali.com
 SRC_URI="http://ftp.acc.umu.se/pub/gnome/sources/$N/${V%.*}/$N-$V.tar.xz"
 CHECKSUM="7f48489759739ac187265034bbf046fcfa3e03b3527b168ebc8718232469abdb"
 
-RDEPEND="evolution-data-server nautilus dconf"
+RDEPEND="evolution-data-server nautilus dconf dbus-glib"
 BDEPEND="intltool gettext"
 RECOMMENDEd=""
+OPTIONAL="gupnp: "
 
 INSTALL="$N.install"
 

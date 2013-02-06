@@ -13,7 +13,7 @@ PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 SRC_URI="http://nice.freedesktop.org/releases/"$N-$V".tar.gz"
 CHECKSUM="1a0907605f852dcda32a3b3daf38d36c"
 
-RDEPEND="glib2"
+RDEPEND="glib2 gupnp-igd"
 BDEPEND=""
 RECOMMENDED=""
 OPTIONAL="gstreamer:

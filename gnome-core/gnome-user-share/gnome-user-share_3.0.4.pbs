@@ -14,7 +14,7 @@ PACKAGER="chenqixing@ivali.com
 SRC_URI="http://ftp.acc.umu.se/pub/gnome/sources/$N/${V%.*}/$N-$V.tar.xz"
 CHECKSUM="e1c8ca73163bf77ce7ca1b92db94cd9c4680a24b940d620996c9331ab79edeb8"
 
-RDEPEND="mod_dnssd dconf gtk3 libnotify gnome-bluetooth libcanberra"
+RDEPEND="mod_dnssd dconf gtk3 libnotify gnome-bluetooth libcanberra dbus-glib"
 BDEPEND="intltool itstool docbook-xsl nautilus"
 RECOMMENDED="nautilus"
 OPTIONAL="nautilus: as its extensions"

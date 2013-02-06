@@ -12,7 +12,7 @@ PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
 SRC_URI="git://github.com/pyzy/pyzy.git"
 
-RDEPEND="glib2 sqlite util-linux"
+RDEPEND="glib2 sqlite util-linux gcc-libs"
 RECOMMENDED=""
 BDEPEND="git gnome-common python"
 OPTIONAL=""

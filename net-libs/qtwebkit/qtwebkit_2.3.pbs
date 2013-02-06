@@ -1,0 +1,60 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="An open source web browser engine (Qt port)"
+HOMEPAGE="http://trac.webkit.org/wiki/QtWebKit"
+LICENSE="LGPL2.1,GPL3"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
+
+_qtver="4.8.4"
+
+SRC_URI="git://gitorious.org/+qtwebkit-developers/webkit/qtwebkit-23.git
+         http://releases.qt-project.org/qt4/source/qt-everywhere-opensource-src-"$_qtver".tar.gz"
+
+RDEPEND="qt systemd gst-plugins-base0.10"
+RECOMMENDED=""
+BDEPEND="gperf python mesa ruby git"
+OPTIONAL=""
+CONFLICT=""
+REPLACE=""
+
+pbs_unpack() {
+    dounpack
+}
+
+pbs_patch() {
+    git checkout "$N-$V"
+    tar xf "$YBS_SOURCE"/qt-everywhere-opensource-src-"$_qtver".tar.gz
+}
+
+pbs_build() {
+    OPTS="--no-webkit2"
+    if [ "${ARCH}" = "i686" ]; then
+        OPTS="${OPTS} --no-sse2"
+    fi
+
+    export QTDIR=/usr
+    Tools/Scripts/build-webkit --qt \
+        --makeargs="${MAKEFLAGS}" \
+        --prefix=/usr \
+        ${OPTS} || die "build-webkit failed."
+
+    cd qt-everywhere-opensource-src-"${_qtver}"
+    dopatch qwebview.patch
+    cd tools/designer/src/plugins/qwebview
+    qmake
+    domake || die "qwebview build failed."
+}
+
+pbs_install() {
+    cd "$srcdir"
+    make INSTALL_ROOT="${destdir}" -C WebKitBuild/Release install
+    
+    cd qt-everywhere-opensource-src-${_qtver}/tools/designer/src/plugins/qwebview
+    make INSTALL_ROOT="${destdir}" install
+}
+

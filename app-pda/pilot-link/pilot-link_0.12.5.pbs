@@ -1,0 +1,42 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="A suite of tools for connecting to PalmOS handheld devices"
+HOMEPAGE="http://www.pilot-link.org"
+LICENSE="GPL,LGPL"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
+
+SRC_URI="http://downloads.pilot-link.org/$N-$V.tar.bz2"
+CHECKSUM="568c55bf504b044f6fbd50baa407c990"
+
+RDEPEND=""
+RECOMMENDED=""
+BDEPEND=""
+OPTIONAL=""
+CONFLICT=""
+REPLACE=""
+
+pbs_unpack() {
+    dounpack
+}
+
+pbs_patch() {
+    dopatch pilot-link-png14.patch
+}
+
+pbs_config() {
+    config+="--enable-conduits --enable-libusb --with-libiconv --with-libpng"
+    doconfig
+}
+
+pbs_build() {
+    domake
+}
+
+pbs_install() {
+    domkinstall
+}

@@ -14,7 +14,7 @@ YARCH="any"
 SRC_URI="http://pypi.python.org/packages/source/J/Jinja2/Jinja2-$V.tar.gz"
 CHECKSUM="a85e185375db75c109f99ecde3d55415f035e7068a82252cf4f16c667ac38f49"
 
-RDEPEND="distribute markupsafe"
+RDEPEND="distribute markupsafe python"
 BDEPEND="distribute"
 RECOMMENDED=""
 CONFLICT=""

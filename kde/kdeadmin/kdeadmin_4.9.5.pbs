@@ -1,0 +1,41 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="KDE Administrat Tools"
+HOMEPAGE="http://kde.org"
+LICENSE="GPL,LGPL,FDL"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
+GROUP="kde"
+
+SRC_URI="http://download.kde.org/stable/"$V"/src/"$N-$V".tar.xz"
+
+RDEPEND="kdepimlibs kde-runtime"
+BDEPEND="cmake automoc4"
+OPTIONAL="pykde4:
+          system-config-printer:"
+
+INSTALL="$N.install"
+
+pbs_unpack() {
+    dounpack
+}
+
+pbs_config() {
+    doconfig -DCMAKE_BUILD_TYPE=Release \
+             -DCMAKE_SKIP_RPATH=ON \
+             -DKDE4_BUILD_TESTS=OFF \
+             -DBUILD_strigi-analyzer=OFF
+}
+
+pbs_build() {
+    domake
+}
+
+pbs_install() {
+    domkinstall
+}
+

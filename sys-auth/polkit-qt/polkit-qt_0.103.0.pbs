@@ -5,26 +5,25 @@
 # Distributed under the terms of the GNU General Public License v2
 #
 
-DESCRIPTION="PolicyKit Qt4 API wrapper library."
-HOMEPAGE="http://www.kde.org/"
+DESCRIPTION="A library that allows developers to access PolicyKit API with a nice Qt-style API"
+HOMEPAGE="https://projects.kde.org/projects/kdesupport/polkit-qt-1"
 LICENSE="LGPL"
-PACKAGER="StartOS Developers"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
 SRC_URI="http://download.kde.org/stable/apps/KDE4.x/admin/"$N"-1-"$V".tar.bz2"
 CHECKSUM="a105e233e6733fb072c9080cd7ae1af2"
 
 RDEPEND="polkit qt"
 RECOMMENDED=""
-BDEPEND="cmake"
+BDEPEND="cmake automoc4"
 OPTIONAL=""
 CONFLICT=""
 
 pbs_unpack() {
-        dounpack
+    dounpack
 }
 
 pbs_config() {
-    config+=""
     doconfig -DCMAKE_BUILD_TYPE=Release
 }
 

@@ -6,20 +6,18 @@
 #
 
 DESCRIPTION="This module provides bindings for the cURL library."
-HOMEPAGE="http://ipython.scipy.org/ http://pypi.python.org/pypi/ipython"
-LICENSE="Dual licensed under the LGPL and an MIT/X derivative."
-PACKAGER="StartOS Developers"
+HOMEPAGE="http://pycurl.sourceforge.net"
+LICENSE="GPL"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
-SRC_URI="http://pycurl.sourceforge.net/download/pycurl-7.19.0.tar.gz"
+SRC_URI="http://pycurl.sourceforge.net/download/"$N-$V".tar.gz"
 
-RDEPEND=""
+RDEPEND="curl python"
 BDEPEND=""
 RECOMMENDED=""
 
-NOTES=""
-
 pbs_unpack() {
-        dounpack
+    dounpack
 }
 
 pbs_build() {

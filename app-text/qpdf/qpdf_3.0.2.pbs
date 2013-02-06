@@ -13,7 +13,7 @@ PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 SRC_URI="http://downloads.sourceforge.net/$N/$N-$V.tar.gz"
 CHECKSUM="af6f6f964481295a6ca0766185bfa274"
 
-RDEPEND="pcre perl"
+RDEPEND="pcre perl zlib"
 RECOMMENDED=""
 BDEPEND="make"
 OPTIONAL=""

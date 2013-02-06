@@ -1,0 +1,37 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="A distributed control protocol designed to operate astronomical instrumentation"
+HOMEPAGE="http://www.indilib.org/index.php?title=Main_Page"
+LICENSE="GPL"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
+
+SRC_URI="http://downloads.sourceforge.net/indi/"${N}_$V".tar.gz"
+CHECKSUM="c1456544a36f543e2884f88913cf3eb0"
+
+RDEPEND="libnova cfitsio boost-libs libusb-compat"
+RECOMMENDED=""
+BDEPEND="pkgconfig cmake boost"
+OPTIONAL=""
+CONFLICT=""
+
+pbs_unpack() {
+    dounpack
+}
+
+pbs_config() {
+    doconfig -DCMAKE_BUILD_TYPE=Release 
+}
+
+pbs_build() {
+    domake
+}
+
+pbs_install() {
+    domkinstall
+}
+

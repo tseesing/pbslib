@@ -8,12 +8,13 @@
 DESCRIPTION="Mesa 3-D graphics libraries"
 HOMEPAGE="http://www.mesa3d.org/"
 LICENSE="custom"
-PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>
+          chenqixing@ivali.cop"
 
 SRC_URI="ftp://ftp.freedesktop.org/pub/mesa/"$V"/MesaLib-"$V".tar.bz2" 
 CHECKSUM="97d6554c05ea7449398afe3a0ede7018"
 
-RDEPEND="glibc libdrm libXxf86vm libXdamage expat gcc-libs libX11 libXext libXfixes libxcb systemd"
+RDEPEND="glibc libdrm libXxf86vm libXdamage expat gcc-libs libX11 libXext libXfixes libxcb systemd libvdpau"
 BDEPEND="glproto dri2proto python libxml2 imake llvm libvdpau"
 RECOMMENDED=""
 

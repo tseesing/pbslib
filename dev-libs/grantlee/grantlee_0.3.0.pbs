@@ -1,0 +1,37 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="A string template engine based on the Django template system and written in Qt"
+HOMEPAGE="http://www.gitorious.org/grantlee/pages/Home"
+LICENSE="LGPLv3"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com"
+
+SRC_URI="http://downloads.grantlee.org/"$N-$V".tar.gz"
+CHECKSUM="195763a3238f51f8885881fc8012cd83"
+
+RDEPEND="qt"
+RECOMMENDED=""
+BDEPEND="cmake"
+OPTIONAL=""
+CONFLICT=""
+
+pbs_unpack() {
+    dounpack
+}
+
+pbs_config() {
+    doconfig -DCMAKE_BUILD_TYPE=Release
+}
+
+pbs_build() {
+    domake
+}
+
+pbs_install() {
+    domkinstall
+}
+

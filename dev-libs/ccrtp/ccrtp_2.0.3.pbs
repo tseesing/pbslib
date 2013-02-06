@@ -1,0 +1,42 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="An implementation of RTP, the real-time transport protocol from the IETF"
+HOMEPAGE="http://www.gnu.org/software/ccrtp"
+LICENSE="GPL,custom"
+PACKAGER="Zhongxin Huang <huangzhognxin@ivali.com>"
+
+SRC_URI="ftp://ftp.gnu.org/pub/gnu/$N/$N-$V.tar.gz"
+CHECKSUM="0d57da1b8e212fb634b8951067fbc1e0"
+
+RDEPEND="ucommon libgcrypt"
+RECOMMENDED=""
+BDEPEND=""
+OPTIONAL=""
+CONFLICT=""
+REPLACE=""
+
+INSTALL="$N.install"
+
+pbs_unpack() {
+    dounpack
+}
+
+pbs_config() {
+    config+=""
+    doconfig
+}
+
+pbs_build() {
+    domake
+}
+
+pbs_install() {
+    domkinstall
+    dodoc COPYING.addendum
+}
+

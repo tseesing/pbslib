@@ -5,19 +5,19 @@
 # Distributed under the terms of the GNU General Public License v2
 #
 
-
 DESCRIPTION="A library that provides a Qt implementation of the DBusMenu spec"
 HOMEPAGE="https://launchpad.net/libdbusmenu-qt"
 LICENSE="GPL"
-PACKAGER="StartOS Developers<>"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
 SRC_URI="http://launchpad.net/"$N"/trunk/"$V"/+download/"$N-$V".tar.bz2"
+CHECKSUM="9a49484927669cd2ec91b3bf9ba8b79e"
 
 RDEPEND="qt"
 BDEPEND="cmake"
 
 pbs_unpack() {
-       dounpack
+    dounpack
 }
 
 pbs_config() {

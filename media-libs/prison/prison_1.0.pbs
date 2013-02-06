@@ -8,19 +8,19 @@
 DESCRIPTION="A barcode API to produce QRCode barcodes and DataMatrix barcodes"
 HOMEPAGE="https://projects.kde.org/projects/kdesupport/prison"
 LICENSE="GPL"
-PACKAGER="StartOS Developers"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
 SRC_URI="http://download.kde.org/stable/"$N"/"$V"/src/"$N-$V".tar.gz"
 CHECKSUM="8baac61506e37a31482a0df4a5d02cd2"
 
 RDEPEND="libdmtx qrencode qt"
 RECOMMENDED=""
-BDEPEND=""
+BDEPEND="cmake"
 OPTIONAL=""
 CONFLICT=""
 
 pbs_unpack() {
-        dounpack
+    dounpack
 }
 
 pbs_config() {

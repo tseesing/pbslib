@@ -8,11 +8,12 @@
 DESCRIPTION="Mesa's OpenGL utility and demo programs (glxgears and glxinfo)"
 HOMEPAGE="http://mesa3d.sourceforge.net/"
 LICENSE="custom"
-PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>
+          chenqixing@ivali.com"
 
 SRC_URI="ftp://ftp.freedesktop.org/pub/mesa/demos/"$V"/"$N-$V".tar.bz2"
 
-RDEPEND="glew"
+RDEPEND="glew freeglut libXaw"
 BDEPEND=""
 RECOMMENDED=""
 

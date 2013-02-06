@@ -14,7 +14,7 @@ PACKAGER="chenqixing@ivali.com
 SRC_URI="http://ftp.acc.umu.se/pub/GNOME/sources/$N/${V%.*}/"$N-$V".tar.xz"
 CHECKSUM="5879f26a11fa7cd2fa4038e5c51d31e4959456be4fba570dcde89ed0d966ffda"
 
-RDEPEND="exempi gnome-desktop lcms2 libexif librsvg gnome-icon-theme dconf"
+RDEPEND="exempi gnome-desktop lcms2 libexif librsvg gnome-icon-theme dconf libpeas"
 BDEPEND="itstool intltool gobject-introspection"
 RECOMMENDED=""
 

@@ -24,7 +24,7 @@ pbs_patch() {
 
 busybox_install() {
     DESCRIPTION="Utilities for rescue and embedded systems (static version)."
-    RDEPEND="glibc"
+    RDEPEND=""
     INSTALL="$N.install"    
 
     docp_rename "$filesdir"/config-static-"$V" .config

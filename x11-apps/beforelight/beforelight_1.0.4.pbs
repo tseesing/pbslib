@@ -8,12 +8,13 @@
 DESCRIPTION="Sample implementation of screen saver"
 HOMEPAGE="http://xorg.freedesktop.org/"
 LICENSE="GPL"
-PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>
+          chenqixing@ivali.com"
 GROUP="x11-apps"
 
 SRC_URI="http://xorg.freedesktop.org/releases/individual/app/"$N-$V".tar.bz2"
 
-RDEPEND="libXaw libXScrnSaver"
+RDEPEND="libXScrnSaver libXt"
 BDEPEND=""
 
 pbs_unpack() {

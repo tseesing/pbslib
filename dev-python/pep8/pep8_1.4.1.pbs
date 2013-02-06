@@ -1,0 +1,41 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="Python style guide checker"
+HOMEPAGE="http://github.com/jcrocholl/pep8"
+LICENSE="custom:Expat"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
+YARCH="any"
+
+SRC_URI="https://github.com/jcrocholl/$N/archive/$V.tar.gz"
+CHECKSUM="c2a94f56a407b2ead87f67dec3d6df07"
+
+RDEPEND="python"
+RECOMMENDED=""
+BDEPEND="distribute"
+OPTIONAL=""
+CONFLICT=""
+REPLACE=""
+
+pbs_unpack() {
+    dounpack
+}
+
+pbs_config() {
+    config+=""
+    doconfig
+}
+
+pbs_build() {
+    domake
+}
+
+pbs_install() {
+    domkinstall
+    dodoc LICENSE
+}
+

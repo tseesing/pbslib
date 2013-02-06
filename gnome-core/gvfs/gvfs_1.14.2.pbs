@@ -13,7 +13,7 @@ PACKAGER="chenqixing@ivali.com
 SRC_URI="http://ftp.gnome.org/pub/gnome/sources/"$N"/${V%.*}/"$N-$V".tar.xz"
 CHECKSUM="c3bbdac4bc89de82a2ba373799da80d24fb6a038a9893d9b54e2c9429c878fbc"
 
-RDEPEND="avahi dconf fuse libarchive libcdio libsoup udisks2 libsecret samba libimobiledevice dbus libgphoto2 systemd dbus-glib bluez obex-data-server"
+RDEPEND="avahi dconf fuse libarchive libcdio libsoup udisks2 libsecret samba libimobiledevice dbus libgphoto2 systemd dbus-glib bluez obex-data-server libbluray"
 BDEPEND="intltool docbook-xsl gtk3"
 
 INSTALL="$N.install"

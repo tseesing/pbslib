@@ -8,9 +8,8 @@
 DESCRIPTION="Provide RDF vocabularies for the Semantic Desktop"
 HOMEPAGE="http://sourceforge.net/apps/trac/oscaf/"
 LICENSE="GPL"
-PACKAGER="StartOS Developers<>"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 YARCH="any"
-OPTIONS="nodev"
 
 SRC_URI="http://downloads.sourceforge.net/oscaf/"$N-$V".tar.bz2"
 CHECKSUM="bfb7b5acbb43e5e45466c87dbe9c45b7"
@@ -19,7 +18,7 @@ RDEPEND=""
 BDEPEND="cmake"
 
 pbs_unpack() {
-       dounpack
+    dounpack
 }
 
 pbs_config() {

@@ -13,7 +13,7 @@ PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 SRC_URI="http://ftp.de.debian.org/debian/pool/main/d/$N/${N}_${V}.tar.gz"
 CHECKSUM="d306e183ea3fdbde088ebd523f6387c5"
 
-RDEPEND=""
+RDEPEND="glibc"
 RECOMMENDED=""
 BDEPEND=""
 OPTIONAL=""

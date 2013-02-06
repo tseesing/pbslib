@@ -1,0 +1,47 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="An open-source, cross-platform W3C XML Schema to C++ data binding compiler"
+HOMEPAGE="http://www.codesynthesis.com/products/xsd"
+LICENSE="GPL2"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
+
+SRC_URI="http://www.codesynthesis.com/download/$N/3.3/"$N-$V"-2+dep.tar.bz2"
+CHECKSUM="1c9de9271f589b8ecf2be18f2e9ac87330fc8281"
+
+RDEPEND="boost-libs xerces-c"
+RECOMMENDED=""
+BDEPEND="boost"
+OPTIONAL=""
+CONFLICT=""
+REPLACE=""
+
+pbs_unpack() {
+    dounpack
+}
+
+pbs_patch() {
+    dopatch xsdcxx.patch
+}
+
+pbs_config() {
+    config+=""
+    doconfig
+}
+
+pbs_build() {
+    domake CXXFLAGS=\"${CXXFLAGS}\"
+}
+
+pbs_install() {
+    make install_prefix="$destdir"/usr install
+    # Fix conflicts with mono
+    cd "$destdir"
+    mv usr/bin/xsd{,cxx}
+    mv usr/share/man/man1/xsd{,cxx}.1
+}
+

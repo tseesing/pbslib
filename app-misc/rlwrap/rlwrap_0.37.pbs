@@ -1,0 +1,39 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="GNU readline wrapper"
+HOMEPAGE="http://utopia.knoware.nl/~hlub/uck/rlwrap"
+LICENSE="GPL"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
+
+SRC_URI="http://utopia.knoware.nl/~hlub/uck/$N/$N-$V.tar.gz"
+CHECKSUM="04cd6e2c257eb5a86b297f2ebf91dbbf"
+
+RDEPEND="perl"
+RECOMMENDED=""
+BDEPEND=""
+OPTIONAL=""
+CONFLICT=""
+REPLACE=""
+
+pbs_unpack() {
+    dounpack
+}
+
+pbs_config() {
+    config+=""
+    doconfig
+}
+
+pbs_build() {
+    domake
+}
+
+pbs_install() {
+    domkinstall
+}
+

@@ -8,12 +8,13 @@
 DESCRIPTION="Internationalized Domain Names (IDN) implementation"
 HOMEPAGE="http://www.gnu.org/software/libidn/"
 LICENSE="GPLv3,LGPL"
-PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>
+          chenqixing@ivali.com"
 
 SRC_URI="ftp://ftp.gnu.org/gnu/"$N"/"$N-$V".tar.gz"
 CHECKSUM="92e64fd5a6428bda6ade2c3cde475b76455cd7dd"
 
-RDEPEND="glibc texinfo"
+RDEPEND="glibc texinfo libidn"
 BDEPEND="pkgconfig"
 RECOMMENDED=""
 CONFLICT=""

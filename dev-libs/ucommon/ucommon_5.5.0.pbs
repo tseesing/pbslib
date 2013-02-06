@@ -1,0 +1,39 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="A light-weight C++ library to facilitate using C++ design patterns"
+HOMEPAGE="http://www.gnutelephony.org/index.php/GNU_uCommon_C++"
+LICENSE="GPL,LGPL3"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
+
+SRC_URI="http://www.gnutelephony.org/dist/tarballs/$N-$V.tar.gz"
+CHECKSUM="99d302b5217bb92b6fb9d91ead6fd028"
+
+RDEPEND="openssl"
+RECOMMENDED=""
+BDEPEND=""
+OPTIONAL=""
+CONFLICT=""
+REPLACE=""
+
+pbs_unpack() {
+    dounpack
+}
+
+pbs_config() {
+    config+=""
+    doconfig
+}
+
+pbs_build() {
+    domake
+}
+
+pbs_install() {
+    domkinstall
+}
+

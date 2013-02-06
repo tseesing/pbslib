@@ -14,7 +14,7 @@ PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>
 SRC_URI="http://libproxy.googlecode.com/files/"$N-$V".tar.gz"
 CHECKSUM="509e03a488a61cd62bfbaf3ab6a2a7a5"
 
-RDEPEND="gcc-libs dbus"
+RDEPEND="gcc-libs dbus glib2"
 BDEPEND="cmake"
 OPTIONAL="kdelibs: KDE configuration module
           networkmanager: NetworkManager configuration module

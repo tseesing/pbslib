@@ -8,12 +8,13 @@
 DESCRIPTION="Open source read-write NTFS driver that runs under FUSE"
 HOMEPAGE="http://www.tuxera.com/community/ntfs-3g-download/"
 LICENSE="GPLv2"
-PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>
+          chenqixing@ivali.com"
 
 SRC_URI="http://tuxera.com/opensource/"$N"_ntfsprogs-"$V".tgz"
 CHECKSUM="341acae00a290cab9b00464db65015cc"
 
-RDEPEND="fuse glibc"
+RDEPEND="fuse glibc util-linux"
 BDEPEND="pkgconfig"
 CONFLICT="ntfsprogs"
 

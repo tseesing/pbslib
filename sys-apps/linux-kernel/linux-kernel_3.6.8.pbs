@@ -84,6 +84,7 @@ linux-kernel_install() {
 linux-kernel-headers_install() {
     DESCRIPTION="linux kernel headers"
     INSTALL="$N.install"
+    # Note: Some script files need python
     CONFLICT=""
     
     # Headers

@@ -17,6 +17,7 @@ CHECKSUM="d7b18b673c48abfee65a9c0245df0415"
 RDEPEND="libjpeg-turbo libpng cyrus-sasl curl libsdl alsa-lib nss glib2 gnutls bluez vde2 util-linux pulseaudio seabios libcap"
 BDEPEND="perl python"
 RECOMMENDED=""
+OPTIONAL="brltty: Braille display driver"
 
 OPTIONS="nostrip"
 

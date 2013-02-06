@@ -13,7 +13,7 @@ PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 SRC_URI="http://curl.haxx.se/download/"$N-$V".tar.bz2"
 CHECKSUM="26eb081c999b0e203770869427e9a93d"
 
-RDEPEND="ca-certificates libssh2 openssl zlib"
+RDEPEND="ca-certificates libssh2 openssl zlib rtmpdump"
 BDEPEND="sed"
 
 pbs_unpack() {

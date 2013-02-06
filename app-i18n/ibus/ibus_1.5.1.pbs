@@ -8,7 +8,8 @@
 DESCRIPTION="Intelligent Input Bus for Linux / Unix OS"
 HOMEPAGE="http://code.google.com/p/ibus/"
 LICENSE="LGPL"
-PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com> 
+          chenqixing@ivali.com"
 
 SRC_URI="http://ibus.googlecode.com/files/"$N-$V".tar.gz"
 CHECKSUM="31d732c17d0a103565fa29995c5610e8be8b2dca"
@@ -39,7 +40,7 @@ pbs_build() {
 
 ibus_install() {
     DESCRIPTION="Intelligent Input Bus for Linux / Unix OS"
-    RDEPEND="gtk2 gtk3 pygobject pyxdg"
+    RDEPEND="gtk2 gtk3 pygobject pyxdg dconf"
     INSTALL="$N.install"    
     
     domkinstall

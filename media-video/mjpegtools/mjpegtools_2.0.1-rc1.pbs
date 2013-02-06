@@ -8,12 +8,13 @@
 DESCRIPTION="Set of tools that can do recording of videos and playback, simple cut-and-paste editing and the MPEG compression of audio and video"
 HOMEPAGE="http://mjpeg.sourceforge.net/"
 LICENSE="GPL"
-PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>
+          chenqixing@ivali.com"
 
 SRC_URI="http://sourceforge.net/projects/mjpeg/files/"$N"/"$V"rc1/"$N-$V"RC1.tar.gz"
 CHECKSUM="b42f474767502168b5b6f9236f7a8a44"
 
-RDEPEND="libjpeg-turbo libpng libsdl libdv"
+RDEPEND="libjpeg-turbo libpng libsdl libdv libquicktime"
 RECOMMENDED=""
 BDEPEND="gtk2"
 OPTIONAL="gtk2: glav GUI"

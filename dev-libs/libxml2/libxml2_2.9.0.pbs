@@ -8,12 +8,14 @@
 DESCRIPTION="XML parsing library, version 2"
 HOMEPAGE="http://www.xmlsoft.org/"
 LICENSE="custom"
-PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>
+          chenqixing@ivali.com"
 
 SRC_URI="ftp://xmlsoft.org/"$N"/"$N-$V".tar.gz"
 
 RDEPEND="zlib readline ncurses xz"
 BDEPEND="python"
+OPTIONAL="python: for bindings"
 
 pbs_unpack() {
     dounpack

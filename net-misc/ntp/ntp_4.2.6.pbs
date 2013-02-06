@@ -14,6 +14,7 @@ SRC_URI="http://www.eecis.udel.edu/~ntp/ntp_spool/"$N"4/"$N-$V"p5.tar.gz"
 CHECKSUM="4a5353a4791b6f4315a66c28d504ec6c7926b192"
 
 RDEPEND="openssl libcap libedit"
+#   Maybe need "avahi" at runtime
 BDEPEND="HTML-Parser"
 RECOMMENDED=""
 CONFLICT=""

@@ -8,7 +8,8 @@
 DESCRIPTION="A featureful, general-purpose sound server"
 HOMEPAGE="http://www.freedesktop.org/wiki/Software/PulseAudio"
 LICENSE="GPL,LGPL"
-PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>
+          chenqixing@ivali.com"
 
 SRC_URI="http://freedesktop.org/software/"$N"/releases/"$N-$V".tar.xz"
 CHECKSUM="ef6b347bf47abfb98080795f1583018ac959b4aeb4df916b879f9e1eaba0ca7f"
@@ -22,9 +23,9 @@ OPTIONAL="avahi: zeroconf support
           sbc: bluetooth support
           gconf: configuration through gconf (paprefs)
           jack: jack support
-          lirc-utils: infra-red support
+          lirc: infra-red support
           openssl: RAOP support
-          python2-pyqt: Equalizer GUI (qpaeq)
+          pyqt4: Equalizer GUI (qpaeq)
           alsa-plugins: ALSA support
           avahi: - zeroconf support"
 
@@ -35,7 +36,7 @@ pbs_unpack() {
 }
 
 pbs_config() {    
-    config+="--with-systemd-rules-dir=/usr/lib/systemd/rules.d 
+    config+="--with-udev-rules-dir=/usr/lib/udev/rules.d 
              --with-database=tdb 
              --disable-tcpwrap 
              --disable-rpath 

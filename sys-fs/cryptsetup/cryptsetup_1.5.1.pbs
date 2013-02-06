@@ -13,7 +13,7 @@ PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com
 
 SRC_URI="http://cryptsetup.googlecode.com/files/"$N-$V".tar.bz2"
 
-RDEPEND="device-mapper libgcrypt popt util-linux"
+RDEPEND="device-mapper libgcrypt popt util-linux systemd"
 BDEPEND=""
 RECOMMENDED=""
 

@@ -8,7 +8,7 @@
 DESCRIPTION="A cross-platform C libraries that allow you to easily implement VNC server"
 HOMEPAGE="http://libvncserver.sourceforge.net/"
 LICENSE="GPL"
-PACKAGER="StartOS Developers"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
 SRC_URI="http://downloads.sourceforge.net/"$N"/LibVNCServer-"$V".tar.gz"
 CHECKSUM="70422169b122765693d2a294d13e3714"
@@ -20,7 +20,7 @@ OPTIONAL=""
 CONFLICT=""
 
 pbs_unpack() {
-        dounpack
+    dounpack
 }
 
 pbs_config() {
@@ -35,6 +35,4 @@ pbs_build() {
 pbs_install() {
     domkinstall
 }
-
-
 

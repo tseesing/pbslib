@@ -7,17 +7,18 @@
 
 DESCRIPTION="A library to access Open Collaboration Service providers"
 HOMEPAGE="http://www.kde.org/"
-LICENSE="GPL"
-PACKAGER="StartOS Developers<>"
+LICENSE="LGPL"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 GROUP="kde"
 
 SRC_URI="http://download.kde.org/stable/"$N"/"$N-$V".tar.bz2"
+CHECKSUM="b90983ec5d79e5ddcbc9146fa23cab72"
 
 RDEPEND="qt"
 BDEPEND="cmake"
 
 pbs_unpack() {
-       dounpack
+    dounpack
 }
 
 pbs_config() {

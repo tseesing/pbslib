@@ -5,26 +5,29 @@
 DESCRIPTION="The multimedia framework for KDE"
 HOMEPAGE="http://phonon.kde.org"
 LICENSE="LGPL"
-PACKAGER="StartOS Developers<>"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
 SRC_URI="http://download.kde.org/stable/"$N"/"$V"/src/"$N-$V".tar.xz"
+CHECKSUM="bbe0c1c62ed14c31479c4c1a6cf1e173"
 
 RDEPEND="libqzeitgeist pulseaudio"
-BDEPEND="cmake"
+BDEPEND="cmake automoc4"
+OPTIONAL="pulseaudio: PulseAudio support"
 
 pbs_unpack() {
-        dounpack
+    dounpack
 }
 
 pbs_patch() {
-    dopatch fix-plugindir-for-qt-app.patch
+    dopatch fix-plugindir-for-qt-app.patch \
+        fix-qmake.patch        
 }
 
 pbs_config() {
     doconfig -DCMAKE_BUILD_TYPE=Release \
-         -DCMAKE_SKIP_RPATH=ON \
-         -DPHONON_QT_MKSPECS_INSTALL_DIR=/usr/share/qt4/mkspecs/modules \
-         -DPHONON_QT_PLUGIN_INSTALL_DIR=/usr/lib/qt4/plugins/designer
+        -DCMAKE_SKIP_RPATH=ON \
+        -DPHONON_QT_MKSPECS_INSTALL_DIR=/usr/share/qt4/mkspecs/modules \
+        -DPHONON_QT_PLUGIN_INSTALL_DIR=/usr/lib"$LIBDIRSUFFIX"/qt4/plugins/designer
 }
 
 pbs_build() {

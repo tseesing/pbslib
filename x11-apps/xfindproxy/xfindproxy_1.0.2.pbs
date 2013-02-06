@@ -8,12 +8,13 @@
 DESCRIPTION="locate proxy services"
 HOMEPAGE="http://xorg.freedesktop.org/"
 LICENSE="GPL"
-PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>
+          chenqixing@ivali.com"
 GROUP="x11-apps"
 
 SRC_URI="http://xorg.freedesktop.org/releases/individual/app/"$N-$V".tar.bz2"
 
-RDEPEND=""
+RDEPEND="libXt"
 BDEPEND="xproxymanagementprotocol"
 
 pbs_unpack() {

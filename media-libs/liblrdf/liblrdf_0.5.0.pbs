@@ -14,7 +14,7 @@ PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>
 SRC_URI="https://github.com/swh/LRDF/tarball/$V/$N-$V.tar.gz"
 CHECKSUM="005ea24152620da7f2ee80a78e17f784"
 
-RDEPEND="raptor2 ladspa libidn"
+RDEPEND="raptor2 ladspa libidn openldap"
 RECOMMENDED=""
 BDEPEND=""
 OPTIONAL=""

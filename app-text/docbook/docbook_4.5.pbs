@@ -8,7 +8,7 @@
 DESCRIPTION="Docbook SGML DTD"
 HOMEPAGE="http://www.docbook.org/sgml/"
 LICENSE="GPL"
-PACKAGER="StartOS Developers"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 YARCH="any"
 
 SRC_URI="http://www.docbook.org/sgml/"$V"/"$N-$V".zip"

@@ -1,0 +1,38 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="A library designed to interconvert between many file formats used in molecular modeling and computational chemistry"
+HOMEPAGE="http://openbabel.org/wiki/Main_Page"
+LICENSE="GPL"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
+
+SRC_URI="http://downloads.sourceforge.net/"$N"/"$N-$V".tar.gz"
+CHECKSUM="9b0007560d9d838b40ab4ad06daf5610"
+
+RDEPEND="gcc-libs libxml2"
+RECOMMENDED=""
+BDEPEND="cmake eigen2 wxgtk"
+OPTIONAL="eigen2: to use bindings
+          wxgtk: GUI interface"
+CONFLICT=""
+
+pbs_unpack() {
+    dounpack
+}
+
+pbs_config() {
+    doconfig -DCMAKE_BUILD_TYPE=Release
+}
+
+pbs_build() {
+    domake
+}
+
+pbs_install() {
+    domkinstall
+}
+

@@ -13,7 +13,7 @@ PACKAGER="StartOS Developers"
 SRC_URI="http://www.jwz.org/"$N"/"$N-$V".tar.gz"
 CHECKSUM="c0b8b2c817a9a7371f51a82e80602d10"
 
-RDEPEND="atk cairo expat fontconfig freetype gcc-libs gdk-pixbuf2 glib2 glibc gtk2 libdrm libffi libglade libICE libjpeg-turbo libpng libSM libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libXinerama libxml2 libXmu libXpm libXrandr libXrender libXt libXxf86vm mesa pam pango pixman util-linux zlib"
+RDEPEND="libjpeg-turbo libXi libXinerama libXmu libXpm libXrandr mesa pam"
 BDEPEND="bc"
 RECOMMENDED=""
 
@@ -25,7 +25,7 @@ pbs_config() {
     config+=" --with-x-app-defaults=/usr/share/X11/app-defaults
               --with-pam 
           --with-login-manager 
-          --with-gtk2 
+          --with-gtk 
           --with-gl
               --without-gle 
           --with-pixbuf 
@@ -41,6 +41,6 @@ pbs_install() {
     make install_prefix="$destdir" install
     dodoc "$filesdir"/LICENSE
     dopamd xscreensaver.pam
-    echo "NoDisplay=true" >> "${destdir}/usr/share/applications/xscreensaver-properties.desktop"
+    #echo "NoDisplay=true" >> "${destdir}"/usr/share/applications/xscreensaver-properties.desktop
 }
 

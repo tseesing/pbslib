@@ -15,7 +15,7 @@ YARCH="any"
 SRC_URI="http://tango.freedesktop.org/releases/"$N-$V".tar.gz"
 CHECKSUM="2c5c7a418e5eb3268f65e21993277fba"
 
-RDEPEND="xml-simple xml-parser"
+RDEPEND="xml-simple xml-parser perl"
 BDEPEND=""
 
 OPTIONS="nodev"

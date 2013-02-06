@@ -1,0 +1,17 @@
+[Unit]
+Description="A famous HTTP and reverse proxy server"
+After=syslog.target network.target
+
+[Service]
+Type=forking
+##   PIDFile=/var/run/nginx.pid
+ExecStartPre=/usr/sbin/nginx -t -q -g 'master_process on;'
+ExecStart=/usr/sbin/nginx    -g 'master_process on;'
+ExecReload=/usr/sbin/nginx   -g 'master_process on;' -s reload
+ExecStop=/usr/sbin/nginx     -s quit
+
+#   Note: The directives could reference from its website: 
+#         "http://nginx.org/en/docs/dirindex.html"
+
+[Install]
+WantedBy=multi-user.target

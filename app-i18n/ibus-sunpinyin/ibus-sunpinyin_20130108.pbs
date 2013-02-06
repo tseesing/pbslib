@@ -12,7 +12,7 @@ PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
 SRC_URI="git://github.com/sunpinyin/sunpinyin.git"
 
-RDEPEND="sunpinyin sunpinyin-data ibus"
+RDEPEND="sunpinyin sunpinyin-data libibus"
 BDEPEND="scons git"
 
 pbs_unpack() {

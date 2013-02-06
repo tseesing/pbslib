@@ -7,25 +7,30 @@
 
 DESCRIPTION="Qt Cryptographic Architecture (QCA)"
 HOMEPAGE="http://delta.affinix.com/qca/"
-LICENSE="GPL"
-PACKAGER="StartOS Developers"
+LICENSE="LGPL"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
 SRC_URI="http://delta.affinix.com/download/"$N"/2.0/"$N-$V".tar.bz2"
 CHECKSUM="fc15bd4da22b8096c51fcfe52d2fa309"
 
-RDEPEND="qt"
+RDEPEND="qt ca-certificates"
 RECOMMENDED=""
 BDEPEND=""
 OPTIONAL=""
 CONFLICT=""
 
 pbs_unpack() {
-        dounpack
+    dounpack
+}
+
+pbs_patch() {
+    dopatch qca-2.0.3+gcc-4.7.patch
 }
 
 pbs_config() {
     ./configure \
         --prefix=/usr \
+        --libdir=/usr/lib"$LIBDIRSUFFIX" \
         --disable-tests \
         --certstore-path=/etc/ssl/certs/ca-certificates.crt \
         --release \

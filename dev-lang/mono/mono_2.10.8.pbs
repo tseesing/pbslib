@@ -13,7 +13,7 @@ PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 SRC_URI="http://download.mono-project.com/sources/"$N"/"$N-$V".tar.bz2"
 CHECKSUM="c012b01ac17bedb0af52b7a16405da84"
 
-RDEPEND="zlib libgdiplus bash"
+RDEPEND="zlib libgdiplus bash python"
 BDEPEND="pkgconfig"
 RECOMMENDED=""
 CONFLICT=""

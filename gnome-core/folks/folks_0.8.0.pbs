@@ -14,7 +14,7 @@ PACKAGER="chenqixing@ivali.com
 SRC_URI="http://ftp.acc.umu.se/pub/gnome/sources/"$N"/${V%.*}/"$N-$V".tar.xz"
 CHECKSUM="8c56c7594dd502ef5877e93181136e41f4ea03de4971372a7a04e7f1492eed9d"
 
-RDEPEND="libgee libxml2 telepathy-glib zeitgeist(>=0.3.14) libzeitgeist evolution-data-server libsocialweb"
+RDEPEND="libgee libxml2 telepathy-glib libzeitgeist evolution-data-server libsocialweb"
 RECOMMENDED=""
 BDEPEND="libzeitgeist"
 CONFLICT=""

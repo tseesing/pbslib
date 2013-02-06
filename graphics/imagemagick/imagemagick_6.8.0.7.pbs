@@ -55,6 +55,7 @@ pbs_build() {
 imagemagick_install() {
     DESCRIPTION="A collection of tools and libraries for many image formats"
     RDEPEND="fontconfig lcms2 liblqr perl"
+    RECOMMENDED="librsvg libpng"
     OPTIONAL="ghostscript: for Ghostscript support
               openexr: for OpenEXR support
               libwmf: for WMF support

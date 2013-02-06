@@ -12,8 +12,8 @@ PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
 SRC_URI="http://ftp.gnu.org/gnu/gnutls/"$N-$V".tar.xz"
 CHECKSUM="cd4e5a5382b0e0c76c6cffe30d48bbb6"
-
-RDEPEND="libtasn1 zlib gcc-libs readline nettle p11-kit"
+ 
+RDEPEND="libtasn1 zlib gcc-libs readline nettle p11-kit libidn"
 BDEPEND="valgrind strace datefudge"
 
 INSTALL="$N.install"

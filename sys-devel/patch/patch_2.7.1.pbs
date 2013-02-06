@@ -8,12 +8,13 @@
 DESCRIPTION="Utility to apply diffs to files"
 HOMEPAGE="http://savannah.gnu.org/projects/patch"
 LICENSE="GPL"
-PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>
+          chenqixing@ivali.com"
 
 SRC_URI="ftp://ftp.gnu.org/gnu/"$N"/"$N-$V".tar.xz"
 CHECKSUM="e9ae5393426d3ad783a300a338c09b72"
 
-RDEPEND="glibc"
+RDEPEND="glibc attr"
 BDEPEND="ed"
 OPTIONAL="ed: for patch -e functionality"
 

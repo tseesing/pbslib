@@ -8,7 +8,8 @@
 DESCRIPTION="Flexible Context-aware Input Tool with eXtension"
 HOMEPAGE="http://code.google.com/p/fcitx/"
 LICENSE="GPL"
-PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>
+          chenqixing@ivali.com"
 GROUP="fcitx"
 
 SRC_URI="http://fcitx.googlecode.com/files/"$N-$V"_dict.tar.xz"
@@ -24,11 +25,11 @@ pbs_unpack() {
 
 pbs_config() {
     doconfig -DCMAKE_BUILD_TYPE=Release \
-             -DENABLE_OPENCC=OFF \
-             -DFORCE_PRESAGE=ON \
-             -DENABLE_TEST=ON \
-             -DENABLE_GTK3_IM_MODULE=ON \
-             -DENABLE_QT_IM_MODULE=ON
+        -DENABLE_OPENCC=OFF \
+        -DFORCE_PRESAGE=ON \
+        -DENABLE_TEST=ON \
+        -DENABLE_GTK3_IM_MODULE=ON \
+        -DENABLE_QT_IM_MODULE=ON
 }
 
 pbs_build() {
@@ -37,7 +38,7 @@ pbs_build() {
 
 fcitx_install() {
     DESCRIPTION="Flexible Context-aware Input Tool with eXtension"
-    RDEPEND="pango gtk-update-icon-cache shared-mime-info desktop-file-utils dbus-core icu"
+    RDEPEND="pango gtk-update-icon-cache shared-mime-info desktop-file-utils dbus icu libXinerama libxkbfile libxml2"
     RECOMMENDED=""
     OPTIONAL=""
     INSTALL="$N.install"
@@ -66,7 +67,7 @@ fcitx-gtk3_install () {
 
 fcitx-qt_install() {
     DESCRIPTION="QT IM Module for fcitx"
-    RDEPEND=="qt fcitx"
+    RDEPEND="qt fcitx"
 
     cd "${srcdir}"/build/src/frontend/qt
     domkinstall

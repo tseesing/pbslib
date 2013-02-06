@@ -8,12 +8,13 @@
 DESCRIPTION="API for controlling virtualization engines (openvz,kvm,qemu,virtualbox,xen,etc)"
 HOMEPAGE="http://www.libvirt.org/index.html"
 LICENSE="LGPL"
-PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>
+          chenqixing@ivali.com"
 
 SRC_URI="http://libvirt.org/sources/"$N-$V".tar.gz"
 CHECKSUM="86a8c0acabb01e11ac84fe00624dc54e"
 
-RDEPEND="e2fsprogs gnutls iptables libxml2 parted polkit python avahi yajl libpciaccess systemd dbus libXau libXdmcp pcre curl cyrus-sasl libgcrypt libgpg-error openssl libxcb gcc-libs iproute2 netcf libnl libX11"
+RDEPEND="e2fsprogs gnutls iptables libxml2 parted polkit python avahi yajl libpciaccess systemd dbus libXau libXdmcp pcre curl cyrus-sasl libgcrypt libgpg-error openssl libxcb gcc-libs iproute2 netcf libnl libX11 libpcap fuse"
 RECOMMENDED=""
 BDEPEND="pkgconfig lvm2 linux-headers"
 OPTIONAL="bridge-utils: for briged networking (default)
