@@ -12,7 +12,7 @@ GROUP="x11-apps"
 SRC_URI="http://www.x.org/releases/X11R7.5/src/app/$N-$V$R.tar.bz2"
 
 RDEPEND="libX11 libXcursor libpng libxcb libXrender libXfixes libXau libXdmcp zlib"
-BDEPEND=" x11-libs/libXcursor media-libs/libpng x11-libs/libXcursor"
+BDEPEND="libXcursor libpng libXcursor"
 
 pbs_unpack() {
         dounpack

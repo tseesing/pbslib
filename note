@@ -33,3 +33,6 @@ Removed, Any package that previously depended on it now relies on systemd instea
 
 * farsight2
 Replaced by farstream
+
+* bitmap
+Removed, confilct against mesa-demos

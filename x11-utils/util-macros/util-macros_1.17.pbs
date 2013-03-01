@@ -18,7 +18,6 @@ RDEPEND=""
 BDEPEND=""
 RECOMMENDED=""
 
-OPTIONS="nodev"
 
 pbs_unpack() {
         dounpack

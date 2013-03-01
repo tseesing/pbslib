@@ -8,22 +8,20 @@
 DESCRIPTION="Exuberant Ctags creates tags files for code browsing in editors"
 HOMEPAGE="http://ctags.sourceforge.net"
 LICENSE="GPL"
-PACKAGER="StartOS Developers"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
-SRC_URI="http://prdownloads.sourceforge.net/"$N"/"$N-$V".tar.gz"
+SRC_URI="http://downloads.sourceforge.net/sourceforge/$N/$N-$V.tar.gz"
+CHECKSUM="c00f82ecdcc357434731913e5b48630d"
 
 RDEPEND="glibc"
 BDEPEND=""
 
 pbs_unpack() {
-        dounpack
+    dounpack
 }
 
 pbs_config() {
-    config+="--with-posix-regex 
-                 --without-readlib 
-             --disable-etags 
-             --enable-tmpdir=/tmp"
+    config+="--disable-external-sort"
     doconfig
 }
 

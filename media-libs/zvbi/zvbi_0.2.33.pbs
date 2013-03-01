@@ -8,7 +8,7 @@
 DESCRIPTION="VBI Decoding Library for Zapping"
 HOMEPAGE="http://zapping.sourceforge.net"
 LICENSE="GPL"
-PACKAGER="StartOS Developers"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
 SRC_URI="http://downloads.sourceforge.net/sourceforge/zapping/"$N-$V".tar.bz2"
 CHECKSUM="1741a6045c3eedfb611d645f2da69ac8"
@@ -21,15 +21,15 @@ CONFLICT=""
 REPLACE=""
 
 pbs_unpack() {
-        dounpack
+    dounpack
 }
 
 pbs_patch() {
-    dopatch fix-includes.patch
+    dopatch fix-includes.patch zvbi-0.2.33-libpng15.patch
 }
 
 pbs_config() {
-    config+=""
+    config+="--disable-static"
     doconfig
 }
 

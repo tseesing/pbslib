@@ -1,0 +1,45 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="Daemon providing interfaces to work with storage devices"
+HOMEPAGE="http://www.freedesktop.org/wiki/Software/udisks"
+LICENSE="GPL"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
+
+SRC_URI="http://hal.freedesktop.org/releases/"$N-$V".tar.gz"
+CHECKSUM="86c63b2b5484f2060499a052b5b6256b"
+
+RDEPEND="systemd util-linux device-mapper sg3_utils parted polkit dbus-glib parted libatasmart"
+BDEPEND=""
+RECOMMENDED=""
+
+pbs_unpack() {
+    dounpack
+}
+
+pbs_config() {
+    config+="--disable-static"
+    doconfig
+    dopatch drop-pci-db.patch
+}
+
+pbs_build() {
+    domake
+}
+
+pbs_install() {
+    domkinstall profiledir=/usr/share/bash-completion/completions
+    cd "$destdir"
+    # move udev helpers and rules to /usr/lib
+    mv lib/udev usr/lib/
+    rm -r lib
+    dounit udisks.service
+    echo "SystemdService=udisks.service" >> usr/share/dbus-1/system-services/org.freedesktop.UDisks.service
+    # install the /media folder
+    install -d -m 755 media
+}
+

@@ -12,6 +12,7 @@ PACKAGER="chenqixing@ivali.com
           Zhongxin Huang <huangzhongxin@ivali.com>"
 
 SRC_URI="http://udisks.freedesktop.org/releases/${N%2*}-$V.tar.bz2"
+CHECKSUM="79fb343fbec6ed6b9e76fbe828622d38"
 
 RDEPEND="libatasmart util-linux polkit systemd glib2"
 BDEPEND="intltool gobject-introspection gtk-doc"
@@ -24,7 +25,8 @@ pbs_unpack() {
 }
 
 pbs_config() {
-    config+="--disable-static --with-systemdsystemunitdir=/usr/lib/systemd/system"
+    config+="--disable-static 
+             --with-systemdsystemunitdir=/usr/lib/systemd/system"
     doconfig
 }
 

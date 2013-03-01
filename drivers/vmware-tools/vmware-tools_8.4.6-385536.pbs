@@ -7,7 +7,6 @@
 
 DESCRIPTION="vmware tools kernel modules and init script for kernel 2.6.38.3-ylmfos"
 HOMEPAGE="www.vmware.com"
-REPO=""
 LICENSE=""
 PACKAGER="StartOS Developers"
 
@@ -19,7 +18,6 @@ RECOMMENDED=""
 CONFLICT=""
 
 INSTALL="$N.install"
-OPTIONS="nodev"
 
 NOTES=""
 

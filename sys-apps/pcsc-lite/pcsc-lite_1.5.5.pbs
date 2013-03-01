@@ -12,15 +12,15 @@ PACKAGER="StartOS Developers"
 
 SRC_URI="https://alioth.debian.org/frs/download.php/3082/"$N-$V".tar.bz2"
 
-RDEPEND="dbus gcc-libs glibc hal libsmbios"
+RDEPEND="libusb-compat"
 BDEPEND=""
 RECOMMENDED=""
 
 pbs_unpack() {
-        dounpack
+    dounpack
 }
-
 pbs_config() {
+    config+="--disable-libhal"
     doconfig
 }
 
@@ -30,6 +30,5 @@ pbs_build() {
 
 pbs_install() {
     domkinstall
-    dodoc AUTHORS ChangeLog COPYING INSTALL NEWS README
 }
 

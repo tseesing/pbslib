@@ -1,0 +1,122 @@
+#
+# StartOS package build script
+#
+# Copyright 2005-2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="GNU GRand Unified Bootloader - Utilities and Common Files"
+HOMEPAGE="http://www.gnu.org/software/grub/"
+LICENSE="GPLv3"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
+PRIORITY="required"
+
+SRC_URI="http://ftp.gnu.org/gnu/grub/grub-"$V".tar.xz 
+         ftp://ftp.archlinux.org/other/grub2/grub2_extras_lua_r24.tar.xz
+         ftp://ftp.archlinux.org/other/grub2/grub2_extras_ntldr-img_r21.tar.xz
+         ftp://ftp.archlinux.org/other/grub2/grub2_extras_915resolution_r9.tar.xz"
+CHECKSUM="274d91e96b56a5b9dd0a07accff69dbb6dfb596b
+          89290031b974780c6df76893836d2477d4add895
+          eb4b35b4c36b64f9405cbcbc538cb205171c1c0a
+          d5ae2efec25616028a9d89e98b6e454f1c4c415f"
+
+RDEPEND="xz freetype device-mapper fuse systemd"
+BDEPEND="unifont python autogen texinfo gettext dosfstools efibootmgr"
+OPTIONAL="libisoburn: provides xorriso for generating grub rescue iso using grub-mkrescue
+          os-prober: to detect other OSes when generating grub.cfg in BIOS systems
+          mtools: for grub-mkrescue FAT FS support"
+
+OPTIONS="nostrip"
+
+INSTALL="$N.install"
+
+pbs_unpack() {
+    dounpack
+}
+
+pbs_patch() {
+    dopatch build-glibc-2.16.patch 
+    # patches from Ubuntu 12.10
+    dopatch fetch_latest_po.patch  
+    dopatch disable_floppies.patch 
+    dopatch gfxpayload_keep_default.patch  
+    dopatch mkconfig_skip_dmcrypt.patch 
+    dopatch mkconfig_loopback.patch 
+    dopatch gettext_quiet.patch 
+    dopatch mkconfig_overescaping.patch 
+    dopatch mkconfig_ubuntu_recovery.patch 
+    dopatch mkconfig_stderr_handling.patch 
+    dopatch mkconfig_nonexistent_loopback.patch 
+    dopatch ubuntu_grub_standards.patch
+    dopatch ubuntu_vt_handoff.patch 
+    dopatch ubuntu_blacklist_1440x900x32.patch 
+    dopatch ubuntu_recovery_nomodeset.patch
+    dopatch ubuntu_wubi_no_windows.patch 
+    dopatch ubuntu_probe_dmraid.patch 
+    dopatch ubuntu_mount_readdir_symlink_failures.patch 
+    dopatch ubuntu_initrd_addr_min.patch 
+    dopatch ubuntu_really_quiet.patch
+
+    # Fetch latest po, rsync is required
+    bash linguas.sh
+}
+
+pbs_config() {
+    ## set architecture dependent variables
+    [ "${ARCH}" == "x86_64" ] && _EFIEMU="--enable-efiemu" || _EFIEMU="--disable-efiemu"
+    _HOST="${ARCH}"
+    
+    ## fix DejaVuSans.ttf location so that grub-mkfont can create *.pf2 files for starfield theme
+    #sed 's|/usr/share/fonts/dejavu|/usr/share/fonts/dejavu /usr/share/fonts/TTF|g' -i configure.ac
+    
+    ## add the grub-extra sources
+    install -d grub-extras
+    export GRUB_CONTRIB="$(readlink -f grub-extras)"
+    tar xf "$YBS_SOURCE"/grub2_extras_lua_r24.tar.xz -C grub-extras
+    tar xf "$YBS_SOURCE"/grub2_extras_ntldr-img_r21.tar.xz -C grub-extras
+    tar xf "$YBS_SOURCE"/grub2_extras_915resolution_r9.tar.xz -C grub-extras
+
+    ./autogen.sh
+    CFLAGS="" \
+    ./configure --with-platform="pc" \
+                "${_EFIEMU}" \
+                --target="i386" \
+                --enable-mm-debug \
+                --enable-nls \
+                --enable-device-mapper \
+                --enable-cache-stats \
+                --enable-grub-mkfont \
+                --enable-grub-mount \
+                --prefix="/usr" \
+                --bindir="/usr/bin" \
+                --sbindir="/usr/sbin" \
+                --mandir="/usr/share/man" \
+                --infodir="/usr/share/info" \
+                --datarootdir="/usr/share" \
+                --sysconfdir="/etc" \
+                --program-prefix="" \
+                --with-bootdir="/boot" \
+                --with-grubdir="grub" \
+                --disable-werror
+}
+
+pbs_build() {
+    CFLAGS="" domake
+}
+
+pbs_install() {
+    domkinstall
+    
+    cd "$destdir"
+    docp "$filesdir"/grub.default usr/share/grub/
+    docp "$filesdir"/20_memtest86+ etc/grub.d/
+    docp "$filesdir"/00_header usr/share/grub-gfxpayload-lists/blacklist/
+    docp "$filesdir"/{update-grub2,update-grub,update-grub-gfxpayload} usr/sbin/
+
+    # remove platform specific files
+    rm -rf usr/lib/grub/i386-pc/
+    # misc
+    mv usr/sbin/grub-install{,.real}
+    mkdir -p boot/grub/
+}
+

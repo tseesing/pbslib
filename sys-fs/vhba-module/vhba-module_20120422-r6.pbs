@@ -22,7 +22,6 @@ pbs_unpack() {
 vhba-module-source_install() {
     DESCRIPTION="VHBA module provides Virtual (SCSI) Host Bus Adapter for the cdemu suite (source)."
     RECOMMENDED="build-essential"
-    OPTIONS="nodev"
     YARCH="any"
     
     INSTALL="$N.install"

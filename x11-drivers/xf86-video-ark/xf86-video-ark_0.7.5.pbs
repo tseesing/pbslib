@@ -14,7 +14,7 @@ GROUP="x11-drivers"
 SRC_URI="http://xorg.freedesktop.org/releases/individual/driver/"$N-$V".tar.bz2"
 
 RDEPEND="glibc xorg-server(>=1.13.0)"
-BDEPEND="libpciaccess-dev"
+BDEPEND="libpciaccess"
 
 pbs_unpack() {
         dounpack

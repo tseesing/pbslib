@@ -13,9 +13,8 @@ PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 SRC_URI="http://www.netlib.org/"$N"/"$N-$V".tgz"
 CHECKSUM="93a6e4e6639aaf00571d53a580ddc415416e868b"
 
+RDEPEND="blas(=3.4.2)"
 BDEPEND="cmake"
-
-PROVIDE="lapack blas"
 
 pbs_unpack() {
     dounpack
@@ -32,12 +31,9 @@ pbs_build() {
     domake
 }
 
-lapack_install() {
-    DESCRIPTION="Linear Algebra PACKage"
-    RDEPEND="blas=$V"
-    
+pbs_install() {
     cd "$srcdir"
-
+    
     for libname in liblapack libtmglib; do
         docp build/lib/"${libname}".so "$destdir"/usr/lib"$LIBDIRSUFFIX"/
         ln -sf liblapack.so "$destdir"/usr/lib"$LIBDIRSUFFIX"/"${libname}".so."$V"
@@ -47,17 +43,5 @@ lapack_install() {
     docp build/bin/* "$destdir"/usr/bin/
     chmod 755 "$destdir"/usr/bin/*
     dodoc LICENSE 
-}
-
-blas_install() {
-    DESCRIPTION="Basic Linear Algebra Subprograms"
-    RDEPEND="glibc"
-    
-    cd "$srcdir"
-
-    docp build/lib/libblas.so "${destdir}"/usr/lib"$LIBDIRSUFFIX"/
-    ln -sf libblas.so "${destdir}"/usr/lib"$LIBDIRSUFFIX"/libblas.so."$V"
-    ln -sf libblas.so "${destdir}"/usr/lib"$LIBDIRSUFFIX"/libblas.so.3
-    dodoc LICENSE
 }
 

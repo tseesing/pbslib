@@ -1,0 +1,73 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="A featureful, general-purpose sound server"
+HOMEPAGE="http://www.freedesktop.org/wiki/Software/PulseAudio"
+LICENSE="GPL,LGPL"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>
+          chenqixing@ivali.com"
+
+SRC_URI="http://freedesktop.org/software/"$N"/releases/"$N-$V".tar.xz"
+CHECKSUM="c90bfda29605942d08e3e218ef10e3c660506a06651a616bfbb6a6df8392836d"
+
+RDEPEND="rtkit speex tdb fftw orc libsamplerate webrtc-audio-processing systemd 
+         json-c libasyncns libcap libsndfile(>=1.0.18)"
+RECOMMENDED="avahi alsa-plugins"
+BDEPEND=""
+CONFLICT=""
+OPTIONAL="avahi: zeroconf support
+          bluez: bluetooth support
+          sbc: bluetooth support
+          gconf: configuration through gconf (paprefs)
+          jack: jack support
+          lirc: infra-red support
+          openssl: RAOP support
+          pyqt: Equalizer GUI (qpaeq)
+          alsa-plugins: ALSA support
+          avahi: - zeroconf support"
+
+INSTALL="$N.install"
+
+pbs_unpack() {
+    dounpack
+}
+
+pbs_config() {    
+    config+="--with-udev-rules-dir=/usr/lib/udev/rules.d 
+             --with-database=tdb 
+             --disable-tcpwrap 
+             --disable-rpath 
+             --disable-default-build-tests"
+    doconfig
+}
+
+pbs_build() {
+    # fight unused direct deps
+    sed -i -e 's/ -shared / -Wl,-O1,--as-needed\0/g' libtool
+    domake
+}
+
+pbs_install() {
+    domkinstall
+    cd "$destdir"
+    # Speed up pulseaudio shutdown
+    # Lower resample quality, saves CPU
+    sed -e '/exit-idle-time/iexit-idle-time=0' -e '/resample-method/iresample-method=speex-float-0' -i etc/pulse/daemon.conf
+    # Disable cork-request module, can result in e.g. media players unpausing
+    # when there's a Skype call incoming
+    sed -e 's|/usr/bin/pactl load-module module-x11-cork-request|#&|' -i usr/bin/start-pulseaudio-x11
+    # Make ConsoleKit optional
+    sed -e $'/load-module module-console-kit/{i.nofail\n;a.fail\n;}'  -i etc/pulse/default.pa
+    # For X11
+    docp "$filesdir"/pulseaudio etc/X11/Xsession.d/
+    rm etc/dbus-1/system.d/pulseaudio-system.conf
+    # cap is handled in .install
+    chmod 755 usr/libexec/pulse/proximity-helper
+    # PulseAudio for alsa 
+    docp "$filesdir"/asound.conf  etc/
+}
+

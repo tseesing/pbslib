@@ -17,7 +17,6 @@ RDEPEND="glib2"
 BDEPEND=""
 CONFLICT=""
 
-OPTIONS="nodev"
 
 pbs_unpack() {
     dounpack

@@ -13,22 +13,21 @@ PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 SRC_URI="http://poppler.freedesktop.org/"$N-$V".tar.gz"
 CHECKSUM="c7038be37a7d446544e83a7df3c26196"
 
-PROVIDE="poppler poppler-glib poppler-qt"
-
-BDEPEND="libjpeg cairo fontconfig openjpeg gtk2 qt pkgconfig lcms icu"
+RDEPEND="fontconfig gcc-libs lcms libpng libxml2 cairo poppler-data openjpeg"
+BDEPEND="libjpeg-turbo cairo fontconfig openjpeg gtk2 pkgconfig icu"
 
 pbs_unpack() {
     dounpack
 }
 
 pbs_config() {
-    config+=" --disable-static 
-              --enable-cairo-output 
-              --enable-xpdf-headers 
-              --enable-libjpeg 
-              --enable-zlib 
-              --enable-poppler-qt4 
-              --enable-poppler-glib "
+    config+="--disable-static 
+             --enable-cairo-output 
+             --enable-xpdf-headers 
+             --enable-libjpeg 
+             --enable-zlib 
+             --disable-poppler-qt4 
+             --disable-poppler-glib"
     sed -i -e '/AC_PATH_XTRA/d' configure.ac                                  
     autoreconf -fi
     doconfig
@@ -38,37 +37,9 @@ pbs_build() {
     domake
 }
 
-poppler_install() {
-    DESCRIPTION="PDF rendering library based on the xpdf-3.0"
-    RDEPEND="fontconfig gcc-libs lcms libpng libxml2 cairo poppler-data openjpeg"
-    
+pbs_install() {
     sed -e 's/^glib_subdir =.*/glib_subdir =/' -e 's/^qt4_subdir =.*/qt4_subdir =/' -i Makefile
     domkinstall
     rm -f "${destdir}"/usr/lib"$LIBDIRSUFFIX"/pkgconfig/poppler-{glib,qt4}.pc
-}
-
-poppler-glib_install(){
-    DESCRIPTION="Poppler glib bindings"
-    RDEPEND="glib2 poppler"
-    
-    cd poppler
-    make DESTDIR="${destdir}" install-libLTLIBRARIES
-    cd "${srcdir}/glib"
-    make DESTDIR="${destdir}" install
-    docp ../poppler-glib.pc "${destdir}"/usr/lib"$LIBDIRSUFFIX"/pkgconfig/
-    rm -f "${destdir}"/usr/lib"$LIBDIRSUFFIX"/libpoppler.*
-    rm -f "${destdir}"/usr/bin/poppler-glib-demo
-}
-
-poppler-qt_install() {
-    DESCRIPTION="Poppler Qt bindings"
-    RDEPEND="poppler qt"
-
-    cd "${srcdir}"/poppler
-    make DESTDIR="${destdir}" install-libLTLIBRARIES
-    cd "${srcdir}"/qt4
-    domkinstall
-    docp ../poppler-qt4.pc "$destdir"/usr/lib"$LIBDIRSUFFIX"/pkgconfig/
-    rm -f "${destdir}"/usr/lib"$LIBDIRSUFFIX"/libpoppler.*
 }
 

@@ -13,7 +13,7 @@ PACKAGER="StartOS Developers"
 SRC_URI="ftp://lug.mtu.edu/gentoo/distfiles/"$N-$V".tar.bz2"
 
 RDEPEND="glib2 libidn openssl"
-BDEPEND="gnutls-dev"
+BDEPEND="gnutls"
 RECOMMENDED=""
 
 pbs_unpack() {

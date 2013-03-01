@@ -13,7 +13,7 @@ YARCH="any"
 
 SRC_URI=""
 
-RDEPEND="bash coreutils procps-ng grep findutils"
+RDEPEND="bash coreutils procps grep findutils"
 BDEPEND=""
 
 INSTALL="$N.install"

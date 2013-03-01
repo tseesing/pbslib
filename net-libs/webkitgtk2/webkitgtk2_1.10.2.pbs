@@ -1,0 +1,43 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="GTK+ Web content engine library for GTK+ 2.0"
+HOMEPAGE="http://www.webkitgtk.org/"
+LICENSE="custom"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>
+          chenqixing@ivali.com"
+
+SRC_URI="http://webkitgtk.org/releases/webkitgtk-"$V".tar.xz"
+CHECKSUM="7b1a652af1eb11bee5bf7209e9ff67e6"
+
+RDEPEND="gst-plugins-base0.10 gtk2 enchant geoclue libxslt"
+BDEPEND="ruby gobject-introspection perl"
+RECOMMENDED=""
+
+pbs_unpack() {
+    dounpack
+}
+
+pbs_config() {
+    config+="--enable-introspection 
+             --disable-silent-rules 
+             --with-gstreamer=0.10 
+             --with-gtk=2.0 
+             --disable-webkit2"
+    doconfig
+}
+
+pbs_build() {
+    domake all stamp-po
+}
+
+pbs_install() {
+    domkinstall
+    # Remove files provided by webkitgtk3
+    rm -rf "$destdir"/usr/share/gtk-doc/
+    dodoc Source/WebKit/LICENSE
+}

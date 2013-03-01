@@ -20,8 +20,6 @@ OPTIONAL="a: support a
 CONFLICT=""
 REPLACE=""
 
-#OPTIONS="nodev nostrip upx nolibtool distcc ccache"
-
 INSTALL="$N.install"
 
 ALIAS=""

@@ -5,7 +5,7 @@
 # Distributed under the terms of the GNU General Public License v2
 #
 
-DESCRIPTION="XML parsing library, version 2"
+DESCRIPTION="XML parsing library, version2"
 HOMEPAGE="http://www.xmlsoft.org/"
 LICENSE="custom"
 PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>
@@ -33,5 +33,6 @@ pbs_build() {
 pbs_install() {
     domkinstall
     dodoc COPYING
+    doln /usr/include/libxml2/libxml "$destdir"/usr/include/libxml
 }
 

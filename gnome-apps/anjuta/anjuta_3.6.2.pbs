@@ -13,9 +13,10 @@ PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 SRC_URI="ftp://ftp.gnome.org/pub/gnome/sources/$N/${V%.*}/$N-$V.tar.xz"
 CHECKSUM="2cf44120dcf22c4f4f25bbc65d3641c206e627776ab0f3a37ff0059844d581a2"
 
-PROVIDE="libanjuta anjuta"
-
+RDEPEND="libanjuta vte3 autogen devhelp glade libgda subversion vala dconf"
 BDEPEND="gnome-doc-utils intltool gobject-introspection itstool gdl"
+
+INSTALL="$N.install"
 
 pbs_unpack() {
     dounpack
@@ -33,22 +34,9 @@ pbs_build() {
     domake
 }
 
-libanjuta_install() {
-    DESCRIPTION="Anjuta runtime library"
-    RDEPEND="gdl"
-    
-    cd "$srcdir"/libanjuta
+pbs_install() {
     make -j1 DESTDIR="$destdir" install
-}
-
-anjuta_install() {
-    DESCRIPTION="GNOME Integrated Development Environment (IDE)"
-    RDEPEND="libanjuta vte3 autogen devhelp glade libgda subversion vala dconf"
-    INSTALL="$N.install"
-
-    cd "$srcdir"
-    make -j1 DESTDIR="$destdir" install
-
+    # provided by libanjuta package
     cd libanjuta
     make -j1 DESTDIR="$destdir" uninstall
 }

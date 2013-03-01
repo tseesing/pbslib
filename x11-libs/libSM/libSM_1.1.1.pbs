@@ -13,7 +13,7 @@ SRCURL="http://www.x.org/releases/X11R7.5/src/lib"
 SRC_URI="$SRCURL/libSM-1.1.1.tar.bz2"
 
 RDEPEND="libICE util-linux"
-BDEPEND=" x11-libs/libICE"
+BDEPEND="libICE"
 
 pbs_unpack()
 {

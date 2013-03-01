@@ -18,7 +18,6 @@ CHECKSUM="2c5c7a418e5eb3268f65e21993277fba"
 RDEPEND="xml-simple xml-parser perl"
 BDEPEND=""
 
-OPTIONS="nodev"
 
 pbs_unpack() {
     dounpack

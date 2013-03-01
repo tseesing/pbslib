@@ -31,8 +31,10 @@ pbs_build() {
 
 pbs_install() {
     domkinstall
-    # Confict with new version
-    mv "$destdir"/usr/bin/aclocal{,1.4}
-    mv "$destdir"/usr/bin/automake{,1.4}
+    cd "$destdir"
+    # Confict with automake
+    mv usr/bin/aclocal{,1.4}
+    mv usr/bin/automake{,1.4}
+    rm -rf usr/share/info/
 }
 

@@ -14,7 +14,7 @@ GROUP="x11-drivers"
 SRC_URI="http://xorg.freedesktop.org/releases/individual/driver/"$N-$V".tar.bz2"
 
 RDEPEND="libdrm(>=2.4.40) xorg-server(>=1.13.0) xcb-util(>=0.3.8) libXfixes libXvMC systemd"
-BDEPEND="util-macros pixman-dev(>=0.24)"
+BDEPEND="util-macros pixman(>=0.24)"
 
 pbs_unpack() {
     dounpack

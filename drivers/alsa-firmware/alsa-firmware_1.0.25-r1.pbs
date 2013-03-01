@@ -18,7 +18,7 @@ BDEPEND=""
 RECOMMENDED=""
 CONFLICT=""
 
-OPTIONS="nodev nostrip"
+OPTIONS="nostrip"
 
 pbs_unpack() {
         dounpack

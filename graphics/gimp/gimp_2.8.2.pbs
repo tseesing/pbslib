@@ -23,11 +23,11 @@ pbs_unpack() {
 }
 
 pbs_config() {
-    config+=" --enable-mp 
-              --enable-gimp-console 
-          --enable-python 
-          --with-gif-compression=lzw 
-          --with-libcurl"
+    config+="--enable-mp 
+             --enable-gimp-console 
+             --enable-python 
+             --with-gif-compression=lzw 
+             --with-libcurl"
     doconfig
 }
 

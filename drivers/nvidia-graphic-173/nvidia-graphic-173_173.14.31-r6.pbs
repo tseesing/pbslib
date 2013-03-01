@@ -45,7 +45,6 @@ nvidia-graphic-173-source_install () {
     DESCRIPTION="NVIDIA Xorg driver, kernel module (source)"
     BDEPEND="make prelink"
     RECOMMENDED="build-essential"
-    OPTIONS="nodev"
     YARCH="any"
 
     INSTALL="$N.install"
@@ -78,7 +77,6 @@ nvidia-graphic-173-utils_install () {
         RDEPEND="nvidia-graphic-173-driver xorg-server(>=1.12.2)"
 
         INSTALL="$N.install"
-        OPTIONS="nodev"
 
     # License 
     dodoc LICENSE

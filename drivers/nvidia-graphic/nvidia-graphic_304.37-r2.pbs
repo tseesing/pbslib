@@ -50,7 +50,6 @@ nvidia-graphic-source_install () {
     DESCRIPTION="NVIDIA Xorg driver, kernel module (source)"
     BDEPEND="prelink"
     RECOMMENDED="build-essential nvidia-graphic-utils"     
-    OPTIONS="nodev"
     YARCH="any"
 
     INSTALL="$N.install"
@@ -84,7 +83,6 @@ nvidia-graphic-utils_install () {
     RDEPEND="nvidia-graphic-driver xorg-server(>=1.12.2)"
 
     INSTALL="$N.install"
-    OPTIONS="nodev"
 
     #
     docp * "$destdir"/usr/lib/

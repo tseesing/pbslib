@@ -38,5 +38,6 @@ pbs_build() {
 
 pbs_install() {
     domkinstall
+    perl_cleanup
 }
 

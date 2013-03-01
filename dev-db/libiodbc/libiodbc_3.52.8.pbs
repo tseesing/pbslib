@@ -5,9 +5,9 @@
 # Distributed under the terms of the GNU General Public License v2
 #
 
-DESCRIPTION="ODBC Interface for Linux."
+DESCRIPTION="Independent Open DataBase Connectivity for Linux"
 HOMEPAGE="http://www.iodbc.org/"
-LICENSE="GPL"
+LICENSE="LGPL"
 PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
 SRC_URI="http://downloads.sourceforge.net/iodbc/$N-$V.tar.gz"
@@ -16,14 +16,17 @@ CHECKSUM="9889f95f632f10895ff53b8a22162810"
 RDEPEND="glibc"
 BDEPEND="chrpath"
 RECOMMENDED=""
-CONFLICT=""
+CONFLICT="iodbc"
 
 pbs_unpack() {
     dounpack
 }
 
 pbs_config() {
-    config+="--disable-gui --disable-libodbc --disable-static"
+    config+="--includedir=/usr/include/libiodbc
+             --disable-gui 
+             --disable-libodbc 
+             --disable-static"
     doconfig
 }
 

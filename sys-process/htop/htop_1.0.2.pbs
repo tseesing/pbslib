@@ -1,0 +1,49 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="Interactive process viewer"
+HOMEPAGE="http://htop.sourceforge.net/"
+LICENSE="GPL"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
+
+SRC_URI="http://downloads.sourceforge.net/"$N"/"$N-$V".tar.gz"
+CHECKSUM="0d01cca8df3349c74569cefebbd9919e"
+
+RDEPEND="ncurses"
+RECOMMENDED="lsof strace"
+BDEPEND="python"
+OPTIONAL="lsof: show files opened by a process
+          strace: attach to a running process"
+CONFLICT=""
+
+pbs_unpack() {
+    dounpack
+}
+
+pbs_patch() {
+    sed -i 's|ncursesw/curses.h|curses.h|' RichString.[ch] configure
+    sed -i 's|python|python2|' scripts/MakeHeader.py
+    # Boost field buffer size - crashes when trying to draw very deep UTF-8 trees
+    # Test by nesting 30 shells
+    dopatch tree-crash.patch
+}
+
+pbs_config() {
+    config+="--enable-unicode
+             --enable-openvz
+             --enable-vserver
+             --enable-cgroup"
+    doconfig
+}
+
+pbs_build() {
+    domake
+}
+
+pbs_install() {
+    domkinstall
+}

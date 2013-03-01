@@ -12,7 +12,15 @@ PACKAGER="Zhongxinhuang <huangzhongxin@ivali.com>"
 
 SRC_URI="ftp://ftp.sunet.se/pub/multimedia/graphics/ImageMagick/ImageMagick-"${V%.*}"-"${V##*.}".tar.xz"
 
-PROVIDE="imagemagick imagemagick-doc"
+RDEPEND="fontconfig lcms2 liblqr perl"
+RECOMMENDED="librsvg libpng"
+OPTIONAL="ghostscript: for Ghostscript support
+          openexr: for OpenEXR support
+          libwmf: for WMF support
+          librsvg: for SVG support
+          libxml2: for XML support
+          jasper: for JPEG-2000 support
+          libpng: for PNG support"
 
 pbs_unpack() {
     dounpack
@@ -52,27 +60,10 @@ pbs_build() {
     domake
 }
 
-imagemagick_install() {
-    DESCRIPTION="A collection of tools and libraries for many image formats"
-    RDEPEND="fontconfig lcms2 liblqr perl"
-    RECOMMENDED="librsvg libpng"
-    OPTIONAL="ghostscript: for Ghostscript support
-              openexr: for OpenEXR support
-              libwmf: for WMF support
-              librsvg: for SVG support
-              libxml2: for XML support
-              jasper: for JPEG-2000 support
-              libpng: for PNG support"
-
+pbs_install() {
     domkinstall
     dodoc LICENSE
     rm -fr "$destdir"/usr/share/doc/ImageMagick/
-}
-
-imagemagick-doc_install() {
-    DESCRIPTION="The ImageMagick documentation (utilities manuals and libraries API)"
-    RDEPEND=""
-
-    make DESTDIR="$destdir" install-data-html
+    perl_cleanup
 }
 

@@ -1,0 +1,36 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="Access a working SSH implementation by means of a library"
+HOMEPAGE="http://www.libssh.org/"
+LICENSE="LGPL"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
+
+SRC_URI="https://red.libssh.org/attachments/download/38/$N-$V.tar.gz"
+CHECKSUM="9ad01838d3b89d98e900e0f6260a88cc"
+
+RDEPEND="openssl"
+BDEPEND="cmake"
+RECOMMENDED=""
+
+pbs_unpack() {
+    dounpack
+}
+
+pbs_config() {
+    config+="-DCMAKE_BUILD_TYPE=Release"
+    doconfig
+}
+
+pbs_build() {
+    domake
+}
+
+pbs_install() {
+    domkinstall
+}
+

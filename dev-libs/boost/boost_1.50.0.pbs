@@ -13,10 +13,12 @@ PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 SRC_URI="http://sourceforge.net/projects/boost/files/"$N"/"$V"/"$N"_"${V//./_}".tar.bz2"
 CHECKSUM="52dd00be775e689f55a987baebccc462"
 
-PROVIDE="boost boost-libs"
+RDEPEND="boost-libs(=1.50.0)"
+BDEPEND=""
+RECOMMENDED=""
 
 pbs_unpack() {
-        dounpack
+    dounpack
 }
 
 pbs_build() {
@@ -73,41 +75,16 @@ pbs_build() {
     install
 }
 
-boost_install() {
-    DESCRIPTION="Boost Libraries for C++"
-    RDEPEND="boost-libs(=1.50.0)"
-    BDEPEND=""
-    RECOMMENDED=""
-    
+pbs_install() {
     cd "$_stagedir"
-    
     # Headers/source files
     docp usr/include "$destdir"/usr/
-
     # Static libs
     docp usr/lib"$LIBDIRSUFFIX"/*.a "$destdir"/usr/lib"$LIBDIRSUFFIX"/
-
     # Utilities (bjam, bcp, pyste)
-    docp usr/* "$destdir"/usr/
-    
+    docp usr/bin "$destdir"/usr/
     # Boostbook
     docp share/* "$destdir"/usr/share/
-    
-    # License
-    dodoc "$srcdir"/LICENSE_1_0.txt
-}
-
-boost-libs_install() {
-    DESCRIPTION="Boost Libraries for C++ - Runtime"
-    RDEPEND="bzip2 icu zlib"
-    BDEPEND=""
-    RECOMMENDED=""
-    
-    cd "$_stagedir"
-
-    # Shared libs
-    docp usr/lib"$LIBDIRSUFFIX"/*.so{,.*} "$destdir"/usr/lib"$LIBDIRSUFFIX"/
-    
     # License
     dodoc "$srcdir"/LICENSE_1_0.txt
 }

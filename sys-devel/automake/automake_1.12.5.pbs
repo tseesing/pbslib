@@ -17,12 +17,10 @@ SRC_URI="ftp://ftp.gnu.org/gnu/"$N"/"$N-$V".tar.xz"
 RDEPEND="autoconf perl"
 BDEPEND=""
 
-OPTIONS="nodev"
-
 INSTALL="$N.install"
 
 pbs_unpack() {
-        dounpack
+    dounpack
 }
 
 pbs_config() {

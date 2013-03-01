@@ -10,13 +10,11 @@ HOMEPAGE="http://xorg.freedesktop.org/"
 GROUP="x11-proto"
 LICENSE="GPL-2"
 PACKAGER="StartOS Developers"
-REPO=""
 
 SRC_URI="http://cgit.freedesktop.org/xorg/proto/glproto/snapshot/glproto-1.4.14.tar.bz2"
 
 RDEPEND=""
 BDEPEND=""
-OPTIONS="nodev"
 
 pbs_unpack() {
         dounpack

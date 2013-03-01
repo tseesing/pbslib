@@ -27,7 +27,6 @@ rt5370sta-source_install() {
     DESCRIPTION="driver for Ralink PCI ABGN WLAN Card: RT8070/RT3070/RT3370/RT5370/RT5372 USB (source)."
     RECOMMENDED="build-essential"
     INSTALL="$N.install"
-    OPTIONS="nodev"
         YARCH="any"
 
     dosrc *

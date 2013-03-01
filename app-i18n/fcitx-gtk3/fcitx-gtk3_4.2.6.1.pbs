@@ -1,0 +1,45 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="GTK3 IM Module for fcitx"
+HOMEPAGE="http://code.google.com/p/fcitx/"
+LICENSE="GPL"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>
+          chenqixing@ivali.com"
+GROUP="fcitx"
+
+SRC_URI="http://fcitx.googlecode.com/files/fcitx-"$V"_dict.tar.xz"
+CHECKSUM="dc0ddd9c1753bd256dd771189a4465e18bed7f9e"
+
+RDEPEND="gtk3 fcitx"
+BDEPEND="cmake intltool icu iso-codes gobject-introspection enchant"
+
+INSTALL="$N.install"
+
+pbs_unpack() {
+    dounpack
+}
+
+pbs_config() {
+    doconfig -DCMAKE_BUILD_TYPE=Release \
+        -DENABLE_OPENCC=OFF \
+        -DFORCE_PRESAGE=ON \
+        -DENABLE_TEST=ON \
+        -DENABLE_GTK2_IM_MODULE=OFF \
+        -DENABLE_GTK3_IM_MODULE=ON \
+        -DENABLE_QT_IM_MODULE=OFF
+}
+
+pbs_build() {
+    domake
+}
+
+pbs_install () {
+    cd src/frontend/gtk3
+    domkinstall
+}
+

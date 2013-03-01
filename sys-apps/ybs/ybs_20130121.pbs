@@ -11,12 +11,14 @@ LICENSE="GPL"
 PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 PRIORITY="required"
 GROUP="base"
+YARCH="any"
 
 INSTALL="$N.install"
 
-SRC_URI="git://github.com/StartOS/ybs.git"
+#SRC_URI="git://github.com/StartOS/ybs.git"
+SRC_URI="file:///root/gits-huangzx/ybs"
 
-RDEPEND="gawk cpio xz sed coreutils findutils procps psmisc bash"
+RDEPEND="gawk cpio xz sed coreutils findutils procps psmisc bash python"
 BDEPEND=""
 RECOMMENDED="wget curl git ypkg2"
 

@@ -14,9 +14,8 @@ PACKAGER="chenqixing@ivali.com
 SRC_URI="http://ftp.gnome.org/pub/GNOME/sources/${N::3}/${V%.*}/${N::3}"-$V".tar.xz"
 CHECKSUM="f40f9fe0bcc6d65bc44b2fab5469b56a9f0631132c6b90e06053e421711159cf"
 
+RDEPEND="gtk3 ncurses vte-common"
 BDEPEND="gobject-introspection"
-
-PROVIDE="vte3 vte-common"
 
 pbs_unpack() {
     dounpack
@@ -35,18 +34,9 @@ pbs_build() {
     domake
 }
 
-vte3_install() {
-    DESCRIPTION="Terminal emulator widget"
-    RDEPEND="gtk3 ncurses vte-common"
-
+pbs_install() {
     domkinstall 
+    # provided by vte-common package
     rm "$destdir"/usr/libexec/gnome-pty-helper
-}
-
-vte-common_install() {
-    DESCRIPTION="Common files used by vte and vte3"
-    RDEPEND="glibc"
-
-    domkinstall -C gnome-pty-helper
 }
 

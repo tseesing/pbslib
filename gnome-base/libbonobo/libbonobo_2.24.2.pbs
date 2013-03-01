@@ -9,11 +9,11 @@ DESCRIPTION="GNOME CORBA framework."
 HOMEPAGE="http://www.gnome.org/"
 LICENSE="GPL-2"
 PACKAGER="StartOS Developers"
-SRC_URI="ftp://ftp.gnome.org/pub/gnome/sources/$N/2.24/"$N-$V$R".tar.bz2"
-BDEPEND="dbus-glib intltool libxml2 orbit popt dev-perl/xml-parser"
-RECOMMENDED=""
 
-NOTES=""
+SRC_URI="ftp://ftp.gnome.org/pub/gnome/sources/$N/2.24/"$N-$V$R".tar.bz2"
+BDEPEND="dbus-glib intltool libxml2 orbit popt xml-parser"
+
+RECOMMENDED=""
 
 pbs_unpack() {
         dounpack

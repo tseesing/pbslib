@@ -17,7 +17,6 @@ CHECKSUM="e74b2ff3172a6117f2a62b655ef99064"
 
 RDEPEND=""
 BDEPEND=""
-OPTIONS="nodev"
 
 pbs_unpack() {
     dounpack

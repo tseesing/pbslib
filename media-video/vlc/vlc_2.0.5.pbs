@@ -1,0 +1,55 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="A free and open source cross-platform multimedia player and framework"
+HOMEPAGE="http://www.videolan.org/"
+LICENSE="GPL,LGPL"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
+
+SRC_URI="http://download.videolan.org/pub/videolan/"$N"/"$V"/"$N-$V".tar.xz"
+CHECKSUM="4f959c0766ada8cea5a72c65fce94ebe"
+ 
+RDEPEND="a52dec aalib faad2 ffmpeg fluidsynth libass libavc1394 libbluray libcaca libcddb libdc1394 libdca libdvdnav libgcrypt libgme libmad libmodplug libmpcdec libmpeg2 libmtp libnotify libproxy librsvg libsamplerate libshout libssh2 libtiger libupnp libXpm libXtst lirc lua opus samba sdl-image taglib twolame vcdimager xcb-util-keysyms zvbi"
+BDEPEND=""
+RECOMMENDED=""
+CONFLICT=""
+
+INSTALL="$N.install"
+
+pbs_unpack() {
+    dounpack
+}
+
+pbs_config() {
+    config+="--disable-rpath 
+             --enable-oss 
+             --enable-faad 
+             --enable-nls 
+             --enable-lirc 
+             --enable-pvr 
+             --enable-realrtsp 
+             --enable-xosd 
+             --enable-aa 
+             --enable-vcdx 
+             --enable-upnp 
+             --enable-opus 
+             --enable-sftp"
+    doconfig
+}
+
+pbs_build() {
+    domake
+}
+
+pbs_install() {
+    domkinstall
+    for res in 16 32 48 128; do
+        install -D -m644 share/icons/"$res"x"$res"/vlc.png \
+        "$destdir"/usr/share/icons/hicolor/"$res"x"$res"/apps/vlc.png
+    done
+}
+

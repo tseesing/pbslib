@@ -26,8 +26,16 @@ pbs_unpack() {
     dounpack
 }
 
+pbs_patch() {
+    # Support new libgps API
+    dopatch geoclue-0.12.99-gpsd.patch
+}
+
 pbs_config() {
-    config+="--disable-static"
+    # Conic is only for Maemo. Don't enable.
+    # Gypsy has multiple vulnerabilities:
+    # https://bugs.freedesktop.org/show_bug.cgi?id=33431
+    config+="--disable-static --disable-schemas-compile --disable-conic --disable-gypsy"
     doconfig
 }
 

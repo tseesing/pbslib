@@ -1,0 +1,44 @@
+Description: Skip Windows os-prober entries on Wubi systems
+ Since we're already being booted from the Windows boot loader, including
+ entries that take us back to it mostly just causes confusion, and stops us
+ from being able to hide the menu if there are no other OSes installed.
+ .
+ https://blueprints.launchpad.net/ubuntu/+spec/foundations-o-wubi
+Author: Colin Watson <cjwatson@ubuntu.com>
+Forwarded: not-needed
+Last-Update: 2012-09-06
+
+diff -ur grub-2.00/util/grub.d/30_os-prober.in grub-2.00.new/util/grub.d/30_os-prober.in
+--- grub-2.00/util/grub.d/30_os-prober.in	2013-01-24 11:00:41.239464033 +0800
++++ grub-2.00.new/util/grub.d/30_os-prober.in	2013-01-24 11:03:40.022825404 +0800
+@@ -106,6 +106,7 @@
+ }
+ 
+ used_osprober_linux_ids=
++wubi=
+ 
+ for OS in ${OSPROBED} ; do
+   DEVICE="`echo ${OS} | cut -d ':' -f 1`"
+@@ -121,6 +122,22 @@
+ 
+   case ${BOOT} in
+     chain)
++      case ${LONGNAME} in
++         Windows*)
++           if [ -z "$wubi" ]; then
++             if [ -x /usr/share/lupin-support/grub-mkimage ] && \
++                /usr/share/lupin-support/grub-mkimage --test; then
++               wubi=yes
++             else
++               wubi=no
++             fi
++           fi
++           if [ "$wubi" = yes ]; then
++             echo "Skipping ${LONGNAME} on Wubi system" >&2
++             continue
++           fi
++           ;;
++       esac
+ 
+ 	  onstr="$(gettext_printf "(on %s)" "${DEVICE}")"
+       cat << EOF

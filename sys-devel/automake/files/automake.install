@@ -1,13 +1,12 @@
-. /usr/lib/ybs/funcs
 
 files="automake.info-3.gz automake.info-2.gz automake.info-1.gz automake.info.gz automake-history.info.gz"
 
 post_install() {
-        doinstall_info $files
+    doinstall_info $files
 }       
 
 pre_remove() {
-        doremove_info $files
+    doremove_info $files
 }
 
 post_upgrade() {

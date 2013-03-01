@@ -13,7 +13,7 @@ GROUP="fcitx"
 
 SRC_URI="git://git.ylmf.com/"$N".git"
 
-RDEPEND="fcitx(>=fcitx_4.2.4)"
+RDEPEND="fcitx(>=4.2.4)"
 RECOMMENDED=""
 BDEPEND=""
 OPTIONAL=""

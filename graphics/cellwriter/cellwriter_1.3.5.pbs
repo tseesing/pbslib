@@ -1,0 +1,37 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="Grid-entry natural handwriting input panel"
+HOMEPAGE="http://risujin.org/cellwriter/"
+LICENSE="GPL"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
+
+SRC_URI="http://pub.risujin.org/cellwriter/"$N-$V".tar.gz"
+CHECKSUM="16db87415c3c669e0489f9c4d795ec7d"
+
+RDEPEND="gtk2 libXtst"
+BDEPEND=""
+RECOMMENDED=""
+CONFLICT=""
+
+pbs_unpack() {
+    dounpack
+}
+
+pbs_config() {
+    config+=""
+    doconfig
+}
+
+pbs_build() {
+    domake
+}
+
+pbs_install() {
+    domkinstall
+}
+

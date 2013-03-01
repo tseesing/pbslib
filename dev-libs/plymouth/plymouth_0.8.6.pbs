@@ -7,7 +7,6 @@ HOMEPAGE="http://cgit.freedesktop.org/plymouth/"
 LICENSE="GPL"
 PACKAGER="StartOS Developers"
 
-REPO="testing"
 
 SRC_URI="http://freedesktop.org/software/plymouth/releases/"$N-$V".tar.bz2"
 

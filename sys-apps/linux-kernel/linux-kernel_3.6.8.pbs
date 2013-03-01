@@ -5,7 +5,7 @@
 # Distributed under the terms of the GNU General Public License v2
 #
 
-DESCRIPTION="Linux Kernel with StartOS patches, split into linux-kernel-headers"
+DESCRIPTION="Linux kernel modules" 
 HOMEPAGE="http://www.kernel.org"
 LICENSE="GPLv2"
 PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
@@ -13,9 +13,13 @@ PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 SRC_URI="http://www.kernel.org/pub/linux/kernel/v3.0/linux-"$V".tar.xz"
 CHECKSUM="e3405cc8f9e4f18c516e55a8eb625803"
 
-PROVIDE="linux-kernel linux-kernel-headers"
+BDEPEND="ncurses"
 
-OPTIONS="nodev nostrip"
+INSTALL="$N.install"
+
+RIR="yes"
+
+OPTIONS="nostrip"
 
 pbs_unpack() {
     dounpack
@@ -48,14 +52,11 @@ pbs_build() {
     domake modules
 }
 
-linux-kernel_install() {
-    DESCRIPTION="Linux kernel modules" 
-    BDEPEND="ncurses"
-    INSTALL="$N.install"
-    RIR="yes"
-    
+pbs_install() {
     make INSTALL_MOD_PATH="$destdir" modules_install
-    make INSTALL_MOD_PATH="$destdir" firmware_install
+    # Note that, most of firmwares are provided by linux-firmware package
+    #make INSTALL_MOD_PATH="$destdir" firmware_install
+    rm -rf "$destdir"/lib/firmware/
     
     version="$(make kernelrelease)"
     ARCH="$(get_arch)"
@@ -79,121 +80,5 @@ linux-kernel_install() {
     # For ykms
     mkdir -p "${destdir}"/var/ypkg/modules/
     echo "$version $ARCH" >"${destdir}"/var/ypkg/modules/kernel
-}
-
-linux-kernel-headers_install() {
-    DESCRIPTION="linux kernel headers"
-    INSTALL="$N.install"
-    # Note: Some script files need python
-    CONFLICT=""
-    
-    # Headers
-    KARCH=x86
-
-    KDIR="$destdir"/usr/src/"$N-$V$R"
-    doln /usr/src/"$N-$V$R" "$destdir"/usr/src/linux
-
-    docp Makefile             "$KDIR"/
-    docp Module.symvers         "$KDIR"/   
-    docp kernel/Makefile         "$KDIR"/kernel/
-    docp arch/"$KARCH"/Makefile "$KDIR"/arch/"$KARCH"/
-    docp .config             "$KDIR"/
-
-    # add vmlinux
-    docp vmlinux       "$KDIR"/
-
-    # Copy base include files
-    for i in acpi asm-generic config crypto drm generated linux math-emu \
-        media net pcmcia scsi sound trace video xen; do
-        docp include/"${i}" "$KDIR"/include/
-    done
-
-    # For klibc compile
-    for i in mtd rdma; do
-        docp include/"${i}"  "$KDIR"/include/
-    done
-
-    # Copy arch includes for external modules
-    docp arch/"$KARCH"/include   "$KDIR"/arch/"$KARCH"/
-    # FIXME, klibc only search unistd_64.h in "arch/"$KARCH"/include/asm/"
-    docp arch/"$KARCH"/include/generated/asm/unistd_64.h "$KDIR"/arch/"$KARCH"/include/asm/
-
-    # Copy files necessary for later builds, like nvidia and vmware
-    cp -a scripts   "$KDIR"/
-
-    # Fix permissions on scripts dir
-    chmod og-w -R   "$KDIR"/scripts
-    mkdir -p        "$KDIR"/.tmp_versions
-
-    if [ "$ARCH" = "i686" ]; then
-        docp arch/"$KARCH"/Makefile_32.cpu "$KDIR"/arch/"$KARCH"/
-    fi
-
-    docp arch/"$KARCH"/kernel/asm-offsets.s "$KDIR"/arch/"$KARCH"/kernel/
-
-    # Add headers for lirc package
-    docp drivers/media/video/*.h            "$KDIR"/drivers/media/video/
-
-    for i in bt8xx cpia2 cx25840 cx88 em28xx pwc saa7134 sn9c102; do
-        docp drivers/media/video/"${i}"/*.h "$KDIR"/drivers/media/video/"${i}"
-    done
-
-    # Add docbook makefile
-    docp Documentation/DocBook/Makefile    "$KDIR"/Documentation/DocBook/
-
-    # Add dm headers
-    docp drivers/md/*.h                    "$KDIR"/drivers/md/
-
-    # Add inotify.h
-    docp include/linux/inotify.h           "$KDIR"/include/linux/
-
-    # Add wireless headers
-    docp net/mac80211/*.h                  "$KDIR"/net/mac80211/
-
-    # Add dvb headers for external modules
-    docp drivers/media/dvb/dvb-core/*.h    "$KDIR"/drivers/media/dvb/dvb-core/
-    docp include/config/dvb/*.h            "$KDIR"/include/config/dvb/
-
-    # Add dvb headers 
-    docp drivers/media/video/msp3400-driver.h drivers/media/dvb/frontends/*.h  \
-                                           "$KDIR"/drivers/media/dvb/frontends/
-    docp drivers/media/dvb/dvb-usb/*.h     "$KDIR"/drivers/media/dvb/dvb-usb/
-    docp drivers/media/common/tuners/*.h   "$KDIR"/drivers/media/common/tuners/
-
-    # Add xfs and shmem for aufs building
-    docp fs/xfs/xfs_sb.h                   "$KDIR"/fs/xfs/
-
-    # Copy Kconfig files
-    for i in `find . -name "Kconfig*"`; do
-        docp "${i}"                "$KDIR"/"$(dirname ${i})"
-    done
-    
-    # Copy Kbuild files
-    for i in `find . -name "Kbuild*"`; do
-        docp "${i}"                "$KDIR"/"$(dirname ${i})"
-    done
-
-    # For klibc
-    docp arch/x86/include/generated/asm/unistd_32.h "$KDIR"/arch/x86/include/asm/ 
-    docp arch/x86/syscalls                          "$KDIR"/arch/x86/
-    docp arch/x86/tools                             "$KDIR"/arch/x86/
-    docp tools/include/tools                        "$KDIR"/tools/include/
-
-    #
-    chown -R root.root "$KDIR"
-    
-    cd "$KDIR"
-    
-    # Fix permission
-    find . -type d -exec chmod 755 {} \;
-
-    # Remove unneeded architectures
-    rm -rf "$KDIR"/arch/{alpha,arm,arm26,avr32,blackfin,cris,frv,h8300,ia64,m32r,m68k,m68knommu,mips,microblaze,mn10300,parisc,powerpc,ppc,s390,sh,sh64,sparc,sparc64,um,v850,xtensa}
-
-    # Clean up
-    find . -name ".*install" -exec rm {} \;
-    find . -name ".*cmd" -exec rm {} \;
-    find . -name "*.awk" -exec rm {} \;
-    find . -name ".gitignore" -exec rm {} \;
 }
 

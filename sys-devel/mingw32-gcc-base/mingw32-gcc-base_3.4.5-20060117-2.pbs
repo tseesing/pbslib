@@ -7,7 +7,6 @@
 
 DESCRIPTION="A C cross-compiler for building Windows executables on Linux(stage 1)"
 HOMEPAGE="http://mingw.sf.net"
-REPO=""
 LICENSE="GPL/LGPL"
 PACKAGER="StartOS Developers"
 
@@ -23,7 +22,7 @@ BDEPEND="mingw32-headers mingw32-binutils"
 RECOMMENDED=""
 CONFLICT=""
 
-OPTIONS="nodev nostrip"
+OPTIONS="nostrip"
 
 pbs_unpack() {
         dounpack

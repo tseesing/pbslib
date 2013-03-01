@@ -14,7 +14,7 @@ GROUP="x11-drivers"
 SRC_URI="http://xorg.freedesktop.org/archive/individual/driver/"$N-$V".tar.bz2"
 
 RDEPEND="glibc"
-BDEPEND="xorg-server-dev"
+BDEPEND="xorg-server"
 
 pbs_unpack() {
         dounpack

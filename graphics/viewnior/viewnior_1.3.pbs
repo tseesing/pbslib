@@ -1,0 +1,37 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="Fast and simple image viewer"
+HOMEPAGE="http://xsisqox.github.com/Viewnior/index.html"
+LICENSE="GPL"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
+
+SRC_URI="http://cloud.github.com/downloads/xsisqox/Viewnior/"$N-$V".tar.gz"
+CHECKSUM="273c379933ae3e74ad414fde00198695"
+
+RDEPEND="gtk2"
+BDEPEND="shared-mime-info"
+RECOMMENDED=""
+CONFLICT=""
+
+pbs_unpack() {
+    dounpack
+}
+
+pbs_config() {
+    config+=""
+    doconfig
+}
+
+pbs_build() {
+    domake
+}
+
+pbs_install() {
+    domkinstall
+}
+

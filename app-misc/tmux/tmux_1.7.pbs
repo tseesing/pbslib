@@ -1,0 +1,40 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="A terminal multiplexer"
+HOMEPAGE="http://tmux.sourceforge.net"
+LICENSE="BSD"
+PACKAGER="chenqixing@ivali.com"
+
+SRC_URI="http://downloads.sourceforge.net/project/$N/$N/$N-$V/$N-$V.tar.gz"
+CHECKSUM="2c48fb9beb22eedba7a5de3b78dd0c03"
+
+RDEPEND="ncurses libevent"
+BDEPEND=""
+RECOMMENDED=""
+
+pbs_unpack() {
+    dounpack
+}
+
+pbs_config() {
+    doconfig
+}
+
+pbs_build() {
+    domake
+}
+
+pbs_install() {
+    domkinstall
+    install -Dm644 examples/tmux.vim "$destdir"/usr/share/vim/vim73/colors/tmux.vim 
+    install -dm755 "$destdir"/usr/share/tmux
+    install -m644 examples/* "$destdir"/usr/share/tmux/
+    install -D examples/bash_completion_tmux.sh  "$destdir"/usr/share/bash-completion/completions/tmux
+    dodoc FAQ
+}
+

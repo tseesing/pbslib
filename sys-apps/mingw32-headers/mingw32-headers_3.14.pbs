@@ -7,7 +7,6 @@
 
 DESCRIPTION="Windows header files fro mingw32 C cross-compiler"
 HOMEPAGE="http://www.mingw.org/"
-REPO=""
 LICENSE="LGPL"
 PACKAGER="StartOS Developers"
 
@@ -19,7 +18,7 @@ BDEPEND=""
 RECOMMENDED=""
 CONFLICT=""
 
-OPTIONS="nodev nostrip"
+OPTIONS="nostrip"
 
 pbs_unpack() {
         dounpack

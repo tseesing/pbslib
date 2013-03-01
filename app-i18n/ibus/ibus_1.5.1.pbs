@@ -14,9 +14,8 @@ PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>
 SRC_URI="http://ibus.googlecode.com/files/"$N-$V".tar.gz"
 CHECKSUM="31d732c17d0a103565fa29995c5610e8be8b2dca"
 
-PROVIDE="ibus libibus"
-
-BDEPEND="gobject-introspection dconf iso-codes intltool gtk2 gtk3"
+RDEPEND="gtk2 gtk3 pygobject pyxdg dconf"
+BDEPEND="gobject-introspection iso-codes intltool"
 
 INSTALL="$N.install"
 
@@ -38,27 +37,12 @@ pbs_build() {
     domake
 }
 
-ibus_install() {
-    DESCRIPTION="Intelligent Input Bus for Linux / Unix OS"
-    RDEPEND="gtk2 gtk3 pygobject pyxdg dconf"
-    INSTALL="$N.install"    
-    
+pbs_install() {
     domkinstall
-
     # remove file that will contain in libibus
     make DESTDIR="$destdir" uninstall-pkgconfigDATA
     cd src
     make DESTDIR="$destdir" uninstall
     rmdir -p --ignore-fail-on-non-empty "$destdir"/usr/include/ibus-1.0 "$destdir"/usr/lib"$LIBDIRSUFFIX"/pkgconfig
-}
-
-libibus_install() {
-    DESCRIPTION="Library for ibus"
-    RDEPEND="glib2"
-
-    cd "$srcdir"
-    make DESTDIR="$destdir" install-pkgconfigDATA
-    cd src
-    make DESTDIR="$destdir" install
 }
 

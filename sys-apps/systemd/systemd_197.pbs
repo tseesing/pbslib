@@ -21,7 +21,8 @@ OPTIONAL="cryptsetup: required for encrypted block devices
           quota-tools: kernel-level quota management
           python: systemd library bindings
           py2cairo: systemd-analyze
-          pygobject3: systemd-analyze"
+          pygobject3: systemd-analyze
+          qrencode: journalctl"
 
 INSTALL="$N.install"
 

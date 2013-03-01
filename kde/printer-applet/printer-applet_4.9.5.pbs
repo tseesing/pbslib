@@ -14,7 +14,7 @@ YARCH="any"
 
 SRC_URI="http://download.kde.org/stable/"$V"/src/"$N-$V".tar.xz"
 
-RDEPEND="pyqt4 pykde4 pycups system-config-printer"
+RDEPEND="pyqt pykde4 pycups system-config-printer"
 RECOMMENDED=""
 BDEPEND="cmake automoc4"
 OPTIONAL=""

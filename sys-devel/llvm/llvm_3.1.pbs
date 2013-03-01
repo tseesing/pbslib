@@ -5,7 +5,7 @@
 # Distributed under the terms of the GNU General Public License v2
 #
 
-DESCRIPTION="The LLVM Project is a collection of modular and reusable compiler and toolchain technologies."
+DESCRIPTION="Low Level Virtual Machine"
 HOMEPAGE="http://llvm.org/"
 LICENSE="custom:University of Illinois/NCSA Open Source License"
 PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>
@@ -14,14 +14,16 @@ PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>
 SRC_URI="http://llvm.org/releases/"$V"/"$N-$V".src.tar.gz 
          http://llvm.org/releases/"$V"/clang-"$V".src.tar.gz 
          http://dev.archlinux.org/~foutrelis/sources/compiler-rt/compiler-rt-"$V".src.tar.xz"
-CHECKSUM="16eaa7679f84113f65b12760fdfe4ee1 59bf2d3120a3805f27cafda3823caaf8 8effe0d4f6124e7e2b0c0479960ea99d"
+CHECKSUM="16eaa7679f84113f65b12760fdfe4ee1 
+          59bf2d3120a3805f27cafda3823caaf8 
+          8effe0d4f6124e7e2b0c0479960ea99d"
 
-PROVIDE="llvm clang"
+RDEPEND="gcc-libs libffi"
+BDEPEND="binutils(>=2.22) ocaml perl python" 
+RECOMMENDED=""
+OPTIONAL="python: to use clang-analyzer"
 
 OPTIONS="nostrip"
-
-BDEPEND="binutils(>=2.22) ocaml perl python" 
-OPTIONAL="python: to use clang-analyzer"
 
 pbs_unpack() {
     dounpack
@@ -63,7 +65,6 @@ pbs_patch() {
     export CPPFLAGS="$CPPFLAGS $(pkg-config --cflags libffi)"
 }
 
-
 pbs_config() {
     # Force the use of GCC instead of clang
     CC=gcc CXX=g++ \
@@ -86,17 +87,12 @@ pbs_build() {
     domake REQUIRES_RTTI=1
 }
 
-llvm_install() {
-    DESCRIPTION="Low Level Virtual Machine"
-    RDEPEND="gcc-libs libffi"
-    RECOMMENDED=""
-    cd "$srcdir"
-    # We move the clang directory out of the tree so it won't get installed and
-    # then we bring it back in for the clang package
-    mv tools/clang .
+pbs_install() {
+    # clang provided by clang package
+    # We move the clang directory out of the tree so it won't get installed
+    rm -r tools/clang
     # -j1 is due to race conditions during the installation of the OCaml bindings
     make -j1 DESTDIR="$destdir" install
-    mv clang tools
     # doc
     dodoc LICENSE.TXT
     cd "$destdir"
@@ -117,32 +113,8 @@ llvm_install() {
         for _header in config llvm-config; do
             mv usr/include/llvm/Config/$_header{,-64}.h
             cp "$srcdir"/llvm-Config-$_header.h usr/include/llvm/Config/$_header.h
-            done
+        done
     fi
-    #
     doln /usr/lib"$LIBDIRSUFFIX"/llvm/libLLVM-3.1.so usr/lib"$LIBDIRSUFFIX"/
-}
-
-clang_install() {
-    DESCRIPTION="C language family frontend for LLVM"
-    RDEPEND="llvm"
-    RECOMMENDED=""
-    cd "$srcdir"
-    dodoc LICENSE.TXT
-    # Fix installation path for clang docs
-    sed -i 's:$(PROJ_prefix)/share/doc/llvm:$(PROJ_prefix)/share/doc/clang:' Makefile.config
-    cd tools/clang
-    domkinstall
-    # Fix permissions of static libs
-    chmod -x "$destdir"/usr/lib"$LIBDIRSUFFIX"/llvm/*.a
-    # Revert the path change in case we want to do a repackage later
-    sed -i 's:$(PROJ_prefix)/share/doc/clang:$(PROJ_prefix)/share/doc/llvm:' "$srcdir"/Makefile.config
-    for _tool in scan-{build,view}; do
-        docp tools/$_tool "$destdir"/usr/lib"$LIBDIRSUFFIX"/clang-analyzer/
-        doln /usr/lib"$LIBDIRSUFFIX"/clang-analyzer/$_tool/$_tool "$destdir"/usr/bin/$_tool
-    done
-    # Compile Python scripts
-    python -m compileall "$destdir"/usr/lib"$LIBDIRSUFFIX"/clang-analyzer
-    python -O -m compileall "$destdir"/usr/lib"$LIBDIRSUFFIX"/clang-analyzer
 }
 

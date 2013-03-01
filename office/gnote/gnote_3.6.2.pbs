@@ -1,0 +1,41 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="A note taking application."
+HOMEPAGE="http://live.gnome.org/Gnote"
+LICENSE="GPL"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
+
+SRC_URI="http://ftp.gnome.org/pub/gnome/sources/$N/${V%.*}/$N-$V.tar.xz"
+CHECKSUM="38f3b069874658f281445e04b8376d946580e4a5e39620f7e30fdd8216d46c1e"
+
+RDEPEND="gtkmm3 libxslt desktop-file-utils dconf libsecret"
+BDEPEND="intltool boost"
+RECOMMENDED=""
+CONFLICT=""
+
+INSTALL="$N.install"
+
+pbs_unpack() {
+    dounpack
+}
+
+pbs_config() {
+    config+="--disable-scrollkeeper
+             --disable-schemas-compile 
+             --disable-static"
+    doconfig
+}
+
+pbs_build() {
+    domake
+}
+
+pbs_install() {
+    domkinstall
+}
+

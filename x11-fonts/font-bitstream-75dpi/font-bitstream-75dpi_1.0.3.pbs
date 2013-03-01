@@ -19,8 +19,8 @@ BDEPEND="font-util mkfontdir mkfontscale"
 
 INSTALL="$N.install"
 
-pbs_unpack() {    
-        dounpack
+pbs_unpack() {   
+    dounpack
 }
 
 pbs_config() {

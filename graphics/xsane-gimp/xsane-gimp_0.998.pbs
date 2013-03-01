@@ -1,0 +1,39 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="XSane Gimp plugi"
+HOMEPAGE="http://www.xsane.org"
+LICENSE="GPL"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
+
+SRC_URI="http://www.xsane.org/download/xsane-"$V".tar.gz"
+CHECKSUM="936f1cc76b37caa8f285e1e15ac7e0aa"
+
+RDEPEND="sane-backends gimp"
+
+pbs_unpack() {
+    dounpack
+}
+
+pbs_patch() {
+    dopatch xsane-0.995-xdg-open.patch
+    sed -i -e 's:png_ptr->jmpbuf:png_jmpbuf(png_ptr):' src/xsane-save.c
+}
+
+pbs_config() {
+    ./configure --prefix=/usr --mandir=/usr/share/man --enable-gimp
+}
+
+pbs_build() {
+    domake
+}
+pbs_install () {
+    install -D -m755 src/xsane-gimp "$destdir"/usr/bin/xsane-gimp
+    ## For making Gimp Plugin available 
+    doln /usr/bin/xsane-gimp "$destdir"/usr/lib/gimp/2.0/plug-ins/xsane
+}
+

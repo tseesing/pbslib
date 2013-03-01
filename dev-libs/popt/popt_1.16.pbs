@@ -29,7 +29,7 @@ pbs_build(){
 }
 
 pbs_install() {
-    domkinstall
+    domkinstall pkgconfigdir=/usr/lib"$LIBDIRSUFFIX"/pkgconfig
     dodoc COPYING
 }
 

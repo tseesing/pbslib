@@ -13,7 +13,7 @@ PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 SRC_URI="http://mirror.bjtu.edu.cn/apache/"$N"/"$N-$V".tar.bz2"
 
 RDEPEND="apr-util file neon sqlite"
-BDEPEND="apache apache-dev"
+BDEPEND="apache"
 RECOMMENDED="bash-completion libgnome-keyring"
 OPTIONAL="bash-completion: for svn bash completion
           java-environment (openjdk6, jdk7-openjdk):

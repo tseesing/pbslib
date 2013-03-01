@@ -26,7 +26,6 @@ rt3562sta-source_install() {
     DESCRIPTION="driver for Ralink ABGN WLAN Card: RT3062PCI/mPCI/CB/PCIe(RT3060/RT3062/RT3562/RT3592) (source)"
     RECOMMENDED="build-essential"
     INSTALL="$N.install"
-    OPTIONS="nodev"
     YARCH="any"
     
     dosrc *

@@ -22,7 +22,6 @@ hw-3g-ndis-source_install() {
     DESCRIPTION="Huawei ether driver for 3G data card ether device (source)."
     RECOMMENDED="build-essential"
     INSTALL="$N.install"
-    OPTIONS="nodev"
     YARCH="any"
     
     dosrc *

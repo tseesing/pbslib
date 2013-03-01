@@ -1,0 +1,11 @@
+diff -ur obexd-0.48/plugins/mas.c obexd-0.48.new/plugins/mas.c
+--- obexd-0.48/plugins/mas.c	2012-11-30 15:59:13.000000000 +0800
++++ obexd-0.48.new/plugins/mas.c	2013-03-01 08:55:15.368664324 +0800
+@@ -30,6 +30,7 @@
+ #include <glib.h>
+ #include <fcntl.h>
+ #include <inttypes.h>
++#include <unistd.h>
+ 
+ #include <gobex/gobex.h>
+ #include <gobex/gobex-apparam.h>

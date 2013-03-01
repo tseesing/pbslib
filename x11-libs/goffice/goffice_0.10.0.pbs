@@ -1,0 +1,37 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="A library of document-centric objects and utilities built on top of GLib and Gtk+"
+HOMEPAGE="http://www.gnome.org"
+LICENSE="GPL"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
+
+SRC_URI="http://ftp.gnome.org/pub/gnome/sources/$N/${V%.*}/$N-$V.tar.xz"
+CHECKSUM="7e7577f69203b03c4966906bcaabc6e87a629efb1684630c2bee7907bed08439"
+
+RDEPEND="librsvg gtk3 libgsf libspectre"
+RECOMMENDED=""
+BDEPEND="pkgconfig intltool gtk-doc gobject-introspection"
+CONFLICT=""
+
+pbs_unpack() {
+    dounpack
+}
+
+pbs_config() {
+    config+="--disable-static --enable-introspection"
+    doconfig
+}
+
+pbs_build() {
+    domake
+}
+
+pbs_install() {
+    domkinstall
+}
+

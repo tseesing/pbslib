@@ -13,7 +13,7 @@ GROUP="kde"
 SRC_URI="http://download.kde.org/stable/"$V"/src/"$N-$V".tar.xz"
 CHECKSUM="899a58c5cf2115a1a18fb1690c99b2b3815975c6"
 
-RDEPEND="strigi attica libXScrnSaver soprano krb5 grantlee shared-desktop-ontologies qca libdbusmenu-qt polkit-qt enchant giflib jasper openexr upower udisks libXcursor phonon libXtst libutempter qtwebkit"
+RDEPEND="strigi attica libXScrnSaver soprano krb5 grantlee shared-desktop-ontologies qca libdbusmenu-qt polkit-qt enchant giflib jasper openexr upower udisks2 libXcursor phonon libXtst libutempter qtwebkit"
 BDEPEND="cmake automoc4 avahi mesa hspell"
 RECOMMENDED=""
 

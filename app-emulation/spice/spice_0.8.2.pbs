@@ -16,7 +16,6 @@ RDEPEND=""
 RECOMMENDED=""
 BDEPEND="spice-protocol"
 CONFLICT=""
-#OPTIONS="nodev nostrip upx"
 
 INSTALL="$N.install"
 

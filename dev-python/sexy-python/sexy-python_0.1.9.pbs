@@ -12,12 +12,12 @@ PACKAGER="StartOS Developers"
 
 SRC_URI="http://releases.chipx86.com/libsexy/"$N"/"$N-$V".tar.gz"
 
-RDEPEND="atk cairo expat fontconfig freetype gcc-libs gdk-pixbuf2 glib2 glibc gtk2 libpng libsexy libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libxml2 libXrandr libXrender pango pixman zlib"
-BDEPEND="pygtk-dev"
+RDEPEND="libsexy python"
+BDEPEND="pygtk"
 RECOMMENDED=""
 
 pbs_unpack() {
-        dounpack
+    dounpack
 }
 
 pbs_config() {
@@ -31,6 +31,6 @@ pbs_build() {
 
 pbs_install() {
     domkinstall
-    dodoc AUTHORS ChangeLog COPYING INSTALL NEWS README
+    dodoc COPYING
 }
 

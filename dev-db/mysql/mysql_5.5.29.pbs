@@ -13,9 +13,10 @@ PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 SRC_URI="http://ftp.gwdg.de/pub/misc/mysql/Downloads/MySQL-5.5/$N-$V.tar.gz"
 CHECKSUM="e6b9f9cb82e990bd8f0474df7462904e"
 
-PROVIDE="mysql mysql-clients libmysqlclient"
-
+RDEPEND="mysql-clients systemd ncurses"
 BDEPEND="cmake openssl zlib"
+
+INSTALL="$N.install"
 
 pbs_unpack() {
     dounpack
@@ -66,12 +67,7 @@ pbs_build() {
     domake
 }
 
-mysql_install() {
-    DESCRIPTION="A fast, multi-threaded, multi-user SQL database server."
-    RDEPEND="mysql-clients systemd ncurses"
-    INSTALL="$N.install"
-    
-    cd "$srcdir"/build
+pbs_install() {
     domkinstall
     
     cd "$destdir"
@@ -81,13 +77,13 @@ mysql_install() {
     docp_rename "$filesdir"/mysqld-tmpfile.conf usr/lib/tmpfiles.d/mysqld.conf
     dounit mysqld.service
 
-    # Provided by libmysqlclient
+    # Provided by libmysqlclient package
     rm usr/bin/{mysql_config,mysql_client_test_embedded,mysqltest_embedded}
     rm usr/lib"$LIBDIRSUFFIX"/libmysql*
     rm -r usr/include/
     rm usr/share/man/man1/{mysql_config,mysql_client_test_embedded,mysqltest_embedded}.1
 
-    # Provided by mysql-clients
+    # Provided by mysql-clients package
     rm usr/bin/{mysql,mysqladmin,mysqlcheck,mysqldump,mysqlimport,mysqlshow,mysqlslap} 
     rm usr/share/man/man1/{mysql,mysqladmin,mysqlcheck,mysqldump,mysqlimport,mysqlshow,mysqlslap}.1
 
@@ -96,37 +92,5 @@ mysql_install() {
     rm usr/share/man/man1/mysql-test-run.pl.1
     
     install -dm700 var/lib/mysql
-}
-
-mysql-clients_install() {
-    DESCRIPTION="MySQL client tools"
-    RDEPEND="libmysqlclient"
-
-    cd "$srcdir"/build
-    domkinstall -C client
-    
-    # man
-    for man in mysql mysqladmin mysqlcheck mysqldump mysqlimport mysqlshow mysqlslap; do
-        doman "$srcdir"/man/"${man}".1
-    done
-
-    # provided by mysql
-    rm "$destdir"/usr/bin/{mysql_{plugin,upgrade},mysqlbinlog,mysqltest}
-}
-
-libmysqlclient_install() {
-    DESCRIPTION="MySQL client libraries"
-    RDEPEND="gcc-libs openssl ncurses"
-
-    cd "$srcdir"/build
-    for dir in include libmysql libmysqld libservices; do
-        domkinstall -C "${dir}"
-    done
-
-    docp scripts/mysql_config "${destdir}"/usr/bin/
-    # man
-    for man in mysql_config mysql_client_test_embedded mysqltest_embedded; do
-        doman "$srcdir"/man/"${man}".1
-    done
 }
 

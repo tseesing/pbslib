@@ -5,7 +5,7 @@
 # Distributed under the terms of the GNU General Public License v2
 #
 
-DESCRIPTION="The GNU Compiler Collection"
+DESCRIPTION="The GNU Compiler Collection frontends C C++, etc."
 HOMEPAGE="http://gcc.gnu.org/"
 LICENSE="GPL,LGPL,FDL,custom"
 PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
@@ -13,9 +13,10 @@ PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 SRC_URI="http://ftp.gnu.org/gnu/"$N"/"$N-$V"/"$N-$V".tar.bz2"
 CHECKSUM="cc308a0891e778cfda7a151ab8a6e762"
 
-PROVIDE="gcc-libs gcc"
+RDEPEND="gcc-libs glibc gmp libmpc mpfr ppl cloog zlib"
+BDEPEND=""
 
-BDEPEND="glibc gmp libmpc mpfr ppl cloog zlib"
+INSTALL="$N.install"
 
 pbs_unpack() {
     dounpack
@@ -34,9 +35,9 @@ pbs_config() {
     # FIXME 
     # error: GNAT is required to build ada. remove 'ada'
     config+="--enable-languages=c,c++,fortran,go,lto,objc,obj-c++
-               --enable-shared 
+             --enable-shared 
              --enable-threads=posix
-               --with-system-zlib
+             --with-system-zlib
              --enable-__cxa_atexit
              --disable-libunwind-exceptions 
              --enable-clocale=gnu
@@ -74,45 +75,12 @@ pbs_build() {
     domake
 }
 
-gcc-libs_install() {
-    DESCRIPTION="Runtime libraries shipped by GCC"
-    RDEPEND="glibc"
-    INSTALL="$N.install"
-    OPTIONS="nodev"
-    
-    domake -C "$CHOST"/libgcc DESTDIR="${destdir}" install-shared || die "make $CHOST/libgcc install-shared failed."
-
-    for lib in libmudflap libgomp libstdc++-v3/src libitm; do
-        domake -C "$CHOST"/"${lib}" DESTDIR="${destdir}" install-toolexeclibLTLIBRARIES || die "make $CHOST/${lib} install-toolexeclibLTLIBRARIES failed."
-    done
-
-    domake -C "$CHOST"/libstdc++-v3/po DESTDIR="${destdir}" install 
-    domake -C "$CHOST"/libgomp DESTDIR="${destdir}" install-info 
-    domake -C "$CHOST"/libitm  DESTDIR="${destdir}" install-info
-
-    domake DESTDIR="${destdir}" install-target-libquadmath || die "make install-target-libquadmath failed."
-    domake DESTDIR="${destdir}" install-target-libgfortran || die "make install-target-libgfortran failed."
-    domake DESTDIR="${destdir}" install-target-libobjc || die "make install-target-libobjc failed."
-
-    # Remove unnecessary files installed by install-target-{libquadmath,libgfortran,libobjc}
-    rm -rf "${destdir}"/usr/lib"$LIBDIRSUFFIX"/{gcc/,libgfortran.spec} 
-    # Remove static libraries
-    find "${destdir}" -name *.a -delete
-    find "${destdir}" -name *.la -delete
-    # Install Runtime Library Exception
-    dodoc ../COPYING.RUNTIME
-}
-
-gcc_install() {
-    DESCRIPTION="The GNU Compiler Collection frontends C C++, etc."
-    RDEPEND="gcc-libs glibc gmp libmpc mpfr ppl cloog zlib"
-    INSTALL="$N.install"
-    
+pbs_install() {
     domkinstall || die "make install failed."
     
     cd "$destdir"
     
-    # Remove file in gcc-libs
+    # Remove files in gcc-libs
     find . -name "libstdc++.mo" -delete
     rm usr/share/info/libgomp.info
     rm usr/lib"$LIBDIRSUFFIX"/lib*.so* 
@@ -120,7 +88,13 @@ gcc_install() {
     doln /usr/bin/gcc usr/bin/cc
     doln /usr/bin/cpp lib/cpp
     doln /usr/bin/cpp lib"$LIBDIRSUFFIX"/cpp
-    
+    rm usr/share/info/{libitm,libquadmath}.info    
+
+    # Remove files provided by libffi
+    rm usr/lib"$LIBDIRSUFFIX"/libffi.a
+    rm usr/lib"$LIBDIRSUFFIX"/gcc/"$CHOST"/"$V"/include/ffi{,target}.h
+    rm usr/share/man/man3/ffi*
+   
     # POSIX conformance launcher scripts for c89 and c99
     cat >usr/bin/c89 <<"EOF"
 #!/bin/sh

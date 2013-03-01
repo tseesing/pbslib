@@ -16,7 +16,6 @@ CHECKSUM="234cdfac99257cf99ac4a03c898f37b9"
 RDEPEND="glibc m4"
 BDEPEND=""
 
-OPTIONS="nodev"
 
 INSTALL="$N.install"
 

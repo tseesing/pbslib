@@ -1,0 +1,40 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="Library for decoding RAW files"
+HOMEPAGE="http://libopenraw.freedesktop.org"
+LICENSE="LGPL"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
+
+SRC_URI="http://libopenraw.freedesktop.org/download/$N-$V.tar.bz2"
+CHECKSUM="3611d8aea870d25314665ef53093288e"
+
+RDEPEND="gdk-pixbuf2"
+RECOMMENDED=""
+BDEPEND="boost libxml2"
+OPTIONAL=""
+CONFLICT=""
+REPLACE=""
+
+pbs_unpack() {
+    dounpack
+}
+
+pbs_config() {
+    config+=""
+    doconfig
+}
+
+pbs_build() {
+    domake
+}
+
+pbs_install() {
+    domkinstall
+}
+
+

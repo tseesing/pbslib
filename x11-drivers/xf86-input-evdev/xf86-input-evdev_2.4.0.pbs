@@ -13,7 +13,7 @@ GROUP="x11-drivers"
 SRC_URI="http://www.x.org/releases/individual/driver/"$N-$V$R".tar.bz2"
 
 RDEPEND="libdrm libXvMC libXv libXext libXfixes libX11 libxcb libXau libXdmcp pixman libpciaccess libXtst"
-BDEPEND=" x11-base/xorg-server util-macros"
+BDEPEND=" xorg-server util-macros"
 
 pbs_unpack() {
         dounpack

@@ -21,6 +21,10 @@ pbs_unpack() {
     dounpack
 }
 
+pbs_patch() {
+    dopatch inttypes.patch
+}
+
 pbs_config() {
     doconfig
 }

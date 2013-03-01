@@ -1,0 +1,37 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="Library for reading and writing metadata in media files for Mono"
+HOMEPAGE="https://github.com/mono/taglib-sharp"
+LICENSE="LGPL2"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com."
+
+SRC_URI="http://download.banshee-project.org/$N/$V/$N-$V.tar.gz"
+CHECKSUM=""
+
+RDEPEND="mono"
+BDEPEND=""
+RECOMMENDED=""
+CONFLICT=""
+
+pbs_unpack() {
+    dounpack
+}
+
+pbs_config() {
+    config+="--disable-docs"
+    doconfig
+}
+
+pbs_build() {
+    domake
+}
+
+pbs_install() {
+    domkinstall
+}
+

@@ -13,9 +13,10 @@ PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 SRC_URI="http://sourceforge.net/projects/pidgin/files/Pidgin/"$V"/"$N-$V".tar.bz2"
 CHECKSUM="a0ebb55083e2dfc22a75c504acde6a07"
 
-PROVIDE="pidgin libpurple finch"
-
+RDEPEND="gtkspell libpurple"
+RECOMMENDED="aspell"
 BDEPEND="startup-notification gtkspell libXScrnSaver nss libSM libidn python gstreamer0.10 avahi tk intltool networkmanager"
+OPTIONAL="aspell: for spelling correction"
 
 pbs_unpack() {
     dounpack
@@ -34,45 +35,17 @@ pbs_build() {
     domake
 }
 
-pidgin_install() {
-    DESCRIPTION="GTK Instant Messenger client"
-    RDEPEND="gtkspell libpurple"
-    RECOMMENDED="aspell"
-    OPTIONAL="aspell: for spelling correction"
-
+pbs_install() {
     # For linking
     make -C libpurple DESTDIR="$destdir" install-libLTLIBRARIES
     domkinstall -C pidgin 
     domkinstall -C doc 
-    # Clean up libpurple
+    domkinstall -C po 
+    # Clean up files provided by libpurple package
     make -C libpurple DESTDIR="$destdir" uninstall-libLTLIBRARIES
+    # Clean up files provided by finch package
     rm -f "$destdir"/usr/share/man/man1/finch.1
     perl_cleanup
     dodesktop "$N".desktop
-}
-
-libpurple_install() {
-    DESCRIPTION="IM library extracted from Pidgin"
-    RDEPEND="avahi dbus-glib gst-plugins-base0.10 libgadu libgcrypt nss perl tk"
-
-    for dir in libpurple share/sounds share/ca-certs m4macros po; do
-        domkinstall -C "${dir}"
-    done
-
-    perl_cleanup
-}
-
-finch_install() {
-    DESCRIPTION="A ncurses-based messaging client"
-    RDEPEND="libpurple ncurses"
-
-    # For linking
-    make -C libpurple DESTDIR="$destdir" install-libLTLIBRARIES
-    domkinstall -C finch
-    domkinstall -C doc 
-    # Clean up libpurple
-    make -C libpurple DESTDIR="$destdir" uninstall-libLTLIBRARIES
-    rm -f "$destdir"/usr/share/man/man1/pidgin.1
-    perl_cleanup
 }
 

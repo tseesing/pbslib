@@ -13,7 +13,7 @@ PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 SRC_URI="ftp://lug.mtu.edu/gentoo/distfiles/XML-Twig-"$V$R".tar.gz"
 
 RDEPEND=""
-BDEPEND="expat-dev"
+BDEPEND="expat"
 
 pbs_unpack() {
         dounpack

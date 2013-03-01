@@ -1,0 +1,102 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="Runtime libraries shipped by GCC"
+HOMEPAGE="http://gcc.gnu.org/"
+LICENSE="GPL,LGPL,FDL,custom"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
+
+SRC_URI="http://ftp.gnu.org/gnu/gcc/gcc-"$V"/gcc-"$V".tar.bz2"
+CHECKSUM="cc308a0891e778cfda7a151ab8a6e762"
+
+RDEPEND="glibc"
+BDEPEND="gmp libmpc mpfr ppl cloog zlib"
+
+INSTALL="$N.install"
+
+pbs_unpack() {
+    dounpack
+}
+
+pbs_patch() {
+    # Add startos version string
+    dopatch version-string-"$V".patch
+    # Suppress the installation of libiberty.a. libiberty.a should be provided by Binutils
+    sed -i 's/install_to_$(INSTALL_DEST) //' libiberty/Makefile.in
+    # Do not run fixincludes
+    sed -i 's@\./fixinc\.sh@-c true@' gcc/Makefile.in
+}
+
+pbs_config() {
+    # FIXME 
+    # error: GNAT is required to build ada. remove 'ada'
+    config+="--enable-languages=c,c++,fortran,go,lto,objc,obj-c++
+             --enable-shared 
+             --enable-threads=posix
+             --with-system-zlib
+             --enable-__cxa_atexit
+             --disable-libunwind-exceptions 
+             --enable-clocale=gnu
+             --disable-libstdcxx-pch 
+             --enable-libstdcxx-time
+             --enable-gnu-unique-object 
+             --enable-linker-build-id
+             --with-ppl 
+             --enable-cloog-backend=isl
+             --disable-ppl-version-check 
+             --disable-cloog-version-check
+             --enable-lto 
+             --enable-gold 
+             --enable-ld=default
+             --enable-plugin 
+             --with-plugin-ld=ld.gold
+             --with-linker-hash-style=gnu
+             --disable-libssp
+             --disable-build-with-cxx     
+             --disable-build-poststage1-with-cxx
+             --enable-checking=release 
+             --disable-multilib"
+    
+    case "$ARCH" in 
+        i?86) CHOST="$ARCH"-pc-linux-gnu ;;
+      x86_64) CHOST="$ARCH"-unknown-linux-gnu
+    esac
+
+    rm -rf gcc-build 2>/dev/null
+    mkdir -p gcc-build && cd gcc-build
+    LDFLAGS="-Wl,-rpath-link,/usr/lib64:/lib64:/usr/lib:/lib" ../configure $config 
+}
+
+pbs_build() {
+    domake
+}
+
+pbs_install() {
+    
+    domake -C "$CHOST"/libgcc DESTDIR="${destdir}" install-shared || die "make $CHOST/libgcc install-shared failed."
+
+    for lib in libmudflap libgomp libstdc++-v3/src libitm; do
+        domake -C "$CHOST"/"${lib}" DESTDIR="${destdir}" install-toolexeclibLTLIBRARIES || die "make $CHOST/${lib} install-toolexeclibLTLIBRARIES failed."
+    done
+
+    domake -C "$CHOST"/libstdc++-v3/po DESTDIR="${destdir}" install 
+    domake -C "$CHOST"/libgomp DESTDIR="${destdir}" install-info 
+    domake -C "$CHOST"/libitm  DESTDIR="${destdir}" install-info
+
+    domake DESTDIR="${destdir}" install-target-libquadmath || die "make install-target-libquadmath failed."
+    domake DESTDIR="${destdir}" install-target-libgfortran || die "make install-target-libgfortran failed."
+    domake DESTDIR="${destdir}" install-target-libobjc || die "make install-target-libobjc failed."
+
+    # Remove unnecessary files installed by install-target-{libquadmath,libgfortran,libobjc}
+    rm -rf "${destdir}"/usr/lib"$LIBDIRSUFFIX"/{gcc/,libgfortran.spec} 
+    # Remove static libraries
+    find "${destdir}" -name *.a -delete
+    find "${destdir}" -name *.la -delete
+    # Install Runtime Library Exception
+    dodoc ../COPYING.RUNTIME
+}
+

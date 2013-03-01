@@ -16,7 +16,6 @@ SRC_URI="http://www.x.org/releases/X11R7.6/src/xcb/"$N-$V".tar.bz2"
 RDEPEND=""
 BDEPEND=""
 
-OPTIONS="nodev"
 
 pbs_unpack() {
         dounpack

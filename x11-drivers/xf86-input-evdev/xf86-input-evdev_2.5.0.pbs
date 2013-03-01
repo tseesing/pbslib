@@ -14,7 +14,7 @@ GROUP="x11-drivers"
 SRC_URI="http://www.x.org/releases/X11R7.6/src/driver/"$N-$V".tar.bz2"
 
 RDEPEND="glibc"
-BDEPEND="xorg-server-dev util-macros"
+BDEPEND="xorg-server util-macros"
 
 pbs_unpack() {
         dounpack

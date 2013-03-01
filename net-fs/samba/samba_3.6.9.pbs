@@ -30,7 +30,7 @@ pbs_config() {
     cd source3
     config+="--with-piddir=/var/run/samba
              --with-configdir=/etc/samba
-              --with-fhs
+             --with-fhs
              --with-ads
              --with-automount
              --with-quotas
@@ -79,5 +79,7 @@ pbs_install() {
     docp_rename "$filesdir"/samba.pam       etc/pam.d/samba
     # Clean up
     find . -name "*.old" -type f -exec rm {} \; 2>/dev/null
+    # Provided by tdb
+    rm usr/share/man/man8/{tdbdump.8,tdbbackup.8,tdbtool.8}
 }
 

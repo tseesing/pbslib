@@ -13,7 +13,7 @@ PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 SRC_URI="http://downloads.sourceforge.net/"$N"/"$N-$V".tar.gz"
 CHECKSUM="4113d8aa80194459b45b83d4dbde8ddb"
 
-RDEPEND="flac libogg libsndfile libvorbis"
+RDEPEND="libsndfile"
 RECOMMENDED=""
 BDEPEND=""
 OPTIONAL=""
@@ -21,7 +21,7 @@ CONFLICT=""
 REPLACE=""
 
 pbs_unpack() {
-        dounpack
+    dounpack
 }
 
 pbs_config() {

@@ -26,7 +26,6 @@ pbs_patch() {
     DESCRIPTION="Realtek 8192C USB WiFi (source)"
     RECOMMENDED="build-essential"
     INSTALL="$N.install"
-    OPTIONS="nodev"
         YARCH="any"
 
     dosrc * 

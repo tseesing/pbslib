@@ -19,32 +19,18 @@ case $ARCH in
     CHECKSUM="e4948cfd8a7687fc0d4dd3e6e81777b8"
 esac
 
-PROVIDE="adobe-flashplugin flash-player-properties"
+RDEPEND="gtk2 libXt nss"
 
 pbs_unpack() {
     dounpack
 }
 
-adobe-flashplugin_install() {
-    DESCRIPTION="Adobe Flash Player plugin"
-    RDEPEND="gtk2 libXt nss"
-    
+pbs_install() {
     docp libflashplayer.so  "$destdir"/usr/lib"$LIBDIRSUFFIX"/adobe-flashplugin
     dodoc readme.txt
     cd "$destdir"
     for i in xulrunner mozilla iceape iceweasel firefox midbrowser xulrunner-addons; do
         doln /usr/lib"$LIBDIRSUFFIX"/adobe-flashplugin/libflashplayer.so usr/lib"$LIBDIRSUFFIX"/"${i}"/plugins/libflashplayer.so
     done
-}
-
-flash-player-properties_install () {
-    DESCRIPTION="Adobe flash player properties"
-    RDEPEND="gtk2 libXft libXpm"
-    RECOMMENDED="adobe-flashplugin"
-    INSTALL="$N.install"
-
-    cd "$srcdir"
-    docp usr "$destdir"/
-    mkdir -p "$destdir"/etc/adobe
 }
 

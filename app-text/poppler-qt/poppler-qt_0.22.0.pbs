@@ -1,0 +1,48 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="Poppler Qt bindings"
+HOMEPAGE="http://poppler.freedesktop.org/"
+LICENSE="GPL"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
+
+SRC_URI="http://poppler.freedesktop.org/poppler-"$V".tar.gz"
+CHECKSUM="c7038be37a7d446544e83a7df3c26196"
+
+RDEPEND="poppler qt"
+BDEPEND="libjpeg-turbo cairo fontconfig openjpeg qt pkgconfig lcms icu"
+
+pbs_unpack() {
+    dounpack
+}
+
+pbs_config() {
+    config+=" --disable-static 
+              --enable-cairo-output 
+              --enable-xpdf-headers 
+              --enable-libjpeg 
+              --enable-zlib 
+              --enable-poppler-qt4 
+              --disable-poppler-glib "
+    sed -i -e '/AC_PATH_XTRA/d' configure.ac                                  
+    autoreconf -fi
+    doconfig
+}
+
+pbs_build() {
+    domake
+}
+
+pbs_install() {
+    cd poppler
+    make DESTDIR="$destdir" install-libLTLIBRARIES
+    cd "$srcdir"/qt4
+    domkinstall
+    docp ../poppler-qt4.pc "$destdir"/usr/lib"$LIBDIRSUFFIX"/pkgconfig/
+    rm -f "$destdir"/usr/lib"$LIBDIRSUFFIX"/libpoppler.*
+}
+

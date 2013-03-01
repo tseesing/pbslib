@@ -11,7 +11,6 @@ LICENSE="GPL"
 PACKAGER="StartOS Developers"
 YARCH="any"
 
-OPTIONS="nodev"
 
 SRC_URI="http://www.x.org/releases/X11R7.6/src/util/"$N-$V".tar.bz2"
 

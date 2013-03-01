@@ -5,7 +5,7 @@
 # Distributed under the terms of the GNU General Public License v2
 #
 
-DESCRIPTION="Collection of settings for StartOS, include system, desktop, etc."
+DESCRIPTION="Collection of settings for StartOS (system)"
 HOMEPAGE="http://www.startos.org"
 LICENSE="GPL"
 PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
@@ -13,61 +13,13 @@ YARCH="any"
 
 SRC_URI=""
 
-PROVIDE="startos-settings startos-settings-gnome startos-settings-cinnamon"
+RDEPEND="polkit"
 
-pbs_unpack() {
-    dounpack
-}
-
-startos-settings_install() {
-    DESCRIPTION="Collection of settings for StartOS (system)"
-    RDEPEND="polkit"
-    
+pbs_install() {
     mkdir -p "$destdir"
     cd "$destdir"
- 
     # NOTE:
     # Users in 'wheel' are authorited, polkit don't ask password.
     docp "$filesdir"/51-startos.rules etc/polkit-1/rules.d/
-}
-
-startos-settings-gnome_install() {
-    DESCRIPTION="Collection of settings for StartOS for Gnome"
-    RDEPEND="gsettings-desktop-schemas"
-    INSTALL="$N.install"
-    
-    mkdir -p "$destdir"
-    cd "$destdir"
-    
-    # Desktop backgroud stuff.
-    docp "$filesdir"/startos-desktop.jpg usr/share/backgrounds/
-    doln /usr/share/backgrounds/startos-desktop.jpg usr/share/backgrounds/default
-
-    # gschema.override
-    docp "$filesdir"/org.gnome.startos.gschema.override usr/share/glib-2.0/schemas/
-
-    # NOTE: 
-    # Make gdm use Adwaita rather than X11 cursors
-    docp "$filesdir"/index.theme usr/share/icons/default/
-}
-
-startos-settings-cinnamon_install() {
-    DESCRIPTION="Collection of settings for StartOS for Cinnamon"
-    RDEPEND="gsettings-desktop-schemas"
-    INSTALL="$N.install"
-
-    mkdir -p "$destdir"
-    cd "$destdir"
-
-    # Desktop backgroud stuff.
-    docp "$filesdir"/startos-desktop.jpg usr/share/backgrounds/
-    doln /usr/share/backgrounds/startos-desktop.jpg usr/share/backgrounds/default
-
-    # gschema.override
-    docp "$filesdir"/org.cinnamon.startos.gschema.override usr/share/glib-2.0/schemas/
-
-    # NOTE: 
-    # Make gdm use Adwaita rather than X11 cursors
-    docp "$filesdir"/index.theme usr/share/icons/default/
 }
 

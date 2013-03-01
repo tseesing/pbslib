@@ -26,7 +26,6 @@ pbs_patch() {
 ati-graphic-legacy-source_install() {
     DESCRIPTION="Video driver for the ATI graphics accelerators (source)"
     RECOMMENDED="build-essential ati-graphic-legacy-utils"
-    OPTIONS="nodev"
     YARCH="any"
    
     INSTALL="$N.install"
@@ -58,7 +57,6 @@ ati-graphic-legacy-driver_install() {
 ati-graphic-legacy-utils_install () {
     DESCRIPTION="Video driver for the ATI graphics accelerators (utils)"
     RDEPEND="ati-graphic-legacy-driver xorg-server(>=1.12.2)"
-    OPTIONS="nodev"
     RECOMMENDED="qt"
 
     INSTALL="$N.install"

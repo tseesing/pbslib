@@ -15,7 +15,7 @@ CHECKSUM="4725d88a13e071ee22e632de551d4a55ca08ee7d"
 
 RDEPEND="gd librsvg libXaw ghostscript pango gts"
 RECOMMENDED=""
-BDEPEND="swig mono guile lua51 ocaml perl python R ruby tk qt" #php
+BDEPEND="swig mono guile lua ocaml perl python R ruby tk qt" #php
 OPTIONAL="mono: sharp bindings
           guile: guile bindings
           lua51: lua bindings

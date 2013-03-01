@@ -1,0 +1,55 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="Data logging and graphing application"
+HOMEPAGE="http://www.rrdtool.org"
+LICENSE="GPL,custom"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
+
+SRC_URI="http://oss.oetiker.ch/$N/pub/$N-$V.tar.gz"
+CHECKSUM="faab7df7696b69f85d6f89dd9708d7cf0c9a273b"
+
+RDEPEND="libxml2 pango"
+RECOMMENDED=""
+BDEPEND=""
+OPTIONAL="tcl: to use corresponding binding
+          python: to use corresponding binding
+          ruby: to use corresponding binding
+          lua: to use corresponding binding"
+CONFLICT=""
+REPLACE=""
+
+pbs_unpack() {
+    dounpack
+}
+
+pbs_patch() {
+    # fix ruby install to vendor_ruby instead of site_ruby
+    sed -e 's/$(RUBY) extconf.rb/& --vendor/' -i bindings/Makefile.in
+}
+
+pbs_config() {
+    config+="--disable-rpath
+             --enable-perl 
+             --enable-perl-site-install 
+             --with-perl-options=\'INSTALLDIRS=vendor\'
+             --enable-python
+             --enable-tcl 
+             --disable-libwrap"
+    doconfig
+}
+
+pbs_build() {
+    domake
+}
+
+pbs_install() {
+    domkinstall
+    dodoc COPYRIGHT
+    perl_cleanup
+}
+

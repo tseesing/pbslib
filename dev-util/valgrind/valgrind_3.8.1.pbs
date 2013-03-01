@@ -13,7 +13,7 @@ PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 SRC_URI="http://valgrind.org/downloads/"$N-$V".tar.bz2"
 CHECKSUM="288758010b271119a0ffc0183f1d6e38"
 
-RDEPEND="glibc perl"
+RDEPEND="glibc(>=2.17) perl"
 BDEPEND="gdb"
 RECOMMENDED=""
 
@@ -21,6 +21,10 @@ NOTES="Valgrind will not work if glibc does not have debug symbols."
 
 pbs_unpack() {
     dounpack
+}
+
+pbs_patch() {
+    dopatch valgrind-3.8.1-glibc-2.17.patch
 }
 
 pbs_config() {

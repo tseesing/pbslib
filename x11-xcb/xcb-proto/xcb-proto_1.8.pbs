@@ -16,7 +16,6 @@ SRC_URI="http://xorg.freedesktop.org/releases/individual/xcb/"$N-$V".tar.bz2"
 RDEPEND=""
 BDEPEND=""
 
-OPTIONS="nodev"
 
 pbs_unpack() {
         dounpack

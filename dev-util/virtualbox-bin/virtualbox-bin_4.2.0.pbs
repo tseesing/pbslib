@@ -32,7 +32,6 @@ pbs_unpack() {
 virtualbox-bin_install() {
     DESCRIPTION="Softwarefamily of powerful x86 virtualizatio (binary version)"
     RDEPEND="virtualbox-bin-kernel-module(=4.2.0) glib2 libsdl libXcursor libXinerama libXmu python"
-    OPTIONS="nodev"
     INSTALL="$N.install"
     DESKTOPFILE="virtualbox.desktop"
     
@@ -119,7 +118,6 @@ virtualbox-bin-kernel-module_install() {
 virtualbox-bin-kernel-source_install() {
     DESCRIPTION="virutalbox kernel source"
     RECOMMENDED="build-essential"
-    OPTIONS="nodev"
     YARCH="any"
     INSTALL="$N.install"
     

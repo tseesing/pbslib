@@ -1,0 +1,38 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="A light eye-candy fully themable animated dock for any Linux desktop. It has a family-likeness with OSX dock, but with more options."
+HOMEPAGE="https://launchpad.net/cairo-dock-core"
+LICENSE="GPL"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
+
+SRC_URI="http://launchpad.net/$N-core/3.1/$V/+download/$N-$V.1.tar.gz"
+CHECKSUM="9b8cadabb1b65f49f4ef7e8da0a91aa7"
+
+RDEPEND="curl dbus-glib glu librsvg libXtst pangox-compat"
+RECOMMENDED="cairo-dock-plugins"
+BDEPEND="cmake pkgconfig inputproto"
+OPTIONAL=""
+CONFLICT=""
+
+pbs_unpack() {
+    dounpack
+}
+
+pbs_config() {
+    config+=""
+    doconfig
+}
+
+pbs_build() {
+    domake
+}
+
+pbs_install() {
+    domkinstall
+}
+

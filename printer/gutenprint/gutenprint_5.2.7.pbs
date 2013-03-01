@@ -7,14 +7,13 @@
 
 DESCRIPTION="High quality drivers for Canon, Epson, Lexmark, Sony, Olympus, and PCL printers for use with CUPS, Ghostscript, Foomatic, and GIMP."
 HOMEPAGE="http://gimp-print.sourceforge.net/"
-REPO=""
 LICENSE="GPL"
 PACKAGER="StartOS Developers"
 
 SRC_URI="http://nchc.dl.sourceforge.net/project/gimp-print/"$N"-5.2/"$V"/"$N-$V".tar.bz2"
 
 RDEPEND="readline gnutls"
-BDEPEND="cups-dev ghostscript-dev gimp-dev"
+BDEPEND="cups ghostscript gimp"
 RECOMMENDED=""
 CONFLICT=""
 

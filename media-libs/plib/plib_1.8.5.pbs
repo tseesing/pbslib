@@ -9,7 +9,6 @@ DESCRIPTION="Set of libraries to write games and other realtime interactive appl
 HOMEPAGE="http://plib.sourceforge.net/"
 LICENSE="LGPL/custom"
 PACKAGER="StartOS Developers"
-OPTIONS="nodev"
 
 SRC_URI="http://plib.sourceforge.net/dist/"$N-$V".tar.gz"
 CHECKSUM="c2cf7e3e1e58f7b63dae4bb21e4fa82c3e4d4cfc"

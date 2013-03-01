@@ -14,7 +14,6 @@ YARCH="any"
 SRC_URI="http://pkg-isocodes.alioth.debian.org/downloads/"$N-$V".tar.xz"
 CHECKSUM="df8dacc718116dae3db453a4d85c018a"
 
-OPTIONS="nodev"
 
 RDEPEND=""
 BDEPEND=""

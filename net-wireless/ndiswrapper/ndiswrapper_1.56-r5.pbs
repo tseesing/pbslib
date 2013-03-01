@@ -59,7 +59,6 @@ ndiswrapper-driver_install() {
 ndiswrapper-source_install() {
     DESCRIPTION="Wrapper for using Windows drivers for some wireless cards, (source)"
     RECOMMENDED="build-essential"
-    OPTIONS="nodev"
     YARCH="any"
     INSTALL="$N.install"
 

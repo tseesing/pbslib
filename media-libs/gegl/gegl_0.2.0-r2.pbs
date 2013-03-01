@@ -17,7 +17,7 @@ RDEPEND="ffmpeg(>=0.11) babl librsvg openexr"
 BDEPEND=""
 
 pbs_unpack() {
-        dounpack
+    dounpack
 }
 
 pbs_patch() {
@@ -25,12 +25,12 @@ pbs_patch() {
 }
 
 pbs_config() {
-    config+=" --with-sdl 
-              --with-openexr 
-          --with-librsvg 
-              --with-libavformat 
-          --with-jasper 
-          --disable-docs "
+    config+="--with-sdl 
+             --with-openexr 
+             --with-librsvg 
+             --with-libavformat 
+             --with-jasper 
+             --disable-docs"
     doconfig
 }
 

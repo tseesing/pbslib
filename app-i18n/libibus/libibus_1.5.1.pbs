@@ -1,0 +1,43 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="Library for ibus"
+HOMEPAGE="http://code.google.com/p/ibus/"
+LICENSE="LGPL"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com> 
+          chenqixing@ivali.com"
+
+SRC_URI="http://ibus.googlecode.com/files/ibus-"$V".tar.gz"
+CHECKSUM="31d732c17d0a103565fa29995c5610e8be8b2dca"
+
+RDEPEND="glib2"
+BDEPEND="gobject-introspection dconf iso-codes intltool gtk2 gtk3"
+
+pbs_unpack() {
+    dounpack
+}
+
+pbs_config() {
+    config+="--disable-gconf 
+             --disable-ui
+             --disable-memconf 
+             --enable-dconf 
+             --enable-python-library
+             --enable-introspection" 
+    doconfig
+}
+
+pbs_build() {
+    domake
+}
+
+pbs_install() {
+    make DESTDIR="$destdir" install-pkgconfigDATA
+    cd src
+    make DESTDIR="$destdir" install
+}
+

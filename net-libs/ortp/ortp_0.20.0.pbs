@@ -13,7 +13,7 @@ PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 SRC_URI="http://download.savannah.gnu.org/releases/linphone/ortp/sources/"$N-$V".tar.gz"
 CHECKSUM="b3f2f02fc5b7ba7e294806c81d419f3c"
 
-RDEPEND="libzrtpcpp libsrtp"
+RDEPEND="libzrtpcpp srtp"
 RECOMMENDED=""
 BDEPEND=""
 OPTIONAL=""

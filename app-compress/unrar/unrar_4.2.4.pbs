@@ -13,10 +13,9 @@ PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 SRC_URI="http://www.rarlab.com/rar/unrarsrc-"$V".tar.gz"
 CHECKSUM="8ea9d1b4139474b282d76e627a2de3e4"
 
-BDEPEND="gcc-libs"
+RDEPEND="gcc-libs"
+BDEPEND=""
 CONFLICT="rarlinux"
-
-PROVIDE="unrar libunrar"
 
 pbs_unpack() {
     dounpack
@@ -24,34 +23,14 @@ pbs_unpack() {
 
 pbs_patch() {
     dopatch unrar-4.2.1-soname.patch
-    docp * libunrar
 }
 
 pbs_build() {
-    make -C libunrar -f makefile.unix lib libversion="$V" CXXFLAGS="-fPIC ${CXXFLAGS}"
     make -f makefile.unix CXXFLAGS="-fPIC ${CXXFLAGS}" STRIP="true"
 }
 
-unrar_install() {
-    DESCRIPTION="Uncompress rar files"
-    RDEPEND="gcc-libs"
-    
-    cd "$srcdir"
+pbs_install() {
     docp unrar "$destdir"/usr/bin/
     dodoc license.txt
-}
-
-libunrar_install() {
-    DESCRIPTION="Library and header file for applications that use libunrar"
-    RDEPEND="gcc-libs"
-
-    cd "$srcdir"/libunrar
-    dodoc license.txt
-    docp libunrar.so."$V" "$destdir"/usr/lib"$LIBDIRSUFFIX"/
-    docp dll.hpp "$destdir"/usr/include/unrar/
-    
-    cd "$destdir"/usr/lib"$LIBDIRSUFFIX"/
-    doln libunrar.so."$V" libunrar.so.4
-    doln libunrar.so."$V" libunrar.so
 }
 

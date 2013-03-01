@@ -1,0 +1,23 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="chinese simplified language pack for firefox"
+HOMEPAGE="http://www.mozilla.com/firefox"
+LICENSE="MPL,GPL"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
+YARCH="any"
+
+SRC_URI="ftp://ftp.mozilla.org/pub/mozilla.org/firefox/releases/"$V"/linux-i686/xpi/zh-CN.xpi"
+CHECKSUM="7b47def674e662ef802738a993ee09a2"
+
+RDEPEND="firefox(>=14.0.1)"
+
+pbs_install() {
+    local target="$destdir"/usr/lib/firefox/extensions/langpack-zh-CN@firefox.mozilla.org.xpi
+    docp_rename "$YBS_SOURCE"/zh-CN.xpi "$target"  
+}
+

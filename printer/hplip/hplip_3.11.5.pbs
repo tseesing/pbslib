@@ -7,13 +7,12 @@
 
 DESCRIPTION="Drivers for HP DeskJet, OfficeJet, Photosmart, Business Inkjet and some LaserJet"
 HOMEPAGE="http://hplipopensource.com"
-REPO=""
 LICENSE="GPL"
 PACKAGER="StartOS Developers"
 
-SRC_URI="http://nchc.dl.sourceforge.net/project/hplip/hplip/3.11.5/hplip-3.11.5.tar.gz"
+SRC_URI="http://nchc.dl.sourceforge.net/project/"$N"/"$N"/"$V"/"$N-$V".tar.gz"
 
-RDEPEND=""
+RDEPEND="qt pyqt"
 BDEPEND=""
 RECOMMENDED=""
 CONFLICT=""
@@ -23,29 +22,32 @@ pbs_unpack() {
 }
 
 pbs_config() {
-    export PYTHON=`which python2`
+    export PYTHON=`which python`
     config+=" --with-hpppddir=/usr/share/ppd/HP
-                  --enable-qt4
-              --enable-doc-build
-              --enable-cups-ppd-install 
-              --enable-foomatic-drv-install 
-              --enable-foomatic-ppd-install
-              --enable-hpijs-install
-              --enable-policykit
-              --enable-cups-drv-install
-              --enable-hpcups-install 
-              --enable-dbus-build
-              --enable-scan-build 
-              --disable-network-build
-              --enable-fax-build "
-              #--enable-network-build
+              --enable-qt4
+          --enable-doc-build
+          --enable-cups-ppd-install 
+          --enable-foomatic-drv-install 
+          --enable-foomatic-ppd-install
+          --enable-hpijs-install
+          --enable-policykit
+          --enable-cups-drv-install
+          --enable-hpcups-install 
+          --enable-dbus-build
+          --enable-scan-build 
+          --disable-network-build
+          --enable-fax-build "
+          #--enable-network-build
     doconfig
 }
 
 pbs_build() {
-    domake
+    #domake
+    make "$MAKEOPTS"
 }
 
 pbs_install() {
-    domkinstall
+    #domkinstall
+    make DESTDIR="$destdir" install
 }
+

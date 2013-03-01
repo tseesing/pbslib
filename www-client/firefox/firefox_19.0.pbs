@@ -1,0 +1,78 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="Firefox Web Browser"
+HOMEPAGE="http://www.mozilla.com/firefox"
+LICENSE="MPL,GPL,LGPL"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
+
+SRC_URI="https://ftp.mozilla.org/pub/mozilla.org/"$N"/releases/"$V"/source/"$N-$V".source.tar.bz2"
+CHECKSUM="3dc732b6ce177792b43324f4bc7164d8"
+
+RDEPEND="alsa-lib hunspell libevent libnotify libvpx libXt nss(>=3.14.1) startup-notification"
+BDEPEND="nspr(>=4.9.4) mesa"
+RECOMMENDED="firefox-i18n-zh-CN(=19.0)"
+
+NOTES="
+1、Do not distribute builds with
+   --enable-official-branding 
+   unless you have permission to use trademarks, http://www.mozilla.org/foundation/trademarks
+2、Removing installed version before compile is strongly recommended. "
+
+pbs_unpack() {
+    dounpack
+}
+
+pbs_patch() {
+    dopatch firefox-install-dir-"$V".patch
+    dopatch shared-libs.patch
+    # Fix PRE_RELEASE_SUFFIX
+    sed -i '/^PRE_RELEASE_SUFFIX := ""/s/ ""//' browser/base/Makefile.in
+}
+
+pbs_config() {
+    cat "$filesdir"/mozconfig |sed 's/@LIBDIRSUFFIX@/'"$LIBDIRSUFFIX"'/g' >.mozconfig
+}
+
+pbs_build() {
+    export LDFLAGS="$LDFLAGS -Wl,-rpath,/usr/lib"$LIBDIRSUFFIX"/firefox"
+    export MOZ_MAKE_FLAGS="$MAKEOPTS"
+    unset MAKEOPTS
+    domake -f client.mk build
+}
+
+pbs_install() {
+    domkinstall -f client.mk
+
+    for i in 16x16 22x22 24x24 32x32 48x48 256x256; do
+          install -Dm644 browser/branding/official/default${i/x*/}.png \
+                  "$destdir/usr/share/icons/hicolor/${i}/apps/firefox.png"
+        done
+
+    cd "$destdir"
+    
+    # Default configure
+    docp "$filesdir"/vendor.js "usr/lib"$LIBDIRSUFFIX"/firefox/defaults/preferences/"
+
+    # Desktop
+    dodesktop "firefox.desktop" "usr/lib"$LIBDIRSUFFIX"/"$N"/icons/mozicon128.png"
+    
+    # Add extensions 
+    #docp "$filesdir"/extensions/* "usr/lib"$LIBDIRSUFFIX"/"$N"/extensions"
+
+    # Add baidu searchplugin
+    docp_rename "$filesdir"/baidu-14.xml  "usr/lib"$LIBDIRSUFFIX"/"$N"/searchplugins/baidu.xml"
+
+    # We don't want the development stuff
+    rm -r usr/{include,lib"$LIBDIRSUFFIX"/firefox-devel,share/idl}
+
+    # Use system-provided dictionaries
+    # rm -rf usr/lib"$LIBDIRSUFFIX"/firefox/{dictionaries,hyphenation}
+    # doln /usr/share/hunspell "usr/lib"$LIBDIRSUFFIX"/firefox/dictionaries"
+    # doln /usr/share/hyphen  "usr/lib"$LIBDIRSUFFIX"/firefox/hyphenation"
+}
+

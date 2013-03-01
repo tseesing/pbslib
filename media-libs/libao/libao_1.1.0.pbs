@@ -14,7 +14,7 @@ PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>
 SRC_URI="http://downloads.xiph.org/releases/ao/"$N-$V".tar.gz"
 
 RDEPEND="alsa-lib pulseaudio"
-BDEPEND="pulseaudio pulseaudio-dev"
+BDEPEND=""
 RECOMMENDED=""
 
 pbs_unpack() {
