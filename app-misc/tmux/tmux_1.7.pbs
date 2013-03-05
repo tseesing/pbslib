@@ -37,4 +37,3 @@ pbs_install() {
     install -D examples/bash_completion_tmux.sh  "$destdir"/usr/share/bash-completion/completions/tmux
     dodoc FAQ
 }
-

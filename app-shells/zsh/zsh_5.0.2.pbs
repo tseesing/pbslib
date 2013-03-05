@@ -1,0 +1,66 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="A very advanced and programmable command interpreter (shell) for UNIX"
+HOMEPAGE="http://www.zsh.org"
+LICENSE="custom"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
+
+SRC_URI="ftp://ftp.zsh.org/pub/$N-$V.tar.bz2"
+CHECKSUM="b8f2ad691acf58b3252225746480dcad"
+
+RDEPEND="pcre libcap gdbm"
+RECOMMENDED=""
+BDEPEND=""
+OPTIONAL=""
+CONFLICT=""
+REPLACE=""
+
+INSTALL="$N.install"
+
+pbs_unpack() {
+    dounpack
+}
+
+pbs_patch() {
+    # Remove unneeded and conflicting completion scripts
+    rm -rf Completion/{AIX,BSD,Cygwin,Darwin,Debian,Mandriva,openSUSE,Redhat,Solaris}
+    rm -f  Completion/Linux/Command/_{pkgtool,rpmbuild,yast}
+    rm -f  Completion/Unix/Command/_osc
+}
+
+pbs_config() {
+    config+="--bindir=/bin
+             --enable-etcdir=/etc/zsh
+             --enable-zshenv=/etc/zsh/zshenv
+             --enable-zlogin=/etc/zsh/zlogin
+             --enable-zlogout=/etc/zsh/zlogout
+             --enable-zprofile=/etc/zsh/zprofile
+             --enable-zshrc=/etc/zsh/zshrc
+             --enable-maildir-support
+             --with-term-lib=\'ncursesw\'
+             --enable-multibyte
+             --enable-function-subdirs
+             --enable-fndir=/usr/share/zsh/functions
+             --enable-scriptdir=/usr/share/zsh/scripts
+             --with-tcsetpgrp
+             --enable-pcre
+             --enable-cap
+             --enable-zsh-secure-free"
+    doconfig
+}
+
+pbs_build() {
+    domake all info
+}
+
+pbs_install() {
+    domkinstall install.info
+    dodoc LICENCE
+    docp "$filesdir"/zprofile "$destdir"/etc/zsh/
+}
+
