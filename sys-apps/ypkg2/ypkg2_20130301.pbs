@@ -42,4 +42,3 @@ pbs_install() {
     docp "$filesdir"/ypkg-initdb   usr/bin/
     docp "$filesdir"/db_fix.pl     usr/share/ypkg/
 }
-

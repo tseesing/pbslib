@@ -1,0 +1,12 @@
+--- chrome/browser/search_engines/prepopulated_engines.json 2013-02-21 11:32:50.000000000 +0800
++++ chrome/browser/search_engines/prepopulated_engines.json.new 2013-03-04 09:57:53.717165308 +0800
+@@ -165,7 +165,7 @@
+       "name": "\u767e\u5ea6",
+       "keyword": "baidu.com",
+       "favicon_url": "http://www.baidu.com/favicon.ico",
+-      "search_url": "http://www.baidu.com/s?wd={searchTerms}",
++      "search_url": "http://www.baidu.com/s?wd={searchTerms}&tn=39042058_dg",
+       "encoding": "GB2312",
+       "type": "SEARCH_ENGINE_BAIDU",
+       "id": 21
+

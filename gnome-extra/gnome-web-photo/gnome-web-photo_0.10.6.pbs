@@ -5,26 +5,24 @@
 # Distributed under the terms of the GNU General Public License v2
 #
 
-DESCRIPTION="a tool to generate images and thumbnails from HTML files"
+DESCRIPTION="A tool to generate images and thumbnails from HTML files"
 HOMEPAGE="ftp://ftp.gnome.org/pub/gnome/sources/gnome-web-photo"
 LICENSE="GPL"
-PACKAGER="StartOS Developers"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
 SRC_URI="http://ftp.gnome.org/pub/gnome/sources/"$N"/0.10/"$N-$V".tar.xz"
 
-RDEPEND="webkitgtk"
+RDEPEND="webkitgtk3"
 BDEPEND=""
 RECOMMENDED=""
 CONFLICT=""
 
-INSTALL="$N.install"
-
 pbs_unpack() {
-        dounpack
+    dounpack
 }
 
 pbs_config() {
-    config+="-with-gtk=2.0"
+    config+="--with-gtk=3.0"
     doconfig
 }
 
@@ -35,4 +33,3 @@ pbs_build() {
 pbs_install() {
     domkinstall
 }
-

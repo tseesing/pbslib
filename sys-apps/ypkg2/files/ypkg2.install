@@ -15,7 +15,6 @@ post_install() {
 YPPATH_URI="http://pkg.startos.com/packages"
 YPPATH_PKGDEST="/var/ypkg/packages"
 ACCEPT_REPO="stable"
-USE="yes"
 EOF
         fi
     
@@ -73,13 +72,6 @@ post_upgrade() {
     fi
 
     post_install $name $version_new
-
-    # add USE
-    for i in $(ls /etc/yget.conf /etc/yget.conf.d/*.conf 2>/dev/null |xargs);do 
-        if ! grep -q USE= ${i}; then 
-            echo USE=\"yes\" >> ${i}
-        fi
-    done
 }
 
 post_downgrade() {

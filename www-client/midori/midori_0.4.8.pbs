@@ -13,7 +13,7 @@ PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 SRC_URI="http://archive.xfce.org/src/apps/$N/${V%.*}/$N-$V.tar.bz2"
 CHECKSUM="40bf23f84a3537f54d7eb45df1da40ebef54c321b1b34d0d0c8e45bb0cce5e9f"
 
-RDEPEND="libnotify libunique libXScrnSaver webkitgtk"
+RDEPEND="libnotify libunique libXScrnSaver webkitgtk2"
 BDEPEND=""                    
 RECOMMENDED=""
 OPTIONAL="gst-plugins-ugly0.10: HTML5 videos support

@@ -19,8 +19,8 @@ RECOMMENDED=""
 BDEPEND="gobject-introspection"
 OPTIONAL="gst-plugins-good: 
           gst-plugins-bad: "
-CONFLICT="farstream"
-REPLACE="farstream"
+CONFLICT="farsight2"
+REPLACE="farsight2"
 
 pbs_unpack() {
     dounpack
@@ -38,4 +38,3 @@ pbs_build() {
 pbs_install() {
     domkinstall
 }
-

@@ -8,12 +8,13 @@
 DESCRIPTION="A jukebox, tagger and music collection manager"
 HOMEPAGE="http://kde.org/applications/multimedia/juk/"
 LICENSE="GPL,FDL"
-PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>
+          chenqixing@ivali.com"
 GROUP="kde"
 
 SRC_URI="http://download.kde.org/stable/"$V"/src/"$N-$V".tar.xz"
 
-RDEPEND="kdelibs taglib"
+RDEPEND="kdelibs taglib oxygen-icons"
 RECOMMENDED=""
 BDEPEND="cmake automoc4"
 OPTIONAL=""
