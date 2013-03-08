@@ -22,8 +22,8 @@ pbs_unpack() {
 }
 
 pbs_install() {
-    docp data/*  "$destdir"
-    cd "$destdir"
+    docp data/*  "$PKGDIR"
+    cd "$PKGDIR"
     mkdir -p etc/ppp/{peers,resolv} etc/chatscripts
 }
 

@@ -31,6 +31,6 @@ pbs_build() {
 
 pbs_install() {
     domkinstall
-    mkdir -p "$destdir"/usr/lib/X11
-    ln -s /usr/share/fonts "$destdir"/usr/lib/X11
+    mkdir -p "$PKGDIR"/usr/lib/X11
+    ln -s /usr/share/fonts "$PKGDIR"/usr/lib/X11
 }

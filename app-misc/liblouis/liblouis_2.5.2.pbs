@@ -38,7 +38,7 @@ pbs_install() {
     domkinstall
     dodoc COPYING.LIB 
     cd python
-    LD_PRELOAD+=":$srcdir/liblouis/.libs/liblouis.so"
-    python setup.py install --root="$destdir" --prefix="/usr" --optimize=1
+    LD_PRELOAD+=":$SRCDIR/liblouis/.libs/liblouis.so"
+    python setup.py install --root="$PKGDIR" --prefix="/usr" --optimize=1
 }
 

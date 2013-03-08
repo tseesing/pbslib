@@ -26,8 +26,8 @@ pbs_unpack() {
 }
 
 pbs_patch() {
-    sed -i 's!$HOMEDIR!'$destdir'/usr/share/hplip!g' plugin.spec
-    sed -i 's!$RULESDIR!'$destdir'/etc/systemd/rules.d!g' plugin.spec
+    sed -i 's!$HOMEDIR!'$PKGDIR'/usr/share/hplip!g' plugin.spec
+    sed -i 's!$RULESDIR!'$PKGDIR'/etc/systemd/rules.d!g' plugin.spec
     sed -i 's!if mode == INTERACTIVE_MODE:!installPlugin()\nsys.exit(0)\n\0!' plugin_install.py
     sed -i 's!sys.exit(1)!raise!' plugin_install.py
 }
@@ -37,7 +37,7 @@ pbs_build() {
 }
 
 pbs_install() {
-    cd "$destdir"
+    cd "$PKGDIR"
 
     while IFS= read -r -d '' link; do
         linkdir="`dirname $link`"

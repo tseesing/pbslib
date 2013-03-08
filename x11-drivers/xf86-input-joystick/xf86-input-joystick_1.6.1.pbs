@@ -32,6 +32,6 @@ pbs_build() {
 pbs_install() {
     domkinstall
     dodoc COPYING
-    docp "$filesdir"/50-joystick.conf "$destdi"/etc/X11/xorg.conf.d/
+    docp "$FILESDIR"/50-joystick.conf "$destdi"/etc/X11/xorg.conf.d/
 }
 

@@ -55,15 +55,15 @@ pbs_build() {
 }
 
 pbs_install() {
-    make DESTDIR="$destdir"/usr install
-    docp etc.ppp/{pap-secrets,chap-secrets} "$destdir"/etc/ppp/
-    cd "$destdir"
-    docp "$filesdir"/{options,ip-up,ip-down,ipv6-up,ipv6-down} etc/ppp/
-    docp "$filesdir"/00-dns.sh etc/ppp/ip-up.d/
-    docp "$filesdir"/00-dns.sh etc/ppp/ip-down.d/
-    docp "$filesdir"/00-iface-config.sh etc/ppp/ipv6-up.d/
-    docp "$filesdir"/{pon,poff,plog} usr/bin/
-    doman "$filesdir"/pon.1
+    make DESTDIR="$PKGDIR"/usr install
+    docp etc.ppp/{pap-secrets,chap-secrets} "$PKGDIR"/etc/ppp/
+    cd "$PKGDIR"
+    docp "$FILESDIR"/{options,ip-up,ip-down,ipv6-up,ipv6-down} etc/ppp/
+    docp "$FILESDIR"/00-dns.sh etc/ppp/ip-up.d/
+    docp "$FILESDIR"/00-dns.sh etc/ppp/ip-down.d/
+    docp "$FILESDIR"/00-iface-config.sh etc/ppp/ipv6-up.d/
+    docp "$FILESDIR"/{pon,poff,plog} usr/bin/
+    doman "$FILESDIR"/pon.1
     install -d -m755 etc/ppp/peers 
     chmod 0755 usr/lib"$LIBDIRSUFFIX"/pppd/"$V"/*.so
     dounit ppp@.service

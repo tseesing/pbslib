@@ -54,8 +54,8 @@ pbs_build() {
 
 pbs_install() {
     domkinstall
-    docp {xterm,uxterm}.desktop "$destdir"/usr/share/applications/
-    chmod 0755 "$destdir"/usr/bin/xterm
+    docp {xterm,uxterm}.desktop "$PKGDIR"/usr/share/applications/
+    chmod 0755 "$PKGDIR"/usr/bin/xterm
 }
 
 

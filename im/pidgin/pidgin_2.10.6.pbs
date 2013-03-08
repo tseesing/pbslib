@@ -37,14 +37,14 @@ pbs_build() {
 
 pbs_install() {
     # For linking
-    make -C libpurple DESTDIR="$destdir" install-libLTLIBRARIES
+    make -C libpurple DESTDIR="$PKGDIR" install-libLTLIBRARIES
     domkinstall -C pidgin 
     domkinstall -C doc 
     domkinstall -C po 
     # Clean up files provided by libpurple package
-    make -C libpurple DESTDIR="$destdir" uninstall-libLTLIBRARIES
+    make -C libpurple DESTDIR="$PKGDIR" uninstall-libLTLIBRARIES
     # Clean up files provided by finch package
-    rm -f "$destdir"/usr/share/man/man1/finch.1
+    rm -f "$PKGDIR"/usr/share/man/man1/finch.1
     perl_cleanup
     dodesktop "$N".desktop
 }

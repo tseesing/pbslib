@@ -21,7 +21,7 @@ CONFLICT=""
 REPLACE=""
 
 pbs_install() {
-    docp "$filesdir"/{system-auth,system-local-login,system-login,system-remote-login,system-services,other} \
-          "$destdir"/etc/pam.d
+    docp "$FILESDIR"/{system-auth,system-local-login,system-login,system-remote-login,system-services,other} \
+          "$PKGDIR"/etc/pam.d
 }
 

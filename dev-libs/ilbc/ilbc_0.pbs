@@ -34,7 +34,7 @@ pbs_build() {
 
 pbs_install() {
     domkinstall
-    docp "$filesdir"/ilbc.pc "$destdir"/usr/lib/pkgconfig/
+    docp "$FILESDIR"/ilbc.pc "$PKGDIR"/usr/lib/pkgconfig/
 }
 
 

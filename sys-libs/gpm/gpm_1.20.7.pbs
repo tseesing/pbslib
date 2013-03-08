@@ -35,8 +35,8 @@ pbs_build() {
 
 pbs_install() {
     domkinstall
-    cd "$destdir"
-    docp "$filesdir"/gpm.sh etc/profile.d/
+    cd "$PKGDIR"
+    docp "$FILESDIR"/gpm.sh etc/profile.d/
     dounit gpm.service
     cd usr/lib"$LIBDIRSUFFIX"/
     doln libgpm.so.2.* libgpm.so

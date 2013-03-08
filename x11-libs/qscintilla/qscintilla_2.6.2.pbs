@@ -40,13 +40,13 @@ pbs_build() {
 }
 
 pbs_install() {
-    cd "$srcdir"/Qt4Qt5
-    domkinstall INSTALL_ROOT="$destdir"
+    cd "$SRCDIR"/Qt4Qt5
+    domkinstall INSTALL_ROOT="$PKGDIR"
     
-    cd "$srcdir"/designer-Qt4
-    domkinstall INSTALL_ROOT="$destdir"
+    cd "$SRCDIR"/designer-Qt4
+    domkinstall INSTALL_ROOT="$PKGDIR"
 
-    cd "$srcdir"/Python
-    domkinstall INSTALL_ROOT="$destdir"
+    cd "$SRCDIR"/Python
+    domkinstall INSTALL_ROOT="$PKGDIR"
 }
 

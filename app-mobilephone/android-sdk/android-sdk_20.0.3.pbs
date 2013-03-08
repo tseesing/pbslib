@@ -29,17 +29,17 @@ pbs_unpack() {
 }
 
 pbs_install() {
-    docp * "$destdir"/opt/"$N"
+    docp * "$PKGDIR"/opt/"$N"
     
     dodesktop "$N".desktop "$N".png
-    dodoc "$filesdir"/license.html
+    dodoc "$FILESDIR"/license.html
     dounit adb.service
     
-    cd "$destdir"
+    cd "$PKGDIR"
     
-    docp "$filesdir"/"$N"                             usr/bin/
-    docp "$filesdir"/"$N".conf                        etc/ld.so.conf.d/
-    docp "$filesdir"/{android-sdk.sh,android-sdk.csh} etc/profile.d/
+    docp "$FILESDIR"/"$N"                             usr/bin/
+    docp "$FILESDIR"/"$N".conf                        etc/ld.so.conf.d/
+    docp "$FILESDIR"/{android-sdk.sh,android-sdk.csh} etc/profile.d/
     chmod 0755 etc/profile.d/{android-sdk.sh,android-sdk.csh} usr/bin/"$N"
     
     [[ "$ARCH" = "i686" ]] && rm -rf opt/"$N"/tools/lib/{monitor-,}x86_64

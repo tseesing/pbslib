@@ -28,7 +28,7 @@ pbs_config() {
 
 pbs_install() {
     domkinstall
-    cd "$destdir"
+    cd "$PKGDIR"
     mkdir -p etc/xg_launch/image
     echo "+ Gimp%/usr/share/icons/hicolor/32x32/apps/gimp.png% Exec gimp" >etc/xg_launch/image/C10gimp 
 }

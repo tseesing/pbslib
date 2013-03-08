@@ -43,7 +43,7 @@ pbs_build() {
 
 pbs_install() {
     domkinstall
-    cd "$destdir"
+    cd "$PKGDIR"
     rm -rf usr/lib"$LIBDIRSUFFIX" usr/share/{info,man}
 }
 

@@ -23,7 +23,7 @@ pbs_unpack() {
 
 pbs_config() {
     
-    patch -Np1 -i $filesdir/"$N-$V$R"-dbus-glib-2.patch 
+    patch -Np1 -i $FILESDIR/"$N-$V$R"-dbus-glib-2.patch 
     #FIXME!
     sed -i 's/babl-0.0/babl-0.1/g' gir/Makefile.in
     config+=" --prefix=/usr "

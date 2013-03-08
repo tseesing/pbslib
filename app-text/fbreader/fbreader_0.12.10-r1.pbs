@@ -48,6 +48,6 @@ pbs_build() {
 
 pbs_install() {
     domkinstall INSTALLDIR=/usr
-    doln /usr/bin/FBReader "$destdir"/usr/bin/fbreader
+    doln /usr/bin/FBReader "$PKGDIR"/usr/bin/fbreader
 }
 

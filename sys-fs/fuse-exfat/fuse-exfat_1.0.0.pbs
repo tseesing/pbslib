@@ -25,7 +25,7 @@ pbs_unpack() {
 }
 
 pbs_install() {
-    scons CCFLAGS="${CFLAGS}" LINKFLAGS="${LDFLAGS} " install DESTDIR="${destdir}/sbin"
+    scons CCFLAGS="${CFLAGS}" LINKFLAGS="${LDFLAGS} " install DESTDIR="$PKGDIR/sbin"
     doman fuse/mount.exfat-fuse.8
 }
 

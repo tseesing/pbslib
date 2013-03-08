@@ -37,13 +37,13 @@ pbs_build() {
 
 pbs_install() {
     domkinstall
-    cd "$destdir"
+    cd "$PKGDIR"
     for i in cc gcc g++ c++ cpp; do
         doln /usr/bin/"$N" usr/lib/"$N"/bin/"$i"
     done
     rm etc/default/distcc
     dounit "$N"d.service
-    docp "$filesdir"/distcc.conf.sample usr/share/"$N"/
-    docp "$filesdir"/distccd-wrapper usr/sbin/
+    docp "$FILESDIR"/distcc.conf.sample usr/share/"$N"/
+    docp "$FILESDIR"/distccd-wrapper usr/sbin/
 }
 

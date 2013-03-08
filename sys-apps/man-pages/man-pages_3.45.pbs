@@ -35,7 +35,7 @@ pbs_patch() {
 
 pbs_install() {
     domkinstall
-    cd "$destdir"/usr/share/man
+    cd "$PKGDIR"/usr/share/man
     # these are included in coreutils
     rm -f man1/{chgrp,chmod,chown,cp,dir,dd}.1
     rm -f man1/{df,dircolors,du,install,ln,ls}.1

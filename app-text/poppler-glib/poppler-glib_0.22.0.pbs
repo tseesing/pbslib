@@ -39,11 +39,11 @@ pbs_build() {
 
 pbs_install(){
     cd poppler
-    make DESTDIR="$destdir" install-libLTLIBRARIES
-    cd "$srcdir"/glib
-    make DESTDIR="$destdir" install
-    docp ../poppler-glib.pc "$destdir"/usr/lib"$LIBDIRSUFFIX"/pkgconfig/
-    rm -f "$destdir"/usr/lib"$LIBDIRSUFFIX"/libpoppler.*
-    rm -f "$destdir"/usr/bin/poppler-glib-demo
+    make DESTDIR="$PKGDIR" install-libLTLIBRARIES
+    cd "$SRCDIR"/glib
+    make DESTDIR="$PKGDIR" install
+    docp ../poppler-glib.pc "$PKGDIR"/usr/lib"$LIBDIRSUFFIX"/pkgconfig/
+    rm -f "$PKGDIR"/usr/lib"$LIBDIRSUFFIX"/libpoppler.*
+    rm -f "$PKGDIR"/usr/bin/poppler-glib-demo
 }
 

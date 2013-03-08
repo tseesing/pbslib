@@ -37,7 +37,7 @@ pbs_build() {
 pbs_install() {
     domkinstall docdir=/usr/share/doc/db/
     dodoc ../LICENSE
-    rm -rf "$destdir"/usr/share/doc/db/
+    rm -rf "$PKGDIR"/usr/share/doc/db/
 }
 
 

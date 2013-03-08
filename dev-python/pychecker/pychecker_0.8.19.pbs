@@ -27,7 +27,7 @@ pbs_unpack() {
 
 pbs_install() {
     domkinstall
-    sed -i "s:$destdir::" "$destdir"/usr/bin/pychecker
+    sed -i "s:$PKGDIR::" "$PKGDIR"/usr/bin/pychecker
     dodoc COPYRIGHT
 }
 

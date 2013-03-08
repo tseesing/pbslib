@@ -49,15 +49,15 @@ pbs_build() {
 
 pbs_install() {
     domkinstall
-    cd "$destdir"
+    cd "$PKGDIR"
 
     mkdir -p etc/X11/xinit 
-    cat "$filesdir"/xinitrc.compiz-gnome |sed "s,@LIBDIR@,lib,g" \
+    cat "$FILESDIR"/xinitrc.compiz-gnome |sed "s,@LIBDIR@,lib,g" \
         >etc/X11/xinit/xinitrc.compiz-gnome
 
     chmod +x etc/X11/xinit/xinitrc.compiz-gnome
-    docp "$filesdir"/gnome-compiz.desktop usr/share/xsessions
-    docp "$filesdir"/compiz-decorator usr/bin/
+    docp "$FILESDIR"/gnome-compiz.desktop usr/share/xsessions
+    docp "$FILESDIR"/compiz-decorator usr/bin/
     chmod +x usr/bin/compiz-decorator
 }
 

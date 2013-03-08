@@ -24,16 +24,16 @@ pbs_unpack() {
 }
 
 pbs_patch() {
-    mkdir -p "$destdir"/usr/bin \
-             "$destdir"/usr/lib"$LIBDIRSUFFIX"/perl5/vendor_perl \
-             "$destdir"/usr/share/doc/perl-sgmls
+    mkdir -p "$PKGDIR"/usr/bin \
+             "$PKGDIR"/usr/lib"$LIBDIRSUFFIX"/perl5/vendor_perl \
+             "$PKGDIR"/usr/share/doc/perl-sgmls
 }
 
 pbs_install() {
     make install \
-         BINDIR="$destdir"/usr/bin \
-         PERL5DIR="$destdir"/usr/lib"$LIBDIRSUFFIX"/perl5/vendor_perl \
-         HTMLDIR="$destdir"/usr/share/doc/perl-sgmls
+         BINDIR="$PKGDIR"/usr/bin \
+         PERL5DIR="$PKGDIR"/usr/lib"$LIBDIRSUFFIX"/perl5/vendor_perl \
+         HTMLDIR="$PKGDIR"/usr/share/doc/perl-sgmls
     perl_cleanup
 }
 

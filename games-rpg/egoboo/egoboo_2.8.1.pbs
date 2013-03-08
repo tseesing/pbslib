@@ -39,7 +39,7 @@ pbs_build() {
 
 pbs_install() {
     cd ../
-    install -Dm755 src/game/egoboo-2.x "$destdir"/usr/bin/egoboo
+    install -Dm755 src/game/egoboo-2.x "$PKGDIR"/usr/bin/egoboo
     dodoc doc
     dodesktop "$N".desktop "$N".png
 }

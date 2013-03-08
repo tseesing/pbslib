@@ -33,7 +33,7 @@ pbs_build() {
 }
 
 pbs_install() {
-    mkdir -p "$destdir"/sbin/
+    mkdir -p "$PKGDIR"/sbin/
     domkinstall
 }
 

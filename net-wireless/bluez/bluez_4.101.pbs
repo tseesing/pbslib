@@ -55,9 +55,9 @@ pbs_build() {
 pbs_install() {
     domkinstall
     docp network/network.conf input/input.conf audio/audio.conf serial/serial.conf \
-         "$destdir"/etc/bluetooth/
-    install -Dm755 test/simple-agent "$destdir"/usr/bin/bluez-simple-agent
-    install -Dm755 test/test-device "$destdir"/usr/bin/bluez-test-device
-    install -Dm755 test/test-input "$destdir"/usr/bin/bluez-test-input
+         "$PKGDIR"/etc/bluetooth/
+    install -Dm755 test/simple-agent "$PKGDIR"/usr/bin/bluez-simple-agent
+    install -Dm755 test/test-device "$PKGDIR"/usr/bin/bluez-test-device
+    install -Dm755 test/test-input "$PKGDIR"/usr/bin/bluez-test-input
 }
 

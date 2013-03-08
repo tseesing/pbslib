@@ -25,7 +25,7 @@ pbs_unpack() {
 }
 
 pbs_install() {
-    docp etc usr "$destdir"
-    mkdir -p "$destdir"/{etc/initramfs-tools/scripts,var/lib/initramfs-tools}
+    docp etc usr "$PKGDIR"
+    mkdir -p "$PKGDIR"/{etc/initramfs-tools/scripts,var/lib/initramfs-tools}
 }
 

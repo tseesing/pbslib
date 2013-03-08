@@ -27,11 +27,11 @@ pbs_unpack() {
 }
 
 pbs_install() {
-    docp * "$destdir"/usr/share/playonlinux
+    docp * "$PKGDIR"/usr/share/playonlinux
     dodesktop "$N.desktop" "etc/playonlinux.png"
 
-    cd "$destdir"
-    docp "$filesdir"/{playonlinux,playonlinux-pkg} usr/bin/
-    docp "$filesdir"/playonlinux-handler.schemas   etc/gconf/schemas/
+    cd "$PKGDIR"
+    docp "$FILESDIR"/{playonlinux,playonlinux-pkg} usr/bin/
+    docp "$FILESDIR"/playonlinux-handler.schemas   etc/gconf/schemas/
 }
 

@@ -40,8 +40,8 @@ pbs_build() {
 
 pbs_install() {
     domkinstall
-    docp rsyslog.conf "$destdir"/etc/
-    cd "$destdir"
-    docp_rename "$filesdir"/rsyslog.logrotate   etc/logrotate.d/rsyslog
+    docp rsyslog.conf "$PKGDIR"/etc/
+    cd "$PKGDIR"
+    docp_rename "$FILESDIR"/rsyslog.logrotate   etc/logrotate.d/rsyslog
 }
 

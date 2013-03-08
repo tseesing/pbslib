@@ -32,6 +32,6 @@ pbs_build() {
 pbs_install() {
     domkinstall
     dodoc COPYING
-    docp "$filesdir"/10-synaptics.conf  "$destdir"/etc/X11/xorg.conf.d/
+    docp "$FILESDIR"/10-synaptics.conf  "$PKGDIR"/etc/X11/xorg.conf.d/
 }    
 

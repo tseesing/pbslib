@@ -45,15 +45,15 @@ pbs_build() {
 
 pbs_install() {
     domkinstall
-    cd "$destdir"
+    cd "$PKGDIR"
     dounit kdm.service
-    install -D -m644 "${filesdir}"/kde.pam          etc/pam.d/kde
-    install -D -m644 "${filesdir}"/kde-np.pam       etc/pam.d/kde-np
-    install -D -m644 "${filesdir}"/kscreensaver.pam etc/pam.d/kscreensaver
+    install -D -m644 "$FILESDIR"/kde.pam          etc/pam.d/kde
+    install -D -m644 "$FILESDIR"/kde-np.pam       etc/pam.d/kde-np
+    install -D -m644 "$FILESDIR"/kscreensaver.pam etc/pam.d/kscreensaver
     install -d -m755 usr/share/xsessions/
     doln /usr/share/apps/kdm/sessions/kde-plasma{,-safe}.desktop usr/share/xsessions/
     install -d -m755 etc/kde/{env,shutdown}
     install -d -g 135 -o 135 var/lib/kdm
-    install -Dm644 "$filesdir"/kdm.logrotate etc/logrotate.d/kdm
+    install -Dm644 "$FILESDIR"/kdm.logrotate etc/logrotate.d/kdm
 }
 

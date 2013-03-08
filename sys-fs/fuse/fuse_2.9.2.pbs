@@ -36,9 +36,9 @@ pbs_build() {
 
 pbs_install() {
     domkinstall
-    cd "$destdir"
+    cd "$PKGDIR"
     # For initramfs-tools
-    docp_rename "$filesdir"/hook_fuse usr/share/initramfs-tools/hooks/fuse
+    docp_rename "$FILESDIR"/hook_fuse usr/share/initramfs-tools/hooks/fuse
     # Cleanup 
     rm -rf etc/init.d/ dev
 }

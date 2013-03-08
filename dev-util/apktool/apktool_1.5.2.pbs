@@ -25,7 +25,7 @@ pbs_unpack() {
 }
 
 pbs_install() {
-    docp apktool.jar "$destdir"/opt/"$N"/
-    docp "$filesdir"/apktool "$destdir"/usr/bin
+    docp apktool.jar "$PKGDIR"/opt/"$N"/
+    docp "$FILESDIR"/apktool "$PKGDIR"/usr/bin
 }
 

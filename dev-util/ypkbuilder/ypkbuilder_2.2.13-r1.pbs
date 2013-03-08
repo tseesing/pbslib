@@ -27,10 +27,10 @@ pbs_unpack() {
 }
 
 pbs_install() {
-    docp config-cn/* "$destdir"/etc/
-    docp AppFiles/*  "$destdir"/opt/debbuildercn
-    docp "$filesdir"/"$N" "$destdir"/usr/bin/
-    find "$destdir" -type f -name "*~" -exec rm {} \;
+    docp config-cn/* "$PKGDIR"/etc/
+    docp AppFiles/*  "$PKGDIR"/opt/debbuildercn
+    docp "$FILESDIR"/"$N" "$PKGDIR"/usr/bin/
+    find "$PKGDIR" -type f -name "*~" -exec rm {} \;
     dodesktop "$N.desktop" "IconFiles/debbuilderico.png"
 }
 

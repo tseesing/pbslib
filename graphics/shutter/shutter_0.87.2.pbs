@@ -22,6 +22,6 @@ pbs_unpack() {
 }
 
 pbs_install() {
-    docp bin share "$destdir"/usr
+    docp bin share "$PKGDIR"/usr
 }
 

@@ -33,7 +33,7 @@ pbs_build() {
 
 pbs_install() {
     domkinstall
-    cd "$destdir"/usr/lib"$LIBDIRSUFFIX"
+    cd "$PKGDIR"/usr/lib"$LIBDIRSUFFIX"
     _lib="$(basename libxvidcore.so.*)"
     doln "$_lib"             libxvidcore.so.4
     doln libxvidcore.so.4 libxvidcore.so

@@ -11,7 +11,7 @@ LICENSE="GPL,LGPL"
 PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 PRIORITY="required"
 
-SRC_URI="git://git.ylmf.com/"$N".git"
+SRC_URI="git://github.com/StartOS/ypkg2.git"
 
 RDEPEND="libarchive(>=3.0.4) curl pcre sqlite rtmpdump nettle"  
 BDEPEND=""
@@ -34,11 +34,11 @@ pbs_build() {
 
 pbs_install() {
     domkinstall
-    cd "$destdir"
+    cd "$PKGDIR"
     mkdir -p etc/yget.conf.d
     doln /usr/bin/ypkg2            usr/bin/ypkg
     doln /usr/bin/yget2            usr/bin/yget
     doln /usr/bin/ypkg2-gencontrol usr/bin/ypkg-gencontrol
-    docp "$filesdir"/ypkg-initdb   usr/bin/
-    docp "$filesdir"/db_fix.pl     usr/share/ypkg/
+    docp "$FILESDIR"/ypkg-initdb   usr/bin/
+    docp "$FILESDIR"/db_fix.pl     usr/share/ypkg/
 }

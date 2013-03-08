@@ -34,7 +34,7 @@ pbs_build() {
 
 pbs_install() {
     domkinstall
-    cd "$destdir" 
+    cd "$PKGDIR" 
     rm -f usr/share/man/man1/{extract_dts,dtsdec}.1
     doln dcadec.1.gz      usr/share/man/man1/dtsdec.1.gz
     doln extract_dca.1.gz usr/share/man/man1/extract_dts.1.gz

@@ -36,7 +36,7 @@ pbs_build() {
 pbs_install() {
     domkinstall
     # install missing headers for OpenCascade
-    docp src/FT{Face,Library,Size}.h "$destdir"/usr/include/FTGL/
+    docp src/FT{Face,Library,Size}.h "$PKGDIR"/usr/include/FTGL/
     dodoc COPYING
 }
 

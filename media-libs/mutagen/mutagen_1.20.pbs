@@ -20,7 +20,7 @@ RECOMMENDED=""
 CONFLICT=""
 
 pbs_unpack() {
-        dounpack
+    dounpack
 }
 
 pbs_config() {
@@ -35,4 +35,3 @@ pbs_build() {
 pbs_install() {
     domkinstall
 }
-

@@ -28,6 +28,6 @@ pbs_build() {
 }
 
 pbs_install() {
-    docp ./habak "$destdir"/usr/bin
+    docp ./habak "$PKGDIR"/usr/bin
 }
 

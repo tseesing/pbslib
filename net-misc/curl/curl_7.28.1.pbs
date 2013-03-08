@@ -50,9 +50,9 @@ pbs_install() {
     domkinstall
     dodoc COPYING
     # devel files
-    docp docs/libcurl/libcurl.m4 "$destdir"/usr/share/aclocal/
-    cd "$destdir"
+    docp docs/libcurl/libcurl.m4 "$PKGDIR"/usr/share/aclocal/
+    cd "$PKGDIR"
     mv usr/include/curl/curlbuild.h usr/include/curl/"$_curlbuild"
-    docp "$filesdir"/curlbuild.h    usr/include/curl/
+    docp "$FILESDIR"/curlbuild.h    usr/include/curl/
 }
 

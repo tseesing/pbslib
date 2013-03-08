@@ -23,7 +23,7 @@ pbs_unpack(){
 pbs_patch() {
     # Patches from ubuntu
     local patch
-    cat "$filesdir"/patches/series |while read patch; do
+    cat "$FILESDIR"/patches/series |while read patch; do
         dopatch "$patch"
     done
 }

@@ -29,7 +29,7 @@ pbs_config() {
 }
 
 pbs_install() {
-    make DESTDIR="${destdir}" datainstall
-    find "${destdir}" -type d -exec chmod 755 {} \;
+    make DESTDIR="$PKGDIR" datainstall
+    find "$PKGDIR" -type d -exec chmod 755 {} \;
 }
 

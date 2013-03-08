@@ -26,9 +26,9 @@ pbs_patch() {
 }
 
 pbs_install() {
-    docp data/*  "$destdir"
-    docp "$filesdir"/PPStream "$destdir"/usr/bin/
-    cd "$destdir"
+    docp data/*  "$PKGDIR"
+    docp "$FILESDIR"/PPStream "$PKGDIR"/usr/bin/
+    cd "$PKGDIR"
     chmod +x usr/bin/PPStream
     doln /usr/bin/PPStream usr/bin/pps
 }

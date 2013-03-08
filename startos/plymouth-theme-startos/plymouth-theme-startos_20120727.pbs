@@ -26,6 +26,6 @@ pbs_unpack() {
 
 pbs_install() {
     git checkout startos
-    docp lib "$destdir"
+    docp lib "$PKGDIR"
 }
 

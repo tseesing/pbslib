@@ -61,6 +61,6 @@ pbs_build() {
 pbs_install() {
     domkinstall install.info
     dodoc LICENCE
-    docp "$filesdir"/zprofile "$destdir"/etc/zsh/
+    docp "$FILESDIR"/zprofile "$PKGDIR"/etc/zsh/
 }
 

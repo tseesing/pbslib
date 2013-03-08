@@ -40,7 +40,7 @@ pbs_build() {
 
 pbs_install() {
     domkinstall
-    cd "$destdir"
+    cd "$PKGDIR"
     # install systemd service file
     dounit usbmuxd.service
     #

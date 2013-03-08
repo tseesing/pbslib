@@ -32,7 +32,7 @@ pbs_install() {
         ar x "${i}"; tar xf data.tar.gz
     done
 
-    docp etc opt usr "$destdir"
+    docp etc opt usr "$PKGDIR"
     dodoc readmes
 }
 

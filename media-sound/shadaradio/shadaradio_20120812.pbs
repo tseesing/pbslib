@@ -32,7 +32,7 @@ pbs_build() {
 }
 
 pbs_install() {
-    docp shadaradio "$destdir"/usr/bin/
+    docp shadaradio "$PKGDIR"/usr/bin/
     dodesktop "$N.desktop" "$N.png"
 }
 

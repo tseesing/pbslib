@@ -18,7 +18,7 @@ RECOMMENDED=""
 CONFLICT=""
 
 pbs_install() {
-    docp_rename "$YBS_SOURCE"/xplayerForAir.air "$destdir"/usr/lib/"$N"/qiyi.air
+    docp_rename "$YBS_SOURCE"/xplayerForAir.air "$PKGDIR"/usr/lib/"$N"/qiyi.air
     dodesktop   "$N.desktop"      "$N.png"
 }
 

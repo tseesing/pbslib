@@ -57,17 +57,17 @@ pbs_build() {
 
 pbs_install() {
     domkinstall
-    docp -rp remotes "$destdir"/usr/share/lirc
-    cd "$destdir"
+    docp -rp remotes "$PKGDIR"/usr/share/lirc
+    cd "$PKGDIR"
     # gzip -9 modules
     find -name '*.ko' -exec gzip -9 {} \;
     # systemd
     dounit irexec.service  lircm.service  lirc.service
-    docp_rename "$filesdir"/lirc.tmpfiles usr/lib/tmpfiles.d/lirc.conf
+    docp_rename "$FILESDIR"/lirc.tmpfiles usr/lib/tmpfiles.d/lirc.conf
     #
     chmod -R go-w usr/share/lirc/
     # install the logrotate config
-    docp_rename "$filesdir"/lirc.logrotate etc/logrotate.d/lirc
+    docp_rename "$FILESDIR"/lirc.logrotate etc/logrotate.d/lirc
     # 
     mkdir -p etc/lirc
 }

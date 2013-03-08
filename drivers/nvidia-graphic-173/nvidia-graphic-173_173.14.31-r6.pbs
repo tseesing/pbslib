@@ -67,7 +67,7 @@ nvidia-graphic-173-driver_install () {
     cd usr/src/nv/
         export IGNORE_CC_MISMATCH="1"
         domake -f Makefile.kbuild module
-        make DESTDIR="$destdir" module-install
+        make DESTDIR="$PKGDIR" module-install
         cd -
         rm -rf usr/src/nv/
 }
@@ -131,6 +131,6 @@ nvidia-graphic-173-utils_install () {
     cd - >/dev/null
 
     #
-    docp usr "$destdir"/
+    docp usr "$PKGDIR"/
 }
 

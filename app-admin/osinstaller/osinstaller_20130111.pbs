@@ -37,14 +37,14 @@ pbs_build() {
 
 pbs_install() {
     domkinstall
-    cd "$destdir"
-    docp "$filesdir"/preconfig  etc/"$N"/
-    docp "$filesdir"/post_install usr/share/"$N"/
+    cd "$PKGDIR"
+    docp "$FILESDIR"/preconfig  etc/"$N"/
+    docp "$FILESDIR"/post_install usr/share/"$N"/
     dounit "$N".service
     case "x$RELEASE" in
-        x5)    docp "$filesdir"/installbg.png  usr/share/"$N"/
-            docp "$filesdir"/"$N" etc/init.d ;;
-      x6|*) docp_rename "$filesdir"/"$N"6 etc/init.d/"$N"     
+        x5)    docp "$FILESDIR"/installbg.png  usr/share/"$N"/
+            docp "$FILESDIR"/"$N" etc/init.d ;;
+      x6|*) docp_rename "$FILESDIR"/"$N"6 etc/init.d/"$N"     
     esac    
 }
 

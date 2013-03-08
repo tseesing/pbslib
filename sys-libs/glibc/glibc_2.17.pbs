@@ -72,10 +72,10 @@ pbs_build() {
 }
 
 pbs_install() {
-    make install_root="$destdir" install
-    cd "$destdir"
-    docp "$filesdir"/locale-gen usr/sbin
-    docp "$filesdir"/SUPPORTED  usr/share/i18n
+    make install_root="$PKGDIR" install
+    cd "$PKGDIR"
+    docp "$FILESDIR"/locale-gen usr/sbin
+    docp "$FILESDIR"/SUPPORTED  usr/share/i18n
     doln /usr/include/utime.h usr/include/sys/utime.h
     doln /usr/share/locale usr/lib/locale
     doln /usr/share/locale usr/lib"$LIBDIRSUFFIX"/locale

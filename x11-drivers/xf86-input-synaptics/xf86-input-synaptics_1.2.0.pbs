@@ -31,5 +31,5 @@ pbs_build() {
 pbs_install() {
     domkinstall
     #
-    cp $filesdir/11-x11-synaptics.fdi  "$destdir"/usr/share/hal/fdi/policy/10osvendor
+    cp $FILESDIR/11-x11-synaptics.fdi  "$PKGDIR"/usr/share/hal/fdi/policy/10osvendor
 }    

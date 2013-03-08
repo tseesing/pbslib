@@ -27,6 +27,6 @@ pbs_unpack() {
 }
 
 pbs_install() {
-    docp binaries/data "$destdir"/usr/share/0ad/
+    docp binaries/data "$PKGDIR"/usr/share/0ad/
 }
 

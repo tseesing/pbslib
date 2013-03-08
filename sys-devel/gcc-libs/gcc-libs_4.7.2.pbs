@@ -77,25 +77,25 @@ pbs_build() {
 
 pbs_install() {
     
-    domake -C "$CHOST"/libgcc DESTDIR="${destdir}" install-shared || die "make $CHOST/libgcc install-shared failed."
+    domake -C "$CHOST"/libgcc DESTDIR="$PKGDIR" install-shared || die "make $CHOST/libgcc install-shared failed."
 
     for lib in libmudflap libgomp libstdc++-v3/src libitm; do
-        domake -C "$CHOST"/"${lib}" DESTDIR="${destdir}" install-toolexeclibLTLIBRARIES || die "make $CHOST/${lib} install-toolexeclibLTLIBRARIES failed."
+        domake -C "$CHOST"/"${lib}" DESTDIR="$PKGDIR" install-toolexeclibLTLIBRARIES || die "make $CHOST/${lib} install-toolexeclibLTLIBRARIES failed."
     done
 
-    domake -C "$CHOST"/libstdc++-v3/po DESTDIR="${destdir}" install 
-    domake -C "$CHOST"/libgomp DESTDIR="${destdir}" install-info 
-    domake -C "$CHOST"/libitm  DESTDIR="${destdir}" install-info
+    domake -C "$CHOST"/libstdc++-v3/po DESTDIR="$PKGDIR" install 
+    domake -C "$CHOST"/libgomp DESTDIR="$PKGDIR" install-info 
+    domake -C "$CHOST"/libitm  DESTDIR="$PKGDIR" install-info
 
-    domake DESTDIR="${destdir}" install-target-libquadmath || die "make install-target-libquadmath failed."
-    domake DESTDIR="${destdir}" install-target-libgfortran || die "make install-target-libgfortran failed."
-    domake DESTDIR="${destdir}" install-target-libobjc || die "make install-target-libobjc failed."
+    domake DESTDIR="$PKGDIR" install-target-libquadmath || die "make install-target-libquadmath failed."
+    domake DESTDIR="$PKGDIR" install-target-libgfortran || die "make install-target-libgfortran failed."
+    domake DESTDIR="$PKGDIR" install-target-libobjc || die "make install-target-libobjc failed."
 
     # Remove unnecessary files installed by install-target-{libquadmath,libgfortran,libobjc}
-    rm -rf "${destdir}"/usr/lib"$LIBDIRSUFFIX"/{gcc/,libgfortran.spec} 
+    rm -rf "$PKGDIR"/usr/lib"$LIBDIRSUFFIX"/{gcc/,libgfortran.spec} 
     # Remove static libraries
-    find "${destdir}" -name *.a -delete
-    find "${destdir}" -name *.la -delete
+    find "$PKGDIR" -name *.a -delete
+    find "$PKGDIR" -name *.la -delete
     # Install Runtime Library Exception
     dodoc ../COPYING.RUNTIME
 }

@@ -85,8 +85,8 @@ pbs_build() {
 
 pbs_install() {
     domkinstall
-    cd "$destdir"
+    cd "$PKGDIR"
     doln /bin/bash bin/sh
-    docp "$filesdir"/skel etc
+    docp "$FILESDIR"/skel etc
 }
 

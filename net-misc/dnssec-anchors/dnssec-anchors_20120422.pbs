@@ -20,6 +20,6 @@ CONFLICT=""
 REPLACE=""
 
 pbs_install() {
-    docp "$filesdir"/trusted-key.key "$destdir"/etc/
+    docp "$FILESDIR"/trusted-key.key "$PKGDIR"/etc/
 }
 

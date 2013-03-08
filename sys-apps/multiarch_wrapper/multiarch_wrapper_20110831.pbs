@@ -82,7 +82,7 @@ EOF
 }
 
 pbs_install() {
-    docp multiarch_wrapper "$destdir"/usr/bin/
-    chmod +x "$destdir"/usr/bin/multiarch_wrapper
+    docp multiarch_wrapper "$PKGDIR"/usr/bin/
+    chmod +x "$PKGDIR"/usr/bin/multiarch_wrapper
 }
 

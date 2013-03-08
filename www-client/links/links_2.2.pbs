@@ -30,5 +30,5 @@ pbs_build() {
 
 pbs_install() {
     domkinstall
-    docp_rename links_32x32.xpm "$destdir"/usr/share/icons/hicolor/32x32/apps/links.xpm
+    docp_rename links_32x32.xpm "$PKGDIR"/usr/share/icons/hicolor/32x32/apps/links.xpm
 }

@@ -27,7 +27,7 @@ pbs_unpack() {
 }
 
 pbs_install() {
-    docp * "$destdir"/usr/share/flightgear/data/
-    chown root:root "$destdir"/usr/share/flightgear/data
+    docp * "$PKGDIR"/usr/share/flightgear/data/
+    chown root:root "$PKGDIR"/usr/share/flightgear/data
 }
 

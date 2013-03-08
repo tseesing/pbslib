@@ -48,6 +48,6 @@ pbs_build() {
 pbs_install() {
     domkinstall
     dodoc COPYING
-    rm -rf "$destdir"/var/run
+    rm -rf "$PKGDIR"/var/run
 }
 

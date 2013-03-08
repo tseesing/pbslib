@@ -24,9 +24,9 @@ pbs_unpack() {
 }
 
 pbs_install() {
-    docp *.pcf "$destdir"/usr/share/fonts/wenquanyi/wqy-bitmap
-    docp *.conf "$destdir"/etc/fonts/conf.avail
+    docp *.pcf "$PKGDIR"/usr/share/fonts/wenquanyi/wqy-bitmap
+    docp *.conf "$PKGDIR"/etc/fonts/conf.avail
     dodoc COPYING
-    doln /etc/fonts/conf.avail/85-wqy-bitmapsong.conf "$destdir"/etc/fonts/conf.d/85-wqy-bitmapsong.conf
+    doln /etc/fonts/conf.avail/85-wqy-bitmapsong.conf "$PKGDIR"/etc/fonts/conf.d/85-wqy-bitmapsong.conf
 }
 

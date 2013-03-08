@@ -42,6 +42,6 @@ pbs_build() {
 
 pbs_install() {
     domkinstall
-    docp "$filesdir"/wesnothd.conf "$destdir"/usr/lib/tmpfiles.d/
+    docp "$FILESDIR"/wesnothd.conf "$PKGDIR"/usr/lib/tmpfiles.d/
 }
 

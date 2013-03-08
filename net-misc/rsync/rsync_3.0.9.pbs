@@ -32,10 +32,10 @@ pbs_build() {
 
 pbs_install() {
     domkinstall
-    install -Dm755 support/rrsync "$destdir"/usr/lib/rsync/rrsync
-    cd "$destdir"
-    docp "$filesdir"/rsyncd.conf.sample  usr/share/rsync/
-    docp "$filesdir"/rsync.xinetd etc/xinetd.d/rsync
-    dounit "$filesdir"/{rsyncd.service,rsyncd.socket,rsyncd@.service}
+    install -Dm755 support/rrsync "$PKGDIR"/usr/lib/rsync/rrsync
+    cd "$PKGDIR"
+    docp "$FILESDIR"/rsyncd.conf.sample  usr/share/rsync/
+    docp "$FILESDIR"/rsync.xinetd etc/xinetd.d/rsync
+    dounit "$FILESDIR"/{rsyncd.service,rsyncd.socket,rsyncd@.service}
 }
 

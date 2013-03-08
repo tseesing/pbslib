@@ -28,7 +28,7 @@ pbs_unpack() {
 
 pbs_install() {
     chmod a+r 51-android.rules
-    docp 51-android.rules "$destdir"/lib/systemd/rules.d/
+    docp 51-android.rules "$PKGDIR"/lib/systemd/rules.d/
     dodoc README
 }
 

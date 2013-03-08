@@ -39,6 +39,6 @@ pbs_build() {
 
 pbs_install() {
     domkinstall
-    docp_rename "$filesdir"/partimaged.pam "${destdir}"/etc/pam.d/partimaged
+    docp_rename "$FILESDIR"/partimaged.pam "$PKGDIR"/etc/pam.d/partimaged
 }
 

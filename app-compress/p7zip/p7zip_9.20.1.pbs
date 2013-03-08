@@ -40,8 +40,8 @@ pbs_build() {
 }
 
 pbs_install() {
-    make install DEST_DIR="$destdir" DEST_HOME="/usr" DEST_SHARE=/usr/lib"$LIBDIRSUFFIX"/p7zip  DEST_MAN="/usr/share/man"
-    cd "$destdir"/usr/lib"$LIBDIRSUFFIX"/p7zip
+    make install DEST_DIR="$PKGDIR" DEST_HOME="/usr" DEST_SHARE=/usr/lib"$LIBDIRSUFFIX"/p7zip  DEST_MAN="/usr/share/man"
+    cd "$PKGDIR"/usr/lib"$LIBDIRSUFFIX"/p7zip
     doln 7zCon.sfx 7z.sfx
 }
 

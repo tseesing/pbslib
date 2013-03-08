@@ -38,7 +38,7 @@ pbs_config() {
     domake || die ""$N"w-build make failed."
 
     # libncurses.so.5 for external binary support 
-    cd "$srcdir"
+    cd "$SRCDIR"
     mkdir "$N"-build 
     cd "$N"-build 
     [ "$ARCH" = "x86_64" ] && CONFIGFLAG="--with-chtype=long"
@@ -51,15 +51,15 @@ pbs_install() {
     grep -B 100 '$Id' README >license.txt
     dodoc license.txt
 
-    cd "$srcdir"/"$N"w-build
+    cd "$SRCDIR"/"$N"w-build
     domkinstall || die ""$N"w-build make install failed."
-    cd "$destdir"/usr/lib"$LIBDIRSUFFIX"/
+    cd "$PKGDIR"/usr/lib"$LIBDIRSUFFIX"/
     doln libncursesw.so.5 libncursesw.so
     
     # non-widec compatibility library
-    cd "$srcdir"/"$N"-build
-    docp lib/libncurses.so."$V" "$destdir"/usr/lib"$LIBDIRSUFFIX"/
-    cd "$destdir"/usr/lib"$LIBDIRSUFFIX"/
+    cd "$SRCDIR"/"$N"-build
+    docp lib/libncurses.so."$V" "$PKGDIR"/usr/lib"$LIBDIRSUFFIX"/
+    cd "$PKGDIR"/usr/lib"$LIBDIRSUFFIX"/
     doln libncurses.so."$V" libncurses.so.5
     # move libraries needed for boot to /lib (we call tput in initscripts)
     doln libncursesw.so.5 libncursesw.so

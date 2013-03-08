@@ -40,6 +40,6 @@ pbs_build() {
 
 pbs_install() {
     domkinstall
-    docp "$filesdir"/libcanberra "$destdir"/etc/X11/Xsession.d/
+    docp "$FILESDIR"/libcanberra "$PKGDIR"/etc/X11/Xsession.d/
 }
 

@@ -1,0 +1,24 @@
+卸载掉 ibus 相关的东西， 免得干扰. 
+但 libibus 要保留,这不影响, 而且部分 gnome 组件有依赖, 其实只需卸载
+包含 ibus-daemon 的包即可
+
+然后安装 fcitx. 
+完成后， QT程序已经是可用 fcitx 输入法了的。
+
+export XMODIFIERS="@im=fcitx"    # 此句之后， X程序可以使用
+export GTK_IM_MODULE="xim"       # 一定是xim, fcitx 不起作用，此句后，GtK程序可以使用
+export QT_IM_MODULE="fcitx"      # 原生QT程序已经可用， 这句不加也罢. 建议加上
+
+有网址建议禁止 gnome-settings-daemon 激活 keyboard plugin; gnome 3.6 中测试, 不禁止也可
+
+http://fcitx-im.org/index.php?title=Note_for_GNOME_Later_than_3.6
+
+
+如果在使用中, ctrl space 不能切换 fcitx 输入法, 则需要在 控制中心 
+(gnome-control-center) 中取消原来已绑定的快捷键 ctrl + space .
+
+以上结果在以下环境测试通过:
+
+    StartOS 6.0 20130305 版
+    gnome 3.6 环境 
+    fcitx 4.2.6.1

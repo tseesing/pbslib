@@ -47,7 +47,7 @@ pbs_build() {
     domake || return 1
 
     # Build the client
-    cd "$srcdir"
+    cd "$SRCDIR"
     domake
 }
 
@@ -55,8 +55,8 @@ pbs_install() {
     local _arch=x86
     
     # Install the client
-    install -Dm755 build/release-linux-"$_arch"/tremulous."$_arch" "$destdir"/opt/tremulous/tremulous."$_arch"
-    install -D -m755 "$filesdir"/tremulous.sh                      "$destdir"/usr/bin/tremulous
+    install -Dm755 build/release-linux-"$_arch"/tremulous."$_arch" "$PKGDIR"/opt/tremulous/tremulous."$_arch"
+    install -D -m755 "$FILESDIR"/tremulous.sh                      "$PKGDIR"/usr/bin/tremulous
 
     # Install the documentation
     dodoc "$YBS_SOURCE"/{mg-client-manual.txt,lakitu7_qvm.txt}
@@ -66,9 +66,9 @@ pbs_install() {
 
     # Install the server
     cd tremded
-    install -D -m755 build/release-linux-"$_arch"/tremded."$_arch" "$destdir"/opt/tremulous/tremded."$_arch"
-    install -D -m644 "$YBS_SOURCE"/game.qvm                     "$destdir"/opt/tremulous/game.qvm
-    install -D -m755 "$filesdir"/tremded.sh                        "$destdir"/usr/bin/tremded
-    #install -D -m644 "$filesdir"/tremdedrc                        "$destdir"/etc/tremdedrc
+    install -D -m755 build/release-linux-"$_arch"/tremded."$_arch" "$PKGDIR"/opt/tremulous/tremded."$_arch"
+    install -D -m644 "$YBS_SOURCE"/game.qvm                     "$PKGDIR"/opt/tremulous/game.qvm
+    install -D -m755 "$FILESDIR"/tremded.sh                        "$PKGDIR"/usr/bin/tremded
+    #install -D -m644 "$FILESDIR"/tremdedrc                        "$PKGDIR"/etc/tremdedrc
 }
 

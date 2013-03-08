@@ -40,6 +40,6 @@ pbs_build() {
 }
 
 pbs_install() {
-    domkinstall MANDIR="$destdir/usr/share/man/" BINDIR="$destdir/usr/bin/"
+    domkinstall MANDIR="$PKGDIR/usr/share/man/" BINDIR="$PKGDIR/usr/bin/"
     dodoc  HISTORY INSTALL README
 }

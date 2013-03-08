@@ -24,9 +24,9 @@ pbs_unpack() {
 }
 
 pbs_install() {
-    docp rar unrar "$destdir"/usr/bin/
-    docp rarfiles.lst "$destdir"/etc/
-    docp default.sfx "$destdir"/usr/lib/
+    docp rar unrar "$PKGDIR"/usr/bin/
+    docp rarfiles.lst "$PKGDIR"/etc/
+    docp default.sfx "$PKGDIR"/usr/lib/
     dodoc license.txt
 }
 

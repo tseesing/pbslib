@@ -40,10 +40,10 @@ pbs_install() {
     cd -
 
     for i in MediaInfo MediaInfoDLL; do
-        docp Source/"${i}"/*.h "$destdir"/usr/include/"${i}"
+        docp Source/"${i}"/*.h "$PKGDIR"/usr/include/"${i}"
     done
     
-    docp Project/GNU/Library/libmediainfo.pc "$destdir"/usr/lib/pkgconfig
-    sed -i -e 's|Version: |Version: '$V'|g' "$destdir"/usr/lib/pkgconfig/libmediainfo.pc
+    docp Project/GNU/Library/libmediainfo.pc "$PKGDIR"/usr/lib/pkgconfig
+    sed -i -e 's|Version: |Version: '$V'|g' "$PKGDIR"/usr/lib/pkgconfig/libmediainfo.pc
 }
 

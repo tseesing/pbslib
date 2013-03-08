@@ -38,9 +38,9 @@ pbs_build() {
 }
 
 pbs_install() {
-    make install_prefix="$destdir"/usr install
+    make install_prefix="$PKGDIR"/usr install
     # Fix conflicts with mono
-    cd "$destdir"
+    cd "$PKGDIR"
     mv usr/bin/xsd{,cxx}
     mv usr/share/man/man1/xsd{,cxx}.1
 }

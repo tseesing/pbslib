@@ -37,6 +37,6 @@ pbs_build() {
 pbs_install() {
     domkinstall
     cd src/swig/python/
-    docp mlt.py _mlt.so mlt_wrap.o "$destdir"/usr/lib/python/site-packages/
+    docp mlt.py _mlt.so mlt_wrap.o "$PKGDIR"/usr/lib/python/site-packages/
 }
 

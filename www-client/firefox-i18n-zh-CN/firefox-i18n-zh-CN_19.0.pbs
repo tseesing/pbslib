@@ -17,7 +17,7 @@ CHECKSUM="e7ab308dcf6b6864352ed1c6bef6dff6"
 RDEPEND="firefox(>=19.0)"
 
 pbs_install() {
-    local target="$destdir"/usr/lib"$LIBDIRSUFFIX"/firefox/extensions/langpack-zh-CN@firefox.mozilla.org.xpi
+    local target="$PKGDIR"/usr/lib"$LIBDIRSUFFIX"/firefox/extensions/langpack-zh-CN@firefox.mozilla.org.xpi
     docp_rename "$YBS_SOURCE"/zh-CN.xpi "$target"  
 }
 

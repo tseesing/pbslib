@@ -22,8 +22,8 @@ CONFLICT=""
 INSTALL="$N.install"
 
 pbs_install() {
-    docp_rename "$YBS_SOURCE"/SanGuoSha_3.6.8.air  "$destdir"/usr/lib/"$N"/SanGuoSha.air
+    docp_rename "$YBS_SOURCE"/SanGuoSha_3.6.8.air  "$PKGDIR"/usr/lib/"$N"/SanGuoSha.air
     dodesktop "$N.desktop" "$N.png"
-    docp "$filesdir"/"$N"  "$destdir"/usr/bin/
+    docp "$FILESDIR"/"$N"  "$PKGDIR"/usr/bin/
 }
 

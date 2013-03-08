@@ -34,7 +34,7 @@ pbs_build() {
 
 pbs_install() {
     domkinstall
-    cd "$destdir"/usr/lib"$LIBDIRSUFFIX"
+    cd "$PKGDIR"/usr/lib"$LIBDIRSUFFIX"
     chown root:utmp utempter/utempter
     chmod 2755 utempter/utempter
 }

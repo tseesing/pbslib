@@ -36,18 +36,18 @@ pbs_build() {
 pbs_install() {
     domkinstall
     doman doc/hg.1 doc/{hgrc.5,hgignore.5}
-    install -m755 contrib/hgk "$destdir"/usr/bin/
+    install -m755 contrib/hgk "$PKGDIR"/usr/bin/
     # zsh
-    docp_rename contrib/zsh_completion  "$destdir"/usr/share/zsh/site-functions/_hg
+    docp_rename contrib/zsh_completion  "$PKGDIR"/usr/share/zsh/site-functions/_hg
     # bash
-    docp_rename contrib/bash_completion "$destdir"/usr/share/bash-completion/completions/hg
+    docp_rename contrib/bash_completion "$PKGDIR"/usr/share/bash-completion/completions/hg
     # emacs
-    docp contrib/{mq.el,mercurial.el}   "$destdir"/usr/share/emacs/site-lisp
+    docp contrib/{mq.el,mercurial.el}   "$PKGDIR"/usr/share/emacs/site-lisp
     # vim
-    docp_rename contrib/vim/HGAnnotate.vim "$destdir"/usr/share/vim/vimfiles/syntax/HGAnnotate.vim   
+    docp_rename contrib/vim/HGAnnotate.vim "$PKGDIR"/usr/share/vim/vimfiles/syntax/HGAnnotate.vim   
     # profile.d
-    docp "$filesdir"/mercurial.sh "$destdir"/etc/profile.d/
+    docp "$FILESDIR"/mercurial.sh "$PKGDIR"/etc/profile.d/
     # hgrc
-    docp_rename contrib/sample.hgrc "$destdir"/etc/mercurial/hgrc
+    docp_rename contrib/sample.hgrc "$PKGDIR"/etc/mercurial/hgrc
 }
 

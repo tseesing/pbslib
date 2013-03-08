@@ -20,7 +20,7 @@ OPTIONAL=""
 CONFLICT=""
 
 pbs_install() {
-    mkdir -p "$destdir"/usr/share/doc/"$N"/
-    touch "$destdir"/usr/share/doc/"$N"/readme
+    mkdir -p "$PKGDIR"/usr/share/doc/"$N"/
+    touch "$PKGDIR"/usr/share/doc/"$N"/readme
 }
 

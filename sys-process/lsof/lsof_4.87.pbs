@@ -31,7 +31,7 @@ pbs_build() {
 }
 
 pbs_install() {
-    docp "$N" "$destdir"/usr/bin
+    docp "$N" "$PKGDIR"/usr/bin
     doman lsof.8
 }
 

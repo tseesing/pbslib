@@ -37,6 +37,6 @@ pbs_build() {
 
 pbs_install() {
     domkinstall
-    install -m644 "$filesdir"/matecomponent-activation-config.xml "$destdir"/etc/matecomponent-activation/
+    install -m644 "$FILESDIR"/matecomponent-activation-config.xml "$PKGDIR"/etc/matecomponent-activation/
 }
 

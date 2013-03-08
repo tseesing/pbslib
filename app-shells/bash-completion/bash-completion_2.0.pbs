@@ -36,7 +36,7 @@ pbs_build() {
 
 pbs_install() {
     domkinstall
-    cd "$destdir"
+    cd "$PKGDIR"
     # bash-completion is sourced in /etc/bash.bashrc so that non-bash shell don't source it
     rm etc/profile.d/bash_completion.sh
     # remove Slackware's makepkg completion

@@ -35,11 +35,11 @@ pbs_build() {
 }
 
 pbs_install() {
-    make INSTALL_ROOT="$destdir" install install-private-headers
+    make INSTALL_ROOT="$PKGDIR" install install-private-headers
     dodoc ../license.terms
-    cd "$destdir"
+    cd "$PKGDIR"
     doln /usr/bin/wish${V%.*} usr/bin/wish 
     # remove buildroot traces
-    sed -i "s#${srcdir}#/usr/src/$N$V#" usr/lib"$LIBDIRSUFFIX"/tkConfig.sh
+    sed -i "s#$SRCDIR#/usr/src/$N$V#" usr/lib"$LIBDIRSUFFIX"/tkConfig.sh
 }
 

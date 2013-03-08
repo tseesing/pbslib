@@ -31,10 +31,10 @@ pbs_install() {
                'pacificnew' 'etcetera' 'backward'
                'systemv' 'factory'
                'solar87' 'solar88' 'solar89')
-    zic -y ./yearistype -d "$destdir"/usr/share/zoneinfo ${timezones[@]}
-    zic -y ./yearistype -d "$destdir"/usr/share/zoneinfo/posix ${timezones[@]}
-    zic -y ./yearistype -d "$destdir"/usr/share/zoneinfo/right -L leapseconds ${timezones[@]}
-    zic -y ./yearistype -d "$destdir"/usr/share/zoneinfo -p America/New_York
-    install -m444 -t "$destdir"/usr/share/zoneinfo iso3166.tab zone.tab
+    zic -y ./yearistype -d "$PKGDIR"/usr/share/zoneinfo ${timezones[@]}
+    zic -y ./yearistype -d "$PKGDIR"/usr/share/zoneinfo/posix ${timezones[@]}
+    zic -y ./yearistype -d "$PKGDIR"/usr/share/zoneinfo/right -L leapseconds ${timezones[@]}
+    zic -y ./yearistype -d "$PKGDIR"/usr/share/zoneinfo -p America/New_York
+    install -m444 -t "$PKGDIR"/usr/share/zoneinfo iso3166.tab zone.tab
 }
 

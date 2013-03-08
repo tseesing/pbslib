@@ -27,8 +27,8 @@ pbs_build() {
 
 pbs_install() {
     domkinstall prefix=/usr RAISE_SETFCAP=no
-    docp_rename pam_cap/capability.conf "$destdir"/usr/share/doc/"$N"/capability.conf.example
+    docp_rename pam_cap/capability.conf "$PKGDIR"/usr/share/doc/"$N"/capability.conf.example
     dodoc README
-    rm "$destdir"/usr/lib"$LIBDIRSUFFIX"/libcap.a
+    rm "$PKGDIR"/usr/lib"$LIBDIRSUFFIX"/libcap.a
 }
 

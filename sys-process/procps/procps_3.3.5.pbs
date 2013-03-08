@@ -30,8 +30,8 @@ pbs_build() {
 
 pbs_install() {
     domkinstall
-    cd "$destdir"
-    docp "$filesdir"/sysctl.conf etc/
+    cd "$PKGDIR"
+    docp "$FILESDIR"/sysctl.conf etc/
     # provided by util-linux
     rm bin/kill usr/share/man/man1/kill.1
 }

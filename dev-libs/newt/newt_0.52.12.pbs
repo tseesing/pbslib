@@ -34,6 +34,6 @@ pbs_build() {
 }
 
 pbs_install() {
-    #make DESTDIR="$destdir" install
-    domkinstall instroot="$destdir" install
+    #make DESTDIR="$PKGDIR" install
+    domkinstall instroot="$PKGDIR" install
 }

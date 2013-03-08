@@ -60,9 +60,9 @@ pbs_build() {
 pbs_install() {
     domkinstall
 
-    cd "$destdir"
-    docp "$filesdir"/ftpusers       etc
-    docp "$filesdir"/pure-ftpd.conf etc/pure-ftpd
+    cd "$PKGDIR"
+    docp "$FILESDIR"/ftpusers       etc
+    docp "$FILESDIR"/pure-ftpd.conf etc/pure-ftpd
     
     # For systemd
     dounit "$N".service

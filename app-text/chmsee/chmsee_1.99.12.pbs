@@ -32,16 +32,16 @@ pbs_build() {
 
 pbs_install() {
     cd ../
-    docp * "$destdir"/usr/share/chmsee 
+    docp * "$PKGDIR"/usr/share/chmsee 
 
-    docp "$filesdir"/chmsee "$destdir"/usr/bin
-    chmod 0755 "$destdir"/usr/bin/chmsee
+    docp "$FILESDIR"/chmsee "$PKGDIR"/usr/bin
+    chmod 0755 "$PKGDIR"/usr/bin/chmsee
 
-    cd "$destdir"/usr/share/chmsee
-    docp_rename data/chmsee.desktop.in "$destdir"/usr/share/applications/chmsee.desktop
-    sed -i -e 's/_//g'                 "$destdir"/usr/share/applications/chmsee.desktop
-    docp data/chmsee-icon.png          "$destdir"/usr/share/pixmaps
+    cd "$PKGDIR"/usr/share/chmsee
+    docp_rename data/chmsee.desktop.in "$PKGDIR"/usr/share/applications/chmsee.desktop
+    sed -i -e 's/_//g'                 "$PKGDIR"/usr/share/applications/chmsee.desktop
+    docp data/chmsee-icon.png          "$PKGDIR"/usr/share/pixmaps
     
-    rm -rf "$destdir"/usr/share/chmsee/src
+    rm -rf "$PKGDIR"/usr/share/chmsee/src
 }
 

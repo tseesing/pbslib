@@ -18,15 +18,15 @@ RDEPEND="gsettings-desktop-schemas"
 INSTALL="$N.install"
 
 pbs_install() {
-    mkdir -p "$destdir"
-    cd "$destdir"
+    mkdir -p "$PKGDIR"
+    cd "$PKGDIR"
     # Desktop backgroud stuff.
-    docp "$filesdir"/startos-desktop.jpg usr/share/backgrounds/
+    docp "$FILESDIR"/startos-desktop.jpg usr/share/backgrounds/
     doln /usr/share/backgrounds/startos-desktop.jpg usr/share/backgrounds/default
     # gschema.override
-    docp "$filesdir"/org.cinnamon.startos.gschema.override usr/share/glib-2.0/schemas/
+    docp "$FILESDIR"/org.cinnamon.startos.gschema.override usr/share/glib-2.0/schemas/
     # NOTE: 
     # Make gdm use Adwaita rather than X11 cursors
-    docp "$filesdir"/index.theme usr/share/icons/default/
+    docp "$FILESDIR"/index.theme usr/share/icons/default/
 }
 

@@ -37,6 +37,6 @@ pbs_build() {
 
 pbs_install() {
     cd src
-    docp facile.cmxa facile.cmi facile.cma facile.a "$destdir"/usr/lib/ocaml/facile
+    docp facile.cmxa facile.cmi facile.cma facile.a "$PKGDIR"/usr/lib/ocaml/facile
 }
 

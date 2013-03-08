@@ -36,8 +36,8 @@ pbs_build() {
 }
 
 pbs_install() {
-    docp data/{opt,usr} "$destdir"/
+    docp data/{opt,usr} "$PKGDIR"/
     dodoc licenses productinfo.txt
-    doln /opt/neoshineoffice6 "$destdir"/opt/neoshineoffice6.0
+    doln /opt/neoshineoffice6 "$PKGDIR"/opt/neoshineoffice6.0
 }
 

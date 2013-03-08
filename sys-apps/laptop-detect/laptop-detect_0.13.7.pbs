@@ -28,7 +28,7 @@ pbs_build() {
 }
 
 pbs_install() {
-    docp laptop-detect "$destdir"/usr/sbin
+    docp laptop-detect "$PKGDIR"/usr/sbin
     doman laptop-detect.8
 }
 

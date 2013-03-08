@@ -38,8 +38,8 @@ pbs_build() {
 pbs_install() {
     domkinstall
     dodoc COPYING
-    install -m755 libungif.so."$V" "$destdir"/usr/lib"$LIBDIRSUFFIX"/
-    cd "$destdir"/usr/lib"$LIBDIRSUFFIX"/
+    install -m755 libungif.so."$V" "$PKGDIR"/usr/lib"$LIBDIRSUFFIX"/
+    cd "$PKGDIR"/usr/lib"$LIBDIRSUFFIX"/
     ln -sf libungif.so."$V" libungif.so.4
     ln -sf libungif.so.4 libungif.so
 }

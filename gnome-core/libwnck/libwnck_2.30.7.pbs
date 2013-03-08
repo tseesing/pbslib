@@ -32,7 +32,7 @@ pbs_build() {
 
 pbs_install() {
     domkinstall
-    cd "$destdir"
+    cd "$PKGDIR"
     #The binaries are shipped in libwnck3
     rm -f usr/bin/{wnckprop,wnck-urgency-monitor}
 }

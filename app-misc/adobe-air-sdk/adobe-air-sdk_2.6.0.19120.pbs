@@ -24,8 +24,8 @@ pbs_unpack() {
 }
 
 pbs_install() {
-    docp * "$destdir"/opt/adobe-air-sdk
-    docp "$filesdir"/adobe-air  "$destdir"/usr/bin/
-    chmod +x "$destdir"/usr/bin/adobe-air
+    docp * "$PKGDIR"/opt/adobe-air-sdk
+    docp "$FILESDIR"/adobe-air  "$PKGDIR"/usr/bin/
+    chmod +x "$PKGDIR"/usr/bin/adobe-air
 }
 

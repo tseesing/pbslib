@@ -39,8 +39,8 @@ pbs_build() {
 }
 
 pbs_install() {
-    domkinstall INSTALL_PLUGINS_DIR="$destdir"/usr/lib"$LIBDIRSUFFIX"/ladspa/ \
-                INSTALL_INCLUDE_DIR="$destdir"/usr/include/ \
-                INSTALL_BINARY_DIR="$destdir"/usr/bin/
+    domkinstall INSTALL_PLUGINS_DIR="$PKGDIR"/usr/lib"$LIBDIRSUFFIX"/ladspa/ \
+                INSTALL_INCLUDE_DIR="$PKGDIR"/usr/include/ \
+                INSTALL_BINARY_DIR="$PKGDIR"/usr/bin/
 }
 

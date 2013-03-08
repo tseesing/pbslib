@@ -33,6 +33,6 @@ pbs_build() {
 
 pbs_install() {
     domkinstall
-    docp *.txt "$destdir"/usr/share/doc/"$N-$V$R"
-    docp *.1   "$destdir"/usr/share/man/"$N-$V$R"
+    docp *.txt "$PKGDIR"/usr/share/doc/"$N-$V$R"
+    docp *.1   "$PKGDIR"/usr/share/man/"$N-$V$R"
 }

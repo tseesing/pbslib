@@ -53,14 +53,14 @@ pbs_build() {
 pbs_install() {
     domkinstall EXAMPLEDIR="/usr/share/doc/${N}/examples" 
     #
-    docp plugins/kdb/ldap/libkdb_ldap/kerberos.{ldif,schema} "$destdir"/usr/share/doc/${pkgname}/examples
+    docp plugins/kdb/ldap/libkdb_ldap/kerberos.{ldif,schema} "$PKGDIR"/usr/share/doc/${pkgname}/examples
     # Sample KDC config file
-    docp config-files/kdc.conf "${destdir}"/var/lib/krb5kdc/
+    docp config-files/kdc.conf "$PKGDIR"/var/lib/krb5kdc/
     # Default configuration file
-    docp config-files/krb5.conf "${destdir}"/etc/
-    docp util/ac_check_krb5.m4 "${destdir}"/usr/share/aclocal
+    docp config-files/krb5.conf "$PKGDIR"/etc/
+    docp util/ac_check_krb5.m4 "$PKGDIR"/usr/share/aclocal
     dodoc ../NOTICE
     # systemd stuff
-    dounit "$filesdir"/krb5-{kadmind.service,kdc.service,kpropd.service,kpropd@.service,kpropd.socket}
+    dounit "$FILESDIR"/krb5-{kadmind.service,kdc.service,kpropd.service,kpropd@.service,kpropd.socket}
 }
 

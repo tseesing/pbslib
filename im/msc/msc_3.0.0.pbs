@@ -23,8 +23,8 @@ pbs_unpack() {
 }
 
 pbs_install() {
-    docp * "$destdir"/opt/"$N"
+    docp * "$PKGDIR"/opt/"$N"
     dodesktop "msc.desktop" "msc.png"
-    doln /opt/"$N"/msc "$destdir"/usr/bin/msc
+    doln /opt/"$N"/msc "$PKGDIR"/usr/bin/msc
 }
 

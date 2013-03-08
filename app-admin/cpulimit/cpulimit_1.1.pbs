@@ -29,6 +29,6 @@ pbs_build() {
 }
 
 pbs_install() {
-    install -D -m0755 cpulimit "$destdir"/usr/bin/cpulimit
+    install -D -m0755 cpulimit "$PKGDIR"/usr/bin/cpulimit
 }
 

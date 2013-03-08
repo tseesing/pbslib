@@ -36,7 +36,7 @@ pbs_build() {
 pbs_install() {
     domkinstall
     dodoc COPYRIGHT
-    docp_rename radvd.conf.example "$destdir"/etc/radvd.conf
+    docp_rename radvd.conf.example "$PKGDIR"/etc/radvd.conf
     dounit "$N".service
 }
 

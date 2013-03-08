@@ -44,7 +44,7 @@ pbs_build() {
 
 pbs_install() {
     domkinstall
-    docp_rename doc/etc_netconfig "$destdir"/etc/netconfig
+    docp_rename doc/etc_netconfig "$PKGDIR"/etc/netconfig
     dodoc COPYING
 }
 

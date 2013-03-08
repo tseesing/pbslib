@@ -25,8 +25,8 @@ pbs_build() {
 }
 
 pbs_install() {
-    install -d -m755 "$destdir"/usr/bin "$destdir"/usr/man/man1
-    make PREFIX="$destdir"/usr install
+    install -d -m755 "$PKGDIR"/usr/bin "$PKGDIR"/usr/man/man1
+    make PREFIX="$PKGDIR"/usr install
     dodoc ChangeLog README
-    domv "$destdir"/usr/man "$destdir"/usr/share
+    domv "$PKGDIR"/usr/man "$PKGDIR"/usr/share
 }

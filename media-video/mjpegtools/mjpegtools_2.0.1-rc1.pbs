@@ -37,6 +37,6 @@ pbs_build() {
 
 pbs_install() {
     domkinstall
-    docp mpeg2enc/mpeg2syntaxcodes.h "$destdir"/usr/include/mjpegtools/mpeg2enc/
+    docp mpeg2enc/mpeg2syntaxcodes.h "$PKGDIR"/usr/include/mjpegtools/mpeg2enc/
 }
 

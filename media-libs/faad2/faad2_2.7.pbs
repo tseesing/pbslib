@@ -31,7 +31,7 @@ pbs_build() {
 
 pbs_install() {
     domkinstall
-    docp common/mp4ff/mp4ff_int_types.h "$destdir"/usr/include/
+    docp common/mp4ff/mp4ff_int_types.h "$PKGDIR"/usr/include/
 }
 
 

@@ -51,10 +51,10 @@ pbs_build() {
 }
 
 pbs_install() {
-    docp -R gen/firebird/{lib,include} "$destdir"/usr
-    docp gen/firebird/*.msg "$destdir"/usr/share/firebird
-    docp gen/firebird/bin/fb_config "$destdir"/usr/bin
-    cd "$destdir"/usr/lib"$LIBDIRSUFFIX"/
+    docp -R gen/firebird/{lib,include} "$PKGDIR"/usr
+    docp gen/firebird/*.msg "$PKGDIR"/usr/share/firebird
+    docp gen/firebird/bin/fb_config "$PKGDIR"/usr/bin
+    cd "$PKGDIR"/usr/lib"$LIBDIRSUFFIX"/
     rm libedit.a
     # Add libgds support
     ln -sf libfbclient.so libgds.so.0

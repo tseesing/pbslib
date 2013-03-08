@@ -54,6 +54,6 @@ pbs_build() {
 
 pbs_install() {
     domkinstall
-    docp "$filesdir"/ibus.desktop "$destdir"/etc/xdg/autostart/
+    docp "$FILESDIR"/ibus.desktop "$PKGDIR"/etc/xdg/autostart/
 }
 

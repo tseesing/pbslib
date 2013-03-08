@@ -17,8 +17,8 @@ RECOMMENDED=""
 CONFLICT=""
 
 pbs_install() {
-    mkdir -p "$destdir"/usr/share/doc/"$N"/
-    cat >>"$destdir"/usr/share/doc/"$N"/README << "EOF"
+    mkdir -p "$PKGDIR"/usr/share/doc/"$N"/
+    cat >>"$PKGDIR"/usr/share/doc/"$N"/README << "EOF"
 install build-essential packages
 EOF
 }

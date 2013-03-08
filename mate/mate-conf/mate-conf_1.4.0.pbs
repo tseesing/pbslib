@@ -37,7 +37,7 @@ pbs_build() {
 
 pbs_install() {
     domkinstall
-    mkdir -p "$destdir"/etc/mateconf/mateconf.xml.system
+    mkdir -p "$PKGDIR"/etc/mateconf/mateconf.xml.system
 }
 
 

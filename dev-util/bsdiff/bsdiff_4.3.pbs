@@ -27,7 +27,7 @@ pbs_build() {
 }
 
 pbs_install() {
-    docp bsdiff bspatch "$destdir"/usr/bin/
+    docp bsdiff bspatch "$PKGDIR"/usr/bin/
 
 }
 

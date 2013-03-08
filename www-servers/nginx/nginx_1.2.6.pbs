@@ -80,7 +80,7 @@ pbs_install() {
     dodoc LICENSE CHANGES
     dounit nginx.service
 
-    install -dm700  "$destdir"/var/lib/nginx
-    install -dm700  "$destdir"/var/lib/nginx/{client-body,proxy,fastcgi,uwsgi,scgi}
+    install -dm700  "$PKGDIR"/var/lib/nginx
+    install -dm700  "$PKGDIR"/var/lib/nginx/{client-body,proxy,fastcgi,uwsgi,scgi}
 }
 

@@ -35,7 +35,7 @@ pbs_patch() {
 
 pbs_config() {
     TARGET="i586-mingw32msvc"
-    export CFLAGS="-mms-bitfields -I$srcdir/mingwrt-"${_runtimever}"-mingw32/include -I$srcdir/include -I/root/mingw-w64-v2.0.7/mingw-w64-headers/include"
+    export CFLAGS="-mms-bitfields -I$SRCDIR/mingwrt-"${_runtimever}"-mingw32/include -I$SRCDIR/include -I/root/mingw-w64-v2.0.7/mingw-w64-headers/include"
     
     config="--prefix=/usr/$TARGET --target=$TARGET --host=$TARGET"
     doconfig            
@@ -46,7 +46,7 @@ pbs_build() {
 }
 
 pbs_install() {
-    make install prefix="$destdir"/usr/"$TARGET"
-    find "$destdir" -name '*.a' | xargs -rtl1 "$TARGET"-strip -g
+    make install prefix="$PKGDIR"/usr/"$TARGET"
+    find "$PKGDIR" -name '*.a' | xargs -rtl1 "$TARGET"-strip -g
 }
 

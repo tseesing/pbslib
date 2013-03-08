@@ -35,7 +35,7 @@ pbs_build() {
 
 pbs_install() {
     domkinstall
-    install -Dm644 dicts/cracklib-small "$destdir"/usr/share/dict/cracklib-small
-    sh ./util/cracklib-format dicts/cracklib-small | sh ./util/cracklib-packer "$destdir"/usr/share/cracklib/pw_dict
+    install -Dm644 dicts/cracklib-small "$PKGDIR"/usr/share/dict/cracklib-small
+    sh ./util/cracklib-format dicts/cracklib-small | sh ./util/cracklib-packer "$PKGDIR"/usr/share/cracklib/pw_dict
 }
 

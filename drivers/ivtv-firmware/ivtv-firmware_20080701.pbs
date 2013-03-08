@@ -23,7 +23,7 @@ pbs_unpack() {
 }
 
 pbs_install() {
-    docp *.fw *.mpg "$destdir"/lib/firmware/
+    docp *.fw *.mpg "$PKGDIR"/lib/firmware/
 }
 
 

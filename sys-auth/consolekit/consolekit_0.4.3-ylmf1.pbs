@@ -44,6 +44,6 @@ pbs_build() {
 
 pbs_install() {
     domkinstall
-    docp "$filesdir"/90-consolekit "$destdir"/etc/X11/Xsession.d
+    docp "$FILESDIR"/90-consolekit "$PKGDIR"/etc/X11/Xsession.d
 }
 

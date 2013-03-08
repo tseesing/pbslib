@@ -37,7 +37,7 @@ pbs_build() {
 pbs_install() {
     domkinstall
     # Files with conflicts with gnome-doc-utils
-    cd "$destdir"
+    cd "$PKGDIR"
     rm -rf usr/share/xml/mallard/ usr/share/pkgconfig/xml2po.pc usr/share/man/ usr/lib/ usr/bin/xml2po
 }
 

@@ -25,7 +25,7 @@ pbs_unpack() {
 }
 
 pbs_install() {
-    docp Faenza{,-Dark,-Darkest,-Darker,-Ambiance,-Radiance} "$destdir"/usr/share/icons
-    docp emesene "$destdir"/usr/share/
+    docp Faenza{,-Dark,-Darkest,-Darker,-Ambiance,-Radiance} "$PKGDIR"/usr/share/icons
+    docp emesene "$PKGDIR"/usr/share/
 }
 

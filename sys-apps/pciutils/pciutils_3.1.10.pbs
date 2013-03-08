@@ -22,7 +22,7 @@ pbs_unpack() {
 
 pbs_build() {
     make OPT="${CFLAGS} -fPIC -DPIC" ZLIB=no SHARED=no PREFIX=/usr SHAREDIR=/usr/share/hwdata MANDIR=/usr/share/man LIBDIR=/usr/lib"$LIBDIRSUFFIX" all
-    docp lib/libpci.a "$destdir"/usr/lib"$LIBDIRSUFFIX"
+    docp lib/libpci.a "$PKGDIR"/usr/lib"$LIBDIRSUFFIX"
     make clean
     make OPT="${CFLAGS}" ZLIB=no SHARED=yes PREFIX=/usr SHAREDIR=/usr/share/hwdata MANDIR=/usr/share/man LIBDIR=/usr/lib"$LIBDIRSUFFIX" all
 }
@@ -30,6 +30,6 @@ pbs_build() {
 pbs_install() {
     domkinstall SHARED=yes PREFIX=/usr SHAREDIR=/usr/share/hwdata MANDIR=/usr/share/man LIBDIR=/usr/lib"$LIBDIRSUFFIX" install-lib
     # This is now supplied by the hwids package
-    rm -rf "$destdir"/usr/share/hwdata
+    rm -rf "$PKGDIR"/usr/share/hwdata
 }
 

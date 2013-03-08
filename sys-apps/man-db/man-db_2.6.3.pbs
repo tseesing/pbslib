@@ -34,13 +34,13 @@ pbs_build() {
 
 pbs_install() {
     domkinstall
-    cd "$destdir"
+    cd "$PKGDIR"
     # part of groff pkg
     rm -f usr/bin/zsoelim
     # script from LFS to convert manpages, see
     # http://www.linuxfromscratch.org/lfs/view/6.4/chapter06/man-db.html
-    docp "$filesdir"/convert-mans usr/bin/
+    docp "$FILESDIR"/convert-mans usr/bin/
     #install whatis cron script
-    docp "$filesdir"/man-db etc/cron.daily/
+    docp "$FILESDIR"/man-db etc/cron.daily/
 }
 

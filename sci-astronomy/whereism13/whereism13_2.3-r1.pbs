@@ -26,9 +26,9 @@ pbs_unpack() {
 
 pbs_install() {
     cd "Where is M13"
-    docp WhereIsM13.jar "$destdir"/opt/"$N"/
+    docp WhereIsM13.jar "$PKGDIR"/opt/"$N"/
     dodoc Distribution.txt License.txt
     dodesktop "$N.desktop"  "$N.png"
-    docp "$filesdir"/"$N" "$destdir"/usr/bin/
+    docp "$FILESDIR"/"$N" "$PKGDIR"/usr/bin/
 } 
 

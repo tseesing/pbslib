@@ -37,6 +37,6 @@ pbs_build() {
 pbs_install() {
     domkinstall 
     # provided by vte-common package
-    rm "$destdir"/usr/libexec/gnome-pty-helper
+    rm "$PKGDIR"/usr/libexec/gnome-pty-helper
 }
 

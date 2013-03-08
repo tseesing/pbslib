@@ -35,7 +35,7 @@ pbs_build() {
 
 pbs_install() {
     domkinstall
-    cd "$destdir"
+    cd "$PKGDIR"
 
     # Remove conflict with ctags package
     mv usr/bin/{ctags,ctags.emacs}

@@ -34,6 +34,6 @@ pbs_build() {
 pbs_install() {
     domkinstall
     dodoc Copyright
-    doln -sf xml "${destdir}"/usr/bin/xmlstarlet
+    doln -sf xml "$PKGDIR"/usr/bin/xmlstarlet
 }
 

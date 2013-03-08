@@ -45,18 +45,18 @@ pbs_build() {
 
 pbs_install() {
     domkinstall
-    cd "$destdir"
+    cd "$PKGDIR"
     # useradd defaults
-    docp "$filesdir"/useradd etc/default/
+    docp "$FILESDIR"/useradd etc/default/
     # Cron job
-    docp "$filesdir"/shadow etc/cron.daily/
+    docp "$FILESDIR"/shadow etc/cron.daily/
     # login.defs
-    docp "$filesdir"/login.defs etc    
+    docp "$FILESDIR"/login.defs etc    
     # PAM config - custom
-    dopamd passwd chgpasswd chpasswd newusers "$srcdir"/etc/pam.d/groupmems 
+    dopamd passwd chgpasswd chpasswd newusers "$SRCDIR"/etc/pam.d/groupmems 
     # we use the 'useradd' PAM file for other similar utilities
     for file in chage groupadd groupdel groupmod shadow useradd usermod userdel; do
-        install -Dm644 "$filesdir"/defaults.pam etc/pam.d/"${file}"
+        install -Dm644 "$FILESDIR"/defaults.pam etc/pam.d/"${file}"
       done
     # Remove evil/broken tools
     rm usr/sbin/logoutd

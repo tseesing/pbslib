@@ -32,6 +32,6 @@ pbs_build() {
 pbs_install() {
     domkinstall
     ## FIXME!
-    sed -i 's/Utility;//g' "$destdir"/usr/share/applications/gpicview.desktop
+    sed -i 's/Utility;//g' "$PKGDIR"/usr/share/applications/gpicview.desktop
 }
 

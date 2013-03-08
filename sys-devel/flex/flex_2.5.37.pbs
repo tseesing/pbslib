@@ -34,6 +34,6 @@ pbs_build() {
 pbs_install() {
     domkinstall
     dodoc COPYING
-    docp "$filesdir"/lex "$destdir"/usr/bin/
+    docp "$FILESDIR"/lex "$PKGDIR"/usr/bin/
 }
 

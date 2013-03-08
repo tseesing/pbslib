@@ -36,7 +36,7 @@ pbs_build() {
 pbs_install() {
     domkinstall
     # For FHS
-    cd "$destdir"
+    cd "$PKGDIR"
     _fhs=('cat' 'chgrp' 'chmod' 'chown' 'cp' 'date' 'dd' 'df' 'echo' 'false'
           'ln' 'ls' 'mkdir' 'mknod' 'mv' 'pwd' 'rm' 'rmdir' 'stty' 'sync'
           'true' 'uname')

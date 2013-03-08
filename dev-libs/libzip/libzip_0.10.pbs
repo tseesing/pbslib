@@ -32,7 +32,7 @@ pbs_build() {
 
 pbs_install() {
     domkinstall
-    cd "$destdir"
+    cd "$PKGDIR"
     doln /usr/lib/libzip/include/zipconf.h  usr/include/zipconf.h
 }
 

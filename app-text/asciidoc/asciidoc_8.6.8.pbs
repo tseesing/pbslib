@@ -42,8 +42,8 @@ pbs_build() {
 
 pbs_install() {
     domkinstall
-    docp asciidocapi.py "$destdir"/usr/lib"$LIBDIRSUFIX"/python2.7/site-packages/
-    docp vim/syntax/asciidoc.vim "$destdir"/usr/share/vim/vimfiles/syntax/
-    docp_rename vim/ftdetect/asciidoc_filetype.vim "$destdir"/usr/share/vim/vimfiles/ftdetect/asciidoc.vim
+    docp asciidocapi.py "$PKGDIR"/usr/lib"$LIBDIRSUFIX"/python2.7/site-packages/
+    docp vim/syntax/asciidoc.vim "$PKGDIR"/usr/share/vim/vimfiles/syntax/
+    docp_rename vim/ftdetect/asciidoc_filetype.vim "$PKGDIR"/usr/share/vim/vimfiles/ftdetect/asciidoc.vim
 }
 

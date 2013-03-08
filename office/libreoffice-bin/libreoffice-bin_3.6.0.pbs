@@ -35,11 +35,11 @@ pbs_build() {
 }
 
 pbs_install() {
-    docp etc opt usr "$destdir"
+    docp etc opt usr "$PKGDIR"
     dodoc readmes
     
     #XXX, lack of 24x24 icons
-    cd "$destdir"
+    cd "$PKGDIR"
     local size="24x24"
     for dir in $(ls -1d usr/share/icons/*); do
         find "${dir}" -type f -name "*.png" |grep 32x32 |while read file; do

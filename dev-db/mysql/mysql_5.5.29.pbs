@@ -70,11 +70,11 @@ pbs_build() {
 pbs_install() {
     domkinstall
     
-    cd "$destdir"
+    cd "$PKGDIR"
     
-    docp "$filesdir"/my.cnf etc/mysql/
-    docp_rename "$filesdir"/mysqld-post.sh usr/bin/mysqld-post
-    docp_rename "$filesdir"/mysqld-tmpfile.conf usr/lib/tmpfiles.d/mysqld.conf
+    docp "$FILESDIR"/my.cnf etc/mysql/
+    docp_rename "$FILESDIR"/mysqld-post.sh usr/bin/mysqld-post
+    docp_rename "$FILESDIR"/mysqld-tmpfile.conf usr/lib/tmpfiles.d/mysqld.conf
     dounit mysqld.service
 
     # Provided by libmysqlclient package

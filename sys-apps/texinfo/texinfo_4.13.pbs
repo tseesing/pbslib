@@ -40,6 +40,6 @@ pbs_build() {
 pbs_install() {
     domkinstall
     # fix this here as it prevents make from trying to rebuild manual pages
-    sed -i 's#A-z#A-Za-z#' "$destdir"/usr/bin/texi2dvi
+    sed -i 's#A-z#A-Za-z#' "$PKGDIR"/usr/bin/texi2dvi
 }
 

@@ -26,7 +26,7 @@ pbs_unpack() {
 }
 
 pbs_install() {
-    docp inxi "$destdir"/usr/bin/
+    docp inxi "$PKGDIR"/usr/bin/
     doman inxi.1.gz
 }
 

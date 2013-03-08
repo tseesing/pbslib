@@ -38,7 +38,7 @@ pbs_build() {
 
 pbs_install() {
     domkinstall
-        install -m644 docs/man/man3/* "${destdir}/usr/share/man/man3"
+        install -m644 docs/man/man3/* "$PKGDIR/usr/share/man/man3"
     dodoc LICENSE.txt
 }
 

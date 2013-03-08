@@ -32,6 +32,6 @@ pbs_build() {
 }
 
 pbs_install() {
-    make DIST_ROOT="$destdir" install install-dev
+    make DIST_ROOT="$PKGDIR" install install-dev
 }
 

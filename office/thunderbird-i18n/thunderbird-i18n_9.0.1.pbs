@@ -23,7 +23,7 @@ thunderbird-i18n-zh-CN_install() {
     RDEPEND="thunderbird(>=9.0.1)"
     YARCH="any"
 
-    local target="$destdir/usr/lib/thunderbird/extensions/langpack-zh-CN@thunderbird.mozilla.org.xpi"
+    local target="$PKGDIR/usr/lib/thunderbird/extensions/langpack-zh-CN@thunderbird.mozilla.org.xpi"
     docp_rename "$YBS_SOURCE"/zh-CN.xpi "$target"  
 }
 
@@ -32,7 +32,7 @@ thunderbird-i18n-zh-TW_install() {
     RDEPEND="thunderbird(>=9.0.1)"
     YARCH="any"
 
-    local target="$destdir/usr/lib/thunderbird/extensions/langpack-zh-TW@thunderbird.mozilla.org.xpi"
+    local target="$PKGDIR/usr/lib/thunderbird/extensions/langpack-zh-TW@thunderbird.mozilla.org.xpi"
     docp_rename "$YBS_SOURCE"/zh-TW.xpi "$target"  
 }
 

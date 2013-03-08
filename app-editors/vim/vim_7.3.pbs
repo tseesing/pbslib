@@ -52,7 +52,7 @@ pbs_build() {
 pbs_install(){
     domkinstall VIMRCLOC=/etc
     dodoc runtime/doc/uganda.txt
-    cd "$destdir"
+    cd "$PKGDIR"
     doln /usr/bin/vim usr/bin/vi
     doln /usr/share/vim/vim73/doc usr/share/doc/vim-"$V"
 }

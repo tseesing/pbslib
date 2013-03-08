@@ -21,7 +21,7 @@ CONFLICT=""
 pbs_install() {
     wget http://winetricks.org/winetricks ||return 1
     chmod +x winetricks
-    docp winetricks "$destdir"/usr/bin/
+    docp winetricks "$PKGDIR"/usr/bin/
     dodesktop "$N.desktop" "$N.svg"
 }
 

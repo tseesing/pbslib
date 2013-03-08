@@ -37,6 +37,6 @@ pbs_build() {
 pbs_install() {
     domkinstall
     dodoc COPYING
-    docp "$filesdir"/fluxbox.desktop "$destdir"/usr/share/xsessions/
+    docp "$FILESDIR"/fluxbox.desktop "$PKGDIR"/usr/share/xsessions/
 }
 

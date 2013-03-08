@@ -35,10 +35,10 @@ pbs_build() {
 }
 
 pbs_install() {
-    docp *.so* "$destdir"/usr/lib/
-        docp *.h "$destdir"/usr/include
+    docp *.so* "$PKGDIR"/usr/lib/
+        docp *.h "$PKGDIR"/usr/include
         dodoc {changes,readme}.txt dodocs/*
-    cd "$destdir"/usr/lib/
+    cd "$PKGDIR"/usr/lib/
     doln libtinyxml.so.0."$V$R" libtinyxml.so.0
     doln libtinyxml.so.0."$V$R" libtinyxml.so
 }

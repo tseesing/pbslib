@@ -52,9 +52,9 @@ pbs_build() {
 
 pbs_install() {
     domkinstall
-    cd "$destdir"
+    cd "$PKGDIR"
     #  Fixup R wrapper scripts.
-    sed -i "s|${destdir} ||" usr/bin/R
+    sed -i "s|$PKGDIR ||" usr/bin/R
     rm usr/lib"$LIBDIRSUFFIX"/R/bin/R
     doln /usr/bin/bin/R usr/lib"$LIBDIRSUFFIX"/R/bin/R
 
@@ -62,9 +62,9 @@ pbs_install() {
     dodesktop R.desktop R.png
 
     # move the config directory to /etc and create symlinks
-    cd "${destdir}"/usr/lib"$LIBDIRSUFFIX"/R/etc
+    cd "$PKGDIR"/usr/lib"$LIBDIRSUFFIX"/R/etc
     for i in *; do
-        domv "${i}" "${destdir}"/etc/R/
+        domv "${i}" "$PKGDIR"/etc/R/
         doln /etc/R/"${i}" "${i}"
     done
 }

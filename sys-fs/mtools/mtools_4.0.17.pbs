@@ -41,6 +41,6 @@ pbs_build() {
 
 pbs_install() {
     domkinstall
-    docp mtools.conf "$destdir"/etc/
+    docp mtools.conf "$PKGDIR"/etc/
 }
 

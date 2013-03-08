@@ -54,6 +54,6 @@ pbs_unpack() {
 }
 
 pbs_install() {
-    docp * "$destdir"/usr/share/fonts/truetype/mscorefonts
+    docp * "$PKGDIR"/usr/share/fonts/truetype/mscorefonts
 }
 

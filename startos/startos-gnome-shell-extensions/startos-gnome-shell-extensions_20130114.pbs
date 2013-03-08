@@ -25,8 +25,8 @@ pbs_unpack() {
 }   
 
 pbs_install() {
-    mkdir -p "$destdir"
-    cd "$destdir"
-    docp "$filesdir"/{advancedvolumemixer@startos.org,windowlist@startos.org} usr/share/gnome-shell/extensions/
+    mkdir -p "$PKGDIR"
+    cd "$PKGDIR"
+    docp "$FILESDIR"/{advancedvolumemixer@startos.org,windowlist@startos.org} usr/share/gnome-shell/extensions/
 }
 

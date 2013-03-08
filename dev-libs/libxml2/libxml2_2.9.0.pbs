@@ -33,6 +33,6 @@ pbs_build() {
 pbs_install() {
     domkinstall
     dodoc COPYING
-    doln /usr/include/libxml2/libxml "$destdir"/usr/include/libxml
+    doln /usr/include/libxml2/libxml "$PKGDIR"/usr/include/libxml
 }
 

@@ -42,6 +42,6 @@ pbs_build() {
 }
 
 pbs_install() {
-    make INSTALL_ROOT="${destdir}" install
+    make INSTALL_ROOT="$PKGDIR" install
 }
 

@@ -30,7 +30,7 @@ pbs_patch() {
 }
 
 pbs_config() {
-    #docp_rename "$filesdir"/mozconfig .mozconfig
+    #docp_rename "$FILESDIR"/mozconfig .mozconfig
     config+=" --enable-application=mail
               --enable-official-branding
           --enable-startup-notification
@@ -55,17 +55,17 @@ pbs_build() {
 
 pbs_install() {
     cd comm-release
-    #domkinstall -j1 -f client.mk DESTDIR="$destdir"
+    #domkinstall -j1 -f client.mk DESTDIR="$PKGDIR"
     domkinstall
     
     for i in 16x16 22x22 24x24 32x32 48x48 256x256; do
         install -Dm644 other-licenses/branding/thunderbird/mailicon${i/x*/}.png \
-             "$destdir/usr/share/icons/hicolor/${i}/apps/thunderbird.png"
+             "$PKGDIR/usr/share/icons/hicolor/${i}/apps/thunderbird.png"
     done
 
-    cd "$destdir"
+    cd "$PKGDIR"
 
-    install -m644 "$filesdir"/vendor.js "usr/lib/thunderbird/defaults/pref/"
+    install -m644 "$FILESDIR"/vendor.js "usr/lib/thunderbird/defaults/pref/"
 
     #rm -rf usr/lib/thunderbird/{dictionaries,hyphenation}
     #doln /usr/share/hunspell usr/lib/thunderbird/dictionaries

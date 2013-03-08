@@ -30,7 +30,7 @@ pbs_unpack() {
 }
 
 pbs_patch() {
-    docp "$filesdir"/{llvm-Config-config.h,llvm-Config-llvm-config.h} .
+    docp "$FILESDIR"/{llvm-Config-config.h,llvm-Config-llvm-config.h} .
     # At the present, clang must reside inside the LLVM source code tree to build
     # See http://llvm.org/bugs/show_bug.cgi?id=4840
     rm -rf tools/clang
@@ -92,10 +92,10 @@ pbs_install() {
     # We move the clang directory out of the tree so it won't get installed
     rm -r tools/clang
     # -j1 is due to race conditions during the installation of the OCaml bindings
-    make -j1 DESTDIR="$destdir" install
+    make -j1 DESTDIR="$PKGDIR" install
     # doc
     dodoc LICENSE.TXT
-    cd "$destdir"
+    cd "$PKGDIR"
     # Fix permissions of static libs
     chmod -x usr/lib"$LIBDIRSUFFIX"/llvm/*.a
     # Get rid of example Hello transformation
@@ -112,7 +112,7 @@ pbs_install() {
         # Header stubs are taken from Fedora
         for _header in config llvm-config; do
             mv usr/include/llvm/Config/$_header{,-64}.h
-            cp "$srcdir"/llvm-Config-$_header.h usr/include/llvm/Config/$_header.h
+            cp "$SRCDIR"/llvm-Config-$_header.h usr/include/llvm/Config/$_header.h
         done
     fi
     doln /usr/lib"$LIBDIRSUFFIX"/llvm/libLLVM-3.1.so usr/lib"$LIBDIRSUFFIX"/

@@ -71,7 +71,7 @@ nvidia-graphic-driver_install () {
     cd kernel
     export IGNORE_CC_MISMATCH="1"
     domake -f Makefile.kbuild module
-    make DESTDIR="$destdir" module-install
+    make DESTDIR="$PKGDIR" module-install
 
     cd ../
     rm -rf kernel
@@ -84,8 +84,8 @@ nvidia-graphic-utils_install () {
     INSTALL="$N.install"
 
     #
-    docp * "$destdir"/usr/lib/
-    cd "$destdir"/usr/lib/
+    docp * "$PKGDIR"/usr/lib/
+    cd "$PKGDIR"/usr/lib/
 
     # Disable the stack markings of binaries for security reasons.
     find . -name "*.so*" | xargs -n1 execstack -c
@@ -100,20 +100,20 @@ nvidia-graphic-utils_install () {
     echo "libXvMCNVIDIA_dynamic.so.1" >XvMCConfig
     
     # Man files
-    domv nvidia-installer.1.gz nvidia-xconfig.1.gz nvidia-settings.1.gz nvidia-smi.1.gz "$destdir"/usr/share/man/man1/
+    domv nvidia-installer.1.gz nvidia-xconfig.1.gz nvidia-settings.1.gz nvidia-smi.1.gz "$PKGDIR"/usr/share/man/man1/
 
     # Dev
-    domv gl*.h "$destdir"/usr/include/"$N"/GL
+    domv gl*.h "$PKGDIR"/usr/include/"$N"/GL
 
     # OpenCL
-    domv nvidia.icd "$destdir"/etc/OpenCL/vendors/
+    domv nvidia.icd "$PKGDIR"/etc/OpenCL/vendors/
 
     # Doc
-    domv mkprecompiled LICENSE NVIDIA_Changelog README.txt html pkg-history.txt makeself.sh "$destdir"/usr/share/doc/"$N"/"$V$R"/
+    domv mkprecompiled LICENSE NVIDIA_Changelog README.txt html pkg-history.txt makeself.sh "$PKGDIR"/usr/share/doc/"$N"/"$V$R"/
 
     # 
-    mkdir -p "$destdir"/usr/share/grub-gfxpayload-lists/blacklist/
-    echo "# Blacklist cards here" >"$destdir"/usr/share/grub-gfxpayload-lists/blacklist/01_nvidia
+    mkdir -p "$PKGDIR"/usr/share/grub-gfxpayload-lists/blacklist/
+    echo "# Blacklist cards here" >"$PKGDIR"/usr/share/grub-gfxpayload-lists/blacklist/01_nvidia
     
     #
     ln -sf libGL.so."$V" libGL.so.1
@@ -122,8 +122,8 @@ nvidia-graphic-utils_install () {
     ln -sf libnvidia-cfg.so."$V" libnvidia-cfg.so.1
     ln -sf libnvidia-cfg.so.1    libnvidia-cfg.so
 
-    domv libglx.so."$V" "$destdir"/usr/lib/xorg/modules/extensions/
-    cd "$destdir"/usr/lib/xorg/modules/extensions/
+    domv libglx.so."$V" "$PKGDIR"/usr/lib/xorg/modules/extensions/
+    cd "$PKGDIR"/usr/lib/xorg/modules/extensions/
     ln -sf libglx.so."$V" libglx.so
     cd -
 
@@ -139,8 +139,8 @@ nvidia-graphic-utils_install () {
     ln -sf libvdpau_nvidia.so.1          libvdpau_nvidia.so 
     ln -sf vdpau/libvdpau_nvidia.so."$V" libvdpau_trace.so
     
-    domv libnvidia-wfb.so."$V"  "$destdir"/usr/lib/xorg/modules/  
-    cd "$destdir"/usr/lib/xorg/modules/
+    domv libnvidia-wfb.so."$V"  "$PKGDIR"/usr/lib/xorg/modules/  
+    cd "$PKGDIR"/usr/lib/xorg/modules/
     ln -sf  libnvidia-wfb.so."$V" libnvidia-wfb.so.1
     cd -
 
@@ -160,7 +160,7 @@ nvidia-graphic-utils_install () {
     ln -sf libXvMCNVIDIA.so."$V"      libXvMCNVIDIA.so
 
     # Usr/bin
-    domv nvidia-installer nvidia-xconfig nvidia-smi nvidia-bug-report.sh nvidia-settings "$destdir"/usr/bin/
+    domv nvidia-installer nvidia-xconfig nvidia-smi nvidia-bug-report.sh nvidia-settings "$PKGDIR"/usr/bin/
 
     # Desktop
     sed -i 's/__UTILS_PATH__/\/usr\/bin/g' nvidia-settings.desktop
@@ -169,6 +169,6 @@ nvidia-graphic-utils_install () {
     rm nvidia-settings.desktop nvidia-settings.png 
     
     # Xorg
-    domv nvidia_drv.so "$destdir"/usr/lib/xorg/modules/drivers/
+    domv nvidia_drv.so "$PKGDIR"/usr/lib/xorg/modules/drivers/
 }
 

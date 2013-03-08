@@ -30,6 +30,6 @@ pbs_build() {
 pbs_install() {
     domkinstall
     dodoc COPYING
-    docp "$filesdir"/xcompmgr.desktop "$destdir"/etc/xdg/autostart 
+    docp "$FILESDIR"/xcompmgr.desktop "$PKGDIR"/etc/xdg/autostart 
 }
 

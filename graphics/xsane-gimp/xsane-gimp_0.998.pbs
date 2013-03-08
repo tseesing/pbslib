@@ -32,8 +32,8 @@ pbs_build() {
     domake
 }
 pbs_install () {
-    install -D -m755 src/xsane-gimp "$destdir"/usr/bin/xsane-gimp
+    install -D -m755 src/xsane-gimp "$PKGDIR"/usr/bin/xsane-gimp
     ## For making Gimp Plugin available 
-    doln /usr/bin/xsane-gimp "$destdir"/usr/lib/gimp/2.0/plug-ins/xsane
+    doln /usr/bin/xsane-gimp "$PKGDIR"/usr/lib/gimp/2.0/plug-ins/xsane
 }
 

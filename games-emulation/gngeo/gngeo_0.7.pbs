@@ -38,7 +38,7 @@ pbs_build() {
 
 pbs_install() {
     domkinstall
-    install -Dm644 sample_gngeorc "${destdir}"/usr/share/"$N"/sample_gngeorc
+    install -Dm644 sample_gngeorc "$PKGDIR"/usr/share/"$N"/sample_gngeorc
     dodoc COPYING
 }
 

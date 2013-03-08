@@ -30,13 +30,13 @@ pbs_build() {
 }
 
 pbs_install() {
-    mkdir -p "$destdir"/usr/lib
+    mkdir -p "$PKGDIR"/usr/lib
     domkinstall libdir=/usr/lib/ bindir=/usr/bin
 
-    (cd "$destdir"/usr/lib/ && rm -f libPgm2asc.so && ln -s `echo libPgm2asc*.so` libPgm2asc.so)
+    (cd "$PKGDIR"/usr/lib/ && rm -f libPgm2asc.so && ln -s `echo libPgm2asc*.so` libPgm2asc.so)
     dodoc doc/gocr.html
     for i in pgm2asc.h gocr.h; do
-        install -D -m644 src/${i} "$destdir"/usr/include/gocr/${i}
+        install -D -m644 src/${i} "$PKGDIR"/usr/include/gocr/${i}
     done
 }
 

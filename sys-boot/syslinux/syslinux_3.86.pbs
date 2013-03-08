@@ -33,5 +33,5 @@ pbs_build() {
 }
 
 pbs_install() {
-    domkinstall INSTALLROOT="$destdir"
+    domkinstall INSTALLROOT="$PKGDIR"
 }

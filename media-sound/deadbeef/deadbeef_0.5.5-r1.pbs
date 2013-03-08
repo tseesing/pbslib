@@ -39,7 +39,7 @@ pbs_build() {
  
 pbs_install() {
     domkinstall
-    cd "$destdir"
+    cd "$PKGDIR"
     sed -i 's/audio\/mp3;/audio\/mp3;audio\/x-ape;audio\/x-ms-wma;audio\/mp4;audio\/x-wavpack;audio\/x-wav;/g' usr/share/applications/deadbeef.desktop
 }
 

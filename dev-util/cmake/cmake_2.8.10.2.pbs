@@ -37,11 +37,11 @@ pbs_build() {
 
 pbs_install() {
     domkinstall
-    docp Docs/cmake-indent.vim "$destdir"/usr/share/vim/vimfiles/indent/
-    docp Docs/cmake-syntax.vim "$destdir"/usr/share/vim/vimfiles/syntax/
+    docp Docs/cmake-indent.vim "$PKGDIR"/usr/share/vim/vimfiles/indent/
+    docp Docs/cmake-syntax.vim "$PKGDIR"/usr/share/vim/vimfiles/syntax/
     dodoc Copyright.txt
     #For emacs
-    #install -Dm644 Docs/cmake-mode.el "${destdir}"/usr/share/emacs/site-lisp/cmake-mode.el
-    #emacs -batch -f batch-byte-compile "${destdir}"/usr/share/emacs/site-lisp/cmake-mode.el
+    #install -Dm644 Docs/cmake-mode.el "$PKGDIR"/usr/share/emacs/site-lisp/cmake-mode.el
+    #emacs -batch -f batch-byte-compile "$PKGDIR"/usr/share/emacs/site-lisp/cmake-mode.el
 }
 

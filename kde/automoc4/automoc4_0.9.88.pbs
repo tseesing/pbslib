@@ -29,6 +29,6 @@ pbs_build() {
 
 pbs_install() {
     domkinstall
-    dodoc "$filesdir"/license.txt
+    dodoc "$FILESDIR"/license.txt
 }
 

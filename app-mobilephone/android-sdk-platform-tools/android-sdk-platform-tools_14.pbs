@@ -28,9 +28,9 @@ pbs_unpack() {
 }
 
 pbs_install() {
-    docp * "$destdir"/opt/android-sdk/platform-tools
+    docp * "$PKGDIR"/opt/android-sdk/platform-tools
     
-    cd "$destdir"
+    cd "$PKGDIR"
     mkdir -p opt etc/profile.d
         
     echo 'export PATH=$PATH:/opt/android-sdk/platform-tools' >etc/profile.d/"$N".sh

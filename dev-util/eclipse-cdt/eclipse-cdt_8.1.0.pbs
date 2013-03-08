@@ -26,7 +26,7 @@ pbs_unpack() {
 }
 
 pbs_install() {
-    _installdir="$destdir"/usr/share/eclipse/dropins/cdt
+    _installdir="$PKGDIR"/usr/share/eclipse/dropins/cdt
     docp features plugins "$_installdir"/eclipse
 }
 

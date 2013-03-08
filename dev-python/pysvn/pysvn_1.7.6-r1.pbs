@@ -33,7 +33,7 @@ pbs_build() {
 }
 
 pbs_install() {
-    docp pysvn/__init__.py pysvn/_pysvn_2_6.so "$destdir"/usr/lib/python2.6/site-packages/pysvn/
+    docp pysvn/__init__.py pysvn/_pysvn_2_6.so "$PKGDIR"/usr/lib/python2.6/site-packages/pysvn/
     dodoc ../LICENSE.txt
 }
 

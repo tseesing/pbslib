@@ -33,7 +33,7 @@ pbs_patch() {
 
 pbs_build() {
     cd source/Irrlicht
-    sed -i "/^INSTALL_DIR/s:=.*:=$destdir/usr/lib:" Makefile
+    sed -i "/^INSTALL_DIR/s:=.*:=$PKGDIR/usr/lib:" Makefile
     make sharedlib 
     make
 }
@@ -41,30 +41,30 @@ pbs_build() {
 pbs_install() {
     make install
 
-    cd "$srcdir"/
+    cd "$SRCDIR"/
     dodoc readme.txt
 
     # Install static library and fix headers permissions
-    docp lib/Linux/libIrrlicht.a "$destdir"/usr/lib
-    chmod 644 "$destdir"/usr/include/"$N"/*
+    docp lib/Linux/libIrrlicht.a "$PKGDIR"/usr/lib
+    chmod 644 "$PKGDIR"/usr/include/"$N"/*
 
     # Install media files for examples
-    docp -r media "$destdir"/usr/share/"$N"
+    docp -r media "$PKGDIR"/usr/share/"$N"
 
     # Install documentation
     dodoc doc/* 
 
-    cd "$destdir"/usr/lib
+    cd "$PKGDIR"/usr/lib
     ln -s libIrrlicht.so."$V" libIrrlicht.so.1
 
     # Just a helper for examples compilation
-    ln -s libIrrlicht.so."$V" "$srcdir"/lib/Linux/libIrrlicht.so
+    ln -s libIrrlicht.so."$V" "$SRCDIR"/lib/Linux/libIrrlicht.so
 
     # Edit, build and install the examples
-    cd "$srcdir"/examples
+    cd "$SRCDIR"/examples
     sed -i '/define USE_IRRKLANG/s:.*://&:' ./Demo/CDemo.h
     sed -i '/^CXXFLAGS/d' $(grep -Rl "^CXXFLAGS =" *)
     make
-    docp ../bin/Linux/* "$destdir"/usr/share/"$N"/examples/bin/
+    docp ../bin/Linux/* "$PKGDIR"/usr/share/"$N"/examples/bin/
 }
 

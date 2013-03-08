@@ -30,8 +30,8 @@ pbs_build() {
 }
 
 pbs_install() {
-    install -Dm755 QtADB "$destdir"/usr/bin/qtadb
-    install -Dm644 otherFiles/qtadb.apk "$destdir"/usr/share/qtadb/qtadb.apk
+    install -Dm755 QtADB "$PKGDIR"/usr/bin/qtadb
+    install -Dm644 otherFiles/qtadb.apk "$PKGDIR"/usr/share/qtadb/qtadb.apk
     dodesktop qtadb.desktop qtadb.png
 }
 

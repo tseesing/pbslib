@@ -25,5 +25,5 @@ pbs_build() {
 }
 
 pbs_install() {
-    make prefix="$destdir"/usr MANDIR="$destdir"/usr/share/man/man1 install
+    make prefix="$PKGDIR"/usr MANDIR="$PKGDIR"/usr/share/man/man1 install
 }

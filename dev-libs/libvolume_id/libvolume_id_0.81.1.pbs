@@ -25,9 +25,9 @@ pbs_build() {
 }
 
 pbs_install() {
-    docp libvolume_id.pc    "$destdir"/usr/share/pkgconfig
-    docp libvolume_id.h     "$destdir"/usr/include
-    docp libvolume_id.so.0  "$destdir"/usr/lib
-    doln /usr/lib/libvolume_id.so.0  "$destdir"/usr/lib/libvolume_id.so
+    docp libvolume_id.pc    "$PKGDIR"/usr/share/pkgconfig
+    docp libvolume_id.h     "$PKGDIR"/usr/include
+    docp libvolume_id.so.0  "$PKGDIR"/usr/lib
+    doln /usr/lib/libvolume_id.so.0  "$PKGDIR"/usr/lib/libvolume_id.so
 }
 

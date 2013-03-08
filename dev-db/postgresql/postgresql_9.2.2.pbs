@@ -46,24 +46,24 @@ pbs_build() {
 
 pbs_install() {
     domkinstall
-    make -C contrib DESTDIR="$destdir" install
-    make -C doc/src/sgml DESTDIR="$destdir" install-man
+    make -C contrib DESTDIR="$PKGDIR" install
+    make -C doc/src/sgml DESTDIR="$PKGDIR" install-man
     # We don't want these, they are in the -libs package
     for dir in src/interfaces src/bin/pg_config src/bin/psql; do
-        make -C "${dir}" DESTDIR="$destdir" uninstall
+        make -C "${dir}" DESTDIR="$PKGDIR" uninstall
     done
-    rm "$destdir"/usr/share/man/man1/{psql.1,pg_config.1}
+    rm "$PKGDIR"/usr/share/man/man1/{psql.1,pg_config.1}
     # Install license
     dodoc COPYRIGHT
     # clean up unneeded installed items
-    cd "$destdir"
+    cd "$PKGDIR"
     rm -rf usr/include/postgresql/internal usr/include/libpq usr/share/doc/postgresql/html
     find "usr/include" -maxdepth 1 -type f -execdir rm {} +
     # Install launch script
-    docp "$filesdir"/postgresql.conf usr/lib/tmpfiles.d/
+    docp "$FILESDIR"/postgresql.conf usr/lib/tmpfiles.d/
     dounit postgresql.service
-    docp "$filesdir"/postgresql-check-db-dir usr/bin/
+    docp "$FILESDIR"/postgresql-check-db-dir usr/bin/
     dopamd postgresql
-    docp_rename "$filesdir"/postgresql.logrotate etc/logrotate.d/postgresql
+    docp_rename "$FILESDIR"/postgresql.logrotate etc/logrotate.d/postgresql
 }
 

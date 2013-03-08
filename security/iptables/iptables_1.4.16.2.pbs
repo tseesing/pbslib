@@ -38,11 +38,11 @@ pbs_build() {
 
 pbs_install() {
     domkinstall
-    cd "$destdir"
-    docp "$filesdir"/{empty.rules,simple_firewall.rules} etc/iptables/
-    docp "$filesdir"/empty-{filter,mangle,nat,raw,security}.rules var/lib/iptables
+    cd "$PKGDIR"
+    docp "$FILESDIR"/{empty.rules,simple_firewall.rules} etc/iptables/
+    docp "$FILESDIR"/empty-{filter,mangle,nat,raw,security}.rules var/lib/iptables
     # install systemd files
     dounit iptables.service ip6tables.service 
-    docp "$filesdir"/iptables-flush usr/lib/systemd/system/scripts
+    docp "$FILESDIR"/iptables-flush usr/lib/systemd/system/scripts
 }
 

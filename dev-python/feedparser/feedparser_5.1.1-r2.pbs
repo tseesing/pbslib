@@ -34,6 +34,6 @@ pbs_build() {
 pbs_install() {
     domkinstall
     dodoc LICENSE
-    find "$destdir" -type f |xargs chmod 755
+    find "$PKGDIR" -type f |xargs chmod 755
 }
 

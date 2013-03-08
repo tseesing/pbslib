@@ -34,7 +34,7 @@ pbs_build() {
 pbs_install() {
     domkinstall --optimize=1
     dodoc COPYING.txt
-    cd "$destdir"/usr/bin/
+    cd "$PKGDIR"/usr/bin/
     for i in $(ls *.py); do
         doln ${i} ${i%.py}
     done

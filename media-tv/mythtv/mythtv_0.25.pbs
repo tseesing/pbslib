@@ -48,10 +48,10 @@ pbs_build() {
 }
 
 pbs_install() {
-    domkinstall INSTALL_ROOT="$destdir"
-    docp 'database/mc.sql' "$destdir"/usr/share/mythtv/mc.sql
-    docp 'contrib' "$destdir"/usr/share/mythtv
-    mkdir -p "$destdir"/var/log/mythtv
+    domkinstall INSTALL_ROOT="$PKGDIR"
+    docp 'database/mc.sql' "$PKGDIR"/usr/share/mythtv/mc.sql
+    docp 'contrib' "$PKGDIR"/usr/share/mythtv
+    mkdir -p "$PKGDIR"/var/log/mythtv
 }
 
 

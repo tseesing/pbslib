@@ -36,7 +36,7 @@ pbs_build() {
     cd mozilla/security/nss/lib/ckfw/builtins
     make generate
     
-    cd "$srcdir"
+    cd "$SRCDIR"
     export BUILD_OPT=1
     export PKG_CONFIG_ALLOW_SYSTEM_LIBS=1
     export PKG_CONFIG_ALLOW_SYSTEM_CFLAGS=1
@@ -54,26 +54,26 @@ pbs_build() {
 }
 
 pbs_install() {
-    install -m755 -d "$destdir"/usr/lib"$LIBDIRSUFFIX"/pkgconfig
-    install -m755 -d "$destdir"/usr/bin
-    install -m755 -d "$destdir"/usr/include/nss
+    install -m755 -d "$PKGDIR"/usr/lib"$LIBDIRSUFFIX"/pkgconfig
+    install -m755 -d "$PKGDIR"/usr/bin
+    install -m755 -d "$PKGDIR"/usr/include/nss
     
     NSS_VMAJOR=`grep "#define.*NSS_VMAJOR" mozilla/security/nss/lib/nss/nss.h | awk '{print $3}'`
         NSS_VMINOR=`grep "#define.*NSS_VMINOR" mozilla/security/nss/lib/nss/nss.h | awk '{print $3}'`
     NSS_VPATCH=`grep "#define.*NSS_VPATCH" mozilla/security/nss/lib/nss/nss.h | awk '{print $3}'`
 
-    sed "$filesdir"/nss.pc.in \
+    sed "$FILESDIR"/nss.pc.in \
               -e "s,%libdir%,/usr/lib"$LIBDIRSUFFIX",g" \
                   -e "s,%prefix%,/usr,g" \
               -e "s,%exec_prefix%,/usr/bin,g" \
               -e "s,%includedir%,/usr/include/nss,g" \
               -e "s,%NSPR_VERSION%,${V},g" \
               -e "s,%NSS_VERSION%,${V},g" \
-               > "${destdir}"/usr/lib"$LIBDIRSUFFIX"/pkgconfig/nss.pc
-    doln nss.pc "${destdir}"/usr/lib"$LIBDIRSUFFIX"/pkgconfig/mozilla-nss.pc
-    chmod 644 "${destdir}"/usr/lib"$LIBDIRSUFFIX"/pkgconfig/*.pc
+               > "$PKGDIR"/usr/lib"$LIBDIRSUFFIX"/pkgconfig/nss.pc
+    doln nss.pc "$PKGDIR"/usr/lib"$LIBDIRSUFFIX"/pkgconfig/mozilla-nss.pc
+    chmod 644 "$PKGDIR"/usr/lib"$LIBDIRSUFFIX"/pkgconfig/*.pc
 
-    sed "$filesdir"/nss-config.in \
+    sed "$FILESDIR"/nss-config.in \
                       -e "s,@libdir@,/usr/lib"$LIBDIRSUFFIX",g" \
                          -e "s,@prefix@,/usr/bin,g" \
               -e "s,@exec_prefix@,/usr/bin,g" \
@@ -81,21 +81,21 @@ pbs_install() {
               -e "s,@MOD_MAJOR_VERSION@,${NSS_VMAJOR},g" \
               -e "s,@MOD_MINOR_VERSION@,${NSS_VMINOR},g" \
               -e "s,@MOD_PATCH_VERSION@,${NSS_VPATCH},g" \
-               > "${destdir}"/usr/bin/nss-config
-    chmod 755 "${destdir}"/usr/bin/nss-config
+               > "$PKGDIR"/usr/bin/nss-config
+    chmod 755 "$PKGDIR"/usr/bin/nss-config
     
     for file in libsoftokn3.so libfreebl3.so libnss3.so libnssutil3.so \
         libssl3.so libsmime3.so libnssckbi.so libnssdbm3.so; do
-        install -m755 mozilla/dist/*.OBJ/lib/"${file}" "${destdir}"/usr/lib"$LIBDIRSUFFIX"/
+        install -m755 mozilla/dist/*.OBJ/lib/"${file}" "$PKGDIR"/usr/lib"$LIBDIRSUFFIX"/
     done
 
-    install -m644 mozilla/dist/*.OBJ/lib/libcrmf.a "${destdir}"/usr/lib"$LIBDIRSUFFIX"/
-    install -m644 mozilla/dist/*.OBJ/lib/*.chk "${destdir}"/usr/lib"$LIBDIRSUFFIX"/
+    install -m644 mozilla/dist/*.OBJ/lib/libcrmf.a "$PKGDIR"/usr/lib"$LIBDIRSUFFIX"/
+    install -m644 mozilla/dist/*.OBJ/lib/*.chk "$PKGDIR"/usr/lib"$LIBDIRSUFFIX"/
 
     for file in certutil cmsutil crlutil modutil pk12util shlibsign signtool signver ssltap; do
-        install -m755 mozilla/dist/*.OBJ/bin/${file} "${destdir}"/usr/bin/
+        install -m755 mozilla/dist/*.OBJ/bin/${file} "$PKGDIR"/usr/bin/
     done
 
-    install -m644 mozilla/dist/public/nss/*.h "${destdir}"/usr/include/nss/
+    install -m644 mozilla/dist/public/nss/*.h "$PKGDIR"/usr/include/nss/
 }
 

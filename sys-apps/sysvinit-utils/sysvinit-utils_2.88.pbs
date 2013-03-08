@@ -30,9 +30,9 @@ pbs_build() {
 }
 
 pbs_install() {
-    make ROOT="$destdir" install
+    make ROOT="$PKGDIR" install
     # Provided by util-linux
-    cd "$destdir"
+    cd "$PKGDIR"
     rm bin/mountpoint
     rm usr/share/man/man1/mountpoint.1
     rm usr/bin/{mesg,utmpdump,wall}

@@ -48,7 +48,7 @@ pbs_build() {
 }
 
 pbs_install() {
-    domkinstall INSTALL_PREFIX="${destdir}" INSTALLDIRS=vendor
+    domkinstall INSTALL_PREFIX="$PKGDIR" INSTALLDIRS=vendor
     dodoc COPYING
 }
 

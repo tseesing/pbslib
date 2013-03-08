@@ -31,9 +31,9 @@ pbs_build() {
 
 pbs_install() {
     domkinstall
-    install -Dm644 examples/tmux.vim "$destdir"/usr/share/vim/vim73/colors/tmux.vim 
-    install -dm755 "$destdir"/usr/share/tmux
-    install -m644 examples/* "$destdir"/usr/share/tmux/
-    install -D examples/bash_completion_tmux.sh  "$destdir"/usr/share/bash-completion/completions/tmux
+    install -Dm644 examples/tmux.vim "$PKGDIR"/usr/share/vim/vim73/colors/tmux.vim 
+    install -dm755 "$PKGDIR"/usr/share/tmux
+    install -m644 examples/* "$PKGDIR"/usr/share/tmux/
+    install -D examples/bash_completion_tmux.sh  "$PKGDIR"/usr/share/bash-completion/completions/tmux
     dodoc FAQ
 }

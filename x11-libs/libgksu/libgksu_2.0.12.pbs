@@ -30,7 +30,7 @@ pbs_patch() {
             libgksu-2.0.12-notests.patch \
             libgksu-2.0.12-automake-1.11.2.patch
     # Use my icon
-    docp "$filesdir"/gksu.png .
+    docp "$FILESDIR"/gksu.png .
 }
 
 pbs_config() {

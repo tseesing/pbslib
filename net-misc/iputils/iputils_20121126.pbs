@@ -35,10 +35,10 @@ pbs_build() {
 }
 
 pbs_install() {
-    docp arping clockdiff rarpd rdisc tftpd tracepath tracepath6 "$destdir"/usr/sbin/
-    docp ping{,6} "$destdir"/usr/bin/
-    cd "$destdir"
-    docp_rename "$filesdir"/tftp.xinetd etc/xinetd.d/tftp
+    docp arping clockdiff rarpd rdisc tftpd tracepath tracepath6 "$PKGDIR"/usr/sbin/
+    docp ping{,6} "$PKGDIR"/usr/bin/
+    cd "$PKGDIR"
+    docp_rename "$FILESDIR"/tftp.xinetd etc/xinetd.d/tftp
     doln /usr/bin/ping  bin/ping
     doln /usr/bin/ping6 bin/ping6
 }

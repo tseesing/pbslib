@@ -34,10 +34,10 @@ pbs_config() {
 }
 
 pbs_install() {
-    python setup.py install --optimize=1 --root="$destdir"
+    python setup.py install --optimize=1 --root="$PKGDIR"
     cd build/lib/wicd
     for i in *.py; do
-        install -Dm 755 "${i}" "$destdir"/usr/lib/wicd/"${i}"
+        install -Dm 755 "${i}" "$PKGDIR"/usr/lib/wicd/"${i}"
     done
     dounit "$N".service
 }

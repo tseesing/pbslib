@@ -37,6 +37,6 @@ pbs_build() {
 pbs_install() {
     domkinstall
     #XXX
-    ln -sf /usr/bin/matedialog "$destdir"/usr/bin/zenity
+    ln -sf /usr/bin/matedialog "$PKGDIR"/usr/bin/zenity
 }
 

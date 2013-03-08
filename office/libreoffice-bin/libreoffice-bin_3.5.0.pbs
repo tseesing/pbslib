@@ -35,7 +35,7 @@ pbs_build() {
 }
 
 pbs_install() {
-    docp etc opt usr "$destdir"
+    docp etc opt usr "$PKGDIR"
     dodoc readmes
 }
 

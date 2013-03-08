@@ -31,6 +31,5 @@ pbs_build() {
 
 pbs_install() {
     domkinstall
-    echo 'StartupNotify=true' >> "$destdir"/usr/share/applications/leafpad.desktop
+    echo 'StartupNotify=true' >> "$PKGDIR"/usr/share/applications/leafpad.desktop
 }
-

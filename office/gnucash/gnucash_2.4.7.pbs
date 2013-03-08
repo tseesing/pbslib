@@ -27,8 +27,8 @@ pbs_unpack() {
 }
 
 pbs_config() {
-    #dopatch $filesdir/patches/*.patch 
-    #XX.patch should be found under $filesdir or $filesdir/patches/
+    #dopatch $FILESDIR/patches/*.patch 
+    #XX.patch should be found under $FILESDIR or $FILESDIR/patches/
     #second, add package specified config params to config
     #default is :
     #config+=" --prefix=/usr
@@ -54,21 +54,21 @@ pbs_check() {
 }
 
 pbs_install() {
-    #install everything to $destdir
-    #make DESTDIR="$destdir" install
+    #install everything to $PKGDIR
+    #make DESTDIR="$PKGDIR" install
     domkinstall
     #doinit "$N"
     #doinit "N".service
     #dodesktop "*.desktop" "*.png"
     #dodoc AUTHORS ChangeLog COPYING INSTALL NEWS README 
-    #docp "$filesdir/XXXX" "dirname"
-    #domv "$filesdir/XXXX" "dirname"
+    #docp "$FILESDIR/XXXX" "dirname"
+    #domv "$FILESDIR/XXXX" "dirname"
     #docp_rename "$1" "$2"
     #domv_rename "$1" "$2"
     #doln "$1 "$2"
     #*****************
     #when SRC_URI is deb or rpm package
-    #docp data/*  "$destdir"
+    #docp data/*  "$PKGDIR"
 }
 
 pbs_prerm() {

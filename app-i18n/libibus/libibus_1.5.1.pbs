@@ -36,8 +36,8 @@ pbs_build() {
 }
 
 pbs_install() {
-    make DESTDIR="$destdir" install-pkgconfigDATA
+    make DESTDIR="$PKGDIR" install-pkgconfigDATA
     cd src
-    make DESTDIR="$destdir" install
+    make DESTDIR="$PKGDIR" install
 }
 

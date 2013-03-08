@@ -40,9 +40,9 @@ pbs_build() {
 pbs_install() {
     domkinstall
     # remove file that will contain in libibus
-    make DESTDIR="$destdir" uninstall-pkgconfigDATA
+    make DESTDIR="$PKGDIR" uninstall-pkgconfigDATA
     cd src
-    make DESTDIR="$destdir" uninstall
-    rmdir -p --ignore-fail-on-non-empty "$destdir"/usr/include/ibus-1.0 "$destdir"/usr/lib"$LIBDIRSUFFIX"/pkgconfig
+    make DESTDIR="$PKGDIR" uninstall
+    rmdir -p --ignore-fail-on-non-empty "$PKGDIR"/usr/include/ibus-1.0 "$PKGDIR"/usr/lib"$LIBDIRSUFFIX"/pkgconfig
 }
 

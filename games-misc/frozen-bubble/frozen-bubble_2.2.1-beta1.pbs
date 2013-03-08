@@ -33,7 +33,7 @@ pbs_build() {
 }
 
 pbs_install() {
-    perl Build install destdir="$destdir"
+    perl Build install destdir="$PKGDIR"
     dodesktop "$N.desktop"  "$N.png"
 }
 

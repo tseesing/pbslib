@@ -34,7 +34,7 @@ pbs_build() {
 
 pbs_install() {
     # Copy data and fix permissions
-    docp controls.txt setup.txt basicdat/ modules/ "$destdir"/usr/share/egoboo/
-    find "$destdir"/usr/share/egoboo -type f -exec chmod 644 {} +
+    docp controls.txt setup.txt basicdat/ modules/ "$PKGDIR"/usr/share/egoboo/
+    find "$PKGDIR"/usr/share/egoboo -type f -exec chmod 644 {} +
 }
 

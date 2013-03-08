@@ -41,7 +41,7 @@ pbs_build() {
 }
 
 pbs_install() {
-    make sysconfdir="${destdir}"/etc prefix="${destdir}"/usr install
+    make sysconfdir="$PKGDIR"/etc prefix="$PKGDIR"/usr install
     dodesktop "$N".desktop "$N".png
 }
 

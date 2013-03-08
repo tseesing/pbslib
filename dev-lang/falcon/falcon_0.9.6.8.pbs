@@ -34,6 +34,6 @@ pbs_build() {
 
 pbs_install() {
     domkinstall
-    doln /usr/include/falcon0.9.6/falcon "$destdir"/usr/include/falcon
+    doln /usr/include/falcon0.9.6/falcon "$PKGDIR"/usr/include/falcon
 }
 

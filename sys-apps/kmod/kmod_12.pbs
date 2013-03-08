@@ -35,7 +35,7 @@ pbs_build() {
 
 pbs_install() {
     domkinstall
-    cd "$destdir"
+    cd "$PKGDIR"
     # Kmod also handles gracefully if called from following symlinks:
     tools="lsmod rmmod insmod modinfo modprobe depmod"
     for i in $tools; do
@@ -44,8 +44,8 @@ pbs_install() {
     # Extra directories
     install -dm755 {etc,lib}/{depmod,modprobe}.d 
     # Install depmod.d file for search/ dir
-    docp "$filesdir"/search.conf lib/depmod.d/         
+    docp "$FILESDIR"/search.conf lib/depmod.d/         
     # Default blacklist.conf collections
-    docp "$filesdir"/modprobe.d/* etc/modprobe.d
+    docp "$FILESDIR"/modprobe.d/* etc/modprobe.d
 }
 

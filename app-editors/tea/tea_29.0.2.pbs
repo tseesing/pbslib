@@ -22,13 +22,13 @@ pbs_unpack() {
 }
 
 pbs_config() {
-    doconfig "PREFIX="$destdir"/usr/bin/"
+    doconfig "PREFIX="$PKGDIR"/usr/bin/"
 }
 
 pbs_build() {
     domake
-    docp_rename icons/tea_icon_v2.png  "$destdir"/usr/share/pixmaps/"$N".png
-    dodesktop  $filesdir/"$N".desktop
+    docp_rename icons/tea_icon_v2.png  "$PKGDIR"/usr/share/pixmaps/"$N".png
+    dodesktop  $FILESDIR/"$N".desktop
 }
 
 pbs_install() {

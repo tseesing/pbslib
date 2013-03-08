@@ -31,5 +31,5 @@ pbs_build() {
 pbs_install() {
     domkinstall
     #
-    find "$destdir" -name "*.la" -delete
+    find "$PKGDIR" -name "*.la" -delete
 }

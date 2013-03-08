@@ -107,11 +107,11 @@ pbs_build() {
 pbs_install() {
     domkinstall
     
-    cd "$destdir"
-    docp "$filesdir"/grub.default usr/share/grub/
-    docp "$filesdir"/20_memtest86+ etc/grub.d/
-    docp "$filesdir"/00_header usr/share/grub-gfxpayload-lists/blacklist/
-    docp "$filesdir"/{update-grub2,update-grub,update-grub-gfxpayload} usr/sbin/
+    cd "$PKGDIR"
+    docp "$FILESDIR"/grub.default usr/share/grub/
+    docp "$FILESDIR"/20_memtest86+ etc/grub.d/
+    docp "$FILESDIR"/00_header usr/share/grub-gfxpayload-lists/blacklist/
+    docp "$FILESDIR"/{update-grub2,update-grub,update-grub-gfxpayload} usr/sbin/
 
     # remove platform specific files
     rm -rf usr/lib/grub/i386-pc/

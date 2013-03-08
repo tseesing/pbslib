@@ -26,19 +26,19 @@ pbs_unpack() {
     cd unbundle-jdk
     sh "$YBS_SOURCE"/jdk-6u25-linux-i586.bin --accept-license
     cd ../
-    sh $filesdir/construct.sh unbundle-jdk linux-jdk linux-jre
+    sh $FILESDIR/construct.sh unbundle-jdk linux-jdk linux-jre
 }
 
 pbs_install() {
-    # Make DESTDIR="$destdir" install
+    # Make DESTDIR="$PKGDIR" install
     # Copy icon
-    docp_rename linux-jdk/jre/lib/desktop/icons/hicolor/48x48/apps/sun-java.png "$destdir"/usr/share/pixmaps/java.png
+    docp_rename linux-jdk/jre/lib/desktop/icons/hicolor/48x48/apps/sun-java.png "$PKGDIR"/usr/share/pixmaps/java.png
     rm -rf linux-jdk/jre
-    docp linux-jdk/* "$destdir"/opt/java/
-    docp_rename $filesdir/jdk.profile    "$destdir"/etc/profile.d/jdk.sh
-    docp_rename $filesdir/jdk.profile.csh "$destdir"/etc/profile.d/jdk.csh
+    docp linux-jdk/* "$PKGDIR"/opt/java/
+    docp_rename $FILESDIR/jdk.profile    "$PKGDIR"/etc/profile.d/jdk.sh
+    docp_rename $FILESDIR/jdk.profile.csh "$PKGDIR"/etc/profile.d/jdk.csh
     
-    cd "$destdir"
+    cd "$PKGDIR"
     docp opt/java/{COPYRIGHT,LICENSE,THIRDPARTYLICENSEREADME.txt} usr/share/licenses/jdk/
     # Desktop entries
     dodesktop java-control-panel.desktop java-monitoring-and-management-console.desktop java-policy-settings.desktop java-visualvm.desktop java-web-start.desktop

@@ -37,6 +37,6 @@ pbs_install() {
     dodoc LICENSE
 
     # Conflict with libevent
-    rm "$destdir"/usr/include/event.h
+    rm "$PKGDIR"/usr/include/event.h
 }
 

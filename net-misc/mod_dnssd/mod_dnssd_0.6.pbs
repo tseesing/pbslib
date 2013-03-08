@@ -35,6 +35,6 @@ pbs_build() {
 }
 
 pbs_install() {
-    docp src/.libs/mod_dnssd.so "$destdir"/usr/lib"$LIBDIRSUFFIX"/httpd/modules/
+    docp src/.libs/mod_dnssd.so "$PKGDIR"/usr/lib"$LIBDIRSUFFIX"/httpd/modules/
 }
 

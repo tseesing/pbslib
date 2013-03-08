@@ -24,8 +24,8 @@ pbs_unpack() {
 }
 
 pbs_install() {
-    docp * "$destdir"/usr/lib/win32/
+    docp * "$PKGDIR"/usr/lib/win32/
     # DirectShow codec drvc.dll.
-    docp "$filesdir"/drvc.dll  "$destdir"/usr/lib/win32/
+    docp "$FILESDIR"/drvc.dll  "$PKGDIR"/usr/lib/win32/
 }
 

@@ -30,6 +30,6 @@ pbs_build() {
 }
 
 pbs_install() {
-    docp build/* "$destdir"/lib/firmware
+    docp build/* "$PKGDIR"/lib/firmware
 }
 

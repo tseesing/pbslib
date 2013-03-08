@@ -7,11 +7,6 @@ do_initramfs() {
 }
 
 post_install() {
-    #
-    unset ARCH
-    ykms install $1 $2
-
-    #
         # Create a blacklist file
     BLACKLIST_FILE="/etc/modprobe.d/blacklist-bcm43.conf"
         if [ ! -f "$BLACKLIST_FILE" ]; then
@@ -37,9 +32,6 @@ fi
 }
 
 post_remove () {
-    #
-    ykms remove $1 $2
-
     #
     BLACKLIST_FILE="/etc/modprobe.d/blacklist-bcm43.conf"
         rm -f "$BLACKLIST_FILE"

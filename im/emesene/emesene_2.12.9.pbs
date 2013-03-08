@@ -34,16 +34,16 @@ pbs_patch() {
 }
 
 pbs_build () {
-    export PYTHONPATH="$destdir"/usr/lib"$LIBDIRSUFFIX"/python2.7/site-packages/
-    install -d "$destdir"/usr/lib"$LIBDIRSUFFIX"/python2.7/site-packages/
-    python setup.py install --prefix="$destdir"/usr
+    export PYTHONPATH="$PKGDIR"/usr/lib"$LIBDIRSUFFIX"/python2.7/site-packages/
+    install -d "$PKGDIR"/usr/lib"$LIBDIRSUFFIX"/python2.7/site-packages/
+    python setup.py install --prefix="$PKGDIR"/usr
 }
 
 pbs_install() {
-    cd "$destdir"/usr/lib"$LIBDIRSUFFIX"/python2.7/site-packages/emesene-"$V"-py2.7.egg
-    domv share  "$destdir"/usr
-    domv emesene "$destdir"/usr/share
-    docp "$filesdir"/emesene "$destdir"/usr/bin/
-    rm -rf "$destdir"/usr/lib"$LIBDIRSUFFIX"
+    cd "$PKGDIR"/usr/lib"$LIBDIRSUFFIX"/python2.7/site-packages/emesene-"$V"-py2.7.egg
+    domv share  "$PKGDIR"/usr
+    domv emesene "$PKGDIR"/usr/share
+    docp "$FILESDIR"/emesene "$PKGDIR"/usr/bin/
+    rm -rf "$PKGDIR"/usr/lib"$LIBDIRSUFFIX"
 }
 

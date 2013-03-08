@@ -75,6 +75,6 @@ pbs_build() {
 }
 
 pbs_install() {
-    make DESTDIR="$destdir" install-gcc
+    make DESTDIR="$PKGDIR" install-gcc
 }
 

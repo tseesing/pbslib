@@ -35,9 +35,9 @@ pbs_build() {
 }
 
 pbs_install() {
-    make -j1 DESTDIR="$destdir" install
+    make -j1 DESTDIR="$PKGDIR" install
     # provided by libanjuta package
     cd libanjuta
-    make -j1 DESTDIR="$destdir" uninstall
+    make -j1 DESTDIR="$PKGDIR" uninstall
 }
 

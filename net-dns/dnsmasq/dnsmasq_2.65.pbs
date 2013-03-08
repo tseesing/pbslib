@@ -39,8 +39,8 @@ pbs_install() {
     # systemd unit
     dounit "$N".service
     # dbus
-    docp "dbus/dnsmasq.conf" "$destdir"/etc/dbus-1/system.d/
+    docp "dbus/dnsmasq.conf" "$PKGDIR"/etc/dbus-1/system.d/
     # configfile
-    install -Dm644 "dnsmasq.conf.example" "$destdir"/etc/dnsmasq.conf
+    install -Dm644 "dnsmasq.conf.example" "$PKGDIR"/etc/dnsmasq.conf
 }
 

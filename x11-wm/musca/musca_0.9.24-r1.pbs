@@ -31,7 +31,7 @@ pbs_build() {
 }
 
 pbs_install() {
-    docp apis musca xlisten "$destdir"/usr/bin/
+    docp apis musca xlisten "$PKGDIR"/usr/bin/
     doman musca.1  
 }
 

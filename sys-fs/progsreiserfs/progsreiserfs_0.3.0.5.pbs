@@ -39,6 +39,6 @@ pbs_build() {
 pbs_install() {
     domkinstall
     # Only provide lib and includes files
-    rm -r "$destdir"/usr{/sbin,/share/man}
+    rm -r "$PKGDIR"/usr{/sbin,/share/man}
 }
 

@@ -45,12 +45,12 @@ pbs_build() {
 pbs_install() {
     domkinstall
     # add back tmpfiles.d/legacy.conf
-    install -m644 tmpfiles.d/legacy.conf "$destdir"/usr/lib/tmpfiles.d/
-    cd "$destdir"
+    install -m644 tmpfiles.d/legacy.conf "$PKGDIR"/usr/lib/tmpfiles.d/
+    cd "$PKGDIR"
     #
     mkdir -p run
     # Wrapper of systemctl scripts
-    docp "$filesdir"/{start,stop,status,restart,reload} usr/bin/
+    docp "$FILESDIR"/{start,stop,status,restart,reload} usr/bin/
     #
     printf "d /run/console 0755 root root\n" >usr/lib/tmpfiles.d/console.conf
     # Default modules.conf
@@ -67,12 +67,12 @@ EOF
         doln  /usr/bin/systemctl  sbin/"${i}"     
     done
     # For initramfs
-    docp_rename "$filesdir"/hook_systemd        usr/share/initramfs-tools/hooks/systemd
-    docp_rename "$filesdir"/init-top_systemd    usr/share/initramfs-tools/scripts/init-top/systemd
-    docp_rename "$filesdir"/nfs-top_systemd     usr/share/initramfs-tools/scripts/nfs-top/systemd
-    docp_rename "$filesdir"/init-bottom_systemd usr/share/initramfs-tools/scripts/init-bottom/systemd
+    docp_rename "$FILESDIR"/hook_systemd        usr/share/initramfs-tools/hooks/systemd
+    docp_rename "$FILESDIR"/init-top_systemd    usr/share/initramfs-tools/scripts/init-top/systemd
+    docp_rename "$FILESDIR"/nfs-top_systemd     usr/share/initramfs-tools/scripts/nfs-top/systemd
+    docp_rename "$FILESDIR"/init-bottom_systemd usr/share/initramfs-tools/scripts/init-bottom/systemd
     # Extra rules for systemd
-    docp "$filesdir"/{64-device-mapper.rules,78-graphics-card.rules} usr/lib/systemd/rules.d
+    docp "$FILESDIR"/{64-device-mapper.rules,78-graphics-card.rules} usr/lib/systemd/rules.d
     # Install devices dirs for systemd
     UDEVDHOME="usr/lib/systemd/devices"
     install -d "$UDEVDHOME"/{pts,shm}
@@ -87,7 +87,7 @@ EOF
     # get rid of RPM macros
     rm -r etc/rpm
     # Misc
-    docp "$filesdir"/udlfb.conf etc/modprobe.d/
+    docp "$FILESDIR"/udlfb.conf etc/modprobe.d/
     ln -sf /proc/self/mounts etc/mtab
 }
 

@@ -25,12 +25,12 @@ pbs_unpack() {
 }
 
 pbs_install() {
-    docp * "$destdir"/usr/share/eclipse
+    docp * "$PKGDIR"/usr/share/eclipse
 
     # Install misc
-    cd "$destdir"
-    docp "$filesdir"/eclipse usr/bin/
+    cd "$PKGDIR"
+    docp "$FILESDIR"/eclipse usr/bin/
     dodesktop eclipse.desktop eclipse.svg
-    docp "$filesdir"/eclipse.svg usr/share/icons/hicolor/scalable/apps/
+    docp "$FILESDIR"/eclipse.svg usr/share/icons/hicolor/scalable/apps/
 }
 

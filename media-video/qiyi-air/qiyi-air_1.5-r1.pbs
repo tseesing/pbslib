@@ -21,8 +21,8 @@ CONFLICT=""
 INSTALL="$N.install"
 
 pbs_install() {
-    docp_rename "$YBS_SOURCE"/AirPlayer.air "$destdir"/usr/lib/"$N"/qiyi.air
+    docp_rename "$YBS_SOURCE"/AirPlayer.air "$PKGDIR"/usr/lib/"$N"/qiyi.air
     dodesktop   "$N.desktop"      "$N.png"
-    docp "$filesdir"/"$N" "$destdir"/usr/bin/
+    docp "$FILESDIR"/"$N" "$PKGDIR"/usr/bin/
 }
 

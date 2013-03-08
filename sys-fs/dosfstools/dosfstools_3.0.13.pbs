@@ -31,6 +31,6 @@ pbs_build() {
 }
 
 pbs_install() {
-    make PREFIX="$destdir" MANDIR="$destdir"/usr/share/man DOCDIR="$destdir"/usr/share/doc install
+    make PREFIX="$PKGDIR" MANDIR="$PKGDIR"/usr/share/man DOCDIR="$PKGDIR"/usr/share/doc install
 }
 

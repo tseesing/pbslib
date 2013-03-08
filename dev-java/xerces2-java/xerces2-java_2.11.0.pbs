@@ -24,6 +24,6 @@ pbs_unpack() {
 pbs_install() {
     . /etc/profile.d/jdk.sh
     rm -f xercesSamples.jar
-    docp *.jar "$destdir"/"$JAVA_HOME"/
+    docp *.jar "$PKGDIR"/"$JAVA_HOME"/
 }
 

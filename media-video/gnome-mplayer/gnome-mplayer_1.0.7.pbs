@@ -42,7 +42,7 @@ pbs_build() {
 
 pbs_install() {
     domkinstall
-    cd "$destdir"
+    cd "$PKGDIR"
     sed -i 's@Exec=gnome-mplayer %U@Exec=gnome-mplayer %F@' usr/share/applications/"$N".desktop
 }
 

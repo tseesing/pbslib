@@ -38,6 +38,6 @@ pbs_install() {
     domkinstall
     echo "Categories=Game;" >>package/flightgear.desktop
     dodesktop package/flightgear.desktop package/RedHat/flightgear.48.png
-    ln -sf flightgear "$destdir"/usr/share/FlightGear
+    ln -sf flightgear "$PKGDIR"/usr/share/FlightGear
 }
 

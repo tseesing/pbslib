@@ -62,14 +62,14 @@ ati-graphic-legacy-utils_install () {
     INSTALL="$N.install"
 
     # Dev
-    docp common/usr/include/* "$destdir"/usr/include/
+    docp common/usr/include/* "$PKGDIR"/usr/include/
 
     #
-    docp arch/x86/usr/lib/fglrx/* "$destdir"/usr/lib/fglrx/
+    docp arch/x86/usr/lib/fglrx/* "$PKGDIR"/usr/lib/fglrx/
 
     # libGL
-    docp arch/x86/usr/X11R6/lib/fglrx/fglrx-libGL.so.1.2 "$destdir"/usr/lib/fglrx/
-    cd "$destdir"/usr/lib/
+    docp arch/x86/usr/X11R6/lib/fglrx/fglrx-libGL.so.1.2 "$PKGDIR"/usr/lib/fglrx/
+    cd "$PKGDIR"/usr/lib/
     doln /usr/lib/libGL.so.1 libGL.so
     doln /usr/lib/libGL.so.1.2 libGL.so.1
     doln /usr/lib/fglrx/fglrx-libGL.so.1.2 libGL.so.1.2
@@ -77,44 +77,44 @@ ati-graphic-legacy-utils_install () {
 
     # 
     docp arch/x86/usr/X11R6/lib/libfglrx_dm.so.1.0 \
-              arch/x86/usr/X11R6/lib/libfglrx_dm.a "$destdir"/usr/lib/
-    doln /usr/lib/libfglrx_dm.so.1.0 "$destdir"/usr/lib/libfglrx_dm.so.1      
+              arch/x86/usr/X11R6/lib/libfglrx_dm.a "$PKGDIR"/usr/lib/
+    doln /usr/lib/libfglrx_dm.so.1.0 "$PKGDIR"/usr/lib/libfglrx_dm.so.1      
 
     # dri
-    docp arch/x86/usr/X11R6/lib/modules/dri/fglrx_dri.so "$destdir"/usr/lib/dri/
+    docp arch/x86/usr/X11R6/lib/modules/dri/fglrx_dri.so "$PKGDIR"/usr/lib/dri/
 
     # glx
-    docp xpic/usr/X11R6/lib/modules/extensions/fglrx/fglrx-libglx.so "$destdir"/usr/lib/xorg/modules/extensions/fglrx/
-    cd "$destdir"/usr/lib/xorg/modules/extensions/
+    docp xpic/usr/X11R6/lib/modules/extensions/fglrx/fglrx-libglx.so "$PKGDIR"/usr/lib/xorg/modules/extensions/fglrx/
+    cd "$PKGDIR"/usr/lib/xorg/modules/extensions/
     doln /usr/lib/xorg/modules/extensions/fglrx/fglrx-libglx.so libglx.so
     cd -
 
     # glesx
-    docp xpic/usr/X11R6/lib/modules/glesx.so "$destdir"/usr/lib/xorg/modules/
+    docp xpic/usr/X11R6/lib/modules/glesx.so "$PKGDIR"/usr/lib/xorg/modules/
 
     # amdxmm
-    docp xpic/usr/X11R6/lib/modules/amdxmm.so "$destdir"/usr/lib/xorg/modules/
+    docp xpic/usr/X11R6/lib/modules/amdxmm.so "$PKGDIR"/usr/lib/xorg/modules/
 
     # xorg
-    docp xpic/usr/X11R6/lib/modules/drivers/fglrx_drv.so "$destdir"/usr/lib/xorg/modules/drivers/
-    docp xpic/usr/X11R6/lib/modules/linux/libfglrxdrm.so "$destdir"/usr/lib/xorg/modules/linux/
+    docp xpic/usr/X11R6/lib/modules/drivers/fglrx_drv.so "$PKGDIR"/usr/lib/xorg/modules/drivers/
+    docp xpic/usr/X11R6/lib/modules/linux/libfglrxdrm.so "$PKGDIR"/usr/lib/xorg/modules/linux/
 
     # bin
     docp arch/x86/usr/X11R6/bin/{amdcccle,fglrxinfo,atiode,atiodcli,fgl_glxgears,aticonfig} \
               arch/x86/usr/sbin/{amdnotifyui,atieventsd} \
           common/usr/sbin/atigetsysteminfo.sh \
-          common/usr/X11R6/bin/{amdxdg-su,amdupdaterandrconfig}  "$destdir"/usr/bin/
-    chmod 755 "$destdir"/usr/bin/*
+          common/usr/X11R6/bin/{amdxdg-su,amdupdaterandrconfig}  "$PKGDIR"/usr/bin/
+    chmod 755 "$PKGDIR"/usr/bin/*
 
     # Doc
     dodoc common/usr/share/doc/*
 
     # Etc
-    docp common/etc/* "$destdir"/etc/
-    docp common/usr/share/doc/fglrx/examples/etc/acpi/* "$destdir"/etc/acpi/
+    docp common/etc/* "$PKGDIR"/etc/
+    docp common/usr/share/doc/fglrx/examples/etc/acpi/* "$PKGDIR"/etc/acpi/
     
     # desktop
-    docp common/usr/share/* "$destdir"/usr/share/
+    docp common/usr/share/* "$PKGDIR"/usr/share/
 
     #
     docp arch/x86/usr/lib/libaticalcl.so \
@@ -125,8 +125,8 @@ ati-graphic-legacy-utils_install () {
           arch/x86/usr/X11R6/lib/libAMDXvBA.cap \
           arch/x86/usr/X11R6/lib/libAMDXvBA.so.1.0 \
           arch/x86/usr/X11R6/lib/libXvBAW.so.1.0 \
-          arch/x86/usr/X11R6/lib/libatiadlxx.so "$destdir"/usr/lib/
-     cd "$destdir"/usr/lib/
+          arch/x86/usr/X11R6/lib/libatiadlxx.so "$PKGDIR"/usr/lib/
+     cd "$PKGDIR"/usr/lib/
     doln libatiuki.so.1.0 libatiuki.so.1
     doln libatiuki.so.1 libatiuki.so
     doln libAMDXvBA.so.1.0 libAMDXvBA.so.1
@@ -136,7 +136,7 @@ ati-graphic-legacy-utils_install () {
     cd -
 
      #
-    mkdir -p "$destdir"/usr/share/grub-gfxpayload-lists/blacklist
-    echo "# Blacklist cards here" >"$destdir"/usr/share/grub-gfxpayload-lists/blacklist/02_ati
+    mkdir -p "$PKGDIR"/usr/share/grub-gfxpayload-lists/blacklist
+    echo "# Blacklist cards here" >"$PKGDIR"/usr/share/grub-gfxpayload-lists/blacklist/02_ati
 }
 

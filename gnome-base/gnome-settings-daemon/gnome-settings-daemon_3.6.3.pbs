@@ -49,6 +49,6 @@ pbs_install() {
     # Plugins that aren't installed still have schema references
     # and cause gsettings errors - remove the references we're not using
     sed -i '/org\.gnome\.settings-daemon\.plugins\.updates/d' \
-           "$destdir"/usr/share/glib-2.0/schemas/org.gnome.settings-daemon.plugins.gschema.xml
+           "$PKGDIR"/usr/share/glib-2.0/schemas/org.gnome.settings-daemon.plugins.gschema.xml
 }
 

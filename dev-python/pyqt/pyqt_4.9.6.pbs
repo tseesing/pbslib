@@ -42,6 +42,6 @@ pbs_build() {
 
 pbs_install() {
     # INSTALL_ROOT is needed for the QtDesigner module, the other Makefiles use DESTDIR
-    domkinstall INSTALL_ROOT="$destdir"
+    domkinstall INSTALL_ROOT="$PKGDIR"
 }
 

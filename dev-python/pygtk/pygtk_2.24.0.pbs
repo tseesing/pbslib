@@ -36,6 +36,6 @@ pbs_build() {
 
 pbs_install() {
     domkinstall
-    docp gtk/gtk-extrafuncs.defs "$destdir"/usr/share/pygtk/2.0/defs/
+    docp gtk/gtk-extrafuncs.defs "$PKGDIR"/usr/share/pygtk/2.0/defs/
 }
 

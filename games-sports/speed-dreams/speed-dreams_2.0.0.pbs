@@ -56,7 +56,7 @@ pbs_install() {
     dodoc doc/* 
     
     # Symlink
-    cd "$destdir"/
+    cd "$PKGDIR"/
     doln /usr/bin/speed-dreams-2 usr/bin/speed-dreams
 }
 

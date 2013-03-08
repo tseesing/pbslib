@@ -34,8 +34,8 @@ pbs_build() {
 }
 
 pbs_install() {
-    make ROOTDIR="$destdir" install
+    make ROOTDIR="$PKGDIR" install
     # remove conflicts with glibc
-    rm "$destdir"/usr/include/rpcsvc/rquota.{h,x}
+    rm "$PKGDIR"/usr/include/rpcsvc/rquota.{h,x}
 }
 

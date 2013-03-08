@@ -55,7 +55,7 @@ pbs_build() {
 pbs_install() {
     domkinstall
     dodoc COPYING
-    docp "$filesdir"/browser-plugins.ini "$destdir"/etc/totem/
+    docp "$FILESDIR"/browser-plugins.ini "$PKGDIR"/etc/totem/
 }
 
 

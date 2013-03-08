@@ -24,9 +24,9 @@ pbs_unpack() {
 }
 
 pbs_install() {
-    docp app-icon bin conf gnome-config lib res "$destdir"/usr/share/"$N"
-    docp "$filesdir"/nutstore-daemon.desktop "$destdir"/etc/xdg/autostart/
-    docp "$filesdir"/{nutstore,nutstore-daemon} "$destdir"/usr/bin/
+    docp app-icon bin conf gnome-config lib res "$PKGDIR"/usr/share/"$N"
+    docp "$FILESDIR"/nutstore-daemon.desktop "$PKGDIR"/etc/xdg/autostart/
+    docp "$FILESDIR"/{nutstore,nutstore-daemon} "$PKGDIR"/usr/bin/
     dodesktop "$N".desktop "$N".png
 }
 

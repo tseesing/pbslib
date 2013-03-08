@@ -40,6 +40,6 @@ pbs_build() {
 pbs_install() {
     sed -e 's/^glib_subdir =.*/glib_subdir =/' -e 's/^qt4_subdir =.*/qt4_subdir =/' -i Makefile
     domkinstall
-    rm -f "${destdir}"/usr/lib"$LIBDIRSUFFIX"/pkgconfig/poppler-{glib,qt4}.pc
+    rm -f "$PKGDIR"/usr/lib"$LIBDIRSUFFIX"/pkgconfig/poppler-{glib,qt4}.pc
 }
 

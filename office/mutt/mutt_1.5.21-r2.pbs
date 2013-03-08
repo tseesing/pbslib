@@ -46,9 +46,9 @@ pbs_build() {
 
 pbs_install() {
     domkinstall
-    install -Dm644 contrib/gpg.rc "${destdir}"/etc/Muttrc.gpg.dist
+    install -Dm644 contrib/gpg.rc "$PKGDIR"/etc/Muttrc.gpg.dist
 
-    cd "${destdir}"
+    cd "$PKGDIR"
     rm usr/bin/{flea,muttbug}
     rm usr/share/man/man1/{flea,muttbug}.1
     rm etc/mime.types{,.dist}

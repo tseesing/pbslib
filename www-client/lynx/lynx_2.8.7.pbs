@@ -34,7 +34,7 @@ pbs_build() {
 pbs_install() {
     domkinstall
     dodoc lynx_help
-    cd "$destdir"
+    cd "$PKGDIR"
     # FS#20404 - points to local help
     sed -i -e "s|^HELPFILE.*$|HELPFILE:file:///usr/share/doc/lynx/lynx_help/lynx_help_main.html|" etc/lynx.cfg
 }

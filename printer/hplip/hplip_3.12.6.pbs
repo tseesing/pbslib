@@ -59,8 +59,8 @@ pbs_build() {
 }
 
 pbs_install() {
-    make rulesdir=/lib/systemd/rules.d DESTDIR="$destdir/" install
-    cd "$destdir"
+    make rulesdir=/lib/systemd/rules.d DESTDIR="$PKGDIR/" install
+    cd "$PKGDIR"
         
     # Remove config provided by sane 
     rm -rf etc/sane.d

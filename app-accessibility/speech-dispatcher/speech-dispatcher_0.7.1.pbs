@@ -37,11 +37,11 @@ pbs_build() {
 
 pbs_install() {
     domkinstall
-    cd "$destdir"
+    cd "$PKGDIR"
     # For systemd
     dounit speech-dispatcherd.service
     # Remove conflicts with erlang (FS#21674)
-    rm -r "${destdir}"/usr/bin/run_test
+    rm -r "$PKGDIR"/usr/bin/run_test
     # Misc
     mkdir -p var/log/speech-dispatcher
 }

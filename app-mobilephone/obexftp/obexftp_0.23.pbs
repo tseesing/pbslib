@@ -34,6 +34,6 @@ pbs_build() {
 
 pbs_install() {
     domkinstall
-    rm -f "$destdir"/usr/lib/perl5/core_perl/perllocal.pod
+    rm -f "$PKGDIR"/usr/lib/perl5/core_perl/perllocal.pod
 }
 

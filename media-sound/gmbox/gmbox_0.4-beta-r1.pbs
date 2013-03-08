@@ -25,8 +25,8 @@ pbs_unpack() {
 }
 
 pbs_install() {
-    docp data gmbox gmbox-gtk.py libgmbox "$destdir"/usr/lib/"$N"
+    docp data gmbox gmbox-gtk.py libgmbox "$PKGDIR"/usr/lib/"$N"
     dodesktop "debian/gmbox.desktop" "gmbox/pixbufs/gmbox.png"
-    docp "$filesdir"/gmbox "$destdir"/usr/bin/
+    docp "$FILESDIR"/gmbox "$PKGDIR"/usr/bin/
 }
 

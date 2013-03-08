@@ -40,7 +40,7 @@ pbs_build() {
 
 pbs_install() {
     domkinstall
-    cd "$destdir"    
+    cd "$PKGDIR"    
     # Clean up empty mime file
     find usr/share/mime -size 0 -type f -exec rm -v {} \;
     rm -fr usr/share/applications/mimeinfo.cache

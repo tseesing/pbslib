@@ -40,6 +40,6 @@ vhba-module-driver_install() {
     unset ARCH
     
     domake
-    docp vhba.ko "$destdir"/lib/modules/"3.4.6-r2"/extra/
+    docp vhba.ko "$PKGDIR"/lib/modules/"3.4.6-r2"/extra/
 }
 

@@ -33,7 +33,7 @@ pbs_build() {
 
 pbs_install() {
     domkinstall
-    cd "$destdir"
+    cd "$PKGDIR"
     for i in cc gcc g++ cpp c++; do
         doln /usr/bin/ccache usr/lib/ccache/bin/"${i}" 
     done    

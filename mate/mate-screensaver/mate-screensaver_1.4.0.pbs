@@ -38,6 +38,6 @@ pbs_build() {
 
 pbs_install() {
     domkinstall MATECONF_DISABLE_MAKEFILE_SCHEMA_INSTALL=1
-    docp_rename "$filesdir"/mate-screensaver.pam "$destdir"/etc/pam.d/mate-screensaver
+    docp_rename "$FILESDIR"/mate-screensaver.pam "$PKGDIR"/etc/pam.d/mate-screensaver
 }
 

@@ -18,8 +18,8 @@ RECOMMENDED=""
 CONFLICT=""
 
 pbs_install() {
-    docp      "$YBS_SOURCE"/WebQQ.air  "$destdir"/usr/lib/"$N"
+    docp      "$YBS_SOURCE"/WebQQ.air  "$PKGDIR"/usr/lib/"$N"
     dodesktop "$N.desktop"      "$N.png"
-    docp "$filesdir"/"$N"  "$destdir"/usr/bin/
+    docp "$FILESDIR"/"$N"  "$PKGDIR"/usr/bin/
 }
 

@@ -35,8 +35,8 @@ pbs_build() {
 
 pbs_install() {
     domkinstall
-    docp contrib "${destdir}"/usr/share/"$N"/
-    cd "$destdir"
+    docp contrib "$PKGDIR"/usr/share/"$N"/
+    cd "$PKGDIR"
     mv etc/bogofilter.cf.example etc/bogofilter.cf
 }
 

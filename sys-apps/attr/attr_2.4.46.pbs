@@ -31,8 +31,8 @@ pbs_build() {
 }
 
 pbs_install() {
-    make DIST_ROOT="$destdir" install-dev install-lib 
-    cd "$destdir"
+    make DIST_ROOT="$PKGDIR" install-dev install-lib 
+    cd "$PKGDIR"
     # remove conflicting manpages
     rm -rf usr/share/man/man2
     # tidy up

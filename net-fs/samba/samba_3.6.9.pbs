@@ -58,13 +58,13 @@ pbs_build() {
 pbs_install() {
     domkinstall install-everything
     # Default configfile
-    mkdir -p "$destdir"/etc/samba
+    mkdir -p "$PKGDIR"/etc/samba
     cat ../examples/smb.conf.default | \
-        sed 's|log file = .*$|log file = /var/log/samba/log.%m|g' >"$destdir"/etc/samba/smb.conf.default
-    cd "$destdir"
+        sed 's|log file = .*$|log file = /var/log/samba/log.%m|g' >"$PKGDIR"/etc/samba/smb.conf.default
+    cd "$PKGDIR"
     # systemd 
     dounit nmbd.service smbd.service winbind.service
-    docp_rename "$filesdir"/samba.tmpfile usr/lib/tmpfiles.d/samba.conf
+    docp_rename "$FILESDIR"/samba.tmpfile usr/lib/tmpfiles.d/samba.conf
     # For cups share
     doln /usr/bin/smbspool usr/lib"${LIBDIRSUFFIX}"/cups/backend/smb
     # spool directory
@@ -73,10 +73,10 @@ pbs_install() {
     # log directory    
     install -d var/log/samba
     # fix logrotate
-    docp_rename "$filesdir"/samba.logrotate etc/logrotate.d/samba
+    docp_rename "$FILESDIR"/samba.logrotate etc/logrotate.d/samba
     sed -i -e 's|log.%m|%m.log|g' etc/samba/smb.conf.default
-    docp_rename "$filesdir"/swat.xinetd     etc/xinetd.d/swat
-    docp_rename "$filesdir"/samba.pam       etc/pam.d/samba
+    docp_rename "$FILESDIR"/swat.xinetd     etc/xinetd.d/swat
+    docp_rename "$FILESDIR"/samba.pam       etc/pam.d/samba
     # Clean up
     find . -name "*.old" -type f -exec rm {} \; 2>/dev/null
     # Provided by tdb

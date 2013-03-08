@@ -28,7 +28,7 @@ pbs_build() {
 }
 
 pbs_install() {
-    make PREFIX="$destdir" install
+    make PREFIX="$PKGDIR" install
     doman man3/miniupnpc.3
     dodoc LICENSE
 }

@@ -28,6 +28,6 @@ pbs_install() {
 
     cd build && ant jar && cd ..
 
-    docp lib/hsqldb.jar "$destdir"/"$JAVA_HOME"
+    docp lib/hsqldb.jar "$PKGDIR"/"$JAVA_HOME"
     dodoc doc/hsqldb_lic.txt
 }

@@ -35,7 +35,7 @@ pbs_build() {
 
 pbs_install() {
     domkinstall
-    cd "$destdir"
+    cd "$PKGDIR"
     # nm >=0.8.2 has native systemd suspend/resume support
     rm -f usr/lib/pm-utils/sleep.d/55NetworkManager
     # Remove hooks that cause hardware failure or don't make sense at all

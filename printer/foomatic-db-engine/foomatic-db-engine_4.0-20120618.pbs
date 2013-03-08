@@ -38,6 +38,6 @@ pbs_install() {
     perl_cleanup
     
     # Fix permissions
-    chmod 755 "${destdir}"/usr/lib{,/perl5,/perl5/vendor_perl}
+    chmod 755 "$PKGDIR"/usr/lib{,/perl5,/perl5/vendor_perl}
 }
 

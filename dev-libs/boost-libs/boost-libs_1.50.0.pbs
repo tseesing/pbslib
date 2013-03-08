@@ -22,15 +22,15 @@ pbs_unpack() {
 }
 
 pbs_build() {
-    _stagedir="$srcdir"/stagedir
+    _stagedir="$SRCDIR"/stagedir
 
-    cd "$srcdir"/tools
+    cd "$SRCDIR"/tools
     echo "using python : 2.7 : /usr/bin/python ;" >> build/v2/user-config.jam
     #XXX
     #echo "using mpi ;" >> build/v2/user-config.jam
 
     # Step 1、Build bjam
-    cd "$srcdir"/tools/build/v2/engine
+    cd "$SRCDIR"/tools/build/v2/engine
     /bin/bash ./build.sh gcc || die "Step 1: build bjam failed."
 
     _bindir="bin.linuxx86"
@@ -39,20 +39,20 @@ pbs_build() {
     install "$_bindir"/bjam "$_stagedir"/usr/bin/bjam
 
     # Step 2、Build tools
-    cd "$srcdir"/tools
+    cd "$SRCDIR"/tools
     "$_stagedir"/usr/bin/bjam --toolset=gcc || die "Step 2, build tools failed."
 
-    cd "$srcdir"/dist/bin
+    cd "$SRCDIR"/dist/bin
     for i in *;do
         install -m755 "$i" "$_stagedir"/usr/bin/"$i"
     done
 
     # Boostbook needed by quickbook
-    cd "$srcdir"/dist
+    cd "$SRCDIR"/dist
     cp -r share "$_stagedir"
 
     # Step 3、Build libs
-    cd "$srcdir"
+    cd "$SRCDIR"
 
     # default "minimal" install: "release link=shared,static
     # runtime-link=shared threading=single,multi"
@@ -78,8 +78,8 @@ pbs_build() {
 pbs_install() {
     cd "$_stagedir"
     # Shared libs
-    docp usr/lib"$LIBDIRSUFFIX"/*.so{,.*} "$destdir"/usr/lib"$LIBDIRSUFFIX"/
+    docp usr/lib"$LIBDIRSUFFIX"/*.so{,.*} "$PKGDIR"/usr/lib"$LIBDIRSUFFIX"/
     # License
-    dodoc "$srcdir"/LICENSE_1_0.txt
+    dodoc "$SRCDIR"/LICENSE_1_0.txt
 }
 

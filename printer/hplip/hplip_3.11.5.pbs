@@ -48,6 +48,6 @@ pbs_build() {
 
 pbs_install() {
     #domkinstall
-    make DESTDIR="$destdir" install
+    make DESTDIR="$PKGDIR" install
 }
 

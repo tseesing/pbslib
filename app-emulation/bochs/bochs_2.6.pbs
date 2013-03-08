@@ -34,6 +34,6 @@ pbs_build() {
 
 pbs_install() {
     domkinstall
-    install -D -m 644 .bochsrc "$destdir"/etc/bochsrc-sample.txt
+    install -D -m 644 .bochsrc "$PKGDIR"/etc/bochsrc-sample.txt
 }
 

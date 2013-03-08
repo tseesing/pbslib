@@ -37,5 +37,5 @@ pbs_build() {
 pbs_install() {
     domkinstall
     dodoc COPYING
-    rm "$destdir"/usr/bin/uninstall_zenmap
+    rm "$PKGDIR"/usr/bin/uninstall_zenmap
 }

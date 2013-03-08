@@ -25,7 +25,7 @@ pbs_unpack() {
 
 pbs_config() {
     # install module in vendor directories
-    perl Build.PL installdirs=vendor destdir="$destdir" \
+    perl Build.PL installdirs=vendor destdir="$PKGDIR" \
           --config man1ext=1p --config man3ext=3pm 
 }    
 

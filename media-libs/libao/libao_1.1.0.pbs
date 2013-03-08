@@ -32,6 +32,6 @@ pbs_build() {
 
 pbs_install() {
     domkinstall
-    docp "$filesdir"/libao.conf "$destdir"/etc/
+    docp "$FILESDIR"/libao.conf "$PKGDIR"/etc/
 }
 

@@ -21,8 +21,8 @@ pbs_unpack() {
 
 pbs_install() {
     
-    mkdir -p "$destdir"/usr/share/fonts/truetype/ttf-dejavu
-    cp -a ttf/DejaVuSans.ttf "$destdir"/usr/share/fonts/truetype/ttf-dejavu
-    cp -a ttf/DejaVuSans-Bold.ttf "$destdir"/usr/share/fonts/truetype/ttf-dejavu
-    cp -a ttf/DejaVuSansMono.ttf "$destdir"/usr/share/fonts/truetype/ttf-dejavu
+    mkdir -p "$PKGDIR"/usr/share/fonts/truetype/ttf-dejavu
+    cp -a ttf/DejaVuSans.ttf "$PKGDIR"/usr/share/fonts/truetype/ttf-dejavu
+    cp -a ttf/DejaVuSans-Bold.ttf "$PKGDIR"/usr/share/fonts/truetype/ttf-dejavu
+    cp -a ttf/DejaVuSansMono.ttf "$PKGDIR"/usr/share/fonts/truetype/ttf-dejavu
 }

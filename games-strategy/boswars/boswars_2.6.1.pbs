@@ -35,10 +35,10 @@ pbs_build() {
 }
 
 pbs_install() {
-    docp campaigns doc graphics intro languages maps scripts sounds units "$destdir"/opt/bos/
-    install -D -m 755 boswars "$destdir"/opt/bos/boswars
-    cd "$destdir"
-    install -D -m 755 "$filesdir"/boswars usr/bin/boswars
+    docp campaigns doc graphics intro languages maps scripts sounds units "$PKGDIR"/opt/bos/
+    install -D -m 755 boswars "$PKGDIR"/opt/bos/boswars
+    cd "$PKGDIR"
+    install -D -m 755 "$FILESDIR"/boswars usr/bin/boswars
     dodesktop "$N".desktop "$N".png 
 }
 

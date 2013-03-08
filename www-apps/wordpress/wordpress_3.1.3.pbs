@@ -31,9 +31,9 @@ pbs_unpack() {
 }
 
 pbs_install() {
-    docp * "$destdir"/srv/http/wordpress/
+    docp * "$PKGDIR"/srv/http/wordpress/
     # make uploads work
-    cd "$destdir"
+    cd "$PKGDIR"
     install -d -m775 srv/http/wordpress/wp-content/uploads
     chown http:http  srv/http/wordpress/wp-content/uploads
 }

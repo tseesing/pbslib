@@ -27,11 +27,11 @@ pbs_build() {
 }
 
 pbs_install() {
-    mkdir -p "$destdir"/usr/share/doc/mcelog
-    make install prefix="$destdir"/usr etcprefix="$destdir" DOCDIR="$destdir"/usr/share/doc/mcelog
-    install -Dm0755 mcelog.cron "${destdir}/usr/sbin/mcelog.cron"
-    install -Dm0644 mcelog.logrotate "${destdir}/etc/logrotate.d/mcelog.logrotate"
-    install -Dm0644 README "${destdir}/usr/share/doc/mcelog/README"
+    mkdir -p "$PKGDIR"/usr/share/doc/mcelog
+    make install prefix="$PKGDIR"/usr etcprefix="$PKGDIR" DOCDIR="$PKGDIR"/usr/share/doc/mcelog
+    install -Dm0755 mcelog.cron "$PKGDIR/usr/sbin/mcelog.cron"
+    install -Dm0644 mcelog.logrotate "$PKGDIR/etc/logrotate.d/mcelog.logrotate"
+    install -Dm0644 README "$PKGDIR/usr/share/doc/mcelog/README"
 }
 
 

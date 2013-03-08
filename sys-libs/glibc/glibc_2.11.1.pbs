@@ -42,7 +42,7 @@ pbs_build() {
 }
 
 glibc_nsswitch_conf() {
-    cat > "$destdir"/etc/nsswitch.conf << "EOF"
+    cat > "$PKGDIR"/etc/nsswitch.conf << "EOF"
 passwd: files
 group: files
 shadow: files
@@ -56,19 +56,19 @@ EOF
 }
 
 glibc_ld_so_conf() {
-    cat > "$destdir"/etc/ld.so.conf << "EOF"
+    cat > "$PKGDIR"/etc/ld.so.conf << "EOF"
 /usr/local/lib
 /opt/lib
 EOF
 }
 
 pbs_install() {
-    make install_root="$destdir" install
+    make install_root="$PKGDIR" install
     #add nsswitch.conf / glibc.ld.so
     glibc_nsswitch_conf
     glibc_ld_so_conf
-    cd "$destdir"
+    cd "$PKGDIR"
     docp usr/share/zoneinfo/Asia/Shanghai etc/localtime
-    docp $filesdir/locale-gen   usr/sbin
-    docp $filesdir/SUPPORTED    usr/share/i18n
+    docp $FILESDIR/locale-gen   usr/sbin
+    docp $FILESDIR/SUPPORTED    usr/share/i18n
 }

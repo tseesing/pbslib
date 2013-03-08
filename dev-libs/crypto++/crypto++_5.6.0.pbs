@@ -26,6 +26,6 @@ pbs_build() {
 
 pbs_install() {
     domkinstall
-    docp $filesdir/libcrypto++.pc "$destdir"/usr/lib/pkgconfig/
+    docp $FILESDIR/libcrypto++.pc "$PKGDIR"/usr/lib/pkgconfig/
 }
 

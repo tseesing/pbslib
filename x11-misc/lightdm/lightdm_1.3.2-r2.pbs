@@ -62,10 +62,10 @@ pbs_build() {
 
 pbs_install() {
     domkinstall
-    docp data/{"${N}",users,keys}.conf "$destdir"/etc/"${N}"/
-    docp "$filesdir"/lightdm-session "$destdir"/usr/sbin/
+    docp data/{"${N}",users,keys}.conf "$PKGDIR"/etc/"${N}"/
+    docp "$FILESDIR"/lightdm-session "$PKGDIR"/usr/sbin/
     
-    cd "$destdir"
+    cd "$PKGDIR"
         
     # Backup confile
     cp etc/lightdm/lightdm.conf{,.ori}
@@ -77,10 +77,10 @@ pbs_install() {
     find . -name "*.la" -exec rm -rf {} +
     
     #    
-    docp "$filesdir"/lightdm-wrapper usr/sbin/
+    docp "$FILESDIR"/lightdm-wrapper usr/sbin/
 
     rm -rf etc/init
-    dopamd "$filesdir"/{lightdm,lightdm-autologin} 
+    dopamd "$FILESDIR"/{lightdm,lightdm-autologin} 
 
     #
     doln /usr/libexec/lightdm/gdmflexiserver usr/bin/gdmflexiserver

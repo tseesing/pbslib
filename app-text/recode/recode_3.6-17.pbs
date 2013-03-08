@@ -43,6 +43,6 @@ pbs_build() {
 
 pbs_install() {
     domkinstall
-    rm "$destdir"/usr/lib/charset.alias
+    rm "$PKGDIR"/usr/lib/charset.alias
 }
 

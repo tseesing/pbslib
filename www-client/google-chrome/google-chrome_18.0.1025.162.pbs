@@ -26,8 +26,8 @@ pbs_unpack() {
 
 pbs_install() {
     dopatch desktop-13.patch
-    docp data/*  "$destdir"
-    cd "$destdir"
+    docp data/*  "$PKGDIR"
+    cd "$PKGDIR"
     dodesktop "opt/google/chrome/google-chrome.desktop" "opt/google/chrome/product_logo_48.png"
 }
 

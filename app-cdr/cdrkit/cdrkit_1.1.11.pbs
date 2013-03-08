@@ -26,17 +26,17 @@ pbs_build() {
 }
 
 pbs_install() {
-    make PREFIX="$destdir"/usr install
+    make PREFIX="$PKGDIR"/usr install
 
     # Make symlinks for cdrtools compatibility
-    cd "$destdir"/usr/bin
+    cd "$PKGDIR"/usr/bin
     ln -s wodim cdrecord
     ln -s readom readcd
     ln -s genisoimage mkisofs
     ln -s genisoimage mkhybrid
     ln -s icedax cdda2wav
 
-    cd "$destdir"/usr/share/man/man1
+    cd "$PKGDIR"/usr/share/man/man1
     ln -s wodim.1 cdrecord.1
     ln -s readom.1 readcd.1
     ln -s genisoimage.1 mkisofs.1

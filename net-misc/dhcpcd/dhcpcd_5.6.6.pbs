@@ -32,7 +32,7 @@ pbs_build() {
 pbs_install() {
     domkinstall
     # Set Options in /etc/dhcpcd.conf, Disable ip4vall
-    echo noipv4ll >>"$destdir"/etc/dhcpcd.conf
+    echo noipv4ll >>"$PKGDIR"/etc/dhcpcd.conf
     dounit dhcpcd.service dhcpcd@.service
 }
 

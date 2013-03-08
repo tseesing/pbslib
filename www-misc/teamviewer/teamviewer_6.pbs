@@ -23,8 +23,8 @@ pbs_unpack() {
 }
 
 pbs_install() {
-    docp data/*  "$destdir"
+    docp data/*  "$PKGDIR"
     dodesktop "$N.desktop" "$N.png"
-    doln /usr/bin/teamviewer6 "$destdir"/usr/bin/teamviewer
+    doln /usr/bin/teamviewer6 "$PKGDIR"/usr/bin/teamviewer
 }
 

@@ -48,17 +48,17 @@ pbs_install() {
     NSPR_CFLAGS=`./config/nspr-config --cflags`
     NSPR_VERSION=`./config/nspr-config --version`
 
-    install -m755 -d "${destdir}/usr/lib"$LIBDIRSUFFIX"/pkgconfig"
-    sed "$filesdir"/nspr.pc.in -e "s,%libdir%,/usr/lib"$LIBDIRSUFFIX"," \
+    install -m755 -d "$PKGDIR/usr/lib"$LIBDIRSUFFIX"/pkgconfig"
+    sed "$FILESDIR"/nspr.pc.in -e "s,%libdir%,/usr/lib"$LIBDIRSUFFIX"," \
                -e "s,%prefix%,/usr," \
              -e "s,%exec_prefix%,/usr/bin," \
              -e "s,%includedir%,/usr/include/nspr," \
              -e "s,%NSPR_VERSION%,${NSPR_VERSION}," \
              -e "s,%FULL_NSPR_LIBS%,${NSPR_LIBS}," \
              -e "s,%FULL_NSPR_CFLAGS%,${NSPR_CFLAGS},"  \
-             >"${destdir}"/usr/lib"$LIBDIRSUFFIX"/pkgconfig/nspr.pc
+             >"$PKGDIR"/usr/lib"$LIBDIRSUFFIX"/pkgconfig/nspr.pc
 
-    cd "$destdir"
+    cd "$PKGDIR"
     chmod 644 usr/lib"$LIBDIRSUFFIX"/{*.a,pkgconfig/nspr.pc}
     doln /usr/lib"$LIBDIRSUFFIX"/pkgconfig/nspr.pc usr/lib"$LIBDIRSUFFIX"/pkgconfig/mozilla-nspr.pc
     rm -rf usr/bin/{compile-et.pl,prerr.properties} usr/share/aclocal/nspr.m4 usr/include/nspr/md

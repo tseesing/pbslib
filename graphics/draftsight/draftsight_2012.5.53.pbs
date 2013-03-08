@@ -26,8 +26,8 @@ pbs_unpack() {
 }
 
 pbs_install() {
-    docp data/*  "$destdir"
-    cd "$destdir"
+    docp data/*  "$PKGDIR"
+    cd "$PKGDIR"
     dodesktop "$DESKTOPFILE" "$ICONFILE"
 }
 

@@ -63,7 +63,7 @@ pbs_build() {
 pbs_install() {
     domkinstall
     dodoc LICENSE
-    rm -fr "$destdir"/usr/share/doc/ImageMagick/
+    rm -fr "$PKGDIR"/usr/share/doc/ImageMagick/
     perl_cleanup
 }
 

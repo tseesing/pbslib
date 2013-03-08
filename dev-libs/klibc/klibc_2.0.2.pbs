@@ -33,16 +33,16 @@ pbs_build() {
 }
 
 pbs_install() {
-    make prefix="$destdir"/usr \
-         mandir="$destdir"/usr/share/man \
-         INSTALLDIR="$destdir"/usr/lib"$LIBDIRSUFFIX"/klibc \
+    make prefix="$PKGDIR"/usr \
+         mandir="$PKGDIR"/usr/share/man \
+         INSTALLDIR="$PKGDIR"/usr/lib"$LIBDIRSUFFIX"/klibc \
          install
-    cd "$destdir"
+    cd "$PKGDIR"
     find -type f -name "..install.cmd" -exec rm -f {} \;
     find -type f -name ".install.cmd" -exec rm -f {} \;
     find -type f -name ".install" -exec rm -f {} \;
-    docp "$filesdir"/klibc.m4 usr/share/aclocal
+    docp "$FILESDIR"/klibc.m4 usr/share/aclocal
     # For initramfs-tools
-    docp "$filesdir"/klibc usr/share/initramfs-tools/hooks/
+    docp "$FILESDIR"/klibc usr/share/initramfs-tools/hooks/
 }
 

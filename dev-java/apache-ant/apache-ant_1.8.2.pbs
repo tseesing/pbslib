@@ -27,25 +27,25 @@ pbs_unpack() {
 
 pbs_install() {
     # Install profile.d script
-    docp "$filesdir"/apache-ant.{csh,sh} "$destdir"/etc/profile.d/
+    docp "$FILESDIR"/apache-ant.{csh,sh} "$PKGDIR"/etc/profile.d/
 
     # Get the ANT_HOME env var
-    source "$filesdir"/apache-ant.sh
+    source "$FILESDIR"/apache-ant.sh
 
     #
-    docp  lib/*.jar   "$destdir"/"$ANT_HOME"/lib/
-    docp  lib/README  "$destdir"/"$ANT_HOME"/lib/
-    docp  bin/*       "$destdir"/"$ANT_HOME"/bin/
-    docp  etc/*       "$destdir"/"$ANT_HOME"/etc/
+    docp  lib/*.jar   "$PKGDIR"/"$ANT_HOME"/lib/
+    docp  lib/README  "$PKGDIR"/"$ANT_HOME"/lib/
+    docp  bin/*       "$PKGDIR"/"$ANT_HOME"/bin/
+    docp  etc/*       "$PKGDIR"/"$ANT_HOME"/etc/
 
     # Do not copy Windows .bat/.cmd files
     find bin -type f -a ! -name \*.bat -a ! -name \*.cmd |while read i; do
-        docp "${i}" "$destdir"/"$ANT_HOME"/bin/
+        docp "${i}" "$PKGDIR"/"$ANT_HOME"/bin/
     done
 
     #
-    chmod 644 "$destdir"/"$ANT_HOME"/lib/ -R
-    chmod 755 "$destdir"/"$ANT_HOME"/bin/ -R     
+    chmod 644 "$PKGDIR"/"$ANT_HOME"/lib/ -R
+    chmod 755 "$PKGDIR"/"$ANT_HOME"/bin/ -R     
     
     #
     # The license says the NOTICE file should be redistributed for derivative

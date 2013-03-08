@@ -37,6 +37,6 @@ pbs_build() {
 }
 
 pbs_install() {
-    docp pngcrush "$destdir"/usr/bin
+    docp pngcrush "$PKGDIR"/usr/bin
 }
 

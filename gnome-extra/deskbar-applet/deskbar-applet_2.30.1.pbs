@@ -37,6 +37,6 @@ pbs_install() {
     domkinstall
     dodoc AUTHORS COPYING NEWS README
     # keep clean for rarian
-    rm -fr "$destdir"/var/lib/scrollkeeper
-    rm -fr "$destdir"/var/lib/log
+    rm -fr "$PKGDIR"/var/lib/scrollkeeper
+    rm -fr "$PKGDIR"/var/lib/log
 }

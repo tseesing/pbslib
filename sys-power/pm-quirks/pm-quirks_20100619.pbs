@@ -22,6 +22,6 @@ pbs_unpack() {
 }
 
 pbs_install() {
-    docp *.quirkdb "$destdir"/usr/lib/pm-utils/video-quirks/
+    docp *.quirkdb "$PKGDIR"/usr/lib/pm-utils/video-quirks/
 }
 

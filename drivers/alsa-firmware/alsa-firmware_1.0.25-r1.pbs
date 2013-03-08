@@ -35,7 +35,7 @@ pbs_build() {
 
 pbs_install() {
     domkinstall
-    cd "$destdir"
+    cd "$PKGDIR"
 
     # Remove files which conflicts with linux-firmware
     rm -rf lib/firmware/{ess,korg,sb16,yamaha}

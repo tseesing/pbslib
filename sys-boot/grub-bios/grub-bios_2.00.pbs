@@ -104,7 +104,7 @@ pbs_build() {
 
 pbs_install() {
     domkinstall
-    cd "$destdir"
+    cd "$PKGDIR"
     ## remove non platform-specific files
     rm -rf {boot,etc,usr/{share,bin,sbin}}
     ## remove gdb debugging related files

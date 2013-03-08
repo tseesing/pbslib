@@ -20,8 +20,8 @@ BDEPEND=""
 INSTALL="$N"6.install
 
 pbs_install() {
-    docp "$filesdir"/lsb_release      "$destdir"/usr/bin/
-    docp "$filesdir"/startos-release  "$destdir"/etc/
-    docp "$filesdir"/usb-load-ehci-first "$destdir"/usr/lib/modules-load.d/
+    docp "$FILESDIR"/lsb_release      "$PKGDIR"/usr/bin/
+    docp "$FILESDIR"/startos-release  "$PKGDIR"/etc/
+    docp "$FILESDIR"/usb-load-ehci-first "$PKGDIR"/usr/lib/modules-load.d/
 }
 

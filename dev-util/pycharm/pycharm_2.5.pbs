@@ -27,8 +27,8 @@ pbs_unpack() {
 }
 
 pbs_install() {
-    docp * "$destdir"/usr/share/"$N"/
+    docp * "$PKGDIR"/usr/share/"$N"/
     dodesktop "$N".desktop bin/pycharm.png
-    doln /usr/share/"$N"/bin/pycharm.sh "$destdir"/usr/bin/"$N"
+    doln /usr/share/"$N"/bin/pycharm.sh "$PKGDIR"/usr/bin/"$N"
 }
 

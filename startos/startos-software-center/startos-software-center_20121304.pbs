@@ -45,10 +45,10 @@ pbs_build() {
 
 pbs_install() {
     domkinstall
-    cd "$destdir"
+    cd "$PKGDIR"
     docp usr/share/icons/hicolor/48x48/apps/softwarecenter.png usr/share/pixmaps/
-    docp "$filesdir"/ypk-thumbnailer usr/bin/
-    docp "$filesdir"/{ypk-package.xml,ypk-thumbnailer.schemas} usr/share/softwarecenter/
-    docp "$filesdir"/{default.png,template.png} usr/share/pixmaps/ypk-package-installer/
+    docp "$FILESDIR"/ypk-thumbnailer usr/bin/
+    docp "$FILESDIR"/{ypk-package.xml,ypk-thumbnailer.schemas} usr/share/softwarecenter/
+    docp "$FILESDIR"/{default.png,template.png} usr/share/pixmaps/ypk-package-installer/
 }
 

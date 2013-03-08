@@ -33,6 +33,6 @@ pbs_build() {
 pbs_install() {
     domkinstall
     dodoc COPYING
-    docp port-numbers.iana protocol-numbers.iana "${destdir}"/usr/share/iana-etc/
+    docp port-numbers.iana protocol-numbers.iana "$PKGDIR"/usr/share/iana-etc/
 }
 

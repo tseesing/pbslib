@@ -19,8 +19,8 @@ BDEPEND=""
 INSTALL="$N.install"
 
 pbs_install() {
-    docp "$filesdir"/startos-release  "$destdir"/etc
-    docp "$filesdir"/lsb_release      "$destdir"/usr/bin/
-    chmod +x  "$destdir"/usr/bin/lsb_release
+    docp "$FILESDIR"/startos-release  "$PKGDIR"/etc
+    docp "$FILESDIR"/lsb_release      "$PKGDIR"/usr/bin/
+    chmod +x  "$PKGDIR"/usr/bin/lsb_release
 }
 

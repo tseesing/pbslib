@@ -23,7 +23,7 @@ pbs_unpack() {
 }
 
 pbs_install() {
-    docp *.fw "$destdir"/lib/firmware/
+    docp *.fw "$PKGDIR"/lib/firmware/
     dodoc LICENSE.ipw2200-fw 
 }
 

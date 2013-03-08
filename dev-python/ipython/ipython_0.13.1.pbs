@@ -28,6 +28,6 @@ pbs_build() {
 
 pbs_install() {
     domkinstall --optimize=0
-    find "$destdir/" -name '*.pyc' -delete
+    find "$PKGDIR/" -name '*.pyc' -delete
 }
 

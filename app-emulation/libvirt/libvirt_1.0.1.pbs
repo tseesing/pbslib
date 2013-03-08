@@ -54,10 +54,10 @@ pbs_build() {
 
 pbs_install() {
     domkinstall
-    cd "$destdir"
+    cd "$PKGDIR"
     domv etc/sysctl.d/libvirtd usr/lib/sysctl.d/libvirtd
     # systemd
-    docp "$filesdir"/libvirt.conf usr/lib/tmpfiles.d/
+    docp "$FILESDIR"/libvirt.conf usr/lib/tmpfiles.d/
     domv lib/systemd usr/lib/
     rmdir -p lib
     sed -i \

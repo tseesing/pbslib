@@ -59,21 +59,21 @@ pbs_build() {
 }
 
 pbs_install() {
-    #make DESTDIR="$destdir" install
+    #make DESTDIR="$PKGDIR" install
     domkinstall
     #doinit "$N"
     #dounit "N".service
     #dodesktop "*.desktop" "*.png"
     #dodoc AUTHORS ChangeLog COPYING INSTALL NEWS README 
-    #docp "$filesdir/XXXX" "dirname"
-    #domv "$filesdir/XXXX" "dirname"
+    #docp "$FILESDIR/XXXX" "dirname"
+    #domv "$FILESDIR/XXXX" "dirname"
     #docp_rename "$1" "$2"
     #domv_rename "$1" "$2"
     #doln "$1 "$2"
     #doman a.1 b.2 c.3
     #*****************
     #when SRC_URI is deb or rpm package
-    #docp data/*  "$destdir"
+    #docp data/*  "$PKGDIR"
 }
 
 #split package

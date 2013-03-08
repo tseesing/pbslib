@@ -25,10 +25,10 @@ pbs_unpack() {
 }
 
 pbs_install() {
-    mkdir -p "$destdir"/usr/
-    tar xf virtualmoon-5.1-linux_i386.tgz     -C "$destdir"/usr/
-    tar xf virtualmoon-data-5.1-linux_all.tgz -C "$destdir"/usr/
+    mkdir -p "$PKGDIR"/usr/
+    tar xf virtualmoon-5.1-linux_i386.tgz     -C "$PKGDIR"/usr/
+    tar xf virtualmoon-data-5.1-linux_all.tgz -C "$PKGDIR"/usr/
     dodoc licence
-    sed -i 's/\.\./\/usr\/share/g' "$destdir"/usr/share/applications/virtualmoon.desktop
+    sed -i 's/\.\./\/usr\/share/g' "$PKGDIR"/usr/share/applications/virtualmoon.desktop
 }
 

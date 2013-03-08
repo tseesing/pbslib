@@ -35,12 +35,12 @@ pbs_install() {
     domkinstall
     
     # For initramfs-tools
-    cd "$destdir"
-    docp "$filesdir"/cryptsetup                      lib
-    docp "$filesdir"/hooks/*                         usr/share/initramfs-tools/hooks
-    docp "$filesdir"/conf-hooks.d_cryptsetup         usr/share/initramfs-tools/conf-hooks.d
-    docp_rename "$filesdir"/local-top_cryptroot      usr/share/initramfs-tools/scripts/local-top/cryptroot
-    docp_rename "$filesdir"/local-top_cryptopensc    usr/share/initramfs-tools/scripts/cryptopensc
-    docp_rename "$filesdir"/local-bottom_cryptopensc usr/share/initramfs-tools/scripts/local-bottom/cryptopensc
+    cd "$PKGDIR"
+    docp "$FILESDIR"/cryptsetup                      lib
+    docp "$FILESDIR"/hooks/*                         usr/share/initramfs-tools/hooks
+    docp "$FILESDIR"/conf-hooks.d_cryptsetup         usr/share/initramfs-tools/conf-hooks.d
+    docp_rename "$FILESDIR"/local-top_cryptroot      usr/share/initramfs-tools/scripts/local-top/cryptroot
+    docp_rename "$FILESDIR"/local-top_cryptopensc    usr/share/initramfs-tools/scripts/cryptopensc
+    docp_rename "$FILESDIR"/local-bottom_cryptopensc usr/share/initramfs-tools/scripts/local-bottom/cryptopensc
 }
 

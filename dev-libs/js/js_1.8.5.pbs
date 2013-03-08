@@ -40,8 +40,8 @@ pbs_build() {
 
 pbs_install() {
     domkinstall
-    install -m 0755 shell/js "$destdir"/usr/bin
+    install -m 0755 shell/js "$PKGDIR"/usr/bin
     # Cleanup
-    rm -f "$destdir"/usr/lib"$LIBDIRSUFFIX"/libmozjs185-1.0.a
+    rm -f "$PKGDIR"/usr/lib"$LIBDIRSUFFIX"/libmozjs185-1.0.a
 }
 

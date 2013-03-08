@@ -28,7 +28,7 @@ pbs_build() {
 }
 
 pbs_install() {
-    install -D src/upx.out "$destdir"/usr/bin/upx
+    install -D src/upx.out "$PKGDIR"/usr/bin/upx
     doman doc/upx.1
 }
 

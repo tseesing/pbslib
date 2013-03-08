@@ -34,6 +34,6 @@ pbs_build() {
 pbs_install() {
     domkinstall
     # Confilct against unixodbc
-    mv "$destdir"/usr/bin/{isql,isql-vt}  
+    mv "$PKGDIR"/usr/bin/{isql,isql-vt}  
 }
 

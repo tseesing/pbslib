@@ -37,8 +37,8 @@ pbs_build() {
 
 pbs_install() {
     domkinstall
-    cd "$destdir"
-    docp "$filesdir"/21-cantarell-hinting.conf etc/fonts/conf.avail/
+    cd "$PKGDIR"
+    docp "$FILESDIR"/21-cantarell-hinting.conf etc/fonts/conf.avail/
     doln ../conf.avail/21-cantarell-hinting.conf etc/fonts/conf.d/21-cantarell-hinting.conf
     doln ../conf.avail/31-cantarell.conf etc/fonts/conf.d/31-cantarell.conf
 }

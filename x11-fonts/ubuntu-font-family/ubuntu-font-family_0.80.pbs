@@ -27,7 +27,7 @@ pbs_unpack() {
 }
 
 pbs_install() {
-    docp *.ttf "$destdir"/usr/share/fonts/truetype/"$N"
+    docp *.ttf "$PKGDIR"/usr/share/fonts/truetype/"$N"
     dodoc copyright.txt LICENCE.txt  
 }
 

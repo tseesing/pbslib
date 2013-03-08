@@ -16,10 +16,10 @@ SRC_URI=""
 RDEPEND="polkit"
 
 pbs_install() {
-    mkdir -p "$destdir"
-    cd "$destdir"
+    mkdir -p "$PKGDIR"
+    cd "$PKGDIR"
     # NOTE:
     # Users in 'wheel' are authorited, polkit don't ask password.
-    docp "$filesdir"/51-startos.rules etc/polkit-1/rules.d/
+    docp "$FILESDIR"/51-startos.rules etc/polkit-1/rules.d/
 }
 

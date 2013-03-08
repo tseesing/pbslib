@@ -46,17 +46,17 @@ pbs_build() {
 
 pbs_install() {
     domkinstall
-    cd "${destdir}"
+    cd "$PKGDIR"
     # setuid chfn and chsh
     chmod 4755 usr/bin/{newgrp,ch{sh,fn}}
     # install PAM files for login-utils
-    install -Dm644 "$filesdir"/pam-common  etc/pam.d/chfn
-    install -m644  "$filesdir"/pam-common  etc/pam.d/chsh
-    install -m644  "$filesdir"/pam-login   etc/pam.d/login
-    install -m644  "$filesdir"/pam-su      etc/pam.d/su
-    install -m644  "$filesdir"/pam-su      etc/pam.d/su-l
+    install -Dm644 "$FILESDIR"/pam-common  etc/pam.d/chfn
+    install -m644  "$FILESDIR"/pam-common  etc/pam.d/chsh
+    install -m644  "$FILESDIR"/pam-login   etc/pam.d/login
+    install -m644  "$FILESDIR"/pam-su      etc/pam.d/su
+    install -m644  "$FILESDIR"/pam-su      etc/pam.d/su-l
     # include tmpfiles fragment for uuidd
-    docp "$filesdir"/uuidd.conf usr/lib/tmpfiles.d/
+    docp "$FILESDIR"/uuidd.conf usr/lib/tmpfiles.d/
     #FIXME
     # gnome complain
     for i in mount umount; do

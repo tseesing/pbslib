@@ -19,9 +19,12 @@ case "$ARCH" in
         CHECKSUM="461c5ed0bd80f3d4cf51085261ea2d72" 
 esac
         
-PROVIDE="virtualbox-bin virtualbox-bin-kernel-source virtualbox-bin-kernel-module virtualbox-guest-additions"
+RDEPEND="virtualbox-bin-kernel-module(=4.2.6) glib2 libsdl libXcursor libXinerama libXmu python"
+BDEPEND="linux-kernel-headers"
 
-BDEPEND="linux-kernel-headers glib2 libsdl libXcursor libXinerama libXmu python"
+INSTALL="$N.install"
+
+DESKTOPFILE="virtualbox.desktop"
 
 pbs_unpack() {
     runfile="$(basename $SRC_URI)"
@@ -33,20 +36,14 @@ pbs_unpack() {
     echo yes |sh "$YBS_SOURCE"/"$runfile" --target . --nox11 --noexec
 }
 
-virtualbox-bin_install() {
-    DESCRIPTION="Softwarefamily of powerful virtualization (binary version)"
-    RDEPEND="virtualbox-bin-kernel-module(=4.2.6) glib2 libsdl libXcursor libXinerama libXmu python"
-    INSTALL="$N.install"
-    DESKTOPFILE="virtualbox.desktop"
-    
-    docp_rename vboxdrv.sh "$destdir"/etc/init.d/vboxdrv
+pbs_install() {
+    docp_rename vboxdrv.sh "$PKGDIR"/etc/init.d/vboxdrv
     dodoc LICENSE
-
-    mkdir -p "$destdir"/opt/VirtualBox
-    tar xjf VirtualBox.tar.bz2 -C "$destdir"/opt/VirtualBox
-
-    cd "$destdir"/opt/VirtualBox
-
+    mkdir -p "$PKGDIR"/opt/VirtualBox
+    tar xjf VirtualBox.tar.bz2 -C "$PKGDIR"/opt/VirtualBox
+    
+    cd "$PKGDIR"/opt/VirtualBox
+    
     rm -rf additions
     
     # Hardened build: Mark binaries suid root, create symlinks for working around
@@ -73,7 +70,7 @@ virtualbox-bin_install() {
 
     # Install the SDK
     cd sdk/installer/
-    VBOX_INSTALL_PATH="/opt/VirtualBox" python vboxapisetup.py install --root "${destdir}"
+    VBOX_INSTALL_PATH="/opt/VirtualBox" python vboxapisetup.py install --root "$PKGDIR"
     rm -Rf build
     cd -
 
@@ -82,63 +79,26 @@ virtualbox-bin_install() {
     sed -i -e 's,sudo /etc/init.d/vboxdrv restart,modprobe vboxdrv,g' VBox.sh
 
     # Install systemd rules
-    docp "$filesdir"/10-vboxdrv.rules "$destdir"/etc/systemd/rules.d
+    docp "$FILESDIR"/10-vboxdrv.rules "$PKGDIR"/etc/systemd/rules.d
 
     for bin in VirtualBox VBox{Headless,Manage,SDL,SVC,Tunctl,NetAdpCtl} rdesktop-vrdp; do
-        doln "/opt/VirtualBox/${bin}" "${destdir}/usr/bin/${bin}"
+        doln "/opt/VirtualBox/${bin}" "$PKGDIR/usr/bin/${bin}"
     done
 
     # the desktop icon and ".desktop" files
     dodesktop "virtualbox.desktop" "icons/48x48/virtualbox.png"
 
     # Symlink mime info
-    doln "/opt/VirtualBox/virtualbox.xml"  "${destdir}"/usr/share/mime/packages/virtualbox.xml
+    doln "/opt/VirtualBox/virtualbox.xml"  "$PKGDIR"/usr/share/mime/packages/virtualbox.xml
 
     # Setup configuration
-    mkdir -p "${destdir}"/etc/vbox/
-    echo 'INSTALL_DIR="/opt/VirtualBox"' > "${destdir}"/etc/vbox/vbox.cfg
+    mkdir -p "$PKGDIR"/etc/vbox/
+    echo 'INSTALL_DIR="/opt/VirtualBox"' > "$PKGDIR"/etc/vbox/vbox.cfg
 
     # Create the directory below if it doesn't exist
-    install -d "${destdir}/var/run/VirtualBox"
+    install -d "$PKGDIR/var/run/VirtualBox"
 
     # For systemd
     dounit virtualbox.service
-}
-
-virtualbox-bin-kernel-module_install() {
-    DESCRIPTION="virutalbox kernel modules"
-    RDEPEND="linux-kernel(=3.6.8)"
-    GROUP="driver"
-    INSTALL="$N.install"
-
-    # Install kernel modules
-    cd src/vboxhost
-    unset ARCH
-    domake   ||exit 1
-    docp vboxdrv.ko vboxnetadp.ko vboxnetflt.ko vboxpci.ko "$destdir"/lib/modules/"$KERNEL_DIST"/misc
-    cd -
-}
-
-virtualbox-bin-kernel-source_install() {
-    DESCRIPTION="virutalbox kernel source"
-    RECOMMENDED="build-essential"
-    YARCH="any"
-    INSTALL="$N.install"
-    
-    cd "$origin_dir"
-    tar xjf VirtualBox.tar.bz2
-    cd src/vboxhost
-    dosrc *
-    cd -
-}
-
-virtualbox-guest-additions_install () {
-    DESCRIPTION="Virtualbox guest additions iso file"
-    YARCH="any"
-    
-    cd "$origin_dir"
-    tar xjf VirtualBox.tar.bz2 additions
-    domv additions "$destdir"/opt/VirtualBox/
-    cd -
 }
 

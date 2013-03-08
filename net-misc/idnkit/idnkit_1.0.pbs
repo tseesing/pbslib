@@ -36,6 +36,6 @@ pbs_build() {
 pbs_install() {
     domkinstall
     dodoc LICENSE.txt
-    rm "$destdir"/etc/*.sample
+    rm "$PKGDIR"/etc/*.sample
 }
 

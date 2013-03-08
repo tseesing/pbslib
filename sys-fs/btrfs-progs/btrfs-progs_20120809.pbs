@@ -30,7 +30,7 @@ pbs_build() {
 
 pbs_install() {
     domkinstall
-    docp "$filesdir"/70-btrfs.rules "$destdir"/lib/systemd/rules.d/
+    docp "$FILESDIR"/70-btrfs.rules "$PKGDIR"/lib/systemd/rules.d/
 }
 
 

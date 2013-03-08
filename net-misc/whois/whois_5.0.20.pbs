@@ -29,6 +29,6 @@ pbs_build() {
 }
 
 pbs_install() {
-    make prefix=/usr BASEDIR="$destdir" install-whois
+    make prefix=/usr BASEDIR="$PKGDIR" install-whois
 }
 

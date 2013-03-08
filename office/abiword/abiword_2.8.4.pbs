@@ -30,7 +30,7 @@ pbs_build() {
 
 pbs_install() {
     domkinstall
-    mkdir -p "$destdir"/etc/xg_launch/others
-    echo '+ abiword%/usr/share/icons/abiword_48.png%      Exec abiword' >"$destdir"/etc/xg_launch/others/C10abiword 
+    mkdir -p "$PKGDIR"/etc/xg_launch/others
+    echo '+ abiword%/usr/share/icons/abiword_48.png%      Exec abiword' >"$PKGDIR"/etc/xg_launch/others/C10abiword 
 }
 

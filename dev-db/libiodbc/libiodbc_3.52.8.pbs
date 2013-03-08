@@ -36,7 +36,7 @@ pbs_build() {
 
 pbs_install() {
     domkinstall
-    cd "$destdir"
+    cd "$PKGDIR"
     chrpath -d usr/bin/iodbctest{,w}
     rm -rf usr/share/libiodbc/
 }

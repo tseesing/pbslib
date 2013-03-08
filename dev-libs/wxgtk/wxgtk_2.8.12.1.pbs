@@ -48,7 +48,7 @@ pbs_build() {
 }
 
 pbs_install() {
-    cd "$srcdir"
+    cd "$SRCDIR"
     domkinstall
     dodoc docs/licence.txt
     #Install contrib

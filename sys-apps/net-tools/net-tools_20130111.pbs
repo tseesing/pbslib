@@ -29,8 +29,8 @@ pbs_build() {
 }
 
 pbs_install() {
-    make BASEDIR="$destdir" update
-    cd "$destdir"
+    make BASEDIR="$PKGDIR" update
+    cd "$PKGDIR"
     # The following is provided by yp-tools
     rm bin/{nis,yp}domainname
     rm usr/share/man/man1/{nis,yp}domainname.1

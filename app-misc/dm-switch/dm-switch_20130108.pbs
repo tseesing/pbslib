@@ -19,7 +19,7 @@ OPTIONAL=""
 CONFLICT=""
 
 pbs_install() {
-    docp "$filesdir"/"$N" "$destdir"/usr/bin/
-    docp "$filesdir"/"$N".conf "$destdir"/etc/"$N"/
+    docp "$FILESDIR"/"$N" "$PKGDIR"/usr/bin/
+    docp "$FILESDIR"/"$N".conf "$PKGDIR"/etc/"$N"/
 }
 

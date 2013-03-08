@@ -40,7 +40,7 @@ pbs_build() {
 
 pbs_install() {
     domkinstall
-    docp "$filesdir"/"$N".sh "$destdir"/usr/bin/
+    docp "$FILESDIR"/"$N".sh "$PKGDIR"/usr/bin/
     doman docs/"$N".6
 }
 

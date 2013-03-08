@@ -59,8 +59,8 @@ pbs_build() {
 
 pbs_install() {
     domkinstall
-    cd "$destdir"
-    docp "$filesdir"/NetworkManager.conf etc/NetworkManager/
+    cd "$PKGDIR"
+    docp "$FILESDIR"/NetworkManager.conf etc/NetworkManager/
     rm -rf var/run/
     rm -rf etc/rc.d/
 }

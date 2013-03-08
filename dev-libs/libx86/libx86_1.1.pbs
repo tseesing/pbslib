@@ -34,7 +34,7 @@ pbs_build() {
 
 pbs_install() {
     domkinstall
-    chmod 644 "$destdir"/usr/lib/libx86.a
+    chmod 644 "$PKGDIR"/usr/lib/libx86.a
     dodoc COPYRIGHT
 }
 

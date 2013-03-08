@@ -24,6 +24,6 @@ pbs_unpack() {
 }
 
 pbs_install() {
-    docp tdark "$destdir"/usr/share/fcitx/skin/
+    docp tdark "$PKGDIR"/usr/share/fcitx/skin/
 }
 

@@ -36,6 +36,6 @@ pbs_build() {
 
 pbs_install() {
     domkinstall
-    install -DTm644 doc/nanorc.sample "$destdir"/etc/nanorc
+    install -DTm644 doc/nanorc.sample "$PKGDIR"/etc/nanorc
 }
 

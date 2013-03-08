@@ -33,6 +33,6 @@ pbs_build() {
 
 pbs_install() {
     domkinstall
-    rm "$destdir"/usr/share/icons/gnome/icon-theme.cache
+    rm "$PKGDIR"/usr/share/icons/gnome/icon-theme.cache
 }
 

@@ -30,7 +30,7 @@ pbs_build() {
 
 pbs_install() {
     domkinstall
-    cd "$destdir"
+    cd "$PKGDIR"
     docp usr/share/ypki/ypk-package.xml usr/share/mime/application/
     docp usr/share/ypki/ypk-package.xml usr/share/mime/packages/
 }

@@ -45,10 +45,10 @@ pbs_build() {
 pbs_install() {
     domkinstall
     dodoc LICENCE 
-    docp contrib/{findssl.sh,ssh-copy-id} "$destdir"/usr/bin/
+    docp contrib/{findssl.sh,ssh-copy-id} "$PKGDIR"/usr/bin/
     doman contrib/ssh-copy-id.1
-    cd "$destdir"
-    docp "$filesdir"/sshd etc/pam.d/
+    cd "$PKGDIR"
+    docp "$FILESDIR"/sshd etc/pam.d/
     dounit sshdgenkeys.service sshd.service sshd.socket sshd@.service
     sed -e '/^#ChallengeResponseAuthentication yes$/c ChallengeResponseAuthentication no' \
         -e '/^#UsePAM no$/c UsePAM yes' \

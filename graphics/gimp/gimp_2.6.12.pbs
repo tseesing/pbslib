@@ -46,7 +46,7 @@ pbs_config() {
 
 pbs_install() {
     domkinstall
-    cd "$destdir"
-    docp "$filesdir"/Linux.gpl usr/share/gimp/2.0/palettes/
+    cd "$PKGDIR"
+    docp "$FILESDIR"/Linux.gpl usr/share/gimp/2.0/palettes/
 }
 

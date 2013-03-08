@@ -58,10 +58,10 @@ pbs_build() {
 pbs_install() {
     domkinstall
     dodoc LICENSE
-    cd "$destdir"
+    cd "$PKGDIR"
     # systemd stuff    
     dounit slapd.service
-    docp "$filesdir"/slapd.conf usr/lib/tmpfiles.d/
+    docp "$FILESDIR"/slapd.conf usr/lib/tmpfiles.d/
     # get rid of duplicate default conf files
     rm etc/openldap/*.default
     # required dirs    

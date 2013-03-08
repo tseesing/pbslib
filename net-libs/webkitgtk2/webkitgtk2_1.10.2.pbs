@@ -38,6 +38,6 @@ pbs_build() {
 pbs_install() {
     domkinstall
     # Remove files provided by webkitgtk3
-    rm -rf "$destdir"/usr/share/gtk-doc/
+    rm -rf "$PKGDIR"/usr/share/gtk-doc/
     dodoc Source/WebKit/LICENSE
 }

@@ -34,7 +34,7 @@ pbs_install() {
     for i in demo browser_demo fullscreen_demo mplayer_demo; do
         docp $i.py usr/share/dtk/demos/
     done
-    cd "$destdir"
+    cd "$PKGDIR"
     domv usr/dtk/theme usr/lib/python2.7/site-packages/dtk/
     rm -rf usr/dtk
 }

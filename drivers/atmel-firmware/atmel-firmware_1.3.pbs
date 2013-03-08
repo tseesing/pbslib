@@ -27,7 +27,7 @@ pbs_patch() {
 }
 
 pbs_install() {
-    export DESTDIR="$destdir" 
+    export DESTDIR="$PKGDIR" 
     bash install.sh
     dodoc COPYING README
 }

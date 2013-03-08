@@ -48,7 +48,7 @@ pbs_install() {
     domkinstall
     cd ../
     dodoc doc/{html,rfc1459.txt}
-    docp  doc/man   "$destdir"/usr/share/
-    docp examples/* "$destdir"/usr/share/"$N"/examples/
+    docp  doc/man   "$PKGDIR"/usr/share/
+    docp examples/* "$PKGDIR"/usr/share/"$N"/examples/
 }
 

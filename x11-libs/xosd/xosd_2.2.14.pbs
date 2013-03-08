@@ -39,6 +39,6 @@ pbs_build() {
 
 pbs_install() {
     domkinstall
-    sed -i 's/AC_DEFUN(AM_PATH_LIBXOSD,/AC_DEFUN([AM_PATH_LIBXOSD],/' "$destdir"/usr/share/aclocal/libxosd.m4
+    sed -i 's/AC_DEFUN(AM_PATH_LIBXOSD,/AC_DEFUN([AM_PATH_LIBXOSD],/' "$PKGDIR"/usr/share/aclocal/libxosd.m4
 }
 

@@ -68,8 +68,8 @@ pbs_config() {
             --disable-shared 
             --disable-libssp 
             --disable-libgomp 
-            --with-build-sysroot="$srcdir" 
-            --with-headers="$srcdir"/mingw/include"
+            --with-build-sysroot="$SRCDIR" 
+            --with-headers="$SRCDIR"/mingw/include"
     ../configure $config
 }
 
@@ -79,7 +79,7 @@ pbs_build() {
 
 pbs_install() {
     domkinstall
-    cd "$destdir"
+    cd "$PKGDIR"
     rm -rf usr/bin/"$TARGET"-{gcov,gccbug,gcc-*} \
            usr/{include,lib"$LIBDIRSUFFIX"/libiberty.a} \
            usr/"$TARGET" \

@@ -29,7 +29,7 @@ pbs_build() {
 }
 
 pbs_install() {
-    install -d -m755 "$destdir"/usr/bin "$destdir"/usr/share/man/man1
-    domkinstall PREFIX="$destdir"/usr "MANDIR=$destdir/usr/share/man/man1"
+    install -d -m755 "$PKGDIR"/usr/bin "$PKGDIR"/usr/share/man/man1
+    domkinstall PREFIX="$PKGDIR"/usr "MANDIR=$PKGDIR/usr/share/man/man1"
 }
 

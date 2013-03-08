@@ -29,7 +29,7 @@ pbs_build() {
 }
 
 pbs_install() {
-    make PREFIX="$destdir"/usr INSTALLMAN="$destdir"/usr/share/man install
+    make PREFIX="$PKGDIR"/usr INSTALLMAN="$PKGDIR"/usr/share/man install
     dodoc COPYRIGHT
 }
 

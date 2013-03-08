@@ -35,6 +35,6 @@ pbs_build() {
 
 pbs_install() {
     domkinstall GCONF_DISABLE_MAKEFILE_SCHEMA_INSTALL=1
-    rm -rf "$destdir"/usr/share/sounds
+    rm -rf "$PKGDIR"/usr/share/sounds
 }
 

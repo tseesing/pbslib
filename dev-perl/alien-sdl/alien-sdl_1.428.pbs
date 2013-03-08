@@ -23,7 +23,7 @@ pbs_unpack() {
 
 pbs_config() {
     # install module in vendor directories
-    perl Build.PL installdirs=vendor destdir="$destdir" --with-sdl-config
+    perl Build.PL installdirs=vendor destdir="$PKGDIR" --with-sdl-config
 }
 
 pbs_build() {

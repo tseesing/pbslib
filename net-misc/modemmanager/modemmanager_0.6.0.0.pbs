@@ -37,6 +37,6 @@ pbs_build() {
 pbs_install() {
     domkinstall
     dounit modem-manager.service
-    echo "SystemdService=modem-manager.service" >>"$destdir"/usr/share/dbus-1/system-services/org.freedesktop.ModemManager.service
+    echo "SystemdService=modem-manager.service" >>"$PKGDIR"/usr/share/dbus-1/system-services/org.freedesktop.ModemManager.service
 }
 

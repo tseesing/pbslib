@@ -49,13 +49,13 @@ pbs_build() {
 
 pbs_install() {
     sh postfix-install -non-interactive \
-       install_root="$destdir" \
+       install_root="$PKGDIR" \
        daemon_directory="/usr/lib/$N" \
        sample_directory="/etc/$N/sample" \
        manpage_directory="/usr/share/man"
        
     dodoc LICENSE 
-    cd "$destdir"
+    cd "$PKGDIR"
     sed 's/\(^\$manpage[^:]*\):/\1.gz:/' -i usr/lib/"$N"/postfix-files
     dopatch aliases.patch
 }

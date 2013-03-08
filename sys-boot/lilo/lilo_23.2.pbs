@@ -31,6 +31,6 @@ pbs_build() {
 pbs_install() {
     domkinstall
     dodoc COPYING
-    docp "$filesdir"/lilo.conf "$destdir"/etc/
+    docp "$FILESDIR"/lilo.conf "$PKGDIR"/etc/
 }
 

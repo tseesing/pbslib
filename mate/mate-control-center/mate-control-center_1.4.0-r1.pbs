@@ -41,6 +41,6 @@ pbs_build() {
 
 pbs_install() {
     domkinstall MATECONF_DISABLE_MAKEFILE_SCHEMA_INSTALL=1
-    rm "$destdir"/usr/share/applications/mimeinfo.cache
+    rm "$PKGDIR"/usr/share/applications/mimeinfo.cache
 }
 

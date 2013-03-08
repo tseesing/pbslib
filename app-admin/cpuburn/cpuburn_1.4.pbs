@@ -34,7 +34,7 @@ pbs_build() {
 
 pbs_install() {
     for i in burnBX burnK6 burnK7 burnMMX burnP5 burnP6; do
-        install -Dm755 "${i}" "$destdir"/usr/bin/"${i}"
+        install -Dm755 "${i}" "$PKGDIR"/usr/bin/"${i}"
     done
     dodoc README Design
 }

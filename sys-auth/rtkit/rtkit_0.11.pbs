@@ -35,7 +35,7 @@ pbs_install() {
     domkinstall
     dodoc LICENSE
     # DBus configuration
-    mkdir -p "$destdir"/usr/share/dbus-1/interfaces
-    ./rtkit-daemon --introspect > "$destdir"/usr/share/dbus-1/interfaces/org.freedesktop.RealtimeKit1.xml
+    mkdir -p "$PKGDIR"/usr/share/dbus-1/interfaces
+    ./rtkit-daemon --introspect > "$PKGDIR"/usr/share/dbus-1/interfaces/org.freedesktop.RealtimeKit1.xml
 }
 

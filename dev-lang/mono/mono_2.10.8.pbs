@@ -36,7 +36,7 @@ pbs_build() {
 }
 
 pbs_install() {
-    cd "$srcdir"
+    cd "$SRCDIR"
     # Install mono
     domkinstall
     dodoc mcs/MIT.X11
@@ -46,9 +46,9 @@ pbs_install() {
     domkinstall prefix=/usr install=../../install-sh
 
     # Install binfmt conf file and pathes
-    docp "$filesdir"/mono.conf "$destdir"/usr/lib/binfmt.d/
+    docp "$FILESDIR"/mono.conf "$PKGDIR"/usr/lib/binfmt.d/
 
     # Fix .pc file to be able to request mono on what it depends, fixes #go-oo build
-    sed -i -e "s:#Requires:Requires:" "$destdir"/usr/lib"$LIBDIRSUFFIX"/pkgconfig/mono.pc
+    sed -i -e "s:#Requires:Requires:" "$PKGDIR"/usr/lib"$LIBDIRSUFFIX"/pkgconfig/mono.pc
 }
 

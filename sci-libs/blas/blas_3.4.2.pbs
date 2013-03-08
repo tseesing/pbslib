@@ -32,11 +32,11 @@ pbs_build() {
 }
 
 pbs_install() {
-    cd "$srcdir"
+    cd "$SRCDIR"
 
-    docp build/lib/libblas.so "${destdir}"/usr/lib"$LIBDIRSUFFIX"/
-    ln -sf libblas.so "${destdir}"/usr/lib"$LIBDIRSUFFIX"/libblas.so."$V"
-    ln -sf libblas.so "${destdir}"/usr/lib"$LIBDIRSUFFIX"/libblas.so.3
+    docp build/lib/libblas.so "$PKGDIR"/usr/lib"$LIBDIRSUFFIX"/
+    ln -sf libblas.so "$PKGDIR"/usr/lib"$LIBDIRSUFFIX"/libblas.so."$V"
+    ln -sf libblas.so "$PKGDIR"/usr/lib"$LIBDIRSUFFIX"/libblas.so.3
     dodoc LICENSE
 }
 

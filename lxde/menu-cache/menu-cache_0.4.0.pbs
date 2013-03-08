@@ -21,7 +21,7 @@ pbs_unpack() {
 
 pbs_patch() {
     # Missing menu-cache-gen.h in tarball. fixed upsteam git.
-    docp "$filesdir"/menu-cache-gen.h menu-cache-gen/
+    docp "$FILESDIR"/menu-cache-gen.h menu-cache-gen/
 }
 
 pbs_config() {

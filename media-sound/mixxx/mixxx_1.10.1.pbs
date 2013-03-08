@@ -25,10 +25,10 @@ pbs_unpack() {
 }
 
 pbs_build() {
-    scons prefix=/usr install_root="$destdir"/usr
+    scons prefix=/usr install_root="$PKGDIR"/usr
 }
 
 pbs_install() {
-    scons prefix=/usr install_root="$destdir"/usr install
+    scons prefix=/usr install_root="$PKGDIR"/usr install
 }
 

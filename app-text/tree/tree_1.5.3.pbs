@@ -27,7 +27,7 @@ pbs_build() {
 }
 
 pbs_install() {
-    docp "$N" "$destdir"/usr/bin
-    docp man/"$N".1  "$destdir"/usr/share/man/man1
+    docp "$N" "$PKGDIR"/usr/bin
+    docp man/"$N".1  "$PKGDIR"/usr/share/man/man1
     dodoc CHANGES README* 
 }

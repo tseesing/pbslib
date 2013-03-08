@@ -38,6 +38,6 @@ pbs_build() {
 pbs_install() {
     domkinstall
     sed -i "/LIBCDIO_SOURCE_PATH/s|.*|/* #undef LIBCDIO_SOURCE_PATH */|" \
-        "$destdir"/usr/include/cdio/cdio_config.h
+        "$PKGDIR"/usr/include/cdio/cdio_config.h
 }
 

@@ -37,11 +37,11 @@ pbs_build() {
 }
 
 pbs_install() {
-    make INSTALL_ROOT="$destdir" install install-private-headers
+    make INSTALL_ROOT="$PKGDIR" install install-private-headers
     dodoc ../license.terms
-    cd "$destdir"
+    cd "$PKGDIR"
     doln /usr/bin/tclsh${V%.?} usr/bin/tclsh
     # remove buildroot traces
-    sed -i "s#${srcdir}#/usr/src/$N$V#" usr/lib"$LIBDIRSUFFIX"/{tcl,tdbc1.0.0/tdbc,itcl4.0.0/itcl}Config.sh
+    sed -i "s#$SRCDIR#/usr/src/$N$V#" usr/lib"$LIBDIRSUFFIX"/{tcl,tdbc1.0.0/tdbc,itcl4.0.0/itcl}Config.sh
 }
 

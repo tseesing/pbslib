@@ -74,38 +74,38 @@ pbs_build() {
 }
 
 pbs_install() {
-    mkdir -p "$destdir"
+    mkdir -p "$PKGDIR"
 
-    install -D out/Release/chrome "${destdir}"/usr/lib/chromium/chromium
-     install -Dm4755 -o root -g root out/Release/chrome_sandbox "${destdir}"/usr/lib/chromium/chromium-sandbox
+    install -D out/Release/chrome "$PKGDIR"/usr/lib/chromium/chromium
+     install -Dm4755 -o root -g root out/Release/chrome_sandbox "$PKGDIR"/usr/lib/chromium/chromium-sandbox
     
     cp out/Release/{{chrome,resources}.pak,libffmpegsumo.so} \
        out/Release/nacl_helper{,_bootstrap} \
        out/Release/{libppGoogleNaClPluginChrome.so,nacl_irt_x86_*.nexe} \
-       "${destdir}"/usr/lib/chromium/
+       "$PKGDIR"/usr/lib/chromium/
 
-    cp -a out/Release/locales out/Release/resources "${destdir}"/usr/lib/chromium/
+    cp -a out/Release/locales out/Release/resources "$PKGDIR"/usr/lib/chromium/
 
-    find "${destdir}"/usr/lib/chromium/ -name '*.d' -type f -delete
+    find "$PKGDIR"/usr/lib/chromium/ -name '*.d' -type f -delete
 
-    install -Dm644 out/Release/chrome.1 "${destdir}"/usr/share/man/man1/chromium.1
+    install -Dm644 out/Release/chrome.1 "$PKGDIR"/usr/share/man/man1/chromium.1
 
     dodesktop "chromium.desktop" "chrome/app/theme/chromium/product_logo_48.png"
 
         for size in 16 22 24 32 48 64 128 256; do
             install -Dm644 "chrome/app/theme/chromium/product_logo_${size}.png" \
-            "${destdir}"/usr/share/icons/hicolor/"${size}"x"${size}"/apps/chromium.png
+            "$PKGDIR"/usr/share/icons/hicolor/"${size}"x"${size}"/apps/chromium.png
     done
 
     dodoc LICENSE 
     
-    cd "$destdir"
-        install -m 0755 -D "$filesdir"/chromium.sh usr/bin/chromium
-    docp_rename "$filesdir"/default-preferences/"$N"-18.tar.bz2 usr/lib/chromium/"$N".tar.bz2
-    docp        "$filesdir"/default-preferences/settings.sol    usr/lib/chromium/
+    cd "$PKGDIR"
+        install -m 0755 -D "$FILESDIR"/chromium.sh usr/bin/chromium
+    docp_rename "$FILESDIR"/default-preferences/"$N"-18.tar.bz2 usr/lib/chromium/"$N".tar.bz2
+    docp        "$FILESDIR"/default-preferences/settings.sol    usr/lib/chromium/
 
-    docp "$filesdir"/"$N".xml usr/share/gnome-control-center/default-apps/
-    docp_rename "$filesdir"/chromium-conf  etc/default/chromium
+    docp "$FILESDIR"/"$N".xml usr/share/gnome-control-center/default-apps/
+    docp_rename "$FILESDIR"/chromium-conf  etc/default/chromium
 }
 
 

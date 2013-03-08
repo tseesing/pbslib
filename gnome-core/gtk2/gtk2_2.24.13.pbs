@@ -39,7 +39,7 @@ pbs_build() {
 
 pbs_install() {
     domkinstall
-    cd "$destdir"
+    cd "$PKGDIR"
     echo 'gtk-fallback-icon-theme = "gnome"' >etc/gtk-2.0/gtkrc
     # Split this out to used by gtk3 too
     rm usr/bin/gtk-update-icon-cache

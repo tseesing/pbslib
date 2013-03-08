@@ -34,7 +34,7 @@ pbs_build() {
 }
 
 pbs_install() {
-    make prefix="$destdir" install
+    make prefix="$PKGDIR" install
     dodoc ChangeLog INDEX Notes Offensive README TODO cookie-files
 }
 

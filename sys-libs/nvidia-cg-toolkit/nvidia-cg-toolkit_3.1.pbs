@@ -24,7 +24,7 @@ pbs_unpack() {
 }
 
 pbs_install() {
-    docp usr/{bin,include,lib} "$destdir"/usr/
+    docp usr/{bin,include,lib} "$PKGDIR"/usr/
     dodoc usr/local/Cg/docs/license.txt
 }
 

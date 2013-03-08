@@ -34,9 +34,9 @@ pbs_build() {
 }
 
 pbs_install() {
-    make GLEW_DEST="$destdir"/usr install.all
+    make GLEW_DEST="$PKGDIR"/usr install.all
     dodoc LICENSE.txt
-    cd "$destdir"
+    cd "$PKGDIR"
     rm usr/lib"$LIBDIRSUFFIX"/{libGLEW,libGLEWmx}.a
     chmod 0755 usr/lib"$LIBDIRSUFFIX"/libGLEW*.so."$V"
 }

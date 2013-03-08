@@ -25,23 +25,23 @@ pbs_unpack() {
 }
 
 pbs_install() {
-    python setup.py install --root="$destdir" --optimize=1    
+    python setup.py install --root="$PKGDIR" --optimize=1    
 
     # cli
-    cd "$srcdir"/clients/cli
-    docp rabbitvcs "$destdir"/usr/bin/
+    cd "$SRCDIR"/clients/cli
+    docp rabbitvcs "$PKGDIR"/usr/bin/
 
     # gedit
-    cd "$srcdir"/clients/gedit
-    docp rabbitvcs.gedit-plugin rabbitvcs-plugin.py "$destdir"/usr/lib/gedit-2/plugins/
+    cd "$SRCDIR"/clients/gedit
+    docp rabbitvcs.gedit-plugin rabbitvcs-plugin.py "$PKGDIR"/usr/lib/gedit-2/plugins/
 
     # nautilus
-    cd "$srcdir"/clients/nautilus-3.0
-    docp RabbitVCS.py "$destdir"/usr/share/nautilus-python/extensions/
+    cd "$SRCDIR"/clients/nautilus-3.0
+    docp RabbitVCS.py "$PKGDIR"/usr/share/nautilus-python/extensions/
 
     # thunar
-    cd "$srcdir"/clients/thunar
-    docp RabbitVCS.py "$destdir"/usr/lib/thunarx-2/python
+    cd "$SRCDIR"/clients/thunar
+    docp RabbitVCS.py "$PKGDIR"/usr/lib/thunarx-2/python
 }
 
 

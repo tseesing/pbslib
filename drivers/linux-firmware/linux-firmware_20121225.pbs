@@ -24,13 +24,13 @@ pbs_unpack() {
 }
 
 pbs_install() {
-    docp * "$destdir"/lib/firmware
+    docp * "$PKGDIR"/lib/firmware
     # Added carl9170.fw for Atheros wireless AR9170 based devices.
-    cd "$destdir"/lib/firmware
-    docp "$filesdir"/carl9170-1.fw .
+    cd "$PKGDIR"/lib/firmware
+    docp "$FILESDIR"/carl9170-1.fw .
     #
-    docp "$filesdir"/{ar9170.fw,aic94xx-seq.fw,NPE-B,NPE-C} .
+    docp "$FILESDIR"/{ar9170.fw,aic94xx-seq.fw,NPE-B,NPE-C} .
     # Check firmware script
-    docp "$filesdir"/check_firmware script/
+    docp "$FILESDIR"/check_firmware script/
 }
 

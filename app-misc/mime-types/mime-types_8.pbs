@@ -18,6 +18,6 @@ BDEPEND=""
 RECOMMENDED=""
 
 pbs_install() {
-    docp "$filesdir"/mime.types  "$destdir"/etc
+    docp "$FILESDIR"/mime.types  "$PKGDIR"/etc
 }
 

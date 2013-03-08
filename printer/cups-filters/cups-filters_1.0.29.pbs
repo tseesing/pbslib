@@ -43,7 +43,7 @@ pbs_build() {
 
 pbs_install() {
     domkinstall
-    cd "$destdir"
+    cd "$PKGDIR"
     # drop static lib
     rm -f usr/lib"$LIBDIRSUFFIX"/*.a
     # add missing systemd support

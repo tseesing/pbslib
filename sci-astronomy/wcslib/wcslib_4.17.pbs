@@ -35,7 +35,7 @@ pbs_build() {
 
 pbs_install() {
     domkinstall
-    cd "$destdir"
+    cd "$PKGDIR"
     # Fix wrong permissions
     chmod g=rx,-s usr/{bin/,/lib"$LIBDIRSUFFIX"/{,pkgconfig},share/man/man1/}
     chmod -s usr/{include/wcslib-"$V"/,share/doc/wcslib-"$V"/{,html/}}

@@ -28,17 +28,17 @@ pbs_unpack() {
 
 pbs_install() {
     if [[ "$ARCH" == "x86_64" ]]; then
-        docp_rename bin_unix/linux_64_client "$destdir"/usr/bin/ac_client
-        docp_rename bin_unix/linux_64_server "$destdir"/usr/bin/ac_server
+        docp_rename bin_unix/linux_64_client "$PKGDIR"/usr/bin/ac_client
+        docp_rename bin_unix/linux_64_server "$PKGDIR"/usr/bin/ac_server
     else
-        docp_rename bin_unix/linux_client "$destdir"/usr/bin/ac_client
-        docp_rename bin_unix/linux_server "$destdir"/usr/bin/ac_server
+        docp_rename bin_unix/linux_client "$PKGDIR"/usr/bin/ac_client
+        docp_rename bin_unix/linux_server "$PKGDIR"/usr/bin/ac_server
     fi
-    docp config packages docs mods "$destdir"/usr/share/assaultcube
+    docp config packages docs mods "$PKGDIR"/usr/share/assaultcube
     dodoc docs/package_copyrights.txt
 
-    cd "$destdir"
+    cd "$PKGDIR"
     dodesktop assaultcube.desktop assaultcube.png
-    docp "$filesdir"/{assaultcube,assaultcube-server} usr/bin/
+    docp "$FILESDIR"/{assaultcube,assaultcube-server} usr/bin/
 }
 

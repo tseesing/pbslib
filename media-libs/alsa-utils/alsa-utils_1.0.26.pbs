@@ -33,8 +33,8 @@ pbs_build() {
 
 pbs_install() {
     domkinstall
-    cd "$destdir"
-    docp "$filesdir"/90alsa etc/pm/sleep.d/
+    cd "$PKGDIR"
+    docp "$FILESDIR"/90alsa etc/pm/sleep.d/
     install -d var/lib/alsa/
 }
 

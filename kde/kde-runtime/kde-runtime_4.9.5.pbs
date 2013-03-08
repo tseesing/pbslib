@@ -36,7 +36,7 @@ pbs_build() {
 
 pbs_install() {
     domkinstall
-    cd "$destdir"
+    cd "$PKGDIR"
     rm -rf usr/share/icons/hicolor/index.theme
     doln -sf /usr/lib"$LIBDIRSUFFIX"/kde4/libexec/kdesu usr/bin/kdesu
 }

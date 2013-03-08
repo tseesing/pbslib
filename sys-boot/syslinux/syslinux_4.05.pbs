@@ -41,6 +41,6 @@ pbs_build() {
 }
 
 pbs_install() {
-    make INSTALLROOT="$destdir" AUXDIR=/usr/lib/syslinux install
+    make INSTALLROOT="$PKGDIR" AUXDIR=/usr/lib/syslinux install
 }
 

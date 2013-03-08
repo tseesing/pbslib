@@ -28,6 +28,6 @@ pbs_config() {
 
 pbs_install() {
     _gemdir="$(ruby -rubygems -e'puts Gem.default_dir')"
-    gem install --no-user-install --ignore-dependencies -i "$destdir$_gemdir" "$(basename $SRC_URI)"
+    gem install --no-user-install --ignore-dependencies -i "$PKGDIR$_gemdir" "$(basename $SRC_URI)"
 }
 

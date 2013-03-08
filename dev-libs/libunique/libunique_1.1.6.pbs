@@ -38,6 +38,6 @@ pbs_build() {
 pbs_install() {
     domkinstall
     # Remove documentation, provided by libunique3
-    rm -r "$destdir"/usr/share/gtk-doc
+    rm -r "$PKGDIR"/usr/share/gtk-doc
 }
 

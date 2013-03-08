@@ -24,7 +24,7 @@ pbs_patch() {
 }
 
 pbs_build() {
-    docp "$filesdir"/{Makefile,license} .
+    docp "$FILESDIR"/{Makefile,license} .
     domake libglpng.so.1.45
 }
 

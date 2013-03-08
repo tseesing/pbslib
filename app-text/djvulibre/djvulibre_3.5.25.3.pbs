@@ -35,7 +35,7 @@ pbs_install() {
     domkinstall
     for sz in 22 32 48 64; do
         install -Dm644 desktopfiles/prebuilt-hi"${sz}"-djvu.png \
-                "${destdir}"/usr/share/icons/hicolor/"${sz}"x"${sz}"/mimetypes/image-vnd.djvu.mime.png
+                "$PKGDIR"/usr/share/icons/hicolor/"${sz}"x"${sz}"/mimetypes/image-vnd.djvu.mime.png
     done
 }
 

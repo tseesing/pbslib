@@ -36,8 +36,8 @@ pbs_build() {
 
 pbs_install() {
     domkinstall
-    install -D -m644 data/"$N".desktop.in "$destdir"/usr/share/applications/"$N".desktop
-    cd "$destdir"
+    install -D -m644 data/"$N".desktop.in "$PKGDIR"/usr/share/applications/"$N".desktop
+    cd "$PKGDIR"
     rm -f usr/share/icons/hicolor/icon-theme.cache
     sed -i 's|_||' usr/share/applications/"$N".desktop
 }

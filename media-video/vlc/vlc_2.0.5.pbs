@@ -49,7 +49,7 @@ pbs_install() {
     domkinstall
     for res in 16 32 48 128; do
         install -D -m644 share/icons/"$res"x"$res"/vlc.png \
-        "$destdir"/usr/share/icons/hicolor/"$res"x"$res"/apps/vlc.png
+        "$PKGDIR"/usr/share/icons/hicolor/"$res"x"$res"/apps/vlc.png
     done
 }
 

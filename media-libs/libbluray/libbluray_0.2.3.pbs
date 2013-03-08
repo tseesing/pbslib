@@ -38,6 +38,6 @@ pbs_build() {
 pbs_install() {
     domkinstall
     # install bdj
-    # docp src/.libs/libbluray.jar "$destdir/usr/share/java/
+    # docp src/.libs/libbluray.jar "$PKGDIR/usr/share/java/
 }
 

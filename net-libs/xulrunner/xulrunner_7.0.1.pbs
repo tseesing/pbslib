@@ -62,12 +62,12 @@ pbs_build() {
 pbs_install() {
     domkinstall
     
-    cd "$destdir"
+    cd "$PKGDIR"
     
     # Add xulrunner library path to ld.so.conf
-    install -d "$destdir"/etc/ld.so.conf.d
-    echo /usr/lib/xulrunner-"$V" > "$destdir"/etc/ld.so.conf.d/xulrunner.conf
+    install -d "$PKGDIR"/etc/ld.so.conf.d
+    echo /usr/lib/xulrunner-"$V" > "$PKGDIR"/etc/ld.so.conf.d/xulrunner.conf
     
-    chmod +x "${destdir}"/usr/lib/xulrunner-devel-"$V"/sdk/bin/xpt.py
+    chmod +x "$PKGDIR"/usr/lib/xulrunner-devel-"$V"/sdk/bin/xpt.py
 }
 

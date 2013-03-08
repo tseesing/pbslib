@@ -70,9 +70,9 @@ pbs_build() {
 }
 
 pbs_install() {
-    make DESTDIR="$destdir" install #altinstall maninstall
+    make DESTDIR="$PKGDIR" install #altinstall maninstall
     dodoc LICENSE
-    cd "$destdir"/usr/lib"$LIBDIRSUFFIX"/    
+    cd "$PKGDIR"/usr/lib"$LIBDIRSUFFIX"/    
     doln python2.7 python  
 }
 

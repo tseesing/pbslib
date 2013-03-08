@@ -21,11 +21,11 @@ pbs_unpack() {
 }
 
 pbs_install() {
-    docp qq res.db             "$destdir"/usr/share/tencent/qq
-    cd "$destdir"
-    docp "$filesdir"/linuxqq    usr/bin
-    docp "$filesdir"/qq.png     usr/share/tencent/qq
-    docp "$filesdir"/qq.desktop usr/share/applications
+    docp qq res.db             "$PKGDIR"/usr/share/tencent/qq
+    cd "$PKGDIR"
+    docp "$FILESDIR"/linuxqq    usr/bin
+    docp "$FILESDIR"/qq.png     usr/share/tencent/qq
+    docp "$FILESDIR"/qq.desktop usr/share/applications
 }
 
 

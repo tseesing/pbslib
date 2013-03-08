@@ -44,12 +44,12 @@ pbs_build() {
 }
 
 pbs_install() {
-    cd "$srcdir"
-    install -d "$destdir"/usr/{bin,lib}
-    install -Dm755 binaries/system/pyrogenesis "$destdir"/usr/bin
-    install -Dm755 binaries/system/*.so{,.1.0} "$destdir"/usr/lib
+    cd "$SRCDIR"
+    install -d "$PKGDIR"/usr/{bin,lib}
+    install -Dm755 binaries/system/pyrogenesis "$PKGDIR"/usr/bin
+    install -Dm755 binaries/system/*.so{,.1.0} "$PKGDIR"/usr/lib
 
-    install -Dm755 build/resources/"$N".sh "$destdir"/usr/bin/"$N"
+    install -Dm755 build/resources/"$N".sh "$PKGDIR"/usr/bin/"$N"
     dodesktop build/resources/"$N".desktop build/resources/"$N".png
 }
 

@@ -24,8 +24,8 @@ pbs_unpack() {
 }
 
 pbs_install() {
-    docp ttf/*.ttf "$destdir"/usr/share/fonts/truetype/ttf-dejavu
-    docp fontconfig/*.conf "$destdir"/etc/fonts/conf.avail
+    docp ttf/*.ttf "$PKGDIR"/usr/share/fonts/truetype/ttf-dejavu
+    docp fontconfig/*.conf "$PKGDIR"/etc/fonts/conf.avail
     dodoc LICENSE
 }    
 

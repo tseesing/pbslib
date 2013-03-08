@@ -37,6 +37,6 @@ pbs_build() {
 pbs_install() {
     domkinstall
     dodesktop package/flightgear.desktop package/flightgear.ico
-    ln -sf flightgear "$destdir"/usr/share/FlightGear
+    ln -sf flightgear "$PKGDIR"/usr/share/FlightGear
 }
 

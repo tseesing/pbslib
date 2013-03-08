@@ -43,9 +43,9 @@ pbs_install() {
     domkinstall 
     dounit nmbd.service smbd.service winbind.service
 
-    cd "$destdir"
+    cd "$PKGDIR"
 
-    docp "$filesdir"/smb.conf etc/samba/
+    docp "$FILESDIR"/smb.conf etc/samba/
     install -d -m 1770 -g sambashare var/lib/samba/usershares 
     
     # For cups share

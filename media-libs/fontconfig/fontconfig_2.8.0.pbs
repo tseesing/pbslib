@@ -47,8 +47,8 @@ pbs_build() {
 pbs_install() {
     domkinstall
     dodoc COPYING
-    cd "$destdir"/etc/fonts/conf.avail
+    cd "$PKGDIR"/etc/fonts/conf.avail
     mv 70-yes-bitmaps.conf 70-force-bitmaps.conf
-    docp "$filesdir"/70-yes-bitmaps.conf .
+    docp "$FILESDIR"/70-yes-bitmaps.conf .
 }
 

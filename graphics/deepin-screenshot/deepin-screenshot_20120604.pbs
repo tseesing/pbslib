@@ -26,16 +26,16 @@ pbs_install() {
     # locale
     for pofile in po/*.po; do 
         lang=`basename $pofile .po`
-        dest="$destdir/usr/share/$N/locale/$lang/LC_MESSAGES"
+        dest="$PKGDIR/usr/share/$N/locale/$lang/LC_MESSAGES"
         mkdir -p $dest
         msgfmt -o $dest/deepin-screenshot.mo $pofile
     done
 
-    docp -r src "$destdir"/usr/share/"$N"
-    docp -r theme "$destdir"/usr/share/"$N"
+    docp -r src "$PKGDIR"/usr/share/"$N"
+    docp -r theme "$PKGDIR"/usr/share/"$N"
     dodoc AUTHORS ChangeLog README
     
-    cd "$destdir"
+    cd "$PKGDIR"
     doln /usr/share/"$N"/src/"$N" usr/bin/"$N"
     doln /usr/share/"$N"/locale/en_US usr/share/"$N"/locale/default
 }

@@ -36,7 +36,7 @@ pbs_build() {
 
 pbs_install() {
     domkinstall
-    cd "$destdir"
+    cd "$PKGDIR"
     doln /usr/bin/gpg2 usr/bin/gpg
     doln /usr/bin/gpg2 usr/bin/gpgv
     doln /usr/share/man/man1/gpg2.1.gz usr/share/man/man1/gpg.1.gz

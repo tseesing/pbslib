@@ -32,13 +32,13 @@ pbs_build() {
 
 pbs_install() {
     make install
-        docp bin/sgmltools bin/buildcat bin/gensgmlenv bin/sgmlwhich "$destdir"/usr/bin
-    docp dsssl/*.dsl dsssl/*.cat "$destdir"/usr/share/sgml/stylesheets/sgmltools
-    docp dtd/[a-z]*  "$destdir"/usr/share/sgml/dtd/sgmltools
-    docp man/sgmltools-lite.1 "$destdir"/usr/share/man/man1
-    docp python/*.py "$destdir"/usr/share/sgml/misc/sgmltools/python
-    docp python/backends/*.py "$destdir"/usr/share/sgml/misc/sgmltools/python/backends
-    docp catalog.rh62 catalog.suse aliases "$destdir"/etc/sgml
-    docp VERSION "$destdir"/usr/share/sgml/misc/sgmltools
+        docp bin/sgmltools bin/buildcat bin/gensgmlenv bin/sgmlwhich "$PKGDIR"/usr/bin
+    docp dsssl/*.dsl dsssl/*.cat "$PKGDIR"/usr/share/sgml/stylesheets/sgmltools
+    docp dtd/[a-z]*  "$PKGDIR"/usr/share/sgml/dtd/sgmltools
+    docp man/sgmltools-lite.1 "$PKGDIR"/usr/share/man/man1
+    docp python/*.py "$PKGDIR"/usr/share/sgml/misc/sgmltools/python
+    docp python/backends/*.py "$PKGDIR"/usr/share/sgml/misc/sgmltools/python/backends
+    docp catalog.rh62 catalog.suse aliases "$PKGDIR"/etc/sgml
+    docp VERSION "$PKGDIR"/usr/share/sgml/misc/sgmltools
 }
 

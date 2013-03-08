@@ -20,8 +20,8 @@ CONFLICT=""
 INSTALL="$N.install"
 
 pbs_install() {
-    docp_rename "$YBS_SOURCE"/"AIRweibo($V).air" "$destdir"/usr/lib/"$N"/airweibo.air
+    docp_rename "$YBS_SOURCE"/"AIRweibo($V).air" "$PKGDIR"/usr/lib/"$N"/airweibo.air
     dodesktop "sinaweibo-air.desktop" "sinaweibo-air.png"
-    docp "$filesdir"/"$N" "$destdir"/usr/bin/
+    docp "$FILESDIR"/"$N" "$PKGDIR"/usr/bin/
 }
 

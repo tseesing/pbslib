@@ -53,11 +53,11 @@ pbs_install() {
     doman doc/src/sgml/man1/psql.1
     cd src/include
     # these headers are needed by the public headers of the interfaces
-    docp pg_config.h pg_config_os.h postgres_ext.h pg_config_manual.h "${destdir}"/usr/include/
-    docp libpq/libpq-fs.h                                             "${destdir}"/usr/include/libpq/
+    docp pg_config.h pg_config_os.h postgres_ext.h pg_config_manual.h "$PKGDIR"/usr/include/
+    docp libpq/libpq-fs.h                                             "$PKGDIR"/usr/include/libpq/
 
     # these headers are needed by the not-so-public headers of the interfaces
-    docp c.h port.h postgres_fe.h  "$destdir"/usr/include/postgresql/internal/
-    docp libpq/pqcomm.h            "$destdir"/usr/include/postgresql/internal/libpq/
+    docp c.h port.h postgres_fe.h  "$PKGDIR"/usr/include/postgresql/internal/
+    docp libpq/pqcomm.h            "$PKGDIR"/usr/include/postgresql/internal/libpq/
 }
 

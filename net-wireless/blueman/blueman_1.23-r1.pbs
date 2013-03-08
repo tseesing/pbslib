@@ -41,6 +41,6 @@ pbs_build() {
 
 pbs_install() {
     domkinstall
-    echo "OnlyShowIn=GNOME;XFCE;" >>"$destdir"/etc/xdg/autostart/blueman.desktop
+    echo "OnlyShowIn=GNOME;XFCE;" >>"$PKGDIR"/etc/xdg/autostart/blueman.desktop
 }
 

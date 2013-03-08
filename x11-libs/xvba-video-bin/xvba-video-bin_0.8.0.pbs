@@ -23,7 +23,7 @@ pbs_unpack() {
 }
 
 pbs_install() {
-    docp usr/lib/va/drivers/*  "$destdir"/usr/lib/dri/
+    docp usr/lib/va/drivers/*  "$PKGDIR"/usr/lib/dri/
     dodoc AUTHORS COPYING NEWS README
 }
 

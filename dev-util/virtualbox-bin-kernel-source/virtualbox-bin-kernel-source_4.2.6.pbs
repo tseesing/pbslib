@@ -1,0 +1,37 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="virutalbox kernel source"
+HOMEPAGE="http://www.virtualbox.org/"
+LICENSE="GPL"
+YARCH="any"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
+
+case "$ARCH" in
+    i?86)
+        SRC_URI="http://download.virtualbox.org/virtualbox/"$V"/VirtualBox-"$V"-82870-Linux_x86.run"
+        CHECKSUM="" ;;
+    x86_64)
+        SRC_URI="http://download.virtualbox.org/virtualbox/"$V"/VirtualBox-"$V"-82870-Linux_amd64.run"
+        CHECKSUM="461c5ed0bd80f3d4cf51085261ea2d72" 
+esac
+        
+pbs_unpack() {
+    runfile="$(basename $SRC_URI)"
+    mkdir -p "$N-$V$R" 
+    cd "$N-$V$R"
+    origin_dir="$PWD"
+    # Check and unpack the run package via sh
+    sh "$YBS_SOURCE"/"$runfile" --check ||die "Unpack "$YBS_SOURCE"/"$runfile" failed!"
+    echo yes |sh "$YBS_SOURCE"/"$runfile" --target . --nox11 --noexec
+    tar xjf VirtualBox.tar.bz2
+}
+
+pbs_install() {
+    cd src/vboxhost
+    dosrc *
+}

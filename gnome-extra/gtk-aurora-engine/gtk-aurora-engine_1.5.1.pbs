@@ -41,7 +41,7 @@ pbs_build() {
 pbs_install() {
     domkinstall
     tar xf ../Aurora.tar.bz2
-    docp Aurora "$destdir"/usr/share/themes
-    chown -R root:root "$destdir"/usr/share/themes
+    docp Aurora "$PKGDIR"/usr/share/themes
+    chown -R root:root "$PKGDIR"/usr/share/themes
 }
 

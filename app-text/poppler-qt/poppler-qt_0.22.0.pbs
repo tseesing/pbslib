@@ -39,10 +39,10 @@ pbs_build() {
 
 pbs_install() {
     cd poppler
-    make DESTDIR="$destdir" install-libLTLIBRARIES
-    cd "$srcdir"/qt4
+    make DESTDIR="$PKGDIR" install-libLTLIBRARIES
+    cd "$SRCDIR"/qt4
     domkinstall
-    docp ../poppler-qt4.pc "$destdir"/usr/lib"$LIBDIRSUFFIX"/pkgconfig/
-    rm -f "$destdir"/usr/lib"$LIBDIRSUFFIX"/libpoppler.*
+    docp ../poppler-qt4.pc "$PKGDIR"/usr/lib"$LIBDIRSUFFIX"/pkgconfig/
+    rm -f "$PKGDIR"/usr/lib"$LIBDIRSUFFIX"/libpoppler.*
 }
 

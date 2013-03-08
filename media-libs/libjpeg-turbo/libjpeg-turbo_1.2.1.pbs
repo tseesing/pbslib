@@ -41,10 +41,10 @@ pbs_build() {
 pbs_install() {
     domkinstall
     # Provide jpegint.h as it is required by various software
-    docp jpegint.h "$destdir"/usr/include/
+    docp jpegint.h "$PKGDIR"/usr/include/
     dodoc README README-turbo.txt
     # Do not distributre libturbojpeg as it is unversioned
-    cd "$destdir"
+    cd "$PKGDIR"
     rm usr/lib"$LIBDIRSUFFIX"/libturbojpeg.{so,a}
     rm usr/include/turbojpeg.h
     rm usr/bin/tjbench

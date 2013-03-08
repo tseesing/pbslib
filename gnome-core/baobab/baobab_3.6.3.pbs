@@ -34,6 +34,6 @@ pbs_install() {
     domkinstall
     # Do not let baobab "instead of" Nautilus 
     # https://bugs.archlinux.org/task/31861
-    sed -i '/MimeType/d' "${destdir}"/usr/share/applications/baobab.desktop
+    sed -i '/MimeType/d' "$PKGDIR"/usr/share/applications/baobab.desktop
 }
 

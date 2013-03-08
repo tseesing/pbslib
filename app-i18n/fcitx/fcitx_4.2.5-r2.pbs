@@ -40,10 +40,10 @@ pbs_build() {
 
 pbs_install() {
     domkinstall
-    cd "$destdir"
-    docp "$filesdir"/98-fcitx etc/X11/Xsession.d/
+    cd "$PKGDIR"
+    docp "$FILESDIR"/98-fcitx etc/X11/Xsession.d/
 
     # StartOS skin
-    docp "$filesdir"/startos usr/share/fcitx/skin/
+    docp "$FILESDIR"/startos usr/share/fcitx/skin/
 }
 

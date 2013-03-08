@@ -37,6 +37,6 @@ pbs_build() {
 pbs_install() {
     domkinstall
     dodesktop torcs.desktop Ticon.png
-    find "${destdir}" -type d -exec chmod 755 {} \;
+    find "$PKGDIR" -type d -exec chmod 755 {} \;
 }
 

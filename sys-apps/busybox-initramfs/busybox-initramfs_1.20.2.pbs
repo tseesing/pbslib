@@ -23,7 +23,7 @@ pbs_patch() {
 }
 
 pbs_config() {
-    docp_rename "$filesdir"/config-initramfs-"$V" .config
+    docp_rename "$FILESDIR"/config-initramfs-"$V" .config
 }
 
 pbs_build() {
@@ -31,6 +31,6 @@ pbs_build() {
 }
 
 pbs_install() {
-    docp busybox "$destdir"/usr/lib/initramfs-tools/bin/
+    docp busybox "$PKGDIR"/usr/lib/initramfs-tools/bin/
 }
 

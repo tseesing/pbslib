@@ -23,6 +23,6 @@ pbs_unpack() {
 }
 
 pbs_install() {
-    docp icon ads "$destdir"/usr/share/app-info/
+    docp icon ads "$PKGDIR"/usr/share/app-info/
 }
 

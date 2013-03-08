@@ -39,7 +39,7 @@ pbs_build() {
 
 pbs_install() {
     domkinstall
-    cd "$destdir"
+    cd "$PKGDIR"
     
     # Remove unneeded dynloader bootstrap file
     rm usr/lib/perl5/vendor_perl/auto/Xfce4/Xfconf/Xfconf.bs

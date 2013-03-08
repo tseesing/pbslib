@@ -32,6 +32,6 @@ pbs_build() {
 
 pbs_install() {
     domkinstall
-    #docp $filesdir/holiday.zh_CN  "$destdir"/usr/share/liblunar/
+    #docp $FILESDIR/holiday.zh_CN  "$PKGDIR"/usr/share/liblunar/
 }
 

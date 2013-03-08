@@ -35,7 +35,7 @@ pbs_build() {
 
 pbs_install() {
     domkinstall completiondir=/usr/share/bash-completion/completions
-    for _i in "$destdir"/usr/share/bash-completion/completions/*; do
+    for _i in "$PKGDIR"/usr/share/bash-completion/completions/*; do
         chmod -x "$_i"
     done
 }

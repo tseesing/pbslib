@@ -23,7 +23,7 @@ pbs_unpack() {
 
 pbs_patch() {
     # Use my icon
-    docp "$filesdir"/gksu-icon.png .
+    docp "$FILESDIR"/gksu-icon.png .
     #
     sed -i -e 's|/usr/bin/x-terminal-emulator|-l gnome-terminal|g' gksu.desktop
     echo "TryExec=gnome-terminal" >> gksu.desktop

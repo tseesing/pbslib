@@ -64,14 +64,14 @@ pbs_build() {
 
 pbs_install() {
     domkinstall
-    cd "$destdir"
+    cd "$PKGDIR"
     doln /usr/bin/hostname bin/hostname
-      docp "$filesdir"/dnsdomainname bin/
+      docp "$FILESDIR"/dnsdomainname bin/
       echo ".so man1/hostname.1" > usr/share/man/man1/dnsdomainname.1
-      install -D -m644 "${filesdir}"/telnet.xinetd etc/xinetd.d/telnet
-      install -D -m644 "${filesdir}"/talk.xinetd etc/xinetd.d/talk
-      install -D -m644 "${filesdir}"/rlogin.xinetd etc/xinetd.d/rlogin
-      install -D -m644 "${filesdir}"/rsh.xinetd etc/xinetd.d/rsh
+      install -D -m644 "$FILESDIR"/telnet.xinetd etc/xinetd.d/telnet
+      install -D -m644 "$FILESDIR"/talk.xinetd etc/xinetd.d/talk
+      install -D -m644 "$FILESDIR"/rlogin.xinetd etc/xinetd.d/rlogin
+      install -D -m644 "$FILESDIR"/rsh.xinetd etc/xinetd.d/rsh
       dounit ftpd.service 
 }
 

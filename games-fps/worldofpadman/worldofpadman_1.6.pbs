@@ -32,15 +32,15 @@ pbs_install() {
 
     ## Binaries
     if [ "$ARCH" == i686 ] ; then
-        install -D -m755 wop.i386 "$destdir/$_gamedir/wop.bin" 
-        install -D -m755 wopded.i386 "$destdir/$_gamedir/wopded.bin" 
-        install -D -m755 renderer_opengl1_i386.so ${destdir}/${_gamedir}/renderer_opengl1_i386.so
+        install -D -m755 wop.i386 "$PKGDIR/$_gamedir/wop.bin" 
+        install -D -m755 wopded.i386 "$PKGDIR/$_gamedir/wopded.bin" 
+        install -D -m755 renderer_opengl1_i386.so $PKGDIR/${_gamedir}/renderer_opengl1_i386.so
     fi
                 
     if [ "$ARCH" == x86_64 ]  ; then
-        install -D -m755 wop.x86_64 "$destdir/$_gamedir/wop.bin" 
-        install -D -m755 wopded.x86_64 "$destdir/$_gamedir/wopded.bin"
-        install -D -m755 renderer_opengl1_x86_64.so ${destdir}/${_gamedir}/renderer_opengl1_x86_64.so
+        install -D -m755 wop.x86_64 "$PKGDIR/$_gamedir/wop.bin" 
+        install -D -m755 wopded.x86_64 "$PKGDIR/$_gamedir/wopded.bin"
+        install -D -m755 renderer_opengl1_x86_64.so $PKGDIR/${_gamedir}/renderer_opengl1_x86_64.so
     fi
 
     cat >wop.sh <<EOF
@@ -53,13 +53,13 @@ EOF
 cd $_gamedir && exec ./wopded.bin "\$@"
 EOF
 
-    install -D -m755 wop.sh "$destdir/usr/bin/wop" || return 1
-    install -D -m755 wopded.sh "$destdir/usr/bin/wopded" || return 1
+    install -D -m755 wop.sh "$PKGDIR/usr/bin/wop" || return 1
+    install -D -m755 wopded.sh "$PKGDIR/usr/bin/wopded" || return 1
                     
     # Data
     # Using "read", so can handle filenames containing spaces
     find wop -type f | while read _f ; do
-        install -D -m644 "$_f" "${destdir}/$_gamedir/$_f" || return 1
+        install -D -m644 "$_f" "$PKGDIR/$_gamedir/$_f" || return 1
     done
 
     # Return from the function, since install's return just exits the loop
@@ -74,7 +74,7 @@ EOF
 
     # Using "read", so can handle filenames containing spaces
     find . -type f | while read _f ; do
-        install -D -m644 "$_f" "${destdir}/usr/share/doc/$N/$_f" || return 1
+        install -D -m644 "$_f" "$PKGDIR/usr/share/doc/$N/$_f" || return 1
     done
 
     # Return from the function, since install's return just exits the loop

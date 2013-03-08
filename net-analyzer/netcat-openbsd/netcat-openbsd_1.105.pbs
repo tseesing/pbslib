@@ -41,8 +41,8 @@ pbs_build() {
 }
 
 pbs_install() {
-    docp nc "$destdir"/usr/bin/
-    doln /usr/bin/nc "$destdir"/usr/bin/netcat
+    docp nc "$PKGDIR"/usr/bin/
+    doln /usr/bin/nc "$PKGDIR"/usr/bin/netcat
     doman nc.1
 }
 

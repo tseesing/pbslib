@@ -55,7 +55,7 @@ pbs_patch() {
 
         # This fixes the main segfault but not the assert fail (FS#24615)
     # http://sourceware.org/git/?p=glibc.git;a=commitdiff;h=57912a71 
-    #patch -Np1 -i ${srcdir}/glibc-2.14-fix-resolver-crash-typo.patch
+    #patch -Np1 -i $SRCDIR/glibc-2.14-fix-resolver-crash-typo.patch
     # resort to reverting the bad commit completely for the moment
     dopatch glibc-2.14-revert-4462fad3.patch
 
@@ -120,12 +120,12 @@ pbs_build() {
 }
 
 pbs_install() {
-    make install_root="$destdir" install
+    make install_root="$PKGDIR" install
     
-    cd "$destdir"
+    cd "$PKGDIR"
 
-    docp "$filesdir"/locale-gen usr/sbin
-    docp "$filesdir"/SUPPORTED  usr/share/i18n
+    docp "$FILESDIR"/locale-gen usr/sbin
+    docp "$FILESDIR"/SUPPORTED  usr/share/i18n
 
     doln /usr/include/utime.h usr/include/sys/utime.h
 

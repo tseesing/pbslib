@@ -28,6 +28,6 @@ pbs_unpack() {
 }
 
 pbs_install() {
-    docp libaliedit32.so "$destdir"/usr/lib/mozilla/plugins/
+    docp libaliedit32.so "$PKGDIR"/usr/lib/mozilla/plugins/
 }
 

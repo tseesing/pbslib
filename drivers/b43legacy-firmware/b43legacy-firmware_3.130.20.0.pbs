@@ -23,6 +23,6 @@ pbs_build() {
 }
 
 pbs_install() {
-    docp b43legacy "$destdir"/lib/firmware
+    docp b43legacy "$PKGDIR"/lib/firmware
 }
 

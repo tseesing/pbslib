@@ -28,6 +28,6 @@ pbs_build() {
 
 pbs_install() {
     domkinstall
-    docp "$filesdir"/awesome.desktop "$destdir"/usr/share/xsessions/
+    docp "$FILESDIR"/awesome.desktop "$PKGDIR"/usr/share/xsessions/
 }
 

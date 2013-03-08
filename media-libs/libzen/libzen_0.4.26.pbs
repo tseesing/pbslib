@@ -37,14 +37,14 @@ pbs_build() {
 pbs_install() {
     domkinstall
     cd -
-    docp Source/ZenLib/*.h "$destdir"/usr/include/ZenLib
+    docp Source/ZenLib/*.h "$PKGDIR"/usr/include/ZenLib
     
     for i in HTTP_Client Format/Html Format/Http; do
-        docp Source/ZenLib/"${i}"/*.h "$destdir"/usr/include/ZenLib/"${i}"
+        docp Source/ZenLib/"${i}"/*.h "$PKGDIR"/usr/include/ZenLib/"${i}"
     done
 
-    docp Project/GNU/Library/libzen.pc "$destdir"/usr/lib/pkgconfig
-    sed -i -e 's|Version: |Version: '$V'|g' "$destdir"/usr/lib/pkgconfig/libzen.pc
+    docp Project/GNU/Library/libzen.pc "$PKGDIR"/usr/lib/pkgconfig
+    sed -i -e 's|Version: |Version: '$V'|g' "$PKGDIR"/usr/lib/pkgconfig/libzen.pc
     dodoc License.txt
 }
 

@@ -31,7 +31,7 @@ pbs_build() {
 pbs_install() {
     domkinstall
     dodoc COPYING
-    docp src/system.twmrc "$destdir"/etc/X11/twm/
-    doln /etc/X11/twm     "$destdir"/usr/share/X11/twm
+    docp src/system.twmrc "$PKGDIR"/etc/X11/twm/
+    doln /etc/X11/twm     "$PKGDIR"/usr/share/X11/twm
 }
 

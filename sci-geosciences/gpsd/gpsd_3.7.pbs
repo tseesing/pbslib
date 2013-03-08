@@ -40,21 +40,21 @@ pbs_install() {
     # Fix man pages path
     sed -i 's|.so gps.1|.so man1/gps.1|' cgps.1 lcdgps.1 xgps.1 xgpsspeed.1
 
-    export DESTDIR="$destdir"
+    export DESTDIR="$PKGDIR"
     scons install
 
     sed -i 's|/lib/udev/gpsd|/usr/lib/udev/gpsd|' gpsd.rules
-    install -D -m644 gpsd.rules "$destdir"/usr/lib/udev/rules.d/99-gpsd-usb.rules
-    install -D -m755 gpsd.hotplug "$destdir"/usr/lib/udev/gpsd.hotplug
+    install -D -m644 gpsd.rules "$PKGDIR"/usr/lib/udev/rules.d/99-gpsd-usb.rules
+    install -D -m755 gpsd.hotplug "$PKGDIR"/usr/lib/udev/gpsd.hotplug
 
     # GPSD needs RPATH
-    chrpath -r /usr/lib"$LIBDIRSUFFIX"/ "$destdir"/usr/lib"$LIBDIRSUFFIX"/libgps{,d}.so.20.0.0
-    chrpath -r /usr/lib"$LIBDIRSUFFIX"/ "$destdir"/usr/bin/{gpsdecode,gpsctl,gpspipe,gpxlogger,lcdgps}
-    chrpath -r /usr/lib"$LIBDIRSUFFIX"/ "$destdir"/usr/sbin/{gpsd,gpsdctl}
-    chrpath -r /usr/lib"$LIBDIRSUFFIX"/ "$destdir"/usr/lib"$LIBDIRSUFFIX"/python2.7/site-packages/gps/{clienthelpers,packet}.so
+    chrpath -r /usr/lib"$LIBDIRSUFFIX"/ "$PKGDIR"/usr/lib"$LIBDIRSUFFIX"/libgps{,d}.so.20.0.0
+    chrpath -r /usr/lib"$LIBDIRSUFFIX"/ "$PKGDIR"/usr/bin/{gpsdecode,gpsctl,gpspipe,gpxlogger,lcdgps}
+    chrpath -r /usr/lib"$LIBDIRSUFFIX"/ "$PKGDIR"/usr/sbin/{gpsd,gpsdctl}
+    chrpath -r /usr/lib"$LIBDIRSUFFIX"/ "$PKGDIR"/usr/lib"$LIBDIRSUFFIX"/python2.7/site-packages/gps/{clienthelpers,packet}.so
 
-    docp packaging/X11/xgps.desktop packaging/X11/xgpsspeed.desktop "$destdir"/usr/share/applications/
-    docp packaging/X11/gpsd-logo.png "$destdir"/usr/share/gpsd/
+    docp packaging/X11/xgps.desktop packaging/X11/xgpsspeed.desktop "$PKGDIR"/usr/share/applications/
+    docp packaging/X11/gpsd-logo.png "$PKGDIR"/usr/share/gpsd/
     
     dounit systemd/gpsd.service systemd/gpsd.socket 
     dodoc COPYING

@@ -31,9 +31,9 @@ pbs_build() {
 
 pbs_install() {
     dodoc license.txt
-    docp libunrar.so."$V" "$destdir"/usr/lib"$LIBDIRSUFFIX"/
-    docp dll.hpp "$destdir"/usr/include/unrar/
-    cd "$destdir"/usr/lib"$LIBDIRSUFFIX"/
+    docp libunrar.so."$V" "$PKGDIR"/usr/lib"$LIBDIRSUFFIX"/
+    docp dll.hpp "$PKGDIR"/usr/include/unrar/
+    cd "$PKGDIR"/usr/lib"$LIBDIRSUFFIX"/
     doln libunrar.so."$V" libunrar.so.4
     doln libunrar.so."$V" libunrar.so
 }

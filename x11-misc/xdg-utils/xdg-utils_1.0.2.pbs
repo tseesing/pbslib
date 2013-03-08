@@ -32,6 +32,6 @@ pbs_build() {
 
 pbs_install() {
     domkinstall
-    docp "$filesdir"/xdg-settings "$destdir"/usr/bin/
+    docp "$FILESDIR"/xdg-settings "$PKGDIR"/usr/bin/
 }
 

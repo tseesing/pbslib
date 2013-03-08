@@ -33,6 +33,6 @@ pbs_build() {
 
 pbs_install() {
     domkinstall
-    install -D -m644 data/zeitgeist-daemon.bash_completion ${destdir}/usr/share/bash-completion/completions/zeitgeist-daemon
+    install -D -m644 data/zeitgeist-daemon.bash_completion $PKGDIR/usr/share/bash-completion/completions/zeitgeist-daemon
 }
 

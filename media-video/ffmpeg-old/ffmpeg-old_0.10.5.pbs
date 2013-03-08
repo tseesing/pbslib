@@ -58,6 +58,6 @@ pbs_build() {
 
 pbs_install() {
     domkinstall
-    rm -rf "$destdir"/usr/{bin,share}
+    rm -rf "$PKGDIR"/usr/{bin,share}
 }
 

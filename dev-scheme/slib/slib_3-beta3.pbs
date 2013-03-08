@@ -25,11 +25,11 @@ pbs_unpack() {
 
 pbs_install() {
      sed -r -i "s,/usr/(local/)?lib/slib,/usr/share/slib,g" *.init
-     docp *.scm *.init *.xyz *.txt *.dat *.ps "${destdir}/usr/share/slib/"
-     docp slib.info "${destdir}/usr/share/info/"
+     docp *.scm *.init *.xyz *.txt *.dat *.ps "$PKGDIR/usr/share/slib/"
+     docp slib.info "$PKGDIR/usr/share/info/"
 
-         install -m755 -d "${destdir}/usr/bin"
-     cat << _EOF > "${destdir}/usr/bin/slib"
+         install -m755 -d "$PKGDIR/usr/bin"
+     cat << _EOF > "$PKGDIR/usr/bin/slib"
 #!/bin/sh
 SCHEME_LIBRARY_PATH=/usr/share/slib/
 export SCHEME_LIBRARY_PATH
@@ -38,12 +38,12 @@ S48_VICINITY="/usr/share/scheme48/"
 export S48_VICINITY
 _EOF
 
-cat slib.sh >> "${destdir}/usr/bin/slib"
-chmod 755 "${destdir}/usr/bin/slib"
+cat slib.sh >> "$PKGDIR/usr/bin/slib"
+chmod 755 "$PKGDIR/usr/bin/slib"
 
 doman slib.1
 dodoc COPYING
 
-doln /usr/share/slib "${destdir}/usr/share/guile/site/slib"
+doln /usr/share/slib "$PKGDIR/usr/share/guile/site/slib"
 }
 

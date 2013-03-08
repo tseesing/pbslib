@@ -30,9 +30,9 @@ pbs_build() {
 }
 
 pbs_install() {
-    make INSTALL_HDR_PATH="$destdir"/usr headers_install
+    make INSTALL_HDR_PATH="$PKGDIR"/usr headers_install
     
-    cd "$destdir"
+    cd "$PKGDIR"
     find /usr/include -name .install -or -name ..install.cmd |xargs rm -f
 
         # Provided by libdrm

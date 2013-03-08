@@ -36,7 +36,7 @@ pbs_install() {
         done
 
     # Cleanup
-    cd "$destdir"
+    cd "$PKGDIR"
     rm -fr usr/share/applications/hdspmixer.desktop usr/share/applications/hdspconf.desktop
 }
 

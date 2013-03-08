@@ -44,7 +44,7 @@ pbs_install() {
         -e '/^#state_file/c state_file "/var/lib/mpd/mpdstate"' \
         -e '/^#user/c user "mpd"' \
         -i doc/mpdconf.example
-    docp_rename doc/mpdconf.example "${destdir}"/usr/share/mpd/mpd.conf.example    
-    install -d -g 45 -o 45 "${destdir}"/var/lib/mpd/playlists        
+    docp_rename doc/mpdconf.example "$PKGDIR"/usr/share/mpd/mpd.conf.example    
+    install -d -g 45 -o 45 "$PKGDIR"/var/lib/mpd/playlists        
 }
 

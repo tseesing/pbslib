@@ -49,6 +49,6 @@ pbs_build() {
 pbs_install() {
     domkinstall
     #FIXME 
-    rm "$destdir"/usr/lib/stardict/plugins/stardict_spell.so
+    rm "$PKGDIR"/usr/lib/stardict/plugins/stardict_spell.so
 }
 

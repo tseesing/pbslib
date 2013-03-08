@@ -24,7 +24,7 @@ pbs_unpack() {
 }
 
 pbs_install() {
-    docp usr "$destdir"/
-    docp "$filesdir"/05_debian_theme "$destdir"/etc/grub.d/
+    docp usr "$PKGDIR"/
+    docp "$FILESDIR"/05_debian_theme "$PKGDIR"/etc/grub.d/
 }
 

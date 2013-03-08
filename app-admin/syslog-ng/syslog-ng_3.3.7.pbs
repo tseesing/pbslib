@@ -40,6 +40,6 @@ pbs_build() {
 
 pbs_install() {
     domkinstall
-    docp_rename "$filesdir"/syslog-ng.logrotate "$destdir"/etc/logrotate.d/syslog-ng
+    docp_rename "$FILESDIR"/syslog-ng.logrotate "$PKGDIR"/etc/logrotate.d/syslog-ng
 }
 

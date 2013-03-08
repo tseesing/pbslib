@@ -34,6 +34,6 @@ pbs_build() {
 }
 
 pbs_install() {
-    docp mksquashfs unsquashfs "$destdir"/usr/bin
+    docp mksquashfs unsquashfs "$PKGDIR"/usr/bin
     dodoc ../{ACKNOWLEDGEMENTS,CHANGES,COPYING,INSTALL,OLD-READMEs,PERFORMANCE.README,README,README-4.0}
 }

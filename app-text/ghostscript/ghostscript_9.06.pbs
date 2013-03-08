@@ -53,8 +53,8 @@ pbs_build() {
 }
 
 pbs_install() {
-    cd "$srcdir"/
-    domkinstall soinstall #cups_serverroot="$destdir"/etc/cups cups_serverbin="$destdir"/usr/lib/cups soinstall
+    cd "$SRCDIR"/
+    domkinstall soinstall #cups_serverroot="$PKGDIR"/etc/cups cups_serverbin="$PKGDIR"/usr/lib/cups soinstall
     dodoc LICENSE doc/{Ps2ps2.htm,gs-vms.hlp,gsdoc.el,pscet_status.txt}
     # Install IJS
     cd ijs

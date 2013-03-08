@@ -24,7 +24,7 @@ pbs_config() {
     [ "$ARCH" = "x86_64" ] && extra_opts="-Dcccdlflags='-fPIC'" || extra_opts=""
 
     ./Configure -des -Dusethreads -Duseshrplib -Doptimize="${CFLAGS}" \
-            -Dprefix=/usr -Dvendorprefix=/usr -Dinstallprefix="${destdir}"/usr \
+            -Dprefix=/usr -Dvendorprefix=/usr -Dinstallprefix="$PKGDIR"/usr \
              -Dprivlib=/usr/share/perl5/core_perl \
              -Darchlib=/usr/lib"$LIBDIRSUFFIX"/perl5/core_perl \
             -Dsitelib=/usr/share/perl5/site_perl \
@@ -46,7 +46,7 @@ pbs_build() {
 pbs_install() {
     make install
     
-    cd "$destdir"
+    cd "$PKGDIR"
     
     ### Perl Settings ###
     # Change man page extensions for site and vendor module builds.
@@ -66,14 +66,14 @@ pbs_install() {
               -i usr/share/perl5/core_perl/CPANPLUS/Config.pm
 
       # Profile script to set paths to perl scripts.
-      docp "$filesdir"/{perlbin.sh,perlbin.csh} etc/profile.d/
+      docp "$FILESDIR"/{perlbin.sh,perlbin.csh} etc/profile.d/
 
       mv usr/bin/{perl"$V",perl}
     cd usr/bin/core_perl
     ln -sf c2ph pstruct
     ln -sf s2p psed
     cd -
-      grep -Rl "${destdir}" usr | xargs sed -i "s^${destdir}^^g"
+      grep -Rl "$PKGDIR" usr | xargs sed -i "s^$PKGDIR^^g"
 
       # Remove all pod files *except* those under /usr/share/perl5/core_perl/pod/
       rm -f usr/share/perl5/core_perl/*.pod

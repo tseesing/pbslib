@@ -36,7 +36,7 @@ pbs_install() {
     domkinstall
     # gcr wants to lock some memory to prevent swapping out private keys
     # https://bugzilla.gnome.org/show_bug.cgi?id=688161
-    docp "$filesdir"/10-gcr.conf "$destdir"/etc/security/limits.d/
+    docp "$FILESDIR"/10-gcr.conf "$PKGDIR"/etc/security/limits.d/
 }
 
 

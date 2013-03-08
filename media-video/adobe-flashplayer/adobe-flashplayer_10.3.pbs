@@ -26,7 +26,7 @@ pbs_unpack() {
 }
 
 pbs_install() {
-    docp_rename adobe-flashplayer-"$V$R" "$destdir"/usr/bin/flashplayer
+    docp_rename adobe-flashplayer-"$V$R" "$PKGDIR"/usr/bin/flashplayer
     dodesktop adobe-flashplayer.desktop adobe-flashplayer.png
 }
 

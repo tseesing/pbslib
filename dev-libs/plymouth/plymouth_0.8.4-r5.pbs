@@ -47,8 +47,8 @@ pbs_install() {
     domkinstall
     
     # For initramfs-tools
-    cd "$destdir" 
-    docp $filesdir/initramfs-tools usr/share/
+    cd "$PKGDIR" 
+    docp $FILESDIR/initramfs-tools usr/share/
 
     #
     doln /lib/plymouth/themes/text/text.plymouth  lib/plymouth/themes/text.plymouth

@@ -34,8 +34,8 @@ pbs_build() {
 }
 
 pbs_install() {
-    make DESTDIR="${destdir}" install-nodoc
+    make DESTDIR="$PKGDIR" install-nodoc
     dodoc COPYING BSDL
-    docp "$filesdir"/gemrc "$destdir"/etc/
+    docp "$FILESDIR"/gemrc "$PKGDIR"/etc/
 }
 

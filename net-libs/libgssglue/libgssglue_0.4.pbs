@@ -37,8 +37,8 @@ pbs_build() {
 pbs_install() {
     domkinstall
     dodoc COPYING
-    cd "$destdir"
+    cd "$PKGDIR"
     mkdir etc/
-    sed 's/LIBDIRSUFFIX/'"$LIBDIRSUFFIX"'/g' "$filesdir"/gssapi_mech.conf >etc/gssapi_mech.conf
+    sed 's/LIBDIRSUFFIX/'"$LIBDIRSUFFIX"'/g' "$FILESDIR"/gssapi_mech.conf >etc/gssapi_mech.conf
 }
 

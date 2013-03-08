@@ -37,7 +37,7 @@ pbs_build() {
 pbs_install() {
     domkinstall
     dodesktop alienarena.desktop alienarena.png
-    cd "$destdir"
+    cd "$PKGDIR"
     mv usr/bin/crx     usr/bin/"$N"
     mv usr/bin/crx-ded usr/bin/"$N"-ded
 }

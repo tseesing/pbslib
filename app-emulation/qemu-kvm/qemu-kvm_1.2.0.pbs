@@ -41,7 +41,7 @@ pbs_build() {
 
 pbs_install() {
     domkinstall 
-    cd "$destdir"
+    cd "$PKGDIR"
     # provided by seabios
     rm usr/share/qemu/bios.bin
     # Symbolic link for backwards compatibility
@@ -51,7 +51,7 @@ pbs_install() {
     # Fix man page
     mv usr/share/man/man1/qemu.1 usr/share/man/man1/qemu-kvm.1
     # Install systemd rules
-    docp "$filesdir"/65-kvm.rules usr/lib/systemd/rules.d/
+    docp "$FILESDIR"/65-kvm.rules usr/lib/systemd/rules.d/
     # strip scripts directory
     find usr/bin -type f -perm -u+w 2>/dev/null | while read binary ; do
         case "$(file -bi "$binary")" in

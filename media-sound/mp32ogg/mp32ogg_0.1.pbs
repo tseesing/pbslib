@@ -16,6 +16,6 @@ BDEPEND=""
 RECOMMENDED=""
 
 pbs_install() {
-    docp "$filesdir"/mp32ogg "$destdir"/usr/bin
+    docp "$FILESDIR"/mp32ogg "$PKGDIR"/usr/bin
 }
 

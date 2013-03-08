@@ -35,7 +35,7 @@ pbs_build() {
 
 pbs_install() {
     domkinstall
-    rm -f "$destdir"/usr/lib"$LIBDIRSUFFIX"/libytnef.a
+    rm -f "$PKGDIR"/usr/lib"$LIBDIRSUFFIX"/libytnef.a
 }
 
 

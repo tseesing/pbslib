@@ -23,7 +23,7 @@ pbs_unpack() {
 }
 
 pbs_install() {
-    docp yunio "$destdir"/usr/bin/
+    docp yunio "$PKGDIR"/usr/bin/
     dodesktop  "$N.desktop" "$N.png"
 }
 

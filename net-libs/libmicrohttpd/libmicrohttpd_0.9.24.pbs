@@ -39,8 +39,8 @@ pbs_build() {
 
 pbs_install() {
     domkinstall
-    docp src/include/platform.h src/include/plibc/plibc.h "$destdir"/usr/include/"$N"/
+    docp src/include/platform.h src/include/plibc/plibc.h "$PKGDIR"/usr/include/"$N"/
     sed -i 's#Cflags: -I${includedir}#Cflags: -I${includedir} -I{includedir}/libmicrohttpd#' \
-        "$destdir"/usr/lib"$LIBDIRSUFFIX"/pkgconfig/libmicrohttpd.pc
+        "$PKGDIR"/usr/lib"$LIBDIRSUFFIX"/pkgconfig/libmicrohttpd.pc
 }
 

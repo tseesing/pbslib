@@ -25,7 +25,7 @@ pbs_patch() {
 }
 
 pbs_config() {
-    docp_rename "$filesdir"/config-static-"$V" .config
+    docp_rename "$FILESDIR"/config-static-"$V" .config
 }
 
 pbs_build() {
@@ -33,7 +33,7 @@ pbs_build() {
 }
 
 pbs_install() {
-    docp busybox "$destdir"/bin/
+    docp busybox "$PKGDIR"/bin/
 }
 
 

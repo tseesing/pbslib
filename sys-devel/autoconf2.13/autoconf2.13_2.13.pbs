@@ -34,8 +34,8 @@ pbs_build() {
 }
 
 pbs_install() {
-    domkinstall prefix="${destdir}/usr" infodir="${destdir}/usr/share/info"
-    cd "$destdir"
+    domkinstall prefix="$PKGDIR/usr" infodir="$PKGDIR/usr/share/info"
+    cd "$PKGDIR"
     mv usr/share/info/autoconf{,-2.13}.info
     mv usr/share/info/standards{,-2.13}.info
 }

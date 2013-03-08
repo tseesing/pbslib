@@ -24,14 +24,14 @@ pbs_unpack() {
     mkdir -p "$N-$V$R" && cd "$N-$V$R"
     mkdir -p unbundle && cd unbundle
     sh "$YBS_SOURCE"/jdk-6u25-dlj-linux-i586.bin --accept-license
-    cd ../ && sh "$filesdir"/construct.sh unbundle linux-jdk linux-jre
+    cd ../ && sh "$FILESDIR"/construct.sh unbundle linux-jdk linux-jre
 }
 
 pbs_install() {
-    docp linux-jdk/jre "$destdir"/opt/java/
-    install -Dm755 "$filesdir"/jre.profile "$destdir"/etc/profile.d/jre.sh
+    docp linux-jdk/jre "$PKGDIR"/opt/java/
+    install -Dm755 "$FILESDIR"/jre.profile "$PKGDIR"/etc/profile.d/jre.sh
 
-    cd "$destdir"
+    cd "$PKGDIR"
 
     if [ "$ARCH" = "i686" ]; then
         doln /opt/java/jre/lib/i386/libnpjp2.so usr/lib/mozilla/plugins/libnpjp2.so

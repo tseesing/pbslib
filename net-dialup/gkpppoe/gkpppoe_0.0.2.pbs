@@ -22,7 +22,7 @@ pbs_unpack() {
 }
 
 pbs_install() {
-    docp data/*  "$destdir"
+    docp data/*  "$PKGDIR"
     dodesktop "$N.desktop" "$N.png"
 }
 

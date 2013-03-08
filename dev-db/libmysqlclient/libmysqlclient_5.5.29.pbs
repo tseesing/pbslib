@@ -69,10 +69,10 @@ pbs_install() {
     for dir in include libmysql libmysqld libservices; do
         domkinstall -C "${dir}"
     done
-    docp scripts/mysql_config "${destdir}"/usr/bin/
+    docp scripts/mysql_config "$PKGDIR"/usr/bin/
     # man
     for man in mysql_config mysql_client_test_embedded mysqltest_embedded; do
-        doman "$srcdir"/man/"${man}".1
+        doman "$SRCDIR"/man/"${man}".1
     done
 }
 

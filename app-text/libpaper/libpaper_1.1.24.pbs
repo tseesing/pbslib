@@ -25,7 +25,7 @@ pbs_unpack() {
 
 pbs_config() {
     ./configure --prefix=/usr \
-            --mandir="$destdir"/usr/share/man \
+            --mandir="$PKGDIR"/usr/share/man \
             --sysconfdir=/etc
 }
 
@@ -34,6 +34,6 @@ pbs_build() {
 }
 
 pbs_install() {
-    make prefix="$destdir"/usr install
+    make prefix="$PKGDIR"/usr install
 }
 

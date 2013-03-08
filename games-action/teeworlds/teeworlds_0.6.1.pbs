@@ -32,10 +32,10 @@ pbs_build() {
 
 pbs_install() {
     # Install data files
-    docp data/* "${destdir}"/usr/share/"$N"/data/
+    docp data/* "$PKGDIR"/usr/share/"$N"/data/
     chmod 755 "$N" "$N"_srv
-    docp "$N" "${destdir}"/usr/bin/
-    docp "$N"_srv "${destdir}"/usr/bin/
+    docp "$N" "$PKGDIR"/usr/bin/
+    docp "$N"_srv "$PKGDIR"/usr/bin/
     dodesktop "$N".desktop "$N".png
     dodoc license.txt
 }

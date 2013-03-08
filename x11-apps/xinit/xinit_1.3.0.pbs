@@ -31,7 +31,7 @@ pbs_build() {
 pbs_install() {
     domkinstall
     
-    cd "$destdir"
+    cd "$PKGDIR"
     domv usr/lib/X11/xinit etc/X11
     doln /etc/X11/xinit    usr/lib/X11
 }

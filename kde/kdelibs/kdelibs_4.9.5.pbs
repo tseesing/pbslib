@@ -49,7 +49,7 @@ pbs_build() {
 
 pbs_install() {
     domkinstall
-    cd "$destdir"
+    cd "$PKGDIR"
     # cert bundle seems to be hardcoded
     # link it to the one from ca-certificates
     rm -f usr/share/apps/kssl/ca-bundle.crt

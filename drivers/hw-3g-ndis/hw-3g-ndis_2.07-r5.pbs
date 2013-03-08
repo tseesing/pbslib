@@ -15,7 +15,7 @@ SRC_URI=""
 PROVIDE="hw-3g-ndis-source hw-3g-ndis-driver"
 
 pbs_unpack() {
-    docp "$filesdir"/src/* "$N-$V$R"
+    docp "$FILESDIR"/src/* "$N-$V$R"
 }
 
 hw-3g-ndis-source_install() {

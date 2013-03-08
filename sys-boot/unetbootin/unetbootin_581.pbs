@@ -34,14 +34,14 @@ pbs_build() {
 }
 
 pbs_install() {
-    docp "$N"_*.qm "$destdir"/usr/share/$pkgname/
-    install -Dm755 "$N" "$destdir"/usr/bin/"$N".elf
+    docp "$N"_*.qm "$PKGDIR"/usr/share/$pkgname/
+    install -Dm755 "$N" "$PKGDIR"/usr/bin/"$N".elf
     dodesktop "$N".desktop
     
     for i in 16 22 24 32 48 256; do
-        install -D "${N}_${i}.png" "$destdir"/usr/share/icons/hicolor/"${i}"x"${i}"/apps/"$N".png
+        install -D "${N}_${i}.png" "$PKGDIR"/usr/share/icons/hicolor/"${i}"x"${i}"/apps/"$N".png
     done
     
-    install -Dm755 "$filesdir"/"$N".sh "$destdir"/usr/bin/"$N"
+    install -Dm755 "$FILESDIR"/"$N".sh "$PKGDIR"/usr/bin/"$N"
 }
 

@@ -31,7 +31,7 @@ pbs_build() {
 pbs_install() {
     domkinstall
     dodoc COPYING
-    cd "$destdir"
+    cd "$PKGDIR"
     domv usr/lib"$LIBDIRSUFFIX"/X11/xinit etc/X11
     doln /etc/X11/xinit    usr/lib"$LIBDIRSUFFIX"/X11
 }

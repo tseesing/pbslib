@@ -30,13 +30,13 @@ pbs_build() {
 }
 
 pbs_install() {
-    mkdir -p "$destdir"/usr
-    make prefix="$destdir"/usr install
+    mkdir -p "$PKGDIR"/usr
+    make prefix="$PKGDIR"/usr install
     
     # Copy resource
-    docp pixmaps/s-lock.xpm "$destdir"/usr/share/icons/hicolor/32x32/apps/xlock.xpm
-    docp pixmaps/m-lock.xpm "$destdir"/usr/share/icons/hicolor/48x48/apps/xlock.xpm
-    mkdir -p "$destdir"/etc/xg_launch/sys/
-    echo "+ Lock%/usr/share/icons/hicolor/32x32/apps/xlock.xpm%  Exec xlock -mode matrix" > "$destdir"/etc/xg_launch/sys/C05xlock
+    docp pixmaps/s-lock.xpm "$PKGDIR"/usr/share/icons/hicolor/32x32/apps/xlock.xpm
+    docp pixmaps/m-lock.xpm "$PKGDIR"/usr/share/icons/hicolor/48x48/apps/xlock.xpm
+    mkdir -p "$PKGDIR"/etc/xg_launch/sys/
+    echo "+ Lock%/usr/share/icons/hicolor/32x32/apps/xlock.xpm%  Exec xlock -mode matrix" > "$PKGDIR"/etc/xg_launch/sys/C05xlock
 }
 

@@ -48,8 +48,8 @@ pbs_build() {
 
 pbs_install() {
     domkinstall
-    cd "$destdir"
-    docp "$filesdir"/gconf-schemas usr/sbin/ 
+    cd "$PKGDIR"
+    docp "$FILESDIR"/gconf-schemas usr/sbin/ 
     install -m755 -d etc/gconf/gconf.xml.system
 }
 

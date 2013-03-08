@@ -26,8 +26,8 @@ pbs_unpack() {
 pbs_config() {
     export PERL_MM_USE_DEFAULT=1 PERL5LIB="" \
            PERL_AUTOINSTALL=--skipdeps  \
-           PERL_MM_OPT="INSTALLDIRS=vendor DESTDIR='$destdir'" \
-           PERL_MB_OPT="--installdirs vendor --destdir '$destdir'" \
+           PERL_MM_OPT="INSTALLDIRS=vendor DESTDIR='$PKGDIR'" \
+           PERL_MB_OPT="--installdirs vendor --destdir '$PKGDIR'" \
            MODULEBUILDRC=/dev/null
     perl Makefile.PL
 }

@@ -35,7 +35,7 @@ pbs_patch() {
 }
 
 pbs_config() {
-    cat "$filesdir"/mozconfig |sed 's/@LIBDIRSUFFIX@/'"$LIBDIRSUFFIX"'/g' >.mozconfig
+    cat "$FILESDIR"/mozconfig |sed 's/@LIBDIRSUFFIX@/'"$LIBDIRSUFFIX"'/g' >.mozconfig
 }
 
 pbs_build() {
@@ -50,22 +50,22 @@ pbs_install() {
 
     for i in 16x16 22x22 24x24 32x32 48x48 256x256; do
           install -Dm644 browser/branding/official/default${i/x*/}.png \
-                  "$destdir/usr/share/icons/hicolor/${i}/apps/firefox.png"
+                  "$PKGDIR/usr/share/icons/hicolor/${i}/apps/firefox.png"
         done
 
-    cd "$destdir"
+    cd "$PKGDIR"
     
     # Default configure
-    docp "$filesdir"/vendor.js "usr/lib"$LIBDIRSUFFIX"/firefox/defaults/preferences/"
+    docp "$FILESDIR"/vendor.js "usr/lib"$LIBDIRSUFFIX"/firefox/defaults/preferences/"
 
     # Desktop
     dodesktop "firefox.desktop" "usr/lib"$LIBDIRSUFFIX"/"$N"/icons/mozicon128.png"
     
     # Add extensions 
-    #docp "$filesdir"/extensions/* "usr/lib"$LIBDIRSUFFIX"/"$N"/extensions"
+    #docp "$FILESDIR"/extensions/* "usr/lib"$LIBDIRSUFFIX"/"$N"/extensions"
 
     # Add baidu searchplugin
-    docp_rename "$filesdir"/baidu-14.xml  "usr/lib"$LIBDIRSUFFIX"/"$N"/searchplugins/baidu.xml"
+    docp_rename "$FILESDIR"/baidu-14.xml  "usr/lib"$LIBDIRSUFFIX"/"$N"/searchplugins/baidu.xml"
 
     # We don't want the development stuff
     rm -r usr/{include,lib"$LIBDIRSUFFIX"/firefox-devel,share/idl}

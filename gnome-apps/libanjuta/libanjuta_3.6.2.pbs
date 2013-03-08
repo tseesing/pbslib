@@ -34,6 +34,6 @@ pbs_build() {
 
 pbs_install() {
     cd libanjuta
-    make -j1 DESTDIR="$destdir" install
+    make -j1 DESTDIR="$PKGDIR" install
 }
 

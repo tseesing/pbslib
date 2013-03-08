@@ -38,6 +38,6 @@ pbs_build() {
 
 pbs_install() {
     domkinstall
-    cd "$destdir"/usr/bin
+    cd "$PKGDIR"/usr/bin
     rm c++ cc g++ gcc
 }

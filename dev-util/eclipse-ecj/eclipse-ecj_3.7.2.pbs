@@ -33,10 +33,10 @@ pbs_build() {
 }
 
 pbs_install() {
-    docp_rename ecj.jar "$destdir"/usr/share/java/eclipse-ecj-"$V".jar
-    cd "$destdir"
+    docp_rename ecj.jar "$PKGDIR"/usr/share/java/eclipse-ecj-"$V".jar
+    cd "$PKGDIR"
     ln -sf eclipse-ecj-"$V".jar usr/share/java/ecj.jar
     ln -sf eclipse-ecj-"$V".jar usr/share/java/eclipse-ecj.jar
-    docp "$filesdir"/ecj usr/bin/
+    docp "$FILESDIR"/ecj usr/bin/
 }
 

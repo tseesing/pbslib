@@ -31,7 +31,7 @@ pbs_build() {
 
 pbs_install() {
     domkinstall
-    cd "$destdir"
-    docp "$filesdir"/defaults.list usr/share/applications/
+    cd "$PKGDIR"
+    docp "$FILESDIR"/defaults.list usr/share/applications/
 }
 

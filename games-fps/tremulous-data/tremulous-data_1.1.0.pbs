@@ -35,7 +35,7 @@ pbs_install() {
     rm tremulous-"$V"-src.tar.gz
 
         # Install game data
-    docp * "$destdir"/opt/tremulous/
-    find "$destdir" -type f -exec chmod 644 {} +
+    docp * "$PKGDIR"/opt/tremulous/
+    find "$PKGDIR" -type f -exec chmod 644 {} +
 }
 

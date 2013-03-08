@@ -60,7 +60,7 @@ pbs_build() {
 
 pbs_install() {
     domkinstall
-    cd "$destdir"
+    cd "$PKGDIR"
     # cleanup 
     rm -rf var/run/ 
     rm -rf etc/rc.d

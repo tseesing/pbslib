@@ -29,7 +29,7 @@ pbs_patch() {
 }
 
 pbs_config() {
-    cp "$filesdir"/mozconfig .mozconfig
+    cp "$FILESDIR"/mozconfig .mozconfig
 }
 
 pbs_build() {
@@ -42,7 +42,7 @@ pbs_build() {
 pbs_install() {
     domkinstall -f client.mk 
     
-    cd "$destdir"
+    cd "$PKGDIR"
     
     # Add xulrunner library path to ld.so.conf
     install -d etc/ld.so.conf.d

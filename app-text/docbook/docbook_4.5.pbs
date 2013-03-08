@@ -28,9 +28,9 @@ pbs_patch() {
 }
 
 pbs_install() {
-    install -d "$destdir"/usr/share/sgml/docbook/sgml-dtd-"$V" "$destdir"/etc/sgml/
+    install -d "$PKGDIR"/usr/share/sgml/docbook/sgml-dtd-"$V" "$PKGDIR"/etc/sgml/
     chown -R root:root . 
-    install docbook.cat "$destdir"/usr/share/sgml/docbook/sgml-dtd-"$V"/catalog 
-    cp -af *.dtd *.mod *.dcl "$destdir"/usr/share/sgml/docbook/sgml-dtd-"$V"
+    install docbook.cat "$PKGDIR"/usr/share/sgml/docbook/sgml-dtd-"$V"/catalog 
+    cp -af *.dtd *.mod *.dcl "$PKGDIR"/usr/share/sgml/docbook/sgml-dtd-"$V"
 }
 

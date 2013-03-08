@@ -25,11 +25,11 @@ pbs_unpack() {
 }
 
 pbs_build() {
-    domake build=release prefix="$destdir/usr"
+    domake build=release prefix="$PKGDIR/usr"
 }
 
 pbs_install() {
-    domkinstall build=release prefix="${destdir}/usr"
+    domkinstall build=release prefix="$PKGDIR/usr"
     
     # Fix mupdf.desktop
     sed -i "s/mupdf.xpm/mupdf/" debian/mupdf.desktop
@@ -38,7 +38,7 @@ pbs_install() {
     dodesktop debian/mupdf.desktop debian/mupdf.xpm
 
     # Rename executables
-    cd "${destdir}/usr/bin"
+    cd "$PKGDIR/usr/bin"
     for i in pdf*; do 
         mv "$i" "$i-mupdf";
     done

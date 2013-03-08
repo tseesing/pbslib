@@ -34,6 +34,6 @@ pbs_build() {
 
 pbs_install() {
     domkinstall
-    install -m755 -d "$destdir"/usr/share/doc/"$N-$V$R"
-    cp -a ChangeLog COPYING INSTALL README   "$destdir"/usr/share/doc/"$N-$V$R"
+    install -m755 -d "$PKGDIR"/usr/share/doc/"$N-$V$R"
+    cp -a ChangeLog COPYING INSTALL README   "$PKGDIR"/usr/share/doc/"$N-$V$R"
 }

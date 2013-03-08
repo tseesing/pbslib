@@ -31,7 +31,7 @@ pbs_build() {
 
 pbs_install() {
     domkinstall
-    cd "$destdir"
+    cd "$PKGDIR"
     
     # Fix aclocal warnings
     sed -i "s#(AM_PATH_SMPEG#([AM_PATH_SMPEG]#" usr/share/aclocal/smpeg.m4 

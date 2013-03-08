@@ -39,13 +39,13 @@ pbs_build() {
 
 pbs_install() {
     # Install the tcl extension
-    cd "$srcdir"/tea
+    cd "$SRCDIR"/tea
     domkinstall || die "tcl extension make install failed."
 
     # Install sqlite
-    cd "$srcdir"
+    cd "$SRCDIR"
     domkinstall
 
-    dodoc "$filesdir"/license.txt
+    dodoc "$FILESDIR"/license.txt
 }
 

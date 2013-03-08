@@ -21,6 +21,6 @@ pbs_unpack() {
 }
 
 pbs_install() {
-    docp * "$destdir"/usr/share/fonts/ghostscript/
+    docp * "$PKGDIR"/usr/share/fonts/ghostscript/
 }
 

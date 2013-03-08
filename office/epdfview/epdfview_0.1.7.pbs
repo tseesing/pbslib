@@ -29,6 +29,6 @@ pbs_build() {
 
 pbs_install() {
     domkinstall
-    cd "$destdir"
+    cd "$PKGDIR"
     docp usr/share/epdfview/pixmaps/icon_epdfview-48.png usr/share/pixmaps
 }

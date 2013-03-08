@@ -31,7 +31,7 @@ pbs_build() {
 }
 
 pbs_install() {
-    docp ../cursors "$destdir"/usr/share/icons/startos/
-    docp "$filesdir"/index.theme "$destdir"/usr/share/icons/startos/cursors/
+    docp ../cursors "$PKGDIR"/usr/share/icons/startos/
+    docp "$FILESDIR"/index.theme "$PKGDIR"/usr/share/icons/startos/cursors/
 }
 

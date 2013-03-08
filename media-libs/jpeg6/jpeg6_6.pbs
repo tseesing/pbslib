@@ -29,5 +29,5 @@ pbs_build() {
 }
 
 pbs_install() {
-    docp .libs/{libjpeg.so.62,libjpeg.so.62.0.0}  "$destdir"/usr/lib
+    docp .libs/{libjpeg.so.62,libjpeg.so.62.0.0}  "$PKGDIR"/usr/lib
 }

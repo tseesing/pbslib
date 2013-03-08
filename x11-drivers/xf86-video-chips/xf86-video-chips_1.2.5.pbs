@@ -21,7 +21,7 @@ pbs_unpack() {
 }
 
 pbs_patch() {
-    docp "$filesdir"/iopl.h .
+    docp "$FILESDIR"/iopl.h .
 }
 
 pbs_config() {

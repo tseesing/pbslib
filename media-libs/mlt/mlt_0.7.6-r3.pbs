@@ -37,8 +37,8 @@ pbs_build() {
 }
 
 pbs_install() {
-    docp mlt.py _mlt.so mlt_wrap.o "$destdir"/usr/lib/python2.7/
-    cd "$srcdir"
+    docp mlt.py _mlt.so mlt_wrap.o "$PKGDIR"/usr/lib/python2.7/
+    cd "$SRCDIR"
     domkinstall
 }
 

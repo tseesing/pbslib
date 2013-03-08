@@ -27,8 +27,8 @@ pbs_unpack() {
 }
 
 pbs_install() {
-    docp * "$destdir"/usr/share/"$N"/
+    docp * "$PKGDIR"/usr/share/"$N"/
     dodesktop "$N".desktop bin/idea.png
-    doln /usr/share/idea-ic/bin/idea.sh "$destdir"/usr/bin/"$N"
+    doln /usr/share/idea-ic/bin/idea.sh "$PKGDIR"/usr/bin/"$N"
 }
 

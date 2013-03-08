@@ -18,5 +18,5 @@ pbs_unpack() {
 }
 
 pbs_install() {
-    docp * "$destdir"/usr/share/stardict/dic
+    docp * "$PKGDIR"/usr/share/stardict/dic
 }

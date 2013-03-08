@@ -27,8 +27,8 @@ pbs_unpack() {
 }
 
 pbs_install() {
-    docp * "$destdir"/usr/share/"$N"/
+    docp * "$PKGDIR"/usr/share/"$N"/
     dodesktop "$N".desktop bin/webide.png
-    doln /usr/share/phpstorm/bin/phpstorm.sh "$destdir"/usr/bin/"$N"
+    doln /usr/share/phpstorm/bin/phpstorm.sh "$PKGDIR"/usr/bin/"$N"
 }
 

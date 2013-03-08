@@ -35,7 +35,7 @@ pbs_build() {
 
 pbs_install() {
     domkinstall
-    cat >> "$destdir"/etc/wgetrc <<OOO
+    cat >> "$PKGDIR"/etc/wgetrc <<OOO
 # default root certs location
 ca_certificate=/etc/ssl/certs/ca-certificates.crt
 OOO

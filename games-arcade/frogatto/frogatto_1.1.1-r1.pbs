@@ -39,12 +39,12 @@ pbs_build() {
 
 pbs_install() {
     # bin
-    docp server game civ rpg "$destdir"/opt/"$N"/
+    docp server game civ rpg "$PKGDIR"/opt/"$N"/
 
     # data
-    docp data images locale music po sounds utils "$destdir"/opt/"$N"/    
+    docp data images locale music po sounds utils "$PKGDIR"/opt/"$N"/    
     
     dodesktop "$N".desktop  "$N".png
-    docp "$filesdir"/frogatto "$destdir"/usr/bin/
+    docp "$FILESDIR"/frogatto "$PKGDIR"/usr/bin/
 }
 

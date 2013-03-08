@@ -37,6 +37,6 @@ pbs_build() {
 
 pbs_install() {
     domkinstall
-    docp "$filesdir"/x11-ssh-askpass.sh "$destdir"/etc/profile.d/
+    docp "$FILESDIR"/x11-ssh-askpass.sh "$PKGDIR"/etc/profile.d/
 }
 

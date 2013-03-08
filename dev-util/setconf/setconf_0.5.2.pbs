@@ -26,7 +26,7 @@ pbs_unpack() {
 }
 
 pbs_install() {
-    install -Dm755 "$N".py "$destdir"/usr/bin/"$N"
-    install -Dm644 "$N".1.gz "$destdir"/usr/share/man/man1/"$N".1.gz
+    install -Dm755 "$N".py "$PKGDIR"/usr/bin/"$N"
+    install -Dm644 "$N".1.gz "$PKGDIR"/usr/share/man/man1/"$N".1.gz
 }
 

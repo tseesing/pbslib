@@ -44,7 +44,7 @@ pbs_build() {
 pbs_install() {
     domkinstall 
     # Create symlinks for compatibility
-    cd "${destdir}"
+    cd "$PKGDIR"
     install -dm755   usr/include/gdbm
     ln -sf ../gdbm.h usr/include/gdbm/gdbm.h
     ln -sf ../ndbm.h usr/include/gdbm/ndbm.h

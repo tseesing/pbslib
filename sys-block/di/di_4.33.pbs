@@ -33,7 +33,7 @@ pbs_build() {
 }
 
 pbs_install() {
-    make INSTALL_DIR="$destdir"/usr install
+    make INSTALL_DIR="$PKGDIR"/usr install
     dodoc LICENSE
 }
 

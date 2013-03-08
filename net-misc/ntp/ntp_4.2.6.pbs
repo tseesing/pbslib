@@ -40,13 +40,13 @@ pbs_install() {
 
     cd html
     ../scripts/html2man
-    domv man/man* "$destdir"/usr/share/man
+    domv man/man* "$PKGDIR"/usr/share/man
 
-    cd "$destdir"
+    cd "$PKGDIR"
     #
     domv usr/share/man/man8/ntpd.8 usr/share/man/man8/ntp-ntpd.8
     #
-    docp "$filesdir"/ntp.conf etc/
+    docp "$FILESDIR"/ntp.conf etc/
     #
     dounit ntpd.service ntpdate.service
     #

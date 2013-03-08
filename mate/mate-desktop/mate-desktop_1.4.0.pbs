@@ -37,6 +37,6 @@ pbs_build() {
 pbs_install() {
     domkinstall
     # Prevent conflicts errors
-    mv "$destdir"/usr/share/omf "$destdir"/usr/share/mate-omf
+    mv "$PKGDIR"/usr/share/omf "$PKGDIR"/usr/share/mate-omf
 }
 

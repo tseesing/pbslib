@@ -34,6 +34,6 @@ pbs_build() {
 }
 
 pbs_install() {
-    docp clit "$destdir"/usr/bin/
+    docp clit "$PKGDIR"/usr/bin/
 }
 

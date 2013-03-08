@@ -36,9 +36,9 @@ pbs_build() {
 
 pbs_install() {
     domkinstall
-    docp_rename extras/django_bash_completion "$destdir"/etc/bash_completion.d/django
+    docp_rename extras/django_bash_completion "$PKGDIR"/etc/bash_completion.d/django
     dodoc LICENSE
-    cd "$destdir"
+    cd "$PKGDIR"
     doln /usr/bin/django-admin.py usr/bin/django-admin
 }
 

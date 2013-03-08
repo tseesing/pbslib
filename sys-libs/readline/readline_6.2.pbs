@@ -41,6 +41,6 @@ pbs_build() {
 
 pbs_install() {
     domkinstall
-    docp "$filesdir"/inputrc "$destdir"/etc/
+    docp "$FILESDIR"/inputrc "$PKGDIR"/etc/
 }
 

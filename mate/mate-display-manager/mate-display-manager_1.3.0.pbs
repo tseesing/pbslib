@@ -32,7 +32,7 @@ pbs_build() {
 
 pbs_install() {
     domkinstall MATECONF_DISABLE_MAKEFILE_SCHEMA_INSTALL=1 
-    cd "$destdir"
+    cd "$PKGDIR"
     # Wrong path to executables
     _path="usr/share/mdm/autostart/LoginWindow"
     sed -i 's_/usr/lib/mdm/_/usr/lib/polkit-mate/_' "${_path}"/polkit-mate-authentication-agent-1.desktop

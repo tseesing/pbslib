@@ -25,6 +25,6 @@ pbs_unpack() {
 }
 
 pbs_install() {
-    docp desktop "$destdir"/usr/share/app-info/
+    docp desktop "$PKGDIR"/usr/share/app-info/
 }
 

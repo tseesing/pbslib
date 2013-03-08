@@ -44,7 +44,7 @@ pbs_build() {
 pbs_install() {
     domkinstall
     # Fix a warning
-    cd "$destdir"
+    cd "$PKGDIR"
     chown 102:0 usr/share/polkit-1/rules.d
     chmod 700  usr/share/polkit-1/rules.d
 }

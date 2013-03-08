@@ -39,7 +39,7 @@ pbs_config() {
              --with-gihdir=/usr/share/gnuplot 
              --datadir=/usr/share 
              --with-readline=gnu 
-             --with-texdir="$destdir"/usr/share/texmf/tex/latex/gnuplot "
+             --with-texdir="$PKGDIR"/usr/share/texmf/tex/latex/gnuplot "
     doconfig
 }
 
@@ -48,16 +48,16 @@ pbs_build() {
 }
 
 pbs_install() {
-    make prefix="$destdir"/usr \
-         libexecdir="$destdir"/usr/bin \
-         mandir="$destdir"/usr/share/man \
-         infodir="$destdir"/usr/share/info \
-         pkglibexecdir="$destdir"/usr/bin \
-         GIHDIR="$destdir"/usr/share/gnuplot \
-         datadir="$destdir"/usr/share install
+    make prefix="$PKGDIR"/usr \
+         libexecdir="$PKGDIR"/usr/bin \
+         mandir="$PKGDIR"/usr/share/man \
+         infodir="$PKGDIR"/usr/share/info \
+         pkglibexecdir="$PKGDIR"/usr/bin \
+         GIHDIR="$PKGDIR"/usr/share/gnuplot \
+         datadir="$PKGDIR"/usr/share install
 
     dodoc Copyright
-    install -Dm644 lisp/dotemacs "$destdir"/usr/share/emacs/site-lisp/dotemacs
-    rm -f "$destdir"/usr/share/texmf-dist/ls-R
+    install -Dm644 lisp/dotemacs "$PKGDIR"/usr/share/emacs/site-lisp/dotemacs
+    rm -f "$PKGDIR"/usr/share/texmf-dist/ls-R
 }
 

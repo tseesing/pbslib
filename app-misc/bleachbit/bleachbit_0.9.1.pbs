@@ -25,6 +25,6 @@ pbs_unpack() {
 }
 
 pbs_install() {
-    make prefix=/usr DESTDIR="$destdir" install
+    make prefix=/usr DESTDIR="$PKGDIR" install
 }
 

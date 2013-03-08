@@ -72,16 +72,16 @@ pbs_build() {
 pbs_install() {
     domkinstall
     dodoc COPYING
-    cd "$destdir"
+    cd "$PKGDIR"
     doln /usr/share/X11/app-defaults etc/X11/app-defaults
-    docp "$filesdir"/10-quirks.conf  etc/X11/xorg.conf.d
+    docp "$FILESDIR"/10-quirks.conf  etc/X11/xorg.conf.d
     doln /usr/share/fonts usr/lib/X11/fonts
     # Backup libglx.so which should be overrided by other packages, e.g. nvidia-graphic-driver
     cd usr/lib"$LIBDIRSUFFIX"/xorg/modules/extensions/
     mv libglx.so libglx.so-pkg."$N"
     doln -sf libglx.so-pkg."$N" libglx.so
     cd -
-    docp "$filesdir"/xvfb-run usr/bin/
+    docp "$FILESDIR"/xvfb-run usr/bin/
     doman xvfb-run.1
 }
 

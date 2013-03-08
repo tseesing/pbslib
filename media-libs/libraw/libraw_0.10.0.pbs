@@ -26,8 +26,8 @@ pbs_build() {
 }
 
 pbs_install() {
-    docp libraw "$destdir"/usr/include
-    docp lib/libraw.a lib/libraw_r.a "$destdir"/usr/lib
-    docp bin/[a-z]* "$destdir"/usr/bin/ 
+    docp libraw "$PKGDIR"/usr/include
+    docp lib/libraw.a lib/libraw_r.a "$PKGDIR"/usr/lib
+    docp bin/[a-z]* "$PKGDIR"/usr/bin/ 
 }
 

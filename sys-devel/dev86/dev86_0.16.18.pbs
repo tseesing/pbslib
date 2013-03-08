@@ -43,14 +43,14 @@ pbs_build() {
     unset LDFLAGS
     unset CPPFLAGS
     unset CXXFLAGS
-    make PREFIX=/usr DIST="$destdir"
+    make PREFIX=/usr DIST="$PKGDIR"
 }
 
 pbs_install() {
-    make install-all DIST="$destdir"
+    make install-all DIST="$PKGDIR"
     dodoc COPYING README
 
-    cd "$destdir"
+    cd "$PKGDIR"
     domv usr/man usr/share
 
     # Remove all the stuff supplied by bin86

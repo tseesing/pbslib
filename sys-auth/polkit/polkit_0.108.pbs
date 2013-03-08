@@ -34,8 +34,8 @@ pbs_build() {
 
 pbs_install() {
     domkinstall
-    cd "$destdir"
-    dopamd "$filesdir"/polkit-1
+    cd "$PKGDIR"
+    dopamd "$FILESDIR"/polkit-1
     chown 102 {etc,usr/share}/polkit-1/rules.d
 }
 

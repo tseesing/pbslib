@@ -22,8 +22,8 @@ pbs_unpack() {
 }
 
 pbs_install() {
-    docp data/*  "$destdir"
-    cd "$destdir"
+    docp data/*  "$PKGDIR"
+    cd "$PKGDIR"
     dodesktop "$N.desktop" "opt/google/picasa/3.0/desktop/picasa32x32.xpm"
     for i in picasafontcfg showpicasascreensaver;do
         doln /usr/bin/"${i}" opt/google/picasa/3.0/bin/"${i}"

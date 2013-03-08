@@ -25,7 +25,7 @@ pbs_unpack() {
 }
 
 pbs_install() {
-    docp *.ttc "$destdir"/usr/share/fonts/wenquanyi/wqy-microhei
-    doln /usr/share/fonts/wenquanyi/wqy-microhei/wqy-microhei.ttc "$destdir"/usr/share/fonts/truetype/wqy/wqy-microhei.ttc
+    docp *.ttc "$PKGDIR"/usr/share/fonts/wenquanyi/wqy-microhei
+    doln /usr/share/fonts/wenquanyi/wqy-microhei/wqy-microhei.ttc "$PKGDIR"/usr/share/fonts/truetype/wqy/wqy-microhei.ttc
 }
 

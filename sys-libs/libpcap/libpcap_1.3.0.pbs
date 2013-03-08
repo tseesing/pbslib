@@ -38,7 +38,7 @@ pbs_build() {
 pbs_install() {
     domkinstall
     dodoc LICENSE
-    cd "$destdir"
+    cd "$PKGDIR"
     # backwards compatibility, programs often look for net/bpf.h
     doln /usr/include/pcre-bpf.h usr/include/net/bpf.h
 }

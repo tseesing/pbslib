@@ -37,6 +37,6 @@ pbs_install() {
     domkinstall
     dodoc COPYING.EXCEPTION
     # conflict with bintuils
-    rm -f "$destdir"/usr/share/info/standards.info
+    rm -f "$PKGDIR"/usr/share/info/standards.info
 }
 

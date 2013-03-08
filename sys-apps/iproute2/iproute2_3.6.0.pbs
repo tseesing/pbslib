@@ -36,10 +36,10 @@ pbs_build() {
 pbs_install() {
     domkinstall
       # libnetlink isn't installed, install it FS#19385
-      docp include/libnetlink.h "$destdir"/usr/include/
-      docp lib/libnetlink.a "$destdir"/usr/lib"$LIBDIRSUFFIX"/
+      docp include/libnetlink.h "$PKGDIR"/usr/include/
+      docp lib/libnetlink.a "$PKGDIR"/usr/lib"$LIBDIRSUFFIX"/
     # allow loopback to be started before /usr is mounted, this may not be supported in the future
-    cd "$destdir"
+    cd "$PKGDIR"
     domv usr/sbin/ip sbin/
     doln /sbin/ip usr/sbin/ip
 }

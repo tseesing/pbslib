@@ -54,13 +54,13 @@ pbs_build() {
 
 pbs_install() {
     domkinstall
-    cd "$destdir"
+    cd "$PKGDIR"
     
     #
     mkdir -p run
 
     # Wrapper of systemctl scripts
-    docp "$filesdir"/{start,stop,status,restart,reload} usr/bin/
+    docp "$FILESDIR"/{start,stop,status,restart,reload} usr/bin/
 
     # Default modules.conf
     cat > etc/modules-load.d/modules.conf <<"EOF"
@@ -81,7 +81,7 @@ EOF
     done
     
     # Misc
-    docp "$filesdir"/udlfb.conf etc/modprobe.d/
+    docp "$FILESDIR"/udlfb.conf etc/modprobe.d/
     ln -sf /proc/self/mounts etc/mtab
 }
 

@@ -34,6 +34,6 @@ pbs_build() {
 pbs_install() {
     domkinstall -O1
     dodoc LICENSE
-    docp_rename external/pygments.bashcomp "$destdir"/usr/share/bash-completion/completions/pygmentize
+    docp_rename external/pygments.bashcomp "$PKGDIR"/usr/share/bash-completion/completions/pygmentize
 }
 

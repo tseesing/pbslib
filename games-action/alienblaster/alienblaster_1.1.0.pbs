@@ -35,9 +35,9 @@ pbs_build() {
 }
 
 pbs_install() {
-    docp_rename alienBlaster "$destdir"/usr/bin/alienblaster.bin
-    docp images sound cfg "$destdir"/usr/share/"$N"
+    docp_rename alienBlaster "$PKGDIR"/usr/bin/alienblaster.bin
+    docp images sound cfg "$PKGDIR"/usr/share/"$N"
     dodesktop "$N".desktop "$N".png
-    install -Dm755 "$filesdir"/alienblaster.sh "$destdir"/usr/bin/alienblaster.sh
+    install -Dm755 "$FILESDIR"/alienblaster.sh "$PKGDIR"/usr/bin/alienblaster.sh
 }
 

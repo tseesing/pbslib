@@ -32,16 +32,16 @@ pbs_build() {
 }
 
 pbs_install() {
-    cd "$srcdir"
+    cd "$SRCDIR"
     
     for libname in liblapack libtmglib; do
-        docp build/lib/"${libname}".so "$destdir"/usr/lib"$LIBDIRSUFFIX"/
-        ln -sf liblapack.so "$destdir"/usr/lib"$LIBDIRSUFFIX"/"${libname}".so."$V"
-        ln -sf liblapack.so "$destdir"/usr/lib"$LIBDIRSUFFIX"/"${libname}".so.3
+        docp build/lib/"${libname}".so "$PKGDIR"/usr/lib"$LIBDIRSUFFIX"/
+        ln -sf liblapack.so "$PKGDIR"/usr/lib"$LIBDIRSUFFIX"/"${libname}".so."$V"
+        ln -sf liblapack.so "$PKGDIR"/usr/lib"$LIBDIRSUFFIX"/"${libname}".so.3
     done
 
-    docp build/bin/* "$destdir"/usr/bin/
-    chmod 755 "$destdir"/usr/bin/*
+    docp build/bin/* "$PKGDIR"/usr/bin/
+    chmod 755 "$PKGDIR"/usr/bin/*
     dodoc LICENSE 
 }
 

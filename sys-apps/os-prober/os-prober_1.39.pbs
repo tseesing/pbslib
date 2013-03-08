@@ -31,13 +31,13 @@ pbs_build() {
 }
 
 pbs_install() {
-    docp os-prober linux-boot-prober     "$destdir"/usr/bin
-    docp newns              "$destdir"/usr/lib/os-prober
-    docp common.sh             "$destdir"/usr/share/os-prober
-    docp os-probes/*             "$destdir"/usr/lib/os-probes
-    docp linux-boot-probes/*           "$destdir"/usr/lib/linux-boot-probes
+    docp os-prober linux-boot-prober     "$PKGDIR"/usr/bin
+    docp newns              "$PKGDIR"/usr/lib/os-prober
+    docp common.sh             "$PKGDIR"/usr/share/os-prober
+    docp os-probes/*             "$PKGDIR"/usr/lib/os-probes
+    docp linux-boot-probes/*           "$PKGDIR"/usr/lib/linux-boot-probes
     dodoc README TODO         
-    cd "$destdir"
+    cd "$PKGDIR"
     docp usr/lib/os-probes/mounted/powerpc/20macosx   usr/lib/os-probes/mounted
     domv usr/lib/os-probes/mounted/common/*            usr/lib/os-probes/mounted
     domv usr/lib/os-probes/common/*                 usr/lib/os-probes/

@@ -29,8 +29,8 @@ pbs_install() {
     # Remove Bundled Qt Libraries, use system qt libs
     rm libQt*
     
-    docp * "$destdir"/usr/share/"$N"
+    docp * "$PKGDIR"/usr/share/"$N"
     dodesktop "$N".desktop "$N".xpm
-    docp "$filesdir"/"$N" "$destdir"/usr/bin/
+    docp "$FILESDIR"/"$N" "$PKGDIR"/usr/bin/
 }
 

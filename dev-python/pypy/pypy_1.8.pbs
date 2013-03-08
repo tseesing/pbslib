@@ -28,12 +28,12 @@ pbs_build() {
 }
 
 pbs_install() {
-    install -Dm755 pypy-c        "${destdir}"/opt/pypy/pypy-c
-    cd "${srcdir}"
-    docp lib-python/2.7          "${destdir}"/opt/pypy/lib-python/
-    docp lib-python/modified-2.7 "${destdir}"/opt/pypy/lib-python/
-    docp lib_pypy                "${destdir}"/opt/pypy/
-    docp include                 "${destdir}"/opt/pypy/
-    doln /opt/pypy/pypy-c        "${destdir}"/usr/bin/pypy
+    install -Dm755 pypy-c        "$PKGDIR"/opt/pypy/pypy-c
+    cd "$SRCDIR"
+    docp lib-python/2.7          "$PKGDIR"/opt/pypy/lib-python/
+    docp lib-python/modified-2.7 "$PKGDIR"/opt/pypy/lib-python/
+    docp lib_pypy                "$PKGDIR"/opt/pypy/
+    docp include                 "$PKGDIR"/opt/pypy/
+    doln /opt/pypy/pypy-c        "$PKGDIR"/usr/bin/pypy
 }
 

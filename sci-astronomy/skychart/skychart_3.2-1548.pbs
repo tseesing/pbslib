@@ -24,7 +24,7 @@ pbs_unpack() {
 }
 
 pbs_install() {
-    docp data/*  "$destdir"
-    sed -i 's/\.\./\/usr\/share/g' "$destdir"/usr/share/applications/skychart.desktop
+    docp data/*  "$PKGDIR"
+    sed -i 's/\.\./\/usr\/share/g' "$PKGDIR"/usr/share/applications/skychart.desktop
 }
 

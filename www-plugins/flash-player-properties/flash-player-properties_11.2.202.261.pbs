@@ -29,7 +29,7 @@ pbs_unpack() {
 }
 
 pbs_install () {
-    docp usr "$destdir"/
-    mkdir -p "$destdir"/etc/adobe
+    docp usr "$PKGDIR"/
+    mkdir -p "$PKGDIR"/etc/adobe
 }
 

@@ -33,6 +33,6 @@ pbs_build() {
 
 pbs_install() {
     domkinstall
-    docp scripts/memcached-tool "$destdir"/usr/bin/
+    docp scripts/memcached-tool "$PKGDIR"/usr/bin/
 }
 

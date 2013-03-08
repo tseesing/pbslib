@@ -24,8 +24,8 @@ pbs_unpack() {
 }
 
 pbs_install() {
-    docp startos "$destdir"/usr/share/icons/
+    docp startos "$PKGDIR"/usr/share/icons/
     # Note: faces dir is provided by gdm too.
-    docp faces   "$destdir"/usr/share/pixmaps/
+    docp faces   "$PKGDIR"/usr/share/pixmaps/
 }
 

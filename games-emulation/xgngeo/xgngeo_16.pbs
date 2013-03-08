@@ -40,6 +40,6 @@ pbs_build() {
 
 pbs_install() {
     domkinstall
-    docp LICENSE.txt "$destdir"/usr/share/"$N"
+    docp LICENSE.txt "$PKGDIR"/usr/share/"$N"
 }
 

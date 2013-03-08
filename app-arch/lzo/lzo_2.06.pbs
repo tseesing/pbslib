@@ -39,8 +39,8 @@ pbs_build() {
 pbs_install() {
     domkinstall
     # Install minilzo
-    install -m 755 libminilzo.so.0 "$destdir"/usr/lib"$LIBDIRSUFFIX"
-    install -p -m 644 minilzo/minilzo.h "$destdir"/usr/include/lzo
+    install -m 755 libminilzo.so.0 "$PKGDIR"/usr/lib"$LIBDIRSUFFIX"
+    install -p -m 644 minilzo/minilzo.h "$PKGDIR"/usr/include/lzo
     cd /usr/lib"$LIBDIRSUFFIX"/
     doln libminilzo.so.0 libminilzo.so
 }

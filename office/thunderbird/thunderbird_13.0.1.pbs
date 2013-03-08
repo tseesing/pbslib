@@ -28,7 +28,7 @@ pbs_patch() {
 }
 
 pbs_config() {
-    docp_rename "$filesdir"/mozconfig .mozconfig
+    docp_rename "$FILESDIR"/mozconfig .mozconfig
 }
 
 pbs_build() {
@@ -38,17 +38,17 @@ pbs_build() {
 }
 
 pbs_install() {
-    domkinstall -f client.mk DESTDIR="$destdir"
+    domkinstall -f client.mk DESTDIR="$PKGDIR"
     
     # icons
     for i in 16x16 22x22 24x24 32x32 48x48 256x256; do
         docp_rename other-licenses/branding/thunderbird/mailicon"${i/x*/}".png \
-             "$destdir"/usr/share/icons/hicolor/"${i}"/apps/thunderbird.png
+             "$PKGDIR"/usr/share/icons/hicolor/"${i}"/apps/thunderbird.png
     done
     
-    cd "$destdir"
+    cd "$PKGDIR"
 
-    docp "$filesdir"/vendor.js usr/lib/thunderbird/defaults/pref/
+    docp "$FILESDIR"/vendor.js usr/lib/thunderbird/defaults/pref/
     
     #rm -rf usr/lib/thunderbird/{dictionaries,hyphenation}
     #ln -sf /usr/share/hunspell usr/lib/thunderbird/dictionaries

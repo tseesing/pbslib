@@ -44,15 +44,15 @@ pbs_build() {
 }
 
 pbs_install() {
-    make DESTDIR="$destdir" install_lvm2 \
+    make DESTDIR="$PKGDIR" install_lvm2 \
       pkgconfigdir=/usr/lib"$LIBDIRSUFFIX"/pkgconfig
     # install applib
     domkinstall -C liblvm
     # /etc directories
-    cd "$destdir"
+    cd "$PKGDIR"
     install -d etc/lvm/{archive,backup}
     # systemd support
-    docp "$filesdir"/lvm2.conf usr/lib/tmpfiles.d/
+    docp "$FILESDIR"/lvm2.conf usr/lib/tmpfiles.d/
     dounit lvm-monitoring.service lvmetad.service lvmetad.socket 
     # enable lvmetad
     sed 's|use_lvmetad = 0|use_lvmetad = 1|' -i etc/lvm/lvm.conf

@@ -42,6 +42,6 @@ pbs_build() {
 
 pbs_install() {
     domkinstall
-    dodesktop "$filesdir"/"$N".desktop src/res/bitmaps/rapidsvn_32x32.xpm
+    dodesktop "$FILESDIR"/"$N".desktop src/res/bitmaps/rapidsvn_32x32.xpm
 }
 

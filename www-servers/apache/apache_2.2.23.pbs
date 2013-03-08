@@ -27,14 +27,14 @@ pbs_patch() {
     dopatch apachectl-confd.patch
     # Set default user
     sed -e 's#User daemon#User http#' -e 's#Group daemon#Group http#' -i docs/conf/httpd.conf.in
-    sed 's/LIBDIRSUFFIX/'"$LIBDIRSUFFIX"'/g' "$filesdir"/startos.layout >>config.layout
+    sed 's/LIBDIRSUFFIX/'"$LIBDIRSUFFIX"'/g' "$FILESDIR"/startos.layout >>config.layout
 }
 
 pbs_build() {
     for mpm in prefork worker itk; do
         if [ "${mpm}" = "itk" ]; then
             # Fix patch to apply with latest Apache version
-            sed -i -e 's/mpmt_os2}/mpmt_os2|winnt}/g' "$filesdir"/patches/03-add-mpm-to-build-system.patch
+            sed -i -e 's/mpmt_os2}/mpmt_os2|winnt}/g' "$FILESDIR"/patches/03-add-mpm-to-build-system.patch
             mkdir -p server/mpm/experimental/itk
             cp -r server/mpm/prefork/* server/mpm/experimental/itk/
             mv server/mpm/experimental/itk/prefork.c server/mpm/experimental/itk/itk.c
@@ -80,19 +80,19 @@ pbs_build() {
         if [ "${mpm}" = "prefork" ]; then
             domkinstall || die "apache $mpm make install failed."
         else
-            install -m755 httpd "$destdir"/usr/sbin/httpd.${mpm}
+            install -m755 httpd "$PKGDIR"/usr/sbin/httpd.${mpm}
         fi
         popd
     done
 }
 
 pbs_install() {
-    cd "$srcdir"
-    docp "$filesdir"/httpd "$destdir"/etc/logrotate.d/
-    docp "$filesdir"/apache "$destdir"/etc/default/
-    docp "$filesdir"/apache.conf "$destdir"/usr/lib/tmpfiles.d/
+    cd "$SRCDIR"
+    docp "$FILESDIR"/httpd "$PKGDIR"/etc/logrotate.d/
+    docp "$FILESDIR"/apache "$PKGDIR"/etc/default/
+    docp "$FILESDIR"/apache.conf "$PKGDIR"/usr/lib/tmpfiles.d/
     # symlinks for /etc/httpd
-    cd "$destdir"
+    cd "$PKGDIR"
     ln -fs /var/log/httpd etc/httpd/logs
     ln -fs /run/httpd etc/httpd/run
     ln -fs /usr/lib"$LIBDIRSUFFIX"/httpd/modules etc/httpd/modules

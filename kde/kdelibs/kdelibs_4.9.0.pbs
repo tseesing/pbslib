@@ -52,6 +52,6 @@ pbs_install() {
     # cert bundle seems to be hardcoded
     # link it to the one from ca-certificates
     rm -f usr/share/apps/kssl/ca-bundle.crt
-    doln  /etc/ssl/certs/ca-certificates.crt "$destdir"/usr/share/apps/kssl/ca-bundle.crt
+    doln  /etc/ssl/certs/ca-certificates.crt "$PKGDIR"/usr/share/apps/kssl/ca-bundle.crt
 }
 

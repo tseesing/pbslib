@@ -23,7 +23,7 @@ INSTALL="$N.install"
 NOTES=""
 
 pbs_install() {
-    docp "$YBS_SOURCE"/1g1g.air  "$destdir"/usr/lib/1g1g-air/
+    docp "$YBS_SOURCE"/1g1g.air  "$PKGDIR"/usr/lib/1g1g-air/
     dodesktop "1g1g-air.desktop" "1g1g-air.png"
 }
 

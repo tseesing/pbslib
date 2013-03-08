@@ -33,7 +33,7 @@ pbs_build() {
 
 pbs_install() {
     domkinstall profiledir=/usr/share/bash-completion/completions
-    cd "$destdir"
+    cd "$PKGDIR"
     # move udev helpers and rules to /usr/lib
     mv lib/udev usr/lib/
     rm -r lib

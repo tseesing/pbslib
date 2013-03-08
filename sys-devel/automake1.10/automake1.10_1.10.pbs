@@ -33,7 +33,7 @@ pbs_install() {
     domkinstall
 
     # Confict with new version
-    cd "$destdir"
+    cd "$PKGDIR"
     mv usr/bin/aclocal{,"$V"}
     mv usr/bin/automake{,"$V"}
 }

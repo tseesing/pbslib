@@ -26,8 +26,8 @@ pbs_unpack() {
 }
 
 pbs_install() {
-    docp * "${destdir}"/opt/"$N"
-    docp "$filesdir"/maniadrive  "$destdir"/usr/bin/
+    docp * "$PKGDIR"/opt/"$N"
+    docp "$FILESDIR"/maniadrive  "$PKGDIR"/usr/bin/
     dodesktop "$N".desktop "$N".png
 }
 

@@ -47,6 +47,6 @@ pbs_build() {
 }
 
 pbs_install() {
-    domkinstall SHELL=/bin/bash prefix="$destdir"/usr
+    domkinstall SHELL=/bin/bash prefix="$PKGDIR"/usr
 }
 

@@ -25,10 +25,10 @@ pbs_unpack() {
 pbs_config() {
     #sed -i 's/pcmanfm\/lxde.conf/pcmanfm\/LXDE.conf/g' Makefile.am
     #my default config
-    #cp $filesdir/LXDE.conf.in  pcmanfm
-    #cp $filesdir/panel.in  lxpanel
-    #cp $filesdir/autostart  .
-    #cp $filesdir/desktop.conf .
+    #cp $FILESDIR/LXDE.conf.in  pcmanfm
+    #cp $FILESDIR/panel.in  lxpanel
+    #cp $FILESDIR/autostart  .
+    #cp $FILESDIR/desktop.conf .
     config+="--sysconfdir=/etc --enable-man"
     doconfig
 }

@@ -11,7 +11,7 @@ LICENSE="BSD"
 PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
 SRC_URI="http://commondatastorage.googleapis.com/chromium-browser-official/"$N-$V".tar.bz2"
-CHECKSUM="985f41e4ef7d4deb2d2c26febb110947"
+CHECKSUM="28daf529c355fb20253279f54f1e8507055b8ed694059d152c2d083c26be1fed"
 
 RDEPEND="gtk2 dbus-glib nss alsa-lib xdg-utils bzip2 libevent libgcrypt desktop-file-utils cups"
 BDEPEND="python perl gperf yasm mesa libgnome-keyring elfutils subversion nacl-toolchain-newlib"
@@ -28,20 +28,27 @@ pbs_unpack() {
 pbs_patch() {
     # Add baidu tn
     dopatch baidu-tn-25.patch
-    # Add StartOS/50 to useragent
+    
+    # Add StartOS to useragent
     dopatch chromium_useragent-23.patch
+
+    # Fix build with glibc 2.16
+    dopatch chromium-20.0.1132.57-glib-2.16-use-siginfo_t.patch
+
+    # http://code.google.com/p/chromium/issues/detail?id=160574
+    dopatch chromium-25.0.1364.152-fix-crash-when-cups-is-down.patch
+
     # Fix compilation against system libpng (patch from Gentoo)
     dopatch chromium-system-libpng-r0.patch
     # It somehow still manages to build against bundled libpng
     find third_party/libpng -type f -not -iname '*.gyp*' -delete
-    # Fix build with glibc 2.16
-    dopatch chromium-20.0.1132.57-glib-2.16-use-siginfo_t.patch
+
     # Fix build without NaCl glibc toolchain (patch from Gentoo)
     dopatch chromium-ppapi-r0.patch
+
     # Fix build without NaCl pnacl toolchain (patch from Gentoo)
     dopatch chromium-no-pnacl-r0.patch
-    # http://code.google.com/p/chromium/issues/detail?id=109527
-    sed -i 's|glib/gutils.h|glib.h|' ui/base/l10n/l10n_util.cc
+
     # Missing gyp files in tarball (http://crbug.com/144823)
     sed -i '/nacl_test_data\.gyp/d' chrome/chrome_tests.gypi
 }
@@ -52,8 +59,10 @@ pbs_config() {
     cp -a /usr/lib/nacl-toolchain-newlib sdk/nacl-sdk
     tar czf native_client/toolchain/.tars/naclsdk_linux_x86.tgz sdk
     rm -r sdk
+    
     # CFLAGS are passed through release_extra_cflags below
     export -n CFLAGS CXXFLAGS
+    
     # Silence "identifier 'nullptr' is a keyword in C++11" warnings
     #CFLAGS+=' -Wno-c++0x-compat'
     
@@ -70,6 +79,7 @@ pbs_config() {
         -Dproprietary_codecs=1 \
         -Duse_system_bzip2=1 \
         -Duse_system_ffmpeg=0 \
+        -Duse_system_harfbuzz=1 \
         -Duse_system_libevent=1 \
         -Duse_system_libjpeg=1 \
         -Duse_system_libpng=1 \
@@ -88,28 +98,31 @@ pbs_build() {
 }
 
 pbs_install() {
-    mkdir -p "$destdir"
+    mkdir -p "$PKGDIR"
+    
     # core 
-    install -D out/Release/chrome "${destdir}"/"$chromiumdir"/chromium
-     install -Dm4755 -o root -g root out/Release/chrome_sandbox "${destdir}"/"$chromiumdir"/chromium-sandbox
-    cp out/Release/{*.pak,libffmpegsumo.so,nacl_helper{,_bootstrap}} out/Release/{libppGoogleNaClPluginChrome.so,nacl_irt_*.nexe} "$destdir"/"$chromiumdir"/
-    cp -a out/Release/locales "${destdir}"/"$chromiumdir"/
+    install -D out/Release/chrome "$PKGDIR"/"$chromiumdir"/chromium
+    install -Dm4755 -o root -g root out/Release/chrome_sandbox "$PKGDIR"/"$chromiumdir"/chromium-sandbox
+    cp out/Release/{*.pak,libffmpegsumo.so,nacl_helper{,_bootstrap}} out/Release/{libppGoogleNaClPluginChrome.so,nacl_irt_*.nexe} "$PKGDIR"/"$chromiumdir"/
+    cp -a out/Release/locales "$PKGDIR"/"$chromiumdir"/
+    
     # man
     dodoc LICENSE 
-    install -Dm644 out/Release/chrome.1 "${destdir}"/usr/share/man/man1/chromium.1
+    install -Dm644 out/Release/chrome.1 "$PKGDIR"/usr/share/man/man1/chromium.1
+    
     # desktop and icon
     dodesktop "chromium.desktop" "chrome/app/theme/chromium/product_logo_48.png"
     for size in 22 24 48 64 128 256; do
-        install -Dm644 chrome/app/theme/chromium/product_logo_"${size}".png "${destdir}"/usr/share/icons/hicolor/"${size}"x"${size}"/apps/chromium.png
+        install -Dm644 chrome/app/theme/chromium/product_logo_"${size}".png "$PKGDIR"/usr/share/icons/hicolor/"${size}"x"${size}"/apps/chromium.png
     done
     for size in 16 32; do
-        install -Dm644 chrome/app/theme/default_100_percent/chromium/product_logo_"${size}".png "$destdir"/usr/share/icons/hicolor/"${size}"x"${size}"/apps/chromium.png
+        install -Dm644 chrome/app/theme/default_100_percent/chromium/product_logo_"${size}".png "$PKGDIR"/usr/share/icons/hicolor/"${size}"x"${size}"/apps/chromium.png
     done
-    # custom
-    cd "$destdir"
+    
+    # distribution custom
+    cd "$PKGDIR"
     [[ $ARCH == i686 ]] && rm "$chromiumdir"/nacl_irt_x86_64.nexe
-    install -m 0755 -D "$filesdir"/chromium.sh usr/bin/chromium
-    docp_rename "$filesdir"/default-preferences/"$N"-23.tar.bz2 "$chromiumdir"/"$N".tar.bz2
-    docp_rename "$filesdir"/chromium-conf  etc/default/chromium
+    install -m 0755 -D "$FILESDIR"/chromium.sh usr/bin/chromium
+    docp_rename "$FILESDIR"/default-preferences/"$N"-23.tar.bz2 "$chromiumdir"/"$N".tar.bz2
+    docp_rename "$FILESDIR"/chromium-conf  etc/default/chromium
 }
-

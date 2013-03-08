@@ -76,7 +76,7 @@ pbs_build() {
 
 pbs_install() {
     domkinstall
-    docp $filesdir/mingw32-gcc.sh "$destdir"/etc/profile.d/
+    docp $FILESDIR/mingw32-gcc.sh "$PKGDIR"/etc/profile.d/
 }
 
 

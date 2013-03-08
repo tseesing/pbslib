@@ -35,12 +35,12 @@ pbs_build() {
 
 pbs_install() {
     # For linking
-    make -C libpurple DESTDIR="$destdir" install-libLTLIBRARIES
+    make -C libpurple DESTDIR="$PKGDIR" install-libLTLIBRARIES
     domkinstall -C finch
     domkinstall -C doc 
     # Clean up file provided by libpurple package
-    make -C libpurple DESTDIR="$destdir" uninstall-libLTLIBRARIES
-    rm -f "$destdir"/usr/share/man/man1/pidgin.1
+    make -C libpurple DESTDIR="$PKGDIR" uninstall-libLTLIBRARIES
+    rm -f "$PKGDIR"/usr/share/man/man1/pidgin.1
     perl_cleanup
 }
 

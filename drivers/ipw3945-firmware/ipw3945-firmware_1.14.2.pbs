@@ -23,7 +23,7 @@ pbs_unpack() {
 }
 
 pbs_install() {
-    docp *.ucode "$destdir"/lib/firmware/
+    docp *.ucode "$PKGDIR"/lib/firmware/
     dodoc LICENSE* 
 }
 

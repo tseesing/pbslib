@@ -31,17 +31,17 @@ pbs_patch() {
 
     # Aufs patches
     for i in $PATCHES; do
-        dopatch "$filesdir"/"$AUFS"/"$i"
+        dopatch "$FILESDIR"/"$AUFS"/"$i"
     done
 
-    docp "$filesdir"/"$AUFS"/fs/aufs                   fs/
-    docp "$filesdir"/"$AUFS"/include/linux/aufs_type.h include/linux/
+    docp "$FILESDIR"/"$AUFS"/fs/aufs                   fs/
+    docp "$FILESDIR"/"$AUFS"/include/linux/aufs_type.h include/linux/
 }
 
 pbs_config() {
     case "$ARCH" in
-        i?86) docp_rename "$filesdir"/config-"$V$R" .config ;;
-          x86_64) docp_rename "$filesdir"/config-"$V$R"-"$ARCH" .config
+        i?86) docp_rename "$FILESDIR"/config-"$V$R" .config ;;
+          x86_64) docp_rename "$FILESDIR"/config-"$V$R"-"$ARCH" .config
     esac
 }
 
@@ -53,32 +53,31 @@ pbs_build() {
 }
 
 pbs_install() {
-    make INSTALL_MOD_PATH="$destdir" modules_install
+    make INSTALL_MOD_PATH="$PKGDIR" modules_install
     # Note that, most of firmwares are provided by linux-firmware package
-    #make INSTALL_MOD_PATH="$destdir" firmware_install
-    rm -rf "$destdir"/lib/firmware/
+    #make INSTALL_MOD_PATH="$PKGDIR" firmware_install
+    rm -rf "$PKGDIR"/lib/firmware/
     
     version="$(make kernelrelease)"
     ARCH="$(get_arch)"
 
     case "$ARCH" in
-      i?86)   docp_rename "$(readlink -f arch/i386/boot/bzImage)"  "$destdir"/boot/vmlinuz-"$version" ;;
-          x86_64) docp_rename "$(readlink -f arch/$ARCH/boot/bzImage)" "$destdir"/boot/vmlinuz-"$version"
+      i?86)   docp_rename "$(readlink -f arch/i386/boot/bzImage)"  "$PKGDIR"/boot/vmlinuz-"$version" ;;
+          x86_64) docp_rename "$(readlink -f arch/$ARCH/boot/bzImage)" "$PKGDIR"/boot/vmlinuz-"$version"
         esac
 
-    docp_rename .config    "$destdir"/boot/config-"$version"
-    docp_rename System.map "$destdir"/boot/System.map-"$version"
+    docp_rename .config    "$PKGDIR"/boot/config-"$version"
+    docp_rename System.map "$PKGDIR"/boot/System.map-"$version"
     
     for i in build source;do
-        rm "$destdir"/lib/modules/"$version"/"${i}"
-        ln -sf /usr/src/linux "$destdir"/lib/modules/"$version"/"${i}"
+        rm "$PKGDIR"/lib/modules/"$version"/"${i}"
+        ln -sf /usr/src/linux "$PKGDIR"/lib/modules/"$version"/"${i}"
     done
 
     # Gzip -9 all modules to safe 100MB of space
-    find "${destdir}" -name '*.ko' -exec gzip -9 {} \;
+    find "$PKGDIR" -name '*.ko' -exec gzip -9 {} \;
 
     # For ykms
-    mkdir -p "${destdir}"/var/ypkg/modules/
-    echo "$version $ARCH" >"${destdir}"/var/ypkg/modules/kernel
+    mkdir -p "$PKGDIR"/var/ypkg/modules/
+    echo "$version $ARCH" >"$PKGDIR"/var/ypkg/modules/kernel
 }
-

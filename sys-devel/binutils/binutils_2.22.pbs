@@ -41,6 +41,6 @@ pbs_build() {
 pbs_install() {    
     domkinstall tooldir=/usr
     # Add some useful headers
-    docp ../include/{libiberty.h,demangle.h} "$destdir"/usr/include
+    docp ../include/{libiberty.h,demangle.h} "$PKGDIR"/usr/include
 }
 

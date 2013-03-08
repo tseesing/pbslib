@@ -30,6 +30,6 @@ pbs_install() {
     export PKG_CONFIG_PATH+=/lib/pkgconfig/
     make -C casper-md5check/ 
     docp casper-md5check/casper-md5check usr/lib/casper/
-    docp etc sbin usr "$destdir"
+    docp etc sbin usr "$PKGDIR"
 }
 

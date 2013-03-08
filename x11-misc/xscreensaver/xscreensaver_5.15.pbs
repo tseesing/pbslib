@@ -38,9 +38,9 @@ pbs_build() {
 }
 
 pbs_install() {
-    make install_prefix="$destdir" install
-    dodoc "$filesdir"/LICENSE
+    make install_prefix="$PKGDIR" install
+    dodoc "$FILESDIR"/LICENSE
     dopamd xscreensaver.pam
-    #echo "NoDisplay=true" >> "${destdir}"/usr/share/applications/xscreensaver-properties.desktop
+    #echo "NoDisplay=true" >> "$PKGDIR"/usr/share/applications/xscreensaver-properties.desktop
 }
 

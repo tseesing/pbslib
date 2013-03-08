@@ -36,6 +36,6 @@ pbs_build() {
 }
 
 pbs_install() {
-    domkinstall prefix="$destdir"/usr
+    domkinstall prefix="$PKGDIR"/usr
 }
 

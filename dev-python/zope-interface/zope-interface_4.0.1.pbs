@@ -33,8 +33,8 @@ pbs_build() {
 
 pbs_install() {
     domkinstall --optimize=1
-    docp src/zope/__init__.py "$destdir"/usr/lib"$LIBDIRSUFFIX"/python2.7/site-packages/zope/
+    docp src/zope/__init__.py "$PKGDIR"/usr/lib"$LIBDIRSUFFIX"/python2.7/site-packages/zope/
     #delete debug
-    rm "$destdir"/usr/lib"$LIBDIRSUFFIX"/python2.7/site-packages/zope/interface/_zope_interface_coptimizations.so
+    rm "$PKGDIR"/usr/lib"$LIBDIRSUFFIX"/python2.7/site-packages/zope/interface/_zope_interface_coptimizations.so
 }
 

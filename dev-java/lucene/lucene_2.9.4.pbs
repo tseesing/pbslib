@@ -23,15 +23,15 @@ pbs_unpack() {
 
 pbs_install() {
     # install all *.jar files
-    docp lucene-core-2.9.4.jar lucene-demos-2.9.4.jar lib/servlet-api-2.4.jar "$destdir"/opt/java/
+    docp lucene-core-2.9.4.jar lucene-demos-2.9.4.jar lib/servlet-api-2.4.jar "$PKGDIR"/opt/java/
 
     #
     for i in `find contrib -name '*.jar'`; do
-         docp "$i" "$destdir"/opt/java/lucene-contrib
+         docp "$i" "$PKGDIR"/opt/java/lucene-contrib
     done 
     
     # create symlinks
-    cd "$destdir"/opt/java/
+    cd "$PKGDIR"/opt/java/
     for i in `ls -1 *$V$R*.jar`; do
         j=${i//-$V$R/}
         ln -s $i $j
@@ -41,7 +41,7 @@ pbs_install() {
     ln -s servlet-api-2.4.jar servlet-api.jar
 
     #
-    cd "$destdir"/opt/java/lucene-contrib
+    cd "$PKGDIR"/opt/java/lucene-contrib
     for i in `ls -1 *$V$R*.jar`; do
         j=${i//-$V$R/}
             ln -s $i $j

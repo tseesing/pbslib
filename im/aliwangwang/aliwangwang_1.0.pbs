@@ -27,7 +27,7 @@ pbs_unpack() {
 }
 
 pbs_install() {
-    docp data/*  "$destdir"
-    doln /usr/bin/AliWangWang "$destdir"/usr/bin/"$N"
+    docp data/*  "$PKGDIR"
+    doln /usr/bin/AliWangWang "$PKGDIR"/usr/bin/"$N"
 }
 

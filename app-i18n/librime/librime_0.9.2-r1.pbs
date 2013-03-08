@@ -30,8 +30,8 @@ pbs_build() {
 }
 
 pbs_install() {
-      make DESTDIR="$destdir" install
+      make DESTDIR="$PKGDIR" install
       # Brise
-      docp ../brise "$destdir"/usr/share/
+      docp ../brise "$PKGDIR"/usr/share/
 }
 

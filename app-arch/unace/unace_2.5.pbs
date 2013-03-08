@@ -34,7 +34,7 @@ pbs_build() {
 }
 
 pbs_install() {
-    docp unace "$destdir"/usr/bin/
+    docp unace "$PKGDIR"/usr/bin/
     dodoc licence
 }
 

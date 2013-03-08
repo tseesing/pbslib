@@ -21,8 +21,8 @@ CONFLICT=""
 INSTALL="$N.install"
 
 pbs_install() {
-    docp_rename "$YBS_SOURCE"/1g1g."$V".air "$destdir"/usr/lib/1g1g-air/1g1g.air
+    docp_rename "$YBS_SOURCE"/1g1g."$V".air "$PKGDIR"/usr/lib/1g1g-air/1g1g.air
     dodesktop "1g1g-air.desktop" "1g1g-air.png"
-    docp "$filesdir"/"$N"  "$destdir"/usr/bin/
+    docp "$FILESDIR"/"$N"  "$PKGDIR"/usr/bin/
 }
 

@@ -31,8 +31,8 @@ pbs_build() {
 }
 
 pbs_install() {
-    mkdir -p "$destdir"/usr 
-    make prefix="$destdir"/usr LIBPATH="$destdir"/usr/lib"$LIBDIRSUFFIX"  install
+    mkdir -p "$PKGDIR"/usr 
+    make prefix="$PKGDIR"/usr LIBPATH="$PKGDIR"/usr/lib"$LIBDIRSUFFIX"  install
     doman doc/man/*.3 doc/man/*.5
 }
 

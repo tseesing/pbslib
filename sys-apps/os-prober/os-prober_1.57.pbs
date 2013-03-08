@@ -40,21 +40,21 @@ pbs_build() {
 }
 
 pbs_install() {
-    install -Dm755 linux-boot-prober "$destdir"/usr/bin/linux-boot-prober
-    install -Dm755 os-prober "$destdir"/usr/bin/os-prober
-    install -Dm755 newns "$destdir"/usr/lib/os-prober/newns
-    install -Dm755 common.sh "$destdir"/usr/share/os-prober/common.sh  
+    install -Dm755 linux-boot-prober "$PKGDIR"/usr/bin/linux-boot-prober
+    install -Dm755 os-prober "$PKGDIR"/usr/bin/os-prober
+    install -Dm755 newns "$PKGDIR"/usr/lib/os-prober/newns
+    install -Dm755 common.sh "$PKGDIR"/usr/share/os-prober/common.sh  
 
     for dir in os-probes os-probes/mounted os-probes/init linux-boot-probes linux-boot-probes/mounted; do
-        install -dm755 "$destdir"/usr/lib/"$dir"
-        install -m755 -t "$destdir"/usr/lib/"$dir" "$dir"/common/*
-        [[ -d "$dir"/x86 ]] && install -m755 -t "$destdir"/usr/lib/"$dir" "$dir"/x86/*
+        install -dm755 "$PKGDIR"/usr/lib/"$dir"
+        install -m755 -t "$PKGDIR"/usr/lib/"$dir" "$dir"/common/*
+        [[ -d "$dir"/x86 ]] && install -m755 -t "$PKGDIR"/usr/lib/"$dir" "$dir"/x86/*
     done
 
     install -Dm755 os-probes/mounted/powerpc/20macosx $pkgdir/usr/lib/os-probes/mounted/20macosx
                               
     # create a empty labels file, will be used by os-prober at execution
-    cd "$destdir"
+    cd "$PKGDIR"
     mkdir -p var/lib/os-prober
     touch var/lib/os-prober/labels 
     chmod 644 var/lib/os-prober/labels

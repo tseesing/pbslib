@@ -34,6 +34,6 @@ pbs_build() {
 
 pbs_install() {
     domkinstall
-    install -Dm644 doc/mpc-completion.bash "${destdir}"/usr/share/bash-completion/completions/mpc
+    install -Dm644 doc/mpc-completion.bash "$PKGDIR"/usr/share/bash-completion/completions/mpc
 }
 

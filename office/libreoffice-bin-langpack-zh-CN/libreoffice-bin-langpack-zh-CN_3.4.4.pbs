@@ -25,7 +25,7 @@ pbs_install() {
         echo ">>> Unpack $(basename $i)"
         ar x "${i}"; tar xf data.tar.gz
     done    
-    docp opt "$destdir"
+    docp opt "$PKGDIR"
 }
 
 

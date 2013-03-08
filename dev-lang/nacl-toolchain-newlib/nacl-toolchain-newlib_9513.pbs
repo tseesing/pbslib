@@ -68,10 +68,10 @@ pbs_patch() {
 }
 
 pbs_build() {
-    domake PREFIX="$srcdir"/"$N" CANNED_REVISION="yes" build-with-newlib
+    domake PREFIX="$SRCDIR"/"$N" CANNED_REVISION="yes" build-with-newlib
 }
 
 pbs_install() {
-    docp "$N" "$destdir"/usr/lib/
+    docp "$N" "$PKGDIR"/usr/lib/
 }
 

@@ -25,6 +25,6 @@ pbs_build() {
 }
 
 pbs_install() {
-    docp wait-for-root rzscontrol "$destdir"/usr/lib/initramfs-tools/bin
+    docp wait-for-root rzscontrol "$PKGDIR"/usr/lib/initramfs-tools/bin
 }
 

@@ -33,10 +33,10 @@ pbs_build() {
 pbs_install() {
     kodir=/lib/modules/$(uname -r)/kernel/fs/squashfs
     tooldir=/usr/bin
-    install -d -m755 "$destdir"/$kodir  "$destdir"/usr/bin
-    cp -a ./C/Compress/Lzma/kmod/unlzma.ko  ./C/Compress/Lzma/kmod/sqlzma.ko  ./squashfs/squashfs.ko "$destdir"/$kodir
+    install -d -m755 "$PKGDIR"/$kodir  "$PKGDIR"/usr/bin
+    cp -a ./C/Compress/Lzma/kmod/unlzma.ko  ./C/Compress/Lzma/kmod/sqlzma.ko  ./squashfs/squashfs.ko "$PKGDIR"/$kodir
         for i in mksquashfs unsquashfs; do
-        cp -a squashfs3.4/squashfs-tools/$i "$destdir"/usr/bin/"$i"-lzma
+        cp -a squashfs3.4/squashfs-tools/$i "$PKGDIR"/usr/bin/"$i"-lzma
     done
 }
 

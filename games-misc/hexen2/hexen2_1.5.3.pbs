@@ -58,36 +58,36 @@ pbs_build() {
 }
 
 pbs_install() {
-    mkdir -p "${destdir}"/opt/"$N"/
-    install -D -m755 engine/hexen2/h2ded             "${destdir}"/opt/"$N"/h2ded
-    install -D -m755 engine/hexen2/glhexen2          "${destdir}"/opt/"$N"/glhexen2
-    install -D -m755 engine/hexenworld/client/glhwcl "${destdir}"/opt/"$N"/glhwcl
-    install -D -m755 engine/hexenworld/server/hwsv   "${destdir}"/opt/"$N"/hwsv
-    install -D -m755 hw_utils/hwmaster/hwmaster      "${destdir}"/opt/"$N"/hwmaster
-    install -D -m755 launcher/h2launcher             "${destdir}"/opt/"$N"/h2launcher
+    mkdir -p "$PKGDIR"/opt/"$N"/
+    install -D -m755 engine/hexen2/h2ded             "$PKGDIR"/opt/"$N"/h2ded
+    install -D -m755 engine/hexen2/glhexen2          "$PKGDIR"/opt/"$N"/glhexen2
+    install -D -m755 engine/hexenworld/client/glhwcl "$PKGDIR"/opt/"$N"/glhwcl
+    install -D -m755 engine/hexenworld/server/hwsv   "$PKGDIR"/opt/"$N"/hwsv
+    install -D -m755 hw_utils/hwmaster/hwmaster      "$PKGDIR"/opt/"$N"/hwmaster
+    install -D -m755 launcher/h2launcher             "$PKGDIR"/opt/"$N"/h2launcher
 
     # Make a symlink of the game-launcher
-    docp "$filesdir"/hexen2 "${destdir}"/usr/bin/
+    docp "$FILESDIR"/hexen2 "$PKGDIR"/usr/bin/
 
     dodoc docs/COPYING docs/README.*
 
     # Install data
-    docp gamecode-"$_dataver"/hc/h2/{progs.dat,progs2.dat} "${destdir}"/opt/"$N"/data1/
-    docp gamecode-"$_dataver"/txt/h2/{hexen.rc,strings.txt,default.cfg} "${destdir}"/opt/"$N"/data1/
+    docp gamecode-"$_dataver"/hc/h2/{progs.dat,progs2.dat} "$PKGDIR"/opt/"$N"/data1/
+    docp gamecode-"$_dataver"/txt/h2/{hexen.rc,strings.txt,default.cfg} "$PKGDIR"/opt/"$N"/data1/
     
-    docp gamecode-"$_dataver"/hc/portals/progs.dat "${destdir}"/opt/"$N"/portals/
+    docp gamecode-"$_dataver"/hc/portals/progs.dat "$PKGDIR"/opt/"$N"/portals/
     docp gamecode-"$_dataver"/txt/portals/{hexen.rc,strings.txt,infolist.txt,maplist.txt,puzzles.txt,default.cfg} \
-        "${destdir}"/opt/"$N"/portals/
+        "$PKGDIR"/opt/"$N"/portals/
     
-    docp gamecode-"$_dataver"/hc/hw/hwprogs.dat "${destdir}"/opt/"$N"/hw/
-    docp gamecode-"$_dataver"/txt/hw/{strings.txt,default.cfg} "${destdir}"/opt/"$N"/hw/
+    docp gamecode-"$_dataver"/hc/hw/hwprogs.dat "$PKGDIR"/opt/"$N"/hw/
+    docp gamecode-"$_dataver"/txt/hw/{strings.txt,default.cfg} "$PKGDIR"/opt/"$N"/hw/
     
-    docp hw/pak4.pak     "${destdir}"/opt/"$N"/hw/
-    docp data1/pak0.pak  "${destdir}"/opt/"$N"/data1/
+    docp hw/pak4.pak     "$PKGDIR"/opt/"$N"/hw/
+    docp data1/pak0.pak  "$PKGDIR"/opt/"$N"/data1/
 
     # Install the xdelta updates
-    docp h2patch/h2patch "${destdir}"/opt/"$N"/
-    docp gamecode-"$_dataver"/patch111/patchdat/data1/{data1pk0.xd3,data1pk1.xd3} "${destdir}"/opt/"$N"/patchdat/data1/
+    docp h2patch/h2patch "$PKGDIR"/opt/"$N"/
+    docp gamecode-"$_dataver"/patch111/patchdat/data1/{data1pk0.xd3,data1pk1.xd3} "$PKGDIR"/opt/"$N"/patchdat/data1/
 
     dodesktop "$N".desktop engine/resource/h2_32x32x4.png
 }

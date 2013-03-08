@@ -33,7 +33,7 @@ pbs_build() {
 
 pbs_install() {
     domkinstall
-    docp ../include/cuetools/{cd,cdtext,cuefile}.h "${destdir}"/usr/include/cuetools
+    docp ../include/cuetools/{cd,cdtext,cuefile}.h "$PKGDIR"/usr/include/cuetools
 }
 
 

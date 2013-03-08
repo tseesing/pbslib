@@ -61,6 +61,6 @@ pbs_build() {
 
 pbs_install() {
     domkinstall -C build
-    rm -rf "$destdir"/usr/lib/CLuceneConfig.cmake
+    rm -rf "$PKGDIR"/usr/lib/CLuceneConfig.cmake
 }
 

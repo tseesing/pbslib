@@ -27,8 +27,8 @@ pbs_unpack() {
 }
 
 pbs_install() {
-    docp lovewallpaper "$destdir"/usr/share/pyshared
+    docp lovewallpaper "$PKGDIR"/usr/share/pyshared
     dodesktop data/love-wallpaper.desktop data/love-wallpaper.png 
-    docp love-wallpaper "$destdir"/usr/bin
+    docp love-wallpaper "$PKGDIR"/usr/bin
 }
 

@@ -29,7 +29,7 @@ pbs_build() {
 }
 
 pbs_install() {
-    docp src/efibootmgr/efibootmgr "$destdir"/usr/sbin/
+    docp src/efibootmgr/efibootmgr "$PKGDIR"/usr/sbin/
     doman src/man/man8/efibootmgr.8
 }
 

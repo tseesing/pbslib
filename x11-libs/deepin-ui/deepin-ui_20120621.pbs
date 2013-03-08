@@ -35,7 +35,7 @@ pbs_install() {
         docp $i.py usr/share/dtk/demos/
     done
     
-    cd "$destdir"
+    cd "$PKGDIR"
     domv usr/dtk/theme usr/lib/python2.7/site-packages/dtk/
     rm -rf usr/dtk
 }

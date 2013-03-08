@@ -69,9 +69,9 @@ pbs_install() {
     domkinstall -C client
     # man
     for man in mysql mysqladmin mysqlcheck mysqldump mysqlimport mysqlshow mysqlslap; do
-        doman "$srcdir"/man/"${man}".1
+        doman "$SRCDIR"/man/"${man}".1
     done
     # provided by mysql package
-    rm "$destdir"/usr/bin/{mysql_{plugin,upgrade},mysqlbinlog,mysqltest}
+    rm "$PKGDIR"/usr/bin/{mysql_{plugin,upgrade},mysqlbinlog,mysqltest}
 }
 

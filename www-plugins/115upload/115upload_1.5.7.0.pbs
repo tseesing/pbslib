@@ -29,8 +29,8 @@ pbs_unpack() {
 }
 
 pbs_install() {
-    docp 115upload.so "$destdir"/usr/lib"$LIBDIRSUFFIX"/115u/
-    cd "$destdir"
+    docp 115upload.so "$PKGDIR"/usr/lib"$LIBDIRSUFFIX"/115u/
+    cd "$PKGDIR"
     for i in xulrunner mozilla iceape iceweasel firefox midbrowser xulrunner-addons; do
         doln /usr/lib"$LIBDIRSUFFIX"/115u/115upload.so usr/lib"$LIBDIRSUFFIX"/"${i}"/plugins/115upload.so
     done

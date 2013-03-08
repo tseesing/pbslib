@@ -22,12 +22,12 @@ pbs_unpack() {
 }
 
 pbs_install() {
-    docp * "$destdir"/usr/share/"$N"
-    cd "$destdir"
+    docp * "$PKGDIR"/usr/share/"$N"
+    cd "$PKGDIR"
     dodesktop "$N.desktop"               usr/share/"$N"/skin/logo.png
-    docp "$filesdir"/mb/*                usr/share/"$N"/mb
-    docp "$filesdir"/skin/*              usr/share/"$N"/skin
-    docp "$filesdir"/{yong.ini,yong.xml} usr/share/"$N"
+    docp "$FILESDIR"/mb/*                usr/share/"$N"/mb
+    docp "$FILESDIR"/skin/*              usr/share/"$N"/skin
+    docp "$FILESDIR"/{yong.ini,yong.xml} usr/share/"$N"
     docp usr/share/"$N"/yong.xml         usr/share/ibus/component
     doln /usr/share/"$N"/yong            usr/bin/yong
     doln /usr/share/"$N"/yong-config     usr/bin/yong-config

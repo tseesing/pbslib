@@ -33,10 +33,10 @@ pbs_install() {
     domkinstall
     dodoc COPYING
     # Resolve multilib conflict
-    cd "$destdir"
+    cd "$PKGDIR"
     if [[ "$ARCH" == "x86_64" ]]; then
         mv usr/include/ogg/config_types{,-64}.h
-        docp "$filesdir"/config_types.h usr/include/ogg/
+        docp "$FILESDIR"/config_types.h usr/include/ogg/
     fi
 }
 

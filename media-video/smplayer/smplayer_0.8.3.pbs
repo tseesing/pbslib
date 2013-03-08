@@ -33,7 +33,7 @@ pbs_build() {
 }
 
 pbs_install() {
-    make PREFIX="$destdir"/usr install
+    make PREFIX="$PKGDIR"/usr install
     #dodesktop "$N".desktop
 }
 

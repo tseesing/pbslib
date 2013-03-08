@@ -36,8 +36,8 @@ pbs_build() {
 pbs_install() {
     domkinstall
     dodoc COPYING.slirpvde
-    cd "$destdir"
-    docp "$filesdir"/{vde-config.sample,vde-connection.sample} etc/vde/
-    docp "$filesdir"/{dhcpd.conf.sample,iptables.rules.sample} usr/share/vde2/
+    cd "$PKGDIR"
+    docp "$FILESDIR"/{vde-config.sample,vde-connection.sample} etc/vde/
+    docp "$FILESDIR"/{dhcpd.conf.sample,iptables.rules.sample} usr/share/vde2/
 }
 

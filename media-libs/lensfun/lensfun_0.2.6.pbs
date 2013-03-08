@@ -32,6 +32,6 @@ pbs_build() {
 }
 
 pbs_install() {
-    make INSTALL_PREFIX="$destdir" install
+    make INSTALL_PREFIX="$PKGDIR" install
 }
 

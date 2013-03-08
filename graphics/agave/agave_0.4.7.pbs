@@ -41,7 +41,7 @@ pbs_build() {
 
 pbs_install() {
     domkinstall GCONF_DISABLE_MAKEFILE_SCHEMA_INSTALL=1
-    cd "$destdir"
+    cd "$PKGDIR"
     docp_rename "usr/share/icons/hicolor/32x32/apps/agave.png" "usr/share/pixmaps/agave-icon.png"
 }
 

@@ -38,7 +38,7 @@ pbs_build() {
 
 pbs_install() {
     domkinstall
-    cd "$destdir"
+    cd "$PKGDIR"
     # Install "custom" system gdbinit
     install -dm755 etc/gdb
     touch etc/gdb/gdbinit

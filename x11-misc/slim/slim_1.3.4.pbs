@@ -33,8 +33,8 @@ pbs_build() {
 
 pbs_install() {
     domkinstall
-    install -D -m644 "$filesdir"/pam.d "$destdir"/etc/pam.d/slim
-    install -D -m644 "$filesdir"/logrotate "$destdir"/etc/logrotate.d/slim
+    install -D -m644 "$FILESDIR"/pam.d "$PKGDIR"/etc/pam.d/slim
+    install -D -m644 "$FILESDIR"/logrotate "$PKGDIR"/etc/logrotate.d/slim
     
     # Provide sane defaults
     sed -i 's|#xserver_arguments.*|xserver_arguments -nolisten tcp vt07|' "${pkgdir}"/etc/slim.conf

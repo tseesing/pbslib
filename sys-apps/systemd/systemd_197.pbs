@@ -44,11 +44,11 @@ pbs_build() {
 
 pbs_install() {
     domkinstall
-    cd "$destdir"
+    cd "$PKGDIR"
     #
     mkdir -p run
     # Wrapper of systemctl scripts
-    docp "$filesdir"/{start,stop,status,restart,reload} usr/bin/
+    docp "$FILESDIR"/{start,stop,status,restart,reload} usr/bin/
     #
     printf "d /run/console 0755 root root\n" >usr/lib/tmpfiles.d/console.conf
     # Default modules.conf
@@ -65,12 +65,12 @@ EOF
         doln  /usr/bin/systemctl  sbin/"${i}"     
     done
     # For initramfs
-    docp_rename "$filesdir"/hook_udev        usr/share/initramfs-tools/hooks/udev
-    docp_rename "$filesdir"/init-top_udev    usr/share/initramfs-tools/scripts/init-top/udev
-    docp_rename "$filesdir"/nfs-top_udev     usr/share/initramfs-tools/scripts/nfs-top/udev
-    docp_rename "$filesdir"/init-bottom_udev usr/share/initramfs-tools/scripts/init-bottom/udev
+    docp_rename "$FILESDIR"/hook_udev        usr/share/initramfs-tools/hooks/udev
+    docp_rename "$FILESDIR"/init-top_udev    usr/share/initramfs-tools/scripts/init-top/udev
+    docp_rename "$FILESDIR"/nfs-top_udev     usr/share/initramfs-tools/scripts/nfs-top/udev
+    docp_rename "$FILESDIR"/init-bottom_udev usr/share/initramfs-tools/scripts/init-bottom/udev
     # Extra rules for udev
-    docp "$filesdir"/{64-device-mapper.rules,78-graphics-card.rules} usr/lib/udev/rules.d
+    docp "$FILESDIR"/{64-device-mapper.rules,78-graphics-card.rules} usr/lib/udev/rules.d
     # Install devices dirs for udev
     UDEVDHOME="usr/lib/udev/devices"
     install -d "$UDEVDHOME"/{pts,shm}
@@ -85,7 +85,7 @@ EOF
     # get rid of RPM macros
     rm -r etc/rpm
     # Misc
-    docp "$filesdir"/udlfb.conf etc/modprobe.d/
+    docp "$FILESDIR"/udlfb.conf etc/modprobe.d/
     ln -sf /proc/self/mounts etc/mtab
 }
 

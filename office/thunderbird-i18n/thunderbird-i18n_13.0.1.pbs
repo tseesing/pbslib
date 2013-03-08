@@ -24,10 +24,10 @@ thunderbird-i18n-zh-CN_install() {
     RDEPEND="thunderbird(>=13.0.1)"
     YARCH="any"
 
-    #local target="$destdir/usr/lib/thunderbird/extensions/langpack-zh-CN@thunderbird.mozilla.org.xpi"
+    #local target="$PKGDIR/usr/lib/thunderbird/extensions/langpack-zh-CN@thunderbird.mozilla.org.xpi"
     #docp_rename "$YBS_SOURCE"/zh-CN.xpi "$target" 
 
-    docp "$filesdir"/langpack-zh-CN@thunderbird.mozilla.org.xpi "$destdir"/usr/lib/thunderbird/extensions/
+    docp "$FILESDIR"/langpack-zh-CN@thunderbird.mozilla.org.xpi "$PKGDIR"/usr/lib/thunderbird/extensions/
 }
 
 thunderbird-i18n-zh-TW_install() {
@@ -35,9 +35,9 @@ thunderbird-i18n-zh-TW_install() {
     RDEPEND="thunderbird(>=13.0.1)"
     YARCH="any"
 
-    #local target="$destdir/usr/lib/thunderbird/extensions/langpack-zh-TW@thunderbird.mozilla.org.xpi"
+    #local target="$PKGDIR/usr/lib/thunderbird/extensions/langpack-zh-TW@thunderbird.mozilla.org.xpi"
     #docp_rename "$YBS_SOURCE"/zh-TW.xpi "$target"  
 
-    docp "$filesdir"/langpack-zh-TW@thunderbird.mozilla.org.xpi "$destdir"/usr/lib/thunderbird/extensions/
+    docp "$FILESDIR"/langpack-zh-TW@thunderbird.mozilla.org.xpi "$PKGDIR"/usr/lib/thunderbird/extensions/
 }
 

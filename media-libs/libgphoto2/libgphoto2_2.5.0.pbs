@@ -39,12 +39,12 @@ pbs_build() {
 
 pbs_install() {
     domkinstall
-    cd "$destdir"
+    cd "$PKGDIR"
     # Remove unused systemd helper
     rm -rf usr/lib"$LIBDIRSUFFIX"/systemd
     install -m755 -d usr/lib/systemd/rules.d
-    LD_LIBRARY_PATH="${destdir}/usr/lib${LD_LIBRARY_PATH:+:}$LD_LIBRARY_PATH" \
-    CAMLIBS="${destdir}/usr/lib/libgphoto2/${pkgver}" \
+    LD_LIBRARY_PATH="$PKGDIR/usr/lib${LD_LIBRARY_PATH:+:}$LD_LIBRARY_PATH" \
+    CAMLIBS="$PKGDIR/usr/lib/libgphoto2/${pkgver}" \
     usr/lib"$LIBDIRSUFFIX"/libgphoto2/print-camera-list systemd-rules version 175 >usr/lib/systemd/rules.d/40-gphoto.rules
     # Remove recursive symlink
     rm -f usr/include/gphoto2/gphoto2

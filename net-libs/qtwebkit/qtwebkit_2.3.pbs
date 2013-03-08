@@ -51,10 +51,10 @@ pbs_build() {
 }
 
 pbs_install() {
-    cd "$srcdir"
-    make INSTALL_ROOT="${destdir}" -C WebKitBuild/Release install
+    cd "$SRCDIR"
+    make INSTALL_ROOT="$PKGDIR" -C WebKitBuild/Release install
     
     cd qt-everywhere-opensource-src-${_qtver}/tools/designer/src/plugins/qwebview
-    make INSTALL_ROOT="${destdir}" install
+    make INSTALL_ROOT="$PKGDIR" install
 }
 

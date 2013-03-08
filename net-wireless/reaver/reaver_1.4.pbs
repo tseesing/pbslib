@@ -35,7 +35,7 @@ pbs_build() {
 }
 
 pbs_install() {
-    docp reaver wash "$destdir"/usr/bin/
+    docp reaver wash "$PKGDIR"/usr/bin/
     dodoc ../docs/README
     doman ../docs/reaver.1.gz
 }

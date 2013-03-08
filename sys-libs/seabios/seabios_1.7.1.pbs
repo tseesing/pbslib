@@ -32,6 +32,6 @@ pbs_build() {
 }
 
 pbs_install() {
-    docp out/bios.bin "$destdir"/usr/share/qemu/
+    docp out/bios.bin "$PKGDIR"/usr/share/qemu/
 }
 

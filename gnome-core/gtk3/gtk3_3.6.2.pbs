@@ -38,6 +38,6 @@ pbs_build() {
 
 pbs_install() {
     domkinstall
-    docp "$filesdir"/settings.ini "$destdir"/etc/gtk-3.0/
+    docp "$FILESDIR"/settings.ini "$PKGDIR"/etc/gtk-3.0/
 }
 

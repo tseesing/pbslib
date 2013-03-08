@@ -31,7 +31,7 @@ pbs_build() {
 pbs_install() {
     domkinstall
 
-    cd "$destdir"
+    cd "$PKGDIR"
     # This is in the hwids package
     rm -rf usr/share/hwdata/
     domv_rename usr/sbin/update-usbids.sh usr/sbin/update-usbids

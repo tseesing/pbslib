@@ -32,15 +32,15 @@ pbs_build() {
     ./generator --include-paths=/usr/include
 
     # Build plugins
-    cd "${srcdir}"/qtbindings
+    cd "$SRCDIR"/qtbindings
     qmake
     domake
 }
 
 pbs_install() {
-    cd "${srcdir}"/qtbindings
+    cd "$SRCDIR"/qtbindings
 
     # Move plugins to correct directory
-    docp "${srcdir}"/plugins/script/* "${destdir}"/usr/lib/qt/plugins/script/
+    docp "$SRCDIR"/plugins/script/* "$PKGDIR"/usr/lib/qt/plugins/script/
 }
 

@@ -30,6 +30,6 @@ pbs_build() {
 }
 
 pbs_install() {
-    make prefix="$destdir"/usr install
+    make prefix="$PKGDIR"/usr install
 }
 

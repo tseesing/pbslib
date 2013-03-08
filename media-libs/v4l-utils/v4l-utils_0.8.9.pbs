@@ -26,7 +26,7 @@ pbs_build() {
 
 pbs_install() {
     domkinstall PREFIX=/usr LIBDIR=/usr/lib"$LIBDIRSUFFIX"
-    cd "$destdir"
+    cd "$PKGDIR"
     rm usr/bin/qv4l2 usr/share/applications/qv4l2.desktop    
     rm usr/bin/ivtv-ctl
     domv lib/udev usr/lib/

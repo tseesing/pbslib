@@ -31,7 +31,7 @@ pbs_unpack() {
 }
 
 pbs_patch() {
-    docp "$filesdir"/{llvm-Config-config.h,llvm-Config-llvm-config.h} .
+    docp "$FILESDIR"/{llvm-Config-config.h,llvm-Config-llvm-config.h} .
     # At the present, clang must reside inside the LLVM source code tree to build
     # See http://llvm.org/bugs/show_bug.cgi?id=4840
     rm -rf tools/clang
@@ -95,15 +95,15 @@ pbs_install() {
     cd tools/clang
     domkinstall
     # Fix permissions of static libs
-    chmod -x "$destdir"/usr/lib"$LIBDIRSUFFIX"/llvm/*.a
+    chmod -x "$PKGDIR"/usr/lib"$LIBDIRSUFFIX"/llvm/*.a
     # Revert the path change in case we want to do a repackage later
-    sed -i 's:$(PROJ_prefix)/share/doc/clang:$(PROJ_prefix)/share/doc/llvm:' "$srcdir"/Makefile.config
+    sed -i 's:$(PROJ_prefix)/share/doc/clang:$(PROJ_prefix)/share/doc/llvm:' "$SRCDIR"/Makefile.config
     for _tool in scan-{build,view}; do
-        docp tools/$_tool "$destdir"/usr/lib"$LIBDIRSUFFIX"/clang-analyzer/
-        doln /usr/lib"$LIBDIRSUFFIX"/clang-analyzer/$_tool/$_tool "$destdir"/usr/bin/$_tool
+        docp tools/$_tool "$PKGDIR"/usr/lib"$LIBDIRSUFFIX"/clang-analyzer/
+        doln /usr/lib"$LIBDIRSUFFIX"/clang-analyzer/$_tool/$_tool "$PKGDIR"/usr/bin/$_tool
     done
     # Compile Python scripts
-    python -m compileall "$destdir"/usr/lib"$LIBDIRSUFFIX"/clang-analyzer
-    python -O -m compileall "$destdir"/usr/lib"$LIBDIRSUFFIX"/clang-analyzer
+    python -m compileall "$PKGDIR"/usr/lib"$LIBDIRSUFFIX"/clang-analyzer
+    python -O -m compileall "$PKGDIR"/usr/lib"$LIBDIRSUFFIX"/clang-analyzer
 }
 

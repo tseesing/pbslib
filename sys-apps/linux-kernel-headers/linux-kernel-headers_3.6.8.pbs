@@ -25,17 +25,17 @@ pbs_patch() {
 
     # Aufs patches
     for i in $PATCHES; do
-        dopatch "$filesdir"/"$AUFS"/"$i"
+        dopatch "$FILESDIR"/"$AUFS"/"$i"
     done
 
-    docp "$filesdir"/"$AUFS"/fs/aufs                   fs/
-    docp "$filesdir"/"$AUFS"/include/linux/aufs_type.h include/linux/
+    docp "$FILESDIR"/"$AUFS"/fs/aufs                   fs/
+    docp "$FILESDIR"/"$AUFS"/include/linux/aufs_type.h include/linux/
 }
 
 pbs_config() {
     case "$ARCH" in
-        i?86) docp_rename "$filesdir"/config-"$V$R" .config ;;
-          x86_64) docp_rename "$filesdir"/config-"$V$R"-"$ARCH" .config
+        i?86) docp_rename "$FILESDIR"/config-"$V$R" .config ;;
+          x86_64) docp_rename "$FILESDIR"/config-"$V$R"-"$ARCH" .config
     esac
 }
 
@@ -50,8 +50,8 @@ pbs_install() {
     # Headers
     KARCH=x86
 
-    KDIR="$destdir"/usr/src/"$N-$V$R"
-    doln /usr/src/"$N-$V$R" "$destdir"/usr/src/linux
+    KDIR="$PKGDIR"/usr/src/"$N-$V$R"
+    doln /usr/src/"$N-$V$R" "$PKGDIR"/usr/src/linux
 
     docp Makefile             "$KDIR"/
     docp Module.symvers         "$KDIR"/   
@@ -156,4 +156,3 @@ pbs_install() {
     find . -name "*.awk" -exec rm {} \;
     find . -name ".gitignore" -exec rm {} \;
 }
-

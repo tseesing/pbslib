@@ -28,8 +28,8 @@ pbs_unpack() {
 
 pbs_install() {
     INSTALL_DIR="/usr/mingw"
-    docp include "$destdir"/"$INSTALL_DIR"
-    cd "$destdir"/"$INSTALL_DIR"
+    docp include "$PKGDIR"/"$INSTALL_DIR"
+    cd "$PKGDIR"/"$INSTALL_DIR"
     ln -sf . usr
     mkdir mingw
     ln -sf /usr/mingw/include mingw/include

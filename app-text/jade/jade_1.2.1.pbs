@@ -43,10 +43,10 @@ pbs_build() {
 }
 
 pbs_install() {
-    install -d -m755 "$destdir"/usr/{bin,lib"$LIBDIRSUFFIX"}
-    make prefix="$destdir"/usr libdir="$destdir"/usr/lib"$LIBDIRSUFFIX" install
+    install -d -m755 "$PKGDIR"/usr/{bin,lib"$LIBDIRSUFFIX"}
+    make prefix="$PKGDIR"/usr libdir="$PKGDIR"/usr/lib"$LIBDIRSUFFIX" install
     dodoc COPYING
-    cd "$destdir"
+    cd "$PKGDIR"
     mv usr/bin/sx usr/bin/sgml2xml
 }
 

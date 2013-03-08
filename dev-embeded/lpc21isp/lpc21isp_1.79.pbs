@@ -24,7 +24,7 @@ pbs_build() {
 }
 
 pbs_install() {
-    docp lpc21isp "$destdir"/usr/bin/
-    chmod 755 "$destdir"/usr/bin/lpc21isp
+    docp lpc21isp "$PKGDIR"/usr/bin/
+    chmod 755 "$PKGDIR"/usr/bin/lpc21isp
 }
 

@@ -29,9 +29,9 @@ pbs_build() {
 }
 
 pbs_install() {
-    install -Dm755 "$N" "$destdir"/usr/bin/"$N"
+    install -Dm755 "$N" "$PKGDIR"/usr/bin/"$N"
     doman "$N".1
     dodoc "$N".pdf README
-    doln /usr/bin/pigz "$destdir"/usr/bin/unpigz
+    doln /usr/bin/pigz "$PKGDIR"/usr/bin/unpigz
 }
 

@@ -35,7 +35,7 @@ pbs_build() {
 
 pbs_install() {
     domkinstall PREFIX=/usr
-    docp_rename "server/gkrellmd.conf" "$destdir"/etc/gkrellmd.conf
+    docp_rename "server/gkrellmd.conf" "$PKGDIR"/etc/gkrellmd.conf
     dodoc COPYING
 }
 

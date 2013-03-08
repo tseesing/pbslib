@@ -31,8 +31,8 @@ pbs_build() {
 }
 
 pbs_install() {
-    make DIST_ROOT="$destdir" install install-lib install-dev
-    cd "$destdir"/usr/lib"$LIBDIRSUFFIX"
+    make DIST_ROOT="$PKGDIR" install install-lib install-dev
+    cd "$PKGDIR"/usr/lib"$LIBDIRSUFFIX"
     rm -f libacl.a
     chmod 0755 libacl.so.*.*.*
 }

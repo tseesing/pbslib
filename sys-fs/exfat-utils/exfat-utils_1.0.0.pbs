@@ -24,7 +24,7 @@ pbs_unpack() {
 }
 
 pbs_install() {
-    scons CCFLAGS="${CFLAGS}" LINKFLAGS="${LDFLAGS} " install DESTDIR="${destdir}/sbin"
+    scons CCFLAGS="${CFLAGS}" LINKFLAGS="${LDFLAGS} " install DESTDIR="$PKGDIR/sbin"
     doman dump/dumpexfat.8 fsck/exfatfsck.8 mkfs/mkexfatfs.8 label/exfatlabel.8 
 }
 

@@ -34,6 +34,6 @@ pbs_build() {
 pbs_install() {
     domkinstall
     # Remove static libs
-    rm -f "$destdir"/usr/lib"$LIBDIRSUFFIX"/{libhogweed,libnettle}.a
+    rm -f "$PKGDIR"/usr/lib"$LIBDIRSUFFIX"/{libhogweed,libnettle}.a
 }
 

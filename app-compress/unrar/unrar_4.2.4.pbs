@@ -30,7 +30,7 @@ pbs_build() {
 }
 
 pbs_install() {
-    docp unrar "$destdir"/usr/bin/
+    docp unrar "$PKGDIR"/usr/bin/
     dodoc license.txt
 }
 

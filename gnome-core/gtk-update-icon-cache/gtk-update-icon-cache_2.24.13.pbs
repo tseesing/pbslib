@@ -36,6 +36,6 @@ pbs_build() {
 }
 
 pbs_install() {
-    docp gtk/gtk-update-icon-cache "$destdir"/usr/bin/
+    docp gtk/gtk-update-icon-cache "$PKGDIR"/usr/bin/
 }
 

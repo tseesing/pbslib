@@ -34,6 +34,6 @@ pbs_build() {
 
 pbs_install() {
     domkinstall
-    find "${destdir}"usr -name '*.la' -exec rm -f {} +
+    find "$PKGDIR"usr -name '*.la' -exec rm -f {} +
 }
 

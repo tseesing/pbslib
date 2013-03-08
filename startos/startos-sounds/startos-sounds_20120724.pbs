@@ -24,6 +24,6 @@ pbs_unpack() {
 }
 
 pbs_install() {
-    docp src/* "$destdir"
+    docp src/* "$PKGDIR"
 }
 

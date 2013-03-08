@@ -32,6 +32,6 @@ pbs_build() {
 
 pbs_install() {
     domkinstall
-    rm -f "$destdir"/usr/bin/gtkhtml-editor-test
+    rm -f "$PKGDIR"/usr/bin/gtkhtml-editor-test
 }
 

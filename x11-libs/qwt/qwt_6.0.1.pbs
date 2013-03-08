@@ -25,7 +25,7 @@ pbs_unpack() {
 
 pbs_config() {
     # config file
-    docp "${filesdir}"/qwtconfig.pri .
+    docp "$FILESDIR"/qwtconfig.pri .
 }
 
 pbs_build() {
@@ -35,7 +35,7 @@ pbs_build() {
 }
 
 pbs_install() {
-     make INSTALL_ROOT="${destdir}" QTDIR=/usr install
+     make INSTALL_ROOT="$PKGDIR" QTDIR=/usr install
      dodoc COPYING
 }
 

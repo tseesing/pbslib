@@ -30,6 +30,6 @@ pbs_build() {
 pbs_install() {
     domkinstall
     # set autostart at starting session
-    docp $filesdir/fusion-icon.desktop "$destdir"/etc/xdg/autostart
+    docp $FILESDIR/fusion-icon.desktop "$PKGDIR"/etc/xdg/autostart
 }
 

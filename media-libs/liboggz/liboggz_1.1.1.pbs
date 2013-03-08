@@ -35,6 +35,6 @@ pbs_build() {
 pbs_install() {
     domkinstall
     dodoc COPYING 
-    docp bash-completion/oggz "$destdir"/usr/share/bash-completion/completions/
+    docp bash-completion/oggz "$PKGDIR"/usr/share/bash-completion/completions/
 }
 

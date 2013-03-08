@@ -58,6 +58,6 @@ pbs_build() {
 
 pbs_install() {
     domkinstall
-    python -m compileall "${destdir}"/usr/share/blender
+    python -m compileall "$PKGDIR"/usr/share/blender
 }
 

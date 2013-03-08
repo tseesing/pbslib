@@ -25,6 +25,6 @@ pbs_unpack() {
 }
 
 pbs_install() {
-    docp flashplayer "$destdir"/usr/bin
-    dodesktop $filesdir/adobe-flashplayer.desktop $filesdir/adobe-flashplayer.png
+    docp flashplayer "$PKGDIR"/usr/bin
+    dodesktop $FILESDIR/adobe-flashplayer.desktop $FILESDIR/adobe-flashplayer.png
 }

@@ -26,7 +26,7 @@ pbs_unpack(){
 }
 
 pbs_install() {
-    docp_rename memtest86+-"$V".bin "$destdir"/boot/memtest86+.bin
-    docp $filesdir/20_memtest86+ "$destdir"/etc/grub.d/
+    docp_rename memtest86+-"$V".bin "$PKGDIR"/boot/memtest86+.bin
+    docp $FILESDIR/20_memtest86+ "$PKGDIR"/etc/grub.d/
 }
 

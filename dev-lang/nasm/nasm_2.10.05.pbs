@@ -31,8 +31,8 @@ pbs_build() {
 }
 
 pbs_install() {
-    make INSTALLROOT="$destdir" install
-    docp doc/info/* "$destdir"/usr/share/info/
+    make INSTALLROOT="$PKGDIR" install
+    docp doc/info/* "$PKGDIR"/usr/share/info/
     dodoc LICENSE
 }
 

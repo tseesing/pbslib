@@ -38,10 +38,10 @@ pbs_build() {
 
 pbs_install() {
     domkinstall
-    cd "$destdir"
-    install -m755 "$filesdir"/pam-foreground-compat.ck    usr/lib/ConsoleKit/run-session.d/
-    install -D -m644 "$filesdir"/consolekit.logrotate     etc/logrotate.d/consolekit
-    install -D -m644 "$filesdir"/consolekit.tmpfiles.conf usr/lib/tmpfiles.d/consolekit.conf
+    cd "$PKGDIR"
+    install -m755 "$FILESDIR"/pam-foreground-compat.ck    usr/lib/ConsoleKit/run-session.d/
+    install -D -m644 "$FILESDIR"/consolekit.logrotate     etc/logrotate.d/consolekit
+    install -D -m644 "$FILESDIR"/consolekit.tmpfiles.conf usr/lib/tmpfiles.d/consolekit.conf
     rm -rf var/run
 }
 

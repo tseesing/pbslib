@@ -26,6 +26,6 @@ pbs_build() {
 }
 
 pbs_install() {
-    docp chntpw chntpw.static cpnt reged reged.static "$destdir"/usr/bin/
+    docp chntpw chntpw.static cpnt reged reged.static "$PKGDIR"/usr/bin/
 }
 

@@ -82,28 +82,28 @@ pbs_build() {
 }
 
 pbs_install() {
-    mkdir -p "$destdir"
+    mkdir -p "$PKGDIR"
     # core 
-    install -D out/Release/chrome "${destdir}"/"$chromiumdir"/chromium
-     install -Dm4755 -o root -g root out/Release/chrome_sandbox "${destdir}"/"$chromiumdir"/chromium-sandbox
-    cp out/Release/{*.pak,libffmpegsumo.so,nacl_helper{,_bootstrap}} out/Release/{libppGoogleNaClPluginChrome.so,nacl_irt_*.nexe} "$destdir"/"$chromiumdir"/
-    cp -a out/Release/locales "${destdir}"/"$chromiumdir"/
+    install -D out/Release/chrome "$PKGDIR"/"$chromiumdir"/chromium
+     install -Dm4755 -o root -g root out/Release/chrome_sandbox "$PKGDIR"/"$chromiumdir"/chromium-sandbox
+    cp out/Release/{*.pak,libffmpegsumo.so,nacl_helper{,_bootstrap}} out/Release/{libppGoogleNaClPluginChrome.so,nacl_irt_*.nexe} "$PKGDIR"/"$chromiumdir"/
+    cp -a out/Release/locales "$PKGDIR"/"$chromiumdir"/
     # man
     dodoc LICENSE 
-    install -Dm644 out/Release/chrome.1 "${destdir}"/usr/share/man/man1/chromium.1
+    install -Dm644 out/Release/chrome.1 "$PKGDIR"/usr/share/man/man1/chromium.1
     # desktop and icon
     dodesktop "chromium.desktop" "chrome/app/theme/chromium/product_logo_48.png"
     for size in 22 24 48 64 128 256; do
-        install -Dm644 chrome/app/theme/chromium/product_logo_"${size}".png "${destdir}"/usr/share/icons/hicolor/"${size}"x"${size}"/apps/chromium.png
+        install -Dm644 chrome/app/theme/chromium/product_logo_"${size}".png "$PKGDIR"/usr/share/icons/hicolor/"${size}"x"${size}"/apps/chromium.png
     done
     for size in 16 32; do
-        install -Dm644 chrome/app/theme/default_100_percent/chromium/product_logo_"${size}".png "$destdir"/usr/share/icons/hicolor/"${size}"x"${size}"/apps/chromium.png
+        install -Dm644 chrome/app/theme/default_100_percent/chromium/product_logo_"${size}".png "$PKGDIR"/usr/share/icons/hicolor/"${size}"x"${size}"/apps/chromium.png
     done
     # custom
-    cd "$destdir"
+    cd "$PKGDIR"
     [[ $ARCH == i686 ]] && rm "$chromiumdir"/nacl_irt_x86_64.nexe
-    install -m 0755 -D "$filesdir"/chromium.sh usr/bin/chromium
-    docp_rename "$filesdir"/default-preferences/"$N"-23.tar.bz2 "$chromiumdir"/"$N".tar.bz2
-    docp_rename "$filesdir"/chromium-conf  etc/default/chromium
+    install -m 0755 -D "$FILESDIR"/chromium.sh usr/bin/chromium
+    docp_rename "$FILESDIR"/default-preferences/"$N"-23.tar.bz2 "$chromiumdir"/"$N".tar.bz2
+    docp_rename "$FILESDIR"/chromium-conf  etc/default/chromium
 }
 

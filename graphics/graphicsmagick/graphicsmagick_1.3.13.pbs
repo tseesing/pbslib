@@ -42,14 +42,14 @@ pbs_install() {
     # The patching was introduced in order to build perl module without installing package itself and 
     # not to introduce unnecessary path into LD_RUN_PATH
     cd PerlMagick
-    sed -i -e "s:'LDDLFLAGS'  => \"\(.*\)\":'LDDLFLAGS'  => \"-L${destdir}/usr/lib \1\":" Makefile.PL
-    perl Makefile.PL INSTALLDIRS=vendor PREFIX=/usr DESTDIR="${destdir}"
+    sed -i -e "s:'LDDLFLAGS'  => \"\(.*\)\":'LDDLFLAGS'  => \"-L$PKGDIR/usr/lib \1\":" Makefile.PL
+    perl Makefile.PL INSTALLDIRS=vendor PREFIX=/usr DESTDIR="$PKGDIR"
     sed -i -e "s/LDLOADLIBS =/LDLOADLIBS = -lGraphicsMagick/" Makefile
     make
     make install
 
     # Remove perllocal.pod and .packlist
-    rm -rf "${destdir}/usr/lib/perl5/core_perl"
-    rm "${destdir}/usr/lib/perl5/vendor_perl/auto/Graphics/Magick/.packlist"
+    rm -rf "$PKGDIR/usr/lib/perl5/core_perl"
+    rm "$PKGDIR/usr/lib/perl5/vendor_perl/auto/Graphics/Magick/.packlist"
 }
 

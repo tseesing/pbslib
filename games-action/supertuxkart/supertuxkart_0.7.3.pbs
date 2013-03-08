@@ -33,13 +33,13 @@ pbs_config() {
     export NDEBUG=1 
     make || return 1
     
-    cd "$srcdir"
+    cd "$SRCDIR"
     sed -i "s|share/games|share|g" CMakeLists.txt
 
     [[ -d build ]] && rm -r build
     mkdir build && cd build
 
-    cmake -DIRRLICHT_DIR="$srcdir/irrlicht" \
+    cmake -DIRRLICHT_DIR="$SRCDIR/irrlicht" \
           -DCMAKE_INSTALL_PREFIX=/usr \
           -DCMAKE_CXX_FLAGS="-lpthread -lm -ldl" \
           ..
@@ -51,7 +51,7 @@ pbs_build() {
 
 pbs_install() {
     domkinstall
-    cd "$destdir"
+    cd "$PKGDIR"
     
     # Fix executable location...
     install -Dm755 usr/games/supertuxkart usr/bin/supertuxkart

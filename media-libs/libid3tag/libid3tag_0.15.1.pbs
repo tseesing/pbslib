@@ -35,7 +35,7 @@ pbs_build() {
 
 pbs_install() {
     domkinstall
-    mkdir -p "$destdir"/usr/lib"$LIBDIRSUFFIX"/pkgconfig/
-    sed 's/LIBDIRSUFFIX/'"$LIBDIRSUFFIX"'/g' "$filesdir"/id3tag.pc >"$destdir"/usr/lib"$LIBDIRSUFFIX"/pkgconfig/id3tag.pc
+    mkdir -p "$PKGDIR"/usr/lib"$LIBDIRSUFFIX"/pkgconfig/
+    sed 's/LIBDIRSUFFIX/'"$LIBDIRSUFFIX"'/g' "$FILESDIR"/id3tag.pc >"$PKGDIR"/usr/lib"$LIBDIRSUFFIX"/pkgconfig/id3tag.pc
 }
 

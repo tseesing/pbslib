@@ -30,6 +30,6 @@ pbs_build() {
 }
 
 pbs_install() {
-    docp usb.ids pci.ids "$destdir"/usr/share/hwdata/
+    docp usb.ids pci.ids "$PKGDIR"/usr/share/hwdata/
 }
 

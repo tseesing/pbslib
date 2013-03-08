@@ -36,6 +36,6 @@ pbs_build() {
 
 pbs_install() {
     domkinstall
-    docp "$filesdir"/61-gnome-bluetooth-rfkill.rules "$destdir"/usr/lib/systemd/rules.d/
+    docp "$FILESDIR"/61-gnome-bluetooth-rfkill.rules "$PKGDIR"/usr/lib/systemd/rules.d/
 }
 

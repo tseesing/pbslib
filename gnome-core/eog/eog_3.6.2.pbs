@@ -36,6 +36,6 @@ pbs_build() {
 pbs_install() {
     domkinstall
     # remove it from Xfce menu that ships its own thingy
-    echo "NotShowIn=XFCE" >>"$destdir"/usr/share/applications/eog.desktop
+    echo "NotShowIn=XFCE" >>"$PKGDIR"/usr/share/applications/eog.desktop
 }
 

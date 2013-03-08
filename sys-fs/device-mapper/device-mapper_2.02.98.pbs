@@ -44,7 +44,7 @@ pbs_build() {
 }
 
 pbs_install() {
-    make DESTDIR="$destdir" install_device-mapper \
+    make DESTDIR="$PKGDIR" install_device-mapper \
       pkgconfigdir=/usr/lib"$LIBDIRSUFFIX"/pkgconfig
     # Install dmeventd socket and service
     dounit dmeventd.service dmeventd.socket

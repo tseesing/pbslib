@@ -35,7 +35,7 @@ pbs_build() {
 }
 
 pbs_install() {
-    make -f unix/Makefile prefix="$destdir"/usr INSTALL_PROGRAM="install" install
+    make -f unix/Makefile prefix="$PKGDIR"/usr INSTALL_PROGRAM="install" install
     dodoc LICENSE
 }
 

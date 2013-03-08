@@ -37,7 +37,7 @@ pbs_patch() {
 
 pbs_config() {
     cd "$N"
-    cp "$filesdir"/config .config
+    cp "$FILESDIR"/config .config
     sed -i 's/\/usr\/local/$(PREFIX)/g' Makefile
 }
 
@@ -46,11 +46,11 @@ pbs_build() {
 }
 
 pbs_install() {
-    make PREFIX=/usr DESTDIR="$destdir" install
-    docp wpa_supplicant.conf "$destdir"/etc/"$N"/
+    make PREFIX=/usr DESTDIR="$PKGDIR" install
+    docp wpa_supplicant.conf "$PKGDIR"/etc/"$N"/
     doman doc/docbook/*.5 doc/docbook/*.8 
-    docp dbus/{fi.epitest.hostap.WPASupplicant.service,fi.w1.wpa_supplicant1.service} "$destdir"/usr/share/dbus-1/system-services/
-    docp_rename dbus/dbus-wpa_supplicant.conf "$destdir"/etc/dbus-1/system.d/wpa_supplicant.conf
+    docp dbus/{fi.epitest.hostap.WPASupplicant.service,fi.w1.wpa_supplicant1.service} "$PKGDIR"/usr/share/dbus-1/system-services/
+    docp_rename dbus/dbus-wpa_supplicant.conf "$PKGDIR"/etc/dbus-1/system.d/wpa_supplicant.conf
     dounit systemd/*.service
 }
 

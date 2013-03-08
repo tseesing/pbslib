@@ -30,14 +30,14 @@ pbs_install() {
     domkinstall
 
     # Install standard configuration and scripts
-    install -d -m755 "$destdir/etc/cron."{hourly,daily,weekly,monthly} 
+    install -d -m755 "$PKGDIR/etc/cron."{hourly,daily,weekly,monthly} 
 
-    install -D -m755 extra/run-cron "$destdir/usr/sbin/run-cron"
-    install -D -m0600 extra/root.crontab "$destdir/var/spool/cron/root" 
-    install -D -m755 extra/crond.rc "$destdir/etc/rc.d/crond"
-    install -D -m0644 extra/crond.conf "$destdir/etc/conf.d/crond"
-    install -D -m644 extra/crontab.vim "$destdir/usr/share/vim/vimfiles/ftplugin/crontab.vim"
+    install -D -m755 extra/run-cron "$PKGDIR/usr/sbin/run-cron"
+    install -D -m0600 extra/root.crontab "$PKGDIR/var/spool/cron/root" 
+    install -D -m755 extra/crond.rc "$PKGDIR/etc/rc.d/crond"
+    install -D -m0644 extra/crond.conf "$PKGDIR/etc/conf.d/crond"
+    install -D -m644 extra/crontab.vim "$PKGDIR/usr/share/vim/vimfiles/ftplugin/crontab.vim"
     sed -i -e 's=/var/spool/cron/cronstamps=/var/spool/cronstamps=' extra/prune-cronstamps
-    install -D -m755 extra/prune-cronstamps "$destdir/etc/cron.d/prune-cronstamps"
+    install -D -m755 extra/prune-cronstamps "$PKGDIR/etc/cron.d/prune-cronstamps"
 }
 

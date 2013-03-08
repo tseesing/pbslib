@@ -34,6 +34,6 @@ pbs_build() {
 
 pbs_install() {
     domkinstall
-    rm "$destdir"/{usr/share/mime/mime.cache,usr/share/applications/mimeinfo.cache}
+    rm "$PKGDIR"/{usr/share/mime/mime.cache,usr/share/applications/mimeinfo.cache}
 }
 

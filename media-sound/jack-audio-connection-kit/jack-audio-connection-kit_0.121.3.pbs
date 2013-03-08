@@ -32,10 +32,10 @@ pbs_build() {
 
 pbs_install() {
     domkinstall
-    docp jack/jslist.h "$destdir"/usr/include/jack/
-    cd "$destdir"
+    docp jack/jslist.h "$PKGDIR"/usr/include/jack/
+    cd "$PKGDIR"
     # configure realtime access/scheduling
-    docp "$filesdir"/99-audio.conf etc/security/limits.d/
-    docp "$filesdir"/40-hpet-permissions.rules usr/lib/systemd/rules.d/
+    docp "$FILESDIR"/99-audio.conf etc/security/limits.d/
+    docp "$FILESDIR"/40-hpet-permissions.rules usr/lib/systemd/rules.d/
 }
 

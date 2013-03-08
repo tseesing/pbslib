@@ -21,6 +21,6 @@ pbs_unpack() {
 
 pbs_install() {
     dodesktop startos-tutorials.desktop startos-tutorials.svg
-    docp www.startos.org "$destdir"/usr/share/"$N"
+    docp www.startos.org "$PKGDIR"/usr/share/"$N"
 }
 

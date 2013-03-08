@@ -41,7 +41,7 @@ pbs_build() {
 
 pbs_install() {
     domkinstall 
-    docp etc/{codecs.conf,input.conf,example.conf} "$filesdir"/mplayer.conf  "$destdir"/etc/mplayer/
-    doln /usr/share/fonts/truetype/ttf-dejavu/DejaVuSans.ttf  "$destdir"/usr/share/mplayer/subfont.ttf
+    docp etc/{codecs.conf,input.conf,example.conf} "$FILESDIR"/mplayer.conf  "$PKGDIR"/etc/mplayer/
+    doln /usr/share/fonts/truetype/ttf-dejavu/DejaVuSans.ttf  "$PKGDIR"/usr/share/mplayer/subfont.ttf
 }
 

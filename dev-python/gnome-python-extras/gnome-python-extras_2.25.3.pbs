@@ -37,7 +37,7 @@ pbs_build() {
 }
 
 pbs_install() {
-    domake install-pkgconfigDATA DESTDIR="${destdir}"
+    domake install-pkgconfigDATA DESTDIR="$PKGDIR"
     for i in egg gksu2 gtkhtml2 gtkspell;do 
         domkinstall -C "${i}"
     done

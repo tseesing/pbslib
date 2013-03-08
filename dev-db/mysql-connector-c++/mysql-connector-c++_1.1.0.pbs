@@ -33,7 +33,7 @@ pbs_build() {
 
 pbs_install() {
     domkinstall
-    cd "$destdir"/usr
+    cd "$PKGDIR"/usr
     domv README COPYING ANNOUNCEMENT share/doc/"$N"
 }
 

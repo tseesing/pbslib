@@ -23,10 +23,10 @@ pbs_unpack() {
 }
 
 pbs_install() {
-    docp data/*  "$destdir"
-    cd "$destdir"
-    #xdg-desktop-menu install --novendor $filesdir/realplay.desktop
-    dodesktop $filesdir/realplay.desktop opt/real/RealPlayer/share/realplay.png
+    docp data/*  "$PKGDIR"
+    cd "$PKGDIR"
+    #xdg-desktop-menu install --novendor $FILESDIR/realplay.desktop
+    dodesktop $FILESDIR/realplay.desktop opt/real/RealPlayer/share/realplay.png
     #
     docp_rename opt/real/RealPlayer/share/locale/zh_CN/player.mo usr/share/locale/zh_CN/LC_MESSAGES/realplay.mo
     docp_rename opt/real/RealPlayer/share/locale/zh_CN/widget.mo usr/share/locale/zh_CN/LC_MESSAGES/libgtk2hx.mo

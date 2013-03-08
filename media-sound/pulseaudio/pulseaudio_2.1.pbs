@@ -52,7 +52,7 @@ pbs_build() {
 
 pbs_install() {
     domkinstall
-    cd "$destdir"
+    cd "$PKGDIR"
     # Speed up pulseaudio shutdown
     # Lower resample quality, saves CPU
     sed -e '/exit-idle-time/iexit-idle-time=0' -e '/resample-method/iresample-method=speex-float-0' -i etc/pulse/daemon.conf
@@ -62,11 +62,11 @@ pbs_install() {
     # Make ConsoleKit optional
     sed -e $'/load-module module-console-kit/{i.nofail\n;a.fail\n;}'  -i etc/pulse/default.pa
     # For X11
-    docp "$filesdir"/pulseaudio etc/X11/Xsession.d/
+    docp "$FILESDIR"/pulseaudio etc/X11/Xsession.d/
     rm etc/dbus-1/system.d/pulseaudio-system.conf
     # cap is handled in .install
     chmod 755 usr/libexec/pulse/proximity-helper
     # PulseAudio for alsa 
-    docp "$filesdir"/asound.conf  etc/
+    docp "$FILESDIR"/asound.conf  etc/
 }
 

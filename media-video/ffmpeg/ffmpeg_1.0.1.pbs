@@ -60,6 +60,6 @@ pbs_build() {
 
 pbs_install() {
     domkinstall install install-man
-    install -D -m755 tools/qt-faststart "$destdir"/usr/bin/
+    install -D -m755 tools/qt-faststart "$PKGDIR"/usr/bin/
 }
 

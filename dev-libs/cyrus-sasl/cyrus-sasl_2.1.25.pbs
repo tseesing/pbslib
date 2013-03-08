@@ -43,9 +43,9 @@ pbs_build() {
 
 pbs_install() {
     domkinstall sasldir=/usr/lib"$LIBDIRSUFFIX"/sasl2
-    cd "$destdir"    
+    cd "$PKGDIR"    
     dounit saslauthd.service
-    docp "$filesdir"/saslauthd etc/default/
-    docp "$filesdir"/saslauthd.conf usr/lib/tmpfiles.d/
+    docp "$FILESDIR"/saslauthd etc/default/
+    docp "$FILESDIR"/saslauthd.conf usr/lib/tmpfiles.d/
 }
 

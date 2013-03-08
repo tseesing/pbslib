@@ -30,10 +30,10 @@ pbs_build() {
 pbs_install() {
     domkinstall
     #change config
-    mkdir -p "$destdir"/etc/X11 
-    mv "$destdir"/usr/lib/X11/xinit "$destdir"/etc/X11
-    ln -sf "$destdir"/etc/X11/xinit "$destdir"/usr/lib/X11
+    mkdir -p "$PKGDIR"/etc/X11 
+    mv "$PKGDIR"/usr/lib/X11/xinit "$PKGDIR"/etc/X11
+    ln -sf "$PKGDIR"/etc/X11/xinit "$PKGDIR"/usr/lib/X11
     #
-    install -m755 -d "$destdir"/usr/share/doc/"$N-$V$R"
-    cp -a AUTHORS ChangeLog COPYING INSTALL NEWS README   "$destdir"/usr/share/doc/"$N-$V$R"
+    install -m755 -d "$PKGDIR"/usr/share/doc/"$N-$V$R"
+    cp -a AUTHORS ChangeLog COPYING INSTALL NEWS README   "$PKGDIR"/usr/share/doc/"$N-$V$R"
 }

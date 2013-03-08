@@ -35,7 +35,7 @@ pbs_build() {
 pbs_install() {
     domkinstall
     # add generic hunspell.so for development and projects not using pkgconfig flags - FS#30592
-    cd "$destdir"/usr/lib"$LIBDIRSUFFIX"
+    cd "$PKGDIR"/usr/lib"$LIBDIRSUFFIX"
     doln libhunspell-?.?.so libhunspell.so
 }
 

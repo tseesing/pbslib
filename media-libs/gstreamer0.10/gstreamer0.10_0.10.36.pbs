@@ -34,7 +34,7 @@ pbs_build() {
 pbs_install() {
     domkinstall
     # Remove unversioned gst-* binaries to get rid of conflicts
-    cd "$destdir"/usr/bin
+    cd "$PKGDIR"/usr/bin
     for bins in `ls *-0.10`; do
         rm -f ${bins/-0.10/}
     done

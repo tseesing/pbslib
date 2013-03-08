@@ -28,9 +28,9 @@ pbs_build() {
 }
 
 pbs_install() {
-    install -d "$destdir"/usr/{bin,share/{doc/gdisk,man/man8}}
-    install -t "$destdir"/usr/bin {,c,s}gdisk fixparts
-    install -m644 -t "$destdir"/usr/share/man/man8 {{,c,s}gdisk,fixparts}.8
-    install -m644 -t "$destdir"/usr/share/doc/gdisk README NEWS
+    install -d "$PKGDIR"/usr/{bin,share/{doc/gdisk,man/man8}}
+    install -t "$PKGDIR"/usr/bin {,c,s}gdisk fixparts
+    install -m644 -t "$PKGDIR"/usr/share/man/man8 {{,c,s}gdisk,fixparts}.8
+    install -m644 -t "$PKGDIR"/usr/share/doc/gdisk README NEWS
 }
 

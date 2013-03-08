@@ -35,9 +35,9 @@ pbs_install() {
     domkinstall
     dodoc COPYING
     
-    install -d "${destdir}/usr/lib/cs"
+    install -d "$PKGDIR/usr/lib/cs"
     cd contrib/xcscope
-    docp xcscope.el "$destdir"/usr/share/emacs/site-lisp/
-    install -m755 cscope-indexer "$destdir"/usr/bin
+    docp xcscope.el "$PKGDIR"/usr/share/emacs/site-lisp/
+    install -m755 cscope-indexer "$PKGDIR"/usr/bin
 }
 

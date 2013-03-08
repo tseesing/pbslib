@@ -28,6 +28,6 @@ pbs_build() {
 }
 
 pbs_install() {
-    docp opt "$destdir"
+    docp opt "$PKGDIR"
 }
 

@@ -32,11 +32,11 @@ pbs_build() {
 pbs_install() {
     domkinstall
     #
-    cd "$destdir"
-    docp "$filesdir"/menu/wine.menu        etc/xdg/menus/applications-merged/
-    docp "$filesdir"/desktop/*.desktop     usr/share/applications/
-    docp "$filesdir"/desktop-directories/* usr/share/desktop-directories/
-    docp "$filesdir"/icon/*                usr/share/icons/hicolor/  
-    docp "$filesdir"/pixmaps/*             usr/share/pixmaps/
+    cd "$PKGDIR"
+    docp "$FILESDIR"/menu/wine.menu        etc/xdg/menus/applications-merged/
+    docp "$FILESDIR"/desktop/*.desktop     usr/share/applications/
+    docp "$FILESDIR"/desktop-directories/* usr/share/desktop-directories/
+    docp "$FILESDIR"/icon/*                usr/share/icons/hicolor/  
+    docp "$FILESDIR"/pixmaps/*             usr/share/pixmaps/
 }
 

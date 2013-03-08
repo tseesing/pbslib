@@ -33,7 +33,7 @@ pbs_build() {
 }
 
 pbs_install() {
-    make pure_install doc_install DESTDIR="$destdir"
+    make pure_install doc_install DESTDIR="$PKGDIR"
     perl_cleanup
 }
 

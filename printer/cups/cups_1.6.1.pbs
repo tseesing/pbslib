@@ -71,13 +71,13 @@ pbs_build() {
 }
 
 pbs_install() {
-    make BUILDROOT="$destdir" install
-    docp cups-config "$destdir"/usr/bin/
+    make BUILDROOT="$PKGDIR" install
+    docp cups-config "$PKGDIR"/usr/bin/
     doman man/client.conf.5
-    cd "$destdir"
+    cd "$PKGDIR"
     #
-    docp_rename  "$filesdir"/cups.logrotate etc/logrotate.d/cups
-    docp_rename  "$filesdir"/cups.pam       etc/pam.d/cups    
+    docp_rename  "$FILESDIR"/cups.logrotate etc/logrotate.d/cups
+    docp_rename  "$FILESDIR"/cups.pam       etc/pam.d/cups    
     # Fix perms on /var/spool and /etc
     chmod 755 var/spool
     chmod 755 etc
@@ -98,7 +98,7 @@ pbs_install() {
     # comment out all conversion rules which use any of the removed filters
     perl -p -i -e 's:^(.*\s+bannertops\s*)$:#\1:' usr/share/cups/mime/mime.convs
     # Provide native service for arch-daemons generator
-    doln cups.service "$destdir"/usr/lib/systemd/system/cupsd.service
+    doln cups.service "$PKGDIR"/usr/lib/systemd/system/cupsd.service
     # Clean
     rm -rf etc/rc*.d/
     rm -rf etc/init.d/

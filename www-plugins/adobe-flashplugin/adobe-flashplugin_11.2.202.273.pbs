@@ -26,9 +26,9 @@ pbs_unpack() {
 }
 
 pbs_install() {
-    docp libflashplayer.so  "$destdir"/usr/lib"$LIBDIRSUFFIX"/adobe-flashplugin
+    docp libflashplayer.so  "$PKGDIR"/usr/lib"$LIBDIRSUFFIX"/adobe-flashplugin
     dodoc readme.txt
-    cd "$destdir"
+    cd "$PKGDIR"
     for i in xulrunner mozilla iceape iceweasel firefox midbrowser xulrunner-addons; do
         doln /usr/lib"$LIBDIRSUFFIX"/adobe-flashplugin/libflashplayer.so usr/lib"$LIBDIRSUFFIX"/"${i}"/plugins/libflashplayer.so
     done

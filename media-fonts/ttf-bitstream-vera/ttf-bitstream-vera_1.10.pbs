@@ -23,8 +23,8 @@ pbs_unpack() {
 }
 
 pbs_install() {
-    docp *ttf "$destdir"/usr/share/fonts/ttf-bitstream-vera
-    docp_rename local.conf "$destdir"/etc/fonts/bitstream-vera.conf
+    docp *ttf "$PKGDIR"/usr/share/fonts/ttf-bitstream-vera
+    docp_rename local.conf "$PKGDIR"/etc/fonts/bitstream-vera.conf
     dodoc COPYRIGHT* README* RELEASE* 
 }
 

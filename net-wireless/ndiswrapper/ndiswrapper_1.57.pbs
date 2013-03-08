@@ -12,7 +12,7 @@ PACKAGER="StartOS Developers"
 
 SRC_URI="http://sourceforge.net/projects/ndiswrapper/files/stable/"$N-$V".tar.gz"
 
-PROVIDE="ndiswrapper-utils ndiswrapper-driver ndiswrapper-source"
+PROVIDE="ndiswrapper-utils ndiswrapper-driver"
 
 pbs_unpack() {
         dounpack
@@ -36,7 +36,7 @@ pbs_build() {
 ndiswrapper-utils_install () {
     DESCRIPTION="Wrapper for using Windows drivers for some wireless cards, (utils)"
     RDEPEND=""
-    make DESTDIR="$destdir" install-utils    
+    make DESTDIR="$PKGDIR" install-utils    
 }
 
 ndiswrapper-driver_install() {
@@ -46,16 +46,5 @@ ndiswrapper-driver_install() {
     GROUP="driver"
     INSTALL="$N.install"
 
-    make DESTDIR="$destdir" install-driver
+    make DESTDIR="$PKGDIR" install-driver
 }
-
-ndiswrapper-source_install() {
-    DESCRIPTION="Wrapper for using Windows drivers for some wireless cards, (source)"
-    RECOMMENDED="build-essential"
-    YARCH="any"
-    INSTALL="$N.install"
-
-    doykms
-    dosrc AUTHORS ChangeLog driver INSTALL Makefile ndiswrapper.spec README 
-}
-

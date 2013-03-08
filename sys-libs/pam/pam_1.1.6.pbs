@@ -40,25 +40,25 @@ pbs_config() {
 
 pbs_build() {
     # pam
-    cd "$srcdir"/
+    cd "$SRCDIR"/
     dopatch pam_namespace-build-1.1.6.patch
     domake  || die "pam make failed."
 
     # pam_unix2
-    cd "$srcdir"/pam_unix2-2.9.1
+    cd "$SRCDIR"/pam_unix2-2.9.1
     domake
 }
 
 pbs_install() {
     # pam
-    cd "$srcdir"/
+    cd "$SRCDIR"/
     domkinstall SCONFIGDIR=/etc/security || die "pam make install failed."
 
     # pam_unix2
-    cd "$srcdir"/pam_unix2-2.9.1
+    cd "$SRCDIR"/pam_unix2-2.9.1
     domake
 
-    cd "$destdir"
+    cd "$PKGDIR"
     
     # add the realtime permissions for audio users
     sed -i 's|# End of file||' etc/security/limits.conf

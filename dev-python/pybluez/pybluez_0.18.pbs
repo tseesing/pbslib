@@ -25,7 +25,7 @@ pbs_unpack() {
 }
 
 pbs_install() {
-    python setup.py install --root="$destdir"
-    ln -s bluetooth/_bluetooth.so "$destdir"/usr/lib/python2.7/site-packages/_bluetooth.so
+    python setup.py install --root="$PKGDIR"
+    ln -s bluetooth/_bluetooth.so "$PKGDIR"/usr/lib/python2.7/site-packages/_bluetooth.so
 }
 

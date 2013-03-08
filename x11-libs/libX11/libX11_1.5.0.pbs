@@ -33,6 +33,6 @@ pbs_build() {
 pbs_install() {    
     domkinstall
     dodoc COPYING
-    docp "$filesdir"/xorg.{sh,csh} "$destdir"/etc/profile.d/
+    docp "$FILESDIR"/xorg.{sh,csh} "$PKGDIR"/etc/profile.d/
 }
 

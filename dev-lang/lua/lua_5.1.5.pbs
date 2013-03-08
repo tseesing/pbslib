@@ -27,18 +27,18 @@ pbs_patch() {
 pbs_build() {
     [ "$ARCH" == "x86_64" ] && export CFLAGS="$CFLAGS -fPIC"
     domake linux MYCFLAGS=\"$CFLAGS\" MYLDFLAGS=\"$LDFLAGS\"
-    sed "s/%VER%/${V%.*}/g;s/%REL%/$V/g;s/%LIBDIRSUFFIX%/$LIBDIRSUFFIX/g" "$filesdir"/lua.pc >lua.pc
+    sed "s/%VER%/${V%.*}/g;s/%REL%/$V/g;s/%LIBDIRSUFFIX%/$LIBDIRSUFFIX/g" "$FILESDIR"/lua.pc >lua.pc
 }
 
 pbs_install() {
     make TO_LIB="liblua.a liblua.so liblua.so.5.1" \
          INSTALL_DATA="cp -d" \
-         INSTALL_TOP="$destdir"/usr \
-         INSTALL_INC="$destdir"/usr/include/lua \
-         INSTALL_LIB="$destdir"/usr/lib"$LIBDIRSUFFIX" \
-         INSTALL_MAN="$destdir"/usr/share/man/man1 \
+         INSTALL_TOP="$PKGDIR"/usr \
+         INSTALL_INC="$PKGDIR"/usr/include/lua \
+         INSTALL_LIB="$PKGDIR"/usr/lib"$LIBDIRSUFFIX" \
+         INSTALL_MAN="$PKGDIR"/usr/share/man/man1 \
     install
-    docp lua.pc "$destdir"/usr/lib"$LIBDIRSUFFIX"/pkgconfig/
-    rm -rf "$destdir"/usr/lib/
+    docp lua.pc "$PKGDIR"/usr/lib"$LIBDIRSUFFIX"/pkgconfig/
+    rm -rf "$PKGDIR"/usr/lib/
 }
 

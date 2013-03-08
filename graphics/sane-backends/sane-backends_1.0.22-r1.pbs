@@ -46,16 +46,16 @@ pbs_install() {
     domkinstall
     
     # Fix hp officejets
-    echo "#hpaio" >> "${destdir}"/etc/sane.d/dll.conf
+    echo "#hpaio" >> "$PKGDIR"/etc/sane.d/dll.conf
     
     # Install systemd files
-    install -D -m0644 tools/systemd/libsane.rules "${destdir}"/lib/systemd/rules.d/53-sane.rules
+    install -D -m0644 tools/systemd/libsane.rules "$PKGDIR"/lib/systemd/rules.d/53-sane.rules
     
     # Fix systemd rules
-    sed -i 's|NAME="%k", ||g' "${destdir}"/lib/systemd/rules.d/53-sane.rules
+    sed -i 's|NAME="%k", ||g' "$PKGDIR"/lib/systemd/rules.d/53-sane.rules
                 
     # Install xinetd file
-    install -D -m644 "${filesdir}"/sane.xinetd "${destdir}"/etc/xinetd.d/sane
+    install -D -m644 "$FILESDIR"/sane.xinetd "$PKGDIR"/etc/xinetd.d/sane
 
     #
     dounit saned@.service saned.socket

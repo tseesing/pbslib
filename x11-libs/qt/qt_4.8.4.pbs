@@ -31,7 +31,7 @@ pbs_patch() {
 }
 
 pbs_config() {
-    export QT4DIR="${srcdir}"
+    export QT4DIR="$SRCDIR"
     export LD_LIBRARY_PATH=${QT4DIR}/lib:${LD_LIBRARY_PATH}
 
     sed -i "s|-O2|${CXXFLAGS}|" mkspecs/common/{g++,gcc}-base.conf
@@ -75,20 +75,20 @@ pbs_build() {
 }
 
 pbs_install () {
-    make INSTALL_ROOT="$destdir" install
+    make INSTALL_ROOT="$PKGDIR" install
     # Install missing icons and desktop files
     for icon in tools/linguist/linguist/images/icons/linguist-*-32.png ; do
         size=$(echo $(basename ${icon}) | cut -d- -f2)
-        docp_rename "${icon}" "${destdir}"/usr/share/icons/hicolor/"${size}"x"${size}"/apps/linguist.png
+        docp_rename "${icon}" "$PKGDIR"/usr/share/icons/hicolor/"${size}"x"${size}"/apps/linguist.png
     done
     
-    docp_rename src/gui/dialogs/images/qtlogo-64.png "${destdir}"/usr/share/icons/hicolor/64x64/apps/qtlogo.png
-    docp tools/assistant/tools/assistant/images/assistant.png "${destdir}"/usr/share/icons/hicolor/32x32/apps/
-    docp tools/designer/src/designer/images/designer.png "${destdir}"/usr/share/icons/hicolor/128x128/apps/
+    docp_rename src/gui/dialogs/images/qtlogo-64.png "$PKGDIR"/usr/share/icons/hicolor/64x64/apps/qtlogo.png
+    docp tools/assistant/tools/assistant/images/assistant.png "$PKGDIR"/usr/share/icons/hicolor/32x32/apps/
+    docp tools/designer/src/designer/images/designer.png "$PKGDIR"/usr/share/icons/hicolor/128x128/apps/
     dodoc LGPL_EXCEPTION.txt
 
-    cd "$destdir"
-    docp "${filesdir}"/{linguist,designer,assistant,qtconfig}.desktop usr/share/applications/
+    cd "$PKGDIR"
+    docp "$FILESDIR"/{linguist,designer,assistant,qtconfig}.desktop usr/share/applications/
     # Fix wrong path in pkgconfig files
     find usr/lib"$LIBDIRSUFFIX"/pkgconfig -type f -name '*.pc' -exec perl -pi -e "s, -L${QT4DIR}/?\S+,,g" {} \;
     # Fix wrong path in prl files

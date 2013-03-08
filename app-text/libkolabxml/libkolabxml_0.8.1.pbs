@@ -38,10 +38,10 @@ pbs_build() {
 
 pbs_install() {
     domkinstall
-    cd "$destdir"/usr/include/kolabxml/
+    cd "$PKGDIR"/usr/include/kolabxml/
     local i
     for i in *.h; do
-        doln /usr/include/kolabxml/"${i}" "$destdir"/usr/include/"${i}"
+        doln /usr/include/kolabxml/"${i}" "$PKGDIR"/usr/include/"${i}"
     done
 }
 

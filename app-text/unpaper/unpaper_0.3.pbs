@@ -26,8 +26,8 @@ pbs_build() {
 }
 
 pbs_install() {
-    docp unpaper "$destdir"/usr/bin/
-    chmod 755 "$destdir"/usr/bin/unpaper
+    docp unpaper "$PKGDIR"/usr/bin/
+    chmod 755 "$PKGDIR"/usr/bin/unpaper
     dodoc ../doc/* 
 }
 

@@ -35,7 +35,7 @@ pbs_build() {
 
 pbs_install() {
     domkinstall
-    install -d "${destdir}"/usr/share/licenses/abuse
-    sed -n '1,/^$/p' src/view.cpp > "${destdir}"/usr/share/licenses/abuse/orig.code.license
+    install -d "$PKGDIR"/usr/share/licenses/abuse
+    sed -n '1,/^$/p' src/view.cpp > "$PKGDIR"/usr/share/licenses/abuse/orig.code.license
 }
 

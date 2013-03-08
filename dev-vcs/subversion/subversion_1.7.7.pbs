@@ -48,16 +48,16 @@ pbs_build() {
 
 pbs_install() {
     domkinstall INSTALLDIRS=vendor
-    docp tools/hook-scripts "$destdir"/usr/share/subversion/
-    docp_rename tools/client-side/bash_completion "$destdir"/usr/share/bash-completion/completions/subversion
-    cd "$destdir"/
+    docp tools/hook-scripts "$PKGDIR"/usr/share/subversion/
+    docp_rename tools/client-side/bash_completion "$PKGDIR"/usr/share/bash-completion/completions/subversion
+    cd "$PKGDIR"/
     rm usr/share/subversion/hook-scripts/*.in
     ## svnserve ...
     # iniscript/xinetd
-    docp "$filesdir"/svn etc/xinetd.d/
+    docp "$FILESDIR"/svn etc/xinetd.d/
     # systemd
     dounit svnserve.service
-    docp "$filesdir"/svnserve.conf usr/lib/tmpfiles.d/
+    docp "$FILESDIR"/svnserve.conf usr/lib/tmpfiles.d/
     # misc
     for i in svn svnadmin svndumpfilter svnlook svnsync svnversion; do
         ln -sf subversion usr/share/bash-completion/completions/"${i}"

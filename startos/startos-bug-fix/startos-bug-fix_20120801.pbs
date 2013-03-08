@@ -22,6 +22,6 @@ RECOMMENDED="imagemagick app-logo app-desktop"
 REPLACE="ylmfos-bug-fix"
 
 pbs_install() {
-    dodoc "$filesdir"/readme
+    dodoc "$FILESDIR"/readme
 }
 

@@ -39,7 +39,7 @@ pbs_install() {
     domkinstall
     dodoc LICENSE
     cd contrib/pngminus
-    make PNGLIB="-L$destdir/usr/lib$LIBDIRSUFFIX -lpng" -f makefile.std png2pnm pnm2png
-    install -m755 png2pnm pnm2png "$destdir"/usr/bin/
+    make PNGLIB="-L$PKGDIR/usr/lib$LIBDIRSUFFIX -lpng" -f makefile.std png2pnm pnm2png
+    install -m755 png2pnm pnm2png "$PKGDIR"/usr/bin/
 }
 

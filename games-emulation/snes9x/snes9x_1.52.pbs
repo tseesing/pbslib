@@ -40,7 +40,7 @@ pbs_build() {
 }
 
 pbs_install() {
-    docp snes9x "$destdir"/usr/bin
+    docp snes9x "$PKGDIR"/usr/bin
     cd ../gtk
     domkinstall
 }

@@ -59,7 +59,7 @@ pbs_install() {
     domkinstall
     dodoc COPYING README VERSION
 
-    cd "$destdir"
+    cd "$PKGDIR"
     doln /usr/lib/libmapi-openchange.so."$V" usr/lib/libmapi-openchange.so.0
 }
 

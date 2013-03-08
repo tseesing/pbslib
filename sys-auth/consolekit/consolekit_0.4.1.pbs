@@ -25,10 +25,10 @@ pbs_unpack() {
 pbs_config() {
     
     #
-    dopatch  $filesdir/consolekit-0.2.10-cleanup_console_tags.patch 
-    dopatch  $filesdir/consolekit-0.4.0-polkit-automagic.patch 
-    dopatch  $filesdir/consolekit-0.4.0-multilib.patch     
-    dopatch  $filesdir/consolekit-0.4.1-shutdown-reboot-without-policies.patch
+    dopatch  $FILESDIR/consolekit-0.2.10-cleanup_console_tags.patch 
+    dopatch  $FILESDIR/consolekit-0.4.0-polkit-automagic.patch 
+    dopatch  $FILESDIR/consolekit-0.4.0-multilib.patch     
+    dopatch  $FILESDIR/consolekit-0.4.1-shutdown-reboot-without-policies.patch
     config+=" --prefix=/usr 
               --sysconfdir=/etc
               --localstatedir=/var

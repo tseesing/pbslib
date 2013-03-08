@@ -31,7 +31,7 @@ pbs_build() {
 
 pbs_install() {
     domkinstall
-    cd "$destdir"
+    cd "$PKGDIR"
     # Confict with automake
     mv usr/bin/aclocal{,1.4}
     mv usr/bin/automake{,1.4}

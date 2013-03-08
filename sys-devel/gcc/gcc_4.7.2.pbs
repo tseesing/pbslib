@@ -78,7 +78,7 @@ pbs_build() {
 pbs_install() {
     domkinstall || die "make install failed."
     
-    cd "$destdir"
+    cd "$PKGDIR"
     
     # Remove files in gcc-libs
     find . -name "libstdc++.mo" -delete

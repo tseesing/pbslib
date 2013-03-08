@@ -28,8 +28,8 @@ pbs_unpack() {
 }
 
 pbs_install() {
-    docp -R Faience* "$destdir"/usr/share/themes/
-    find "$destdir" -type d -print0 | xargs -0 chmod 755
-    find "$destdir" -type f -print0 | xargs -0 chmod 644
+    docp -R Faience* "$PKGDIR"/usr/share/themes/
+    find "$PKGDIR" -type d -print0 | xargs -0 chmod 755
+    find "$PKGDIR" -type f -print0 | xargs -0 chmod 644
 }
 

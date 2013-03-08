@@ -31,8 +31,8 @@ pbs_build() {
     ./getweb all
 
     # Prevent an access violation.
-    sed -e "s~/etc~${destdir}/etc~g" -i Makefile
-    sed -e "s~/etc~${destdir}/etc~g" -i hplj1000
+    sed -e "s~/etc~$PKGDIR/etc~g" -i Makefile
+    sed -e "s~/etc~$PKGDIR/etc~g" -i hplj1000
   
         # Prevent an access violation, do not create symlinks on live file system
         # during installation.
@@ -42,7 +42,7 @@ pbs_build() {
 }
 
 pbs_install() {
-    mkdir -p "$destdir"/usr/share/ppd/
+    mkdir -p "$PKGDIR"/usr/share/ppd/
     domkinstall
 }
 

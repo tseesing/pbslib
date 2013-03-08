@@ -40,7 +40,7 @@ pbs_build() {
 pbs_install() {
     domkinstall
     # Remove all scores, we generate them from postinstall
-    rm -rf "$destdir"/var
+    rm -rf "$PKGDIR"/var
 }
 
 

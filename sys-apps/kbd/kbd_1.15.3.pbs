@@ -46,6 +46,6 @@ pbs_build() {
 pbs_install() {
     domkinstall KEYCODES_PROGS=yes RESIZECONS_PROGS=yes 
     # For initramfs-tools
-    docp_rename "$filesdir"/hook_kbd "$destdir"/usr/share/initramfs-tools/hooks/kbd
+    docp_rename "$FILESDIR"/hook_kbd "$PKGDIR"/usr/share/initramfs-tools/hooks/kbd
 }
 

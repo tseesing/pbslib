@@ -44,10 +44,10 @@ antlr_install() {
     BDEPEND=""
     
     cd lib/cpp
-    make prefix="${destdir}/usr" install
-    install -Dm644 "${srcdir}"/antlr.jar "${destdir}"/usr/share/java/antlr.jar ||return 1
-    install -Dm755 "${filesdir}"/runantlr.sh "${destdir}"/usr/bin/runantlr || return 1
-    dodoc "${srcdir}"/LICENSE.txt
+    make prefix="$PKGDIR/usr" install
+    install -Dm644 "$SRCDIR"/antlr.jar "$PKGDIR"/usr/share/java/antlr.jar ||return 1
+    install -Dm755 "$FILESDIR"/runantlr.sh "$PKGDIR"/usr/bin/runantlr || return 1
+    dodoc "$SRCDIR"/LICENSE.txt
 }
 
 pyantlr_install () {
@@ -55,7 +55,7 @@ pyantlr_install () {
     RDEPEND="antlr python"
     BDEPEND=""
 
-    cd "${srcdir}"/lib/python
-    python setup.py install --root="${destdir}" --optimize=1
+    cd "$SRCDIR"/lib/python
+    python setup.py install --root="$PKGDIR" --optimize=1
 }
 
