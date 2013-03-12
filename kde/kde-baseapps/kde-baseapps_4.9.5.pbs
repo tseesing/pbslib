@@ -12,7 +12,7 @@ PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
 SRC_URI="http://download.kde.org/stable/"$V"/src/"$N-$V".tar.xz"
 
-RDEPEND="kdelibs libXt"
+RDEPEND="kdelibs libXt oxygen-icons"
 BDEPEND="cmake automoc4 tidyhtml kdegraphics-thumbnailers"
 RECOMMENDED="tidyhtml"
 OPTIONAL="tidyhtml: Konqueror validators plugin validate HTML"

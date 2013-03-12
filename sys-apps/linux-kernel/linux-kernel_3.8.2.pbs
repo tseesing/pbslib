@@ -1,0 +1,84 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="Linux kernel modules" 
+HOMEPAGE="http://www.kernel.org"
+LICENSE="GPLv2"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
+
+SRC_URI="http://www.kernel.org/pub/linux/kernel/v3.0/linux-"$V".tar.xz"
+CHECKSUM="0587d693653dc5e67e3d280278100d1d"
+
+BDEPEND="ncurses"
+
+INSTALL="$N.install"
+
+RIR="yes"
+
+OPTIONS="nostrip"
+
+pbs_unpack() {
+    dounpack
+}
+
+pbs_patch() {
+    PATCHES="aufs3-kbuild.patch aufs3-base.patch aufs3-proc_map.patch aufs3-standalone.patch"
+    AUFS="aufs${V%.*}"
+
+    # Aufs patches
+    for i in $PATCHES; do
+        dopatch "$FILESDIR"/"$AUFS"/"$i"
+    done
+
+    docp "$FILESDIR"/"$AUFS"/fs/aufs                                 fs/
+    docp "$FILESDIR"/"$AUFS"/include/linux/aufs_type.h               include/linux/
+    docp "$FILESDIR"/"$AUFS"/include/uapi/linux/{Kbuild,aufs_type.h} include/uapi/linux/
+}
+
+pbs_config() {
+    case "$ARCH" in
+        i?86) docp_rename "$FILESDIR"/config-"$V$R" .config ;;
+      x86_64) docp_rename "$FILESDIR"/config-"$V$R"-"$ARCH" .config
+    esac
+}
+
+pbs_build() {
+    unset ARCH
+    domake prepare    
+    domake bzImage 
+    domake modules
+}
+
+pbs_install() {
+    make INSTALL_MOD_PATH="$PKGDIR" modules_install
+    # Note that, most of firmwares are provided by linux-firmware package
+    #make INSTALL_MOD_PATH="$PKGDIR" firmware_install
+    rm -rf "$PKGDIR"/lib/firmware/
+    
+    version="$(make kernelrelease)"
+    ARCH="$(get_arch)"
+
+    case "$ARCH" in
+      i?86) docp_rename "$(readlink -f arch/i386/boot/bzImage)"  "$PKGDIR"/boot/vmlinuz-"$version" ;;
+    x86_64) docp_rename "$(readlink -f arch/$ARCH/boot/bzImage)" "$PKGDIR"/boot/vmlinuz-"$version"
+        esac
+
+    docp_rename .config "$PKGDIR"/boot/config-"$version"
+    docp_rename System.map "$PKGDIR"/boot/System.map-"$version"
+    
+    for i in build source;do
+        rm "$PKGDIR"/lib/modules/"$version"/"${i}"
+        ln -sf /usr/src/linux "$PKGDIR"/lib/modules/"$version"/"${i}"
+    done
+
+    # Gzip -9 all modules to safe 100MB of space
+    find "$PKGDIR" -name '*.ko' -exec gzip -9 {} \;
+
+    # For ykms
+    mkdir -p "$PKGDIR"/var/ypkg/modules/
+    echo "$version $ARCH" >"$PKGDIR"/var/ypkg/modules/kernel
+}

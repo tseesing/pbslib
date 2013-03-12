@@ -1,0 +1,36 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="KDE Gtk Config"
+HOMEPAGE="http://www.kde.org/"
+LICENSE="GPL"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
+GROUP="kde"
+
+SRC_URI="http://download.kde.org/stable/$N/2.2rc1/src/$N-2.2rc1.tar.bz2"
+CHECKSUM="b3c4ea5263ffd5991d900bdbeda1157b20da04a7"
+
+RDEPEND="gtk2 gtk3 kdelibs"
+BDEPEND="cmake automoc4"
+OPTIONAL="gtk2: GTK+ v2 support
+          gtk3: GTK+ v3 support"
+
+pbs_unpack() {
+    dounpack
+}
+
+pbs_config() {
+    doconfig -DCMAKE_BUILD_TYPE=Release 
+}
+
+pbs_build() {
+    domake
+}
+
+pbs_install() {
+    domkinstall
+}

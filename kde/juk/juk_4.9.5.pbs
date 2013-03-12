@@ -13,6 +13,7 @@ PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>
 GROUP="kde"
 
 SRC_URI="http://download.kde.org/stable/"$V"/src/"$N-$V".tar.xz"
+CHECKSUM="891ead850878f1044d351b051af49baa201fb551"
 
 RDEPEND="kdelibs taglib oxygen-icons"
 RECOMMENDED=""
@@ -37,4 +38,3 @@ pbs_build() {
 pbs_install() {
     domkinstall
 }
-

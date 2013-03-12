@@ -1,0 +1,37 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="FFmpeg-based thumbnail creator for video files"
+HOMEPAGE="https://projects.kde.org/projects/kde/kdemultimedia/ffmpegthumbs"
+LICENSE="GPL,LGPL,FDL"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
+GROUP="kde"
+
+SRC_URI="http://download.kde.org/stable/"$V"/src/"$N-$V".tar.xz"
+CHECKSUM="8848219c9532186e443ea2e9bf4dc92137f2c0a2"
+
+RDEPEND="ffmpeg kdelibs"
+RECOMMENDED=""
+BDEPEND="cmake automoc4"
+OPTIONAL=""
+CONFLICT=""
+
+pbs_unpack() {
+ dounpack
+}
+
+pbs_config() {
+    doconfig -DCMAKE_BUILD_TYPE=Release -DKDE4_BUILD_TESTS=OFF
+}
+
+pbs_build() {
+    domake
+}
+
+pbs_install() {
+    domkinstall
+}

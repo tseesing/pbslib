@@ -1,0 +1,58 @@
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="KDE libraries needed by all KDE programs."
+HOMEPAGE="https://projects.kde.org/projects/kde/kdelibs"
+LICENSE="GPL,LGPL,FDL"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
+GROUP="kde"
+
+SRC_URI="http://download.kde.org/stable/"$V"/src/"$N-$V".tar.xz"
+CHECKSUM="91d1ab65a561decf7506df45bda7a7fec9a524bb"
+
+RDEPEND="strigi attica libXScrnSaver soprano krb5 grantlee shared-desktop-ontologies qca libdbusmenu-qt polkit-qt enchant giflib jasper openexr upower udisks2 libXcursor phonon libXtst libutempter qtwebkit"
+BDEPEND="cmake automoc4 avahi mesa hspell"
+RECOMMENDED=""
+
+INSTALL="$N.install"
+
+pbs_unpack() {
+    dounpack
+}
+
+pbs_patch() {
+    # avoid file conflict with gnome-menus
+    dopatch kde-applications-menu.patch
+}
+
+pbs_config() {
+    # NOTE specify cmake instead of configure
+    mkdir build && cd build
+    cmake .. -DCMAKE_BUILD_TYPE=Release \
+             -DCMAKE_SKIP_RPATH=ON \
+             -DCMAKE_INSTALL_PREFIX=/usr \
+             -DLIB_INSTALL_DIR=/usr/lib"$LIBDIRSUFFIX" \
+             -DSYSCONF_INSTALL_DIR=/etc \
+             -DHTML_INSTALL_DIR=/usr/share/doc/kde/html \
+             -DKDE_DEFAULT_HOME='.kde4' \
+             -DKDE_DISTRIBUTION_TEXT='StartOS' \
+             -DWITH_FAM=OFF \
+             -DWITH_HUpnp=OFF
+}
+
+pbs_build() {
+    domake
+}
+
+pbs_install() {
+    domkinstall
+    cd "$PKGDIR"
+    # cert bundle seems to be hardcoded
+    # link it to the one from ca-certificates
+    rm -f usr/share/apps/kssl/ca-bundle.crt
+    doln /etc/ssl/certs/ca-certificates.crt usr/share/apps/kssl/ca-bundle.crt
+}
+

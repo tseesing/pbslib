@@ -1,0 +1,45 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="Ruby bindings for libraries created by the KDE community"
+HOMEPAGE="http://kde.org/"
+LICENSE="GPL,FDL"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
+GROUP="kde"
+
+SRC_URI="http://download.kde.org/stable/"$V"/src/"$N-$V".tar.xz"
+CHECKSUM="ba0326225e6d040ea215f1991295f7e43d5aaed4"
+
+RDEPEND=""
+RECOMMENDED=""
+BDEPEND="cmake automoc4 ruby"
+OPTIONAL=""
+CONFLICT=""
+
+INSTALL="$N.install"
+
+pbs_unpack() {
+    dounpack
+}
+
+pbs_patch() {
+    dopatch ruby19.patch
+}
+
+pbs_config() {
+    doconfig -DCMAKE_BUILD_TYPE=Release \
+             -DCUSTOM_RUBY_SITE_LIB_DIR=$(ruby -e 'puts RbConfig::CONFIG["vendorlibdir"]') \
+             -DCUSTOM_RUBY_SITE_ARCH_DIR=$(ruby -e 'puts RbConfig::CONFIG["vendorarchdir"]')
+}
+
+pbs_build() {
+    domake
+}
+
+pbs_install() {
+    domkinstall
+}

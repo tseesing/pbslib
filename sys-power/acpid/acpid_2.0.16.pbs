@@ -40,6 +40,7 @@ pbs_install() {
     install -Dm644 "$FILESDIR"/anything   etc/acpi/events/anything
     install -Dm755 "$FILESDIR"/handler.sh etc/acpi/handler.sh
     
+    # For systemd
     dounit acpid.socket acpid.service
     chmod 755  usr/sbin/acpid
 }

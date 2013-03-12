@@ -11,6 +11,7 @@ post_install() {
         echo "Note: you should install \"initramfs-tools\" to generate the \"initrd.img\" file."
     fi
     unset URAMFS_CMD
+  
     # For grub
     UGRUB_CMD=$(type -p update-grub)
     if [ -n ${UGRUB_CMD} -a -x ${UGRUB_CMD} ]; then
@@ -33,14 +34,10 @@ post_upgrade() {
     new_ver="$2"
     old_ver="$3"
     rm -rf /var/lib/initramfs-tools/"$old_ver" 2>/dev/null
-    #
-    mkdir -p /var/run/ypkg/
-    echo "reboot=yes" >/var/run/ypkg/event
-    #
+    flag_reboot
     post_install $name $new_ver
 }
 
 post_downgrade() {
     post_upgrade
 }
-

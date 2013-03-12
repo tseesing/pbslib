@@ -1,0 +1,41 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="A single-player jigsaw puzzle game"
+HOMEPAGE="http://kde.org/applications/games/palapeli"
+LICENSE="GPL,LGPL,FDL"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
+GROUP="kde"
+
+SRC_URI="http://download.kde.org/stable/$V/src/$N-$V.tar.xz"
+CHECKSUM="af3c325b8fbdc1521d1de56a5e2e60b7654e522d"
+
+RDEPEND="kde-runtime libkdegames"
+RECOMMENDED=""
+BDEPEND="cmake automoc4"
+OPTIONAL=""
+CONFLICT=""
+REPLACE="kdegames"
+
+INSTALL="$N.install"
+
+pbs_unpack() {
+    dounpack
+}
+
+pbs_config() {
+    config+=""
+    doconfig -DCMAKE_BUILD_TYPE=Release -DKDE4_BUILD_TESTS=OFF
+}
+
+pbs_build() {
+    domake
+}
+
+pbs_install() {
+    domkinstall
+}

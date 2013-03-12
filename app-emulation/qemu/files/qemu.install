@@ -1,0 +1,22 @@
+
+pre_install() {
+    if [ -f /etc/qemu/bridge.conf ]; then
+        cp /etc/qemu/bridge.conf /etc/qemu/bridge.conf.old   
+    fi
+}
+
+pre_upgrade() {
+    pre_install
+}
+
+post_install() {
+    groupadd kvm -f -g 78
+}
+
+post_upgrade() {
+    post_install
+}
+
+post_remove() {
+    groupdel kvm
+}

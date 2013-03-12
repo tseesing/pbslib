@@ -1,0 +1,43 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="VPN client for cisco3000 VPN Concentrators"
+HOMEPAGE="http://www.unix-ag.uni-kl.de/~massar/vpnc"
+LICENSE="GPL"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
+
+SRC_URI="http://www.unix-ag.uni-kl.de/~massar/$N/$N-$V.tar.gz"
+CHECKSUM=""
+
+RDEPEND="libgcrypt openssl iproute2"
+RECOMMENDED=""
+BDEPEND=""
+OPTIONAL=""
+CONFLICT=""
+REPLACE=""
+
+pbs_unpack() {
+    dounpack
+}
+
+pbs_patch() {
+    # Build hybrid support
+    sed -i 's|^#OPENSSL|OPENSSL|g' Makefile
+}
+
+pbs_config() {
+    config+=""
+    doconfig
+}
+
+pbs_build() {
+    domake
+}
+
+pbs_install() {
+    domkinstall PREFIX=/usr
+}

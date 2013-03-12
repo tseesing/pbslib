@@ -18,6 +18,7 @@ RDEPEND="libjpeg-turbo libpng cyrus-sasl curl libsdl alsa-lib nss glib2 gnutls b
 BDEPEND="perl python"
 RECOMMENDED=""
 OPTIONAL="brltty: Braille display driver"
+CONFLICT="qemu"
 
 OPTIONS="nostrip"
 

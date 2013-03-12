@@ -1,0 +1,37 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="A digital photo management application for KDE."
+HOMEPAGE="http://www.digikam.org/"
+LICENSE="GPL"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
+
+SRC_URI="http://download.kde.org/stable/$N/$N-$V.tar.bz2"
+CHECKSUM="45a9490b2b10b7b42fa9f90b7389eeb248326718"
+
+RDEPEND="sane-backends libkipi libkdcraw libkexiv2 libXpm kdepimlibs opencv marble liblqr gtkglext opus libmodplug libbluray libxslt libksane libgpod"
+BDEPEND="cmake automoc4 mesa"
+RECOMMENDED=""
+CONFLICT=""
+
+INSTALL="$N.install"
+
+pbs_unpack() {
+    dounpack
+}
+
+pbs_config() {
+    doconfig -DCMAKE_BUILD_TYPE=Release -DCMAKE_SKIP_RPATH=ON -DBUILD_tests=OFF
+}
+
+pbs_build() {
+    domake
+}
+
+pbs_install() {
+    domkinstall
+}

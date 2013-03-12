@@ -1,0 +1,90 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="X.Org X servers"
+HOMEPAGE="http://xorg.freedesktop.org/"
+LICENSE="custom"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
+
+SRC_URI="http://xorg.freedesktop.org/releases/individual/xserver/"$N-$V".tar.bz2"
+CHECKSUM="1f5107573252c26439fdd165481765a2c0964e02a2e9fab36e02414d08f30630"
+
+RDEPEND="libdmx libgcrypt libXaw libXfont libXi libXrender libXv pixman mesa(>=8.0.4) libxkbfile libXtst(>=1.0.99.2) libXres"
+BDEPEND="xproto(>=7.0.22) dri2proto libsdl xtrans(>=1.2.2) xextproto(>=7.1.99) inputproto(>=2.1.99.6) fontsproto bigreqsproto(>=1.1.0) scrnsaverproto(>=1.1) xf86vidmodeproto xf86dgaproto videoproto resourceproto xcmiscproto(>=1.2.0) recordproto(>=1.13.99.1) fixesproto(>=5.0) damageproto(>=1.1) compositeproto(>=0.4) glproto(>=1.4.16) xf86driproto xf86driproto dri2proto randrproto(>=1.4.0) xineramaproto renderproto(>=0.11) kbproto(>=1.0.3)"
+
+NOTES="rebuild all drivers if upgrade OR you may cannot start X because of module version mismatch errors, because the ABI changed"
+
+INSTALL="$N.install"
+
+pbs_unpack() {
+    dounpack
+}
+
+pbs_patch() {
+    # Use nouveau/nv/nvidia drivers for nvidia devices
+    dopatch autoconfig-nvidia.patch
+    # Use unofficial imedia SiS driver for supported SiS devices
+    dopatch autoconfig-sis.patch
+    # https://bugs.freedesktop.org/show_bug.cgi?id=59825 - fixes crash with vboxvideo
+    dopatch bug59825.patch
+    # From Fedora. Do not build acpid code, it is buggy and we do not need it
+    dopatch xserver-1.6.0-less-acpi-brokenness.patch
+    # post release git fixes
+    dopatch git-fixes.patch
+}
+
+pbs_config() {
+    config+="--enable-ipv6 
+             --enable-dri 
+             --enable-dmx 
+             --enable-xvfb 
+             --enable-xnest 
+             --enable-composite 
+             --enable-xcsecurity 
+             --enable-xorg 
+             --enable-xephyr 
+             --enable-glx-tls 
+             --enable-kdrive 
+             --enable-kdrive-evdev 
+             --enable-kdrive-kbd 
+             --enable-kdrive-mouse 
+             --enable-install-setuid 
+             --enable-config-systemd 
+             --disable-config-dbus 
+             --enable-record 
+             --disable-xfbdev 
+             --disable-xfake 
+             --disable-static 
+             --sysconfdir=/etc/X11 
+             --localstatedir=/var 
+             --with-xkb-path=/usr/share/X11/xkb 
+             --with-xkb-output=/var/lib/xkb 
+             --with-fontrootdir=/usr/share/fonts
+             --disable-config-hal"
+    autoreconf -fi     
+    doconfig 
+}
+
+pbs_build() {
+    domake
+}
+
+pbs_install() {
+    domkinstall
+    dodoc COPYING
+    cd "$PKGDIR"
+    doln /usr/share/X11/app-defaults etc/X11/app-defaults
+    docp "$FILESDIR"/10-quirks.conf  etc/X11/xorg.conf.d
+    doln /usr/share/fonts usr/lib/X11/fonts
+    # Backup libglx.so which should be overrided by other packages, e.g. nvidia-graphic-driver
+    cd usr/lib"$LIBDIRSUFFIX"/xorg/modules/extensions/
+    mv libglx.so libglx.so-pkg."$N"
+    doln -sf libglx.so-pkg."$N" libglx.so
+    cd -
+    docp "$FILESDIR"/xvfb-run usr/bin/
+    doman xvfb-run.1
+}

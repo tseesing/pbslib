@@ -88,4 +88,3 @@ EOF
     docp "$FILESDIR"/udlfb.conf etc/modprobe.d/
     ln -sf /proc/self/mounts etc/mtab
 }
-

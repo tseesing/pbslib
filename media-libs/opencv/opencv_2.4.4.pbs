@@ -1,0 +1,56 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="Open Source Computer Vision Library"
+HOMEPAGE="http://opencv.willowgarage.com"
+LICENSE="BSD"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
+
+SRC_URI="http://downloads.sourceforge.net/opencvlibrary/OpenCV-"$V"a.tar.bz2"
+CHECKSUM=""
+
+RDEPEND="ffmpeg(>=0.11.1) gst-plugins-base0.10 gtk2 libdc1394 openexr python"
+RECOMMENDED=""
+BDEPEND="cmake mesa numpy"
+OPTIONAL=""
+CONFLICT=""
+
+pbs_unpack() {
+    dounpack
+}
+
+pbs_patch() {
+    dopatch pkgconfig.patch fsh.patch
+}
+
+pbs_config() {
+    doconfig -D WITH_OPENCL=ON \
+             -D WITH_OPENGL=ON \
+             -D WITH_TBB=ON \
+             -D WITH_XINE=ON \
+             -D ENABLE_SSE=OFF \
+             -D ENABLE_SSE2=OFF \
+             -D ENABLE_SSE3=OFF \
+             -D BUILD_PACKAGE=OFF \
+             -D BUILD_WITH_DEBUG_INFO=OFF \
+             -D BUILD_TESTS=OFF \
+             -D BUILD_PERF_TESTS=OFF \
+             -D BUILD_EXAMPLES=ON \
+             -D INSTALL_C_EXAMPLES=ON \
+             -D INSTALL_PYTHON_EXAMPLES=ON \
+             -D CMAKE_BUILD_TYPE=Release \
+             -D CMAKE_SKIP_RPATH=ON
+}
+
+pbs_build() {
+    domake
+}
+
+pbs_install() {
+    domkinstall 
+    dodoc ../doc/license.txt
+}

@@ -1,0 +1,38 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="Open client for Cisco AnyConnect VPN"
+HOMEPAGE="http://www.infradead.org/openconnect.html"
+LICENSE="GPL"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
+
+SRC_URI="ftp://ftp.infradead.org/pub/"$N"/"$N-$V".tar.gz"
+CHECKSUM="61f26e7936d8b26c0f7e8119b7ef84b2"
+
+RDEPEND="libxml2 openssl libproxy"
+RECOMMENDED=""
+BDEPEND="intltool"
+OPTIONAL=""
+CONFLICT=""
+REPLACE=""
+
+pbs_unpack() {
+    dounpack
+}
+
+pbs_config() {
+    config+="--disable-static"
+    doconfig
+}
+
+pbs_build() {
+    domake
+}
+
+pbs_install() {
+    domkinstall
+}
