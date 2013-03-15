@@ -1,0 +1,40 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="Library that contains several hash-map implementations, including implementations that optimize for space or speed."
+HOMEPAGE="http://code.google.com/p/sparsehash"
+LICENSE="BSD"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
+YARCH="any"
+
+SRC_URI="http://sparsehash.googlecode.com/files/$N-$V.tar.gz"
+CHECKSUM="2ed639a7155607c097c2029af5f4287296595080b2e5dd2e2ebd9bbb7450b87c"
+
+RDEPEND=""
+RECOMMENDED=""
+BDEPEND=""
+OPTIONAL=""
+CONFLICT=""
+REPLACE=""
+
+pbs_unpack() {
+    dounpack
+}
+
+pbs_config() {
+    config+=""
+    doconfig
+}
+
+pbs_build() {
+    domake
+}
+
+pbs_install() {
+    domkinstall
+    dodoc COPYING
+}

@@ -1,0 +1,114 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="linux kernel headers"
+HOMEPAGE="http://www.kernel.org"
+LICENSE="GPLv2"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
+
+SRC_URI="http://www.kernel.org/pub/linux/kernel/v3.0/linux-"$V".tar.xz"
+CHECKSUM="0587d693653dc5e67e3d280278100d1d"
+
+OPTIONS="nostrip"
+
+pbs_unpack() {
+    dounpack
+}
+
+pbs_patch() {
+    PATCHES="aufs3-kbuild.patch aufs3-base.patch aufs3-proc_map.patch aufs3-standalone.patch"
+    AUFS="aufs${V%.*}"
+
+    # Aufs patches
+    for i in $PATCHES; do
+        dopatch "$FILESDIR"/"$AUFS"/"$i"
+    done
+
+    docp "$FILESDIR"/"$AUFS"/fs/aufs                                 fs/ 
+    docp "$FILESDIR"/"$AUFS"/include/linux/aufs_type.h               include/linux/
+    docp "$FILESDIR"/"$AUFS"/include/uapi/linux/{Kbuild,aufs_type.h} include/uapi/linux/
+}
+
+pbs_config() {
+    case "$ARCH" in
+        i?86) docp_rename "$FILESDIR"/config-"$V$R"         .config ;;
+      x86_64) docp_rename "$FILESDIR"/config-"$V$R"-"$ARCH" .config
+    esac
+}
+
+pbs_build() {
+    unset ARCH
+    domake prepare    
+    domake bzImage 
+    domake modules
+}
+
+pbs_install() {
+    KARCH=x86
+
+    KDIR="$PKGDIR"/usr/src/"$N-$V$R"
+    doln /usr/src/"$N-$V$R" "$PKGDIR"/usr/src/linux
+
+    docp .config vmlinux Module.symvers "$KDIR"/
+    
+    # base headers
+    docp include "$KDIR"/
+    
+    # extra headers
+    for i in $(find drivers net fs -name "*.h"); do
+        docp "${i}" "$KDIR"/"$(dirname ${i})"
+    done
+    
+    # arch stuff
+    docp arch/"$KARCH"/include "$KDIR"/arch/"$KARCH"/
+    if [ "$ARCH" = "i686" ]; then
+        docp arch/"$KARCH"/Makefile_32.cpu "$KDIR"/arch/"$KARCH"/
+    fi
+    docp arch/"$KARCH"/kernel/asm-offsets.s "$KDIR"/arch/"$KARCH"/kernel/
+    
+    # files necessary for later builds, like nvidia and vmware
+    docp scripts "$KDIR"/
+    chmod og-w -R "$KDIR"/scripts
+    mkdir -p      "$KDIR"/.tmp_versions
+
+    # makefile
+    docp Makefile        "$KDIR"/
+    docp kernel/Makefile "$KDIR"/kernel/
+    docp arch/"$KARCH"/Makefile "$KDIR"/arch/"$KARCH"/
+    docp Documentation/DocBook/Makefile "$KDIR"/Documentation/DocBook/
+
+    # Kconfig files
+    for i in $(find . -name "Kconfig*"); do
+        docp "${i}" "$KDIR"/"$(dirname ${i})"
+    done
+    
+    # Kbuild files
+    for i in $(find . -name "Kbuild*"); do
+        docp "${i}" "$KDIR"/"$(dirname ${i})"
+    done
+
+    # For klibc
+    # FIXME, klibc only search unistd_64.h in "arch/"$KARCH"/include/asm/"
+    docp arch/"$KARCH"/include/generated/uapi/asm/{unistd_64.h,unistd_32.h} "$KDIR"/arch/"$KARCH"/include/asm/
+    docp arch/"$KARCH"/{syscalls,tools} "$KDIR"/arch/"$KARCH"/
+    docp tools/include/tools            "$KDIR"/tools/include/
+
+    cd "$KDIR"
+    
+    # Remove unneeded architectures
+    rm -rf arch/{alpha,arm,arm26,avr32,blackfin,cris,frv,h8300,ia64,m32r,m68k,m68knommu,mips,microblaze,mn10300,parisc,powerpc,ppc,s390,sh,sh64,sparc,sparc64,um,v850,xtensa}
+
+    # Clean up
+    find . -name ".*install" -exec rm {} \;
+    find . -name ".*cmd" -exec rm {} \;
+    find . -name "*.awk" -exec rm {} \;
+    find . -name ".gitignore" -exec rm {} \;
+    
+    # Fix permission
+    chown -R root.root .
+    find . -type d -exec chmod 755 {} \;
+}

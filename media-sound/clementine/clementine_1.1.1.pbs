@@ -1,0 +1,38 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="A modern music player and library organizer based on Amarok 1.4 and Qt4"
+COMMENTS="Clementine is a multiplatform music player. It is inspired by Amarok 1.4, focusing on a fast and easy-to-use interface for searching and playing your music."
+HOMEPAGE="http://code.google.com/p/clementine-player/"
+LICENSE="GPL"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
+
+SRC_URI="http://clementine-player.googlecode.com/files/"$N-$V".tar.gz"
+CHECKSUM="f8d3e9c8f54ac488323ab5a629c9accbe256378e"
+
+RDEPEND="chromaprint qjson glew glu liblastfm libgpod libcdio libmtp libusb-compat protobuf taglib qca qtwebkit libjpeg-turbo libxslt opus"
+RECOMMENDED=""
+BDEPEND="cmake boost mesa"
+CONFLICT=""
+
+INSTALL="$N.install"
+
+pbs_unpack() {
+    dounpack
+}
+
+pbs_config() {
+    doconfig -DCMAKE_BUILD_TYPE=Release -DENABLE_REMOTE=OFF 
+}
+
+pbs_build() {
+    domake
+}
+
+pbs_install() {
+    domkinstall
+}

@@ -119,4 +119,3 @@ pbs_install() {
     mv usr/sbin/grub-install{,.real}
     mkdir -p boot/grub/
 }
-

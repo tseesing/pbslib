@@ -25,7 +25,7 @@ pbs_unpack() {
 }
 
 pbs_config() {
-    config+="--enable-opengl=yes"
+    config+="--enable-opengl"
     doconfig
 }
 

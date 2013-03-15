@@ -1,0 +1,36 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="Linux header files for glibc/eglibc"
+HOMEPAGE="http://www.kernel.org"
+LICENSE="GPL"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
+YARCH="any"
+
+SRC_URI="http://www.kernel.org/pub/linux/kernel/v3.0/linux-"$V".tar.xz"
+CHECKSUM="0587d693653dc5e67e3d280278100d1d"
+
+RDEPEND=""
+BDEPEND=""
+
+pbs_unpack() {
+    dounpack
+}
+
+pbs_build() {
+    unset ARCH
+    make mrproper
+    make headers_check
+}
+
+pbs_install() {
+    make INSTALL_HDR_PATH="$PKGDIR"/usr headers_install
+    cd "$PKGDIR"
+    find usr/include -name .install -or -name ..install.cmd |xargs rm -f
+    # Provided by libdrm
+    rm -rf usr/include/drm
+}

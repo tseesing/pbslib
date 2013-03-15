@@ -1,0 +1,39 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="The Boehm-Demers-Weiser conservative garbage collector"
+HOMEPAGE="http://www.hpl.hp.com/personal/Hans_Boehm/gc/"
+LICENSE="GPL"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
+
+SRC_URI="http://www.hpl.hp.com/personal/Hans_Boehm/gc/gc_source/"$N-$V"d.tar.gz"
+CHECKSUM="91340b28c61753a789eb6077675d87d2"
+
+RDEPEND="gcc-libs"
+BDEPEND=""
+RECOMMENDED=""
+
+pbs_unpack() {
+    dounpack
+}
+
+pbs_config() {
+    config+="--enable-cplusplus"
+    doconfig
+}
+
+pbs_build() {
+    domake
+}
+
+pbs_install() {
+    domkinstall
+    rm -rf "$PKGDIR"/usr/share/gc
+    dodoc doc/README{,.{changes,contributors,environment,linux}} 
+    sed -i -e 's/GC_MALLOC 1L/gc 3/' doc/gc.man
+    docp_rename doc/gc.man "$PKGDIR"/usr/share/man/man3/gc.3
+}

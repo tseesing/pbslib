@@ -1,0 +1,27 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="Iotop is a Python program with a top like UI used to show of behalf of which process is the I/O going on"
+HOMEPAGE="http://guichaz.free.fr/iotop/"
+LICENSE="GPL"
+PACKAGER="chenqixing@ivali.com"
+
+SRC_URI="http://guichaz.free.fr/iotop/files/$N-$V.tar.bz2"
+CHECKSUM="b0846ad976f41bca2813f7f8a73fef31"
+
+YARCH="any"
+
+RDEPEND="python(>=2.7)"
+
+pbs_unpack() {
+    dounpack
+}
+
+pbs_install() {
+    ./setup.py install --root="$PKGDIR"
+}
+

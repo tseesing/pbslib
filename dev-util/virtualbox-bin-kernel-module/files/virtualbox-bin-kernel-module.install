@@ -1,7 +1,14 @@
 . /usr/lib/ybs/funcs
 
+unit="virtualbox.service"
+
 post_install() {
     depmod -a "$KERNEL_DIST" ||true
+    for ko in vboxpci vboxnetflt vboxnetadp vboxdrv; do
+        rmmod $ko 2>/dev/null
+        modprobe $ko
+    done
+    systemctl enable $unit || true        
 }
 
 post_remove() {
@@ -9,6 +16,15 @@ post_remove() {
 }
 
 post_upgrade() {
-    post_install
+    systemctl --system daemon-reload
+    restart $unit ||return 0
 }
 
+post_downgrade() {
+    post_upgrade $1 $2
+}
+
+pre_remove() {
+    systemctl disable $unit
+    stop $unit ||return 0
+}

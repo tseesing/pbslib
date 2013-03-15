@@ -16,7 +16,7 @@ CHECKSUM="9b712da1989725547a8093e638725ee6de74d7870661545a15374c7ebf335cc1"
 
 RDEPEND="gtk3 gcr libsecret libsoup gpgme desktop-file-utils dconf"
 BDEPEND="openldap intltool yelp-tools gobject-introspection openssh libSM"
-RECOMMENDED="seahorse-plugins"
+RECOMMENDED="seahorse-nautilus"
 OPTIONAL="openssh: SSH support"
 
 INSTALL="$N.install"
@@ -41,4 +41,3 @@ pbs_install() {
     domkinstall
     docp "$FILESDIR"/seahorse-ssh-askpass.sh "$PKGDIR"/etc/profile.d/
 }
-

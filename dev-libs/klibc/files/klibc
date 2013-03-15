@@ -30,4 +30,3 @@ rm -f ${DESTDIR}/bin/kinit* ${DESTDIR}/bin/zcat ${DESTDIR}/bin/gzip
 if [ "${BUSYBOX}" = "n" ] || [ ! -e ${BUSYBOXDIR}/busybox ]; then
 	mv ${DESTDIR}/bin/sh.shared ${DESTDIR}/bin/sh
 fi
-

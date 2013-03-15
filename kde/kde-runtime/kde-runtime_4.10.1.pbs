@@ -11,7 +11,7 @@ GROUP="kde"
 SRC_URI="http://download.kde.org/stable/"$V"/src/"$N-$V".tar.xz"
 CHECKSUM="68d630a5f38a3bb3e629b8cfe4d800e6aef5e327"
 
-RDEPEND="kactivities samba libssh libcanberra xauth"
+RDEPEND="libSM libXft libXpm libjpeg-turbo libxslt sqlite openslp libssh samba libcanberra kdepimlibs kactivities"
 BDEPEND="pkgconfig cmake automoc4 kdepimlibs openslp networkmanager"
 OPTIONAL="kdepimlibs: to generate drkonqi reports
           htdig: to build the search index in khelpcenter

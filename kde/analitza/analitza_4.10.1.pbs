@@ -14,7 +14,7 @@ GROUP="kde"
 SRC_URI="http://download.kde.org/stable/"$V"/src/"$N-$V".tar.xz"
 CHECKSUM="460795e9f7a819095408f42642aace70"
 
-RDEPEND="kdelibs kde-runtime"
+RDEPEND="readline glib2 kdelibs xz dbus openssl glu libSM libXft libXpm"
 RECOMMENDED=""
 BDEPEND="cmake automoc4 mesa"
 OPTIONAL=""

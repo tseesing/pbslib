@@ -14,7 +14,7 @@ GROUP="kde"
 SRC_URI="http://download.kde.org/stable/"$V"/src/"$N-$V".tar.xz"
 CHECKSUM="5d3551cf327942da4c94529902436f30940c2537"
 
-RDEPEND="kde-runtime"
+RDEPEND="kde-runtime kate"
 RECOMMENDED=""
 BDEPEND="cmake automoc4 boost"
 OPTIONAL=""

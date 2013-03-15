@@ -45,4 +45,3 @@ pbs_install() {
     # For initramfs-tools
     docp "$FILESDIR"/klibc usr/share/initramfs-tools/hooks/
 }
-

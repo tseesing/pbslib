@@ -1,0 +1,42 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="Pulse-Eight's libcec for the Pulse-Eight USB-CEC adapter"
+HOMEPAGE="https://github.com/Pulse-Eight/libcec"
+LICENSE="GPL"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
+
+SRC_URI="git://github.com/Pulse-Eight/libcec.git"
+
+RDEPEND="gcc-libs systemd"
+RECOMMENDED=""
+BDEPEND=""
+OPTIONAL=""
+CONFLICT=""
+REPLACE=""
+
+pbs_unpack() {
+    dounpack
+}
+
+pbs_patch() {
+    git checkout libcec-2.1.1
+}
+
+pbs_config() {
+    config+=""
+    autoreconf -vif
+    doconfig
+}
+
+pbs_build() {
+    domake
+}
+
+pbs_install() {
+    domkinstall
+}

@@ -13,7 +13,7 @@ PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 SRC_URI="http://download.kde.org/stable/$N/$N-$V.tar.bz2"
 CHECKSUM="45a9490b2b10b7b42fa9f90b7389eeb248326718"
 
-RDEPEND="sane-backends libkipi libkdcraw libkexiv2 libXpm kdepimlibs opencv marble liblqr gtkglext opus libmodplug libbluray libxslt libksane libgpod"
+RDEPEND="libkipi libkdcraw libkexiv2 kdepimlibs opencv marble liblqr lensfun gtkglext opus libmodplug libbluray libksane libgpod"
 BDEPEND="cmake automoc4 mesa"
 RECOMMENDED=""
 CONFLICT=""
@@ -25,7 +25,12 @@ pbs_unpack() {
 }
 
 pbs_config() {
-    doconfig -DCMAKE_BUILD_TYPE=Release -DCMAKE_SKIP_RPATH=ON -DBUILD_tests=OFF
+    # "-DDIGIKAMSC_USE_PRIVATE_KDEGRAPHICS=on" :
+    # Force to use local libkipi, libkexiv2, and libkdcraw instead KDE version installed on your computer.
+    doconfig -DCMAKE_BUILD_TYPE=Release \
+             -DCMAKE_SKIP_RPATH=ON \
+             -DBUILD_tests=OFF \
+             -DDIGIKAMSC_USE_PRIVATE_KDEGRAPHICS=OFF
 }
 
 pbs_build() {
@@ -34,4 +39,6 @@ pbs_build() {
 
 pbs_install() {
     domkinstall
+    # Provided by kde-l10n-zh_CN
+    find "$PKGDIR" -type f -name "libkipi.mo" -exec rm {} \;
 }

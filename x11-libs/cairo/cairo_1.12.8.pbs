@@ -13,10 +13,10 @@ PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com> "
 SRC_URI="http://cairographics.org/releases/"$N-$V".tar.xz"
 
 RDEPEND="fontconfig glib2 libpng libXrender pixman"
-BDEPEND="xcb-util-dev"
+BDEPEND="xcb-util"
 
 pbs_unpack() {
-        dounpack
+    dounpack
 }
 
 pbs_config() {
@@ -31,4 +31,3 @@ pbs_build() {
 pbs_install() {
     domkinstall
 }
-

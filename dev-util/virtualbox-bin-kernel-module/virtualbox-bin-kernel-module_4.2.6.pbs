@@ -20,8 +20,8 @@ case "$ARCH" in
         CHECKSUM="461c5ed0bd80f3d4cf51085261ea2d72" 
 esac
         
-RDEPEND="linux-kernel(=3.6.8)"
-BDEPEND="linux-kernel-headers glib2 libsdl libXcursor libXinerama libXmu python"
+RDEPEND="linux-kernel(=3.8.2)"
+BDEPEND="linux-kernel-headers(=3.8.2) glib2 libsdl libXcursor libXinerama libXmu python"
 
 INSTALL="$N.install"
 
@@ -38,9 +38,13 @@ pbs_unpack() {
 }
 
 pbs_install() {
+    docp_rename vboxdrv.sh "$PKGDIR"/etc/init.d/vboxdrv
     # Install kernel modules
     cd src/vboxhost
     unset ARCH
-    domake   ||exit 1
+    domake ||exit 1
     docp vboxdrv.ko vboxnetadp.ko vboxnetflt.ko vboxpci.ko "$PKGDIR"/lib/modules/"$KERNEL_DIST"/misc
+    #
+    # For systemd
+    dounit virtualbox.service
 }

@@ -13,7 +13,7 @@ picture-options='zoom'
 #show-desktop-icons=true
 
 [org.gnome.shell]
-favorite-apps=['osinstaller.desktop', 'chromium.desktop', 'softwarecenter.desktop', 'nautilus.desktop', 'gnome-terminal.desktop', 'gedit.desktop']
+favorite-apps=['osinstaller.desktop', 'chromium.desktop', 'softwarecenter.desktop', 'nautilus.desktop', 'gnome-terminal.desktop', 'gedit.desktop', 'gnome-tweak-tool.desktop']
 always-show-log-out=true
 enabled-extensions=['drive-menu@gnome-shell-extensions.gcampax.github.com', 'windowlist@startos.org', 'advancedvolumemixer@startos.org', 'user-theme@gnome-shell-extensions.gcampax.github.com']
 
@@ -68,4 +68,3 @@ workgroup='StartOS'
 #always-use-location-entry=true
 # Whether to enable immediate deletion
 enable-delete=true
-

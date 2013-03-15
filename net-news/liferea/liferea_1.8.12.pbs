@@ -1,0 +1,37 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="News Aggregator for RDF/RSS/CDF/Atom/Echo/etc feeds"
+HOMEPAGE="http://liferea.sourceforge.net/"
+LICENSE="GPL"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
+
+SRC_URI="http://downloads.sourceforge.net/sourceforge/$N/$N-$V.tar.bz2"
+CHECKSUM="f40c453af577e2870bc12981ef4df6418a627f78"
+
+RDEPEND="gconf sqlite libunique webkitgtk2 libsoup json-glib libnotify libjpeg-turbo mesa libXt"
+BDEPEND="intltool"
+RECOMMENDED=""
+
+INSTALL="$N.install"
+
+pbs_unpack() {
+    dounpack
+}
+
+pbs_config() {
+    config+="--disable-schemas-install"
+    doconfig
+}
+
+pbs_build() {
+    domake
+}
+
+pbs_install() {
+    domkinstall
+}

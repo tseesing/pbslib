@@ -31,4 +31,3 @@ pbs_install() {
     dodoc README
     rm "$PKGDIR"/usr/lib"$LIBDIRSUFFIX"/libcap.a
 }
-

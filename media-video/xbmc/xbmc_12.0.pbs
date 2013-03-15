@@ -1,0 +1,80 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="XBMC is an award-winning free and open source (GPL) software media player and entertainment hub for digital media."
+HOMEPAGE="http://xbmc.org/"
+LICENSE="GPL"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
+
+SRC_URI="http://mirrors.xbmc.org/releases/source/$N-$V.tar.gz"
+CHECKSUM="a79128b9d094a046947bfd9bb4550809"
+
+RDEPEND=""
+BDEPEND="boost cmake"
+RECOMMENDED=""
+CONFLICT=""
+
+pbs_unpack() {
+    dounpack
+}
+
+pbs_patch() {
+    dopatch 0001-AE-Pulse-Audio-fix-crash-on-player-stop.patch
+    dopatch 0002-AE-Pulse-Audio-fix-buffer-underruns.patch
+}
+
+pbs_config() {
+    ./bootstrap
+    config+="--disable-debug
+             --enable-optimizations 
+             --enable-gl 
+             --enable-sdl
+             --enable-vaapi
+             --enable-vdpau 
+             --enable-xvba 
+             --enable-joystick 
+             --enable-xrandr
+             --enable-rsxs 
+             --enable-projectm 
+             --enable-x11 
+             --enable-pulse 
+             --enable-rtmp 
+             --enable-samba 
+             --enable-nfs 
+             --enable-afpclient 
+             --enable-airplay 
+             --enable-airtunes 
+             --enable-ffmpeg-libvorbis 
+             --enable-dvdcss 
+             --disable-hal 
+             --enable-avahi 
+             --enable-webserver 
+             --enable-optical-drive 
+             --enable-libbluray 
+             --enable-texturepacker 
+             --enable-udev 
+             --enable-libusb 
+             --enable-libcec 
+             --enable-external-libraries 
+             --disable-external-ffmpeg"
+    doconfig
+}
+
+pbs_build() {
+    domake
+}
+
+pbs_install() {
+    domkinstall
+    # Tools
+    docp xbmc-xrandr "$PKGDIR"/usr/share/xbmc/
+    docp tools/TexturePacker/TexturePacker "$PKGDIR"/share/xbmc/
+    # Licenses
+    dodoc LICENSE.GPL copying.txt
+    # FOr systemd
+    dounit xbmc.service
+}

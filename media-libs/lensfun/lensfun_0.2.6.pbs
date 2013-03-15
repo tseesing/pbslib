@@ -8,23 +8,23 @@
 DESCRIPTION="Database of photographic lenses and a library that allows advanced access to the database"
 HOMEPAGE="http://lensfun.berlios.de"
 LICENSE="LGPL"
-PACKAGER="StartOS Developers"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
 SRC_URI="http://download.berlios.de/"$N"/"$N-$V".tar.bz2"
 CHECKSUM="740e4749db04da0a597630dd6339b966"
 
-RDEPEND="gcc-libs glib2"
+RDEPEND="glib2"
 RECOMMENDED=""
 BDEPEND=""
 OPTIONAL=""
 CONFLICT=""
 
 pbs_unpack() {
-        dounpack
+    dounpack
 }
 
 pbs_config() {
-    ./configure --prefix=/usr --libdir=/usr/lib
+    ./configure --prefix=/usr --libdir=/usr/lib"$LIBDIRSUFFIX"
 }
 
 pbs_build() {
@@ -34,4 +34,3 @@ pbs_build() {
 pbs_install() {
     make INSTALL_PREFIX="$PKGDIR" install
 }
-

@@ -13,7 +13,7 @@ PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>
 
 SRC_URI="http://releases.qt-project.org/qt4/source/qt-everywhere-opensource-src-"$V".tar.gz"
 
-RDEPEND="alsa-lib libpng libtiff ca-certificates mesa libXv xdg-utils hicolor-icon-theme  desktop-file-utils libmng"
+RDEPEND="mesa libXrender fontconfig glib2 libpng libSM postgresql-libs libmysqlclient sqlite unixodbc libmng dbus alsa-lib"
 BDEPEND=""
 RECOMMENDED=""
 OPTIONAL="unixodbc: ODBC driver

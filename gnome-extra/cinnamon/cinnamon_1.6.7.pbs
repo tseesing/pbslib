@@ -15,7 +15,7 @@ SRC_URI="https://github.com/linuxmint/Cinnamon/archive/"$V".tar.gz"
 CHECKSUM="932f3e99ae050b351ee515a355638777"
 
 RDEPEND="caribou gjs gnome-bluetooth gnome-control-center gnome-panel gnome-session gnome-settings-daemon gnome-themes-standard gstreamer0.10 libgnomekbd notification-daemon muffin gnome-python-gconf lxml imaging gnome-desktop gnome-menus libcroco networkmanager"
-RECOMMENDED="nemo"
+RECOMMENDED="nemo startos-settings-cinnamon"
 BDEPEND="gnome-common intltool"
 OPTIONAL="muffin: window manager fork of mutter
           nemo: file manager fork of nautilus"
@@ -31,6 +31,8 @@ pbs_unpack() {
 pbs_patch() {
     sed -i -e '/^IsRun/s@\(.*lib\)\/.*\(\/.*\)@\1exec\2@'  files/usr/share/gnome-session/sessions/cinnamon.session
     sed -i 's/\ --warn-all\ --warn-error//' src/Makefile.am
+    # Add Chinese name to cinnamon-settings.desktop 
+    dopatch cinnamon-1.6.7-settings-add-zh_name.patch
 }
 
 pbs_config() {

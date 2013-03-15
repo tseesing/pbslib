@@ -1,0 +1,99 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="Thunderbird Mail Client"
+HOMEPAGE="http://www.mozilla.com/en-US/thunderbird/"
+LICENSE="GPL,MPL"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
+
+SRC_URI="ftp://ftp.mozilla.org/pub/mozilla.org/"$N"/releases/"$V"/source/"$N-$V".source.tar.bz2"
+CHECKSUM="d36925feebf6bc55cd2fa288119157e5"
+
+RDEPEND="gtk2(>=2.18) nss libjpeg-turbo hunspell alsa-lib dbus-glib gdk-pixbuf2 libXt startup-notification hicolor-icon-theme"
+BDEPEND="python pkgconfig"
+RECOMMENDED="thunderbird-i18n-zh-CN(=17.0.4)"
+OPTIONAL="libcanberra: for sound support"
+
+INSTALL="$N.install"
+
+pbs_unpack() {
+    dounpack
+}
+
+pbs_config() {
+   cat > .mozconfig << EOF
+mk_add_options MOZ_CO_PROJECT=mail
+ac_add_options --enable-application=mail
+
+ac_add_options --prefix=/usr
+ac_add_options --libdir=/usr/lib"$LIBDIRSUFFIX"
+
+# System libraries
+ac_add_options --with-system-nspr
+ac_add_options --with-system-nss
+ac_add_options --with-system-jpeg
+ac_add_options --with-system-zlib
+ac_add_options --with-system-bz2
+ac_add_options --with-system-png
+ac_add_options --with-system-libevent
+ac_add_options --with-system-libvpx
+ac_add_options --enable-system-hunspell
+ac_add_options --enable-system-sqlite
+ac_add_options --enable-system-ffi
+#ac_add_options --enable-system-cairo
+ac_add_options --enable-system-pixman
+ac_add_options --with-pthreads
+
+# Features
+ac_add_options --enable-official-branding
+ac_add_options --enable-safe-browsing
+ac_add_options --enable-startup-notification
+ac_add_options --enable-gio
+
+ac_add_options --disable-gnomevfs
+ac_add_options --disable-crashreporter
+ac_add_options --disable-updater
+ac_add_options --disable-tests
+ac_add_options --disable-mochitest
+ac_add_options --disable-installer
+
+# Optimization
+ac_add_options --enable-optimize
+
+export MOZILLA_OFFICIAL=1
+mk_add_options MOZILLA_OFFICIAL=1
+EOF
+}
+
+pbs_build() {
+    export MOZ_MAKE_FLAGS="$MAKEOPTS"
+    unset MAKEOPTS
+    domake -f client.mk build
+}
+
+pbs_install() {
+    domkinstall -f client.mk
+    for i in 16x16 22x22 24x24 32x32 48x48 256x256; do
+        install -Dm644 other-licenses/branding/thunderbird/mailicon"${i/x*/}".png \
+          "$PKGDIR"/usr/share/icons/hicolor/"${i}"/apps/thunderbird.png
+    done
+
+    cd "$PKGDIR"
+
+    install -m644 "$FILESDIR"/vendor.js usr/lib"$LIBDIRSUFFIX"/"$N-$V"/defaults/pref/
+
+    # rm -rf usr/lib/thunderbird/{dictionaries,hyphenation}
+    # doln /usr/share/hunspell usr/lib/thunderbird/dictionaries
+    # doln /usr/share/hyphen   usr/lib/thunderbird/hyphenation
+
+    # We don't want the development stuff
+    rm -rf usr/lib"${LIBDIRSUFFIX}"/"$N"-devel-"$V"
+    rm -rf usr/include
+    rm -rf usr/share/idl
+
+    dodesktop thunderbird.desktop usr/lib"$LIBDIRSUFFIX"/"$N-$V"/chrome/icons/default/default48.png
+}

@@ -1,7 +1,8 @@
-. /usr/lib/ybs/funcs
 
 post_install() {
-    gnome2_desktop_database_update
+    glib-compile-schemas /usr/share/glib-2.0/schemas
+    update-desktop-database -q
+    gtk-update-icon-cache -f -q -t /usr/share/icons/hicolor
 }
 
 post_upgrade() {
@@ -11,4 +12,3 @@ post_upgrade() {
 post_downgrade() {
     post_install
 }
-

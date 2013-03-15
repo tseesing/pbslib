@@ -13,7 +13,7 @@ PACKAGER="Zhongxin Huang <huangzhongxin@@ivali.com"
 SRC_URI="http://download.kde.org/stable/"$V"/src/"$N-$V".tar.xz"
 CHECKSUM="3cbcc80ec56176c7ef5d5fac04d9a5ca4e8eecca"
 
-RDEPEND="nepomuk-core"
+RDEPEND="nepomuk-core libSM libXft libXpm openssl libjpeg-turbo libxslt sqlite"
 BDEPEND="cmake automoc4 mesa"
 
 pbs_unpack() {

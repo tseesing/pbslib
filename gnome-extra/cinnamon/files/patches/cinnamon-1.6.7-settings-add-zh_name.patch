@@ -1,0 +1,14 @@
+diff -ruN cinnamon-1.6.7-bak/files/usr/share/applications/cinnamon-settings.desktop cinnamon-1.6.7/files/usr/share/applications/cinnamon-settings.desktop
+--- cinnamon-1.6.7-bak/files/usr/share/applications/cinnamon-settings.desktop	2012-11-14 22:45:14.000000000 +0800
++++ cinnamon-1.6.7/files/usr/share/applications/cinnamon-settings.desktop	2013-03-15 09:09:51.574938251 +0800
+@@ -1,6 +1,10 @@
+ [Desktop Entry]
+ Name=Cinnamon Settings
++Name[zh_CN]=Cinnamon 设置
++Name[zh_TW]=Cinnamon 設定
+ Comment=Fine-tune Cinnamon settings
++Comment[zh_CN]=Cinnamon 设置微调
++Comment[zh_TW]=Cinnamon 設定微調 
+ Exec=cinnamon-settings
+ Icon=preferences-system
+ Terminal=false

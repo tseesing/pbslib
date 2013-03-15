@@ -1,0 +1,47 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="A client for the Apple Filing Protocol (AFP)"
+HOMEPAGE="http://alexthepuffin.googlepages.com"
+LICENSE="GPL"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
+
+SRC_URI="http://downloads.sourceforge.net/sourceforge/$N/$N-$V.tar.bz2"
+CHECKSUM="688560de1cde57ab8d9e0ef7dc6436dbf0267fe8884f9014e50ff92b297b01a8"
+
+RDEPEND="gmp fuse libgcrypt readline"
+RECOMMENDED=""
+BDEPEND=""
+OPTIONAL=""
+CONFLICT=""
+REPLACE=""
+
+pbs_unpack() {
+    dounpack
+}
+
+pbs_patch() {
+    dopatch fix_afpfs-ng_includes.patch 01-gcrypt.patch \
+            02-pointer.patch 10-fix-errno.patch \
+            20-build-error-fixes.patch 21-header-path-fix.patch \
+            30-include-fixes.patch
+}
+
+pbs_config() {
+    config+=""
+    doconfig
+}
+
+pbs_build() {
+    domake
+}
+
+pbs_install() {
+    domkinstall
+    docp include/afpfs-ng/*.h "$PKGDIR"/usr/include/"$N"/
+}
+

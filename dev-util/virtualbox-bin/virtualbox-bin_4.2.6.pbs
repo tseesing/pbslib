@@ -37,7 +37,6 @@ pbs_unpack() {
 }
 
 pbs_install() {
-    docp_rename vboxdrv.sh "$PKGDIR"/etc/init.d/vboxdrv
     dodoc LICENSE
     mkdir -p "$PKGDIR"/opt/VirtualBox
     tar xjf VirtualBox.tar.bz2 -C "$PKGDIR"/opt/VirtualBox
@@ -97,8 +96,4 @@ pbs_install() {
 
     # Create the directory below if it doesn't exist
     install -d "$PKGDIR/var/run/VirtualBox"
-
-    # For systemd
-    dounit virtualbox.service
 }
-

@@ -13,7 +13,7 @@ PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 SRC_URI="ftp://ftp.easysw.com/pub/"$N"/"$V"/"$N-$V"-source.tar.bz2"
 CHECKSUM="87ade07e3d1efd03c9c3add949cf9c00"
 
-RDEPEND="gnutls libtiff libpng krb5 avahi acl pam cups-filters colord libusbx dbus systemd"
+RDEPEND="krb5 gnutls avahi dbus libusbx"
 BDEPEND="gzip autoconf bc"
 RECOMMENDED="xdg-utils"
 OPTIONAL="xdg-utils: xdg .desktop file support"

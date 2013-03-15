@@ -1,0 +1,44 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="Network monitoring tools including ping and ping6"
+HOMEPAGE="http://www.skbuff.net/iputils"
+LICENSE="GPL,BSD"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
+
+SRC_URI="http://www.skbuff.net/$N/$N-s$V.tar.bz2"
+CHECKSUM="4d56d8c75d6a5d58f052e4056e975f01ebab9ba9"
+
+RDEPEND="openssl libcap sysfsutils"
+BDEPEND="opensp"
+RECOMMENDED=""
+CONFLICT="arping"
+OPTIONAL="xinetd: for tftpd"
+
+INSTALL="$N.install"
+
+pbs_unpack() {
+    dounpack
+}
+
+pbs_patch() {
+    # Use our CFLAGS
+    sed -i -e "/^CCOPT=/s|-O2|${CFLAGS}|" Makefile
+}
+
+pbs_build() {
+    domake
+}
+
+pbs_install() {
+    docp arping clockdiff rarpd rdisc tftpd tracepath tracepath6 "$PKGDIR"/usr/sbin/
+    docp ping{,6} "$PKGDIR"/usr/bin/
+    cd "$PKGDIR"
+    docp_rename "$FILESDIR"/tftp.xinetd etc/xinetd.d/tftp
+    doln /usr/bin/ping  bin/ping
+    doln /usr/bin/ping6 bin/ping6
+}

@@ -14,7 +14,7 @@ GROUP="kde"
 SRC_URI="http://download.kde.org/stable/$V/src/$N-$V.tar.xz"
 CHECKSUM="7f9a120db8bf754d977de5fc6a4ceab8993cd1b5"
 
-RDEPEND="kdelibs openal"
+RDEPEND="kdelibs libSM libXft libXpm openssl openal libsndfile systemd"
 RECOMMENDED=""
 BDEPEND="cmake automoc4"
 OPTIONAL=""

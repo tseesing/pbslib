@@ -15,7 +15,7 @@ CHECKSUM="91124a8eb12a57f1e56c02fe3db0f9e7"
 
 RDEPEND="gdbm ncurses tk"
 RECOMMENDED=""
-BDEPEND="tk ncurses libx11"
+BDEPEND="tk ncurses libX11"
 OPTIONAL="ncurses: advanced ncurses features
           tk: advanced tk features"
 CONFLICT=""

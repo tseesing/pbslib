@@ -14,7 +14,7 @@ GROUP="kde"
 SRC_URI="http://download.kde.org/stable/"$V"/src/"$N-$V".tar.xz"
 CHECKSUM="23661174669b32b12e7c930d700b08a4f7efd275"
 
-RDEPEND="kdelibs poppler-qt taglib ffmpeg soprano(>=2.9.0)"
+RDEPEND="kdelibs libSM libXft libXpm poppler-qt ffmpeg libtheora opus libmodplug libbluray taglib"
 RECOMMENDED=""
 BDEPEND="cmake automoc4"
 OPTIONAL=""

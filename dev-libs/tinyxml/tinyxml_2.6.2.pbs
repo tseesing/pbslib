@@ -8,9 +8,10 @@
 DESCRIPTION="a simple, small, C++ XML parser that can be easily integrating into other programs"
 HOMEPAGE="http://www.grinninglizard.com/tinyxml/index.html"
 LICENSE="GPL"
-PACKAGER="StartOS Developers"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
-SRC_URI="http://downloads.sourceforge.net/project/"$N"/"$N"/"$V$R"/${N}_2_6_1.zip"
+SRC_URI="http://downloads.sourceforge.net/$N/${N}_${V//./_}.tar.gz"
+CHECKSUM="c1b864c96804a10526540c664ade67f0"
 
 RDEPEND="gcc-libs"
 BDEPEND=""
@@ -18,25 +19,31 @@ RECOMMENDED=""
 CONFLICT=""
 
 pbs_unpack() {
-        dounpack
+    dounpack
 }
 
-pbs_config() {
-    doconfig
+pbs_patch() {
+    # Fix entity encoding.
+    dopatch entity.patch
+    # Make TINYXML_USE_STL permanently defined in tinyxml.h
+    dopatch tinyxml-2.5.3-stl.patch
+    # Fix Makefile
+    sed -i \
+        -e '/^TINYXML_USE_STL/ s|=.*|=YES|' \
+        -e "s|^RELEASE_CFLAGS.*|& ${CXXFLAGS} -fPIC|" Makefile
 }
 
 pbs_build() {
-    sed -i.orig -e 's/\(^TINYXML_USE_STL := \)NO/\1YES/' -e 's/^RELEASE_CFLAGS.*/& -fPIC/' Makefile
-    domake
-    g++ -fPIC -shared -o libtinyxml.so.0."$V" -Wl,-soname,libtinyxml.so.0 *.o
+    make
+    g++ -fPIC ${CXXFLAGS} -shared -o lib$"$N".so.0."$V" \
+      -Wl,-soname,lib"$N".so.0 $(ls *.o | grep -v xmltest)
 }
 
 pbs_install() {
-    docp *.so* "$PKGDIR"/usr/lib/
-        docp *.h "$PKGDIR"/usr/include
-        dodoc {changes,readme}.txt dodocs/*
-    cd "$PKGDIR"/usr/lib/
-    doln libtinyxml.so.0."$V" libtinyxml.so.0
-    doln libtinyxml.so.0."$V" libtinyxml.so
-}
+    docp lib"$N".so.0."$V" "$PKGDIR"/usr/lib"$LIBDIRSUFFIX"/
+    docp "$N".h tinystr.h  "$PKGDIR"/usr/include
 
+    cd "$PKGDIR"/usr/lib"$LIBDIRSUFFIX"/
+    doln lib"$N".so.0."$V" lib"$N".so.0
+    doln lib"$N".so.0."$V" lib"$N".so
+}

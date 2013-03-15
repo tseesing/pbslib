@@ -1,0 +1,33 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="GStreamer plugin for demuxing of MPEG2 streams"
+HOMEPAGE="http://core.fluendo.com/gstreamer/src/gst-fluendo-mpegdemux/"
+LICENSE="GPL"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
+
+SRC_URI="http://core.fluendo.com/gstreamer/src/"$N"/"$N-$V".tar.bz2"
+
+RDEPEND="gstreamer0.10"
+BDEPEND=""
+RECOMMENDED=""
+
+pbs_unpack() {
+    dounpack
+}
+
+pbs_config() {
+    doconfig
+}
+
+pbs_build() {
+    domake
+}
+
+pbs_install() {
+    domkinstall
+}

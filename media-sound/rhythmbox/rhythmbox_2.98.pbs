@@ -1,0 +1,48 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="Music management and playback software for GNOME"
+HOMEPAGE="http://projects.gnome.org/rhythmbox/"
+LICENSE="GPL"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
+
+SRC_URI="http://ftp.gnome.org/pub/GNOME/sources/$N/$V/$N-$V.tar.xz"
+CHECKSUM="a5c0a18a7c76133d36c7dcbdc37e304eae8272703985b17b540d68603b0c76d5"
+
+RDEPEND="libSM libpeas tdb json-glib libXi at-spi2-atk libXinerama libXrandr libXcursor libXcomposite libXdamage libnotify systemd nettle lirc libgpod grilo libmtp libusb-compat libdmapsharing"
+BDEPEND="intltool brasero gobject-introspection vala"
+RECOMMENDED="brasero"
+CONFLICT=""
+
+INSTALL="$N.install"
+
+pbs_unpack() {
+    dounpack
+}
+
+pbs_patch() {
+    dopatch Disable-the-context-pane-plugin-when-webkit-isn-t-available.patch
+    dopatch rhythmbox-2.98-xinitthreads.patch
+}
+pbs_config() {
+    config+="--disable-static
+             --enable-daap 
+             --enable-python 
+             --enable-vala 
+             --with-mdns=avahi 
+             --disable-scrollkeeper 
+             --without-webkit"
+    doconfig
+}
+
+pbs_build() {
+    domake
+}
+
+pbs_install() {
+    domkinstall
+}

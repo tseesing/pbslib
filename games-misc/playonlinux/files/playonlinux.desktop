@@ -2,11 +2,11 @@
 Version=1.0
 Encoding=UTF-8
 Name=PlayOnLinux
-GenericName=Game
+GenericName=PlayOnLinux
 Comment=PlayOnLinux
 Type=Application
 Exec=playonlinux
-Icon=playonlinux
-Categories=Game;
+Icon=playonlinux32
+Categories=PlayOnLinux;
 Name[fr_FR]=PlayOnLinux
-
+Categories=Application;Game
