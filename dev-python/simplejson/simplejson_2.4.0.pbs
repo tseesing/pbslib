@@ -9,13 +9,12 @@ DESCRIPTION="Simple, fast, extensible JSON encoder/decoder for Python"
 HOMEPAGE="http://pypi.python.org/pypi/simplejson"
 LICENSE="MIT"
 PACKAGER="StartOS Developers"
-
 YARCH="any"
 
 SRC_URI="http://pypi.python.org/packages/source/s/"$N"/"$N-$V".tar.gz"
 CHECKSUM="0020e2b33ee8a9b156e0652a96d9eeba"
 
-RDEPEND="python"
+RDEPEND="python glibc"
 RECOMMENDED=""
 BDEPEND=""
 OPTIONAL=""
@@ -38,7 +37,4 @@ pbs_install() {
     domkinstall
     dodoc LICENSE.txt
 }
-
-
-
 

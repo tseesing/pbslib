@@ -6,22 +6,25 @@
 #
 
 DESCRIPTION="Simple, fast, extensible JSON encoder/decoder for Python"
-HOMEPAGE="http://pypi.python.org/pypi/simplejson"
+HOMEPAGE="https://github.com/simplejson"
 LICENSE="MIT"
-PACKAGER="StartOS Developers"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 YARCH="any"
 
-SRC_URI="http://pypi.python.org/packages/source/s/"$N"/"$N-$V".tar.gz"
-CHECKSUM="0020e2b33ee8a9b156e0652a96d9eeba"
+SRC_URI="git://github.com/$N/$N.git"
 
-RDEPEND="python glibc"
+RDEPEND="python"
 RECOMMENDED=""
-BDEPEND=""
+BDEPEND="distribute git"
 OPTIONAL=""
 CONFLICT=""
 
 pbs_unpack() {
-        dounpack
+    dounpack
+}
+
+pbs_patch() {
+    git checkout v"$V"
 }
 
 pbs_config() {
@@ -37,4 +40,3 @@ pbs_install() {
     domkinstall
     dodoc LICENSE.txt
 }
-

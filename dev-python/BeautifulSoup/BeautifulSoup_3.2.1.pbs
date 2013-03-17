@@ -8,10 +8,10 @@
 DESCRIPTION="A Python HTML/XML parser designed for quick turnaround projects like screen-scraping"
 HOMEPAGE="http://www.crummy.com/software/BeautifulSoup/index.html"
 LICENSE="PSF"
-PACKAGER="StartOS Developers"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 YARCH="any"
 
-SRC_URI="http://www.crummy.com/software/BeautifulSoup/bs3/download/3.x/BeautifulSoup-"$V".tar.gz"
+SRC_URI="http://www.crummy.com/software/$N/download/3.x/$N-$V.tar.gz"
 CHECKSUM="5ad1a8550a19bfc945baac23eb8293ed"
 
 RDEPEND="python"
@@ -21,7 +21,7 @@ OPTIONAL=""
 CONFLICT=""
 
 pbs_unpack() {
-        dounpack
+    dounpack
 }
 
 pbs_config() {
@@ -36,5 +36,3 @@ pbs_build() {
 pbs_install() {
     domkinstall
 }
-
-
