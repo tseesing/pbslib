@@ -1,0 +1,79 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="A lightweight display manager"
+HOMEPAGE="https://launchpad.net/lightdm"
+LICENSE="GPL"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
+
+SRC_URI="https://launchpadlibrarian.net/133284173/"$N-$V".tar.xz"
+CHECKSUM=""
+
+RDEPEND="libxklavier pam"
+RECOMMENDED=""
+BDEPEND="itstool"
+OPTIONAL=""
+CONFLICT=""
+
+NOTES="
+ Even though the default /etc/lightdm/lightdm.conf will work for
+ most users, make sure you configure it to suit your needs
+ before using lightdm for the first time.
+ You can test the configuration file using the following
+ command: lightdm --test-mode -c /etc/lightdm/lightdm.conf. This
+ requires xorg-server to be built with the 'kdrive' useflag.
+"
+
+INSTALL="$N.install"
+
+pbs_unpack() {
+    dounpack
+}
+
+pbs_patch() {
+    dopatch session-wrapper-lightdm.patch
+}
+
+pbs_config() {
+    # Maybe in the future, we can support some automatic session and user
+    # recognition. Until then, use default values
+    local default=gnome user=root greeter
+
+    # Default greeter is lightdm-startos-greeter
+    greeter=lightdm-startos-greeter
+
+    config+="--disable-static
+             --disable-liblightdm-qt
+             -enable-introspection
+             --with-user-session="$user"
+             --with-greeter-session="$greeter"
+             --with-greeter-user="$user""
+    doconfig
+}
+
+pbs_build() {
+    domake
+}
+
+pbs_install() {
+    domkinstall
+    docp data/{"${N}",users,keys}.conf "$PKGDIR"/etc/"${N}"/
+    docp "$FILESDIR"/lightdm-session "$PKGDIR"/usr/sbin/
+    cd "$PKGDIR"
+    # Backup confile
+    cp etc/lightdm/lightdm.conf{,.ori}
+    # For systemd
+    dounit "$N".service
+    # Remove .la files
+    find . -name "*.la" -exec rm -rf {} +
+    #    
+    docp "$FILESDIR"/lightdm-wrapper usr/sbin/
+    rm -rf etc/init
+    dopam "$FILESDIR"/{lightdm,lightdm-autologin} 
+    #
+    doln /usr/libexec/lightdm/gdmflexiserver usr/bin/gdmflexiserver
+}

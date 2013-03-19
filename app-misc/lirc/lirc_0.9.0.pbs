@@ -15,7 +15,7 @@ SRC_URI="http://downloads.sourceforge.net/project/$N/LIRC/$V/${N}-${V}.tar.bz2"
 CHECKSUM="b232aef26f23fe33ea8305d276637086"
 
 RDEPEND="alsa-lib libX11 libftdi libirman portaudio"
-BDEPEND="linux-kernel-headers(>=3.6) python"
+BDEPEND="linux-kernel-headers(>=3.8.2) python"
 RECOMMENDED=""
 OPTIONAL="python: pronto2lirc utility"
 
@@ -27,7 +27,8 @@ pbs_patch() {
     dopatch lirc_wpc8769l.patch \
             lircd-handle-large-config.patch  \
             lirc_atiusb-kfifo.patch \
-            kernel-2.6.39.patch
+            kernel-2.6.39.patch \
+            linux-3.8.patch 
     sed -i '/AC_PATH_XTRA/d' configure.ac
     sed -e 's/@X_CFLAGS@//g' \
         -e 's/@X_LIBS@//g' \

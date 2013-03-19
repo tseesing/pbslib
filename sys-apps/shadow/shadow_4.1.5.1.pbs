@@ -53,7 +53,7 @@ pbs_install() {
     # login.defs
     docp "$FILESDIR"/login.defs etc    
     # PAM config - custom
-    dopamd passwd chgpasswd chpasswd newusers "$SRCDIR"/etc/pam.d/groupmems 
+    dopam passwd chgpasswd chpasswd newusers "$SRCDIR"/etc/pam.d/groupmems 
     # we use the 'useradd' PAM file for other similar utilities
     for file in chage groupadd groupdel groupmod shadow useradd usermod userdel; do
         install -Dm644 "$FILESDIR"/defaults.pam etc/pam.d/"${file}"

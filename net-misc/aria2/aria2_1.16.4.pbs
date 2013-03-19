@@ -1,0 +1,38 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="Download utility that supports HTTP(S), FTP, BitTorrent, and Metalink"
+HOMEPAGE="http://aria2.sourceforge.net"
+LICENSE="GPL"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
+
+SRC_URI="http://downloads.sourceforge.net/$N/$N-$V.tar.bz2"
+CHECKSUM=""
+
+RDEPEND="c-ares gnutls sqlite libxml2 ca-certificates"
+RECOMMENDED=""
+BDEPEND=""
+OPTIONAL=""
+CONFLICT=""
+REPLACE=""
+
+pbs_unpack() {
+    dounpack
+}
+
+pbs_config() {
+    config+="--with-ca-bundle=/etc/ssl/certs/ca-certificates.crt"
+    doconfig
+}
+
+pbs_build() {
+    domake
+}
+
+pbs_install() {
+    domkinstall
+}

@@ -1,0 +1,45 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="virutalbox kernel modules"
+HOMEPAGE="http://www.virtualbox.org/"
+LICENSE="GPL"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
+GROUP="driver"
+
+case "$ARCH" in
+    i?86)
+  SRC_URI="http://download.virtualbox.org/virtualbox/"$V"/VirtualBox-"$V"-84104-Linux_x86.run"
+  CHECKSUM="" ;;
+    x86_64)
+  SRC_URI="http://download.virtualbox.org/virtualbox/"$V"/VirtualBox-"$V"-84104-Linux_amd64.run"
+  CHECKSUM="" 
+esac
+        
+RDEPEND="linux-kernel(=3.8.2)"
+BDEPEND="linux-kernel-headers(=3.8.2) glib2 libsdl libXcursor libXinerama libXmu python"
+
+INSTALL="$N.install"
+
+pbs_unpack() {
+    runfile="$(basename $SRC_URI)"
+    mkdir -p "$N-$V$R" 
+    cd "$N-$V$R"
+    # Check and unpack the run package via sh
+    sh "$YBS_SOURCE"/"$runfile" --check || die "Unpack "$YBS_SOURCE"/"$runfile" failed."
+    echo yes |sh "$YBS_SOURCE"/"$runfile" --target . --nox11 --noexec
+    tar xf VirtualBox.tar.bz2
+}
+
+pbs_install() {
+    unset ARCH
+    docp_rename vboxdrv.sh "$PKGDIR"/etc/init.d/vboxdrv
+    cd src/vboxhost
+    domake ||exit 1
+    docp vboxdrv.ko vboxnetadp.ko vboxnetflt.ko vboxpci.ko "$PKGDIR"/lib/modules/"$KERNEL_DIST"/misc
+    dounit virtualbox.service
+}

@@ -35,6 +35,6 @@ pbs_build() {
 
 pbs_install() {
     domkinstall
-    dopamd fingerprint-auth
+    dopam fingerprint-auth
 }
 

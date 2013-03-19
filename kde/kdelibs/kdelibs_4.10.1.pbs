@@ -40,7 +40,8 @@ pbs_config() {
              -DKDE_DEFAULT_HOME='.kde4' \
              -DKDE_DISTRIBUTION_TEXT='StartOS' \
              -DWITH_FAM=OFF \
-             -DWITH_HUpnp=OFF
+             -DWITH_HUpnp=OFF \
+             -DWITH_SOLID_UDISKS2=ON
 }
 
 pbs_build() {

@@ -38,4 +38,3 @@ pbs_install() {
     mkdir -p "$PKGDIR"/usr/share/dbus-1/interfaces
     ./rtkit-daemon --introspect > "$PKGDIR"/usr/share/dbus-1/interfaces/org.freedesktop.RealtimeKit1.xml
 }
-

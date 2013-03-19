@@ -14,7 +14,7 @@ YARCH="any"
 SRC_URI="https://launchpadlibrarian.net/91237980/"$N-$V".tar.bz2"
 CHECKSUM="028ce6b6c8764190d435436d5cbaf68c"
 
-RDEPEND="python beautifulsoup"
+RDEPEND="python BeautifulSoup"
 BDEPEND=""
 RECOMMENDED=""
 

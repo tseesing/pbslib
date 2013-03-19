@@ -63,4 +63,3 @@ pbs_install() {
         doln /bin/"$i" usr/bin/"$i"
     done
 }
-

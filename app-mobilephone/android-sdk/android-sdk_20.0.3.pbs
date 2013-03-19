@@ -14,7 +14,7 @@ SRC_URI="http://dl.google.com/android/"$N"_r"$V"-linux.tgz"
 CHECKSUM="919ea464007c2c4d04d5b366b4f64e916d99995e"
 
 RDEPEND="jdk jre fontconfig libXrender mesa"
-RECOMMENDED="android-sdk-platform-tools android-systemd-rules"
+RECOMMENDED="android-sdk-platform-tools"
 BDEPEND=""
 OPTIONAL=""
 CONFLICT=""
@@ -45,4 +45,3 @@ pbs_install() {
     [[ "$ARCH" = "i686" ]] && rm -rf opt/"$N"/tools/lib/{monitor-,}x86_64
     chmod -R o=g opt/"$N"
 }
-

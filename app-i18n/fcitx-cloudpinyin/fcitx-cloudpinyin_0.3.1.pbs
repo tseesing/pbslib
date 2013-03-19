@@ -1,0 +1,37 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="cloudpinyin for fcitx"
+HOMEPAGE="http://code.google.com/p/fcitx/"
+LICENSE="GPL"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
+GROUP="fcitx"
+
+SRC_URI="http://fcitx.googlecode.com/files/"$N-$V".tar.xz"
+CHECKSUM=""
+
+RDEPEND="fcitx(>=4.2.7) curl"
+RECOMMENDED=""
+BDEPEND="cmake"
+OPTIONAL=""
+CONFLICT=""
+
+pbs_unpack() {
+    dounpack
+}
+
+pbs_config() {
+    doconfig -DCMAKE_BUILD_TYPE=Release
+}
+
+pbs_build() {
+    domake
+}
+
+pbs_install() {
+    domkinstall
+}

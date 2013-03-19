@@ -1,0 +1,46 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="QT IM Module for fcitx"
+HOMEPAGE="http://code.google.com/p/fcitx/"
+LICENSE="GPL"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>
+          chenqixing@ivali.com"
+GROUP="fcitx"
+
+SRC_URI="http://fcitx.googlecode.com/files/fcitx-"$V"_dict.tar.xz"
+CHECKSUM=""
+
+RDEPEND="qt fcitx"
+BDEPEND="cmake intltool icu iso-codes gobject-introspection enchant"
+
+pbs_unpack() {
+    dounpack
+}
+
+pbs_config() {
+    doconfig -DCMAKE_BUILD_TYPE=Release \
+        -DENABLE_OPENCC=OFF \
+        -DFORCE_PRESAGE=ON \
+        -DENABLE_TEST=ON \
+        -DENABLE_GTK2_IM_MODULE=OFF \
+        -DENABLE_GTK3_IM_MODULE=OFF \
+        -DENABLE_QT_IM_MODULE=ON
+}
+
+pbs_build() {
+    domake
+}
+
+pbs_install() {
+    cd src/frontend/qt
+    domkinstall
+    cd "$SRCDIR"/build/tools/gui
+    domkinstall
+    cd "$SRCDIR"/build/src/lib/fcitx-qt
+    domkinstall
+}

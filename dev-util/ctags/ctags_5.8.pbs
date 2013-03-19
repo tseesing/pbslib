@@ -32,4 +32,3 @@ pbs_build() {
 pbs_install() {
     make prefix="$PKGDIR"/usr install
 }
-

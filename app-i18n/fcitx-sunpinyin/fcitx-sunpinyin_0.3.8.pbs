@@ -20,8 +20,6 @@ BDEPEND="cmake"
 OPTIONAL=""
 CONFLICT=""
 
-INSTALL="$N.install"
-
 pbs_unpack() {
         dounpack
 }

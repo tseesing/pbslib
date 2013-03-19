@@ -1,0 +1,44 @@
+diff --git a/src/accountmod.py b/src/accountmod.py
+index 5535efd..fd7421d 100644
+--- a/src/accountmod.py
++++ b/src/accountmod.py
+@@ -119,12 +119,24 @@ class AccountHost(GOBjectThreadMod):
+         gdmf=self.insenv.target+'/etc/gdm/custom.conf'
+         os.system('mkdir -p '+os.path.dirname(gdmf))
+         os.system("touch "+gdmf)
+-        r=open(gdmf,'w+')
+-        s="\n[daemon]\nTimedLoginEnable=true\nAutomaticLogin=%s\nTimedLoginDelay=10\n"\
+-            "AutomaticLoginEnable=true\nTimedLogin=%s\n\nDefaultSession=gnome\n" % (self.username,self.username)
+-        r.write(s)
+-        r.close()
+-
++        
++        import ConfigParser
++        class CaseSConfigParser(ConfigParser.ConfigParser):
++            def optionxform(self, optionstr):
++                return optionstr
++
++        cf = CaseSConfigParser()
++        cf.read(gdmf)
++        if not cf.has_section('daemon'):
++            cf.add_section('daemon')
++        cf.set('daemon', 'AutomaticLoginEnable', 'True')
++        cf.set('daemon', 'AutomaticLogin', self.username)
++        cf.set('daemon', 'TimedLoginEnable', 'True')
++        cf.set('daemon', 'TimedLoginDelay', '10')
++        cf.set('daemon', 'TimedLogin', self.username)
++        cf.set('daemon', 'DefaultSession', 'gnome')
++        cf.write(open(gdmf, 'w'))
++                
+     def set_lightdm_autologin(self):
+         cf=self.insenv.target+'/etc/lightdm/lightdm.conf'
+         os.system('mkdir -p '+os.path.dirname(cf))
+@@ -158,7 +170,7 @@ class AccountHost(GOBjectThreadMod):
+ 
+     def setup_user(self):
+         user_steps=0
+-        gps=['cdrom','floppy','dialout','audio','video','plugdev','sambashare','admin','wheel','netdev','lp','scanner','lpadmin']
++        gps=['cdrom','floppy','dialout','audio','video','sambashare','admin','wheel','lp','scanner','lpadmin']
+ 
+         user_steps = 2+len(gps)
+         user_step = 0.0

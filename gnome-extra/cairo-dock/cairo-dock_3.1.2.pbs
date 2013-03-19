@@ -14,7 +14,7 @@ SRC_URI="http://launchpad.net/$N-core/3.1/$V/+download/$N-$V.1.tar.gz"
 CHECKSUM="9b8cadabb1b65f49f4ef7e8da0a91aa7"
 
 RDEPEND="curl dbus-glib glu librsvg libXtst pangox-compat"
-RECOMMENDED="cairo-dock-plugins"
+RECOMMENDED=""
 BDEPEND="cmake pkgconfig inputproto"
 OPTIONAL=""
 CONFLICT=""

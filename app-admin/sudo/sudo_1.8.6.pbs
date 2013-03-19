@@ -41,6 +41,6 @@ pbs_build() {
 pbs_install() {
     domkinstall
     dodoc doc/LICENSE
-    dopamd sudo
+    dopam sudo
 }
 

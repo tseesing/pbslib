@@ -1,4 +1,3 @@
-. /usr/lib/ybs/funcs
 
 gname="polkitd"
 
@@ -16,4 +15,3 @@ post_remove() {
 post_upgrade() {
     post_install
 }
-

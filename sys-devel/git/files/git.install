@@ -1,4 +1,3 @@
-. /usr/lib/ybs/funcs
 
 gname="git"
 
@@ -9,10 +8,9 @@ post_install() {
 
 post_remove() {
     douserdel $gname
-      dogroupdel $gname || true
+    dogroupdel $gname || true
 }
 
 post_upgrade() {
     post_install
 }
-

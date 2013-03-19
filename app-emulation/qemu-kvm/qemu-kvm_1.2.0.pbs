@@ -37,7 +37,7 @@ pbs_config() {
 } 
 
 pbs_build() {
-    domake 
+    domake LDFLAGS=-lrt
 }
 
 pbs_install() {

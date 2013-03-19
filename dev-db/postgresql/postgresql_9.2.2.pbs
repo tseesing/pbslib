@@ -63,7 +63,7 @@ pbs_install() {
     docp "$FILESDIR"/postgresql.conf usr/lib/tmpfiles.d/
     dounit postgresql.service
     docp "$FILESDIR"/postgresql-check-db-dir usr/bin/
-    dopamd postgresql
+    dopam postgresql
     docp_rename "$FILESDIR"/postgresql.logrotate etc/logrotate.d/postgresql
 }
 

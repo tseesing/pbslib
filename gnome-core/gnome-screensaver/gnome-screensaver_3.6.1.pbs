@@ -32,6 +32,6 @@ pbs_build() {
 
 pbs_install() {
     domkinstall
-    dopamd gnome-screensaver
+    dopam gnome-screensaver
 }
 

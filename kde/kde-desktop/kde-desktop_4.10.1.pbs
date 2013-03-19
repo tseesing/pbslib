@@ -13,7 +13,7 @@ YARCH="any"
 
 SRC_URI=""
 
-RDEPEND="kdenetwork kdeplasma-addons oxygen-icons kdelibs kde-base-artwork kactivities kaccessible kdeartwork kdegraphics-thumbnailers kde-wallpapers kdepim kdepim-runtime kde-l10n-zh_CN kdf kate juk konquest dragon kdetoys print-manager kdeadmin kde-baseapps gwenview kdepimlibs kde-workspace konsole kde-runtime kamera nepomuk-widgets networkmanagement"
+RDEPEND="kdenetwork kdeplasma-addons oxygen-icons kdelibs kde-base-artwork kactivities kaccessible kdeartwork kdegraphics-thumbnailers kde-wallpapers kdepim kdepim-runtime kde-l10n-zh_CN kdf kate juk konquest dragon kdetoys print-manager kdeadmin kde-baseapps gwenview kdepimlibs kde-workspace konsole kde-runtime kamera nepomuk-widgets networkmanagement polkit-kde-agent"
 RECOMMENDED=""
 BDEPEND=""
 OPTIONAL=""
