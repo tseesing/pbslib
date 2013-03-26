@@ -8,7 +8,7 @@
 DESCRIPTION="Tool to read and control rfkill status through /dev/rfkill"
 HOMEPAGE="http://wireless.kernel.org/en/users/Documentation/rfkill"
 LICENSE="GPL"
-PACKAGER="StartOS Developers"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
 SRC_URI="http://wireless.kernel.org/download/"$N"/"$N-$V".tar.bz2"
 CHECKSUM="727892c0fb35c80ee3849fbe89b45350"
@@ -19,7 +19,7 @@ RECOMMENDED=""
 CONFLICT=""
 
 pbs_unpack() {
-        dounpack
+    dounpack
 }
 
 pbs_build() {

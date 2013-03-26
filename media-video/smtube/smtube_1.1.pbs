@@ -8,7 +8,7 @@
 DESCRIPTION="Allows to play and download videos from YouTube."
 HOMEPAGE="http://smplayer.berlios.de/"
 LICENSE="GPL"
-PACKAGER="StartOS Developers"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
 SRC_URI="http://prdownload.berlios.de/smplayer/"$N-$V".tar.bz2"
 CHECKSUM="e5018fcd9ebdc08658136476ba4843d2"
@@ -22,7 +22,7 @@ CONFLICT=""
 INSTALL="$N.install"
 
 pbs_unpack() {
-        dounpack
+    dounpack
 }
 
 pbs_patch() {

@@ -7,17 +7,17 @@
 
 DESCRIPTION="Bazaar is a next generation distributed version control system."
 HOMEPAGE="http://bazaar-vcs.org/"
-LICENSE="GPL-2"
-PACKAGER="StartOS Developers"
+LICENSE="GPL"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
-SRC_URI="http://launchpad.net/bzr/2.1/"$N"/+download/"$N-$V$R".tar.gz"
+SRC_URI="http://launchpad.net/bzr/2.1/"$N"/+download/"$N-$V".tar.gz"
 
-RDEPEND=""
-BDEPEND=" "
+RDEPEND="python"
+BDEPEND=""
 RECOMMENDED=""
 
 pbs_unpack() {
-        dounpack
+    dounpack
 }
 
 pbs_config() {
@@ -31,3 +31,4 @@ pbs_build() {
 pbs_install() {
     domkinstall
 }
+

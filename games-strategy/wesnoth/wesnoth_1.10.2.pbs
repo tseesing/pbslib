@@ -8,7 +8,7 @@
 DESCRIPTION="A turn-based strategy game on a fantasy world"
 HOMEPAGE="http://www.wesnoth.org/"
 LICENSE="GPL"
-PACKAGER="StartOS Developers"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
 SRC_URI="http://downloads.sourceforge.net/sourceforge/"$N"/"$N-$V".tar.bz2"
 CHECKSUM="61f93437ba13a27a048e5ee2ee63736a"
@@ -22,7 +22,7 @@ CONFLICT=""
 INSTALL="$N.install"
 
 pbs_unpack() {
-        dounpack
+    dounpack
 }
 
 pbs_config() {

@@ -8,7 +8,7 @@
 DESCRIPTION="Eclipse java bytecode compiler"
 HOMEPAGE="http://www.eclipse.org/cdt"
 LICENSE="EPL"
-PACKAGER="StartOS Developers"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 YARCH="any"
 
 SRC_URI="http://mirror.bit.edu.cn/eclipse/eclipse/downloads/drops/R-"$V"-201202080800/ecjsrc-"$V".jar"
@@ -22,7 +22,7 @@ CONFLICT=""
 REPLACE=""
 
 pbs_unpack() {
-        dounpack
+    dounpack
 }
 
 pbs_build() {

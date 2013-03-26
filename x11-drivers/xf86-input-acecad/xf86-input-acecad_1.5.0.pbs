@@ -18,7 +18,7 @@ RDEPEND="sysfsutils xorg-server(>=1.13.0)"
 BDEPEND=""
 
 pbs_unpack() {
-        dounpack
+    dounpack
 }
 
 pbs_config() {

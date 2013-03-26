@@ -8,16 +8,16 @@
 DESCRIPTION="A cataloging system for documentation. This is useful for managing documentation metadata and providing an API to help browsers find, sort and search the document catalog."
 HOMEPAGE="http://scrollkeeper.sourceforge.net/"
 LICENSE="GPL"
-PACKAGER="StartOS Developers"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
  
 SRC_URI="ftp://ftp.gnome.org/pub/gnome/sources/"$N"/0.3/"$N-$V".tar.bz2"
 
 RDEPEND="libxslt"
-BDEPEND="xml-parser docbook-xml"
+BDEPEND="perl-xml-parser docbook-xml"
 RECOMMENDED=""
 
 pbs_unpack() {
-        dounpack
+    dounpack
 }
 
 pbs_config() {

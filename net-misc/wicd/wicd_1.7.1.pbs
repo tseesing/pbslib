@@ -8,7 +8,7 @@
 DESCRIPTION="A lightweight wired and wireless network manager for Linux"
 HOMEPAGE="https://launchpad.net/wicd"
 LICENSE="GPL"
-PACKAGER="StartOS Developers"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 YARCH="any"
 
 SRC_URI="https://launchpadlibrarian.net/91727655/"$N-$V".tar.gz"
@@ -22,7 +22,7 @@ CONFLICT=""
 INSTALL="$N.install"
 
 pbs_unpack() {
-        dounpack
+    dounpack
 }
 
 pbs_config() {

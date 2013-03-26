@@ -8,7 +8,7 @@
 DESCRIPTION="a binary diff and differential compression tools. VCDIFF (RFC 3284) delta compression."
 HOMEPAGE="http://xdelta.org"
 LICENSE="GPL"
-PACKAGER="StartOS Developers"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
 SRC_URI="http://xdelta.googlecode.com/files/"$N-$V".tar.gz"
 CHECKSUM="4dfffc52a77a507edfac226d0e4716e35eaa68be"
@@ -21,7 +21,7 @@ CONFLICT=""
 REPLACE=""
 
 pbs_unpack() {
-        dounpack
+    dounpack
 }
 
 pbs_config() {

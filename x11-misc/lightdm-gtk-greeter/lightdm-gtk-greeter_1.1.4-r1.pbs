@@ -8,7 +8,7 @@
 DESCRIPTION="LightDM GTK+ Greeter"
 HOMEPAGE="http://launchpad.net/lightdm-gtk-greeter"
 LICENSE="GPL"
-PACKAGER="StartOS Developers"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
 SRC_URI="https://launchpadlibrarian.net/92482414/"$N-$V".tar.gz"
 CHECKSUM="ecf7dd64b1cb493a6f65f8d582127570"
@@ -20,7 +20,7 @@ OPTIONAL=""
 CONFLICT=""
 
 pbs_unpack() {
-        dounpack
+    dounpack
 }
 
 pbs_config() {

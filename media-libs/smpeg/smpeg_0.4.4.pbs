@@ -8,7 +8,7 @@
 DESCRIPTION="SDL MPEG Player Library"
 HOMEPAGE="http://icculus.org/smpeg"
 LICENSE="GPL"
-PACKAGER="StartOS Developers"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
 SRC_URI="http://mirrors.dotsrc.org/lokigames/open-source/smpeg/smpeg-"$V".tar.gz"
 
@@ -17,7 +17,7 @@ RECOMMENDED=""
 BDEPEND="gtk2 mesa"
 
 pbs_unpack() {
-        dounpack
+    dounpack
 }
 
 pbs_config() {

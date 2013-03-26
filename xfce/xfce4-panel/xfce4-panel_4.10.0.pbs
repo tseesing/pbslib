@@ -8,7 +8,7 @@
 DESCRIPTION="Panel for the Xfce desktop environment"
 HOMEPAGE="http://www.xfce.org"
 LICENSE="GPLv2"
-PACKAGER="StartOS Developers"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
 SRC_URI="http://archive.xfce.org/xfce/4.10/src/"$N-$V".tar.bz2"
 CHECKSUM="cf7351a4b952dbe3fc5ff509c68def33"
@@ -22,7 +22,7 @@ CONFLICT=""
 INSTALL="$N.install"
 
 pbs_unpack() {
-        dounpack
+    dounpack
 }
 
 pbs_config() {

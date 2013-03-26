@@ -8,7 +8,7 @@
 DESCRIPTION="Serial Communication Program"
 HOMEPAGE="http://alioth.debian.org/projects/minicom"
 LICENSE="GPL"
-PACKAGER="StartOS Developers"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
 SRC_URI="http://alioth.debian.org/frs/download.php/3487/"$N-$V".tar.gz"
 
@@ -16,7 +16,7 @@ RDEPEND="ncurses"
 BDEPEND=""
 
 pbs_unpack() {
-        dounpack
+    dounpack
 }
 
 pbs_config() {

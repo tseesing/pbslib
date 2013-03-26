@@ -19,7 +19,7 @@ BDEPEND=""
 RECOMMENDED=""
 
 pbs_unpack() {
-        dounpack
+    dounpack
 }
 
 pbs_config() {

@@ -9,7 +9,7 @@ DESCRIPTION="A portable high-level Jabber/XMPP library for C++"
 COMMENTS="gloox is a rock-solid, full-featured Jabber/XMPP client library, written in clean ANSI C++. It makes writing spec-compliant clients easy and allows for hassle-free integration of Jabber/XMPP functionality into existing applications. gloox is released under the GNU GPL. Commercial licensing and support are available."
 HOMEPAGE="http://camaya.net/gloox"
 LICENSE="GPL"
-PACKAGER="StartOS Developers"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
 SRC_URI="http://camaya.net/download/"$N-$V".tar.bz2"
 CHECKSUM="f8eacf1c6476e0a309b453fd04f90e31"
@@ -21,7 +21,7 @@ OPTIONAL=""
 CONFLICT=""
 
 pbs_unpack() {
-        dounpack
+    dounpack
 }
 
 pbs_config() {

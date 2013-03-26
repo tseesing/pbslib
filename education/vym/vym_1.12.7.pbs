@@ -8,7 +8,7 @@
 DESCRIPTION="View Your Mind, a mindmap tool"
 HOMEPAGE="http://www.insilmaril.de/vym/"
 LICENSE="GPL"
-PACKAGER="StartOS Developers"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
 SRC_URI="http://downloads.sourceforge.net/project/"$N"/"$N"/"$V"/"$N-$V".tar.bz2"
 
@@ -20,7 +20,7 @@ CONFLICT=""
 INSTALL="$N.install"
 
 pbs_unpack() {
-        dounpack
+    dounpack
 }
 
 pbs_config() {

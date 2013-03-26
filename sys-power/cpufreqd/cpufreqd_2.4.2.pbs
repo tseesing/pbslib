@@ -8,7 +8,7 @@
 DESCRIPTION="CPU Frequency Daemon"
 HOMEPAGE="http://www.linux.it/~malattia/wiki/index.php/Cpufreqd"
 LICENSE="GPL"
-PACKAGER="StartOS Developers"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
 SRC_URI="http://sourceforge.net/projects/"$N"/files/Source%20packages/"$V"/"$N-$V".tar.bz2"
 CHECKSUM="2ca80a77849c9a69b81e27c1843c97f5"
@@ -20,7 +20,7 @@ OPTIONAL=""
 CONFLICT=""
 
 pbs_unpack() {
-        dounpack
+    dounpack
 }
 
 pbs_config() {

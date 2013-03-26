@@ -14,7 +14,7 @@ PACKAGER="chenqixing@ivali.com
 SRC_URI="https://launchpad.net/$N/${V%.*}/$V/+download/${N}-${V}.tar.bz2"
 CHECKSUM="5841e4624b07ba74866fb177f1c9aae7"
 
-RDEPEND="python raptor2 rdflib xapian-core dbus-python pygobject pyxdg"
+RDEPEND="python raptor2 py-rdflib xapian-core py-dbus py-gobject py-xdg"
 BDEPEND="vala(>=0.16)"
 RECOMMENDED=""
 
@@ -33,6 +33,5 @@ pbs_build() {
 
 pbs_install() {
     domkinstall
-    install -D -m644 data/zeitgeist-daemon.bash_completion $PKGDIR/usr/share/bash-completion/completions/zeitgeist-daemon
+    install -D -m644 data/zeitgeist-daemon.bash_completion "$PKGDIR"/usr/share/bash-completion/completions/zeitgeist-daemon
 }
-

@@ -8,7 +8,7 @@
 DESCRIPTION="A 3D racing cars simulator using OpenGL"
 HOMEPAGE="http://torcs.sourceforge.net"
 LICENSE="GPL"
-PACKAGER="StartOS Developers"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
 SRC_URI="http://downloads.sourceforge.net/sourceforge/"$N"/"$N-$V".tar.bz2"
 CHECKSUM="0319c996dac4480f1182c03d2331b14a"
@@ -22,7 +22,7 @@ CONFLICT=""
 INSTALL="$N.install"
 
 pbs_unpack() {
-        dounpack
+    dounpack
 }
 
 pbs_config() {

@@ -8,7 +8,7 @@
 DESCRIPTION="The extensible, customizable, self-documenting real-time display editor"
 HOMEPAGE="http://www.gnu.org/software/emacs/"
 LICENSE="GPL"
-PACKAGER="StartOS Developers"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
 SRC_URI="ftp://ftp.gnu.org/gnu/emacs/"$N-$V".tar.bz2"
 CHECKSUM="8ba0932c498bc8fb10d7ddba52227e5b"
@@ -21,7 +21,7 @@ CONFLICT=""
 INSTALL="$N.install"
 
 pbs_unpack() {
-        dounpack
+    dounpack
 }
 
 pbs_config() {

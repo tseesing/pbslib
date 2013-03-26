@@ -8,20 +8,25 @@
 DESCRIPTION="An MSN connection manager for Telepathy"
 HOMEPAGE="http://telepathy.freedesktop.org/releases/telepathy-butterfly/"
 LICENSE="GPL"
-PACKAGER="StartOS Developers"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
+YARCH="any"
+GROUP="python"
 
 SRC_URI="http://telepathy.freedesktop.org/releases/"$N"/"$N-$V".tar.gz"
 
 RDEPEND="python"
-BDEPEND="telepathy-python papyon"
+BDEPEND="py-telepathy py-papyon"
 RECOMMENDED=""
 
 pbs_unpack() {
-        dounpack
+    dounpack
+}
+
+pbs_patch() {
+    dopatch 0001-bugfix-remove-bad-import-from-im-module.patch
 }
 
 pbs_config() {
-    dopatch 0001-bugfix-remove-bad-import-from-im-module.patch
     doconfig
 }
 
@@ -32,4 +37,3 @@ pbs_build() {
 pbs_install() {
     domkinstall
 }
-

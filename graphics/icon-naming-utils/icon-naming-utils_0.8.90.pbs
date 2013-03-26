@@ -15,7 +15,7 @@ YARCH="any"
 SRC_URI="http://tango.freedesktop.org/releases/"$N-$V".tar.gz"
 CHECKSUM="2c5c7a418e5eb3268f65e21993277fba"
 
-RDEPEND="xml-simple xml-parser perl"
+RDEPEND="perl-xml-simple perl-xml-parser perl"
 BDEPEND=""
 
 
@@ -41,4 +41,3 @@ pbs_install() {
     cd "$PKGDIR"
     domv usr/share/pkgconfig usr/lib"$LIBDIRSUFFIX"/
 }
-

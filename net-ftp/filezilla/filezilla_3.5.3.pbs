@@ -1,0 +1,37 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="FTP client with lots of useful features and an intuitive interface"
+HOMEPAGE="http://filezilla-project.org/"
+LICENSE="GPL"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
+
+SRC_URI="http://sourceforge.net/projects/filezilla/files/FileZilla_Client/"$V"/FileZilla_"$V"_src.tar.bz2"
+CHECKSUM="a1a2848db0c5c8f3321ebe4ee3842e31"
+
+RDEPEND="libidn sqlite wxgtk" 
+BDEPEND=""
+RECOMMENDED=""
+CONFLICT=""
+
+pbs_unpack() {
+    dounpack
+}
+
+pbs_config() {
+    config+="--with-tinyxml=builtin"
+    doconfig
+}
+
+pbs_build() {
+    domake
+}
+
+pbs_install() {
+    domkinstall
+}
+

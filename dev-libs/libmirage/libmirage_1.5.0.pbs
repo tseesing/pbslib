@@ -8,7 +8,7 @@
 DESCRIPTION="CD-ROM image (B6T/CCD/CDI/CUE/ISO/MDS/NRG/TOC) access library"
 HOMEPAGE="http://cdemu.sourceforge.net/"
 LICENSE="GPL"
-PACKAGER="StartOS Developers"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
 SRC_URI="http://sourceforge.net/projects/cdemu/files/"$N"/"$N-$V".tar.bz2"
 CHECKSUM="b60d9baa754efee6e0f6a584ec033fff"
@@ -20,7 +20,7 @@ OPTIONAL=""
 CONFLICT=""
 
 pbs_unpack() {
-        dounpack
+    dounpack
 }
 
 pbs_config() {

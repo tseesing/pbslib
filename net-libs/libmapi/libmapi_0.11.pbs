@@ -8,7 +8,7 @@
 DESCRIPTION="Portable open-source implementations of Exchange protocols."
 HOMEPAGE="http://www.openchange.org/"
 ICENSE="custom"
-PACKAGER="StartOS Developers"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
 
 SRC_URI="openchange-0.11-TRANSPORTER.tar.gz"
@@ -19,7 +19,7 @@ BDEPEND=""
 CONFLICT=""
 
 pbs_unpack() {
-        dounpack
+    dounpack
 }
 
 pbs_config() {

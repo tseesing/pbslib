@@ -13,9 +13,9 @@ PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 SRC_URI="http://mirrors.devlib.org/apache/$N/source/Mail-SpamAssassin-$V.tar.gz"
 CHECKSUM="d1d62cc5c6eac57e88c4006d9633b81e"
 
-RDEPEND="openssl zlib re2c perl-Net-DNS IO-Socket-SSL libwww-perl Mail-SPF HTTP-Message Net-HTTP IO-Socket-INET6 Mail-DKIM Crypt-SSLeay"
+RDEPEND="openssl zlib re2c perl-net-dns perl-io-socket-ssl perl-libwww perl-mail-spf perl-http-message perl-net-http perl-io-socket-inet6 perl-mail-dkim perl-crypt-ssleay"
 RECOMMENDED="razor"
-BDEPEND="razor perl-DBI"
+BDEPEND="razor perl-dbi"
 OPTIONAL="razor: to identify collaborately-flagged spam"
 CONFLICT=""
 REPLACE=""
@@ -40,4 +40,3 @@ pbs_install() {
     dounit spamassassin.service
     perl_cleanup
 }
-

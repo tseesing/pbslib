@@ -8,7 +8,7 @@
 DESCRIPTION="Firmware for Broadcom BCM203x and STLC2300 Bluetooth chips."
 HOMEPAGE="http://www.bluez.org"
 LICENSE="GPL"
-PACKAGER="StartOS Developers"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 YARCH="any"
 
 SRC_URI="http://bluez.sf.net/download/"$N-$V".tar.gz"
@@ -22,7 +22,7 @@ CONFLICT=""
 REPLACE=""
 
 pbs_unpack() {
-        dounpack
+    dounpack
 }
 
 pbs_config() {

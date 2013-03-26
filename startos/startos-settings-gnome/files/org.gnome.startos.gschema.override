@@ -50,9 +50,9 @@ sources=[('xkb', 'us'), ('ibus', 'libpinyin')]
 # Current input source
 current=0
 
-[org.gnome.settings-daemon.plugins.media-keys]
+#[org.gnome.settings-daemon.plugins.media-keys]
 # Binding to select the next input source
-switch-input-source='<Primary>space'
+#switch-input-source='<Primary>space'
 # Binding to select the previous input source
 #switch-input-source-backward='<Primary>space'
 

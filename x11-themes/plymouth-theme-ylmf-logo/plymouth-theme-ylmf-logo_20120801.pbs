@@ -9,7 +9,7 @@ DESCRIPTION="StartOS default theme for plymouth"
 HOMEPAGE="http://www.startos.org"
 LICENSE="GPLv2"
 YARCH="any"
-PACKAGER="StartOS Developers"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
 SRC_URI="git://git.ylmf.com/"$N".git"
 

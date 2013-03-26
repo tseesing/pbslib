@@ -8,7 +8,7 @@
 DESCRIPTION="libreoffice langpack for zh-TW"
 HOMEPAGE="http://www.libreoffice.org/"
 LICENSE="LGPL"
-PACKAGER="StartOS Developers"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
 SRC_URI="http://download.documentfoundation.org/libreoffice/stable/"$V"/deb/x86/LibO_"$V"_Linux_x86_langpack-deb_zh-TW.tar.gz"
 CHECKSUM="e88f9b8ca39bb07ed302a6528fa05e975a6af27b"

@@ -8,7 +8,7 @@
 DESCRIPTION="Fast, production-quality, standard-conformant FTP server."
 HOMEPAGE="http://www.pureftpd.org/"
 LICENSE="GPL"
-PACKAGER="StartOS Developers"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
 SRC_URI="http://download.pureftpd.org/pub/"$N"/releases/"$N-$V".tar.bz2"
 
@@ -21,7 +21,7 @@ INSTALL="$N.install"
 NOTES="You should creat a users name \"ftp\" and a group name \"ftpgroup\""
 
 pbs_unpack() {
-        dounpack
+    dounpack
 }
 
 pbs_config() {

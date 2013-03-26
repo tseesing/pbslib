@@ -8,16 +8,16 @@
 DESCRIPTION="Farsight connection manager for the Telepathy framework"
 HOMEPAGE="http://telepathy.freedesktop.org"
 LICENSE="GPL"
-PACKAGER="StartOS Developers"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
 SRC_URI="http://telepathy.freedesktop.org/releases/"$N"/"$N-$V".tar.gz"
 
-RDEPEND="dbus dbus-glib farstream glib2 glibc gstreamer libxml2 python telepathy-glib zlib"
+RDEPEND="farstream telepathy-glib"
 BDEPEND=""
 RECOMMENDED=""
 
 pbs_unpack() {
-        dounpack
+    dounpack
 }
 
 pbs_config() {

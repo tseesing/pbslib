@@ -1,0 +1,43 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="an open source multimedia framework for television broadcasting."
+HOMEPAGE="http://www.mltframework.org/twiki/bin/view/MLT/"
+LICENSE="LGPLv2.1"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
+
+SRC_URI="git://github.com/mltframework/mlt.git"
+
+RDEPEND="python sdl-image jack-audio-connection-kit ffmpeg libmodplug libbluray libtheora opus libass dbus libdv sox gtk2 libexif"
+BDEPEND="git"
+RECOMMENDED=""
+CONFLICT=""
+
+pbs_unpack() {
+    dounpack
+}
+
+pbs_patch() {
+    git checkout v"$V"
+}
+
+pbs_config() {
+    config+=""
+    doconfig
+}
+
+pbs_build() {
+    domake
+    cd src/swig/python
+    ./build
+}
+
+pbs_install() {
+    docp mlt.py _mlt.so mlt_wrap.o "$PKGDIR"/usr/lib"$LIBDIRSUFFIX"/python2.7/
+    cd "$SRCDIR"
+    domkinstall
+}

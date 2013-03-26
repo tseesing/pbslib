@@ -8,7 +8,7 @@
 DESCRIPTION="mcelog processes machine checks (in particular memory and CPU hardware errors) on modern x86 Linux systems."
 HOMEPAGE="http://freshmeat.net/projects/mcelog/"
 LICENSE="GPL"
-PACKAGER="StartOS Developers"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
 SRC_URI="ftp://ftp.kernel.org/pub/linux/utils/cpu/mce/"$N"-1.0pre3.tar.gz"
 CHECKSUM="b42f2214de6f4feb992556149edc67fa"
@@ -19,7 +19,7 @@ RECOMMENDED=""
 CONFLICT=""
 
 pbs_unpack() {
-        dounpack
+    dounpack
 }
 
 pbs_build() {

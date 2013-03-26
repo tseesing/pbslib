@@ -8,7 +8,7 @@
 DESCRIPTION="Partition table rescue/guessing tool"
 HOMEPAGE="http://www.stud.uni-hannover.de/user/76201/gpart/"
 LICENSE="GPL"
-PACKAGER="StartOS Developers"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
 SRC_URI="http://www.sfr-fresh.com/linux/misc/"$N-$V"h.tar.gz"
 CHECKSUM="ee3a2d2dde70bcf404eb354b3d1ee6d4"
@@ -20,7 +20,7 @@ OPTIONAL=""
 CONFLICT=""
 
 pbs_unpack() {
-        dounpack
+    dounpack
 }
 
 pbs_patch() {

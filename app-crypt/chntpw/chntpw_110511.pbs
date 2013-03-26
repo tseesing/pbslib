@@ -8,7 +8,7 @@
 DESCRIPTION="Offline Windows NT Password & Registry Editor"
 HOMEPAGE="http://pogostick.net/~pnh/ntpasswd/"
 LICENSE="GPL"
-PACKAGER="StartOS Developers"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
 SRC_URI="http://pogostick.net/~pnh/ntpasswd/"$N"-source-"$V".zip"
 
@@ -18,7 +18,7 @@ RECOMMENDED=""
 CONFLICT=""
 
 pbs_unpack() {
-        dounpack
+    dounpack
 }
 
 pbs_build() {

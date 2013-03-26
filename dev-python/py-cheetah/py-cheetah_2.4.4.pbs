@@ -1,0 +1,40 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="A Python-powered template engine and code generator"
+HOMEPAGE="http://www.cheetahtemplate.org"
+LICENSE="custom"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
+GROUP="python"
+
+SRC_URI="http://pypi.python.org/packages/source/C/Cheetah/Cheetah-$V.tar.gz"
+CHECKSUM="853917116e731afbc8c8a43c37e6ddba"
+
+RDEPEND="python glibc py-markdown"
+RECOMMENDED=""
+BDEPEND="py-distribute"
+OPTIONAL="pygments: for the CodeHighlighter filter"
+CONFLICT=""
+REPLACE=""
+
+pbs_unpack() {
+    dounpack
+}
+
+pbs_config() {
+    config+=""
+    doconfig
+}
+
+pbs_build() {
+    domake
+}
+
+pbs_install() {
+    domkinstall
+    dodoc LICENSE
+}

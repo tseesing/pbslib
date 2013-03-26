@@ -8,7 +8,7 @@
 DESCRIPTION="lxde desktop login manager"
 HOMEPAGE="http://lxde.org"
 LICENSE="GPL"
-PACKAGER="StartOS Developers"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
 SRC_URI="http://nchc.dl.sourceforge.net/project/"$N"/"$N"/LXDM%200.4.1/"$N-$V".tar.gz"
 

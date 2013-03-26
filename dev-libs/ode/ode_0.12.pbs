@@ -8,7 +8,7 @@
 DESCRIPTION="An open source, high performance library for simulating rigid body dynamics."
 HOMEPAGE="http://www.ode.org"
 LICENSE="LGPL/BSD"
-PACKAGER="StartOS Developers"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
 SRC_URI="http://downloads.sourceforge.net/sourceforge/opende/"$N-$V".tar.bz2"
 CHECKSUM="83766cae59692c2843d9afccc1768988"
@@ -20,7 +20,7 @@ OPTIONAL=""
 CONFLICT=""
 
 pbs_unpack() {
-        dounpack
+    dounpack
 }
 
 pbs_config() {

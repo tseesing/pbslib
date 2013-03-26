@@ -8,7 +8,7 @@
 DESCRIPTION="The OpenAL Utility Toolkit"
 HOMEPAGE="http://www.openal.org"
 LICENSE="GPL"
-PACKAGER="StartOS Developers"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
 SRC_URI="http://connect.creativelabs.com/openal/Downloads/ALUT/"$N-$V".tar.gz"
 
@@ -16,7 +16,7 @@ RDEPEND="openal"
 BDEPEND=""
 
 pbs_unpack() {
-        dounpack
+    dounpack
 }
 
 pbs_config() {

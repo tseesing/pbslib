@@ -8,7 +8,7 @@
 DESCRIPTION="Epson Inkjet Printer Driver (ESC/P-R) for Linux."
 HOMEPAGE="http://avasys.jp/eng/linux_driver/download/lsb/epson-inkjet/escpr/"
 LICENSE="GPL"
-PACKAGER="StartOS Developers"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
 SRC_URI="http://linux.avasys.jp/drivers/lsb/epson-inkjet/escpr/src/"$N-$V"-1lsb3.2.tar.gz"
 CHECKSUM="c769dfa08da4847409bb705c90ed7a74"
@@ -20,7 +20,7 @@ OPTIONAL=""
 CONFLICT=""
 
 pbs_unpack() {
-        dounpack
+    dounpack
 }
 
 pbs_config() {

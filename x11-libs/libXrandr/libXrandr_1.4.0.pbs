@@ -18,7 +18,7 @@ RDEPEND="libXext libXrender "
 BDEPEND="randrproto"
 
 pbs_unpack() {
-        dounpack
+    dounpack
 }
 
 pbs_config() {

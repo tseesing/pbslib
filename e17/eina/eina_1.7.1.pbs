@@ -8,7 +8,7 @@
 DESCRIPTION="Enlightenment's data types library (List, hash, etc) in C"
 HOMEPAGE="http://www.enlightenment.org/"
 LICENSE="LGPL"
-PACKAGER="StartOS Developers"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
 SRC_URI="http://download.enlightenment.org/releases/"$N-$V".tar.gz"
 CHECKSUM="644b7e8a3c3a48238f2c4003c90925de"
@@ -20,7 +20,7 @@ OPTIONAL=""
 CONFLICT=""
 
 pbs_unpack() {
-        dounpack
+    dounpack
 }
 
 pbs_config() {

@@ -8,7 +8,7 @@
 DESCRIPTION="Lists directories recursively, and produces an indented listing of files."
 HOMEPAGE="http://mama.indstate.edu/users/ice/tree/"
 LICENSE=""
-PACKAGER="StartOS Developers"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
 SRC_URI="ftp://mama.indstate.edu/linux/"$N"/"$N-$V$R".tgz"
 
@@ -19,7 +19,7 @@ RECOMMENDED=""
 NOTES=""
 
 pbs_unpack() {
-        dounpack
+    dounpack
 }
 
 pbs_build() {

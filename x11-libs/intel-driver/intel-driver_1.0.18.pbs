@@ -9,7 +9,7 @@ DESCRIPTION="VA-API implementation for Intel G45 chipsets and Intel HD Graphics 
 HOMEPAGE="http://freedesktop.org/wiki/Software/vaapi"
 GROUP="x11-lib"
 LICENSE="MIT"
-PACKAGER="StartOS Developers"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
 SRC_URI="http://cgit.freedesktop.org/vaapi/intel-driver/snapshot/"$N-$V".tar.bz2"
 CHECKSUM="f65ebbcb1071188405178f3a85831ffc"
@@ -22,7 +22,7 @@ CONFLICT=""
 REPLACE=""
 
 pbs_unpack() {
-        dounpack
+    dounpack
 }
 
 pbs_config() {

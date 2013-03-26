@@ -18,7 +18,7 @@ RDEPEND="gnome-doc-utils perl python"
 BDEPEND=""
 
 pbs_unpack() {
-        dounpack
+    dounpack
 }
 
 pbs_config() {

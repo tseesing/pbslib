@@ -3,7 +3,7 @@
 DESCRIPTION="a media player aiming to be similar to AmaroK, but for GTK+"
 HOMEPAGE="http://www.exaile.org/"
 LICENSE="GPL"
-PACKAGER="StartOS Developers"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
 SRC_URI="http://launchpadlibrarian.net/75478776/"$N-$V".tar.gz"
 
@@ -15,7 +15,7 @@ CONFLICT=""
 INSTALL="$N.install"
 
 pbs_unpack() {
-        dounpack
+    dounpack
 }
 
 pbs_patch() {

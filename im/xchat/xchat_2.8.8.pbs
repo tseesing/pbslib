@@ -8,7 +8,7 @@
 DESCRIPTION="Graphical IRC client"
 HOMEPAGE="http://www.xchat.org/"
 LICENSE="GPL"
-PACKAGER="StartOS Developers"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
 SRC_URI="http://xchat.org/files/source/2.8/"$N-$V".tar.xz"
 CHECKSUM="9a11f13121ff0af787bba3b014378e58"
@@ -22,7 +22,7 @@ CONFLICT=""
 INSTALL="$N.install"
 
 pbs_unpack() {
-        dounpack
+    dounpack
 }
 
 pbs_patch() {

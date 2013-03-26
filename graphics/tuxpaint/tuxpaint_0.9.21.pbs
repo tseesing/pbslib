@@ -8,7 +8,7 @@
 DESCRIPTION="Drawing program designed for young childre."
 HOMEPAGE="http://www.tuxpaint.org/"
 LICENSE="GPL"
-PACKAGER="StartOS Developers"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
 SRC_URI="http://downloads.sourceforge.net/sourceforge/"$N"/"$N-$V".tar.gz"
 CHECKSUM="6d4f2b981643b5c937708e5e6cdaf318ae7b5562375327b4b1cb84611e65ede9"
@@ -22,7 +22,7 @@ CONFLICT=""
 INSTALL="$N.install"
 
 pbs_unpack() {
-        dounpack
+    dounpack
 }
 
 pbs_build() {

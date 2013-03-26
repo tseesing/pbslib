@@ -8,7 +8,7 @@
 DESCRIPTION="Post-processor for scanned and photocopied book pages"
 HOMEPAGE="http://unpaper.berlios.de/"
 LICENSE="GPL"
-PACKAGER="StartOS Developers"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
 SRC_URI="http://download.berlios.de/"$N"/"$N-$V".tar.gz"
 
@@ -17,7 +17,7 @@ RECOMMENDED=""
 BDEPEND=""
 
 pbs_unpack() {
-        dounpack
+    dounpack
 }
 
 pbs_build() {

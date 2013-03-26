@@ -8,17 +8,17 @@
 DESCRIPTION="Provide access to (SM)BIOS information"
 HOMEPAGE="http://linux.dell.com/libsmbios/main/index.html"
 LICENSE="GPL"
-PACKAGER="StartOS Developers"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
 SRC_URI="http://linux.dell.com/libsmbios/download/"$N"/"$N-$V"/"$N-$V".tar.bz2"
 
-RDEPEND="gcc-libs glibc"
+RDEPEND="gcc-libs"
 BDEPEND=""
 RECOMMENDED=""
 CONFLICT=""
 
 pbs_unpack() {
-        dounpack
+    dounpack
 }
 
 pbs_config() {

@@ -1,0 +1,35 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="Nautilus Plugin for Opening Terminals"
+HOMEPAGE="http://ftp.gnome.org/pub/GNOME/sources/nautilus-open-terminal"
+LICENSE="GPL"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
+
+SRC_URI="ftp://ftp.gnome.org/pub/GNOME/sources/$N/$V/$N-$V.tar.xz"
+CHECKSUM="84905e98a13990ef73ce698144bdf0ad9adb1346c22a7d7381a3d65f17a364f0"
+
+RDEPEND="nautilus"
+BDEPEND=""
+RECOMMENDEd=""
+
+pbs_unpack() {
+    dounpack
+}
+
+pbs_config() {
+    config+="--disable-static"
+    doconfig
+}
+
+pbs_build() {
+    domake
+}
+
+pbs_install() {
+    domkinstall GCONF_DISABLE_MAKEFILE_SCHEMA_INSTALL=1
+}

@@ -8,7 +8,7 @@
 DESCRIPTION="A fast and easy to use image viewer for KDE"
 HOMEPAGE="http://kde.org/"
 LICENSE="GPL,LGPL,FDL"
-PACKAGER="StartOS Developers"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
 SRC_URI="http://download.kde.org/stable/"$V"/src/"$N-$V".tar.xz"
 CHECKSUM="9188b4f0686c27a830d74ab0da4a0834eb6180c5"

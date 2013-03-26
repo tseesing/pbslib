@@ -7,9 +7,8 @@
 
 DESCRIPTION="webqq client (AIR)"
 HOMEPAGE="www.qq.com"
-LICENSE=""
-PRIORITY=""
-PACKAGER="StartOS Developers"
+LICENSE="custom"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
 SRC_URI="http://dl_dir.qq.com/qqfile/web/webqq/WebQQ.air"
 
@@ -18,10 +17,9 @@ BDEPEND=""
 RECOMMENDED=""
 CONFLICT=""
 
-NOTES=""
-
 pbs_install() {
     docp      "$YBS_SOURCE"/WebQQ.air  "$PKGDIR"/usr/lib/"$N"
     dodesktop "$N.desktop"      "$N.png"
+    docp "$FILESDIR"/"$N"  "$PKGDIR"/usr/bin/
 }
 

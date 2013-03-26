@@ -15,7 +15,7 @@ CHECKSUM=""
 
 RDEPEND="ffmpeg(>=0.11.1) gst-plugins-base0.10 gtk2 libdc1394 openexr python"
 RECOMMENDED=""
-BDEPEND="cmake mesa numpy"
+BDEPEND="cmake mesa py-numpy"
 OPTIONAL=""
 CONFLICT=""
 

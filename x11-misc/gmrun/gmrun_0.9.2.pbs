@@ -8,7 +8,7 @@
 DESCRIPTION="A GTK-2 based launcher box with bash style auto completion"
 HOMEPAGE="http://sourceforge.net/projects/gmrun/"
 LICENSE="GPL"
-PACKAGER="StartOS Developers"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
 SRC_URI="http://nchc.dl.sourceforge.net/project/"$N"/"$N"/"$V"/"$N-$V".tar.gz"
 
@@ -18,7 +18,7 @@ RECOMMENDED=""
 CONFLICT=""
 
 pbs_unpack() {
-        dounpack
+    dounpack
 }
 
 pbs_patch() {

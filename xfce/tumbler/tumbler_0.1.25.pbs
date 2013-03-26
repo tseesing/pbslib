@@ -8,7 +8,7 @@
 DESCRIPTION="D-Bus service for applications to request thumbnails"
 HOMEPAGE="http://xfce.org"
 LICENSE="GPLv2 LGPL"
-PACKAGER="StartOS Developers"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
 SRC_URI="http://archive.xfce.org/xfce/4.10/src/"$N-$V".tar.bz2"
 CHECKSUM="d4edc15c172714c7a3eaf3c719b8faf6"
@@ -20,7 +20,7 @@ OPTIONAL=""
 CONFLICT=""
 
 pbs_unpack() {
-        dounpack
+    dounpack
 }
 
 pbs_config() {

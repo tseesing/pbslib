@@ -8,14 +8,14 @@
 DESCRIPTION="driver for Ralink PCI ABGN WLAN Card: RT2860PCI/mPCI/CB/PCIe(RT2760/RT2790/RT2860/RT2890)"
 HOMEPAGE="http://www.ralinktech.com/support.php?s=2"
 LICENSE="GPL"
-PACKAGER="StartOS Developers <startos@ylmf.com>"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com> <startos@ylmf.com>"
 
 SRC_URI="2010_07_16_RT2860_Linux_STA_v2.4.0.0.tar.bz2"
 
 PROVIDE="rt2860sta-source rt2860sta-driver"
 
 pbs_unpack() {
-        dounpack
+    dounpack
 }
 
 pbs_config() {

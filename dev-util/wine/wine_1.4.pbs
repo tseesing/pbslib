@@ -8,7 +8,7 @@
 DESCRIPTION="free implementation of Windows(tm) on Unix"
 HOMEPAGE="http://www.winehq.org/"
 LICENSE="GPL"
-PACKAGER="StartOS Developers"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
 SRC_URI="http://sourceforge.net/projects/wine/files/Source/"$N-$V".tar.bz2"
 CHECKSUM="6594ab86a4b1fb2c09dadfb4ea7fc4af"
@@ -17,7 +17,7 @@ RDEPEND="gettext gst-plugins-base lcms libgphoto2 mesa mpg123 openldap"
 BDEPEND="prelink"
 
 pbs_unpack() {
-        dounpack
+    dounpack
 }
 
 pbs_config() {

@@ -1,0 +1,42 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="Handy web browsing in a Perl object "
+HOMEPAGE="http://search.cpan.org/~petdance/WWW-Mechanize"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
+LICENSE="GPL,PerlArtistic"
+GROUP="perl"
+YARCH="any"
+
+SRC_URI="http://search.cpan.org/CPAN/authors/id/P/PE/PETDANCE/WWW-Mechanize-"$V".tar.gz"
+
+RDEPEND="perl-libwww perl-html-parser perl-uri perl-html-form"
+BDEPEND=""
+RECOMMENDED=""
+CONFLICT=""
+
+pbs_unpack() {
+    dounpack
+}
+
+pbs_config() {
+    export PERL_MM_USE_DEFAULT=1 PERL5LIB="" \
+           PERL_AUTOINSTALL=--skipdeps \
+           PERL_MM_OPT="INSTALLDIRS=vendor" \
+           PERL_MB_OPT="--installdirs vendor" \
+           MODULEBUILDRC=/dev/null
+    doconfig
+}
+
+pbs_build() {
+    domake
+}
+
+pbs_install() {
+    domkinstall
+    perl_cleanup
+}

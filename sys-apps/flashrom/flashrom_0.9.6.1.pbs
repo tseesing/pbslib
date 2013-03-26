@@ -8,7 +8,7 @@
 DESCRIPTION="Utility for reading, writing, erasing and verifying flash ROM chips"
 HOMEPAGE="http://www.flashrom.org"
 LICENSE="GPL"
-PACKAGER="StartOS Developers"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
 SRC_URI="http://download.flashrom.org/releases/"$N-$V".tar.bz2"
 CHECKSUM="407e836c0a2b17ec76583cb6809f65e5"
@@ -21,7 +21,7 @@ CONFLICT=""
 REPLACE=""
 
 pbs_unpack() {
-        dounpack
+    dounpack
 }
 
 pbs_build() {

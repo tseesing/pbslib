@@ -8,7 +8,7 @@
 DESCRIPTION="A library for high-performance 2D graphics"
 HOMEPAGE="http://www.levien.com/libart"
 LICENSE="LGPL"
-PACKAGER="StartOS Developers"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
 SRC_URI="http://ftp.acc.umu.se/pub/gnome/platform/2.32/2.32.1/sources/"$N-$V".tar.bz2"
 
@@ -16,7 +16,7 @@ BDEPEND="glibc"
 RECOMMENDED=""
 
 pbs_unpack() {
-        dounpack
+    dounpack
 }
 
 pbs_config() {

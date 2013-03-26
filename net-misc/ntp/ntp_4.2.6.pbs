@@ -13,9 +13,9 @@ PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 SRC_URI="http://www.eecis.udel.edu/~ntp/ntp_spool/"$N"4/"$N-$V"p5.tar.gz"
 CHECKSUM="4a5353a4791b6f4315a66c28d504ec6c7926b192"
 
+# Maybe need "avahi" at runtime
 RDEPEND="openssl libcap libedit"
-#   Maybe need "avahi" at runtime
-BDEPEND="HTML-Parser"
+BDEPEND="perl-html-parser"
 RECOMMENDED=""
 CONFLICT=""
 
@@ -37,22 +37,14 @@ pbs_build() {
 pbs_install() {
     domkinstall
     dodoc COPYRIGHT
-
     cd html
     ../scripts/html2man
     domv man/man* "$PKGDIR"/usr/share/man
-
     cd "$PKGDIR"
-    #
     domv usr/share/man/man8/ntpd.8 usr/share/man/man8/ntp-ntpd.8
-    #
     docp "$FILESDIR"/ntp.conf etc/
-    #
     dounit ntpd.service ntpdate.service
-    #
     install -d -o 87 var/lib/ntp
-    #
     install -dm755 usr/lib/systemd/ntp-units.d
     echo 'ntpd.service' >usr/lib/systemd/ntp-units.d/"$N".list
 }
-

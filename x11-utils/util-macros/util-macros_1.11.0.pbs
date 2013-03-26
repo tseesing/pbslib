@@ -8,7 +8,7 @@
 DESCRIPTION="X.Org autotools utility macros"
 HOMEPAGE="http://xorg.freedesktop.org/"
 LICENSE="GPL"
-PACKAGER="StartOS Developers"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 YARCH="any"
 
 
@@ -19,7 +19,7 @@ BDEPEND=""
 RECOMMENDED=""
 
 pbs_unpack() {
-        dounpack
+    dounpack
 }
 
 pbs_config() {

@@ -8,7 +8,7 @@
 DESCRIPTION="Assembler and loader used to create kernel bootsector"
 HOMEPAGE="http://www.debath.co.uk/"
 LICENSE="GPL-2"
-PACKAGER="StartOS Developers"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
 SRC_URI="http://homepage.ntlworld.com/robert.debath/dev86/"$N-$V$R".tar.gz"
 
@@ -17,7 +17,7 @@ BDEPEND=" "
 RECOMMENDED=""
 
 pbs_unpack() {
-        dounpack
+    dounpack
 }
 
 pbs_build() {

@@ -8,17 +8,17 @@
 DESCRIPTION="Free RDP client"
 HOMEPAGE="http://freerdp.com/"
 LICENSE="GPL"
-PACKAGER="StartOS Developers"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
 SRC_URI="https://github.com/downloads/FreeRDP/FreeRDP/"$N-$V".tar.gz"
 CHECKSUM="c843185e0ff22ce8409954651718f338"
 
-RDEPEND="alsa-lib avahi cups dbus ffmpeg gcc-libs glibc gnutls keyutils krb5 lame libgcrypt libgpg-error libogg libtasn1 libtheora libva libvorbis libX11 libXau libxcb libXcursor libXdmcp libXext libXfixes libXinerama libxkbfile libXrender libXv opencore-amr openssl orc schroedinger x264 xvidcore zlib"
+RDEPEND="ffmpeg(>=0.11.1) cups libxkbfile libXv"
 BDEPEND="cmake"
 RECOMMENDED=""
 
 pbs_unpack() {
-        dounpack
+    dounpack
 }
 
 pbs_config() {

@@ -8,7 +8,7 @@
 DESCRIPTION="giblib is a simple library which wraps imlib2."
 HOMEPAGE="http://freshmeat.net/projects/giblib/"
 LICENSE="GPL"
-PACKAGER="StartOS Developers"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
 SRC_URI="http://linuxbrit.co.uk/downloads/"$N-$V".tar.gz"
 
@@ -18,7 +18,7 @@ RECOMMENDED=""
 CONFLICT=""
 
 pbs_unpack() {
-        dounpack
+    dounpack
 }
 
 pbs_patch() {

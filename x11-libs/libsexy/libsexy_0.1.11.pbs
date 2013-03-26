@@ -5,23 +5,23 @@
 # Distributed under the terms of the GNU General Public License v2
 #
 
-DESCRIPTION="Sexy GTK+ Widgets"
-HOMEPAGE="http://www.chipx86.com/wiki/Libsexy"
-GROUP="x11-lib"
+DESCRIPTION="Doing naughty things to good widgets."
+HOMEPAGE="http://chipx86.com/wiki/Libsexy"
 LICENSE="GPL"
-PACKAGER="StartOS Developers"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
 SRC_URI="http://releases.chipx86.com/"$N"/"$N"/"$N-$V".tar.gz"
 
-RDEPEND="gtk2 libxml2"
-BDEPEND="iso-codes perl"
+RDEPEND="gtk2 gdk-pixbuf2 libxml2"
+BDEPEND="iso-codes perl pkgconfig"
 RECOMMENDED=""
 
 pbs_unpack() {
-        dounpack
+    dounpack
 }
 
 pbs_config() {
+    config+="--disable-static"
     doconfig
 }
 
@@ -31,5 +31,5 @@ pbs_build() {
 
 pbs_install() {
     domkinstall
+    rm -f "$PKGDIR"/usr/lib"$LIBDIRSUFFIX"/libsexy.a
 }
-

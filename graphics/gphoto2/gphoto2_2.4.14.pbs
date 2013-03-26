@@ -8,7 +8,7 @@
 DESCRIPTION="free, redistributable digital camera software application"
 HOMEPAGE="http://www.gphoto.org/"
 LICENSE="GPL,LGPL"
-PACKAGER="StartOS Developers"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
 SRC_URI="http://downloads.sourceforge.net/gphoto/"$N-$V".tar.bz2"
 CHECKSUM="60fd6e44d89592f6172227be67227636"
@@ -20,7 +20,7 @@ OPTIONAL=""
 CONFLICT=""
 
 pbs_unpack() {
-        dounpack
+    dounpack
 }
 
 pbs_config() {

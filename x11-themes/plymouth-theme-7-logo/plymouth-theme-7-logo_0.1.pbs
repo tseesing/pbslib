@@ -8,7 +8,7 @@
 DESCRIPTION="windows 7 theme for plymouth"
 HOMEPAGE="http://www.startos.org"
 LICENSE="GPL"
-PACKAGER="StartOS Developers"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 YARCH="any"
 
 SRC_URI="$N-$V.tar.bz2"
@@ -18,7 +18,7 @@ BDEPEND=""
 RECOMMENDED=""
 
 pbs_unpack() {
-        dounpack
+    dounpack
 }
 
 pbs_install() {

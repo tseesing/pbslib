@@ -8,7 +8,7 @@
 DESCRIPTION="A library which provides a uniform interface to several symmetric encryption algorithms"
 HOMEPAGE="http://mcrypt.sourceforge.net"
 LICENSE="GPL"
-PACKAGER="StartOS Developers"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
 SRC_URI="http://downloads.sourceforge.net/mcrypt/"$N-$V".tar.bz2"
 CHECKSUM="c4f491dd411a09e9de3b8702ea6f73eb"
@@ -20,7 +20,7 @@ OPTIONAL=""
 CONFLICT=""
 
 pbs_unpack() {
-        dounpack
+    dounpack
 }
 
 pbs_config() {

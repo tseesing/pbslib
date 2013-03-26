@@ -8,7 +8,7 @@
 DESCRIPTION=" C++ interface for pango"
 HOMEPAGE="http://www.gtkmm.org"
 LICENSE="GPL-2"
-PACKAGER="StartOS Developers"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
  
 SRC_URI="http://ftp.gnome.org/pub/gnome/sources/pangomm/2.26/$N-$V.tar.bz2"
 
@@ -19,7 +19,7 @@ RECOMMENDED=""
 NOTES=" http://wiki.linuxfromscratch.org/blfs/wiki/pangomm"
 
 pbs_unpack() {
-        dounpack
+    dounpack
 }
 
 pbs_config() {

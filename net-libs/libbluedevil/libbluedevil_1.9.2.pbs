@@ -8,7 +8,7 @@
 DESCRIPTION="Qt wrapper for bluez used in the KDE bluetooth stack"
 HOMEPAGE="http://projects.kde.org/projects/playground/libs/libbluedevil"
 LICENSE="GPL"
-PACKAGER="StartOS Developers"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
 SRC_URI="http://download.kde.org/stable/"$N"/"$V"/src/"$N-$V".tar.bz2"
 CHECKSUM="b492db1825b239e5185c543badb21c26"
@@ -21,7 +21,7 @@ CONFLICT=""
 REPLACE=""
 
 pbs_unpack() {
-        dounpack
+    dounpack
 }
 
 pbs_config() {

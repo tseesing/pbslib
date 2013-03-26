@@ -14,7 +14,7 @@ SRC_URI="http://downloads.sourceforge.net/sourceforge/qalculate/"$N-$V".tar.gz"
 CHECKSUM="c15f7f3a97995decf62cc964956fc1e374ecd78c"
 
 RDEPEND="cln glib2 libxml2"
-BDEPEND="xml-parser"
+BDEPEND="perl-xml-parser"
 OPTIONAL="gnuplot: for plotting support
           wget: for retrieval of exchange rates (not needed if you use one of the GUI)"
 

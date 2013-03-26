@@ -8,7 +8,7 @@
 DESCRIPTION="Quick Image Viewer"
 HOMEPAGE="http://spiegl.de/qiv/"
 LICENSE="GPL"
-PACKAGER="StartOS Developers"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
 SRC_URI="http://spiegl.de/qiv/download/"$N-$V".tgz"
 CHECKSUM="1425f89c90f9c045858fccf24d894c97"
@@ -20,7 +20,7 @@ OPTIONAL=""
 CONFLICT=""
 
 pbs_unpack() {
-        dounpack
+    dounpack
 }
 
 pbs_patch() {

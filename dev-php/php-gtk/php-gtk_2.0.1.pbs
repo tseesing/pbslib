@@ -9,7 +9,7 @@ DESCRIPTION="PHP-GTK is an extension for the PHP programming language that imple
 COMMENTS="It provides an object-oriented interface to GTK+ classes and functions and greatly simplifies writing client-side cross-platform GUI applications."
 HOMEPAGE="http://gtk.php.net/"
 LICENSE="GPL"
-PACKAGER="StartOS Developers"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
 SRC_URI="http://gtk.php.net/distributions/"$N-$V".tar.gz"
 CHECKSUM="d57ce885f32749320765e01c079e113b"
@@ -23,7 +23,7 @@ CONFLICT=""
 INSTALL="$N.install"
 
 pbs_unpack() {
-        dounpack
+    dounpack
 }
 
 pbs_config() {

@@ -13,7 +13,7 @@ PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 SRC_URI="http://ftp.gnome.org/pub/gnome/sources/$N/${V:0:3}/$N-$V.tar.xz"
 CHECKSUM="f016068350ca2a4deceeac0374d5372610b1da07e2c4b356470f3401e6e2a43d"
 
-RDEPEND="desktop-file-utils glu libcanberra clutter-gtk librsvg pygobject dconf"
+RDEPEND="desktop-file-utils glu libcanberra clutter-gtk librsvg py-gobject dconf"
 RECOMMENDED=""
 BDEPEND="intltool yelp-tools gobject-introspection vala"
 OPTIONAL=""

@@ -8,7 +8,7 @@
 DESCRIPTION="Modern file manager for Xfce"
 HOMEPAGE="http://thunar.xfce.org"
 LICENSE="GPL/LGPL"
-PACKAGER="StartOS Developers"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
 SRC_URI="http://archive.xfce.org/xfce/4.10/src/Thunar-"$V".tar.bz2"
 CHECKSUM="104b25b38130e008df2116e83e6ab20cd33e4561"
@@ -24,7 +24,7 @@ INSTALL="$N.install"
 DESKTOPFILE="Thunar.desktop"
 
 pbs_unpack() {
-        dounpack
+    dounpack
 }
 
 pbs_config() {

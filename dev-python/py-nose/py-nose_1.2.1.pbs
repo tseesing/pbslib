@@ -1,0 +1,38 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="A discovery-based unittest extension"
+HOMEPAGE="http://readthedocs.org/docs/nose"
+LICENSE="LGPL2.1"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
+GROUP="python"
+YARCH="any"
+
+SRC_URI="http://pypi.python.org/packages/source/n/nose/nose-$V.tar.gz"
+CHECKSUM="735e3f1ce8b07e70ee1b742a8a53585a"
+
+RDEPEND="python py-distribute"
+BDEPEND="py-sphinx"
+RECOMMENDED=""
+CONFLICT=""
+
+pbs_unpack() {
+    dounpack
+}
+
+pbs_config() {
+    config+=""
+    doconfig
+}
+
+pbs_build() {
+    domake
+}
+
+pbs_install() {
+    domkinstall
+}

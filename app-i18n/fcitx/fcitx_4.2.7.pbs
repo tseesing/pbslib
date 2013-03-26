@@ -41,4 +41,5 @@ pbs_build() {
 
 pbs_install() {
     domkinstall
+    docp "$FILESDIR"/fcitx.sh "$PKGDIR"/etc/profile.d/
 }

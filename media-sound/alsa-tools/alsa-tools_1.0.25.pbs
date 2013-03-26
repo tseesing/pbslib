@@ -8,7 +8,7 @@
 DESCRIPTION="Advanced Linux Sound Architecture tools"
 HOMEPAGE="http://www.alsa-project.org/"
 LICENSE="GPL"
-PACKAGER="StartOS Developers"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
 SRC_URI="ftp://ftp.alsa-project.org/pub/tools/"$N-$V".tar.bz2"
 CHECKSUM="57bfec98a814d12e0f7ab379aaeccd87"
@@ -20,7 +20,7 @@ OPTIONAL=""
 CONFLICT=""
 
 pbs_unpack() {
-        dounpack
+    dounpack
 }
 
 pbs_install() {

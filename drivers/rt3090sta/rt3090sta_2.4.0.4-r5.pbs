@@ -8,14 +8,14 @@
 DESCRIPTION="Ralink RT3090 PCI WLAN adaptors"
 HOMEPAGE="http://www.ralinktech.com/support.php?s=2"
 LICENSE="GPL"
-PACKAGER="StartOS Developers <startos@ylmf.com>"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com> <startos@ylmf.com>"
 
 SRC_URI="2010_1217_RT3090_LinuxSTA_V2.4.0.4_WiFiBTCombo_DPO.zip"
 
 PROVIDE="rt3090sta-source rt3090sta-driver"
 
 pbs_unpack() {
-        dounpack
+    dounpack
 }
 
 pbs_patch() {

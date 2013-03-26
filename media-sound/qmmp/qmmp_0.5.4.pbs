@@ -8,7 +8,7 @@
 DESCRIPTION="Qt4 based audio-player"
 HOMEPAGE="http://qmmp.ylsoftware.com"
 LICENSE="GPL"
-PACKAGER="StartOS Developers"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
 SRC_URI="http://qmmp.ylsoftware.com/files/"$N-$V".tar.bz2"
 CHECKSUM="9df751d6fba0fad668cf32807ac03ff1"
@@ -22,7 +22,7 @@ CONFLICT=""
 INSTALL="$N.install"
 
 pbs_unpack() {
-        dounpack
+    dounpack
 }
 
 pbs_config() {

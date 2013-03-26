@@ -8,7 +8,7 @@
 DESCRIPTION="HTML Help viewer for Unix/Linux"
 HOMEPAGE="http://code.google.com/p/chmsee/"
 LICENSE="GPLv2"
-PACKAGER="StartOS Developers"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
 #https://nodeload.github.com/jungleji/chmsee/tarball/v1.99.06
 SRC_URI="jungleji-chmsee-v1.99.06-0-gad31e43.tar.gz"
@@ -20,7 +20,7 @@ RECOMMENDED=""
 INSTALL="$N.install"
 
 pbs_unpack() {
-        dounpack
+    dounpack
 }
 
 pbs_build() {

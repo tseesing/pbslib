@@ -14,7 +14,7 @@ PACKAGER="chenqixing@ivali.com
 SRC_URI="http://mielke.cc/brltty/releases/$N-$V.tar.gz"
 CHECKSUM="8ebe96efe679f5f6ccff08928fec5b26"
 
-RDEPEND="libXaw at-spi2-core gpm icu tcl atk pyrex speech-dispatcher"
+RDEPEND="libXaw at-spi2-core gpm icu tcl atk py-rex speech-dispatcher"
 RECOMMENDED=""
 BDEPEND="bluez"
 OPTIONAL="bluez: bluetooth support"
@@ -39,5 +39,3 @@ pbs_install() {
     dodoc LICENSE-GPL 
     dounit brltty.service
 }
-
-

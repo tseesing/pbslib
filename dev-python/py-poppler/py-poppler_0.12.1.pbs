@@ -1,0 +1,43 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="Python bindings to the Poppler PDF library"
+HOMEPAGE="http://launchpad.net/poppler-python"
+LICENSE="GPL"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
+GROUP="python"
+
+SRC_URI="http://launchpadlibrarian.net/32515721/pypoppler-$V.tar.gz"
+
+RDEPEND="gtk2 poppler-glib"
+BDEPEND=""
+RECOMMENDED=""
+CONFLICT=""
+
+pbs_unpack() {
+    dounpack
+}
+
+pbs_patch() {
+    # poppler 0.16 compat
+    dopatch pypoppler-0.12.1-poppler-0.16.0.patch
+    # poppler 0.18 compat
+    sed -i "/pixbuf/,/^)/d" poppler.defs
+}
+
+pbs_config() {
+    config+="--disable-static"
+    doconfig
+}
+
+pbs_build() {
+    domake
+}
+
+pbs_install() {
+    domkinstall
+}

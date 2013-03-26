@@ -8,7 +8,7 @@
 DESCRIPTION="Copies data from one file or block device to another with read-error recovery"
 HOMEPAGE="http://www.gnu.org/software/ddrescue/ddrescue.html"
 LICENSE="GPL"
-PACKAGER="StartOS Developers"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
 SRC_URI="http://mirror.bjtu.edu.cn/gnu/"$N"/"$N-$V".tar.gz"
 
@@ -18,7 +18,7 @@ RECOMMENDED=""
 CONFLICT=""
 
 pbs_unpack() {
-        dounpack
+    dounpack
 }
 
 pbs_config() {

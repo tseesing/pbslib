@@ -8,7 +8,7 @@
 DESCRIPTION="aMule, the all-platform eMule p2p client"
 HOMEPAGE="http://www.amule.org/"
 LICENSE="GPL"
-PACKAGER="StartOS Developers"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
 SRC_URI="http://sourceforge.net/projects/amule/files/aMule/"$V"/aMule-"$V".tar.xz"
 CHECKSUM="5f5707ad2073d37100409870aa5d3f93"
@@ -19,7 +19,7 @@ BDEPEND=""
 INSTALL="$N.install"
 
 pbs_unpack() {
-        dounpack
+    dounpack
 }
 
 pbs_patch() {

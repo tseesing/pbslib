@@ -8,7 +8,7 @@
 DESCRIPTION="An enhanced version of the game engine from the classic Mac game, Marathon"
 HOMEPAGE="http://source.bungie.org/"
 LICENSE="GPL/BitstreamVera"
-PACKAGER="StartOS Developers"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
 SRC_URI="http://sourceforge.net/projects/marathon/files/Aleph%20One/2012-01-28/AlephOne-"$V".tar.bz2"
 CHECKSUM="8693a36d29a5a1150b78554714bd9884"
@@ -20,7 +20,7 @@ OPTIONAL=""
 CONFLICT=""
 
 pbs_unpack() {
-        dounpack
+    dounpack
 }
 
 pbs_patch() {

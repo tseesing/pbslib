@@ -8,7 +8,7 @@
 DESCRIPTION="KDE bluetooth framework"
 HOMEPAGE="https://projects.kde.org/projects/extragear/base/bluedevil"
 LICENSE="GPL"
-PACKAGER="StartOS Developers"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
 SRC_URI="http://download.kde.org/stable/"$N"/"$V"/src/"$N-$V".tar.bz2"
 CHECKSUM="e792576d34956d27cd0c3eb3c81a5923"
@@ -23,7 +23,7 @@ REPLACE=""
 INSTALL="$N.install"
 
 pbs_unpack() {
-        dounpack
+    dounpack
 }
 
 pbs_config() {

@@ -9,7 +9,7 @@ DESCRIPTION="create a shadow directory of symbolic links to another directory tr
 HOMEPAGE="http://xorg.freedesktop.org/"
 LICENSE="GPL"
 PRIORITY=""
-PACKAGER="StartOS Developers"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
 SRC_URI="http://ftp.x.org/pub/individual/util/"$N-$V$R".tar.bz2"
 
@@ -21,7 +21,7 @@ CONFLICT=""
 NOTES=""
 
 pbs_unpack() {
-        dounpack
+    dounpack
 }
 
 pbs_config() {

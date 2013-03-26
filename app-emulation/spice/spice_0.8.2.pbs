@@ -8,7 +8,7 @@
 DESCRIPTION="SPICE server and client."
 HOMEPAGE="http://spice-space.org/"
 LICENSE="GPL"
-PACKAGER="StartOS Developers"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
 SRC_URI="http://spice-space.org/download/releases/"$N-$V".tar.bz2"
 
@@ -26,7 +26,7 @@ INSTALL="$N.install"
 
 pbs_unpack() {
     #unpard file from $YBS_SOURCE to current directory.
-        dounpack
+    dounpack
 }
 
 pbs_config() {

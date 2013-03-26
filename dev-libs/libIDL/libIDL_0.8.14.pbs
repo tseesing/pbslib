@@ -8,7 +8,7 @@
 DESCRIPTION="CORBA tree builder"
 HOMEPAGE="http://projects.gnome.org/orbit"
 LICENSE="GPLv2"
-PACKAGER="StartOS Developers"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
 SRC_URI="http://ftp.acc.umu.se/pub/gnome/platform/2.32/2.32.1/sources/libIDL-"$V".tar.bz2"
 
@@ -18,7 +18,7 @@ BDEPEND=""
 INSTALL="$N.install"
 
 pbs_unpack() {
-        dounpack
+    dounpack
 }
 
 pbs_config() {

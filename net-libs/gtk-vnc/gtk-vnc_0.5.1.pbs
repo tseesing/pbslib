@@ -15,7 +15,7 @@ SRC_URI="http://ftp.gnome.org/pub/gnome/sources/"$N"/${V%.*}/"$N-$V".tar.xz"
 CHECKSUM="1ad1847a23f8ea8fbf2396de46c51ec0900ee3698cde4e205760518cd1e01a40"
 
 RDEPEND="libgcrypt gtk3 pulseaudio"
-BDEPEND="gobject-introspection intltool pygtk pygobject3 gtk-doc vala"
+BDEPEND="gobject-introspection intltool py-gtk py-gobject3 gtk-doc vala"
 RECOMMENDED=""
 
 pbs_unpack() {

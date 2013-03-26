@@ -8,7 +8,7 @@
 DESCRIPTION="A fork of the famous open racing car simulator TORCS"
 HOMEPAGE="http://speed-dreams.sourceforge.net/"
 LICENSE="GPLv2+"
-PACKAGER="StartOS Developers"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 _RV="$V"-r4687
 
 SRC_URI=" http://downloads.sourceforge.net/sourceforge/"$N"/"$N"-src-base-"$_RV".tar.xz
@@ -27,7 +27,7 @@ CONFLICT=""
 INSTALL="$N.install"
 
 pbs_unpack() {
-        dounpack
+    dounpack
     files=" "$N"-src-unmaintained-"$_RV".tar.xz "$N"-src-wip-cars-and-tracks-"$_RV".tar.xz "$N"-src-hq-cars-and-tracks-"$_RV".tar.xz "$N"-src-more-hq-cars-and-tracks-"$_RV".tar.xz"
     
     cd "$N-$V$R"

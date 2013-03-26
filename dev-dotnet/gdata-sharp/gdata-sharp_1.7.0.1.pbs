@@ -8,7 +8,7 @@
 DESCRIPTION="Provide a simple protocol for reading and writing data on the web."
 HOMEPAGE="http://code.google.com/p/google-gdata/"
 LICENSE="apache"
-PACKAGER="StartOS Developers"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 YARCH="any"
 
 SRC_URI="http://google-gdata.googlecode.com/files/libgoogle-data-mono-"$V".tar.gz"
@@ -19,7 +19,7 @@ BDEPEND=""
 CONFLICT=""
 
 pbs_unpack() {
-        dounpack
+    dounpack
 }
 
 pbs_build() {

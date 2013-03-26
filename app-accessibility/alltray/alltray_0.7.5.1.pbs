@@ -8,7 +8,7 @@
 DESCRIPTION="Dock any application into the system tray/notification area"
 HOMEPAGE="http://alltray.sourceforge.net/"
 LICENSE="GPL"
-PACKAGER="StartOS Developers"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
 SRC_URI="https://code.launchpad.net/"$N"/trunk/"$V"/+download/"$N-$V"dev.tar.gz"
 CHECKSUM="5842253b89a5943031b5a02bbd8fd4fb"

@@ -8,7 +8,7 @@
 DESCRIPTION="tool that helps you find what software is using the most power"
 HOMEPAGE="http://www.lesswatts.org/"
 LICENSE="GPLv2"
-PACKAGER="StartOS Developers"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
 SRC_URI="http://www.kernel.org/pub/linux/status/powertop/powertop-1.98.tar.gz"
 
@@ -20,7 +20,7 @@ CONFLICT=""
 NOTES=""
 
 pbs_unpack() {
-        dounpack
+    dounpack
 }
 
 pbs_config() {

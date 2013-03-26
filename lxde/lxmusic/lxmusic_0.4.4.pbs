@@ -8,7 +8,7 @@
 DESCRIPTION="A simple GUI XMMS2 client with minimal functionality"
 HOMEPAGE="http://sourceforge.net/projects/lxde/files/"
 LICENSE="GPL"
-PACKAGER="StartOS Developers"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
 SRC_URI="http://nchc.dl.sourceforge.net/project/lxde/LXMusic%20%28music%20player%29/LXMusic%200.4.4/"$N-$V".tar.gz"
 
@@ -20,7 +20,7 @@ CONFLICT=""
 INSTALL="$N.install"
 
 pbs_unpack() {
-        dounpack
+    dounpack
 }
 
 pbs_config() {

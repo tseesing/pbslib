@@ -8,7 +8,7 @@
 DESCRIPTION="Pinpoint a simple presentation tool that hopes to avoid audience death by bullet point and instead encourage presentations containing beautiful images and small amounts of concise text in slides."
 HOMEPAGE="https://live.gnome.org/Pinpoint"
 LICENSE="GPL"
-PACKAGER="StartOS Developers"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
 SRC_URI="http://ftp.gnome.org/pub/GNOME/sources/"$N"/0.1/"$N-$V".tar.bz2"
 
@@ -18,7 +18,7 @@ RECOMMENDED=""
 CONFLICT=""
 
 pbs_unpack() {
-        dounpack
+    dounpack
 }
 
 pbs_config() {

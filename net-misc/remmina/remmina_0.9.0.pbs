@@ -7,7 +7,7 @@
 DESCRIPTION="a remote desktop client written in GTK+"
 HOMEPAGE="http://remmina.sourceforge.net/"
 LICENSE="GPL"
-PACKAGER="StartOS Developers"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
 SRC_URI="http://downloads.sourceforge.net/project/"$N"/0.9/"$N-$V".tar.gz"
 
@@ -18,7 +18,7 @@ RECOMMENDED=""
 INSTALL="$N.install"
 
 pbs_unpack() {
-        dounpack
+    dounpack
 }
 
 pbs_config() {

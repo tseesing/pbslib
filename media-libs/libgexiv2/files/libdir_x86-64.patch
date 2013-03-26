@@ -1,0 +1,23 @@
+diff -ur libgexiv2-0.6.1/gexiv2.m4 libgexiv2-0.6.1.new/gexiv2.m4
+--- libgexiv2-0.6.1/gexiv2.m4	2013-03-19 06:16:44.000000000 +0800
++++ libgexiv2-0.6.1.new/gexiv2.m4	2013-03-21 13:56:34.855302906 +0800
+@@ -1,6 +1,6 @@
+ prefix=_PREFIX_
+ exec_prefix=${prefix}
+-libdir=${exec_prefix}/lib
++libdir=${exec_prefix}/lib64
+ includedir=${prefix}/include
+ 
+ Name: GExiv2
+diff -ur libgexiv2-0.6.1/Makefile libgexiv2-0.6.1.new/Makefile
+--- libgexiv2-0.6.1/Makefile	2013-03-20 05:41:56.000000000 +0800
++++ libgexiv2-0.6.1.new/Makefile	2013-03-21 13:57:22.696160924 +0800
+@@ -21,7 +21,7 @@
+ PREFIX=/usr/local
+ BUILD_RELEASE=1
+ BUILD_DIR=gexiv2
+-LIB=lib
++LIB=lib64
+ 
+ -include configure.mk
+ 

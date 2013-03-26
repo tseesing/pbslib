@@ -16,7 +16,7 @@ RDEPEND="libXau libXdmcp"
 BDEPEND="xcb-proto libpthread-stubs libxslt"
 
 pbs_unpack() {
-        dounpack
+    dounpack
 }
 
 pbs_patch() {

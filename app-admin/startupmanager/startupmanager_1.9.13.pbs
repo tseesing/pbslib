@@ -9,7 +9,7 @@ DESCRIPTION="StartUp-Manager configures some settings for Grub legacy, Grub2,Usp
 HOMEPAGE="http://sourceforge.net/projects/startup-manager/"
 LICENSE="GPL"
 PRIORITY=""
-PACKAGER="StartOS Developers"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
 SRC_URI="http://nchc.dl.sourceforge.net/project/startup-manager/startup-manager/"$V$R"/"${N}_$V$R".tar.gz"
 
@@ -21,7 +21,7 @@ CONFLICT=""
 NOTES=""
 
 pbs_unpack() {
-        dounpack
+    dounpack
 }
 
 pbs_config() {

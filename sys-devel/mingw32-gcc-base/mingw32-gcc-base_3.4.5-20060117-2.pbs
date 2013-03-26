@@ -8,7 +8,7 @@
 DESCRIPTION="A C cross-compiler for building Windows executables on Linux(stage 1)"
 HOMEPAGE="http://mingw.sf.net"
 LICENSE="GPL/LGPL"
-PACKAGER="StartOS Developers"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
 SRC_URI="http://ncu.dl.sourceforge.net/project/mingw/MinGW/BaseSystem/GCC/Version3/Previous%20Release_%20gcc-3.4.5-20060117-2/gcc-core-"$V$R"-src.tar.gz
 http://ncu.dl.sourceforge.net/project/mingw/MinGW/BaseSystem/GCC/Version3/Previous%20Release_%20gcc-3.4.5-20060117-2/gcc-ada-"$V$R"-src.tar.gz
@@ -25,7 +25,7 @@ CONFLICT=""
 OPTIONS="nostrip"
 
 pbs_unpack() {
-        dounpack
+    dounpack
     for i in ada g%2B%2B g77 java objc; do
         tar xf "$YBS_SOURCE"/gcc-"$i"-"$V$R"-src.tar.gz -C "$N-$V$R"    
     done

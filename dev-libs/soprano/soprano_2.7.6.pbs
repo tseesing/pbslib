@@ -8,7 +8,7 @@
 DESCRIPTION="A library which provides a highly usable object-oriented C++/Qt4 framework for RDF data"
 HOMEPAGE="http://soprano.sourceforge.net/"
 LICENSE="GPL"
-PACKAGER="StartOS Developers<>"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com><>"
 
 SRC_URI="http://downloads.sourceforge.net/"$N"/"$N-$V".tar.bz2"
 CHECKSUM="8eee947956134ea4aa2d1e94ddbd551e"

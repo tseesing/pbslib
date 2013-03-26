@@ -8,7 +8,7 @@
 DESCRIPTION="A GTK2 client for MPD"
 HOMEPAGE="http://gmpclient.org/home"
 LICENSE="GPL"
-PACKAGER="StartOS Developers"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
 SRC_URI="http://download.sarine.nl/Programs/"$N"/11.8/"$N-$V".tar.gz"
 CHECKSUM="223aeb000e41697d8fdf54ccedee89d5"
@@ -22,7 +22,7 @@ CONFLICT=""
 INSTALL="$N.install"
 
 pbs_unpack() {
-        dounpack
+    dounpack
 }
 
 pbs_config() {

@@ -15,7 +15,8 @@ SRC_URI="ftp://ftp.vim.org/pub/vim/unix/"$N-$V".tar.bz2"
 CHECKSUM="5b9510a17074e2b37d8bb38ae09edbf2"
 
 RDEPEND="acl ncurses gpm"
-BDEPEND=""
+BDEPEND="python"
+RECOMMENDED=""
 CONFLICT="gvim"
 OPTIONAL="python: for using plugins \"python.vim python3complete.vim pythoncomplete.vim\""
 
@@ -41,7 +42,8 @@ pbs_config() {
              --with-x=no
              --disable-gui 
              --enable-multibyte 
-             --enable-cscope"
+             --enable-cscope
+             --enable-pythoninterp=yes"
     doconfig
 }
 
@@ -56,4 +58,3 @@ pbs_install(){
     doln /usr/bin/vim usr/bin/vi
     doln /usr/share/vim/vim73/doc usr/share/doc/vim-"$V"
 }
-

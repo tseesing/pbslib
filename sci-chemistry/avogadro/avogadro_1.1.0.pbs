@@ -13,7 +13,7 @@ PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 SRC_URI="http://downloads.sourceforge.net/$N/$N-$V.tar.bz2"
 CHECKSUM=""
 
-RDEPEND="eigen2 openbabel pyqt boost-libs glew numpy"
+RDEPEND="eigen2 openbabel py-qt boost-libs glew py-numpy"
 RECOMMENDED=""
 BDEPEND="cmake boost mesa"
 OPTIONAL=""
@@ -41,4 +41,3 @@ pbs_build() {
 pbs_install() {
     domkinstall
 }
-

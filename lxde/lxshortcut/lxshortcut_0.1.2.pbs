@@ -8,7 +8,7 @@
 DESCRIPTION="LXDE tool to edit desktop entry files"
 HOMEPAGE="http://sourceforge.net/projects/lxde/files/"
 LICENSE="GPL"
-PACKAGER="StartOS Developers"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
 SRC_URI="http://sourceforge.net/projects/lxde/files/LXShortcut%20%28edit%20app%20shortcut%29/LXShortcut%20"$V"/"$N-$V".tar.gz"
 
@@ -18,7 +18,7 @@ RECOMMENDED=""
 CONFLICT=""
 
 pbs_unpack() {
-        dounpack
+    dounpack
 }
 
 pbs_config() {

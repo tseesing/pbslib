@@ -18,7 +18,7 @@ RDEPEND="libX11 "
 BDEPEND="xextproto"
 
 pbs_unpack() {
-        dounpack
+    dounpack
 }
 
 pbs_config() {

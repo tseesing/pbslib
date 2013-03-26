@@ -17,7 +17,7 @@ RDEPEND="glibc xorg-server(>=1.13.0)"
 BDEPEND="libpciaccess"
 
 pbs_unpack() {
-        dounpack
+    dounpack
 }
 
 pbs_config() {

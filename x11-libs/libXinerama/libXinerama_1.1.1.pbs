@@ -8,15 +8,17 @@
 DESCRIPTION="X.Org Xinerama library"
 HOMEPAGE="http://www.x.org/wiki/"
 GROUP="x11-lib"
-PACKAGER="StartOS Developers" 
+LICENSE="custom"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>" 
  
-SRC_URI="http://www.x.org/releases/X11R7.6/src/lib/"$N-$V".tar.bz2"
+SRC_URI="http://xorg.freedesktop.org/archive/individual/lib/"$N-$V".tar.bz2"
+CHECKSUM="ecd4839ad01f6f637c6fb5327207f89b"
 
 RDEPEND="glibc libX11 libXau libxcb libXdmcp libXext"
 BDEPEND=""
 
 pbs_unpack() {
-        dounpack
+    dounpack
 }
 
 pbs_config() {
@@ -29,5 +31,6 @@ pbs_build() {
 
 pbs_install() {
     domkinstall
+    dodoc COPYING
 }
 

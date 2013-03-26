@@ -8,7 +8,7 @@
 DESCRIPTION="GTK+ Bluetooth Manager, designed to be simple and intuitive for everyday bluetooth tasks."
 HOMEPAGE="http://blueman-project.org/"
 LICENSE="GPL"
-PACKAGER="StartOS Developers"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
 SRC_URI="http://download.tuxfamily.org/blueman/blueman-1.23.tar.gz"
 CHECKSUM="f0bee59589f4c23e35bf08c2ef8acaef"
@@ -21,7 +21,7 @@ CONFLICT=""
 INSTALL="$N.install"
 
 pbs_unpack() {
-        dounpack
+    dounpack
 }
 
 pbs_patch() {

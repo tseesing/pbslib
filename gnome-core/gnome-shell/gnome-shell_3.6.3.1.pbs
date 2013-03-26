@@ -14,7 +14,7 @@ PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>
 SRC_URI="http://ftp.gnome.org/pub/GNOME/sources/$N/${V::3}/$N-$V.tar.xz"
 CHECKSUM=""
 
-RDEPEND="evolution-data-server caribou folks gjs gnome-bluetooth gnome-desktop gnome-menus libcroco pulseaudio mutter telepathy-logger"
+RDEPEND="evolution-data-server gcr p11-kit mutter gjs gnome-menus libtool telepathy-logger networkmanager gnome-desktop gnome-bluetooth libcroco libSM"
 RECOMMENDED=""
 BDEPEND="intltool gnome-doc-utils docbook-xsl docbook-xml"
 OPTIONAL=""

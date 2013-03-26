@@ -8,7 +8,7 @@
 DESCRIPTION="A tool for reverse engineering 3rd party, closed, binary Android apps."
 HOMEPAGE="http://code.google.com/p/android-apktool/"
 LICENSE="Apache License 2.0"
-PACKAGER="StartOS Developers"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
 YARCH="any"
 
@@ -22,7 +22,7 @@ OPTIONAL=""
 CONFLICT=""
 
 pbs_unpack() {
-        dounpack
+    dounpack
 }
 
 pbs_install() {

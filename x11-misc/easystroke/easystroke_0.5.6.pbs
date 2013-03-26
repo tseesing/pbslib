@@ -8,7 +8,7 @@
 DESCRIPTION="Use mouse gestures to initiate commands and hotkeys."
 HOMEPAGE="http://easystroke.sourceforge.net"
 LICENSE="ISC"
-PACKAGER="StartOS Developers"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
 SRC_URI="http://downloads.sourceforge.net/"$N"/"$N-$V".tar.gz"
 CHECKSUM="a9f06576a47deaf6f612bb993685af0f"
@@ -23,7 +23,7 @@ REPLACE=""
 INSTALL="$N.install"
 
 pbs_unpack() {
-        dounpack
+    dounpack
 }
 
 pbs_build() {

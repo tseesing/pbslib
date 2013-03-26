@@ -8,7 +8,7 @@
 DESCRIPTION="A graph based image processing framework"
 HOMEPAGE="http://www.gegl.org/"
 LICENSE="GPLv2+"
-PACKAGER="StartOS Developers"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
 SRC_URI="ftp://ftp.gimp.org/pub/"$N"/0.1/"$N-$V".tar.bz2"
 
@@ -16,7 +16,7 @@ RDEPEND="babl glib2 gdk-pixbuf2 gtk2 pango cairo libjpeg-turbo"
 BDEPEND=""
 
 pbs_unpack() {
-        dounpack
+    dounpack
 }
 
 pbs_config() {

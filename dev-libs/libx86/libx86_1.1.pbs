@@ -8,7 +8,7 @@
 DESCRIPTION="A hardware-independent library for executing real-mode x86 code"
 HOMEPAGE="http://www.codon.org.uk/~mjg59/libx86"
 LICENSE="custom"
-PACKAGER="StartOS Developers"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
 SRC_URI="http://www.codon.org.uk/~mjg59/"$N"/downloads/"$N-$V".tar.gz"
 CHECKSUM="41bee1f8e22b82d82b5f7d7ba51abc2a"
@@ -21,7 +21,7 @@ CONFLICT=""
 REPLACE=""
 
 pbs_unpack() {
-        dounpack
+    dounpack
 }
 
 pbs_patch() {

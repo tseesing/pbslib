@@ -9,7 +9,7 @@ DESCRIPTION="the backend of the LXDE default file manager PCManFM."
 HOMEPAGE="http://pcmanfm.sourceforge.net/"
 GROUP="x11-lib"
 LICENSE="GPL"
-PACKAGER="StartOS Developers"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
 SRC_URI="http://sourceforge.net/projects/pcmanfm/files/PCManFM%20%2B%20Libfm%20%28tarball%20release%29/libfm%20%28required%20by%20PCManFM%29/"$N-$V".tar.gz"
 
@@ -19,7 +19,7 @@ BDEPEND=""
 CONFLICT=""
 
 pbs_unpack() {
-        dounpack
+    dounpack
 }
 
 pbs_config() {

@@ -8,7 +8,7 @@
 DESCRIPTION="A tool to interact with the installation_proxy of an Apple's iDevice"
 HOMEPAGE="http://www.libimobiledevice.org/"
 LICENSE="GPL"
-PACKAGER="StartOS Developers"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
 SRC_URI="http://www.libimobiledevice.org/downloads/"$N-$V".tar.bz2"
 CHECKSUM="749b2062e86a00c0903ca8d5f0acabc6"
@@ -20,7 +20,7 @@ OPTIONAL=""
 CONFLICT=""
 
 pbs_unpack() {
-        dounpack
+    dounpack
 }
 
 pbs_config() {

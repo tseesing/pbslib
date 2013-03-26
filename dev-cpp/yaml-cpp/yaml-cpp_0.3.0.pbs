@@ -8,7 +8,7 @@
 DESCRIPTION="YAML parser and emitter in C++, written around the YAML 1.2 spe"
 HOMEPAGE="http://code.google.com/p/yaml-cpp"
 LICENSE="MIT"
-PACKAGER="StartOS Developers"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.co>"
 
 SRC_URI="http://yaml-cpp.googlecode.com/files/"$N-$V".tar.gz"
 CHECKSUM="9aa519205a543f9372bf4179071c8ac6"
@@ -21,7 +21,7 @@ CONFLICT=""
 REPLACE=""
 
 pbs_unpack() {
-        dounpack
+    dounpack
 }
 
 pbs_config() {
@@ -35,5 +35,3 @@ pbs_build() {
 pbs_install() {
     domkinstall
 }
-
-

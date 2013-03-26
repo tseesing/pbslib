@@ -8,7 +8,7 @@
 DESCRIPTION="Modifies ELFs to avoid runtime symbol resolutions resulting in faster load times"
 HOMEPAGE="http://people.redhat.com/jakub/prelink"
 LICENSE="GPL"
-PACKAGER="StartOS Developers"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
 SRC_URI="http://people.redhat.com/jakub/"$N"/"$N-$V".tar.bz2"
 CHECKSUM="f5aaf347432d677c293e5e3399ba4fdf"
@@ -18,7 +18,7 @@ BDEPEND=""
 RECOMMENDED=""
 
 pbs_unpack() {
-        dounpack
+    dounpack
 }
 
 pbs_config() {

@@ -8,7 +8,7 @@
 DESCRIPTION="C++ string template engine based on the Django template system"
 HOMEPAGE="http://www.gitorious.org/grantlee/pages/Home"
 LICENSE="GPL"
-PACKAGER="StartOS Developers"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
 SRC_URI="http://downloads.grantlee.org/"$N-$V".tar.gz"
 CHECKSUM="0622ed30630a44b5fac0bfa7e176d3fe"
@@ -20,7 +20,7 @@ OPTIONAL=""
 CONFLICT=""
 
 pbs_unpack() {
-        dounpack
+    dounpack
 }
 
 pbs_config() {

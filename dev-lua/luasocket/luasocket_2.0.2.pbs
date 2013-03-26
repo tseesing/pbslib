@@ -8,7 +8,7 @@
 DESCRIPTION="Networking support library for the Lua language."
 HOMEPAGE="http://www.tecgraf.puc-rio.br/~diego/professional/luasocket/"
 LICENSE="MIT"
-PACKAGER="StartOS Developers"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
 SRC_URI="http://luaforge.net/frs/download.php/2664/"$N-$V".tar.gz"
 
@@ -18,7 +18,7 @@ RECOMMENDED=""
 CONFLICT=""
 
 pbs_unpack() {
-        dounpack
+    dounpack
 }
 
 pbs_patch() {

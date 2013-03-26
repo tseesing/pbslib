@@ -8,7 +8,7 @@
 DESCRIPTION="The libart_lgpl package contains the libart libraries. These are useful for high-performance 2D graphics."
 HOMEPAGE="http://www.levien.com/libart"
 LICENSE="GPL-2"
-PACKAGER="StartOS Developers"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 SRC_URI="ftp://ftp.gnome.org/pub/gnome/sources/$N/2.3/$N-$V.tar.bz2"
 BDEPEND=""
 RECOMMENDED=""
@@ -16,7 +16,7 @@ RECOMMENDED=""
 NOTES="http://wiki.linuxfromscratch.org/blfs/wiki/libart_lgpl"
 
 pbs_unpack() {
-        dounpack
+    dounpack
 }
 
 pbs_config() {

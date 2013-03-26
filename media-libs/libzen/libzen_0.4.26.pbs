@@ -8,7 +8,7 @@
 DESCRIPTION="Shared library for libmediainfo and mediainfo"
 HOMEPAGE="http://sourceforge.net/projects/zenlib"
 LICENSE="BSD"
-PACKAGER="StartOS Developers"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
 SRC_URI="http://downloads.sourceforge.net/zenlib/"${N}_$V".tar.bz2"
 CHECKSUM="6509bd3787509f4e62e48a99884db636"
@@ -20,7 +20,7 @@ OPTIONAL=""
 CONFLICT=""
 
 pbs_unpack() {
-        dounpack
+    dounpack
 }
 
 pbs_config() {

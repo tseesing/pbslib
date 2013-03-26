@@ -12,18 +12,17 @@ PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
 SRC_URI="git://github.com/emesene/emesene.git"
 
-RDEPEND="python pygtk papyon dbus-python imaging notify-python openssl dbus-python xdg-utils pycrypto"
-BDEPEND="distribute"
-RECOMMENDED="gtkspell gnome-python-extras gst-python pywebkitgtk xmpppy"
+RDEPEND="python py-gtk py-papyon py-dbus py-imaging py-notify openssl py-dbus xdg-utils py-crypto"
+BDEPEND="py-distribute"
+RECOMMENDED="gtkspell py-gnome-python-extras py-webkitgtk py-xmpppy"
 CONFLICT=""
-OPTIONAL="gnome-python-extras: spell-check plugin
+OPTIONAL="py-gnome-python-extras: spell-check plugin
           gtkspell: spell-check plugin
           farstream: webcam support
-          gst-python: webcam support
           gst-plugins-good: webcam support
-          pywebkitgtk: for alternative conversation window
-          xmpppy: for gtalk and facebook chat support
-          pyqt4: alternative qt4 interface (emesene -e main:qt4_main)"
+          py-webkitgtk: for alternative conversation window
+          py-xmpppy: for gtalk and facebook chat support
+          py-qt: alternative qt4 interface (emesene -e main:qt4_main)"
 
 pbs_unpack() {
     dounpack
@@ -46,4 +45,3 @@ pbs_install() {
     docp "$FILESDIR"/emesene "$PKGDIR"/usr/bin/
     rm -rf "$PKGDIR"/usr/lib"$LIBDIRSUFFIX"
 }
-

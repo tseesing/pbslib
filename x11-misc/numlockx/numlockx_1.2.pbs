@@ -8,7 +8,7 @@
 DESCRIPTION="Turns on numlock in X"
 HOMEPAGE="http://home.kde.org/~seli/numlockx/"
 LICENSE="GPL"
-PACKAGER="StartOS Developers"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
 SRC_URI="http://home.kde.org/~seli/"$N"/"$N-$V".tar.gz"
 
@@ -18,7 +18,7 @@ RECOMMENDED=""
 CONFLICT=""
 
 pbs_unpack() {
-        dounpack
+    dounpack
 }
 
 pbs_config() {

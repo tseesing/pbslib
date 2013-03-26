@@ -1,0 +1,40 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="Fcitx Wrapper for unikey"
+HOMEPAGE="http://code.google.com/p/fcitx"
+LICENSE="GPL"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
+GROUP="fcitx"
+
+SRC_URI="http://fcitx.googlecode.com/files/$N-$V.tar.xz"
+CHECKSUM="f1ffd6c8439e4d277eace994052d91da"
+
+RDEPEND="fcitx(>=4.2.7) fcitx-qt libXext"
+RECOMMENDED=""
+BDEPEND="cmake qt"
+OPTIONAL=""
+CONFLICT=""
+REPLACE=""
+
+INSTALL="$N.install"
+
+pbs_unpack() {
+    dounpack
+}
+
+pbs_config() {
+    doconfig -DCMAKE_BUILD_TYPE=Release
+}
+
+pbs_build() {
+    domake
+}
+
+pbs_install() {
+    domkinstall
+}

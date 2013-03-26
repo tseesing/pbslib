@@ -9,6 +9,7 @@ DESCRIPTION="A blending of the wxWindows C++ class library with Python"
 HOMEPAGE="http://www.wxpython.org/"
 LICENSE="custom:wxWindows"
 PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>
+GROUP="python"
           chenqixing@ivali.com"
 
 SRC_URI="http://downloads.sourceforge.net/wxpython/wxPython-src-"$V".tar.bz2"
@@ -55,4 +56,3 @@ pbs_install() {
     domkinstall WXPORT=gtk2 UNICODE=1
     dodoc ../docs/licence.txt
 }
-

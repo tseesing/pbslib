@@ -8,7 +8,7 @@
 DESCRIPTION="Thunderbird Mail Client"
 HOMEPAGE="http://www.mozilla.com/en-US/thunderbird/"
 LICENSE="GPL,MPL"
-PACKAGER="StartOS Developers"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
 SRC_URI="ftp://ftp.mozilla.org/pub/mozilla.org/"$N"/releases/"$V"/source/"$N-$V".source.tar.bz2"
 CHECKSUM="721088faf4bedfd8d7beb6f8295856d1"
@@ -20,7 +20,7 @@ RECOMMENDED="thunderbird-i18n-zh-CN(>=13.0.1)"
 INSTALL="$N.install"
 
 pbs_unpack() {
-        dounpack
+    dounpack
 }
 
 pbs_patch() {

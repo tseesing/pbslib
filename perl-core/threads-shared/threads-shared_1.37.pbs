@@ -8,7 +8,7 @@
 DESCRIPTION="Extension for sharing data structures between threads"
 HOMEPAGE="http://search.cpan.org/dist/threads-shared/"
 LICENSE="GPL"
-PACKAGER="StartOS Developers"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
 SRC_URI="http://mirrors.163.com/cpan/authors/id/J/JD/JDHEDDEN/"$N-$V$R".tar.gz"
 
@@ -20,7 +20,7 @@ CONFLICT=""
 NOTES=""
 
 pbs_unpack() {
-        dounpack
+    dounpack
 }
 
 pbs_config() {

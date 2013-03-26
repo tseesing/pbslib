@@ -1,0 +1,39 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="Perl/CPAN File::MimeInfo module - Determine file type, includes mimeopen and mimetype"
+HOMEPAGE="http://search.cpan.org/dist/File-MimeInfo"
+LICENSE="GPL,PerlArtistic"
+GROUP="perl"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>
+          chenqixing@ivali.com"
+YARCH="any"
+
+SRC_URI="http://search.cpan.org/CPAN/authors/id/P/PA/PARDUS/File-MimeInfo/File-MimeInfo-$V.tar.gz"
+CHECKSUM="c024adace5d3a4ed27fd8a46c7f2dedb"
+
+RDEPEND="perl-file-basedir perl-file-desktopentry shared-mime-info perl"
+BDEPEND=""
+RECOMMENDED=""
+CONFLICT=""
+
+pbs_unpack() {
+    dounpack
+}
+
+pbs_config() {
+    export PERL_MM_USE_DEFAULT=1
+    doconfig INSTALLDIRS=vendor
+}
+
+pbs_build() {
+    domake
+}
+
+pbs_install() {
+    domkinstall
+}

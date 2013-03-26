@@ -15,7 +15,7 @@ YARCH="any"
 SRC_URI="http://ftp.gnome.org/pub/gnome/sources/$N/${V::3}/$N-$V.tar.xz"
 CHECKSUM=""
 
-RDEPEND="pygobject3 gtk3 pyatspi dbus-python pyxdg speech-dispatcher liblouis xmodmap at-spi2-atk brltty"
+RDEPEND="py-gobject3 gtk3 py-atspi py-dbus py-xdg speech-dispatcher liblouis xmodmap at-spi2-atk brltty"
 BDEPEND="itstool intltool gnome-doc-utils"
 RECOMMENDED=""
 

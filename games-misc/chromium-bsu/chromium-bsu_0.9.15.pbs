@@ -8,7 +8,7 @@
 DESCRIPTION="A fast paced, arcade-style, top-scrolling shooter. It uses OpenGL for graphics, and OpenAL for sound effects."
 HOMEPAGE="http://chromium-bsu.sourceforge.net/"
 LICENSE="Artistic/MIT"
-PACKAGER="StartOS Developers"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
 SRC_URI="http://downloads.sourceforge.net/project/"$N"/Chromium%20B.S.U.%20source%20code/"$V"/"$N-$V".tar.gz"
 
@@ -20,7 +20,7 @@ CONFLICT=""
 INSTALL="$N.install"
 
 pbs_unpack() {
-        dounpack
+    dounpack
 }
 
 pbs_config() {

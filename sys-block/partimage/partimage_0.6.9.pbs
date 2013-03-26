@@ -8,7 +8,7 @@
 DESCRIPTION="Partimage is opensource disk backup software."
 HOMEPAGE="www.partimage.org"
 LICENSE="GPLv2"
-PACKAGER="StartOS Developers"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
 SRC_URI="http://downloads.sourceforge.net/"$N"/"$N-$V".tar.bz2"
 CHECKSUM="1bc046fd915c5debbafc85729464e513"
@@ -21,7 +21,7 @@ CONFLICT=""
 INSTALL="$N.install"
 
 pbs_unpack() {
-        dounpack
+    dounpack
 }
 
 pbs_patch() {

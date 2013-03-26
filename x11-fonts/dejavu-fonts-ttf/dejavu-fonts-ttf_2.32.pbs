@@ -9,7 +9,7 @@ DESCRIPTION="DejaVu True Type Font (minimum)."
 HOMEPAGE="http://dejavu.sourceforge.net/"
 GROUP="fonts"
 LICENSE="GPL-2"
-PACKAGER="StartOS Developers"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
 SRC_URI="http://downloads.sourceforge.net/project/dejavu/dejavu/2.32/"$N-$V$R".tar.bz2"
 
@@ -19,7 +19,7 @@ BDEPEND=" "
 INSTALL="$N.install"
 
 pbs_unpack() {
-        dounpack
+    dounpack
 }
 
 pbs_install() {

@@ -1,0 +1,38 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="Interface to OpenSSL PRNG methods"
+HOMEPAGE="http://search.cpan.org/dist/$N"
+LICENSE="GPL,PerlArtistic"
+GROUP="perl"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
+
+SRC_URI="http://www.cpan.org/authors/id/I/IR/IROBERTS/Crypt-OpenSSL-Random-$V.tar.gz"
+CHECKSUM="c56ac5dbdd46122eb9b8da59613b7b0a"
+
+RDEPEND="perl openssl"
+BDEPEND=""
+RECOMMENDED=""
+CONFLICT=""
+
+pbs_unpack() {
+    dounpack
+}
+
+pbs_config() {
+    export PERL_MM_USE_DEFAULT=1
+    doconfig INSTALLDIRS=vendor
+}
+
+pbs_build() {
+    domake
+}
+
+pbs_install() {
+    domkinstall
+    perl_cleanup
+}

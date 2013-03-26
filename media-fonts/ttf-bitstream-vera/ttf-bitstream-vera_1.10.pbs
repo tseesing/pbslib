@@ -8,7 +8,7 @@
 DESCRIPTION="Bitstream Vera font family"
 HOMEPAGE="http://www.gnome.org/fonts/"
 LICENSE="Copyright (c) 2003 by Bitstream, Inc."
-PACKAGER="StartOS Developers"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
 SRC_URI="http://ftp.osuosl.org/pub/gsb/gsb-2.30_slackware-13.1/source/t/"$N"/"$N-$V".tar.bz2"
 
@@ -19,7 +19,7 @@ RECOMMENDED=""
 INSTALL="$N.install"
 
 pbs_unpack() {
-        dounpack
+    dounpack
 }
 
 pbs_install() {

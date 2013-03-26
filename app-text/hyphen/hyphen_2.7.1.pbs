@@ -8,7 +8,7 @@
 DESCRIPTION="hyphenation library to use converted TeX hyphenation patterns"
 HOMEPAGE="http://hunspell.sourceforge.net/"
 LICENSE="GPL"
-PACKAGER="StartOS Developers"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
 SRC_URI="http://nchc.dl.sourceforge.net/project/hunspell/Hyphen/2.7/hyphen-2.7.1.tar.gz"
 
@@ -20,7 +20,7 @@ CONFLICT=""
 NOTES=""
 
 pbs_unpack() {
-        dounpack
+    dounpack
 }
 
 pbs_config() {

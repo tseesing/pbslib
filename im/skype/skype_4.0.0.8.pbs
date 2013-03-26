@@ -8,7 +8,7 @@
 DESCRIPTION="A net IM with voice, not free-ware"
 HOMEPAGE="http://www.skype.com/"
 LICENSE="custom"
-PACKAGER="StartOS Developers"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
 SRC_URI="http://download.skype.com/linux/"$N-$V".tar.bz2"
 

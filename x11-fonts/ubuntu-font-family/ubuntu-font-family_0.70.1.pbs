@@ -10,7 +10,7 @@ HOMEPAGE="http://font.ubuntu.com/"
 GROUP="fonts"
 LICENSE="GPL"
 PRIORITY=""
-PACKAGER="StartOS Developers"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
 SRC_URI="http://font.ubuntu.com/download/"$N"-sources_"$V$R".orig.tar.gz"
 
@@ -22,7 +22,7 @@ CONFLICT=""
 INSTALL="$N.install"
 
 pbs_unpack() {
-        dounpack
+    dounpack
 }
 
 pbs_install() {

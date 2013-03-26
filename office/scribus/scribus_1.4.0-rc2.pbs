@@ -9,7 +9,7 @@ DESCRIPTION="Desktop publishing (DTP) and layout program"
 HOMEPAGE="http://www.scribus.net/"
 LICENSE="GPL"
 PRIORITY=""
-PACKAGER="StartOS Developers"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
 SRC_URI="http://downloads.sourceforge.net/project/"$N"/"$N"-devel/"$V".rc2/"$N-$V".rc2.tar.bz2"
 
@@ -23,7 +23,7 @@ INSTALL="$N.install"
 NOTES=""
 
 pbs_unpack() {
-        dounpack
+    dounpack
 }
 
 pbs_config() {

@@ -8,15 +8,18 @@
 DESCRIPTION="X.Org xtrans library"
 HOMEPAGE="http://www.x.org/wiki/"
 GROUP="x11-lib"
- 
-SRC_URI="http://www.x.org/releases/X11R7.6/src/lib/"$N-$V$R".tar.bz2"
+LICENSE="custom"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
+
+SRC_URI="http://xorg.freedesktop.org/archive/individual/lib/"$N-$V".tar.bz2"
+CHECKSUM="c66f9ffd2da4fb012220c6c40ebc7609"
 
 RDEPEND="glib2 gdk-pixbuf2"
 BDEPEND=""
 
 
 pbs_unpack() {
-        dounpack
+    dounpack
 }
 
 pbs_config() {
@@ -29,5 +32,6 @@ pbs_build() {
 
 pbs_install() {
     domkinstall
+    dodoc COPYING
 }
 

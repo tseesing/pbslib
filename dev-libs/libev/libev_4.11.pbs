@@ -8,7 +8,7 @@
 DESCRIPTION="A full-featured and high-performance event loop"
 HOMEPAGE="http://software.schmorp.de/pkg/libev.html"
 LICENSE="BSD"
-PACKAGER="StartOS Developers"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
 SRC_URI="http://dist.schmorp.de/"$N"/"$N-$V".tar.gz"
 CHECKSUM="e7752a518742c0f8086a8005aa7efcc4dcf02ed9"
@@ -20,7 +20,7 @@ OPTIONAL=""
 CONFLICT=""
 
 pbs_unpack() {
-        dounpack
+    dounpack
 }
 
 pbs_config() {

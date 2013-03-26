@@ -7,7 +7,7 @@
 
 DESCRIPTION="Extension for sharing data structures between threads"
 HOMEPAGE="http://search.cpan.org/dist/threads-shared/"
-PACKAGER="StartOS Developers"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 LICENSE="GPL PerlArtistic"
 YARCH="any"
 
@@ -19,7 +19,7 @@ RECOMMENDED=""
 CONFLICT=""
 
 pbs_unpack() {
-        dounpack
+    dounpack
 }
 
 pbs_config() {

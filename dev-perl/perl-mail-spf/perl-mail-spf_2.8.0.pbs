@@ -1,0 +1,45 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="Perl module that provides SPF support"
+HOMEPAGE="http://search.cpan.org/dist/Mail-SPF"
+LICENSE="custom"
+GROUP="perl"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
+YARCH="any"
+
+SRC_URI="http://search.cpan.org/CPAN/authors/id/J/JM/JMEHNLE/mail-spf/Mail-SPF-v$V.tar.gz"
+CHECKSUM="4f5bbd59058da680bfd9ff18e31489b7"
+
+RDEPEND="perl-error perl-net-dns perl-netaddr-ip perl-uri"
+BDEPEND="perl-net-dns-resolver-programmable"
+RECOMMENDED=""
+CONFLICT=""
+
+pbs_unpack() {
+    dounpack
+}
+
+pbs_config() {
+    export PERL_MM_USE_DEFAULT=1 PERL5LIB="" \
+           PERL_AUTOINSTALL=--skipdeps \
+           PERL_MM_OPT="INSTALLDIRS=vendor" \
+           PERL_MB_OPT="--installdirs vendor" \
+           MODULEBUILDRC=/dev/null
+    doconfig
+}
+
+pbs_build() {
+    domake
+}
+
+pbs_install() {
+    domkinstall
+    perl_cleanup
+    dodoc LICENSE
+GROUP="perl"
+}

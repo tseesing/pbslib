@@ -8,7 +8,7 @@
 DESCRIPTION="non-free ATI/AMD RadeonHD display driver"
 HOMEPAGE="http://support.amd.com/cn/gpudownload/linux/Pages/radeon_linux.aspx"
 LICENSE="custom"
-PACKAGER="StartOS Developers"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
 SRC_URI="http://www2.ati.com/drivers/linux/amd-driver-installer-12.8-x86.x86_64.zip"
 

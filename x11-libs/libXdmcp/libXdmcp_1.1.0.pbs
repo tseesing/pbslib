@@ -8,16 +8,17 @@
 DESCRIPTION="X.Org Xdmcp library"
 HOMEPAGE="http://www.x.org/wiki/"
 GROUP="x11-lib"
-LICENSE="GPL"
-PACKAGER="StartOS Developers"
+LICENSE="custom"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
-SRC_URI="http://www.x.org/releases/X11R7.6/src/lib/"$N-$V".tar.bz2"
+SRC_URI="http://xorg.freedesktop.org/archive/individual/lib/"$N-$V".tar.bz2"
+CHECKSUM="762b6bbaff7b7d0831ddb4f072f939a5"
 
 RDEPEND="glibc"
 BDEPEND=""
 
 pbs_unpack() {
-        dounpack
+    dounpack
 }
 
 pbs_config() {
@@ -30,5 +31,6 @@ pbs_build() {
 
 pbs_install() {
     domkinstall
+    dodoc COPYING
 }
 

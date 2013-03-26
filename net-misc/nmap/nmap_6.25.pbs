@@ -16,8 +16,8 @@ CHECKSUM="769943a1a5c10f67bf9738e26da42b3312db752f"
 
 RDEPEND="pcre openssl pcre lua libpcap"
 RECOMMENDED=""
-BDEPEND="pygtk"
-OPTIONAL="pygtk: zenmap" 
+BDEPEND="py-gtk"
+OPTIONAL="py-gtk: zenmap" 
 CONFLICT=""
 REPLACE=""
 

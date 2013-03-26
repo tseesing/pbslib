@@ -8,7 +8,7 @@
 DESCRIPTION="Qt bindings for GStreamer"
 HOMEPAGE="http://gstreamer.freedesktop.org/modules/qt-gstreamer.html"
 LICENSE="LGPL"
-PACKAGER="StartOS Developers"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
 SRC_URI="http://gstreamer.freedesktop.org/src/"$N"/"$N-$V".tar.bz2"
 
@@ -20,7 +20,7 @@ CONFLICT=""
 REPLACE=""
 
 pbs_unpack() {
-        dounpack
+    dounpack
 }
 
 pbs_config() {

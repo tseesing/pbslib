@@ -9,7 +9,7 @@ DESCRIPTION="An IMAP/POP server"
 COMMENTS="IMAP (Internet Message Access Protocol) is a method of accessing electronic messages kept on a (possibly shared) mail server."
 HOMEPAGE="http://www.washington.edu/imap/"
 LICENSE="APACHE"
-PACKAGER="StartOS Developers"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
 SRC_URI="ftp://ftp.cac.washington.edu/imap/"$N-$V"f.tar.gz"
 CHECKSUM="2126fd125ea26b73b20f01fcd5940369"
@@ -21,7 +21,7 @@ OPTIONAL=""
 CONFLICT=""
 
 pbs_unpack() {
-        dounpack
+    dounpack
 }
 
 pbs_build() {

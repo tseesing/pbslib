@@ -8,7 +8,7 @@
 DESCRIPTION="An application finder for Xfce"
 HOMEPAGE="http://www.xfce.org/projects/xfce4-appfinder"
 LICENSE="GPL"
-PACKAGER="StartOS Developers"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
 SRC_URI="http://archive.xfce.org/src/xfce/"$N"/4.10/"$N-$V".tar.bz2"
 CHECKSUM="042aae7e366428a6a92b6353b3f2727d64823076a7752b8e0a15f1f8f3645439"
@@ -22,7 +22,7 @@ CONFLICT=""
 INSTALL="$N.install"
 
 pbs_unpack() {
-        dounpack
+    dounpack
 }
 
 pbs_config() {

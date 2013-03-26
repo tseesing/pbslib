@@ -12,7 +12,7 @@ PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
  
 SRC_URI="http://ftp.gnu.org/gnu/"$N"/"$N-$V".tar.gz"
 
-RDEPEND="libcddb ncurses"
+RDEPEND="libcddb ncurses gcc-libs"
 BDEPEND=""
 RECOMMENDED=""
 
@@ -40,4 +40,3 @@ pbs_install() {
     sed -i "/LIBCDIO_SOURCE_PATH/s|.*|/* #undef LIBCDIO_SOURCE_PATH */|" \
         "$PKGDIR"/usr/include/cdio/cdio_config.h
 }
-

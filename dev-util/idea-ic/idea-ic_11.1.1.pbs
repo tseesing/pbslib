@@ -8,7 +8,7 @@
 DESCRIPTION="The open source version of IntelliJ IDEA, a premier IDE for Java, Groovy and other programming languages."
 HOMEPAGE="http://www.jetbrains.org/"
 LICENSE="APACHE"
-PACKAGER="StartOS Developers"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 YARCH="any"
 
 SRC_URI="http://download-ln.jetbrains.com/idea/ideaIC-"$V".tar.gz"
@@ -23,7 +23,7 @@ CONFLICT=""
 INSTALL="$N.install"
 
 pbs_unpack() {
-        dounpack
+    dounpack
 }
 
 pbs_install() {

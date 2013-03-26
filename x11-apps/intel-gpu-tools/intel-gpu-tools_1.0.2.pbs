@@ -15,7 +15,7 @@ RDEPEND=""
 BDEPEND=""
 
 pbs_unpack() {
-        dounpack
+    dounpack
 }
 
 pbs_config() {

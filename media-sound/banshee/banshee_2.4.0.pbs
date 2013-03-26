@@ -8,7 +8,7 @@
 DESCRIPTION="Music management and playback for GNOME"
 HOMEPAGE="http://banshee.fm/"
 LICENSE="MIT"
-PACKAGER="StartOS Developers"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
 SRC_URI="http://ftp.gnome.org/pub/GNOME/sources/"$N"/2.4/"$N-$V".tar.xz"
 CHECKSUM="a719717d02ed26cccf4e6432edd48a31"
@@ -25,7 +25,7 @@ legacy iPod support: ipod-sharp
 libgpod-based iPod support: libgpod
 "
 pbs_unpack() {
-        dounpack
+    dounpack
 }
 
 pbs_config() {

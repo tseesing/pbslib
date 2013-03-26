@@ -9,7 +9,7 @@ DESCRIPTION="A game similar to Super Mario Bros."
 COMMENTS="SuperTux is a classic 2D jump'n run sidescroller game in a style similar to the original Super Mario games covered under the GPL."
 HOMEPAGE="http://super-tux.sourceforge.net"
 LICENSE="GPL"
-PACKAGER="StartOS Developers"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
 SRC_URI="http://download.berlios.de/supertux/"$N-$V".tar.bz2"
 CHECKSUM="f3f803e629ee51a9de0b366a036e393d"
@@ -25,7 +25,7 @@ INSTALL="$N.install"
 DESKTOPFILE="supertux2.desktop"
 
 pbs_unpack() {
-        dounpack
+    dounpack
 }
 
 pbs_patch() {

@@ -8,7 +8,7 @@
 DESCRIPTION="The PHP language runtime engine: CLI, CGI, FPM/FastCGI, Apache2 and embed SAPIs."
 HOMEPAGE="http://www.php.net"
 LICENSE="PHP"
-PACKAGER="StartOS Developers"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
 SRC_URI="http://www.php.net/distributions/"$N-$V".tar.bz2"
 CHECKSUM="816259e5ca7d0a7e943e56a3bb32b17f"
@@ -20,7 +20,7 @@ OPTIONAL=""
 CONFLICT=""
 
 pbs_unpack() {
-        dounpack
+    dounpack
 }
 
 pbs_config() {

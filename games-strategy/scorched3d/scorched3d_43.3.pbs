@@ -8,7 +8,7 @@
 DESCRIPTION="Multi-player tank battle in 3D (OpenGL)"
 HOMEPAGE="http://www.scorched3d.co.uk/"
 LICENSE="GPL"
-PACKAGER="StartOS Developers"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
 SRC_URI="http://downloads.sourceforge.net/scorched3d/Scorched3D-"$V"d-src.tar.gz"
 CHECKSUM="9c3043282a9e7451468ff325bef3b04c"
@@ -22,7 +22,7 @@ CONFLICT=""
 INSTALL="$N.install"
 
 pbs_unpack() {
-        dounpack
+    dounpack
 }
 
 pbs_config() {

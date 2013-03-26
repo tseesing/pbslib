@@ -14,7 +14,7 @@ PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>
 SRC_URI="http://gstreamer.freedesktop.org/src/"$N"/"$N-$V".tar.xz"
 CHECKSUM="2eae746be0b4c7fa2f1e057c91bd36940d7c25593ab612b707904461360031f0"
 
-RDEPEND="gst-plugins-base mjpegtools curl chromaprint libmms faad2 mpg123 faac celt libdca soundtouch spandsp libdvdnav libmodplug libgme opus libass"
+RDEPEND="gst-plugins-base curl libmms spandsp libmodplug libdvdnav soundtouch mjpegtools libass fontconfig libdca libgme chromaprint opus faad2 faac wayland celt mpg123 libtool"
 BDEPEND="schroedinger libexif libdvdread libvdpau libmpeg2"
 RECOMMENDED=""
 CONFLICT=""
@@ -38,4 +38,3 @@ pbs_build() {
 pbs_install() {
     domkinstall
 }
-

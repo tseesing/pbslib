@@ -8,7 +8,7 @@
 DESCRIPTION="A collection of different plugins for Geany"
 HOMEPAGE="http://plugins.geany.org/geany-plugins"
 LICENSE="GPL"
-PACKAGER="StartOS Developers"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
 SRC_URI="http://plugins.geany.org/"$N"/"$N-$V".tar.bz2"
 
@@ -17,7 +17,7 @@ BDEPEND=""
 RECOMMENDED=""
 
 pbs_unpack() {
-        dounpack
+    dounpack
 }
 
 pbs_config() {

@@ -1,0 +1,36 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="kde configure module for fcitx"
+HOMEPAGE="https://github.com/fcitx/kcm-fcitx"
+LICENSE="GPL"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
+
+SRC_URI="http://fcitx.googlecode.com/files/"$N-$V".tar.xz"
+CHECKSUM="1d6d89bfd649629c12e7eac9044f2c43f8e5ef96"
+
+RDEPEND="fcitx(>=4.2.7) kdelibs fcitx-qt systemd"
+RECOMMENDED=""
+BDEPEND="cmake automoc4"
+OPTIONAL=""
+CONFLICT=""
+
+pbs_unpack() {
+    dounpack
+}
+
+pbs_config() {
+    doconfig -DCMAKE_BUILD_TYPE=Release
+}
+
+pbs_build() {
+    domake
+}
+
+pbs_install() {
+    domkinstall
+}

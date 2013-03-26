@@ -8,7 +8,7 @@
 DESCRIPTION="library for MPEG TS/DVB PSI tables decoding and generation"
 HOMEPAGE="http://www.videolan.org/libdvbpsi"
 LICENSE="LGPL"
-PACKAGER="StartOS Developers"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
 SRC_URI="http://download.videolan.org/pub/"$N"/"$V"/"$N-$V".tar.bz2"
 CHECKSUM="b387e07ffd844b61c7a050c47307c0f7"
@@ -21,7 +21,7 @@ CONFLICT=""
 REPLACE=""
 
 pbs_unpack() {
-        dounpack
+    dounpack
 }
 
 pbs_config() {

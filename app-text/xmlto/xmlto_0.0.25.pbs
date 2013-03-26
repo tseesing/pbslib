@@ -14,7 +14,7 @@ PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>
 SRC_URI="https://fedorahosted.org/releases/x/m/"$N"/"$N-$V".tar.bz2"
 CHECKSUM="6b6267b1470f8571fe5f63a128970364"
 
-RDEPEND="libxslt YAML-Syck Test-Pod glibc"
+RDEPEND="libxslt perl-yaml-syck perl-test-pod glibc"
 BDEPEND=""
 
 pbs_unpack() {

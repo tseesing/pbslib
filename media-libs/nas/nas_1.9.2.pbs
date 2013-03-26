@@ -9,7 +9,7 @@ DESCRIPTION="Network Audio System"
 HOMEPAGE="http://radscan.com/nas.html"
 LICENSE="GPL"
 PRIORITY=""
-PACKAGER="StartOS Developers"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
 SRC_URI="http://downloads.sourceforge.net/project/"$N"/"$N"/nas%201.9.2/"$N-$V$R".src.tar.gz"
 
@@ -21,7 +21,7 @@ CONFLICT=""
 NOTES=""
 
 pbs_unpack() {
-        dounpack
+    dounpack
 }
 
 pbs_build() {

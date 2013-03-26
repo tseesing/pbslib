@@ -8,7 +8,7 @@
 DESCRIPTION="USB enumeration utilities"
 HOMEPAGE="http://linux-usb.sourceforge.net/"
 LICENSE="GPL"
-PACKAGER="StartOS Developers"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
 SRC_URI="http://downloads.sourceforge.net/linux-usb/"$N-$V".tar.gz"
 
@@ -16,7 +16,7 @@ RDEPEND="libusb-compat hwids"
 BDEPEND=""
 
 pbs_unpack() {
-        dounpack
+    dounpack
 }
 
 pbs_config() {

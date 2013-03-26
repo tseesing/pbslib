@@ -8,7 +8,7 @@
 DESCRIPTION="A set of backgrounds packaged for StartOS"
 HOMEPAGE="http://www.startos.com"
 LICENSE="GPL"
-PACKAGER="StartOS Developers"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 YARCH="any"
 
 SRC_URI="git://git.ylmf.com/ylmfos-backgrounds.git"
@@ -18,7 +18,7 @@ BDEPEND=""
 REPLACE="ylmfos-backgrounds"
 
 pbs_unpack() {
-        dounpack
+    dounpack
 }
 
 pbs_config() {

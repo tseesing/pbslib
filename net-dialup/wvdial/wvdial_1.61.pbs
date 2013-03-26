@@ -8,7 +8,7 @@
 DESCRIPTION="Excellent program to automatically configure PPP sessions"
 HOMEPAGE="http://code.google.com/p/wvstreams/"
 LICENSE="LGPL"
-PACKAGER="StartOS Developers"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
 SRC_URI="http://wvstreams.googlecode.com/files/"$N-$V".tar.gz"
 
@@ -21,7 +21,7 @@ NOTES="Use wvdialconf to automagically generate a configuration file.
 Users have to be member of the dialout AND the uucp group to use wvdial!"
 
 pbs_unpack() {
-        dounpack
+    dounpack
 }
 
 pbs_patch() {

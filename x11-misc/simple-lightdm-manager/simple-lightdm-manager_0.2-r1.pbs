@@ -8,7 +8,7 @@
 DESCRIPTION="simple-lightdm-manager"
 HOMEPAGE="https://launchpad.net/~claudiocn"
 LICENSE="GPL"
-PACKAGER="StartOS Developers"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
 SRC_URI="https://launchpadlibrarian.net/81977867/"${N}_$V"-public7.tar.gz"
 CHECKSUM="ba4abb4d194e98a1a3e1416ac9ffc7ea"
@@ -20,7 +20,7 @@ OPTIONAL=""
 CONFLICT=""
 
 pbs_unpack() {
-        dounpack
+    dounpack
 }
 
 pbs_config() {

@@ -8,7 +8,7 @@
 DESCRIPTION="An implementation of the SCTP protocol"
 HOMEPAGE="http://lksctp.sourceforge.net/"
 LICENSE="GPLv2"
-PACKAGER="StartOS Developers"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
 SRC_URI="http://downloads.sourceforge.net/sourceforge/lksctp/"$N-$V".tar.gz"
 CHECKSUM="e9cf6c57402c9d4f1173a9529466e16d"
@@ -20,7 +20,7 @@ OPTIONAL=""
 CONFLICT=""
 
 pbs_unpack() {
-        dounpack
+    dounpack
 }
 
 pbs_config() {

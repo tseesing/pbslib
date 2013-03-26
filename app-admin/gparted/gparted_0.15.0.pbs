@@ -1,0 +1,44 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="Gnome Partition Editor"
+HOMEPAGE="http://gparted.sourceforge.net/"
+LICENSE="GPL"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
+
+SRC_URI="http://downloads.sourceforge.net/project/$N/$N/$N-$V/$N-$V.tar.bz2"
+CHECKSUM=""
+
+RDEPEND="parted gtkmm gdk-pixbuf2"
+BDEPEND="intltool pkgconfig"
+RECOMMENDED="dosfstools jfsutils ntfs-3g e2fsprogs reiserfsprogs xfsprogs mtools"
+OPTIONAL="dosfstools: for FAT16 and FAT32 partitions
+          jfsutils: for jfs partitions
+          ntfs-3g: for ntfs partitions
+          reiserfsprogs: for reiser partitions
+          xfsprogs: for xfs partitions
+          nilfs-utils: for nilfs2 support
+          polkit-gnome: to run gparted directly from menu
+          gpart: for recovering corrupt partition tables
+          mtools"
+
+pbs_unpack() {
+    dounpack
+}
+
+pbs_config() {
+    config+="--disable-scrollkeeper"
+    doconfig
+}
+
+pbs_build() {
+    domake
+}
+
+pbs_install() {
+    domkinstall
+}

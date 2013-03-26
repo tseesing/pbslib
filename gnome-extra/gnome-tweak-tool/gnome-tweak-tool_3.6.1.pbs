@@ -14,7 +14,7 @@ YARCH="any"
 SRC_URI="http://download.gnome.org/sources/$N/${V:0:3}/$N-$V.tar.xz"
 CHECKSUM="8ce5fe961f14bd886f3d23b49797bdabf3577507576e0bd004dfb962a2f1afa8"
 
-RDEPEND="gnome-settings-daemon pygobject3 python"
+RDEPEND="gnome-settings-daemon py-gobject3 python"
 RECOMMENDED=""
 BDEPEND="intltool"
 OPTIONAL=""

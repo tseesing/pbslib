@@ -1,0 +1,44 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="The World-Wide Web library for Perl"
+HOMEPAGE="https://metacpan.org/release/libwww-perl"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
+LICENSE="GPL,PerlArtistic"
+GROUP="perl"
+YARCH="any"
+
+SRC_URI="http://search.cpan.org/CPAN/authors/id/G/GA/GAAS/libwww-perl-$V.tar.gz"
+CHECKSUM="24acf2fe33b2295f048f8859e9665ee3"
+
+RDEPEND="perl-encode-locale perl-file-listing perl-html-parser perl-http-cookies perl-http-daemon perl-http-date perl-http-message perl-http-negotiate perl-lwp-mediatypes perl-net-http perl-uri perl-www-robotrules"
+BDEPEND=" "
+RECOMMENDED="perl-lwp-protocol-https"
+CONFLICT=""
+OPTIONA="perl-lwp-protocol-https: for https:// url schemes"
+
+pbs_unpack() {
+    dounpack
+}
+
+pbs_config() {
+    export PERL_MM_USE_DEFAULT=1 PERL5LIB="" \
+           PERL_AUTOINSTALL=--skipdeps \
+           PERL_MM_OPT="INSTALLDIRS=vendor" \
+           PERL_MB_OPT="--installdirs vendor" \
+           MODULEBUILDRC=/dev/null
+    doconfig
+}
+
+pbs_build() {
+    domake
+}
+
+pbs_install() {
+    domkinstall
+    perl_cleanup
+}

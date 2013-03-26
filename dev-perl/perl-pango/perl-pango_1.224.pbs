@@ -1,0 +1,37 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="Layout and render international text"
+HOMEPAGE="http://search.cpan.org/~tsch/Pango"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
+LICENSE="GPL,PerlArtistic"
+GROUP="perl"
+
+SRC_URI="http://search.cpan.org/CPAN/authors/id/X/XA/XAOC/Pango-$V.tar.gz"
+
+RDEPEND="pango libXext perl-cairo perl-glib"
+BDEPEND="perl-extutils-depends perl-extutils-pkgconfig"
+RECOMMENDED=""
+CONFLICT=""
+
+pbs_unpack() {
+    dounpack
+}
+
+pbs_config() {
+    export PERL_MM_USE_DEFAULT=1
+    doconfig INSTALLDIRS=vendor
+}
+
+pbs_build() {
+    domake
+}
+
+pbs_install() {
+    domkinstall
+    perl_cleanup
+}

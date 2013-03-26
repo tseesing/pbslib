@@ -8,7 +8,7 @@
 DESCRIPTION="Driver for Synaptics touchpads"
 HOMEPAGE="http://cgit.freedesktop.org/xorg/driver/xf86-input-synaptics/"
 LICENSE="GPL"
-PACKAGER="StartOS Developers"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 GROUP="x11-drivers"
 
 SRC_URI="http://www.x.org/releases/X11R7.6/src/driver/"$N-$V".tar.bz2"
@@ -17,7 +17,7 @@ RDEPEND="glibc libX11 libXau libxcb libXdmcp libXext libXi libXtst"
 BDEPEND="xorg-server"
 
 pbs_unpack() {
-        dounpack
+    dounpack
 }
 
 pbs_config() {

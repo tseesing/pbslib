@@ -8,7 +8,7 @@
 DESCRIPTION="Network Connectivity Tracking library for Desktop Applications"
 HOMEPAGE="https://launchpad.net/ntrack"
 LICENSE="GPL,LGPL"
-PACKAGER="StartOS Developers"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
 SRC_URI="https://launchpad.net/ntrack/main/"$V"/+download/"$N-$V".tar.gz"
 CHECKSUM="21691dac43460a6791cba3decbc68242"
@@ -20,7 +20,7 @@ OPTIONAL=""
 CONFLICT=""
 
 pbs_unpack() {
-        dounpack
+    dounpack
 }
 
 pbs_config() {

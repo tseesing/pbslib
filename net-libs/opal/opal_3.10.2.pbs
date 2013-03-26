@@ -8,7 +8,7 @@
 DESCRIPTION="C++ class library normalising numerous telephony protocols"
 HOMEPAGE="http://www.opalvoip.org/"
 LICENSE="GPL"
-PACKAGER="StartOS Developers"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
 SRC_URI="http://sourceforge.net/projects/opalvoip/files/v3.10%20Luyten/Stable%202/"$N-$V".tar.bz2"
 
@@ -28,7 +28,7 @@ INSTALL="$N.install"
 
 pbs_unpack() {
     #unpard file from $YBS_SOURCE to current directory.
-        dounpack
+    dounpack
 }
 
 pbs_config() {

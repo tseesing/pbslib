@@ -8,7 +8,7 @@
 DESCRIPTION="Library to load, handle and manipulate images in the JPEG format (replaced by libjpeg-turbo library which has same API/ABI but is at least twice faster on all primary architectures and about 25% faster on secondary architectures)"
 HOMEPAGE="http://www.ijg.org/"
 LICENSE="GPL-2"
-PACKAGER="StartOS Developers"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
 SRC_URI="http://www.ijg.org/files/jpegsrc.v8a.tar.gz"
 
@@ -17,7 +17,7 @@ BDEPEND=""
 CONFLICT="libjpeg-turbo"
 
 pbs_unpack() {
-        dounpack
+    dounpack
 }
 
 pbs_config() {

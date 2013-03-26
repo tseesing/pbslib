@@ -16,7 +16,7 @@ libXcomposite libXfixes libXinerama libdmx libxcb libXau libXdmcp"
 BDEPEND="libXtst"
 
 pbs_unpack() {
-        dounpack
+    dounpack
 }
 
 pbs_config() {

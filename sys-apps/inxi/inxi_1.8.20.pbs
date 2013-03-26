@@ -8,7 +8,7 @@
 DESCRIPTION="script to get system information"
 HOMEPAGE="https://code.google.com/p/inxi/"
 LICENSE="GPL"
-PACKAGER="StartOS Developers"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 YARCH="any"
 
 SRC_URI="http://inxi.googlecode.com/svn/trunk/inxi.tar.gz"
@@ -22,7 +22,7 @@ CONFLICT=""
 REPLACE=""
 
 pbs_unpack() {
-        dounpack
+    dounpack
 }
 
 pbs_install() {

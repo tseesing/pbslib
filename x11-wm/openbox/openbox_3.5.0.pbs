@@ -8,7 +8,7 @@
 DESCRIPTION="Small-footprint and standard compliant Window Manager."
 HOMEPAGE="http://openbox.org"
 LICENSE="GPL"
-PACKAGER="StartOS Developers"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
 SRC_URI="http://openbox.org/dist/"$N"/"$N-$V".tar.gz"
 
@@ -16,7 +16,7 @@ RDEPEND="imlib2 libXcursor libXinerama libxml2 libXrandr pango startup-notificat
 BDEPEND=""
 
 pbs_unpack() {
-        dounpack
+    dounpack
 }
 
 pbs_config() {

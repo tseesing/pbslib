@@ -8,7 +8,7 @@
 DESCRIPTION="A library to provide abstract access to various archives"
 HOMEPAGE="http://icculus.org/physfs"
 LICENSE="ZLIB"
-PACKAGER="StartOS Developers"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
 SRC_URI="http://icculus.org/physfs/downloads/"$N-$V".tar.gz"
 CHECKSUM="4e8927c3d30279b03e2592106eb9184a"
@@ -20,7 +20,7 @@ OPTIONAL=""
 CONFLICT=""
 
 pbs_unpack() {
-        dounpack
+    dounpack
 }
 
 pbs_config() {

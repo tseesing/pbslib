@@ -8,12 +8,12 @@
 DESCRIPTION="A frontend for Gngeo in GTK"
 HOMEPAGE="http://xgngeo.choplair.org/"
 LICENSE="GPL"
-PACKAGER="StartOS Developers"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
 SRC_URI="http://sourceforge.net/projects/xgngeo/files/Program%20releases/XGngeo-"$V"_final.tar.bz2"
 CHECKSUM="741d8099b6560b1f82518dbff90bd08b"
 
-RDEPEND="python pygtk gngeo(=0.7)"
+RDEPEND="python py-gtk gngeo(=0.7)"
 RECOMMENDED=""
 BDEPEND=""
 OPTIONAL=""
@@ -22,7 +22,7 @@ CONFLICT=""
 INSTALL="$N.install"
 
 pbs_unpack() {
-        dounpack
+    dounpack
 }
 
 pbs_patch() {

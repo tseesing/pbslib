@@ -8,22 +8,22 @@
 DESCRIPTION="linuxqq"
 HOMEPAGE="http://im.qq.com/qq/linux/download.shtml"
 LICENSE="custom"
-PACKAGER="StartOS Developers"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
-SRC_URI="http://dl_dir.qq.com/linuxqq/linuxqq_v"$V${R}"_i386.tar.gz"
+SRC_URI="http://dl_dir.qq.com/linuxqq/linuxqq_v"$V"_i386.tar.gz"
 
 RDEPEND="atk cairo expat fontconfig freetype gcc-libs glib2 gdk-pixbuf2 glibc gtk2 libpng libX11 libXau libxcb libXcomposite libXcursor libXdamage libXdmcp libXext libXfixes libXi libXrandr libXrender pango pixman zlib"
 BDEPEND=""
 RECOMMENDED=""
 
 pbs_unpack() {
-        dounpack
+    dounpack
 }
 
 pbs_install() {
     docp qq res.db             "$PKGDIR"/usr/share/tencent/qq
     cd "$PKGDIR"
-    docp "$FILESDIR"/qq         usr/bin
+    docp "$FILESDIR"/linuxqq    usr/bin
     docp "$FILESDIR"/qq.png     usr/share/tencent/qq
     docp "$FILESDIR"/qq.desktop usr/share/applications
 }

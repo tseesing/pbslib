@@ -8,7 +8,7 @@
 DESCRIPTION="Portable DjVu viewer and browser plugin"
 HOMEPAGE="http://djvu.sourceforge.net/djview4.html"
 LICENSE="GPL"
-PACKAGER="StartOS Developers"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
 SRC_URI="http://downloads.sourceforge.net/djvu/djview-"$V".tar.gz"
 CHECKSUM="70ef8f416c7d6892cc0cf012bfd0ae07"
@@ -24,7 +24,7 @@ DESKTOPFILE="djvulibre-djview4.desktop"
 INSTALL="$N.install"
 
 pbs_unpack() {
-        dounpack
+    dounpack
 }
 
 pbs_config() {

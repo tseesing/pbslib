@@ -15,7 +15,7 @@ YARCH="any"
 SRC_URI="http://download.kde.org/stable/$V/src/$N-$V.tar.xz"
 CHECKSUM="67aed49549a2b78ee53bb109f279ebef5c3bf530"
 
-RDEPEND="kde-runtime twisted pykde4"
+RDEPEND="kde-runtime py-twisted py-kde4"
 RECOMMENDED=""
 BDEPEND="cmake automoc4"
 OPTIONAL=""

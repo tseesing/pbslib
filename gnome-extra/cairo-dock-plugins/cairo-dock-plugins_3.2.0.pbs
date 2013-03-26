@@ -1,0 +1,37 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="plugins for Cairo-Dock"
+HOMEPAGE="https://launchpad.net/cairo-dock-plug-ins"
+LICENSE="GPL"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
+
+SRC_URI="https://launchpadlibrarian.net/135109886/$N-$V.tar.gz"
+CHECKSUM=""
+
+RDEPEND="librsvg glu libxklavier vte3 lm_sensors pulseaudio webkitgtk3 libsoup libjpeg-turbo sqlite libXt libetpan libzeitgeist upower libexif libical gnome-menus"
+RECOMMENDED=""
+BDEPEND="cmake pkgconfig"
+OPTIONAL=""
+CONFLICT=""
+
+pbs_unpack() {
+    dounpack
+}
+
+pbs_config() {
+    config+=""
+    doconfig
+}
+
+pbs_build() {
+    domake
+}
+
+pbs_install() {
+    domkinstall
+}

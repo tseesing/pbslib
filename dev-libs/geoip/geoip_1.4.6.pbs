@@ -8,7 +8,7 @@
 DESCRIPTION="easily lookup countries by IP addresses, even when Reverse DNS entries don't exist"
 HOMEPAGE="http://www.maxmind.com/geoip/api/c.shtml"
 LICENSE="GPLv2+"
-PACKAGER="StartOS Developers"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
 SRC_URI="http://geolite.maxmind.com/download/"$N"/api/c/GeoIP-"$V".tar.gz"
 
@@ -16,7 +16,7 @@ RDEPEND="zlib"
 BDEPEND=""
 
 pbs_unpack() {
-        dounpack
+    dounpack
 }
 
 pbs_config() {

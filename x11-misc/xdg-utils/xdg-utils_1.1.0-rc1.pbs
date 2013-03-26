@@ -16,7 +16,7 @@ CHECKSUM="0aa4e93dccdec493f9406aab33fca0f9"
 
 RDEPEND="xprop shared-mime-info"
 BDEPEND="desktop-file-utils"
-RECOMMENDED="File-MimeInfo"
+RECOMMENDED="perl-file-mimeinfo"
 OPTIONAL="kdebase-runtime: for KDE support in xdg-open
           libgnome: for GNOME2 support in xdg-open
           exo: for Xfce support in xdg-open

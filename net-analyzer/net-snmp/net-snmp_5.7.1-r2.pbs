@@ -8,7 +8,7 @@
 DESCRIPTION="A suite of applications used to implement SNMP v1, SNMP v2c and SNMP v3 using both IPv4 and IPv6"
 HOMEPAGE="http://www.net-snmp.org/"
 LICENSE="BSD"
-PACKAGER="StartOS Developers"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
 SRC_URI="http://downloads.sourceforge.net/"$N"/"$N-$V".tar.gz"
 CHECKSUM="ddb82ce1112ef0642869d3c8d7c7e585f151849a"
@@ -18,7 +18,7 @@ BDEPEND=""
 RECOMMENDED=""
 
 pbs_unpack() {
-        dounpack
+    dounpack
 }
 
 pbs_patch() {

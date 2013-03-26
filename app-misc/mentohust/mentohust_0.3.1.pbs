@@ -8,7 +8,7 @@
 DESCRIPTION="ruijie client"
 HOMEPAGE="http://code.google.com/p/mentohust/"
 LICENSE="GPLv3"
-PACKAGER="StartOS Developers"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
 SRC_URI="http://mentohust.googlecode.com/files/"$N-$V$R".tar.gz"
 
@@ -20,7 +20,7 @@ CONFLICT=""
 NOTES=""
 
 pbs_unpack() {
-        dounpack
+    dounpack
 }
 
 pbs_config() {

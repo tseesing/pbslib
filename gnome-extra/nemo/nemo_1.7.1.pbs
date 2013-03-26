@@ -1,0 +1,54 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="Cinnamon file manager (Nautilus fork)"
+HOMEPAGE="https://github.com/linuxmint/nemo"
+LICENSE="GPL"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
+
+SRC_URI="git://github.com/linuxmint/"$N".git"
+
+RDEPEND="tracker libXinerama libXrandr libXcursor libXi libXcomposite libXdamage at-spi2-atk gnome-desktop pango libxml2 libnotify"
+RECOMMENDED=""
+BDEPEND="gnome-common gobject-introspection intltool git"
+OPTIONAL=""
+CONFLICT=""
+REPLACE=""
+
+INSTALL="$N.install"
+
+pbs_unpack() {
+    dounpack
+}
+
+pbs_patch() {
+    git checkout "$V"
+    # Get default terminal value
+    #_terminal=$(gsettings get org.gnome.desktop.default-applications.terminal exec | tr -d "'")
+
+    # Set "Open in Terminal" to default terminal (Arch doesn't use x-terminal-emulator)
+    #sed -i "s/x-terminal-emulator/$_terminal/" src/nemo-view.c
+
+    # Fix "Open as Root"
+    sed -i "s/gksu/gksudo/" src/nemo-view.c
+}
+
+pbs_config() {
+    config+="--disable-static  
+             --disable-update-mimedb 
+             --disable-packagekit 
+             --disable-schemas-compile"
+    doconfig
+}
+
+pbs_build() {
+    domake
+}
+
+pbs_install() {
+    domkinstall
+}

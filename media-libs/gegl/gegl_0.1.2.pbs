@@ -14,7 +14,7 @@ RDEPEND="babl glib2 gdk-pixbuf2 gtk2 pango cairo libjpeg-turbo "
 BDEPEND=""
 
 pbs_unpack() {
-        dounpack
+    dounpack
 }
 
 pbs_config() {

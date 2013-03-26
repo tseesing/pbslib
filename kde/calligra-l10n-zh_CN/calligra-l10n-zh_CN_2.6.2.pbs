@@ -1,0 +1,38 @@
+#
+# StartOS package build script
+#
+# Copyright (C) 2012-2013 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="Localization for Calligra suite"
+HOMEPAGE="http://calligra-suite.org"
+LICENSE="LGPL"
+PACKAGER="chenqixing@ivali.com
+          Zhongxin Huang <huangzhongxin@ivali.com>"
+YARCH="any"
+GROUP="kde"
+
+SRC_URI="http://download.kde.org/stable/calligra-"$V"/calligra-l10n/"$N-$V".tar.bz2"
+CHECKSUM="7b43dc50f060f587cda8586fc8266bae"
+
+RDEPEND="calligra(=2.6.2)"
+RECOMMENDED=""
+BDEPEND="cmake automoc4 kdelibs"
+
+pbs_unpack() {
+    dounpack
+}
+
+pbs_config() {
+    doconfig -DCMAKE_BUILD_TYPE=Release 
+}
+
+pbs_build() {
+    domake
+}
+
+pbs_install() {
+    domkinstall
+}
+

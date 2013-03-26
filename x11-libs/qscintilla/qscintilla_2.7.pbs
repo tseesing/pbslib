@@ -13,7 +13,7 @@ PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 SRC_URI="http://downloads.sourceforge.net/pyqt/QScintilla-gpl-$V.tar.gz"
 CHECKSUM="a3857d75a2b332e0460131e0aa4cc4b5"
 
-RDEPEND="qt pyqt"
+RDEPEND="qt py-qt"
 BDEPEND="chrpath"
 
 pbs_unpack() {
@@ -53,4 +53,3 @@ pbs_install() {
     cd "$SRCDIR"/Python
     domkinstall INSTALL_ROOT="$PKGDIR"
 }
-

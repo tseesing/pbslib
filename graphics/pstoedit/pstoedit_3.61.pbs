@@ -1,0 +1,42 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="Translates PostScript and PDF graphics into other vector formats"
+HOMEPAGE="http://www.pstoedit.net"
+LICENSE="GPL"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
+
+SRC_URI="http://downloads.sourceforge.net/sourceforge/"$N"/"$N-$V".tar.gz"
+CHECKSUM="426f3746ecb441caa0db401d5880e1ac04a399d5"
+
+RDEPEND="gd imagemagick xz libtool plotutils"
+RECOMMENDED=""
+BDEPEND="ghostscript"
+OPTIONAL=""
+CONFLICT=""
+REPLACE=""
+
+pbs_unpack() {
+    dounpack
+}
+
+pbs_patch() {
+    sed -i 's/-pedantic//' configure
+}
+
+pbs_config() {
+    config+=""
+    doconfig
+}
+
+pbs_build() {
+    domake
+}
+
+pbs_install() {
+    domkinstall
+}

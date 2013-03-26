@@ -8,7 +8,7 @@
 DESCRIPTION="Freedesktop.org menu-spec-compliant desktop menus for LXDE.."
 HOMEPAGE="http://lxde.org"
 LICENSE="GPL"
-PACKAGER="StartOS Developers"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 YARCH="any"
 
 SRC_URI="http://sourceforge.net/projects/lxde/files/"$N"%20%28desktop%20menu%29/"$N"%20"$V"/"$N-$V".tar.gz"

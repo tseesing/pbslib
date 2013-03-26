@@ -8,7 +8,7 @@
 DESCRIPTION="yong input method"
 HOMEPAGE="http://yong.uueasy.com/thread-htm-fid-2.html"
 LICENSE="GPL"
-PACKAGER="StartOS Developers"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
 SRC_URI="yong-lin-1.6.0-3.7z"
 
@@ -18,7 +18,7 @@ RECOMMENDED=""
 CONFLICT=""
 
 pbs_unpack() {
-        dounpack
+    dounpack
 }
 
 pbs_install() {

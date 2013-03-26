@@ -8,7 +8,7 @@
 DESCRIPTION="Deletes unneeded files to free disk space and maintain privacy"
 HOMEPAGE="http://bleachbit.sourceforge.net/"
 LICENSE="GPL"
-PACKAGER="StartOS Developers"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
 SRC_URI="http://ncu.dl.sourceforge.net/project/"$N"/"$N"/"$V$R"/"$N-$V$R".tar.bz2"
 
@@ -22,7 +22,7 @@ INSTALL="$N.install"
 NOTES=""
 
 pbs_unpack() {
-        dounpack
+    dounpack
 }
 
 pbs_install() {

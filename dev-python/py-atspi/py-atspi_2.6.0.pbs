@@ -1,0 +1,38 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="Assistive Technology Service Provider Interface - Python bindings."
+HOMEPAGE="www.gtk.org"
+LICENSE="GPL"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
+GROUP="python"
+YARCH="any"
+
+SRC_URI="http://download.gnome.org/sources/pyatspi/${V::3}/pyatspi-$V.tar.xz"
+CHECKSUM="6203fa4204267bb1938725ec66d5a1e618febc8a7d6ff5582a646b789f37f87e"
+
+RDEPEND="py-gobject at-spi2-core"
+RECOMMENDED=""
+BDEPEND=""
+CONFLICT=""
+
+pbs_unpack() {
+    dounpack
+}
+
+pbs_config() {
+    config+=""
+    doconfig
+}
+
+pbs_build() {
+    domake
+}
+
+pbs_install() {
+    domkinstall
+}

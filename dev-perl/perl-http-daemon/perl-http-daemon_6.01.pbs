@@ -1,0 +1,43 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="a simple http server class"
+HOMEPAGE="http://search.cpan.org/dist/HTTP-Daemon"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
+LICENSE="GPL,PerlArtistic"
+GROUP="perl"
+YARCH="any"
+
+SRC_URI="http://search.cpan.org/CPAN/authors/id/G/GA/GAAS/HTTP-Daemon-$V.tar.gz"
+CHECKSUM="ed0ae02d25d7f1e89456d4d69732adc2"
+
+RDEPEND="perl-http-date perl-http-message perl-lwp-mediatypes perl"
+BDEPEND=""
+RECOMMENDED=""
+CONFLICT=""
+
+pbs_unpack() {
+    dounpack
+}
+
+pbs_config() {
+    export PERL_MM_USE_DEFAULT=1 PERL5LIB="" \
+           PERL_AUTOINSTALL=--skipdeps  \
+           PERL_MM_OPT="INSTALLDIRS=vendor" \
+           PERL_MB_OPT="--installdirs vendor" \
+           MODULEBUILDRC=/dev/null
+    doconfig
+}
+
+pbs_build() {
+    domake
+}
+
+pbs_install() {
+    domkinstall
+    perl_cleanup
+}

@@ -9,7 +9,7 @@ DESCRIPTION="CUE Sheet Parser Library"
 COMMENTS="Libcue is intended to parse a so called cue sheet from a char string or a file pointer. For handling of the parsed data a convenient API is available."
 HOMEPAGE="http://libcue.sourceforge.net"
 LICENSE="GPLv2+"
-PACKAGER="StartOS Developers"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
 SRC_URI="http://downloads.sourceforge.net/"$N"/"$N-$V".tar.bz2"
 
@@ -19,7 +19,7 @@ BDEPEND=""
 CONFLICT=""
 
 pbs_unpack() {
-        dounpack
+    dounpack
 }
 
 pbs_config() {

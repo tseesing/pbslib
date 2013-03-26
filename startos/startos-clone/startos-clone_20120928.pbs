@@ -8,11 +8,11 @@
 DESCRIPTION="Back up and restore partitions under linux"
 HOMEPAGE="http://www.startos.org"
 LICENSE="GPL"
-PACKAGER="StartOS Developers"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
 SRC_URI="git://git.ylmf.com/"$N".git"
 
-RDEPEND="pygtk partclone util-linux parted pigz pxz lzop"
+RDEPEND="py-gtk partclone util-linux parted pigz pxz lzop"
 BDEPEND=""
 
 DESKTOPFILE="sclone.desktop"

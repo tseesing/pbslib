@@ -9,7 +9,7 @@ DESCRIPTION="A fast and easy open-source graphics application for digital painte
 HOMEPAGE="http://mypaint.intilinux.com/"
 LICENSE="GPL"
 PRIORITY=""
-PACKAGER="StartOS Developers"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
 SRC_URI="http://download.gna.org/"$N"/"$N-$V$R".tar.bz2"
 
@@ -23,7 +23,7 @@ INSTALL="$N.install"
 NOTES=""
 
 pbs_unpack() {
-        dounpack
+    dounpack
 }
 
 pbs_config() {

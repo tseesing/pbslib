@@ -8,7 +8,7 @@
 DESCRIPTION="Glade-like GUI designer which can generate Python, Perl, C++ or XRC code"
 HOMEPAGE="http://wxglade.sourceforge.net/"
 LICENSE="MIT"
-PACKAGER="StartOS Developers"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
 SRC_URI="http://sourceforge.net/projects/wxglade/files/"$N"/"$V"/wxGlade-"$V".tar.gz"
 CHECKSUM="983715e105e53a0d82efbe1fa8cf4361"

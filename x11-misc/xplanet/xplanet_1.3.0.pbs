@@ -8,7 +8,7 @@
 DESCRIPTION="Render images of the earth into the X root window"
 HOMEPAGE="http://xplanet.sourceforge.net"
 LICENSE="GPL"
-PACKAGER="StartOS Developers"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
 SRC_URI="http://downloads.sourceforge.net/project/"$N"/"$N"/"$V"/"$N-$V".tar.gz"
 CHECKSUM="41f7db2ccd1d8b4b989cacaf9adfe692"
@@ -20,7 +20,7 @@ OPTIONAL=""
 CONFLICT=""
 
 pbs_unpack() {
-        dounpack
+    dounpack
 }
 
 pbs_config() {

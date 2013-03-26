@@ -21,7 +21,7 @@ NOTES="libdrm's ABI may have changed without change in library name
 Please rebuild mesa, xorg-server and x11-drivers"
 
 pbs_unpack() {
-        dounpack
+    dounpack
 }
 
 pbs_patch() {

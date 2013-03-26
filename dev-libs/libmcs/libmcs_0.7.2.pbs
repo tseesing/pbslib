@@ -8,7 +8,7 @@
 DESCRIPTION="Abstracts the storage of configuration settings away from applications."
 HOMEPAGE="http://sacredspiral.co.uk/~nenolod/mcs/"
 LICENSE="BSD"
-PACKAGER="StartOS Developers"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
 SRC_URI="http://distfiles.atheme.org/"$N-$V".tgz"
 
@@ -16,7 +16,7 @@ RDEPEND="libmowgli"
 BDEPEND=""
 
 pbs_unpack() {
-        dounpack
+    dounpack
 }
 
 pbs_config() {

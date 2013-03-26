@@ -8,7 +8,7 @@
 DESCRIPTION="PolicyKit Qt4 API wrapper library."
 HOMEPAGE="http://www.kde.org/"
 LICENSE="LGPL"
-PACKAGER="StartOS Developers"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
 SRC_URI="http://download.kde.org/stable/apps/KDE4.x/admin/"$N"-1-"$V".tar.bz2"
 CHECKSUM="7d122aa67c6786ea7d0bb023701693a1"
@@ -20,7 +20,7 @@ OPTIONAL=""
 CONFLICT=""
 
 pbs_unpack() {
-        dounpack
+    dounpack
 }
 
 pbs_config() {

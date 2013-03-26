@@ -8,7 +8,7 @@
 DESCRIPTION="Fast-paced multiplayer deathmatch game"
 HOMEPAGE="http://red.planetarena.org/"
 LICENSE="GPL"
-PACKAGER="StartOS Developers"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
 SRC_URI="http://icculus.org/alienarena/Files/"$N-$V"-linux20111227.tar.gz"
 CHECKSUM="2ccf9f1e2781c3bc005dbdb1b9954a33"
@@ -22,7 +22,7 @@ CONFLICT=""
 INSTALL="$N.install"
 
 pbs_unpack() {
-        dounpack
+    dounpack
 }
 
 pbs_config() {

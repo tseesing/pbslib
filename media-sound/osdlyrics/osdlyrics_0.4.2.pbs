@@ -8,7 +8,7 @@
 DESCRIPTION="OSD Lyrics is a lyrics show compatible with various media players."
 HOMEPAGE="http://code.google.com/p/osd-lyrics/"
 LICENSE="GPLv3"
-PACKAGER="StartOS Developers"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
 SRC_URI="http://osd-lyrics.googlecode.com/files/"$N-$V".tar.gz"
 CHECKSUM="6fa9476f1409eff7d50de09f973e66edd315356e"
@@ -24,7 +24,7 @@ INSTALL="$N.install"
 ICONFILE="usr/share/osdlyrics/icons/osdlyrics.png"
 
 pbs_unpack() {
-        dounpack
+    dounpack
 }
 
 pbs_config() {

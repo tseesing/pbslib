@@ -8,7 +8,7 @@
 DESCRIPTION="Framework for defining and tracking users, login sessions and seats."
 HOMEPAGE="http://www.freedesktop.org/wiki/Software/ConsoleKit"
 LICENSE="GPL"
-PACKAGER="StartOS Developers"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
  
 SRC_URI="http://www.freedesktop.org/software/ConsoleKit/dist/ConsoleKit-"$V".tar.bz2"
 
@@ -17,7 +17,7 @@ BDEPEND=""
 RECOMMENDED=""
 
 pbs_unpack() {
-        dounpack
+    dounpack
 }
 
 pbs_patch() {

@@ -8,7 +8,7 @@
 DESCRIPTION="A simple client-server configuration storage and query system."
 HOMEPAGE="http://www.xfce.org/"
 LICENSE="GPLv2"
-PACKAGER="StartOS Developers"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
 SRC_URI="http://archive.xfce.org/src/xfce/"$N"/4.10/"$N-$V".tar.bz2"
 CHECKSUM="175219a441cc7d0f210bbd1a3b0abba41598627cd9db27235811400c3e100576"
@@ -22,7 +22,7 @@ CONFLICT=""
 INSTALL="$N.install"
 
 pbs_unpack() {
-        dounpack
+    dounpack
 }
 
 pbs_config() {

@@ -1,0 +1,38 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="A set of libraries for using and integrating transformation algorithms (such as filter or color conversion) in graphics applications"
+HOMEPAGE="http://www.opengtl.org"
+LICENSE="GPL"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
+
+SRC_URI="http://download.opengtl.org/OpenGTL-$V.tar.bz2"
+CHECKSUM="89a37394fe71f2e771d7230333c86b93706f0083f86a58a86a670bca7e4f905e"
+
+RDEPEND="llvm libpng"
+RECOMMENDED=""
+BDEPEND="cmake"
+OPTIONAL=""
+CONFLICT=""
+REPLACE=""
+
+pbs_unpack() {
+    dounpack
+}
+
+pbs_config() {
+    doconfig -DCMAKE_BUILD_TYPE=Release \
+             -DCMAKE_SKIP_RPATH=ON
+}
+
+pbs_build() {
+    domake
+}
+
+pbs_install() {
+    domkinstall
+}

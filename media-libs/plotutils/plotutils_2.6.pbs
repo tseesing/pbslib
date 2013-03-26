@@ -8,7 +8,7 @@
 DESCRIPTION="Set of utilities and libraries for plotting"
 HOMEPAGE="http://directory.fsf.org/graphics/plotutils.html"
 LICENSE="GPL"
-PACKAGER="StartOS Developers"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
 SRC_URI="http://ftp.gnu.org/pub/gnu/"$N"/"$N-$V".tar.gz"
 CHECKSUM="7921301d9dfe8991e3df2829bd733df6b2a70838"
@@ -23,7 +23,11 @@ REPLACE=""
 INSTALL="$N.install"
 
 pbs_unpack() {
-        dounpack
+    dounpack
+}
+
+pbs_patch() {
+    dopatch plotutils-2.6-libpng-1.5.patch
 }
 
 pbs_config() {
@@ -38,4 +42,3 @@ pbs_build() {
 pbs_install() {
     domkinstall
 }
-

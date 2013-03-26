@@ -14,7 +14,7 @@ YARCH="any"
 SRC_URI="http://downloads.sourceforge.net/project/$N/$N/$N-$V.tar.gz/$N-$V.tar.gz"
 CHECKSUM="151f75d78d1fa53bca25b94dc00e46a27fabfee8"
 
-RDEPEND="xml-parser"
+RDEPEND="perl-xml-parser"
 RECOMMENDED=""
 BDEPEND=""
 OPTIONAL=""
@@ -32,4 +32,3 @@ pbs_build() {
 pbs_install() {
     domkinstall PREFIX=/usr
 }
-

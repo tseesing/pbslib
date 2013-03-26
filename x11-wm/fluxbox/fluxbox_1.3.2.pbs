@@ -8,7 +8,7 @@
 DESCRIPTION="Fluxbox is a windowmanager for X that was based on the Blackbox 0.61.1 code."
 HOMEPAGE="http://www.fluxbox.org/"
 LICENSE="MIT"
-PACKAGER="StartOS Developers"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
 SRC_URI="http://downloads.sourceforge.net/sourceforge/"$N"/"$N-$V".tar.gz"
 CHECKSUM="15ba1b9eaaf170d87fa647b7118a63c05f093b5c"
@@ -19,7 +19,7 @@ RECOMMENDED=""
 CONFLICT=""
 
 pbs_unpack() {
-        dounpack
+    dounpack
 }
 
 pbs_config() {

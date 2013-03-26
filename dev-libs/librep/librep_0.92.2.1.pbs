@@ -8,7 +8,7 @@
 DESCRIPTION="Lisp system for Sawfish"
 HOMEPAGE="http://sawfish.wikia.com/wiki/Librep"
 LICENSE="GPL"
-PACKAGER="StartOS Developers"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
 SRC_URI="http://download.tuxfamily.org/"$N"/"$N-$V".tar.xz"
 CHECKSUM="45903b169d59d00f75a4b619b2b23f442e9146be"
@@ -23,7 +23,7 @@ REPLACE=""
 INSTALL="$N.install"
 
 pbs_unpack() {
-        dounpack
+    dounpack
 }
 
 pbs_config() {

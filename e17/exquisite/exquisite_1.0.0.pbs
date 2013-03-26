@@ -8,7 +8,7 @@
 DESCRIPTION="Bootsplash program able to render in Framebuffer, or X11 that is easy to integrate with existing boot setups (sysvinit or systemd) bia messaging (pipe or socket) as well as customise look and feel via Edje."
 HOMEPAGE="http://www.enlightenment.org/"
 LICENSE="BSD"
-PACKAGER="StartOS Developers"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
 SRC_URI="http://download.enlightenment.org/releases/"$N-$V".tar.gz"
 CHECKSUM="d017c5c905a71b8fbba5ded5095380e9"
@@ -20,7 +20,7 @@ OPTIONAL=""
 CONFLICT=""
 
 pbs_unpack() {
-        dounpack
+    dounpack
 }
 
 pbs_config() {

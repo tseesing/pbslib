@@ -14,7 +14,7 @@ GROUP="perl"
 SRC_URI="http://downloads.sourceforge.net/$N/$N-agents-$V.tar.bz2"
 CHECKSUM="8b9a11a6ce020383c32c45d1530d77c2"
 
-RDEPEND="perl-Net-DNS Digest-SHA1 URI Digest-Nilsimsa"
+RDEPEND="perl-net-dns perl-digest-sha1 perl-uri perl-digest-nilsimsa"
 RECOMMENDED=""
 BDEPEND=""
 OPTIONAL="" 
@@ -37,4 +37,3 @@ pbs_install() {
     domkinstall
     perl_cleanup
 }
-

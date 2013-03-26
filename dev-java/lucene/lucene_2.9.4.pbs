@@ -8,7 +8,7 @@
 DESCRIPTION="A high-performance, full-featured text search engine library written entirely in Java"
 HOMEPAGE="http://lucene.apache.org/java/docs/index.html"
 LICENSE="APACHE"
-PACKAGER="StartOS Developers"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
 SRC_URI="http://mirror.bjtu.edu.cn/apache/lucene/java/2.9.4/lucene-2.9.4.tar.gz"
 
@@ -18,7 +18,7 @@ RECOMMENDED=""
 CONFLICT=""
 
 pbs_unpack() {
-        dounpack
+    dounpack
 }
 
 pbs_install() {

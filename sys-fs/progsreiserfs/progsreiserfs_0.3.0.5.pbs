@@ -8,7 +8,7 @@
 DESCRIPTION="library for accessing and manipulating reiserfs partitions"
 HOMEPAGE="http://www.namesys.com"
 LICENSE="GPL"
-PACKAGER="StartOS Developers"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
 SRC_URI="ftp://mirrors.kernel.org/archlinux/other/"$N"/"$N-$V".tar.gz"
 
@@ -20,7 +20,7 @@ CONFLICT=""
 REPLACE=""
 
 pbs_unpack() {
-        dounpack
+    dounpack
 }
 
 pbs_patch() {

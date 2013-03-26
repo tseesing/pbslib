@@ -8,7 +8,7 @@
 DESCRIPTION="A relatively thin, simple and robust network communication layer on top of UDP"
 HOMEPAGE="http://enet.bespin.org/"
 LICENSE="custom"
-PACKAGER="StartOS Developers"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
 SRC_URI="http://enet.bespin.org/download/"$N-$V".tar.gz"
 CHECKSUM="4b0b69377fd4511e82e5f0921a942e59"
@@ -20,7 +20,7 @@ OPTIONAL=""
 CONFLICT=""
 
 pbs_unpack() {
-        dounpack
+    dounpack
 }
 
 pbs_config() {

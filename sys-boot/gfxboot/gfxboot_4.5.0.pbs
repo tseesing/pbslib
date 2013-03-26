@@ -8,7 +8,7 @@
 DESCRIPTION="Graphical Boot Logo tool"
 HOMEPAGE="http://www.opensuse.org"
 LICENSE="GPL"
-PACKAGER="StartOS Developers"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
 SRC_URI="gfxboot-4.5.0.tar.bz2"
 
@@ -18,7 +18,7 @@ RECOMMENDED=""
 CONFLICT=""
 
 pbs_unpack() {
-        dounpack
+    dounpack
 }
 
 pbs_build() {

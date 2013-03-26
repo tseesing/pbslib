@@ -8,7 +8,7 @@
 DESCRIPTION="The Chewing IMEngine for IBus Framework"
 HOMEPAGE="http://code.google.com/p/ibus/"
 LICENSE="GPL"
-PACKAGER="StartOS Developers"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 GROUP="ibus"
 
 SRC_URI="http://ibus.googlecode.com/files/"$N-$V"-Source.tar.gz"
@@ -19,7 +19,7 @@ BDEPEND=""
 CONFLICT=""
 
 pbs_unpack() {
-        dounpack
+    dounpack
 }
 
 pbs_config() {

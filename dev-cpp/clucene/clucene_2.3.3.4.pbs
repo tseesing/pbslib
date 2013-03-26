@@ -8,7 +8,7 @@
 DESCRIPTION="C++ port of the high-performance text search engine Lucene"
 HOMEPAGE="http://clucene.sourceforge.net"
 LICENSE="LGPL,APACHE"
-PACKAGER="StartOS Developers"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
 SRC_URI="http://downloads.sourceforge.net/"$N"/"$N"-core-"$V".tar.gz"
 CHECKSUM="ddfdc433dd8ad31b5c5819cc4404a8d2127472a3b720d3e744e8c51d79732eab"
@@ -21,7 +21,7 @@ CONFLICT=""
 REPLACE=""
 
 pbs_unpack() {
-        dounpack
+    dounpack
 }
 
 pbs_patch() {

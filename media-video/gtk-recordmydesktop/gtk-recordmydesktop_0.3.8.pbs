@@ -8,10 +8,9 @@
 DESCRIPTION="A desktop session recorder producing Ogg video/audio files"
 HOMEPAGE="http://recordmydesktop.sourceforge.net/"
 LICENSE="GPL"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
-PACKAGER="StartOS Developers"
-
-SRC_URI="http://downloads.sourceforge.net/project/recordmydesktop/gtk-recordMyDesktop/"$V$R"/"$N-$V$R".tar.gz"
+SRC_URI="http://downloads.sourceforge.net/project/recordmydesktop/gtk-recordMyDesktop/"$V$R"/"$N-$V".tar.gz"
 
 RDEPEND="recordmydesktop"
 BDEPEND=" "
@@ -19,10 +18,8 @@ RECOMMENDED=""
 
 INSTALL="$N.install"
 
-NOTES=""
-
 pbs_unpack() {
-        dounpack
+    dounpack
 }
 
 pbs_config() {
@@ -36,3 +33,4 @@ pbs_build() {
 pbs_install() {
     domkinstall
 }
+

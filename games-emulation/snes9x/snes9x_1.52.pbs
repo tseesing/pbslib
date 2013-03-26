@@ -8,7 +8,7 @@
 DESCRIPTION="Super Nintendo Entertainment System (SNES) emulator"
 HOMEPAGE="http://code.google.com/p/snes9x-gtk/"
 LICENSE="GPL"
-PACKAGER="StartOS Developers"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
 SRC_URI="http://snes9x-gtk.googlecode.com/files/"$N-$V"-src.tar.bz2"
 
@@ -18,7 +18,7 @@ BDEPEND=""
 INSTALL="$N.install"
 
 pbs_unpack() {
-        dounpack
+    dounpack
 }
 
 pbs_patch() {

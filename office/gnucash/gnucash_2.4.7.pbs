@@ -8,7 +8,7 @@
 DESCRIPTION="GnuCash is personal and small-business financial-accounting software"
 HOMEPAGE="http://www.gnucash.org/"
 LICENSE="GPL"
-PACKAGER="StartOS Developers"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
 SRC_URI="http://sourceforge.net/projects/gnucash/files/gnucash%20%28stable%29/"$V"/"$N-$V".tar.bz2"
 
@@ -23,7 +23,7 @@ NOTES=""
 #ICONFILE="test.png"   or "/opt/test/test.png"
 
 pbs_unpack() {
-        dounpack
+    dounpack
 }
 
 pbs_config() {

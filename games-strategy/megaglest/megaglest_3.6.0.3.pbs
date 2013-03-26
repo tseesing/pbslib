@@ -8,7 +8,7 @@
 DESCRIPTION="Fork of Glest, a 3D real-time strategy game in a fantastic world."
 HOMEPAGE="http://sourceforge.net/projects/megaglest/"
 LICENSE="GPL"
-PACKAGER="StartOS Developers"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
 SRC_URI="http://downloads.sourceforge.net/"$N"/"$N"-source-"$V".tar.xz"
 CHECKSUM="5a4a2429435031d9f9cc5d9535a9de9d"
@@ -22,7 +22,7 @@ CONFLICT=""
 INSTALL="$N.install"
 
 pbs_unpack() {
-        dounpack
+    dounpack
 }
 
 pbs_config() {

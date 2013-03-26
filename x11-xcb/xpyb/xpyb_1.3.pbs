@@ -8,7 +8,7 @@
 DESCRIPTION="XCB-based Python bindings for the X Window System"
 HOMEPAGE="http://xcb.freedesktop.org/"
 LICENSE="GPL"
-PACKAGER="StartOS Developers"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
 SRC_URI="http://xcb.freedesktop.org/dist/"$N-$V".tar.bz2"
 CHECKSUM="f7d71dfd6cacb073f033bca57ff53f78"
@@ -20,7 +20,7 @@ OPTIONAL=""
 CONFLICT=""
 
 pbs_unpack() {
-        dounpack
+    dounpack
 }
 
 pbs_config() {

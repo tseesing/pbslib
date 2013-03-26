@@ -1,0 +1,38 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="A Fast, Easy and Free BitTorrent client"
+HOMEPAGE="http://www.transmissionbt.com/"
+LICENSE="MIT"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
+
+SRC_URI="http://transmission.cachefly.net/"$N-$V".tar.xz"
+CHECKSUM=""
+
+RDEPEND="miniupnpc libevent curl gtk3"
+BDEPEND=""
+RECOMMENDED=""
+
+DESKTOPFILE="transmission-gtk.desktop"
+
+pbs_unpack() {
+    dounpack
+}
+
+pbs_config() {
+    config+="--disable-static"
+    doconfig
+}
+
+pbs_build() {
+    domake 
+}
+
+pbs_install() {
+    domkinstall
+    dodoc COPYING
+}

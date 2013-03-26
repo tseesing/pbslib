@@ -8,7 +8,7 @@
 DESCRIPTION="The Eazel Extentions Library"
 HOMEPAGE="http://www.gnome.org/"
 LICENSE="GPL"
-PACKAGER="StartOS Developers"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
 SRC_URI="http://ftp.gnome.org/pub/GNOME/sources/eel/2.26/"$N-$V".tar.bz2"
 
@@ -17,7 +17,7 @@ BDEPEND=""
 RECOMMENDED=""
 
 pbs_unpack() {
-        dounpack
+    dounpack
 }
 
 pbs_config() {

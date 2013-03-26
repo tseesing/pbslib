@@ -7,7 +7,7 @@
 DESCRIPTION="LightDM greeter for StartOS"
 HOMEPAGE="http://www.startos.org"
 LICENSE="GPL"
-PACKAGER="StartOS Developers"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
 SRC_URI="git://git.ylmf.com/lightdm-ylmfos-greeter.git"
 
@@ -16,7 +16,7 @@ BDEPEND=""
 REPLACE="lightdm-ylmfos-greeter"
 
 pbs_unpack() {
-        dounpack
+    dounpack
 }
 
 pbs_config() {

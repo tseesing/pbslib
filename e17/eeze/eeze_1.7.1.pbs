@@ -8,7 +8,7 @@
 DESCRIPTION="Device abstraction library."
 HOMEPAGE="http://www.enlightenment.org/"
 LICENSE="BSD"
-PACKAGER="StartOS Developers"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
 SRC_URI="http://download.enlightenment.org/releases/"$N-$V".tar.gz"
 
@@ -19,7 +19,7 @@ OPTIONAL=""
 CONFLICT=""
 
 pbs_unpack() {
-        dounpack
+    dounpack
 }
 
 pbs_config() {

@@ -1,0 +1,30 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="Awesome music player with brilliant and tweakful UI"
+HOMEPAGE="http://www.linuxdeepin.com/"
+LICENSE="GPL"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
+
+SRC_URI="http://packages.linuxdeepin.com/deepin/pool/main/d/"$N"/"$N"_1+git"$V"_all.deb"
+CHECKSUM="8cc7ae5ff0be2dadc4cc33e9f1f644e4"
+
+RDEPEND="python deepin-ui(>=201208171059) mutagen py-query py-scipy py-chardet py-cssselect py-imaging gst-plugins-bad(>=0.10.22) qhull gst-plugins-ugly gst-ffmpeg0.10"
+RECOMMENDED=""
+BDEPEND=""
+OPTIONAL=""
+CONFLICT=""
+
+INSTALL="$N.install"
+
+pbs_unpack() {
+    dounpack
+}
+
+pbs_install() {
+    docp data/* "$PKGDIR"/
+}

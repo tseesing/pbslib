@@ -8,7 +8,7 @@
 DESCRIPTION="Utility libraries for XC Binding - client and window-manager helpers for ICCCM"
 HOMEPAGE="http://xcb.freedesktop.org/"
 LICENSE="GPL"
-PACKAGER="StartOS Developers"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
 SRC_URI="http://xcb.freedesktop.org/dist/"$N-$V".tar.bz2"
 CHECKSUM="dda47289bc846a6a3e07824e9ec3aef8"
@@ -20,7 +20,7 @@ OPTIONAL=""
 CONFLICT=""
 
 pbs_unpack() {
-        dounpack
+    dounpack
 }
 
 pbs_config() {

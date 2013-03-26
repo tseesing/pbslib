@@ -8,7 +8,7 @@
 DESCRIPTION="Mozilla Runtime Environment"
 HOMEPAGE="http://wiki.mozilla.org/XUL:Xul_Runner"
 LICENSE="MPL,GPL,LGPL"
-PACKAGER="StartOS Developers"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
 SRC_URI="https://ftp.mozilla.org/pub/mozilla.org/firefox/releases/"$V"/source/firefox-"$V".source.tar.bz2"
 CHECKSUM="c2f884f0f6c41c65cf20f678a1ee7191"

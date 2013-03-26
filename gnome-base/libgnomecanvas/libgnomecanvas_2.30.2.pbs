@@ -8,7 +8,7 @@
 DESCRIPTION="An engine for structured graphics based on the Tk canvas widget and is an essential GNOME library.."
 HOMEPAGE="http://developer.gnome.org/doc/API/2.0/libgnomecanvas/"
 LICENSE="GPLv2"
-PACKAGER="StartOS Developers"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
 SRC_URI="http://ftp.acc.umu.se/pub/gnome/platform/2.32/2.32.1/sources/"$N-$V".tar.bz2"
 
@@ -16,7 +16,7 @@ RDEPEND=" libart_lgpl"
 BDEPEND=""
 
 pbs_unpack() {
-        dounpack
+    dounpack
 }
 
 pbs_config() {

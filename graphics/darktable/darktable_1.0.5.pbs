@@ -8,7 +8,7 @@
 DESCRIPTION="Utility to organize and develop raw images"
 HOMEPAGE="http://darktable.sf.net"
 LICENSE="GPL"
-PACKAGER="StartOS Developers"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
 SRC_URI="http://downloads.sourceforge.net/project/"$N"/"$N"/1.0/"$N-$V".tar.gz"
 CHECKSUM="9ad88a1a6b9761fce28c8073d8f47941"
@@ -23,7 +23,7 @@ REPLACE=""
 INSTALL="$N.install"
 
 pbs_unpack() {
-        dounpack
+    dounpack
 }
 
 pbs_config() {

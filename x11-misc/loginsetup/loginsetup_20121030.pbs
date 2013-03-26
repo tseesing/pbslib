@@ -8,11 +8,11 @@
 DESCRIPTION="Configuration tools for lightdm"
 HOMEPAGE="http://www.startos.org"
 LICENSE="GPL"
-PACKAGER="StartOS Developers"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
 SRC_URI="git://git.ylmf.com/"$N".git"
 
-RDEPEND="lightdm pygtk"
+RDEPEND="lightdm py-gtk"
 BDEPEND="gnome-common"
 RECOMMENDED=""
 

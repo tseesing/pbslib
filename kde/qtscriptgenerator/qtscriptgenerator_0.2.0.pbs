@@ -8,7 +8,7 @@
 DESCRIPTION="A tool that generates Qt bindings for Qt Scrip"
 HOMEPAGE="http://code.google.com/p/qtscriptgenerator/"
 LICENSE="GPL"
-PACKAGER="StartOS Developers<>"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com><>"
 
 SRC_URI="http://qtscriptgenerator.googlecode.com/files/"$N"-src-"$V".tar.gz"
 CHECKSUM="4c1078f26b196156e857c17c9d11a66cfea66f00"
@@ -17,7 +17,7 @@ RDEPEND="qt"
 BDEPEND=""
 
 pbs_unpack() {
-        dounpack
+    dounpack
 }
 
 pbs_patch() {

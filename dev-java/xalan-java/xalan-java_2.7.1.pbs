@@ -8,7 +8,7 @@
 DESCRIPTION="XSLT processor for transforming XML documents into HTML, text, or other XML document types"
 HOMEPAGE="http://xml.apache.org/xalan-j"
 LICENSE="APACHE"
-PACKAGER="StartOS Developers"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
 SRC_URI="http://www.apache.org/dist/xml/xalan-j/xalan-j_2_7_1-bin-2jars.tar.gz"
 
@@ -18,7 +18,7 @@ RECOMMENDED=""
 CONFLICT=""
 
 pbs_unpack() {
-        dounpack
+    dounpack
 }
 
 pbs_install() {

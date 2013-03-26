@@ -8,7 +8,7 @@
 DESCRIPTION="LXDE terminal emulator"
 HOMEPAGE="http://lxde.org"
 LICENSE="GPL"
-PACKAGER="StartOS Developers"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
 SRC_URI="http://sourceforge.net/projects/lxde/files/LXTerminal%20%28terminal%20emulator%29/LXTerminal%20"$V"/"$N-$V".tar.gz"
 

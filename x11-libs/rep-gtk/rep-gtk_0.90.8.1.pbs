@@ -8,7 +8,7 @@
 DESCRIPTION="A GTK+/libglade/GNOME language binding for the librep Lisp environment"
 HOMEPAGE="http://sawfish.wikia.com/wiki/Main_Page"
 LICENSE="GPL"
-PACKAGER="StartOS Developers"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
 SRC_URI="http://download.tuxfamily.org/librep/"$N"/"$N-$V".tar.xz"
 CHECKSUM="00c1d9d7fe1c4d8851a59efa0e5a0645"
@@ -21,7 +21,7 @@ CONFLICT=""
 REPLACE=""
 
 pbs_unpack() {
-        dounpack
+    dounpack
 }
 
 pbs_config() {

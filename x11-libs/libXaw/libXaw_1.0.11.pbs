@@ -17,7 +17,7 @@ RDEPEND="libXmu libXpm"
 BDEPEND=""
 
 pbs_unpack() {
-        dounpack
+    dounpack
 }
 
 pbs_config() {

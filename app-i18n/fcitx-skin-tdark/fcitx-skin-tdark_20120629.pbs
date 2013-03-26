@@ -8,7 +8,7 @@
 DESCRIPTION="fcitx skin edited by thinkmind"
 HOMEPAGE="http://www.startos.org"
 LICENSE="GPL"
-PACKAGER="StartOS Developers"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 GROUP="fcitx"
 
 SRC_URI="git://git.ylmf.com/"$N".git"
@@ -20,7 +20,7 @@ OPTIONAL=""
 CONFLICT=""
 
 pbs_unpack() {
-        dounpack
+    dounpack
 }
 
 pbs_install() {

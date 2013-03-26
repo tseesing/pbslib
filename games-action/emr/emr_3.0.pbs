@@ -8,7 +8,7 @@
 DESCRIPTION="A unique scenario based upon the Aleph One (Marathon) engine."
 HOMEPAGE="http://excaliburworld.com/emr/emr3/index.html"
 LICENSE="GPL"
-PACKAGER="StartOS Developers"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
 SRC_URI="http://downloads.sourceforge.net/emr3/"$N-$V"-0602.tgz"
 CHECKSUM="21afa8e5cca3ca474873f8cd45b8a6c1"
@@ -22,7 +22,7 @@ CONFLICT=""
 INSTALL="$N.install"
 
 pbs_unpack() {
-        dounpack
+    dounpack
 }
 
 pbs_patch() {

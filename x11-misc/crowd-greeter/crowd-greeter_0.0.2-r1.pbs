@@ -8,7 +8,7 @@
 DESCRIPTION="A 3D lightdm greeter"
 HOMEPAGE="https://launchpad.net/crowd-greeter"
 LICENSE="GPL"
-PACKAGER="StartOS Developers"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
 SRC_URI="https://launchpad.net/~lightdm-team/+archive/crowd-greeter/+files/"${N}_$V".orig.tar.gz"
 CHECKSUM="c6c839d4fac957065c7e1cb326aa394e"
@@ -20,7 +20,7 @@ OPTIONAL=""
 CONFLICT=""
 
 pbs_unpack() {
-        dounpack
+    dounpack
 }
 
 pbs_config() {

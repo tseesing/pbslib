@@ -14,8 +14,8 @@ SRC_URI="http://ftp.acc.umu.se/pub/GNOME/apps/3.6/3.6.2/sources/"$N-$V".tar.xz"
 
 RDEPEND="python"
 BDEPEND=""
-RECOMMENDED="ipython"
-OPTIONAL="ipython: ipython console view"
+RECOMMENDED="py-ipython"
+OPTIONAL="py-ipython: ipython console view"
 
 INSTALL="$N.install"
 

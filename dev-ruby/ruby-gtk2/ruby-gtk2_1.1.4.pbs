@@ -8,7 +8,7 @@
 DESCRIPTION="Ruby Gtk2 bindings"
 HOMEPAGE="http://sourceforge.net/projects/ruby-gnome2"
 LICENSE="LGPL"
-PACKAGER="StartOS Developers"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 GROUP="ruby"
 
 SRC_URI="http://downloads.sourceforge.net/ruby-gnome2/"$N-$V".tar.gz"
@@ -22,7 +22,7 @@ CONFLICT=""
 REPLACE=""
 
 pbs_unpack() {
-        dounpack
+    dounpack
 }
 
 pbs_config() {

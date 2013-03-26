@@ -8,7 +8,7 @@
 DESCRIPTION="a portable, high level programming interface to various calling conventions."
 HOMEPAGE="http://sourceware.org/libffi/"
 LICENSE="MIT"
-PACKAGER="StartOS Developers"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
  
 SRC_URI="ftp://sourceware.org/pub//"$N"/"$N-$V".tar.gz"
 CHECKSUM="f69b9693227d976835b4857b1ba7d0e3"
@@ -34,4 +34,3 @@ pbs_install() {
     domkinstall
     dodoc LICENSE
 }
-

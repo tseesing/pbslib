@@ -8,7 +8,7 @@
 DESCRIPTION="An implementation of basic iCAL protocols from citadel, previously known as aurore"
 HOMEPAGE="http://freeassociation.sourceforge.net"
 LICENSE="GPL"
-PACKAGER="StartOS Developers"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
  
 SRC_URI="http://switch.dl.sourceforge.net/sourceforge/freeassociation/"$N-$V".tar.gz"
 
@@ -17,7 +17,7 @@ BDEPEND=""
 RECOMMENDED=""
 
 pbs_unpack() {
-        dounpack
+    dounpack
 }
 
 pbs_config() {

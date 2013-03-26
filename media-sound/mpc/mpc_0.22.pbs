@@ -8,7 +8,7 @@
 DESCRIPTION="Minimalist command line interface to MPD"
 HOMEPAGE="http://mpd.wikia.com/wiki/Client:Mpc"
 LICENSE="GPL"
-PACKAGER="StartOS Developers"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
 SRC_URI="http://downloads.sourceforge.net/musicpd/"$N-$V".tar.gz"
 CHECKSUM="e35414c1f5b25f4e500ceae125adb5bb9063b029"
@@ -20,7 +20,7 @@ OPTIONAL=""
 CONFLICT=""
 
 pbs_unpack() {
-        dounpack
+    dounpack
 }
 
 pbs_config() {

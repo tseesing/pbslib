@@ -18,7 +18,7 @@ BDEPEND="dri2proto fontsproto randrproto renderproto videoproto xextproto xf86dr
 RECOMMENDED=""
     
 pbs_unpack() {
-        dounpack
+    dounpack
 }
 
 pbs_config() {

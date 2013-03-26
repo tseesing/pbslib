@@ -8,7 +8,7 @@
 DESCRIPTION="Phonon GStreamer backend"
 HOMEPAGE="http://kde.org/"
 LICENSE="GPL,LGPL,FDL"
-PACKAGER="StartOS Developers"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
 SRC_URI="http://download.kde.org/stable/phonon/"$N"/"$V"/src/"$N-$V".tar.xz"
 CHECKSUM="cc380c7612aaaa87294185ded702f88a"
@@ -22,7 +22,7 @@ CONFLICT=""
 INSTALL="$N.install"
 
 pbs_unpack() {
-        dounpack
+    dounpack
 }
 
 pbs_config() {

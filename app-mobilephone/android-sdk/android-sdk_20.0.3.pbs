@@ -8,7 +8,7 @@
 DESCRIPTION="Google Android SDK"
 HOMEPAGE="http://developer.android.com/sdk/index.html"
 LICENSE="custom"
-PACKAGER="StartOS Developers"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
 SRC_URI="http://dl.google.com/android/"$N"_r"$V"-linux.tgz"
 CHECKSUM="919ea464007c2c4d04d5b366b4f64e916d99995e"
@@ -25,7 +25,7 @@ OPTIONS="nostrip"
 INSTALL="$N.install"
 
 pbs_unpack() {
-        dounpack
+    dounpack
 }
 
 pbs_install() {

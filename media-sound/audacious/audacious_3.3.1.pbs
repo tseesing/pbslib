@@ -8,7 +8,7 @@
 DESCRIPTION="a Gtk+ based audio player. "
 HOMEPAGE="http://audacious-media-player.org/"
 LICENSE="GPLv3"
-PACKAGER="StartOS Developers"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
 
 SRC_URI="http://distfiles.audacious-media-player.org/"$N-$V".tar.bz2"
@@ -20,7 +20,7 @@ RECOMMENDED="audacious-plugins(=3.3.1)"
 INSTALL="$N.install"
 
 pbs_unpack() {
-        dounpack
+    dounpack
 }
 
 pbs_config() {

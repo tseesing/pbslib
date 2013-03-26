@@ -14,7 +14,7 @@ RDEPEND="lua"
 BDEPEND=""
 
 pbs_unpack() {
-        dounpack
+    dounpack
 }
 
 pbs_config() {

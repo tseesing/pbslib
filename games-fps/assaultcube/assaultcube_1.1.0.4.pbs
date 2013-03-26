@@ -8,7 +8,7 @@
 DESCRIPTION="A realistic team oriented multiplayer FPS based on the Cube engine."
 HOMEPAGE="http://assault.cubers.net"
 LICENSE="zlib,custom"
-PACKAGER="StartOS Developers"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
 SRC_URI="http://downloads.sourceforge.net/actiongame/AssaultCube_v"$V".tar.bz2" # http://downloads.sourceforge.net/actiongame/AssaultCube_v"$V"_source.tar.bz2"
 CHECKSUM="a5eb79eaf564c5b4de1ffad0883e45e8" # 603b97a4262fb59ea86d483730b712e9"
@@ -23,7 +23,7 @@ REPLACE=""
 INSTALL="$N.install"
 
 pbs_unpack() {
-        dounpack
+    dounpack
 }
 
 pbs_install() {

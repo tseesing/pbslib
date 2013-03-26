@@ -9,19 +9,17 @@ DESCRIPTION="A simple GTK+ disc burner"
 HOMEPAGE="http://code.google.com/p/recorder/"
 LICENSE="GPL"
 PRIORITY=""
-PACKAGER="StartOS Developers"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
 SRC_URI="http://recorder.googlecode.com/files/"$N-$V$R".tar.bz2"
 
-RDEPEND="pygtk cdrkit dvd+rw-tools coreutils mpg123 vorbis-tools cdrdao vcdimager"
+RDEPEND="py-gtk cdrkit dvd+rw-tools coreutils mpg123 vorbis-tools cdrdao vcdimager"
 BDEPEND=" "
 RECOMMENDED=""
 CONFLICT=""
 
-NOTES=""
-
 pbs_unpack() {
-        dounpack
+    dounpack
 }
 
 pbs_config() {

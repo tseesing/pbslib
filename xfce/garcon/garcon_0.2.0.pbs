@@ -8,7 +8,7 @@
 DESCRIPTION="Xfce's freedesktop.org specification compatible menu implementation library"
 HOMEPAGE="http://wiki.xfce.org/dev/garcon"
 LICENSE="LGPL"
-PACKAGER="StartOS Developers"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
 SRC_URI="http://archive.xfce.org/xfce/4.10/src/"$N-$V".tar.bz2"
 CHECKSUM="301e7b8015060dd30407b68dd8c4bdb7"
@@ -20,7 +20,7 @@ OPTIONAL=""
 CONFLICT=""
 
 pbs_unpack() {
-        dounpack
+    dounpack
 }
 
 pbs_config() {

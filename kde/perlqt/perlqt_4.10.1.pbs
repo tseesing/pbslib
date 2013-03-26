@@ -14,7 +14,7 @@ GROUP="kde"
 SRC_URI="http://download.kde.org/stable/"$V"/src/"$N-$V".tar.xz"
 CHECKSUM="6b6b8b5a9018cec68404a72cff5524c437def6cb"
 
-RDEPEND="List-MoreUtils smokeqt"
+RDEPEND="perl-list-moreutils smokeqt"
 RECOMMENDED=""
 BDEPEND="cmake automoc4 smokegen"
 OPTIONAL=""

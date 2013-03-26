@@ -8,14 +8,14 @@
 DESCRIPTION="Fast lightweight tabbed filemanager"
 HOMEPAGE="http://pcmanfm.sourceforge.net/"
 LICENSE=""
-PACKAGER="StartOS Developers"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 SRC_URI="http://downloads.sourceforge.net/project/$N/pcmanfm-legacy/PCManFM%20$V/$N-$V.tar.bz2 "
 
 RDEPEND=""
 BDEPEND=""
 
 pbs_unpack() {
-        dounpack
+    dounpack
 }
 
 pbs_config() {

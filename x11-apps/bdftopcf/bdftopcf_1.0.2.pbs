@@ -15,7 +15,7 @@ RDEPEND="libXfont glibc freetype zlib libfontenc"
 BDEPEND=""
 
 pbs_unpack() {
-        dounpack
+    dounpack
 }
 
 pbs_config() {

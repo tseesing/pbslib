@@ -18,7 +18,7 @@ BDEPEND="desktop-file-utils"
 RECOMMENDED=""
 
 pbs_unpack() {
-        dounpack
+    dounpack
 }
 
 pbs_config() {

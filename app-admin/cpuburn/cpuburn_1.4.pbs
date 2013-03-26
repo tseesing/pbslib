@@ -8,7 +8,7 @@
 DESCRIPTION="CPU testing utilities in optimized assembler for maximum loading of CPUs"
 HOMEPAGE="https://launchpad.net/ubuntu/+source/cpuburn"
 LICENSE="GPL"
-PACKAGER="StartOS Developers"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
 SRC_URI="https://launchpad.net/ubuntu/+archive/primary/+files/"$N"_"$V"a.orig.tar.gz"
 CHECKSUM="a9e1df40c660324eb08e91847cbc41b9"
@@ -21,7 +21,7 @@ CONFLICT=""
 REPLACE=""
 
 pbs_unpack() {
-        dounpack
+    dounpack
 }
 
 pbs_patch() {

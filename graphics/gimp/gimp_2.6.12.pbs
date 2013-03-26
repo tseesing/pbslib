@@ -8,7 +8,7 @@
 DESCRIPTION="GNU Image Manipulation Program"
 HOMEPAGE="http://www.gimp.org/"
 LICENSE="GPL LGPL"
-PACKAGER="StartOS Developers"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
 SRC_URI="ftp://ftp.gimp.org/pub/"$N"/v2.6/"$N-$V$R".tar.bz2"
 CHECKSUM="9f876ee63a0c4a4c83f50f32fb3bbe63"
@@ -25,7 +25,7 @@ OPTIONAL="gutenprint: for sophisticated printing only as gimp has built-in cups 
 INSTALL="$N.install"
 
 pbs_unpack() {
-        dounpack
+    dounpack
 }
 
 pbs_patch() {

@@ -17,7 +17,7 @@ RDEPEND="libICE util-linux"
 BDEPEND=""
 
 pbs_unpack() {
-        dounpack
+    dounpack
 }
 
 pbs_config() {

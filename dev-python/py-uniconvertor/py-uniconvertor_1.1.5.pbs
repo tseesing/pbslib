@@ -1,0 +1,39 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="Commandline tool for popular vector formats convertion"
+HOMEPAGE="http://sk1project.org/modules.php?name=Products&product=uniconvertor"
+LICENSE="GPL"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
+GROUP="python"
+
+SRC_URI="http://uniconvertor.googlecode.com/files/uniconvertor-$V.tar.gz"
+CHECKSUM="d1272315a58304ece2ff588834e23f72"
+
+RDEPEND="python glibc py-sk1libs py-reportlab py-imaging"
+RECOMMENDED=""
+BDEPEND=""
+OPTIONAL=""
+CONFLICT=""
+REPLACE=""
+
+pbs_unpack() {
+    dounpack
+}
+
+pbs_config() {
+    config+=""
+    doconfig
+}
+
+pbs_build() {
+    domake
+}
+
+pbs_install() {
+    domkinstall
+}

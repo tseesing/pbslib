@@ -5,7 +5,7 @@
 DESCRIPTION="graphical boot animation and logger"
 HOMEPAGE="http://cgit.freedesktop.org/plymouth/"
 LICENSE="GPL"
-PACKAGER="StartOS Developers"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
 
 SRC_URI="http://freedesktop.org/software/plymouth/releases/"$N-$V".tar.bz2"

@@ -8,20 +8,20 @@
 DESCRIPTION="FreetuxTV is a free GTK2+ WebTV and Web Radio player for Linux."
 HOMEPAGE="http://code.google.com/p/freetuxtv/"
 LICENSE="GPL"
-PACKAGER="StartOS Developers"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
 SRC_URI="http://freetuxtv.googlecode.com/files/"$N-$V".tar.gz"
 CHECKSUM="8056e54c1644eaf8999964acb7b3e7479d3c4b04"
 
 RDEPEND="vlc libnotify"
-BDEPEND="xml-parser"
+BDEPEND="perl-xml-parser"
 RECOMMENDED=""
 CONFLICT=""
 
 INSTALL="$N.install"
 
 pbs_unpack() {
-        dounpack
+    dounpack
 }
 
 pbs_config() {

@@ -8,7 +8,7 @@
 DESCRIPTION="Userspace access to USB devices"
 HOMEPAGE="http://libusb.org/"
 LICENSE="GPL"
-PACKAGER="StartOS Developers"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
 SRC_URI="http://sourceforge.net/projects/"$N"/files/"$N"-1.0/"$N-$V"/"$N-$V".tar.bz2"
 CHECKSUM="7f5a02375ad960d4e33a6dae7d63cfcb"
@@ -17,7 +17,7 @@ RDEPEND="glibc"
 BDEPEND=""
 
 pbs_unpack() {
-        dounpack
+    dounpack
 }
 
 pbs_config() {

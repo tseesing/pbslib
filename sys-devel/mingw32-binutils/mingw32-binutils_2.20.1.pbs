@@ -8,7 +8,7 @@
 DESCRIPTION="A set of programs to assemble and manipulate binary and object files (mingw)"
 HOMEPAGE="https://sourceforge.net/projects/mingw/files/MinGW/Base/binutils"
 LICENSE="GPL"
-PACKAGER="StartOS Developers"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
 SRC_URI="http://ncu.dl.sourceforge.net/project/mingw/MinGW/BaseSystem/GNU-Binutils/binutils-2.20.1/binutils-"$V$R"-src.tar.gz"
 
@@ -20,7 +20,7 @@ CONFLICT=""
 OPTIONS="nostrip"
 
 pbs_unpack() {
-        dounpack
+    dounpack
 }
 
 pbs_config() {

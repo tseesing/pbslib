@@ -14,7 +14,7 @@ PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>
 SRC_URI="ftp://ftp.freedesktop.org/pub/mesa/"$V"/MesaLib-"$V".tar.bz2" 
 CHECKSUM="97d6554c05ea7449398afe3a0ede7018"
 
-RDEPEND="glibc libdrm libXxf86vm libXdamage expat gcc-libs libX11 libXext libXfixes libxcb systemd libvdpau"
+RDEPEND="wayland systemd libdrm libffi libXdamage libXxf86vm expat libvdpau"
 BDEPEND="glproto dri2proto python libxml2 imake llvm libvdpau"
 RECOMMENDED=""
 
@@ -31,7 +31,7 @@ pbs_config() {
              --enable-gallium-llvm 
              --enable-egl 
              --enable-gallium-egl 
-             --with-egl-platforms=x11,drm 
+             --with-egl-platforms=x11,drm,wayland 
              --enable-shared-glapi 
              --enable-gbm 
              --enable-glx-tls 
@@ -56,9 +56,8 @@ pbs_build() {
 pbs_install() {
     domkinstall
     #cd "$PKGDIR"/usr/lib/
-    # Backup /usr/lib/libGL.so.1.2 
-    # which would be overrided by ati-graphic-driver and so packages.
-     #mv libGL.so.1.2 libGL.so.1.2-pkg."$N"
+    #Backup /usr/lib/libGL.so.1.2 
+    #which would be overrided by ati-graphic-driver and so packages.
+    #mv libGL.so.1.2 libGL.so.1.2-pkg."$N"
     #doln /usr/lib/libGL.so.1.2-pkg."$N" libGL.so.1.2
 }
-

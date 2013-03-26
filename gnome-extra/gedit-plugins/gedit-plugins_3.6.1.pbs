@@ -13,7 +13,7 @@ PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 SRC_URI="http://ftp.gnome.org/pub/gnome/sources/$N/${V:0:3}/$N-$V.tar.xz"
 CHECKSUM="c5e92830e6029110bf1117bd9f31b23a9ad907210b8cb37039772f5bfcf6d174"
 
-RDEPEND="gedit dbus-python"
+RDEPEND="gedit py-dbus"
 BDEPEND=""
 RECOMMENDED=""
 OPTIONAL="gucharmap: for charmap plugin
@@ -37,4 +37,3 @@ pbs_build() {
 pbs_install() {
     domkinstall
 }
-

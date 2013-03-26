@@ -8,7 +8,7 @@
 DESCRIPTION="Back up and restore used-blocks of a partition"
 HOMEPAGE="http://partclone.org"
 LICENSE="GPL"
-PACKAGER="StartOS Developers"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
 SRC_URI="https://downloads.sourceforge.net/project/"$N"/stable/"$V"/"$N"_"$V".tar.gz"
 CHECKSUM="c873588f26185d6ce8db7b4c5470aa00"
@@ -21,7 +21,7 @@ CONFLICT=""
 REPLACE=""
 
 pbs_unpack() {
-        dounpack
+    dounpack
 }
 
 pbs_config() {

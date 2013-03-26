@@ -8,14 +8,14 @@
 DESCRIPTION="Wrapper for using Windows drivers for some wireless cards"
 HOMEPAGE="http://sourceforge.net/projects/ndiswrapper/files/stable/"
 LICENSE="GPL"
-PACKAGER="StartOS Developers"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
 SRC_URI="http://sourceforge.net/projects/ndiswrapper/files/stable/"$N-$V".tar.gz"
 
 PROVIDE="ndiswrapper-utils ndiswrapper-driver"
 
 pbs_unpack() {
-        dounpack
+    dounpack
 }
 
 pbs_patch() {

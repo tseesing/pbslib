@@ -13,7 +13,7 @@ PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>
 
 SRC_URI="http://downloads.sourceforge.net/project/"$N"/"$N"/"$V"/"$N-$V".tar.bz2"
 
-RDEPEND="glibc libcdio"
+RDEPEND="glibc"
 BDEPEND=""
 RECOMMENDED=""
 
@@ -32,5 +32,3 @@ pbs_build() {
 pbs_install() {
     domkinstall
 }
-
-

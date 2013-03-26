@@ -8,7 +8,7 @@
 DESCRIPTION=" NetworkManager OpenVPN plugin."
 HOMEPAGE="http://www.gnome.org/projects/NetworkManager/"
 LICENSE="GPL"
-PACKAGER="StartOS Developers"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
 SRC_URI="http://ftp.gnome.org/pub/gnome/sources/NetworkManager-openvpn/0.8/NetworkManager-openvpn-"$V".tar.bz2"
 
@@ -17,7 +17,7 @@ BDEPEND=""
 RECOMMENDED=""
 
 pbs_unpack() {
-        dounpack
+    dounpack
 }
 
 pbs_config() {

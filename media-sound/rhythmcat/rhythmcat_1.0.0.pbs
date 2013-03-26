@@ -9,7 +9,7 @@ DESCRIPTION=" a music player which can be running under Linux. "
 HOMEPAGE="http://code.google.com/p/rhythmcat/"
 LICENSE="GPLv3"
 PRIORITY=""
-PACKAGER="StartOS Developers"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
 SRC_URI="http://rhythmcat.googlecode.com/files/RhythmCat-1.0.0-alpha1~110402.tar.bz2"
 
@@ -23,7 +23,7 @@ INSTALL="$N.install"
 NOTES=""
 
 pbs_unpack() {
-        dounpack
+    dounpack
 }
 
 pbs_config() {

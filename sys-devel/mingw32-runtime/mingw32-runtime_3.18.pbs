@@ -8,7 +8,7 @@
 DESCRIPTION="mingw32 run-time library"
 HOMEPAGE="http://www.mingw.org/"
 LICENSE="GPL"
-PACKAGER="StartOS Developers"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
 SRC_URI="http://ncu.dl.sourceforge.net/project/mingw/MinGW/BaseSystem/RuntimeLibrary/MinGW-RT/mingwrt-3.18/mingwrt-3.18-mingw32-src.tar.gz 
 http://ncu.dl.sourceforge.net/project/mingw/MinGW/BaseSystem/RuntimeLibrary/Win32-API/w32api-3.14/w32api-3.14-mingw32-src.tar.gz"
@@ -20,7 +20,7 @@ CONFLICT=""
 OPTIONS="nostrip"
 
 pbs_unpack() {
-        dounpack
+    dounpack
     tar xf "$YBS_SOURCE"/w32api-3.14-mingw32-src.tar.gz
     ln -sf w32api-3.14-mingw32 w32api
 }

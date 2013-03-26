@@ -8,7 +8,7 @@
 DESCRIPTION="Windows header files fro mingw32 C cross-compiler"
 HOMEPAGE="http://www.mingw.org/"
 LICENSE="GPL"
-PACKAGER="StartOS Developers"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
 SRC_URI="http://ncu.dl.sourceforge.net/project/mingw/MinGW/BaseSystem/RuntimeLibrary/Win32-API/w32api-3.14/w32api-3.14-mingw32-src.tar.gz"
 
@@ -20,7 +20,7 @@ CONFLICT=""
 OPTIONS="nostrip"
 
 pbs_unpack() {
-        dounpack
+    dounpack
 }
 
 pbs_config() {

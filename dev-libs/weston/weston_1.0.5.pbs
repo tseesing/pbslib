@@ -1,0 +1,44 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="Reference implementation of a Wayland compositor"
+HOMEPAGE="http://wayland.freedesktop.org"
+LICENSE="MIT"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
+
+SRC_URI="http://wayland.freedesktop.org/releases/$N-$V.tar.xz"
+CHECKSUM="a97030613e066c05e267ea0d7888fd5f7a08eea2"
+
+RDEPEND="wayland libxkbcommon libwebp mesa poppler-glib mtdev libXcursor"
+RECOMMENDED=""
+BDEPEND=""
+OPTIONAL=""
+CONFLICT=""
+REPLACE=""
+
+pbs_unpack() {
+    dounpack
+}
+
+pbs_config() {
+    config+="--disable-android-compositor"
+    doconfig
+}
+
+pbs_build() {
+    domake
+}
+
+pbs_install() {
+    domkinstall
+    dodoc COPYING
+    # embed more clients
+    for _c in clickdot cliptest dnd editor eventdemo flower gears image \
+              keyboard resizor simple-egl simple-shm smoke view; do
+        install -Dm755 clients/"$_c" "$PKGDIR"/usr/bin/weston-"$_c"
+    done
+}

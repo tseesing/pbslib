@@ -8,7 +8,7 @@
 DESCRIPTION="A kart racing game featuring Tux and his friends"
 HOMEPAGE="http://supertuxkart.sourceforge.net/"
 LICENSE="GPL"
-PACKAGER="StartOS Developers"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
 SRC_URI="http://downloads.sourceforge.net/"$N"/"$N-$V"-src.tar.bz2"
 CHECKSUM="502664b2ec9ad5ab88b1882fef4c074d"
@@ -22,7 +22,7 @@ CONFLICT=""
 INSTALL="$N.install"
 
 pbs_unpack() {
-        dounpack
+    dounpack
 }
 
 pbs_config() {

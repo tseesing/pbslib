@@ -8,7 +8,7 @@
 DESCRIPTION="Action-loaded 2D arcade shooter game"
 HOMEPAGE="http://www.schwardtnet.de/alienblaster/"
 LICENSE="GPL"
-PACKAGER="StartOS Developers"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
 SRC_URI="http://www.schwardtnet.de/alienblaster/archives/"$N-$V".tgz"
 CHECKSUM="27412a868f7d4ae0949036aeb29a6691"
@@ -22,7 +22,7 @@ CONFLICT=""
 INSTALL="$N.install"
 
 pbs_unpack() {
-        dounpack
+    dounpack
 }
 
 pbs_patch() {

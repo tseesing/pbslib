@@ -8,7 +8,7 @@
 DESCRIPTION="A powerful BitTorrent client for KDE"
 HOMEPAGE="http://ktorrent.org"
 LICENSE="GPL"
-PACKAGER="StartOS Developers"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 GROUP="kde"
 
 SRC_URI="http://ktorrent.org/downloads/"$V"/"$N-$V".tar.bz2"
@@ -22,7 +22,7 @@ CONFLICT=""
 INSTALL="$N.install"
 
 pbs_unpack() {
-        dounpack
+    dounpack
 }
 
 pbs_patch() {

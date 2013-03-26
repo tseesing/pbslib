@@ -1,0 +1,38 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="chewing for fcitx"
+HOMEPAGE="http://code.google.com/p/fcitx/"
+LICENSE="GPL"
+PACKAGER="Zhongxin Huang <huanghzongxin@ivali.com>"
+GROUP="fcitx"
+
+SRC_URI="http://fcitx.googlecode.com/files/"$N-$V".tar.xz"
+CHECKSUM="cb570a2b8343ef8a843979716a625cd0e3a16ff3"
+
+RDEPEND="fcitx(>=4.2.7) libchewing"
+RECOMMENDED=""
+BDEPEND="cmake"
+OPTIONAL=""
+CONFLICT=""
+
+pbs_unpack() {
+    dounpack
+}
+
+pbs_config() {
+    config+="-DCMAKE_BUILD_TYPE=Release"
+    doconfig
+}
+
+pbs_build() {
+    domake
+}
+
+pbs_install() {
+    domkinstall
+}

@@ -8,7 +8,7 @@
 DESCRIPTION="An acrobatic racing game"
 HOMEPAGE="http://maniadrive.raydium.org/"
 LICENSE="GPL"
-PACKAGER="StartOS Developers"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
 SRC_URI="http://prdownloads.sourceforge.net/maniadrive/ManiaDrive-"$V"-linux-i386.tar.gz"
 CHECKSUM="5592eaf4b8c4012edcd4f0fc6e54c09c"
@@ -22,7 +22,7 @@ CONFLICT=""
 INSTALL="$N.install"
 
 pbs_unpack() {
-        dounpack
+    dounpack
 }
 
 pbs_install() {

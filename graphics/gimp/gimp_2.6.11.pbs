@@ -8,7 +8,7 @@
 DESCRIPTION="GNU Image Manipulation Program"
 HOMEPAGE="http://www.gimp.org/"
 LICENSE="GPL LGPL"
-PACKAGER="StartOS Developers"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
 SRC_URI="ftp://ftp.gimp.org/pub/"$N"/v2.6/"$N-$V$R".tar.bz2"
 
@@ -18,7 +18,7 @@ BDEPEND=""
 INSTALL="$N.install"
 
 pbs_unpack() {
-        dounpack
+    dounpack
 }
 
 pbs_config() {

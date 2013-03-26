@@ -8,7 +8,7 @@
 DESCRIPTION="A collection of algorithms and sample code for various computer vision problems."
 HOMEPAGE="http://opencv.willowgarage.com"
 LICENSE="BSD"
-PACKAGER="StartOS Developers"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
 SRC_URI="http://sourceforge.net/projects/opencvlibrary/files/opencv-unix/"$V"/OpenCV-"$V".tar.bz2"
 CHECKSUM="059ef86fc1724d69b75832a0d2929ff5"
@@ -20,7 +20,7 @@ OPTIONAL=""
 CONFLICT=""
 
 pbs_unpack() {
-        dounpack
+    dounpack
 }
 
 pbs_config() {

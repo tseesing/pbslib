@@ -8,20 +8,17 @@
 DESCRIPTION="Redhat's Newt windowing toolkit development files"
 HOMEPAGE="https://fedorahosted.org/newt/"
 LICENSE="GPL"
-PRIORITY=""
-PACKAGER="StartOS Developers"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
-SRC_URI="https://fedorahosted.org/releases/n/e/"$N"/"$N-$V$R".tar.gz"
+SRC_URI="https://fedorahosted.org/releases/n/e/"$N"/"$N-$V".tar.gz"
 
-RDEPEND=""
-BDEPEND="slang"
+RDEPEND="popt slang"
+BDEPEND=""
 RECOMMENDED=""
 CONFLICT=""
 
-NOTES=""
-
 pbs_unpack() {
-        dounpack
+    dounpack
 }
 
 pbs_config() {
@@ -34,6 +31,7 @@ pbs_build() {
 }
 
 pbs_install() {
-    #make DESTDIR="$PKGDIR" install
-    domkinstall instroot="$PKGDIR" install
+    domkinstall instroot="$PKGDIR"
 }
+
+

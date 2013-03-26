@@ -9,7 +9,7 @@ DESCRIPTION="Statistics generator for git"
 HOMEPAGE="http://gitstats.sourceforge.net/"
 LICENSE="GPL"
 YARCH="any"
-PACKAGER="StartOS Developers"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
 SRC_URI="git://repo.or.cz/gitstats.git"
 
@@ -19,7 +19,7 @@ BDEPEND=""
 CONFLICT=""
 
 pbs_unpack() {
-        dounpack
+    dounpack
 }
 
 pbs_patch() {

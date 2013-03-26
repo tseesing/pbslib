@@ -14,7 +14,7 @@ SRC_URI="http://avahi.org/download/"$N-$V".tar.gz"
 CHECKSUM="7e05bd78572c9088b03b1207a0ad5aba38490684"
 
 RDEPEND="expat libdaemon glib2 libcap gdbm" 
-BDEPEND="qt pygtk mono intltool dbus-python gobject-introspection gtk3 xmltoman"
+BDEPEND="qt py-gtk mono intltool py-dbus gobject-introspection gtk3 xmltoman"
 RECOMMENDED=""
 
 OPTIONAL="dbus: communicating with client applications

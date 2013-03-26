@@ -8,7 +8,7 @@
 DESCRIPTION="A suite of utilities for transcoding video and audio codecs in different containers"
 HOMEPAGE="http://tcforge.berlios.de/"
 LICENSE="GPL"
-PACKAGER="StartOS Developers"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
 SRC_URI="http://ftp.lfs-matrix.net/pub/blfs/svn/t/"$N-$V".tar.bz2"
 CHECKSUM="9bb25a796a8591fb764de46ee87ce505"
@@ -20,7 +20,7 @@ OPTIONAL=""
 CONFLICT=""
 
 pbs_unpack() {
-        dounpack
+    dounpack
 }
 
 pbs_config() {

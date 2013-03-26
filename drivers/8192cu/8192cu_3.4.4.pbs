@@ -8,14 +8,14 @@
 DESCRIPTION="Realtek 8192C USB WiFi"
 HOMEPAGE="ftp://WebUser:r3iZ6vJI@202.134.71.21/cn/wlan/"
 LICENSE="GPL"
-PACKAGER="StartOS Developers"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
 SRC_URI="rtl8188C_8192C_usb_linux_v3.4.4_4749.20120730.tar.gz"
 
 PROVIDE="8192cu-source 8192cu-driver"
 
 pbs_unpack() {
-        dounpack
+    dounpack
 }
 
 pbs_patch() {

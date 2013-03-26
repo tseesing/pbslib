@@ -8,7 +8,7 @@
 DESCRIPTION="A free team based FPS/RTS hybrid built on the ioq3 engine. Includes community updates."
 HOMEPAGE="http://tremulous.net"
 LICENSE="GPL"
-PACKAGER="StartOS Developers"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
 SRC_URI=" http://releases.mercenariesguild.net/client/mgclient_source_Release_1.011.tar.gz
           http://releases.mercenariesguild.net/client/mg-client-manual.txt
@@ -30,7 +30,7 @@ CONFLICT=""
 INSTALL="$N.install"
 
 pbs_unpack() {
-        dounpack
+    dounpack
 }
 
 pbs_patch() {

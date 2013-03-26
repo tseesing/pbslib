@@ -8,7 +8,7 @@
 DESCRIPTION="Lightweight PDF viewer using Poppler and GTK+ libraries."
 HOMEPAGE="http://trac.emma-soft.com/epdfview/"
 LICENSE="GPL"
-PACKAGER="StartOS Developers"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
 SRC_URI="http://trac.emma-soft.com/epdfview/chrome/site/releases/"$N-$V".tar.bz2"
 
@@ -16,7 +16,7 @@ RDEPEND="cups poppler-glib"
 BDEPEND=""
 
 pbs_unpack() {
-        dounpack
+    dounpack
 }
 
 pbs_config() {

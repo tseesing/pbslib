@@ -8,7 +8,7 @@
 DESCRIPTION="Create bootable Live USB drives"
 HOMEPAGE="http://unetbootin.sourceforge.net"
 LICENSE="GPL"
-PACKAGER="StartOS Developers"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
 SRC_URI="http://downloads.sourceforge.net/project/"$N"/UNetbootin/"$V"/"$N"-source-"$V".tar.gz"
 
@@ -22,7 +22,7 @@ REPLACE=""
 INSTALL="$N.install"
 
 pbs_unpack() {
-        dounpack
+    dounpack
 }
 
 pbs_build() {

@@ -1,0 +1,38 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="Python bindings for Berkeley DB"
+HOMEPAGE="http://pypi.python.org/pypi/bsddb3"
+LICENSE="MIT"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
+GROUP="python"
+
+SRC_URI="http://pypi.python.org/packages/source/b/bsddb3/bsddb3-$V.tar.gz"
+CHECKSUM="d5aa4f293c4ea755e84383537f74be82"
+
+RDEPEND="berkeley-db python glibc"
+RECOMMENDED=""
+BDEPEND=""
+OPTIONAL=""
+CONFLICT=""
+
+pbs_unpack() {
+    dounpack
+}
+
+pbs_config() {
+    config+=""
+    doconfig
+}
+
+pbs_build() {
+    domake
+}
+
+pbs_install() {
+    domkinstall
+}

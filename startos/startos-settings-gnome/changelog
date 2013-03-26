@@ -1,0 +1,4 @@
+
+* 2013-03-22 Zhongxin Huang <huangzhongxin@ivali.com> - 20130322
+- org.gnome.startos.gschema.override: 去掉切换输入法的快捷键绑定
+- 仅适用于 ibus，和 fcitx 冲突.

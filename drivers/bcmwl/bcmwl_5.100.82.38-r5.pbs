@@ -8,14 +8,14 @@
 DESCRIPTION="driver for BCM4311/4312/4313 BCM4321/4322 BCM43224/43225/43227/43228."
 HOMEPAGE="http://www.broadcom.com/company/"
 LICENSE="GPL"
-PACKAGER="StartOS Developers"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
 SRC_URI="bcmwl-5.100.82.38.tar.bz2"
 
 PROVIDE="bcmwl-source bcmwl-driver"
 
 pbs_unpack() {
-        dounpack
+    dounpack
 }
 
 pbs_config() {

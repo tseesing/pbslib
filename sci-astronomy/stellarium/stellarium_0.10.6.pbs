@@ -8,7 +8,7 @@
 DESCRIPTION="Stellarium renders 3D photo-realistic skies in real time."
 HOMEPAGE="http://www.stellarium.org/"
 LICENSE="GPL"
-PACKAGER="StartOS Developers"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
 SRC_URI="http://downloads.sourceforge.net/project/"$N"/Stellarium-sources/"$V"/"$N-$V".tar.gz"
 
@@ -16,7 +16,7 @@ RDEPEND="qt"
 BDEPEND=""
 
 pbs_unpack() {
-        dounpack
+    dounpack
 }
 
 pbs_config() {

@@ -8,17 +8,17 @@
 DESCRIPTION="ldb is a LDAP-like embedded database."
 HOMEPAGE="http://ldb.samba.org/"
 LICENSE="GPLv"
-PACKAGER="StartOS Developers"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
 SRC_URI="http://www.samba.org/ftp/pub/"$N"/"$N-$V".tar.gz"
 
-RDEPEND="cyrus-sasl glibc openldap openssl popt python talloc tdb tevent zlib"
+RDEPEND="libcap openldap popt tdb tevent"
 RECOMMENDED=""
 BDEPEND=""
 CONFLICT=""
 
 pbs_unpack() {
-        dounpack
+    dounpack
 }
 
 pbs_config() {

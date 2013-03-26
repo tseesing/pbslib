@@ -8,19 +8,19 @@
 DESCRIPTION="A game in which you throw colorful bubbles and build groups to destroy the bubbles"
 HOMEPAGE="http://www.frozen-bubble.org"
 LICENSE="GPLv2"
-PACKAGER="StartOS Developers"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
 SRC_URI="http://www.frozen-bubble.org/data/"$N-$V$R".tar.bz2"
 
 RDEPEND="sdl-mixer sdl-pango"
-BDEPEND="file-slurp locale-maketext-lexicon"
+BDEPEND="perl-file-slurp perl-locale-maketext-lexicon"
 RECOMMENDED=""
 CONFLICT=""
 
 INSTALL="$N.install"
 
 pbs_unpack() {
-        dounpack
+    dounpack
 }
 
 pbs_config() {

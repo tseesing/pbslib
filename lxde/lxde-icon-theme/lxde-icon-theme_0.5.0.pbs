@@ -8,7 +8,7 @@
 DESCRIPTION="a set of default icons for LXDE theme"
 HOMEPAGE="http://lxde.org"
 LICENSE="GPL"
-PACKAGER="StartOS Developers"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 YARCH="any"
 
 SRC_URI="http://sourceforge.net/projects/lxde/files/LXDE%20Icon%20Theme/"$N-$V"/"$N-$V".tar.bz2"

@@ -8,7 +8,7 @@
 DESCRIPTION="A tool for transfer files to/from any OBEX enabled device"
 HOMEPAGE="http://dev.zuckschwerdt.org/openobex/wiki/ObexFtp"
 LICENSE="GPL"
-PACKAGER="StartOS Developers"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
 SRC_URI="http://downloads.sourceforge.net/openobex/"$N-$V".tar.bz2"
 CHECKSUM="f20762061b68bc921e80be4aebc349eb"
@@ -21,7 +21,7 @@ CONFLICT=""
 REPLACE=""
 
 pbs_unpack() {
-        dounpack
+    dounpack
 }
 
 pbs_config() {

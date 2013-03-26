@@ -8,7 +8,7 @@
 DESCRIPTION="An Portable Open Source UPnP Development Kit"
 HOMEPAGE="http://pupnp.sourceforge.net/"
 LICENSE="BSD"
-PACKAGER="StartOS Developers"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
 SRC_URI="http://downloads.sourceforge.net/project/pupnp/pupnp/libUPnP%20$V$R/"$N-$V".tar.bz2"
 
@@ -16,7 +16,7 @@ RDEPEND=""
 BDEPEND=""
 
 pbs_unpack() {
-        dounpack
+    dounpack
 }
 
 pbs_config() {

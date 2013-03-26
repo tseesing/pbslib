@@ -8,7 +8,7 @@
 DESCRIPTION="A bootloader for Linux"
 HOMEPAGE="https://alioth.debian.org/projects/lilo/"
 LICENSE="BSD"
-PACKAGER="StartOS Developers"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
 SRC_URI="http://lilo.alioth.debian.org/ftp/sources/"$N-$V".tar.gz"
 CHECKSUM="51b9b9db665d3b8724919e3d46054d12"
@@ -20,7 +20,7 @@ OPTIONAL=""
 CONFLICT=""
 
 pbs_unpack() {
-        dounpack
+    dounpack
 }
 
 pbs_build() {

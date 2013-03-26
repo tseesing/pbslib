@@ -1,0 +1,39 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="Build, test, and install Perl modules"
+HOMEPAGE="http://search.cpan.org/dist/Module-Build"
+LICENSE="GPL,PerlArtistic"
+GROUP="perl"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
+YARCH="any"
+
+SRC_URI="http://search.cpan.org/CPAN/authors/id/L/LE/LEONT/Module-Build-$V.tar.gz"
+CHECKSUM="ed5fe7e023af43b0722639b13ece8d2d"
+
+RDEPEND="perl"
+RECOMMENDED=""
+BDEPEND=""
+OPTIONAL=""
+CONFLICT=""
+REPLACE=""
+
+pbs_unpack() {
+    dounpack
+}
+
+pbs_config() {
+    perl Build.PL installdirs=vendor
+}
+
+pbs_build() {
+    perl Build test
+}
+
+pbs_install() {
+    perl Build install destdir="$PKGDIR"
+}

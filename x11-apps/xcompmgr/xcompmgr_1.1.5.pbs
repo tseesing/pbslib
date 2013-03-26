@@ -15,7 +15,7 @@ libxkbfile libxcb libXext libXpm util-linux zlib expat libXau libXdmcp"
 BDEPEND=""
 
 pbs_unpack() {
-        dounpack
+    dounpack
 }
 
 pbs_config() {

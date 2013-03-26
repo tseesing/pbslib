@@ -8,7 +8,7 @@
 DESCRIPTION="A generic framework for creating extensible applications"
 HOMEPAGE="http://www.mono-project.com/Mono.Addins"
 LICENSE="custom:MIT"
-PACKAGER="StartOS Developers"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
 SRC_URI="http://download.mono-project.com/sources/"$N"/"$N-$V".tar.bz2"
 CHECKSUM="afbbe5e9fdf9b03911bc8e6b94feb60b"
@@ -19,7 +19,7 @@ RECOMMENDED=""
 CONFLICT=""
 
 pbs_unpack() {
-        dounpack
+    dounpack
 }
 
 pbs_config() {

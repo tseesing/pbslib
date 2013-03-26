@@ -8,7 +8,7 @@
 DESCRIPTION="sakura is a terminal emulator based on GTK and VTE"
 HOMEPAGE="http://www.pleyades.net/david/sakura.php"
 LICENSE="GPL"
-PACKAGER="StartOS Developers"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
 SRC_URI="http://www.pleyades.net/david/projects/"$N"/"$N-$V".tar.bz2"
 
@@ -16,7 +16,7 @@ RDEPEND="vte"
 BDEPEND="cmake"
 
 pbs_unpack() {
-        dounpack
+    dounpack
 }
 
 pbs_config() {

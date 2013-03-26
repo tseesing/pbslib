@@ -8,7 +8,7 @@
 DESCRIPTION="X C-language Bindings library"
 HOMEPAGE="http://xcb.freedesktop.org/"
 LICENSE="GPL"
-PACKAGER="StartOS Developers"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
 SRC_URI="http://xcb.freedesktop.org/dist/"$N-$V$R".tar.bz2"
 
@@ -16,7 +16,7 @@ RDEPEND="libxslt libXau libXdmcp"
 BDEPEND="xcb-proto libXau libpthread-stubs"
 
 pbs_unpack() {
-        dounpack
+    dounpack
 }
 
 pbs_config() {

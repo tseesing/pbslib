@@ -8,7 +8,7 @@
 DESCRIPTION="simple task manager for LXDE"
 HOMEPAGE="http://lxde.org"
 LICENSE="GPL"
-PACKAGER="StartOS Developers"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
 SRC_URI="http://sourceforge.net/projects/lxde/files/LXTask%20%28task%20manager%29/LXTask%20"$V"/"$N-$V".tar.gz"
 

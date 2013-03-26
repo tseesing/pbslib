@@ -8,7 +8,7 @@
 DESCRIPTION="sunpinin for fcitx"
 HOMEPAGE="http://code.google.com/p/fcitx/"
 LICENSE="GPL"
-PACKAGER="StartOS Developers"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 GROUP="fcitx"
 
 SRC_URI="http://fcitx.googlecode.com/files/"$N-$V".tar.xz"
@@ -21,7 +21,7 @@ OPTIONAL=""
 CONFLICT=""
 
 pbs_unpack() {
-        dounpack
+    dounpack
 }
 
 pbs_config() {

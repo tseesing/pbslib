@@ -8,7 +8,7 @@
 DESCRIPTION="dos2unix includes utilities to convert text files with DOS or MAC line endings to Unix line endings and vice versa."
 HOMEPAGE="http://sourceforge.net/projects/dos2unix/"
 LICENSE="GPL"
-PACKAGER="StartOS Developers"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
 SRC_URI="http://sourceforge.net/projects/"$N"/files/"$N"/"$V"/"$N-$V".tar.gz"
 
@@ -18,7 +18,7 @@ RECOMMENDED=""
 CONFLICT=""
 
 pbs_unpack() {
-        dounpack
+    dounpack
 }
 
 pbs_config() {

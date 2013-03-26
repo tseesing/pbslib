@@ -8,7 +8,7 @@
 DESCRIPTION="Simple (or small or suckless) X Image Viewer"
 HOMEPAGE="https://github.com/muennich/sxiv/"
 LICENSE="GPL"
-PACKAGER="StartOS Developers"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
 SRC_URI="https://github.com/downloads/muennich/"$N"/"$N-$V".tar.gz"
 CHECKSUM="c887e0af1e4d5a101b285a46d288c419"
@@ -19,7 +19,7 @@ BDEPEND=""
 OPTIONAL=""
 
 pbs_unpack() {
-        dounpack
+    dounpack
 }
 
 pbs_patch() {

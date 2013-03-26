@@ -8,7 +8,7 @@
 DESCRIPTION="Lightweight library used to easily extract data from files archived in a single zip file"
 HOMEPAGE="http://zziplib.sourceforge.net/"
 LICENSE="LGPL/MPL"
-PACKAGER="StartOS Developers"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
 SRC_URI="http://downloads.sourceforge.net/"$N"/"$N-$V".tar.bz2"
 CHECKSUM="5fe874946390f939ee8f4abe9624b96c"
@@ -20,7 +20,7 @@ OPTIONAL=""
 CONFLICT=""
 
 pbs_unpack() {
-        dounpack
+    dounpack
 }
 
 pbs_config() {

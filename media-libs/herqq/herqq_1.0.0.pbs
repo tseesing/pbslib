@@ -8,7 +8,7 @@
 DESCRIPTION="A software library for building UPnP devices"
 HOMEPAGE="http://www.herqq.org"
 LICENSE="GPL"
-PACKAGER="StartOS Developers"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
 SRC_URI="http://downloads.sourceforge.net/hupnp/"$N-$V".zip"
 CHECKSUM="45a0632f7c7b64bc0fdab852d36c1e61"
@@ -20,7 +20,7 @@ OPTIONAL=""
 CONFLICT=""
 
 pbs_unpack() {
-        dounpack
+    dounpack
 }
 
 pbs_config() {

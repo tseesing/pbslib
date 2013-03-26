@@ -14,7 +14,7 @@ GROUP="kde"
 SRC_URI="http://download.kde.org/stable/$N/$V/src/$N-$V.tar.bz2"
 CHECKSUM="d0ae4a2cb81a54ae94ca24fdb3aed88d7f3a921e"
 
-RDEPEND=""
+RDEPEND="libjpeg-turbo liblastfm libofa nepomuk-core libgpod qjson libmtp libusb-compat"
 RECOMMENDED=""
 BDEPEND="automoc4 cmake mesa"
 OPTIONAL=""

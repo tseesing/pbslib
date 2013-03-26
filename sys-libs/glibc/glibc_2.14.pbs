@@ -8,7 +8,7 @@
 DESCRIPTION="GNU libc6 (also called glibc2) C library"
 HOMEPAGE="http://www.gnu.org/software/libc/libc.html"
 LICENSE="GPL,LGPL"
-PACKAGER="StartOS Developers"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 PRIORITY="required"
 
 SRC_URI="http://ftp.gnu.org/gnu/"$N"/"$N-$V".tar.xz"
@@ -27,7 +27,7 @@ NOTES="
 "
 
 pbs_unpack() {
-        dounpack
+    dounpack
 }
 
 pbs_patch() {

@@ -15,7 +15,7 @@ CHECKSUM="82299242418385da1274c9479a778cb2"
 
 RDEPEND="util-linux perl"
 BDEPEND=""
-RECOMMENDED="Crypt-PasswdMD5 Digest-SHA1 mtools gptfdisk"
+RECOMMENDED="perl-crypt-passwdmd5 perl-digest-sha1 mtools gptfdisk"
 CONFLICT=""
 
 pbs_unpack() {

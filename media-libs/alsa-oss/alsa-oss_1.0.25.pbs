@@ -8,7 +8,7 @@
 DESCRIPTION="OSS compatibility library"
 HOMEPAGE="http://www.alsa-project.org/"
 LICENSE="GPL"
-PACKAGER="StartOS Developers"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
 SRC_URI="ftp://ftp.alsa-project.org/pub/oss-lib/"$N-$V".tar.bz2"
 CHECKSUM="922ea177db15c72f1b5037181c73f934"
@@ -19,7 +19,7 @@ RECOMMENDED=""
 CONFLICT=""
 
 pbs_unpack() {
-        dounpack
+    dounpack
 }
 
 pbs_config() {

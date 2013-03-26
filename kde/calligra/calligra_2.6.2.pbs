@@ -1,0 +1,49 @@
+#
+# StartOS package build script
+#
+# Copyright (C) 2012-2013 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="Images tools"
+HOMEPAGE="http://www.calligra-suite.org"
+LICENSE="GPL,LGPL,FDL"
+PACKAGER="chenqixing@ivali.com
+          Zhongxin Huang <huangzhongxin@ivali.com>"
+GROUP="kde"
+
+SRC_URI="http://download.kde.org/stable/$N-$V/$N-$V.tar.bz2"
+CHECKSUM="1c2feb12677ee71eb2e428e589b33862"
+
+RDEPEND="marble kactivities kdepimlibs glew fftw opencolorio libwpg poppler-qt libkdcraw"
+RECOMMENDED="calligra-l10n-zh_CN(=2.6.2)"
+BDEPEND="cmake(>=2.6.2)"
+OPTIONAL="marble: map shape for Calligra
+          freetds: Sybase & MS SQL driver
+          xbase: XBase driver
+          libwpg: Corel WordPerfect Graphics image importer
+          libwps: Microsoft Works file word processor format import
+          libmariadbclient: MariaDB driver"
+CONFLICT=""
+REPLACE=""
+
+INSTALL="$N.install"
+
+pbs_unpack() {
+    dounpack
+}
+
+pbs_config() {
+    doconfig -DCMAKE_BUILD_TYPE=Release \
+             -DBUILD_active=OFF \
+             -DCREATIVEONLY=ON
+
+}
+
+pbs_build() {
+    domake
+}
+
+pbs_install() {
+    domkinstall
+}

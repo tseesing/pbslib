@@ -8,7 +8,7 @@
 DESCRIPTION="An IDE for Java and other languages"
 HOMEPAGE="http://eclipse.org"
 LICENSE="EPL"
-PACKAGER="StartOS Developers"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
 SRC_URI="ftp://ftp.osuosl.org/pub/eclipse/eclipse/downloads/drops4/R-4.2-201206081400/"$N"-SDK-"$V"-linux-gtk.tar.gz"
 CHECKSUM="506b9f4e3919ebe3d6a717cd9bef5e07"
@@ -21,7 +21,7 @@ CONFLICT=""
 REPLACE=""
 
 pbs_unpack() {
-        dounpack
+    dounpack
 }
 
 pbs_install() {

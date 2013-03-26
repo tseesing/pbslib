@@ -8,11 +8,11 @@
 DESCRIPTION="A free, intuitive and featureful movie editor for the Linux desktop."
 HOMEPAGE="http://www.pitivi.org/"
 LICENSE="LGPL"
-PACKAGER="StartOS Developers"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
 SRC_URI="http://ftp.gnome.org/pub/GNOME/sources/"$N"/0.13/"$N-$V$R".tar.bz2"
 
-RDEPEND="distribute zope-interface pygoocanvas goocanvas gnonlin"
+RDEPEND="py-distribute py-zope-interface py-goocanvas goocanvas gnonlin"
 BDEPEND=""
 RECOMMENDED=""
 CONFLICT=""
@@ -26,7 +26,7 @@ gst-fluendo-mpegmux"
 INSTALL="$N.install"
 
 pbs_unpack() {
-        dounpack
+    dounpack
 }
 
 pbs_config() {
@@ -41,4 +41,3 @@ pbs_build() {
 pbs_install() {
     domkinstall
 }
-

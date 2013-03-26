@@ -8,7 +8,7 @@
 DESCRIPTION="Aiptek USB Digital Tablet Input Driver for Linux"
 HOMEPAGE="http://xorg.freedesktop.org/"
 LICENSE="GPL"
-PACKAGER="StartOS Developers"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 GROUP="x11-drivers"
 
 SRC_URI="http://www.x.org/releases/X11R7.6/src/driver/"$N-$V".tar.bz2"

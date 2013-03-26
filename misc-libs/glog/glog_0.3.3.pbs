@@ -1,0 +1,41 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="Logging library for C++"
+HOMEPAGE="0.3.3"
+LICENSE="BSD3"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
+
+SRC_URI="http://google-glog.googlecode.com/files/$N-$V.tar.gz"
+CHECKSUM="a6fd2c22f8996846e34c763422717c18"
+
+RDEPEND="gcc-libs"
+RECOMMENDED=""
+BDEPEND=""
+OPTIONAL=""
+CONFLICT=""
+REPLACE=""
+
+pbs_unpack() {
+    dounpack
+}
+
+pbs_config() {
+    config+=""
+    doconfig
+}
+
+pbs_build() {
+    domake
+}
+
+pbs_install() {
+    domkinstall
+    dodoc COPYING
+    # Unused man and info pages
+    rm -rf "$PKGDIR"/usr/share
+}

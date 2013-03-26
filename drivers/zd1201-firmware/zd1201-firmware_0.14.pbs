@@ -8,7 +8,7 @@
 DESCRIPTION="Firmware for ZyDAS 1201 based USB 802.11b Network WiFi devices"
 HOMEPAGE="http://linux-lc100020.sourceforge.net/"
 LICENSE="GPL"
-PACKAGER="StartOS Developers"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 YARCH="any"
 
 SRC_URI="http://sourceforge.net/projects/linux-lc100020/files/%28NEW%29%20zd1201%20driver/zd1201.%20Version%200.14/zd1201-"$V"-fw.tar.gz"
@@ -19,7 +19,7 @@ RECOMMENDED=""
 CONFLICT=""
 
 pbs_unpack() {
-        dounpack
+    dounpack
 }
 
 pbs_install() {

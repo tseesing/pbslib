@@ -8,7 +8,7 @@
 DESCRIPTION="libreoffice help for zh-CN"
 HOMEPAGE="http://www.libreoffice.org/"
 LICENSE="LGPL"
-PACKAGER="StartOS Developers"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
 SRC_URI="http://download.documentfoundation.org/libreoffice/stable/"$V"/deb/x86/LibO_"$V"_Linux_x86_helppack-deb_zh-CN.tar.gz"
 CHECKSUM="f6ce67a850280a013298bfba21577c8c"

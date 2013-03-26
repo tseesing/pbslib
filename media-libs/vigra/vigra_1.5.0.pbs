@@ -8,7 +8,7 @@
 DESCRIPTION="Computer vision library"
 HOMEPAGE="http://hci.iwr.uni-heidelberg.de/vigra/"
 LICENSE="custom:MIT"
-PACKAGER="StartOS Developers"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
 SRC_URI="http://hci.iwr.uni-heidelberg.de/"$N"/"$N$V".tar.gz"
 
@@ -18,7 +18,7 @@ RECOMMENDED=""
 CONFLICT=""
 
 pbs_unpack() {
-        dounpack
+    dounpack
 }
 
 pbs_patch() {

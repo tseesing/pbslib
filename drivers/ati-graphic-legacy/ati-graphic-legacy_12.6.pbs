@@ -8,7 +8,7 @@
 DESCRIPTION="non-free ATI/AMD RadeonHD display driver"
 HOMEPAGE="http://support.amd.com/us/gpudownload/linux/legacy/Pages/legacy-radeon_linux.aspx"
 LICENSE="custom"
-PACKAGER="StartOS Developers"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
 SRC_URI="http://www2.ati.com/drivers/legacy/12-6/amd-driver-installer-12.6-legacy-x86.x86_64.zip"
 

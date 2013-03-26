@@ -9,7 +9,7 @@ DESCRIPTION="Utility for creating and opening lzh archives"
 HOMEPAGE="http://lha.sourceforge.jp"
 LICENSE="GPL"
 PRIORITY=""
-PACKAGER="StartOS Developers"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
 SRC_URI="http://jaist.dl.sourceforge.jp/lha/22231/"$N-$V$R"i-ac20050924p1.tar.gz"
 
@@ -21,7 +21,7 @@ CONFLICT=""
 NOTES=""
 
 pbs_unpack() {
-        dounpack
+    dounpack
 }
 
 pbs_config() {

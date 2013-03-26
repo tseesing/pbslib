@@ -16,7 +16,7 @@ RDEPEND="gcc-libs"
 BDEPEND=""
 
 pbs_unpack() {
-        dounpack
+    dounpack
 }
 
 pbs_config() {

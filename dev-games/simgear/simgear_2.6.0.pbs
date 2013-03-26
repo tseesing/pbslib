@@ -8,7 +8,7 @@
 DESCRIPTION="Development library for simulation games"
 HOMEPAGE="https://gitorious.org/fg"
 LICENSE="GPL"
-PACKAGER="StartOS Developers"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
 SRC_URI="http://mirrors.ibiblio.org/pub/mirrors/simgear/ftp/Source/"$N-$V".tar.bz2"
 CHECKSUM="24a368754d10e50d7f3ec00f93891a89"
@@ -21,7 +21,7 @@ CONFLICT=""
 
 
 pbs_unpack() {
-        dounpack
+    dounpack
 }
 
 pbs_config() {

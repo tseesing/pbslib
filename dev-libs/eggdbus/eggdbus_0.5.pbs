@@ -8,14 +8,14 @@
 DESCRIPTION="D-Bus bindings for GObject"
 HOMEPAGE="http://cgit.freedesktop.org/~david/eggdbus"
 LICENSE="GPL-2"
-PACKAGER="StartOS Developers"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 SRC_URI="http://hal.freedesktop.org/releases/$N-$V.tar.gz"
 
 RDEPEND=""
 BDEPEND=" dbus-glib"
 
 pbs_unpack() {
-        dounpack
+    dounpack
 }
 
 pbs_config() {

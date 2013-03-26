@@ -8,7 +8,7 @@
 DESCRIPTION="Saves audio and video data from an IEEE (FireWire) digital source"
 HOMEPAGE="http://www.kinodv.org/"
 LICENSE="GPL"
-PACKAGER="StartOS Developers"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
 SRC_URI="http://downloads.sourceforge.net/kino/"$N-$V".tar.gz"
 CHECKSUM="b39a242ce63e80fc347ab59931f75649"
@@ -20,7 +20,7 @@ OPTIONAL=""
 CONFLICT=""
 
 pbs_unpack() {
-        dounpack
+    dounpack
 }
 
 pbs_patch() {

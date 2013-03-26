@@ -31,5 +31,5 @@ pbs_build() {
 
 pbs_install() {
     docp build/* "$PKGDIR"/lib/firmware
+    find "$PKGDIR" -type d |xargs chmod 0755
 }
-

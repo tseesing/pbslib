@@ -1,0 +1,35 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="This module provides a way to process XML documents."
+HOMEPAGE="http://search.cpan.org/dist/XML-Twig/"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
+LICENSE="GPL,PerlArtistic"
+GROUP="perl"
+YARCH="any"
+
+SRC_URI="http://search.cpan.org/CPAN/authors/id/M/MI/MIROD/XML-Twig-$V.tar.gz"
+
+RDEPEND="perl perl-xml-parser"
+BDEPEND=""
+
+pbs_unpack() {
+    dounpack
+}
+
+pbs_config() {
+    doconfig INSTALLDIRS=vendor
+}
+
+pbs_build() {
+    domake
+}
+
+pbs_install() {
+    domkinstall
+    perl_cleanup
+}

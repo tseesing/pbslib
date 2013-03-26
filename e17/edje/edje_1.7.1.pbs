@@ -8,7 +8,7 @@
 DESCRIPTION="Abstract GUI layout and animation object library."
 HOMEPAGE="http://www.enlightenment.org/"
 LICENSE="BSD"
-PACKAGER="StartOS Developers"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
 SRC_URI="http://download.enlightenment.org/releases/"$N-$V".tar.gz"
 
@@ -21,7 +21,7 @@ CONFLICT=""
 INSTALL="$N.install"
 
 pbs_unpack() {
-        dounpack
+    dounpack
 }
 
 pbs_config() {

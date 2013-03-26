@@ -8,7 +8,7 @@ DESCRIPTION="Ghostscript Extra Fonts"
 HOMEPAGE="http://www.cups.org/"
 LICENSE="GPL"
 YARCH="any"
-PACKAGER="StartOS Developers"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
 SRC_URI="http://ftp.gnu.org/pub/gnu/ghostscript/"$N-$V".tar.gz"
 
@@ -17,7 +17,7 @@ BDEPEND=""
 RECOMMENDED=""
 
 pbs_unpack() {
-        dounpack
+    dounpack
 }
 
 pbs_install() {

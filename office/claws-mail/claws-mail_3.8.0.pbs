@@ -8,7 +8,7 @@
 DESCRIPTION="Claws Mail is an email client (and news reader), based on GTK+"
 HOMEPAGE="http://www.claws-mail.org/"
 LICENSE="GPL"
-PACKAGER="StartOS Developers"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
 SRC_URI="http://downloads.sourceforge.net/project/sylpheed-claws/Claws%20Mail/"$V"/"$N-$V".tar.bz2"
 CHECKSUM="df9f1657d7f34959a2205344d952c2e3"
@@ -21,7 +21,7 @@ CONFLICT=""
 INSTALL="$N.install"
 
 pbs_unpack() {
-        dounpack
+    dounpack
 }
 
 pbs_config() {

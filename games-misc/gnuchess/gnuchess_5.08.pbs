@@ -8,7 +8,7 @@
 DESCRIPTION="Lets most modern computers play a full game of chess."
 HOMEPAGE="http://www.gnu.org/software/chess/chess.html"
 LICENSE="GPL"
-PACKAGER="StartOS Developers"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
 SRC_URI="ftp://ftp.gnu.org/pub/gnu/chess/"$N-$V$R".tar.gz"
 
@@ -20,7 +20,7 @@ CONFLICT=""
 NOTES=""
 
 pbs_unpack() {
-        dounpack
+    dounpack
 }
 
 pbs_config() {

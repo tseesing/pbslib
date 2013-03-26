@@ -1,0 +1,39 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="sk1 vector graphics lib"
+HOMEPAGE="http://code.google.com/p/uniconvertor/"
+LICENSE="GPL"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
+GROUP="python"
+
+SRC_URI="http://uniconvertor.googlecode.com/files/sk1libs-$V.tar.gz"
+CHECKSUM="dd948558128bb6547b1f277087bf3066104912da"
+
+RDEPEND="lcms python freetype libjpeg-turbo"
+RECOMMENDED=""
+BDEPEND=""
+OPTIONAL=""
+CONFLICT=""
+REPLACE=""
+
+pbs_unpack() {
+    dounpack
+}
+
+pbs_config() {
+    config+=""
+    doconfig
+}
+
+pbs_build() {
+    domake
+}
+
+pbs_install() {
+    domkinstall
+}

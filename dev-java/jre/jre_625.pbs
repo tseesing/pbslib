@@ -8,11 +8,11 @@
 DESCRIPTION="Sun's java runtime environment"
 HOMEPAGE="http://java.sun.com"
 LICENSE="custom"
-PACKAGER="StartOS Developers"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
 SRC_URI="http://download.java.net/dlj/binaries/jdk-6u25-dlj-linux-i586.bin"
 
-RDEPEND="glibc libXtst"
+RDEPEND="alsa-lib libXtst unixodbc"
 BDEPEND=""
 RECOMMENDED=""
 CONFLICT="sun-jre"

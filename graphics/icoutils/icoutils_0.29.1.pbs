@@ -8,7 +8,7 @@
 DESCRIPTION="A set of programs for extracting and converting images in Microsoft Windows icon and cursor files (.ico, .cur)."
 HOMEPAGE="http://www.nongnu.org/icoutils/"
 LICENSE="GPL"
-PACKAGER="StartOS Developers"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
 SRC_URI="http://savannah.nongnu.org/download/"$N"/"$N-$V".tar.bz2"
 
@@ -16,7 +16,7 @@ RDEPEND="libpng"
 BDEPEND=""
 
 pbs_unpack() {
-        dounpack
+    dounpack
 }
 
 pbs_config() {

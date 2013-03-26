@@ -7,22 +7,23 @@
 
 DESCRIPTION="a library for importing WordPerfect (tm) documents"
 HOMEPAGE="http://libwpd.sourceforge.net/"
-LICENSE="GPL"
-PACKAGER="StartOS Developers"
+LICENSE="LGPL"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
-SRC_URI="http://sourceforge.net/projects/"$N"/files/"$N"/"$N-$V"/"$N-$V".tar.bz2"
+SRC_URI="http://downloads.sourceforge.net/sourceforge/$N/$N-$V.tar.gz"
+CHECKSUM="d30d1726c3b113db70daaae423dd4448"
 
 RDEPEND="gcc-libs"
-BDEPEND=""
+BDEPEND="libgsf(>=1.14.20)"
 RECOMMENDED=""
 CONFLICT=""
 
 pbs_unpack() {
-        dounpack
+    dounpack
 }
 
 pbs_config() {
-    config+=""
+    config+="--disable-static"
     doconfig
 }
 
@@ -33,5 +34,3 @@ pbs_build() {
 pbs_install() {
     domkinstall
 }
-
-

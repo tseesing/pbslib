@@ -7,25 +7,24 @@
 #
 
 DESCRIPTION="A GTK Text Editor"
-COMMENTS=""
 HOMEPAGE="http://medit.bitbucket.org"
 LICENSE="GPLv2.1"
+PACKAGER="chenqixing@ivali.com"
 ALIAS="mooedit"
 
-PACKAGER="chenqixing@ivali.com"
 SRC_URI="http://downloads.sourceforge.net/mooedit/"$N"-"$V".tar.bz2"
 CHECKSUM="9ea0d396a3bf3ee6ce220365bffb7358"
 
-RDEPEND="pygtk libxml2 harfbuzz gtk2"
-BDEPEND="xml-parser intltool"
+RDEPEND="py-gtk libxml2 harfbuzz gtk2"
+BDEPEND="perl-xml-parser intltool"
 RECOMMENDED=""
 OPTIONAL="ctags: looking source code conveniently.
           vte:  terminal emulator."
 
 INSTALL="$N.install"
-NOTES=""
+
 pbs_unpack() {
-        dounpack
+    dounpack
 }
 
 pbs_config() {
@@ -39,5 +38,4 @@ pbs_build() {
 
 pbs_install() {
     domkinstall
-    dodoc AUTHORS COPYING README
 }

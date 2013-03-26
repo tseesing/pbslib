@@ -1,0 +1,38 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="A simple but powerful text editor for Markdown and reStructuredText."
+HOMEPAGE="http://sourceforge.net/p/retext/home/ReText/"
+LICENSE="GP"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
+YARCH="any"
+
+SRC_URI="http://sourceforge.net/projects/$N/files/ReText-3.1/ReText_"$V".tar.gz"
+CHECKSUM="eb36d0b127bc6493f361ad84646610ba"
+
+RDEPEND="python py-qt"
+RECOMMENDED="py-markdown py-docutils py-enchant"
+BDEPEND=""
+OPTIONAL="py-markdown: for Markdown 
+          py-docutils: for reStructuredText
+          py-enchant: for spell checking"
+CONFLICT=""
+REPLACE=""
+
+INSTALL="$N".install
+
+pbs_unpack() {
+    dounpack
+}
+
+pbs_install() {
+    docp icons locale retext.py wpgen "$PKGDIR"/usr/share/"$N"
+    dodesktop "$N".desktop icons/retext.png
+    cd "$PKGDIR"
+    doln /usr/share/"$N"/retext.py usr/bin/"$N"
+    docp "$FILESDIR"/x-retext-{markdown,rst}.xml usr/share/mime/packages/
+}

@@ -8,7 +8,7 @@
 DESCRIPTION="TunePimp is a library to create MusicBrainz enabled tagging applications."
 HOMEPAGE="http://www.musicbrainz.org/products/tunepimp"
 LICENSE="GPL,LGPL"
-PACKAGER="StartOS Developers"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
 SRC_URI="ftp://ftp.musicbrainz.org/pub/musicbrainz/"$N-$V".tar.gz"
 CHECKSUM="09649f983acef679a548344ba7a9bb2f"
@@ -20,7 +20,7 @@ OPTIONAL=""
 CONFLICT=""
 
 pbs_unpack() {
-        dounpack
+    dounpack
 }
 
 pbs_patch() {

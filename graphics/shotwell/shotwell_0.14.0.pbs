@@ -1,0 +1,41 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="Open source photo manager for GNOME"
+HOMEPAGE="http://www.yorba.org/shotwell/"
+LICENSE="LGPL2.1"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
+
+SRC_URI="http://yorba.org/download/$N/stable/$N-$V.tar.xz"
+CHECKSUM="14b8e02091376fa69ac0a04ba61ea608"
+
+RDEPEND="libgee libgexiv2 libgphoto2 json-glib libraw lcms2 sqlite webkitgtk3 jasper mesa libXt rest" 
+BDEPEND="vala intltool"
+RECOMMENDED=""
+
+INSTALL="$N.install"
+
+pbs_unpack() {
+    dounpack
+}
+
+pbs_config() {
+    config="--prefix=/usr
+            --lib=lib"$LIBDIRSUFFIX"
+            --disable-schemas-compile 
+            --disable-desktop-update 
+            --disable-icon-update"
+    doconfig
+}
+
+pbs_build() {
+    domake
+}
+
+pbs_install() {
+    domkinstall
+}

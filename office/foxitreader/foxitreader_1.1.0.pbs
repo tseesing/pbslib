@@ -8,7 +8,7 @@
 DESCRIPTION="foxi pdf reader"
 HOMEPAGE="http://www.fuxinsoftware.com.cn/"
 LICENSE=""
-PACKAGER="StartOS Developers"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
 SRC_URI="http://cdn02.foxitsoftware.com/pub/foxit/reader/desktop/linux/1.x/1.1/enu/FoxitReader_1.1.0_i386.deb"
 
@@ -23,7 +23,7 @@ DESKTOPFILE="Foxit-Reader.desktop"
 ICONFILE="fx-icon.png"
 
 pbs_unpack() {
-        dounpack
+    dounpack
 }
 
 pbs_install() {

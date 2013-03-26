@@ -16,7 +16,7 @@ RDEPEND="libXcomposite libXdamage libXext libXrender"
 BDEPEND=""
 
 pbs_unpack() {
-        dounpack
+    dounpack
 }
 
 pbs_config() {

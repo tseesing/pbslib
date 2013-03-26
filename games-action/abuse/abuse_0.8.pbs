@@ -8,7 +8,7 @@
 DESCRIPTION="A side-scroller action game that pits you against ruthless alien killers."
 HOMEPAGE="http://abuse.zoy.org"
 LICENSE="GPL/custom"
-PACKAGER="StartOS Developers"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
 SRC_URI="http://abuse.zoy.org/raw-attachment/wiki/download/"$N-$V".tar.gz"
 CHECKSUM="ec678b8dc8d00e0382d8c805c6438489"
@@ -22,7 +22,7 @@ CONFLICT=""
 INSTALL="$N.install"
 
 pbs_unpack() {
-        dounpack
+    dounpack
 }
 
 pbs_config() {

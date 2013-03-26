@@ -1,0 +1,37 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="Perl wrappers for the eggdbus cup Gtk2::TrayIcon utilities."
+HOMEPAGE="http://search.cpan.org/~borup/Gtk2-TrayIcon"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
+LICENSE="GPL,PerlArtistic"
+GROUP="perl"
+
+SRC_URI="http://search.cpan.org/CPAN/authors/id/B/BO/BORUP/Gtk2-TrayIcon-$V.tar.gz"
+
+RDEPEND="perl-gtk2 gtk2 gdk-pixbuf2"
+BDEPEND="perl-extutils-depends perl-extutils-pkgconfig"
+RECOMMENDED=""
+CONFLICT=""
+
+pbs_unpack() {
+    dounpack
+}
+
+pbs_config() {
+    export PERL_MM_USE_DEFAULT=1
+    doconfig INSTALLDIRS=vendor
+}
+
+pbs_build() {
+    domake
+}
+
+pbs_install() {
+    domkinstall
+    perl_cleanup
+}

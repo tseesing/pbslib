@@ -8,7 +8,7 @@
 DESCRIPTION="Free crossplatform audio editor"
 HOMEPAGE="http://audacity.sourceforge.net/"
 LICENSE="GPL"
-PACKAGER="StartOS Developers"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
 SRC_URI="http://audacity.googlecode.com/files/"$N"-minsrc-"$V".tar.bz2"
 CHECKSUM="c5e4058346c96713a0d39fcd6b33f27137589b06"
@@ -21,7 +21,7 @@ CONFLICT=""
 INSTALL="$N.install"
 
 pbs_unpack() {
-        dounpack
+    dounpack
 }
 
 pbs_config() {

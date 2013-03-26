@@ -8,7 +8,7 @@
 DESCRIPTION="English (US, British, Canadian) language dictionary for aspell"
 HOMEPAGE="http://aspell.net"
 LICENSE="GPLv2"
-PACKAGER="StartOS Developers"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
 SRC_URI="ftp://ftp.gnu.org/gnu/aspell/dict/en/aspell6-en-"$V$R".tar.bz2"
 CHECKSUM="beba5e8f3afd3ed1644653bb685b2dfb"
@@ -18,7 +18,7 @@ RECOMMENDED=""
 BDEPEND=""
 
 pbs_unpack() {
-        dounpack
+    dounpack
 }
 
 pbs_config() {

@@ -8,7 +8,7 @@
 DESCRIPTION="A set of symbols and convience functions that all indicators would like to use"
 HOMEPAGE="http://launchpad.net/libindicator/"
 LICENSE=""
-PACKAGER="StartOS Developers"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
 SRC_URI="https://launchpad.net/ubuntu/+archive/primary/+files/"${N}_$V$R".orig.tar.gz"
 
@@ -19,7 +19,7 @@ RECOMMENDED=""
 NOTES=""
 
 pbs_unpack() {
-        dounpack
+    dounpack
 }
 
 pbs_config() {

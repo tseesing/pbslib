@@ -8,23 +8,27 @@
 DESCRIPTION="X(cross)platform Music Multiplexing System. The new generation of the XMMS player."
 HOMEPAGE="http://xmms2.org/wiki/Main_Page"
 LICENSE="GPL"
-PACKAGER="StartOS Developers"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
-SRC_URI="http://ncu.dl.sourceforge.net/project/xmms2/xmms2/0.7%20DrNo/"$N-$V$R"DrNo.tar.bz2"
+SRC_URI="http://sourceforge.net/projects/xmms2/files/xmms2/0.7%20DrNo/"$N-$V"DrNo.tar.bz2"
+CHECKSUM="60e50b591078acb6a85cd83de0f2b077"
 
-RDEPEND="alsa-lib attr avahi curl cyrus-sasl dbus faad2 ffmpeg flac gcc-libs glib2 gdk-pixbuf2 glibc jack-audio-connection-kit keyutils krb5 libao libcap libidn libmad libmms libmodplug libmpcdec libogg libtool libva libvorbis libxml2 mpg123 ncurses openldap openssl python readline ruby samba speex sqlite talloc wavpack zlib"
+RDEPEND="ffmpeg(>=0.11.1) curl faad2 fftw libao libcdio libdiscid libmad libmms libmodplug libmpcdec libxml2 mpg123 ruby samba sqlite wavpack"
 BDEPEND=""
 RECOMMENDED=""
 CONFLICT=""
 
 pbs_unpack() {
-        dounpack
+    dounpack
+}
+
+pbs_patch() {
+    dopatch avcodec-plugin-with-latest-libavcodec.patch
 }
 
 pbs_config() {
-    dopatch avcodec-plugin-with-latest-libavcodec.patch
     config="--prefix=/usr 
-                --with-optionals=python,cli,launcher,xmmsclient++,xmmsclient++-glib,perl,ruby,nycli"
+            --with-optionals=python,cli,launcher,xmmsclient++,xmmsclient++-glib,perl,ruby,nycli"
     doconfig
 }
 

@@ -11,7 +11,7 @@ COMMENTS="libfishsound is a wrapper around the existing codec libraries and prov
 
 HOMEPAGE="http://www.xiph.org/fishsound/"
 LICENSE="GPLv2+"
-PACKAGER="StartOS Developers"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
 SRC_URI="http://downloads.xiph.org/releases/"$N"/"$N-$V".tar.gz"
 
@@ -21,7 +21,7 @@ BDEPEND=""
 CONFLICT=""
 
 pbs_unpack() {
-        dounpack
+    dounpack
 }
 
 pbs_config() {

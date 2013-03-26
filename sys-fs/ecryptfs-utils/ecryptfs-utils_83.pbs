@@ -8,7 +8,7 @@
 DESCRIPTION="eCryptfs userspace utilities"
 HOMEPAGE="http://launchpad.net/ecryptfs"
 LICENSE="GPL"
-PACKAGER="StartOS Developers"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
 SRC_URI="http://launchpad.net/ecryptfs/trunk/83/+download/"${N}_$V".orig.tar.gz"
 
@@ -17,7 +17,7 @@ BDEPEND=""
 RECOMMENDED=""
 
 pbs_unpack() {
-        dounpack
+    dounpack
 }
 
 pbs_config() {

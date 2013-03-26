@@ -14,10 +14,10 @@ SRC_URI="http://downloads.sourceforge.net/sourceforge/gtkpod/"$N-$V".tar.bz2"
 CHECKSUM="ff0fd875fa08f2a6a49dec57ce3367ab"
 
 RDEPEND="gdk-pixbuf2 libimobiledevice libusbx sg3_utils sqlite"
-BDEPEND="intltool swig docbook-xsl pygobject"
+BDEPEND="intltool swig docbook-xsl py-gobject"
 RECOMMENDED=""
 CONFLICT=""
-OPTIONAL="pygobject: python bindings"
+OPTIONAL="py-gobject: python bindings"
 
 pbs_unpack() {
     dounpack

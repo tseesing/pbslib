@@ -8,7 +8,7 @@
 DESCRIPTION="Displays text on your screen. On-Screen-Display-libs for some tools"
 HOMEPAGE="http://www.ignavus.net/software.html"
 LICENSE="GPLv2"
-PACKAGER="StartOS Developers"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
 SRC_URI="http://downloads.sourceforge.net/libxosd/"$N-$V".tar.gz"
 CHECKSUM="4b349fe930e4eee2f504d6c02673e24d"
@@ -21,7 +21,7 @@ CONFLICT=""
 REPLACE=""
 
 pbs_unpack() {
-        dounpack
+    dounpack
 }
 
 pbs_patch() {

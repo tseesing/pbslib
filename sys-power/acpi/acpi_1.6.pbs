@@ -8,7 +8,7 @@
 DESCRIPTION="Attempts to replicate the functionality of the 'old' apm command on ACPI systems"
 HOMEPAGE="http://sourceforge.net/projects/acpiclient"
 LICENSE="GPL"
-PACKAGER="StartOS Developers"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
 SRC_URI="http://downloads.sourceforge.net/acpiclient/"$N-$V".tar.gz"
 CHECKSUM="ed61d20400c4fd3965dde9b49ab3ac74da02f8eca1a55454f7a1ac3fa1fd5c31"
@@ -21,7 +21,7 @@ CONFLICT=""
 REPLACE=""
 
 pbs_unpack() {
-        dounpack
+    dounpack
 }
 
 pbs_config() {

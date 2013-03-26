@@ -8,7 +8,7 @@
 DESCRIPTION="parallel LZMA compressor (no parallel decompression!)"
 HOMEPAGE="http://jnovy.fedorapeople.org/pxz/"
 LICENSE="GPL"
-PACKAGER="StartOS Developers"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
 SRC_URI="http://jnovy.fedorapeople.org/"$N"/"$N-$V"beta.20091201git.tar.xz"
 CHECKSUM="4ae3926185978f5c95c9414dc4634451"
@@ -21,7 +21,7 @@ CONFLICT=""
 REPLACE=""
 
 pbs_unpack() {
-        dounpack
+    dounpack
 }
 
 pbs_patch() {

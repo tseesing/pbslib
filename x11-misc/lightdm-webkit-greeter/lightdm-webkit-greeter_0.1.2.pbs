@@ -8,19 +8,19 @@
 DESCRIPTION="A greeter for LightDM that uses Webkit for theming."
 HOMEPAGE="https://launchpad.net/lightdm-webkit-greeter"
 LICENSE="GPL"
-PACKAGER="StartOS Developers"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
 SRC_URI="https://launchpadlibrarian.net/89705596/"$N-$V".tar.gz"
 CHECKSUM="ff8247d5bbf3026140531061fbf1f51e"
 
-RDEPEND="lightdm webkitgtk"
+RDEPEND="lightdm webkitgtk2"
 RECOMMENDED=""
 BDEPEND=""
 OPTIONAL=""
 CONFLICT=""
 
 pbs_unpack() {
-        dounpack
+    dounpack
 }
 
 pbs_config() {

@@ -8,7 +8,7 @@
 DESCRIPTION="A cartoon style multiplayer first-person shooter"
 HOMEPAGE="http://worldofpadman.com/"
 LICENSE="GPL"
-PACKAGER="StartOS Developers"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
 SRC_URI="http://sourceforge.net/projects/worldofpadman/files/wop-1.5-unified.zip
      http://sourceforge.net/projects/worldofpadman/files/wop-1.5.x-to-1.6-patch-unified.zip"
@@ -23,7 +23,7 @@ CONFLICT=""
 INSTALL="$N.install"
 
 pbs_unpack() {
-        dounpack
+    dounpack
     unzip -u -o "$YBS_SOURCE"/wop-1.5.x-to-1.6-patch-unified.zip -d "$N-$V$R"
 }
 

@@ -8,7 +8,7 @@
 DESCRIPTION="Liblinebreak is an implementation of the line breaking algorithm as described in Unicode 6.0.0 Standard Annex 14, Revision 26."
 HOMEPAGE="http://vimgadgets.sourceforge.net/liblinebreak/"
 LICENSE="the zlib/libpng licence"
-PACKAGER="StartOS Developers"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
 SRC_URI="http://nchc.dl.sourceforge.net/project/vimgadgets/liblinebreak/2.1/liblinebreak-2.1.tar.gz"
 
@@ -18,7 +18,7 @@ RECOMMENDED=""
 CONFLICT=""
 
 pbs_unpack() {
-        dounpack
+    dounpack
 }
 
 pbs_config() {

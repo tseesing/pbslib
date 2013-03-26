@@ -8,7 +8,7 @@
 DESCRIPTION="Monitor control tool for LXDE"
 HOMEPAGE="http://lxde.org"
 LICENSE="GPL"
-PACKAGER="StartOS Developers"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
 SRC_URI="http://sourceforge.net/projects/lxde/files/LXRandR%20%28monitor%20config%20tool%29/LXRandR%20"$V"/"$N-$V".tar.gz"
 
@@ -20,7 +20,7 @@ CONFLICT=""
 INSTALL="$N.install"
 
 pbs_unpack() {
-        dounpack
+    dounpack
 }
 
 pbs_config() {

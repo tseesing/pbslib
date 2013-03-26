@@ -8,7 +8,7 @@
 DESCRIPTION="provides high performance and highly flexible algorithms for routine tasks"
 HOMEPAGE="http://www.atheme.org/Projects/Libmowgli"
 LICENSE="GPL-2"
-PACKAGER="StartOS Developers"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
 SRC_URI="http://distfiles.atheme.org/"$N-$V$R".tgz"
 
@@ -16,7 +16,7 @@ RDEPEND="glibc"
 BDEPEND=""
 
 pbs_unpack() {
-        dounpack
+    dounpack
 }
 
 pbs_config() {

@@ -8,18 +8,18 @@
 DESCRIPTION="Simple GNOME menu editor"
 HOMEPAGE="http://live.gnome.org/"
 LICENSE="GPLv2"
-PACKAGER="StartOS Developers"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
 SRC_URI="http://ftp.gnome.org/pub/gnome/desktop/2.32/2.32.1/sources/"$N-$V".tar.bz2"
 
-RDEPEND=""
-BDEPEND="pygtk gnome-menus"
+RDEPEND="py-gtk"
+BDEPEND=""
 RECOMMENDED=""
 
 INSTALL="$N.install"
 
 pbs_unpack() {
-        dounpack
+    dounpack
 }
 
 pbs_config() {

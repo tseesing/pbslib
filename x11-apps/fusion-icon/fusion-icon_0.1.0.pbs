@@ -9,7 +9,7 @@ DESCRIPTION="Compiz Fusion Tray Icon and Manager"
 HOMEPAGE="http://compiz-fusion.org"
 GROUP="x11-apps"
 LICENSE="GPL-2"
-PACKAGER="StartOS Developers"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
 SRC_URI="http://ftp.osuosl.org/pub/gsb/gsb-2.30_slackware-13.1/source/c/"$N"/"$N-$V$R".tar.bz2"
 
@@ -20,7 +20,7 @@ RECOMMENDED=""
 INSTALL="$N.install"
 
 pbs_unpack() {
-        dounpack
+    dounpack
 }
 
 pbs_build() {

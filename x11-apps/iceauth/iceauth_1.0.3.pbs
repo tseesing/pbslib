@@ -15,7 +15,7 @@ RDEPEND="libICE glibc"
 BDEPEND=""
 
 pbs_unpack() {
-        dounpack
+    dounpack
 }
 
 pbs_config() {

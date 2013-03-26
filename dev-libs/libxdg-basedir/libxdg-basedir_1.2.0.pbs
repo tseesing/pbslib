@@ -8,7 +8,7 @@
 DESCRIPTION="An implementation of the XDG Base Directory specifications."
 HOMEPAGE="http://n.ethz.ch/student/nevillm/download/libxdg-basedir"
 LICENSE="MIT"
-PACKAGER="StartOS Developers"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
 SRC_URI="http://n.ethz.ch/student/nevillm/download/"$N"/"$N-$V".tar.gz"
 CHECKSUM="b924afe4e29c52358ad67476887e9ca0dcf90f7c"
@@ -20,7 +20,7 @@ OPTIONAL=""
 CONFLICT=""
 
 pbs_unpack() {
-        dounpack
+    dounpack
 }
 
 pbs_patch() {

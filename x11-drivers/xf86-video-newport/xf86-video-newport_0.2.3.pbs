@@ -8,7 +8,7 @@
 DESCRIPTION="Newport video driver"
 HOMEPAGE="http://xorg.freedesktop.org/"
 LICENSE="GPL"
-PACKAGER="StartOS Developers"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 GROUP="x11-drivers"
 
 SRC_URI="http://www.x.org/releases/X11R7.6/src/driver/"$N-$V".tar.bz2"
@@ -17,7 +17,7 @@ RDEPEND="glibc"
 BDEPEND="xorg-server"
 
 pbs_unpack() {
-        dounpack
+    dounpack
 }
 
 pbs_config() {

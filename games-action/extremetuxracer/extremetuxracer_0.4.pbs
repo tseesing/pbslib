@@ -8,7 +8,7 @@
 DESCRIPTION="Downhill racing game starring Tux"
 HOMEPAGE="http://www.extremetuxracer.com"
 LICENSE="GPL"
-PACKAGER="StartOS Developers"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
 SRC_URI="http://downloads.sourceforge.net/"$N"/"$N-$V".tar.gz"
 CHECKSUM="5e4057f90e6854e774f251f189b0e676cfd7e2f15779c75544c9ac5b8e30273d"
@@ -22,7 +22,7 @@ CONFLICT=""
 INSTALL="$N.install"
 
 pbs_unpack() {
-        dounpack
+    dounpack
 }
 
 pbs_config() {

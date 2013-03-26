@@ -13,13 +13,13 @@ PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 SRC_URI="http://freedesktop.org/~hadess/"$N-$V".tar.xz"
 
 RDEPEND="glib2 libxml2"
-BDEPEND="intltool xml-parser"
+BDEPEND="intltool perl-xml-parser"
 OPIONAL=""
 
 INSTALL="$N.install"
 
 pbs_unpack() {
-        dounpack
+    dounpack
 }
 
 pbs_config() {
@@ -34,5 +34,3 @@ pbs_build() {
 pbs_install() {
     domkinstall
 }
-
-

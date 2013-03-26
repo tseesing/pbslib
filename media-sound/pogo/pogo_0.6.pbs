@@ -8,7 +8,7 @@
 DESCRIPTION="Probably the simplest and fastest audio player for Linux."
 HOMEPAGE="https://launchpad.net/pogo"
 LICENSE="GPL"
-PACKAGER="StartOS Developers"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
 SRC_URI="https://launchpadlibrarian.net/98441572/"$N-$V".tar.gz"
 CHECKSUM="79c4fda0d242fa380b6e8dfd37506a2a"
@@ -22,7 +22,7 @@ CONFLICT=""
 INSTALL="$N.install"
 
 pbs_unpack() {
-        dounpack
+    dounpack
 }
 
 pbs_patch() {

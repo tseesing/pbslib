@@ -1,0 +1,36 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="ypk package builder based on ypkg"
+HOMEPAGE="http://code.google.com/p/debbuilder-cn/"
+LICENSE="GPL"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
+YARCH="any"
+
+SRC_URI="http://debbuilder-cn.googlecode.com/files/YPKBuilder"$V".tar.gz"
+CHECKSUM="d29e4a56cf9904950248f682100b78cc7ac439ab"
+
+RDEPEND="jdk jre"
+RECOMMENDED=""
+BDEPEND=""
+OPTIONAL=""
+CONFLICT=""
+
+INSTALL="$N.install"
+
+pbs_unpack() {
+    dounpack
+}
+
+pbs_install() {
+    docp config-cn/* "$PKGDIR"/etc/
+    docp AppFiles/*  "$PKGDIR"/opt/debbuildercn
+    docp "$FILESDIR"/"$N" "$PKGDIR"/usr/bin/
+    find "$PKGDIR" -type f -name "*~" -exec rm {} \;
+    dodesktop "$N.desktop" "IconFiles/debbuilderico.png"
+}
+

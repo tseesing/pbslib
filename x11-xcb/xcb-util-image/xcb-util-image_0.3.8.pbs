@@ -8,7 +8,7 @@
 DESCRIPTION="Utility libraries for XC Binding - Port of Xlib's XImage and XShmImage functions"
 HOMEPAGE="http://xcb.freedesktop.org/"
 LICENSE="GPL"
-PACKAGER="StartOS Developers"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
 SRC_URI="http://xcb.freedesktop.org/dist/"$N-$V".tar.bz2"
 CHECKSUM="245a96041f373b05764148e52d2e0211"
@@ -20,7 +20,7 @@ OPTIONAL=""
 CONFLICT=""
 
 pbs_unpack() {
-        dounpack
+    dounpack
 }
 
 pbs_config() {

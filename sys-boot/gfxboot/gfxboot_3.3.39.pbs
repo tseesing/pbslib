@@ -8,7 +8,7 @@
 DESCRIPTION="Graphical Boot Logo tool"
 HOMEPAGE="http://www.opensuse.org"
 LICENSE="GPL"
-PACKAGER="StartOS Developers"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
 SRC_URI="gfxboot-3.3.39.tar.bz2"
 
@@ -20,7 +20,7 @@ CONFLICT=""
 NOTES=""
 
 pbs_unpack() {
-        dounpack
+    dounpack
 }
 
 pbs_config() {

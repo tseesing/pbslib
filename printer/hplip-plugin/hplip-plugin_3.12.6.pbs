@@ -8,7 +8,7 @@
 DESCRIPTION="Binary plugin for HPs hplip printer driver library"
 HOMEPAGE="http://hplipopensource.com"
 LICENSE="custom"
-PACKAGER="StartOS Developers"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
 SRC_URI="http://www.openprinting.org/download/printdriver/auxfiles/HP/plugins/hplip-"$V"-plugin.run"
 CHECKSUM="7563b7601f9c382a9d87490135eec6d0"

@@ -8,7 +8,7 @@
 DESCRIPTION="Dos2Unix text file converter"
 HOMEPAGE="http://hany.sk/~hany/software/hd2u/"
 LICENSE="GPL"
-PACKAGER="StartOS Developers"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
 SRC_URI="http://hany.sk/~hany/_data/hd2u/"$N-$V".tgz"
 CHECKSUM="8f6668fafb279aa19f956ec0515717b6"
@@ -20,7 +20,7 @@ OPTIONAL=""
 CONFLICT=""
 
 pbs_unpack() {
-        dounpack
+    dounpack
 }
 
 pbs_config() {

@@ -1,0 +1,42 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="Perl Module: Interface to the DNS resolver."
+HOMEPAGE="http://search.cpan.org/dist/perl-Net-DNS"
+LICENSE="GPL,PerlArtistic"
+GROUP="perl"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
+
+SRC_URI="http://www.cpan.org/authors/id/O/OL/OLAF/Net-DNS-$V.tar.gz"
+CHECKSUM="05c0f6955747758bb5c9578d9bc6c3a5"
+
+RDEPEND="perl-digest-hmac perl-net-ip"
+BDEPEND=""
+RECOMMENDED=""
+CONFLICT=""
+
+pbs_unpack() {
+    dounpack
+}
+
+pbs_config() {
+    export PERL_MM_USE_DEFAULT=1 PERL5LIB="" \
+           PERL_AUTOINSTALL=--skipdeps \
+           PERL_MM_OPT="INSTALLDIRS=vendor" \
+           PERL_MB_OPT="--installdirs vendor" \
+           MODULEBUILDRC=/dev/null
+    doconfig
+}
+
+pbs_build() {
+    domake
+}
+
+pbs_install() {
+    domkinstall
+    perl_cleanup
+}

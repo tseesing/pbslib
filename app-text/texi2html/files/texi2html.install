@@ -1,9 +1,14 @@
-. /usr/lib/ybs/funcs
+
+files="texi2html.info-3.gz texi2html.info-2.gz texi2html.info-1.gz texi2html.info.gz"
 
 post_install() {
-        doinstall_info texi2html.info-3.gz texi2html.info-2.gz texi2html.info-1.gz texi2html.info.gz 
+    doinstall_info $files
 }       
 
 pre_remove() {
-        doremove_info texi2html.info-3.gz texi2html.info-2.gz texi2html.info-1.gz texi2html.info.gz
+    doremove_info $files
+}
+
+post_upgrade() {
+    post_install
 }

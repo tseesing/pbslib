@@ -8,7 +8,7 @@
 DESCRIPTION="Desktop setting configuration utility from LXDE."
 HOMEPAGE="http://lxde.org"
 LICENSE="GPL"
-PACKAGER="StartOS Developers"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
 SRC_URI="http://ncu.dl.sourceforge.net/project/lxde/LXAppearance/"$N-$V".tar.gz"
 

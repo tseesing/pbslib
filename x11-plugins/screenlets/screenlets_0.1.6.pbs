@@ -8,13 +8,13 @@
 DESCRIPTION="Screenlets are small owner-drawn applications"
 HOMEPAGE="http://www.screenlets.org"
 LICENSE="GPL"
-PACKAGER="StartOS Developers"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 YARCH="any"
 
 SRC_URI="https://launchpadlibrarian.net/91237980/"$N-$V".tar.bz2"
 CHECKSUM="028ce6b6c8764190d435436d5cbaf68c"
 
-RDEPEND="python BeautifulSoup"
+RDEPEND="python py-beautifulsoup"
 BDEPEND=""
 RECOMMENDED=""
 
@@ -22,7 +22,7 @@ DESKTOPFILE="screenlets-manager.desktop"
 ICONFILE="/usr/share/icons/hicolor/scalable/apps/screenlets.svg"
 
 pbs_unpack() {
-        dounpack
+    dounpack
 }
 
 pbs_build() {
@@ -32,4 +32,3 @@ pbs_build() {
 pbs_install() {
     domkinstall
 }
-

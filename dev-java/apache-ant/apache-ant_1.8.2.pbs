@@ -8,7 +8,7 @@
 DESCRIPTION="Java-based build tool similar to 'make' that uses XML configuration files.(binary version)"
 HOMEPAGE="http://ant.apache.org/"
 LICENSE="apache"
-PACKAGER="StartOS Developers"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 YARCH="any"
 
 SRC_URI="http://archive.apache.org/dist/ant/binaries/"$N-$V"-bin.tar.bz2"

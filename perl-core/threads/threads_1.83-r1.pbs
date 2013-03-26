@@ -7,7 +7,7 @@
 
 DESCRIPTION="Perl interpreter-based threads"
 HOMEPAGE="http://search.cpan.org/dist/threads/"
-PACKAGER="StartOS Developers"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 LICENSE="GPL PerlArtistic"
 
 SRC_URI="http://cpan.communilink.net/authors/id/J/JD/JDHEDDEN/threads-"$V".tar.gz"
@@ -18,7 +18,7 @@ RECOMMENDED=""
 CONFLICT=""
 
 pbs_unpack() {
-        dounpack
+    dounpack
 }
 
 pbs_config() {

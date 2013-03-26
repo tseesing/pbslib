@@ -9,7 +9,7 @@ DESCRIPTION="A fast and easy open-source graphics application for digital painte
 COMMENTS="MyPaint is a fast and easy open-source graphics application for digital painters. It lets you focus on the art instead of the program. You work on your canvas with minimum distractions, bringing up the interface only when you need it."
 HOMEPAGE="http://mypaint.intilinux.com/"
 LICENSE="GPL"
-PACKAGER="StartOS Developers"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
 SRC_URI="http://download.gna.org/"$N"/"$N-$V".tar.bz2"
 
@@ -21,7 +21,7 @@ CONFLICT=""
 INSTALL="$N.install"
 
 pbs_unpack() {
-        dounpack
+    dounpack
 }
 
 pbs_config() {

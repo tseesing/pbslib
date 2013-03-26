@@ -8,7 +8,7 @@
 DESCRIPTION="A cache/proxy daemon for SSDP (the discovery part of UPnP)"
 HOMEPAGE="http://kde.org/"
 LICENSE="GPL,LGPL,FDL"
-PACKAGER="StartOS Developers"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
 SRC_URI="http://download.kde.org/stable/"$N"/"$N-$V".tar.bz2"
 CHECKSUM="af66d89337ef80e8a868d3bb9dd92328"
@@ -20,7 +20,7 @@ OPTIONAL=""
 CONFLICT=""
 
 pbs_unpack() {
-        dounpack
+    dounpack
 }
 
 pbs_config() {

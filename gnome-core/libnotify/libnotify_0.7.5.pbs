@@ -16,7 +16,7 @@ RDEPEND="gdk-pixbuf2"
 BDEPEND="gobject-introspection"
 
 pbs_unpack() {
-        dounpack
+    dounpack
 }
 
 pbs_config() {

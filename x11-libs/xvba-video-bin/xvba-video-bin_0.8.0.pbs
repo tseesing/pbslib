@@ -8,7 +8,7 @@
 DESCRIPTION="AMDs XvBA backend for VA-API, hardware video acceleration on RadeonHD cards (binary version)"
 HOMEPAGE="http://www.splitted-desktop.com/static/libva/"
 LICENSE="GPL"
-PACKAGER="StartOS Developers"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
 SRC_URI="http://www.splitted-desktop.com/static/libva/xvba-video/xvba-video-"$V".i686.tar.gz"
 CHECKSUM="7d2c7bda38d9a18ac3a1d363af46e01d"
@@ -19,7 +19,7 @@ BDEPEND=""
 OPTIONAL=""
 
 pbs_unpack() {
-        dounpack
+    dounpack
 }
 
 pbs_install() {

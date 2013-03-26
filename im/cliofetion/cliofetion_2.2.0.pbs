@@ -8,7 +8,7 @@
 DESCRIPTION="command line libofetion client implemention (CLI without libofetion)"
 HOMEPAGE="http://code.google.com/p/ofetion/"
 LICENSE="GPLv2"
-PACKAGER="StartOS Developers"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
 SRC_URI="http://ofetion.googlecode.com/files/"$N-$V".tar.gz"
 CHECKSUM="59581cdcd113a1e2b35d9d11c52e8fc06f20e207"
@@ -18,7 +18,7 @@ BDEPEND=""
 RECOMMENDED=""
 
 pbs_unpack() {
-        dounpack
+    dounpack
 }
 
 pbs_config() {

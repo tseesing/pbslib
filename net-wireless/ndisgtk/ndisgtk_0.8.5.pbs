@@ -8,7 +8,7 @@
 DESCRIPTION="a graphical frontend for ndiswrapper."
 HOMEPAGE="http://jak-linux.org/projects/ndisgtk/"
 LICENSE="GPL"
-PACKAGER="StartOS Developers"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
 SRC_URI="http://jak-linux.org/projects/ndisgtk/ndisgtk-0.8.5.tar.gz"
 
@@ -20,7 +20,7 @@ CONFLICT=""
 INSTALL="$N.install"
 
 pbs_unpack() {
-        dounpack
+    dounpack
 }
 
 pbs_config() {

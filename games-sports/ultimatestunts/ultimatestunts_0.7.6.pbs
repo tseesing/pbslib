@@ -8,7 +8,7 @@
 DESCRIPTION="Remake of the famous Stunts game"
 HOMEPAGE="http://www.ultimatestunts.nl/"
 LICENSE="GPL"
-PACKAGER="StartOS Developers"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
 SRC_URI="http://sourceforge.net/projects/"$N"/files/sourcecode/"$N"-srcdata-0761.tar.gz"
 CHECKSUM="117745dd282f9904c2d641d7f19714f7"
@@ -22,7 +22,7 @@ CONFLICT=""
 INSTALL="$N.install"
 
 pbs_unpack() {
-        dounpack
+    dounpack
 }
 
 pbs_patch() {

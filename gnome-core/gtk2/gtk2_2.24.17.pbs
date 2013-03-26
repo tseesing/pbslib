@@ -13,8 +13,8 @@ PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 SRC_URI="http://ftp.gnome.org/pub/gnome/sources/gtk+/2.24/gtk+-$V.tar.xz"
 CHECKSUM=""
 
-RDEPEND="atk pango libXcursor libXinerama libXrandr libXi libXcomposite libXdamage cairo cups harfbuzz"
-BDEPEND="gtk-doc gobject-introspection shared-mime-info gdk-pixbuf2"
+RDEPEND="libXinerama libXi libXrandr libXcursor pango libXcomposite libXdamage atk gdk-pixbuf2 cups"
+BDEPEND="gtk-doc gobject-introspection shared-mime-info"
 
 INSTALL="$N.install"
 

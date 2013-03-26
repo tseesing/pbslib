@@ -8,7 +8,7 @@
 DESCRIPTION="An open-source, multi-platform flight simulator"
 HOMEPAGE="http://www.flightgear.org"
 LICENSE="GPL"
-PACKAGER="StartOS Developers"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
 SRC_URI="http://mirrors.ibiblio.org/pub/mirrors/flightgear/ftp/Source/"$N-$V".tar.bz2"
 CHECKSUM="943f784f55c7e11ddce6082d2d1dbba4"
@@ -22,7 +22,7 @@ CONFLICT=""
 INSTALL="$N.install"
 
 pbs_unpack() {
-        dounpack
+    dounpack
 }
 
 pbs_config() {

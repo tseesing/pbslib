@@ -1,0 +1,29 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="san guo sha (AIR)"
+HOMEPAGE="http://www.sanguosha.com/web2/downloads.asp"
+LICENSE="custom"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
+YARCH="any"
+
+SRC_URI="http://web.sanguosha.com/2/air/SanGuoSha.air"
+CHECKSUM="4db7c81142660020e7ab740d5a60ae7a"
+
+RDEPEND="adobe-air-sdk"
+BDEPEND=""
+RECOMMENDED=""
+CONFLICT=""
+
+INSTALL="$N.install"
+
+pbs_install() {
+    docp      "$YBS_SOURCE"/SanGuoSha.air  "$PKGDIR"/usr/lib/"$N"
+    dodesktop "$N.desktop" "$N.png"
+    docp "$FILESDIR"/"$N"  "$PKGDIR"/usr/bin/
+}
+

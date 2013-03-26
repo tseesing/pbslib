@@ -8,18 +8,18 @@
 DESCRIPTION="The swiss army knife of sound processing programs"
 HOMEPAGE="http://sourceforge.net/projects/sox"
 LICENSE="GPL"
-PACKAGER="StartOS Developers"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
 SRC_URI="http://downloads.sourceforge.net/"$N"/"$N-$V".tar.bz2"
 CHECKSUM="12dfc57e503ed4e18cedcac292cdae7982281978"
 
-RDEPEND="file lame libao gsm libid3tag libmad libpng libtool opencore-amr wavpack"
+RDEPEND="libtool file ffmpeg libmodplug libbluray libtheora opus wavpack libmad libid3tag twolame dbus libxcb libao"
 BDEPEND=""
 RECOMMENDED=""
 CONFLICT=""
 
 pbs_unpack() {
-        dounpack
+    dounpack
 }
 
 pbs_patch() {
@@ -39,4 +39,3 @@ pbs_build() {
 pbs_install() {
     domkinstall
 }
-

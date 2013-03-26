@@ -8,7 +8,7 @@
 DESCRIPTION="The gir-repository is a repository of GIR interface description files."
 HOMEPAGE="http://www.gnome.org"
 LICENSE="GPL-2"
-PACKAGER="StartOS Developers"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 SRC_URI=" http://ftp.gnome.org/pub/gnome/sources/$N/0.6/"$N-$V$R".tar.bz2"
 
 RDEPEND=""
@@ -18,7 +18,7 @@ RECOMMENDED="gtk2"
 NOTES="http://wiki.linuxfromscratch.org/blfs/wiki/gir-repository"
 
 pbs_unpack() {
-        dounpack
+    dounpack
 }
 
 pbs_config() {

@@ -9,7 +9,7 @@ DESCRIPTION="X Window System initializer"
 HOMEPAGE="http://xorg.freedesktop.org/"
 GROUP="x11-apps"
 LICENSE="GPL"
-PACKAGER="StartOS Developers"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
 SRC_URI="http://xorg.freedesktop.org/releases/individual/app/"$N-$V".tar.bz2"
 
@@ -17,7 +17,7 @@ RDEPEND="glibc libX11 libXau libxcb libXdmcp"
 BDEPEND=""
 
 pbs_unpack() {
-        dounpack
+    dounpack
 }
 
 pbs_config() {

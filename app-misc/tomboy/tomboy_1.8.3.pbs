@@ -8,7 +8,7 @@
 DESCRIPTION="Desktop note-taking application"
 HOMEPAGE="http://projects.gnome.org/tomboy/"
 LICENSE="GPL"
-PACKAGER="StartOS Developers"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
 SRC_URI="http://ftp.gnome.org/pub/gnome/sources/"$N"/1.8/"$N-$V".tar.xz"
 
@@ -20,7 +20,7 @@ CONFLICT=""
 INSTALL="$N.install"
 
 pbs_unpack() {
-        dounpack
+    dounpack
 }
 
 pbs_config() {

@@ -8,7 +8,7 @@
 DESCRIPTION="Festival Text to Speech engine"
 HOMEPAGE="http://www.cstr.ed.ac.uk/projects/festival/"
 LICENSE="BSD/custom/GPL"
-PACKAGER="StartOS Developers"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
 SRC_URI="http://www.cstr.ed.ac.uk/downloads/"$N"/"$V$R"/"$N-$V$R"-release.tar.gz
          http://www.cstr.ed.ac.uk/downloads/festival/2.1/speech_tools-2.1-release.tar.gz
@@ -22,7 +22,7 @@ RECOMMENDED=""
 CONFLICT=""
 
 pbs_unpack() {
-        dounpack
+    dounpack
     tar xf "$YBS_SOURCE"/speech_tools-2.1-release.tar.gz
 }
 

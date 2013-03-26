@@ -8,7 +8,7 @@
 DESCRIPTION="Extensible Binary Meta Language library"
 HOMEPAGE="http://dl.matroska.org/downloads/libebml"
 LICENSE="LGPL"
-PACKAGER="StartOS Developers"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
 SRC_URI="http://dl.matroska.org/downloads/"$N"/"$N-$V".tar.bz2"
 CHECKSUM="726cc2bd1a525929ff35ff9854c0ebab"
@@ -21,7 +21,7 @@ CONFLICT=""
 REPLACE=""
 
 pbs_unpack() {
-        dounpack
+    dounpack
 }
 
 pbs_build() {

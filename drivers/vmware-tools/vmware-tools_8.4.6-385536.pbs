@@ -8,7 +8,7 @@
 DESCRIPTION="vmware tools kernel modules and init script for kernel 2.6.38.3-ylmfos"
 HOMEPAGE="www.vmware.com"
 LICENSE=""
-PACKAGER="StartOS Developers"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
 SRC_URI="vmware-tools-8.4.6-385536.tar.bz2"
 
@@ -22,7 +22,7 @@ INSTALL="$N.install"
 NOTES=""
 
 pbs_unpack() {
-        dounpack
+    dounpack
 }
 
 pbs_install() {    

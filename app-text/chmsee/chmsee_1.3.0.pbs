@@ -8,7 +8,7 @@
 DESCRIPTION="HTML Help viewer for Unix/Linux"
 HOMEPAGE="http://code.google.com/p/chmsee/"
 LICENSE=""
-PACKAGER="StartOS Developers"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
 SRC_URI="http://chmsee.googlecode.com/files/"$N-$V$R".tar.gz"
 
@@ -21,7 +21,7 @@ INSTALL="$N.install"
 NOTES=""
 
 pbs_unpack() {
-        dounpack
+    dounpack
 }
 
 pbs_config() {

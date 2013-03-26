@@ -8,7 +8,7 @@
 DESCRIPTION="Library project for developers who would like to support popular graphics image formats."
 HOMEPAGE="http://freeimage.sourceforge.net"
 LICENSE="GPL/custom:FIPL"
-PACKAGER="StartOS Developers"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
 SRC_URI="http://downloads.sourceforge.net/project/"$N"/Source%20Distribution/"$V"/FreeImage3153.zip"
 CHECKSUM="6c305b4086500ff8541c596ea6fc7cd7"
@@ -20,7 +20,7 @@ OPTIONAL=""
 CONFLICT=""
 
 pbs_unpack() {
-        dounpack
+    dounpack
     cp -r "$N-$V$R" "$N-$V$R"-fip
     oridir="$PWD"
 }

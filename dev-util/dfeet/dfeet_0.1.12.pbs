@@ -8,21 +8,19 @@
 DESCRIPTION="D-Feet is a powerful D-Bus debugger"
 HOMEPAGE="http://live.gnome.org/d-feet/"
 LICENSE="GPL"
-PACKAGER="StartOS Developers"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
-SRC_URI="http://ftp.gnome.org/pub/GNOME/sources/d-feet/0.1/d-feet-0.1.12.tar.bz2"
+SRC_URI="http://ftp.gnome.org/pub/GNOME/sources/d-feet/0.1/d-feet-"$V".tar.bz2"
 
-RDEPEND=""
+RDEPEND="python"
 BDEPEND=""
 RECOMMENDED=""
 CONFLICT=""
 
 INSTALL="$N.install"
 
-NOTES=""
-
 pbs_unpack() {
-        dounpack
+    dounpack
 }
 
 pbs_config() {
@@ -37,5 +35,4 @@ pbs_build() {
 pbs_install() {
     domkinstall
 }
-
 

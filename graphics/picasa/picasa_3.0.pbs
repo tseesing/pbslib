@@ -8,7 +8,7 @@
 DESCRIPTION="Google's photo organizer"
 HOMEPAGE="http://picasa.google.com"
 LICENSE="custom"
-PACKAGER="StartOS Developers"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
 SRC_URI="http://dl.google.com/linux/deb/pool/non-free/p/picasa/picasa_3.0-current_i386.deb"
 
@@ -18,7 +18,7 @@ RECOMMENDED=""
 CONFLICT=""
 
 pbs_unpack() {
-        dounpack
+    dounpack
 }
 
 pbs_install() {

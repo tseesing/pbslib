@@ -9,11 +9,12 @@ DESCRIPTION="A CUPS printer configuration tool and status applet"
 HOMEPAGE="http://cyberelk.net/tim/software/system-config-printer"
 LICENSE="GPL"
 PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
+GROUP="python"
 
 SRC_URI="http://cyberelk.net/tim/data/"$N"/1.3/"$N-$V".tar.xz"
 CHECKSUM="0775647e1c34ef25364de3c178a4ed36"
 
-RDEPEND="pysmbc pycurl pycups libusb-compat systemd"
+RDEPEND="py-smbc py-curl py-cups libusb-compat systemd"
 BDEPEND="xmlto"
 RECOMMENDED=""
 
@@ -33,4 +34,3 @@ pbs_build() {
 pbs_install() {
     make DESTDIR="$PKGDIR" install
 }
-

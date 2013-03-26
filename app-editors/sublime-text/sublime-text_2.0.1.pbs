@@ -8,7 +8,7 @@
 DESCRIPTION="A sophisticated text editor for code, html and prose."
 HOMEPAGE="http://www.sublimetext.com/"
 LICENSE="custom"
-PACKAGER="StartOS Developers"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
 case "$ARCH" in
   x86_64)

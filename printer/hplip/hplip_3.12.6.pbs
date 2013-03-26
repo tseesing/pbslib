@@ -8,12 +8,12 @@
 DESCRIPTION="Drivers for HP DeskJet, OfficeJet, Photosmart, Business Inkjet and some LaserJet"
 HOMEPAGE="http://hplipopensource.com"
 LICENSE="GPL"
-PACKAGER="StartOS Developers"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
 SRC_URI="http://downloads.sourceforge.net/"$N"/"$N-$V".tar.gz"
 CHECKSUM="5303938e8630775ea6fb383af85775e5"
 
-RDEPEND="cups sane-backends qt pyqt"
+RDEPEND="cups sane-backends qt py-qt"
 BDEPEND=""
 RECOMMENDED="hplip-plugin(=3.12.6)"
 CONFLICT=""

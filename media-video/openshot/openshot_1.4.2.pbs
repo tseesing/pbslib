@@ -8,19 +8,20 @@
 DESCRIPTION="a free, open-source video editor for Linux."
 HOMEPAGE="http://www.openshot.org/"
 LICENSE="GPLv3"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 YARCH="any"
-PACKAGER="StartOS Developers"
+GROUP="python"
 
 SRC_URI="https://launchpadlibrarian.net/92043030/"$N-$V".tar.gz"
 CHECKSUM="16fea75be6b1fc9d31c6a30a81f85a38"
 
-RDEPEND="mlt httplib2 imaging goocanvas pygoocanvas"
+RDEPEND="python(>=2.7.2) mlt py-httplib2 py-imaging goocanvas py-goocanvas"
 BDEPEND=""
 RECOMMENDED="frei0r-plugins"
 CONFLICT=""
 
 pbs_unpack() {
-        dounpack
+    dounpack
 }
 
 pbs_config() {
@@ -35,4 +36,3 @@ pbs_build() {
 pbs_install() {
     domkinstall
 }
-

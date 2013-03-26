@@ -8,7 +8,7 @@
 DESCRIPTION="RPM Package Manager"
 HOMEPAGE="http://rpm5.org/"
 LICENSE="GPL"
-PACKAGER="StartOS Developers"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
 SRC_URI="http://rpm5.org/files/rpm/rpm-5.3/"$N-$V".tar.gz"
 CHECKSUM="7a5112fd208bfda7a1cab20b9ce17a02"
@@ -20,7 +20,7 @@ OPTIONAL=""
 CONFLICT=""
 
 pbs_unpack() {
-        dounpack
+    dounpack
 }
 
 pbs_config() {

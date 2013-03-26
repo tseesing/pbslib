@@ -14,7 +14,7 @@ SRC_URI="http://ftp.gnome.org/pub/GNOME/sources/"$N"/0.28/"$N-$V".tar.xz"
 CHECKSUM="86cf0b81aa023fa93ed415653d51c96767f20b2d7334c893caba71e42654b0ae"
 
 RDEPEND="gtk2 vte-common"
-BDEPEND="pygtk intltool gobject-introspection"
+BDEPEND="py-gtk intltool gobject-introspection"
 
 pbs_unpack() {
     dounpack

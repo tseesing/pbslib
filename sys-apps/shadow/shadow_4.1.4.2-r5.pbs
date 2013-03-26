@@ -8,7 +8,7 @@
 DESCRIPTION="Utilities to deal with user accounts"
 HOMEPAGE="http://pkg-shadow.alioth.debian.org/"
 LICENSE="BSD"
-PACKAGER="StartOS Developers"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
 SRC_URI="ftp://pkg-shadow.alioth.debian.org/pub/pkg-shadow/"$N-$V".tar.bz2"
 
@@ -20,7 +20,7 @@ INSTALL="$N.install"
 NOTES="Use usermod to user to group wheel for su"
 
 pbs_unpack() {
-        dounpack
+    dounpack
 }
 
 pbs_patch() {

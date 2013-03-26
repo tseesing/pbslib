@@ -8,7 +8,7 @@
 DESCRIPTION="An enhanced multi-threaded syslogd with database support and more."
 HOMEPAGE="http://www.rsyslog.com/"
 LICENSE="GPL"
-PACKAGER="StartOS Developers"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
 SRC_URI="http://www.rsyslog.com/files/download/"$N"/"$N-$V".tar.gz"
 CHECKSUM="03e237abaa5d47f92c6e655f92f22532"
@@ -19,7 +19,7 @@ RECOMMENDED=""
 CONFLICT=""
 
 pbs_unpack() {
-        dounpack
+    dounpack
 }
 
 pbs_config() {

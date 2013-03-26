@@ -8,16 +8,17 @@
 DESCRIPTION="X.Org Xxf86dga library"
 HOMEPAGE="http://www.x.org/wiki/"
 GROUP="x11-lib"
-LICENSE="GPL"
-PACKAGER="StartOS Developers"
+LICENSE="custom"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
-SRC_URI="http://www.x.org/releases/X11R7.6/src/lib/"$N-$V".tar.bz2"
+SRC_URI="http://xorg.freedesktop.org/archive/individual/lib/"$N-$V".tar.bz2"
+CHECKSUM="bbd5fdf63d4c107c8cb710d4df2012b4"
 
 RDEPEND="glibc libX11 libXau libxcb libXdmcp libXext"
 BDEPEND=""
 
 pbs_unpack() {
-        dounpack
+    dounpack
 }
 
 pbs_config() {
@@ -30,5 +31,6 @@ pbs_build() {
 
 pbs_install() {
     domkinstall
+    dodoc COPYING
 }
 

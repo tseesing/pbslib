@@ -8,7 +8,7 @@
 DESCRIPTION="simple MP3 player client for MTP based devices"
 HOMEPAGE="http://gmtp.sourceforge.net/"
 LICENSE="GPL"
-PACKAGER="StartOS Developers"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
 SRC_URI="http://sourceforge.net/projects/"$N"/files/gMTP-"$V"/"$N-$V"-i386.tar.gz"
 CHECKSUM="c1390fd53a5ee0e5a0407c47480e2341"
@@ -26,7 +26,7 @@ DESKTOPFILE="gMTP.desktop"
 ICONFILE="gMTPicon.png"
 
 pbs_unpack() {
-        dounpack
+    dounpack
 }
 
 pbs_config() {

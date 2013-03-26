@@ -8,7 +8,7 @@
 DESCRIPTION="A simple dynamic window manager for X, with features nicked from ratpoison and dwm"
 HOMEPAGE="http://aerosuidae.net/musca.html"
 LICENSE="GPL"
-PACKAGER="StartOS Developers"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
 SRC_URI="http://aerosuidae.net/"$N-$V".tgz"
 CHECKSUM="e067a8e39b1a97d62fc8e43800edee70"
@@ -19,7 +19,7 @@ RECOMMENDED=""
 CONFLICT=""
 
 pbs_unpack() {
-        dounpack
+    dounpack
 }
 
 pbs_patch() {

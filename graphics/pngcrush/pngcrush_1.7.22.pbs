@@ -8,7 +8,7 @@
 DESCRIPTION="Portable Network Graphics (PNG) optimizing utility."
 HOMEPAGE="http://pmt.sourceforge.net/pngcrush/"
 LICENSE="GPL"
-PACKAGER="StartOS Developers"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
 SRC_URI="http://sourceforge.net/projects/pmt/files/"$N"/"$V"/"$N-$V".tar.bz2"
 CHECKSUM="85bf51f20ed9c8d10c0d385d08452f1c"
@@ -20,7 +20,7 @@ OPTIONAL=""
 CONFLICT=""
 
 pbs_unpack() {
-        dounpack
+    dounpack
 }
 
 pbs_patch() {
