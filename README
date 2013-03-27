@@ -3,13 +3,12 @@ In this GIT repository, there are several GIT branches, run git-checkout to get 
 
 $ git branch -a
 master  - you are here
-staratos-5.x  - StartOS 5.x series pbs tree
-staratos-6.x  - StartOS 6.x series pbs tree
+staratos-5.x  - StartOS 5.x series pbs resposite
+staratos-6.x  - StartOS 6.x series pbs resposite
 
-For instance, when you are using staratos-5.x, you should run
-$ git checkout staratos-5.x
+For instance, when you are using staratos-6.x, you should run
+$ git checkout staratos-6.x
 
 To compile and install them, read the README file after "git checkout".
 
 Enjoy!
-
