@@ -13,7 +13,7 @@ PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 SRC_URI="ftp://ftp.porcupine.org/mirrors/postfix-release/official/"$N-$V".tar.gz"
 CHECKSUM="fda7ec5ac79300577f61a68561171bd501b1b20c"
 
-RDEPEND="libmysqlclient pcre openldap postgresql-libs sqlite"
+RDEPEND="libmariadbclient pcre openldap postgresql-libs sqlite"
 RECOMMENDED=""
 BDEPEND=""
 OPTIONAL=""
@@ -30,7 +30,6 @@ pbs_config() {
         -DUSE_SASL_AUTH -DUSE_CYRUS_SASL -I/usr/include/sasl \
         -DHAS_LDAP \
         -DUSE_TLS \
-        -DHAS_MYSQL -I/usr/include/mysql \
         -DHAS_PGSQL -I/usr/include/postgresql \
         -DHAS_SQLITE \
         ' AUXLIBS=' \
@@ -59,4 +58,3 @@ pbs_install() {
     sed 's/\(^\$manpage[^:]*\):/\1.gz:/' -i usr/lib/"$N"/postfix-files
     dopatch aliases.patch
 }
-

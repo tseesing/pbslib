@@ -1,7 +1,7 @@
 
 * 2013-02-17 Tseesing <chenqixing@ivali.com> - 20121113
--   Remove "ffmpeg" from $RDEPEND; since it will causes "x264" to
--       depend the "ffmpeg" each other.
+-  Remove "ffmpeg" from $RDEPEND; since it will causes "x264" to
+-      depend the "ffmpeg" each other.
 
 * 2013-01-29 Tseesing <chenqixing@ivali.com> - 20121113
--   Add "ffmpeg" to $RDEPEND
+-  Add "ffmpeg" to $RDEPEND

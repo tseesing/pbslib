@@ -14,8 +14,8 @@ PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>
 SRC_URI="ftp://ftp.andrew.cmu.edu/pub/cyrus-mail/"$N-$V".tar.gz"
 CHECKSUM="341cffe829a4d71f2a6503d669d5a946"
 
-RDEPEND="pam krb5"
-BDEPEND="postgresql-libs libmysqlclient openldap krb5 openssl"
+RDEPEND="krb5 pam openssl"
+BDEPEND="postgresql-libs libmariadbclient openldap krb5 openssl"
 RECOMMENDED=""
 
 OPTIONS="nolibtool"

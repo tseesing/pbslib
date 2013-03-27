@@ -1,0 +1,63 @@
+It is recommended to build them in this order:
+
+Eina
+Eet
+Evas
+Evas_Generic_Loaders
+Ecore
+Eio
+Embryo
+Edje
+Efreet
+E_Dbus
+Eeze
+Emotion
+Ethumb
+Elementary
+Enlightenment (etc.)
+Recommended requirements for all releases to the right are:
+
+libc
+libpthread
+zlib
+libfreetype/freetype
+libfontconfig/fontconfig
+libfribidi/fribidi (If you want BiDi support)
+harfbuzz (If you want complex text shaping support)
+opengl2.0/opengles-2 (depending on target)
+libpng
+libjpeg
+libtiff
+libgif
+librsvg (if you want SVG support in Evas)
+libx11
+libxext
+libxrender
+libxcomposite
+libxdamage
+libxfixes
+libxrandr
+libxinerama
+libxss
+libxp
+libxtest
+libxdpms
+libxcursor
+libxprint
+libxkbfile
+libxcb
+libxcb-keysyms
+libxcb-shape
+libssl/openssl
+libcurl
+libudev
+libdbus
+libasound/alsa (optional for mixer support)
+libpoppler
+libraw
+libspectre
+libgstreamer/gstreamer (and plugins - for emotion)
+libxine (nice alternate codec for emotion
+libvlc (nice alternate codec for emotion
+lua5.1 or lua5.2 (not 5.0)
+libwebp/webp (webp codec support for evas - optional)

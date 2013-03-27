@@ -1,7 +1,11 @@
+
+* 2012-03-27 Zhongxin Huang <huangzhongxin@ivali.com> - 4.8.4
+-  Replace MYSQL with MariaDB
+
 * 2013-02-01 Tseesing <chenqixing@ivali.com> - 4.8.4
--   Add "libmng" to $RDEPEND
--   Add "libmysqlclient" to $OPTIONAL
+-  Add "libmng" to $RDEPEND
+-  Add "libmysqlclient" to $OPTIONAL
 
 * 2013-01-30 Tseesing <chenqixing@ivali.com> - 4.8.4
--   Add "alsa-lib libpng libtiff ca-certificates libgl libXv xdg-utils hicolor-icon-theme  desktop-file-utils" to $RDEPEND
--   Add "unixodbc postgresql-libs" to $OPTIONAL
+-  Add "alsa-lib libpng libtiff ca-certificates libgl libXv xdg-utils hicolor-icon-theme  desktop-file-utils" to $RDEPEND
+-  Add "unixodbc postgresql-libs" to $OPTIONAL

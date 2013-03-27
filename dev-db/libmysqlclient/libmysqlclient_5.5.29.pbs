@@ -15,6 +15,7 @@ CHECKSUM="e6b9f9cb82e990bd8f0474df7462904e"
 
 RDEPEND="gcc-libs openssl ncurses"
 BDEPEND="cmake zlib"
+CONFLICT="libmariadbclient"
 
 pbs_unpack() {
     dounpack

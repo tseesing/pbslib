@@ -14,7 +14,7 @@ GROUP="kde"
 SRC_URI="http://download.kde.org/stable/"$N"/src/"$N-$V".tar.bz2"
 CHECKSUM="955ea3ccca2c81db8b81deea9a45921c89687bda"
 
-RDEPEND="boost-libs soprano mysql"
+RDEPEND="boost-libs openssl soprano libXext mariadb"
 BDEPEND="cmake pkgconfig automoc4 boost"
 RECOMMENDED=""
 

@@ -9,6 +9,7 @@ DESCRIPTION="Bootsplash program able to render in Framebuffer, or X11 that is ea
 HOMEPAGE="http://www.enlightenment.org/"
 LICENSE="BSD"
 PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
+GROUP="e17"
 
 SRC_URI="http://download.enlightenment.org/releases/"$N-$V".tar.gz"
 CHECKSUM="d017c5c905a71b8fbba5ded5095380e9"

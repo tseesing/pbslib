@@ -1,0 +1,79 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="MySQL client libraries"
+HOMEPAGE="http://www.mysql.com/"
+LICENSE="GPL"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
+
+SRC_URI="http://ftp.gwdg.de/pub/misc/mysql/Downloads/MySQL-5.5/mysql-$V.tar.gz"
+CHECKSUM="e6b9f9cb82e990bd8f0474df7462904e"
+
+RDEPEND="gcc-libs openssl ncurses"
+BDEPEND="cmake zlib"
+CONFLICT=""
+
+pbs_unpack() {
+    dounpack
+}
+
+pbs_config() {
+    mkdir build
+    cd build
+    # CFLAGS/CXXFLAGS as suggested upstream
+    cmake .. \
+          -DCMAKE_BUILD_TYPE=Release \
+          -DCMAKE_INSTALL_PREFIX=/usr \
+          -DSYSCONFDIR=/etc/mysql \
+          -DMYSQL_DATADIR=/var/lib/mysql \
+          -DMYSQL_UNIX_ADDR=/run/mysqld/mysqld.sock \
+          -DDEFAULT_CHARSET=utf8 \
+          -DDEFAULT_COLLATION=utf8_general_ci \
+          -DENABLED_LOCAL_INFILE=ON \
+          -DINSTALL_INFODIR=share/mysql/docs \
+          -DINSTALL_MANDIR=share/man \
+          -DINSTALL_LIBDIR=lib"$LIBDIRSUFFIX" \
+          -DINSTALL_PLUGINDIR=lib"$LIBDIRSUFFIX"/mysql/plugin \
+          -DINSTALL_SCRIPTDIR=bin \
+          -DINSTALL_INCLUDEDIR=include/mysql \
+          -DINSTALL_DOCREADMEDIR=share/mysql \
+          -DINSTALL_SUPPORTFILESDIR=share/mysql \
+          -DINSTALL_MYSQLSHAREDIR=share/mysql \
+          -DINSTALL_DOCDIR=share/mysql/docs \
+          -DINSTALL_SHAREDIR=share/mysql \
+          -DWITH_READLINE=ON \
+          -DWITH_ZLIB=system \
+          -DWITH_SSL=system \
+          -DWITH_LIBWRAP=OFF \
+          -DWITH_MYSQLD_LDFLAGS="${LDFLAGS}" \
+          -DWITH_EXTRA_CHARSETS=complex \
+          -DWITH_EMBEDDED_SERVER=ON \
+          -DWITH_INNOBASE_STORAGE_ENGINE=1 \
+          -DWITH_PARTITION_STORAGE_ENGINE=1 \
+          -DWITHOUT_EXAMPLE_STORAGE_ENGINE=1 \
+          -DWITHOUT_ARCHIVE_STORAGE_ENGINE=1 \
+          -DWITHOUT_BLACKHOLE_STORAGE_ENGINE=1 \
+          -DWITHOUT_FEDERATED_STORAGE_ENGINE=1 \
+          -DCMAKE_C_FLAGS="-fPIC ${CFLAGS} -fno-strict-aliasing -DBIG_JOINS=1 -fomit-frame-pointer" \
+          -DCMAKE_CXX_FLAGS="-fPIC ${CXXFLAGS} -fno-strict-aliasing -DBIG_JOINS=1 -felide-constructors -fno-rtti"
+}
+
+pbs_build() {
+    domake
+}
+
+pbs_install() {
+    for dir in include libmysql libmysqld libservices; do
+        domkinstall -C "${dir}"
+    done
+    docp scripts/mysql_config "$PKGDIR"/usr/bin/
+    # man
+    for man in mysql_config mysql_client_test_embedded mysqltest_embedded; do
+        doman "$SRCDIR"/man/"${man}".1
+    done
+}
+

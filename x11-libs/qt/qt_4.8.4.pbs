@@ -13,12 +13,12 @@ PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>
 
 SRC_URI="http://releases.qt-project.org/qt4/source/qt-everywhere-opensource-src-"$V".tar.gz"
 
-RDEPEND="mesa libXrender fontconfig glib2 libpng libSM postgresql-libs libmysqlclient sqlite unixodbc libmng dbus alsa-lib"
+RDEPEND="glib2 libpng libSM libXrender fontconfig dbus mesa alsa-lib libmng unixodbc freetds sqlite libmariadbclient postgresql-libs"
 BDEPEND=""
 RECOMMENDED=""
 OPTIONAL="unixodbc: ODBC driver
           postgresql-libs: PostgreSQL driver
-          libmysqlclient: MySQL driver"
+          libmariadbclient: MariaDB driver"
 
 INSTALL="$N.install"
 
@@ -46,10 +46,10 @@ pbs_config() {
             -importdir      /usr/lib"$LIBDIRSUFFIX"/qt/imports 
             -datadir        /usr/share/qt 
             -translationdir /usr/share/qt/translations 
-            -sysconfdir     /etc/xdg \
+            -sysconfdir     /etc/xdg
             -examplesdir    /usr/share/doc/qt/examples 
             -demosdir       /usr/share/doc/qt/demos 
-            -plugin-sql-{psql,mysql,sqlite,odbc,ibase} 
+            -plugin-sql-{psql,sqlite,odbc,ibase,mysql} 
             -system-sqlite 
             -no-phonon 
             -no-phonon-backend 
@@ -65,8 +65,8 @@ pbs_config() {
             -reduce-relocations 
             -dbus-linked 
             -reduce-exports 
-            -no-openvg"
-
+            -no-openvg
+            -release"
     ./configure $config
 }
 
@@ -94,4 +94,3 @@ pbs_install () {
     # Fix wrong path in prl files
     find usr/lib"$LIBDIRSUFFIX" -type f -name '*.prl' -exec sed -i -e '/^QMAKE_PRL_BUILD_DIR/d;s/\(QMAKE_PRL_LIBS =\).*/\1/' {} \;
 }
-

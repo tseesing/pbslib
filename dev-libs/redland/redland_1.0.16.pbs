@@ -14,7 +14,7 @@ PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>
 SRC_URI="http://download.librdf.org/source/"$N-$V".tar.gz"
 CHECKSUM="d9a274fc086e61119d5c9beafb8d05527e040ec86f4c0961276ca8de0a049dbd"
 
-RDEPEND="berkeley-db rasqal raptor2 libtool libmysqlclient postgresql-libs unixodbc sqlite libiodbc"
+RDEPEND="rasqal berkeley-db libtool libmariadbclient libiodbc postgresql-libs sqlite"
 BDEPEND=""
 RECOMMENDED=""
 CONFLICT=""
@@ -25,10 +25,10 @@ pbs_unpack() {
 
 pbs_config() {
     config+="--enable-release 
-        --disable-static 
-        --with-raptor=system 
-        --with-rasqal=system 
-        --with-sqlite=3"
+             --disable-static 
+             --with-raptor=system 
+             --with-rasqal=system 
+             --with-sqlite=3"
     doconfig
 }
 
@@ -39,4 +39,3 @@ pbs_build() {
 pbs_install() {
     domkinstall
 }
-

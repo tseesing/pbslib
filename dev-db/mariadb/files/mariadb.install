@@ -1,0 +1,24 @@
+
+datadir="/var/lib/mysql"
+
+post_install(){
+    dogroupadd -g 89 mysql
+    douseradd -u 89 -g mysql -d $datadir -s /bin/false mysql
+    if [[ ! -e $datadir ]]; then
+        install -dm700 $datadir
+        /usr/bin/mysql_install_db --user=mysql --basedir=/usr --datadir=$datadir
+        chown -R mysql:mysql /var/lib/mysql
+    fi
+    /usr/bin/systemd-tmpfiles --create mysqld.conf
+    echo ">> If you are migrating from MySQL, don't forget to run 'mysql_upgrade'"
+    echo "after mysqld.service restart." 
+}
+
+post_upgrade(){
+    post_install
+}
+
+post_remove(){
+    douserdel mysql
+    dogroupdel mysql || true
+}

@@ -10,7 +10,7 @@ COMMENTS=""
 HOMEPAGE=""
 LICENSE="GPLv2+"
 #PRIORITY="required"
-PACKAGER="StartOS Developers"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 GROUP=""
 
 YARCH="any"
@@ -81,4 +81,3 @@ pbs_install() {
     #when SRC_URI is deb or rpm package
     #docp data/*  "$PKGDIR"
 }
-

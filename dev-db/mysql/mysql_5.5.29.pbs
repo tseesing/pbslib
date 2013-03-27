@@ -15,6 +15,7 @@ CHECKSUM="e6b9f9cb82e990bd8f0474df7462904e"
 
 RDEPEND="mysql-clients systemd ncurses"
 BDEPEND="cmake openssl zlib"
+CONFLICT="mariadb"
 
 INSTALL="$N.install"
 
