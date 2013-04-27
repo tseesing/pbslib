@@ -1,17 +1,10 @@
-. /usr/lib/ybs/funcs
 
 post_install() {
     cat << ENDOFMESSAGE
-=>
-=>
-=>  To install mod_wsgi, add the following line in 
-=>  /etc/apache/httpd.conf file :
-=>
-=>  LoadModule wsgi_module modules/mod_wsgi.so
-=>
-=>  and restart/reload Apache.
-=>
-=>
+  To install mod_wsgi, add the following line in 
+  /etc/apache/httpd.conf file :
+  LoadModule wsgi_module modules/mod_wsgi.so
+  and restart/reload Apache.
 ENDOFMESSAGE
 }
 
@@ -22,4 +15,3 @@ post_upgrade() {
 post_downgrade() {
     post_install
 }
-

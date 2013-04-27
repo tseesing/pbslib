@@ -13,7 +13,7 @@ PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 SRC_URI="http://www.cpan.org/src/5.0/"$N-$V".tar.bz2"
 CHECKSUM="2818ab01672f005a4e552a713aa27b08"
 
-RDEPEND="berkeley-db gdbm coreutils glibc"
+RDEPEND="glibc berkeley-db gdbm"
 BDEPEND=""
 
 pbs_unpack() {
@@ -22,17 +22,16 @@ pbs_unpack() {
 
 pbs_config() {
     [ "$ARCH" = "x86_64" ] && extra_opts="-Dcccdlflags='-fPIC'" || extra_opts=""
-
     ./Configure -des -Dusethreads -Duseshrplib -Doptimize="${CFLAGS}" \
             -Dprefix=/usr -Dvendorprefix=/usr -Dinstallprefix="$PKGDIR"/usr \
-             -Dprivlib=/usr/share/perl5/core_perl \
-             -Darchlib=/usr/lib"$LIBDIRSUFFIX"/perl5/core_perl \
+            -Dprivlib=/usr/share/perl5/core_perl \
+            -Darchlib=/usr/lib"$LIBDIRSUFFIX"/perl5/core_perl \
             -Dsitelib=/usr/share/perl5/site_perl \
             -Dsitearch=/usr/lib"$LIBDIRSUFFIX"/perl5/site_perl \
             -Dvendorlib=/usr/share/perl5/vendor_perl \
             -Dvendorarch=/usr/lib"$LIBDIRSUFFIX"/perl5/vendor_perl \
-               -Dscriptdir=/usr/bin/core_perl \
-               -Dsitescript=/usr/bin/site_perl \
+            -Dscriptdir=/usr/bin/core_perl \
+            -Dsitescript=/usr/bin/site_perl \
             -Dvendorscript=/usr/bin/vendor_perl \
             -Dinc_version_list=none \
             -Dman1ext=1perl -Dman3ext=3perl "${extra_opts}" \
@@ -45,46 +44,38 @@ pbs_build() {
 
 pbs_install() {
     make install
-    
     cd "$PKGDIR"
-    
     ### Perl Settings ###
     # Change man page extensions for site and vendor module builds.
-      sed -e '/^man1ext=/ s/1perl/1p/' -e '/^man3ext=/ s/3perl/3pm/' \
-              -i usr/lib"$LIBDIRSUFFIX"/perl5/core_perl/Config_heavy.pl
-
-      ### CPAN Settings ###
-      # Set CPAN default config to use the site directories.
-      sed -e '/(makepl_arg =>/   s/""/"INSTALLDIRS=site"/' \
-              -e '/(mbuildpl_arg =>/ s/""/"installdirs=site"/' \
-              -i usr/share/perl5/core_perl/CPAN/FirstTime.pm
-
-      ### CPANPLUS Settings ###
-      # Set CPANPLUS default config to use the site directories.
-      sed -e "/{'makemakerflags'}/ s/'';/'INSTALLDIRS=site';/" \
-              -e "/{'buildflags'}/     s/'';/'installdirs=site';/" \
-              -i usr/share/perl5/core_perl/CPANPLUS/Config.pm
-
-      # Profile script to set paths to perl scripts.
-      docp "$FILESDIR"/{perlbin.sh,perlbin.csh} etc/profile.d/
-
-      mv usr/bin/{perl"$V",perl}
+    sed -e '/^man1ext=/ s/1perl/1p/' -e '/^man3ext=/ s/3perl/3pm/' \
+        -i usr/lib"$LIBDIRSUFFIX"/perl5/core_perl/Config_heavy.pl
+    ### CPAN Settings ###
+    # Set CPAN default config to use the site directories.
+    sed -e '/(makepl_arg =>/   s/""/"INSTALLDIRS=site"/' \
+        -e '/(mbuildpl_arg =>/ s/""/"installdirs=site"/' \
+        -i usr/share/perl5/core_perl/CPAN/FirstTime.pm
+    ### CPANPLUS Settings ###
+    # Set CPANPLUS default config to use the site directories.
+    sed -e "/{'makemakerflags'}/ s/'';/'INSTALLDIRS=site';/" \
+        -e "/{'buildflags'}/     s/'';/'installdirs=site';/" \
+        -i usr/share/perl5/core_perl/CPANPLUS/Config.pm
+    # Profile script to set paths to perl scripts.
+    docp "$FILESDIR"/{perlbin.sh,perlbin.csh} etc/profile.d/
+    mv usr/bin/{perl"$V",perl}
     cd usr/bin/core_perl
     ln -sf c2ph pstruct
     ln -sf s2p psed
     cd -
-      grep -Rl "$PKGDIR" usr | xargs sed -i "s^$PKGDIR^^g"
-
-      # Remove all pod files *except* those under /usr/share/perl5/core_perl/pod/
-      rm -f usr/share/perl5/core_perl/*.pod
-
-      for d in usr/share/perl5/core_perl/*; do
-            if [ -d $d -a $(basename $d) != "pod" ]; then
-                 find $d -name *.pod -delete
-            fi
-      done
-
+    grep -Rl "$PKGDIR" usr | xargs sed -i "s^$PKGDIR^^g"
+    # Remove all pod files *except* those under /usr/share/perl5/core_perl/pod/
+    rm -f usr/share/perl5/core_perl/*.pod
+    for d in usr/share/perl5/core_perl/*; do
+        if [ -d $d -a $(basename $d) != "pod" ]; then
+            find $d -name *.pod -delete
+        fi
+    done
     find usr/lib"$LIBDIRSUFFIX" -name *.pod -delete
-      find -name .packlist -delete
+    find -name .packlist -delete
+    # Note: Make syslink
+    doln /usr/lib"$LIBDIRSUFFIX"/perl5/core_perl/CORE/libperl.so usr/lib"$LIBDIRSUFFIX"/libperl.so
 }
-

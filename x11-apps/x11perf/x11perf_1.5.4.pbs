@@ -13,7 +13,7 @@ GROUP="x11-apps"
 
 SRC_URI="http://xorg.freedesktop.org/releases/individual/app/"$N-$V".tar.bz2"
 
-RDEPEND="libXft libXmu"
+RDEPEND="libXext libXft libXrender libX11 libXmu glibc libxcb libXau libXdmcp fontconfig expat freetype zlib bzip2"
 BDEPEND=""
 
 pbs_unpack() {
@@ -32,4 +32,3 @@ pbs_install() {
     domkinstall
     dodoc COPYING
 }
-

@@ -14,9 +14,8 @@ PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>
 SRC_URI="http://freedesktop.org/software/"$N"/releases/"$N-$V".tar.xz"
 CHECKSUM="c90bfda29605942d08e3e218ef10e3c660506a06651a616bfbb6a6df8392836d"
 
-RDEPEND="rtkit speex tdb fftw orc libsamplerate webrtc-audio-processing systemd 
-         json-c libasyncns libcap libsndfile(>=1.0.18)"
-RECOMMENDED="avahi alsa-plugins"
+RDEPEND="bluez libcap glibc attr libtool libsamplerate speex orc tdb json-c libX11 libSM libICE util-linux-libs libXtst libXi libXext libxcb libXau libXdmcp libsndfile flac libvorbis libogg libasyncns gconf dbus-glib glib2 zlib dbus-libs libffi pcre libbsd alsa-lib systemd openssl sbc jack-audio-connection-kit avahi lirc fftw webrtc-audio-processing gcc-libs"
+RECOMMENDED=""
 BDEPEND=""
 CONFLICT=""
 OPTIONAL="avahi: zeroconf support
@@ -27,8 +26,7 @@ OPTIONAL="avahi: zeroconf support
           lirc: infra-red support
           openssl: RAOP support
           pyqt: Equalizer GUI (qpaeq)
-          alsa-plugins: ALSA support
-          avahi: - zeroconf support"
+          alsa-plugins: ALSA support"
 
 INSTALL="$N.install"
 
@@ -46,7 +44,7 @@ pbs_config() {
 }
 
 pbs_build() {
-    # fight unused direct deps
+    # Fix unused direct deps
     sed -i -e 's/ -shared / -Wl,-O1,--as-needed\0/g' libtool
     domake
 }
@@ -70,4 +68,3 @@ pbs_install() {
     # PulseAudio for alsa 
     docp "$FILESDIR"/asound.conf  etc/
 }
-

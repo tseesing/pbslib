@@ -1,8 +1,7 @@
-. /usr/lib/ybs/funcs
 
 post_install() {
-    glib_compile_schemas
-    gnome2_desktop_database_update
+    glib-compile-schemas /usr/share/glib-2.0/schemas
+    update-desktop-database
 }
 
 post_remove() {

@@ -13,7 +13,7 @@ GROUP="x11-drivers"
 
 SRC_URI="http://xorg.freedesktop.org/releases/individual/driver/"$N-$V".tar.bz2"
 
-RDEPEND="libdrm xorg-server(>=1.13.0) systemd"
+RDEPEND="xorg-server(>=1.13.0) libpciaccess glibc libdrm systemd"
 BDEPEND=""
 
 pbs_unpack() {
@@ -33,4 +33,3 @@ pbs_install() {
     domkinstall
     dodoc COPYING
 }
-

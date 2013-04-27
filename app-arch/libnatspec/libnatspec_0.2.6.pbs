@@ -13,7 +13,7 @@ PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 SRC_URI="http://sourceforge.net/projects/natspec/files/natspec/"$N"/"$N-$V".tar.bz2"
 CHECKSUM="b57683f2e7be837992bffead1a6d3733"
 
-RDEPEND="popt"
+RDEPEND="popt glibc"
 RECOMMENDED=""
 BDEPEND=""
 OPTIONAL=""
@@ -40,4 +40,3 @@ pbs_build() {
 pbs_install() {
     domkinstall
 }
-

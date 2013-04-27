@@ -1,0 +1,44 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="GTK+ is a multi-platform toolkit (v3)"
+HOMEPAGE="http://www.gtk.org/"
+LICENSE="LGPL"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
+
+SRC_URI="http://ftp.gnome.org/pub/GNOME/core/3.8/3.8.0/sources/gtk+-$V.tar.xz"
+CHECKSUM=""
+
+RDEPEND="libXinerama libXrandr libXcursor wayland libxkbcommon pango harfbuzz graphite2 icu gcc-libs libXi libXcomposite libXdamage libXfixes cairo pixman libxcb libXrender libXext gdk-pixbuf2 libpng at-spi2-atk atk at-spi2-core libX11 libXau libXdmcp dbus-libs fontconfig freetype bzip2 expat glib2 glibc zlib libffi pcre mesa libSM util-linux-libs libICE systemd libdrm libXxf86vm colord lcms2 cups krb5 e2fsprogs gnutls avahi keyutils p11-kit libtasn1 nettle gmp"
+RECOMMENDED=""
+BDEPEND="gobject-introspection"
+OPTIONAL=""
+CONFLICT=""
+
+INSTALL="$N.install"
+
+pbs_unpack() {
+    dounpack
+}
+
+pbs_config() {
+    config+="--enable-gtk2-dependency 
+             --disable-schemas-compile
+             --enable-x11-backend
+             --enable-broadway-backend
+             --enable-wayland-backend"
+    doconfig
+}
+
+pbs_build() {
+    domake
+}
+
+pbs_install() {
+    domkinstall
+    docp "$FILESDIR"/settings.ini "$PKGDIR"/etc/gtk-3.0/
+}

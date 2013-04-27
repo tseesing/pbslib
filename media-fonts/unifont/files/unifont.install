@@ -1,4 +1,3 @@
-. /usr/lib/ybs/funcs
 
 dir="/usr/share/fonts/unifont"
 
@@ -8,10 +7,9 @@ post_install() {
 
 post_remove() {
     rm -rf $dir/{fonts.dir,fonts.scale}
-    rmdir /usr/share/fonts/unifont ||return 0
+    rmdir /usr/share/fonts/unifont ||true
 }
 
 post_upgrade() {
     post_install
 }
-

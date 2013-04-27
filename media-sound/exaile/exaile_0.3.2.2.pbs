@@ -1,4 +1,9 @@
 #
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
 
 DESCRIPTION="a media player aiming to be similar to AmaroK, but for GTK+"
 HOMEPAGE="http://www.exaile.org/"
@@ -11,8 +16,6 @@ RDEPEND="mutagen"
 BDEPEND=""
 RECOMMENDED=""
 CONFLICT=""
-
-INSTALL="$N.install"
 
 pbs_unpack() {
     dounpack
@@ -34,4 +37,3 @@ pbs_build() {
 pbs_install() {
     domkinstall
 }
-

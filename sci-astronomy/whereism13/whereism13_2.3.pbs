@@ -18,8 +18,6 @@ BDEPEND=""
 RECOMMENDED=""
 CONFLICT=""
 
-INSTALL="$N.install"
-
 pbs_unpack() {
     dounpack
 }
@@ -31,4 +29,3 @@ pbs_install() {
     dodesktop "$N.desktop"  "$N.png"
     docp "$FILESDIR"/"$N" "$PKGDIR"/usr/bin/
 } 
-

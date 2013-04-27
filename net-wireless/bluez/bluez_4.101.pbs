@@ -14,7 +14,7 @@ PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>
 SRC_URI="http://www.kernel.org/pub/linux/bluetooth/"$N-$V".tar.bz2"
 CHECKSUM="902b390af95c6c5d6d1a17d94c8344ab"
 
-RDEPEND="dbus systemd python"
+RDEPEND="libusb-compat systemd gst-plugins-base0.10"
 BDEPEND=""
 RECOMMENDED=""
 OPTIONAL="gst-plugins-base0.10: bluetooth GStreamer support
@@ -60,4 +60,3 @@ pbs_install() {
     install -Dm755 test/test-device "$PKGDIR"/usr/bin/bluez-test-device
     install -Dm755 test/test-input "$PKGDIR"/usr/bin/bluez-test-input
 }
-

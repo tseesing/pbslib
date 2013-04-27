@@ -1,7 +1,6 @@
-. /usr/lib/ybs/funcs
 
 post_install() {
-    doinstall_info netcat.info.gz
+    doinstall_info netcat.info.gz ||true
 }
 
 pre_remove() {
@@ -15,4 +14,3 @@ post_upgrade()  {
 post_downgrade() {
     post_install
 }
-    

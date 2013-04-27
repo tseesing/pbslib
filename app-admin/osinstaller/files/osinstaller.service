@@ -1,5 +1,5 @@
 [Unit]
-Description=LiveCD installer
+Description=StartOS installer for LiveCD
 Requires=dbus.service
 After=dbus.service
 Before=display-manager.service

@@ -13,8 +13,8 @@ PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 SRC_URI="http://www.graphviz.org/pub/graphviz/stable/SOURCES/"$N-$V".tar.gz"
 CHECKSUM="4725d88a13e071ee22e632de551d4a55ca08ee7d"
 
-RDEPEND="gd librsvg libXaw ghostscript pango gts"
-RECOMMENDED=""
+RDEPEND="gts libXaw qt gd librsvg ghostscript"
+RECOMMENDED="R ruby lua"
 BDEPEND="swig mono guile lua ocaml perl python R ruby tk qt" #php
 OPTIONAL="mono: sharp bindings
           guile: guile bindings
@@ -28,6 +28,8 @@ OPTIONAL="mono: sharp bindings
           tcl: tcl bindings
           qt: gvedit"
 CONFLICT=""
+
+INSTALL="$N.install"
 
 pbs_unpack() {
     dounpack
@@ -55,4 +57,3 @@ pbs_install() {
     domkinstall
     dodoc COPYING
 }
-

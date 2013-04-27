@@ -13,7 +13,7 @@ PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 SRC_URI="ftp://invisible-island.net/"$N"/"$N-$V".tgz"
 CHECKSUM="0e4385e66d40b5dd6017d02c3db2a4af"
 
-RDEPEND="libutempter libXaw libXft ncurses"
+RDEPEND="fontconfig libXft libXmu libXaw libXpm libICE libXt libX11 libutempter ncurses glibc freetype zlib bzip2 expat libXrender libxcb libXau libXdmcp libSM util-linux-libs libXext"
 BDEPEND=""
 
 pbs_unpack() {
@@ -57,5 +57,3 @@ pbs_install() {
     docp {xterm,uxterm}.desktop "$PKGDIR"/usr/share/applications/
     chmod 0755 "$PKGDIR"/usr/bin/xterm
 }
-
-

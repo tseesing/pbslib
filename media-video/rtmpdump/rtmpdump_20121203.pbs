@@ -11,8 +11,9 @@ LICENSE="GPL,LGPL"
 PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
 SRC_URI="ftp://ftp.archlinux.org/other/"$N"/"$N-$V".tar.xz"
+CHECKSUM=""
 
-RDEPEND="openssl"
+RDEPEND="openssl zlib glibc"
 RECOMMENDED=""
 BDEPEND=""
 CONFLICT=""
@@ -28,6 +29,3 @@ pbs_build() {
 pbs_install() {
     domkinstall prefix=/usr mandir=/usr/share/man libdir=/usr/lib"$LIBDIRSUFFIX"
 }
-
-
-

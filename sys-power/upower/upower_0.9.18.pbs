@@ -13,7 +13,7 @@ PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>
 
 SRC_URI="http://upower.freedesktop.org/releases/"$N-$V".tar.xz"
 
-RDEPEND="systemd libusbx polkit pm-utils dbus-glib libimobiledevice"
+RDEPEND="glibc polkit dbus-glib dbus-libs libusbx systemd glib2 libimobiledevice libplist zlib libffi pcre usbmuxd openssl libxml2 xz"
 BDEPEND=""
 RECOMMENDED=""
 
@@ -22,9 +22,9 @@ pbs_unpack() {
 }
 
 pbs_patch() {
-    # put systemd files in /usr/lib
+    # Put systemd files in /usr/lib
     sed -i "/slashlibdir=/s#/lib#/usr/lib#" configure
-    # https://bugs.freedesktop.org/show_bug.cgi?id=54371
+    # Https://bugs.freedesktop.org/show_bug.cgi?id=54371
     dopatch 0001-Send-resume-signal-when-built-with-systemd-and-using.patch
 }
 
@@ -42,4 +42,3 @@ pbs_build() {
 pbs_install() {
     domkinstall
 }
-

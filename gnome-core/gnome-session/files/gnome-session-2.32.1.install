@@ -15,15 +15,13 @@ post_install() {
     cd /usr/share/xsessions    
     [ -f gnome-classic.desktop ] && ln -sf gnome-classic.desktop gnome.desktop
 
-    gnome2_desktop_database_update
-    gnome2_icon_cache_update
-    gnome2_gconfd_reload
+    update-desktop-database
+    gtk-update-icon-cache -f -q -t
 }       
 
 post_upgrade() {
-    gnome2_desktop_database_update
-    gnome2_icon_cache_update
-    gnome2_gconfd_reload
+    update-desktop-database
+    gtk-update-icon-cache -f -q -t
 }
 
 post_downgrade() {

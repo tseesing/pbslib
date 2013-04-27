@@ -239,7 +239,7 @@ ks_prerm_remove() {
 #------------ main -------------------------#
 #                                           #
 post_install() {
-    gnome2_desktop_database_update
+    update-desktop-database
     ks_init
     ks_config    
 }

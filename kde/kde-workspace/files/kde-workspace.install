@@ -24,4 +24,3 @@ post_remove() {
     rm -r /usr/share/apps/kdm/faces
     xdg-icon-resource forceupdate --theme hicolor &> /dev/null
 }
-

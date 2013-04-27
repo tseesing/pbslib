@@ -13,7 +13,7 @@ PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 SRC_URI="http://www.ece.uvic.ca/~mdadams/"$N"/software/"$N-$V".zip"
 CHECKSUM="9c5735f773922e580bf98c7c7dfda9bbed4c5191"
 
-RDEPEND="freeglut libjpeg-turbo libXmu glu"
+RDEPEND="freeglut glu libXmu libjpeg-turbo"
 BDEPEND="unzip"
 RECOMMENDED=""
 
@@ -41,4 +41,3 @@ pbs_install() {
     domkinstall
     dodoc LICENSE
 }
-

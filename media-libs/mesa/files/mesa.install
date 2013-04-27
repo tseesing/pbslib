@@ -1,15 +1,17 @@
-. /usr/lib/ybs/funcs
 
 post_install() {
-    cd /usr/lib/
+    cd /usr/lib#LIBDIRSUFFIX#/
+    
     # classic libGL
     [ -f libGL.so.1.2-pkg.mesa ] && ln -sf libGL.so.1.2-pkg.mesa libGL.so.1.2
+    
     # ATI
     if [ -f fglrx/fglrx-libGL.so.1.2 ]; then
         if lspci |grep VGA |grep -q "ATI Technologies"; then
            lspci |grep VGA |grep -q "Intel Corporation" || ln -sf fglrx/fglrx-libGL.so.1.2 libGL.so.1.2
         fi
     fi
+    
     # nVidia
     if [ -f libGL.so.27* ]; then
         if lspci |grep VGA |grep -q "nVidia"; then
@@ -26,4 +28,3 @@ post_upgrade()  {
 post_downgrade() {
     post_install
 }
-

@@ -8,10 +8,10 @@
 DESCRIPTION="Common modules for GNOME JavaScript interpreters"
 HOMEPAGE="http://live.gnome.org/Seed"
 LICENSE="GPL"
-YARCH="any"
 PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
+YARCH="any"
 
-SRC_URI="http://ftp.gnome.org/pub/gnome/core/3.6/3.6.2/sources/"$N-$V".tar.bz2"
+SRC_URI="http://ftp.gnome.org/pub/GNOME/core/3.8/3.8.0/sources/$N-$V.tar.bz2"
 
 RDEPEND=""
 BDEPEND=""
@@ -23,6 +23,7 @@ pbs_unpack() {
 }
 
 pbs_config() {
+    config+=""
     doconfig
 }
 
@@ -33,4 +34,3 @@ pbs_build() {
 pbs_install() {
     domkinstall
 }
-

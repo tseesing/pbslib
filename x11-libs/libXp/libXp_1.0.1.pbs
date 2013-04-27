@@ -7,13 +7,13 @@
 
 DESCRIPTION="X11 X Print Library"
 HOMEPAGE="http://xorg.freedesktop.org/"
-GROUP="x11-lib"
 LICENSE="custom"
 PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
+GROUP="x11-lib"
 
 SRC_URI="http://xorg.freedesktop.org/releases/individual/lib/"$N-$V".tar.bz2"
 
-RDEPEND="glibc libX11 libXau libxcb libXdmcp libXext"
+RDEPEND="libXext libX11 libxcb libXdmcp glibc libXau"
 BDEPEND="printproto"
 RECOMMENDED=""
 CONFLICT=""
@@ -35,4 +35,3 @@ pbs_install() {
     domkinstall
     dodoc COPYING
 }
-

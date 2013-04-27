@@ -30,7 +30,7 @@ pbs_patch() {
 
 pbs_config() {
     config+="--enable-systemd 
-                   --enable-omap-experimental-api 
+             --enable-omap-experimental-api 
              --enable-exynos-experimental-api"
 
     # libtoolize --force
@@ -45,4 +45,3 @@ pbs_build() {
 pbs_install() {
     domkinstall
 }
-

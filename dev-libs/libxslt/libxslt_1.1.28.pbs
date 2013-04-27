@@ -13,8 +13,9 @@ PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 SRC_URI="ftp://xmlsoft.org/libxslt/$N-$V.tar.gz"
 CHECKSUM="9667bf6f9310b957254fdcf6596600b7"
 
-RDEPEND="libgcrypt libxml2"
+RDEPEND="libgcrypt libgpg-error libxml2 xz zlib glibc"
 BDEPEND="python"
+RECOMMENDED=""
 
 pbs_unpack() {
     dounpack

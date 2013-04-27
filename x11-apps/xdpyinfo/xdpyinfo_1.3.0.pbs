@@ -7,13 +7,13 @@
 
 DESCRIPTION="Display information utility for X"
 HOMEPAGE="http://xorg.freedesktop.org/"
-GROUP="x11-apps"
 LICENSE="custom"
 PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
+GROUP="x11-apps"
 
 SRC_URI="http://xorg.freedesktop.org/releases/individual/app/"$N-$V".tar.bz2"
 
-RDEPEND="libdmx libXcomposite libXinerama libXrender libXtst libXxf86dga libXxf86vm"
+RDEPEND="libXext libXtst libX11 libxcb libXxf86vm libXxf86dga libXi libXrender libXcomposite libXinerama libdmx glibc libXau libXdmcp"
 BDEPEND=""
 
 pbs_unpack() {

@@ -8,10 +8,8 @@ post_install() {
     gnome2_install_defaut_gconf "int" "/apps/gnome-power-manager/backlight/brightness_ac" "85"
     gnome2_install_defaut_gconf "int" "/apps/gnome-power-manager/backlight/brightness_dim_battery" "60"
     #
-    gnome2_rarian_sk_update
-    gnome2_desktop_database_update
-    gnome2_icon_cache_update  /usr/share/gnome-power-manager/icons/hicolor
-    gnome2_gconfd_reload
+    update-desktop-database
+    gtk-update-icon-cache -f -q -t  /usr/share/gnome-power-manager/icons/hicolor
 }
 
 pre_remove() {
@@ -19,10 +17,8 @@ pre_remove() {
 }
 
 post_remove() {
-    gnome2_rarian_sk_update
-    gnome2_desktop_database_update
-    gnome2_icon_cache_update /usr/share/gnome-power-manager/icons/hicolor
-    gnome2_gconfd_reload
+    update-desktop-database
+    gtk-update-icon-cache -f -q -t /usr/share/gnome-power-manager/icons/hicolor
 }
 
 post_upgrade() {

@@ -21,13 +21,13 @@ esac
 echo "" > /proc/sys/kernel/hotplug
 	
 # Start the udev daemon to process events
-/usr/bin/udevd --daemon --resolve-names=never
+udevd --daemon --resolve-names=never
 
 # Iterate sysfs and fire off everything; if we include a rule for it then
 # it'll get handled; otherwise it'll get handled later when we do this again
 # in the main boot sequence.
-( /usr/bin/udevadm trigger --subsystem-match=block; \
-  /usr/bin/udevadm trigger --subsystem-nomatch=block; ) &
+( udevadm trigger --subsystem-match=block; \
+  udevadm trigger --subsystem-nomatch=block; ) &
 
 # vga16fb lost?
 #modprobe -q vga16fb

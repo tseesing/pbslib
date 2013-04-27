@@ -13,7 +13,7 @@ PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 SRC_URI="http://www.mega-nerd.com/"$N"/files/"$N-$V".tar.gz"
 CHECKSUM="e95d9fca57f7ddace9f197071cbcfb92fa16748e"
 
-RDEPEND="alsa-lib flac libvorbis"
+RDEPEND="glibc flac libvorbis libogg alsa-lib"
 BDEPEND="python"
 RECOMMENDED=""
 

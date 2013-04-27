@@ -13,7 +13,7 @@ PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 SRC_URI="ftp://ftp.gnu.org/gnu/"$N"/"$N-$V".tar.gz "
 CHECKSUM="67948acb2ca081f23359d0256e9a271c"
 
-RDEPEND="ncurses"
+RDEPEND="ncurses glibc"
 BDEPEND=""
 
 INSTALL="$N.install"
@@ -29,7 +29,7 @@ pbs_patch() {
 }
 
 pbs_config() {
-    # build with -fPIC for x86_64
+    # Build with -fPIC for x86_64
     [ "$ARCH" == "x86_64" ] && CFLAGS="$CFLAGS -fPIC"
     config+=""
     doconfig
@@ -43,4 +43,3 @@ pbs_install() {
     domkinstall
     docp "$FILESDIR"/inputrc "$PKGDIR"/etc/
 }
-

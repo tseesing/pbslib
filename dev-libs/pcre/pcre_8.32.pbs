@@ -13,7 +13,7 @@ PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 SRC_URI="ftp://ftp.csx.cam.ac.uk/pub/software/programming/$N/$N-$V.tar.bz2"
 CHECKSUM="62f02a76bb57a40bc66681760ed511d5"
 
-RDEPEND="gcc-libs"
+RDEPEND="glibc gcc-libs"
 BDEPEND=""
 RECOMMENDED=""
 
@@ -38,4 +38,3 @@ pbs_install() {
     domkinstall
     dodoc LICENCE
 }
-

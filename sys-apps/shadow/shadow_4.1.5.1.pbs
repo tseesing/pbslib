@@ -14,7 +14,7 @@ PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>
 SRC_URI="http://pkg-shadow.alioth.debian.org/releases/"$N-$V".tar.bz2"
 CHECKSUM="81f38720b953ef9c2c100c43d02dfe19cafd6c30"
 
-RDEPEND="pam acl"
+RDEPEND="glibc pam acl attr"
 BDEPEND=""
 
 INSTALL="$N.install"
@@ -33,7 +33,7 @@ pbs_patch() {
 }
 
 pbs_config() {
-    # link to glibc's crypt(3)
+    # Link to glibc's crypt(3)
     LDFLAGS+=" -lcrypt"
     config+="--with-libpam --without-selinux"
     doconfig
@@ -46,12 +46,13 @@ pbs_build() {
 pbs_install() {
     domkinstall
     cd "$PKGDIR"
-    # useradd defaults
+    # Useradd defaults
     docp "$FILESDIR"/useradd etc/default/
     # Cron job
     docp "$FILESDIR"/shadow etc/cron.daily/
-    # login.defs
-    docp "$FILESDIR"/login.defs etc    
+    # Add login.defs
+    docp "$FILESDIR"/login.defs etc/
+    chmod 027 etc/login.defs
     # PAM config - custom
     dopam passwd chgpasswd chpasswd newusers "$SRCDIR"/etc/pam.d/groupmems 
     # we use the 'useradd' PAM file for other similar utilities
@@ -62,18 +63,17 @@ pbs_install() {
     rm usr/sbin/logoutd
     # Remove utilities provided by util-linux
     rm usr/bin/{chsh,chfn,sg} bin/{login,su} usr/sbin/{vipw,vigr}
-      # but we keep newgrp, as sg is really an alias to it
-      mv usr/bin/{newgrp,sg}
-      # ...and their many man pages
-      find usr/share/man \
-          '(' -name 'chsh.1'  -o \
-              -name 'chfn.1'  -o \
+    # but we keep newgrp, as sg is really an alias to it
+    mv usr/bin/{newgrp,sg}
+    # ...and their many man pages
+    find usr/share/man \
+        '(' -name 'chsh.1'  -o \
+            -name 'chfn.1'  -o \
             -name 'su.1'    -o \
             -name 'login.1' -o \
             -name 'vipw.8'  -o \
             -name 'vigr.8'  -o \
             -name 'newgrp.1' ')' \
-              -delete
-      rmdir usr/share/man/{fi,id,zh_TW}/man1 usr/share/man/{fi,ko/man8}
+            -delete
+    rmdir usr/share/man/{fi,id,zh_TW}/man1 usr/share/man/{fi,ko/man8}
 }
-

@@ -23,7 +23,7 @@ pbs_unpack() {
 }
 
 pbs_patch() {
-    # fix build failure with glibc-2.16
+    # Fix build failure with glibc-2.16
     sed -i -e '/gets is a/d' gnu/stdio.in.h
 }
 
@@ -44,4 +44,3 @@ pbs_install() {
     # Conflict against cpio
     mv "$PKGDIR"/usr/libexec/rmt{,-tar}
 }
-

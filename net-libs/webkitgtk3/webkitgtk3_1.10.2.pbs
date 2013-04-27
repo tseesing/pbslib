@@ -12,7 +12,7 @@ PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>
           chenqixing@ivali.com"
 
 SRC_URI="http://webkitgtk.org/releases/webkitgtk-"$V".tar.xz"
-CHECKSUM="7b1a652af1eb11bee5bf7209e9ff67e6"
+CHECKSUM=""
 
 RDEPEND="gst-plugins-base gtk3 enchant geoclue libxslt"
 BDEPEND="ruby gobject-introspection perl"
@@ -37,4 +37,3 @@ pbs_install() {
     domkinstall
     dodoc Source/WebKit/LICENSE
 }
-

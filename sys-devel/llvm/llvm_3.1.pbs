@@ -18,7 +18,7 @@ CHECKSUM="16eaa7679f84113f65b12760fdfe4ee1
           59bf2d3120a3805f27cafda3823caaf8 
           8effe0d4f6124e7e2b0c0479960ea99d"
 
-RDEPEND="gcc-libs libffi"
+RDEPEND="glibc libffi gcc-libs"
 BDEPEND="binutils(>=2.22) ocaml perl python" 
 RECOMMENDED=""
 OPTIONAL="python: to use clang-analyzer"
@@ -117,4 +117,3 @@ pbs_install() {
     fi
     doln /usr/lib"$LIBDIRSUFFIX"/llvm/libLLVM-3.1.so usr/lib"$LIBDIRSUFFIX"/
 }
-

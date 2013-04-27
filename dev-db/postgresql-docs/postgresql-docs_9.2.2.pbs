@@ -50,4 +50,3 @@ pbs_install() {
     rmdir "$PKGDIR"/usr/share/man/man{1,3,7}
     rmdir "$PKGDIR"/usr/share/man
 }
-

@@ -1,8 +1,6 @@
-. /usr/lib/ybs/funcs
 
 post_install() {
-    gnome2_desktop_database_update
-    gnome2_gconfd_reload
+    update-desktop-database ||true
 }
 
 post_remove() {
@@ -16,4 +14,3 @@ post_upgrade() {
 post_downgrade() {
     post_install
 }
-

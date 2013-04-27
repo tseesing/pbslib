@@ -14,7 +14,7 @@ PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>
 SRC_URI="ftp://ftp.vim.org/pub/vim/unix/"$N-$V".tar.bz2" 
 CHECKSUM="5b9510a17074e2b37d8bb38ae09edbf2"
 
-RDEPEND="acl ncurses gpm"
+RDEPEND="glibc ncurses acl gpm attr"
 BDEPEND="python"
 RECOMMENDED=""
 CONFLICT="gvim"

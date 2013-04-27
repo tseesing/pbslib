@@ -1,20 +1,15 @@
-. /usr/lib/ybs/funcs
 
 files="/etc/gconf/schemas/gnome-globalmenu.schemas"
 
 post_install() {
     gnome2_install_schema "$files"
-    gnome2_rarian_sk_update
 }
 
 post_remove() {
-    gnome2_rarian_sk_update
 }
 
 post_upgrade() {
-    gnome2_rarian_sk_update
 }
 
 post_downgrade() {
-    gnome2_rarian_sk_update
 }

@@ -13,7 +13,7 @@ PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 SRC_URI="ftp://ftp.easysw.com/pub/"$N"/"$V"/"$N-$V"-source.tar.bz2"
 CHECKSUM="87ade07e3d1efd03c9c3add949cf9c00"
 
-RDEPEND="krb5 gnutls avahi dbus libusbx"
+RDEPEND="krb5 e2fsprogs gnutls avahi zlib glibc keyutils p11-kit libtasn1 nettle gmp dbus-libs gcc-libs libusbx"
 BDEPEND="gzip autoconf bc"
 RECOMMENDED="xdg-utils"
 OPTIONAL="xdg-utils: xdg .desktop file support"
@@ -25,23 +25,23 @@ pbs_unpack() {
 }
 
 pbs_patch() {
-    # add systemd socket support - Fedora patch, also used in Gentoo
+    # Add systemd socket support - Fedora patch, also used in Gentoo
     # modified now to the changes done by Gentoo in their svn ebuild
     # http://sources.gentoo.org/cgi-bin/viewvc.cgi/gentoo-x86/net-print/cups/files/cups-1.5.0-systemd-socket.patch?revision=1.1
     dopatch cups-systemd-socket.patch
     # Do not export SSL libs in cups-config
     dopatch cups-no-export-ssllibs.patch
     dopatch cups-no-gcrypt.patch
-    # don't zip man pages in make install, let makepkg do that / Fedora
+    # Don't zip man pages in make install, let makepkg do that / Fedora
     dopatch cups-no-gzip-man.patch
-    # upstream bugtracker patches
-    # http://www.cups.org/str.php?L4157 - fix broken default server config
+    # Upstream bugtracker patches
+    # Fix broken default server config http://www.cups.org/str.php?L4157
     dopatch cupsd-conf-remove-obsolete-browse-directives.patch
-    # http://www.cups.org/str.php?L4156 - In many DNS-SD/Bonjour conditionals Avahi is not considered
+    # In many DNS-SD/Bonjour conditionals Avahi is not considered http://www.cups.org/str.php?L4156
     dopatch avahi-missing-in-conditionals.patch
-    # http://www.cups.org/str.php?L4158 - DNS-SD-based print queues pointing to CUPS server are not considered remote printers with driver on server
+    # DNS-SD-based print queues pointing to CUPS server are not considered remote printers with driver on server http://www.cups.org/str.php?L4158
     dopatch recognize-remote-cups-queue-via-dnssd-uri.patch
-    # http://cups.org/str.php?L4155 / https://bugs.archlinux.org/task/30965
+    # http://cups.org/str.php?L4155 https://bugs.archlinux.org/task/30965
     dopatch usb-backend-reset-after-job-only-for-specific-devices.patch
 }
 
@@ -62,7 +62,7 @@ pbs_config() {
              --enable-gnutls 
              --enable-threads 
              --enable-avahi
-             --with-php=/usr/bin/php-cgi " 
+             --with-php=/usr/bin/php-cgi" 
     doconfig --with-optim=\"$CFLAGS\"
 }
 
@@ -90,12 +90,12 @@ pbs_install() {
     chgrp lp etc/cups/{subscriptions.conf,printers.conf,classes.conf,client.conf}
     # Compress some driver files, adopted from Fedora
     find usr/share/cups/model -name "*.ppd" | xargs gzip -n9f
-    # fix .desktop file
+    # Fix .desktop file
     sed -i 's|^Exec=htmlview http://localhost:631/|Exec=xdg-open http://localhost:631/|g' usr/share/applications/cups.desktop
-    # remove files now part of cups-filters
+    # Remove files now part of cups-filters
     rm usr/share/cups/banners/*
     rm usr/share/cups/data/testprint
-    # comment out all conversion rules which use any of the removed filters
+    # Comment out all conversion rules which use any of the removed filters
     perl -p -i -e 's:^(.*\s+bannertops\s*)$:#\1:' usr/share/cups/mime/mime.convs
     # Provide native service for arch-daemons generator
     doln cups.service "$PKGDIR"/usr/lib/systemd/system/cupsd.service
@@ -103,4 +103,3 @@ pbs_install() {
     rm -rf etc/rc*.d/
     rm -rf etc/init.d/
 }
-

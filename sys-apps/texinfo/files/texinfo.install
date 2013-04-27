@@ -1,4 +1,3 @@
-. /usr/lib/ybs/funcs
 
 files="texinfo-3.gz texinfo-2.gz texinfo-1.gz texinfo.gz info-stnd.info.gz info.info.gz"
 
@@ -13,4 +12,3 @@ pre_remove() {
 post_upgrade() {
     post_install
 }
-

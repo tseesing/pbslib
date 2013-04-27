@@ -13,7 +13,7 @@ PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 SRC_URI="http://download.kde.org/stable/"$V"/src/"$N-$V".tar.xz"
 CHECKSUM="51d51263b0c8cca2043d73bcbb524c21ad224fb0"
 
-RDEPEND="akonadi(>=1.8.51) gpgme nepomuk-core prison libical libSM libXft libXpm openssl openldap qjson"
+RDEPEND="akonadi(>=1.8.51) gpgme nepomuk-core prison libical systemd libldap qjson"
 BDEPENDn="cmake automoc4 boost cyrus-sasl"
 
 INSTALL="$N.install"

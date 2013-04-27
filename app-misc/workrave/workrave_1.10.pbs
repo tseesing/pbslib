@@ -14,7 +14,7 @@ PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 SRC_URI="http://downloads.sourceforge.net/$N/$N-$V.tar.gz"
 CHECKSUM="5b76c2ef8e1dfede69c4e0d4bca9dcb9"
 
-RDEPEND="py-cheetah gnome-panel gdk-pixbuf2 at-spi2-atk libXinerama libXrandr libXcursor libXcomposite libXdamage libSM libXScrnSaver gstreamer0.10 gtkmm3"
+RDEPEND="py-cheetah gnome-panel gdk-pixbuf2 at-spi2-atk libXinerama libXrandr libXcursor libXcomposite libXdamage libSM libXScrnSaver gstreamer0.10 gtkmm"
 RECOMMENDED=""
 BDEPEND=""
 OPTIONAL=""

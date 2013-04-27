@@ -1,4 +1,3 @@
-. /usr/lib/ybs/funcs
 
 post_install() {
     echo "*"
@@ -14,4 +13,3 @@ echo "*"
 echo '* By using this package you MUST the license above'
 echo '* If you do not accept this license, you must remove the package immediately.'
 }
-

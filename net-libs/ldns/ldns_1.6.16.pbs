@@ -13,7 +13,7 @@ PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 SRC_URI="http://www.nlnetlabs.nl/downloads/"$N"/"$N-$V".tar.gz"
 CHECKSUM="5b4fc6c5c3078cd061905c47178478cb1015c62a"
 
-RDEPEND="openssl dnssec-anchors libpcap"
+RDEPEND="glibc openssl zlib libpcap libusbx libnl"
 RECOMMENDED=""
 BDEPEND="libpcap"
 OPTIONAL="libpcap: ldns-dpa tool"
@@ -40,4 +40,3 @@ pbs_install() {
     domkinstall
     dodoc LICENSE
 }
-

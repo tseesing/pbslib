@@ -11,7 +11,7 @@ LICENSE="LGPL"
 PACKAGER="chenqixing@ivali.com
           Zhongxin Huang <huangzhongxin@ivali.com>"
 
-SRC_URI="http://ftp.acc.umu.se/pub/GNOME/sources/$N/${V%.*}/${N}-${V}.tar.xz"
+SRC_URI="http://ftp.gnome.org/pub/GNOME/sources/$N/${V%.*}/${N}-${V}.tar.xz"
 CHECKSUM="32ae6c8ebf624e5662f209435d8aae6a5db23d7c52d446c9b9479c0b441a3ab3"
 
 RDEPEND="grilo totem-pl-parser nettle libdmapsharing tracker libgdata p11-kit"

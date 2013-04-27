@@ -13,7 +13,7 @@ PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 SRC_URI="http://hal.freedesktop.org/releases/"$N-$V".tar.gz"
 CHECKSUM="86c63b2b5484f2060499a052b5b6256b"
 
-RDEPEND="systemd util-linux device-mapper sg3_utils parted polkit dbus-glib parted libatasmart"
+RDEPEND="dbus-glib parted sg3_utils polkit libatasmart"
 BDEPEND=""
 RECOMMENDED=""
 

@@ -13,7 +13,7 @@ PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 SRC_URI="http://downloads.sourceforge.net/sourceforge/tcl/$N$V-src.tar.gz"
 CHECKSUM="b883a1a3c489c17413fb602a94bf54e8"
 
-RDEPEND="libXft libXScrnSaver tcl(=8.6.0)"
+RDEPEND="tcl(=8.6.0) tcl glibc libXft libX11 libXScrnSaver libXext zlib fontconfig expat freetype bzip2 libXrender libxcb libXau libXdmcp"
 BDEPEND=""
 
 pbs_unpack(){

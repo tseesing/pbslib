@@ -13,9 +13,9 @@ PACKAGER="Zhongxin Huang<huangzhongxin@ivali.com>
 
 SRC_URI="http://samba.org/ftp/"$N"/"$N-$V".tar.gz"
 
-RDEPEND="attr libbsd"
+RDEPEND="attr glibc libbsd python"
 RECOMMENDED=""
-BDEPEND="python"
+BDEPEND=""
 OPTIONAL="python: for python bindings"
 
 pbs_unpack() {

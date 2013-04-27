@@ -13,7 +13,7 @@ PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
 SRC_URI="http://xorg.freedesktop.org/releases/individual/app/"$N-$V".tar.bz2"
 
-RDEPEND="libX11"
+RDEPEND="libX11 glibc libxcb libXau libXdmcp"
 BDEPEND=""
 
 pbs_unpack() {
@@ -32,4 +32,3 @@ pbs_install() {
     domkinstall
     dodoc COPYING
 }
-

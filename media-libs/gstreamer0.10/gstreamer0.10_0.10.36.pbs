@@ -13,7 +13,7 @@ PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 SRC_URI="http://gstreamer.freedesktop.org/src/gstreamer/gstreamer-"$V".tar.xz"
 CHECKSUM="15389c73e091b1dda915279c388b9cb2"
 
-RDEPEND="glib2 libxml2"
+RDEPEND="glib2 glibc libffi pcre libxml2 zlib xz"
 BDEPEND="gobject-introspection intltool pkgconfig gtk-doc"
 RECOMMENDED=""
 OPTIONAL="bash: feedback script"
@@ -39,4 +39,3 @@ pbs_install() {
         rm -f ${bins/-0.10/}
     done
 }
-

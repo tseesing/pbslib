@@ -1,0 +1,45 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="a library for font customization and configuration"
+HOMEPAGE="http://fontconfig.org/wiki/"
+LICENSE="custom"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
+
+SRC_URI="http://fontconfig.org/release/"$N-$V".tar.bz2"
+CHECKSUM=""
+
+RDEPEND="expat freetype"
+BDEPEN=""
+
+INSTALL="$N.install"
+
+pbs_unpack() {
+    dounpack
+}
+
+pbs_config() {
+    # make sure there's no rpath trouble and sane .so versioning - FC and Gentoo do this as well
+    libtoolize -f
+    autoreconf -fi
+    config+="--with-templatedir=/etc/fonts/conf.avail
+             --with-xmldir=/etc/fonts
+             --localstatedir=/var
+             --disable-static
+             --with-default-fonts=/usr/share/fonts 
+             --with-add-fonts=/usr/share/fonts"
+    doconfig
+}
+
+pbs_build() {
+    domake
+}
+
+pbs_install() {
+    domkinstall
+    dodoc COPYING
+}

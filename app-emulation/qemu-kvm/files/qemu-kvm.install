@@ -1,4 +1,3 @@
-. /usr/lib/ybs/funcs
 
 gname="kvm"
 
@@ -14,4 +13,3 @@ post_upgrade() {
 post_remove() {
     dogroupdel $gname
 }
-

@@ -38,4 +38,3 @@ pbs_install() {
     chown root:utmp utempter/utempter
     chmod 2755 utempter/utempter
 }
-

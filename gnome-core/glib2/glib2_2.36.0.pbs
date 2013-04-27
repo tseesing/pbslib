@@ -1,0 +1,38 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="Common C routines used by GTK+ and other libs"
+HOMEPAGE="http://www.gtk.org/"
+LICENSE="LGPL"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
+
+SRC_URI="http://ftp.gnome.org/pub/GNOME/sources/glib/"${V%.*}"/glib-"$V".tar.xz"
+CHECKSUM="2047dff287473450593edecb18f79c17"
+
+RDEPEND="glibc zlib pcre libffi elfutils"
+BDEPEND="pkgconfig python libxslt docbook-xml"
+OPTIONAL="python: for gdbus-codegen"
+
+pbs_unpack() {
+    dounpack
+}
+
+pbs_config() {
+    config+="--with-pcre=system --disable-fam" 
+    doconfig
+}
+
+pbs_build() {
+    domake
+}
+
+pbs_install() {
+    domkinstall completiondir=/usr/share/bash-completion/completions
+    for _i in "$PKGDIR"/usr/share/bash-completion/completions/*; do
+        chmod -x "$_i"
+    done
+}

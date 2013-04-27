@@ -17,8 +17,6 @@ BDEPEND="perl-file-slurp perl-locale-maketext-lexicon"
 RECOMMENDED=""
 CONFLICT=""
 
-INSTALL="$N.install"
-
 pbs_unpack() {
     dounpack
 }

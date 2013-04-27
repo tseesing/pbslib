@@ -13,7 +13,7 @@ PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 SRC_URI="http://pkgconfig.freedesktop.org/releases/pkg-config-"$V".tar.gz"
 CHECKSUM="5392b4e3372879c5bf856173b418d6a2"
 
-RDEPEND="glib2"
+RDEPEND="glib2 pcre glibc"
 BDEPEND=""
 CONFLICT=""
 

@@ -40,4 +40,3 @@ pbs_install() {
     rm -f libattr.a
     chmod 0755 libattr.so.*.*.*
 }
-

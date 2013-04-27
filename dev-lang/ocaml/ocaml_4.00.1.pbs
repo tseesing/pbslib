@@ -13,7 +13,7 @@ PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 SRC_URI="http://caml.inria.fr/distrib/"$N-${V%.?}"/"$N-$V".tar.gz"
 CHECKSUM="91124a8eb12a57f1e56c02fe3db0f9e7"
 
-RDEPEND="gdbm ncurses tk"
+RDEPEND="glibc ncurses"
 RECOMMENDED=""
 BDEPEND="tk ncurses libX11"
 OPTIONAL="ncurses: advanced ncurses features

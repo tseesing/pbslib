@@ -1,0 +1,5 @@
+
+dbus MUST compile two times，order is:
+1、build dbus with --disable-systemd
+2、build systemd
+3、build dbus with --enable-systemd

@@ -14,7 +14,7 @@ YARCH="any"
 SRC_URI="http://downloads.sourceforge.net/tremulous/tremulous-"$V".zip"
 CHECKSUM="3df5f7565571fb9524656308347bce1b"
 
-RDEPEND="tremulous(=1.1.0)"
+RDEPEND=""
 RECOMMENDED=""
 BDEPEND=""
 OPTIONAL=""

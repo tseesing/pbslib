@@ -12,7 +12,7 @@ PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
 SRC_URI="git://github.com/mltframework/mlt.git"
 
-RDEPEND="python sdl-image jack-audio-connection-kit ffmpeg libmodplug libbluray libtheora opus libass dbus libdv sox gtk2 libexif"
+RDEPEND="python sdl-image libdv sox gtk2 libexif"
 BDEPEND="git"
 RECOMMENDED=""
 CONFLICT=""

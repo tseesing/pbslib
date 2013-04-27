@@ -1,4 +1,3 @@
-. /usr/lib/ybs/funcs
 
 execfile="/usr/libexec/dbus-daemon-launch-helper"
 
@@ -21,4 +20,3 @@ post_remove() {
 post_upgrade() {
     post_install
 }
-

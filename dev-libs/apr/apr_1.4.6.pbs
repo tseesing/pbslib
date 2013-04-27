@@ -13,7 +13,7 @@ PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 SRC_URI="http://www.apache.org/dist/"$N"/"$N-$V".tar.bz2"
 CHECKSUM="ffee70a111fd07372982b0550bbb14b7"
 
-RDEPEND="util-linux"
+RDEPEND="util-linux-libs glibc"
 BDEPEND=""
 RECOMMENDED=""
 
@@ -22,7 +22,9 @@ pbs_unpack() {
 }
 
 pbs_config() {
-    config+="--enable-nonportable-atomics --with-devrandom=/dev/urandom --with-installbuilddir=/usr/share/apr-1/build"
+    config+="--enable-nonportable-atomics
+             --with-devrandom=/dev/urandom 
+             --with-installbuilddir=/usr/share/apr-1/build"
     doconfig
 }
 

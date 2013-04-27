@@ -1,0 +1,46 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="General-purpose build system modelled after Scons"
+HOMEPAGE="http://code.google.com/p/waf/"
+LICENSE="BSD"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
+GROUP="python"
+YARCH="any"
+
+SRC_URI="http://waf.googlecode.com/files/waf-$V.tar.bz2"
+CHECKSUM="6a78986d1c065cfba4443c052bcbdf0a3a1473c2"
+
+RDEPEND="python3"
+RECOMMENDED=""
+BDEPEND=""
+OPTIONAL=""
+CONFLICT=""
+REPLACE=""
+
+pbs_unpack() {
+    dounpack
+}
+
+pbs_config() {
+    python3 ./waf-light configure --prefix=/usr
+}
+
+pbs_build() {
+    python3 ./waf-light --make-waf
+}
+
+pbs_install() {
+    python3 ./waf-light install -f --destdir="$PKGDIR" \
+             --tools='compat,compat15,ocaml,go,cython,scala,erlang,cuda,gcj,boost,pep8'
+    install -Dm755 waf "$PKGDIR"/usr/bin/waf
+    # Force the generation of .waf.admin files
+    cd demos/c
+    "$PKGDIR"/usr/bin/waf configure build >&/dev/null
+    chmod -R 0644 "$PKGDIR"/usr/bin/.waf*/waflib/Tools/*
+    chown -R root:root "$PKGDIR"/usr/*
+}

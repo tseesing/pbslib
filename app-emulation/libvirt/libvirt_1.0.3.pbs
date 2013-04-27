@@ -14,7 +14,7 @@ PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>
 SRC_URI="http://libvirt.org/sources/"$N-$V".tar.gz"
 CHECKSUM=""
 
-RDEPEND="e2fsprogs gnutls iptables libxml2 parted polkit python avahi yajl libpciaccess systemd dbus libXau libXdmcp pcre curl cyrus-sasl libgcrypt libgpg-error openssl libxcb gcc-libs iproute2 netcf libnl libX11 libpcap fuse"
+RDEPEND="yajl libX11 parted fuse avahi curl libldap systemd libpciaccess libpcap netcf"
 RECOMMENDED=""
 BDEPEND="pkgconfig lvm2 linux-headers"
 OPTIONAL="bridge-utils: for briged networking (default)

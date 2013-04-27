@@ -13,8 +13,8 @@ PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 SRC_URI="ftp://ftp.gnupg.org/gcrypt/"$N"/"$N-$V".tar.bz2"
 CHECKSUM="190c09e6688f688fb0a5cf884d01e240d957ac1f"
 
-RDEPEND="bzip2 libksba libgcrypt pth libassuan readline pinentry dirmngr"
-BDEPEND="curl openldap libusb-compat"
+RDEPEND="curl libldap libgcrypt libassuan bzip2 readline pth libksba libusb-compat"
+BDEPEND=""
 REPLACE="gnupg2"
 OPTIONAL="curl: gpg2keys_curl
           openldap: gpg2keys_ldap

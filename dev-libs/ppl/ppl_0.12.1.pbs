@@ -13,7 +13,7 @@ PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 SRC_URI="ftp://ftp.cs.unipr.it/pub/"$N"/releases/"$V"/"$N-$V".tar.bz2"
 CHECKSUM="8da3ab9de18e669b7af8c4707817d468"
 
-RDEPEND="gmp"
+RDEPEND="gmp gcc-libs glibc"
 BDEPEND=""
 RECOMMENDED=""
 CONFLICT=""
@@ -34,4 +34,3 @@ pbs_build() {
 pbs_install() {
     domkinstall
 }
-

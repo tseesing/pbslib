@@ -16,8 +16,6 @@ RDEPEND="alsa-lib atk cairo expat fontconfig freetype gcc-libs glib2 gdk-pixbuf2
 BDEPEND=" "
 RECOMMENDED=""
 
-INSTALL="$N.install"
-
 pbs_unpack() {
     dounpack
 }

@@ -14,7 +14,7 @@ GROUP="x11-apps"
 
 SRC_URI="http://xorg.freedesktop.org/releases/individual/app/"$N-$V".tar.bz2"
 
-RDEPEND="libdrm cairo"
+RDEPEND="libdrm libpciaccess cairo glibc pixman fontconfig freetype mesa libpng libxcb libXrender libX11 libXext zlib bzip2 expat wayland libXau libXdmcp systemd libXdamage libXfixes libXxf86vm libffi"
 BDEPEND=""
 
 pbs_unpack() {

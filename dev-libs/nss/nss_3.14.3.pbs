@@ -13,7 +13,7 @@ PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 SRC_URI="ftp://ftp.mozilla.org/pub/security/nss/releases/NSS_${V//./_}_RTM/src/"$N-$V".tar.gz"
 CHECKSUM="b326c2be8df277f62fb9c65fb3428148"
 
-RDEPEND="nspr(>=4.9.4) sqlite zlib"
+RDEPEND="nspr(>=4.9.4) glibc zlib sqlite"
 BDEPEND=""
 
 pbs_unpack() {

@@ -1,0 +1,36 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="Support library to deal with Apple Property Lists (Binary & XML)"
+HOMEPAGE="http://libimobiledevice.org/"
+LICENSE="GPL,LGPL"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
+
+SRC_URI="http://www.libimobiledevice.org/downloads/"$N-$V".tar.bz2"
+CHECKSUM=""
+
+RDEPEND="libxml2 glibc zlib xz gcc-libs python"
+BDEPEND="cmake swig"
+RECOMMENDED=""
+CONFLICT=""
+
+pbs_unpack() {
+    dounpack
+}
+
+pbs_config() {
+    doconfig -DPYTHON_EXECUTABLE=/usr/bin/python2 \
+             -DCMAKE_SKIP_RPATH=ON
+}
+
+pbs_build() {
+    domake
+}
+
+pbs_install() {
+    domkinstall
+}

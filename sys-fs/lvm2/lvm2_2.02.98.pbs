@@ -14,7 +14,7 @@ PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>
 SRC_URI="ftp://sources.redhat.com/pub/lvm2/LVM2."$V".tgz"
 CHECKSUM="077425115b164c335a9930df745943e9ea666a8a"
 
-RDEPEND="device-mapper readline systemd ncurses"
+RDEPEND="device-mapper readline ncurses"
 
 pbs_unpack() {
     dounpack

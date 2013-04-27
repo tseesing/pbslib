@@ -45,4 +45,3 @@ pbs_install() {
     cd "$PKGDIR"
     sed -i 's@Exec=gnome-mplayer %U@Exec=gnome-mplayer %F@' usr/share/applications/"$N".desktop
 }
-

@@ -1,0 +1,42 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="GNOME Integrated Development Environment (IDE)"
+HOMEPAGE="http://www.anjuta.org"
+LICENSE="GPL"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
+
+SRC_URI="http://ftp.gnome.org/pub/GNOME/apps/3.8/3.8.0/sources/$N-$V.tar.xz"
+CHECKSUM=""
+
+RDEPEND="libanjuta vte3 autogen devhelp glade libgda subversion vala dconf"
+BDEPEND="gnome-doc-utils intltool gobject-introspection itstool gdl"
+
+INSTALL="$N.install"
+
+pbs_unpack() {
+    dounpack
+}
+
+pbs_config() {
+    #FIXME
+    #'g++ -m64' makes configure failed.
+    unset CXX
+    config+=""
+    doconfig
+}
+
+pbs_build() {
+    domake
+}
+
+pbs_install() {
+    make -j1 DESTDIR="$PKGDIR" install
+    # provided by libanjuta package
+    cd libanjuta
+    make -j1 DESTDIR="$PKGDIR" uninstall
+}

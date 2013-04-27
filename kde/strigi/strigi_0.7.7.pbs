@@ -13,12 +13,12 @@ PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 SRC_URI="ftp://ftp.archlinux.org/other/"$N"/"$N-$V".tar.bz2"
 CHECKSUM="ca0a0fd5c2b99879f6330837aeede996"
 
-RDEPEND="exiv2 libxml2 boost-libs qt"
+RDEPEND="exiv2 libxml2 libXext boost-libs qt"
 BDEPEND="cmake qt pkgconfig"
 OPTIONAL="kdegraphics-strigi-analyzer: strigi analyzers for various graphics file
           kdesdk-strigi-analyzer: strigi analyzer for KDE SDK"
-
-#       Note: We have no kdesdk-strigi-analyzer yet.       
+# Note
+# We have no kdesdk-strigi-analyzer yet.       
 
 pbs_unpack() {
     dounpack
@@ -45,4 +45,3 @@ pbs_build() {
 pbs_install() {
     domkinstall
 }
-

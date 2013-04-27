@@ -16,7 +16,7 @@ CHECKSUM="ea9b3b07a3738c0a77958d6fe13ae524"
 
 OPTIONS="nolibtool"
 
-RDEPEND="libexif libtool libusb-compat libjpeg-turbo libusbx"
+RDEPEND="glibc libtool libexif libusb-compat libusbx libjpeg-turbo"
 BDEPEND=""
 OPTIONAL=""
 NOTE="Since gd's offical website has down now, 

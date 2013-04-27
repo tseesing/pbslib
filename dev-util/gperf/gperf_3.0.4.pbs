@@ -13,7 +13,7 @@ PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 SRC_URI="http://ftp.gnu.org/gnu/"$N"/"$N-$V".tar.gz"
 CHECKSUM="e32d4aff8f0c730c9a56554377b2c6d82d0951b8"
 
-RDEPEND="gcc-libs texinfo"
+RDEPEND="gcc-libs glibc"
 BDEPEND=""
 
 INSTALL="$N.install"
@@ -34,4 +34,3 @@ pbs_build() {
 pbs_install() {
     domkinstall
 }
-

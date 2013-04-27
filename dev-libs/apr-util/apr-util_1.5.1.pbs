@@ -12,7 +12,7 @@ PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
 SRC_URI="ftp://ftp.oregonstate.edu/pub/apache/apr/"$N-$V".tar.bz2"
 
-RDEPEND="apr expat unixodbc gdbm openldap berkeley-db"
+RDEPEND="expat apr util-linux-libs glibc libldap libsasl openssl zlib unixodbc libtool gdbm berkeley-db freetds"
 BDEPEND=""
 RECOMMENDED=""
 
@@ -39,4 +39,3 @@ pbs_build() {
 pbs_install() {
     domkinstall
 }
-

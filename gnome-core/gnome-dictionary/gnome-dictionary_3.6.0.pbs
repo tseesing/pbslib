@@ -10,8 +10,8 @@ HOMEPAGE="http://www.gnome.org/"
 LICENSE="GPL"
 PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
-SRC_URI="http://ftp.gnome.org/pub/gnome/core/3.6/3.6.2/sources/"$N-$V".tar.xz"
-CHECKSUM="1ad03f629bbfe4360fc6d8dd2d7cb4a03e24579068bdd79a25ff5fc5fbff6fa9"
+SRC_URI="http://ftp.gnome.org/pub/GNOME/core/3.8/3.8.0/sources/$N-$V.tar.xz"
+CHECKSUM=""
 
 RDEPEND="dconf gtk3"
 BDEPEND="intltool itstool docbook-xsl"

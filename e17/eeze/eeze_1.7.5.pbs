@@ -13,7 +13,7 @@ GROUP="e17"
 
 SRC_URI="http://download.enlightenment.org/releases/"$N-$V".tar.bz2"
 
-RDEPEND="ecore systemd util-linux"
+RDEPEND="ecore systemd util-linux-libs"
 RECOMMENDED=""
 BDEPEND=""
 OPTIONAL=""

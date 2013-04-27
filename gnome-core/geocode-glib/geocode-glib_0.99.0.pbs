@@ -11,8 +11,8 @@ LICENSE="LGPLv2"
 PACKAGER="chenqixing@ivali.com
           Zhongxin Huang <huangzhongxin@ivali.com>"
 
-SRC_URI="http://ftp.acc.umu.se/pub/GNOME/sources/$N/${V%.*}/${N}-${V}.tar.bz2"
-CHECKSUM="a14a64491d2e542f708aa0a4fd4467799c300d4caa10b958fa6b6bbe8e84c36e"
+SRC_URI="http://ftp.gnome.org/pub/GNOME/core/3.8/3.8.0/sources/$N-$V.tar.bz2"
+CHECKSUM=""
 
 RDEPEND="json-glib libsoup"
 BDEPEND=""
@@ -34,4 +34,3 @@ pbs_build() {
 pbs_install() {
     domkinstall
 }
-

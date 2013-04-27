@@ -13,7 +13,7 @@ PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 SRC_URI="http://ftp.gnu.org/pub/gnu/nano/"$N-$V".tar.gz"
 CHECKSUM="af09f8828744b0ea0808d6c19a2b4bfd"
 
-RDEPEND="file ncurses"
+RDEPEND="file ncurses glibc zlib"
 BDEPEND=""
 RECOMMENDED=""
 CONFLICT=""
@@ -38,4 +38,3 @@ pbs_install() {
     domkinstall
     install -DTm644 doc/nanorc.sample "$PKGDIR"/etc/nanorc
 }
-

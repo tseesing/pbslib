@@ -13,7 +13,7 @@ PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 SRC_URI="http://freedesktop.org/~hadess/$N-$V.tar.gz"
 CHECKSUM="779245045bfeeec4853da8baaa3a18e6"
 
-RDEPEND="dbus-glib libxml2"
+RDEPEND="gpsd libgnome-keyring networkmanager"
 RECOMMENDED=""
 BDEPEND="gconf"
 OPTIONAL="networkmanager: geolocation

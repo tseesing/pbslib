@@ -1,6 +1,6 @@
-diff -ur xulrunner-7.0.1/xulrunner/installer/libxul-embedding.pc.in xulrunner-7.0.1.new//xulrunner/installer/libxul-embedding.pc.in
---- xulrunner-7.0.1/xulrunner/installer/libxul-embedding.pc.in	2011-09-29 04:25:11.000000000 +0800
-+++ xulrunner-7.0.1.new//xulrunner/installer/libxul-embedding.pc.in	2011-12-08 17:55:19.178721922 +0800
+diff -Nur mozilla-release.orig/xulrunner/installer/libxul-embedding.pc.in mozilla-release/xulrunner/installer/libxul-embedding.pc.in
+--- mozilla-release.orig/xulrunner/installer/libxul-embedding.pc.in	2011-12-19 22:11:38.100005674 +0000
++++ mozilla-release/xulrunner/installer/libxul-embedding.pc.in	2011-12-19 22:14:35.095147521 +0000
 @@ -6,5 +6,6 @@
  Name: libxul-embedding
  Description: Static library for version-independent embedding of the Mozilla runtime
@@ -8,9 +8,9 @@ diff -ur xulrunner-7.0.1/xulrunner/installer/libxul-embedding.pc.in xulrunner-7.
 +Requires: %NSPR_NAME% >= %NSPR_VERSION%
  Libs: -L${sdkdir}/lib -lxpcomglue -ldl
  Cflags: -DXPCOM_GLUE -I${includedir} %WCHAR_CFLAGS%
-diff -ur xulrunner-7.0.1/xulrunner/installer/libxul.pc.in xulrunner-7.0.1.new//xulrunner/installer/libxul.pc.in
---- xulrunner-7.0.1/xulrunner/installer/libxul.pc.in	2011-09-29 04:25:11.000000000 +0800
-+++ xulrunner-7.0.1.new//xulrunner/installer/libxul.pc.in	2011-12-08 17:55:44.262444104 +0800
+diff -Nur mozilla-release.orig/xulrunner/installer/libxul.pc.in mozilla-release/xulrunner/installer/libxul.pc.in
+--- mozilla-release.orig/xulrunner/installer/libxul.pc.in	2011-12-19 22:11:38.126672110 +0000
++++ mozilla-release/xulrunner/installer/libxul.pc.in	2011-12-19 22:14:04.375412141 +0000
 @@ -1,5 +1,6 @@
  prefix=%prefix%
  sdkdir=%sdkdir%
@@ -18,10 +18,10 @@ diff -ur xulrunner-7.0.1/xulrunner/installer/libxul.pc.in xulrunner-7.0.1.new//x
  includedir=%includedir%
  idldir=%idldir%
  
-diff -ur xulrunner-7.0.1/xulrunner/installer/Makefile.in xulrunner-7.0.1.new//xulrunner/installer/Makefile.in
---- xulrunner-7.0.1/xulrunner/installer/Makefile.in	2011-09-29 04:25:11.000000000 +0800
-+++ xulrunner-7.0.1.new//xulrunner/installer/Makefile.in	2011-12-08 17:56:09.496168991 +0800
-@@ -109,6 +109,7 @@
+diff -Nur mozilla-release.orig/xulrunner/installer/Makefile.in mozilla-release/xulrunner/installer/Makefile.in
+--- mozilla-release.orig/xulrunner/installer/Makefile.in	2011-12-19 22:11:38.126672110 +0000
++++ mozilla-release/xulrunner/installer/Makefile.in	2011-12-19 22:18:28.743135321 +0000
+@@ -108,6 +108,7 @@
  	-e "s|%includedir%|$(includedir)|" \
  	-e "s|%idldir%|$(idldir)|" \
  	-e "s|%sdkdir%|$(sdkdir)|" \
@@ -29,29 +29,9 @@ diff -ur xulrunner-7.0.1/xulrunner/installer/Makefile.in xulrunner-7.0.1.new//xu
  	-e "s|%MOZ_APP_NAME%|$(MOZ_APP_NAME)|" \
  	-e "s|%MOZILLA_VERSION%|$(MOZ_APP_VERSION)|" \
  	-e "s|%WCHAR_CFLAGS%|$(WCHAR_CFLAGS)|" \
-diff -ur xulrunner-7.0.1/xulrunner/installer/mozilla-gtkmozembed-embedding.pc.in xulrunner-7.0.1.new//xulrunner/installer/mozilla-gtkmozembed-embedding.pc.in
---- xulrunner-7.0.1/xulrunner/installer/mozilla-gtkmozembed-embedding.pc.in	2011-09-29 04:25:11.000000000 +0800
-+++ xulrunner-7.0.1.new//xulrunner/installer/mozilla-gtkmozembed-embedding.pc.in	2011-12-08 17:56:24.689738268 +0800
-@@ -1,5 +1,6 @@
- prefix=%prefix%
- sdkdir=%sdkdir%
-+libdir=%libdir%
- includedir=%includedir%
- 
- Name: mozilla-gtkembedmoz
-diff -ur xulrunner-7.0.1/xulrunner/installer/mozilla-gtkmozembed.pc.in xulrunner-7.0.1.new//xulrunner/installer/mozilla-gtkmozembed.pc.in
---- xulrunner-7.0.1/xulrunner/installer/mozilla-gtkmozembed.pc.in	2011-09-29 04:25:11.000000000 +0800
-+++ xulrunner-7.0.1.new//xulrunner/installer/mozilla-gtkmozembed.pc.in	2011-12-08 17:56:39.976642464 +0800
-@@ -1,5 +1,6 @@
- prefix=%prefix%
- sdkdir=%sdkdir%
-+libdir=%libdir%
- includedir=%includedir%
- 
- Name: mozilla-gtkembedmoz
-diff -ur xulrunner-7.0.1/xulrunner/installer/mozilla-js.pc.in xulrunner-7.0.1.new//xulrunner/installer/mozilla-js.pc.in
---- xulrunner-7.0.1/xulrunner/installer/mozilla-js.pc.in	2011-09-29 04:25:11.000000000 +0800
-+++ xulrunner-7.0.1.new//xulrunner/installer/mozilla-js.pc.in	2011-12-08 17:57:04.017016284 +0800
+diff -Nur mozilla-release.orig/xulrunner/installer/mozilla-js.pc.in mozilla-release/xulrunner/installer/mozilla-js.pc.in
+--- mozilla-release.orig/xulrunner/installer/mozilla-js.pc.in	2011-12-19 22:11:38.126672110 +0000
++++ mozilla-release/xulrunner/installer/mozilla-js.pc.in	2011-12-19 22:18:55.569571004 +0000
 @@ -7,4 +7,4 @@
  Version: %MOZILLA_VERSION%
  Requires: %NSPR_NAME% >= %NSPR_VERSION%

@@ -37,7 +37,7 @@ schemas="
 
 post_install() {
     gnome2_install_schema "$schemas"
-    gnome2_desktop_database_update
+    update-desktop-database
     
     # Fix for weird white bar around menus and dock
     gnome2_install_defaut_gconf "string" "/apps/compiz/plugins/decoration/allscreens/options/shadow_match" "2 \!dock"
@@ -49,7 +49,6 @@ post_install() {
     #gnome2_install_defaut_gconf "string" "/desktop/gnome/session/required_components/windowmanager" "compiz"
 
     #
-    gnome2_gconfd_reload
 }
 
 post_upgrade() {
@@ -72,7 +71,6 @@ post_remove() {
     cd /usr/share/xsessions
     [ -f gnome-classic.desktop ] && ln -sf gnome-classic.desktop gnome.desktop
 
-    gnome2_desktop_database_update
-    gnome2_gconfd_reload
+    update-desktop-database
 }
 

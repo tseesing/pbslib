@@ -14,7 +14,7 @@ PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>
 SRC_URI="ftp://ftp.gnu.org/gnu/"$N"/"$N-$V".tar.gz"
 CHECKSUM="92e64fd5a6428bda6ade2c3cde475b76455cd7dd"
 
-RDEPEND="glibc texinfo libidn"
+RDEPEND="glibc"
 BDEPEND="pkgconfig"
 RECOMMENDED=""
 CONFLICT=""

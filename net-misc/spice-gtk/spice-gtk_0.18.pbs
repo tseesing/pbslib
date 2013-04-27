@@ -1,0 +1,38 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="Set of GObject and Gtk objects for connecting to Spice servers and a client GUI."
+HOMEPAGE="http://spice-space.org"
+LICENSE="GPL"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
+
+SRC_URI="http://spice-space.org/download/gtk/$N-$V.tar.bz2"
+CHECKSUM=""
+
+RDEPEND=""
+RECOMMENDED=""
+BDEPEND=""
+OPTIONAL=""
+CONFLICT=""
+REPLACE=""
+
+pbs_unpack() {
+    dounpack
+}
+
+pbs_config() {
+    config+=""
+    doconfig
+}
+
+pbs_build() {
+    domake
+}
+
+pbs_install() {
+    domkinstall
+}

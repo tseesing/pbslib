@@ -13,7 +13,7 @@ PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 SRC_URI="http://ftp.gnome.org/pub/GNOME/sources/$N/${V%.*}/$N-$V.tar.xz"
 CHECKSUM="912d9c1e84ad1e24af6308b84d622a72d9e1bdae71284ddbd6277fdb459c31d2"
 
-RDEPEND="gcr p11-kit libcryptui nautilus"
+RDEPEND="gcr libcryptui nautilus-libs"
 RECOMMENDED=""
 BDEPEND="intltool"
 OPTIONAL=""

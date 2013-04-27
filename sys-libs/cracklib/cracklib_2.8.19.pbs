@@ -38,4 +38,3 @@ pbs_install() {
     install -Dm644 dicts/cracklib-small "$PKGDIR"/usr/share/dict/cracklib-small
     sh ./util/cracklib-format dicts/cracklib-small | sh ./util/cracklib-packer "$PKGDIR"/usr/share/cracklib/pw_dict
 }
-

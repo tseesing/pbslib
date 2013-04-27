@@ -13,8 +13,8 @@ PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 SRC_URI="http://ftp.gnome.org/pub/gnome/sources/$N/2.30/$N-$V.tar.xz"
 CHECKSUM="8be84d5333f0ade0e61af9f4cbf7685cb7cce2aa0ee32f53bac32107a81fe194"
 
-RDEPEND="libXres gtk2 startup-notification"
-BDEPEND="gobject-introspection intltool libXt"
+RDEPEND="gtk2 startup-notification libXres"
+BDEPEND="gobject-introspection intltool"
 RECOMMENDED=""
 
 pbs_unpack() {
@@ -36,4 +36,3 @@ pbs_install() {
     #The binaries are shipped in libwnck3
     rm -f usr/bin/{wnckprop,wnck-urgency-monitor}
 }
-

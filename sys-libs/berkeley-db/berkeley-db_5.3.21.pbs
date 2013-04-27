@@ -39,5 +39,3 @@ pbs_install() {
     dodoc ../LICENSE
     rm -rf "$PKGDIR"/usr/share/doc/db/
 }
-
-

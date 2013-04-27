@@ -1,5 +1,5 @@
 . /usr/lib/ybs/funcs
 
 post_install() {
-    gnome2_icon_cache_update  "Tango"
+    gtk-update-icon-cache -f -q -t  "Tango"
 }

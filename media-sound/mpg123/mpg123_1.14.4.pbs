@@ -12,7 +12,7 @@ PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
 SRC_URI="http://www.mpg123.org/download/"$N-$V".tar.bz2"
 
-RDEPEND="libsdl openal portaudio pulseaudio"
+RDEPEND="libtool glibc jack-audio-connection-kit libsdl directfb gcc-libs zlib pulseaudio json-c dbus-libs libxcb libsndfile libasyncns libXau libXdmcp flac libvorbis libogg alsa-lib"
 BDEPEND=""
 OPTIONAL="libsdl: for sdl audio support
           jack-audio-connection-kit: for jack audio support
@@ -23,7 +23,8 @@ pbs_unpack() {
 }
 
 pbs_config() {
-    config+="--enable-int-quality --with-module-suffix=.so"
+    config+="--enable-int-quality 
+             --with-module-suffix=.so"
     doconfig --with-audio=\"alsa oss sdl jack pulse\"
 }
 
@@ -34,4 +35,3 @@ pbs_build() {
 pbs_install() {
     domkinstall
 }
-

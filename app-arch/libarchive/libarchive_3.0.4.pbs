@@ -13,7 +13,7 @@ PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 SRC_URI="https://github.com/downloads/libarchive/libarchive/"$N-$V".tar.gz"
 CHECKSUM="76e8d7c7b100ec4071e48c1b7d3f3ea1d22b39db3e45b7189f75b5ff4df90fac"
 
-RDEPEND="acl bzip2 libxml2 openssl xz(>=5.0.0) expat"
+RDEPEND="xz(>=5.0.0) acl attr bzip2 libxml2 zlib glibc nettle"
 BDEPEND="sharutils"
 RECOMMENDED=""
 
@@ -38,4 +38,3 @@ pbs_install() {
     domkinstall
     dodoc COPYING
 }
-

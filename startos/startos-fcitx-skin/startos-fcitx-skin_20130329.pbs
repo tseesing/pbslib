@@ -1,0 +1,27 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="StartOS skin for fcitx"
+HOMEPAGE="https://github.com/StartOS/fcitx-skin"
+LICENSE="GPL"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
+GROUP="fcitx"
+
+SRC_URI="git://github.com/StartOS/fcitx-skin.git"
+
+RDEPEND="fcitx"
+BDEPEND="git"
+RECOMMENDED=""
+OPTIONAL=""
+
+pbs_unpack() {
+    dounpack
+}
+
+pbs_install() {
+    docp startos "$PKGDIR"/usr/share/fcitx/skin/    
+}

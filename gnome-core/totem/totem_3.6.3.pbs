@@ -11,7 +11,7 @@ LICENSE="GPL,custom"
 PACKAGER="chenqixing@ivali.com
           Zhongxin Huang <huangzhongxin@ivali.com>"
 
-SRC_URI="http://ftp.acc.umu.se/pub/GNOME/sources/$N/${V%.*}/${N}-${V}.tar.xz"
+SRC_URI="http://ftp.gnome.org/pub/GNOME/sources/$N/${V%.*}/${N}-${V}.tar.xz"
 CHECKSUM="ad9f2ff207c8a965975670e262394953b37b2dc25cff7ee59f138f961f88ce60"
 
 RDEPEND="gst-plugins-base gst-plugins-good totem-pl-parser desktop-file-utils iso-codes libpeas gnome-icon-theme-symbolic gsettings-desktop-schemas dconf clutter-gst clutter-gtk py-gobject gst-plugins-bad libdvdcss dbus-glib"

@@ -12,7 +12,7 @@ PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
 SRC_URI="http://sourceforge.net/projects/dbus-cplusplus/files/dbus-c%2B%2B/0.9.0/libdbus-c%2B%2B-"$V".tar.gz"
 
-RDEPEND="dbus glib2"
+RDEPEND="expat gcc-libs glibc dbus-libs glib2 pcre"
 RECOMMENDED=""
 BDEPEND="autoconf automake libtool"
 OPTIONAL=""
@@ -29,7 +29,9 @@ pbs_patch() {
 
 pbs_config() {
     export LDFLAGS+=" -lexpat " # -lpthread needed for i686
-    config+="--disable-static --enable-glib --disable-ecore"
+    config+="--disable-static 
+             --enable-glib 
+             --disable-ecore"
     doconfig
 }
 
@@ -40,4 +42,3 @@ pbs_build() {
 pbs_install() {
     domkinstall
 }
-

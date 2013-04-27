@@ -43,5 +43,7 @@ pbs_install() {
     find -type f -name ".install" -exec rm -f {} \;
     docp "$FILESDIR"/klibc.m4 usr/share/aclocal
     # For initramfs-tools
-    docp "$FILESDIR"/klibc usr/share/initramfs-tools/hooks/
+    mkdir -p usr/share/initramfs-tools/hooks/
+    sed 's/#LIBDIRSUFFIX#/'"$LIBDIRSUFFIX"'/g' "$FILESDIR"/klibc >usr/share/initramfs-tools/hooks/klibc
+    chmod +x usr/share/initramfs-tools/hooks/klibc
 }

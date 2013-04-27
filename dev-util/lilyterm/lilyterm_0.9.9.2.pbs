@@ -1,0 +1,34 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="A terminal emulator based off of libvte that aims to be fast and lightweight."
+HOMEPAGE="http://lilyterm.luna.com.tw/index_cht.html"
+LICENSE="GPLv3"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
+
+SRC_URI="http://lilyterm.luna.com.tw/file/$N-$V.tar.gz"
+CHECKSUM="e6ee57fc90c108aa80c27ac31f517f7f65faf06e"
+
+RDEPEND="vte2"
+BDEPEND=""
+
+pbs_unpack() {
+    dounpack
+}
+
+pbs_config() {
+    config+=""
+    doconfig
+}
+
+pbs_build() {
+    domake
+}
+
+pbs_install() {
+    domkinstall
+}

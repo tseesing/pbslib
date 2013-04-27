@@ -36,4 +36,3 @@ pbs_install() {
     dodoc COPYING
     docp "$FILESDIR"/lex "$PKGDIR"/usr/bin/
 }
-

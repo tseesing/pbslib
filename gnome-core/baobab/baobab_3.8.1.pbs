@@ -1,0 +1,36 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="A graphical disk usage analyzer"
+HOMEPAGE="http://library.gnome.org/users/baobab"
+LICENSE="GPLv2"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
+
+SRC_URI="http://ftp.gnome.org/pub/GNOME/sources/$N/3.8/$N-$V.tar.xz"
+CHECKSUM=""
+
+RDEPEND="gtk3 dconf gsettings-desktop-schemas hicolor-icon-theme desktop-file-utils"
+BDEPEND="intltool gtk-doc gobject-introspection itstool"
+
+INSTALL="$N.install"
+
+pbs_unpack() {
+    dounpack
+}
+
+pbs_config() {
+    config+="--disable-schemas-compile"
+    doconfig
+}
+
+pbs_build() {
+    domake
+}
+
+pbs_install() {
+    domkinstall
+}

@@ -13,7 +13,7 @@ PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 SRC_URI="http://www.freedesktop.org/software/"$N"/releases/"$N-$V".tar.gz"
 CHECKSUM="2cd77326d4dcaed9a5a23a1232fb38e9"
 
-RDEPEND="xcb-util(>=0.3.9) libX11"
+RDEPEND="xcb-util(>=0.3.9) libX11 glibc libxcb libXau libXdmcp"
 BDEPEND=""
 
 pbs_unpack() {
@@ -36,4 +36,3 @@ pbs_build() {
 pbs_install() {
     domkinstall
 }
-

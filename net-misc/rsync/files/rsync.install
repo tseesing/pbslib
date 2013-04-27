@@ -1,16 +1,13 @@
-. /usr/lib/ybs/funcs
 
 config="/etc/rsyncd.conf"
 sample="/usr/share/rsync/rsyncd.conf.sample"
 
 post_install() {
-    [ -e $config ] || cp $sample $config
-    return 0
+    [ ! -e $config ] && cp $sample $config ||true
 }
 
 post_remove() {
-    [ -e $config ] && rm $config
-    return 0
+    rm $config ||true
 }
 
 post_upgrade() {
@@ -20,4 +17,3 @@ post_upgrade() {
 post_downgrade() {
     post_install
 }
-

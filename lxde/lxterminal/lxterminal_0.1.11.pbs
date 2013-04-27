@@ -12,7 +12,7 @@ PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
 SRC_URI="http://sourceforge.net/projects/lxde/files/LXTerminal%20%28terminal%20emulator%29/LXTerminal%20"$V"/"$N-$V".tar.gz"
 
-RDEPEND="vte"
+RDEPEND="vte2"
 BDEPEND=""
 
 pbs_unpack() {
@@ -31,4 +31,3 @@ pbs_build() {
 pbs_install() {
     domkinstall
 }
-

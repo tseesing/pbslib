@@ -52,7 +52,7 @@ SRC_URI="http://ftp.gnu.org/gnu/"$N"/"$N-$V".tar.gz
      "$URL"/bash42-038
      "$URL"/bash42-039"
 
-RDEPEND="readline"
+RDEPEND="readline ncurses glibc"
 BDEPEND=""
 
 INSTALL="$N.install"
@@ -89,4 +89,3 @@ pbs_install() {
     doln /bin/bash bin/sh
     docp "$FILESDIR"/skel etc
 }
-

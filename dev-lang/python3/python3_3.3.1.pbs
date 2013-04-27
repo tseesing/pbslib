@@ -1,0 +1,74 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="Next generation of the python high-level scripting language."
+HOMEPAGE="http://www.python.org"
+LICENSE="PSF"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
+
+SRC_URI="http://www.python.org/ftp/python/"$V"/Python-"$V".tar.xz"
+CHECKSUM="993232d9f4d9b4863cc1ec69a792e9cd"
+
+RDEPEND="glibc ncurses libffi openssl zlib readline bzip2 xz expat gdbm sqlite"
+BDEPEND="tk"
+OPTIONAL="tk: for IDLE" 
+
+pbs_unpack() {
+    dounpack
+}
+
+pbs_patch() {
+    # Add StartOS platform
+    dopatch startos_add-platform-3.3.patch
+    # Multilib patches from Fedora
+    case "$ARCH" in
+      x86_64)
+        dopatch python-3.3.0b1-lib64.patch 00104-lib64-fix-for-test_install.patch
+    esac
+    # 
+    sed -i -e "s|^#.* /usr/local/bin/python|#!/usr/bin/python3|" Lib/cgi.py
+    # Ensure that we are using the system libraries (expat, zlib and libffi), rather than copies shipped in the tarball.
+    rm -r Modules/expat
+    rm -r Modules/zlib
+    rm -r Modules/_ctypes/{darwin,libffi}*
+}
+
+pbs_config(){
+    config+="--enable-shared 
+             --with-threads
+             --with-computed-gotos
+             --enable-ipv6
+             --with-valgrind 
+             --with-system-expat
+             --with-system-ffi
+             --with-system-ffi
+             --with-dbmliborder=gdbm:ndbm"
+    doconfig
+}
+
+pbs_build() {
+    make "$MAKEOPTS"
+}
+
+pbs_install() {
+    make DESTDIR="$PKGDIR" install maninstall #altinstall
+    dodoc LICENSE
+    cd "$PKGDIR"
+    V_="${V%.?}"
+    # FIXME
+    # 2to3 provided by python(2.7.3) package
+    rm usr/bin/2to3
+    # Clean-up reference to build directory
+    sed -i "s|$SRCDIR:||" usr/lib"$LIBDIRSUFFIX"/python"$V_"/config-"$V_"m/Makefile
+    #
+    doln /usr/lib"$LIBDIRSUFFIX"/libpython"$V_"m.so usr/lib/python"$V_"/config-"$V_"m/libpython"$V_"m.so
+    # Provided by python3-tkinter package
+    cd usr/lib"$LIBDIRSUFFIX"/python3.3/
+    rm -f __pycache__/turtle.cpython-33.*
+    rm -f lib-dynload/_tkinter.cpython-33m.*
+    rm -r tkinter
+}

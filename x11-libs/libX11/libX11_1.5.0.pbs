@@ -14,7 +14,7 @@ GROUP="x11-lib"
 
 SRC_URI="http://xorg.freedesktop.org/releases/individual/lib/"$N-$V".tar.bz2"
 
-RDEPEND="libxcb"
+RDEPEND="libxcb libXau libXdmcp glibc"
 BDEPEND="xtrans inputproto xextproto kbproto xproto"
 
 pbs_unpack() {
@@ -35,4 +35,3 @@ pbs_install() {
     dodoc COPYING
     docp "$FILESDIR"/xorg.{sh,csh} "$PKGDIR"/etc/profile.d/
 }
-

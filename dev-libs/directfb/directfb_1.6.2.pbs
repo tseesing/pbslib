@@ -13,9 +13,9 @@ PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 SRC_URI="http://www.directfb.org/downloads/Core/DirectFB-"${V%.*}"/DirectFB-"$V".tar.gz"
 CHECKSUM="a393a53130e6a80369b7081371cd23dd1cd5e192"
 
-RDEPEND="freetype libjpeg-turbo libpng gcc-libs libsdl"
+RDEPEND="glibc zlib gcc-libs libpng freetype bzip2 jasper libjpeg-turbo imlib2 libX11 libXext libxcb libXau libXdmcp libmng lcms mesa libXdamage libXfixes libXxf86vm libdrm wayland systemd libffi libvdpau"
 BDEPEND=""
-RECOMMENDED=""
+RECOMMENDED="libsdl"
 
 pbs_unpack() {
     dounpack
@@ -44,4 +44,3 @@ pbs_build() {
 pbs_install() {
     domkinstall
 }
-

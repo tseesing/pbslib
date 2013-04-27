@@ -13,7 +13,7 @@ PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 SRC_URI="ftp://ftp.gnome.org/pub/GNOME/sources/$N/$V/$N-$V.tar.xz"
 CHECKSUM="84905e98a13990ef73ce698144bdf0ad9adb1346c22a7d7381a3d65f17a364f0"
 
-RDEPEND="nautilus"
+RDEPEND="nautilus-libs gconf dbus-glib"
 BDEPEND=""
 RECOMMENDEd=""
 

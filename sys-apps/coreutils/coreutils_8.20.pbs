@@ -13,7 +13,7 @@ PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 SRC_URI="http://ftp.gnu.org/gnu/"$N"/"$N-$V".tar.xz"
 CHECKSUM="3d69af8f561fce512538a9fe85f147ff"
 
-RDEPEND="acl gmp libcap pam"
+RDEPEND="glibc gmp libcap acl attr"
 BDEPEND=""
 RECOMMENDED=""
 
@@ -44,4 +44,3 @@ pbs_install() {
         doln /usr/bin/"${i}" bin/"${i}"
     done
 }
-

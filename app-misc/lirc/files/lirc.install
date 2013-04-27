@@ -12,4 +12,3 @@ post_remove() {
 post_upgrade() {
     post_install
 }
-

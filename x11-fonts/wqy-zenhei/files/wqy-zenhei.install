@@ -1,4 +1,3 @@
-. /usr/lib/ybs/funcs
 
 dir="/usr/share/fonts/wenquanyi/wqy-zenhei"
 
@@ -13,4 +12,3 @@ post_remove () {
 post_upgrade() {
     post_install
 }
-

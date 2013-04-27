@@ -1,0 +1,10 @@
+--- Makefile.am	2013-04-09 14:27:12.784004321 +0800
++++ Makefile.am.new	2013-04-09 14:36:41.964790927 +0800
+@@ -7,7 +7,6 @@
+ 	services \
+ 	daemon \
+ 	client \
+-	doc \
+ 	suse \
+ 	compilerwrapper
+ 

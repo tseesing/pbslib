@@ -13,7 +13,7 @@ PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 SRC_URI="http://www.flyn.org/projects/"$N"/"$N-$V".tar.gz"
 CHECKSUM="52c9e4d3de931d9013eeaccf7371bb2d"
 
-RDEPEND="libsoup avahi gst-plugins-base0.10 gdk-pixbuf2"
+RDEPEND="gdk-pixbuf2 libpng avahi dbus-libs gst-plugins-base0.10 gstreamer0.10 libsoup libxml2 xz glibc glib2 libffi pcre zlib sqlite"
 RECOMMENDED=""
 BDEPEND=""
 OPTIONAL=""

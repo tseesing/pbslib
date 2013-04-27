@@ -39,4 +39,3 @@ pbs_install() {
     rm bin/{hostname,dnsdomainname,domainname}
     rm -rf usr/share/man/man1
 }
-

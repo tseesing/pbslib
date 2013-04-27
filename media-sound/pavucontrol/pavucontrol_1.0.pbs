@@ -17,8 +17,6 @@ RECOMMENDED=""
 BDEPEND=""
 CONFLICT=""
 
-INSTALL="$N.install"
-
 pbs_unpack() {
     dounpack
 }
@@ -35,4 +33,3 @@ pbs_build() {
 pbs_install() {
     domkinstall
 }
-

@@ -13,7 +13,7 @@ GROUP="x11-apps"
 
 SRC_URI="http://xorg.freedesktop.org/releases/individual/app/"$N-$V".tar.bz2"
 
-RDEPEND="libXaw libXft libxkbfile"
+RDEPEND="libXaw libXft libxkbfile util-linux-libs"
 BDEPEND=""
 
 pbs_unpack() {
@@ -32,4 +32,3 @@ pbs_install() {
     domkinstall
     dodoc COPYING
 }
-

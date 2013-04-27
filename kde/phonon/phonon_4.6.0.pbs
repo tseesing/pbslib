@@ -10,7 +10,7 @@ PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 SRC_URI="http://download.kde.org/stable/"$N"/"$V"/src/"$N-$V".tar.xz"
 CHECKSUM="bbe0c1c62ed14c31479c4c1a6cf1e173"
 
-RDEPEND="libqzeitgeist pulseaudio"
+RDEPEND="pulseaudio libqzeitgeist libXext libsndfile"
 BDEPEND="cmake automoc4"
 OPTIONAL="pulseaudio: PulseAudio support"
 
@@ -37,4 +37,3 @@ pbs_build() {
 pbs_install() {
     domkinstall
 }
-

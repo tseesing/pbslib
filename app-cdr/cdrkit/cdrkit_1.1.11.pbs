@@ -12,7 +12,7 @@ PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
  
 SRC_URI="http://cdrkit.org/releases/"$N-$V".tar.gz"
 
-RDEPEND="bzip2 file libcap"
+RDEPEND="glibc file zlib bzip2 libcap attr bash"
 BDEPEND="cmake"
 RECOMMENDED="perl"
 REPLACE="cdrtools"
@@ -43,4 +43,3 @@ pbs_install() {
     ln -s genisoimage.1 mkhybrid.1
     ln -s icedax.1 cdda2wav.1
 }
-

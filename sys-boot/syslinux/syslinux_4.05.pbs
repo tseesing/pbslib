@@ -13,7 +13,7 @@ PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 SRC_URI="http://www.kernel.org/pub/linux/utils/boot/"$N"/"$N-$V".tar.bz2"
 CHECKSUM="82299242418385da1274c9479a778cb2"
 
-RDEPEND="util-linux perl"
+RDEPEND="perl glibc util-linux-libs"
 BDEPEND=""
 RECOMMENDED="perl-crypt-passwdmd5 perl-digest-sha1 mtools gptfdisk"
 CONFLICT=""

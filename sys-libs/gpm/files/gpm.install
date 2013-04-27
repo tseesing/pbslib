@@ -1,4 +1,3 @@
-. /usr/lib/ybs/funcs
 
 files="gpm.info.gz"
 
@@ -13,4 +12,3 @@ pre_remove() {
 post_upgrade() {
     post_install
 }
-

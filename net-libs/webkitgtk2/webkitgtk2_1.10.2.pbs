@@ -14,7 +14,7 @@ PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>
 SRC_URI="http://webkitgtk.org/releases/webkitgtk-"$V".tar.xz"
 CHECKSUM="7b1a652af1eb11bee5bf7209e9ff67e6"
 
-RDEPEND="gst-plugins-base0.10 gtk2 enchant geoclue libxslt"
+RDEPEND="enchant gtk2 geoclue gst-plugins-base0.10 libjpeg-turbo libsoup libxslt sqlite libXt"
 BDEPEND="ruby gobject-introspection perl"
 RECOMMENDED=""
 

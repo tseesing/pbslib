@@ -13,7 +13,7 @@ PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 SRC_URI="http://ftp.gnome.org/pub/GNOME/sources/$N/3.3/$N-$V.tar.xz"
 CHECKSUM="cf3253be052737332b2b6e9dbd6f62d79cbc3f3398497158c0099dbc45741a46"
 
-RDEPEND="gdl gtkmm3"
+RDEPEND="gdl gtkmm"
 RECOMMENDED=""
 BDEPEND=""
 OPTIONAL=""

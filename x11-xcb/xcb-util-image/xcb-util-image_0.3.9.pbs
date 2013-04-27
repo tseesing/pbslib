@@ -12,7 +12,7 @@ PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
 SRC_URI="http://xorg.freedesktop.org/releases/individual/xcb/"$N-$V".tar.bz2"
 
-RDEPEND="xcb-util"
+RDEPEND="libxcb xcb-util glibc libXau libXdmcp"
 RECOMMENDED=""
 BDEPEND=""
 OPTIONAL=""
@@ -34,5 +34,3 @@ pbs_build() {
 pbs_install() {
     domkinstall
 }
-
-

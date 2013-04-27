@@ -7,14 +7,14 @@
 
 DESCRIPTION="system load average display for X"
 HOMEPAGE="http://xorg.freedesktop.org/"
-GROUP="x11-apps"
 LICENSE="custom"
 PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>
           chenqixing@ivali.com"
+GROUP="x11-apps"
 
 SRC_URI="http://xorg.freedesktop.org/releases/individual/app/"$N-$V".tar.bz2"
 
-RDEPEND="libXaw"
+RDEPEND="libXaw libXmu libXt libX11 glibc libXext libSM util-linux-libs libICE libXpm libxcb libXau libXdmcp"
 BDEPEND=""
 
 pbs_unpack() {
@@ -32,4 +32,3 @@ pbs_build() {
 pbs_install() {
     domkinstall
 }
-

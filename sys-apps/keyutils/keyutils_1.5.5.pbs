@@ -32,4 +32,3 @@ pbs_install() {
     echo "# NFS idmap resolver" >>etc/request-key.conf
     echo "create id_resolver * * /usr/sbin/nfsidmap %k %d" >>etc/request-key.conf
 }
-

@@ -13,7 +13,8 @@ PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 SRC_URI="http://xorg.freedesktop.org/releases/individual/xserver/"$N-$V".tar.bz2"
 CHECKSUM="bde3d178b756597d2ec2a19ef60d2e1f"
 
-RDEPEND="libdmx libgcrypt libXaw libXfont libXi libXrender libXv pixman mesa(>=8.0.4) libxkbfile libXtst(>=1.0.99.2) libXres"
+RDEPEND="mesa(>=8.0.4) libXtst(>=1.0.99.2) libgcrypt libgpg-error glibc pixman libXfont freetype bzip2 libfontenc zlib libXau libXdmcp libdmx libXmu libSM util-linux-libs libICE libXext libX11 libxcb libXrender libXfixes libXi systemd libpciaccess libdrm libXv libXdamage libXxf86vm libXaw libXpm"
+
 BDEPEND="xproto(>=7.0.22) dri2proto libsdl xtrans(>=1.2.2) xextproto(>=7.1.99) inputproto(>=2.1.99.6) fontsproto bigreqsproto(>=1.1.0) scrnsaverproto(>=1.1) xf86vidmodeproto xf86dgaproto videoproto resourceproto xcmiscproto(>=1.2.0) recordproto(>=1.13.99.1) fixesproto(>=5.0) damageproto(>=1.1) compositeproto(>=0.4) glproto(>=1.4.16) xf86driproto xf86driproto dri2proto randrproto(>=1.4.0) xineramaproto renderproto(>=0.11) kbproto(>=1.0.3)"
 
 NOTES="rebuild all drivers if upgrade OR you may cannot start X because of module version mismatch errors, because the ABI changed"
@@ -84,4 +85,3 @@ pbs_install() {
     docp "$FILESDIR"/xvfb-run usr/bin/
     doman xvfb-run.1
 }
-

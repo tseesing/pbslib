@@ -13,7 +13,7 @@ PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 SRC_URI="http://www.thekelleys.org.uk/"$N"/"$N-$V".tar.gz"
 CHECKSUM="a91534a5d6f053d5c80f67ef502afa34"
 
-RDEPEND="dbus"
+RDEPEND="dbus-libs"
 RECOMMENDED=""
 BDEPEND=""
 CONFLICT=""
@@ -43,4 +43,3 @@ pbs_install() {
     # configfile
     install -Dm644 "dnsmasq.conf.example" "$PKGDIR"/etc/dnsmasq.conf
 }
-

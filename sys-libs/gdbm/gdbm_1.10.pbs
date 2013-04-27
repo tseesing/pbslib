@@ -50,4 +50,3 @@ pbs_install() {
     ln -sf ../ndbm.h usr/include/gdbm/ndbm.h
     ln -sf ../dbm.h  usr/include/gdbm/dbm.h
 }
-

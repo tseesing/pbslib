@@ -15,7 +15,7 @@ YARCH="any"
 SRC_URI="https://github.com/jcrocholl/pep8/archive/$V.tar.gz"
 CHECKSUM="c2a94f56a407b2ead87f67dec3d6df07"
 
-RDEPEND="python"
+RDEPEND="python py-distribute"
 RECOMMENDED=""
 BDEPEND="py-distribute"
 OPTIONAL=""

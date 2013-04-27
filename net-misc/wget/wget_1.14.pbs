@@ -13,7 +13,7 @@ PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 SRC_URI="http://ftp.gnu.org/gnu/"$N"/"$N-$V".tar.xz"
 CHECKSUM="316f6f59292c9098ad81fd54f658c579"
 
-RDEPEND="libidn openssl pcre util-linux"
+RDEPEND="openssl zlib glibc libidn util-linux-libs pcre"
 BDEPEND=""
 RECOMMENDED="ca-certificates"
 OPTIONAL="ca-certificates: HTTPS downloads"
@@ -40,4 +40,3 @@ pbs_install() {
 ca_certificate=/etc/ssl/certs/ca-certificates.crt
 OOO
 }
-

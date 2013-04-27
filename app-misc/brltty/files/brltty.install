@@ -1,4 +1,3 @@
-. /usr/lib/ybs/funcs
 
 post_install() {
     dogroupadd -r brlapi
@@ -19,4 +18,3 @@ post_remove() {
 post_upgrade() {
     post_install
 }
-

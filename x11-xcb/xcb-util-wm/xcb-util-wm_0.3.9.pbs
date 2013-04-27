@@ -12,7 +12,7 @@ PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
 SRC_URI="http://xorg.freedesktop.org/releases/individual/xcb/"$N-$V".tar.bz2"
 
-RDEPEND="libxcb"
+RDEPEND="libxcb glibc libXau libXdmcp"
 RECOMMENDED=""
 BDEPEND=""
 OPTIONAL=""

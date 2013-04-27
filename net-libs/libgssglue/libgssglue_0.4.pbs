@@ -10,7 +10,6 @@ HOMEPAGE="http://www.citi.umich.edu/projects/nfsv4/linux"
 LICENSE="BSD"
 PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
-
 SRC_URI="http://www.citi.umich.edu/projects/nfsv4/linux/$N/$N-$V.tar.gz"
 CHECKSUM="088797f3180702fa54e786496b32e750"
 
@@ -41,4 +40,3 @@ pbs_install() {
     mkdir etc/
     sed 's/LIBDIRSUFFIX/'"$LIBDIRSUFFIX"'/g' "$FILESDIR"/gssapi_mech.conf >etc/gssapi_mech.conf
 }
-

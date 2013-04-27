@@ -1,7 +1,7 @@
 
 pre_install() {
-    groupadd -g 110 partimag &> /dev/null
-    useradd -u 110 -g partimag -c "Partimage user" -d /dev/null -s /bin/false partimag &> /dev/null ||true
+    dogroupadd -g 110 partimag &> /dev/null
+    doduseradd -u 110 -g partimag -c "Partimage user" -d /dev/null -s /bin/false partimag &> /dev/null ||true
 }
 
 post_install() {
@@ -20,6 +20,6 @@ post_upgrade() {
 }
 
 post_remove() {
-    userdel partimag > /dev/null
-    groupdel partimag > /dev/null ||true
+    douserdel partimag
+    dogroupdel partimag ||true
 }

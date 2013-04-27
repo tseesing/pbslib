@@ -1,0 +1,38 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="StartOS build system utilities"
+HOMEPAGE="https://github.com/StartOS/ybs"
+LICENSE="GPL"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
+PRIORITY="required"
+GROUP="base"
+YARCH="any"
+
+SRC_URI="git@github.com:StartOS/ybs.git"
+
+RDEPEND="gawk cpio xz sed coreutils findutils procps psmisc bash python"
+BDEPEND="git"
+RECOMMENDED="wget curl git ypkg2 spcct"
+
+INSTALL="$N.install"
+
+pbs_unpack() {
+    dounpack
+}
+
+pbs_build() {
+    make
+}
+
+pbs_install() {
+    domkinstall
+    cd "$PKGDIR"
+    mkdir -p var/ybs
+    chmod 1777 var/ybs
+    sed -i 's/^ARCH=/ARCH='"$ARCH"'/g' "$PKGDIR"/usr/share/ybs/ybs.conf.sample
+}

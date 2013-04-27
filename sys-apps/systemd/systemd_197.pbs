@@ -13,9 +13,9 @@ PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 SRC_URI="http://www.freedesktop.org/software/"$N"/"$N-$V".tar.xz"
 CHECKSUM="56a860dceadfafe59f40141eb5223743"
 
-RDEPEND="baselayout acl bash dbus glib2 kbd kmod hwids libcap libgcrypt pam util-linux xz"
+RDEPEND="baselayout dbus-libs glibc attr xz libgcrypt libgpg-error libcap util-linux-libs kmod acl zlib qrencode libmicrohttpd gnutls p11-kit libtasn1 nettle gmp pam cryptsetup device-mapper glib2 libffi pcre"
 BDEPEND="intltool gperf cryptsetup docbook-xsl python"
-RECOMMENDED=""
+RECOMMENDED="python"
 OPTIONAL="cryptsetup: required for encrypted block devices
           libmicrohttpd: systemd-journal-gatewayd
           quota-tools: kernel-level quota management
@@ -82,7 +82,7 @@ EOF
     doln /proc/kcore     "$UDEVDHOME"/core
     # Make systemlink for udevd     
     doln /usr/lib/systemd/systemd-udevd usr/bin/udevd
-    # get rid of RPM macros
+    # Get rid of RPM macros
     rm -r etc/rpm
     # Misc
     docp "$FILESDIR"/udlfb.conf etc/modprobe.d/

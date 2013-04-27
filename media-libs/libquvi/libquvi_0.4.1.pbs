@@ -14,7 +14,7 @@ PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>
 SRC_URI="http://downloads.sourceforge.net/sourceforge/quvi/"$N-$V".tar.gz"
 CHECKSUM="a5fa8860c23655a529b3166f6e25c83a"
 
-RDEPEND="libquvi-scripts curl lua libidn openldap"
+RDEPEND="curl libidn libssh2 libldap glibc openssl zlib lua rtmpdump libsasl"
 RECOMMENDED=""
 BDEPEND=""
 OPTIONAL=""
@@ -37,4 +37,3 @@ pbs_build() {
 pbs_install() {
     domkinstall
 }
-

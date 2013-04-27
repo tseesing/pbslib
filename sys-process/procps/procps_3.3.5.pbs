@@ -12,7 +12,7 @@ PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
 SRC_URI="git://gitorious.org/procps/procps.git"
 
-RDEPEND="ncurses"
+RDEPEND="glibc ncurses"
 BDEPEND=""
 
 pbs_unpack() {
@@ -35,4 +35,3 @@ pbs_install() {
     # provided by util-linux
     rm bin/kill usr/share/man/man1/kill.1
 }
-

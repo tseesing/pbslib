@@ -13,9 +13,9 @@ PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 SRC_URI="http://ftp.gnome.org/pub/GNOME/sources/$N/$V/$N-$V.tar.xz"
 CHECKSUM="a5c0a18a7c76133d36c7dcbdc37e304eae8272703985b17b540d68603b0c76d5"
 
-RDEPEND="libSM libpeas tdb json-glib libXi at-spi2-atk libXinerama libXrandr libXcursor libXcomposite libXdamage libnotify systemd nettle lirc libgpod grilo libmtp libusb-compat libdmapsharing"
-BDEPEND="intltool brasero gobject-introspection vala"
-RECOMMENDED="brasero"
+RDEPEND="libgnome-keyring libpeas tdb json-glib libnotify totem-pl-parser brasero-libs lirc libgpod grilo libmtp libdmapsharing"
+BDEPEND="intltool gobject-introspection vala"
+RECOMMENDED=""
 CONFLICT=""
 
 INSTALL="$N.install"

@@ -13,7 +13,7 @@ PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 SRC_URI="http://git-core.googlecode.com/files/"$N-$V".tar.gz"
 CHECKSUM="210834d73c857931c3da34a65eb3e597"
 
-RDEPEND="curl expat perl openssl pcre perl-error"
+RDEPEND="perl-error pcre zlib openssl glibc curl libssh2 rtmpdump expat"
 BDEPEND="python"
 OPTIONAL="tk: gitk and git gui
           libwww-perl: git svn

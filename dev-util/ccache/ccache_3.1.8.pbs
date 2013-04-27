@@ -38,4 +38,3 @@ pbs_install() {
         doln /usr/bin/ccache usr/lib/ccache/bin/"${i}" 
     done    
 }
-

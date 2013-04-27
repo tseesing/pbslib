@@ -1,7 +1,6 @@
-. /usr/lib/ybs/funcs
 
 post_install() {
-    gnome2_icon_cache_update "nuoveXT2"
+    gtk-update-icon-cache -f -q -t /usr/share/icons/nuoveXT2 ||true
 }
 
 post_upgrade () {

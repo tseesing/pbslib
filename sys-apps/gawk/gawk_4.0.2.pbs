@@ -15,7 +15,7 @@ ALIAS="awk"
 SRC_URI="ftp://ftp.gnu.org/pub/gnu/"$N"/"$N-$V".tar.gz"
 CHECKSUM="4d505dc2c9f1eb3e9f8d6cac87d4bd1a"
 
-RDEPEND="readline glibc"
+RDEPEND="glibc readline ncurses"
 BDEPEND=""
 
 INSTALL="$N.install"
@@ -36,4 +36,3 @@ pbs_build() {
 pbs_install() {
     domkinstall
 }
-

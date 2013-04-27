@@ -1,16 +1,22 @@
-. /usr/lib/ybs/funcs
-
-files="speech-dispatcher.info.gz speech-dispatcher-cs.info.gz ssip.info.gz spd-say.info.gz"
+info_dir=usr/share/info
+info_files=('speech-dispatcher.info'
+    'ssip.info'
+    'spd-say.info')
 
 post_install() {
-    doinstall_info $files
-}
-
-pre_remove() {
-    doremove_info $files
+  [[ -x usr/bin/install-info ]] || return 0
+  for f in ${info_files[@]}; do
+    install-info ${info_dir}/$f.gz ${info_dir}/dir 2> /dev/null
+  done
 }
 
 post_upgrade() {
-    post_install
+  post_install
 }
 
+pre_remove() {
+  [[ -x usr/bin/install-info ]] || return 0
+  for f in ${info_files[@]}; do
+    install-info --delete ${info_dir}/$f.gz ${info_dir}/dir 2> /dev/null
+  done
+}

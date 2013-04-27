@@ -12,7 +12,7 @@ PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
 SRC_URI="http://downloads.sourceforge.net/project/"$N"/"$N"/"$V"/"$N-$V".tgz"
 
-RDEPEND="libXi libXmu mesa"
+RDEPEND="libXmu libXi mesa libXext libX11 glibc libXt libSM util-linux-libs libICE libxcb libXau libXdmcp libXdamage libXfixes libXxf86vm libdrm"
 BDEPEND=""
 RECOMMENDED=""
 
@@ -40,5 +40,3 @@ pbs_install() {
     rm usr/lib"$LIBDIRSUFFIX"/{libGLEW,libGLEWmx}.a
     chmod 0755 usr/lib"$LIBDIRSUFFIX"/libGLEW*.so."$V"
 }
-
-

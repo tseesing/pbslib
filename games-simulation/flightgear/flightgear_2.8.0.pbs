@@ -39,4 +39,3 @@ pbs_install() {
     dodesktop package/flightgear.desktop package/flightgear.ico
     ln -sf flightgear "$PKGDIR"/usr/share/FlightGear
 }
-

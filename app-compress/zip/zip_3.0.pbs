@@ -13,7 +13,7 @@ PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 SRC_URI="http://downloads.sourceforge.net/infozip/"$N"30.tar.gz"
 CHECKSUM="7b74551e63f8ee6aab6fbc86676c0d37"
 
-RDEPEND="bzip2"
+RDEPEND="bzip2 glibc"
 BDEPEND=""
 
 pbs_unpack() {
@@ -28,4 +28,3 @@ pbs_install() {
     make -f unix/Makefile INSTALL=/bin/install prefix="$PKGDIR"/usr MANDIR="$PKGDIR"/usr/share/man/man1 install
     dodoc LICENSE
 }
-

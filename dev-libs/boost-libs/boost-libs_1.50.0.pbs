@@ -13,7 +13,7 @@ PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 SRC_URI="http://sourceforge.net/projects/boost/files/boost/"$V"/boost_"${V//./_}".tar.bz2"
 CHECKSUM="52dd00be775e689f55a987baebccc462"
 
-RDEPEND="bzip2 icu zlib"
+RDEPEND="glibc gcc-libs icu bzip2 zlib"
 BDEPEND=""
 RECOMMENDED=""
 
@@ -82,4 +82,3 @@ pbs_install() {
     # License
     dodoc "$SRCDIR"/LICENSE_1_0.txt
 }
-

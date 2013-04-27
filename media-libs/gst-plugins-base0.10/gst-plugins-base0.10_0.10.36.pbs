@@ -13,7 +13,7 @@ PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 SRC_URI="http://gstreamer.freedesktop.org/src/gst-plugins-base/gst-plugins-base-"$V".tar.xz"
 CHECKSUM="1fe45c3894903001d4d008b0713dab089f53726dcb5842d5b40c2595a984e64a"
 
-RDEPEND="gstreamer0.10 orc libXv alsa-lib cdparanoia libvisual libvorbis libtheora pango"
+RDEPEND="gstreamer0.10 orc cdparanoia alsa-lib libXv pango libvisual libtheora libvorbis"
 BDEPEND="pkgconfig gobject-introspection"
 RECOMMENDED=""
 
@@ -38,4 +38,3 @@ pbs_build() {
 pbs_install() {
     domkinstall
 }
-

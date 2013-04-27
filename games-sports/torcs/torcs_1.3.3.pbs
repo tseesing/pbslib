@@ -39,4 +39,3 @@ pbs_install() {
     dodesktop torcs.desktop Ticon.png
     find "$PKGDIR" -type d -exec chmod 755 {} \;
 }
-

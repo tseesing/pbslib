@@ -13,7 +13,7 @@ PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 SRC_URI="http://ftp.gnome.org/pub/gnome/sources/$N/${V%.*}/$N-$V.tar.xz"
 CHECKSUM="38f3b069874658f281445e04b8376d946580e4a5e39620f7e30fdd8216d46c1e"
 
-RDEPEND="gtkmm3 libxslt desktop-file-utils dconf libsecret"
+RDEPEND="gtkmm libxslt desktop-file-utils dconf libsecret"
 BDEPEND="intltool boost"
 RECOMMENDED=""
 CONFLICT=""
@@ -38,4 +38,3 @@ pbs_build() {
 pbs_install() {
     domkinstall
 }
-

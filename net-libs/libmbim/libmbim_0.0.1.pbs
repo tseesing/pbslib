@@ -1,0 +1,39 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="GLib/GIO based library to control MBIM devices"
+COMMENTS="MBIM is short for the Mobile Broadband Interface Model and is a USB-based protocol for host/device connections of desktops/laptops/tablets/mobile devices. "
+HOMEPAGE="https://gitorious.org/lanedo/libmbim"
+LICENSE="GPL"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
+
+SRC_URI="http://www.freedesktop.org/software/libqmi/$N-$V.tar.xz"
+CHECKSUM=""
+
+RDEPEND="glib2 zlib glibc systemd libffi pcre"
+RECOMMENDED=""
+BDEPEND=""
+OPTIONAL=""
+CONFLICT=""
+REPLACE=""
+
+pbs_unpack() {
+    dounpack
+}
+
+pbs_config() {
+    config+=""
+    doconfig
+}
+
+pbs_build() {
+    domake
+}
+
+pbs_install() {
+    domkinstall
+}

@@ -13,7 +13,7 @@ PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 SRC_URI="ftp://ftp2.sane-project.org/pub/sane/"$N-$V".tar.gz"
 CHECKSUM=""
 
-RDEPEND="avahi libgphoto2 libieee1284 libtiff net-snmp v4l-utils"
+RDEPEND="libusb-compat libusbx glibc cups krb5 e2fsprogs gnutls avahi zlib keyutils p11-kit libtasn1 nettle gmp dbus-libs v4l-utils libtiff xz libjpeg-turbo libgphoto2 libtool libexif"
 BDEPEND=""
 RECOMMENDED=""
 REPLACE=""

@@ -1,0 +1,58 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="Gtk user interface library for Avahi."
+HOMEPAGE="http://avahi.org/"
+LICENSE="LGPL"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
+
+SRC_URI="http://avahi.org/download/avahi-$V.tar.gz"
+CHECKSUM="7e05bd78572c9088b03b1207a0ad5aba38490684"
+
+RDEPEND="avahi gtk3 gtk2" 
+BDEPEND="intltool gobject-introspection"
+RECOMMENDED=""
+
+pbs_unpack() {
+    dounpack
+}
+
+pbs_config() {
+    config+="--enable-gtk
+             --enable-gtk3
+             --disable-qt4
+             --disable-qt3
+             --enable-glib
+             --enable-gobject
+             --disable-gdbm
+             --disable-libdaemon
+             --disable-python
+             --disable-pygtk
+             --disable-python-dbus
+             --disable-mono
+             --disable-monodoc
+             --disable-autoipd
+             --disable-doxygen-doc
+             --disable-doxygen-dot
+             --disable-doxygen-xml
+             --disable-doxygen-html
+             --disable-manpages
+             --disable-xmltoman
+             --disable-compat-libdns_sd 
+             --disable-compat-howl 
+             --with-distro=archlinux"
+    doconfig
+}
+
+pbs_build() {
+    domake
+}
+
+pbs_install() {
+    cd avahi-ui # avahi-ui-sharp
+    domkinstall
+}

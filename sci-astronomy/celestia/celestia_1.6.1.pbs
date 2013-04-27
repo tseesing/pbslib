@@ -15,8 +15,6 @@ SRC_URI="http://downloads.sourceforge.net/sourceforge/"$N"/"$N-$V".tar.gz"
 RDEPEND="gtkglext libtheora lua"
 BDEPEND=""
 
-INSTALL="$N.install"
-
 pbs_unpack() {
     dounpack
 }
@@ -44,4 +42,3 @@ pbs_build() {
 pbs_install() {
     domkinstall
 }
-

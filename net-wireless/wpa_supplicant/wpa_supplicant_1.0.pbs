@@ -13,7 +13,7 @@ PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 SRC_URI="http://w1.fi/releases/"$N-$V".tar.gz"
 CHECKSUM="8650f6aa23646ef634402552d0669640"
 
-RDEPEND="dbus libnl openssl readline ncurses"
+RDEPEND="ncurses readline glibc libnl openssl dbus-libs zlib"
 BDEPEND=""
 RECOMMENDED=""
 OPTIONAL="wpa_supplicant_gui: wpa_gui program"
@@ -53,4 +53,3 @@ pbs_install() {
     docp_rename dbus/dbus-wpa_supplicant.conf "$PKGDIR"/etc/dbus-1/system.d/wpa_supplicant.conf
     dounit systemd/*.service
 }
-

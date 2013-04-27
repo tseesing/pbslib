@@ -1,8 +1,7 @@
-. /usr/lib/ybs/funcs
 
 post_install() {
-    gnome2_desktop_database_update
-    gnome2_icon_cache_update 
+    update-desktop-database 2>/dev/null
+    gtk-update-icon-cache -f -q -t 2>/dev/null
     systemctl enable wicd.service
     start wicd ||true
 }
@@ -13,8 +12,8 @@ pre_remove() {
 }
 
 post_remove() {
-    gnome2_desktop_database_update
-    gnome2_icon_cache_update
+    update-desktop-database 2>/dev/null
+    gtk-update-icon-cache -f -q -t 2>/dev/null ||true
 }
 
 post_upgrade() {
@@ -25,4 +24,3 @@ post_upgrade() {
 post_downgrade() {
     post_upgrade
 }
-

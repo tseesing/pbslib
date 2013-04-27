@@ -1,9 +1,7 @@
-. /usr/lib/ybs/funcs
 
-_dir=/usr/"lib$LIBDIRSUFFIX"/xorg/modules/extensions/
+_dir=/usr/lib#LIBDIRSUFFIX#/xorg/modules/extensions/
 
 # restore libglx for nvidia/ati graphic cards drivers
-# 
 restore() {
     cd "$_dir"
     # Classic libglx
@@ -17,7 +15,7 @@ restore() {
     # nVidia
     if [ -f libglx.so.27* ]; then
         if lspci |grep VGA |grep -q "nVidia"; then
-            lspci |grep VGA |grep -q "Intel Corporation" ||    ln -sf libglx.so.27* libglx.so
+            lspci |grep VGA |grep -q "Intel Corporation" || ln -sf libglx.so.27* libglx.so
         fi
     fi
 
@@ -25,7 +23,7 @@ restore() {
 }
 
 post_install() {
-    dolibtool_finish "$_dir"
+    libtool --finish --silent "$_dir"
     restore
 }
 

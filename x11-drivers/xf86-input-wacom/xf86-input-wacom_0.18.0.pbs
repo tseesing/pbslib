@@ -14,7 +14,7 @@ PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>
 SRC_URI="http://downloads.sourceforge.net/project/linuxwacom/"$N"/"$N-$V".tar.bz2"
 CHECKSUM="cca2c9ed7a5d3b09689bfc2c204726fb"
 
-RDEPEND="xorg-server(>=1.13.0) libXi libXinerama libXrandr"
+RDEPEND="xorg-server(>=1.13.0) libXi libXrandr libXrender libXinerama libXext libX11 libxcb libXau libXdmcp glibc"
 BDEPEND=""
 
 pbs_unpack() {

@@ -7,13 +7,13 @@
 
 DESCRIPTION="round X clock"
 HOMEPAGE="http://xorg.freedesktop.org/"
-GROUP="x11-apps"
 LICENSE="custom"
 PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
+GROUP="x11-apps"
 
 SRC_URI="http://xorg.freedesktop.org/releases/individual/app/"$N-$V".tar.bz2"
 
-RDEPEND="libxkbfile libXmu"
+RDEPEND="libXmu libXext libXt libX11 libxkbfile glibc libSM util-linux-libs libICE libxcb libXau libXdmcp"
 BDEPEND=""
 
 pbs_unpack() {
@@ -21,6 +21,7 @@ pbs_unpack() {
 }
 
 pbs_config() {
+    config+=""
     doconfig
 }
 
@@ -32,4 +33,3 @@ pbs_install() {
     domkinstall
     dodoc COPYING
 }
-

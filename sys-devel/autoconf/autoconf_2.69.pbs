@@ -39,4 +39,3 @@ pbs_install() {
     # conflict with bintuils
     rm -f "$PKGDIR"/usr/share/info/standards.info
 }
-

@@ -1,8 +1,6 @@
-. /usr/lib/ybs/funcs
 
 post_install() {
     ldconfig
-    gnome2_desktop_database_update
     echo "You need to source /etc/profile to add the Android SDK tools to your path."
 }
 
@@ -13,4 +11,3 @@ post_upgrade() {
 post_downgrade() {
     post_install
 }
-

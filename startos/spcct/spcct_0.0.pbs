@@ -1,0 +1,37 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="A tool for checking circular dependency, part of ybs"
+HOMEPAGE="https://github.com/StartOS/spcct"
+LICENSE="GPL"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
+
+SRC_URI="git://github.com/StartOS/spcct.git"
+
+RDEPEND="glibc ybs"
+RECOMMENDED=""
+BDEPEND="git"
+OPTIONAL=""
+CONFLICT=""
+REPLACE=""
+
+pbs_unpack() {
+    dounpack
+}
+
+pbs_config() {
+    config+=""
+    doconfig
+}
+
+pbs_build() {
+    domake
+}
+
+pbs_install() {
+    domkinstall
+}

@@ -5,12 +5,12 @@
 # Distributed under the terms of the GNU General Public License v2
 #
 
-DESCRIPTION="binaries used by initramfs-tools "
-HOMEPAGE="http://www.startos.org"
+DESCRIPTION="binaries used by initramfs-tools"
+HOMEPAGE="https://github.com/StartOS/initramfs-tools-bin"
 LICENSE="GPL"
 PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
-SRC_URI="git://git.ylmf.com/"$N".git"
+SRC_URI="git://github.com/StartOS/initramfs-tools-bin.git"
 
 RDEPEND="initramfs-tools glibc systemd"
 BDEPEND=""
@@ -27,4 +27,3 @@ pbs_build() {
 pbs_install() {
     docp wait-for-root rzscontrol "$PKGDIR"/usr/lib/initramfs-tools/bin
 }
-

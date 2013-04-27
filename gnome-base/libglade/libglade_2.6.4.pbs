@@ -39,4 +39,3 @@ pbs_install() {
     domkinstall
     docp libglade-convert "$PKGDIR"/usr/bin/
 }
-

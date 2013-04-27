@@ -44,4 +44,3 @@ pbs_install() {
     cd /usr/lib"$LIBDIRSUFFIX"/
     doln libminilzo.so.0 libminilzo.so
 }
-

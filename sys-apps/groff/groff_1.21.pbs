@@ -13,7 +13,7 @@ PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 SRC_URI="ftp://ftp.gnu.org/gnu/"$N"/"$N-$V".tar.gz"
 CHECKSUM="8b8cd29385b97616a0f0d96d0951c5bf"
 
-RDEPEND="gcc-libs perl texinfo"
+RDEPEND="perl gcc-libs glibc"
 BDEPEND=""
 
 INSTALL="$N.install"
@@ -44,4 +44,3 @@ pbs_install() {
       cat "$FILESDIR"/site.tmac >>usr/share/groff/site-tmac/man.local
     cat "$FILESDIR"/site.tmac >>usr/share/groff/site-tmac/mdoc.local
 }
-

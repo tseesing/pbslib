@@ -1,13 +1,14 @@
-. /usr/lib/ybs/funcs
 
-_shares="/var/lib${LIBDIRSUFFIX}/samba/usershares"
+_shares="/var/lib#LIBDIRSUFFIX#/samba/usershares"
 
 post_install() {
     dogroupadd -r "sambashare" -g 124
+    
     # Systemd unit
     for i in winbind.service smbd.service nmbd.service; do
         systemctl enable ${i}
     done
+    
     # For user shares
     if [ -d "$_shares" ]; then
         chmod 1770 "$_shares"
@@ -15,6 +16,7 @@ post_install() {
     else
         install -d -m 1770 -g sambashare /var/lib/samba/usershares
     fi
+    
     # Default configure
     [ ! -f /etc/samba/smb.conf ] && cp /etc/samba/{smb.conf.default,smb.conf} ||true
 }       
@@ -36,4 +38,3 @@ post_upgrade() {
     systemctl --system daemon-reload
     post_install
 }
-

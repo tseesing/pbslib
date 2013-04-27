@@ -13,7 +13,7 @@ PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 SRC_URI="http://downloads.sourceforge.net/wxpython/wxPython-src-$V.tar.bz2"
 CHECKSUM="05688dc03d61631750f5904273122bb40a2115f5"
 
-RDEPEND="gconf gtk2 gst-plugins-base0.10 mesa libXxf86vm libSM libsdl"
+RDEPEND="expat zlib glibc gcc-libs gtk2 atk glib2 pango gdk-pixbuf2 freetype fontconfig libXinerama libXxf86vm libSM libpng libjpeg-turbo libtiff libXfixes cairo libX11 libXi libXrandr libXcursor libXcomposite libXdamage libXrender libXext libffi pcre harfbuzz graphite2 icu bzip2 libxcb libXau libXdmcp libICE util-linux-libs xz pixman mesa wayland systemd libdrm libsdl directfb gstreamer0.10 libxml2 gconf gst-plugins-base0.10 dbus-glib dbus-libs glu"
 BDEPEND="gst-plugins-bad0.10 glu libXt"
 RECOMMENDED=""
 CONFLICT=""
@@ -55,4 +55,3 @@ pbs_install() {
     cd contrib/src
     domkinstall
 }
-

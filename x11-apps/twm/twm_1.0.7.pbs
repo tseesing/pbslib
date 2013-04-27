@@ -13,7 +13,7 @@ GROUP="x11-apps"
 
 SRC_URI="http://xorg.freedesktop.org/releases/individual/app/"$N-$V".tar.bz2"
 
-RDEPEND="libXmu"
+RDEPEND="libXext libXmu libXt libX11 libICE libSM glibc libxcb libXau libXdmcp util-linux-libs"
 BDEPEND="util-macros"
 
 pbs_unpack() {

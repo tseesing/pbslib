@@ -13,7 +13,7 @@ PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 SRC_URI="https://launchpadlibrarian.net/135109886/$N-$V.tar.gz"
 CHECKSUM=""
 
-RDEPEND="librsvg glu libxklavier vte3 lm_sensors pulseaudio webkitgtk3 libsoup libjpeg-turbo sqlite libXt libetpan libzeitgeist upower libexif libical gnome-menus"
+RDEPEND="librsvg glu libxklavier vte lm_sensors pulseaudio libsndfile webkitgtk3 libetpan libzeitgeist upower libexif libical gnome-menus"
 RECOMMENDED=""
 BDEPEND="cmake pkgconfig"
 OPTIONAL=""

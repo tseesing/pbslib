@@ -13,7 +13,7 @@ PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 SRC_URI="http://ftp.gnu.org/pub/gnu/"$N"/"$N-$V".tar.gz"
 CHECKSUM="3dd55b952826d2b32f51308f2f91aa89"
 
-RDEPEND="acl gcc-libs libcroco libunistring ncurses"
+RDEPEND="acl attr libcroco glib2 pcre glibc libxml2 zlib xz ncurses libunistring gcc-libs"
 BDEPEND=""
 OPTIONAL="cvs: for autopoint tool"
 
@@ -41,4 +41,3 @@ pbs_build() {
 pbs_install() {
     domkinstall
 }
-

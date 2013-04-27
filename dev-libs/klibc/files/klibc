@@ -16,14 +16,8 @@ prereqs)
 esac
 
 # klibc
-case $(uname -m) in
- i?86) 
-    cp -pL /usr/lib/klibc/bin/* ${DESTDIR}/bin
-  	cp -pL /usr/lib/klibc/lib/klibc-*.so ${DESTDIR}/lib ;;
- x86_64)		
-  	cp -pL /usr/lib64/klibc/bin/* ${DESTDIR}/bin
-	cp -pL /usr/lib64/klibc/lib/klibc-*.so ${DESTDIR}/lib 
-esac
+cp -pL /usr/lib#LIBDIRSUFFIX#/klibc/bin/* ${DESTDIR}/bin
+cp -pL /usr/lib#LIBDIRSUFFIX#/klibc/lib/klibc-*.so ${DESTDIR}//usr/lib#LIBDIRSUFFIX# 
 
 rm -f ${DESTDIR}/bin/kinit* ${DESTDIR}/bin/zcat ${DESTDIR}/bin/gzip
 

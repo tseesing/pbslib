@@ -1,0 +1,47 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="A instant messaging client using the Telepathy protocol"
+HOMEPAGE=" http://live.gnome.org/Empathy "
+LICENSE="GPLv2"
+PACKAGER="chenqixing@ivali.com
+          Zhongxin Huang <huangzhongxin@ivali.com>"
+
+SRC_URI="http://ftp.gnome.org/pub/GNOME/sources/$N/3.8/$N-$V.tar.xz"
+CHECKSUM=""
+
+RDEPEND="cheese telepathy-mission-control gnome-online-accounts folks libgee0.6 telepathy-logger gcr libchamplain telepathy-farstream"      
+BDEPEND="itstool"
+RECOMMENDED="telepathy-gabble telepathy-salut telepathy-haze telepathy-butterfly nautilus-sendto notification-daemon geocode-glib gnome-online-accounts gnutls libchamplain cheese"
+OPTIONAL="telepathy-gabble: XMPP/Jabber support
+          telepathy-idle: IRC support
+          telepathy-salut: Link-local XMPP support
+          telepathy-rakia: SIP support
+          telepathy-haze: libpurple support
+          nautilus-sendto: Send files from nautilus"
+
+INSTALL="$N.install"
+
+pbs_unpack() {
+    dounpack
+}
+
+pbs_config() {
+    config+="--disable-schemas-compile 
+             --disable-static 
+             --enable-gst-1.0=yes"
+    doconfig
+}
+
+pbs_build() {
+    sed -i -e 's/ -shared / -Wl,-O1,--as-needed\0/g' libtool
+    domake
+}
+
+pbs_install() {
+    domkinstall
+}

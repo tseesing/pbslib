@@ -1,0 +1,38 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="Sougo pinyin for fcitx"
+HOMEPAGE="http://code.google.com/p/fcitx/"
+LICENSE="GPL"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
+GROUP="fcitx"
+
+SRC_URI="http://packages.linuxdeepin.com/deepin/pool/main/f/$N/${N}_$V.orig.tar.gz"
+CHECKSUM=""
+
+RDEPEND="fcitx(>=4.2.6) gcc-libs"
+RECOMMENDED=""
+BDEPEND="cmake"
+OPTIONAL=""
+CONFLICT=""
+
+pbs_unpack() {
+    dounpack
+}
+
+pbs_config() {
+    config+=""
+    doconfig
+}
+
+pbs_build() {
+    domake
+}
+
+pbs_install() {
+    domkinstall
+}

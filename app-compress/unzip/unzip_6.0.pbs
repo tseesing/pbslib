@@ -13,7 +13,7 @@ PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 SRC_URI="http://downloads.sourceforge.net/infozip/"$N"60.tar.gz"
 CHECKSUM="62b490407489521db863b523a7f86375"
 
-RDEPEND="bzip2 libnatspec"
+RDEPEND="bzip2 libnatspec glibc"
 BDEPEND=""
 
 pbs_unpack() {
@@ -38,4 +38,3 @@ pbs_install() {
     make -f unix/Makefile prefix="$PKGDIR"/usr INSTALL_PROGRAM="install" install
     dodoc LICENSE
 }
-

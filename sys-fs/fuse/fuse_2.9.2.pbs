@@ -42,5 +42,3 @@ pbs_install() {
     # Cleanup 
     rm -rf etc/init.d/ dev
 }
-
-

@@ -1,4 +1,3 @@
-. /usr/lib/ybs/funcs
 
 files="goops.info.gz guile-tut.info.gz guile.info.gz guile.info-1.gz guile.info-2.gz guile.info-3.gz guile.info-4.gz guile.info-5.gz guile.info-6.gz guile.info-7.gz r5rs.info.gz"
 
@@ -13,4 +12,3 @@ pre_remove() {
 post_upgrade() {
     post_install
 }
-

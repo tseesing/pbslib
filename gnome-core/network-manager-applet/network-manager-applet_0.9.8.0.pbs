@@ -1,0 +1,43 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="GNOME frontends to NetWorkmanager"
+HOMEPAGE="http://projects.gnome.org/NetworkManager/"
+LICENSE="GPL"
+PACKAGER="chenqixing@ivali.com
+          Zhongxin Huang <huangzhongxin@ivali.com>"
+
+SRC_URI="http://ftp.gnome.org/pub/GNOME/core/3.8/3.8.0/sources/$N-$V.tar.xz"
+CHECKSUM=""
+
+RDEPEND="libgnome-keyring polkit-gnome gtk3 libnotify networkmanager gnome-icon-theme mobile-broadband-provider-info iso-codes"
+BDEPEND="intltool gnome-bluetooth"
+RECOMMENDED=""
+OPTIONAL="gnome-bluetooth: for PAN/DUN support"
+
+INSTALL="$N.install"
+
+pbs_unpack() {
+    dounpack
+}
+
+pbs_config() {
+    config+="--disable-maintainer-mode 
+             --with-bluetooth
+             --disable-static
+             --disable-schemas-compile
+             --disable-migration"
+    doconfig
+}
+
+pbs_build() {
+    domake
+}
+
+pbs_install() {
+    domkinstall
+}

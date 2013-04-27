@@ -1,9 +1,9 @@
-. /usr/lib/ybs/funcs
 
 files="find-maint.info.gz find.info.gz"
 
 post_install() {
     doinstall_info $files
+    echo "Run 'updatedb' or 'locate.updatedb' to create database required for 'locate'."
 }       
 
 pre_remove() {
@@ -13,4 +13,3 @@ pre_remove() {
 post_upgrade() {
     post_install
 }
-

@@ -1,0 +1,36 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="Lightweight HTML Rendering/Printing/Editing Engine"
+HOMEPAGE="http://www.gnome.org/"
+LICENSE="GPL"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
+
+SRC_URI="http://ftp.acc.umu.se/pub/gnome/sources/gtkhtml/4.6/gtkhtml-$V.tar.xz"
+CHECKSUM=""
+
+RDEPEND="gtk3 enchant iso-codes libsoup"
+BDEPEND="intltool"
+RECOMMENDED=""
+
+pbs_unpack() {
+    dounpack
+}
+
+pbs_config() {
+    config+="--disable-static"
+    doconfig
+}
+
+pbs_build() {
+    domake
+}
+
+pbs_install() {
+    domkinstall
+}
+

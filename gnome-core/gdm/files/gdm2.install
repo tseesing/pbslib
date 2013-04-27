@@ -11,18 +11,17 @@ post_install() {
     gnome2_install_defaut_gconf "boolean" "/apps/gdm/simple-greeter/accessibility/screen_reader_enabled" "true"
 
     # Reload
-    gnome2_rarian_sk_update
-    gnome2_desktop_database_update
+    update-desktop-database
 
     # Setup gdm configfile
     [ -f /etc/gdm/custom.conf ] || cp /etc/gdm/custom.conf.ori /etc/gdm/custom.conf
 
     # These GTK+ files need to be kept up to date for
     # proper input method with additional gdm modules
-    gnome2_gtk_immodules_update
+    update-gtk-immodules --verbose
     
     # Update hicolor icons
-    gnome2_icon_cache_update
+    gtk-update-icon-cache -f -q -t
 
     # Setting permission for /var/lib/gdm
     chown -R gdm:gdm /var/lib/gdm

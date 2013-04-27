@@ -14,7 +14,7 @@ PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>
 SRC_URI="http://www.abisource.com/downloads/"$N"/"$V"/"$N-$V".tar.gz"
 CHECKSUM="de11011aff801dc61042828041fb59c7"
 
-RDEPEND="aspell hunspell hspell glib2"
+RDEPEND="glib2 glibc pcre hspell zlib hunspell gcc-libs aspell"
 BDEPEND=""
 RECOMMENDED=""
 

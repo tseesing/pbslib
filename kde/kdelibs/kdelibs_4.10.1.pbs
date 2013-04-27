@@ -13,7 +13,7 @@ GROUP="kde"
 SRC_URI="http://download.kde.org/stable/"$V"/src/"$N-$V".tar.xz"
 CHECKSUM="91d1ab65a561decf7506df45bda7a7fec9a524bb"
 
-RDEPEND="openssl libSM libXft libXpm qca attica libdbusmenu-qt libXtst libXcursor soprano libxslt strigi qtwebkit phonon sqlite libXScrnSaver libutempter giflib krb5 enchant polkit-qt openexr jasper"
+RDEPEND="libXft libXpm qca attica libdbusmenu-qt libXcursor soprano strigi qtwebkit phonon libXScrnSaver libutempter giflib enchant polkit-qt openexr jasper"
 BDEPEND="cmake automoc4 avahi mesa hspell"
 RECOMMENDED=""
 
@@ -24,7 +24,7 @@ pbs_unpack() {
 }
 
 pbs_patch() {
-    # avoid file conflict with gnome-menus
+    # Avoid file conflict with gnome-menus
     dopatch kde-applications-menu.patch
 }
 
@@ -56,4 +56,3 @@ pbs_install() {
     rm -f usr/share/apps/kssl/ca-bundle.crt
     doln /etc/ssl/certs/ca-certificates.crt usr/share/apps/kssl/ca-bundle.crt
 }
-

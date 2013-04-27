@@ -53,4 +53,3 @@ pbs_install() {
     make INSTALL_PREFIX="$PKGDIR" MANDIR=/usr/share/man install
     dodoc LICENSE
 }
-

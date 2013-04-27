@@ -13,7 +13,7 @@ PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 SRC_URI="http://web.mit.edu/kerberos/dist/"$N"/1.10/"$N-$V"-signed.tar"
 CHECKSUM="a31eaa949d663cccca6b790af4573368"
 
-RDEPEND="e2fsprogs openldap keyutils"
+RDEPEND="e2fsprogs keyutils glibc libldap libsasl openssl zlib"
 BDEPEND=""
 RECOMMENDED=""
 
@@ -63,4 +63,3 @@ pbs_install() {
     # systemd stuff
     dounit "$FILESDIR"/krb5-{kadmind.service,kdc.service,kpropd.service,kpropd@.service,kpropd.socket}
 }
-

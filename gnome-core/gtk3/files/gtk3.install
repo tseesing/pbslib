@@ -5,7 +5,7 @@ post_install() {
 }
 
 pre_remove() {
-    rm -f /usr/lib"$LIBDIRSUFFIX"/gtk-3.0/3.0.0/immodules.cache ||true
+    rm -f /usr/lib#LIBDIRSUFFIX#/gtk-3.0/3.0.0/immodules.cache ||true
 }
 
 post_remove() {

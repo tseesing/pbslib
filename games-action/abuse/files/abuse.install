@@ -1,9 +1,8 @@
-. /usr/lib/ybs/funcs
 
 post_install() {
+    update-desktop-database
     echo "* Abuse uses the original game levels by default.  To use the frabs levels"
     echo "* use '-datadir' or set 'datadir' in the abuserc to /usr/share/abuse/frabs"
-    gnome2_desktop_database_update
 }
 
 post_upgrade() {

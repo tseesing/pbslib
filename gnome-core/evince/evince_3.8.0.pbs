@@ -1,0 +1,52 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="Simple multipage document viewer for GNOME"
+HOMEPAGE="http://www.gnome.org/projects/evince/"
+LICENSE="GPL"
+PACKAGER="chenqixing@ivali.com 
+          Zhongxin Huang <huangzhongxin@ivali.com>"
+
+SRC_URI="http://ftp.gnome.org/pub/GNOME/core/3.8/3.8.0/sources/$N-$V.tar.xz"
+CHECKSUM=""
+
+RDEPEND="libsecret libspectre djvulibre poppler-glib libgxps nautilus-libs"
+BDEPEND="itstool intltool gobject-introspection gtk-doc docbook-xsl"
+OPTIONAL="texlive-bin: DVI support 
+          gvfs: bookmark support and session saving"
+          #Note:
+          #We have no texlive-bin yet.
+RECOMMENDED=""
+
+INSTALL="$N.install"
+
+pbs_unpack() {
+    dounpack
+}
+
+pbs_config() {
+    config+="--disable-static
+             --enable-nautilus 
+             --enable-pdf           
+             --enable-tiff 
+             --enable-djvu     
+             --enable-dvi 
+             --enable-t1lib     
+             --enable-comics 
+             --disable-scrollkeeper 
+             --disable-schemas-compile 
+             --enable-introspection"
+    doconfig
+}
+
+pbs_build() {
+    domake
+}
+
+pbs_install() {
+    domkinstall
+}

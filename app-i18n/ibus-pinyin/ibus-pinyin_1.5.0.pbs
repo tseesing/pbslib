@@ -14,7 +14,7 @@ GROUP="ibus"
 SRC_URI="http://ibus.googlecode.com/files/"$N-$V".tar.gz"
 CHECKSUM="f7728b5b785fae58e2b4de8dfda45612"
 
-RDEPEND="ibus lua sqlite util-linux pyzy libibus"
+RDEPEND="sqlite pyzy libibus glib2 glibc zlib libffi pcre lua gcc-libs util-linux-libs"
 BDEPEND="intltool"
 RECOMMENDED=""
 
@@ -34,4 +34,3 @@ pbs_build() {
 pbs_install() {
     domkinstall NO_INDEX=true
 }
-

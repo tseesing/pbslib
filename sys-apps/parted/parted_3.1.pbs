@@ -13,7 +13,7 @@ PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 SRC_URI="http://ftp.gnu.org/gnu/"$N"/"$N-$V".tar.xz"
 CHECKSUM="5d89d64d94bcfefa9ce8f59f4b81bdcb"
 
-RDEPEND="device-mapper readline util-linux ncurses"
+RDEPEND="readline ncurses glibc device-mapper util-linux-libs"
 BDEPEND="pkgconfig"
 RECOMMENDED=""
 

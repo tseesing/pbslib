@@ -1,0 +1,40 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="A text editor for the GNOME desktop"
+HOMEPAGE="http://www.gnome.org/"
+LICENSE="GPL"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
+
+SRC_URI="http://ftp.gnome.org/pub/GNOME/sources/$N/3.8/$N-$V.tar.xz"
+CHECKSUM=""
+
+RDEPEND="gtksourceview gsettings-desktop-schemas libpeas enchant iso-codes libSM py-gobject dconf"
+BDEPEND="yelp-tools intltool libzeitgeist python3"
+RECOMMENDED="aspell aspell-en"
+OPTIONAL="libzeitgeist: Zeitgeist plugin"
+
+INSTALL="$N.install"
+
+pbs_unpack() {
+    dounpack
+}
+
+pbs_config() {
+    config+="--disable-updater 
+             --disable-schemas-compile 
+             --enable-python"
+    doconfig
+}
+
+pbs_build() {
+    domake
+}
+
+pbs_install() {
+    domkinstall
+}

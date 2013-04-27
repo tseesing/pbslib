@@ -6,12 +6,12 @@
 #
 
 DESCRIPTION="Tool to read and control rfkill status through /dev/rfkill"
-HOMEPAGE="http://wireless.kernel.org/en/users/Documentation/rfkill"
-LICENSE="GPL"
+HOMEPAGE="http://linuxwireless.org/en/users/Documentation/rfkill"
+LICENSE="custom"
 PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
-SRC_URI="http://wireless.kernel.org/download/"$N"/"$N-$V".tar.bz2"
-CHECKSUM="727892c0fb35c80ee3849fbe89b45350"
+SRC_URI="https://www.kernel.org/pub/software/network/$N/$N-$V.tar.xz"
+CHECKSUM=""
 
 RDEPEND="glibc"
 BDEPEND=""
@@ -22,11 +22,18 @@ pbs_unpack() {
     dounpack
 }
 
+pbs_config() {
+    config+=""
+    doconfig
+}
+
 pbs_build() {
     domake
 }
 
 pbs_install() {
     domkinstall
+    dodoc COPYING
+    docp "$FILESDIR"/60-rfkill.rules "$PKGDIR"/usr/lib/udev/rules.d/
+    dounit rfkill-block@.service rfkill-unblock@.service
 }
-

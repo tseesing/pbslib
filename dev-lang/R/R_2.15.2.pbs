@@ -53,19 +53,18 @@ pbs_build() {
 pbs_install() {
     domkinstall
     cd "$PKGDIR"
-    #  Fixup R wrapper scripts.
+    # Fixup R wrapper scripts.
     sed -i "s|$PKGDIR ||" usr/bin/R
     rm usr/lib"$LIBDIRSUFFIX"/R/bin/R
     doln /usr/bin/bin/R usr/lib"$LIBDIRSUFFIX"/R/bin/R
-
-    # install some freedesktop.org compatibility
+    # Make a syslink
+    doln /usr/lib"$LIBDIRSUFFIX"/R/lib/libR.so usr/lib"$LIBDIRSUFFIX"/libR.so
+    # Install some freedesktop.org compatibility
     dodesktop R.desktop R.png
-
-    # move the config directory to /etc and create symlinks
-    cd "$PKGDIR"/usr/lib"$LIBDIRSUFFIX"/R/etc
+    # Move the config directory to /etc and create symlinks
+    cd usr/lib"$LIBDIRSUFFIX"/R/etc
     for i in *; do
         domv "${i}" "$PKGDIR"/etc/R/
         doln /etc/R/"${i}" "${i}"
     done
 }
-

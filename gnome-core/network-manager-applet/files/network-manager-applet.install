@@ -1,7 +1,6 @@
-. /usr/lib/ybs/funcs
 
 post_install() {
-    glib_compile_schemas "$@"
+    glib-compile-schemas /usr/share/glib-2.0/schemas
     gtk-update-icon-cache -f -q -t /usr/share/icons/hicolor
 }       
 
@@ -16,5 +15,3 @@ post_upgrade() {
 post_downgrade() {
     post_install
 }
-
-

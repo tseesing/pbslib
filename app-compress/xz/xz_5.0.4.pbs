@@ -21,7 +21,8 @@ pbs_unpack() {
 }
 
 pbs_config() {
-    congfig+="--disable-rpath --enable-werror"
+    congfig+="--disable-rpath
+              --enable-werror"
     doconfig
 }
 
@@ -32,5 +33,3 @@ pbs_build() {
 pbs_install() {
     domkinstall
 }
-
-

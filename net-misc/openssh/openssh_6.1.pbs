@@ -14,7 +14,7 @@ PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>
 SRC_URI="ftp://ftp.openbsd.org/pub/OpenBSD/OpenSSH/portable/"$N-$V"p1.tar.gz"
 CHECKSUM="751c92c912310c3aa9cadc113e14458f843fc7b3"
 
-RDEPEND="krb5 openssl libedit ldns pam"
+RDEPEND="openssl glibc ldns zlib libedit ncurses pam"
 BDEPEND=""
 OPTIONAL="xauth: X11 forwarding
           x11-ssh-askpass: input passphrase in X"
@@ -54,4 +54,3 @@ pbs_install() {
         -e '/^#UsePAM no$/c UsePAM yes' \
         -i etc/ssh/sshd_config
 }
-

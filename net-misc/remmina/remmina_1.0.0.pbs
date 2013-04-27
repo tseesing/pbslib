@@ -12,7 +12,7 @@ PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 SRC_URI="http://downloads.sourceforge.net/project/"$N"/1.0/"$N-$V".tar.gz"
 CHECKSUM="701c540acaab961bc3adf130a2ddb8b1"
 
-RDEPEND="freerdp libgnome-keyring libssh telepathy-glib vte"
+RDEPEND="freerdp libgnome-keyring libssh telepathy-glib vte2"
 BDEPEND="cmake"
 RECOMMENDED=""
 CONFLICT="remmina-plugins"

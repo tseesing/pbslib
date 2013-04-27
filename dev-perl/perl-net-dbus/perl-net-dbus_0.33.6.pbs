@@ -13,7 +13,7 @@ GROUP="perl"
 
 SRC_URI="http://search.cpan.org/CPAN/authors/id/D/DA/DANBERR/Net-DBus-"$V".tar.gz"
 
-RDEPEND="dbus glibc perl-xml-twig"
+RDEPEND="dbus-libs perl-xml-twig"
 BDEPEND=""
 RECOMMENDED=""
 

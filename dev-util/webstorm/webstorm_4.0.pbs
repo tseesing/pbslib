@@ -20,8 +20,6 @@ BDEPEND=""
 OPTIONAL=""
 CONFLICT=""
 
-INSTALL="$N.install"
-
 pbs_unpack() {
     dounpack
 }
@@ -31,4 +29,3 @@ pbs_install() {
     dodesktop "$N".desktop bin/webide.png
     doln /usr/share/"$N"/bin/webstorm.sh "$PKGDIR"/usr/bin/"$N"
 }
-

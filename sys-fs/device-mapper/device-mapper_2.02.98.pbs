@@ -14,7 +14,7 @@ PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>
 SRC_URI="ftp://sources.redhat.com/pub/lvm2/LVM2."$V".tgz"
 CHECKSUM="077425115b164c335a9930df745943e9ea666a8a"
 
-RDEPEND="systemd"
+RDEPEND="glibc"
 
 pbs_unpack() {
     dounpack
@@ -44,9 +44,7 @@ pbs_build() {
 }
 
 pbs_install() {
-    make DESTDIR="$PKGDIR" install_device-mapper \
-      pkgconfigdir=/usr/lib"$LIBDIRSUFFIX"/pkgconfig
+    make DESTDIR="$PKGDIR" install_device-mapper pkgconfigdir=/usr/lib"$LIBDIRSUFFIX"/pkgconfig
     # Install dmeventd socket and service
     dounit dmeventd.service dmeventd.socket
 }
-

@@ -1,0 +1,37 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="Python wrapper for cairo vector graphics library for python 3.x (>=3.1)"
+HOMEPAGE="http://cairographics.org/pycairo/"
+LICENSE="LGPL"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
+GROUP="python"
+
+SRC_URI="http://cairographics.org/releases/pycairo-$V.tar.bz2"
+CHECKSUM=""
+
+RDEPEND="cairo(>=1.10.0) python3 libXext"
+BDEPEND="py-waf"
+RECOMMENDED=""
+
+pbs_unpack() {
+    dounpack
+}
+
+pbs_config() {    
+    config=${config/--enable-shared/}
+    #doconfig
+    python3 ./waf $config
+}
+
+pbs_build() {
+    domake
+}
+
+pbs_install() {
+    domkinstall
+}

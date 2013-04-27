@@ -12,7 +12,7 @@ PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
 SRC_URI="http://xorg.freedesktop.org/releases/individual/xcb/"$N-$V".tar.bz2"
 
-RDEPEND="libXau libXdmcp"
+RDEPEND="glibc libXau libXdmcp"
 BDEPEND="xcb-proto libpthread-stubs libxslt"
 
 pbs_unpack() {

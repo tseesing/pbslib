@@ -19,8 +19,6 @@ BDEPEND=""
 RECOMMENDED=""
 CONFLICT=""
 
-INSTALL="$N.install"
-
 pbs_install() {
     docp_rename "$YBS_SOURCE"/SanGuoSha_3.6.8.air  "$PKGDIR"/usr/lib/"$N"/SanGuoSha.air
     dodesktop "$N.desktop" "$N.png"

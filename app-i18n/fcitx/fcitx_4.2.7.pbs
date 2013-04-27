@@ -15,7 +15,7 @@ GROUP="fcitx"
 SRC_URI="http://fcitx.googlecode.com/files/"$N-$V"_dict.tar.xz"
 CHECKSUM="2465515ba849da3c0676ef3216760706d0eb4f29"
 
-RDEPEND="pango shared-mime-info desktop-file-utils dbus icu libXinerama libxkbfile libxml2"
+RDEPEND="gettext libXinerama libxkbfile pango"
 BDEPEND="cmake intltool icu iso-codes gobject-introspection enchant"
 RECOMMENDED=""
 OPTIONAL=""

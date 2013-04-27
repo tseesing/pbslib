@@ -1,0 +1,85 @@
+#!/bin/sh
+
+OPTION=FRAMEBUFFER
+PREREQ="framebuffer"
+
+prereqs()
+{
+        echo "$PREREQ"
+}
+
+case $1 in
+prereqs)
+        prereqs
+        exit 0
+        ;;
+esac
+
+[ -x /usr/sbin/plymouthd ] || exit 0
+
+. /usr/share/initramfs-tools/hook-functions
+
+LIB_DIR=/usr/lib#LIBDIRSUFFIX#/plymouth
+RENDER_DIR=/usr/lib#LIBDIRSUFFIX#/plymouth/renderers
+THEME_DIR=/usr/share/plymouth/themes
+
+mkdir -p ${DESTDIR}/{$LIB_DIR,$RENDER_DIR,$THEME_DIR}
+
+# major binary
+mkdir -p ${DESTDIR}/usr/{bin,sbin}
+copy_exec /usr/bin/plymouth /usr/bin
+copy_exec /usr/sbin/plymouthd /usr/sbin
+
+# plugin that is always required
+copy_exec $LIB_DIR/details.so $LIB_DIR
+
+# copy the text themes
+cp -a $THEME_DIR/details ${DESTDIR}/$THEME_DIR  
+
+TEXT_THEME=$(readlink -f $THEME_DIR/text.plymouth)
+if [ -e "$TEXT_THEME" ]; then
+	ln -s $TEXT_THEME ${DESTDIR}/$THEME_DIR/text.plymouth
+	cp -a $(dirname $TEXT_THEME) ${DESTDIR}/$THEME_DIR
+	MODULE=$(grep "ModuleName *= *" ${TEXT_THEME} | sed 's/ModuleName *= *//')
+	copy_exec $LIB_DIR/$MODULE.so $LIB_DIR
+fi
+
+THEME=$(readlink -f $THEME_DIR/default.plymouth)
+if [ -e "$THEME" ]; then
+	ln -s $THEME ${DESTDIR}/$THEME_DIR/default.plymouth
+	cp -a $(dirname $THEME) ${DESTDIR}/$THEME_DIR
+
+	MODULE=$(grep "ModuleName *= *" ${THEME} | sed 's/ModuleName *= *//')
+	copy_exec $LIB_DIR/$MODULE.so $LIB_DIR
+
+	# if we have a non-text theme, make sure we copy all the support libs
+	copy_exec $LIB_DIR/label.so $LIB_DIR
+
+	# suppress a warning in glib (which the label control uses)
+	# about uid 0
+    if ! grep -q '^root:' ${DESTDIR}/etc/passwd 2>/dev/null; then
+        echo 'root:x:0:0:root:/root:/bin/sh' >${DESTDIR}/etc/passwd
+    fi
+    echo 'passwd: files' >${DESTDIR}/etc/nsswitch.conf
+
+    for lib in /lib/#LIBDIRSUFFIX#/libnss_files*; do
+        if [ -e "$lib" ]; then
+            copy_exec $lib /lib#LIBDIRSUFFIX#
+        fi
+    done
+	
+    # output renderers
+    for so in frame-buffer.so drm.so vga16fb.so x11.so; do
+        copy_exec $RENDER_DIR/$so $RENDER_DIR
+	done
+    
+    #
+    copy_exec /usr/share/plymouth/bizcom.png /usr/share/plymouth/
+
+	# and copy the font support files needed in order to actually display any text
+	mkdir -p ${DESTDIR}/usr/share/fonts/truetype/ttf-dejavu
+	mkdir -p ${DESTDIR}/etc/fonts/conf.d
+	cp /usr/share/fonts/truetype/ttf-dejavu/DejaVuSans.ttf ${DESTDIR}/usr/share/fonts/truetype/ttf-dejavu/
+	cp /etc/fonts/fonts.conf ${DESTDIR}/etc/fonts/
+	cp -L /etc/fonts/conf.d/60-latin.conf ${DESTDIR}/etc/fonts/conf.d
+fi

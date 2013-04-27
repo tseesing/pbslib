@@ -13,7 +13,7 @@ PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 SRC_URI="http://ftp.gnu.org/gnu/"$N"/rel"$V"/"$N-$V".tar.xz"
 CHECKSUM="5fba3c0e1ec0965061f27e8e79bd6da2"
 
-RDEPEND="guile libxml2"
+RDEPEND="guile gc glibc libffi libunistring gmp libtool libxml2 xz zlib"
 BDEPEND=""
 RECOMMENDED=""
 CONFLICT=""
@@ -34,4 +34,3 @@ pbs_build() {
 pbs_install() {
     domkinstall
 }
-

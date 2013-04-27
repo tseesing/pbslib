@@ -7,13 +7,13 @@
 
 DESCRIPTION="list X application resource database"
 HOMEPAGE="http://xorg.freedesktop.org"
-GROUP="x11-apps"
 LICENSE="custom"
 PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
+GROUP="x11-apps"
 
 SRC_URI="http://xorg.freedesktop.org/releases/individual/app/"$N-$V".tar.bz2"
 
-RDEPEND="libXt"
+RDEPEND="libXt libX11 glibc libSM util-linux-libs libICE libxcb libXau libXdmcp"
 BDEPEND=""
 
 pbs_unpack() {

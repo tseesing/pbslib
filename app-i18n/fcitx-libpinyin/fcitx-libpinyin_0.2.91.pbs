@@ -1,0 +1,38 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="libpinin for fcitx"
+HOMEPAGE="http://code.google.com/p/fcitx/"
+LICENSE="GPL"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
+GROUP="fcitx"
+
+SRC_URI="http://fcitx.googlecode.com/files/"$N-$V"_dict.tar.xz"
+CHECKSUM="f4e15f5ee050e4b82e2c9e7e8599f4e22c2ab285"
+
+RDEPEND="fcitx(>=4.2.7) libpinyin(>=0.8.93)"
+RECOMMENDED=""
+BDEPEND="cmake"
+OPTIONAL=""
+CONFLICT=""
+
+pbs_unpack() {
+    dounpack
+}
+
+pbs_config() {
+    config+=""
+    doconfig
+}
+
+pbs_build() {
+    domake
+}
+
+pbs_install() {
+    domkinstall
+}

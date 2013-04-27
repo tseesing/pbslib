@@ -11,7 +11,7 @@ LICENSE="LGPL"
 PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>
           chenqixing@ivali.com"
 
-SRC_URI="http://ftp.gnome.org/pub/gnome/sources/"$N"/${V%.*}/"$N-$V".tar.xz"
+SRC_URI="http://ftp.gnome.org/pub/GNOME/core/3.8/3.8.0/sources/$N-$V.tar.bz2"
 RDEPEND="cairomm glibmm pango"
 BDEPEND=""
 RECOMMENDED=""

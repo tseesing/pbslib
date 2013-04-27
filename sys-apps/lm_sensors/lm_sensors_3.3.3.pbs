@@ -13,7 +13,7 @@ PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 SRC_URI="http://dl.lm-sensors.org/lm-sensors/releases/$N-$V.tar.bz2"
 CHECKSUM="b55c06f425993e42f13553f204066c446da36fd3"
 
-RDEPEND="perl sysfsutils"
+RDEPEND="perl rrdtool libdbi"
 BDEPEND="rrdtool"
 RECOMMENDED=""
 OPTIONAL="rrdtool: for logging with sensord"

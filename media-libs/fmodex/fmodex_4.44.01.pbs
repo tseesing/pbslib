@@ -1,0 +1,39 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="An advanced audio engine"
+HOMEPAGE="http://www.fmod.org/"
+LICENSE="custom"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
+
+SRC_URI="http://www.fmod.org/index.php/release/version/fmodapi${V//./}linux.tar.gz"
+CHECKSUM="3f32d8e74ac5cc6e581f7c32c71f4d20"
+
+RDEPEND="gcc-libs"
+RECOMMENDED=""
+BDEPEND=""
+OPTIONAL=""
+CONFLICT=""
+REPLACE=""
+
+pbs_unpack() {
+    dounpack
+}
+
+pbs_install() {
+    docp api/lib/* "$PKGDIR"/usr/lib"$LIBDIRSUFFIX"/
+    docp api/inc/* "$PKGDIR"/usr/include/fmodex/
+    dodoc documentation examples
+    
+    cd "$PKGDIR"/usr/lib"$LIBDIRSUFFIX"/
+
+    case "$ARCH" in
+      "i686") rm *64* ;;
+    "x86_64") doln -sf libfmodex64-"$V".so libfmodex-"$V".so
+              doln -sf libfmodexL64-"$V".so libfmodexL-"$V".so
+    esac
+}

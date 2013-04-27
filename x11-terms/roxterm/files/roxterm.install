@@ -1,8 +1,7 @@
-. /usr/lib/ybs/funcs
 
 post_install() {
-    gnome2_desktop_database_update
-    gnome2_icon_cache_update 
+    update-desktop-database
+    gtk-update-icon-cache -f -q -t 
 }
 
 post_remove() {

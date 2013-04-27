@@ -13,7 +13,7 @@ PACKAGER="Zhongxin <huangzhongxin@ivali.com>"
 SRC_URI="ftp://ftp.videolan.org/pub/videolan/$N/$V/$N-$V.tar.bz2"
 CHECKSUM="684e420d2ebafa13786ae84364543cf9"
 
-RDEPEND="libxml2 xz"
+RDEPEND="glibc libxml2 zlib xz"
 BDEPEND=""
 RECOMMENDED=""
 CONFLICT=""

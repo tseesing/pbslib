@@ -1,5 +1,0 @@
-#!/bin/sh
-
-export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/lib:/opt/pps/lib
-export XLIB_SKIP_ARGB_VISUALS=1
-/opt/pps/bin/PPStream

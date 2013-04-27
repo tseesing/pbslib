@@ -12,7 +12,7 @@ PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
 SRC_URI="http://downloads.ghostscript.com/public/"$N-$V".tar.bz2"
 
-RDEPEND="cups fontconfig jasper lcms2"
+RDEPEND="cups fontconfig jasper lcms2 libXt"
 BDEPEND=""
 RECOMMENDED=""
 CONFLICT="gnu-ghostscript"
@@ -60,4 +60,3 @@ pbs_install() {
     cd ijs
     domkinstall
 }
-

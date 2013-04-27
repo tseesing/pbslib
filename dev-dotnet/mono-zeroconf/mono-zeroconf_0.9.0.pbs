@@ -5,15 +5,16 @@
 # Distributed under the terms of the GNU General Public License v2
 #
 
-DESCRIPTION="a cross platform Zero Configuration Networking library for Mono and .NET."
+DESCRIPTION="A cross platform Zero Configuration Networking library for Mono and .NET."
 HOMEPAGE="http://www.mono-project.com/Mono.Zeroconf"
 LICENSE="GPL"
 PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
+YARCH="any"
 
 SRC_URI="http://download.banshee-project.org/"$N"/"$N-$V".tar.bz2"
 
 RDEPEND="mono avahi"
-BDEPEND=""
+BDEPEND="gtk-sharp-2"
 RECOMMENDED=""
 CONFLICT=""
 
@@ -29,10 +30,9 @@ pbs_config() {
 }
 
 pbs_build() {
-    make hicolordir=/usr/share/icons/hicolor
+    domake hicolordir=/usr/share/icons/hicolor
 }
 
 pbs_install() {
     domkinstall hicolordir=/usr/share/icons/hicolor GCONF_DISABLE_MAKEFILE_SCHEMA_INSTALL=1
 }
-

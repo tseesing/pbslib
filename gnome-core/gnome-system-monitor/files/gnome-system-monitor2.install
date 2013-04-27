@@ -4,8 +4,7 @@ files="/etc/gconf/schemas/gnome-system-monitor.schemas"
 
 post_install() {
     gnome2_install_schema $files
-        gnome2_icon_cache_update
-        gnome2_gconfd_reload
+        gtk-update-icon-cache -f -q -t
 } 
 
 pre_remove() {
@@ -13,8 +12,7 @@ pre_remove() {
 }
 
 post_upgrade() {
-    gnome2_icon_cache_update
-    gnome2_gconfd_reload
+    gtk-update-icon-cache -f -q -t
 }
     
 post_downgrade() {

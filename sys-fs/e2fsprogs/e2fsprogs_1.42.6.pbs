@@ -13,7 +13,7 @@ PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 SRC_URI="http://prdownloads.sourceforge.net/"$N"/"$N-$V".tar.gz"
 CHECKSUM="9e444c240c1001b3292d108fbad0f49c"
 
-RDEPEND="util-linux"
+RDEPEND="util-linux-libs glibc"
 BDEPEND="pkgconfig bc"
 
 INSTALL="$N.install"
@@ -44,8 +44,7 @@ pbs_build() {
 pbs_install() {
     domkinstall install-libs
     sed -i -e 's/^AWK=.*/AWK=awk/' "$PKGDIR"/usr/bin/compile_et
-    # remove references to build directory
+    # Remove references to build directory
     sed -i -e 's#^SS_DIR=.*#SS_DIR="/usr/share/ss"#' "$PKGDIR"/usr/bin/mk_cmds
     sed -i -e 's#^ET_DIR=.*#ET_DIR="/usr/share/et"#' "$PKGDIR"/usr/bin/compile_et
 }
-

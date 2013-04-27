@@ -14,7 +14,7 @@ PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>
 SRC_URI="http://www.libsdl.org/release/SDL-"$V".tar.gz"
 CHECKSUM="9d96df8417572a2afb781a7c4c811a85"
 
-RDEPEND="glibc libXext libXrender libX11 directfb"
+RDEPEND="glibc directfb gcc-libs zlib"
 BDEPEND="alsa-lib mesa pulseaudio"
 RECOMMENDED=""
 OPTIONAL="alsa-lib: ALSA audio driver
@@ -47,4 +47,3 @@ pbs_build() {
 pbs_install() {
     domkinstall
 }
-

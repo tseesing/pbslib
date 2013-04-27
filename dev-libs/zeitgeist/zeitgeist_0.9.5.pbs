@@ -14,7 +14,7 @@ PACKAGER="chenqixing@ivali.com
 SRC_URI="https://launchpad.net/$N/${V%.*}/$V/+download/${N}-${V}.tar.bz2"
 CHECKSUM="5841e4624b07ba74866fb177f1c9aae7"
 
-RDEPEND="python raptor2 py-rdflib xapian-core py-dbus py-gobject py-xdg"
+RDEPEND="python glib2 zlib glibc libffi pcre sqlite xapian-core gcc-libs util-linux-libs"
 BDEPEND="vala(>=0.16)"
 RECOMMENDED=""
 

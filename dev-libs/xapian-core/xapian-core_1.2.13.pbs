@@ -13,7 +13,7 @@ PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 SRC_URI="http://oligarchy.co.uk/xapian/$V/$N-$V.tar.gz"
 CHECKSUM=""
 
-RDEPEND="gcc-libs zlib util-linux"
+RDEPEND="util-linux-libs gcc-libs zlib glibc"
 BDEPEND=""
 RECOMMENDED=""
 
@@ -22,6 +22,7 @@ pbs_unpack() {
 }
 
 pbs_config() {
+    config+=""
     doconfig
 }
 

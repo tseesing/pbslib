@@ -32,4 +32,3 @@ pbs_install() {
     domkinstall  LIBDIR=/usr/lib${LIBDIRSUFFIX} 
     find "$PKGDIR/usr/share/espeak-data" -type f -print0 |xargs -0 chmod 644
 }
-

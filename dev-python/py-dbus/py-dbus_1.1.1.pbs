@@ -14,7 +14,7 @@ GROUP="python"
 SRC_URI="http://dbus.freedesktop.org/releases/dbus-python/dbus-python-$V.tar.gz"
 CHECKSUM="742c7432ad0f7c3f98291d58fa2e35dc"
 
-RDEPEND="dbus-glib zlib"
+RDEPEND="dbus-glib python"
 BDEPEND=""
 RECOMMENDED=""
 

@@ -77,8 +77,6 @@ pbs_install() {
     docp "$FILESDIR"/locale-gen usr/sbin
     docp "$FILESDIR"/SUPPORTED  usr/share/i18n
     doln /usr/include/utime.h usr/include/sys/utime.h
-    doln /usr/share/locale usr/lib/locale
-    doln /usr/share/locale usr/lib"$LIBDIRSUFFIX"/locale
     # Remove default localtime 
     rm -rf etc/localtime
     # 
@@ -87,5 +85,6 @@ pbs_install() {
     # these binary need libz, libgd 
     # makes circular dependency happend.
     rm usr/bin/{memusagestat,memusage}
+    # locale-gen needs
+    mkdir -p usr/lib"$LIBDIRSUFFIX"/locale
 }
-

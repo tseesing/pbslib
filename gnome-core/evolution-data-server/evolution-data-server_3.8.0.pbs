@@ -1,0 +1,58 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="Provides a unified backend for programs that work with contacts, tasks, and calendar information"
+HOMEPAGE="http://www.gnome.org/"
+LICENSE="GPL"
+PACKAGER="chenqixing@ivali.com
+          Zhongxin Huang <huangzhongxin@ivali.com>"
+
+SRC_URI="http://ftp.gnome.org/pub/GNOME/core/3.8/3.8.0/sources/$N-$V.tar.xz"
+CHECKSUM=""
+
+RDEPEND="libgweather libical berkeley-db nss gnome-online-accounts krb5 libgdata"
+BDEPEND="vala gobject-introspection intltool gperf"
+RECOMMENDED=""
+
+INSTALL="$N.install"
+
+pbs_unpack() {
+    dounpack
+}
+
+pbs_patch() {
+    # Path from Fedora
+    dopatch evolution-data-server-1.11.5-fix-64bit-acinclude.patch
+}
+
+pbs_config() {
+    # Regenerate configure to pick up configure.in and acinclude.m4 changes..
+    aclocal -I m4
+    autoheader
+    automake --add-missing
+    libtoolize
+    intltoolize --force
+    autoconf
+    config+="--disable-schemas-compile
+             --with-krb5=/usr
+             --with-openldap=yes  
+             --with-libdb=/usr 
+             --enable-vala-bindings
+             --disable-uoa"
+            # Note:
+            # Disable Ubuntu Online Accounts support
+            # that needs libaccounts-glib
+    doconfig
+}
+
+pbs_build() {
+    domake LIBTOOL=/usr/bin/libtool
+}
+
+pbs_install() {
+    domkinstall
+}

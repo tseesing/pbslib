@@ -14,7 +14,7 @@ GROUP="x11-apps"
 
 SRC_URI="http://xorg.freedesktop.org/releases/individual/app/"$N-$V".tar.bz2"
 
-RDEPEND="libXScrnSaver libXt"
+RDEPEND="libXScrnSaver libXt libX11 glibc libXext libxcb libXau libXdmcp libSM util-linux-libs libICE"
 BDEPEND=""
 
 pbs_unpack() {

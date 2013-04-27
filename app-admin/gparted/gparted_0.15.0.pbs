@@ -13,7 +13,7 @@ PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 SRC_URI="http://downloads.sourceforge.net/project/$N/$N/$N-$V/$N-$V.tar.bz2"
 CHECKSUM=""
 
-RDEPEND="parted gtkmm gdk-pixbuf2"
+RDEPEND="parted gtkmm2"
 BDEPEND="intltool pkgconfig"
 RECOMMENDED="dosfstools jfsutils ntfs-3g e2fsprogs reiserfsprogs xfsprogs mtools"
 OPTIONAL="dosfstools: for FAT16 and FAT32 partitions

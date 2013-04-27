@@ -61,7 +61,7 @@ EOF
         update-initramfs -d -c -k "$KERNEL_DIST"
 
         #
-        gnome2_desktop_database_update
+        update-desktop-database
 
         echo '* By using this package you accept the ATI license,'
         echo '* which has been installed in /usr/share/doc/ati-graphic-driver/$2/LICENSE.TXT'

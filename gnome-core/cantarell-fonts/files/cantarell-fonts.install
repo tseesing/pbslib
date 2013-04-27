@@ -1,4 +1,3 @@
-. /usr/lib/ybs/funcs
 
 fontdir="/usr/share/fonts/cantarell"
 
@@ -13,4 +12,3 @@ post_remove() {
 post_upgrade() {
     post_install
 }
-

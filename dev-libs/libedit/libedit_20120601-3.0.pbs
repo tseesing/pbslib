@@ -13,7 +13,7 @@ PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 SRC_URI="http://www.thrysoee.dk/editline/"$N-$V$R".tar.gz"
 CHECKSUM="18ec27120f6abb222754e9f283d000fec0dcfc08"
 
-RDEPEND="ncurses"
+RDEPEND="ncurses glibc"
 RECOMMENDED=""
 BDEPEND=""
 OPTIONAL=""
@@ -37,4 +37,3 @@ pbs_install() {
     domkinstall
     dodoc COPYING
 }
-

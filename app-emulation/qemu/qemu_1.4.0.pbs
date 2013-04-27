@@ -13,7 +13,7 @@ PACKAGER="Tseesing <chenqixing@ivali.com>"
 SRC_URI="http://wiki.qemu-project.org/download/"$N-$V".tar.bz2"
 CHECKSUM="78f13b774814b6b7ebcaf4f9b9204318"
 
-RDEPEND="alsa-lib attr bluez curl cyrus-sasl flac glib2 gnutls libasyncns libcap libdrm libjpeg-turbo libpng libsdl libvorbis libxcb mesa ncurses nettle nss p11-kit pulseaudio util-linux vde2 zlib"
+RDEPEND="alsa-lib attr bluez curl libsasl flac glib2 gnutls libasyncns libcap libdrm libjpeg-turbo libpng libsdl libvorbis libxcb mesa ncurses nettle nss p11-kit pulseaudio util-linux-libs vde2 zlib"
 
 BDEPEND="perl python"
 RECOMMENDED=""

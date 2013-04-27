@@ -7,8 +7,8 @@
 DESCRIPTION="X11 core wire protocol and auxiliary headers"
 HOMEPAGE="http://xorg.freedesktop.org/"
 LICENSE="custom"
-GROUP="x11-proto"
 PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
+GROUP="x11-proto"
 YARCH="any"
 
 SRC_URI="http://xorg.freedesktop.org/releases/individual/proto/"$N-$V".tar.bz2"
@@ -33,4 +33,3 @@ pbs_install() {
     domkinstall
     dodoc COPYING
 }
-

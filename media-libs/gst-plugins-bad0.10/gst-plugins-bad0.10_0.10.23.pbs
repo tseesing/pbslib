@@ -13,7 +13,7 @@ PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>
 
 SRC_URI="http://gstreamer.freedesktop.org/src/gst-plugins-bad/gst-plugins-bad-"$V".tar.bz2"
 
-RDEPEND="gstreamer0.10(>=${V%.*}) xvidcore libdca bzip2 libdc1394 neon faac musicbrainz faad2 libmms libcdaudio libmpcdec mjpegtools libdvdnav libmodplug jasper libofa libvdpau soundtouch libass schroedinger libvpx gsm rtmpdump libgme libsndfile librsvg wildmidi opus liblrdf libtiger openal spandsp"
+RDEPEND="gst-plugins-base0.10 libmms openal spandsp libmodplug xvidcore soundtouch mjpegtools libdvdnav musicbrainz libass wildmidi libdca gsm librsvg gdk-pixbuf2 libgme faad2 liblrdf libmpcdec libvpx zvbi libofa libcdaudio faac neon opus libtiger celt libdc1394 schroedinger libsndfile"
 BDEPEND=""
 RECOMMENDED=""
 CONFLICT=""
@@ -40,4 +40,3 @@ pbs_build() {
 pbs_install() {
     domkinstall
 }
-

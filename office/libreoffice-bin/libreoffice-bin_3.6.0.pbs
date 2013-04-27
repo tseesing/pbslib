@@ -13,7 +13,7 @@ PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 SRC_URI="http://download.documentfoundation.org/libreoffice/stable/"$V"/deb/x86/LibO_"$V"_Linux_x86_install-deb_en-US.tar.gz"
 CHECKSUM="6645ab058a6acbc25e24877fb8e987a6"
 
-RDEPEND="gnome-vfs gst-plugins-base libbonobo libXft libXt mesa ncurses"
+RDEPEND=""
 BDEPEND=""
 RECOMMENDED="jre libreoffice-bin-langpack-zh-CN(=3.6.0)"
 

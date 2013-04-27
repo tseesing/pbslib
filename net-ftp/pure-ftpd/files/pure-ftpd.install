@@ -1,8 +1,7 @@
-. /usr/lib/ybs/funcs
 
 post_install() {
     dogroupadd -r "ftpgroup"
-    douseradd -c "ftp user" -d "/var/ftp/public" -s "/bin/false" -r -N -G "ftpgroup" "ftp" ||true
+    douseradd -c "ftp user" -d "/var/ftp/public" -s "/bin/false" -r -N -G "ftpgroup" "ftp" ||true 
 }       
 
 post_remove() {

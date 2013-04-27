@@ -13,7 +13,7 @@ PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 SRC_URI="http://ftp.gnome.org/pub/GNOME/sources/$N/${V%.*}/$N-$V.tar.xz"
 CHECKSUM="41a54e60d91758d1d239e5127c856ff0412a5709e92440e9107178af928ed5e1"
 
-RDEPEND="libsecret libsoup goocanvas graphviz gtksourceview3 libxslt postgresql-libs libmariadbclient"
+RDEPEND="libsecret libsoup goocanvas graphviz gtksourceview libxslt postgresql-libs libmariadbclient"
 RECOMMENDED=""
 BDEPEND="intltool gobject-introspection gtk-doc vala"
 

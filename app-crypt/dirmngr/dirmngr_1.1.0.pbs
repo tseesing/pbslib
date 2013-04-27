@@ -13,7 +13,7 @@ PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 SRC_URI="ftp://ftp.gnupg.org/gcrypt/$N/$N-$V.tar.bz2"
 CHECKSUM="f2570f0248f5947daac200e85291b328"
 
-RDEPEND="libgcrypt openldap libksba libgpg-error libassuan pth"
+RDEPEND="libgpg-error libldap glibc libsasl openssl zlib libassuan libgcrypt libksba pth"
 RECOMMENDED=""
 BDEPEND=""
 OPTIONAL=""

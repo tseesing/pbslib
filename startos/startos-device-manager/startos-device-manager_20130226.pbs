@@ -13,7 +13,7 @@ YARCH="any"
 
 SRC_URI="git://github.com/StartOS/devicemanager.git"
 
-RDEPEND="gcc-libs libXext python boost-libs(=1.50.0) cairo dbus lm_sensors hwids"
+RDEPEND="python boost-libs(=1.50.0) lm_sensors hwids dbus-libs cairo"
 RECOMMENDED="mesa-demos py-udev glew sysbench"
 BDEPEND=""
 

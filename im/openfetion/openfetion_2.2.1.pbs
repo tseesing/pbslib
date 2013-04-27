@@ -17,8 +17,6 @@ RDEPEND="gstreamer libnotify libofetion libXScrnSaver"
 BDEPEND=" "
 RECOMMENDED=""
 
-INSTALL="$N.install"
-
 pbs_unpack() {
     dounpack
 }

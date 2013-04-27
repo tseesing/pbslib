@@ -21,6 +21,7 @@ pbs_unpack() {
 }
 
 pbs_config() {
+    config+=""
     doconfig
 }
 
@@ -32,4 +33,3 @@ pbs_install() {
     domkinstall
     dodoc COPYING
 }
-

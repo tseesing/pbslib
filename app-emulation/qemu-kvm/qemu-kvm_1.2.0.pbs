@@ -14,7 +14,7 @@ PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 SRC_URI="http://downloads.sourceforge.net/kvm/"$N-$V".tar.gz"
 CHECKSUM="d7b18b673c48abfee65a9c0245df0415"
 
-RDEPEND="libjpeg-turbo libpng cyrus-sasl curl libsdl alsa-lib nss glib2 gnutls bluez vde2 util-linux pulseaudio seabios libcap"
+RDEPEND="glib2 curl vde2 util-linux-libs nss ncurses brltty pulseaudio libsasl gnutls libsdl dbus-libs libsndfile libcap"
 BDEPEND="perl python"
 RECOMMENDED=""
 OPTIONAL="brltty: Braille display driver"
@@ -61,4 +61,3 @@ pbs_install() {
         esac
    done
 }
-

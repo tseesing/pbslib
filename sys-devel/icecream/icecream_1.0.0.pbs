@@ -1,0 +1,45 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="Icecream was created by SUSE based on distcc."
+COMMENTS="Like distcc, Icecream takes compile jobs from a build and distributes it among remote machines allowing a parallel build. But unlike distcc, Icecream uses a central server that dynamically schedules the compile jobs to the fastest free server. This advantage pays off mostly for shared computers, if you're the only user on x machines, you have full control over them."
+HOMEPAGE="https://github.com/icecc/icecream"
+LICENSE="GPLv2"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
+
+SRC_URI="git://github.com/icecc/icecream.git"
+
+RDEPEND="gcc-libs"
+RECOMMENDED=""
+BDEPEND="git"
+OPTIONAL=""
+CONFLICT=""
+REPLACE=""
+
+pbs_unpack() {
+    dounpack
+}
+
+pbs_patch() {
+    git checkout "$V"
+    # FIXME
+    # Compile doc result in failure
+    dopatch disable-doc-build.patch
+}
+
+pbs_config() {
+    config+=""
+    doconfig
+}
+
+pbs_build() {
+    domake
+}
+
+pbs_install() {
+    domkinstall
+}

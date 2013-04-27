@@ -21,9 +21,9 @@ pbs_unpack() {
 }
 
 pbs_patch() {
-    # add large-file support
+    # Add large-file support
     sed -e 's/^CFLAGS=\(.*\)$/CFLAGS=\1 \$(BIGFILES)/' -i ./Makefile-libbz2_so
-    # use our optimization
+    # Use our optimization
     sed -i "s|-O2|${CFLAGS}|g" Makefile
     sed -i "s|-O2|${CFLAGS}|g" Makefile-libbz2_so
     #
@@ -39,11 +39,11 @@ pbs_install() {
     dodoc LICENSE
     install -dm755 "$PKGDIR"/usr/{bin,lib"$LIBDIRSUFFIX",include,share/man/man1}
     install -m755 bzip2-shared "$PKGDIR"/usr/bin/bzip2
-      install -m755 bzip2recover bzdiff bzgrep bzmore "$PKGDIR"/usr/bin
-      install -m755 libbz2.so.1.0.6 "$PKGDIR"/usr/lib"$LIBDIRSUFFIX"
+    install -m755 bzip2recover bzdiff bzgrep bzmore "$PKGDIR"/usr/bin
+    install -m755 libbz2.so.1.0.6 "$PKGDIR"/usr/lib"$LIBDIRSUFFIX"
     install -m644 libbz2.a "$PKGDIR"/usr/lib"$LIBDIRSUFFIX"/libbz2.a
     install -m644 bzlib.h "$PKGDIR"/usr/include/
-      doman bzip2.1
+    doman bzip2.1
     cd "$PKGDIR"
     for i in bunzip2 bzcat; do
         doln bzip2 usr/bin/"$i"
@@ -52,10 +52,9 @@ pbs_install() {
     doln bzgrep usr/bin/bzfgrep
     doln bzmore usr/bin/bzless
     for i in libbz2.so libbz2.so.1 libbz2.so.1.0; do
-          doln libbz2.so.1.0.6 usr/lib"$LIBDIRSUFFIX"/"$i"
+        doln libbz2.so.1.0.6 usr/lib"$LIBDIRSUFFIX"/"$i"
     done      
     for i in bunzip2.1 bzcat.1 bzip2recover.1; do
-          doln bzip2.1 usr/share/man/man1/"$i"
+        doln bzip2.1 usr/share/man/man1/"$i"
     done
 }
-

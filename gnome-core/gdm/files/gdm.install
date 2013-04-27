@@ -1,4 +1,3 @@
-. /usr/lib/ybs/funcs
 
 gname="gdm"
 unit="gdm.service"
@@ -27,17 +26,8 @@ post_remove() {
     gtk-update-icon-cache -q -t -f /usr/share/icons/hicolor
     douserdel $gname
     dogroupdel $gname ||true
-    
-    for i in lightdm kdm xdm lxdm; do
-        if dm-switch enable $i 2>/dev/null; then
-            echo "* gdm was removed, but $i is found, use $i for display-manager."
-            echo "* You can choose other DM by running dm-switch"
-            return 0
-        fi
-    done ||true
 }
 
 pre_remove() {
     systemctl disable $unit ||true
 }
-

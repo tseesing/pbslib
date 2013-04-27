@@ -13,7 +13,7 @@ PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 SRC_URI="http://www.nico.schottelius.org/software/"$N"/archives/"$N-$V".tar.lzma"
 CHECKSUM="8d9f3655c80ce7667d31ede2a100b44986480369"
 
-RDEPEND="ncurses bash"
+RDEPEND="ncurses glibc"
 RECOMMENDED=""
 BDEPEND=""
 OPTIONAL=""
@@ -41,4 +41,3 @@ pbs_install() {
     cd usr/lib"$LIBDIRSUFFIX"/
     doln libgpm.so.2.* libgpm.so
 }
-

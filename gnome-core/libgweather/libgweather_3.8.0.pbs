@@ -1,0 +1,47 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="Provides access to weather information from the net"
+HOMEPAGE="http://www.gnome.org/"
+LICENSE="LGPL"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>" 
+
+SRC_URI="http://ftp.gnome.org/pub/GNOME/core/3.8/3.8.0/sources/$N-$V.tar.xz"
+
+RDEPEND="libsoup gnome-icon-theme gtk3"
+BDEPEND="gobject-introspection gtk-doc gnome-common"
+RECOMMENDED=""
+
+INSTALL="$N.install"
+
+pbs_unpack() {
+    dounpack
+}
+
+pbs_patch() {
+    : #dopatch gettext-not-xml.patch no_external_gettext.patch
+}
+
+pbs_config() {
+   # gtkdocize
+   # autoreconf -fi
+   # cd po
+   # intltool-update --pot
+   # cd ../po-locations
+   # intltool-update --gettext-package libgweather-locations --pot
+   # cd ..
+    config+="--disable-static --enable-locations-compression"
+    doconfig
+}
+
+pbs_build() {
+    domake
+}
+
+pbs_install() {
+    domkinstall GCONF_DISABLE_MAKEFILE_SCHEMA_INSTALL=1
+}

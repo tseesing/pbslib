@@ -13,7 +13,7 @@ PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 SRC_URI="ftp://ftp.remotesensing.org/pub/"$N"/tiff-"$V".tar.gz"
 CHECKSUM="652e97b78f1444237a82cbcfe014310e776eb6f0"
 
-RDEPEND="libjpeg-turbo zlib xz"
+RDEPEND="xz libjpeg-turbo freeglut libSM glu"
 BDEPEND="freeglut"
 OPTIONAL="freeglut: for using tiffgt"
 

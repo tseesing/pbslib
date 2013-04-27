@@ -48,4 +48,3 @@ pbs_install() {
     # For initramfs-tools
     docp_rename "$FILESDIR"/hook_kbd "$PKGDIR"/usr/share/initramfs-tools/hooks/kbd
 }
-

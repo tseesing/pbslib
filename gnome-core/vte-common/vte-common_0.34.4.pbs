@@ -1,0 +1,36 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="Common files used by vte and vte3"
+HOMEPAGE="http://library.gnome.org/devel/vte/"
+LICENSE="LGPL"
+PACKAGER="chenqixing@ivali.com
+          Zhongxin Huang <huangzhongxin@ivali.com>"
+
+SRC_URI="http://ftp.gnome.org/pub/GNOME/sources/vte/0.34/vte-$V.tar.xz"
+CHECKSUM=""
+
+RDEPEND="glibc"
+BDEPEND="gobject-introspection"
+
+pbs_unpack() {
+    dounpack
+}
+
+pbs_config() {
+    config+="--enable-introspection 
+             --disable-static"
+    doconfig
+}
+
+pbs_build() {
+    domake
+}
+
+pbs_install() {
+    domkinstall -C gnome-pty-helper
+}

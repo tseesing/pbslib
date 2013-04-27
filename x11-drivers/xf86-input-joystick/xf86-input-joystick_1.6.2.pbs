@@ -34,4 +34,3 @@ pbs_install() {
     dodoc COPYING
     docp "$FILESDIR"/50-joystick.conf "$destdi"/etc/X11/xorg.conf.d/
 }
-

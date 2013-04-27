@@ -9,7 +9,6 @@ DESCRIPTION="RFC2131 compliant DHCP client daemon"
 HOMEPAGE="http://roy.marples.name/projects/dhcpcd/"
 LICENSE="BSD"
 PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
-GROUP="base"
 
 SRC_URI="http://roy.marples.name/downloads/"$N"/"$N-$V".tar.bz2"
 
@@ -35,4 +34,3 @@ pbs_install() {
     echo noipv4ll >>"$PKGDIR"/etc/dhcpcd.conf
     dounit dhcpcd.service dhcpcd@.service
 }
-

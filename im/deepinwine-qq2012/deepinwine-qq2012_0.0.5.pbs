@@ -27,8 +27,6 @@ CONFLICT=""
 
 DESKTOPFILE="qq2012.desktop"
 
-INSTALL="$N.install"
-
 pbs_unpack() {
     dounpack
 }

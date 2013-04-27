@@ -13,7 +13,7 @@ PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 SRC_URI="http://download.mono-project.com/sources/"$N"/"$N-$V".tar.bz2"
 CHECKSUM="c012b01ac17bedb0af52b7a16405da84"
 
-RDEPEND="zlib libgdiplus bash python"
+RDEPEND="glibc gcc-libs zlib"
 BDEPEND="pkgconfig"
 RECOMMENDED=""
 CONFLICT=""
@@ -29,7 +29,6 @@ pbs_build() {
     config+="--with-libgdiplus=installed"
     doconfig
     domake
-    
     # Build jay
     cd mcs/jay
     domake
@@ -40,15 +39,11 @@ pbs_install() {
     # Install mono
     domkinstall
     dodoc mcs/MIT.X11
-    
     # Install jay
     cd mcs/jay
     domkinstall prefix=/usr install=../../install-sh
-
     # Install binfmt conf file and pathes
     docp "$FILESDIR"/mono.conf "$PKGDIR"/usr/lib/binfmt.d/
-
     # Fix .pc file to be able to request mono on what it depends, fixes #go-oo build
     sed -i -e "s:#Requires:Requires:" "$PKGDIR"/usr/lib"$LIBDIRSUFFIX"/pkgconfig/mono.pc
 }
-

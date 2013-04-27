@@ -1,0 +1,53 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="Mozilla Runtime Environment"
+HOMEPAGE="http://wiki.mozilla.org/XUL:Xul_Runner"
+LICENSE="MPL,GPL,LGPL"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
+
+SRC_URI="ftp://ftp.mozilla.org/pub/mozilla.org/$N/releases/$V/source/$N-$V.source.tar.bz2"
+CHECKSUM="956f60b12577bf7a42d60ba8e1a73794"
+
+RDEPEND="nss libjpeg-turbo hunspell libevent libvpx alsa-lib dbus-glib gtk2 libXt startup-notification mesa"
+BDEPEND="pkgconfig diffutils yasm mesa"
+RECOMMENDED=""
+
+pbs_unpack() {
+    dounpack
+}
+
+pbs_patch() {
+    # Fix libdir/sdkdir - from Fedora
+    dopatch mozilla-pkgconfig.patch shared-libs.patch
+}
+
+pbs_config() {
+    cat "$FILESDIR"/mozconfig |sed 's/@LIBDIRSUFFIX@/'"$LIBDIRSUFFIX"'/g' >.mozconfig
+}
+
+pbs_build() {
+    export LDFLAGS="$LDFLAGS -Wl,-rpath,/usr/lib$LIBDIRSUFFIX/xulrunner-$V"
+    export MOZ_MAKE_FLAGS="$MAKEOPTS"
+    unset MAKEOPTS
+    domake -f client.mk build
+}
+
+pbs_install() {
+    domkinstall -f client.mk 
+    cd "$PKGDIR"
+    
+    # Add xulrunner library path to ld.so.conf
+    install -d etc/ld.so.conf.d
+    echo /usr/lib"$LIBDIRSUFFIX"/xulrunner-"$V" >etc/ld.so.conf.d/xulrunner.conf
+    chmod +x usr/lib"$LIBDIRSUFFIX"/xulrunner-devel-"$V"/sdk/bin/xpt.py
+    
+    # Use system-provided dictionaries
+    # rm -rf usr/lib"$LIBDIRSUFFIX"/xulrunner-$V/{dictionaries,hyphenation}
+    # ln -sf /usr/share/hunspell lib"$LIBDIRSUFFIX"/xulrunner-$V/dictionaries"
+    # ln -sf /usr/share/hyphen usr/lib"$LIBDIRSUFFIX"/xulrunner-$V/hyphenation"
+}

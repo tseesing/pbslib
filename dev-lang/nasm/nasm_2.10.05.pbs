@@ -35,4 +35,3 @@ pbs_install() {
     docp doc/info/* "$PKGDIR"/usr/share/info/
     dodoc LICENSE
 }
-

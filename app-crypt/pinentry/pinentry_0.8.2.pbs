@@ -13,11 +13,9 @@ PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 SRC_URI="ftp://ftp.gnupg.org/gcrypt/$N/$N-$V.tar.bz2"
 CHECKSUM="82e6114e5e27a8ab36f314b332a6e024"
 
-RDEPEND="ncurses libcap"
-RECOMMENDED="qt"
-BDEPEND="gtk2 qt"
-OPTIONAL="gtk2: for gtk2 backend
-          qt: for qt4 backend"
+RDEPEND="qt ncurses gtk2"
+RECOMMENDED=""
+BDEPEND=""
 CONFLICT=""
 REPLACE=""
 
@@ -51,4 +49,3 @@ pbs_build() {
 pbs_install() {
     domkinstall
 }
-

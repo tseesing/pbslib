@@ -1,4 +1,3 @@
-. /usr/lib/ybs/funcs
 
 gname="sshd"
 
@@ -6,15 +5,13 @@ post_install() {
     dogroupadd -r $gname
     douseradd -c "sshd PrivSep" -d "/var/lib/sshd" -s "/bin/false" -r -N -G $gname $gname
     install -m700 -d /var/lib/sshd
-    chown root:sys   /var/lib/sshd
-    #yes y |ssh-keygen -t dsa -f /etc/ssh/ssh_host_dsa_key
-    #yes y |ssh-keygen -t rsa -f /etc/ssh/ssh_host_rsa_key || return 0
+    chown root:sys   /var/lib/sshd ||true
 }
 
 post_remove() {
     douserdel $gname
     dogroupdel $gname
-    rm -r /var/lib/sshd 2>/dev/null ||return 0
+    rm -r /var/lib/sshd 2>/dev/null ||true
 }
 
 post_upgrade() {
@@ -24,4 +21,3 @@ post_upgrade() {
 post_downgrade() {
     post_upgrade
 }
-

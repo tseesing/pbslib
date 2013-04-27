@@ -7,14 +7,14 @@
 
 DESCRIPTION="X Window System logo"
 HOMEPAGE="http://xorg.freedesktop.org/"
-GROUP="x11-apps"
 LICENSE="custom"
 PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>
           chenqixing@ivali.com"
+GROUP="x11-apps"
 
 SRC_URI="http://xorg.freedesktop.org/releases/individual/app/"$N-$V".tar.bz2"
 
-RDEPEND="libXaw"
+RDEPEND="libXft libXrender libSM libXaw libXmu libXt libXext libX11 glibc fontconfig expat freetype zlib bzip2 libxcb libXau libXdmcp libICE util-linux-libs libXpm"
 BDEPEND=""
 
 pbs_unpack() {
@@ -22,6 +22,7 @@ pbs_unpack() {
 }
 
 pbs_config() {
+    config+=""
     doconfig
 }
 
@@ -32,4 +33,3 @@ pbs_build() {
 pbs_install() {
     domkinstall
 }
-

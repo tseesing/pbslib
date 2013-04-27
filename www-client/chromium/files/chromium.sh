@@ -2,11 +2,7 @@
 #
 
 APPNAME=chromium
-case "$(uname -m)" in
-    i?86) LIBDIRSUFFIX="" ;;
-  x86_64) LIBDIRSUFFIX="64"
-esac
-LIBDIR=/usr/lib"$LIBDIRSUFFIX"/chromium
+LIBDIR=/usr/lib#LIBDIRSUFFIX#/chromium
 GDB=/usr/bin/gdb
 
 usage () {

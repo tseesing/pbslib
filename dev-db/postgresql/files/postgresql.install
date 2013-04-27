@@ -1,4 +1,3 @@
-. /usr/lib/ybs/funcs
 
 gname="postgres"
 
@@ -21,4 +20,3 @@ post_upgrade() {
     postgres_shell=$(getent passwd $gname | cut -d: -f7)
     [ "$postgres_shell" = "/sbin/nologin" ] && chsh -s /bin/bash $gname || true
 }
-

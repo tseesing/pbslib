@@ -1,0 +1,39 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="Universal source code to formatted text converter"
+HOMEPAGE="http://www.andre-simon.de/doku/highlight/highlight.html"
+LICENSE="GPL"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
+
+SRC_URI="http://www.andre-simon.de/zip/$N-$V.tar.bz2"
+CHECKSUM=""
+
+RDEPEND="glibc lua gcc-libs"
+RECOMMENDED=""
+BDEPEND="boost lua"
+OPTIONAL=""
+CONFLICT=""
+REPLACE=""
+
+pbs_unpack() {
+    dounpack
+}
+
+pbs_patch() {
+    dopatch highlight-3.13-lua.patch
+}   
+
+pbs_build() {
+    domake
+    #domake gui
+}
+
+pbs_install() {
+    domkinstall
+    #make DESTDIR="$PKGDIR" install-gui
+}

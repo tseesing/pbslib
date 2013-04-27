@@ -1,0 +1,10 @@
+--- alsactl/alsa-restore.service.in	2013-04-11 19:43:06.000000000 +0800
++++ alsactl/alsa-restore.service.in.new	2013-04-24 09:00:08.642086407 +0800
+@@ -12,6 +12,6 @@
+ Conflicts=shutdown.target
+ 
+ [Service]
+-Type=oneshop
++Type=oneshot
+ ExecStart=-@sbindir@/alsactl restore
+ StandardOutput=syslog

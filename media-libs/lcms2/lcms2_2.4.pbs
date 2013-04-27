@@ -13,7 +13,7 @@ PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 SRC_URI="http://downloads.sourceforge.net/sourceforge/lcms/"$N-$V".tar.gz"
 CHECKSUM="9944902864283af49e4e21a1ca456db4e04ea7c2"
 
-RDEPEND="libtiff"
+RDEPEND="libjpeg-turbo glibc libtiff xz zlib"
 BDEPEND=""
 
 pbs_unpack() {

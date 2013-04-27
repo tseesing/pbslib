@@ -13,7 +13,7 @@ PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 SRC_URI="http://savannah.nongnu.org/download/"$N"/"$N-$V".tar.xz"
 CHECKSUM="a593a095599ae97bcacf8d038659a146"
 
-RDEPEND="gdbm zlib groff libpipeline"
+RDEPEND="glibc libpipeline zlib gdbm"
 BDEPEND=""
 RECOMMENDED="groff"
 OPTIONAL="less:
@@ -24,7 +24,9 @@ pbs_unpack() {
 }
 
 pbs_config() {
-    config+="--with-db=gdbm --disable-setuid --enable-mandirs=GNU"
+    config+="--with-db=gdbm 
+             --disable-setuid 
+             --enable-mandirs=GNU"
     doconfig --with-sections=\"1 n l 8 3 0 2 5 4 9 6 7\"
 }
 
@@ -43,4 +45,3 @@ pbs_install() {
     #install whatis cron script
     docp "$FILESDIR"/man-db etc/cron.daily/
 }
-

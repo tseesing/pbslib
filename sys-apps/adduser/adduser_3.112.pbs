@@ -6,7 +6,7 @@
 #
 
 DESCRIPTION="add remove user and group"
-HOMEPAGE="http://www.startos.org"
+HOMEPAGE="https://github.com/StartOS/adduser"
 LICENSE="GPL"
 PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
@@ -23,4 +23,3 @@ pbs_unpack() {
 pbs_install() {
     docp etc usr "$PKGDIR"
 }
-

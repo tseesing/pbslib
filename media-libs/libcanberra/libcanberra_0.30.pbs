@@ -12,7 +12,7 @@ PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
 SRC_URI="http://0pointer.de/lennart/projects/"$N"/"$N-$V".tar.xz"
 
-RDEPEND="gstreamer pulseaudio libvorbis alsa-lib tdb"
+RDEPEND="gtk3 gtk2 pulseaudio libsndfile gstreamer"
 BDEPEND=""
 RECOMMENDED=""
 
@@ -42,4 +42,3 @@ pbs_install() {
     domkinstall
     docp "$FILESDIR"/libcanberra "$PKGDIR"/etc/X11/Xsession.d/
 }
-

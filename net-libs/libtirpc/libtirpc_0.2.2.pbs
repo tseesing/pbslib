@@ -13,7 +13,7 @@ PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 SRC_URI="http://downloads.sourceforge.net/sourceforge/$N/$N-$V.tar.bz2"
 CHECKSUM="74c41c15c2909f7d11d9c7bfa7db6273"
 
-RDEPEND="libgssglue"
+RDEPEND="glibc libgssglue"
 RECOMMENDED=""
 BDEPEND=""
 OPTIONAL=""
@@ -25,9 +25,9 @@ pbs_unpack() {
 }
 
 pbs_patch() {
-    # fix http://bugs.gentoo.org/293593
+    # Fix http://bugs.gentoo.org/293593
     dopatch libtirpc-0.2.1-fortify.patch
-    # add patches from fedora git to make nfs-utils compile again
+    # Add patches from fedora git to make nfs-utils compile again
     dopatch libtirpc-0.2.3rc1.patch libtirpc-fix-segfault-0.2.2.patch
 }
 
@@ -47,5 +47,3 @@ pbs_install() {
     docp_rename doc/etc_netconfig "$PKGDIR"/etc/netconfig
     dodoc COPYING
 }
-
-

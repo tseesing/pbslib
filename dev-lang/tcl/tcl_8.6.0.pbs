@@ -13,7 +13,7 @@ PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 SRC_URI="http://downloads.sourceforge.net/"$N"/"$N$V"-src.tar.gz"
 CHECKSUM="573aa5fe678e9185ef2b3c56b24658d3"
 
-RDEPEND=""
+RDEPEND="glibc zlib"
 BDEPEND=""
 
 pbs_unpack() {
@@ -21,7 +21,7 @@ pbs_unpack() {
 }
 
 pbs_patch() {
-    # we build the tcl sqlite interface in sqlite-tcl package
+    # We build the tcl sqlite interface in sqlite-tcl package
     rm -rf pkgs/sqlite3*
 }   
 
@@ -41,7 +41,6 @@ pbs_install() {
     dodoc ../license.terms
     cd "$PKGDIR"
     doln /usr/bin/tclsh${V%.?} usr/bin/tclsh
-    # remove buildroot traces
+    # Remove buildroot traces
     sed -i "s#$SRCDIR#/usr/src/$N$V#" usr/lib"$LIBDIRSUFFIX"/{tcl,tdbc1.0.0/tdbc,itcl4.0.0/itcl}Config.sh
 }
-

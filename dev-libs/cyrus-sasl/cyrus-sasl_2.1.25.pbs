@@ -5,7 +5,7 @@
 # Distributed under the terms of the GNU General Public License v2
 #
 
-DESCRIPTION="The Cyrus SASL (Simple Authentication and Security Layer)."
+DESCRIPTION="Cyrus saslauthd SASL authentication daemon"
 HOMEPAGE="http://asg.web.cmu.edu/sasl/"
 LICENSE="custom"
 PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>
@@ -14,8 +14,8 @@ PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>
 SRC_URI="ftp://ftp.andrew.cmu.edu/pub/cyrus-mail/"$N-$V".tar.gz"
 CHECKSUM="341cffe829a4d71f2a6503d669d5a946"
 
-RDEPEND="krb5 pam openssl"
-BDEPEND="postgresql-libs libmariadbclient openldap krb5 openssl"
+RDEPEND="krb5 e2fsprogs glibc pam libldap openssl keyutils libsasl zlib"
+BDEPEND=""
 RECOMMENDED=""
 
 OPTIONS="nolibtool"
@@ -31,6 +31,9 @@ pbs_patch() {
 pbs_config() {
     config+="--with-plugindir=/usr/lib$LIBDIRSUFFIX/sasl2
              --with-pam
+             --enable-sql
+             --enable-ldapdb
+             --with-ldap
              --disable-static
              --with-saslauthd=/run/saslauthd
              --with-devrandom=/dev/urandom"
@@ -42,10 +45,12 @@ pbs_build() {
 }
 
 pbs_install() {
+    cd saslauthd
     domkinstall sasldir=/usr/lib"$LIBDIRSUFFIX"/sasl2
+    dodoc ../COPYING
+
     cd "$PKGDIR"    
     dounit saslauthd.service
     docp "$FILESDIR"/saslauthd etc/default/
     docp "$FILESDIR"/saslauthd.conf usr/lib/tmpfiles.d/
 }
-

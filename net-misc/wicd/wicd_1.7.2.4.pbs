@@ -1,0 +1,49 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="A lightweight wired and wireless network manager for Linux"
+HOMEPAGE="https://launchpad.net/wicd"
+LICENSE="GPL"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
+YARCH="any"
+
+SRC_URI="https://launchpadlibrarian.net/103659829/$N-$V.tar.gz"
+CHECKSUM=""
+
+RDEPEND="python ethtool py-dbus dhcpcd wpa_supplicant wireless-tools inetutils net-tools py-gobject rfkill py-urwid py-gtk"
+BDEPEND="py-distribute py-babel gettext"
+RECOMMENDED=""
+CONFLICT=""
+
+INSTALL="$N.install"
+
+pbs_unpack() {
+    dounpack
+}
+
+pbs_config() {
+    python setup.py configure \
+            --no-install-init \
+            --resume=/usr/share/wicd/scripts/ \
+            --suspend=/usr/share/wicd/scripts/ \
+            --verbose \
+            --systemd=/usr/lib/systemd/system
+            #--lib=/usr/lib"$LIBDIRSUFFIX" \
+    # FIXME
+    # Missing locale ast
+    mkdir -p translations/ast/LC_MESSAGES
+    msgfmt po/ast.po -o translations/ast/LC_MESSAGES/wicd.mo
+}
+
+pbs_install() {
+    python setup.py install --optimize=1 --root="$PKGDIR"
+    cd build/lib/wicd
+    for i in *.py; do
+        install -Dm 755 "${i}" "$PKGDIR"/usr/lib/wicd/"${i}"
+    done
+    dodesktop "$N".desktop
+}

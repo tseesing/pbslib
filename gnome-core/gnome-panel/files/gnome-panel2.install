@@ -11,10 +11,8 @@ post_install() {
         # Default gconf value
         gnome2_install_defaut_gconf "string" "/apps/panel/applets/clock_screen0/prefs/format"  "24-hour"
         
-    gnome2_rarian_sk_update
-        gnome2_desktop_database_update
-        gnome2_icon_cache_update
-        gnome2_gconfd_reload
+        update-desktop-database
+        gtk-update-icon-cache -f -q -t
 }
 
 pre_remove() {

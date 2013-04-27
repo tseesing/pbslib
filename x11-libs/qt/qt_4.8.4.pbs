@@ -12,8 +12,9 @@ PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>
           chenqixing@ivali.com"
 
 SRC_URI="http://releases.qt-project.org/qt4/source/qt-everywhere-opensource-src-"$V".tar.gz"
+CHECKSUM=""
 
-RDEPEND="glib2 libpng libSM libXrender fontconfig dbus mesa alsa-lib libmng unixodbc freetds sqlite libmariadbclient postgresql-libs"
+RDEPEND="gcc-libs glibc zlib glib2 pcre openssl libpng freetype libSM libICE libXrender fontconfig libXext libX11 bzip2 libffi util-linux-libs libxcb libXau libXdmcp expat dbus-libs mesa libXdamage libXfixes libXxf86vm libdrm alsa-lib libtiff xz libjpeg-turbo libmng lcms unixodbc libtool freetds sqlite libmariadbclient postgresql-libs krb5 e2fsprogs keyutils"
 BDEPEND=""
 RECOMMENDED=""
 OPTIONAL="unixodbc: ODBC driver

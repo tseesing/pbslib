@@ -15,7 +15,7 @@ GROUP="x11-apps"
 SRC_URI="http://xorg.freedesktop.org/releases/individual/app/"$N-$V".tar.bz2"
 CHECKSUM="3e2d206f500a9615ec65dbb6b1e4b487"
 
-RDEPEND="libFS"
+RDEPEND="libFS glibc"
 BDEPEND="xbitmaps"
 
 pbs_unpack() {

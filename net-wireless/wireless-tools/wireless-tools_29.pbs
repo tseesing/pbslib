@@ -27,4 +27,3 @@ pbs_build() {
 pbs_install() {
     make PREFIX="$PKGDIR"/usr INSTALL_LIB="$PKGDIR"/usr/lib"$LIBDIRSUFFIX" INSTALL_MAN="$PKGDIR"/usr/share/man install
 }
-

@@ -13,7 +13,7 @@ PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 SRC_URI="http://curl.haxx.se/download/"$N-$V".tar.bz2"
 CHECKSUM="26eb081c999b0e203770869427e9a93d"
 
-RDEPEND="ca-certificates libssh2 openssl zlib rtmpdump"
+RDEPEND="ca-certificates zlib glibc libssh2 openssl rtmpdump"
 BDEPEND="sed"
 
 pbs_unpack() {
@@ -49,10 +49,9 @@ pbs_build() {
 pbs_install() {
     domkinstall
     dodoc COPYING
-    # devel files
+    # Devel files
     docp docs/libcurl/libcurl.m4 "$PKGDIR"/usr/share/aclocal/
     cd "$PKGDIR"
     mv usr/include/curl/curlbuild.h usr/include/curl/"$_curlbuild"
-    docp "$FILESDIR"/curlbuild.h    usr/include/curl/
+    docp "$FILESDIR"/curlbuild.h usr/include/curl/
 }
-

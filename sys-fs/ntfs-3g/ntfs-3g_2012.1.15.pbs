@@ -14,7 +14,7 @@ PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>
 SRC_URI="http://tuxera.com/opensource/"$N"_ntfsprogs-"$V".tgz"
 CHECKSUM="341acae00a290cab9b00464db65015cc"
 
-RDEPEND="fuse glibc util-linux"
+RDEPEND="fuse glibc util-linux-libs"
 BDEPEND="pkgconfig"
 CONFLICT="ntfsprogs"
 
@@ -48,4 +48,3 @@ pbs_install() {
     docp_rename "$FILESDIR"/pre_ntfs_3g     usr/share/initramfs-tools/scripts/local-premount/ntfs_3g
     docp_rename "$FILESDIR"/bot_ntfs_3g     usr/share/initramfs-tools/scripts/local-bottom/ntfs_3g
 }
-

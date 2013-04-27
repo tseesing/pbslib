@@ -13,7 +13,7 @@ PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 SRC_URI="http://ftp.gnu.org/gnu/"$N"/"$N-$V".tar.gz"
 CHECKSUM="1b07629163025b9693aae9b8957842b2"
 
-RDEPEND="glibc texinfo"
+RDEPEND="glibc"
 BDEPEND=""
 
 INSTALL="$N.install"

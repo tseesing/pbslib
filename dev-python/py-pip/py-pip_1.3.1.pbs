@@ -1,0 +1,41 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="An easy_install replacement for installing pypi python packages"
+HOMEPAGE="http://www.pip-installer.org"
+LICENSE="MIT"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
+GROUP="python"
+YARCH="any"
+
+SRC_URI="http://pypi.python.org/packages/source/p/pip/pip-$V.tar.gz"
+CHECKSUM="cbb27a191cebc58997c4da8513863153"
+
+RDEPEND="py-distribute"
+RECOMMENDED=""
+BDEPEND="python"
+OPTIONAL=""
+CONFLICT=""
+REPLACE=""
+
+pbs_unpack() {
+    dounpack
+}
+
+pbs_config() {
+    config+=""
+    doconfig
+}
+
+pbs_build() {
+    domake
+}
+
+pbs_install() {
+    domkinstall
+    dodoc LICENSE.txt
+}

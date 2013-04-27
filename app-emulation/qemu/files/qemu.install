@@ -10,7 +10,7 @@ pre_upgrade() {
 }
 
 post_install() {
-    groupadd kvm -f -g 78
+    dogroupadd kvm -f -g 78 |truee
 }
 
 post_upgrade() {

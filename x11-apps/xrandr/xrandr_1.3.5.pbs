@@ -7,13 +7,13 @@
 
 DESCRIPTION="primitive command line interface to RandR extension"
 HOMEPAGE="http://xorg.freedesktop.org/"
-GROUP="x11-apps"
 LICENSE="custom"
 PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
+GROUP="x11-apps"
 
 SRC_URI="http://xorg.freedesktop.org/releases/individual/app/"$N-$V".tar.bz2"
 
-RDEPEND="libXrandr"
+RDEPEND="libXrandr libXrender libX11 glibc libXext libxcb libXau libXdmcp"
 BDEPEND=""
 
 pbs_unpack() {
@@ -32,4 +32,3 @@ pbs_install() {
     domkinstall
     dodoc COPYING
 }
-

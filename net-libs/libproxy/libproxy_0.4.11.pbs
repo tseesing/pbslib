@@ -1,0 +1,55 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="A library that provides automatic proxy configuration management."
+HOMEPAGE="http://code.google.com/p/libproxy/"
+LICENSE="LGPL"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
+
+SRC_URI="http://libproxy.googlecode.com/files/"$N-$V".tar.gz"
+CHECKSUM="c037969434095bc65d29437e11a7c9e0293a5149"
+
+RDEPEND="glibc gcc-libs"
+BDEPEND="cmake"
+OPTIONAL="perl: Perl bindings
+          python: Python bindings
+          kdelibs: KDE configuration module
+          networkmanager: NetworkManager configuration module"
+
+pbs_unpack() {
+    dounpack
+}
+
+pbs_patch() {
+    dopatch libproxy-0.4.10-mozjs.patch
+}
+
+pbs_config() {
+    mkdir build
+    cd build
+    cmake .. \
+            -DCMAKE_INSTALL_PREFIX=/usr \
+            -DLIB_INSTALL_DIR=/usr/lib"$LIBDIRSUFFIX" \
+            -DLIBEXEC_INSTALL_DIR=/usr/lib"$LIBDIRSUFFIX" \
+            -DCMAKE_SKIP_RPATH=ON \
+            -DCMAKE_BUILD_TYPE=Release \
+            -DWITH_PERL=OFF \
+            -DWITH_WEBKIT3=OFF \
+            -DWITH_WEBKIT=OFF \
+            -DWITH_GNOME3=OFF \
+            -DWITH_MOZJS=OFF
+}
+
+pbs_build() {
+    domake
+}
+
+pbs_install() {
+    domkinstall
+    # Note: these files provided by libproxy-* packages
+    rm -r "$PKGDIR"/usr/lib"$LIBDIRSUFFIX"/libproxy/
+}

@@ -13,7 +13,7 @@ PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 SRC_URI="ftp://ftp.openldap.org/pub/OpenLDAP/"$N"-release/"$N-$V".tgz"
 CHECKSUM="0cea642ba2dae1eb719da41bfedb9eba72ad504d"
 
-RDEPEND="cyrus-sasl icu libtool util-linux"
+RDEPEND="libldap libtool util-linux-libs berkeley-db glibc icu libsasl openssl gcc-libs zlib"
 BDEPEND=""
 RECOMMENDED=""
 CONFLICT=""
@@ -56,24 +56,26 @@ pbs_build() {
 }
 
 pbs_install() {
-    domkinstall
+    for dir in clients servers doc/man/man{1,5,8} ; do
+        pushd "$dir"
+        domkinstall
+        popd
+    done
     dodoc LICENSE
+    
     cd "$PKGDIR"
-    # systemd stuff    
+    # Provided by libldap
+    rm usr/share/man/man5/ldap.conf.5    
+    # Systemd stuff    
     dounit slapd.service
     docp "$FILESDIR"/slapd.conf usr/lib/tmpfiles.d/
-    # get rid of duplicate default conf files
+    # Get rid of duplicate default conf files
     rm etc/openldap/*.default
-    # required dirs    
+    # Required dirs    
     chown root:439 etc/openldap/{slapd.conf,DB_CONFIG.example}
     chmod 640 etc/openldap/{slapd.conf,DB_CONFIG.example}
     install -dm700 -o 439 -g 439 var/lib/openldap
     install -dm700 -o 439 -g 439 etc/openldap/slapd.d
-    # cleanup
+    # Cleanup
     rm -rf run
-    # 
-    cd usr/lib"$LIBDIRSUFFIX"/
-    doln liblber.so liblber.so.2
-    doln libldap.so libldap.so.2
 }
-

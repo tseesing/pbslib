@@ -11,8 +11,9 @@ LICENSE="custom,GPL"
 PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
 SRC_URI="http://dbus.freedesktop.org/releases/"$N"/"$N-$V".tar.gz"
+CHECKSUM=""
 
-RDEPEND="expat coreutils"
+RDEPEND="systemd glibc expat libSM util-linux-libs libICE libX11 libxcb libXau libXdmcp dbus-libs"
 BDEPEND=""
 
 INSTALL="$N.install"
@@ -22,22 +23,18 @@ pbs_unpack(){
 }
 
 pbs_config() {
-    config+=" --with-system-pid-file=/run/dbus/pid
-                --with-system-socket=/run/dbus/system_bus_socket 
-              --with-console-auth-dir=/run/console/ 
-              --with-dbus-user=dbus
-              --enable-inotify 
-              --disable-dnotify 
-              --disable-verbose-mode 
-              --disable-static 
-              --disable-tests 
-              --disable-asserts  
-              --with-systemdsystemunitdir=/usr/lib/systemd/system 
-               --enable-systemd "
-          # NOTE: dbus MUST compile two times，order is:
-          # 1、set --disable-systemd -> build dbus 
-          # 2、build systemd
-          # 3、set --enable-systemd -> build dbus
+    config+="--with-system-pid-file=/run/dbus/pid
+             --with-system-socket=/run/dbus/system_bus_socket 
+             --with-console-auth-dir=/run/console/ 
+             --with-dbus-user=dbus
+             --enable-inotify 
+             --disable-dnotify 
+             --disable-verbose-mode 
+             --disable-static 
+             --disable-tests 
+             --disable-asserts  
+             --with-systemdsystemunitdir=/usr/lib/systemd/system 
+             --enable-systemd"
     doconfig
 }
 
@@ -48,6 +45,10 @@ pbs_build() {
 pbs_install() {
     domkinstall
     dodoc COPYING
-    rm -rf "$PKGDIR"/var/run
+    cd "$PKGDIR"/
+    # Cleanup
+    rm -rf var/run
+    # Provided by dbus-libs package
+    cd usr/
+    rm -rf include lib"$LIBDIRSUFFIX"
 }
-

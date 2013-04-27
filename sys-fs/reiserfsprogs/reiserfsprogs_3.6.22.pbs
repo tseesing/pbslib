@@ -13,7 +13,7 @@ PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 SRC_URI="http://ftp.kernel.org/pub/linux/kernel/people/jeffm/$N/v$V/$N-$V.tar.xz"
 CHECKSUM="91d2fdb5eeaa15c8afcc9e815179690d"
 
-RDEPEND="util-linux"
+RDEPEND="util-linux-libs glibc"
 BDEPEND=""
 
 pbs_unpack() {

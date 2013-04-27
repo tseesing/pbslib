@@ -13,7 +13,7 @@ PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 SRC_URI="http://mirror.linux.org.au/pub/linux/libs/security/linux-privs/"$N"2/"$N-$V".tar.bz2"
 CHECKSUM="ce64058bdb3f086ddbfca8ce6c919845"
 
-RDEPEND="attr glibc"
+RDEPEND="glibc attr"
 BDEPEND=""
 RECOMMENDED=""
 

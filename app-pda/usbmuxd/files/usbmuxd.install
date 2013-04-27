@@ -1,11 +1,10 @@
-. /usr/lib/ybs/funcs
 
 gname="usbmux"
 
 post_install() {
-    dogroupadd -g 140 $gname &>/dev/null
-    douseradd -c 'usbmux user' -u 140 -g $gname -d / -s /sbin/nologin $gname &>/dev/null
-    passwd -l $gname &>/dev/null
+    dogroupadd -g 140 $gname 
+    douseradd -c 'usbmux user' -u 140 -g $gname -d / -s /sbin/nologin $gname 
+    passwd -l $gname ||true
 }
 
 post_remove() {
@@ -16,4 +15,3 @@ post_remove() {
 post_upgrade() {
     post_install
 }
-

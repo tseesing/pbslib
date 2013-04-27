@@ -14,7 +14,7 @@ GROUP="x11-lib"
 
 SRC_URI="http://xorg.freedesktop.org/releases/individual/lib/"$N-$V".tar.bz2"
 
-RDEPEND="libXext"
+RDEPEND="libXext libX11 libxcb libXau libXdmcp glibc"
 BDEPEND="xf86vidmodeproto"
 
 pbs_unpack() {
@@ -34,4 +34,3 @@ pbs_install() {
     domkinstall
     dodoc COPYING
 }
-

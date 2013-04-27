@@ -7,14 +7,14 @@
 
 DESCRIPTION="X font server"
 HOMEPAGE="http://xorg.freedesktop.org/"
-GROUP="x11-apps"
 LICENSE="custom"
 PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>
           chenqixing@ivali.com"
+GROUP="x11-apps"
 
 SRC_URI="http://xorg.freedesktop.org/releases/individual/app/"$N-$V".tar.bz2"
 
-RDEPEND="libXft libXfont"
+RDEPEND="libXfont glibc freetype bzip2 libfontenc zlib"
 RECOMMENDED=""
 BDEPEND=""
 OPTIONAL=""
@@ -37,4 +37,3 @@ pbs_install() {
     domkinstall
     dodoc COPYING
 }
-

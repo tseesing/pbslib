@@ -1,0 +1,66 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="graphical boot animation and logger"
+COMMENTS="Plymouth provides an attractive graphical boot animation in
+place of the text messages that normally get shown.  Text
+messages are instead redirected to a log file for viewing
+after boot."
+HOMEPAGE="http://cgit.freedesktop.org/plymouth/"
+LICENSE="GPL"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
+
+SRC_URI="http://freedesktop.org/software/plymouth/releases/"$N-$V".tar.bz2"
+CHECKSUM=""
+
+RDEPEND="gtk2"
+BDEPEND="sed"
+RECOMMENDED="plymouth-theme-startos"
+
+INSTALL="$N.install"
+
+pbs_unpack() {
+    dounpack
+}
+
+pbs_patch() {
+    #dopatch plymouth-0.8.6-startos-theme.patch
+    # Change the default theme
+    sed -i -e 's/spinner/startos/g' src/plymouthd.defaults
+}
+
+pbs_config() {
+    config+="--enable-tracing 
+             --disable-tests
+             --with-background-start-color-stop=0x0073B3           
+             --with-background-end-color-stop=0x00457E            
+             --with-background-color=0x3391cd                      
+             --disable-gdm-transition
+             --enable-systemd-integration                          
+             --without-system-root-install
+             --with-rhgb-compat-link                               
+             --without-log-viewer
+             --with-release-file=/etc/startos-release
+             --disable-libkms"
+    doconfig
+}
+
+pbs_build() {
+    domake
+}
+
+pbs_install() {
+    domkinstall
+    cd "$PKGDIR" 
+    # Change systemd directory
+    domv lib/systemd usr/lib/
+    # For initramfs-tools
+    docp "$FILESDIR"/scripts usr/share/initramfs-tools/
+    mkdir -p usr/share/initramfs-tools/hooks/
+    sed 's/#LIBDIRSUFFIX#/'"$LIBDIRSUFFIX"'/g' "$FILESDIR"/hooks/plymouth >usr/share/initramfs-tools/hooks/plymouth
+    chmod +x usr/share/initramfs-tools/hooks/plymouth
+}

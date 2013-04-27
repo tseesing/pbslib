@@ -14,4 +14,3 @@ post_downgrade() {
 post_remove() {
     post_install
 }
-

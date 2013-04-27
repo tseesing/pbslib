@@ -1,0 +1,46 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="A collection of plugins for the Grilo framework."
+HOMEPAGE="http://www.gnome.org"
+LICENSE="LGPL"
+PACKAGER="chenqixing@ivali.com
+          Zhongxin Huang <huangzhongxin@ivali.com>"
+
+SRC_URI="http://ftp.gnome.org/pub/GNOME/core/3.8/3.8.0/sources/$N-$V.tar.xz"
+CHECKSUM=""
+
+RDEPEND="grilo gupnp-av libdmapsharing tracker icu libgdata p11-kit"
+BDEPEND="libgdata libquvi gmime rest json-glib"
+RECOMMENDED=""
+OPTIONAL="gupnp-av: uPnP plugin
+          libgdata: Youtube plugin
+          libquvi: Youtube plugin, Vimeo plugin
+          sqlite: Podcasts plugin
+          gmime: Podcasts plugin
+          rest: Blip.tv plugin
+          tracker: Tracker plugin
+          totem-pl-parser: Optical media plugin
+          libdmapsharing: DMAP sharing plugin
+          json-glib: TMDb plugin"
+
+pbs_unpack() {
+    dounpack
+}
+
+pbs_config() {
+    config+="--disable-static --enable-shoutcast"
+    doconfig
+}
+
+pbs_build() {
+    domake
+}
+
+pbs_install() {
+    domkinstall
+} 

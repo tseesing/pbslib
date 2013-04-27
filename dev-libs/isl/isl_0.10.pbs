@@ -14,7 +14,7 @@ PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>
 SRC_URI="http://www.kotnet.org/~skimo/"$N"/"$N-$V".tar.bz2"
 CHECKSUM="c1ece653891bb2a5f55ca25e3f4e8f35"
 
-RDEPEND="gmp"
+RDEPEND="gmp glibc"
 RECOMMENDED=""
 BDEPEND=""
 OPTIONAL=""
@@ -36,5 +36,3 @@ pbs_build() {
 pbs_install() {
     domkinstall
 }
-
-

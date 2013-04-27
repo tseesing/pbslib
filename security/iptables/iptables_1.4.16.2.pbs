@@ -45,4 +45,3 @@ pbs_install() {
     dounit iptables.service ip6tables.service 
     docp "$FILESDIR"/iptables-flush usr/lib/systemd/system/scripts
 }
-

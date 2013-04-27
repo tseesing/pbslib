@@ -8,10 +8,10 @@
 DESCRIPTION="GNOME icon theme, extra icons"
 HOMEPAGE="http://www.gnome.org/"
 LICENSE="GPL"
-YARCH="any"
 PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
+YARCH="any"
 
-SRC_URI="http://ftp.gnome.org/pub/gnome/core/3.6/3.6.2/sources/"$N-$V".tar.xz"
+SRC_URI="http://ftp.gnome.org/pub/GNOME/core/3.8/3.8.0/sources/$N-$V.tar.xz"
 
 RDEPEND="gnome-icon-theme"
 BDEPEND="intltool"

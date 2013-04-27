@@ -1,4 +1,3 @@
-. /usr/lib/ybs/funcs
 
 gname="avahi"
 
@@ -7,8 +6,7 @@ post_install() {
     douseradd -r -u 84 -g "$gname" -d / -s /bin/false -c "$gname" "$gname" 
     
     # Systemd unit
-    # Note: avahi-daemon starts at boot time 
-    # remount desktop (e.g. vinagre) requires.
+    # Note: avahi-daemon starts at boot time, remote desktop (e.g. vinagre) requires.
     #
     systemctl enable avahi-daemon.service
     #systemctl enable avahi-dnsconfd.service
@@ -34,4 +32,3 @@ post_remove() {
 post_upgrade() {
     post_install        
 }
-

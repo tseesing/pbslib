@@ -1,4 +1,3 @@
-. /usr/lib/ybs/funcs
 
 files="libquadmath.info.gz libitm.info.gz gfortran.info.gz gccint.info.gz gccinstall.info.gz gccgo.info.gz gcc.info.gz cppinternals.info.gz cpp.info.gz"
 
@@ -22,4 +21,3 @@ pre_remove() {
 post_upgrade() {
     doinstall_info $files
 }
-

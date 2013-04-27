@@ -14,7 +14,7 @@ PACKAGER="chenqixing@ivali.com
 SRC_URI="http://telepathy.freedesktop.org/releases/"$N"/"$N-$V".tar.gz"
 CHECKSUM="780034ff7433f33e6577b02fd7a2cb0a"
 
-RDEPEND="dbus-glib"
+RDEPEND="dbus-glib dbus-libs glib2 glibc zlib libffi pcre"
 BDEPEND="gobject-introspection"
 RECOMMENDED=""
 
@@ -34,4 +34,3 @@ pbs_build() {
 pbs_install() {
     domkinstall
 }
-

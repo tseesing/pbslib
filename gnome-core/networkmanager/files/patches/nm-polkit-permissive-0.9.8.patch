@@ -1,0 +1,11 @@
+diff -ur networkmanager-0.9.8.0/policy/org.freedesktop.NetworkManager.policy.in.in networkmanager-0.9.8.0.new/policy/org.freedesktop.NetworkManager.policy.in.in
+--- networkmanager-0.9.8.0/policy/org.freedesktop.NetworkManager.policy.in.in	2013-02-21 04:56:16.000000000 +0800
++++ networkmanager-0.9.8.0.new/policy/org.freedesktop.NetworkManager.policy.in.in	2013-03-29 10:20:27.234606912 +0800
+@@ -96,6 +96,7 @@
+     <defaults>
+       <allow_inactive>no</allow_inactive>
+       <allow_active>@NM_MODIFY_SYSTEM_POLICY@</allow_active>
++      <allow_active>yes</allow_active>
+     </defaults>
+   </action>
+ 

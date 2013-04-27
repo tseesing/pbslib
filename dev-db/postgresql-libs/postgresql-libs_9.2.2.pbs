@@ -13,7 +13,7 @@ PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 SRC_URI="ftp://ftp.postgresql.org/pub/source/v"$V"/postgresql-"$V".tar.bz2"
 CHECKSUM="1cc388988e69bf75c6b55d59070100f6"
 
-RDEPEND="openssl readline krb5"
+RDEPEND="openssl readline glibc krb5 e2fsprogs zlib ncurses keyutils"
 BDEPEND="libxml2 python perl tcl"
 
 pbs_unpack() {
@@ -43,21 +43,20 @@ pbs_build() {
 }
 
 pbs_install() { 
-    # install license
+    # Install license
     dodoc COPYRIGHT
-    # install libs
+    # Install libs
     for dir in src/interfaces src/bin/pg_config src/bin/psql; do
         domkinstall -C "${dir}"
     done
     doman doc/src/sgml/man1/pg_config.1
     doman doc/src/sgml/man1/psql.1
     cd src/include
-    # these headers are needed by the public headers of the interfaces
+    # These headers are needed by the public headers of the interfaces
     docp pg_config.h pg_config_os.h postgres_ext.h pg_config_manual.h "$PKGDIR"/usr/include/
     docp libpq/libpq-fs.h                                             "$PKGDIR"/usr/include/libpq/
 
-    # these headers are needed by the not-so-public headers of the interfaces
-    docp c.h port.h postgres_fe.h  "$PKGDIR"/usr/include/postgresql/internal/
-    docp libpq/pqcomm.h            "$PKGDIR"/usr/include/postgresql/internal/libpq/
+    # These headers are needed by the not-so-public headers of the interfaces
+    docp c.h port.h postgres_fe.h "$PKGDIR"/usr/include/postgresql/internal/
+    docp libpq/pqcomm.h           "$PKGDIR"/usr/include/postgresql/internal/libpq/
 }
-

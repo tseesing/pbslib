@@ -45,4 +45,3 @@ pbs_install() {
         rm usr/share/man/man8/"${i}".8 
     done
 }
-

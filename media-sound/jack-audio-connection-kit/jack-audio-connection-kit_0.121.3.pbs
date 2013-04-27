@@ -12,7 +12,7 @@ PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
 SRC_URI="http://jackaudio.org/downloads/"$N-$V".tar.gz"
 
-RDEPEND="libsamplerate readline"
+RDEPEND="glibc readline ncurses alsa-lib libsamplerate libsndfile flac libvorbis libogg celt"
 BDEPEND=""
 RECOMMENDED="celt"
 OPTIONAL="celt: NetJACK driver"
@@ -38,4 +38,3 @@ pbs_install() {
     docp "$FILESDIR"/99-audio.conf etc/security/limits.d/
     docp "$FILESDIR"/40-hpet-permissions.rules usr/lib/systemd/rules.d/
 }
-

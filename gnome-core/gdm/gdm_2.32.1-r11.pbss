@@ -17,7 +17,7 @@ RDEPEND="dm-switch gnome-panel libxklavier pam upower"
 BDEPEND="consolekit libglade gnome-session kbproto gnome-doc-utils"
 RECOMMENDED="numlockx"
 
-INSTALL="$N.install"
+INSTALL="$N"2.install
 
 NOTES="gdm user/group should be created automatically."
 

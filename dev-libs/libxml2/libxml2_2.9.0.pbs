@@ -13,7 +13,7 @@ PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>
 
 SRC_URI="ftp://xmlsoft.org/"$N"/"$N-$V".tar.gz"
 
-RDEPEND="zlib readline ncurses xz"
+RDEPEND="readline ncurses glibc zlib xz"
 BDEPEND="python"
 OPTIONAL="python: for bindings"
 
@@ -35,4 +35,3 @@ pbs_install() {
     dodoc COPYING
     doln /usr/include/libxml2/libxml "$PKGDIR"/usr/include/libxml
 }
-

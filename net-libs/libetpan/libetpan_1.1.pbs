@@ -13,7 +13,7 @@ PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 SRC_URI="http://downloads.sourceforge.net/sourceforge/$N/$N-$V.tar.gz"
 CHECKSUM="6fee60d08506e941642b8fa087e60b07"
 
-RDEPEND="berkeley-db curl cyrus-sasl expat gcc-libs glibc libidn libssh2 openldap openssl rtmpdump zlib"
+RDEPEND="curl libidn libssh2 libldap glibc zlib expat openssl berkeley-db libsasl gcc-libs rtmpdump"
 BDEPEND=""
 RECOMMENDED=""
 CONFLICT=""

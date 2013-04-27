@@ -13,7 +13,7 @@ GROUP="x11-lib"
 
 SRC_URI="http://people.freedesktop.org/~aplattner/vdpau/"$N-$V".tar.gz"
 
-RDEPEND="gcc-libs libXext"
+RDEPEND="glibc libXext libX11 libxcb libXau libXdmcp gcc-libs"
 BDEPEND=""
 RECOMMENDED=""
 
@@ -34,4 +34,3 @@ pbs_install() {
     domkinstall
     dodoc COPYING
 }
-

@@ -13,7 +13,7 @@ PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 SRC_URI="http://wayland.freedesktop.org/releases/$N-$V.tar.xz"
 CHECKSUM="e2e9ebfbaf9b013471c620b99938d764"
 
-RDEPEND="expat libffi"
+RDEPEND="expat glibc libffi"
 RECOMMENDED=""
 BDEPEND=""
 OPTIONAL=""

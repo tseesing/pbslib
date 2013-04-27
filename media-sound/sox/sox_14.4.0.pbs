@@ -13,7 +13,7 @@ PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 SRC_URI="http://downloads.sourceforge.net/"$N"/"$N-$V".tar.bz2"
 CHECKSUM="12dfc57e503ed4e18cedcac292cdae7982281978"
 
-RDEPEND="libtool file ffmpeg libmodplug libbluray libtheora opus wavpack libmad libid3tag twolame dbus libxcb libao"
+RDEPEND="file ffmpeg libmodplug libbluray bzip2 libtheora opus wavpack libmad libid3tag twolame dbus-libs libao"
 BDEPEND=""
 RECOMMENDED=""
 CONFLICT=""

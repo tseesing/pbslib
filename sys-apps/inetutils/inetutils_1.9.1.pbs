@@ -13,7 +13,7 @@ PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 SRC_URI="http://ftp.gnu.org/gnu/"$N"/"$N-$V".tar.gz"
 CHECKSUM="86b7eb11cfdaefb1d4e9bfc10620beaf8f09bc90"
 
-RDEPEND="readline pam ncurses"
+RDEPEND="glibc ncurses readline pam"
 BDEPEND=""
 
 INSTALL="$N.install"
@@ -74,4 +74,3 @@ pbs_install() {
       install -D -m644 "$FILESDIR"/rsh.xinetd etc/xinetd.d/rsh
       dounit ftpd.service 
 }
-

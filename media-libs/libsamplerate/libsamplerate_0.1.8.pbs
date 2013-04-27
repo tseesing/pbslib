@@ -13,7 +13,7 @@ PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 SRC_URI="http://www.mega-nerd.com/SRC/"$N-$V".tar.gz"
 CHECKSUM="1c7fb25191b4e6e3628d198a66a84f47"
 
-RDEPEND="libsndfile"
+RDEPEND="libsndfile glibc flac libvorbis libogg"
 BDEPEND=""
 RECOMMENDED=""
 
@@ -32,4 +32,3 @@ pbs_build() {
 pbs_install() {
     domkinstall
 }
-

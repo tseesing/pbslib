@@ -20,8 +20,6 @@ BDEPEND="cmake"
 OPTIONAL=""
 CONFLICT=""
 
-INSTALL="$N.install"
-
 DESKTOPFILE="supertux2.desktop"
 
 pbs_unpack() {

@@ -1,10 +1,6 @@
-. /usr/lib/ybs/funcs
 
 post_install() {
-    if ! getent group adbusers; then
-        groupadd adbusers
-    fi
-
+    dogroupadd adbusers
     cat << EOF
 ===> In order to use adb, you have to be in the 'adbusers' group
 ===> For that, use: gpasswd -a USERNAME adbusers
@@ -12,11 +8,7 @@ EOF
 }
 
 post_remove() {
-    if getent group adbusers; then
-        groupdel adbusers
-    fi
-
-    return 0
+    dogroupdel adbusers ||true
 }
 
 post_upgrade() {
@@ -26,4 +18,3 @@ post_upgrade() {
 post_downgrade() {
     post_install
 }
-

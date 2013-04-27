@@ -1,0 +1,51 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="Libraries for dbus."
+HOMEPAGE="http://dbus.freedesktop.org/"
+LICENSE="custom,GPL"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
+
+SRC_URI="http://dbus.freedesktop.org/releases/dbus/dbus-$V.tar.gz"
+CHECKSUM=""
+
+RDEPEND="glibc"
+BDEPEND=""
+
+pbs_unpack(){
+    dounpack
+}
+
+pbs_config() {
+    config+="--with-system-pid-file=/run/dbus/pid
+             --with-system-socket=/run/dbus/system_bus_socket 
+             --with-console-auth-dir=/run/console/ 
+             --with-dbus-user=dbus
+             --enable-inotify 
+             --disable-dnotify 
+             --disable-verbose-mode 
+             --disable-static 
+             --disable-tests 
+             --disable-asserts  
+             --with-systemdsystemunitdir=/usr/lib/systemd/system 
+             --enable-systemd"
+    doconfig
+}
+
+pbs_build() {
+    domake
+}
+
+pbs_install() {
+    domkinstall
+    cd "$PKGDIR"/
+    # Cleanup
+    rm -rf etc var
+    # Provided by dbus package
+    cd usr/
+    rm -rf bin lib libexec share
+}

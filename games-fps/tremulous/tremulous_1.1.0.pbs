@@ -10,16 +10,16 @@ HOMEPAGE="http://tremulous.net"
 LICENSE="GPL"
 PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
-SRC_URI=" http://releases.mercenariesguild.net/client/mgclient_source_Release_1.011.tar.gz
-          http://releases.mercenariesguild.net/client/mg-client-manual.txt
-      http://releases.mercenariesguild.net/tremded/mg_tremded_source_1.01.tar.gz
-      http://projects.mercenariesguild.net/attachments/download/109/game.qvm
-      http://projects.mercenariesguild.net/attachments/download/111/lakitu7_qvm.txt "
-CHECKSUM=" 95e526b961f875ba66b6fdd4842c913b
-           e0e1b6e03e7596da00a77fe638560402
-       938bdf944dff667b74e2132a87a49780
-       90343619d140557d0c481a61ffa5756c
-       a0b8970b33a27798c125f9152049013c "
+SRC_URI="http://releases.mercenariesguild.net/client/mgclient_source_Release_1.011.tar.gz
+         http://releases.mercenariesguild.net/client/mg-client-manual.txt
+         http://releases.mercenariesguild.net/tremded/mg_tremded_source_1.01.tar.gz
+         http://projects.mercenariesguild.net/attachments/download/109/game.qvm
+         http://projects.mercenariesguild.net/attachments/download/111/lakitu7_qvm.txt"
+CHECKSUM="95e526b961f875ba66b6fdd4842c913b
+          e0e1b6e03e7596da00a77fe638560402
+          938bdf944dff667b74e2132a87a49780
+          90343619d140557d0c481a61ffa5756c
+          a0b8970b33a27798c125f9152049013c"
 
 RDEPEND="tremulous-data(=1.1.0) libsdl openal"
 RECOMMENDED=""
@@ -39,13 +39,11 @@ pbs_patch() {
 
 pbs_build() {
     unset ARCH
-
     # Build the server    
     mkdir -p tremded
     bsdtar -x -C tremded -f "$YBS_SOURCE"/mg_tremded_source_1.01.tar.gz
     cd tremded
     domake || return 1
-
     # Build the client
     cd "$SRCDIR"
     domake
@@ -53,17 +51,13 @@ pbs_build() {
 
 pbs_install() {
     local _arch=x86
-    
     # Install the client
     install -Dm755 build/release-linux-"$_arch"/tremulous."$_arch" "$PKGDIR"/opt/tremulous/tremulous."$_arch"
     install -D -m755 "$FILESDIR"/tremulous.sh                      "$PKGDIR"/usr/bin/tremulous
-
     # Install the documentation
     dodoc "$YBS_SOURCE"/{mg-client-manual.txt,lakitu7_qvm.txt}
-
     # Install the .desktop and icon files
     dodesktop tremulous.desktop tremulous.xpm
-
     # Install the server
     cd tremded
     install -D -m755 build/release-linux-"$_arch"/tremded."$_arch" "$PKGDIR"/opt/tremulous/tremded."$_arch"
@@ -71,4 +65,3 @@ pbs_install() {
     install -D -m755 "$FILESDIR"/tremded.sh                        "$PKGDIR"/usr/bin/tremded
     #install -D -m644 "$FILESDIR"/tremdedrc                        "$PKGDIR"/etc/tremdedrc
 }
-

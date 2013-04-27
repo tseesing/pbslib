@@ -42,7 +42,7 @@ post_install() {
     [ ! -f /etc/ld.so.conf ] && ld_so_conf
     [ ! -f /etc/localtime ] && localtime_
     
-    #update-initramfs -d -c -k "$KERNEL_DIST" ||true
+    update-initramfs -d -c -k "$KERNEL_DIST" ||true
 }
 
 pre_remove() {
@@ -51,10 +51,9 @@ pre_remove() {
 
 post_upgrade () {
     doinstall_info $files
-    #update-initramfs -d -c -k "$KERNEL_DIST" ||true
+    update-initramfs -d -c -k "$KERNEL_DIST" ||true
 }
 
 post_downgrade() {
     post_upgrade
 }
-

@@ -13,7 +13,7 @@ GROUP="x11-apps"
  
 SRC_URI="http://xorg.freedesktop.org/releases/individual/app/"$N-$V".tar.bz2"
 
-RDEPEND="libpng libXcursor"
+RDEPEND="libX11 libXcursor libpng glibc libxcb libXau libXdmcp libXrender libXfixes zlib"
 BDEPEND=""
 
 pbs_unpack() {
@@ -33,4 +33,3 @@ pbs_install() {
     domkinstall
     dodoc COPYING
 }
-

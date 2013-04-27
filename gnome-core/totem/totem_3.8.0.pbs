@@ -1,0 +1,59 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="Movie player for the GNOME3 desktop based on GStreamer"
+HOMEPAGE="http://gnome.org/projects/totem/"
+LICENSE="GPL,custom"
+PACKAGER="chenqixing@ivali.com
+          Zhongxin Huang <huangzhongxin@ivali.com>"
+
+SRC_URI="http://ftp.gnome.org/pub/GNOME/core/3.8/3.8.0/sources/$N-$V.tar.xz"
+CHECKSUM=""
+
+RDEPEND="libpeas clutter-gst clutter-gtk totem-pl-parser libgnome-keyring dbus-glib libzeitgeist lirc grilo nautilus-libs"
+BDEPEND="intltool gnome-doc-utils vala grilo py-lint"
+RECOMMENDED=""
+OPTIONAL=" gst-plugins-base: the basic and essential plug-ins for GStreamer
+           gst-plugins-good: the plug-ins for most Open formats
+           gst-plugins-ugly: good-quality plug-ins that might pose distribution problems, needed for DVD playback
+           gst-plugins-bad: a set of plug-ins that need more work, needed for DVD playback as well
+           gst-ffmpeg: FFmpeg-based plug-in, contains all the basic decoders for popular codecs, such as DivX and WMV 
+           lirc: Infrared Remote Control plugin
+           grilo-plugins: Browse sidebar (remote media)
+           py-xdg: opensubtitles plugin
+           libzeitgeist: Zeitgeist plugin"
+
+INSTALL="$N.install"
+
+NOTES="
+1. Ensure built gst-plugins-good with gconf support or the configure script will fail.
+2. libdvdcss-1.2.10 is a run-time requirement if you wish to play encrypted DVDs"
+
+pbs_unpack() {
+    dounpack
+}
+
+pbs_config() {
+    config+="--disable-scrollkeeper
+             --disable-schemas-compile
+             --with-plugins=all
+             --enable-browser-plugins
+             --disable-static 
+             --enable-python 
+             --enable-nautius"
+    doconfig
+}
+
+pbs_build() {
+    domake
+}
+
+pbs_install() {
+    domkinstall
+    dodoc COPYING
+    docp "$FILESDIR"/browser-plugins.ini "$PKGDIR"/etc/totem/
+}

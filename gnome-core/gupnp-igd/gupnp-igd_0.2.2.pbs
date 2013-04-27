@@ -11,8 +11,8 @@ LICENSE="LGPL"
 PACKAGER="chenqixing@ivali.com
           Zhongxin Huang <huangzhongxin@ivali.com>"
 
-SRC_URI="http://ftp.acc.umu.se/pub/gnome/sources/$N/${V%.*}/$N-$V.tar.xz"
-CHECKSUM="73b6a98a0f13b29b34c3bfc07f99f78b1319211cb95a8585752873af2b9067d3"
+SRC_URI="http://ftp.gnome.org/pub/GNOME/core/3.8/3.8.0/sources/$N-$V.tar.xz"
+CHECKSUM=""
 
 RDEPEND="gupnp"
 RECOMMENDED=""
@@ -34,4 +34,3 @@ pbs_build() {
 pbs_install() {
     domkinstall
 }
-

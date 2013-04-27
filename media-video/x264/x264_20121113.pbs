@@ -13,7 +13,7 @@ PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>
 
 SRC_URI="ftp://ftp.videolan.org/pub/videolan/"$N"/snapshots/"$N"-snapshot-"$V"-2245-stable.tar.bz2"
 
-RDEPEND="libvpx"
+RDEPEND="glibc"
 BDEPEND="yasm"
 RECOMMENDED=""
 
@@ -32,5 +32,6 @@ pbs_build() {
 
 pbs_install() {
     domkinstall
+    # Provied by x264-tools
+    rm "$PKGDIR"/usr/bin/x264
 }
-

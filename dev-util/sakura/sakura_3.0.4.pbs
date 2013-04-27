@@ -1,0 +1,35 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="sakura is a terminal emulator based on GTK and VTE"
+COMMENTS="Simple but powerful libvte based terminal emulator, supporting utf-8 and input methods as provided by gtk+ and pango libraries."
+HOMEPAGE="https://launchpad.net/sakura"
+LICENSE="GPL"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
+
+SRC_URI="https://launchpadlibrarian.net/103638542/$N-$V.tar.bz2"
+CHECKSUM=""
+
+RDEPEND="vte"
+BDEPEND="cmake"
+
+pbs_unpack() {
+    dounpack
+}
+
+pbs_config() {
+    config+=""
+    doconfig
+}
+
+pbs_build() {
+    domake
+}
+
+pbs_install() {
+    domkinstall
+}

@@ -12,7 +12,7 @@ PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
 SRC_URI="git://oss.sgi.com/xfs/cmds/"$N".git"
 
-RDEPEND="readline util-linux"
+RDEPEND="util-linux-libs glibc"
 BDEPEND="git"
 RECOMMENDED=""
 
@@ -39,4 +39,3 @@ pbs_install() {
     chown -R root "$PKGDIR"
     chgrp -R root "$PKGDIR"
 }
-

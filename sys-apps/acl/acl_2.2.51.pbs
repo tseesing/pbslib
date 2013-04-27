@@ -13,7 +13,7 @@ PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 SRC_URI="http://mirrors.zerg.biz/nongnu/"$N"/"$N-$V".src.tar.gz"
 CHECKSUM="06854521cf5d396801af7e54b9636680edf8064355e51c07657ec7442a185225"
 
-RDEPEND="attr(>=2.4.46)"
+RDEPEND="attr(>=2.4.46) glibc"
 BDEPEND=""
 
 pbs_unpack() {

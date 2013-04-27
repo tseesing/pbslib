@@ -1,0 +1,47 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="Clone the Sanguosha online version"
+COMMENT="Sanguosha is both a popular board game and online game"
+HOMEPAGE="https://github.com/gaodayihao/QSanguosha"
+LICENSE="GPL"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
+
+SRC_URI="git://github.com/gaodayihao/QSanguosha.git"
+
+RDEPEND="qt fmodex"
+RECOMMENDED=""
+BDEPEND="qt swig crypto++ fmodex"
+OPTIONAL=""
+CONFLICT=""
+REPLACE=""
+
+pbs_unpack() {
+    dounpack
+}
+
+pbs_patch() {
+    dopatch makefile-add-destdir.patch
+    # Note:
+    # Wait for upstream to fix this 
+    doln /usr/lib"$LIBDIRSUFFIX"/libfmodex.so "$SRCDIR"_build/libfmodex.so
+}
+
+pbs_build() {
+    domake -f linux.mk
+}
+
+pbs_install() {
+    docp "$(readlink -f QSanguosha)" \
+         acknowledgement audio backdrop \
+         diy etc font image lang lua \
+         scenarios skins sanguosha.qm \
+         sanguosha.qss "$PKGDIR"/usr/share/QSanguosha/
+    dodoc gpl-3.0.txt
+    dodesktop "$N".desktop "$N".png
+    docp "$FILESDIR"/qsanguosha "$PKGDIR"/usr/bin/
+}

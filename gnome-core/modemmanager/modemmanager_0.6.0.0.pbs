@@ -1,0 +1,47 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="Modem and mobile broadband management libraries"
+HOMEPAGE="http://cgit.freedesktop.org/ModemManager/ModemManager"
+LICENSE="GPL"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
+
+SRC_URI="http://download.gnome.org/sources/ModemManager/0.6/ModemManager-"$V".tar.xz"
+CHECKSUM="d4468300cf4aa7baf21c8564fa515e578056f34de5a64f452b053331f89e8ae2"
+
+RDEPEND="dbus-glib systemd ppp"
+RECOMMENDED=""
+BDEPEND=""
+OPTIONAL="usb-modeswitch: install if your modem shows up as a storage drive"
+CONFLICT=""
+REPLACE=""
+
+pbs_unpack() {
+    dounpack
+}
+
+pbs_patch() {
+    dopatch rh862341-1-UCS2-conversions.patch \
+            rh862341-2-parse_operator.patch \
+            rh861620-blacklist-arduino-devices.patch
+}
+
+pbs_config() {
+    config+="--with-udev-base-dir=/usr/lib/udev 
+             --disable-static"
+    doconfig
+}
+
+pbs_build() {
+    domake
+}
+
+pbs_install() {
+    domkinstall
+    dounit modem-manager.service
+    echo "SystemdService=modem-manager.service" >>"$PKGDIR"/usr/share/dbus-1/system-services/org.freedesktop.ModemManager.service
+}

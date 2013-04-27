@@ -11,7 +11,7 @@ LICENSE="GPLv2"
 PACKAGER="chenqixing@ivali.com
           Zhongxin Huang <huangzhongxin@ivali.com>"
 
-SRC_URI="http://ftp.acc.umu.se/pub/GNOME/sources/"$N"/${V%.*}/"$N-$V".tar.xz"
+SRC_URI="http://ftp.gnome.org/pub/GNOME/sources/"$N"/${V%.*}/"$N-$V".tar.xz"
 CHECKSUM=""
 
 RDEPEND="clutter-gst clutter-gtk folks gcr iso-codes libcanberra pulseaudio webkitgtk3 telepathy-farstream telepathy-logger telepathy-mission-control"      

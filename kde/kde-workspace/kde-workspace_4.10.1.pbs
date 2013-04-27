@@ -14,7 +14,7 @@ GROUP="kde"
 SRC_URI="http://download.kde.org/stable/"$V"/src/"$N-$V".tar.xz"
 CHECKSUM="48ea4564dc1932606a758647fb1cc5a6f824714e"
 
-RDEPEND="kdepimlibs libqalculate libraw1394 libxkbfile libXres lm_sensors pciutils qimageblitz"
+RDEPEND="kactivities qimageblitz libXinerama libXres libXrandr libXcomposite lm_sensors kdepimlibs libxkbfile libusb-compat glu libqalculate libraw1394 pciutils"
 BDEPEND="cmake automoc4 boost networkmanager mesa"
 RECOMMENDED=""
 OPTIONAL="kde-wallpapers: wallpapers for KDE Plasma Workspaces

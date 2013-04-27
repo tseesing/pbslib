@@ -13,9 +13,8 @@ PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 SRC_URI="http://ftp.gnu.org/gnu/"$N"/"$N-$V".tar.xz"
 CHECKSUM="234cdfac99257cf99ac4a03c898f37b9"
 
-RDEPEND="glibc m4"
+RDEPEND="glibc"
 BDEPEND=""
-
 
 INSTALL="$N.install"
 
@@ -35,4 +34,3 @@ pbs_build() {
 pbs_install() {
     domkinstall
 }
-

@@ -11,9 +11,10 @@ LICENSE="LGPL"
 PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
 SRC_URI="http://ftp.gnome.org/pub/GNOME/sources/$N/2.0/$N-$V.tar.xz"
+CHECKSUM=""
 
 RDEPEND="gtk3"
-BDEPEND=""
+BDEPEND="py-gobject"
 RECOMMENDED=""
 CONFLICT=""
 

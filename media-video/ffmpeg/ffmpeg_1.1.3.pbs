@@ -13,7 +13,7 @@ PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 SRC_URI="http://ffmpeg.org/releases/"$N-$V".tar.bz2"
 CHECKSUM=""
 
-RDEPEND="alsa-lib bzip2 gsm pulseaudio lame libva libvorbis libvpx opencore-amr openjpeg rtmpdump schroedinger libsdl speex v4l-utils x264 xvidcore zlib"
+RDEPEND="libsdl glibc libXfixes libXext libX11 jack-audio-connection-kit alsa-lib v4l-utils pulseaudio freetype libass fontconfig rtmpdump zlib libmodplug libbluray bzip2 libva xvidcore x264 libvpx libvorbis libtheora speex schroedinger opus openjpeg opencore-amr lame gsm directfb gcc-libs libxcb libXau libXdmcp json-c dbus-libs fribidi harfbuzz enca expat openssl libxml2 libogg orc libjpeg-turbo libsndfile libasyncns glib2 graphite2 icu xz flac pcre libffi"
 BDEPEND="yasm" 
 RECOMMENDED=""
 CONFLICT="libav"
@@ -73,4 +73,3 @@ pbs_install() {
     domkinstall install install-man
     install -D -m755 tools/qt-faststart "$PKGDIR"/usr/bin/
 }
-

@@ -13,7 +13,7 @@ PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>
 
 SRC_URI="http://downloads.xiph.org/releases/ao/"$N-$V".tar.gz"
 
-RDEPEND="alsa-lib pulseaudio"
+RDEPEND="glibc pulseaudio json-c dbus-libs libxcb libsndfile libasyncns libXau libXdmcp flac libvorbis libogg alsa-lib"
 BDEPEND=""
 RECOMMENDED=""
 
@@ -34,4 +34,3 @@ pbs_install() {
     domkinstall
     docp "$FILESDIR"/libao.conf "$PKGDIR"/etc/
 }
-

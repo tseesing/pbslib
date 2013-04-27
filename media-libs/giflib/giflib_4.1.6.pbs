@@ -13,7 +13,7 @@ PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>
 
 SRC_URI="http://downloads.sourceforge.net/"$N"/"$N-$V".tar.bz2"
 
-RDEPEND="libX11"
+RDEPEND="libX11 libxcb libXau libXdmcp glibc"
 BDEPEND=""
 
 pbs_unpack() {
@@ -43,4 +43,3 @@ pbs_install() {
     ln -sf libungif.so."$V" libungif.so.4
     ln -sf libungif.so.4 libungif.so
 }
-

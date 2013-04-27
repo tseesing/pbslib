@@ -13,7 +13,7 @@ PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 SRC_URI="http://ftp.gnu.org/gnu/"$N"/"$N-$V"a.tar.gz"
 CHECKSUM="71ba711519209b5fb583fed2b3d86fcb"
 
-RDEPEND="ncurses findutils gzip"
+RDEPEND="glibc ncurses"
 BDEPEND=""
 
 INSTALL="$N.install"
@@ -42,4 +42,3 @@ pbs_install() {
     # fix this here as it prevents make from trying to rebuild manual pages
     sed -i 's#A-z#A-Za-z#' "$PKGDIR"/usr/bin/texi2dvi
 }
-

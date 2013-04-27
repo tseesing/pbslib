@@ -32,4 +32,3 @@ pbs_install() {
     domkinstall pkgconfigdir=/usr/lib"$LIBDIRSUFFIX"/pkgconfig
     dodoc COPYING
 }
-

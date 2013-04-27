@@ -13,7 +13,7 @@ PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 SRC_URI="http://downloads.xiph.org/releases/"$N"/"$N-$V".tar.gz"
 CHECKSUM="153c8b15a54da428d1f0fadc756c22c7"
 
-RDEPEND="gcc-libs libogg"
+RDEPEND="libogg glibc gcc-libs"
 BDEPEND=""
 RECOMMENDED=""
 
@@ -38,4 +38,3 @@ pbs_install() {
     domkinstall
     dodoc COPYING.Xiph
 }
-

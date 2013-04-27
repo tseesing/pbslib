@@ -10,10 +10,10 @@ HOMEPAGE="http://www.gtk.org/"
 LICENSE="LGPL"
 PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
-SRC_URI="http://ftp.gnome.org/pub/gnome/sources/gtk+/2.24/gtk+-$V.tar.xz"
+SRC_URI="http://ftp.gnome.org/pub/GNOME/core/3.8/3.8.0/sources/gtk+-$V.tar.xz"
 CHECKSUM=""
 
-RDEPEND="libXinerama libXi libXrandr libXcursor pango libXcomposite libXdamage atk gdk-pixbuf2 cups"
+RDEPEND="libXinerama libXi libXrandr libXcursor pango harfbuzz graphite2 icu gcc-libs libXcomposite libXdamage libXfixes atk cairo pixman libxcb libXrender libXext libX11 libXau libXdmcp gdk-pixbuf2 libpng glib2 glibc fontconfig freetype zlib bzip2 expat libffi pcre mesa wayland systemd libdrm libXxf86vm cups krb5 e2fsprogs gnutls avahi keyutils p11-kit libtasn1 nettle gmp dbus-libs"
 BDEPEND="gtk-doc gobject-introspection shared-mime-info"
 
 INSTALL="$N.install"

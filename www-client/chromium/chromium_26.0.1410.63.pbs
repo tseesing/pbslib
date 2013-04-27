@@ -1,0 +1,129 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="The open-source project behind Google Chrome, an attempt at creating a safer, faster, and more stable browser"
+HOMEPAGE="http://www.chromium.org/"
+LICENSE="BSD"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
+
+SRC_URI="http://commondatastorage.googleapis.com/chromium-browser-official/$N-$V.tar.xz"
+CHECKSUM=""
+
+RDEPEND="gtk2 libevent nss libXScrnSaver alsa-lib opus libwebp speech-dispatcher pciutils flac libtool"
+BDEPEND="python perl yasm elfutils nacl-toolchain-newlib"
+RECOMMENDED="adobe-flashplugin"
+
+OPTIONS="nostrip"
+
+pbs_unpack() {
+    dounpack
+} 
+
+pbs_patch() {
+    # Add baidu tn
+    dopatch baidu-tn-25.patch
+    
+    # Add StartOS to useragent
+    dopatch chromium_useragent-23.patch
+
+    # Fix build with glibc 2.16
+    dopatch chromium-20.0.1132.57-glib-2.16-use-siginfo_t.patch
+
+    # http://code.google.com/p/chromium/issues/detail?id=160574
+    dopatch chromium-25.0.1364.152-fix-crash-when-cups-is-down.patch
+
+    # Fix build without NaCl glibc toolchain (patch from Gentoo)
+    dopatch chromium-ppapi-r0.patch
+
+    # Fix header location for speech-dispatcher 0.8
+    dopatch chromium-26.0.1410.43-speechd-0.8.patch
+    
+    # Fix http://code.google.com/p/chromium/issues/detail?id=178626
+    dopatch chromium-26.0.1410.43-audio-buffer-size.patch
+}
+
+pbs_config() {
+    # Prepare NaCL toolchain
+    mkdir -p out/Release/obj/gen/sdk/toolchain
+    cp -a /usr/lib/nacl-toolchain-newlib out/Release/obj/gen/sdk/toolchain/linux_x86_newlib
+    touch out/Release/obj/gen/sdk/toolchain/linux_x86_newlib/stamp.untar    
+
+    # CFLAGS are passed through release_extra_cflags below
+    export -n CFLAGS CXXFLAGS
+    
+    # Silence "typedef 'x' locally defined but not used" warnings
+    CFLAGS+=' -Wno-unused-local-typedefs'    
+
+    chromiumdir=usr/lib"$LIBDIRSUFFIX"/chromium
+    
+    build/gyp_chromium --depth=. \
+        -Dwerror= \
+        -Dlinux_link_gsettings=1 \
+        -Dlinux_link_libpci=1 \
+        -Dlinux_link_libspeechd=1 \
+        -Dlinux_sandbox_path=/"$chromiumdir"/chromium-sandbox \
+        -Dlinux_strip_binary=1 \
+        -Dlinux_use_gold_binary=0 \
+        -Dlinux_use_gold_flags=0 \
+        -Drelease_extra_cflags="$CFLAGS" \
+        -Dffmpeg_branding=Chrome \
+        -Dproprietary_codecs=1 \
+        -Duse_system_bzip2=1 \
+        -Duse_system_flac=1 \
+        -Duse_system_ffmpeg=0 \
+        -Duse_system_libevent=1 \
+        -Duse_system_libjpeg=1 \
+        -Duse_system_libpng=1 \
+        -Duse_system_libwebp=1 \
+        -Duse_system_libxml=0 \
+        -Duse_system_opus=1 \
+        -Duse_system_ssl=0 \
+        -Duse_system_xdg_utils=1 \
+        -Duse_system_yasm=1 \
+        -Duse_system_zlib=0 \
+        -Duse_gconf=0 \
+        -Ddisable_glibc=1 \
+        -Ddisable_pnacl=1 \
+        -Ddisable_newlib_untar=1 \
+        -Ddisable_sse2=1
+}
+
+pbs_build() {
+    domake chrome chrome_sandbox BUILDTYPE=Release
+}
+
+pbs_install() {
+    mkdir -p "$PKGDIR"
+    
+    # Core 
+    install -D out/Release/chrome "$PKGDIR"/"$chromiumdir"/chromium
+    install -Dm4755 -o root -g root out/Release/chrome_sandbox "$PKGDIR"/"$chromiumdir"/chromium-sandbox
+    cp out/Release/{*.pak,libffmpegsumo.so,nacl_helper{,_bootstrap}} out/Release/{libppGoogleNaClPluginChrome.so,nacl_irt_*.nexe} "$PKGDIR"/"$chromiumdir"/
+    cp -a out/Release/locales "$PKGDIR"/"$chromiumdir"/
+    
+    # Man
+    dodoc LICENSE 
+    install -Dm644 out/Release/chrome.1 "$PKGDIR"/usr/share/man/man1/chromium.1
+    
+    # Desktop and icon
+    dodesktop "chromium.desktop" "chrome/app/theme/chromium/product_logo_48.png"
+    for size in 22 24 48 64 128 256; do
+        install -Dm644 chrome/app/theme/chromium/product_logo_"${size}".png "$PKGDIR"/usr/share/icons/hicolor/"${size}"x"${size}"/apps/chromium.png
+    done
+    for size in 16 32; do
+        install -Dm644 chrome/app/theme/default_100_percent/chromium/product_logo_"${size}".png "$PKGDIR"/usr/share/icons/hicolor/"${size}"x"${size}"/apps/chromium.png
+    done
+    
+    # Distribution custom
+    cd "$PKGDIR"
+    [ "x$ARCH" = "xi686" ] && rm "$chromiumdir"/nacl_irt_x86_64.nexe
+    mkdir -p usr/bin/
+    sed 's/#LIBDIRSUFFIX#/'"$LIBDIRSUFFIX"'/g' "$FILESDIR"/chromium.sh >usr/bin/chromium
+    chmod +x usr/bin/chromium
+    docp_rename "$FILESDIR"/default-preferences/"$N"-23.tar.bz2 "$chromiumdir"/"$N".tar.bz2
+    docp_rename "$FILESDIR"/chromium-conf etc/default/chromium
+}

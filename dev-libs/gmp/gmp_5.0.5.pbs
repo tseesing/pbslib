@@ -13,9 +13,10 @@ PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 SRC_URI="ftp://ftp.gmplib.org/pub/$N-$V/$N-$V.tar.xz"
 CHECKSUM="8aef50959acec2a1ad41d144ffe0f3b5"
 
-RDEPEND="gcc-libs"
+RDEPEND="gcc-libs glibc"
 BDEPEND=""
 
+# NOTE
 # pidgin require libgmp.so.la for compiling.
 OPTIONS="nolibtool"
 
@@ -40,4 +41,3 @@ pbs_build() {
 pbs_install() {
     domkinstall
 }
-

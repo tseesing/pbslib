@@ -15,7 +15,7 @@ GROUP="x11-apps"
 SRC_URI="http://xorg.freedesktop.org/releases/individual/app/"$N-$V".tar.bz2"
 CHECKSUM="c536ac53e51df0a28e764a7cf7ef4924"
 
-RDEPEND="libFS libX11"
+RDEPEND="libX11 libFS glibc libxcb libXau libXdmcp"
 BDEPEND="xbitmaps"
 
 pbs_unpack() {
@@ -34,4 +34,3 @@ pbs_install() {
     domkinstall
     dodoc COPYING
 }
-

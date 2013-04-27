@@ -1,0 +1,50 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="libs for util-linux"
+HOMEPAGE="http://www.kernel.org/pub/linux/utils/util-linux"
+LICENSE="GPLv2"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
+
+SRC_URI="ftp://ftp.kernel.org/pub/linux/utils/util-linux/v2.22/util-linux-"$V".tar.xz"
+CHECKSUM="eeacbfdd2556acd899a2d0ffdb446185"
+
+RDEPEND="glibc"
+RECOMMENDED=""
+BDEPEND=""
+OPTIONAL=""
+CONFLICT=""
+REPLACE=""
+
+pbs_unpack() {
+    dounpack
+}
+
+pbs_config() {
+    config+="--localstatedir=/run 
+             --enable-fs-paths-extra=/usr/bin:/usr/sbin 
+             --enable-raw 
+             --enable-vipw 
+             --enable-newgrp 
+             --enable-chfn-chsh 
+             --enable-write 
+             --enable-mesg 
+             --enable-socket-activation"
+    doconfig
+}
+
+pbs_build() {
+    domake
+}
+
+pbs_install() {
+    make install-usrlib_execLTLIBRARIES DESTDIR="$PKGDIR"
+    make install-pkgconfigDATA DESTDIR="$PKGDIR"
+    make install-nodist_blkidincHEADERS DESTDIR="$PKGDIR"
+    make install-uuidincHEADERS DESTDIR="$PKGDIR"
+    make install-nodist_mountincHEADERS DESTDIR="$PKGDIR"
+}

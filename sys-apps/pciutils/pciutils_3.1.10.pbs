@@ -32,4 +32,3 @@ pbs_install() {
     # This is now supplied by the hwids package
     rm -rf "$PKGDIR"/usr/share/hwdata
 }
-

@@ -1,0 +1,35 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="Anjuta runtime library"
+HOMEPAGE="http://www.anjuta.org"
+LICENSE="GPL"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
+
+SRC_URI="http://ftp.gnome.org/pub/GNOME/sources/anjuta/3.8/anjuta-$V.tar.xz"
+CHECKSUM=""
+
+RDEPEND="gdl"
+BDEPEND="gnome-doc-utils intltool gobject-introspection itstool"
+
+pbs_unpack() {
+    dounpack
+}
+
+pbs_config() {
+    config+=""
+    doconfig
+}
+
+pbs_build() {
+    domake
+}
+
+pbs_install() {
+    cd libanjuta
+    make -j1 DESTDIR="$PKGDIR" install
+}

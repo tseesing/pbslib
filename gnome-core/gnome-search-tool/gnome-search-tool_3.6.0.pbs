@@ -14,9 +14,9 @@ PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>
 SRC_URI="http://ftp.gnome.org/pub/GNOME/sources/"$N"/"${V%.*}"/"$N-$V".tar.xz"
 CHECKSUM="a33000cd7d033be4ea50422f0f2cca611da5b79bd0f0875017f105a1bc177f42"
 
-RDEPEND="gtk3 libSM"
+RDEPEND="gtk3"
 BDEPEND="intltool yelp-tools"
-RECOMMENDED="nautilus"
+RECOMMENDED=""
 
 INSTALL="$N.install"
 

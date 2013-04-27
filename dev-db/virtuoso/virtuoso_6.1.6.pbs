@@ -13,7 +13,7 @@ PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 SRC_URI="http://sourceforge.net/projects/"$N"/files/"$N"/"$V"/"$N"-opensource-"$V".tar.gz"
 CHECKSUM="3991149c570f3738c3e819ce603e487f"
 
-RDEPEND="openldap libxml2"
+RDEPEND="readline libldap imagemagick lcms2 fontconfig libXext"
 BDEPEND="bison flex gperf net-tools"
 
 pbs_unpack() {

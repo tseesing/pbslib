@@ -14,7 +14,7 @@ PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 SRC_URI="https://alioth.debian.org/frs/download.php/3310/"$N-$V".tar.bz2"
 CHECKSUM="db19f5bf3151b1b41705ec7bafa439d3"
 
-RDEPEND="util-linux"
+RDEPEND="util-linux-libs"
 RECOMMENDED=""
 BDEPEND=""
 OPTIONAL=""

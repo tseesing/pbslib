@@ -1,0 +1,47 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="A browser plugin that uses GNOME MPlayer to play media in a browser."
+COMMENTS="Gecko Media Player is a browser plug-in that uses GNOME MPlayer
+          and Mplayer to play media in a browser.
+          It uses the NS4 API and is therefore compatible with all NS4 derived browsers:
+          Iceweasel, Firefox, Iceape, Epiphany, Galeon, Midbrowser, Xulrunner as well as
+          with Konqueror, Opera and Google Chromium.
+          It is the modern replacement for mplayerplug-in (from the same author)."
+HOMEPAGE="http://code.google.com/p/gecko-mediaplayer/"
+LICENSE="GPLv2"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
+
+SRC_URI="http://gecko-mediaplayer.googlecode.com/files/"$N-$V".tar.gz"
+CHECKSUM="d236768fc2ebf970d9c730ee6fc9e93070860d66"
+
+RDEPEND="curl gmtk libxcb"
+RECOMMENDED=""
+BDEPEND="xulrunner pkgconfig"
+CONFLICT=""
+
+INSTALL="$N.install"
+
+pbs_unpack() {
+    dounpack
+}
+
+pbs_config() {
+    config+="--with-plugin-dir=/usr/lib/mozilla/plugins
+             --disable-schemas-install
+             --without-gconf
+             --enable-new-libxul"
+    doconfig
+}
+
+pbs_build() {
+    domake
+}
+
+pbs_install() {
+    domkinstall
+}

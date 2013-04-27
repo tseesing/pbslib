@@ -1,0 +1,40 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="A collection of tools for internationalizing Python applications"
+HOMEPAGE="http://babel.edgewall.org"
+LICENSE="BSD"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
+YARCH="any"
+
+SRC_URI="http://ftp.edgewall.com/pub/babel/Babel-$V.tar.gz"
+CHECKSUM="f0edcad03dfdb5505f337ef1a7690325"
+
+RDEPEND="python"
+RECOMMENDED=""
+BDEPEND=""
+OPTIONAL=""
+CONFLICT=""
+REPLACE=""
+
+pbs_unpack() {
+    dounpack
+}
+
+pbs_config() {
+    config+=""
+    doconfig
+}
+
+pbs_build() {
+    domake
+}
+
+pbs_install() {
+    domkinstall
+    dodoc COPYING
+}

@@ -10,13 +10,12 @@ HOMEPAGE="http://www.flightgear.org"
 LICENSE="GPL"
 PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 YARCH="any"
-
 OPTIONS="nostrip"
 
 SRC_URI="http://mirrors.ibiblio.org/pub/mirrors/flightgear/ftp/Shared/FlightGear-data-"$V".tar.bz2"
 CHECKSUM="7672904c84c32120f33626b95e5043ef"
 
-RDEPEND="flightgear"
+RDEPEND=""
 RECOMMENDED=""
 BDEPEND=""
 OPTIONAL=""
@@ -30,4 +29,3 @@ pbs_install() {
     docp * "$PKGDIR"/usr/share/flightgear/data/
     chown root:root "$PKGDIR"/usr/share/flightgear/data
 }
-

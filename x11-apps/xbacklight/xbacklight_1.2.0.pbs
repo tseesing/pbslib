@@ -14,7 +14,7 @@ GROUP="x11-apps"
 
 SRC_URI="http://xorg.freedesktop.org/releases/individual/app/"$N-$V".tar.bz2"
 
-RDEPEND="xcb-util"
+RDEPEND="libxcb xcb-util glibc libXau libXdmcp"
 BDEPEND=""
 
 pbs_unpack() {
@@ -33,4 +33,3 @@ pbs_install() {
     domkinstall
     dodoc COPYING
 }
-

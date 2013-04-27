@@ -12,7 +12,7 @@ PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
 SRC_URI="http://gstreamer.freedesktop.org/src/"$N"/"$N-$V".tar.xz"
 
-RDEPEND="gst-plugins-base libdvdread lame libmpeg2 a52dec libmad libsidplay libcdio x264 opencore-amr"
+RDEPEND="gst-plugins-base lame libsidplay opencore-amr libmad libmpeg2 libcdio a52dec libdvdread x264 twolame"
 BDEPEND=""
 RECOMMENDED=""
 CONFLICT=""

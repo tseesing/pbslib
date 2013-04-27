@@ -13,21 +13,14 @@ PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 SRC_URI="http://avahi.org/download/"$N-$V".tar.gz"
 CHECKSUM="7e05bd78572c9088b03b1207a0ad5aba38490684"
 
-RDEPEND="expat libdaemon glib2 libcap gdbm" 
-BDEPEND="qt py-gtk mono intltool py-dbus gobject-introspection gtk3 xmltoman"
+RDEPEND="dbus-libs glibc gdbm libdaemon expat libcap attr glib2 libffi pcre" 
+BDEPEND="py-gtk intltool py-dbus gobject-introspection xmltoman"
 RECOMMENDED=""
-
 OPTIONAL="dbus: communicating with client applications
-          gtk3: avahi-discover-standalone, bshell, bssh, bvnc
-          gtk2: gtk2 bindings
-          qt: qt bindings
           pygtk: avahi-bookmarks, avahi-discover
           twisted: avahi-bookmarks
-          mono: mono bindings
           dbus-python: avahi-discover
           nss-mdns: NSS support for mDNS"
-#         qt3: qt3 bindings"
-#    Note: We have no qt3 now.
 
 INSTALL="$N.install"
 
@@ -41,6 +34,9 @@ pbs_patch() {
 
 pbs_config() {
     config+="--disable-qt3
+             --disable-qt4
+             --disable-gtk
+             --disable-gtk3
              --disable-static
              --disable-mono
              --disable-monodoc
@@ -61,11 +57,10 @@ pbs_build() {
 pbs_install() {
     domkinstall
     cd "$PKGDIR"
-    # cleanup 
+    # Cleanup 
     rm -rf var/run/ 
     rm -rf etc/rc.d
-    # howl and mdnsresponder compatability
+    # Compatability howl and mdnsresponder
     (cd usr/include; ln -s avahi-compat-libdns_sd/dns_sd.h dns_sd.h; ln -s avahi-compat-howl howl)
     (cd usr/lib"$LIBDIRSUFFIX"/pkgconfig; ln -s avahi-compat-howl.pc howl.pc)
 }
-

@@ -34,4 +34,3 @@ pbs_install() {
     domkinstall
     rm "$PKGDIR"/usr/lib"$LIBDIRSUFFIX"/libsysfs.a
 }
-

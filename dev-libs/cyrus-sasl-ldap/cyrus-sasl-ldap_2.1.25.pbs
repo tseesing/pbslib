@@ -1,0 +1,50 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="ldapdb auxprop module for Cyrus SASL."
+HOMEPAGE="http://asg.web.cmu.edu/sasl/"
+LICENSE="custom"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>
+          chenqixing@ivali.com"
+ 
+SRC_URI="ftp://ftp.andrew.cmu.edu/pub/cyrus-mail/cyrus-sasl-"$V".tar.gz"
+CHECKSUM="341cffe829a4d71f2a6503d669d5a946"
+
+RDEPEND="libldap glibc libsasl openssl zlib"
+BDEPEND=""
+RECOMMENDED=""
+
+OPTIONS="nolibtool"
+
+pbs_unpack() {
+    dounpack
+}
+
+pbs_patch() {
+    dopatch 0027_db5_support.patch
+}
+
+pbs_config() {
+    config+="--with-plugindir=/usr/lib$LIBDIRSUFFIX/sasl2
+             --with-pam
+             --disable-static
+             --with-saslauthd=/run/saslauthd
+             --with-devrandom=/dev/urandom
+             --enable-ldapdb
+             --with-ldap"
+    doconfig
+}
+
+pbs_build() {
+    make 
+}
+
+pbs_install() {
+  cd plugins
+  docp .libs/libldapdb.* "$PKGDIR"/usr/lib"$LIBDIRSUFFIX"/sasl2/
+  dodoc ../COPYING
+}

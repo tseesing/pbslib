@@ -16,8 +16,9 @@ SRC_URI="http://fedorahosted.org/releases/l/i/linux-pam/Linux-PAM-"$V".tar.bz2
          ftp://ftp.archlinux.org/other/pam_unix2/pam_unix2-2.9.1.tar.bz2"
 CHECKSUM="7b73e58b7ce79ffa321d408de06db2c4 da6a46e5f8cd3eaa7cbc4fc3a7e2b555"
 
-RDEPEND="berkeley-db cracklib libtirpc pambase"
+RDEPEND="glibc cracklib zlib libtirpc libgssglue berkeley-db"
 BDEPEND="flex docbook-xml docbook-xsl"
+RECOMMENDED="pambase"
 
 INSTALL="$N.install"
 
@@ -26,41 +27,43 @@ pbs_unpack() {
 }
 
 pbs_config() {
-    # pam
-    config="--sysconfdir=/etc --libdir=/usr/lib"$LIBDIRSUFFIX""
+    # PAM
+    config="--sysconfdir=/etc 
+            --libdir=/usr/lib"$LIBDIRSUFFIX"
+            --enable-cracklib"
     doconfig || die "pam configure failed."
-
+    
     # pam_unix2
     tar xf "$YBS_SOURCE"/pam_unix2-2.9.1.tar.bz2
     cd pam_unix2-2.9.1
     dopatch pam_unix2-glibc216.patch
-    config="--sysconfdir=/etc --libdir=/usr/lib"$LIBDIRSUFFIX""
+    config="--sysconfdir=/etc 
+            --libdir=/usr/lib"$LIBDIRSUFFIX""
     doconfig
 }
 
 pbs_build() {
-    # pam
+    # PAM
     cd "$SRCDIR"/
     dopatch pam_namespace-build-1.1.6.patch
     domake  || die "pam make failed."
-
+    
     # pam_unix2
     cd "$SRCDIR"/pam_unix2-2.9.1
     domake
 }
 
 pbs_install() {
-    # pam
+    # PAM
     cd "$SRCDIR"/
     domkinstall SCONFIGDIR=/etc/security || die "pam make install failed."
-
+    
     # pam_unix2
     cd "$SRCDIR"/pam_unix2-2.9.1
     domake
-
     cd "$PKGDIR"
     
-    # add the realtime permissions for audio users
+    # Add the realtime permissions for audio users
     sed -i 's|# End of file||' etc/security/limits.conf
     cat >> etc/security/limits.conf <<_EOT
 *               -       rtprio          0
@@ -72,15 +75,13 @@ _EOT
     
     #
     rm -rf etc/environment
-
+    
     # Need to be suid
     chmod +s sbin/unix_chkpwd 
     
     # Fix some missing symlinks from old pam for compatibility
     cd usr/lib"$LIBDIRSUFFIX"/security
-    doln pam_unix.so pam_unix_acct.so
-    doln pam_unix.so pam_unix_auth.so
-    doln pam_unix.so pam_unix_passwd.so
-    doln pam_unix.so pam_unix_session.so
+    for x in pam_unix_acct.so pam_unix_auth.so pam_unix_passwd.so pam_unix_session.so; do
+        doln pam_unix.so "${x}"
+    done
 }
-

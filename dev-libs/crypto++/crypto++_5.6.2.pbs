@@ -1,0 +1,39 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="Crypto++ is a C++ class library of cryptographic schemes"
+HOMEPAGE="http://cryptopp.com"
+LICENSE="Boost Software License 1.0"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
+
+SRC_URI="http://cryptopp.com/cryptopp562.zip"
+
+RDEPEND="gcc-libs"
+BDEPEND="unzip sed"
+
+pbs_unpack() {
+    dounpack
+}
+
+pbs_patch() {
+    sed -i -e 's/^CXXFLAGS/#CXXFLAGS/' GNUmakefile
+    cat "$FILESDIR"/libcrypto++.pc |sed 's/#LIBDIRSUFFIX#/'"$LIBDIRSUFFIX"'/g' >libcrypto++.pc
+    
+}
+
+pbs_build() {
+    export CXXFLAGS="${CXXFLAGS} -DNDEBUG -fPIC"
+    domake -f GNUmakefile  
+    domake libcryptopp.so
+}
+
+pbs_install() {
+    docp *.h "$PKGDIR"/usr/include/cryptopp/
+    docp libcryptopp.a libcryptopp.so "$PKGDIR"/usr/lib"$LIBDIRSUFFIX"/
+    docp libcrypto++.pc "$PKGDIR"/usr/lib"$LIBDIRSUFFIX"/pkgconfig/
+    dodoc License.txt
+}

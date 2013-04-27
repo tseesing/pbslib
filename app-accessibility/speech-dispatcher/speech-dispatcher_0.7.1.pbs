@@ -14,7 +14,7 @@ PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>
 SRC_URI="http://www.freebsoft.org/pub/projects/speechd/"$N-$V".tar.gz"
 CHECKSUM="ccfc30ac006673d36b4223eb760ed696"
 
-RDEPEND="glib2 python dotconf pulseaudio libao"
+RDEPEND="dotconf libao espeak"
 RECOMMENDED=""
 BDEPEND="pkgconfig espeak"
 OPTIONAL="festival: Speech output using Festival
@@ -45,4 +45,3 @@ pbs_install() {
     # Misc
     mkdir -p var/log/speech-dispatcher
 }
-

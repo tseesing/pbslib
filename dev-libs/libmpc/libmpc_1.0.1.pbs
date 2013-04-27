@@ -13,7 +13,7 @@ PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 SRC_URI="http://www.multiprecision.org/mpc/download/mpc-"$V".tar.gz"
 CHECKSUM="b32a2e1a3daa392372fbd586d1ed3679"
 
-RDEPEND="mpfr(>=3.0.0)"
+RDEPEND="mpfr(>=3.0.0) gmp glibc"
 BDEPEND=""
 RECOMMENDED=""
 
@@ -35,4 +35,3 @@ pbs_build() {
 pbs_install() {
     domkinstall
 }
-

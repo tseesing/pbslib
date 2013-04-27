@@ -17,8 +17,6 @@ BDEPEND=""
 RECOMMENDED=""
 CONFLICT=""
 
-INSTALL="$N.install"
-
 pbs_install() {
     docp_rename "$YBS_SOURCE"/"AIRweibo($V).air" "$PKGDIR"/usr/lib/"$N"/airweibo.air
     dodesktop "sinaweibo-air.desktop" "sinaweibo-air.png"

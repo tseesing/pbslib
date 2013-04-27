@@ -13,7 +13,7 @@ PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 SRC_URI="http://telepathy.freedesktop.org/releases/"$N"/"$N-$V".tar.gz"
 CHECKSUM="7516e6f6fa56a61054413a03642b938d"
 
-RDEPEND="avahi libsoup openssl telepathy-glib util-linux"
+RDEPEND="util-linux-libs avahi sqlite openssl libsoup libxml2 xz glibc dbus-glib dbus-libs glib2 zlib libffi pcre telepathy-glib"
 BDEPEND="python xmldiff"
 RECOMMENDED=""
 
@@ -37,4 +37,3 @@ pbs_build() {
 pbs_install() {
     domkinstall
 }
-

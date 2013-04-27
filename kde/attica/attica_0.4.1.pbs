@@ -14,7 +14,7 @@ GROUP="kde"
 SRC_URI="http://download.kde.org/stable/"$N"/"$N-$V".tar.bz2"
 CHECKSUM="b90983ec5d79e5ddcbc9146fa23cab72"
 
-RDEPEND="qt"
+RDEPEND="qt openssl"
 BDEPEND="cmake"
 
 pbs_unpack() {
@@ -32,4 +32,3 @@ pbs_build() {
 pbs_install() {
     domkinstall
 }
-

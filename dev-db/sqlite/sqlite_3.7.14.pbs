@@ -14,7 +14,7 @@ PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 SRC_URI="http://www.sqlite.org/sqlite-autoconf-3071401.tar.gz"
 CHECKSUM="4cf3fd434bbb6e50777019ff3507bfa5"
 
-RDEPEND="readline"
+RDEPEND="readline ncurses glibc"
 BDEPEND="tcl"
 
 pbs_unpack() {
@@ -23,14 +23,12 @@ pbs_unpack() {
 
 pbs_build() {
     export CFLAGS="$CFLAGS -DSQLITE_ENABLE_FTS3=1 -DSQLITE_ENABLE_COLUMN_METADATA=1 -DSQLITE_ENABLE_UNLOCK_NOTIFY -DSQLITE_SECURE_DELETE"
-
-    # build sqlite
+    # Build sqlite
     #./configure --prefix=/usr --disable-static || return 1
     config+="--disable-static" 
     doconfig || die "sqlite configure failed."
     domake   || die "sqlite make failed."
-
-    # build the tcl extension    
+    # Build the tcl extension    
     cd tea
     config+=" --with-system-sqlite" 
     doconfig || die "tcl extension configure failed."
@@ -41,11 +39,8 @@ pbs_install() {
     # Install the tcl extension
     cd "$SRCDIR"/tea
     domkinstall || die "tcl extension make install failed."
-
     # Install sqlite
     cd "$SRCDIR"
     domkinstall
-
     dodoc "$FILESDIR"/license.txt
 }
-

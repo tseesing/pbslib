@@ -1,0 +1,11 @@
+--- linux.mk	2013-04-11 10:00:11.092529292 +0800
++++ linux.mk.new	2013-04-11 10:31:14.553292112 +0800
+@@ -10,7 +10,7 @@
+ # This makefile only works for GNU Linux and don't try it on other platforms.
+ #
+ 
+-PREFIX:=/usr/local
++PREFIX:=$(DESTDIR)/usr
+ OLDPWD:=$(PWD)
+ BUILD:=$(OLDPWD)_build
+ DEBUG_BUILD:=$(OLDPWD)_debugbuild

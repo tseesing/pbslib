@@ -60,7 +60,7 @@ EOF
     do_initramfs    
 
     #
-    gnome2_desktop_database_update
+    update-desktop-database
 
     # License
     echo '* By using this package you accept the NVIDIA license,'

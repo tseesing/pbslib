@@ -12,7 +12,7 @@ PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
 SRC_URI="http://ftp.gnome.org/pub/gnome/core/3.6/3.6.2/sources/"$N-$V".tar.xz"
 
-RDEPEND="dbus glib2 libgcrypt"
+RDEPEND="glib2 libffi glibc pcre dbus-libs libgcrypt libgpg-error"
 BDEPEND="gobject-introspection"
 RECOMMENDED=""
 
@@ -32,5 +32,3 @@ pbs_build() {
 pbs_install() {
     domkinstall
 }
-
-

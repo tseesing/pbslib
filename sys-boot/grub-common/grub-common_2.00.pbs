@@ -20,7 +20,7 @@ CHECKSUM="274d91e96b56a5b9dd0a07accff69dbb6dfb596b
           eb4b35b4c36b64f9405cbcbc538cb205171c1c0a
           d5ae2efec25616028a9d89e98b6e454f1c4c415f"
 
-RDEPEND="xz freetype device-mapper fuse systemd"
+RDEPEND="device-mapper glibc xz fuse freetype zlib bzip2"
 BDEPEND="unifont python autogen texinfo gettext dosfstools efibootmgr"
 OPTIONAL="libisoburn: provides xorriso for generating grub rescue iso using grub-mkrescue
           os-prober: to detect other OSes when generating grub.cfg in BIOS systems

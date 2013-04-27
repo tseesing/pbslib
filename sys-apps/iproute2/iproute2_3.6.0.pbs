@@ -13,7 +13,7 @@ PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 SRC_URI="http://www.kernel.org/pub/linux/utils/net/"$N"/"$N-$V".tar.xz"
 CHECKSUM="6fa16fd2158d0f289ef454cad46555ead1c33c2d"
 
-RDEPEND="berkeley-db glibc iptables"
+RDEPEND="glibc berkeley-db iptables linux-atm"
 BDEPEND=""
 OPTIONAL="linux-atm: ATM support"
 
@@ -35,12 +35,11 @@ pbs_build() {
 
 pbs_install() {
     domkinstall
-      # libnetlink isn't installed, install it FS#19385
-      docp include/libnetlink.h "$PKGDIR"/usr/include/
-      docp lib/libnetlink.a "$PKGDIR"/usr/lib"$LIBDIRSUFFIX"/
-    # allow loopback to be started before /usr is mounted, this may not be supported in the future
+    # libnetlink isn't installed, install it here
+    docp include/libnetlink.h "$PKGDIR"/usr/include/
+    docp lib/libnetlink.a "$PKGDIR"/usr/lib"$LIBDIRSUFFIX"/
+    # Allow loopback to be started before /usr is mounted, this may not be supported in the future
     cd "$PKGDIR"
     domv usr/sbin/ip sbin/
     doln /sbin/ip usr/sbin/ip
 }
-

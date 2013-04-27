@@ -1,9 +1,8 @@
-. /usr/lib/ybs/funcs
 
 service="cups.service"
 
 post_install() {
-    xdg-icon-resource forceupdate --theme hicolor 2> /dev/null
+    xdg-icon-resource forceupdate --theme hicolor
     systemctl enable "$service"
     start cups || true
 }       
@@ -17,4 +16,3 @@ post_upgrade() {
     systemctl enable "$service"
     restart cups ||true
 }
-

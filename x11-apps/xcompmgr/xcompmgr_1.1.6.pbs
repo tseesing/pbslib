@@ -12,7 +12,7 @@ PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
 SRC_URI="http://xorg.freedesktop.org/releases/individual/app/"$N-$V".tar.bz2"
 
-RDEPEND="libXcomposite libXdamage libXext libXrender"
+RDEPEND="libXcomposite libXdamage libXfixes libXrender libX11 libXext glibc libxcb libXau libXdmcp"
 BDEPEND=""
 
 pbs_unpack() {
@@ -30,6 +30,5 @@ pbs_build() {
 pbs_install() {
     domkinstall
     dodoc COPYING
-    docp "$FILESDIR"/xcompmgr.desktop "$PKGDIR"/etc/xdg/autostart 
+    #docp "$FILESDIR"/xcompmgr.desktop "$PKGDIR"/etc/xdg/autostart 
 }
-

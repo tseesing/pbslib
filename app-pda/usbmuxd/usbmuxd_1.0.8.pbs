@@ -13,7 +13,7 @@ PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 SRC_URI="http://cgit.sukimashita.com/"$N".git/snapshot/"$N-$V".tar.bz2"
 CHECKSUM="87fd27773a84e97ac6e2dc28b08d682e"
 
-RDEPEND="libplist libusbx"
+RDEPEND="glibc libplist libxml2 zlib xz libusbx"
 RECOMMENDED=""
 BDEPEND="cmake"
 OPTIONAL=""

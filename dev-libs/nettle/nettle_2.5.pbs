@@ -13,7 +13,7 @@ PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 SRC_URI="ftp://ftp.lysator.liu.se/pub/security/lsh/"$N-$V".tar.gz"
 CHECKSUM="d66882e6ad31a9f651b73d7a1a93bd4c"
 
-RDEPEND="gmp"
+RDEPEND="gmp glibc"
 BDEPEND=""
 
 INSTALL="$N.install"
@@ -36,4 +36,3 @@ pbs_install() {
     # Remove static libs
     rm -f "$PKGDIR"/usr/lib"$LIBDIRSUFFIX"/{libhogweed,libnettle}.a
 }
-

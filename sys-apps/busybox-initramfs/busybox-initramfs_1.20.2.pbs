@@ -11,6 +11,7 @@ LICENSE="GPL"
 PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 
 SRC_URI="http://busybox.net/downloads/busybox-"$V".tar.bz2"
+CHECKSUM=""
 
 RDEPEND="glibc"
 
@@ -33,4 +34,3 @@ pbs_build() {
 pbs_install() {
     docp busybox "$PKGDIR"/usr/lib/initramfs-tools/bin/
 }
-

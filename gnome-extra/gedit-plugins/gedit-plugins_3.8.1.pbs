@@ -1,0 +1,40 @@
+#
+# StartOS package build script
+#
+# Copyright 2012 StartOS
+# Distributed under the terms of the GNU General Public License v2
+#
+
+DESCRIPTION="Offical plugins for gedit."
+HOMEPAGE="http://live.gnome.org/GeditPlugins"
+LICENSE="GPL"
+PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
+ 
+SRC_URI="http://ftp.gnome.org/pub/GNOME/sources/$N/3.8/$N-$V.tar.xz"
+CHECKSUM=""
+
+RDEPEND="gedit py-dbus"
+BDEPEND=""
+RECOMMENDED=""
+OPTIONAL="gucharmap: for charmap plugin
+          vte3: for embedded terminal"
+
+INSTALL="$N.install"
+
+pbs_unpack() {
+    dounpack
+}
+
+pbs_config() {
+    config+="--with-plugins=all 
+             --disable-schemas-compile"
+    doconfig
+}
+
+pbs_build() {
+    domake
+}
+
+pbs_install() {
+    domkinstall
+}

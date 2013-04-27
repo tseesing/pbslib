@@ -13,7 +13,7 @@ PACKAGER="Zhongxin Huang <huangzhongxin@ivali.com>"
 SRC_URI="http://downloads.sourceforge.net/"$N"/"$N-$V".tar.gz"
 CHECKSUM="4c8fb774449f966f78c4c6e1d77d1a24b4187410"
 
-RDEPEND="ncurses"
+RDEPEND="glibc ncurses"
 BDEPEND=""
 
 pbs_unpack() {
@@ -32,4 +32,3 @@ pbs_build() {
 pbs_install() {
     domkinstall
 }
-

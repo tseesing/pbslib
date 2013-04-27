@@ -18,8 +18,6 @@ BDEPEND=""
 RECOMMENDED=""
 CONFLICT=""
 
-INSTALL="$N.install"
-
 DESKTOPFILE="FBReader.desktop" 
 ICONFILE="FBReader.png"
 
@@ -50,4 +48,3 @@ pbs_install() {
     domkinstall INSTALLDIR=/usr
     doln /usr/bin/FBReader "$PKGDIR"/usr/bin/fbreader
 }
-

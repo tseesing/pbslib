@@ -12,8 +12,8 @@ PACKAGER="Zhongxinhuang <huangzhongxin@ivali.com>"
 
 SRC_URI="ftp://ftp.sunet.se/pub/multimedia/graphics/ImageMagick/ImageMagick-"${V%.*}"-"${V##*.}".tar.xz"
 
-RDEPEND="fontconfig lcms2 liblqr perl"
-RECOMMENDED="librsvg libpng"
+RDEPEND="liblqr libtool pango libwmf ghostscript librsvg openexr"
+RECOMMENDED=""
 OPTIONAL="ghostscript: for Ghostscript support
           openexr: for OpenEXR support
           libwmf: for WMF support
@@ -66,4 +66,3 @@ pbs_install() {
     rm -fr "$PKGDIR"/usr/share/doc/ImageMagick/
     perl_cleanup
 }
-

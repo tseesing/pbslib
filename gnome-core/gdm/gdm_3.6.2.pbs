@@ -67,4 +67,3 @@ pbs_install() {
     chmod 700 var/lib/gdm/.config/dconf
     rm -r run var/gdm
 }
-

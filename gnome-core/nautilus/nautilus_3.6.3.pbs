@@ -17,7 +17,7 @@ CHECKSUM="d272027754ce8591959ae854fc6b5f43eee4af31e4eecf06de727acebe0ee46c"
 RDEPEND="libexif gnome-desktop exempi gvfs desktop-file-utils dconf tracker libnotify"
 BDEPEND="gobject-introspection intltool"
 
-INSTALL="$N-3.6.install"
+INSTALL="$N.install"
 
 pbs_unpack() {
     dounpack
@@ -38,5 +38,3 @@ pbs_build() {
 pbs_install() {
     domkinstall
 }
-
-

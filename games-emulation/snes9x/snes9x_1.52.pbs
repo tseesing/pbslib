@@ -15,8 +15,6 @@ SRC_URI="http://snes9x-gtk.googlecode.com/files/"$N-$V"-src.tar.bz2"
 RDEPEND="libglade libsdl libXv portaudio pulseaudio"
 BDEPEND=""
 
-INSTALL="$N.install"
-
 pbs_unpack() {
     dounpack
 }
@@ -44,4 +42,3 @@ pbs_install() {
     cd ../gtk
     domkinstall
 }
-

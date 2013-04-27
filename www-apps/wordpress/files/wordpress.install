@@ -1,4 +1,3 @@
-. /usr/lib/ybs/funcs
 
 post_install() {
     echo 'Now you must configure your web server (PHP Compatible) to run Wordpress'
